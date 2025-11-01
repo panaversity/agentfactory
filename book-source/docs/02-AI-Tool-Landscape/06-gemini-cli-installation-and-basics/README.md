@@ -1,15 +1,17 @@
 ---
 sidebar_position: 6
-title: "Chapter 6: Gemini CLI—Installation and Basics"
+title: "Chapter 6: Google Gemini CLI: Open Source and Everywhere"
 ---
 
-# Chapter 6: Gemini CLI—Installation and Basics
+# Chapter 6: Google Gemini CLI: Open Source and Everywhere
 
-You've mastered Claude Code—the agentic AI phenomenon that transformed terminal-based development. Now it's time to expand your toolkit with Gemini CLI, Google's open-source answer that brings its own strategic advantages: massive context windows, built-in Google Search grounding, and a thriving extension ecosystem.
+Google didn't just follow—they went big. Gemini CLI is fully open source under Apache 2.0 license, bringing the power of Gemini directly into developers' terminals with built-in tools for Google Search grounding, file operations, shell commands, and web fetching.
+
+What makes Gemini CLI particularly compelling is its accessibility. Developers get 60 model requests per minute and 1,000 requests per day at no charge simply by logging in with a personal Google account. That's roughly double the average number of requests developers typically make, according to Google.
 
 This chapter isn't about replacing Claude Code. It's about understanding **when to use each tool** and building the judgment to choose the right AI assistant for every development scenario you encounter.
 
-Through six progressive lessons—from motivation through installation, authentication, first commands, built-in tools, and strategic comparison—you'll gain hands-on experience with Gemini CLI while developing a decision framework that serves you throughout your AI-augmented development career.
+Recently, Google released [Gemini CLI Extensions](https://blog.google/technology/developers/gemini-cli-extensions/) which is conceptually similar to Claude Code Agent Skills. You can now also create a vertical agent skill library for Gemini CLI for your domain, startup, and company giving you a competitive advantage.
 
 By the end of this chapter, you'll have two powerful AI development tools at your command, each suited to different workflows and challenges.
 

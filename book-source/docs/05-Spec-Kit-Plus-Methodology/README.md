@@ -27,7 +27,7 @@ Three forces have made Specification-Driven Development (SDD) essential right no
 
 **Second, specifications unlock parallelization.** When you work alone, order matters less. But when you coordinate with multiple AI agents (or human teammates), explicit specifications become the coordination layer. With clear specs, three agents can work on authentication, payment processing, and notifications simultaneously without conflicts. Without specs, you're debugging integration issues for weeks.
 
-**Third, the tools finally exist.** For decades, developers knew specifications were valuable but writing them cost more time than they saved. In 2024-2025, tools like Kiro, Tessel, and Spec-Kit Plus emerged that make specification writing 10x faster. Combined with AI agents that implement from specs automatically, the economics reversed: Spec-Driven Development is now faster than code-first development.
+**Third, the tools finally exist.** For decades, developers knew specifications were valuable but writing them cost more time than they saved. In 2025, tools like Kiro, Tessel, and Spec-Kit Plus emerged that make specification writing 10x faster. Combined with AI agents that implement from specs automatically, the economics reversed: Spec-Driven Development is now faster than code-first development.
 
 But here's what matters most: **Specifications aren't documentation—they're AI instructions.** When you write a clear specification, you're not writing for humans to read later. You're writing the prompt that enables AI agents to build exactly what you envision. This is the paradigm shift that changes everything.
 
@@ -39,21 +39,15 @@ This part consists of three interconnected chapters that transform you from code
 
 ### Chapter 30: Understanding Specification-Driven Development Fundamentals
 
-You'll discover why specifications matter through experience, not lectures. Starting with a vague requirement that fails, you'll diagnose the problem, then work with your AI companion to understand SDD philosophy, tools, and history. You'll learn why SDD emerged NOW (not 10 years ago), explore the tools ecosystem (Kiro, Spec-Kit Plus, Tessel), and confront the spec-as-source vision realistically.
-
-**Key insights**: The hidden cost of vague specifications, why SDD is AI-native development, how Amazon and Stripe use specifications to scale, the role of Constitutions as domain specification layers, and what "spec-as-source" means in practice versus theory.
+You'll discover why specifications matter through experience, not lectures. Starting with a vague requirement that fails, you'll diagnose the problem, then work with your AI companion to understand SDD philosophy, tools, and history. You'll learn why SDD is now making shipping 10x better NOW (not 10 years ago), explore the tools ecosystem (Kiro, Spec-Kit Plus, Tessel), and confront the spec-as-source vision realistically.
 
 ### Chapter 31: Spec-Kit Plus Hands-On
 
-Here you'll practice specification-first development with your AI companion. You'll build a Python calculator project starting from specification (not code), learning the /sp.specify → /sp.plan → /sp.tasks → code workflow. Then you'll write a real-world grading system specification that becomes the foundation for Chapter 32's capstone.
-
-**Key insights**: How to coach clarity from vague ideas, writing SMART acceptance criteria, recognizing quality through cascade effects (good specs → good plans → good tasks → good code), validating implementations against specifications, and building the muscle memory for spec-first thinking.
+Here you'll practice specification-first development with your AI companion. You'll build a Python calculator project starting from specification (not code), learning the SpecifyPlus optionated workflow. Then you'll write a real-world grading system specification that becomes the foundation for Chapter 32's capstone.
 
 ### Chapter 32: Real-World Spec-Kit Workflows & Capstone
 
 The final chapter scales SDD from solo work to team coordination. You'll simulate professional team development by orchestrating multiple AI agents working in parallel from shared specifications. You'll learn how specifications enable 2-person teams to scale to 500+ people, how agents stay current with evolving APIs, and implement a three-part capstone that demonstrates specification-driven parallelization.
-
-**Key insights**: Feature decomposition strategies, team workflow patterns, the specification-as-contract model for parallelization, how AI agents self-update using specifications, and real-world patterns from companies like Vercel and Anthropic.
 
 ## What You Won't Learn (Yet)
 
@@ -63,18 +57,9 @@ Here's why: Jumping into implementation patterns before mastering specifications
 
 Think of Part 5 as learning architecture before interior design. Without clear specifications, everything built later requires constant rework. With them, subsequent development becomes faster and more reliable.
 
-**Specifically, you won't learn:**
-
-- Database design patterns (Part 6-7)
-- API architecture and integration (Part 8)
-- Deployment automation (Parts 10-11)
-- Production operations and monitoring (Part 12-13)
-
-**What you will get** is the foundation: How to think specification-first, how to translate ideas into explicit requirements, how to use specifications to coordinate AI agents, and how to scale from solo projects to team systems. These skills make everything in Parts 6-13 dramatically more effective.
-
 ## How to Read This Part
 
-**Work with your AI companion.** Part 5 is explicitly designed for you + AI working together. You won't just read about specifications—you'll write them in dialogue with Claude Code, Gemini CLI, or ChatGPT. The learning happens in the collaboration, not in passive reading.
+**Work with your AI companion.** Part 5 is explicitly designed for you + AI working together. You won't just read about specifications—you'll write them in dialogue with Claude Code, Gemini CLI, or your AI Companion. The learning happens in the collaboration, not in passive reading.
 
 **Do the exercises.** Each chapter includes hands-on projects: diagnosing vague specs, building from specifications, writing your own specs. These aren't optional. The time you spend practicing with your AI companion is where understanding develops.
 
@@ -96,30 +81,3 @@ The developers who master this in 2025 will build systems in 2026-2027 that seem
 
 This part shows you how.
 
-## Prerequisites
-
-**You must have completed Parts 1-4:**
-
-- ✅ **Part 1**: Understanding of AI-native development and the paradigm shift
-- ✅ **Part 2**: Practical experience with Claude Code, Gemini CLI, or similar AI coding tools
-- ✅ **Part 3**: Prompt engineering skills and context management
-- ✅ **Part 4**: Python 3.13+ fundamentals including type hints, functions, and modules
-
-If you haven't completed Parts 1-4, stop here. Part 5 assumes you understand AI-driven development, can work effectively with AI tools, write clear prompts, and build basic Python applications. Without that foundation, specifications feel academic. With it, they're the leverage multiplier you've been missing.
-
-**What you do need:**
-
-- ✅ Access to an AI coding assistant (Claude Code, Gemini CLI, GitHub Copilot, or ChatGPT)
-- ✅ Willingness to write specifications before code (paradigm shift)
-- ✅ Openness to dialogue-driven learning with your AI companion
-- ✅ About 6-8 hours to complete the three chapters and capstone project
-
-## Ready?
-
-The next three chapters will change how you think about software development. You'll stop seeing "coding" as typing and start seeing it as specification + orchestration. You'll understand why solo developers can now build systems that previously required 100-person teams. You'll learn the methodology that separates tactical developers from strategic architects.
-
-By the end of Part 5, you won't just know how to write code—you'll know how to coordinate AI agents to build systems at scale through clear specifications.
-
-Let's begin.
-
----

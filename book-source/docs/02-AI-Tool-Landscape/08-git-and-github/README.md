@@ -20,33 +20,4 @@ By the end of this chapter, you will be able to:
 
 ---
 
-## What You'll Need
-
-- A terminal you can use (macOS Terminal with zsh is perfect)
-- A GitHub account (free) for Lesson 4 and the project
-- Internet access (for pushing to GitHub)
-- Claude Code (Chapter 5) or Gemini CLI (Chapter 6) ready to use
-- 3–5 hours focused time for lessons + exercises
-- Optional: GitHub CLI (`gh`) for certain workflows; if you don't have it, the GitHub web UI works fine
-
----
-
-## Key Principles Throughout This Chapter
-
-1. Understand over memorization
-
-- Know what commands do and why you need them; let AI remember exact flags
-
-2. Safety first
-
-- Create checkpoints before AI changes; prefer revert over risky manual edits
-
-3. AI as an equal partner
-
-- Use natural language to drive Git workflows, but keep human judgment in charge
-
-4. Learning through doing
-
-- Every concept comes with realistic practice and AI-assisted troubleshooting
-
 Remember: Git is your safety net. Once you understand it, you'll never fear AI-assisted development again.

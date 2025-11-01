@@ -130,28 +130,7 @@ That's it. That's what most people naturally say when they want software built. 
 ### Step 2: See What It Generates
 
 Your companion will generate something like this:
-
-```python
-import hashlib
-
-users = {}
-
-def create_account(username, password):
-    """Create a new user account."""
-    if username in users:
-        return False
-    users[username] = hashlib.sha256(password.encode()).hexdigest()
-    return True
-
-def login(username, password):
-    """Log in with username and password."""
-    if username not in users:
-        return False
-    stored_hash = users[username]
-    entered_hash = hashlib.sha256(password.encode()).hexdigest()
-    return stored_hash == entered_hash
-
-# Test it
+```
 create_account("alice", "password123")
 print(login("alice", "password123"))  # True
 print(login("alice", "wrongpassword"))  # False
@@ -165,7 +144,7 @@ But now start asking:
 
 **"Where's the password reset?"**
 
-Your companion: "You didn't ask for password reset."
+Your companion: "updated with a password reset functionality."
 
 **"Where's account recovery if someone forgets their username?"**
 
@@ -173,11 +152,11 @@ Your companion: "You didn't mention that."
 
 **"Where's email verification?"**
 
-Your companion: "Not in your spec."
+Your companion: "I will add now."
 
 **"What if someone tries to log in 100 times with wrong passwords? Is there rate limiting?"**
 
-Your companion: "You didn't specify it."
+Your companion: "I will add now."
 
 **"Are passwords salted? This SHA-256 without salt is vulnerable to rainbow table attacks."**
 
