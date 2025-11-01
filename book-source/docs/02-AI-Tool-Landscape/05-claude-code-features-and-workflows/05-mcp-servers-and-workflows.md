@@ -78,7 +78,7 @@ We’ll add two servers using simple commands.
 claude mcp add --transport stdio playwright npx @playwright/mcp@latest
 
 # 2) Context7 MCP (get up-to-date docs)
-claude mcp add --transport stdio context7 npx -y @upstash/context7-mcp
+claude mcp add --transport stdio context7 npx @upstash/context7-mcp
 ```
 
 ---
@@ -92,7 +92,7 @@ Setup (one-time):
 claude mcp add --transport stdio playwright npx @playwright/mcp@latest
 
 # Add Context7 MCP (live docs)
-claude mcp add --transport stdio context7 npx -y @upstash/context7-mcp
+claude mcp add --transport stdio context7 npx @upstash/context7-mcp
 ```
 
 Goal: Ask Claude to browse Amazon and find a shirt that matches your preferences. No code—just a plain request.
