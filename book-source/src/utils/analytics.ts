@@ -222,19 +222,3 @@ export const trackCustomEvent = (
     debugLog(`📊 Analytics: ${eventName} - ${JSON.stringify(eventData)}`);
   }
 };
-
-/**
- * Initialize analytics with privacy settings
- * Call this once on page load to configure GA4
- */
-export const initializeAnalytics = () => {
-  if (typeof window !== "undefined" && window.gtag) {
-    // Privacy-conscious settings
-    window.gtag("consent", "default", {
-      analytics_storage: "granted",
-      ad_storage: "denied",
-      personalization_storage: "denied",
-    });
-    console.log("📊 Analytics: Initialized with privacy settings");
-  }
-};

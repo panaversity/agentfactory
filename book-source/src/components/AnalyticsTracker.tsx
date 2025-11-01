@@ -177,7 +177,7 @@ export const AnalyticsTracker: React.FC<AnalyticsTrackerProps> = ({
             fontSize: "12px",
             zIndex: 9999,
             fontFamily: "monospace",
-            pointer: "none",
+            pointerEvents: "none",
           }}
         >
           📊 Scroll: {Math.round(lastScrollDepth)}%
