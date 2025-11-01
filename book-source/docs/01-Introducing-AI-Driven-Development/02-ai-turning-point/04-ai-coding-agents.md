@@ -3,7 +3,54 @@ sidebar_position: 4
 title: "The Modern AI Development Stack"
 chapter: 2
 lesson: 4
-duration: "7-9 minutes"
+duration_minutes: 18
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding AI Stack Architecture"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Remember"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify the three layers of modern AI development stack (models, platforms, applications)"
+
+  - name: "Recognizing Stack Evolution"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can explain how 2025 stack differs from 2024 (separation of concerns, interoperability)"
+
+  - name: "Evaluating Tool Independence"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can articulate importance of choosing tools that provide vendor independence"
+
+learning_objectives:
+  - objective: "Identify the three-layer AI development stack: frontier models, platforms, and applications"
+    proficiency_level: "A1"
+    bloom_level: "Remember"
+    assessment_method: "Recognition and description of each layer's purpose and examples"
+
+  - objective: "Understand how modular stack design differs from 2024's siloed approach"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of benefits of separation of concerns and interoperability"
+
+  - objective: "Evaluate tool choices based on vendor independence and long-term flexibility"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Reflection on how stack design affects workflow sustainability"
+
+cognitive_load:
+  new_concepts: 3
+  assessment: "3 new concepts (three-layer stack, interoperability, vendor independence) within A1-A2 limit ✓"
+
+differentiation:
+  extension_for_advanced: "Research emerging platforms and their integration capabilities; predict stack evolution"
+  remedial_for_struggling: "Focus on one layer at a time; use simple architecture diagram before discussing connections"
 ---
 
 # The Modern AI Development Stack

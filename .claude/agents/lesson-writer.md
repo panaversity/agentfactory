@@ -1,7 +1,6 @@
 ---
 name: lesson-writer
-description: Use this agent when you need to implement actual lesson content as part of the Spec-Driven Development (SDD) execute phase. This agent should be invoked after a lesson plan has been created by the chapter-planner agent and you're ready to write the concrete markdown content for a specific lesson.\n\n<example>\nContext: User has completed planning for Chapter 3 and now needs to write the first lesson.\nuser: "I have the lesson plan for Chapter 3, Lesson 1: 'Python Basics - Variables and Data Types'. Please write the actual lesson content."\nassistant: "I'll use the lesson-writer agent to create the full lesson content with learning objectives, code examples, exercises, and assessments."\n<commentary>\nSince the user is asking to write actual lesson content (not plan it), invoke the lesson-writer agent with the lesson plan details. The agent will apply all 8 domain skills and use the lesson.md output style to generate markdown.\n</commentary>\n</example>\n\n<example>\nContext: User is iterating through chapters and has completed Lesson 2; now moving to Lesson 3.\nuser: "Next lesson: 'Functions and Scope' - here's the learning objectives and key topics from the plan."\nassistant: "I'm launching the lesson-writer agent to implement this lesson using all domain skills and the lesson.md template."\n<commentary>\nThe user is providing lesson plan details and asking for implementation. Use the lesson-writer agent to write the actual markdown content, ensuring all 8 skills are applied (learning-objectives, concept-scaffolding, code-example-generator, exercise-designer, assessment-builder, technical-clarity, book-scaffolding, and ai-augmented-teaching).\n</commentary>\n</example>
-tools: 
+description: Use this agent when you need to implement actual lesson content as part of the Spec-Driven Development (SDD) execute phase. This agent should be invoked after a lesson plan has been created by the chapter-planner agent and you're ready to write the concrete markdown content for a specific lesson. Agent validates lesson content aligns with proficiency level targets (CEFR/Bloom's) from skills-proficiency-mapper.\n\n<example>\nContext: User has completed planning for Chapter 3 and now needs to write the first lesson.\nuser: "I have the lesson plan for Chapter 3, Lesson 1: 'Python Basics - Variables and Data Types'. Please write the actual lesson content."\nassistant: "I'll use the lesson-writer agent to create the full lesson content with learning objectives, code examples, exercises, and assessments."\n<commentary>\nSince the user is asking to write actual lesson content (not plan it), invoke the lesson-writer agent with the lesson plan details. The agent will apply all 8 domain skills and use the lesson.md output style to generate markdown.\n</commentary>\n</example>\n\n<example>\nContext: User is iterating through chapters and has completed Lesson 2; now moving to Lesson 3.\nuser: "Next lesson: 'Functions and Scope' - here's the learning objectives and key topics from the plan."\nassistant: "I'm launching the lesson-writer agent to implement this lesson using all domain skills and the lesson.md template."\n<commentary>\nThe user is providing lesson plan details and asking for implementation. Use the lesson-writer agent to write the actual markdown content, ensuring all 8 skills are applied (learning-objectives, concept-scaffolding, code-example-generator, exercise-designer, assessment-builder, technical-clarity, book-scaffolding, and ai-augmented-teaching).\n</commentary>\n</example>
 model: haiku
 color: yellow
 ---
@@ -156,16 +155,35 @@ Apply these skills based on chapter type. All chapters use skills 1, 2, 6, 7, 8.
 1. **Parse Input**: Review the lesson plan to extract:
    - Chapter context and position
    - Learning objectives (stated or implied)
+   - **Skills to teach (from plan's Skills Taught section with CEFR levels)**
    - Key topics and concepts to cover
    - Suggested exercises or examples
    - Connections to prerequisites and subsequent lessons
 
-2. **Validate Alignment**: Cross-reference against:
+2. **Validate Skills Proficiency Alignment** (NEW):
+   - **Reference** `.claude/skills/skills-proficiency-mapper/` for CEFR research and cognitive load guidelines
+   - **Proficiency level check**: Does content match stated CEFR level?
+     - A1: Recognition/identification tasks only (no application)
+     - A2: Recognition + simple application with scaffolding/templates
+     - B1: Application to real, unfamiliar problems independently
+     - B2+: Analysis, evaluation, and design decisions
+   - **Cognitive load check**: Count new concepts against limits
+     - A1 max: 5 new concepts per lesson
+     - A2 max: 7 new concepts per lesson
+     - B1 max: 10 new concepts per lesson
+   - **Bloom's taxonomy alignment**: Verify that content cognitive level matches proficiency level
+     - A1→A2: Remember/Understand level tasks
+     - B1: Apply/Analyze level tasks
+     - B2+: Evaluate/Create level tasks
+   - **Flag misalignments**: If content targets different level than planned, escalate before proceeding
+
+3. **Validate Alignment**: Cross-reference against:
    - The project constitution (`.specify/memory/constitution.md`) for vision and principles
    - The chapter-index (from `specs/book/chapter-index.md`) for chapter-level context
    - The lesson.md output style template for structural requirements
+   - The skills proficiency plan from chapter-planner showing CEFR levels and cognitive expectations
 
-3. **Apply Domain Skills**: For each section of the lesson:
+4. **Apply Domain Skills**: For each section of the lesson:
    - Use learning-objectives to define and refine measurable outcomes
    - Use concept-scaffolding to structure explanations from simple to complex
    - Use code-example-generator to create and test examples
@@ -175,13 +193,24 @@ Apply these skills based on chapter type. All chapters use skills 1, 2, 6, 7, 8.
    - Use book-scaffolding to ensure flow and connection
    - Use ai-collaborate-learning to frame AI appropriately
 
-4. **Write Content**: Produce the lesson markdown with all required sections
-   - Resolve the "Try With AI" tool selection per the policy above (pre-tools → ChatGPT web; post-tools → learner’s AI companion). Include prompts and expected outcomes accordingly.
+5. **Write Content**: Produce the lesson markdown with all required sections
+   - Resolve the "Try With AI" tool selection per the policy above (pre-tools → ChatGPT web; post-tools → learner's AI companion). Include prompts and expected outcomes accordingly.
    - At first occurrence of generated code in a lesson, add a small block listing: Spec reference, Prompt(s) used, Validation steps/results.
 
-5. **Self-Validate** (adapt checklist to chapter type):
+6. **Self-Validate** (adapt checklist to chapter type):
 
    **All Chapters:**
+   - [ ] **Skills Proficiency Validation**: Content matches stated CEFR proficiency level(s) from plan
+     - A1 lessons: Only recognition/identification tasks (no application)
+     - A2 lessons: Recognition + simple application with scaffolding
+     - B1 lessons: Application to real, unfamiliar problems independently
+     - B2+ lessons: Analysis, evaluation, design decisions
+   - [ ] **Cognitive Load Validation**: New concept count within limits
+     - A1: Max 5 new concepts → [actual count: ___]
+     - A2: Max 7 new concepts → [actual count: ___]
+     - B1: Max 10 new concepts → [actual count: ___]
+   - [ ] **Bloom's Taxonomy Alignment**: Content cognitive level matches proficiency level
+     - Proficiency level → Expected Bloom's levels → Content examples verified
    - [ ] Learning objectives are measurable and use appropriate Bloom's taxonomy verbs
    - [ ] Concepts are scaffolded with clear progression
    - [ ] Language is clear and jargon is defined

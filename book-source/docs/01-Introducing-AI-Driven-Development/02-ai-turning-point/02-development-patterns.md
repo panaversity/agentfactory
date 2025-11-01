@@ -1,6 +1,56 @@
 ---
 sidebar_position: 2
 title: "Development Patterns — Vibe Coding vs. Spec-Driven Development"
+chapter: 2
+lesson: 2
+duration_minutes: 25
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Distinguishing Development Patterns"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify differences between vibe coding and spec-driven development approaches"
+
+  - name: "Understanding Vibe Coding Tradeoffs"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can explain when vibe coding works well and where it breaks down"
+
+  - name: "Recognizing Specification-First Value"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can articulate why specifications matter for AI-era development"
+
+learning_objectives:
+  - objective: "Identify two fundamental development patterns: vibe coding (intuition-led) and spec-driven (specification-led)"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Comparison of characteristics and contexts for each approach"
+
+  - objective: "Understand tradeoffs of vibe coding: when it excels (learning, exploration, solo work) and where it fails (scaling, teams, AI)"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of specific scenarios where vibe coding breaks down"
+
+  - objective: "Evaluate why specification-first development is essential with AI tools"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Reflection on how AI needs clarity and specifications to be effective"
+
+cognitive_load:
+  new_concepts: 4
+  assessment: "4 new concepts (vibe coding, spec-driven, pattern tradeoffs, AI compatibility) within A1-A2 limit ✓"
+
+differentiation:
+  extension_for_advanced: "Research code quality metrics comparing vibe vs. spec-driven; analyze refactoring costs"
+  remedial_for_struggling: "Use one simple example (personal project vs. team project); build understanding incrementally"
 ---
 
 # Development Patterns — Vibe Coding vs. Spec-Driven Development

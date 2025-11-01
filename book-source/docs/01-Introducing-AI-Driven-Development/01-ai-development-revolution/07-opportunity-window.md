@@ -1,5 +1,55 @@
 ---
 title: "The Opportunity Window"
+chapter: 1
+lesson: 7
+duration_minutes: 22
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding Broken Entry Barriers"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can explain how AI tools are removing traditional gatekeepers (syntax memorization, debugging, environment setup)"
+
+  - name: "Recognizing Opportunity Timing"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify why this specific moment in history is optimal for learning development (broken barriers + transition period before agents mature)"
+
+  - name: "Evaluating Personal Learning Strategy"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can articulate why focusing on concepts and judgment (not syntax) creates a sustainable learning path in AI era"
+
+learning_objectives:
+  - objective: "Understand how AI tools remove traditional barriers to learning software development"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of how syntax memorization, debugging, environment setup, and framework complexity are being handled by AI"
+
+  - objective: "Recognize why this is the optimal time to learn development"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Identification of factors making current moment opportune (broken barriers + transition period + high demand)"
+
+  - objective: "Evaluate which learning strategy maximizes long-term career value in AI era"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Reflection on focus areas that remain valuable (concepts, judgment, architecture) vs. areas becoming commoditized (syntax, implementation details)"
+
+cognitive_load:
+  new_concepts: 4
+  assessment: "4 new concepts (barrier removal, opportunity timing, learning strategy, future resilience) within A1-A2 limit of 5-7 ✓"
+
+differentiation:
+  extension_for_advanced: "Research how other professions adapted when technology commoditized their routine work (accountants with spreadsheets, architects with CAD)"
+  remedial_for_struggling: "Focus on one barrier (syntax) and how AI removes it; use concrete examples before abstract strategies"
 ---
 
 # The Opportunity Window

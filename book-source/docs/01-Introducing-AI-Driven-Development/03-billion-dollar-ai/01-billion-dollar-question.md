@@ -3,6 +3,56 @@ sidebar_position: 1
 title: "The Billion-Dollar Question"
 description: "The billion-dollar question: How will you get a piece of the AI opportunity?"
 reading_time: "2 minutes"
+chapter: 3
+lesson: 1
+duration_minutes: 12
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Recognizing AI Opportunity Window"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can identify why AI era creates new billion-dollar business opportunities"
+
+  - name: "Understanding Scalability Transformation"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can explain how solo developers can now achieve scale previously requiring large teams"
+
+  - name: "Evaluating Personal Opportunity"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can articulate how their skills apply to AI-era business opportunities"
+
+learning_objectives:
+  - objective: "Recognize that AI fundamentally changes the business playbook for building billion-dollar companies"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of how solo developer achieved $500M ARR in 2 months"
+
+  - objective: "Understand how agent orchestration enables unprecedented scalability"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Description of how AI agents enable solo developers to coordinate at enterprise scale"
+
+  - objective: "Evaluate personal positioning to participate in AI economy"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Reflection on skills, ideas, and strategies for AI-era entrepreneurship"
+
+cognitive_load:
+  new_concepts: 3
+  assessment: "3 new concepts (AI opportunity, solo scaling, billion-dollar playbook) within A1-A2 limit ✓"
+
+differentiation:
+  extension_for_advanced: "Research current unicorn companies and AI-enabled revenue models; analyze scaling strategies"
+  remedial_for_struggling: "Focus on single $500M example; explain incremental capabilities before discussing scale"
 ---
 
 # The Billion-Dollar Question

@@ -1,5 +1,55 @@
 ---
 title: "Why Traditional CS Education Falls Short"
+chapter: 1
+lesson: 8
+duration_minutes: 20
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding Curriculum Lag"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can explain why university curricula lag 2-4 years behind technology evolution (3-6 month AI cycle)"
+
+  - name: "Recognizing CS Education Gaps"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Remember"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can identify specific skills missing from traditional CS programs (AI collaboration, specification-first development, agent coordination)"
+
+  - name: "Evaluating Learning Pathway"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can articulate why combining traditional CS knowledge with AI-native practices creates strongest foundation"
+
+learning_objectives:
+  - objective: "Understand why universities struggle to keep curricula current with fast-moving AI technology"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of curriculum revision timelines (2-4 years) vs. AI evolution (3-6 months)"
+
+  - objective: "Recognize specific skills gaps between traditional CS education and AI-era development"
+    proficiency_level: "A1"
+    bloom_level: "Remember"
+    assessment_method: "Identification of missing topics (AI collaboration, specification-first development, agentic workflows)"
+
+  - objective: "Evaluate how to combine traditional CS foundation with AI-native learning"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Reflection on personal learning strategy (value of algorithms + CS theory PLUS AI-native practices)"
+
+cognitive_load:
+  new_concepts: 3
+  assessment: "3 new concepts (curriculum lag, education gaps, hybrid learning strategy) within A1-A2 limit of 5-7 ✓"
+
+differentiation:
+  extension_for_advanced: "Research how other fields (medicine, law) maintain relevance in fast-changing domains; propose solutions for CS education"
+  remedial_for_struggling: "Focus on one gap (mobile development example); use timeline visualization before discussing AI gaps"
 ---
 
 # Why Traditional CS Education Falls Short

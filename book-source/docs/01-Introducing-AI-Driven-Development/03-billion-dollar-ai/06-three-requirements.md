@@ -3,6 +3,56 @@ sidebar_position: 6
 title: "Three Requirements for Vertical Success"
 description: "All three elements are necessary. Missing any one, and you fail."
 reading_time: "2 minutes"
+chapter: 3
+lesson: 6
+duration_minutes: 12
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Recognizing Critical Success Factors"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify three non-negotiable requirements for vertical market success"
+
+  - name: "Understanding Interdependencies"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can explain why missing any one requirement dooms the entire venture"
+
+  - name: "Evaluating Personal Readiness"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can assess whether they have (or can develop) all three capabilities"
+
+learning_objectives:
+  - objective: "Identify the three requirements: fine-tuned models, deep integrations, complete agentic solutions"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Recognition and description of each requirement"
+
+  - objective: "Understand why all three are interdependent and why missing any one causes failure"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Analysis of failure case (OpenAI Study Mode) showing missing requirements"
+
+  - objective: "Evaluate the feasibility of building all three elements with available resources"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Assessment of personal capability to develop fine-tuned models, integrations, and solutions"
+
+cognitive_load:
+  new_concepts: 3
+  assessment: "3 new concepts (fine-tuning, integrations, agentic solutions) within A1-A2 limit ✓"
+
+differentiation:
+  extension_for_advanced: "Research model fine-tuning techniques; analyze real integrations in chosen vertical"
+  remedial_for_struggling: "Focus on understanding why 'all-or-nothing' requirement is necessary before diving into technical details"
 ---
 
 # Three Requirements for Vertical Success: All Three, or None

@@ -3,7 +3,54 @@ sidebar_position: 3
 title: "The DORA Perspective: AI as Amplifier"
 chapter: 2
 lesson: 3
-duration: "8-10 minutes"
+duration_minutes: 18
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding AI as Amplifier"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can explain why AI magnifies existing practices (good or bad)"
+
+  - name: "Recognizing DORA Capabilities"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Remember"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify the seven DORA capabilities that determine AI adoption success"
+
+  - name: "Evaluating Organizational Readiness"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can assess whether AI will help or harm based on existing development practices"
+
+learning_objectives:
+  - objective: "Understand that AI amplifies existing processes—strong practices become better, weak practices become worse"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of why same tool produces opposite outcomes in different organizations"
+
+  - objective: "Identify the seven DORA capabilities that correlate with AI adoption success"
+    proficiency_level: "A1"
+    bloom_level: "Remember"
+    assessment_method: "Recognition and listing of capabilities from DORA 2025 research"
+
+  - objective: "Evaluate organizational readiness for AI adoption based on existing development practices"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Reflection on whether current practices support or hinder AI-assisted development"
+
+cognitive_load:
+  new_concepts: 3
+  assessment: "3 new concepts (amplifier concept, DORA capabilities, organizational readiness) within A1-A2 limit ✓"
+
+differentiation:
+  extension_for_advanced: "Research DORA 2025 full report; analyze correlation between capabilities and productivity gains"
+  remedial_for_struggling: "Focus on amplifier concept with simple examples; explain one DORA capability deeply"
 ---
 
 # The DORA Perspective — AI as Amplifier

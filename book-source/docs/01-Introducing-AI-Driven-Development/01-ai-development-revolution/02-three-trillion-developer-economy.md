@@ -1,5 +1,55 @@
 ---
 title: "The $3 Trillion Developer Economy"
+chapter: 1
+lesson: 2
+duration_minutes: 18
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding Technology Economics"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can explain the $3 trillion developer economy calculation and what it represents"
+
+  - name: "Contextualizing Developer Impact"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Remember"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can identify real-world examples showing how developer work creates economic value"
+
+  - name: "Assessing Disruption Scale"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can articulate why restructuring a $3 trillion economy justifies the effort to learn new development paradigms"
+
+learning_objectives:
+  - objective: "Understand the calculation: 30M developers × $100K value = $3 trillion economy"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of developer population and per-developer economic value generation"
+
+  - objective: "Recognize examples of economic value created by software developers"
+    proficiency_level: "A1"
+    bloom_level: "Remember"
+    assessment_method: "Identification of real-world scenarios showing developer impact on revenue, savings, and productivity"
+
+  - objective: "Evaluate why a $3 trillion economy transformation justifies learning AI-native practices"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Reflection on personal positioning relative to this scale of economic transformation"
+
+cognitive_load:
+  new_concepts: 4
+  assessment: "4 new concepts (developer population, per-developer value, aggregate economy, disruption scale) within A1-A2 limit of 5-7 ✓"
+
+differentiation:
+  extension_for_advanced: "Research current developer salaries vs. economic value generated; analyze regional variations"
+  remedial_for_struggling: "Focus on simple GDP comparison; use relatable examples before diving into calculation details"
 ---
 
 # The $3 Trillion Developer Economy

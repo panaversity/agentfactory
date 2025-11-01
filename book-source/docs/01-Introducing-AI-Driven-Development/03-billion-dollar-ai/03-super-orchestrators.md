@@ -3,6 +3,56 @@ sidebar_position: 3
 title: "The Economics of Super Orchestrators"
 description: "How solo entrepreneurs build billion-dollar value: The 90-10 economic model."
 reading_time: "3 minutes"
+chapter: 3
+lesson: 3
+duration_minutes: 18
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding 90-10 Economic Distribution"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify which work is mechanical (90%) versus strategic (10%)"
+
+  - name: "Recognizing Economic Scalability Patterns"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can explain how value-per-employee compounds when mechanical work is delegated"
+
+  - name: "Evaluating Revenue Scale Potential"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can assess realistic revenue milestones for solo-entrepreneur pathway"
+
+learning_objectives:
+  - objective: "Understand the 90-10 rule: 90% mechanical work, 10% strategic judgment"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Identification of mechanical vs. strategic components in a business process"
+
+  - objective: "Recognize historical precedents (Instagram, WhatsApp) showing high value-per-employee economics"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of how small teams generated billion-dollar valuations"
+
+  - objective: "Evaluate realistic revenue progression from solo to $10M annual revenue"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Assessment of feasibility and timeline for revenue milestones"
+
+cognitive_load:
+  new_concepts: 4
+  assessment: "4 new concepts (90-10 split, value per employee, revenue milestones, outsourced infrastructure) within A1-A2 limit ✓"
+
+differentiation:
+  extension_for_advanced: "Research current founder economics; calculate value-per-founder for recent acquisitions"
+  remedial_for_struggling: "Focus on one precedent (Instagram or WhatsApp) before comparing multiple cases"
 ---
 
 # The Economics of Super Orchestrators: Why the 90-10 Rule Changes Everything

@@ -1,5 +1,55 @@
 ---
 title: "Beyond Code: The Changing Role of Developers"
+chapter: 1
+lesson: 5
+duration_minutes: 20
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding Evolving Developer Roles"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can explain how developer roles shift from implementation-focused (typing code) to orchestration and decision-making roles"
+
+  - name: "Recognizing New Developer Responsibilities"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Remember"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can identify new responsibilities in AI-era development (prompting, agent coordination, architectural decisions, judgment calls)"
+
+  - name: "Assessing Personal Role Transition"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can articulate how their specific developer background maps to new AI-era roles and responsibilities"
+
+learning_objectives:
+  - objective: "Understand how developer roles shift from code-writing (typist) to orchestration and decision-making"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of role transformation across career levels (junior, mid, senior)"
+
+  - objective: "Recognize new capabilities and responsibilities required in AI-era development"
+    proficiency_level: "A1"
+    bloom_level: "Remember"
+    assessment_method: "Identification of specific skills like prompting, agent coordination, judgment, and architectural decision-making"
+
+  - objective: "Evaluate personal readiness and pathway for role transition to AI-native development"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Reflection on current skills and which new capabilities align with personal strengths and goals"
+
+cognitive_load:
+  new_concepts: 3
+  assessment: "3 new concepts (typist→orchestrator evolution, new responsibilities, transition pathway) within A1-A2 limit of 5-7 ✓"
+
+differentiation:
+  extension_for_advanced: "Research job postings and skill requirements for AI-era developer roles; analyze salary and demand trends"
+  remedial_for_struggling: "Focus on one career level (e.g., junior developer); use concrete code example before abstract concepts"
 ---
 
 # Beyond Code: The Changing Role of Developers

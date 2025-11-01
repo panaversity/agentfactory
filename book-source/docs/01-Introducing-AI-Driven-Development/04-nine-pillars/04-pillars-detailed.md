@@ -1,6 +1,56 @@
 ---
 sidebar_position: 4
 title: "The Nine Pillars Detailed"
+chapter: 4
+lesson: 4
+duration_minutes: 30
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding Individual Pillar Mechanics"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can explain what makes each pillar revolutionary"
+
+  - name: "Recognizing How Pillars Remove Specific Barriers"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can identify which barrier each pillar addresses"
+
+  - name: "Evaluating Deep-Dive Examples"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can assess how examples demonstrate pillar value"
+
+learning_objectives:
+  - objective: "Understand what makes each of nine pillars revolutionary and why it matters"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of revolutionary aspects of at least three pillars"
+
+  - objective: "Identify concrete tools and practices for each pillar"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Recognition of specific technologies (Claude Code, Markdown specs, MCP, etc.)"
+
+  - objective: "Evaluate how pillars integrate in real workflows"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Connection of pillar mechanics to practical development scenarios"
+
+cognitive_load:
+  new_concepts: 5
+  assessment: "5 new concepts (AI agents, Markdown programming, MCP, AI-first IDEs, dev environments) within A1-A2 limit ✓"
+
+differentiation:
+  extension_for_advanced: "Deep dive into each pillar's technical implementation; research emerging technologies in each area"
+  remedial_for_struggling: "Focus on 2-3 pillars deeply; return to others when foundation is solid"
 ---
 
 # The Nine Pillars Detailed—Deep Dive

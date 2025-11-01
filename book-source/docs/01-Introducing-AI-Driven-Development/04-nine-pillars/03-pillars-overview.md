@@ -1,6 +1,56 @@
 ---
 sidebar_position: 3
 title: "The Nine Pillars—Overview and Integration"
+chapter: 4
+lesson: 3
+duration_minutes: 18
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding Nine Foundational Technologies"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify the nine pillars and the barriers each one removes"
+
+  - name: "Recognizing Technological Interdependencies"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can explain why pillars work better together than individually"
+
+  - name: "Evaluating Pillar Relevance to Goals"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can assess which pillars matter most for their development goals"
+
+learning_objectives:
+  - objective: "Identify the nine pillars of AIDD and what specific barrier each removes"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Recognition of each pillar and its corresponding barrier"
+
+  - objective: "Understand how pillars integrate: each solves a specific problem, together they solve everything"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of interdependencies between pillars"
+
+  - objective: "Recognize that missing pillars create bottlenecks in complete development workflows"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Identification of gaps when pillars are missing"
+
+cognitive_load:
+  new_concepts: 4
+  assessment: "4 new concepts (nine pillars, barrier removal, integration, bottlenecks) within A1-A2 limit ✓"
+
+differentiation:
+  extension_for_advanced: "Map each pillar to specific projects; analyze how different domains prioritize different pillars"
+  remedial_for_struggling: "Focus on understanding barriers first; skip detailed integration until foundation is solid"
 ---
 
 # The Nine Pillars—Overview and Integration

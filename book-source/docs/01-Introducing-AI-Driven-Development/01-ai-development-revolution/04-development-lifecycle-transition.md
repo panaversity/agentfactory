@@ -1,5 +1,55 @@
 ---
 title: "The Development Lifecycle in Transition"
+chapter: 1
+lesson: 4
+duration_minutes: 22
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding Development Lifecycle Phases"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Remember"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify and name the six phases of software development (planning, design, implementation, testing, deployment, operations)"
+
+  - name: "Recognizing AI's Impact Across Lifecycle"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can explain how AI tools are transforming each phase of development, not just code writing"
+
+  - name: "Recognizing Skill Convergence"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can articulate how specialist roles (PM, architect, developer, QA, DevOps, SRE) are converging due to AI tools"
+
+learning_objectives:
+  - objective: "Identify the six phases of the software development lifecycle"
+    proficiency_level: "A1"
+    bloom_level: "Remember"
+    assessment_method: "Recognition of development phases: planning, design, implementation, testing, deployment, operations"
+
+  - objective: "Understand how AI tools are transforming each phase of development"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of specific AI impacts across planning, design, implementation, testing, deployment, and operations"
+
+  - objective: "Evaluate how specialist roles are converging due to AI capabilities"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Reflection on how individual developers can now handle multiple lifecycle phases with AI assistance"
+
+cognitive_load:
+  new_concepts: 3
+  assessment: "3 new concepts (lifecycle phases, AI impact across lifecycle, role convergence) within A1-A2 limit of 5-7 ✓"
+
+differentiation:
+  extension_for_advanced: "Map how specific AI tools address each lifecycle phase; research emerging tools in DevOps/SRE automation"
+  remedial_for_struggling: "Focus on core 3 phases (planning, implementation, operations); use simple phase diagram before discussing convergence"
 ---
 
 # The Development Lifecycle in Transition

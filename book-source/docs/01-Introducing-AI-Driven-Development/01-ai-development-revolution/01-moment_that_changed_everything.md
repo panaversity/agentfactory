@@ -1,5 +1,56 @@
 ---
 title: "A Moment That Changed Everything"
+chapter: 1
+lesson: 1
+duration_minutes: 15
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
+skills:
+  - name: "Recognizing AI's Impact on Development"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Remember"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify real-world examples of AI-assisted development and recognize how it transforms development workflows"
+
+  - name: "Understanding Shifting Developer Roles"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can explain how developer roles are evolving from code-writing to orchestration and decision-making"
+
+  - name: "Evaluating Career Relevance in AI Era"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can articulate why this is the best time to learn development despite (or because of) AI tools"
+
+learning_objectives:
+  - objective: "Recognize real-world examples of AI-assisted software development"
+    proficiency_level: "A1"
+    bloom_level: "Remember"
+    assessment_method: "Identification of development scenarios that demonstrate AI partnership"
+
+  - objective: "Understand how developer roles are evolving from typist to orchestrator"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of shifting responsibilities in AI-native development"
+
+  - objective: "Evaluate why AI era creates opportunity rather than threat for developers"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Personal reflection on career positioning in AI-native landscape"
+
+cognitive_load:
+  new_concepts: 3
+  assessment: "3 new concepts (AI-assisted development, developer role evolution, AI opportunity) within A1 limit of 5 ✓"
+
+differentiation:
+  extension_for_advanced: "Research current job market trends for AI-native developer roles; analyze salary and opportunity data"
+  remedial_for_struggling: "Focus on Sarah Chen example as primary case study; use relatable scenario before abstract concepts"
 ---
 
 # A Moment That Changed Everything

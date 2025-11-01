@@ -1,5 +1,55 @@
 ---
 title: "The Autonomous Agent Era"
+chapter: 1
+lesson: 6
+duration_minutes: 18
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding AI Tool Evolution"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Remember"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can trace the evolution of AI tools: autocomplete → function generation → feature implementation → autonomous agents"
+
+  - name: "Recognizing Agent Capabilities"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can explain how autonomous agents differ from previous AI tools and what they can do (multi-step tasks, reasoning, iteration)"
+
+  - name: "Evaluating Future Development Paradigms"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can articulate how agent-era development will differ from current approaches and why learning agent coordination is crucial"
+
+learning_objectives:
+  - objective: "Identify the four generations of AI coding tools and their increasing capabilities"
+    proficiency_level: "A1"
+    bloom_level: "Remember"
+    assessment_method: "Recognition and description of autocomplete, function generation, feature implementation, and autonomous agents"
+
+  - objective: "Understand how autonomous agents shift from assistance to co-execution"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of how agent paradigm differs from developer-led or spec-driven approaches"
+
+  - objective: "Evaluate personal preparation for agent-era development"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Reflection on what new skills and mindsets are needed as agents become more autonomous"
+
+cognitive_load:
+  new_concepts: 4
+  assessment: "4 new concepts (tool evolution timeline, agent definition, autonomous capabilities, new development paradigm) within A1-A2 limit of 5-7 ✓"
+
+differentiation:
+  extension_for_advanced: "Research current agent frameworks (Claude, Anthropic's Building with Claude); predict 5-year agent capability trajectory"
+  remedial_for_struggling: "Focus on simple comparison (autocomplete vs. agents); use timeline visualization before detailed capability discussion"
 ---
 
 # The Autonomous Agent Era

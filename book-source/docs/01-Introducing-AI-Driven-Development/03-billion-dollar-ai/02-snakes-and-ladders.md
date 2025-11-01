@@ -3,6 +3,56 @@ sidebar_position: 2
 title: "The Snakes and Ladders Framework"
 description: "Understand competitive layers in AI markets and why climbing ladders beats competing head-on."
 reading_time: "3 minutes"
+chapter: 3
+lesson: 2
+duration_minutes: 18
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Recognizing Competitive Layer Structures"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify the four competitive layers and explain why competing at consumer layer fails"
+
+  - name: "Understanding Market Positioning Strategy"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can explain why vertical market dominance offers better economics than head-on competition"
+
+  - name: "Evaluating Layer Selection for Opportunity"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can assess which competitive layer suits their skills and market understanding"
+
+learning_objectives:
+  - objective: "Understand the four competitive layers in AI markets (consumer backbone, developer tools, vertical agents, orchestration)"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of each layer and example companies"
+
+  - objective: "Recognize why competing at consumer/Layer 1 is economically unsustainable for individuals"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of why consumer AI is a 'snake' and not viable for solo entrepreneurs"
+
+  - objective: "Evaluate market positioning strategy using the Snakes and Ladders framework"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Selection of appropriate competitive layer based on personal context"
+
+cognitive_load:
+  new_concepts: 4
+  assessment: "4 new concepts (four layers, competitive dynamics, positioning strategy, incumbents) within A1-A2 limit ✓"
+
+differentiation:
+  extension_for_advanced: "Research current unicorn startups and map them to layers; analyze why they chose specific layers"
+  remedial_for_struggling: "Focus on one layer at a time; use simple examples (restaurants, retail) before applying to AI"
 ---
 
 # The Snakes and Ladders Framework: Why Vertical Markets Beat Head-On Competition

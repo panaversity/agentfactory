@@ -3,6 +3,56 @@ sidebar_position: 5
 title: "The Piggyback Protocol Pivot Strategy"
 description: "Your strategic playbook: Enter vertical markets with reduced risk and accelerated learning."
 reading_time: "3 minutes"
+chapter: 3
+lesson: 5
+duration_minutes: 18
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding Phased Market Entry Strategy"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify the three phases of PPP strategy (infrastructure, validation, pivot)"
+
+  - name: "Recognizing Defensibility Through Integration"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can explain why deep integrations create sustainable competitive advantages"
+
+  - name: "Evaluating Market Risk and Timing"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can assess whether PPP strategy fits their context and constraints"
+
+learning_objectives:
+  - objective: "Understand the three phases of Piggyback Protocol Pivot (infrastructure, validation, pivot)"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of each phase's goals and timeline"
+
+  - objective: "Recognize why piggybacking reduces customer acquisition costs vs. direct competition"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Comparison of CAC reduction and defensibility factors"
+
+  - objective: "Evaluate realistic timelines and metrics for market dominance"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Assessment of whether 18-36 month timeline is feasible for chosen vertical"
+
+cognitive_load:
+  new_concepts: 4
+  assessment: "4 new concepts (three phases, CAC reduction, integration defensibility, pivot triggers) within A1-A2 limit ✓"
+
+differentiation:
+  extension_for_advanced: "Research companies that executed similar strategies; analyze their phase transitions"
+  remedial_for_struggling: "Focus on one phase deeply; understand CAC reduction before discussing pivot mechanics"
 ---
 
 # The Piggyback Protocol Pivot: Your Strategic Playbook for Entering Vertical Markets

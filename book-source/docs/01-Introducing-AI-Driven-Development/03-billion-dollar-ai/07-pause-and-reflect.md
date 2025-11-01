@@ -3,6 +3,56 @@ sidebar_position: 7
 title: "Pause and Reflect"
 description: "Three reflection prompts to personalize your billion-dollar strategy"
 reading_time: "1 minute"
+chapter: 3
+lesson: 7
+duration_minutes: 10
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Synthesizing Strategic Frameworks"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can integrate all chapter frameworks (Snakes & Ladders, 90-10, PPP, three requirements)"
+
+  - name: "Personalizing Strategy to Context"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can adapt frameworks to their unique skills, market knowledge, and constraints"
+
+  - name: "Evaluating Strategy Company Mindset"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can explain how strategy (not code) is the limiting factor for billion-dollar ventures"
+
+learning_objectives:
+  - objective: "Synthesize all Chapter 3 frameworks into an integrated strategic understanding"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Personal reflection on how frameworks connect and reinforce each other"
+
+  - objective: "Personalize frameworks to individual vertical market and competitive layer"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Reflection on vertical market choice, competitive layer, and PPP applicability"
+
+  - objective: "Adopt 'strategy company' mindset over 'software company' mindset"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Articulation of how mindset shift changes daily work priorities"
+
+cognitive_load:
+  new_concepts: 2
+  assessment: "2 new concepts (synthesis and mindset shift) - primarily consolidation of prior learning ✓"
+
+differentiation:
+  extension_for_advanced: "Map frameworks to specific venture; create detailed 18-month roadmap"
+  remedial_for_struggling: "Focus on one reflection prompt deeply; skip others if needed"
 ---
 
 # Pause and Reflect

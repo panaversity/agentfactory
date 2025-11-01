@@ -3,6 +3,56 @@ sidebar_position: 4
 title: "From Code Reuse to Vertical Intelligence"
 description: "The paradigm shift: Why disposable code and reusable intelligence are the new architecture."
 reading_time: "2.5 minutes"
+chapter: 3
+lesson: 4
+duration_minutes: 15
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding Architectural Paradigm Shift"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify the difference between code reuse (old) and intelligence reuse (new)"
+
+  - name: "Recognizing Reusable Intelligence Components"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can identify five components of reusable intelligence (prompts, skills, MCPs)"
+
+  - name: "Evaluating Intelligence vs. Code Tradeoffs"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can assess when intelligence reuse is superior to code reuse"
+
+learning_objectives:
+  - objective: "Understand the paradigm shift from DRY (code reuse) to intelligence reuse"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of why code is disposable when AI generates it quickly"
+
+  - objective: "Identify the five components of reusable intelligence (system prompts, skills, MCPs)"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Recognition and description of each component's role"
+
+  - objective: "Evaluate defensibility through vertical integrations vs. generic code"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Assessment of which components create competitive moats"
+
+cognitive_load:
+  new_concepts: 4
+  assessment: "4 new concepts (disposable code, intelligence reuse, five components, vertical moats) within A1-A2 limit ✓"
+
+differentiation:
+  extension_for_advanced: "Research MCP standard; analyze how MCPs enable intelligence reuse"
+  remedial_for_struggling: "Focus on system prompts and skills; skip deep technical details about MCPs"
 ---
 
 # From Code Reuse to Vertical Intelligence: The New Architecture of Software

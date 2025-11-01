@@ -1,6 +1,56 @@
 ---
 sidebar_position: 1
 title: "Why This Moment Demands a New Paradigm"
+chapter: 4
+lesson: 1
+duration_minutes: 20
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Recognizing Paradigm Shifts in Development"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify why partial AI adoption creates integration problems"
+
+  - name: "Understanding Multiplicative Effects"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can explain how nine revolutions multiply rather than add"
+
+  - name: "Evaluating Methodology Completeness"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can assess whether adopting AI tools piecemeal is sustainable"
+
+learning_objectives:
+  - objective: "Understand the 'partial adoption problem' and why tool-by-tool AI adoption creates fragmentation"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation using Priya and Marcus example"
+
+  - objective: "Recognize that nine revolutions multiply, not add (10x benefit, not 2x)"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Description of compounding effects when revolutions interact"
+
+  - objective: "Evaluate whether AIDD (complete system) is necessary vs. using individual AI tools"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Assessment of whether partial adoption meets their needs"
+
+cognitive_load:
+  new_concepts: 4
+  assessment: "4 new concepts (paradigm shift, partial adoption problem, multiplicative effects, AIDD system) within A1-A2 limit ✓"
+
+differentiation:
+  extension_for_advanced: "Research case studies of companies making paradigm shifts; analyze adoption patterns"
+  remedial_for_struggling: "Focus on Priya/Marcus comparison; establish basic paradigm distinction before discussing multiplicative effects"
 ---
 
 # Why This Moment Demands a New Paradigm

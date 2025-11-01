@@ -1,6 +1,56 @@
 ---
 sidebar_position: 5
 title: "The M-Shaped Developer—What AIDD Makes Possible"
+chapter: 4
+lesson: 5
+duration_minutes: 20
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding M-Shaped Developer Profile"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can distinguish M-shaped from T-shaped and generalist profiles"
+
+  - name: "Recognizing Pillar Enablement of M-Shaped Development"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can explain how each pillar enables mastery across multiple domains"
+
+  - name: "Evaluating Personal Path to M-Shaped Capability"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can assess which additional domains they could master with AI support"
+
+learning_objectives:
+  - objective: "Understand the M-Shaped developer profile: multiple areas of deep expertise vs. T-shaped generalist"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Distinction between M-shaped, T-shaped, and generalist profiles"
+
+  - objective: "Recognize how the nine pillars remove barriers to mastery across multiple domains"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of how each pillar enables M-shaped capability"
+
+  - objective: "Evaluate whether the M-shaped pathway is appropriate for their goals"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Assessment of which domains align with personal expertise and interests"
+
+cognitive_load:
+  new_concepts: 4
+  assessment: "4 new concepts (M-shaped profile, multi-domain mastery, cognitive barrier removal, capability building) within A1-A2 limit ✓"
+
+differentiation:
+  extension_for_advanced: "Identify three complementary domains for M-shaped development; create learning roadmap"
+  remedial_for_struggling: "Compare one domain pair first (backend/frontend); build understanding before discussing broader profiles"
 ---
 
 # The M-Shaped Developer—What AIDD Makes Possible

@@ -1,5 +1,55 @@
 ---
 title: "Software Disrupting Itself"
+chapter: 1
+lesson: 3
+duration_minutes: 20
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Recognizing Self-Disruption Patterns"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify the difference between external disruption (software disrupting other industries) and internal disruption (AI disrupting software itself)"
+
+  - name: "Understanding Acceleration Timeline"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can explain why AI-driven software disruption is happening 5-10x faster than previous technology transitions (8-20 years vs. 3 years)"
+
+  - name: "Evaluating Urgency of Adaptation"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can articulate why rapid adaptation to AI-native development is necessary for career relevance"
+
+learning_objectives:
+  - objective: "Distinguish external disruption patterns (software disrupting industries) from internal disruption (AI disrupting software development)"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Comparison of disruption timelines and patterns across retail, transportation, media, and software development"
+
+  - objective: "Understand why AI-driven transformation is happening 3-5x faster than previous technology transitions"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of why internal disruption accelerates adoption compared to external disruption"
+
+  - objective: "Evaluate implications of accelerated change for developers at different career stages"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Reflection on how speed of change affects learning strategy and career planning"
+
+cognitive_load:
+  new_concepts: 4
+  assessment: "4 new concepts (external disruption, internal disruption, disruption timeline, acceleration factor) within A1-A2 limit of 5-7 ✓"
+
+differentiation:
+  extension_for_advanced: "Research and compare disruption timelines in other technology domains (cloud computing, mobile, containers); predict future AI timeline"
+  remedial_for_struggling: "Focus on one simple comparison (retail then software); use timeline visualization before abstract concepts"
 ---
 
 # Software Disrupting Itself

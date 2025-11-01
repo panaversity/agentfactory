@@ -1,6 +1,56 @@
 ---
 sidebar_position: 2
 title: "AIDD Defined: A Complete Methodology"
+chapter: 4
+lesson: 2
+duration_minutes: 22
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding AIDD Definition"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify AIDD as specification-first methodology that elevates developers to architects"
+
+  - name: "Recognizing Nine Core Characteristics"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can list and explain the nine defining principles of AIDD"
+
+  - name: "Evaluating Methodology Applicability"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can assess whether AIDD principles apply to their development context"
+
+learning_objectives:
+  - objective: "Understand AIDD as specification-first methodology that positions developers as architects"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of how AIDD differs from traditional write-code-first approach"
+
+  - objective: "Identify the nine core AIDD characteristics (Specification-Driven, AI-Augmented, Quality-Gated, etc.)"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Recognition and description of each characteristic"
+
+  - objective: "Recognize that AIDD emerged from convergence of technological revolutions"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of why AIDD wasn't possible five years ago"
+
+cognitive_load:
+  new_concepts: 4
+  assessment: "4 new concepts (AIDD definition, nine characteristics, enabling technologies, technological convergence) within A1-A2 limit ✓"
+
+differentiation:
+  extension_for_advanced: "Compare AIDD to other methodologies (Agile, DevOps); research how organizations adopt AIDD"
+  remedial_for_struggling: "Focus on core definition; skip nine characteristics initially, build understanding incrementally"
 ---
 
 # AIDD Defined: A Complete Methodology

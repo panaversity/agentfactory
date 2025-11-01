@@ -417,7 +417,47 @@ ALL content creation follows this mandatory workflow:
 
 ---
 
-### Phase 2B Generate tasks for Plan specs/part-X-chapter-Y/tasks.md
+### Phase 2.5: Skills Proficiency Metadata Mapping (NEW)
+
+**After plan is created**, chapter-planner applies skills-proficiency-mapper to add international standards-based proficiency levels:
+
+**Using the skills-proficiency-mapper skill** (`.claude/skills/skills-proficiency-mapper/`):
+
+1. **Identify skills for each lesson** (from chapter spec and plan):
+   - Which specific skills does each lesson teach?
+   - What CEFR proficiency level is appropriate (A1/A2/B1/B2/C1)?
+   - What category? (Technical/Conceptual/Soft)
+   - What cognitive level (Bloom's)? (Remember/Understand/Apply/Analyze/Evaluate/Create)
+
+2. **Validate proficiency progression**:
+   - Does the chapter follow A1→A2→B1 progression across lessons?
+   - Are prerequisites from earlier chapters satisfied?
+   - Does proficiency increase match learning objectives?
+
+3. **Apply cognitive load theory**:
+   - A1: Max 5 new concepts per lesson
+   - A2: Max 7 new concepts per lesson
+   - B1: Max 10 new concepts per lesson
+
+4. **Document in lesson plan**:
+   - Add "Skills Taught" section to each lesson in the plan
+   - Format: [Skill Name] — [CEFR Level] — [Category] — [Measurable at this level]
+   - Example: "Specification Writing — B1 — Technical — Student can write complete spec without template for real-world problem"
+
+**Research foundation**:
+- CEFR: 40+ years of language learning proficiency research, validated across 40+ languages, officially used by 40+ countries
+- Bloom's Taxonomy: 70+ years of cognitive complexity research (1956 original, 2001 revision)
+- DigComp 2.1: Latest (2022) EU digital competence framework
+
+**This enables**:
+- Competency-based assessment (what students CAN DO, not just test scores)
+- Portable credentials (A1/A2/B1 levels recognized internationally)
+- Institutional accreditation alignment (ESCO, DigComp, local standards)
+- Differentiation design (extension for B1+ students, remedial for A1)
+
+---
+
+### Phase 2B: Generate tasks for Plan (`specs/part-X-chapter-Y/tasks.md`)
 
 ### Phase 3: Implementation (lesson-writer subagent)
 
@@ -429,6 +469,13 @@ lesson-writer subagent with plan context
 ```
 
 **lesson-writer responsibilities**:
+- **Validate skills proficiency alignment**: Ensure content matches CEFR proficiency levels from plan
+  - A1 lessons: Only recognition/identification (no application)
+  - A2 lessons: Recognition + simple application with scaffolding
+  - B1 lessons: Application to real, unfamiliar problems independently
+  - B2+ lessons: Analysis, evaluation, design decisions
+- **Apply cognitive load theory**: Count new concepts against limits (A1: max 5, A2: max 7, B1: max 10)
+- **Validate Bloom's taxonomy alignment**: Content cognitive level matches proficiency level
 - Apply ALL 14 domain skills from constitution
 - Follow output styles (.claude/output-styles/chapters.md, lesson.md)
 - Generate content matching specification exactly
@@ -488,12 +535,15 @@ lesson-writer subagent with plan context
 For every chapter creation, verify:
 - [ ] Specification created and approved BEFORE planning
 - [ ] Plan created and approved BEFORE implementation
+- [ ] **Skills metadata added to plan** (CEFR levels, proficiency progression, cognitive load)
+- [ ] **Lesson-writer validates content matches proficiency levels** before finalizing
 - [ ] Implementation matches specification
 - [ ] All code examples tested and working
 - [ ] All subagent outputs written to files
 - [ ] Validation performed and passed
 - [ ] Human final review completed
 - [ ] Complexity tier appropriate for part
+- [ ] **Skills metadata included in lesson YAML frontmatter** (hidden from students, available for institutional integration)
 
 ---
 

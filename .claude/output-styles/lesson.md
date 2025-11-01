@@ -1,5 +1,5 @@
 ---
-description: Generic lesson format for CoLearning Python & Agentic AI (7-part structure with agentic AI and MCP guidance)
+description: Generic lesson format for CoLearning Python & Agentic AI (7-part structure with agentic AI and MCP guidance). Includes hidden skills proficiency metadata (CEFR/Bloom's) in YAML frontmatter for institutional integration.
 ---
 
 # Lesson Output Style: AI-Driven Development
@@ -34,6 +34,107 @@ The book contains different types of content requiring different lesson structur
 **Apply the appropriate structure based on content type. Don't force code examples into conceptual content.**
 
 This is NOT a traditional programming book—technical lessons should teach learners how to collaborate *with* AI assistants, leveraging tools like Claude Code, GitHub Copilot, and other AI pair-programming environments. The book progresses from foundational AI collaboration through advanced topics.
+
+---
+
+## YAML Frontmatter: Skills Proficiency Metadata (Hidden Layer)
+
+Every lesson includes a hidden YAML frontmatter block that documents skills with international standards proficiency levels. **This metadata is not visible to students** but enables institutional integration, competency assessment, and differentiation.
+
+**Standard YAML frontmatter structure** (place at the very beginning of the lesson file):
+
+```yaml
+---
+title: "[Lesson Title]"
+chapter: [number]
+lesson: [number]
+duration_minutes: [estimated time]
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment, accreditation alignment, and differentiation
+skills:
+  - name: "[Skill Name]"
+    proficiency_level: "[A1|A2|B1|B2|C1]"    # CEFR level (40+ years of language learning research)
+    category: "[Technical|Conceptual|Soft]"
+    bloom_level: "[Remember|Understand|Apply|Analyze|Evaluate|Create]"
+    digcomp_area: "[Information|Communication|Content|Safety|Problem-Solving]"
+    measurable_at_this_level: "[What student demonstrates at this proficiency level]"
+
+# Learning objectives with proficiency levels
+learning_objectives:
+  - objective: "[Learning objective with specific action verb]"
+    proficiency_level: "[A1|A2|B1|B2]"
+    bloom_level: "[Cognitive level]"
+    assessment_method: "[How proficiency is validated]"
+
+# Cognitive load tracking (prevent overload)
+cognitive_load:
+  new_concepts: [number]  # Max 5 for A1, 7 for A2, 10 for B1
+  assessment: "[Analysis of whether cognitive load is appropriate]"
+
+# Optional: Differentiation guidance (if needed)
+differentiation:
+  extension_for_advanced: "[Activities for B1+ students reaching toward B2]"
+  remedial_for_struggling: "[Support for A1 students needing more scaffolding]"
+---
+```
+
+**Example**:
+
+```yaml
+---
+title: "Identifying Vagueness in Requirements"
+chapter: 30
+lesson: 1
+duration_minutes: 150
+
+skills:
+  - name: "Problem Identification"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify 3+ types of vagueness in example specifications and explain consequences"
+
+  - name: "AI Communication Clarity"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can explain why AI agents need precise specifications, contrasting with human inference"
+
+learning_objectives:
+  - objective: "Identify vague and ambiguous language in software specifications"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Identification task with short-answer explanation (3+ types of vagueness in example specs)"
+
+  - objective: "Explain why vague specifications fail when working with AI agents"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Short-answer explanation (why AI literal-mindedness matters)"
+
+cognitive_load:
+  new_concepts: 4
+  assessment: "4 new concepts (vague requirements, AI literal-mindedness, specification definition, core components) within A2 limit of 7 ✓"
+
+differentiation:
+  extension_for_advanced: "Analyze real open-source spec failures; redesign vague specs from production projects"
+  remedial_for_struggling: "Guided checklist of vagueness patterns; simplified examples with 2 components instead of 5"
+---
+```
+
+**Why this matters**:
+- **CEFR proficiency levels**: International standard used by 40+ countries; enables portable credentials
+- **Bloom's taxonomy**: Ensures cognitive level aligns with proficiency level
+- **DigComp areas**: Maps to EU digital competence framework for accreditation
+- **Cognitive load tracking**: Prevents overload by respecting learning science limits
+- **Differentiation guidance**: Enables extension for advanced, remedial for struggling students
+- **Hidden by design**: Metadata is in YAML frontmatter, not visible to students, but available for institutional systems
+
+**Reference**: `.claude/skills/skills-proficiency-mapper/` for CEFR research, Bloom's alignment, DigComp 2.1, and assessment rubrics.
+
+---
 
 Your content should meet Amazon book publication standards while remaining accessible at a grade 7 baseline reading level (adjusted upward for Parts 6-7), with a modern AI-native pedagogy.
 

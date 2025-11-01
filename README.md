@@ -26,7 +26,7 @@
 ## CoLearning Programming & Agentic AI with Python and TypeScript
 
 <p align="center">
-  <img src="book_cover.png" alt="CoLearning Programming & Agentic AI - The AI-Driven Way" width="600" />
+  <img src="cover.png" alt="AI Native CoLearning Programming & Agentic AI - The AI-Driven Way" width="600" />
 </p>
 
 ## 🎯 Vision

@@ -1,6 +1,56 @@
 ---
 sidebar_position: 1
 title: "The Inflection Point — Why 2025 Is Different"
+chapter: 2
+lesson: 1
+duration_minutes: 20
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Recognizing Capability Breakthroughs"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Remember"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify evidence of AI capability improvements (competitive programming, benchmarks)"
+
+  - name: "Understanding Adoption Inflection"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can explain why 2025 represents a true inflection point (capability + adoption + enterprise)"
+
+  - name: "Evaluating Evidence Quality"
+    proficiency_level: "A2"
+    category: "Soft"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can distinguish between hype and evidence-based claims about AI capability"
+
+learning_objectives:
+  - objective: "Identify concrete evidence of AI capability breakthroughs (ICPC World Finals, benchmarks, CEO statements)"
+    proficiency_level: "A1"
+    bloom_level: "Remember"
+    assessment_method: "Recognition of breakthrough examples and their significance"
+
+  - objective: "Understand three converging trends that make 2025 genuinely different"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of capability breakthroughs, adoption rates, and enterprise productization"
+
+  - objective: "Evaluate whether evidence supports claims of AI inflection point"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Critical reflection on strength and reliability of evidence presented"
+
+cognitive_load:
+  new_concepts: 3
+  assessment: "3 new concepts (capability breakthrough, adoption inflection, enterprise shift) within A1-A2 limit ✓"
+
+differentiation:
+  extension_for_advanced: "Research GDPval Benchmark details; analyze capability improvement trajectory"
+  remedial_for_struggling: "Focus on one breakthrough example (ICPC); explain incrementally"
 ---
 
 # The Inflection Point — Why 2025 Is Different
