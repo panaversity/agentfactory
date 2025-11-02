@@ -57,16 +57,6 @@ Here's why: Jumping into implementation patterns before mastering specifications
 
 Think of Part 5 as learning architecture before interior design. Without clear specifications, everything built later requires constant rework. With them, subsequent development becomes faster and more reliable.
 
-## How to Read This Part
-
-**Work with your AI companion.** Part 5 is explicitly designed for you + AI working together. You won't just read about specifications—you'll write them in dialogue with Claude Code, Gemini CLI, or your AI Companion. The learning happens in the collaboration, not in passive reading.
-
-**Do the exercises.** Each chapter includes hands-on projects: diagnosing vague specs, building from specifications, writing your own specs. These aren't optional. The time you spend practicing with your AI companion is where understanding develops.
-
-**Embrace the paradigm shift.** If you've coded before, you might resist: "Specifications slow me down. I'm faster just coding." This is true... until your codebase reaches 5,000 lines. Then specifications make you 10x faster. Trust the process. The compound benefits appear at scale.
-
-**Connect to Parts 1-4.** Notice how specifications connect to AI-native development (Part 1), enable better AI tool usage (Part 2), benefit from strong prompting (Part 3), and leverage Python's type system (Part 4). This isn't isolated—it's the integration layer for everything you've learned.
-
 ## A Note on Mindset
 
 The hardest part of Specification-Driven Development isn't learning the tools—it's overcoming the urge to code first.

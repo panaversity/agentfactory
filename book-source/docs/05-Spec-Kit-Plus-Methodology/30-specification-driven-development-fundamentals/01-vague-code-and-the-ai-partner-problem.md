@@ -21,6 +21,11 @@ learning_objectives:
 
 # Vague Code and the AI Partner Problem
 
+As coding agents have grown more powerful, a pattern has emerged: you describe your goal, get a block of code back, and often it looks right, but doesn't quite work. This "vibe-coding" approach can be great for quick prototypes, but less reliable when building serious, mission-critical applications or working with existing codebases.
+
+
+## Vibe Coding: Again what is the problem!
+
 You're about to discover why your AI coding companion sometimes builds something that looks right but doesn't quite work.
 
 Here's the pattern you've probably experienced:
@@ -312,36 +317,3 @@ This is the foundation of professional software development. And in the age of A
 **It's the way work gets done.**
 
 ---
-
-## What You're About to Learn
-
-Chapter 30 teaches you:
-
-- **Lesson 1 (now)**: Why vague code fails (you just experienced it)
-- **Lesson 2**: What Specification-Driven Development is (the solution)
-- **Lesson 3**: How to write good specifications (practical structure)
-- **Lesson 4**: Memory Banks and Constitution (scaling specifications)
-- **Lesson 5**: Why SDD emerged (historical context)
-- **Lesson 6**: Which tools to use (Kiro vs Spec-Kit vs Tessel)
-- **Lesson 7**: The future of SDD (spec-as-source)
-- **Lesson 8**: Your personal commitment (how you'll use this)
-
-Then Chapters 31-32 teach you to *apply* this knowledge with real projects.
-
----
-
-## Reflection Exercise
-
-Before moving to Lesson 2, reflect on this:
-
-**In your own development work, where have you experienced the "vague spec → mediocre code" cycle?**
-
-- A project where requirements seemed obvious but your implementation partner misunderstood?
-- A feature that took 3x longer than expected because of miscommunication?
-- Code that technically worked but missed the intent?
-
-Write down one specific example. You'll return to this in Lesson 8 when you write your personal SDD commitment.
-
----
-
-**Next Lesson**: What is Specification-Driven Development? Learn the solution to the problem you just experienced.

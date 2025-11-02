@@ -1,8 +1,8 @@
 ---
-title: "Build Your First Spec Together With Your Companion"
+title: "Build Your First Spec: Basic Calculator"
 chapter: 30
 lesson: 3
-duration: "2.5-3 hours"
+duration: "3-3.5 hours"
 skills:
   - name: "Specification Writing"
     proficiency: "B1"
@@ -10,346 +10,464 @@ skills:
   - name: "Requirements Clarity"
     proficiency: "B1"
     category: "Soft"
-  - name: "Acceptance Criteria Definition"
+  - name: "User Story Writing"
     proficiency: "A2"
+    category: "Soft"
+  - name: "Acceptance Criteria Definition"
+    proficiency: "B1"
     category: "Technical"
 learning_objectives:
-  - "Write a complete specification with Intent, Inputs/Outputs, and Functional Requirements (B1)"
-  - "Define acceptance criteria that an AI agent can execute (B1)"
-  - "Collaborate with an AI companion to iteratively refine a specification (B1)"
+  - "Write user stories that express user intent without prescribing implementation (A2)"
+  - "Define clear acceptance criteria that AI agents can execute (B1)"
+  - "Specify edge cases and error handling for all four arithmetic operations (B1)"
+  - "Experience the complete spec-first workflow across a real feature (B1)"
 ---
 
-# Build Your First Spec Together With Your Companion
+# Build Your First Spec: Basic Calculator
 
-You now understand what SDD is. But understanding is not the same as doing.
+You now understand what SDD is. But understanding is not the same as doing. Before we explore opinionated frameworks, **let's get to the core of specification-first thinking**.
 
-**This lesson**: You and your companion will build an actual specification together. You'll discover what makes specs work by constructing one.
+**This lesson**: You'll write a complete specification for a **basic calculator with all four operations** (add, subtract, multiply, divide)—no framework, no templates, just pure spec-first thinking building a real feature.
 
 ---
 
-## The Project: Password Reset System
+## The Project: Basic Calculator Module
 
-You're going to spec out a **password reset system** for a real application.
+You're going to specify a **calculator module** with four core operations. This is perfect for learning because:
 
-This is complex enough to show structure, but simple enough to complete in one lesson.
+- ✅ **Everyone knows what calculators do** (no domain expertise)
+- ✅ **Simple enough to complete in one lesson** (4 operations)
+- ✅ **Complex enough to reveal real challenges**:
+  - Type handling (integers vs floats)
+  - Edge cases (division by zero, negatives, zero)
+  - Error handling (invalid inputs)
+  - Precision issues (0.1 + 0.2)
+- ✅ **Progressive complexity**: Addition is simple, division forces you to handle errors
 
-### Step 1: Start Vague (Like Real Work)
+**The insight**: A complete feature specification is more than one function—it's user stories, acceptance criteria, edge cases, and error handling working together.
+
+## The Spec-First Workflow
+
+Before writing any code, we'll follow this cycle:
+
+```
+1. USER STORIES  → Express what users want to do
+2. ACCEPTANCE    → Define "done" criteria
+3. EDGE CASES    → Think through what can go wrong
+4. GENERATE      → Let AI implement from spec
+5. VALIDATE      → Test if it matches intent
+6. REFINE        → Update spec based on gaps
+```
+
+This is the **co-learning feedback loop** from the preface. You'll experience it hands-on across a complete feature.
+
+---
+
+## Part 1: User Stories (The "Why")
+
+Every specification starts with **user stories**—what do users want to accomplish?
 
 Tell your companion:
 
 ```
-I need to add a password reset feature to my app. Users should be able
-to reset their password if they forget it. Can you help me write a
-complete specification for this?
+I'm building a basic calculator module with four operations:
+addition, subtraction, multiplication, and division.
 
-Let's start by clarifying what needs to be included in a good spec.
-```
+Before writing any code, help me write user stories for this calculator.
+Think about:
+- Who is the user? (another developer using this module)
+- What do they want to do?
+- Why do they need it?
 
-Your companion will likely respond with something like:
-
-> "A good spec includes:
-> - Intent (what problem are we solving?)
-> - Inputs and Outputs (what data flows in and out?)
-> - Functional Requirements (what must it do?)
-> - Non-Functional Requirements (how fast? how secure?)
-> - Test Scenarios (concrete examples)
-> - Principles (design rules)"
-
-### Step 2: Build Each Component Together
-
-Now iterate with your companion. For each component:
-
-#### **Intent**
-
-Ask:
-
-```
-Help me write the Intent section. What problem does a password reset
-system solve? What are the risks we need to prevent?
-```
-
-Your companion might respond:
-
-> "Intent: Allow users who forgot their password to regain access to
-> their account securely. Prevent account takeover through password
-> reset exploitation (e.g., attackers shouldn't be able to reset
-> someone else's password)."
-
-Say: "Good. Let me add one more thing: support email-based reset and
-security questions as backup."
-
-Iterate until you're happy.
-
-#### **Inputs and Outputs**
-
-Ask:
-
-```
-What are the API functions this system needs? What data goes in?
-What comes back out?
-```
-
-Your companion might suggest:
-
-```
-- POST /password-reset/request (email) → { success: bool, message: string }
-- POST /password-reset/confirm (token, new_password) → { success: bool }
-- GET /password-reset/validate (token) → { valid: bool, expires_at: timestamp }
-```
-
-Refine it:
-
-```
-You: "Does the request endpoint need to return the reset token? That seems
-like a security risk."
-
-Companion: "Good catch. Reset tokens should only be sent via email, never
-returned in API response. Let me revise..."
-```
-
-#### **Functional Requirements**
-
-Ask:
-
-```
-What are the rules this system MUST follow? Think about timing, limits,
-security requirements.
-```
-
-Your companion might list:
-
-```
-1. Reset links valid for 60 minutes
-2. Maximum 5 reset requests per email per hour
-3. New password minimum 12 characters
-4. Expired links return an error, not silently fail
-5. All reset attempts logged
-```
-
-Challenge one:
-
-```
-You: "Why 60 minutes? That seems arbitrary."
-
-Companion: "Longer is more convenient (user might be sleeping), shorter
-is more secure (reduces window for attack). Industry standard is 15-60
-minutes. Your choice."
-
-You: "Let's go with 30 minutes to balance both."
-```
-
-#### **Non-Functional Requirements**
-
-Ask:
-
-```
-How secure does this need to be? How fast? What if services fail?
-```
-
-Your companion might respond:
-
-```
-- Security: Passwords hashed with bcrypt (cost 12), never logged
-- Performance: Reset request <500ms, validation <100ms
-- Reliability: System works even if email service is temporarily down
-- Scalability: Support 10,000 concurrent users
-```
-
-Push back:
-
-```
-You: "What if the email service is down for an hour? Should users be
-blocked completely?"
-
-Companion: "Good question. Options: (1) Block them, (2) Queue the email
-for retry, (3) Let them set password without email confirmation. Which
-makes sense for your app?"
-
-You: "Let's queue for retry with exponential backoff."
-```
-
-#### **Test Scenarios**
-
-Ask:
-
-```
-Give me 5 concrete test scenarios. Specific inputs, expected outputs.
+Write user stories in the format:
+"As a [user], I want to [action], so that [benefit]"
 ```
 
 Your companion might provide:
 
-```
-Scenario 1: Happy path
-- User requests reset for email@example.com
-- Email sent within 30 seconds
-- User clicks link
-- User enters new password
-- Password changed, email confirmed
+> **User Story 1: Addition**
+> As a developer, I want to add two numbers together, so that I can calculate sums in my application.
+>
+> **User Story 2: Subtraction**  
+> As a developer, I want to subtract one number from another, so that I can calculate differences.
+>
+> **User Story 3: Multiplication**
+> As a developer, I want to multiply two numbers, so that I can calculate products.
+>
+> **User Story 4: Division**
+> As a developer, I want to divide one number by another, so that I can calculate quotients.
+>
+> **User Story 5: Error Handling**
+> As a developer, I want clear error messages for invalid operations (like division by zero), so that I can handle edge cases gracefully.
 
-Scenario 2: Expired link
-- User requests reset
-- Waits 31+ minutes
-- User tries reset link
-- Error returned: "Link expired"
+**Good start!** User stories capture _intent_ without prescribing _implementation_.
 
-Scenario 3: Rate limiting
-- User requests reset 5 times in 60 minutes
-- 6th request returns error: "Too many attempts"
-- After 60 minutes, reset available again
+## Part 2: Acceptance Criteria (The "What")
 
-Scenario 4: Invalid password
-- User has valid reset token
-- User enters password: "weak"
-- Error returned: "Password must be 12+ characters"
-- Password not changed
-```
+For each user story, we need **acceptance criteria**—specific conditions that must be true for the story to be "done."
 
-Refine:
+Ask your companion:
 
 ```
-You: "What happens if someone uses the same reset link twice? Should the
-second attempt work or fail?"
+For each user story, define acceptance criteria with specific examples.
 
-Companion: "Good question. Security best practice: tokens should be
-single-use. Once a reset is completed, that token becomes invalid."
+Format:
+- GIVEN [initial context]
+- WHEN [action taken]
+- THEN [expected outcome]
+
+Include:
+- Happy path scenarios
+- Edge cases (zero, negatives, large numbers)
+- Type handling (integers, floats, mixed)
+- Error cases (division by zero, invalid types)
+
+Use Python 3.12+ type hints in function signatures.
 ```
 
-#### **Contextual Principles**
+Your companion creates detailed acceptance criteria.
 
-Ask:
+## Part 3: Edge Cases & Design Decisions (The "Gotchas")
 
-```
-What are the design philosophies that should guide implementation?
-```
+Acceptance criteria covered **expected behavior**. Edge cases reveal **boundary conditions** where specs must be most precise.
 
-Your companion might suggest:
+Ask your companion:
 
 ```
-1. Security First: When security conflicts with convenience, choose security
-2. Immutable Audit Trail: All password reset attempts logged
-3. Fail Securely: If something goes wrong, deny access (don't silently bypass)
+Analyze the calculator operations for edge cases and design decisions:
+
+1. Floating point precision (0.1 + 0.2 ≠ 0.3)
+2. Division by zero (error or special value?)
+3. Type preservation rules (when int vs float?)
+4. Zero behavior across operations (identity? absorbing?)
+5. Negative number handling
+6. Very large number limits
+
+For each, specify EXACT behavior and reasoning.
 ```
 
-Add your own:
-
-```
-You: "Add one more: Never let a user discover if an email is registered.
-Return same response whether email exists or not (prevents user enumeration)."
-```
+Your companion identifies critical edge cases.
 
 ---
 
-## Step 3: Review Your Complete Spec
+## Reflection: What Did Edge Cases Teach Us?
 
-Now look at what you've built together:
+Edge cases aren't afterthoughts—they're where **specifications earn their value**:
 
-```
-# Password Reset System Specification
+1. **Floating point precision:** Forced us to document tolerance expectations
+2. **Division by zero:** Made us choose explicit error handling
+3. **Type rules:** Required clear policy on int/float preservation
+4. **Zero behavior:** Revealed operation-specific special cases
+5. **Negative signs:** Made mathematical rules explicit
+6. **Large numbers:** Exposed difference between int and float limits
 
-## Intent
-Allow users who forgot their password to regain access securely.
-Prevent account takeover through password reset exploitation.
+**Key insight:**
 
-## Inputs and Outputs
-- POST /password-reset/request
-  Input: { email: string }
-  Output: { success: bool, message: "Check your email" }
+> "The happy path is obvious. Edge cases are where you prove you've thought deeply about your specification." —SDD Practitioner
 
-- POST /password-reset/confirm
-  Input: { token: string, new_password: string }
-  Output: { success: bool, message: string }
+When writing any spec, ask:
 
-## Functional Requirements
-1. Reset links valid for 30 minutes
-2. Maximum 5 reset requests per email per hour
-3. New password minimum 12 characters
-4. Tokens single-use (can't be reused after reset)
-5. All reset attempts logged (email, timestamp, success/fail)
-6. Email never reveals if account exists
+- ✅ What can go wrong?
+- ✅ What are the mathematical/computational limits?
+- ✅ What assumptions am I making?
+- ✅ How will users expect errors to surface?
 
-## Non-Functional Requirements
-- Password hashing: bcrypt (cost 12+)
-- API response: <500ms
-- Scalability: 10,000 concurrent users
-- Reliability: Queued email retry (exponential backoff)
+## Part 4: The Complete Calculator Specification
 
-## Test Scenarios
-[5 concrete scenarios from above]
-
-## Principles
-1. Security > Convenience
-2. Immutable audit trails
-3. Fail securely, don't bypass
-4. Never enumerate users
-```
-
-### Step 4: Test Your Spec (With Your Companion)
-
-Now ask your companion:
+Now let's compile user stories, acceptance criteria, and edge cases into one complete spec document.
 
 ```
-Based on this spec, can you generate working code for the password
-reset system?
+Now create a calc/spec.md file and document the complete specification there. Also initialize a repo and commit it to github.
+
+**What makes this a good specification?**
+
+1. **User-Centric:** Starts with user stories (why features exist)
+2. **Type-Explicit:** Clear signatures with Python 3.12+ union types
+3. **Edge-Case Complete:** Documents all "gotcha" behaviors
+4. **Testable:** Concrete test scenarios, not prose descriptions
+5. **Scoped:** Explicitly states what's out of scope
+6. **Unambiguous:** No room for interpretation (e.g., "division always returns float")
 ```
 
-Watch what happens. Your companion will either:
-- ✅ Generate correct code (spec was complete)
-- ❌ Ask clarifying questions (spec had gaps)
-- ⚠️ Generate code with issues (spec was ambiguous)
+## Part 5: Test Your Specification (Co-Learning in Action)
 
-If there are gaps, **go back and refine the spec.** Don't ask your companion to guess.
+Now comes the crucial moment. Ask your companion:
 
-This is the fundamental insight: **Clear specs prevent iteration. Vague specs require iteration.**
+```
+
+Based on the complete calculator specification, implement all four functions in a file called `calculator.py`.
+
+Include:
+
+- Type hints as specified
+- Docstrings with examples
+- Error handling for division by zero
+- No additional features beyond the spec
+
+````
+
+**Watch what happens.** Your companion will exhibit one of three behaviors:
+
+### ✅ Scenario 1: Clear Spec → Clean Implementation
+
+Your companion generates complete, correct implementations
+**Success!** The spec was clear enough that AI:
+
+- ✅ Used correct type hints (`int | float`)
+- ✅ Returned `float` for division (even when exact)
+- ✅ Handled division by zero with explicit check
+- ✅ Wrote helpful docstrings with examples
+
+---
+
+### ❌ Scenario 2: Spec Had Gaps → AI Asks Questions
+
+Your companion generates the code but asks clarification:
+
+> "The specification doesn't mention runtime type validation. Should I add checks like:
+>
+> ```python
+> if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
+>     raise TypeError('Arguments must be int or float')
+> ```
+>
+> Or rely on Python's type hints and let mypy/Pylance catch type errors at development time?"
+
+**Good!** The spec had a gap. The AI is asking **before** making assumptions. You refine:
+
+```
+Update spec "Out of Scope" section:
+- "Input validation beyond type hints: We rely on Python's static type checking (mypy, Pylance). No runtime `isinstance()` checks needed."
+```
+
+Then ask AI to regenerate. Now it knows to trust the type system.
+
+---
+
+### ⚠️ Scenario 3: Spec Was Ambiguous → AI Makes Wrong Assumptions
+
+
+**Problems:**
+
+1. `add()` converts `int` results to `float` (spec said preserve `int`)
+2. `divide()` returns `0.0` for division by zero (spec said raise error)
+
+**You refine the spec:**
+
+```
+Update "Type Handling" section with example:
+- ❌ DON'T: return float(a + b)  # Loses int type
+- ✅ DO: return a + b  # Python preserves types naturally
+
+Update "Division By Zero" section:
+- Must raise ZeroDivisionError with message "Cannot divide by zero"
+- Do NOT return 0, None, inf, or any other value
+```
+
+Then ask AI to regenerate. Now it implements correctly.
+
+---
+
+## Part 6: Validate and Iterate
+
+Now let's validate the implementation against our specification using all the test scenarios. You can carefully review the code and tests generated.
+
+---
+
+### The Co-Learning Feedback Loop
+
+This is **specification-driven co-learning** in action:
+
+1. **You wrote user stories** (expressing intent without implementation)
+2. **You defined acceptance criteria** (making intent testable)
+3. **You identified edge cases** (anticipating gotchas)
+4. **You compiled a complete spec** (synthesizing everything)
+5. **AI generated code** (showing its understanding)
+6. **You validated with tests** (verifying spec clarity)
+7. **You refined gaps/ambiguities** (learning from failures)
+8. **AI regenerated** (both improved together)
+
+**Key insight:** The spec improved through testing. **This is how professional specifications are written**—iteratively, with validation.
+
+When AI generated wrong code (Scenario 3), it wasn't AI's fault—it was an **ambiguous specification**. The failure taught you where precision was needed.
+
+### The Feedback Loop
+
+This is **co-learning**:
+
+1. **You wrote a specification** (teaching AI your intent)
+2. **AI generated code** (showing its understanding)
+3. **You validated output** (testing if spec was clear)
+4. **You refined spec** (learning from gaps)
+5. **AI regenerated** (both improved together)
+
+**Key insight:** The spec improved through testing. **This is how professional specifications are written**—iteratively, with validation.
 
 ---
 
 ## What You Just Learned (By Doing)
 
-### ✅ Spec Structure
-You experienced all six components of a good spec. You understand WHY each matters.
+### ✅ User Stories Come Before Technical Specs
 
-### ✅ Iteration Happens at Spec Level
-When you refined "60 minutes" to "30 minutes," or "block users" to "queue emails," you were iterating on the SPEC, not on code.
+You started with **why** (user needs), not **how** (implementation). This forced you to think from the user's perspective before diving into types and edge cases.
 
-This is powerful: **Change the spec once, regenerate all code.** Much faster than rewriting code.
+**Traditional approach:**
 
-### ✅ Specs Prevent Guessing
-Without your password-reset-twice question, your companion would have guessed: "probably single-use." With your spec-driven mindset, you ASKED the question upfront.
+1. Jump to code → "Let's implement add(), subtract..."
+2. Discover requirements during debugging
 
-### ✅ Security is Explicit
-You didn't assume "password reset is obviously secure." You specified every security requirement explicitly. This prevents dangerous assumptions.
+**Spec-first approach:**
 
-### ✅ Collaboration Works
-You and your companion built this together. Companion suggested structure; you asked questions; companion refined; you pushed back. This is how professional specs are written.
+1. Define user value → acceptance criteria → edge cases → spec
+2. AI implements, tests validate
+
+### ✅ Progressive Complexity Reveals Spec Requirements
+
+- **Addition:** Simple, commutative, straightforward
+- **Subtraction:** Order matters, negative results
+- **Multiplication:** Zero is special (absorbing element)
+- **Division:** Requires error handling (zero check), always returns float
+
+Each operation taught you something about **specification decisions**. Division forced you to think about error handling in ways addition didn't.
+
+### ✅ Edge Cases ARE the Specification
+
+The happy path (2 + 3 = 5) is obvious. The **real specification** is:
+
+- What happens with 0.1 + 0.2? (floating point precision)
+- What happens with divide(5, 0)? (error handling)
+- What type is divide(10, 2)? (design decision: always float)
+
+**Specs make implicit assumptions explicit.**
+
+### ✅ Test Scenarios ARE Executable Contracts
+
+Your test cases weren't just tests—they **defined** what "correct" means:
+
+```python
+assert divide(10, 2) == 5.0  # Not 5! This is a contract.
+```
+
+The spec isn't separate from tests; **tests ARE the specification** in executable form.
+
+### ✅ Co-Learning Through Validation
+
+When AI generated wrong code (Scenario 3: always returning float), you learned your spec was ambiguous. You refined it. **Both you and AI got smarter.**
+
+When AI asked questions (Scenario 2: runtime type checking?), you learned your spec had gaps. You filled them.
+
+**This is co-learning:** Specifications improve through feedback from implementation attempts.
+
+### ✅ Specification is a Design Activity
+
+You made **design decisions**:
+
+- Division always returns float (even when exact) → consistency over type preservation
+- Division by zero raises exception (not None, not 0.0) → explicit over silent
+- Accept IEEE 754 float precision (not Decimal) → simplicity over exactness
+
+**Specifications force you to think through design before coding.**
 
 ---
 
-## Your Reflection
+## Extension Challenges
 
-**Questions for your journal:**
+You've learned SDD with a complete 4-operation calculator. Now extend your skills:
 
-1. **How was this different from your normal development?**
-   - Traditional: "Build password reset." Companion generates code. You iterate 5 times.
-   - Spec-driven: "Let me spec this out." Both think clearly. Generate code. Done.
+### Challenge 1: Add Exponentiation
 
-2. **What surprised you?**
-   - The number of decisions a spec forces you to make upfront?
-   - How many edge cases emerged through spec discussion?
-   - How much clearer the final requirements were?
+**Your Prompt:**
 
-3. **Where in your own work would this have helped?**
-   - A feature that took too long because of miscommunication?
-   - A project where you built the wrong thing?
-   - Working with someone (human or AI) who misunderstood what you wanted?
+```
+Using the specification structure from the calculator (user stories, acceptance criteria, edge cases, tests), help me add a power(base, exponent) function.
+
+Think about:
+- What's the user story? (Why do users need exponentiation?)
+- What about power(2, 0)? power(0, 0)? power(-2, 0.5)?
+- Should exponent be int only, or int | float?
+- What about very large results (2^1000)?
+- Error cases: negative base with fractional exponent?
+
+Write complete specification before implementing.
+```
+
+This teaches you how **new features extend existing specs** while maintaining consistency.
 
 ---
 
-## Key Insight
+### Challenge 2: Build a CLI Calculator
 
-**Specifications are not bureaucracy. They're clarity.**
+**Your Prompt:**
 
-They're the difference between:
-- ❌ "Build password reset" (hope you guess right)
-- ✅ "Here's exactly what password reset should do, including all edge cases" (now you understand)
+```
+Create a CLI wrapper around the calculator module:
+
+User story:
+As a user, I want a command-line interface, so that I can perform calculations interactively.
+
+Acceptance criteria:
+- Read operation and two numbers from command line
+- Support: add, subtract, multiply, divide
+- Display result or error message
+- Handle invalid inputs gracefully
+
+Example usage:
+$ python calc_cli.py add 5 3
+Result: 8
+
+$ python calc_cli.py divide 10 0
+Error: Cannot divide by zero
+
+Write specification first (user stories, acceptance criteria, edge cases).
+Then generate implementation.
+```
+
+This teaches you how **specs work across layers** (business logic vs UI).
+
+---
+
+### Challenge 3: Map to TDD Tutorial Stages
+
+The book includes a TDD tutorial (Test-Driven Development) with similar calculator stages. Map your specification to TDD stages:
+
+**Your Prompt:**
+
+```
+Compare specification-driven development (what we just did) with test-driven development:
+
+SDD Process:
+1. User stories (intent)
+2. Acceptance criteria (testable requirements)
+3. Edge cases (design decisions)
+4. Complete spec (contract)
+5. AI generates implementation
+6. Validate against tests
+
+TDD Process:
+1. Write test
+2. Run test (it fails—red)
+3. Write minimal code to pass (green)
+4. Refactor (improve)
+5. Repeat
+
+Questions:
+- When would you use SDD vs TDD?
+- Can they work together?
+- What if you wrote specs FIRST, then used TDD to implement them?
+```
+
+This teaches you **when different methodologies apply** in AI-native development.
+
+---
+
+**You have mastered the core skill:**
+
+> **Translating user intent → acceptance criteria → edge cases → complete specification → validated implementation**
+
+**You're now thinking specification-first.** 🎯
+
+This isn't just theory—you built a **complete, tested, production-ready calculator module** by specifying first, coding second.
+
+**That's the power of Specification-Driven Development.**
 
 ---

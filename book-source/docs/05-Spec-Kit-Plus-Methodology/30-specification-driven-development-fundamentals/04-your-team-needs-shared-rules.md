@@ -43,62 +43,56 @@ These rules have names: **Memory Banks** (Kiro framework) or **Constitutions** (
 
 **They're basically: the rules that govern your entire system.**
 
-### Ask Your Companion: How Do I Scale Specs?
+### How to Scale Specs Across Teams
 
-Tell your companion:
+**The Challenge**: You're on a team of 5 developers. Each person writes different features. How do you ensure everyone follows the same security, architecture, and quality standards without constant meetings?
 
-```
-I'm on a team of 5 developers. Each person is writing different features.
-How do I ensure everyone follows the same security, architecture, and
-quality standards without constant meetings?
+**The Solution**: Create a **Memory Bank** (Kiro framework) or **Constitution** (Spec-Kit framework). This document lists rules that apply to **every feature**:
 
-What if I created a document that says "these rules apply to ALL code"?
-How would that work?
-```
+- ALL passwords use bcrypt
+- ALL APIs are rate-limited
+- ALL code has 80%+ test coverage
+- ALL data is encrypted in transit
 
-Your companion will explain the concept:
-
-> "Create a Memory Bank (or Constitution). It lists rules that apply to
-> every feature:
->
-> - ALL passwords use bcrypt
-> - ALL APIs are rate-limited
-> - ALL code has 80%+ test coverage
-> - ALL data is encrypted in transit
->
-> Every developer reads this before writing code. Every AI agent follows
-> these rules. Consistency is automatic."
+Every developer reads this before writing code. Every AI agent follows these rules. **Consistency becomes automatic.**
 
 ---
 
 ## What Goes in a Memory Bank / Constitution?
 
 ### 1. Product Vision
+
 ```
 We're building a healthcare scheduling platform. Our core promise:
 "Scheduling in under 30 seconds. No phone calls, no back-and-forth."
 ```
+
 **Why**: Developers know what problem they're solving. Decisions align with vision.
 
 ### 2. Architecture Patterns
+
 ```
 - All endpoints follow FastAPI patterns
 - All services use repository pattern for data
 - All databases accessed through SQLAlchemy ORM
 - All errors follow standard error response format
 ```
+
 **Why**: New developers don't reinvent wheels. Consistency.
 
 ### 3. Technology Stack
+
 ```
 Backend: Python 3.13+, FastAPI
 Database: PostgreSQL (primary), Redis (cache)
 Testing: Pytest
 Deployment: Docker + Kubernetes
 ```
+
 **Why**: Developers know what tools they're using. No tool debates.
 
 ### 4. Security Rules (Non-Negotiable)
+
 ```
 - ALL user data encrypted at rest (AES-256)
 - ALL data in transit over TLS 1.3+
@@ -106,18 +100,22 @@ Deployment: Docker + Kubernetes
 - NEVER log passwords, tokens, or sensitive data
 - ALL endpoints require authentication (JWT)
 ```
+
 **Why**: Security is default, not an afterthought. No vulnerable implementations.
 
 ### 5. Quality Standards
+
 ```
 - Minimum test coverage: 80% per file
 - All functions have docstrings
 - All code formatted with Black (automatic)
 - Type hints on all functions (mypy strict mode)
 ```
+
 **Why**: Quality is measurable. CI enforces it.
 
 ### 6. Common Patterns and Anti-Patterns
+
 ```
 DO THIS: Use service + repository pattern
   service calls → repository calls → database
@@ -125,6 +123,7 @@ DO THIS: Use service + repository pattern
 DON'T DO THIS: Database calls scattered through endpoints
   (makes code hard to maintain)
 ```
+
 **Why**: Developers learn patterns by example.
 
 ---
@@ -136,6 +135,7 @@ DON'T DO THIS: Database calls scattered through endpoints
 **Step 1: Read the Constitution**
 
 Developer reads:
+
 ```
 - Passwords MUST use bcrypt (cost 12+)
 - NEVER log sensitive data
@@ -146,6 +146,7 @@ Developer reads:
 **Step 2: Write spec aligned with Constitution**
 
 Developer writes password reset spec:
+
 ```
 ## Non-Functional Requirements
 - Password hashing: bcrypt cost 12+ (per Constitution)
@@ -157,6 +158,7 @@ Developer writes password reset spec:
 **Step 3: Generate code**
 
 Code is generated. It automatically:
+
 - ✅ Uses bcrypt (no option to use MD5)
 - ✅ Implements rate limiting (required by Constitution)
 - ✅ Never logs tokens (Constitution rule enforced)
@@ -172,6 +174,7 @@ Always yes, because Constitution was enforced in step 1-3.
 ## The Power at Scale
 
 **Without Constitution:**
+
 - 5 developers
 - Each makes security decisions independently
 - Some use bcrypt, some use MD5, some use nothing
@@ -179,6 +182,7 @@ Always yes, because Constitution was enforced in step 1-3.
 - Code review has to check everything
 
 **With Constitution:**
+
 - 5 developers
 - Constitution says "bcrypt always"
 - All developers implement bcrypt (no debate)
@@ -199,50 +203,7 @@ should apply to every feature? Think: security, architecture, quality,
 compliance.
 ```
 
-Your companion will help you draft:
-
-```
-# Our Constitution
-
-## Product Principles
-- Security first: Privacy is non-negotiable
-- Fast: Scheduling in <30 seconds
-- Accessible: Works for non-tech-savvy patients
-
-## Security (Non-Negotiable)
-- ALL patient data is PHI (Protected Health Information)
-- ALL PHI encrypted at rest and in transit
-- NEVER log PHI or appointment details
-- Passwords: bcrypt cost 12+
-- Rate limiting: standard on all endpoints
-
-## Architecture
-- Service + Repository pattern always
-- Circuit breakers on external APIs
-- Events for cross-service communication
-
-## Quality
-- Test coverage: 80%+ minimum
-- Type hints on all functions
-- Docstrings on all public functions
-- Code formatted with Black (automatic)
-
-## Compliance
-- HIPAA compliance required
-- Audit logging for all patient access
-- Data retention: 3 years minimum
-```
-
-Refine it with your companion:
-
-```
-You: "Should we require 80% coverage for tests, or is 70% enough?"
-
-Companion: "That depends on risk tolerance. Healthcare is high-risk.
-80%+ catches more bugs. 70% might miss critical paths."
-
-You: "Let's go with 80%. Healthcare is not the place to cut corners."
-```
+Your companion will help you draft.
 
 ---
 
@@ -257,17 +218,132 @@ Specs drive individual features. Constitutions ensure consistency across ALL fea
 
 ---
 
+
+## Beyond Constitution: Capturing the Journey and Decisions
+
+A Constitution defines **what rules we follow**. But as your team develops software, two other critical questions emerge:
+
+1. **How did we learn what works?** (The journey of discovery)
+2. **Why did we choose this approach?** (The rationale behind mutable decisions)
+
+Two additional artifacts address these questions: **Prompt History Records (PHR)** and **Architectural Decision Records (ADR)**.
+
+---
+
+### Prompt History Records (PHR): Capturing the Journey
+
+**The Problem**: When AI-generated code fails, how do you debug it? When a spec works perfectly, how do you learn why it succeeded? Without a record of your AI interactions, knowledge is lost.
+
+**The Solution**: PHR = Structured log of all AI interactions during development.
+
+#### Why PHRs Matter
+
+**1. Debugging**: When generated code doesn't work as expected
+
+```
+Problem: Password reset emails not sending
+↓
+Check PHR: What did we ask AI to generate?
+↓
+PHR shows: "Generate password reset with email notification"
+↓
+Insight: We never specified SMTP configuration in the spec!
+↓
+Solution: Update spec with email configuration details
+```
+
+**2. Learning**: Patterns emerge showing which prompts produce better results
+
+```
+PHR Analysis after 3 months:
+- Prompts with explicit error handling: 95% success rate
+- Prompts without error handling: 60% success rate
+→ Team learns: Always specify error handling in specs
+```
+
+**3. Collaboration**: Team members understand reasoning path, not just final code
+
+```
+New developer joins team:
+"Why did we use JWT instead of sessions for password reset?"
+↓
+Check PHR from that feature:
+↓
+Shows full discussion: Security Subagent recommended JWT,
+team discussed trade-offs, chose JWT for stateless scaling
+↓
+New developer understands context without meeting
+```
+---
+
+### Architectural Decision Records (ADR): Documenting Mutable Decisions
+
+**Constitution = Immutable**: "ALL passwords use bcrypt" (never changes)  
+**ADR = Mutable**: "For this feature, we chose JWT over sessions because..." (might change)
+
+#### Understanding the Difference
+
+**Constitution**: System-wide principles that rarely change
+
+- "All passwords use bcrypt cost 12+"
+- "Test coverage must exceed 80%"
+- "All data encrypted in transit"
+
+**ADR**: Feature-specific decisions that might evolve
+
+- "Use JWT for password reset tokens" (might switch to sessions later)
+- "30-minute token expiry" (might adjust based on user feedback)
+- "Email-only reset" (might add SMS backup in future)
+
+#### When to Write an ADR
+
+Write an ADR for:
+
+- ✅ Significant architecture decisions (database choice, auth pattern, API design)
+- ✅ Trade-offs between competing approaches (performance vs simplicity)
+- ✅ Deviations from obvious/standard patterns (why we didn't use the common approach)
+- ✅ Decisions that future developers will question ("Why did they choose this?")
+
+Don't write an ADR for:
+
+- ❌ Decisions covered by Constitution (those are already documented)
+- ❌ Trivial implementation details (variable naming, minor refactoring)
+- ❌ Temporary workarounds (document in code comments instead)
+
+## The Power at Scale Revisited
+
+**Without SDD**:
+
+- 5 developers make independent decisions
+- Some use JWT, some use sessions, some use both
+- No one knows why decisions were made
+- New developers ask same questions repeatedly
+- AI agents make inconsistent choices
+
+**With SDD and an Opinionated Tools:
+
+- Constitution: "Auth pattern is JWT" (everyone follows)
+- ADR: "Why JWT? Because..." (everyone understands)
+- Spec: "This feature uses JWT per ADR-001" (consistent implementation)
+- PHR: "AI generated this based on ADR-001" (traceable)
+- New developers: Read ADRs, understand context, continue pattern
+
+**Result**: Consistency emerges not just from rules (Constitution), but from shared understanding (ADRs) and institutional learning (PHRs).
+
+---
 ## Your Reflection
 
 **Questions:**
 
 1. **What rules would YOUR Constitution include?**
+
    - Security rules for your domain?
    - Architecture patterns you want everyone to follow?
    - Quality standards?
    - Technology choices?
 
 2. **How would a Constitution change your team's work?**
+
    - Less debate about "should we use bcrypt or MD5?" (Constitution says bcrypt)
    - Faster code review (Constitution compliance checked automatically)
    - More consistent codebase
@@ -289,19 +365,3 @@ They write down the rules (Constitution / Memory Bank). Everyone follows them. C
 This is how teams scale without chaos.
 
 ---
-
-## Next Steps
-
-You now understand:
-- ✅ What SDD is (Lesson 2)
-- ✅ How to build a spec (Lesson 3)
-- ✅ How to scale specs (Lesson 4: Constitutions)
-- Still to learn:
-  - Why SDD emerged now (Lesson 5: History and AI)
-  - Which tools to use (Lesson 6: Kiro, Spec-Kit, Tessel)
-  - Where it's going (Lesson 7: Spec-as-source, MDD lessons)
-  - Your commitment (Lesson 8: Manifesto)
-
----
-
-**Next Lesson**: Why did SDD become standard NOW? Explore the history and the AI moment.
