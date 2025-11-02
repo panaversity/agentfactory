@@ -405,8 +405,3 @@ Don't execute—just show me what verification would look like.
 ```
 
 **Expected Outcome**: Your AI demonstrates verification techniques (directory listings, file counts, integrity checks)
-
-### Safety Note
-
-File operations (copy, move, delete) are more powerful than navigation, which is why we use the safety pattern. You're never running commands yourself—your AI is. Your job is understanding the plan, asking questions, and verifying results. Always ask "Can I undo this?" before any operation. The safety questions you ask here protect you and build habits that keep you safe with more advanced operations later.
-

@@ -398,8 +398,3 @@ Show me the exact commands/code for each.
 ```
 
 **Expected Outcome**: You have multiple approaches to verify installations
-
-### Safety Note
-
-Package installation is safe to experiment with. Pip and npm download packages from trusted registries (PyPI and npm registry). Your AI manages versions and compatibility. However, always verify packages are installed from trusted sources (official registries) and understand what you're installing. In later lessons, we'll cover package version management (requirements.txt, package.json) to ensure reproducible, consistent environments across machines.
-

@@ -401,8 +401,3 @@ For each modification, explain what changed and why.
 ```
 
 **Expected Outcome**: You understand how pipeline components work together and how changes ripple through
-
-### Safety Note
-
-Pipes are safe for exploration and data analysis. All the commands we've shown (ls, grep, find, wc) only read data—they don't modify or delete anything. This makes pipelines perfect for learning and analysis. You can safely experiment with different filters and outputs. In production, you'd be careful with pipelines that combine operations on sensitive data, but for learning, pipelines are risk-free exploration tools.
-

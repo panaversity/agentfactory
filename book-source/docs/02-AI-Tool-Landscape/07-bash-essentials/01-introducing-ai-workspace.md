@@ -277,7 +277,3 @@ Walk me through the steps you'd take to verify it's safe.
 ```
 
 **Expected Outcome**: Your AI describes showing the location, asking for confirmation, maybe suggesting a backup—the safety-first pattern that you'll formalize in the next lesson.
-
-### Safety Note
-
-You've now learned that `pwd` and `ls` are safe—they just show information, they don't change anything. Never let your AI run commands starting with `rm` (delete), `mv` (move), or `cp` (copy) without your verification. But for now, asking your AI to show you where it is and what's there is risk-free exploration. Always verify you understand before moving on to operations that change files.

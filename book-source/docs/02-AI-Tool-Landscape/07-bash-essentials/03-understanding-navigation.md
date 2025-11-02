@@ -375,8 +375,3 @@ Then show me the correct command.
 ```
 
 **Expected Outcome**: You demonstrate understanding by predicting which approach (absolute vs. relative) makes sense, then verify with the actual command.
-
-### Safety Note
-
-Navigation (using `cd`, `pwd`, `ls`) is completely safe—these commands only show information, they don't change or delete anything. You can safely explore your project structure as much as you like. The path understanding you build here directly supports the safety pattern from Lesson 2 when you move to file operations (copy, move, delete), where knowing the exact path becomes critical.
-

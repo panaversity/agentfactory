@@ -455,8 +455,3 @@ Show the commands for both approaches.
 ```
 
 **Expected Outcome**: You understand the tradeoffs and when to use each approach
-
-### Safety Note
-
-Configuration and secrets are critical for security. Never hardcode passwords, API keys, or tokens in your code. Always use environment variables or external configuration files. This habit protects your systems from accidental exposure. As you progress to production deployment, these practices become even more important—production secrets are guarded with even stricter tools like secret managers and encrypted vaults.
-
