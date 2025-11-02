@@ -24,7 +24,7 @@ This book, **"AI Native Software Development: Colearning Agentic AI with Python 
 ### The Core Paradigm Shift
 
 - **Traditional development:** You write code → machines execute it → you own all details.
-- **AI-native development:** You write specifications → AI agents implement them → you architect and validate.
+- **AI-native development:** You architect (by writing specifications in collaboration with your Personal/Coding AI Agent) → AI agents implement them → you validate the results.
 
 The consequences ripple through everything:
 - **What takes weeks now takes days** — not because you type faster, but because specification-first thinking eliminates rework
@@ -144,61 +144,76 @@ When these three layers connect, the system doesn't just respond — it *underst
 
 ## The AI Development Spectrum
 
-Before diving deep, understand the landscape. There are three distinct approaches to AI-enhanced development:
-
-### Level 1: AI Assisted Development
-
-**What it is:** AI as a productivity enhancer
-- Code completion and suggestions (GitHub Copilot, Claude)
-- Bug detection and debugging help
-- Documentation generation
-- Test case suggestions
-
-**You:** Control architecture. AI helps you code faster.
-
-**Impact:** 10-20% productivity gains
+Before diving deep, it helps to map the territory. We'll use three practical levels you can apply right away:
 
 ---
 
-### Level 2: AI Driven Development (AIDD) — The Focus of This Book
+### Level 1: AI-Assisted Development
 
-**What it is:** AI as your implementation partner
-- You write a specification
-- AI generates complete features, APIs, and systems
-- You review, refine, and validate
+**What it is:** AI as a productivity enhancer.
 
-**You:** Architect. AI implements. You validate.
+* Code completion and suggestions (e.g., Copilot-style tools, chat assistants)
+* Bug detection and debugging help
+* Documentation and comment generation
+* Test case generation and refactoring support
 
-**Impact:** 2-3x faster feature development
+**Your role:** You design the architecture and make decisions; AI helps you code faster.
+
+**Impact:** Commonly ~10–30% faster in day-to-day workflows, with higher gains on well-scoped coding tasks. Results vary by task, codebase, and developer experience.
+
+**Caveats:** Benefits can evaporate without code review, tests, guardrails, and consistent prompts.
 
 ---
 
-### Level 3: AI Native Software Development (The Frontier — The Focus of This Book)
- 
- *What it is:** AI as the core of your application
-- Your system's value comes from AI reasoning
-- Natural language interfaces, autonomous agents, adaptive behavior
-- The product *itself* is intelligent
+### Level 2: AI-Driven Development (AIDD) — **Primary Focus of This Book**
 
-**You:** Design how AI components reason and collaborate
+**What it is:** AI as your implementation partner.
 
-**Example:** Building a customer support agent where:
-- LLMs understand customer context automatically
-- Agents reason about solutions independently
-- Systems adapt based on outcomes
-- Multi-agent coordination solves complex problems
+* You write a clear specification (APIs, contracts, acceptance criteria)
+* AI generates substantial portions of features, services, and tests
+* You review, refine, integrate, and validate end-to-end
 
-**Impact:** New capabilities impossible with traditional software
+**Your role:** You architect and set standards; AI implements; you validate.
+
+**Impact:** Often up to ~2× on coding tasks. End-to-end "feature speedups" depend on integration, reviews, security checks, and non-code work (infra, data, compliance).
+
+**Caveats:** Quality, security, and maintainability must be enforced with tests, linters, SAST/DAST, and human review. Clear specs and feedback loops are critical.
+
+---
+
+### Level 3: AI-Native Software Development — **The Frontier — The Focus of This Book**
+
+**What it is:** AI as the core of the product.
+
+* The system's value comes from AI reasoning and adaptability
+* Natural-language interfaces, autonomous/agentic workflows, tool-use
+* Multi-agent coordination, retrieval, and learning from outcomes
+
+**Your role:** You design how AI components reason, collaborate, and are governed (policies, safety, observability).
+
+**Example:** A customer-support agent that understands context, reasons over knowledge/tools, coordinates subtasks, and adapts policies based on outcomes.
+
+**Impact:** Unlocks capabilities impractical with traditional software (continuous adaptation, complex decision chains). Speed metrics matter less than reliability, safety, and ROI.
+
+**Caveats:** Requires strong evaluation, monitoring, fallback plans, and product-level safety/ethics considerations.
 
 ---
 
 ### The Spectrum in Practice
 
 ```
-AI Assisted → AI Driven → AI Native
-    ↓            ↓           ↓
-  Helper    Co-Creator   Core System
+AI-Assisted  →  AI-Driven  →  AI-Native
+    ↓              ↓              ↓
+  Helper       Co-Creator      Core System
 ```
+
+---
+
+### How This Book Uses the Spectrum
+
+* **Primary focus:** Level 2 (AIDD)—repeatable workflows to turn specs into working software with AI.
+* **Frontier focus:** Level 3—design patterns for agentic systems, safety, evaluation, and operations.
+* **Foundation:** Level 1 practices to boost everyday productivity and feed clean prompts/specs into Levels 2–3.
 
 ---
 

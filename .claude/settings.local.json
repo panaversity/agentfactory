@@ -17,7 +17,8 @@
       "WebFetch(domain:github.com)",
       "Bash(.specify/scripts/bash/create-phr.sh:*)",
       "Skill(quiz-generator)",
-      "Bash('.specify\\scripts\\bash\\create-phr.sh' --title \"implement-chapter-6-lessons\" --stage implement --feature \"001-chapter-6\" --json)"
+      "Bash('.specify\\scripts\\bash\\create-phr.sh' --title \"implement-chapter-6-lessons\" --stage implement --feature \"001-chapter-6\" --json)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []
