@@ -31,49 +31,37 @@ Generate the implementation plan from your spec, then record a PHR and (if neede
 
 ```
 cd grading-system
-/sp.plan
-# or
-uvx specifyplus plan
+/sp.plan <prompt>
 ```
 
 Examine `specs/grading-system/plan.md` (phases, dependencies, risks, lesson breakdown).
 
 ---
 
-## Part 2: Record a Prompt History Record (PHR)
 
-Log the planning prompt/summary so the decision trail is auditable.
+## PHR & ADRs
+
+Use PHRs (Prompt History Records) to log major prompts/decisions, and ADRs (Architecture Decision Records) to capture design trade‑offs.
+
+### 1. Record a Prompt History Record (PHR)
+
+Mostly PHRs are auto recored. You can manually log the planning prompt/summary as well so the decision trail is auditable.
 
 Example (adapt for your environment):
 ```
-phr create --title "plan-grader-vertical-slice" --stage plan --feature grading-system \
-  --body-file history/prompts/tmp_plan_prompt.md
+/sp.phr <prompt>
 ```
-
-PHR Checklist:
-- [ ] Title communicates decision context (e.g., vertical slice scope)
-- [ ] Stage = plan; feature string set
-- [ ] Prompt text and concise summary saved
-- [ ] File placed under history/prompts/<feature>/
 
 ---
 
-## Part 3: Capture ADRs for Trade‑offs (Optional but Recommended)
+### 3. Capture ADRs for Trade‑offs (Optional but Recommended)
 
 When the plan introduces a material trade‑off, add an ADR.
 
 Example:
 ```
-adr new "Choose JSON storage for MVP over database" \
-  --context "MVP simplicity, no concurrency" \
-  --decision "Use JSON files for rubrics/grades" \
-  --consequences "Easy to start; migration needed later"
+/sp.adr <prompt>
 ```
-
-ADR Checklist:
-- [ ] Context, Decision, Consequences filled
-- [ ] Links back to spec sections and plan assumptions
-- [ ] Stored under docs/adr/
 
 ---
 
@@ -82,8 +70,3 @@ ADR Checklist:
 - Validate plan against checklist (phases logical, dependencies clear, risks addressed)
 - If blockers exist, refine spec and re‑run /sp.plan
 - Proceed to Lesson 5 to decompose into atomic tasks and pick your vertical slice
-
-References:
-- Plan: `https://github.com/panaversity/spec-kit-plus/blob/main/docs-plus/06_core_commands/04_plan/readme.md`
-- PHR: `https://github.com/panaversity/spec-kit-plus/blob/main/docs-plus/06_core_commands/01_phr/readme.md`
-- ADR: `https://github.com/panaversity/spec-kit-plus/blob/main/docs-plus/06_core_commands/05_adr/readme.md`

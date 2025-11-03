@@ -13,23 +13,18 @@ Whether you're eager to start coding or skeptical that specs are worth the time,
 
 ## The SpecifyPlus Loop and Core Commands
 
-SpecifyPlus is an opinionated SDD loop:
+SpecifyPlus is an opinionated Takskit for SDD. It's core development loop is:
 
 1) /sp.specify — analyze and refine your spec (gaps, ambiguities, assumptions)
 2) /sp.plan — produce an implementation plan (phases, dependencies, risks)
 3) /sp.tasks — decompose into atomic, testable tasks
 4) Implementation — build to spec; validate against acceptance criteria
 
-Key command references:
-- Setup: `https://github.com/panaversity/spec-kit-plus/blob/main/docs-plus/06_core_commands/00_setup/readme.md`
-- PHR: `https://github.com/panaversity/spec-kit-plus/blob/main/docs-plus/06_core_commands/01_phr/readme.md`
-- Spec: `https://github.com/panaversity/spec-kit-plus/blob/main/docs-plus/06_core_commands/03_spec/readme.md`
-- Plan: `https://github.com/panaversity/spec-kit-plus/blob/main/docs-plus/06_core_commands/04_plan/readme.md`
-- ADR: `https://github.com/panaversity/spec-kit-plus/blob/main/docs-plus/06_core_commands/05_adr/readme.md`
-- Tasks: `https://github.com/panaversity/spec-kit-plus/blob/main/docs-plus/06_core_commands/06_tasks/readme.md`
-- Implementation: `https://github.com/panaversity/spec-kit-plus/blob/main/docs-plus/06_core_commands/07_implementation/readme.md`
-- Analyze & Clarify: `https://github.com/panaversity/spec-kit-plus/blob/main/docs-plus/06_core_commands/08_analyze_and_clarify/readme.md`
-- Git commit & PR: `https://github.com/panaversity/spec-kit-plus/blob/main/docs-plus/06_core_commands/09_git_commit_pr/readme.md`
+And it is horizontally scalled for
+- Prompt History Records (PHR): Automatic Knowledge Capture
+- Architecture Decision Records (ADR) - Post-Planning Review
+- Analyze & Clarify: keep your spec, plan, and task list honest by driving ambiguity to zero with /clarify and proving coverage with /analyze before you advance to planning or implementation.
+- Git commit & PR: Turn a completed feature branch into a clean Git history and ready-to-review pull request by delegating the mechanics to the agentic Git workflow command.
 
 ## What You'll Learn
 
@@ -52,7 +47,7 @@ By the end of this chapter, you'll be able to:
 
 **You'll build two artifacts and one slice.** First, a Python calculator (simple domain, focus on workflow; pure Python examples). Second, a grading system specification (production-quality spec; Python-only for MVP). Third, a minimal vertical slice of the grader (rubric → submission → grade + feedback) implemented and tested to the spec.
 
-## Vertical Slice in Chapter 31 (What you implement now)
+### Vertical Slice - What you implement now?
 
 - Scope: pure Python, stdlib, JSON. No external services.
 - Slice includes:
@@ -61,57 +56,6 @@ By the end of this chapter, you'll be able to:
   - Grade compute + 50–200 word template feedback referencing ≥2 criteria
   - Tests mapped directly to acceptance criteria
 - Goal: validate spec → plan → tasks by building one cohesive flow before Chapter 32.
-
----
-
-## Lesson Index
-
-| # | Lesson | Purpose |
-|---|--------|---------|
-| 1 | Set Up Your Project With SpecifyPlus | Initialize project; understand structure/templates |
-| 2 | Make Your Acceptance Criteria Clear | Write SMART, testable criteria |
-| 3 | Run /sp.specify | Analyze and refine spec (gaps, assumptions) |
-| 4 | Run /sp.plan | Produce plan (phases, dependencies, risks) + record PHR |
-| 5 | Decompose Into Atomic Tasks | Create tasks with traceability; choose vertical slice |
-| 6 | Build Spec End-to-End | Implement and test the vertical slice |
-| 7 | Mini‑Project 1: Calculator | Spec → code → tests for a CLI calculator |
-| 8 | Mini‑Project 2: Production Spec | Write a production‑grade grading‑system spec |
-
----
-
-## PHR & ADR Mini‑Section
-
-Use PHRs (Prompt History Records) to log major prompts/decisions, and ADRs (Architecture Decision Records) to capture design trade‑offs.
-
-Example commands (adapt for your environment):
-
-```
-# Record a prompt history entry (PHR)
-phr create --title "plan-grader-vertical-slice" --stage plan --feature grading-system \
-  --body-file history/prompts/tmp_plan_prompt.md
-
-# Create an ADR for storage choice
-adr new "Choose JSON storage for MVP over database" \
-  --context "MVP simplicity, no concurrency" \
-  --decision "Use JSON files for rubrics/grades" \
-  --consequences "Easy to start; migration needed later"
-
-# Open a PR gated by checklists
-sp git_commit_pr --branch feature/grader-slice --title "Grader slice: rubric→grade" \
-  --include specs/grading-system/spec.md specs/grading-system/plan.md specs/grading-system/tasks.md \
-  --checklists spec plan tasks
-```
-
-PHR/ADR Acceptance Checklist:
-- [ ] PHR recorded for /sp.plan (title reflects decision context)
-- [ ] ADR written for any significant trade‑off (e.g., JSON vs DB)
-- [ ] PR description links to spec sections and task IDs
-- [ ] Checklists attached/passed before merge
-- [ ] Links added to README or history index for traceability
-
-## Ready?
-
-The next eight lessons will transform you from code-first to specification-first developer. You'll stop opening VS Code as the first step and start writing specifications. You'll stop debugging mysterious behaviors and start validating against explicit acceptance criteria. You'll stop explaining projects verbally and start pointing to specifications that capture exact intent.
 
 Let's build this together.
 
