@@ -1,24 +1,62 @@
 ---
 title: "Lesson 3: The Six Components of AIDD Context"
+chapter: 10
+lesson: 3
+duration_minutes: 25
 sidebar_position: 3
 description: "Learn the six fundamental components that make context engineering work in AI-driven development"
 keywords: [AIDD context components, model selection, development tools, guardrails, orchestration, memory management]
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
+skills:
+  - name: "Identifying AIDD Context Components"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Remember"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can list and define the six components (Model Selection, Development Tools, Knowledge & Memory, Audio/Speech, Guardrails, Orchestration)"
+
+  - name: "Recognizing Component Use Cases"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can identify which component(s) apply to specific development scenarios (e.g., 'which AI tool for this task?' = Model Selection)"
+
+  - name: "Applying Basic Component Selection"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can choose appropriate tool/component for common tasks (code generation, documentation, testing) with reasoning"
+
+learning_objectives:
+  - objective: "Identify the six components that make up AIDD context"
+    proficiency_level: "A2"
+    bloom_level: "Remember"
+    assessment_method: "Complete list of six components with brief definition of each"
+
+  - objective: "Recognize when to use each component in development scenarios"
+    proficiency_level: "B1"
+    bloom_level: "Understand"
+    assessment_method: "Scenario-based identification: given a task, student selects relevant component(s)"
+
+  - objective: "Apply basic component selection for common tasks"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Student justifies tool choice for 3-5 development tasks with component reasoning"
+
+cognitive_load:
+  new_concepts: 7
+  assessment: "7 new concepts (6 component types + component-based thinking) within B1 limit of 10 ✓"
+
+differentiation:
+  extension_for_advanced: "Design multi-component workflow for complex project (e.g., microservices with guardrails + orchestration + memory); research enterprise AIDD platforms"
+  remedial_for_struggling: "Master first 3 components only (Model Selection, Development Tools, Guardrails) before moving to remaining 3; use decision tree flowcharts"
 ---
 
-# Lesson 3: The Six Components of AIDD Context
-
-**Estimated Time**: 25 minutes  
-**Difficulty**: Intermediate (A2/B1 - Recognition & Simple Application)  
-**Prerequisites**: Lessons 1-2 (Context Engineering Fundamentals)
-
-## Learning Objectives
-
-By the end of this lesson, you will be able to:
-- **Identify** the six components that make up AIDD context (Remember - Bloom's A1)
-- **Recognize** when to use each component in development scenarios (Understand - Bloom's A2)
-- **Apply** basic component selection for common tasks (Apply - Bloom's B1)
-
----
+# The Six Components of AIDD Context
 
 ## Introduction: The Context Engineering Toolbox
 
@@ -861,24 +899,3 @@ First, explain what each guardrail prevents. Then show me the implementation pla
 - Explanation of each guardrail's purpose
 - Implementation plan with security measures
 - Validation strategy
-
----
-
-## What You've Learned
-
-In this lesson, you learned the six components of AIDD context:
-
-✅ **Component 1: Model Selection** - Choose Claude Code vs Gemini CLI based on task  
-✅ **Component 2: Development Tools** - AI uses file system, bash, git, search to gather context  
-✅ **Component 3: Knowledge & Memory** - Static docs, dynamic memory, code patterns  
-✅ **Component 4: Audio & Speech** - Not really useful for coding yet  
-✅ **Component 5: Guardrails** - Code style, security, architectural constraints  
-✅ **Component 6: Orchestration** - Break complex work into coordinated steps
-
-These six components are the **foundation** of effective context engineering. In the next lessons, you'll learn **specific strategies** that use these components to manage context effectively.
-
-**Next Up:** Lesson 4 - Progressive Context Loading (using these components strategically)
-
----
-
-**Chapter Progress:** 3 of 9 lessons complete ✓

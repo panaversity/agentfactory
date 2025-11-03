@@ -1,24 +1,62 @@
 ---
 title: "Lesson 4: Progressive Context Loading"
+chapter: 10
+lesson: 4
+duration_minutes: 20
 sidebar_position: 4
 description: "Learn to load context strategically as needed, not all at once, to prevent context rot"
 keywords: [progressive loading, context management, just-in-time loading, context strategy, AIDD]
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
+skills:
+  - name: "Applying Progressive Loading Strategy"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can implement 3-phase loading (Foundation → Current Work → On-Demand) for real projects to prevent context overload"
+
+  - name: "Creating Context Loading Plans"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Content Creation"
+    measurable_at_this_level: "Student can design loading sequence for unfamiliar codebase, identifying what to load first, second, and on-demand"
+
+  - name: "Analyzing Context Needs"
+    proficiency_level: "B1"
+    category: "Conceptual"
+    bloom_level: "Analyze"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can evaluate which files/information are needed immediately vs later based on current task scope"
+
+learning_objectives:
+  - objective: "Apply the progressive loading strategy to avoid context overload"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Student implements 3-phase loading for sample project with correct sequencing"
+
+  - objective: "Create a 3-phase loading plan for an unfamiliar project"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Student produces loading plan document identifying foundation files, work files, and on-demand files"
+
+  - objective: "Analyze which context is needed now vs later"
+    proficiency_level: "B1"
+    bloom_level: "Analyze"
+    assessment_method: "Given a development task, student categorizes 10-15 files into immediate/later/never-needed groups with justification"
+
+cognitive_load:
+  new_concepts: 5
+  assessment: "5 new concepts (Progressive Loading, 3-Phase Strategy, Just-In-Time Loading, Context Prioritization, Loading Plans) within B1 limit of 10 ✓"
+
+differentiation:
+  extension_for_advanced: "Design adaptive loading algorithm that monitors context utilization and auto-loads based on task patterns; research RAG vs progressive loading tradeoffs"
+  remedial_for_struggling: "Practice with small projects first (5-10 files); use provided templates for loading plans; focus on foundation vs current work distinction only"
 ---
 
-# Lesson 4: Progressive Context Loading
-
-**Estimated Time**: 20 minutes  
-**Difficulty**: Intermediate (B1 - Application)  
-**Prerequisites**: Lessons 1-3 (Context Engineering Fundamentals + Six Components)
-
-## Learning Objectives
-
-By the end of this lesson, you will be able to:
-- **Apply** the progressive loading strategy to avoid context overload (Apply - Bloom's B1)
-- **Create** a 3-phase loading plan for an unfamiliar project (Apply/Create - Bloom's B1)
-- **Analyze** which context is needed now vs later (Analyze - Bloom's B1)
-
----
+# Progressive Context Loading
 
 ## The Problem: Loading Everything Upfront
 
@@ -496,39 +534,4 @@ there taking up space.
 
 **Action:** This is a common situation—now you know how to fix it!
 
----
 
-### Safety Note
-
-**ChatGPT's small context window makes it perfect for this practice:**
-
-Because ChatGPT's context fills quickly, you'll really feel the difference between:
-- Loading everything at once (fills in 2-3 interactions!)
-- Progressive loading (can work for 10-15 interactions)
-
-Try it! Start two separate ChatGPT conversations:
-1. **Conversation A:** Paste 5 long code files at once, then try working
-2. **Conversation B:** Gradually introduce information as needed
-
-You'll notice Conversation B stays coherent much longer!
-
----
-
-## What You've Learned
-
-In this lesson, you've learned:
-
-✅ **Progressive loading** means loading context as needed, not all at once  
-✅ **Three-phase approach**: Overview → Module Focus → Implementation  
-✅ **Massive benefit**: 3-5x more working room before context rot  
-✅ **Phase 1** (Overview): Understand structure without reading code  
-✅ **Phase 2** (Module Focus): Read 3-5 files showing patterns  
-✅ **Phase 3** (Implementation): Load specific context for current task  
-✅ **Validation**: Check context percentage after each phase  
-✅ **Common mistake**: Loading everything "just in case" (don't!)
-
-In Lesson 4, you'll learn two more essential strategies: **Context Compression** (what to do when context does fill up) and **Context Isolation** (keeping different tasks separate). These combine with progressive loading to give you complete control over your AI's working memory.
-
----
-
-**Chapter Progress:** 3 of 6 lessons complete ✓

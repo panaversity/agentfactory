@@ -5,20 +5,7 @@ description: "Learn common mistakes, validation strategies, metrics, and best pr
 keywords: [context engineering, common mistakes, validation, metrics, best practices, AIDD, real-world examples]
 ---
 
-# Lesson 9: Validation, Pitfalls & Best Practices
-
-**Estimated Time**: 30 minutes  
-**Difficulty**: Intermediate (B1 - Evaluation)  
-**Prerequisites**: Lessons 1-8 (Complete Context Engineering + Tools)
-
-## Learning Objectives
-
-By the end of this lesson, you will be able to:
-- **Identify** the 5 most common context engineering mistakes (Analyze - Bloom's B1)
-- **Apply** validation strategies to check context health (Apply - Bloom's B1)
-- **Evaluate** your own context engineering practices (Evaluate - Bloom's B1)
-
----
+# Validation, Pitfalls & Best Practices
 
 ## Introduction: Learning from Common Mistakes
 
@@ -1869,69 +1856,3 @@ Compare approaches:
 Design the workflow for each approach with specific commands."
 ```
 
----
-
-**In Part 5 (Specification-Driven Development):**
-You'll use Lesson 5's context-first workflow intensively:
-- Every specification starts with context loading
-- Context engineering enables clear requirements
-- Context compression preserves specification decisions
-
-**In Part 10+ (Production Deployment):**
-Context engineering becomes critical for:
-- Complex infrastructure specifications
-- Multi-service architecture context management
-- Debugging production systems with rich context
-
-**Context engineering is the foundation for everything else you'll learn in this book.**
-
----
-
-## Final Validation: Are You Ready?
-
-Before moving to the next chapter, validate your understanding:
-
-### Self-Assessment Checklist
-
-**Context Fundamentals:**
-- [ ] I can explain what context is in my own words
-- [ ] I understand how context windows work and their limitations
-- [ ] I recognize signs of context rot
-
-**Strategic Application:**
-- [ ] I can apply progressive loading to start any session
-- [ ] I know when to compress context and how to do it
-- [ ] I can isolate contexts for different tasks
-- [ ] I follow context-first workflow before writing specifications
-
-**Validation & Correction:**
-- [ ] I can run the 5-point context health check
-- [ ] I recognize all 5 common mistakes
-- [ ] I have strategies to avoid each mistake
-- [ ] I can diagnose and fix context problems
-
-**If you checked all boxes → You're ready for the next chapter!**
-
-**If you haven't → Review the specific lessons where you're uncertain.**
-
----
-
-## Celebrate Your Progress! 🎉
-
-You've learned a **foundational skill** that most developers (even experienced ones) don't explicitly practice.
-
-**You now know:**
-- How to manage AI context deliberately (not accidentally)
-- How to prevent common mistakes (saving hours of frustration)
-- How to validate your practices (ensuring quality)
-- How context engineering enables specification writing (the core of AI-native development)
-
-**This is huge.** You're thinking like an AI-native developer already.
-
-In the next chapter (Part 4), you'll learn the terminal and development environment—the practical skills you need to implement what you've learned here.
-
-Keep building! 🚀
-
----
-
-**End of Chapter 10: Context Engineering for AI-Driven Development** ✓

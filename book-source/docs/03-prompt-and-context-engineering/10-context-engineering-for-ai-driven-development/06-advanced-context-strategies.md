@@ -1,26 +1,86 @@
 ---
 title: "Lesson 6: Advanced Context Strategies"
+chapter: 10
+lesson: 6
+duration_minutes: 28
 sidebar_position: 6
 description: "Master advanced techniques for context management including file selection, memory files, example-driven patterns, multi-agent architecture, and just-in-time fetching"
 keywords: [advanced context strategies, memory files, example-driven context, multi-agent, just-in-time loading, AIDD]
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
+skills:
+  - name: "Context Curation Through File Selection"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Content Creation"
+    measurable_at_this_level: "Student can explicitly specify which files AI should read (using paths/patterns) to control context precisely"
+
+  - name: "Structured Note-Taking with Memory Files"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Content Creation"
+    measurable_at_this_level: "Student can create and maintain memory files (decisions.md, patterns.md) to persist knowledge across sessions"
+
+  - name: "Example-Driven Context Engineering"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can provide code examples to teach AI project patterns instead of writing lengthy descriptions"
+
+  - name: "Designing Multi-Agent Workflows"
+    proficiency_level: "B1"
+    category: "Conceptual"
+    bloom_level: "Analyze"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can decompose complex tasks into specialized agent responsibilities with appropriate context boundaries"
+
+  - name: "Just-In-Time Context Fetching"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can configure AI tools to request additional context as needed rather than loading everything upfront"
+
+learning_objectives:
+  - objective: "Apply context curation through explicit file selection"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Student provides explicit file paths/patterns to AI tool to control context load"
+
+  - objective: "Implement structured note-taking with memory files"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Student creates memory files documenting decisions, patterns, standards for project"
+
+  - objective: "Use example-driven context engineering effectively"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Student provides 2-3 code examples to teach AI instead of lengthy descriptions"
+
+  - objective: "Design multi-agent workflows for complex features"
+    proficiency_level: "B1"
+    bloom_level: "Analyze"
+    assessment_method: "Student breaks down complex task into 3+ specialized agents with context boundaries"
+
+  - objective: "Apply just-in-time context fetching strategies"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Student demonstrates on-demand context requests during development session"
+
+cognitive_load:
+  new_concepts: 5
+  assessment: "5 new concepts (Context Curation, Memory Files, Example-Driven Context, Multi-Agent Architecture, Just-In-Time Fetching) within B1 limit of 10 ✓"
+
+differentiation:
+  extension_for_advanced: "Build automated memory file system with git hooks; implement multi-agent orchestration with Claude Projects or custom tooling; research agentic frameworks"
+  remedial_for_struggling: "Master context curation and example-driven first (skip multi-agent initially); use templates for memory files; practice with provided examples before creating own"
 ---
 
-# Lesson 6: Advanced Context Strategies
-
-**Estimated Time**: 28 minutes  
-**Difficulty**: Advanced (B1 - Application & Analysis)  
-**Prerequisites**: Lessons 1-5 (Fundamentals + Basic Strategies)
-
-## Learning Objectives
-
-By the end of this lesson, you will be able to:
-- **Apply** context curation through explicit file selection (Apply - Bloom's B1)
-- **Implement** structured note-taking with memory files (Apply - Bloom's B1)
-- **Use** example-driven context engineering effectively (Apply - Bloom's B1)
-- **Design** multi-agent workflows for complex features (Analyze - Bloom's B1)
-- **Apply** just-in-time context fetching strategies (Apply - Bloom's B1)
-
----
+# Advanced Context Strategies
 
 ## Introduction: Beyond the Basics
 
@@ -941,22 +1001,5 @@ Explain what each agent reads and produces."
 
 **Expected:** Clear workflow with isolated contexts for each concern.
 
----
 
-## What You've Learned
 
-In this lesson, you mastered five advanced strategies:
-
-✅ **Strategy 4: Context Curation** - Explicit file selection, context budget management, layered access  
-✅ **Strategy 5: Structured Note-Taking** - Memory files (DECISIONS.md, PATTERNS.md, TODO.md, GOTCHAS.md)  
-✅ **Strategy 6: Example-Driven Context** - Show code examples instead of verbal descriptions  
-✅ **Strategy 7: Multi-Agent Architecture** - Specialized agents for architecture, implementation, testing, docs  
-✅ **Strategy 8: Just-In-Time Fetching** - Let AI request context as needed, not all upfront
-
-**These strategies separate beginners from professionals.**
-
-In Lesson 7, you'll learn how context engineering enables better specification writing - the core skill of AI-native development.
-
----
-
-**Chapter Progress:** 6 of 9 lessons complete ✓

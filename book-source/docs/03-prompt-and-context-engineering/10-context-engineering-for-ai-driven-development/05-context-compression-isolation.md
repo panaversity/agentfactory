@@ -1,24 +1,62 @@
 ---
 title: "Lesson 5: Context Compression & Isolation"
+chapter: 10
+lesson: 5
+duration_minutes: 22
 sidebar_position: 5
 description: "Learn to compress context when sessions get long and isolate contexts for different tasks"
 keywords: [context compression, context isolation, session management, checkpoints, AIDD strategies]
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
+skills:
+  - name: "Applying Context Compression"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can compress long AI sessions using summarization and checkpoints to reclaim context window space while preserving essential information"
+
+  - name: "Implementing Context Isolation"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can create separate AI sessions for unrelated tasks to prevent context pollution and maintain focus"
+
+  - name: "Analyzing Context Management Strategies"
+    proficiency_level: "B1"
+    category: "Conceptual"
+    bloom_level: "Analyze"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can evaluate when to use compression (long session), isolation (multiple tasks), or fresh start (clean slate) based on scenario analysis"
+
+learning_objectives:
+  - objective: "Apply context compression to manage long sessions"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Student performs session compression by creating summary checkpoint and continuing with reduced context"
+
+  - objective: "Implement context isolation for multiple concurrent tasks"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Student creates separate AI sessions for 2+ unrelated tasks with appropriate context boundaries"
+
+  - objective: "Analyze when to use compression vs isolation vs starting fresh"
+    proficiency_level: "B1"
+    bloom_level: "Analyze"
+    assessment_method: "Given 5 scenarios, student selects correct strategy with justification for each"
+
+cognitive_load:
+  new_concepts: 6
+  assessment: "6 new concepts (Context Compression, Checkpoints, Summarization, Context Isolation, Session Separation, Strategy Selection) within B1 limit of 10 ✓"
+
+differentiation:
+  extension_for_advanced: "Implement automated compression triggers (detect when context >80% full); design multi-session orchestration for complex projects with dependency management"
+  remedial_for_struggling: "Practice compression only first (skip isolation initially); use provided templates for compression prompts; start with 1-hour sessions before attempting longer"
 ---
 
-# Lesson 5: Context Compression & Isolation
-
-**Estimated Time**: 22 minutes  
-**Difficulty**: Intermediate (B1 - Application)  
-**Prerequisites**: Lessons 1-4 (Context Fundamentals + Progressive Loading)
-
-## Learning Objectives
-
-By the end of this lesson, you will be able to:
-- **Apply** context compression to manage long sessions (Apply - Bloom's B1)
-- **Implement** context isolation for multiple concurrent tasks (Apply - Bloom's B1)
-- **Analyze** when to use compression vs isolation vs starting fresh (Analyze - Bloom's B1)
-
----
+# Context Compression & Isolation
 
 ## Introduction: When Progressive Loading Isn't Enough
 
@@ -656,35 +694,3 @@ Why? What are the benefits of each approach?
 
 **Reflection:** Can you think of tasks that would be OK in one session vs need isolation?
 
----
-
-### Safety Note
-
-**ChatGPT's small window makes these strategies even more critical:**
-
-- **Compression:** With ChatGPT, you might need to compress every 5-8 messages instead of 10-15
-- **Isolation:** Highly recommended with ChatGPT since context fills so fast
-- **Practice:** These strategies are essential skills for any AI tool, not just ChatGPT
-
-**Tip:** Use ChatGPT to practice these techniques. Because it has limits, you'll quickly learn to recognize when compression or isolation is needed. These skills transfer directly to Claude Code, Gemini, and any other AI coding tool.
-
----
-
-## What You've Learned
-
-In this lesson, you've learned:
-
-✅ **Context Compression** - Summarize progress and start fresh with essentials  
-✅ **When to compress** - Every 10-15 interactions, after milestones, when degrading  
-✅ **Compression benefits** - 70% → 15% context, remove dead ends, clean start  
-✅ **Checkpoint format** - What built, decisions, patterns, status, next steps  
-✅ **Context Isolation** - Separate sessions for separate concerns  
-✅ **Isolation methods** - Separate terminals, context markers, named sessions  
-✅ **Isolation benefits** - Prevents mixing, maintains focus, clearer history  
-✅ **Strategy selection** - Progressive loading (start), compression (long sessions), isolation (multiple tasks)
-
-In Lesson 5, you'll learn the crucial connection between context engineering and **specification writing**—how context engineering enables you to write better specifications, which is the foundation of AI-native development.
-
----
-
-**Chapter Progress:** 4 of 6 lessons complete ✓

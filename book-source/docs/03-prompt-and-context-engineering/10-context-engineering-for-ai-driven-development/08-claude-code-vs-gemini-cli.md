@@ -5,21 +5,7 @@ description: "Learn when to use Claude Code vs Gemini CLI based on context needs
 keywords: [Claude Code, Gemini CLI, tool comparison, AI tool selection, context window, AIDD tools]
 ---
 
-# Lesson 8: Claude Code vs Gemini CLI - Choosing the Right Tool
-
-**Estimated Time**: 20 minutes  
-**Difficulty**: Advanced (B1 - Application & Analysis)  
-**Prerequisites**: Lessons 1-7 (Complete context engineering foundation)
-
-## Learning Objectives
-
-By the end of this lesson, you will be able to:
-- **Compare** context management differences between Claude Code and Gemini CLI (Analyze - Bloom's B1)
-- **Evaluate** tool strengths and weaknesses for specific tasks (Evaluate - Bloom's B1)
-- **Select** the appropriate tool based on project requirements (Apply - Bloom's B1)
-- **Design** hybrid workflows using both tools effectively (Create - Bloom's B1)
-
----
+# Claude Code vs Gemini CLI - Choosing the Right Tool
 
 ## Introduction: Why Two Tools?
 
@@ -814,23 +800,3 @@ Explain the User model: fields, relationships, validation rules."
 - Which was faster?
 - Which noticed more details?
 
----
-
-## What You've Learned
-
-In this lesson, you mastered tool selection for AI-native development:
-
-✅ **Context Window Differences** - Claude 200K (selective) vs Gemini 1M (bulk)  
-✅ **Tool Strengths** - Claude for reasoning/refactoring, Gemini for analysis/patterns  
-✅ **Decision Matrix** - When to use which tool for different tasks  
-✅ **Hybrid Workflows** - Combining both tools in sequence  
-✅ **Best Practices** - How to prompt each tool effectively  
-✅ **Cost Considerations** - Token usage and efficiency strategies
-
-**Key Principle:** Use the right tool for the task. Don't use a hammer when you need a screwdriver.
-
-In Lesson 9, you'll learn validation strategies, common mistakes, and best practices for context engineering - including metrics, checklists, and real-world examples.
-
----
-
-**Chapter Progress:** 8 of 9 lessons complete ✓

@@ -1,24 +1,62 @@
 ---
 title: "Lesson 1: What is Context Engineering?"
+chapter: 10
+lesson: 1
+duration_minutes: 15
 sidebar_position: 1
 description: "Learn what context engineering is and why it's different from prompt engineering in AI-driven development"
 keywords: [context engineering, AI development, prompt engineering, AIDD, context management]
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
+skills:
+  - name: "Understanding Context vs Prompts"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can explain the difference between context engineering (information environment) and prompt engineering (specific requests) with real-world examples"
+
+  - name: "Recognizing Context Engineering Impact"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Remember"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can identify whether a development problem is context-related or prompt-related by analyzing AI output quality"
+
+  - name: "Working with AI Code Tools"
+    proficiency_level: "A1"
+    category: "Technical"
+    bloom_level: "Remember"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can recognize what information AI tools need before generating code (framework, patterns, existing code)"
+
+learning_objectives:
+  - objective: "Define context engineering in your own words"
+    proficiency_level: "A1"
+    bloom_level: "Remember"
+    assessment_method: "Student explanation using non-technical analogies (office setup, workspace)"
+
+  - objective: "Explain the difference between context and prompt engineering"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Comparison table or explanation distinguishing context (what AI knows) from prompts (what you ask)"
+
+  - objective: "Identify whether a problem is context-related or prompt-related"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Analysis of AI output scenarios to determine if issue stems from missing context or unclear prompt"
+
+cognitive_load:
+  new_concepts: 3
+  assessment: "3 new concepts (Context Engineering definition, Context vs Prompts distinction, AI information needs) within A1 limit of 5 ✓"
+
+differentiation:
+  extension_for_advanced: "Research how different AI tools (Claude Code vs Gemini CLI vs Cursor) handle context differently; compare context window sizes and loading strategies"
+  remedial_for_struggling: "Focus on Developer A vs Developer B example as primary learning case; practice with simple 'what context is missing?' scenarios"
 ---
 
-# Lesson 1: What is Context Engineering?
-
-**Estimated Time**: 15 minutes  
-**Difficulty**: Beginner (A1)  
-**Prerequisites**: Chapter 9 - Prompt Engineering for AIDD
-
-## Learning Objectives
-
-By the end of this lesson, you will be able to:
-- **Define** context engineering in your own words (Remember - Bloom's)
-- **Explain** the difference between context and prompt engineering (Understand - Bloom's)
-- **Identify** whether a problem is context-related or prompt-related (Understand - Bloom's)
-
----
+# What is Context Engineering?
 
 ## The Information Environment: Your AI's Workspace
 
@@ -302,21 +340,24 @@ Before moving on, think about your own experience:
 
 ## Try With AI
 
-**Tool:** ChatGPT Web (free, no setup needed)
+**Tool:** Claude Code or Gemini CLI (choose one based on what you have installed)
 
 Now let's practice understanding context engineering with an AI conversation.
 
 ### Prompt 1: Understanding the Concept
-Copy and paste this into ChatGPT:
 
+**Using Claude Code:**
+```bash
+claude-code prompt "Explain the difference between prompt engineering and context engineering for software development. Give me a simple analogy that a non-programmer would understand."
 ```
-Explain the difference between prompt engineering and context engineering 
-for software development. Give me a simple analogy that a non-programmer 
-would understand.
+
+**Using Gemini CLI:**
+```bash
+gemini "Explain the difference between prompt engineering and context engineering for software development. Give me a simple analogy that a non-programmer would understand."
 ```
 
 **What to expect:**
-- ChatGPT should explain prompt = the question, context = the background knowledge
+- The AI should explain prompt = the question, context = the background knowledge
 - You'll likely get an analogy (like asking a question with vs without background information)
 - The explanation should clarify why both are needed
 
@@ -325,23 +366,37 @@ would understand.
 ---
 
 ### Prompt 2: Identifying Context Problems
-Copy and paste this into ChatGPT:
 
-```
-Here's a scenario:
+**Using Claude Code:**
+```bash
+claude-code prompt "Here's a scenario:
 
-I asked an AI: "Create a login function"
+I asked an AI: 'Create a login function'
 
 The AI created code using Flask, but my project uses FastAPI. 
 It used a session-based authentication, but I need JWT tokens.
 It stored passwords in plain text instead of hashing them.
 
 Is this a prompt engineering problem or a context engineering problem? 
-Why?
+Why?"
+```
+
+**Using Gemini CLI:**
+```bash
+gemini "Here's a scenario:
+
+I asked an AI: 'Create a login function'
+
+The AI created code using Flask, but my project uses FastAPI. 
+It used a session-based authentication, but I need JWT tokens.
+It stored passwords in plain text instead of hashing them.
+
+Is this a prompt engineering problem or a context engineering problem? 
+Why?"
 ```
 
 **What to expect:**
-- ChatGPT should identify this as primarily a **context** problem
+- The AI should identify this as primarily a **context** problem
 - The AI lacked information about your framework, auth method, and security standards
 - Even a perfect prompt couldn't fix missing context
 
@@ -350,14 +405,15 @@ Why?
 ---
 
 ### Prompt 3: Real-World Application
-Copy and paste this into ChatGPT:
 
+**Using Claude Code:**
+```bash
+claude-code prompt "I'm starting a new software project and I want to work with an AI coding assistant. What context should I provide to the AI at the very start of my first session? Give me a checklist of information the AI would need."
 ```
-I'm starting a new software project and I want to work with an AI 
-coding assistant. What context should I provide to the AI at the 
-very start of my first session?
 
-Give me a checklist of information the AI would need.
+**Using Gemini CLI:**
+```bash
+gemini "I'm starting a new software project and I want to work with an AI coding assistant. What context should I provide to the AI at the very start of my first session? Give me a checklist of information the AI would need."
 ```
 
 **What to expect:**
@@ -369,29 +425,12 @@ Give me a checklist of information the AI would need.
 
 ---
 
-### Safety Note
+### Tool Comparison Note
 
-**Remember:** ChatGPT has a smaller context window than Claude Code (about 16K tokens vs 200K). This means:
-- ChatGPT forgets earlier parts of long conversations faster
-- You'll need to reload context more often
-- It's perfect for learning concepts (like now!) but may need context refreshes for large projects
+**Context Window Sizes:**
+- **Claude Code**: ~200K tokens (can handle large codebases)
+- **Gemini CLI**: ~1M tokens (can handle very large projects)
 
-**Practice makes perfect:** As you use AI tools more, you'll develop intuition for when to load context, when to reload it, and how much is needed.
+Both tools maintain context well for development work. As you progress through this chapter, you'll learn specific strategies for each tool's strengths.
 
----
 
-## What You've Learned
-
-In this lesson, you've learned:
-
-✅ **Context engineering** is managing the information environment your AI operates in  
-✅ It's **different from prompt engineering**—context is what AI knows, prompts are what you ask  
-✅ **Both are essential**—context provides knowledge, prompts provide direction  
-✅ **Real impact**—proper context means AI generates code that actually fits your project  
-✅ **Simple start**—loading key files and explaining your project setup is basic context engineering
-
-In Lesson 2, we'll dig deeper into **how context actually works**—understanding context windows, why AI performance degrades, and what "context rot" means. You'll learn to recognize the signs and understand the technical reasons behind them.
-
----
-
-**Chapter Progress:** 1 of 6 lessons complete ✓

@@ -1,24 +1,62 @@
 ---
 title: "Lesson 2: Understanding Context Windows"
+chapter: 10
+lesson: 2
+duration_minutes: 18
 sidebar_position: 2
 description: "Learn about context window limitations and recognize the signs of context degradation"
 keywords: [context window, context rot, AI memory, token limits, performance degradation]
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
+skills:
+  - name: "Understanding Context Window Constraints"
+    proficiency_level: "A1"
+    category: "Technical"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can explain what a context window is, why it's finite, and compare sizes across different AI tools"
+
+  - name: "Recognizing Context Degradation"
+    proficiency_level: "A2"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can identify symptoms of context degradation (inconsistent code, repetition, errors) and recognize when context window is filling up"
+
+  - name: "Managing AI Memory Limitations"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can describe what happens when context windows fill (performance degradation, lost information) and understand why AI 'forgets'"
+
+learning_objectives:
+  - objective: "Explain what a context window is and why it's finite"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Student description using analogies (desk space, working memory) and comparison of context window sizes"
+
+  - objective: "Describe what happens when context windows fill up"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of degradation symptoms (performance drop, inconsistency, information loss)"
+
+  - objective: "Recognize the signs of context degradation in your AI sessions"
+    proficiency_level: "A2"
+    bloom_level: "Apply"
+    assessment_method: "Identification of degradation patterns in real AI conversations (5+ symptoms)"
+
+cognitive_load:
+  new_concepts: 5
+  assessment: "5 new concepts (Context Window definition, Token measurement, Context Window sizes, Context degradation symptoms, Context rot) within A1-A2 limit of 7 ✓"
+
+differentiation:
+  extension_for_advanced: "Research how context windows are implemented technically (attention mechanisms, transformer architecture); compare RAG (Retrieval-Augmented Generation) vs raw context approaches"
+  remedial_for_struggling: "Focus on desk analogy throughout; use only Claude Code and Gemini CLI examples (skip ChatGPT to reduce cognitive load); practice with one symptom at a time"
 ---
 
-# Lesson 2: Understanding Context Windows
-
-**Estimated Time**: 18 minutes  
-**Difficulty**: Beginner (A1/A2)  
-**Prerequisites**: Lesson 1 - What is Context Engineering?
-
-## Learning Objectives
-
-By the end of this lesson, you will be able to:
-- **Explain** what a context window is and why it's finite (Understand - Bloom's A1/A2)
-- **Describe** what happens when context windows fill up (Understand - Bloom's A2)
-- **Recognize** the signs of context degradation in your AI sessions (Apply recognition - Bloom's A2)
-
----
+# Understanding Context Windows
 
 ## Your AI's Working Memory
 
@@ -424,37 +462,4 @@ Should I load all of these at the start? Why or why not?
 - Recommendation to load progressively as needed
 - Explanation that too much context too fast causes problems
 
-**Action:** This introduces our next lesson topic—progressive context loading!
 
----
-
-### Safety Note
-
-**Remember about ChatGPT's smaller context window:** 
-
-ChatGPT has about 16K tokens compared to Claude's 200K. This means:
-- Context rot happens MUCH faster with ChatGPT
-- You'll see the warning signs sooner
-- It's perfect for learning (like now!) but may need frequent context resets for actual coding projects
-- Don't worry! You'll learn context management strategies in the next lessons
-
-This makes ChatGPT actually **great for practicing** context engineering—you'll see the effects faster and learn to recognize them better!
-
----
-
-## What You've Learned
-
-In this lesson, you've learned:
-
-✅ **Context windows** are finite—AI tools can only "remember" a limited amount  
-✅ **Three key characteristics**: Everything in context is visible, anything outside doesn't exist, context degrades as it fills  
-✅ **Context rot** is performance degradation as context fills (slow responses, forgotten info, contradictions)  
-✅ **Warning signs** include slower responses, forgotten decisions, and inconsistencies  
-✅ **When to worry**: After 10-15 interactions, 1+ hour sessions, or loading 15+ files  
-✅ **Different tools** have different limits—ChatGPT fills fastest, Gemini slowest
-
-In Lesson 3, you'll learn **how to prevent context rot** using **progressive context loading**—a technique that keeps your context focused and your AI performing well throughout your entire session.
-
----
-
-**Chapter Progress:** 2 of 6 lessons complete ✓

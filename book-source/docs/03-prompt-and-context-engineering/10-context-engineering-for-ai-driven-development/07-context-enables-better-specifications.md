@@ -5,20 +5,7 @@ description: "Learn why rich context is essential for writing clear specificatio
 keywords: [context engineering, specification writing, AI-native development, planning-first, AIDD]
 ---
 
-# Lesson 7: Context Enables Better Specifications
-
-**Estimated Time**: 20 minutes  
-**Difficulty**: Intermediate (B1 - Application)  
-**Prerequisites**: Lessons 1-6 (Context Fundamentals + All Strategies)
-
-## Learning Objectives
-
-By the end of this lesson, you will be able to:
-- **Analyze** the relationship between context quality and specification quality (Analyze - Bloom's B1)
-- **Apply** context-first workflow before writing specifications (Apply - Bloom's B1)
-- **Evaluate** whether you have sufficient context to write a clear specification (Evaluate - Bloom's B1)
-
----
+# Context Enables Better Specifications
 
 ## Introduction: The Missing Link
 
@@ -728,39 +715,3 @@ Am I ready to write the specification? What else do I need to understand? Create
 
 **Key insight:** Even when you think you have enough context, there's often more to consider!
 
----
-
-### Safety Note
-
-**Why ChatGPT is perfect for practicing context-first thinking:**
-
-ChatGPT has a **small context window**, which means:
-- You'll quickly learn what information is truly essential
-- You'll practice being very deliberate about what context you load
-- You'll experience firsthand what happens when you skip context steps
-
-**These skills transfer directly to Claude Code and Gemini CLI, where you have more space but still need discipline.**
-
-**The context-first mindset is tool-independent—it's how you think, not which tool you use.**
-
----
-
-## What You've Learned
-
-In this lesson, you've learned:
-
-✅ **The core pattern**: Poor Context → Bad Spec → Broken Code vs Rich Context → Clear Spec → Working Code  
-✅ **Why context matters**: You can't specify what you don't understand  
-✅ **AI reflects you**: Vague understanding = vague output; clear understanding = clear output  
-✅ **Context-first workflow**: Identify needs → Load progressively → Validate understanding → Write spec → Implement  
-✅ **Validation checkpoints**: How to know when you have sufficient context  
-✅ **PROJECT_CONTEXT.md pattern**: Reusable context documentation  
-✅ **Thinking shift**: From code-first to context-first to specification-first
-
-This lesson connects context engineering (what you've been learning) to **specification-driven development** (the foundation of AI-native development you'll learn in Part 5).
-
-In Lesson 6, you'll learn the **common mistakes** beginners make with context engineering and how to avoid them—plus validation strategies to ensure your context skills are solid.
-
----
-
-**Chapter Progress:** 5 of 6 lessons complete ✓
