@@ -14,7 +14,7 @@ skills:
     proficiency: "B1"
     category: "Soft"
 learning_objectives:
-  - "Trace the history of formal methods and specifications from 1970s to 2024 (A2)"
+  - "Trace the history of formal methods and specifications from 1970s to 2025 (A2)"
   - "Explain why SDD emerged as critical NOW due to AI capabilities (B1)"
   - "Connect specification precision to AI literal-mindedness (B1)"
 ---
@@ -23,13 +23,13 @@ learning_objectives:
 
 ## The Question
 
-Specifications have existed since the 1970s. **Why is SDD only becoming standard practice NOW, in 2024?**
+Specifications have existed since the 1970s. **Why is SDD only becoming standard practice NOW, in 2025?**
 
 If specs were so good, why didn't everyone use them 20 years ago?
 
 ## What Changed: Three Convergent Forces
 
-**1. AI got good enough to generate production code (2023+)**
+**1. AI got good enough to generate production code (2025+)**
 
 - Before Summer 2025: AI-generated code was often broken, unreliable
 - 2025+: LLMs can generate working, tested code from clear specifications
@@ -83,7 +83,7 @@ Understanding why previous specification approaches failed helps us appreciate w
 **Reality**: Lost institutional knowledge, teams couldn't scale, documentation disappeared
 **Lesson**: No specs is also bad; balance is needed
 
-### 2023+: SDD Emerges
+### 2025+: SDD Emerges
 
 **Why NOW?**:
 
@@ -155,19 +155,19 @@ Model-Driven Development (MDD) promised automatic code generation in the 2000s. 
 
 ## The Market Validation: When Did SDD Emerge?
 
-**2024 Timeline** shows rapid industry adoption:
+**2025 Timeline** shows rapid industry adoption:
 
 - GitHub releases Spec-Kit (formal SDD framework)
 - Anthropic integrates Spec-Kit Plus with Claude Code
 - Google Gemini CLI adds spec support
 - Multiple startups build spec-driven tools
-- Industry calls 2024 "the year specs became essential"
+- Industry calls 2025 "the year specs became essential"
 
 **Why Now?**:
 
 - ChatGPT (Nov 2022) created mainstream AI coding
 - Developers experienced 10 iterations for simple features
-- 2024: "Wait, what if we just wrote a clear spec?"
+- 2025: "Wait, what if we just wrote a clear spec?"
 - Pattern discovered: Clear spec → correct code, first try
 - Tools emerged to systematize this pattern
 
@@ -229,26 +229,4 @@ SDD isn't a new invention. Specifications have existed for decades.
 
 - **Necessity**: AI agents need specs (humans can improvise; AI can't)
 - **Tools**: Spec-Kit, Kiro, etc., make specs systematic (not ad-hoc)
-- **Timing**: 2024 is the moment AI capability and spec tooling converged
-
----
-
-## Your Reflection
-
-**Questions for your journal:**
-
-1. **How does this history change your understanding of SDD?**
-
-   - It's not a new fad (decades of precedent)
-   - It's a practical response to AI capabilities
-   - It's backed by historical lessons (what failed before)
-
-2. **What changed for YOU?**
-
-   - Before: "Specs are bureaucracy"
-   - After: "Specs are the interface between me and AI"
-
-3. **Where do you see this heading?**
-   - Will SDD become standard in 5 years?
-   - Will every developer use Spec-Kit or similar tools?
-   - How will it change how teams work?
+- **Timing**: 2025 is the moment AI capability and spec tooling converged

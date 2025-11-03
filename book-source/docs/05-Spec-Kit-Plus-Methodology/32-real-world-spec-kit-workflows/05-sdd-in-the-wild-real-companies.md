@@ -59,7 +59,7 @@ Owner: Platform User Team
 Status: Stable (changed 3 months ago)
 
 Endpoints:
-  GET /users/{user_id}
+  `GET /users/{user_id}`
     Returns: User object (see schema below)
     Errors: 404 Not Found, 401 Unauthorized
     Rate Limit: 1000 req/min per auth key

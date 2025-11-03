@@ -320,7 +320,7 @@ Don't write an ADR for:
 - New developers ask same questions repeatedly
 - AI agents make inconsistent choices
 
-**With SDD and an Opinionated Tools:
+**With SDD and an Opinionated Tools:**
 
 - Constitution: "Auth pattern is JWT" (everyone follows)
 - ADR: "Why JWT? Because..." (everyone understands)
@@ -355,8 +355,6 @@ Don't write an ADR for:
    - No conflict: they work together
 
 ---
-
-## Key Takeaway
 
 **Professional teams don't debate fundamentals every project.**
 

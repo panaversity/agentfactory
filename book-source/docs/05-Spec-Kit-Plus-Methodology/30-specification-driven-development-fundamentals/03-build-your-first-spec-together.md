@@ -426,9 +426,8 @@ This teaches you how **specs work across layers** (business logic vs UI).
 
 ---
 
-### Challenge 3: Map to TDD Tutorial Stages
-
-The book includes a TDD tutorial (Test-Driven Development) with similar calculator stages. Map your specification to TDD stages:
+### Challenge 3: Map to Test-Driven Development Stages
+Map your specification to TDD stages:
 
 **Your Prompt:**
 

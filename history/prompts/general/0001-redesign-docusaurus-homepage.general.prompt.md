@@ -40,7 +40,7 @@ Created a modern, minimalistic homepage that challenges traditional CS education
 - **Bold headline**: "Learning to Code With AI, Not From It"
 - **Gradient background**: Purple/blue theme with subtle animations
 - **Three value badges**:
-  - ✨ 100% Free & Open Source (with pulse glow animation)
+  - ✨ Free & Open Source (with pulse glow animation)
   - 📚 46 Chapters
   - 🎯 Beginner Friendly
 - **Enhanced CTA buttons**:

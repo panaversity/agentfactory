@@ -160,27 +160,6 @@ This book is built on a fundamental premise: **software development is becoming 
 
 ---
 
-## The 9 CoLearning Skills
-
-1.  **learning-objectives:** Generate measurable learning outcomes.
-2.  **concept-scaffolding:** Break down complex topics into manageable steps.
-3.  **code-example-generator:** Create high-quality, runnable code examples.
-4.  **exercise-designer:** Design effective practice exercises.
-5.  **assessment-builder:** Build meaningful quizzes and assessments.
-6.  **technical-clarity:** Ensure all explanations are clear and accessible.
-7.  **book-scaffolding:** Plan and structure multi-part educational content with cognitive load management.
-8.  **ai-augmented-teaching:** Design lessons that effectively integrate AI tools.
-9.  **evaluation-framework:** A comprehensive curriculm content designing framework.
-
-## 3 Specialized Sub Agents
-- Chapter Planner
-- Lesson writer
-- Technical reviewer
-
----
-
----
-
 ## 🚀 Get Started
 
 The future of software development is collaborative, conversational, and powered by reasoning systems.
@@ -200,4 +179,4 @@ The future of software development is collaborative, conversational, and powered
 
 *Part of **AI Native Software Development** — redefining how we learn, build, and collaborate with intelligent systems.*
 
-**100% Free & Open Source • Continuously Updated • Community-Driven** 🌍
+**Open Source • Continuously Updated • Community-Driven** 🌍

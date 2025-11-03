@@ -99,6 +99,7 @@ const config: Config = {
   ],
 
   plugins: [
+    "./plugins/docusaurus-plugin-og-image-generator",
     function (context, options) {
       return {
         name: "custom-webpack-config",
@@ -119,6 +120,36 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: "img/book-cover-page.png",
+
+    // Open Graph metadata for social media sharing
+    metadata: [
+      { property: "og:title", content: "AI Native Software Development" },
+      {
+        property: "og:description",
+        content:
+          "Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way",
+      },
+      { property: "og:type", content: "website" },
+      {
+        property: "og:image",
+        content: "https://ai-native.panaversity.org/img/book-cover-page.png",
+      },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:url", content: "https://ai-native.panaversity.org" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "AI Native Software Development" },
+      {
+        name: "twitter:description",
+        content:
+          "Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way",
+      },
+      {
+        name: "twitter:image",
+        content: "https://ai-native.panaversity.org/img/book-cover-page.png",
+      },
+    ],
+
     colorMode: {
       respectPrefersColorScheme: true,
     },
@@ -222,7 +253,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} <strong>Panaversity</strong> • AI Native Software Development • 100% Free & Open Source`,
+      copyright: `Copyright © ${new Date().getFullYear()} <strong>Panaversity</strong> • AI Native Software Development • Free & Open Source`,
     },
     prism: {
       theme: prismThemes.github,
