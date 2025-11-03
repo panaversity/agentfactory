@@ -81,29 +81,6 @@ cd my-project
 
 **What You Get** (folder tree):
 
-Note: The specs and history will appear once we create our first spec.
-```
-my-project/
-├── .specify/                          # Project configuration
-│   ├── constitution.md                # Project principles and rules
-│   ├── templates/                     # Templates for specs, plans, tasks
-│   │   ├── spec-template.md
-│   │   ├── plan-template.md
-│   │   └── tasks-template.md
-├── specs/                             # Where specifications live
-│   └── my-feature/
-│       ├── spec.md                    # Feature specification (WHAT to build)
-│       ├── plan.md                    # Implementation plan (HOW to build)
-│       └── tasks.md                   # Work units (atomic tasks)
-│
-├── history/                           # Version history and decisions
-│   ├── prompts/                       # Prompt history (AI conversations)
-│   └── adr/                          # Architecture Decision Records
-│
-├── README.md                          # Project overview
-└── .gitignore                        # Git configuration
-```
-
 ### The Three Key Folders
 
 #### **1. `.specify/` Folder: Project Constitution & Templates**
