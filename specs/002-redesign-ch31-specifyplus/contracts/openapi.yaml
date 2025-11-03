@@ -1,0 +1,66 @@
+openapi: 3.0.3
+info:
+  title: Chapter 31 Example Contracts
+  version: 0.1.0
+paths:
+  /calculator/evaluate:
+    post:
+      summary: Evaluate a calculator expression per spec acceptance criteria
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                operation:
+                  type: string
+                  enum: [add, subtract, multiply, divide]
+                operands:
+                  type: array
+                  items: { type: number }
+                  minItems: 2
+                  maxItems: 2
+      responses:
+        '200':
+          description: Result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result: { type: number }
+        '400':
+          description: Validation error
+  /grading/grade:
+    post:
+      summary: Grade a submission against a rubric
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                submissionId: { type: string }
+                rubricId: { type: string }
+      responses:
+        '200':
+          description: Grade and feedback
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalScore: { type: number, minimum: 0, maximum: 100 }
+                  perCriterion:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        criterionId: { type: string }
+                        score: { type: number, minimum: 0, maximum: 100 }
+                  feedback: { type: string }
+        '400':
+          description: Validation error
+

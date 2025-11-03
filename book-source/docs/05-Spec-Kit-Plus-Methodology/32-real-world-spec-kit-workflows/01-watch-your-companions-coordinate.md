@@ -27,7 +27,7 @@ Imagine two engineers work on the same project. They never talk. No meetings, no
 
 The answer: clear specifications.
 
-In this lesson, you'll run a real experiment. You'll take the grading system specification you built in Chapter 26 (Lesson 9), decompose it into two independent features, give each feature to a different AI companion, and watch them implement in parallel without any direct communication. Then you'll integrate their outputs and discover something profound: **clear specs eliminate the need for synchronous communication**.
+In this lesson, you'll run a real experiment. You'll take the grading system specification you built in Chapter 32, decompose it into two independent features, give each feature to a different AI companion, and watch them implement in parallel without any direct communication. Then you'll integrate their outputs and discover something profound: **clear specs eliminate the need for synchronous communication**.
 
 This is how professional teams scale. This is why specification-driven development works at 5 people, 50 people, or 500 people.
 
