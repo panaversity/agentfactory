@@ -48,14 +48,12 @@ differentiation:
   remedial_for_struggling: "Simplified validation checklist (5 items instead of 10); focus on pass/fail of main criteria only"
 ---
 
-# Lesson 7: Implementation & Validation (/sp.implement)
-
-## Opening Hook
+# Implementation & Validation (/sp.implement)
 
 You have:
-- A clear specification (Lessons 1-4)
-- A detailed plan with phases (Lesson 5)
-- Atomic tasks with dependencies (Lesson 6)
+- A clear specification (Lessons 1-3)
+- A detailed plan with phases (Lesson 4)
+- Atomic tasks with dependencies (Lesson 5)
 
 Now comes the moment of truth: **Does AI understand your spec well enough to generate working code?**
 
@@ -548,29 +546,6 @@ You've now completed the full cycle:
 5. REFINEMENT (AI regenerates) ✅
 6. TRUST (Deploy validated code) →
 ```
-
-### The Cascade Effect - Complete
-
-From Lesson 1 to now:
-
-```
-Lesson 1: SMART Criteria (Specific, Measurable, Achievable, Relevant, Time-bound)
-  ↓
-Lesson 3: Complete Specification (6 sections with SMART criteria)
-  ↓
-Lesson 4: Refined Spec (/sp.specify finds gaps, you clarify)
-  ↓
-Lesson 5: Clear Plan (/sp.plan generates from clear spec)
-  ↓
-Lesson 6: Atomic Tasks (/sp.tasks decomposes plan into work units)
-  ↓
-Lesson 7: Working Code (/sp.implement generates, you validate)
-  ↓
-Result: Specification quality → Plan quality → Task quality → Code quality
-```
-
-This is why specification-driven development works. Clarity compounds at every level.
-
 ---
 
 ## Try With AI
@@ -596,31 +571,3 @@ This is why specification-driven development works. Clarity compounds at every l
 - You recognize how specification clarity cascades to code quality
 - You're ready for the capstone project with complete mastery
 - You have working code that you understand and validated
-
-### Safety & Ethics Note
-
-**Remember**: Never deploy code you haven't read and understood. AI is powerful but literal. Your job is:
-
-1. **Read** (understand what code does)
-2. **Validate** (verify it meets acceptance criteria)
-3. **Audit** (check for security issues)
-4. **Iterate** (refine if failures found)
-5. **Deploy** (with confidence in code quality)
-
-This discipline separates production-ready code from "it works in a demo."
-
----
-
-## Checkpoint: You're Ready for the Capstone Project!
-
-Before starting the capstone, verify you can do these:
-
-- [ ] Run `/sp.implement` on your complete artifacts
-- [ ] Read and understand generated code (explain functions in your own words)
-- [ ] Create a validation matrix for all acceptance criteria
-- [ ] Run tests and verify they pass
-- [ ] Manually verify acceptance criteria
-- [ ] Provide feedback if criteria fail
-- [ ] Iterate (regenerate) if needed
-- [ ] Understand the complete AIDD cycle (intent → generation → validation → feedback → refinement → trust)
-- [ ] Articulate why specification clarity matters for code generation quality

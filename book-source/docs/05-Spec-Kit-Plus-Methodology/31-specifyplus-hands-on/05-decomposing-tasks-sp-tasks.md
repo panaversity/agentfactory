@@ -1,7 +1,7 @@
 ---
 title: "Decomposing Plans into Tasks (/sp.tasks)"
 chapter: 31
-lesson: 6
+lesson: 5
 duration_minutes: 90
 
 skills:
@@ -41,9 +41,7 @@ differentiation:
   remedial_for_struggling: "Simplified task structure (only description + acceptance criteria); guided dependency mapping"
 ---
 
-# Lesson 6: Decomposing Plans into Tasks (/sp.tasks)
-
-## Opening Hook
+# Decomposing Plans into Tasks (/sp.tasks)
 
 You have a clear plan with phases, dependencies, and milestones. Excellent. But now you face a practical question: **How do I actually start working?**
 

@@ -1,7 +1,7 @@
 ---
 title: "SpecifyPlus Project Structure & the Cascade"
 chapter: 31
-lesson: 2
+lesson: 1
 duration_minutes: 90
 
 skills:
@@ -41,21 +41,15 @@ differentiation:
   remedial_for_struggling: "Simplified folder diagram with one-sentence explanation of each; guided exploration checklist"
 ---
 
-# Lesson 2: SpecifyPlus Project Structure & the Cascade
+# SpecifyPlus Project Structure & the Cascade
 
-## Opening Hook
-
-You've learned how to write SMART acceptance criteria. Now comes a crucial question: **Where do those criteria live? How do they connect to implementation plans? How do teams stay organized?**
-
-SpecifyPlus answers this with a simple but powerful insight: **The folder structure itself enforces the workflow.** You can't jump from vague ideas straight to code. The structure forces you to think clearly at each step.
+SpecifyPlus answers SDD problems like how to manage Specification with a simple but powerful insight: **The folder structure itself enforces the workflow.** You can't jump from vague ideas straight to code. The structure forces you to think clearly at each step.
 
 This lesson shows you how. When you see the structure, you'll understand why specification-driven development isn't optional—it's architecturally necessary.
 
 ---
 
-## Part A: Explore the Structure (30 min)
-
-### What SpecifyPlus Creates
+## What SpecifyPlus Creates?
 
 When you initialize a SpecifyPlus project, you get a specific folder structure. Let's explore it.
 
@@ -63,18 +57,26 @@ When you initialize a SpecifyPlus project, you get a specific folder structure. 
 
 ```bash
 pip install specifyplus
-uvx specifyplus init my-project
+sp --version
+specifyplus init my-project
 ```
 
 Or if you already have SpecifyPlus:
 
 ```bash
-specifyplus init my-project
+uvx specifyplus init my-project
+cd my-project
+```
+
+Select your AI Companion and the terminal. Next navigate in the project and open your IDE.
+
+```bash
 cd my-project
 ```
 
 **What You Get** (folder tree):
 
+Note: The specs and history will appear once we create our first spec.
 ```
 my-project/
 ├── .specify/                          # Project configuration
@@ -83,8 +85,6 @@ my-project/
 │   │   ├── spec-template.md
 │   │   ├── plan-template.md
 │   │   └── tasks-template.md
-│   └── config.yaml                    # Project settings
-│
 ├── specs/                             # Where specifications live
 │   └── my-feature/
 │       ├── spec.md                    # Feature specification (WHAT to build)
@@ -162,74 +162,9 @@ The folder structure is literally **forcing clarity at each level**.
 
 ---
 
-## Part B: Understand the Cascade (35 min)
+## The Cascade in Action
 
-### The Cascade in Action
-
-Let's trace one real example: "User can see calculation history."
-
-**In spec.md** (the specification):
-```markdown
-## Requirement: Calculation History
-- User can view all previous calculations in session
-- History persists across calculator restarts
-- User can clear history with one command
-- History is limited to last 50 calculations (to prevent memory issues)
-```
-
-**In plan.md** (the implementation plan):
-```markdown
-## Phase 1: Design History Data Structure
-- Design schema for storing calculations (operation, operands, result, timestamp)
-- Define what "calculation" means (one operation or multiple linked operations?)
-
-## Phase 2: Implement History Storage
-- Implement save_calculation() function
-- Implement load_history() function
-- Handle file persistence (JSON or SQLite)
-
-## Phase 3: Display History UI
-- Implement view_history() command
-- Implement clear_history() command
-- Test with 50+ calculations to verify performance
-```
-
-**In tasks.md** (atomic work units):
-```markdown
-Task 1.1: Design Calculation Schema
-- Acceptance: Define JSON schema for one calculation record
-- Effort: 1 hour
-- Dependencies: None (Phase 1 start)
-
-Task 1.2: Design History Structure
-- Acceptance: Propose file structure or database schema
-- Effort: 1 hour
-- Dependencies: Task 1.1
-
-Task 2.1: Implement save_calculation()
-- Acceptance: Function stores calculation to file/database
-- Effort: 2 hours
-- Dependencies: Task 1.2
-
-Task 2.2: Implement load_history()
-- Acceptance: Function retrieves all calculations in order
-- Effort: 2 hours
-- Dependencies: Task 2.1
-
-Task 3.1: Implement view_history() Command
-- Acceptance: Display last 10 calculations; show operation, result, timestamp
-- Effort: 1.5 hours
-- Dependencies: Task 2.2
-
-Task 3.2: Implement clear_history() Command
-- Acceptance: Clear all history or last N items; confirm before deletion
-- Effort: 1 hour
-- Dependencies: Task 2.2
-```
-
-### Observe the Cascade
-
-Notice how one requirement flows through all three documents:
+The requirements flows through all three documents:
 
 - **Spec**: Captures business logic (what matters to users)
 - **Plan**: Breaks it into implementation phases (data design, storage, UI)
@@ -273,100 +208,6 @@ If the spec says "user can see calculation history" without details (What's the 
 
 ---
 
-## Part C: Project Exploration (25 min)
-
-### Exercise 1: Initialize Your Own Project
-
-**Instructions**: Initialize a SpecifyPlus project locally.
-
-```bash
-uvx specifyplus init my-calculator
-cd my-calculator
-```
-
-**What to Do**:
-- Explore the folders
-- Open `.specify/constitution.md` — read the first 3 principles
-- Open `specs/README.md` — understand the feature folder structure
-- Verify you see `.specify/`, `specs/`, and `history/` folders
-
-### Exercise 2: Open and Read Templates
-
-**Instructions**: Open these template files and read them carefully.
-
-**File 1: `spec.md` template** (in `.specify/templates/` or `specs/your-feature/spec.md`)
-- Identify the sections (Overview, Scope, Requirements, Acceptance Criteria, Constraints, Success Criteria)
-- Note: These match the structure from Lesson 1 (SMART criteria go in Acceptance Criteria section)
-
-**File 2: `plan.md` template** (in `.specify/templates/`)
-- Identify the sections (Phases, Dependencies, Milestones)
-- Notice: Plan describes HOW (phases), not WHAT (requirements)
-
-**File 3: `tasks.md` template** (in `.specify/templates/`)
-- Identify task structure (ID, Description, Acceptance Criteria, Dependencies, Effort, Priority)
-- Notice: Each task is atomic (one person, 1-4 hours, single responsibility)
-
-### Exercise 3: Map SMART to Template
-
-**Instructions**: Take your 5 SMART criteria from Lesson 1, Exercise 2.
-
-**Your Task**:
-- Which section of spec.md would these criteria appear in?
-- How would plan.md break down the first criterion into phases?
-- How would tasks.md break those phases into atomic tasks?
-
-**Example**:
-
-Criterion from Lesson 1: "When user enters invalid input, display error message within 500ms that includes: (1) the operation name, (2) what was wrong, (3) an example of valid input."
-
-**In spec.md**:
-```markdown
-## Acceptance Criteria
-- Criterion: Invalid input handling (500ms response, error message format)
-```
-
-**In plan.md**:
-```markdown
-## Phase 1: Error Detection
-- Identify all invalid input cases
-
-## Phase 2: Error Messaging
-- Build error message formatter (operation name + reason + example)
-
-## Phase 3: Performance Testing
-- Validate response time ≤ 500ms
-```
-
-**In tasks.md**:
-```markdown
-Task 1.1: List all invalid input cases
-- Acceptance: Document at least 10 invalid input scenarios
-- Effort: 1 hour
-
-Task 2.1: Build error message formatter
-- Acceptance: Function returns formatted error message
-- Effort: 2 hours
-
-Task 3.1: Performance test error handling
-- Acceptance: Measure response time for error case; verify ≤ 500ms
-- Effort: 1 hour
-```
-
----
-
-## Part D: Key Insight — Structure Forces Thinking
-
-Write this down: **The SpecifyPlus folder structure is not bureaucracy. It's architecture. It forces you to think clearly at each level.**
-
-Each folder serves a purpose:
-- `.specify/` = Rules and templates (guard against chaos)
-- `specs/` = Workflow documents (spec → plan → tasks)
-- `history/` = Decision tracking (why we chose this approach)
-
-This structure makes specification-driven development possible because it's literally impossible to skip steps. You can't write a good plan without a clear spec. You can't write good tasks without a clear plan.
-
----
-
 ## Try With AI
 
 **Tool**: ChatGPT web (or your AI companion if already set up)
@@ -390,7 +231,7 @@ This structure makes specification-driven development possible because it's lite
    ```
    Here's a vague specification: "Build a grading system that calculates student grades."
 
-   If this spec is vague, predict:
+   If this spec is vague in SDD methadology, predict:
    1. What confusions would appear in the plan?
    2. What confusion would appear in the tasks?
    3. What problems would developers face implementing?
@@ -411,20 +252,3 @@ This structure makes specification-driven development possible because it's lite
 - You see how folder structure prevents the "jump straight to coding" trap
 - You're ready for Lesson 3 with context on where specifications fit
 - You understand the cascade: spec quality → plan quality → task quality → code quality
-
-### Safety & Ethics Note
-
-**Remember**: The structure isn't about compliance or micromanagement. It's about efficiency. Clear specifications prevent wasted time on misaligned implementation. Teams that follow this structure ship faster, not slower.
-
----
-
-## Checkpoint: Are You Ready for Lesson 3?
-
-Before moving forward, verify you can do these:
-
-- [ ] Navigate the `.specify/`, `specs/`, and `history/` folders
-- [ ] Explain the purpose of each folder in one sentence
-- [ ] Describe why spec.md must come before plan.md
-- [ ] Describe why plan.md must come before tasks.md
-- [ ] Trace a requirement from your SMART criteria through all three documents (spec → plan → task)
-- [ ] Explain what breaks if you skip the plan and jump to tasks

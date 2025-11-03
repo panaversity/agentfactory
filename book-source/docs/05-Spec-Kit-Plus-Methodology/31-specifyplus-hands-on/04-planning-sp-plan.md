@@ -1,7 +1,7 @@
 ---
 title: "Planning from Specification (/sp.plan)"
 chapter: 31
-lesson: 5
+lesson: 4
 duration_minutes: 90
 
 skills:
@@ -41,9 +41,7 @@ differentiation:
   remedial_for_struggling: "Simplified phase visualization; guided dependency mapping template"
 ---
 
-# Lesson 5: Planning from Specification (/sp.plan)
-
-## Opening Hook
+# Planning from Specification (/sp.plan)
 
 You have a clear, refined specification. Excellent. Now you need to answer: **How will we build this? What are the phases? What must happen first, what next, what last?**
 
