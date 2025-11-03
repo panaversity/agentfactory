@@ -636,15 +636,14 @@ If **any** are true → Load more context before proceeding!
 
 ## Try With AI
 
-**Tool:** ChatGPT Web
+**Tool:** Claude Code
 
 Practice the context-first mindset.
 
 ### Prompt 1: Analyze Context Needs
-Copy this into ChatGPT:
 
-```
-I need to add a "like" feature to a social media application. Users should be able to like posts and see how many likes a post has.
+```bash
+claude-code prompt "I need to add a 'like' feature to a social media application. Users should be able to like posts and see how many likes a post has.
 
 Before I write a specification, what context do I need to understand?
 
@@ -654,7 +653,7 @@ Give me:
 3. Constraints I should consider
 4. Dependencies I should check
 
-Format as a checklist I can use to gather context.
+Format as a checklist I can use to gather context."
 ```
 
 **What to expect:**
@@ -669,12 +668,11 @@ Format as a checklist I can use to gather context.
 ---
 
 ### Prompt 2: Context Before Specification
-Copy this into ChatGPT:
 
-```
-Here's a specification someone wrote:
+```bash
+claude-code prompt "Here's a specification someone wrote:
 
-"Add user profiles. Users should have profiles."
+'Add user profiles. Users should have profiles.'
 
 This specification has poor context. What's missing? What context should have been loaded before writing this specification?
 
@@ -682,7 +680,7 @@ List:
 1. What questions should have been asked
 2. What code should have been reviewed
 3. What patterns should have been researched
-4. How this specification should be improved
+4. How this specification should be improved"
 ```
 
 **What to expect:**
@@ -696,16 +694,15 @@ List:
 ---
 
 ### Prompt 3: Validate Specification Readiness
-Copy this into ChatGPT:
 
-```
-I'm about to write a specification for adding payment processing to an e-commerce site. I've loaded this context:
+```bash
+claude-code prompt "I'm about to write a specification for adding payment processing to an e-commerce site. I've loaded this context:
 
 - How products are currently stored in database
 - How shopping cart works
 - How user accounts are structured
 
-Am I ready to write the specification? What else do I need to understand? Create a readiness checklist.
+Am I ready to write the specification? What else do I need to understand? Create a readiness checklist."
 ```
 
 **What to expect:**

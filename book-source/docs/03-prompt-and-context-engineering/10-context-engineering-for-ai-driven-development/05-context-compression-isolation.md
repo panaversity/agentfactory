@@ -615,29 +615,25 @@ With isolated contexts:
 
 ## Try With AI
 
-**Tool:** ChatGPT Web
+**Tool:** Claude Code
 
 Practice thinking about compression and isolation.
 
 ### Prompt 1: When to Compress
-Copy this into ChatGPT:
 
-```
-I've been working with Claude Code for an hour on a Python project. 
-We've built 2 features and had about 20 back-and-forth messages. 
-I want to keep working, but I'm noticing the AI is taking longer 
-to respond.
+```bash
+claude-code prompt "I've been working with Claude Code for an hour on a Python project. We've built 2 features and had about 20 back-and-forth messages. I want to keep working, but I'm noticing the AI is taking longer to respond.
 
 Should I:
 A) Just keep going
 B) Start a completely fresh session
 C) Do something else?
 
-What's the best practice here?
+What's the best practice here?"
 ```
 
 **What to expect:**
-- ChatGPT should recommend compression (option C)
+- The AI should recommend compression (option C)
 - Explanation of why continuing causes problems
 - Guidance on creating a checkpoint summary
 
@@ -646,10 +642,9 @@ What's the best practice here?
 ---
 
 ### Prompt 2: Practicing Compression
-Copy this into ChatGPT:
 
-```
-I'm about to compress my context. Here's what I've done in this session:
+```bash
+claude-code prompt "I'm about to compress my context. Here's what I've done in this session:
 - Built a user authentication system using JWT
 - Decided to use Redis for token blacklisting
 - Created login, logout, and refresh endpoints
@@ -661,7 +656,7 @@ Create a checkpoint summary following best practices. Include:
 - Current status
 - Next steps
 
-Make it concise but specific enough to resume work.
+Make it concise but specific enough to resume work."
 ```
 
 **What to expect:**
@@ -675,16 +670,14 @@ Make it concise but specific enough to resume work.
 ---
 
 ### Prompt 3: Understanding Isolation
-Copy this into ChatGPT:
 
-```
-In one day, I need to:
+```bash
+claude-code prompt "In one day, I need to:
 1. Build a new payment integration feature
 2. Fix a critical security bug in authentication
 3. Update documentation
 
-Should I do all of this in one AI session or use separate sessions? 
-Why? What are the benefits of each approach?
+Should I do all of this in one AI session or use separate sessions? Why? What are the benefits of each approach?"
 ```
 
 **What to expect:**

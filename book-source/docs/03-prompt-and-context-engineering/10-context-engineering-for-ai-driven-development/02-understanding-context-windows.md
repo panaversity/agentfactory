@@ -97,11 +97,10 @@ A **context window** is the maximum amount of information your AI coding agent c
 |---------|---------------------|------------------|
 | **Claude Sonnet 4.5** | ~200,000 tokens | ~150,000 words or ~500 book pages |
 | **Gemini 1.5 Pro** | 1,000,000 tokens | ~750,000 words or ~2,500 book pages |
-| **ChatGPT (GPT-4)** | ~16,000 tokens* | ~12,000 words or ~40 book pages |
 
 **What's a "token"?** For now, think of it as roughly 3/4 of a word. So 1,000 tokens ≈ 750 words.
 
-\* *Note: Context window sizes as of November 2025. These increase over time—check current specs when using tools.*
+*Note: Context window sizes as of November 2025. These increase over time—check current specs when using tools.*
 
 ### What Fills the Context Window?
 
@@ -303,21 +302,17 @@ For beginners working on typical projects:
 
 Remember, context window sizes vary:
 
-**ChatGPT (Smallest Window - ~16K tokens):**
-- Gets full fastest
-- Need to manage context most carefully
-- Great for learning and short tasks
-- Plan to reload context more often
-
-**Claude Code (Medium Window - ~200K tokens):**
+**Claude Code (200K tokens):**
 - Can handle longer sessions
-- Good for full features
+- Good for full features and medium codebases
 - Still needs management for multi-hour sessions
+- Excellent for iterative development
 
-**Gemini (Largest Window - ~1M tokens):**
+**Gemini CLI (1M tokens):**
 - Can hold huge amounts of context
 - Good for analyzing entire large codebases
-- Still experiences degradation, just later
+- Can handle very long development sessions
+- Still experiences degradation eventually, just later
 
 ---
 
@@ -392,23 +387,18 @@ Take a moment to think:
 
 ## Try With AI
 
-**Tool:** ChatGPT Web
+**Tool:** Claude Code
 
 Let's practice recognizing context concepts.
 
 ### Prompt 1: Understanding the Concept
-Copy this into ChatGPT:
 
-```
-If I'm working with an AI coding agent and after an hour it starts 
-giving me inconsistent answers and seems to forget things I told it 
-earlier, what's probably happening? 
-
-Explain using a simple analogy a non-programmer would understand.
+```bash
+claude-code prompt "If I'm working with an AI coding agent and after an hour it starts giving me inconsistent answers and seems to forget things I told it earlier, what's probably happening? Explain using a simple analogy a non-programmer would understand."
 ```
 
 **What to expect:**
-- ChatGPT should describe context window filling up
+- The AI should describe context window filling up
 - You'll get an analogy (like running out of desk space or RAM)
 - Explanation of why performance degrades
 
@@ -417,22 +407,20 @@ Explain using a simple analogy a non-programmer would understand.
 ---
 
 ### Prompt 2: Recognizing the Signs
-Copy this into ChatGPT:
 
-```
-I'm working with Claude Code on a project. Here are some things 
-I'm noticing:
+```bash
+claude-code prompt "I'm working with Claude Code on a project. Here are some things I'm noticing:
 
 1. I asked it to use FastAPI, and it keeps suggesting Flask
 2. It's taking longer and longer to respond
 3. It just asked me what database I'm using, but I told it 20 messages ago
 4. The code it's generating doesn't match the style it was using earlier
 
-What's happening? Is this context rot?
+What's happening? Is this context rot?"
 ```
 
 **What to expect:**
-- ChatGPT should confirm these are classic context rot symptoms
+- The AI should confirm these are classic context rot symptoms
 - Explanation that context window is full or nearly full
 - Suggestions that you might need to refresh context
 
@@ -441,11 +429,9 @@ What's happening? Is this context rot?
 ---
 
 ### Prompt 3: Planning Ahead
-Copy this into ChatGPT:
 
-```
-I'm about to start a coding session with an AI assistant. I want to 
-load context about my project. 
+```bash
+claude-code prompt "I'm about to start a coding session with an AI assistant. I want to load context about my project. 
 
 I have:
 - README.md (2 pages)
@@ -454,11 +440,11 @@ I have:
 - API documentation (50 pages)
 - CONTRIBUTING.md (5 pages)
 
-Should I load all of these at the start? Why or why not?
+Should I load all of these at the start? Why or why not?"
 ```
 
 **What to expect:**
-- ChatGPT should advise against loading everything at once
+- The AI should advise against loading everything at once
 - Recommendation to load progressively as needed
 - Explanation that too much context too fast causes problems
 

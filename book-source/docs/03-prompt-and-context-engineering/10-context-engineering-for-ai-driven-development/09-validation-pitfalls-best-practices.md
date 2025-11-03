@@ -715,17 +715,16 @@ Date: [Today]"
 
 ## Try With AI
 
-**Tool:** ChatGPT Web
+**Tool:** Claude Code
 
 Practice recognizing and correcting mistakes.
 
 ### Prompt 1: Recognize Mistakes
-Copy this into ChatGPT:
 
-```
-Here's how a developer started their session:
+```bash
+claude-code prompt "Here's how a developer started their session:
 
-"Read all 47 files in my project and then help me add a small bug fix to one function."
+'Read all 47 files in my project and then help me add a small bug fix to one function.'
 
 What mistakes is this developer making? Reference the 5 common mistakes from context engineering:
 1. Loading all files upfront
@@ -734,7 +733,7 @@ What mistakes is this developer making? Reference the 5 common mistakes from con
 4. Not documenting decisions
 5. Mixing unrelated contexts
 
-Which mistakes apply here? How should they have approached this instead?
+Which mistakes apply here? How should they have approached this instead?"
 ```
 
 **What to expect:**
@@ -748,10 +747,9 @@ Which mistakes apply here? How should they have approached this instead?
 ---
 
 ### Prompt 2: Practice Context Health Check
-Copy this into ChatGPT:
 
-```
-I've been working in a coding session for 3 hours. I've built 4 different features. I haven't restarted the session. The AI is starting to give inconsistent answers and mixing up which feature I'm working on.
+```bash
+claude-code prompt "I've been working in a coding session for 3 hours. I've built 4 different features. I haven't restarted the session. The AI is starting to give inconsistent answers and mixing up which feature I'm working on.
 
 Run the 5-point context health check on this scenario:
 1. Context fill level
@@ -761,7 +759,7 @@ Run the 5-point context health check on this scenario:
 5. Context loading strategy
 
 For each point, assess: Healthy / Warning / Critical
-Then tell me what actions I should take immediately.
+Then tell me what actions I should take immediately."
 ```
 
 **What to expect:**
@@ -775,17 +773,16 @@ Then tell me what actions I should take immediately.
 ---
 
 ### Prompt 3: Create Your Personal Context Checklist
-Copy this into ChatGPT:
 
-```
-Based on the 5 common mistakes and the context health check, create a personalized checklist I can use every time I start a development session.
+```bash
+claude-code prompt "Based on the 5 common mistakes and the context health check, create a personalized checklist I can use every time I start a development session.
 
 Include:
 - Pre-session setup (before I start)
 - During session (what to check regularly)
 - End session (how to wrap up properly)
 
-Make it practical and concise—something I can realistically follow every day.
+Make it practical and concise—something I can realistically follow every day."
 ```
 
 **What to expect:**
@@ -798,18 +795,18 @@ Make it practical and concise—something I can realistically follow every day.
 
 ---
 
-### Safety Note
+### Tool Flexibility Note
 
 **Why practicing mistake recognition matters:**
 
-Even with a small tool like ChatGPT:
+With any AI coding tool (Claude Code, Gemini CLI, or future tools):
 - You'll make these mistakes (everyone does!)
 - Recognizing them quickly is the key skill
 - The faster you catch mistakes, the less time wasted
 
-**These validation habits transfer to any AI tool:**
-- Claude Code (larger context, but same principles)
-- Gemini CLI (named sessions, but same mistakes possible)
+**These validation habits transfer across all tools:**
+- Claude Code (200K token context window)
+- Gemini CLI (1M+ token context window)
 - Any future AI coding tool
 
 **Building good habits now saves hours of frustration later.**

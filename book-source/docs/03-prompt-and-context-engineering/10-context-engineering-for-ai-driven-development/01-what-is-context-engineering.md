@@ -71,7 +71,7 @@ You'd need:
 - Examples of similar features you can learn from
 - Context about the project's goals and constraints
 
-**This is exactly what your AI coding agent needs.** When you work with AI tools like Claude Code, ChatGPT, or Gemini, they need more than just your request (the prompt). They need the entire **information environment**—the context—to give you useful, project-appropriate responses.
+**This is exactly what your AI coding agent needs.** When you work with AI tools like Claude Code or Gemini CLI, they need more than just your request (the prompt). They need the entire **information environment**—the context—to give you useful, project-appropriate responses.
 
 ### Real-World Example: Two Developers, Same Task
 
@@ -340,20 +340,14 @@ Before moving on, think about your own experience:
 
 ## Try With AI
 
-**Tool:** Claude Code or Gemini CLI (choose one based on what you have installed)
+**Tool:** Claude Code
 
 Now let's practice understanding context engineering with an AI conversation.
 
 ### Prompt 1: Understanding the Concept
 
-**Using Claude Code:**
 ```bash
 claude-code prompt "Explain the difference between prompt engineering and context engineering for software development. Give me a simple analogy that a non-programmer would understand."
-```
-
-**Using Gemini CLI:**
-```bash
-gemini "Explain the difference between prompt engineering and context engineering for software development. Give me a simple analogy that a non-programmer would understand."
 ```
 
 **What to expect:**
@@ -367,23 +361,8 @@ gemini "Explain the difference between prompt engineering and context engineerin
 
 ### Prompt 2: Identifying Context Problems
 
-**Using Claude Code:**
 ```bash
 claude-code prompt "Here's a scenario:
-
-I asked an AI: 'Create a login function'
-
-The AI created code using Flask, but my project uses FastAPI. 
-It used a session-based authentication, but I need JWT tokens.
-It stored passwords in plain text instead of hashing them.
-
-Is this a prompt engineering problem or a context engineering problem? 
-Why?"
-```
-
-**Using Gemini CLI:**
-```bash
-gemini "Here's a scenario:
 
 I asked an AI: 'Create a login function'
 
@@ -406,14 +385,8 @@ Why?"
 
 ### Prompt 3: Real-World Application
 
-**Using Claude Code:**
 ```bash
 claude-code prompt "I'm starting a new software project and I want to work with an AI coding assistant. What context should I provide to the AI at the very start of my first session? Give me a checklist of information the AI would need."
-```
-
-**Using Gemini CLI:**
-```bash
-gemini "I'm starting a new software project and I want to work with an AI coding assistant. What context should I provide to the AI at the very start of my first session? Give me a checklist of information the AI would need."
 ```
 
 **What to expect:**
@@ -422,15 +395,5 @@ gemini "I'm starting a new software project and I want to work with an AI coding
 - Ideas about existing code patterns to show
 
 **Action:** Save this checklist—you'll use it when you actually start AI-driven development!
-
----
-
-### Tool Comparison Note
-
-**Context Window Sizes:**
-- **Claude Code**: ~200K tokens (can handle large codebases)
-- **Gemini CLI**: ~1M tokens (can handle very large projects)
-
-Both tools maintain context well for development work. As you progress through this chapter, you'll learn specific strategies for each tool's strengths.
 
 

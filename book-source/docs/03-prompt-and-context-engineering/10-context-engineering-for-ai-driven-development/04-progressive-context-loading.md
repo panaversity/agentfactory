@@ -466,22 +466,18 @@ How do you know if your progressive loading strategy is working?
 
 ## Try With AI
 
-**Tool:** ChatGPT Web
+**Tool:** Claude Code
 
 Now let's practice progressive loading thinking.
 
 ### Prompt 1: Understanding the Concept
-Copy this into ChatGPT:
 
-```
-I'm starting work on a Python project with 30 files. Should I ask my AI 
-to read all files first, or load them progressively as needed? Why?
-
-Explain using the three-phase progressive loading approach.
+```bash
+claude-code prompt "I'm starting work on a Python project with 30 files. Should I ask my AI to read all files first, or load them progressively as needed? Why? Explain using the three-phase progressive loading approach."
 ```
 
 **What to expect:**
-- ChatGPT recommends progressive loading
+- The AI recommends progressive loading
 - Explanation of why all-at-once causes problems
 - Description of the 3-phase approach
 
@@ -490,11 +486,9 @@ Explain using the three-phase progressive loading approach.
 ---
 
 ### Prompt 2: Creating a Loading Plan
-Copy this into ChatGPT:
 
-```
-I need to add user authentication to a FastAPI project I just joined. 
-The project has 40+ files. I want to use progressive context loading.
+```bash
+claude-code prompt "I need to add user authentication to a FastAPI project I just joined. The project has 40+ files. I want to use progressive context loading.
 
 Create a 3-phase loading plan for me:
 - Phase 1 (Overview): What should I analyze first?
@@ -502,7 +496,7 @@ Create a 3-phase loading plan for me:
 - Phase 3 (Implementation): What context do I need for building auth?
 
 Assume the project structure is:
-src/api/, src/services/, src/models/, tests/
+src/api/, src/services/, src/models/, tests/"
 ```
 
 **What to expect:**
@@ -515,16 +509,13 @@ src/api/, src/services/, src/models/, tests/
 ---
 
 ### Prompt 3: Real-World Application
-Copy this into ChatGPT:
 
-```
-I loaded 20 files into my AI context at the start of my session. Now I'm 
-only using 3 of them for my current task. The other 17 are just sitting 
-there taking up space.
+```bash
+claude-code prompt "I loaded 20 files into my AI context at the start of my session. Now I'm only using 3 of them for my current task. The other 17 are just sitting there taking up space.
 
 1. What problem does this cause?
 2. What should I have done instead?
-3. What should I do now to fix this?
+3. What should I do now to fix this?"
 ```
 
 **What to expect:**
