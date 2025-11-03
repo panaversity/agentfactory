@@ -54,7 +54,7 @@ The constitution is your project's rule book. It sets up your coding standards a
 
 ## Prerequisites
 
-- Have SpecKit installed in your project
+- Have SpecKit installed in your project and proejct setup
 - Be ready to work with your chosen AI agent
 
 ## Step-by-Step Instructions
@@ -124,8 +124,10 @@ Show me the generated constitution file and explain what it contains.
 
 **Your Prompt**
 
+Use the agent to commit and open a PR for the constitution: 
+
 ```
-Use the agent to commit and open a PR for the constitution: /sp.git.commit_pr Commit and push the constitution along with current work.
+/sp.git.commit_pr Commit and push the constitution along with current work.
 ```
 
 **Agent Does:**
