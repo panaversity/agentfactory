@@ -350,7 +350,7 @@ Now let's practice understanding context engineering with an AI conversation.
 claude-code prompt "Explain the difference between prompt engineering and context engineering for software development. Give me a simple analogy that a non-programmer would understand."
 ```
 
-**What to expect:**
+**Expected Outcome:**
 - The AI should explain prompt = the question, context = the background knowledge
 - You'll likely get an analogy (like asking a question with vs without background information)
 - The explanation should clarify why both are needed
@@ -374,7 +374,7 @@ Is this a prompt engineering problem or a context engineering problem?
 Why?"
 ```
 
-**What to expect:**
+**Expected Outcome:**
 - The AI should identify this as primarily a **context** problem
 - The AI lacked information about your framework, auth method, and security standards
 - Even a perfect prompt couldn't fix missing context
@@ -389,7 +389,7 @@ Why?"
 claude-code prompt "I'm starting a new software project and I want to work with an AI coding assistant. What context should I provide to the AI at the very start of my first session? Give me a checklist of information the AI would need."
 ```
 
-**What to expect:**
+**Expected Outcome:**
 - A checklist of project context (framework, language, structure, standards)
 - Suggestions about documentation to share
 - Ideas about existing code patterns to show

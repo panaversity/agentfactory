@@ -476,7 +476,7 @@ Now let's practice progressive loading thinking.
 claude-code prompt "I'm starting work on a Python project with 30 files. Should I ask my AI to read all files first, or load them progressively as needed? Why? Explain using the three-phase progressive loading approach."
 ```
 
-**What to expect:**
+**Expected Outcome:**
 - The AI recommends progressive loading
 - Explanation of why all-at-once causes problems
 - Description of the 3-phase approach
@@ -499,7 +499,7 @@ Assume the project structure is:
 src/api/, src/services/, src/models/, tests/"
 ```
 
-**What to expect:**
+**Expected Outcome:**
 - Phase 1: Structure analysis, no files read yet
 - Phase 2: Similar existing features (if any), service patterns, model patterns
 - Phase 3: Specific files to modify, security patterns, testing patterns
@@ -518,7 +518,7 @@ claude-code prompt "I loaded 20 files into my AI context at the start of my sess
 3. What should I do now to fix this?"
 ```
 
-**What to expect:**
+**Expected Outcome:**
 - Problem: Wasted context, faster rot, slower AI
 - Should have: Used progressive loading, loaded only needed 3
 - Fix now: Start fresh session with just the 3 needed files

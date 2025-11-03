@@ -736,7 +736,7 @@ What mistakes is this developer making? Reference the 5 common mistakes from con
 Which mistakes apply here? How should they have approached this instead?"
 ```
 
-**What to expect:**
+**Expected Outcome:**
 - Identification of Mistake #1 (loading everything)
 - Explanation of why this approach is inefficient
 - Better approach: progressive loading to find the bug
@@ -762,7 +762,7 @@ For each point, assess: Healthy / Warning / Critical
 Then tell me what actions I should take immediately."
 ```
 
-**What to expect:**
+**Expected Outcome:**
 - Health check assessment (likely all Critical)
 - Identification of multiple mistakes (#2, #5, possibly others)
 - Action plan: compress, isolate, restart
@@ -785,7 +785,7 @@ Include:
 Make it practical and concise—something I can realistically follow every day."
 ```
 
-**What to expect:**
+**Expected Outcome:**
 - Customized checklist template
 - Practical, actionable items
 - Integration of all 5 mistake prevention strategies

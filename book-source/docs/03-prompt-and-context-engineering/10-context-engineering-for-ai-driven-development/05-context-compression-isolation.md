@@ -632,7 +632,7 @@ C) Do something else?
 What's the best practice here?"
 ```
 
-**What to expect:**
+**Expected Outcome:**
 - The AI should recommend compression (option C)
 - Explanation of why continuing causes problems
 - Guidance on creating a checkpoint summary
@@ -659,7 +659,7 @@ Create a checkpoint summary following best practices. Include:
 Make it concise but specific enough to resume work."
 ```
 
-**What to expect:**
+**Expected Outcome:**
 - Structured checkpoint summary
 - Specific details about what was built
 - Clear decisions documented
@@ -680,7 +680,7 @@ claude-code prompt "In one day, I need to:
 Should I do all of this in one AI session or use separate sessions? Why? What are the benefits of each approach?"
 ```
 
-**What to expect:**
+**Expected Outcome:**
 - Recommendation for separate sessions (isolation)
 - Explanation of why mixing contexts causes problems
 - Benefits: focus, no cross-contamination, clearer history

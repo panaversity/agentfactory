@@ -656,7 +656,7 @@ Give me:
 Format as a checklist I can use to gather context."
 ```
 
-**What to expect:**
+**Expected Outcome:**
 - List of questions about existing post system
 - Database structure questions
 - Questions about user authentication
@@ -683,7 +683,7 @@ List:
 4. How this specification should be improved"
 ```
 
-**What to expect:**
+**Expected Outcome:**
 - List of missing details (what fields? how to access? privacy settings?)
 - Questions about existing user system
 - Integration points that weren't considered
@@ -705,7 +705,7 @@ claude-code prompt "I'm about to write a specification for adding payment proces
 Am I ready to write the specification? What else do I need to understand? Create a readiness checklist."
 ```
 
-**What to expect:**
+**Expected Outcome:**
 - Missing context identified (payment gateway choice, security requirements, refund policy, etc.)
 - Checklist of additional context to load
 - Warning that current context is incomplete
