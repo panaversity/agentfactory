@@ -1,5 +1,5 @@
 ---
-title: "SpecifyPlus Project Structure & the Cascade"
+title: "SpecifyPlus Setup & Project Structure"
 chapter: 31
 lesson: 1
 duration_minutes: 90
@@ -41,7 +41,7 @@ differentiation:
   remedial_for_struggling: "Simplified folder diagram with one-sentence explanation of each; guided exploration checklist"
 ---
 
-# SpecifyPlus Project Structure & the Cascade
+# SpecifyPlus Setup & Project Structure
 
 SpecifyPlus answers SDD problems like how to manage Specification with a simple but powerful insight: **The folder structure itself enforces the workflow.** You can't jump from vague ideas straight to code. The structure forces you to think clearly at each step.
 
@@ -53,15 +53,20 @@ This lesson shows you how. When you see the structure, you'll understand why spe
 
 When you initialize a SpecifyPlus project, you get a specific folder structure. Let's explore it.
 
-**Initialization Command**:
+**Installation Command**:
 
 ```bash
 pip install specifyplus
-sp --version
+specifyplus --version
+```
+
+**Initialization Command**:
+
+```
 specifyplus init my-project
 ```
 
-Or if you already have SpecifyPlus:
+Or
 
 ```bash
 uvx specifyplus init my-project
