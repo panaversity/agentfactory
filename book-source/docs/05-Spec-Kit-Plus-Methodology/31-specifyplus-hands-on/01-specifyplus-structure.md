@@ -79,9 +79,7 @@ Select your AI Companion and the terminal. Next navigate in the project and open
 cd my-project
 ```
 
-**What You Get** (folder tree):
-
-### The Three Key Folders
+### **What You Get** (folder tree):
 
 #### **1. `.specify/` Folder: Project Constitution & Templates**
 
@@ -98,7 +96,9 @@ This folder contains the rules and templates that guide your project.
 
 #### **2. `specs/` Folder: The Workflow Documents**
 
-This is where the magic happens. For each feature, you create three documents in sequence:
+This is where the magic happens. It will appear once we create our first spec.
+
+For each feature, you create three documents in sequence:
 
 **spec.md** (Specification — WHAT to build):
 - Problem statement
@@ -121,6 +121,8 @@ This is where the magic happens. For each feature, you create three documents in
 - Priority (MUST/SHOULD/NICE-TO-HAVE)
 
 #### **3. `history/` Folder: Decision Tracking**
+
+It will appear once we create our first spec.
 
 - **prompts/**: Records of AI conversations used to build the project (for learning and traceability)
 - **adr/**: Architecture Decision Records (why you made certain choices and what alternatives you considered)
