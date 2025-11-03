@@ -53,7 +53,7 @@ This lesson shows you how to decompose plans into tasks and understand the compl
 
 ---
 
-## Part A: Understanding Tasks (15 min)
+## Understanding Tasks
 
 ### What's an Atomic Task?
 
@@ -110,377 +110,51 @@ Effort: 2 hours
 | High-level business need | Medium-level implementation step | Low-level concrete work unit |
 | What matters to stakeholders | What matters to managers | What matters to developers |
 
-### The Cascade: From Requirement to Task
-
-Let's trace one requirement through all levels:
-
-**Specification (Requirement)**:
-> "System calculates weighted grades (homework 30%, quizzes 20%, exams 50%)"
-
-**Plan (Phase)**:
-```
-Phase 2: Implement Grading Algorithm
-- Design calculation formula
-- Code weighted_grade() function
-- Test with multiple student scenarios
-```
-
-**Tasks (Atomic Units)**:
-```
-Task 2.1: Design Grading Formula
-Acceptance: Weighted grade formula defined and documented
-Effort: 1 hour
-Dependencies: Task 1.2 (data structure complete)
-
-Task 2.2: Implement weighted_grade() Function
-Acceptance: Function takes scores dict, weights dict, returns final grade (0-100)
-Effort: 2 hours
-Dependencies: Task 2.1
-
-Task 2.3: Write Unit Tests for weighted_grade()
-Acceptance: All test cases pass (normal weights, edge cases: all 0, all 100, single category)
-Effort: 1.5 hours
-Dependencies: Task 2.2
-
-Task 2.4: Integration Test (Real Student Scenario)
-Acceptance: Test with 10 real student score combinations; verify accuracy ±0.01%
-Effort: 1 hour
-Dependencies: Task 2.3
-```
-
-Notice:
-- One requirement → one plan phase → four tasks
-- Each task is small (1-2 hours)
-- Each task has clear dependencies
-- Each task produces concrete output (design doc, code, tests)
-
 ---
 
-## Part B: Generate Tasks with /sp.tasks (20 min)
+## Generate Tasks with /sp.tasks 
 
-### Running the Command
+Like `/sp.specify` and `/sp.plan`, `/sp.tasks` runs **within AI Companion (Gemini CLI/Claude Code)**:
 
-Like `/sp.specify` and `/sp.plan`, `/sp.tasks` runs **within Claude Code**:
-
-1. Open Claude Code
+1. Open AI Companion (Gemini CLI/Claude Code)
 2. Paste your plan (from Lesson 5)
-3. Run `/sp.tasks`
-4. Read the generated task checklist
+3. Run 
 
-### Example Output
+```/sp.tasks
+Break plan into small tasks (T001..), each ≤ 3 minutes, testable, reversible.
+Add dependencies between tasks; group into phases; mark deliverables per task. Group tasks by operations and for each operation like add use TDD approach so RED Tests, Green Tests and Refactor. After each group we pause for human review and on approval commit to github.
 
-When you run `/sp.tasks` on your calculator plan, you get:
-
-```markdown
-# Task Checklist
-
-## Phase 1: Data Structure & Architecture
-
-### Task 1.1: Document Input Validation Rules
-Priority: MUST
-Effort: 1 hour
-Dependencies: None
-Acceptance: List all invalid input cases (non-numbers, invalid operators, empty input)
-Output: validation_rules.md
-
-### Task 1.2: Design Calculation Schema
-Priority: MUST
-Effort: 1.5 hours
-Dependencies: Task 1.1
-Acceptance: JSON schema defined for calculation record (operation, operands, result, timestamp)
-Output: calculation_schema.json
-
-### Task 1.3: Design History Storage Structure
-Priority: MUST
-Effort: 1 hour
-Dependencies: Task 1.2
-Acceptance: Storage approach documented (file format, max size, persistence rules)
-Output: history_design.md
-
-## Phase 2: Core Functions
-
-### Task 2.1: Implement add() Function
-Priority: MUST
-Effort: 0.5 hours
-Dependencies: Task 1.2
-Acceptance: add(a, b) returns sum; handles positive, negative, zero, floats
-Output: calculator.py (add function + docstring)
-
-### Task 2.2: Implement subtract() Function
-Priority: MUST
-Effort: 0.5 hours
-Dependencies: Task 1.2
-Acceptance: subtract(a, b) returns difference
-Output: calculator.py (subtract function)
-
-### Task 2.3: Implement multiply() Function
-Priority: MUST
-Effort: 0.5 hours
-Dependencies: Task 1.2
-Acceptance: multiply(a, b) returns product
-Output: calculator.py (multiply function)
-
-### Task 2.4: Implement divide() Function
-Priority: MUST
-Effort: 0.5 hours
-Dependencies: Task 1.2
-Acceptance: divide(a, b) returns quotient; error on divide-by-zero handled in Phase 3
-Output: calculator.py (divide function)
-
-### Task 2.5: Implement exp() Function
-Priority: MUST
-Effort: 0.5 hours
-Dependencies: Task 1.2
-Acceptance: exp(a, b) returns a^b
-Output: calculator.py (exp function)
-
-### Task 2.6: Implement sqrt() Function
-Priority: SHOULD
-Effort: 0.5 hours
-Dependencies: Task 1.2
-Acceptance: sqrt(a) returns square root; error on negative input handled in Phase 3
-Output: calculator.py (sqrt function)
-
-### Task 2.7: Write Unit Tests for All Functions
-Priority: MUST
-Effort: 2 hours
-Dependencies: Tasks 2.1-2.6
-Acceptance: All functions tested (normal cases + edge cases); 95% code coverage
-Output: test_calculator.py
-
-## Phase 3: Error Handling
-
-### Task 3.1: Implement Input Validation
-Priority: MUST
-Effort: 1 hour
-Dependencies: Task 1.1
-Acceptance: validate_input() function returns True for valid, False for invalid
-Output: validation.py + unit tests
-
-### Task 3.2: Implement Division by Zero Handling
-Priority: MUST
-Effort: 0.5 hours
-Dependencies: Task 2.4
-Acceptance: divide() returns error message "ERROR: Cannot divide by zero"
-Output: Updated calculator.py
-
-### Task 3.3: Implement Error Message Formatter
-Priority: MUST
-Effort: 1 hour
-Dependencies: Tasks 3.1, 3.2
-Acceptance: format_error(operation, reason) returns formatted error message
-Output: error_formatter.py
-
-## Phase 4: History Storage & Commands
-
-### Task 4.1: Implement save_calculation() Function
-Priority: MUST
-Effort: 1.5 hours
-Dependencies: Tasks 1.3, 2.7
-Acceptance: Function saves calculation to file; verifiable by loading
-Output: history.py
-
-### Task 4.2: Implement load_history() Function
-Priority: MUST
-Effort: 1 hour
-Dependencies: Task 4.1
-Acceptance: Function retrieves all calculations in order; returns list of dicts
-Output: history.py
-
-### Task 4.3: Implement clear_history() Command
-Priority: MUST
-Effort: 0.5 hours
-Dependencies: Task 4.2
-Acceptance: Clears all history; file verified empty
-Output: history.py
-
-### Task 4.4: Integrate History with Core Functions
-Priority: MUST
-Effort: 1.5 hours
-Dependencies: Tasks 2.7, 4.3
-Acceptance: Each calculation automatically saved to history
-Output: Updated calculator.py
-
-### Task 4.5: Test History Limits (50 Item Cap)
-Priority: MUST
-Effort: 1 hour
-Dependencies: Task 4.4
-Acceptance: After 50 calculations, oldest is removed (FIFO)
-Output: test_history.py
-
-## Phase 5: Integration & Performance Testing
-
-### Task 5.1: End-to-End Test Scenarios
-Priority: MUST
-Effort: 1.5 hours
-Dependencies: Task 4.5
-Acceptance: 10 real-world scenarios tested (mix of operations, errors, history)
-Output: test_e2e.py
-
-### Task 5.2: Performance Benchmark
-Priority: MUST
-Effort: 1 hour
-Dependencies: Task 5.1
-Acceptance: All operations complete ≤100ms; verified on standard laptop
-Output: benchmark_report.md
-
-## Priority Summary
-- MUST: 15 tasks (critical for MVP)
-- SHOULD: 1 task (nice to have)
-
-## Critical Path
-1.1 → 1.2 → 2.1 → 2.7 → 4.4 → 5.1 (11.5 hours minimum)
-
-## Total Effort
-MUST tasks: ~18 hours
-SHOULD tasks: ~0.5 hours
-Total: ~18.5 hours
-
-## Parallelization Opportunities
-- Tasks 2.1-2.6 (core functions) can run parallel (after 1.2)
-- Task 3.x (error handling) can start after 1.1 (doesn't block critical path)
-- Tasks 2.7, 3.3 (tests) can be written while implementation ongoing
+Focus on:
+- Use Context7 MCP server and pull documentations instead of assuming you know the best.
+- Use CLI commands where it;s more efficient than files manual creation.
+- TDD approach (tests first for each operation)
+- Small, step-by-step implementation
+- Clear task dependencies
+- Easy to undo changes
 ```
 
-### Analyzing the Task List
+**Agent Does:**
 
-Notice:
+- Breaks plan into numbered tasks (T001, T002, etc.)
+- Groups tasks into logical phases
+- Establishes task dependencies
+- Creates tasks.md file with detailed breakdown
 
-1. **Tasks are small**: 0.5-2 hour tasks (you can complete one in a work session)
-2. **Dependencies are explicit**: Task 2.4 depends on Task 1.2 (schema must exist first)
-3. **Priorities are clear**: MUST vs. SHOULD vs. NICE-TO-HAVE
-4. **Effort is estimated**: Each task has hours
-5. **Acceptance criteria are testable**: Not "write add function" but "add(a, b) returns sum; handles positive, negative, zero"
-6. **Parallelization is possible**: All Task 2.x functions can run parallel (after Task 1.2)
+4. Review the tasks and manually update or ask gemini. Never rely on the initial output as magical best solution.
 
-This task list is **actionable**. A developer picks up Task 1.1, reads the acceptance criteria, and starts working. They know exactly what "done" means.
-
----
-
-## Part C: Student Practice (45 min)
-
-### Exercise 1: Run /sp.tasks on Your Plan
-
-**Instructions**:
-
-1. Open Claude Code
-2. Paste your plan (from Lesson 5)
-3. Run `/sp.tasks`
-4. Read the generated task checklist
-
-**What to Document**:
-- How many tasks total?
-- How many are MUST? SHOULD? NICE-TO-HAVE?
-- What's the longest single task (highest effort)?
-- What's the critical path (longest chain of dependencies)?
-- What's the total effort (sum of all tasks)?
-
-### Exercise 2: Identify Task Dependencies
-
-**Instructions**: Create a dependency graph (or list) for your tasks.
-
-**Example format**:
-```
-Task 1.1 (no dependencies)
-  ↓
-Task 1.2 (depends on 1.1)
-  ↓
-Task 2.1 (depends on 1.2)
-Tasks 2.2, 2.3, 2.4 (all depend on 1.2, can run parallel)
-  ↓
-Task 2.7 (tests, depends on 2.1-2.6)
-```
-
-**Questions to Answer**:
-1. Which task could you start first?
-2. Which tasks can run in parallel?
-3. What's the longest chain (critical path)?
-4. If you do tasks out of order, what breaks?
-
-### Exercise 3: Trace Lineage (Spec → Plan → Task)
-
-**Instructions**: Pick 2 requirements from your specification. Trace each through plan to tasks.
-
-**Example**:
-
-**Requirement 1 from Spec**: "Response time ≤ 100ms"
-
-**Plan Phase**: Phase 5 (Integration & Performance Testing)
-
-**Tasks**:
-- Task 5.2: Performance Benchmark
-
-**How it cascades**:
-- Spec says what you must achieve (≤100ms)
-- Plan phase identifies where to address it (performance testing)
-- Task defines the concrete work (run benchmark, verify, document)
-
-**Requirement 2 from Spec**: "Division by zero displays error message"
-
-**Plan Phase**: Phase 3 (Error Handling)
-
-**Tasks**:
-- Task 3.2: Implement Division by Zero Handling
-- Task 3.3: Implement Error Message Formatter
-
-**How it cascades**:
-- Spec says what should happen (error message)
-- Plan identifies which phase (error handling)
-- Tasks define concrete implementation (handle case, format message)
-
-### Exercise 4: Quality Assessment
-
-**Instructions**: Read your task checklist and evaluate:
-
-1. **Are tasks atomic?** (Can one person complete in 1-4 hours?)
-   - If you see a task that seems > 4 hours, it needs decomposing
-   - If you see tasks < 30 min, they might combine
-
-2. **Are dependencies realistic?** (Does Task B really need Task A to finish?)
-   - Sometimes dependencies are too strict (conservative planning)
-   - Sometimes dependencies are missing
-
-3. **Are acceptance criteria testable?** (Can you verify "done" with pass/fail?)
-   - "Write code" is not testable
-   - "Function returns sum for positive, negative, zero inputs" is testable
-
----
-
-## Part D: Full Lineage Demonstration (10 min)
-
-### The Complete Pipeline: Spec → Plan → Task → Code
-
-You now have the complete lineage. Let's visualize it:
 
 ```
-SPECIFICATION (Lesson 3)
-├─ Requirement: "System calculates grades accurately"
-│
-PLAN (Lesson 5)
-├─ Phase 2: Implement Grading Algorithm
-│
-TASKS (Lesson 6)
-├─ Task 2.1: Design weighted grade formula
-├─ Task 2.2: Implement weighted_grade() function
-├─ Task 2.3: Write unit tests
-├─ Task 2.4: Integration test with real data
-│
-CODE (Lesson 7 - coming next)
-├─ grading.py (contains weighted_grade function)
-├─ test_grading.py (contains all tests)
-├─ Output: Function that passes all acceptance criteria ✓
+update @specs/001-feature-basic-calculator/tasks.md so For first task we will make project in same directory using uv init command. And after each user story we shall pause to ask for Human Review as an explicit task and on approval commit or iterate as requested
 ```
 
-**Key insight**: Each level cascades from the previous.
-
-- **Vague spec** → unclear plan → confusing tasks → code that doesn't work
-- **Clear spec** → detailed plan → atomic tasks → working code
+**Why This Matters:**
+Now the individual operations become TASKS (T001, T002, etc.). Each task is small and testable. This is where the granularity from vibe coding appears, but with better structure and planning behind it.
 
 ---
 
 ## Try With AI
 
-**Tool**: Claude Code with `/sp.tasks` command
+**Tool**: AI Companion (Gemini CLI/Claude Code) with `/sp.tasks` command
 **Duration**: 10 minutes
 
 ### Workflow
@@ -498,24 +172,3 @@ CODE (Lesson 7 - coming next)
 - You recognize the complete lineage: Spec → Plan → Task
 - You're ready for `/sp.implement` (Lesson 7) with clear work units
 - You see the cascade effect in full: specification quality → plan quality → task quality
-
-### Safety & Ethics Note
-
-**Remember**: Task estimates are educated guesses. Reality will vary. Some tasks take 30 minutes, others take 3 hours. The value of decomposition is clarity, not prediction accuracy.
-
-If a task takes longer than estimated, that's data for future planning, not a failure. Adjust estimates and learn.
-
----
-
-## Checkpoint: Are You Ready for Lesson 7?
-
-Before moving forward, verify you can do these:
-
-- [ ] Run `/sp.tasks` on your plan within Claude Code
-- [ ] Understand all tasks and their purposes
-- [ ] Identify task dependencies (which must complete before others)
-- [ ] Identify the critical path (longest chain of dependent tasks)
-- [ ] Trace 2 requirements from spec → plan phase → tasks
-- [ ] Estimate total effort (sum of all tasks)
-- [ ] Identify parallelizable work (tasks that can run simultaneously)
-- [ ] Assess whether tasks are atomic (1-4 hours each)

@@ -53,7 +53,7 @@ The key insight: **Clear specifications produce clear plans with explicit depend
 
 ---
 
-## Part A: Understanding Plans (20 min)
+## Part A: Understanding Plans
 
 ### Specification vs. Plan
 
@@ -71,33 +71,11 @@ A complete plan has these sections:
 
 #### **Phases: High-Level Steps**
 
-Phases break the project into sequential or parallel work streams.
-
-**Example Plan for Calculator**:
-- Phase 1: Architecture & Data Structure (design input/output model, history schema)
-- Phase 2: Core Functions (implement add, subtract, multiply, divide, exp, sqrt)
-- Phase 3: Error Handling (validate inputs, format error messages)
-- Phase 4: History & Commands (storage, retrieval, clear)
-- Phase 5: Testing & Polish (unit tests, integration tests, performance review)
-
-Each phase has a purpose and produces deliverables (code, tests, documentation).
+Phases break the project into sequential or parallel work streams. Each phase has a purpose and produces deliverables (code, tests, documentation).
 
 #### **Dependencies: Phase Ordering**
 
 Dependencies define which phases must complete before others can start.
-
-**Example**:
-```
-Phase 1 (Architecture)
-  ↓ (must complete before Phase 2)
-Phase 2 (Core Functions)
-  ↓ (must complete before Phase 3)
-Phase 3 (Error Handling)
-  ↓ (must complete before Phase 4)
-Phase 4 (History)
-  ↓ (must complete before Phase 5)
-Phase 5 (Testing)
-```
 
 **Question**: Can you parallelize? For calculator:
 - Phase 2 (core functions) and Phase 3 (error handling) could partially overlap
@@ -107,287 +85,49 @@ Phase 5 (Testing)
 
 Milestones mark "when" phases are done.
 
-**Example**:
-- EOD Monday (Phase 1 architecture review)
-- EOD Wednesday (Phase 2 core functions coded + basic tests)
-- EOD Thursday (Phase 3 error handling integrated)
-- EOD Friday (Phase 4 history working)
-- Following Monday (Phase 5 comprehensive tests + code review)
-
 #### **Deliverables: What's Produced**
 
 Each phase produces concrete outputs.
 
-**Example**:
-- Phase 1: Deliverable = Design document (input/output structure, history schema)
-- Phase 2: Deliverable = Core functions (add.py, subtract.py, etc.) + unit tests
-- Phase 3: Deliverable = Error handling module + error test cases
-- Phase 4: Deliverable = History storage module + history tests
-- Phase 5: Deliverable = Full test suite (80%+ coverage), code review, deployment ready
-
-### The Cascade Effect: Spec Quality → Plan Quality
-
-**Vague Spec Example**:
-> "Build a calculator with history"
-
-**Plan Generated** (vague too):
-```
-Phase 1: Build calculation
-Phase 2: Build history
-Phase 3: Testing
-```
-
-Problems:
-- What's "calculation"? (single operation? multiple?)
-- What's "history"? (in-memory? file? database?)
-- No error handling mentioned
-- Testing is too late (should be parallel)
-
-**Clear Spec Example** (from Lesson 4):
-```markdown
-Requirements:
-- Add, subtract, multiply, divide, exponentiation, square root
-- History limited to 50 calculations
-- Clear history command
-- Response time ≤ 100ms
-- Division by zero displays error message
-```
-
-**Plan Generated** (much clearer):
-```
-Phase 1: Design data structures (input, output, history schema)
-Phase 2: Implement core functions (operations + unit tests parallel)
-Phase 3: Implement error handling (division by zero, invalid input)
-Phase 4: Implement history (storage, retrieval, limits)
-Phase 5: Integration & performance testing
-Phase 6: Code review & final polish
-```
-
-Notice the difference:
-- **Vague spec** → 3 vague phases
-- **Clear spec** → 6 specific phases with clear responsibilities
-
 ---
 
-## Part B: Generate Plan with /sp.plan (20 min)
+## Generate Plan with /sp.plan 
 
 ### Running the Command
 
-Like `/sp.specify`, `/sp.plan` runs **within Claude Code**:
+Like `/sp.specify`, `/sp.plan` runs **within AI Companion**:
 
-1. Open Claude Code
+1. Open AI Companion
 2. Paste your refined specification (from Lesson 4)
-3. Run `/sp.plan`
-4. Read the generated plan
+3. Run 
 
-### Example Output
 
-When you run `/sp.plan` on your calculator spec, you get:
+**Your Prompt:**
 
-```markdown
-# Implementation Plan
+```
+/sp.plan
 
-## Phase 1: Data Structure & Architecture
-Objective: Design the data model for calculations and history
+Create: architecture sketch, interfaces, data model, error handling, requirements.
+Decisions needing: list important choices with options and tradeoffs.
+Testing strategy: unit + integration tests based on acceptance criteria.
 
-Deliverables:
-- Input validation rules documented
-- Calculation result schema defined
-- History storage structure designed
-- Error message format specified
-
-Estimated Effort: 2-3 hours
-Dependencies: None (start here)
-Risks: If schema design is wrong, all later phases suffer
-
-## Phase 2: Core Arithmetic Functions
-Objective: Implement add, subtract, multiply, divide, exp, sqrt
-
-Deliverables:
-- add(a, b) → result
-- subtract(a, b) → result
-- multiply(a, b) → result
-- divide(a, b) → result
-- exp(a, b) → result  # exponentiation
-- sqrt(a) → result
-
-Unit Tests for each function
-
-Estimated Effort: 4 hours
-Dependencies: Phase 1 complete
-Risks: Performance not meeting ≤100ms target
-
-## Phase 3: Error Handling
-Objective: Handle invalid inputs and edge cases
-
-Deliverables:
-- Input validation (non-numbers, invalid operators)
-- Division by zero handling
-- Error message formatting
-- Error test cases
-
-Estimated Effort: 3 hours
-Dependencies: Phase 1 complete; Phase 2 can be parallel
-Risks: Missing edge cases discovered during testing
-
-## Phase 4: History Storage & Commands
-Objective: Store and retrieve calculation history
-
-Deliverables:
-- save_calculation() function
-- load_history() function
-- clear_history() function
-- History limit enforcement (50 items)
-- Integration tests (history + core functions)
-
-Estimated Effort: 3 hours
-Dependencies: Phases 1, 2 complete
-Risks: File I/O errors if storage not robust
-
-## Phase 5: Integration & Performance Testing
-Objective: Verify entire system works end-to-end
-
-Deliverables:
-- End-to-end test scenarios
-- Performance benchmark (≤100ms verified)
-- Full code coverage report
-- Deployment checklist
-
-Estimated Effort: 2 hours
-Dependencies: All phases complete
-Risks: Late-discovered performance issues
-
-## Critical Path
-1 → 2 → 4 → 5 (longest chain: 11 hours)
-3 can be parallel with 2 (overlap possible)
-
-## Timeline
-- End of Day 1: Phases 1-2 (6+ hours)
-- End of Day 2: Phases 3-4 (6+ hours)
-- Day 3 morning: Phase 5 (2 hours)
-- Total: ~14 hours
+Technical details:
+- Use a simple, functional approach where it makes sense
+- Use Python 3.12+ type hints with | union syntax
+- Follow TDD: write tests first, then implementation
+- Organize code and tests according to your constitution rules
 ```
 
-### Analyzing the Plan
+**Agent Does:**
 
-Notice several things:
+- Creates technical implementation plan
+- Defines data models and interfaces
+- Establishes testing strategy
+- Identifies architectural decisions
+- Generates quick-start.md and plan.md files
 
-1. **Phases are specific**: Not "build calculation" but "build add(), subtract(), multiply()..."
-2. **Dependencies are explicit**: "Phase 2 depends on Phase 1" and "Phase 3 can be parallel with Phase 2"
-3. **Effort is estimated**: Each phase has hours (2-4 hours per phase = realistic)
-4. **Risks are identified**: Each phase lists what could go wrong
-5. **Deliverables are concrete**: Code files, tests, documentation
-
-This is a plan you can actually execute. It's clear enough that a developer can pick up and start Phase 1 today.
-
----
-
-## Part C: Student Practice (40 min)
-
-### Exercise 1: Run /sp.plan on Your Spec
-
-**Instructions**:
-
-1. Open Claude Code
-2. Paste your refined specification from Lesson 4
-3. Run `/sp.plan`
-4. Read the generated plan
-
-**What to Document**:
-- How many phases? (Should be 4-6)
-- What's Phase 1? (Usually architecture/design)
-- What's the last phase? (Usually testing/polish)
-- Total estimated effort (sum of all phases)
-
-### Exercise 2: Understand Dependencies
-
-**Instructions**: Draw (or list) the dependency graph for your plan.
-
-**Example format**:
-```
-Phase 1: Architecture
-  ↓ (must complete before)
-Phase 2: Core Implementation
-  ↓ (must complete before)
-Phase 3: Error Handling (can be parallel with 2)
-  ↓ (must complete before)
-Phase 4: History
-  ↓ (must complete before)
-Phase 5: Testing
-```
-
-**Questions to Answer**:
-1. Which phase is the critical path (longest chain)?
-2. Can any phases be parallel? If so, which ones?
-3. Why can't Phase X start before Phase Y?
-
-### Exercise 3: Trace a Requirement Through Spec to Plan
-
-**Instructions**: Pick one requirement from your specification. Trace it through the plan.
-
-**Example**:
-
-Requirement from Spec: "Response time ≤ 100ms for all operations"
-
-**Where it appears in Plan**:
-- Phase 1: "Performance target documented (≤100ms)"
-- Phase 2: "Core functions must not exceed 100ms per operation"
-- Phase 5: "Performance benchmark (≤100ms verified)"
-
-**Why it cascades**:
-- If spec didn't mention this, no phase would address it
-- Because spec is clear, it appears in multiple phases (design, implementation, testing)
-- Clear requirements → thorough planning
-
-### Exercise 4: Identify Plan Gaps
-
-**Instructions**: Read your generated plan. Ask:
-
-1. **Is anything missing?** (A phase you expected but don't see?)
-2. **Is anything unclear?** (A phase where you don't understand the deliverables?)
-3. **Are dependencies realistic?** (Can Phase B really start after Phase A?)
-4. **Is effort realistic?** (Are the hour estimates achievable?)
-
-**If you find gaps**: Note them. They might indicate vagueness in your specification (good catch!). You could refine the spec further and regenerate the plan.
-
----
-
-## Part D: Cascade Demonstration (10 min)
-
-### Compare Two Plans
-
-You have two specifications:
-
-**Spec A (Vague)**:
-> "Build a calculator"
-
-**Plan from Spec A**:
-```
-Phase 1: Implementation
-Phase 2: Testing
-```
-
-vs.
-
-**Spec B (Clear)** (your spec from Lesson 4):
-```
-Requirements: Add, subtract, multiply, divide, exp, sqrt
-History: 50 calculation limit
-Response time: ≤100ms
-Error handling: Division by zero, invalid input
-Non-functional: File storage, Python 3.13
-```
-
-**Plan from Spec B**:
-```
-Phase 1: Data Structure & Architecture
-Phase 2: Core Arithmetic Functions
-Phase 3: Error Handling
-Phase 4: History Storage & Commands
-Phase 5: Integration & Performance Testing
-```
-
-**Observation**: Clear spec → detailed, sequenced plan. Vague spec → simplistic, incomplete plan.
+**Why This Matters:**
+The plan defines technical architecture for ALL operations at once. This ensures consistency - same type hints, same error handling, same testing approach. Much more efficient than planning each operation separately!
 
 ---
 
@@ -411,23 +151,3 @@ Phase 5: Integration & Performance Testing
 - You recognize dependencies and critical path
 - You're ready for `/sp.tasks` (Lesson 6) with a solid plan
 - You see the cascade in action: Spec quality → Plan quality
-
-### Safety & Ethics Note
-
-**Remember**: The plan is a roadmap, not a guarantee. Plans change when you discover new information. The value of planning is thinking through the work before you start, not predicting the future perfectly.
-
-If your plan looks unrealistic during implementation, refine the plan. The specification doesn't change (unless requirements changed), but the plan can adapt to reality.
-
----
-
-## Checkpoint: Are You Ready for Lesson 6?
-
-Before moving forward, verify you can do these:
-
-- [ ] Run `/sp.plan` on your specification within Claude Code
-- [ ] Read and understand all phases in the generated plan
-- [ ] Explain what each phase delivers and why
-- [ ] Identify dependencies (which phases must complete before others)
-- [ ] Identify the critical path (longest chain of dependent phases)
-- [ ] Trace 1-2 requirements from spec through to plan phases
-- [ ] Estimate total effort (sum of all phases)

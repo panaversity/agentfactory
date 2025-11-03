@@ -1,7 +1,7 @@
 ---
 title: "Implementation & Validation (/sp.implement)"
 chapter: 31
-lesson: 7
+lesson: 6
 duration_minutes: 150
 
 skills:
@@ -65,14 +65,12 @@ This is the AIDD loop in action: **Intent (spec) → Generation (code) → Valid
 
 ---
 
-## Part A: The AIDD Loop (20 min)
-
-### What Is AIDD?
+## The AIDD Loop 
 
 AIDD = **AI-Driven Development**. It's a cycle where humans and AI collaborate:
 
 ```
-1. INTENT (You write specification)
+1. INTENT (You and your AI Companion write specification)
    ↓
 2. GENERATION (AI generates code from spec)
    ↓
@@ -87,7 +85,7 @@ AIDD = **AI-Driven Development**. It's a cycle where humans and AI collaborate:
 
 **Key principle**: AI is the executor. You are the validator. Neither works alone; together they produce working code faster than either could alone.
 
-### What /sp.implement Does
+## What /sp.implement Does?
 
 `/sp.implement` orchestrates the first two steps of the AIDD loop:
 
@@ -99,7 +97,7 @@ AIDD = **AI-Driven Development**. It's a cycle where humans and AI collaborate:
 
 Your job in Lesson 7: **Complete steps 3-5 of the AIDD loop** (validation, feedback, refinement).
 
-### Risk: AI Can Hallucinate
+## Risk: AI Can Hallucinate
 
 AI is powerful but imperfect. It can:
 - Misunderstand spec ambiguities (your job: catch and clarify)
@@ -111,447 +109,118 @@ AI is powerful but imperfect. It can:
 
 ---
 
-## Part B: Run /sp.implement (20 min)
+## Run /sp.implement
 
-### Running the Command
+Like prior lessons, `/sp.implement` runs **within Claude Code** or your AI Companion setup with SpecifyPlus:
 
-Like prior lessons, `/sp.implement` runs **within Claude Code**:
-
-1. Open Claude Code
-2. Paste your specification, plan, and tasks
-3. Run `/sp.implement`
-4. Review generated artifacts
-
-### Example Output
-
-When you run `/sp.implement` on your calculator spec/plan/tasks, you get:
+1. Open Claude Code/Gemini CLI
+2. Run `/sp.implement`
 
 ```
-GENERATED ARTIFACTS:
+/sp.implement let's complete Phase 1
 
-[calculator.py]
-"""Calculator module with arithmetic operations and history."""
-
-def add(a: float, b: float) -> float:
-    """Add two numbers."""
-    return a + b
-
-def subtract(a: float, b: float) -> float:
-    """Subtract two numbers."""
-    return a - b
-
-def multiply(a: float, b: float) -> float:
-    """Multiply two numbers."""
-    return a * b
-
-def divide(a: float, b: float) -> float:
-    """Divide two numbers. Raises ValueError on division by zero."""
-    if b == 0:
-        raise ValueError("ERROR: Cannot divide by zero")
-    return a / b
-
-... [more functions] ...
-
-[test_calculator.py]
-"""Unit tests for calculator module."""
-
-import pytest
-from calculator import add, subtract, multiply, divide
-
-def test_add_positive():
-    assert add(2, 3) == 5
-
-def test_add_negative():
-    assert add(-2, -3) == -5
-
-... [more tests] ...
-
-[history.py]
-"""History management for calculator."""
-
-import json
-from pathlib import Path
-
-def save_calculation(operation: str, operands: list, result: float):
-    """Save calculation to history file."""
-    history_file = Path("history.json")
-    # Load existing history or create empty list
-    if history_file.exists():
-        with open(history_file, 'r') as f:
-            history = json.load(f)
-    else:
-        history = []
-
-    # Append new calculation
-    history.append({
-        "operation": operation,
-        "operands": operands,
-        "result": result,
-        "timestamp": str(datetime.now())
-    })
-
-    # Enforce 50-item limit
-    if len(history) > 50:
-        history = history[-50:]
-
-    # Save back to file
-    with open(history_file, 'w') as f:
-        json.dump(history, f, indent=2)
-
-... [more code] ...
-
-SUMMARY:
-Generated Files:
-- calculator.py (245 lines, 6 functions)
-- history.py (120 lines, 4 functions)
-- test_calculator.py (180 lines, 15 test functions)
-- README.md (updated with usage)
-
-Test Results (Initial):
-- test_calculator.py: 15 pass, 0 fail
-- test_history.py: 8 pass, 0 fail
-- Coverage: 92% (exceeds 80% target)
-
-Ready for validation.
+Rules: tests first, smallest diff, keep public API stable within a phase.
+After each task: run tests, update checklist, note deltas to spec if needed Mark completed tasks in tasks.md
 ```
 
-### First Observations (Before Validating)
+**Agent Does:**
 
-Look at what was generated. Ask yourself:
+- Implements each task in sequence
+- Runs tests after each task
+- Updates task completion status
+- Shows progress and test results
+- Handles any implementation issues
 
-1. **Structure**: Code looks organized? Functions have docstrings?
-2. **Completeness**: Are all required functions present?
-3. **Quality**: Type hints used? Error handling present?
-4. **Tests**: Were tests generated? Do they look reasonable?
-5. **Coverage**: Does coverage report indicate thorough testing?
+3. Review generated artifacts
 
-**Don't run code yet.** Read it first. Understand what the code does before you test it.
 
----
+**Example for Addition Operation:**
 
-## Part C: Validation Deep-Dive (80 min)
+1. Agent writes test_add_positive_numbers(), test_add_negative_numbers(), etc.
+2. Agent runs pytest → All fail (RED) ✓
+3. Human reviews tests and approves
+4. Agent writes add() function implementation
+5. Agent runs pytest → All pass (GREEN) ✓
+6. Human reviews code and approves
+7. Commit "feat: Add addition operation with tests"
+8. Move to subtraction operation
 
-### Validation Phase 1: Code Reading (15 min)
+This systematic approach ensures quality at each step!
 
-**Purpose**: Understand the code before running it.
+## Verification Steps
 
-**Process**:
-1. Open each generated file
-2. Read the code (line by line, not skimming)
-3. Ask: "What does this function do? Why is it implemented this way?"
-4. Look for:
-   - Type hints (present? complete?)
-   - Docstrings (present? clear?)
-   - Error handling (how are errors caught?)
-   - Edge cases (what about boundary conditions?)
+### Step 1: Run Complete Test Suite
 
-**Red Flags** (things to question):
-- ❌ Missing type hints
-- ❌ No docstrings
-- ❌ No error handling (try/except blocks)
-- ❌ Hardcoded values (magic numbers)
-- ❌ Unsafe operations (subprocess, eval, os.system)
-
-**Green Flags** (things to appreciate):
-- ✅ Complete type hints
-- ✅ Clear docstrings with parameter descriptions
-- ✅ Proper error handling
-- ✅ Comments explaining non-obvious logic
-- ✅ Security best practices (input validation)
-
-**Example Code Reading**:
-
-```python
-def divide(a: float, b: float) -> float:
-    """Divide two numbers. Raises ValueError on division by zero."""
-    if b == 0:
-        raise ValueError("ERROR: Cannot divide by zero")
-    return a / b
-```
-
-**Reading Notes**:
-- ✅ Type hints: a: float, b: float, return: float (complete)
-- ✅ Docstring: Explains what it does and what it raises
-- ✅ Error handling: Checks for zero divisor before dividing
-- ✅ Clear: Code is simple and understandable
-- ❓ Question: Is ValueError the right exception type? (Yes, Python convention)
-
-### Validation Phase 2: Comprehension Check (10 min)
-
-**Purpose**: Ensure you understand the generated code well enough to explain it.
-
-**Process**:
-For each major function/module, explain in your own words:
-1. What's the input? (parameters)
-2. What's the output? (return value)
-3. What does it do? (sequence of steps)
-4. Why is it implemented this way? (design rationale)
-
-**If you can't explain it**, ask AI for clarification before proceeding.
-
-**Example Comprehension Check**:
-
-**Function**: `save_calculation(operation, operands, result)`
-
-**My Explanation**:
-1. **Input**: operation name, list of operands, calculated result
-2. **Output**: Nothing (saves to file)
-3. **What it does**:
-   - Load existing history from JSON file (or create empty list)
-   - Append new calculation record with timestamp
-   - Enforce 50-item limit (keep last 50 only)
-   - Write back to file
-4. **Why**: Persistent storage, limit prevents unbounded growth
-
-**If unclear**: "AI, can you explain why you enforce the 50-item limit here? Is that the right approach?"
-
-### Validation Phase 3: Test Execution (15 min)
-
-**Purpose**: Run the code and see if tests pass.
-
-**Process**:
-1. In Claude Code or local terminal, run tests:
-   ```bash
-   python -m pytest test_calculator.py -v
-   python -m pytest test_history.py -v
-   ```
-
-2. Check results:
-   - Do all tests pass?
-   - Are there any failures?
-   - Is coverage adequate (80%+)?
-
-3. If tests fail:
-   - Note the failure message
-   - Understand why it failed (code bug or test issue?)
-   - Mark for refinement phase
-
-**Example Test Results**:
-```
-test_calculator.py::test_add_positive PASSED
-test_calculator.py::test_add_negative PASSED
-test_calculator.py::test_multiply_zero PASSED
-test_calculator.py::test_divide_by_zero PASSED [checks for ValueError]
-...
-15 passed in 0.23s
-
-Coverage report:
-- calculator.py: 95% coverage
-- history.py: 88% coverage
-Overall: 92%
-```
-
-**Good!** All tests pass, coverage is strong.
-
-### Validation Phase 4: Acceptance Criteria Verification (20 min)
-
-**Purpose**: Verify each acceptance criterion from your spec is satisfied.
-
-**Process**:
-
-Create a validation matrix for each criterion:
-
-| Acceptance Criterion | Test/Verification | Pass/Fail | Notes |
-|---|---|---|---|
-| "Calculation response ≤ 100ms" | Time 1000 operations | ✅ Pass | Average: 0.5ms |
-| "Division by zero error" | Test divide(5, 0) | ✅ Pass | Raises ValueError with message |
-| "History limited to 50" | Add 100, verify 50 remain | ✅ Pass | FIFO works correctly |
-| "All 6 operations work" | Unit tests for each | ✅ Pass | add, sub, mul, div, exp, sqrt |
-| "History persists across restarts" | Save, kill process, load | ✅ Pass | JSON file persisted |
-
-**If a criterion fails** (❌):
-- Understand why it failed
-- Is it a code bug? Spec ambiguity? Test issue?
-- Mark for refinement phase
-
-**Example Criterion Verification**:
-
-**Criterion**: "Response time for all operations ≤ 100ms"
-
-**Verification**:
-```python
-import time
-
-start = time.time()
-for i in range(1000):
-    add(i, i+1)
-elapsed = time.time() - start
-avg_time = (elapsed / 1000) * 1000  # Convert to ms
-
-print(f"Average time per operation: {avg_time:.2f}ms")
-assert avg_time <= 100, f"Too slow: {avg_time}ms"
-```
-
-**Result**: ✅ Pass (0.5ms average)
-
-### Validation Phase 5: Security & Quality Review (10 min)
-
-**Purpose**: Catch security and quality issues.
-
-**Security Checklist**:
-- [ ] No hardcoded secrets (passwords, API keys, tokens)
-- [ ] Input validation present (edge cases handled)
-- [ ] Error messages don't leak information
-- [ ] No dangerous functions (eval, exec, subprocess without validation)
-- [ ] File I/O is safe (no path traversal vulnerabilities)
-
-**Quality Checklist**:
-- [ ] Type hints complete (all function parameters and returns)
-- [ ] Docstrings present and clear
-- [ ] Code style consistent (follows PEP 8)
-- [ ] Performance acceptable (no unnecessary loops or recursion)
-- [ ] Error handling comprehensive (all possible failures caught)
-
-**Example Security Check** (calculator code):
-
-```python
-# GOOD: Safe file I/O
-history_file = Path("history.json")  # Relative path, fixed filename
-with open(history_file, 'r') as f:
-    history = json.load(f)
-
-# BAD (example of what to avoid):
-user_filename = input("Enter filename: ")
-with open(user_filename, 'r') as f:  # Vulnerable! Could load any file
-    history = json.load(f)
-```
-
-**Result**: ✅ Pass (calculator uses safe file I/O)
-
-### Validation Phase 6: Refinement (if needed) (10 min)
-
-**Purpose**: If validation finds failures, iterate toward passing.
-
-**Process**:
-
-1. **Collect failures**: List all criteria that failed
-2. **Analyze root cause**:
-   - Is it a code bug? (AI generated incorrectly)
-   - Is it a spec ambiguity? (Your spec was unclear)
-   - Is it a test issue? (Test is wrong, not code)
-3. **Decide action**:
-   - **Code bug**: Provide feedback to AI ("`divide()` doesn't handle negative results correctly. Fix it.")
-   - **Spec ambiguity**: Refine specification, then ask AI to regenerate
-   - **Test issue**: Fix the test, rerun
-4. **Regenerate**: Run `/sp.implement` again with feedback
-5. **Revalidate**: Repeat validation process
-
-**Example Refinement**:
-
-**Failure**: History limit enforcement doesn't work
-
-**Analysis**: Test shows that after adding 100 items, history has 100 not 50
-
-**Root Cause**: AI code appends to list but doesn't limit properly
-
-**Feedback to AI**:
-```
-Criterion failed: "History limited to 50 calculations"
-Problem: save_calculation() isn't enforcing the limit
-Current behavior: History grows to 100 items
-Expected behavior: Only last 50 items retained (FIFO)
-Can you fix the limit enforcement?
-```
-
-**AI Refines**:
-```python
-def save_calculation(operation: str, operands: list, result: float):
-    # ... load and append ...
-    # Enforce 50-item limit
-    history = history[-50:]  # Keep only last 50
-    # ... save to file ...
-```
-
-**Revalidate**: Rerun test → ✅ Pass
-
----
-
-## Part D: Student Practice (50 min)
-
-### Exercise 1: Run /sp.implement
-
-**Instructions**:
-
-1. Open Claude Code
-2. Paste your specification, plan, and tasks
-3. Run `/sp.implement`
-4. Review what was generated
-
-**Documentation**:
-- What files were created?
-- What's the total lines of code?
-- How many tests were generated?
-- What's the initial test pass/fail count?
-
-### Exercise 2: Code Reading & Comprehension
-
-**Instructions**:
-
-Pick 3 major functions from generated code. For each:
-
-1. Read the code (no running)
-2. Understand it (explain in your own words)
-3. Document:
-   - What does this function do?
-   - What are the inputs/outputs?
-   - Do type hints look complete?
-   - Is there error handling?
-
-### Exercise 3: Validate Against Acceptance Criteria
-
-**Instructions**:
-
-Create a validation matrix (like above) for your acceptance criteria.
-
-For each criterion:
-1. Understand what it's asking for
-2. Design a test to verify it
-3. Run the test (or code manually)
-4. Record Pass/Fail
-
-**If all pass**: Excellent! Code is validation-ready.
-
-**If any fail**: Note the failures. We'll address them in Exercise 4.
-
-### Exercise 4: Provide Refinement Feedback (if needed)
-
-**Instructions** (only if failures exist):
-
-For each failed criterion:
-1. Understand the failure
-2. Ask: "Is this a code bug or spec ambiguity?"
-3. Provide feedback to AI:
-   ```
-   Criterion failed: [criterion name]
-   Expected: [what should happen]
-   Actual: [what actually happened]
-   Please: [what to fix]
-   ```
-4. Ask AI to regenerate
-5. Revalidate
-
----
-
-## Part E: Reflection & Cascade Completion (10 min)
-
-### The Complete AIDD Cycle
-
-You've now completed the full cycle:
+**Your Prompt:**
 
 ```
-1. INTENT (Specification - Lessons 1-4) ✅
-2. GENERATION (Code from /sp.implement) ✅
-3. VALIDATION (This lesson) ✅
-4. FEEDBACK (Refinement if needed) ✅
-5. REFINEMENT (AI regenerates) ✅
-6. TRUST (Deploy validated code) →
+Run the complete test suite and show me the results.
+Include coverage report to verify we meet the constitution requirements.
 ```
----
+
+**Agent Does:**
+
+- Runs `uv run pytest -v --cov=calculator --cov-report=term-missing`
+- Shows all tests passing
+- Displays coverage report (should be 100%)
+- Confirms constitution requirements met
+
+### Step 2: Type Checking
+
+**Your Prompt:**
+
+```
+Run mypy to verify all type hints are correct.
+```
+
+**Agent Does:**
+
+- Runs `uv run mypy src/`
+- Shows type checking results
+- Confirms no type errors
+
+### Step 3: Code Quality Check
+
+**Your Prompt:**
+
+```
+Run ruff to check code quality and formatting.
+```
+
+**Agent Does:**
+
+- Runs `uv run ruff check src/ tests/`
+- Shows linting results
+- Confirms code follows standards
+
+## Expected Artifacts (Generated by Agent)
+
+Your agent will create the appropriate spec artifacts under your project's specs directory (for example, a folder for this feature), along with source code and tests organized per your constitution.
+
+## Verification Checklist
+
+- [ ] All four operations implemented (add, subtract, multiply, divide)
+- [ ] All functions use Python 3.12+ type hints
+- [ ] All functions have proper docstrings
+- [ ] All tests pass (100% coverage)
+- [ ] Type checking passes with mypy
+- [ ] Code quality passes with ruff
+- [ ] Spec loop artifacts created (.speckit/specs/basic-operations/)
+- [ ] Tasks marked complete in tasks.md
+
+## Ship It with `/sp.git.commit_pr`
+
+Once every task is complete and all verification checks are green, hand the Git work to the agentic workflow command `/sp.git_commit_pr`
+
+- Run `/sp.git.commit_pr Wrap up the basic calculator feature.` (or omit the argument and let it infer the summary)
+- Approve the generated branch, commit message, and PR details before announcing completion
+- If the command surfaces blockers (e.g., missing credentials), resolve them and re-run so the PR accurately reflects the finished loop
+
+You've completed your first full spec loop! The basic operations are now implemented with comprehensive testing and documentation. 
 
 ## Try With AI
 
-**Tool**: Claude Code with `/sp.implement` command + validation
-**Duration**: 15-20 minutes
+**Tool**: Your AI Companion with `/sp.implement` command + validation
 
 ### Workflow
 
