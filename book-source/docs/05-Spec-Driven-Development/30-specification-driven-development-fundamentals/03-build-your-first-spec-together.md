@@ -112,6 +112,40 @@ This means:
 
 **You're not just copying AI output—you're collaborating to build better specifications.**
 
+### The Spec Iteration Cycle with AI
+
+**Critical insight**: Specifications are **not written once**. They're refined through **iterative dialogue with AI**. Here's the cycle you'll experience in this chapter:
+
+```
+1. DRAFT SPEC WITH AI
+   ↓
+2. AI ASKS CLARIFYING QUESTIONS
+   ↓
+3. YOU REFINE SPEC (with AI's help)
+   ↓
+4. AI GENERATES CODE FROM REFINED SPEC
+   ↓
+5. CODE REVEALS SPEC GAPS
+   ↓
+6. YOU UPDATE SPEC (with AI's help)
+   ↓
+7. AI REGENERATES
+   ↓
+8. REPEAT until spec is clear
+```
+
+**Example of iteration**:
+
+**First draft**: "Calculator should add two numbers"
+
+**AI asks**: "Should it accept only integers, or floats too? What about very large numbers? Should it validate input types?"
+
+**Refined spec**: "Calculator accepts two numbers (int | float), returns their sum preserving type. No runtime type validation—rely on static type checking."
+
+**AI generates code** → You test → Discover edge case (0.1 + 0.2 precision) → **Refine spec again** with AI's help → AI regenerates
+
+**This iterative refinement is NORMAL and EXPECTED**. Professional specifications emerge through dialogue, not dictation. Your AI companion helps you discover gaps and refine requirements.
+
 ---
 
 ## Part 1: User Stories (The "Why")
@@ -177,6 +211,25 @@ Use Python 3.12+ type hints in function signatures.
 ```
 
 Your companion creates detailed acceptance criteria.
+
+**ITERATION EXAMPLE**: Your AI might ask:
+
+> "For acceptance criteria, should I include scenarios for:
+> - Mixed types (int + float)?
+> - Very large numbers (beyond float precision)?
+> - Negative numbers in all operations?
+> - What about the subtract(a, b) order—does subtract(5, 3) = 2 or -2?"
+
+**You respond** (refining the spec):
+
+```
+Yes, include all those scenarios. For subtract(a, b), the result is a - b, so subtract(5, 3) = 2.
+Also add a scenario for 0.1 + 0.2 to document IEEE 754 precision behavior.
+```
+
+**AI refines** acceptance criteria based on your clarifications.
+
+**See the iteration?** AI asks questions → You clarify → Spec improves. This happens throughout the process.
 
 ## Part 3: Edge Cases & Design Decisions (The "Gotchas")
 
