@@ -5,8 +5,8 @@
 Reference this document when naming and organizing chapter files. Use the chapter number in directory names: `[chapter-number]-[chapter-name]/`
 
 **Implementation Status**:
-- ✅ **Implemented** (5 chapters): Chapters 1-5 have content and are ready for review
-- 📋 **Planned** (50 chapters): Chapters 6-55 are planned but not yet created
+- ✅ **Implemented** (14 chapters): Chapters 1-10, 30-33 have content and are ready for review
+- 📋 **Planned** (41 chapters): Chapters 11-29, 34-55 are planned but not yet created
 
 ---
 
@@ -29,10 +29,10 @@ Tool literacy and comparison: deep dive into specific platforms
 
 | # | Chapter Title | File Name | Status |
 |---|---------------|-----------|--------|
-| 5 | How It All Started: The Claude Code Phenomenon | `05-claude-code-phenomenon/` | ✅ Implemented |
-| 6 | Google Gemini CLI: Open Source and Everywhere | `06-gemini-cli-open-source/` | 📋 Planned |
-| 7 | Bash Essentials for AI-Driven Development | `07-bash-essentials-for-aidd/` | 📋 Planned |
-| 8 | Git & GitHub for AI-Driven Development | `08-git-github-for-aidd/` | 📋 Planned |
+| 5 | How It All Started: The Claude Code Phenomenon | `05-claude-code-features-and-workflows/` | ✅ Implemented |
+| 6 | Google Gemini CLI: Open Source and Everywhere | `06-gemini-cli-installation-and-basics/` | ✅ Implemented |
+| 7 | Bash Essentials for AI-Driven Development | `07-bash-essentials/` | ✅ Implemented |
+| 8 | Git & GitHub for AI-Driven Development | `08-git-and-github/` | ✅ Implemented |
 
 ---
 
@@ -42,8 +42,8 @@ Effective AI communication: prompting and context management
 
 | # | Chapter Title | File Name | Status |
 |---|---------------|-----------|--------|
-| 9 | Prompt Engineering for AI-Driven Development | `09-prompt-engineering-for-aidd/` | 📋 Planned |
-| 10 | Context Engineering for AI-Driven Development | `10-context-engineering-for-aidd/` | 📋 Planned |
+| 9 | Prompt Engineering for AI-Driven Development | `09-prompt-engineering-for-aidd/` | ✅ Implemented |
+| 10 | Context Engineering for AI-Driven Development | `10-context-engineering-for-ai-driven-development/` | ✅ Implemented |
 
 ---
 
@@ -81,10 +81,10 @@ Professional development workflow: specifications and planning
 
 | # | Chapter Title | File Name | Status |
 |---|---------------|-----------|--------|
-| 30 | Understanding Spec-Driven Development | `30-understanding-spec-driven-development/` | 📋 Planned |
-| 31 | Spec-Kit Plus | `31-spec-kit-plus/` | 📋 Planned |
-| 32 | Building Projects with Spec-Kit Plus | `32-building-projects-with-spec-kit-plus/` | 📋 Planned |
-| 33 | The Tessl Vision: Spec-as-Source | `33-tessl-vision-spec-as-source/` | 📋 Planned |
+| 30 | Understanding Spec-Driven Development | `30-specification-driven-development-fundamentals/` | ✅ Implemented |
+| 31 | Spec-Kit Plus | `31-specifyplus-hands-on/` | ✅ Implemented |
+| 32 | Building Projects with Spec-Kit Plus | `32-real-world-spec-kit-workflows/` | ✅ Implemented |
+| 33 | The Tessl Vision: Spec-as-Source | `33-tessl-framework-and-integration/` | ✅ Implemented |
 
 ---
 
@@ -196,7 +196,9 @@ This document provides chapter titles and topics. For exact file paths, naming c
 
 **Examples** (based on actual structure):
 - Chapter 1: `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/`
-- Chapter 5: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-phenomenon/`
+- Chapter 5: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/`
+- Chapter 9: `book-source/docs/03-prompt-and-context-engineering/09-prompt-engineering-for-aidd/`
+- Chapter 30: `book-source/docs/05-Spec-Kit-Plus-Methodology/30-specification-driven-development-fundamentals/`
 - Chapter 12 (planned): `book-source/docs/04-Python-The-Language-of-AI-Agents/12-introduction-to-python/`
 - Chapter 34 (planned): `book-source/docs/06-AI-Native-Software-Development/34-introduction-ai-native-development/`
 - Chapter 55 (planned): `book-source/docs/13-Stateful-Agents-Dapr/55-durable-workflows-for-long-running-agent-tasks/`

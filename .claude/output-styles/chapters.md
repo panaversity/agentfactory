@@ -1,5 +1,5 @@
 ---
-description: Comprehensive chapter output style for CoLearning Python & Agentic AI book (7-part structure, Docusaurus-ready)
+description: Comprehensive chapter output style for CoLearning Python & Agentic AI book (13-part structure aspirational, Docusaurus-ready)
 ---
 
 # Book Chapter Output Style
@@ -20,45 +20,70 @@ Chapters are organized in a **3-level hierarchy** within `book-source/docs/`:
 
 ```
 book-source/docs/
-├── NN-Part-Name/                        # Part folders (Title Case, 01-07)
-│   ├── README.md                         # Part introduction (required)
-│   ├── NN-chapter-name/                 # Chapter directories (lowercase)
-│   │   ├── README.md                    # Chapter overview (required)
-│   │   ├── 01-lesson-1.md               # Lesson files
-│   │   ├── 02-lesson-2.md
-│   │   └── 03-lesson-3.md
+├── NN-Part-Name/                              # Part folders (Title Case with Hyphens)
+│   ├── README.md                              # Part introduction (required, UPPERCASE)
+│   ├── NN-chapter-name/                       # Chapter directories (lowercase-with-hyphens)
+│   │   ├── readme.md                          # Chapter overview (required, LOWERCASE)
+│   │   ├── 01-descriptive-lesson-name.md     # Lesson files with descriptive names
+│   │   ├── 02-another-lesson-name.md
+│   │   └── 03-yet-another-lesson.md
+```
 
+**Example from actual book** (Chapter 1: AI Development Revolution):
+```
+01-Introducing-AI-Driven-Development/          # Part 1 (Title Case)
+├── README.md                                   # Part intro (UPPERCASE)
+├── 01-ai-development-revolution/               # Chapter 1 (lowercase)
+│   ├── readme.md                               # Chapter overview (LOWERCASE)
+│   ├── 01-moment_that_changed_everything.md   # Descriptive names
+│   ├── 02-three-trillion-developer-economy.md
+│   ├── 03-software-disrupting-itself.md
+│   ├── 04-development-lifecycle-transition.md
+│   ├── 05-beyond-code-changing-roles.md
+│   ├── 06-autonomous-agent-era.md
+│   ├── 07-opportunity-window.md
+│   └── 08-traditional-cs-education-gaps.md
 ```
 
 **Key Rules**:
 - Part folders: **Title-Case-With-Hyphens** (e.g., `01-Introducing-AI-Driven-Development/`)
-- Chapter folders: **lowercase-with-hyphens** (e.g., `01-welcome-to-ai-driven-development/`)
-- Each part has `README.md`
-- Each chapter has `README.md`
-- Lesson files are numbered: `01-lesson-1.md`, `02-lesson-2.md`, etc.
+- Part README: **UPPERCASE** (`README.md`)
+- Chapter folders: **lowercase-with-hyphens** (e.g., `01-ai-development-revolution/`)
+- Chapter readme: **LOWERCASE** (`readme.md`)
+- Lesson files: **descriptive names** (not generic like "lesson-1"), numbered: `01-descriptive-name.md`
+- Use underscores or hyphens in lesson filenames (both are acceptable)
 
 **For detailed specifications**: Consult `specs/book/directory-structure.md`  
 **For chapter titles/topics**: See `specs/book/chapter-index.md`
 
 ### Naming Conventions
 
-- **Part folder**: `NN-Part-Name/` where NN is two-digit part number (01-07)
-  - Example: `01-Introducing-AI-Driven-Development/`, `06-Agentic-AI/`
+- **Part folder**: `NN-Part-Name/` where NN is two-digit part number
+  - Example: `01-Introducing-AI-Driven-Development/`, `05-Spec-Kit-Plus-Methodology/`
+  - Note: Aspirational structure includes 13 parts (see `specs/book/chapter-index.md` for current status)
 
-- **Chapter directory**: `NN-Chapter-Name/` where NN is two-digit chapter number within part
-  - Example: `01-Welcome-to-AI-Driven-Development/`, `05-Debugging-with-AI/`
+- **Chapter directory**: `NN-chapter-name/` where NN is two-digit chapter number within part
+  - **LOWERCASE with hyphens** (e.g., `01-ai-development-revolution/`, `05-debugging-with-ai/`)
   - **IMPORTANT**: Chapters are DIRECTORIES, not files
 
-- **Lesson files**: `BB-Lesson-Name.md` where BB is lesson number (01, 02, 03, etc.)
-  - Example: `01-Getting-Started.md`, `02-Core-Concepts.md`, `03-Practical-Application.md`
+- **Lesson files**: `NN-descriptive-lesson-name.md` where NN is lesson number (01, 02, 03, etc.)
+  - **Use DESCRIPTIVE names** (not generic like "lesson-1" or "Getting-Started")
+  - Examples from actual book:
+    - `01-moment_that_changed_everything.md`
+    - `02-three-trillion-developer-economy.md`
+    - `04-development-lifecycle-transition.md`
   - Each lesson is a standalone `.md` file within the chapter directory
 
-- **Rules**:
-  - Use hyphens between words (NO underscores or spaces)
+- **README/readme case rules**:
+  - Part-level: `README.md` (UPPERCASE)
+  - Chapter-level: `readme.md` (LOWERCASE)
+
+- **Filename rules**:
+  - Use hyphens or underscores between words (both acceptable)
   - Numbers help with ordering: `01-`, `02-`, etc.
-  - Docosaurus automatically removes numbers from URLs and titles
-  - Keep names descriptive but concise (3-6 words ideal)
-  - Names should reflect content but remain GENERIC to allow updates
+  - Docusaurus automatically removes numbers from URLs and titles
+  - Keep names descriptive and meaningful (3-8 words)
+  - Names should reflect specific content (not generic placeholders)
 
 ---
 
