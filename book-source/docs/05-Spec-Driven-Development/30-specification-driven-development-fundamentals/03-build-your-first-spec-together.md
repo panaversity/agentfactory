@@ -63,88 +63,7 @@ Before writing any code, we'll follow this cycle:
 
 This is the **co-learning feedback loop** from the preface. You'll experience it hands-on across a complete feature.
 
----
-
-## Your AI Companion: Co-Reasoning Partner for Specification Writing
-
-Throughout this chapter, you'll see prompts like "Tell your companion:" and "Ask your companion:". **Your companion is an AI coding assistant** that helps you think through specifications collaboratively.
-
-### What AI Tools Can You Use?
-
-Any AI coding assistant that supports conversation and code generation:
-
-- **Claude Code** (recommended for this book)
-- **Cursor** (VS Code fork with AI)
-- **GitHub Copilot Chat**
-- **Gemini Code Assist**
-- **ChatGPT with Code Interpreter**
-
-**Choose one** and use it consistently for this chapter.
-
-### Why Use AI to Write Specifications?
-
-This is **AI-native development**:
-
-1. **AI as Co-Reasoning Partner**: Your AI companion helps you think through requirements, not just generate code. When you say "help me write user stories," you're collaborating on strategic thinking.
-
-2. **Specification Quality**: AI catches edge cases you might miss, suggests standard patterns, and asks clarifying questions—making your specifications more complete.
-
-3. **Learning by Dialogue**: Asking AI "What edge cases should I consider for division?" teaches you to think systematically about requirements.
-
-4. **Professional Practice**: At companies like Anthropic, OpenAI, and Google DeepMind, developers use AI to refine specifications, explore design alternatives, and validate approaches. This is the standard workflow, not a shortcut.
-
-**The Human's Role**: You direct the specification process. You decide what features matter, what edge cases are worth handling, and what trade-offs to make. AI suggests options; you make decisions.
-
-### How to Use "Your Companion" References
-
-When you see:
-
-```
-Tell your companion:
-[prompt text here]
-```
-
-This means:
-1. **Copy the prompt** (or adapt it to your specific context)
-2. **Paste it into your AI coding assistant** (Claude Code, Cursor, etc.)
-3. **Review the AI's response** critically
-4. **Refine the specification** based on the dialogue
-
-**You're not just copying AI output—you're collaborating to build better specifications.**
-
-### The Spec Iteration Cycle with AI
-
-**Critical insight**: Specifications are **not written once**. They're refined through **iterative dialogue with AI**. Here's the cycle you'll experience in this chapter:
-
-```
-1. DRAFT SPEC WITH AI
-   ↓
-2. AI ASKS CLARIFYING QUESTIONS
-   ↓
-3. YOU REFINE SPEC (with AI's help)
-   ↓
-4. AI GENERATES CODE FROM REFINED SPEC
-   ↓
-5. CODE REVEALS SPEC GAPS
-   ↓
-6. YOU UPDATE SPEC (with AI's help)
-   ↓
-7. AI REGENERATES
-   ↓
-8. REPEAT until spec is clear
-```
-
-**Example of iteration**:
-
-**First draft**: "Calculator should add two numbers"
-
-**AI asks**: "Should it accept only integers, or floats too? What about very large numbers? Should it validate input types?"
-
-**Refined spec**: "Calculator accepts two numbers (int | float), returns their sum preserving type. No runtime type validation—rely on static type checking."
-
-**AI generates code** → You test → Discover edge case (0.1 + 0.2 precision) → **Refine spec again** with AI's help → AI regenerates
-
-**This iterative refinement is NORMAL and EXPECTED**. Professional specifications emerge through dialogue, not dictation. Your AI companion helps you discover gaps and refine requirements.
+**About "Your Companion"**: Throughout this chapter, when you see "Tell your companion:" or "Ask your companion:", that means **use your AI coding assistant** (Claude Code, Cursor, GitHub Copilot, or whichever tool you're using). You'll use AI to help write the specification itself—not just to generate code from it. This is how professional developers work: AI helps think through requirements, catch edge cases, and refine specs through dialogue. Your spec will improve through iteration as AI asks clarifying questions and you discover gaps.
 
 ---
 
@@ -378,36 +297,18 @@ Now let's validate the implementation against our specification using all the te
 
 ---
 
-### The Co-Learning Feedback Loop
+### The Specification-Development Feedback Loop
 
-This is **specification-driven co-learning** in action:
+This is **AI-native specification development** in action:
 
-1. **You wrote user stories** (expressing intent without implementation)
-2. **You defined acceptance criteria** (making intent testable)
-3. **You identified edge cases** (anticipating gotchas)
-4. **You compiled a complete spec** (synthesizing everything)
-5. **AI generated code** (showing its understanding)
-6. **You validated with tests** (verifying spec clarity)
-7. **You refined gaps/ambiguities** (learning from failures)
-8. **AI regenerated** (both improved together)
-
-**Key insight:** The spec improved through testing. **This is how professional specifications are written**—iteratively, with validation.
-
-When AI generated wrong code (Scenario 3), it wasn't AI's fault—it was an **ambiguous specification**. The failure taught you where precision was needed.
-
-### The Feedback Loop
-
-This is **co-learning** and **AI-native specification development**:
-
-1. **You collaborated with AI to write the specification** (AI helped identify user stories, edge cases, and acceptance criteria)
-2. **AI generated code from your refined spec** (showing its understanding)
+1. **You collaborated with AI to draft the specification** (user stories, edge cases, acceptance criteria)
+2. **AI generated code from your spec** (showing its understanding)
 3. **You validated output** (testing if spec was clear)
-4. **You refined spec with AI's help** (learning from gaps)
-5. **AI regenerated** (both improved together)
+4. **Gaps revealed** (Scenario 2: AI asked questions; Scenario 3: AI made wrong assumptions)
+5. **You refined spec with AI's help** (learning from failures)
+6. **AI regenerated** (both improved together)
 
-**Key insight:** The spec improved through testing. **This is how professional specifications are written**—iteratively, with validation, using AI as a co-reasoning partner throughout the entire process.
-
-**AI's Role in Specification**: Notice that AI helped you in BOTH specification writing (Parts 1-4) AND implementation (Part 5). In AI-native development, you use AI to think through requirements, not just to generate code. This makes your specifications more complete and catches edge cases earlier.
+**Key insight:** Specifications improve through iteration. When AI generated wrong code (Scenario 3), it wasn't AI's fault—it was an **ambiguous specification**. The failure taught you where precision was needed. Professional specs are written iteratively, using AI as a co-reasoning partner to catch gaps early.
 
 ---
 
@@ -456,21 +357,11 @@ assert divide(10, 2) == 5.0  # Not 5! This is a contract.
 
 The spec isn't separate from tests; **tests ARE the specification** in executable form.
 
-### ✅ Co-Learning Through Validation (AI-Native Methodology)
+### ✅ Co-Learning Through Validation
 
-When AI generated wrong code (Scenario 3: always returning float), you learned your spec was ambiguous. You refined it. **Both you and AI got smarter.**
+When AI generated wrong code (Scenario 3), you learned your spec was ambiguous. When AI asked questions (Scenario 2), you learned your spec had gaps. **This is how specs improve**—through iteration, not perfection on first try.
 
-When AI asked questions (Scenario 2: runtime type checking?), you learned your spec had gaps. You filled them.
-
-**This is co-learning and AI-native development:** Specifications improve through feedback from implementation attempts. **Crucially, you used AI to help write the specification itself**—not just to implement it. AI helped you:
-
-- Brainstorm user stories (Part 1)
-- Define acceptance criteria (Part 2)
-- Identify edge cases you might have missed (Part 3)
-- Structure the complete specification (Part 4)
-- Implement and validate (Parts 5-6)
-
-**The AI-native insight**: Don't wait until implementation to involve AI. Use AI as a co-reasoning partner from the very first step—defining what you're building. This produces better specifications and catches problems earlier.
+**The AI-native approach**: You used AI to help write the specification itself (user stories, edge cases, acceptance criteria), not just implement it. This catches problems earlier and produces clearer specs.
 
 ### ✅ Specification is a Design Activity
 
