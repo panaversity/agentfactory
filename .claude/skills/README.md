@@ -1,7 +1,6 @@
 # CoLearning Python Skills
 
-
-This directory contains 9 specialized pedagogical skills for creating high-quality Python programming education content. These skills are designed to be **semantically activated** based on the educator's intent and teaching needs, using Claude Code's natural language understanding.
+This directory contains specialized pedagogical skills for creating high-quality Python programming education content. These skills are designed to be **semantically activated** based on the educator's intent and teaching needs, using Claude Code's natural language understanding.
 
 
 ## Architecture: Progressive Disclosure
@@ -29,202 +28,6 @@ This layered approach ensures Claude can:
 1. **Quickly determine relevance** (Layer 1 descriptions)
 2. **Execute effectively** (Layer 2 processes)
 3. **Apply rigor** (Layer 3 references and validation)
-
-
-
-## The 9 Skills
-
-
-
-### 1. learning-objectives
-**Purpose**: Generate measurable learning outcomes aligned with Bloom's taxonomy
-
-**When to use**:
-- Planning curriculum or lesson design
-- Creating assessments aligned to clear objectives
-- Ensuring objectives are specific and testable
-- Sequencing learning from basic recall to creative synthesis
-
-**Key features**:
-- Maps objectives to Bloom's 6 cognitive levels (Remember through Create)
-- Identifies prerequisites and scaffolds learning progressively
-- Validates measurability with action verbs
-- Pairs objectives with appropriate assessment methods
-
-**Activation examples**:
-- "Create learning objectives for teaching Python decorators"
-- "What should students achieve after learning about loops?"
-- "Help me define measurable outcomes for my OOP unit"
-
----
-
-### 2. concept-scaffolding
-**Purpose**: Break down complex concepts into progressive learning steps with cognitive load management
-
-**When to use**:
-- Teaching advanced topics incrementally (OOP, decorators, async/await, metaclasses)
-- Learners struggling with cognitive overload
-- Designing progressions from simple to complex understanding
-- Creating worked examples with fading support
-
-**Key features**:
-- Applies Cognitive Load Theory (max 2-3 new concepts per step for beginners)
-- Creates 3-7 step learning progressions
-- Provides worked examples for each step
-- Includes verification checkpoints
-- Assesses cognitive load to prevent overwhelm
-
-**Activation examples**:
-- "How do I teach Python decorators incrementally?"
-- "Break down async/await for beginners"
-- "Scaffold object-oriented programming concepts"
-
----
-
-### 3. code-example-generator
-**Purpose**: Generate runnable, pedagogically sound Python code examples with validation
-
-**When to use**:
-- Authors need teaching examples demonstrating specific concepts
-- Creating progressive example sequences (simple to complex)
-- Validating existing code examples for best practices
-- Need examples that follow Python conventions (PEP 8)
-
-**Key features**:
-- Creates runnable, self-contained examples
-- Progressive complexity (simple, realistic, complex)
-- Validates syntax and executes in sandbox
-- Includes clear explanations of what, how, and why
-- Shows expected output and common mistakes
-
-**Activation examples**:
-- "Generate a beginner example for list comprehensions"
-- "Show me a realistic example of exception handling"
-- "Create code examples demonstrating dictionary methods"
-
----
-
-### 4. exercise-designer
-**Purpose**: Design deliberate practice exercises with evidence-based learning strategies
-
-**When to use**:
-- Creating homework assignments or problem sets
-- Applying evidence-based strategies (retrieval practice, spaced repetition, interleaving)
-- Establishing difficulty progression
-- Generating varied exercise types (not just "write code from scratch")
-
-**Key features**:
-- 8 exercise types: fill-in-blank, debug-this, build-from-scratch, extend-code, trace-execution, explain-code, refactor, Parsons problems
-- Applies spaced repetition (reviews prior concepts)
-- Interleaves concepts (60% current, 30% recent, 10% older)
-- Generates comprehensive test cases (normal, edge, error)
-- Provides rubrics and progressive hints
-
-**Activation examples**:
-- "Create 5 exercises for practicing list methods"
-- "Design exercises for loops that review conditionals"
-- "Generate a problem set with varied difficulty"
-
----
-
-### 5. assessment-builder
-**Purpose**: Create balanced assessments with varied question types and meaningful distractors
-
-**When to use**:
-- Designing quizzes, tests, or exams
-- Need questions at appropriate cognitive levels (60%+ non-recall)
-- Creating MCQs with diagnostic distractors based on misconceptions
-- Generating rubrics for open-ended questions
-
-**Key features**:
-- 10 question types: MCQ, code-completion, code-tracing, debugging, code-writing, explanation, code-review, prediction, comparison, project
-- Creates meaningful MCQ distractors testing specific misconceptions
-- Validates cognitive distribution (Remember through Create)
-- Generates analytic rubrics for open-ended questions
-- Provides complete answer keys with explanations
-
-**Activation examples**:
-- "Create a balanced assessment for Python functions"
-- "Design a quiz testing application skills, not just recall"
-- "Add meaningful distractors to these MCQs"
-
----
-
-### 6. technical-clarity
-**Purpose**: Review technical explanations for jargon, readability, and accessibility
-
-**When to use**:
-- Reviewing draft tutorials, documentation, or book chapters
-- Identifying gatekeeping language ("obviously", "simply", etc.)
-- Assessing readability level vs. target audience
-- Checking for completeness (prerequisites, context, examples)
-
-**Key features**:
-- Calculates readability metrics (Flesch-Kincaid grade level)
-- Identifies jargon and checks definition status
-- Flags gatekeeping language with replacements
-- Assesses completeness (prerequisites, examples, context, motivation)
-- Provides prioritized recommendations (critical/important/enhancement)
-
-**Activation examples**:
-- "Review this Python tutorial for clarity"
-- "Is this explanation appropriate for beginners?"
-- "Check this content for gatekeeping language"
-
----
-
-
-### 7. book-scaffolding
-
-**Purpose**: Structure book content with logical chapter flow and dependency management
-
-**When to use**:
-- Planning book structure or course curriculum
-- Organizing chapters with prerequisite dependencies
-- Ensuring logical concept progression
-- Balancing chapter lengths and complexity
-
-**Key features**:
-- Validates chapter dependency chains
-- Checks for structural patterns (foundation, progression, integration, specialization)
-- Analyzes chapter flow and concept scaffolding
-- Identifies circular dependencies
-- Balances chapter lengths and difficulty
-
-**Activation examples**:
-- "Plan the structure for my Python book"
-- "Validate these chapter dependencies"
-- "What order should I teach these concepts?"
-
----
-
-
-### 8. ai-augmented-teaching
-
-**Purpose**: Design learning experiences for AI-assisted software development
-
-### 9. content-evaluation-framework
-**Purpose**: Evaluate content quality using a structured rubric (technical accuracy, pedagogy, writing, structure, AI-first teaching, constitution compliance) with weighted scoring and actionable feedback
-
-
-**When to use**:
-- Integrating AI tools (ChatGPT, GitHub Copilot, Claude) into programming curriculum
-- Teaching prompt engineering as a core skill
-- Balancing AI assistance with foundational learning
-- Establishing ethical guidelines for AI use
-- Assessing AI integration appropriateness
-
-**Key features**:
-- 5 AI pair programming patterns (Explainer, Debugger, Code Reviewer, Pair Programmer, Hypothesis Validator)
-- Teaches prompt engineering pedagogy (context, constraints, iteration)
-- Builds AI tool literacy (capabilities, limitations, verification)
-- Establishes ethical frameworks (disclosure, attribution, understanding requirements)
-- Assesses balance (40% foundation / 40% AI-assisted / 20% verification)
-
-**Activation examples**:
-- "How do I integrate AI tools into my Python course?"
-- "Design a lesson balancing AI assistance with independent learning"
-- "Create a prompt engineering curriculum"
 
 ---
 
@@ -416,54 +219,6 @@ You don't need to read these directly - skills reference them automatically when
         └── validate-prompts.py
 ```
 
-## Getting Started
-
-### For Educators
-
-Simply describe your teaching need in natural language. Examples:
-
-- "I need to create a lesson on Python classes for beginners"
-- "Help me design exercises that practice loops and conditionals"
-- "Review this tutorial for clarity and accessibility"
-- "Create learning objectives for a web scraping module"
-
-Claude will automatically activate the appropriate skills and guide you through the process.
-
-### For Content Authors
-
-If you're creating educational content (books, tutorials, courses):
-
-1. **Start with objectives** - Define what learners should achieve
-2. **Structure content** - Use book-architecture for overall flow
-3. **Create examples** - Generate runnable, pedagogically sound code
-4. **Design practice** - Create varied exercises with evidence-based strategies
-5. **Build assessments** - Measure understanding, not just recall
-6. **Review clarity** - Ensure content is accessible to target audience
-7. **Integrate AI** - If applicable, balance AI assistance with learning
-
-### For Skill Developers
-
-Each skill follows this structure:
-
-1. **SKILL.md frontmatter** (YAML):
-   - `name`: Skill identifier
-   - `description`: Semantic activation text (critical for matching)
-   - `allowed-tools`: Tools the skill can use
-   - `version`: Semantic version
-
-2. **SKILL.md body** (Markdown):
-   - Purpose and when to activate
-   - Required/optional inputs
-   - Step-by-step process
-   - Output format and examples
-   - Common patterns and troubleshooting
-   - Integration with other skills
-
-3. **Supporting materials**:
-   - `reference/`: Pedagogical knowledge
-   - `templates/`: Structured output formats
-   - `scripts/`: Validation and assessment utilities
-
 ## Pedagogical Foundations
 
 These skills are grounded in evidence-based teaching research:
@@ -489,6 +244,199 @@ All skills enforce quality through validation:
 - **Completeness**: Content includes prerequisites, examples, context
 - **Runnable Code**: Examples are syntactically correct and executable
 - **Ethical AI Use**: AI integration balances assistance with learning
+
+
+## The Core Skills
+
+### 1. learning-objectives
+**Purpose**: Generate measurable learning outcomes aligned with Bloom's taxonomy
+
+**When to use**:
+- Planning curriculum or lesson design
+- Creating assessments aligned to clear objectives
+- Ensuring objectives are specific and testable
+- Sequencing learning from basic recall to creative synthesis
+
+**Key features**:
+- Maps objectives to Bloom's 6 cognitive levels (Remember through Create)
+- Identifies prerequisites and scaffolds learning progressively
+- Validates measurability with action verbs
+- Pairs objectives with appropriate assessment methods
+
+**Activation examples**:
+- "Create learning objectives for teaching Python decorators"
+- "What should students achieve after learning about loops?"
+- "Help me define measurable outcomes for my OOP unit"
+
+---
+
+### 2. concept-scaffolding
+**Purpose**: Break down complex concepts into progressive learning steps with cognitive load management
+
+**When to use**:
+- Teaching advanced topics incrementally (OOP, decorators, async/await, metaclasses)
+- Learners struggling with cognitive overload
+- Designing progressions from simple to complex understanding
+- Creating worked examples with fading support
+
+**Key features**:
+- Applies Cognitive Load Theory (max 2-3 new concepts per step for beginners)
+- Creates 3-7 step learning progressions
+- Provides worked examples for each step
+- Includes verification checkpoints
+- Assesses cognitive load to prevent overwhelm
+
+**Activation examples**:
+- "How do I teach Python decorators incrementally?"
+- "Break down async/await for beginners"
+- "Scaffold object-oriented programming concepts"
+
+---
+
+### 3. code-example-generator
+**Purpose**: Generate runnable, pedagogically sound Python code examples with validation
+
+**When to use**:
+- Authors need teaching examples demonstrating specific concepts
+- Creating progressive example sequences (simple to complex)
+- Validating existing code examples for best practices
+- Need examples that follow Python conventions (PEP 8)
+
+**Key features**:
+- Creates runnable, self-contained examples
+- Progressive complexity (simple, realistic, complex)
+- Validates syntax and executes in sandbox
+- Includes clear explanations of what, how, and why
+- Shows expected output and common mistakes
+
+**Activation examples**:
+- "Generate a beginner example for list comprehensions"
+- "Show me a realistic example of exception handling"
+- "Create code examples demonstrating dictionary methods"
+
+---
+
+### 4. exercise-designer
+**Purpose**: Design deliberate practice exercises with evidence-based learning strategies
+
+**When to use**:
+- Creating homework assignments or problem sets
+- Applying evidence-based strategies (retrieval practice, spaced repetition, interleaving)
+- Establishing difficulty progression
+- Generating varied exercise types (not just "write code from scratch")
+
+**Key features**:
+- 8 exercise types: fill-in-blank, debug-this, build-from-scratch, extend-code, trace-execution, explain-code, refactor, Parsons problems
+- Applies spaced repetition (reviews prior concepts)
+- Interleaves concepts (60% current, 30% recent, 10% older)
+- Generates comprehensive test cases (normal, edge, error)
+- Provides rubrics and progressive hints
+
+**Activation examples**:
+- "Create 5 exercises for practicing list methods"
+- "Design exercises for loops that review conditionals"
+- "Generate a problem set with varied difficulty"
+
+---
+
+### 5. assessment-builder
+**Purpose**: Create balanced assessments with varied question types and meaningful distractors
+
+**When to use**:
+- Designing quizzes, tests, or exams
+- Need questions at appropriate cognitive levels (60%+ non-recall)
+- Creating MCQs with diagnostic distractors based on misconceptions
+- Generating rubrics for open-ended questions
+
+**Key features**:
+- 10 question types: MCQ, code-completion, code-tracing, debugging, code-writing, explanation, code-review, prediction, comparison, project
+- Creates meaningful MCQ distractors testing specific misconceptions
+- Validates cognitive distribution (Remember through Create)
+- Generates analytic rubrics for open-ended questions
+- Provides complete answer keys with explanations
+
+**Activation examples**:
+- "Create a balanced assessment for Python functions"
+- "Design a quiz testing application skills, not just recall"
+- "Add meaningful distractors to these MCQs"
+
+---
+
+### 6. technical-clarity
+**Purpose**: Review technical explanations for jargon, readability, and accessibility
+
+**When to use**:
+- Reviewing draft tutorials, documentation, or book chapters
+- Identifying gatekeeping language ("obviously", "simply", etc.)
+- Assessing readability level vs. target audience
+- Checking for completeness (prerequisites, context, examples)
+
+**Key features**:
+- Calculates readability metrics (Flesch-Kincaid grade level)
+- Identifies jargon and checks definition status
+- Flags gatekeeping language with replacements
+- Assesses completeness (prerequisites, examples, context, motivation)
+- Provides prioritized recommendations (critical/important/enhancement)
+
+**Activation examples**:
+- "Review this Python tutorial for clarity"
+- "Is this explanation appropriate for beginners?"
+- "Check this content for gatekeeping language"
+
+---
+
+
+### 7. book-scaffolding
+
+**Purpose**: Structure book content with logical chapter flow and dependency management
+
+**When to use**:
+- Planning book structure or course curriculum
+- Organizing chapters with prerequisite dependencies
+- Ensuring logical concept progression
+- Balancing chapter lengths and complexity
+
+**Key features**:
+- Validates chapter dependency chains
+- Checks for structural patterns (foundation, progression, integration, specialization)
+- Analyzes chapter flow and concept scaffolding
+- Identifies circular dependencies
+- Balances chapter lengths and difficulty
+
+**Activation examples**:
+- "Plan the structure for my Python book"
+- "Validate these chapter dependencies"
+- "What order should I teach these concepts?"
+
+---
+
+
+### 8. ai-augmented-teaching
+
+**Purpose**: Design learning experiences for AI-assisted software development
+
+### 9. content-evaluation-framework
+**Purpose**: Evaluate content quality using a structured rubric (technical accuracy, pedagogy, writing, structure, AI-first teaching, constitution compliance) with weighted scoring and actionable feedback
+
+**When to use**:
+- Integrating AI tools (ChatGPT, GitHub Copilot, Claude) into programming curriculum
+- Teaching prompt engineering as a core skill
+- Balancing AI assistance with foundational learning
+- Establishing ethical guidelines for AI use
+- Assessing AI integration appropriateness
+
+**Key features**:
+- 5 AI pair programming patterns (Explainer, Debugger, Code Reviewer, Pair Programmer, Hypothesis Validator)
+- Teaches prompt engineering pedagogy (context, constraints, iteration)
+- Builds AI tool literacy (capabilities, limitations, verification)
+- Establishes ethical frameworks (disclosure, attribution, understanding requirements)
+- Assesses balance (40% foundation / 40% AI-assisted / 20% verification)
+
+**Activation examples**:
+- "How do I integrate AI tools into my Python course?"
+- "Design a lesson balancing AI assistance with independent learning"
+- "Create a prompt engineering curriculum"
+
 
 ## Contributing
 

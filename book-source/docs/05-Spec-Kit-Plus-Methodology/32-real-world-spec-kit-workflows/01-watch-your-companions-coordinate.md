@@ -27,7 +27,7 @@ Imagine two engineers work on the same project. They never talk. No meetings, no
 
 The answer: clear specifications.
 
-In this lesson, you'll run a real experiment. You'll take the grading system specification you built in Chapter 26 (Lesson 9), decompose it into two independent features, give each feature to a different AI companion, and watch them implement in parallel without any direct communication. Then you'll integrate their outputs and discover something profound: **clear specs eliminate the need for synchronous communication**.
+In this lesson, you'll run a real experiment. You'll build a grading system specification, decompose it into two independent features, give each feature to a different AI companion, and watch them implement in parallel without any direct communication. Then you'll integrate their outputs and discover something profound: **clear specs eliminate the need for synchronous communication**.
 
 This is how professional teams scale. This is why specification-driven development works at 5 people, 50 people, or 500 people.
 
@@ -35,7 +35,7 @@ This is how professional teams scale. This is why specification-driven developme
 
 ## Part 1: The Grading System Specification (Your Starting Point)
 
-Before we begin, you need your grading system specification from Chapter 26, Lesson 9. If you haven't completed it, do that first. It should include:
+Before we begin, you need to build a grading system specification. If you haven't completed it, do that first. It should include:
 
 - **What the system does**: Accept student submissions and rubrics, produce grades and feedback
 - **Key features**: Grade calculation, feedback generation, error handling
@@ -77,9 +77,9 @@ This lesson walks you through this pattern using AI companions.
 
 Your grading system likely has at least two natural features. Let's identify them.
 
-### Step 1: Open Your Chapter 26, Lesson 9 Specification
+### Step 1: Build Specification
 
-Find the specification you wrote for the grading system. Review it carefully. What are the major components?
+Get the specification you wrote for the grading system. Review it carefully. What are the major components?
 
 ### Step 2: Identify Feature Boundaries (With Your Companion's Help)
 
