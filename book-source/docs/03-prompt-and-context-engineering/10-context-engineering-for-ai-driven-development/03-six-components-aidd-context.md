@@ -1,5 +1,5 @@
 ---
-title: "Lesson 3: The Six Components of AIDD Context"
+title: "The Six Components of AIDD Context"
 chapter: 10
 lesson: 3
 duration_minutes: 25

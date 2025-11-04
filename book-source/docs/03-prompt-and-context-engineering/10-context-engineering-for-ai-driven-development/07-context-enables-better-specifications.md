@@ -1,5 +1,5 @@
 ---
-title: "Lesson 7: Context Enables Better Specifications"
+title: "Context Enables Better Specifications"
 sidebar_position: 7
 description: "Learn why rich context is essential for writing clear specifications in AI-native development"
 keywords: [context engineering, specification writing, AI-native development, planning-first, AIDD]

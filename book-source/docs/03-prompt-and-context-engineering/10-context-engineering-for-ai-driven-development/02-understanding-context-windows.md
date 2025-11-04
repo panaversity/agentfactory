@@ -1,5 +1,5 @@
 ---
-title: "Lesson 2: Understanding Context Windows"
+title: "Understanding Context Windows"
 chapter: 10
 lesson: 2
 duration_minutes: 18

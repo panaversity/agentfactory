@@ -1,5 +1,5 @@
 ---
-title: "Lesson 1: What is Context Engineering?"
+title: "What is Context Engineering?"
 chapter: 10
 lesson: 1
 duration_minutes: 15

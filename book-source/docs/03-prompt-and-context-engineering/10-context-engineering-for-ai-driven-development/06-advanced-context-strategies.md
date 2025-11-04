@@ -1,5 +1,5 @@
 ---
-title: "Lesson 6: Advanced Context Strategies"
+title: "Advanced Context Strategies"
 chapter: 10
 lesson: 6
 duration_minutes: 28

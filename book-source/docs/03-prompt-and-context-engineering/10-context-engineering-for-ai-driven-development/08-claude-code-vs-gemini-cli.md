@@ -1,5 +1,5 @@
 ---
-title: "Lesson 8: Claude Code vs Gemini CLI - Tool Comparison"
+title: "Claude Code vs Gemini CLI - Tool Comparison"
 sidebar_position: 8
 description: "Learn when to use Claude Code vs Gemini CLI based on context needs, task complexity, and project size"
 keywords: [Claude Code, Gemini CLI, tool comparison, AI tool selection, context window, AIDD tools]

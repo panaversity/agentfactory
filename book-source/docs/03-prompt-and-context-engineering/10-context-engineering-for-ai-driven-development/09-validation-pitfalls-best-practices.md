@@ -1,5 +1,5 @@
 ---
-title: "Lesson 9: Validation, Pitfalls & Best Practices"
+title: "Validation, Pitfalls & Best Practices"
 sidebar_position: 9
 description: "Learn common mistakes, validation strategies, metrics, and best practices for context engineering mastery"
 keywords: [context engineering, common mistakes, validation, metrics, best practices, AIDD, real-world examples]

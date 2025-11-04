@@ -1,5 +1,5 @@
 ---
-title: "Lesson 2: Writing Clear Commands - Your First Code Generation"
+title: "Writing Clear Commands - Your First Code Generation"
 chapter: 9
 lesson: 2
 part: 3

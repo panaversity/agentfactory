@@ -1,5 +1,5 @@
 ---
-title: "Lesson 4: Progressive Context Loading"
+title: Progressive Context Loading"
 chapter: 10
 lesson: 4
 duration_minutes: 20

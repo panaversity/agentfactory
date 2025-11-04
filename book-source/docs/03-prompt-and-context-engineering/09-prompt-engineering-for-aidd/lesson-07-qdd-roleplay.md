@@ -1,5 +1,5 @@
 ---
-title: "Lesson 7: Question-Driven Development (QDD) and Roleplay — Get Expert, Tailored Code"
+title: "Question-Driven Development (QDD) and Roleplay — Get Expert, Tailored Code"
 chapter: 9
 lesson: 7
 duration_minutes: 50

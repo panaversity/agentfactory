@@ -1,5 +1,5 @@
 ---
-title: "Lesson 5: Context Compression & Isolation"
+title: "Context Compression & Isolation"
 chapter: 10
 lesson: 5
 duration_minutes: 22
