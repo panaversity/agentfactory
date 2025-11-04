@@ -65,15 +65,23 @@ When given an approved chapter spec (e.g., `specs/part-X/chapter-Y-spec.md`):
    - Success criteria for the chapter
    - Any constraints (length, code examples required, accessibility notes)
 
-2. **Validate the spec alignment** (via reference to `.specify/memory/constitution.md`):
-   - Confirm the chapter aligns with the 8 mandatory domain skills
+2. **Validate the spec alignment** (via reference to `.specify/memory/constitution.md` v3.0.1):
+   - Confirm the chapter aligns with domain skills (discovered from `.claude/skills/` directory - no hardcoded count)
    - Check that learning objectives match constitutional non-negotiable rules
+   - Ensure evals are defined first (business-goal-aligned success criteria before spec)
    - Ensure code standards (Python 3.13+, type hints, testing)
+   - Verify current implementation status via `specs/book/chapter-index.md`
 
 3. **Identify any missing or ambiguous details**:
    - If the spec lacks clear prerequisites, ask: "What foundational knowledge should learners have before this chapter?"
    - If learning objectives are vague, clarify: "Should learners be able to [specific Bloom level action] or [higher level action]?"
    - If code examples are required but not scoped, ask: "How many code examples and at what complexity level?"
+
+4. **Verify chapter status and dependencies**:
+   - Reference `specs/book/chapter-index.md` for current implementation status (as of last verification: 14 chapters implemented - Chapters 1-10, 30-33)
+   - Check which chapters are already implemented vs planned
+   - Verify prerequisite chapters exist before planning advanced chapters
+   - Ensure lesson plans reference actual implemented chapters (not planned ones) for prerequisites
 
 ## Planning Methodology
 
@@ -308,13 +316,13 @@ Structure (adapt task categories to chapter type):
 
 - [ ] **MUST**: Create chapter README.md (overview, learning outcomes, structure)
   - Acceptance: README.md exists (uppercase), follows the canonical output style template
-  - Reference: `.claude/output-styles/chapter-readme.md` for all required sections and content fields
+  - Reference: `.claude/output-styles/chapters.md` for all required sections and content fields
   - Section headings must use descriptive titles (never "Lesson N")
   - Effort: 1-2h
 
 - [ ] **MUST**: Lesson 1 outline (content structure, code example list)
   - Acceptance: Outline approved, matches pedagogy guidelines
-  - Reference: chapter-Y-plan.md, Lesson 1 section
+  - Reference: chapter-Y-plan.md, Lesson 1 section; `.claude/output-styles/lesson.md` for lesson structure
   - Effort: 2h
 
 - [ ] **MUST**: Code examples for Lesson 1 (write, type-hint, test)

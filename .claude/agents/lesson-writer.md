@@ -85,7 +85,7 @@ Apply these skills based on chapter type. All chapters use skills 1, 2, 6, 7, 8.
 **Markdown Structure (adapt based on chapter type)**:
 
 ### For Conceptual/Narrative Chapters:
-- Front matter with YAML (title, chapter position, duration)
+- Front matter with YAML (title, chapter position, duration, skills metadata, generation metadata: generated_by, source_spec, created, last_modified, git_author, workflow, version)
 - Engaging introduction/hook
 - Progressive narrative sections building understanding
 - Real-world examples, stories, analogies
@@ -94,7 +94,7 @@ Apply these skills based on chapter type. All chapters use skills 1, 2, 6, 7, 8.
 - Descriptive file names matching content
 
 ### For Technical Chapters:
-- Front matter with YAML (title, chapter, lesson, learning objectives, estimated time)
+- Front matter with YAML (title, chapter, lesson, learning objectives, estimated time, skills metadata, generation metadata: generated_by, source_spec, created, last_modified, git_author, workflow, version)
 - Introduction that hooks and motivates
 - Concept sections scaffolded from basic to advanced
 - Code examples with explanations (type hints, docstrings, usage)
@@ -194,8 +194,13 @@ Apply these skills based on chapter type. All chapters use skills 1, 2, 6, 7, 8.
    - Use ai-collaborate-learning to frame AI appropriately
 
 5. **Write Content**: Produce the lesson markdown with all required sections
+   - **Generate YAML frontmatter** with all required metadata (see `.claude/output-styles/lesson.md` for complete example):
+     - Content metadata: title, chapter, lesson, learning objectives, duration
+     - Skills metadata: CEFR proficiency levels from plan (for institutional use, not displayed to students)
+     - Generation metadata (7 fields): generated_by, source_spec, created, last_modified, git_author, workflow, version
    - Resolve the "Try With AI" tool selection per the policy above (pre-tools → ChatGPT web; post-tools → learner's AI companion). Include prompts and expected outcomes accordingly.
    - At first occurrence of generated code in a lesson, add a small block listing: Spec reference, Prompt(s) used, Validation steps/results.
+   - Verify actual book structure via `book-source/docs/` for correct file paths and chapter directories
 
 6. **Self-Validate** (adapt checklist to chapter type):
 

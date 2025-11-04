@@ -5,13 +5,19 @@ Created: 2025-10-28
 Last Refactored: 2025-10-31
 Rationale: PARADIGM SHIFT from "teaching Python programming" to "AI-native software development methodology". This is a BREAKING CHANGE that reframes the entire book from learning syntax to learning specification-first development.
 
+Changes in v3.0.1 (2025-11-04):
+- CORE PHILOSOPHY: Added "Evals-First Development" as #1 philosophy (professional AI-native pattern: Evals → Spec → Implement → Validate)
+- Renumbered Core Philosophy to 8 tenets (was implicit 7, now explicit with Evals-First)
+- Updated all workflow references to reflect evals-first approach
+- Aligned with professional practice at Anthropic, OpenAI, Google DeepMind
+
 Changes in v3.0.0 (BREAKING):
 - VISION: Changed from "teaching Python programming" to "AI-native software development"
 - BOOK SCOPE: 46 chapters → 55 chapters, 7 parts → 13 parts
 - TARGET AUDIENCE: Expanded from "beginners only" to "aspiring/professional/founders" with graduated complexity
 - CORE PHILOSOPHY: Added 3 new tenets (Specification-First, Validation-First Safety, Bilingual Development)
 - PRINCIPLES: Added 4 new principles (#14-17): Planning-First, Validation-Before-Trust, Bilingual Development, Production-Ready Deployment
-- DOMAIN SKILLS: 9 → 14 skills (removed code-example-generator, added 7 new AI-native skills)
+- DOMAIN SKILLS: Changed from hardcoded list to plugin-based architecture (skills discovered from `.claude/skills/` directory)
 - NEW SECTIONS: Production & Deployment Standards (IX), TypeScript Standards (X), Specification Quality Standards (XI)
 - WORKFLOW: Reframed SDD loop to emphasize spec-first as THE methodology we teach, not just how we write the book
 
@@ -43,7 +49,25 @@ Templates Aligned:
 
 # AI Native Software Development: Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way — Project Constitution
 
-**Version:** 3.0.0 | **Ratified:** 2025-10-31 | **Last Amended:** 2025-10-31
+**Version:** 3.0.1 | **Ratified:** 2025-10-31 | **Last Amended:** 2025-11-04
+
+---
+
+## 📌 How to Read This Constitution
+
+This constitution describes both:
+
+1. **Current Reality** — What exists today (infrastructure, implemented content, operational capabilities)
+2. **Future State** — What we're building toward (aspirational architecture, planned expansions)
+
+**Why This Matters**: Clear separation prevents confusion. When you read "55 chapters across 13 parts", that's the Future State vision. When you need to know what's actually implemented, refer to `specs/book/chapter-index.md` which tracks actual chapter status.
+
+**Navigation**:
+
+- Sections marked **🔵 Future State** describe aspirational goals (use this for long-term planning)
+- Sections without markers describe principles that apply to both current and future work
+- **For current implementation status**: See `specs/book/chapter-index.md` (chapter counts, completion status)
+- **For file structure examples**: See actual content in `book-source/docs/` directory
 
 ---
 
@@ -51,9 +75,13 @@ Templates Aligned:
 
 ### Vision
 
-"AI Native Software Development: Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way" is a 55-chapter technical book that teaches AI-native software development methodology where specification-writing is the primary skill and AI agents handle implementation.
+"AI Native Software Development: Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way" is a technical book teaching AI-native software development methodology where specification-writing is the primary skill and AI agents handle implementation.
+
+**🔵 Future State Target**: 55 chapters across 13 parts
+**Current Implementation**: See `specs/book/chapter-index.md` for actual chapter counts and status
 
 This book demonstrates how to build production-ready AI systems by:
+
 1. **Thinking in Specifications** — Decomposing problems into clear, testable requirements
 2. **Collaborating with AI** — Using Claude Code, Gemini CLI as co-reasoning partners
 3. **Validating Outputs** — Testing and verifying AI-generated code systematically
@@ -65,59 +93,77 @@ This book progresses from AI-native mindset (Parts 1-3) through bilingual full-s
 
 ### Core Philosophy
 
-1. **Specification-First Development**
-   Planning is THE primary skill. Clear specifications → AI generates implementation → Human validates. The developer's job is strategic thinking and verification, not manual typing. In AI-native workflows, specification quality directly determines output quality.
+1. **Evals-First Development (Professional AI-Native Pattern)**
+   Define success criteria and evaluation methods BEFORE writing specifications or code. Professional AI development follows: **Evals → Spec → Implement → Validate**. This is the inverse of traditional TDD (test-after). In AI-native workflows, you define "what good looks like" first (evals/benchmarks), then write specs to achieve it, then generate implementation, then validate against evals. Companies like Anthropic, OpenAI, and Google DeepMind use this pattern for all AI system development.
 
-2. **AI as Co-Reasoning Partner**
+   **Critical**: Evals must connect to **business goals**, not arbitrary technical metrics. Evals vary by context:
+   - **Book chapter evals**: Reader comprehension (can student explain concept?), skill acquisition (can student apply technique?), engagement (did student complete chapter?), accessibility (reading level appropriate?)
+   - **Code/feature evals**: Functional correctness (does it solve the user problem?), performance (meets user expectations?), reliability (error rate acceptable?), maintainability (can team modify it?)
+   - **AI product evals**: User success rate (% completing task), accuracy on real use cases (not synthetic benchmarks), safety/alignment (harmful output rate), user satisfaction (NPS, retention)
+
+   **Relationship to User Stories**: User stories describe **WHAT** users want to do (intent). Evals define **HOW to measure** if that intent was achieved (objective success criteria). User stories are qualitative narratives; evals are quantitative measurements. Example: User story "I want to learn SDD" → Evals: "75%+ write valid spec (quiz), 80%+ identify vague requirements (test), Grade 7 reading level (automated check)."
+
+   Teach collaborators to capture evals in specs: "What business outcome must this achieve? How will we measure success? What failure modes matter most to users?"
+
+2. **Specification-First Development**
+   After evals are defined, planning is THE primary skill. Clear specifications → AI generates implementation → Human validates against evals. The developer's job is strategic thinking and verification, not manual typing. In AI-native workflows, specification quality directly determines output quality.
+
+3. **AI as Co-Reasoning Partner**
    AI agents are collaborative partners in THINKING, not just coding assistants. They help refine specifications, suggest architectures, generate implementations, explain tradeoffs, and validate approaches. This book teaches readers to collaborate with AI as an equal partner in problem-solving.
 
-3. **Validation-First Safety**
-   Never trust, always verify. All AI-generated code must be read, understood, tested, and validated before use. Validation skills are as important as specification skills. Professional developers validate everything: syntax, types, security, functionality, and spec alignment.
+4. **Validation-First Safety**
+   Never trust, always verify. All AI-generated code must be read, understood, tested, and validated against evals before use. Validation skills are as important as specification skills. Professional developers validate everything: syntax, types, security, functionality, spec alignment, and eval passage.
 
-4. **Bilingual Full-Stack Development**
+5. **Bilingual Full-Stack Development**
    Professional AI-native developers are fluent in both Python (reasoning/backend) and TypeScript (interaction/frontend). Modern AI systems require both: Python for agents and data processing, TypeScript for user interfaces and real-time interaction. Both languages receive equal emphasis.
 
-5. **Learning by Building**
-   Every concept is practiced through building real, deployable systems—not toy examples. Projects progress from specification → implementation → testing → deployment, demonstrating the complete AI-native development lifecycle.
+6. **Learning by Building**
+   Every concept is practiced through building real, deployable systems—not toy examples. Projects progress from evals → specification → implementation → validation → deployment, demonstrating the complete AI-native development lifecycle.
 
-6. **Progressive Complexity**
+7. **Progressive Complexity**
    Beginners start with simple specifications and AI-assisted implementation (Parts 1-3). Professionals handle complex architectures, multi-agent systems, and production deployment (Parts 10-13). The methodology scales with the developer—the principles remain constant while the complexity increases.
 
-7. **Transparency & Methodology**
-   We don't just teach WHAT to build—we teach HOW we think, plan, specify, validate, and iterate. The book models the AI-native methodology it teaches. Every chapter shows specifications, AI prompts, generated outputs, and validation steps.
+8. **Transparency & Methodology**
+   We don't just teach WHAT to build—we teach HOW we think, plan, specify, validate, and iterate. The book models the AI-native methodology it teaches. Every chapter shows evals first, then specifications, AI prompts, generated outputs, and validation steps.
 
 ### AI Development Spectrum (Assisted → Driven → Native)
 
 To ground our methodology, we explicitly distinguish three approaches to using AI in software work. These represent a progression of integration and responsibility, not mutually exclusive categories.
 
 #### AI Assisted Development
+
 - Role of AI: Productivity helper for individual developers (completion, suggestions, refactoring, documentation, test stubs)
 - Role of Human: Full control of design and architecture; AI accelerates typing and routine tasks
 - Typical Outputs: Faster code, fewer typos, small-scale automation
 - Example: Using an assistant to speed up building a traditional FastAPI service or Next.js app
 
 #### AI‑Driven Development (AIDD)
+
 - Role of AI: Co‑creator generating significant portions of implementation from clear specifications
 - Role of Human: Director/architect/validator—writes specs, reviews AI output, drives iteration and quality
 - Typical Outputs: End‑to‑end scaffolds, APIs with tests, UI components, refactors guided by acceptance criteria
 - Example: Provide a REST API specification; AI generates FastAPI routes, models, validation, tests, and docs
 
 #### AI‑Native Software Development
+
 - Role of AI: Core runtime capability; the application itself depends on intelligent agents/models
 - Role of Human: System designer of agentic behaviors, context, prompts/tools, data, and deployment
 - Typical Outputs: Agents with reasoning and tool use, natural language interfaces, adaptive systems
 - Example: A support agent that reasons over context, coordinates tools/agents, and autonomously resolves tickets
 
 #### Spectrum in Practice
+
 ```
 AI Assisted  →  AI Driven  →  AI Native
    Helper         Co‑creator       Core System
 ```
+
 - Assisted: AI helps you code faster
 - Driven: AI implements from your specifications
 - Native: AI is the product’s core capability
 
 #### Why This Book Emphasizes Driven and Native
+
 - We teach AI‑Driven practices (spec → generate → validate) as the default workflow for building software quickly and reliably
 - We teach AI‑Native architectures where intelligent agents are first‑class, using OpenAI Agents SDK, MCP, and TypeScript frontends
 - Assisted techniques remain useful and are taught early, but the professional bar is the ability to design specifications and agent systems
@@ -125,18 +171,21 @@ AI Assisted  →  AI Driven  →  AI Native
 ### Target Audience
 
 **Primary: Aspiring Developers**
+
 - No prior programming experience required
 - Strong emphasis on clear thinking and problem decomposition
 - Comfortable learning through AI collaboration
 - Goal: Build and deploy real applications quickly using AI-native workflows
 
 **Secondary: Professional Developers**
+
 - Have traditional programming background
 - Want to leverage AI for 10x productivity
 - Need to understand specification-driven development
 - Goal: Transform existing skills for AI-augmented work
 
 **Tertiary: Technical Founders and Entrepreneurs**
+
 - Need to build MVPs and validate ideas rapidly
 - Limited time for deep syntax learning
 - Strong product sense but limited coding background
@@ -162,6 +211,7 @@ Every concept, example, and exercise MUST demonstrate AI-assisted development as
 **Why This Matters:** In 2025 and beyond, professional developers collaborate WITH AI, not despite it. Teaching programming without AI collaboration is teaching an outdated workflow. Students must develop AI partnership skills from day one to be professionally relevant.
 
 **What This Means:**
+
 - AI tools introduced early (Part 2) and used throughout every chapter
 - Every code example shows: specification → AI prompt → generated code → validation
 - Students learn to write effective specifications and prompts as core skills
@@ -177,6 +227,7 @@ Specification-Driven Development (SDD) using Spec-Kit Plus is THE core methodolo
 **Why This Matters:** In AI-native development, specifications ARE the source code. Clear specs → working software (via AI generation). Poor specs → broken software. SDD is scalable, AI-friendly, and enables professional team collaboration. This is the foundational skill that enables everything else.
 
 **What This Means:**
+
 - Part 5 (4 chapters) dedicated entirely to Spec-Driven Development methodology
 - ALL projects use Spec-Kit Plus structure: spec.md → plan.md → tasks.md → implementation
 - Students practice writing specifications WITH AI assistance (iterative refinement)
@@ -185,6 +236,7 @@ Specification-Driven Development (SDD) using Spec-Kit Plus is THE core methodolo
 - Specification quality is a primary success metric (not just "does code run?")
 
 **Application:**
+
 - Chapter 30-33 (Part 5) teach SDD formally
 - ALL subsequent chapters (34-55) apply SDD to every project
 - Refer to `specs/book/chapter-index.md` for specific chapter assignments
@@ -198,6 +250,7 @@ All Python code MUST use Python 3.13+ features with mandatory type hints through
 **Why This Matters:** Type hints are now standard in professional Python development. Teaching without them creates technical debt and bad habits. Modern syntax (match/case, structural patterns) improves readability. Students must learn current best practices, not legacy patterns. Type hints also improve AI code generation quality.
 
 **What This Means:**
+
 - Python 3.13+ syntax required; no legacy patterns or compatibility code
 - Type hints mandatory for all function signatures (zero exceptions)
 - Modern syntax features demonstrated and explained (walrus operator, structural pattern matching, etc.)
@@ -213,6 +266,7 @@ Testing concepts MUST be integrated early and practiced throughout, not relegate
 **Why This Matters:** Professional code is tested code. Introducing testing late makes it seem optional. Early integration normalizes testing as part of development. AI tools excel at generating tests from specifications—this is a perfect AI-native workflow (spec → AI generates code + tests → human validates).
 
 **What This Means:**
+
 - Unit testing introduced early in Part 4 (Python fundamentals)
 - Every significant code example includes corresponding tests
 - Test-writing shown as AI-assisted workflow: "Generate tests for this specification"
@@ -229,6 +283,7 @@ Content difficulty MUST increase gradually with no sudden jumps. Earlier parts h
 **Why This Matters:** Beginners need scaffolding. Jumping complexity levels loses readers. Clear prerequisite chains allow modular learning and reference. Progressive complexity reduces frustration and increases completion rates. BUT: advanced readers need professional-level content, not oversimplified examples.
 
 **What This Means:**
+
 - **Graduated Scaffolding** (not one-size-fits-all):
   - Parts 1-3: Maximum scaffolding (complete beginners, 2 options max, simple specs)
   - Parts 4-5: Moderate scaffolding (learning Python + SDD, 3-4 options, moderate complexity)
@@ -249,12 +304,13 @@ All content creators (human authors and AI agents) MUST use the same shared infr
 **Why This Matters:** Consistency in form allows readers to focus on content. It makes chapters replaceable and updatable without cascading changes. Shared infrastructure enables AI and humans to collaborate effectively on content creation.
 
 **What This Means:**
-- All chapters follow identical structure (documented in `.claude/output-styles/`)
-- All lessons follow identical teaching structure
+
+- All chapters follow identical structure (documented in `.claude/output-styles/chapters.md`)
+- All lessons follow identical teaching structure (documented in `.claude/output-styles/lesson.md`)
 - All Python code follows identical formatting standards (black, mypy --strict)
 - All TypeScript code follows identical formatting standards (prettier, tsc --strict)
 - All exercises follow identical structure and approach
-- All content creators reference the same 14 domain skills and constraints
+- All content creators discover and apply skills from `.claude/skills/` contextually
 - Cross-chapter consistency verified before publication
 
 ---
@@ -266,6 +322,7 @@ All technical claims MUST be verified, tool versions current, and best practices
 **Why This Matters:** Teaching outdated or incorrect practices wastes reader time and creates bad habits. Accuracy builds trust and sets professional standards. In the rapidly-evolving AI ecosystem, currency is critical.
 
 **What This Means:**
+
 - All Python features verified for 3.13+
 - All TypeScript features verified for 5.3+ and ES2024
 - All tool instructions tested (Claude Code, Gemini CLI, Docker, Kubernetes)
@@ -284,6 +341,7 @@ Content MUST be welcoming and accessible to diverse learners with varied backgro
 **Why This Matters:** Learners come from all backgrounds. Assumptions exclude people. Clarity benefits everyone. Accessibility is quality, not a feature. The AI-native era democratizes software development—our content should reflect that.
 
 **What This Means:**
+
 - No assumed computer science background (explain jargon on first use)
 - No ableist language ("obviously", "simply", "just", "easy")
 - Code examples include clear comments explaining intent
@@ -294,6 +352,7 @@ Content MUST be welcoming and accessible to diverse learners with varied backgro
 - Error literacy: teach distinction between normal output and actual errors
 
 **Error Literacy Additions:**
+
 - Every technical lesson MUST include "Red Flags to Watch" section
 - Distinguishes: ✅ Normal/Expected vs. ⚠️ Actual Problems
 - Empowers learners: "Error messages are learning tools. When you see ERROR, ask your AI agent"
@@ -308,6 +367,7 @@ Teaching MUST follow specification-first pattern: show spec FIRST, show AI gener
 **Why This Matters:** In AI-native development, code is OUTPUT not INPUT. We must teach the thinking (specification) before showing the result (code). This pattern models the actual AI-native workflow readers will use professionally.
 
 **What This Means:**
+
 - Present specification before code
 - Show the AI prompt used to generate code
 - Show the generated code
@@ -320,6 +380,7 @@ Teaching MUST follow specification-first pattern: show spec FIRST, show AI gener
 - Every chapter includes "AI Exercise" (starting Ch 3)
 
 **Example Structure:**
+
 ```
 1. The Specification (what we want to build)
 2. The AI Prompt (how we ask AI to build it)
@@ -338,6 +399,7 @@ Projects MUST reflect realistic development scenarios with production deployment
 **Why This Matters:** Toy examples don't transfer to real work. Students need portfolio-worthy projects. Real-world friction (APIs, error handling, deployment, scaling) is learning opportunity, not obstacle. GitHub portfolio is essential for job seekers.
 
 **What This Means:**
+
 - Projects use real tools: git, Docker, Kubernetes, package managers, CI/CD
 - File organization matches professional conventions (src/, tests/, .env, Dockerfile, k8s/)
 - Projects published to GitHub with README, license, documentation
@@ -347,6 +409,7 @@ Projects MUST reflect realistic development scenarios with production deployment
 - Real scalability, security, and cost considerations discussed
 
 **Application:**
+
 - Parts 1-5: Local development with deployment awareness
 - Parts 6-9: Agent systems with testing and validation
 - Parts 10-13: Full production deployment (Docker, K8s, databases, event-driven architecture)
@@ -360,6 +423,7 @@ Multiple AI tools MUST be covered with honest comparison, not single-tool lock-i
 **Why This Matters:** AI tool landscape evolves rapidly. Teaching one tool creates fragility. Students benefit from understanding trade-offs and having backup options. Tool diversity builds adaptable problem-solving skills. Professional developers choose tools based on context, not hype.
 
 **What This Means:**
+
 - Part 2 (AI Tool Landscape) covers: Claude Code, Gemini CLI, GitHub Copilot, Cursor, Zed
 - Each tool's strengths and ideal use cases explained objectively
 - Common workflows demonstrated across multiple tools
@@ -378,6 +442,7 @@ Content MUST be deliberately structured to match audience cognitive capacity. Be
 **What This Means:**
 
 **For Beginner Content (Parts 1-3):**
+
 - Max 2 options to choose from (AI agent handles 3+ options)
 - Max 5 new concepts per lesson section
 - Always show minimal/simplest version first
@@ -387,18 +452,21 @@ Content MUST be deliberately structured to match audience cognitive capacity. Be
 - Trade-off: Clarity over Comprehensiveness
 
 **For Intermediate Content (Parts 4-5):**
+
 - 3-4 options allowed with guided selection criteria
 - 7 concepts per section (more synthesis expected)
 - Introduce tradeoffs explicitly
 - Expect independent problem-solving with AI assistance
 
 **For Advanced Content (Parts 6-8):**
+
 - No artificial option limits (show ecosystem realistically)
 - 10+ concepts per section (synthesis and integration expected)
 - Architecture discussions (patterns, anti-patterns)
 - Independent research encouraged
 
 **For Professional Content (Parts 9-13):**
+
 - No scaffolding (assumes competence)
 - Real-world complexity (security, scale, cost, operations)
 - Multiple valid approaches (architectural decisions)
@@ -413,6 +481,7 @@ Every new tool, command, or technical concept MUST be introduced by explaining W
 **Why This Matters:** Teaching syntax without context creates cargo-cult programming (following commands without understanding). Students need mental models before execution details. Non-programmers especially need conceptual anchors before technical steps.
 
 **What This Means:**
+
 - Structure: WHAT (concept) → WHY (real-world value) → HOW (command) → PRACTICE (Try With AI)
 - For each new term: Explain in non-programmer language on first use
 - Use analogies and real-world examples before technical jargon
@@ -420,6 +489,7 @@ Every new tool, command, or technical concept MUST be introduced by explaining W
 - Avoid assumptions about prior knowledge; define terms contextually
 
 **Example:**
+
 > "A specification is like a blueprint for a house. Before builders start construction, architects create detailed plans showing exactly what should be built. In AI-native development, you write specifications (blueprints), and AI agents build the software (construction). The clearer your blueprint, the better the house."
 
 ---
@@ -431,6 +501,7 @@ Specification-writing is THE primary skill in AI-native development. Clear, test
 **Why This Matters:** In traditional coding, you write code manually. In AI-native development, you write specifications and AI generates code. Therefore, specification quality directly determines output quality. Poor specs → broken code. Great specs → working software. Planning IS the work, not prep for the work.
 
 **What This Means:**
+
 - Every project starts with written specification (spec.md)
 - Specifications include: requirements, acceptance criteria, constraints, non-goals, dependencies
 - AI generation happens ONLY after spec approved by human
@@ -439,6 +510,7 @@ Specification-writing is THE primary skill in AI-native development. Clear, test
 - Planning is not "busywork"—it's the primary value-add of the human developer
 
 **Application:**
+
 - Part 5 (Spec-Driven Development) teaches specification methodology formally
 - ALL chapters modeling projects must show spec-first workflow
 - Code examples include the specification that produced them
@@ -454,6 +526,7 @@ All AI-generated outputs MUST be validated before use. Validation skills are as 
 **Why This Matters:** AI can hallucinate, misunderstand requirements, or generate insecure code. Blind trust in AI outputs is dangerous and unprofessional. Professional developers validate everything. In AI-native workflows, validation is the critical safety mechanism.
 
 **What This Means:**
+
 - Read generated code before running it (understand before executing)
 - Understand what code does before accepting it
 - Test all generated code (unit tests, integration tests, end-to-end)
@@ -463,6 +536,7 @@ All AI-generated outputs MUST be validated before use. Validation skills are as 
 - Iterate on failure: if code doesn't match spec, refine spec and regenerate (NOT manual patching)
 
 **Application:**
+
 - Every code example includes validation steps
 - Students practice code reading and comprehension skills
 - Testing taught early and reinforced throughout
@@ -479,6 +553,7 @@ Professional AI-native developers MUST be proficient in both Python (reasoning/b
 **Why This Matters:** Modern AI systems have two layers: Reasoning Layer (Python for agents, data, logic) and Interaction Layer (TypeScript for UIs, real-time, voice). Knowing only one language limits what you can build. Full-stack AI-native development requires bilingual fluency.
 
 **What This Means:**
+
 - Python standards: 3.13+, type hints mandatory, modern syntax (Part 4: 19 chapters)
 - TypeScript standards: 5.3+, strict mode, ES2024 target (Part 8: 3 chapters)
 - Students learn specification-writing in both languages
@@ -488,6 +563,7 @@ Professional AI-native developers MUST be proficient in both Python (reasoning/b
 - Deployment includes both runtimes (containerization for both)
 
 **Application:**
+
 - Part 4: Python mastery (Chapters 11-29)
 - Part 8: TypeScript mastery (Chapters 38-40)
 - Parts 9-13: Integration (realtime agents, voice, full-stack deployment)
@@ -502,6 +578,7 @@ All projects MUST demonstrate production deployment with cloud-native patterns, 
 **Why This Matters:** "Works on my laptop" is not professional software. AI-native developers must understand containerization, orchestration, state management, and scalability. Deployment is not optional—it's the measure of whether software is actually useful.
 
 **What This Means:**
+
 - Docker containerization for all projects (Part 10)
 - Kubernetes orchestration for multi-service systems (Part 10)
 - Database integration (PostgreSQL, vector stores) (Part 11)
@@ -513,6 +590,7 @@ All projects MUST demonstrate production deployment with cloud-native patterns, 
 - Real scalability, reliability, and cost considerations
 
 **Application:**
+
 - Parts 10-13 dedicated to production deployment (9 chapters)
 - All projects include Dockerfiles and Kubernetes manifests
 - Deployment examples tested and working (not theoretical)
@@ -521,120 +599,156 @@ All projects MUST demonstrate production deployment with cloud-native patterns, 
 
 ---
 
-## II.B Domain Skills (The 14 AI-Native Development Skills)
+## II.B Domain Skills Architecture (Plugin-Based)
 
-All book development MUST leverage these specialized pedagogical skills. These skills codify AI-native development best practices and ensure consistent quality.
+### Philosophy: Skills as Plugins
 
-Repository availability note: Use only the skills that exist under `.claude/skills` in this repository. The list below represents the target skill set; some items may be added incrementally.
+Skills are **discovered dynamically** from the `.claude/skills/` directory. This architecture enables:
 
-### Category 1: Core Pedagogical Skills (Universal)
+- Adding new skills without modifying constitution
+- Removing obsolete skills without breaking the framework
+- Contextual application based on chapter type and requirements
+- Framework reusability for different book domains
 
-### 1. **learning-objectives** Skill
-Generate measurable learning outcomes aligned with Bloom's taxonomy. Ensures every chapter has clear, testable objectives.
-
-### 2. **assessment-builder** Skill
-Build meaningful quizzes, review questions, and evaluations. Assesses specification-writing, validation, and AI-collaboration skills.
-
-### 3. **technical-clarity** Skill
-Ensure all explanations are clear, accessible, and free of jargon gatekeeping.
-
-### 4. **book-scaffolding** Skill
-Plan and structure multi-part educational content with cognitive load management and graduated complexity.
-
-### 5. **content-evaluation-framework** Skill
-Evaluate content quality using structured rubric across technical accuracy, pedagogy, and constitution alignment.
+**Source of Truth**: `.claude/skills/` directory structure and skill metadata
 
 ---
 
-### Category 2: AI-Native Development Skills (NEW/TRANSFORMED)
+### Skill Categories
 
-### 6. **spec-example-generator** Skill (NEW - replaces code-example-generator)
-Create high-quality specification examples demonstrating clear requirements, acceptance criteria, and testable outcomes. Students learn to write specs by seeing excellent specification patterns.
+Skills are organized into categories based on their purpose and applicability:
 
-**When to use:**
-- Parts 3-5 (teaching specification methodology)
-- All project-based chapters
-- Demonstrating spec quality standards
+#### Category 1: Pedagogical Skills (Universal)
 
-### 7. **spec-scaffolding** Skill (TRANSFORMED from concept-scaffolding)
-Break down specification-writing into progressive learning steps. Teach students to write specifications incrementally, managing cognitive load.
+**Purpose**: Teaching methodology, learning science, accessibility
+**Required for**: All content types
+**Activation**: Always active
 
-**When to use:**
-- Part 5 (Spec-Driven Development introduction)
-- Teaching complex specification patterns
-- Scaffolding from simple to complex requirements
+**Examples**:
 
-### 8. **spec-exercise-designer** Skill (TRANSFORMED from exercise-designer)
-Design deliberate practice exercises for specification-writing, not code-writing.
-
-**Exercise types:**
-1. Spec-from-description: Given problem, write specification
-2. Spec-refinement: Given vague spec, make it testable
-3. Acceptance-criteria-writing: Define validation checklist
-4. Spec-debugging: Find ambiguities in flawed spec
-5. Prompt-engineering: Write AI prompt to generate from spec
-
-### 9. **ai-collaboration-pedagogy** Skill (TRANSFORMED from ai-augmented-teaching)
-Teach AI as co-reasoning partner in specification, development, and validation—not just a coding assistant.
-
-**Patterns taught:**
-- Spec Co-Creation: Human describes → AI suggests structure → Human refines
-- Iterative Refinement: Spec → Generate → Test → Improve spec → Regenerate
-- Validation Partnership: AI generates → Human validates → AI explains
-
-### 10. **prompt-engineering-pedagogy** Skill (NEW - CRITICAL)
-Teach effective AI communication as core development skill. Prompt engineering is THE interface to AI.
-
-**Key concepts:**
-- Prompt anatomy (context, instruction, constraints, format)
-- Iterative prompting (refine based on output)
-- Context engineering (providing right information)
-- Verification prompts (asking AI to explain/validate)
-
-### 11. **validation-pedagogy** Skill (NEW - SAFETY CRITICAL)
-Teach students to validate AI-generated outputs before use.
-
-**Key concepts:**
-- Code reading (understand before running)
-- Testing strategies (unit, integration, E2E)
-- Security scanning (secrets, injections, XSS)
-- Performance validation (does it scale?)
-- Spec-code alignment (does output match requirements?)
-
-**Pattern:** SHOW → READ → UNDERSTAND → TEST → VALIDATE → TRUST
-
-### 12. **ai-tool-comparison-pedagogy** Skill (NEW)
-Teach tool selection based on tradeoffs, not hype. Professional developers choose tools contextually.
-
-**Tools covered:** Claude Code, Gemini CLI, GitHub Copilot, Cursor, Zed
-
-**Comparison dimensions:** Strengths, limitations, cost, workflow integration
-
-### 13. **typescript-pedagogy** Skill (NEW - CRITICAL)
-Teach TypeScript for interaction layer development. Professional full-stack requires TypeScript fluency.
-
-**Key concepts:**
-- TypeScript type system (strict mode)
-- Modern syntax (ES2024+)
-- Next.js integration
-- Real-time with WebSockets/WebRTC
-
-**Standards:** Strict mode, no `any` types, explicit return types
-
-### 14. **deployment-pedagogy** Skill (NEW - CRITICAL)
-Teach cloud-native deployment patterns. Production deployment is required knowledge.
-
-**Key concepts:**
-- Docker containerization
-- Kubernetes orchestration
-- Database integration
-- Event-driven architecture (Kafka, Dapr)
-- Stateful agents (Dapr actors, workflows)
-- Observability (logging, metrics, tracing)
+- `learning-objectives` — Measurable outcomes aligned with Bloom's taxonomy
+- `assessment-builder` — Quizzes, exercises, evaluations
+- `technical-clarity` — Clear explanations, jargon management
+- `book-scaffolding` — Multi-part content structure, cognitive load
+- `content-evaluation-framework` — Quality rubrics
 
 ---
 
-**Governance**: All chapter content MUST be validated against these 14 skills before publication.
+#### Category 2: AI-Native Development Skills
+
+**Purpose**: Teaching specification-first, validation-first, AI collaboration
+**Required for**: Technical chapters (Parts 4+)
+**Activation**: When chapter involves code or specifications
+
+**Examples**:
+
+- `spec-example-generator` — High-quality specification patterns
+- `spec-scaffolding` — Progressive specification-writing instruction
+- `spec-exercise-designer` — Deliberate practice for spec-writing
+- `ai-collaboration-pedagogy` — AI as co-reasoning partner
+- `prompt-engineering-pedagogy` — Effective AI communication
+- `validation-pedagogy` — Output validation and safety
+
+---
+
+#### Category 3: Content-Specific Skills
+
+**Purpose**: Language/tool/domain-specific pedagogy
+**Required for**: Specific parts or chapters
+**Activation**: Based on part/chapter context
+
+**Examples**:
+
+- `typescript-pedagogy` — TypeScript teaching (Part 8+)
+- `deployment-pedagogy` — Production deployment (Part 10+)
+- `ai-tool-comparison-pedagogy` — Tool selection guidance (Part 2)
+
+---
+
+#### Category 4: Utilities
+
+**Purpose**: Tooling, automation, infrastructure
+**Required for**: None (quality of life)
+**Activation**: On-demand
+
+**Examples**:
+
+- `docusaurus-deployer` — Build and deployment automation
+- `quiz-generator` — Assessment generation utilities
+- `skill-creator` — Meta-skill for creating new skills
+- `skills-proficiency-mapper` — CEFR/Bloom's proficiency mapping
+
+---
+
+### Skill Discovery Protocol
+
+Subagents discover and apply skills dynamically:
+
+1. **Scan**: Read `.claude/skills/` directory
+2. **Filter**: Select skills by category and `required_for` metadata
+3. **Contextualize**: Apply additional skills based on chapter type
+4. **Execute**: Invoke skills during content creation
+
+**Example Discovery**:
+
+```yaml
+# chapter-planner subagent
+base_skills:
+  - category: pedagogical
+  - required_for: [chapter-planner]
+
+contextual_skills:
+  - if chapter_type == "technical": add category "ai-native-development"
+  - if chapter_part >= 8: add "typescript-pedagogy"
+  - if chapter_part >= 10: add "deployment-pedagogy"
+```
+
+---
+
+### Skill Metadata Standard
+
+Every skill MUST include YAML frontmatter in `SKILL.md`:
+
+```yaml
+---
+name: "skill-name"
+category: "pedagogical|ai-native|content-specific|utility"
+description: "Clear one-line purpose"
+applies_to: ["all-chapters"|"technical-chapters"|"part-X"]
+required_for: ["chapter-planner"|"lesson-writer"|"technical-reviewer"]
+version: "1.0.0"
+dependencies: []
+---
+```
+
+---
+
+### Skill Quality Standards
+
+All skills MUST:
+
+- Include `SKILL.md` with clear purpose and activation triggers
+- Provide reference documentation in `reference/` subdirectory
+- Include validation scripts (where applicable) in `scripts/` subdirectory
+- Specify templates (where applicable) in `templates/` subdirectory
+- Declare version and dependencies in frontmatter
+- Document which subagents should invoke them
+
+---
+
+### Governance: Flexible Validation
+
+**Instead of**: "All content must use exactly 14 skills"
+
+**Validation checks**:
+
+- [ ] All **pedagogical** skills applied appropriately for chapter type
+- [ ] **AI-native** skills applied for technical chapters
+- [ ] **Content-specific** skills applied when part/chapter requires them
+- [ ] Skill outputs meet quality standards defined in skill documentation
+- [ ] No missing skills for declared requirements
+
+**Framework principle**: Content quality depends on **appropriate skill application**, not arbitrary skill counts.
 
 ---
 
@@ -687,6 +801,7 @@ The book MUST follow a 13-part progressive structure building from AI-native min
 **Authoritative Reference**: `specs/book/chapter-index.md` defines all chapters, their part assignments, titles, key topics, and file names. This is THE definitive source.
 
 **Structural Philosophy**:
+
 1. **Mindset Shift (Parts 1-2)**: Understand AI-native revolution, meet the tools
 2. **Communication Skills (Part 3)**: Learn to communicate with AI (prompting, context)
 3. **Foundation Languages (Parts 4, 8)**: Python for reasoning, TypeScript for interaction
@@ -695,6 +810,7 @@ The book MUST follow a 13-part progressive structure building from AI-native min
 6. **Production Deployment (Parts 9-13)**: Real-time, voice, containers, orchestration, state
 
 **Progressive Complexity**:
+
 - **Parts 1-3**: Beginner-friendly, maximum scaffolding, 2 options max
 - **Parts 4-5**: Intermediate, moderate scaffolding, 3-4 options
 - **Parts 6-8**: Advanced, minimal scaffolding, realistic options
@@ -703,75 +819,101 @@ The book MUST follow a 13-part progressive structure building from AI-native min
 ### Part-by-Part Breakdown (55 Chapters Total)
 
 **Part 1: Introducing AI-Driven Development (4 chapters)**
+
 - Problem Solved: Why does software development work differently now?
 - Scaffolding: Maximum (complete beginners)
 - Key Learning: Paradigm shift from manual coding to AI collaboration
 
 **Part 2: AI Tool Landscape (4 chapters)**
+
 - Problem Solved: What tools exist and how do they differ?
 - Scaffolding: High (tool literacy building)
 - Key Learning: Tool selection based on context and tradeoffs
 
 **Part 3: Prompt & Context Engineering (2 chapters)**
+
 - Problem Solved: How do I communicate effectively with AI?
 - Scaffolding: High (foundational communication skill)
 - Key Learning: Prompt engineering as core development competency
 
 **Part 4: Python: The Language of AI Agents (19 chapters)**
+
 - Problem Solved: How do I build reasoning/backend systems?
 - Scaffolding: Graduated (high → moderate → low across 19 chapters)
 - Key Learning: Python 3.13+ for AI-native backends with type hints
 
 **Part 5: Spec-Driven Development (4 chapters)**
+
 - Problem Solved: How do I turn ideas into specifications AI can execute?
 - Scaffolding: Moderate (methodology learning)
 - Key Learning: Specification-first as THE core development skill
 
 **Part 6: Agentic AI Fundamentals with OpenAI Agents SDK in Python (3 chapters)**
+
 - Problem Solved: How do I build autonomous agent systems?
 - Scaffolding: Low (assumes Python + spec-driven proficiency)
 - Key Learning: Agent architecture, reasoning, tool use
 
 **Part 7: MCP Fundamentals with FastMCP (3 chapters)**
+
 - Problem Solved: How do I give agents access to external tools/data?
 - Scaffolding: Low (advanced topic)
 - Key Learning: Model Context Protocol server design
 
 **Part 8: TypeScript: The Language of Realtime and Interaction (3 chapters)**
+
 - Problem Solved: How do I build interaction/frontend layers?
 - Scaffolding: Moderate (new language, familiar concepts)
 - Key Learning: TypeScript for UIs, realtime, voice with strict types
 
 **Part 9: Building Realtime and Voice Agents (3 chapters)**
+
 - Problem Solved: How do I build interactive agent experiences?
 - Scaffolding: Low (integration of prior knowledge)
 - Key Learning: WebSockets, WebRTC, voice interfaces
 
 **Part 10: Containerization & Orchestration using Docker and Kubernetes (3 chapters)**
+
 - Problem Solved: How do I deploy agents to production?
 - Scaffolding: Minimal (professional deployment)
 - Key Learning: Docker, Kubernetes, cloud-native patterns
 
 **Part 11: Data, State, and Memory using PostgreSQL, Graph, and Vector Databases (3 chapters)**
+
 - Problem Solved: How do I give agents persistent memory?
 - Scaffolding: Minimal (assumes deployment knowledge)
 - Key Learning: Database integration, state management, vector search
 
 **Part 12: Event-Driven Architecture using Kafka and Dapr (2 chapters)**
+
 - Problem Solved: How do I build scalable, decoupled systems?
 - Scaffolding: None (professional architecture)
 - Key Learning: Event-driven patterns, pub/sub, Dapr integration
 
-**Part 13: Stateful Agents using Dapr Actors and Dapr Workflows (2 chapters)**
+**Part 13: Stateful Agents using Dapr Actors and Dapr Workflows (2 chapters)** 🔵
+
 - Problem Solved: How do I build complex, stateful agent orchestrations?
 - Scaffolding: None (advanced production patterns)
 - Key Learning: Dapr actors, workflow orchestration
 
-**Total**: 55 chapters across 13 parts
+### 🔵 Future State: Complete Book Structure
+
+**Total**: 55 chapters across 13 parts (aspirational target described above)
+
+### Current Implementation Status
+
+**For actual chapter counts and completion status**:
+→ See **`specs/book/chapter-index.md`** (tracks which chapters exist vs planned)
 
 **Key References**:
-- **`specs/book/chapter-index.md`** — Chapters with titles, numbers, topics (WHAT to write)
-- **`specs/book/directory-structure.md`** — File paths, folder organization (WHERE to put it)
+
+- **`specs/book/chapter-index.md`** — Chapter titles, numbers, topics, and **completion status** (✅ = exists, 🔵 = planned)
+  - This is the single source of truth for "how many chapters exist"
+  - Updates: Maintained as chapters are added; no need to update constitution
+- **`specs/book/directory-structure.md`** — File paths, folder organization (WHERE to put chapters)
+- **`book-source/docs/`** — Actual content directory (see structure by example)
+
+**Cross-Reference Note**: Constitution describes the aspirational 13-part Future State above. For current implementation progress, always check `specs/book/chapter-index.md`.
 
 ---
 
@@ -780,6 +922,7 @@ The book MUST follow a 13-part progressive structure building from AI-native min
 ### What We ALWAYS Do
 
 ✅ **ALWAYS:**
+
 - Write specifications before implementation (spec-first development)
 - Validate all AI-generated code before use (read, understand, test)
 - Show the specification that produced code examples
@@ -805,6 +948,7 @@ The book MUST follow a 13-part progressive structure building from AI-native min
 ### What We NEVER Do
 
 ❌ **NEVER:**
+
 - Generate code without a specification
 - Trust AI outputs without validation
 - Skip testing for "simple" examples
@@ -830,6 +974,7 @@ The book MUST follow a 13-part progressive structure building from AI-native min
 ### When to Escalate for Human Decision
 
 **Always flag for human judgment when:**
+
 - Breaking changes in Python/TypeScript/tool versions
 - Significant methodology shifts affecting prior chapters
 - Content contradicts earlier chapters
@@ -871,30 +1016,35 @@ Human → Validate Output (read, test, verify)
 When creating book chapters, we apply the same loop:
 
 **Phase 1: SPECIFY** (Human + Main Claude)
+
 - **Input**: Source material, chapter topic, learning goals, target audience tier
 - **Process**: Collaborative specification writing
 - **Output**: `specs/part-X/chapter-Y-spec.md`
 - **Acceptance**: Spec is clear, testable, approved by human
 
 **Phase 2: PLAN** (chapter-planner subagent)
+
 - **Input**: Approved specification
 - **Process**: Break spec into lesson plans and task checklist
 - **Output**: `specs/part-X/chapter-Y-plan.md`, `specs/part-X/chapter-Y-tasks.md`
 - **Acceptance**: Plan is detailed, tasks are actionable, complexity tier appropriate
 
 **Phase 3: IMPLEMENT** (lesson-writer subagent)
+
 - **Input**: Plan and tasks
 - **Process**: Write lesson content using 14 domain skills, appropriate output styles
 - **Output**: `docs/part-X/chapter-Y/index.md` + lesson files
 - **Acceptance**: Content follows plan, uses correct complexity tier, models spec-first workflow
 
 **Phase 4: VALIDATE** (technical-reviewer + spec-reviewer + prompt-validator)
+
 - **Input**: Complete chapter content
 - **Process**: Validate against spec, constitution, quality standards
 - **Output**: Validation report with pass/fail + issues categorized (critical/major/minor)
 - **Acceptance**: All critical issues resolved, chapter meets quality gates
 
 **Phase 5: DEPLOY** (Human final review → merge to main → Docusaurus build)
+
 - **Input**: Validated chapter
 - **Process**: Human editorial polish → publish
 - **Output**: Live chapter on website (https://ai-native.panaversity.org)
@@ -903,6 +1053,7 @@ When creating book chapters, we apply the same loop:
 ### Quality Gates
 
 Each phase includes:
+
 - **Entry criteria**: What must exist before starting
 - **Exit criteria**: What must be true before advancing
 - **Validation**: How to verify quality
@@ -914,27 +1065,18 @@ Each phase includes:
 
 ## VI. Infrastructure
 
-### Domain Skills (The 14 AI-Native Development Skills)
+### Domain Skills (Plugin-Based Discovery)
 
-All content creators MUST apply the 14 domain skills defined in Section II.B. These skills are located in `.claude/skills/` and provide pedagogical best practices:
+All content creators MUST apply skills contextually from `.claude/skills/` directory as defined in Section II.B.
 
-**Core Pedagogical (5):**
-1. learning-objectives
-2. assessment-builder
-3. technical-clarity
-4. book-scaffolding
-5. content-evaluation-framework
+**Skill Discovery**: Subagents scan `.claude/skills/` directory and apply skills based on:
 
-**AI-Native Development (9):**
-6. spec-example-generator (NEW)
-7. spec-scaffolding (TRANSFORMED)
-8. spec-exercise-designer (TRANSFORMED)
-9. ai-collaboration-pedagogy (TRANSFORMED)
-10. prompt-engineering-pedagogy (NEW)
-11. validation-pedagogy (NEW)
-12. ai-tool-comparison-pedagogy (NEW)
-13. typescript-pedagogy (NEW)
-14. deployment-pedagogy (NEW)
+- Category (pedagogical, ai-native, content-specific, utility)
+- Chapter type (conceptual, technical, hybrid)
+- Part requirements (TypeScript for Part 8+, deployment for Part 10+)
+- Subagent needs (declared in subagent metadata)
+
+**No Hardcoded Lists**: Skills are plugins. Adding/removing skills does not require constitution changes.
 
 **Note**: Skills directory requires update to align with v3.0.0 (separate feature).
 
@@ -952,10 +1094,10 @@ These are **generic, reusable templates** applicable to any educational content 
 Three specialized agents manage the SDD loop phases (located in `.claude/agents/`):
 
 1. **chapter-planner** — Takes approved spec → creates detailed lesson plans and task checklists
-2. **lesson-writer** — Takes lesson plan → writes complete lesson content with all 14 domain skills applied
+2. **lesson-writer** — Takes lesson plan → writes complete lesson content with contextually appropriate skills applied
 3. **technical-reviewer** — Takes completed chapter → validates technical accuracy, pedagogical effectiveness, and constitutional alignment
 
-**Note**: Subagents require update to align with v3.0.0 (separate feature).
+**Note**: Subagents discover available skills dynamically from `.claude/skills/` directory.
 
 ---
 
@@ -970,10 +1112,12 @@ Three specialized agents manage the SDD loop phases (located in `.claude/agents/
 ### Amendment Process
 
 **For Small Changes** (clarifications, wording):
+
 - Make changes directly with commit message referencing this Constitution
 - Increment PATCH version only
 
 **For Significant Changes** (new principles, removed requirements, major redefinitions):
+
 - Document rationale in commit message or linked ADR
 - Update VERSION field
 - Increment MAJOR or MINOR per semantic versioning
@@ -982,6 +1126,7 @@ Three specialized agents manage the SDD loop phases (located in `.claude/agents/
 - Create migration guide for breaking changes
 
 **For Proposals:**
+
 1. Document the current problem or gap
 2. Propose specific change to Constitution text
 3. Justify with rationale (pedagogical, technical, practical)

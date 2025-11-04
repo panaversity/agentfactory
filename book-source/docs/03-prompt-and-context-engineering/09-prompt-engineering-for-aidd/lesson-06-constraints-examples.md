@@ -1,5 +1,5 @@
 ---
-title: "Lesson 6: Technical Constraints and Examples — Make AI Code Fit Your Project"
+title: "Technical Constraints and Examples — Make AI Code Fit Your Project"
 chapter: 9
 lesson: 6
 duration_minutes: 45

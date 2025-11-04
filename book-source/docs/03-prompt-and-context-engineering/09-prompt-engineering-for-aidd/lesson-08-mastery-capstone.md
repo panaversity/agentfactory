@@ -1,5 +1,5 @@
 ---
-title: "Lesson 8: Mastery Integration and Capstone — Systematize and Ship"
+title: "Mastery Integration and Capstone — Systematize and Ship"
 chapter: 9
 lesson: 8
 duration_minutes: 40

@@ -23,7 +23,7 @@ If you've completed Parts 1-4, you have AI tools and Python skills. But you're a
 
 Three forces have made Specification-Driven Development (SDD) essential right now, in 2025:
 
-**First, AI agents demand explicit specifications.** When you pair-program with a human, you can be vague: "Make it look better" or "Add validation." Your teammate asks clarifying questions. But AI agents—Claude Code, Gemini CLI, GitHub Codex—are literal interpreters. They implement exactly what you specify. Vague instructions produce vague results. Clear specifications produce professional-quality code. This isn't a limitation—it's a forcing function that makes you better at design.
+**First, AI agents demand explicit specifications.** When you pair-program with a human, you can be vague: "Make it look better" or "Add validation." Your teammate asks clarifying questions. But AI agents—Claude Code, Gemini CLI, OpenAI Codex—are literal interpreters. They implement exactly what you specify. Vague instructions produce vague results. Clear specifications produce professional-quality code. This isn't a limitation—it's a forcing function that makes you better at design.
 
 **Second, specifications unlock parallelization.** When you work alone, order matters less. But when you coordinate with multiple AI agents (or human teammates), explicit specifications become the coordination layer. With clear specs, three agents can work on authentication, payment processing, and notifications simultaneously without conflicts. Without specs, you're debugging integration issues for weeks.
 

@@ -59,7 +59,7 @@ As spec-driven development gains attention, the term "spec" is becoming diluted.
 
 **Without these characteristics**, you're doing good prompting, not spec-driven development.
 
-**Why this distinction matters**: SDD implies commitments about process, tooling, and long-term maintenance that casual prompting doesn't. When evaluating SDD tools or practices, check whether they meet these five criteria.
+**Why this distinction matters**: SDD implies commitments about process, tooling, and long-term maintenance that casual prompting doesn't. When evaluating SDD tools or practices, check whether they meet these five characteristics.
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Lesson 4: Specifying Logic - Implementation Steps for Real Features"
+title: "Specifying Logic - Implementation Steps for Real Features"
 chapter: 9
 lesson: 4
 duration_minutes: 50

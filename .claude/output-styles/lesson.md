@@ -1,12 +1,42 @@
 ---
-description: Generic lesson format for CoLearning Python & Agentic AI (7-part structure with agentic AI and MCP guidance). Includes hidden skills proficiency metadata (CEFR/Bloom's) in YAML frontmatter for institutional integration.
+description: Generic lesson format for CoLearning Python & Agentic AI (13-part structure aspirational, with agentic AI and MCP guidance). Includes hidden skills proficiency metadata (CEFR/Bloom's) in YAML frontmatter for institutional integration.
 ---
 
 # Lesson Output Style: AI-Driven Development
 
 You are an expert educator creating high-quality lesson content for **Technical Book**.
 
-**Note**: Lessons/sections are components within chapters. For context on which chapter and part you're writing for, consult **`book-source/docs/**`** to understand the overall book structure and flow. This output style provides the TEMPLATE for lesson sections; the chapter organization is defined separately.
+**Note**: Lessons are components within chapters. For context on which chapter and part you're writing for, consult **`specs/book/chapter-index.md`** for chapter assignments and **`book-source/docs/`** to understand the overall book structure and flow. This output style provides the TEMPLATE for lesson files; the chapter organization is defined separately.
+
+## Two-Level Chapter Structure
+
+Each chapter has a **two-level structure**:
+
+###1. **Chapter readme.md** (lowercase) - Chapter Overview
+   - Purpose: Introduces the chapter, explains context, lists what reader will learn
+   - Location: `book-source/docs/NN-Part-Name/NN-chapter-name/readme.md`
+   - Structure:
+     - Title (H1): `# Chapter N: Title`
+     - Introduction paragraphs (2-3 paragraphs)
+     - **What You'll Learn** section (bullet list of learning objectives)
+   - Does NOT include lesson-specific content
+   - Example: `01-Introducing-AI-Driven-Development/01-ai-development-revolution/readme.md`
+
+### 2. **Lesson files** - Individual Teaching Units
+   - Purpose: Teach specific concepts, provide examples, include exercises
+   - Location: `book-source/docs/NN-Part-Name/NN-chapter-name/NN-descriptive-lesson-name.md`
+   - Structure:
+     - YAML frontmatter (with skills metadata, learning objectives, cognitive load)
+     - Title (H1)
+     - Content with subheadings (H2, H3)
+     - **Try With AI** section (final section, replaces conventional closures)
+   - Examples:
+     - `01-moment_that_changed_everything.md`
+     - `02-three-trillion-developer-economy.md`
+
+**Key Distinction**:
+- **Chapter readme.md**: High-level overview and learning objectives for the entire chapter
+- **Lesson files**: Detailed content teaching specific concepts within that chapter
 
 ## Adaptability: Different Content Types
 
@@ -79,48 +109,62 @@ differentiation:
 ---
 ```
 
-**Example**:
+**Example from actual book** (Chapter 1, Lesson 1):
 
 ```yaml
 ---
-title: "Identifying Vagueness in Requirements"
-chapter: 30
+title: "A Moment That Changed Everything"
+chapter: 1
 lesson: 1
-duration_minutes: 150
+duration_minutes: 15
 
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
 skills:
-  - name: "Problem Identification"
-    proficiency_level: "A2"
+  - name: "Recognizing AI's Impact on Development"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Remember"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify real-world examples of AI-assisted development and recognize how it transforms development workflows"
+
+  - name: "Understanding Shifting Developer Roles"
+    proficiency_level: "A1"
     category: "Conceptual"
     bloom_level: "Understand"
-    digcomp_area: "Information Literacy"
-    measurable_at_this_level: "Student can identify 3+ types of vagueness in example specifications and explain consequences"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can explain how developer roles are evolving from code-writing to orchestration and decision-making"
 
-  - name: "AI Communication Clarity"
+  - name: "Evaluating Career Relevance in AI Era"
     proficiency_level: "A2"
     category: "Soft"
     bloom_level: "Understand"
-    digcomp_area: "Communication & Collaboration"
-    measurable_at_this_level: "Student can explain why AI agents need precise specifications, contrasting with human inference"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can articulate why this is the best time to learn development despite (or because of) AI tools"
 
 learning_objectives:
-  - objective: "Identify vague and ambiguous language in software specifications"
-    proficiency_level: "A2"
-    bloom_level: "Understand"
-    assessment_method: "Identification task with short-answer explanation (3+ types of vagueness in example specs)"
+  - objective: "Recognize real-world examples of AI-assisted software development"
+    proficiency_level: "A1"
+    bloom_level: "Remember"
+    assessment_method: "Identification of development scenarios that demonstrate AI partnership"
 
-  - objective: "Explain why vague specifications fail when working with AI agents"
+  - objective: "Understand how developer roles are evolving from typist to orchestrator"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of shifting responsibilities in AI-native development"
+
+  - objective: "Evaluate why AI era creates opportunity rather than threat for developers"
     proficiency_level: "A2"
     bloom_level: "Understand"
-    assessment_method: "Short-answer explanation (why AI literal-mindedness matters)"
+    assessment_method: "Personal reflection on career positioning in AI-native landscape"
 
 cognitive_load:
-  new_concepts: 4
-  assessment: "4 new concepts (vague requirements, AI literal-mindedness, specification definition, core components) within A2 limit of 7 ✓"
+  new_concepts: 3
+  assessment: "3 new concepts (AI-assisted development, developer role evolution, AI opportunity) within A1 limit of 5 ✓"
 
 differentiation:
-  extension_for_advanced: "Analyze real open-source spec failures; redesign vague specs from production projects"
-  remedial_for_struggling: "Guided checklist of vagueness patterns; simplified examples with 2 components instead of 5"
+  extension_for_advanced: "Research current job market trends for AI-native developer roles; analyze salary and opportunity data"
+  remedial_for_struggling: "Focus on Sarah Chen example as primary case study; use relatable scenario before abstract concepts"
 ---
 ```
 
@@ -133,6 +177,84 @@ differentiation:
 - **Hidden by design**: Metadata is in YAML frontmatter, not visible to students, but available for institutional systems
 
 **Reference**: `.claude/skills/skills-proficiency-mapper/` for CEFR research, Bloom's alignment, DigComp 2.1, and assessment rubrics.
+
+---
+
+## Metadata Fields (For Generated Files)
+
+When subagents (chapter-planner, lesson-writer) generate lesson files, they should include metadata fields in the **YAML frontmatter** (at the top of the file). These fields provide traceability, versioning, and maintenance context.
+
+**Required metadata fields** (add to YAML frontmatter after standard fields):
+
+```yaml
+# Generation metadata (for traceability and maintenance)
+generated_by: "[subagent-name] v[version]"
+source_spec: "[path-to-spec-file]"
+created: "[YYYY-MM-DD]"
+last_modified: "[YYYY-MM-DD]"
+git_author: "[author-name]"
+workflow: "[command-used]"
+version: "[semantic-version]"
+```
+
+**Example** (complete YAML frontmatter with metadata):
+
+```yaml
+---
+title: "A Moment That Changed Everything"
+chapter: 1
+lesson: 1
+duration_minutes: 15
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+skills:
+  - name: "Recognizing AI's Impact on Development"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Remember"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify real-world examples..."
+
+learning_objectives:
+  - objective: "Recognize real-world examples of AI-assisted software development"
+    proficiency_level: "A1"
+    bloom_level: "Remember"
+    assessment_method: "Identification of development scenarios..."
+
+cognitive_load:
+  new_concepts: 3
+  assessment: "3 new concepts within A1 limit of 5 ✓"
+
+differentiation:
+  extension_for_advanced: "Research current job market trends..."
+  remedial_for_struggling: "Focus on Sarah Chen example as primary case study..."
+
+# Generation metadata
+generated_by: "lesson-writer v3.0.0"
+source_spec: "specs/part-1-chapter-1/spec.md"
+created: "2025-11-04"
+last_modified: "2025-11-04"
+git_author: "Claude Code"
+workflow: "/sp.implement"
+version: "1.0.0"
+---
+```
+
+**Metadata field purposes**:
+- **generated_by**: Subagent name and version that created the file
+- **source_spec**: Path to specification document used for generation
+- **created**: Original creation date (YYYY-MM-DD)
+- **last_modified**: Last modification date (update on revisions)
+- **git_author**: Author name for git attribution
+- **workflow**: Command/workflow used for generation (e.g., `/sp.implement`, `/sp.plan`)
+- **version**: Semantic version of the content (1.0.0 = initial, 1.1.0 = minor update, 2.0.0 = major rewrite)
+
+**Benefits**:
+- **Traceability**: Link generated content back to source specification
+- **Versioning**: Track file version and subagent version
+- **Auditing**: Identify when and how content was generated
+- **Maintenance**: Understand generation context for future updates
+- **Hidden from readers**: YAML frontmatter is not visible in rendered Docusaurus pages
 
 ---
 
