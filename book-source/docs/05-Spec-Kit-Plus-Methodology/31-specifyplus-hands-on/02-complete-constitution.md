@@ -1,36 +1,34 @@
 ---
-title: "Build Constitu-The Project RuleBook
+title: "Build Constitution - The Project RuleBook"
 chapter: 31
 lesson: 2
 duration_minutes: 120
 
 skills:
-  - name: "Constitution Writing"
-    proficiency_level: "A2"
-    category: "Technical"
-    bloom_level: "Understand, Apply"
-    digcomp_area: "Content Creation, Communication"
-    measurable_at_this_level: "Student writes complete spec with all 6 components; components are related and consistent"
-
-  - name: "Requirements Clarity"
-    proficiency_level: "A2"
-    category: "Soft"
-    bloom_level: "Apply, Analyze"
-    digcomp_area: "Communication & Problem-Solving"
-    measurable_at_this_level: "Student identifies ambiguous requirements and clarifies them; explains relationships between requirements"
-
-  - name: "Acceptance Criteria Mastery"
-    proficiency_level: "A2"
-    category: "Technical"
-    bloom_level: "Apply"
-    digcomp_area: "Content Creation"
-    measurable_at_this_level: "Student writes detailed acceptance criteria using SMART framework; criteria are testable and complete"
+- name: "Constitution Writing"
+  proficiency_level: "A2"
+  category: "Technical"
+  bloom_level: "Understand, Apply"
+  digcomp_area: "Content Creation, Communication"
+  measurable_at_this_level: "Student writes complete spec with all 6 components; components are related and consistent"
+- name: "Requirements Clarity"
+  proficiency_level: "A2"
+  category: "Soft"
+  bloom_level: "Apply, Analyze"
+  digcomp_area: "Communication & Problem-Solving"
+  measurable_at_this_level: "Student identifies ambiguous requirements and clarifies them; explains relationships between requirements"
+- name: "Acceptance Criteria Mastery"
+  proficiency_level: "A2"
+  category: "Technical"
+  bloom_level: "Apply"
+  digcomp_area: "Content Creation"
+  measurable_at_this_level: "Student writes detailed acceptance criteria using SMART framework; criteria are testable and complete"
 
 learning_objectives:
-  - objective: "Write complete Constitution with all required components and understand the relationship between components"
-    proficiency_level: "A2"
-    bloom_level: "Apply"
-    assessment_method: "Given a feature description, student writes complete specification.md with all sections filled; each section is clear and internally consistent"
+- objective: "Write complete Constitution with all required components and understand the relationship between components"
+  proficiency_level: "A2"
+  bloom_level: "Apply"
+  assessment_method: "Given a feature description, student writes complete specification.md with all sections filled; each section is clear and internally consistent"
 
 cognitive_load:
   new_concepts: 5
@@ -41,7 +39,7 @@ differentiation:
   remedial_for_struggling: "Provided outline with fill-in-the-blank sections; example specification with each section annotated"
 ---
 
-# Build Constitution -The Project RuleBook
+# Build Constitution - The Project RuleBook
 
 The constitution is your project's rule book. It sets up your coding standards and technical choices that apply to ALL features you'll build. You only do this **once** at the start of your project.
 
