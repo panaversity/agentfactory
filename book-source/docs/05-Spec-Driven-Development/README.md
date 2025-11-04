@@ -1,9 +1,9 @@
 ---
 sidebar_position: 5
-title: "Part 5: Spec-Kit Plus Methodology"
+title: "Part 5: Spec-Driven Development"
 ---
 
-# Part 5: Spec-Kit Plus Methodology
+# Part 5: Spec-Driven Development
 
 ## The $10 Million Specification
 

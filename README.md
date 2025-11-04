@@ -120,7 +120,7 @@ As you scale AI adoption in your organization, you'll progress through maturity 
 2. **AI Tool Landscape: Gemini, Claude, Codex**
 3. **Prompt & Context Engineering**
 4. **Python: The Language of AI Agents**
-5. **Spec-Kit Plus Methodology**
+5. **Spec-Driven Development**
 6. **OpenAI Agents SDK in Python**
 7. **MCP & FastMCP Fundamentals**
 8. **TypeScript for Realtime & Interaction**
