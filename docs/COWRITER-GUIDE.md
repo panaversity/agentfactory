@@ -1,1173 +1,1451 @@
-# CoWriter Guide: Vertical Intelligence-Powered SDD Orchestration
+# CoWriter Guide: AI-Native Content Creation with SpecKit Plus
 
-**Version**: 1.0.0
+**Version**: 2.0.0
 **Last Updated**: 2025-11-04
 **For**: Domain Experts & Content Collaborators
-**Prerequisites**: Basic git knowledge, access to Claude Code or similar AI coding assistant
+**Prerequisites**: Access to Claude Code or AI companion, basic understanding of AI collaboration
 
 ---
 
 ## Welcome, CoWriter! 👋
 
-This guide shows you how to collaborate with AI orchestrators using the **Vertical Intelligence-Powered SDD (Spec-Driven Development) Orchestration Layer** to create high-quality educational content.
+This guide shows you how to create high-quality educational content using **AI-native Spec-Driven Development** with the SpecKit Plus methodology.
 
-**What is Vertical Intelligence?**
-A synchronized 4-layer system where every layer (constitution → output-styles → subagents → content) references the same authoritative sources, eliminating contradictions and ensuring consistent, high-quality outputs.
+**What Makes This AI-Native?**
+- **No manual bash commands** - AI orchestrator handles branch creation, file generation
+- **Evals-first thinking** - Define success criteria before writing specs
+- **Slash command workflow** - `/sp.specify`, `/sp.plan`, `/sp.tasks`, `/sp.implement`
+- **Iterative clarification** - AI asks questions, refines with you at each phase
+- **Vertical intelligence** - Constitution → output-styles → subagents → content (all synchronized)
 
-**What You'll Learn**:
-- How to collaborate with AI as a co-reasoning partner (not just a code generator)
-- How to use evals-first methodology for quality content
-- How to leverage specialized subagents for planning, writing, and validation
-- How to onboard domain experts for different book parts
+**Reference Material**:
+- **Chapter 31**: Complete SpecKit Plus hands-on workflow (book-source/docs/05-Spec-Kit-Plus-Methodology/31-specifyplus-hands-on/)
+- **Constitution v3.0.1**: Project principles and evals-first philosophy (.specify/memory/constitution.md)
+- **Chapter Index**: Current book structure (specs/book/chapter-index.md)
 
 ---
 
 ## Table of Contents
 
 1. [Quick Start: Your First Chapter](#quick-start-your-first-chapter)
-2. [Understanding the SDD Workflow](#understanding-the-sdd-workflow)
-3. [Working with the Orchestration Layer](#working-with-the-orchestration-layer)
-4. [Onboarding Domain Experts](#onboarding-domain-experts)
-5. [Chapter Generation Process](#chapter-generation-process)
-6. [Quality Assurance with Validation](#quality-assurance-with-validation)
-7. [Common Workflows & Examples](#common-workflows--examples)
-8. [Troubleshooting & Best Practices](#troubleshooting--best-practices)
-9. [Reference: Available Tools](#reference-available-tools)
+2. [Understanding AI-Native SDD](#understanding-ai-native-sdd)
+3. [The Four-Phase Workflow](#the-four-phase-workflow)
+4. [Working with Subagents](#working-with-subagents)
+5. [Quality Validation](#quality-validation)
+6. [Onboarding Domain Experts](#onboarding-domain-experts)
+7. [Common Patterns & Examples](#common-patterns--examples)
+8. [Troubleshooting](#troubleshooting)
 
 ---
 
 ## Quick Start: Your First Chapter
 
-### Step 0: Verify Your Environment
+### Phase 0: Think First (Evals-First Methodology)
 
-```bash
-# Check you're in the project root
-pwd
-# Should show: /path/to/tutorgpt-build/bbb
+**Before opening AI companion**, clarify in your mind or notes:
 
-# Check current branch
-git status
-# Should show: On branch main
+**1. Business Goals** (What matters?)
+- What can students DO after this chapter?
+- What real-world problems can they solve?
+- How does this connect to their career goals?
 
-# Create feature branch
-git checkout -b chapter-X-your-topic
-```
+**2. Success Evals** (How do we measure?)
+- Quiz: Student scores 75%+ on end-of-chapter assessment
+- Exercise: Student completes "Try With AI" without help
+- Application: Student can apply concept to unfamiliar problem
 
-### Step 1: Define Success First (Evals-First ✨ NEW)
-
-**Before writing any spec**, define how you'll measure success:
-
-```markdown
-# Chapter X Success Evals
-
-## Business Goals
-- Students can [specific action] after this chapter
-- 80%+ completion rate on "Try With AI" exercises
-- 75%+ score on end-of-chapter quiz
-
-## Measurable Outcomes
-- Student can write valid [artifact] without template (quiz)
-- Student can identify [concept] in real-world scenarios (test)
-- Student can explain [principle] in their own words (assessment)
-
-## Quality Metrics
-- Technical accuracy: 100% (all code examples tested)
-- Pedagogical effectiveness: 90%+ (learning objectives met)
+**3. Quality Standards** (What's acceptable?)
+- Technical accuracy: 100% (all code tested)
 - Constitution alignment: 100% (passes technical-reviewer)
+- Pedagogical effectiveness: 90%+ (learning objectives met)
+
+**Why This Matters**:
+Professional AI development (Anthropic/OpenAI standard) starts with **Evals → Spec → Implement → Validate**. Not "write code, hope it works."
+
+Evals connect to **business goals** (student employability, skill acquisition), not arbitrary technical metrics ("10ms response time").
+
+---
+
+### Phase 1: `/sp.specify` - Create Specification
+
+**Open Claude Code** (or your AI companion) and run:
+
+```
+/sp.specify
+
+I want to create Chapter X on [topic].
+
+Business Goal: Students learn [specific skill] to [solve real-world problem].
+
+Core Ideas:
+- [Key concept 1]
+- [Key concept 2]
+- [Key concept 3]
+
+Success Evals:
+- Students can [measurable outcome 1]
+- Students can [measurable outcome 2]
+- Assessment: [how we measure mastery]
+
+Prerequisites: Chapter Y (students already know [prior knowledge])
+
+Audience: [Beginner/Intermediate/Advanced/Professional] (Parts 1-3/4-5/6-8/9-13)
 ```
 
-**Why First?**
-Professional AI-native development starts with evals (Anthropic/OpenAI standard). Evals connect to **business goals**, not arbitrary metrics like "10ms response time."
+**What Happens Next**:
 
-### Step 2: Create Chapter Specification
+1. **AI asks clarifying questions**:
+   - "What's in scope vs. out of scope?"
+   - "What are the specific learning objectives?"
+   - "What complexity tier? (A1/A2 for beginners, B1 for intermediate, etc.)"
+   - "What code examples will demonstrate these concepts?"
 
-**Use the constitution as your guide**:
+2. **You answer and iterate** until spec is clear
 
-```bash
-# Reference constitution for principles
-cat .specify/memory/constitution.md
+3. **AI auto-creates feature branch** (no manual `git checkout -b`)
 
-# Reference chapter-index for current structure
-cat specs/book/chapter-index.md
+4. **AI generates `spec.md`** in `specs/part-X-chapter-Y/spec.md`
 
-# Reference output-styles for formatting
-cat .claude/output-styles/chapters.md
-cat .claude/output-styles/lesson.md
+5. **You review and approve** - this is a checkpoint!
+
+**Optional Refinement**:
+```
+/sp.clarify
+
+Review the spec and identify any underspecified areas.
+Ask me 3-5 targeted questions to improve clarity.
 ```
 
-**Create your spec**:
+AI will ask questions to fill gaps you might have missed.
 
-```bash
-mkdir -p specs/part-X-chapter-Y
-touch specs/part-X-chapter-Y/spec.md
+**Ready to Move Forward?**
+When spec has all 6 sections complete (Overview, Scope, Requirements, Acceptance Criteria, Constraints, Success Criteria), proceed to planning.
+
+**Reference**: See Chapter 31, Lesson 3 (book-source/docs/05-Spec-Kit-Plus-Methodology/31-specifyplus-hands-on/03-building-specs-with-sp-specify.md) for complete examples.
+
+---
+
+### Phase 2: `/sp.plan` - Generate Implementation Plan
+
+**With approved spec**, run:
+
 ```
-
-**Spec Template** (minimum required sections):
-
-```markdown
-# Chapter X: [Title]
-
-## Success Evals (Phase 0.5)
-[From Step 1 - copy your evals here]
-
-## Learning Objectives
-1. [Bloom's taxonomy verb] + [concept] + [context]
-2. [Remember/Understand/Apply/Analyze/Evaluate/Create]
-
-## Prerequisites
-- Chapter [X]: [concept needed]
-- Skills: [list any required skills]
-
-## Content Outline
-### Section 1: [Topic]
-- Key concepts
-- Code examples (if technical)
-
-### Section 2: [Topic]
-...
-
-## Acceptance Criteria
-- [ ] All learning objectives have corresponding content
-- [ ] All code examples tested and working
-- [ ] "Try With AI" section in every lesson
-- [ ] Passes technical-reviewer validation
-```
-
-**Get Human Approval**: Show your spec to the domain expert before proceeding!
-
-### Step 3: Generate Plan with chapter-planner
-
-**Invoke the chapter-planner subagent**:
-
-```bash
-# Using slash command (if available)
 /sp.plan
 
-# Or manually invoke via your AI assistant:
-# "Use chapter-planner subagent to create a detailed lesson plan
-#  for specs/part-X-chapter-Y/spec.md"
+Create implementation plan for this chapter.
+
+Focus on:
+- Break chapter into lesson sequence
+- Map CEFR proficiency levels (A1/A2/B1/B2/C1)
+- Identify all code examples needed
+- Apply correct complexity tier for target audience
+- Note dependencies and risks
+
+Technical details:
+- Use skills from .claude/skills/ (dynamic discovery)
+- Reference book-source materials where appropriate
+- Follow output-styles formatting (.claude/output-styles/chapters.md, lesson.md)
 ```
 
-**chapter-planner will**:
-- Break spec into 3-7 lessons with clear learning objectives
-- Map skills to CEFR proficiency levels (A1/A2/B1/B2/C1)
-- Identify code examples needed
-- Create task checklist with acceptance criteria
-- Reference constitution v3.0.1 and output-styles automatically
+**What Happens Next**:
 
-**Output**: `specs/part-X-chapter-Y/plan.md`
+1. **AI reads your approved spec**
 
-**Review and approve** the plan before implementation!
+2. **AI generates lesson breakdown**:
+   - Lesson 1: [Topic] - 60 minutes
+   - Lesson 2: [Topic] - 90 minutes
+   - Lesson 3: [Topic] - 120 minutes
 
-### Step 4: Generate Tasks
+3. **AI maps skills proficiency**:
+   - Lesson 1: "Specification Writing" - A2 - Technical - "Student writes complete spec with 6 components"
+   - Lesson 2: "Iterative Clarity" - B1 - Conceptual - "Student recognizes specs are iterative, provides refinement rationale"
 
-```bash
-# Using slash command (if available)
+4. **AI identifies code examples** with specifications:
+   - Example 1: Basic [concept] demonstration (15 lines, beginner-friendly)
+   - Example 2: Real-world [application] (40 lines, intermediate complexity)
+
+5. **AI writes `plan.md`** in `specs/part-X-chapter-Y/plan.md`
+
+6. **You review plan structure** - another checkpoint!
+
+**Questions to Ask AI**:
+- "What are the critical dependencies in this plan?"
+- "Can lessons be parallelized or must they be sequential?"
+- "How does [requirement from spec] appear in the plan?"
+
+**Reference**: See Chapter 31, Lesson 4 (book-source/docs/05-Spec-Kit-Plus-Methodology/31-specifyplus-hands-on/04-planning-sp-plan.md).
+
+---
+
+### Phase 3: `/sp.tasks` - Decompose Into Atomic Work Units
+
+**With approved plan**, run:
+
+```
 /sp.tasks
 
-# Or manually invoke:
-# "Use the plan to generate actionable tasks in tasks.md"
+Break plan into atomic tasks.
+
+Requirements:
+- Each task: 1-4 hours of work
+- Clear acceptance criteria per task
+- Explicit dependencies between tasks
+- Priority levels (MUST/SHOULD/NICE-TO-HAVE)
+- Group into phases with human review checkpoints
+
+Example structure:
+- T001: Research and outline Lesson 1 content
+- T002: Write Lesson 1 - Intro section
+- T003: Create code example 1 (with specification)
+- T004: Write "Try With AI" exercise for Lesson 1
+- T005: Human review checkpoint - Lesson 1
+- [Continue for all lessons...]
 ```
 
-**Output**: `specs/part-X-chapter-Y/tasks.md`
+**What Happens Next**:
 
-### Step 5: Implement with lesson-writer
+1. **AI breaks plan into numbered tasks** (T001, T002, T003...)
 
-**Iterative lesson-by-lesson implementation**:
+2. **AI groups tasks by phase**:
+   - **Phase 1: Lesson 1 Implementation** (T001-T005)
+   - **Phase 2: Lesson 2 Implementation** (T006-T010)
+   - **Phase 3: Lesson 3 Implementation** (T011-T015)
+
+3. **AI establishes dependencies**:
+   - T003 depends on T002 (can't write example before concept)
+   - T005 is checkpoint (human review before proceeding)
+
+4. **AI writes `tasks.md`** in `specs/part-X-chapter-Y/tasks.md`
+
+5. **You review task breakdown** - verify granularity makes sense
+
+**Manual Refinement** (if needed):
+```
+Update @specs/part-X-chapter-Y/tasks.md so that:
+- Add explicit human review checkpoint after each lesson
+- Include validation steps (run technical-reviewer) before completion
+- Group related tasks for better flow
+```
+
+**Reference**: See Chapter 31, Lesson 5 (book-source/docs/05-Spec-Kit-Plus-Methodology/31-specifyplus-hands-on/05-decomposing-tasks-sp-tasks.md).
+
+---
+
+### Phase 4: `/sp.implement` - Execute Implementation
+
+**With approved tasks**, run:
+
+```
+/sp.implement
+
+Let's implement this chapter following the task checklist.
+
+Rules:
+- Work through tasks sequentially
+- Complete one lesson at a time
+- Pause for human review after each lesson
+- Apply all domain skills from .claude/skills/
+- Follow output-styles formatting
+- Include all metadata (7 YAML fields)
+- Reference book-source materials
+- Create "Try With AI" exercises
+- Write end-of-lesson assessments
+
+After each lesson:
+- Mark tasks complete in tasks.md
+- Run technical-reviewer validation
+- Get human approval before next lesson
+```
+
+**What Happens Next**:
+
+1. **AI works through tasks in order**:
+   - T001: Research Lesson 1 outline → Presents outline
+   - **You review and approve** ✓
+   - T002: Write Lesson 1 intro → Generates content
+   - **You review and approve** ✓
+   - T003: Create code example → Shows specification → AI prompt → generated code → validation
+   - **You review and approve** ✓
+   - [Continue through all tasks...]
+
+2. **Checkpoint: End of Lesson 1**:
+   - AI marks T001-T005 complete in tasks.md
+   - You review complete lesson content
+   - Run validation: `technical-reviewer` subagent
+   - If passes: Proceed to Lesson 2
+   - If fails: Iterate based on feedback
+
+3. **Repeat for all lessons** until chapter complete
+
+4. **Final Integration**:
+   - All lessons written and validated
+   - Cross-references checked
+   - Docusaurus build tested
+   - Ready for publication
+
+**Validation at Each Step**:
+```
+Run technical-reviewer on Lesson 1 to validate:
+- Technical accuracy
+- Code quality
+- Constitution alignment
+- Pedagogical effectiveness
+```
+
+**Reference**: See Chapter 31, Lesson 6 (book-source/docs/05-Spec-Kit-Plus-Methodology/31-specifyplus-hands-on/06-implementation-sp-implement.md).
+
+---
+
+### Phase 5: Commit and Create PR
+
+**After all validation passes**, use the Git workflow command:
+
+```
+/sp.git.commit_pr
+
+Wrap up Chapter X implementation.
+All lessons complete, validated, and ready for review.
+```
+
+**What Happens**:
+- AI creates comprehensive commit message
+- AI pushes to remote branch
+- AI creates pull request with summary
+- You review PR description
+- Merge when ready
+
+**You're Done!** Chapter complete and ready for publication.
+
+---
+
+## Understanding AI-Native SDD
+
+### Traditional vs. AI-Native Workflow
+
+**Traditional (Manual, Old Thinking)**:
+```bash
+# Step 1: Create branch manually
+git checkout -b chapter-X-topic
+
+# Step 2: Create directories manually
+mkdir -p specs/part-X-chapter-Y
+mkdir -p book-source/docs/part-X-chapter-Y
+
+# Step 3: Create files manually
+touch specs/part-X-chapter-Y/spec.md
+touch specs/part-X-chapter-Y/plan.md
+touch specs/part-X-chapter-Y/tasks.md
+
+# Step 4: Write specification (by hand, from scratch)
+# Step 5: Write plan (by hand, from scratch)
+# Step 6: Write tasks (by hand, from scratch)
+# Step 7: Implement content (by hand, line by line)
+# Step 8: Validate (manually, inconsistently)
+# Step 9: Commit (manually write commit messages)
+# Step 10: Create PR (manually write description)
+```
+
+**Problems**:
+- High cognitive load (remembering directory structure, file conventions)
+- Error-prone (typos in file paths, missing files)
+- Inconsistent (different developers format differently)
+- Slow (many manual steps)
+- Skippable (easy to skip spec/plan and jump to coding)
+
+---
+
+**AI-Native (SpecKit Plus, NEW Thinking)**:
+```
+# Step 1: Think first (Evals-First)
+# Define success criteria in your head or notes
+
+# Step 2: /sp.specify
+# Share business idea with AI
+# AI clarifies, iterates, auto-creates branch, generates spec.md
+
+# Step 3: /sp.plan
+# AI reads spec, generates lesson plan, maps proficiency levels
+
+# Step 4: /sp.tasks
+# AI breaks plan into atomic tasks with dependencies
+
+# Step 5: /sp.implement
+# AI executes tasks, you review at checkpoints
+
+# Step 6: Validate
+# Run technical-reviewer, fix issues
+
+# Step 7: /sp.git.commit_pr
+# AI handles git workflow, creates PR
+```
+
+**Benefits**:
+- Low cognitive load (AI handles structure, conventions)
+- Error-resistant (AI follows constitution, output-styles)
+- Consistent (same AI, same templates, same formatting)
+- Fast (AI generates, you validate and approve)
+- Enforced (workflow prevents skipping steps)
+
+---
+
+### The Vertical Intelligence Stack
+
+**What Is Vertical Intelligence?**
+A synchronized 4-layer architecture where every layer references the same authoritative sources:
+
+```
+┌─────────────────────────────────────┐
+│ Layer 1: Constitution v3.0.1       │ ← Single source of truth
+│ (.specify/memory/constitution.md)  │   (17 core principles, evals-first, domain skills)
+└─────────────────────────────────────┘
+              ↓ References
+┌─────────────────────────────────────┐
+│ Layer 2: Output Styles              │ ← Formatting standards
+│ (.claude/output-styles/)            │   (chapters.md, lesson.md)
+└─────────────────────────────────────┘
+              ↓ References
+┌─────────────────────────────────────┐
+│ Layer 3: Subagents                  │ ← Specialized assistants
+│ (.claude/agents/)                   │   (chapter-planner, lesson-writer,
+│                                     │    technical-reviewer)
+└─────────────────────────────────────┘
+              ↓ Generates
+┌─────────────────────────────────────┐
+│ Layer 4: Content                    │ ← Book chapters, lessons
+│ (book-source/docs/)                 │   (MDX files with YAML metadata)
+└─────────────────────────────────────┘
+```
+
+**Why This Matters**:
+- **No contradictions** - All layers read same constitution
+- **Automatic updates** - Change constitution once, all subagents update
+- **Consistent quality** - Same standards applied by all subagents
+- **Traceability** - Every decision traces back to constitution principle
+
+**Contrast with Traditional**:
+- Traditional: Each developer has own interpretation of standards
+- Vertical Intelligence: Single source of truth, synchronized references
+
+---
+
+## The Four-Phase Workflow
+
+### Phase 1: Specify (WHAT to build)
+
+**Purpose**: Define what you're creating and why it matters
+
+**Inputs**: Business idea, success evals, target audience
+
+**Process**:
+1. Run `/sp.specify` with your core idea
+2. AI asks clarifying questions
+3. You answer and iterate
+4. AI generates spec.md
+5. You approve spec
+
+**Outputs**:
+- Feature branch (auto-created)
+- `specs/part-X-chapter-Y/spec.md` (6 sections complete)
+
+**Quality Gate**: Spec is ready when all 6 sections are complete, testable, and approved by human.
+
+**Reference**: Constitution v3.0.1 Core Principle #1 (Evals-First Development)
+
+---
+
+### Phase 2: Plan (HOW to build)
+
+**Purpose**: Break WHAT into HOW - lesson sequence, proficiency levels, code examples
+
+**Inputs**: Approved spec.md
+
+**Process**:
+1. Run `/sp.plan`
+2. AI reads spec
+3. AI generates lesson breakdown with CEFR proficiency levels
+4. AI identifies code examples needed
+5. AI writes plan.md
+6. You review plan structure
+
+**Outputs**:
+- `specs/part-X-chapter-Y/plan.md` (lesson-by-lesson architecture)
+- Skills proficiency metadata (CEFR levels, Bloom's taxonomy, DigComp areas)
+
+**Quality Gate**: Plan is ready when lesson sequence is logical, proficiency progression is sound, and dependencies are clear.
+
+**Subagent Used**: `chapter-planner` (.claude/agents/chapter-planner.md)
+
+---
+
+### Phase 3: Tasks (Atomic work units)
+
+**Purpose**: Decompose HOW into specific, testable work units
+
+**Inputs**: Approved plan.md
+
+**Process**:
+1. Run `/sp.tasks`
+2. AI breaks plan into numbered tasks (T001, T002, etc.)
+3. AI establishes dependencies
+4. AI groups into phases with checkpoints
+5. AI writes tasks.md
+6. You verify granularity
+
+**Outputs**:
+- `specs/part-X-chapter-Y/tasks.md` (atomic checklist)
+
+**Quality Gate**: Tasks are ready when each task is 1-4 hours, has clear acceptance criteria, and dependencies are explicit.
+
+**Manual Refinement**: Common to adjust task breakdown after initial generation (add checkpoints, regroup tasks).
+
+---
+
+### Phase 4: Implement (Execute and validate)
+
+**Purpose**: Generate content, validate quality, iterate based on feedback
+
+**Inputs**: Approved tasks.md
+
+**Process**:
+1. Run `/sp.implement`
+2. AI works through tasks sequentially
+3. You review after each lesson (checkpoint)
+4. Run `technical-reviewer` validation
+5. Iterate if issues found
+6. Move to next lesson when validation passes
+7. Final integration when all lessons complete
+
+**Outputs**:
+- Lesson files: `book-source/docs/part-X-chapter-Y/lesson-N.md`
+- YAML metadata: 7 generation fields + skills proficiency
+- Code examples: Specification → AI prompt → generated code → validation steps
+- Exercises: "Try With AI" interactive exercises
+- Assessments: End-of-lesson quizzes/tests
+
+**Quality Gate**: Chapter is ready when all lessons pass technical-reviewer validation and human final review.
+
+**Subagents Used**:
+- `lesson-writer` (.claude/agents/lesson-writer.md) - generates content
+- `technical-reviewer` (.claude/agents/technical-reviewer.md) - validates quality
+
+---
+
+## Working with Subagents
+
+### What Are Subagents?
+
+**Subagents** are specialized AI assistants with isolated context and specific responsibilities. Think of them as expert consultants:
+
+- **chapter-planner**: Architect (designs lesson structure)
+- **lesson-writer**: Content creator (writes lessons following plan)
+- **technical-reviewer**: Quality auditor (validates correctness)
+
+**Why Subagents vs. Main AI?**
+- **Isolation**: Subagent context doesn't pollute main conversation
+- **Specialization**: Each subagent has domain expertise
+- **Consistency**: Same subagent applies same standards across all chapters
+- **Scalability**: Multiple subagents can work in parallel (future)
+
+**How Subagents Work**:
+1. Main AI invokes subagent with task
+2. Subagent has access to: Constitution, output-styles, skills, specs
+3. Subagent executes task using domain skills
+4. Subagent returns result to main AI
+5. Main AI presents result to you for review
+
+---
+
+### chapter-planner Subagent
+
+**Location**: `.claude/agents/chapter-planner.md`
+
+**When to Use**: After spec is approved, before writing content
+
+**Responsibilities**:
+- Read approved spec.md
+- Break chapter into lesson sequence
+- Map CEFR proficiency levels to each lesson
+- Apply concept-scaffolding (graduated complexity)
+- Identify all code examples needed (with specifications)
+- Check prerequisites via chapter-index.md
+- Generate plan.md with lesson-by-lesson architecture
+- Suggest ADRs for significant decisions
+
+**Invocation**:
+```
+/sp.plan
+```
+(Main AI automatically invokes chapter-planner subagent)
+
+**Skills Used** (from .claude/skills/):
+- learning-objectives
+- concept-scaffolding
+- book-scaffolding
+- skills-proficiency-mapper
+- code-example-generator
+
+**Outputs**:
+- `specs/part-X-chapter-Y/plan.md`
+- Skills proficiency metadata for each lesson
+
+**Quality Checks**:
+- Validates spec alignment with constitution v3.0.1
+- Ensures evals defined before implementation
+- Verifies proficiency progression (A1 → A2 → B1)
+- Applies correct complexity tier for target audience
+
+**Reference**: `.claude/agents/chapter-planner.md` (updated for constitution v3.0.1)
+
+---
+
+### lesson-writer Subagent
+
+**Location**: `.claude/agents/lesson-writer.md`
+
+**When to Use**: During `/sp.implement` phase
+
+**Responsibilities**:
+- Read approved plan.md and tasks.md
+- Implement lesson content following specifications
+- Apply all 14 domain skills from constitution
+- Generate code examples: Specification → AI prompt → code → validation
+- Create "Try With AI" exercises
+- Write end-of-lesson assessments
+- Include 7 YAML generation metadata fields
+- Validate skills proficiency alignment (CEFR levels)
+- Follow output-styles formatting
+
+**Invocation**:
+```
+/sp.implement
+```
+(Main AI automatically invokes lesson-writer subagent for each lesson)
+
+**Skills Used** (from .claude/skills/):
+- learning-objectives
+- concept-scaffolding
+- code-example-generator
+- exercise-designer
+- assessment-builder
+- technical-clarity
+- ai-augmented-teaching
+- book-scaffolding
+
+**YAML Metadata Generated**:
+```yaml
+---
+title: "Lesson Title"
+chapter: 31
+lesson: 1
+duration_minutes: 90
+
+# Skills proficiency
+skills:
+  - name: "Skill Name"
+    proficiency_level: "A2"
+    category: "Technical"
+    bloom_level: "Understand, Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can [specific measurable outcome]"
+
+# Learning objectives
+learning_objectives:
+  - objective: "Clear, testable objective"
+    proficiency_level: "A2"
+    bloom_level: "Understand, Apply"
+    assessment_method: "How we measure this"
+
+# Generation metadata (7 fields)
+generated_by: "lesson-writer-v3.0.1"
+source_spec: "specs/part-X-chapter-Y/spec.md"
+created: "2025-11-04"
+last_modified: "2025-11-04"
+git_author: "AI + CoWriter Name"
+workflow: "speckit-sdd"
+version: "1.0.0"
+---
+```
+
+**Quality Checks**:
+- Content matches CEFR proficiency level from plan
+- Cognitive load within limits (A1: max 5 concepts, A2: max 7, B1: max 10)
+- Code examples all tested and validated
+- All domain skills applied contextually
+- Output-styles formatting followed
+
+**Reference**: `.claude/agents/lesson-writer.md` (updated for constitution v3.0.1)
+
+---
+
+### technical-reviewer Subagent
+
+**Location**: `.claude/agents/technical-reviewer.md`
+
+**When to Use**: After lesson implementation, before moving to next lesson
+
+**Responsibilities**:
+- Validate technical accuracy (all code tested)
+- Check code quality (Python 3.13+, TypeScript strict mode)
+- Verify pedagogical effectiveness (learning objectives met)
+- Assess constitution alignment (evals-first, spec-first, validation steps)
+- Review output-styles compliance (formatting, structure)
+- Check chapter-index references (correct chapter number, prerequisites)
+- Validate skills proficiency alignment (CEFR levels appropriate)
+
+**Invocation**:
+After each lesson:
+```
+Run technical-reviewer on Chapter X, Lesson Y.
+
+Validate:
+- Technical correctness
+- Code quality
+- Constitution v3.0.1 alignment
+- Pedagogical effectiveness
+- Output-styles compliance
+```
+
+**Validation Report**:
+```markdown
+# Validation Report: Chapter X, Lesson Y
+
+## Overall Verdict: PASS / REVISE / FAIL
+
+## Issues Found:
+### CRITICAL (must fix):
+- Issue description with line reference
+
+### MAJOR (should fix):
+- Issue description with line reference
+
+### MINOR (nice to fix):
+- Issue description with line reference
+
+## Recommendations:
+- Actionable fix for each issue
+
+## Constitution Alignment: 95%
+- Principle #1 (Evals-First): ✓ PASS
+- Principle #2 (Spec-First): ✓ PASS
+- [etc.]
+```
+
+**Quality Thresholds**:
+- PASS: 0 critical, 0-2 major issues
+- REVISE: 1-3 critical OR 3+ major issues
+- FAIL: 4+ critical issues
+
+**Reference**: `.claude/agents/technical-reviewer.md` (updated for constitution v3.0.1)
+
+---
+
+## Quality Validation
+
+### Why Validation Is Non-Negotiable
+
+**Constitution Principle #14**: "Validation-First Safety - ALL AI-generated code MUST be validated before inclusion in book content."
+
+**The Risk**: AI is powerful but imperfect. It can:
+- Misunderstand spec ambiguities
+- Generate code with edge case bugs
+- Miss security issues
+- Optimize in wrong direction
+
+**Your Responsibility**: You validate not because AI is evil, but because AI is literal. Professional development requires systematic validation.
+
+---
+
+### Three-Tier Validation Strategy
+
+#### Tier 1: Continuous Validation (During Implementation)
+
+**When**: After each lesson implementation
+
+**How**:
+```
+Run technical-reviewer on Chapter X, Lesson Y
+```
+
+**What's Checked**:
+- Technical accuracy
+- Code quality
+- Constitution alignment
+- Pedagogical effectiveness
+
+**Action**:
+- PASS: Proceed to next lesson
+- REVISE: Fix issues, re-validate
+- FAIL: Return to planning, refine spec
+
+---
+
+#### Tier 2: Chapter-Level Validation (After All Lessons)
+
+**When**: All lessons in chapter complete
+
+**How**:
+```
+Run technical-reviewer chapter-level validation for Chapter X.
+
+Check:
+- Lesson flow and coherence
+- Cross-references correct
+- Prerequisites met
+- Proficiency progression sound
+- All code examples working
+```
+
+**What's Checked**:
+- Individual lesson quality (from Tier 1)
+- Chapter coherence (lessons connect logically)
+- Cross-reference accuracy (links to other chapters)
+- Proficiency progression (A1 → A2 → B1)
+
+**Action**:
+- PASS: Proceed to publication
+- REVISE: Fix issues, re-validate chapter
+- FAIL: Significant rework needed
+
+---
+
+#### Tier 3: Human Final Review (Before Publication)
+
+**When**: Chapter passes technical-reviewer validation
+
+**What You Do**:
+1. **Editorial polish**: Voice, tone, flow
+2. **Cross-reference validation**: Links to other chapters work
+3. **Docusaurus build test**: Chapter renders correctly
+4. **Visual inspection**: Formatting, images, code blocks
+
+**Tools**:
+```bash
+# Build and serve locally
+npm run start
+
+# Open browser to chapter
+# Visually inspect formatting, images, code blocks
+# Test all interactive elements
+```
+
+**Action**:
+- Approved: Merge PR, publish
+- Needs polish: Minor edits, re-review
+- Major issues: Return to implementation
+
+---
+
+### Validation Checklist Template
+
+Use this checklist for every chapter:
 
 ```markdown
-# For each lesson in the plan:
+# Chapter X Validation Checklist
 
-1. Invoke lesson-writer: "Write Lesson 1 based on plan.md"
-2. Review generated content
-3. Validate with technical-reviewer
-4. Approve or request revisions
-5. Move to next lesson
-```
+## Tier 1: Lesson-Level Validation
+- [ ] Lesson 1: technical-reviewer PASS
+- [ ] Lesson 2: technical-reviewer PASS
+- [ ] Lesson 3: technical-reviewer PASS
+- [Continue for all lessons...]
 
-**lesson-writer will**:
-- Generate content matching output-styles templates
-- Include 7 metadata fields in YAML frontmatter
-- Add skills proficiency metadata (CEFR levels)
-- Follow "Try With AI" closure policy
-- Reference chapter-index.md for cross-references
+## Tier 2: Chapter-Level Validation
+- [ ] All lessons coherent and logically connected
+- [ ] Cross-references to other chapters correct
+- [ ] Prerequisites from chapter-index.md met
+- [ ] Proficiency progression sound (CEFR levels)
+- [ ] All code examples tested and working
+- [ ] "Try With AI" exercises functional
+- [ ] End-of-lesson assessments complete
 
-**Output**: Markdown files in `book-source/docs/Part-X/chapter-Y/`
+## Tier 3: Human Final Review
+- [ ] Editorial polish (voice, tone, flow)
+- [ ] Docusaurus build successful
+- [ ] Visual inspection (formatting, images, code blocks)
+- [ ] All links working (internal + external)
+- [ ] Metadata correct (YAML frontmatter)
 
-### Step 6: Validate with technical-reviewer
-
-```bash
-# Validate the entire chapter
-# "Use technical-reviewer to validate chapter-Y for publication readiness"
-```
-
-**technical-reviewer checks**:
-- Constitution v3.0.1 alignment (evals-first, spec-first)
-- Output-styles compliance (structure, YAML metadata)
-- Chapter-index.md accuracy (chapter number, title, status)
-- Code quality (Python 3.13+, type hints, tested)
-- Pedagogical effectiveness (learning objectives met)
-
-**Output**: Validation report with APPROVE/REVISE/RETURN recommendation
-
-### Step 7: Commit and Create PR
-
-```bash
-# Add all chapter files
-git add book-source/docs/Part-X/chapter-Y/
-git add specs/part-X-chapter-Y/
-
-# Commit with descriptive message
-git commit -m "feat: Add Chapter X - [Title]
-
-- Implemented [N] lessons
-- All code examples tested
-- Passes technical-reviewer validation
-- CEFR proficiency levels mapped
-
-🤖 Generated with Claude Code
-Co-Authored-By: Claude <noreply@anthropic.com>"
-
-# Push and create PR
-git push -u origin chapter-X-your-topic
-gh pr create --title "Chapter X: [Title]" --body "..."
-```
-
----
-
-## Understanding the SDD Workflow
-
-### The Evals → Spec → Plan → Implement → Validate Loop
-
-```
-Phase 0.5: Evals Definition ✨ NEW
-    ↓
-    Define success criteria (business-goal-aligned)
-    ↓
-Phase 1: Specification
-    ↓
-    Write chapter spec (approved by human)
-    ↓
-Phase 2: Planning
-    ↓
-    chapter-planner generates detailed lesson plan
-    ↓
-Phase 2.5: Tasks
-    ↓
-    Generate actionable task checklist
-    ↓
-Phase 3: Implementation
-    ↓
-    lesson-writer generates content (iterative, lesson-by-lesson)
-    ↓
-Phase 4: Validation
-    ↓
-    technical-reviewer validates quality
-    ↓
-Phase 5: Publication (human final review)
-```
-
-### Why This Order?
-
-**Evals First** (NEW in constitution v3.0.1):
-- Professional AI-native pattern (Anthropic/OpenAI standard)
-- Prevents "we built it, but does it work?" problem
-- Connects to business goals (employability, skill acquisition)
-
-**Spec Before Code**:
-- Prevents scope creep and wasted effort
-- Enables AI to understand intent before execution
-- Human approves direction before investment
-
-**Plan Before Implement**:
-- Breaks complex chapters into manageable lessons
-- Identifies dependencies and skill progression
-- Maps proficiency levels (CEFR) for competency-based learning
-
-**Validate Before Publish**:
-- Catches errors before they reach students
-- Ensures constitution alignment
-- Provides actionable feedback for improvement
-
----
-
-## Working with the Orchestration Layer
-
-### The 4 Layers of Vertical Intelligence
-
-```
-Layer 1: Constitution (.specify/memory/constitution.md)
-    ↓ References
-Layer 2: Output-Styles (.claude/output-styles/)
-    ↓ References
-Layer 3: Subagents (.claude/agents/)
-    ↓ Generates
-Layer 4: Content (book-source/docs/)
-```
-
-**Key Principle**: Every layer references the layers above it. Changes propagate downward automatically.
-
-### Authoritative Sources (Single Source of Truth)
-
-| What | Where | Who Uses It |
-|------|-------|-------------|
-| Current chapter status | `specs/book/chapter-index.md` | All subagents |
-| File structure rules | `specs/book/directory-structure.md` | lesson-writer |
-| Content formatting | `.claude/output-styles/chapters.md` | chapter-planner, lesson-writer |
-| Lesson structure | `.claude/output-styles/lesson.md` | lesson-writer, technical-reviewer |
-| Skills proficiency | `.claude/skills/skills-proficiency-mapper/` | chapter-planner |
-| Project principles | `.specify/memory/constitution.md` (v3.0.1) | All subagents |
-
-**What This Means for You**:
-- Never hardcode chapter numbers or filenames in specs
-- Reference chapter-index.md: "See chapter-index.md for current chapter list"
-- Use relative references: "Prerequisites: See Chapter [X] (reference chapter-index.md)"
-- Trust subagents to use correct structure (they reference output-styles)
-
-### Available Subagents
-
-#### 1. chapter-planner
-**When to Use**: After spec approved, before implementation
-**Input**: Approved chapter spec
-**Output**: Detailed lesson-by-lesson plan, task checklist
-**What It Does**:
-- Breaks spec into 3-7 lessons
-- Maps skills to CEFR proficiency levels
-- Creates task checklist with acceptance criteria
-- References constitution v3.0.1 and output-styles
-
-**Invocation**:
-```bash
-/sp.plan
-# Or: "Use chapter-planner to create lesson plan for [spec path]"
-```
-
-#### 2. lesson-writer
-**When to Use**: After plan approved, during implementation
-**Input**: Approved lesson plan, lesson number
-**Output**: Complete lesson markdown with YAML frontmatter
-**What It Does**:
-- Generates content matching output-styles
-- Includes 7 metadata fields in YAML
-- Adds skills proficiency metadata
-- Validates content against proficiency levels
-- Ends with "Try With AI" section
-
-**Invocation**:
-```bash
-# For each lesson
-"Use lesson-writer to implement Lesson [N] based on plan.md"
-```
-
-#### 3. technical-reviewer
-**When to Use**: After lesson/chapter complete, before publication
-**Input**: Complete chapter directory
-**Output**: Validation report with APPROVE/REVISE/RETURN
-**What It Does**:
-- Validates constitution v3.0.1 alignment
-- Checks output-styles compliance
-- Verifies chapter-index.md accuracy
-- Tests code examples
-- Assesses pedagogical effectiveness
-
-**Invocation**:
-```bash
-"Use technical-reviewer to validate chapter-[X] for publication readiness"
+## Ready for Publication
+- [ ] All validation tiers passed
+- [ ] PR created and reviewed
+- [ ] Final approval obtained
 ```
 
 ---
 
 ## Onboarding Domain Experts
 
-### Scenario: You Need a Domain Expert for Part 7 (Advanced Python)
+### Who Are Domain Experts?
 
-**Your Role**: CoWriter/Orchestrator
-**Expert Role**: Subject Matter Expert (SME)
-**AI Role**: Co-reasoning partner and implementation engine
+**Domain experts** are subject matter specialists you onboard to write specific book parts:
 
-### Step 1: Share This Guide
-
-**Send the expert**:
-1. This guide (COWRITER-GUIDE.md)
-2. Constitution (`.specify/memory/constitution.md`)
-3. Part 7 overview from chapter-index.md
-4. Example chapter from Part 5 (shows the end result)
-
-**Key Points to Emphasize**:
-- They define **WHAT** to teach (evals, learning objectives, concepts)
-- AI handles **HOW** to structure (lesson plans, formatting, metadata)
-- Iterative process: expert reviews and approves at each phase
-
-### Step 2: Discovery Session (1-2 hours)
-
-**Questions to Ask**:
-
-**Business Goals**:
-- What should students be able to DO after completing Part 7?
-- How will we measure success? (completion rate, skill acquisition, employment outcomes)
-- What skill level should they reach? (CEFR: A1/A2/B1/B2/C1)
-
-**Prerequisite Knowledge**:
-- What must students know before starting Part 7?
-- Which chapters from Parts 1-6 are prerequisites?
-- Any external knowledge required? (math, computer science concepts)
-
-**Content Scope**:
-- What topics MUST be covered? (core curriculum)
-- What topics are OPTIONAL? (nice-to-have extensions)
-- What topics are OUT OF SCOPE? (too advanced, wrong audience)
-
-**Pedagogical Approach**:
-- Conceptual understanding first, or hands-on first?
-- Real-world projects, or isolated exercises?
-- How much theory vs. practice? (ratio)
-
-### Step 3: Define Success Evals Together
-
-**Collaborate on evals document**:
-
-```markdown
-# Part 7: Advanced Python - Success Evals
-
-## Business Goals
-- Students can build production-ready Python applications
-- 85%+ land junior Python developer roles within 3 months
-- 80%+ complete all 8 chapters in Part 7
-
-## Skill Acquisition (CEFR B2 Target)
-- Can analyze complex code and identify design patterns
-- Can evaluate multiple solutions and choose appropriate one
-- Can create original applications solving real-world problems
-- Can debug complex issues using systematic approaches
-
-## Measurable Outcomes
-- Quiz: 80%+ identify appropriate design patterns (10 scenarios)
-- Project: Build REST API with auth, validation, error handling
-- Code review: Provide constructive feedback on peer code (rubric)
-- Portfolio: 3 completed projects demonstrating B2-level skills
-
-## Quality Standards
-- All code examples pass mypy strict mode (100%)
-- All code examples have 80%+ test coverage
-- All chapters pass technical-reviewer (constitution v3.0.1)
-- All lessons end with "Try With AI" section
-```
-
-**Key**: Expert defines the evals; you validate they're measurable
-
-### Step 4: First Chapter Walkthrough
-
-**Choose one representative chapter** from Part 7 (e.g., Chapter 20: Decorators)
-
-**Walk through the full SDD loop together**:
-
-1. **Evals** (30 min): Define success criteria together
-2. **Spec** (1 hour): Expert describes content, you write spec
-3. **Review Spec** (30 min): Expert approves or requests changes
-4. **Generate Plan** (AI, 10 min): Use chapter-planner subagent
-5. **Review Plan** (30 min): Expert approves lesson structure
-6. **Generate Lesson 1** (AI, 10 min): Use lesson-writer subagent
-7. **Review Lesson 1** (30 min): Expert provides feedback
-8. **Iterate** (AI + Expert): Refine until expert approves
-9. **Validate** (AI, 10 min): Use technical-reviewer subagent
-10. **Publish** (You): Commit, create PR, merge
-
-**Total Time**: ~4 hours for first chapter (faster for subsequent chapters)
-
-### Step 5: Establish Collaboration Patterns
-
-**After first chapter, agree on**:
-
-**Communication**:
-- How often to sync? (daily standups, weekly reviews)
-- Async feedback? (GitHub PR comments, shared doc)
-- Escalation path? (what decisions require your input vs. expert handles)
-
-**Review Process**:
-- Expert reviews specs before planning? (recommended: YES)
-- Expert reviews plans before implementation? (recommended: YES)
-- Expert reviews each lesson? (recommended: YES for first 2 chapters, then spot-check)
-- Expert performs final review? (recommended: ALWAYS)
-
-**Approval Authority**:
-- Expert can approve: content accuracy, pedagogical approach, examples
-- You approve: formatting, metadata, constitutional alignment, publication timing
-
-**Tool Access**:
-- Does expert use Claude Code directly? (preferred)
-- Or expert provides content, you orchestrate? (slower but viable)
-- Git access? (recommended: expert has branch access, you review PRs)
-
-### Step 6: Scale Up Production
-
-**Once expert is comfortable** (after 2-3 chapters together):
-
-**Parallel Work**:
-- Expert works on specs for Chapters 21-23
-- You orchestrate implementation for Chapter 20
-- AI subagents handle formatting, metadata, validation
-
-**Quality Gates**:
-- Spec review: You + Expert (must approve before planning)
-- Plan review: Expert spot-checks (trusts chapter-planner)
-- Content review: Expert reviews final output (before validation)
-- Validation: technical-reviewer (automated quality check)
-- Publication: You merge after expert approval
-
-**Velocity**:
-- Week 1: 1 chapter (learning the process)
-- Week 2: 2 chapters (parallel spec + implement)
-- Week 3+: 3-4 chapters/week (expert on specs, you orchestrate, AI generates)
+- **Part 1-3** (Beginner): Education specialists, technical writers with pedagogy background
+- **Part 4-5** (Intermediate): Software engineers with teaching experience
+- **Part 6-8** (Advanced): Senior engineers, architects
+- **Part 9-13** (Professional): Infrastructure engineers, DevOps specialists, production experts
 
 ---
 
-## Chapter Generation Process
+### Onboarding Process
 
-### Detailed Workflow with Examples
+#### Step 1: Share This Guide
 
-#### Example: Chapter 15 - List Comprehensions
+**Send**:
+- This guide (docs/COWRITER-GUIDE.md)
+- Constitution v3.0.1 (.specify/memory/constitution.md)
+- Chapter 31 (book-source/docs/05-Spec-Kit-Plus-Methodology/31-specifyplus-hands-on/)
 
-**Phase 0.5: Evals Definition**
+**Ask them to read**:
+1. Constitution Core Principles (especially #1: Evals-First)
+2. This guide Quick Start section
+3. Chapter 31 for hands-on workflow
 
-```markdown
-# Chapter 15 Success Evals
+---
 
-## Business Goals
-- Students can use list comprehensions for data transformation tasks
-- 90%+ complete "Try With AI" exercises
-- 75%+ score on list comprehension quiz
+#### Step 2: Environment Setup
 
-## Measurable Outcomes
-- Quiz: Transform 5 for-loops into list comprehensions (80%+ correct)
-- Exercise: Filter and transform dataset with comprehensions (passes tests)
-- Code review: Identify when list comp is better than for-loop (5/5 correct)
+**Prerequisites**:
+- AI companion access (Claude Code, Gemini CLI, or similar)
+- Git installed and configured
+- Repository cloned locally
 
-## Quality Standards
-- All examples tested on Python 3.13+
-- Type hints on all functions
-- Covers simple, filtered, nested, and dict comprehensions
-```
-
-**Phase 1: Specification**
-
-```markdown
-# Chapter 15: List Comprehensions - Spec
-
-## Success Evals
-[Copy from Phase 0.5]
-
-## Learning Objectives
-1. Understand the syntax and purpose of list comprehensions (Understand)
-2. Apply list comprehensions to transform and filter data (Apply)
-3. Evaluate when list comprehensions improve code readability (Evaluate)
-4. Create nested and dictionary comprehensions for complex data structures (Create)
-
-## Prerequisites
-- Chapter 12: Lists and Tuples (must complete)
-- Chapter 13: For Loops and Iteration (must complete)
-
-## Content Outline
-
-### Lesson 1: Introduction to List Comprehensions
-- What are list comprehensions? (syntax overview)
-- Why use them? (readability, performance)
-- Simple transformations: [x*2 for x in range(10)]
-
-### Lesson 2: Filtering with Comprehensions
-- Adding conditions: [x for x in data if x > 0]
-- Multiple conditions
-- Common use cases (filter, map combined)
-
-### Lesson 3: Nested Comprehensions and Dict Comprehensions
-- Nested lists: [[i*j for j in range(5)] for i in range(5)]
-- Dict comprehensions: {k: v for k, v in pairs}
-- When to avoid nesting (readability threshold)
-
-### Lesson 4: Real-World Applications
-- Data cleaning with comprehensions
-- JSON transformation
-- Performance comparison (comp vs for-loop)
-
-## Code Examples
-1. Simple transformation (list of squares)
-2. Filtering even numbers
-3. Nested comprehension (matrix operations)
-4. Dict comprehension (key-value swapping)
-5. Real dataset transformation (CSV processing)
-
-## Acceptance Criteria
-- [ ] All 5 code examples tested and working
-- [ ] Each lesson has "Try With AI" section
-- [ ] CEFR proficiency levels: L1=A2, L2=B1, L3=B1, L4=B2
-- [ ] Passes technical-reviewer validation
-```
-
-**Human Approval**: Domain expert reviews and approves spec ✅
-
-**Phase 2: Planning**
-
-**You invoke**: `"Use chapter-planner to create lesson plan for specs/part-4-chapter-15/spec.md"`
-
-**chapter-planner generates**: `specs/part-4-chapter-15/plan.md`
-
-```markdown
-# Chapter 15: List Comprehensions - Lesson Plan
-
-## Lesson 1: Introduction to List Comprehensions
-**Proficiency Level**: A2 (Beginner Intermediate)
-**Duration**: 30 minutes
-
-**Learning Objectives**:
-- Recognize list comprehension syntax (Remember - A2)
-- Understand when to use list comprehensions vs for-loops (Understand - A2)
-
-**Key Topics**:
-- Syntax: [expression for item in iterable]
-- Equivalence to for-loops
-- Readability benefits
-
-**Code Examples**:
-- Example 1: Squares [x**2 for x in range(10)]
-- Example 2: String transformation [s.upper() for s in names]
-
-**Try With AI**:
-- Tool: Learner's AI companion (post-tool-onboarding)
-- Prompts: 4 prompts transforming for-loops to comprehensions
-- Expected: Student identifies which version is more readable
-
-**Skills Metadata**:
-- Skill: List Comprehension Recognition
-- CEFR: A2
-- Bloom's: Remember, Understand
-- Measurable: Student can identify list comprehension pattern in code
-
-[Lessons 2-4 follow similar structure]
-```
-
-**Human Approval**: Domain expert reviews lesson structure ✅
-
-**Phase 2.5: Tasks**
-
-**You invoke**: `/sp.tasks`
-
-**Output**: `specs/part-4-chapter-15/tasks.md`
-
-```markdown
-# Tasks: Chapter 15 - List Comprehensions
-
-- [ ] T001 Create chapter README.md with overview and learning outcomes
-- [ ] T002 Write Lesson 1: Introduction (syntax, simple examples)
-- [ ] T003 Create 2 code examples for Lesson 1 (test and validate)
-- [ ] T004 Design "Try With AI" for Lesson 1 (4 prompts)
-- [ ] T005 Write Lesson 2: Filtering (conditions, multiple filters)
-...
-```
-
-**Phase 3: Implementation (Iterative)**
-
-**Lesson 1**:
-
-**You invoke**: `"Use lesson-writer to implement Lesson 1 based on plan.md"`
-
-**lesson-writer generates**: `book-source/docs/04-Python-Fundamentals/15-list-comprehensions/01-introduction-to-list-comprehensions.md`
-
-**Domain expert reviews** content → Approves ✅
-
-**Lesson 2**:
-
-**You invoke**: `"Use lesson-writer to implement Lesson 2 based on plan.md"`
-
-**Domain expert reviews** → Requests changes: "Add example with string filtering"
-
-**You refine**: `"Add example: [word for word in text.split() if len(word) > 5]"`
-
-**Domain expert reviews** → Approves ✅
-
-[Continue for Lessons 3-4]
-
-**Phase 4: Validation**
-
-**All lessons complete**. You invoke: `"Use technical-reviewer to validate chapter-15 for publication readiness"`
-
-**technical-reviewer generates**: Validation report
-
-**Result**: APPROVE (all 5 code examples tested, YAML frontmatter correct, constitution aligned)
-
-**Phase 5: Publication**
-
+**Verify setup**:
 ```bash
-git add book-source/docs/04-Python-Fundamentals/15-list-comprehensions/
-git add specs/part-4-chapter-15/
-git commit -m "feat: Add Chapter 15 - List Comprehensions
+# Check repository access
+cd /path/to/tutorgpt-build/bbb
+git status
 
-- Implemented 4 lessons with 5 code examples
-- CEFR proficiency: A2→B2 progression
-- Passes technical-reviewer validation
-
-🤖 Generated with Claude Code
-Co-Authored-By: Claude <noreply@anthropic.com>"
-
-git push -u origin chapter-15-list-comprehensions
-gh pr create --title "Chapter 15: List Comprehensions" --body "..."
+# Check AI companion available
+# (Claude Code: Cmd+Shift+P > "Claude Code: Start")
+# (Gemini CLI: gemini --version)
 ```
 
 ---
 
-## Quality Assurance with Validation
+#### Step 3: Practice Run (Sandbox Chapter)
 
-### Using technical-reviewer Effectively
+**Before real chapter**, do practice run:
 
-**When to Validate**:
-- ✅ After completing each lesson (spot-check)
-- ✅ After completing entire chapter (comprehensive)
-- ✅ Before creating PR (final check)
-- ✅ After addressing feedback (re-validation)
+```
+/sp.specify
 
-**What Gets Validated**:
+Practice Chapter: Introduction to [Your Domain Expertise Area]
 
-**1. Constitution v3.0.1 Alignment**:
-- Evals-first methodology applied?
-- Spec-first workflow followed?
-- AI positioned as co-reasoning partner?
-- Validation-first safety demonstrated?
+Business Goal: Demonstrate the SpecKit Plus workflow with a throwaway chapter.
 
-**2. Output-Styles Compliance**:
-- Structure matches chapters.md template?
-- YAML frontmatter has 7 metadata fields?
-- Lessons end with "Try With AI" section?
-- File naming follows conventions?
+Core Ideas:
+- [Topic 1]
+- [Topic 2]
 
-**3. Chapter-Index Accuracy**:
-- Chapter number and title match?
-- Directory path correct?
-- Prerequisites accurately referenced?
-
-**4. Technical Quality**:
-- Code examples tested and working?
-- Python 3.13+ features used correctly?
-- Type hints on all functions?
-- No hardcoded secrets or credentials?
-
-**5. Pedagogical Effectiveness**:
-- Learning objectives met?
-- Concepts scaffold progressively?
-- Proficiency levels appropriate (CEFR)?
-- "Try With AI" exercises meaningful?
-
-### Interpreting Validation Results
-
-**APPROVE**: Ready for publication
-- All criteria passed
-- No critical or major issues
-- Minor issues (if any) are optional fixes
-
-**REVISE & RESUBMIT**: Fix issues before publication
-- Critical issues: Must fix (blocking publication)
-- Major issues: Should fix (quality concerns)
-- Minor issues: Nice to fix (polish)
-
-**RETURN**: Fundamental problems, restart from spec/plan
-- Spec misalignment: Chapter doesn't match approved spec
-- Constitution violations: Contradicts core principles
-- Quality failures: Multiple critical issues across lessons
-
-### Addressing Validation Feedback
-
-**Example Validation Report Extract**:
-
-```markdown
-## Critical Issues (Must Fix)
-
-1. **Lesson 3 incomplete** - Line 143: Ends abruptly without "Try With AI"
-   - Fix: Add "Try With AI" section with 4 prompts
-   - Time: 30 minutes
-
-2. **Missing YAML metadata** - All lessons lack sidebar_position field
-   - Fix: Add sidebar_position: N to each lesson's frontmatter
-   - Time: 10 minutes
-
-## Major Issues (Should Fix)
-
-3. **README case mismatch** - Chapter uses README.md (should be readme.md)
-   - Fix: Rename file to lowercase
-   - Time: 2 minutes
+This is just practice - we'll delete this chapter after walkthrough.
 ```
 
-**Your Response**:
+**Walkthrough**:
+1. Complete all 4 phases (/sp.specify → /sp.plan → /sp.tasks → /sp.implement)
+2. Run technical-reviewer validation
+3. See how iteration and refinement works
+4. Delete practice chapter
 
-1. Fix critical issues immediately (blocking)
-2. Decide on major issues (consult domain expert if needed)
-3. Re-validate after fixes
-4. Commit when validation passes
+**Goal**: Build confidence with workflow before real work.
 
 ---
 
-## Common Workflows & Examples
+#### Step 4: Assign Real Chapters
 
-### Workflow 1: New Chapter from Scratch
+**Provide context**:
+```markdown
+# Your Assignment: Part X Chapters
 
-```
-1. Discovery: Meet with domain expert, define evals (2 hours)
-2. Spec: Write chapter spec collaboratively (1 hour)
-3. Approval: Expert reviews spec (30 min)
-4. Plan: Invoke chapter-planner (10 min)
-5. Approval: Expert reviews plan (30 min)
-6. Tasks: Generate task checklist (5 min)
-7. Implement: Iterate lesson-by-lesson with lesson-writer (4-6 hours)
-   - For each lesson:
-     a. Generate with lesson-writer (10 min)
-     b. Expert reviews (20 min)
-     c. Refine if needed (10 min)
-     d. Approve (expert)
-8. Validate: Run technical-reviewer (10 min)
-9. Fix: Address validation issues (30 min - 2 hours)
-10. Publish: Commit, PR, merge (20 min)
+You'll be writing:
+- Chapter Y: [Topic] (3 lessons, beginner level)
+- Chapter Z: [Topic] (4 lessons, intermediate level)
 
-Total: 8-12 hours (includes expert time)
-```
+Prerequisites:
+- Students have completed Chapters A, B, C
+- Students know: [specific prior knowledge]
 
-### Workflow 2: Redesigning Existing Chapter
+Complexity Tier: [Beginner/Intermediate/Advanced/Professional]
+- Cognitive load limits: [5/7/10/no limit] new concepts per lesson
+- CEFR proficiency: [A1-A2 / B1 / B2 / C1]
 
-**Context**: Chapter created with old subagents, needs alignment
-
-```
-1. Audit: Run technical-reviewer on existing chapter (10 min)
-2. Review: Analyze validation report, categorize issues (30 min)
-3. Decide: Redesign vs. repair? (consult expert)
-   - Redesign: Start from Workflow 1 (spec → plan → implement)
-   - Repair: Fix issues incrementally (below)
-
-If Repair:
-4. Fix Structure: Update YAML frontmatter, add metadata (1 hour)
-5. Fix Content: Address closure policy violations (2 hours)
-6. Fix References: Update chapter-index cross-references (30 min)
-7. Re-validate: Run technical-reviewer again (10 min)
-8. Publish: Commit fixes, PR, merge (20 min)
-
-Total: 4-5 hours (repair), 8-12 hours (redesign)
-```
-
-### Workflow 3: Batch Chapter Generation (Expert-Led)
-
-**Context**: Expert creates specs for multiple chapters, you orchestrate
-
-```
-Week 1:
-- Monday: Discovery session with expert (2 hours)
-- Tuesday: Expert writes specs for Chapters 20-22 (6 hours)
-- Wednesday: You review specs, provide feedback (2 hours)
-- Thursday: Expert revises specs (2 hours)
-- Friday: You generate plans with chapter-planner (30 min total)
-
-Week 2:
-- Monday: Expert reviews plans (2 hours)
-- Tues-Fri: You orchestrate implementation:
-  - Chapter 20: Implement → Expert reviews → Validate (2 days)
-  - Chapter 21: Implement → Expert reviews → Validate (2 days)
-
-Week 3:
-- Mon-Wed: Chapter 22: Implement → Expert reviews → Validate (3 days)
-- Thu-Fri: Expert spot-checks all 3 chapters, approves publication (4 hours)
-
-Total: 3 weeks for 3 chapters (parallelized)
+Reference Material:
+- chapter-index.md: See current book structure
+- Your chapters fit here: [specific location in book flow]
 ```
 
 ---
 
-## Troubleshooting & Best Practices
+#### Step 5: Check-In Cadence
 
-### Common Issues & Solutions
+**Schedule regular check-ins**:
 
-#### Issue 1: "Subagent Generated Wrong Structure"
+**After Spec Phase**:
+- Review spec.md together
+- Verify evals align with business goals
+- Check scope is appropriate
+- Approve before planning
 
-**Symptoms**:
-- Files in wrong directory
-- YAML frontmatter missing fields
-- README.md instead of readme.md
+**After Plan Phase**:
+- Review lesson structure
+- Verify proficiency progression
+- Check code example specifications
+- Approve before implementation
 
-**Root Cause**: Subagent didn't reference output-styles correctly
+**After Each Lesson**:
+- Review lesson content
+- Run technical-reviewer together
+- Discuss any issues found
+- Approve before next lesson
 
-**Solution**:
-```bash
-# Regenerate using explicit reference
-"Use lesson-writer to generate Lesson 1.
-IMPORTANT: Reference .claude/output-styles/lesson.md for correct YAML frontmatter structure."
+**After Chapter Complete**:
+- Chapter-level validation
+- Human final review
+- Merge PR
+
+---
+
+## Common Patterns & Examples
+
+### Pattern 1: Creating a Beginner Chapter (Parts 1-3)
+
+**Complexity Tier**: Beginner (A1-A2 proficiency)
+
+**Constraints**:
+- Max 2 options to choose from
+- Max 5 new concepts per lesson section
+- Max 1 new skill per lesson
+- No forward references without explanation
+- AI agent handles 3+ options
+
+**Example Specification**:
+```
+/sp.specify
+
+Chapter 12: Python Package Management for Beginners
+
+Business Goal: Students learn how to install and manage Python packages using AI agent assistance.
+
+Core Ideas:
+- What are packages and why they matter
+- Two main tools: pip and uv (AI chooses which to use)
+- How to install packages for a project
+- How to verify packages installed correctly
+
+Success Evals:
+- Student can explain what packages are (assessment)
+- Student can ask AI to install a package (exercise)
+- Student can verify installation worked (hands-on)
+
+Audience: Complete beginners (never coded before)
+Complexity: A1-A2 (beginner)
+
+Cognitive Load:
+- Lesson 1: 4 new concepts (packages, dependencies, installation, verification)
+- Lesson 2: 3 new concepts (requirements file, virtual environment, AI workflow)
 ```
 
-**Prevention**: Verify subagents are updated (Week 2 Day 6-7 updates)
+**Key Principles**:
+- **Concept-first pattern**: WHAT → WHY → HOW → PRACTICE
+- **AI-as-partner framing**: "Your agent knows which tool to use"
+- **Error literacy**: Show what errors mean, how to ask AI for help
+- **No memorization required**: Students understand concepts, AI executes
 
-#### Issue 2: "technical-reviewer Fails Validation"
+**Reference**: Constitution Principle #12 (Graduated Complexity)
 
-**Symptoms**:
-- Critical issues found
-- Content doesn't match spec
-- Constitution violations
+---
 
-**Root Cause**: Spec unclear, or subagent misunderstood intent
+### Pattern 2: Creating an Intermediate Chapter (Parts 4-5)
 
-**Solution**:
-```bash
-# Step 1: Read validation report carefully
-cat specs/part-X-chapter-Y/validation-report.md
+**Complexity Tier**: Intermediate (B1 proficiency)
 
-# Step 2: Identify root cause
-# - Spec issue? Update spec and regenerate
-# - Implementation issue? Provide more specific prompt
-# - Minor issue? Fix manually
+**Constraints**:
+- 3-4 options allowed (show tradeoffs)
+- Max 7 new concepts per lesson section
+- Expect independent problem-solving with AI assistance
+- Introduce architectural thinking
 
-# Step 3: Re-validate after fixes
-"Use technical-reviewer to re-validate chapter-Y"
+**Example Specification**:
+```
+/sp.specify
+
+Chapter 28: API Design Patterns with AI Code Generation
+
+Business Goal: Students learn to design clean APIs and use AI to generate boilerplate code.
+
+Core Ideas:
+- REST vs. GraphQL vs. RPC (tradeoffs discussed)
+- API design principles (consistency, versioning, error handling)
+- Using AI to generate API scaffolding from specification
+- Validating generated API code
+
+Success Evals:
+- Student can compare 3 API patterns and choose appropriately (assessment)
+- Student can write API specification that AI understands (exercise)
+- Student can validate generated API code (hands-on)
+
+Audience: Intermediate (know one programming language, learning architecture)
+Complexity: B1 (intermediate)
+
+Cognitive Load:
+- Lesson 1: 6 new concepts (REST, GraphQL, RPC, tradeoffs, when to use each, specification writing)
+- Lesson 2: 7 new concepts (endpoints, routes, middleware, error handling, validation, testing, deployment)
 ```
 
-**Prevention**: Get human approval on spec AND plan before implementation
+**Key Principles**:
+- **Tradeoffs discussion**: Multiple valid approaches, explain when to use each
+- **Specification-first**: Write API spec before generating code
+- **Validation emphasis**: Students verify AI-generated code meets requirements
+- **Real-world context**: Connect to production systems
 
-#### Issue 3: "Expert Says 'This Isn't What I Meant'"
+**Reference**: Constitution Principle #12 (Graduated Complexity - Tier 2)
 
-**Symptoms**:
-- Content doesn't match expert's vision
-- Examples are off-target
-- Pedagogical approach wrong
+---
 
-**Root Cause**: Spec didn't capture expert's intent
+### Pattern 3: Creating a Professional Chapter (Parts 9-13)
 
-**Solution**:
-```bash
-# Step 1: Collaborative spec refinement session
-# - Screen share
-- Walk through spec together
-- Expert describes vision in detail
-- You update spec in real-time
+**Complexity Tier**: Professional (B2-C1 proficiency)
 
-# Step 2: Use examples from similar chapters
-# - "Show me a chapter that has the right style"
-# - Reference that chapter in spec
+**Constraints**:
+- No artificial option limits (show ecosystem realistically)
+- No concept count limits (synthesis and integration expected)
+- Production-ready expectations (security, scale, cost, operations)
+- Business context (ROI, SLAs, risk management)
 
-# Step 3: Start with Lesson 1 only
-# - Don't generate all lessons at once
-# - Get expert approval on L1 before L2
-# - Build shared understanding iteratively
+**Example Specification**:
+```
+/sp.specify
+
+Chapter 47: Production Kubernetes Deployment with AI-Generated Infrastructure Code
+
+Business Goal: Students deploy production-ready Kubernetes clusters using AI to generate infrastructure-as-code with proper security, observability, and cost controls.
+
+Core Ideas:
+- Kubernetes production requirements (HA, security, observability, cost)
+- Infrastructure-as-code (Terraform, Pulumi, Crossplane - compare and choose)
+- Using AI to generate IaC from architectural requirements
+- Validating generated infrastructure (security audit, cost estimation, reliability review)
+- Deployment strategies (blue-green, canary, rolling updates)
+- Operational readiness (monitoring, alerting, runbooks)
+
+Success Evals:
+- Student can write infrastructure requirements specification (hands-on)
+- Student can use AI to generate complete IaC (exercise)
+- Student can perform security audit on generated code (hands-on)
+- Student can deploy to production with proper observability (capstone)
+
+Audience: Professional (production experience required)
+Complexity: B2-C1 (professional)
+
+Production Validation Checklist:
+- Security: Secrets management, IAM roles, network policies, TLS
+- Reliability: Health checks, graceful shutdown, retry logic, circuit breakers
+- Observability: Structured logging, metrics, tracing, alerting
+- Cost: Resource requests appropriate, autoscaling configured, no over-provisioning
 ```
 
-**Prevention**: Show expert examples before starting, align on style
+**Key Principles**:
+- **No scaffolding**: Assumes professional competence
+- **Real-world complexity**: Security, scale, cost, operations
+- **System thinking**: Not just code, entire production system
+- **Business context**: ROI, SLAs, risk management
+- **Comprehensive validation**: Security audit, cost estimation, reliability review
 
-### Best Practices
+**Reference**: Constitution Principle #12 (Graduated Complexity - Tier 4)
 
-#### 1. Evals-First Always ✨
+---
 
-**DO**:
+### Pattern 4: Handling Validation Failures
+
+**Scenario**: technical-reviewer finds critical issues after lesson implementation
+
+**What Happened**:
 ```markdown
-## Success Evals (Before Spec)
-- 80%+ students can [measurable action]
-- Quiz pass rate 75%+
-- "Try With AI" completion 90%+
+# Validation Report: Chapter 31, Lesson 2
+
+## Overall Verdict: REVISE
+
+## Issues Found:
+### CRITICAL:
+- Code example at line 145 has unhandled edge case (division by zero)
+- Specification at line 67 is ambiguous ("user can see history" - format unclear)
+
+### MAJOR:
+- CEFR proficiency mismatch: Content teaches B1 concepts but marked as A2
+- Missing validation steps in code example workflow
 ```
 
-**DON'T**:
-```markdown
-## Learning Objectives
-- Students will learn decorators (no measurable outcome)
-- Students will understand patterns (vague)
+**How to Fix**:
+
+**Step 1: Analyze root cause**
+```
+Which issue is upstream?
+- Code bug → Implementation issue (fix in lesson)
+- Spec ambiguity → Specification issue (fix spec.md, regenerate)
+- Proficiency mismatch → Planning issue (fix plan.md, regenerate)
 ```
 
-#### 2. Iterative Implementation
+**Step 2: Fix at appropriate layer**
 
-**DO**: Generate and review lesson-by-lesson
+**If implementation issue** (code bug):
+```
+Fix the code example at line 145 to handle division by zero.
+
+Add validation steps:
+1. Show specification for error handling
+2. Show AI prompt: "Generate division function with zero check"
+3. Show generated code with error handling
+4. Show validation: Test with zero, verify raises appropriate error
+```
+
+**If specification issue** (ambiguity):
+```
+Update @specs/part-5-chapter-31/spec.md:
+
+OLD: "User can see calculation history"
+NEW: "User can see calculation history as JSON array, max 100 entries, sorted newest first"
+
+Then regenerate affected lessons with updated spec.
+```
+
+**If planning issue** (proficiency mismatch):
+```
+Update @specs/part-5-chapter-31/plan.md:
+
+Change Lesson 2 proficiency from A2 to B1.
+Rationale: Content requires analysis of tradeoffs (B1 cognitive level).
+
+Adjust content to match B1 complexity (up to 10 concepts allowed).
+```
+
+**Step 3: Re-validate**
+```
+Run technical-reviewer on updated Chapter 31, Lesson 2
+```
+
+**Step 4: Verify fix**
+```
+# Validation Report: Chapter 31, Lesson 2 (Revised)
+
+## Overall Verdict: PASS
+
+## Issues Fixed:
+✓ Code example handles division by zero
+✓ Specification updated with clear format
+✓ Proficiency level corrected to B1
+✓ Validation steps added to code workflow
+
+## Recommendations:
+- Consider adding similar validation examples to other lessons
+```
+
+**Reference**: Constitution Principle #14 (Validation-First Safety)
+
+---
+
+## Troubleshooting
+
+### Issue 1: "AI doesn't follow output-styles formatting"
+
+**Symptom**: Generated content doesn't match .claude/output-styles/
+
+**Root Cause**: Subagent not referencing output-styles correctly
+
+**Fix**:
+```
+Regenerate lesson following output-styles exactly.
+
+Reference:
+- .claude/output-styles/chapters.md (chapter structure)
+- .claude/output-styles/lesson.md (lesson structure)
+
+Ensure:
+- YAML frontmatter matches template
+- Section headers match style guide
+- Code blocks formatted per standards
+```
+
+**Prevention**: Always include output-styles reference in `/sp.implement` command.
+
+---
+
+### Issue 2: "Subagent outputs not written to files"
+
+**Symptom**: AI shows generated content in chat but doesn't create files
+
+**Root Cause**: Subagent returned content without writing
+
+**Fix**:
+```
+Write the generated content to file:
+- Path: book-source/docs/part-X-chapter-Y/lesson-N.md
+- Ensure all YAML metadata included
+- Verify file created successfully
+```
+
+**Prevention**: After subagent execution, verify files exist:
 ```bash
-# Lesson 1
-lesson-writer → expert reviews → approve → commit
-
-# Lesson 2
-lesson-writer → expert reviews → approve → commit
-
-# Lesson 3
-...
+ls -la book-source/docs/part-X-chapter-Y/
 ```
 
-**DON'T**: Generate all lessons at once
+---
+
+### Issue 3: "CEFR proficiency levels seem wrong"
+
+**Symptom**: Lesson marked A2 but content is too complex (or too simple)
+
+**Root Cause**: Proficiency mapping error during planning
+
+**Fix**:
+```
+Review @specs/part-X-chapter-Y/plan.md proficiency levels.
+
+CEFR guidelines:
+- A1: Recognition only (identify, recall)
+- A2: Recognition + simple application with scaffolding
+- B1: Application to real, unfamiliar problems independently
+- B2: Analysis, evaluation, design decisions
+- C1: Advanced synthesis, critique, expert judgment
+
+Adjust lesson proficiency level and regenerate content to match.
+```
+
+**Reference**: skills-proficiency-mapper skill (.claude/skills/skills-proficiency-mapper/)
+
+---
+
+### Issue 4: "Chapter-index.md out of sync"
+
+**Symptom**: Chapter numbers or titles don't match chapter-index.md
+
+**Root Cause**: chapter-index.md not updated after planning
+
+**Fix**:
+```
+Update @specs/book/chapter-index.md:
+
+For Chapter X:
+- Status: 📋 Planned → ✅ Implemented
+- Title: [Update if changed]
+- File path: [Verify correct]
+```
+
+**Prevention**: Always reference chapter-index.md during planning phase.
+
+---
+
+### Issue 5: "AI skips evals-first step"
+
+**Symptom**: Spec created without defining success criteria first
+
+**Root Cause**: Not following constitution v3.0.1 Principle #1
+
+**Fix**:
+```
+STOP implementation.
+
+Return to Phase 0: Think First (Evals-First).
+
+Define before proceeding:
+1. Business goals (what matters?)
+2. Success evals (how do we measure?)
+3. Quality standards (what's acceptable?)
+
+Then regenerate spec.md with evals integrated.
+```
+
+**Prevention**: Always start with "Think First" phase before `/sp.specify`.
+
+---
+
+### Issue 6: "Branch not auto-created"
+
+**Symptom**: `/sp.specify` doesn't create feature branch
+
+**Root Cause**: Git workflow command not integrated in slash command
+
+**Fix**:
 ```bash
-# All 7 lessons
-lesson-writer (all) → expert reviews 50 pages → overwhelmed
+# Manually create branch
+git checkout -b part-X-chapter-Y-topic
+
+# Then run /sp.specify
 ```
 
-**Why**: Easier to catch and fix issues early; builds shared understanding
-
-#### 3. Reference, Don't Hardcode
-
-**DO**:
-```markdown
-## Prerequisites
-- See chapter-index.md for list of implemented chapters
-- Chapter 12: Lists (check chapter-index.md for actual filename)
-```
-
-**DON'T**:
-```markdown
-## Prerequisites
-- Chapter 12: lists-and-tuples (might be wrong)
-- 16 chapters exist (will become stale)
-```
-
-**Why**: Single source of truth prevents drift
-
-#### 4. Trust but Verify
-
-**DO**: Review subagent outputs
-```bash
-# After lesson-writer
-1. Open generated file
-2. Check YAML frontmatter (7 fields present?)
-3. Check structure (matches output-styles?)
-4. Check "Try With AI" section (present at end?)
-5. Spot-check code examples (look reasonable?)
-```
-
-**DON'T**: Blindly commit subagent output
-```bash
-git add . && git commit -m "chapter done" # risky
-```
-
-**Why**: Subagents are 95% compliant, not 100%
-
-#### 5. Validate Early and Often
-
-**DO**:
-```bash
-# After Lesson 1
-technical-reviewer (spot-check)
-
-# After all lessons
-technical-reviewer (comprehensive)
-
-# After fixes
-technical-reviewer (re-validation)
-```
-
-**DON'T**:
-```bash
-# Write all 7 lessons
-# ...never validate...
-# Create PR → CI fails → 30 issues to fix
-```
-
-**Why**: Catching issues early saves time
+**Note**: Auto-branch creation may vary by AI companion configuration.
 
 ---
 
 ## Reference: Available Tools
 
-### Subagents
-
-| Subagent | Purpose | Input | Output |
-|----------|---------|-------|--------|
-| chapter-planner | Transform spec into lesson plan | Approved spec | plan.md |
-| lesson-writer | Generate lesson content | Approved plan + lesson # | Lesson .md file |
-| technical-reviewer | Validate chapter quality | Complete chapter dir | Validation report |
-| proof-validator | Fact-check and proofread | Complete chapter | Proof report |
-
-### Skills
-
-| Skill | Purpose | When to Use |
-|-------|---------|-------------|
-| skills-proficiency-mapper | Map skills to CEFR levels | During planning |
-| content-evaluation-framework | Evaluate pedagogical quality | After implementation |
-| code-example-generator | Generate tested code examples | During lesson writing |
-| exercise-designer | Create practice exercises | During lesson writing |
-| assessment-builder | Create quizzes and tests | After chapter complete |
-
 ### Slash Commands
 
-| Command | Purpose | When to Use |
-|---------|---------|-------------|
-| /sp.specify | Create/update feature spec | Starting new chapter |
-| /sp.plan | Generate lesson plan | After spec approved |
-| /sp.tasks | Generate task checklist | After plan approved |
-| /sp.implement | Execute implementation | During lesson writing |
-| /sp.validate | Run validation checks | Before publication |
-
-### Templates
-
-| Template | Location | Purpose |
-|----------|----------|---------|
-| Chapter spec | `.specify/templates/chapter-spec.md` | Spec structure |
-| Lesson plan | Output from chapter-planner | Plan structure |
-| Chapter README | `.claude/output-styles/chapters.md` | Overview page |
-| Lesson file | `.claude/output-styles/lesson.md` | Lesson structure |
-
-### Validation Checklists
-
-**Pre-Implementation**:
-- [ ] Evals defined (business-goal-aligned)
-- [ ] Spec approved by domain expert
-- [ ] Plan approved by domain expert
-- [ ] CEFR proficiency levels mapped
-
-**During Implementation**:
-- [ ] Each lesson reviewed by expert before next
-- [ ] Code examples tested on Python 3.13+
-- [ ] "Try With AI" section in every lesson
-- [ ] YAML frontmatter has 7 metadata fields
-
-**Post-Implementation**:
-- [ ] technical-reviewer validation passes
-- [ ] All critical issues resolved
-- [ ] Expert performs final review
-- [ ] Ready for commit and PR
+| Command | Purpose | Phase | Output |
+|---------|---------|-------|--------|
+| `/sp.specify` | Create specification | 1 - Specify | spec.md |
+| `/sp.clarify` | Identify gaps, ask clarifying questions | 1 - Specify | Updated spec.md |
+| `/sp.plan` | Generate implementation plan | 2 - Plan | plan.md |
+| `/sp.tasks` | Decompose plan into atomic tasks | 3 - Tasks | tasks.md |
+| `/sp.implement` | Execute implementation | 4 - Implement | Lesson files |
+| `/sp.adr` | Create Architecture Decision Record | Any | history/adr/NNN-title.md |
+| `/sp.phr` | Create Prompt History Record | Any | history/prompts/.../ID-title.md |
+| `/sp.git.commit_pr` | Commit and create pull request | After implement | Git commit + PR |
 
 ---
 
-## Support & Resources
+### Subagents
 
-### Getting Help
-
-**Questions about the orchestration layer?**
-- Read constitution: `.specify/memory/constitution.md`
-- Check output-styles: `.claude/output-styles/`
-- Review validation reports: `specs/001-fix-vertical-intelligence/validation/`
-
-**Questions about content?**
-- Consult domain expert
-- Reference similar chapters in book
-- Check chapter-index.md for prerequisites
-
-**Technical issues?**
-- GitHub Issues: [project repo]/issues
-- Slack: #ai-book-development channel
-- Email: cowriter-support@[domain]
-
-### Additional Resources
-
-**Phase 1 Completion Report**:
-`specs/001-fix-vertical-intelligence/phase-1-completion-summary.md`
-
-**Validation Examples**:
-- Chapter 31 validation: `specs/001-fix-vertical-intelligence/validation/chapter-31-specifyplus-hands-on.md`
-- Chapter 32 validation: `specs/001-fix-vertical-intelligence/VALIDATION-REPORT-CHAPTER-32.md`
-
-**Chapter Redesign Guide**:
-`specs/001-fix-vertical-intelligence/ESSENTIAL-TASKS-FOR-OLD-CHAPTERS.md`
+| Subagent | Location | Purpose | Invoked By |
+|----------|----------|---------|-----------|
+| **chapter-planner** | .claude/agents/chapter-planner.md | Plan lesson structure, proficiency levels | `/sp.plan` |
+| **lesson-writer** | .claude/agents/lesson-writer.md | Generate lesson content | `/sp.implement` |
+| **technical-reviewer** | .claude/agents/technical-reviewer.md | Validate quality | Manual after lessons |
 
 ---
 
-## Changelog
+### Domain Skills
 
-### Version 1.0.0 (2025-11-04)
-- Initial release after Phase 1 completion
-- Added Evals-First methodology (constitution v3.0.1)
-- Documented subagent updates (Week 2 Day 6-7)
-- Included validation examples (Chapters 31 & 32)
+Skills are located in `.claude/skills/` and dynamically discovered:
 
----
-
-## License & Attribution
-
-This guide is part of the AI-Native Software Development book project.
-
-**Generated with**: Claude Code (AI Orchestrator)
-**Reviewed by**: Domain Expert (Human)
-**Maintained by**: CoWriter Team
+| Skill | Purpose | Used By |
+|-------|---------|---------|
+| **learning-objectives** | Define clear, testable objectives | chapter-planner, lesson-writer |
+| **concept-scaffolding** | Apply graduated complexity | chapter-planner, lesson-writer |
+| **code-example-generator** | Create code examples with specs | lesson-writer |
+| **exercise-designer** | Design "Try With AI" exercises | lesson-writer |
+| **assessment-builder** | Create end-of-lesson quizzes | lesson-writer |
+| **technical-clarity** | Write clear technical explanations | lesson-writer |
+| **book-scaffolding** | Maintain book structure, cross-references | chapter-planner, lesson-writer |
+| **ai-augmented-teaching** | Frame AI as co-reasoning partner | lesson-writer |
+| **skills-proficiency-mapper** | Map CEFR/Bloom's/DigComp levels | chapter-planner |
 
 ---
 
-**🎉 You're Ready to Start!**
+### File References
 
-Pick a chapter, define success evals, write a spec, and let the orchestration layer handle the rest. Welcome to AI-native content creation! 🚀
+| File | Purpose | Used By |
+|------|---------|---------|
+| `.specify/memory/constitution.md` | Project principles, evals-first, domain skills | All subagents |
+| `specs/book/chapter-index.md` | Book structure, chapter status | chapter-planner |
+| `.claude/output-styles/chapters.md` | Chapter formatting standards | lesson-writer |
+| `.claude/output-styles/lesson.md` | Lesson formatting standards | lesson-writer |
+| `book-source/` | Source material to reference | lesson-writer |
+
+---
+
+## Summary
+
+**This is AI-Native Content Creation**:
+1. **Think first** (Evals-First): Define success criteria before specifications
+2. **Use slash commands** (/sp.specify, /sp.plan, /sp.tasks, /sp.implement)
+3. **AI orchestrates** (branch creation, file generation, formatting)
+4. **You validate** (review, approve, iterate at checkpoints)
+5. **Subagents specialize** (planning, writing, validation)
+6. **Constitution synchronizes** (single source of truth, vertical intelligence)
+
+**You are now ready** to create high-quality educational content using the SpecKit Plus methodology!
+
+**Questions?** Reference:
+- Chapter 31: Complete hands-on workflow (book-source/docs/05-Spec-Kit-Plus-Methodology/31-specifyplus-hands-on/)
+- Constitution v3.0.1: Project principles (.specify/memory/constitution.md)
+- This guide: AI-native patterns and troubleshooting
+
+**Happy creating!** 🚀
