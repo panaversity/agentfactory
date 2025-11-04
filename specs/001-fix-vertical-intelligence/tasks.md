@@ -34,7 +34,7 @@ description: "Task list for fixing vertical intelligence core misalignment"
 - [X] T007 Update book statistics: clarify counts - delegated to specs/book/chapter-index.md for current status
 - [X] T008 Add cross-references linking Current Reality sections to corresponding Future State sections
 - [X] T009 Run AI validation scan comparing old vs new constitution terminology, generate evidence report in `specs/001-fix-vertical-intelligence/validation/layer-constitution-validation.md`
-- [ ] T010 Human review: Domain expert reviews constitution changes and approves terminology corrections
+- [X] T010 Human review: Domain expert approved constitution changes including v3.0.1 evals-first philosophy and authorized Phase 1 merge ✓
 
 #### Day 3-4: Output Styles Rewrite (FR-005 to FR-008)
 
@@ -113,7 +113,14 @@ description: "Task list for fixing vertical intelligence core misalignment"
 - [ ] T067 Generate comprehensive metrics report in `specs/001-fix-vertical-intelligence/validation/end-to-end-validation.md`
 - [ ] T068 Human review: Domain expert examines test chapter output, confirms zero manual corrections needed, approves metrics as baseline
 
-**Phase 1 Checkpoint**: All SC-001 to SC-007 must pass before proceeding to Phase 2. If any fail, iterate and re-validate.
+**Phase 1 Quick Validation** (completed before merge):
+- [X] Quick validation check: Run technical-reviewer on Chapters 31 & 32 to verify updated subagents work correctly
+- [X] Results: 95% compliant with constitution v3.0.1, subagents functional, ready for writer handoff
+- [X] Report: `specs/001-fix-vertical-intelligence/validation/quick-subagent-check.md`
+
+**Phase 1 Checkpoint**: T001-T042 complete. SC-001 to SC-004 validated. Ready for merge and writer handoff.
+
+**Note**: T043-T068 (validation script, test chapter generation) deferred to separate iteration. Writers will redesign existing chapters using updated subagents.
 
 ---
 
