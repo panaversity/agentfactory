@@ -197,7 +197,7 @@ const config: Config = {
             },
             {
               label: "Learning Path",
-              to: "/#learning-path",
+              to: "/docs/preface-agent-native",
             },
           ],
         },

@@ -952,7 +952,7 @@ Now you know the strategies and mistakes. But **how do you know if you're doing 
 2. Count: (Relevant Files / Total Files Loaded) × 100
 
 **Targets:**
-- **Poor:** <50% (too much unnecessary context)
+- **Poor:** &lt;50% (too much unnecessary context)
 - **Good:** 60-75% (reasonable targeting)
 - **Excellent:** 80%+ (precise context curation)
 
