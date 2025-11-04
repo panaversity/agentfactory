@@ -1,5 +1,5 @@
 ---
-title: "Complete Constitution"
+title: "Build Constitu-The Project RuleBook
 chapter: 31
 lesson: 2
 duration_minutes: 120
@@ -41,7 +41,7 @@ differentiation:
   remedial_for_struggling: "Provided outline with fill-in-the-blank sections; example specification with each section annotated"
 ---
 
-# Complete Constitution Setup
+# Build Constitution -The Project RuleBook
 
 The constitution is your project's rule book. It sets up your coding standards and technical choices that apply to ALL features you'll build. You only do this **once** at the start of your project.
 

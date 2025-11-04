@@ -229,10 +229,3 @@ If the spec says "user can see calculation history" without details (What's the 
 
    How would you fix this? Where would you start?
    ```
-
-### Expected Outcomes
-
-- You understand why spec → plan → tasks is a forced sequence, not optional
-- You see how folder structure prevents the "jump straight to coding" trap
-- You're ready for Lesson 3 with context on where specifications fit
-- You understand the cascade: spec quality → plan quality → task quality → code quality

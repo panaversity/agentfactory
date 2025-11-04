@@ -1,5 +1,5 @@
 ---
-title: "Planning from Specification (/sp.plan)"
+title: "Planning the How from Specification"
 chapter: 31
 lesson: 4
 duration_minutes: 90
@@ -41,7 +41,7 @@ differentiation:
   remedial_for_struggling: "Simplified phase visualization; guided dependency mapping template"
 ---
 
-# Planning from Specification (/sp.plan)
+# Planning the How from Specification
 
 You have a clear, refined specification. Excellent. Now you need to answer: **How will we build this? What are the phases? What must happen first, what next, what last?**
 
@@ -53,9 +53,7 @@ The key insight: **Clear specifications produce clear plans with explicit depend
 
 ---
 
-## Part A: Understanding Plans
-
-### Specification vs. Plan
+## Specification vs. Plan
 
 | Specification | Plan |
 |---|---|
@@ -64,30 +62,6 @@ The key insight: **Clear specifications produce clear plans with explicit depend
 | **Purpose**: Contract with implementer | **Purpose**: Roadmap for development |
 | **Audience**: Everyone (stakeholders, developers, AI) | **Audience**: Development team |
 | **Length**: Typically 3-5 pages | **Length**: Typically 5-10 pages (more detailed) |
-
-### Plan Structure
-
-A complete plan has these sections:
-
-#### **Phases: High-Level Steps**
-
-Phases break the project into sequential or parallel work streams. Each phase has a purpose and produces deliverables (code, tests, documentation).
-
-#### **Dependencies: Phase Ordering**
-
-Dependencies define which phases must complete before others can start.
-
-**Question**: Can you parallelize? For calculator:
-- Phase 2 (core functions) and Phase 3 (error handling) could partially overlap
-- But Phase 1 (architecture) must complete before anything else
-
-#### **Milestones: Checkpoints**
-
-Milestones mark "when" phases are done.
-
-#### **Deliverables: What's Produced**
-
-Each phase produces concrete outputs.
 
 ---
 
@@ -99,10 +73,7 @@ Like `/sp.specify`, `/sp.plan` runs **within AI Companion**:
 
 1. Open AI Companion
 2. Paste your refined specification (from Lesson 4)
-3. Run 
-
-
-**Your Prompt:**
+3. Run **Your Prompt:**
 
 ```
 /sp.plan
@@ -127,27 +98,17 @@ Technical details:
 - Generates quick-start.md and plan.md files
 
 **Why This Matters:**
+
 The plan defines technical architecture for ALL operations at once. This ensures consistency - same type hints, same error handling, same testing approach. Much more efficient than planning each operation separately!
 
 ---
 
 ## Try With AI
 
-**Tool**: Claude Code with `/sp.plan` command
-**Duration**: 10 minutes
-
 ### Workflow
 
 1. **Run `/sp.plan`** on your refined specification
 2. **Review the generated plan**: Read all phases
-3. **Ask Claude**: "What are the critical dependencies in this plan?"
-4. **Ask Claude**: "Can I parallelize any phases? Which ones and why?"
+3. **Ask**: "What are the critical dependencies in this plan?"
+4. **Ask**: "Can I parallelize any phases? Which ones and why?"
 5. **Trace a requirement**: "How does [requirement from spec] appear in the plan?"
-
-### Expected Outcomes
-
-- You see `/sp.plan` as a real planning tool, not a demo
-- You understand how clear specifications produce clear plans
-- You recognize dependencies and critical path
-- You're ready for `/sp.tasks` (Lesson 6) with a solid plan
-- You see the cascade in action: Spec quality → Plan quality
