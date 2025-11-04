@@ -29,7 +29,7 @@ You now understand what SDD is. But understanding is not the same as doing. Befo
 
 **This lesson**: You'll write a complete specification for a **basic calculator with all four operations** (add, subtract, multiply, divide)—no framework, no templates, just pure spec-first thinking building a real feature.
 
-**The AI-Native Difference**: In this chapter, you'll use an AI coding assistant (Claude Code, Cursor, GitHub Copilot, or similar) to **collaboratively write specifications**. This isn't cheating—it's professional AI-native development. Your AI companion helps you think through user stories, identify edge cases, and refine requirements. You're learning to **specify with AI, not just code with AI**.
+**AI-Native Approach**: You'll use your AI coding assistant (Claude Code, Cursor, GitHub Copilot, or similar) to **help write the specification**, not just generate code from it. AI helps you think through user stories, catch edge cases, and refine requirements through dialogue.
 
 ---
 
@@ -63,7 +63,7 @@ Before writing any code, we'll follow this cycle:
 
 This is the **co-learning feedback loop** from the preface. You'll experience it hands-on across a complete feature.
 
-**About "Your Companion"**: Throughout this chapter, when you see "Tell your companion:" or "Ask your companion:", that means **use your AI coding assistant** (Claude Code, Cursor, GitHub Copilot, or whichever tool you're using). You'll use AI to help write the specification itself—not just to generate code from it. This is how professional developers work: AI helps think through requirements, catch edge cases, and refine specs through dialogue. Your spec will improve through iteration as AI asks clarifying questions and you discover gaps.
+**Note**: When you see "Tell your companion:" or "Ask your companion:", use your AI coding assistant to help think through that step. Your spec improves through this back-and-forth dialogue.
 
 ---
 
