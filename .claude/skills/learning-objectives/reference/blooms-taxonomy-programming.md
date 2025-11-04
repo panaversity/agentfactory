@@ -63,9 +63,9 @@ Bloom's taxonomy defines six cognitive levels that progressively build from simp
 
 ### Assessment Methods
 - Explanation essays
-- Concept maps
+- Concept mapping exercises
 - Paraphrasing exercises
-- Diagram labeling
+- Code analysis
 - Code walkthroughs (explaining existing code)
 
 ---
@@ -118,7 +118,6 @@ Bloom's taxonomy defines six cognitive levels that progressively build from simp
 - Identify (patterns)
 - Relate
 - Infer (causation)
-- Diagram
 - Deconstruct
 - Compare (deeply)
 
@@ -128,7 +127,7 @@ Bloom's taxonomy defines six cognitive levels that progressively build from simp
 - Distinguish between different algorithm approaches and their tradeoffs
 - Identify design patterns in existing codebase
 - Relate test results to code logic
-- Diagram data structures and their relationships
+- Explain data structures and their relationships
 - Deconstruct complex functions into smaller parts
 
 ### Assessment Methods

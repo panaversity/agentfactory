@@ -259,7 +259,7 @@ objectives:
     prerequisites:
       - "Implement basic classes fluently"
       - "Understand inheritance syntax"
-    assessment_method: "Diagram exercise: draw class relationships"
+    assessment_method: "Code analysis exercise: identify class relationships"
     success_criteria:
       - "Identifies parent/child relationships correctly"
       - "Explains why inheritance is used"
@@ -433,7 +433,7 @@ objectives:
     context: "Introduction to MCP concepts"
     prerequisites:
       - "Understand Python modules and client-server patterns"
-    assessment_method: "Diagram exercise: draw MCP client-server relationship"
+    assessment_method: "Explanation exercise: describe MCP client-server relationship"
     success_criteria:
       - "Can explain what MCP servers provide"
       - "Can describe the client-server protocol flow"

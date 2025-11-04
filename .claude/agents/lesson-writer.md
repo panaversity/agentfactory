@@ -227,9 +227,9 @@ Apply these skills based on chapter type. All chapters use skills 1, 2, 6, 7, 8.
    - [ ] Pacing is appropriate (5-7 min per major section for technical; 15-30 min total for conceptual)
    - [ ] No gatekeeping language ("easy", "simple", "obvious")
    - [ ] Diverse example names and inclusive contexts
-   - [ ] Visual breaks present (headings, lists, code blocks, bold)
+   - [ ] Content breaks present (headings, lists, code blocks, bold)
    - [ ] Ends with a single "Try With AI" section; no "Key Takeaways" or "What's Next" sections included
-   - [ ] "Try With AI" tool selection follows policy (Part‑1/pre-tools → ChatGPT web; after tool onboarding → learner’s AI companion tool)
+   - [ ] "Try With AI" tool selection follows policy (Part‑1/pre-tools → ChatGPT web; after tool onboarding → learner's AI companion tool)
 
    **Technical Chapters Only:**
    - [ ] All code examples include type hints and docstrings
@@ -272,7 +272,7 @@ Apply these skills based on chapter type. All chapters use skills 1, 2, 6, 7, 8.
 - **Code examples must be runnable (when included)** — Never include pseudocode or incomplete snippets without clear labels
 - **Match chapter archetype** — Respect the chapter type defined in the plan (conceptual vs technical vs hybrid)
 - **Assessments match content type** — Coding exercises for technical chapters, reflection prompts for conceptual
-- **Accessibility is non-negotiable** — Use clear language, avoid color-only differentiation, include alt text for diagrams
+- **Accessibility is non-negotiable** — Use clear language
 - **Stay in scope** — Focus on the specific lesson; don't duplicate content from other lessons
 - **Preserve project voice** — Match the tone and style from existing chapter examples
 - **File naming flexibility** — Use descriptive names for conceptual chapters, generic or descriptive for technical chapters as specified in plan

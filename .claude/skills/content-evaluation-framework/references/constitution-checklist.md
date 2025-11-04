@@ -142,7 +142,7 @@ For each section, evaluate content and mark:
 - [ ] No ableist language ("obviously", "simply", "just", "easy")
 - [ ] Code examples include clear comments explaining intent
 - [ ] Diverse example names/contexts; gender-neutral language
-- [ ] Multiple explanation styles: text, code, diagrams, analogies
+- [ ] Multiple explanation styles: text, code, analogies
 - [ ] Platform-specific instructions where setup differs (Windows/Mac/Linux) if applicable
 - [ ] Free/open-source alternatives provided if applicable
 
@@ -211,7 +211,7 @@ For each section, evaluate content and mark:
 - [ ] **Factual Accuracy**: All claims verified with inline citations (e.g., [Source, Year])
 - [ ] **Field Volatility**: Rapidly-changing topics include maintenance triggers (e.g., "Review annually")
 - [ ] **Inclusive Language**: No gatekeeping terms; diverse examples; gender-neutral; free alternatives
-- [ ] **Accessibility**: Clear terminology with definitions; multiple explanation styles; visual breaks; appropriate pacing
+- [ ] **Accessibility**: Clear terminology with definitions; multiple explanation styles; content breaks; appropriate pacing
 - [ ] **Bias & Representation**: Diverse perspectives; no stereotypes; inclusive references
 - [ ] **Technical Accuracy**: All claims verified; best practices; no deprecated syntax/tools
 
@@ -231,7 +231,7 @@ For each section, evaluate content and mark:
 - [ ] **Deployment Readiness**: Environment setup; dependency management; troubleshooting; fallbacks
 - [ ] **Scalability Awareness**: Real-world constraints mentioned (performance, memory, network)
 - [ ] **Real-World Context**: Realistic scenarios with error handling, not toy problems
-- [ ] **Engagement**: Opening hook; visual breaks; realistic complexity progression; 5-7 min sections
+- [ ] **Engagement**: Opening hook; content breaks; realistic complexity progression; 5-7 min sections
 - [ ] **Practicality**: Cross-platform setup; common pitfalls section; explicit environment requirements
 
 **Evidence Required**: Review all code examples and exercises

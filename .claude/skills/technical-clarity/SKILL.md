@@ -202,7 +202,6 @@ Categorize improvements:
 - Additional examples
 - Better analogies
 - Improved transitions
-- More visual aids
 
 ## Output Format
 
@@ -299,9 +298,8 @@ Provide clarity report as structured markdown:
 
 ### Enhancements (Optional)
 
-1. Add diagrams for complex relationships
-2. Include common mistakes section
-3. Provide checkpoint questions for self-assessment
+1. Include common mistakes section
+2. Provide checkpoint questions for self-assessment
 
 ## Accessibility Score
 

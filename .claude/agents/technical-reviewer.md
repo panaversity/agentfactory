@@ -197,7 +197,7 @@ Are all 9 CoLearning Domain Skills applied appropriately for the chapter type?
 - Is terminology explained or defined?
 - Is pacing appropriate (not rushed)?
 - Are concepts explained multiple ways when helpful?
-- Are there visual breaks (headings, lists, structured content)?
+- Are there content breaks (headings, lists, structured content)?
 
 **"Learning WITH AI" Emphasis (All Chapters):**
 - Technical chapters: AI as coding partner and learning tool
@@ -226,7 +226,6 @@ Are all 9 CoLearning Domain Skills applied appropriately for the chapter type?
 - No formatting inconsistencies (spacing, punctuation, capitalization)
 - All cross-references to other chapters or sections are valid
 - All links (internal and external) are functional (test them!)
-- Images/diagrams render correctly (if present)
 - No unresolved placeholders or TODO comments
 
 **Consistency (All Chapters):**
@@ -238,7 +237,7 @@ Are all 9 CoLearning Domain Skills applied appropriately for the chapter type?
 **Engagement & Professional Polish (All Chapters):**
 - Opening hook present and engaging (captures attention within 2-3 paragraphs)
 - Pacing appropriate for content type (5-7 min per section for technical; 15-30 min total for conceptual)
-- Visual breaks present (lists, bold text, headings, code blocks)
+- Content breaks present (lists, bold text, headings, code blocks)
 - No unsupported hype or claims; tone is professional and balanced
 - Bibliography/source citations present for factual claims
 - Accessibility: no gatekeeping language; diverse example names and contexts; gender-neutral language
@@ -283,7 +282,7 @@ Generate a structured validation report in markdown:
   - Missing source citations
   - Ethical AI implications not addressed
   - Cross-platform compatibility issues
-  - Missing engagement elements (opening hook, visual breaks)
+  - Missing engagement elements (opening hook, content breaks)
 - (If none, state: "None identified.")
 
 ## Minor Issues
@@ -335,11 +334,11 @@ Generate a structured validation report in markdown:
 - [x] Factual accuracy: Claims verified with cited sources
 - [x] Field volatility: Maintenance triggers documented for rapidly-changing content
 - [x] Inclusive language: No gatekeeping terms; diverse examples; gender-neutral
-- [x] Accessibility: Clear terminology; multiple explanations; visual breaks; appropriate pacing
+- [x] Accessibility: Clear terminology; multiple explanations; content breaks; appropriate pacing
 - [x] Bias & representation: Diverse perspectives; no stereotypes; inclusive names/contexts
 - [x] (For technical) Security & ethical: Secure practices shown; AI limitations framed; disclaimers included
 - [x] (For conceptual) Evidence-based & diverse: Claims sourced; multiple viewpoints; professional tone
-- [x] Engagement: Opening hook; visual breaks; professional polish
+- [x] Engagement: Opening hook; content breaks; professional polish
 - [ ] (Mark any that fail)
 
 ## Formatting & Structure (All Chapters)

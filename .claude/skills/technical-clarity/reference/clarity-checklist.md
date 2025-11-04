@@ -97,15 +97,7 @@ them creates a new string."
 - [ ] Smooth transitions between ideas
 - [ ] No sudden topic jumps
 
-### 8. Visual Aids
-
-**Consider Adding**:
-- Code examples (most important)
-- Diagrams for complex relationships
-- Tables for comparisons
-- Flowcharts for processes
-
-### 9. Error Prevention
+### 8. Error Prevention
 
 **Check**:
 - [ ] Common mistakes mentioned

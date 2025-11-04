@@ -185,7 +185,6 @@ Deconstruct the chapter into **3–7 sections/lessons** appropriate to chapter t
 - [ ] Factual accuracy requirements identified (what needs source verification?)
 - [ ] Field volatility topics identified (AI tools, APIs, Python versions—need maintenance triggers)
 - [ ] Inclusivity requirements clear (diverse examples needed? gatekeeping terms to avoid?)
-- [ ] Accessibility requirements explicit (reading time, pacing, visual breaks planned)
 
 **For Technical Chapters, additionally check:**
 - [ ] Are security considerations mentioned in the spec? (If not, recommend adding)
@@ -219,7 +218,7 @@ Break each section/lesson into **specific, testable development tasks** appropri
 - **Content Writing** (outline narrative arc, draft sections, refine flow)
 - **Real-World Examples** (research, validate, write compelling stories)
 - **Reflection Prompts** (design thought-provoking questions)
-- **Engagement Elements** (opening hook, pacing checks, visual breaks, inclusivity review)
+- **Engagement Elements** (opening hook, pacing checks, content breaks, inclusivity review)
 - **Source Verification** (fact-check claims, add citations, flag volatile content)
 - **Review & Integration** (peer review, narrative coherence, accessibility, bias check)
 
@@ -228,7 +227,7 @@ Break each section/lesson into **specific, testable development tasks** appropri
 - **Code Examples** (write, test, ensure type hints, document, test cross-platform)
 - **Exercises** (design, write, validate answers)
 - **Assessments** (quiz, hands-on project, checkpoints)
-- **Engagement Elements** (opening hook, pacing, visual breaks, 5-7 min sections)
+- **Engagement Elements** (opening hook, pacing, content breaks, 5-7 min sections)
 - **Source Verification** (fact-check claims, verify tool versions, add citations)
 - **Ethical & Security Coverage** (frame AI limitations, address security implications, include disclaimers)
 - **Review & Integration** (peer review, code testing, cross-platform validation, accessibility check, bias check)
@@ -442,7 +441,7 @@ Before finalizing outputs, verify:
 - [ ] **Book Gaps Coverage**: Plan explicitly addresses Book Gaps Checklist items (Section II.C, constitution.md):
   - [ ] Factual verification strategy documented
   - [ ] Field volatility/maintenance triggers identified
-  - [ ] Engagement elements planned (hooks, pacing, visuals)
+  - [ ] Engagement elements planned (hooks, pacing, content breaks)
   - [ ] For technical: security, ethics, deployment, testing, cross-platform covered
   - [ ] For conceptual: diverse perspectives, evidence-based claims, examples concrete
   - [ ] Inclusivity and bias checks are part of review tasks

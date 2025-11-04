@@ -45,9 +45,9 @@ Effective assessment methods align with the cognitive level of the learning obje
 - "Explain the difference between == and is in Python"
 - "Describe how a for loop works" (2-3 sentences)
 
-**Concept Maps**
-- Draw relationships between concepts
-- Example: Create a diagram showing relationships between class, instance, method, attribute
+**Concept Mapping**
+- Explain relationships between concepts
+- Example: Describe relationships between class, instance, method, attribute
 
 **Paraphrasing / Code Walkthroughs**
 - Learner explains what existing code does line-by-line
@@ -124,8 +124,8 @@ Effective assessment methods align with the cognitive level of the learning obje
 - Learner reviews code and marks up with analysis
 - Identify bottlenecks, design issues, clarity problems
 
-**Architecture Diagrams**
-- Draw data flow, class hierarchies, or system components
+**Architecture Analysis**
+- Explain data flow, class hierarchies, or system components
 - Justify organizational choices
 
 **Tradeoff Analysis**
@@ -234,7 +234,7 @@ Effective assessment methods align with the cognitive level of the learning obje
 | Remember | Recall facts | Multiple choice, flashcards | 5-10 min | Low |
 | Understand | Explain concepts | Essays, explanations, comparisons | 10-15 min | Low-Medium |
 | Apply | Use to solve problems | Code exercises, labs, problems | 20-45 min | Medium |
-| Analyze | Break down structure | Code analysis, comparisons, diagrams | 30-60 min | Medium-High |
+| Analyze | Break down structure | Code analysis, comparisons | 30-60 min | Medium-High |
 | Evaluate | Judge quality | Code reviews, audits, justifications | 45-90 min | High |
 | Create | Design original solutions | Projects, capstones, architecture design | Hours-weeks | Very High |
 

@@ -235,7 +235,7 @@ title: "Part N: Part Title"
 - Same tone as lesson.md output style
 
 ### 9. **Prerequisites Section (Required)**
-- Use checkmarks and X marks for visual clarity
+- Use checkmarks and X marks for clarity
 - Separate "absolutely need" from "don't need"
 - Include special notes (platform requirements, accounts, corporate considerations)
 

@@ -172,15 +172,15 @@ def calculate_average(numbers):
 
 ### 6. Dual Coding
 
-**Definition**: Combining verbal and visual information enhances learning.
+**Definition**: Combining verbal and code-based information enhances learning.
 
 **Research Basis**: Dual coding theory (Paivio, 1971) shows using multiple representations aids memory.
 
-**Application to Python Exercises**:
-- Provide visual representations alongside code (diagrams, flowcharts)
-- Use visualization libraries in exercises
-- Ask learners to draw data structure states
-- Include ASCII diagrams in comments
+**Application to Programming Exercises**:
+- Provide code examples alongside explanations
+- Use concrete examples in exercises
+- Ask learners to trace data structure states
+- Include explanatory comments in code
 
 **Example**:
 ```python
