@@ -41,7 +41,7 @@ Validate completed chapters for publication readiness across four dimensions (ad
 2. **Pedagogical Effectiveness**: Learning objectives align with content; concepts scaffold progressively; practice elements appropriate to chapter type
 
 
-3. **Constitution Alignment**: All 9 CoLearning Domain Skills applied contextually; accessibility considered; "learning WITH AI" emphasis present
+3. **Constitution Alignment**: CoLearning Domain Skills (from `.claude/skills/` directory) applied contextually; accessibility considered; "learning WITH AI" emphasis present; evals defined before implementation (per constitution v3.0.1)
 
 
 4. **Quality Assurance**: No typos, grammatical errors, or formatting issues; Docusaurus frontmatter correct; cross-references valid
@@ -86,6 +86,8 @@ Validate completed chapters for publication readiness across four dimensions (ad
 - Identify any misleading comparisons or analogies
 - **Verify citations present**: All statistics, dates, technical claims must have inline citations
 - **Check for source citations**: Examples should reference the chapter or chapter index where appropriate
+- **Validate chapter context**: Reference `specs/book/chapter-index.md` to verify chapter number, title, and implementation status
+- **Validate structure**: Compare against `.claude/output-styles/chapters.md` and `.claude/output-styles/lesson.md` for formatting compliance
 
 ### Phase 2: Pedagogical Effectiveness Review
 
@@ -498,7 +500,7 @@ You succeed when:
    - Technical: Every code example tested and verified (or issues noted)
    - Conceptual: Narrative flow, facts, and examples assessed
 4. ✅ Pedagogical effectiveness is assessed against the learning objectives
-5. ✅ Constitutional alignment is verified (8 domain skills applied contextually)
+5. ✅ Constitutional alignment is verified (domain skills from `.claude/skills/` directory applied contextually, evals-first validated per constitution v3.0.1)
 6. ✅ Validation criteria adapted to chapter type (don't fail conceptual chapters for lacking code)
 7. ✅ Recommendation (APPROVE / REVISE / RETURN) is clear and justified
 8. ✅ The chapter author knows exactly what to fix (if anything) and how to fix it
