@@ -11,7 +11,7 @@ Changes in v3.0.0 (BREAKING):
 - TARGET AUDIENCE: Expanded from "beginners only" to "aspiring/professional/founders" with graduated complexity
 - CORE PHILOSOPHY: Added 3 new tenets (Specification-First, Validation-First Safety, Bilingual Development)
 - PRINCIPLES: Added 4 new principles (#14-17): Planning-First, Validation-Before-Trust, Bilingual Development, Production-Ready Deployment
-- DOMAIN SKILLS: 9 → 14 skills (removed code-example-generator, added 7 new AI-native skills)
+- DOMAIN SKILLS: Changed from hardcoded list to plugin-based architecture (skills discovered from `.claude/skills/` directory)
 - NEW SECTIONS: Production & Deployment Standards (IX), TypeScript Standards (X), Specification Quality Standards (XI)
 - WORKFLOW: Reframed SDD loop to emphasize spec-first as THE methodology we teach, not just how we write the book
 
@@ -254,7 +254,7 @@ All content creators (human authors and AI agents) MUST use the same shared infr
 - All Python code follows identical formatting standards (black, mypy --strict)
 - All TypeScript code follows identical formatting standards (prettier, tsc --strict)
 - All exercises follow identical structure and approach
-- All content creators reference the same 14 domain skills and constraints
+- All content creators discover and apply skills from `.claude/skills/` contextually
 - Cross-chapter consistency verified before publication
 
 ---
@@ -521,120 +521,144 @@ All projects MUST demonstrate production deployment with cloud-native patterns, 
 
 ---
 
-## II.B Domain Skills (The 14 AI-Native Development Skills)
+## II.B Domain Skills Architecture (Plugin-Based)
 
-All book development MUST leverage these specialized pedagogical skills. These skills codify AI-native development best practices and ensure consistent quality.
+### Philosophy: Skills as Plugins
 
-Repository availability note: Use only the skills that exist under `.claude/skills` in this repository. The list below represents the target skill set; some items may be added incrementally.
+Skills are **discovered dynamically** from the `.claude/skills/` directory. This architecture enables:
+- Adding new skills without modifying constitution
+- Removing obsolete skills without breaking the framework
+- Contextual application based on chapter type and requirements
+- Framework reusability for different book domains
 
-### Category 1: Core Pedagogical Skills (Universal)
-
-### 1. **learning-objectives** Skill
-Generate measurable learning outcomes aligned with Bloom's taxonomy. Ensures every chapter has clear, testable objectives.
-
-### 2. **assessment-builder** Skill
-Build meaningful quizzes, review questions, and evaluations. Assesses specification-writing, validation, and AI-collaboration skills.
-
-### 3. **technical-clarity** Skill
-Ensure all explanations are clear, accessible, and free of jargon gatekeeping.
-
-### 4. **book-scaffolding** Skill
-Plan and structure multi-part educational content with cognitive load management and graduated complexity.
-
-### 5. **content-evaluation-framework** Skill
-Evaluate content quality using structured rubric across technical accuracy, pedagogy, and constitution alignment.
+**Source of Truth**: `.claude/skills/` directory structure and skill metadata
 
 ---
 
-### Category 2: AI-Native Development Skills (NEW/TRANSFORMED)
+### Skill Categories
 
-### 6. **spec-example-generator** Skill (NEW - replaces code-example-generator)
-Create high-quality specification examples demonstrating clear requirements, acceptance criteria, and testable outcomes. Students learn to write specs by seeing excellent specification patterns.
+Skills are organized into categories based on their purpose and applicability:
 
-**When to use:**
-- Parts 3-5 (teaching specification methodology)
-- All project-based chapters
-- Demonstrating spec quality standards
+#### Category 1: Pedagogical Skills (Universal)
+**Purpose**: Teaching methodology, learning science, accessibility
+**Required for**: All content types
+**Activation**: Always active
 
-### 7. **spec-scaffolding** Skill (TRANSFORMED from concept-scaffolding)
-Break down specification-writing into progressive learning steps. Teach students to write specifications incrementally, managing cognitive load.
-
-**When to use:**
-- Part 5 (Spec-Driven Development introduction)
-- Teaching complex specification patterns
-- Scaffolding from simple to complex requirements
-
-### 8. **spec-exercise-designer** Skill (TRANSFORMED from exercise-designer)
-Design deliberate practice exercises for specification-writing, not code-writing.
-
-**Exercise types:**
-1. Spec-from-description: Given problem, write specification
-2. Spec-refinement: Given vague spec, make it testable
-3. Acceptance-criteria-writing: Define validation checklist
-4. Spec-debugging: Find ambiguities in flawed spec
-5. Prompt-engineering: Write AI prompt to generate from spec
-
-### 9. **ai-collaboration-pedagogy** Skill (TRANSFORMED from ai-augmented-teaching)
-Teach AI as co-reasoning partner in specification, development, and validation—not just a coding assistant.
-
-**Patterns taught:**
-- Spec Co-Creation: Human describes → AI suggests structure → Human refines
-- Iterative Refinement: Spec → Generate → Test → Improve spec → Regenerate
-- Validation Partnership: AI generates → Human validates → AI explains
-
-### 10. **prompt-engineering-pedagogy** Skill (NEW - CRITICAL)
-Teach effective AI communication as core development skill. Prompt engineering is THE interface to AI.
-
-**Key concepts:**
-- Prompt anatomy (context, instruction, constraints, format)
-- Iterative prompting (refine based on output)
-- Context engineering (providing right information)
-- Verification prompts (asking AI to explain/validate)
-
-### 11. **validation-pedagogy** Skill (NEW - SAFETY CRITICAL)
-Teach students to validate AI-generated outputs before use.
-
-**Key concepts:**
-- Code reading (understand before running)
-- Testing strategies (unit, integration, E2E)
-- Security scanning (secrets, injections, XSS)
-- Performance validation (does it scale?)
-- Spec-code alignment (does output match requirements?)
-
-**Pattern:** SHOW → READ → UNDERSTAND → TEST → VALIDATE → TRUST
-
-### 12. **ai-tool-comparison-pedagogy** Skill (NEW)
-Teach tool selection based on tradeoffs, not hype. Professional developers choose tools contextually.
-
-**Tools covered:** Claude Code, Gemini CLI, GitHub Copilot, Cursor, Zed
-
-**Comparison dimensions:** Strengths, limitations, cost, workflow integration
-
-### 13. **typescript-pedagogy** Skill (NEW - CRITICAL)
-Teach TypeScript for interaction layer development. Professional full-stack requires TypeScript fluency.
-
-**Key concepts:**
-- TypeScript type system (strict mode)
-- Modern syntax (ES2024+)
-- Next.js integration
-- Real-time with WebSockets/WebRTC
-
-**Standards:** Strict mode, no `any` types, explicit return types
-
-### 14. **deployment-pedagogy** Skill (NEW - CRITICAL)
-Teach cloud-native deployment patterns. Production deployment is required knowledge.
-
-**Key concepts:**
-- Docker containerization
-- Kubernetes orchestration
-- Database integration
-- Event-driven architecture (Kafka, Dapr)
-- Stateful agents (Dapr actors, workflows)
-- Observability (logging, metrics, tracing)
+**Examples**: 
+- `learning-objectives` — Measurable outcomes aligned with Bloom's taxonomy
+- `assessment-builder` — Quizzes, exercises, evaluations
+- `technical-clarity` — Clear explanations, jargon management
+- `book-scaffolding` — Multi-part content structure, cognitive load
+- `content-evaluation-framework` — Quality rubrics
 
 ---
 
-**Governance**: All chapter content MUST be validated against these 14 skills before publication.
+#### Category 2: AI-Native Development Skills
+**Purpose**: Teaching specification-first, validation-first, AI collaboration
+**Required for**: Technical chapters (Parts 4+)
+**Activation**: When chapter involves code or specifications
+
+**Examples**:
+- `spec-example-generator` — High-quality specification patterns
+- `spec-scaffolding` — Progressive specification-writing instruction
+- `spec-exercise-designer` — Deliberate practice for spec-writing
+- `ai-collaboration-pedagogy` — AI as co-reasoning partner
+- `prompt-engineering-pedagogy` — Effective AI communication
+- `validation-pedagogy` — Output validation and safety
+
+---
+
+#### Category 3: Content-Specific Skills
+**Purpose**: Language/tool/domain-specific pedagogy
+**Required for**: Specific parts or chapters
+**Activation**: Based on part/chapter context
+
+**Examples**:
+- `typescript-pedagogy` — TypeScript teaching (Part 8+)
+- `deployment-pedagogy` — Production deployment (Part 10+)
+- `ai-tool-comparison-pedagogy` — Tool selection guidance (Part 2)
+
+---
+
+#### Category 4: Utilities
+**Purpose**: Tooling, automation, infrastructure
+**Required for**: None (quality of life)
+**Activation**: On-demand
+
+**Examples**:
+- `docusaurus-deployer` — Build and deployment automation
+- `quiz-generator` — Assessment generation utilities
+- `skill-creator` — Meta-skill for creating new skills
+- `skills-proficiency-mapper` — CEFR/Bloom's proficiency mapping
+
+---
+
+### Skill Discovery Protocol
+
+Subagents discover and apply skills dynamically:
+
+1. **Scan**: Read `.claude/skills/` directory
+2. **Filter**: Select skills by category and `required_for` metadata
+3. **Contextualize**: Apply additional skills based on chapter type
+4. **Execute**: Invoke skills during content creation
+
+**Example Discovery**:
+```yaml
+# chapter-planner subagent
+base_skills:
+  - category: pedagogical
+  - required_for: [chapter-planner]
+
+contextual_skills:
+  - if chapter_type == "technical": add category "ai-native-development"
+  - if chapter_part >= 8: add "typescript-pedagogy"
+  - if chapter_part >= 10: add "deployment-pedagogy"
+```
+
+---
+
+### Skill Metadata Standard
+
+Every skill MUST include YAML frontmatter in `SKILL.md`:
+
+```yaml
+---
+name: "skill-name"
+category: "pedagogical|ai-native|content-specific|utility"
+description: "Clear one-line purpose"
+applies_to: ["all-chapters"|"technical-chapters"|"part-X"]
+required_for: ["chapter-planner"|"lesson-writer"|"technical-reviewer"]
+version: "1.0.0"
+dependencies: []
+---
+```
+
+---
+
+### Skill Quality Standards
+
+All skills MUST:
+- Include `SKILL.md` with clear purpose and activation triggers
+- Provide reference documentation in `reference/` subdirectory
+- Include validation scripts (where applicable) in `scripts/` subdirectory
+- Specify templates (where applicable) in `templates/` subdirectory
+- Declare version and dependencies in frontmatter
+- Document which subagents should invoke them
+
+---
+
+### Governance: Flexible Validation
+
+**Instead of**: "All content must use exactly 14 skills"
+
+**Validation checks**:
+- [ ] All **pedagogical** skills applied appropriately for chapter type
+- [ ] **AI-native** skills applied for technical chapters
+- [ ] **Content-specific** skills applied when part/chapter requires them
+- [ ] Skill outputs meet quality standards defined in skill documentation
+- [ ] No missing skills for declared requirements
+
+**Framework principle**: Content quality depends on **appropriate skill application**, not arbitrary skill counts.
 
 ---
 
@@ -914,27 +938,17 @@ Each phase includes:
 
 ## VI. Infrastructure
 
-### Domain Skills (The 14 AI-Native Development Skills)
+### Domain Skills (Plugin-Based Discovery)
 
-All content creators MUST apply the 14 domain skills defined in Section II.B. These skills are located in `.claude/skills/` and provide pedagogical best practices:
+All content creators MUST apply skills contextually from `.claude/skills/` directory as defined in Section II.B.
 
-**Core Pedagogical (5):**
-1. learning-objectives
-2. assessment-builder
-3. technical-clarity
-4. book-scaffolding
-5. content-evaluation-framework
+**Skill Discovery**: Subagents scan `.claude/skills/` directory and apply skills based on:
+- Category (pedagogical, ai-native, content-specific, utility)
+- Chapter type (conceptual, technical, hybrid)
+- Part requirements (TypeScript for Part 8+, deployment for Part 10+)
+- Subagent needs (declared in subagent metadata)
 
-**AI-Native Development (9):**
-6. spec-example-generator (NEW)
-7. spec-scaffolding (TRANSFORMED)
-8. spec-exercise-designer (TRANSFORMED)
-9. ai-collaboration-pedagogy (TRANSFORMED)
-10. prompt-engineering-pedagogy (NEW)
-11. validation-pedagogy (NEW)
-12. ai-tool-comparison-pedagogy (NEW)
-13. typescript-pedagogy (NEW)
-14. deployment-pedagogy (NEW)
+**No Hardcoded Lists**: Skills are plugins. Adding/removing skills does not require constitution changes.
 
 **Note**: Skills directory requires update to align with v3.0.0 (separate feature).
 
@@ -952,10 +966,10 @@ These are **generic, reusable templates** applicable to any educational content 
 Three specialized agents manage the SDD loop phases (located in `.claude/agents/`):
 
 1. **chapter-planner** — Takes approved spec → creates detailed lesson plans and task checklists
-2. **lesson-writer** — Takes lesson plan → writes complete lesson content with all 14 domain skills applied
+2. **lesson-writer** — Takes lesson plan → writes complete lesson content with contextually appropriate skills applied
 3. **technical-reviewer** — Takes completed chapter → validates technical accuracy, pedagogical effectiveness, and constitutional alignment
 
-**Note**: Subagents require update to align with v3.0.0 (separate feature).
+**Note**: Subagents discover available skills dynamically from `.claude/skills/` directory.
 
 ---
 
