@@ -645,7 +645,7 @@ Spec Driven Development is the bridge between human creativity and AI precision.
 By starting with specs — not vibes — we ensure our AI collaborators build systems that **are correct by design, traceable by memory, and governed by principle**.
 
 As the AI coding era matures, one thing is clear:
-**The future of AI-assisted development will be written not in code first, but in specs.**
+**The future of AI-driven development will be written not in code first, but in specs.**
 
 ---
 
