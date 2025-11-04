@@ -21,6 +21,8 @@ const config: Config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
+  // Sitemap is configured via the classic preset's sitemap option below
+
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "panaversity", // Usually your GitHub org/user name.
@@ -94,12 +96,20 @@ const config: Config = {
         theme: {
           customCss: "./src/css/custom.css",
         },
+        // Sitemap configuration for search engines
+        sitemap: {
+          changefreq: "weekly",
+          priority: 0.5,
+          filename: "sitemap.xml",
+          ignorePatterns: ["**/tags/**"],
+        },
       } satisfies Preset.Options,
     ],
   ],
 
   plugins: [
     "./plugins/docusaurus-plugin-og-image-generator",
+    "./plugins/docusaurus-plugin-structured-data",
     function (context, options) {
       return {
         name: "custom-webpack-config",

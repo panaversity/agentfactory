@@ -1,0 +1,69 @@
+openapi: 3.0.3
+info:
+  title: Knowledge Retrieval Feed
+  version: 0.1.0
+  description: Paged JSON feed of atomic knowledge units for assistants/agents.
+servers:
+  - url: https://example.com
+paths:
+  /api/knowledge-feed:
+    get:
+      summary: List knowledge units (paged)
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          required: false
+        - in: query
+          name: page_size
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 200
+          required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrievalFeedPage'
+components:
+  schemas:
+    KnowledgeUnit:
+      type: object
+      required: [id, title, summary, canonical_url, last_updated, license, authors]
+      properties:
+        id: { type: string }
+        title: { type: string }
+        summary: { type: string }
+        questions:
+          type: array
+          items: { type: string }
+        answers:
+          type: array
+          items: { type: string }
+        claims:
+          type: array
+          items: { type: string }
+        evidence:
+          type: array
+          items: { type: string }
+        canonical_url: { type: string, format: uri }
+        last_updated: { type: string, format: date-time }
+        license: { type: string }
+        authors:
+          type: array
+          items: { type: string }
+    RetrievalFeedPage:
+      type: object
+      properties:
+        page_number: { type: integer }
+        page_size: { type: integer }
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/KnowledgeUnit'
+        next_page: { type: string, nullable: true }

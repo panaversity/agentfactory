@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /tags/
+
+Sitemap: https://ai-native.panaversity.org/sitemap.xml
