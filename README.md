@@ -4,7 +4,7 @@
 >
 > **Empowering developers, entrepreneurs, and organizations to learn, build, and collaborate with intelligent AI agents — building systems where AI is the core.**
 
-📚 **Live Book**: [https://ai-native.panaversity.org](https://ai-native.panaversity.org) | [Panaversity Books](https://panaversity.com/books/ai-native-software-development)
+📚 **Live Book**: [https://ai-native.panaversity.org](https://ai-native.panaversity.org) | [Panaversity Programs](https://panaversity.org/flagship-program/courses)
 
 ---
 
@@ -173,7 +173,7 @@ The future of software development is collaborative, conversational, and powered
 
 📘 **Read the book**: [https://ai-native.panaversity.org](https://ai-native.panaversity.org)
 
-🎓 **Panaversity Programs**: [https://panaversity.com/books/ai-native-software-development](https://panaversity.com/books/ai-native-software-development)
+🎓 **Panaversity Programs**: [https://panaversity.com/books/ai-native-software-development](https://panaversity.org/flagship-program/courses)
 
 ---
 
