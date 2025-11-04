@@ -1,5 +1,5 @@
 ---
-title: "Implementation & Validation (/sp.implement)"
+title: "Implementation and Human in the Loop Validations"
 chapter: 31
 lesson: 6
 duration_minutes: 150
@@ -48,54 +48,30 @@ differentiation:
   remedial_for_struggling: "Simplified validation checklist (5 items instead of 10); focus on pass/fail of main criteria only"
 ---
 
-# Implementation & Validation (/sp.implement)
+# Implementation and Human in the Loop Validations
 
 You have:
-- A clear specification (Lessons 1-3)
-- A detailed plan with phases (Lesson 4)
-- Atomic tasks with dependencies (Lesson 5)
+- A clear specification
+- A detailed plan with phases
+- Atomic tasks with dependencies
 
 Now comes the moment of truth: **Does AI understand your spec well enough to generate working code?**
 
-`/sp.implement` orchestrates code generation. It takes your specification, plan, and tasks, and generates Python code that (hopefully) passes all acceptance criteria.
+`/sp.implement` orchestrates code generation. It takes your specification, plan, and tasks, and generates code that (hopefully) passes all acceptance criteria.
 
 But here's the key: **AI-generated code is not automatically correct. Your job is validation.** This lesson teaches you how to validate code systematically, identify failures, and provide feedback for refinement.
 
-This is the AIDD loop in action: **Intent (spec) → Generation (code) → Validation (your job) → Refinement (iterate) → Trust.**
-
 ---
-
-## The AIDD Loop 
-
-AIDD = **AI-Driven Development**. It's a cycle where humans and AI collaborate:
-
-```
-1. INTENT (You and your AI Companion write specification)
-   ↓
-2. GENERATION (AI generates code from spec)
-   ↓
-3. VALIDATION (You verify code works)
-   ↓
-4. FEEDBACK (You tell AI what failed)
-   ↓
-5. REFINEMENT (AI improves based on feedback)
-   ↓
-6. TRUST (You deploy with confidence)
-```
-
-**Key principle**: AI is the executor. You are the validator. Neither works alone; together they produce working code faster than either could alone.
 
 ## What /sp.implement Does?
 
-`/sp.implement` orchestrates the first two steps of the AIDD loop:
+`/sp.implement`
 
 1. **Takes your artifacts**: Specification, plan, tasks
 2. **Generates code**: AI writes Python code for each task
 3. **Generates tests**: AI writes unit tests and integration tests
 4. **Produces documentation**: Function docstrings, README updates
 5. **Returns for validation**: Everything for you to review
-
-Your job in Lesson 7: **Complete steps 3-5 of the AIDD loop** (validation, feedback, refinement).
 
 ## Risk: AI Can Hallucinate
 
@@ -132,7 +108,6 @@ After each task: run tests, update checklist, note deltas to spec if needed Mark
 - Handles any implementation issues
 
 3. Review generated artifacts
-
 
 **Example for Addition Operation:**
 
@@ -197,17 +172,6 @@ Run ruff to check code quality and formatting.
 
 Your agent will create the appropriate spec artifacts under your project's specs directory (for example, a folder for this feature), along with source code and tests organized per your constitution.
 
-## Verification Checklist
-
-- [ ] All four operations implemented (add, subtract, multiply, divide)
-- [ ] All functions use Python 3.12+ type hints
-- [ ] All functions have proper docstrings
-- [ ] All tests pass (100% coverage)
-- [ ] Type checking passes with mypy
-- [ ] Code quality passes with ruff
-- [ ] Spec loop artifacts created (.speckit/specs/basic-operations/)
-- [ ] Tasks marked complete in tasks.md
-
 ## Ship It with `/sp.git.commit_pr`
 
 Once every task is complete and all verification checks are green, hand the Git work to the agentic workflow command `/sp.git_commit_pr`
@@ -226,17 +190,9 @@ You've completed your first full spec loop! The basic operations are now impleme
 
 1. **Run `/sp.implement`** on your artifacts
 2. **Review generated code**: Read for understanding (no running yet)
-3. **Ask Claude**: "Explain this function: [pick a complex function]"
+3. **Ask**: "Explain this function: [pick a complex function]"
 4. **Create validation matrix**: For each acceptance criterion, design verification
 5. **Run tests**: Execute generated tests
 6. **Verify criteria**: Check each criterion manually or with tests
 7. **If failures exist**: Provide feedback to AI, ask for refinement
 8. **Reflect**: "How did clear specifications enable AI to generate working code?"
-
-### Expected Outcomes
-
-- You see the full AIDD cycle in action
-- You understand validation as a critical professional skill
-- You recognize how specification clarity cascades to code quality
-- You're ready for the capstone project with complete mastery
-- You have working code that you understand and validated

@@ -41,7 +41,7 @@ learning_objectives:
 
 ---
 
-# Lesson 3: Building Specs with /sp.specify
+# Building Specs with /sp.specify
 
 A specification isn't just acceptance criteria. It's a complete description of what you're building: the problem you're solving, the requirements you're meeting, the constraints you're working within, and the criteria for success.
 
@@ -73,21 +73,11 @@ Each section flows from the previous. The Overview sets context. Requirements de
 
 ## Build your first Spec with /sp.specify
 
-`/sp.specify` is a SpecifyPlus command that analyzes your specification idea against best practices, template, create a branch, designs the specification and returns with a spec.md file. Then using `/sp.clarify` you can identify gaps—ambiguities you might have missed, incomplete assumptions, untestable criteria.
-
-RULE: In Spec phase our focus is on the What and WHY not HOW
+`/sp.specify` is a special SpecifyPlus command to build specification version 0. In Spec phase our focus is on the What and WHY not HOW
 
 ### Where It Runs?
 
-**Important**: `/sp.specify` runs **within Claude Code** or your AI development environment. It's not a terminal command.
-
-When you invoke `/sp.specify`:
-1. Open Claude Code (or your AI tool)
-2. Run the `/sp.specify` command within the tool and share your feature idea.
-3. Review the AI's analysis
-4. Refine your spec based on feedback
-
----
+`/sp.specify` runs **within Claude Code** or your AI development environment. It's not a terminal command.
 
 ### Running /sp.specify
 
@@ -126,10 +116,6 @@ Success metrics:
 
 ### What Makes a Spec "Ready for Planning"
 
-You can optionally run `/sp.clarify` and your AI companion will ask a series of questions to improve the specification. 
-
-Projects that skip this step often fail because they later discover they were building different things. "I thought you meant X, but you meant Y." The specification prevents that miscommunication.
-
 A specification is ready to move to the plan phase when:
 
 1. **Overview is clear**: Someone unfamiliar with the project can understand the problem in 2 minutes
@@ -138,6 +124,10 @@ A specification is ready to move to the plan phase when:
 4. **Acceptance Criteria are SMART**: From Lesson 1 — Specific, Measurable, Achievable, Relevant, Time-bound
 5. **Constraints are realistic**: Timelines, budgets, and technical limits are grounded in reality
 6. **Success Criteria are measurable**: You can run a report and say "Yes, we succeeded" or "No, we didn't"
+
+You can optionally run `/sp.clarify` and your AI companion will ask a series of questions to improve the specification. 
+
+Projects that skip this step often fail because they later discover they were building different things. "I thought you meant X, but you meant Y." The specification prevents that miscommunication.
 
 If your spec has all six sections filled, you're ready. If one section is missing or vague, you need to revise.
 

@@ -1,5 +1,5 @@
 ---
-title: "Decomposing Plans into Tasks (/sp.tasks)"
+title: "Decomposing Plans into Atomic Tasks"
 chapter: 31
 lesson: 5
 duration_minutes: 90
@@ -41,7 +41,7 @@ differentiation:
   remedial_for_struggling: "Simplified task structure (only description + acceptance criteria); guided dependency mapping"
 ---
 
-# Decomposing Plans into Tasks (/sp.tasks)
+# Decomposing Plans into Atomic Tasks
 
 You have a clear plan with phases, dependencies, and milestones. Excellent. But now you face a practical question: **How do I actually start working?**
 
@@ -65,43 +65,6 @@ A task is atomic when it:
 4. **Produces concrete output** (code file, test file, documentation)
 5. **Doesn't depend on multiple other tasks** (minimizes blocking)
 
-### Task Anatomy
-
-Each task has these components:
-
-#### **Task ID**: Unique identifier
-```
-Task 1.1 (Phase 1, Task 1)
-Task 2.3 (Phase 2, Task 3)
-```
-
-#### **Description**: What you're doing
-```
-Task 2.1: Implement add() function
-Task 2.2: Implement subtract() function
-Task 3.1: Design error message format
-```
-
-#### **Acceptance Criteria**: How you know it's done
-```
-Acceptance: Function add(a, b) returns sum; works for positive, negative, zero
-```
-
-#### **Dependencies**: What must finish first
-```
-Dependencies: Task 1.2 (schema design)
-```
-
-#### **Priority**: MUST/SHOULD/NICE-TO-HAVE
-```
-Priority: MUST (required for MVP)
-```
-
-#### **Effort**: Estimated hours
-```
-Effort: 2 hours
-```
-
 ### Task vs. Phase vs. Requirement
 
 | Requirement (Spec) | Phase (Plan) | Task (Tasks) |
@@ -117,11 +80,10 @@ Effort: 2 hours
 Like `/sp.specify` and `/sp.plan`, `/sp.tasks` runs **within AI Companion (Gemini CLI/Claude Code)**:
 
 1. Open AI Companion (Gemini CLI/Claude Code)
-2. Paste your plan (from Lesson 5)
-3. Run 
+2. Run 
 
 ```/sp.tasks
-Break plan into small tasks (T001..), each ≤ 3 minutes, testable, reversible.
+Break plan into small tasks, each ≤ 3 minutes, testable, reversible.
 Add dependencies between tasks; group into phases; mark deliverables per task. Group tasks by operations and for each operation like add use TDD approach so RED Tests, Green Tests and Refactor. After each group we pause for human review and on approval commit to github.
 
 Focus on:
@@ -140,7 +102,7 @@ Focus on:
 - Establishes task dependencies
 - Creates tasks.md file with detailed breakdown
 
-4. Review the tasks and manually update or ask gemini. Never rely on the initial output as magical best solution.
+3. Review the tasks and manually update or ask gemini. Never rely on the initial output as magical best solution.
 
 
 ```
@@ -154,21 +116,10 @@ Now the individual operations become TASKS (T001, T002, etc.). Each task is smal
 
 ## Try With AI
 
-**Tool**: AI Companion (Gemini CLI/Claude Code) with `/sp.tasks` command
-**Duration**: 10 minutes
-
 ### Workflow
 
 1. **Run `/sp.tasks`** on your plan
 2. **Read the task checklist**: Get oriented
 3. **Pick one task**: Task 1.1 or Task 2.1
-4. **Ask Claude**: "What exactly would I do to complete [task name]?"
+4. **Ask**: "What exactly would I do to complete [task name]?"
 5. **Trace backward**: "Which requirement from my spec does this task address?"
-
-### Expected Outcomes
-
-- You see `/sp.tasks` as a real work breakdown tool
-- You understand task atomicity and dependencies
-- You recognize the complete lineage: Spec → Plan → Task
-- You're ready for `/sp.implement` (Lesson 7) with clear work units
-- You see the cascade effect in full: specification quality → plan quality → task quality
