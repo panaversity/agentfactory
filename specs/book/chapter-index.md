@@ -1,6 +1,6 @@
 # CoLearning Python & Agentic AI: Chapter Index
 
-**49 chapters across 13 parts**
+**54 chapters across 13 parts**
 
 Reference this document when naming and organizing chapter files. Use the chapter number in directory names: `[chapter-number]-[chapter-name]/`
 
@@ -70,109 +70,109 @@ Core language skills: production-quality Python
 
 ---
 
-## Part 5: Spec-Kit Plus Methodology (Chapters 25-27)
+## Part 5: Spec-Kit Plus Methodology (Chapters 30-32)
 
 Professional development workflow: specifications and planning
 
 | # | Chapter Title | File Name | Status |
 |---|---------------|-----------|--------|
-| 25 | Specification-Driven Development Fundamentals | `25-specification-driven-development-fundamentals/` | 📋 Planned |
-| 26 | Writing and Planning Specifications | `26-writing-and-planning-specifications/` | 📋 Planned |
-| 27 | Real-World Spec-Kit Workflows | `27-real-world-spec-kit-workflows/` | 📋 Planned |
+| 30 | Specification-Driven Development Fundamentals & Tool Landscape | `30-specification-driven-development-fundamentals/` | 📋 Planned |
+| 31 | Spec-Kit Plus Hands-On Workflow | `31-spec-kit-plus-hands-on/` | 🚧 In Progress |
+| 32 | Real-World Spec-Kit Plus Workflows & Team Collaboration | `32-real-world-spec-kit-workflows/` | 📋 Planned |
 
 ---
 
-## Part 6: Agentic AI Fundamentals with OpenAI Agents SDK in Python (Chapters 28-30)
+## Part 6: Agentic AI Fundamentals with OpenAI Agents SDK in Python (Chapters 33-35)
 
 Building autonomous systems: agents and orchestration
 
 | # | Chapter Title | File Name | Status |
 |---|---------------|-----------|--------|
-| 28 | Introduction to Agentic AI and Agent Architecture | `28-introduction-to-agentic-ai-and-agent-architecture/` | 📋 Planned |
-| 29 | Building Your First Agent with OpenAI Agents SDK | `29-building-your-first-agent-with-openai-agents-sdk/` | 📋 Planned |
-| 30 | Multi-Agent Systems and Orchestration Patterns | `30-multi-agent-systems-and-orchestration-patterns/` | 📋 Planned |
+| 33 | Introduction to Agentic AI and Agent Architecture | `33-introduction-to-agentic-ai-and-agent-architecture/` | 📋 Planned |
+| 34 | Building Your First Agent with OpenAI Agents SDK | `34-building-your-first-agent-with-openai-agents-sdk/` | 📋 Planned |
+| 35 | Multi-Agent Systems and Orchestration Patterns | `35-multi-agent-systems-and-orchestration-patterns/` | 📋 Planned |
 
 ---
 
-## Part 7: MCP Fundamentals with FastMCP (Chapters 31-33)
+## Part 7: MCP Fundamentals with FastMCP (Chapters 36-38)
 
 Integration frameworks: Model Context Protocol
 
 | # | Chapter Title | File Name | Status |
 |---|---------------|-----------|--------|
-| 31 | Introduction to Model Context Protocol | `31-introduction-to-model-context-protocol/` | 📋 Planned |
-| 32 | Building MCP Servers with FastMCP | `32-building-mcp-servers-with-fastmcp/` | 📋 Planned |
-| 33 | Advanced MCP Integration Patterns | `33-advanced-mcp-integration-patterns/` | 📋 Planned |
+| 36 | Introduction to Model Context Protocol | `36-introduction-to-model-context-protocol/` | 📋 Planned |
+| 37 | Building MCP Servers with FastMCP | `37-building-mcp-servers-with-fastmcp/` | 📋 Planned |
+| 38 | Advanced MCP Integration Patterns | `38-advanced-mcp-integration-patterns/` | 📋 Planned |
 
 ---
 
-## Part 8: TypeScript: The Language of Realtime and Interaction (Chapters 34-36)
+## Part 8: TypeScript: The Language of Realtime and Interaction (Chapters 39-41)
 
 Full-stack AI development: TypeScript fundamentals
 
 | # | Chapter Title | File Name | Status |
 |---|---------------|-----------|--------|
-| 34 | TypeScript Fundamentals for Python Developers | `34-typescript-fundamentals-for-python-developers/` | 📋 Planned |
-| 35 | Advanced TypeScript Patterns and Async Programming | `35-advanced-typescript-patterns-and-async-programming/` | 📋 Planned |
-| 36 | Building Backend Services with TypeScript and Node.js | `36-building-backend-services-with-typescript-and-nodejs/` | 📋 Planned |
+| 39 | TypeScript Fundamentals for Python Developers | `39-typescript-fundamentals-for-python-developers/` | 📋 Planned |
+| 40 | Advanced TypeScript Patterns and Async Programming | `40-advanced-typescript-patterns-and-async-programming/` | 📋 Planned |
+| 41 | Building Backend Services with TypeScript and Node.js | `41-building-backend-services-with-typescript-and-nodejs/` | 📋 Planned |
 
 ---
 
-## Part 9: Building Realtime and Voice Agents (Chapters 37-39)
+## Part 9: Building Realtime and Voice Agents (Chapters 42-44)
 
 Interactive AI systems: realtime streaming and voice processing
 
 | # | Chapter Title | File Name | Status |
 |---|---------------|-----------|--------|
-| 37 | Introduction to Realtime AI and Voice Processing | `37-introduction-to-realtime-ai-and-voice-processing/` | 📋 Planned |
-| 38 | Building Voice Agents with OpenAI Realtime API | `38-building-voice-agents-with-openai-realtime-api/` | 📋 Planned |
-| 39 | Production Realtime Systems: Scaling and Optimization | `39-production-realtime-systems-scaling-and-optimization/` | 📋 Planned |
+| 42 | Introduction to Realtime AI and Voice Processing | `42-introduction-to-realtime-ai-and-voice-processing/` | 📋 Planned |
+| 43 | Building Voice Agents with OpenAI Realtime API | `43-building-voice-agents-with-openai-realtime-api/` | 📋 Planned |
+| 44 | Production Realtime Systems: Scaling and Optimization | `44-production-realtime-systems-scaling-and-optimization/` | 📋 Planned |
 
 ---
 
-## Part 10: Containerization & Orchestration using Docker and Kubernetes (Chapters 40-42)
+## Part 10: Containerization & Orchestration using Docker and Kubernetes (Chapters 45-47)
 
 Production deployment: containerization and orchestration
 
 | # | Chapter Title | File Name | Status |
 |---|---------------|-----------|--------|
-| 40 | Docker Fundamentals: Containerizing AI Applications | `40-docker-fundamentals-containerizing-ai-applications/` | 📋 Planned |
-| 41 | Kubernetes Basics: Orchestrating Containerized Agents | `41-kubernetes-basics-orchestrating-containerized-agents/` | 📋 Planned |
-| 42 | Production Kubernetes: Scaling, Monitoring, and CI/CD | `42-production-kubernetes-scaling-monitoring-and-cicd/` | 📋 Planned |
+| 45 | Docker Fundamentals: Containerizing AI Applications | `45-docker-fundamentals-containerizing-ai-applications/` | 📋 Planned |
+| 46 | Kubernetes Basics: Orchestrating Containerized Agents | `46-kubernetes-basics-orchestrating-containerized-agents/` | 📋 Planned |
+| 47 | Production Kubernetes: Scaling, Monitoring, and CI/CD | `47-production-kubernetes-scaling-monitoring-and-cicd/` | 📋 Planned |
 
 ---
 
-## Part 11: Data, State, and Memory using PostgreSQL, Graph, and Vector Databases (Chapters 43-45)
+## Part 11: Data, State, and Memory using PostgreSQL, Graph, and Vector Databases (Chapters 48-50)
 
 Persistent state and memory systems for AI agents
 
 | # | Chapter Title | File Name | Status |
 |---|---------------|-----------|--------|
-| 43 | Relational Databases for Agent State with PostgreSQL | `43-relational-databases-for-agent-state-with-postgresql/` | 📋 Planned |
-| 44 | Graph Databases for Agent Memory and Relationships | `44-graph-databases-for-agent-memory-and-relationships/` | 📋 Planned |
-| 45 | Vector Databases for Semantic Search and RAG | `45-vector-databases-for-semantic-search-and-rag/` | 📋 Planned |
+| 48 | Relational Databases for Agent State with PostgreSQL | `48-relational-databases-for-agent-state-with-postgresql/` | 📋 Planned |
+| 49 | Graph Databases for Agent Memory and Relationships | `49-graph-databases-for-agent-memory-and-relationships/` | 📋 Planned |
+| 50 | Vector Databases for Semantic Search and RAG | `50-vector-databases-for-semantic-search-and-rag/` | 📋 Planned |
 
 ---
 
-## Part 12: Event-Driven Architecture using Kafka and Dapr (Chapters 46-47)
+## Part 12: Event-Driven Architecture using Kafka and Dapr (Chapters 51-52)
 
 Distributed systems: event-driven patterns and microservices
 
 | # | Chapter Title | File Name | Status |
 |---|---------------|-----------|--------|
-| 46 | Event-Driven Architecture with Apache Kafka | `46-event-driven-architecture-with-apache-kafka/` | 📋 Planned |
-| 47 | Building Distributed Systems with Dapr | `47-building-distributed-systems-with-dapr/` | 📋 Planned |
+| 51 | Event-Driven Architecture with Apache Kafka | `51-event-driven-architecture-with-apache-kafka/` | 📋 Planned |
+| 52 | Building Distributed Systems with Dapr | `52-building-distributed-systems-with-dapr/` | 📋 Planned |
 
 ---
 
-## Part 13: Stateful Agents using Dapr Actors and Dapr Workflows (Chapters 48-49)
+## Part 13: Stateful Agents using Dapr Actors and Dapr Workflows (Chapters 53-54)
 
 Advanced agent patterns: stateful systems and durable workflows
 
 | # | Chapter Title | File Name | Status |
 |---|---------------|-----------|--------|
-| 48 | Stateful Agents with Dapr Virtual Actors | `48-stateful-agents-with-dapr-virtual-actors/` | 📋 Planned |
-| 49 | Durable Workflows for Long-Running Agent Tasks | `49-durable-workflows-for-long-running-agent-tasks/` | 📋 Planned |
+| 53 | Stateful Agents with Dapr Virtual Actors | `53-stateful-agents-with-dapr-virtual-actors/` | 📋 Planned |
+| 54 | Durable Workflows for Long-Running Agent Tasks | `54-durable-workflows-for-long-running-agent-tasks/` | 📋 Planned |
 
 ---
 

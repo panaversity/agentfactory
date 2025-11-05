@@ -1,23 +1,34 @@
-# Implementation Plan: Chapter 31 — SpecifyPlus Hands-On
+# Implementation Plan: Chapter 31 — Spec-Kit Plus Hands-On
 
-**Branch**: `010-chapter-31-redesign` | **Date**: 2025-11-03 | **Spec**: `/specs/010-chapter-31-redesign/spec.md`
-**Input**: Feature specification from `/specs/010-chapter-31-redesign/spec.md`
+**Branch**: `010-chapter-31-redesign` | **Date**: 2025-11-05 | **Spec**: `/specs/010-chapter-31-redesign/spec.md`
+**Input**: Feature specification from `/specs/010-chapter-31-redesign/spec.md` (UPDATED)
 **Output**: Detailed lesson architecture with learning objectives, skills mapping, and assessment strategy
 
 ---
 
 ## I. Executive Summary
 
-Chapter 31 is a **hands-on, experiential redesign of SpecifyPlus methodology** for intermediate developers (Part 5). The chapter teaches **Specification-Driven Development (SDD) through concrete practice** with real projects (calculator, grading system), eliminating hallucinated commands and centering on the **actual SpecifyPlus workflow**.
+Chapter 31 teaches practical **Spec-Kit Plus hands-on workflow** for intermediate developers (Part 5). This chapter represents the **natural progression from Chapter 30** (where students learned why Spec-Kit Plus was chosen) to **actually practicing the Spec-Kit Plus methodology** with a real calculator project.
 
 **Core Design Philosophy**:
-- **Problem → Solution Cycle**: Students experience problems before learning solutions
-- **Manual Thinking First**: Lessons 1-3 teach thinking skills (SMART criteria, project structure, spec writing)
-- **Tool-Assisted Thinking Second**: Lessons 4-7 teach `/sp.*` commands to amplify thinking
-- **Cascade Effect**: Demonstrate how spec quality → plan quality → task quality → code quality
+- **Human in Control**: YOU are in control; YOU collaborate with AI orchestrator (Claude Code or Gemini CLI)
+- **Spec-Kit Plus = Opinionated Toolkit**: Provides workflow structure; AI tools execute it
+- **Workflow Isomorphism**: Chapter structure mirrors actual Spec-Kit Plus phases (Constitution → Specify → Clarify → Plan → Tasks → Implement → Validate)
+- **Vertical Intelligence**: AI Orchestrator delegates to specialized subagents (YOU guide with commands)
+- **Horizontal Intelligence**: ADRs + PHRs capture organizational knowledge automatically
+- **Complete SDD Loop**: Students master all 7 phases + 6 commands + PHR auto-creation
+- **Checkpoint-Driven Execution**: `/sp.tasks` allows checkpoints - agent completes phase, human reviews/commits, then continues
+- **Atomic Tasks & Planned Phases**: Work broken into reviewable chunks; human guides progression
+- **Cascade Effect**: Demonstrate spec quality → plan quality → task quality → code quality
 - **AIDD Paradigm**: Show co-learning cycle: intent → generation → validation → refinement
 
-**Key Outcome**: Students complete full SpecifyPlus workflow end-to-end (Lesson 7 + Capstone), producing working software with clear traceability from specification to implementation.
+**Key Outcome**: Students complete full Spec-Kit Plus workflow end-to-end with a **calculator capstone project** (5 operations: add, subtract, multiply, divide, power), understanding:
+1. **YOU control the workflow** (AI orchestrator is your collaborator, not autonomous)
+2. **Spec-Kit Plus provides structure** (opinionated toolkit)
+3. **Checkpoints prevent runaway automation** (review → commit → continue pattern)
+4. **Atomic tasks enable validation** (small, testable increments)
+
+Foundation for Chapter 32 (team parallelization patterns).
 
 ---
 
@@ -27,16 +38,17 @@ Chapter 31 is a **hands-on, experiential redesign of SpecifyPlus methodology** f
 
 Students will be able to:
 
-1. Write SMART acceptance criteria that prevent AI misinterpretation
-2. Understand SpecifyPlus project structure and why cascade Spec → Plan → Tasks workflow is forced
-3. Use `/sp.specify` to refine and validate specifications iteratively
-4. Generate implementation plans using `/sp.plan` and understand plan dependencies
-5. Decompose plans into atomic tasks using `/sp.tasks` and trace lineage
-6. Implement and validate code using `/sp.implement` against acceptance criteria
-7. Recognize how specification quality cascades through entire workflow
-8. Practice co-learning with AI: intent → generation → validation → refinement
-9. Complete end-to-end SDD project from vague idea to working code
-10. Understand why specs are the new syntax in AI-native development
+1. **Understand Human Control**: Recognize YOU control the workflow; AI orchestrator (Claude Code/Gemini CLI) is your collaborator, not autonomous agent
+2. **Install Spec-Kit Plus**: Set up AI-native SDD toolkit with Horizontal Intelligence (ADRs+PHRs) + Vertical Intelligence (orchestrator+subagents)
+3. **Use 6 Core Commands**: Master `/sp.specify`, `/sp.clarify`, `/sp.plan`, `/sp.adr`, `/sp.tasks`, `/sp.implement` with understanding of when/why each is used
+4. **Implement Checkpoint Pattern**: Use checkpoints in `/sp.tasks` and `/sp.implement` - review → commit → continue (not long autonomous loops)
+5. **Work with Atomic Tasks**: Break work into small, reviewable, testable increments guided by human validation
+6. **Understand PHR Auto-Creation**: Recognize PHRs are automatically created for each command session (8-10 per feature typical)
+7. **Practice Constitution → Commit → Feature Loop**: Create Constitution once → commit → then feature workflow
+8. **Recognize Cascade Effect**: Understand spec quality → plan quality → task quality → code quality
+9. **Collaborate with AI Orchestrator**: Practice co-learning: YOU provide intent → AI generates → YOU validate → iterate
+10. **Complete Calculator Capstone**: Build working calculator (5 operations) end-to-end using complete Spec-Kit Plus workflow
+11. **Understand Spec-Kit Plus Role**: Recognize it's an opinionated toolkit providing structure; AI tools (Claude Code/Gemini CLI) execute it
 
 ### Success Criteria for This Plan
 
@@ -53,46 +65,310 @@ Students will be able to:
 
 ---
 
-## III. Chapter Learning Architecture
+## II. Chapter Type, Tier & Proficiency Levels
 
 ### Chapter Type: **Technical/Hybrid** (Methodology + Hands-On)
 
 This is a **hybrid chapter** combining:
-- **Conceptual foundation** (what SMART criteria are, why cascade matters)
-- **Technical practice** (actual workflow with `/sp.*` commands)
-- **Experiential learning** (two real projects: calculator and grading system)
+- **Conceptual foundation** (Vertical Intelligence architecture, Horizontal Intelligence with ADRs/PHRs)
+- **Installation & setup** (Spec-Kit Plus framework + AI tool configuration)
+- **Technical practice** (actual workflow with 6 commands: `/sp.specify`, `/sp.clarify`, `/sp.plan`, `/sp.adr`, `/sp.tasks`, `/sp.implement`)
+- **Experiential learning** (calculator capstone project with 5 operations: add, subtract, multiply, divide, power)
 
 ### Complexity Tier: **Intermediate** (Part 5)
 
 **CEFR Proficiency Targets**:
-- **Lessons 1-3**: A2 (Basic Application) — Max 5 new concepts per lesson
+- **Lesson 1**: A2 (Basic) — Installation focus, no new concepts, mostly procedural
+- **Lessons 2-3**: A2 (Basic Application) — Max 5 new concepts per lesson
 - **Lessons 4-6**: B1 (Intermediate Application) — Max 7 new concepts per lesson
 - **Lesson 7**: B1-B2 (Intermediate to Advanced) — Max 10 new concepts
 - **Capstone**: B2 (Advanced) — Design decisions, real-world constraints
 
 **Bloom's Taxonomy Alignment**:
-- **Lessons 1-3**: Understand + Apply (foundation thinking)
+- **Lesson 1**: Remember + Understand (setup)
+- **Lessons 2-3**: Understand + Apply (foundation thinking)
 - **Lessons 4-6**: Apply + Analyze (tool-assisted workflow)
 - **Lesson 7**: Apply + Analyze + Evaluate (validation and refinement)
 - **Capstone**: Create (design and build complete project)
 
-### Total Duration: **12-14 hours**
+### Total Duration: **13-15 hours**
 
-- Lesson 1: 2 hours (SMART criteria)
-- Lesson 2: 1.5 hours (project structure)
-- Lesson 3: 2 hours (complete specification)
-- Lesson 4: 1.5 hours (`/sp.specify` refinement)
-- Lesson 5: 1.5 hours (`/sp.plan` generation)
-- Lesson 6: 1.5 hours (`/sp.tasks` decomposition)
-- Lesson 7: 2.5 hours (`/sp.implement` and validation)
+- Lesson 1: 1.5 hours (Installation & Setup)
+- Lesson 2: 1.5 hours (Constitution Phase)
+- Lesson 3: 2-2.5 hours (Specify Phase)
+- Lesson 4: 1.5 hours (/sp.clarify Phase)
+- Lesson 5: 2 hours (/sp.plan Phase + ADRs)
+- Lesson 6: 1.5 hours (/sp.tasks Phase)
+- Lesson 7: 2.5-3 hours (/sp.implement Phase + Validation)
 - **Capstone Project**: 3-4 hours (end-to-end workflow)
-- **Total**: ~16 hours (with capstone)
+- **Total**: ~15-18 hours (with capstone)
 
 ---
 
-## IV. Lesson-by-Lesson Breakdown
+## III. Lesson-by-Lesson Breakdown
 
-### **Lesson 1: SMART Acceptance Criteria — Writing Clear Requirements**
+### **Lesson 1: Installation & Setup — AI-Native SDD Toolkit**
+
+**Duration**: 1.5 hours | **Proficiency Target**: A2 (Procedural) | **Bloom's Level**: Remember, Understand
+
+#### Learning Objective
+
+Students will be able to **install and configure Spec-Kit Plus framework with their chosen AI tool** (Claude Code or Gemini CLI) and **verify that the complete setup works end-to-end**—understanding what Horizontal and Vertical Intelligence are in the context of the toolkit.
+
+**Measurable outcome**: Student has working Spec-Kit Plus installation, configured AI tool, verified `/sp.*` commands execute, initialized calculator project, and tested complete setup.
+
+#### Skills Taught
+
+1. **Understanding AI-Native SDD Toolkit** — A2 — Conceptual
+   - Measurable at this level: Student can explain: Spec-Kit Plus is independent framework; works with any AI tool (Claude Code or Gemini CLI); includes Horizontal (ADRs+PHRs) and Vertical Intelligence (orchestrator+subagents)
+   - Category: Conceptual (framework understanding)
+   - DigComp: Problem-Solving, Communication
+
+2. **Tool Configuration** — A2 — Technical
+   - Measurable at this level: Student successfully installs and configures chosen AI tool for Spec-Kit Plus use
+   - Category: Technical (setup and configuration)
+   - DigComp: Problem-Solving, Digital Literacy
+
+3. **Vertical Intelligence Architecture Awareness** — A2 — Conceptual
+   - Measurable at this level: Student can explain: Human → Orchestrator → Subagents structure; each role/responsibility
+   - Category: Conceptual (framework understanding)
+   - DigComp: Problem-Solving, Communication
+
+#### Key Concepts (Max 5 for A2 — but mostly procedural setup)
+
+1. **Spec-Kit Plus Framework**: Independent SDD toolkit with commands, templates, folder structure
+2. **Horizontal Intelligence**: ADRs (Architectural Decision Records) + PHRs (Prompt History Records) capture organizational knowledge
+3. **Vertical Intelligence**: Human collaborates with AI Orchestrator, which delegates to Specification/Planning/Implementation/Validation Subagents
+4. **AI Tool Options**: Claude Code or Gemini CLI—both supported; Spec-Kit Plus works with any AI tool
+5. **Project Structure**: Installation creates `.specify/`, `specs/`, `history/` folders; understand purpose of each
+
+#### Content Outline
+
+**Part A: AI-Native SDD Toolkit Introduction (10 min)**
+- What is Spec-Kit Plus?
+  - **Opinionated toolkit** providing workflow structure
+  - **Independent framework** - works with any AI tool (Claude Code, Gemini CLI, etc.)
+  - **NOT an autonomous agent** - YOU control it; AI tools execute your commands
+- What are Horizontal Intelligence components?
+  - ADRs: Document architectural decisions (long-term impact, multiple alternatives)
+  - PHRs: Auto-record AI interactions (every `/sp.*` command creates one)
+  - Captures organizational knowledge over time
+- What is Vertical Intelligence?
+  - **YOU (Human)**: In control - define intent, make decisions, validate outputs, guide workflow
+  - **AI Orchestrator (Claude Code/Gemini CLI)**: Your collaborator - understands context, delegates to subagents per YOUR command
+  - **Subagents**: Specification, Planning, Implementation, Validation - specialized for each phase
+  - **Critical**: YOU guide with commands; orchestrator executes; YOU validate at each step
+- **Key Insights**:
+  - Spec-Kit Plus provides structure (the toolkit)
+  - AI tools (Claude Code/Gemini CLI) execute it
+  - YOU are always in control; AI is your collaborator
+- Diagram showing: Human → Issues Command → Orchestrator → Delegates to Subagent → Returns to Human for Validation
+
+**Part B: Install Spec-Kit Plus Framework (20 min)**
+- Download/install Spec-Kit Plus (pip install specifyplus or equivalent)
+- Verify installation
+- Initialize calculator project (`specifyplus init calculator-project`)
+- Explore generated folder structure
+
+**Part C: Configure AI Tool — Claude Code OR Gemini CLI (20 min)**
+- **Option 1: Claude Code**
+  - Verify Claude Code installed
+  - Test that `/sp.specify`, `/sp.clarify`, `/sp.plan`, `/sp.tasks`, `/sp.implement` commands available
+  - Run simple help command to verify
+- **Option 2: Gemini CLI**
+  - Verify Gemini CLI installed
+  - Configure authentication
+  - Test available commands
+- **Either way**: Verify chosen tool works with Spec-Kit Plus
+
+**Part D: Verify Commands Work (15 min)**
+- Test `/sp.specify --help` (or equivalent)
+- Test `/sp.plan --help`
+- Test `/sp.tasks --help`
+- Test `/sp.implement --help`
+- Confirm all 6 commands available (including `/sp.clarify`, `/sp.adr`)
+
+**Part E: Initialize Calculator Project (15 min)**
+- Create calculator project directory
+- Initialize Spec-Kit Plus structure
+- Understand directory layout:
+  - `.specify/memory/` — Constitution and project rules
+  - `specs/calculator/` — Specification, plan, tasks for calculator
+  - `history/adr/` — Architectural decisions
+  - `history/prompts/` — PHRs (auto-created during `/sp.*` commands)
+- Verify structure is ready
+
+**Part F: Test Complete Setup (5 min)**
+- Run one simple verification command
+- Confirm framework + AI tool + calculator project all working together
+
+#### End-of-Lesson: Try With AI Activity
+
+**Tool**: Claude Code or Gemini CLI (whichever was installed)
+**Duration**: 5-10 minutes
+
+**Workflow**:
+1. In your configured AI tool, run: `/sp.specify --help`
+2. Ask: "What does `/sp.specify` do?" (AI should explain the command)
+3. Ask: "How is Vertical Intelligence different from manual workflow?"
+4. **Reflection**: "Now I have a working Spec-Kit Plus installation. Next lessons, I'll use these commands."
+
+**Expected Outcomes**:
+- Students have confirmed working installation
+- They understand framework is independent of AI tool choice
+- They recognize Vertical Intelligence as the delegation pattern
+- They're ready to start workflow in Lesson 2
+
+**Safety/Ethics Note**: "Spec-Kit Plus is a tool. You remain responsible for what it generates. The framework helps you think clearly and collaborate with AI systematically."
+
+#### Prerequisites
+
+- Chapter 30 (understand why Spec-Kit Plus was chosen)
+- Python 3.13+ or Node.js 18+ (depending on AI tool)
+- Terminal/CLI comfort (basic navigation)
+- Access to Claude Code or Gemini CLI
+
+#### Assessment
+
+**Formative**:
+- Installation checklist completed
+- Directory structure verified
+- Commands execute without errors
+
+**Summative**:
+- All installation steps completed
+- All 6 commands available and working
+- Calculator project initialized
+- Student can explain Horizontal and Vertical Intelligence in one sentence each
+- Rubric:
+  - Installation: Framework and AI tool both working (A2)
+  - Configuration: AI tool properly configured for Spec-Kit Plus (A2)
+  - Verification: All commands test successfully (A2)
+  - Understanding: Student explains Intelligence components (A2)
+
+---
+
+### **Lesson 2: Constitution Phase — Project-Wide Rules**
+
+**Duration**: 1.5 hours | **Proficiency Target**: A2 (Basic Application) | **Bloom's Level**: Understand, Apply
+
+#### Learning Objective
+
+Students will be able to **create a project Constitution** that defines immutable rules for the calculator project (quality standards, testing requirements, error handling patterns) and **understand the difference between Constitution (global rules) vs. Specs (feature-specific)**—recognizing Constitution as foundational one-time setup.
+
+**Measurable outcome**: Student creates complete Constitution document for calculator project with quality standards, testing rules, error handling patterns. Student can explain why Constitution is created once per project, not per feature.
+
+#### Skills Taught
+
+1. **Constitution Creation** — A2 — Technical
+   - Measurable at this level: Student writes complete Constitution with standards for quality, testing, error handling
+   - Category: Technical (SDD foundation)
+   - DigComp: Problem-Solving, Content Creation
+
+2. **Global Rules vs. Feature Specs** — A2 — Conceptual
+   - Measurable at this level: Student distinguishes: Constitution applies to ALL features; specs are feature-specific
+   - Category: Conceptual (process understanding)
+   - DigComp: Problem-Solving
+
+3. **Best Practice Workflow Recognition** — A2 — Soft
+   - Measurable at this level: Student understands: Constitution → Commit → Features; Constitution is once-per-project
+   - Category: Soft (process thinking)
+   - DigComp: Problem-Solving
+
+#### Key Concepts (Max 5 for A2)
+
+1. **Constitution Definition**: Global rules for entire project (quality, testing, security standards)
+2. **One-Time Creation**: Constitution created ONCE at project start, not per feature
+3. **Feature Vs. Constitution**: Specs are feature-specific; Constitution applies to all features
+4. **Cascade Starting Point**: Constitution rules → All specs must follow → All plans enforce → All code adheres
+5. **Best Practice Pattern**: Constitution → Commit to Git → Then start features
+
+#### Content Outline
+
+**Part A: What is Constitution? (20 min)**
+- Constitution defines immutable project rules (applies to ALL work)
+- Examples:
+  - Quality standards: "All code must have type hints"
+  - Testing standards: "All code must have 80%+ test coverage"
+  - Error handling: "All functions must validate input before processing"
+  - Security: "No hardcoded secrets; all configs in environment variables"
+- Constitution vs. Specs:
+  - Constitution: "This is our standard"
+  - Spec: "For calculator, we need add, subtract, multiply, divide, power"
+- Why create Constitution first? (Forces thinking about what matters for quality)
+
+**Part B: Create Calculator Constitution (50 min)**
+- Open Constitution template (provided)
+- Fill sections:
+  1. **Project Vision**: Why are we building this? What's the goal?
+  2. **Quality Standards**: Type hints required? Code style? Documentation needs?
+  3. **Testing Standards**: Minimum coverage? All functions tested?
+  4. **Error Handling**: How do we handle invalid input? Division by zero? Overflow?
+  5. **Security Standards**: Environment variables only? No secrets in code?
+  6. **Performance Expectations**: How fast should calculator respond?
+  7. **Accessibility Standards**: Any accessibility requirements?
+- Worked example: Show Constitution for a real calculator project
+- Student writes their Constitution
+- Example entries:
+  - "All functions must have type hints (Python 3.13+ style)"
+  - "All code must pass mypy type checking"
+  - "Minimum 80% test coverage"
+  - "Division by zero must raise ValueError with message: 'Cannot divide by zero'"
+  - "Power function must handle negative exponents correctly"
+
+**Part C: Peer Review (20 min)**
+- Pair students
+- Exchange Constitutions
+- Reviewer asks: "Are these rules clear? Can a developer follow them?"
+- Refine based on feedback
+
+**Part D: Reflection & Git Best Practice (10 min)**
+- **Try With AI**: Show Constitution to Claude Code; ask: "Are these standards complete for a calculator?"
+- **Reflection**: "Why does Constitution come BEFORE specifications?"
+- **Best Practice**: Constitution → `git commit -m "Initial constitution"` → Then start features
+
+#### End-of-Lesson: Try With AI Activity
+
+**Tool**: Claude Code or ChatGPT web
+**Duration**: 10 minutes
+
+**Workflow**:
+1. Paste Constitution to Claude Code
+2. Ask: "Are these standards clear? Could someone build from them?"
+3. Ask: "What happens if we skip Constitution and write specs directly?"
+4. **Reflection**: "Constitution sets the foundation. Everything built on it follows these rules."
+
+**Expected Outcomes**:
+- Students understand Constitution as foundational
+- They recognize Constitution applies project-wide
+- They see best practice: Constitution → Commit → Features
+- They're ready to write specifications in Lesson 3 that follow Constitution
+
+**Safety/Ethics Note**: "Constitution is your quality contract. It forces you to think about what 'done' means before you start building."
+
+#### Prerequisites
+
+- Lesson 1 (installation complete)
+- Chapter 30 (SDD philosophy)
+
+#### Assessment
+
+**Formative**:
+- Constitution sections completed
+- Peer review feedback incorporated
+
+**Summative**:
+- Complete Constitution document for calculator project
+- Student explains: "Why is Constitution one-time, not per-feature?"
+- Rubric (A2 level):
+  - Completeness: All 7 sections filled (A2)
+  - Clarity: Standards are specific and unambiguous (A2)
+  - Feasibility: Standards are achievable for calculator project (A2)
+  - Scope Understanding: Student explains Constitution vs. Specs (A2)
+
+---
+
+### **Lesson 3: Specify Phase — Writing Complete Specifications**
 
 **Duration**: 2 hours | **Proficiency Target**: A2 (Basic Application) | **Bloom's Level**: Understand, Apply
 
@@ -706,10 +982,10 @@ Students will be able to **use `/sp.tasks` to break plans into atomic work units
 
 1. **Task Decomposition**: Plan phase (high-level) → Multiple tasks (atomic units)
 2. **Atomic Task**: A task can be completed in 1-2 hours; has clear acceptance criteria; produces testable output
-3. **Task Dependencies**: Task B depends on Task A; must be sequenced
-4. **Priority Levels**: MUST-HAVE (essential), SHOULD-HAVE (important), NICE-TO-HAVE (optional)
-5. **Acceptance Criteria**: Each task has clear pass/fail conditions (from spec requirements)
-6. **Effort Estimation**: How long does each task take?
+3. **Checkpoint Pattern**: `/sp.tasks` can request checkpoints - agent completes phase → YOU review/commit → agent continues (not long autonomous loops)
+4. **Human-Guided Phases**: Work broken into reviewable chunks; YOU control progression
+5. **Task Dependencies**: Task B depends on Task A; must be sequenced
+6. **Acceptance Criteria**: Each task has clear pass/fail conditions (from spec requirements)
 7. **Lineage Traceability**: Requirement (spec) → Phase (plan) → Task unit (tasks) → Code artifact
 
 #### Content Outline
@@ -721,12 +997,18 @@ Students will be able to **use `/sp.tasks` to break plans into atomic work units
 - Worked example: Plan phase "Core Functions" → Tasks "Implement add()", "Implement subtract()", "Implement multiply()", etc.
 
 **Part B: Generate Tasks with `/sp.tasks` (20 min)**
-- Show process: Take plan from Lesson 5 → run `/sp.tasks` in Claude Code
+- Show process: Take plan from Lesson 5 → run `/sp.tasks` in Claude Code/Gemini CLI
+- **Checkpoint Pattern Introduction**:
+  - YOU can request checkpoints: "Generate tasks for Phase 1, then pause for review"
+  - Agent completes that phase → returns to YOU → YOU review/commit → YOU decide: continue or adjust
+  - Prevents long autonomous loops; keeps YOU in control
+  - Example: "Complete Phase 1 tasks → CHECKPOINT → Review → Commit → Continue to Phase 2"
 - Show output: tasks.md with MUST/SHOULD/NICE-TO-HAVE priorities, dependencies, effort estimates
 - Analyze structure:
-  - Phase 1 tasks: "Define data structure", "Write schema tests", "Validate schema"
-  - Phase 2 tasks: "Implement core calculation", "Handle edge cases", "Build history storage"
-  - Phase 3 tasks: "Write comprehensive tests", "Document API", "Refactor for clarity"
+  - Phase 1 tasks (checkpoint after): "Define data structure", "Write schema tests", "Validate schema"
+  - Phase 2 tasks (checkpoint after): "Implement core calculation", "Handle edge cases", "Build history storage"
+  - Phase 3 tasks (final): "Write comprehensive tests", "Document API", "Refactor for clarity"
+- **Human-Guided Phases**: YOU control when to continue; agent doesn't run autonomously
 - Identify dependencies: Task X blocks Task Y
 - Identify effort: How long should each take?
 - Identify priorities: Which tasks are non-negotiable?
@@ -845,15 +1127,15 @@ Students will be able to **use `/sp.implement` to orchestrate AI-driven code gen
 #### Key Concepts (Max 10 for B1-B2)
 
 1. **`/sp.implement` Workflow**: Spec + Plan + Tasks → AI generates code + tests → Human validates
-2. **Generated Artifacts**: Code files (functions, classes, modules), test files (unit tests, integration tests), documentation
-3. **Validation Checklist**: Read code → Understand intent → Run tests → Compare to spec → Check security
-4. **Acceptance Criteria Validation**: Each criterion is testable (pass/fail); all must pass before code is accepted
-5. **Code Comprehension**: Never accept code you don't understand; ask AI to explain
-6. **Test Coverage**: AI should generate tests; you verify coverage is adequate
-7. **Security Review**: Look for hardcoded secrets, SQL injection, XSS vulnerabilities, insecure defaults
-8. **Spec-Code Alignment**: Does generated code match specification intent? Exactly? Too much? Too little?
-9. **Iteration & Refinement**: If code fails criteria, refine spec → re-run `/sp.implement` (don't manually patch)
-10. **AIDD Loop Completion**: Intent (spec) → Generation (AI) → Validation (human) → Refinement (iterate) → Trust
+2. **Checkpoint-Driven Implementation**: YOU can request checkpoints - "Implement Phase 1 tasks → pause for review" (not autonomous code generation)
+3. **Human-Guided Implementation**: Agent implements set of tasks → YOU review/test → YOU commit → YOU decide: continue or adjust
+4. **Generated Artifacts**: Code files (functions, classes, modules), test files (unit tests, integration tests), documentation
+5. **Validation Checklist**: Read code → Understand intent → Run tests → Compare to spec → Check security
+6. **Acceptance Criteria Validation**: Each criterion is testable (pass/fail); all must pass before code is accepted
+7. **Code Comprehension**: Never accept code you don't understand; ask AI to explain
+8. **Test Coverage**: AI should generate tests; you verify coverage is adequate
+9. **Security Review**: Look for hardcoded secrets, SQL injection, XSS vulnerabilities, insecure defaults
+10. **AIDD Loop with Human Control**: Intent (YOU) → Generation (AI) → Validation (YOU) → Decision (YOU: accept/refine/reject)
 
 #### Content Outline
 
@@ -867,8 +1149,16 @@ Students will be able to **use `/sp.implement` to orchestrate AI-driven code gen
 - Key insight: "This cycle repeats. You don't manually patch code. You improve specs and regenerate."
 - Risk framing: "AI can hallucinate, misunderstand, or generate insecure code. Validation is non-negotiable."
 
-**Part B: Run `/sp.implement` (20 min)**
-- Show process: Take tasks from Lesson 6 → run `/sp.implement` in Claude Code
+**Part B: Run `/sp.implement` with Checkpoints (20 min)**
+- Show process: Take tasks from Lesson 6 → run `/sp.implement` in Claude Code/Gemini CLI
+- **Demonstrate Checkpoint Pattern**:
+  - Request: "Implement Phase 1 tasks (add, subtract), then pause for my review"
+  - Agent generates code for add() and subtract() → returns to YOU
+  - YOU review code, run tests, verify against spec
+  - YOU commit Phase 1 code
+  - Request: "Continue with Phase 2 (multiply, divide, power)"
+  - Agent continues → returns to YOU → YOU review/commit
+  - **Key**: YOU control progression; agent doesn't run autonomously for all tasks at once
 - Show output:
   - Generated source code files
   - Generated test files
