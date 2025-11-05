@@ -31,7 +31,13 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- [ ] **Spec-driven**: Feature has complete specification with user stories
+- [ ] **User story independence**: Stories can be implemented separately as MVPs
+- [ ] **Privacy-first**: Data handling documented and minimized
+- [ ] **Performance budget**: Resource usage estimated and within limits
+- [ ] **Non-intrusive**: UI design respects primary content (if applicable)
+- [ ] **Context-aware**: AI features leverage page/chapter context (if applicable)
+- [ ] **Technology stack**: Aligns with Python/TypeScript bilingual approach
 
 ## Project Structure
 
