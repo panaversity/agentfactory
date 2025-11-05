@@ -4,6 +4,9 @@
  * work well for content-centric websites.
  */
 
+/* Import Learning Hub global styles */
+@import './learning-hub.css';
+
 /* You can override the default Infima variables here. */
 /* Polar Night Palette: Deep Navy with Sophisticated Grays - Bold & Elegant */
 :root {
