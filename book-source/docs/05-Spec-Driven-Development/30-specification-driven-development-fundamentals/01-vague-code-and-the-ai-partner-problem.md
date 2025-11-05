@@ -23,7 +23,6 @@ learning_objectives:
 
 As coding agents have grown more powerful, a pattern has emerged: you describe your goal, get a block of code back, and often it looks right, but doesn't quite work. This "vibe-coding" approach can be great for quick prototypes, but less reliable when building serious, mission-critical applications or working with existing codebases.
 
-
 ## Vibe Coding: Again what is the problem!
 
 You're about to discover why your AI coding companion sometimes builds something that looks right but doesn't quite work.
@@ -40,7 +39,7 @@ You're frustrated. You assumed a login system *obviously* includes password rese
 
 This frustration—this gap between "what I described" and "what I wanted"—is the root of every failed AI coding session.
 
-**This lesson explains why this happens and introduces the solution: Specification-Driven Development.**
+**This lesson explains why this happens and how Specification-Driven Development solved this problem.**
 
 ---
 
@@ -61,6 +60,7 @@ Here's the pattern:
    - The code is syntactically correct
    - The code implements what you said literally
    - The code *looks* complete
+   - Made 50+ implicit decisions without your input.
 
 3. **You run it and discover** the code doesn't do what you *meant*
    - Missing error handling
@@ -95,25 +95,6 @@ Pair programmers need clarity. They thrive on:
 - **Clear constraints** (not open-ended possibilities)
 
 Without these, even brilliant pair programmers can only infer intent from patterns they've seen before. And when your system is unique—when it has special requirements, edge cases, or domain-specific rules—patterns from general code examples won't suffice.
-
-### What Actually Happens
-
-When you say to your companion:
-
-> "Build me a login system"
-
-Your companion:
-1. Recognizes the pattern: "user authentication"
-2. Searches its knowledge: "what are common login implementations?"
-3. Generates code that satisfies the literal request: "create accounts, log in with username/password"
-4. Returns the result
-
-Your companion has:
-- ✅ Generated syntactically correct code
-- ✅ Implemented the core pattern
-- ❌ Made 50+ implicit decisions without your input (password hashing algorithm, session length, whether email is required, rate limiting, password reset flow, account recovery, etc.)
-
-Each of those decisions is a choice that *you* should have made, but you left implicit.
 
 ---
 
@@ -311,11 +292,8 @@ The second code (from clear spec): works correctly on first try
 
 Here's what you're realizing:
 
-**You don't write specifications alone. You write them WITH your AI companion.**
-
-The old way: Write specs alone (hard, tedious, easy to miss things) → Give to AI → Get code
-
-The new way: Collaborate with AI to write specs (AI asks questions you didn't think of) → Spec is complete → Generate code that works first time
+- The old way: Write specs alone (hard, tedious, easy to miss things) → Give to AI → Get code
+- The new way: Collaborate with AI to write specs (AI asks questions you didn't think of) → Spec is complete → Generate code that works first time
 
 **Key insight**: AI helps you write BETTER specifications by:
 - Asking clarifying questions you didn't consider

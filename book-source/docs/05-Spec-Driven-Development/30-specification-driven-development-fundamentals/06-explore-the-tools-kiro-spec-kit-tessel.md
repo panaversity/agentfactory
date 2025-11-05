@@ -89,7 +89,7 @@ You get **simplicity and low cognitive load**. You give up **governance and cons
 
 ---
 
-### 2a: Spec-Kit (GitHub's Framework)
+### 2: Spec-Kit (GitHub's Framework)
 
 **Philosophy**: Strong governance through immutable principles.
 
@@ -144,7 +144,7 @@ Choose Spec-Kit if you want to:
 
 ---
 
-### 2b: Spec-Kit Plus (Panaversity's Evolution) — "Spec-Kit + Intelligence"
+### 3: Spec-Kit Plus (Panaversity's Evolution) — "Spec-Kit + Intelligence"
 
 **What is it?** Spec-Kit Plus is Panaversity's fork and evolution of GitHub's Spec-Kit, designed specifically for **AI-native development** and **professional teams**. It extends GitHub's framework with three critical additions.
 
@@ -206,21 +206,20 @@ Spec-Kit Plus (AI-native SDD for professional teams)
 
 Choose Spec-Kit Plus if:
 
-- You're using this book (all chapters assume Spec-Kit Plus)
 - You're on a team collaborating with AI agents
-- You need auditable decisions (compliance, regulated domains)
+- You need auditable decisions
 - You want domain-specific expertise without rebuilding from scratch
 - You want to track and learn from AI interactions
 
 ---
 
-### 3: Tesel — "Emerging Technology"
+### 4: Tesel — "Emerging Technology"
 
 **Philosophy**: Specs are the only source of truth. Code is generated, never hand-edited.
 
 #### What It Is
 
-Tesel (still in private beta, invite-only) takes spec-driven development to its logical extreme: **specs become the primary artifact, and code is generated**.
+Tesel framework (still in private beta, invite-only) takes spec-driven development to its logical extreme: **specs become the primary artifact, and code is generated**.
 
 **Workflow:**
 
@@ -237,35 +236,6 @@ Tesel (still in private beta, invite-only) takes spec-driven development to its 
 - ✅ Specs always match code (never diverge)
 - ✅ Code is always current (regenerated from spec)
 - ✅ No technical debt from hand-edited code
-
-#### The Reality
-
-Tesel works for specific domains:
-
-- Safety-critical systems (medical devices, aerospace)
-- Regulated industries with stable requirements
-- Situations where reproducibility and auditability are paramount
-
-It's experimental for most other use cases because:
-
-- **Non-determinism**: Run the generator twice, sometimes get different code
-- **Incomplete specs**: Natural language might miss edge cases; you can't manually fix them in code
-- **Stability**: Still in beta with limited adoption
-
-**Status**: Invite-only, actively developed. You can track progress at [Tesel's registry](https://tesel.io/).
-
-#### When Tesel Might Work
-
-- Medical device software (FDA requires reproducible processes)
-- Financial systems (regulatory audit trails)
-- Aerospace/defense (safety-critical)
-- If you have stable requirements and don't need to iterate quickly
-
-#### When Tesel Doesn't Work
-
-- Startups with rapidly changing requirements
-- Exploratory or experimental projects
-- Situations where manual optimization is critical
 
 ---
 
@@ -351,65 +321,8 @@ Spec-Kit Plus (AI-native SDD for professional teams)
 **You're not learning abstract theory.** You're learning the practical version that:
 
 - Works with AI agents (Claude Code, Gemini CLI, etc.)
-- Scales from solo to 50+ person teams
+- Scales from solo to teams of Humans and AI Agents working together.
 - Includes domain expertise (Education template for this book, healthcare/fintech/aerospace for others)
 - Captures learning (PHRs) and reasoning (ADRs) automatically
-
----
-
-### Why Spec-Kit Plus for This Book?
-
-**This book teaches Spec-Kit Plus because:**
-
-#### 1. You're Learning to THINK, Not Just Code
-
-Kiro teaches "spec-first thinking."
-
-Spec-Kit Plus teaches "Constitutional thinking"—how to express principles that survive change.
-
-- **Kiro**: "Write a user story for this feature"
-- **Spec-Kit Plus**: "What immutable rules must this feature respect? Why?"
-
-Spec-Kit Plus forces you to think about **why** decisions matter. That thinking transfers to any framework.
-
-#### 2. You Might Join a Team
-
-The preface said: "Students & Self-Learners... Developers... Entrepreneurs & Innovators."
-
-Many of you will learn solo and then join teams. Spec-Kit Plus scales from solo → team → large organization.
-
-- Kiro teaches you "how to spec," but not "how to spec at scale"
-- Spec-Kit Plus teaches both
-- Learning Spec-Kit Plus now = you're ready for real engineering
-
-#### 3. AI Collaboration Gets Better With Discipline
-
-When you work with Claude Code, Gemini CLI, or other AI agents:
-
-- **Kiro**: Agent reads spec, generates code
-- **Spec-Kit Plus**: Agent reads Constitution + spec + ADRs + PHRs, generates code that respects ALL organizational principles
-
-Constitution + specs + ADRs + PHRs = **complete knowledge system for AI agents**
-
-This is what professional teams need. It's the difference between:
-
-- "Build a login system" (hope the agent includes password reset)
-- "Build a login system that respects our Constitution (bcrypt passwords, 80%+ tests, audit logging)" (agent knows the rules)
-
-#### 4. The Industry Is Standardizing
-
-In 2025, GitHub, major tech companies, and emerging startups chose Spec-Kit-like approaches:
-
-- Clear governance (Constitution)
-- Traceability (specs → plans → code)
-- Enforcement (AI agents respect principles)
-
-Learning Spec-Kit Plus now means **you're ahead of where the industry is moving**.
-
----
-
-**Next lesson**: You'll build your first Spec-Kit Plus feature from start to fi`` nish, learning by doing.
-
-**The journey to specification-driven development starts now.**
 
 ---

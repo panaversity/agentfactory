@@ -31,35 +31,7 @@ You now understand what SDD is. But understanding is not the same as doing. Befo
 
 ---
 
-## Before You Start: Set Up Your Workspace
-
-You'll be actively collaborating with AI throughout this lesson. Here's how to set up:
-
-### 1. Open Your AI Companion
-
-Choose one and have it ready:
-- **Claude Code** (recommended - integrated with VS Code)
-- **Cursor** (VS Code fork with AI built-in)
-- **GitHub Copilot Chat**
-- **Gemini CLI**
-- **ChatGPT** (web or desktop app)
-
-### 2. Create a Project Folder
-
-```bash
-mkdir calculator-spec
-cd calculator-spec
-```
-
-### 3. Create a Spec Document
-
-```bash
-touch spec.md
-```
-
-Open `spec.md` in your editor. This is where you'll capture the specification you build collaboratively with AI.
-
-### 4. How the Collaboration Works
+### How the Collaboration Works
 
 Throughout this lesson, you'll see prompts like this:
 
@@ -106,8 +78,6 @@ Before writing any code, we'll follow this cycle:
 5. VALIDATE      → Test if it matches intent
 6. REFINE        → Update spec based on gaps
 ```
-
-This is the **co-learning feedback loop** from the preface. You'll experience it hands-on across a complete feature.
 
 ---
 

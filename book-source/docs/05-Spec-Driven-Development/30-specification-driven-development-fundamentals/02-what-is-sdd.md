@@ -43,13 +43,15 @@ Instead of coding first and writing docs later, in spec-driven development, you 
 
 The key distinction of SDD in the age of AI coding agents is that these specs become the primary interface for AI collaboration. Rather than generating code from loose natural language descriptions, AI agents work from structured specifications that leave less room for misinterpretation.
 
+The best part **You don't write specifications alone. You write them WITH your AI companion.**
+
 ---
 
 ## ⚠️ What SDD Is NOT: The Semantic Diffusion Problem
 
-As spec-driven development gains attention, the term "spec" is becoming diluted. People now use "spec" as a synonym for "detailed prompt" or "good instructions." This semantic diffusion makes it harder to distinguish genuine SDD from simply writing better prompts.
+As spec-driven development gains attention, the term "spec" is becoming diluted. Often people use "spec" as a synonym for "detailed prompt" or "good instructions." This semantic diffusion makes it harder to distinguish genuine SDD from simply writing better prompts.
 
-**Real SDD requires these five characteristics:**
+**Real SDD have these characteristics:**
 
 1. ✅ **Structured artifacts** - Not just any instructions, but deliberately formatted documents following consistent patterns
 2. ✅ **Behavior-oriented** - Focus on what the system should do, not just how to implement it
@@ -57,9 +59,7 @@ As spec-driven development gains attention, the term "spec" is becoming diluted.
 4. ✅ **Machine and human readable** - Designed for both AI consumption and human review
 5. ✅ **Integration with workflow** - Specs are part of a broader development process, not standalone documents
 
-**Without these characteristics**, you're doing good prompting, not spec-driven development.
-
-**Why this distinction matters**: SDD implies commitments about process, tooling, and long-term maintenance that casual prompting doesn't. When evaluating SDD tools or practices, check whether they meet these five characteristics.
+**Without these characteristics**, you're doing good prompting, not spec-driven development. SDD implies commitments about process, tooling, and long-term maintenance that casual prompting doesn't. When evaluating SDD tools or practices, check whether they meet these characteristics.
 
 ---
 
