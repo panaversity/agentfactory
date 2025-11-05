@@ -83,19 +83,19 @@ Phase 9: Polish & Cross-Cutting
 
 ### Tasks
 
-- [ ] T010 Define all TypeScript interfaces in book-source/src/theme/LearningHub/types/index.ts per data-model.md (ChatMessage, Highlight, QuizQuestion, KeyConcept, RelatedTopic, ProgressRecord, LearningHubState)
-- [ ] T011 Implement RateLimiter class in book-source/src/theme/LearningHub/services/rateLimiter.ts with 15 RPM limit, shared across all AI features
-- [ ] T012 Implement StorageService in book-source/src/theme/LearningHub/services/storageService.ts with namespaced keys, quota management, schema versioning
-- [ ] T013 Implement ErrorLogger in book-source/src/theme/LearningHub/services/errorLogger.ts with console + localStorage ring buffer (last 50 errors)
-- [ ] T014 Implement CacheService in book-source/src/theme/LearningHub/services/cacheService.ts with MD5 hashing via crypto-js, 7-day TTL, content hash invalidation
-- [ ] T015 [P] Implement ContentExtractor utility in book-source/src/theme/LearningHub/utils/contentExtractor.ts for MDX DOM traversal with .markdown selector
-- [ ] T016 [P] Implement hash utility in book-source/src/theme/LearningHub/utils/hash.ts for MD5 content hashing
-- [ ] T017 [P] Implement debounce utility in book-source/src/theme/LearningHub/utils/debounce.ts for 300ms toggle actions
-- [ ] T018 [P] Create LearningHub.module.css in book-source/src/theme/LearningHub/styles/ with sidebar base styles (400px width, 300ms transition, z-index layering)
-- [ ] T019 [P] Create global styles book-source/src/css/learning-hub.css for highlight markers and animations
-- [ ] T020 Swizzle DocRoot component: `pnpm swizzle @docusaurus/theme-classic DocRoot --wrap` in book-source/
-- [ ] T021 Create LearningHubContext in book-source/src/theme/LearningHub/context/LearningHubContext.tsx with React Context + useReducer for global state
-- [ ] T022 Implement GeminiService base client in book-source/src/theme/LearningHub/services/geminiService.ts with GoogleGenerativeAI initialization, error handling, rate limiting integration
+- [x] T010 Define all TypeScript interfaces in book-source/src/theme/LearningHub/types/index.ts per data-model.md (ChatMessage, Highlight, QuizQuestion, KeyConcept, RelatedTopic, ProgressRecord, LearningHubState)
+- [x] T011 Implement RateLimiter class in book-source/src/theme/LearningHub/services/rateLimiter.ts with 15 RPM limit, shared across all AI features
+- [x] T012 Implement StorageService in book-source/src/theme/LearningHub/services/storageService.ts with namespaced keys, quota management, schema versioning
+- [x] T013 Implement ErrorLogger in book-source/src/theme/LearningHub/services/errorLogger.ts with console + localStorage ring buffer (last 50 errors)
+- [x] T014 Implement CacheService in book-source/src/theme/LearningHub/services/cacheService.ts with MD5 hashing via crypto-js, 7-day TTL, content hash invalidation
+- [x] T015 [P] Implement ContentExtractor utility in book-source/src/theme/LearningHub/utils/contentExtractor.ts for MDX DOM traversal with .markdown selector
+- [x] T016 [P] Implement hash utility in book-source/src/theme/LearningHub/utils/hash.ts for MD5 content hashing
+- [x] T017 [P] Implement debounce utility in book-source/src/theme/LearningHub/utils/debounce.ts for 300ms toggle actions
+- [x] T018 [P] Create LearningHub.module.css in book-source/src/theme/LearningHub/styles/ with sidebar base styles (400px width, 300ms transition, z-index layering)
+- [x] T019 [P] Create global styles book-source/src/css/learning-hub.css for highlight markers and animations
+- [x] T020 Swizzle DocRoot component: `pnpm swizzle @docusaurus/theme-classic DocRoot --wrap` in book-source/
+- [x] T021 Create LearningHubContext in book-source/src/theme/LearningHub/context/LearningHubContext.tsx with React Context + useReducer for global state
+- [x] T022 Implement GeminiService base client in book-source/src/theme/LearningHub/services/geminiService.ts with GoogleGenerativeAI initialization, error handling, rate limiting integration
 
 ---
 

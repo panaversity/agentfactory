@@ -1,0 +1,173 @@
+/**
+ * Learning Hub Sidebar - Base Styles
+ * 400px width, 300ms transitions, z-index layering
+ */
+
+.learningHubSidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  background: var(--ifm-background-surface-color, #ffffff);
+  border-left: 1px solid var(--ifm-color-emphasis-200, #e0e0e0);
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  
+  display: flex;
+  flex-direction: column;
+  
+  transform: translateX(100%);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  overflow: hidden;
+}
+
+.learningHubSidebar.isOpen {
+  transform: translateX(0);
+}
+
+/* Header */
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200, #e0e0e0);
+  background: var(--ifm-background-color, #ffffff);
+  flex-shrink: 0;
+}
+
+.sidebarTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-900, #1c1e21);
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--ifm-color-emphasis-600, #606770);
+  transition: color 150ms ease;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.closeButton:hover {
+  color: var(--ifm-color-emphasis-900, #1c1e21);
+}
+
+/* Tab Navigation */
+.tabNavigation {
+  display: flex;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200, #e0e0e0);
+  background: var(--ifm-background-color, #ffffff);
+  overflow-x: auto;
+  flex-shrink: 0;
+}
+
+.tabButton {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: none;
+  color: var(--ifm-color-emphasis-700, #464950);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms ease;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.tabButton:hover {
+  background: var(--ifm-color-emphasis-100, #f5f6f7);
+  color: var(--ifm-color-emphasis-900, #1c1e21);
+}
+
+.tabButton.active {
+  color: var(--ifm-color-primary, #2e8555);
+  border-bottom-color: var(--ifm-color-primary, #2e8555);
+}
+
+/* Content Area */
+.sidebarContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  background: var(--ifm-background-surface-color, #ffffff);
+}
+
+/* Scrollbar Styling */
+.sidebarContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebarContent::-webkit-scrollbar-track {
+  background: var(--ifm-color-emphasis-100, #f5f6f7);
+}
+
+.sidebarContent::-webkit-scrollbar-thumb {
+  background: var(--ifm-color-emphasis-300, #dadde1);
+  border-radius: 4px;
+}
+
+.sidebarContent::-webkit-scrollbar-thumb:hover {
+  background: var(--ifm-color-emphasis-400, #ccd0d5);
+}
+
+/* Loading State */
+.loadingSpinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: var(--ifm-color-emphasis-600, #606770);
+}
+
+/* Error State */
+.errorContainer {
+  padding: 1.5rem;
+  background: var(--ifm-color-danger-contrast-background, #fff5f5);
+  border: 1px solid var(--ifm-color-danger, #d73a3a);
+  border-radius: 4px;
+  margin: 1rem;
+}
+
+.errorMessage {
+  color: var(--ifm-color-danger-darker, #a52a2a);
+  font-size: 0.875rem;
+  margin: 0 0 0.5rem;
+}
+
+.retryButton {
+  background: var(--ifm-color-danger, #d73a3a);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background 150ms ease;
+}
+
+.retryButton:hover {
+  background: var(--ifm-color-danger-darker, #a52a2a);
+}
+
+/* Mobile Responsive (hidden <768px) */
+@media (max-width: 768px) {
+  .learningHubSidebar {
+    display: none;
+  }
+}
+
+/* Tablet Responsive (narrower sidebar) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .learningHubSidebar {
+    width: 320px;
+  }
+}
