@@ -111,19 +111,19 @@ Phase 9: Polish & Cross-Cutting
 
 ### Tasks
 
-- [ ] T023 [US1] Create main LearningHub component in book-source/src/theme/LearningHub/index.tsx with lazy loading, toggle state, tab navigation
-- [ ] T024 [US1] Create LearningHubToggle button component in book-source/src/theme/LearningHub/LearningHubToggle.tsx with fixed positioning (bottom-right), smooth animation
-- [ ] T025 [P] [US1] Implement ChatInterface component in book-source/src/theme/LearningHub/components/AIChat/ChatInterface.tsx with message history, input field, loading state
-- [ ] T026 [P] [US1] Implement ChatMessage component in book-source/src/theme/LearningHub/components/AIChat/ChatMessage.tsx with role-based styling (user vs assistant)
-- [ ] T027 [P] [US1] Implement ChatInput component in book-source/src/theme/LearningHub/components/AIChat/ChatInput.tsx with Enter/Shift+Enter handling, character limit (10,000), disabled state
-- [ ] T028 [US1] Implement sendChatMessage function in book-source/src/theme/LearningHub/services/geminiService.ts per gemini-chat.contract.md with streaming, system prompt template, conversation history (last 10 messages)
-- [ ] T029 [US1] Implement useGeminiChat hook in book-source/src/theme/LearningHub/hooks/useGeminiChat.ts with message state, streaming handling, error recovery
-- [ ] T030 [US1] Implement usePageContent hook in book-source/src/theme/LearningHub/hooks/usePageContent.ts to extract current page URL, title, MDX content, section metadata
-- [ ] T031 [US1] Integrate ChatInterface into LearningHub sidebar with "AI Chat" tab, wire up useGeminiChat and usePageContent hooks
-- [ ] T032 [US1] Update DocRoot wrapper in book-source/src/theme/DocRoot/index.tsx to include LearningHub component with portal rendering
-- [ ] T033 [US1] Add mobile responsiveness: hide LearningHub on viewports <768px via CSS media query
-- [ ] T034 [US1] Implement sidebar open/closed state persistence in localStorage with key learningHub_sidebarState_v1
-- [ ] T035 [US1] Add error handling for AI API failures: display user-friendly message "AI assistant temporarily unavailable" with retry button
+- [x] T023 [US1] Create main LearningHub component in book-source/src/theme/LearningHub/index.tsx with lazy loading, toggle state, tab navigation
+- [x] T024 [US1] Create LearningHubToggle button component in book-source/src/theme/LearningHub/LearningHubToggle.tsx with fixed positioning (bottom-right), smooth animation
+- [x] T025 [P] [US1] Implement ChatInterface component in book-source/src/theme/LearningHub/components/AIChat/ChatInterface.tsx with message history, input field, loading state
+- [x] T026 [P] [US1] Implement ChatMessage component in book-source/src/theme/LearningHub/components/AIChat/ChatMessage.tsx with role-based styling (user vs assistant)
+- [x] T027 [P] [US1] Implement ChatInput component in book-source/src/theme/LearningHub/components/AIChat/ChatInput.tsx with Enter/Shift+Enter handling, character limit (10,000), disabled state
+- [x] T028 [US1] Implement sendChatMessage function in book-source/src/theme/LearningHub/services/geminiChatService.ts per gemini-chat.contract.md with streaming, system prompt template, conversation history (last 10 messages)
+- [x] T029 [US1] Implement useGeminiChat hook in book-source/src/theme/LearningHub/hooks/useGeminiChat.ts with message state, streaming handling, error recovery
+- [x] T030 [US1] Implement usePageContent hook in book-source/src/theme/LearningHub/hooks/usePageContent.ts to extract current page URL, title, MDX content, section metadata
+- [x] T031 [US1] Integrate ChatInterface into LearningHub sidebar with "AI Chat" tab, wire up useGeminiChat and usePageContent hooks
+- [x] T032 [US1] Update DocRoot wrapper in book-source/src/theme/DocRoot/index.tsx to include LearningHub component with portal rendering
+- [x] T033 [US1] Add mobile responsiveness: hide LearningHub on viewports <768px via CSS media query
+- [x] T034 [US1] Implement sidebar open/closed state persistence in localStorage with key learningHub_sidebarState_v1
+- [x] T035 [US1] Add error handling for AI API failures: display user-friendly message "AI assistant temporarily unavailable" with retry button
 
 **Acceptance Criteria**:
 - ✅ Sidebar toggles smoothly (300ms animation)

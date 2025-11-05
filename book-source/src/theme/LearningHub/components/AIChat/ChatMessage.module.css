@@ -1,0 +1,62 @@
+/**
+ * Chat Message Styles
+ * Role-based styling for user vs assistant
+ */
+
+.message {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  animation: fadeIn 200ms ease;
+}
+
+.userMessage {
+  background: var(--ifm-color-primary-lightest, #e8f5e9);
+  margin-left: 2rem;
+  border-bottom-right-radius: 4px;
+}
+
+.assistantMessage {
+  background: var(--ifm-color-emphasis-100, #f5f6f7);
+  margin-right: 2rem;
+  border-bottom-left-radius: 4px;
+}
+
+.messageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.role {
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-800, #333);
+}
+
+.userMessage .role {
+  color: var(--ifm-color-primary-dark, #258351);
+}
+
+.timestamp {
+  color: var(--ifm-color-emphasis-600, #606770);
+}
+
+.content {
+  color: var(--ifm-color-emphasis-900, #1c1e21);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

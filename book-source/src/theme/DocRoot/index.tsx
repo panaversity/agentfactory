@@ -8,6 +8,8 @@ import {
 import DocRootLayout from '@theme/DocRoot/Layout';
 import NotFoundContent from '@theme/NotFound/Content';
 import type {Props} from '@theme/DocRoot';
+import { LearningHubProvider } from '@theme/LearningHub/context/LearningHubContext';
+import { LearningHub } from '@theme/LearningHub';
 
 export default function DocRoot(props: Props): ReactNode {
   const currentDocRouteMetadata = useDocRootMetadata(props);
@@ -18,10 +20,13 @@ export default function DocRoot(props: Props): ReactNode {
   }
   const {docElement, sidebarName, sidebarItems} = currentDocRouteMetadata;
   return (
-    <HtmlClassNameProvider className={clsx(ThemeClassNames.page.docsDocPage)}>
-      <DocsSidebarProvider name={sidebarName} items={sidebarItems}>
-        <DocRootLayout>{docElement}</DocRootLayout>
-      </DocsSidebarProvider>
-    </HtmlClassNameProvider>
+    <LearningHubProvider>
+      <HtmlClassNameProvider className={clsx(ThemeClassNames.page.docsDocPage)}>
+        <DocsSidebarProvider name={sidebarName} items={sidebarItems}>
+          <DocRootLayout>{docElement}</DocRootLayout>
+          <LearningHub />
+        </DocsSidebarProvider>
+      </HtmlClassNameProvider>
+    </LearningHubProvider>
   );
 }
