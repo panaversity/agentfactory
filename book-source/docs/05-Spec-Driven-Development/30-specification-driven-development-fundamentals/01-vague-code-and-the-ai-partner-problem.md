@@ -215,13 +215,30 @@ Let's calculate what vague specification costs:
 
 ---
 
-## The Solution: Be Explicit
+## The Solution: Collaborate on Clear Specifications
 
-Now imagine instead:
+Now imagine a different approach—one where you and your AI companion work together to build a clear specification BEFORE generating any code.
 
-### Step 1: Write a Detailed Specification
+### Step 1: Draft Specification With Your Companion
 
-Before asking your companion to code anything, you write:
+Instead of writing specs alone, you collaborate with your AI companion. You start with intent and let AI help you think through the details.
+
+Tell your companion:
+
+```
+Help me write a specification for a login system. I want users to create accounts
+and authenticate securely, with account recovery support.
+
+What should I specify to make this complete? What questions should I answer upfront
+to avoid implementation surprises?
+```
+
+Your companion will help you identify:
+- Missing requirements (What about email verification? Rate limiting? Session management?)
+- Security considerations (Password hashing? Token expiration?)
+- Edge cases (What if user tries to reset password for non-existent email?)
+
+Through this dialogue, you arrive at a complete specification like:
 
 ```
 ## Login System Specification
@@ -264,9 +281,14 @@ When: 6 failed attempts in 60 seconds
 Then: Further login attempts blocked for 5 minutes
 ```
 
-### Step 2: Share with Your Companion
+### Step 2: Generate Code From the Collaborative Spec
 
-Now paste this specification to your companion and ask for the code.
+Now that you and your companion have built a clear specification together, ask for implementation:
+
+```
+Based on the login system specification we just created, generate the Python code
+with all the requirements we discussed.
+```
 
 **Watch what happens:**
 
@@ -289,14 +311,24 @@ The second code (from clear spec): works correctly on first try
 
 Here's what you're realizing:
 
-**Clarity prevents miscommunication.**
+**You don't write specifications alone. You write them WITH your AI companion.**
 
-When you're explicit about requirements, your AI partner understands what to build. When you're vague, it guesses. And when it guesses, it misses the 70% of requirements you thought were "obvious."
+The old way: Write specs alone (hard, tedious, easy to miss things) → Give to AI → Get code
+
+The new way: Collaborate with AI to write specs (AI asks questions you didn't think of) → Spec is complete → Generate code that works first time
+
+**Key insight**: AI helps you write BETTER specifications by:
+- Asking clarifying questions you didn't consider
+- Identifying edge cases and security issues
+- Suggesting standard patterns and best practices
+- Catching ambiguities before they become bugs
 
 This isn't a flaw in AI coding agents. This is how communication works:
 
 - Clear instructions → correct understanding
 - Vague instructions → guessing + iteration
+
+**And specifications become clear through collaborative dialogue, not solo effort.**
 
 ---
 

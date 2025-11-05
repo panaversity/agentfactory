@@ -11,9 +11,23 @@ By starting with specs — not vibes — we ensure our AI collaborators build sy
 
 As the AI coding era matures, one thing is clear: **The future of AI-driven development will be written not in code first, but in specs.**
 
-Through seven interconnected lessons, you'll diagnose the hidden costs of vague requirements, understand why Specification-Driven Development emerged again for AI First Development in 2025 (not earlier), explore the tools ecosystem, and confront the "spec-as-source" vision realistically. Most importantly, you'll work through problems with your AI companion in dialogue—learning by experiencing failure, asking questions, and discovering solutions together.
+Through seven interconnected lessons, you'll diagnose the hidden costs of vague requirements, understand why Specification-Driven Development emerged again for AI First Development in 2025 (not earlier), explore the tools ecosystem, and confront the "spec-as-source" vision realistically.
+
+**Critical: You won't write specifications alone.** Throughout this chapter, you'll collaborate with your AI companion to BUILD specifications together—AI helps you identify missing requirements, catch edge cases, and refine clarity. Then you'll use those collaboratively-written specs to generate code. This is the core of AI-native development: specifications emerge through dialogue, not solo effort.
 
 Whether you're skeptical that specifications matter, wondering why everyone suddenly cares about specs, or curious how Amazon and Stripe coordinate 1000+ engineers—this chapter answers those questions through discovery.
+
+## How to Work Through This Chapter
+
+**You'll need**: Your AI coding assistant (Claude Code, Cursor, GitHub Copilot, Gemini CLI, or ChatGPT) open alongside this book.
+
+**The workflow**: When you see "Tell your companion:" or "Ask your companion:" prompts:
+1. **Copy the prompt** and paste it into your AI tool
+2. **Review the response** - does it make sense? Does it raise questions?
+3. **Refine through dialogue** - ask follow-up questions, request clarifications
+4. **Capture the results** - save the collaborative spec in a file (we'll show you where)
+
+This isn't passive reading—it's active collaboration. By the end, you'll have real specification documents you created WITH AI, not just read ABOUT specifications.
 
 ## What You'll Learn
 

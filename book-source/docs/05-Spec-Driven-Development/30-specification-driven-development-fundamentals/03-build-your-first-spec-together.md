@@ -27,9 +27,55 @@ learning_objectives:
 
 You now understand what SDD is. But understanding is not the same as doing. Before we explore opinionated frameworks, **let's get to the core of specification-first thinking**.
 
-**This lesson**: You'll write a complete specification for a **basic calculator with all four operations** (add, subtract, multiply, divide)—no framework, no templates, just pure spec-first thinking building a real feature.
+**This lesson**: You and your AI companion will collaborate to write a complete specification for a **basic calculator with all four operations** (add, subtract, multiply, divide)—no framework, no templates, just pure spec-first thinking building a real feature.
 
-**AI-Native Approach**: You'll use your AI coding assistant (Claude Code, Cursor, GitHub Copilot, or similar) to **help write the specification**, not just generate code from it. AI helps you think through user stories, catch edge cases, and refine requirements through dialogue.
+---
+
+## Before You Start: Set Up Your Workspace
+
+You'll be actively collaborating with AI throughout this lesson. Here's how to set up:
+
+### 1. Open Your AI Companion
+
+Choose one and have it ready:
+- **Claude Code** (recommended - integrated with VS Code)
+- **Cursor** (VS Code fork with AI built-in)
+- **GitHub Copilot Chat**
+- **Gemini CLI**
+- **ChatGPT** (web or desktop app)
+
+### 2. Create a Project Folder
+
+```bash
+mkdir calculator-spec
+cd calculator-spec
+```
+
+### 3. Create a Spec Document
+
+```bash
+touch spec.md
+```
+
+Open `spec.md` in your editor. This is where you'll capture the specification you build collaboratively with AI.
+
+### 4. How the Collaboration Works
+
+Throughout this lesson, you'll see prompts like this:
+
+```
+Tell your companion:
+[prompt text here]
+```
+
+When you see these:
+1. **Copy the prompt** and paste it into your AI tool
+2. **Read the AI's response** carefully
+3. **Copy useful parts** into your `spec.md` file
+4. **Ask follow-up questions** if anything is unclear
+5. **Refine through dialogue** until the spec is clear
+
+**You're not just reading this chapter—you're actively building a spec with AI.**
 
 ---
 
@@ -62,8 +108,6 @@ Before writing any code, we'll follow this cycle:
 ```
 
 This is the **co-learning feedback loop** from the preface. You'll experience it hands-on across a complete feature.
-
-**Note**: When you see "Tell your companion:" or "Ask your companion:", use your AI coding assistant to help think through that step. Your spec improves through this back-and-forth dialogue.
 
 ---
 
