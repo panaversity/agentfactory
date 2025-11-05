@@ -88,7 +88,7 @@ The goal: Make your specification **so clear** that the planning phase can gener
 
 ---
 
-## Part A: What Does /sp.clarify Do? (15 minutes)
+## What Does /sp.clarify Do?
 
 ### The Clarify Command
 
@@ -116,35 +116,9 @@ The goal: Make your specification **so clear** that the planning phase can gener
    - Example: What happens with power(2, 10000)? Overflow?
    - Example: What happens with very small numbers (e.g., 0.000000001)?
 
-### Example: What /sp.clarify Might Find
-
-**Your Specification**:
-
-> "divide(10, 2) returns 5.0"
-
-**Clarify Feedback**:
-
-> "This criterion is clear, but several related cases aren't specified:
->
-> - What happens with divide(10, 0.00001)? Precision loss?
-> - What's the maximum divisor that still produces accurate results?
-> - Do you want integer division or float division?"
-
-**Your Response**:
-
-> "Good catch! Let me clarify:
->
-> - Float division always (10 / 3 = 3.333..., not 3)
-> - Results accurate to Python float precision (~15-17 significant digits)
-> - Very small divisors are allowed (divide(10, 0.0001) = 100000.0)"
-
-**Updated Spec**:
-
-> "divide(x, y) performs float division and returns result accurate to Python's float precision (~15-17 significant digits). Examples: divide(10, 2) = 5.0, divide(10, 3) = 3.333..., divide(10, 0.0001) = 100000.0"
-
 ---
 
-## Part B: The Clarify Workflow (20 minutes)
+## Part B: The Clarify Workflow
 
 Here's how clarification works in practice.
 
@@ -171,63 +145,9 @@ What gaps should I address before planning?
 - AI analyzes your specification
 - Lists 5-10 potential gaps or ambiguities
 - Asks clarifying questions
-- Organizes findings by category (ambiguous, missing, incomplete, etc.)
+- Organizes findings and update specification
 
-### Step 2: Review Feedback
-
-Read through all gaps. For each gap, ask yourself:
-
-- **Is this a real gap?** (Does it actually affect implementation?)
-- **Is this within scope?** (Should my calculator handle this?)
-- **Is this important?** (Will users/code care about this detail?)
-
-**Example Evaluation**:
-
-Gap: "What happens if someone tries calculator.log(2) (logarithm)?"
-
-- Real gap? No—you explicitly said logarithm is out of scope
-- Within scope? No—out of scope
-- Important? No—specification clearly excludes advanced operations
-  **Action**: Ignore this gap; your spec is clear enough on scope
-
-Gap: "You specify divide returns float, but what about integer division?"
-
-- Real gap? Yes—this is ambiguous
-- Within scope? Yes—division is in scope
-- Important? Yes—implementers need to know which type of division
-  **Action**: Update spec to clarify: "Always float division, never integer division"
-
-### Step 3: Refine Your Specification
-
-For each real, in-scope, important gap:
-
-1. **Update your spec.md** with clarification
-2. **Add concrete examples** showing the clarified behavior
-3. **Commit your changes** to git
-
-Example update:
-
-```markdown
-## Before (Ambiguous)
-
-### Division
-
-- divide(10, 2) returns 5.0
-- divide(10, 0) raises ValueError("Cannot divide by zero")
-
-## After (Clarified)
-
-### Division
-
-- divide() always performs true float division (not integer division)
-- divide(10, 2) returns 5.0
-- divide(10, 3) returns 3.333... (not 3)
-- divide(10, 0) raises ValueError("Cannot divide by zero")
-- divide(10, 0.0001) returns 100000.0 (very small divisors allowed)
-- Results accurate to Python float precision (~15-17 significant digits)
-```
-
-### Step 4: Re-Run /sp.clarify (Optional)
+### Step 2: Re-Run /sp.clarify (Optional)
 
 If you made significant changes, run `/sp.clarify` again:
 
@@ -241,94 +161,7 @@ Most specifications need 1-2 clarification rounds. After that, they're ready for
 
 ---
 
-## Part C: Common Clarification Patterns (30 minutes)
-
-Here are common gaps clarify typically finds in specifications. Learn to recognize and fix them.
-
-### Pattern 1: Imprecise Error Handling
-
-**Before (Unclear)**:
-
-> "Invalid inputs raise an error"
-
-**After (Clear)**:
-
-> "Non-numeric inputs raise TypeError with message 'Expected numeric input, got \{type\}'.
-> Examples: add('5', 3) raises TypeError('Expected numeric input, got &lt;class str&gt;')"
-
-**Why Clearer**: Specifies which exception type, the message format, and includes examples implementers can verify against.
-
-### Pattern 2: Missing Precision Definition
-
-**Before (Ambiguous)**:
-
-> "Results are accurate"
-
-**After (Precise)**:
-
-> "Results accurate to Python's float precision (approximately 15-17 significant digits).
-> For 6+ decimal places: divide(10, 3) = 3.333333 (6 decimals shown),
-> but internal precision is ~15 digits"
-
-**Why Clearer**: Specifies what "accurate" means and clarifies float precision limits.
-
-### Pattern 3: Incomplete Operation Specification
-
-**Before (Incomplete)**:
-
-> "Calculator supports add, subtract, multiply, divide, power"
-
-**After (Complete)**:
-
-> "Calculator supports:
->
-> - add(x, y): x + y
-> - subtract(x, y): x - y
-> - multiply(x, y): x \* y
-> - divide(x, y): x / y (always float division)
-> - power(x, y): x ^ y
->
-> All operations accept int or float inputs and return float."
-
-**Why Clearer**: Each operation documented with explicit math notation and common return behavior.
-
-### Pattern 4: Ambiguous Edge Cases
-
-**Before (Vague)**:
-
-> "Power handles negative exponents and fractional exponents"
-
-**After (Precise)**:
-
-> "Power handles:
->
-> - Positive exponents: power(2, 3) = 8.0
-> - Negative exponents: power(2, -2) = 0.25
-> - Zero exponent: power(5, 0) = 1.0
-> - Fractional exponents (positive base only): power(4, 0.5) = 2.0
-> - Negative base with integer exponent: power(-2, 3) = -8.0
-> - Negative base with non-integer exponent: raises ValueError('Cannot take root of negative')"
-
-**Why Clearer**: Each case is explicit with example and behavior. No ambiguity.
-
-### Pattern 5: Scope Ambiguity
-
-**Before (Unclear)**:
-
-> "Calculator supports basic operations"
-
-**After (Crystal Clear)**:
-
-> "In Scope: add, subtract, multiply, divide, power (5 operations)
-> Out of Scope: square root, logarithm, trigonometric, factorial, advanced operations
-> Out of Scope: Web interface, CLI, graphical interface (Python library only)
-> Out of Scope: Performance optimization, caching, parallelization"
-
-**Why Clearer**: Explicitly lists what's in and out of scope, preventing scope creep.
-
----
-
-## Part D: Clarify Your Calculator Specification (25 minutes)
+##Clarify Your Calculator Specification (25 minutes)
 
 Now let's clarify YOUR calculator specification.
 
@@ -351,89 +184,11 @@ Please analyze it for:
 List any gaps or questions. Which ones should I address before planning?
 ```
 
-### Step 2: Document Feedback
-
-Create a new file `CLARIFY_NOTES.md` to track feedback:
-
-```markdown
-# Clarification Notes for Calculator Specification
-
-## Gaps Found by /sp.clarify
-
-1. **Ambiguity**: [Description of gap]
-
-   - Importance: [Critical / Important / Minor]
-   - Action: [Will fix / Ignore / Out of scope]
-
-2. **Missing Assumption**: [Description]
-   - Importance: [Critical / Important / Minor]
-   - Action: [Will fix / Ignore / Out of scope]
-
-[Continue for each gap]
-
-## Changes Made to Specification
-
-- [Change 1]
-- [Change 2]
-- [Change 3]
-
-## Remaining Gaps (Won't Fix)
-
-- [Gap 1] - Reason: Out of scope
-- [Gap 2] - Reason: Explicitly addressed in Constitution
-```
-
-### Step 3: Prioritize Gaps
-
-Not all gaps are worth fixing. Prioritize:
-
-**Critical** (fix before planning):
-
-- Ambiguous operations or requirements
-- Conflicts with Constitution
-- Safety/security gaps
-
-**Important** (fix but not blocking):
-
-- Missing edge cases
-- Incomplete precision definitions
-- Scope clarifications
-
-**Minor** (can ignore):
-
-- Theoretical edge cases
-- Out-of-scope suggestions
-- Performance concerns (spec phase doesn't address performance)
-
-### Step 4: Update Your Specification
-
-For each critical or important gap:
-
-1. **Edit `specs/calculator/spec.md`**
-2. **Add clarifying detail or example**
-3. **Commit to git**: `git add . && git commit -m "Clarify calculator spec: [description]"`
-
-Example updates:
-
-```diff
-## Before
-divide(10, 2) returns 5.0
-
-## After
-divide(x, y) performs float division (never integer division). Returns float.
-Examples: divide(10, 2) = 5.0, divide(10, 3) = 3.333..., divide(10, 0) raises ValueError
-```
-
-### Step 5: Verify Readiness
+### Step 2: Verify Readiness
 
 Ask your AI companion:
 
 ```
-I've clarified my specification based on your feedback.
-Here are the changes I made:
-
-[List your changes]
-
 Is my specification now ready for the planning phase?
 Or are there critical gaps I should address first?
 ```
@@ -477,33 +232,11 @@ Copy and paste this into Claude Code:
 ```
 I've clarified my calculator specification based on initial feedback.
 
-Original issues found:
-[List any 3-4 key gaps that were found]
-
-Clarifications I made:
-[List the changes you made to your spec]
-
-Looking at my updated specification, have these clarifications improved it?
 Can a developer now implement this calculator from my specification alone?
 Any remaining critical gaps?
 ```
 
-**Prompt 2 — Readiness Confirmation**
-
-After assessment, ask:
-
-```
-Based on my clarified specification, am I ready to move to the planning phase?
-
-Planning will generate:
-- Architecture decisions (how to structure the code)
-- Implementation phases (order to build operations)
-- Component breakdown (CLI, library core, tests, docs)
-
-Should I proceed, or are there more clarifications needed?
-```
-
-**Prompt 3 — Specification Quality Self-Assessment**
+**Prompt 2 — Specification Quality Self-Assessment**
 
 Finally, ask:
 
@@ -519,26 +252,3 @@ My specification now:
 
 Is this assessment accurate? What would you add?
 ```
-
-### Expected Outcomes
-
-After clarification and these prompts, you should:
-
-✅ **Understand how specification gaps lead to planning confusion**
-✅ **Know how to identify and fix ambiguities**
-✅ **Have a clear, testable specification**
-✅ **Be ready for planning (Lesson 5)**
-
-### Safety & Ethics Note
-
-**Clarification is Iteration, Not Perfection**:
-
-Your specification will never be 100% perfect. There will always be edge cases you don't think of until implementation. That's normal and expected. Clarification should eliminate **critical ambiguities** and **major gaps**, not every possible edge case.
-
-Aim for "clear enough that planning can happen," not "perfect." Perfection comes through the planning and implementation phases as you discover new details.
-
----
-
-**You've completed Lesson 4**. Your calculator specification is now clarified, refined, and ready for the planning phase. In Lesson 5, you'll generate an implementation plan from your specification—and you'll see how clear specs produce clear plans.
-
-Next: [Lesson 5: Plan Phase — Architecture Decisions and ADRs](./05-plan-phase.md)

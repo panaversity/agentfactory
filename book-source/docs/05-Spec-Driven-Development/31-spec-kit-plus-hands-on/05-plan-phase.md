@@ -83,9 +83,8 @@ version: "1.0.0"
 
 # Plan Phase — Architecture Decisions and ADRs
 
-You have a clear specification. Now comes planning: **How will you build it?**
-
-The Planning phase transforms **What** (specification) into **How** (architecture and implementation strategy).
+With your specification complete, you now face a new question: How will you actually build it?
+This is the essence of the Plan Phase — transforming the ‘What’ of your specification into the ‘How’ of architecture and implementation strategy.
 
 `/sp.plan` generates an implementation plan that breaks your specification into:
 - **Architectural components** (core library, error handlers, type system, tests)
@@ -97,9 +96,7 @@ This lesson teaches you how to work with generated plans and how to capture impo
 
 ---
 
-## Part A: Understanding the /sp.plan Command (20 minutes)
-
-### What Does /sp.plan Do?
+## Understanding the /sp.plan Command
 
 `/sp.plan` analyzes your specification and generates a detailed implementation plan by:
 
@@ -117,65 +114,11 @@ This lesson teaches you how to work with generated plans and how to capture impo
 - Dependencies and sequencing
 - Design decisions highlighted
 
-### Example: Simple vs Complex Plan
-
-**Calculator Spec** (simple):
-> "Build a calculator with add, subtract, multiply, divide, power. Return floats. Handle division by zero."
-
-**Generated Plan** (might be simple):
-```
-Phase 1: Core Operations Module
-- Implement add(x, y) → float
-- Implement subtract(x, y) → float
-- Implement multiply(x, y) → float
-- Implement divide(x, y) → float (handle zero)
-- Implement power(x, y) → float
-
-Phase 2: Tests
-- Unit tests for all 5 operations
-- Edge case tests
-
-Phase 3: Documentation
-- Docstrings
-- README with examples
-```
-
-**Calculator Spec** (detailed with edge cases, type validation, precision requirements):
-> "Build calculator with 5 operations. Accept int/float, return float. Handle division by zero, negative exponents, type validation. Preserve 6+ decimal precision. Support operation chaining."
-
-**Generated Plan** (more complex):
-```
-Phase 1: Type System & Validation
-- Define input validation layer
-- Decide: check types in each operation or in wrapper?
-- Implement numeric type checking and coercion rules
-
-Phase 2: Core Operations
-- Implement basic operations (add, subtract, multiply)
-- Implement division with zero-handling
-- Implement power with negative/fractional exponent handling
-
-Phase 3: Precision & Output Formatting
-- Define float precision requirements
-- Implement output formatting for 6+ decimal places
-- Handle floating-point edge cases (overflow, underflow)
-
-Phase 4: Testing Strategy
-- Unit tests per operation
-- Edge case tests (negative numbers, zero, overflow)
-- Integration tests (operation chaining)
-
-Phase 5: Documentation
-- API documentation
-- Usage examples
-- Edge case documentation
-```
-
 **The Cascade Effect**: Detailed spec → detailed plan. Vague spec → vague plan.
 
 ---
 
-## Part B: Generating Your Implementation Plan (30 minutes)
+## Generating Your Implementation Plan
 
 Let's generate the plan for your calculator.
 
@@ -186,17 +129,27 @@ In Claude Code, from your calculator-project directory:
 ```
 /sp.plan
 
-My calculator specification is at specs/calculator/spec.md
+Create: architecture sketch, interfaces, data model, error handling, requirements.
+Decisions needing: list important choices with options and tradeoffs.
+Testing strategy: unit + integration tests based on acceptance criteria.
 
-Please generate an implementation plan that includes:
-1. Architecture overview (how should code be organized?)
-2. Implementation phases (in what order should I build?)
-3. Component breakdown (what modules/functions are needed?)
-4. Dependencies (what must be built before what?)
-5. Design decisions (where are there multiple valid approaches?)
-
-Output: Create specs/calculator/plan.md with the implementation plan.
+Technical details:
+- Use a simple, functional approach where it makes sense
+- Use Python 3.12+ type hints with | union syntax
+- Follow TDD: write tests first, then implementation
+- Organize code and tests according to your constitution rules
 ```
+
+**Agent Does:**
+
+- Creates technical implementation plan
+- Defines data models and interfaces
+- Establishes testing strategy
+- Identifies architectural decisions
+- Generates quick-start.md and plan.md files
+
+**Why This Matters:**
+The plan defines technical architecture for ALL operations at once. This ensures consistency - same type hints, same error handling, same testing approach. Much more efficient than planning each operation separately!
 
 ### Step 2: Review Generated Plan
 
@@ -208,21 +161,9 @@ The generated plan should include:
 - **Sequencing**: Operations before tests? Validation before operations?
 - **Design Decisions**: Where are there choices? (Class vs functions? Exception types? Precision handling?)
 
-### Step 3: Save the Plan
-
-The generated plan should be saved to `specs/calculator/plan.md`. Verify:
-
-```bash
-# Check that plan exists
-cat specs/calculator/plan.md
-
-# Verify it has structure
-grep -E "^##|^Phase|^Decision" specs/calculator/plan.md
-```
-
 ---
 
-## Part C: Understanding ADRs (Architectural Decision Records) (20 minutes)
+## Understanding ADRs (Architectural Decision Records) (20 minutes)
 
 Planning exposes **architectural decisions** — choices about how to build that have long-term consequences.
 
@@ -249,242 +190,15 @@ An **ADR** documents:
 - Temporary decisions (will revisit in 6 months)
 - Out-of-scope decisions (already decided by Constitution)
 
-### Calculator Examples
-
-**ADR-Worthy Decisions**:
-
-**Decision 1: Error Handling Strategy**
-- Context: Need to handle division by zero, invalid inputs, overflow
-- Alternatives:
-  - A) Raise exceptions (Python standard)
-  - B) Return None or error tuple
-  - C) Silent failure (return 0)
-- Chosen: A) Raise exceptions
-- Rationale: Aligns with Python conventions; prevents silent errors; clear error messages
-- Consequence: Callers must handle exceptions; no way to silently continue
-
-**Decision 2: Type System (Strict Checking vs Coercion)**
-- Context: Accept int or float inputs; what about strings?
-- Alternatives:
-  - A) Strict typing: reject non-numeric input (raise TypeError)
-  - B) Lenient coercion: try to convert strings to numbers
-  - C) Duck typing: accept anything with `__add__` method
-- Chosen: A) Strict typing
-- Rationale: Specification requires int/float only; Constitution mandates type hints; prevents silent bugs
-- Consequence: Limits flexibility; callers must validate input first
-
-**Not ADR-Worthy for Calculator**:
-- Naming convention (add, subtract, multiply) — obvious from spec
-- Using Python 3.13 — already Constitution decision
-- Module organization (one file vs multiple) — implementation detail, not architectural
-
-### ADR Structure Template
-
-```markdown
-# ADR-XXX: [Decision Title]
-
-**Status**: Decided
-
-**Context**
-[Why did we need to make this decision? What problem are we solving?]
-
-**Decision**
-[What did we decide?]
-
-**Alternatives Considered**
-- A) [Alternative 1 and why we rejected it]
-- B) [Alternative 2 and why we rejected it]
-- C) [Chosen alternative and why]
-
-**Rationale**
-[Why is this the best choice? How does it align with Constitution?]
-
-**Consequences**
-- Positive: [Benefits of this decision]
-- Negative: [Costs or limitations]
-
-**Related Decisions**
-- [Other ADRs this relates to, if any]
-```
-
----
-
-## Part D: Creating ADRs for Your Calculator Plan (40 minutes)
+### Creating ADRs for Your Calculator Plan 
 
 Now let's identify and document the architectural decisions from your calculator plan.
 
-### Step 1: Identify Architectural Decisions
-
-Review your generated plan and identify:
-- **3-5 significant architectural decisions**
-- Where the plan discusses options or tradeoffs
-
-Example decisions to look for:
-- Error handling strategy (exceptions vs return codes)
-- Type system (strict typing vs coercion)
-- Code organization (single module vs multiple modules)
-- Precision handling (rounding strategy, format strings)
-- Testing strategy (unit vs integration, coverage targets)
-
-### Step 2: Create ADRs
-
-For each significant decision, create an ADR file:
-
-```bash
-# Create ADRs directory if it doesn't exist
-mkdir -p history/adr/
-
-# Create first ADR
-touch history/adr/001-error-handling-strategy.md
+```
+/sp.adr review the generate plan and record key Architectural Decisions.
 ```
 
-### Step 3: Write ADR Content
-
-**Example ADR-001: Error Handling Strategy**
-
-```markdown
-# ADR-001: Error Handling Strategy for Calculator
-
-**Status**: Decided (from calculator specification and Constitution)
-
-**Context**
-The calculator must handle error conditions (division by zero, invalid input types,
-overflow on very large exponents). We need to decide how to report these errors to
-the caller.
-
-**Decision**
-Use Python exceptions for all error conditions. Raise explicit exception types:
-- ValueError for mathematical errors (e.g., division by zero)
-- TypeError for invalid input types
-- OverflowError for computation overflow
-
-**Alternatives Considered**
-- A) Return error tuples: (success: bool, result: float|None, error: str|None)
-  - Rejected because forces callers to check tuple[0], less Pythonic
-- B) Silent failure: return 0 or None on error
-  - Rejected because hides bugs, Constitution requires clear error messages
-- C) Use exceptions (chosen)
-  - Aligns with Python conventions and Constitution error-handling standards
-  - Error messages can be descriptive
-
-**Rationale**
-Exceptions are the Python standard for error handling. Constitution mandates
-"Division by zero raises ValueError with descriptive message." Exceptions make
-errors explicit and prevent silent bugs.
-
-**Consequences**
-- Positive: Clear error reporting, Pythonic, Constitution-compliant
-- Negative: Callers must implement try/except blocks
-
-**Related Decisions**
-- Constitution requirement: "All errors logged with context"
-- ADR-002: Type validation strategy (enforces TypeError on bad input)
-```
-
-**Example ADR-002: Type System (Strict vs Coercion)**
-
-```markdown
-# ADR-002: Type System — Strict Validation vs Lenient Coercion
-
-**Status**: Decided
-
-**Context**
-Specification requires accepting "int or float" inputs. Question: Should we
-strictly require numeric types, or try to coerce strings to numbers?
-
-**Decision**
-Strict validation: accept only int or float. Reject strings, lists, or other
-types with TypeError.
-
-**Alternatives Considered**
-- A) Strict validation: only int/float (chosen)
-  - Forces input validation by caller, prevents bugs
-- B) Lenient coercion: try to convert strings to float
-  - More flexible but hides bugs (add("5", 3) silently becomes 5 + 3)
-  - Harder to debug when coercion fails
-- C) Duck typing: accept anything with arithmetic operations
-  - Too permissive, might accept wrong types
-
-**Rationale**
-Specification says "accept int or float"—string is neither. Constitution mandates
-type hints and explicit type handling. Strict validation catches errors early.
-
-**Consequences**
-- Positive: Type-safe, catches bugs early, matches Constitution, easier to debug
-- Negative: Less flexible, callers must validate input before calling
-
-**Related Decisions**
-- ADR-001: Exception-based error handling (TypeError for bad types)
-- Constitution: "Type system — explicit type handling, no implicit coercion"
-```
-
-**Example ADR-003: Precision Handling**
-
-```markdown
-# ADR-003: Floating-Point Precision Strategy
-
-**Status**: Decided
-
-**Context**
-Specification says "Results accurate to 6+ decimal places." Python's float has
-~15-17 significant digits. How do we handle rounding, formatting, and precision
-limits?
-
-**Decision**
-- Use Python's native float (IEEE 754 double precision)
-- Results computed to full float precision (~15-17 significant digits)
-- Results returned unrounded (user can format if needed)
-- Document that results are accurate to float precision limits
-
-**Alternatives Considered**
-- A) Use Decimal for exact arithmetic
-  - Would ensure exact 6+ decimals but adds complexity, slower
-  - Overkill for calculator purposes
-- B) Round all results to 6 decimals
-  - Oversimplifies precision, loses information
-- C) Native float (chosen)
-  - Aligns with Python conventions, fast, sufficient for calculator use
-
-**Rationale**
-Python float is standard and sufficient. Specification says 6+ decimals, but
-doesn't require rounding or Decimal precision. Native float achieves this.
-
-**Consequences**
-- Positive: Fast, standard Python behavior, sufficient precision
-- Negative: Floating-point precision limits (e.g., 0.1 + 0.2 != 0.3 exactly)
-
-**Related Decisions**
-- Specification requirement: "6+ decimal place accuracy"
-```
-
-### Step 4: Commit ADRs
-
-```bash
-# Add all ADRs to git
-git add history/adr/
-
-# Commit with descriptive message
-git commit -m "Document calculator architecture decisions
-
-- ADR-001: Error handling strategy (exceptions)
-- ADR-002: Type system (strict validation)
-- ADR-003: Floating-point precision strategy"
-```
-
----
-
-## Part E: Cascade Validation
-
-Observe the cascade:
-
-**Specification Quality → Plan Quality → ADR Clarity**
-
-Your clear, detailed specification from Lessons 3-4 should have produced:
-- ✅ Clear implementation plan (not vague)
-- ✅ Obvious architectural decisions (not ambiguous)
-- ✅ Easy-to-write ADRs (clear context and rationale)
-
-If your plan is vague or ADRs are hard to write, it signals that your specification needed more detail.
+It will review the plan and record key architectural decisions in history/adr directory.
 
 ---
 
@@ -496,7 +210,7 @@ Use your AI companion to review your implementation plan and ADRs.
 
 **Tool**: Claude Code (or your configured AI orchestrator)
 
-**Context**: Your plan.md and 2-3 ADRs
+**Context**: Your plan.md and 1-2 ADRs
 
 **Goal**: Confirm plan is sound and ADRs capture key architectural decisions
 
@@ -509,14 +223,8 @@ Copy and paste this into Claude Code:
 ```
 I've generated an implementation plan for my calculator.
 
-My plan includes these phases:
-[List your plan phases]
-
 Looking at my specification, does this plan address all requirements?
 Are the phases in the right order? Any missing components?
-
-Here's my plan:
-[PASTE YOUR PLAN.MD HERE]
 ```
 
 **Prompt 2 — ADR Completeness**
@@ -524,11 +232,10 @@ Here's my plan:
 After plan review, ask:
 
 ```
-I've documented these architectural decisions:
-[List your ADR titles]
+I've documented these architectural decisions.
 
 Are these the most important decisions? Did I miss any critical architectural
-choices? Should I add more ADRs, or are 2-3 sufficient for a calculator?
+choices? 
 ```
 
 **Prompt 3 — Plan to Tasks Readiness**
@@ -536,27 +243,15 @@ choices? Should I add more ADRs, or are 2-3 sufficient for a calculator?
 Finally, ask:
 
 ```
-Based on my plan and ADRs, am I ready for the Tasks phase (Lesson 6)?
+Based on my plan and ADRs, am I ready for the Tasks phase?
 
-Tasks will break my plan into atomic work units (1-2 hour tasks).
+Tasks will break my plan into atomic work units.
 Is my plan detailed enough that tasks will be clear and unambiguous?
 ```
 
 ### Expected Outcomes
 
-✅ **Plan is sound and complete**
-✅ **ADRs capture key architectural decisions**
-✅ **Specification quality has cascaded into plan and ADR quality**
-✅ **Ready for task breakdown (Lesson 6)**
-
-### Safety & Ethics Note
-
-**On AI-Generated Plans**:
-
-Your AI companion generates plans based on your specification. If you think the plan is wrong, **check your specification first**. Most planning issues trace back to spec gaps. ADRs document why you chose your approach—they're not "final word," but reasoning that future you can reference.
-
----
-
-**You've completed Lesson 5**. Your calculator has an implementation plan and documented architectural decisions. In Lesson 6, you'll use the `/sp.tasks` command to break this plan into atomic work units—and learn the critical **checkpoint pattern** that keeps you in control of the workflow.
-
-Next: [Lesson 6: Tasks Phase — Atomic Work Units and Checkpoints](./06-tasks-phase.md)
+- **Plan is sound and complete**
+- **ADRs capture key architectural decisions**
+- **Specification quality has cascaded into plan and ADR quality**
+- **Ready for task breakdown (Lesson 6)**

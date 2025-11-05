@@ -82,11 +82,18 @@ Welcome to the second lesson of hands-on Spec-Kit Plus development. You've insta
 
 The Constitution is Spec-Kit Plus's answer to a critical question: **What standards apply to every piece of work you do?** Not just for this feature, but for all features. Not just this week, but for the life of the project.
 
-Think of your project Constitution like the U.S. Constitution—it's the foundational document that all laws (specifications), policies (plans), and implementation (code) must respect. It's written once, ratified (committed to git), and then every feature works within its constraints.
+Imagine you and your computer helper are a team building a giant LEGO castle. Before you start, you need to agree on some rules so you don't mess things up.
+
+*   What if you want all the towers to be **square**, but your helper starts building **round** ones?
+*   What if you decide the roof must be **blue**, but your helper builds a **red** one?
+
+That would be a mess!
+
+The **Constitution** is your team's **Rulebook**. It lists the most important rules that both you and your computer helper **MUST** follow, no matter what. It makes sure you both build the project the exact same way, every single time.
 
 ---
 
-## Part A: What Is a Constitution? (10 minutes)
+## What Is a Constitution? 
 
 Before writing one, let's understand what a Constitution actually is and why it matters.
 
@@ -113,7 +120,6 @@ A **Constitution** is a document that defines **immutable standards** applying t
 CONSTITUTION (applies to ALL features):
   ✅ "All functions must have type hints"
   ✅ "All code must be 100% test-covered"
-  ✅ "Division by zero raises ValueError"
 
 SPECIFICATION (applies only to CALCULATOR feature):
   ✅ "Calculator must support add, subtract, multiply, divide, power"
@@ -185,107 +191,63 @@ But you never rewrite the Constitution for each feature. It's the foundation eve
 
 ---
 
-## Part B: Reading Existing Constitutions (15 minutes)
+## Reading Existing Constitutions (15 minutes)
 
-Before writing your own, let's look at real examples to understand what a good Constitution looks like.
+Before writing your own, let's look at base Constitution file. Open:
 
-### Example 1: Calculator Project Constitution (Our Project)
-
-Here's what a Constitution for a calculator might include:
-
-```markdown
-# Calculator Project Constitution
-
-## Code Quality Standards
-
-- All functions must include type hints on parameters and return types
-- All functions must include PEP 257 docstrings
-- All code must follow PEP 8 naming conventions
-- Maximum line length: 100 characters
-- No hardcoded test data in production code
-
-## Error Handling
-
-- Division by zero raises ValueError with message: "Cannot divide by zero"
-- Invalid input types raise TypeError with descriptive message
-- All operations validate inputs before processing
-- Errors are logged to stderr with full context
-- No silent failures; errors must be explicit
-
-## Type System
-
-- Accept int or float inputs
-- Return float for all operations
-- Preserve floating-point precision (minimum 6 decimal places)
-- Explicit type conversions where needed
-- No implicit coercion between types
-
-## Testing Requirements
-
-- 100% code coverage required (no untested code)
-- Unit tests for each operation
-- Edge case tests (zero, negative, very large numbers)
-- Integration tests for operation chains
-- All tests must pass before code review
-- Acceptable coverage gaps: only test infrastructure code
-
-## Documentation
-
-- README.md with installation and usage examples
-- Docstrings for all public functions
-- Inline comments for non-obvious logic
-- Example usage in docstrings (doctests where appropriate)
+```bash
+.specify/memory/constitution.md
 ```
 
-### Example 2: Data Processing Pipeline Constitution
-
-To see how Constitution varies by project type, here's what a data pipeline Constitution might look like:
-
-```markdown
-# Data Pipeline Constitution
-
-## Data Integrity
-
-- All datasets must pass validation before processing
-- Track data lineage (where did this data come from?)
-- Preserve original data (never mutate input files)
-- Version all processed datasets with timestamps
-
-## Logging & Monitoring
-
-- All processes log start/end times and record counts
-- Errors must include context (which record failed? why?)
-- Performance warnings if processing exceeds SLA (e.g., > 1 hour)
-- Daily summary email with metrics
-
-## Failure Handling
-
-- Partial failures are acceptable (skip bad records, log them)
-- Every failed record must be retrievable for manual review
-- Pipeline must be re-runnable (idempotent)
-- Rollback procedure documented
-```
+Remebr the Goal: document the non-negotiable principles that every spec, plan, and task must honor.
 
 **The Key Insight**: Constitutions are project-specific. Your calculator Constitution would never mention "data lineage" because that's not relevant. A data pipeline Constitution wouldn't need type hints or power operations.
 
 ---
 
-## Part C: Writing Your Calculator Constitution (50 minutes)
+## Part B: Writing Your Calculator Constitution
 
 Now let's write YOUR Constitution for the calculator project.
 
-### Step 1: Create the Constitution File
+### Step 1: Create the Constitution
 
-In your project directory, open `.specify/memory/constitution.md` (you may have started this in Lesson 1). Replace its contents with your calculator-specific Constitution.
+In your project directory
 
-### Step 2: Define Quality Standards
+1. Start agent chat type `/sp.constitution`.
+2. Now we have to explain our requirements i.e::
+```
+/sp.constitution 
+
+Project principles and standards:
+- Write tests first (TDD approach)
+- Use Python 3.12+ with type hints everywhere
+- Keep code clean and easy to read
+- Document important decisions with ADRs
+- Follow essential OOP principles: SOLID, DRY, KISS
+
+Technical stack:
+- Python 3.12+ with UV package manager
+- pytest for testing
+- Keep all project files in git
+
+Quality requirements:
+- All tests must pass
+- At least 80% code coverage
+- Use dataclasses for data structures
+```
+
+3. Agent Does:
+  - Creates comprehensive constitution file
+  - Sets up project standards and OOP principles
+  - Defines coding principles and best practices
+  - Establishes technical preferences and quality gates
+
+### Step 2: Improve your Constitution
 
 Think about what "good code" means for a calculator project:
 
 ```markdown
-# Calculator Project Constitution
-
-## Code Quality Standards
+Updae @.specify/memory/constitution.md to improve Code Quality Standards
 
 - All functions must include type hints on parameters and return types
   - Example: `def add(a: float, b: float) -> float:`
@@ -303,122 +265,24 @@ Think about what "good code" means for a calculator project:
 - What would "bad" code look like?
 - What would make code hard to maintain?
 
-### Step 3: Define Error Handling Rules
+### Step 3: Review and Complete Your Constitution 
 
-Calculators are all about edge cases. What should happen when:
+**Your Prompt:**
 
-```markdown
-## Error Handling
-
-- Division by zero raises ValueError("Cannot divide by zero")
-  - Never return None or infinity
-  - Always raise an explicit error
-- Operations with invalid input types raise TypeError
-  - Example: calculator.add("5", 3) should raise TypeError, not crash silently
-- All errors include clear messages that help debugging
-  - Bad: "Error"
-  - Good: "Cannot divide by zero: attempted 10 / 0"
-- Errors are immediate; no silent failures
+```
+Show me the generated constitution file and explain what it contains.
 ```
 
-**Try writing**:
-- What happens when you try to do power(0, 0)?
-- What happens when you try to do power(-2, 0.5) (negative number, fractional exponent)?
-- Should floats like power(2, 0.5) be allowed? What's the rule?
+**Agent Does:**
 
-### Step 4: Define Type System Rules
-
-```markdown
-## Type System
-
-- Accept int or float inputs
-  - Both 5 and 5.0 are valid
-- Always return float for all operations
-  - 3 + 4 returns 7.0 (not 7)
-  - This ensures consistency
-- Preserve floating-point precision
-  - Minimum 6 decimal places for results
-  - Example: 1/3 = 0.333333 (not 0.33)
-- No implicit type coercion
-  - `add(5, "3")` should raise TypeError
-  - Don't try to be "helpful" by converting
-```
-
-**Try writing**:
-- Should power(2, 2) return 4 or 4.0? Why does it matter?
-- What precision is "good enough"? 6 decimals? 10? 15?
-
-### Step 5: Define Testing Requirements
-
-```markdown
-## Testing Requirements
-
-- Every function must have unit tests
-  - test_add(), test_subtract(), test_multiply(), test_divide(), test_power()
-- 100% code coverage
-  - No untested code paths
-  - Tool: Use pytest with coverage plugin
-- Edge case tests for each operation
-  - Zero as input or output
-  - Negative numbers
-  - Very large numbers
-  - Very small numbers (close to zero)
-- Integration tests
-  - Chains of operations (3 + 4 * 5)
-  - Error conditions don't break subsequent calls
-- All tests must pass before committing
-```
-
-**Try writing**:
-- What edge cases should division handle?
-  - Dividing by very small numbers?
-  - Dividing very large numbers?
-- What edge cases should power handle?
-  - Negative exponents (2^-2 = 0.25)?
-  - Fractional exponents (2^0.5 = 1.414...)?
-  - Power of zero (5^0 = 1)?
-
-### Step 6: Complete Your Constitution
-
-Using the examples and prompts above, write a complete Constitution for your calculator project. Your Constitution should have:
-
-- ✅ Code Quality Standards (3-4 items)
-- ✅ Error Handling (4-5 items)
-- ✅ Type System (3-4 items)
-- ✅ Testing Requirements (4-5 items)
-
-**Example Complete Constitution** (simplified):
-
-```markdown
-# Calculator Project Constitution
-
-## Code Quality Standards
-
-All functions must include type hints and docstrings. Follow PEP 8 naming (lowercase_with_underscores). Maximum line length is 100 characters. No magic numbers; use named constants.
-
-## Error Handling
-
-- Division by zero raises ValueError("Cannot divide by zero")
-- Invalid input types raise TypeError with descriptive message
-- Operations validate inputs before processing
-- Errors include clear messages for debugging
-
-## Type System
-
-- Accept int or float inputs
-- Always return float
-- Preserve floating-point precision (6+ decimals)
-- Explicit type handling; no implicit coercion
-
-## Testing Requirements
-
-- 100% code coverage required
-- Unit tests for each operation (add, subtract, multiply, divide, power)
-- Edge case tests (zero, negative, very large, very small inputs)
-- Integration tests for operation chains
-- All tests must pass before committing
-```
-
+- Displays the constitution content
+- Explains each section:
+  - **Project Principles** - Core development philosophy and OOP principles
+  - **Technical Standards** - Code quality, structure, and best practices
+  - **Testing Requirements** - TDD and coverage standards
+  - **Architecture Decisions** - When to create ADRs and design patterns
+  - **Quality Gates** - CI/CD requirements and code quality checks
+  
 ---
 
 ## Part D: Commit Constitution to Git (15 minutes)
@@ -434,57 +298,21 @@ Here's a critical best practice: **Always commit the Constitution before startin
 
 ### Commit Steps
 
-In your terminal, from the `calculator-project` directory:
+**Your Prompt**
 
-```bash
-# Verify your Constitution is in place
-cat .specify/memory/constitution.md
+Use the agent to commit and open a PR for the constitution:
 
-# Add the Constitution to git
-git add .specify/memory/constitution.md
-
-# Commit with a clear message
-git commit -m "Initial Constitution for calculator project
-
-- Code quality: type hints, docstrings, PEP 8 compliance
-- Error handling: explicit error messages, no silent failures
-- Type system: accept int/float, return float, 6+ decimal precision
-- Testing: 100% coverage, unit/edge/integration tests"
-
-# Verify commit succeeded
-git log --oneline -n 3
+```
+/sp.git.commit_pr Commit and push the constitution along with current work.
 ```
 
-**What you should see**:
-```
-abcd1234 Initial Constitution for calculator project
-xyz9876w Initial Spec-Kit Plus setup
-```
+**Agent Does:**
+
+- Create a conventional commit for the constitution and push to a new feature branch
+- Create a draft PR (or share the compare URL if `gh` auth is missing)
+
 
 The Constitution is now **the foundation** for all your feature work. Every specification you write, every plan you generate, every task you break down—they all work within the Constitution's constraints.
-
----
-
-## Validation Checklist
-
-Before moving to Lesson 3, verify your Constitution:
-
-**Content Completeness**:
-- [ ] Constitution defines code quality standards (type hints, docstrings, naming, line length)
-- [ ] Constitution defines error handling rules (at least 3 rules)
-- [ ] Constitution defines type system rules (accepted inputs, return types, precision)
-- [ ] Constitution defines testing requirements (100% coverage, unit/edge/integration tests)
-- [ ] Constitution is specific to calculator project (not generic boilerplate)
-
-**File & Git**:
-- [ ] Constitution is at `.specify/memory/constitution.md`
-- [ ] Constitution is committed to git
-- [ ] Git log shows the commit message clearly
-
-**Quality**:
-- [ ] Constitution is written in clear, testable language (not vague)
-- [ ] Each rule is something you (and AI) can verify during code review
-- [ ] Constitution balances strictness (not too permissive) and practicality (not impossible)
 
 ---
 
@@ -495,9 +323,6 @@ Now let's use your AI companion to review your Constitution and ensure it's clea
 ### Setup
 
 **Tool**: Claude Code (or your configured AI orchestrator)
-
-**Context**: Your calculator-project directory with Constitution ready for review
-
 **Goal**: Ensure Constitution is clear, testable, and specific enough to guide downstream work
 
 ### Prompt Set (Copy-Paste Ready)
@@ -514,8 +339,7 @@ I've written a Constitution for my calculator project. Please review it for clar
 3. Do I cover the essential categories (quality, error handling, types, testing)?
 
 Here's my Constitution:
-
-[PASTE YOUR CONSTITUTION HERE]
+@.specify/memory/constitution.md
 
 Please identify any rules that need clarification.
 ```
@@ -541,10 +365,6 @@ Finally, ask:
 
 ```
 Is my Constitution realistic for a calculator project, or am I being too strict?
-- Type hints on every function: reasonable?
-- 100% test coverage: reasonable?
-- 6+ decimal precision: reasonable?
-
 Any advice on making it more practical without sacrificing quality?
 ```
 
@@ -552,21 +372,7 @@ Any advice on making it more practical without sacrificing quality?
 
 After these prompts, you should understand:
 
-✅ **Constitution clarity**: Rules are testable and specific (not vague philosophy)
-✅ **Cascade impact**: You can trace how Constitution rules flow into specifications
-✅ **Realism**: Standards are ambitious but achievable
-✅ **Readiness**: You're prepared to write specifications that respect the Constitution
-
-### Safety & Ethics Note
-
-**Constitution as Constraint, Not Straitjacket**:
-
-The Constitution is a **guide, not a prison**. If you discover during specification that one rule is impractical (e.g., 6 decimal precision causes float precision issues), you can refine the Constitution in the future. But start strict—it's easier to relax rules than to add rigor later.
-
-**Important**: The AI orchestrator will reference your Constitution when generating plans and code. A clear Constitution makes the orchestrator's job easier and produces better output.
-
----
-
-**You've completed Lesson 2**. Your Constitution is now the foundation for all calculator project work. In Lesson 3, you'll write your first Specification—and you'll see how Constitution quality enables clear specifications.
-
-Next: [Lesson 3: Specify Phase — Writing Complete Specifications](./03-specify-phase.md)
+- **Constitution clarity**: Rules are testable and specific (not vague philosophy)
+- **Cascade impact**: You can trace how Constitution rules flow into specifications
+- **Realism**: Standards are ambitious but achievable
+- **Readiness**: You're prepared to write specifications that respect the Constitution

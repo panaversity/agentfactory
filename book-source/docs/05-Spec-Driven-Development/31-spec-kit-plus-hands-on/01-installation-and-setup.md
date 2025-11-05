@@ -94,13 +94,13 @@ This lesson gets your toolkit ready. By the end, you'll have Spec-Kit Plus insta
 
 ---
 
-## Part A: What Is Spec-Kit Plus? (10 minutes)
+## Part A: What Is Spec-Kit Plus? 
 
 Before installing anything, let's clarify what Spec-Kit Plus actually is.
 
 ### The Architecture: Three Independent Layers
 
-Spec-Kit Plus consists of three independent but integrated components:
+Spec-Kit Plus is an Opiniated ToolKit for SDD. It have three independent but integrated components:
 
 **1. The Framework** (The actual Spec-Kit Plus toolkit)
 - File templates for specifications, plans, tasks
@@ -115,11 +115,7 @@ Spec-Kit Plus consists of three independent but integrated components:
 - Or any AI tool that can execute slash commands
 - Acts as the "main collaborator" who understands Spec-Kit Plus workflow
 
-**3. The Specialized Subagents** (Delegated AI capabilities)
-- **Specification Subagent**: Helps write clear, complete specifications
-- **Planning Subagent**: Generates architecture and implementation plans
-- **Implementation Subagent**: Generates code from specifications
-- **Validation Subagent**: Reviews quality and compliance
+**3. The Vertical Intelligence Layer** (Delegated AI capabilities)
 
 **The Critical Insight**: Spec-Kit Plus is **not** a tool that requires a specific AI service. It's an **opinionated methodology framework** that works with Claude Code, Gemini CLI, or any AI tool capable of understanding slash commands and specialized roles.
 
@@ -143,7 +139,7 @@ Horizontal intelligence captures decisions and learnings in a permanent, searcha
 
 **Vertical Intelligence: Knowledge Through Hierarchy**
 
-Vertical intelligence is how YOU work with AI orchestrators and specialized subagents:
+You can optionally build Vertical intelligence at start of each project. This is like onboarding the specialized skilled workers in your team. It is how YOU work with AI orchestrators and specialized subagents:
 
 ```
 You (Architect/Validator)
@@ -177,39 +173,21 @@ Chapter 30 introduced you to four SDD approaches:
 
 We chose Spec-Kit Plus for this book because:
 
-✅ **Opinionated workflow**: Enforces Spec → Clarify → Plan → Tasks → Implement sequence (the cascade)
-✅ **Knowledge capture**: ADRs preserve "why" decisions; PHRs capture AI collaboration history
-✅ **Vertical Intelligence**: Orchestrator + subagents = efficient, scalable workflow
-✅ **Flexible tooling**: Works with Claude Code, Gemini CLI, or any capable AI tool
-✅ **Proven in practice**: Used by teams at Anthropic, Google, and OpenAI
+- **Opinionated workflow**: Enforces Spec → Clarify → Plan → Tasks → Implement sequence (the cascade)
+- **Knowledge capture**: ADRs preserve "why" decisions; PHRs capture AI collaboration history
+- **Vertical Intelligence**: Orchestrator + subagents = efficient, scalable workflow
+- **Flexible tooling**: Works with Claude Code, Gemini CLI, or any capable AI tool
+- **Proven in practice**: Used by teams at Anthropic, Google, and OpenAI
 
 ---
 
-## Part B: Install Spec-Kit Plus Framework (20 minutes)
+## Part B: Install Spec-Kit Plus Framework
 
 Now let's install the actual Spec-Kit Plus framework. This is independent of your AI tool choice.
 
-### Prerequisites
-
-Before you start, verify you have:
-
-- **Python 3.13+** — Run `python --version` in your terminal
-- **pip** — Python package manager (comes with Python)
-- **Git** — Version control (needed for repository operations)
-- **Terminal/Command Prompt** — Familiarity with basic commands
-- **~500MB disk space** — For the framework and sample projects
-
 ### Installation Steps
 
-**Step 1: Create a Project Directory**
-
-```bash
-# Create a new directory for your Spec-Kit Plus projects
-mkdir my-specifyplus-projects
-cd my-specifyplus-projects
-```
-
-**Step 2: Install Spec-Kit Plus**
+**Step 1: Install Spec-Kit Plus**
 
 Spec-Kit Plus is provided as a Python package:
 
@@ -221,16 +199,19 @@ pip install specifyplus
 specifyplus --version
 ```
 
-**Step 3: Initialize Your First Project**
+**Step 2: Initialize Your First Project**
 
 ```bash
 # Create a new Spec-Kit Plus project
 specifyplus init calculator-project
-
-# Navigate to the project
-cd calculator-project
 ```
 
+It will prompt to Select AI Tool and Terminal. You can choose between **Claude Code** or **Gemini CLI**. For terminal prefer bash - if you are on windows without wsl there is option to use powershell.
+
+**Step 3: Navigate to the project**
+```bash
+cd calculator-project
+```
 **Step 4: Verify Project Structure**
 
 After initialization, you should see:
@@ -241,17 +222,8 @@ calculator-project/
 │   ├── memory/
 │   │   └── constitution.md          # Project-wide rules
 │   ├── templates/
-│   │   ├── spec-template.md
-│   │   ├── plan-template.md
-│   │   ├── tasks-template.md
-│   │   └── phr-template.md
 │   └── scripts/
-│       └── create-phr.sh
-├── specs/
-│   └── calculator/
-│       ├── spec.md                  # Specification (you write this)
-│       ├── plan.md                  # Implementation plan (AI generates)
-│       └── tasks.md                 # Task breakdown (AI generates)
+├── specs/                           # Specification Artifacts
 ├── history/
 │   ├── adr/                         # Architectural Decision Records
 │   └── prompts/                     # Prompt History Records (AI collaboration logs)
@@ -265,124 +237,15 @@ calculator-project/
 - **`specs/`** — Your specification artifacts (what you write)
 - **`history/`** — Knowledge capture (ADRs and PHRs for traceability)
 
-### Verification Checklist
-
-Verify your installation succeeded:
-
-```bash
-# List the project structure
-ls -la
-
-# Check that .specify directory exists
-ls -la .specify/
-
-# View the constitution template
-cat .specify/memory/constitution.md
-
-# Check specs directory
-ls -la specs/
-```
-
-If you see all these directories and files, **your Spec-Kit Plus installation is successful**.
+Note: The `specs/` and `history/` directories will appear when we create our first specification.
 
 ---
 
-## Part C: Configure Your AI Tool (20 minutes)
-
-Now connect Spec-Kit Plus to an AI tool. You have two primary options: **Claude Code** (recommended) or **Gemini CLI**.
-
-### Option 1: Claude Code (Recommended)
-
-**Why Claude Code?** It integrates natively with Spec-Kit Plus, has best-in-class support for specification understanding, and is what this book uses throughout.
-
-**Setup Steps**:
-
-1. **Have Claude Code installed and running**
-   - If not installed: [Install Claude Code](https://claude.ai/download)
-   - Ensure you have an Anthropic account with API access
-
-2. **Configure Spec-Kit Plus for Claude Code**
-
-   In your `calculator-project` directory, create a file named `.env`:
-
-   ```bash
-   # .env file in your project root
-   CLAUDE_API_KEY=your_actual_api_key_here
-   SPECIFYPLUS_ORCHESTRATOR=claude-code
-   SPECIFYPLUS_STYLE_GUIDE=panaversity-education
-   ```
-
-   **Replace** `your_actual_api_key_here` with your actual API key from [Anthropic Console](https://console.anthropic.com/).
-
-3. **Verify Claude Code Access**
-
-   In Claude Code, verify you can access Spec-Kit Plus commands:
-
-   ```bash
-   /sp.specify --help
-   ```
-
-   You should see help information for the specify command. The core commands are:
-   - `/sp.specify`, `/sp.clarify`, `/sp.plan`, `/sp.adr`, `/sp.tasks`, `/sp.implement`, `/sp.phr`
-
-### Option 2: Gemini CLI (Alternative)
-
-If you prefer Google's Gemini, here's the alternative setup:
-
-**Setup Steps**:
-
-1. **Install Gemini CLI**
-
-   ```bash
-   # Install Google's Gemini CLI
-   pip install google-generativeai
-   ```
-
-2. **Get Your API Key**
-   - Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
-   - Create an API key
-   - Copy the key
-
-3. **Configure for Spec-Kit Plus**
-
-   In your project directory, create `.env`:
-
-   ```bash
-   # .env file
-   GOOGLE_API_KEY=your_actual_api_key_here
-   SPECIFYPLUS_ORCHESTRATOR=gemini-cli
-   SPECIFYPLUS_STYLE_GUIDE=panaversity-education
-   ```
-
-4. **Verify Gemini CLI Access**
-
-   In Gemini CLI, test access to Spec-Kit Plus commands:
-
-   ```bash
-   /sp.specify --help
-   ```
-
-   You should see help information for the specify command.
-
-### Choose Your Tool
-
-For the rest of this chapter, all examples will show **Claude Code**. If you're using Gemini CLI, the commands are identical; only the setup differs.
-
-**Decision Guide**:
-
-| Factor | Claude Code | Gemini CLI |
-|--------|-------------|-----------|
-| **Ease of setup** | Very simple | Simple |
-| **API cost** | Pay-per-use | Free tier available |
-| **Specification understanding** | Excellent | Good |
-| **Community support** | Larger (Panaversity book focused) | Growing |
-| **Recommended for this book** | ✅ Yes | ✓ Alternative |
-
-**Our Recommendation**: Start with Claude Code. You can always add Gemini CLI later for comparison.
+For the rest of this chapter, all examples will show **Claude Code**. If you're using Gemini CLI or any other AI tool, the commands are identical.
 
 ---
 
-## Part D: Verify Commands Work (15 minutes)
+## Part D: Verify Commands Work 
 
 Now let's test that everything is connected.
 
@@ -393,190 +256,30 @@ Open Claude Code (or your chosen AI tool) in the `calculator-project` directory:
 ```bash
 # In your terminal, from calculator-project directory
 # Launch Claude Code interface
-claude-code .
+claude
+
+# OR
+gemini
 ```
 
-Inside Claude Code, verify Spec-Kit Plus commands are available:
+Inside Terminal, verify Spec-Kit Plus commands are available:
 
 ```
-/sp.specify --help
+# Type
+/sp.
 ```
 
-You should see help information for the specify command. The core Spec-Kit Plus commands are:
+You should see core Spec-Kit Plus commands:
+- `/sp.constitution` — Build your constitution
 - `/sp.specify` — Launch specification workflow
 - `/sp.clarify` — Refine and validate specs
 - `/sp.plan` — Generate implementation plan
-- `/sp.adr <title>` — Document architectural decisions
+- `/sp.adr` — Document architectural decisions
 - `/sp.tasks` — Decompose plan into tasks
 - `/sp.implement` — Generate code
 - `/sp.phr` — Record prompt history
 
 If the command is recognized, your orchestrator is configured correctly.
-
-### Test 2: Access Spec-Kit Plus Templates
-
-Verify that Spec-Kit Plus templates are available. From your terminal:
-
-```bash
-ls .specify/templates/
-```
-
-**Expected Output**: You should see these template files:
-- `spec-template.md` — Structure for writing specifications
-- `plan-template.md` — Structure for writing plans
-- `tasks-template.md` — Structure for task breakdown
-- `phr-template.prompt.md` — Structure for prompt history records
-
-If you see these templates, your framework installation is correct.
-
-### Test 3: Verify Directory Structure
-
-Verify the complete project structure from your terminal:
-
-```bash
-# Navigate to your project
-cd calculator-project
-
-# Check all required directories exist
-ls .specify/memory/
-ls specs/calculator/
-ls history/
-```
-
-All three directories should exist and be accessible.
-
-### Troubleshooting
-
-**Problem**: Commands not recognized
-- **Solution**: Verify `.env` file exists and API key is valid
-- **Check**: Run `echo $CLAUDE_API_KEY` to confirm environment variable is set
-
-**Problem**: "Permission denied" errors
-- **Solution**: Ensure you have write permissions to the project directory
-- **Check**: Run `chmod -R u+w .` to grant permissions
-
-**Problem**: "Module not found" errors
-- **Solution**: Reinstall Spec-Kit Plus framework
-- **Check**: Run `pip install --upgrade specifyplus`
-
----
-
-## Part E: Initialize Calculator Project (20 minutes)
-
-You already created a basic Spec-Kit Plus project. Now let's customize it for the calculator exercise.
-
-### Step 1: Update the Constitution
-
-The Constitution defines project-wide rules. Open `.specify/memory/constitution.md` in your editor and add a basic calculator-specific constitution:
-
-```markdown
-# Calculator Project Constitution
-
-## Quality Standards
-
-- All code must include type hints
-- All functions must include docstrings
-- All operations must handle edge cases (division by zero, etc.)
-- 100% test coverage required
-
-## Error Handling
-
-- Division by zero raises ValueError with message "Cannot divide by zero"
-- Power operations with invalid inputs raise TypeError
-- All errors logged to stderr with full context
-
-## Type System
-
-- Accept int or float inputs
-- Return float for all operations except where specified
-- Preserve precision (6 decimal places minimum)
-
-## Testing
-
-- Unit tests for each operation
-- Edge case tests (negative numbers, zero, very large numbers)
-- Integration tests for operation chains
-```
-
-### Step 2: Prepare for Your First Specification
-
-Create the directory for your calculator specification (though Spec-Kit Plus may have already done this):
-
-```bash
-# Ensure specs/calculator exists
-mkdir -p specs/calculator
-
-# Verify structure
-ls -la specs/calculator/
-```
-
-You should see or create:
-- `specs/calculator/spec.md` — Your specification (we write this in Lesson 3)
-- `specs/calculator/plan.md` — Auto-generated plan (Lesson 5)
-- `specs/calculator/tasks.md` — Auto-generated tasks (Lesson 6)
-
-### Step 3: Initialize Git (Important!)
-
-Spec-Kit Plus works best with Git for version control:
-
-```bash
-# Initialize git repository (if not already done)
-git init
-
-# Create initial commit with framework
-git add .
-git commit -m "Initial Spec-Kit Plus setup"
-
-# Verify git status
-git status
-```
-
-You should see: `On branch main, nothing to commit, working tree clean`
-
-**Why Git matters**: PHRs, specs, and plans are tracked as artifacts. Git ensures you can review how your thinking evolved over time.
-
----
-
-## Part F: Test Complete Setup (5 minutes)
-
-Let's run one end-to-end verification to confirm everything works together.
-
-### The Setup Test
-
-In Claude Code, run:
-
-```
-I'm going to test my Spec-Kit Plus setup. I have a simple project ready.
-Can you confirm:
-1. I have all required Spec-Kit Plus directories (.specify, specs, history)
-2. My orchestrator is Claude Code
-3. I can access /sp.* commands
-
-Here's my project structure:
-/specs/calculator/
-/.specify/memory/constitution.md
-/history/
-
-Should I proceed to write my first specification?
-```
-
-**Expected Response from Claude Code**:
-- Confirmation that directories are correct
-- Confirmation that orchestrator is ready
-- Confirmation that `/sp.*` commands are accessible
-- Encouragement to proceed to Lesson 2
-
-**Your Verification Checklist** (mark each complete):
-
-- [ ] Spec-Kit Plus framework installed (`pip show specifyplus` works)
-- [ ] Claude Code (or Gemini CLI) configured and running
-- [ ] Project directory structure created (`.specify/`, `specs/`, `history/`)
-- [ ] `.env` file with API key configured
-- [ ] `/sp.specify --help` command works (verifies Spec-Kit Plus access)
-- [ ] Git repository initialized with initial commit
-- [ ] Calculator constitution drafted
-
-If you've checked all these boxes, **your complete Spec-Kit Plus + AI tool setup is verified and ready**.
 
 ---
 
@@ -590,8 +293,6 @@ Now let's use your newly configured Spec-Kit Plus to run a real test. This activ
 
 **Context**: Your calculator-project directory with all infrastructure in place
 
-**Goal**: Verify that your orchestrator understands Spec-Kit Plus concepts and can access framework capabilities
-
 ### Prompt Set (Copy-Paste Ready)
 
 **Prompt 1 — Framework Verification**
@@ -603,8 +304,7 @@ I've installed Spec-Kit Plus and set up my calculator-project. Let me verify
 the setup is correct by asking about the core concepts:
 
 1. What is Spec-Kit Plus? (In one sentence, distinguish it from Claude Code)
-2. What does "Vertical Intelligence" mean in this context?
-3. What are ADRs and PHRs, and how do they differ?
+2. What are ADRs and PHRs, and how do they differ?
 
 Then, tell me: Am I ready to write my first specification, or do I need to
 do anything else?
@@ -642,27 +342,7 @@ architecture (You → Orchestrator → Subagents), what is MY job at each phase?
 After these prompts, you should understand:
 
 ✅ **Spec-Kit Plus is a methodology framework**, independent of any AI tool
-✅ **Vertical Intelligence is the three-tier pattern**: You control → Orchestrator routes → Subagents execute
 ✅ **ADRs** (explicit, long-term decisions) and **PHRs** (automatic, collaboration logs) capture knowledge
 ✅ **Your role is intent + validation**, not implementation
 ✅ **Six commands form the workflow**: specify → clarify → plan → adr → tasks → implement
 ✅ **You're ready for Lesson 2** (Constitution creation) with confidence
-
-### Safety & Ethics Note
-
-**On Trusting AI Outputs**:
-
-The orchestrator (Claude Code or Gemini CLI) helps verify your setup, but YOU are responsible for:
-
-- Verifying that your API keys are properly secured (never commit `.env` to git)
-- Confirming that your project structure matches your needs
-- Validating command outputs before using them
-- Keeping your framework updated (`pip install --upgrade specifyplus`)
-
-**Best Practice**: Treat the orchestrator as a helpful colleague who understands methodology but makes mistakes. Always verify critical paths yourself.
-
----
-
-**You've completed Lesson 1**. Your Spec-Kit Plus environment is now configured and ready. In Lesson 2, you'll create your first project Constitution—the rules that will guide your calculator project from specification through implementation.
-
-Next: [Lesson 2: Constitution Phase — Project-Wide Rules](./02-constitution-phase.md)

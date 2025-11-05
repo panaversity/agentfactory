@@ -5,9 +5,7 @@ title: "Chapter 31: Spec-Kit Plus Hands-On"
 
 # Chapter 31: Spec-Kit Plus Hands-On
 
-Welcome to hands-on specification-driven development. This chapter transforms understanding (from Chapter 30) into practice. You won't read about specifications—you'll write them. You won't learn about AI collaboration—you'll build projects with your AI companion from specifications to implementation.
-
-Whether you're eager to start coding or skeptical that specs are worth the time, this chapter proves the value through direct experience: building projects specification-first is faster, more reliable, and more scalable than code-first development.
+Welcome to hands-on specification-driven development. This chapter transforms understanding (from Chapter 30) into practice. You won't read about specifications—you'll write them. You won't learn about AI collaboration — you'll build project with your AI companion from specifications to implementation.
 
 ---
 
@@ -24,7 +22,7 @@ Whether you're eager to start coding or skeptical that specs are worth the time,
 **Chapter 31** teaches you the workflow:
 - How to install and configure Spec-Kit Plus
 - How to create project Constitutions
-- How to collaborate with AI on specifications (evals-first pattern)
+- How to collaborate with AI on specifications
 - How to refine specs iteratively
 - How to generate plans and document decisions (ADRs)
 - How to decompose work with checkpoint-driven execution
@@ -49,6 +47,4 @@ By completing this chapter, you'll master:
 8. **AI-Driven Implementation** — Orchestrating code generation with systematic validation protocols
 9. **Independent Workflow** — Applying all skills end-to-end without guidance
 
-Most importantly, you'll build the muscle memory for specification-first thinking that makes you dramatically faster in Chapters 32 and beyond.
-
-Let's build something real.
+Most importantly, you'll build the muscle memory for specification-first thinking that makes you dramatically faster in Chapters 32 and beyond. Let's build something real.

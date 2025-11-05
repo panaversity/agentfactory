@@ -93,7 +93,7 @@ This lesson teaches two critical skills:
 
 ---
 
-## Part A: What Does /sp.implement Do? (20 minutes)
+## What Does /sp.implement Do? 
 
 ### The Implement Command
 
@@ -120,63 +120,12 @@ It works task-by-task, respecting your checkpoint pattern.
 2. Understand what it does
 3. Verify acceptance criteria
 4. Approve or request changes
-5. Commit to git
+5. Ask to Commit to git
 6. Tell agent: "Next task"
-
-### Example: Task 1 Implementation
-
-**Task**: "Implement add(a, b) returning float"
-
-**Agent Generates**:
-
-```python
-def add(a: float | int, b: float | int) -> float:
-    """Add two numbers and return the sum.
-
-    Args:
-        a: First number (int or float)
-        b: Second number (int or float)
-
-    Returns:
-        float: Sum of a and b
-
-    Examples:
-        >>> add(5, 3)
-        8.0
-        >>> add(-2, 5)
-        3.0
-    """
-    return float(a + b)
-```
-
-**Tests**:
-
-```python
-def test_add_positive():
-    assert add(5, 3) == 8.0
-
-def test_add_negative():
-    assert add(-2, 5) == 3.0
-
-def test_add_floats():
-    assert add(1.5, 2.5) == 4.0
-
-def test_add_invalid_input():
-    with pytest.raises(TypeError):
-        add("5", 3)
-```
-
-**Your Review**:
-- ✅ Code has type hints
-- ✅ Code has docstring
-- ✅ Tests cover acceptance criteria
-- Questions: Is `float(a + b)` the right approach? What about very large numbers?
-
-**Approval**: "Looks good. Committing."
 
 ---
 
-## Part B: The Validation Protocol (30 minutes)
+## The Validation Protocol
 
 Validation is NOT just "does it work?" It's systematic verification against your specification.
 
@@ -211,88 +160,19 @@ Run the generated tests:
 
 **Step 4: Manual Testing (Optional)**
 
-Especially for core operations, manually test:
-
-```python
-# In Python REPL
-from calculator import add
-
-# Test basic cases
-assert add(5, 3) == 8.0
-assert add(-2, 5) == 3.0
-
-# Test edge cases
-assert add(0, 5) == 5.0
-assert add(1.5, 2.5) == 4.0
-
-# Test error cases
-try:
-    add("5", 3)
-    assert False, "Should have raised TypeError"
-except TypeError:
-    pass  # Expected
-
-print("All manual tests passed!")
-```
-
 **Step 5: Review and Approve**
 
 If all checks pass:
 - Mark as approved
-- Commit to git
+- Ask to Commit to git
 - Provide feedback to agent on quality
 - Request next task
 
-### Common Validation Issues
-
-**Issue 1: Code Works But Doesn't Match Spec**
-
-```python
-# Specification says: "divide returns float"
-# Code does:
-def divide(a, b):
-    return a / b if b != 0 else "Error: division by zero"
-```
-
-**Problem**: Returns string on error, not exception. Violates spec and error handling strategy.
-
-**Your Response**: "Code works but violates error handling strategy. Use exception instead."
-
-**Issue 2: Tests Pass But Code Seems Wrong**
-
-```python
-# Spec: "power(-2, 0.5) should raise ValueError"
-# Code:
-def power(a, b):
-    return a ** b  # Python allows this! Returns complex number
-```
-
-**Problem**: Python's `**` allows complex results. Your spec forbids this.
-
-**Your Response**: "Tests are incomplete. Test power(-2, 0.5) and verify it raises ValueError."
-
-**Issue 3: Code Works But Is Unreadable**
-
-```python
-def calculate(a, b, op):
-    return (
-        a + b if op == '+' else
-        a - b if op == '-' else
-        a * b if op == '*' else
-        a / b if b != 0 else
-        None
-    )
-```
-
-**Problem**: Violates Constitution ("clear code, docstrings"). No type hints.
-
-**Your Response**: "Code works but violates Constitution. Add type hints and separate functions for each operation."
-
 ---
 
-## Part C: PHRs — Automatic Documentation (20 minutes)
+## PHRs — Automatic Documentation 
 
-**CRITICAL CONCEPT**: PHRs are **automatically created by the system**. You don't manually write them.
+While ADRs capture architectural decisions, PHRs capture collaboration and implementation decisions. Together, they form the project’s explainable memory.
 
 ### What Are PHRs?
 
@@ -304,11 +184,7 @@ A PHR automatically documents:
 - What decision was made
 - When it happened
 
-PHRs are auto-created for:
-- Running `/sp.implement`
-- Significant implementation decisions
-- Complex debugging sessions
-- Important clarifications during coding
+PHRs are auto-created for all `/sp.` commands and Important clarifications during coding
 
 ### Where Are PHRs Stored?
 
@@ -320,8 +196,6 @@ history/prompts/
 │   ├── 003-plan-phase.md             (auto-created by /sp.plan)
 │   ├── 004-tasks-phase.md            (auto-created by /sp.tasks)
 │   ├── 005-implement-phase-pt1.md    (auto-created by /sp.implement)
-│   ├── 006-implement-phase-pt2.md    (auto-created during implementation)
-│   └── 007-implement-debugging.md    (auto-created during debugging)
 └── general/
     └── [Other non-feature PHRs]
 ```
@@ -356,54 +230,6 @@ about floating-point precision. Can you record this as a PHR for future referenc
 - ❌ Simple bug fixes (already captured in git history)
 - ❌ Repeated issues (first occurrence captured, repeats unnecessary)
 
-### Example: What a PHR Looks Like
-
-**Auto-Created PHR** (from `/sp.implement`):
-
-```markdown
-# PHR-005: Implement Phase, Tasks 1-3 (Add, Subtract, Multiply)
-
-**Date**: 2025-11-05
-**Feature**: calculator
-**Stage**: implement
-**ID**: 005
-
-## Input
-- Specification: `specs/calculator/spec.md`
-- Plan: `specs/calculator/plan.md`
-- Tasks: `specs/calculator/tasks.md` (Tasks 1-3)
-- Status: Core operations implementation
-
-## Prompt
-"Implement Tasks 1-3:
-- add(a, b) returning float
-- subtract(a, b) returning float
-- multiply(a, b) returning float
-
-Include type hints, docstrings, error handling for type mismatches.
-Generate tests verifying all acceptance criteria."
-
-## Response
-Generated code with:
-- All type hints present
-- All docstrings present
-- Error handling for invalid input types (raises TypeError)
-- Tests for basic cases and edge cases (negative, zero, float inputs)
-
-## Implementation Decision
-- Used built-in Python operators (a + b, a - b, a * b)
-- No custom validation; rely on type hints for clarity
-- All operations return float(result) to ensure consistent type
-
-## Tests
-- 12 tests generated
-- All tests passing
-- 100% code coverage for core operations
-
-## Status
-✅ Approved by human. Committed to git.
-```
-
 ### Your Interaction With PHRs
 
 **During Implementation**:
@@ -422,11 +248,11 @@ Generated code with:
 
 ---
 
-## Part D: Implementing Your Calculator (50 minutes)
+## Implementing Your Calculator (50 minutes)
 
 Now let's implement your calculator using the checkpoint pattern.
 
-### Step 1: Run /sp.implement
+- **Step 1: Run /sp.implement**
 
 In Claude Code, from your calculator-project directory:
 
@@ -445,14 +271,9 @@ Please implement tasks 1-3 (core operations: add, subtract, multiply):
 After I review and approve, I'll request the next tasks.
 ```
 
-### Step 2: Review Generated Code
+- **Step 2: Review Generated Code**
 
-Agent generates:
-- `calculator/operations.py` (or similar) with add, subtract, multiply functions
-- `tests/test_operations.py` with comprehensive tests
-- Docstrings and type hints
-
-**Your Review Checklist**:
+Your Review Checklist:
 - [ ] Code is understandable (clear variable names, readable logic)
 - [ ] Type hints present on all functions
 - [ ] Docstrings present and clear
@@ -461,118 +282,76 @@ Agent generates:
 - [ ] Error handling matches your error strategy
 - [ ] Tests cover all acceptance criteria
 
-### Step 3: Run Tests
+- **Step 3: Ask Agent to Run Tests**
 
-```bash
-# Navigate to project
-cd calculator-project
+**Your Prompt:**
 
-# Run tests
-python -m pytest tests/test_operations.py -v
-
-# Check coverage
-python -m pytest tests/test_operations.py --cov=calculator --cov-report=html
+```
+Run the complete test suite and show me the results.
+Include coverage report to verify we meet the constitution requirements.
 ```
 
-All tests should pass with 100% coverage.
+**Agent Does:**
 
-### Step 4: Validate Acceptance Criteria
+- Runs `uv run pytest -v --cov=calculator --cov-report=term-missing`
+- Shows all tests passing
+- Displays coverage report (should be 100%)
+- Confirms constitution requirements met
 
-For each operation, verify:
+- **Step 4: Validate Acceptance Criteria**
 
-**Addition**:
-- ✅ add(5, 3) = 8.0
-- ✅ add(-2, 5) = 3.0
-- ✅ add('5', 3) raises TypeError
-- ... (all acceptance criteria from spec)
+## Verification Steps
 
-**Subtraction**:
-- ✅ subtract(10, 3) = 7.0
-- ... (all acceptance criteria)
+### Step 1: Run Complete Test Suite
 
-**Multiplication**:
-- ✅ multiply(4, 5) = 20.0
-- ... (all acceptance criteria)
+**Your Prompt:**
 
-### Step 5: Approve and Commit
-
-If all checks pass:
-
-```bash
-# Add generated code and tests
-git add calculator/
-git add tests/
-
-# Commit with clear message
-git commit -m "Implement core operations (add, subtract, multiply)
-
-- add(a, b) returns float, handles negative numbers
-- subtract(a, b) returns float
-- multiply(a, b) returns float
-- Type validation: non-numeric inputs raise TypeError
-- Tests: 15 tests, 100% coverage, all passing
-
-Acceptance criteria verified:
-- All basic cases pass
-- All edge cases covered
-- Error handling matches spec"
+```
+Run the complete test suite and show me the results.
+Include coverage report to verify we meet the constitution requirements.
 ```
 
-### Step 6: Continue Implementation (Divide, Power, Tests, Docs)
+**Agent Does:**
 
-Repeat the checkpoint pattern for remaining tasks:
-- Task 4: Division (with zero-handling)
-- Task 5: Power (with negative/fractional exponents)
-- Tasks 6-8: Comprehensive tests, edge case tests, documentation
+- Runs `uv run pytest -v --cov=calculator --cov-report=term-missing`
+- Shows all tests passing
+- Displays coverage report (should be 100%)
+- Confirms constitution requirements met
 
----
+### Step 2: Type Checking
 
-## Part E: Understanding Your PHRs (10 minutes)
+**Your Prompt:**
 
-After implementation completes, explore your PHRs:
-
-```bash
-# List all PHRs created during calculator implementation
-ls -la history/prompts/calculator/
-
-# Review a specific PHR (e.g., implementation decisions)
-cat history/prompts/calculator/005-implement-phase-pt1.md
-
-# See all calculator-related PHRs
-grep -l "calculator" history/prompts/*/*.md
+```
+Run mypy to verify all type hints are correct.
 ```
 
-Typical feature generates **8-10 PHRs** (one per command phase + major decisions).
+**Agent Does:**
 
----
+- Runs `uv run mypy src/`
+- Shows type checking results
+- Confirms no type errors
 
-## Validation Checklist
+### Step 3: Code Quality Check
 
-Before declaring implementation complete:
+**Your Prompt:**
 
-**Code Quality**:
-- [ ] All functions have type hints
-- [ ] All functions have docstrings
-- [ ] No hardcoded test data in production code
-- [ ] Code follows PEP 8
-- [ ] No security issues (no secrets in code)
+```
+Run ruff to check code quality and formatting.
+```
 
-**Testing**:
-- [ ] 100% code coverage
-- [ ] All acceptance criteria tested
-- [ ] Edge cases covered
-- [ ] Error handling tested
-- [ ] Tests pass on your machine
+**Agent Does:**
 
-**Commits**:
-- [ ] Each phase committed separately
-- [ ] Commit messages are descriptive
-- [ ] Git history shows progression
+- Runs `uv run ruff check src/ tests/`
+- Shows linting results
+- Confirms code follows standards
 
-**PHRs**:
-- [ ] You understand PHRs are auto-created
-- [ ] You know where to find them
-- [ ] You've browsed at least one PHR
+
+### Step 4: Approve and Commit
+
+- If all checks pass run `/sp.git.commit_pr`
+- Continue Implementation (Divide, Power, Tests, Docs)
+- Repeat the checkpoint pattern for remaining tasks.
 
 ---
 
@@ -616,14 +395,7 @@ What patterns from this implementation should I maintain for the remaining opera
 After quality review, ask:
 
 ```
-During implementation, we made several design decisions:
-
-1. [Decision 1]: [What you decided]
-   Reason: [Why]
-
-2. [Decision 2]: [What you decided]
-   Reason: [Why]
-
+During implementation, we made several design decisions.
 These decisions are being captured in PHRs automatically.
 If I need to understand "why" something was implemented this way in the future,
 where would I look?
@@ -643,26 +415,3 @@ And if I had discovered something surprising during implementation
 (like floating-point precision issues), should I request an explicit PHR?
 When is that warranted?
 ```
-
-### Expected Outcomes
-
-✅ **Implementation is high quality and production-ready**
-✅ **You understand how decisions are automatically captured in PHRs**
-✅ **You know when to request explicit PHRs (rare)**
-✅ **Ready for Lesson 8 (Capstone)**
-
-### Safety & Ethics Note
-
-**On AI-Generated Code**:
-
-Your AI companion generated production-ready code. But YOU validated it. Trust the code only because YOU reviewed it. Never accept code you don't understand. The checkpoint pattern ensures this—you're not an observer, you're a validator.
-
-Validation is not a box to check; it's your protection against bugs. Invest time in it.
-
----
-
-**You've completed Lesson 7**. Your calculator is now fully implemented with comprehensive tests, passing all acceptance criteria. PHRs automatically captured key decisions along the way.
-
-In Lesson 8 (Capstone), you'll apply the entire Spec-Kit Plus workflow from scratch on a new project—temperature converter or unit converter—consolidating everything you've learned.
-
-Next: [Lesson 8: Capstone Integration — Complete Workflow End-to-End](./08-capstone-integration.md)
