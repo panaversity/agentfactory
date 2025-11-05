@@ -148,7 +148,7 @@ A reader wants to track their learning journey through the book. They open the L
 - **FR-010**: System MUST accept user text input via a chat interface with Enter key submission and Shift+Enter for line breaks
 - **FR-011**: System MUST display chat message history within the current session, showing both user questions and AI responses
 - **FR-012**: System MUST limit AI response time to maximum 10 seconds, showing timeout error if exceeded
-- **FR-013**: System MUST stream AI responses token-by-token for better perceived performance (if API supports streaming)
+- **FR-013**: System MUST stream AI responses token-by-token using Google Gemini API streaming capabilities for better perceived performance
 - **FR-014**: System MUST sanitize and validate all user input before sending to AI service to prevent injection attacks
 - **FR-015**: System MUST extract and include relevant page metadata (title, headings, key terms) in AI context to improve response relevance
 
@@ -176,8 +176,8 @@ A reader wants to track their learning journey through the book. They open the L
 
 - **FR-030**: System MUST extract 5-7 key concepts from current page content and display as bullet points
 - **FR-031**: System MUST make each key concept clickable, scrolling the main page to the relevant section
-- **FR-032**: System MUST cache generated key concepts per page URL to improve performance on repeat visits
-- **FR-033**: System MUST regenerate key concepts when page content is updated (cache invalidation based on content hash or version)
+- **FR-032**: System MUST cache generated key concepts per page URL with MD5 content hash and timestamp
+- **FR-033**: System MUST regenerate key concepts when page content changes (content hash mismatch) OR cache is older than 7 days
 - **FR-034**: System MUST handle short content gracefully by showing minimum 2-3 concepts or appropriate message
 
 #### Related Topics Requirements
@@ -186,6 +186,7 @@ A reader wants to track their learning journey through the book. They open the L
 - **FR-036**: System MUST display related topics with clickable titles and brief descriptions (1-2 sentences)
 - **FR-037**: System MUST update sidebar context when user navigates to a related topic link
 - **FR-038**: System MUST show fallback message ("No related topics found - browse table of contents") when no clear relationships exist
+- **FR-039**: System MUST cache related topics with same strategy as key concepts (content hash + 7-day expiry)
 
 #### Progress Tracking Requirements
 
@@ -213,6 +214,14 @@ A reader wants to track their learning journey through the book. They open the L
 - **FR-054**: System MUST implement request queuing for AI operations when multiple requests are triggered simultaneously
 - **FR-055**: System MUST limit concurrent AI API calls to maximum 2 requests to prevent rate limiting
 
+#### Observability Requirements
+
+- **FR-060**: System MUST log all errors to browser console with structured format (timestamp, component, error type, message)
+- **FR-061**: System MUST maintain error history in localStorage (last 50 errors with timestamps) for user-accessible troubleshooting
+- **FR-062**: System MUST log key user interactions to console in development mode (sidebar toggle, tab switches, AI requests)
+- **FR-063**: System MUST include error boundaries to catch React component errors and display user-friendly fallback UI
+- **FR-064**: System MUST log AI API response times and token usage to console for performance monitoring
+
 #### Integration Requirements
 
 - **FR-056**: System MUST integrate seamlessly with existing Docusaurus theme without breaking existing navigation or layout
@@ -228,9 +237,9 @@ A reader wants to track their learning journey through the book. They open the L
 
 - **QuizQuestion**: Represents a generated quiz question. Attributes: id (unique identifier), question (text of question), choices (array of 4 possible answers), correctAnswer (index of correct choice), explanation (why answer is correct), difficulty (easy/medium/hard based on content). Relationship: Multiple questions per quiz session, regenerated per page visit.
 
-- **KeyConcept**: Represents an extracted key concept from page content. Attributes: id (unique identifier), title (concept name), description (brief explanation), sectionId (link to page section), importance (ranking for display order). Relationship: Multiple concepts per page, cached for performance.
+- **KeyConcept**: Represents an extracted key concept from page content. Attributes: id (unique identifier), title (concept name), description (brief explanation), sectionId (link to page section), importance (ranking for display order), contentHash (MD5 of page content), cachedAt (timestamp). Relationship: Multiple concepts per page, cached with 7-day expiry.
 
-- **RelatedTopic**: Represents a related chapter or section recommendation. Attributes: id (unique identifier), title (topic name), url (link to related page), description (brief summary), relevanceScore (how related to current page). Relationship: Multiple topics per page, dynamically generated.
+- **RelatedTopic**: Represents a related chapter or section recommendation. Attributes: id (unique identifier), title (topic name), url (link to related page), description (brief summary), relevanceScore (how related to current page), contentHash (MD5 of page content), cachedAt (timestamp). Relationship: Multiple topics per page, cached with 7-day expiry.
 
 - **ProgressRecord**: Represents a user's engagement with a page. Attributes: pageUrl (unique identifier per page), visitCount (number of times viewed), totalDuration (cumulative read time in seconds), firstVisitedAt (timestamp), lastVisitedAt (timestamp), completed (boolean flag). Relationship: One record per page, aggregated for overall progress.
 
@@ -256,10 +265,18 @@ A reader wants to track their learning journey through the book. They open the L
 - **SC-014**: Progress tracking accurately records page visits with less than 5% error rate in duration calculations
 - **SC-015**: Sidebar state (open/closed) persists correctly across 100% of page navigations within a session
 
+## Clarifications
+
+### Session 2025-11-06
+
+- Q: Which AI service provider should be used for the Learning Hub? → A: Google Gemini API with gemini-2.0-flash model
+- Q: What logging and monitoring approach should be used for the Learning Hub? → A: Console logging + localStorage error log (last 50 errors with timestamps)
+- Q: How should cache invalidation be determined for AI-generated content? → A: Page content hash (MD5) + 7-day expiry - regenerate if content changes OR cache older than 7 days
+
 ### Assumptions
 
 - **A-001**: Readers have JavaScript enabled in their browsers (Docusaurus requirement)
-- **A-002**: An AI API service (e.g., OpenAI, Anthropic, or similar) is available with acceptable rate limits and response times
+- **A-002**: Google Gemini API (gemini-2.0-flash model) is available with acceptable rate limits and response times for AI-powered features
 - **A-003**: The book content is static or semi-static (not real-time updating) allowing for reasonable cache lifetimes
 - **A-004**: Readers accept browser localStorage for data persistence and understand data is local (not synced across devices)
 - **A-005**: The existing Docusaurus setup uses standard theming and has not heavily customized the layout in ways that would conflict with a right sidebar
