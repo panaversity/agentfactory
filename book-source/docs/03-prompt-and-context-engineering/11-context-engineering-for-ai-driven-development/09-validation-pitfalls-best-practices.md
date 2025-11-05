@@ -1,8 +1,71 @@
 ---
 title: "Validation, Pitfalls & Best Practices"
+chapter: 11
+lesson: 9
+duration_minutes: 30
 sidebar_position: 9
 description: "Learn common mistakes, validation strategies, metrics, and best practices for context engineering mastery"
 keywords: [context engineering, common mistakes, validation, metrics, best practices, AIDD, real-world examples]
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
+skills:
+  - name: "Identifying Context Engineering Mistakes"
+    proficiency_level: "B1"
+    category: "Conceptual"
+    bloom_level: "Analyze"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can identify the seven common context mistakes (loading all files upfront, ignoring degradation, skipping memory files, mixing tasks, no validation, premature complexity, poor tool selection) in real scenarios"
+
+  - name: "Validating Context Quality"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Evaluate"
+    digcomp_area: "Safety"
+    measurable_at_this_level: "Student can assess context quality using metrics (AI consistency, first-attempt accuracy, context window utilization, session longevity) and determine when intervention is needed"
+
+  - name: "Applying Context Best Practices"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can apply best practices (progressive loading, memory files, isolation, compression, validation habits) to prevent common mistakes in multi-session projects"
+
+  - name: "Developing Context Engineering Habits"
+    proficiency_level: "B1"
+    category: "Soft Skills"
+    bloom_level: "Create"
+    digcomp_area: "Self-Development"
+    measurable_at_this_level: "Student can design personal workflow incorporating context best practices that become automatic over time"
+
+learning_objectives:
+  - objective: "Identify the seven most common context engineering mistakes"
+    proficiency_level: "B1"
+    bloom_level: "Analyze"
+    assessment_method: "Given development scenarios, student spots mistakes and explains why each is problematic with concrete examples"
+
+  - objective: "Validate context quality using established metrics"
+    proficiency_level: "B1"
+    bloom_level: "Evaluate"
+    assessment_method: "Student evaluates AI session quality using four key metrics and determines whether context needs refreshing"
+
+  - objective: "Apply context best practices to prevent common mistakes"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Student implements best practices checklist for multi-file project spanning multiple sessions"
+
+  - objective: "Develop sustainable context engineering habits"
+    proficiency_level: "B1"
+    bloom_level: "Create"
+    assessment_method: "Student creates personal context management workflow document with habits, checklists, and recovery strategies"
+
+cognitive_load:
+  new_concepts: 7
+  assessment: "7 new concepts (Seven common mistakes, Four validation metrics, Five best practices, Recovery strategies, Habit formation techniques, Real-world examples, Sustainable workflows) within B1 limit of 10 ✓"
+
+differentiation:
+  extension_for_advanced: "Conduct context engineering audit on existing projects; develop custom metrics for specific domains; create automated tooling for context validation; teach context practices to others"
+  remedial_for_struggling: "Focus on one mistake at a time with clear before/after examples; practice with provided validation checklist; start with 2-3 core best practices before adding more; use memory file templates"
 ---
 
 # Validation, Pitfalls & Best Practices
