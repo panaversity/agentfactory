@@ -34,11 +34,11 @@ export function ChatInterface({
   return (
     <div className={styles.chatInterface}>
       <div className={styles.messagesContainer}>
-        {messages.length === 0 && !isLoading && (
+        {messages.length === 0 && !isLoading && !error && (
           <div className={styles.emptyState}>
-            <div className={styles.emptyIcon}>💬</div>
-            <h3>Start a conversation</h3>
-            <p>Ask me anything about the content you're reading!</p>
+            <div className={styles.emptyIcon}>🤖</div>
+            <h3>AI Learning Assistant</h3>
+            <p>Ask questions, get explanations, or discuss concepts from this chapter. I'm here to help you learn!</p>
           </div>
         )}
 

@@ -12,7 +12,7 @@
   background: var(--ifm-background-surface-color, #ffffff);
   border-left: 1px solid var(--ifm-color-emphasis-200, #e0e0e0);
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  z-index: 100;
   
   display: flex;
   flex-direction: column;

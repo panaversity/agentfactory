@@ -33,40 +33,66 @@ export function usePageContent(): PageContent {
   });
 
   useEffect(() => {
+    let debounceTimer: NodeJS.Timeout;
+
     // Re-extract content when page changes
     const handleRouteChange = () => {
-      const metadata = getPageMetadata();
-      const content = extractPageContent();
-      const isValid = isDocumentationPage();
+      // Clear previous timer
+      clearTimeout(debounceTimer);
+      
+      // Debounce to avoid multiple extractions
+      debounceTimer = setTimeout(() => {
+        const metadata = getPageMetadata();
+        const content = extractPageContent();
+        const isValid = isDocumentationPage();
 
-      setPageContent({
-        url: metadata.url,
-        title: metadata.title,
-        content: content.content,
-        headings: content.headings,
-        wordCount: content.wordCount,
-        isValidPage: isValid,
-      });
+        console.log('[usePageContent] Page changed:', {
+          url: metadata.url,
+          title: metadata.title,
+          contentLength: content.content.length,
+          wordCount: content.wordCount,
+        });
+
+        setPageContent({
+          url: metadata.url,
+          title: metadata.title,
+          content: content.content,
+          headings: content.headings,
+          wordCount: content.wordCount,
+          isValidPage: isValid,
+        });
+      }, 300); // Wait 300ms for content to fully load
     };
 
     // Listen for Docusaurus route changes
     window.addEventListener('popstate', handleRouteChange);
     
     // Also listen for DOM mutations (content loaded asynchronously)
-    const observer = new MutationObserver(() => {
-      // Debounce content extraction
-      setTimeout(handleRouteChange, 100);
+    const observer = new MutationObserver((mutations) => {
+      // Only react to significant changes (new article content)
+      const hasContentChange = mutations.some(m => 
+        Array.from(m.addedNodes).some(node => 
+          node.nodeType === 1 && (node as Element).tagName === 'ARTICLE'
+        )
+      );
+      
+      if (hasContentChange) {
+        handleRouteChange();
+      }
     });
 
-    const articleElement = document.querySelector('article');
-    if (articleElement) {
-      observer.observe(articleElement, {
-        childList: true,
-        subtree: true,
-      });
-    }
+    // Observe the main content area
+    const mainElement = document.querySelector('main') || document.body;
+    observer.observe(mainElement, {
+      childList: true,
+      subtree: true,
+    });
+
+    // Also trigger initial extraction after a short delay (for SSR content)
+    setTimeout(handleRouteChange, 500);
 
     return () => {
+      clearTimeout(debounceTimer);
       window.removeEventListener('popstate', handleRouteChange);
       observer.disconnect();
     };

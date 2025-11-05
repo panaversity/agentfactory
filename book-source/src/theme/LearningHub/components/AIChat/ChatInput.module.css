@@ -3,29 +3,31 @@
  */
 
 .inputContainer {
-  border-top: 1px solid var(--ifm-color-emphasis-200, #e0e0e0);
-  padding: 1rem;
-  background: var(--ifm-background-color, #ffffff);
+  border-top: 2px solid var(--ifm-color-emphasis-200, #e5e7eb);
+  padding: 1.25rem;
+  background: var(--ifm-background-surface-color, #ffffff);
 }
 
 .textarea {
   width: 100%;
-  min-height: 44px;
+  min-height: 48px;
   max-height: 150px;
-  padding: 0.75rem;
-  border: 1px solid var(--ifm-color-emphasis-300, #dadde1);
-  border-radius: 8px;
+  padding: 0.875rem 1rem;
+  border: 2px solid var(--ifm-color-emphasis-300, #d1d5db);
+  border-radius: 12px;
   font-family: inherit;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   line-height: 1.5;
   resize: none;
   overflow-y: auto;
-  transition: border-color 150ms ease;
+  transition: all 200ms ease;
+  background: var(--ifm-background-color, #ffffff);
 }
 
 .textarea:focus {
   outline: none;
-  border-color: var(--ifm-color-primary, #2e8555);
+  border-color: var(--ifm-color-primary, #10b981);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
 }
 
 .textarea:disabled {
@@ -52,30 +54,33 @@
 }
 
 .sendButton {
-  padding: 0.5rem 1.5rem;
-  background: var(--ifm-color-primary, #2e8555);
+  padding: 0.625rem 1.75rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: white;
   border: none;
-  border-radius: 6px;
-  font-size: 0.875rem;
-  font-weight: 500;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 150ms ease;
+  transition: all 200ms ease;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
 }
 
 .sendButton:hover:not(:disabled) {
-  background: var(--ifm-color-primary-dark, #258351);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
 }
 
 .sendButton:active:not(:disabled) {
   transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
 }
 
 .sendButton:disabled {
-  background: var(--ifm-color-emphasis-300, #dadde1);
+  background: var(--ifm-color-emphasis-300, #d1d5db);
   cursor: not-allowed;
-  opacity: 0.6;
+  opacity: 0.5;
+  box-shadow: none;
 }
 
 .hint {

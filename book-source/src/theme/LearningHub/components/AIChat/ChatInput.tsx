@@ -13,7 +13,7 @@ interface ChatInputProps {
   placeholder?: string;
 }
 
-export function ChatInput({ onSend, disabled = false, placeholder = 'Ask a question...' }: ChatInputProps) {
+export function ChatInput({ onSend, disabled = false, placeholder = 'Ask a question about this chapter...' }: ChatInputProps) {
   const [message, setMessage] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 

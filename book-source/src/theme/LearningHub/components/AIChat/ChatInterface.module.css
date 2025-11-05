@@ -24,25 +24,28 @@
   justify-content: center;
   text-align: center;
   padding: 3rem 1.5rem;
-  color: var(--ifm-color-emphasis-600, #606770);
+  min-height: 300px;
 }
 
 .emptyIcon {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
-  opacity: 0.6;
+  opacity: 0.7;
+  filter: grayscale(0.3);
 }
 
 .emptyState h3 {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  color: var(--ifm-color-emphasis-900, #1c1e21);
+  color: var(--ifm-heading-color);
   margin: 0 0 0.5rem;
 }
 
 .emptyState p {
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   margin: 0;
+  color: var(--ifm-color-emphasis-700);
+  max-width: 300px;
 }
 
 /* Loading Indicator */
@@ -98,16 +101,18 @@
 .errorMessage {
   display: flex;
   gap: 0.75rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  background: var(--ifm-color-danger-contrast-background, #fff5f5);
-  border: 1px solid var(--ifm-color-danger-light, #f5b5b5);
-  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 1rem;
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.1);
 }
 
 .errorIcon {
   font-size: 1.5rem;
   flex-shrink: 0;
+  color: #dc2626;
 }
 
 .errorContent {
@@ -116,8 +121,9 @@
 
 .errorTitle {
   font-weight: 600;
-  color: var(--ifm-color-danger-darker, #a52a2a);
-  margin: 0 0 0.25rem;
+  color: #dc2626;
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
   font-size: 0.875rem;
 }
 

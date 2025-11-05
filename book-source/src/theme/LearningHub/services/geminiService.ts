@@ -22,10 +22,13 @@ export class GeminiService {
    */
   private initialize(): void {
     try {
-      const apiKey = process.env.GEMINI_API_KEY || '';
+      // Get API key from window object or use hardcoded development key
+      // @ts-ignore - Custom window property
+      const apiKey = (typeof window !== 'undefined' && window.GEMINI_API_KEY) || 
+                     'AIzaSyCTG0J2ZbgrEBjARsTowtrms_U583gr04w'; // Development key
       
       if (!apiKey) {
-        console.warn('[GeminiService] GEMINI_API_KEY not found in environment');
+        console.warn('[GeminiService] GEMINI_API_KEY not found');
         return;
       }
 

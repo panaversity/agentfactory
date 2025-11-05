@@ -48,10 +48,25 @@ function learningHubReducer(
         chatHistory: newChatHistory,
       };
 
+    case 'UPDATE_CHAT_MESSAGE':
+      return {
+        ...state,
+        chatHistory: state.chatHistory.map(msg =>
+          msg.id === action.payload.id ? action.payload : msg
+        ),
+      };
+
     case 'CLEAR_CHAT_HISTORY':
       return {
         ...state,
         chatHistory: [],
+      };
+
+    case 'CLEAR_PAGE_CHAT':
+      // Keep messages from OTHER pages, remove messages for this specific page
+      return {
+        ...state,
+        chatHistory: state.chatHistory.filter(msg => msg.pageUrl !== action.payload),
       };
 
     case 'ADD_HIGHLIGHT':

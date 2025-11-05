@@ -161,7 +161,9 @@ export type LearningHubAction =
   | { type: 'TOGGLE_SIDEBAR' }
   | { type: 'SET_ACTIVE_TAB'; payload: TabName }
   | { type: 'ADD_CHAT_MESSAGE'; payload: ChatMessage }
+  | { type: 'UPDATE_CHAT_MESSAGE'; payload: ChatMessage }
   | { type: 'CLEAR_CHAT_HISTORY' }
+  | { type: 'CLEAR_PAGE_CHAT'; payload: string } // pageUrl
   | { type: 'ADD_HIGHLIGHT'; payload: Highlight }
   | { type: 'DELETE_HIGHLIGHT'; payload: string } // highlight ID
   | { type: 'UPDATE_PROGRESS'; payload: ProgressRecord }

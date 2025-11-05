@@ -7,10 +7,37 @@ import React, { Suspense, lazy } from 'react';
 import { useLearningHub } from './context/LearningHubContext';
 import { LearningHubToggle } from './LearningHubToggle';
 import { usePageContent } from './hooks/usePageContent';
+import { useGeminiChat } from './hooks/useGeminiChat';
 import styles from './styles/LearningHub.module.css';
 
 // Lazy load tab components
 const ChatInterface = lazy(() => import('./components/AIChat/ChatInterface').then(m => ({ default: m.ChatInterface })));
+
+// Wrapper component to use the chat hook
+function ChatInterfaceWrapper({ pageContent }: { pageContent: any }) {
+  // Log when this component renders
+  console.log('[ChatInterfaceWrapper] Rendering with pageContent:', {
+    url: pageContent.url,
+    title: pageContent.title,
+    contentLength: pageContent.content?.length || 0,
+  });
+
+  const { messages, isLoading, error, sendMessage, retryLastMessage } = useGeminiChat(
+    pageContent.url,
+    pageContent.title,
+    pageContent.content
+  );
+
+  return (
+    <ChatInterface
+      messages={messages}
+      onSendMessage={sendMessage}
+      isLoading={isLoading}
+      error={error}
+      onRetry={retryLastMessage}
+    />
+  );
+}
 
 export function LearningHub() {
   const { state, dispatch } = useLearningHub();
@@ -87,7 +114,7 @@ export function LearningHub() {
         <div className={styles.sidebarContent} role="tabpanel" id={`${state.activeTab}-panel`}>
           <Suspense fallback={<div className={styles.loadingSpinner}>Loading...</div>}>
             {state.activeTab === 'chat' && (
-              <div>Chat interface will be integrated here</div>
+              <ChatInterfaceWrapper key={pageContent.url} pageContent={pageContent} />
             )}
             {state.activeTab === 'highlights' && (
               <div>Highlights feature coming soon</div>

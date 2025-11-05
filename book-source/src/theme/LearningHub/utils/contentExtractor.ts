@@ -39,11 +39,29 @@ export function extractPageContent(): {
     // Clone the element to avoid modifying DOM
     const clone = contentElement.cloneNode(true) as HTMLElement;
 
-    // Remove navigation elements, code blocks, and other non-content
-    clone.querySelectorAll('nav, .table-of-contents, .theme-code-block, button').forEach(el => el.remove());
+    // Remove only navigation and UI elements (keep code blocks for context!)
+    clone.querySelectorAll('nav, .table-of-contents, button, .pagination-nav, .theme-doc-footer').forEach(el => el.remove());
 
+    // Get text content, preserving structure
     content = clone.textContent?.trim() || '';
+    
+    // If content is empty or too short, try alternative selectors
+    if (content.length < 100) {
+      const docContent = document.querySelector('.theme-doc-markdown') || 
+                        document.querySelector('[class*="docItemContainer"]');
+      if (docContent) {
+        content = docContent.textContent?.trim() || '';
+      }
+    }
   }
+
+  // Debug logging
+  console.log('[ContentExtractor] Extracted:', {
+    title,
+    headingsCount: headings.length,
+    contentLength: content.length,
+    contentPreview: content.substring(0, 300),
+  });
 
   // Calculate word count (approximate)
   const wordCount = content.split(/\s+/).filter(word => word.length > 0).length;

@@ -5,20 +5,23 @@
 
 .message {
   margin-bottom: 1rem;
-  padding: 0.75rem;
-  border-radius: 8px;
-  animation: fadeIn 200ms ease;
+  padding: 0.875rem 1rem;
+  border-radius: 12px;
+  animation: fadeIn 250ms ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .userMessage {
-  background: var(--ifm-color-primary-lightest, #e8f5e9);
-  margin-left: 2rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  margin-left: 3rem;
   border-bottom-right-radius: 4px;
+  color: white;
 }
 
 .assistantMessage {
-  background: var(--ifm-color-emphasis-100, #f5f6f7);
-  margin-right: 2rem;
+  background: var(--ifm-background-surface-color, #ffffff);
+  border: 1px solid var(--ifm-color-emphasis-200, #e5e7eb);
+  margin-right: 3rem;
   border-bottom-left-radius: 4px;
 }
 
@@ -27,27 +30,50 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .role {
-  font-weight: 600;
-  color: var(--ifm-color-emphasis-800, #333);
+  font-weight: 700;
+  opacity: 0.9;
 }
 
 .userMessage .role {
-  color: var(--ifm-color-primary-dark, #258351);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.assistantMessage .role {
+  color: var(--ifm-color-primary);
 }
 
 .timestamp {
-  color: var(--ifm-color-emphasis-600, #606770);
+  opacity: 0.7;
+  font-size: 0.65rem;
+}
+
+.userMessage .timestamp {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.assistantMessage .timestamp {
+  color: var(--ifm-color-emphasis-600);
 }
 
 .content {
-  color: var(--ifm-color-emphasis-900, #1c1e21);
-  line-height: 1.5;
+  line-height: 1.6;
   white-space: pre-wrap;
   word-break: break-word;
+  font-size: 0.9rem;
+}
+
+.userMessage .content {
+  color: white;
+}
+
+.assistantMessage .content {
+  color: var(--ifm-color-emphasis-900);
 }
 
 @keyframes fadeIn {
