@@ -1,8 +1,59 @@
 ---
 title: "Claude Code vs Gemini CLI - Tool Comparison"
+chapter: 11
+lesson: 8
+duration_minutes: 22
 sidebar_position: 8
 description: "Learn when to use Claude Code vs Gemini CLI based on context needs, task complexity, and project size"
 keywords: [Claude Code, Gemini CLI, tool comparison, AI tool selection, context window, AIDD tools]
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
+skills:
+  - name: "Comparing AI Development Tools"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Analyze"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can analyze differences between Claude Code (200K context, selective loading, deep reasoning) and Gemini CLI (2M context, massive loading, pattern analysis)"
+
+  - name: "Selecting Appropriate AI Tool"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can select the right tool based on task requirements (project size, context needs, reasoning depth, implementation vs exploration)"
+
+  - name: "Understanding Context Window Tradeoffs"
+    proficiency_level: "B1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can explain tradeoffs between large context windows (more information but slower) vs smaller windows (faster but requires careful selection)"
+
+learning_objectives:
+  - objective: "Compare context management strategies of Claude Code vs Gemini CLI"
+    proficiency_level: "B1"
+    bloom_level: "Analyze"
+    assessment_method: "Student creates comparison table highlighting context window size, loading strategy, and use cases for each tool"
+
+  - objective: "Select the appropriate tool for specific development scenarios"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Given 5-7 development scenarios, student chooses correct tool with justification based on context requirements"
+
+  - objective: "Explain the tradeoffs between context window sizes"
+    proficiency_level: "B1"
+    bloom_level: "Understand"
+    assessment_method: "Student articulates when large context windows help (exploration, refactoring) vs hurt (overwhelming, slow) productivity"
+
+cognitive_load:
+  new_concepts: 6
+  assessment: "6 new concepts (Claude Code characteristics, Gemini CLI characteristics, Context window tradeoffs, Tool selection criteria, Use case mapping, Practical decision framework) within B1 limit of 10 ✓"
+
+differentiation:
+  extension_for_advanced: "Experiment with both tools on same project to compare outputs; research additional AI coding tools (Cursor, Aider, GitHub Copilot) and their context strategies; design hybrid workflow using multiple tools"
+  remedial_for_struggling: "Focus on kitchen knife analogy and one clear use case for each tool; practice with decision tree (small project → Claude Code, large codebase → Gemini CLI); use provided tool selection checklist"
 ---
 
 # Claude Code vs Gemini CLI - Choosing the Right Tool

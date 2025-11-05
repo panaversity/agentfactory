@@ -1,6 +1,6 @@
 ---
 title: "Context Compression & Isolation"
-chapter: 10
+chapter: 11
 lesson: 5
 duration_minutes: 22
 sidebar_position: 5

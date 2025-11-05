@@ -1,6 +1,6 @@
 ---
 title: "Understanding Context Windows"
-chapter: 10
+chapter: 11
 lesson: 2
 duration_minutes: 18
 sidebar_position: 2

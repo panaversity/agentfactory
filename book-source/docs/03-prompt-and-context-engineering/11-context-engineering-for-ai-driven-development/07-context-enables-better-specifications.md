@@ -1,8 +1,59 @@
 ---
 title: "Context Enables Better Specifications"
+chapter: 11
+lesson: 7
+duration_minutes: 25
 sidebar_position: 7
 description: "Learn why rich context is essential for writing clear specifications in AI-native development"
 keywords: [context engineering, specification writing, AI-native development, planning-first, AIDD]
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
+skills:
+  - name: "Understanding Context-Specification Relationship"
+    proficiency_level: "B1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can explain why rich context is prerequisite for writing clear specifications and how poor context leads to vague specs"
+
+  - name: "Applying Context-First Workflow"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can apply context-first workflow (gather context → write spec → implement) instead of jumping directly to implementation"
+
+  - name: "Evaluating Specification Quality"
+    proficiency_level: "B1"
+    category: "Conceptual"
+    bloom_level: "Evaluate"
+    digcomp_area: "Content Creation"
+    measurable_at_this_level: "Student can assess specification quality by checking if sufficient context was gathered before writing it"
+
+learning_objectives:
+  - objective: "Explain the relationship between context quality and specification quality"
+    proficiency_level: "B1"
+    bloom_level: "Understand"
+    assessment_method: "Student articulates how missing context leads to vague specs and poor implementation outcomes"
+
+  - objective: "Apply context-first workflow to real development tasks"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Student demonstrates gathering context before writing specifications in a multi-file project scenario"
+
+  - objective: "Evaluate whether a specification has sufficient contextual foundation"
+    proficiency_level: "B1"
+    bloom_level: "Evaluate"
+    assessment_method: "Given sample specifications, student identifies which have adequate context backing and which need more context gathering"
+
+cognitive_load:
+  new_concepts: 4
+  assessment: "4 new concepts (Context-Spec relationship, Context-first workflow, Developer A vs B comparison, Specification quality criteria) within B1 limit of 10 ✓"
+
+differentiation:
+  extension_for_advanced: "Practice writing specifications for unfamiliar codebases after progressive context loading; compare spec quality before/after context gathering; design multi-phase context loading strategy for complex projects"
+  remedial_for_struggling: "Focus on Developer A vs Developer B side-by-side comparison; practice simple context gathering exercises before attempting specification writing; use provided templates for context checklist"
 ---
 
 # Context Enables Better Specifications

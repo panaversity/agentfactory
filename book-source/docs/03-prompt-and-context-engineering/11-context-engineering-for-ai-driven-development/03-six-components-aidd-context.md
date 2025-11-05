@@ -1,6 +1,6 @@
 ---
 title: "The Six Components of AIDD Context"
-chapter: 10
+chapter: 11
 lesson: 3
 duration_minutes: 25
 sidebar_position: 3

@@ -1,6 +1,6 @@
 ---
 title: "Advanced Context Strategies"
-chapter: 10
+chapter: 11
 lesson: 6
 duration_minutes: 28
 sidebar_position: 6

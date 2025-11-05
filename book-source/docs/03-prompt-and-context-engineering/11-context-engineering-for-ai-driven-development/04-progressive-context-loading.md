@@ -1,6 +1,6 @@
 ---
 title: Progressive Context Loading"
-chapter: 10
+chapter: 11
 lesson: 4
 duration_minutes: 20
 sidebar_position: 4

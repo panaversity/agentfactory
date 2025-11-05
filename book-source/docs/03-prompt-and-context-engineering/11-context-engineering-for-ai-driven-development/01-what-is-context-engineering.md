@@ -1,6 +1,6 @@
 ---
 title: "What is Context Engineering?"
-chapter: 10
+chapter: 11
 lesson: 1
 duration_minutes: 15
 sidebar_position: 1
@@ -139,7 +139,7 @@ Think of it like this:
 
 ### WHY: Why Context Matters More Than You Think
 
-In Chapter 9, you learned prompt engineering—how to phrase your requests clearly. But even the **perfect prompt** fails without proper context.
+In Chapter 10, you learned prompt engineering—how to phrase your requests clearly. But even the **perfect prompt** fails without proper context.
 
 Here's why:
 
@@ -201,7 +201,7 @@ def login(username: str, password: str) -> LoginResult:
 
 ## Context Engineering vs Prompt Engineering
 
-You learned prompt engineering in Chapter 9. Now let's see how context engineering complements it.
+You learned prompt engineering in Chapter 10. Now let's see how context engineering complements it.
 
 ### Quick Comparison
 
