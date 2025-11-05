@@ -61,15 +61,15 @@ Phase 9: Polish & Cross-Cutting
 
 ### Tasks
 
-- [ ] T001 Install dependencies: `pnpm add @google/generative-ai crypto-js date-fns` in book-source/
-- [ ] T002 Install dev dependencies: `pnpm add -D @types/crypto-js msw @playwright/test` in book-source/
-- [ ] T003 Create environment template .env.example with GEMINI_API_KEY placeholder in book-source/
-- [ ] T004 [P] Create TypeScript types directory book-source/src/theme/LearningHub/types/ with index.ts
-- [ ] T005 [P] Create services directory book-source/src/theme/LearningHub/services/
-- [ ] T006 [P] Create hooks directory book-source/src/theme/LearningHub/hooks/
-- [ ] T007 [P] Create components directory book-source/src/theme/LearningHub/components/
-- [ ] T008 [P] Create utils directory book-source/src/theme/LearningHub/utils/
-- [ ] T009 [P] Create styles directory book-source/src/theme/LearningHub/styles/
+- [x] T001 Install dependencies: `pnpm add @google/generative-ai crypto-js date-fns` in book-source/
+- [x] T002 Install dev dependencies: `pnpm add -D @types/crypto-js msw @playwright/test` in book-source/
+- [x] T003 Create environment template .env.example with GEMINI_API_KEY placeholder in book-source/
+- [x] T004 [P] Create TypeScript types directory book-source/src/theme/LearningHub/types/ with index.ts
+- [x] T005 [P] Create services directory book-source/src/theme/LearningHub/services/
+- [x] T006 [P] Create hooks directory book-source/src/theme/LearningHub/hooks/
+- [x] T007 [P] Create components directory book-source/src/theme/LearningHub/components/
+- [x] T008 [P] Create utils directory book-source/src/theme/LearningHub/utils/
+- [x] T009 [P] Create styles directory book-source/src/theme/LearningHub/styles/
 
 ---
 
