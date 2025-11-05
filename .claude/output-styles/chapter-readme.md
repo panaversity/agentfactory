@@ -48,12 +48,6 @@ By the end of this chapter, you'll understand:
 - **[Topic/Framework name]**: [Detailed description - aim for 4-6 bullet points total]
 - **[Topic/Framework name]**: [Detailed description]
 - **[Your strategic positioning / Your path forward / etc.]**: [Final bullet that personalizes learning to the reader's situation]
-
-## What's Next
-
-After completing this chapter, continue to **Chapter [N+1]: [Title]** where [describe the transition and what comes next].
-
-[1-2 sentences showing how this chapter's learning feeds into the next, building anticipation and momentum]
 ```
 
 ## Template Guidance
@@ -93,25 +87,12 @@ After completing this chapter, continue to **Chapter [N+1]: [Title]** where [des
 - **The Snakes & Ladders framework**: Why competing in vertical markets (healthcare, legal, logistics) offers better odds than competing at the consumer layer, and how the game board has fundamentally changed
 - **Super orchestrator economics**: How tiny teams generate billion-dollar value by orchestrating AI to handle the mechanical 90% while humans focus on the creative 10%—from Instagram's 13-person team to Claude Code's single-developer model
 
-### Section: What's Next
-
-**Purpose**: Create strong momentum toward the next chapter and show how learning progresses.
-
-**Requirements**:
-- Start with: "After completing this chapter, continue to **Chapter [N+1]: [Title]** where..."
-- Describe the transition and what comes next (1 sentence)
-- Add 1-2 sentences showing how this chapter's learning feeds into the next
-- Build anticipation with strong, purposeful language
-- Should feel like a chapter ending in a book, not a course syllabus
-
-**Tone**: Forward-looking, building anticipation, showing the learning journey continues
-
 ## Critical Rules
 
 1. **File Naming**: ALWAYS use `README.md` (uppercase), NEVER `readme.md` or `index.md`
-2. **Structure**: Chapters have only TWO sections with headings: **What You'll Learn** and **What's Next** (opening narrative has NO heading)
+2. **Structure**: Chapters have only ONE section with a heading: **What You'll Learn** (opening narrative has NO heading)
 3. **No "Overview" heading**: Start directly with narrative paragraphs connecting to previous chapter
-4. **No subsections**: Do NOT include "Chapter Structure", "Prerequisites", "What Makes This Chapter Unique", "Time Investment", "How to Read This Chapter", etc.
+4. **No subsections**: Do NOT include "Chapter Structure", "Prerequisites", "What Makes This Chapter Unique", "Time Investment", "How to Read This Chapter", "What's Next", etc.
 5. **Learning bullets must be rich**: Each bullet should have **bold topic name**: detailed description (1-2 sentences with specifics)
 6. **Narrative flow**: Write as if speaking directly to the reader; establish context and relevance like storytelling
 7. **Professional Polish**: Publication-quality writing with no typos, clear prose, and engaging tone
@@ -145,12 +126,6 @@ By the end of this chapter, you'll understand:
 - **Spec-Driven Development workflow**: The complete 7-step SDD process (Specify → Plan → Tasks → Implement → Test → Review → Refine) that transforms vibe coding into reliable, repeatable development
 - **Anti-patterns and recovery strategies**: Five common failure modes (over-reliance, context loss, drift, premature complexity, tooling misalignment) and specific techniques to restore productivity
 - **Your development identity**: How to position yourself as an active orchestrator—not a passive consumer—of AI assistance, establishing habits that compound over every future project
-
-## What's Next
-
-After completing this chapter, continue to **Chapter 4: Python Foundations** where you'll apply these collaboration skills to learning Python itself. You'll discover how AI-augmented learning accelerates skill acquisition while building genuine understanding—not just copying code.
-
-The tools and workflows you establish here become your foundation for every technical chapter that follows. You're not just learning Python. You're learning how to learn *with* AI.
 ```
 
 ## Validation Checklist
@@ -164,8 +139,6 @@ The tools and workflows you establish here become your foundation for every tech
 - [ ] Each bullet has format: **Bold topic**: Detailed 1-2 sentence description with specifics
 - [ ] Bullets include concrete details: numbers, examples, frameworks, outcomes
 - [ ] Final bullet often personalizes to reader ("Your strategic positioning", "Your development identity", etc.)
-- [ ] **What's Next** section starts with "After completing this chapter, continue to **Chapter [N+1]: [Title]** where..."
-- [ ] "What's Next" builds anticipation and shows learning progression
 - [ ] Tone is direct, narrative, and engaging ("you", "your", conversational storytelling)
 - [ ] No typos, grammatical errors, or placeholder text
 - [ ] Professional, publication-quality writing throughout
