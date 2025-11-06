@@ -276,7 +276,7 @@ Now let's practice. Below are 5 pairs of prompts—one vague, one specific. Your
 
 ---
 
-**Self-Assessment**: Go through each pair and identify the good prompt. If you got 4 out of 5, you're ready for the next lesson. If you struggled, re-read the "Clear Communication Produces Better Code" section before moving forward.
+**Self-Assessment**: Go through each pair and identify the good prompt. If you correctly identified the good prompt in 4 out of 5 pairs, you're ready for the next lesson. If you struggled, re-read the "Clear Communication Produces Better Code" section before moving forward.
 
 ## Key Takeaways
 
@@ -292,7 +292,11 @@ Now let's test your understanding with a hands-on exercise using an actual AI ag
 
 ### Setup
 
-You'll use **ChatGPT** (web version at chat.openai.com) for this exercise. If you've already set up Claude Code or Gemini CLI from earlier chapters, feel free to use those instead—the concepts are identical.
+You'll use **ChatGPT** (web version at chat.openai.com) for this exercise.
+
+**To get started**: Go to chat.openai.com, create a free account if needed, and start a new chat.
+
+**Alternative**: If you've already set up Claude Code from earlier chapters, you can use that instead—the concepts are identical.
 
 ### The Exercise: Compare Vague vs. Specific Prompts
 

@@ -399,9 +399,8 @@ In this section, you'll experience the difference logic makes by testing three v
 ### Setup
 
 You'll need:
-- **Claude Code** (browser-based, easiest entry point) OR
-- **Gemini CLI** (if you've set up the CLI from Lesson 2)
-- If neither is accessible, **ChatGPT web** works as a fallback
+- **ChatGPT** (web version at chat.openai.com - easiest option)
+- **Alternative**: Claude Code if you've already set it up
 
 ### Test 1: Vague Prompt (No Logic)
 

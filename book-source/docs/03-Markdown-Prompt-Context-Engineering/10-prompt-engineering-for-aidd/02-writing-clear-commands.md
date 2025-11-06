@@ -33,7 +33,7 @@ learning_objectives:
     bloom_level: "Apply"
     assessment_method: "Rewrite exercise with before/after comparison"
 
-  - objective: "Generate working code using Claude Code or Gemini CLI"
+  - objective: "Generate working code using an AI coding agent"
     proficiency_level: "A2"
     bloom_level: "Apply"
     assessment_method: "Hands-on code generation with executed output validation"
@@ -313,6 +313,41 @@ AI fills in all the technical details because you've eliminated ambiguity.
 
 ---
 
+## Common Mistakes to Avoid
+
+As you start writing prompts, watch out for these common pitfalls:
+
+### ❌ **Mistake 1: Vague Requirements**
+**Bad**: "Make an API for my app"
+**Better**: "Create a FastAPI endpoint GET /users/{id} that retrieves a user by ID from PostgreSQL"
+
+**Why it matters**: Vague prompts force AI to guess what you want, leading to generic code that doesn't fit your project.
+
+---
+
+### ❌ **Mistake 2: Missing Action Verb**
+**Bad**: "I need something for user authentication"
+**Better**: "Create a user authentication function with JWT token generation"
+
+**Why it matters**: Without a clear action verb, AI doesn't know whether to create, debug, refactor, or analyze.
+
+---
+
+### ❌ **Mistake 3: No Target Specified**
+**Bad**: "Help me with this code" (what code?)
+**Better**: "Debug the login() function in auth.py that throws KeyError on line 45"
+
+**Why it matters**: AI needs to know exactly what piece of code you're working on.
+
+---
+
+### ✅ **The Pattern That Works**
+Always use: **[Strong Verb] + [Specific Target] + [Clear Outcome]**
+
+Example: "**Create** a Python **function** that **validates email addresses using regex and returns True/False**"
+
+---
+
 ## PRACTICE: Three Exercises (20 minutes total)
 
 ### Exercise 1: Identify Strong Commands (5 minutes)
@@ -403,7 +438,7 @@ Why this is better:
 **Task**:
 1. Choose a simple task you'd like to build (examples below)
 2. Write a prompt using the [Verb] + [Target] + [Outcome] structure
-3. Test it with Claude Code or Gemini CLI
+3. Test it with your AI agent (ChatGPT or Claude Code)
 4. Observe: Does AI understand your intent? Is the output usable?
 
 **Starter ideas** (pick one):
@@ -433,56 +468,19 @@ Why this is better:
 
 ---
 
-## Try With AI: Testing Vague vs. Strong Side-by-Side
+## Try With AI: Test Your Command Structure
 
-This is where the lesson comes alive. You'll see the difference firsthand.
+In Lesson 1, you saw how vague prompts ("Help me with Python code") lead to confusion while specific prompts get immediate results. Now it's time to test the command structure you learned in this lesson.
 
 ### Setup
 
-Open your AI tool (choose one):
-- **Claude Code** (if you have it set up): Recommended for this lesson
-- **Gemini CLI** (if you prefer): Works exactly the same way
-- **ChatGPT web** (free fallback): Open https://chatgpt.com in your browser
-
-If you've already set up an AI companion tool from previous lessons, feel free to use it. The principles work with any AI agent.
+Open your AI tool:
+- **ChatGPT** (web version): Go to chat.openai.com and start a new chat (easiest option)
+- **Alternative**: If you've already set up Claude Code from previous lessons, use that instead
 
 ---
 
-### Test 1: Vague Command (Observe the confusion)
-
-**Copy and paste this prompt exactly**:
-
-```
-Help me with Python code
-```
-
-**Observe**:
-- Does AI understand what you want? Probably not.
-- Does it ask clarifying questions? Most likely.
-- Could you copy-paste the output and use it immediately? Doubtful.
-
-**Note the feeling**: This is what happens without strong commands. AI is intelligent but literal. Vagueness forces it to guess.
-
----
-
-### Test 2: Strong Command (Observe the precision)
-
-**Copy and paste this prompt exactly**:
-
-```
-Create a Python function named add_numbers that takes two integer parameters and returns their sum. Include type hints and a docstring explaining what the function does.
-```
-
-**Observe**:
-- Does AI understand what you want? Exactly.
-- Does it ask clarifying questions? No—it gets to work.
-- Can you copy-paste the output immediately? Yes, probably.
-
-**Note the difference**: Same AI agent. Same capability. But one prompt gets immediate, usable results. The other wastes time.
-
----
-
-### Test 3: Execute Your Own Prompt (Your first milestone)
+### Test Your Own Prompt (Your first milestone)
 
 **Copy your prompt from Exercise 3 above** (the one you wrote yourself).
 

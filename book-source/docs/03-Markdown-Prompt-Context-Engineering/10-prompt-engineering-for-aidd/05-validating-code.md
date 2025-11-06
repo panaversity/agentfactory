@@ -152,30 +152,6 @@ Success criteria: Final code passes all 5 checklist steps ✓
 
 ---
 
-### Pitfalls to Avoid (and How to Fix Them)
-
-These are common mistakes when working with AI-generated code. Use your 5-step checklist to prevent them.
-
-1) Vague Requirements
-- Bad: "Make an API for my app"
-- Better: Specify resource, methods, schemas, errors, tests.
-
-2) Missing Technical Context
-- Bad: "Debug this code" (no stack trace, no environment)
-- Better: Provide error, repro steps, environment, related files.
-
-3) Ignoring Existing Patterns
-- Bad: "Add a user profile endpoint" (no style reference)
-- Better: Include example route/service and ask AI to match it.
-
-4) No Validation Criteria
-- Bad: "Optimize this function"
-- Better: Define target latency, constraints, and invariants to preserve.
-
-5) Accepting First Output
-- Bad: Shipping initial code without checks
-- Better: Apply the 5-step checklist and iterate with targeted fix prompts.
-
 ## Try With AI
 
 Goal: Practice validation by improving a database connection implementation.

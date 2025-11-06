@@ -559,37 +559,17 @@ Follow the exact style, docstring format, and error handling from the example.
 
 ## Try With AI: Seeing Context in Action
 
-Now let's test the power of context with your AI agent.
+In Lessons 1-2, you experienced how specific commands beat vague ones. Now let's see how **4-layer context** transforms generic code into project-specific code.
 
 ### Setup
 
-Use **Claude Code, Gemini CLI, or ChatGPT** (whichever you have access to). You'll run **two prompts** side-by-side to see the dramatic difference context makes.
+**Your AI Tool**: Use **ChatGPT** (web version at chat.openai.com) for this exercise.
 
-### Test 1: Generic Prompt (No Context)
-
-Use this prompt exactly:
-
-```
-Create a function to validate email addresses
-```
-
-**Observe**:
-- What language did AI choose?
-- Does it include type hints?
-- What validation method does it use?
-- Is it styled to match any particular project?
-
-**Expected Output** (generic):
-- Probably Python or JavaScript (random choice)
-- May or may not include type hints
-- Basic regex pattern (generic)
-- No docstring or project-specific styling
-
-**Time to integrate**: 10-15 minutes (need to modify for your project)
+**Alternative**: If you've already set up Claude Code from previous lessons, you can use that instead.
 
 ---
 
-### Test 2: Contextual Prompt (With 4-Layer Context)
+### Test: Contextual Prompt (With 4-Layer Context)
 
 Copy this prompt and **modify the context sections** to match your real project (or use the e-commerce example):
 
@@ -629,24 +609,25 @@ Validate email addresses for user registration. Return True if valid, False othe
 - Is it styled for your project?
 - Can you copy-paste it directly?
 
-**Expected Output** (specific):
+**Expected Output**:
 - Python 3.11 code with type hints ✓
 - Docstring in Google format ✓
 - Clear regex pattern with comments ✓
 - Returns boolean as specified ✓
+- Ready to integrate in 1-2 minutes (not 10-15 minutes like generic code)
 
-**Time to integrate**: 1-2 minutes (copy-paste ready)
+**Compare this to Lesson 1's generic output**: Without context, AI had to guess language, style, and requirements. With 4-layer context, AI generates project-specific code immediately.
 
 ---
 
-### Test 3: Your Exercise 2 Prompt
+### Now Test Your Own Prompt
 
 Run the **contextual prompt you built in Exercise 2** with your AI agent.
 
 If you built it for the user authentication function:
 1. Copy your complete 4-layer context prompt into your AI tool
 2. Run it
-3. **Compare the output to what you got from Test 1 (generic prompt)**
+3. **Observe how the 4 context layers shape the AI's output**
 
 **Reflection Questions**:
 - How much more specific is this AI output?
@@ -680,7 +661,9 @@ If you built it for the user authentication function:
 
 In this final section, you'll use your AI agent to confirm everything you've learned about context.
 
-**Your AI Tool**: Use Claude Code, Gemini CLI, ChatGPT web, or your preferred AI companion. (If you've already set up Claude Code or Gemini CLI from previous lessons, use those. Otherwise, ChatGPT web works perfectly.)
+**Your AI Tool**: Use **ChatGPT** (web version at chat.openai.com) for this exercise.
+
+**Alternative**: If you've already set up Claude Code from previous lessons, you can use that instead.
 
 ### Prompt Set: Context Creates Specificity
 
