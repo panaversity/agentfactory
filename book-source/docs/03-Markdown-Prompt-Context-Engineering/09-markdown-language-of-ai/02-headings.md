@@ -190,44 +190,67 @@ This doesn't make sense without a parent section.
 
 ---
 
-## Practice Exercise
+## Practice Exercise: Task Tracker App (Part 1 - Headings)
 
-Create a specification for a weather app with proper heading hierarchy.
+**Important**: You'll build this **same Task Tracker App specification** across Lessons 2-5. Each lesson adds a new markdown element:
+- **Lesson 2 (now)**: Add headings to create structure
+- **Lesson 3**: Add lists to organize features and steps
+- **Lesson 4**: Add code blocks to show expected output
+- **Lesson 5**: Add links, images, and emphasis to complete it
+
+By Lesson 5, you'll have a complete specification that an AI agent can implement.
+
+### Your Task for Lesson 2
+
+Create the **structure** for a Task Tracker App specification using only headings.
 
 **Requirements:**
-- Add a Level 1 title
-- Include these Level 2 sections: Problem, Features, Expected Output
-- Under Features, add Level 3 headings for: Current Weather, 5-Day Forecast
+- Add a Level 1 title: `# Task Tracker App`
+- Include these Level 2 sections: `## Problem`, `## Features`, `## Expected Output`, `## Installation`
+- Under Features, add Level 3 headings: `### Add Tasks`, `### View Tasks`, `### Mark Complete`, `### Delete Tasks`
 
 **Template to fill in:**
 
 ```text
-# [Your App Title]
+# Task Tracker App
 
 ## Problem
-[Describe what problem this solves]
+[In Lesson 3, you'll add a description here]
 
 ## Features
 
-### Current Weather
-[Describe this feature]
+### Add Tasks
+[Features will be described in Lesson 3]
 
-### 5-Day Forecast
-[Describe this feature]
+### View Tasks
+[Features will be described in Lesson 3]
+
+### Mark Complete
+[Features will be described in Lesson 3]
+
+### Delete Tasks
+[Features will be described in Lesson 3]
 
 ## Expected Output
-[Show what the app should display]
+[In Lesson 4, you'll add a code block showing what the app prints]
+
+## Installation
+[In Lesson 3, you'll add installation steps here]
 ```
+
+**For now**: Just create the heading structure. Leave the sections empty (we'll fill them in later lessons).
 
 ### Validation Checklist
 
-After you write your specification, check these:
+After you write your specification structure, check these:
 
-- [ ] Document has exactly ONE Level 1 heading (the title)
-- [ ] Level 2 headings come directly under Level 1
-- [ ] Level 3 headings come under a Level 2 heading (not alone)
-- [ ] No levels are skipped (no jumping from Level 1 to Level 3)
-- [ ] Each heading describes what its section contains
+- [ ] Document has exactly ONE Level 1 heading (`# Task Tracker App`)
+- [ ] Four Level 2 headings (`## Problem`, `## Features`, `## Expected Output`, `## Installation`)
+- [ ] Four Level 3 headings under `## Features` (Add Tasks, View Tasks, Mark Complete, Delete Tasks)
+- [ ] No levels are skipped (Level 3 headings only appear under Level 2)
+- [ ] Each heading describes what its section will contain
+
+**Save this file!** You'll continue building it in Lessons 3, 4, and 5.
 
 ---
 
@@ -301,7 +324,7 @@ Good headings make your specifications easier for AI to understand, which means 
 
 ## Try With AI
 
-Now let's practice using headings with AI feedback.
+Now let's validate your Task Tracker App heading structure with AI feedback.
 
 ### Setup
 
@@ -309,12 +332,7 @@ Use ChatGPT web (or your AI companion if you've set one up from earlier chapters
 
 ### Exercise
 
-Write a simple specification for any project idea you have. Include:
-- One Level 1 heading (title)
-- Three Level 2 headings (Problem, Features, Expected Output)
-- At least one Level 3 heading under Features
-
-Then ask ChatGPT to review it with these prompts:
+Take the **Task Tracker App specification structure** you created above and ask ChatGPT to review it with these prompts:
 
 **Prompt 1 (Structure Check):**
 
@@ -358,9 +376,14 @@ From **Prompt 3**, you should understand:
 - How the AI agent reads and interprets document structure
 - Confirmation that clear hierarchy = clearer AI-generated code
 
-### Your Task
+### Your Task: Apply the Verification Framework
 
-After the AI responds to all three prompts, compare its feedback to your validation checklist. Did the AI confirm what you checked, or did it catch something you missed?
+After the AI responds to all three prompts, **verify** its feedback using the framework from Lesson 1:
+
+1. **Check against what you know**: Manually count your heading levels. Did you skip any? Does AI's assessment match reality?
+2. **Ask for reasoning**: "Why do you say my structure is correct? What specific elements make it good?"
+3. **Test the claim**: Look at your headings only (no content). Can someone understand the spec structure from headings alone?
+4. **Cross-reference**: Compare your structure to a real GitHub README (search "task tracker" on GitHub and find examples)
 
 ### Reflection
 
@@ -368,12 +391,15 @@ Write a brief reflection (3-5 sentences) answering:
 - What was the most important thing you learned about heading hierarchy?
 - Did the AI's feedback change how you think about document structure?
 - How will you apply this to specifications you write in future lessons?
+- **Did verifying AI's feedback (instead of just accepting it) help you learn more deeply? How?**
 
-### Safety & Verification Note
+### Why Verification Matters Here
 
-When asking AI to review your work:
-- **Don't blindly accept the AI's suggestions** — evaluate if they make sense for your project
-- **Ask clarifying questions** — if the AI suggests a change, ask WHY before implementing it
-- **Test the feedback** — if the AI says your structure is clear, try explaining your project to someone else using just the headings; does it make sense?
+If you accept AI feedback blindly, you're outsourcing your learning. But when you **verify** AI's assessment against:
+- The heading rules you learned
+- Real-world examples (GitHub READMEs)
+- Your own manual checking
 
-Remember: The goal is learning how to structure documents clearly, not just getting AI approval. Use the AI as a thinking partner to improve your skills, not as a judge of your work.
+...you're **building judgment**. That's the goal: not getting AI approval, but developing your own ability to recognize good document structure.
+
+**Save your Task Tracker App file** — you'll add lists to it in Lesson 3!

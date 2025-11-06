@@ -240,47 +240,70 @@ You **must** create an account before verifying email. You **must** verify email
 
 ---
 
-## Practice Exercise
+## Practice Exercise: Task Tracker App (Part 2 - Lists)
 
-Create lists for a simple calculator app specification.
+**Continuing from Lesson 2**: Open the Task Tracker App specification you created in Lesson 2. You'll now **add lists** to organize features and installation steps.
 
-### Part 1: Feature List (Unordered)
+### Your Task for Lesson 3
 
-Write an unordered list of 4 calculator features:
+Add two types of lists to your existing Task Tracker App structure:
+
+**Part 1: Add Feature Descriptions (Unordered Lists)**
+
+Under each Level 3 heading in the Features section, add bullet points describing what that feature does:
 
 ```text
 ## Features
-- [Your feature 1]
-- [Your feature 2]
-- [Your feature 3]
-- [Your feature 4]
+
+### Add Tasks
+- Create tasks with title and description
+- Set optional due dates
+- Assign priority levels (high, medium, low)
+
+### View Tasks
+- Display all tasks with status
+- Filter by priority or due date
+- Show completed and pending separately
+
+### Mark Complete
+- Mark tasks as done
+- Track completion timestamps
+- Move completed tasks to archive
+
+### Delete Tasks
+- Remove tasks permanently
+- Confirm before deleting to prevent accidents
 ```
 
-**Example features**: Addition, subtraction, multiplication, division, memory functions, history of calculations
+**Part 2: Add Installation Steps (Ordered List)**
 
-### Part 2: Installation Steps (Ordered)
-
-Write ordered list of 3 installation steps:
+Fill in the Installation section with numbered steps:
 
 ```text
 ## Installation
-1. [Your step 1]
-2. [Your step 2]
-3. [Your step 3]
+
+1. Install Python 3.9 or higher from python.org
+2. Download the task tracker files from GitHub
+3. Navigate to the project folder: `cd task-tracker`
+4. Run the program: `python tracker.py`
 ```
 
-**Example steps**: Install Python, download files, run program
+**Part 3: Add Problem Description**
+
+Under the Problem section, describe what problem this app solves (1-2 sentences as a paragraph, not a list).
 
 ### Validation Checklist
 
-Check your lists:
+Check your updated specification:
 
-- [ ] Unordered list uses `-` or `*` consistently
-- [ ] Ordered list uses `1.` `2.` `3.` numbering
+- [ ] Feature descriptions use unordered lists (`-`) under each Level 3 heading
+- [ ] Installation uses ordered list (`1. 2. 3. 4.`)
 - [ ] Each list item starts with dash/number + space
-- [ ] Features list has no specific order requirement
-- [ ] Installation steps must be done in that order
-- [ ] No blank lines between items in the same list
+- [ ] Feature lists have no specific order (could be rearranged)
+- [ ] Installation steps must be done in sequence
+- [ ] Problem section is a paragraph (not a list)
+
+**Save this file!** You'll add code blocks in Lesson 4.
 
 ---
 
@@ -359,7 +382,7 @@ Good list usage makes your specifications clearer, which leads to better AI-gene
 
 ## Try With AI
 
-Practice using lists with AI feedback.
+Validate your Task Tracker App lists with AI feedback.
 
 ### Setup
 
@@ -367,11 +390,7 @@ Use ChatGPT web (or your AI companion from earlier chapters).
 
 ### Exercise
 
-Write a specification for any project idea with both list types:
-- One unordered list (features or requirements)
-- One ordered list (installation or usage steps)
-
-Then ask ChatGPT to review it:
+Take your **updated Task Tracker App specification** (now with lists added) and ask ChatGPT to review it:
 
 **Prompt 1 (List Type Check):**
 
@@ -408,9 +427,14 @@ From **Prompt 2**: ChatGPT should be able to count items and understand sequence
 
 From **Prompt 3**: ChatGPT will suggest additional lists to strengthen your specification
 
-### Your Task
+### Your Task: Apply the Verification Framework
 
-After ChatGPT responds, compare its feedback to your validation checklist. Did you use the right list types?
+After ChatGPT responds, **verify** its feedback:
+
+1. **Check against what you know**: Look at your installation steps. Could you do step 3 before step 2? (If no, ordered list is correct)
+2. **Ask for reasoning**: "Why should features be unordered? Could they be reordered without breaking anything?"
+3. **Test the claim**: Try mentally rearranging your feature list. Does the app still make sense?
+4. **Cross-reference**: Look at real GitHub project READMEs. How do they organize features vs. installation steps?
 
 ### Reflection
 
@@ -418,12 +442,14 @@ Write a brief reflection (3-5 sentences):
 - When would you use bullet points vs numbered lists?
 - Did the AI's feedback help you see where lists make specifications clearer?
 - Can you think of a specification where you'd need both list types?
+- **Did manually checking list order (step 1 of verification) teach you something ChatGPT's approval alone wouldn't have?**
 
-### Safety & Verification Note
+### Why Verification Matters Here
 
-When using AI to review your lists:
-- **Check if the AI's suggestions make sense** — Does order actually matter for those steps?
-- **Verify the logic** — If AI says "use ordered list," ask yourself: does step 2 depend on step 1?
-- **Test the reasoning** — Could you do the steps in a different order? If yes, use bullet points.
+ChatGPT might say "your lists look good!" But if you:
+- **Manually test sequence**: Can installation step 3 happen before step 1? (No → proves ordered list is right)
+- **Compare to real examples**: GitHub READMEs consistently use unordered for features, ordered for installation (pattern recognition)
 
-The goal is learning to think about structure, not just following AI suggestions.
+...you're learning the **underlying logic**, not just getting approval.
+
+**Save your Task Tracker App file** — you'll add code blocks in Lesson 4!

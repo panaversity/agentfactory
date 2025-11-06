@@ -273,57 +273,72 @@ Call it with `calculate_total([10, 20, 30])` to get `60`.
 
 ---
 
-## Practice Exercise
+## Practice Exercise: Task Tracker App (Part 3 - Code Blocks)
 
-Create a specification for a simple calculator app that shows both fenced code blocks and inline code.
+**Continuing from Lesson 3**: Open your Task Tracker App specification. You'll now **add code blocks** to show expected output and clarify commands.
 
-### Your Task
+### Your Task for Lesson 4
 
-Write a specification that includes:
+Add code blocks to make your specification more concrete:
 
-1. **A fenced code block** showing expected output when the user adds two numbers
-2. **A fenced code block** with the `python` tag showing example code
-3. **Inline code** in the installation instructions
+**Part 1: Add Expected Output Section**
 
-### Template
+Fill in the "Expected Output" section with a fenced code block showing what the program displays:
 
-**Create a file and fill it in:**
-
-```markdown
-# Calculator App
-
+```text
 ## Expected Output
 
-When the user runs `python calculator.py`, they should see:
+When the user runs `python tracker.py`, they should see:
 
+\`\`\`text
+Task Tracker Menu
+1. Add Task
+2. View Tasks
+3. Mark Complete
+4. Delete Task
+5. Exit
+
+Choose an option: _
+\`\`\`
+
+When viewing tasks, the display looks like:
+
+\`\`\`text
+Your Tasks:
+1. Buy groceries [Pending] - Due: 2025-11-08
+2. Call dentist [Pending] - Due: 2025-11-07
+3. Submit report [Complete] - Done: 2025-11-06
+\`\`\`
 ```
 
-[Your expected output here - show what gets printed]
+**Part 2: Update Installation Commands**
 
-```
+Make sure your installation steps use **inline code** for commands:
 
-## Example Code
-
-```python
-[Your example Python code here]
-```
-
+```text
 ## Installation
 
-1. Install Python 3.9+
-2. Run `[your command here]`
-3. Execute the program with `[your command here]`
+1. Install Python 3.9 or higher from python.org
+2. Download the task tracker files from GitHub
+3. Navigate to the project folder: `cd task-tracker`
+4. Run the program: `python tracker.py`
 ```
+
+**Part 3: Add Language Tags**
+
+Ensure your code blocks have the `text` language tag (since this is program output, not Python code).
 
 ### Validation Checklist
 
-Check your specification:
+Check your updated specification:
 
-- [ ] Expected output is in a fenced code block
-- [ ] Example code is in a fenced code block with `python` tag
-- [ ] Installation commands use inline code (single backticks)
-- [ ] File names use inline code
+- [ ] Expected output section has at least one fenced code block with `text` tag
+- [ ] Code blocks show what the program actually prints (not descriptions)
+- [ ] Installation commands use inline code (`` `cd task-tracker` ``, `` `python tracker.py` ``)
 - [ ] All code blocks have opening AND closing triple backticks
+- [ ] Output is specific (shows actual menu items, not "menu appears")
+
+**Save this file!** You'll add links, images, and emphasis in Lesson 5 to complete it.
 
 ---
 
@@ -390,7 +405,7 @@ Good code block usage = clearer specifications = better AI-generated code.
 
 ## Try With AI
 
-Practice using code blocks with AI feedback.
+Validate your Task Tracker App code blocks with AI feedback — and test execution.
 
 ### Setup
 
@@ -398,12 +413,7 @@ Use ChatGPT web (or your AI companion from earlier chapters).
 
 ### Exercise
 
-Write a specification for a greeting app that includes:
-- Expected output (fenced block)
-- Example code (fenced block with `python` tag)
-- Installation command (inline code)
-
-Then ask ChatGPT:
+Take your **updated Task Tracker App specification** (now with code blocks) and ask ChatGPT:
 
 **Prompt 1 (Structure Check):**
 
@@ -427,11 +437,12 @@ Based on my specification, can you tell:
 3. What commands need to be run?
 \`\`\`
 
-**Prompt 3 (Implementation Test):**
+**Prompt 3 (Implementation + Execution Test):**
 
 \`\`\`
-Can you implement this specification? Generate the Python code
-that matches my expected output.
+Can you implement a simple version of this Task Tracker App specification?
+Generate Python code that shows the main menu and displays sample tasks
+like I specified in the Expected Output section.
 \`\`\`
 
 ### Expected Outcomes
@@ -440,11 +451,30 @@ From **Prompt 1**: ChatGPT confirms your code block syntax is correct
 
 From **Prompt 2**: ChatGPT can parse your specification and understand output format, language, and commands
 
-From **Prompt 3**: ChatGPT generates code that matches your expected output (if your spec was clear)
+From **Prompt 3**: ChatGPT generates Python code matching your expected output
 
-### Your Task
+### Your Task: Execute and Verify
 
-After ChatGPT generates code, check if it matches your expected output exactly. If not, what was unclear in your specification?
+This is where verification gets real. After ChatGPT generates code:
+
+**Step 1: Read the Code First**
+- Don't run code you don't understand
+- Ask ChatGPT: "Explain what each part of this code does"
+
+**Step 2: Save and Run the Code**
+- Copy the code to a file: `tracker.py`
+- Run it: `python tracker.py`
+- **This is critical** — actually execute it!
+
+**Step 3: Compare Output to Your Spec**
+- Does the program output match your Expected Output section exactly?
+- If different, **your specification was unclear** (not wrong, just not precise enough)
+
+**Step 4: Verify Against Framework**
+1. **Check against what you know**: Does the output format match what you specified?
+2. **Ask for reasoning**: "Why did you format the output this way? How does it match my spec?"
+3. **Test the claim**: Run the code multiple times. Does it work consistently?
+4. **Cross-reference**: If confused, search "Python menu program" and compare to real examples
 
 ### Reflection
 
@@ -452,12 +482,19 @@ Write a brief reflection (3-5 sentences):
 - When would you use fenced blocks vs inline code?
 - Did showing expected output help the AI generate correct code?
 - How did language tags improve clarity?
+- **Most important**: Did running the code reveal any gaps in your specification? What would you clarify next time?
 
-### Safety & Verification Note
+### Why Execution Matters
 
-When asking AI to implement your specification:
-- **Check if the generated code matches your output** - Does it print exactly what you specified?
-- **Verify commands are safe** - Don't run installation commands without understanding them
-- **Test the logic** - Does the code do what you intended, not just what you wrote?
+This is the **validation mindset** at its core. If you:
+- ❌ Just ask AI "Is this spec clear?" → You get a generic "Yes!"
+- ✅ Ask AI to implement + actually run the code → You discover if your spec was **truly** clear
 
-The goal is learning to write clear specifications that produce correct implementations.
+**Gaps you might discover**:
+- "The menu appears" → Which menu items? In what order?
+- "Show tasks" → What format? With dates? With status?
+- "User can choose" → How? Type a number? Press a key?
+
+Every time the generated code doesn't match your intent, you learn to write **more precise specifications**.
+
+**Save your Task Tracker App file** — you'll complete it in Lesson 5!

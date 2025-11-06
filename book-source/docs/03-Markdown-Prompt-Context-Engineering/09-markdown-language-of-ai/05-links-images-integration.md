@@ -74,8 +74,9 @@ learning_objectives:
     assessment_method: "Reflection on AI feedback about specification clarity"
 
 cognitive_load:
-  new_concepts: 4
-  assessment: "4 new concepts (emphasis, links, images, specification integration) within A2 limit of 7 ✓"
+  new_concepts: 6
+  assessment: "6 new concepts: (1) emphasis syntax (bold/italic bundled as one pattern), (2) when to use emphasis strategically, (3) link syntax, (4) image syntax, (5) alt text and URL formatting, (6) integrating all prior lessons. Within A2 limit of 7 ✓. Note: This is an integration lesson building on familiar Task Tracker context from Lessons 2-4, which reduces extraneous cognitive load."
+  mitigation_strategy: "Cumulative Task Tracker App exercise (familiar context across 4 lessons) reduces cognitive load by eliminating need to conceptualize new project. Students add new skills to existing, well-understood specification rather than learning new syntax AND new context simultaneously."
 
 differentiation:
   extension_for_advanced: "Explore advanced emphasis patterns (nested emphasis, emphasis in lists); research URL encoding for special characters in links; practice writing more complex specifications with nested feature lists"
@@ -459,57 +460,82 @@ This is what an AI agent reads when you hand them your specification. Because it
 
 ---
 
-## Major Exercise: Your First Complete Specification
+## Major Exercise: Task Tracker App (Part 4 - Complete It!)
 
-Now it's your turn. You're going to write a **complete specification** using all five markdown elements you've learned.
+**Final Step**: Open your Task Tracker App specification from Lessons 2-4. You'll now **complete it** by adding links, images, and emphasis — creating a publication-ready specification.
 
-### Instructions
+### Your Task for Lesson 5
 
-**Use this template** to write your first complete specification. Create a new file and fill in each section:
+Add the final polish to make your specification complete and professional:
+
+**Part 1: Add Emphasis to Key Terms**
+
+Go through your specification and add **bold** to important terms:
 
 ```markdown
-# [Your Project Title]
-
 ## Problem
-[What problem does your project solve? 1-2 sentences]
-
-## Solution
-[How does your project solve it? 1-2 sentences]
+Users forget important tasks because they lack a **simple, offline** task management system.
 
 ## Features
-- [Feature 1]
-- [Feature 2]
-- [Feature 3]
 
-## Expected Output
-Show an example of what your program should produce:
+### Add Tasks
+- Create tasks with **title** and **description**
+- Set **optional due dates**
+- Assign **priority levels** (high, medium, low)
 
+### View Tasks
+- Display all tasks with **status indicator**
+- Filter by priority or due date
+- Show completed and pending **separately**
 ```
-[Your expected output here]
-```
 
+**Part 2: Add Reference Links**
+
+Add a new section with helpful links:
+
+```markdown
 ## Reference Links
-- [Documentation Name](https://replace-with-actual-url.com)
+- [Python datetime documentation](https://docs.python.org/3/library/datetime.html) - for handling due dates
+- [Python file I/O guide](https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files) - for saving tasks to file
+- [Task management best practices](https://en.wikipedia.org/wiki/Task_management) - understanding task tracking concepts
 ```
 
-**Fill in each section** with your project idea, then check your work against the acceptance criteria below.
+**Part 3: Add an Image (Optional but Recommended)**
+
+At the top of your spec, add a screenshot or diagram:
+
+```markdown
+# Task Tracker App
+
+![Task Tracker Screenshot](https://via.placeholder.com/800x200.png?text=Task+Tracker+CLI)
+
+## Problem
+...
+```
+
+Use a placeholder for now (`https://via.placeholder.com/800x200.png?text=Task+Tracker+CLI`). In real projects, you'd replace this with an actual screenshot.
 
 ### Acceptance Criteria
 
-Your specification is complete when:
+Your **complete Task Tracker App specification** is ready when:
 
-- [ ] **Heading hierarchy is correct**: One `#` for title, `##` for sections, no skipped levels
-- [ ] **Feature list is complete**: At least 3 features, each on its own bullet point
-- [ ] **Code block has language tag**: Expected output uses triple backticks with a language identifier (like ` ```python ` or ` ```text `)
-- [ ] **At least 1 working link**: Includes a real URL in `[text](url)` format (not a placeholder)
-- [ ] **Overall clarity**: Someone reading your spec could understand what to build
+- [ ] **Heading hierarchy is correct** (from Lesson 2): One `#` for title, `##` for sections, `###` for feature details
+- [ ] **Lists are appropriate** (from Lesson 3): Unordered for features, ordered for installation steps
+- [ ] **Code blocks show expected output** (from Lesson 4): At least one fenced block with `text` tag showing what the program prints
+- [ ] **Emphasis highlights key terms** (Lesson 5): Bold on important feature names and constraints
+- [ ] **At least 3 working reference links** (Lesson 5): Real URLs to Python docs or relevant resources
+- [ ] **Image is included** (Lesson 5 - optional): Placeholder or actual screenshot at the top
+- [ ] **Overall clarity**: Someone reading your spec could implement this app
 
-### Tips for Success
+### Congratulations!
 
-- **Use emphasis strategically**: Bold feature names and important constraints so they stand out
-- **Find real URLs**: Search Google for actual documentation links (Python docs, APIs, libraries)
-- **Show concrete output**: Your code block should be specific, not vague ("The program prints the reminder" is vague; the example output above is specific)
-- **Keep it concise**: You're writing a specification, not a full design document – 1-2 sentences per section is plenty
+You've just completed a **full specification built across 4 lessons**:
+- **Lesson 2**: Created heading structure
+- **Lesson 3**: Added lists to organize features and steps
+- **Lesson 4**: Added code blocks to show expected behavior
+- **Lesson 5**: Added emphasis, links, and images for clarity
+
+This is **exactly how real specifications are built** — iteratively, adding detail at each stage. You now have a publication-ready spec that an AI agent can implement.
 
 ---
 
@@ -536,7 +562,7 @@ That's **professional-level development** – even if you haven't written a sing
 
 ## Try With AI
 
-Now that you've written your first complete specification, it's time to test if it's clear enough for an AI agent to understand.
+Now test your **complete Task Tracker App specification** with AI implementation and validation.
 
 ### Setup
 Use ChatGPT web (if you haven't set up another AI tool yet). If you already have Claude Code, Gemini CLI, or another AI companion installed from earlier chapters, feel free to use that instead.
@@ -544,21 +570,18 @@ Use ChatGPT web (if you haven't set up another AI tool yet). If you already have
 ### Prompt Set
 
 **Prompt 1 (Initial Validation):**
-Copy your complete specification and paste it into ChatGPT. Then ask:
+Copy your **complete Task Tracker App specification** and paste it into ChatGPT. Then ask:
 
 ```
-Read this specification carefully. Is this specification clear enough
-for you to implement? What parts are clear? What parts are missing
-or confusing?
+Read this Task Tracker App specification carefully. Is this specification
+clear enough for you to implement? What parts are clear? What parts are
+missing or confusing?
 ```
 
-**Expected Output:** ChatGPT will tell you which parts are clear and which need more detail. Common feedback includes:
-- "Feature X is vague – what exactly should happen?"
-- "I don't understand what 'Expected Output' means – can you clarify?"
-- "This is clear! I can implement this."
+**Expected Output:** ChatGPT will tell you which parts are clear and which need more detail.
 
-**Prompt 2 (Clarity Refinement - Optional):**
-If ChatGPT found confusing parts, ask:
+**Prompt 2 (Clarity Refinement - If Needed):**
+If ChatGPT found confusing parts, revise them and ask:
 
 ```
 Based on your feedback, I've revised the unclear parts.
@@ -567,23 +590,69 @@ Here's my improved specification: [paste updated spec]
 Is this clearer now? Can you identify any remaining issues?
 ```
 
-**Expected Output:** ChatGPT confirms that unclear parts are now clearer, or identifies remaining issues. Your specification becomes progressively more clear.
-
-**Prompt 3 (Stretch - Implementation Test):**
-Once your spec is clear, you can ask:
+**Prompt 3 (Full Implementation Test):**
+Once your spec is validated, ask:
 
 ```
-Implement this specification in Python.
-Make the code match the expected output I showed.
+Implement this Task Tracker App specification in Python.
+Make the code match the expected output I showed in the spec.
+Include all features I listed.
 ```
 
-**Expected Output:** ChatGPT generates Python code matching your specification. If the code doesn't match what you wanted, you now know which part of your specification needs more detail.
+### Your Task: Execute and Validate (CRITICAL STEP)
 
-### Safety & Ethics Note
+After ChatGPT generates code, **apply the full verification framework**:
 
-When ChatGPT generates code from your specification:
-- **Always review the code** before running it – understand what it does
-- **Check for errors** – AI-generated code may have bugs
-- **Verify it matches your spec** – does it do what you asked?
+**Step 1: Read the Code**
+- Ask ChatGPT: "Explain the structure of this code. How does it implement each feature I specified?"
 
-This validation step teaches you to work *with* AI, not just take its output as fact.
+**Step 2: Save and Run**
+- Save to `task_tracker.py`
+- Run: `python task_tracker.py`
+- **Actually execute it** — this is not optional!
+
+**Step 3: Compare to Your Specification**
+Go through your spec section by section:
+- [ ] Does the menu match your Expected Output?
+- [ ] Do all 4 features (Add/View/Mark/Delete) work?
+- [ ] Does the output format match exactly?
+- [ ] Are the installation steps correct?
+
+**Step 4: Identify Gaps**
+If anything doesn't match:
+1. **Which part of your spec was unclear?** (Be specific: "I said 'show tasks' but didn't specify format")
+2. **How would you revise it?** (Example: Change to "Show tasks in format: `1. Task name [Status] - Due: Date`")
+3. **Ask ChatGPT to regenerate** using your clearer spec
+
+**Step 5: Verify Against Framework**
+1. **Check against what you know**: Does the implementation use concepts from earlier chapters (Python basics, file I/O)?
+2. **Ask for reasoning**: "Why did you implement Add Tasks this way? How does it match my spec?"
+3. **Test edge cases**: What happens if you try to delete a non-existent task? Did your spec cover this?
+4. **Cross-reference**: Search GitHub for "Python task tracker CLI" — how does yours compare?
+
+### Reflection
+
+Write a reflection (5-7 sentences) answering:
+- Did your complete specification (built across 4 lessons) produce working code?
+- What gaps did you discover only after running the code?
+- How would you improve your specification if you wrote it again?
+- **Most critical**: What did running the code teach you that asking "Is this clear?" never would have?
+
+### Why This Full-Cycle Validation Matters
+
+This exercise teaches the **complete AI-native development loop**:
+
+1. **Write specification** (Lessons 2-5) → Intent Layer
+2. **AI generates code** (Prompt 3) → Reasoning + Implementation Layers
+3. **Execute and compare** (Validation steps) → Testing Layer
+4. **Identify gaps** (Verification framework) → Iteration Layer
+5. **Revise spec** (Based on execution results) → Back to Intent Layer
+
+**You're not just learning markdown** — you're learning the entire workflow of specification-driven AI development.
+
+If you blindly accepted ChatGPT saying "This spec is clear!" without running the code, you'd miss critical lessons about:
+- How vague language creates ambiguous implementations
+- How missing edge cases lead to broken software
+- How precise specifications produce reliable code
+
+**This is professional-level validation.** Even with all the markdown skills you've learned, the real test is: **Does your spec produce working code?**
