@@ -584,83 +584,14 @@ pre code {
 
 /* Ensure mobile sidebar appears above all content */
 @media (max-width: 996px) {
-    /* Fix hamburger toggle button visibility and interaction */
-    .navbar__toggle {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: 40px !important;
-        height: 40px !important;
-        padding: 8px !important;
-        cursor: pointer !important;
-        touch-action: manipulation !important;
-        -webkit-tap-highlight-color: transparent !important;
-        position: relative !important;
-        z-index: 1001 !important;
-        background: transparent !important;
-        border: none !important;
-        outline: none !important;
-    }
-
-    /* Ensure hamburger icon is visible */
-    .navbar__toggle svg {
-        display: block !important;
-        width: 24px !important;
-        height: 24px !important;
-        color: var(--ifm-navbar-link-color) !important;
-    }
-
-    /* Safe area for devices with notches (iPhone X and newer) */
-    .navbar {
-        padding-left: env(safe-area-inset-left) !important;
-        padding-right: env(safe-area-inset-right) !important;
-    }
-
     /* Docusaurus navbar sidebar for mobile */
     .navbar-sidebar {
         z-index: 1000 !important;
-        position: fixed !important;
-        top: 0 !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        transform: translateX(0) !important;
-        visibility: visible !important;
-        opacity: 1 !important;
     }
-
-    /* Ensure sidebar content is visible */
-    .navbar-sidebar__items {
-        display: flex !important;
-        flex-direction: column !important;
-    }
-
+    
     /* Backdrop behind the mobile menu */
     .navbar-sidebar__backdrop {
         z-index: 999 !important;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        background: rgba(0, 0, 0, 0.5) !important;
-        touch-action: none !important;
-    }
-
-    /* Ensure navbar items are touchable on mobile */
-    .navbar__item,
-    .navbar__link {
-        touch-action: manipulation !important;
-        -webkit-tap-highlight-color: transparent !important;
-    }
-
-    /* Fix for iOS Safari position fixed issues */
-    @supports (-webkit-touch-callout: none) {
-        .navbar-sidebar {
-            /* Force hardware acceleration on iOS */
-            -webkit-transform: translateZ(0) !important;
-            transform: translateZ(0) !important;
-        }
     }
 }
 
