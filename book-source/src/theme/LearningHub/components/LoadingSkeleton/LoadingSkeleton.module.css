@@ -1,0 +1,161 @@
+.skeletonContainer {
+  padding: 16px;
+}
+
+/* Base skeleton styles */
+.skeletonLine {
+  height: 12px;
+  background: linear-gradient(
+    90deg,
+    var(--ifm-color-emphasis-200) 25%,
+    var(--ifm-color-emphasis-300) 50%,
+    var(--ifm-color-emphasis-200) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.skeletonLine.veryShort {
+  width: 30%;
+}
+
+.skeletonLine.short {
+  width: 50%;
+}
+
+.skeletonLine.medium {
+  width: 70%;
+}
+
+.skeletonLine.long {
+  width: 90%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Chat skeleton */
+.chatSkeleton {
+  margin-bottom: 16px;
+}
+
+.skeletonMessage {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: var(--ifm-background-surface-color);
+  border-radius: 8px;
+}
+
+.skeletonAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    var(--ifm-color-emphasis-200) 25%,
+    var(--ifm-color-emphasis-300) 50%,
+    var(--ifm-color-emphasis-200) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  flex-shrink: 0;
+}
+
+.skeletonContent {
+  flex: 1;
+}
+
+/* Highlights skeleton */
+.highlightSkeleton {
+  margin-bottom: 12px;
+}
+
+.skeletonHighlightCard {
+  padding: 16px;
+  background: var(--ifm-background-surface-color);
+  border-radius: 8px;
+  border-left: 4px solid var(--ifm-color-emphasis-200);
+}
+
+/* Quiz skeleton */
+.quizSkeleton {
+  margin-bottom: 16px;
+}
+
+.skeletonQuizCard {
+  padding: 20px;
+  background: var(--ifm-background-surface-color);
+  border-radius: 8px;
+}
+
+.skeletonOptions {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeletonOption {
+  height: 40px;
+  background: linear-gradient(
+    90deg,
+    var(--ifm-color-emphasis-200) 25%,
+    var(--ifm-color-emphasis-300) 50%,
+    var(--ifm-color-emphasis-200) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
+
+/* Concepts skeleton */
+.conceptSkeleton {
+  margin-bottom: 12px;
+}
+
+.skeletonConceptCard {
+  padding: 16px;
+  background: var(--ifm-background-surface-color);
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Progress skeleton */
+.progressSkeleton {
+  padding: 16px;
+}
+
+.skeletonStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.skeletonStatCard {
+  padding: 16px;
+  background: var(--ifm-background-surface-color);
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Dark mode adjustments */
+html[data-theme='dark'] .skeletonLine,
+html[data-theme='dark'] .skeletonAvatar,
+html[data-theme='dark'] .skeletonOption {
+  background: linear-gradient(
+    90deg,
+    var(--ifm-color-emphasis-100) 25%,
+    var(--ifm-color-emphasis-200) 50%,
+    var(--ifm-color-emphasis-100) 75%
+  );
+  background-size: 200% 100%;
+}

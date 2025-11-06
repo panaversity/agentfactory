@@ -1,0 +1,128 @@
+.apiKeyStatus {
+  margin: 16px;
+  padding: 20px;
+  background: var(--ifm-color-info-lightest);
+  border: 2px solid var(--ifm-color-info-light);
+  border-radius: 8px;
+  display: flex;
+  gap: 16px;
+}
+
+.statusIcon {
+  font-size: 32px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.statusContent {
+  flex: 1;
+}
+
+.statusTitle {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ifm-color-info-darkest);
+}
+
+.statusDescription {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ifm-color-info-dark);
+}
+
+.setupSteps {
+  margin: 12px 0;
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.setupSteps li {
+  margin-bottom: 6px;
+}
+
+.setupSteps code {
+  padding: 2px 6px;
+  background: var(--ifm-color-info-lighter);
+  border-radius: 3px;
+  font-size: 13px;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.setupSteps a {
+  color: var(--ifm-color-primary);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.setupSteps a:hover {
+  text-decoration: none;
+}
+
+.advancedSetup {
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--ifm-background-surface-color);
+  border-radius: 6px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.advancedSetup summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ifm-color-primary);
+  user-select: none;
+}
+
+.advancedSetup summary:hover {
+  text-decoration: underline;
+}
+
+.warningText {
+  margin: 8px 0;
+  font-size: 12px;
+  color: var(--ifm-color-warning-dark);
+  line-height: 1.4;
+}
+
+.apiKeyInput {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: var(--ifm-font-family-monospace);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+
+.apiKeyInput:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest);
+}
+
+/* Dark mode adjustments */
+html[data-theme='dark'] .apiKeyStatus {
+  background: rgba(84, 199, 236, 0.1);
+  border-color: rgba(84, 199, 236, 0.3);
+}
+
+html[data-theme='dark'] .statusTitle {
+  color: #54c7ec;
+}
+
+html[data-theme='dark'] .statusDescription {
+  color: var(--ifm-color-emphasis-700);
+}
+
+html[data-theme='dark'] .setupSteps code {
+  background: var(--ifm-color-emphasis-100);
+}
+
+html[data-theme='dark'] .warningText {
+  color: #ffc107;
+}

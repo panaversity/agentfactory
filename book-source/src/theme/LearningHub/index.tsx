@@ -3,7 +3,7 @@
  * Lazy loading, toggle state, tab navigation
  */
 
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useRef, useCallback } from 'react';
 import { useLearningHub } from './context/LearningHubContext';
 import { LearningHubToggle } from './LearningHubToggle';
 import { usePageContent } from './hooks/usePageContent';
@@ -13,6 +13,10 @@ import { useKeyConcepts } from './hooks/useKeyConcepts';
 import { useProgress } from './hooks/useProgress';
 import { HighlightManager } from './components/SmartHighlights/HighlightManager';
 import { ProgressDashboard } from './components/ProgressTracker/ProgressDashboard';
+import { ErrorBoundary } from './components/ErrorBoundary';
+import { LoadingSkeleton } from './components/LoadingSkeleton/LoadingSkeleton';
+import { ConnectionStatus } from './components/ConnectionStatus/ConnectionStatus';
+import { APIKeyStatus } from './components/APIKeyStatus/APIKeyStatus';
 // import { HighlightRenderer } from './components/SmartHighlights/HighlightRenderer'; // Disabled - highlights only in sidebar
 import styles from './styles/LearningHub.module.css';
 
@@ -103,6 +107,21 @@ export function LearningHub() {
     50 // TODO: Get actual total chapters from sidebar config
   );
 
+  // Tab switching debounce (300ms) to cancel in-flight AI requests
+  const tabSwitchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const pendingTabRef = useRef<typeof state.activeTab | null>(null);
+
+  // Sidebar resize state
+  const [sidebarWidth, setSidebarWidth] = React.useState(() => {
+    if (typeof localStorage !== 'undefined') {
+      const stored = localStorage.getItem('learningHub_sidebarWidth');
+      return stored ? parseInt(stored, 10) : 400;
+    }
+    return 400;
+  });
+  const [isResizing, setIsResizing] = React.useState(false);
+  const sidebarRef = useRef<HTMLElement>(null);
+
   // Auto-extract concepts when concepts tab is opened
   React.useEffect(() => {
     if (state.activeTab === 'concepts' && concepts.length === 0 && !conceptsLoading && !conceptsError && pageContent.isValidPage) {
@@ -122,6 +141,84 @@ export function LearningHub() {
     updateHighlightCount(highlights.length);
   }, [highlights.length, updateHighlightCount]);
 
+  // Keyboard shortcuts: Ctrl+Shift+L to toggle, Escape to close
+  React.useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Ctrl+Shift+L (or Cmd+Shift+L on Mac) to toggle
+      if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key === 'L') {
+        event.preventDefault();
+        dispatch({ type: 'TOGGLE_SIDEBAR' });
+      }
+      // Escape to close
+      else if (event.key === 'Escape' && state.isOpen) {
+        event.preventDefault();
+        dispatch({ type: 'TOGGLE_SIDEBAR' });
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [state.isOpen, dispatch]);
+
+  // Cleanup timeout on unmount
+  React.useEffect(() => {
+    return () => {
+      if (tabSwitchTimeoutRef.current) {
+        clearTimeout(tabSwitchTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Handle sidebar resize
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsResizing(true);
+  }, []);
+
+  React.useEffect(() => {
+    if (!isResizing) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!sidebarRef.current) return;
+      
+      // Calculate new width based on distance from right edge
+      const newWidth = window.innerWidth - e.clientX;
+      
+      // Clamp between min and max
+      const clampedWidth = Math.max(300, Math.min(800, newWidth));
+      
+      setSidebarWidth(clampedWidth);
+      
+      // Update CSS variable
+      if (sidebarRef.current) {
+        sidebarRef.current.style.setProperty('--sidebar-width', `${clampedWidth}px`);
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsResizing(false);
+      
+      // Save to localStorage
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('learningHub_sidebarWidth', sidebarWidth.toString());
+      }
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+
+    // Prevent text selection while resizing
+    document.body.style.userSelect = 'none';
+    document.body.style.cursor = 'ew-resize';
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.body.style.userSelect = '';
+      document.body.style.cursor = '';
+    };
+  }, [isResizing, sidebarWidth]);
+
   // Log page content whenever it changes
   console.log('[LearningHub] 📖 Page content state:', {
     url: pageContent.url,
@@ -132,20 +229,29 @@ export function LearningHub() {
     currentBrowserUrl: typeof window !== 'undefined' ? window.location.pathname : '',
   });
 
-  // Don't render on non-documentation pages (moved AFTER all hooks)
-  if (!pageContent.isValidPage) {
-    return null;
-  }
-
-  const handleToggle = () => {
+  // Define handlers (must be after all hooks)
+  const handleToggle = useCallback(() => {
     dispatch({ type: 'TOGGLE_SIDEBAR' });
-  };
+  }, [dispatch]);
 
-  const handleTabChange = (tab: typeof state.activeTab) => {
-    dispatch({ type: 'SET_ACTIVE_TAB', payload: tab });
-  };
+  const handleTabChange = useCallback((tab: typeof state.activeTab) => {
+    // Clear any pending tab switches
+    if (tabSwitchTimeoutRef.current) {
+      clearTimeout(tabSwitchTimeoutRef.current);
+    }
 
-  const handleHighlightClick = (highlight: any) => {
+    // Store pending tab
+    pendingTabRef.current = tab;
+
+    // Debounce tab switch by 300ms to allow cancelling in-flight AI requests
+    tabSwitchTimeoutRef.current = setTimeout(() => {
+      console.log('[LearningHub] Tab switch debounce complete, switching to:', tab);
+      dispatch({ type: 'SET_ACTIVE_TAB', payload: tab });
+      pendingTabRef.current = null;
+    }, 300);
+  }, [dispatch]);
+
+  const handleHighlightClick = useCallback((highlight: any) => {
     // Scroll to the highlighted text on the page
     const highlightElement = document.querySelector(`mark[data-highlight-id="${highlight.id}"]`) as HTMLElement;
     if (highlightElement) {
@@ -159,9 +265,9 @@ export function LearningHub() {
         }, 500);
       }
     }
-  };
+  }, []);
 
-  const handleConceptClick = (concept: any) => {
+  const handleConceptClick = useCallback((concept: any) => {
     // Try to scroll to section if sectionId provided
     if (concept.sectionId) {
       const element = document.getElementById(concept.sectionId);
@@ -179,28 +285,49 @@ export function LearningHub() {
         break;
       }
     }
-  };
+  }, []);
+
+  // Don't render on non-documentation pages (MUST be after ALL hooks)
+  if (!pageContent.isValidPage) {
+    return null;
+  }
 
   return (
     <>
       <LearningHubToggle isOpen={state.isOpen} onClick={handleToggle} />
 
       <aside
-        className={`${styles.learningHubSidebar} ${state.isOpen ? styles.isOpen : ''}`}
-        aria-label="Learning Hub Sidebar"
+        ref={sidebarRef}
+        className={`${styles.learningHubSidebar} ${state.isOpen ? styles.isOpen : ''} ${isResizing ? styles.resizing : ''}`}
+        role="complementary"
+        aria-label="Learning Hub - AI-powered learning assistant"
         aria-hidden={!state.isOpen}
+        style={{ '--sidebar-width': `${sidebarWidth}px` } as React.CSSProperties}
       >
+        {/* Resize Handle */}
+        <div 
+          className={styles.resizeHandle}
+          onMouseDown={handleMouseDown}
+          aria-label="Resize sidebar"
+        />
         {/* Header */}
         <header className={styles.sidebarHeader}>
-          <h2 className={styles.sidebarTitle}>Learning Hub</h2>
+          <h2 className={styles.sidebarTitle} id="learning-hub-title">Learning Hub</h2>
           <button
             className={styles.closeButton}
             onClick={handleToggle}
-            aria-label="Close sidebar"
+            aria-label="Close Learning Hub sidebar (or press Escape)"
+            title="Close sidebar (Esc)"
           >
             ×
           </button>
         </header>
+
+        {/* Connection & API Status */}
+        <div className={styles.statusBanners}>
+          <ConnectionStatus />
+          <APIKeyStatus />
+        </div>
 
         {/* Tab Navigation */}
         <nav className={styles.tabNavigation} role="tablist">
@@ -253,46 +380,56 @@ export function LearningHub() {
 
         {/* Content Area */}
         <div className={styles.sidebarContent} role="tabpanel" id={`${state.activeTab}-panel`}>
-          <Suspense fallback={<div className={styles.loadingSpinner}>Loading...</div>}>
-            {state.activeTab === 'chat' && (
-              <ChatInterfaceWrapper 
-                key={`${pageContent.url}-${pageContent.content?.length || 0}`} 
-                pageContent={pageContent} 
+          <ErrorBoundary>
+            <Suspense fallback={
+              <LoadingSkeleton 
+                type={state.activeTab === 'chat' ? 'chat' : 
+                      state.activeTab === 'highlights' ? 'highlights' : 
+                      state.activeTab === 'quiz' ? 'quiz' : 
+                      state.activeTab === 'concepts' ? 'concepts' : 'progress'} 
+                count={state.activeTab === 'quiz' ? 1 : 3} 
               />
-            )}
-            {state.activeTab === 'highlights' && (
-              <HighlightsList
-                highlights={highlights}
-                onDelete={deleteHighlight}
-                onHighlightClick={handleHighlightClick}
-              />
-            )}
-            {state.activeTab === 'quiz' && (
-              <QuizInterface />
-            )}
-            {state.activeTab === 'concepts' && (
-              <ConceptsList
-                concepts={concepts}
-                isLoading={conceptsLoading}
-                error={conceptsError}
-                onConceptClick={handleConceptClick}
-                onRetry={() => extractConcepts({
-                  url: pageContent.url,
-                  title: pageContent.title,
-                  content: pageContent.content,
-                })}
-              />
-            )}
-            {state.activeTab === 'progress' && (
-              <ProgressDashboard
-                progress={progress}
-                elapsedTime={elapsedTime}
-                isCurrentPageVisited={isCurrentPageVisited}
-                onClearProgress={clearProgress}
-                recentRecords={getRecentRecords(10)}
-              />
-            )}
-          </Suspense>
+            }>
+              {state.activeTab === 'chat' && (
+                <ChatInterfaceWrapper 
+                  key={`${pageContent.url}-${pageContent.content?.length || 0}`} 
+                  pageContent={pageContent} 
+                />
+              )}
+              {state.activeTab === 'highlights' && (
+                <HighlightsList
+                  highlights={highlights}
+                  onDelete={deleteHighlight}
+                  onHighlightClick={handleHighlightClick}
+                />
+              )}
+              {state.activeTab === 'quiz' && (
+                <QuizInterface />
+              )}
+              {state.activeTab === 'concepts' && (
+                <ConceptsList
+                  concepts={concepts}
+                  isLoading={conceptsLoading}
+                  error={conceptsError}
+                  onConceptClick={handleConceptClick}
+                  onRetry={() => extractConcepts({
+                    url: pageContent.url,
+                    title: pageContent.title,
+                    content: pageContent.content,
+                  })}
+                />
+              )}
+              {state.activeTab === 'progress' && (
+                <ProgressDashboard
+                  progress={progress}
+                  elapsedTime={elapsedTime}
+                  isCurrentPageVisited={isCurrentPageVisited}
+                  onClearProgress={clearProgress}
+                  recentRecords={getRecentRecords(10)}
+                />
+              )}
+            </Suspense>
+          </ErrorBoundary>
         </div>
       </aside>
 

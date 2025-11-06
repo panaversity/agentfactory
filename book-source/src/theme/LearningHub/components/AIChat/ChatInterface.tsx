@@ -25,15 +25,48 @@ export function ChatInterface({
   onRetry 
 }: ChatInterfaceProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const previousMessageCountRef = useRef(messages.length);
+  const userHasScrolledRef = useRef(false);
 
-  // Auto-scroll to bottom when new messages arrive
+  // Track if user has manually scrolled up
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const container = messagesContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = container;
+      const isAtBottom = scrollHeight - scrollTop - clientHeight < 50; // 50px threshold
+      
+      // If user scrolls to bottom, enable auto-scroll again
+      if (isAtBottom) {
+        userHasScrolledRef.current = false;
+      } else {
+        // User scrolled up
+        userHasScrolledRef.current = true;
+      }
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Auto-scroll to bottom only when new messages arrive and user hasn't scrolled up
+  useEffect(() => {
+    const hasNewMessages = messages.length > previousMessageCountRef.current;
+    previousMessageCountRef.current = messages.length;
+
+    // Only auto-scroll if:
+    // 1. There are new messages
+    // 2. User hasn't manually scrolled up
+    if (hasNewMessages && !userHasScrolledRef.current) {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
   }, [messages]);
 
   return (
     <div className={styles.chatInterface}>
-      <div className={styles.messagesContainer}>
+      <div className={styles.messagesContainer} ref={messagesContainerRef}>
         {messages.length === 0 && !isLoading && !error && (
           <div className={styles.emptyState}>
             <div className={styles.emptyIcon}>🤖</div>

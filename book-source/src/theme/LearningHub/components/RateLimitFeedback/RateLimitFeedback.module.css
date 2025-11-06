@@ -1,0 +1,104 @@
+.rateLimitFeedback {
+  padding: 12px 16px;
+  background: var(--ifm-background-surface-color);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 12px;
+}
+
+.limitHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.limitLabel {
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.resetTime {
+  color: var(--ifm-color-emphasis-600);
+  font-size: 11px;
+}
+
+.limitBar {
+  height: 6px;
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.limitProgress {
+  height: 100%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  border-radius: 3px;
+}
+
+.limitProgress.statusHigh {
+  background: linear-gradient(90deg, #4caf50, #66bb6a);
+}
+
+.limitProgress.statusMedium {
+  background: linear-gradient(90deg, #ff9800, #ffa726);
+}
+
+.limitProgress.statusLow {
+  background: linear-gradient(90deg, #f44336, #ef5350);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.limitText {
+  text-align: center;
+}
+
+.limitText span {
+  font-weight: 500;
+}
+
+.statusHigh {
+  color: #4caf50;
+}
+
+.statusMedium {
+  color: #ff9800;
+}
+
+.statusLow {
+  color: #f44336;
+}
+
+/* Dark mode adjustments */
+html[data-theme='dark'] .limitLabel {
+  color: var(--ifm-color-emphasis-900);
+}
+
+html[data-theme='dark'] .resetTime {
+  color: var(--ifm-color-emphasis-700);
+}
+
+html[data-theme='dark'] .limitBar {
+  background: var(--ifm-color-emphasis-100);
+}
+
+html[data-theme='dark'] .statusHigh {
+  color: #66bb6a;
+}
+
+html[data-theme='dark'] .statusMedium {
+  color: #ffa726;
+}
+
+html[data-theme='dark'] .statusLow {
+  color: #ef5350;
+}

@@ -7,7 +7,9 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 400px;
+  width: var(--sidebar-width, 400px);
+  min-width: 300px;
+  max-width: 800px;
   height: 100vh;
   background: var(--ifm-background-surface-color, #ffffff);
   border-left: 1px solid var(--ifm-color-emphasis-200, #e0e0e0);
@@ -21,6 +23,10 @@
   transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
   
   overflow: hidden;
+}
+
+.learningHubSidebar.resizing {
+  transition: none;
 }
 
 .learningHubSidebar.isOpen {
@@ -58,6 +64,49 @@
 
 .closeButton:hover {
   color: var(--ifm-color-emphasis-900, #1c1e21);
+}
+
+/* Resize Handle */
+.resizeHandle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  cursor: ew-resize;
+  z-index: 101;
+  background: transparent;
+  transition: background-color 150ms ease;
+}
+
+.resizeHandle:hover,
+.resizeHandle:active {
+  background: var(--ifm-color-primary, #2e8555);
+}
+
+.resizeHandle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 40px;
+  background: var(--ifm-color-emphasis-300, #d0d7de);
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.resizeHandle:hover::before {
+  opacity: 1;
+}
+
+/* Status Banners */
+.statusBanners {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  background: var(--ifm-background-color, #ffffff);
 }
 
 /* Tab Navigation */

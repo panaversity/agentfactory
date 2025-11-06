@@ -1,0 +1,66 @@
+.connectionStatus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.connectionStatus.offline {
+  background: var(--ifm-color-warning-lightest);
+  color: var(--ifm-color-warning-darkest);
+  border: 1px solid var(--ifm-color-warning-light);
+}
+
+.connectionStatus.online {
+  background: var(--ifm-color-success-lightest);
+  color: var(--ifm-color-success-darkest);
+  border: 1px solid var(--ifm-color-success-light);
+  animation: slideIn 0.3s ease-out, fadeOut 0.5s ease-in 2.5s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.statusIcon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.statusText {
+  flex: 1;
+}
+
+/* Dark mode adjustments */
+html[data-theme='dark'] .connectionStatus.offline {
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+  border-color: rgba(255, 193, 7, 0.3);
+}
+
+html[data-theme='dark'] .connectionStatus.online {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4caf50;
+  border-color: rgba(76, 175, 80, 0.3);
+}

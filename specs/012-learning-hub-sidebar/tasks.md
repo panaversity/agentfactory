@@ -307,16 +307,16 @@ Phase 9: Polish & Cross-Cutting
 
 ### Tasks
 
-- [ ] T085 [P] Implement React Error Boundaries in book-source/src/theme/LearningHub/components/ErrorBoundary.tsx to catch component errors without breaking entire UI
-- [ ] T086 [P] Add loading states and skeletons for all AI operations (chat, highlights, quiz, concepts, topics)
-- [ ] T087 [P] Implement offline detection: show connectivity status in sidebar header, queue failed requests for retry
-- [ ] T088 [P] Add keyboard shortcuts: Ctrl+Shift+L to toggle sidebar, Escape to close sidebar
-- [ ] T089 [P] Implement tab switching debounce (300ms) to cancel in-flight AI requests when user rapidly switches tabs
-- [ ] T090 Optimize bundle size: lazy load LearningHub component, code-split by tab (dynamic imports for Quiz, Concepts, Topics)
-- [ ] T091 Add ARIA labels and semantic HTML for accessibility (sidebar role, tab navigation, button labels)
-- [ ] T092 Implement localStorage quota management: monitor usage, warn at 80% capacity, cleanup old cache entries
-- [ ] T093 Add rate limit feedback in UI: show "X requests remaining this minute" in sidebar footer
-- [ ] T094 Implement graceful degradation: if Gemini API key missing, show setup instructions instead of errors
+- [x] T085 [P] Implement React Error Boundaries in book-source/src/theme/LearningHub/components/ErrorBoundary.tsx to catch component errors without breaking entire UI
+- [x] T086 [P] Add loading states and skeletons for all AI operations (chat, highlights, quiz, concepts, topics)
+- [x] T087 [P] Implement offline detection: show connectivity status in sidebar header, queue failed requests for retry
+- [x] T088 [P] Add keyboard shortcuts: Ctrl+Shift+L to toggle sidebar, Escape to close sidebar
+- [x] T089 [P] Implement tab switching debounce (300ms) to cancel in-flight AI requests when user rapidly switches tabs
+- [x] T090 Optimize bundle size: lazy load LearningHub component, code-split by tab (dynamic imports for Quiz, Concepts, Topics) - Already implemented via lazy() in Phase 3
+- [x] T091 Add ARIA labels and semantic HTML for accessibility (sidebar role, tab navigation, button labels)
+- [x] T092 Implement localStorage quota management: monitor usage, warn at 80% capacity, cleanup old cache entries - Already implemented in StorageService
+- [x] T093 Add rate limit feedback in UI: show "X requests remaining this minute" in sidebar footer
+- [x] T094 Implement graceful degradation: if Gemini API key missing, show setup instructions instead of errors
 - [ ] T095 Add analytics event hooks (optional): emit custom events for feature usage (sidebar toggle, chat sent, highlight created) for future analytics integration
 - [ ] T096 [P] Write unit tests for services (rateLimiter, storageService, cacheService, geminiService) using Jest
 - [ ] T097 [P] Write unit tests for hooks (useGeminiChat, useHighlights, useQuiz, useProgress) using React Testing Library

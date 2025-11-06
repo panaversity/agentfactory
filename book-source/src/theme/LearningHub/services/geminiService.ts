@@ -196,7 +196,7 @@ Guidelines:
         const { computeHash } = await import('../utils/hash');
         const textHash = await computeHash(selectedText);
         const cacheKey = `explain_${textHash}`;
-        const cached = cacheService.get(cacheKey);
+        const cached = cacheService.get<string>(cacheKey);
 
         if (cached) {
           console.log('[GeminiService] Explanation cache hit');
@@ -234,7 +234,7 @@ Provide a helpful explanation that enhances the reader's understanding:`;
         console.log('[GeminiService] Extracted text, length:', explanation.length);
 
         // Cache for 30 days
-        cacheService.set(cacheKey, explanation, 30 * 24 * 60 * 60 * 1000);
+        cacheService.set(cacheKey, explanation, { ttl: 30 * 24 * 60 * 60 * 1000 });
         console.log('[GeminiService] Cached explanation');
 
         return explanation;
