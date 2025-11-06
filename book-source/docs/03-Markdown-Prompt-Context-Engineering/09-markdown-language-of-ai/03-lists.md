@@ -1,7 +1,7 @@
 ---
-title: "Lesson 3: Lists"
+title: "Lists - Organizing Ideas"
 description: "Learning to use unordered and ordered lists to structure requirements and sequential steps"
-sidebar_label: "Lists"
+sidebar_label: "Lists - Organizing Ideas"
 sidebar_position: 3
 chapter: 9
 lesson: 3
@@ -68,8 +68,6 @@ version: "1.0.1"
 ---
 
 # Lists - Organizing Ideas
-
-## Why Lists Matter
 
 Imagine you're giving someone installation instructions in paragraph form:
 

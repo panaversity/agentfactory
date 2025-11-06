@@ -1,7 +1,7 @@
 ---
-title: "Lesson 1: Introduction to Markdown"
+title: "Introduction to Markdown"
 description: "Understanding markdown's role as the specification language in AI-driven development"
-sidebar_label: "Introduction"
+sidebar_label: "Introduction to Markdown"
 sidebar_position: 1
 chapter: 9
 lesson: 1
@@ -61,8 +61,6 @@ version: "1.0.0"
 ---
 
 # Why Markdown Matters for AI Communication
-
-## The Communication Problem
 
 Imagine you want to build a mobile app. You write a long email to an AI agent:
 

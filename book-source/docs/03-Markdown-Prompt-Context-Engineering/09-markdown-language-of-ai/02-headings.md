@@ -1,7 +1,7 @@
 ---
-title: "Lesson 2: Headings"
+title: "Headings - Creating Document Hierarchy"
 description: "Learning to structure specifications with clear heading hierarchy"
-sidebar_label: "Headings"
+sidebar_label: "Headings - Creating Document Hierarchy"
 sidebar_position: 2
 chapter: 9
 lesson: 2
@@ -56,8 +56,6 @@ version: "1.0.1"
 ---
 
 # Headings - Creating Document Hierarchy
-
-## Why Structure Matters
 
 Imagine trying to find information in a document that's just one long wall of text. You'd scroll endlessly, hunting for the part you need. Now imagine that same document with clear sections: "Problem," "Solution," "Features," "Installation." Suddenly you can scan it in seconds.
 

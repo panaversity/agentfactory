@@ -1,7 +1,7 @@
 ---
-title: "Lesson 4: Code Blocks"
+title: "Code Blocks - Showing Examples"
 description: "Learning to include code examples and expected output in markdown specifications"
-sidebar_label: "Code Blocks"
+sidebar_label: "Code Blocks - Showing Examples"
 sidebar_position: 4
 chapter: 9
 lesson: 4
@@ -68,9 +68,7 @@ version: "1.0.1"
 
 # Code Blocks - Showing Examples
 
-## Why Code Blocks Matter
-
-Imagine you're writing a specification that says:
+When you're writing a specification that says:
 
 > "The program should greet the user and show the current time."
 

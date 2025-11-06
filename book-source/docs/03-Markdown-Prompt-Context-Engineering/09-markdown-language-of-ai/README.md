@@ -1,7 +1,7 @@
 ---
 title: "Chapter 9: Markdown - The Language of AI Communication"
 description: "Master markdown as the specification language that bridges human intent and AI implementation"
-sidebar_label: "Chapter 9: Markdown"
+sidebar_label: "Chapter 9: Markdown - The Language of AI Communication"
 sidebar_position: 0
 chapter: 9
 part: 3
@@ -45,17 +45,6 @@ This chapter teaches **5 essential markdown skills** using AI-Native principles:
 
 ---
 
-## AI-Native Learning Approach
-
-**You learn foundational syntax** (Lessons 1-5) because it's simple and stable.
-
-**For everything else** (tables, complex formatting, diagrams):
-- Ask your AI companion when you need it
-- Focus on WHAT you want, not HOW to type it
-- AI handles the complex syntax details
-
 This chapter teaches you to **collaborate with AI**, not memorize every markdown feature.
 
 ---
-
-**Start with Lesson 1** to understand why markdown is essential for AI-driven development.
