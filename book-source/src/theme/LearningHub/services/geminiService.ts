@@ -174,6 +174,84 @@ Guidelines:
   }
 
   /**
+   * Explain highlighted text with caching (30-day TTL)
+   * Per gemini-explain.contract.md
+   */
+  public async explainText(
+    selectedText: string,
+    surroundingContext: string,
+    pageTitle: string
+  ): Promise<string> {
+    try {
+      console.log('[GeminiService] explainText called');
+      
+      return await this.withRateLimit(async () => {
+        console.log('[GeminiService] Inside rate limiter');
+        
+        const model = this.getModel();
+        console.log('[GeminiService] Model retrieved:', !!model);
+
+        // Check cache first
+        const { cacheService } = await import('./cacheService');
+        const { computeHash } = await import('../utils/hash');
+        const textHash = await computeHash(selectedText);
+        const cacheKey = `explain_${textHash}`;
+        const cached = cacheService.get(cacheKey);
+
+        if (cached) {
+          console.log('[GeminiService] Explanation cache hit');
+          return cached;
+        }
+
+        console.log('[GeminiService] No cache, generating new explanation');
+
+        // Build prompt
+        const prompt = `You are explaining a highlighted passage from a technical book to help a reader understand it better.
+
+**Page Context**: ${pageTitle}
+
+**Highlighted Text**:
+"${selectedText}"
+
+**Surrounding Context** (for reference):
+${surroundingContext}
+
+**Instructions**:
+1. Provide a clear, simple explanation of the highlighted text
+2. Break down any technical terms or complex concepts
+3. Use analogies or examples if helpful
+4. Keep the explanation concise (2-3 paragraphs maximum)
+5. Reference the surrounding context if it helps clarify meaning
+
+Provide a helpful explanation that enhances the reader's understanding:`;
+
+        console.log('[GeminiService] Calling model.generateContent...');
+
+        const result = await model.generateContent(prompt);
+        console.log('[GeminiService] generateContent completed');
+
+        const explanation = this.extractText(result);
+        console.log('[GeminiService] Extracted text, length:', explanation.length);
+
+        // Cache for 30 days
+        cacheService.set(cacheKey, explanation, 30 * 24 * 60 * 60 * 1000);
+        console.log('[GeminiService] Cached explanation');
+
+        return explanation;
+      });
+    } catch (error) {
+      console.error('[GeminiService] explainText error:', error);
+      console.error('[GeminiService] Error details:', {
+        message: error instanceof Error ? error.message : 'Unknown error',
+        stack: error instanceof Error ? error.stack : undefined,
+        type: typeof error,
+        error: error
+      });
+      throw error;
+    }
+  }
+
+  /**
    * Reset rate limiter (for testing)
    */
   public resetRateLimiter(): void {

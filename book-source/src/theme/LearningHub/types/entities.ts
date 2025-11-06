@@ -18,20 +18,18 @@ export type ChatHistory = ChatMessage[];
 
 // ===== Highlight =====
 
-export interface TextPosition {
-  startContainerPath: string; // XPath to start node
-  startOffset: number; // Character offset in start node
-  endContainerPath: string; // XPath to end node
-  endOffset: number; // Character offset in end node
-}
-
 export interface Highlight {
   id: string; // UUID v4
   pageUrl: string; // Page where highlight was created
-  selectedText: string; // 10-1000 characters
-  textPosition: TextPosition; // Serialized Range for re-highlighting
-  explanation: string; // AI-generated explanation
-  createdAt: number; // Unix timestamp
+  pageTitle: string; // Page title for reference
+  text: string; // Highlighted text (10-1000 characters)
+  explanation?: string; // Optional AI-generated explanation
+  timestamp: number; // Unix timestamp (createdAt)
+  // XPath-based position for precise restoration
+  startXPath: string; // XPath to start node
+  startOffset: number; // Character offset in start node
+  endXPath: string; // XPath to end node
+  endOffset: number; // Character offset in end node
   backgroundColor?: string; // Default: '#fff3cd'
 }
 
@@ -159,7 +157,9 @@ export interface LearningHubState {
 // Actions for state updates
 export type LearningHubAction =
   | { type: 'TOGGLE_SIDEBAR' }
+  | { type: 'OPEN_SIDEBAR' }
   | { type: 'SET_ACTIVE_TAB'; payload: TabName }
+  | { type: 'SEND_MESSAGE'; payload: string } // message text to send
   | { type: 'ADD_CHAT_MESSAGE'; payload: ChatMessage }
   | { type: 'UPDATE_CHAT_MESSAGE'; payload: ChatMessage }
   | { type: 'CLEAR_CHAT_HISTORY' }

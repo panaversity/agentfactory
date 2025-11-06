@@ -147,19 +147,19 @@ Phase 9: Polish & Cross-Cutting
 
 ### Tasks
 
-- [ ] T036 [US2] Implement useTextSelection hook in book-source/src/theme/LearningHub/hooks/useTextSelection.ts with window.getSelection() API, selection change detection, XPath serialization
-- [ ] T037 [US2] Implement explainText function in book-source/src/theme/LearningHub/services/geminiService.ts per gemini-explain.contract.md with 30-day cache, validation
-- [ ] T038 [US2] Implement useHighlights hook in book-source/src/theme/LearningHub/hooks/useHighlights.ts with localStorage persistence, CRUD operations (create, read, delete)
-- [ ] T039 [P] [US2] Implement HighlightPopup component in book-source/src/theme/LearningHub/components/SmartHighlights/HighlightPopup.tsx with "Explain" and "Save Highlight" buttons, positioned near selection
-- [ ] T040 [P] [US2] Implement HighlightMarker component in book-source/src/theme/LearningHub/components/SmartHighlights/HighlightMarker.tsx to render saved highlights with yellow background, clickable
-- [ ] T041 [P] [US2] Implement HighlightsList component in book-source/src/theme/LearningHub/components/SmartHighlights/HighlightsList.tsx in sidebar "Smart Highlights" tab with delete buttons
-- [ ] T042 [US2] Integrate HighlightPopup into page: detect text selection, show popup if >10 characters, position dynamically
-- [ ] T043 [US2] Implement highlight save flow: on "Save Highlight" click, persist to localStorage with explanation via useHighlights hook
-- [ ] T044 [US2] Implement highlight restore on page load: read from localStorage, apply yellow background via HighlightMarker, make clickable
-- [ ] T045 [US2] Implement highlight click handler: open sidebar, navigate to "Smart Highlights" tab, display stored explanation
-- [ ] T046 [US2] Add highlight length validation: limit to 1000 characters, show truncation message if exceeded
-- [ ] T047 [US2] Handle edge case: dismiss popup when clicking outside selection or pressing Escape key
-- [ ] T048 [US2] Implement highlight deletion: add delete button in HighlightsList, remove from localStorage and DOM on click
+- [x] T036 [US2] Implement useTextSelection hook in book-source/src/theme/LearningHub/hooks/useTextSelection.ts with window.getSelection() API, selection change detection, XPath serialization
+- [x] T037 [US2] Implement explainText function in book-source/src/theme/LearningHub/services/geminiService.ts per gemini-explain.contract.md with 30-day cache, validation
+- [x] T038 [US2] Implement useHighlights hook in book-source/src/theme/LearningHub/hooks/useHighlights.ts with localStorage persistence, CRUD operations (create, read, delete)
+- [x] T039 [P] [US2] Implement HighlightPopup component in book-source/src/theme/LearningHub/components/SmartHighlights/HighlightPopup.tsx with "Explain" and "Save Highlight" buttons, positioned near selection
+- [x] T040 [P] [US2] Implement HighlightMarker component in book-source/src/theme/LearningHub/components/SmartHighlights/HighlightMarker.tsx to render saved highlights with yellow background, clickable
+- [x] T041 [P] [US2] Implement HighlightsList component in book-source/src/theme/LearningHub/components/SmartHighlights/HighlightsList.tsx in sidebar "Smart Highlights" tab with delete buttons
+- [x] T042 [US2] Integrate HighlightPopup into page: detect text selection, show popup if >10 characters, position dynamically
+- [x] T043 [US2] Implement highlight save flow: on "Save Highlight" click, persist to localStorage with explanation via useHighlights hook
+- [x] T044 [US2] Implement highlight restore on page load: read from localStorage, apply yellow background via HighlightMarker, make clickable
+- [x] T045 [US2] Implement highlight click handler: open sidebar, navigate to "Smart Highlights" tab, display stored explanation
+- [x] T046 [US2] Add highlight length validation: limit to 1000 characters, show truncation message if exceeded
+- [x] T047 [US2] Handle edge case: dismiss popup when clicking outside selection or pressing Escape key
+- [x] T048 [US2] Implement highlight deletion: add delete button in HighlightsList, remove from localStorage and DOM on click
 
 **Acceptance Criteria**:
 - ✅ Popup appears within 100ms of text selection

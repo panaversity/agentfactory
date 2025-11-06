@@ -8,10 +8,14 @@ import { useLearningHub } from './context/LearningHubContext';
 import { LearningHubToggle } from './LearningHubToggle';
 import { usePageContent } from './hooks/usePageContent';
 import { useGeminiChat } from './hooks/useGeminiChat';
+import { useHighlights } from './hooks/useHighlights';
+import { HighlightManager } from './components/SmartHighlights/HighlightManager';
+// import { HighlightRenderer } from './components/SmartHighlights/HighlightRenderer'; // Disabled - highlights only in sidebar
 import styles from './styles/LearningHub.module.css';
 
 // Lazy load tab components
 const ChatInterface = lazy(() => import('./components/AIChat/ChatInterface').then(m => ({ default: m.ChatInterface })));
+const HighlightsList = lazy(() => import('./components/SmartHighlights/HighlightsList').then(m => ({ default: m.HighlightsList })));
 
 // Wrapper component to use the chat hook
 // Using key={pageUrl} on parent ensures this remounts on page change
@@ -50,6 +54,21 @@ function ChatInterfaceWrapper({ pageContent }: { pageContent: any }) {
     pageContent.content
   );
 
+  // Listen for custom sendMessage events from HighlightManager
+  React.useEffect(() => {
+    const handleSendMessage = (event: CustomEvent) => {
+      const { message } = event.detail;
+      console.log('[ChatInterfaceWrapper] Received sendMessage event:', message);
+      sendMessage(message);
+    };
+
+    window.addEventListener('learningHub:sendMessage', handleSendMessage as EventListener);
+    
+    return () => {
+      window.removeEventListener('learningHub:sendMessage', handleSendMessage as EventListener);
+    };
+  }, [sendMessage]);
+
   // Debug: Log messages for this page
   console.log('[ChatInterfaceWrapper] 💬 Messages state:', {
     url: pageContent.url,
@@ -71,6 +90,7 @@ function ChatInterfaceWrapper({ pageContent }: { pageContent: any }) {
 export function LearningHub() {
   const { state, dispatch } = useLearningHub();
   const pageContent = usePageContent();
+  const { highlights, deleteHighlight } = useHighlights(pageContent.url);
 
   // Log page content whenever it changes
   console.log('[LearningHub] 📖 Page content state:', {
@@ -78,6 +98,7 @@ export function LearningHub() {
     title: pageContent.title,
     isValidPage: pageContent.isValidPage,
     contentLength: pageContent.content?.length || 0,
+    highlightsCount: highlights.length,
     currentBrowserUrl: typeof window !== 'undefined' ? window.location.pathname : '',
   });
 
@@ -92,6 +113,22 @@ export function LearningHub() {
 
   const handleTabChange = (tab: typeof state.activeTab) => {
     dispatch({ type: 'SET_ACTIVE_TAB', payload: tab });
+  };
+
+  const handleHighlightClick = (highlight: any) => {
+    // Scroll to the highlighted text on the page
+    const highlightElement = document.querySelector(`mark[data-highlight-id="${highlight.id}"]`) as HTMLElement;
+    if (highlightElement) {
+      highlightElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      // Flash animation
+      if (highlightElement.style) {
+        highlightElement.style.backgroundPosition = '0 100%';
+        setTimeout(() => {
+          highlightElement.style.backgroundPosition = '0 0';
+        }, 500);
+      }
+    }
   };
 
   return (
@@ -132,9 +169,8 @@ export function LearningHub() {
             role="tab"
             aria-selected={state.activeTab === 'highlights'}
             aria-controls="highlights-panel"
-            disabled
           >
-            ✨ Highlights
+            ✨ Highlights {highlights.length > 0 && `(${highlights.length})`}
           </button>
           <button
             className={`${styles.tabButton} ${state.activeTab === 'quiz' ? styles.active : ''}`}
@@ -158,7 +194,11 @@ export function LearningHub() {
               />
             )}
             {state.activeTab === 'highlights' && (
-              <div>Highlights feature coming soon</div>
+              <HighlightsList
+                highlights={highlights}
+                onDelete={deleteHighlight}
+                onHighlightClick={handleHighlightClick}
+              />
             )}
             {state.activeTab === 'quiz' && (
               <div>Quiz feature coming soon</div>
@@ -166,6 +206,11 @@ export function LearningHub() {
           </Suspense>
         </div>
       </aside>
+
+      {/* Highlight Management Components (invisible) */}
+      <HighlightManager pageUrl={pageContent.url} pageTitle={pageContent.title} />
+      {/* HighlightRenderer disabled - highlights only shown in sidebar, not on page */}
+      {/* <HighlightRenderer pageUrl={pageContent.url} /> */}
     </>
   );
 }

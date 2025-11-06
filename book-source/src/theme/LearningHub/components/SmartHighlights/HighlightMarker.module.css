@@ -1,0 +1,26 @@
+.highlightMarker {
+  background: linear-gradient(to bottom, transparent 50%, #ffeb3b 50%);
+  background-size: 100% 200%;
+  background-position: 0 0;
+  cursor: pointer;
+  transition: background-position 0.3s ease;
+  padding: 2px 0;
+  border-radius: 2px;
+}
+
+.highlightMarker:hover {
+  background-position: 0 100%;
+  box-shadow: 0 2px 4px rgba(255, 235, 59, 0.3);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .highlightMarker {
+    background: linear-gradient(to bottom, transparent 50%, #fdd835 50%);
+    /* Don't override text color - let it inherit from parent */
+  }
+  
+  .highlightMarker:hover {
+    box-shadow: 0 2px 4px rgba(253, 216, 53, 0.4);
+  }
+}

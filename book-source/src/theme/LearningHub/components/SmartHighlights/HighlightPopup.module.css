@@ -1,0 +1,185 @@
+.highlightPopup {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 99999;
+  animation: popupFadeIn 0.2s ease-out;
+  pointer-events: auto;
+  user-select: none;
+  transform: translateX(-50%);
+  min-width: 280px;
+}
+
+.buttonRow {
+  display: flex;
+  gap: 4px;
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popupButton {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.popupButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.popupButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.popupButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.explainButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.explainButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, #5568d3 0%, #65408a 100%);
+}
+
+.saveButton {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.saveButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, #e082ea 0%, #e44654 100%);
+}
+
+.closeButton {
+  background: #f0f0f0;
+  color: #666;
+  padding: 8px 10px;
+}
+
+.closeButton:hover:not(:disabled) {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.askButton {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+}
+
+.askButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3e9cee 0%, #00d8e4 100%);
+}
+
+/* Custom question form */
+.customQuestionForm {
+  display: flex;
+  gap: 4px;
+  padding-top: 4px;
+  margin-top: 4px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.customQuestionInput {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.customQuestionInput:focus {
+  border-color: #4facfe;
+}
+
+.customQuestionInput::placeholder {
+  color: #999;
+}
+
+.submitButton {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3e9cee 0%, #00d8e4 100%);
+  transform: translateY(-1px);
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .highlightPopup {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+
+  .closeButton {
+    background: #3d3d3d;
+    color: #aaa;
+  }
+
+  .closeButton:hover:not(:disabled) {
+    background: #4d4d4d;
+    color: #fff;
+  }
+
+  .customQuestionForm {
+    border-top-color: #444;
+  }
+
+  .customQuestionInput {
+    background: #3d3d3d;
+    border-color: #555;
+    color: #fff;
+  }
+
+  .customQuestionInput:focus {
+    border-color: #4facfe;
+  }
+
+  .customQuestionInput::placeholder {
+    color: #777;
+  }
+}

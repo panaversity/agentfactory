@@ -1,0 +1,179 @@
+.highlightsList {
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.header {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.highlightItem {
+  padding: 16px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border-left: 4px solid #ffeb3b;
+  transition: all 0.2s;
+}
+
+.highlightItem:hover {
+  background: #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.highlightText {
+  margin-bottom: 12px;
+}
+
+.highlightMarker {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  font-style: italic;
+}
+
+.explanation {
+  margin-top: 12px;
+  padding: 12px;
+  background: white;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.explanation strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #667eea;
+}
+
+.explanation p {
+  margin: 0;
+  line-height: 1.6;
+  color: #555;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #999;
+}
+
+.deleteButton {
+  padding: 6px 12px;
+  border: none;
+  background: #f0f0f0;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.deleteButton:hover {
+  background: #ffebee;
+  color: #d32f2f;
+}
+
+/* Empty state */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.emptyState h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.emptyState p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  max-width: 300px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .header {
+    border-bottom-color: #444;
+  }
+
+  .header h3 {
+    color: #e0e0e0;
+  }
+
+  .highlightItem {
+    background: #2d2d2d;
+    border-left-color: #fdd835;
+  }
+
+  .highlightItem:hover {
+    background: #3d3d3d;
+  }
+
+  .highlightMarker {
+    color: #e0e0e0;
+  }
+
+  .explanation {
+    background: #1a1a1a;
+  }
+
+  .explanation p {
+    color: #bbb;
+  }
+
+  .footer {
+    border-top-color: #444;
+  }
+
+  .deleteButton {
+    background: #3d3d3d;
+    color: #bbb;
+  }
+
+  .deleteButton:hover {
+    background: #4d1f1f;
+    color: #ff6b6b;
+  }
+
+  .emptyState h3 {
+    color: #e0e0e0;
+  }
+
+  .emptyState p {
+    color: #999;
+  }
+}

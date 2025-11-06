@@ -31,11 +31,22 @@ function learningHubReducer(
         isOpen: !state.isOpen,
       };
 
+    case 'OPEN_SIDEBAR':
+      return {
+        ...state,
+        isOpen: true,
+      };
+
     case 'SET_ACTIVE_TAB':
       return {
         ...state,
         activeTab: action.payload,
       };
+
+    case 'SEND_MESSAGE':
+      // This action is handled by the useGeminiChat hook via event listener
+      // Just return state unchanged here
+      return state;
 
     case 'ADD_CHAT_MESSAGE':
       const newChatHistory = [...state.chatHistory, action.payload];

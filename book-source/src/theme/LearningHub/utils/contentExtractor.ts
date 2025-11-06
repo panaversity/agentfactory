@@ -121,24 +121,48 @@ export function extractSurroundingContext(
   selectedText: string,
   contextWords: number = 50
 ): string {
-  const content = extractPageContent().content;
-  const index = content.indexOf(selectedText);
+  console.log('[contentExtractor] Extracting context for:', selectedText.substring(0, 50) + '...');
+  
+  const pageContent = extractPageContent();
+  const content = pageContent.content;
 
-  if (index === -1) return selectedText; // Selection not found in extracted content
+  if (!content || content.length === 0) {
+    console.warn('[contentExtractor] Empty page content');
+    return selectedText; // Return just the selected text if no content
+  }
+
+  // Normalize whitespace for better matching
+  const normalizedContent = content.replace(/\s+/g, ' ').trim();
+  const normalizedSelection = selectedText.replace(/\s+/g, ' ').trim();
+  
+  const index = normalizedContent.indexOf(normalizedSelection);
+
+  if (index === -1) {
+    console.warn('[contentExtractor] Selection not found in page content, returning selection only');
+    return selectedText; // Selection not found in extracted content
+  }
 
   // Find start position (contextWords before)
-  const before = content.substring(0, index);
-  const beforeWords = before.split(/\s+/).slice(-contextWords);
+  const before = normalizedContent.substring(0, index);
+  const beforeWords = before.split(/\s+/).filter(w => w.length > 0).slice(-contextWords);
   
   // Find end position (contextWords after)
-  const after = content.substring(index + selectedText.length);
-  const afterWords = after.split(/\s+/).slice(0, contextWords);
+  const after = normalizedContent.substring(index + normalizedSelection.length);
+  const afterWords = after.split(/\s+/).filter(w => w.length > 0).slice(0, contextWords);
 
-  return [
+  const context = [
     ...beforeWords,
-    selectedText,
+    normalizedSelection,
     ...afterWords,
   ].join(' ');
+
+  console.log('[contentExtractor] Context extracted:', {
+    beforeWords: beforeWords.length,
+    afterWords: afterWords.length,
+    totalLength: context.length,
+  });
+
+  return context;
 }
 
 /**
