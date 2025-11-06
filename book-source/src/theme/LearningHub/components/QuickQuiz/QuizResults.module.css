@@ -1,0 +1,132 @@
+/* QuizResults.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  gap: 1rem;
+  overflow-y: auto;
+  padding-right: 0.75rem; /* Space from scrollbar */
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.emoji {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-900);
+}
+
+.scoreDisplay {
+  margin: 0.5rem 0;
+}
+
+.scoreCircle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(46, 133, 85, 0.1), rgba(46, 133, 85, 0.2));
+  border: 3px solid var(--ifm-color-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.scoreNumber {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--ifm-color-primary-darker);
+  line-height: 1;
+}
+
+.scoreLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.message {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--ifm-color-emphasis-700);
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+.details {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 320px;
+  margin: 0.5rem 0;
+  padding: 0.875rem;
+  background-color: var(--ifm-color-emphasis-100);
+  border-radius: 8px;
+  gap: 0.5rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+  flex: 1;
+}
+
+.statValue {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-900);
+}
+
+.statLabel {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-600);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.retakeButton {
+  margin-top: 0.5rem;
+  padding: 0.625rem 1.75rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.retakeButton:hover {
+  background-color: var(--ifm-color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.note {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--ifm-color-emphasis-600);
+  font-style: italic;
+  max-width: 320px;
+  line-height: 1.4;
+}

@@ -33,11 +33,10 @@
 }
 
 .toggleButton.active {
-  background: var(--ifm-color-danger, #d73a3a);
-}
-
-.toggleButton.active:hover {
-  background: var(--ifm-color-danger-darker, #a52a2a);
+  /* Hide toggle button when sidebar is open since there's a close button in sidebar */
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8);
 }
 
 .toggleButton:focus-visible {

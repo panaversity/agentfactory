@@ -1,0 +1,200 @@
+/* QuizQuestion.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-right: 0.75rem; /* Space from scrollbar */
+}
+
+.questionText {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.questionText h4 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ifm-color-emphasis-900);
+}
+
+.difficulty {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.difficulty.easy {
+  background-color: #d1f4e0;
+  color: #0f5132;
+}
+
+.difficulty.medium {
+  background-color: #fff3cd;
+  color: #664d03;
+}
+
+.difficulty.hard {
+  background-color: #f8d7da;
+  color: #842029;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 2px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.choice:hover:not(.correct):not(.incorrect) {
+  border-color: var(--ifm-color-primary);
+  background-color: rgba(46, 133, 85, 0.08);
+}
+
+.choice.selected {
+  border-color: var(--ifm-color-primary);
+  background-color: rgba(46, 133, 85, 0.12);
+}
+
+.choice.correct {
+  border-color: #28a745;
+  background-color: #d1f4e0;
+}
+
+.choice.incorrect {
+  border-color: #dc3545;
+  background-color: #f8d7da;
+}
+
+.radio {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.choiceLabel {
+  flex: 1;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--ifm-font-color-base); /* Respects theme (light/dark mode) */
+  font-weight: 500;
+}
+
+/* Only override text color when background is colored (correct/incorrect) */
+.choice.correct .choiceLabel {
+  color: #0f5132; /* Dark green on light green background */
+}
+
+.choice.incorrect .choiceLabel {
+  color: #721c24; /* Dark red on light pink background */
+}
+
+.icon {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.choice.correct .icon {
+  color: #28a745;
+}
+
+.choice.incorrect .icon {
+  color: #dc3545;
+}
+
+/* Feedback */
+.feedback {
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid;
+}
+
+.feedback.correct {
+  background-color: #d1f4e0;
+  border-left-color: #28a745;
+}
+
+.feedback.incorrect {
+  background-color: #f8d7da;
+  border-left-color: #dc3545;
+}
+
+.feedbackHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.feedbackHeader strong {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.feedbackIcon {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.feedback.correct .feedbackIcon,
+.feedback.correct .feedbackHeader strong {
+  color: #0f5132;
+}
+
+.feedback.incorrect .feedbackIcon,
+.feedback.incorrect .feedbackHeader strong {
+  color: #842029;
+}
+
+.explanation {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  /* Use theme color by default, override for colored backgrounds */
+}
+
+/* Override only for colored feedback backgrounds */
+.feedback.correct .explanation {
+  color: #0f5132 !important; /* Dark green on light green background */
+}
+
+.feedback.incorrect .explanation {
+  color: #721c24 !important; /* Dark red on light pink background */
+}
+
+.correctAnswerNote {
+  margin: 0.75rem 0 0 0;
+  font-size: 0.875rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* Only in incorrect feedback (which has light pink background) */
+.feedback.incorrect .correctAnswerNote {
+  color: #721c24;
+}
+
+.feedback.incorrect .correctAnswerNote strong {
+  color: #721c24;
+  font-weight: 600;
+}

@@ -183,18 +183,18 @@ Phase 9: Polish & Cross-Cutting
 
 ### Tasks
 
-- [ ] T049 [US3] Implement generateQuiz function in book-source/src/theme/LearningHub/services/geminiService.ts per gemini-quiz.contract.md with JSON parsing, validation (3-5 questions, 4 choices each)
-- [ ] T050 [US3] Implement useQuiz hook in book-source/src/theme/LearningHub/hooks/useQuiz.ts with quiz session state, answer tracking, score calculation
-- [ ] T051 [P] [US3] Implement QuizInterface component in book-source/src/theme/LearningHub/components/QuickQuiz/QuizInterface.tsx with question navigation, "Generate Quiz" button, score display
-- [ ] T052 [P] [US3] Implement QuizQuestion component in book-source/src/theme/LearningHub/components/QuickQuiz/QuizQuestion.tsx with 4 radio button choices, "Check Answer" button, feedback (correct/incorrect with explanation)
-- [ ] T053 [P] [US3] Implement QuizResults component in book-source/src/theme/LearningHub/components/QuickQuiz/QuizResults.tsx with score summary, "Retake Quiz" button
-- [ ] T054 [US3] Integrate QuizInterface into sidebar "Quick Quiz" tab
-- [ ] T055 [US3] Implement quiz generation on tab click: extract page content via usePageContent, call generateQuiz with 4 questions, display in QuizInterface
-- [ ] T056 [US3] Implement answer validation: on "Check Answer" click, mark correct/incorrect, show explanation, track score
-- [ ] T057 [US3] Implement quiz completion: after all questions answered, display QuizResults with score as count and percentage
-- [ ] T058 [US3] Implement "Retake Quiz" flow: clear session state, regenerate new questions from same page content
-- [ ] T059 [US3] Handle short content edge case: if page <200 words, show message "Content too brief for quiz - try a longer chapter"
-- [ ] T060 [US3] Clear quiz state on page navigation to ensure fresh quiz per page
+- [x] T049 [US3] Implement generateQuiz function in book-source/src/theme/LearningHub/services/geminiService.ts per gemini-quiz.contract.md with JSON parsing, validation (3-5 questions, 4 choices each)
+- [x] T050 [US3] Implement useQuiz hook in book-source/src/theme/LearningHub/hooks/useQuiz.ts with quiz session state, answer tracking, score calculation
+- [x] T051 [P] [US3] Implement QuizInterface component in book-source/src/theme/LearningHub/components/QuickQuiz/QuizInterface.tsx with question navigation, "Generate Quiz" button, score display
+- [x] T052 [P] [US3] Implement QuizQuestion component in book-source/src/theme/LearningHub/components/QuickQuiz/QuizQuestion.tsx with 4 radio button choices, "Check Answer" button, feedback (correct/incorrect with explanation)
+- [x] T053 [P] [US3] Implement QuizResults component in book-source/src/theme/LearningHub/components/QuickQuiz/QuizResults.tsx with score summary, "Retake Quiz" button
+- [x] T054 [US3] Integrate QuizInterface into sidebar "Quick Quiz" tab
+- [x] T055 [US3] Implement quiz generation on tab click: extract page content via usePageContent, call generateQuiz with 4 questions, display in QuizInterface
+- [x] T056 [US3] Implement answer validation: on "Check Answer" click, mark correct/incorrect, show explanation, track score
+- [x] T057 [US3] Implement quiz completion: after all questions answered, display QuizResults with score as count and percentage
+- [x] T058 [US3] Implement "Retake Quiz" flow: clear session state, regenerate new questions from same page content
+- [x] T059 [US3] Handle short content edge case: if page <200 words, show message "Content too brief for quiz - try a longer chapter"
+- [x] T060 [US3] Clear quiz state on page navigation to ensure fresh quiz per page
 
 **Acceptance Criteria**:
 - ✅ Quiz generated within 5 seconds

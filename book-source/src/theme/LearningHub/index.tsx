@@ -16,6 +16,7 @@ import styles from './styles/LearningHub.module.css';
 // Lazy load tab components
 const ChatInterface = lazy(() => import('./components/AIChat/ChatInterface').then(m => ({ default: m.ChatInterface })));
 const HighlightsList = lazy(() => import('./components/SmartHighlights/HighlightsList').then(m => ({ default: m.HighlightsList })));
+const QuizInterface = lazy(() => import('./components/QuickQuiz/QuizInterface'));
 
 // Wrapper component to use the chat hook
 // Using key={pageUrl} on parent ensures this remounts on page change
@@ -178,7 +179,6 @@ export function LearningHub() {
             role="tab"
             aria-selected={state.activeTab === 'quiz'}
             aria-controls="quiz-panel"
-            disabled
           >
             📝 Quiz
           </button>
@@ -201,7 +201,7 @@ export function LearningHub() {
               />
             )}
             {state.activeTab === 'quiz' && (
-              <div>Quiz feature coming soon</div>
+              <QuizInterface />
             )}
           </Suspense>
         </div>

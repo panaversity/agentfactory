@@ -252,6 +252,168 @@ Provide a helpful explanation that enhances the reader's understanding:`;
   }
 
   /**
+   * Generate quiz questions from page content
+   * Per gemini-quiz.contract.md
+   */
+  public async generateQuiz(
+    pageContext: {
+      url: string;
+      title: string;
+      content: string;
+    },
+    questionCount: number = 4,
+    difficulty: 'easy' | 'medium' | 'hard' = 'medium'
+  ): Promise<Array<{
+    question: string;
+    choices: string[];
+    correctAnswer: number;
+    explanation: string;
+    difficulty: string;
+  }>> {
+    try {
+      console.log('[GeminiService] generateQuiz called', { questionCount, difficulty });
+      
+      return await this.withRateLimit(async () => {
+        const model = this.getModel();
+
+        // Truncate content to 20000 chars max
+        const truncatedContent = this.formatContent(pageContext.content, 20000);
+
+        // Build prompt
+        const prompt = `You are an educational assessment expert creating quiz questions.
+
+## Task
+Generate ${questionCount} multiple-choice quiz questions based on the page content below.
+
+## Requirements
+1. Each question must test understanding of key concepts from the page
+2. Provide exactly 4 answer choices per question
+3. Clearly mark the correct answer (use index 0-3)
+4. Include a brief explanation for why the answer is correct
+5. Difficulty level: ${difficulty}
+6. Questions should be varied (cover different topics from the page)
+
+## Output Format (JSON)
+Return ONLY valid JSON with this structure (no markdown, no code blocks):
+{
+  "questions": [
+    {
+      "question": "What is...?",
+      "choices": ["Option A", "Option B", "Option C", "Option D"],
+      "correctAnswer": 0,
+      "explanation": "This is correct because...",
+      "difficulty": "${difficulty}"
+    }
+  ]
+}
+
+## Page Content
+Title: ${pageContext.title}
+Content: ${truncatedContent}
+
+Generate the quiz now as valid JSON:`;
+
+        console.log('[GeminiService] Calling model.generateContent for quiz...');
+
+        const result = await model.generateContent({
+          contents: [{ role: 'user', parts: [{ text: prompt }] }],
+          generationConfig: {
+            temperature: 0.8,  // Higher for question variety
+            topK: 40,
+            topP: 0.95,
+            maxOutputTokens: 2048,
+          }
+        });
+
+        console.log('[GeminiService] Quiz generateContent completed');
+
+        const responseText = this.extractText(result);
+        console.log('[GeminiService] Response text:', responseText.substring(0, 200));
+
+        // Extract JSON from response (handle markdown code blocks if present)
+        let jsonText = responseText.trim();
+        
+        // Remove markdown code blocks if present
+        if (jsonText.startsWith('```')) {
+          jsonText = jsonText.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+        }
+
+        // Parse JSON
+        let parsed: any;
+        try {
+          parsed = JSON.parse(jsonText);
+        } catch (parseError) {
+          console.error('[GeminiService] JSON parse error:', parseError);
+          console.error('[GeminiService] Raw response:', responseText);
+          throw this.createError(
+            'RESPONSE_PARSE_ERROR',
+            'Failed to parse quiz JSON response',
+            false
+          );
+        }
+
+        // Validate response structure
+        if (!parsed.questions || !Array.isArray(parsed.questions)) {
+          throw this.createError(
+            'RESPONSE_VALIDATION_ERROR',
+            'Invalid quiz response structure: missing questions array',
+            false
+          );
+        }
+
+        // Validate each question
+        const questions = parsed.questions;
+        if (questions.length < 3 || questions.length > 5) {
+          console.warn('[GeminiService] Quiz has unexpected question count:', questions.length);
+        }
+
+        for (let i = 0; i < questions.length; i++) {
+          const q = questions[i];
+          
+          if (!q.question || typeof q.question !== 'string') {
+            throw this.createError(
+              'RESPONSE_VALIDATION_ERROR',
+              `Question ${i + 1} missing or invalid question text`,
+              false
+            );
+          }
+
+          if (!Array.isArray(q.choices) || q.choices.length !== 4) {
+            throw this.createError(
+              'RESPONSE_VALIDATION_ERROR',
+              `Question ${i + 1} must have exactly 4 choices`,
+              false
+            );
+          }
+
+          if (typeof q.correctAnswer !== 'number' || q.correctAnswer < 0 || q.correctAnswer > 3) {
+            throw this.createError(
+              'RESPONSE_VALIDATION_ERROR',
+              `Question ${i + 1} has invalid correctAnswer (must be 0-3)`,
+              false
+            );
+          }
+
+          if (!q.explanation || typeof q.explanation !== 'string') {
+            throw this.createError(
+              'RESPONSE_VALIDATION_ERROR',
+              `Question ${i + 1} missing explanation`,
+              false
+            );
+          }
+        }
+
+        console.log('[GeminiService] Quiz validation passed:', questions.length, 'questions');
+
+        return questions;
+      });
+    } catch (error) {
+      console.error('[GeminiService] generateQuiz error:', error);
+      throw error;
+    }
+  }
+
+  /**
    * Reset rate limiter (for testing)
    */
   public resetRateLimiter(): void {
