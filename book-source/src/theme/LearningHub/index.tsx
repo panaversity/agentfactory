@@ -96,6 +96,20 @@ export function LearningHub() {
   const { highlights, deleteHighlight } = useHighlights(pageContent.url);
   const { concepts, isLoading: conceptsLoading, error: conceptsError, extractConcepts } = useKeyConcepts(pageContent.url);
 
+  // Auto-extract concepts when concepts tab is opened
+  React.useEffect(() => {
+    if (state.activeTab === 'concepts' && concepts.length === 0 && !conceptsLoading && !conceptsError && pageContent.isValidPage) {
+      const wordCount = pageContent.content.split(/\s+/).length;
+      if (wordCount >= 200) {
+        extractConcepts({
+          url: pageContent.url,
+          title: pageContent.title,
+          content: pageContent.content,
+        });
+      }
+    }
+  }, [state.activeTab, concepts.length, conceptsLoading, conceptsError, pageContent, extractConcepts]);
+
   // Log page content whenever it changes
   console.log('[LearningHub] 📖 Page content state:', {
     url: pageContent.url,
@@ -106,7 +120,7 @@ export function LearningHub() {
     currentBrowserUrl: typeof window !== 'undefined' ? window.location.pathname : '',
   });
 
-  // Don't render on non-documentation pages
+  // Don't render on non-documentation pages (moved AFTER all hooks)
   if (!pageContent.isValidPage) {
     return null;
   }
@@ -154,20 +168,6 @@ export function LearningHub() {
       }
     }
   };
-
-  // Auto-extract concepts when concepts tab is opened
-  React.useEffect(() => {
-    if (state.activeTab === 'concepts' && concepts.length === 0 && !conceptsLoading && !conceptsError) {
-      const wordCount = pageContent.content.split(/\s+/).length;
-      if (wordCount >= 200) {
-        extractConcepts({
-          url: pageContent.url,
-          title: pageContent.title,
-          content: pageContent.content,
-        });
-      }
-    }
-  }, [state.activeTab, concepts.length, conceptsLoading, conceptsError, pageContent, extractConcepts]);
 
   return (
     <>
