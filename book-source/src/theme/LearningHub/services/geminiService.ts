@@ -25,7 +25,7 @@ export class GeminiService {
       // Get API key from window object or use hardcoded development key
       // @ts-ignore - Custom window property
       const apiKey = (typeof window !== 'undefined' && window.GEMINI_API_KEY) || 
-                     'AIzaSyCTG0J2ZbgrEBjARsTowtrms_U583gr04w'; // Development key
+                     'AIzaSyCZPNyTTr_p2HIi4LhEZoNJf1K9ExSHF-Y'; // Development key
       
       if (!apiKey) {
         console.warn('[GeminiService] GEMINI_API_KEY not found');

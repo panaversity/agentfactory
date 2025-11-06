@@ -55,12 +55,16 @@ export function extractPageContent(): {
     }
   }
 
+  // Clean up whitespace (multiple newlines, tabs, etc.)
+  content = content.replace(/\n{3,}/g, '\n\n').replace(/\t/g, ' ').trim();
+
   // Debug logging
-  console.log('[ContentExtractor] Extracted:', {
+  console.log('[ContentExtractor] 📝 Extracted content:', {
     title,
     headingsCount: headings.length,
     contentLength: content.length,
-    contentPreview: content.substring(0, 300),
+    contentPreview: content.substring(0, 200) + '...',
+    url: window.location.pathname,
   });
 
   // Calculate word count (approximate)

@@ -150,10 +150,12 @@ export function LearningHubProvider({ children }: LearningHubProviderProps) {
       { default: { isOpen: false, activeTab: 'chat' } }
     );
 
+    // DO NOT persist chat history - always start fresh
     return {
       ...initialState,
       isOpen: sidebarState?.isOpen ?? false,
       activeTab: sidebarState?.activeTab ?? 'chat',
+      chatHistory: [], // Always start with empty chat
       savedHighlights: savedHighlights || {},
       progressRecords: progressRecords || {},
       errorLog: errorLog || [],
@@ -163,6 +165,7 @@ export function LearningHubProvider({ children }: LearningHubProviderProps) {
   const [state, dispatch] = useReducer(learningHubReducer, initialState, loadInitialState);
 
   // Persist state to localStorage (debounced to avoid excessive writes)
+  // DO NOT persist chatHistory - it should always be per-session
   useEffect(() => {
     const persistState = debounce(() => {
       storage.set(STORAGE_KEYS.HIGHLIGHTS, state.savedHighlights);
@@ -172,6 +175,7 @@ export function LearningHubProvider({ children }: LearningHubProviderProps) {
         isOpen: state.isOpen,
         activeTab: state.activeTab,
       });
+      // Note: chatHistory is intentionally NOT persisted
     }, 500);
 
     persistState();

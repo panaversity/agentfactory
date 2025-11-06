@@ -22,6 +22,12 @@ export function usePageContent(): PageContent {
     const content = extractPageContent();
     const isValid = isDocumentationPage();
 
+    console.log('[usePageContent] 🚀 Initial state:', {
+      url: metadata.url,
+      title: metadata.title,
+      contentLength: content.content.length,
+    });
+
     return {
       url: metadata.url,
       title: metadata.title,
@@ -40,17 +46,30 @@ export function usePageContent(): PageContent {
       // Clear previous timer
       clearTimeout(debounceTimer);
       
-      // Debounce to avoid multiple extractions
+      // Debounce to avoid multiple extractions and wait for DOM to update
       debounceTimer = setTimeout(() => {
         const metadata = getPageMetadata();
         const content = extractPageContent();
         const isValid = isDocumentationPage();
 
-        console.log('[usePageContent] Page changed:', {
+        // CRITICAL: Validate that we have meaningful content before updating
+        // This prevents updating with stale/empty content during page transitions
+        if (content.content.length < 100) {
+          console.warn('[usePageContent] ⚠️ Content too short, waiting for full load...', {
+            url: metadata.url,
+            contentLength: content.content.length,
+          });
+          // Retry after additional delay
+          setTimeout(handleRouteChange, 200);
+          return;
+        }
+
+        console.log('[usePageContent] 📄 Page content updated:', {
           url: metadata.url,
           title: metadata.title,
           contentLength: content.content.length,
           wordCount: content.wordCount,
+          contentPreview: content.content.substring(0, 150) + '...',
         });
 
         setPageContent({
@@ -61,15 +80,34 @@ export function usePageContent(): PageContent {
           wordCount: content.wordCount,
           isValidPage: isValid,
         });
-      }, 300); // Wait 300ms for content to fully load
+      }, 500); // Increased to 500ms for more reliable content extraction
     };
 
-    // Listen for Docusaurus route changes
+    // CRITICAL: Listen for Docusaurus-specific route changes
+    // Docusaurus uses client-side routing, so we need to watch the URL
+    let lastUrl = window.location.pathname;
+    
+    const checkUrlChange = () => {
+      const currentUrl = window.location.pathname;
+      if (currentUrl !== lastUrl) {
+        console.log('[usePageContent] 🔄 URL changed detected:', {
+          from: lastUrl,
+          to: currentUrl,
+        });
+        lastUrl = currentUrl;
+        handleRouteChange();
+      }
+    };
+
+    // Check URL every 100ms (Docusaurus doesn't fire events we can catch reliably)
+    const urlCheckInterval = setInterval(checkUrlChange, 100);
+    
+    // Listen for browser back/forward buttons
     window.addEventListener('popstate', handleRouteChange);
     
     // Also listen for DOM mutations (content loaded asynchronously)
     const observer = new MutationObserver((mutations) => {
-      // Only react to significant changes (new article content)
+      // React to article content changes
       const hasContentChange = mutations.some(m => 
         Array.from(m.addedNodes).some(node => 
           node.nodeType === 1 && (node as Element).tagName === 'ARTICLE'
@@ -77,6 +115,7 @@ export function usePageContent(): PageContent {
       );
       
       if (hasContentChange) {
+        console.log('[usePageContent] 📰 Article content changed in DOM');
         handleRouteChange();
       }
     });
@@ -88,11 +127,12 @@ export function usePageContent(): PageContent {
       subtree: true,
     });
 
-    // Also trigger initial extraction after a short delay (for SSR content)
+    // Trigger initial extraction after a short delay (for SSR content)
     setTimeout(handleRouteChange, 500);
 
     return () => {
       clearTimeout(debounceTimer);
+      clearInterval(urlCheckInterval);
       window.removeEventListener('popstate', handleRouteChange);
       observer.disconnect();
     };

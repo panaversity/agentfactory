@@ -16,8 +16,12 @@ const CHAT_SYSTEM_PROMPT = `You are a knowledgeable and encouraging learning men
 - **Helper**: Provide practical examples and clear explanations
 - **Supporter**: Encourage learning and celebrate understanding
 
-## YOUR MISSION:
-Read the current page content carefully and help students understand it deeply. Base ALL your guidance strictly on what's written on this page.
+## CRITICAL INSTRUCTION - READ CAREFULLY:
+You are ONLY allowed to discuss the CURRENT PAGE CONTENT provided below. 
+- DO NOT reference content from other chapters or pages
+- DO NOT assume knowledge from previous conversations
+- ONLY use information explicitly written in the PAGE CONTENT section below
+- If a question is about something NOT on this page, politely redirect to the current page's topics
 
 ## CURRENT PAGE CONTEXT:
 **Chapter:** {pageTitle}
@@ -31,13 +35,13 @@ Read the current page content carefully and help students understand it deeply. 
 ## HOW TO GUIDE STUDENTS:
 
 **For "summarize" or "key points" questions:**
-1. Start warmly: "Great question! Let me guide you through the key concepts on this page..."
+1. Start warmly: "Great question! Let me guide you through the key concepts from **{pageTitle}**..."
 2. Structure your guidance with clear sections:
-   • **Core Concept**: What this page teaches
-   • **Why It Matters**: Real-world relevance
-   • **Key Takeaways**: Main points to remember
-   • **How to Apply**: Practical usage from the content
-3. Quote specific examples directly from the page
+   • **Core Concept**: What THIS page teaches
+   • **Why It Matters**: Real-world relevance from THIS page
+   • **Key Takeaways**: Main points from THIS page
+   • **How to Apply**: Practical usage from THIS page's content
+3. Quote specific examples directly from THIS page
 4. End with encouragement: "Does this help clarify things? Any part you'd like me to explain further?"
 
 **For specific concept questions:**
@@ -126,19 +130,42 @@ class GeminiChatService extends GeminiService {
       // Build system context
       const formattedContent = this.formatContent(request.pageContent, 8000);
       
-      // Debug logging
-      console.log('[GeminiChat] Request context:', {
+      // CRITICAL: Validate page content is not empty
+      if (!request.pageContent || request.pageContent.length < 100) {
+        console.error('[GeminiChat] ❌ ERROR: Page content is empty or too short!', {
+          pageUrl: request.pageUrl,
+          contentLength: request.pageContent?.length || 0,
+        });
+        throw new Error('Page content is empty. Please wait for the page to fully load.');
+      }
+      
+      // Debug logging with content validation
+      console.log('[GeminiChat] 📋 Building context for:', {
         pageTitle: request.pageTitle,
         pageUrl: request.pageUrl,
-        contentLength: request.pageContent.length,
-        formattedLength: formattedContent.length,
-        contentPreview: request.pageContent.substring(0, 200) + '...',
+        rawContentLength: request.pageContent.length,
+        formattedContentLength: formattedContent.length,
+        contentFirst100: request.pageContent.substring(0, 100),
+        contentLast100: request.pageContent.substring(request.pageContent.length - 100),
+        timestamp: new Date().toISOString(),
       });
 
       const systemContext = CHAT_SYSTEM_PROMPT
         .replace('{pageTitle}', request.pageTitle)
         .replace('{pageUrl}', request.pageUrl)
         .replace('{pageContent}', formattedContent);
+
+      // CRITICAL: Filter conversation history to ONLY include messages from THIS page
+      const filteredHistory = request.conversationHistory
+        .filter(msg => msg.pageUrl === request.pageUrl) // Double-check page URL
+        .slice(-10); // Last 10 messages only
+
+      console.log('[GeminiChat] 📜 Conversation history:', {
+        totalMessages: request.conversationHistory.length,
+        filteredMessages: filteredHistory.length,
+        currentPageUrl: request.pageUrl,
+        historyPageUrls: [...new Set(request.conversationHistory.map(m => m.pageUrl))],
+      });
 
       // Construct conversation history
       const history = [
@@ -148,9 +175,9 @@ class GeminiChatService extends GeminiService {
         },
         {
           role: 'model' as const,
-          parts: [{ text: "Understood! I've carefully read this page's content and I'm ready to be a supportive learning guide. I'll help students understand the concepts, provide clear explanations with examples from the text, ask checking questions, and encourage their learning journey. I'll stay strictly within this page's content and build on our conversation naturally. Ready to guide!" }],
+          parts: [{ text: "Understood! I have read ONLY this specific page's content (Chapter: " + request.pageTitle + "). I will ONLY answer questions using information from THIS page. I will NOT reference other chapters or previous pages. I'll help students understand the concepts on THIS page with clear explanations and examples from THIS text. Ready to guide!" }],
         },
-        ...request.conversationHistory.slice(-10).map(msg => ({
+        ...filteredHistory.map(msg => ({
           role: msg.role === 'user' ? ('user' as const) : ('model' as const),
           parts: [{ text: msg.content }],
         })),

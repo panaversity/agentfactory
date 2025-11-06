@@ -30,35 +30,44 @@ export function useGeminiChat(pageUrl: string, pageTitle: string, pageContent: s
   const pageTitleRef = useRef(pageTitle);
   const pageContentRef = useRef(pageContent);
 
-  // Update refs whenever props change
+  // CRITICAL: Update refs IMMEDIATELY when props change (before any effects run)
+  // This ensures refs always have the latest values, even during remount
+  pageUrlRef.current = pageUrl;
+  pageTitleRef.current = pageTitle;
+  pageContentRef.current = pageContent;
+
+  // Log whenever props change
   useEffect(() => {
-    pageUrlRef.current = pageUrl;
-    pageTitleRef.current = pageTitle;
-    pageContentRef.current = pageContent;
-    
-    console.log('[useGeminiChat] Refs updated:', {
+    console.log('[useGeminiChat] 🔄 Props changed:', {
       pageUrl,
       pageTitle,
       contentLength: pageContent?.length || 0,
+      contentPreview: pageContent?.substring(0, 150) || 'EMPTY',
+      timestamp: new Date().toISOString(),
     });
   }, [pageUrl, pageTitle, pageContent]);
 
   // Filter messages for current page only
   const messages = state.chatHistory.filter(msg => msg.pageUrl === pageUrl);
 
-  // Clear chat when page changes
+  // Clear chat when page changes - use CLEAR_PAGE_CHAT for proper per-page clearing
   useEffect(() => {
-    if (currentPageUrl !== pageUrl) {
-      console.log('[useGeminiChat] ⚠️ PAGE CHANGED - CLEARING ALL CHAT', {
+    if (currentPageUrl && currentPageUrl !== pageUrl) {
+      console.log('[useGeminiChat] ⚠️ PAGE CHANGED - CLEARING PAGE CHAT', {
         from: currentPageUrl,
         to: pageUrl,
         newContentLength: pageContent?.length || 0,
       });
-      // Clear ALL messages to start completely fresh
-      dispatch({ type: 'CLEAR_CHAT_HISTORY' });
+      // Clear messages for the OLD page (keep messages from other pages)
+      dispatch({ type: 'CLEAR_PAGE_CHAT', payload: currentPageUrl });
+      // Also clear messages for the NEW page to start fresh
+      dispatch({ type: 'CLEAR_PAGE_CHAT', payload: pageUrl });
       setCurrentPageUrl(pageUrl);
       setError(null);
       setLastUserMessage(null);
+    } else if (!currentPageUrl) {
+      // Initialize on first render
+      setCurrentPageUrl(pageUrl);
     }
   }, [pageUrl, currentPageUrl, pageContent, dispatch]);
 
@@ -67,16 +76,21 @@ export function useGeminiChat(pageUrl: string, pageTitle: string, pageContent: s
     setIsLoading(true);
     setLastUserMessage(content);
 
-    // ALWAYS use refs to get the latest values (no stale closures!)
+    // CRITICAL: ALWAYS use refs to get the CURRENT values at send time
     const currentUrl = pageUrlRef.current;
     const currentTitle = pageTitleRef.current;
     const currentContent = pageContentRef.current;
 
-    console.log('[useGeminiChat] 📤 SENDING MESSAGE', {
+    // CRITICAL VALIDATION: Ensure we're using current page data
+    console.log('[useGeminiChat] 📤 SENDING MESSAGE - VALIDATION', {
       pageUrl: currentUrl,
       pageTitle: currentTitle,
       contentLength: currentContent?.length || 0,
-      contentPreview: currentContent?.substring(0, 100) || '',
+      contentPreview: currentContent?.substring(0, 150) || 'EMPTY',
+      propsPageUrl: pageUrl, // Compare with props
+      propsPageTitle: pageTitle,
+      propsContentLength: pageContent?.length || 0,
+      MATCH: currentUrl === pageUrl && currentContent === pageContent,
     });
 
     try {
@@ -94,6 +108,14 @@ export function useGeminiChat(pageUrl: string, pageTitle: string, pageContent: s
       // Get only messages from current page for conversation history
       const currentPageMessages = state.chatHistory.filter(msg => msg.pageUrl === currentUrl);
 
+      // CRITICAL: Validate we're sending current page content
+      if (!currentContent || currentContent.length < 100) {
+        console.warn('[useGeminiChat] ⚠️ WARNING: Page content seems empty or too short!', {
+          url: currentUrl,
+          contentLength: currentContent?.length || 0,
+        });
+      }
+
       // Send to API with streaming
       let accumulatedResponse = '';
       const assistantMessageId = crypto.randomUUID();
@@ -103,16 +125,28 @@ export function useGeminiChat(pageUrl: string, pageTitle: string, pageContent: s
         url: currentUrl,
         title: currentTitle,
         contentLength: currentContent?.length || 0,
+        contentPreviewFirst100: currentContent?.substring(0, 100) || 'EMPTY',
         historyCount: currentPageMessages.length,
       });
 
-      for await (const chunk of sendChatMessage({
+      // CRITICAL: Final validation before API call
+      const apiRequest = {
         userMessage: content,
         pageUrl: currentUrl,
         pageTitle: currentTitle,
         pageContent: currentContent || '',
         conversationHistory: currentPageMessages.slice(-10), // Last 10 messages from THIS page
-      })) {
+      };
+
+      console.log('[useGeminiChat] 🎯 FINAL API REQUEST:', {
+        pageUrl: apiRequest.pageUrl,
+        pageTitle: apiRequest.pageTitle,
+        contentLength: apiRequest.pageContent.length,
+        contentHash: apiRequest.pageContent.substring(0, 50) + '...' + apiRequest.pageContent.substring(apiRequest.pageContent.length - 50),
+        userMessage: apiRequest.userMessage,
+      });
+
+      for await (const chunk of sendChatMessage(apiRequest)) {
         accumulatedResponse += chunk;
 
         // Create/update assistant message in real-time
@@ -159,7 +193,8 @@ export function useGeminiChat(pageUrl: string, pageTitle: string, pageContent: s
   }, [state.chatHistory, dispatch]); // Only depend on state and dispatch, refs handle the rest
 
   const clearMessages = useCallback(() => {
-    dispatch({ type: 'CLEAR_CHAT_HISTORY' });
+    // Clear only the current page's chat
+    dispatch({ type: 'CLEAR_PAGE_CHAT', payload: pageUrlRef.current });
     setError(null);
   }, [dispatch]);
 
