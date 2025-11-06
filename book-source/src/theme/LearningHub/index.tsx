@@ -10,7 +10,9 @@ import { usePageContent } from './hooks/usePageContent';
 import { useGeminiChat } from './hooks/useGeminiChat';
 import { useHighlights } from './hooks/useHighlights';
 import { useKeyConcepts } from './hooks/useKeyConcepts';
+import { useProgress } from './hooks/useProgress';
 import { HighlightManager } from './components/SmartHighlights/HighlightManager';
+import { ProgressDashboard } from './components/ProgressTracker/ProgressDashboard';
 // import { HighlightRenderer } from './components/SmartHighlights/HighlightRenderer'; // Disabled - highlights only in sidebar
 import styles from './styles/LearningHub.module.css';
 
@@ -95,6 +97,11 @@ export function LearningHub() {
   const pageContent = usePageContent();
   const { highlights, deleteHighlight } = useHighlights(pageContent.url);
   const { concepts, isLoading: conceptsLoading, error: conceptsError, extractConcepts } = useKeyConcepts(pageContent.url);
+  const { progress, elapsedTime, isCurrentPageVisited, clearProgress, updateHighlightCount, getRecentRecords } = useProgress(
+    pageContent.url,
+    pageContent.title,
+    50 // TODO: Get actual total chapters from sidebar config
+  );
 
   // Auto-extract concepts when concepts tab is opened
   React.useEffect(() => {
@@ -109,6 +116,11 @@ export function LearningHub() {
       }
     }
   }, [state.activeTab, concepts.length, conceptsLoading, conceptsError, pageContent, extractConcepts]);
+
+  // Update progress tracker with highlight count
+  React.useEffect(() => {
+    updateHighlightCount(highlights.length);
+  }, [highlights.length, updateHighlightCount]);
 
   // Log page content whenever it changes
   console.log('[LearningHub] 📖 Page content state:', {
@@ -228,6 +240,15 @@ export function LearningHub() {
           >
             💡 Concepts
           </button>
+          <button
+            className={`${styles.tabButton} ${state.activeTab === 'progress' ? styles.active : ''}`}
+            onClick={() => handleTabChange('progress')}
+            role="tab"
+            aria-selected={state.activeTab === 'progress'}
+            aria-controls="progress-panel"
+          >
+            📊 Progress
+          </button>
         </nav>
 
         {/* Content Area */}
@@ -260,6 +281,15 @@ export function LearningHub() {
                   title: pageContent.title,
                   content: pageContent.content,
                 })}
+              />
+            )}
+            {state.activeTab === 'progress' && (
+              <ProgressDashboard
+                progress={progress}
+                elapsedTime={elapsedTime}
+                isCurrentPageVisited={isCurrentPageVisited}
+                onClearProgress={clearProgress}
+                recentRecords={getRecentRecords(10)}
               />
             )}
           </Suspense>

@@ -280,14 +280,14 @@ Phase 9: Polish & Cross-Cutting
 
 ### Tasks
 
-- [ ] T077 [US6] Implement useProgress hook in book-source/src/theme/LearningHub/hooks/useProgress.ts with page visit tracking, duration calculation (time between load and navigation), localStorage persistence (learningHub_progress_v1)
-- [ ] T078 [P] [US6] Implement ProgressDashboard component in book-source/src/theme/LearningHub/components/ProgressTracker/ProgressDashboard.tsx with visited chapters list, total time, highlight count, completion percentage
-- [ ] T079 [P] [US6] Implement ProgressChart component in book-source/src/theme/LearningHub/components/ProgressTracker/ProgressChart.tsx with visual progress indicators (CSS progress bars)
-- [ ] T080 [US6] Integrate ProgressDashboard into sidebar "Progress" tab
-- [ ] T081 [US6] Implement page visit tracking: on page load, record URL + timestamp in useProgress, mark as "visited" if duration >30 seconds
-- [ ] T082 [US6] Implement read duration calculation: use useEffect with cleanup to track time between mount and unmount, store in ProgressRecord
-- [ ] T083 [US6] Calculate aggregated statistics: total chapters visited, total highlights (from useHighlights), total time spent, completion percentage (visited / total chapters from sidebar)
-- [ ] T084 [US6] Implement "Clear Progress" button with confirmation dialog: on confirm, clear learningHub_progress_v1 from localStorage
+- [x] T077 [US6] Implement useProgress hook in book-source/src/theme/LearningHub/hooks/useProgress.ts with page visit tracking, duration calculation (time between load and navigation), localStorage persistence (learningHub_progress_v1)
+- [x] T078 [P] [US6] Implement ProgressDashboard component in book-source/src/theme/LearningHub/components/ProgressTracker/ProgressDashboard.tsx with visited chapters list, total time, highlight count, completion percentage
+- [x] T079 [P] [US6] Implement ProgressChart component in book-source/src/theme/LearningHub/components/ProgressTracker/ProgressChart.tsx with visual progress indicators (CSS progress bars)
+- [x] T080 [US6] Integrate ProgressDashboard into sidebar "Progress" tab
+- [x] T081 [US6] Implement page visit tracking: on page load, record URL + timestamp in useProgress, mark as "visited" if duration >30 seconds
+- [x] T082 [US6] Implement read duration calculation: use useEffect with cleanup to track time between mount and unmount, store in ProgressRecord
+- [x] T083 [US6] Calculate aggregated statistics: total chapters visited, total highlights (from useHighlights), total time spent, completion percentage (visited / total chapters from sidebar)
+- [x] T084 [US6] Implement "Clear Progress" button with confirmation dialog: on confirm, clear learningHub_progress_v1 from localStorage
 
 **Acceptance Criteria**:
 - ✅ Page marked "visited" after 30 seconds

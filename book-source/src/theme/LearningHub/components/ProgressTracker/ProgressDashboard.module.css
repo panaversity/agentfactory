@@ -1,0 +1,347 @@
+/**
+ * ProgressDashboard Styles
+ */
+
+.dashboard {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Stats Grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.statCard {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  padding: 18px 16px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: var(--ifm-color-primary-lighter);
+}
+
+.statValue {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+  margin-bottom: 6px;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 11px;
+  color: var(--ifm-color-emphasis-600);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+}
+
+/* Current Page Section */
+.currentPage {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-900);
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.currentPageInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timeDisplay {
+  font-size: 18px;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.timeDisplay strong {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+.visitHint {
+  font-size: 13px;
+  color: #856404;
+  padding: 10px 14px;
+  background: #fff3cd;
+  border-radius: 6px;
+  border-left: 3px solid #ffc107;
+  font-weight: 500;
+}
+
+.visitBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ifm-color-success);
+  padding: 6px 12px;
+  background: var(--ifm-color-success-lightest);
+  border-radius: 4px;
+  border: 1px solid var(--ifm-color-success-light);
+  width: fit-content;
+}
+
+/* Progress Section */
+.progressSection {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.progressBar {
+  width: 100%;
+  height: 28px;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ifm-color-primary-dark), var(--ifm-color-primary), var(--ifm-color-primary-light));
+  border-radius: 14px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.progressFill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progressLabel {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--ifm-color-emphasis-700);
+  text-align: center;
+  font-weight: 500;
+}
+
+.progressNote {
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--ifm-color-emphasis-500);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Recent Activity */
+.recentActivity {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 14px;
+}
+
+.recordsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.recordItem {
+  padding: 12px;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-100);
+  border-radius: 6px;
+  transition: border-color 0.2s ease;
+}
+
+.recordItem:hover {
+  border-color: var(--ifm-color-primary-lighter);
+}
+
+.recordTitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-900);
+  margin-bottom: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recordMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.recordDuration {
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
+
+.recordSeparator {
+  color: var(--ifm-color-emphasis-400);
+}
+
+.recordTime,
+.recordVisits {
+  color: var(--ifm-color-emphasis-600);
+}
+
+/* Actions */
+.actions {
+  padding-top: 16px;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  min-height: 80px; /* Prevent layout shift */
+}
+
+.clearButton {
+  width: 100%;
+  padding: 12px 16px;
+  background: transparent;
+  border: 1px solid var(--ifm-color-danger);
+  border-radius: 6px;
+  color: var(--ifm-color-danger);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearButton:hover {
+  background: var(--ifm-color-danger);
+  color: white;
+}
+
+/* Confirmation Dialog */
+.confirmDialog {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.confirmMessage {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ifm-color-emphasis-800);
+  text-align: center;
+  line-height: 1.5;
+  padding: 4px 0;
+}
+
+.confirmButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.confirmYes,
+.confirmNo {
+  flex: 1;
+  padding: 11px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  outline: none;
+}
+
+.confirmYes {
+  background: var(--ifm-color-danger);
+  color: white;
+}
+
+.confirmYes:hover {
+  background: var(--ifm-color-danger-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+}
+
+.confirmNo {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-900);
+}
+
+.confirmNo:hover {
+  background: var(--ifm-color-emphasis-300);
+  transform: translateY(-1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 16px;
+    gap: 20px;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .statValue {
+    font-size: 20px;
+  }
+}
