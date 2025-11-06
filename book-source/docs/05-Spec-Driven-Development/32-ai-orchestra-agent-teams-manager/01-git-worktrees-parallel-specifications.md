@@ -252,8 +252,8 @@ Open `.claude/commands/sp.specify.md` (or equivalent) and add this **BEFORE step
 
    b. If existing feature branch detected:
       - Extract feature number and short-name from branch name
-      - Set FEATURE_DIR=specs/{number}-{name}
-      - Set SPEC_FILE={FEATURE_DIR}/spec.md
+      - Set `FEATURE_DIR=specs/{number}-{name}`
+      - Set `SPEC_FILE={FEATURE_DIR}/spec.md`
       - **Skip steps 1-2** (branch already exists)
       - **Proceed to step 3** (load spec template)
 
