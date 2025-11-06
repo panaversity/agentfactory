@@ -201,9 +201,149 @@ Each worktree on its own branch, completely isolated.
 
 ---
 
+## Adapting /sp.specify for Worktrees
+
+There's one problem: **`/sp.specify` creates NEW branches by default**.
+
+But we already created branches when setting up worktrees (feature-001-upload, feature-002-grade, feature-003-feedback)!
+
+**The conflict:**
+- Worktrees: Already on feature branches
+- `/sp.specify`: Tries to create new branches
+- Result: Workflow breaks
+
+**The solution: Customize your local command**
+
+SpecKit Plus commands are just markdown files you can edit. Let's adapt `/sp.specify` to detect existing branches.
+
+### Step 1: Find Your Command File
+
+The command file location depends on your AI agent:
+
+**For Claude Code users:**
+```bash
+.claude/commands/sp.specify.md
+```
+
+**For other AI agents:**
+```bash
+# Check your agent's commands directory
+# Common patterns:
+.ai/commands/sp.specify.md
+.aider/commands/sp.specify.md
+```
+
+### Step 2: Add Worktree Detection
+
+Open `.claude/commands/sp.specify.md` (or equivalent) and add this **BEFORE step 1** (before "Generate a concise short name"):
+
+```markdown
+0. **Detect existing feature branch** (for git worktree workflows):
+
+   a. Check current branch:
+      ```bash
+      CURRENT_BRANCH=$(git branch --show-current 2>/dev/null)
+
+      # Check if branch matches: NNN-name or feature-NNN-name
+      if [[ "$CURRENT_BRANCH" =~ ^([0-9]+-|feature-[0-9]+-).*$ ]]; then
+        echo "EXISTING_FEATURE_BRANCH_DETECTED"
+      fi
+      ```
+
+   b. If existing feature branch detected:
+      - Extract feature number and short-name from branch name
+      - Set FEATURE_DIR=specs/{number}-{name}
+      - Set SPEC_FILE={FEATURE_DIR}/spec.md
+      - **Skip steps 1-2** (branch already exists)
+      - **Proceed to step 3** (load spec template)
+
+      Example:
+      - Current branch: `feature-001-upload`
+      - Extract: number=001, name=upload
+      - Create spec at: `specs/001-upload/spec.md`
+      - Do NOT create new branch
+
+   c. If NO existing feature branch:
+      - Proceed normally with steps 1-2 (create new branch)
+```
+
+### Step 3: Update Step 2 (Branch Creation)
+
+Find step 2 in your command file ("Check for existing branches before creating new one") and add this at the beginning:
+
+```markdown
+2. **Check for existing branches before creating new one**:
+
+   **If step 0 detected existing branch**:
+   - Skip this entire step (branch already exists)
+   - Proceed to step 3
+
+   **Otherwise** (standard workflow):
+
+   a. First, fetch all remote branches...
+   [rest of existing step 2...]
+```
+
+### Step 4: Test Your Modification
+
+**Test 1: Verify worktree workflow**
+
+```bash
+# In worktree grader-upload (on branch feature-001-upload)
+cd grader-upload
+claude
+
+# Tell Claude:
+/sp.specify "Assignment upload feature: students upload files"
+```
+
+**Expected behavior:**
+```
+✓ Detected existing branch: feature-001-upload
+✓ Using feature number: 001
+✓ Using short name: upload
+✓ Creating spec at: specs/001-upload/spec.md
+✓ Skipping branch creation (already on feature branch)
+
+Proceeding to specification creation...
+```
+
+**Test 2: Verify standard workflow still works**
+
+```bash
+# In main project (on main/master branch)
+cd my-project
+claude
+
+/sp.specify "Add user authentication"
+```
+
+**Expected behavior:**
+```
+(No existing feature branch detected)
+Generating short name: user-auth
+Checking for existing branches...
+Creating new branch: 002-user-auth
+```
+
+### Why This Works
+
+You're teaching your AI agent to be **context-aware**:
+
+- **In worktree** → Already on feature branch → Skip creation
+- **Not in worktree** → Create new branch → Standard flow
+
+This is a key skill: **adapting tools to match your workflow**, not forcing workflows to match tools.
+
+---
+
 ## Running Parallel Specifications
 
 Now run specs in all 3 worktrees simultaneously. You'll manage 3 Claude agent sessions in parallel.
+
+**Prerequisites:**
+- ✅ 3 worktrees created (grader-upload, grader-grade, grader-feedback)
+- ✅ `/sp.specify` command modified to detect existing branches (previous section)
 
 **Step 1: Open 3 terminal windows**
 
@@ -255,10 +395,11 @@ Start these within 1 minute of each other to run truly in parallel:
 ```
 
 **What you'll observe:**
-- All 3 Claude agents working simultaneously
-- Each outputs to its own `specs/` directory in its worktree
-- No conflicts, no interference
-- Complete isolation between agents
+- ✅ Each agent detects existing branch (feature-001-upload, etc.)
+- ✅ Each skips branch creation automatically
+- ✅ Each creates spec in correct location (specs/001-upload/, specs/002-grade/, specs/003-feedback/)
+- ✅ All 3 agents working simultaneously
+- ✅ Complete isolation between agents - no conflicts
 
 **Skills you're learning:**
 - Managing multiple AI agent sessions in parallel
