@@ -231,14 +231,19 @@ Just analyze the structure—don't read files yet."
 **Goal:** Understand the specific area relevant to your task.
 
 ```bash
-claude "Now I need to understand how user-related features work. 
-Read these specific files:
+claude "Now I need to understand how user-related features work.
 
-1. src/models/user.py - to see the User model
-2. src/services/user_service.py - to understand user service patterns
-3. src/api/routes/users.py - to see how user endpoints are structured
+Discover and analyze:
+1. Find the User model - what fields and relationships exist?
+2. Find user service patterns - how do we structure business logic?
+3. Find user API endpoints - how do we handle routes?
 
-Analyze the patterns: How do we structure services? What's the code style?"
+For each, tell me:
+- What file you found
+- What patterns you observed
+- What conventions we follow
+
+Then summarize: How should I structure new services in this project?"
 ```
 
 **What the AI Does:**

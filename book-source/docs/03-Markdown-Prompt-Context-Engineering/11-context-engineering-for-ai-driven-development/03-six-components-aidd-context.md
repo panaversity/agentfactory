@@ -743,24 +743,34 @@ Let's see how all six components work together for a real task.
 **Step 2: Use Development Tools (Component 2)**
 
 ```bash
-claude "Before implementing OAuth, use your tools to understand current system:
+claude "Before implementing OAuth, I need you to discover our current system:
 
-1. Read src/auth/authentication.py to see current auth approach
-2. Run 'pip list' to check if we have OAuth libraries
-3. Search codebase for 'authenticate' to find all auth patterns
+1. Find and analyze our current authentication approach
+   - Where is auth code located?
+   - What methods are we using now?
 
-Summarize what you learn."
+2. Check what OAuth libraries we have available
+   - Run commands to check installed packages
+
+3. Search for existing authentication patterns
+   - Find all places where authentication happens
+   - What patterns do we follow?
+
+Tell me what you discovered about each."
 ```
 
 **Step 3: Load Knowledge & Memory (Component 3)**
 
 ```bash
-claude "Read these to understand our standards:
-- CONTRIBUTING.md (code standards)
-- docs/architecture.md (system design)
-- DECISIONS.md (past architecture decisions)
+claude "Now discover our project standards:
+- Find our code standards documentation
+- Find our system architecture documentation
+- Find any past decisions about authentication
 
-Then confirm you understand before we proceed."
+Read what you find and summarize:
+- What coding standards should I follow?
+- What architectural patterns are we using?
+- Have we made decisions about auth before?"
 ```
 
 **Step 4: Skip Audio/Speech (Component 4)**

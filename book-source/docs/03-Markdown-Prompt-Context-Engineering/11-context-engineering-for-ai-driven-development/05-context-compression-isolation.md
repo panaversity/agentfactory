@@ -340,6 +340,131 @@ Then let's continue with the next task: implementing email verification."
 
 ---
 
+### Memory Files: Setup Guide
+
+Compression works best with **persistent memory files** that live in your project. Here's how to set them up:
+
+#### Standard Memory Files
+
+Create these files at your project root (same level as README.md):
+
+**DECISIONS.md** - Architectural choices (WHY we chose X over Y)
+```markdown
+# Architecture Decisions
+
+## Decision: [Decision Name]
+**Date:** YYYY-MM-DD
+**Context:** What problem were we solving?
+**Decision:** What we chose
+**Alternatives Considered:** What else we looked at
+**Consequences:** Trade-offs and implications
+```
+
+**PATTERNS.md** - Code conventions (HOW we structure code)
+```markdown
+# Code Patterns
+
+## [Pattern Name]
+**When to use:** [Context]
+**Example:**
+```python
+# Code example showing the pattern
+```
+**Key principles:** [List]
+```
+
+**TODO.md** - Task tracking (WHAT needs doing)
+```markdown
+# Project TODO
+
+## In Progress
+- [ ] Task currently working on
+
+## Next Up
+- [ ] Upcoming tasks
+
+## Backlog
+- [ ] Future tasks
+```
+
+**GOTCHAS.md** - Bug lessons learned (WHAT to watch for)
+```markdown
+# Known Issues & Gotchas
+
+## Issue: [Problem Name]
+**Problem:** What went wrong
+**Symptom:** How it manifests
+**Root Cause:** Why it happens
+**Solution:** How to fix
+**Affected Files:** Where to look
+```
+
+#### When to Create & Update
+
+**Creation Timing:**
+- Create at project start, before first feature implementation
+- Initialize with empty structure or project setup decisions
+
+**Update Schedule:**
+- **DECISIONS.md:** After each architectural discussion or choice
+- **PATTERNS.md:** When establishing or changing code conventions
+- **TODO.md:** Daily or weekly
+- **GOTCHAS.md:** When discovering non-obvious bugs
+
+#### Version Control
+
+**YES - Commit to Git**
+- Memory files are documentation
+- Track changes like any project documentation
+- Team members benefit from shared context
+
+**Add to .gitignore:**
+- SESSION_CHECKPOINT.md (personal, per-session)
+- Any personal notes or drafts
+
+#### File Location & Naming
+
+**Standard Location:** Project root
+```
+my-project/
+├── README.md
+├── DECISIONS.md       ← Memory files here
+├── PATTERNS.md        ←
+├── TODO.md            ←
+├── GOTCHAS.md         ←
+├── src/
+└── tests/
+```
+
+**File Naming:** Use UPPERCASE for memory files (makes them visible and important)
+
+**For Large Projects:** You can organize in a `/docs` folder:
+```
+my-project/
+├── docs/
+│   ├── architecture/
+│   │   ├── DECISIONS.md
+│   │   └── PATTERNS.md
+│   └── operations/
+│       ├── TODO.md
+│       └── GOTCHAS.md
+```
+
+#### Quick Start Command
+
+```bash
+# Create all memory files at once
+claude "Create initial memory files for my project:
+1. DECISIONS.md with template structure
+2. PATTERNS.md with template structure
+3. TODO.md with template structure
+4. GOTCHAS.md with template structure
+
+Include section headers but leave content areas empty for me to fill."
+```
+
+---
+
 ### Compression Best Practices
 
 **✅ DO:**
