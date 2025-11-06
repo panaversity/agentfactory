@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './Quiz.module.css';
 
 export interface QuizQuestion {
@@ -30,6 +30,16 @@ const Quiz: React.FC<QuizProps> = ({
   questions,
   questionsPerBatch = 15
 }) => {
+  // Create a ref for smooth scrolling
+  const quizRef = useRef<HTMLDivElement>(null);
+
+  // Utility function for smooth scroll to top
+  const scrollToTop = () => {
+    if (quizRef.current) {
+      quizRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   // Initialize displayed questions on mount
   const [displayedQuestions, setDisplayedQuestions] = useState<QuizQuestion[]>(() => {
     const shuffled = shuffleArray(questions);
@@ -43,6 +53,15 @@ const Quiz: React.FC<QuizProps> = ({
   const [showFeedback, setShowFeedback] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [answeredQuestions, setAnsweredQuestions] = useState<Set<number>>(new Set());
+  const [shouldScroll, setShouldScroll] = useState(false);
+
+  // Scroll to top when shouldScroll flag is set
+  useEffect(() => {
+    if (shouldScroll) {
+      scrollToTop();
+      setShouldScroll(false);
+    }
+  }, [shouldScroll]);
 
   const handleAnswerSelect = (optionIndex: number) => {
     // Only allow selection if not already answered
@@ -67,6 +86,8 @@ const Quiz: React.FC<QuizProps> = ({
       setCurrentQuestion(currentQuestion + 1);
       // Preserve feedback for previously answered questions
       setShowFeedback(answeredQuestions.has(currentQuestion + 1));
+      // Trigger scroll after state updates
+      setShouldScroll(true);
     }
   };
 
@@ -75,11 +96,15 @@ const Quiz: React.FC<QuizProps> = ({
       setCurrentQuestion(currentQuestion - 1);
       // Preserve feedback for previously answered questions
       setShowFeedback(answeredQuestions.has(currentQuestion - 1));
+      // Trigger scroll after state updates
+      setShouldScroll(true);
     }
   };
 
   const handleSubmit = () => {
     setShowResults(true);
+    // Trigger scroll after state updates
+    setShouldScroll(true);
   };
 
   const handleReset = () => {
@@ -114,7 +139,7 @@ const Quiz: React.FC<QuizProps> = ({
 
   if (showResults) {
     return (
-      <div className={styles.quizContainer}>
+      <div className={styles.quizContainer} ref={quizRef}>
         <div className={styles.resultsCard}>
           <div className={styles.resultsHeader}>
             <h2 className={styles.resultsTitle}>Quiz Complete</h2>
@@ -186,7 +211,10 @@ const Quiz: React.FC<QuizProps> = ({
           </div>
 
           <button
-            onClick={handleReset}
+            onClick={() => {
+              handleReset();
+              setShouldScroll(true);
+            }}
             className={styles.resetButton}
           >
             Retake Quiz
@@ -202,7 +230,7 @@ const Quiz: React.FC<QuizProps> = ({
   const isAnswerCorrect = selectedAnswer === question.correctOption;
 
   return (
-    <div className={styles.quizContainer}>
+    <div className={styles.quizContainer} ref={quizRef}>
       <div className={styles.quizCard}>
         <div className={styles.quizHeader}>
           <h2 className={styles.quizTitle}>{title}</h2>
@@ -364,6 +392,7 @@ const Quiz: React.FC<QuizProps> = ({
                 if (answeredQuestions.has(index)) {
                   setCurrentQuestion(index);
                   setShowFeedback(true);
+                  setShouldScroll(true);
                 }
               }}
               title={`Question ${index + 1}`}
