@@ -218,14 +218,14 @@ Phase 9: Polish & Cross-Cutting
 
 ### Tasks
 
-- [ ] T061 [US4] Implement extractConcepts function in book-source/src/theme/LearningHub/services/geminiService.ts per gemini-concepts.contract.md with 7-day cache, content hash invalidation
-- [ ] T062 [P] [US4] Implement ConceptsList component in book-source/src/theme/LearningHub/components/KeyConcepts/ConceptsList.tsx with bullet points, loading state
-- [ ] T063 [P] [US4] Implement ConceptItem component in book-source/src/theme/LearningHub/components/KeyConcepts/ConceptItem.tsx with title, description, importance indicator, clickable
-- [ ] T064 [US4] Integrate ConceptsList into sidebar "Key Concepts" tab
-- [ ] T065 [US4] Implement concept extraction with cache: check localStorage cache first (learningHub_concepts_v1), if miss or stale, call extractConcepts, store result
-- [ ] T066 [US4] Implement concept click handler: extract sectionId from concept, use document.getElementById() to scroll to section
-- [ ] T067 [US4] Handle short content edge case: if page <500 words, show 2-3 concepts minimum or message "Explore longer chapters for detailed analysis"
-- [ ] T068 [US4] Implement cache invalidation: compare MD5 content hash, regenerate if mismatch or age >7 days
+- [x] T061 [US4] Implement extractConcepts function in book-source/src/theme/LearningHub/services/geminiService.ts per gemini-concepts.contract.md with 7-day cache, content hash invalidation
+- [x] T062 [P] [US4] Implement ConceptsList component in book-source/src/theme/LearningHub/components/KeyConcepts/ConceptsList.tsx with bullet points, loading state
+- [x] T063 [P] [US4] Implement ConceptItem component in book-source/src/theme/LearningHub/components/KeyConcepts/ConceptItem.tsx with title, description, importance indicator, clickable
+- [x] T064 [US4] Integrate ConceptsList into sidebar "Key Concepts" tab
+- [x] T065 [US4] Implement concept extraction with cache: check localStorage cache first (learningHub_concepts_v1), if miss or stale, call extractConcepts, store result
+- [x] T066 [US4] Implement concept click handler: extract sectionId from concept, use document.getElementById() to scroll to section
+- [x] T067 [US4] Handle short content edge case: if page <500 words, show 2-3 concepts minimum or message "Explore longer chapters for detailed analysis"
+- [x] T068 [US4] Implement cache invalidation: compare MD5 content hash, regenerate if mismatch or age >7 days
 
 **Acceptance Criteria**:
 - ✅ Concepts extracted within 3 seconds on first visit

@@ -414,6 +414,157 @@ Generate the quiz now as valid JSON:`;
   }
 
   /**
+   * Extract key concepts from page content
+   * Per gemini-concepts.contract.md with 7-day cache and MD5 content hash
+   */
+  public async extractConcepts(
+    pageContext: {
+      url: string;
+      title: string;
+      content: string;
+    },
+    targetCount: number = 6
+  ): Promise<Array<{
+    title: string;
+    description: string;
+    sectionId?: string;
+    importance: number;
+  }>> {
+    try {
+      console.log('[GeminiService] extractConcepts called', { targetCount });
+      
+      return await this.withRateLimit(async () => {
+        const model = this.getModel();
+
+        // Truncate content to 20000 chars max
+        const truncatedContent = this.formatContent(pageContext.content, 20000);
+
+        // Build prompt
+        const prompt = `You are an expert educational content analyst extracting key concepts.
+
+## Task
+Identify and extract ${targetCount} key concepts from the page content below. These concepts should be the most important ideas students need to understand.
+
+## Requirements
+1. Each concept must have:
+   - A clear, concise title (5-100 chars)
+   - A brief description explaining the concept (10-500 chars)
+   - An importance score (1-10, where 10 is most critical)
+   - Optional: sectionId (HTML ID to link to specific section if identifiable)
+2. Concepts should be ordered by importance (most important first)
+3. Concepts should be distinct (no duplicates or overlaps)
+4. Descriptions should be student-friendly and actionable
+
+## Output Format (JSON)
+Return ONLY valid JSON with this structure (no markdown, no code blocks):
+{
+  "concepts": [
+    {
+      "title": "Concept Name",
+      "description": "Brief explanation of the concept...",
+      "importance": 9,
+      "sectionId": "optional-section-id"
+    }
+  ]
+}
+
+## Page Content
+Title: ${pageContext.title}
+Content: ${truncatedContent}
+
+Extract the key concepts now as valid JSON:`;
+
+        console.log('[GeminiService] Calling model.generateContent for concepts...');
+
+        const result = await model.generateContent({
+          contents: [{ role: 'user', parts: [{ text: prompt }] }],
+          generationConfig: {
+            temperature: 0.5,  // Lower for consistent extraction
+            topK: 40,
+            topP: 0.9,
+            maxOutputTokens: 1500,
+          }
+        });
+
+        console.log('[GeminiService] Concepts generateContent completed');
+
+        const responseText = this.extractText(result);
+        console.log('[GeminiService] Response text:', responseText.substring(0, 200));
+
+        // Extract JSON from response (handle markdown code blocks if present)
+        let jsonText = responseText.trim();
+        
+        // Remove markdown code blocks if present
+        if (jsonText.startsWith('```')) {
+          jsonText = jsonText.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+        }
+
+        // Parse JSON
+        let parsed: any;
+        try {
+          parsed = JSON.parse(jsonText);
+        } catch (parseError) {
+          console.error('[GeminiService] JSON parse error:', parseError);
+          console.error('[GeminiService] Raw response:', responseText);
+          throw this.createError(
+            'RESPONSE_PARSE_ERROR',
+            'Failed to parse concepts JSON response',
+            false
+          );
+        }
+
+        // Validate response structure
+        if (!parsed.concepts || !Array.isArray(parsed.concepts)) {
+          throw this.createError(
+            'RESPONSE_VALIDATION_ERROR',
+            'Invalid concepts response structure: missing concepts array',
+            false
+          );
+        }
+
+        const concepts = parsed.concepts;
+        
+        if (concepts.length < 2) {
+          console.warn('[GeminiService] Too few concepts extracted:', concepts.length);
+        }
+
+        // Validate each concept
+        for (let i = 0; i < concepts.length; i++) {
+          const c = concepts[i];
+          
+          if (!c.title || typeof c.title !== 'string') {
+            throw this.createError(
+              'RESPONSE_VALIDATION_ERROR',
+              `Concept ${i + 1} missing or invalid title`,
+              false
+            );
+          }
+
+          if (!c.description || typeof c.description !== 'string') {
+            throw this.createError(
+              'RESPONSE_VALIDATION_ERROR',
+              `Concept ${i + 1} missing or invalid description`,
+              false
+            );
+          }
+
+          if (typeof c.importance !== 'number' || c.importance < 1 || c.importance > 10) {
+            // Set default importance if invalid
+            c.importance = 10 - i;
+          }
+        }
+
+        console.log('[GeminiService] Concepts validation passed:', concepts.length, 'concepts');
+
+        return concepts;
+      });
+    } catch (error) {
+      console.error('[GeminiService] extractConcepts error:', error);
+      throw error;
+    }
+  }
+
+  /**
    * Reset rate limiter (for testing)
    */
   public resetRateLimiter(): void {

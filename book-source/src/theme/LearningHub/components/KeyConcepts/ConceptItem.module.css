@@ -1,0 +1,85 @@
+/* ConceptItem.module.css */
+
+.conceptItem {
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.conceptItem:hover {
+  background-color: var(--ifm-color-emphasis-200);
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.conceptItem:active {
+  transform: translateX(2px);
+}
+
+/* Importance levels */
+.conceptItem.high {
+  border-left-color: #dc3545;
+}
+
+.conceptItem.medium {
+  border-left-color: #ffc107;
+}
+
+.conceptItem.low {
+  border-left-color: #28a745;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.importanceIndicator {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.title {
+  flex: 1;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ifm-font-color-base);
+}
+
+.description {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.linkIndicator {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+}
+
+.linkIcon {
+  font-size: 0.875rem;
+}
+
+.linkText {
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Focus state for accessibility */
+.conceptItem:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}

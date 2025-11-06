@@ -9,6 +9,7 @@ import { LearningHubToggle } from './LearningHubToggle';
 import { usePageContent } from './hooks/usePageContent';
 import { useGeminiChat } from './hooks/useGeminiChat';
 import { useHighlights } from './hooks/useHighlights';
+import { useKeyConcepts } from './hooks/useKeyConcepts';
 import { HighlightManager } from './components/SmartHighlights/HighlightManager';
 // import { HighlightRenderer } from './components/SmartHighlights/HighlightRenderer'; // Disabled - highlights only in sidebar
 import styles from './styles/LearningHub.module.css';
@@ -17,6 +18,7 @@ import styles from './styles/LearningHub.module.css';
 const ChatInterface = lazy(() => import('./components/AIChat/ChatInterface').then(m => ({ default: m.ChatInterface })));
 const HighlightsList = lazy(() => import('./components/SmartHighlights/HighlightsList').then(m => ({ default: m.HighlightsList })));
 const QuizInterface = lazy(() => import('./components/QuickQuiz/QuizInterface'));
+const ConceptsList = lazy(() => import('./components/KeyConcepts/ConceptsList'));
 
 // Wrapper component to use the chat hook
 // Using key={pageUrl} on parent ensures this remounts on page change
@@ -92,6 +94,7 @@ export function LearningHub() {
   const { state, dispatch } = useLearningHub();
   const pageContent = usePageContent();
   const { highlights, deleteHighlight } = useHighlights(pageContent.url);
+  const { concepts, isLoading: conceptsLoading, error: conceptsError, extractConcepts } = useKeyConcepts(pageContent.url);
 
   // Log page content whenever it changes
   console.log('[LearningHub] 📖 Page content state:', {
@@ -131,6 +134,40 @@ export function LearningHub() {
       }
     }
   };
+
+  const handleConceptClick = (concept: any) => {
+    // Try to scroll to section if sectionId provided
+    if (concept.sectionId) {
+      const element = document.getElementById(concept.sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+    }
+
+    // Fallback: search for heading with matching text
+    const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    for (const heading of Array.from(headings)) {
+      if (heading.textContent?.toLowerCase().includes(concept.title.toLowerCase())) {
+        heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        break;
+      }
+    }
+  };
+
+  // Auto-extract concepts when concepts tab is opened
+  React.useEffect(() => {
+    if (state.activeTab === 'concepts' && concepts.length === 0 && !conceptsLoading && !conceptsError) {
+      const wordCount = pageContent.content.split(/\s+/).length;
+      if (wordCount >= 200) {
+        extractConcepts({
+          url: pageContent.url,
+          title: pageContent.title,
+          content: pageContent.content,
+        });
+      }
+    }
+  }, [state.activeTab, concepts.length, conceptsLoading, conceptsError, pageContent, extractConcepts]);
 
   return (
     <>
@@ -182,6 +219,15 @@ export function LearningHub() {
           >
             📝 Quiz
           </button>
+          <button
+            className={`${styles.tabButton} ${state.activeTab === 'concepts' ? styles.active : ''}`}
+            onClick={() => handleTabChange('concepts')}
+            role="tab"
+            aria-selected={state.activeTab === 'concepts'}
+            aria-controls="concepts-panel"
+          >
+            💡 Concepts
+          </button>
         </nav>
 
         {/* Content Area */}
@@ -202,6 +248,19 @@ export function LearningHub() {
             )}
             {state.activeTab === 'quiz' && (
               <QuizInterface />
+            )}
+            {state.activeTab === 'concepts' && (
+              <ConceptsList
+                concepts={concepts}
+                isLoading={conceptsLoading}
+                error={conceptsError}
+                onConceptClick={handleConceptClick}
+                onRetry={() => extractConcepts({
+                  url: pageContent.url,
+                  title: pageContent.title,
+                  content: pageContent.content,
+                })}
+              />
             )}
           </Suspense>
         </div>
