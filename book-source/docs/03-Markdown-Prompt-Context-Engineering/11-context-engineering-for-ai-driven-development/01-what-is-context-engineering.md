@@ -93,16 +93,21 @@ Let's see context engineering in action.
 
 **Developer B** (With Context Engineering):
 ```bash
-# First, sets up the context
-"Analyze my project:
-- I'm using FastAPI (look at src/main.py)
-- My existing OAuth pattern is in src/auth/oauth.py
-- Database models are in src/models/user.py
-- Our API structure is in src/api/
-- Dependencies are in requirements.txt"
+# First, AI discovers the context
+"I'm building a FastAPI project and need to add user authentication.
 
-# Then makes the request
-"Create a user authentication system that follows our existing patterns"
+Before implementing, discover:
+- What framework am I using? (check main entry point)
+- Do we have existing auth patterns? (search for authentication code)
+- What database models exist? (find user-related models)
+- What's our API structure? (analyze route organization)
+- What libraries are available? (check dependencies)
+
+Tell me what you found."
+
+# AI responds with discovered patterns
+# Then student makes the request
+"Create a user authentication system that follows the patterns you discovered"
 ```
 
 **AI's Perspective:**
@@ -294,35 +299,87 @@ When you work with an AI coding agent, these things become part of its context:
 Here's what context engineering looks like in practice with Claude Code:
 
 ```bash
-# Session Start: Load Context
-claude "Let me give you context about my project:
+# Session Start: AI Discovers Context
+claude "I'm building a Python web API. Before we start implementing features,
+I need you to understand my project.
 
-1. I'm building a Python web API using FastAPI
-2. Here's my project structure: src/api/, src/services/, src/models/
-3. I follow these conventions:
-   - All functions have type hints
-   - We use async/await throughout
-   - Error handling uses custom exceptions
-4. Read these key files:
-   - src/models/base.py (our base model pattern)
-   - src/services/user_service.py (example of our service pattern)"
+Discover and tell me:
+1. What framework am I using? (check main files)
+2. What's my project structure? (analyze directories)
+3. What coding conventions do I follow? (look at existing code patterns)
+4. Find example files that show:
+   - Our base model pattern
+   - Our service layer pattern
+   - Our error handling approach
+
+Summarize what patterns you found."
+
+# AI explores and reports back with discovered patterns
 ```
 
 **Now, every request you make will be answered with your project context in mind.**
 
 ```bash
 # Your prompt (now context-aware)
-claude "Create a new product service following our patterns"
+claude "Create a new product service following the patterns you discovered"
 
 # AI Response (matches YOUR style automatically)
-# - Uses your base model
-# - Follows your service pattern
-# - Includes type hints
-# - Uses async/await
-# - Applies your error handling
+# - Uses your base model pattern (it discovered)
+# - Follows your service pattern (it found)
+# - Includes type hints (it saw in examples)
+# - Uses async/await (it observed)
+# - Applies your error handling (it learned)
 ```
 
 **You didn't have to repeat all those requirements in your prompt—the AI remembered from context!**
+
+---
+
+## When You DON'T Need Context Engineering
+
+Context engineering is powerful, but **not every task requires it**. Here's when to skip it:
+
+### Skip Context Engineering For:
+
+**Single-file scripts or standalone functions:**
+- Writing a utility function that doesn't integrate with other code
+- Creating a one-off data processing script
+- Quick experiments or prototypes
+
+**Generic coding problems:**
+- "Write a function to calculate Fibonacci sequence"
+- "Create a regex pattern to validate emails"
+- "Generate sample test data"
+
+**Tasks with no project context:**
+- Learning exercises from tutorials
+- Algorithm practice problems
+- Standalone code examples
+
+### Use Context Engineering For:
+
+**Multi-file projects:**
+- Adding features to existing codebases
+- Projects with established patterns and conventions
+- Code that must integrate with other components
+
+**Long-term projects:**
+- Work spanning weeks or months
+- Team projects where consistency matters
+- Production code where quality is critical
+
+### The Quick Test
+
+**Ask yourself:** "Can I describe this entire task in one prompt without referencing existing code?"
+
+- **YES** → You probably don't need context engineering
+- **NO** → Context engineering will help significantly
+
+**Example:**
+- ❌ "Write a sorting algorithm" → No context needed (generic problem)
+- ✅ "Add sorting to our product catalog following our existing patterns" → Context engineering helps (project-specific)
+
+**Remember:** Context engineering has overhead. Use it when the benefits (consistency, integration, quality) justify the setup time.
 
 ---
 
