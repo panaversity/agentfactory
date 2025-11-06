@@ -319,7 +319,7 @@ As you start writing prompts, watch out for these common pitfalls:
 
 ### ❌ **Mistake 1: Vague Requirements**
 **Bad**: "Make an API for my app"
-**Better**: "Create a FastAPI endpoint GET /users/{id} that retrieves a user by ID from PostgreSQL"
+**Better**: "Create a FastAPI endpoint `GET /users/{id}` that retrieves a user by ID from PostgreSQL"
 
 **Why it matters**: Vague prompts force AI to guess what you want, leading to generic code that doesn't fit your project.
 
