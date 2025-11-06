@@ -150,7 +150,7 @@ I need to work on 3 features in parallel for an Assignment Grader:
 2. Grade feature (feature-002-grade) - grading logic and scoring
 3. Feedback feature (feature-003-feedback) - generate and display feedback
 
-Set up 3 git worktrees for these features:
+Create a new .trees directory and inside it set up 3 git worktrees for these features:
 - Create worktree directories
 - Initialize feature branches
 - Add specs/ folder in each
@@ -241,14 +241,13 @@ Open `.claude/commands/sp.specify.md` (or equivalent) and add this **BEFORE step
 0. **Detect existing feature branch** (for git worktree workflows):
 
    a. Check current branch:
-      ```bash
+   
       CURRENT_BRANCH=$(git branch --show-current 2>/dev/null)
 
       # Check if branch matches: NNN-name or feature-NNN-name
       if [[ "$CURRENT_BRANCH" =~ ^([0-9]+-|feature-[0-9]+-).*$ ]]; then
         echo "EXISTING_FEATURE_BRANCH_DETECTED"
       fi
-      ```
 
    b. If existing feature branch detected:
       - Extract feature number and short-name from branch name

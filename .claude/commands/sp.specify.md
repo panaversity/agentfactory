@@ -16,6 +16,33 @@ The text the user typed after `/sp.specify` in the triggering message **is** the
 
 Given that feature description, do this:
 
+0. **Detect existing feature branch** (for git worktree workflows):
+
+   a. Check current branch:
+   
+      CURRENT_BRANCH=$(git branch --show-current 2>/dev/null)
+
+      # Check if branch matches: NNN-name or feature-NNN-name
+      if [[ "$CURRENT_BRANCH" =~ ^([0-9]+-|feature-[0-9]+-).*$ ]]; then
+        echo "EXISTING_FEATURE_BRANCH_DETECTED"
+      fi
+
+   b. If existing feature branch detected:
+      - Extract feature number and short-name from branch name
+      - Set `FEATURE_DIR=specs/{number}-{name}`
+      - Set `SPEC_FILE={FEATURE_DIR}/spec.md`
+      - **Skip steps 1-2** (branch already exists)
+      - **Proceed to step 3** (load spec template)
+
+      Example:
+      - Current branch: `feature-001-upload`
+      - Extract: number=001, name=upload
+      - Create spec at: `specs/001-upload/spec.md`
+      - Do NOT create new branch
+
+   c. If NO existing feature branch:
+      - Proceed normally with steps 1-2 (create new branch)
+      
 1. **Generate a concise short name** (2-4 words) for the branch:
    - Analyze the feature description and extract the most meaningful keywords
    - Create a 2-4 word short name that captures the essence of the feature
@@ -29,6 +56,12 @@ Given that feature description, do this:
      - "Fix payment processing timeout bug" → "fix-payment-timeout"
 
 2. **Check for existing branches before creating new one**:
+
+   **If step 0 detected existing branch**:
+   - Skip this entire step (branch already exists)
+   - Proceed to step 3
+
+   **Otherwise** (standard workflow):
    
    a. First, fetch all remote branches to ensure we have the latest information:
       ```bash
