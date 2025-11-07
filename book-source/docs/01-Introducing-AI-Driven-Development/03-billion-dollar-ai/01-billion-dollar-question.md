@@ -34,7 +34,7 @@ learning_objectives:
   - objective: "Recognize that AI fundamentally changes the business playbook for building billion-dollar companies"
     proficiency_level: "A1"
     bloom_level: "Understand"
-    assessment_method: "Explanation of how solo developer achieved $500M ARR in 2 months"
+    assessment_method: "Explanation of how AI agent orchestration enables unprecedented solo developer scaling"
 
   - objective: "Understand how agent orchestration enables unprecedented scalability"
     proficiency_level: "A2"
@@ -52,7 +52,7 @@ cognitive_load:
 
 differentiation:
   extension_for_advanced: "Research current unicorn companies and AI-enabled revenue models; analyze scaling strategies"
-  remedial_for_struggling: "Focus on single $500M example; explain incremental capabilities before discussing scale"
+  remedial_for_struggling: "Focus on concrete examples of solo developers building with AI agents today; explain incremental capabilities before discussing scale"
 ---
 
 # The Billion-Dollar Question
@@ -63,9 +63,11 @@ Two years ago, if you wanted to build a billion-dollar software company, you nee
 
 Today, the playbook is broken. And that's your opportunity.
 
-In March 2025, a solo developer—working with Claude Code, Anthropic's AI coding agent—generated $500 million in annual recurring revenue (ARR) in just two months. Not two years. Two months. That single developer orchestrated thousands of specialized AI agents solving problems across multiple vertical markets simultaneously. No traditional software company with 100+ employees could scale that fast. No hiring process could find talent that smart. No IT infrastructure could coordinate that many parallel workflows.
+Consider what's now becoming possible: A solo developer—working with AI coding agents like Claude Code—could potentially orchestrate thousands of specialized AI agents solving problems across multiple vertical markets simultaneously. No traditional software company with 100+ employees could coordinate that many parallel workflows. No hiring process could find talent that fast. No IT infrastructure could scale that efficiently.
 
-This chapter explains *why* this is possible and how you can build your billion-dollar business in the AI era using concrete, actionable frameworks.
+This isn't science fiction. The technical capabilities exist today. Solo developers are already building and deploying AI agent systems that would have required entire engineering teams just two years ago. The path from "possible" to "proven at scale" is measured in months, not years.
+
+This chapter explains *why* this transformation is happening and how you can position yourself to build a billion-dollar business in the AI era using concrete, actionable frameworks.
 
 ---
 
@@ -103,10 +105,10 @@ Use your AI companion tool set up (e.g., ChatGPT web, Claude Code, Gemini CLI), 
 
 ### Prompt 1: Validate The Opportunity Claims
 ```
-This lesson says a solo developer generated $500M in annual revenue in two months. Help me understand: Is this real or exaggerated? What makes this possible NOW that wasn't possible 5 years ago? Explain in simple terms—I don't have a business background.
+This lesson talks about solo developers orchestrating thousands of AI agents across multiple markets. Help me understand: What's real today vs. what's still emerging? What makes this possible NOW that wasn't possible 5 years ago? Explain in simple terms—I don't have a business background.
 ```
 
-**Expected outcome**: Honest understanding of what's real vs. hype in the $500M claim.
+**Expected outcome**: Clear understanding of current AI capabilities vs. near-future potential.
 
 ### Prompt 2: Identify The Most Important Force
 ```
