@@ -16,6 +16,24 @@ For the first time in human history, we're not teaching machines *what* to do �
 **This is the book for developers who want to build the future.**
 
 ---
+# Why This Matters
+
+Software development has entered its first true paradigm shift since the creation of the web.  
+For decades, we’ve told computers *exactly* what to do. Now, with the rise of reasoning models like Gemini, Claude, and OpenAI’s o1, we’re building systems that can **understand intent, make decisions, and collaborate**.
+
+This matters because:
+
+- **Speed is being redefined:** Tasks that once took weeks now happen in hours.  
+- **Roles are evolving:** Developers are becoming spec architects and AI orchestrators.  
+- **Software is becoming adaptive:** It no longer just executes logic—it *reasons* about outcomes.  
+- **Organizations are restructuring:** Entire workflows are being reimagined around co-developing with AI agents.
+
+Ignoring this transition means falling behind not in tools, but in *thinking*.  
+AI-native development isn’t about automating the old way—it’s about inventing the new one.
+
+That’s why this book exists: to help you master the shift, not just survive it.
+
+---
 
 ## What This Book Is About
 
