@@ -799,14 +799,6 @@ What mistakes is this developer making? Reference the 5 common mistakes from con
 Which mistakes apply here? How should they have approached this instead?"
 ```
 
-**Expected Outcome:**
-- Identification of Mistake #1 (loading everything)
-- Explanation of why this approach is inefficient
-- Better approach: progressive loading to find the bug
-- Estimate of context waste (90%+ filled for a small bug fix)
-
-**Practice:** Can you spot context engineering mistakes in your own workflow?
-
 ---
 
 ### Prompt 2: Practice Context Health Check
@@ -825,14 +817,6 @@ For each point, assess: Healthy / Warning / Critical
 Then tell me what actions I should take immediately."
 ```
 
-**Expected Outcome:**
-- Health check assessment (likely all Critical)
-- Identification of multiple mistakes (#2, #5, possibly others)
-- Action plan: compress, isolate, restart
-- Explanation of why current approach is failing
-
-**Reflection:** This is what good validation looks like—catching problems before they cause major issues.
-
 ---
 
 ### Prompt 3: Create Your Personal Context Checklist
@@ -847,14 +831,6 @@ Include:
 
 Make it practical and concise—something I can realistically follow every day."
 ```
-
-**Expected Outcome:**
-- Customized checklist template
-- Practical, actionable items
-- Integration of all 5 mistake prevention strategies
-- Realistic timing (not overwhelming)
-
-**Action:** Save this checklist! Use it for the next week and refine it based on what works for you.
 
 ---
 

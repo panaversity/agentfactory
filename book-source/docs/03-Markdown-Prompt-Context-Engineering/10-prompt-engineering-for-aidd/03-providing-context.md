@@ -704,26 +704,6 @@ Compare to Prompts 1 and 2:
 - Does it match your project's style and standards?
 - How many adjustments would you need to make?
 
-### Expected Outcomes
-
-**After running all three prompts**:
-- Prompt 1 output: Generic, requires 10-15 minutes adaptation
-- Prompt 2 output: Better, requires 5-10 minutes adaptation
-- Prompt 3 output: Project-specific, requires 1-2 minutes integration
-
-**Your Key Insight**: The difference between "helps a little" and "production-ready" is not complex. It's just **providing complete context upfront**.
-
-### Safety & Verification Note
-
-As you review each AI output:
-
-- **Read the code first** — don't run code you don't understand
-- **Check for secrets** — no hardcoded passwords or API keys
-- **Verify against your constraints** — does it match what you specified?
-- **Plan how you'll integrate it** — can you copy-paste it, or does it need modification?
-
-Remember: **Trust but verify.** AI can hallucinate or miss requirements. Your 4-layer context helps prevent this, but always validate.
-
 ### Next Steps After This Exercise
 
 You've now mastered three critical AI prompting skills:

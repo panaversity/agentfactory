@@ -707,15 +707,6 @@ Give me:
 Format as a checklist I can use to gather context."
 ```
 
-**Expected Outcome:**
-- List of questions about existing post system
-- Database structure questions
-- Questions about user authentication
-- API design patterns to research
-- Real-time update considerations
-
-**Reflection:** Did you think of all these context needs before? This is why context-first thinking matters.
-
 ---
 
 ### Prompt 2: Context Before Specification
@@ -734,14 +725,6 @@ List:
 4. How this specification should be improved"
 ```
 
-**Expected Outcome:**
-- List of missing details (what fields? how to access? privacy settings?)
-- Questions about existing user system
-- Integration points that weren't considered
-- Improved specification outline
-
-**Practice:** This shows you how to think critically about specification quality.
-
 ---
 
 ### Prompt 3: Validate Specification Readiness
@@ -755,11 +738,4 @@ claude "I'm about to write a specification for adding payment processing to an e
 
 Am I ready to write the specification? What else do I need to understand? Create a readiness checklist."
 ```
-
-**Expected Outcome:**
-- Missing context identified (payment gateway choice, security requirements, refund policy, etc.)
-- Checklist of additional context to load
-- Warning that current context is incomplete
-
-**Key insight:** Even when you think you have enough context, there's often more to consider!
 

@@ -757,13 +757,6 @@ C) Do something else?
 What's the best practice here?"
 ```
 
-**Expected Outcome:**
-- The AI should recommend compression (option C)
-- Explanation of why continuing causes problems
-- Guidance on creating a checkpoint summary
-
-**Check:** Do you understand when compression is the right choice?
-
 ---
 
 ### Prompt 2: Practicing Compression
@@ -784,14 +777,6 @@ Create a checkpoint summary following best practices. Include:
 Make it concise but specific enough to resume work."
 ```
 
-**Expected Outcome:**
-- Structured checkpoint summary
-- Specific details about what was built
-- Clear decisions documented
-- Next steps identified
-
-**Practice:** Save this! You've just practiced creating a real checkpoint.
-
 ---
 
 ### Prompt 3: Understanding Isolation
@@ -804,11 +789,4 @@ claude "In one day, I need to:
 
 Should I do all of this in one AI session or use separate sessions? Why? What are the benefits of each approach?"
 ```
-
-**Expected Outcome:**
-- Recommendation for separate sessions (isolation)
-- Explanation of why mixing contexts causes problems
-- Benefits: focus, no cross-contamination, clearer history
-
-**Reflection:** Can you think of tasks that would be OK in one session vs need isolation?
 

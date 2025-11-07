@@ -320,46 +320,6 @@ Create a Python function that takes two numbers as parameters and returns their 
 
 Observe the difference. The AI generates focused, usable code immediately because you were specific.
 
-### Expected Outcomes
-
-**Vague Prompt Response** (Example):
-```
-I'd be happy to help! Could you clarify what you want the Python code to do? For example:
-- Do you need a web scraper?
-- A data analysis script?
-- A game?
-- An automation script?
-Please provide more details...
-```
-
-**Specific Prompt Response** (Example):
-```python
-def add_numbers(a: int, b: int) -> int:
-    """
-    Calculate the sum of two numbers.
-
-    Args:
-        a: The first number
-        b: The second number
-
-    Returns:
-        The sum of a and b
-    """
-    return a + b
-```
-
-Notice the difference? The second response is immediately useful.
-
-### Reflection
-
-After running both prompts, answer this question in your own words:
-
-**Why did the specific prompt produce working code immediately, while the vague prompt required clarification?**
-
-(Hint: Think about the context window and what information the AI agent had.)
-
-Your answer should mention that the specific prompt gave the AI agent enough context to understand exactly what to build, while the vague prompt left the AI agent guessing.
-
 ---
 
 **Now you understand the foundation.** You know what AI agents are, how they differ from other tools, why context windows matter, and why clear communication produces better code.

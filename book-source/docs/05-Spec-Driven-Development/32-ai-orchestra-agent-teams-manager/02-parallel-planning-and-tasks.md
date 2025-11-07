@@ -363,13 +363,3 @@ Given these dependencies, what integration pain points should I expect during im
 ```
 
 **Expected outcome**: Concrete risks identified (e.g., "feature-002's task list assumes User ID API will be available by day 3—if feature-001 slips, this becomes critical"). Use this to refine your task timing and ordering.
-
-### Safety & Validation Note
-
-AI plans often look reasonable but miss edge cases. When Claude Code suggests a terminal strategy or identifies dependencies, verify by:
-
-1. **Checking your actual specifications** against the AI's analysis—do they match?
-2. **Running a quick test**: Do your current 3 panes work smoothly with the suggested layout?
-3. **Trusting but verifying**: Use AI to brainstorm, then validate against your domain knowledge
-
-The skill here is not "believe the AI" but "AI + your judgment = better thinking."

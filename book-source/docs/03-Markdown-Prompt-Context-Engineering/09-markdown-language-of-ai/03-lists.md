@@ -419,37 +419,4 @@ Based on my specification, what other lists could I add to make
 this clearer? (Like requirements, error messages, or configuration steps)
 ```
 
-### Expected Outcomes
-
-From **Prompt 1**: ChatGPT will confirm whether you chose the right list types (ordered vs unordered)
-
-From **Prompt 2**: ChatGPT should be able to count items and understand sequence requirements from your list choices
-
-From **Prompt 3**: ChatGPT will suggest additional lists to strengthen your specification
-
-### Your Task: Apply the Verification Framework
-
-After ChatGPT responds, **verify** its feedback:
-
-1. **Check against what you know**: Look at your installation steps. Could you do step 3 before step 2? (If no, ordered list is correct)
-2. **Ask for reasoning**: "Why should features be unordered? Could they be reordered without breaking anything?"
-3. **Test the claim**: Try mentally rearranging your feature list. Does the app still make sense?
-4. **Cross-reference**: Look at real GitHub project READMEs. How do they organize features vs. installation steps?
-
-### Reflection
-
-Write a brief reflection (3-5 sentences):
-- When would you use bullet points vs numbered lists?
-- Did the AI's feedback help you see where lists make specifications clearer?
-- Can you think of a specification where you'd need both list types?
-- **Did manually checking list order (step 1 of verification) teach you something ChatGPT's approval alone wouldn't have?**
-
-### Why Verification Matters Here
-
-ChatGPT might say "your lists look good!" But if you:
-- **Manually test sequence**: Can installation step 3 happen before step 1? (No → proves ordered list is right)
-- **Compare to real examples**: GitHub READMEs consistently use unordered for features, ordered for installation (pattern recognition)
-
-...you're learning the **underlying logic**, not just getting approval.
-
 **Save your Task Tracker App file** — you'll add code blocks in Lesson 4!

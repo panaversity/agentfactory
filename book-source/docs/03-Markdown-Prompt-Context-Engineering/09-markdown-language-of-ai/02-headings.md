@@ -359,47 +359,4 @@ If you were implementing this specification, would this heading
 structure help you understand the requirements clearly? Why or why not?
 ```
 
-### Expected Outcomes
-
-From **Prompt 1**, you should get:
-- Confirmation that your hierarchy is logical (no skipped levels)
-- Feedback on whether headings are descriptive
-- Suggestions for clarity if any headings are vague
-
-From **Prompt 2**, you should see:
-- Which sections are clear from headings alone
-- What sections might be missing (e.g., "Installation" if you forgot it)
-- Questions that reveal gaps in your specification
-
-From **Prompt 3**, you should understand:
-- Whether your structure is implementable
-- How the AI agent reads and interprets document structure
-- Confirmation that clear hierarchy = clearer AI-generated code
-
-### Your Task: Apply the Verification Framework
-
-After the AI responds to all three prompts, **verify** its feedback using the framework from Lesson 1:
-
-1. **Check against what you know**: Manually count your heading levels. Did you skip any? Does AI's assessment match reality?
-2. **Ask for reasoning**: "Why do you say my structure is correct? What specific elements make it good?"
-3. **Test the claim**: Look at your headings only (no content). Can someone understand the spec structure from headings alone?
-4. **Cross-reference**: Compare your structure to a real GitHub README (search "task tracker" on GitHub and find examples)
-
-### Reflection
-
-Write a brief reflection (3-5 sentences) answering:
-- What was the most important thing you learned about heading hierarchy?
-- Did the AI's feedback change how you think about document structure?
-- How will you apply this to specifications you write in future lessons?
-- **Did verifying AI's feedback (instead of just accepting it) help you learn more deeply? How?**
-
-### Why Verification Matters Here
-
-If you accept AI feedback blindly, you're outsourcing your learning. But when you **verify** AI's assessment against:
-- The heading rules you learned
-- Real-world examples (GitHub READMEs)
-- Your own manual checking
-
-...you're **building judgment**. That's the goal: not getting AI approval, but developing your own ability to recognize good document structure.
-
 **Save your Task Tracker App file** — you'll add lists to it in Lesson 3!

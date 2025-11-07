@@ -481,13 +481,6 @@ Now let's practice progressive loading thinking.
 claude "I'm starting work on a Python project with 30 files. Should I ask my AI to read all files first, or load them progressively as needed? Why? Explain using the three-phase progressive loading approach."
 ```
 
-**Expected Outcome:**
-- The AI recommends progressive loading
-- Explanation of why all-at-once causes problems
-- Description of the 3-phase approach
-
-**Check:** Can you explain why progressive loading is better?
-
 ---
 
 ### Prompt 2: Creating a Loading Plan
@@ -504,13 +497,6 @@ Assume the project structure is:
 src/api/, src/services/, src/models/, tests/"
 ```
 
-**Expected Outcome:**
-- Phase 1: Structure analysis, no files read yet
-- Phase 2: Similar existing features (if any), service patterns, model patterns
-- Phase 3: Specific files to modify, security patterns, testing patterns
-
-**Reflection:** Does this plan make sense? Would you follow it?
-
 ---
 
 ### Prompt 3: Real-World Application
@@ -522,12 +508,5 @@ claude "I loaded 20 files into my AI context at the start of my session. Now I'm
 2. What should I have done instead?
 3. What should I do now to fix this?"
 ```
-
-**Expected Outcome:**
-- Problem: Wasted context, faster rot, slower AI
-- Should have: Used progressive loading, loaded only needed 3
-- Fix now: Start fresh session with just the 3 needed files
-
-**Action:** This is a common situation—now you know how to fix it!
 
 

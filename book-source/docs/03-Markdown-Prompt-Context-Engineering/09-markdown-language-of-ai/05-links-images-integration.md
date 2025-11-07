@@ -623,36 +623,3 @@ If anything doesn't match:
 1. **Which part of your spec was unclear?** (Be specific: "I said 'show tasks' but didn't specify format")
 2. **How would you revise it?** (Example: Change to "Show tasks in format: `1. Task name [Status] - Due: Date`")
 3. **Ask ChatGPT to regenerate** using your clearer spec
-
-**Step 5: Verify Against Framework**
-1. **Check against what you know**: Does the implementation use concepts from earlier chapters (Python basics, file I/O)?
-2. **Ask for reasoning**: "Why did you implement Add Tasks this way? How does it match my spec?"
-3. **Test edge cases**: What happens if you try to delete a non-existent task? Did your spec cover this?
-4. **Cross-reference**: Search GitHub for "Python task tracker CLI" — how does yours compare?
-
-### Reflection
-
-Write a reflection (5-7 sentences) answering:
-- Did your complete specification (built across 4 lessons) produce working code?
-- What gaps did you discover only after running the code?
-- How would you improve your specification if you wrote it again?
-- **Most critical**: What did running the code teach you that asking "Is this clear?" never would have?
-
-### Why This Full-Cycle Validation Matters
-
-This exercise teaches the **complete AI-native development loop**:
-
-1. **Write specification** (Lessons 2-5) → Intent Layer
-2. **AI generates code** (Prompt 3) → Reasoning + Implementation Layers
-3. **Execute and compare** (Validation steps) → Testing Layer
-4. **Identify gaps** (Verification framework) → Iteration Layer
-5. **Revise spec** (Based on execution results) → Back to Intent Layer
-
-**You're not just learning markdown** — you're learning the entire workflow of specification-driven AI development.
-
-If you blindly accepted ChatGPT saying "This spec is clear!" without running the code, you'd miss critical lessons about:
-- How vague language creates ambiguous implementations
-- How missing edge cases lead to broken software
-- How precise specifications produce reliable code
-
-**This is professional-level validation.** Even with all the markdown skills you've learned, the real test is: **Does your spec produce working code?**

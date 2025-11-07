@@ -274,57 +274,6 @@ By the end, you won't just know markdown syntax — you'll understand how to use
 
 ---
 
-## How to Verify AI Responses (Critical Skill)
-
-You'll use AI throughout this chapter to check your work and get feedback. But here's the most important lesson: **AI agents make mistakes**. Your job isn't just to ask AI questions—it's to **verify the AI's answers are correct**.
-
-### The Verification Framework
-
-When AI reviews your markdown or answers your questions, use this 4-step verification process:
-
-**1. Check Against What You Know**
-- Compare AI's feedback to the rules you learned in this lesson
-- Example: If AI says your heading hierarchy is correct, manually check: Did you skip any levels?
-
-**2. Ask AI to Explain Its Reasoning**
-- Don't just accept "Yes, that's correct"
-- Ask: "Why is this correct? Explain your reasoning."
-- This forces AI to show its work (like showing work in math class)
-
-**3. Test Specific Claims**
-- If AI says "This markdown will render correctly," try rendering it yourself
-- If AI says "This is valid syntax," check against a markdown reference
-
-**4. Cross-Reference When Unsure**
-- Check official documentation ([CommonMark spec](https://commonmark.org/))
-- Ask a different AI tool if you get conflicting answers
-- Search for examples in real GitHub repositories
-
-### Example: Verifying AI Feedback
-
-**You ask ChatGPT**: "Is this specification clear?"
-
-**ChatGPT responds**: "Yes, your specification is very clear!"
-
-**❌ Don't do this**: Accept it and move on
-
-**✅ Do this instead**:
-1. **Check against the lesson**: Does my spec have headings, lists, and code blocks? (Required elements from this chapter)
-2. **Ask for reasoning**: "What makes it clear? Which parts are strongest?"
-3. **Test it**: Ask AI to implement the spec. If the generated code doesn't match what you wanted, your spec wasn't clear.
-4. **Compare**: Show your spec to a classmate or different AI. Do they understand it the same way?
-
-### Why This Matters
-
-**AI is a thinking partner, not an authority.** When you verify AI responses, you're:
-- Building your own judgment (not blindly trusting AI)
-- Catching AI mistakes before they become your mistakes
-- Learning what "good" looks like (by comparing AI feedback to reality)
-
-This verification skill is **as important as learning markdown itself**. You'll use it in every "Try With AI" exercise in this chapter.
-
----
-
 ## Try With AI
 
 Now that you understand WHY markdown matters and HOW to verify AI responses, let's explore these concepts with AI.
@@ -361,13 +310,6 @@ Interface: Command-line terminal
 Which one is clearer for you to work with, and why?
 ```
 
-**Expected Outcome:**
-
-ChatGPT will explain that Version 2 is clearer because:
-- Features are listed separately (easier to parse)
-- Interface is explicitly stated
-- Structure removes ambiguity
-
 **Prompt 2 (Real-World Connection):**
 
 Ask ChatGPT:
@@ -376,37 +318,3 @@ Ask ChatGPT:
 Why do most GitHub repositories use README.md files written in markdown
 instead of plain .txt files or Word documents?
 ```
-
-**Expected Outcome:**
-
-ChatGPT will explain that markdown:
-- Renders nicely on GitHub (formatted webpage)
-- Is readable as plain text (no special software needed)
-- Is version-control friendly (git can track changes line-by-line)
-- Is the standard developers expect
-
-### Your Task
-
-After ChatGPT responds, **use the Verification Framework** you learned above:
-
-1. **Check against the lesson**: Did ChatGPT emphasize structure and clarity like the lesson did?
-2. **Ask for reasoning**: "Why do you think Version 2 is clearer? What specific elements make it better?"
-3. **Test the claim**: Try writing your own unstructured vs. structured description. Does structure actually help?
-
-### Reflection
-
-Write a brief reflection (3-5 sentences) answering:
-- Which concept from this lesson was clearest to you?
-- Which was hardest to understand?
-- Can you think of a real project you'd want to build? How would structuring its specification in markdown help an AI understand what to build?
-- **NEW**: Did you verify ChatGPT's responses using the 4-step framework? What did you learn from verifying instead of just accepting?
-
-### Safety & Verification Note
-
-Remember the **Verification Framework** from earlier in this lesson:
-- ✅ Check against what you know
-- ✅ Ask AI to explain reasoning
-- ✅ Test specific claims
-- ✅ Cross-reference when unsure
-
-The goal is learning WITH the AI, not just learning FROM it. You're building critical thinking skills alongside markdown skills.

@@ -397,13 +397,6 @@ Let's practice recognizing context concepts.
 claude "If I'm working with an AI coding agent and after an hour it starts giving me inconsistent answers and seems to forget things I told it earlier, what's probably happening? Explain using a simple analogy a non-programmer would understand."
 ```
 
-**Expected Outcome:**
-- The AI should describe context window filling up
-- You'll get an analogy (like running out of desk space or RAM)
-- Explanation of why performance degrades
-
-**Check:** Can you identify the warning signs of context rot now?
-
 ---
 
 ### Prompt 2: Recognizing the Signs
@@ -419,19 +412,12 @@ claude "I'm working with Claude Code on a project. Here are some things I'm noti
 What's happening? Is this context rot?"
 ```
 
-**Expected Outcome:**
-- The AI should confirm these are classic context rot symptoms
-- Explanation that context window is full or nearly full
-- Suggestions that you might need to refresh context
-
-**Reflection:** Which of these signs seem most important to watch for?
-
 ---
 
 ### Prompt 3: Planning Ahead
 
 ```bash
-claude "I'm about to start a coding session with an AI assistant. I want to load context about my project. 
+claude "I'm about to start a coding session with an AI assistant. I want to load context about my project.
 
 I have:
 - README.md (2 pages)
@@ -442,10 +428,5 @@ I have:
 
 Should I load all of these at the start? Why or why not?"
 ```
-
-**Expected Outcome:**
-- The AI should advise against loading everything at once
-- Recommendation to load progressively as needed
-- Explanation that too much context too fast causes problems
 
 

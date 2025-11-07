@@ -383,10 +383,3 @@ I'm about to start the implementation phase, and I want to use the
 checkpoint pattern (Agent→Human Review→Commit→Next).
 Is this the right approach? Any guidance on what to look for during review?
 ```
-
-### Expected Outcomes
-
-- **Tasks are atomic and appropriately sized**
-- **Dependencies are correct**
-- **You understand the checkpoint pattern**
-- **Ready for implementation (Lesson 7)**

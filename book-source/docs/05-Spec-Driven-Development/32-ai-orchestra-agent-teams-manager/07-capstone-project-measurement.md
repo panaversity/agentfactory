@@ -292,22 +292,6 @@ Include:
 - **Key insight** (what made parallelization possible?)
 - **How to run** (installation, tests, startup)
 
-### Reflection (Required)
-
-Write 2-3 paragraphs answering:
-
-1. **What made your features parallelizable?**
-   - Which design decisions enabled parallel work?
-   - What would have broken if decomposition was poor?
-
-2. **What did merge conflicts reveal?**
-   - 0 conflicts = excellent decomposition
-   - 3+ conflicts = features weren't independent enough
-
-3. **How does this scale?**
-   - What changes at 5-7 features?
-   - How does this apply to human teams?
-
 ---
 
 ## Part 5: Portfolio Narrative (20 minutes)

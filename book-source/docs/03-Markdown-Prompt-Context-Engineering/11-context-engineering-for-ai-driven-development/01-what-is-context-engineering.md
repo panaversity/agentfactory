@@ -407,13 +407,6 @@ Now let's practice understanding context engineering with an AI conversation.
 claude "Explain the difference between prompt engineering and context engineering for software development. Give me a simple analogy that a non-programmer would understand."
 ```
 
-**Expected Outcome:**
-- The AI should explain prompt = the question, context = the background knowledge
-- You'll likely get an analogy (like asking a question with vs without background information)
-- The explanation should clarify why both are needed
-
-**Check your understanding:** Can you now explain the difference to someone else?
-
 ---
 
 ### Prompt 2: Identifying Context Problems
@@ -427,16 +420,9 @@ The AI created code using Flask, but my project uses FastAPI.
 It used a session-based authentication, but I need JWT tokens.
 It stored passwords in plain text instead of hashing them.
 
-Is this a prompt engineering problem or a context engineering problem? 
+Is this a prompt engineering problem or a context engineering problem?
 Why?"
 ```
-
-**Expected Outcome:**
-- The AI should identify this as primarily a **context** problem
-- The AI lacked information about your framework, auth method, and security standards
-- Even a perfect prompt couldn't fix missing context
-
-**Reflection:** What context would have prevented these issues?
 
 ---
 
@@ -445,12 +431,5 @@ Why?"
 ```bash
 claude "I'm starting a new software project and I want to work with an AI coding assistant. What context should I provide to the AI at the very start of my first session? Give me a checklist of information the AI would need."
 ```
-
-**Expected Outcome:**
-- A checklist of project context (framework, language, structure, standards)
-- Suggestions about documentation to share
-- Ideas about existing code patterns to show
-
-**Action:** Save this checklist—you'll use it when you actually start AI-driven development!
 
 

@@ -490,17 +490,6 @@ Be specific about the transition path: 5→7 agents (what needs to happen) vs. 1
 
 **Expected outcome**: Claude helps you see the path from where you are to 10-agent scale and the inflection points where manual approaches stop working.
 
-### Safety and Verification
-
-As always with AI-generated architecture advice:
-
-1. **Ask clarifying questions**: "Why would you decompose it that way?" and "What are the trade-offs?"
-2. **Test against your constraints**: Does the advice fit your project, team, and timeline?
-3. **Verify with real examples**: Look up how companies like Stripe, Netflix, or Linux actually solve these problems
-4. **Trust but verify**: Claude's suggestions are starting points, not gospel. Your judgment as an architect matters
-
-**Critical insight**: The fact that you can articulate your decomposition well enough to ask Claude for feedback means you're thinking clearly about architecture. That's the real win here.
-
 ---
 
 **You've reached the FIRST CLIMAX.** You've proven you can coordinate parallel work at meaningful scale. You understand what works, what breaks, and why the path forward requires explicit contracts and orchestration. You're ready for Lesson 6, where contract-based autonomous coordination enables agents to work without constant supervision.

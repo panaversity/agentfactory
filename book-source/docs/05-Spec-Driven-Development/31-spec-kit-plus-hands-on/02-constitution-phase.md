@@ -389,12 +389,3 @@ Finally, ask:
 Is my Constitution realistic for a calculator project, or am I being too strict?
 Any advice on making it more practical without sacrificing quality?
 ```
-
-### Expected Outcomes
-
-After these prompts, you should understand:
-
-- **Constitution clarity**: Rules are testable and specific (not vague philosophy)
-- **Cascade impact**: You can trace how Constitution rules flow into specifications
-- **Realism**: Standards are ambitious but achievable
-- **Readiness**: You're prepared to write specifications that respect the Constitution
