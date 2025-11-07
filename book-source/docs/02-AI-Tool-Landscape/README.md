@@ -5,13 +5,13 @@ title: "Part 2: AI Tool Landscape"
 
 # Part 2: AI Tool Landscape
 
-## Now It's Time to Get Your Hands Dirty
-
 Picture this: You've just finished Part 1. You understand the transformation. You know why AI-driven development matters. You're ready to start building.
 
 But there's a problem.
 
 You open your terminal (or maybe you've never opened one before), and you're staring at a blank screen. You've heard about Claude Code, Gemini CLI, and GitHub. You know they're powerful. You have no idea where to start, what these tools actually do, or which one is right for you.
+
+**Now It's Time to Get Your Hands Dirty**
 
 This part solves that problem. By the end of these four chapters, you won't just know about AI development tools—you'll have them installed, configured, and ready to use. You'll understand the command line well enough to navigate confidently. You'll have Git and GitHub set up for professional development. And you'll know exactly which tool to reach for in any situation.
 
@@ -37,8 +37,6 @@ This part consists of four interconnected chapters that build practical proficie
 
 ### Chapter 5: How It All Started—The Claude Code Phenomenon
 
-**Estimated time: 2-2.5 hours**
-
 You'll install and configure Claude Code, understanding why this "simple" command-line interface triggered such rapid adoption. We explore the origin story (how an internal Anthropic tool became a public phenomenon), walk through a straightforward npm installation, and learn Claude Code's key features through hands-on experience: subagents for specialized tasks, agent skills for autonomous discovery, and MCP servers for external data access.
 
 This chapter establishes Claude Code as a **collaborative thinking partner**—not an automation supercomputer. By the end, Claude Code will be running on your machine with your first subagent and skill working, and you'll have experienced the paradigm shift from passive AI assistance to active AI collaboration.
@@ -52,8 +50,6 @@ This chapter establishes Claude Code as a **collaborative thinking partner**—n
 - ✅ Recognize how Claude Code differs from web-based AI chat
 
 ### Chapter 6: Google Gemini CLI—Open Source and Everywhere
-
-**Estimated time: 2-3 hours**
 
 Not everyone wants to use Claude Code. Not everyone should. This chapter introduces Gemini CLI, Google's open-source alternative that anyone can download, modify, and extend. You'll explore Gemini 2.5 Pro's massive 1 million token context window, install and configure Gemini CLI, and develop a framework for comparing tools.
 
@@ -97,30 +93,6 @@ Critical insight: Git provides the safety net that makes AI-assisted development
 - ✅ Build a GitHub portfolio demonstrating professional practices
 - ✅ Use Git as a safety mechanism when working with AI agents
 
-## What You Won't Learn (Yet)
-
-**This part is hands-on and operational, not theoretical.** You're learning practical tool proficiency, not deep algorithmic understanding.
-
-**Specifically, you won't learn:**
-- Deep algorithms or data structures (Part 4 onward)
-- Advanced system administration or DevOps practices (Parts 10-11)
-- How to write Python code or build applications (Part 4 onward)
-- Cloud deployment architecture (Parts 10-11)
-- Production-grade security hardening (covered progressively in later parts)
-
-**What you will get** is practical competence: You'll have professional tools installed, understood, and ready to use. You'll know how to navigate a terminal confidently. You'll have version control workflows that professional teams use. This is the foundation for everything that follows—and notably, it's not optional. Professional development requires these skills.
-
-## How to Read This Part
-
-**Take it slow and hands-on.** Unlike Part 1 (which emphasized reading and reflection), Part 2 emphasizes doing. You should have your computer open. You should follow along with installations. You should run commands. You should make mistakes and recover with Git.
-
-**Follow the scaffolding.** Chapter 5 (Claude Code) provides heavy support—step-by-step walkthroughs, detailed explanations, troubleshooting guides. By Chapter 8 (Git & GitHub), the support becomes lighter. You're expected to be more independent. This is intentional: we're building your confidence progressively.
-
-**Expect confusion, then clarity.** The command line is unfamiliar to many people. That's normal. You don't need to understand everything immediately. Use AI tools (Claude Code or Gemini CLI!) to ask questions about commands you don't understand. This is "learning WITH AI" in practice.
-
-**Platform matters.** Chapters 7 and 8 provide Windows-specific, Mac-specific, and Linux-specific instructions because terminal behavior differs significantly. Find your platform and follow those instructions carefully. If something doesn't work, ask your AI assistant to debug it based on your error message—that's what they're designed for.
-
-
 ## A Note on Mindset
 
 The most important thing you'll develop in this part isn't tool proficiency—it's the ability to see AI tools as collaborators, not magic.
@@ -137,21 +109,4 @@ This part teaches you that middle path. Claude Code and Gemini CLI are powerful 
 
 Bash and Git work the same way. You'll learn the 20% of commands that handle 80% of your work. You'll use AI tools to help with the other 20% when needed. This is professional workflow in 2025—not memorization of obscure commands, but knowing how to ask for help effectively.
 
-## Prerequisites
-
-**You absolutely need:**
-- ✅ Completion of **Part 1: Introducing AI-Driven Development** (the mindset foundation is critical)
-- ✅ A computer with internet access (Windows, Mac, or Linux)
-- ✅ Basic computer literacy (file management, using a web browser)
-- ✅ An email address and willingness to create API accounts
-
-**You don't need:**
-- ❌ Terminal experience (we start from zero)
-- ❌ Prior knowledge of Git or version control
-- ❌ Programming experience (code comes later)
-- ❌ Any specific hardware or software
-
 Take your time. Don't rush. Use your AI assistant (Claude Code or Gemini CLI) when you're confused. Make mistakes and use Git to recover. By the end of these four chapters, you'll have the foundation every professional developer relies on.
-
-Let's get started.
-

@@ -432,129 +432,66 @@ Each error message is your AI telling you what to fix next.
 
 ---
 
-## Formative Assessment: Troubleshooting Concepts
+## Try With AI: Real Project Setup and Troubleshooting
 
-**Question 1**: When you see an error message, what's the FIRST thing you should do?
-- A) Try random fixes
-- B) Ask your AI to explain the error message
-- C) Give up
+Now that you understand the complete project setup workflow, let's apply it with your AI.
 
-*Correct: B. Understanding the error is step 1 of debugging.*
+### Full Project Setup Prompt
 
-**Question 2**: Which error type indicates a package isn't installed?
-- A) FileNotFoundError
-- B) ModuleNotFoundError
-- C) ConnectionError
+Open your AI tool and ask:
 
-*Correct: B. ModuleNotFoundError means a Python package is missing.*
+**Prompt:**
+```
+Help me set up a complete Python project.
+Project: A simple weather data fetcher.
 
-**Question 3**: If your script runs without error but produces wrong output, is that success?
-- A) Yes, it ran
-- B) No, the output is wrong
-- C) Maybe—depends on what you expected
+Walk me through:
+1. Project structure (folders and files)
+2. Code to implement the functionality
+3. Dependencies to install
+4. How to run it
 
-*Correct: C. Success means correct output AND no errors.*
+After setup, I'll run it and see what errors appear.
+I want to understand the full workflow: setup → run → error → debug → success.
+```
+
+**What to Expect**:
+- Your AI creates the project structure
+- Shows dependencies and installs them
+- You run the project and encounter real errors
+- Your AI explains each error and guides you through fixing it
+- By the end, you have a working project
+
+**Key Insight**: This is the real developer workflow. Errors are normal. The skill is understanding and fixing them with AI guidance.
 
 ---
 
-## Summative Assessment: Real Project Setup and Troubleshooting
+## Try With AI: Troubleshooting Real Errors
 
-Have a real conversation with your AI where you:
+When your project encounters errors, ask your AI:
 
-1. **Ask your AI to help set up a simple project** (Python script that fetches data, Node.js server, etc.—something realistic)
-2. **Create the project structure** (folders, files, configuration)
-3. **Install dependencies** using pip/npm
-4. **Try to run the project**
-5. **Encounter an error** (let it happen naturally, don't rush)
-6. **Ask your AI to explain the error**
-7. **Follow the debugging steps** your AI suggests
-8. **Verify the fix worked**
-9. **Save a note** about what you learned
+**Prompt:**
+```
+I got this error: [paste the error message]
 
-**Success criteria**:
-- You created a functional project structure
-- You installed dependencies correctly
-- You encountered and understood at least one real error
-- You fixed the error by following troubleshooting steps
-- You documented what you learned for future reference
+Walk me through:
+1. What does this error mean in plain language?
+2. What caused it?
+3. How do I fix it?
+4. After I fix it, what should I try next?
+```
 
-**Most important**: You didn't panic at the first error. You asked for explanation and followed logical troubleshooting steps.
+**Expected Response**:
+Your AI will explain the error, show you the fix, and help you understand why the error occurred. This builds your debugging confidence.
+
+**Key Principle**: Every error is a learning opportunity. Your AI is your guide through the troubleshooting process.
 
 ---
 
-## Try With AI
-
-**Tool**: Claude Code, ChatGPT Code Interpreter, Gemini CLI, or your preferred AI companion
-
-**Setup**: You're going to set up a complete, realistic project and learn by troubleshooting real issues.
-
-### Prompt 1: Set Up a Real Project
-
-Copy and paste this prompt:
-
-```
-Help me create a Python/Node.js project [choose one].
-Project: A [todo app / weather app / data fetcher / simple server].
-
-Walk me through the complete setup:
-1. Create the project folder structure
-2. Create essential files (main code, config, requirements/package.json)
-3. Install dependencies
-4. Verify everything is set up correctly
-
-I want to understand each step and why it matters.
-```
-
-**Expected Outcome**:
-- Your AI sets up a realistic project
-- You understand the purpose of each folder/file
-- Dependencies are installed and verified
-- The foundation is ready for next steps
-
-### Prompt 2: Encounter and Fix an Error
-
-```
-Now try to run the project. It will probably error—that's ok!
-When the error happens:
-1. Show me the error message
-2. Explain what went wrong in plain language
-3. Walk me through the fix
-4. Run it again and verify the fix worked
-```
-
-**Expected Outcome**: You experience the real troubleshooting cycle and build confidence
-
-### Prompt 3: Add a Feature and Handle Errors
-
-```
-Add a feature that:
-- Reads from a file that might not exist (error handling practice)
-- Makes an external request that might fail (connection error handling)
-- Processes data (data validation error handling)
-
-Show me the code and error handling built in.
-Then have me run it and encounter errors so I can see the error messages in action.
-```
-
-**Expected Outcome**: You see error handling in context and understand defensive programming
-
-### Stretch: Debug a Broken Project
-
-```
-Here's a project that should work but is broken:
-[Paste a real project or ask AI to create a broken one]
-
-Debug it with me. Walk me through:
-1. What's the first error?
-2. What causes it?
-3. How do we fix it?
-4. What's the next error?
-5. [Continue until it works]
-```
-
-**Expected Outcome**: You build muscle memory for the troubleshooting workflow
-
-You can now supervise sophisticated bash workflows. Your AI is the expert in commands. **You're the expert in understanding, verifying, and catching mistakes.**
+You can now supervise sophisticated bash workflows. Your AI is the expert in commands and syntax. **You're the expert in understanding, verifying, and catching mistakes.**
 
 This is the foundation of productive collaboration with AI tools.
+
+---
+
 

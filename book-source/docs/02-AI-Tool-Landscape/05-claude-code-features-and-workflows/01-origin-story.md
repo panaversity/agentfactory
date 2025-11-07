@@ -6,8 +6,6 @@ duration: "15-20 min"
 
 # The Claude Code Origin Story and Paradigm Shift
 
-## The Development Tool That Nobody Meant to Build
-
 In February 2025, a small team at Anthropic shipped what they thought was a modest developer experiment. They called it "Claude Code"—a command-line interface that let developers chat with Claude AI directly from their terminal. The team expected a niche audience: maybe a few thousand command-line enthusiasts.
 
 What happened next surprised everyone.
@@ -212,20 +210,7 @@ This doesn't mean AI writes all your code. It means AI handles the *friction*—
 
 ---
 
-## Pause and Reflect: Your Comfort Zone
-
-The agentic paradigm requires trust. You're letting AI read your files, propose changes, and (with approval) execute commands.
-
-Reflect on this:
-- What aspects of agentic AI feel exciting to you?
-- What aspects feel uncomfortable or risky?
-- What boundaries would you want to set (e.g., "Claude can read but not write," or "Claude can write but not execute")?
-
-Understanding your comfort level now will help you adopt these tools at a pace that works for you.
-
----
-
-## Try With AI (Alternative)
+## Try With AI
 
 Use ChatGPT web for this activity. If you've already set up an AI companion tool from later chapters, you may use it instead.
 

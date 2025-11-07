@@ -9,7 +9,7 @@ You know *why* AI-driven development matters—and that it's happening right now
 
 This chapter introduces you to the first real tool you'll use: Claude Code. Not as abstract theory, but as a working development partner on your machine.
 
-Through five interconnected lessons—from origin story through installation, subagents, skills, and MCP integration - you'll move from passive understanding to active collaboration. You'll install Claude Code, set up simple collaborative partners (subagents and skills), and integrate it with external systems (MCP).
+Through eight interconnected lessons—from origin story through installation, commands, subagents, skills, MCP integration, hooks, and plugins—you'll move from passive understanding to active collaboration. You'll install Claude Code, set up collaborative partners (subagents and skills), integrate external systems (MCP), automate with hooks, and compose complete workflows (plugins).
 
 The goal is **not to build a supercomputer**, but to establish Claude Code as your **collaborative thinking partner** for everything.
 
@@ -23,5 +23,7 @@ By the end of this chapter, you'll understand:
 - **Installation and authentication on any platform**: Complete setup process for Windows, macOS, or Linux with platform-specific instructions.
 - **Custom subagents for specialized tasks**: How to create focused AI assistants with specialized instructions and how specialized context prevents the "drift" problem in long conversations
 - **Agent Skills for autonomous discovery**: Building custom skills that Claude Code discovers and invokes automatically based on task context, understanding how skill libraries amplify your team's domain expertise, and the competitive advantage of encoding institutional knowledge as discoverable skills
-- **MCP (Model Context Protocol) for external integration**: Connecting Claude Code to external data sources.
+- **MCP (Model Context Protocol) for external integration**: Connecting Claude Code to external data sources safely and securely
+- **Hooks & automation triggers**: Creating PreToolUse, PostToolUse, and SessionStart hooks to automate actions before and after Claude Code tool execution
+- **Plugins as composition**: Understanding how plugins package commands, agents, skills, and hooks into complete, shareable workflows
 - **Your workflow transformation**: Transitioning from passive tool user to active AI orchestrator, establishing habits for effective AI collaboration, and recognizing when Claude Code amplifies productivity versus when simpler tools suffice

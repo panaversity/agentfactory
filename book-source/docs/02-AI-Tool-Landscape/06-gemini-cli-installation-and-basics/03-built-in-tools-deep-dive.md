@@ -3,6 +3,7 @@ title: "How Your AI Reads the World: Built-In Tools in Action"
 chapter: 2
 lesson: 3
 estimated_time: "20-25 minutes"
+sidebar_position: 3
 learning_objectives:
   - "Understand how AI tools extend beyond text to access files, the web, and real-time information"
   - "Recognize when and why AI needs to use specific tools (files vs. web vs. search)"

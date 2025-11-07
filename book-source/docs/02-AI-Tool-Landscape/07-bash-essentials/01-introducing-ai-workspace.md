@@ -43,9 +43,10 @@ cognitive_load:
 
 # Introducing Your AI Companion's Workspace
 
-## Your AI Has a Location—And You Need to Know It
 
 Imagine hiring a contractor to renovate your house. Before they swing a hammer, you'd ask: "Where are you starting? Show me what you're looking at." You wouldn't let them work blind, and you wouldn't work blind either.
+
+## Your AI Has a Location—And You Need to Know It
 
 This lesson teaches you the same habit for working with your AI companion in the terminal. Your AI assistant has a **current location** in your computer's file system, and understanding that location is the first step to supervising its work safely. You're not learning bash commands. You're learning to have effective conversations with your AI about **where it is and what it can see**.
 
@@ -56,48 +57,103 @@ By the end of this lesson, you'll be able to ask your AI companion three simple 
 
 ---
 
-## Example 1: Where Is Your AI Working?
+## Use `pwd` to Know Where Your AI Is Working
 
-Let's look at a real conversation. You open your AI tool (Claude Code, ChatGPT Code Interpreter, or Gemini CLI) and ask a natural question:
+The `pwd` command is bash-speak for "print working directory." It shows you—or your AI—the current folder path.
 
-**You**: "Show me your current directory path. Where are you working right now?"
+### Step 1: You Try It
 
-**Agent**: Let me check. I'll execute `pwd` to show you my location.
+Open a terminal on your computer and type this command:
 
+```bash
+$ pwd
+/Users/yourname/Documents
 ```
+
+You'll see a file path. That's your **current directory**—where you're "standing" in your file system. All commands you run happen relative to this location.
+
+**What to notice**: You just ran the same command your AI will run. The output is a path (like `/Users/yourname/Documents` or `/home/username/projects`). That's it.
+
+### Step 2: Your AI Does the Same
+
+Now ask your AI companion (Claude Code, ChatGPT Code Interpreter, or similar):
+
+**Prompt:**
+```
+Show me your current working directory using pwd.
+What directory are you in right now?
+```
+
+**Expected AI Output:**
+```
+Let me check my location.
+
 $ pwd
 /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python
 ```
 
-**Agent**: "I'm currently in `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python`. This is the root of the CoLearning Python project. This is where I'll work when you ask me to edit files or run commands."
+The AI responds with the same command you just ran—because `pwd` works the same way for both of you.
+
+### Step 3: Compare and Understand
+
+**Your output**: `/Users/yourname/Documents`
+**AI's output**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python`
+
+Both are file paths. They're in different locations because you're on different computers. But the **command is identical**, and the **output means the same thing**: "Here's where I'm working right now."
+
+**Key insight**: Your AI doesn't have secret powers. It runs the same commands you do. When you ask "Where are you?", the AI translates that to `pwd` and shows you the output. You understand the output because you already ran it yourself.
 
 ---
 
-## Understanding the Conversation
+## Use `ls` to See What Files Are in a Directory
 
-In that dialogue, three important things happened:
+The `ls` command lists files and folders in your current directory.
 
-**1. You Made a Request** (in plain language)
-Your question wasn't "Run pwd." You asked "Where are you working?" Your AI companion understood your intent and decided the right command to show you the answer.
+### Step 1: You Try It
 
-**2. Your AI Executed a Command** (you didn't have to type it)
-The `pwd` command is bash-speak for "print working directory." But you didn't need to know that phrase. Your AI translated your English request into the right bash command.
+In the same terminal, type:
 
-**3. Your AI Explained the Output** (it didn't just show you raw output)
-The path `/Users/mjs/Documents/...` is the "current directory"—the folder where your AI is currently working. Think of it like your AI saying "I'm standing here in this folder." All files it can see and operations it performs will happen relative to this location.
+```bash
+$ ls
+Desktop
+Documents
+Downloads
+Library
+Applications
+README.md
+```
 
-**Your Job**: Understand what location your AI is in. **Not** to memorize the pwd command. **Not** to type the command yourself. Just to supervise and verify: "Yes, you're in the right place."
+You see a simple list. Some items are **folders** (like `Desktop`, `Documents`), and some are **files** (like `README.md`). How do you tell the difference? Look at the output carefully—or use a flag to make it clearer.
 
----
+Try this command to see **more detail**:
 
-## Example 2: What Files Can You See?
+```bash
+$ ls -la
+drwxr-xr-x   5 user  staff   160 Nov  2 03:06 .
+drwxr-xr-x  20 user  staff   640 Nov  2 02:00 ..
+-rw-r--r--   1 user  staff  2819 Oct 31 16:16 README.md
+drwxr-xr-x  11 user  staff   352 Oct 31 16:16 Desktop
+drwxr-xr-x  15 user  staff   480 Nov  2 03:06 Documents
+drwxr-xr-x   9 user  staff   288 Nov  2 02:36 Downloads
+```
 
-Now you ask a follow-up question:
+**What to notice**:
+- Items starting with `d` (like `drwxr-xr-x`) are **directories** (folders)
+- Items starting with `-` (like `-rw-r--r--`) are **files**
 
-**You**: "What files are in this project? Show me what you can see here."
+You just learned to read the output yourself. Now you understand what `ls` is telling you.
 
-**Agent**: I'll list the files in this directory with `ls -la` to show you everything, including hidden files.
+### Step 2: Your AI Does the Same
 
+Ask your AI:
+
+**Prompt:**
+```
+List the files in your current directory using ls -la.
+Show me what files and folders you can see from where you are.
+```
+
+**Expected AI Output:**
 ```
 $ ls -la
 drwxr-xr-x@  13 mjs  staff    416 Nov  2 03:06 .
@@ -110,12 +166,18 @@ drwxr-xr-x@   9 mjs  staff    288 Nov  2 02:36 .claude
 drwxr-xr-x@   7 mjs  staff    224 Nov  2 02:47 history
 ```
 
-**Agent**: "Here's what I can see from this location. The items starting with `d` are **directories** (folders). The items starting with `-` are **files**. For example:
-- `book-source` is a folder containing the lesson content
-- `specs` is a folder containing project specifications
-- `CLAUDE.md` and `README.md` are text files
+Again—same command, same output format. The AI's files are different from yours because it's in a different directory, but the **command and logic are identical**.
 
-When you ask me to work with something in this project, it will be one of these items or something inside these folders."
+### Step 3: Compare and Interpret
+
+**Your output** shows folders like `Desktop`, `Documents` (lines starting with `d`)
+**AI's output** shows folders like `book-source`, `specs` (lines starting with `d`)
+
+You can now read both because you know:
+- `d` = directory (folder)
+- `-` = file
+
+When your AI says "I can see the `book-source` folder and `README.md` file here," you can verify it by looking at the `ls` output. You're not just trusting the AI—you're **reading the evidence yourself**.
 
 ---
 
@@ -136,144 +198,41 @@ You're not responsible for remembering commands. You're responsible for saying "
 
 ---
 
-## Exercise 1: Predict Before You Look
+## Try With AI: Side-by-Side Comparison
 
-Before your AI shows you a file listing, try to predict what you'll see. This builds your understanding of what these commands do.
+Now that you've run `pwd` and `ls` yourself, compare what happens when your AI does the same.
 
-**Setup**: Imagine your AI is in the folder `/Users/mjs/Documents/projects/python-app/`
+### Comparison Prompt
 
-**Prediction**: What types of items would you expect to see in a Python project folder? (Hint: think about Python files, configuration files, folders for source code, tests, etc.)
+Open your AI tool (Claude Code, ChatGPT Code Interpreter, or similar) and ask:
 
-**Then Your AI Executes**:
-
-```
-$ ls -la
-total 48
--rw-r--r--   1 user  staff   45 Nov  1 12:00 README.md
--rw-r--r--   1 user  staff  120 Nov  1 12:00 requirements.txt
-drwxr-xr-x   3 user  staff   96 Nov  1 12:00 src
-drwxr-xr-x   3 user  staff   96 Nov  1 12:00 tests
--rw-r--r--   1 user  staff   89 Nov  1 12:00 .gitignore
-```
-
-**Reflection**: Did your prediction match? What surprised you? Why is `README.md` a file but `src` is a folder?
-
----
-
-## Exercise 2: Reading a File Listing Dialog
-
-You'll often see your AI show you file listings as part of a larger conversation. Practice interpreting what you see.
-
-**Read this dialogue:**
-
-```
-You: "Show me what files are in my home directory."
-
-Agent: I'll list them for you.
-
-$ ls
-Desktop
-Documents
-Downloads
-Library
-Applications
-.bashrc
-.ssh
-```
-
-**Questions to Answer**:
-1. How many folders are in this listing? (Hint: these are the items without file extensions)
-2. How many configuration files are there? (Hint: these start with a dot: `.`)
-3. If the user asks "Where are my downloads?", what would you suggest?
-
----
-
-## Exercise 3: Safety Check—Why Confirm Location?
-
-This is a critical habit. Before your AI performs any operation on files, it should show you where it is.
-
-**Scenario**: Your AI says "I'll delete the old_code folder to clean up your project."
-
-**Before it executes**, what should you do?
-1. Ask: "Where are you right now?"
-2. Ask: "Show me what files are in this directory"
-3. Verify: "Yes, I can see old_code. That's the one I want to delete."
-
-**Why this matters**: If your AI is in the wrong directory, it might delete a folder you didn't intend. By checking location first, you supervise the operation and prevent mistakes.
-
-Write a short dialogue (3-4 exchanges) where you ask your AI to delete a folder, but you first confirm the location before execution.
-
----
-
-## Formative Assessment: Can You Predict What pwd Shows?
-
-Pause here and test your understanding.
-
-**Question 1**: Your AI opens a terminal. You ask "Where are you?" What will the response show you?
-- A) A list of files and folders
-- B) The path to the current directory (like `/Users/yourname/Documents`)
-- C) A list of commands available in the terminal
-
-*Correct answer: B. The pwd command shows the path—where your AI is currently working.*
-
-**Question 2**: Your AI executes `ls` and shows output starting with `d` characters. What does the `d` mean?
-- A) A deleted file
-- B) A directory (folder)
-- C) A default file
-
-*Correct answer: B. The `d` prefix indicates a directory/folder.*
-
-**Question 3**: Why is it important to ask "Where are you?" before asking your AI to delete files?
-- A) It's just a polite question
-- B) It confirms your AI is in the right location before performing a destructive operation
-- C) It has no practical purpose; you can skip it
-
-*Correct answer: B. Confirming location prevents accidental deletions of wrong folders.*
-
----
-
-## Try With AI
-
-**Tool**: Claude Code, ChatGPT Code Interpreter, or your preferred AI companion
-
-**Setup**: Open your AI tool. You're about to ask it about its workspace.
-
-### Prompt 1: Show Me Your Workspace
-
-Copy and paste this prompt (or use it as inspiration for your own words):
-
+**Prompt:**
 ```
 Show me your current working directory using pwd.
-Then show me all the files in this directory using ls.
-Explain what the pwd and ls commands are showing me.
+Then show me all the files in this directory using ls -la.
 ```
 
-**Expected Outcome**: You should see:
-- A file path (the current directory)
-- A list of files and folders in that location
-- Your AI's explanation of what each means
+**What to Compare**:
 
-**Why This Matters**: This mirrors the real workflow. You ask a question. Your AI uses the right commands. It explains the output in plain language. You understand what's happening without needing to memorize bash syntax.
+| Command | Your Computer | Your AI's Computer |
+|---------|----------------|-------------------|
+| `pwd` output | `/Users/yourname/Documents` | (AI's path) |
+| `ls -la` output | (Your files and folders) | (AI's files and folders) |
 
-### Prompt 2: Verify Understanding
+**Observation**:
+- Are the **commands identical**? (Both run `pwd` and `ls -la`)
+- Is the **output format the same**? (Both show file paths and file listings)
+- Are the **files different**? (Yes—different computers, different locations)
 
-After seeing the output, ask a follow-up:
+**Key Insight**: Your AI isn't using magic. It's running the same commands you ran. You can read and verify its output because you already understand what `pwd` and `ls` mean.
 
-```
-Now I want to navigate to [pick any folder you saw in the listing].
-Show me the path and files there. Explain why you moved to this location.
-```
+---
 
-**Expected Outcome**: Your AI shows a new path, new files, and explains the relationship. You're building a mental map of your file system through conversation.
+**Expected Response**:
+Your AI will explain the supervision pattern:
+1. Show location with `pwd`
+2. List files with `ls -la`
+3. Wait for you to confirm
+4. Then perform the operation
 
-### Optional: Safety Conversation
-
-If you want to practice the supervision habit:
-
-```
-Imagine I asked you to delete a folder. Before you did that,
-how would you make sure we're deleting the right one?
-Walk me through the steps you'd take to verify it's safe.
-```
-
-**Expected Outcome**: Your AI describes showing the location, asking for confirmation, maybe suggesting a backup—the safety-first pattern that you'll formalize in the next lesson.
+**Why This Matters**: This is the foundation of safe collaboration. You're not blindly trusting AI—you're **verifying location and contents before any action**.

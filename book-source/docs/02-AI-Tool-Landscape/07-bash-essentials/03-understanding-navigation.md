@@ -49,125 +49,107 @@ When you give someone directions, you might say:
 - **Absolute direction**: "Go to 123 Main Street, downtown" (complete address from a fixed starting point)
 - **Relative direction**: "Go down this street and turn left at the next corner" (relative to where you are now)
 
-File paths work exactly the same way. Your AI companion uses paths to navigate your computer's folder structure. Learning to understand paths through dialogue means you can supervise navigation safely and build a mental map of your project's organization.
+File paths work exactly the same way. Your AI uses paths to navigate your computer's folder structure. Understanding paths through dialogue means you can supervise navigation safely and build a mental map of your project's organization.
 
-By the end of this lesson, you'll be able to:
-1. **Read navigation dialogues** and understand what folder your AI is moving to
-2. **Predict path outcomes** by recognizing absolute vs. relative syntax
-3. **Draw folder structures** from navigation conversations with your AI
-
-This isn't about memorizing `cd` syntax. It's about understanding directions.
+This lesson teaches you to recognize:
+1. **Absolute paths** (complete addresses like `/Users/yourname/projects`)
+2. **Relative paths** (directions from where you are like `cd folder-name`)
+3. **Path symbols** that help navigate (`..` means up one level, `.` means current folder)
 
 ---
 
-## Example 1: Absolute Paths—"Here's the Complete Address"
+## Use `cd` to Navigate Folders
 
-Let's watch a real conversation where your AI uses an absolute path (a complete, unambiguous address starting from the root of your computer).
+The `cd` (change directory) command moves you between folders. Let's see how both you and your AI use the same command.
 
-**You**: "I want to work with the Python project files. Take me to that project folder and show me what's there."
+### Example 1: Navigate Using Absolute Path
 
-**Agent**: I'll navigate to the Python project and list the contents.
+**Step 1: You Try It**
 
+Open your terminal and navigate to a folder using its complete path. For example:
+
+```bash
+$ cd ~/Documents
+$ pwd
+/Users/yourname/Documents
+```
+
+You're now in the Documents folder. The path `/Users/yourname/Documents` is **absolute**—it's a complete address that works from anywhere.
+
+**What to notice**: You used a complete path starting with `~` (your home folder) or `/` (root). The `pwd` command confirms where you are.
+
+### Step 2: Your AI Does the Same
+
+Ask your AI:
+
+**Prompt:**
+```
+Navigate to your project root using an absolute path.
+Show me pwd to confirm your location.
+```
+
+**Expected AI Output:**
 ```
 $ cd /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python
 $ pwd
 /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python
-$ ls
-book-source/   specs/   .claude/   history/   README.md   CLAUDE.md
 ```
 
-**Agent**: "I've navigated to `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python`. This is the root of the entire project. Notice the path is complete—starting from the user's home directory and descending through folders. I'm now showing you what's visible at this location."
+Your AI uses an absolute path—a complete address just like you did.
+
+### Step 3: Compare and Understand
+
+**Your path**: `~/Documents`
+**AI's path**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python`
+
+Both are **absolute paths** because they start with `/` or `~` and specify a complete address. The folders are different because you're on different computers, but the **pattern is identical**.
 
 ---
 
-## Understanding Absolute Paths
+## Example 2: Navigate Using Relative Paths
 
-In that dialogue, notice three key moments:
+**Step 1: You Try It**
 
-**1. You made a request in plain language**
-You said "take me to the project folder"—you didn't say "cd to /Users/mjs..."
+From your current folder, navigate into a subfolder using just its name:
 
-**2. Your AI executed the path command**
-The `cd` (change directory) command moved your AI to that location. The path `/Users/mjs/...` is an **absolute path**—it's a complete address.
+```bash
+$ cd Documents
+$ pwd
+/Users/yourname/Documents
+```
 
-**3. Your AI confirmed location with pwd**
-The second command `pwd` (print working directory) showed you where your AI ended up: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python`
+You used `cd Documents`—just the folder name, not the full path. This is a **relative path** because it's relative to where you already are.
 
-**Key Insight**: Absolute paths always start with `/` (the root of your computer). They're like saying "start from the main street and go through these neighborhoods in order."
+**What to notice**: No `/` at the start. Just the folder name. This only works if the folder exists in your current location.
 
----
+### Step 2: Your AI Does the Same
 
-## Example 2: Relative Paths—"Go Here From Where You Are"
+Ask your AI:
 
-Now let's see a conversation using relative paths. Your AI is already in the project folder and wants to navigate to a subfolder.
+**Prompt:**
+```
+From your project root, navigate into a subfolder using a relative path (just the folder name).
+Show pwd to confirm you moved.
+Then explain: What's the difference between an absolute path and a relative path?
+```
 
-**You**: "I want to look inside the book-source folder. Show me what's in there."
-
-**Agent**: I'll navigate into the book-source subfolder from where we are.
-
+**Expected AI Output:**
 ```
 $ cd book-source
 $ pwd
 /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/book-source
-$ ls
-docs/   sidebars.js   package.json   README.md
 ```
 
-**Agent**: "Notice: I used `cd book-source`—just the folder name, not the full path. This is a **relative path** because it's relative to where I already am. I moved down one folder. Now `pwd` shows I'm inside book-source. If I wanted to go back up, I'd use `cd ..` (two dots means 'parent folder')."
+Your AI uses a relative path—same approach you used.
 
----
+### Step 3: Compare and Understand
 
-## Understanding Relative Paths
+**Your command**: `cd Documents` (relative)
+**AI's command**: `cd book-source` (relative)
 
-This dialogue shows something powerful:
+Both moved into a subfolder using just the folder name. Neither command started with `/`. This works when the folder exists in your current location.
 
-**1. Relative paths don't start with `/`**
-When your AI said `cd book-source`, it meant "from where I am, go into the folder named book-source."
-
-**2. Special symbols make relative navigation easy**
-- `..` means "go up one level to the parent folder"
-- `.` means "the current folder"
-- No symbol means "go into this subfolder"
-
-**3. Your AI can navigate using context**
-Your AI knows it's in the project root and understands `book-source` is a subfolder. You didn't have to provide the full absolute path.
-
----
-
-## Example 3: Building a Mental Map Through Dialogue
-
-Let's watch an extended conversation where your AI navigates multiple levels and you build a mental picture.
-
-**You**: "Show me the lesson files. Navigate to the docs folder, then to the AI-Tool-Landscape folder, then to the bash-essentials folder. Show me what lessons are there."
-
-**Agent**: I'll navigate down through the folders and show you the lesson files.
-
-```
-$ cd docs
-$ pwd
-/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/book-source/docs
-
-$ cd 02-AI-Tool-Landscape
-$ pwd
-/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/book-source/docs/02-AI-Tool-Landscape
-
-$ cd 07-bash-essentials
-$ pwd
-/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/book-source/docs/02-AI-Tool-Landscape/07-bash-essentials
-
-$ ls
-01-introducing-ai-workspace.md
-02-safety-first-pattern.md
-03-understanding-navigation.md
-04-understanding-file-operations.md
-05-configuration-secrets.md
-06-packages-dependencies.md
-07-pipes-complex-commands.md
-08-real-project-troubleshooting.md
-README.md
-```
-
-**Agent**: "I navigated down three levels, one folder at a time. Each `pwd` showed me my progress. I'm now inside the bash-essentials folder where all the lesson files are stored. Each file is numbered, showing the lesson sequence."
+**Key insight**: Relative paths are context-dependent. They only work if the folder exists where you are right now. That's why `pwd` is important—it shows you where you are before using a relative path.
 
 ---
 
@@ -183,195 +165,111 @@ Paths are critical for safe navigation. Consider this scenario:
 **Safe approach**:
 > You: "Delete the backup folder. But first, show me where we are and what backup folders exist."
 > Agent: Shows absolute path and lists folders
-> You: "Yes, delete /Users/mjs/backup-2024 but NOT /Users/mjs/backup-important"
+> You: "Yes, delete `/Users/mjs/backup-2024` but NOT `/Users/mjs/backup-important`"
 
 By understanding paths—knowing exactly where your AI is—you prevent mistakes.
 
 ---
 
-## Exercise 1: Draw the Folder Structure
+## Example 3: Going Up One Level With `..`
 
-Read this navigation dialogue and draw the folder structure it represents.
+**Step 1: You Try It**
 
-**Dialogue**:
-```
-User: "Start at the project root and navigate to show me the spec structure."
+Navigate to a subfolder, then go back up to its parent folder:
 
-Agent: I'll show you the path to the specifications folder.
-
-$ cd /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python
-$ cd specs
+```bash
+$ cd Documents
 $ pwd
-/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/specs
-$ ls
-001-chapter-7-bash/
-002-redesign-bash-chapter/
-spec.md
-tasks.md
+/Users/yourname/Documents
+
+$ cd ..
+$ pwd
+/Users/yourname
 ```
 
-**Your task**: Draw a folder diagram that shows:
-1. The project root folder
-2. The specs folder (subfolder)
-3. The two chapter folders inside specs
-4. The files inside specs
+You used `cd ..` (two dots) to go up one level. This is a **relative path special symbol** meaning "parent folder."
 
-**Your diagram should look something like**:
+**What to notice**: `..` always means the same thing: go up one level. It works from anywhere.
+
+### Step 2: Your AI Does the Same
+
+Ask your AI:
+
+**Prompt:**
 ```
-colearning-python/
-├── specs/
-│   ├── 001-chapter-7-bash/
-│   ├── 002-redesign-bash-chapter/
-│   ├── spec.md
-│   └── tasks.md
+Navigate into a subfolder, then use cd .. to go back up to the parent folder.
+Show pwd after each command.
+Explain what .. means.
 ```
+
+**Expected AI Output:**
+```
+$ cd book-source
+$ pwd
+/Users/mjs/Documents/.../book-source
+
+$ cd ..
+$ pwd
+/Users/mjs/Documents/...
+```
+
+Your AI uses `..` the same way you do.
+
+### Step 3: Compare and Understand
+
+Both you and your AI used `cd ..` to move up one level. The **command is identical**. The starting and ending paths are different because you're on different computers, but **the navigation logic is the same**.
 
 ---
 
-## Exercise 2: Predict Path Outcomes
+## Try With AI: Side-by-Side Comparison
 
-Your AI is currently in `/Users/mjs/Documents/code/project/src`. Predict where it will be after each command.
+Now that you've navigated yourself, compare what happens when your AI navigates.
 
-**Scenario 1**: `cd ..`
-- A) `/Users/mjs/Documents/code/`
-- B) `/Users/mjs/Documents/code/project/`
-- C) `/Users/mjs/`
+### Comparison Prompt
 
-*Answer: B. `..` goes up one level to the parent folder.*
+Open your AI tool and ask:
 
-**Scenario 2**: `cd tests` (assuming tests is a subfolder in the current directory)
-- A) `/Users/mjs/Documents/code/project/tests`
-- B) `/Users/mjs/Documents/tests`
-- C) `/tests`
+**Prompt:**
+```
+Show me how you navigate through folders.
+1. Start at your project root using pwd
+2. Navigate down into a subfolder using a relative path
+3. Show pwd to confirm your new location
+4. Navigate back up using cd ..
+5. Explain: Why do absolute paths work from anywhere, but relative paths depend on where you currently are?
+```
 
-*Answer: A. Relative path moves to a subfolder from the current location.*
+**What to Compare**:
 
-**Scenario 3**: `cd /Users/mjs/Documents/code/project/backup` (absolute path)
-- A) The command may fail if backup is not in the project root
-- B) It navigates to /Users/mjs/Documents/code/project/backup regardless of where you currently are
-- C) It navigates relative to the current directory
+| Navigation Step | You Do This | Your AI Does This |
+|---|---|---|
+| Navigate down (relative) | `cd Documents` | `cd book-source` |
+| See where you are | `/Users/yourname/Documents` | (AI's path) |
+| Go back up | `cd ..` | `cd ..` |
+| Confirm location | `/Users/yourname` | (AI's path) |
 
-*Answer: B. Absolute paths work from anywhere because they're complete addresses.*
+**Observation**:
+- Are the commands identical? (Yes—both use `cd`, `..`, folder names)
+- Is the pattern the same? (Yes—down into a folder, back up with `..`)
+- Do paths differ? (Yes—different computers, different projects)
+
+**Key Insight**: You and your AI navigate using the same commands. You can read and verify navigation paths because you've navigated yourself.
 
 ---
 
-## Exercise 3: Path Explanation Practice
+## Try With AI: Safety Verification
 
-Read this dialogue and explain (in plain language) what the path represents and why your AI chose that navigation method.
+To practice supervising navigation before file operations, ask your AI:
 
-**Dialogue**:
+**Prompt:**
 ```
-User: "Navigate to the lesson files and show me one."
-
-Agent: I'll go to the bash lesson folder.
-
-$ cd book-source/docs/02-AI-Tool-Landscape/07-bash-essentials
-$ ls
-01-introducing-ai-workspace.md
-02-safety-first-pattern.md
-03-understanding-navigation.md
-...
+Before you perform any file operation (copy, move, delete),
+how would you make sure we're in the right folder?
+Walk me through the safety steps for navigation.
 ```
 
-**Your explanation should answer**:
-1. Is this an absolute or relative path? How do you know?
-2. Why would the agent use this relative path instead of an absolute path?
-3. How many folder levels down did the agent navigate?
-
-**Model answer**:
-1. **Relative path** — it doesn't start with `/`, so it's relative to the current location
-2. The agent used a relative path because we were already in the project root; using relative saves typing and is contextually clear
-3. The agent navigated down 4 levels: book-source → docs → 02-AI-Tool-Landscape → 07-bash-essentials
+**Expected Response**:
+Your AI will describe showing location with `pwd` and listing folders with `ls` before any operation. This is the foundation of safe collaboration—verifying location before taking action.
 
 ---
 
-## Formative Assessment: Path Concepts
-
-Answer these questions to check your understanding.
-
-**Question 1**: What's the difference between `/home/user/projects/python-app` and `projects/python-app`?
-- A) They're the same
-- B) The first is absolute (complete address); the second is relative (relative to current location)
-- C) The first is faster than the second
-
-*Correct: B*
-
-**Question 2**: If your AI is in `/Users/mjs/Documents/code` and executes `cd ..`, where will it be?
-- A) `/Users/mjs/Documents`
-- B) `/Users/mjs`
-- C) `/` (root)
-
-*Correct: A. `..` means parent folder, so up one level.*
-
-**Question 3**: Why is understanding paths important before asking your AI to delete files?
-- A) Paths don't matter; just delete whatever the AI suggests
-- B) Understanding the exact location prevents accidental deletion of wrong folders
-- C) Paths are only for reading files, not deleting
-
-*Correct: B. Knowing exactly which folder your AI is about to delete is critical for safety.*
-
----
-
-## Summative Assessment: Navigate and Map
-
-Have a real conversation with your AI where you:
-
-1. **Ask your AI to navigate** to three different folders in your project (use plain language: "Show me the lesson files", "Take me to the specifications", etc.)
-2. **Observe the paths** your AI shows with `pwd`
-3. **Draw a folder structure** showing how these three folders relate to each other
-4. **Explain** whether your AI used absolute or relative paths and why
-
-**Success criteria**:
-- You can identify at least one absolute path and one relative path from the dialogue
-- Your folder diagram accurately reflects the real structure
-- You can explain why `..` or `.` would take your AI to a specific location
-- You recognize how paths help you supervise file operations safely
-
----
-
-## Try With AI
-
-**Tool**: Claude Code, ChatGPT Code Interpreter, Gemini CLI, or your preferred AI companion
-
-**Setup**: You're building a mental map of your project structure by having navigation conversations.
-
-### Prompt 1: Show Me Your Folder Structure
-
-Copy and paste this prompt:
-
-```
-Navigate through my project folders and show me the structure.
-Start at the root of the project.
-Navigate down to the docs folder.
-Navigate down to the AI-Tool-Landscape folder.
-Navigate down to the bash-essentials folder.
-After each navigation, show pwd (current path) and ls (contents).
-Explain: Are these absolute paths or relative paths? Why?
-```
-
-**Expected Outcome**:
-- You see a series of `pwd` outputs showing the progression
-- Each path is more specific (goes deeper into the folder structure)
-- Your AI explains whether it's using relative navigation (from folder to subfolder) or absolute paths
-- You can now draw a diagram of how these folders relate
-
-### Prompt 2: Find Your Way Back
-
-```
-Now that we're deep in the folder structure, use relative paths to get back to the project root.
-At each step, show pwd and explain what .. does.
-```
-
-**Expected Outcome**: You understand that `..` consistently means "go up one level to parent folder"
-
-### Prompt 3: Challenge—Predict Before Looking
-
-```
-Don't execute yet. Just tell me:
-If we're in /project/src and I want to go to /project/tests,
-should I use cd ../tests or cd tests?
-Why? Explain your thinking.
-Then show me the correct command.
-```
-
-**Expected Outcome**: You demonstrate understanding by predicting which approach (absolute vs. relative) makes sense, then verify with the actual command.

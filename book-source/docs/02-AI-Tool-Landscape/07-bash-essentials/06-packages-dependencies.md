@@ -228,173 +228,59 @@ The package manager traces this entire tree and installs everything needed. This
 
 ---
 
-## Exercise 1: Package Manager Selection
+## Try With AI: Side-by-Side Package Installation
 
-For each scenario, which package manager should be used?
+Now that you understand package managers, compare what happens when your AI installs a package.
 
-**Scenario 1**: "I'm writing a Python script that needs to read Excel files"
-- A) pip
-- B) npm
-- C) brew
+### Comparison Prompt
 
-*Answer: A (pip for Python)*
+Open your AI tool and ask:
 
-**Scenario 2**: "I'm building a web application with Node.js and need a web framework"
-- A) pip
-- B) npm
-- C) apt
-
-*Answer: B (npm for Node.js)*
-
-**Scenario 3**: "I need to install Git on my macOS computer"
-- A) pip
-- B) npm
-- C) brew
-
-*Answer: C (brew for macOS system tools)*
-
----
-
-## Exercise 2: Understanding Dependencies
-
-Read this installation output and answer questions:
-
+**Prompt:**
 ```
-$ npm install react
-npm notice
-added 200 packages, and audited 201 packages in 5s
-
-packages audited, 201 vulnerabilities found
-```
-
-**Questions**:
-1. How many packages were installed?
-2. You only asked for `react`. Why were 200 other packages installed?
-3. What do the "vulnerabilities found" mean?
-
-**Answers**:
-1. 201 packages (react + 200 dependencies)
-2. react depends on other packages; those depend on others. npm installed the entire dependency tree.
-3. Vulnerabilities are security issues in some packages. Your AI should check for these and warn you.
-
----
-
-## Exercise 3: Verification Practice
-
-Write what command/dialogue you'd use to verify each installation:
-
-1. **Verify Python's `numpy` package installed**:
-   - Command: `pip show numpy` or `python3 -c "import numpy; print(numpy.__version__)"`
-
-2. **Verify Node's `express` installed**:
-   - Your answer:
-
-3. **Verify multiple packages together**:
-   - Your answer:
-
----
-
-**Model answers**:
-2. `npm list express` or `npm ls | grep express`
-3. `pip list` (shows all Python packages) or `npm list` (shows all Node packages)
-
----
-
-## Formative Assessment: Packages and Dependencies
-
-**Question 1**: Why do package managers automatically install dependencies?
-- A) To waste disk space
-- B) Because the package you want needs them to function
-- C) No real reason
-
-*Correct: B. Packages depend on other packages to work.*
-
-**Question 2**: When you install a package with pip, which happens first?
-- A) The package is installed immediately
-- B) pip checks dependencies, then installs everything together
-- C) You have to manually install dependencies
-
-*Correct: B. Package managers resolve dependencies before installing.*
-
-**Question 3**: How many package managers do you need to memorize?
-- A) All of them (pip, npm, brew, apt, etc.)
-- B) Just the one for your current project (Python=pip, JavaScript=npm)
-- C) None—your AI chooses the right one
-
-*Correct: B. Your AI handles the choice; you focus on the package you need.*
-
----
-
-## Summative Assessment: Install and Verify a Package
-
-Have a real conversation with your AI where you:
-
-1. **Ask your AI to install a package** (for Python: `requests`, `numpy`; for JavaScript: `express`, `lodash`; etc.)
-2. **Have your AI explain what dependencies are being installed**
-3. **Observe the installation** and ask what's happening
-4. **Verify the installation** using one of the methods (pip show, npm list, or try importing)
-5. **Understand the dependency chain** by asking "What does this package depend on?"
-
-**Success criteria**:
-- You understand why multiple packages were installed (dependencies)
-- You can verify the package is available
-- You recognize that package managers automate dependency resolution
-- You could request a different package with confidence
-
----
-
-## Try With AI
-
-**Tool**: Claude Code, ChatGPT Code Interpreter, Gemini CLI, or your preferred AI companion
-
-**Setup**: You're going to install a real package and understand the dependency chain.
-
-### Prompt 1: Install a Package and Explain
-
-Copy and paste this prompt:
-
-```
-I want to install a useful Python/Node package for my work.
-Install [choose one: requests, numpy, express, or lodash].
-After installing, explain:
-1. What the main package does
-2. What dependencies were installed and why
-3. How to verify it's available in my code
-4. How to use a specific version if I needed to
-
-Show each step clearly.
-```
-
-**Expected Outcome**:
-- You see the actual installation output
-- Your AI explains what each part means
-- You understand the dependency chain
-- You know how to verify the package works
-
-### Prompt 2: Dependency Deep Dive
-
-```
-The package I just installed has lots of dependencies.
+Install a package for me (choose: requests, numpy, express, or lodash).
 Show me:
-1. All the dependencies it directly needs
-2. Why it needs them (what functionality)
-3. What happens if one dependency is missing
-
-Make it concrete, not theoretical.
+1. The installation command
+2. The installation output (what gets downloaded and installed)
+3. What dependencies were installed and why
+4. How to verify it worked in my code
 ```
 
-**Expected Outcome**: You understand that packages form a web of dependencies, and package managers navigate that web automatically
+**What to Compare**:
 
-### Prompt 3: Verification Methods
+| Package Manager | You Would Do | Your AI Does This |
+|---|---|---|
+| Command | `pip install requests` | (AI's install command) |
+| See output | (Installation progress) | (Installation progress) |
+| Verify | `pip show requests` | (AI verifies it) |
 
+**Observation**:
+- Are the commands the same pattern? (Yes—`pip install`, `npm install`, etc.)
+- Does your AI explain what's being installed? (Yes—shows dependencies)
+- Can you verify it worked? (Yes—with `pip show`, `npm list`, or import test)
+
+**Key Insight**: Package managers automate dependency resolution. You don't have to find 5+ packages manually—you ask for one, and the manager finds the rest.
+
+---
+
+## Try With AI: Understanding Dependencies
+
+Ask your AI:
+
+**Prompt:**
 ```
-I want to verify [package-name] is installed and usable in my code.
-Show me 3 different ways to verify it:
-1. Using the package manager directly
-2. Trying to use it in code
-3. Checking version information
-
-Show me the exact commands/code for each.
+I just installed [package-name] and 50+ other packages appeared.
+Explain:
+1. Why so many packages when I asked for just one?
+2. What are "transitive dependencies"?
+3. What happens if one of these dependencies is missing?
+4. How would I verify all these dependencies are correctly installed?
 ```
 
-**Expected Outcome**: You have multiple approaches to verify installations
+**Expected Response**:
+Your AI will explain that packages depend on other packages, which depend on others. The package manager traces this entire dependency tree and installs everything needed. This is called transitive dependency resolution.
+
+**Key Principle**: Package managers handle complexity you'd never want to manage manually.
+
+---
+

@@ -241,163 +241,61 @@ Your AI builds the pipeline. You understand what's happening by tracing the data
 
 ---
 
-## Exercise 1: Trace Data Through a Pipeline
+## Try With AI: Side-by-Side Pipeline Building
 
-Read this pipeline and predict the output:
+Now that you understand pipes as data flow, compare what happens when your AI builds pipelines.
 
+### Comparison Prompt
+
+Open your AI tool and ask:
+
+**Prompt:**
 ```
-$ ls -la | grep "\.md" | wc -l
-```
-
-**Your prediction**: How many markdown files are in this directory?
-
-**Step-by-step trace**:
-1. `ls -la` produces a listing of all files
-2. `grep "\.md"` filters to lines containing `.md` (markdown files)
-3. `wc -l` counts those lines
-Result: A number (count of .md files)
-
-**If the output is `5`, what does that mean?**
-- There are 5 markdown files in the current directory
-
----
-
-## Exercise 2: Predict Pipeline Output
-
-Given this directory listing:
-
-```
--rw-r--r--   1 user  staff   2048 Nov  2 10:00 README.md
--rw-r--r--   1 user  staff   1024 Nov  2 10:00 GUIDE.md
--rw-r--r--   1 user  staff   512 Nov  2 10:00 app.py
--rw-r--r--   1 user  staff   768 Nov  2 10:00 utils.py
-```
-
-Predict the output of: `ls -la | grep "\.py" | wc -l`
-
-**Your prediction**: ___
-
-**Trace**:
-1. `ls -la` lists all 4 files
-2. `grep "\.py"` filters to files with `.py` in the name (2 files: app.py, utils.py)
-3. `wc -l` counts them
-**Answer: 2**
-
----
-
-## Exercise 3: Build a Pipeline Request
-
-Write a plain English request that your AI should turn into a pipeline:
-
-**Your request**: "Count how many Python files are in my project that contain the word 'test' in their filename."
-
-**What pipeline would achieve this?**
-```
-find . -name "*test*.py" -type f | wc -l
-```
-
-**Your turn**: Write a request for a different pipeline:
-
-Request: "Find all configuration files (.json, .yaml) and show only the ones modified in the last 7 days"
-
-Your pipeline attempt:
-```
-find . -type f \( -name "*.json" -o -name "*.yaml" \) -mtime -7
-```
-
----
-
-## Formative Assessment: Pipes and Data Flow
-
-**Question 1**: What does the pipe `|` do?
-- A) Runs two commands in sequence
-- B) Sends the output of one command as input to the next
-- C) Combines two files
-
-*Correct: B. Pipes are data flow connections.*
-
-**Question 2**: In `cat logs | grep "ERROR" | wc -l`, which command produces the final count?
-- A) `cat logs`
-- B) `grep "ERROR"`
-- C) `wc -l`
-
-*Correct: C. `wc -l` counts the lines it receives from grep.*
-
-**Question 3**: If you want to see the error lines (not count them), which command should you remove?
-- A) Remove `cat logs`
-- B) Remove `| grep "ERROR"`
-- C) Remove `| wc -l`
-
-*Correct: C. Without the count step, you see each error line.*
-
----
-
-## Summative Assessment: Request and Understand a Pipeline
-
-Have a real conversation with your AI where you:
-
-1. **Make a request that requires a pipeline** ("Find all Python files and show their sizes", "Count error messages in logs", etc.)
-2. **Have your AI show the pipeline command**
-3. **Ask your AI to explain each step** ("What does grep do?", "Why do we need this filter?")
-4. **Trace the data flow** by predicting intermediate outputs
-5. **Run the pipeline** and verify it produces what you expected
-6. **Modify the pipeline** (change a filter or add a step) and see the difference
-
-**Success criteria**:
-- You understand why pipes are useful (chain operations)
-- You can trace data through at least 2-3 commands
-- You recognize when a pipeline is or isn't necessary
-- You could request a similar pipeline for a different problem
-
----
-
-## Try With AI
-
-**Tool**: Claude Code, ChatGPT Code Interpreter, Gemini CLI, or your preferred AI companion
-
-**Setup**: You're going to request pipelines and understand them by tracing data flow.
-
-### Prompt 1: Build and Explain a Pipeline
-
-Copy and paste this prompt:
-
-```
-I have project files to analyze.
-Show me a pipeline that:
-1. Lists all files in my project
+I need to analyze my project files.
+Build a pipeline that:
+1. Lists all files
 2. Filters to Python files
-3. Shows the count
+3. Counts them
 
-Build the pipeline, then explain what happens at each step.
-Before showing the command, describe the data flow.
+Explain what each command does and how data flows between them.
 ```
 
-**Expected Outcome**:
-- Your AI describes the pipeline before showing the command
-- You see data flowing: all files → Python files → count
-- Your AI explains what grep and wc do in plain language
+**What to Compare**:
 
-### Prompt 2: Predict Before Executing
+| Pipeline Step | You Think About | Your AI Builds |
+|---|---|---|
+| Find files | `ls -la` | (AI's listing command) |
+| Filter them | `grep ".py"` | (AI's filtering command) |
+| Count them | `wc -l` | (AI's counting command) |
+| Data flow | all files → Python files → count | (Same pattern) |
 
+**Observation**:
+- Is the command pattern the same? (Yes—list → filter → count)
+- Can you trace the data flow? (Yes—each step transforms the previous output)
+- Does your AI explain WHAT each command does? (Yes—not just the syntax, but the purpose)
+
+**Key Insight**: Pipes chain simple commands into powerful workflows. You don't memorize complex syntax—you specify what you want, and AI builds the pipeline.
+
+---
+
+## Try With AI: Trace and Modify Pipelines
+
+Ask your AI:
+
+**Prompt:**
 ```
-Before you run the pipeline, tell me:
-What intermediate output do you expect from 'ls -la | grep ".py"'?
-(Don't run it yet—just predict the shape of the data)
-Then actually run it and compare to your prediction.
+Using the pipeline from above (list → filter → count Python files):
+1. Show me what intermediate output looks like between each step
+   (What does "list → filter" produce before counting?)
+2. Now modify it to count Python files that start with 'test_'
+3. Show what changed and why
+4. How would we show the files AND their sizes instead of just counting?
 ```
 
-**Expected Outcome**: You practice tracing data flow, then verify your understanding
+**Expected Response**:
+Your AI will show the intermediate outputs at each stage and explain how modifications change the data flow. This builds your understanding of pipelines as transformations.
 
-### Prompt 3: Modify and Experiment
+**Key Principle**: Pipes are powerful because you can trace, predict, and modify them by understanding data flow.
 
-```
-Show me the pipeline from Prompt 1.
-Now modify it to:
-1. Count only Python files starting with 'test_'
-2. Count all files (not just Python)
-3. Show the files AND their sizes (don't just count)
+---
 
-For each modification, explain what changed and why.
-```
-
-**Expected Outcome**: You understand how pipeline components work together and how changes ripple through

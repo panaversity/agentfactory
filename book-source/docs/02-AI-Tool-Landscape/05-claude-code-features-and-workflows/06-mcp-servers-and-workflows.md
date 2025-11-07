@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 title: "Connecting MCP Servers and Common Workflows"
 ---
 
@@ -85,15 +85,6 @@ claude mcp add --transport stdio context7 npx @upstash/context7-mcp
 
 ## Workflow 1: Shop Together — Find a Shirt on Amazon (Playwright MCP)
 
-Setup (one-time):
-
-```bash
-# Add Playwright MCP (web browsing)
-claude mcp add --transport stdio playwright npx @playwright/mcp@latest
-
-# Add Context7 MCP (live docs)
-claude mcp add --transport stdio context7 npx @upstash/context7-mcp
-```
 
 Goal: Ask Claude to browse Amazon and find a shirt that matches your preferences. No code—just a plain request.
 
@@ -155,24 +146,6 @@ Have repetitive task with clear rules?
 Exploratory or one-off task?
   → Use main conversation
 ```
-
-### Reflection Questions
-
-**Understanding**:
-- Can you explain the difference between subagents (explicit), skills (autonomous), and MCP (external data) to a colleague?
-- How does MCP extend Claude Code's capabilities beyond just reading local files?
-
-**Application**:
-- What websites or shops would you explore first with Playwright MCP?
-- How could Context7 help you keep up with fast-changing tools and libraries?
-
-**Integration**:
-- How would you combine a subagent, a skill, and MCP in a single project?
-- If your subagent needed external data, how could you use MCP to provide it?
-
-**Practical Experience**:
-- What was the difference between explicitly invoking a subagent vs. having a skill automatically discover when to help?
-- How did using MCP feel different from just asking Claude Code about local files?
 
 ---
 

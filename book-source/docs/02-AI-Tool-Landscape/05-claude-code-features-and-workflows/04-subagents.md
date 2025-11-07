@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 title: "Understanding and Using Subagents"
 ---
 
@@ -119,7 +119,7 @@ Let's create a **"latest-news" subagent**—a focused researcher that surfaces c
 
 ### Step 1: Create the Subagent
 
-- Open the `/agents` interface and select "Create new agent"
+- Start claude session, from slash commands run `/agents` interface and select "Create new agent"
 - Choose Project location so your team can reuse it
 - Describe the role succinctly, for example:
   - Purpose: daily news researcher for a chosen domain (e.g., AI, security)
@@ -159,42 +159,6 @@ Use explicit invocation for predictability. Rely on automatic delegation as a co
 4. **It stays in character** - Multiple invocations maintain the "collaborative explainer" role
 
 **If this works**: 🎉 **Your collaborative helper is ready! You now have a dedicated partner to help you understand code.**
-
----
-
-## When to Use Subagents: Practical Scenarios
-
-Here are five common scenarios where subagents provide value:
-
-### Scenario 1: Code Reviews
-
-**Setup**: Create a `code-reviewer` subagent with your team's style guide
-**Invocation**: `claude agent run code-reviewer "Review src/utils.py"`
-**Benefit**: Consistent reviews applying team standards every time
-
-### Scenario 2: Test Generation
-
-**Setup**: Create a `test-writer` subagent specialized in your testing framework (pytest, unittest, etc.)
-**Invocation**: `claude agent run test-writer "Generate tests for src/auth.py"`
-**Benefit**: Tests follow project conventions without explaining them each time
-
-### Scenario 3: Documentation Writing
-
-**Setup**: Create a `doc-writer` subagent that generates API documentation in your preferred format
-**Invocation**: `claude agent run doc-writer "Document all functions in api/routes.py"`
-**Benefit**: Consistent documentation style across the codebase
-
-### Scenario 4: Refactoring Assistant
-
-**Setup**: Create a `refactor-helper` subagent focused on code simplification and pattern recognition
-**Invocation**: `claude agent run refactor-helper "Suggest refactorings for src/legacy.py"`
-**Benefit**: Non-destructive suggestions without changing unrelated code
-
-### Scenario 5: Security Auditor
-
-**Setup**: Create a `security-auditor` subagent that scans for common vulnerabilities
-**Invocation**: `claude agent run security-auditor "Check src/ for security issues"`
-**Benefit**: Systematic security checks using OWASP or CWE standards
 
 ---
 
@@ -261,12 +225,3 @@ The lesson shows a code-reviewer subagent with specific standards (PEP 8, type h
 ```
 
 **Expected outcome:** Copy-paste-ready system prompt for your specific needs
-
-### Prompt 4: Testing Your Subagent
-
-```
-I created a subagent but I'm not sure it's working correctly. How do I test it? Give me a safe 'test scenario': (a) what sample code/task to give it, (b) what good output looks like, (c) what bad output looks like, (d) how to iterate and improve the system prompt based on results.
-```
-
-**Expected outcome:** Testing methodology to validate and improve subagents
-

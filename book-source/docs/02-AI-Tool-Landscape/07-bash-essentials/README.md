@@ -20,21 +20,6 @@ This chapter **does NOT teach bash as a traditional skill**. Instead, it teaches
 
 ---
 
-## The Big Paradigm Shift
-
-### What You're NOT Learning
-- ❌ How to write bash scripts from scratch
-- ❌ Advanced bash programming (functions, loops, conditionals)
-- ❌ 100 bash commands memorized
-
-### What You ARE Learning
-- ✅ How to read and understand bash commands your AI suggests
-- ✅ How to collaborate safely with your AI on terminal tasks
-- ✅ How to troubleshoot when errors occur
-- ✅ How to apply the 5-step AI Collaboration Pattern to any bash task
-
----
-
 ## Learning Outcomes
 
 By the end of this chapter, you will be able to see when your AI Companion **collaborates**:
@@ -46,4 +31,4 @@ By the end of this chapter, you will be able to see when your AI Companion **col
 5. **Read** and trace complex piped commands to predict their output
 6. **Troubleshoot** common bash errors by reading error messages with AI help
 7. **Collaborate** confidently with AI to set up complete projects from scratch
-8. **Apply** the 5-step pattern to any bash task, with or without AI assistance
+8. **Apply** the collaboration pattern to any bash task, with or without AI assistance
