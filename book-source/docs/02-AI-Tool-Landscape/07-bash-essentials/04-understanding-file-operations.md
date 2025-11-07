@@ -101,11 +101,13 @@ Both used `cp` to create a backup. Both checked with `ls` to verify the copy wor
 
 ---
 
-## Example 2: Copy a Folder
+## Use `cp -r` to Copy Entire Folders
+
+The `-r` flag means "recursive"—copy everything inside the folder and all its subfolders.
 
 **Step 1: You Try It**
 
-Copy an entire folder using `cp -r` (the `-r` flag means "recursive"—copy everything inside):
+Copy an entire folder using `cp -r`:
 
 ```bash
 $ cp -r src/ src-backup/

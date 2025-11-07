@@ -98,7 +98,9 @@ Both set temporary variables. Both verified with `echo $`. Both will disappear w
 
 ---
 
-## Example 2: Store Values in a .env File
+## Use `.env` Files to Store Persistent Configuration
+
+.env files (environment files) are text files that store configuration values. They persist across terminal restarts, unlike `export` which is temporary.
 
 **Step 1: You Try It**
 

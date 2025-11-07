@@ -1,12 +1,12 @@
 # CoLearning Python & Agentic AI: Chapter Index
 
-**56 chapters across 13 parts**
+**57 chapters across 14 parts**
 
 Reference this document when naming and organizing chapter files. Use the chapter number in directory names: `[chapter-number]-[chapter-name]/`
 
 **Implementation Status**:
-- ✅ **Implemented** (15 chapters): Chapters 1-11, 30-33 have content and are ready for review
-- 📋 **Planned** (41 chapters): Chapters 12-29, 34-56 are planned but not yet created
+- ✅ **Implemented** (16 chapters): Chapters 1-11, 30-33 have content and are ready for review
+- 📋 **Planned** (41 chapters): Chapters 12-29, 34-57 are planned but not yet created
 
 ---
 
@@ -23,7 +23,7 @@ Foundation building: orientation, setup, first programs with AI, complete AIDD m
 
 ---
 
-## Part 2: AI Tool Landscape (Chapters 5-8)
+## Part 2: AI Tool Landscape (Chapters 5-7)
 
 Tool literacy and comparison: deep dive into specific platforms
 
@@ -32,23 +32,32 @@ Tool literacy and comparison: deep dive into specific platforms
 | 5 | How It All Started: The Claude Code Phenomenon | `05-claude-code-features-and-workflows/` | ✅ Implemented |
 | 6 | Google Gemini CLI: Open Source and Everywhere | `06-gemini-cli-installation-and-basics/` | ✅ Implemented |
 | 7 | Bash Essentials for AI-Driven Development | `07-bash-essentials/` | ✅ Implemented |
-| 8 | Git & GitHub for AI-Driven Development | `08-git-and-github/` | ✅ Implemented |
 
 ---
 
-## Part 3: Markdown, Prompt & Context Engineering (Chapters 9-11)
+## Part 3: Markdown, Prompt & Context Engineering (Chapters 8-10)
 
 Effective AI communication: markdown fundamentals, prompting and context management
 
 | # | Chapter Title | File Name | Status |
 |---|---------------|-----------|--------|
-| 9 | Markdown: The Language of AI Communication | `09-markdown-language-of-ai/` | ✅ Implemented |
-| 10 | Prompt Engineering for AI-Driven Development | `10-prompt-engineering-for-aidd/` | ✅ Implemented |
-| 11 | Context Engineering for AI-Driven Development | `11-context-engineering-for-ai-driven-development/` | ✅ Implemented |
+| 8 | Markdown: The Language of AI Communication | `08-markdown-language-of-ai/` | ✅ Implemented |
+| 9 | Prompt Engineering for AI-Driven Development | `09-prompt-engineering-for-aidd/` | ✅ Implemented |
+| 10 | Context Engineering for AI-Driven Development | `10-context-engineering-for-ai-driven-development/` | ✅ Implemented |
 
 ---
 
-## Part 4: Python: The Language of AI Agents (Chapters 12-30)
+## Part 4: Git & GitHub for AI-Driven Development (Chapter 11)
+
+Version control and collaboration: Git workflows for AI-native teams
+
+| # | Chapter Title | File Name | Status |
+|---|---------------|-----------|--------|
+| 11 | Git & GitHub for AI-Driven Development | `11-git-and-github/` | ✅ Implemented |
+
+---
+
+## Part 5: Python: The Language of AI Agents (Chapters 12-29)
 
 Core language skills: production-quality Python
 
@@ -76,20 +85,21 @@ Core language skills: production-quality Python
 
 ---
 
-## Part 5: Spec-Driven Development (Chapters 30-33)
+## Part 6: Spec-Driven Development (Chapters 30-34)
 
 Professional development workflow: specifications and planning
 
 | # | Chapter Title | File Name | Status |
 |---|---------------|-----------|--------|
 | 30 | Understanding Spec-Driven Development | `30-specification-driven-development-fundamentals/` | ✅ Implemented |
-| 31 | Spec-Kit Plus Hands-On | `31-spec-kit-plus-hands-on/` | ✅ Implemented (redesign in progress) |
-| 32 | Building Projects with Spec-Kit Plus | `32-real-world-spec-kit-workflows/` | ✅ Implemented |
+| 31 | Spec-Kit Plus Hands-On | `31-spec-kit-plus-hands-on/` | ✅ Implemented |
+| 32 | AI Orchestration: Agent Teams and Manager Patterns | `32-ai-orchestra-agent-teams-manager/` | ✅ Implemented |
 | 33 | The Tessl Vision: Spec-as-Source | `33-tessl-framework-and-integration/` | ✅ Implemented |
+| 34 | Building Production Projects with Spec-Kit Plus | `34-building-production-projects-spec-kit/` | 📋 Planned |
 
 ---
 
-## Part 6: AI Native Software Development (Chapters 35-37)
+## Part 7: AI Native Software Development (Chapters 35-37)
 
 Building AI-native applications with agentic architectures
 
@@ -101,7 +111,7 @@ Building AI-native applications with agentic architectures
 
 ---
 
-## Part 7: MCP Fundamentals with FastMCP (Chapters 38-40)
+## Part 8: MCP Fundamentals with FastMCP (Chapters 38-40)
 
 Integration frameworks: Model Context Protocol
 
@@ -113,7 +123,7 @@ Integration frameworks: Model Context Protocol
 
 ---
 
-## Part 8: TypeScript: The Language of Realtime and Interaction (Chapters 41-43)
+## Part 9: TypeScript: The Language of Realtime and Interaction (Chapters 41-43)
 
 Full-stack AI development: TypeScript fundamentals
 
@@ -125,7 +135,7 @@ Full-stack AI development: TypeScript fundamentals
 
 ---
 
-## Part 9: Building Realtime and Voice Agents (Chapters 44-46)
+## Part 10: Building Realtime and Voice Agents (Chapters 44-46)
 
 Interactive AI systems: realtime streaming and voice processing
 
@@ -137,7 +147,7 @@ Interactive AI systems: realtime streaming and voice processing
 
 ---
 
-## Part 10: Containerization & Orchestration using Docker and Kubernetes (Chapters 47-49)
+## Part 11: Containerization & Orchestration using Docker and Kubernetes (Chapters 47-49)
 
 Production deployment: containerization and orchestration
 
@@ -149,7 +159,7 @@ Production deployment: containerization and orchestration
 
 ---
 
-## Part 11: Data, State, and Memory using PostgreSQL, Graph, and Vector Databases (Chapters 50-52)
+## Part 12: Data, State, and Memory using PostgreSQL, Graph, and Vector Databases (Chapters 50-52)
 
 Persistent state and memory systems for AI agents
 
@@ -161,7 +171,7 @@ Persistent state and memory systems for AI agents
 
 ---
 
-## Part 12: Event-Driven Architecture using Kafka and Dapr (Chapters 53-54)
+## Part 13: Event-Driven Architecture using Kafka and Dapr (Chapters 53-54)
 
 Distributed systems: event-driven patterns and microservices
 
@@ -172,7 +182,7 @@ Distributed systems: event-driven patterns and microservices
 
 ---
 
-## Part 13: Stateful Agents using Dapr Actors and Dapr Workflows (Chapters 55-56)
+## Part 14: Stateful Agents using Dapr Actors and Dapr Workflows (Chapters 55-56)
 
 Advanced agent patterns: stateful systems and durable workflows
 
@@ -217,4 +227,4 @@ This document provides chapter titles and topics. For exact file paths, naming c
 5. Match the title exactly in frontmatter
 6. Reference `.claude/output-styles/chapters.md` for formatting guidelines
 
-**Version**: Updated for 13-part, 56-chapter structure aligned with constitution (2025-11-05)
+**Version**: Updated for Part 2, 3, 5 redesign: 14-part, 57-chapter structure with AI Orchestration chapter (2025-11-07)

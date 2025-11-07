@@ -71,7 +71,7 @@ This lesson guides you through all 6 steps.
 
 ---
 
-## Example 1: Real Project Setup—Start to Finish
+## Set Up a Real Project Structure
 
 Let's watch a realistic conversation where you and your AI set up a Python project from scratch.
 
@@ -178,7 +178,7 @@ requests        2.31.0
 
 ---
 
-## Example 2: Real Error—Encountering Problems
+## Encounter and Interpret Real Errors
 
 Now let's test the project and encounter a realistic error.
 
@@ -219,7 +219,7 @@ Let me modify the code to handle this more gracefully."
 
 ---
 
-## Example 3: Troubleshooting—Fixing the Error
+## Debug and Fix Errors with AI Guidance
 
 Let's fix the code to handle errors better.
 
@@ -277,7 +277,7 @@ Response: {'cod': '401', 'message': 'Invalid API key. Please see http://openweat
 
 ---
 
-## Example 4: Integration—Working Across All Concepts
+## Integrate All Concepts in a Real Workflow
 
 Now let's add complexity that integrates everything you've learned.
 

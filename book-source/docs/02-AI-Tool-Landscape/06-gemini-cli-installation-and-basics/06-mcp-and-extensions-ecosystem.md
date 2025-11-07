@@ -1,15 +1,15 @@
 ---
-title: "When Your AI Needs More: MCP and Extensions"
+title: "MCP Servers & Business Workflows"
 chapter: 2
-lesson: 5
-estimated_time: "30 minutes"
+lesson: 6
+estimated_time: "45 minutes"
 learning_objectives:
   - "Understand MCP (Model Context Protocol) and why external system access matters for business"
-  - "Add MCP servers to Gemini CLI for web browsing and live documentation access"
-  - "Install Gemini CLI extensions that package useful capabilities"
+  - "Install and configure Playwright MCP for active web browsing"
+  - "Configure Context7 MCP for live API documentation access"
   - "Apply MCP-powered workflows to real competitive research and documentation tasks"
   - "Evaluate security risks when connecting AI to external systems"
-sidebar_position: 5
+sidebar_position: 6
 ---
 # When Your AI Needs More: MCP and Extensions
 

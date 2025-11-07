@@ -50,7 +50,7 @@ By the end of this lesson, you'll:
 
 ---
 
-## Example 1: Simple Pipe—Understanding Data Flow
+## Use Pipes to Filter Data
 
 Let's watch a conversation about finding specific files.
 
@@ -109,7 +109,7 @@ Output: Only Python files
 
 ---
 
-## Example 2: Building a Pipeline—Count Python Files
+## Chain Multiple Commands with Pipes
 
 Now let's make it more complex. You want to not just find Python files, but count them.
 
@@ -144,7 +144,7 @@ $ ls -la | grep ".py" | wc -l
 
 ---
 
-## Example 3: Finding Errors in Log Files
+## Search and Filter Log Files with Pipes
 
 Let's trace a more practical pipeline.
 
@@ -195,7 +195,7 @@ Each command transforms the data in some way:
 
 ---
 
-## Example 4: Complex Real-World Pipeline
+## Build Complex Pipelines for Real Problems
 
 Let's see a sophisticated pipeline that solves a real problem.
 

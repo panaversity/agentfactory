@@ -106,7 +106,9 @@ Both are **absolute paths** because they start with `/` or `~` and specify a com
 
 ---
 
-## Example 2: Navigate Using Relative Paths
+## Use `cd` to Navigate Into Subfolders (Relative Paths)
+
+Relative paths don't start with `/`. They navigate from where you currently are.
 
 **Step 1: You Try It**
 
@@ -171,7 +173,9 @@ By understanding paths—knowing exactly where your AI is—you prevent mistakes
 
 ---
 
-## Example 3: Going Up One Level With `..`
+## Use `cd ..` to Go Up One Level
+
+The special symbol `..` means "parent folder" (one level up from where you are).
 
 **Step 1: You Try It**
 

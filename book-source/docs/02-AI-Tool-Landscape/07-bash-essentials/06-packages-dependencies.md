@@ -49,7 +49,7 @@ By the end of this lesson, you'll:
 
 ---
 
-## Example 1: Installing a Python Package (pip)
+## Use `pip` to Install Python Packages
 
 Here's a conversation about installing a Python package.
 
@@ -99,7 +99,7 @@ That dialogue shows:
 
 ---
 
-## Example 2: Installing a Node.js Package (npm)
+## Use `npm` to Install Node.js Packages
 
 Let's see how it works for JavaScript/Node.js projects.
 
@@ -122,7 +122,7 @@ added 50 packages, and audited 51 packages in 2s
 
 ---
 
-## Example 3: Package Managers for Different Languages
+## Understanding Package Managers for Different Languages
 
 Different programming languages have different package managers.
 
@@ -170,7 +170,7 @@ You don't choose—each language has its standard manager. Python projects use p
 
 ---
 
-## Example 4: Verification—Confirming Installation
+## Verify Packages Are Installed Correctly
 
 After installing a package, you should verify it works.
 
