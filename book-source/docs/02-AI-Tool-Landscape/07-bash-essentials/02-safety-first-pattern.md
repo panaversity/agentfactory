@@ -216,6 +216,188 @@ $ rm -rf old-projects/
 
 ---
 
+## Exercise 1: Identify the Pattern in a REAL Dialogue
+
+Read this REAL dialogue from Gemini CLI and label which of the 5 steps are present. Which step is MISSING?
+
+---
+
+**You**: "I want to organize my Python files into a folder called `my-scripts`. Walk me through what you'd do, step by step."
+
+**Agent** (Step 2 - Explain): "Of course. First, I'll use the `glob` tool to find all Python files in the current directory. Next, I'll create the `my-scripts` directory. I'll use the `mkdir` command for this."
+
+**You** (Step 3 - Understand): "Okay, sounds good."
+
+**Agent** (Attempting Step 5): "I'll use the `mkdir` command..."
+
+[Agent encounters an error trying to execute directly]
+
+**Agent** (Recovering): "My apologies, I misspoke. It appears I don't have the ability to directly create directories or move files. However, I can guide you through the process. First, you'll need to create the `my-scripts` directory. You can do this by running:
+
+```bash
+mkdir my-scripts
+```
+
+Let me know when you've done that, and I'll provide the commands to move the Python files."
+
+---
+
+**Which steps are present?**
+- Step 1 (Ask): ✓ Yes, you asked to organize files
+- Step 2 (Explain): ✓ Yes, agent explained the plan
+- Step 3 (Understand): ✓ Yes, you said "sounds good"
+- Step 4 (Verify): ✗ **MISSING** — You didn't ask clarifying questions before agent tried to execute
+- Step 5 (Execute): ⚠ Attempted but failed — Agent tried to execute but discovered a limitation mid-process
+
+**What's the problem with skipping Step 4?**
+
+You didn't ask:
+- "Will this move ALL `.py` files, including test files I don't want moved?"
+- "What if some `.py` files are in subfolders—will this affect them?"
+- **Most importantly**: "Can you actually execute these commands directly on my system, or will I need to run them?"
+
+**The agent hit a limitation and had to ask YOU to run commands manually.** If you'd asked Step 4 questions first, you would have learned this upfront instead of waiting and being disappointed.
+
+**Better dialogue WITH Step 4 questions**:
+
+> **You** (Step 4): "Before we start, I have a few questions:
+> 1. Will this move EVERY `.py` file, or just ones in the current folder?
+> 2. What about Python files in subfolders?
+> 3. Can you actually execute these commands directly, or will I need to run them?"
+
+> **Agent**: "Great questions. `mv *.py` only moves files in the current folder, not subfolders. For nested files, I'd need `find . -name "*.py" -exec mv {} my-scripts/ \;`. And regarding execution—I actually can't directly create directories or move files on your system. You'll need to run these commands yourself."
+
+> **You**: "Got it. So you guide me through the commands, and I execute them. That makes sense. Let's proceed."
+
+**By asking Step 4 questions, you discovered the agent's limitations early and set realistic expectations.** Real work with AI is collaborative—the agent shows you what to do, you execute it, and you both verify the results together.
+
+---
+
+## Exercise 2: Write Clarifying Questions
+
+Here's an operation your AI suggests. You're at Step 4 (Verify). Write 3 clarifying questions you should ask BEFORE your AI executes the command.
+
+---
+
+**AI Suggests**: "I'll reorganize your project structure by renaming folders and moving files around."
+
+**Write 3 questions you should ask**:
+
+1. (Example answer): "Which folders are you planning to rename, and what are the new names? Show me the before and after."
+
+2. Your question:
+
+3. Your question:
+
+4. Your question:
+
+---
+
+**Good questions to ask might include**:
+- "Show me exactly which folders you'll rename and what the new names are."
+- "How will this affect any existing code or imports that reference the old folder names?"
+- "Can I undo this if it breaks something?"
+- "Will this affect any configuration files or scripts that reference the old paths?"
+- "How long will this take, and will I be able to work while you're doing it?"
+
+**Bad questions (not safety-focused)**:
+- "Why did you choose this structure?" ← Philosophical, not safety
+- "Is this the best way?" ← Subjective
+
+---
+
+## Exercise 3: Build the Full Pattern
+
+You want to accomplish this: **"Create backup of my code before I make changes"**
+
+Write how the 5-step pattern should play out. What should happen at each step?
+
+---
+
+**Step 1 - You Ask**:
+> Your request in plain English:
+
+**Step 2 - Agent Explains**:
+> What should the agent tell you?
+
+**Step 3 - You Understand**:
+> What would you say to confirm?
+
+**Step 4 - You Verify**:
+> What questions should you ask?
+
+**Step 5 - Agent Executes**:
+> What should happen?
+
+---
+
+**Model Answer**:
+
+**Step 1**: "Make a backup of my entire project code. I want to be able to go back to this version if something breaks."
+
+**Step 2**: "I'll create a timestamped folder like `project-backup-2025-11-02`, copy all your code files into it, and verify the copy completed successfully. I won't touch your original files."
+
+**Step 3**: "Yes, I understand. You're creating a copy, not moving anything. I can still work with my original code."
+
+**Step 4**:
+- "Which files and folders will you copy? Will you include hidden configuration files?"
+- "How big will the backup be? Is there enough disk space?"
+- "If I need to restore from this backup later, how would I do that?"
+
+**Step 5**: Agent executes the copy commands, shows the backup was created, and confirms success.
+
+---
+
+## Assessment
+
+### Formative Check (During Lesson)
+
+Answer these questions to check your understanding:
+
+1. **What are the 5 steps in order?**
+   - A) Ask, Explain, Understand, Verify, Execute
+   - B) Ask, Verify, Explain, Understand, Execute
+   - C) Ask, Execute, Verify, Explain, Understand
+   - D) Execute, Ask, Explain, Understand, Verify
+
+2. **Which step is MOST important to never skip?**
+   - A) Ask (because you need to make a clear request)
+   - B) Explain (because you need to understand the plan before executing)
+   - C) Verify (because you need to ask safety questions)
+   - D) All are equally important
+
+3. **In Exercise 1, what problem did we catch by using Step 4?**
+   - A) The AI doesn't know how to organize files
+   - B) The command would move all files, including nested files the user might not want moved
+   - C) The AI can't create folders
+   - D) The user asked the wrong question
+
+4. **When should you ask Step 4 (Verify) questions?**
+   - A) During Step 2, while the agent is explaining
+   - B) After Step 3, before the agent executes
+   - C) After the agent executes, if something went wrong
+   - D) You shouldn't ask questions; just trust the AI
+
+### Summative Assessment (Practice with AI)
+
+Follow the 5-step pattern in a real conversation with your AI tool:
+
+1. Ask your AI to help you with a **file organization task** (create folders, move files, backup data—something real from your own work)
+2. Have your AI explain the plan in detail
+3. Confirm you understand
+4. Ask at least 3 clarifying questions
+5. Only after all 4 steps, have your AI execute
+
+**Success criteria**:
+- You explicitly go through all 5 steps
+- Your Step 4 questions address safety concerns (can I undo? what will it affect? etc.)
+- You demonstrate understanding by asking thoughtful follow-up questions
+- You don't skip any steps, even if it feels like "extra work"
+
+The pattern itself is more important than the specific task. You're building a habit that will protect you in every bash operation going forward.
+
+---
+
 ## Try With AI: Real Examples from Gemini
 
 **Tool**: Gemini CLI, Claude Code, ChatGPT Code Interpreter, or your preferred AI tool
@@ -267,5 +449,45 @@ Here's what REAL dialogues look like. Try these with your AI tool and see how yo
 > Please tell me what criteria I should use to identify the files that should be deleted. For example, "delete all files last modified before today"."
 
 **Notice**: Gemini asked YOU to clarify what "old" means. **This is the agent asking Step 4 questions on your behalf.** You still get to decide safety parameters before anything happens.
+
+---
+
+### Real Example 3: File Organization (Agent Hit Limitations)
+
+**Your Prompt**: "I want to organize my Python files into a folder called `my-scripts`. Walk me through what you'd do, step by step."
+
+**What Actually Happened** (from real Gemini):
+
+> Gemini: "Of course. First, I'll use the `glob` tool to find all Python files in the current directory. Next, I'll create the `my-scripts` directory..."
+>
+> [Agent tried to execute `mkdir` but encountered an error]
+>
+> "My apologies, I misspoke. It appears I don't have the ability to directly create directories or move files. However, I can guide you through the process. First, you'll need to create the `my-scripts` directory. You can do this by running:
+>
+> ```bash
+> mkdir my-scripts
+> ```
+>
+> Let me know when you've done that, and I'll provide the commands to move the Python files."
+
+**Notice**: This is REAL. The agent tried, hit a limitation, and then provided guidance. **It acknowledged the limitation transparently.** This teaches you that agents are tools you supervise, not magic executors.
+
+---
+
+### Your Task: Compare Real vs. Textbook
+
+Go try these real prompts with your AI tool:
+
+1. **"Back up my project. Walk me through the steps before executing anything."**
+2. **"I want to delete old code files. Explain your approach and ask me what 'old' means."**
+3. **"Organize my Python files. First tell me if you can execute commands directly or if I'll need to run them."**
+
+**What to Notice**:
+- Does your AI ask clarifying questions like the real examples?
+- Does it try to execute, or does it wait for your approval?
+- Does it acknowledge limitations transparently?
+- Does it ask YOU to run commands, or does it claim to run them for you?
+
+**The Key Insight**: Real AI collaboration is messy. Agents ask questions, hit limitations, and need your input. That's not a bug—it's how you stay safe. By working through this dialogue pattern, you learn to supervise AI work effectively.
 
 ---

@@ -20,45 +20,28 @@ Let's get started.
 
 ## Prerequisites: What You Need Before Installing
 
-Check these before you begin:
+Before we begin, verify you have the following:
 
-### 1. Terminal Access
-
+**1. Terminal Access**
 - **Windows**: Command Prompt, PowerShell, or Windows Terminal
-  - Press `Win + R`, type `cmd`, press Enter
-- **macOS**: Terminal app
-  - Press `Cmd + Space`, type "Terminal", press Enter
-- **Linux**: Any terminal emulator
-  - Usually `Ctrl + Alt + T`
+- **macOS**: Terminal app (Applications → Utilities → Terminal)
+- **Linux**: Any terminal emulator (GNOME Terminal, Konsole, etc.)
 
-### 2. Node.js 18+ (Required)
+**2. Claude Account** (one of the following):
+- **Option A**: Claude.ai subscription (Pro or free tier)
+  - Sign up at: https://claude.ai
+  - You'll use this account to authenticate Claude Code
+- **Option B**: Claude Console account with API credits
+  - Create account at: https://console.anthropic.com
+  - Requires payment method for API usage
 
-**Check if you have it**:
-```bash
-node --version
-```
+**3. Node.js 18+ (for NPM installation method)**
+- Check if installed: `node --version`
+- If not installed: https://nodejs.org (download LTS version)
 
-**Expected output**: `v18.x.x` or higher
-
-**If not installed**:
-- Download from: https://nodejs.org (choose LTS version)
-- **Windows**: Run the .msi installer
-- **macOS**: Run the .pkg installer OR use `brew install node`
-- **Linux**: Use package manager (`sudo apt install nodejs` or equivalent)
-
-**Verify npm is also installed**:
-```bash
-npm --version
-```
-
-### 3. Claude Account (Choose One)
-
-- **Option A**: Claude.ai account (free or Pro)
-  - Sign up: https://claude.ai
-  - Most common for individual users
-- **Option B**: Claude Console account (API credits)
-  - Sign up: https://console.anthropic.com
-  - Requires payment method
+**4. Internet Connection**
+- Needed for initial download and authentication
+- Claude Code requires connection to communicate with Claude AI
 
 ---
 
