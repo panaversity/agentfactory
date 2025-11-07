@@ -1,4 +1,6 @@
 {
+  "alwaysThinkingEnabled": false,
+  "model": "haiku",
   "permissions": {
     "allow": [
       "Bash(mkdir:*)",
