@@ -63,7 +63,7 @@ Two years ago, if you wanted to build a billion-dollar software company, you nee
 
 Today, the playbook is broken. And that's your opportunity.
 
-Consider what's now becoming possible: A solo developer—working with AI coding agents like Claude Code—could potentially orchestrate thousands of specialized AI agents solving problems across multiple vertical markets simultaneously. No traditional software company with 100+ employees could coordinate that many parallel workflows. No hiring process could find talent that fast. No IT infrastructure could scale that efficiently.
+Consider what's now becoming possible: A solo developer—working with AI coding agents like Claude Code—could potentially orchestrate teams of specialized AI agents solving problems across multiple vertical markets simultaneously. No traditional software company with 100+ employees could coordinate that many parallel workflows. No hiring process could find talent that fast. No IT infrastructure could scale that efficiently.
 
 This isn't science fiction. The technical capabilities exist today. Solo developers are already building and deploying AI agent systems that would have required entire engineering teams just two years ago. The path from "possible" to "proven at scale" is measured in months, not years.
 
@@ -105,7 +105,7 @@ Use your AI companion tool set up (e.g., ChatGPT web, Claude Code, Gemini CLI), 
 
 ### Prompt 1: Validate The Opportunity Claims
 ```
-This lesson talks about solo developers orchestrating thousands of AI agents across multiple markets. Help me understand: What's real today vs. what's still emerging? What makes this possible NOW that wasn't possible 5 years ago? Explain in simple terms—I don't have a business background.
+This lesson talks about solo developers orchestrating teams of AI agents across multiple markets. Help me understand: What's real today vs. what's still emerging? What makes this possible NOW that wasn't possible 5 years ago? Explain in simple terms—I don't have a business background.
 ```
 
 **Expected outcome**: Clear understanding of current AI capabilities vs. near-future potential.
