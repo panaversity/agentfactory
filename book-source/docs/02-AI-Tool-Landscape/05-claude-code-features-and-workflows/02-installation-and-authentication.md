@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: "Installing and Authenticating Claude Code"
+duration: "25-30 min"
 ---
 
 # Installing and Authenticating Claude Code
@@ -19,40 +20,60 @@ Let's get started.
 
 ## Prerequisites: What You Need Before Installing
 
-Before we begin, verify you have the following:
+Check these before you begin:
 
-**1. Terminal Access**
+### 1. Terminal Access
+
 - **Windows**: Command Prompt, PowerShell, or Windows Terminal
-- **macOS**: Terminal app (Applications → Utilities → Terminal)
-- **Linux**: Any terminal emulator (GNOME Terminal, Konsole, etc.)
+  - Press `Win + R`, type `cmd`, press Enter
+- **macOS**: Terminal app
+  - Press `Cmd + Space`, type "Terminal", press Enter
+- **Linux**: Any terminal emulator
+  - Usually `Ctrl + Alt + T`
 
-**2. Claude Account** (one of the following):
-- **Option A**: Claude.ai subscription (Pro or free tier)
-  - Sign up at: https://claude.ai
-  - You'll use this account to authenticate Claude Code
-- **Option B**: Claude Console account with API credits
-  - Create account at: https://console.anthropic.com
-  - Requires payment method for API usage
+### 2. Node.js 18+ (Required)
 
-**3. Node.js 18+ (for NPM installation method)**
-- Check if installed: `node --version`
-- If not installed: https://nodejs.org (download LTS version)
+**Check if you have it**:
+```bash
+node --version
+```
 
-**4. Internet Connection**
-- Needed for initial download and authentication
+**Expected output**: `v18.x.x` or higher
+
+**If not installed**:
+- Download from: https://nodejs.org (choose LTS version)
+- **Windows**: Run the .msi installer
+- **macOS**: Run the .pkg installer OR use `brew install node`
+- **Linux**: Use package manager (`sudo apt install nodejs` or equivalent)
+
+**Verify npm is also installed**:
+```bash
+npm --version
+```
+
+### 3. Claude Account (Choose One)
+
+- **Option A**: Claude.ai account (free or Pro)
+  - Sign up: https://claude.ai
+  - Most common for individual users
+- **Option B**: Claude Console account (API credits)
+  - Sign up: https://console.anthropic.com
+  - Requires payment method
+
+### 4. Internet Connection
+
+- Needed for installation and authentication
 - Claude Code requires connection to communicate with Claude AI
 
 ---
 
-## Installation: Node.js + NPM
+## Installation: Choose Your Method
 
-Claude Code installs easily via Node.js package manager (npm). This is the recommended path - it works consistently across Windows, macOS, and Linux.
+**Recommended**: NPM installation (works on all platforms)
 
----
+### Method 1: NPM Installation (All Platforms)
 
-## Installation
-
-### Step 1: Install Claude Code Globally
+**Step 1: Install Claude Code Globally**
 
 Open your terminal and run:
 
@@ -60,17 +81,16 @@ Open your terminal and run:
 npm install -g @anthropic-ai/claude-code
 ```
 
-**What this does**: Downloads and installs Claude Code globally on your system, making it accessible from any directory.
+**What this does**: Downloads and installs Claude Code globally, making it accessible from any directory.
 
-For macOs/Linux you can use:
+**Common issue on macOS/Linux**: Permission errors
 
+**If you see `EACCES` permission error**:
 ```bash
-curl -fsSL https://claude.ai/install.sh | bash
+sudo npm install -g @anthropic-ai/claude-code
 ```
 
-### Step 2: Verify Installation
-
-Check that Claude Code is installed correctly:
+**Step 2: Verify Installation**
 
 ```bash
 claude --version
@@ -81,7 +101,44 @@ claude --version
 2.0.30 (Claude Code)
 ```
 
-**If you see the version number**: ✅ Installation successful! Skip to [Authentication](#authentication-connecting-claude-code-to-your-account).
+✅ **If you see the version number**: Installation successful! Skip to [Authentication](#authentication-connecting-claude-code-to-your-account).
+
+❌ **If you see "command not found"**: Continue to [Troubleshooting](#troubleshooting-installation-issues) below.
+
+---
+
+### Method 2: Shell Script (macOS/Linux Only)
+
+**Alternative installation using curl**:
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+**What this does**: Downloads and runs installation script
+
+**After installation, verify**:
+```bash
+claude --version
+```
+
+---
+
+### Platform-Specific Notes
+
+**Windows**:
+- Use PowerShell or Windows Terminal (recommended over old Command Prompt)
+- May need to restart terminal after installation
+- If "command not found" persists, close and reopen terminal
+
+**macOS**:
+- May need to grant terminal permissions in System Preferences → Security & Privacy
+- If using Homebrew for Node.js, ensure `/opt/homebrew/bin` is in your PATH
+
+**Linux**:
+- May need `sudo` for npm global install
+- Check that `~/.npm-global/bin` or `/usr/local/bin` is in PATH
+- Restart terminal after installation
 
 ## Authentication: Connecting Claude Code to Your Account
 
@@ -150,21 +207,125 @@ claude "Hello! Can you confirm Claude Code is working?"
 
 ---
 
-## If Installation or Authentication Fails
+## Troubleshooting: Installation Issues
 
-**Most common issues and quick fixes:**
+### Issue 1: "command not found: claude" (After Installation)
 
-**"command not found" after npm install**:
-- Close and reopen your terminal
-- Or: `export PATH="$(npm config get prefix)/bin:$PATH"`
+**Cause**: npm global binaries not in PATH
 
-**Browser doesn't open for authentication**:
-- Check your internet connection
-- Try again with `[command to authenticate - phase 2 will confirm correct syntax]`
+**Solution (macOS/Linux)**:
+```bash
+export PATH="$(npm config get prefix)/bin:$PATH"
+```
 
-**Not sure what went wrong?**:
-- Check official docs: https://docs.claude.com/en/docs/claude-code/troubleshooting
-- Or ask your AI pair programmer for help debugging the error message
+**Solution (Windows - PowerShell)**:
+```powershell
+$env:Path += ";$(npm config get prefix)"
+```
+
+**Permanent fix**: Add to shell profile (`.bashrc`, `.zshrc`, or PowerShell profile)
+
+**Verify**:
+```bash
+claude --version
+```
+
+---
+
+### Issue 2: "EACCES: permission denied" (npm install)
+
+**Cause**: npm trying to write to system directory without permissions
+
+**Solution 1 (Quick - use sudo)**:
+```bash
+sudo npm install -g @anthropic-ai/claude-code
+```
+
+**Solution 2 (Better - change npm global directory)**:
+```bash
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
+export PATH=~/.npm-global/bin:$PATH
+npm install -g @anthropic-ai/claude-code
+```
+
+---
+
+### Issue 3: "node: not found" (Node.js not installed)
+
+**Cause**: Node.js not installed or not in PATH
+
+**Diagnostic command**:
+```bash
+which node
+node --version
+```
+
+**Solution**: Install Node.js
+- Download from: https://nodejs.org
+- Verify after install: `node --version`
+
+---
+
+### Issue 4: npm install fails with network error
+
+**Cause**: Network/firewall blocking npm registry
+
+**Diagnostic**:
+```bash
+npm ping
+```
+
+**Solutions**:
+1. Check internet connection
+2. Try different network (not corporate VPN)
+3. Configure npm proxy if behind firewall:
+```bash
+npm config set proxy http://proxy.company.com:8080
+npm config set https-proxy http://proxy.company.com:8080
+```
+
+---
+
+### Issue 5: Installation succeeds but claude command behaves strangely
+
+**Cause**: Multiple versions or conflicting installations
+
+**Diagnostic**:
+```bash
+which claude
+npm list -g @anthropic-ai/claude-code
+```
+
+**Solution**: Clean reinstall
+```bash
+npm uninstall -g @anthropic-ai/claude-code
+npm cache clean --force
+npm install -g @anthropic-ai/claude-code
+```
+
+---
+
+### Issue 6: "Unsupported platform" error
+
+**Cause**: Old Node.js version or incompatible OS
+
+**Diagnostic**:
+```bash
+node --version
+```
+
+**Solution**:
+- Ensure Node.js 18+ (`node --version` should show v18 or higher)
+- Update Node.js if needed
+- Check OS compatibility (Windows 10+, macOS 10.15+, recent Linux)
+
+---
+
+**Still stuck?**
+- Official docs: https://docs.claude.com/en/docs/claude-code/troubleshooting
+- Check GitHub issues: https://github.com/anthropics/claude-code/issues
+- Ask your AI pair programmer: "I'm getting this error during Claude Code installation: [paste error]. How do I fix it?"
 
 ---
 
@@ -178,6 +339,244 @@ claude "Hello! Can you confirm Claude Code is working?"
 - How does it feel to have an AI assistant accessible directly from your terminal?
 
 **If you're still troubleshooting**: Don't get discouraged. Installation challenges are normal, especially across different platforms and environments. Work through the troubleshooting section systematically, and don't hesitate to seek help from the community resources listed above.
+
+---
+
+## Your First Task: See Claude Code in Action
+
+**Congratulations!** 🎉 Claude Code is installed and authenticated. Now let's use it for something real.
+
+**Goal**: Complete a simple coding task to see immediate value
+**Time**: 5-10 minutes
+
+---
+
+### Option A: Debug a Python Script (If you know Python)
+
+**Step 1: Create a sample file**
+
+Create a file called `calculator.py` with this intentionally buggy code:
+
+```python
+# calculator.py - Simple calculator with a bug
+
+def add_numbers(a, b):
+    return a + b
+
+def multiply_numbers(a, b):
+    return a * b
+
+def divide_numbers(a, b):
+    return a / b  # Bug: no zero check!
+
+# Test the calculator
+print("10 + 5 =", add_numbers(10, 5))
+print("10 * 5 =", multiply_numbers(10, 5))
+print("10 / 5 =", divide_numbers(10, 5))
+print("10 / 0 =", divide_numbers(10, 0))  # This will crash!
+```
+
+**Step 2: Ask Claude Code to find and fix the bug**
+
+```bash
+claude "Review calculator.py and fix any bugs. Explain what was wrong."
+```
+
+**What Claude Code will do**:
+1. Read the file
+2. Identify the division-by-zero bug
+3. Explain the issue
+4. Offer to fix it with proper error handling
+
+**Expected outcome**: Bug fixed with zero-check added
+
+---
+
+### Option B: Generate Documentation (If you prefer JavaScript)
+
+**Step 1: Create a sample file**
+
+Create `api.js`:
+
+```javascript
+// api.js - Simple API functions (no docs)
+
+function fetchUser(userId) {
+  return fetch(`https://api.example.com/users/${userId}`)
+    .then(res => res.json());
+}
+
+function createPost(title, content, authorId) {
+  return fetch('https://api.example.com/posts', {
+    method: 'POST',
+    body: JSON.stringify({ title, content, authorId })
+  }).then(res => res.json());
+}
+
+function deletePost(postId) {
+  return fetch(`https://api.example.com/posts/${postId}`, {
+    method: 'DELETE'
+  });
+}
+```
+
+**Step 2: Ask Claude Code to generate documentation**
+
+```bash
+claude "Add JSDoc comments to all functions in api.js. Include parameter types and return values."
+```
+
+**Expected outcome**: Professional documentation added to all functions
+
+---
+
+### Option C: Just Explore (If you're still learning)
+
+**Ask Claude Code to introduce itself**:
+
+```bash
+claude "I just installed you! Give me 3 simple tasks I can ask you to do right now to understand what you're capable of. Make them beginner-friendly."
+```
+
+**Expected outcome**: Claude suggests 3 safe, simple tasks you can try
+
+---
+
+### What You've Accomplished
+
+✅ **Installation complete**: Claude Code is installed on your system
+✅ **Authentication working**: You're connected to Claude AI
+✅ **First task successful**: You've seen Claude Code in action
+✅ **Immediate value**: You've solved a real problem (or generated real code)
+
+**This took about 30 minutes total. You've crossed the bridge from "interesting concept" to "tool I can use."**
+
+---
+
+## Setting Up CLAUDE.md (Project Memory)
+
+**What is CLAUDE.md?**
+
+CLAUDE.md is a special file that acts as your project's "memory" for Claude Code. It contains:
+- Project overview and purpose
+- Coding standards and conventions
+- Common tasks and how to execute them
+- Important context Claude should remember
+
+**Think of it as**: Instructions you'd give a new team member joining your project.
+
+---
+
+### Creating Your First CLAUDE.md
+
+**Step 1: Create the file in your project root**
+
+```bash
+touch CLAUDE.md  # macOS/Linux
+```
+
+Or on Windows:
+```bash
+echo. > CLAUDE.md
+```
+
+**Step 2: Add basic project information**
+
+Open CLAUDE.md and add this template:
+
+```markdown
+# Project: [Your Project Name]
+
+## Overview
+[One paragraph: What does this project do?]
+
+## Purpose
+[Why does this project exist? What problem does it solve?]
+
+## Tech Stack
+- Language: [Python/JavaScript/etc.]
+- Framework: [if applicable]
+- Key Dependencies: [list 3-5 main dependencies]
+
+## Coding Standards
+- [Example: "Use descriptive variable names"]
+- [Example: "Add docstrings to all functions"]
+- [Example: "Follow PEP 8 for Python" or "Use ESLint rules for JavaScript"]
+
+## Common Tasks
+
+### Run the project
+```
+[command to run the project]
+```
+
+### Run tests
+```
+[command to run tests]
+```
+
+### Install dependencies
+```
+[command to install dependencies]
+```
+
+## Important Notes
+- [Any specific context Claude should remember]
+- [Example: "Always use async/await, never callbacks"]
+- [Example: "Database migrations live in /migrations folder"]
+```
+
+**Step 3: Tell Claude Code to read it**
+
+```bash
+claude "Read CLAUDE.md and summarize what you learned about this project."
+```
+
+**Expected outcome**: Claude confirms it understands your project context
+
+---
+
+### Why CLAUDE.md Matters
+
+**Without CLAUDE.md**: You repeat project context in every conversation
+- "This is a Python project using Flask..."
+- "We follow PEP 8..."
+- "Tests are in the /tests folder..."
+
+**With CLAUDE.md**: Claude remembers automatically
+- You: "Add tests for the new feature"
+- Claude: [already knows testing framework, where tests go, coding standards]
+
+**Time saved**: 2-5 minutes per Claude Code session
+
+---
+
+### When to Update CLAUDE.md
+
+Update it when:
+- ✅ You add a new major dependency
+- ✅ Coding standards change
+- ✅ Project structure changes
+- ✅ You notice Claude repeatedly asking for the same context
+
+**CLAUDE.md is iterative**: Start simple, add details as needed. It grows with your project.
+
+---
+
+## Verification Checklist
+
+**Your installation is complete when:**
+
+- ✓ `claude --version` shows a version number
+- ✓ `claude "Hello"` gets a response from Claude AI
+- ✓ You completed "Your First Task" successfully
+- ✓ CLAUDE.md exists in your project (or you know how to create it)
+- ✓ You understand the security boundaries (approval gates, diff review)
+- ✓ You know where to find troubleshooting help
+
+**If all checked**: You're ready to move to Lesson 3 (Core Commands)!
+
+**If any unchecked**: Review the relevant section above or ask for help in the Try With AI section below.
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: "The Claude Code Origin Story and Paradigm Shift"
-duration: "8-10 min"
+duration: "15-20 min"
 ---
 
 # The Claude Code Origin Story and Paradigm Shift
@@ -91,6 +91,15 @@ Most development happens in the terminal (or terminal-integrated editors like VS
 
 **5. Trust Through Transparency**
 Terminal commands are explicit and visible. When Claude Code proposes a file change, you see the exact diff before approving. When it runs a command, you see the output. This transparency builds trust.
+
+**6. Built-in Safety Mechanisms**
+Claude Code includes multiple layers of protection to keep you in control:
+- **Approval Gates**: Claude Code asks for your permission before making file changes or running commands—nothing happens without your explicit approval
+- **Diff Review**: See exactly what will change (line-by-line) before approving any file modification
+- **Reversibility**: All changes are trackable through Git; you can undo anything with version control
+- **Directory Sandboxing**: Claude Code operates only in the directory where you start it; it can't access system files unless you explicitly navigate there
+
+These safeguards mean you're always in the driver's seat. Claude Code is powerful, but *you* control what it does.
 
 ---
 

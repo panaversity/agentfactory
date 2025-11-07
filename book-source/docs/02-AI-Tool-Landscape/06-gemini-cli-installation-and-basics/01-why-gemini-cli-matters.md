@@ -134,6 +134,60 @@ Other forks are emerging for:
 
 None of this would be possible with Claude Code's proprietary model.
 
+## When to Use Gemini CLI vs. Other AI Tools
+
+Understanding where Gemini CLI fits in your toolkit is more important than picking "the best" tool. Different tools excel in different scenarios. Professional developers don't choose one AI tool and stick with it—they choose the right tool for the task.
+
+Here's a practical decision framework based on real development scenarios you'll encounter:
+
+### Decision Matrix: Scenarios and Tool Recommendations
+
+| Scenario | Best Tool | Why | Example Workflow |
+|----------|-----------|-----|------------------|
+| **Research & Documentation Deep Dive** | Gemini CLI | 1M token context window handles entire codebase + documentation in one shot. MCP servers (Lesson 5) connect you to external docs. | Read 50K-line codebase + API docs in single session, ask contextual questions without re-uploading. Saves 10+ prompts vs. chunking in Claude Code. |
+| **Rapid API Prototyping** | Claude Code | Web interface + persistent conversation = faster iteration for experimental work. "Here's what I tried... now let me fix..." flows naturally in chat. | Build three different API design approaches in 45 minutes through conversational exploration. Context resets less frequently than CLI. |
+| **Multi-file Code Refactoring** | Gemini CLI | MCP extensions + large context = refactor 8+ files simultaneously with full dependency awareness. Free tier makes large-scale work affordable. | Refactor authentication across 12 files: specify pattern once, Gemini understands full impact. Cost: $0. Same task in Claude Code: $3-5. |
+| **Production Deployment Review** | Claude Code | Enterprise support, SOC 2 compliance, predictable behavior. Required when security/reliability decisions go to management review. | Review Kubernetes manifests and infrastructure-as-code before team deployment. Vendor-backed validation required. |
+
+### Not Either/Or—Complementary Workflows
+
+**Tier 1 Specialists** (learning to code):
+- Start with Gemini CLI's free tier for daily practice
+- Use Claude Code for one-off complex explanations when confused
+- Result: Learn faster, spend nothing
+
+**Independent Contractors**:
+- Use Gemini CLI for client projects with large codebases (free tier scales to big projects)
+- Use Claude Code for exploratory client meetings and design discussions (better conversation UX)
+- Result: Provide better service, keep more profit
+
+**Team Leads**:
+- Gemini CLI for internal refactoring projects (no API cost, open source fits company values)
+- Claude Code for client-facing review (vendor support, compliance)
+- Result: Cost savings + professional credibility
+
+**Open Source Maintainers**:
+- Gemini CLI for core workflow (philosophical alignment with open source)
+- Fork or extend Gemini CLI via MCP (you own your customizations)
+- Result: Tool that evolves with project needs
+
+### The North Star: Right Tool for Each Task
+
+The emerging best practice in AI-native development isn't "pick the best tool and stick with it." It's:
+
+1. **Understand what each tool excels at** (this lesson)
+2. **Know your current task constraints** (budget, context size, team approval process)
+3. **Match tool to constraints** (not to brand loyalty)
+4. **Execute confidently** (context window size? Check. API budget? Check. Compliance? Check.)
+
+This skill—choosing the right tool for each situation—becomes increasingly valuable as the AI development landscape fragments. By 2026, you might regularly use Gemini CLI, Claude Code, Qwen Code, DeepSeek CLI, and others. The winners won't be the people who memorized one tool's commands. They'll be the people who can *rapidly* evaluate and switch tools based on task constraints.
+
+### Preparing for the Next Lesson
+
+In Lesson 2, you'll learn Gemini CLI's core commands and how to actually use it. You'll see why its command-line interface (despite being "less user-friendly" than Claude Code's web UI) creates powerful new possibilities for automation and scripting. You'll learn the exact syntax that turns Gemini CLI from an interesting tool into an **extension of your development environment**.
+
+---
+
 ## What This Means for Your Learning Journey
 
 As you work through this chapter, you're not just learning "another AI tool." You're learning how to work with an open, extensible platform that you can adapt to your needs.
@@ -141,7 +195,7 @@ As you work through this chapter, you're not just learning "another AI tool." Yo
 **The Skills You'll Build**:
 - Installing and configuring open source AI tools
 - Understanding how AI coding assistants work (since you can read the code)
-- Extending AI tools with custom integrations
+- Extending AI tools with custom integrations (MCP servers)
 - Choosing the right tool for different development contexts
 - Contributing to open source AI projects
 
@@ -151,6 +205,7 @@ As you work through this chapter, you're not just learning "another AI tool." Yo
 - Open source creates opportunities for customization
 - Different tools excel in different scenarios
 - The AI development landscape is rapidly evolving
+- Tool selection is a skill, not brand preference
 
 
 ## Try With AI
