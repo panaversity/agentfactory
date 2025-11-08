@@ -225,8 +225,8 @@ Now it's your turn to explore comparison operators with an AI co-teacher. These 
 Copy and ask your AI:
 
 > "I'm learning comparison operators in Python.
-> - What do ==, !=, >, <, >=, and <= do?
-> - Why does Python use == for comparison but = for assignment?
+> - What do `==`, `!=`, `>`, `<`, `>=`, and `<=` do?
+> - Why does Python use `==` for comparison but `=` for assignment?
 > - Show me examples of each operator with numbers and explain True/False results."
 
 **Expected Outcome**: You'll understand what each comparison operator does; clearly distinguish = (assignment) from == (equality test); see that comparisons produce True/False answers.
