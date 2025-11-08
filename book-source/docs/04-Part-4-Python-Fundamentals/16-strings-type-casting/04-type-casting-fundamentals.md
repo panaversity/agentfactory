@@ -147,11 +147,11 @@ print(f"Area: {area:.2f}")  # Formatted with f-string
 
 ---
 
-## When Conversions Fail: Handling ValueError
+## When Conversions Fail: Understanding Errors
 
-Not every string can convert to a number. This is where validation matters.
+Not every string can convert to a number. This is where validation-first thinking matters.
 
-#### Example 4.2: Invalid Conversions and Understanding Errors
+#### Example 4.2: Invalid Conversions and Validation Patterns
 
 ```python
 # This works: "42" is a valid integer string
@@ -159,21 +159,14 @@ num1: int = int("42")  # ✓ Success
 
 # This FAILS: Can't convert "3.14" directly to int (has decimal point)
 # num2: int = int("3.14")  # ✗ ValueError: invalid literal for int()
+# If you run this, Python stops with an error!
 
 # Workaround: Convert via float first
 num2: int = int(float("3.14"))  # ✓ "3.14" → 3.14 → 3 (decimal discarded)
 
 # This FAILS: "abc" is not a number
 # num3: int = int("abc")  # ✗ ValueError: invalid literal for int()
-
-# Understanding the error pattern
-invalid_str: str = "not-a-number"
-try:
-    result: int = int(invalid_str)
-except ValueError:
-    print(f"Error: Cannot convert '{invalid_str}' to integer")
-    # When you see this error, ask your AI:
-    # "How can I check if a string is valid before converting?"
+# Python can't convert letters to numbers!
 
 # Best practice: Validate BEFORE converting
 user_input: str = "25 apples"
@@ -181,18 +174,28 @@ if user_input.isdigit():  # Check if string contains only digits
     count: int = int(user_input)
     print(f"Count: {count}")
 else:
-    print(f"'{user_input}' is not a valid number")
+    print(f"'{user_input}' is not a valid number - skipping conversion")
+
+# Another example: Check for valid format
+age_input: str = "twenty-five"
+if age_input.isdigit():
+    age: int = int(age_input)
+    print(f"Age: {age}")
+else:
+    print(f"Cannot convert '{age_input}' to integer - please enter digits only")
 
 # Whitespace handling (very common with user input)
 user_age: str = " 42 "  # User accidentally added spaces
-cleaned_age: str = user_age.strip()  # Remove whitespace first
-age: int = int(cleaned_age)  # Now conversion works
-print(f"Age: {age}")
+cleaned_age: str = user_age.strip()  # Remove whitespace FIRST
+# Now check if it's valid
+if cleaned_age.isdigit():
+    age: int = int(cleaned_age)  # Now conversion works safely
+    print(f"Age: {age}")
 ```
 
 #### 🎓 Instructor Commentary
 
-> Errors are information. When a conversion fails with `ValueError`, it's not a failure—it's the type system protecting you. Ask your AI: "What went wrong and how do I validate my input better?" Error messages teach you about your data assumptions.
+> Errors are information. When a conversion fails with `ValueError`, Python is protecting you from bad data. Instead of fixing errors after they happen, validate FIRST with `.isdigit()`, `.strip()`, or other checks. Ask your AI: "How can I check if a string is valid before converting?" This validation-first approach prevents errors entirely.
 
 ---
 
@@ -310,13 +313,14 @@ if user_input.isdigit():
 else:
     print(f"'{user_input}' is not a valid integer")
 
-# Pattern 2: Use type hints to express intent
-def convert_age(age_str: str) -> int:
-    """Convert string to integer age, with validation."""
-    if age_str.strip().isdigit():
-        return int(age_str)
-    else:
-        raise ValueError(f"Cannot convert '{age_str}' to integer")
+# Pattern 2: Multi-step validation with cleaning
+age_input: str = "  25  "
+cleaned: str = age_input.strip()  # Step 1: Remove whitespace
+if cleaned.isdigit():               # Step 2: Check if valid digits
+    age: int = int(cleaned)         # Step 3: Convert (safe now)
+    print(f"Age: {age}")
+else:
+    print(f"Invalid age: '{age_input}' - please enter digits only")
 
 # Pattern 3: Validate after conversion
 raw_price: str = "19.99"
@@ -329,21 +333,17 @@ if isinstance(price, float):
 else:
     print("Conversion failed")
 
-# Pattern 4: Use isinstance() for flexible type checking
-def display_value(val: object) -> None:
-    """Display a value with its type."""
-    if isinstance(val, str):
-        print(f"String: {val}")
-    elif isinstance(val, int):
-        print(f"Integer: {val}")
-    elif isinstance(val, float):
-        print(f"Float: {val}")
-    else:
-        print(f"Unknown type: {type(val)}")
+# Pattern 4: Check type before using
+value: str = "hello"
+if isinstance(value, str):
+    length: int = len(value)
+    print(f"String length: {length}")
 
-display_value("hello")  # String: hello
-display_value(42)       # Integer: 42
-display_value(3.14)     # Float: 3.14
+# Another example: Checking multiple values
+data: str = "42"
+if isinstance(data, str) and data.isdigit():
+    number: int = int(data)
+    print(f"Converted: {number}")
 
 # Validation-first thinking: Always know what type you expect and verify you got it
 ```

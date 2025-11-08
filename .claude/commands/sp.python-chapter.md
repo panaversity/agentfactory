@@ -621,6 +621,37 @@ WAIT: User reviews tasks.md + analysis report
   │   - ✅ ONLY "Try With AI" section at end (4 prompts, Bloom's progression)
   │   - ❌ NO summaries, checklists, "what's next" after Try With AI
   │
+  │   CRITICAL PEDAGOGICAL ORDERING RULES (MUST ENFORCE):
+  │
+  │   **Rule 1: NO FORWARD REFERENCES WITHIN CHAPTER**
+  │   - ONLY use concepts/methods/functions taught in PREVIOUS lessons of this chapter
+  │   - NEVER use concepts from CURRENT or FUTURE lessons as examples
+  │   - Example VIOLATION: Using .upper() method in Lesson 1 when string methods are taught in Lesson 2
+  │   - Example CORRECT: In Lesson 1, use only string creation, indexing, len(), +, * (concepts taught IN Lesson 1)
+  │
+  │   **Rule 2: INTRODUCE BEFORE USE**
+  │   - Every method, function, or concept MUST be introduced BEFORE first use
+  │   - Introduction means: explain what it is, what it does, why it matters
+  │   - Example VIOLATION: Using len() without explaining it's a built-in function
+  │   - Example CORRECT: "Python provides built-in functions like len() that work on many types. len() counts characters in a string."
+  │
+  │   **Rule 3: DISTINGUISH BUILT-INS FROM METHODS**
+  │   - Built-in functions (len, type, isinstance): Explain they're "Python's built-in tools"
+  │   - Methods (.upper, .split, .join): Explain they're "actions strings can do"
+  │   - Always clarify: "len() is a built-in function, not a string method"
+  │
+  │   **Rule 4: CONCEPT PREREQUISITE VALIDATION**
+  │   Before writing any code example, ask:
+  │   - "Have all concepts in this example been taught in THIS lesson or PRIOR lessons?"
+  │   - "Do students have the prerequisite knowledge to understand this?"
+  │   - "Am I introducing anything new without explanation?"
+  │
+  │   **Rule 5: LESSON BOUNDARY ENFORCEMENT**
+  │   - Lesson 1 concepts ONLY available in Lesson 1
+  │   - Lesson 1 + Lesson 2 concepts available in Lesson 2
+  │   - Lesson 1-3 concepts available in Lesson 3
+  │   - Capstone: ALL chapter concepts available (but NO new concepts introduced)
+  │
   │   [Full context: spec, plan, tasks, MCP docs, AI-Native Learning pattern, CEFR levels]
   ├─ Apply: AI-Native Learning pattern, CEFR levels, validation-first approach, CoLearning throughout
   ├─ Create: book-source/docs/04-Part-4-Python-Fundamentals/[N]-[chapter-name]/
@@ -639,6 +670,20 @@ WAIT: User reviews tasks.md + analysis report
   ├─ Check: Lesson closure pattern (Try With AI ONLY, no summaries)
   ├─ Check: Part 4 language appropriateness, constitutional alignment
   ├─ Test: All code examples (Python 3.14+, modern type hints)
+  ├─ **NEW: Check: Pedagogical Ordering Compliance (CRITICAL)**
+  │   ├─ Scan each lesson for forward references:
+  │   │   - Lesson 1: Only uses concepts taught IN Lesson 1
+  │   │   - Lesson 2: Only uses Lesson 1 + Lesson 2 concepts
+  │   │   - Lesson N: Only uses Lessons 1 through N concepts
+  │   ├─ Verify all methods/functions introduced before use:
+  │   │   - First use of any method MUST have explanation
+  │   │   - Built-in functions (len, type, isinstance) explained as "Python's built-in tools"
+  │   │   - String methods (.upper, .split) explained as "actions strings can do"
+  │   ├─ Flag violations:
+  │   │   - CRITICAL: Using .upper() in Lesson 1 when methods taught in Lesson 2
+  │   │   - CRITICAL: Using len() without explaining it's a built-in function
+  │   │   - CRITICAL: Any concept used before introduction
+  │   └─ Report: List all forward references and missing introductions
   ├─ Report: Validation report with PASS/CONDITIONAL PASS/FAIL
   └─ Output: VALIDATION_REPORT_CHAPTER_[N].md
 
@@ -1102,6 +1147,11 @@ chapter_intelligence = {
 - ✅ Code quality validated (Python 3.14+, type hints)
 - ✅ CEFR proficiency levels appropriate
 - ✅ Constitutional compliance verified
+- ✅ **NEW: Pedagogical Ordering Compliance (CRITICAL)**
+  - No forward references within chapter (Lesson N only uses concepts from Lessons 1 to N)
+  - All methods/functions introduced before first use
+  - Built-in functions (len, type, isinstance) distinguished from methods (.upper, .split)
+  - Every new concept has explicit introduction ("what it is, what it does, why it matters")
 
 ---
 

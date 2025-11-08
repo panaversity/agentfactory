@@ -157,15 +157,15 @@ If you run that code, Python gives an error: `TypeError: 'str' object does not s
 ```python
 text: str = "hello"
 
-# Instead of changing text, create a new string
-uppercase_text: str = text.upper()  # Returns a NEW string: "HELLO"
+# Instead of changing text, create a NEW string by adding to it
+new_text: str = text + "!"  # Returns a NEW string: "hello!"
 
 # Original is unchanged
-print(f"Original: {text}")           # Still "hello"
-print(f"Uppercase: {uppercase_text}")  # New string: "HELLO"
+print(f"Original: {text}")     # Still "hello"
+print(f"New text: {new_text}") # New string: "hello!"
 ```
 
-Notice the key difference: `text.upper()` doesn't change `text`. It returns a brand new string. If you want to keep that new string, you must save it in a variable.
+Notice the key difference: when you use `+` to combine strings, you create a brand new string. The original `text` stays exactly as it was. If you want to keep that new string, you must save it in a variable.
 
 **Why does this matter?** Immutability makes strings predictable and safe. Once you create a string, you know it will never secretly change. This is a design choice Python makes to prevent bugs and confusion.
 
@@ -173,25 +173,25 @@ Notice the key difference: `text.upper()` doesn't change `text`. It returns a br
 
 **Specification (What We Want)**:
 - Create a string
-- Apply an operation (upper())
+- Apply an operation (concatenation)
 - Validate original is unchanged
 
 **Generated Code Example**:
 ```python
 original: str = "Python"
-modified: str = original.upper()
+modified: str = original + " Programming"
 
 # Validation: Check that original is still "Python"
 assert original == "Python", "Original should be unchanged"
-assert modified == "PYTHON", "Modified should be uppercase"
+assert modified == "Python Programming", "Modified should include added text"
 print(f"Original preserved: {original == 'Python'}")  # True
 ```
 
 **Validation Steps/Results**:
 - Created original string `"Python"` ✓
-- Applied `.upper()` method ✓
+- Applied concatenation operation with `+` ✓
 - Confirmed original is unchanged ✓
-- New string contains uppercase version ✓
+- New string contains combined text ✓
 
 #### 🎓 Instructor Commentary
 
@@ -230,16 +230,29 @@ last_char: str = word[-1]   # 'n' (last character)
 second_last: str = word[-2] # 'o' (second to last)
 ```
 
-**Counting characters** with `len()`:
+### Python's Built-in Functions: Introducing `len()`
+
+Python provides **built-in functions** that work on many different types of data. These are tools Python gives you automatically—you don't need to import or create them. They're just ready to use.
+
+One essential built-in function is **`len()`**, which counts items:
+- For strings: counts characters
+- For lists (you'll learn these later): counts items
+- For other types: counts elements
+
+**Using `len()` to count characters:**
 
 ```python
 word: str = "Python"
-length: int = len(word)  # Returns 6
+length: int = len(word)  # Returns 6 (six characters)
 
 print(f"The word '{word}' has {length} characters")
 ```
 
-Notice that `len()` returns an integer, not a string. This is important: `len()` counts characters and tells you the total, which is useful for validation and loops.
+**Important distinction**: `len()` is a **built-in function**, not a string method. Notice the syntax:
+- Built-in function: `len(word)` — you pass the string TO the function
+- String method (you'll learn these in Lesson 2): `word.method()` — you call the method ON the string
+
+Notice that `len()` returns an integer, not a string. This is important: `len()` counts characters and tells you the total, which is useful for validation and checking string size.
 
 ```python
 name: str = "Alice"
@@ -336,8 +349,8 @@ user_input: str = "hello"
 
 # Check BEFORE operating
 if isinstance(user_input, str):
-    uppercase: str = user_input.upper()
-    print(f"Uppercase version: {uppercase}")
+    greeting: str = "Welcome, " + user_input + "!"
+    print(f"Greeting: {greeting}")
 else:
     print("Input is not a string, cannot process")
 ```
@@ -353,9 +366,9 @@ This pattern—describe intent with type hints (`user_input: str`), then validat
 | Concept | What It Does | Example |
 |---------|-------------|---------|
 | **String Literals** | Text enclosed in quotes | `"hello"`, `'hello'`, `"""multiline"""` |
-| **Immutability** | Strings cannot be changed; operations return new strings | `text.upper()` creates new string, original unchanged |
+| **Immutability** | Strings cannot be changed; operations return new strings | `text + "!"` creates new string, original unchanged |
 | **Indexing** | Access a character by position (0-based) | `text[0]` gets first character; `text[-1]` gets last |
-| **len()** | Count characters in a string | `len("Python")` returns 6 |
+| **len()** | Built-in function that counts characters in a string | `len("Python")` returns 6 |
 | **Concatenation** | Join strings with `+` | `"Hello " + "World"` = `"Hello World"` |
 | **Repetition** | Repeat a string with `*` | `"*" * 5` = `"*****"` |
 | **isinstance()** | Check if something is a string | `isinstance("text", str)` returns True |
