@@ -7,7 +7,7 @@
 ## Content Quality
 
 - [x] No implementation details (languages, frameworks, APIs)
-  - **Status**: FAIL - Spec includes specific technologies (FastAPI, ChromaDB, LangChain, OpenAI ChatKit, GPT-4, SQLite, text-embedding-3-small)
+  - **Status**: FAIL - Spec includes specific technologies (FastAPI, ChromaDB, LangChain, OpenAI Agents SDK, ChatKit,, SQLite, gemini-embedding-001)
   - **Issue**: FR-016 through FR-018 specify exact tech stack. These should be deferred to the plan phase.
 
 - [x] Focused on user value and business needs
