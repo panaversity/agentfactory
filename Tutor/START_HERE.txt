@@ -1,0 +1,60 @@
+==============================================
+🧠 TUTORGPT PROJECT - START HERE
+==============================================
+
+Hi! I need your help building TutorGPT - an autonomous AI tutor agent.
+
+📂 Repository: https://github.com/MustafaAgentBuilder/ai-native-software-development
+📁 Project Directory: Tutor/
+
+🎯 YOUR MISSION:
+1. Read ONBOARDING_PROMPT.md (full instructions)
+2. Analyze entire repository
+3. Read all design documents (spec, plan, research, tasks)
+4. Identify gaps, mistakes, or improvements
+5. Help me code the implementation
+
+⚠️ CRITICAL: This is AGENT-FIRST architecture, NOT a static RAG pipeline!
+
+📚 KEY DOCUMENTS TO READ (in order):
+1. Tutor/.specify/memory/constitution.md - Project principles
+2. Tutor/CLAUDE.md - Development process
+3. Tutor/specs/001-tutorgpt-mvp/spec.md - What we're building
+4. Tutor/specs/001-tutorgpt-mvp/research.md - Tech research (47KB)
+5. Tutor/specs/001-tutorgpt-mvp/plan.md - Architecture (33KB)
+6. Tutor/specs/001-tutorgpt-mvp/tasks.md - 205 tasks (33KB)
+7. Tutor/specs/001-tutorgpt-mvp/data-model.md - Database & models
+8. Tutor/specs/001-tutorgpt-mvp/quickstart.md - Dev setup
+9. Tutor/ONBOARDING_PROMPT.md - FULL INSTRUCTIONS
+
+🧠 AGENT-FIRST PHILOSOPHY:
+TutorGPT Agent = Brain (makes decisions)
+12 Tools = Capabilities (agent chooses when to use)
+Supporting Services = Infrastructure (supports agent's tools)
+
+The agent autonomously decides:
+- When to search the book vs explain directly
+- When to provide examples vs analogies
+- When to quiz students vs continue teaching
+- When to slow down or speed up
+- When to celebrate progress
+
+❌ DON'T: Build static pipeline with hardcoded logic
+✅ DO: Build autonomous agent with decision-making intelligence
+
+📊 PROJECT STATS:
+- 205 tasks organized by agent capabilities
+- 12 autonomous tools for teaching
+- 107 book lessons to teach from
+- Tech: FastAPI, OpenAI Agents SDK, Gemini, ChromaDB, ChatKit
+
+🚀 AFTER READING, PROVIDE:
+1. Summary of what TutorGPT is
+2. Your understanding of agent-first architecture
+3. Analysis: what's good, what's missing, what needs fixing
+4. Questions before we start coding
+5. Recommended first task to implement
+
+READ ONBOARDING_PROMPT.md FOR COMPLETE INSTRUCTIONS!
+
+Let's build an autonomous AI tutor together! 🔥
