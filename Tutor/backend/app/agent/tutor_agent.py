@@ -93,8 +93,7 @@ class TutorGPTAgent:
     async def teach(
         self,
         student_message: str,
-        session_id: str = "default",
-        stream: bool = False
+        session_id: str = "default"
     ) -> str:
         """
         Teach a student by responding to their question autonomously.
@@ -110,7 +109,6 @@ class TutorGPTAgent:
         Args:
             student_message: The student's question or message
             session_id: Session ID for conversation persistence
-            stream: Whether to stream the response
 
         Returns:
             Agent's teaching response
@@ -132,8 +130,7 @@ class TutorGPTAgent:
         result = await Runner.run(
             self.agent,
             input=student_message,
-            session=session,
-            stream=stream
+            session=session
         )
 
         return result.final_output
