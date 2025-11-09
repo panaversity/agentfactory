@@ -2,7 +2,7 @@
 Authentication utilities.
 
 This module provides:
-- Password hashing and verification
+- Password hashing and verification using bcrypt directly
 - JWT token generation and validation
 - User authentication helpers
 """
@@ -10,11 +10,8 @@ This module provides:
 from datetime import datetime, timedelta
 from typing import Optional
 import os
-from passlib.context import CryptContext
+import bcrypt
 from jose import JWTError, jwt
-
-# Password hashing
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # JWT configuration
 SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-change-in-production")
@@ -24,7 +21,7 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # 7 days
 
 def hash_password(password: str) -> str:
     """
-    Hash a password using bcrypt.
+    Hash a password using bcrypt directly.
 
     Args:
         password: Plain text password
@@ -37,12 +34,15 @@ def hash_password(password: str) -> str:
         >>> print(hashed)
         $2b$12$...
     """
-    return pwd_context.hash(password)
+    # Generate salt and hash password
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(password.encode('utf-8'), salt)
+    return hashed.decode('utf-8')
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     """
-    Verify a password against a hash.
+    Verify a password against a hash using bcrypt directly.
 
     Args:
         plain_password: Plain text password to verify
@@ -58,7 +58,10 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
         >>> verify_password("wrongpassword", hashed)
         False
     """
-    return pwd_context.verify(plain_password, hashed_password)
+    return bcrypt.checkpw(
+        plain_password.encode('utf-8'),
+        hashed_password.encode('utf-8')
+    )
 
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
@@ -137,27 +140,28 @@ def get_user_id_from_token(token: str) -> Optional[str]:
     return payload.get("sub")
 
 
-def create_user_token(user_id: str, email: str) -> str:
+def create_user_token(user) -> str:
     """
     Create a JWT token for a user.
 
     Args:
-        user_id: User's unique ID
-        email: User's email address
+        user: User object with id and email attributes
 
     Returns:
         str: JWT token
 
     Example:
-        >>> token = create_user_token("user123", "ahmed@example.com")
+        >>> from app.models.user import User
+        >>> user = User(id="user123", email="ahmed@example.com")
+        >>> token = create_user_token(user)
         >>> payload = decode_access_token(token)
         >>> print(payload["sub"], payload["email"])
         user123 ahmed@example.com
     """
     return create_access_token(
         data={
-            "sub": user_id,
-            "email": email,
+            "sub": user.id,
+            "email": user.email,
             "type": "access"
         }
     )
