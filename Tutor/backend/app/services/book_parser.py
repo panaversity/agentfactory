@@ -314,13 +314,14 @@ class BookContentParser:
         topics = self._extract_topics(heading, content)
 
         # Build chunk metadata
+        # Convert topics list to comma-separated string (ChromaDB doesn't support list metadata)
         chunk_metadata = {
             **metadata,
             "chunk_index": section_idx * 100 + chunk_idx,
             "chunk_size": len(content.split()),
             "content_type": content_type,
-            "heading": heading,
-            "topics": topics
+            "heading": heading if heading else "",
+            "topics": ", ".join(topics) if topics else ""
         }
 
         return BookChunk(
