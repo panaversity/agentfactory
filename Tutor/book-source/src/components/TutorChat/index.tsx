@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
+import MarkdownMessage from './MarkdownMessage';
 import './styles.css';
 
 interface Message {
@@ -398,7 +399,13 @@ function TutorChatComponent() {
                 <div className="tutor-message-avatar">
                   {msg.type === 'user' ? '👤' : msg.type === 'system' ? 'ℹ️' : '🤖'}
                 </div>
-                <div className="tutor-message-content">{msg.content}</div>
+                <div className="tutor-message-content">
+                  {msg.type === 'agent' ? (
+                    <MarkdownMessage content={msg.content} />
+                  ) : (
+                    msg.content
+                  )}
+                </div>
               </div>
             ))}
             {connectionStatus === 'thinking' && (
