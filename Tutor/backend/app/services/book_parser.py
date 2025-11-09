@@ -297,8 +297,11 @@ class BookContentParser:
         chunk_idx: int
     ) -> BookChunk:
         """Create a BookChunk with proper ID and metadata."""
-        # Generate chunk ID: chunk_ch04_l01_s02_c03
-        chunk_id = f"chunk_ch{metadata['chapter_number']:02d}_l{metadata['lesson_number']:02d}_s{section_idx:02d}_c{chunk_idx:02d}"
+        # Generate chunk ID with file hash to ensure uniqueness across multiple files in same lesson
+        # Use hash of file path to create unique identifier
+        import hashlib
+        file_hash = hashlib.md5(metadata['file_path'].encode()).hexdigest()[:6]
+        chunk_id = f"chunk_ch{metadata['chapter_number']:02d}_l{metadata['lesson_number']:02d}_{file_hash}_s{section_idx:02d}_c{chunk_idx:02d}"
 
         # Detect content type
         content_type = "text"

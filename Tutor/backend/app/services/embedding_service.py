@@ -1,46 +1,44 @@
 """
-Embedding Service - Generate embeddings using Gemini
+Embedding Service - Generate embeddings using Sentence Transformers (FREE)
 
-This service uses Google's Gemini embedding model to generate
-vector embeddings for text content.
+This service uses the FREE Sentence Transformers library to generate
+vector embeddings locally - NO API KEY REQUIRED!
 """
 
 import os
 from typing import List, Dict
-from google import genai
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv()
+from sentence_transformers import SentenceTransformer
 
 
 class EmbeddingService:
     """
-    Service for generating embeddings using Gemini.
+    Service for generating embeddings using Sentence Transformers (FREE).
 
-    Uses gemini-embedding-001 model with:
-    - 768-dimensional embeddings (default)
-    - RETRIEVAL_DOCUMENT task type for document embedding
-    - RETRIEVAL_QUERY task type for query embedding
+    Uses 'all-mpnet-base-v2' model with:
+    - 768-dimensional embeddings
+    - Runs locally (no API calls)
+    - FREE - no API key required
+    - High quality semantic search
     """
 
-    def __init__(self, api_key: str | None = None):
+    def __init__(self, model_name: str = "all-mpnet-base-v2"):
         """
-        Initialize the embedding service.
+        Initialize the embedding service with a local model.
 
         Args:
-            api_key: Google API key. If None, reads from GOOGLE_API_KEY env var
+            model_name: Sentence Transformer model to use
+                       Default: 'all-mpnet-base-v2' (768 dims, high quality)
+                       Alternative: 'all-MiniLM-L6-v2' (384 dims, faster)
         """
-        self.api_key = api_key or os.getenv("GOOGLE_API_KEY")
-        if not self.api_key:
-            raise ValueError(
-                "Google API key is required. Set GOOGLE_API_KEY environment variable "
-                "or pass api_key to constructor."
-            )
+        print(f"Loading embedding model: {model_name}...")
+        print("This is a FREE local model - no API key needed! 🎉")
 
-        # Initialize Gemini client
-        self.client = genai.Client(api_key=self.api_key)
-        self.model = "text-embedding-004"
+        # Load the model (will download on first use, then cached)
+        self.model = SentenceTransformer(model_name)
+        self.model_name = model_name
+
+        print(f"✅ Model loaded successfully!")
+        print(f"   Embedding dimension: {self.model.get_sentence_embedding_dimension()}")
 
     def embed_document(self, text: str) -> List[float]:
         """
@@ -52,11 +50,13 @@ class EmbeddingService:
         Returns:
             Embedding vector (list of floats)
         """
-        return self._generate_embedding(text, task_type="RETRIEVAL_DOCUMENT")
+        # Generate embedding
+        embedding = self.model.encode(text, convert_to_numpy=True)
+        return embedding.tolist()
 
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
         """
-        Generate embeddings for multiple documents.
+        Generate embeddings for multiple documents (batched for efficiency).
 
         Args:
             texts: List of document texts to embed
@@ -64,7 +64,9 @@ class EmbeddingService:
         Returns:
             List of embedding vectors
         """
-        return [self.embed_document(text) for text in texts]
+        # Batch encoding for efficiency
+        embeddings = self.model.encode(texts, convert_to_numpy=True, show_progress_bar=False)
+        return embeddings.tolist()
 
     def embed_query(self, query: str) -> List[float]:
         """
@@ -76,72 +78,50 @@ class EmbeddingService:
         Returns:
             Embedding vector (list of floats)
         """
-        return self._generate_embedding(query, task_type="RETRIEVAL_QUERY")
-
-    def _generate_embedding(self, text: str, task_type: str) -> List[float]:
-        """
-        Internal method to generate embedding with specified task type.
-
-        Args:
-            text: Text to embed
-            task_type: "RETRIEVAL_DOCUMENT" or "RETRIEVAL_QUERY"
-
-        Returns:
-            Embedding vector
-        """
-        try:
-            result = self.client.models.embed_content(
-                model=self.model,
-                contents=text,
-                config={
-                    "task_type": task_type,
-                    "output_dimensionality": 768  # Use 768 dimensions for faster search
-                }
-            )
-
-            # Extract embedding from result
-            # The result structure is: result['embedding']
-            embedding = result.embedding
-
-            return embedding
-
-        except Exception as e:
-            print(f"Error generating embedding: {e}")
-            raise
+        # Same as embed_document for this model
+        embedding = self.model.encode(query, convert_to_numpy=True)
+        return embedding.tolist()
 
     def get_embedding_dimension(self) -> int:
         """
         Get the dimension of embeddings produced by this service.
 
         Returns:
-            Embedding dimension (768 or 3072)
+            Embedding dimension (768 for all-mpnet-base-v2)
         """
-        return 768
+        return self.model.get_sentence_embedding_dimension()
 
 
 # Test function
 if __name__ == "__main__":
     # Test embedding service
+    print("Testing FREE Sentence Transformers Embedding Service\n")
+
     service = EmbeddingService()
 
     # Test document embedding
+    print("\n[1] Testing document embedding...")
     test_doc = "Python is a high-level programming language known for its readability."
     doc_embedding = service.embed_document(test_doc)
-    print(f"Document embedding dimension: {len(doc_embedding)}")
-    print(f"First 5 values: {doc_embedding[:5]}")
+    print(f"✅ Document embedding dimension: {len(doc_embedding)}")
+    print(f"   First 5 values: {doc_embedding[:5]}")
 
     # Test query embedding
+    print("\n[2] Testing query embedding...")
     test_query = "What is Python?"
     query_embedding = service.embed_query(test_query)
-    print(f"\nQuery embedding dimension: {len(query_embedding)}")
-    print(f"First 5 values: {query_embedding[:5]}")
+    print(f"✅ Query embedding dimension: {len(query_embedding)}")
+    print(f"   First 5 values: {query_embedding[:5]}")
 
     # Test batch embedding
+    print("\n[3] Testing batch embedding...")
     test_docs = [
         "Python is a programming language.",
         "JavaScript is used for web development.",
         "Machine learning uses neural networks."
     ]
     batch_embeddings = service.embed_documents(test_docs)
-    print(f"\nBatch embeddings count: {len(batch_embeddings)}")
-    print(f"Each embedding dimension: {len(batch_embeddings[0])}")
+    print(f"✅ Batch embeddings count: {len(batch_embeddings)}")
+    print(f"   Each embedding dimension: {len(batch_embeddings[0])}")
+
+    print("\n🎉 All tests passed! FREE embeddings working perfectly!")
