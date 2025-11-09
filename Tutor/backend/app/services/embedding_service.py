@@ -40,7 +40,7 @@ class EmbeddingService:
 
         # Initialize Gemini client
         self.client = genai.Client(api_key=self.api_key)
-        self.model = "gemini-embedding-001"
+        self.model = "text-embedding-004"
 
     def embed_document(self, text: str) -> List[float]:
         """
