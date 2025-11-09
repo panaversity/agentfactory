@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TutorGPT WebSocket Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            margin-right: 10px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #5568d3;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .success {
+            background: #10b981;
+        }
+        .success:hover {
+            background: #059669;
+        }
+        .danger {
+            background: #ef4444;
+        }
+        .danger:hover {
+            background: #dc2626;
+        }
+        #status {
+            padding: 12px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-weight: 600;
+            text-align: center;
+        }
+        .status-connected {
+            background: #d1fae5;
+            color: #065f46;
+            border: 2px solid #10b981;
+        }
+        .status-disconnected {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 2px solid #ef4444;
+        }
+        .status-thinking {
+            background: #fef3c7;
+            color: #92400e;
+            border: 2px solid #f59e0b;
+        }
+        #messages {
+            margin-top: 20px;
+            max-height: 500px;
+            overflow-y: auto;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 15px;
+            background: #f9fafb;
+        }
+        .message {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .message-user {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+        }
+        .message-agent {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+        }
+        .message-error {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+        }
+        .message-meta {
+            font-size: 12px;
+            color: #666;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #e5e7eb;
+        }
+        .strong {
+            font-weight: 700;
+            color: #111;
+        }
+        pre {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 12px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 13px;
+        }
+        .instructions {
+            background: #f0f9ff;
+            border: 2px solid #3b82f6;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #1e40af;
+        }
+        .instructions ol {
+            margin-bottom: 0;
+        }
+        .instructions li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 TutorGPT WebSocket Test</h1>
+        <div class="subtitle">Test real-time chat connection with TutorGPT backend</div>
+
+        <div class="instructions">
+            <h3>📋 Quick Start Instructions:</h3>
+            <ol>
+                <li>Start the backend server: <code>uvicorn app.main:app --reload</code></li>
+                <li>Get your JWT token (signup/login via API at http://localhost:8000/docs)</li>
+                <li>Paste the token below and click "Connect"</li>
+                <li>Ask questions and get real-time responses!</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <label for="token">JWT Token:</label>
+            <input type="text" id="token" placeholder="Paste your JWT token here (get it from /api/auth/login)">
+        </div>
+
+        <div class="section">
+            <label for="chapter">Current Chapter (optional):</label>
+            <select id="chapter">
+                <option value="">-- Select Chapter --</option>
+                <option value="01-introducing-aidd">01 - Introducing AI-Driven Development</option>
+                <option value="02-ai-tool-landscape">02 - AI Tool Landscape</option>
+                <option value="03-claude-code">03 - Claude Code</option>
+                <option value="04-python">04 - Python</option>
+                <option value="05-advanced-python">05 - Advanced Python</option>
+                <option value="06-rag">06 - RAG</option>
+                <option value="07-agents">07 - Agents</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <button id="connectBtn" onclick="connect()" class="success">🔌 Connect</button>
+            <button id="disconnectBtn" onclick="disconnect()" class="danger" disabled>🔌 Disconnect</button>
+        </div>
+
+        <div id="status" class="status-disconnected">
+            ⚪ Disconnected
+        </div>
+
+        <div class="section">
+            <label for="message">Your Question:</label>
+            <input type="text" id="message" placeholder="Ask a question about AI-driven development..." disabled>
+        </div>
+
+        <div class="section">
+            <button id="sendBtn" onclick="sendMessage()" class="success" disabled>📤 Send Message</button>
+            <button onclick="clearMessages()">🗑️ Clear Chat</button>
+        </div>
+
+        <div id="messages"></div>
+    </div>
+
+    <script>
+        let ws = null;
+        let sessionId = null;
+
+        function updateStatus(text, className) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = text;
+            statusDiv.className = className;
+        }
+
+        function connect() {
+            const token = document.getElementById('token').value.trim();
+
+            if (!token) {
+                alert('Please enter your JWT token first!');
+                return;
+            }
+
+            // Create WebSocket connection
+            ws = new WebSocket(`ws://localhost:8000/api/ws/chat?token=${token}`);
+
+            ws.onopen = () => {
+                console.log('WebSocket connected');
+                document.getElementById('connectBtn').disabled = true;
+                document.getElementById('disconnectBtn').disabled = false;
+                document.getElementById('message').disabled = false;
+                document.getElementById('sendBtn').disabled = false;
+            };
+
+            ws.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                console.log('Message received:', data);
+
+                if (data.type === 'status') {
+                    if (data.status === 'connected') {
+                        updateStatus('🟢 Connected - ' + data.message, 'status-connected');
+                        addMessage('system', `✅ ${data.message}`, null);
+                    } else if (data.status === 'thinking') {
+                        updateStatus('🟡 Thinking...', 'status-thinking');
+                    } else if (data.status === 'ready') {
+                        updateStatus('🟢 Ready for next question', 'status-connected');
+                    }
+                }
+
+                if (data.type === 'response') {
+                    sessionId = data.session_id;
+                    addMessage('agent', data.response, {
+                        response_time: data.response_time_ms,
+                        session_id: data.session_id,
+                        timestamp: data.timestamp
+                    });
+                }
+
+                if (data.type === 'error') {
+                    updateStatus('🔴 Error - ' + data.error, 'status-disconnected');
+                    addMessage('error', data.error, null);
+                }
+            };
+
+            ws.onerror = (error) => {
+                console.error('WebSocket error:', error);
+                updateStatus('🔴 Connection error', 'status-disconnected');
+                addMessage('error', 'WebSocket connection error', null);
+            };
+
+            ws.onclose = () => {
+                console.log('WebSocket disconnected');
+                updateStatus('⚪ Disconnected', 'status-disconnected');
+                document.getElementById('connectBtn').disabled = false;
+                document.getElementById('disconnectBtn').disabled = true;
+                document.getElementById('message').disabled = true;
+                document.getElementById('sendBtn').disabled = true;
+                ws = null;
+            };
+        }
+
+        function disconnect() {
+            if (ws) {
+                ws.close();
+            }
+        }
+
+        function sendMessage() {
+            const message = document.getElementById('message').value.trim();
+            const chapter = document.getElementById('chapter').value;
+
+            if (!message) {
+                alert('Please enter a message!');
+                return;
+            }
+
+            if (!ws || ws.readyState !== WebSocket.OPEN) {
+                alert('Not connected! Please connect first.');
+                return;
+            }
+
+            // Add user message to chat
+            addMessage('user', message, null);
+
+            // Send to server
+            const payload = {
+                type: 'message',
+                message: message,
+                current_chapter: chapter || undefined,
+                session_id: sessionId || undefined
+            };
+
+            ws.send(JSON.stringify(payload));
+
+            // Clear input
+            document.getElementById('message').value = '';
+        }
+
+        function addMessage(type, content, meta) {
+            const messagesDiv = document.getElementById('messages');
+            const messageDiv = document.createElement('div');
+
+            let className = 'message';
+            let header = '';
+
+            if (type === 'user') {
+                className += ' message-user';
+                header = '<div class="strong">👤 You:</div>';
+            } else if (type === 'agent') {
+                className += ' message-agent';
+                header = '<div class="strong">🤖 TutorGPT:</div>';
+            } else if (type === 'error') {
+                className += ' message-error';
+                header = '<div class="strong">❌ Error:</div>';
+            } else {
+                header = '<div class="strong">ℹ️ System:</div>';
+            }
+
+            messageDiv.className = className;
+
+            let metaHtml = '';
+            if (meta) {
+                metaHtml = '<div class="message-meta">';
+                if (meta.response_time) {
+                    metaHtml += `⏱️ Response time: ${meta.response_time}ms | `;
+                }
+                if (meta.session_id) {
+                    metaHtml += `💬 Session: ${meta.session_id.substring(0, 20)}... | `;
+                }
+                if (meta.timestamp) {
+                    metaHtml += `🕐 ${new Date(meta.timestamp).toLocaleTimeString()}`;
+                }
+                metaHtml += '</div>';
+            }
+
+            messageDiv.innerHTML = header + '<div>' + escapeHtml(content) + '</div>' + metaHtml;
+            messagesDiv.appendChild(messageDiv);
+
+            // Scroll to bottom
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function clearMessages() {
+            document.getElementById('messages').innerHTML = '';
+            sessionId = null;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Allow sending message with Enter key
+        document.getElementById('message').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !document.getElementById('sendBtn').disabled) {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
