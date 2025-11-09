@@ -10,6 +10,19 @@ This is TRUE agentic behavior - tools define CAPABILITIES, the LLM decides STRAT
 from agents import function_tool
 from typing import Literal, Optional, List
 
+from app.services.rag_service import RAGService, RAGSearchRequest
+
+
+# Initialize RAG service (singleton pattern)
+_rag_service = None
+
+def get_rag_service() -> RAGService:
+    """Get or create the RAG service singleton."""
+    global _rag_service
+    if _rag_service is None:
+        _rag_service = RAGService()
+    return _rag_service
+
 
 @function_tool
 def search_book_content(
@@ -39,24 +52,58 @@ def search_book_content(
         - search_book_content("async programming", scope="chapter")
         - search_book_content("variables", scope="book")
     """
-    # TODO: Implement RAG search (will connect to ChromaDB + Gemini embeddings)
-    # For now, return mock response for testing
+    # Map scope to API format
+    scope_map = {
+        "lesson": "current_lesson",
+        "chapter": "current_chapter",
+        "book": "entire_book"
+    }
+    api_scope = scope_map.get(scope, "entire_book")
 
-    return f"""
-    [Book Content - Chapter {current_chapter or 'Unknown'}, Lesson {current_lesson or 'Unknown'}]
+    # Create RAG search request
+    request = RAGSearchRequest(
+        query=query,
+        scope=api_scope,
+        n_results=5,
+        current_chapter=current_chapter,
+        current_lesson=current_lesson
+    )
 
-    Found relevant content for query: "{query}"
+    try:
+        # Execute RAG search
+        rag_service = get_rag_service()
+        response = rag_service.search_sync(request)
 
-    Python is a high-level, interpreted programming language known for its readability
-    and versatility. It's widely used in AI development, web development, and automation.
+        # Format results for agent
+        formatted = f"Search Results ({scope} scope):\n\n"
 
-    Key features:
-    - Dynamic typing
-    - Extensive standard library
-    - Strong community support
+        if response.results:
+            for i, result in enumerate(response.results, 1):
+                formatted += f"[{i}] Score: {result.score:.2f}\n"
+                formatted += f"Chapter: {result.metadata.get('chapter_title', 'N/A')} ({result.metadata.get('chapter', 'N/A')})\n"
+                formatted += f"Lesson: {result.metadata.get('lesson_title', 'N/A')} ({result.metadata.get('lesson', 'N/A')})\n"
+                formatted += f"Heading: {result.metadata.get('heading', 'N/A')}\n"
+                formatted += f"\nContent:\n{result.content}\n"
+                formatted += f"\nSource: {result.metadata.get('file_path', 'N/A')}\n"
+                formatted += "-" * 80 + "\n\n"
 
-    [Source: AI-Native Software Development Book, Chapter 4: Python Fundamentals]
-    """
+            formatted += f"\nFound {response.total_results} results in {response.search_time_ms}ms"
+        else:
+            formatted += f"No results found for query: '{query}'\n"
+            formatted += "\nNote: The vector database may need to be populated. Run scripts/ingest_book.py first."
+
+        return formatted
+
+    except Exception as e:
+        # Fallback to error message
+        return f"""
+        Error searching book content: {str(e)}
+
+        Note: Make sure the vector database is populated by running:
+        python scripts/ingest_book.py --reset
+
+        This error usually means the RAG service needs to be initialized.
+        """
 
 
 @function_tool

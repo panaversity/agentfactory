@@ -15,5 +15,7 @@ dependencies = [
     "pytest-asyncio>=1.2.0",
     "pytest-cov>=7.0.0",
     "python-dotenv>=1.2.1",
+    "python-frontmatter>=1.0.0",
+    "tqdm>=4.66.0",
     "uvicorn[standard]>=0.38.0",
 ]
