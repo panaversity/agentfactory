@@ -527,14 +527,15 @@ html[data-theme='dark'] .tutor-switch-mode button {
 .tutor-selection-menu {
   position: fixed;
   z-index: 10001;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, calc(-100% - 10px));
   animation: slideDown 0.2s ease;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
   padding: 8px;
-  min-width: 200px;
-  margin-bottom: 10px;
+  min-width: 220px;
+  max-width: 280px;
+  pointer-events: auto;
 }
 
 html[data-theme='dark'] .tutor-selection-menu {
@@ -545,11 +546,11 @@ html[data-theme='dark'] .tutor-selection-menu {
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translate(-50%, -120%);
+    transform: translate(-50%, calc(-100% - 20px));
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -100%);
+    transform: translate(-50%, calc(-100% - 10px));
   }
 }
 

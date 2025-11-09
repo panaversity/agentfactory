@@ -24,6 +24,7 @@ function TutorChatComponent() {
   const [showTooltip, setShowTooltip] = useState(false);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   const [selectedText, setSelectedText] = useState('');
+  const tooltipRef = useRef<HTMLDivElement>(null);
 
   // Auth state
   const [email, setEmail] = useState('');
@@ -47,33 +48,54 @@ function TutorChatComponent() {
 
   // Text selection handler
   useEffect(() => {
-    const handleTextSelection = () => {
-      const selection = window.getSelection();
-      const text = selection?.toString().trim();
+    const handleTextSelection = (e: MouseEvent) => {
+      // Don't show tooltip if clicking inside the tooltip itself or chat widget
+      if (tooltipRef.current?.contains(e.target as Node)) {
+        return;
+      }
 
-      if (text && text.length > 0) {
-        const range = selection?.getRangeAt(0);
-        const rect = range?.getBoundingClientRect();
+      // Small delay to ensure selection is complete
+      setTimeout(() => {
+        const selection = window.getSelection();
+        const text = selection?.toString().trim();
 
-        if (rect) {
-          setSelectedText(text);
-          setTooltipPosition({
-            x: rect.left + rect.width / 2,
-            y: rect.top - 10
-          });
-          setShowTooltip(true);
+        if (text && text.length > 0 && !isOpen) {
+          const range = selection?.getRangeAt(0);
+          const rect = range?.getBoundingClientRect();
+
+          if (rect) {
+            setSelectedText(text);
+            setTooltipPosition({
+              x: rect.left + rect.width / 2,
+              y: rect.top - 10
+            });
+            setShowTooltip(true);
+            console.log('Text selected:', text); // Debug log
+          }
+        } else if (!text) {
+          // Only hide if we're not clicking inside the tooltip
+          if (!tooltipRef.current?.contains(e.target as Node)) {
+            setShowTooltip(false);
+          }
         }
-      } else {
+      }, 10);
+    };
+
+    const handleClickOutside = (e: MouseEvent) => {
+      // Hide tooltip if clicking outside of it
+      if (showTooltip && tooltipRef.current && !tooltipRef.current.contains(e.target as Node)) {
         setShowTooltip(false);
       }
     };
 
     document.addEventListener('mouseup', handleTextSelection);
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
       document.removeEventListener('mouseup', handleTextSelection);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [isOpen, showTooltip]);
 
   // Auto-resize textarea
   useEffect(() => {
@@ -227,11 +249,13 @@ function TutorChatComponent() {
     return (
       <>
         <div
+          ref={tooltipRef}
           className="tutor-selection-menu"
           style={{
             left: `${tooltipPosition.x}px`,
             top: `${tooltipPosition.y}px`
           }}
+          onClick={(e) => e.stopPropagation()}
         >
           <div className="tutor-menu-header">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
