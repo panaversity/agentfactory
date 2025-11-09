@@ -22,6 +22,32 @@ Sarah, a 24-year-old business major, is reading Chapter 1 of the AI-Native Softw
 3. **Given** Sarah is reading a technical paragraph about Python, **When** she asks a follow-up question like "Can you give me an example?", **Then** the agent provides a relevant code example with explanation
 4. **Given** Sarah closes her browser after using TutorGPT, **When** she returns to the book website the next day, **Then** the chat widget appears in the same position ready to help
 
+**TDD Test Requirements (US1)**:
+
+**Unit Tests**:
+- `test_agent_responds_within_3_seconds()` - Verify response time SLA
+- `test_search_book_content_returns_relevant_results()` - RAG search accuracy
+- `test_agent_references_current_page()` - Context awareness
+- `test_session_creation()` - Session manager creates valid sessions
+
+**Integration Tests**:
+- `test_agent_with_rag_system()` - Agent calls search_book_content tool correctly
+- `test_chatkit_backend_integration()` - ChatKit session creation works
+- `test_full_question_answer_flow()` - User message → Agent → RAG → Response
+
+**Behavior Tests** (Agent Teaching Quality):
+- `test_agent_teaches_from_book()` - Agent uses book content, not generic knowledge
+- `test_agent_provides_encouraging_response()` - Response tone is friendly/supportive
+- `test_agent_asks_clarifying_question_when_needed()` - Handles ambiguous questions
+- `test_agent_provides_example_when_helpful()` - Knows when to give examples
+
+**Scenario Tests** (Full User Journeys):
+- `test_first_time_student_gets_help()` - Complete US1 flow works end-to-end
+- `test_student_asks_multiple_questions()` - Conversation continuity maintained
+- `test_agent_redirects_off_topic_question()` - Agent guides back to book content
+
+**Coverage Target**: ≥80% code coverage, 100% behavior coverage for agent teaching
+
 ---
 
 ### User Story 2 - Student Highlights Confusing Text for Automatic Explanation (Priority: P2)
@@ -38,6 +64,32 @@ While reading Chapter 4 about Python, Sarah encounters the sentence "Python is a
 2. **Given** Sarah has highlighted text and received an explanation, **When** she highlights different text on the same page, **Then** the agent provides a new explanation for the newly selected text
 3. **Given** Sarah highlights a long paragraph (over 200 words), **When** the highlight is detected, **Then** the agent asks her to narrow down which part confuses her rather than explaining the entire paragraph
 4. **Given** Sarah rapidly highlights and un-highlights text (within 1 second), **When** the system detects this behavior, **Then** it waits 1 second after the last selection before responding to avoid spam
+
+**TDD Test Requirements (US2)**:
+
+**Unit Tests**:
+- `test_highlight_detection()` - Frontend captures selection correctly
+- `test_debouncing_logic()` - 1-second debounce prevents spam
+- `test_highlight_text_validation()` - Min 10 chars, max 200 chars validation
+- `test_highlight_endpoint()` - POST /api/highlight processes requests
+
+**Integration Tests**:
+- `test_highlight_triggers_agent()` - Highlight → Agent → Explanation flow
+- `test_agent_searches_highlighted_text()` - Agent uses search_book_content with highlighted text
+- `test_multiple_highlights_same_page()` - Each highlight gets new explanation
+
+**Behavior Tests** (Agent Proactive Teaching):
+- `test_agent_explains_proactively()` - Agent provides explanation without being asked
+- `test_agent_handles_long_selection()` - Agent asks to narrow down if >200 words
+- `test_agent_explains_in_context()` - Explanation references current lesson/chapter
+- `test_agent_asks_if_understood()` - Agent follows up: "Does this make sense?"
+
+**Scenario Tests**:
+- `test_student_highlights_term()` - Complete US2 flow (highlight → explanation)
+- `test_rapid_highlighting_debounced()` - Rapid selections handled gracefully
+- `test_highlight_with_no_book_content()` - Agent handles non-technical highlights
+
+**Coverage Target**: ≥80% code coverage, debouncing logic 100% tested
 
 ---
 
@@ -56,6 +108,34 @@ Alex returns to the book website after completing Chapter 1 yesterday. When he o
 3. **Given** Alex is viewing his conversation history from a previous session, **When** he scrolls to the top of the chat, **Then** he can see all messages from his current session and previous sessions in chronological order
 4. **Given** Alex has used TutorGPT for several days with multiple sessions, **When** he asks a question about a topic he previously asked about, **Then** the agent references his previous questions to provide context (e.g., "Like we discussed earlier...")
 
+**TDD Test Requirements (US3)**:
+
+**Unit Tests**:
+- `test_session_persistence()` - Session data saved to SQLite correctly
+- `test_get_or_create_session()` - Existing sessions retrieved correctly
+- `test_conversation_history_storage()` - All messages stored chronologically
+- `test_session_expiry()` - Sessions expire after 30 days inactivity
+- `test_progress_tracking()` - Chapter/lesson progress stored correctly
+
+**Integration Tests**:
+- `test_session_restoration_flow()` - Browser restart → session restored → history loaded
+- `test_agent_loads_student_profile()` - Agent calls get_student_profile() for returning students
+- `test_full_history_retrieval()` - Multiple sessions, all messages retrieved in order
+- `test_localStorage_session_sync()` - Frontend localStorage syncs with backend sessions
+
+**Behavior Tests** (Agent Memory & Personalization):
+- `test_agent_greets_returning_student()` - Agent says "Welcome back!" with progress reference
+- `test_agent_remembers_previous_topics()` - Agent: "Like we discussed earlier about variables..."
+- `test_agent_suggests_next_lesson()` - Agent calls suggest_next_lesson() autonomously
+- `test_agent_uses_last_5_7_messages_priority()` - Recent context prioritized, full history available
+
+**Scenario Tests**:
+- `test_returning_student_full_journey()` - Complete US3 flow (return → greeting → history → continue)
+- `test_multiple_sessions_same_student()` - Student across 3 days, all history persists
+- `test_agent_references_past_confusion()` - Agent remembers student struggled with async
+
+**Coverage Target**: ≥80% code coverage, session management 100% tested, context window prioritization verified
+
 ---
 
 ### User Story 4 - Agent Adapts to Student's Learning Pace (Priority: P4)
@@ -72,6 +152,36 @@ After Sarah has asked three questions about Python variables over the course of 
 2. **Given** Alex consistently asks advanced questions and rarely needs follow-up explanations, **When** he asks a new question, **Then** the agent adjusts its response style to be more concise and technically detailed
 3. **Given** Sarah typically spends 5+ minutes reading each page before asking questions, **When** the agent tracks this behavior over multiple sessions, **Then** it identifies her as a "slow learner" and adapts responses to include more examples and simpler language
 4. **Given** Alex typically spends 1-2 minutes per page and asks few questions, **When** the agent tracks this behavior, **Then** it identifies him as a "fast learner" and adapts responses to be more advanced and challenging
+
+**TDD Test Requirements (US4)**:
+
+**Unit Tests**:
+- `test_confusion_detection_algorithm()` - 3+ questions same topic = confusion
+- `test_learning_pace_calculation()` - time/page → slow/medium/fast classification
+- `test_struggle_topic_tracking()` - Struggling topics stored in profile
+- `test_teaching_pace_adjustment()` - adjust_teaching_pace() logic correct
+
+**Integration Tests**:
+- `test_agent_calls_detect_confusion()` - Agent autonomously calls detect_confusion() every 3-5 messages
+- `test_agent_calls_adjust_teaching_pace()` - Agent adapts when confusion detected
+- `test_profile_updates_with_behavior()` - Student behavior → profile updates → agent uses it
+- `test_agent_celebrates_mastery()` - Student masters difficult topic → agent celebrates
+
+**Behavior Tests** (Agent Autonomous Adaptation):
+- `test_agent_detects_repeated_confusion()` - Agent: "I notice you're struggling with async - let me explain differently"
+- `test_agent_simplifies_for_confused_student()` - Agent uses explain_concept(depth="simple", use_analogy=True)
+- `test_agent_deepens_for_advanced_student()` - Agent provides more technical details for fast learners
+- `test_agent_proactively_offers_help()` - Agent doesn't wait for explicit request
+- `test_agent_generates_quiz_when_ready()` - Agent tests understanding at right moment
+- `test_agent_suggests_practice_exercise()` - Agent offers hands-on practice autonomously
+
+**Scenario Tests** (Full Adaptive Teaching):
+- `test_confused_student_gets_adapted_teaching()` - Complete US4 flow (3 questions → detection → adaptation)
+- `test_advanced_student_gets_challenged()` - Fast learner → agent increases complexity
+- `test_agent_tracks_progress_over_days()` - Multi-day learning journey tracked correctly
+- `test_agent_celebrates_milestone()` - Chapter completion → celebration → suggestion
+
+**Coverage Target**: ≥80% code coverage, 100% coverage for confusion detection and adaptation logic
 
 ---
 

@@ -53,6 +53,188 @@ Build an autonomous AI tutor that sits beside students as they read the "AI-Nati
 - ~500-1000 chunks per lesson (estimated 50,000-100,000 total chunks)
 - Average 5-10 messages per session
 
+---
+
+## TDD Methodology
+
+**Test-Driven Development (TDD) is MANDATORY for this project.**
+
+### TDD Workflow (Red-Green-Refactor)
+
+Every single task follows this cycle:
+
+1. **🔴 RED**: Write test FIRST (test fails - no implementation yet)
+2. **🟢 GREEN**: Write MINIMAL code to make test pass
+3. **🔵 REFACTOR**: Improve code quality while tests stay green
+4. **🔁 REPEAT**: Next feature
+
+### Test Pyramid for TutorGPT
+
+```
+           /\
+          /  \
+         / E2E \          ← Scenario Tests (User Journeys)
+        /______\
+       /        \
+      / Integration\       ← Agent + Tools + RAG working together
+     /____________\
+    /              \
+   /  Unit Tests    \      ← Individual functions, tools, utilities
+  /__________________\
+```
+
+**Test Distribution** (Target):
+- **60%** Unit tests (fast, isolated, specific)
+- **30%** Integration tests (agent + tools + services)
+- **10%** Scenario/E2E tests (full user journeys)
+
+### Test Types for Agent-First System
+
+#### 1. Unit Tests (60%)
+Test individual components in isolation:
+- RAG search functions
+- Embedding generation
+- Database queries
+- Text processing utilities
+- Session management functions
+
+**Example**:
+```python
+def test_search_book_content_with_metadata_filter():
+    # Given: A query and chapter context
+    query = "What is Python?"
+    chapter = "04-python"
+
+    # When: Searching with chapter filter
+    results = rag_service.search(query, metadata={"chapter": chapter})
+
+    # Then: Results are from correct chapter only
+    assert all(r.metadata["chapter"] == chapter for r in results)
+    assert len(results) > 0
+```
+
+#### 2. Integration Tests (30%)
+Test components working together:
+- Agent + RAG system
+- Agent + Student profile
+- ChatKit backend + Agent
+- Full question-answer pipeline
+
+**Example**:
+```python
+async def test_agent_uses_rag_for_book_questions():
+    # Given: Agent with RAG tool
+    agent = create_tutor_agent()
+
+    # When: Student asks about book content
+    response = await agent.answer("What is async programming?")
+
+    # Then: Agent called search_book_content tool
+    assert "search_book_content" in response.tools_used
+    # And: Response includes book reference
+    assert "Chapter" in response.message
+```
+
+#### 3. Behavior Tests (20%)
+Test agent TEACHING QUALITY (most critical):
+- Agent teaches from book (not generic knowledge)
+- Agent provides encouraging responses
+- Agent adapts to student confusion
+- Agent asks clarifying questions when needed
+- Agent celebrates milestones
+
+**Example**:
+```python
+async def test_agent_teaches_with_encouragement():
+    # Given: A confused student's question
+    question = "I don't understand variables at all"
+
+    # When: Agent responds
+    response = await agent.answer(question)
+
+    # Then: Response is encouraging
+    assert any(word in response.message.lower()
+               for word in ["great question", "don't worry", "let me help"])
+    # And: Agent simplifies explanation
+    assert response.tool_calls["explain_concept"]["depth"] == "simple"
+    # And: Agent offers analogy
+    assert response.tool_calls["explain_concept"]["use_analogy"] == True
+```
+
+#### 4. Scenario Tests (10%)
+Test complete user journeys end-to-end:
+- First-time student gets help (US1)
+- Student highlights text for explanation (US2)
+- Returning student sees history (US3)
+- Agent adapts to confusion (US4)
+
+**Example**:
+```python
+async def test_first_time_student_complete_journey():
+    # Setup: New student, Chapter 1 page
+    student = create_test_student()
+    context = {"chapter": "01-intro", "page": "/docs/01-intro"}
+
+    # Step 1: Student asks question
+    q1_response = await agent.answer(
+        "What is AI-driven development?",
+        context=context
+    )
+
+    # Assert: Fast response
+    assert q1_response.time_ms < 3000
+    # Assert: From book
+    assert "search_book_content" in q1_response.tools_used
+    # Assert: References current page
+    assert "Chapter 1" in q1_response.message
+
+    # Step 2: Student asks follow-up
+    q2_response = await agent.answer("Can you give an example?")
+
+    # Assert: Agent remembers context
+    assert "provide_code_example" in q2_response.tools_used
+```
+
+### Coverage Targets
+
+- **Overall code coverage**: ≥80%
+- **Critical agent logic**: 100% (personality, decision-making, tool selection)
+- **RAG pipeline**: 100% (search, ranking, metadata filtering)
+- **Session management**: 100% (persistence, restoration)
+- **Agent behavior**: 100% (teaching quality verified)
+
+### Testing Tools
+
+```bash
+# Run all tests
+pytest
+
+# Run with coverage
+pytest --cov=app --cov-report=html
+
+# Run specific test types
+pytest tests/unit/           # Unit tests only
+pytest tests/integration/     # Integration tests only
+pytest tests/behavior/        # Agent behavior tests only
+pytest tests/scenarios/       # E2E scenario tests only
+
+# Run tests with agent behavior verbose output
+pytest -v tests/behavior/ --log-cli-level=INFO
+```
+
+### TDD for Each Phase
+
+Every phase follows **Test → Implement → Verify**:
+
+- **Phase 1 (Setup)**: Create test infrastructure, pytest config
+- **Phase 2 (Agent Core)**: Test agent personality, decision-making FIRST
+- **Phase 3 (Agent Tools)**: Test each tool individually before integration
+- **Phase 4 (Services)**: Test RAG, sessions, embeddings in isolation
+- **Phase 5-8 (User Stories)**: Test complete flows (scenario tests)
+- **Phase 9 (Polish)**: Load tests, performance tests, edge case tests
+
+---
+
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*

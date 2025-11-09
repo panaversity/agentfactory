@@ -28,6 +28,134 @@ Per plan.md, this is a web application with:
 - **Agent Tools**: `backend/app/tools/` (all agent capabilities)
 - **Frontend**: `book-source/src/` (Docusaurus + ChatKit widget)
 - **Data**: `backend/data/` (Agent's memory: SQLite, ChromaDB)
+- **Tests**: `backend/tests/` (ALL test files - unit, integration, behavior, scenarios)
+
+---
+
+## 🔥 TDD WORKFLOW FOR EVERY TASK
+
+**MANDATORY**: Every task follows Test-Driven Development (TDD) cycle:
+
+### TDD Cycle (Red-Green-Refactor)
+
+```
+1. 🔴 RED:
+   - Write test FIRST (it fails - no implementation yet)
+   - Test defines EXPECTED BEHAVIOR
+   - Run: pytest -x (watch it fail)
+
+2. 🟢 GREEN:
+   - Write MINIMAL code to make test pass
+   - Run: pytest -x (watch it pass)
+   - No refactoring yet!
+
+3. 🔵 REFACTOR:
+   - Improve code quality
+   - Run: pytest (ensure tests still pass)
+   - Clean up, optimize, document
+
+4. 🔁 REPEAT:
+   - Next feature/task
+```
+
+### TDD Task Format
+
+**Every implementation task includes**:
+
+1. **Test File Path**: Where to create the test (e.g., `tests/unit/test_personality.py`)
+2. **Test Name**: What test to write (e.g., `test_agent_has_encouraging_personality()`)
+3. **Expected Behavior**: What the test should verify
+4. **Implementation**: Code to make test pass
+5. **Verification**: Run pytest and confirm green ✅
+
+### Example Task with TDD
+
+```markdown
+- [ ] T006 [Agent] Create backend/app/agent/personality.py defining TutorGPT teaching philosophy
+
+**TDD Steps**:
+1. CREATE: tests/unit/agent/test_personality.py
+2. WRITE TEST FIRST:
+   ```python
+   def test_agent_personality_is_encouraging():
+       personality = AgentPersonality()
+       assert personality.style == "Encouraging Coach"
+       assert "patient" in personality.traits
+   ```
+3. RUN: pytest tests/unit/agent/test_personality.py (FAILS - red 🔴)
+4. IMPLEMENT: backend/app/agent/personality.py with minimal code
+5. RUN: pytest tests/unit/agent/test_personality.py (PASSES - green 🟢)
+6. REFACTOR: Clean up code
+7. RUN: pytest (still green ✅)
+```
+
+### Test Organization
+
+```
+backend/tests/
+├── conftest.py              # Pytest fixtures (mocks, test agent, test DB)
+├── unit/                     # Unit tests (60% of tests)
+│   ├── agent/
+│   │   ├── test_personality.py
+│   │   ├── test_decision_engine.py
+│   │   └── test_tutor_agent.py
+│   ├── tools/
+│   │   ├── test_search_book.py
+│   │   ├── test_explain_concept.py
+│   │   └── ... (12 tool tests)
+│   ├── services/
+│   │   ├── test_rag_service.py
+│   │   ├── test_session_manager.py
+│   │   └── test_embedder.py
+│   └── utils/
+│       └── test_text_processing.py
+├── integration/              # Integration tests (30%)
+│   ├── test_agent_with_rag.py
+│   ├── test_agent_with_tools.py
+│   └── test_full_pipeline.py
+├── behavior/                 # Agent behavior tests (20%)
+│   ├── test_teaching_quality.py
+│   ├── test_adaptation.py
+│   └── test_encouragement.py
+└── scenarios/                # E2E scenario tests (10%)
+    ├── test_user_story_1.py
+    ├── test_user_story_2.py
+    ├── test_user_story_3.py
+    └── test_user_story_4.py
+```
+
+### Coverage Targets (Mandatory)
+
+- **Overall**: ≥80% code coverage
+- **Agent Core**: 100% (personality, decision-making, instructions)
+- **RAG Pipeline**: 100% (search, ranking, filtering)
+- **Agent Tools**: 100% (all 12 tools fully tested)
+- **Session Management**: 100% (persistence, restoration)
+
+### pytest Commands
+
+```bash
+# Run all tests
+pytest
+
+# Run with coverage report
+pytest --cov=app --cov-report=html --cov-report=term
+
+# Run only failing tests first
+pytest -x
+
+# Run specific test file
+pytest tests/unit/agent/test_personality.py
+
+# Run specific test function
+pytest tests/unit/agent/test_personality.py::test_agent_personality_is_encouraging
+
+# Run with verbose output
+pytest -v
+
+# Run behavior tests with logs
+pytest -v tests/behavior/ --log-cli-level=INFO
+```
 
 ---
 

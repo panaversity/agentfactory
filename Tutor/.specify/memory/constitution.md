@@ -144,6 +144,34 @@ Follow-up TODOs: None — all sections complete
 
 **Rationale:** Students will tolerate missing features but will abandon a slow, buggy, or inaccurate system instantly. Production quality is non-negotiable. Testing, performance optimization, and reliability engineering happen during development, not after launch. Every component must be deployment-ready before integration.
 
+### VII. Test-Driven Development (TDD) from the Start
+
+**Every feature is built test-first:**
+- Write test BEFORE implementation
+- Test defines expected behavior
+- Implementation makes test pass
+- Refactor with confidence
+
+**This means:**
+- Agent behavior is testable: "Does agent teach correctly?"
+- Tools are testable: "Does search_book_content return relevant results?"
+- All code has ≥80% test coverage
+- Tests verify BEHAVIOR, not just code
+
+**TDD for Agent-First System:**
+- **Unit tests**: Individual functions (RAG search, embeddings, database queries)
+- **Integration tests**: Agent + tools working together
+- **Behavior tests**: Agent teaching quality (Socratic method, adaptation, encouragement)
+- **Scenario tests**: Full user journeys (student asks → agent teaches → student understands)
+
+**Not:**
+- Writing tests after code is done
+- Skipping tests for "simple" features
+- Testing only happy paths
+- Achieving coverage without testing behavior
+
+**Rationale:** TDD ensures the agent truly teaches well, not just "works." When we test "agent simplifies explanation for confused student," we verify autonomous teaching behavior. Tests become living documentation of how TutorGPT should behave. Every task follows: Write test → Implement → Verify → Refactor.
+
 ---
 
 ## MVP Strategy
@@ -291,25 +319,36 @@ Follow-up TODOs: None — all sections complete
 - Zero critical bugs
 - Deployment automated and documented
 
-### Test Everything
+### Test Everything (TDD Approach)
 
-**Every component:**
-- Unit tests for functions
-- Integration tests for API
-- End-to-end tests for user flows
-- Manual testing of UX
+**TDD Workflow - ALWAYS:**
+1. **Write test FIRST** - Define expected behavior
+2. **Run test** - Watch it fail (red)
+3. **Write minimal code** - Make test pass (green)
+4. **Refactor** - Improve code while tests pass
+5. **Repeat** - Next feature
+
+**Every component tested:**
+- **Unit tests**: Individual functions (RAG, embeddings, DB queries)
+- **Integration tests**: Agent + tools + services working together
+- **Behavior tests**: Agent teaching quality (does it teach well?)
+- **Scenario tests**: Full user journeys (student confusion → agent adapts)
+- **Manual testing**: UX and edge cases
 
 **Before shipping:**
-- All tests pass
+- All tests pass (green ✅)
 - No critical bugs
 - Performance acceptable (< 3 seconds)
+- Agent behavior verified (teaches correctly)
 - Ready for real users
 
-**Testing Standards:**
-- Minimum 80% code coverage
-- Contract tests for API endpoints
-- Integration tests for RAG pipeline
+**Testing Standards (TDD-First):**
+- Minimum 80% code coverage (but behavior-focused, not line-focused)
+- Contract tests for API endpoints (test-first)
+- Integration tests for RAG pipeline (verify 4-level search works)
+- Agent behavior tests (verify teaching strategies work)
 - Load testing for 100 concurrent users
+- **Every task**: Write test → Implement → Verify → Refactor
 
 ---
 
@@ -644,18 +683,22 @@ Follow-up TODOs: None — all sections complete
 
 **We will:**
 - Ship production-ready MVP in 4 weeks
-- Build autonomous AI Agent properly (OpenAI Agents SDK + LangChain)
+- Build autonomous AI Agent properly (OpenAI Agents SDK + ChromaDB)
 - Implement multi-level RAG correctly (4 levels, tested)
-- Test everything thoroughly (unit, integration, end-to-end)
+- **Follow TDD religiously** (test-first for EVERY feature)
+- Test everything thoroughly (unit, integration, behavior, scenario)
 - Document the system well (code, API, deployment)
 - Make students learn better (measure success via user feedback)
+- **Verify agent teaches well** (not just "works")
 
 **We will not:**
 - Rush and ship broken code
-- Skip testing
+- Skip testing or write tests after code
+- Write code without tests first
 - Ignore user needs
 - Over-engineer the MVP
 - Miss the deadline
+- Ship agent without verifying teaching quality
 
 ---
 
