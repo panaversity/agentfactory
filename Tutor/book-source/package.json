@@ -27,7 +27,8 @@
     "react-dom": "^19.0.0",
     "react-markdown": "^10.1.0",
     "rehype-highlight": "^7.0.2",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "highlight.js": "^11.11.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.2",
