@@ -15,7 +15,7 @@ print("=" * 80)
 print()
 
 # Check if book-source exists
-book_source = Path("../book-source/docs")
+book_source = Path("../book-source")
 if not book_source.exists():
     print("❌ Error: book-source not found!")
     print(f"   Looking for: {book_source.absolute()}")
@@ -118,7 +118,7 @@ try:
     print()
 
     # Verify
-    stats = vector_store.get_collection_stats()
+    stats = vector_store.get_stats()
     print("Vector Store Stats:")
     print(f"  - Collection: {stats['name']}")
     print(f"  - Total chunks: {stats['count']}")
