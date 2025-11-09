@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.rag import router as rag_router
 from app.api.auth import router as auth_router
 from app.api.profile import router as profile_router
+from app.api.chat import router as chat_router
 from app.database import init_db
 
 
@@ -37,9 +38,10 @@ app.add_middleware(
 )
 
 # Include routers
-app.include_router(rag_router)
 app.include_router(auth_router)
 app.include_router(profile_router)
+app.include_router(chat_router)
+app.include_router(rag_router)  # Optional - for advanced use
 
 
 @app.get("/")
@@ -50,13 +52,15 @@ async def root():
         "version": "0.2.0",
         "description": "AI-Native Software Development Tutor with RAG and User Authentication",
         "endpoints": {
-            "rag_search": "/api/rag/search",
-            "rag_health": "/api/rag/health",
             "auth_signup": "/api/auth/signup",
             "auth_login": "/api/auth/login",
             "auth_me": "/api/auth/me",
             "profile_get": "/api/profile",
             "profile_update": "/api/profile",
+            "chat_message": "/api/chat/message",
+            "chat_greeting": "/api/chat/greeting",
+            "chat_status": "/api/chat/status",
+            "rag_search": "/api/rag/search (optional - advanced)",
             "docs": "/docs"
         }
     }
