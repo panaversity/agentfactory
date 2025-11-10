@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SidebarChapters from './SidebarChapters';
+import ChatSessions from './ChatSessions';
 import TutorChatWindow from './TutorChatWindow';
 import QuizComponent from './QuizComponent';
 import lessonController from '../../utils/LessonController';
 import * as storage from '../../utils/localStorageService';
+
+/**
+ * Generate unique session ID
+ */
+const generateSessionId = () => {
+  return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+};
 
 /**
  * Main Co-Learning UI
@@ -17,6 +25,7 @@ const AgentCoLearnUI = () => {
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [isLoading, setIsLoading] = useState(true);
+  const [currentSessionId, setCurrentSessionId] = useState(() => generateSessionId());
 
   useEffect(() => {
     checkFirstTime();
@@ -79,6 +88,15 @@ const AgentCoLearnUI = () => {
     }
   };
 
+  const handleNewSession = () => {
+    const newSessionId = generateSessionId();
+    setCurrentSessionId(newSessionId);
+  };
+
+  const handleSessionChange = (sessionId) => {
+    setCurrentSessionId(sessionId);
+  };
+
   if (isLoading) {
     return (
       <div className="colearn-loading">
@@ -90,7 +108,14 @@ const AgentCoLearnUI = () => {
 
   return (
     <div className="colearn-container">
-      {/* Sidebar */}
+      {/* Chat Sessions Sidebar */}
+      <ChatSessions
+        currentSessionId={currentSessionId}
+        onSessionChange={handleSessionChange}
+        onNewSession={handleNewSession}
+      />
+
+      {/* Chapter Navigation Sidebar */}
       <SidebarChapters
         currentChapter={currentChapter}
         onChapterSelect={handleChapterSelect}
@@ -106,6 +131,7 @@ const AgentCoLearnUI = () => {
           />
         ) : (
           <TutorChatWindow
+            sessionId={currentSessionId}
             onQuizRequest={handleQuizRequest}
             isDocked={true}
           />

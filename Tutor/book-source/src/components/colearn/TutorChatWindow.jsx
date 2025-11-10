@@ -5,38 +5,47 @@ import ReactMarkdown from 'react-markdown';
 import lessonController from '../../utils/LessonController';
 
 /**
- * Tutor Chat Window - Main teaching interface
+ * Tutor Chat Window - Main teaching interface with session support
  */
-const TutorChatWindow = ({ onClose, onQuizRequest, isFloating = false }) => {
+const TutorChatWindow = ({ onClose, onQuizRequest, isFloating = false, sessionId }) => {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isDocked, setIsDocked] = useState(!isFloating);
   const [position, setPosition] = useState({ x: 100, y: 100 });
   const [size, setSize] = useState({ width: 600, height: 700 });
+  const [initialized, setInitialized] = useState(false);
 
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
+  // Load messages for current session
   useEffect(() => {
-    // Load chat history
-    const history = localStorage.getItem('colearn_chat_history');
-    if (history) {
-      try {
-        setMessages(JSON.parse(history));
-      } catch (e) {
-        console.error('Error loading chat history:', e);
-      }
-    } else {
-      // First time - send hello to get greeting
-      initializeChat();
-    }
-
-    // Auto-focus input
+    loadSessionMessages();
     inputRef.current?.focus();
-  }, []);
+  }, [sessionId]);
+
+  const loadSessionMessages = async () => {
+    try {
+      const sessionKey = `colearn_session_${sessionId}`;
+      const savedMessages = localStorage.getItem(sessionKey);
+
+      if (savedMessages) {
+        setMessages(JSON.parse(savedMessages));
+        setInitialized(true);
+      } else {
+        // New session - initialize with greeting
+        await initializeChat();
+      }
+    } catch (e) {
+      console.error('Error loading session messages:', e);
+      await initializeChat();
+    }
+  };
 
   const initializeChat = async () => {
+    if (initialized) return; // Prevent re-initialization
+
     setIsLoading(true);
     try {
       // Send "hello" to backend to trigger greeting
@@ -46,9 +55,11 @@ const TutorChatWindow = ({ onClose, onQuizRequest, isFloating = false }) => {
       if (response.success) {
         addMessage('tutor', response.message);
       }
+      setInitialized(true);
     } catch (error) {
       console.error('Error initializing chat:', error);
       addMessage('tutor', 'Hey! Ready to learn some AI-native development? Which chapter are you interested in?');
+      setInitialized(true);
     } finally {
       setIsLoading(false);
     }
@@ -60,11 +71,49 @@ const TutorChatWindow = ({ onClose, onQuizRequest, isFloating = false }) => {
   }, [messages]);
 
   useEffect(() => {
-    // Save chat history
-    if (messages.length > 0) {
-      localStorage.setItem('colearn_chat_history', JSON.stringify(messages.slice(-50)));
+    // Save messages to session-specific storage
+    if (messages.length > 0 && sessionId) {
+      const sessionKey = `colearn_session_${sessionId}`;
+      localStorage.setItem(sessionKey, JSON.stringify(messages.slice(-50)));
+
+      // Update session metadata
+      updateSessionMetadata();
     }
-  }, [messages]);
+  }, [messages, sessionId]);
+
+  const updateSessionMetadata = () => {
+    try {
+      const sessionsKey = 'colearn_sessions';
+      const savedSessions = localStorage.getItem(sessionsKey);
+      let sessions = savedSessions ? JSON.parse(savedSessions) : [];
+
+      // Find current session
+      const sessionIndex = sessions.findIndex(s => s.id === sessionId);
+
+      // Generate title from first user message
+      const firstUserMsg = messages.find(m => m.role === 'user');
+      const title = firstUserMsg
+        ? firstUserMsg.content.substring(0, 40) + (firstUserMsg.content.length > 40 ? '...' : '')
+        : 'New Chat';
+
+      const sessionData = {
+        id: sessionId,
+        title,
+        lastActivity: new Date().toISOString(),
+        messageCount: messages.length
+      };
+
+      if (sessionIndex >= 0) {
+        sessions[sessionIndex] = sessionData;
+      } else {
+        sessions.unshift(sessionData); // Add to beginning
+      }
+
+      localStorage.setItem(sessionsKey, JSON.stringify(sessions));
+    } catch (e) {
+      console.error('Error updating session metadata:', e);
+    }
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
