@@ -5,14 +5,20 @@
  * Manages shared state between all tutor components
  */
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import AgentSidebar from './AgentSidebar';
 import SelectionPopover from './SelectionPopover';
 import type { ChatMessage } from '@/utils/agentApi';
 
 const TutorAgent: React.FC = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [prefillText, setPrefillText] = useState<string>('');
+
+  // Only render on client-side to avoid SSR issues
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Handle new messages from various sources
   const handleNewMessage = useCallback((message: ChatMessage) => {
@@ -25,6 +31,11 @@ const TutorAgent: React.FC = () => {
     // The prefill text will be used in the ChatWindow component
     // We'll need to pass this down through the AgentSidebar
   }, []);
+
+  // Don't render on server-side
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <>
