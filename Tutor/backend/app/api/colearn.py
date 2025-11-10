@@ -469,10 +469,50 @@ async def websocket_chat(
                 print(f"✅ Response sent: {response_time_ms}ms, phase={result['phase']}")
 
             except Exception as e:
+                error_message = str(e)
                 print(f"❌ Error generating response: {e}")
+
+                # Handle specific error types with user-friendly messages
+                if "429" in error_message or "RESOURCE_EXHAUSTED" in error_message:
+                    # Rate limit error
+                    user_friendly_message = (
+                        "⚠️ **API Rate Limit Reached**\n\n"
+                        "The Gemini API quota has been exhausted. This can happen with free tier limits.\n\n"
+                        "**Solutions:**\n"
+                        "1. **Wait a few minutes** - Rate limits reset quickly\n"
+                        "2. **Get a new API key** at https://aistudio.google.com/apikey\n"
+                        "3. **Check your quota** - Free tier: 15 requests/min, 1500/day\n\n"
+                        "Try again in a moment! 🕒"
+                    )
+                elif "401" in error_message or "UNAUTHENTICATED" in error_message:
+                    # Auth error
+                    user_friendly_message = (
+                        "⚠️ **Authentication Error**\n\n"
+                        "The API key is invalid or expired.\n\n"
+                        "**Solution:** Get a new API key at https://aistudio.google.com/apikey\n"
+                        "Then update the `.env` file and restart the backend."
+                    )
+                elif "timeout" in error_message.lower():
+                    # Timeout error
+                    user_friendly_message = (
+                        "⚠️ **Request Timeout**\n\n"
+                        "The AI took too long to respond.\n\n"
+                        "**Solutions:**\n"
+                        "1. Try a shorter question\n"
+                        "2. Check your internet connection\n"
+                        "3. Try again - this is usually temporary"
+                    )
+                else:
+                    # Generic error
+                    user_friendly_message = (
+                        f"⚠️ **Something went wrong**\n\n"
+                        f"Error: {error_message[:200]}\n\n"
+                        f"Please try again or check the backend logs for details."
+                    )
+
                 await websocket.send_json({
                     "type": "error",
-                    "message": f"Failed to generate response: {str(e)}"
+                    "message": user_friendly_message
                 })
                 # Send ready status even after error
                 await websocket.send_json({
