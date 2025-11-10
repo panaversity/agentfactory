@@ -6,7 +6,7 @@ title: "Chapter 12: Python UV - The Fastest Python Package Manager"
 # Chapter 12: Python UV - The Fastest Python Package Manager
 
 :::info Content Testing Information
-This chapter's examples and commands have been tested with **UV version 0.4.x** and **Python 3.13+**. UV works with Python 3.8+, but examples in this book use Python 3.13 features and syntax.
+This chapter's examples and commands have been tested with **UV version 0.9.x** and **Python 3.13+**. UV works with Python 3.8+, but examples in this book use Python 3.13 features and syntax.
 :::
 
 In Part 3, you mastered how to communicate effectively with AI through prompts and context engineering. Now you're ready to apply those skills to Python development—starting not with syntax, but with professional tooling.
