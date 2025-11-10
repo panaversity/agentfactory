@@ -66,11 +66,21 @@ class LessonController {
       }
     };
 
-    if (useMockResponses) {
-      return await mockCoLearningResponse(action);
+    // Try backend first, fall back to mock if it fails
+    if (!useMockResponses) {
+      try {
+        const response = await agentApi.sendCoLearningAction(action);
+        if (response.success) {
+          console.log('✅ Using backend agent');
+          return response;
+        }
+      } catch (error) {
+        console.warn('⚠️ Backend failed, using mock:', error);
+      }
     }
 
-    return await agentApi.sendCoLearningAction(action);
+    console.log('📝 Using mock responses');
+    return await mockCoLearningResponse(action);
   }
 
   /**
@@ -123,12 +133,19 @@ class LessonController {
       }
     };
 
-    // Get lesson content from RAG or mock
-    if (useMockResponses) {
-      return await mockCoLearningResponse(action);
+    // Try backend first, fall back to mock
+    if (!useMockResponses) {
+      try {
+        const response = await agentApi.sendCoLearningAction(action);
+        if (response.success) {
+          return response;
+        }
+      } catch (error) {
+        console.warn('⚠️ Backend failed for lesson step, using mock:', error);
+      }
     }
 
-    return await agentApi.sendCoLearningAction(action);
+    return await mockCoLearningResponse(action);
   }
 
   /**
@@ -202,12 +219,18 @@ class LessonController {
       }
     };
 
-    if (useMockResponses) {
-      return (await mockCoLearningResponse(action)).message;
+    if (!useMockResponses) {
+      try {
+        const response = await agentApi.sendCoLearningAction(action);
+        if (response.success) {
+          return response.message;
+        }
+      } catch (error) {
+        console.warn('⚠️ Backend failed for simplified explanation:', error);
+      }
     }
 
-    const response = await agentApi.sendCoLearningAction(action);
-    return response.message;
+    return (await mockCoLearningResponse(action)).message;
   }
 
   /**
@@ -218,6 +241,7 @@ class LessonController {
       action: 'explain',
       chapter: this.currentChapter,
       text: `Student answered: "${wrongAnswer}". Provide clarification.`,
+      studentAnswer: wrongAnswer,
       language: this.language,
       userId: this.userId,
       uiHints: {
@@ -226,12 +250,18 @@ class LessonController {
       }
     };
 
-    if (useMockResponses) {
-      return (await mockCoLearningResponse(action)).message;
+    if (!useMockResponses) {
+      try {
+        const response = await agentApi.sendCoLearningAction(action);
+        if (response.success) {
+          return response.message;
+        }
+      } catch (error) {
+        console.warn('⚠️ Backend failed for clarification:', error);
+      }
     }
 
-    const response = await agentApi.sendCoLearningAction(action);
-    return response.message;
+    return (await mockCoLearningResponse(action)).message;
   }
 
   /**
@@ -246,10 +276,18 @@ class LessonController {
     };
 
     let message;
-    if (useMockResponses) {
-      message = (await mockCoLearningResponse(action)).message;
+    if (!useMockResponses) {
+      try {
+        const response = await agentApi.sendCoLearningAction(action);
+        if (response.success) {
+          message = response.message;
+        }
+      } catch (error) {
+        console.warn('⚠️ Backend failed for quiz prep:', error);
+        message = (await mockCoLearningResponse(action)).message;
+      }
     } else {
-      message = (await agentApi.sendCoLearningAction(action)).message;
+      message = (await mockCoLearningResponse(action)).message;
     }
 
     return {
@@ -264,11 +302,18 @@ class LessonController {
    * Generate quiz questions
    */
   async generateQuiz() {
-    if (useMockResponses) {
-      return await mockGenerateQuiz(this.currentChapter, this.language);
+    if (!useMockResponses) {
+      try {
+        const questions = await agentApi.prepareQuiz(this.currentChapter, this.language);
+        if (questions && questions.length > 0) {
+          return questions;
+        }
+      } catch (error) {
+        console.warn('⚠️ Backend failed for quiz generation:', error);
+      }
     }
 
-    return await agentApi.prepareQuiz(this.currentChapter, this.language);
+    return await mockGenerateQuiz(this.currentChapter, this.language);
   }
 
   /**
@@ -277,8 +322,17 @@ class LessonController {
   async gradeQuiz(answers) {
     let result;
 
-    if (useMockResponses) {
-      // Simple mock grading
+    if (!useMockResponses) {
+      try {
+        result = await agentApi.gradeQuiz(this.currentChapter, answers);
+      } catch (error) {
+        console.warn('⚠️ Backend failed for quiz grading:', error);
+        result = null;
+      }
+    }
+
+    // Fall back to mock grading
+    if (!result) {
       const questions = await mockGenerateQuiz(this.currentChapter);
       let score = 0;
       const gradedAnswers = answers.map((userAnswer, index) => {
@@ -302,8 +356,6 @@ class LessonController {
         answers: gradedAnswers,
         needsRemedial: percentage < 50
       };
-    } else {
-      result = await agentApi.gradeQuiz(this.currentChapter, answers);
     }
 
     // Save quiz result
@@ -361,11 +413,18 @@ class LessonController {
       }
     };
 
-    if (useMockResponses) {
-      return await mockCoLearningResponse(action);
+    if (!useMockResponses) {
+      try {
+        const response = await agentApi.sendCoLearningAction(action);
+        if (response.success) {
+          return response;
+        }
+      } catch (error) {
+        console.warn('⚠️ Backend failed for task generation:', error);
+      }
     }
 
-    return await agentApi.sendCoLearningAction(action);
+    return await mockCoLearningResponse(action);
   }
 
   /**
