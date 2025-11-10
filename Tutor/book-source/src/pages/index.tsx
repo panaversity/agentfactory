@@ -67,6 +67,20 @@ function HomepageHeader() {
               </Link>
               <Link
                 className={clsx(
+                  "button button--success button--md",
+                  styles.coLearnButton
+                )}
+                to="/colearn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className={styles.buttonContent}>
+                  <span className={styles.buttonText}>Co-Learn with AI Tutor</span>
+                  <span className={styles.buttonIcon}>🤖</span>
+                </span>
+              </Link>
+              <Link
+                className={clsx(
                   "button button--outline button--md",
                   styles.secondaryButton
                 )}
