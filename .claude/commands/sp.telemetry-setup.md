@@ -249,51 +249,72 @@ If telemetry-server directory not found, STOP and show error.
 
 14. **Enable Telemetry Permanently**:
     
-    Execute (based on shell type, using $REPO_ROOT):
+    Execute (based on shell type):
     
     **For zsh**:
     ```bash
-    TELEMETRY_CONFIG="$REPO_ROOT/.claude/env-config/telemetry-enabled.env"
-    
     # Check if already configured
-    if ! grep -q "CLAUDE_ENV_CONFIG.*telemetry-enabled" ~/.zshrc 2>/dev/null; then
-        echo "export CLAUDE_ENV_CONFIG=\"$TELEMETRY_CONFIG\"" >> ~/.zshrc
-        echo "✓ Added to ~/.zshrc"
+    if ! grep -q "CLAUDE_CODE_ENABLE_TELEMETRY" ~/.zshrc 2>/dev/null; then
+        echo "" >> ~/.zshrc
+        echo "# Claude Code Telemetry (Feature 017)" >> ~/.zshrc
+        echo "export CLAUDE_CODE_ENABLE_TELEMETRY=1" >> ~/.zshrc
+        echo "export OTEL_METRICS_EXPORTER=otlp" >> ~/.zshrc
+        echo "export OTEL_LOGS_EXPORTER=otlp" >> ~/.zshrc
+        echo "export OTEL_EXPORTER_OTLP_PROTOCOL=grpc" >> ~/.zshrc
+        echo "export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317" >> ~/.zshrc
+        echo "export OTEL_METRIC_EXPORT_INTERVAL=10000" >> ~/.zshrc
+        echo "export OTEL_LOGS_EXPORT_INTERVAL=5000" >> ~/.zshrc
+        echo "export OTEL_LOG_USER_PROMPTS=1" >> ~/.zshrc
+        echo "✓ Telemetry variables added to ~/.zshrc"
     else
-        echo "✓ Already configured in ~/.zshrc"
+        echo "✓ Telemetry already configured in ~/.zshrc"
     fi
     ```
     
     **For bash**:
     ```bash
-    TELEMETRY_CONFIG="$REPO_ROOT/.claude/env-config/telemetry-enabled.env"
-    
     # Check if already configured
-    if ! grep -q "CLAUDE_ENV_CONFIG.*telemetry-enabled" ~/.bashrc 2>/dev/null; then
-        echo "export CLAUDE_ENV_CONFIG=\"$TELEMETRY_CONFIG\"" >> ~/.bashrc
-        echo "✓ Added to ~/.bashrc"
+    if ! grep -q "CLAUDE_CODE_ENABLE_TELEMETRY" ~/.bashrc 2>/dev/null; then
+        echo "" >> ~/.bashrc
+        echo "# Claude Code Telemetry (Feature 017)" >> ~/.bashrc
+        echo "export CLAUDE_CODE_ENABLE_TELEMETRY=1" >> ~/.bashrc
+        echo "export OTEL_METRICS_EXPORTER=otlp" >> ~/.bashrc
+        echo "export OTEL_LOGS_EXPORTER=otlp" >> ~/.bashrc
+        echo "export OTEL_EXPORTER_OTLP_PROTOCOL=grpc" >> ~/.bashrc
+        echo "export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317" >> ~/.bashrc
+        echo "export OTEL_METRIC_EXPORT_INTERVAL=10000" >> ~/.bashrc
+        echo "export OTEL_LOGS_EXPORT_INTERVAL=5000" >> ~/.bashrc
+        echo "export OTEL_LOG_USER_PROMPTS=1" >> ~/.bashrc
+        echo "✓ Telemetry variables added to ~/.bashrc"
     else
-        echo "✓ Already configured in ~/.bashrc"
+        echo "✓ Telemetry already configured in ~/.bashrc"
     fi
     ```
 
 15. **Load Configuration in Current Session**:
     
-    Execute (using $REPO_ROOT):
+    Execute:
     ```bash
-    export CLAUDE_ENV_CONFIG="$REPO_ROOT/.claude/env-config/telemetry-enabled.env"
+    export CLAUDE_CODE_ENABLE_TELEMETRY=1
+    export OTEL_METRICS_EXPORTER=otlp
+    export OTEL_LOGS_EXPORTER=otlp
+    export OTEL_EXPORTER_OTLP_PROTOCOL=grpc
+    export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317
+    export OTEL_METRIC_EXPORT_INTERVAL=10000
+    export OTEL_LOGS_EXPORT_INTERVAL=5000
+    export OTEL_LOG_USER_PROMPTS=1
     ```
 
-16. **Verify Environment Variable**:
+16. **Verify Environment Variables**:
     
     Execute:
     ```bash
-    echo $CLAUDE_ENV_CONFIG
+    env | grep -E "(CLAUDE_CODE_ENABLE_TELEMETRY|OTEL_)" | head -5
     ```
     
-    Verify it shows the correct path.
+    Verify telemetry variables are set.
     
-    Show user: "✓ Claude Code telemetry enabled (will activate on next Claude Code restart)"
+    Show user: "✓ Claude Code telemetry enabled for current and future sessions"
 
 ### Phase 7: Data Collection Verification (3 minutes)
 
