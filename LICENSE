@@ -1,0 +1,356 @@
+# License for AI Native Software Development
+
+**Copyright** (c) 2025 Panaversity
+
+This repository and all its contents are licensed under:
+
+## Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
+
+**Full License**: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+
+---
+
+## What This License Covers
+
+**This license applies to ALL content in this repository**, including:
+
+- 📚 **Book content** (`book-source/docs/`) — Educational chapters, lessons, exercises
+- 💻 **Infrastructure code** (`.claude/`, `.specify/`, `telemetry-server/`) — Development tools and scripts
+- 📝 **Documentation** (`README.md`, setup guides, specifications)
+- 🔧 **Configuration templates** (`.env.template`, `docker-compose.yml`, etc.)
+- 📊 **Example queries and scripts** (SQL templates, analysis examples)
+- 🎨 **All other materials** (diagrams, images, configuration files)
+
+**Important**: Collected telemetry data is NOT included in this repository and is governed separately by `DATA-USAGE-POLICY`.
+
+---
+
+## Your Rights and Restrictions
+
+### ✅ What You CAN Do (Free, Non-Commercial Use)
+
+**Share and Access**:
+- Read and study all content for learning
+- Clone the repository for personal use
+- Share links to the repository
+- Audit the content for quality and accuracy
+- Reference and cite the work with proper attribution
+
+**Educational Use**:
+- Use in free, non-commercial educational settings
+- Teach free courses using this material
+- Include in free online resources with attribution
+
+**Personal Development**:
+- Follow along with lessons and exercises
+- Use code examples to learn concepts (for personal projects only)
+- Practice the methodologies described
+
+### ❌ What You CANNOT Do (Prohibited)
+
+**Commercial Use**:
+- ❌ Sell the book (physical copies, digital copies, PDFs, ePubs, etc.)
+- ❌ Create and sell paid courses or training programs based on this content
+- ❌ Use significant portions in commercial products or services
+- ❌ Charge fees for access to the content
+- ❌ Monetize derivative works (translations, adaptations, summaries)
+
+**AI and Machine Learning Use**:
+- ❌ Use content to train AI models or language models (commercial or research)
+- ❌ Include in AI training datasets (e.g., for code generation, text completion)
+- ❌ Use in AI agent development or fine-tuning
+- ❌ Extract for AI-powered tools or services
+- ❌ Feed into RAG (Retrieval-Augmented Generation) systems for commercial use
+
+**Modifications and Derivatives**:
+- ❌ Create and distribute modified versions (even for free)
+- ❌ Translate and publish translations without permission
+- ❌ Adapt or remix the content and distribute adaptations
+- ❌ Extract portions and create derivative educational materials
+
+**Redistribution**:
+- ❌ Repackage and distribute (even if free) without attribution
+- ❌ Include in other commercial or free projects without explicit permission
+- ❌ Host on third-party platforms that monetize content
+
+---
+
+## Special Clarifications
+
+### Code Examples
+
+**Question**: Can I use the code examples shown in the book in my own projects?
+
+**Answer**:
+- **Personal/Learning Projects**: Yes, for learning and personal experimentation
+- **Open Source Projects**: Contact Panaversity for permission
+- **Commercial Projects**: Contact Panaversity for commercial licensing
+
+**Rationale**: The NoDerivatives (ND) clause means you cannot extract code examples and create a separate "code library" for distribution. However, reasonable use for learning is permitted under fair use principles.
+
+### Development Tools
+
+**Question**: Can I use the infrastructure tools (`.claude/`, `.specify/`, `telemetry-server/`) in my own projects?
+
+**Answer**:
+- **Personal use**: Yes, for learning and experimentation
+- **Team/Commercial use**: Contact Panaversity for licensing
+
+**Important**: These tools are integral to the educational content and are covered by the same license as the book itself. They are NOT separately licensed under MIT or other permissive licenses.
+
+### Forking and Contributions
+
+**Question**: Can I fork the repository and contribute improvements?
+
+**Answer**:
+- **Personal forks**: Yes, for personal learning
+- **Public contributions**: Yes, via pull requests (you grant Panaversity rights to include your contributions)
+- **Separate distributions**: No, you cannot create and maintain a public fork as an alternative distribution
+
+**Contributing**: By submitting a pull request, you agree that your contribution will be licensed under CC BY-NC-ND 4.0 and that Panaversity may use it in the project (including potential future commercial editions).
+
+---
+
+## Frequently Asked Questions
+
+### Reading and Learning
+
+**Q: Can I read the book for free?**
+A: **Yes!** You can read, study, and learn from all content for free.
+
+**Q: Can I share the book with friends?**
+A: **Yes**, by sharing the GitHub repository link. Do not create and distribute your own copies.
+
+### Educational Use
+
+**Q: Can I use this in my free university course?**
+A: **Yes!** Free, non-commercial educational use is permitted with proper attribution.
+
+**Q: Can I teach a paid bootcamp using this book?**
+A: **No**, paid courses are commercial use. Contact Panaversity for licensing.
+
+**Q: Can I include chapters in my free blog/tutorial?**
+A: **No**, this would be creating derivative works. You can reference and link to the repository.
+
+### Commercial Use
+
+**Q: Can I sell printed copies?**
+A: **No**, commercial distribution is prohibited.
+
+**Q: Can I create a video course based on this book and sell it?**
+A: **No**, this is commercial use and requires permission.
+
+**Q: Can I use the infrastructure tools in my company's projects?**
+A: **No**, commercial use requires licensing. Contact Panaversity.
+
+### Modifications and Translations
+
+**Q: Can I translate the book to another language?**
+A: **No** for distribution. The NoDerivatives clause prohibits translations. Contact Panaversity for translation rights.
+
+**Q: Can I create a summary or abridged version?**
+A: **No**, this is a derivative work and prohibited.
+
+**Q: Can I fix typos and submit corrections?**
+A: **Yes!** Contributions via pull requests are welcome.
+
+### Code and Infrastructure
+
+**Q: Can I extract code examples and create a code library?**
+A: **No**, this is creating a derivative work. Code examples are for learning within the book context.
+
+**Q: Can I use the telemetry infrastructure in my open source project?**
+A: **No** for distribution. Contact Panaversity if you want to use it in your project.
+
+**Q: Can I modify the SDD tools for my own team?**
+A: **Yes** for personal/internal use. **No** for distributing modified versions.
+
+### AI and Machine Learning
+
+**Q: Can I use this content to train my AI model?**
+A: **No**, using this content for AI training (commercial or research) requires explicit permission. Contact Panaversity for AI training licenses.
+
+**Q: Can I include this in a RAG system for my company's internal chatbot?**
+A: **No**, this is commercial use and requires licensing. Even internal corporate use for AI systems requires permission.
+
+**Q: Can AI companies use this for model development?**
+A: **No**, AI model training and development are commercial activities requiring licensing. This includes:
+- Foundation model training
+- Fine-tuning existing models
+- Instruction tuning datasets
+- Evaluation benchmark datasets
+- Code generation model training
+
+**Q: Can I use Claude/ChatGPT/Copilot while learning from this book?**
+A: **Yes!** Using AI assistants as learning tools while studying this content is permitted and encouraged (that's the book's purpose). However, the AI company (Anthropic, OpenAI, etc.) cannot use this book in their training data without permission.
+
+**Q: Can academic researchers use this for AI research?**
+A: **Maybe**, contact Panaversity. We support legitimate research but need to ensure proper attribution and non-commercial use terms.
+
+---
+
+## AI Training and Dataset Licensing
+
+### Why This Matters
+
+This book teaches AI-native development methodologies—making it highly valuable for training AI coding assistants, code generation models, and agentic AI systems. **This value requires protection.**
+
+### Explicit Prohibitions
+
+**WITHOUT PERMISSION, you cannot**:
+- ❌ Include this content in pre-training corpora for foundation models
+- ❌ Use for fine-tuning code generation models (e.g., Codex, StarCoder, CodeLlama derivatives)
+- ❌ Create instruction-tuning datasets from the lessons and examples
+- ❌ Build evaluation benchmarks using the exercises and assessments
+- ❌ Extract for RAG systems (commercial or internal corporate use)
+- ❌ Use in synthetic data generation pipelines
+- ❌ Train embedding models on the content
+- ❌ Include in web scraping datasets for AI training
+
+### Licensing for AI Companies
+
+**We offer AI training licenses** for:
+- Foundation model providers (Anthropic, OpenAI, Google, Meta, etc.)
+- Code generation tool companies (GitHub Copilot, Cursor, etc.)
+- Enterprise AI platform vendors
+- Research institutions (case-by-case evaluation)
+
+**License terms include**:
+- Proper attribution in model cards and documentation
+- Revenue-sharing for commercial models
+- Restrictions on derivative works that compete with the book
+- Audit rights to ensure compliance
+
+**Contact**: ai-licensing@panaversity.org
+
+### Detection and Enforcement
+
+We actively monitor for unauthorized AI training use through:
+- Model capability benchmarking (can your model reproduce our examples?)
+- Prompt-based detection (do models emit content from this book?)
+- Web scraping audit trails
+- Community reports
+
+**Penalties**: Violation of AI training restrictions may result in statutory damages per copyright law, injunctions, and mandatory model retraining.
+
+---
+
+## Requesting Permission
+
+If you want to use this content in ways not permitted by CC BY-NC-ND 4.0, contact Panaversity to discuss licensing options.
+
+**Contact**: licensing@panaversity.org (or appropriate contact)
+
+**Common licensing requests we accommodate**:
+- Commercial training programs and courses
+- Corporate internal use and team training
+- Translations and localization
+- Derivative educational products
+- Integration into commercial platforms
+
+---
+
+## Attribution Requirements
+
+When referencing or citing this work, use the following attribution:
+
+> **"AI Native Software Development: Colearning Agentic AI with Python and TypeScript"**
+> by Panaversity
+> Licensed under CC BY-NC-ND 4.0
+> https://github.com/panaversity/ai-native-software-development
+
+---
+
+## Why This License?
+
+**Our Philosophy**:
+
+1. **Education should be accessible** — Anyone can read, study, and learn for free
+2. **Quality should be protected** — Prevent low-quality derivatives that harm learners
+3. **Attribution matters** — Ensure proper credit for educational content
+4. **Commercial use requires partnership** — Support sustainable educational content creation
+
+**What this means for you**:
+- ✅ Free access to world-class AI-native software development education
+- ✅ Ability to learn and practice without restrictions
+- ✅ Assurance that the content maintains quality standards
+- ❌ Cannot exploit commercially without supporting the project
+
+---
+
+## Enforcement
+
+Panaversity reserves the right to enforce this license. Violations include:
+
+- Selling unauthorized copies (physical or digital)
+- Creating commercial courses without permission
+- Distributing modified versions
+- Removing attribution or license information
+
+**Penalties for violation**: Legal action for copyright infringement, cease-and-desist orders, damages.
+
+---
+
+## License Summary
+
+| Use Case | Permitted? | Notes |
+|----------|-----------|-------|
+| **Read for free** | ✅ Yes | No restrictions |
+| **Personal PDF** | ✅ Yes | Non-commercial only |
+| **Free course** | ✅ Yes | With attribution |
+| **Paid course** | ❌ No | Requires permission |
+| **Sell copies** | ❌ No | Prohibited |
+| **Translate** | ❌ No | Requires permission |
+| **Fork for learning** | ✅ Yes | Personal use |
+| **Public fork** | ❌ No | Cannot distribute separately |
+| **Code examples (learn)** | ✅ Yes | Personal learning |
+| **Code examples (commercial)** | ❌ No | Requires permission |
+| **Infrastructure (personal)** | ✅ Yes | Internal use only |
+| **Infrastructure (distribute)** | ❌ No | Requires permission |
+| **AI model training** | ❌ No | Requires AI training license |
+| **RAG system (personal)** | ⚠️ Maybe | Educational OK, commercial NO |
+| **RAG system (commercial)** | ❌ No | Requires permission |
+| **Use AI while learning** | ✅ Yes | Encouraged! |
+
+---
+
+## Full Legal Text
+
+**Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International**
+
+This is a human-readable summary of (and not a substitute for) the license.
+
+**You are free to**:
+- **Share** — copy and redistribute the material in any medium or format
+
+**Under the following terms**:
+- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+- **NonCommercial** — You may not use the material for commercial purposes.
+- **NoDerivatives** — If you remix, transform, or build upon the material, you may not distribute the modified material.
+- **No additional restrictions** — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+**Notices**:
+- You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable exception or limitation.
+- No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as publicity, privacy, or moral rights may limit how you use the material.
+
+**Full legal code**: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+
+---
+
+## Collected Telemetry Data
+
+Telemetry data collected using the infrastructure in this repository is **NOT covered by this license** and is governed separately by `DATA-USAGE-POLICY`.
+
+Collected data is:
+- NOT included in the repository
+- Stored locally or in private cloud infrastructure
+- Subject to separate data governance rules
+- Protected by privacy policies
+
+See `DATA-USAGE-POLICY` for details.
+
+---
+
+**Version**: 1.1
+**Last Updated**: 2025-01-10
+**Panaversity Project**

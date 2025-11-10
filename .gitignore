@@ -15,9 +15,15 @@
 .env.development.local
 .env.test.local
 .env.production.local
-
+.env
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 nul
 .trees/
+
+# Telemetry data (Feature 017 - Usage Data Collection)
+telemetry-server/clickhouse_data/
+telemetry-server/otel_logs/
+*.db
+*.log

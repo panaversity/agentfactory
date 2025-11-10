@@ -1,0 +1,174 @@
+# OpenTelemetry Collector Configuration
+# Feature 017: Usage Data Collection System
+# Version: 1.0.0
+
+receivers:
+  # OTLP gRPC receiver (primary for Claude Code telemetry)
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+        max_recv_msg_size_mib: 4
+      http:
+        endpoint: 0.0.0.0:4318
+        cors:
+          allowed_origins:
+            - "*"
+
+  # Prometheus receiver for collector self-monitoring
+  prometheus:
+    config:
+      scrape_configs:
+        - job_name: "otel-collector"
+          scrape_interval: 30s
+          static_configs:
+            - targets: ["localhost:8888"]
+
+processors:
+  # Batch processor (improve throughput)
+  batch:
+    timeout: 10s
+    send_batch_size: 1024
+    send_batch_max_size: 2048
+
+  # Memory limiter (prevent OOM)
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 512
+    spike_limit_mib: 128
+
+  # Resource processor (add deployment context)
+  resource:
+    attributes:
+      - key: deployment.environment
+        value: local
+        action: insert
+      - key: service.name
+        value: claude-code-telemetry
+        action: insert
+      - key: service.version
+        value: 1.0.0
+        action: insert
+
+  # Attributes processor (data sanitization)
+  attributes:
+    actions:
+      # Remove PII if accidentally captured
+      - key: user.email
+        action: delete
+      - key: user.phone
+        action: delete
+      # Hash sensitive data
+      - key: prompt.text
+        action: hash
+      - key: tool.parameters
+        action: hash
+      # Add timestamp processing
+      - key: event.timestamp
+        from_attribute: timestamp
+        action: insert
+
+  # Filter processor (drop test events)
+  filter:
+    traces:
+      span:
+        - 'attributes["test.mode"] == true'
+    metrics:
+      metric:
+        - 'resource.attributes["test.mode"] == true'
+    logs:
+      log_record:
+        - 'attributes["test.mode"] == true'
+
+exporters:
+  # ClickHouse exporter (primary storage)
+  clickhouse:
+    endpoint: http://clickhouse:8123
+    database: telemetry
+    username: ${CLICKHOUSE_USER}
+    password: ${CLICKHOUSE_PASSWORD}
+    timeout: 10s
+    retry_on_failure:
+      enabled: true
+      initial_interval: 5s
+      max_interval: 30s
+      max_elapsed_time: 300s
+    sending_queue:
+      enabled: true
+      num_consumers: 10
+      queue_size: 5000
+
+  # Debug exporter (debugging)
+  debug:
+    verbosity: detailed
+    sampling_initial: 5
+    sampling_thereafter: 200
+
+  # File exporter (backup/fallback)
+  file:
+    path: /var/log/otel/telemetry-events.jsonl
+    rotation:
+      max_megabytes: 100
+      max_days: 7
+      max_backups: 3
+
+  # Prometheus exporter (self-monitoring)
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+    namespace: otel_collector
+    const_labels:
+      environment: local
+
+extensions:
+  # Health check extension
+  health_check:
+    endpoint: 0.0.0.0:13133
+    path: /
+    check_collector_pipeline:
+      enabled: true
+      interval: 5m
+      exporter_failure_threshold: 5
+
+  # PPRof extension (performance profiling)
+  pprof:
+    endpoint: 0.0.0.0:1777
+
+  # zPages extension (diagnostics)
+  zpages:
+    endpoint: 0.0.0.0:55679
+
+service:
+  extensions: [health_check, pprof, zpages]
+
+  pipelines:
+    # Traces pipeline (workflow traces)
+    traces:
+      receivers: [otlp]
+      processors: [memory_limiter, resource, attributes, batch]
+      exporters: [clickhouse, file, debug]
+
+    # Metrics pipeline (performance metrics)
+    metrics:
+      receivers: [otlp, prometheus]
+      processors: [memory_limiter, resource, batch]
+      exporters: [clickhouse, prometheus, debug]
+
+    # Logs pipeline (event logs)
+    logs:
+      receivers: [otlp]
+      processors: [memory_limiter, resource, attributes, filter, batch]
+      exporters: [clickhouse, file, debug]
+
+  telemetry:
+    logs:
+      level: info
+      development: false
+      encoding: json
+      output_paths:
+        - /var/log/otel/collector.log
+        - stdout
+      error_output_paths:
+        - /var/log/otel/collector-error.log
+        - stderr
+    metrics:
+      level: detailed

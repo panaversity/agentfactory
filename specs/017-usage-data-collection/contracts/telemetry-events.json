@@ -1,0 +1,418 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OpenTelemetry Telemetry Events Schema",
+  "description": "Specification for all telemetry event types exported by Feature 017 (Usage Data Collection)",
+  "type": "object",
+  "definitions": {
+    "base_event": {
+      "type": "object",
+      "required": ["event_type", "session_id", "user_id", "organization_id", "timestamp"],
+      "properties": {
+        "event_type": {
+          "type": "string",
+          "enum": ["user_prompt", "tool_call", "api_request", "api_error", "validation_result", "workflow_checkpoint"],
+          "description": "Classification of the event"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Unique identifier for this event (auto-generated)"
+        },
+        "session_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Session this event belongs to"
+        },
+        "user_id": {
+          "type": "string",
+          "description": "Team member identifier (email or username)"
+        },
+        "organization_id": {
+          "type": "string",
+          "description": "Project/organization identifier"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 UTC timestamp when event occurred"
+        },
+        "code_version": {
+          "type": "string",
+          "description": "Claude Code version (e.g., '1.2.3')"
+        },
+        "terminal_type": {
+          "type": ["string", "null"],
+          "description": "Shell type (zsh, bash, etc.)"
+        },
+        "git_branch": {
+          "type": "string",
+          "description": "Active git branch"
+        },
+        "git_commit": {
+          "type": ["string", "null"],
+          "description": "Current commit hash"
+        },
+        "feature_id": {
+          "type": "string",
+          "description": "Feature/spec number (e.g., '010')"
+        },
+        "chapter_number": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "maximum": 99,
+          "description": "Chapter number being worked on"
+        }
+      }
+    },
+    "user_prompt_event": {
+      "allOf": [
+        {"$ref": "#/definitions/base_event"},
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "user_prompt"
+            },
+            "prompt_length_chars": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Character count of prompt text"
+            },
+            "prompt_tokens_estimated": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Estimated token count using tokenizer"
+            },
+            "prompt_text_hash": {
+              "type": "string",
+              "description": "SHA256 hash of prompt (privacy-preserving)"
+            },
+            "model_id": {
+              "type": "string",
+              "description": "Model used (e.g., 'claude-3.5-sonnet')"
+            },
+            "temperature": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2,
+              "description": "Temperature setting"
+            },
+            "max_tokens": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Maximum tokens requested"
+            }
+          },
+          "required": ["prompt_length_chars", "prompt_tokens_estimated"]
+        }
+      ]
+    },
+    "tool_call_event": {
+      "allOf": [
+        {"$ref": "#/definitions/base_event"},
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "tool_call"
+            },
+            "tool_name": {
+              "type": "string",
+              "enum": ["file_edit", "bash", "browser", "view_file", "list_files", "create_file"],
+              "description": "Type of tool invoked"
+            },
+            "tool_call_id": {
+              "type": "string",
+              "description": "Unique identifier for this tool invocation"
+            },
+            "tool_status": {
+              "type": "string",
+              "enum": ["success", "failure", "timeout"],
+              "description": "Execution result"
+            },
+            "tool_duration_ms": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Execution time in milliseconds"
+            },
+            "file_path": {
+              "type": ["string", "null"],
+              "description": "File path for file operations"
+            },
+            "file_lines_changed": {
+              "type": ["integer", "null"],
+              "description": "Lines inserted + deleted"
+            },
+            "bash_command_hash": {
+              "type": ["string", "null"],
+              "description": "SHA256 hash of bash command (privacy)"
+            },
+            "bash_exit_code": {
+              "type": ["integer", "null"],
+              "description": "Exit code from bash execution"
+            },
+            "tool_output_length_chars": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Size of tool output"
+            },
+            "error_message": {
+              "type": ["string", "null"],
+              "description": "Error message if failed (hashed)"
+            }
+          },
+          "required": ["tool_name", "tool_status"]
+        }
+      ]
+    },
+    "api_request_event": {
+      "allOf": [
+        {"$ref": "#/definitions/base_event"},
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "api_request"
+            },
+            "api_name": {
+              "type": "string",
+              "description": "API endpoint (e.g., 'anthropic.messages')"
+            },
+            "api_status": {
+              "type": "string",
+              "enum": ["success", "rate_limited", "error"],
+              "description": "Request outcome"
+            },
+            "api_http_status": {
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599,
+              "description": "HTTP status code"
+            },
+            "api_duration_ms": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Request duration in milliseconds"
+            },
+            "tokens_input": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Input tokens consumed"
+            },
+            "tokens_output": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Output tokens generated"
+            },
+            "tokens_cache_read": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Tokens read from cache (prompt caching)"
+            },
+            "cost_usd": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Calculated cost in USD"
+            },
+            "model_id": {
+              "type": "string",
+              "description": "Model used for request"
+            },
+            "stop_reason": {
+              "type": "string",
+              "enum": ["end_turn", "max_tokens", "tool_use"],
+              "description": "Why response stopped"
+            }
+          },
+          "required": ["api_name", "api_status", "tokens_input", "tokens_output"]
+        }
+      ]
+    },
+    "api_error_event": {
+      "allOf": [
+        {"$ref": "#/definitions/base_event"},
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "api_error"
+            },
+            "error_type": {
+              "type": "string",
+              "enum": ["rate_limit_error", "timeout_error", "authentication_error", "network_error", "server_error", "unknown_error"],
+              "description": "Error classification"
+            },
+            "error_message_hash": {
+              "type": "string",
+              "description": "SHA256 hash of error message (privacy)"
+            },
+            "http_status": {
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599,
+              "description": "HTTP status code"
+            },
+            "api_name": {
+              "type": "string",
+              "description": "API that failed"
+            },
+            "retry_attempt": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Retry attempt number"
+            },
+            "retry_after_seconds": {
+              "type": ["integer", "null"],
+              "minimum": 0,
+              "description": "Backoff guidance from API"
+            }
+          },
+          "required": ["error_type", "http_status"]
+        }
+      ]
+    },
+    "validation_result_event": {
+      "allOf": [
+        {"$ref": "#/definitions/base_event"},
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "validation_result"
+            },
+            "output_type": {
+              "type": "string",
+              "enum": ["code", "markdown", "analysis", "spec"],
+              "description": "Type of output being validated"
+            },
+            "validation_outcome": {
+              "type": "string",
+              "enum": ["approved", "rejected", "modified", "pending_review"],
+              "description": "Validation result"
+            },
+            "quality_score": {
+              "type": ["integer", "null"],
+              "minimum": 1,
+              "maximum": 10,
+              "description": "User quality rating (optional)"
+            },
+            "feedback_text_hash": {
+              "type": "string",
+              "description": "SHA256 hash of feedback (privacy)"
+            },
+            "feedback_text_length_chars": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Length of feedback text"
+            },
+            "time_to_validate_seconds": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Time spent reviewing output"
+            }
+          },
+          "required": ["output_type", "validation_outcome"]
+        }
+      ]
+    },
+    "workflow_checkpoint_event": {
+      "allOf": [
+        {"$ref": "#/definitions/base_event"},
+        {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "const": "workflow_checkpoint"
+            },
+            "checkpoint_type": {
+              "type": "string",
+              "enum": ["spec_completed", "plan_completed", "implement_started", "validation_passed", "validation_failed"],
+              "description": "Workflow milestone type"
+            },
+            "elapsed_time_minutes": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Minutes since session start"
+            },
+            "artifacts_created": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Number of files/outputs created"
+            }
+          },
+          "required": ["checkpoint_type"]
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {"$ref": "#/definitions/user_prompt_event"},
+    {"$ref": "#/definitions/tool_call_event"},
+    {"$ref": "#/definitions/api_request_event"},
+    {"$ref": "#/definitions/api_error_event"},
+    {"$ref": "#/definitions/validation_result_event"},
+    {"$ref": "#/definitions/workflow_checkpoint_event"}
+  ],
+  "examples": [
+    {
+      "event_type": "user_prompt",
+      "event_id": "550e8400-e29b-41d4-a716-446655440000",
+      "session_id": "550e8400-e29b-41d4-a716-446655440001",
+      "user_id": "alice@panaversity.com",
+      "organization_id": "panaversity-book-project",
+      "timestamp": "2025-01-10T14:23:45.123Z",
+      "code_version": "claude-code-1.2.3",
+      "terminal_type": "zsh",
+      "git_branch": "010-chapter-specification",
+      "git_commit": "a1b2c3d4e5f6g7h8i9j0",
+      "feature_id": "010",
+      "chapter_number": 10,
+      "prompt_length_chars": 1247,
+      "prompt_tokens_estimated": 380,
+      "prompt_text_hash": "sha256:abc123def456ghi789",
+      "model_id": "claude-3.5-sonnet",
+      "temperature": 0.7,
+      "max_tokens": 4096
+    },
+    {
+      "event_type": "api_request",
+      "event_id": "550e8400-e29b-41d4-a716-446655440010",
+      "session_id": "550e8400-e29b-41d4-a716-446655440001",
+      "user_id": "alice@panaversity.com",
+      "organization_id": "panaversity-book-project",
+      "timestamp": "2025-01-10T14:23:50.789Z",
+      "code_version": "claude-code-1.2.3",
+      "git_branch": "010-chapter-specification",
+      "feature_id": "010",
+      "chapter_number": 10,
+      "api_name": "anthropic.messages",
+      "api_status": "success",
+      "api_http_status": 200,
+      "api_duration_ms": 3200,
+      "tokens_input": 850,
+      "tokens_output": 420,
+      "tokens_cache_read": 0,
+      "cost_usd": 0.042,
+      "model_id": "claude-3.5-sonnet",
+      "stop_reason": "end_turn"
+    },
+    {
+      "event_type": "api_error",
+      "event_id": "550e8400-e29b-41d4-a716-446655440020",
+      "session_id": "550e8400-e29b-41d4-a716-446655440001",
+      "user_id": "alice@panaversity.com",
+      "organization_id": "panaversity-book-project",
+      "timestamp": "2025-01-10T14:23:52.100Z",
+      "code_version": "claude-code-1.2.3",
+      "git_branch": "010-chapter-specification",
+      "feature_id": "010",
+      "chapter_number": 10,
+      "error_type": "rate_limit_error",
+      "error_message_hash": "sha256:ghi789jkl012mno345",
+      "http_status": 429,
+      "api_name": "anthropic.messages",
+      "retry_attempt": 2,
+      "retry_after_seconds": 60
+    }
+  ]
+}
