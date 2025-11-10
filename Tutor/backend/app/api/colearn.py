@@ -11,7 +11,6 @@ import json
 import asyncio
 
 from app.agent.colearning_agent import create_colearning_agent, TeachingPhase
-from app.database import get_session_db, SessionDB
 
 router = APIRouter(prefix="/api/colearn", tags=["colearning"])
 
