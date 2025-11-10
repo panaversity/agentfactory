@@ -46,22 +46,51 @@ function TutorChatComponent() {
   // Listen for external events to open chat
   useEffect(() => {
     const handleOpenChat = (event: CustomEvent) => {
-      if (!isOpen) {
-        const selectedText = event.detail?.text || '';
-        if (selectedText) {
-          setMessage(selectedText);
-        }
-        setIsOpen(true);
+      const selectedText = event.detail?.text || '';
+      const autoSend = event.detail?.autoSend || false;
 
-        // Open login if not logged in
-        if (!isLoggedIn) {
-          setShowLogin(true);
-        } else {
-          // Connect websocket if needed
-          const token = localStorage.getItem('tutorgpt_token');
-          if (token && !ws) {
-            connectWebSocket(token);
-          }
+      // Set message first
+      if (selectedText) {
+        setMessage(selectedText);
+      }
+
+      // Open chat if not open
+      if (!isOpen) {
+        setIsOpen(true);
+      }
+
+      // Open login if not logged in
+      if (!isLoggedIn) {
+        setShowLogin(true);
+      } else {
+        // Connect websocket if needed
+        const token = localStorage.getItem('tutorgpt_token');
+        if (token && !ws) {
+          connectWebSocket(token);
+        }
+
+        // Auto-send if requested
+        if (autoSend && selectedText && ws && ws.readyState === WebSocket.OPEN) {
+          // Wait a bit for the message to be set, then send
+          setTimeout(() => {
+            if (ws && ws.readyState === WebSocket.OPEN) {
+              const userMessage: Message = {
+                id: Date.now().toString(),
+                type: 'user',
+                content: selectedText,
+                timestamp: new Date()
+              };
+
+              setMessages(prev => [...prev, userMessage]);
+
+              ws.send(JSON.stringify({
+                type: 'message',
+                message: selectedText
+              }));
+
+              setMessage('');
+            }
+          }, 100);
         }
       }
     };
@@ -70,62 +99,62 @@ function TutorChatComponent() {
     return () => {
       window.removeEventListener('openTutorChat' as any, handleOpenChat);
     };
-  }, [isOpen, isLoggedIn, ws]);
+  }, [isOpen, isLoggedIn, ws, setMessages]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Text selection handler
-  useEffect(() => {
-    const handleTextSelection = (e: MouseEvent) => {
-      // Don't show tooltip if clicking inside the tooltip itself or chat widget
-      if (tooltipRef.current?.contains(e.target as Node)) {
-        return;
-      }
+  // Text selection handler - DISABLED (using SelectionPopover instead)
+  // useEffect(() => {
+  //   const handleTextSelection = (e: MouseEvent) => {
+  //     // Don't show tooltip if clicking inside the tooltip itself or chat widget
+  //     if (tooltipRef.current?.contains(e.target as Node)) {
+  //       return;
+  //     }
 
-      // Small delay to ensure selection is complete
-      setTimeout(() => {
-        const selection = window.getSelection();
-        const text = selection?.toString().trim();
+  //     // Small delay to ensure selection is complete
+  //     setTimeout(() => {
+  //       const selection = window.getSelection();
+  //       const text = selection?.toString().trim();
 
-        if (text && text.length > 0 && !isOpen) {
-          const range = selection?.getRangeAt(0);
-          const rect = range?.getBoundingClientRect();
+  //       if (text && text.length > 0 && !isOpen) {
+  //         const range = selection?.getRangeAt(0);
+  //         const rect = range?.getBoundingClientRect();
 
-          if (rect) {
-            setSelectedText(text);
-            setTooltipPosition({
-              x: rect.left + rect.width / 2,
-              y: rect.top - 10
-            });
-            setShowTooltip(true);
-            console.log('Text selected:', text); // Debug log
-          }
-        } else if (!text) {
-          // Only hide if we're not clicking inside the tooltip
-          if (!tooltipRef.current?.contains(e.target as Node)) {
-            setShowTooltip(false);
-          }
-        }
-      }, 10);
-    };
+  //         if (rect) {
+  //           setSelectedText(text);
+  //           setTooltipPosition({
+  //             x: rect.left + rect.width / 2,
+  //             y: rect.top - 10
+  //           });
+  //           setShowTooltip(true);
+  //           console.log('Text selected:', text); // Debug log
+  //         }
+  //       } else if (!text) {
+  //         // Only hide if we're not clicking inside the tooltip
+  //         if (!tooltipRef.current?.contains(e.target as Node)) {
+  //           setShowTooltip(false);
+  //         }
+  //       }
+  //     }, 10);
+  //   };
 
-    const handleClickOutside = (e: MouseEvent) => {
-      // Hide tooltip if clicking outside of it
-      if (showTooltip && tooltipRef.current && !tooltipRef.current.contains(e.target as Node)) {
-        setShowTooltip(false);
-      }
-    };
+  //   const handleClickOutside = (e: MouseEvent) => {
+  //     // Hide tooltip if clicking outside of it
+  //     if (showTooltip && tooltipRef.current && !tooltipRef.current.contains(e.target as Node)) {
+  //       setShowTooltip(false);
+  //     }
+  //   };
 
-    document.addEventListener('mouseup', handleTextSelection);
-    document.addEventListener('mousedown', handleClickOutside);
+  //   document.addEventListener('mouseup', handleTextSelection);
+  //   document.addEventListener('mousedown', handleClickOutside);
 
-    return () => {
-      document.removeEventListener('mouseup', handleTextSelection);
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isOpen, showTooltip]);
+  //   return () => {
+  //     document.removeEventListener('mouseup', handleTextSelection);
+  //     document.removeEventListener('mousedown', handleClickOutside);
+  //   };
+  // }, [isOpen, showTooltip]);
 
   // Auto-resize textarea
   useEffect(() => {
@@ -274,8 +303,8 @@ function TutorChatComponent() {
     setIsOpen(!isOpen);
   };
 
-  // Text selection tooltip with multiple options
-  if (showTooltip && !isOpen) {
+  // Text selection tooltip with multiple options - DISABLED (using SelectionPopover instead)
+  if (false && showTooltip && !isOpen) {
     return (
       <>
         <div

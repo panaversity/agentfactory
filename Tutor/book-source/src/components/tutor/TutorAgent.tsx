@@ -19,18 +19,18 @@ const TutorAgent: React.FC = () => {
   }, []);
 
   // Handle opening TutorChat
-  const handleOpenChat = useCallback((text: string) => {
+  const handleOpenChat = useCallback((text: string, autoSend: boolean = false) => {
     // Dispatch custom event to open TutorChat
     const event = new CustomEvent('openTutorChat', {
-      detail: { text }
+      detail: { text, autoSend }
     });
     window.dispatchEvent(event);
   }, []);
 
-  // Handle new messages - send to TutorChat
+  // Handle new messages - send to TutorChat with auto-send
   const handleNewMessage = useCallback((message: ChatMessage) => {
-    // For Summary, Explain, etc., open TutorChat with the response
-    handleOpenChat(message.content);
+    // For Summary, Explain, etc., open TutorChat and auto-send
+    handleOpenChat(message.content, true);
   }, [handleOpenChat]);
 
   // Don't render on server-side

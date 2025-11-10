@@ -11,7 +11,7 @@ import { agentApi, useMockResponses, mockAgentResponse, type AgentAction, type C
 import InlinePreview from './InlinePreview';
 
 interface SelectionPopoverProps {
-  onOpenChat?: (prefillText: string) => void;
+  onOpenChat?: (prefillText: string, autoSend?: boolean) => void;
   onNewMessage?: (message: ChatMessage) => void;
 }
 
@@ -160,66 +160,51 @@ const SelectionPopover: React.FC<SelectionPopoverProps> = ({ onOpenChat, onNewMe
   const handleActionClick = async (action: AgentAction['action']) => {
     if (isLoading) return;
 
-    // Special handling for "Ask Tutor" - open chat with prefilled text
-    if (action === 'ask') {
-      const prefillText = `Student highlighted: "${popoverState.selectedText}"\n\nQuestion: `;
-      onOpenChat?.(prefillText);
-      setPopoverState((prev) => ({ ...prev, visible: false }));
-      return;
-    }
-
     setIsLoading(true);
 
     try {
-      const actionData: AgentAction = {
-        action,
-        text: popoverState.selectedText,
-        cursorContext: popoverState.cursorContext,
-      };
+      let promptText = '';
 
-      const response = useMockResponses
-        ? await mockAgentResponse(actionData)
-        : await agentApi.sendAction(actionData);
-
-      if (response.success && response.message) {
-        // Show inline preview
-        if (popoverState.range) {
-          const previewPosition = calculatePosition(popoverState.range);
-          setInlinePreview({
-            visible: true,
-            content: response.preview || response.message,
-            position: {
-              top: previewPosition.top + 100,
-              left: previewPosition.left,
-            },
-          });
-        }
-
-        // Add to chat history
-        const userMessage: ChatMessage = {
-          id: `msg-${Date.now()}-user`,
-          role: 'user',
-          content: `[${action.toUpperCase()}] ${popoverState.selectedText.substring(0, 100)}...`,
-          timestamp: Date.now(),
-          action,
-        };
-
-        const assistantMessage: ChatMessage = {
-          id: `msg-${Date.now()}-assistant`,
-          role: 'assistant',
-          content: response.message,
-          timestamp: Date.now() + 1,
-          action,
-        };
-
-        onNewMessage?.(userMessage);
-        onNewMessage?.(assistantMessage);
+      // Format the prompt based on action
+      switch (action) {
+        case 'summary':
+          promptText = `Please provide a summary of the following text:\n\n"${popoverState.selectedText}"`;
+          break;
+        case 'explain':
+          promptText = `Please explain the following text in simple terms:\n\n"${popoverState.selectedText}"`;
+          break;
+        case 'main_points':
+          promptText = `Please list the main points from the following text:\n\n"${popoverState.selectedText}"`;
+          break;
+        case 'example':
+          promptText = `Please provide a practical example for the following concept:\n\n"${popoverState.selectedText}"`;
+          break;
+        case 'ask':
+          // For "Ask Tutor", just prefill the text without auto-sending
+          promptText = `Student highlighted: "${popoverState.selectedText}"\n\nQuestion: `;
+          // Open chat without auto-send for Ask Tutor
+          onOpenChat?.(promptText, false);
+          setPopoverState((prev) => ({ ...prev, visible: false }));
+          setIsLoading(false);
+          return;
       }
+
+      // For all other actions, open TutorChat with the prompt and auto-send
+      // Dispatch event directly to TutorChat
+      const event = new CustomEvent('openTutorChat', {
+        detail: {
+          text: promptText,
+          autoSend: true  // Auto-send for Summary, Explain, Main Points, Example
+        }
+      });
+      window.dispatchEvent(event);
+
+      // Hide popover
+      setPopoverState((prev) => ({ ...prev, visible: false }));
     } catch (error) {
       console.error('Error handling action:', error);
     } finally {
       setIsLoading(false);
-      setPopoverState((prev) => ({ ...prev, visible: false }));
     }
   };
 
