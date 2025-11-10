@@ -91,27 +91,34 @@ function TutorChatComponent() {
 
   // Send pending auto-send message when WebSocket is ready
   useEffect(() => {
-    if (pendingAutoSend && ws && ws.readyState === WebSocket.OPEN && connectionStatus === 'connected') {
-      console.log('Sending pending auto-send message:', pendingAutoSend);
+    if (pendingAutoSend && ws && ws.readyState === WebSocket.OPEN) {
+      console.log('Auto-sending message:', pendingAutoSend);
 
-      const userMessage: Message = {
-        id: Date.now().toString(),
-        type: 'user',
-        content: pendingAutoSend,
-        timestamp: new Date()
-      };
+      // Small delay to ensure WebSocket is fully ready
+      const timer = setTimeout(() => {
+        if (ws && ws.readyState === WebSocket.OPEN) {
+          const userMessage: Message = {
+            id: Date.now().toString(),
+            type: 'user',
+            content: pendingAutoSend,
+            timestamp: new Date()
+          };
 
-      setMessages(prev => [...prev, userMessage]);
+          setMessages(prev => [...prev, userMessage]);
 
-      ws.send(JSON.stringify({
-        type: 'message',
-        message: pendingAutoSend
-      }));
+          ws.send(JSON.stringify({
+            type: 'message',
+            message: pendingAutoSend
+          }));
 
-      setMessage('');
-      setPendingAutoSend(null); // Clear pending message
+          setMessage('');
+          setPendingAutoSend(null); // Clear pending message
+        }
+      }, 300);
+
+      return () => clearTimeout(timer);
     }
-  }, [pendingAutoSend, ws, connectionStatus]);
+  }, [pendingAutoSend, ws]);
 
   // Text selection handler - DISABLED (using SelectionPopover instead)
   // useEffect(() => {
