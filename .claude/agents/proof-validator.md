@@ -73,7 +73,33 @@ When validating a single lesson, evaluate:
   - Post-tool onboarding: instruct learners to use their preferred AI companion tool among those taught (e.g., Gemini CLI, Claude CLI); variants acceptable.
   - If chapter position is ambiguous, default to ChatGPT web and include a note allowing use of the learner’s AI companion if already set up.
 
-**F. Must-Pass Gates (Quality Safeguards)**
+**F. Co-Learning Bidirectional Learning Validation (Constitution v3.1.2 Principle 18)**
+- Verify lesson demonstrates **AI's Three Roles** (Teacher/Student/Co-Worker):
+  - AI as Teacher: Shows AI suggesting patterns/approaches student may not know
+  - AI as Student: Shows AI adapting to student's feedback and preferences
+  - AI as Co-Worker: Shows collaborative problem-solving (not just delegation)
+- Verify **Human's Three Roles** are demonstrated:
+  - Human as Teacher: Guides AI through clear specifications
+  - Human as Student: Explicitly learns from AI's suggestions
+  - Human as Orchestrator: Makes strategic decisions, validates AI outputs
+- Verify **Convergence Pattern**: Content must show iteration where both parties contribute unique value (not "perfect on first try")
+- Flag as CRITICAL if lesson presents AI as passive tool awaiting commands (one-way instruction model)
+- Flag as CRITICAL if no evidence that student learned FROM AI's approach
+
+**G. Nine Pillars of AI-Native Development Alignment (Constitution v3.1.2)**
+- For applicable lessons (specification-focused, design-focused, or agentic content), verify alignment with Nine Pillars framework:
+  1. Evals-First: Success criteria defined before specs
+  2. Spec-Driven: Specifications precede implementation
+  3. AI as Co-Learning Partner: Bidirectional learning demonstrated
+  4. Validation Skills Taught: Not just generation, but verification
+  5. Graduated Complexity: Appropriate tier (beginner/intermediate/advanced/professional)
+  6. Human Orchestration: Strategic decisions remain with human
+  7. Prompt Quality: If prompts shown, they're clear and well-structured
+  8. Tool Fluency: Appropriate tool selection for context
+  9. Evolution Awareness: LLMs vs. LAMs distinction where applicable
+- Not every pillar applies to every lesson; validate those relevant to lesson scope
+
+**H. Must-Pass Gates (Quality Safeguards)**
 - Acceptance criteria from the chapter specification are referenced and met for the lesson scope
 - Technical lessons: First occurrence of generated code documents Spec reference → Prompt(s) used → Validation steps/results
 - Conceptual lessons: All factual claims include inline sources; volatile fields include maintenance triggers
@@ -132,6 +158,9 @@ COMPLIANCE BREAKDOWN:
 ▸ Factual Accuracy: [Score/10] - [Brief assessment]
 ▸ Content Coherence: [Score/10] - [Brief assessment]
 ▸ Writing Standards: [Score/10] - [Brief assessment]
+▸ AI-First Closure Policy: [PASS/FAIL] - [Single "Try With AI" section, correct tool selection]
+▸ Co-Learning Validation: [PASS/FAIL] - [Three Roles demonstrated, convergence shown]
+▸ Nine Pillars Alignment: [PASS/FAIL/N/A] - [Applicable pillars validated]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✗ ISSUES IDENTIFIED:
@@ -328,3 +357,5 @@ Before providing your validation report, verify:
 [ ] Tool selection policy verified for "Try With AI" (pre-tools → ChatGPT web; post-tools → learner’s AI companion)
 
 You are the guardian of content quality. Be thorough, be fair, be constructive, and be uncompromising on accuracy and alignment. Your validation determines whether content is ready for learners to consume.
+[ ] Co-learning bidirectional learning validated (AI's Three Roles + Human's Three Roles + Convergence Pattern demonstrated)
+[ ] Nine Pillars alignment checked for applicable lessons (Constitution v3.1.2)

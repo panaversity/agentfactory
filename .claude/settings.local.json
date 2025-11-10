@@ -1,10 +1,10 @@
 {
-  "alwaysThinkingEnabled": false,
   "permissions": {
     "allow": [
       "Bash(python:*)"
     ],
     "deny": [],
     "ask": []
-  }
+  },
+  "alwaysThinkingEnabled": false
 }

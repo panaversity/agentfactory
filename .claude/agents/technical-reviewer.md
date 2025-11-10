@@ -42,7 +42,7 @@ Validate completed chapters for publication readiness across four dimensions (ad
    - Conceptual chapters: Facts accurate, examples relevant, claims verified
 2. **Pedagogical Effectiveness**: Learning objectives align with content; concepts scaffold progressively; practice elements appropriate to chapter type
 
-3. **Constitution Alignment**: CoLearning Domain Skills (from `.claude/skills/` directory) applied contextually; accessibility considered; "learning WITH AI" emphasis present; evals defined before implementation (per constitution v3.0.1)
+3. **Constitution Alignment**: CoLearning Domain Skills (from `.claude/skills/` directory) applied contextually; accessibility considered; "co-learning partnership" emphasis present; evals defined before implementation; Nine Pillars demonstrated; Three Roles Framework shown (per constitution v3.1.2)
 
 4. **Quality Assurance**: No typos, grammatical errors, or formatting issues; Docusaurus frontmatter correct; cross-references valid
 
@@ -231,6 +231,64 @@ Are all 9 CoLearning Domain Skills applied appropriately for the chapter type?
 - Review Section IV of `.specify/memory/constitution.md`
 - Verify all ALWAYS DO rules are followed
 - Verify no NEVER DO rules are violated
+
+### Phase 3.5: Nine Pillars Alignment Validation (NEW)
+
+**Validate chapter demonstrates relevant Nine Pillars of AI-Native Development:**
+
+The Nine Pillars: 1) AI-First Mindset, 2) Specification-First Development, 3) Evals-Driven Validation, 4) Iterative Convergence, 5) Context Engineering, 6) Output Validation, 7) Strategic Orchestration, 8) Continuous Learning, 9) Ethical Responsibility
+
+**Validation Checklist:**
+- [ ] Chapter identifies which pillars it teaches/applies (minimum 2-3)
+- [ ] Pillar application demonstrated in content (not just mentioned)
+- [ ] Technical chapters show pillar-aligned workflows (e.g., Spec→Prompt→Code→Validation for Pillar 2)
+- [ ] Conceptual chapters explain pillars with real-world examples
+- [ ] Advanced chapters (Parts 6+) show LAM-specific pillar applications
+
+**FAIL if:**
+- ❌ Critical pillar missing (e.g., technical chapter without Evals-Driven Validation)
+- ❌ Pillars mentioned but not demonstrated
+- ❌ No pillar alignment documented
+
+### Phase 3.6: Three Roles Framework Validation (NEW)
+
+**Validate content demonstrates AI's Three Roles (Principle 18):**
+
+**AI as Teacher:** Suggests patterns, explains tradeoffs, teaches approaches
+**AI as Student:** Learns from feedback, adapts to preferences
+**AI as Co-Worker:** Collaborates as peer, not subordinate
+
+**Technical Chapters MUST include:**
+- [ ] At least ONE instance where student learns FROM AI's suggestion
+- [ ] At least ONE instance where AI adapts TO student's feedback
+- [ ] Convergence through iteration (not "perfect on first try")
+- [ ] Explicit callouts: "What you learned:" and "What AI learned:"
+
+**Conceptual Chapters should:**
+- [ ] Frame AI's role appropriately
+- [ ] Show how AI contributes knowledge
+- [ ] Include reflection prompts about working WITH AI
+
+**FAIL if:**
+- ❌ AI only executes commands (no teaching moments)
+- ❌ No evidence of student learning from AI
+- ❌ No evidence of AI adapting to student
+- ❌ One-way instruction model (human commands → AI obeys)
+
+### Phase 3.7: "Specs Are the New Syntax" Validation (NEW)
+
+**Validate specification writing emphasized as PRIMARY skill:**
+
+**Technical Chapters MUST:**
+- [ ] First occurrence of generated code shows: Spec → Prompt → Code → Validation sequence
+- [ ] Specification quality taught (what makes good vs bad specs)
+- [ ] Exercises practice spec-writing (not just code typing)
+- [ ] Validation against specs demonstrated
+
+**FAIL if:**
+- ❌ Code shown without specification context
+- ❌ No spec-writing practice in exercises
+- ❌ Spec-first pattern not demonstrated
 
 ### Phase 4: Quality Checks & Professional Polish
 
