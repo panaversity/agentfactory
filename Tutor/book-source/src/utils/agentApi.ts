@@ -351,10 +351,10 @@ export const agentApi = new AgentApiClient();
 
 // Mock responses for development (when backend is not available)
 // To disable mock mode, set in browser console: localStorage.setItem('tutorgpt_use_mock', 'false')
-// Default: true (mock enabled for testing without backend)
+// Default: false (use real backend, fall back to mock if unavailable)
 export const useMockResponses = typeof window !== 'undefined'
-  ? localStorage.getItem('tutorgpt_use_mock') !== 'false' // Changed to default true
-  : true;
+  ? localStorage.getItem('tutorgpt_use_mock') === 'true' // Changed to default false
+  : false;
 
 export const mockAgentResponse = async (action: AgentAction): Promise<AgentResponse> => {
   // Simulate network delay

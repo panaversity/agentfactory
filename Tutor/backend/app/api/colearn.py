@@ -154,9 +154,15 @@ async def co_learning_action(request: CoLearningRequest):
 def _generate_action_prompt(request: CoLearningRequest) -> str:
     """Generate appropriate prompt based on action type"""
 
-    action_prompts = {
-        'greeting': f"Please greet the student warmly in {request.language}. Ask if they want to start from Chapter 1 or jump to a specific chapter. Also ask their preferred language (English, Roman Urdu, Spanish).",
+    # Special case: greeting action sends "hello" to trigger hello_trigger
+    if request.action == 'greeting':
+        return "hello"
 
+    # Special case: message action sends student's text directly (natural conversation)
+    if request.action == 'message':
+        return request.text or request.studentAnswer or "Continue teaching"
+
+    action_prompts = {
         'lesson_step': f"Teach the next section of Chapter {request.chapter}. Follow the teaching pattern: 1) Show a short note (1-2 lines), 2) Give clear 2-3 sentence explanation, 3) Provide example if helpful, 4) Ask one quick reflection question.",
 
         'explain': f"The student needs clarification on: {request.text or request.studentAnswer}. Provide a clear, adaptive explanation. Check if student is confused and simplify if needed.",
@@ -170,10 +176,10 @@ def _generate_action_prompt(request: CoLearningRequest) -> str:
         'task': f"Give the student a small practice task related to Chapter {request.chapter}. Make it practical and achievable in 5-10 minutes."
     }
 
-    prompt = action_prompts.get(request.action, request.text or "Continue teaching")
+    prompt = action_prompts.get(request.action, request.text or request.studentAnswer or "Continue teaching")
 
     # Add student answer if provided
-    if request.studentAnswer:
+    if request.studentAnswer and request.action not in ['greeting', 'message']:
         prompt += f"\n\nStudent's answer: {request.studentAnswer}"
 
     return prompt

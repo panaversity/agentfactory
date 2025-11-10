@@ -27,11 +27,32 @@ const TutorChatWindow = ({ onClose, onQuizRequest, isFloating = false }) => {
       } catch (e) {
         console.error('Error loading chat history:', e);
       }
+    } else {
+      // First time - send hello to get greeting
+      initializeChat();
     }
 
     // Auto-focus input
     inputRef.current?.focus();
   }, []);
+
+  const initializeChat = async () => {
+    setIsLoading(true);
+    try {
+      // Send "hello" to backend to trigger greeting
+      const response = await lessonController.sendGreeting();
+
+      // Add greeting message from backend
+      if (response.success) {
+        addMessage('tutor', response.message);
+      }
+    } catch (error) {
+      console.error('Error initializing chat:', error);
+      addMessage('tutor', 'Hey! Ready to learn some AI-native development? Which chapter are you interested in?');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     // Scroll to bottom when new messages arrive

@@ -149,39 +149,43 @@ class LessonController {
   }
 
   /**
-   * Process student answer to a reflection question
+   * Process student message/answer - sends directly to backend agent
    */
-  async processStudentAnswer(answer) {
-    const isCorrect = this.evaluateAnswer(answer);
-
-    if (!isCorrect) {
-      const streak = storage.incrementWrongStreak();
-
-      // Trigger adaptive mode if streak threshold reached
-      if (streak >= this.wrongStreakThreshold) {
-        this.adaptiveMode = true;
-        return {
-          success: true,
-          message: `I notice you're having some trouble with this concept. Let me explain it in a simpler way...\n\n${await this.getSimplifiedExplanation()}`,
-          adaptiveMode: true
-        };
+  async processStudentAnswer(message) {
+    // Send student message directly to backend agent for natural conversation
+    // The agent will handle all teaching logic autonomously
+    const action = {
+      action: 'message', // Direct message action - sends text as-is to agent
+      chapter: this.currentChapter,
+      text: message,
+      language: this.language,
+      userId: this.userId,
+      uiHints: {
+        tone: storage.getTone(),
+        length: 'medium'
       }
+    };
 
-      return {
-        success: true,
-        message: `Not quite! Let me clarify... ${await this.getClarification(answer)}`,
-        needsClarification: true
-      };
-    } else {
-      storage.resetWrongStreak();
-      this.adaptiveMode = false;
-
-      return {
-        success: true,
-        message: `Great answer! 🎉 You've got it! Let's continue...`,
-        correct: true
-      };
+    // Try backend first
+    if (!useMockResponses) {
+      try {
+        const response = await agentApi.sendCoLearningAction(action);
+        if (response.success) {
+          console.log('✅ Agent response received');
+          return {
+            success: true,
+            message: response.message,
+            phase: response.phase || 'teaching'
+          };
+        }
+      } catch (error) {
+        console.error('⚠️ Backend failed for student message:', error);
+      }
     }
+
+    // Fallback to mock
+    console.log('📝 Using mock response');
+    return await mockCoLearningResponse(action);
   }
 
   /**
