@@ -89,6 +89,12 @@ Each revolution, taken alone, would be significant. A better autocomplete tool? 
 
 And here's the critical insight: these nine revolutions don't just add up—they *multiply*. When you combine natural language programming with exponential learning velocity, you don't get twice the benefit. You get a 10x leap in what's possible. When you add cognitive load reduction and collaborative intelligence on top, the multiplier grows even larger.
 
+#### 💬 AI Colearning Prompt
+
+> **Explore with your AI**: "The lesson says combining 'natural language programming' and 'exponential learning velocity' creates a 10x leap instead of just 2x. Help me understand WHY these two multiply each other—walk me through what happens when I use both together that wouldn't happen with just one. Use a concrete example from my context [describe: building a web app / learning Python / etc.]."
+
+Understanding one multiplication example deeply helps you spot other combinations that compound.
+
 ## AIDD: A System, Not a Toolbox
 
 This is why AIDD exists. It's not about adopting individual AI tools. It's about recognizing that these nine revolutions have created **new conditions for software development**, and we need a **new methodology** to work within those conditions.
@@ -110,6 +116,10 @@ Marcus, the junior developer outpacing Priya, understood this instinctively. He 
 
 He wasn't using more tools. He was using AI *differently*—as a **system**, not as isolated utilities.
 
+#### 🎓 Instructor Commentary
+
+> Notice Marcus didn't start with mastery—he started with a different **mental model**. The tools came second. This is why the paradigm shift matters more than the toolbox. You can have every AI tool installed and still miss the transformation if you're thinking in the old paradigm.
+
 ## The Cost of Partial Adoption
 
 Here's what happens when you adopt AI tools piecemeal without shifting your mental model:
@@ -121,6 +131,12 @@ Here's what happens when you adopt AI tools piecemeal without shifting your ment
 **You fall behind.** The developers who adopt AIDD as a system—who learn to think in specs, to pair with AI strategically, to iterate fearlessly—are moving faster than you can catch up with incremental improvements.
 
 This isn't about being elite or special. It's about recognizing that **the rules have changed**, and the old playbook no longer applies.
+
+#### 🚀 CoLearning Challenge
+
+**Quick Diagnostic**: Ask your AI to interview you: "Ask me 5 questions that will reveal whether I'm using AI as a tool or as a system. Based on my answers, tell me ONE specific change I should make this week."
+
+**What you're practicing**: Self-awareness through AI partnership. Your AI learns your current approach, you learn what "system thinking" actually looks like in practice.
 
 ## Pause and Reflect
 
@@ -136,17 +152,9 @@ Think beyond just "AI tools got better." Think about:
 
 Write down your thoughts. We'll revisit them at the end of this chapter.
 
-## What's Next
+#### ✨ Teaching Tip
 
-So if AIDD is a system, not a toolbox—**what exactly is the system?**
-
-In the next section, we'll define AI-Driven Development precisely. We'll break down its core philosophy, its relationship to traditional methodologies like Agile and TDD, and why it represents a *paradigm shift* rather than just an incremental improvement.
-
-Then, in Sections 3-6, we'll explore the **Nine Pillars** that make AIDD work—the specific practices, mental models, and workflows that turn those nine revolutions into tangible results.
-
-By the end of this chapter, you won't just understand AIDD intellectually. You'll have a concrete framework for how to **adopt it in your own work**, starting tomorrow.
-
-Let's begin.
+The gap between Priya and Marcus isn't about intelligence or experience—it's about **orchestration**. Think of it like the difference between owning kitchen appliances and knowing how to cook a meal. The system is how everything works together.
 
 ---
 
@@ -154,21 +162,21 @@ Let's begin.
 
 Use your AI companion tool set up from Chapter 5. If you haven't reached that chapter yet, use ChatGPT web or Claude for this activity.
 
-### Prompt 1:Tool vs System Understanding
+### Prompt 1: Tool vs System Understanding
 
 ```
-The story of Priya and Marcus shows two developers using AI differently—one as a 'tool' and one as a 'system.' Help me understand this distinction using a simple analogy (NOT from programming). Then explain: which approach am I probably using RIGHT NOW when I use AI tools? Be honest.
+The story of Priya and Marcus shows two developers using AI differently—one as a 'tool' and one as a 'system.' Let's explore this together: First, create a simple analogy (NOT from programming) that shows the difference. Then, based on how I describe my current AI usage, tell me honestly: which approach am I using? What would shift me from one to the other?
 ```
 
-**Expected outcome:** Crystal-clear understanding of 'tool vs. system' using relatable analogies
+**Expected outcome:** Discovery of where you actually are on the tool→system spectrum through dialogue
 
-### Prompt 2: Personal Revolution Assessment  
+### Prompt 2: Personal Revolution Assessment
 
 ```
-The lesson lists 'nine revolutions' happening simultaneously in software development. Pick the THREE that seem most impactful for someone like me [describe your situation: beginner / career changer / experienced developer]. For each one, explain: what does this revolution ACTUALLY mean for my daily work? Give concrete examples.
+Let's explore these nine revolutions together. I'll describe my situation [beginner / career changer / experienced developer], and I want you to help me discover: which THREE revolutions would transform MY daily work most dramatically? For each one, walk me through a concrete 'before and after' scenario from my actual context.
 ```
 
-**Expected outcome:** Personal identification of which revolutions matter most for YOUR context
+**Expected outcome:** Co-discovered understanding of which revolutions matter most for your specific situation
 
 ### Prompt 3: Productivity Plateau Diagnosis
 

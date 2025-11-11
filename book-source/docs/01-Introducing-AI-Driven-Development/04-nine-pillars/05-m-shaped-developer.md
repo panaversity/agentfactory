@@ -130,6 +130,12 @@ Traditional development required separate specialists because mastering multiple
 
 The M-Shaped developer isn't about being good at everything. It's about choosing **2-4 complementary domains** where you can maintain deep expertise with AI augmentation.
 
+#### 💬 AI Colearning Prompt
+
+> **Explore with your AI**: "I'm intrigued by the M-shaped developer concept. Help me discover: based on what I already know [describe your background], which TWO domains would pair most naturally as my 'M' shape? Walk me through why these two multiply each other specifically for MY starting point."
+
+Your AI can help you find combinations that leverage your existing strengths.
+
 ### Pause and Reflect
 
 **What would your ideal M-shaped profile look like in 2 years?**
@@ -163,11 +169,27 @@ M-Shaped development is transformative, but it's not limitless. Understanding th
 
 **The key insight**: M-shaped development dramatically expands what's possible for individuals and small teams. But it's a **capability multiplier**, not a magic solution. Choose domains strategically, respect the limits of AI augmentation, and recognize that execution and judgment still matter more than ever.
 
+#### 🎓 Instructor Commentary
+
+> The M-shaped developer isn't trying to "know everything"—that's impossible and exhausting. Instead, you're building **complementary depth** in domains that naturally reinforce each other. Frontend + Backend + DevOps work together because they're sequential steps in one workflow. ML + Data Engineering + Backend combine because they share data pipelines. The "M" emerges from choosing domains that compound, not from arbitrary breadth.
+
 ## The Urgency Question
 
 Understanding that M-Shaped development is possible is exciting. You can see how AI augmentation enables one person to do what previously required entire teams.
 
 But here's the uncomfortable question: **Why is this urgent? Why learn all nine pillars NOW instead of gradually over the next few years?**
+
+We'll explore this question in the next lesson.
+
+#### 🚀 CoLearning Challenge
+
+**Reality Check Exercise**: Ask your AI: "I've identified MY ideal M-shape [name your two domains]. Now be brutally honest: what are the THREE hardest parts of developing depth in BOTH? What would I be signing up for? Don't sugarcoat it."
+
+**What you're practicing**: Realistic self-assessment through AI partnership. Your AI helps you see the actual path, not the romanticized version.
+
+#### ✨ Teaching Tip
+
+The profiles shown (Vertical SaaS Builder, Platform Engineer, AI Product Developer) aren't aspirational fantasies—they're **existence proofs**. Real developers are building this way today. The question isn't "Is this possible?" but "Which combination serves the problems I care about solving?"
 
 ---
 

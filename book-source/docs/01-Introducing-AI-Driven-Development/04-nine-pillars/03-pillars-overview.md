@@ -107,6 +107,12 @@ Here's what makes this system powerful: the pillars depend on each other.
 
 Remove any single pillar, and the system still works—but with significant gaps. Remove several pillars, and you're back to traditional development with its specialist silos and coordination overhead.
 
+#### 💬 AI Colearning Prompt
+
+> **Explore with your AI**: "Pick two pillars that seem completely unrelated to you—maybe Pillar 3 (MCP) and Pillar 6 (TDD). Ask your AI to walk you through a concrete scenario showing how they actually depend on each other. What breaks if you have one without the other?"
+
+Understanding these hidden dependencies reveals why the system works as a whole.
+
 ## A Real Integration Story
 
 Maya, a solo developer, is building a financial analytics platform. Watch how the pillars integrate:
@@ -116,6 +122,10 @@ She writes her specification in Markdown (Pillar 2), using SpecKit Plus structur
 She writes tests first (Pillar 6), ensuring the AI-generated code meets requirements. She pulls in a reusable authentication skill (Pillar 8) instead of building from scratch. Her development environment (Pillar 5) works identically whether she's on her Windows laptop or Mac desktop. When ready, she deploys to Kubernetes (Pillar 9) with standardized containers.
 
 One developer. One week. A platform that would have required a team of five specialists just three years ago.
+
+#### 🎓 Instructor Commentary
+
+> Maya's story isn't about being a "10x developer" or working 80-hour weeks. It's about **workflow integration**. Each pillar removes friction at a different point in her process. Collectively, they eliminate the handoffs, context switches, and coordination overhead that slow traditional teams. The speed comes from continuity, not superhuman effort.
 
 ## Pause and Reflect
 
@@ -140,12 +150,15 @@ You don't need to choose between frontend and backend, between infrastructure an
 
 We'll explore M-shaped development in detail in Section 5. First, let's understand each pillar individually.
 
-## What's Next?
+#### 🚀 CoLearning Challenge
 
+**Integration Experiment**: Pick ONE pillar you already use. Ask your AI: "I use [pillar] currently. Which OTHER pillar would multiply my effectiveness most if I added it next? Show me a concrete 'before and after' workflow."
 
-Each pillar deserves deeper examination. In Section 4, we'll explore what each pillar does, how it works, and why it matters. You'll see concrete examples of each pillar in action and understand the specific barriers each one removes.
+**What you're practicing**: Strategic pillar adoption through AI guidance. Your AI helps you find the highest-impact next step based on where you already are.
 
-The overview gives you the map. The details give you the tools to navigate.
+#### ✨ Teaching Tip
+
+The "thought experiment" about removing three pillars isn't theoretical—it's diagnostic. Which pillars feel most essential to YOU reveals your current development bottlenecks. Different developers will have different answers based on what they're building.
 
 ---
 
