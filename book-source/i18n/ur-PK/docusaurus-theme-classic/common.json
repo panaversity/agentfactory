@@ -1,0 +1,14 @@
+{
+  "theme.common.editThisPage": {
+    "message": "Is safha ko edit karein",
+    "description": "The link label to edit the current page"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Is heading se direct link",
+    "description": "The title of the direct link to an heading"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Asal مواد par jayein",
+    "description": "The label for the skip to main content link"
+  }
+}

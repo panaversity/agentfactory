@@ -1,0 +1,70 @@
+/* Translation Components Styles */
+.translations-container {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.translation-button {
+  transition: all var(--ifm-transition-fast) ease;
+  font-weight: var(--ifm-font-weight-semibold);
+}
+
+.translation-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.translation-button-current {
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.language-selector {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.language-selector-floating .language-selector-toggle {
+  transition: all 0.3s ease;
+}
+
+.language-selector-floating .language-selector-toggle:hover {
+  transform: scale(1.1);
+}
+
+.language-button {
+  transition: all var(--ifm-transition-fast) ease;
+  font-weight: var(--ifm-font-weight-semibold);
+}
+
+.language-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.language-button-current {
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .translations-container,
+  .language-selector {
+    padding: 0.75rem;
+    margin: 1rem 0;
+  }
+  
+  .translation-buttons,
+  .language-selector-buttons {
+    justify-content: center;
+  }
+}

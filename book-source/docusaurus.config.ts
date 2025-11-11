@@ -78,7 +78,18 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "en",
-    locales: ["en"],
+    locales: ["en", "ur-PK", "zh-CN"],
+    localeConfigs: {
+      en: {
+        label: "English",
+      },
+      "ur-PK": {
+        label: "Roman Urdu",
+      },
+      "zh-CN": {
+        label: "中文（简体）",
+      },
+    },
   },
 
   presets: [
@@ -89,7 +100,6 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-
         },
         blog: false,
         theme: {
@@ -107,6 +117,7 @@ const config: Config = {
   ],
 
   plugins: [
+    // "./plugins/custom-navbar-plugin",
     "./plugins/docusaurus-plugin-og-image-generator",
     "./plugins/docusaurus-plugin-structured-data",
     function (context, options) {
@@ -182,6 +193,10 @@ const config: Config = {
           sidebarId: "tutorialSidebar",
           position: "left",
           label: "Book",
+        },
+        {
+          type: "localeDropdown",
+          position: "right",
         },
         {
           href: "https://github.com/panaversity/ai-native-software-development",

@@ -1,0 +1,14 @@
+{
+  "theme.common.editThisPage": {
+    "message": "编辑此页",
+    "description": "The link label to edit the current page"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "直接链接到此标题",
+    "description": "The title of the direct link to an heading"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "跳转到主要内容",
+    "description": "The label for the skip to main content link"
+  }
+}

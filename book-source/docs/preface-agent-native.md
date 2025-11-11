@@ -7,6 +7,7 @@ status: "published"
 part: "preface"
 next: "/docs/part-1/chapter-1"
 sidebar_position: 0
+id: preface-agent-native
 ---
 
 # Preface: Welcome to the AI-Native Era
@@ -399,5 +400,11 @@ Sometimes it will be wrong. Sometimes brilliant. Often surprising. But together,
 You're about to enter a world where software development is collaborative, conversational, and powered by reasoning systems that learn with you.
 
 Let's begin.
+
+---
+
+## Language Options
+
+<Translations />
 
 ---
