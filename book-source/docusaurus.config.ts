@@ -107,6 +107,15 @@ const config: Config = {
   ],
 
   plugins: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        indexDocs: true,
+        indexBlog: false,
+        indexPages: false,
+        language: "en"
+      },
+    ],
     "./plugins/docusaurus-plugin-og-image-generator",
     "./plugins/docusaurus-plugin-structured-data",
     function (context, options) {
@@ -182,6 +191,10 @@ const config: Config = {
           sidebarId: "tutorialSidebar",
           position: "left",
           label: "Book",
+        },
+        {
+          type: "search",
+          position: "right",
         },
         {
           href: "https://github.com/panaversity/ai-native-software-development",

@@ -702,3 +702,160 @@ pre code {
    DOC PAGES STYLING - Premium enhancements for chapter pages
    ============================================================================ */
 @import "./doc-pages.css";
+
+/* ============================================================================
+   SEARCH STYLING - Custom styles to match existing theme
+   ============================================================================ */
+/* Search input field */
+.navbar__search-input {
+    border: 1px solid var(--ifm-color-emphasis-300);
+    border-radius: 8px;
+    padding: 8px 12px;
+    background-color: var(--ifm-background-color);
+    color: var(--ifm-font-color-base);
+    transition: all 0.2s ease;
+}
+
+.navbar__search-input:focus,
+.navbar__search-input:active {
+    outline: none;
+    border-color: var(--ifm-color-primary);
+    box-shadow: 0 0 0 2px rgba(0, 31, 63, 0.2);
+}
+
+[data-theme="dark"] .navbar__search-input {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--ifm-font-color-base);
+}
+
+[data-theme="dark"] .navbar__search-input:focus,
+[data-theme="dark"] .navbar__search-input:active {
+    border-color: var(--ifm-color-primary);
+    box-shadow: 0 0 0 2px rgba(170, 170, 170, 0.3);
+}
+
+/* Search icon styling */
+.navbar__search > .search-icon {
+    color: var(--ifm-color-emphasis-500);
+}
+
+.navbar__search > .search-icon:hover {
+    color: var(--ifm-color-primary);
+}
+
+/* Search modal */
+.docusaurus-search-local-modal {
+    --search-local-modal-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.25),
+      0 0 60px -30px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--ifm-background-color);
+    color: var(--ifm-font-color-base);
+    box-shadow: var(--search-local-modal-shadow);
+}
+
+[data-theme="dark"] .docusaurus-search-local-modal {
+    background: var(--ifm-background-surface-color);
+    box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5),
+      0 0 60px -30px rgba(0, 0, 0, 0.7);
+}
+
+/* Search input within modal */
+.docusaurus-search-local-modal .input-group {
+    border-bottom: 1px solid var(--ifm-color-emphasis-300);
+}
+
+[data-theme="dark"] .docusaurus-search-local-modal .input-group {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Search input styling */
+.docusaurus-search-local-modal .search-bar input {
+    background: transparent;
+    border: 0;
+    padding: 1rem 0;
+    width: 100%;
+    color: var(--ifm-font-color-base);
+}
+
+.docusaurus-search-local-modal .search-bar input:focus {
+    outline: none;
+}
+
+/* Search results */
+.docusaurus-search-local-modal .result-item {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.15s ease;
+}
+
+.docusaurus-search-local-modal .result-item:hover {
+    background-color: var(--ifm-color-emphasis-100);
+}
+
+.docusaurus-search-local-modal .result-item.selected {
+    background-color: var(--ifm-color-emphasis-200);
+}
+
+[data-theme="dark"] .docusaurus-search-local-modal .result-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .docusaurus-search-local-modal .result-item.selected {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Search result title */
+.docusaurus-search-local-modal .result-title {
+    font-weight: 600;
+    color: var(--ifm-heading-color);
+}
+
+[data-theme="dark"] .docusaurus-search-local-modal .result-title {
+    color: var(--ifm-color-primary-light);
+}
+
+/* Search result item content */
+.docusaurus-search-local-modal .result-item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+/* Search result item details */
+.docusaurus-search-local-modal .result-item-details {
+    font-size: 0.85em;
+    color: var(--ifm-color-emphasis-700);
+}
+
+[data-theme="dark"] .docusaurus-search-local-modal .result-item-details {
+    color: var(--ifm-color-emphasis-500);
+}
+
+/* Search highlights */
+.docusaurus-search-local-modal .docsearch-highlighted {
+    background-color: var(--ifm-color-primary-lightest);
+    font-weight: 600;
+}
+
+[data-theme="dark"] .docusaurus-search-local-modal .docsearch-highlighted {
+    background-color: rgba(170, 170, 170, 0.2);
+}
+
+/* Search footer and additional elements */
+.docusaurus-search-local-modal .result-section {
+    padding: 0.5rem 1rem;
+    font-size: 0.85em;
+    color: var(--ifm-color-emphasis-600);
+    border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+[data-theme="dark"] .docusaurus-search-local-modal .result-section {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Search close button */
+.docusaurus-search-local-modal .navbar-drawer .x-button {
+    color: var(--ifm-color-emphasis-500);
+}
