@@ -428,6 +428,25 @@ Testing: Pytest async fixtures, AAA pattern
 
 ---
 
+### 💬 AI Colearning Prompt: Evaluating Specification Readiness Together
+
+Before writing a specification, collaborate with your AI partner to assess readiness:
+
+```bash
+claude "I'm about to write a specification for [your feature]. But first, let's assess together:
+
+1. What context have I loaded so far? Is it sufficient for a solid spec?
+2. What critical information am I missing that could lead to a vague specification?
+3. If YOU were writing this spec based on current context, what questions would you have?
+4. What's the difference between a specification written with our current context vs. one written with richer context?
+
+Help me understand WHEN we're ready to commit to a specification - not just WHAT to write."
+```
+
+**Why assess together:** Your AI partner can identify gaps in context that you might miss. By collaborating on readiness assessment, you avoid the classic mistake of writing specifications too early. This dialogue ensures both partners have the shared understanding needed for a solid spec.
+
+---
+
 ## HOW: The Context-First Workflow
 
 Here's the step-by-step process you'll use for **every** feature from now on.

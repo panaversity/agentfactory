@@ -580,6 +580,25 @@ Include: schema, resolvers, tests"
 
 ---
 
+### 💬 AI Colearning Prompt: Discovering Your Tool Selection Strategy
+
+Tool choice isn't always obvious. Let's explore with your AI partner:
+
+```bash
+claude "I have a task: [describe your actual task]. Help me think through tool selection:
+
+1. What aspects of this task suggest Claude Code would be better?
+2. What aspects suggest Gemini CLI would be better?
+3. Could we use BOTH in sequence - if so, how would you design the handoff?
+4. What am I not considering that might change the tool choice?
+
+Walk me through the decision-making process - teach me how YOU would approach this choice."
+```
+
+**Why collaborate on tool selection:** Your AI partner understands its own capabilities AND limitations. By involving it in tool selection, you learn the strategic thinking behind the choice—not just "use this tool," but WHY and WHEN. This builds your decision-making intuition over time.
+
+---
+
 ## Hybrid Workflow Strategies
 
 For complex projects, **use both tools** in sequence.

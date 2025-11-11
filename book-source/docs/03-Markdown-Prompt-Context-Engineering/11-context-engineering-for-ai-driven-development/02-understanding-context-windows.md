@@ -276,6 +276,23 @@ If the AI can't recall recent decisions, **context rot has started.**
 
 ---
 
+### 💬 AI Colearning Prompt: Learning to Recognize Degradation Together
+
+Your AI partner experiences context degradation but might not always tell you directly. Let's explore this together:
+
+```bash
+claude "I want to understand context degradation from your perspective:
+
+1. When your context window starts filling up, how does that affect your ability to help me?
+2. What are the first signs YOU notice when context is degrading?
+3. If you could tell a developer 'our context needs refreshing,' what symptoms would you point to?
+4. How can we work together to catch context problems before they affect our work?"
+```
+
+**Why this dialogue matters:** By asking your AI to reflect on its own experience with context degradation, you're building mutual awareness. Professional developers use this technique to create a partnership where both human and AI monitor context health together.
+
+---
+
 ## When to Worry About Context
 
 ### General Guidelines
@@ -313,6 +330,26 @@ Remember, context window sizes vary:
 - Good for analyzing entire large codebases
 - Can handle very long development sessions
 - Still experiences degradation eventually, just later
+
+---
+
+### 🎓 Expert Insight: The Professional's Context Rhythm
+
+Here's what separates beginners from experts in context management:
+
+**Beginners think:** "I'll keep working until something breaks, then I'll fix it."
+
+**Experts think:** "I'll work in natural rhythms and refresh proactively."
+
+Professional AI-native developers develop a "context rhythm":
+- **Sprint (45-90 min):** Deep work with fresh context
+- **Checkpoint (5 min):** Summarize decisions and progress
+- **Refresh (2 min):** Start new session with checkpoint context
+- **Repeat:** Multiple fresh sprints beat one degraded marathon
+
+The insight: **Context rot is like physical fatigue**. You can push through it, but your output quality drops dramatically. Elite developers treat context refreshes like professional athletes treat rest—not as interruptions, but as essential parts of peak performance.
+
+Track your own rhythm: When do YOU start noticing slower responses or inconsistencies? That's your natural checkpoint trigger. Honor it.
 
 ---
 
