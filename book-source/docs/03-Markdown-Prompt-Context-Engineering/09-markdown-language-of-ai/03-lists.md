@@ -135,6 +135,10 @@ Here's a feature list for a task tracker app:
 
 **Why bullet points work here**: Each feature is independent. Whether "Add tasks" comes before or after "Delete tasks" doesn't change what the app needs to do. The AI can implement these features in any order.
 
+#### 💬 AI Colearning Prompt
+
+> **Explore with your AI**: "I'm learning when to use ordered vs unordered lists. Can you give me three examples of requirements that MUST be ordered lists (sequence matters) and three that should be unordered lists (sequence doesn't matter)? Use real software project examples."
+
 ---
 
 ## Concept 2: Ordered Lists (Numbered Steps)
@@ -192,6 +196,10 @@ If you see this error, try these steps in order:
 
 The sequence matters here too — you check Python first, then location, then reinstall, then venv.
 
+#### 🎓 Expert Insight
+
+> Notice how ordered lists communicate dependencies. In the installation example, step 2 depends on step 1 completing successfully. This dependency chain is critical for AI agents—they know they can't run the program before installing packages, and can't install packages before verifying Python exists. Clear sequencing prevents AI from generating incorrect workflows where steps run out of order.
+
 ---
 
 ## Concept 3: Choosing the Right List Type
@@ -237,6 +245,20 @@ These features are independent. Adding dark mode doesn't require export to PDF f
 ```
 
 You **must** create an account before verifying email. You **must** verify email before setting up profile.
+
+#### 🤝 Practice Exercise
+
+**Quick Test**: Ask your AI companion to help you decide:
+
+"I'm writing a specification with these items:
+1. App must run on Windows, Mac, and Linux
+2. App must support dark mode and light mode
+3. User must log in before accessing dashboard
+4. User must verify email before account activation
+
+Which should be unordered lists and which should be ordered? Explain your reasoning."
+
+**What you're practicing**: Learning to identify dependencies. The AI teaches you the pattern, you apply it to your specifications.
 
 ---
 
@@ -377,6 +399,10 @@ When you use lists correctly in specifications, AI agents can:
 4. **Follow sequences** — "Set up installation script with these 4 steps in order"
 
 Good list usage makes your specifications clearer, which leads to better AI-generated code.
+
+#### 🎓 Expert Insight
+
+> Professional specifications use list type as semantic information. When AI sees an unordered list under "Features," it knows these are parallel capabilities that can be developed independently—perfect for parallel development or modular architecture. When it sees ordered lists under "Installation," it knows to generate sequential scripts or documentation. This semantic clarity reduces miscommunication and speeds up development.
 
 ---
 
