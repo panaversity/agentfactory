@@ -57,7 +57,7 @@ differentiation:
 
 # The Economics of Super Orchestrators: Why the 90-10 Rule Changes Everything
 
-To understand why a solo developer can generate $500M annual revenue in two months, you need to understand the economics of software production in the AI era.
+To understand why AI-era economics enable unprecedented value-per-person ratios, you need to understand the shift in software production.
 
 For 50 years, software economics followed a pattern: more employees = more value. A single developer produced maybe $50K-$100K in annual revenue. A team of 50 could produce $5M-$10M. The unit economics didn't scale because humans have limited working hours.
 
@@ -89,13 +89,13 @@ That's $345 million per employee. Again, the economics were shocking because the
 
 ### Comparison Table: Value per Employee
 
-| Company | Employees | Valuation | Value per Employee | Year |
+| Company | Employees at Key Milestone | Valuation/Revenue | Value per Employee | Year |
 |---------|-----------|-----------|-------------------|------|
-| Instagram | 13 | $1.0B | $77M | 2012 |
-| WhatsApp | 55 | $19.0B | $345M | 2014 |
-| Claude Code | 1-2 | $500M ARR | $250M-500M | 2025 |
+| Instagram | 13 | $1.0B acquisition | $77M | 2012 |
+| WhatsApp | 55 | $19.0B acquisition | $345M | 2014 |
+| Claude Code (Anthropic product) | Small team (10-20 est.) | $500M ARR in 2 months | $25M-50M | 2025 |
 
-*Claude Code is measured in annual recurring revenue (ARR), not valuation. If valued at 4x revenue (typical for SaaS), valuation would be $2B.*
+*Note: Instagram and WhatsApp were acquired as standalone companies. Claude Code is Anthropic's product (Anthropic has ~100+ employees total), but the product itself was built by a small dedicated team. Value-per-employee for the product team is estimated based on the rapid revenue achievement.*
 
 #### 💬 AI Colearning Prompt
 
@@ -131,7 +131,7 @@ Now a solo developer can:
 - Build intelligent workflows that solve customer problems (developer handles the strategic 10%)
 - Scale to multiple verticals simultaneously (subagents multiply the developer's reach)
 
-This is why Claude Code's $500M achievement in two months isn't anomalous. It's the inevitable outcome of the 90-10 economics when AI handles the mechanical work.
+This is why rapid value creation—like products reaching $500M ARR in months rather than years—isn't anomalous in the AI era. It's the inevitable outcome of 90-10 economics when AI handles mechanical work while humans focus on strategic decisions.
 
 #### 🤝 Practice Exercise
 
