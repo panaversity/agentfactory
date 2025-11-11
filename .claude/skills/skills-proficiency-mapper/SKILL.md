@@ -1,9 +1,6 @@
 ---
 name: "skills-proficiency-mapper"
 description: "Map skills to lessons with international standards proficiency levels (CEFR A1-C2), validate proficiency progressions, and generate assessment rubrics aligned to cognitive complexity (Bloom's taxonomy) and digital competence (DigComp). Grounded in 40+ years of research spanning language learning, cognitive science, and digital competence frameworks."
-allowed-tools:
-  - Read
-  - Write
   - Grep
   - Bash
   - Task

@@ -1,5 +1,6 @@
 ---
 name: assessment-builder
+version: 2.0
 description: |
   Creates assessments with varied question types (MCQ, code-completion, debugging, projects) aligned
   to learning objectives with meaningful distractors based on common misconceptions. Activate when
@@ -7,12 +8,49 @@ description: |
   cognitive levels (Bloom's taxonomy); want balanced cognitive distribution (60%+ non-recall); or
   require rubrics for open-ended questions. Generates MCQs with diagnostic distractors, code-writing
   prompts, debugging challenges, and project-based assessments targeting deep understanding.
-allowed-tools: [Read, Bash, Write]
+constitution_alignment: v3.1.2
 ---
 
 ## Purpose
 
 The assessment-builder skill helps educators create comprehensive, balanced assessments that measure conceptual understanding (not just memorization). This skill generates varied question types, designs meaningful distractors for MCQs, aligns questions with Bloom's taxonomy levels, and provides rubrics for open-ended questions.
+
+**Constitution v3.1.2 Alignment**: This skill implements evals-first assessment design—defining success criteria BEFORE creating assessments, and integrating AI-native co-learning evaluation.
+
+## Evals-First Assessment Design (Constitution v3.1.2)
+
+**CRITICAL WORKFLOW**:
+1. **Evals First**: Define success criteria from chapter spec BEFORE designing questions
+2. **Objectives Second**: Map questions to learning objectives (from spec)
+3. **Questions Third**: Design assessment items that test evals
+4. **Validation Fourth**: Verify questions actually measure what evals define
+
+**Template for Assessment Planning**:
+```markdown
+### Assessment Planning (Evals-First)
+
+**Source**: Chapter spec at `specs/part-X/chapter-Y/spec.md`
+
+**Success Evals from Spec**:
+1. 75%+ students write valid specification (measured by exercise)
+2. 80%+ identify vague requirements (measured by quiz)
+3. Students demonstrate co-learning (measured by reflection)
+
+**Learning Objectives** (from spec):
+- LO-001: Write clear specifications
+- LO-002: Identify ambiguous requirements
+- LO-003: Work effectively with AI partner
+
+**Assessment Design**:
+- Q1-3: Test LO-001 (spec writing) → Eval #1
+- Q4-5: Test LO-002 (identify vagueness) → Eval #2
+- Q6: Test LO-003 (co-learning) → Eval #3
+```
+
+**Do NOT** create assessments without:
+- ✅ Reference to approved spec with evals
+- ✅ Explicit mapping: Question → Objective → Eval
+- ✅ Validation that questions measure defined success criteria
 
 ## When to Activate
 
@@ -86,6 +124,80 @@ Map question types to Bloom's levels:
 - **Create** (5-10%): Projects, design problems
 
 **Target**: 60%+ non-recall (Apply and higher)
+
+### CEFR Proficiency Integration (Constitution v3.1.2)
+
+Map assessment difficulty to CEFR proficiency levels (aligned with skills-proficiency-mapper):
+
+**A1 (Beginner - Recognition)**:
+- MCQs: Recognize syntax, identify basic concepts
+- Code-tracing: Predict simple, linear code output
+- No debugging or design questions yet
+
+**A2 (Elementary - Guided Application)**:
+- MCQs: Choose correct approach with scaffolding
+- Code-completion: Fill strategic blanks with hints
+- Simple debugging: Identify syntax errors with guidance
+
+**B1 (Intermediate - Independent Application)**:
+- Code-writing: Implement from clear specification
+- Debugging: Find and fix logic errors independently
+- Code-review: Evaluate simple code quality
+
+**B2 (Upper-Intermediate - Analysis)**:
+- Design questions: Choose appropriate data structures/algorithms
+- Optimization: Identify performance improvements
+- Trade-off evaluation: Compare multiple valid approaches
+
+**C1 (Advanced - Synthesis)**:
+- Architecture design: Plan system structure
+- Complex debugging: Diagnose multi-layered issues
+- Best practices justification: Defend design decisions
+
+**Assessment Design Rule**: Questions must match lesson's target CEFR level (from spec).
+
+### Three-Role AI Partnership Assessment (Constitution v3.1.2 Principle 18)
+
+**CRITICAL**: AI-native development requires assessing students' ability to work WITH AI, not just independently.
+
+**AI's Three Roles - Assessment Types**:
+
+**1. AI as Teacher (Does student learn from AI?)**
+- Reflection question: "What did AI suggest that you hadn't considered?"
+- Evaluation: "Which of AI's three suggestions was most valuable? Why?"
+- Transfer: "How would you apply AI's pattern to a new problem?"
+
+**2. AI as Student (Does student effectively teach AI?)**
+- Specification quality: "Write a spec that produces correct code on first try"
+- Feedback quality: "Improve AI's output by providing clear corrections"
+- Iteration: "Refine your prompt based on AI's initial response"
+
+**3. AI as Co-Worker (Does student collaborate effectively?)**
+- Convergence: "Show iteration where you and AI refined solution together"
+- Decision-making: "Which strategic decisions did you make vs. AI's tactical suggestions?"
+- Validation: "How did you verify AI's output was correct?"
+
+**Example Assessment Items**:
+
+```markdown
+### Q: Co-Learning Reflection (10 points)
+
+In the previous exercise, you worked with AI to implement authentication.
+
+1. What pattern or approach did AI suggest that you hadn't considered? (5 pts)
+2. How did you validate that AI's suggestion was appropriate? (5 pts)
+
+**Rubric**:
+- Excellent (10): Specific AI suggestion identified, clear validation method
+- Good (7): General AI contribution mentioned, basic validation
+- Fair (4): Vague answer, no validation mentioned
+- Poor (0): No evidence of learning from AI
+```
+
+**Assessment Balance for AI-Native Content**:
+- 60-70%: Traditional skills (code-writing, debugging)
+- 20-30%: Co-learning skills (working WITH AI)
+- 10-20%: Validation/verification skills (checking AI outputs)
 
 ### Step 4: Design Varied Question Set
 

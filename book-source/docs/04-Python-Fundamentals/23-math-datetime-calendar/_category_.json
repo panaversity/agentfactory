@@ -1,0 +1,8 @@
+{
+  "label": "23. Math, Date Time Calendar",
+  "position": 23,
+  "link": {
+    "type": "generated-index",
+    "description": "Learn to perform mathematical operations with validation, work with dates and times using Python 3.14's new parsing methods, format and manipulate datetime objects, handle timezones correctly, and build a complete Time Zone Converter application."
+  }
+}

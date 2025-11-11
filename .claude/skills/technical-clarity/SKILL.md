@@ -7,7 +7,6 @@ description: |
   of explanations. Analyzes text for jargon density, missing context, assumed knowledge, sentence
   complexity, and provides specific improvement suggestions. Use when reviewing tutorials, documentation,
   book chapters, or any instructional technical content for Python or programming concepts.
-allowed-tools: [Read, Bash, Write]
 ---
 
 ## Purpose

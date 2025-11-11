@@ -7,5 +7,6 @@
       "@/*": ["src/*"]
     }
   },
-  "exclude": [".docusaurus", "build"]
+  "exclude": [".docusaurus", "build"],
+  "include": ["src/**/*.d.ts"]
 }

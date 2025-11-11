@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import styles from './Quiz.module.css';
 
 export interface QuizQuestion {
@@ -33,12 +33,6 @@ const Quiz: React.FC<QuizProps> = ({
   // Create a ref for smooth scrolling
   const quizRef = useRef<HTMLDivElement>(null);
 
-  // Utility function for smooth scroll to top
-  const scrollToTop = () => {
-    if (quizRef.current) {
-      quizRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
 
   // Initialize displayed questions on mount
   const [displayedQuestions, setDisplayedQuestions] = useState<QuizQuestion[]>(() => {
@@ -55,10 +49,48 @@ const Quiz: React.FC<QuizProps> = ({
   const [answeredQuestions, setAnsweredQuestions] = useState<Set<number>>(new Set());
   const [shouldScroll, setShouldScroll] = useState(false);
 
-  // Scroll to top when shouldScroll flag is set
-  useEffect(() => {
+  // Custom easing function for ultra-smooth scrolling (easeOutCubic - slower and smoother)
+  const easeOutCubic = (t: number): number => {
+    return 1 - Math.pow(1 - t, 3);
+  };
+
+  // Smooth scroll with custom easing
+  const smoothScrollToQuiz = () => {
+    if (!quizRef.current) return;
+
+    const startY = window.scrollY;
+    const quizPosition = quizRef.current.getBoundingClientRect().top + window.scrollY;
+    const targetY = quizPosition - 20;
+    const distance = targetY - startY;
+
+    // Duration in milliseconds (1200ms for very smooth, slower feel)
+    const duration = 1200;
+    const startTime = performance.now();
+
+    const scroll = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Apply easing function for smoother deceleration
+      const easeProgress = easeOutCubic(progress);
+      const currentY = startY + distance * easeProgress;
+
+      window.scrollTo(0, currentY);
+
+      // Continue animation if not complete
+      if (progress < 1) {
+        requestAnimationFrame(scroll);
+      }
+    };
+
+    requestAnimationFrame(scroll);
+  };
+
+  // Scroll when question or results change
+  // Use useLayoutEffect for immediate scroll after DOM mutations but before paint
+  useLayoutEffect(() => {
     if (shouldScroll) {
-      scrollToTop();
+      smoothScrollToQuiz();
       setShouldScroll(false);
     }
   }, [shouldScroll]);
@@ -83,27 +115,30 @@ const Quiz: React.FC<QuizProps> = ({
 
   const handleNext = () => {
     if (currentQuestion < displayedQuestions.length - 1) {
+      // Update state first
       setCurrentQuestion(currentQuestion + 1);
       // Preserve feedback for previously answered questions
       setShowFeedback(answeredQuestions.has(currentQuestion + 1));
-      // Trigger scroll after state updates
+      // Trigger scroll after React renders
       setShouldScroll(true);
     }
   };
 
   const handleBack = () => {
     if (currentQuestion > 0) {
+      // Update state first
       setCurrentQuestion(currentQuestion - 1);
       // Preserve feedback for previously answered questions
       setShowFeedback(answeredQuestions.has(currentQuestion - 1));
-      // Trigger scroll after state updates
+      // Trigger scroll after React renders
       setShouldScroll(true);
     }
   };
 
   const handleSubmit = () => {
+    // Update state first
     setShowResults(true);
-    // Trigger scroll after state updates
+    // Trigger scroll after React renders
     setShouldScroll(true);
   };
 
@@ -118,6 +153,8 @@ const Quiz: React.FC<QuizProps> = ({
     setShowResults(false);
     setShowFeedback(false);
     setAnsweredQuestions(new Set());
+    // Trigger scroll after React renders
+    setShouldScroll(true);
   };
 
   const calculateScore = () => {
@@ -211,10 +248,7 @@ const Quiz: React.FC<QuizProps> = ({
           </div>
 
           <button
-            onClick={() => {
-              handleReset();
-              setShouldScroll(true);
-            }}
+            onClick={handleReset}
             className={styles.resetButton}
           >
             Retake Quiz

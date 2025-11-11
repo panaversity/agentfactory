@@ -283,17 +283,268 @@ Your content should meet Amazon book publication standards while remaining acces
 4. **Reflection Prompts** (optional, "Pause and Reflect" sections)
 5. **Try With AI** (required, final section; replaces conventional closures like "Key Takeaways" or "What's Next")
 
-### Structure for Technical Lessons
+### Structure for Technical Lessons (WITH AI-Native CoLearning Elements)
 
 1. **Title and Opening Hook** (required)
-2. **Lesson Content** (required)
+2. **Lesson Content WITH CoLearning Elements** (required - see CoLearning sections below)
 3. **Runnable Examples** (required, 2-4 code examples)
 4. **Practice Exercises** (required, 2-5 exercises)
 5. **Try With AI** (required, final section; do not add "Key Takeaways" or "What's Next")
 
+**CRITICAL**: Technical lessons MUST integrate **AI-Native CoLearning** structural elements throughout (not just "Try With AI" at end). Apply the `ai-collaborate-teaching` skill patterns.
+
 ### Structure for Hybrid Content
 
 Mix elements from both structures above as appropriate for each section.
+
+---
+
+## AI-Native CoLearning Structural Elements (Technical Lessons)
+
+**Purpose**: Position AI as co-reasoning partner throughout learning, not just at lesson end.
+
+**Source**: `.claude/skills/ai-collaborate-teaching/SKILL.md` + Constitution Principle 13 (Graduated Teaching Pattern)
+
+**CRITICAL DISTINCTION**:
+- **CoLearning Elements** (throughout lesson): Conversational prompts, exploration-focused, AI partnership emphasized
+- **Try With AI Section** (end of lesson): Structured 4-prompt synthesis and reflection (closure point)
+
+### 💬 AI Colearning Prompt (Claude Code or Gemini CLI)
+
+**When to Use**: After introducing a foundational concept (Tier 1 from Graduated Teaching Pattern)
+
+**Purpose**: Encourage students to explore deeper conceptual understanding with AI as intellectual partner
+
+**Placement**: Throughout lesson content, typically after:
+- Introducing core concept
+- Showing basic code example
+- Explaining fundamental syntax
+
+**Format**:
+```markdown
+#### 💬 AI Colearning Prompt
+> "Explain how [concept] works under the hood."
+
+OR
+
+> "Why does Python use [pattern] instead of [alternative]?"
+```
+
+**Examples**:
+- "Explain how `for` loops work under the hood with `range()`."
+- "Why does Python use `:` after `if` statements instead of `{}`?"
+- "What happens in memory when you create a list?"
+
+**What This Is NOT**:
+- ❌ NOT a request to generate code ("Write a function that...")
+- ❌ NOT a replacement for book explanation
+- ❌ NOT first introduction to concept (book teaches first, AI explores deeper)
+
+**Tone**: Conversational question, encouraging intellectual curiosity
+
+---
+
+### 🎓 Instructor Commentary: "From Syntax to Semantics"
+
+**When to Use**: After showing code examples or syntax patterns
+
+**Purpose**: Reframe learning goals from memorization to conceptual understanding
+
+**Key Mantra**: "Syntax is cheap — semantics is gold"
+
+**Placement**: After code examples, before exercises
+
+**Format**:
+```markdown
+#### 🎓 Instructor Commentary
+> In AI-native development, [reframe from memorization to understanding].
+```
+
+**Examples**:
+- "In AI-native development, you don't memorize operator precedence—you understand when arithmetic matters and ask AI to clarify edge cases."
+- "Syntax is cheap—AI handles it. Your job: understand WHY this pattern solves the problem."
+- "In AI-driven development, memorizing 47 string methods is obsolete. Understanding text transformation intent? Essential."
+
+**What This Does**:
+- ✅ Reduces anxiety about memorization
+- ✅ Positions AI as syntax partner
+- ✅ Emphasizes conceptual understanding
+- ✅ Aligns with professional AI-native workflow
+
+**Tone**: Direct, reassuring, professional
+
+---
+
+### 🚀 CoLearning Challenge
+
+**When to Use**: After students understand concept basics, ready for application
+
+**Purpose**: Practice specification-driven thinking WITH AI collaboration
+
+**Placement**: Mid-lesson or after foundational concepts established
+
+**Format**:
+```markdown
+#### 🚀 CoLearning Challenge
+
+Ask your AI Co-Teacher:
+> "[Specification of what to create] Then explain [conceptual aspect] step-by-step."
+
+**Expected Outcome**: [What student should understand after AI response]
+```
+
+**Examples**:
+- "Ask your AI: Generate a Python function that calculates factorial using recursion. Then explain how recursion works step-by-step including the call stack."
+- "Tell your AI: Create a type-safe dictionary that validates email addresses. Explain the type hints and validation logic."
+- "Ask your AI: Write a function that reverses a string without using [::-1]. Explain the algorithmic approach."
+
+**Pattern**: **Specification → AI Generation → Explanation → Understanding**
+
+**What This Teaches**:
+- ✅ How to communicate intent to AI (specification skills)
+- ✅ How to ask for explanations (not just code)
+- ✅ How to validate AI outputs (critical thinking)
+- ✅ Conceptual translation (intent → implementation → understanding)
+
+**Tone**: Action-oriented, collaborative ("Ask your AI", "Tell your AI")
+
+---
+
+### ✨ Teaching Tip
+
+**When to Use**: Strategic placement to build AI tool literacy
+
+**Purpose**: Teach HOW to use Claude Code/Gemini CLI as pair-teacher
+
+**Placement**:
+- After common mistake/misconception
+- Before complex topic
+- When introducing new pattern
+
+**Format**:
+```markdown
+#### ✨ Teaching Tip
+> Use Claude Code to [specific AI collaboration strategy].
+```
+
+**Examples**:
+- "Use Claude Code to explore edge cases: 'What happens if I use // with negative numbers?'"
+- "Ask your AI to compare approaches: 'Show me 3 ways to check if a string is empty and explain when to use each.'"
+- "Use your AI as debugger: Paste the error and ask 'Why am I getting TypeError here?'"
+
+**AI Pair Programming Patterns** (from ai-collaborate-teaching skill):
+- **AI as Explainer**: "Ask 'Why does this work?'"
+- **AI as Debugger**: "Show AI the error, ask for diagnosis"
+- **AI as Code Reviewer**: "Ask 'Is there a better way to write this?'"
+- **AI as Hypothesis Validator**: "Ask 'Would approach X work better than Y?'"
+
+**What This Teaches**:
+- ✅ Specific AI collaboration techniques
+- ✅ When to ask AI vs when to struggle independently
+- ✅ How to phrase effective prompts
+- ✅ AI tool literacy (capabilities and limitations)
+
+**Tone**: Practical, actionable, specific
+
+---
+
+## CoLearning Element Placement Guidelines
+
+**Beginner Lessons (A1-A2, Chapters 12-16)**:
+- 2-3 CoLearning elements per lesson
+- Emphasis on 💬 Prompts and 🎓 Commentary (build confidence, reduce memorization anxiety)
+- Light on 🚀 Challenges (students still building foundations)
+
+**Intermediate Lessons (A2-B1, Chapters 17-29)**:
+- 4-5 CoLearning elements per lesson
+- Balance 💬 Prompts, 🎓 Commentary, 🚀 Challenges
+- More ✨ Teaching Tips (build AI tool literacy)
+
+**Advanced Lessons (B1-B2, Chapters 30-48)**:
+- 5-7 CoLearning elements per lesson
+- Emphasis on 🚀 Challenges (application and synthesis)
+- Advanced ✨ Teaching Tips (architectural decisions, tradeoffs)
+
+**Professional Lessons (B2-C1, Chapters 49-56)**:
+- 3-5 CoLearning elements per lesson (students more independent)
+- Focus on complex 🚀 Challenges
+- Strategic 🎓 Commentary on professional practice
+
+---
+
+## CoLearning Example (Full Integration)
+
+**Example: Teaching Python `for` Loops**
+
+```markdown
+## Iterating with For Loops
+
+A `for` loop repeats code for each item in a sequence:
+
+\`\`\`python
+fruits: list[str] = ["apple", "banana", "cherry"]
+
+for fruit in fruits:
+    print(f"I like {fruit}")
+\`\`\`
+
+Output:
+```
+I like apple
+I like banana
+I like cherry
+```
+
+#### 💬 AI Colearning Prompt
+> "Explain how the `for` loop in Python works under the hood with iterators."
+
+This code visits each item in `fruits` and prints it. The variable `fruit` holds one item at a time.
+
+#### 🎓 Instructor Commentary
+> In AI-native development, you don't memorize loop syntax—you understand WHEN iteration solves your problem. Syntax is cheap; recognizing "I need to process each item" is gold.
+
+### Common Pattern: Range-Based Loops
+
+When you need to repeat code N times:
+
+\`\`\`python
+for i in range(5):
+    print(f"Iteration {i}")
+\`\`\`
+
+#### 🚀 CoLearning Challenge
+
+Ask your AI Co-Teacher:
+> "Generate a `for` loop that prints the multiplication table for 7 (7×1 through 7×10). Then explain how `range()` works and why we use it."
+
+**Expected Outcome**: You'll understand `range()` parameters and how to use loops for calculations.
+
+### Edge Cases to Understand
+
+What happens with an empty list?
+
+\`\`\`python
+empty: list[int] = []
+
+for item in empty:
+    print(item)  # This never runs
+\`\`\`
+
+#### ✨ Teaching Tip
+> Use Claude Code to explore edge cases: "What happens if I iterate over `None` instead of a list? Show me the error and explain it."
+
+[Continue with exercises...]
+
+## Try With AI
+
+[Standard 4-prompt closure as defined in constitution]
+```
+
+**Notice**:
+- CoLearning elements appear THROUGHOUT (not just at end)
+- Conversational tone ("you", "your", exploration language)
+- AI positioned as intellectual partner (not code generator)
+- Book teaches foundation FIRST (loop syntax), THEN AI explores deeper (iterators, edge cases)
 
 ---
 

@@ -117,7 +117,16 @@ const config: Config = {
   ],
 
   plugins: [
-    // "./plugins/custom-navbar-plugin",
+    [
+        '@docusaurus/plugin-content-pages',
+        {
+          id: 'custom-components', // Unique ID 
+          path: 'src/components', 
+          routeBasePath: '/',
+          include: ['**/*.{js,jsx,ts,tsx,md,mdx}'],
+        },
+    ],
+    // -------------------------------------------------------------------------------------------------------
     "./plugins/docusaurus-plugin-og-image-generator",
     "./plugins/docusaurus-plugin-structured-data",
     function (context, options) {
@@ -181,10 +190,10 @@ const config: Config = {
     navbar: {
       title: "AI Native Development",
       // logo: {
-      //   alt: 'Panaversity Logo',
-      //   src: 'img/book-cover.png',
-      //   width: 32,
-      //   height: 32,
+      //   alt: 'Panaversity Logo',
+      //   src: 'img/book-cover.png',
+      //   width: 32,
+      //   height: 32,
       // },
       hideOnScroll: false,
       items: [
@@ -195,9 +204,12 @@ const config: Config = {
           label: "Book",
         },
         {
-          type: "localeDropdown",
-          position: "right",
+          type: 'html', 
+          position: 'right', 
+          // This div will host the Google Translate widget
+          value: '<div id="google_translate_element_id" title="Translate Book" style="padding-right: 15px; padding-top: 8px;"></div>',
         },
+        // ------------------------------------------------------------------------------------------------------------------
         {
           href: "https://github.com/panaversity/ai-native-software-development",
           label: "GitHub",

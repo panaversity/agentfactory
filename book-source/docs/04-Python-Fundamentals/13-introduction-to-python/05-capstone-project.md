@@ -1,0 +1,446 @@
+---
+title: "Capstone Project – Personal Information Collector"
+chapter: 13
+lesson: 5
+duration_minutes: 90
+
+skills:
+  - name: "Integration of All Python Fundamentals"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Digital Content Creation"
+    measurable_at_this_level: "Student builds working program applying variables, type hints, input, output, and formatted display"
+
+  - name: "Specification-First Program Design"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student designs program in plain English before coding; matches code to specification"
+
+  - name: "Program Testing and Verification"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student runs program end-to-end; tests with different inputs; verifies output matches specification"
+
+learning_objectives:
+  - objective: "Design and build an interactive program that demonstrates all Chapter 13 concepts"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Complete capstone program runs without errors and meets all requirements"
+
+cognitive_load:
+  new_concepts: 0
+  assessment: "0 new concepts—pure integration of Lessons 1-4 ✓"
+
+differentiation:
+  extension_for_advanced: "Add database storage; implement multiple user profiles; create interactive menu system"
+  remedial_for_struggling: "Provide detailed code template; break into micro-steps; validate each section separately"
+
+generated_by: "lesson-writer v3.0.0"
+source_spec: "specs/016-part-4-chapter-13/spec.md"
+created: "2025-11-09"
+last_modified: "2025-11-09"
+git_author: "Claude Code"
+workflow: "/sp.implement"
+version: "1.0.0"
+---
+
+# Lesson 5: Capstone Project – Personal Information Collector
+
+You've learned all the pieces. Now you'll assemble them into one complete, working program.
+
+This capstone isn't just a code exercise. It's your first experience with **specification-driven development in miniature**. You'll:
+
+1. **Understand WHAT** the program does (specification)
+2. **Design HOW** you'll build it (planning)
+3. **Code and test** (implementation)
+4. **Verify it matches your design** (validation)
+
+This cycle—spec, plan, implement, validate—is exactly how professional AI-Driven Development works.
+
+## Understanding the Capstone
+
+Throughout Chapter 13, you've learned individual pieces:
+- Variables (Lesson 3)
+- Type hints (Lesson 3)
+- Syntax, `print()`, f-strings (Lesson 4)
+- Now you'll use `input()` to ask users questions
+
+The capstone program brings all these pieces together in a real program that does something useful: **collects user information and displays a formatted summary.**
+
+This is specification-driven development in practice. You're not typing random code. You're building something with a clear purpose.
+
+## Capstone Specification
+
+**Program Purpose**: An interactive program that asks for user information (name, age, favorite color, hobby, city) and displays a personalized summary.
+
+**Requirements**:
+
+1. **Collect User Information** (5 pieces):
+   - Name (string)
+   - Age (string)
+   - Favorite color (string)
+   - Favorite hobby (string)
+   - City (string)
+
+2. **Use Type Hints for All Variables**
+   - Every variable declares its type: `name: str = input(...)`
+
+3. **Display Formatted Summary**
+   - Use f-strings to show collected information
+   - Make output conversational and clear
+
+4. **Include Comments**
+   - Section headers: `# Collect Information`, `# Display Summary`
+   - Explain what each section does
+
+**Success Criteria**:
+- [ ] Program runs without errors
+- [ ] Collects 5 pieces of information
+- [ ] Has type hints on all variables (all `str`)
+- [ ] Uses `input()` to collect data
+- [ ] Uses f-strings for formatted output
+- [ ] Includes comments explaining sections
+- [ ] Displays formatted summary with user's information
+
+## Phase 1: Design First (Plain English)
+
+**Before you write any Python code, write your design in plain English.**
+
+This is the specification phase. Answer these questions:
+
+1. **What will the program do?**
+   - Ask the user for their name, age, favorite color, hobby, and city
+   - Store these answers in typed variables (all strings)
+   - Display a nice summary
+
+2. **What input do we need?**
+   - Name (text)
+   - Age (text)
+   - Favorite color (text)
+   - Favorite hobby (text)
+   - City (text)
+
+3. **What output should we show?**
+   - A greeting
+   - A formatted summary of their information
+   - A thank you message
+
+Write this design in a text document or comment in your code. Share it with your AI companion:
+
+#### 🚀 CoLearning Challenge: Design Phase
+
+Ask your AI:
+> "Here's my program design:
+> 1. Ask user for name, age, favorite color, hobby, and city
+> 2. Store all information as strings (no conversion needed)
+> 3. Display formatted summary with f-strings
+>
+> Before I code this, does this design make sense? Should I change anything?"
+
+This teaches specification-first thinking. Your AI validates your design BEFORE you waste time coding mistakes.
+
+## Phase 2: Step-by-Step Build
+
+Now build your program step by step.
+
+### Step 1: Collect Information
+
+**The `input()` function** — The `input()` function asks the user to type something. It shows a prompt, waits for them to type and press Enter, then gives you what they typed as a string.
+
+```python
+# Collect Information
+print("=== Personal Information Collector ===\n")
+
+name: str = input("What is your name? ")
+age: str = input("How old are you? ")
+favorite_color: str = input("What is your favorite color? ")
+hobby: str = input("What is your favorite hobby? ")
+city: str = input("What city do you live in? ")
+```
+
+Run this so far. It asks five questions and stores all the answers as strings.
+
+### Step 2: Display Summary
+
+Use f-strings to display formatted output:
+
+```python
+# Display Summary
+print("\n=== Your Profile ===")
+print(f"Name: {name}")
+print(f"Age: {age}")
+print(f"Favorite Color: {favorite_color}")
+print(f"Favorite Hobby: {hobby}")
+print(f"City: {city}")
+
+print(f"\nThank you, {name}! Your information has been recorded.")
+print("This profile demonstrates:")
+print("- Variables with type hints (all str)")
+print("- input() function to collect information")
+print("- F-strings to format output")
+print("- Comments to explain sections")
+```
+
+## Complete Capstone Code
+
+Here's the full program together:
+
+```python
+# Personal Information Collector
+# This program collects user information and displays a formatted summary
+
+# ===== COLLECT INFORMATION =====
+print("=== Personal Information Collector ===\n")
+
+name: str = input("What is your name? ")
+age: str = input("How old are you? ")
+favorite_color: str = input("What is your favorite color? ")
+hobby: str = input("What is your favorite hobby? ")
+city: str = input("What city do you live in? ")
+
+# ===== DISPLAY SUMMARY =====
+print("\n=== Your Profile ===")
+print(f"Name: {name}")
+print(f"Age: {age}")
+print(f"Favorite Color: {favorite_color}")
+print(f"Favorite Hobby: {hobby}")
+print(f"City: {city}")
+
+print(f"\nThank you, {name}! Your information has been recorded.")
+print("This profile demonstrates:")
+print("- Variables with type hints (all str)")
+print("- input() function to collect information")
+print("- F-strings to format output")
+print("- Comments to explain sections")
+```
+
+## Phase 3: Test and Validate
+
+### Run the Program
+
+Save this code as `capstone.py`. Run it:
+
+```
+python capstone.py
+```
+
+You should see:
+```
+=== Personal Information Collector ===
+
+What is your name? Alice
+How old are you? 25
+What is your favorite color? Blue
+What is your favorite hobby? Reading
+What city do you live in? Portland
+
+=== Your Profile ===
+Name: Alice
+Age: 25
+Favorite Color: Blue
+Favorite Hobby: Reading
+City: Portland
+
+Thank you, Alice! Your information has been recorded.
+This profile demonstrates:
+- Variables with type hints (all str)
+- input() function to collect information
+- F-strings to format output
+- Comments to explain sections
+```
+
+### Test Your Program
+
+Run through with different inputs. Try:
+- Your real information
+- Made-up information
+- Very short answers
+- Very long answers
+
+### Verify Against Specification
+
+Does your program:
+- [ ] Collect 5 pieces of information? ✓
+- [ ] Have type hints on all variables? ✓
+- [ ] Use `input()` to collect data? ✓
+- [ ] Display formatted output with f-strings? ✓
+- [ ] Include section comments? ✓
+- [ ] Include comments explaining sections? ✓
+
+If you checked everything, your capstone meets the specification.
+
+#### AI Colearning Prompt: Code Review
+
+When your program is drafted, ask your AI:
+
+> "Here's my capstone program:
+> [paste your code]
+>
+> Can you review it? Specifically:
+> 1. Are all variables properly typed with type hints?
+> 2. Does the output format look good?
+> 3. Any security or error-handling improvements?
+> 4. Can you suggest one enhancement?"
+
+This teaches code review—a professional skill. Your AI provides feedback. You learn what "good code" looks like.
+
+#### ✨ Teaching Tips
+
+**Type hints are mandatory.** Your capstone should have type hints on EVERY variable. This describes intent clearly.
+
+**All data is stored as strings.** We're not converting data types yet—that's Chapter 16. For now, age is stored as `"25"` (string), not `25` (integer).
+
+**Specification-first thinking**: You designed FIRST (plain English), coded SECOND. That's the AIDD methodology in practice.
+
+## Extending Your Program
+
+Once your capstone works, try extensions:
+
+**Extension 1**: Add one more question
+- Ask for favorite book or movie
+- Add type hint (`str`)
+- Include in output summary
+
+**Extension 2**: Add formatting
+- Use more section dividers
+- Add emoji to make output fun (optional)
+- Create a more detailed profile display
+
+**Extension 3**: Ask your AI for suggestions
+- "How can I make my capstone program more interesting?"
+- "What other information could I collect?"
+- "How can I improve the output formatting?"
+
+Share your extension with AI:
+
+> "I extended my capstone with [description]. Does it look good? Any improvements?"
+
+## Common Mistakes
+
+**Mistake 1**: Forgetting type hints
+
+```python
+name = input("What is your name? ")        # No type hint
+name: str = input("What is your name? ")   # Type hint—describes intent
+```
+
+Type hints are core. Every variable gets one.
+
+**Mistake 2**: Not using f-strings for formatted output
+
+```python
+print("Name: " + name)           # String concatenation (harder to read)
+print(f"Name: {name}")           # F-string (clear and readable)
+```
+
+F-strings are the modern way to format output.
+
+**Mistake 3**: Forgetting comments
+
+```python
+# No comments - harder to understand
+name: str = input("What is your name? ")
+print(f"Name: {name}")
+
+# With comments - shows intent
+# Collect user information
+name: str = input("What is your name? ")
+# Display the information
+print(f"Name: {name}")
+```
+
+Comments explain WHAT and WHY, not just HOW.
+
+---
+
+## Try With AI
+
+Use your AI companion (Claude Code or Gemini CLI) for these prompts.
+
+**Prompt 1: Understand – Program Components**
+
+```
+What are the 3 main components of your capstone program?
+1. _______ (ask user for data)
+2. _______ (create formatted output)
+3. _______ (clarify what the program does)
+
+List them in order of execution.
+```
+
+**Expected Outcome**: You recall program structure. You demonstrate comprehension of program flow.
+
+---
+
+**Prompt 2: Understand – Why Type Hints Matter**
+
+```
+Explain: "Why do we use type hints like `name: str` on every variable?"
+What benefit do they provide when working with AI?
+Ask your AI: "What's the difference between `name = input(...)` and `name: str = input(...)`?"
+```
+
+**Expected Outcome**: You understand that type hints describe intent. You grasp why describing intent is valuable in AI-driven development.
+
+---
+
+**Prompt 3: Apply – Extend Your Program**
+
+```
+Now that your capstone works, extend it:
+- Add one more question (favorite food, hobby, etc.)
+- Add it to your variables with type hint
+- Include it in the output summary
+- Test the program
+
+Ask your AI: "I added [new field] to my program. Does it look correct? Any improvements?"
+```
+
+**Expected Outcome**: You apply concepts to novel variation. You practice independent implementation. You gain confidence in your skills.
+
+---
+
+**Prompt 4: Analyze/Create – Reflect on Your Learning (Cognitive Closure)**
+
+```
+Reflection questions (write your answers):
+
+1. What was hardest about building this program? How did you solve it?
+
+2. Where did you use your AI tool? Why was AI helpful there?
+
+3. If you were to explain this program to someone who's never coded, what would you emphasize?
+
+4. How is this program an example of "describing intent first, coding second"?
+
+5. What would you build next with Python? What would be your first step?
+
+Ask your AI: "Here's my reflection on what I learned:
+[paste your answers]
+
+Do you have any insights about my learning journey?"
+```
+
+**Expected Outcome**: You reflect on learning process. You articulate how specification precedes code. You demonstrate metacognitive awareness. You clarify connection to AIDD methodology. You close Chapter 13 with clear understanding of why this matters and what comes next.
+
+---
+
+## Capstone Checklist
+
+Before you submit your capstone, verify:
+
+- [ ] Program runs without errors
+- [ ] Collects 5 pieces of information (name, age, favorite color, hobby, city)
+- [ ] Has type hints on all variables (`name: str`, `age: str`, etc.)
+- [ ] Uses `input()` to collect data
+- [ ] Uses f-strings for formatted output
+- [ ] Includes comments explaining each section
+- [ ] Displays formatted summary with user's information
+- [ ] You can explain how it works to someone else
+
+If you checked everything, congratulations! You've completed the Chapter 13 capstone.

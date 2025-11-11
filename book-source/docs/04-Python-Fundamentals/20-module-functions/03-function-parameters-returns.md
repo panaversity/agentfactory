@@ -1,0 +1,410 @@
+---
+sidebar_position: 3
+title: "Lesson 3: Function Parameters and Returns"
+description: "Master positional parameters, default parameters, multiple returns, and keyword arguments"
+keywords: ["parameters", "default parameters", "keyword arguments", "unpacking", "multiple returns", "tuples"]
+cefr_level: "B1"
+estimated_time: "60 minutes"
+proficiency_by_end: "Students correctly call functions with positional and keyword arguments, and unpack multiple return values"
+prerequisites: ["Lesson 1-2: Function basics and type hints", "Chapter 18: Tuples (used for multiple returns)", "Chapter 14: Type hints with generics"]
+learning_objectives:
+  - "Distinguish between required and optional parameters in function signatures"
+  - "Call functions using positional arguments, keyword arguments, and mixed patterns"
+  - "Write functions that return multiple values as tuples"
+  - "Unpack multiple return values into separate variables"
+  - "Understand parameter order constraints in Python"
+ai_native_learning: true
+try_with_ai_prompts: 4
+colearning_elements: ["conceptual_prompt", "teaching_commentary", "specification_challenge", "ai_tip"]
+---
+
+## Lesson 3: Function Parameters and Returns
+
+**CEFR Level**: B1 (Intermediate Application)
+**Time Estimate**: 60 minutes
+**What You'll Learn**: Real functions have optional behavior. You'll learn to write functions where some parameters are required and others are optional with defaults, and how to call functions flexibly using positional and keyword arguments. You'll also master returning and unpacking multiple values.
+
+---
+
+## Required vs. Optional Parameters — Flexibility
+
+**Pattern**: Functions often have some parameters you must provide and others that are optional with sensible defaults.
+
+### 💻 Code Idea: Parameters with Defaults
+
+```python
+def create_user_account(username: str, email: str, role: str = "user") -> dict[str, str]:
+    """
+    Create a user account with optional role assignment.
+
+    Parameters:
+        username (str): User's login name (required)
+        email (str): User's email address (required)
+        role (str): User's role in system (default: "user")
+
+    Returns:
+        dict[str, str]: Account information
+    """
+    account: dict[str, str] = {
+        "username": username,
+        "email": email,
+        "role": role,
+        "status": "active"
+    }
+    return account
+
+# Call with just required parameters (uses default role)
+user1 = create_user_account("alice", "alice@example.com")
+print(user1)
+# {'username': 'alice', 'email': 'alice@example.com', 'role': 'user', 'status': 'active'}
+
+# Call with optional parameter
+user2 = create_user_account("bob", "bob@example.com", "admin")
+print(user2)
+# {'username': 'bob', 'email': 'bob@example.com', 'role': 'admin', 'status': 'active'}
+```
+
+**Key Observation**: The parameter `role: str = "user"` means it's optional. If you don't provide it, Python uses `"user"` by default.
+
+### 💬 AI Colearning Prompt
+
+> Ask your AI: "Show me 3 different ways to call this function with these parameters: `def order_pizza(size: str, toppings: str = "cheese", delivery: bool = True)`. Which calls are valid? What happens if I use keyword arguments?"
+
+**Expected Understanding**: You see that there are multiple valid ways to call the same function, and keyword arguments provide clarity.
+
+### 🎓 Instructor Commentary
+
+Parameter order is not arbitrary—it's a language rule with a reason. Required parameters must come first because Python needs to know which arguments are required before it can apply defaults. Understanding WHY rules exist (not just memorizing them) is the key to professional development. When you design functions, you're making a contract: "Here's what you must provide, and here's what's optional." Clear parameter design makes your code readable and your intent unmistakable.
+
+---
+
+## Parameter Order Rules — Required First, Optional Second
+
+**Rule**: In Python, parameters with default values (optional) must come AFTER parameters without defaults (required).
+
+### 💻 Code Idea: Correct Parameter Order
+
+```python
+# CORRECT: Required parameters first, then optional
+def send_message(recipient: str, subject: str, priority: str = "normal") -> str:
+    """Send a message with optional priority level."""
+    return f"Message to {recipient}: {subject} (Priority: {priority})"
+
+# INCORRECT: This won't work in Python
+# def send_message(priority: str = "normal", recipient: str, subject: str):
+#     # Error! Required parameters can't come after optional ones
+
+# Valid calls with default:
+msg1 = send_message("alice@example.com", "Hello")
+print(msg1)  # Message to alice@example.com: Hello (Priority: normal)
+
+# Valid call with optional parameter:
+msg2 = send_message("bob@example.com", "Urgent", "high")
+print(msg2)  # Message to bob@example.com: Urgent (Priority: high)
+```
+
+**Why this rule exists**: Python processes arguments left to right. If an optional parameter came before a required one, Python wouldn't know which argument maps to which parameter.
+
+---
+
+## Keyword Arguments — Clarity Through Naming
+
+**Pattern**: You can call functions using keyword arguments, where you specify parameter names explicitly. This makes code clearer, especially with many optional parameters.
+
+### 💻 Code Idea: Using Keyword Arguments
+
+```python
+def schedule_meeting(
+    title: str,
+    date: str,
+    time: str = "9:00 AM",
+    duration_minutes: int = 60,
+    online: bool = True
+) -> str:
+    """Schedule a meeting with many optional parameters."""
+    meeting_info = f"Meeting: {title}\nDate: {date}\nTime: {time}\nDuration: {duration_minutes} min\nOnline: {online}"
+    return meeting_info
+
+# Positional arguments (order matters):
+meeting1 = schedule_meeting("Budget Review", "2025-11-15")
+print(meeting1)
+
+# Keyword arguments (order doesn't matter, much clearer):
+meeting2 = schedule_meeting(
+    title="Quarterly Planning",
+    date="2025-11-20",
+    time="2:00 PM",
+    duration_minutes=90,
+    online=False  # In-person meeting
+)
+print(meeting2)
+
+# Mixed: positional first, then keyword
+meeting3 = schedule_meeting("Team Standup", "2025-11-18", time="10:00 AM")
+print(meeting3)
+```
+
+**Advantage of Keyword Arguments**: When you see the function call, you immediately understand what each argument means. No guessing what the third argument is.
+
+---
+
+## Functions Returning Multiple Values
+
+**Pattern**: When you need to return several pieces of information, return a tuple and unpack it.
+
+### 💻 Code Idea: Multiple Returns with Unpacking
+
+```python
+def analyze_numbers(numbers: list[int]) -> tuple[int, int, float]:
+    """
+    Analyze a list of numbers.
+
+    Returns:
+        tuple[int, int, float]: (minimum, maximum, average)
+    """
+    min_val: int = min(numbers)
+    max_val: int = max(numbers)
+    avg_val: float = sum(numbers) / len(numbers)
+    return min_val, max_val, avg_val
+
+# Calling and unpacking return values
+data: list[int] = [10, 25, 15, 30, 20]
+minimum, maximum, average = analyze_numbers(data)
+
+print(f"Min: {minimum}, Max: {maximum}, Avg: {average:.2f}")
+# Output: Min: 10, Max: 30, Avg: 20.00
+
+# Alternative: capture entire tuple
+result: tuple[int, int, float] = analyze_numbers(data)
+print(f"Result: {result}")  # (10, 30, 20.0)
+```
+
+**Type Hint Reading**: `tuple[int, int, float]` says the function returns a tuple with first element int, second element int, third element float. Unpacking assigns each to a variable.
+
+---
+
+## Functions with Optional Return Values (Union Types)
+
+**Pattern**: Sometimes a function might not be able to return a value. Use `Type | None` to indicate this.
+
+### 💻 Code Idea: Optional Return Values
+
+```python
+def parse_date(date_string: str) -> tuple[int, int, int] | None:
+    """
+    Parse a date string in format 'YYYY-MM-DD'.
+
+    Returns:
+        tuple[int, int, int] | None: (year, month, day) if valid, None if invalid
+    """
+    try:
+        parts: list[str] = date_string.split('-')
+        if len(parts) != 3:
+            return None
+        year, month, day = int(parts[0]), int(parts[1]), int(parts[2])
+        return year, month, day
+    except ValueError:
+        return None
+
+# Calling and handling optional return
+date_result = parse_date("2025-11-15")
+if date_result:
+    year, month, day = date_result
+    print(f"Parsed: {year}-{month:02d}-{day:02d}")
+else:
+    print("Invalid date format")
+
+# Invalid input
+invalid = parse_date("not-a-date")
+print(f"Invalid result: {invalid}")  # None
+```
+
+**Type Hint Meaning**: `tuple[int, int, int] | None` means "return either a tuple of three ints, or None." This makes error cases explicit in the type system.
+
+---
+
+## Chaining Function Calls — Data Flow
+
+**Pattern**: The return value of one function becomes the input to another. This is how real code works.
+
+### 💻 Code Idea: Function Composition
+
+```python
+def calculate_discount(price: float, discount_percent: float) -> float:
+    """Calculate discounted price."""
+    return price * (1 - discount_percent / 100)
+
+def add_tax(price: float, tax_rate: float) -> float:
+    """Calculate price with tax."""
+    return price * (1 + tax_rate / 100)
+
+def format_price(price: float) -> str:
+    """Format price as currency."""
+    return f"${price:.2f}"
+
+# Chain function calls: apply discount, then add tax, then format
+original_price: float = 100.0
+discounted: float = calculate_discount(original_price, 20)  # 20% off = $80
+final_price: float = add_tax(discounted, 8)                 # 8% tax on $80 = $86.40
+formatted: str = format_price(final_price)
+
+print(f"Original: {format_price(original_price)}")
+print(f"After 20% discount: {format_price(discounted)}")
+print(f"After 8% tax: {formatted}")
+
+# Or chain it in one expression:
+result: str = format_price(add_tax(calculate_discount(100.0, 20), 8))
+print(f"Final result: {result}")
+```
+
+**Key Insight**: The return value of one function flows into the next. Understanding this data flow is essential to reading and writing code.
+
+---
+
+## Common Parameter Patterns
+
+### 💻 Code Idea: Various Parameter Combinations
+
+```python
+def build_url(domain: str, path: str = "/", protocol: str = "https", port: int = 443) -> str:
+    """
+    Build a complete URL from components.
+
+    Parameters:
+        domain (str): Domain name (required)
+        path (str): URL path (default: "/")
+        protocol (str): Protocol (default: "https")
+        port (int): Port number (default: 443)
+
+    Returns:
+        str: Complete URL
+    """
+    return f"{protocol}://{domain}:{port}{path}"
+
+# Various ways to call:
+url1 = build_url("example.com")
+print(url1)  # https://example.com:443/
+
+url2 = build_url("example.com", "/api/users")
+print(url2)  # https://example.com:443/api/users
+
+url3 = build_url("example.com", protocol="http", port=8080, path="/dev")
+print(url3)  # http://example.com:8080/dev
+
+url4 = build_url("example.com", "/secure", port=8443)
+print(url4)  # https://example.com:8443/secure
+```
+
+**Key Pattern**: Mix positional and keyword arguments strategically. Required parameters as positional, optional parameters as keyword arguments for clarity.
+
+---
+
+## 🚀 Specification Challenge
+
+You have two functions you've written:
+
+```python
+def convert_celsius_to_fahrenheit(celsius: float) -> float:
+    """Convert temperature from Celsius to Fahrenheit."""
+    return (celsius * 9/5) + 32
+
+def round_to_decimals(value: float, decimal_places: int = 2) -> float:
+    """Round a number to specified decimal places."""
+    return round(value, decimal_places)
+```
+
+Call `convert_celsius_to_fahrenheit`, then pass its result to `round_to_decimals`, all in one line. Ask your AI: *"Is this the correct way to do function composition? Are there better patterns?"* This teaches you how functions connect and flow data through your code.
+
+---
+
+## ✨ AI Tool Tip
+
+When a function returns multiple values, you can unpack them in one line:
+
+```python
+x, y = get_coordinates()
+name, email, age = get_user_info("alice")
+```
+
+This is very Pythonic and your AI will expect this pattern. Use it in your specifications and code. It's clean, readable, and makes your intent explicit.
+
+---
+
+## Try With AI
+
+Use your AI companion (Claude Code or Gemini CLI). You'll explore parameters, defaults, and returns by writing and testing functions.
+
+### Prompt 1: Recognize Parameter Types (Remember/Understand Level)
+
+```
+Look at this function signature:
+
+def build_url(domain: str, path: str, protocol: str = "https", port: int = 443) -> str:
+
+Identify:
+1. Which parameters are required? How do you know?
+2. Which are optional? How do you know?
+3. What are the default values?
+4. What will the return type be?
+```
+
+**Expected outcome**: You identify domain and path as required, protocol and port as optional with defaults.
+
+---
+
+### Prompt 2: Call a Function Flexibly (Understand/Apply Level)
+
+```
+Write code that calls this function 3 different ways:
+
+def create_file(filename: str, format: str = "txt", overwrite: bool = False) -> bool:
+    '''Create a file. Return True if successful.'''
+    return True  # Simplified for this exercise
+
+1. Call with minimum required arguments
+2. Call with all arguments using positional style
+3. Call with keyword arguments for clarity
+
+For each call, explain what arguments you're passing and why.
+```
+
+**Expected outcome**: You call function correctly with different argument patterns and explain the advantages of keyword arguments.
+
+---
+
+### Prompt 3: Return and Unpack Multiple Values (Apply Level)
+
+```
+Write a function called `get_user_info` that:
+1. Takes a user ID (string or integer) as input
+2. Returns a tuple with (name, email, role) — all strings
+3. Include type hints and a docstring
+
+Call your function with a test user ID.
+Unpack the three return values into separate variables: name, email, role.
+Print each one with a label.
+```
+
+**Expected outcome**: You write function with `tuple[str, str, str]` return type, call it, and unpack correctly.
+
+---
+
+### Prompt 4: Design Function Parameters (Analyze/Synthesize Level)
+
+```
+Design a function for a real task (calculate total cost with tax and shipping,
+format an address with optional country, validate a password with various rules).
+
+Write just the function signature with:
+- All parameters (both required and optional)
+- Type hints for each parameter
+- Return type
+- A docstring
+
+Ask your AI: "Should I have more or fewer parameters? Should some be optional instead of required?
+What are the tradeoffs in my design?"
+
+This teaches you that parameter design is about flexibility and clarity.
+```
+
+**Expected outcome**: You design function parameters thoughtfully, considering what's required vs. optional, and understand design tradeoffs.

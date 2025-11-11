@@ -1,28 +1,71 @@
 ---
-name: ai-collaborate-learning
+name: ai-collaborate-teaching
+category: "pedagogical"
+applies_to: ["all-chapters"]
+required_for: ["lesson-writer", "chapter-planner"]
 description: |
-  Design learning experiences for AI-assisted software development, integrating prompt engineering pedagogy,
-  AI pair programming patterns, and AI tool literacy into programming curriculum. Use this skill when
-  educators need to prepare students for professional AI-assisted development workflows, teach effective
-  AI collaboration skills, or balance AI assistance with foundational learning goals. This skill helps
-  create lessons that leverage AI tools appropriately while ensuring students build independent capability,
-  critical thinking, and ethical AI use practices. Activate when designing AI-integrated curricula, creating
-  prompt engineering exercises, establishing AI use policies, or assessing balance between assistance and learning.
-allowed-tools: ["Read", "Bash", "Write"]
-version: "1.0.0"
+  Design learning experiences for AI-native software development, integrating the Three Roles Framework 
+  (AI as Teacher/Student/Co-Worker), co-learning partnership pedagogy, and "Specs Are the New Syntax" 
+  paradigm into programming curriculum. Use this skill when educators need to prepare students for 
+  professional AI-driven development workflows, teach effective specification-first collaboration, or 
+  balance AI assistance with foundational learning goals. This skill helps create lessons that leverage 
+  AI tools appropriately while ensuring students build independent capability, bidirectional learning 
+  patterns, and ethical AI use practices. Aligned with Constitution v3.1.2.
+version: "2.0.0"
+dependencies: ["constitution:v3.1.2"]
 ---
 
-# AI Collaborate Learning
+# AI Collaborate Teaching
 
 ## Purpose
 
-Enable educators to design **co‑reasoning learning experiences** where AI is a partner in thinking, not just autocomplete. This skill helps:
-- Teach prompt engineering as a core programming skill
-- Design lessons that emphasize specification‑first, co‑reasoning with AI, and validation‑before‑trust
+Enable educators to design **co-learning experiences** where AI is a bidirectional learning partner following the Three Roles Framework, not just autocomplete. This skill helps:
+- Teach **"Specs Are the New Syntax"** as the PRIMARY skill (not code-writing)
+- Design lessons that emphasize **specification-first**, **co-learning** with AI, and **validation-before-trust**
 - Establish patterns for AI pair programming in education
-- Build AI tool literacy (capabilities, limitations, verification), with explicit spec → generate → validate loops
+- Build AI tool literacy (capabilities, limitations, verification), with explicit **spec → generate → validate** loops
+- Demonstrate the **Three Roles Framework** (AI as Teacher/Student/Co-Worker)
+- Show **bidirectional learning** (human teaches AI, AI teaches human)
 - Create ethical guidelines for responsible AI use
 - Assess appropriate balance of AI integration in curriculum
+
+## The Three Roles Framework (Constitution Principle 18)
+
+**CRITICAL**: All co-learning content MUST demonstrate this framework:
+
+### AI's Three Roles:
+1. **Teacher**: Suggests patterns, architectures, best practices students may not know
+2. **Student**: Learns from student's domain expertise, feedback, corrections
+3. **Co-Worker**: Collaborates as peer, not subordinate
+
+### Human's Three Roles:
+1. **Teacher**: Guides AI through clear specifications, provides domain knowledge
+2. **Student**: Learns from AI's suggestions, explores new patterns
+3. **Orchestrator**: Designs collaboration strategy, makes final decisions
+
+### The Convergence Loop
+
+**Required Pattern for All AI-Integrated Lessons:**
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  1. Human specifies intent (with context/constraints)   │
+│  2. AI suggests approach (may include new patterns)     │
+│  3. Human evaluates AND LEARNS ("I hadn't thought of X")│
+│  4. AI learns from feedback (adapts to preferences)     │
+│  5. CONVERGE on optimal solution (better than either    │
+│     could produce alone)                                 │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Content Requirements:**
+- ✅ At least ONE instance per lesson where student learns FROM AI's suggestion
+- ✅ At least ONE instance where AI adapts TO student's feedback
+- ✅ Convergence through iteration (not "perfect on first try")
+- ✅ Both parties contributing unique value
+- ❌ NEVER present AI as passive tool awaiting commands
+- ❌ NEVER show only human teaching AI (one-way instruction)
+- ❌ NEVER hide what student learns from AI's approaches
 
 ## Relationship to Graduated Teaching Pattern (Constitution Principle 13)
 

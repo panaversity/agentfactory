@@ -20,11 +20,12 @@ title: Chapter 1 Quiz
       question: "When you modify a list passed to a function, what happens to the original list?",
       options: [
         "The original list remains unchanged",
-        "The original list is also modified",
-        "The original list is deleted",
         "Lists cannot be passed to functions"
+        "The original list is deleted",
+        "The original list is also modified",
+        
       ],
-      correctOption: 1,
+      correctOption: 3,
       explanation: "The original list is modified because lists are mutable and Python passes them by reference. When you modify the list inside the function, you're modifying the same object that exists outside the function. This is a key concept in understanding Python's object model and how mutable vs. immutable types behave in function calls.",
       source: "Lesson 1: Understanding Mutability"
     },
@@ -32,11 +33,11 @@ title: Chapter 1 Quiz
       question: "What is the primary purpose of using a default parameter in a function definition?",
       options: [
         "To make the function run faster",
-        "To allow callers to omit the parameter when calling the function",
         "To prevent the parameter from being modified",
+        "To allow callers to omit the parameter when calling the function",
         "To create a copy of the parameter instead of using the original"
       ],
-      correctOption: 1,
+      correctOption: 2,
       explanation: "Default parameters allow you to call a function without providing that argument. If the argument is omitted, the default value is used. This is useful for making functions more flexible and easier to call. For example, a function can have sensible defaults that work for most cases, while still allowing callers to override them when needed.",
       source: "Lesson 2: Function Parameters and Scope"
     }
@@ -76,9 +77,9 @@ Each question must have:
 - ✅ `explanation` required (100-150 words, addresses all 4 options)
 - ✅ `source` required (format: "Lesson N: [Lesson Title]")
 
-## 💡 Complete Example (50 Questions)
+## 💡 Complete Example
 
-```mdx
+```md
 ---
 sidebar_position: 6
 title: Chapter 3 Quiz
@@ -95,11 +96,11 @@ Test your understanding of Python functions through this comprehensive quiz. You
       question: "What keyword is used to define a function in Python?",
       options: [
         "function keyword defines a block",
-        "def keyword starts a function",
         "func keyword introduces code",
+        "def keyword starts a function",
         "define keyword creates scope"
       ],
-      correctOption: 1,
+      correctOption: 2,
       explanation: "Python uses the 'def' keyword to define functions. This distinguishes it from languages like JavaScript that use 'function'. The def keyword followed by a function name and parentheses introduces a new function scope. Other languages have different keywords: C uses no keyword (just type), JavaScript uses 'function', etc. Understanding Python's syntax is crucial for writing correct code.",
       source: "Lesson 1: Function Basics"
     },
@@ -143,11 +144,11 @@ Test your understanding of Python functions through this comprehensive quiz. You
       question: "Can a function modify a list passed as an argument?",
       options: [
         "No, arguments are never modified",
-        "Yes, because lists are mutable",
-        "Only with special syntax",
         "Only if you use 'global'"
+        "Only with special syntax",
+        "Yes, because lists are mutable",
       ],
-      correctOption: 1,
+      correctOption: 3,
       explanation: "Lists are mutable objects, so functions can modify them directly. When you pass a list to a function, you're passing a reference to the same object. Changes made to the list inside the function affect the original. This is different from immutable types like integers and strings, which can't be modified in place. Understanding mutability is crucial for writing correct Python code.",
       source: "Lesson 4: Mutability in Functions"
     },

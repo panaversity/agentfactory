@@ -34,10 +34,6 @@ properties:
         Generate measurable learning outcomes when educator requests "define objectives",
         "create learning goals", or "identify prerequisites" for Python concepts.
         Applies Bloom's taxonomy levels and maps objectives to assessment methods.
-
-  allowed-tools:
-    type: array
-    uniqueItems: true
     items:
       type: string
       enum:

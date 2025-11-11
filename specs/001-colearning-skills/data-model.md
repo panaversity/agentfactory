@@ -32,7 +32,6 @@ description: |
   "create learning goals", or "identify prerequisites" for Python concepts.
   Applies Bloom's taxonomy levels (Remember, Understand, Apply, Analyze,
   Evaluate, Create) and maps objectives to assessment methods.
-allowed-tools: [Read, Write]
 ```
 
 ---

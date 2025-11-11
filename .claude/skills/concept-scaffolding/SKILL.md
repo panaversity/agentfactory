@@ -1,5 +1,6 @@
 ---
 name: concept-scaffolding
+version: 2.0
 description: |
   Breaks down complex programming concepts into progressive learning steps with cognitive load management.
   Activate when educators need to teach advanced topics incrementally, explain how to introduce
@@ -7,7 +8,7 @@ description: |
   Cognitive Load Theory and scaffolding strategies to create 3-7 step learning progressions.
   Use for concepts like: object-oriented programming, decorators, async/await, metaclasses,
   comprehensions, generators, context managers, or any Python feature requiring prerequisite knowledge.
-allowed-tools: [Read, Bash, Write]
+constitution_alignment: v3.1.2
 ---
 
 ## Purpose
@@ -47,6 +48,27 @@ Step 2: Apply graduated teaching pattern to each step
 ```
 
 **Key Principle:** Use concept-scaffolding to break down the learning progression, then apply graduated teaching pattern to determine delivery method for each step.
+
+## Nine Pillars of AI-Native Development Context (Constitution v3.1.2)
+
+When scaffolding concepts, integrate the Nine Pillars framework:
+
+1. **Evals-First**: Define success checkpoints BEFORE designing scaffolding steps
+2. **Spec-Driven**: Each step should include a mini-spec (what, why, success criteria)
+3. **AI as Co-Learning Partner**: Show how AI helps scaffold understanding (not just execute)
+4. **Validation Skills Taught**: Include verification checkpoints after each step
+5. **Graduated Complexity**: Respect tier limits (beginner: max 5 concepts, intermediate: 7, advanced: 10)
+6. **Human Orchestration**: Student decides learning pace and which steps to explore deeper
+7. **Prompt Quality**: When AI companion used, show clear prompts for each scaffolding step
+8. **Tool Fluency**: Specify when book teaches vs. when AI companion helps
+9. **Evolution Awareness**: For agentic concepts (Parts 6-7), note LLM vs. LAM distinctions
+
+**Scaffolding Design Checklist**:
+- [ ] Success evals defined for each step BEFORE creating content
+- [ ] Each step specifies: Book teaches (Tier 1) or AI companion helps (Tier 2)
+- [ ] Convergence opportunities identified (where student + AI iterate together)
+- [ ] Validation checkpoints include both "Did I understand?" and "How do I verify?"
+- [ ] Cognitive load respects tier limits from Nine Pillars #5
 
 ## When to Activate
 
@@ -295,6 +317,44 @@ Start with specific, tangible examples before introducing general patterns.
 
 ### Pattern 3: Procedural → Object-Oriented
 Introduce concepts procedurally first, then show OOP approach.
+
+### Pattern 4: Co-Learning Convergence in Scaffolding (Constitution v3.1.2)
+
+**CRITICAL**: Each scaffolding progression must demonstrate bidirectional learning between student and AI.
+
+**Example: Scaffolding List Comprehensions with Convergence**
+
+**Step 1 - Initial Understanding (Book teaches)**:
+```python
+# Traditional loop approach (foundational)
+numbers = [1, 2, 3, 4, 5]
+squared = []
+for n in numbers:
+    squared.append(n ** 2)
+```
+
+**Step 2 - Student Attempts (Try With AI)**:
+Student: "Convert this to a more Pythonic approach"
+AI: Suggests list comprehension: `squared = [n**2 for n in numbers]`
+**Student learns**: "I didn't know about list comprehensions—this is more concise!"
+
+**Step 3 - Student Refines (Convergence)**:
+Student: "Add filtering to only square even numbers"
+AI: `squared = [n**2 for n in numbers if n % 2 == 0]`
+AI learns: Student wants to combine filtering + transformation
+**Both converge**: Student understands filtering syntax; AI adapted to student's learning goal
+
+**Step 4 - Student Orchestrates (Validation)**:
+Student: "Explain when list comprehensions are better than loops"
+AI: Provides tradeoffs (readability vs. complexity)
+**Convergence outcome**: Student makes informed decisions, not just copies patterns
+
+**Required Elements in Convergence-Based Scaffolding**:
+- ✅ At least ONE step where student learns FROM AI's suggestion
+- ✅ At least ONE step where AI adapts TO student's feedback
+- ✅ Iteration shown (not "perfect on first try")
+- ✅ Both parties contribute unique value
+- ✅ Reflection prompt: "What did you learn from AI's approach?"
 
 ## Validation
 

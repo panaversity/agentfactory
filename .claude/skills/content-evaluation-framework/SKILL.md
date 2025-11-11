@@ -1,11 +1,14 @@
 ---
 name: content-evaluation-framework
 description: This skill should be used when evaluating the quality of book chapters, lessons, or educational content. It provides a systematic 6-category rubric with weighted scoring (Technical Accuracy 30%, Pedagogical Effectiveness 25%, Writing Quality 20%, Structure & Organization 15%, AI-First Teaching 10%, Constitution Compliance Pass/Fail) and multi-tier assessment (Excellent/Good/Needs Work/Insufficient). Use this during iterative drafting, after content completion, on-demand review requests, or before validation phases.
+constitution_alignment: "v3.1.2"
 ---
 
 # Content Evaluation Framework
 
 This skill provides a comprehensive, systematic rubric for evaluating educational book chapters and lessons with quantifiable quality standards.
+
+**Constitution Alignment**: v3.1.2 emphasizing "Specs Are the New Syntax", Nine Pillars framework, Three Roles Framework, and Co-Learning partnership
 
 ## Purpose
 
@@ -46,8 +49,8 @@ The evaluation uses 6 categories with the following weights:
 | **Pedagogical Effectiveness** | 25% | Show-then-explain pattern, progressive complexity, quality exercises |
 | **Writing Quality** | 20% | Readability (Flesch-Kincaid 8-10), voice, clarity, grade-level appropriateness |
 | **Structure & Organization** | 15% | Learning objectives met, logical flow, appropriate length, transitions |
-| **AI-First Teaching** | 10% | AI exercise quality, responsible AI use modeled, learning WITH AI emphasis |
-| **Constitution Compliance** | Pass/Fail | Must pass all non-negotiable constitutional requirements (gate) |
+| **AI-First Teaching** | 10% | Co-learning partnership demonstrated, Three Roles Framework shown, Nine Pillars aligned, Specs-As-Syntax emphasized |
+| **Constitution Compliance** | Pass/Fail | Must pass all non-negotiable constitutional requirements including Nine Pillars alignment (gate) |
 
 **Total Weighted Score Calculation:**
 ```

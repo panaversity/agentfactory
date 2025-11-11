@@ -1,24 +1,50 @@
 ---
 name: code-example-generator
+version: 2.0
 description: |
-  Generates runnable, pedagogically sound Python code examples with validation for teaching purposes.
+  Generates runnable, pedagogically sound code examples (Python and TypeScript) with validation for teaching purposes.
   Activate when authors need teaching examples that demonstrate concepts clearly, request code snippets
   for educational content, or need examples validated for correctness and best practices. Creates
   progressive example sequences (simple → realistic → complex) with clear explanations of what, how,
   and why. Use when generating examples for: functions, data structures, OOP, control flow, error
-  handling, or any Python concept requiring demonstration through working code.
-allowed-tools: [Read, Bash, Write]
+  handling, or any concept requiring demonstration through working code.
+constitution_alignment: v3.1.2
 ---
 
 ## Purpose
 
-The code-example-generator skill helps authors create runnable, well-structured Python code examples that clearly demonstrate specific concepts for learners. This skill produces examples that are pedagogically sound, follow Python best practices, and are validated for correctness through syntax checking and optional sandbox execution.
+The code-example-generator skill helps authors create runnable, well-structured code examples (Python and TypeScript) that clearly demonstrate specific concepts for learners. This skill produces examples that are pedagogically sound, follow best practices, and are validated for correctness through syntax checking and optional sandbox execution.
 
-> Requirements (Spec-First, Validation-First)
->
-> - A reference to an approved chapter specification is required (path to spec file)
-> - For generated examples, include the exact AI prompt(s) used and document validation steps/results (tests, scripts)
-> - Do not generate examples without linking to a specification and a validation plan
+**Constitution v3.1.2 Alignment**: This skill implements "Specs Are the New Syntax" paradigm—teaching students that specification clarity is the primary skill, not code writing.
+
+### Requirements (Evals-First, Then Spec-First, Then Implementation)
+
+**CRITICAL WORKFLOW** (Constitution v3.1.2):
+1. **Evals First**: Define success criteria (what makes this example "good"?) BEFORE writing spec
+2. **Spec Second**: Reference approved chapter specification (path to spec file)
+3. **Prompt Third**: Document exact AI prompt(s) used to generate code
+4. **Code Fourth**: Generate the implementation
+5. **Validation Fifth**: Validate against predefined evals (tests, scripts, criteria)
+
+**MANDATORY Template for First Example in Lesson**:
+```markdown
+### Spec → Prompt → Code → Validation
+
+**Spec**: `specs/part-X/chapter-Y/spec.md` (approved)
+**Success Evals**: [List criteria defined in spec]
+**Prompt**: "Generate a Python function that..."
+**Generated Code**: [Code below]
+**Validation**:
+- Syntax: ✓ Pass (validate-syntax.py)
+- Tests: ✓ Pass (all test cases)
+- Evals: ✓ Meets success criteria
+```
+
+**Do NOT** generate examples without:
+- ✅ Reference to approved spec
+- ✅ Predefined success evals
+- ✅ Exact AI prompt documented
+- ✅ Validation plan and results
 
 ### Minimal test snippet template
 ```
@@ -35,6 +61,29 @@ def test_example_basic():
 - [ ] No hardcoded secrets/tokens
 - [ ] Input validation present when parsing external data
 - [ ] Safe defaults and error handling
+
+### Bilingual Development (Python + TypeScript)
+
+**When to provide both languages** (Constitution v3.1.2):
+- ✅ Fundamental concepts that apply to both (functions, classes, async/await)
+- ✅ When audience includes full-stack developers
+- ✅ When concept has language-specific nuances worth highlighting
+- ❌ Python-specific features (decorators, context managers) → Python only
+- ❌ TypeScript-specific features (interfaces, generics) → TypeScript only
+
+**Format for bilingual examples**:
+```markdown
+### Python Implementation
+[Python code with comments]
+
+### TypeScript Implementation
+[TypeScript code with comments]
+
+### Key Differences
+- [Language-specific considerations]
+```
+
+**Default**: Python examples unless spec explicitly requests TypeScript or bilingual coverage.
 
 ## When to Activate
 
