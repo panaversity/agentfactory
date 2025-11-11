@@ -57,7 +57,7 @@ differentiation:
 
 # From Code Reuse to Vertical Intelligence: The New Architecture of Software
 
-For 40 years, software architecture followed a principle called DRY: Don't Repeat Yourself. The goal was to write code once, reuse it everywhere. Libraries, frameworks, microservices all built on the logic of code reuse.
+For decades, software architecture followed principles of code reuse, formalized as DRY (Don't Repeat Yourself) in 1999. The goal was to write code once, reuse it everywhere. Libraries, frameworks, microservices all built on the logic of code reuse.
 
 This logic breaks down in the AI era.
 
@@ -107,7 +107,7 @@ A subagent using MCP can read code from repositories, deploy containerized code 
 ### 5. MCP Vertical Connections (Industry APIs)
 This is where the defensibility lives. A finance subagent connects to Bloomberg API, real-time trading feeds, SEC EDGAR database. A healthcare subagent connects to hospital EHR systems (Epic, Cerner), drug databases (DrugBank), clinical literature (PubMed).
 
-These integrations are not reusable across industries, but they're the moat. A solo developer who builds tight integrations with Epic Systems (used by 55% of U.S. hospitals) creates defensibility that competitors must rebuild from scratch.
+These integrations are not reusable across industries, but they're the moat. A solo developer who builds tight integrations with Epic Systems (used by 55% of U.S. hospital beds) creates defensibility that competitors must rebuild from scratch.
 
 #### 💬 AI Colearning Prompt
 

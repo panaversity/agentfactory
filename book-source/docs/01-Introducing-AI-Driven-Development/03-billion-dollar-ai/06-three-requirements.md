@@ -164,7 +164,7 @@ Without this, you're a toy. With this, you're indispensable.
 
 ## The OpenAI Lesson: Study Mode
 
-Consider OpenAI's Study Mode experiment (2024). OpenAI has:
+Consider OpenAI's Study Mode feature (launched July 2025). OpenAI has:
 
 - **Requirement 1: Domain Expertise**: Partially. GPT-4 is state-of-the-art general AI, but lacks education domain expertise. OpenAI didn't fine-tune on curriculum standards or build education-specific sub-agents with pedagogical skills.
 - **Requirement 2: Integrations**: Partially. Study Mode integrates with some LMS platforms, but not deeply (Canvas, Google Classroom API, but not the full ecosystem)

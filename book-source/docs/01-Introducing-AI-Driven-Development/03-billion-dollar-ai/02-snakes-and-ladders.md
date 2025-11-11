@@ -115,7 +115,7 @@ History shows this pattern clearly. In mobile operating systems (2007-2015):
 
 - **Apple (iOS)**: Owned consumer + developer + ecosystem layers. Dominated.
 - **Google (Android)**: Owned manufacturer + developer + ecosystem layers. Dominated.
-- **Microsoft (Windows Mobile)**: Tried to compete directly on consumer appeal. Failed spectacularly. By 2010, Windows Mobile was extinct.
+- **Microsoft (Windows Mobile)**: Tried to compete directly on consumer appeal. Failed spectacularly. By August 2010, Windows Mobile had collapsed to 5% market share and was deprecated in October 2010.
 
 Microsoft's mistake was trying to win the consumer layer against entrenched competitors. They should have focused on enterprise first (where they had relationships and credibility), then built upward.
 
