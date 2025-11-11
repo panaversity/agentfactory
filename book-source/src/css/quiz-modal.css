@@ -1,0 +1,88 @@
+.quiz-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow-y: auto; /* Allow scrolling for long content */
+}
+
+.quiz-modal-content {
+  background: white;
+  padding: 20px 40px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 700px; /* Increased width for better review layout */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: black;
+  position: relative; /* For positioning the close button */
+  max-height: 90vh; /* Max height */
+  overflow-y: auto; /* Scroll inside the modal */
+}
+
+.quiz-modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #888;
+  line-height: 1;
+}
+
+.quiz-modal-content h2,
+.quiz-modal-content h3,
+.quiz-modal-content p {
+  color: black;
+}
+
+.quiz-modal-content .options div {
+  margin-bottom: 10px;
+}
+
+.quiz-modal-content button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.quiz-modal-content button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.quiz-review {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.review-item {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.review-item:last-child {
+  border-bottom: none;
+}
+
+.review-item h4 {
+  margin-bottom: 8px;
+}
+
+.review-item .explanation {
+  font-style: italic;
+  color: #555;
+  margin-top: 5px;
+}
