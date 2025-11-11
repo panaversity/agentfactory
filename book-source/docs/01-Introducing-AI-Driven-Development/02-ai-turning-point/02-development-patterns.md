@@ -220,9 +220,9 @@ Conversely, when you use SDD with AI, the AI becomes a force multiplier for the 
 
 **The discipline becomes MORE critical with AI, not less.** AI makes it easier to code fast. That makes vibe coding more tempting. And that's precisely when you need discipline most.
 
-#### ✨ Teaching Tip
+#### 🎓 Expert Insight
 
-**"Specs are the new syntax."** In traditional programming, your value was typing correct syntax fast. In AI-native development, your value is articulating intent clearly. Think of it this way: You're not learning to code faster—you're learning to THINK more clearly so AI can execute flawlessly. Specification quality directly determines output quality. Master specs, master AI-native development.
+> Specs are the new syntax. In traditional programming, your value was typing correct syntax fast. In AI-native development, your value is articulating intent clearly. Think of it this way: You're not learning to code faster. You're learning to think more clearly so AI can execute flawlessly. Specification quality directly determines output quality. Master specs, master AI-native development.
 
 ---
 

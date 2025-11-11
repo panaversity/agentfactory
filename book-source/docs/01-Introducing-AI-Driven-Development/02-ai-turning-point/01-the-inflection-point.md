@@ -73,7 +73,7 @@ Let's examine the evidence.
 
 ### Academic Benchmarks Show Dramatic Progress
 
-In April 2025, something unprecedented happened at the ICPC World Finals—the most prestigious competitive programming competition in the world. GPT-5 achieved a perfect score, solving all problems correctly within the time limit [ICPC World Finals, 2025]. Gemini 2.5 Pro earned a gold medal in the same competition [ICPC World Finals, 2025].
+In April 2025, something unprecedented happened at the ICPC World Finals, the most prestigious competitive programming competition in the world. GPT-5 achieved a perfect score, solving all problems correctly within the time limit [ICPC World Finals, 2025]. Gemini 2.5 Pro earned a gold medal in the same competition [ICPC World Finals, 2025].
 
 Think about what this means. Competitive programming problems require:
 - Understanding complex problem statements
@@ -91,13 +91,13 @@ To put this in perspective: 18 months ago, the best AI coding models scored belo
 
 When Dario Amodei, CEO of Anthropic, stated that AI may eventually write 90% of software code, he wasn't making a prediction about distant future possibilities [Amodei Interview, 2025]. He was describing a trajectory already visible in how his own engineering teams work.
 
-Sundar Pichai, Google's CEO, reported that AI tools have increased developer productivity by 10% across Google's engineering organization [Pichai Keynote, 2025]. At Google's scale—with over 50,000 engineers—that's equivalent to adding 5,000 full-time developers overnight.
+Sundar Pichai, Google's CEO, reported that AI tools have increased developer productivity by 10% across Google's engineering organization [Pichai Keynote, 2025]. At Google's scale (with over 50,000 engineers), that's equivalent to adding 5,000 full-time developers overnight.
 
 These aren't aspirational claims from startups seeking funding. These are statements from leaders running the world's most sophisticated software organizations, describing measurable changes already happening.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
-> **Why benchmarks matter**: Notice we're not just showing you impressive numbers—we're teaching you **how to evaluate evidence quality**. When you see claims about AI capabilities, ask: "Is this a vendor demo or an independent benchmark? Is it one impressive example or sustained performance?" This critical thinking skill applies to every technology claim you'll encounter, not just AI.
+> Why benchmarks matter: Notice we're not just showing you impressive numbers. We're teaching you how to evaluate evidence quality. When you see claims about AI capabilities, ask: "Is this a vendor demo or an independent benchmark? Is it one impressive example or sustained performance?" This critical thinking skill applies to every technology claim you'll encounter, not just AI.
 
 ## Mainstream Adoption: From Niche to Normal
 
@@ -115,24 +115,21 @@ The DORA (DevOps Research and Assessment) 2025 Report provides the most comprehe
 
 - **95% adoption rate** among surveyed development teams (up 14% year-over-year) [DORA Report, 2025]
 - **2 hours per day median usage**: Developers spend roughly one-quarter of their workday collaborating with AI [DORA Report, 2025]
-- **Throughput improves, but instability increases**: Teams ship features faster, but without discipline, quality suffers—a finding we'll explore in Section 3 [DORA Report, 2025]
+- **Throughput improves, but instability increases**: Teams ship features faster, but without discipline, quality suffers (a finding we'll explore in Section 3) [DORA Report, 2025]
 
 Think about that "2 hours per day" number. That's not occasional use when stuck. That's integrated into daily workflow—like email, version control, or testing. AI assistance has become infrastructure, not innovation.
 
-#### 🚀 CoLearning Challenge
+#### 🤝 Practice Exercise
 
-**Assess your position**: Look at the adoption statistics (84% using AI tools, 51% daily use, 2 hours per day median). Where do YOU fall on this curve?
-- **If you're already using AI daily**: You're in the 51% majority. What's one workflow habit you could improve with your AI partner?
-- **If you're experimenting occasionally**: You're in the 33% "planning to use" group. What's blocking daily adoption? Fear? Uncertainty about tools? Workflow friction?
-- **If you haven't started**: You're in the 16% minority. What's one low-stakes experiment you could try this week with an AI tool?
+Ask your AI: "Look at these adoption statistics: 84% using AI tools, 51% daily use, 2 hours per day median. I fall into [describe where you are: daily user / occasional experimenter / haven't started]. Based on where I am, what's one concrete next step I could take this week to improve my AI-native development practice? Give me realistic guidance for my situation."
 
-**Try this with your AI**: Share your answer above, then ask your AI to suggest one concrete next step based on where you are.
+**What you're practicing**: Self-assessment and personalized learning path planning. Your AI will help you identify where you are on the adoption curve and suggest appropriate next steps.
 
 ## Enterprise Productization: From Experiment to Strategy
 
 ### Market Signals Show Confidence
 
-In September 2025, Workday announced a $1.1 billion acquisition of a company building AI-powered software development agents [Workday Acquisition Announcement, 2025]. This wasn't an acqui-hire for talent or a defensive move against competitors. Workday—a company serving 10,000+ enterprise customers—bought AI agents as core product technology.
+In September 2025, Workday announced a $1.1 billion acquisition of a company building AI-powered software development agents [Workday Acquisition Announcement, 2025]. This wasn't an acqui-hire for talent or a defensive move against competitors. Workday (a company serving 10,000+ enterprise customers) bought AI agents as core product technology.
 
 What does this tell us? Enterprise software companies are betting billions that AI agents aren't experimental features to bolt onto existing products. They're fundamental architecture requiring ground-up integration.
 
@@ -143,9 +140,9 @@ You see similar patterns across the industry:
 
 These aren't pilot programs. These are multi-year platform bets by companies that move slowly and carefully.
 
-#### ✨ Teaching Tip
+#### 🎓 Expert Insight
 
-Think of billion-dollar acquisitions like this: When a conservative enterprise company (Workday serves banks, hospitals, governments) bets $1.1 billion on AI agents, they're not gambling—they're reading market signals we can't see yet. It's like watching institutional investors buy real estate in a neighborhood: they know something about where value is heading. The same principle applies here: follow the money, not the marketing.
+> Think of billion-dollar acquisitions like this: When a conservative enterprise company (Workday serves banks, hospitals, governments) bets $1.1 billion on AI agents, they're not gambling. They're reading market signals we can't see yet. It's like watching institutional investors buy real estate in a neighborhood. They know something about where value is heading. The same principle applies here: follow the money, not the marketing.
 
 ## The Evidence Compared: 2024 vs. 2025
 

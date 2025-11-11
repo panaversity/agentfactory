@@ -175,9 +175,9 @@ MCP is the glue that makes the three-layer stack possible. Here's why it's cruci
 
 **Current State (Late 2025)**: MCP is supported by Anthropic (Claude Code), some VS Code extensions, and Cursor. It's not universal yet, but adoption is growing. Expect most major tools to support it by 2026.
 
-#### ✨ Teaching Tip
+#### 🎓 Expert Insight
 
-The USB analogy for MCP is powerful, but here's the deeper lesson: **Standards enable ecosystems, not monopolies.** USB didn't make one device manufacturer win—it made ALL devices more useful. MCP does the same for AI tools. When you choose MCP-compatible tools, you're voting for an ecosystem where YOUR choice matters more than vendor lock-in. This is why understanding architecture (three-layer stack) matters more than memorizing specific tools.
+> The USB analogy for MCP is powerful, but here's the deeper lesson: Standards enable ecosystems, not monopolies. USB didn't make one device manufacturer win. It made all devices more useful. MCP does the same for AI tools. When you choose MCP-compatible tools, you're voting for an ecosystem where your choice matters more than vendor lock-in. This is why understanding architecture (three-layer stack) matters more than memorizing specific tools.
 
 ## Choosing the Right Tools for Your Context
 

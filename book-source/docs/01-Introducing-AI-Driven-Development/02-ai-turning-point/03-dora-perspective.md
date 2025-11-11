@@ -198,9 +198,9 @@ When you add AI tools to an environment without guardrails, velocity increases *
 
 Guardrails don't slow AI-driven development. They enable it.
 
-#### ✨ Teaching Tip
+#### 🎓 Expert Insight
 
-The mountain road analogy goes deeper than you might think: Guardrails don't just prevent falls—they change driver behavior. With guardrails, you take the turn confidently at 40 mph. Without them, you slow to 15 mph out of fear. **In software, guardrails (tests, CI/CD, code review) don't just catch mistakes—they give you confidence to experiment boldly with AI.** You try bigger refactorings, accept more AI suggestions, move faster BECAUSE you know the safety net exists.
+> The mountain road analogy goes deeper than you might think: Guardrails don't just prevent falls. They change driver behavior. With guardrails, you take the turn confidently at 40 mph. Without them, you slow to 15 mph out of fear. In software, guardrails (tests, CI/CD, code review) don't just catch mistakes. They give you confidence to experiment boldly with AI. You try bigger refactorings, accept more AI suggestions, move faster because you know the safety net exists.
 
 :::note Skeptic's Corner: "If AI is good enough, do we need all this?"
 
