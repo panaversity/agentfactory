@@ -83,7 +83,7 @@ This helps you see why the interface matters, not just the model.
 
 **Why revolutionary**: Traditional programming required translating human ideas into rigid syntax that computers could parse. This created a massive cognitive load and excluded anyone who couldn't master that syntax. When Markdown specifications become the source of truth, the barrier between idea and implementation shrinks dramatically. Business requirements, architectural designs, and implementation details live in the same format—natural language structured with Markdown.
 
-**Specific tools**: This isn't about a specific tool but a methodology enabled by AI agents. SpecKit Plus (Pillar 7) provides the framework for writing and managing Markdown specifications that AI agents can execute.
+**Specific tools**: This isn't about a specific tool but a methodology enabled by AI agents. GitHub Spec Kit (Pillar 7) provides the framework for writing and managing Markdown specifications that AI agents can execute.
 
 **How it integrates**: This pillar is the bridge between human intent and AI execution. It depends on Pillar 1 (AI agents capable of reading natural language) and enables Pillar 7 (SDD workflow). Pillar 4 (AI-First IDEs) enhances the spec-writing experience with intelligent autocomplete and validation.
 
@@ -147,13 +147,13 @@ Translating technical concepts into relatable terms through AI partnership helps
 
 **Example**: Aisha was initially skeptical about AI-generated code quality. Then she started using TDD with her AI agent. She'd write test cases describing edge cases—empty inputs, malformed data, boundary conditions—and ask the AI to implement code that passed all tests. The AI would generate implementations, run tests, see failures, and iterate until all tests passed. Her confidence soared because she could verify correctness automatically.
 
-## Pillar 7: Specification-Driven Development with SpecKit Plus
+## Pillar 7: Specification-Driven Development with GitHub Spec Kit
 
-**What it is**: A professional methodology where Markdown specifications are the source of truth for all development work. SpecKit Plus provides templates, workflows, and tools for managing specs, plans, and tasks in a structured way that AI agents can execute.
+**What it is**: A professional methodology where Markdown specifications are the source of truth for all development work. GitHub Spec Kit provides templates, workflows, and tools for managing specs, plans, and tasks in a structured way that AI agents can execute.
 
-**Why revolutionary**: Traditional Agile development assumes humans translate requirements into code. SDD assumes AI agents do that translation—but only if requirements are structured correctly. SpecKit Plus creates a standardized format for specifications that both humans can read and AI agents can execute. This formalizes the "Markdown as programming language" concept into a repeatable workflow.
+**Why revolutionary**: Traditional Agile development assumes humans translate requirements into code. SDD assumes AI agents do that translation—but only if requirements are structured correctly. GitHub Spec Kit creates a standardized format for specifications that both humans can read and AI agents can execute. This formalizes the "Markdown as programming language" concept into a repeatable workflow.
 
-**Specific tools**: SpecKit Plus is an open-source framework providing templates, CLI tools, and GitHub Actions for managing specification-driven workflows. It integrates with AI agents that can read specs and generate implementations.
+**Specific tools**: GitHub Spec Kit is an open-source framework released in September 2025, providing templates, CLI tools, and integration for managing specification-driven workflows. It integrates with AI agents that can read specs and generate implementations.
 
 **How it integrates**: SDD orchestrates all other pillars. It uses Pillar 2 (Markdown specs), leverages Pillar 1 (AI agents for implementation), enforces Pillar 6 (TDD for quality), and deploys via Pillar 9 (cloud infrastructure). Pillar 8 (Composable Skills) extends SDD with domain expertise.
 

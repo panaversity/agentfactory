@@ -71,7 +71,7 @@ Think of these technologies as nine pieces of infrastructure. Each one solves a 
 4. **AI-First IDEs** (editors like Zed and Cursor built for AI collaboration)
 5. **Linux Universal Dev Environment** (standardized development through WSL/Mac/Linux)
 6. **Test-Driven Development** (TDD for quality confidence at scale)
-7. **Specification-Driven Development with SpecKit Plus** (structured methodology)
+7. **Specification-Driven Development with Spec Kit** (structured methodology)
 8. **Composable Vertical Skills** (reusable domain expertise components)
 9. **Universal Cloud Deployment** (standardized infrastructure with Kubernetes, Docker, Dapr)
 
@@ -87,7 +87,7 @@ Each pillar addresses a specific challenge. Here's what they enable:
 | **AI-First IDEs** | Friction between human and AI workflows | Zed, Cursor | Editors designed for AI collaboration |
 | **Linux Universal Dev Env** | Platform fragmentation and inconsistency | WSL, Mac, Linux (Bash) | Consistent development across all platforms |
 | **Test-Driven Development** | Fear of breaking things while moving fast | TDD practices, automated testing | Confidence to iterate rapidly |
-| **Spec-Driven Development** | Ad-hoc development chaos | SpecKit Plus methodology | Structured, resumable workflows |
+| **Spec-Driven Development** | Ad-hoc development chaos | Spec Kit methodology | Structured, resumable workflows |
 | **Composable Vertical Skills** | Re-solving the same problems repeatedly | Reusable skill libraries | Domain expertise as building blocks |
 | **Universal Cloud Deployment** | Infrastructure complexity | Kubernetes, Docker, Dapr, Kafka | Deploy anywhere with standard tools |
 
