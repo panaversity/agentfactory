@@ -58,6 +58,29 @@ You've learned each extension separately. Here's how they compare:
 
 ---
 
+## Getting Started with Plugins
+
+If you want to try a plugin right away:
+
+1. Add a marketplace
+   ```bash
+   /plugin marketplace add your-org/claude-plugins
+   ```
+2. Browse and install a plugin
+   ```bash
+   /plugin
+   # or install directly:
+   /plugin install plugin-name@your-org
+   ```
+3. Run the plugin’s commands
+   ```bash
+   /help
+   # then try a listed command, e.g.:
+   /code-review
+   ```
+
+Tip: For local development, you can add a marketplace by path (for example, `/plugin marketplace add ./my-marketplace`) and install from there.
+
 ## Plugin Architecture: How Plugins Compose Everything
 
 Before learning built-in plugins, understand the architecture.
@@ -113,9 +136,14 @@ Claude Code ships with powerful plugins that demonstrate composition. You can in
 
 **When to use**: Before merging a PR, want automated feedback
 
-**How to enable**:
+**How to install and enable**:
 ```bash
-/plugin enable code-review
+# 1) Add a marketplace that provides this plugin
+/plugin marketplace add your-org/claude-plugins
+# 2) Install the plugin from that marketplace
+/plugin install code-review@your-org
+# 3) Enable it (if it is not auto-enabled)
+/plugin enable code-review@your-org
 ```
 
 **How to run**:
@@ -223,33 +251,48 @@ Claude Code ships with powerful plugins that demonstrate composition. You can in
 
 Claude Code has a marketplace of additional plugins. You can browse and install them.
 
+Explore public marketplaces here: [Claude Code Marketplace](https://claudecodemarketplace.com/).
+
+### Add a marketplace (required before installing)
+
+```bash
+/plugin marketplace add your-org/claude-plugins
+# Examples:
+#  • owner/repo (GitHub): your-org/claude-plugins
+#  • SSH: git@github.com:your-org/claude-plugins.git
+#  • URL: https://example.com/marketplace.json
+#  • Local path: ./path/to/marketplace
+```
+
 ### How to Browse Plugins
 
 ```bash
-/plugin marketplace
+/plugin
 ```
 
-This shows available plugins with descriptions. Search for what you need.
+This shows available plugins from configured marketplaces with descriptions. Search for what you need.
 
 ### How to Install a Plugin
 
 ```bash
-/plugin install plugin-name
-```
+/plugin install plugin-name@marketplace-name
+``` 
 
 **Example**:
 ```bash
-/plugin install security-guidance
+/plugin install code-review@your-org
 ```
 
 ### How to Manage Plugins
 
 ```bash
-/plugin list              # Show all installed plugins
-/plugin enable name       # Activate a plugin
-/plugin disable name      # Deactivate a plugin
-/plugin validate          # Check if plugins are valid
+/plugin list                          # Show all installed plugins
+/plugin enable name@marketplace       # Activate a plugin
+/plugin disable name@marketplace      # Deactivate a plugin
+/plugin validate                      # Check if plugins are valid
 ```
+
+If you see “No marketplaces configured,” add one first with `/plugin marketplace add ...`. If you see “No plugins installed,” install one with `/plugin install name@marketplace` before enabling.
 
 ---
 
@@ -332,21 +375,22 @@ Hooks trigger automatically on certain events. Example hook config:
 ```json
 {
   "hooks": {
-    "before_commit": [
+    "PostToolUse": [
       {
-        "command": "run tests before committing"
-      }
-    ],
-    "before_pr_create": [
-      {
-        "command": "run code review before creating PR"
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npm test"
+          }
+        ]
       }
     ]
   }
 }
 ```
 
-With this hook, every time you try to create a commit, the tests automatically run first. If tests fail, commit is blocked.
+With this hook, tests run automatically after file edits/writes so you get immediate feedback.
 
 ---
 

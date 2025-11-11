@@ -1,28 +1,10 @@
 {
-  "alwaysThinkingEnabled": false,
   "permissions": {
     "allow": [
-      "Bash(mkdir:*)",
-      "Bash(.specify/scripts/bash/check-prerequisites.sh:*)",
-      "Bash(bash:*)",
-      "WebSearch",
-      "Bash(git --version:*)",
-      "Bash(git rev-parse:*)",
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(python3:*)",
-      "Bash(test:*)",
-      "Bash(.specify/scripts/bash/create-new-feature.sh:*)",
-      "Bash(.specify/scripts/bash/setup-plan.sh:*)",
-      "Bash(git fetch:*)",
-      "WebFetch(domain:github.com)",
-      "Bash(.specify/scripts/bash/create-phr.sh:*)",
-      "Skill(quiz-generator)",
-      "Bash('.specify\\scripts\\bash\\create-phr.sh' --title \"implement-chapter-6-lessons\" --stage implement --feature \"001-chapter-6\" --json)",
-      "Bash(cat:*)",
-      "Bash(git checkout:*)"
+      "Bash(python:*)"
     ],
     "deny": [],
     "ask": []
-  }
+  },
+  "alwaysThinkingEnabled": false
 }

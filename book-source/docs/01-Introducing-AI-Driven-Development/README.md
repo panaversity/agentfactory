@@ -7,11 +7,11 @@ title: "Part 1: Introducing AI-Driven Development"
 
 ## The Game Has Changed
 
-Picture this: A solo developer in Seattle launches a financial analysis tool specifically for small accounting firms. Within 18 months, the application serves 50,000 users and generates $12 million in annual revenue. The developer didn't hire a team. They didn't spend years writing every line of code by hand. They orchestrated AI coding agents to build, test, and deploy a production-grade system while they focused on understanding their customers and refining the product.
+Picture this: An 18-year-old in Ethiopia teaches himself to code after a friend declines to help build an e-commerce project. Six months later, working from his bedroom, Bereket Engida builds Better Auth—an authentication framework that solves a problem every developer faces. He posts it to GitHub in September 2024. Within months, the project reaches 150,000+ weekly downloads and 15,000+ GitHub stars. By spring 2025, Better Auth raises $5 million in seed funding from Peak XV (formerly Sequoia India), Y Combinator, and other top-tier investors. Engida becomes the third Ethiopian founder to graduate from Y Combinator.
 
-This isn't a future scenario. This is happening right now, in 2025.
+This isn't a future scenario. This is happening right now, documented by TechCrunch in 2025.
 
-The software development industry—valued at approximately $3 trillion annually—is experiencing its most dramatic transformation in decades. AI coding agents haven't just made programming faster; they've fundamentally redefined who can build software, how quickly it can be created, and what's economically possible for individual developers.
+The developer economy—approximately 30 million professional developers worldwide generating roughly $3 trillion in annual economic value—is experiencing its most dramatic transformation in decades. AI coding agents haven't just made programming faster; they've fundamentally redefined who can build software, how quickly it can be created, and what's economically possible for individual developers.
 
 If you've wondered whether this AI revolution is real or hype, whether it's opportunity or threat, or whether you can participate without a computer science degree, this part provides the answers.
 
@@ -21,9 +21,9 @@ Three forces have converged to create this inflection point:
 
 **First, the tools crossed a capability threshold.** AI models like GPT-5, Claude Opus 4.1, and Gemini 2.5 can now write entire features, debug complex issues, and refactor legacy code with near-expert performance. At the 2025 International Collegiate Programming Contest (ICPC) World Finals, OpenAI's system scored a perfect 12/12—a result that would have ranked first among all human teams. These aren't toys. They're production-ready development partners.
 
-**Second, mainstream adoption happened fast.** The 2025 Stack Overflow Developer Survey found that 84% of developers are using or plan to use AI tools, with 51% using them daily. Google reports that approximately 95% of software professionals now use AI, spending a median of two hours per day with these tools. This isn't experimental anymore—it's standard practice.
+**Second, mainstream adoption happened fast.** The 2025 Stack Overflow Developer Survey found that 84% of developers are using or plan to use AI tools, with 51% using them daily. Google's 2025 DORA report shows that 90% of software development professionals now use AI, spending a median of two hours per day with these tools. This isn't experimental anymore—it's standard practice.
 
-**Third, the economics shifted dramatically.** Companies like Anthropic report that Claude Code achieved a $500 million annualized revenue run rate within two months of launch. Google's Gemini CLI acquired 1 million developers. OpenAI reports engineers using their Codex tool merge 70% more pull requests each week. The return on investment is measurable, immediate, and compelling.
+**Third, the economics shifted dramatically.** Companies like Anthropic report that Claude Code achieved a $500 million annualized revenue run rate within two months of launch. OpenAI reports engineers using their Codex tool merge 70% more pull requests each week. The return on investment is measurable, immediate, and compelling.
 
 But here's what matters most: This transformation creates unprecedented opportunity for individuals. You don't need a large team, years of experience, or venture capital to build valuable software. You need understanding, strategy, and the ability to work effectively with AI agents.
 
@@ -66,58 +66,15 @@ Here's why: Jumping into tools without understanding the paradigm shift leads to
 
 Think of Part 1 as the foundation of a house. Without it, everything built on top is unstable. With it, subsequent learning becomes faster and more effective.
 
-**Specifically, you won't learn:**
-- How to install or configure AI coding tools (Part 2)
-- How to write Python code (Part 4 onward)
-- How to create specifications or implement features (Part 5)
-- How to deploy applications (Parts 10-11)
-
-**What you will get** is understanding: Why this transformation matters, what opportunities exist, how the pieces fit together, and what role you'll play. This understanding is the most valuable asset you can develop right now.
-
-## How to Read This Part
-
-**Take your time.** These four chapters contain approximately 2 hours of reading, but the concepts deserve reflection. You'll encounter ideas that challenge assumptions about programming, career paths, and what's possible as an individual creator.
-
-**Pause and think.** Throughout these chapters, you'll find "Pause and Reflect" sections with questions designed to connect these ideas to your situation. Don't skip them. The time you spend thinking about how this applies to you is as valuable as the time spent reading.
-
-**Stay skeptical but open.** We make bold claims: that solo developers can build billion-dollar businesses, that AI coding tools have fundamentally changed software economics, that traditional CS education is becoming obsolete. These claims are backed by evidence, but you should evaluate that evidence critically. Look up the sources. Watch the videos. Form your own conclusions.
-
-**Notice patterns, not just facts.** While specific statistics (like Claude Code's $500M run rate) provide evidence, the patterns matter more: how quickly adoption is happening, how enterprises are reorganizing, which skills are becoming more valuable. These patterns will continue even as specific numbers change.
-
-
 ## A Note on Mindset
 
 The most important thing you'll develop in this part isn't knowledge—it's perspective.
 
 When you see AI writing 90% of the code in a project, you might think: "So developers aren't needed anymore." But that's looking at it backwards. The 10% humans contribute—the problem understanding, the architectural decisions, the quality judgments, the domain expertise—becomes infinitely more valuable when AI handles the mechanical 90%.
 
-When you hear about solo developers building products that previously required teams, you might think: "That's not sustainable." But we have historical precedents: Solo entrepreneurs built Instagram (acquired for $1 billion with 13 employees), WhatsApp (acquired for $19 billion with 55 employees), and countless other valuable products. AI tools make this pattern more accessible, not less sustainable.
-
 When you consider learning to code in 2025, you might think: "Is this the wrong time?" It's actually the best time in decades. The barriers are lower, the tools are better, and the opportunities are larger than ever before. But you need to learn differently than programmers did five years ago.
 
 This part shows you how.
-
-## Prerequisites
-
-**You don't need any prior experience:**
-
-- ❌ No programming knowledge required
-- ❌ No AI or machine learning background needed
-- ❌ No specific tools or accounts required (yet)
-- ❌ No computer science degree expected
-
-**What you do need:**
-
-- ✅ Curiosity about how software is built
-- ✅ Willingness to think critically about claims and evidence
-- ✅ Openness to ideas that might challenge your assumptions
-- ✅ About 2 hours to read and reflect on these four chapters
-
-That's it. If you can read this introduction and wonder "How does this work?" or "Could I do this?", you have everything required.
-
-## Ready?
-
-The next four chapters will change how you think about programming, about careers in technology, and about what's possible for individual creators. You'll encounter evidence that might seem too good to be true, strategies that challenge conventional wisdom, and opportunities you didn't know existed.
 
 Stay curious. Question the claims. Look for the patterns. Think about how this applies to your specific situation and goals.
 

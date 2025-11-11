@@ -1,17 +1,22 @@
 ---
 name: exercise-designer
+version: 2.0
 description: |
   Designs deliberate practice exercises applying evidence-based learning strategies like retrieval
   practice, spaced repetition, and interleaving. Activate when educators need varied exercise types
-  (fill-in-blank, debug-this, build-from-scratch, extend-code) targeting learning objectives with
-  appropriate difficulty progression. Creates exercise sets that apply cognitive science principles
-  to maximize retention and skill development. Use when designing practice activities for Python
-  concepts, creating homework assignments, generating problem sets, or evaluating exercise quality.
+  (fill-in-blank, debug-this, build-from-scratch, extend-code, AI-collaborative) targeting learning
+  objectives with appropriate difficulty progression. Creates exercise sets that apply cognitive
+  science principles to maximize retention and skill development. Use when designing practice
+  activities for Python concepts, creating homework assignments, generating problem sets, or
+  evaluating exercise quality.
+constitution_alignment: v3.1.2
 ---
 
 ## Purpose
 
 The exercise-designer skill helps educators create varied, evidence-based practice exercises that target specific learning objectives and apply proven strategies from cognitive science. This skill designs exercises with appropriate difficulty progression, spaced repetition opportunities, and clear assessment criteria.
+
+**Constitution v3.1.2 Alignment**: This skill implements evals-first exercise design—defining success criteria BEFORE creating exercises, and integrating AI-native co-learning exercise types.
 
 ## When to Activate
 
@@ -37,14 +42,49 @@ Optional:
 - **Time constraints**: Total time available for exercises
 - **Prior concepts**: Previously learned concepts for spaced repetition
 
+## Evals-First Exercise Design (Constitution v3.1.2)
+
+**CRITICAL WORKFLOW**:
+1. **Evals First**: Review success criteria from chapter spec BEFORE designing exercises
+2. **Objectives Second**: Ensure exercises target learning objectives that lead to evals
+3. **Exercises Third**: Design practice activities that prepare students for eval success
+4. **Validation Fourth**: Verify exercises measure progress toward defined success criteria
+
+**Template**:
+```markdown
+### Exercise Design (Evals-First)
+
+**Source**: Chapter spec at `specs/part-X/chapter-Y/spec.md`
+
+**Success Evals from Spec**:
+1. 75%+ write valid specification (measured by final exercise)
+2. 80%+ identify vague requirements (measured by quiz)
+
+**Learning Objectives** (from spec):
+- LO-001: Write clear specifications
+- LO-002: Identify ambiguous requirements
+
+**Exercise Design to Achieve Objectives → Evals**:
+- Ex-1: Fill-in incomplete spec (LO-001, starter difficulty)
+- Ex-2: Debug vague spec (LO-002, core difficulty)
+- Ex-3: Write complete spec from scratch (LO-001, stretch difficulty) → Tests Eval #1
+- Ex-4: Evaluate spec clarity (LO-002, stretch difficulty) → Tests Eval #2
+```
+
+**Do NOT** create exercises without:
+- ✅ Reference to approved spec with success evals
+- ✅ Explicit mapping: Exercise → Objective → Eval
+- ✅ Verification that exercises prepare for eval success
+
 ## Process
 
-### Step 1: Clarify Learning Objectives
+### Step 1: Clarify Learning Objectives and Evals
 
 Understand what learners should achieve:
 - Specific skills to demonstrate
 - Depth of understanding required (recall vs. application vs. creation)
 - Connection to Bloom's taxonomy levels
+- **Success evals from chapter spec** (what defines mastery?)
 
 ### Step 2: Load Exercise Type Reference
 
@@ -63,6 +103,116 @@ Available types:
 - **Explain-code**: Promote deeper understanding
 - **Refactor**: Teach code quality and Pythonic patterns
 - **Parsons problems**: Focus on logic flow
+- **AI-collaborative** (NEW): Practice working WITH AI as co-learning partner
+
+### AI-Collaborative Exercise Types (Constitution v3.1.2 Principle 18)
+
+**CRITICAL**: AI-native exercises must teach students to work WITH AI, not just independently.
+
+**AI-Collaborative Exercise Categories**:
+
+**1. Spec-to-Code with AI (AI as Student)**:
+```markdown
+### Exercise: User Authentication
+
+**Task**: Write a specification that produces working OAuth implementation on first try.
+
+**Instructions**:
+1. Write detailed specification for OAuth authentication
+2. Provide spec to AI
+3. Evaluate AI's generated code
+4. Identify gaps in your spec if code doesn't match intent
+
+**Assessment**:
+- Spec clarity (5 pts): Unambiguous requirements
+- Completeness (5 pts): All edge cases specified
+- AI output quality (5 pts): Code matches spec without clarification
+- Reflection (5 pts): What you learned about spec-writing from AI's response
+```
+
+**2. Convergence Iteration (AI as Co-Worker)**:
+```markdown
+### Exercise: Optimize Database Query
+
+**Task**: Iterate with AI to improve query performance.
+
+**Instructions**:
+1. Start with provided slow query
+2. Ask AI for improvement suggestions
+3. Evaluate AI's suggestions (don't blindly accept)
+4. Implement chosen approach
+5. Document what YOU decided vs. what AI suggested
+
+**Assessment**:
+- Iteration quality (5 pts): Clear back-and-forth refinement
+- Decision-making (5 pts): Strategic choices explained
+- Convergence (5 pts): Better solution than either party alone
+- Validation (5 pts): Verified AI's suggestions work correctly
+```
+
+**3. Pattern Learning from AI (AI as Teacher)**:
+```markdown
+### Exercise: Discover Pythonic Patterns
+
+**Task**: Learn a new pattern from AI suggestion.
+
+**Instructions**:
+1. Implement solution using your current approach
+2. Ask AI: "How would you improve this for Pythonicity?"
+3. Analyze AI's suggestion
+4. Explain what pattern AI taught you and why it's better
+5. Apply pattern to 2 new problems
+
+**Assessment**:
+- Understanding (5 pts): Clearly explains AI's suggested pattern
+- Application (5 pts): Successfully applies to new contexts
+- Evaluation (5 pts): Identifies when pattern is/isn't appropriate
+- Reflection (5 pts): What you learned that you didn't know before
+```
+
+**4. AI Output Validation (Critical Skill)**:
+```markdown
+### Exercise: Verify AI-Generated Code
+
+**Task**: Validate AI-generated authentication code for security.
+
+**Instructions**:
+1. Review provided AI-generated code
+2. Identify security vulnerabilities
+3. Write test cases that expose issues
+4. Propose fixes
+5. Document validation checklist you used
+
+**Assessment**:
+- Vulnerability detection (5 pts): Found critical issues
+- Test coverage (5 pts): Tests expose problems
+- Fix quality (5 pts): Secure improvements
+- Validation process (5 pts): Systematic approach documented
+```
+
+**5. Spec Refinement from AI Feedback (Bidirectional Learning)**:
+```markdown
+### Exercise: Iterative Spec Improvement
+
+**Task**: Refine specification based on AI clarifying questions.
+
+**Instructions**:
+1. Write initial specification
+2. AI asks clarifying questions (or you simulate what AI might ask)
+3. Improve spec to answer questions proactively
+4. Compare initial vs. final spec quality
+
+**Assessment**:
+- Initial spec (2 pts): Baseline quality
+- Question anticipation (3 pts): Identified ambiguities
+- Refinement quality (3 pts): Clearer final spec
+- Learning (2 pts): Documented what makes specs clear
+```
+
+**Exercise Balance for AI-Native Content**:
+- 50-60%: Traditional independent exercises
+- 30-40%: AI-collaborative exercises (Three Roles)
+- 10-20%: Validation/verification exercises
 
 ### Step 3: Load Evidence-Based Strategies
 

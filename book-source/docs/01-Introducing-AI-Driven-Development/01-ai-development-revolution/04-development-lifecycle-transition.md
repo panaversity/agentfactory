@@ -100,9 +100,13 @@ AI is transforming **all** of these phases simultaneously. Let's walk through ea
 - Automated analysis identifies inconsistencies and ambiguities before development starts
 - AI-generated prototypes help stakeholders visualize requirements before committing to implementation
 
-**Real example:** A team at Google used AI-assisted requirements analysis to identify 30% more edge cases during planning than traditional review processes caught. This prevented bugs from reaching production and reduced rework cycles.
+**Real example:** Organizations using AI-assisted requirements analysis report finding more edge cases during planning, helping prevent bugs from reaching production and reducing rework cycles. A Thoughtworks case study found approximately 10% fewer bugs during testing due to better edge case coverage in AI-enhanced story definitions.
 
 **What this means for you:** If you're learning AI-driven development, you need to understand how to work **with** AI planning tools to surface requirements, not just write them manually. You need to learn prompt engineering for requirements elicitation, not just documentation formatting.
+
+#### 🎓 Expert Insight
+
+> Notice the shift: traditional planning focused on documenting requirements. AI-era planning focuses on asking better questions—letting AI help you discover edge cases and ambiguities before implementation. This is co-learning in action: AI as collaborator, not just transcriber.
 
 ## Phase 2: Architecture & Design
 
@@ -144,6 +148,10 @@ Enterprise organizations using AI tools report productivity gains ranging from m
 
 **What this means for you:** Your value shifts from "typing speed" to "design quality and code review rigor." You become an orchestrator and editor, not primarily an author.
 
+#### 💬 AI Colearning Prompt
+
+> **Explore architectural thinking**: "I need to build a system that processes 10,000 user uploads per hour. Generate 3 different architectural approaches (serverless, containerized, hybrid) and compare their trade-offs for cost, scalability, and maintenance."
+
 ## Phase 4: Testing & Quality Assurance
 
 **Traditional approach:**
@@ -178,7 +186,7 @@ Enterprise organizations using AI tools report productivity gains ranging from m
 - AI-powered canary analysis detects anomalies during rollout
 - Rollback decisions assisted by AI analysis of metrics and logs
 
-**Real example:** Netflix uses AI-powered deployment systems that analyze hundreds of metrics during canary releases. The system automatically rolls back if anomalies are detected, preventing 85% of would-be incidents before they affect users.
+**Real example:** Netflix uses AI-powered deployment systems like Kayenta that analyze hundreds of metrics during canary releases. The system automatically rolls back if anomalies are detected. Similar canary analysis systems at Waze prevent approximately 25% of all incidents, including most user-facing incidents, before they affect customers.
 
 **What this means for you:** You need to understand infrastructure concepts, monitoring strategies, and failure modes—but AI handles configuration details. Focus on "what good looks like" rather than memorizing command syntax.
 
@@ -196,9 +204,11 @@ Enterprise organizations using AI tools report productivity gains ranging from m
 - AI-assisted root cause analysis correlates logs, metrics, and traces
 - Performance recommendations based on observed patterns and industry best practices
 
-**Real example:** Google's AI-powered SRE systems predict and prevent 60% of potential outages before they impact users. The system identifies degrading performance, unusual patterns, or approaching resource limits—and takes corrective action automatically.
-
 **What this means for you:** Operations becomes proactive and predictive rather than reactive. You interpret AI insights and make strategic decisions about system health rather than manually triaging incidents.
+
+#### 🎓 Expert Insight
+
+> AI doesn't eliminate the lifecycle. It compresses it. What took weeks now takes days, but you still need planning, testing, deployment, and monitoring. The sequence stays. The speed changes. This is why understanding the full cycle matters more than ever.
 
 ## The Compounding Effect
 
@@ -239,6 +249,12 @@ The answer isn't straightforward:
 The key insight: **The development lifecycle isn't going away. It's being transformed.** Every phase still requires human judgment, creativity, and domain expertise. But the mechanical aspects of each phase—the boilerplate, the repetitive work, the standard patterns—are being automated.
 
 Your job is to figure out which side of that divide your skills fall on—and if they're on the mechanical side, to develop the judgment skills that AI can't automate.
+
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "Walk me through building a simple blog application, but explain what happens at each lifecycle phase (planning, design, implementation, testing, deployment, operations). Where do I make decisions, and where does AI execute?"
+
+**Goal**: Understand the full cycle, not just coding.
 
 In the next section, we'll explore this evolution in detail: how the developer role is changing from typist to orchestrator, and what that means for your career.
 

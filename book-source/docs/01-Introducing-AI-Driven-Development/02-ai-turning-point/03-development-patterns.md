@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 title: "Development Patterns — Vibe Coding vs. Spec-Driven Development"
 chapter: 2
-lesson: 2
+lesson: 3
 duration_minutes: 25
 
 # HIDDEN SKILLS METADATA
@@ -93,6 +93,10 @@ Vibe coding has **predictable failure modes** that show up when stakes increase:
 
 These aren't design flaws—they're natural properties of exploration-first development. They don't matter much when stakes are low. They matter enormously when you're shipping to production or working in a team.
 
+#### 💬 AI Colearning Prompt
+
+> **Explore your own experiences**: Think about a time you moved fast on a project and hit unexpected problems later. What would have been different if you'd spent 30 minutes planning first? Share this scenario with your AI partner and ask: "What's the pattern here? When does speed-first become speed-then-stuck?" Let your AI help you discover the inflection point through your own experiences.
+
 ## Spec-Driven Development: Method-Led Development
 
 **Spec-Driven Development (SDD)** inverts the order. You write a specification first, defining what you're building, why, and how success looks. Then you write tests that encode that specification. Only then do you implement the feature.
@@ -118,6 +122,10 @@ The complete workflow integrates Test-Driven Development (TDD) and knowledge cap
 7. **Record/Share**: Capture decisions in Architecture Decision Records (ADRs). Share work via Pull Requests with context.
 
 **Note**: We'll formalize this methodology in a dedicated part later in the book. For now, understand the principles.
+
+#### 🎓 Expert Insight
+
+> **Why this matters**: We're not teaching you SDD because it's "best practice." We're teaching it because **in the AI era, specification-writing IS the primary skill**. Remember the constitutional principle: **"Specs are the new syntax."** You're learning to articulate intent so clearly that AI can execute flawlessly. The 7-step workflow trains this skill systematically—thinking before typing, validating before shipping. This is the foundation of AI-native development.
 
 ### Why SDD Works
 
@@ -178,6 +186,12 @@ Team A's velocity *appears* high until you count rework. Team B's velocity appea
 
 This isn't about smart engineers versus careless ones. It's about **method matching context**. Team A used exploration-mode thinking for production-mode stakes.
 
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "I want to build a simple task manager that saves tasks to a file. Before we write any code, help me create a mini-specification. Ask me clarifying questions: What features does it need? What could go wrong? What edge cases should I consider? Then guide me through writing a 1-paragraph spec that covers the essentials."
+
+**What you're practicing**: Specification-first thinking. Notice how planning BEFORE coding makes requirements clearer and implementation smoother.
+
 ## When Each Approach Fits
 
 | **Context** | **Vibe Coding** | **Spec-Driven Development** |
@@ -200,6 +214,10 @@ When you vibe code with Claude or ChatGPT, the AI generates code quickly. It fee
 Conversely, when you use SDD with AI, the AI becomes a force multiplier for the things that matter. You ask it to help you write a clear spec. You ask it to generate tests from your spec. You ask it to implement against those tests. The AI handles the mechanical parts while you handle the judgment—is the spec right? Are edge cases covered?
 
 **The discipline becomes MORE critical with AI, not less.** AI makes it easier to code fast. That makes vibe coding more tempting. And that's precisely when you need discipline most.
+
+#### 🎓 Expert Insight
+
+> Specs are the new syntax. In traditional programming, your value was typing correct syntax fast. In AI-native development, your value is articulating intent clearly. Think of it this way: You're not learning to code faster. You're learning to think more clearly so AI can execute flawlessly. Specification quality directly determines output quality. Master specs, master AI-native development.
 
 ---
 
@@ -232,32 +250,32 @@ Think of it like blueprints for construction. Building a treehouse in your backy
 
 Use your AI companion tool set up (e.g., ChatGPT web, Claude Code, Gemini CLI), you may use that instead—the prompts are the same.
 
-### Prompt 1: Compare Development Approaches
+### Prompt 1: Discover Patterns Through Your Experience
 ```
-Explain the difference between 'vibe coding' (jumping in and iterating quickly) and 'spec-driven development' (planning first, then building). Which approach is better for: (a) learning a new skill, (b) building a personal project, (c) creating a product for real users? Give me specific examples of when each approach works best.
-```
-
-**Expected outcome**: Clear understanding of when to plan vs. when to explore (without technical jargon).
-
-### Prompt 2: Plan A Real Project
-```
-I want to build [describe something you'd like to create: a website, an app, a business tool, etc.] using AI as my collaborator. Walk me through what 'planning first' would look like for this project. What questions should I answer before asking AI to help me build it? What could go wrong if I skip the planning step?
+Let's explore development approaches through MY experiences. I'll describe a project where I moved fast (vibe coding) and one where I planned carefully (or wish I had). For each, ask me: What worked? What broke? When did I feel stuck? Then help me discover: What's the underlying pattern that determines when each approach works? Don't just explain—help me DISCOVER the tradeoffs through reflecting on my own projects.
 ```
 
-**Expected outcome**: Practical insight into planning a real project with AI collaboration.
+**What you're learning**: Pattern recognition through reflection—your AI helps you extract principles from your experiences, not just memorize rules.
 
-### Prompt 3: Debug Common Problems
+### Prompt 2: Co-Create a Mini-Spec
 ```
-Here's a realistic scenario: I'm building a simple tool and I use AI to generate code quickly. It works on my computer, but when I share it with others, it breaks. What likely went wrong? What should I have done differently? Give me a simple checklist I can use next time to avoid this problem.
-```
-
-**Expected outcome**: Awareness of common beginner mistakes (like "works on my machine" syndrome) and how to avoid them.
-
-### Prompt 4: Create Decision Framework
-```
-Create a simple decision framework for me: Given a project or idea, how do I decide whether to 'explore quickly with AI' versus 'plan carefully first'? Make it practical—something I can use as a beginner without needing to know technical jargon.
+I want to build [describe your project idea]. Before we write any code, let's co-create a mini-specification together. Start by asking me clarifying questions: What problem does this solve? Who will use it? What does "done" look like? What could go wrong? As I answer, help me shape a 1-page spec. Let's iterate—you suggest structure, I provide content, we refine together until we both feel clear about what we're building.
 ```
 
-**Expected outcome**: A simple, reusable decision framework for choosing your approach.
+**What you're learning**: Specification as dialogue—you and your AI converge on clarity through iteration, not documentation.
+
+### Prompt 3: Debug Together Through Failure Analysis
+```
+Here's a real scenario I faced (or a hypothetical): I built something quickly with AI help, it worked on my machine, but broke when [shared with others / deployed / scaled up]. Walk me through diagnosing this together: Ask me questions about what I did (or didn't do), help me discover what likely went wrong, then co-create a "pre-flight checklist" I can use next time. Make it specific to MY project, not generic advice.
+```
+
+**What you're learning**: Root cause analysis through dialogue—your AI teaches you to debug by asking questions, not just providing answers.
+
+### Prompt 4: Build Decision Framework Together
+```
+I need a simple decision framework: Given a project, how do I choose between "explore fast" and "plan first"? But don't just give me a framework—let's BUILD one together. Ask me about projects I've done: Which ones benefited from planning? Which ones needed exploration? Help me discover what factors matter most (stakes? team size? complexity? familiarity?). Then co-create a decision tree or checklist that fits MY context, not generic best practices.
+```
+
+**What you're learning**: Framework co-creation—you're building decision tools WITH your AI, not just receiving them. This is AI partnership in action.
 
 

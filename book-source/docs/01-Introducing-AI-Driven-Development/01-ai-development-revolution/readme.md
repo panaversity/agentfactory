@@ -23,4 +23,3 @@ By the end of this chapter, you'll understand:
 - **The opportunity window**: Why this is the best time in decades to learn software development, with specific opportunities for beginners, experienced developers, entrepreneurs, and domain experts
 - **The education gap**: Five critical gaps in traditional CS curriculum and why supplemental learning is essential
 - **Your optimal timing**: Why you're in the Early Majority adoption phase—the sweet spot for high return and manageable risk
-

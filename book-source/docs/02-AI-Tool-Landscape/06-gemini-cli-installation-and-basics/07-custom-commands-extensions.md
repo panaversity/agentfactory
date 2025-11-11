@@ -48,8 +48,8 @@ Gemini CLI uses **TOML** (simple configuration format) for custom commands.
 ### Basic Structure
 
 ```toml
-[command]
-name = "research"
+# File path determines command name.
+# ~/.gemini/commands/research.toml -> /research
 description = "Research a topic using web browsing"
 prompt = "Search the web for {{query}} and summarize findings in 5 bullet points"
 ```
@@ -57,8 +57,7 @@ prompt = "Search the web for {{query}} and summarize findings in 5 bullet points
 ### With Variables
 
 ```toml
-[command]
-name = "research"
+# ~/.gemini/commands/research.toml -> /research
 description = "Research a topic"
 prompt = """
 Using the Playwright MCP server, research {{topic}}.
@@ -74,12 +73,28 @@ Summarize in a structured report.
 ### With Shell Integration
 
 ```toml
-[command]
-name = "audit-code"
+# ~/.gemini/commands/audit-code.toml -> /audit-code
 description = "Security audit of your code"
-shell = "!find src -name '*.ts' -type f"
-prompt = "These are my TypeScript files. {{shell_result}} Perform a security audit and list vulnerabilities."
+prompt = """
+These are my TypeScript files:
+
+!{find src -name '*.ts' -type f}
+
+Perform a security audit and list vulnerabilities.
+"""
 ```
+
+---
+
+## Command Naming: Derived From File Path
+
+- User commands live in `~/.gemini/commands/`
+  - `~/.gemini/commands/test.toml` -> `/test`
+  - `~/.gemini/commands/git/commit.toml` -> `/git:commit`
+- Project commands live in `./gemini/commands/`
+  - `./gemini/commands/spec.toml` -> `/spec`
+
+No `[command]` table or `name` field is required; the command name is inferred from the TOML file path.
 
 ---
 
@@ -124,9 +139,7 @@ mkdir -p ./gemini/commands/
 ### Example 1: Research Command
 
 ```toml
-# ~/.gemini/commands/research.toml
-[command]
-name = "research"
+# ~/.gemini/commands/research.toml  -> /research
 description = "Research a topic using web browsing"
 prompt = """
 Using the Context7 MCP server, research the following topic: {{topic}}
@@ -150,9 +163,7 @@ Format as structured markdown.
 ### Example 2: Code Review Command
 
 ```toml
-# ./gemini/commands/code-review.toml
-[command]
-name = "code-review"
+# ./gemini/commands/code-review.toml  -> /code-review
 description = "Review code in project for patterns"
 prompt = """
 Review @src/{{path}}.
@@ -196,7 +207,7 @@ Into a shareable, installable bundle.
 
 **Install:**
 ```
-/extension install my-org/productivity-suite
+gemini extensions install <source> [--ref <ref>] [--auto-update] [--pre-release] [--consent] [--scope <user|workspace>]
 ```
 
 Gemini CLI downloads and installs:
@@ -206,6 +217,24 @@ Gemini CLI downloads and installs:
 - Settings (model, token limits, etc.)
 
 **Result:** You get a complete workflow setup in one command.
+
+---
+
+## Example: Installing an Online Extension
+
+Up-to-date code docs for any prompt
+
+```bash
+gemini extensions install https://github.com/upstash/context7
+```
+
+After installation, check available commands:
+
+```bash
+gemini extensions list
+```
+
+The extensions listed here are sourced from public repositories and created by third-party developers. Google does not vet, endorse, or guarantee the functionality or security of these extensions. Please carefully inspect any extension and its source code before installing to understand the permissions it requires and the actions it may perform.
 
 ---
 
@@ -259,8 +288,7 @@ touch ~/.gemini/commands/hello.toml
 
 **Step 2:** Add content
 ```toml
-[command]
-name = "hello"
+# ~/.gemini/commands/hello.toml -> /hello
 description = "Greet me with context about my work"
 prompt = "Greet me warmly and remind me that I'm building {{project}}, focusing on {{goal}}."
 ```
@@ -280,8 +308,7 @@ touch ./gemini/commands/spec.toml
 
 **Step 2:** Add content
 ```toml
-[command]
-name = "spec"
+# ./gemini/commands/spec.toml -> /spec
 description = "Generate API spec from code"
 prompt = "Looking at my code, generate an OpenAPI specification for my {{endpoint}} endpoint."
 ```

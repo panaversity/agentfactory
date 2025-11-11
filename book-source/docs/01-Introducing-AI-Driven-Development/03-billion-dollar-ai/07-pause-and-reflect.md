@@ -69,6 +69,10 @@ Here are three reflection prompts. There are no "right answers." The value is in
 
 Why? Is there a problem in that market that frustrates you personally? A workflow you wish was faster? A decision that seems obvious but isn't being automated?
 
+#### 💬 AI Colearning Prompt
+
+> **Explore with your AI**: "I'm considering [your vertical market choice]. Let's dig deeper—ask your AI: 'What are the top 3 pain points in this vertical that incumbents aren't solving well?' Then challenge those answers: Are these REAL pain points customers would pay to solve, or just theoretical problems? Let's validate together whether this vertical is genuinely underserved."
+
 ---
 
 ## Reflection 2: Your Competitive Layer
@@ -92,6 +96,10 @@ When do you think you'd reach critical mass (60-80 customers)? What would trigge
 
 Consider writing your answers down. Reflection becomes clear when you externalize it.
 
+#### 🎓 Expert Insight
+
+> The PPP timeline isn't arbitrary—it matches the time required to build trust in B2B markets. Enterprise customers don't buy from unknowns. Phase 1-2 earns trust by solving real problems without threatening incumbents. Phase 3 (pivot) works because you've proven reliability. Rushing the timeline breaks trust; patience compounds it.
+
 ## The Mindset Shift
 
 Here's the insight that matters most: **You're not building a software company anymore. You're building a strategy company that uses AI to execute.**
@@ -99,6 +107,12 @@ Here's the insight that matters most: **You're not building a software company a
 Traditional software companies are limited by how fast they can hire and onboard engineers. Your business scales by how well you understand your vertical market, how deep your integrations go, and how well you orchestrate subagents.
 
 This is why a solo developer generating $500M is no longer surprising. **It's the inevitable outcome of this new economics.**
+
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "I'm thinking about [your vertical market]. Help me identify ONE workflow in this vertical that's 90% mechanical (AI can automate) and 10% judgment (I provide strategy). Describe the workflow in detail."
+
+**Expected Outcome**: You'll practice applying all Chapter 3 frameworks (90-10 rule, vertical intelligence, PPP strategy) to your specific opportunity, then reality-check AI assessments with your domain knowledge. This teaches strategic thinking about automation opportunities.
 
 ---
 
@@ -113,12 +127,12 @@ I just completed Chapter 3 on billion-dollar AI strategies. Help me synthesize t
 
 **Expected outcome**: Integrated understanding of how all Chapter 3 frameworks connect.
 
-### Prompt 2: Reality-Check Your Plan
+### Prompt 2: Reality-Check Your Plan 
 ```
-The reflection prompts asked about vertical markets, competitive layers, and PPP strategy. Based on my answers [share your thinking], help me reality-check: Am I being too ambitious? Too cautious? Give me honest feedback. What's a realistic 12-month milestone I should aim for, given my starting point?
+The reflection prompts asked about vertical markets, competitive layers, and PPP strategy. Let's reality-check my thinking together: Based on my answers [share your thinking], first give me honest feedback—am I being too ambitious or too cautious? Then I'll push back on your assessment with my reasoning, and you adapt your feedback. Let's iterate until we converge on a realistic 12-month milestone that's ambitious but achievable for someone in my situation.
 ```
 
-**Expected outcome**: Reality-checked 12-month milestone based on your actual context.
+**Expected outcome**: Reality-checked 12-month milestone based on your actual context, achieved through **collaborative iteration** where you and your AI refine the plan together until it feels both ambitious and achievable.
 
 ### Prompt 3: Apply Strategy Company Mindset
 ```

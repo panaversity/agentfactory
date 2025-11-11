@@ -67,8 +67,9 @@ Let's break down each component of this calculation to understand what it repres
 ### 30 Million Professional Developers
 
 This figure comes from converging estimates across multiple sources:
-- The Stack Overflow Developer Survey (2024) estimates 28-32 million professional software developers globally
-- GitHub reports over 100 million accounts, with approximately 30-35 million active professional developers
+- Evans Data Corporation's 2024 Worldwide Developer Population Report shows 27 million developers, with projections exceeding 30 million by 2025
+- GitHub reports over 100 million developer accounts globally
+- SlashData projects 45 million developers worldwide by 2030, indicating steady growth from current levels
 - The U.S. Bureau of Labor Statistics, Eurostat, and equivalent agencies in major economies all point to similar global totals when aggregated
 
 This number includes full-time software engineers, web developers, mobile developers, data engineers, DevOps specialists, and similar roles where coding is the primary job function. It does **not** include the growing population of "development-adjacent" professionals—designers who implement prototypes, product managers who write analysis scripts, technical writers who build documentation systems—which would push the total significantly higher.
@@ -93,6 +94,10 @@ Consider some reference points:
 
 The $100,000 figure is actually **conservative**. Many industry analyses place the average economic impact per developer at $150,000-$200,000 annually.
 
+#### 💬 AI Colearning Prompt
+
+> **Test your understanding**: "If a developer's salary is $80K but they generate $100K+ in economic value, where does that extra value go? Ask your AI to explain the difference between salary and economic value generated."
+
 ### What Does $3 Trillion Mean?
 
 To put this in perspective:
@@ -108,7 +113,7 @@ In other words, if you think of the global developer workforce as a single econo
 
 ## Why This Matters: Disruption at Scale
 
-Now here's where it gets interesting—and why Sarah Chen's story from the previous section isn't just a feel-good anecdote.
+Now here's where it gets interesting—and why the Y Combinator data from the previous section isn't just an isolated trend.
 
 **A combination of AI startups (companies like Anthropic, OpenAI, GitHub, Replit, Cursor) and the underlying language models they've built are effectively disrupting an economy the size of a major nation.**
 
@@ -121,9 +126,13 @@ Previous platform shifts in software development took 10-15 years to reach major
 - **Mobile development** (2010s): ~8 years from iPhone to mobile-first design being standard
 
 **AI coding tools** are reaching similar adoption levels in **less than 3 years**:
-- GitHub Copilot: launched October 2021, reached 1 million+ paid users by 2023
-- Claude Code: announced 2024, hit $500 million run rate within months
-- Overall AI tool usage: 76% of developers using or planning to use AI assistants, with 62% already using them—up from 44% last year (Stack Overflow 2024)
+- GitHub Copilot: launched October 2021, reached $100M ARR within approximately 2 years (October 2023)
+- Claude Code: announced 2025, hit $500 million annualized revenue within two months
+- Overall AI tool usage: 84% of developers using or planning to use AI tools, with 51% using them daily (Stack Overflow 2025 Developer Survey)
+
+#### 🎓 Expert Insight
+
+> This acceleration isn't just hype. Notice the pattern: PC revolution (12 years), Internet (10 years), Cloud (15 years), Mobile (8 years), AI coding (3 years). Each wave accelerates faster because infrastructure improves. Internet speeds, cloud platforms, and now LLM APIs enable rapid adoption. You're entering during the fastest technology transition in software history.
 
 ## The Acceleration Paradox
 
@@ -141,7 +150,7 @@ For the past two decades, software followed a **SaaS model**: build one applicat
 
 AI coding tools are enabling a shift toward **highly customized, individual software solutions**—what some industry observers call "vibe coding." Because the cost and time to create software have dropped dramatically, individuals can now build bespoke applications tailored to their specific workflows, preferences, and requirements.
 
-Sarah Chen's analytics dashboard isn't a generic product for thousands of customers. It's specifically designed for her business model, her customer base, her reporting needs. And because AI tools made it feasible to build in 48 hours instead of weeks, she could afford to create something custom.
+The YC founders with 95% AI-generated codebases aren't building generic SaaS products for mass markets. They're creating specialized solutions for specific niches, custom-tailored to particular business models and user needs. Because AI tools make it feasible to build sophisticated systems in days instead of months, founders can afford to create highly targeted solutions.
 
 This doesn't shrink the software market. It **explodes** it.
 
@@ -156,6 +165,10 @@ Paradoxically, as AI tools become more powerful, the number of people who identi
 - **Entrepreneurs and founders** are prototyping and launching products without hiring full development teams
 
 The traditional gatekeepers to programming—memorizing syntax, understanding low-level implementation details, mastering complex toolchains—have been removed. The result is democratization, not displacement.
+
+#### 🎓 Expert Insight
+
+> AI doesn't shrink the developer market. It expands who can be a developer. Think about spreadsheets: they didn't eliminate accountants. They made financial analysis accessible to everyone, expanding the field. Same pattern here. Lower barriers mean more builders, not fewer.
 
 ## Historical Precedent: When Industries Disrupted Themselves
 
@@ -181,6 +194,12 @@ Whether you're a beginner, an experienced developer, or an educator, understandi
 
 4. **The skills that matter are changing.** If you're learning what AI tools are best at (syntax, boilerplate, standard patterns), you're competing with automation. If you're learning what humans uniquely provide (judgment, creativity, domain expertise, system design), you're positioning yourself for the transformed landscape.
 
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "The lesson claims AI is expanding the developer market, not shrinking it. Help me understand why this is true using one concrete example from history (like spreadsheets and accountants, or calculators and mathematicians). Then explain how this applies to my learning path."
+
+**What you're practicing**: Understanding market dynamics and positioning yourself in an expanding field, not a shrinking one.
+
 In the next section, we'll explore why this particular disruption—software disrupting itself—is fundamentally different from previous technology shifts, and why it's happening so fast.
 
 ---
@@ -191,9 +210,9 @@ Want to see the original analysis that inspired this chapter? Watch the full pre
 
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/VlOAWvvjThU" title="The $3 Trillion AI Coding Opportunity" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**[Watch: The $3 Trillion AI Coding Opportunity](https://www.youtube.com/watch?v=VlOAWvvjThU)**
-
 This 40-minute presentation from industry analysts provides the detailed evidence and case studies behind the $3 trillion figure, along with projections for where the market is heading.
+
+---
 
 ## Try With AI
 

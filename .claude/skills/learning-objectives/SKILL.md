@@ -1,24 +1,29 @@
 ---
 name: learning-objectives
 description: |
-  Generate measurable learning outcomes aligned with Bloom's taxonomy for educational content.
+  Generate measurable learning outcomes aligned with Bloom's taxonomy and CEFR proficiency levels for educational content.
   Use this skill when educators need to define what students will achieve, create learning objectives
   for curriculum planning, or ensure objectives are specific and testable rather than vague.
   This skill helps break down complex topics into progressively building learning goals with clear
   assessment methods and success criteria.
-version: "1.0.0"
+version: "2.0.0"
+constitution_alignment: v3.1.2
 ---
 
 # Learning Objectives Skill
 
 ## Purpose
 
-Enable educators to create **measurable, actionable learning objectives** aligned with Bloom's taxonomy. This skill helps:
+Enable educators to create **measurable, actionable learning objectives** aligned with Bloom's taxonomy and CEFR proficiency levels. This skill helps:
 - Define what students will achieve (not just what topics they'll cover)
 - Ensure objectives are specific and testable (not vague)
 - Identify prerequisites and scaffold learning progressively
 - Plan appropriate assessment methods
 - Sequence learning from basic recall to creative synthesis
+- **Map to international proficiency standards (CEFR A1-C2) for portability**
+- **Include AI co-learning outcomes (working WITH AI, not just independently)**
+
+**Constitution v3.1.2 Alignment**: This skill implements evals-first objective design—defining success criteria BEFORE creating learning objectives, and integrating CEFR proficiency levels for international standards alignment.
 
 ## When to Activate
 
@@ -30,6 +35,34 @@ Use this skill when:
 - Reviewing existing objectives and wondering if they're specific enough
 - Designing a lesson and unsure what students should be able to do by the end
 
+## Evals-First Objective Design (Constitution v3.1.2)
+
+**CRITICAL WORKFLOW**:
+1. **Evals First**: Review success criteria from chapter spec BEFORE writing objectives
+2. **Objectives Second**: Design learning objectives that lead to eval success
+3. **Alignment Third**: Ensure each objective maps to at least one success eval
+4. **Validation Fourth**: Verify objectives are measurable and aligned
+
+**Template**:
+```markdown
+### Objective Design (Evals-First)
+
+**Source**: Chapter spec at `specs/part-X/chapter-Y/spec.md`
+
+**Success Evals from Spec**:
+1. 75%+ write valid specification (business goal: reduce iteration cycles)
+2. 80%+ identify vague requirements (business goal: prevent scope creep)
+
+**Learning Objectives Designed to Achieve Evals**:
+- LO-001: Write clear specifications → Eval #1
+- LO-002: Identify ambiguous requirements → Eval #2
+```
+
+**Do NOT** create objectives without:
+- ✅ Reference to approved spec with success evals
+- ✅ Explicit mapping: Objective → Eval → Business Goal
+- ✅ Measurability aligned with eval criteria
+
 ## Process
 
 ### Step 1: Understand the Context
@@ -39,6 +72,7 @@ When a request comes in to generate learning objectives, first understand:
 - **Who are the learners?** (Beginners, intermediate, advanced)
 - **How long to teach?** (30 minutes, 2 hours, full unit)
 - **What's the end goal?** (Can they build something? Understand theory? Debug code?)
+- **What are the success evals?** (From chapter spec—what defines success?)
 
 ### Step 2: Review Bloom's Taxonomy (If Needed)
 
@@ -67,12 +101,13 @@ Based on the Bloom's level of each objective, review appropriate assessment meth
 
 This guides you to pair objectives with realistic assessment approaches (code exercises for Apply level, code reviews for Evaluate, etc.).
 
-### Step 5: Generate Objectives
+### Step 5: Generate Objectives with CEFR Proficiency Levels
 
 For each topic, create 3-5 objectives (typically):
 - At least one from each level needed for the topic (Remember through Create)
 - Progressively building in complexity
 - Each with clear statement, context, prerequisites, assessment method, and success criteria
+- **Map to CEFR proficiency level (A1/A2/B1/B2/C1)**
 
 Use the template as guidance:
 📄 [templates/learning-objective-template.yml](templates/learning-objective-template.yml)
@@ -81,6 +116,95 @@ Use the template as guidance:
 - **What will learners DO?** (verb from Bloom's level)
 - **In what context?** (the specific situation or problem)
 - **How will we know they succeeded?** (measurable criteria)
+- **What proficiency level?** (CEFR A1-C2)
+
+### CEFR Proficiency Mapping (Constitution v3.1.2)
+
+**Align objectives with international proficiency standards** (from skills-proficiency-mapper v2.0):
+
+**A1 (Beginner - Recognition)**:
+- Bloom's: Remember/Understand only
+- Example: "Identify Python syntax for defining a function"
+- Measurable: Recognition, not production
+
+**A2 (Elementary - Guided Application)**:
+- Bloom's: Understand/Apply with scaffolding
+- Example: "Complete a function definition with provided hints"
+- Measurable: Application with support
+
+**B1 (Intermediate - Independent Application)**:
+- Bloom's: Apply independently
+- Example: "Implement a function from clear specification without assistance"
+- Measurable: Real-world application without scaffolding
+
+**B2 (Upper-Intermediate - Analysis)**:
+- Bloom's: Analyze/Evaluate
+- Example: "Compare two implementations and justify which is more maintainable"
+- Measurable: Evaluation with justification
+
+**C1 (Advanced - Creation/Synthesis)**:
+- Bloom's: Evaluate/Create
+- Example: "Design a system architecture for scalable deployment"
+- Measurable: Original design with trade-off analysis
+
+**Proficiency Progression Rule**: Lessons should progress A1→A2→B1 within a chapter (not jump from A1 to C1).
+
+### Three-Role AI Partnership Objectives (Constitution v3.1.2 Principle 18)
+
+**CRITICAL**: AI-native learning objectives must include ability to work WITH AI, not just independently.
+
+**Traditional Objective Format**:
+```
+LO-001: Implement user authentication (independent skill)
+```
+
+**AI-Native Objective Format**:
+```
+LO-001: Implement user authentication working with AI as co-learning partner
+  - Use AI as Teacher: Learn security patterns from AI suggestions
+  - Use AI as Student: Refine AI's output through clear specifications
+  - Use AI as Co-Worker: Iterate toward optimal solution collaboratively
+  - Validate: Verify AI-generated code meets security requirements
+```
+
+**Three-Role Objective Types**:
+
+**1. AI as Teacher Objectives** (Student learns from AI):
+- "Identify pattern suggested by AI that improves code quality"
+- "Explain trade-offs in AI's proposed approaches"
+- "Apply AI-suggested pattern to new context"
+
+**2. AI as Student Objectives** (Student teaches AI):
+- "Write specification that produces correct code on first try"
+- "Provide feedback that improves AI's next iteration"
+- "Clarify requirements when AI asks for disambiguation"
+
+**3. AI as Co-Worker Objectives** (Collaborative iteration):
+- "Iterate with AI to converge on optimal solution"
+- "Make strategic decisions while AI handles tactical implementation"
+- "Validate AI outputs for correctness and appropriateness"
+
+**Example AI-Native Objective Set**:
+```yaml
+- id: "LO-AUTH-001"
+  statement: "Implement OAuth authentication working with AI as co-learning partner"
+  blooms_level: "Apply"
+  cefr_level: "B1"
+  three_role_integration:
+    ai_as_teacher: "Learn refresh token rotation pattern from AI suggestion"
+    ai_as_student: "Guide AI through security requirements via clear spec"
+    ai_as_coworker: "Iterate on session management approach together"
+  assessment_method: "Code + reflection: Show implementation AND what you learned from AI"
+  success_criteria:
+    - "OAuth implementation works correctly"
+    - "Student identifies at least one pattern learned from AI"
+    - "Student demonstrates validation of AI output"
+```
+
+**Objective Balance for AI-Native Content**:
+- 60-70%: Traditional technical skills
+- 20-30%: Co-learning skills (working WITH AI)
+- 10-20%: Validation/verification skills
 
 ### Step 6: Validate for Measurability
 

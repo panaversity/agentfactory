@@ -89,8 +89,8 @@ In your project root, create a file named `.claude/settings.json`:
   },
   "permissions": {
     "allow": [
-      "Bash(bash:*)",
-      "Bash(echo:*)",
+      "Bash(*)",
+      "Read",
       "Write",
       "Edit"
     ],
@@ -111,10 +111,10 @@ In your project root, create a file named `.claude/settings.json`:
 
 **Permissions section** (NEW):
 - **`allow`**: Tools that Claude Code is permitted to use
-  - `"Bash(bash:*)"` → Allow bash commands
-  - `"Bash(echo:*)"` → Allow echo specifically
+  - `"Bash(*)"` → Allow any bash command
   - `"Write"` → Allow creating files
   - `"Edit"` → Allow editing files
+  - `"Read"` → Allow reading files
 - **`deny`**: Tools to explicitly block (empty = no blocks)
 - **`ask`**: Tools that require user confirmation each time (empty = none)
 
@@ -185,6 +185,10 @@ Claude will:
 
 ---
 
+:::note
+Windows users: run hooks in WSL or Git Bash for best compatibility. If using PowerShell, replace `jq` with `ConvertFrom-Json`, skip `chmod`, and invoke scripts with `python path/to/script.py` instead of relying on POSIX executability.
+:::
+
 ## Understanding Permissions (Critical for Hooks)
 
 Hooks execute shell commands, which are powerful. The `permissions` section controls what Claude Code is allowed to do in your project.
@@ -194,8 +198,7 @@ Hooks execute shell commands, which are powerful. The `permissions` section cont
 **`allow`** — Tools Claude Code can use automatically:
 ```json
 "allow": [
-  "Bash(bash:*)",     // Allow any bash command
-  "Bash(echo:*)",     // Allow echo specifically
+  "Bash(*)",          // Allow any bash command
   "Write",            // Allow creating files
   "Edit",             // Allow editing files
   "Read"              // Allow reading files
@@ -229,7 +232,7 @@ Hooks are shell commands that run **automatically** (without user input). Permis
 "allow": ["Bash(npm:*)"]
 ```
 
-Without this permission, the hook runs but fails with: `"Pre is not logged in"`
+Without this permission, the command will be denied by the permissions system and won't execute.
 
 ---
 
@@ -406,12 +409,14 @@ Now:
 
 ```json
 {
-  "SessionStart": [
-    {
-      "type": "command",
-      "command": "echo '👋 Welcome to [Project Name]!'"
-    }
-  ]
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "echo '👋 Welcome to [Project Name]!'"
+      }
+    ]
+  }
 }
 ```
 
@@ -419,26 +424,28 @@ Now:
 
 ```json
 {
-  "PostToolUse": [
-    {
-      "matcher": "Edit",
-      "hooks": [
-        {
-          "type": "command",
-          "command": "echo '💾 File saved'"
-        }
-      ]
-    },
-    {
-      "matcher": "Bash",
-      "hooks": [
-        {
-          "type": "command",
-          "command": "echo '✨ Command executed'"
-        }
-      ]
-    }
-  ]
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '💾 File saved'"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '✨ Command executed'"
+          }
+        ]
+      }
+    ]
+  }
 }
 ```
 
@@ -446,17 +453,19 @@ Now:
 
 ```json
 {
-  "PreToolUse": [
-    {
-      "matcher": "Bash",
-      "hooks": [
-        {
-          "type": "command",
-          "command": "echo '⚠️  Running command (type 'n' to cancel)...'"
-        }
-      ]
-    }
-  ]
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '⚠️  Command about to run...'"
+          }
+        ]
+      }
+    ]
+  }
 }
 ```
 

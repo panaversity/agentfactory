@@ -1,12 +1,15 @@
 ---
 name: docusaurus-deployer
-version: 1.0
+version: 1.1
 description: This skill should be used when deploying a Docusaurus site to GitHub Pages. It automates the configuration, building, and deployment process, handling GitHub Pages setup, environment configuration, and CI/CD automation. Includes local validation before GitHub Actions triggering.
+constitution_alignment: v3.1.2
 ---
 
 # Docusaurus GitHub Pages Deployer
 
 Automate building and deploying Docusaurus documentation sites to GitHub Pages with local validation before CI/CD triggering.
+
+**Constitution Alignment**: This skill implements production deployment standards defined in Constitution v3.1.2 deployment standards section. All deployments must meet project quality gates before publication.
 
 ## What This Skill Does
 
@@ -110,6 +113,19 @@ For common issues and solutions, see `references/troubleshooting.md`, which cove
 - **Page load**: < 3 seconds
 - **Bundle size**: Optimized for documentation
 - **Accessibility**: WCAG 2.1 AA compliance
+
+## Quality Gates (Constitution v3.1.2)
+
+Before deployment to production, verify:
+- [ ] All content passes technical-reviewer validation
+- [ ] Local build completes without errors
+- [ ] No broken links or missing resources
+- [ ] TypeScript type checking passes
+- [ ] Performance targets met
+- [ ] Accessibility standards verified
+- [ ] GitHub Actions workflow configured correctly
+
+**Reference**: See `.specify/memory/constitution.md` deployment standards section for complete production deployment standards.
 
 ## Tools Used
 

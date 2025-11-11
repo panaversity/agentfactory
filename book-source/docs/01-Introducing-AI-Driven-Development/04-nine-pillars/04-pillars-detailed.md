@@ -71,6 +71,12 @@ Each pillar removes a specific barrier that has historically limited developers.
 
 **Example**: Sarah, a solo developer building an analytics dashboard, used to spend hours researching how to implement OAuth2 authentication. With an AI CLI agent, she described her requirements in natural language: "Add OAuth2 with Google sign-in, store tokens securely, handle refresh logic." The agent generated the implementation, wrote tests, and explained the security considerations—all in her terminal. What once took a full day now took 30 minutes.
 
+#### 💬 AI Colearning Prompt
+
+> **Explore with your AI**: "I'm trying to understand AI CLI agents vs. web-based AI chat. What's the fundamental difference? Walk me through a scenario where using the CLI agent produces a dramatically different outcome than using ChatGPT web."
+
+This helps you see why the interface matters, not just the model.
+
 ## Pillar 2: Markdown as Programming Language
 
 **What it is**: In Specification-Driven Development, Markdown-formatted natural language specifications become executable "source code" for AI agents. You write human-readable specs in Markdown; AI agents read and implement them as if they were traditional programming instructions.
@@ -83,6 +89,10 @@ Each pillar removes a specific barrier that has historically limited developers.
 
 **Example**: In traditional development, a junior developer would need to translate a product spec into Python code—often losing nuances or introducing bugs. With Markdown as programming language, they write a detailed spec in plain English: "Create a function that validates email addresses, checks against a blocklist database, and returns validation status with specific error messages." The AI agent reads this spec and generates correct, tested implementation.
 
+#### 🎓 Expert Insight
+
+> The shift from "code as source of truth" to "specs as source of truth" is profound. In traditional development, documentation drifts from code because they're separate artifacts. When Markdown specifications ARE the source of truth, you regenerate code from specs whenever requirements change. This eliminates drift entirely—specs and implementation stay synchronized because implementation is DERIVED from specs.
+
 ## Pillar 3: MCP Standard (Model Context Protocol)
 
 **What it is**: A universal protocol that allows AI agents to connect to any MCP-compliant tool, database, or service. Think of it as USB for AI—one standard interface that works everywhere.
@@ -94,6 +104,12 @@ Each pillar removes a specific barrier that has historically limited developers.
 **How it integrates**: MCP enables Pillar 1 (AI CLI agents) to access external systems and powers Pillar 8 (Composable Skills) by allowing skill modules to use standardized tool connections. It works alongside Pillar 5 (Linux CLI) as another interface layer.
 
 **Historical precedent**: Remember when every device had its own charging cable? Then USB became standard, and suddenly one cable worked for everything. MCP aims to do this for AI tool integration. **Important context**: As of 2025, MCP is still emerging—it's not yet as universally adopted as USB became. However, the standardization pattern is similar: before protocols like MCP, each AI-tool connection required custom development and maintenance. MCP's adoption is growing as more tools and AI platforms support it.
+
+#### 💬 AI Colearning Prompt
+
+> **Explore with your AI**: "Explain MCP using a non-technical analogy from daily life (NOT USB cables—find something else!). Then show me: what's ONE concrete thing I could do today that would be easier if a tool I use supported MCP?"
+
+Translating technical concepts into relatable terms through AI partnership helps deepen understanding.
 
 ## Pillar 4: AI-First IDEs
 
@@ -167,6 +183,16 @@ Each pillar removes a specific barrier that has historically limited developers.
 
 **Historical precedent**: Cloud computing democratized server infrastructure—you no longer needed to buy and maintain physical servers. Kubernetes and Docker significantly lower the barrier to deployment architecture—individual developers and small teams can now manage production systems that once required dedicated DevOps teams. **Important nuance**: Organizational complexity and domain expertise still matter. Large enterprises often still need DevOps specialists for scale and reliability, but the **baseline capability** for small teams has transformed dramatically.
 
+#### 🎓 Expert Insight
+
+> The nine pillars share a common pattern: they don't eliminate expertise—they **redistribute** where expertise is required. Cloud deployment doesn't eliminate the need for infrastructure knowledge; it shifts that knowledge from "configuring physical servers" to "orchestrating containers." This is empowering for individual developers while preserving the value of deep expertise where it truly matters.
+
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "Here are the two pillars I chose [pillar1, pillar2]. Walk me through a concrete scenario where using both together creates capability that neither provides alone. Then show me what breaks if I try to use just one."
+
+**What you're practicing**: Understanding interdependencies through AI-guided exploration. Your AI helps you discover how pillars multiply each other's value.
+
 ---
 
 ## Interactive Exercise: Mapping Pillar Dependencies
@@ -211,11 +237,7 @@ Here's a question to test your understanding: **What if you could only use six o
 
 You now understand all nine pillars individually and how they interconnect. But here's the crucial question: **What does this combination enable that wasn't possible before?**
 
-## What's Next?
-
-In the next section, we'll explore the M-Shaped Developer—a new type of technical professional who leverages these nine pillars to build capabilities that span the full stack, from idea to production deployment. This isn't about being a "10x developer" or a polymath genius. It's about using the right tools, in the right combination, to achieve what previously required entire teams.
-
-The nine pillars are the foundation. The M-Shaped Developer is what you build on that foundation.
+In the next section, we'll explore the M-Shaped Developer—a new type of technical professional who leverages these nine pillars to build capabilities that span the full stack, from idea to production deployment.
 
 ---
 

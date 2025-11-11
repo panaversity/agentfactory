@@ -9,11 +9,14 @@ description: |
   involve structuring books, managing cognitive load across chapters, defining part-level
   narratives, or coordinating multi-phase content development workflows.
 version: "2.0.0"
+constitution_alignment: "v3.1.2"
 ---
 
 # Skill: Book Scaffolding and Structure Planning
 
 **Purpose**: Plan, structure, and scaffold large educational books using cognitive load management, just-in-time specification, and pedagogical best practices.
+
+**Constitution Alignment**: v3.1.2 emphasizing "Specs Are the New Syntax", Nine Pillars framework, Co-Learning partnership, and LLMs to LAMs evolution
 
 **Status**: Reusable skill (learned from 002-book-structure sprint, enhanced with structural patterns)
 **Application**: Any multi-part, multi-chapter educational work
@@ -22,11 +25,13 @@ version: "2.0.0"
 
 ## Core Principles (9 Learnings from Sprint)
 
-### 1. Just-In-Time Specification
+### 1. Just-In-Time Specification ("Specs Are the New Syntax")
 ❌ **DON'T**: Decide everything upfront. Block on all clarifications before moving forward.
 ✅ **DO**: Spec what's needed now. Defer part-specific clarifications to when that part is ready for planning.
 
 **Why**: Unblocks work immediately. Clarifications arrive exactly when needed (during chapter-planner phase). Respects SDD loop: **Spec → Plan → Implement per part (one at a time)**.
+
+**KEY**: Specification writing is the PRIMARY skill. Book structure scaffolds specification-first learning across all parts.
 
 **Example**:
 - Part 1 spec created with only Part 1 narrative ("Coder to Super Orchestrator")
@@ -154,6 +159,57 @@ Measurable Target: "90%+ of readers can explain (in own words) without prompting
 - **Chapter 3**: Install all 3 tools, verify end-to-end
 - **Chapter 4**: Write spec for email validator → Claude Code generates → Test
 - **Chapter 5**: Debug deliberately broken code, iterate to fix
+
+### 10. Nine Pillars Alignment (NEW - Constitution v3.1.2)
+❌ **DON'T**: Structure book without Nine Pillars framework
+✅ **DO**: Scaffold content to progressively introduce and apply Nine Pillars
+
+**The Nine Pillars of AI-Native Development:**
+1. AI-First Mindset, 2. Specification-First Development, 3. Evals-Driven Validation, 4. Iterative Convergence, 5. Context Engineering, 6. Output Validation, 7. Strategic Orchestration, 8. Continuous Learning, 9. Ethical Responsibility
+
+**Scaffolding Strategy:**
+- **Part 1**: Introduce Pillars 1, 2, 8 (AI-First Mindset, Specs-First, Continuous Learning)
+- **Parts 2-5**: Apply Pillars 2-6 in practice (Spec-First, Evals, Convergence, Context, Validation)
+- **Parts 6-7**: Emphasize Pillar 7 (Strategic Orchestration for LAMs/Agents)
+- **Parts 10-13**: Apply all 9 pillars in production contexts
+
+**Per-Chapter Scaffolding:**
+- Identify which 2-3 pillars each chapter teaches/applies
+- Ensure progressive coverage (don't introduce all 9 at once)
+- Document pillar alignment in chapter specs
+
+### 11. LLM to LAM Evolution Scaffolding (NEW - Constitution v3.1.2)
+❌ **DON'T**: Treat all AI interaction as the same across parts
+✅ **DO**: Scaffold transition from LLM-based (Parts 1-5) to LAM-based (Parts 6-7+) content
+
+**LLM-Based Scaffolding (Parts 1-5):**
+- Focus: AI as reasoning partner (prompt-response)
+- Skills: Prompt engineering, specification writing, output validation
+- Pattern: Human specifies → AI responds → Human validates
+
+**LAM-Based Scaffolding (Parts 6-7+):**
+- Focus: AI as autonomous agent (multi-step task execution)
+- Skills: Agent design, orchestration, safety constraints
+- Pattern: Human orchestrates → AI acts autonomously → Human supervises
+
+**Transition Scaffolding (Part 5 → Part 6):**
+- Part 5 final chapters: Mastery of LLM prompting (foundation)
+- Part 6 opening: Introduction to LAMs (building on LLM skills)
+- Key teaching: "Tell AI what to do" (LLM) → "Tell AI what to achieve, it figures out how" (LAM)
+
+### 12. Co-Learning Partnership Scaffolding (NEW - Constitution v3.1.2)
+❌ **DON'T**: Frame AI as passive tool throughout book
+✅ **DO**: Scaffold co-learning partnership from Chapter 1 onward
+
+**Scaffolding Progression:**
+- **Part 1**: Introduce co-learning concept (AI teaches you, you teach AI)
+- **Parts 2-5**: Demonstrate bidirectional learning in every chapter
+- **Parts 6+**: Show advanced co-learning (agent learns user's domain)
+
+**Per-Chapter Requirements:**
+- Show at least ONE instance where student learns FROM AI
+- Show at least ONE instance where AI adapts TO student feedback
+- Demonstrate convergence (not "perfect on first try")
 
 ---
 

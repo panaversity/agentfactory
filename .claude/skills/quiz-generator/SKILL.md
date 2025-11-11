@@ -13,7 +13,7 @@ version: 4.0.0
 
 # Quiz Generator: College-Level Interactive Chapter Assessments
 
-**Version:** 4.0.0 | **Alignment:** Constitution v3.0.0, Principle 1 (AI-First Teaching) | **KEY FEATURES:** 50 total questions, 15-20 displayed per batch, immediate feedback per question, randomized batching on retake, no pass/fail threshold
+**Version:** 4.0.0 | **Alignment:** Constitution v3.1.2, Co-Learning Partnership, "Specs Are the New Syntax" | **KEY FEATURES:** 50 total questions, 15-20 displayed per batch, immediate feedback per question, randomized batching on retake, no pass/fail threshold, evals-aligned questions
 
 **Quiz Component Location:** `book-source/src/components/Quiz.tsx` (globally registered—no imports needed)
 **Usage Reference:** `book-source/src/components/QUIZ_USAGE.md` (example structure + best practices)

@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 title: "The Modern AI Development Stack"
 chapter: 2
-lesson: 4
+lesson: 5
 duration_minutes: 18
 
 # HIDDEN SKILLS METADATA
@@ -111,6 +111,10 @@ Here's a typical workflow combining all three layers:
 
 Each layer has a clear job. You can swap any layer without breaking the others.
 
+#### 💬 AI Colearning Prompt
+
+> **Explore the stack through YOUR workflow**: Think about how you currently use AI tools (or plan to). Ask your AI partner: "Based on how I described my workflow, which layer am I using most? Which layer am I NOT using but could benefit from?" Let your AI help you discover gaps in how you're leveraging the three-layer architecture through dialogue about your actual practices.
+
 ## What Makes 2025 Different from 2024
 
 The three-layer stack didn't exist in 2024. Here's what changed:
@@ -146,6 +150,12 @@ The three-layer stack didn't exist in 2024. Here's what changed:
 
 **The Core Difference**: In 2024, you chose a tool and adapted your workflow to it. In 2025, you choose layers and compose them to match your workflow.
 
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "I'm [beginner/intermediate], working on [type of projects], with [budget: free/paid]. Based on my context, help me choose: (1) Which frontier model should I start with? (2) Which AI-First IDE fits my situation? (3) Which development agent makes sense for my skill level? Explain the tradeoffs for each recommendation."
+
+**What you're practicing**: Strategic tool selection—choosing the right stack layers based on YOUR specific context, not following generic "best tools" lists.
+
 ## Model Context Protocol: Why It Matters
 
 MCP is the glue that makes the three-layer stack possible. Here's why it's crucial:
@@ -159,6 +169,10 @@ MCP is the glue that makes the three-layer stack possible. Here's why it's cruci
 **The Analogy**: MCP is like USB. Before USB, every device had a custom cable. After USB, you could plug any device into any port. MCP does the same for AI tools.
 
 **Current State (Late 2025)**: MCP is supported by Anthropic (Claude Code), some VS Code extensions, and Cursor. It's not universal yet, but adoption is growing. Expect most major tools to support it by 2026.
+
+#### 🎓 Expert Insight
+
+> The USB analogy for MCP is powerful, but here's the deeper lesson: Standards enable ecosystems, not monopolies. USB didn't make one device manufacturer win. It made all devices more useful. MCP does the same for AI tools. When you choose MCP-compatible tools, you're voting for an ecosystem where your choice matters more than vendor lock-in. This is why understanding architecture (three-layer stack) matters more than memorizing specific tools.
 
 ## Choosing the Right Tools for Your Context
 
@@ -217,33 +231,33 @@ With the three-layer stack, you make three independent decisions:
 
 Use your AI companion tool set up (e.g., ChatGPT web, Claude Code, Gemini CLI), you may use that instead—the prompts are the same.
 
-### Prompt 1: Assistant vs. Agent Modes
+### Prompt 1: Discover Your AI Partnership Style
 ```
-Explain the difference between an 'AI assistant' (suggests ideas, you decide) and an 'AI agent' (takes action autonomously). Using simple analogies, help me understand: When would I want AI to just advise me? When would I want AI to execute tasks on its own? Give me 2 examples of each scenario.
-```
-
-**Expected outcome**: Clear understanding of AI assistant vs. agent modes using beginner-friendly analogies.
-
-### Prompt 2: Choose Your Approach
-```
-I'm thinking about using AI to help me build [describe your project idea]. Should I use AI as an 'assistant' (I stay in control) or as an 'agent' (it does work autonomously)? What factors should influence my decision? What are the risks of each approach for a beginner like me?
+Let's explore how I naturally work with AI by reflecting on my experiences. Ask me: When have I used AI as an "advisor" (I ask questions, it suggests, I decide)? When have I used it as an "executor" (I describe what I want, it does the work)? Which felt more natural? Which produced better results? Help me discover MY partnership style—am I more comfortable with Layer 2 (collaborative suggestions) or Layer 3 (autonomous execution)? Don't prescribe—help me discover through reflection.
 ```
 
-**Expected outcome**: Practical decision framework for choosing between assistant and agent modes for your projects.
+**What you're learning**: Self-awareness about your partnership preferences—understanding HOW you naturally collaborate with AI shapes which tools will work best for you.
 
-### Prompt 3: Understand The Three-Layer Stack
+### Prompt 2: Explore AI's Three Roles In Your Work
 ```
-This lesson mentioned a 'three-layer stack': models (the AI brain), workspaces (where you work), and agents (autonomous helpers). Explain this using a simple analogy that doesn't require technical knowledge. Why does this separation matter for someone who just wants to build solutions?
-```
-
-**Expected outcome**: Conceptual grasp of the three-layer architecture and why it matters (without technical details).
-
-### Prompt 4: Avoid Vendor Lock-In
-```
-I'm concerned about vendor lock-in—what if the AI tool I learn today becomes expensive or disappears tomorrow? How does the 'modular stack' approach protect me? Give me practical advice: what should I focus on learning that will stay relevant even as specific tools change?
+AI can act as Teacher (suggests patterns you don't know), Student (learns from your feedback and preferences), and Co-Worker (collaborates with you). Let's explore which roles you experience most: Ask me questions about my AI interactions: "When has AI taught me something new? When has it adapted to MY style? When have we worked side-by-side collaboratively?" Help me discover which role I use LEAST and why. Then ask: "What's blocking you from leveraging that role more?"
 ```
 
-**Expected outcome**: Confidence that learning AI collaboration skills is durable, even as specific tools evolve.
+**What you're learning**: Self-awareness about how you partner with AI—recognizing which interaction modes (teaching, learning, collaborating) you're underusing and why.
+
+### Prompt 3: Co-Design Your Stack Through Dialogue
+```
+I want to choose my AI development stack (frontier model + IDE + agent), but I don't want generic recommendations—I want choices that fit MY context. Share my situation with you: [experience level, project types, budget, learning goals]. Then ask me clarifying questions: "What matters most—cost, features, learning curve, or ecosystem?" "Do you have an IDE you already love?" "Are you building alone or with a team?" Based on my answers, co-create a stack recommendation. Let's iterate—you suggest, I ask "why?", you explain tradeoffs, we refine until I feel confident in the choices.
+```
+
+**What you're learning**: Strategic tool selection through bidirectional dialogue—not accepting recommendations passively, but co-creating decisions through exploration of tradeoffs.
+
+### Prompt 4: Future-Proof Your Learning Together
+```
+I'm worried about learning tools that become obsolete. Let's explore what's durable versus what's volatile. Ask me: "What am I trying to learn—specific tools or underlying concepts?" Then help me discover: What aspects of the three-layer stack are architectural patterns (durable) versus specific implementations (volatile)? Create a learning priority list WITH me: concepts to master (stay relevant), tools to experiment with (may change), patterns to recognize (transfer everywhere). Don't just tell me what to learn—help me discover the distinction through dialogue.
+```
+
+**What you're learning**: Distinguishing durable knowledge from volatile tools—your AI helps you identify what learning investments pay off long-term versus short-term.
 
 
 

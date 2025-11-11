@@ -344,11 +344,11 @@ OR
 
 ---
 
-### 🎓 Instructor Commentary: "From Syntax to Semantics"
+### 🎓 Expert Insight: "From Syntax to Semantics"
 
 **When to Use**: After showing code examples or syntax patterns
 
-**Purpose**: Reframe learning goals from memorization to conceptual understanding
+**Purpose**: Provide strategic depth and pedagogical perspective; reframe learning goals from memorization to conceptual understanding
 
 **Key Mantra**: "Syntax is cheap — semantics is gold"
 
@@ -356,7 +356,7 @@ OR
 
 **Format**:
 ```markdown
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > In AI-native development, [reframe from memorization to understanding].
 ```
 
@@ -370,22 +370,23 @@ OR
 - ✅ Positions AI as syntax partner
 - ✅ Emphasizes conceptual understanding
 - ✅ Aligns with professional AI-native workflow
+- ✅ Provides strategic depth beyond surface-level content
 
-**Tone**: Direct, reassuring, professional
+**Tone**: Direct, reassuring, professional, expert-level insight
 
 ---
 
-### 🚀 CoLearning Challenge
+### 🤝 Practice Exercise
 
 **When to Use**: After students understand concept basics, ready for application
 
-**Purpose**: Practice specification-driven thinking WITH AI collaboration
+**Purpose**: Hands-on collaborative practice with AI partnership; specification-driven thinking
 
 **Placement**: Mid-lesson or after foundational concepts established
 
 **Format**:
 ```markdown
-#### 🚀 CoLearning Challenge
+#### 🤝 Practice Exercise
 
 Ask your AI Co-Teacher:
 > "[Specification of what to create] Then explain [conceptual aspect] step-by-step."
@@ -405,46 +406,9 @@ Ask your AI Co-Teacher:
 - ✅ How to ask for explanations (not just code)
 - ✅ How to validate AI outputs (critical thinking)
 - ✅ Conceptual translation (intent → implementation → understanding)
+- ✅ Collaborative learning through partnership (not passive copying)
 
 **Tone**: Action-oriented, collaborative ("Ask your AI", "Tell your AI")
-
----
-
-### ✨ Teaching Tip
-
-**When to Use**: Strategic placement to build AI tool literacy
-
-**Purpose**: Teach HOW to use Claude Code/Gemini CLI as pair-teacher
-
-**Placement**:
-- After common mistake/misconception
-- Before complex topic
-- When introducing new pattern
-
-**Format**:
-```markdown
-#### ✨ Teaching Tip
-> Use Claude Code to [specific AI collaboration strategy].
-```
-
-**Examples**:
-- "Use Claude Code to explore edge cases: 'What happens if I use // with negative numbers?'"
-- "Ask your AI to compare approaches: 'Show me 3 ways to check if a string is empty and explain when to use each.'"
-- "Use your AI as debugger: Paste the error and ask 'Why am I getting TypeError here?'"
-
-**AI Pair Programming Patterns** (from ai-collaborate-teaching skill):
-- **AI as Explainer**: "Ask 'Why does this work?'"
-- **AI as Debugger**: "Show AI the error, ask for diagnosis"
-- **AI as Code Reviewer**: "Ask 'Is there a better way to write this?'"
-- **AI as Hypothesis Validator**: "Ask 'Would approach X work better than Y?'"
-
-**What This Teaches**:
-- ✅ Specific AI collaboration techniques
-- ✅ When to ask AI vs when to struggle independently
-- ✅ How to phrase effective prompts
-- ✅ AI tool literacy (capabilities and limitations)
-
-**Tone**: Practical, actionable, specific
 
 ---
 
@@ -452,23 +416,22 @@ Ask your AI Co-Teacher:
 
 **Beginner Lessons (A1-A2, Chapters 12-16)**:
 - 2-3 CoLearning elements per lesson
-- Emphasis on 💬 Prompts and 🎓 Commentary (build confidence, reduce memorization anxiety)
-- Light on 🚀 Challenges (students still building foundations)
+- Emphasis on 💬 Prompts and 🎓 Insights (build confidence, reduce memorization anxiety)
+- Light on 🤝 Exercises (students still building foundations)
 
 **Intermediate Lessons (A2-B1, Chapters 17-29)**:
-- 4-5 CoLearning elements per lesson
-- Balance 💬 Prompts, 🎓 Commentary, 🚀 Challenges
-- More ✨ Teaching Tips (build AI tool literacy)
+- 3-4 CoLearning elements per lesson
+- Balance 💬 Prompts, 🎓 Insights, 🤝 Exercises
 
 **Advanced Lessons (B1-B2, Chapters 30-48)**:
-- 5-7 CoLearning elements per lesson
-- Emphasis on 🚀 Challenges (application and synthesis)
-- Advanced ✨ Teaching Tips (architectural decisions, tradeoffs)
+- 4-6 CoLearning elements per lesson
+- Emphasis on 🤝 Exercises (application and synthesis)
+- More 🎓 Insights (architectural decisions, tradeoffs)
 
 **Professional Lessons (B2-C1, Chapters 49-56)**:
-- 3-5 CoLearning elements per lesson (students more independent)
-- Focus on complex 🚀 Challenges
-- Strategic 🎓 Commentary on professional practice
+- 3-4 CoLearning elements per lesson (students more independent)
+- Focus on complex 🤝 Exercises and strategic 🎓 Insights
+- Emphasis on professional workflows and production considerations
 
 ---
 
@@ -500,7 +463,7 @@ I like cherry
 
 This code visits each item in `fruits` and prints it. The variable `fruit` holds one item at a time.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > In AI-native development, you don't memorize loop syntax—you understand WHEN iteration solves your problem. Syntax is cheap; recognizing "I need to process each item" is gold.
 
 ### Common Pattern: Range-Based Loops
@@ -512,7 +475,7 @@ for i in range(5):
     print(f"Iteration {i}")
 \`\`\`
 
-#### 🚀 CoLearning Challenge
+#### 🤝 Practice Exercise
 
 Ask your AI Co-Teacher:
 > "Generate a `for` loop that prints the multiplication table for 7 (7×1 through 7×10). Then explain how `range()` works and why we use it."
@@ -530,8 +493,8 @@ for item in empty:
     print(item)  # This never runs
 \`\`\`
 
-#### ✨ Teaching Tip
-> Use Claude Code to explore edge cases: "What happens if I iterate over `None` instead of a list? Show me the error and explain it."
+#### 💬 AI Colearning Prompt
+> **Explore with your AI**: "What happens if I iterate over `None` instead of a list? Show me the error and explain it, then show me how to safely handle potentially empty collections."
 
 [Continue with exercises...]
 
@@ -557,6 +520,38 @@ for item in empty:
 - **Active Voice**: Prefer active voice over passive ("You create a function" vs "A function is created")
 - **Direct Address**: Speak directly to the learner using "you" and "your"
 - **Engaging Tone**: Professional yet approachable, encouraging without being condescending
+
+**Punctuation & Emphasis Guidelines** (apply judiciously with context-awareness):
+- **Em-dash (—) usage**: ONLY fix when it creates grammatical issues or hinders readability
+  - ✅ KEEP: "The developer's role is changing—and it's happening faster than expected." (dramatic break, grammatically sound)
+  - ✅ KEEP: "Understanding intent (not memorizing syntax) is the new skill." (parenthetical aside)
+  - ❌ FIX: "The job hasn't expanded arbitrarily—the technology landscape has integrated..." when it connects two independent clauses that should be separate sentences
+  - **Judgment required**: If removing the em-dash creates awkward flow or changes meaning, KEEP it. Only fix actual violations.
+
+- **Bold formatting**: ONLY fix when it's clearly decorative or excessive
+  - ✅ KEEP: "A **variable** stores data..." (new technical term on first use)
+  - ✅ KEEP: "The **primary skill** is specification-writing..." (critical concept requiring emphasis)
+  - ✅ KEEP: "**Path 1 (Fine-Tuning)**" (structural heading or important distinction)
+  - ✅ KEEP: "**there are two paths**" when emphasizing a key structural point
+  - ❌ FIX ONLY: Multiple bold words in a single prompt where emphasis is decorative (e.g., "Give me **realistic** scenarios for **my** situation")
+  - **Judgment required**: If bold serves pedagogical purpose (emphasis on key distinction, first use of term, structural clarity), KEEP it.
+
+- **ALL CAPS**: ONLY fix when used for emphasis (replace with italic or normal)
+  - ❌ FIX: "Give me REALISTIC scenarios for MY situation..." → "Give me realistic scenarios for my situation..."
+  - ✅ KEEP: ALL CAPS in acronyms (API, LMS, MCP) or proper names
+  - **Judgment required**: Distinguish between emphasis (fix) and legitimate uses (keep).
+
+- **Natural flow**: ONLY intervene when punctuation genuinely disrupts coherence
+  - FIX sentence structure ONLY when:
+    - Em-dash connects independent clauses that should be periods
+    - Sentence is grammatically incorrect after em-dash removal
+    - Multiple em-dashes create choppy reading
+  - PRESERVE existing flow when:
+    - Em-dash serves dramatic or stylistic purpose effectively
+    - Sentence is grammatically sound
+    - Readability is not hindered
+
+**CRITICAL**: Apply these guidelines with **judgment and restraint**. Only fix actual violations that harm clarity, grammar, or readability. Do NOT mechanically remove all em-dashes, bold formatting, or caps without considering context and pedagogical intent.
 
 ### Formatting Guidelines
 

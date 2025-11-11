@@ -101,6 +101,12 @@ This wasn't possible five years ago. AIDD emerged from the convergence of nine t
 
 These revolutions didn't just add new capabilities—they fundamentally changed what's possible for individual developers and small teams.
 
+#### 💬 AI Colearning Prompt
+
+> **Explore with your AI**: "Looking at these nine technological revolutions, which three feel most 'invisible' to me right now—things I'm using without realizing their revolutionary nature? Help me see how they've quietly transformed what I can do as a developer."
+
+Sometimes the biggest revolutions are so well-integrated we forget they're new. Your AI can help you notice what's changed.
+
 ## The Value Proposition: Your New Role
 
 Traditional development positioned you as a code writer—an individual contributor focused on implementation details. AIDD repositions you as a specification engineer and system architect.
@@ -131,6 +137,10 @@ Consider Sarah, a traditional full-stack developer:
 The code quality is the same (or better, because the agent implements all edge cases consistently). But Sarah's time is spent on architecture and design, not syntax and debugging.
 
 This is the paradigm shift: **you become the architect, and AI becomes your implementation team**.
+
+#### 🎓 Expert Insight
+
+> Sarah's transformation isn't about "getting better at prompts." It's about **redistributing cognitive work**. Her strategic thinking (payment workflow, security requirements, subscription logic) is irreplaceable human expertise. The implementation syntax is valuable but automatable. AIDD matches work to capability—human or AI—based on where each adds most value.
 
 ## Important Clarifications
 
@@ -164,9 +174,11 @@ Take a moment to assess your familiarity with this paradigm shift:
 
 There's no right answer here. Whether you're at 1 or 5, this chapter will meet you where you are and help you move forward. The paradigm shift takes time—it's not just learning new tools, it's changing how you think about software development.
 
-## What's Next: Understanding the Nine Enabling Technologies
+#### 🤝 Practice Exercise
 
-You now have a clear definition of AIDD, its nine defining characteristics, and the value proposition. But how do you achieve these characteristics in practice?
+> **Ask your AI**: "I rated myself [your number] on the paradigm shift scale. Interview me with 3-4 questions to verify if that's accurate. Then tell me what one concrete behavior would prove I've moved up one level."
+
+**What you're practicing**: Honest self-assessment through AI partnership. Your AI helps you see gaps between self-perception and actual behavior.
 
 ---
 
