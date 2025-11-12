@@ -327,6 +327,28 @@ pint("Hello")  # ❌ Error: NameError: name 'pint' is not defined
 print("Hello")  # ✅ Correct
 ```
 
+#### 💬 AI Colearning Prompt
+
+Ask your AI companion: "I notice that print() automatically adds a newline after each output. How would I print multiple things on the same line? Show me an example and explain how it works."
+
+This exploration helps you discover print()'s optional parameters, a pattern you'll see throughout Python: functions have default behaviors, but you can customize them.
+
+---
+
+#### 🎓 Expert Insight
+
+The print() function is your primary debugging tool in Python. When code doesn't work as expected, strategic print() statements show you what's actually happening inside your program. Professional developers call this "print debugging", and it's surprisingly effective even in complex systems.
+
+As you progress to more advanced tools (debuggers, logging frameworks), you'll still use print() for quick sanity checks. It's simple, fast, and works everywhere.
+
+---
+
+#### 🤝 Practice Exercise
+
+Create a program called `story.py` that tells a 5-line story using print() statements. Make it visually appealing with decorative characters (like `=` or `*` for borders). Then ask your AI: "How can I make this story output more interesting? Show me 3 formatting techniques I could use."
+
+Practice combining what you know (print, string multiplication, blank lines) to create formatted output.
+
 ---
 
 ## What You Learned

@@ -182,13 +182,13 @@ print(f"My name is {name} and I am {age} years old")
 
 F-strings are cleaner, easier to read, and more professional. This is what modern Python developers use.
 
-#### Instructor Commentary
+#### 🎓 Expert Insight
 
-**Syntax is cheap—semantics is gold.**
+Syntax is cheap; semantics is gold.
 
-Notice we're teaching f-strings, not the `.format()` method from older Python or string concatenation. Why? Because syntax changes constantly. Python 2 → Python 3 changed a lot. F-strings are only a few years old—they might be replaced in Python 3.20 with something newer.
+Notice we're teaching f-strings, not the `.format()` method from older Python or string concatenation. Why? Because syntax changes constantly. Python 2 to Python 3 changed a lot. F-strings are only a few years old and they might be replaced in Python 3.20 with something newer.
 
-This is why memorizing syntax details misses the point. What matters is understanding the *pattern*: "I want to combine text with variables; what's the modern approach?" Ask your AI. That's the real skill.
+This is why memorizing syntax details misses the point. What matters is understanding the pattern: "I want to combine text with variables; what's the modern approach?" Ask your AI. That's the real skill.
 
 ## Creating and Running .py Files
 
@@ -290,13 +290,13 @@ Quantity: 3
 Total: $59.97
 ```
 
-#### Tips
+#### 🎓 Expert Insight
 
 When you see an error you don't recognize, copy the error message and ask your AI: "What does this error mean?" This is a professional debugging skill.
 
-**Indentation errors are frustrating but common.** They usually mean tabs and spaces got mixed. Use a text editor that shows whitespace (VS Code, Cursor). Your AI can help if you're stuck.
+Indentation errors are frustrating but common. They usually mean tabs and spaces got mixed. Use a text editor that shows whitespace (VS Code, Cursor). Your AI can help if you're stuck.
 
-#### 🚀 CoLearning Challenge
+#### 🤝 Practice Exercise
 
 Write a simple program that:
 1. Creates 3 variables with type hints (any values you choose)
@@ -310,7 +310,7 @@ My name is Alice, I'm 25 years old, and I live in Portland
 
 Then ask your AI: "I wrote this program. Does it look correct? Can you suggest one improvement?"
 
-This teaches you code review—a professional skill.
+This teaches you code review, a professional skill.
 
 ## Common Mistakes
 

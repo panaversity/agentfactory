@@ -55,8 +55,8 @@ You've learned all the pieces. Now you'll assemble them into one complete, worki
 
 This capstone isn't just a code exercise. It's your first experience with **specification-driven development in miniature**. You'll:
 
-1. **Understand WHAT** the program does (specification)
-2. **Design HOW** you'll build it (planning)
+1. **Understand what** the program does (specification)
+2. **Design how** you'll build it (planning)
 3. **Code and test** (implementation)
 4. **Verify it matches your design** (validation)
 
@@ -132,7 +132,7 @@ This is the specification phase. Answer these questions:
 
 Write this design in a text document or comment in your code. Share it with your AI companion:
 
-#### 🚀 CoLearning Challenge: Design Phase
+#### 🤝 Practice Exercise: Design Phase
 
 Ask your AI:
 > "Here's my program design:
@@ -142,7 +142,7 @@ Ask your AI:
 >
 > Before I code this, does this design make sense? Should I change anything?"
 
-This teaches specification-first thinking. Your AI validates your design BEFORE you waste time coding mistakes.
+This teaches specification-first thinking. Your AI validates your design before you waste time coding mistakes.
 
 ## Phase 2: Step-by-Step Build
 
@@ -274,7 +274,7 @@ Does your program:
 
 If you checked everything, your capstone meets the specification.
 
-#### AI Colearning Prompt: Code Review
+#### 💬 AI Colearning Prompt
 
 When your program is drafted, ask your AI:
 
@@ -289,13 +289,13 @@ When your program is drafted, ask your AI:
 
 This teaches code review—a professional skill. Your AI provides feedback. You learn what "good code" looks like.
 
-#### ✨ Teaching Tips
+#### 🎓 Expert Insight
 
-**Type hints are mandatory.** Your capstone should have type hints on EVERY variable. This describes intent clearly.
+Type hints are mandatory. Your capstone should have type hints on every variable. This describes intent clearly.
 
-**All data is stored as strings.** We're not converting data types yet—that's Chapter 16. For now, age is stored as `"25"` (string), not `25` (integer).
+All data is stored as strings. We're not converting data types yet (that's Chapter 16). For now, age is stored as `"25"` (string), not `25` (integer).
 
-**Specification-first thinking**: You designed FIRST (plain English), coded SECOND. That's the AIDD methodology in practice.
+Specification-first thinking means you designed first (plain English), then coded second. That's the AIDD methodology in practice.
 
 ## Extending Your Program
 
@@ -354,7 +354,7 @@ name: str = input("What is your name? ")
 print(f"Name: {name}")
 ```
 
-Comments explain WHAT and WHY, not just HOW.
+Comments explain what and why, not just how.
 
 ---
 

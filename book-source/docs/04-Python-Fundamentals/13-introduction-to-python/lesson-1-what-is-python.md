@@ -117,20 +117,20 @@ Now that you understand Python's strengths, let's explore with your AI companion
 
 Try this with Claude Code or Gemini CLI. You're teaching your AI to explain concepts simply—and in the process, you'll validate your own understanding. If the AI's explanation makes sense, you've truly grasped the concept.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 Here's an important insight about learning Python in the AI era:
 
-**You don't need to memorize every detail.** What matters most is understanding:
-- **What** the code does (what problem it solves)
-- **Why** you'd use this approach (when is it the right tool?)
-- **How** to recognize when something's wrong (reading and debugging)
+You don't need to memorize every detail. What matters most is understanding:
+- What the code does (what problem it solves)
+- Why you'd use this approach (when is it the right tool?)
+- How to recognize when something's wrong (reading and debugging)
 
 Your AI learning partner (Claude Code or Gemini CLI) can help with syntax details, error messages, and explaining how code works. Your job is to build understanding—to know what you want to accomplish and whether your code actually does it.
 
-This collaborative approach—you focus on understanding, AI handles details—is how modern developers work. You're learning this from day one.
+This collaborative approach (you focus on understanding, AI handles details) is how modern developers work. You're learning this from day one.
 
-#### 🚀 CoLearning Challenge
+#### 🤝 Practice Exercise
 
 Find 3 real-world AI applications built with Python. Here are some starting points:
 
@@ -141,7 +141,7 @@ Find 3 real-world AI applications built with Python. Here are some starting poin
 
 Ask yourself: What do these applications have in common? Why would their creators choose Python over another language?
 
-#### ✨ Teaching Tip
+#### 🎓 Expert Insight
 
 Your AI tool (Claude Code or Gemini CLI) knows Python deeply. When you have syntax questions, ask it. Your job is to describe intent clearly; AI handles the syntax details. This partnership is what makes you powerful.
 

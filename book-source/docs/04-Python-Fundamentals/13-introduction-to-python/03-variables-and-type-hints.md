@@ -286,7 +286,7 @@ Ask your AI companion: "Explain how type hints help an AI (like you) generate be
 
 This is a critical insight. Type hints are how you make your intent explicit. Your AI uses that explicitness to understand your specifications and generate appropriate code.
 
-#### 🚀 CoLearning Challenge
+#### 🤝 Practice Exercise
 
 Before you move to the exercises, try this exploration:
 
@@ -301,9 +301,9 @@ Write each with a type hint. Then ask your AI: "Do my type hints look correct? C
 
 Your AI will validate your work and reinforce your understanding.
 
-#### Tip
+#### 🎓 Expert Insight
 
-Type hints are not optional—they're core. Every variable gets a type hint. This is professional Python style and essential for AI collaboration. By practicing type hints from the beginning, you're building a skill that will serve you in every chapter ahead.
+Type hints are not optional in this book. Every variable gets a type hint. This is professional Python style and essential for AI collaboration. By practicing type hints from the beginning, you're building a skill that will serve you in every chapter ahead.
 
 ## Common Mistakes
 

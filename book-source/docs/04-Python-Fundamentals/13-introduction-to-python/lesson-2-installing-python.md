@@ -225,15 +225,15 @@ If you encountered an error during installation:
 
 Provide complete context (your operating system and the exact error message), and your AI tool can give you platform-specific troubleshooting. This is a valuable skill: when something breaks, describing the problem clearly to your AI partner is half the battle toward fixing it.
 
-#### ✨ Teaching Tips
+#### 🎓 Expert Insight
 
-- **Different computers, different setups**: If your installation differs from the guide, that's normal. Operating systems vary. If you encounter a unique error, your AI tool is perfect for platform-specific troubleshooting.
+Different computers have different setups. If your installation differs from the guide, that's normal. Operating systems vary. If you encounter a unique error, your AI tool is perfect for platform-specific troubleshooting.
 
-- **Copy the exact error message**: "Python not found" is less helpful to an AI than pasting the full error output. Be specific. This teaches you a professional skill: providing complete context when asking for help.
+Copy the exact error message when asking for help. "Python not found" is less helpful to an AI than pasting the full error output. Be specific. This teaches you a professional skill: providing complete context when asking for help.
 
-- **One verification isn't enough**: After running the basic verification, run the test program command above. That second check confirms Python is not just installed but actually executable.
+One verification isn't enough. After running the basic verification, run the test program command above. That second check confirms Python is not just installed but actually executable.
 
-#### 🚀 CoLearning Challenge
+#### 🤝 Practice Exercise
 
 Once you've installed Python and verified it works, experiment with this:
 
@@ -245,7 +245,7 @@ Now ask your AI:
 
 > "Explain what the `-c` flag does in the `python` command. What does `-c` stand for? Can you show me another example of using `-c`?"
 
-This challenge teaches you to explore with AI's help. You'll learn about command-line flags—a skill that extends far beyond Python.
+This challenge teaches you to explore with AI's help. You'll learn about command-line flags, a skill that extends far beyond Python.
 
 ## Common Mistakes to Avoid
 
