@@ -132,17 +132,11 @@ This is the specification phase. Answer these questions:
 
 Write this design in a text document or comment in your code. Share it with your AI companion:
 
-#### 🚀 CoLearning Challenge: Design Phase
+#### 💬 AI Colearning Prompt
+> "Here's my program design: (1) Ask user for name, age, favorite color, hobby, city, (2) Store all as strings (no type conversion yet), (3) Display formatted summary with f-strings. Before I code this, does this design make sense? Should I use str for all variables or would int be better for age?"
 
-Ask your AI:
-> "Here's my program design:
-> 1. Ask user for name, age, favorite color, hobby, and city
-> 2. Store all information as strings (no conversion needed)
-> 3. Display formatted summary with f-strings
->
-> Before I code this, does this design make sense? Should I change anything?"
-
-This teaches specification-first thinking. Your AI validates your design BEFORE you waste time coding mistakes.
+#### 🎓 Expert Insight
+> In AI-native development, capstone projects demonstrate specification-first thinking. You describe intent (collect information, format output) before writing code. This design → validate → implement pattern is how professional teams build software. Type hints in your spec tell AI exactly what data structures you need, preventing bugs before code is written.
 
 ## Phase 2: Step-by-Step Build
 
@@ -274,28 +268,11 @@ Does your program:
 
 If you checked everything, your capstone meets the specification.
 
-#### AI Colearning Prompt: Code Review
+#### 🤝 Practice Exercise
 
-When your program is drafted, ask your AI:
+> **Ask your AI**: "Review my Personal Information Collector program: [paste your complete code]. Check: (1) Are all type hints present and correct? (2) Is variable naming descriptive? (3) Are f-strings used appropriately? (4) Do comments explain intent? (5) Suggest one improvement for code quality. Then explain why professional developers always validate code (whether human or AI-generated) before deployment."
 
-> "Here's my capstone program:
-> [paste your code]
->
-> Can you review it? Specifically:
-> 1. Are all variables properly typed with type hints?
-> 2. Does the output format look good?
-> 3. Any security or error-handling improvements?
-> 4. Can you suggest one enhancement?"
-
-This teaches code review—a professional skill. Your AI provides feedback. You learn what "good code" looks like.
-
-#### ✨ Teaching Tips
-
-**Type hints are mandatory.** Your capstone should have type hints on EVERY variable. This describes intent clearly.
-
-**All data is stored as strings.** We're not converting data types yet—that's Chapter 16. For now, age is stored as `"25"` (string), not `25` (integer).
-
-**Specification-first thinking**: You designed FIRST (plain English), coded SECOND. That's the AIDD methodology in practice.
+**Expected Outcome**: You'll practice code review with AI partnership, understand that validation is non-negotiable in professional development, learn to accept constructive feedback gracefully, and see how iteration improves code quality systematically.
 
 ## Extending Your Program
 

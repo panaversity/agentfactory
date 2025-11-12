@@ -224,47 +224,17 @@ Python is installed on Linux.
 
 Did something go wrong? Don't panic. This is where AI excels.
 
-#### Tip
+#### 💬 AI Colearning Prompt
+> "I tried to install Python on [Windows/Mac/Linux] and got this error: [paste the full error message here]. What does this mean, and how do I fix it step-by-step?"
 
-Different computers have different setups. If your installation differs from the steps above, that's normal. Your AI tool (Claude Code or Gemini CLI) is perfect for platform-specific troubleshooting.
+#### 🎓 Expert Insight
+> In AI-native development, installation errors are learning opportunities. System configuration (PATH variables, permissions, OS differences) is complex—AI excels at diagnosing these platform-specific issues. Your job: provide complete error context (OS version, exact error message). AI's job: translate cryptic system errors into actionable fixes. This troubleshooting partnership is essential for professional development.
 
-Copy the exact error message you got and ask your AI:
+#### 🤝 Practice Exercise
 
-```
-I tried to install Python on [Windows/Mac/Linux] and got this error:
-[paste the full error message here]
+> **Ask your AI**: "Show me 3 different ways to verify Python 3.14 is installed correctly (beyond just `python --version`). For each method, explain what it validates that the others don't. Then create a one-line Python command that prints my Python version in a formatted message like 'Python version: X.X.X'."
 
-What does this mean, and how do I fix it?
-```
-
-Provide context:
-- Your operating system version
-- Whether you checked "Add to PATH" (Windows)
-- The exact error message
-
-Your AI will give you step-by-step solutions specific to your setup.
-
-#### 🚀 CoLearning Challenge
-
-Once you've verified Python works, experiment further:
-
-Run this command:
-
-```
-python --version
-```
-
-or
-
-```
-python3 --version
-```
-
-What output did you get?
-
-Now ask your AI: "Explain what the `--version` flag does in the python command and why we use it."
-
-This teaches you that commands can have options (flags) that modify their behavior—a useful pattern throughout programming.
+**Expected Outcome**: You'll learn multiple verification strategies (version check, test execution, module availability), understand why redundant validation matters in professional development, and practice using Python's `-c` flag for quick commands.
 
 ---
 

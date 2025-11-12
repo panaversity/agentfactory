@@ -182,13 +182,11 @@ print(f"My name is {name} and I am {age} years old")
 
 F-strings are cleaner, easier to read, and more professional. This is what modern Python developers use.
 
-#### Instructor Commentary
+#### 💬 AI Colearning Prompt
+> "Explain why Python uses indentation (whitespace) for code blocks instead of curly braces like JavaScript or C++. What's the advantage for beginners? What's one potential problem?"
 
-**Syntax is cheap—semantics is gold.**
-
-Notice we're teaching f-strings, not the `.format()` method from older Python or string concatenation. Why? Because syntax changes constantly. Python 2 → Python 3 changed a lot. F-strings are only a few years old—they might be replaced in Python 3.20 with something newer.
-
-This is why memorizing syntax details misses the point. What matters is understanding the *pattern*: "I want to combine text with variables; what's the modern approach?" Ask your AI. That's the real skill.
+#### 🎓 Expert Insight
+> In AI-native development, syntax is cheap—semantics is gold. We teach f-strings (not .format() or concatenation) because they're current. But syntax evolves: Python 2→3 changed dramatically, f-strings might be replaced in Python 3.20. Don't memorize syntax—understand patterns. "I want to combine text with variables" → ask AI for modern approach. That's the transferable skill.
 
 ## Creating and Running .py Files
 
@@ -296,21 +294,11 @@ When you see an error you don't recognize, copy the error message and ask your A
 
 **Indentation errors are frustrating but common.** They usually mean tabs and spaces got mixed. Use a text editor that shows whitespace (VS Code, Cursor). Your AI can help if you're stuck.
 
-#### 🚀 CoLearning Challenge
+#### 🤝 Practice Exercise
 
-Write a simple program that:
-1. Creates 3 variables with type hints (any values you choose)
-2. Uses `print()` and f-strings to display them in a sentence
-3. Includes at least 2 comments explaining what the code does
+> **Ask your AI**: "Create a Python program that displays a mini 'About Me' card using: (1) typed variables for name, age, city, (2) f-strings for formatted output, (3) decorative borders using string multiplication (like '=' * 40), (4) comments explaining each section. Then explain why comments should describe 'why' not 'what'."
 
-Example output might be:
-```
-My name is Alice, I'm 25 years old, and I live in Portland
-```
-
-Then ask your AI: "I wrote this program. Does it look correct? Can you suggest one improvement?"
-
-This teaches you code review—a professional skill.
+**Expected Outcome**: You'll practice combining syntax elements (variables, type hints, f-strings, comments, print statements), understand professional commenting practices, and see how string multiplication creates visual formatting.
 
 ## Common Mistakes
 

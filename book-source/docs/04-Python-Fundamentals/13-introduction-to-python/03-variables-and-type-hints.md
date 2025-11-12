@@ -286,24 +286,14 @@ Ask your AI companion: "Explain how type hints help an AI (like you) generate be
 
 This is a critical insight. Type hints are how you make your intent explicit. Your AI uses that explicitness to understand your specifications and generate appropriate code.
 
-#### 🚀 CoLearning Challenge
+#### 🤝 Practice Exercise
 
-Before you move to the exercises, try this exploration:
+> **Ask your AI**: "Create 5 typed variables representing a person: name, age, height in meters, student status (boolean), favorite programming language. Use realistic values. Then write print statements with f-strings displaying each. Explain why the type hint for height is `float` and not `int`."
 
-Create 5 variables with different types:
-1. Your name (str)
-2. Your age (int)
-3. Your height in meters (float)
-4. Whether you're learning AI development (bool)
-5. One more variable you choose
+**Expected Outcome**: You'll practice writing typed variables, understand the difference between int and float, see f-string formatting in action, and learn how type hints make code self-documenting.
 
-Write each with a type hint. Then ask your AI: "Do my type hints look correct? Can you explain why each type matches the data?"
-
-Your AI will validate your work and reinforce your understanding.
-
-#### Tip
-
-Type hints are not optional—they're core. Every variable gets a type hint. This is professional Python style and essential for AI collaboration. By practicing type hints from the beginning, you're building a skill that will serve you in every chapter ahead.
+#### 🎓 Expert Insight
+> In AI-native development, type hints aren't "advanced Python"—they're foundational specifications. When you write `age: int = 25`, you're declaring intent that AI understands and can validate. Professional developers use type hints everywhere because they prevent bugs, enable better IDE support, and make code self-documenting. In this book, type hints are mandatory—not as busywork, but as practice for specification-first thinking.
 
 ## Common Mistakes
 

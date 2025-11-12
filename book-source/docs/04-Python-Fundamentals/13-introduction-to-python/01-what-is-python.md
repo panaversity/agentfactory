@@ -123,27 +123,17 @@ You're not just creating variables. You're describing intent. You're saying "I w
 
 This practice of describing intent through type hints prepares you for Spec-Driven Development in Part 5, where you'll write formal specifications that AI systems execute as complete programs.
 
-#### AI Colearning Prompt
+#### 💬 AI Colearning Prompt
+> "Explain what Python is in a way a 10-year-old would understand. Focus on: What is it? Why does it matter for AI?"
 
-Ask your AI companion: "Explain what Python is in a way a 10-year-old would understand. Focus on: What is it? Why does it matter for AI?"
+#### 🎓 Expert Insight
+> In AI-native development, syntax is cheap—semantics is gold. You don't memorize how to write an f-string (ask AI). You understand when to use strings vs numbers, why type hints matter, how code flows. Your job: strategic thinking and design. AI's job: syntax details and error debugging. This partnership is what makes you 10x more productive.
 
-This is a powerful learning move. By asking your AI to simplify a concept, you get another explanation that reinforces your understanding. If the AI's explanation clicks for you better than this lesson's explanation, that's excellent. Different brains learn differently.
+#### 🤝 Practice Exercise
 
-#### Instructor Commentary
+> **Ask your AI**: "Find 3 real-world AI applications built with Python (besides ChatGPT). For each one, explain: What problem does it solve? Why did the creators choose Python over other languages? Then identify one common technical advantage Python provides for all three."
 
-**Syntax is cheap—semantics is gold.**
-
-Everyone can memorize Python syntax. Everyone can look up "how do I write an f-string?" That takes 10 seconds of searching. What can't be looked up is understanding.
-
-Understanding means knowing:
-- When to use a string vs a number
-- Why type hints matter
-- How your code flows
-- What happens when something breaks
-
-That's where AI collaboration shines. When you struggle with syntax, ask AI. When you need to understand a concept, ask AI. Your job isn't memorization—it's understanding and design.
-
-In this chapter, we'll teach you the concepts. You'll write the code. Your AI will help you understand the syntax. Together, you'll build real programs.
+**Expected Outcome**: You'll discover concrete examples of Python in production AI systems, understand the pattern of why Python dominates AI development, and practice researching technology decisions with AI as your collaborative partner.
 
 ## Common Mistakes
 
