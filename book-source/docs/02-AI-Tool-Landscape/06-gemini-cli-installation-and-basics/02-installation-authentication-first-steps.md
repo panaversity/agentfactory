@@ -95,7 +95,7 @@ Your default web browser will automatically open with Google's login page. Simpl
 
 After you authorize, your terminal displays the Gemini CLI interface, and you're ready to start. You'll see a prompt where you can type your questions and commands.
 
-![Gemini CLI Interface](../../../assets/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/gemini-cli-interface.svg)
+![Gemini CLI Interface](../../../assets/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/l2-gemini-cli-interface.svg)
 
 
 > **Tip:** This is what your interface should look like after choosing a theme and authenticating. You can now type your first message or use slash commands (`/`) to explore Gemini CLI features.
