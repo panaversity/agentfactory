@@ -483,6 +483,25 @@ Include section headers but leave content areas empty for me to fill."
 
 ---
 
+### 💬 AI Colearning Prompt: Crafting Your Checkpoint Together
+
+The quality of your checkpoint determines how smoothly you resume. Let's collaborate:
+
+```bash
+claude "We've been working together for 90 minutes building an authentication system. Help me create the perfect checkpoint:
+
+1. What information about our session would YOU need to resume effectively tomorrow?
+2. What decisions should I document that will keep our work consistent?
+3. How detailed should the checkpoint be - what's the right balance?
+4. What mistakes do developers commonly make when compressing context?
+
+Let's design a checkpoint template that works for both of us as partners."
+```
+
+**Why co-create checkpoints:** Your AI partner knows what information it needs to maintain quality across sessions. By collaborating on checkpoint design, you create resumable contexts that work for BOTH partners—not just human-readable notes, but truly effective handoffs.
+
+---
+
 ## Strategy 2: Context Isolation
 
 ### The Problem: Multiple Concurrent Tasks

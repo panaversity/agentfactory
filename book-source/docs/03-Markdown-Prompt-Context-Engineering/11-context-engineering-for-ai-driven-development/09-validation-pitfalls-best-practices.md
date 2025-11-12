@@ -679,6 +679,25 @@ claude "What are the 3 most important decisions or patterns we've established so
 
 ---
 
+### 💬 AI Colearning Prompt: Building Validation Habits Together
+
+Validation is most effective when both partners participate. Let's create a shared practice:
+
+```bash
+claude "Let's develop our context health monitoring partnership:
+
+1. What signs of context degradation can YOU detect that I might miss?
+2. How should we communicate when you notice context issues - what should you tell me?
+3. What should I check regularly that helps YOU maintain quality?
+4. Can we create a 'context health signal' - something I ask periodically that helps us both monitor?
+
+I want us to build a validation rhythm where we're BOTH watching for problems, not just me checking a checklist."
+```
+
+**Why validate together:** Context health affects both partners. When your AI can signal issues proactively and you check systematically, you create a robust early-warning system. This transforms validation from a chore into a natural part of your collaborative rhythm.
+
+---
+
 ### The Weekly Context Review
 
 **Every week, reflect on your context practices:**
@@ -773,191 +792,6 @@ Date: [Today]"
 ```
 
 **This template prevents Mistakes #3 and #4.**
-
----
-
-## Try With AI
-
-**Tool:** Claude Code
-
-Practice recognizing and correcting mistakes.
-
-### Prompt 1: Recognize Mistakes
-
-```bash
-claude "Here's how a developer started their session:
-
-'Read all 47 files in my project and then help me add a small bug fix to one function.'
-
-What mistakes is this developer making? Reference the 5 common mistakes from context engineering:
-1. Loading all files upfront
-2. Never restarting sessions
-3. Assuming AI remembers everything
-4. Not documenting decisions
-5. Mixing unrelated contexts
-
-Which mistakes apply here? How should they have approached this instead?"
-```
-
-**Expected Outcome:**
-- Identification of Mistake #1 (loading everything)
-- Explanation of why this approach is inefficient
-- Better approach: progressive loading to find the bug
-- Estimate of context waste (90%+ filled for a small bug fix)
-
-**Practice:** Can you spot context engineering mistakes in your own workflow?
-
----
-
-### Prompt 2: Practice Context Health Check
-
-```bash
-claude "I've been working in a coding session for 3 hours. I've built 4 different features. I haven't restarted the session. The AI is starting to give inconsistent answers and mixing up which feature I'm working on.
-
-Run the 5-point context health check on this scenario:
-1. Context fill level
-2. Context relevance
-3. Context recency
-4. Context clarity
-5. Context loading strategy
-
-For each point, assess: Healthy / Warning / Critical
-Then tell me what actions I should take immediately."
-```
-
-**Expected Outcome:**
-- Health check assessment (likely all Critical)
-- Identification of multiple mistakes (#2, #5, possibly others)
-- Action plan: compress, isolate, restart
-- Explanation of why current approach is failing
-
-**Reflection:** This is what good validation looks like—catching problems before they cause major issues.
-
----
-
-### Prompt 3: Create Your Personal Context Checklist
-
-```bash
-claude "Based on the 5 common mistakes and the context health check, create a personalized checklist I can use every time I start a development session.
-
-Include:
-- Pre-session setup (before I start)
-- During session (what to check regularly)
-- End session (how to wrap up properly)
-
-Make it practical and concise—something I can realistically follow every day."
-```
-
-**Expected Outcome:**
-- Customized checklist template
-- Practical, actionable items
-- Integration of all 5 mistake prevention strategies
-- Realistic timing (not overwhelming)
-
-**Action:** Save this checklist! Use it for the next week and refine it based on what works for you.
-
----
-
-### Tool Flexibility Note
-
-**Why practicing mistake recognition matters:**
-
-With any AI coding tool (Claude Code, Gemini CLI, or future tools):
-- You'll make these mistakes (everyone does!)
-- Recognizing them quickly is the key skill
-- The faster you catch mistakes, the less time wasted
-
-**These validation habits transfer across all tools:**
-- Claude Code (200K token context window)
-- Gemini CLI (1M+ token context window)
-- Any future AI coding tool
-
-**Building good habits now saves hours of frustration later.**
-
----
-
-## Chapter Summary: Context Engineering Mastery
-
-Congratulations! You've completed all 6 lessons on context engineering. Let's review what you've mastered:
-
-### Lesson 1: What Is Context Engineering?
-- ✅ Context is "everything AI knows right now"
-- ✅ Context engineering is deliberate management of that information
-- ✅ Karpathy Principle: "Prompt is program, context is RAM, AI is CPU"
-
-### Lesson 2: Understanding Context Windows
-- ✅ Context windows are limited working memory
-- ✅ Context rot happens as windows fill up
-- ✅ Recognition of degradation signs (slower, inconsistent, repetitive)
-
-### Lesson 3: Progressive Context Loading
-- ✅ Three-phase approach: Overview → Focus → Deep Dive
-- ✅ Load only what's needed, when it's needed
-- ✅ Context budget management (stay under 40%)
-
-### Lesson 4: Context Compression & Isolation
-- ✅ Compression: Summarize and restart with checkpoint
-- ✅ Isolation: Separate sessions for separate concerns
-- ✅ Strategy selection: When to use which technique
-
-### Lesson 5: Context Enables Better Specifications
-- ✅ Poor context → bad specs → broken code
-- ✅ Rich context → clear specs → working code
-- ✅ Context-first workflow before specification writing
-
-### Lesson 6: Common Mistakes & Validation (This Lesson)
-- ✅ 5 mistakes to avoid (loading all, never restarting, assuming memory, not documenting, mixing contexts)
-- ✅ 5-point context health check
-- ✅ Habits for consistent good practice
-
----
-
-## Your Context Engineering Skillset
-
-You now have **complete beginner-to-intermediate context engineering skills**:
-
-**Foundation (A1):**
-- ✓ Understand what context is
-- ✓ Recognize context window limitations
-- ✓ Identify context rot symptoms
-
-**Application (A2/B1):**
-- ✓ Apply progressive loading strategically
-- ✓ Use compression to maintain long sessions
-- ✓ Isolate contexts for focused work
-- ✓ Follow context-first workflow before specifications
-
-**Analysis & Evaluation (B1):**
-- ✓ Diagnose context problems
-- ✓ Choose appropriate strategy for situation
-- ✓ Validate context health proactively
-- ✓ Recognize and correct mistakes quickly
-
-**These are professional-grade skills.** Experienced AI-native developers use these exact techniques every day.
-
----
-
-## What's Next?
-
-**In Part 4 (Terminal & Development Environment):**
-You'll apply these context engineering skills while learning terminal commands, because:
-- Loading project context requires understanding file structure
-- Context isolation uses terminal sessions
-- Compression checkpoints are saved as files
-
-**In Part 5 (Specification-Driven Development):**
-You'll use Lesson 5's context-first workflow intensively:
-- Every specification starts with context loading
-- Context engineering enables clear requirements
-- Context compression preserves specification decisions
-
-**In Part 10+ (Production Deployment):**
-Context engineering becomes critical for:
-- Complex infrastructure specifications
-- Multi-service architecture context management
-- Debugging production systems with rich context
-
-**Context engineering is the foundation for everything else you'll learn in this book.**
 
 ---
 
@@ -1915,4 +1749,104 @@ Compare approaches:
 
 Design the workflow for each approach with specific commands."
 ```
+
+---
+
+## Try With AI
+
+**Tool:** Claude Code
+
+Practice recognizing and correcting mistakes.
+
+### Prompt 1: Recognize Mistakes
+
+```bash
+claude "Here's how a developer started their session:
+
+'Read all 47 files in my project and then help me add a small bug fix to one function.'
+
+What mistakes is this developer making? Reference the 5 common mistakes from context engineering:
+1. Loading all files upfront
+2. Never restarting sessions
+3. Assuming AI remembers everything
+4. Not documenting decisions
+5. Mixing unrelated contexts
+
+Which mistakes apply here? How should they have approached this instead?"
+```
+
+**Expected Outcome:**
+- Identification of Mistake #1 (loading everything)
+- Explanation of why this approach is inefficient
+- Better approach: progressive loading to find the bug
+- Estimate of context waste (90%+ filled for a small bug fix)
+
+**Practice:** Can you spot context engineering mistakes in your own workflow?
+
+---
+
+### Prompt 2: Practice Context Health Check
+
+```bash
+claude "I've been working in a coding session for 3 hours. I've built 4 different features. I haven't restarted the session. The AI is starting to give inconsistent answers and mixing up which feature I'm working on.
+
+Run the 5-point context health check on this scenario:
+1. Context fill level
+2. Context relevance
+3. Context recency
+4. Context clarity
+5. Context loading strategy
+
+For each point, assess: Healthy / Warning / Critical
+Then tell me what actions I should take immediately."
+```
+
+**Expected Outcome:**
+- Health check assessment (likely all Critical)
+- Identification of multiple mistakes (#2, #5, possibly others)
+- Action plan: compress, isolate, restart
+- Explanation of why current approach is failing
+
+**Reflection:** This is what good validation looks like—catching problems before they cause major issues.
+
+---
+
+### Prompt 3: Create Your Personal Context Checklist
+
+```bash
+claude "Based on the 5 common mistakes and the context health check, create a personalized checklist I can use every time I start a development session.
+
+Include:
+- Pre-session setup (before I start)
+- During session (what to check regularly)
+- End session (how to wrap up properly)
+
+Make it practical and concise—something I can realistically follow every day."
+```
+
+**Expected Outcome:**
+- Customized checklist template
+- Practical, actionable items
+- Integration of all 5 mistake prevention strategies
+- Realistic timing (not overwhelming)
+
+**Action:** Save this checklist! Use it for the next week and refine it based on what works for you.
+
+---
+
+### Tool Flexibility Note
+
+**Why practicing mistake recognition matters:**
+
+With any AI coding tool (Claude Code, Gemini CLI, or future tools):
+- You'll make these mistakes (everyone does!)
+- Recognizing them quickly is the key skill
+- The faster you catch mistakes, the less time wasted
+
+**These validation habits transfer across all tools:**
+- Claude Code (200K token context window)
+- Gemini CLI (1M+ token context window)
+- Any future AI coding tool
+
+**Building good habits now saves hours of frustration later.**
 
