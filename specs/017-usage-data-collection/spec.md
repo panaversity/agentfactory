@@ -171,7 +171,7 @@
 
 ## Out of Scope
 
-- Backend infrastructure provisioning and management (OTLP collector setup, database deployment, backup strategies)
+- Backend infrastructure provisioning and management (Docker, databases - REMOVED in favor of simple file-based approach)
 - Real-time alerting or monitoring dashboards (this spec focuses on data collection and batch analysis workflows)
 - Integration with external BI tools or data warehouses (future enhancement)
 - Automated evaluation scoring or quality metrics calculation (this spec provides raw data; eval frameworks are separate)
@@ -179,29 +179,52 @@
 
 ## Dependencies
 
-- Claude Code OpenTelemetry integration (currently in beta, details subject to change)
-- OTLP collector backend (OpenTelemetry Protocol endpoint, e.g., Jaeger, Grafana, custom)
-- Time-series database for centralized storage (ClickHouse, Prometheus, or equivalent)
-- Git workflow integration for chapter/feature context attribution (uses branch names or working directory to tag telemetry events)
+- Claude Code OpenTelemetry integration (built-in, uses console exporter)
+- Python 3.8+ for parsing and analysis scripts (no external dependencies)
+- Bash shell for setup scripts
+- Git workflow integration for chapter/feature context attribution (uses branch names or working directory to tag telemetry events via OTEL_RESOURCE_ATTRIBUTES)
 
 ## Notes
 
 This specification aligns with Andrew Ng's recommendations on:
 
-1. **Breaking down data silos** — Centralized telemetry prevents individual team members from hoarding usage data in isolated environments
-2. **Error analysis for agentic performance** — Workflow trace collection enables systematic identification of failure patterns and improvement opportunities
+1. **Breaking down data silos** — Simple file-based collection allows team members to share parsed JSON files with coordinators for aggregated analysis
+2. **Error analysis for agentic performance** — Console log collection enables systematic identification of failure patterns and improvement opportunities
 3. **Evals-first development** — Telemetry data provides the ground truth for measuring whether changes (spec templates, prompt guidelines, validation criteria) actually improve outcomes
 
 The telemetry system is designed to be:
 
-- **Non-blocking**: Failures in telemetry export MUST NOT disrupt Claude Code functionality
-- **Privacy-aware**: Sensitive data sanitization is a first-class requirement
+- **Simple**: No Docker, no databases, no complex infrastructure - just console output captured to files
+- **Non-blocking**: Console exporter does not interfere with Claude Code functionality
+- **Privacy-aware**: User prompts are opt-in only (OTEL_LOG_USER_PROMPTS=1), sensitive data automatically filtered by Claude Code
 - **Team-first**: Documentation and onboarding are treated as critical features, not afterthoughts
-- **Analysis-ready**: Data schema and query examples are designed for Andrew Ng's error analysis workflow (informal trace review → rigorous pattern identification → workflow redesign)
+- **Analysis-ready**: Python scripts parse logs into JSON for Andrew Ng's error analysis workflow (informal trace review → rigorous pattern identification → workflow redesign)
+
+## Implementation Approach (v2.0 - Simplified)
+
+**Previous approach (v1.0)**: Docker-compose with OTLP collector + ClickHouse database
+**Current approach (v2.0)**: Console exporter + file logging + Python analysis
+
+**Why the change?**:
+- Docker adds unnecessary complexity for individual contributors
+- Database infrastructure is overkill for team-scale data collection
+- File-based approach is more portable and easier to debug
+- Python scripts provide sufficient analysis capability without SQL complexity
+
+**Architecture**:
+```
+Claude Code (OTEL enabled)
+  → Console output (stdout/stderr)
+  → Captured to ~/.claude-code-telemetry/logs/session-*.log
+  → Parsed by Python (telemetry/parser.py)
+  → Structured JSON in ~/.claude-code-telemetry/data/
+  → Analyzed by Python (telemetry/analyze.py)
+  → Reports + Insights
+```
 
 This feature establishes the data foundation for future enhancements:
 
+- Team aggregation of JSON files for cross-member analysis
+- Advanced custom analysis scripts for specific questions
 - Automated evaluation scoring based on telemetry patterns
-- Predictive models for estimating chapter complexity (token usage, iteration count)
-- Real-time cost tracking and budget alerts
 - Integration with content evaluation framework (linking telemetry to chapter quality scores)
