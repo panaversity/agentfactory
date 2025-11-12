@@ -22,50 +22,50 @@ course: Dict[str, Any] = {
     "course_code": "AI-400",
     "course_name": "Cloud Native AI: Docker, Kubernetes & DAPR for Agent Systems",
     "course_initials": "CNAI",
-    "course_description": """Master cloud-native infrastructure for AI agent systems using specification-driven development. Learn Docker containerization, Kubernetes orchestration, and DAPR abstractions to deploy production-ready agent applications with observability, scaling, and cloud-agnostic patterns. Build the foundation for deploying autonomous AI systems at scale.""",
+    "course_description": """Master cloud-native infrastructure for AI agent systems through Context Engineering and Claude Code partnership. Learn Spec-Driven Development (SDD) to design Docker containers, Kubernetes orchestrations, and Dapr workflows—all generated from specifications. Deploy production-ready agent applications with observability, scaling, and cloud-agnostic patterns.""",
     "created_by": "db_admin",
     "updated_by": "db_admin",
     "course_outcomes": [
-        "Understand cloud-native thinking for AI systems: containerization, orchestration, and cloud-agnostic abstractions",
-        "Master Docker for AI applications using specification-driven development and AI-generated Dockerfiles",
-        "Deploy and scale agent systems on Kubernetes with production-grade configurations",
-        "Implement DAPR Core abstractions for state management, pub/sub messaging, and service invocation",
-        "Build observable AI systems with OpenTelemetry for logs, metrics, and distributed tracing",
-        "Design CI/CD pipelines for automated agent deployment with testing and validation",
-        "Apply AI-Driven Development (AIDD) to generate and validate cloud infrastructure code"
+        "Apply Context Engineering to structure effective AI collaboration for infrastructure design",
+        "Partner with Claude Code to generate production-ready cloud configurations from specifications",
+        "Master Spec-Driven Development (SDD) to design infrastructure through clear intent, not manual YAML",
+        "Containerize AI applications with Docker using AIDD and SDD for multi-stage builds and optimization",
+        "Orchestrate agent systems on Kubernetes with AIDD and SDD using kubectl-ai and kagent",
+        "Implement Dapr Core and Dapr Workflows for cloud-agnostic state, pub/sub, and long-running processes",
+        "Build observable, scalable AI systems with OpenTelemetry, autoscaling, and automated CI/CD pipelines"
     ],
-    "long_description": """The era of local-only AI development is over. The future isn't about building agents on your laptop; it's about deploying autonomous systems to production. Cloud Native AI represents the infrastructure foundation, the essential shift from "developer" to "cloud architect." It's a methodology that moves you from "running code locally" to "deploying systems that scale"—where you'll master containerization, orchestration, and cloud-agnostic patterns that power production AI applications.
+    "long_description": """The era of local-only AI development is over. Production deployment isn't about memorizing YAML syntax—it's about mastering Context Engineering to communicate infrastructure intent and partnering with Claude Code to generate Docker, Kubernetes, and Dapr configurations. Cloud Native AI represents the methodology shift from "manual DevOps" to "specification-driven infrastructure," where you design systems through clear specifications and AI handles implementation complexity.
 
-This course introduces Specification-Driven Infrastructure, the professional approach where you write infrastructure specifications and AI generates Docker, Kubernetes, and DAPR configurations. You'll learn the three pillars of cloud-native AI: Docker for packaging applications into portable containers, Kubernetes for orchestrating containers at scale, and DAPR for cloud-agnostic abstractions that work everywhere. Using AI-Driven Development throughout, you'll master container patterns for AI applications including multi-stage builds for Python dependencies, layer optimization for faster deployments, and agent-friendly networking.
+This course grounds you in six essential pillars: Context Engineering for structuring AI collaboration, Claude Code as your infrastructure partner, Spec-Driven Development (SDD) for designing deployments, Docker with AIDD and SDD for containerization, Kubernetes with AIDD and SDD for orchestration (including kubectl-ai and kagent), and Dapr with workflows for cloud-agnostic communication and long-running processes. You'll learn to specify infrastructure requirements and let AI generate production-ready configurations—multi-stage Docker builds, Kubernetes manifests, Dapr components—while you focus on system design and validation.
 
-You'll start with Docker Fundamentals, learning to containerize AI applications with Dockerfiles generated from specifications. Then Kubernetes Basics, deploying agent systems with pods, deployments, and services while AI handles YAML complexity. You'll master DAPR Core abstractions—state stores that work with any database, pub/sub that works with any message broker, and service invocation that works across any platform. Finally, Production Kubernetes teaches you observability with OpenTelemetry, horizontal pod autoscaling for traffic spikes, and CI/CD pipelines for automated deployments.
+You'll start with Context Engineering fundamentals, structuring infrastructure specifications for AI collaboration. Then Docker with SDD, containerizing FastAPI services through specifications. Next, Kubernetes with kubectl-ai and kagent, orchestrating agent systems while AI handles manifest complexity. You'll master Dapr Core and workflows for state management, pub/sub messaging, and durable execution patterns. Finally, you'll implement observability with OpenTelemetry, autoscaling, and CI/CD pipelines—all specification-driven.
 
-This isn't just learning tools; it's learning professional infrastructure thinking. By the end, you won't just run agents locally—you'll deploy production systems that scale, monitor themselves, and adapt to demand. You'll understand how to package Python agents into containers, orchestrate them on Kubernetes, and abstract cloud services with DAPR so your code runs anywhere. This is the foundation for everything that follows: distributed agents, stateful systems, and autonomous architectures.""",
+By the end, you won't manually write Dockerfiles or Kubernetes YAML—you'll specify system requirements and validate AI-generated infrastructure. You'll deploy agent systems that scale across clouds, coordinate through Dapr abstractions, and adapt to demand automatically. This is professional cloud-native thinking: design through specifications, generate with AI, validate with confidence.""",
     "learning_modules": [
         {
             "module_id": 1,
             "module_name": "Foundations: Cloud Native Infrastructure for AI",
-            "module_description": "Understand why cloud-native patterns matter for AI systems and how specification-driven infrastructure accelerates deployment. Learn the architecture of containerization (Docker), orchestration (Kubernetes), and cloud-agnostic abstractions (DAPR). Establish mental models for thinking in production infrastructure, not just local development."
+            "module_description": "Master Context Engineering to structure AI collaboration for infrastructure design. Partner with Claude Code to understand containerization (Docker), orchestration (Kubernetes), and cloud-agnostic abstractions (Dapr). Learn Spec-Driven Development (SDD) fundamentals: write specifications, AI generates infrastructure, you validate. Establish professional thinking patterns for production deployment, not manual configuration."
         },
         {
             "module_id": 2,
             "module_name": "Docker Fundamentals: Containerizing AI Applications",
-            "module_description": "Master Docker through specification-first development where AI generates Dockerfiles from your requirements. Learn multi-stage builds for Python dependencies, layer optimization for faster builds, container networking for agent communication, and Docker Compose for multi-container applications. Package AI agents into portable, production-ready containers."
+            "module_description": "Containerize FastAPI services using Docker with AIDD and SDD. Specify requirements—multi-stage builds, Python dependencies, layer optimization—and Claude Code generates production Dockerfiles. Master container networking, health checks, and Docker Compose for local development. Focus on specification and validation, not Dockerfile syntax memorization."
         },
         {
             "module_id": 3,
             "module_name": "Kubernetes Basics: Orchestrating Agent Systems",
-            "module_description": "Deploy AI applications to Kubernetes using AI-generated manifests. Master pods (smallest deployable units), deployments (managing replicas), services (networking), ConfigMaps and Secrets (configuration), and StatefulSets (persistent agents). Learn to think in Kubernetes primitives while AI handles YAML complexity."
+            "module_description": "Orchestrate agent systems on Kubernetes with AIDD and SDD using kubectl-ai and kagent. Specify deployment requirements—pods, services, ConfigMaps, StatefulSets—and Claude Code generates manifests. Master Kubernetes primitives through specifications, event-driven patterns with Kafka, and production-grade configurations while AI handles YAML complexity."
         },
         {
             "module_id": 4,
             "module_name": "DAPR Core: Cloud-Agnostic Abstractions",
-            "module_description": "Build cloud-agnostic AI systems using DAPR abstractions. Master state management (works with PostgreSQL, Redis, or any store), pub/sub messaging (works with Kafka, RabbitMQ, or any broker), and service invocation (works across any platform). Write agent code once, deploy anywhere—AWS, Azure, GCP, or on-premises."
+            "module_description": "Implement Dapr Core and Dapr Workflows for cloud-agnostic communication and long-running processes. Specify requirements—state stores, pub/sub, service invocation, durable workflows—and Claude Code generates Dapr components. Master cloud-portable patterns: state works with any database, pub/sub with any broker, workflows for multi-step agent orchestration. Write once, deploy anywhere."
         },
         {
             "module_id": 5,
             "module_name": "Production Operations: Observability, Scaling & CI/CD",
-            "module_description": "Operate production AI systems with professional DevOps practices. Implement OpenTelemetry for observability (logs, metrics, distributed tracing), horizontal pod autoscaling for traffic spikes, health checks and graceful shutdown, and CI/CD pipelines for automated testing and deployment. Monitor costs, track performance, and ensure reliability at scale."
+            "module_description": "Build production-ready AI systems using SDD for operations and monitoring. Specify observability requirements—OpenTelemetry traces, metrics, cost dashboards—and Claude Code generates telemetry configurations. Master autoscaling, CI/CD with Testcontainers and GitHub Actions, Infrastructure-as-Code with Terraform. Design through specifications, validate with confidence, operate at scale."
         }
     ],
     "pre_requisite": [
