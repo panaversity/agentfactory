@@ -126,7 +126,8 @@ print("Object freed when last reference deleted")
 
 Reference counting is **simple and immediate**. When your function ends, its local variables vanish, their refcounts decrease, and objects are freed instantly. No waiting for garbage collection to run—automatic cleanup as you go.
 
-🎓 **Pause and Reflect**: When you create a list in a function and the function returns, what happens to that list? Why doesn't your program keep growing in memory?
+#### 💬 AI Colearning Prompt
+> "When I create a list inside a function and the function returns, what happens to that list? Walk me through the reference counting process step by step."
 
 ---
 
@@ -145,6 +146,7 @@ When both refcounts are above zero but nothing external points to them, referenc
 
 ```python
 import gc
+import sys
 
 class Node:
     def __init__(self, name: str) -> None:
@@ -190,11 +192,8 @@ print(f"Garbage collector freed {collected} objects")
 # Output: "Node A freed" and "Node B freed"
 ```
 
-💬 **Key Point**: Python uses TWO memory management systems working together:
-1. **Reference counting** (fast, immediate) — for most objects
-2. **Cycle detector** (periodical) — for circular references
-
-🎓 **Pause and Reflect**: Why doesn't Python just use reference counting for everything? What would happen with circular references if it did?
+#### 🎓 Expert Insight
+> In AI-native development, you trust Python's automatic memory management but understand the mechanism. When you see "memory leak" in production, you know to check for circular references. Ask your AI: "How do I detect circular references in my code?" and it'll show you profiling techniques using the gc module.
 
 ---
 
@@ -277,7 +276,11 @@ stats: list = gc.get_stats()
 print(f"GC stats: {stats}")
 ```
 
-🎓 **Pause and Reflect**: Why would Python use generational GC instead of checking all objects every time? What's the tradeoff?
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "Create two objects that reference each other (a circular reference). Use sys.getrefcount() to show their reference counts. Then delete both variables and use gc.collect() to prove the cycle detector freed them."
+
+**Expected Outcome:** You'll observe circular references in action and understand how Python's two-tier memory management (reference counting + cycle detection) works together.
 
 ---
 

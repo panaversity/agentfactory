@@ -96,8 +96,6 @@ This lesson introduces **frozensets** — the immutable sibling of the mutable `
 
 By the end of this lesson, you'll understand when frozensets are necessary and how they enable designs that regular sets can't achieve.
 
-💬 **Why This Matters**: Real-world applications often need to store collections as keys or group collections together. Regular sets can't do this. Frozensets solve this elegantly. Understanding the trade-off between mutability and hashability is a mark of intermediate Python competence.
-
 ---
 
 ## Concept: Frozenset as Immutable Set
@@ -147,7 +145,8 @@ except AttributeError as e:
     print(f"Error: {e}")  # 'frozenset' object has no attribute 'remove'
 ```
 
-💬 **Thinking Point**: Notice the error is `AttributeError`, not `TypeError`. The methods literally don't exist on frozenset objects. This is Python's way of enforcing immutability at the language level.
+#### 💬 AI Colearning Prompt
+> "Why does trying to modify a frozenset raise `AttributeError` instead of `TypeError`? What does this tell us about how Python enforces immutability at the language level?"
 
 ---
 
@@ -255,7 +254,14 @@ for team in teams:
 print(f"All team members: {all_members}")  # {'Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank'}
 ```
 
-🎓 **Learning Insight**: Notice how we converted frozensets back to a regular set when needing mutability. Python allows this conversion freely — there's no performance penalty.
+#### 🎓 Expert Insight
+> In AI-native development, you don't memorize when to use frozenset vs. set—you recognize the constraint. When you need "a collection as a dictionary key" or "a set containing other sets," that's your signal. Ask your AI: "Can I use a regular set here or do I need frozenset?" and it'll explain the immutability requirement.
+
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "Create a permission system where user roles (sets of strings) are dictionary keys mapped to access levels. Use frozensets to make this work. Then try it with regular sets and show me why it fails."
+
+**Expected Outcome:** You'll understand through hands-on experimentation why frozensets are necessary for this pattern and see the "unhashable type" error when using regular sets.
 
 ---
 

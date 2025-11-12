@@ -144,9 +144,8 @@ Ask your AI Co-Teacher:
 
 **Expected Outcome:** You'll see the deduplication in action and understand the historical reason for the `set()` syntax quirk.
 
-#### ✨ Teaching Tip
-
-> Use Claude Code to verify your type hints are correct: "Create a set with my type hints and show me any errors. What does the error message mean?"
+#### 💬 AI Colearning Prompt
+> "Why does Python use curly braces `{}` for sets when they look like dict syntax? How does Python distinguish between an empty set and an empty dict?"
 
 ---
 
@@ -198,6 +197,9 @@ print(f"Unique users: {user_ids}")                     # {100, 101, 102}
 ```
 
 This pattern is incredibly common: you have a collection with potential duplicates, and you need to know the unique values. Sets solve this instantly.
+
+#### 🎓 Expert Insight
+> In AI-native development, you don't memorize when to use sets vs. lists—you recognize the pattern. When you see "unique values" or "eliminate duplicates," that's your cue. Ask your AI: "Should I use a set here?" and it'll explain why uniqueness matters for your specific problem.
 
 ---
 
@@ -278,9 +280,11 @@ except TypeError as e:
 
 The error message "unhashable type" is Python's way of saying "I can't guarantee this value won't change, so I won't let you put it in a set."
 
-#### 🎓 Instructor Commentary
+#### 🤝 Practice Exercise
 
-> The hashability requirement isn't arbitrary—it protects the set's speed and correctness. In AI-native development, when you get a "unhashable type" error, you understand it's a constraint for good reason, not a limitation to work around. Your AI can explain the deeper "why" if you ask.
+> **Ask your AI**: "Create a set containing both integers and tuples. Then try to add a list to that set and explain why it fails. What could I use instead of a list to make it work?"
+
+**Expected Outcome**: You'll understand immutability requirements through hands-on experimentation and learn that tuples (immutable) work where lists (mutable) don't.
 
 ---
 

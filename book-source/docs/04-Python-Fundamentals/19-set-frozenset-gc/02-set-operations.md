@@ -191,11 +191,9 @@ print(f"Alice and Bob both like: {common}")  # {'hiking', 'cooking'}
 
 **Key observation:** Intersection is *commutative*—`A & B` equals `B & A`. The order doesn't matter because we're finding what's in both.
 
-#### 🚀 CoLearning Challenge
+#### 🤝 Practice Exercise
 
-Ask your AI Co-Teacher:
-
-> "I have two lists of customer IDs from two different marketing campaigns. I want to find which customers were in *both* campaigns. Use sets and intersection to solve this. Then explain why sets are better than lists for this task."
+> **Ask your AI**: "I have two lists of customer IDs from two different marketing campaigns. I want to find which customers were in *both* campaigns. Use sets and intersection to solve this. Then explain why sets are better than lists for this task."
 
 **Expected Outcome:** You'll see how intersection solves real business problems and understand why sets make this operation efficient.
 
@@ -234,16 +232,6 @@ print(f"Items to order: {need_to_order}")  # {'Bananas', 'Grapes'}
 ```
 
 **Key observation:** Notice that `A - B` is *different* from `B - A`. The order matters because we're asking "what's in the first but not the second?"
-
-#### 💬 AI Colearning Prompt
-
-> "Explain when you'd use difference instead of intersection. Give me three real scenarios where difference helps you filter data."
-
-Your AI can help you build intuition about when each operation solves your problem.
-
-#### ✨ Teaching Tip
-
-> Use Claude Code to verify operations: "Show me what happens with A - B vs. B - A using these specific sets. Explain why they're different."
 
 ---
 
@@ -322,18 +310,6 @@ print(f"Adult ages (unique): {adults}")  # {19, 25, 32, 45}
 
 **Key advantage:** Set comprehensions automatically eliminate duplicates. You get both filtering *and* deduplication in one expression.
 
-#### 🚀 CoLearning Challenge
-
-Ask your AI Co-Teacher:
-
-> "Write a set comprehension that extracts all vowels from a long sentence. Then explain how set comprehensions differ from list comprehensions."
-
-**Expected Outcome:** You'll understand set comprehensions as a filtering pattern and see why they're useful for deduplication.
-
-#### ✨ Teaching Tip
-
-> Remember: set comprehensions have the same syntax as list comprehensions—just curly braces instead of square brackets. Your AI can instantly show you the transformation.
-
 ---
 
 ## Real-World Problem: Finding Common Interests
@@ -376,12 +352,6 @@ print(f"Interests unique to either Alice or Bob: {alice_bob_different}")
 
 **This demonstrates:** How set operations combine to solve real problems. Notice how we're chaining operations with `|` (union) and `-` (difference) to answer complex questions about relationships.
 
-#### 💬 AI Colearning Prompt
-
-> "Design a friend recommendation feature: given one user's interests and all users' interests, find the top 3 users with the most common interests. How would you use set operations?"
-
-Your AI can help you think through the algorithm using intersection and cardinality.
-
 ---
 
 ## Practice: Master Set Operations
@@ -419,14 +389,6 @@ Find:
 1. Products both stores carry (intersection)
 2. All unique products across both stores (union)
 3. Products only Store A carries (difference)
-
-#### 🚀 CoLearning Challenge
-
-Ask your AI Co-Teacher:
-
-> "Create a more complex set operations scenario: three datasets representing browser history, bookmarks, and recently visited sites. Use intersection and union to find sites that appear in all three categories, and sites that are unique to one category."
-
-**Expected Outcome:** You'll practice combining multiple operations and see how sets elegantly solve data comparison problems.
 
 ---
 

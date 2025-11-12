@@ -180,6 +180,11 @@ This is why:
 
 **Practical impact**: Dict keys must be immutable, set elements must be immutable. This constraint exists for mathematical correctness, not arbitrary rules.
 
+#### 💬 AI Colearning Prompt
+> "Why exactly can't I use a list as a dictionary key, but I CAN use a tuple? Walk me through what would break if Python allowed mutable keys."
+
+---
+
 ## Concept: Performance Comparison — O(1) vs. O(n)
 
 Here's why this all matters. Let's see the real performance difference:
@@ -221,6 +226,11 @@ print(f"Set is {list_time / set_time:.0f}x faster")  # Often 1000x+ faster
 With 1 million elements, that's the difference between "instant" and "takes time you can see."
 
 This is why sets matter: **They scale differently than lists.** As data grows, set performance stays fast while list performance gets slower.
+
+#### 🎓 Expert Insight
+> In AI-native development, you don't memorize Big-O notation—you understand the pattern. When you see "checking if X exists in a large collection," that's your cue to use a set. Ask your AI: "Should this be a list or a set?" and it'll explain the performance implications for your specific use case.
+
+---
 
 ## Concept: Hash Tables Conceptually
 
@@ -370,7 +380,15 @@ print(f"Set is {list_time/set_time:.0f}x faster")
 - **Use set** when: Order doesn't matter, uniqueness required, many lookups needed
 - **Use dict** when: You need key-value pairs
 
-This decision—seemingly small—has massive implications at scale. 🚀
+This decision—seemingly small—has massive implications at scale.
+
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "I'm building a user authentication system that checks if a user ID exists in a database of 1 million users, thousands of times per second. Should I store user IDs in a list or a set? Generate a performance comparison showing why your choice matters."
+
+**Expected Outcome:** You'll see concrete performance numbers demonstrating O(n) vs. O(1) lookup and understand why data structure choice is critical for production systems.
+
+---
 
 ## Practice Exercises
 

@@ -168,11 +168,12 @@ Unreachable objects (cycles): 2
 - Type hints mandatory (modern Python standard)
 - Must handle edge cases: circular references, large graphs (testing)
 
-🎓 **Pause**: What would you add to this specification? What questions would you ask before building? (This is specification-first thinking!)
+#### 💬 AI Colearning Prompt
+> "What would you add to this memory profiler specification? What edge cases should we handle? How would we know when it's 'done'?"
 
 ---
 
-## 💬 Design With Your AI Companion
+## Design With Your AI Companion
 
 Here's where AI helps refine your design:
 
@@ -635,6 +636,9 @@ if __name__ == "__main__":
 
 **Testing Insight**: Professional code always tests edge cases. We're not guessing the tool works—we're proving it with tests.
 
+#### 🎓 Expert Insight
+> In AI-native development, you don't just write code—you write specifications, then code, then tests. This capstone demonstrates the complete cycle: spec → implement → validate. When your AI generates code, you immediately ask: "How do I test this?" This mindset separates professionals from beginners.
+
 ---
 
 ## Phase 3: Testing & Validation (Your Turn)
@@ -791,9 +795,15 @@ Write a paragraph explaining the integration:
 
 > "The Memory Profiler tool brings together all Chapter 19 concepts. I use **sets** (Lesson 1) to efficiently track which objects have been created and deleted—adding object IDs is O(1), which matters when tracking thousands of objects. I use **frozensets** (Lesson 4) to create immutable categorization keys in my dictionary, because regular sets can't be dictionary keys. I use **gc module** (Lesson 5) to analyze actual memory state, detecting circular references and freeing large object graphs. The tool integrates reference counting (refcount hitting zero) with cycle detection (gc finding orphaned cycles) to validate that Python is cleaning up properly. Together, these concepts create a professional-grade memory profiler."
 
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "Help me extend the Memory Profiler to categorize objects by type. Add a method that uses frozensets as dictionary keys to track how many lists, dicts, and sets are in memory. Show me the code and explain why frozensets are necessary here."
+
+**Expected Outcome:** You'll practice applying the integration of sets, frozensets, and gc module by extending the capstone project with AI collaboration.
+
 ---
 
-## 💬 Try With AI — Capstone Practice
+## Try With AI — Capstone Practice
 
 This section contains 4 progressively challenging prompts to apply what you've learned. Pick the first prompt that matches your current understanding, then try the next level.
 
