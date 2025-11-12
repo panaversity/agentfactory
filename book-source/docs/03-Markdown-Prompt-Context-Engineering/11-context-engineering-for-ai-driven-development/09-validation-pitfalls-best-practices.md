@@ -679,22 +679,9 @@ claude "What are the 3 most important decisions or patterns we've established so
 
 ---
 
-### 💬 AI Colearning Prompt: Building Validation Habits Together
+#### 💬 AI Colearning Prompt
 
-Validation is most effective when both partners participate. Let's create a shared practice:
-
-```bash
-claude "Let's develop our context health monitoring partnership:
-
-1. What signs of context degradation can YOU detect that I might miss?
-2. How should we communicate when you notice context issues - what should you tell me?
-3. What should I check regularly that helps YOU maintain quality?
-4. Can we create a 'context health signal' - something I ask periodically that helps us both monitor?
-
-I want us to build a validation rhythm where we're BOTH watching for problems, not just me checking a checklist."
-```
-
-**Why validate together:** Context health affects both partners. When your AI can signal issues proactively and you check systematically, you create a robust early-warning system. This transforms validation from a chore into a natural part of your collaborative rhythm.
+> "Let's develop our context health monitoring partnership: What signs of context degradation can YOU detect that I might miss? How should we communicate when you notice context issues—what should you tell me? What should I check regularly that helps YOU maintain quality? Can we create a 'context health signal'—something I ask periodically that helps us both monitor? I want us to build a validation rhythm where we're BOTH watching for problems, not just me checking a checklist."
 
 ---
 

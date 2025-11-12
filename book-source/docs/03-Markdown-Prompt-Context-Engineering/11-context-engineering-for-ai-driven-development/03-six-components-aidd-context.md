@@ -437,22 +437,9 @@ Now implement product_service.py following this EXACT pattern."
 
 ---
 
-### 💬 AI Colearning Prompt: Designing Your Memory Strategy Together
+#### 💬 AI Colearning Prompt
 
-Different projects need different memory strategies. Let's collaborate on yours:
-
-```bash
-claude "I'm working on [describe your project briefly]. Help me design a memory strategy:
-
-1. What information should we persist between sessions?
-2. How would you organize that information - one big file or multiple specialized files?
-3. What pattern examples would be most valuable to load for consistency?
-4. If you were working on this project long-term, what would you want me to document?
-
-Think strategically - what enables us to work as effective partners over weeks and months?"
-```
-
-**Why co-design matters:** Your AI partner understands patterns across thousands of projects. By collaborating on your memory strategy, you get both AI's broad experience AND your specific project needs. This dialogue creates a shared system you both trust.
+> "I'm working on [describe your project briefly]. Help me design a memory strategy: What information should we persist between sessions? How would you organize that information—one big file or multiple specialized files? What pattern examples would be most valuable to load for consistency? If you were working on this project long-term, what would you want me to document? Think strategically—what enables us to work as effective partners over weeks and months?"
 
 ---
 

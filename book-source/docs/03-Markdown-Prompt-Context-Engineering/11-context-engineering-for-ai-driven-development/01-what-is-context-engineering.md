@@ -266,21 +266,9 @@ Quality AI Output = Perfect fit for your project
 
 ---
 
-### 💬 AI Colearning Prompt: Exploring the Balance
+#### 💬 AI Colearning Prompt
 
-Take a moment to explore this relationship with your AI partner:
-
-```bash
-claude "I'm learning about context engineering and prompt engineering. Help me understand:
-
-1. Can you think of a scenario where excellent prompts but poor context would fail?
-2. What about excellent context but poor prompts - what happens then?
-3. How do you decide what context is most valuable when starting a new project?
-
-I want to understand the balance - not just the theory, but how you'd approach this partnership."
-```
-
-**Why this matters:** Your AI partner has "seen" thousands of development patterns. By asking it to reflect on context vs. prompts, you're learning from its experience while also teaching it to understand YOUR development style. This is co-learning in action.
+> "I'm learning about context engineering and prompt engineering. Help me understand: Can you think of a scenario where excellent prompts but poor context would fail? What about excellent context but poor prompts—what happens then? How do you decide what context is most valuable when starting a new project? I want to understand the balance, not just the theory, but how you'd approach this partnership."
 
 ---
 
@@ -401,7 +389,7 @@ Context engineering is powerful, but **not every task requires it**. Here's when
 
 ---
 
-### 🎓 Expert Insight: The Context Investment Mindset
+#### 🎓 Expert Insight
 
 Professional AI-native developers think about context engineering like technical debt—but in reverse.
 

@@ -177,22 +177,9 @@ Time Until Rot: 25-30+ interactions
 
 ---
 
-### 💬 AI Colearning Prompt: Practice Progressive Loading Together
+#### 💬 AI Colearning Prompt
 
-Before diving into implementation examples, let's practice the strategy with your AI partner:
-
-```bash
-claude "I want to practice progressive context loading. Let's simulate joining a new Python web project.
-
-Guide me through the three phases:
-1. Overview - What should I ask you to look at first WITHOUT reading files?
-2. Focus - Based on the overview, what files should I load?
-3. Deep Dive - If I need to understand authentication specifically, what's next?
-
-Walk me through this like you're teaching me the rhythm of progressive loading. Ask me questions to help me think strategically about what context I need when."
-```
-
-**Why practice together:** Your AI partner can coach you through the decision-making process. This isn't just learning WHAT to do—it's learning to THINK progressively about context. The best developers internalize this rhythm through practice with their AI partner.
+> "I want to practice progressive context loading. Let's simulate joining a new Python web project. Guide me through the three phases: Overview—what should I ask you to look at first WITHOUT reading files? Focus—based on the overview, what files should I load? Deep Dive—if I need to understand authentication specifically, what's next? Walk me through this like you're teaching me the rhythm of progressive loading. Ask me questions to help me think strategically about what context I need when."
 
 ---
 
