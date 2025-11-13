@@ -1,0 +1,77 @@
+openapi: 3.0.0
+info:
+  title: AI Configuration API
+  version: 1.0.0
+  description: API for managing AI configuration settings, including Gemini API key and model selection.
+
+servers:
+  - url: /api/config
+    description: Configuration API server
+
+paths:
+  /ai-config:
+    get:
+      summary: Get AI Configuration
+      operationId: getAIConfiguration
+      responses:
+        '200':
+          description: Successfully retrieved AI configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIConfiguration'
+        '404':
+          description: Configuration not found.
+    put:
+      summary: Update AI Configuration
+      operationId: updateAIConfiguration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIConfigurationUpdate'
+      responses:
+        '200':
+          description: Successfully updated AI configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIConfiguration'
+        '400':
+          description: Invalid input.
+
+components:
+  schemas:
+    AIConfiguration:
+      type: object
+      properties:
+        api_key_configured:
+          type: boolean
+          description: Indicates if an API key has been configured (true) or not (false).
+          readOnly: true
+        model:
+          type: string
+          description: The selected Gemini AI model.
+          enum:
+            - gemini-2.5-flash
+          default: gemini-2.5-flash
+      required:
+        - api_key_configured
+        - model
+    AIConfigurationUpdate:
+      type: object
+      properties:
+        api_key:
+          type: string
+          description: The Gemini API key.
+          writeOnly: true
+        model:
+          type: string
+          description: The selected Gemini AI model.
+          enum:
+            - gemini-2.5-flash
+          default: gemini-2.5-flash
+      required:
+        - api_key
+        - model

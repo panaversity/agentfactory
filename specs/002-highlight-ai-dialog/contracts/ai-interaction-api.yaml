@@ -1,0 +1,55 @@
+openapi: 3.0.0
+info:
+  title: AI Interaction API
+  version: 1.0.0
+  description: API for sending highlighted text and queries to the Gemini AI model.
+
+servers:
+  - url: /api/ai
+    description: AI Interaction API server
+
+paths:
+  /query:
+    post:
+      summary: Send AI Query
+      operationId: sendAIQuery
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIQueryRequest'
+      responses:
+        '200':
+          description: Successfully received AI response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIQueryResponse'
+        '400':
+          description: Invalid input or configuration.
+        '500':
+          description: Internal server error or AI model error.
+
+components:
+  schemas:
+    AIQueryRequest:
+      type: object
+      properties:
+        highlighted_text:
+          type: string
+          description: The text highlighted by the user.
+          nullable: true
+        query:
+          type: string
+          description: The user's query to the AI.
+      required:
+        - query
+    AIQueryResponse:
+      type: object
+      properties:
+        response:
+          type: string
+          description: The AI-generated response.
+      required:
+        - response

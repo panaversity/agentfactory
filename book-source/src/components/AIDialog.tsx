@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 interface AIDialogProps {
   isOpen: boolean;
   onClose: () => void;
-  content: { // This matches the AIContentResponse from the backend contract
+  content: { 
     contextOfSelection: string;
     basicTheory: string;
     instructions: string;
@@ -13,72 +13,20 @@ interface AIDialogProps {
   error: string | null;
 }
 
-interface SectionProps {
-  title: string;
-  content: string;
-  isEditable?: boolean;
-  onContentChange?: (newContent: string) => void;
-  onRemove?: () => void;
-}
-
-const Section: React.FC<SectionProps> = ({ title, content, isEditable = false, onContentChange, onRemove }) => {
-  return (
-    <div style={{ marginBottom: '10px', border: '1px solid #eee', padding: '8px', borderRadius: '4px' }}>
-      <h4 style={{ marginTop: '0', marginBottom: '5px' }}>{title}</h4>
-      {isEditable ? (
-        <textarea
-          value={content}
-          onChange={(e) => onContentChange && onContentChange(e.target.value)}
-          style={{ width: '100%', minHeight: '80px', border: '1px solid #ddd', padding: '5px' }}
-        />
-      ) : (
-        <p style={{ margin: '0' }}>{content}</p>
-      )}
-      {onRemove && (
-        <button onClick={onRemove} style={{ background: '#f44336', color: 'white', border: 'none', padding: '5px 10px', cursor: 'pointer', marginTop: '5px' }}>
-          Remove
-        </button>
-      )}
-    </div>
-  );
-};
-
 const AIDialog: React.FC<AIDialogProps> = ({ isOpen, onClose, content, isLoading, error }) => {
-  const [editableContent, setEditableContent] = useState(content);
-  const [customSections, setCustomSections] = useState<{ id: string; title: string; content: string }[]>([]);
-
+  // Auto-close error messages after 5 seconds
   useEffect(() => {
-    setEditableContent(content);
-    setCustomSections([]); // Reset custom sections when new content arrives
-  }, [content]);
+    if (error) {
+      const timer = setTimeout(() => {
+        onClose(); // Close the dialog when there's an error after 5 seconds
+      }, 5000); // 5 seconds
+
+      // Clean up the timer if the component unmounts or error changes
+      return () => clearTimeout(timer);
+    }
+  }, [error, onClose]);
 
   if (!isOpen) return null;
-
-  const handleContentChange = (sectionKey: keyof typeof editableContent, newContent: string) => {
-    if (editableContent) {
-      setEditableContent({
-        ...editableContent,
-        [sectionKey]: newContent,
-      });
-    }
-  };
-
-  const handleCustomSectionChange = (id: string, newContent: string) => {
-    setCustomSections(prev =>
-      prev.map(section => (section.id === id ? { ...section, content: newContent } : section))
-    );
-  };
-
-  const handleAddSection = () => {
-    setCustomSections(prev => [
-      ...prev,
-      { id: Date.now().toString(), title: 'New Section', content: '' },
-    ]);
-  };
-
-  const handleRemoveCustomSection = (id: string) => {
-    setCustomSections(prev => prev.filter(section => section.id !== id));
-  };
 
   return (
     <div style={{
@@ -86,79 +34,254 @@ const AIDialog: React.FC<AIDialogProps> = ({ isOpen, onClose, content, isLoading
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      backgroundColor: 'white',
+      backgroundColor: 'var(--ifm-background-surface-color, white)',
       padding: '20px',
-      borderRadius: '8px',
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+      borderRadius: 'var(--ifm-global-radius, 8px)',
+      boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
       zIndex: 1000,
-      width: '400px',
+      width: '800px',
       maxHeight: '80vh',
       overflowY: 'auto',
-      border: '1px solid #ddd'
+      border: '1px solid var(--ifm-color-emphasis-200, #ddd)',
+      fontFamily: 'var(--ifm-font-family-base)',
+      color: 'var(--ifm-font-color-base)',
     }}>
-      <button
-        onClick={onClose}
-        style={{
-          position: 'absolute',
-          top: '10px',
-          right: '10px',
-          background: 'none',
-          border: 'none',
-          fontSize: '1.2em',
-          cursor: 'pointer',
-        }}
-      >
-        &times;
-      </button>
-      <h3 style={{ marginTop: '0' }}>AI Insights</h3>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '15px',
+        paddingBottom: '10px',
+        borderBottom: '1px solid var(--ifm-color-emphasis-200, #eee)'
+      }}>
+        <h3 style={{ 
+          margin: 0,
+          fontWeight: 'var(--ifm-heading-font-weight, 600)',
+          color: 'var(--ifm-heading-color, inherit)',
+          fontSize: '1.5rem'
+        }}>
+          AI Insights
+        </h3>
+        <button
+          onClick={onClose}
+          style={{
+            background: 'none',
+            border: 'none',
+            fontSize: '1.5rem',
+            cursor: 'pointer',
+            color: 'var(--ifm-color-emphasis-600)',
+            padding: '0.25rem',
+            borderRadius: '4px',
+            width: '32px',
+            height: '32px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          onMouseOver={(e) => {
+            const target = e.target as HTMLElement;
+            target.style.backgroundColor = 'var(--ifm-color-emphasis-200)';
+          }}
+          onMouseOut={(e) => {
+            const target = e.target as HTMLElement;
+            target.style.backgroundColor = 'transparent';
+          }}
+        >
+          ×
+        </button>
+      </div>
 
-      {isLoading && <p>Loading AI content...</p>}
-      {error && <p style={{ color: 'red' }}>Error: {error}</p>}
-      {!isLoading && !error && !content && <p>No information available for this selection.</p>}
-
-      {editableContent && (
-        <div>
-          <Section
-            title="Context of Selection"
-            content={editableContent.contextOfSelection}
-            isEditable
-            onContentChange={(c) => handleContentChange('contextOfSelection', c)}
-          />
-          <Section
-            title="Basic Theory"
-            content={editableContent.basicTheory}
-            isEditable
-            onContentChange={(c) => handleContentChange('basicTheory', c)}
-          />
-          <Section
-            title="Instructions"
-            content={editableContent.instructions}
-            isEditable
-            onContentChange={(c) => handleContentChange('instructions', c)}
-          />
-          <Section
-            title="Example"
-            content={editableContent.example}
-            isEditable
-            onContentChange={(c) => handleContentChange('example', c)}
-          />
-
-          {customSections.map(section => (
-            <Section
-              key={section.id}
-              title={section.title}
-              content={section.content}
-              isEditable
-              onContentChange={(c) => handleCustomSectionChange(section.id, c)}
-              onRemove={() => handleRemoveCustomSection(section.id)}
-            />
-          ))}
-
-          <button onClick={handleAddSection} style={{ background: '#4CAF50', color: 'white', border: 'none', padding: '8px 15px', cursor: 'pointer', marginTop: '10px' }}>
-            Add Custom Section
-          </button>
+      {isLoading && (
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '20px'
+        }}>
+          <div style={{
+            width: '24px',
+            height: '24px',
+            border: '3px solid var(--ifm-color-emphasis-200)',
+            borderTop: '3px solid var(--ifm-color-primary)',
+            borderRadius: '50%',
+            animation: 'spin 1s linear infinite'
+          }}></div>
+          <span style={{ marginLeft: '10px' }}>Loading AI content...</span>
         </div>
       )}
+      {error && (
+        <div style={{ 
+          backgroundColor: 'rgba(244, 67, 54, 0.1)', 
+          color: 'var(--ifm-color-danger)',
+          padding: '12px', 
+          borderRadius: 'var(--ifm-global-radius, 4px)',
+          marginBottom: '15px',
+          border: '1px solid var(--ifm-color-danger)',
+          display: 'flex',
+          alignItems: 'flex-start',
+          gap: '10px'
+        }}>
+          <div style={{
+            fontWeight: 'bold',
+            minWidth: '60px'
+          }}>
+            Error:
+          </div>
+          <div style={{ flex: 1 }}>
+            {error}
+            <div style={{ 
+              fontSize: '0.85em', 
+              marginTop: '8px',
+              opacity: 0.8 
+            }}>
+              This dialog will close automatically in a few seconds, or click the close button (×) to close it now.
+            </div>
+          </div>
+        </div>
+      )}
+      {!isLoading && !error && !content && (
+        <p style={{ 
+          textAlign: 'center', 
+          color: 'var(--ifm-color-emphasis-600)',
+          fontStyle: 'italic',
+          padding: '20px 0'
+        }}>
+          No information available for this selection.
+        </p>
+      )}
+
+      {content && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          {/* Split view: highlighted text on left, AI response on right */}
+          <div style={{ 
+            display: 'flex', 
+            gap: '16px', 
+            minHeight: '300px',
+            flexDirection: window.innerWidth < 900 ? 'column' : 'row' // Stack on mobile
+          }}>
+            {/* Highlighted Text Panel (Left) */}
+            <div style={{ 
+              flex: 1, 
+              padding: '16px', 
+              border: '1px solid var(--ifm-color-emphasis-200)', 
+              borderRadius: 'var(--ifm-global-radius, 6px)',
+              backgroundColor: 'var(--ifm-background-color, #f9f9f9)',
+              maxHeight: '300px',
+              overflowY: 'auto',
+              display: 'flex',
+              flexDirection: 'column'
+            }}>
+              <h4 style={{ 
+                marginTop: 0, 
+                marginBottom: '12px', 
+                color: 'var(--ifm-heading-color, inherit)',
+                fontSize: '1rem',
+                fontWeight: '600',
+                borderBottom: '1px solid var(--ifm-color-emphasis-200)',
+                paddingBottom: '6px'
+              }}>
+                Highlighted Text
+              </h4>
+              <p style={{ 
+                margin: 0, 
+                fontStyle: 'italic', 
+                color: 'var(--ifm-font-color-base)',
+                lineHeight: '1.5',
+                flex: 1
+              }}>
+                {content.contextOfSelection || 'No highlighted text available.'}
+              </p>
+            </div>
+            
+            {/* AI Response Panel (Right) */}
+            <div style={{ 
+              flex: 1, 
+              padding: '16px', 
+              border: '1px solid var(--ifm-color-primary)',
+              borderRadius: 'var(--ifm-global-radius, 6px)',
+              backgroundColor: 'rgba(0, 31, 63, 0.03)', // Light blue tint matching primary color
+              maxHeight: '300px',
+              overflowY: 'auto',
+              display: 'flex',
+              flexDirection: 'column'
+            }}>
+              <h4 style={{ 
+                marginTop: 0, 
+                marginBottom: '12px', 
+                color: 'var(--ifm-color-primary)',
+                fontSize: '1rem',
+                fontWeight: '600',
+                borderBottom: '1px solid var(--ifm-color-primary)',
+                paddingBottom: '6px'
+              }}>
+                AI Explanation
+              </h4>
+              <div style={{ 
+                margin: 0, 
+                color: 'var(--ifm-font-color-base)',
+                lineHeight: '1.5',
+                flex: 1,
+                whiteSpace: 'pre-wrap' // Preserve formatting
+              }}>
+                {content.basicTheory || 'No AI explanation available.'}
+              </div>
+            </div>
+          </div>
+          
+          {/* Implementation section */}
+          {content.instructions && content.instructions !== "No implementation required." && (
+            <div style={{ 
+              padding: '16px', 
+              border: '1px solid var(--ifm-color-emphasis-200)', 
+              borderRadius: 'var(--ifm-global-radius, 6px)',
+              backgroundColor: 'var(--ifm-background-surface-color, #fafafa)'
+            }}>
+              <h4 style={{ 
+                marginTop: 0, 
+                marginBottom: '10px', 
+                color: '#4a6fa5', // Blue color for implementation
+                fontSize: '1rem',
+                fontWeight: '600'
+              }}>
+                Implementation
+              </h4>
+              <p style={{ margin: 0, lineHeight: '1.5' }}>
+                {content.instructions}
+              </p>
+            </div>
+          )}
+          
+          {/* Examples section */}
+          {content.example && content.example !== "No examples provided." && (
+            <div style={{ 
+              padding: '16px', 
+              border: '1px solid var(--ifm-color-emphasis-200)', 
+              borderRadius: 'var(--ifm-global-radius, 6px)',
+              backgroundColor: 'var(--ifm-background-surface-color, #fafafa)'
+            }}>
+              <h4 style={{ 
+                marginTop: 0, 
+                marginBottom: '10px', 
+                color: '#2e7d32', // Green color for examples
+                fontSize: '1rem',
+                fontWeight: '600'
+              }}>
+                Examples
+              </h4>
+              <p style={{ margin: 0, lineHeight: '1.5' }}>
+                {content.example}
+              </p>
+            </div>
+          )}
+        </div>
+      )}
+      
+      <style>{`
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   );
 };

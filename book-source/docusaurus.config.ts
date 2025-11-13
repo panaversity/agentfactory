@@ -184,6 +184,11 @@ const config: Config = {
           label: "Book",
         },
         {
+          to: "/ai-config",
+          label: "AI Config",
+          position: "right",
+        },
+        {
           href: "https://github.com/panaversity/ai-native-software-development",
           label: "GitHub",
           position: "right",

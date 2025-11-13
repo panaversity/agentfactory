@@ -1,7 +1,0 @@
-[tool.black]
-line-length = 120
-target-version = ['py313']
-
-[tool.flake8]
-max-line-length = 120
-exclude = [".git", "__pycache__", "venv", "env"]

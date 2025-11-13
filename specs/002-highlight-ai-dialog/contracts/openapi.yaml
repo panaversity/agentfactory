@@ -1,0 +1,103 @@
+openapi: 3.0.0
+info:
+  title: Highlight Selection AI Dialog API
+  version: 1.0.0
+paths:
+  /api/ai/query:
+    post:
+      summary: Submit an AI query with optional highlighted text
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                highlighted_text:
+                  type: string
+                  nullable: true
+                  description: Optional text highlighted by the user.
+                query:
+                  type: string
+                  description: The user's query to the AI model.
+              required:
+                - query
+      responses:
+        '200':
+          description: AI response successfully generated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: string
+                    description: The AI-generated response.
+        '400':
+          description: Invalid request or missing query.
+        '500':
+          description: Internal server error or AI model error.
+  /api/config/gemini-key:
+    post:
+      summary: Configure the Gemini API key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                api_key:
+                  type: string
+                  description: The Gemini API key to configure.
+              required:
+                - api_key
+      responses:
+        '200':
+          description: API key successfully configured.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: ["success"]
+        '400':
+          description: Invalid API key format.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: ["error"]
+                  message:
+                    type: string
+        '500':
+          description: Internal server error during configuration.
+  /api/config/status:
+    get:
+      summary: Check the status of the Gemini API key configuration
+      responses:
+        '200':
+          description: Status of the API key configuration.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  is_configured:
+                    type: boolean
+                    description: True if an API key is present.
+                  is_valid:
+                    type: boolean
+                    nullable: true
+                    description: True if the configured API key is valid (only if is_configured is true).
+                  message:
+                    type: string
+                    nullable: true
+                    description: Error message if the key is invalid.
+        '500':
+          description: Internal server error.

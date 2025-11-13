@@ -8,6 +8,16 @@
 .docusaurus
 .cache-loader
 
+# Dependencies
+/node_modules
+
+# Production
+/build
+
+# Generated files
+.docusaurus
+.cache-loader
+
 # Misc
 .DS_Store
 .env.local
@@ -20,3 +30,25 @@ yarn-debug.log*
 yarn-error.log*
 nul
 .trees/
+
+# Added by Gemini
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+dist/
+*.egg-info/
+
+# Node.js/TypeScript
+dist/
+.env*
+*.log
+
+# Universal
+Thumbs.db
+*.tmp
+*.swp
+.vscode/
+.idea/
+
