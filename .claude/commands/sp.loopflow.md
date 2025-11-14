@@ -179,6 +179,206 @@ Now that you have full context, identify ONLY what's genuinely ambiguous (0-5 qu
 
 ---
 
+## PHASE 0.5: GROUND TRUTH INTELLIGENCE GATHERING (For Tool/API/Framework Chapters)
+
+**CRITICAL**: For chapters teaching external tools, APIs, frameworks, or CLIs, gather verified documentation BEFORE writing specifications. Never write specs from assumed knowledge.
+
+**Detect if Intelligence Gathering Required**:
+
+```
+→ Analyze Phase 0 intelligence object:
+  ├─ IF task_type includes: "external_tool" | "api_integration" | "framework_usage" | "cli_tutorial"
+  ├─ THEN: Ground truth gathering REQUIRED
+  └─ Examples requiring gathering:
+      - Claude Code features (settings, plugins, MCP, commands)
+      - Docker workflows (Dockerfile syntax, commands, best practices)
+      - UV package manager (CLI commands, configuration)
+      - GitHub API (endpoints, authentication, response schemas)
+      - FastAPI framework (decorators, dependency injection patterns)
+```
+
+**If Ground Truth Gathering Required:**
+
+```
+→ STEP 1: Identify What Needs Verification
+  ├─ Tool-specific claims:
+  │   - Configuration schema (JSON/YAML structure, valid keys/values)
+  │   - CLI commands (syntax, flags, expected output)
+  │   - UI workflows (menu navigation, button labels)
+  │   - API endpoints (URLs, parameters, response formats)
+  │   - Version-specific features (tool X version Y has feature Z)
+  │   - Integration patterns (how tool X connects to tool Y)
+  │
+  └─ Create preliminary list: "Claims requiring verification: [N]"
+
+→ STEP 2: Assess Available Tools for Information Gathering
+  ├─ Check connected MCP servers:
+  │   - Context7 MCP (if available): Library documentation with 8000+ token depth
+  │   - GitHub MCP (if available): Repository README, docs/, examples/
+  │   - Filesystem MCP (if available): Local documentation files
+  │   - Web MCP (if available): Official documentation sites
+  │
+  ├─ Check built-in tools:
+  │   - WebFetch: Retrieve and parse official documentation URLs
+  │   - Bash: Execute tool --help, man pages, version checks
+  │   - Read: Access local docs if URLs provided by user
+  │
+  └─ Report available tools: "Can use: [tool1, tool2, tool3]"
+
+→ STEP 3: Identify Information Gaps (Optional MCP Request)
+  ├─ IF specialized MCP would help:
+  │   - Example: "Context7 for React/Next.js documentation"
+  │   - Example: "Playwright MCP for testing documentation"
+  │   - Example: "Slack MCP for integration examples"
+  │
+  ├─ Ask user: "Would you like to connect [MCP-name] for deeper [tool] documentation?"
+  │   - Explain benefit: "Context7 provides 8000+ token library docs vs WebFetch's summary"
+  │   - Wait for user decision: YES (user connects) | NO (use available tools)
+  │
+  └─ Report: "Using tools: [final-list]"
+
+→ STEP 4: Gather Verified Information (Tool-Adaptive Strategy)
+
+  **Strategy A: Context7 MCP Available (PREFERRED for libraries/frameworks)**
+  ```
+  → For library/framework documentation:
+    ├─ Use: mcp__context7__resolve-library-id
+    │   - Input: Library name (e.g., "Claude Code", "FastAPI", "Docker")
+    │   - Output: Context7-compatible library ID
+    │
+    ├─ Use: mcp__context7__get-library-docs
+    │   - Input: Library ID + topic focus (e.g., "settings configuration")
+    │   - Output: 5000-8000 tokens of focused documentation
+    │   - Benefit: Comprehensive, structured, current
+    │
+    └─ Extract verified facts:
+        - Actual configuration schema
+        - Real command syntax with examples
+        - Current version compatibility
+        - Official usage patterns
+  ```
+
+  **Strategy B: WebFetch + Bash (Fallback for tools without Context7)**
+  ```
+  → For official documentation sites:
+    ├─ Use: WebFetch("https://official-docs-url")
+    │   - Retrieve: HTML converted to markdown
+    │   - Extract: Settings, commands, API schemas
+    │   - Limitation: Summary-level, may miss depth
+    │
+    ├─ Use: Bash for tool introspection:
+    │   - Example: "claude --help" (capture actual CLI output)
+    │   - Example: "docker version" (verify installation format)
+    │   - Example: "uv --version" (check current syntax)
+    │
+    └─ Cross-reference: CLI output vs documentation
+  ```
+
+  **Strategy C: GitHub MCP (For open-source tools)**
+  ```
+  → For tools with GitHub repositories:
+    ├─ Use: GitHub MCP to fetch:
+    │   - README.md (installation, quick start)
+    │   - docs/ directory (detailed guides)
+    │   - examples/ (real working code)
+    │   - CHANGELOG.md (version-specific features)
+    │
+    └─ Extract: Up-to-date patterns directly from source
+  ```
+
+→ STEP 5: Cache Verified Intelligence
+  ├─ Create: intelligence/[feature-slug]-verified-docs.md
+  │
+  │   Structure:
+  │   ```markdown
+  │   # Verified Documentation: [Tool Name]
+  │
+  │   **Generated**: [ISO timestamp]
+  │   **Tool Version**: [version if applicable]
+  │   **Sources**: [list of tools/URLs used]
+  │
+  │   ## Verified Facts
+  │
+  │   ### Configuration Schema
+  │   - Setting name: `permissions.defaultMode` (not `permission_mode`)
+  │   - Valid values: "acceptEdits" | "default" | "plan"
+  │   - Source: Context7 Claude Code docs / https://code.claude.com/docs/en/settings
+  │   - Verified: [timestamp]
+  │
+  │   ### CLI Commands
+  │   - Command: `/plugin marketplace add anthropics/skills`
+  │   - Expected output: "Successfully added marketplace: anthropic-agent-skills"
+  │   - Source: Terminal test + official docs
+  │   - Verified: [timestamp]
+  │
+  │   ### UI Workflows
+  │   - Navigation: `/plugin` → "Browse and install plugins" → select marketplace
+  │   - Source: Actual tool testing
+  │   - Verified: [timestamp]
+  │
+  │   ## Assumptions Flagged (Require Later Verification)
+  │   - [List any unverified claims]
+  │
+  │   ## Tool Usage Log
+  │   - Context7: Resolved "Claude Code" → /anthropics/claude-code
+  │   - Context7: Fetched 6500 tokens on settings + plugins
+  │   - WebFetch: https://github.com/anthropics/skills (plugin bundles)
+  │   - Bash: Tested `/plugin marketplace add` in terminal
+  │   ```
+  │
+  └─ Report: "✅ Cached [N] verified facts from [M] sources"
+
+→ STEP 6: Quality Gate Before Spec
+  ├─ Verify completeness:
+  │   - All tool-specific claims have source URLs
+  │   - Critical commands tested in actual environment
+  │   - Configuration examples validated against schema
+  │
+  ├─ Calculate verification coverage:
+  │   - Verified claims: [N]
+  │   - Assumptions flagged: [M]
+  │   - Coverage: [N/(N+M)]%
+  │
+  └─ Gate decision:
+      - IF coverage < 80%: BLOCK spec creation, gather more intelligence
+      - IF coverage >= 80%: ALLOW spec creation with flagged assumptions documented
+      - Report: "✅ Verification coverage: [X]%. Ready to spec." OR "❌ Coverage too low: [Y]%. Need more sources."
+
+WAIT: Intelligence gathering complete
+→ User reviews: intelligence/[feature-slug]-verified-docs.md
+→ User confirms: "✅ Verified facts look good" or requests additional verification
+  ├─ If more verification needed: Return to STEP 4 with additional tools
+  └─ If approved: Continue to PHASE 1 with verified intelligence
+```
+
+**Anti-Patterns Prevented**:
+- ❌ Writing specs from memory ("I think Claude Code uses permission_mode...")
+- ❌ Assuming API structure without checking docs ("Settings are probably JSON...")
+- ❌ Inventing plausible-sounding setting names (permission_mode, output_format, editor)
+- ❌ Skipping verification because "it seems right"
+
+**Intelligence-First Success Criteria**:
+- ✅ Every tool-specific claim has source citation
+- ✅ Critical commands tested in actual environment
+- ✅ Configuration examples validated against official schema
+- ✅ Verification coverage >= 80%
+- ✅ Assumptions explicitly flagged for later verification
+- ✅ Tools used documented for reproducibility
+
+**MCP Server Recommendations by Task Type**:
+
+| Task Type | Recommended MCP | Why |
+|-----------|-----------------|-----|
+| Library/Framework docs | Context7 | 8000+ token depth, current versions |
+| Open-source tools | GitHub | Source of truth (README, docs/) |
+| API integration | Web + specific API MCP | Live endpoint testing |
+| CLI tools | Bash + WebFetch | Introspection + official docs |
+| Cloud services | Provider-specific MCP | AWS/Azure/GCP MCPs for live schemas |
+
+**Output**: Verified intelligence cache ready for spec creation
+
+---
+
 ## PHASE 1: SPECIFICATION + CLARIFICATION GATE
 
 ```
@@ -224,11 +424,27 @@ WAIT: User reviews spec.md
 - **Duration**: Realistic time estimates (not inflated)
   - Example: "Installation takes 1 minute, not 45 minutes"
 - **Cognitive Load**: Respects audience tier limits (A2 = max 7 concepts)
+- **Verified Intelligence Integration** (if Phase 0.5 ran):
+  - Reference: `intelligence/[feature-slug]-verified-docs.md`
+  - All tool-specific examples must use VERIFIED facts (not assumptions)
+  - Source citations required for configuration/commands/APIs
+  - Example spec content:
+    ```markdown
+    ## Settings Configuration (Verified)
+
+    Claude Code uses these ACTUAL settings ([verified](intelligence/chapter-5-verified-docs.md)):
+    - `permissions.defaultMode`: "acceptEdits" | "default" | "plan"
+    - `outputStyle`: "Concise" | "Explanatory" | "Verbose"
+
+    Source: Context7 Claude Code library + terminal testing [2025-01-14]
+    ```
 
 **Anti-Pattern Detection**:
 - ❌ If spec says "Use AI to run `docker build`" → FLAG: This is over-engineering
 - ❌ If duration is 50+ minutes for simple operations → FLAG: Inflated estimate
 - ❌ If every task involves "Ask AI to..." → FLAG: Not teaching strategic AI use
+- ❌ If tool-specific examples don't cite intelligence cache → FLAG: Unverified assumptions
+- ❌ If spec contradicts verified intelligence → BLOCK: Must use verified facts
 
 ---
 

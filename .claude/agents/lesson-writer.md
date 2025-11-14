@@ -477,6 +477,163 @@ Apply these skills based on chapter type. All chapters use skills 1, 2, 6, 7, 8.
 - All factual claims, statistics, and examples MUST include inline citations (e.g., [World Bank, 2023], [PyPI docs, 2024])
 - For rapidly-changing topics (AI tools, APIs, Python versions), include update maintenance notes (e.g., "Review annually for AI changes")
 - Ethical AI Use (especially for chapters teaching with AI): Frame AI's limitations, responsible use cases, and potential biases
+
+---
+
+## CRITICAL: Optional Sections Bloat Prevention
+
+**Constitutional Alignment**: Avoid bloat. Every section must add unique, actionable value. Remove anything redundant or generic.
+
+### Optional Callout Sections Usage Rules
+
+The `.claude/output-styles/lesson.md` template defines these OPTIONAL sections:
+- **💬 AI Colearning Prompt** (optional callout)
+- **🎓 Expert Insight** (optional callout)
+- **Reflection Prompts** (optional "Pause and Reflect" sections)
+
+**CRITICAL LIMITS**:
+- ❌ **MAXIMUM 0-3 optional sections per lesson** (not 5+)
+- ✅ Each section must pass the "Remove Test": If removing it doesn't hurt comprehension, it's bloat → Remove it
+- ✅ No redundancy: If content repeats what's already in main lesson, remove it
+
+### 💬 AI Colearning Prompt — Strict Usage Criteria
+
+**When to Use** (2 max per lesson):
+- ✅ Concept has **non-obvious depth** beyond lesson scope
+  - Example: "Explain Python's GIL implementation and trade-offs vs Rust's approach"
+- ✅ Encourages **strategic thinking**, not fact recall
+  - Example: "How would you design error handling for a production API?" (design decision)
+- ✅ Students benefit from **AI's broader knowledge** unavailable in lesson
+  - Example: "Compare FastAPI's dependency injection to Spring Boot's approach"
+
+**When NOT to Use** (bloat indicators):
+- ❌ Concept is simple and fully explained in lesson
+  - Example: "Why is X important?" when lesson already explained importance
+- ❌ Question is generic CS theory, not lesson-specific
+  - Example: "Why do applications use hierarchical configs?" (generic, not specific to tool)
+- ❌ Answer is already explicitly stated in lesson text
+  - Example: "When would you use project-level settings?" when examples just showed this
+- ❌ Question just restates learning objectives
+  - Example: "What is a subagent?" when lesson defines it thoroughly
+
+**Quality Test**:
+```markdown
+# Before adding AI Colearning Prompt, ask:
+1. Can students answer this from lesson alone? → If YES, remove prompt
+2. Is this generic CS theory? → If YES, remove prompt (not lesson-specific)
+3. Does this add NEW thinking dimension? → If NO, remove prompt
+4. Is answer already in lesson text? → If YES, remove prompt (redundant)
+```
+
+**Examples**:
+
+✅ **GOOD** (adds value):
+```markdown
+#### 💬 AI Colearning Prompt
+> "Explain why subagents have isolated context. What architectural trade-offs does this create compared to shared context?"
+```
+*Why good: Explores architectural decision-making beyond lesson scope*
+
+❌ **BLOAT** (no value):
+```markdown
+#### 💬 AI Colearning Prompt
+> "Why do applications use hierarchical configuration systems instead of a single global settings file?"
+```
+*Why bloat: Generic CS question, not specific to this tool; answer obvious*
+
+### 🎓 Expert Insight — Strict Usage Criteria
+
+**When to Use** (1-2 max per lesson):
+- ✅ Professional context **beginners wouldn't know**
+  - Example: "At scale (10,000+ users), this pattern prevents thundering herd problem"
+- ✅ Real-world implication **changes behavior**
+  - Example: "Production teams use Y instead of X because of Z regulatory requirement"
+- ✅ Adds **strategic** value from industry experience
+  - Example: "This anti-pattern caused the 2021 AWS outage" (real consequence)
+
+**When NOT to Use** (bloat indicators):
+- ❌ Just rephrasing what lesson already explained
+  - Example: "Settings hierarchies enable team collaboration" (already stated)
+- ❌ Obvious implications
+  - Example: "This helps teams work together" (duh)
+- ❌ Generic advice applicable to everything
+  - Example: "Always test your code" (not lesson-specific)
+
+**Quality Test**:
+```markdown
+# Before adding Expert Insight, ask:
+1. Is this obvious to anyone who read the lesson? → If YES, remove
+2. Is this generic advice (not specific insight)? → If YES, remove
+3. Does this reveal non-obvious professional context? → If NO, remove
+4. Does this just restate lesson content? → If YES, remove (redundant)
+```
+
+**Examples**:
+
+✅ **GOOD** (adds value):
+```markdown
+#### 🎓 Expert Insight
+> In production at Stripe, permission hierarchies prevent accidental prod access. Junior devs inherit restrictive user-level defaults, senior devs override at project-level. This pattern reduced prod incidents by 73%.
+```
+*Why good: Specific company example, quantified impact, actionable insight*
+
+❌ **BLOAT** (no value):
+```markdown
+#### 🎓 Expert Insight
+> Settings hierarchy mirrors real-world team dynamics. Your personal style (user level) is your default. Team standards (project level) override. This is how distributed teams collaborate.
+```
+*Why bloat: Just restates lesson explanation, no new information*
+
+### Reflection Prompts — Strict Usage Criteria
+
+**When to Use**:
+- ✅ **ONLY for conceptual/narrative chapters** (understanding-focused)
+  - Example: Chapter 1 (AI Development Revolution) — philosophical reflection
+- ❌ **NEVER for technical/hands-on chapters** (use exercises instead)
+  - Example: Chapter 12 (UV Installation) — should use coding exercises, not reflection
+
+**When NOT to Use** (bloat indicators):
+- ❌ Technical chapters with coding exercises
+  - Reason: Reflection redundant when students practice hands-on
+- ❌ Questions just repeat learning objectives
+  - Example: "What did you learn about X?" when LO already states this
+- ❌ Already have "Try With AI" section
+  - Reason: "Try With AI" is the practice/reflection section for technical chapters
+
+**Quality Test**:
+```markdown
+# Before adding Reflection Prompts, ask:
+1. Is this a technical hands-on chapter? → If YES, use exercises NOT reflection
+2. Do questions just restate learning objectives? → If YES, remove (redundant)
+3. Do questions provoke NEW thinking beyond lesson? → If NO, remove
+4. Is "Try With AI" already the practice section? → If YES, reflection is redundant
+```
+
+### Overall Bloat Prevention Rules
+
+**Strict Limits**:
+- ❌ **Max 0-3 optional sections total per lesson**
+  - Not 5+ scattered throughout
+  - Quality over quantity
+
+**The "Remove Test"**:
+- For every optional section, ask: "If I remove this, does the lesson still teach the concept completely?"
+- If YES → It was bloat, remove it
+- If NO → Keep it (adds unique value)
+
+**Constitutional Check**:
+- **Principle 2 (Co-Learning Partner)**: AI used strategically, not decoratively
+- **Technical Clarity**: Remove noise, keep signal
+- **Accessibility**: Extra sections add cognitive load if not valuable
+
+**Revision Process**:
+1. Write lesson with optional sections
+2. Run "Remove Test" on each optional section
+3. Delete any section that's redundant/generic/obvious
+4. Keep ONLY sections that add unique value
+5. Verify total optional sections ≤ 3
+
+---
 - Example: "AI-generated code may contain security vulnerabilities. Always review generated code for: proper error handling, no exposed credentials, input validation."
 
 **Pedagogical Requirements (all chapters)**:
