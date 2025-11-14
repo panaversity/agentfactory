@@ -19,7 +19,7 @@ const config: Config = {
   url: "https://ai-native.panaversity.org",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/",
+
 
   // Sitemap is configured via the classic preset's sitemap option below
 
