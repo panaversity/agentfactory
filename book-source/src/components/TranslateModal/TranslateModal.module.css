@@ -1,0 +1,96 @@
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+  background-color: var(--ifm-background-surface-color);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 700px;
+  animation: slideIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  border: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.closeButton {
+  background: transparent;
+  border: none;
+  font-size: 2.2rem;
+  cursor: pointer;
+  color: var(--ifm-color-content);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.closeButton:hover {
+  color: var(--ifm-color-primary);
+  transform: rotate(90deg) scale(1.1);
+}
+
+.modalBody p {
+  line-height: 1.6;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.languageGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.languageButton {
+  background-color: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  padding: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.languageButton:hover {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-40px) scale(0.95); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}

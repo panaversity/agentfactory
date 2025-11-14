@@ -5,6 +5,7 @@ import type { WrapperProps } from '@docusaurus/types';
 import QuizModal from '@site/src/components/QuizModal';
 import allQuizData from '@site/src/merged-quiz-data.json';
 import '@site/src/css/quiz-modal.css';
+import LessonTabs from '@site/src/components/LessonTabs/LessonTabs';
 
 type Props = WrapperProps<typeof DocItemType>;
 
@@ -53,18 +54,8 @@ export default function DocItemWrapper(props: Props): JSX.Element {
 
   return (
     <>
+      <LessonTabs content={props.content} onOpenQuiz={handleOpenQuiz} />
       <DocItem {...props} />
-
-      {hasQuiz && (
-        <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-          <button
-            onClick={handleOpenQuiz}
-            className="button button--primary button--lg" // Use Docusaurus button styles
-          >
-            Test Yourself!
-          </button>
-        </div>
-      )}
 
       {isQuizOpen && chapterId && (
         <QuizModal
@@ -76,4 +67,3 @@ export default function DocItemWrapper(props: Props): JSX.Element {
     </>
   );
 }
-

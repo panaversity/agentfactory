@@ -1,0 +1,6 @@
+.dropdownContainer {
+  position: relative;
+  margin: 1rem auto;
+  max-width: 400px;
+  z-index: 100;
+}
