@@ -29,7 +29,7 @@ const AIDialog: React.FC<AIDialogProps> = ({ isOpen, onClose, content, isLoading
   if (!isOpen) return null;
 
   return (
-    <div style={{
+    <div className="ai-dialog-container" style={{
       position: 'fixed',
       top: '50%',
       left: '50%',
@@ -39,8 +39,8 @@ const AIDialog: React.FC<AIDialogProps> = ({ isOpen, onClose, content, isLoading
       borderRadius: 'var(--ifm-global-radius, 8px)',
       boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
       zIndex: 1000,
-      width: '800px',
-      maxHeight: '80vh',
+      width: 'min(95vw, 800px)', // Responsive width - 95% of viewport width or max 800px
+      maxHeight: '90vh', // Increased from 80vh
       overflowY: 'auto',
       border: '1px solid var(--ifm-color-emphasis-200, #ddd)',
       fontFamily: 'var(--ifm-font-family-base)',
@@ -53,8 +53,8 @@ const AIDialog: React.FC<AIDialogProps> = ({ isOpen, onClose, content, isLoading
         marginBottom: '15px',
         paddingBottom: '10px',
         borderBottom: '1px solid var(--ifm-color-emphasis-200, #eee)'
-      }}>
-        <h3 style={{ 
+      }} className="ai-dialog-header">
+        <h3 className="ai-panel-header" style={{ 
           margin: 0,
           fontWeight: 'var(--ifm-heading-font-weight, 600)',
           color: 'var(--ifm-heading-color, inherit)',
@@ -153,20 +153,20 @@ const AIDialog: React.FC<AIDialogProps> = ({ isOpen, onClose, content, isLoading
       {content && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {/* Split view: highlighted text on left, AI response on right */}
-          <div style={{ 
+          <div className="ai-content-split-view" style={{ 
             display: 'flex', 
             gap: '16px', 
-            minHeight: '300px',
-            flexDirection: window.innerWidth < 900 ? 'column' : 'row' // Stack on mobile
+            minHeight: '200px', // Reduced min height for mobile
+            flexDirection: 'row' // Will be overridden by CSS below
           }}>
             {/* Highlighted Text Panel (Left) */}
-            <div style={{ 
+            <div className="ai-panel" style={{ 
               flex: 1, 
               padding: '16px', 
               border: '1px solid var(--ifm-color-emphasis-200)', 
               borderRadius: 'var(--ifm-global-radius, 6px)',
               backgroundColor: 'var(--ifm-background-color, #f9f9f9)',
-              maxHeight: '300px',
+              maxHeight: '200px', // Reduced for better mobile fit
               overflowY: 'auto',
               display: 'flex',
               flexDirection: 'column'
@@ -194,13 +194,13 @@ const AIDialog: React.FC<AIDialogProps> = ({ isOpen, onClose, content, isLoading
             </div>
             
             {/* AI Response Panel (Right) */}
-            <div style={{ 
+            <div className="ai-panel" style={{ 
               flex: 1, 
               padding: '16px', 
               border: '1px solid var(--ifm-color-primary)',
               borderRadius: 'var(--ifm-global-radius, 6px)',
               backgroundColor: 'rgba(0, 31, 63, 0.03)', // Light blue tint matching primary color
-              maxHeight: '300px',
+              maxHeight: '200px', // Reduced for better mobile fit
               overflowY: 'auto',
               display: 'flex',
               flexDirection: 'column'
@@ -230,13 +230,13 @@ const AIDialog: React.FC<AIDialogProps> = ({ isOpen, onClose, content, isLoading
           
           {/* Implementation section */}
           {content.instructions && content.instructions !== "No implementation required." && (
-            <div style={{ 
+            <div className="ai-panel" style={{ 
               padding: '16px', 
               border: '1px solid var(--ifm-color-emphasis-200)', 
               borderRadius: 'var(--ifm-global-radius, 6px)',
               backgroundColor: 'var(--ifm-background-surface-color, #fafafa)'
             }}>
-              <h4 style={{ 
+              <h4 className="ai-panel-header" style={{ 
                 marginTop: 0, 
                 marginBottom: '10px', 
                 color: '#4a6fa5', // Blue color for implementation
@@ -253,13 +253,13 @@ const AIDialog: React.FC<AIDialogProps> = ({ isOpen, onClose, content, isLoading
           
           {/* Examples section */}
           {content.example && content.example !== "No examples provided." && (
-            <div style={{ 
+            <div className="ai-panel" style={{ 
               padding: '16px', 
               border: '1px solid var(--ifm-color-emphasis-200)', 
               borderRadius: 'var(--ifm-global-radius, 6px)',
               backgroundColor: 'var(--ifm-background-surface-color, #fafafa)'
             }}>
-              <h4 style={{ 
+              <h4 className="ai-panel-header" style={{ 
                 marginTop: 0, 
                 marginBottom: '10px', 
                 color: '#2e7d32', // Green color for examples
@@ -280,6 +280,59 @@ const AIDialog: React.FC<AIDialogProps> = ({ isOpen, onClose, content, isLoading
         @keyframes spin {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+          .ai-dialog-container {
+            width: 95vw !important;
+            max-height: 85vh !important;
+            padding: 12px !important;
+            top: 2vh !important;
+            transform: translate(-50%, 0) !important;
+            margin: auto !important;
+          }
+          
+          .ai-content-split-view {
+            flex-direction: column !important;
+            gap: 12px !important;
+            minHeight: 100px !important;
+          }
+          
+          .ai-panel {
+            max-height: 120px !important;
+            padding: 10px !important;
+          }
+          
+          .ai-dialog-header {
+            flex-wrap: wrap !important;
+            gap: 8px !important;
+          }
+          
+          .ai-dialog-header h3.ai-panel-header {
+            font-size: 1.2rem !important;
+          }
+          
+          .ai-panel h4 {
+            font-size: 0.9rem !important;
+            margin-bottom: 8px !important;
+          }
+          
+          .ai-panel p {
+            font-size: 0.85rem !important;
+            line-height: 1.4 !important;
+          }
+        }
+        
+        /* Tablet responsiveness */
+        @media (max-width: 992px) and (min-width: 769px) {
+          .ai-content-split-view {
+            flex-direction: column !important;
+          }
+          
+          .ai-panel {
+            max-height: 180px !important;
+          }
         }
       `}</style>
     </div>

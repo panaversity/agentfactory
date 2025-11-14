@@ -58,8 +58,9 @@ function AiConfig() {
         throw new Error(errorData.detail || 'Failed to save API key');
       }
 
-      // Save custom prompt to localStorage as fallback
+      // Save custom prompt and API key to localStorage
       localStorage.setItem('ai_custom_prompt', customPrompt);
+      localStorage.setItem('ai_api_key', apiKey);
       
       setMessage('AI Configuration Saved and Validated!');
       
