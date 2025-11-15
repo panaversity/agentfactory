@@ -58,6 +58,7 @@ export async function fetchSummary(
         }
 
         if (data.done) {
+          console.log('✅ Summary streaming completed successfully');
           cleanup();
           onComplete();
         }
@@ -74,11 +75,12 @@ export async function fetchSummary(
       onError('Connection error. Please try again.');
     };
 
-    // Timeout after 30 seconds
+    // Timeout after 60 seconds (increased for AI generation)
     timeoutId = setTimeout(() => {
+      console.warn('⏰ Request timeout after 60 seconds');
       cleanup();
       onError('Request timeout. Please try again.');
-    }, 30000);
+    }, 60000);
 
   } catch (error) {
     if (timeoutId) {

@@ -23,7 +23,7 @@ external_client = AsyncOpenAI(
 
 model = OpenAIChatCompletionsModel(
     openai_client=external_client,
-    model="gemini-2.5-pro",
+    model="gemini-2.0-flash",
 )
 
 async def generate_summary(content: str, page_id: str) -> AsyncGenerator[str, None]:
@@ -51,7 +51,19 @@ async def generate_summary(content: str, page_id: str) -> AsyncGenerator[str, No
     
     logger.info(f"Content word count: {word_count}, Target summary: {target_word_count} words")
     
-    instructions = f"""You are an expert content summarizer. Your task is to create a clear, concise summary of the provided text. Requirements: - Target length: {target_word_count} words (±10%) - Maintain key concepts and insights - Use clear, professional language - Preserve important technical details - Do not add information not present in the original text - Structure: Brief overview, main points, key takeaways
+    instructions = f"""You are an expert content summarizer. Your task is to create a clear, concise summary of the provided text in natural paragraph form.
+
+Requirements:
+- Target length: {target_word_count} words (±10%)
+- Write in flowing paragraphs, not bullet points or lists
+- Use single line breaks between paragraphs
+- Maintain key concepts and insights
+- Use clear, professional language
+- Preserve important technical details
+- Do not add information not present in the original text
+- No markdown formatting (no ###, **, or -)
+
+Structure your response as natural paragraphs covering: brief overview, main points, and key takeaways.
 """
     
     try:
@@ -99,11 +111,8 @@ async def generate_summary(content: str, page_id: str) -> AsyncGenerator[str, No
                     delta_text = event.content
                 
                 if delta_text:
-                    # Clean up excessive whitespace before yielding
-                    cleaned_delta = delta_text.replace('\n\n\n', '\n\n')
-                    if cleaned_delta:
-                        logger.debug(f"Yielding delta: {cleaned_delta[:50]}...")
-                        yield cleaned_delta
+                    logger.debug(f"Yielding delta: {delta_text[:50]}...")
+                    yield delta_text
         
         logger.info(f"Summary generation completed for page_id: {page_id}")
         
