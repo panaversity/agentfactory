@@ -46,7 +46,7 @@ Execute this workflow in 6 sequential steps. At Steps 2 and 4, apply lightweight
 
 ## Step 1: Load Planning Context
 
-Run `.specify/scripts/bash/check-prerequisites.sh --json` from repo root and parse JSON for FEATURE_DIR and AVAILABLE_DOCS.
+Run `.specify/scripts/powershell/check-prerequisites.ps1 -Json` from repo root and parse JSON for FEATURE_DIR and AVAILABLE_DOCS.
 
 Derive absolute paths:
 
