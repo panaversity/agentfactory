@@ -617,18 +617,41 @@ Confirm:
 
 **STEP 2: Invoke /sp.plan NOW** (Execute Immediately)
 
+⚠️ **CRITICAL WARNING**: DO NOT run `.specify/scripts/bash/setup-plan.sh` manually!
+- This script is for the `/sp.plan` command to use internally
+- Running it directly will OVERWRITE any existing plan.md with the template
+- ONLY use `/sp.plan` slash command (which handles setup script safely)
+
 YOU MUST invoke this command NOW with full context:
 
 ```
 /sp.plan [feature-slug]
 
 Read: specs/[feature-slug]/spec.md (clarified and approved)
+Read: Existing lesson file (to extract YAML frontmatter structure)
 Apply: Teaching pattern (direct commands vs AI collaboration)
 Apply: Proficiency levels (CEFR if book chapter)
 Apply: Constitutional principles (Graduated Teaching, Co-Learning)
 Apply: AI usage decision framework (direct/companion/orchestration)
+Apply: Verified intelligence (if Phase 0.5 ran)
+Apply: Minimal code examples (if first hands-on chapter)
+Apply: YAML frontmatter format (match existing lesson metadata structure)
 Create: specs/[feature-slug]/plan.md
 ```
+
+**CRITICAL LESSON-SPECIFIC INSTRUCTIONS**:
+
+For **first hands-on chapters** (e.g., Chapter 12 Python tooling, Chapter 7 Bash basics):
+- Code examples MUST be minimal (3-5 line snippets)
+- Focus is on **tool installation, configuration, verification**
+- NOT on teaching programming language features
+- Example: "print('hello')" to test Ruff, NOT complex functions
+
+For **all book chapters**:
+- plan.md MUST specify YAML frontmatter format matching existing lessons
+- Read existing lesson files to extract metadata structure
+- Include: title, chapter, lesson, duration_minutes, skills (CEFR/Bloom's/DigComp), learning_objectives, cognitive_load
+- Lesson-writer subagent will convert plan to actual YAML
 
 **CRITICAL**: DO NOT ask user "Should I run /sp.plan?" - EXECUTE IT IMMEDIATELY.
 
