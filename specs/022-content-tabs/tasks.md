@@ -29,12 +29,12 @@ description: "Implementation tasks for Interactive Content Tabs with AI Summariz
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create backend directory structure: `api/src/`, `api/src/routers/`, `api/src/services/`, `api/src/models/`, `api/tests/`
-- [ ] T002 Initialize FastAPI project with dependencies: `fastapi`, `uvicorn`, `openai`, `python-dotenv`, `pytest` in `api/requirements.txt`
-- [ ] T003 [P] Create frontend component directory structure: `book-source/src/components/ContentTabs/` with placeholder files
-- [ ] T004 [P] Create frontend services directory: `book-source/src/services/` with placeholder files
-- [ ] T005 [P] Configure environment variables template in `api/.env.example` with `OPENAI_API_KEY`, `LOG_LEVEL`, `CORS_ORIGINS`
-- [ ] T006 [P] Add TypeScript type definitions file `book-source/src/types/contentTabs.d.ts` for tab state, cache entry, auth state
+- [x] T001 Create backend directory structure: `api/src/`, `api/src/routers/`, `api/src/services/`, `api/src/models/`, `api/tests/`
+- [x] T002 Initialize FastAPI project with dependencies: `fastapi`, `uvicorn`, `openai`, `python-dotenv`, `pytest` in `api/requirements.txt`
+- [x] T003 [P] Create frontend component directory structure: `book-source/src/components/ContentTabs/` with placeholder files
+- [x] T004 [P] Create frontend services directory: `book-source/src/services/` with placeholder files
+- [x] T005 [P] Configure environment variables template in `api/.env.example` with `OPENAI_API_KEY`, `LOG_LEVEL`, `CORS_ORIGINS`
+- [x] T006 [P] Add TypeScript type definitions file `book-source/src/types/contentTabs.d.ts` for tab state, cache entry, auth state
 
 ---
 
@@ -44,13 +44,13 @@ description: "Implementation tasks for Interactive Content Tabs with AI Summariz
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T007 Create FastAPI app entry point in `api/src/main.py` with CORS, logging, and health endpoint
-- [ ] T008 [P] Implement cache service wrapper in `book-source/src/services/cacheService.ts` with `get()`, `set()`, `clear()` methods for sessionStorage
-- [ ] T009 [P] Implement auth service in `book-source/src/services/authService.ts` with `isAuthenticated()`, `getToken()`, `setToken()`, `clearToken()` methods
-- [ ] T010 Create base schemas in `api/src/models/schemas.py` with `SummaryChunk`, `ErrorResponse`, `AuthResponse` Pydantic models
-- [ ] T011 Create OpenAI agent service skeleton in `api/src/services/openai_agent.py` with `generate_summary()` async method stub
-- [ ] T012 [P] Create CSS modules stylesheet in `book-source/src/components/ContentTabs/styles.module.css` with base tab styles
-- [ ] T013 Setup Docusaurus theme swizzling: Run `npm run swizzle @docusaurus/theme-classic DocItem/Content -- --wrap` to create `book-source/src/theme/DocItem/Content/index.tsx`
+- [x] T007 Create FastAPI app entry point in `api/src/main.py` with CORS, logging, and health endpoint
+- [x] T008 [P] Implement cache service wrapper in `book-source/src/services/cacheService.ts` with `get()`, `set()`, `clear()` methods for sessionStorage
+- [x] T009 [P] Implement auth service in `book-source/src/services/authService.ts` with `isAuthenticated()`, `getToken()`, `setToken()`, `clearToken()` methods
+- [x] T010 Create base schemas in `api/src/models/schemas.py` with `SummaryChunk`, `ErrorResponse`, `AuthResponse` Pydantic models
+- [x] T011 Create OpenAI agent service skeleton in `api/src/services/openai_agent.py` with `generate_summary()` async method stub
+- [x] T012 [P] Create CSS modules stylesheet in `book-source/src/components/ContentTabs/styles.module.css` with base tab styles
+- [x] T013 Setup Docusaurus theme swizzling: Run `npm run swizzle @docusaurus/theme-classic DocItem/Content -- --wrap` to create `book-source/src/theme/DocItem/Content/index.tsx`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 

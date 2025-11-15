@@ -21,3 +21,24 @@ yarn-debug.log*
 yarn-error.log*
 nul
 .trees/
+
+# Python (for API backend)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.mypy_cache/
+.env
+.env.*
+*.log

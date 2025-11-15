@@ -1,0 +1,140 @@
+/* Content Tabs Styles */
+
+.tabsContainer {
+  margin: 2rem 0;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--ifm-background-color);
+}
+
+/* Tab Bar */
+.tabBar {
+  display: flex;
+  gap: 0;
+  background: var(--ifm-color-emphasis-100);
+  border-bottom: 2px solid var(--ifm-color-emphasis-300);
+  padding: 0;
+  margin: 0;
+}
+
+.tabButton {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: none;
+  background: transparent;
+  color: var(--ifm-color-content);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 3px solid transparent;
+  position: relative;
+}
+
+.tabButton:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.tabButton.active {
+  background: var(--ifm-background-color);
+  color: var(--ifm-color-primary);
+  border-bottom-color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* Tab Content Area */
+.tabContent {
+  padding: 2rem;
+  min-height: 200px;
+}
+
+/* Loading State */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.loadingSpinner {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--ifm-color-emphasis-300);
+  border-top-color: var(--ifm-color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-right: 0.75rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error State */
+.error {
+  padding: 2rem;
+  background: var(--ifm-color-danger-contrast-background);
+  border-left: 4px solid var(--ifm-color-danger);
+  border-radius: 4px;
+  color: var(--ifm-color-danger-contrast-foreground);
+}
+
+.errorTitle {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.errorMessage {
+  margin-bottom: 1rem;
+}
+
+.retryButton {
+  padding: 0.5rem 1rem;
+  background: var(--ifm-color-danger);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.retryButton:hover {
+  opacity: 0.9;
+}
+
+/* Placeholder State */
+.placeholder {
+  text-align: center;
+  padding: 3rem;
+  color: var(--ifm-color-emphasis-600);
+  font-style: italic;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .tabButton {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .tabContent {
+    padding: 1.5rem;
+  }
+  
+  .tabBar {
+    flex-direction: column;
+  }
+  
+  .tabButton {
+    border-bottom: 1px solid var(--ifm-color-emphasis-300);
+    border-right: none;
+  }
+  
+  .tabButton.active {
+    border-bottom-color: var(--ifm-color-primary);
+    border-left: 4px solid var(--ifm-color-primary);
+  }
+}
