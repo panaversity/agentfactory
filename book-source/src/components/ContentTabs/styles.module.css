@@ -49,6 +49,26 @@
   min-height: 200px;
 }
 
+/* Tab Animation */
+.tabFadeEnter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.tabFadeEnterActive {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.tabFadeExit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.tabFadeExitActive {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.2s cubic-bezier(0.4,0,0.2,1), transform 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+
 /* Loading State */
 .loading {
   display: flex;
