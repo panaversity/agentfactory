@@ -8,6 +8,7 @@ import * as cacheService from '../../services/cacheService';
 import * as summaryService from '../../services/summaryService';
 import DummyLogin from './DummyLogin';
 import styles from './styles.module.css';
+import ReactMarkdown from "react-markdown";
 
 interface SummaryTabProps {
   pageId: string;
@@ -209,7 +210,7 @@ export default function SummaryTab({ pageId, content }: SummaryTabProps): React.
           </div>
           <div className={styles.summaryContent} ref={summaryContainerRef}>
             <div className={styles.summaryText}>
-              {isGenerating ? streamingText : summary}
+              <ReactMarkdown>{isGenerating ? streamingText : summary}</ReactMarkdown>
               {isGenerating && <span className={styles.cursor}>|</span>}
             </div>
             <div ref={summaryEndRef} />
