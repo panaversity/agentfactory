@@ -20,6 +20,7 @@ export default function SummaryTab({ pageId, content }: SummaryTabProps): React.
   const [summary, setSummary] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isCached, setIsCached] = useState(false);
   const summaryEndRef = useRef<HTMLDivElement>(null);
   const generatingRef = useRef(false);
 
@@ -46,9 +47,14 @@ export default function SummaryTab({ pageId, content }: SummaryTabProps): React.
     const cached = cacheService.get<SummaryCacheEntry>(cacheKey);
 
     if (cached && cached.summary) {
+      console.log(`✅ Cache hit for ${pageId} - displaying cached summary`);
       setSummary(cached.summary);
+      setIsCached(true);
       return;
     }
+
+    console.log(`❌ Cache miss for ${pageId} - generating new summary`);
+    setIsCached(false);
 
     // Request deduplication: prevent multiple simultaneous requests
     if (generatingRef.current) {
@@ -77,6 +83,9 @@ export default function SummaryTab({ pageId, content }: SummaryTabProps): React.
     setError(null);
     setSummary('');
 
+    // Accumulator for final summary to cache
+    let accumulatedSummary = '';
+
     try {
       await summaryService.fetchSummary(
         pageId,
@@ -84,10 +93,11 @@ export default function SummaryTab({ pageId, content }: SummaryTabProps): React.
         token,
         (chunk) => {
           // Progressive text append as chunks arrive
+          accumulatedSummary += chunk;
           setSummary((prev) => prev + chunk);
         },
         () => {
-          // On completion
+          // On completion - cache the accumulated summary
           setIsLoading(false);
           setIsGenerating(false);
           generatingRef.current = false;
@@ -96,7 +106,7 @@ export default function SummaryTab({ pageId, content }: SummaryTabProps): React.
           const cacheKey = `summary_${pageId}`;
           const cacheEntry: SummaryCacheEntry = {
             pageId,
-            summary: summary,
+            summary: accumulatedSummary,
             timestamp: Date.now(),
           };
           cacheService.set(cacheKey, cacheEntry);
@@ -160,6 +170,11 @@ export default function SummaryTab({ pageId, content }: SummaryTabProps): React.
     <div role="tabpanel" id="summary-panel" aria-labelledby="summary-tab">
       {summary && (
         <div className={styles.summaryContent}>
+          {isCached && (
+            <div className={styles.cacheIndicator} title="This summary was loaded from cache">
+              💾 Cached
+            </div>
+          )}
           <p style={{ whiteSpace: 'pre-wrap' }}>{summary}</p>
           <div ref={summaryEndRef} />
         </div>

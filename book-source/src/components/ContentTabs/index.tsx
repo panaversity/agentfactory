@@ -10,6 +10,7 @@ import TabBar from './TabBar';
 import OriginalTab from './OriginalTab';
 import SummaryTab from './SummaryTab';
 import PersonalizedTab from './PersonalizedTab';
+import ErrorBoundary from './ErrorBoundary';
 import styles from './styles.module.css';
 
 interface ContentTabsProps {
@@ -44,23 +45,25 @@ export default function ContentTabs({ children, pageId = '' }: ContentTabsProps)
   };
 
   return (
-    <div className={styles.tabsContainer}>
-      <TabBar activeTab={activeTab} onTabClick={handleTabChange} />
-      
-      <div className={styles.tabContent}>
-        {/* Conditional rendering based on active tab */}
-        {activeTab === 'original' && (
-          <OriginalTab>{children}</OriginalTab>
-        )}
+    <ErrorBoundary>
+      <div className={styles.tabsContainer}>
+        <TabBar activeTab={activeTab} onTabClick={handleTabChange} />
         
-        {activeTab === 'summary' && (
-          <SummaryTab pageId={pageId} content={getContentAsString()} />
-        )}
-        
-        {activeTab === 'personalized' && (
-          <PersonalizedTab />
-        )}
+        <div className={styles.tabContent}>
+          {/* Conditional rendering based on active tab */}
+          {activeTab === 'original' && (
+            <OriginalTab>{children}</OriginalTab>
+          )}
+          
+          {activeTab === 'summary' && (
+            <SummaryTab pageId={pageId} content={getContentAsString()} />
+          )}
+          
+          {activeTab === 'personalized' && (
+            <PersonalizedTab />
+          )}
+        </div>
       </div>
-    </div>
+    </ErrorBoundary>
   );
 }

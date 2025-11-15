@@ -102,24 +102,24 @@ description: "Implementation tasks for Interactive Content Tabs with AI Summariz
 
 ### Implementation for User Story 3
 
-- [ ] T026 [P] [US3] Create SummaryTab component skeleton in `book-source/src/components/ContentTabs/SummaryTab.tsx` with loading, error, and content states
-- [ ] T027 [P] [US3] Implement dummy login UI in `book-source/src/components/ContentTabs/DummyLogin.tsx` with "Login" button (temporary component)
-- [ ] T028 [P] [US3] Create summary API client in `book-source/src/services/summaryService.ts` with `fetchSummary(pageId, content, token)` method using EventSource for SSE
-- [ ] T029 [US3] Implement auth check in `book-source/src/components/ContentTabs/SummaryTab.tsx` on mount: if not authenticated, show DummyLogin component
-- [ ] T030 [US3] Implement cache check in `book-source/src/components/ContentTabs/SummaryTab.tsx` before API call: read from cacheService, display if found
-- [ ] T031 [US3] Add loading spinner component in `book-source/src/components/ContentTabs/SummaryTab.tsx` displayed while summary is generating
-- [ ] T032 [US3] Implement streaming summary display in `book-source/src/components/ContentTabs/SummaryTab.tsx` with progressive text append as chunks arrive
-- [ ] T033 [US3] Add auto-scroll behavior in `book-source/src/components/ContentTabs/SummaryTab.tsx` to keep latest summary content visible using `scrollIntoView()`
-- [ ] T034 [US3] Implement cache write after summary completion in `book-source/src/components/ContentTabs/SummaryTab.tsx` using cacheService
-- [ ] T035 [P] [US3] Implement `/summarize` endpoint in `api/src/routers/summarize.py` with auth token validation, pageId validation, and SSE response setup
-- [ ] T036 [P] [US3] Implement OpenAI Agents SDK integration in `api/src/services/openai_agent.py` with streaming completion using `client.chat.completions.create(stream=True)`
-- [ ] T037 [P] [US3] Implement `/auth/dummy-login` endpoint in `api/src/routers/auth.py` returning `{ "token": "dummy_token_12345", "expires": "session" }`
-- [ ] T038 [P] [US3] Implement `/auth/verify` endpoint in `api/src/routers/auth.py` accepting any token and returning `{ "valid": true }`
-- [ ] T039 [US3] Add error handling in `book-source/src/components/ContentTabs/SummaryTab.tsx` for service failures with retry button
-- [ ] T040 [US3] Add error handling in `api/src/routers/summarize.py` for OpenAI API failures with 500 status and error message
-- [ ] T041 [US3] Implement request deduplication in `book-source/src/components/ContentTabs/SummaryTab.tsx` to prevent multiple simultaneous summary requests for same page
-- [ ] T042 [US3] Add summary length validation in `api/src/services/openai_agent.py` with system prompt enforcing 150-500 word limit and 20-25% compression ratio
-- [ ] T043 [US3] Register `/summarize`, `/auth/dummy-login`, `/auth/verify` routers in `api/src/main.py` under `/api/v1` prefix
+- [x] T026 [P] [US3] Create SummaryTab component skeleton in `book-source/src/components/ContentTabs/SummaryTab.tsx` with loading, error, and content states
+- [x] T027 [P] [US3] Implement dummy login UI in `book-source/src/components/ContentTabs/DummyLogin.tsx` with "Login" button (temporary component)
+- [x] T028 [P] [US3] Create summary API client in `book-source/src/services/summaryService.ts` with `fetchSummary(pageId, content, token)` method using EventSource for SSE
+- [x] T029 [US3] Implement auth check in `book-source/src/components/ContentTabs/SummaryTab.tsx` on mount: if not authenticated, show DummyLogin component
+- [x] T030 [US3] Implement cache check in `book-source/src/components/ContentTabs/SummaryTab.tsx` before API call: read from cacheService, display if found
+- [x] T031 [US3] Add loading spinner component in `book-source/src/components/ContentTabs/SummaryTab.tsx` displayed while summary is generating
+- [x] T032 [US3] Implement streaming summary display in `book-source/src/components/ContentTabs/SummaryTab.tsx` with progressive text append as chunks arrive
+- [x] T033 [US3] Add auto-scroll behavior in `book-source/src/components/ContentTabs/SummaryTab.tsx` to keep latest summary content visible using `scrollIntoView()`
+- [x] T034 [US3] Implement cache write after summary completion in `book-source/src/components/ContentTabs/SummaryTab.tsx` using cacheService
+- [x] T035 [P] [US3] Implement `/summarize` endpoint in `api/src/routers/summarize.py` with auth token validation, pageId validation, and SSE response setup
+- [x] T036 [P] [US3] Implement OpenAI Agents SDK integration in `api/src/services/openai_agent.py` with streaming completion using `client.chat.completions.create(stream=True)`
+- [x] T037 [P] [US3] Implement `/auth/dummy-login` endpoint in `api/src/routers/auth.py` returning `{ "token": "dummy_token_12345", "expires": "session" }`
+- [x] T038 [P] [US3] Implement `/auth/verify` endpoint in `api/src/routers/auth.py` accepting any token and returning `{ "valid": true }`
+- [x] T039 [US3] Add error handling in `book-source/src/components/ContentTabs/SummaryTab.tsx` for service failures with retry button
+- [x] T040 [US3] Add error handling in `api/src/routers/summarize.py` for OpenAI API failures with 500 status and error message
+- [x] T041 [US3] Implement request deduplication in `book-source/src/components/ContentTabs/SummaryTab.tsx` to prevent multiple simultaneous summary requests for same page
+- [x] T042 [US3] Add summary length validation in `api/src/services/openai_agent.py` with system prompt enforcing 150-500 word limit and 20-25% compression ratio
+- [x] T043 [US3] Register `/summarize`, `/auth/dummy-login`, `/auth/verify` routers in `api/src/main.py` under `/api/v1` prefix
 
 **Checkpoint**: All user stories (1, 2, 3) should now be independently functional
 
@@ -133,8 +133,8 @@ description: "Implementation tasks for Interactive Content Tabs with AI Summariz
 
 ### Implementation for User Story 4
 
-- [ ] T044 [US4] Update PersonalizedTab component in `book-source/src/components/ContentTabs/PersonalizedTab.tsx` with styled "Feature coming soon" message
-- [ ] T045 [US4] Add placeholder styling in `book-source/src/components/ContentTabs/styles.module.css` with centered text and muted color
+- [x] T044 [US4] Update PersonalizedTab component in `book-source/src/components/ContentTabs/PersonalizedTab.tsx` with styled "Feature coming soon" message
+- [x] T045 [US4] Add placeholder styling in `book-source/src/components/ContentTabs/styles.module.css` with centered text and muted color
 
 **Checkpoint**: All user stories (1, 2, 3, 4) should now be complete
 
@@ -144,16 +144,16 @@ description: "Implementation tasks for Interactive Content Tabs with AI Summariz
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T046 [P] Add API health check endpoint in `api/src/main.py` returning `{ "status": "healthy" }`
-- [ ] T047 [P] Add logging to all API endpoints in `api/src/routers/` using Python `logging` module
-- [ ] T048 [P] Add error boundary component in `book-source/src/components/ContentTabs/ErrorBoundary.tsx` to catch React errors
-- [ ] T049 [P] Add TypeScript strict mode validation: ensure no `any` types in `book-source/src/components/ContentTabs/` and `book-source/src/services/`
-- [ ] T050 [P] Optimize CSS in `book-source/src/components/ContentTabs/styles.module.css` for performance (minimize reflows, use GPU-accelerated properties)
-- [ ] T051 Add network interruption handling in `book-source/src/services/summaryService.ts` with EventSource error listener and retry logic
-- [ ] T052 [P] Add API request timeout in `book-source/src/services/summaryService.ts` with 30-second timeout for SSE connection
-- [ ] T053 [P] Document environment variables in `api/README.md` with setup instructions
-- [ ] T054 [P] Document frontend component API in `book-source/src/components/ContentTabs/README.md` with usage examples
-- [ ] T055 Run quickstart.md validation: verify all steps work for fresh developer setup
+- [x] T046 [P] Add API health check endpoint in `api/src/main.py` returning `{ "status": "healthy" }`
+- [x] T047 [P] Add logging to all API endpoints in `api/src/routers/` using Python `logging` module
+- [x] T048 [P] Add error boundary component in `book-source/src/components/ContentTabs/ErrorBoundary.tsx` to catch React errors
+- [x] T049 [P] Add TypeScript strict mode validation: ensure no `any` types in `book-source/src/components/ContentTabs/` and `book-source/src/services/`
+- [x] T050 [P] Optimize CSS in `book-source/src/components/ContentTabs/styles.module.css` for performance (minimize reflows, use GPU-accelerated properties)
+- [x] T051 Add network interruption handling in `book-source/src/services/summaryService.ts` with EventSource error listener and retry logic
+- [x] T052 [P] Add API request timeout in `book-source/src/services/summaryService.ts` with 30-second timeout for SSE connection
+- [x] T053 [P] Document environment variables in `api/README.md` with setup instructions
+- [x] T054 [P] Document frontend component API in `book-source/src/components/ContentTabs/README.md` with usage examples
+- [x] T055 Run quickstart.md validation: verify all steps work for fresh developer setup
 
 ---
 

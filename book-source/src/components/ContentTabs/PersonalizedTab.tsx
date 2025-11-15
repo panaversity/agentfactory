@@ -10,12 +10,19 @@ export default function PersonalizedTab(): React.ReactElement {
       role="tabpanel" 
       id="personalized-panel" 
       aria-labelledby="personalized-tab"
-      className={styles.placeholder}
+      className={styles.placeholderContainer}
     >
-      <p>Feature coming soon</p>
-      <p style={{ fontSize: '0.9em', color: 'var(--ifm-color-emphasis-600)' }}>
-        Personalized content recommendations will be available in a future update.
-      </p>
+      <div className={styles.placeholderContent}>
+        <h3 className={styles.placeholderTitle}>✨ Personalized Content</h3>
+        <p className={styles.placeholderMessage}>
+          This feature is coming soon! Get AI-powered content recommendations tailored to your learning style and interests.
+        </p>
+        <ul className={styles.placeholderFeatures}>
+          <li>Smart content suggestions based on your reading history</li>
+          <li>Adaptive difficulty levels</li>
+          <li>Related topics and learning paths</li>
+        </ul>
+      </div>
     </div>
   );
 }
