@@ -5,6 +5,16 @@
 **Status**: Draft  
 **Input**: User description: "Interactive content tabs for Docusaurus with Original, Summary (AI-powered streaming), and Personalized views. Includes session-based authentication and FastAPI integration for OpenAI Agents SDK summarization."
 
+## Clarifications
+
+### Session 2025-11-15
+
+- Q: Summary cache scope - how long should generated summaries be cached? → A: Session-scoped - Cache persists across page navigations during one user session (browser tab)
+- Q: Summary length control - what is the desired summary length or behavior? → A: Proportional with bounds - Target 20-25% of original, min 150 words, max 500 words
+- Q: Login page implementation - what should the login page behavior be? → A: Dummy/stub login for now - Future SSO implementation
+- Q: Concurrent user behavior - what happens when the same user has multiple browser tabs open with the same content page? → A: Independent state, shared cache - Each tab has its own active tab selection, but summaries are shared across tabs
+- Q: Streaming chunk display behavior - how should the streaming text be displayed to the user? → A: Append with auto-scroll - Chunks appear progressively, viewport auto-scrolls to latest content
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - View Original Content (Priority: P1)
@@ -53,7 +63,7 @@ When a user clicks the "Summary" tab, the system checks for authentication. If n
 1. **Given** a user is not authenticated (no session token), **When** they click the "Summary" tab, **Then** they are redirected to the login page
 2. **Given** a user successfully logs in, **When** they return to the content page and click "Summary", **Then** the system sends the original content to the summarization service
 3. **Given** the summarization service begins processing, **When** the request is in progress, **Then** a loading indicator is displayed to the user
-4. **Given** the agent begins streaming the response, **When** chunks of summary text arrive, **Then** the summary content is progressively displayed (streaming UI)
+4. **Given** the agent begins streaming the response, **When** chunks of summary text arrive, **Then** the summary content is progressively appended with viewport auto-scrolling to the latest content
 5. **Given** the summary is being streamed, **When** all chunks are received, **Then** the loading indicator disappears and the complete summary is visible
 6. **Given** a user switches away from Summary mid-stream, **When** they switch back to Summary, **Then** the completed/cached summary is shown (no re-fetch)
 
@@ -80,10 +90,10 @@ When a user clicks the "Personalized" tab, they see a message: "Feature coming s
   Display an error message in the Summary tab: "Unable to generate summary. Please try again later." Allow user to retry or switch to other tabs.
 
 - **What happens when a user's authentication expires while viewing Summary?**  
-  Detect expired authentication, redirect to login with a return URL to bring user back to the same page after re-authentication.
+  For the initial implementation with dummy login, detect expired/missing authentication and redirect to login page. The return behavior will be defined when SSO-based authentication is implemented in the future.
 
 - **How does the system handle extremely long content pages (e.g., 10,000+ words)?**  
-  The summarization service should handle large content gracefully. If there are length limitations, implement a strategy to summarize sections or show a warning to the user.
+  The summarization service should handle large content gracefully. Summaries should target 20-25% of original length with bounds: minimum 150 words, maximum 500 words. If content exceeds reasonable limits, implement a strategy to summarize sections or show a warning to the user.
 
 - **What happens if the user clicks Summary multiple times rapidly?**  
   Prevent multiple simultaneous summarization requests by disabling the tab or showing "Loading..." until the first request completes.
@@ -93,6 +103,9 @@ When a user clicks the "Personalized" tab, they see a message: "Feature coming s
 
 - **How does the system handle network interruptions during summary streaming?**  
   Detect connection errors, display an error message, and provide a "Retry" button to restart the summarization request.
+
+- **What happens when the same user has multiple browser tabs open with the same content page?**  
+  Each browser tab maintains independent tab state (which tab is active), but they share the summary cache. If a summary is generated in one tab, it becomes immediately available in other tabs without re-requesting.
 
 ## Requirements *(mandatory)*
 
@@ -104,16 +117,17 @@ When a user clicks the "Personalized" tab, they see a message: "Feature coming s
 - **FR-004**: System MUST visually distinguish the active tab from inactive tabs (e.g., different color, underline, bold)
 - **FR-005**: System MUST display the full original markdown content when "Original" tab is active
 - **FR-006**: System MUST check for a session token when user clicks the "Summary" tab
-- **FR-007**: System MUST redirect unauthenticated users to a login page when they attempt to access "Summary"
+- **FR-007**: System MUST redirect unauthenticated users to a login page (dummy/stub implementation) when they attempt to access "Summary". Future implementation will use SSO-based authentication
 - **FR-008**: System MUST send the original page content to the summarization service when an authenticated user clicks "Summary"
 - **FR-009**: System MUST display a loading indicator while the summary is being generated
-- **FR-010**: System MUST stream the summary response progressively, displaying chunks as they arrive from the agent
+- **FR-010**: System MUST stream the summary response progressively, appending chunks as they arrive from the service and auto-scrolling the viewport to keep the latest content visible
 - **FR-011**: System MUST complete the streaming display and remove the loading indicator when the agent finishes
-- **FR-012**: System MUST cache the generated summary so that switching away from and back to "Summary" does not trigger a new summarization request
+- **FR-012**: System MUST cache the generated summary within the user's browser session so that switching away from and back to "Summary" does not trigger a new summarization request. Cache is session-scoped, shared across all browser tabs for the same user, and cleared when the browser session ends
 - **FR-013**: System MUST display "Feature coming soon" placeholder text when "Personalized" tab is active
 - **FR-014**: System MUST preserve tab state within a single page session (e.g., if user switches to Summary, scrolls down the page, then switches tabs and back, they should return to Summary with scroll position maintained)
 - **FR-015**: System MUST handle service errors gracefully and display user-friendly error messages in the Summary tab
 - **FR-016**: System MUST prevent multiple simultaneous summary requests for the same page content
+- **FR-017**: System MUST generate summaries targeting 20-25% of the original content length, with a minimum of 150 words and maximum of 500 words
 
 ### Key Entities *(include if feature involves data)*
 
