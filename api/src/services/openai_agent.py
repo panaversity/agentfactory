@@ -4,7 +4,7 @@ OpenAI Agent Service - integrates with OpenAI Agents SDK for summary generation
 import os
 import logging
 from typing import AsyncGenerator
-from agents import Runner, Agent, OpenAIChatCompletionsModel, SQLiteSession
+from agents import Runner, Agent, OpenAIChatCompletionsModel, SQLiteSession,set_tracing_disabled
 from openai import AsyncOpenAI
 from dotenv import load_dotenv, find_dotenv
 
@@ -14,6 +14,8 @@ logger = logging.getLogger(__name__)
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
+set_tracing_disabled(False)
+
 external_client = AsyncOpenAI(
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
     api_key=os.getenv("GOOGLE_API_KEY")
@@ -21,7 +23,7 @@ external_client = AsyncOpenAI(
 
 model = OpenAIChatCompletionsModel(
     openai_client=external_client,
-    model="gemini-2.0-flash",
+    model="gemini-2.5-pro",
 )
 
 async def generate_summary(content: str, page_id: str) -> AsyncGenerator[str, None]:
@@ -49,41 +51,8 @@ async def generate_summary(content: str, page_id: str) -> AsyncGenerator[str, No
     
     logger.info(f"Content word count: {word_count}, Target summary: {target_word_count} words")
     
-    instructions = f"""You are a summarization agent for a Docusaurus-based educational book.
-You will receive the full markdown content of the CURRENTLY OPENED PAGE.
-
-Your job is to create a clear, structured, universally useful summary of that page.
-This summary should be identical for all users and must NOT include personalization.
-
-Your output MUST use clean, simple markdown and follow this exact structure:
-
-## TL;DR
-- Provide a 2–3 sentence overview capturing the essence of the page.
-
-## Key Insights
-- Provide 3–7 bullet points summarizing the most important ideas.
-
-## Section Summaries
-- Include this section ONLY if the input contains headings (H1, H2, or H3).
-- Detect headings from the given markdown.
-- For each section, provide 2–4 concise bullet points that summarize that section.
-
-## Why This Page Matters
-- Explain, in 2–4 sentences, why the ideas in this page are important.
-- Base this ONLY on the page content itself.
-
-## Remember These 3 Points
-- Provide exactly three short, memorable takeaways.
-
----
-
-### Rules
-- Summarize only what exists in the page. Never invent or assume information.
-- Do not reference chapters, content, or context outside the current page.
-- Use clean markdown only. No HTML, no code fences unless the page truly contains code.
-- Keep explanations clear and accessible to any technical level.
-- Keep formatting consistent and skimmable.
-    """
+    instructions = f"""You are an expert content summarizer. Your task is to create a clear, concise summary of the provided text. Requirements: - Target length: {target_word_count} words (±10%) - Maintain key concepts and insights - Use clear, professional language - Preserve important technical details - Do not add information not present in the original text - Structure: Brief overview, main points, key takeaways
+"""
     
     try:
         # Create Agent instance
@@ -130,8 +99,11 @@ Your output MUST use clean, simple markdown and follow this exact structure:
                     delta_text = event.content
                 
                 if delta_text:
-                    logger.debug(f"Yielding delta: {delta_text[:50]}...")
-                    yield delta_text
+                    # Clean up excessive whitespace before yielding
+                    cleaned_delta = delta_text.replace('\n\n\n', '\n\n')
+                    if cleaned_delta:
+                        logger.debug(f"Yielding delta: {cleaned_delta[:50]}...")
+                        yield cleaned_delta
         
         logger.info(f"Summary generation completed for page_id: {page_id}")
         

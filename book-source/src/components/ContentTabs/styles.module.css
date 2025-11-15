@@ -239,7 +239,7 @@
   font-size: 1.063rem;
   line-height: 1.8;
   color: var(--ifm-color-emphasis-800);
-  white-space: pre-wrap;
+  white-space: pre-line;
   word-wrap: break-word;
   background: var(--ifm-background-color);
   padding: 1.5rem;
@@ -249,7 +249,13 @@
   position: relative;
 }
 
-/* Streaming cursor animation */
+/* Improve text rendering */
+.summaryText::first-line {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--ifm-color-emphasis-900);
+  line-height: 2;
+}
 .cursor {
   display: inline-block;
   font-weight: 100;
