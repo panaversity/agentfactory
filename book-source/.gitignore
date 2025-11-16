@@ -11,6 +11,9 @@
 # Auto-generated OG images (generated during build)
 /static/img/og
 
+# Auto-generated search index (generated during build)
+/static/search-index.json
+
 # TypeScript compiled output (should not be committed)
 docusaurus.config.js
 sidebars.js

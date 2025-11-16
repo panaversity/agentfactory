@@ -5,7 +5,9 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "build": "npm run search:index && docusaurus build",
+    "build:fast": "docusaurus build",
+    "search:index": "node scripts/generate-search-index.mjs",
     "check:jsonld": "node scripts/check-jsonld-ssr.mjs",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -22,6 +24,7 @@
     "@mdx-js/react": "^3.0.0",
     "cheerio": "^1.1.2",
     "clsx": "^2.0.0",
+    "gray-matter": "^4.0.3",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

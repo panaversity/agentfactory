@@ -895,3 +895,185 @@ article {
     padding: 1.25rem;
   }
 }
+
+/* ============================================================================
+   15. BREADCRUMB NAVIGATION - PREMIUM STYLING (Microsoft Docs Style)
+   ============================================================================ */
+
+/* Breadcrumb container */
+.theme-doc-breadcrumbs {
+  margin-bottom: 1.5rem !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+/* Breadcrumb list */
+.breadcrumbs,
+nav.theme-doc-breadcrumbs ol {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  flex-wrap: wrap !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+}
+
+/* Breadcrumb items */
+.breadcrumbs__item,
+nav.theme-doc-breadcrumbs li {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  font-size: 0.875rem !important;
+  line-height: 1.4 !important;
+}
+
+/* First breadcrumb item (sidebar/grid icon box) */
+.breadcrumbs__item:first-child .breadcrumbs__link,
+nav.theme-doc-breadcrumbs li:first-child a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  padding: 0 !important;
+  background: #2a2a2a !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+[data-theme='dark'] .breadcrumbs__item:first-child .breadcrumbs__link,
+[data-theme='dark'] nav.theme-doc-breadcrumbs li:first-child a {
+  background: #2a2a2a !important;
+}
+
+.breadcrumbs__item:first-child .breadcrumbs__link:hover,
+nav.theme-doc-breadcrumbs li:first-child a:hover {
+  background: #3a3a3a !important;
+  transform: translateY(-1px) !important;
+}
+
+/* CRITICAL: Hide ALL existing content (SVG home icon) inside first breadcrumb */
+.breadcrumbs__item:first-child .breadcrumbs__link *,
+nav.theme-doc-breadcrumbs li:first-child a *,
+.breadcrumbs__item:first-child .breadcrumbs__link svg,
+nav.theme-doc-breadcrumbs li:first-child a svg,
+.breadcrumbs__item:first-child .breadcrumbs__link path,
+nav.theme-doc-breadcrumbs li:first-child a path {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+}
+
+/* Hide any text content */
+.breadcrumbs__item:first-child .breadcrumbs__link,
+nav.theme-doc-breadcrumbs li:first-child a {
+  font-size: 0 !important;
+  color: transparent !important;
+  text-indent: -9999px !important;
+}
+
+/* Add custom grid/sidebar icon using ::before */
+.breadcrumbs__item:first-child .breadcrumbs__link::before,
+nav.theme-doc-breadcrumbs li:first-child a::before {
+  content: '' !important;
+  display: block !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 18px !important;
+  height: 18px !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='7' height='7' rx='1'/%3E%3Crect x='14' y='3' width='7' height='7' rx='1'/%3E%3Crect x='14' y='14' width='7' height='7' rx='1'/%3E%3Crect x='3' y='14' width='7' height='7' rx='1'/%3E%3C/svg%3E") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  text-indent: 0 !important;
+  z-index: 10 !important;
+}
+
+/* Other breadcrumb links */
+.breadcrumbs__link,
+nav.theme-doc-breadcrumbs a {
+  color: #e0e0e0 !important;
+  text-decoration: none !important;
+  font-weight: 400 !important;
+  transition: color 0.2s ease !important;
+  padding: 0.25rem 0 !important;
+}
+
+[data-theme='light'] .breadcrumbs__link,
+[data-theme='light'] nav.theme-doc-breadcrumbs a {
+  color: #2c3e50 !important;
+}
+
+.breadcrumbs__link:hover,
+nav.theme-doc-breadcrumbs a:hover {
+  color: #ffffff !important;
+}
+
+[data-theme='light'] .breadcrumbs__link:hover,
+[data-theme='light'] nav.theme-doc-breadcrumbs a:hover {
+  color: #001f3f !important;
+}
+
+/* Active/current breadcrumb */
+.breadcrumbs__item--active .breadcrumbs__link,
+nav.theme-doc-breadcrumbs li:last-child a {
+  color: #ffffff !important;
+  font-weight: 500 !important;
+}
+
+[data-theme='light'] .breadcrumbs__item--active .breadcrumbs__link,
+[data-theme='light'] nav.theme-doc-breadcrumbs li:last-child a {
+  color: #1a1a1a !important;
+}
+
+/* Breadcrumb separators (chevrons) */
+.breadcrumbs__item:not(:last-child)::after,
+nav.theme-doc-breadcrumbs li:not(:last-child)::after {
+  content: '›' !important;
+  color: #666666 !important;
+  font-size: 1.25rem !important;
+  font-weight: 300 !important;
+  margin: 0 0.25rem !important;
+  display: inline-block !important;
+}
+
+[data-theme='light'] .breadcrumbs__item:not(:last-child)::after,
+[data-theme='light'] nav.theme-doc-breadcrumbs li:not(:last-child)::after {
+  color: #999999 !important;
+}
+
+/* Responsive adjustments for breadcrumbs */
+@media screen and (max-width: 768px) {
+  .breadcrumbs,
+  nav.theme-doc-breadcrumbs ol {
+    gap: 0.375rem !important;
+  }
+
+  .breadcrumbs__item,
+  nav.theme-doc-breadcrumbs li {
+    font-size: 0.8125rem !important;
+  }
+
+  .breadcrumbs__item:first-child .breadcrumbs__link,
+  nav.theme-doc-breadcrumbs li:first-child a {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+  }
+
+  .breadcrumbs__item:first-child .breadcrumbs__link::before,
+  nav.theme-doc-breadcrumbs li:first-child a::before {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}

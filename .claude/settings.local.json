@@ -1,14 +1,25 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "WebSearch",
+      "mcp__shadcn__search_items_in_registries",
+      "mcp__shadcn__get_item_examples_from_registries",
+      "mcp__shadcn__get_add_command_for_items",
+      "Bash(npx shadcn@latest init)",
+      "Bash(npm install:*)",
+      "Bash(npm uninstall:*)",
+      "mcp__shadcn__view_items_in_registries",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(npm run build:*)",
+      "Bash(\"D:\\ai-native-software-development\\book-source\\src\\components\\CustomNavbar\\customNavbar.css.tmp\")"
     ],
     "deny": [],
     "ask": []
   },
-  "alwaysThinkingEnabled": false,
   "disabledMcpjsonServers": [
     "playwright",
     "context7"
-  ]
+  ],
+  "alwaysThinkingEnabled": false
 }

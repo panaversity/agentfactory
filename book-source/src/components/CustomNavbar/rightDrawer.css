@@ -1,0 +1,377 @@
+/* Right Drawer - Push Content Layout (No Overlay) */
+
+/* Body class for drawer state - used as trigger for content adjustments */
+/* No direct layout changes to body - margin applied to .main-wrapper instead */
+body.drawer-open {
+  /* Transition handled by .main-wrapper */
+}
+
+/* Apply margin-right to main wrapper to push content left when drawer opens */
+/* This creates space for the drawer without affecting body/html layout calculations */
+body.drawer-open .main-wrapper {
+  margin-right: 440px !important;
+  transition: margin-right 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Keep navbar positioning correct when drawer opens */
+/* Navbar spans full width - drawer sits below navbar (not behind it) */
+body.drawer-open .navbar.custom-navbar {
+  position: sticky !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+  /* Navbar is not affected by main-wrapper margin */
+}
+
+/* CRITICAL: Hide the entire TOC column wrapper when drawer is open */
+body.drawer-open .col--3,
+body.drawer-open .col.col--3 {
+  display: none !important;
+}
+
+/* Expand main content column to use full width when TOC is hidden */
+body.drawer-open .row > .col:not(.col--3) {
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+}
+
+/* Ensure article/content wrapper uses available space */
+body.drawer-open article,
+body.drawer-open [class*="docItemCol"],
+body.drawer-open .markdown {
+  max-width: 100% !important;
+}
+
+/* Responsive - full width drawer on mobile */
+@media (max-width: 768px) {
+  body.drawer-open .main-wrapper {
+    margin-right: 100vw !important; /* Push content completely off-screen for full-width drawer */
+  }
+}
+
+/* Drawer Panel - Positioned beside content, below navbar */
+.right-drawer__panel {
+  position: fixed !important;
+  top: 108px !important; /* Start below navbar (60px main + 48px secondary) */
+  right: 0 !important;
+  left: auto !important;
+  bottom: 0 !important;
+  width: 440px !important;
+  max-width: 90vw !important;
+  background-color: #0a0a0a !important;
+  border-left: 1px solid #1f1f1f !important;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.5) !important;
+  z-index: 100 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transform: translateX(100%) !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  overflow: hidden !important;
+  direction: ltr !important;
+}
+
+.right-drawer__panel--open {
+  transform: translateX(0) !important;
+}
+
+/* Drawer Header */
+.right-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 24px 20px 24px;
+  border-bottom: 1px solid #1f1f1f;
+  flex-shrink: 0;
+}
+
+.right-drawer__title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.right-drawer__close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: #888888;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.right-drawer__close-button:hover {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.right-drawer__close-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Drawer Content - Scrollable Area */
+.right-drawer__content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px;
+}
+
+/* Custom scrollbar for drawer content */
+.right-drawer__content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.right-drawer__content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.right-drawer__content::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 5px;
+  border: 2px solid #0a0a0a;
+}
+
+.right-drawer__content::-webkit-scrollbar-thumb:hover {
+  background: #404040;
+}
+
+/* Placeholder Content */
+.right-drawer__placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.right-drawer__placeholder-text {
+  font-size: 14px;
+  color: #999999;
+  line-height: 1.6;
+  margin: 0 0 8px 0;
+}
+
+/* Form Styles */
+.right-drawer__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.right-drawer__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.right-drawer__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #cccccc;
+  line-height: 1.4;
+}
+
+.right-drawer__input {
+  width: 100%;
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+  outline: none;
+  font-family: inherit;
+}
+
+.right-drawer__input::placeholder {
+  color: #666666;
+}
+
+.right-drawer__input:hover {
+  border-color: #333333;
+  background-color: #1f1f1f;
+}
+
+.right-drawer__input:focus {
+  border-color: #444444;
+  background-color: #1f1f1f;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
+}
+
+/* Action Buttons */
+.right-drawer__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.right-drawer__button {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-family: inherit;
+  text-align: center;
+}
+
+.right-drawer__button--primary {
+  background-color: #ffffff;
+  color: #0a0a0a;
+}
+
+.right-drawer__button--primary:hover {
+  background-color: #f0f0f0;
+}
+
+.right-drawer__button--primary:active {
+  background-color: #e5e5e5;
+}
+
+.right-drawer__button--secondary {
+  background-color: transparent;
+  color: #cccccc;
+  border: 1px solid #2a2a2a;
+}
+
+.right-drawer__button--secondary:hover {
+  background-color: #1a1a1a;
+  border-color: #333333;
+  color: #ffffff;
+}
+
+.right-drawer__button--secondary:active {
+  background-color: #151515;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .right-drawer__panel {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .right-drawer__header {
+    padding: 20px 16px 16px 16px;
+  }
+
+  .right-drawer__content {
+    padding: 20px 16px;
+  }
+
+  .right-drawer__title {
+    font-size: 18px;
+  }
+}
+
+/* Light Mode Overrides */
+[data-theme='light'] .right-drawer__panel {
+  background-color: #ffffff;
+  border-left-color: #e5e5e5;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .right-drawer__overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .right-drawer__header {
+  border-bottom-color: #e5e5e5;
+}
+
+[data-theme='light'] .right-drawer__title {
+  color: #0a0a0a;
+}
+
+[data-theme='light'] .right-drawer__close-button {
+  color: #666666;
+}
+
+[data-theme='light'] .right-drawer__close-button:hover {
+  background-color: #f5f5f5;
+  color: #0a0a0a;
+}
+
+[data-theme='light'] .right-drawer__content::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-color: #ffffff;
+}
+
+[data-theme='light'] .right-drawer__content::-webkit-scrollbar-thumb:hover {
+  background: #b0b0b0;
+}
+
+[data-theme='light'] .right-drawer__placeholder-text {
+  color: #666666;
+}
+
+[data-theme='light'] .right-drawer__label {
+  color: #333333;
+}
+
+[data-theme='light'] .right-drawer__input {
+  background-color: #f5f5f5;
+  border-color: #e0e0e0;
+  color: #0a0a0a;
+}
+
+[data-theme='light'] .right-drawer__input::placeholder {
+  color: #999999;
+}
+
+[data-theme='light'] .right-drawer__input:hover {
+  background-color: #efefef;
+  border-color: #d0d0d0;
+}
+
+[data-theme='light'] .right-drawer__input:focus {
+  background-color: #ffffff;
+  border-color: #999999;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='light'] .right-drawer__button--primary {
+  background-color: #0a0a0a;
+  color: #ffffff;
+}
+
+[data-theme='light'] .right-drawer__button--primary:hover {
+  background-color: #1a1a1a;
+}
+
+[data-theme='light'] .right-drawer__button--primary:active {
+  background-color: #252525;
+}
+
+[data-theme='light'] .right-drawer__button--secondary {
+  color: #555555;
+  border-color: #d0d0d0;
+}
+
+[data-theme='light'] .right-drawer__button--secondary:hover {
+  background-color: #f5f5f5;
+  border-color: #b0b0b0;
+  color: #0a0a0a;
+}
+
+[data-theme='light'] .right-drawer__button--secondary:active {
+  background-color: #ebebeb;
+}

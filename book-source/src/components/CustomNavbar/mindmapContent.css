@@ -1,0 +1,457 @@
+/* ============================================
+   Mindmap Content - Polar Night Theme
+   ============================================ */
+
+.mindmap-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+html[data-theme='dark'] .mindmap-content {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+}
+
+/* ============================================
+   Empty State
+   ============================================ */
+
+.mindmap-content__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.mindmap-content__empty p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #001f3f;
+}
+
+html[data-theme='dark'] .mindmap-content__empty p {
+  color: #e0e0e0;
+}
+
+/* ============================================
+   Controls Bar
+   ============================================ */
+
+.mindmap-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: white;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 31, 63, 0.05);
+  z-index: 10;
+}
+
+html[data-theme='dark'] .mindmap-controls {
+  background: #1a1a1a;
+  border-bottom: 1px solid #333333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.mindmap-controls__group {
+  display: flex;
+  gap: 8px;
+}
+
+.mindmap-controls__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #001f3f;
+}
+
+html[data-theme='dark'] .mindmap-controls__btn {
+  background: #2a2a2a;
+  border-color: #444444;
+  color: #e0e0e0;
+}
+
+.mindmap-controls__btn:hover {
+  background: linear-gradient(135deg, #001f3f 0%, #003366 100%);
+  border-color: #003366;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 31, 63, 0.2);
+}
+
+html[data-theme='dark'] .mindmap-controls__btn:hover {
+  background: linear-gradient(135deg, #003366 0%, #004488 100%);
+  border-color: #004488;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.3);
+}
+
+.mindmap-controls__btn:active {
+  transform: translateY(0);
+}
+
+.mindmap-controls__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.mindmap-controls__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #001f3f;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+html[data-theme='dark'] .mindmap-controls__label {
+  color: #e0e0e0;
+}
+
+.mindmap-controls__zoom {
+  font-size: 12px;
+  color: #666666;
+  font-weight: 500;
+}
+
+html[data-theme='dark'] .mindmap-controls__zoom {
+  color: #999999;
+}
+
+/* ============================================
+   Canvas
+   ============================================ */
+
+.mindmap-canvas {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(0, 31, 63, 0.02) 1px, transparent 1px),
+    linear-gradient(rgba(0, 31, 63, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+html[data-theme='dark'] .mindmap-canvas {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.mindmap-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   Mindmap Nodes
+   ============================================ */
+
+:root {
+  --mindmap-connection-color: #aaaaaa;
+}
+
+html[data-theme='dark'] {
+  --mindmap-connection-color: #555555;
+}
+
+.mindmap-connection {
+  transition: opacity 0.3s ease;
+}
+
+.mindmap-node {
+  fill: white;
+  stroke: #003366;
+  stroke-width: 2;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 8px rgba(0, 31, 63, 0.1));
+}
+
+html[data-theme='dark'] .mindmap-node {
+  fill: #2a2a2a;
+  stroke: #004488;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+.mindmap-node:hover {
+  fill: linear-gradient(135deg, #f0f8ff 0%, #e6f2ff 100%);
+  stroke: #001f3f;
+  stroke-width: 3;
+  filter: drop-shadow(0 4px 16px rgba(0, 31, 63, 0.2));
+  cursor: pointer;
+}
+
+html[data-theme='dark'] .mindmap-node:hover {
+  fill: #333333;
+  stroke: #0066cc;
+  filter: drop-shadow(0 4px 16px rgba(0, 102, 204, 0.3));
+}
+
+.mindmap-node--selected {
+  fill: linear-gradient(135deg, #001f3f 0%, #003366 100%);
+  stroke: #001f3f;
+  stroke-width: 3;
+  filter: drop-shadow(0 4px 16px rgba(0, 31, 63, 0.3));
+}
+
+html[data-theme='dark'] .mindmap-node--selected {
+  fill: linear-gradient(135deg, #003366 0%, #004488 100%);
+  stroke: #0066cc;
+  filter: drop-shadow(0 4px 16px rgba(0, 102, 204, 0.4));
+}
+
+.mindmap-node--root {
+  fill: linear-gradient(135deg, #001f3f 0%, #003366 100%);
+  stroke: #001f3f;
+  stroke-width: 3;
+  filter: drop-shadow(0 4px 20px rgba(0, 31, 63, 0.25));
+}
+
+html[data-theme='dark'] .mindmap-node--root {
+  fill: linear-gradient(135deg, #003366 0%, #004488 100%);
+  stroke: #0066cc;
+  filter: drop-shadow(0 4px 20px rgba(0, 102, 204, 0.4));
+}
+
+/* ============================================
+   Node Text
+   ============================================ */
+
+.mindmap-node-text {
+  fill: #001f3f;
+  font-size: 13px;
+  font-weight: 500;
+  pointer-events: none;
+  user-select: none;
+}
+
+html[data-theme='dark'] .mindmap-node-text {
+  fill: #e0e0e0;
+}
+
+.mindmap-node--selected + .mindmap-node-text,
+.mindmap-node-text--root {
+  fill: white;
+  font-weight: 600;
+}
+
+.mindmap-node:hover + .mindmap-node-text {
+  fill: #001f3f;
+  font-weight: 600;
+}
+
+html[data-theme='dark'] .mindmap-node:hover + .mindmap-node-text {
+  fill: white;
+}
+
+/* ============================================
+   Toggle Button (Collapse/Expand)
+   ============================================ */
+
+.mindmap-toggle-circle {
+  fill: white;
+  stroke: #003366;
+  stroke-width: 2;
+  transition: all 0.2s ease;
+}
+
+html[data-theme='dark'] .mindmap-toggle-circle {
+  fill: #2a2a2a;
+  stroke: #004488;
+}
+
+.mindmap-toggle-circle:hover {
+  fill: #001f3f;
+  stroke: #001f3f;
+  transform: scale(1.1);
+}
+
+html[data-theme='dark'] .mindmap-toggle-circle:hover {
+  fill: #003366;
+  stroke: #0066cc;
+}
+
+.mindmap-toggle-text {
+  fill: #003366;
+  font-size: 14px;
+  font-weight: 700;
+  pointer-events: none;
+  user-select: none;
+}
+
+html[data-theme='dark'] .mindmap-toggle-text {
+  fill: #e0e0e0;
+}
+
+.mindmap-toggle-circle:hover + .mindmap-toggle-text {
+  fill: white;
+}
+
+/* ============================================
+   Legend
+   ============================================ */
+
+.mindmap-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 12px 20px;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+  box-shadow: 0 -2px 8px rgba(0, 31, 63, 0.05);
+}
+
+html[data-theme='dark'] .mindmap-legend {
+  background: #1a1a1a;
+  border-top: 1px solid #333333;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.mindmap-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #666666;
+}
+
+html[data-theme='dark'] .mindmap-legend__item {
+  color: #999999;
+}
+
+.mindmap-legend__icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.mindmap-legend__icon--click {
+  background: linear-gradient(135deg, #001f3f 0%, #003366 100%);
+  cursor: pointer;
+}
+
+.mindmap-legend__icon--click::after {
+  content: '👆';
+  font-size: 12px;
+  position: absolute;
+}
+
+.mindmap-legend__icon--drag {
+  background: linear-gradient(135deg, #666666 0%, #888888 100%);
+  cursor: grab;
+}
+
+.mindmap-legend__icon--drag::after {
+  content: '✋';
+  font-size: 12px;
+  position: absolute;
+}
+
+.mindmap-legend__icon--expand {
+  background: white;
+  border: 2px solid #003366;
+}
+
+html[data-theme='dark'] .mindmap-legend__icon--expand {
+  background: #2a2a2a;
+  border-color: #004488;
+}
+
+.mindmap-legend__icon--expand::after {
+  content: '+';
+  font-size: 14px;
+  font-weight: 700;
+  color: #003366;
+}
+
+html[data-theme='dark'] .mindmap-legend__icon--expand::after {
+  color: #e0e0e0;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 768px) {
+  .mindmap-controls {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .mindmap-controls__info {
+    align-items: center;
+  }
+
+  .mindmap-controls__label {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .mindmap-legend {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .mindmap-legend__item {
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes mindmap-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.mindmap-node-group {
+  animation: mindmap-fade-in 0.3s ease;
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+.mindmap-node:focus,
+.mindmap-toggle-circle:focus {
+  outline: 2px solid #001f3f;
+  outline-offset: 2px;
+}
+
+html[data-theme='dark'] .mindmap-node:focus,
+html[data-theme='dark'] .mindmap-toggle-circle:focus {
+  outline-color: #0066cc;
+}

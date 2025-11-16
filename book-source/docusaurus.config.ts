@@ -168,20 +168,36 @@ const config: Config = {
       },
     },
     navbar: {
-      title: "AI Native Development",
-      // logo: {
-      //   alt: 'Panaversity Logo',
-      //   src: 'img/book-cover.png',
-      //   width: 32,
-      //   height: 32,
-      // },
+      title: "AI Native Book",
       hideOnScroll: false,
+      // The navbar items below are kept for mobile menu compatibility
+      // Desktop view will use the custom navbar component
       items: [
         {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
-          label: "Book",
+          label: "Documentation",
+        },
+        {
+          to: "/specs",
+          label: "Specification",
+          position: "left",
+        },
+        {
+          to: "/community",
+          label: "Community",
+          position: "left",
+        },
+        {
+          to: "/about",
+          label: "About",
+          position: "left",
+        },
+        {
+          to: "/blog",
+          label: "Blog",
+          position: "right",
         },
         {
           href: "https://github.com/panaversity/ai-native-software-development",

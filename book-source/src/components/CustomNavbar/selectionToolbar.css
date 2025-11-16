@@ -1,0 +1,359 @@
+/* Highlight Color Variables */
+:root {
+  --highlight-yellow: #fef08a;
+  --highlight-green: #86efac;
+  --highlight-blue: #93c5fd;
+  --highlight-pink: #f9a8d4;
+  --highlight-purple: #d8b4fe;
+  --highlight-orange: #fdba74;
+}
+
+/* Custom Text Selection Colors - Dark Theme */
+::selection {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Selection Toolbar - Appears above selected text */
+
+.selection-toolbar {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background-color: #0a0a0a;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  padding: 4px;
+  z-index: 99999;
+  animation: selectionToolbarFadeIn 0.2s ease;
+  pointer-events: all;
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+@keyframes selectionToolbarFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.selection-toolbar__button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: #cccccc;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.selection-toolbar__button:hover {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.selection-toolbar__button:active {
+  background-color: #252525;
+  transform: scale(0.98);
+}
+
+.selection-toolbar__button svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.selection-toolbar__button span {
+  line-height: 1;
+}
+
+/* Add a small arrow pointing down to the selected text */
+.selection-toolbar::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #0a0a0a;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  z-index: 100000;
+}
+
+/* Highlighter and Color Picker */
+.selection-toolbar__highlighter {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.selection-toolbar__highlighter-button {
+  border-left: 1px solid #2a2a2a;
+  padding-left: 12px;
+  margin-left: 4px;
+}
+
+.selection-toolbar__dropdown-arrow {
+  margin-left: 4px;
+  transition: transform 0.2s ease;
+}
+
+.selection-toolbar__highlighter-button:hover .selection-toolbar__dropdown-arrow {
+  transform: translateY(1px);
+}
+
+.selection-toolbar__color-picker {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  background-color: #0a0a0a;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  z-index: 100001;
+  animation: colorPickerFadeIn 0.2s ease;
+  min-width: 120px;
+}
+
+@keyframes colorPickerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.selection-toolbar__color-option {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+}
+
+.selection-toolbar__color-option:hover {
+  transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.selection-toolbar__color-option--selected {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+/* Highlight Styles - Line-by-line highlight that preserves layout */
+.text-highlight {
+  position: relative;
+  transition: opacity 0.15s ease;
+  /* Use box-decoration-break to make highlights follow line breaks naturally */
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  /* Inline display for text flow */
+  display: inline;
+  /* Small padding for better readability */
+  padding: 2px 4px;
+  /* Slight border radius for smooth edges at line breaks */
+  border-radius: 3px;
+  /* Force dark text color for readability on light backgrounds */
+  color: #1a1a1a !important;
+}
+
+.text-highlight:hover {
+  opacity: 0.95;
+}
+
+/* Apply highlight color and dark text to all child elements while preserving their layout */
+.text-highlight * {
+  background-color: inherit !important;
+  box-decoration-break: inherit;
+  -webkit-box-decoration-break: inherit;
+  color: inherit !important;
+}
+
+/* Delete Button - appears on hover at top-left edge of highlight */
+.text-highlight__delete {
+  position: absolute;
+  top: -10px;
+  left: -7px;
+  width: 14px;
+  height: 14px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #ffffff;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  z-index: 10;
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  user-select: none;
+  pointer-events: auto;
+  /* Prevent delete button from being copied or included in text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.text-highlight:hover .text-highlight__delete {
+  display: flex;
+}
+
+.text-highlight__delete:hover {
+  background-color: #ef4444;
+  border-color: #ffffff;
+  transform: scale(1.15);
+  box-shadow: 0 3px 8px rgba(239, 68, 68, 0.4);
+}
+
+.text-highlight-yellow {
+  background-color: #fef08a;
+}
+
+.text-highlight-green {
+  background-color: #86efac;
+}
+
+.text-highlight-blue {
+  background-color: #93c5fd;
+}
+
+.text-highlight-pink {
+  background-color: #f9a8d4;
+}
+
+.text-highlight-purple {
+  background-color: #d8b4fe;
+}
+
+.text-highlight-orange {
+  background-color: #fdba74;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .selection-toolbar {
+    flex-wrap: wrap;
+    max-width: 90vw;
+  }
+
+  .selection-toolbar__button {
+    padding: 8px 10px;
+    font-size: 12px;
+    gap: 4px;
+  }
+
+  .selection-toolbar__button svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .selection-toolbar__button span {
+    display: none;
+  }
+
+  .selection-toolbar__button {
+    padding: 8px;
+  }
+
+  .selection-toolbar {
+    gap: 2px;
+  }
+}
+
+/* Light Mode - Highlighter */
+[data-theme='light'] .selection-toolbar__highlighter-button {
+  border-left-color: #e0e0e0;
+}
+
+[data-theme='light'] .selection-toolbar__color-picker {
+  background-color: #ffffff;
+  border-color: #e0e0e0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='light'] .selection-toolbar__color-option:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='light'] .selection-toolbar__color-option--selected {
+  border-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Light Mode - Custom Text Selection Colors */
+[data-theme='light'] ::selection {
+  background-color: rgba(0, 0, 0, 0.15);
+  color: #0a0a0a;
+}
+
+[data-theme='light'] ::-moz-selection {
+  background-color: rgba(0, 0, 0, 0.15);
+  color: #0a0a0a;
+}
+
+/* Light Mode Overrides */
+[data-theme='light'] .selection-toolbar {
+  background-color: #ffffff;
+  border-color: #e0e0e0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='light'] .selection-toolbar::after {
+  border-top-color: #ffffff;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+[data-theme='light'] .selection-toolbar__button {
+  color: #555555;
+}
+
+[data-theme='light'] .selection-toolbar__button:hover {
+  background-color: #f5f5f5;
+  color: #0a0a0a;
+}
+
+[data-theme='light'] .selection-toolbar__button:active {
+  background-color: #ebebeb;
+}

@@ -4,6 +4,9 @@
  * work well for content-centric websites.
  */
 
+/* Import Custom Navbar CSS */
+@import "../components/CustomNavbar/customNavbar.css";
+
 /* You can override the default Infima variables here. */
 /* Polar Night Palette: Deep Navy with Sophisticated Grays - Bold & Elegant */
 :root {
@@ -47,9 +50,20 @@
     --ifm-background-surface-color: #1a1a1a;
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling and default zoom level */
 html {
     scroll-behavior: smooth;
+    /* Set default zoom to 90% for better display */
+    zoom: 90%;
+}
+
+/* Firefox doesn't support zoom property, use transform instead */
+@-moz-document url-prefix() {
+    html {
+        transform: scale(0.9);
+        transform-origin: 0 0;
+        width: 111.111%;
+    }
 }
 
 /* Enhanced link styles */
