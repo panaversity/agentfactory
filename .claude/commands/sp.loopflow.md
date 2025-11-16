@@ -34,10 +34,10 @@ $ARGUMENTS
 
 ### Constitutional Grounding
 
-✅ **Principle 2 (Co-Learning Partner):** AI used strategically where it adds value, not reflexively for everything
-✅ **Core Philosophy #1 (AI Spectrum):** Teaching when Assisted vs. Driven vs. Native makes sense
-✅ **Graduated Teaching (Principle 13):** Direct execution for foundations, AI for complexity, AI orchestration for scale
-✅ **"Specs Are the New Syntax":** Focus on high-value specification work, not trivial command execution
+✅ **Principle 2 (Graduated Teaching) + Section IIa (Panaversity 4-Layer Method):** Manual practice → AI-assisted → Reusable intelligence → Spec-driven integration
+✅ **Section IIb (AI Three Roles Framework):** AI as Teacher/Student/Co-Worker with bidirectional co-learning
+✅ **Core Philosophy #1 (AI Development Spectrum):** Teaching when Assisted vs. Driven vs. Native makes sense
+✅ **Principle 1 (Specification Primacy):** "Specs Are the New Syntax" — Focus on high-value specification work, not trivial command execution
 
 ### Decision Framework: When to Use AI vs. Direct Execution
 
@@ -168,7 +168,7 @@ From sources above, derive WITHOUT asking user:
 - Complexity level and cognitive load limits
 - Prerequisites (chapters that must exist first)
 - Relevant domain skills (learning-objectives, concept-scaffolding, code-example-generator, etc.)
-- Teaching pattern (Graduated Teaching Principle 13: Direct → AI Companion → AI Orchestration)
+- Teaching pattern (Principle 2 Graduated Teaching: Tier 1 Foundational → Tier 2 Complex → Tier 3 Scale)
 
 **For Code Features:**
 - Task type (authentication, API, database, deployment, etc.)
@@ -197,10 +197,10 @@ Extract and encode these principles into ALL downstream phases:
 3. **Spec-First Development**: "Specs Are the New Syntax" - articulating intent is the primary skill
 4. **Validation-First Safety**: Never trust, always verify
 
-**From Graduated Teaching (Principle 13):**
-- **Tier 1 (Direct Execution)**: Teach stable, foundational operations that students execute directly
-- **Tier 2 (AI Companion)**: AI handles complex execution from specifications
-- **Tier 3 (AI Orchestration)**: AI orchestrates multi-step workflows at scale (10+ items)
+**From Graduated Teaching (Principle 2):**
+- **Tier 1 (Foundational)**: Book teaches directly — students execute stable operations manually (no AI needed yet)
+- **Tier 2 (Complex)**: AI companion handles complexity from specifications — students validate and learn
+- **Tier 3 (Scale)**: AI orchestrates multi-step workflows at scale (10+ items) — students supervise and quality-assure
 
 **From AI Development Spectrum:**
 - **Assisted (2-3x)**: AI as helper for simple tasks
@@ -824,10 +824,10 @@ Pass to subagent: COMPLETE intelligence object including:
     "Use decision framework: deterministic → direct, complex → AI companion, scale → AI orchestration"
   ],
   "constitutional_principles": [
-    "Principle 13 (Graduated Teaching): Direct → AI Companion → AI Orchestration",
-    "Principle 18 (Three Roles): AI as Teacher/Student/Co-Worker",
-    "Core Philosophy #2 (Co-Learning): Bidirectional learning",
-    "Core Philosophy #1 (AI Spectrum): Assisted → Driven → Native (teach when each applies)"
+    "Principle 2 (Graduated Teaching): Tier 1 Foundational → Tier 2 Complex → Tier 3 Scale",
+    "Section IIa (Panaversity 4-Layer Method): Manual Practice → AI-Assisted → Reusable Intelligence → Spec-Driven",
+    "Section IIb (AI Three Roles Framework): AI as Teacher/Student/Co-Worker with bidirectional co-learning",
+    "Core Philosophy #1 (AI Development Spectrum): Assisted → Driven → Native (teach when each applies)"
   ],
   "validation_criteria": {
     "duration_realistic": true,
@@ -1030,7 +1030,7 @@ Ready for: [next steps]
 1. **Vertical Intelligence**: Constitution + project context read FIRST, questions SECOND
 2. **Goal-Oriented**: User states GOAL, AI derives STRATEGY using constitutional principles
 3. **Universal Decision Framework**: Deterministic/simple → direct, complex → AI companion, scale → AI orchestration (works for ANY tool)
-4. **Graduated Teaching**: Apply Principle 13 across all content
+4. **Graduated Teaching**: Apply Principle 2 (Graduated Teaching) + Section IIa (4-Layer Method) + Section IIb (Three Roles Framework) across all content
 5. **Quality Gates**: Every phase has automatic gates that prevent bad patterns
 6. **Context Preservation**: Full intelligence + AI strategy passed through all phases with explicit context objects
 7. **Constitutional Reasoning**: Principles guide decisions, not tool-specific templates
