@@ -7,6 +7,11 @@ output_style: super-orchestra-session
 
 # Super Orchestra Agent: Baby/Preview Session
 
+**Constitution Alignment**: This agent aligns with Constitution v4.0.1, implementing:
+- **Section IIa**: Panaversity 4-Layer Teaching Method (deep research informs pedagogical structure)
+- **Section IIb**: AI Three Roles Framework (co-learning through comprehensive intelligence gathering)
+- **Vertical Intelligence Architecture**: Full Layer 1-5 stack application (Constitution → Domain → Context → Intelligence Object → Agents)
+
 **Philosophy**: "In the intelligence abundance era, value shifts from execution speed to THINKING DEPTH. A 40x engineer at Google/OpenAI doesn't type faster—they think deeper, research comprehensively, and plan systematically before execution."
 
 ---
@@ -65,9 +70,10 @@ A **Super Orchestra Session** is when:
 
 ### Deep Search Phase (Pattern Recognition)
 **Constitutional Principles Applied**:
-- Principle 13 (Graduated Teaching): Tier 1 (book) → Tier 2 (AI companion) → Tier 3 (orchestration)
-- Principle 18 (Three Roles): AI as Teacher/Student/Co-Worker
-- Cognitive Load (A2): Maximum 7 concepts per section maintained
+- Section IIa (Panaversity 4-Layer Method): Manual → AI-Assisted → Reusable Intelligence → Spec-Driven progression
+- Section IIb (Three Roles Framework): AI as Teacher/Student/Co-Worker demonstrated
+- Principle 2 (Graduated Teaching): Tier 1 (foundational) → Tier 2 (complex) → Tier 3 (scale)
+- Principle 5 (Progressive Complexity): Cognitive Load (A2 = max 7 concepts per section) maintained
 - AIDD Personalization: Plugins enable workflow customization for AI-Driven Development
 
 **Pattern Recognition**: Chapter 5 now mirrors Chapter 1's pedagogical structure (clean "Try With AI" format, realistic durations, anti-over-engineering).
@@ -150,10 +156,11 @@ A **Super Orchestra Session** is when:
    ```
 
 3. **Constitution Cross-Reference**:
-   - Read `.specify/memory/constitution.md`
-   - Apply Principle 13 (Graduated Teaching)
-   - Apply Principle 18 (Three Roles)
-   - Validate Cognitive Load (A2 = max 7 concepts)
+   - Read `.specify/memory/constitution.md` (v4.0.1)
+   - Apply Section IIa (Panaversity 4-Layer Teaching Method)
+   - Apply Section IIb (AI Three Roles Framework)
+   - Apply Principle 2 (Graduated Teaching Pattern)
+   - Validate Cognitive Load (Principle 5: CEFR-aligned limits)
 
 **Output**: Intelligence object with:
 - What's missing (Skills progressive disclosure, Plugin installation, MCP configuration, Relationship hierarchy)
@@ -283,8 +290,8 @@ claude plugin list  # Verify installation
 
 **Tools Used**:
 - Context7: 8000 tokens from `/anthropics/claude-code` library
-- WebFetch: 3 official sources (engineering blog, docs, announcement)
-- Constitution: Cross-reference for Graduated Teaching, Three Roles, Cognitive Load
+- WebFetch: 3+ official sources (engineering blog, docs, announcement)
+- Constitution v4.0.1: Cross-reference for Section IIa (4-Layer Method), Section IIb (Three Roles), Principle 5 (Cognitive Load)
 
 **Result**: Comprehensive understanding that surpasses any single official source.
 

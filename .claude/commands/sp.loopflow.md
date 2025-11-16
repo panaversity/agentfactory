@@ -34,10 +34,9 @@ $ARGUMENTS
 
 ### Constitutional Grounding
 
-✅ **Principle 2 (Co-Learning Partner):** AI used strategically where it adds value, not reflexively for everything
-✅ **Core Philosophy #1 (AI Spectrum):** Teaching when Assisted vs. Driven vs. Native makes sense
-✅ **Graduated Teaching (Principle 13):** Direct execution for foundations, AI for complexity, AI orchestration for scale
-✅ **"Specs Are the New Syntax":** Focus on high-value specification work, not trivial command execution
+✅ **Section IIa (AI-Native Teaching Framework — 4-Stage Progression):** Stage 1 (Manual Foundation) → Stage 2 (AI Collaboration with Three Roles) → Stage 3 (Intelligence Design) → Stage 4 (Spec-Driven Integration)
+✅ **Principle 1 (Specification Primacy):** "Specs Are the New Syntax" — Focus on high-value specification work, not trivial command execution
+✅ **Principle 2 (Progressive Complexity):** CEFR-aligned cognitive load management (A1-A2: 5-7 concepts, C2: no limits)
 
 ### Decision Framework: When to Use AI vs. Direct Execution
 
@@ -86,25 +85,32 @@ $ARGUMENTS
   - Multi-region failover architecture → AI ORCHESTRATION (complex strategy)
 ```
 
-### Teaching Pattern (Graduated)
+### Teaching Pattern (4-Stage Progression)
 
-**Tier 1 - Foundational (Book Teaches)**:
-- Direct commands for deterministic operations
+**Stage 1 - Manual Foundation (Book Teaches Directly)**:
+- Direct commands for foundational operations
 - Clear documentation of syntax and expected output
-- Build muscle memory and direct understanding
-- AI positioned as troubleshooter (errors) and explainer (concepts)
+- Build muscle memory and conceptual understanding
+- AI role: Minimal or absent (students validate own work)
 
-**Tier 2 - Complex Execution (AI Companion)**:
+**Stage 2 - AI Collaboration (AI as Teacher/Student/Co-Worker)**:
 - Student specifies WHAT (intent, requirements, constraints)
-- AI handles HOW (complex syntax, multi-step procedures, tradeoffs)
-- Student validates and understands the output
-- Learn strategy and intent, not memorization
+- AI suggests patterns student hadn't considered (AI as Teacher)
+- Student corrects/refines AI output (AI as Student)
+- Both converge on optimal solution (AI as Co-Worker)
+- Learn collaboration patterns and validation skills
 
-**Tier 3 - Scale Operations (AI Orchestration)**:
+**Stage 3 - Intelligence Design (Create Reusable Components)**:
+- Transform lesson knowledge into reusable subagents/skills
+- Design for accumulation and compounding value
+- Document usage patterns and integration points
+- Build organizational capability, not just complete tasks
+
+**Stage 4 - Spec-Driven Integration (Orchestrate at Scale)**:
 - Operations involving 10+ items or multi-file workflows
-- Student orchestrates high-level strategy
-- AI manages tactical execution and coordination
-- Learn supervision and quality assurance skills
+- Begin with spec.md BEFORE implementation
+- Compose previously created reusable intelligence
+- Student orchestrates strategy, AI manages tactical execution
 
 ---
 
@@ -168,7 +174,7 @@ From sources above, derive WITHOUT asking user:
 - Complexity level and cognitive load limits
 - Prerequisites (chapters that must exist first)
 - Relevant domain skills (learning-objectives, concept-scaffolding, code-example-generator, etc.)
-- Teaching pattern (Graduated Teaching Principle 13: Direct → AI Companion → AI Orchestration)
+- Teaching pattern (Section IIa 4-Stage Framework: Stage 1 Manual Foundation → Stage 2 AI Collaboration → Stage 3 Intelligence Design → Stage 4 Spec-Driven Integration)
 
 **For Code Features:**
 - Task type (authentication, API, database, deployment, etc.)
@@ -197,10 +203,11 @@ Extract and encode these principles into ALL downstream phases:
 3. **Spec-First Development**: "Specs Are the New Syntax" - articulating intent is the primary skill
 4. **Validation-First Safety**: Never trust, always verify
 
-**From Graduated Teaching (Principle 13):**
-- **Tier 1 (Direct Execution)**: Teach stable, foundational operations that students execute directly
-- **Tier 2 (AI Companion)**: AI handles complex execution from specifications
-- **Tier 3 (AI Orchestration)**: AI orchestrates multi-step workflows at scale (10+ items)
+**From AI-Native Teaching Framework (Section IIa — 4-Stage Progression):**
+- **Stage 1 (Manual Foundation)**: Book teaches directly — students execute operations manually to build conceptual understanding
+- **Stage 2 (AI Collaboration)**: AI partnership with Three Roles (Teacher/Student/Co-Worker) — bidirectional learning and convergence
+- **Stage 3 (Intelligence Design)**: Create reusable components (subagents/skills) that compound over time
+- **Stage 4 (Spec-Driven Integration)**: Orchestrate at scale with specification-first methodology — compose accumulated intelligence
 
 **From AI Development Spectrum:**
 - **Assisted (2-3x)**: AI as helper for simple tasks
@@ -816,7 +823,7 @@ Pass to subagent: COMPLETE intelligence object including:
 {
   "intelligence": { /* Phase 0 intelligence */ },
   "ai_usage_strategy": "Direct: [ops]. AI Companion: [complexity]. AI Orchestration: [scale].",
-  "teaching_pattern": "Tier 1: Direct [concepts]. Tier 2: AI [complexity]. Tier 3: AI orchestrates [scale].",
+  "teaching_pattern": "Stage 1: Manual Foundation [direct concepts]. Stage 2: AI Collaboration [with Three Roles]. Stage 3: Intelligence Design [reusable components]. Stage 4: Spec-Driven Integration [orchestrate at scale].",
   "anti_patterns": [
     "Don't use AI for deterministic simple commands",
     "Don't inflate durations (1min tasks ≠ 45min lessons)",
@@ -824,10 +831,9 @@ Pass to subagent: COMPLETE intelligence object including:
     "Use decision framework: deterministic → direct, complex → AI companion, scale → AI orchestration"
   ],
   "constitutional_principles": [
-    "Principle 13 (Graduated Teaching): Direct → AI Companion → AI Orchestration",
-    "Principle 18 (Three Roles): AI as Teacher/Student/Co-Worker",
-    "Core Philosophy #2 (Co-Learning): Bidirectional learning",
-    "Core Philosophy #1 (AI Spectrum): Assisted → Driven → Native (teach when each applies)"
+    "Section IIa (AI-Native Teaching Framework — 4-Stage Progression): Stage 1 Manual Foundation → Stage 2 AI Collaboration (Three Roles integrated) → Stage 3 Intelligence Design → Stage 4 Spec-Driven Integration",
+    "Principle 1 (Specification Primacy): Specs are executable contracts, code is regenerable output",
+    "Principle 2 (Progressive Complexity): CEFR-aligned cognitive load (A1-A2: 5-7 concepts, C2: no limits)"
   ],
   "validation_criteria": {
     "duration_realistic": true,
@@ -1030,7 +1036,7 @@ Ready for: [next steps]
 1. **Vertical Intelligence**: Constitution + project context read FIRST, questions SECOND
 2. **Goal-Oriented**: User states GOAL, AI derives STRATEGY using constitutional principles
 3. **Universal Decision Framework**: Deterministic/simple → direct, complex → AI companion, scale → AI orchestration (works for ANY tool)
-4. **Graduated Teaching**: Apply Principle 13 across all content
+4. **AI-Native Teaching Framework**: Apply Section IIa (4-Stage Progression with Three Roles integrated into Stage 2) across all content
 5. **Quality Gates**: Every phase has automatic gates that prevent bad patterns
 6. **Context Preservation**: Full intelligence + AI strategy passed through all phases with explicit context objects
 7. **Constitutional Reasoning**: Principles guide decisions, not tool-specific templates
