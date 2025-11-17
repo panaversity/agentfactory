@@ -62,49 +62,141 @@ interface PersonalizationTabProps {
   content: string;
 }
 
-// Helper function to convert markdown to HTML
+// Helper function to convert markdown to HTML with full feature support
 function convertMarkdownToHTML(markdown: string): string {
   let html = markdown;
   
-  // Convert headers
+  // Convert Docusaurus admonitions (:::tip, :::note, :::warning, etc.)
+  html = html.replace(/:::(\w+)\s*([^\n]*)\n([\s\S]*?):::/g, (match, type, title, content) => {
+    const admonitionTitle = title || type.charAt(0).toUpperCase() + type.slice(1);
+    return `<div class="admonition admonition-${type} alert alert--${type}">
+      <div class="admonition-heading"><h5>${admonitionTitle}</h5></div>
+      <div class="admonition-content">${content.trim()}</div>
+    </div>`;
+  });
+  
+  // Convert code blocks (BEFORE other processing)
+  const codeBlocks: string[] = [];
+  html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
+    const placeholder = `__CODEBLOCK_${codeBlocks.length}__`;
+    codeBlocks.push(`<pre><code class="language-${lang || 'text'}">${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>`);
+    return placeholder;
+  });
+  
+  // Convert headers (must be on their own line)
   html = html.replace(/^#### (.+)$/gm, '<h4>$1</h4>');
   html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
   html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
   html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
   
+  // Convert blockquotes (lines starting with >)
+  html = html.replace(/^> (.+)$/gm, '<blockquote><p>$1</p></blockquote>');
+  // Merge consecutive blockquotes
+  html = html.replace(/<\/blockquote>\n<blockquote>/g, '');
+  
   // Convert bold text
   html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   
-  // Convert code blocks
-  html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre><code class="language-$1">$2</code></pre>');
-  
-  // Convert inline code
+  // Convert inline code (AFTER code blocks are extracted)
   html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
   
-  // Convert numbered lists
-  html = html.replace(/^(\d+\. .+)$/gm, (match) => {
-    const items = match.split(/\n(?=\d+\.\s)/);
-    const listItems = items.map(item => {
-      const content = item.replace(/^\d+\.\s/, '');
-      return `<li>${content}</li>`;
+  // Convert tables
+  html = html.replace(/(\|.+\|\n)+/g, (match) => {
+    const rows = match.trim().split('\n');
+    if (rows.length < 2) return match;
+    
+    const headerRow = rows[0];
+    const separatorRow = rows[1];
+    const bodyRows = rows.slice(2);
+    
+    const headers = headerRow.split('|').filter(cell => cell.trim()).map(cell => `<th>${cell.trim()}</th>`).join('');
+    const body = bodyRows.map(row => {
+      const cells = row.split('|').filter(cell => cell.trim()).map(cell => `<td>${cell.trim()}</td>`).join('');
+      return `<tr>${cells}</tr>`;
     }).join('');
-    return `<ol>${listItems}</ol>`;
+    
+    return `<table class="table"><thead><tr>${headers}</tr></thead><tbody>${body}</tbody></table>`;
   });
   
-  // Convert bullet lists
-  html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
-  html = html.replace(/(<li>.*<\/li>\n?)+/g, (match) => `<ul>${match}</ul>`);
+  // Convert numbered lists (capture multi-line items)
+  const lines = html.split('\n');
+  const processedLines: string[] = [];
+  let inOrderedList = false;
+  let inUnorderedList = false;
   
-  // Convert paragraphs (double newlines)
-  html = html.split('\n\n').map(para => {
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmedLine = line.trim();
+    
+    // Ordered list detection
+    if (/^\d+\.\s/.test(trimmedLine)) {
+      const content = trimmedLine.replace(/^\d+\.\s/, '');
+      if (!inOrderedList) {
+        processedLines.push('<ol>');
+        inOrderedList = true;
+      }
+      processedLines.push(`<li>${content}</li>`);
+    }
+    // Unordered list detection (must start line)
+    else if (/^-\s/.test(trimmedLine) && !trimmedLine.match(/^-{3,}/)) {
+      const content = trimmedLine.replace(/^-\s/, '');
+      if (inOrderedList) {
+        processedLines.push('</ol>');
+        inOrderedList = false;
+      }
+      if (!inUnorderedList) {
+        processedLines.push('<ul>');
+        inUnorderedList = true;
+      }
+      processedLines.push(`<li>${content}</li>`);
+    }
+    // Close lists when hitting non-list content
+    else {
+      if (inOrderedList) {
+        processedLines.push('</ol>');
+        inOrderedList = false;
+      }
+      if (inUnorderedList) {
+        processedLines.push('</ul>');
+        inUnorderedList = false;
+      }
+      processedLines.push(line);
+    }
+  }
+  
+  // Close any remaining open lists
+  if (inOrderedList) processedLines.push('</ol>');
+  if (inUnorderedList) processedLines.push('</ul>');
+  
+  html = processedLines.join('\n');
+  
+  // Convert horizontal rules
+  html = html.replace(/^---+$/gm, '<hr>');
+  
+  // Convert paragraphs (groups of text separated by blank lines)
+  const paragraphs = html.split('\n\n');
+  html = paragraphs.map(para => {
     para = para.trim();
     if (!para) return '';
-    // Skip if already wrapped in HTML tags
-    if (para.startsWith('<h') || para.startsWith('<ul') || para.startsWith('<ol') || para.startsWith('<pre')) {
+    
+    // Skip if already wrapped in block-level HTML
+    if (para.match(/^<(h[1-6]|div|pre|blockquote|table|ul|ol|hr)/i)) {
       return para;
     }
+    
+    // Check if it contains placeholders
+    if (para.includes('__CODEBLOCK_')) {
+      return para;
+    }
+    
+    // Wrap in paragraph
     return `<p>${para.replace(/\n/g, '<br>')}</p>`;
   }).join('\n');
+  
+  // Restore code blocks
+  codeBlocks.forEach((block, index) => {
+    html = html.replace(`__CODEBLOCK_${index}__`, block);
+  });
   
   return html;
 }
@@ -129,10 +221,11 @@ export default function PersonalizationTab({
   const contentEndRef = useRef<HTMLDivElement>(null);
   const generatingRef = useRef(false);
   const contentContainerRef = useRef<HTMLDivElement>(null);
-  const lastClickTimeRef = useRef<number>(0); // T097: Debouncing
 
   // T060: Check authentication and load profile
   useEffect(() => {
+    console.log(`📄 PersonalizationTab mounted/updated for pageId: ${pageId}`);
+    
     const authenticated = authService.isAuthenticated();
     setIsAuthenticated(authenticated);
 
@@ -141,9 +234,20 @@ export default function PersonalizationTab({
       setUserProfile(profile);
 
       if (profile) {
+        const fingerprint = authService.generateProfileFingerprint(profile);
+        console.log(`👤 User profile loaded: ${fingerprint}`);
         checkCacheAndGenerate(profile);
       }
     }
+
+    // Cleanup: Cancel ongoing personalization when pageId changes
+    return () => {
+      if (generatingRef.current) {
+        console.log(`🛑 Cancelling ongoing personalization due to page navigation from ${pageId}`);
+        personalizationService.cancel();
+        generatingRef.current = false;
+      }
+    };
   }, [pageId]);
 
   // T061: Auto-scroll during streaming
@@ -166,20 +270,26 @@ export default function PersonalizationTab({
 
     const fingerprint = authService.generateProfileFingerprint(profile);
     const cacheKey = `personalized_${pageId}_${fingerprint}`;
+    
+    console.log(`🔍 Checking cache for pageId: ${pageId}, fingerprint: ${fingerprint}`);
+    
     const cached = cacheService.get<PersonalizationCacheEntry>(cacheKey);
 
-    if (cached && cached.personalizedContent) {
-      console.log(`✅ Cache hit for ${pageId} (${fingerprint}) - displaying cached content`);
-      setPersonalizedContent(cached.personalizedContent);
+    if (cached && cached.personalizedText) {
+      console.log(`✅ Cache HIT for ${pageId} (${fingerprint}) - displaying cached content`);
+      setPersonalizedContent(cached.personalizedText);
       setIsCached(true);
+      setIsLoading(false);
+      setIsGenerating(false);
       return;
     }
 
-    console.log(`❌ Cache miss for ${pageId} (${fingerprint}) - generating personalized content`);
+    console.log(`❌ Cache MISS for ${pageId} (${fingerprint}) - will generate if not already in progress`);
     setIsCached(false);
 
-    // Request deduplication
+    // Request deduplication - prevent duplicate generations
     if (generatingRef.current) {
+      console.log(`⚠️ Generation already in progress for ${pageId}, skipping duplicate request`);
       return;
     }
 
@@ -218,6 +328,10 @@ export default function PersonalizationTab({
       return;
     }
 
+    // BUGFIX: Capture pageId and content at generation start to avoid stale closure
+    const capturedPageId = pageId;
+    const capturedContent = content;
+
     generatingRef.current = true;
     setIsGenerating(true);
     setIsLoading(true);
@@ -231,8 +345,8 @@ export default function PersonalizationTab({
     try {
       // T064: Stream personalized content from API
       personalizationService.streamPersonalizedContent(
-        pageId,
-        content,
+        capturedPageId,
+        capturedContent,
         token,
         profile.programmingExperience,
         profile.aiProficiency,
@@ -248,7 +362,7 @@ export default function PersonalizationTab({
         },
         () => {
           // T065: On completion, cache the result
-          console.log(`✅ Personalization completed for ${pageId}`);
+          console.log(`✅ Personalization completed for ${capturedPageId}`);
           setPersonalizedContent(accumulatedContent);
           setIsGenerating(false);
           setIsLoading(false);
@@ -256,19 +370,20 @@ export default function PersonalizationTab({
 
           // Cache personalized content with profile fingerprint
           const fingerprint = authService.generateProfileFingerprint(profile);
-          const cacheKey = `personalized_${pageId}_${fingerprint}`;
+          const cacheKey = `personalized_${capturedPageId}_${fingerprint}`;
           const cacheEntry: PersonalizationCacheEntry = {
-            personalizedContent: accumulatedContent,
-            pageId,
+            personalizedText: accumulatedContent,
+            pageId: capturedPageId,
             profileFingerprint: fingerprint,
             timestamp: Date.now(),
+            cached: true,
           };
           cacheService.set(cacheKey, cacheEntry);
-          console.log(`💾 Cached personalized content for ${pageId} (${fingerprint})`);
+          console.log(`💾 Cached personalized content for ${capturedPageId} (${fingerprint})`);
         },
         (errorMsg) => {
           // T066: Error handling with partial content preservation
-          console.error(`❌ Personalization error for ${pageId}:`, errorMsg);
+          console.error(`❌ Personalization error for ${capturedPageId}:`, errorMsg);
           
           // Preserve partial content if any was received
           if (accumulatedContent) {
@@ -292,38 +407,27 @@ export default function PersonalizationTab({
     }
   };
 
-  // T067: Handle regenerate button click
-  const handleRegenerate = () => {
-    // T097: Debounce to prevent accidental double-clicks (500ms)
-    const now = Date.now();
-    if (now - lastClickTimeRef.current < 500) {
-      return; // Ignore click if within 500ms of last click
-    }
-    lastClickTimeRef.current = now;
+  // T068: Handle login button click (REMOVED - inline in button onClick)
 
-    if (userProfile) {
-      setIsCached(false);
-      generatePersonalizedContent(userProfile);
-    }
-  };
-
-  // T068: Handle login button click
-  const handleLoginClick = () => {
-    const returnTo = encodeURIComponent(location.pathname);
-    history.push(`/login?returnTo=${returnTo}`);
-  };
-
-  // T069: Render login button if not authenticated
+  // T069: Render login button if not authenticated (UPDATED to match SummaryTab)
   if (!isAuthenticated) {
     return (
-      <div className={styles.loginContainer}>
-        <p>Sign in to view personalized content tailored to your experience level.</p>
-        <button 
-          className={styles.loginButton}
-          onClick={handleLoginClick}
+      <div className={styles.loginButton}>
+        <h3>Authentication Required</h3>
+        <p>You need to be authenticated to view personalized content tailored to your experience level.</p>
+        <button
+          onClick={() => {
+            // Add navigation state with return URL
+            const returnTo = `${location.pathname}${location.hash || '#personalized'}`;
+            history.push(`/login?returnTo=${encodeURIComponent(returnTo)}`);
+          }}
+          type="button"
         >
           Login to See Personalized Content
         </button>
+        <p style={{ fontSize: '0.85em', color: 'var(--ifm-color-emphasis-600)', marginTop: '1rem' }}>
+          Note: This is a temporary dummy authentication for demonstration purposes.
+        </p>
       </div>
     );
   }
@@ -346,11 +450,18 @@ export default function PersonalizationTab({
         </div>
       )}
 
-      {/* Loading state */}
-      {isLoading && (
+      {/* Loading state - matches SummaryTab spinner */}
+      {isLoading && !personalizedContent && (
         <div className={styles.loadingContainer}>
-          <div className={styles.spinner}></div>
-          <p>Personalizing content for your experience level...</p>
+          <div className={styles.loadingContent}>
+            <div className={styles.loadingSpinner} />
+            <div className={styles.loadingText}>
+              <div className={styles.loadingTitle}>Generating Personalized Content</div>
+              <div className={styles.loadingSubtitle}>
+                Tailoring content to your experience level...
+              </div>
+            </div>
+          </div>
         </div>
       )}
 
@@ -372,19 +483,6 @@ export default function PersonalizationTab({
             }}
           />
           <div ref={contentEndRef} />
-
-          {/* Regenerate button - subtle and non-intrusive */}
-          {!isGenerating && personalizedContent && (
-            <div className={styles.regenerateContainer}>
-              <button
-                className={styles.regenerateButton}
-                onClick={handleRegenerate}
-                aria-label="Regenerate personalized content with fresh AI response"
-              >
-                🔄 Regenerate
-              </button>
-            </div>
-          )}
         </>
       )}
     </div>

@@ -27,6 +27,7 @@ export interface PersonalizationEvent {
 export class PersonalizationService {
   private eventSource: EventSource | null = null;
   private abortController: AbortController | null = null;
+  private isCompleted: boolean = false; // Track if stream completed successfully
 
   /**
    * T054: Stream personalized content from API
@@ -53,6 +54,9 @@ export class PersonalizationService {
     onComplete: () => void,
     onError: (error: string) => void
   ): void {
+    // Reset completion flag for new stream
+    this.isCompleted = false;
+    
     // T055: Build query params
     const params = new URLSearchParams({
       pageId,
@@ -79,6 +83,7 @@ export class PersonalizationService {
         }
 
         if (data.done) {
+          this.isCompleted = true; // Mark as successfully completed
           onComplete();
           this.close();
           return;
@@ -96,6 +101,13 @@ export class PersonalizationService {
 
     // Handle errors
     this.eventSource.onerror = (error) => {
+      // Ignore errors if stream already completed successfully
+      if (this.isCompleted) {
+        console.log('EventSource closed after successful completion (expected behavior)');
+        this.close();
+        return;
+      }
+      
       console.error('EventSource error:', error);
       onError('Connection to server failed');
       this.close();
