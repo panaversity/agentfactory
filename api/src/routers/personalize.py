@@ -11,7 +11,7 @@ import json
 import logging
 from fastapi import APIRouter, Query, HTTPException
 from fastapi.responses import StreamingResponse
-from api.src.services import openai_agent
+from src.services import openai_agent
 
 router = APIRouter()
 logger = logging.getLogger(__name__)

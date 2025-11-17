@@ -8,6 +8,9 @@ openai-agents>=0.1.0
 # Environment configuration
 python-dotenv==1.0.0
 
+# Email validation for Pydantic
+email-validator>=2.0.0
+
 # Testing
 pytest==7.4.3
 pytest-asyncio==0.21.1

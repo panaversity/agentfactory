@@ -12,13 +12,21 @@ load_dotenv(find_dotenv())
 
 logger = logging.getLogger(__name__)
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
+if not GOOGLE_API_KEY:
+    logger.error("GOOGLE_API_KEY not found in environment variables. Please set it in .env file.")
+    raise ValueError(
+        "GOOGLE_API_KEY is required. Please:\n"
+        "1. Copy api/.env.example to api/.env\n"
+        "2. Add your Google API key to GOOGLE_API_KEY in .env file"
+    )
 
 set_tracing_disabled(False)
 
 external_client = AsyncOpenAI(
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
-    api_key=os.getenv("GOOGLE_API_KEY")
+    api_key=GOOGLE_API_KEY
 )
 
 model = OpenAIChatCompletionsModel(

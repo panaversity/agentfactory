@@ -83,7 +83,11 @@ export default function DummyLoginWithProfile(): React.ReactElement {
     
     try {
       // T028: Call POST /api/v1/auth/dummy-login-with-profile
-      const response = await fetch('/api/v1/auth/dummy-login-with-profile', {
+      const apiUrl = typeof window !== 'undefined'
+        ? (window as any).REACT_APP_API_BASE_URL || 'http://localhost:8000'
+        : 'http://localhost:8000';
+      
+      const response = await fetch(`${apiUrl}/api/v1/auth/dummy-login-with-profile`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -104,7 +108,15 @@ export default function DummyLoginWithProfile(): React.ReactElement {
       const data = await response.json();
 
       // T029: Save session and redirect
-      authService.saveSession(data.token, data.user as UserProfile);
+      // Map backend response (snake_case) to frontend format (camelCase)
+      const profile: UserProfile = {
+        name: data.user.name,
+        email: data.user.email,
+        programmingExperience: data.user.programming_experience || data.user.programmingExperience,
+        aiProficiency: data.user.ai_proficiency || data.user.aiProficiency,
+      };
+      
+      authService.saveSession(data.token, profile);
 
       // T036: Redirect to returnTo URL or home
       const searchParams = new URLSearchParams(location.search);
