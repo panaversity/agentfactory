@@ -615,32 +615,31 @@ email: str = input("Email: ")
 
 print("\n--- Validation Results ---\n")
 
-# Step 2: Validate name (should be non-empty string)
-# Check if name is a string and has content
+# Step 2: Validate name (check type and content)
+# Using truthy/falsy from Lesson 3: empty strings are falsy
 name_is_string: bool = isinstance(name, str)
-name_has_content: bool = len(name) > 0
+name_has_content: bool = bool(name)  # True if not empty
 print(f"Name '{name}':")
 print(f"  - Is string: {name_is_string}")
 print(f"  - Has content: {name_has_content}")
 
 # Step 3: Validate and convert age
 # Convert age_input (string) to int
-# Note: We'll handle errors properly in Chapter 21 (Exception Handling)
+# Note: Checking if age is valid requires Chapter 15 (operators)
 age: int = int(age_input)  # Assumes valid number for now
 age_is_int: bool = isinstance(age, int)
-age_is_positive: bool = age > 0
 print(f"Age {age}:")
 print(f"  - Is integer: {age_is_int}")
-print(f"  - Is positive: {age_is_positive}")
+print(f"  - Successfully converted from string")
 
-# Step 4: Validate email (basic format check)
-# Check if email is a string and has content
+# Step 4: Validate email (check type and content)
+# Using truthy/falsy: empty strings are falsy
 email_is_string: bool = isinstance(email, str)
-email_has_content: bool = len(email) > 0
-# Note: Advanced email validation (checking for @) uses operators from Chapter 15
+email_has_content: bool = bool(email)  # True if not empty
 print(f"Email '{email}':")
 print(f"  - Is string: {email_is_string}")
 print(f"  - Has content: {email_has_content}")
+# Note: Checking email format (@) requires operators from Chapter 15
 
 # Step 5: Summary
 print("\n--- Summary ---")
@@ -670,7 +669,7 @@ Name 'Alice Smith':
   - Has content: True
 Age 25:
   - Is integer: True
-  - Is positive: True
+  - Successfully converted from string
 Email 'alice@example.com':
   - Is string: True
   - Has content: True
