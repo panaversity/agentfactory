@@ -34,6 +34,24 @@ export default function DocItemContent({children}: Props): ReactNode {
   // Generate pageId from the document's permalink or id
   const pageId = metadata.id || metadata.permalink;
   
+  // Determine if this is a lesson page (show tabs ONLY on lesson-level pages)
+  // Structure: Part/Chapter/Lesson (3 segments)
+  // Example: "01-Introducing-AI-Driven-Development/01-ai-development-revolution/01-moment_that_changed_everything"
+  const isLessonPage = (() => {
+    const path = metadata.id || '';
+    
+    // Split path and filter empty segments
+    const segments = path.split('/').filter(s => s.length > 0);
+    
+    // Lesson pages have exactly 3 segments: part/chapter/lesson
+    // Exclude README.md or index files (they're part/chapter overviews)
+    const isReadmeOrIndex = path.toLowerCase().includes('readme') || 
+                           path.toLowerCase().includes('index') ||
+                           path.toLowerCase().endsWith('/');
+    
+    return segments.length === 3 && !isReadmeOrIndex;
+  })();
+  
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>
       {syntheticTitle && (
@@ -41,9 +59,13 @@ export default function DocItemContent({children}: Props): ReactNode {
           <Heading as="h1">{syntheticTitle}</Heading>
         </header>
       )}
-      <ContentTabs pageId={pageId}>
+      {isLessonPage ? (
+        <ContentTabs pageId={pageId}>
+          <MDXContent>{children}</MDXContent>
+        </ContentTabs>
+      ) : (
         <MDXContent>{children}</MDXContent>
-      </ContentTabs>
+      )}
     </div>
   );
 }
