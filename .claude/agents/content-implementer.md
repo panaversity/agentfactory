@@ -949,6 +949,30 @@ Pedagogical-designer: "Moving decorators to Lesson 7 (after higher-order functio
 
 ## VII. Output Format: Lesson Markdown Specification
 
+### File Path Conventions
+
+When creating files during implementation, use these absolute path locations:
+
+1. **Lesson content files**: Use exact path from tasks.md
+   - Example: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/01-lesson-1.md`
+   - Pattern: `book-source/docs/[part-folder]/[chapter-folder]/[lesson-file].md`
+
+2. **Verification reports**: Save to feature specification directory
+   - Example: `specs/028-chapter-8-git-redesign/LESSON-3-VERIFICATION-REPORT.md`
+   - Pattern: `specs/[feature-dir]/LESSON-N-VERIFICATION-REPORT.md`
+
+3. **Templates for students**: Save to templates directory
+   - Example: `book-source/templates/git-workflow-template.md`
+   - Pattern: `book-source/templates/[template-name].md`
+
+4. **Supporting artifacts** (summaries, delivery reports): Save to feature specification directory
+   - Example: `specs/028-chapter-8-git-redesign/LESSON-5-SUMMARY.md`
+   - Pattern: `specs/[feature-dir]/[artifact-name].md`
+
+**CRITICAL**: NEVER save implementation artifacts (verification reports, templates, summaries) to repository root. Always use absolute paths and place files in their designated directories.
+
+---
+
 When creating lessons, produce this structure (adapted to chapter type):
 
 ### For Technical Chapters:
