@@ -52,17 +52,17 @@
 
 ### Backend Foundation
 
-- [ ] T004 Define ProficiencyLevel enum in `api/src/models/schemas.py` (values: Novice, Beginner, Intermediate, Expert)
-- [ ] T005 [P] Define UserProfile Pydantic model in `api/src/models/schemas.py` (fields: name, email, programming_experience, ai_proficiency)
-- [ ] T006 [P] Define ProfileLoginRequest schema in `api/src/models/schemas.py` (request body for enhanced login)
-- [ ] T007 [P] Define PersonalizationRequest schema in `api/src/models/schemas.py` (query params for /personalize endpoint)
+- [x] T004 Define ProficiencyLevel enum in `api/src/models/schemas.py` (values: Novice, Beginner, Intermediate, Expert)
+- [x] T005 [P] Define UserProfile Pydantic model in `api/src/models/schemas.py` (fields: name, email, programming_experience, ai_proficiency)
+- [x] T006 [P] Define ProfileLoginRequest schema in `api/src/models/schemas.py` (request body for enhanced login)
+- [x] T007 [P] Define PersonalizationRequest schema in `api/src/models/schemas.py` (query params for /personalize endpoint)
 
 ### Frontend Foundation
 
-- [ ] T008 Define ProficiencyLevel TypeScript type in `book-source/src/types/contentTabs.ts` (union type: 'Novice' | 'Beginner' | 'Intermediate' | 'Expert')
-- [ ] T009 [P] Define UserProfile TypeScript interface in `book-source/src/types/contentTabs.ts` (fields: name, email, programmingExperience, aiProficiency)
-- [ ] T010 [P] Define AuthSession TypeScript interface in `book-source/src/types/contentTabs.ts` (fields: token, profile, expiresAt?)
-- [ ] T011 [P] Define PersonalizationCacheEntry interface in `book-source/src/types/contentTabs.ts` (fields: pageId, profileFingerprint, personalizedText, timestamp, cached)
+- [x] T008 Define ProficiencyLevel TypeScript type in `book-source/src/types/contentTabs.ts` (union type: 'Novice' | 'Beginner' | 'Intermediate' | 'Expert')
+- [x] T009 [P] Define UserProfile TypeScript interface in `book-source/src/types/contentTabs.ts` (fields: name, email, programmingExperience, aiProficiency)
+- [x] T010 [P] Define AuthSession TypeScript interface in `book-source/src/types/contentTabs.ts` (fields: token, profile, expiresAt?)
+- [x] T011 [P] Define PersonalizationCacheEntry interface in `book-source/src/types/contentTabs.ts` (fields: pageId, profileFingerprint, personalizedText, timestamp, cached)
 
 **Checkpoint**: Types and schemas defined - user story implementation can now begin
 
@@ -78,40 +78,40 @@
 
 ### Backend: Enhanced Login Endpoint (FR-023, FR-002, FR-005, FR-006)
 
-- [ ] T012 [US1] Create `/auth/dummy-login-with-profile` POST endpoint in `api/src/routers/auth.py` accepting ProfileLoginRequest
-- [ ] T013 [US1] Implement Pydantic validation for ProfileLoginRequest in auth endpoint (all fields required, email format)
-- [ ] T014 [US1] Generate dummy token in auth endpoint (format: `dummy_token_{uuid4}`)
-- [ ] T015 [US1] Return AuthWithProfileResponse in auth endpoint (token, expires: "session", user: UserProfile)
-- [ ] T016 [US1] Add inline error responses for validation failures (400 status with ErrorResponse schema)
+- [x] T012 [US1] Create `/auth/dummy-login-with-profile` POST endpoint in `api/src/routers/auth.py` accepting ProfileLoginRequest
+- [x] T013 [US1] Implement Pydantic validation for ProfileLoginRequest in auth endpoint (all fields required, email format)
+- [x] T014 [US1] Generate dummy token in auth endpoint (format: `dummy_token_{uuid4}`)
+- [x] T015 [US1] Return AuthWithProfileResponse in auth endpoint (token, expires: "session", user: UserProfile)
+- [x] T016 [US1] Add inline error responses for validation failures (400 status with ErrorResponse schema)
 
 ### Frontend: Authentication Service Enhancement (FR-006, FR-007)
 
-- [ ] T017 [US1] Update `authService.ts` to store composite AuthSession object in sessionStorage (key: "authSession")
-- [ ] T018 [US1] Implement `authService.saveSession(token, profile)` function to store {token, profile, expiresAt: undefined}
-- [ ] T019 [US1] Implement `authService.getSession()` function returning AuthSession | null from sessionStorage
-- [ ] T020 [US1] Implement `authService.getProfile()` function extracting profile from session
-- [ ] T021 [US1] Implement `authService.isAuthenticated()` function checking session token existence
-- [ ] T022 [US1] Implement `authService.generateProfileFingerprint(profile)` function returning "{programmingExperience}-{aiProficiency}"
+- [x] T017 [US1] Update `authService.ts` to store composite AuthSession object in sessionStorage (key: "authSession")
+- [x] T018 [US1] Implement `authService.saveSession(token, profile)` function to store {token, profile, expiresAt: undefined}
+- [x] T019 [US1] Implement `authService.getSession()` function returning AuthSession | null from sessionStorage
+- [x] T020 [US1] Implement `authService.getProfile()` function extracting profile from session
+- [x] T021 [US1] Implement `authService.isAuthenticated()` function checking session token existence
+- [x] T022 [US1] Implement `authService.generateProfileFingerprint(profile)` function returning "{programmingExperience}-{aiProficiency}"
 
 ### Frontend: Login Page Component (FR-001, FR-002, FR-002a, FR-002b)
 
-- [ ] T023 [US1] Create `DummyLoginWithProfile.tsx` component in `book-source/src/components/ContentTabs/`
-- [ ] T024 [US1] Implement 4-field form in DummyLoginWithProfile: name (text), email (email), programmingExperience (dropdown), aiProficiency (dropdown)
-- [ ] T025 [US1] Add proficiency level dropdowns with options: Novice, Beginner, Intermediate, Expert
-- [ ] T026 [US1] Implement form validation: all fields required, email format check (regex: `^[\w\.-]+@[\w\.-]+\.\w+$`)
-- [ ] T027 [US1] Display inline error messages for missing/invalid fields and prevent submission until valid
-- [ ] T028 [US1] Implement form submission handler calling `POST /api/v1/auth/dummy-login-with-profile`
-- [ ] T029 [US1] On successful login, call `authService.saveSession(token, profile)` and redirect to previous tab
-- [ ] T030 [US1] Add loading state during form submission (disable submit button, show spinner)
+- [x] T023 [US1] Create `DummyLoginWithProfile.tsx` component in `book-source/src/components/ContentTabs/`
+- [x] T024 [US1] Implement 4-field form in DummyLoginWithProfile: name (text), email (email), programmingExperience (dropdown), aiProficiency (dropdown)
+- [x] T025 [US1] Add proficiency level dropdowns with options: Novice, Beginner, Intermediate, Expert
+- [x] T026 [US1] Implement form validation: all fields required, email format check (regex: `^[\w\.-]+@[\w\.-]+\.\w+$`)
+- [x] T027 [US1] Display inline error messages for missing/invalid fields and prevent submission until valid
+- [x] T028 [US1] Implement form submission handler calling `POST /api/v1/auth/dummy-login-with-profile`
+- [x] T029 [US1] On successful login, call `authService.saveSession(token, profile)` and redirect to previous tab
+- [x] T030 [US1] Add loading state during form submission (disable submit button, show spinner)
 
 ### Frontend: Login Button Integration (NEW REQUIREMENT - FR-001, FR-008)
 
-- [ ] T031 [US1] Update `SummaryTab.tsx`: Check `authService.isAuthenticated()` on mount
-- [ ] T032 [US1] In SummaryTab: If not authenticated, render "Login to See Summary" button routing to `/login` page
-- [ ] T033 [US1] In SummaryTab: If authenticated, render existing summary generation UI
-- [ ] T034 [US1] Create routing configuration for `/login` page rendering DummyLoginWithProfile component
-- [ ] T035 [US1] Add navigation state to login route storing return URL (e.g., `/login?returnTo=/docs/intro`)
-- [ ] T036 [US1] Update DummyLoginWithProfile to redirect to `returnTo` URL after successful login (default: home)
+- [x] T031 [US1] Update `SummaryTab.tsx`: Check `authService.isAuthenticated()` on mount
+- [x] T032 [US1] In SummaryTab: If not authenticated, render "Login to See Summary" button routing to `/login` page
+- [x] T033 [US1] In SummaryTab: If authenticated, render existing summary generation UI
+- [x] T034 [US1] Create routing configuration for `/login` page rendering DummyLoginWithProfile component
+- [x] T035 [US1] Add navigation state to login route storing return URL (e.g., `/login?returnTo=/docs/intro`)
+- [x] T036 [US1] Update DummyLoginWithProfile to redirect to `returnTo` URL after successful login (default: home)
 
 **US1 Acceptance**: ✅ User can click login button from Summary/Personalization tabs → Complete 4-field form → Session stored → Return to tab without seeing login button again
 

@@ -4,6 +4,45 @@
 
 export type TabType = 'original' | 'summary' | 'personalized';
 
+// Personalization types (T008-T011)
+
+/**
+ * User proficiency levels for programming and AI knowledge
+ */
+export type ProficiencyLevel = 'Novice' | 'Beginner' | 'Intermediate' | 'Expert';
+
+/**
+ * User Profile - collected during login
+ */
+export interface UserProfile {
+  name: string;
+  email: string;
+  programmingExperience: ProficiencyLevel;
+  aiProficiency: ProficiencyLevel;
+}
+
+/**
+ * Authentication Session - stored in sessionStorage
+ * Composite object containing token and user profile
+ */
+export interface AuthSession {
+  token: string;
+  profile: UserProfile;
+  expiresAt?: number;
+}
+
+/**
+ * Personalization Cache Entry - stored in sessionStorage
+ * Profile-specific cached content
+ */
+export interface PersonalizationCacheEntry {
+  pageId: string;
+  profileFingerprint: string; // Format: "ProgrammingLevel-AILevel"
+  personalizedText: string;
+  timestamp: number;
+  cached: boolean;
+}
+
 /**
  * Tab State - represents the current active tab (UI state, not persisted)
  */

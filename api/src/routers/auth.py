@@ -2,8 +2,9 @@
 Authentication API endpoints (dummy implementation)
 """
 import logging
+import uuid
 from fastapi import APIRouter, HTTPException
-from src.models.schemas import AuthResponse
+from src.models.schemas import AuthResponse, ProfileLoginRequest, AuthWithProfileResponse, ErrorResponse, UserProfile
 
 logger = logging.getLogger(__name__)
 
@@ -53,3 +54,35 @@ async def verify_token(
             "name": "Anonymous User"
         }
     }
+
+
+@router.post("/dummy-login-with-profile", response_model=AuthWithProfileResponse, responses={
+    400: {"model": ErrorResponse, "description": "Validation Error"}
+})
+async def dummy_login_with_profile(request: ProfileLoginRequest):
+    """
+    Dummy login endpoint with user profiling.
+    
+    Accepts user profile (name, email, programming experience, AI proficiency)
+    and returns a dummy authentication token with the profile.
+    
+    Future: Replace with SSO-based authentication (Clerk).
+    """
+    logger.info(f"Dummy login with profile request: {request.name} ({request.email})")
+    
+    # T014: Generate dummy token with UUID
+    token = f"dummy_token_{uuid.uuid4().hex[:16]}"
+    
+    # T015: Return AuthWithProfileResponse
+    user_profile = UserProfile(
+        name=request.name,
+        email=request.email,
+        programming_experience=request.programming_experience,
+        ai_proficiency=request.ai_proficiency
+    )
+    
+    return AuthWithProfileResponse(
+        token=token,
+        expires="session",
+        user=user_profile
+    )

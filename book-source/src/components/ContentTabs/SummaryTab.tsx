@@ -2,11 +2,11 @@
  * SummaryTab Component - displays AI-generated summary with streaming support
  */
 import React, { useState, useEffect, useRef } from "react";
+import { useHistory, useLocation } from "@docusaurus/router";
 import { SummaryCacheEntry } from "../../types/contentTabs";
 import * as authService from "../../services/authService";
 import * as cacheService from "../../services/cacheService";
 import * as summaryService from "../../services/summaryService";
-import DummyLogin from "./DummyLogin";
 import styles from "./styles.module.css";
 import ReactMarkdown from "react-markdown";
 
@@ -19,6 +19,10 @@ export default function SummaryTab({
   pageId,
   content,
 }: SummaryTabProps): React.ReactElement {
+  const history = useHistory();
+  const location = useLocation();
+  
+  // T031: Check authentication on mount
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [summary, setSummary] = useState<string>("");
@@ -210,9 +214,27 @@ export default function SummaryTab({
     generateSummary();
   };
 
-  // Show login if not authenticated
+  // T032: Show login button if not authenticated
   if (!isAuthenticated) {
-    return <DummyLogin onLogin={handleLogin} />;
+    return (
+      <div className={styles.loginButton}>
+        <h3>Authentication Required</h3>
+        <p>You need to be authenticated to view AI-generated summaries.</p>
+        <button
+          onClick={() => {
+            // T035: Add navigation state with return URL
+            const returnTo = `${location.pathname}${location.hash || '#summary'}`;
+            history.push(`/login?returnTo=${encodeURIComponent(returnTo)}`);
+          }}
+          type="button"
+        >
+          Login to See Summary
+        </button>
+        <p style={{ fontSize: '0.85em', color: 'var(--ifm-color-emphasis-600)', marginTop: '1rem' }}>
+          Note: This is a temporary dummy authentication for demonstration purposes.
+        </p>
+      </div>
+    );
   }
 
   // Show error with retry button
