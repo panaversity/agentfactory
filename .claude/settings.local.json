@@ -21,5 +21,11 @@
     "playwright",
     "context7"
   ],
-  "alwaysThinkingEnabled": false
+  "alwaysThinkingEnabled": false,
+  "enabledMcpjsonServers": [
+    "playwright",
+    "context7",
+    "shadcn"
+  ],
+  "enableAllProjectMcpServers": true
 }
