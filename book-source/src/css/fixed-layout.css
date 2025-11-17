@@ -1,0 +1,151 @@
+/**
+ * ============================================================================
+ * FIXED SIDEBAR AND TOC LAYOUT
+ * Makes both left sidebar and right TOC sticky (not scrolling with content)
+ * Uses position: sticky instead of fixed for better Docusaurus compatibility
+ * ============================================================================
+ */
+
+/* Left Sidebar - Make it sticky and full height */
+.theme-doc-sidebar-container {
+  position: sticky !important;
+  top: calc(var(--ifm-navbar-height)) !important;
+  height: calc(100vh - var(--ifm-navbar-height)) !important;
+  max-height: calc(100vh - var(--ifm-navbar-height)) !important;
+  min-height: calc(100vh - var(--ifm-navbar-height)) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding-top: 1rem !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Make the sidebar inner content fill the available space */
+.theme-doc-sidebar-container .sidebar,
+.theme-doc-sidebar-container > div {
+  flex: 1 !important;
+  min-height: 100% !important;
+}
+
+/* Right TOC - Make it completely fixed */
+.theme-doc-toc-desktop {
+  position: fixed !important;
+  top: calc(var(--ifm-navbar-height) + 5px) !important;
+  right: 1rem !important;
+  width: 280px !important;
+  height: calc(100vh - var(--ifm-navbar-height) - 5px) !important;
+  max-height: calc(100vh - var(--ifm-navbar-height) - 5px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  z-index: 10 !important;
+  padding-top: 1.5rem !important;
+  padding-bottom: 0.5rem !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure the TOC wrapper doesn't interfere */
+.theme-doc-toc-desktop > div {
+  position: relative !important;
+  height: auto !important;
+}
+
+/* Add padding to the main content to prevent overlap with fixed TOC */
+.docItemContainer_Djhp {
+  padding-right: 0px !important;
+}
+
+/* Override Docusaurus default that reduces width to 75% on desktop */
+/* Using multiple specific selectors to ensure this overrides Docusaurus styles */
+/* This prevents the main content from shrinking when the right ToC drawer is open */
+@media (min-width: 997px) {
+  /* Target the exact class with maximum specificity */
+  .main-wrapper .docItemCol_VOVn,
+  .container .row .docItemCol_VOVn,
+  div.col.docItemCol_VOVn,
+  .docItemCol_VOVn.docItemCol_VOVn.docItemCol_VOVn {
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+    flex-grow: 1 !important;
+    flex-shrink: 1 !important;
+    width: auto !important;
+  }
+
+  /* Also target the main doc column wrapper */
+  .col.col--9,
+  div[class*="docItemCol"] {
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+  }
+
+  /* Target the row containing the doc item */
+  .row > .col.docItemCol_VOVn,
+  .docPage__5DB .row > .col {
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+  }
+
+  /* Override when both sidebars are present */
+  .theme-doc-sidebar-container ~ * .docItemCol_VOVn {
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+  }
+}
+
+/* Adjust for larger screens */
+@media (min-width: 1440px) {
+  .theme-doc-toc-desktop {
+    right: calc((100vw - 1320px) / 2) !important;
+  }
+}
+
+/* Smooth scrollbar for sticky sidebars */
+.theme-doc-sidebar-container::-webkit-scrollbar,
+.theme-doc-toc-desktop::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.theme-doc-sidebar-container::-webkit-scrollbar-track,
+.theme-doc-toc-desktop::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.theme-doc-sidebar-container::-webkit-scrollbar-thumb,
+.theme-doc-toc-desktop::-webkit-scrollbar-thumb {
+  background: rgba(0, 31, 63, 0.2);
+  border-radius: 3px;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-container::-webkit-scrollbar-thumb,
+[data-theme='dark'] .theme-doc-toc-desktop::-webkit-scrollbar-thumb {
+  background: rgba(170, 170, 170, 0.3);
+}
+
+.theme-doc-sidebar-container::-webkit-scrollbar-thumb:hover,
+.theme-doc-toc-desktop::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 31, 63, 0.4);
+}
+
+[data-theme='dark'] .theme-doc-sidebar-container::-webkit-scrollbar-thumb:hover,
+[data-theme='dark'] .theme-doc-toc-desktop::-webkit-scrollbar-thumb:hover {
+  background: rgba(170, 170, 170, 0.5);
+}
+
+/* Responsive: Disable sticky behavior on mobile/tablet */
+@media screen and (max-width: 996px) {
+  .theme-doc-sidebar-container {
+    position: relative !important;
+    top: auto !important;
+    max-height: none !important;
+  }
+
+  .theme-doc-toc-desktop {
+    display: none !important;
+  }
+}
+
+/* Ensure smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}

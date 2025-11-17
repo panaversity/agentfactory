@@ -716,3 +716,8 @@ pre code {
    DOC PAGES STYLING - Premium enhancements for chapter pages
    ============================================================================ */
 @import "./doc-pages.css";
+
+/* ============================================================================
+   FIXED LAYOUT - Fixed sidebar and TOC positioning
+   ============================================================================ */
+@import "./fixed-layout.css";

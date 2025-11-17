@@ -147,7 +147,7 @@
     padding-left: 0.75rem;
     margin-top: 0.25rem;
     margin-bottom: 0.5rem;
-    border-left: 2px solid rgba(0, 31, 63, 0.08);
+    border-left: none;
     margin-left: 0.75rem;
 }
 
@@ -155,7 +155,7 @@
 [data-theme="dark"]
     .menu__list-item:not(.menu__list-item--collapsed)
     .menu__list {
-    border-left-color: rgba(170, 170, 170, 0.12);
+    border-left: none;
 }
 
 /* Category label (clickable header) */

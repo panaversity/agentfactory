@@ -728,7 +728,7 @@ article {
 .table-of-contents__link {
   color: #003366;
   transition: all 0.2s ease;
-  border-left: 2px solid transparent;
+  border-left: none;
   padding-left: 0.75rem;
 }
 
@@ -739,14 +739,14 @@ article {
 .table-of-contents__link:hover,
 .table-of-contents__link--active {
   color: #001f3f;
-  border-left-color: #001f3f;
+  /* border-left-color removed */
   background: rgba(0, 31, 63, 0.05);
 }
 
 [data-theme='dark'] .table-of-contents__link:hover,
 [data-theme='dark'] .table-of-contents__link--active {
   color: #DDDDDD;
-  border-left-color: #AAAAAA;
+  /* border-left-color removed */
   background: rgba(170, 170, 170, 0.08);
 }
 

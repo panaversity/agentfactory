@@ -14,7 +14,8 @@
       "Bash(npm run build:*)",
       "Bash(\"D:\\ai-native-software-development\\book-source\\src\\components\\CustomNavbar\\customNavbar.css.tmp\")",
       "Bash(dir:*)",
-      "Bash(nul)"
+      "Bash(nul)",
+      "Bash(test:*)"
     ],
     "deny": [],
     "ask": []
