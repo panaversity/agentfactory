@@ -15,6 +15,7 @@ article {
   max-width: 100%;
   margin: 0 auto;
   padding-top: 2rem;
+  padding-left: 5px;
   position: relative;
   z-index: 5;
 }

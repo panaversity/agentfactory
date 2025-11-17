@@ -12,14 +12,14 @@ class AnswerAgent {
     this.browserSearch = new BrowserSearch();
   }
 
-  async generateAnswer({ query, structuredQuery, toneResult, projectContext, conversationHistory }) {
+  async generateAnswer({ query, structuredQuery, toneResult, projectContext, conversationHistory, isSummary = false }) {
     try {
       let contextToUse = projectContext.content || '';
       let usedBrowserSearch = false;
       let externalInfo = '';
 
-      // If out-of-tone, perform browser search but relate back to project
-      if (!toneResult.isInTone && toneResult.confidence < 0.5) {
+      // If out-of-tone and not a summary, perform browser search
+      if (!toneResult.isInTone && toneResult.confidence < 0.5 && !isSummary) {
         console.log('Query is out-of-tone, performing browser search...');
         externalInfo = await this.browserSearch.search(query, {
           projectDomain: 'AI Native Software Development',
@@ -28,13 +28,18 @@ class AnswerAgent {
         usedBrowserSearch = true;
       }
 
-      // Build conversation history context
-      const historyContext = conversationHistory
-        .slice(-5) // Last 5 messages
-        .map(msg => `${msg.isBot ? 'Assistant' : 'User'}: ${msg.text}`)
-        .join('\n');
+      // Build conversation history context (skip for summaries to keep focused)
+      const historyContext = !isSummary
+        ? conversationHistory
+            .slice(-5) // Last 5 messages
+            .map(msg => `${msg.isBot ? 'Assistant' : 'User'}: ${msg.text}`)
+            .join('\n')
+        : '';
 
-      const systemPrompt = `You are an intelligent AI assistant for the "AI Native Software Development" book and documentation platform.
+      // Use specialized prompt for summaries
+      const systemPrompt = isSummary
+        ? this.buildSummaryPrompt(query)
+        : `You are an intelligent AI assistant for the "AI Native Software Development" book and documentation platform.
 
 PROJECT CONTEXT:
 This is a comprehensive book and learning platform about:
@@ -109,6 +114,59 @@ Format your response naturally and conversationally. If you reference external i
     }
 
     return sources;
+  }
+
+  buildSummaryPrompt(query) {
+    // Extract the summary request details from the query
+    const summaryStyleMatch = query.match(/Provide a (concise|comprehensive|detailed) ([\w\s-]+) summary/i);
+    const style = summaryStyleMatch ? summaryStyleMatch[1].toLowerCase() : 'medium';
+
+    // Extract selected text
+    const textMatch = query.match(/Selected Text:\s*"""\s*([\s\S]+?)\s*"""/);
+    const selectedText = textMatch ? textMatch[1].trim() : '';
+
+    // Extract context metadata
+    const contextMatch = query.match(/Context: This text is from "([^"]+)" \(([^)]+)\), section: "([^"]+)"/);
+    const pageTitle = contextMatch ? contextMatch[1] : 'Unknown Page';
+    const pageUrl = contextMatch ? contextMatch[2] : '';
+    const section = contextMatch ? contextMatch[3] : 'Unknown Section';
+
+    // Build style-specific instructions
+    const styleInstructions = {
+      concise: 'Provide a concise 2-3 sentence summary that captures the key takeaway. Be direct and clear.',
+      comprehensive: 'Provide a comprehensive paragraph summary covering all main points. Explain the concepts thoroughly while staying focused.',
+      detailed: 'Provide a detailed summary with key points listed as bullets. Cover all important concepts, examples, and implications.'
+    };
+
+    const instruction = styleInstructions[style] || styleInstructions.comprehensive;
+
+    return `You are an expert AI summarizer for educational content.
+
+TASK: Summarize the following text from the "AI Native Software Development" book.
+
+SOURCE CONTEXT:
+- Page: ${pageTitle}
+- URL: ${pageUrl}
+- Section: ${section}
+
+SUMMARY STYLE: ${style.toUpperCase()}
+${instruction}
+
+TEXT TO SUMMARIZE:
+"""
+${selectedText}
+"""
+
+INSTRUCTIONS:
+1. Focus on the core concepts and key information
+2. Maintain technical accuracy
+3. Keep the summary style consistent with the requested format
+4. Preserve important technical terms and examples
+5. Make it clear and easy to understand
+6. Do not add information not present in the original text
+7. Do not include phrases like "this text discusses" or "the passage explains" - just provide the summary directly
+
+Now provide the summary:`;
   }
 }
 

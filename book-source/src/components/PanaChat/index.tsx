@@ -19,6 +19,14 @@ interface Message {
   };
 }
 
+interface ChatSession {
+  id: string;
+  title: string;
+  messages: Message[];
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 // Determine API URL based on environment
 const getApiBaseUrl = () => {
   // In browser environment, use window location or environment variable
@@ -42,15 +50,76 @@ const getApiBaseUrl = () => {
 
 const API_BASE_URL = getApiBaseUrl();
 
+// Storage utility functions
+const STORAGE_KEY = 'panaChat_sessions';
+
+const loadSessionsFromStorage = (): ChatSession[] => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) return [];
+
+    const sessions = JSON.parse(stored);
+    // Convert date strings back to Date objects
+    return sessions.map((session: any) => ({
+      ...session,
+      createdAt: new Date(session.createdAt),
+      updatedAt: new Date(session.updatedAt),
+      messages: session.messages.map((msg: any) => ({
+        ...msg,
+        timestamp: new Date(msg.timestamp)
+      }))
+    }));
+  } catch (error) {
+    console.error('Error loading chat sessions:', error);
+    return [];
+  }
+};
+
+const saveSessionsToStorage = (sessions: ChatSession[]) => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(sessions));
+  } catch (error) {
+    console.error('Error saving chat sessions:', error);
+  }
+};
+
+const createNewSession = (): ChatSession => {
+  return {
+    id: `session-${Date.now()}`,
+    title: 'New Chat',
+    messages: [
+      {
+        id: '1',
+        text: 'Hello! I\'m your AI Assistant. How can I help you today?',
+        isBot: true,
+        timestamp: new Date(),
+      },
+    ],
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+};
+
 const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      text: 'Hello! I\'m your AI Assistant. How can I help you today?',
-      isBot: true,
-      timestamp: new Date(),
-    },
-  ]);
+  // Chat session management
+  const [chatSessions, setChatSessions] = useState<ChatSession[]>(() => {
+    const stored = loadSessionsFromStorage();
+    if (stored.length === 0) {
+      const newSession = createNewSession();
+      return [newSession];
+    }
+    return stored;
+  });
+
+  const [currentSessionId, setCurrentSessionId] = useState<string>(() => {
+    const stored = loadSessionsFromStorage();
+    return stored.length > 0 ? stored[0].id : `session-${Date.now()}`;
+  });
+
+  // Get current session
+  const currentSession = chatSessions.find(s => s.id === currentSessionId) || chatSessions[0];
+  const messages = currentSession?.messages || [];
+
   const [inputValue, setInputValue] = useState('');
   const [isMinimized, setIsMinimized] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -73,6 +142,82 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Save sessions to storage whenever they change
+  useEffect(() => {
+    saveSessionsToStorage(chatSessions);
+  }, [chatSessions]);
+
+  // Helper function to update messages in current session
+  const updateCurrentSessionMessages = (updater: (prev: Message[]) => Message[]) => {
+    setChatSessions(prevSessions => {
+      return prevSessions.map(session => {
+        if (session.id === currentSessionId) {
+          return {
+            ...session,
+            messages: updater(session.messages),
+            updatedAt: new Date()
+          };
+        }
+        return session;
+      });
+    });
+  };
+
+  // Helper function to auto-generate chat title from first user message
+  const updateSessionTitle = (sessionId: string, firstUserMessage: string) => {
+    setChatSessions(prevSessions => {
+      return prevSessions.map(session => {
+        if (session.id === sessionId && session.title === 'New Chat') {
+          // Generate title from first 50 characters of first message
+          const title = firstUserMessage.length > 50
+            ? firstUserMessage.substring(0, 50) + '...'
+            : firstUserMessage;
+          return { ...session, title, updatedAt: new Date() };
+        }
+        return session;
+      });
+    });
+  };
+
+  // Session management functions
+  const createNewChat = () => {
+    const newSession = createNewSession();
+    setChatSessions(prev => [newSession, ...prev]);
+    setCurrentSessionId(newSession.id);
+  };
+
+  const switchToSession = (sessionId: string) => {
+    setCurrentSessionId(sessionId);
+  };
+
+  const deleteSession = (sessionId: string) => {
+    setChatSessions(prev => {
+      const updated = prev.filter(s => s.id !== sessionId);
+      // If we deleted the current session, switch to the first available
+      if (sessionId === currentSessionId && updated.length > 0) {
+        setCurrentSessionId(updated[0].id);
+      }
+      // If no sessions left, create a new one
+      if (updated.length === 0) {
+        const newSession = createNewSession();
+        setCurrentSessionId(newSession.id);
+        return [newSession];
+      }
+      return updated;
+    });
+  };
+
+  const renameSession = (sessionId: string, newTitle: string) => {
+    setChatSessions(prev => {
+      return prev.map(session => {
+        if (session.id === sessionId) {
+          return { ...session, title: newTitle, updatedAt: new Date() };
+        }
+        return session;
+      });
+    });
+  };
 
 
   useEffect(() => {
@@ -238,6 +383,120 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
     };
   }, []);
 
+  // Listen for external messages (e.g., from Selection Toolbar Summary feature)
+  useEffect(() => {
+    const handleExternalMessage = (event: CustomEvent) => {
+      const { message } = event.detail;
+
+      // Set the input value with the external message
+      setInputValue(message);
+
+      // Open the chat if minimized
+      setIsMinimized(false);
+
+      // Auto-send the message after a brief delay to allow UI to update
+      setTimeout(() => {
+        // Create user message
+        const userMessage: Message = {
+          id: Date.now().toString(),
+          text: message,
+          isBot: false,
+          timestamp: new Date(),
+        };
+
+        updateCurrentSessionMessages((prev) => [...prev, userMessage]);
+        setInputValue('');
+        setIsLoading(true);
+
+        // Auto-generate title from first user message
+        if (currentSession.messages.length === 1) {
+          updateSessionTitle(currentSessionId, message);
+        }
+
+        // Add loading message
+        const loadingMessageId = (Date.now() + 1).toString();
+        const loadingMessage: Message = {
+          id: loadingMessageId,
+          text: '__LOADING__',
+          isBot: true,
+          timestamp: new Date(),
+        };
+        updateCurrentSessionMessages((prev) => [...prev, loadingMessage]);
+
+        // Prepare conversation history
+        const conversationHistory = messages
+          .filter((msg) => msg.id !== '1')
+          .slice(-10)
+          .map((msg) => ({
+            text: msg.text,
+            isBot: msg.isBot,
+          }));
+
+        // Call API
+        fetch(`${API_BASE_URL}/api/chat/message`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message,
+            conversationHistory,
+          }),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`API error: ${response.statusText}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            updateCurrentSessionMessages((prev) => {
+              const filtered = prev.filter((msg) => msg.id !== loadingMessageId);
+              return [
+                ...filtered,
+                {
+                  id: Date.now().toString(),
+                  text: data.message,
+                  isBot: true,
+                  timestamp: new Date(),
+                  metadata: {
+                    isInTone: data.isInTone,
+                    confidence: data.confidence,
+                    sources: data.sources,
+                    usedBrowserSearch: data.metadata?.usedBrowserSearch,
+                  },
+                },
+              ];
+            });
+          })
+          .catch((error) => {
+            console.error('Error sending message:', error);
+            updateCurrentSessionMessages((prev) => {
+              const filtered = prev.filter((msg) => msg.id !== loadingMessageId);
+              return [
+                ...filtered,
+                {
+                  id: Date.now().toString(),
+                  text: 'Sorry, I encountered an error. Please make sure the API server is running and try again.',
+                  isBot: true,
+                  timestamp: new Date(),
+                },
+              ];
+            });
+          })
+          .finally(() => {
+            setIsLoading(false);
+          });
+      }, 100);
+    };
+
+    window.addEventListener('openPanaChatWithMessage', handleExternalMessage as EventListener);
+
+    return () => {
+      window.removeEventListener('openPanaChatWithMessage', handleExternalMessage as EventListener);
+    };
+  }, [messages]);
+
   const handleSendMessage = async () => {
     if (!inputValue.trim() || isLoading) return;
 
@@ -250,20 +509,25 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
       timestamp: new Date(),
     };
 
-    setMessages((prev) => [...prev, userMessage]);
+    updateCurrentSessionMessages((prev) => [...prev, userMessage]);
     const currentInput = inputValue;
     setInputValue('');
     setIsLoading(true);
+
+    // Auto-generate title from first user message
+    if (currentSession.messages.length === 1) {
+      updateSessionTitle(currentSessionId, currentInput);
+    }
 
     // Add loading message
     const loadingMessageId = (Date.now() + 1).toString();
     const loadingMessage: Message = {
       id: loadingMessageId,
-      text: 'Thinking...',
+      text: '__LOADING__',
       isBot: true,
       timestamp: new Date(),
     };
-    setMessages((prev) => [...prev, loadingMessage]);
+    updateCurrentSessionMessages((prev) => [...prev, loadingMessage]);
 
     try {
       // Prepare conversation history (last 10 messages, excluding initial greeting)
@@ -294,7 +558,7 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
       const data = await response.json();
 
       // Remove loading message and add actual response
-      setMessages((prev) => {
+      updateCurrentSessionMessages((prev) => {
         const filtered = prev.filter((msg) => msg.id !== loadingMessageId);
         return [
           ...filtered,
@@ -314,9 +578,9 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
       });
     } catch (error) {
       console.error('Error sending message:', error);
-      
+
       // Remove loading message and add error message
-      setMessages((prev) => {
+      updateCurrentSessionMessages((prev) => {
         const filtered = prev.filter((msg) => msg.id !== loadingMessageId);
         return [
           ...filtered,
@@ -436,44 +700,56 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
         </div>
         <div className="pana-chat__header-actions">
           <button
+            className="pana-chat__header-btn pana-chat__new-chat-btn"
+            onClick={createNewChat}
+            aria-label="New Chat"
+            title="New Chat"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 5v14M5 12h14"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+          <button
             className="pana-chat__header-btn"
             onClick={toggleMinimize}
             aria-label={isMinimized ? 'Maximize' : 'Minimize'}
             title={isMinimized ? 'Maximize' : 'Minimize'}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M19 13H5"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            {isMinimized ? (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            ) : (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M19 13H5"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            )}
           </button>
           <button
-            className="pana-chat__header-btn"
-            onClick={toggleMinimize}
-            aria-label="Expand"
-            title="Expand"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-          <button
-            className="pana-chat__header-btn"
+            className="pana-chat__header-btn pana-chat__close-btn"
             onClick={onClose}
             aria-label="Close"
             title="Close"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
               <path
                 d="M18 6L6 18M6 6l12 12"
                 stroke="currentColor"
@@ -499,7 +775,15 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
                   }`}
                 >
                   <div className="pana-chat__message-text">
-                    {message.text}
+                    {message.text === '__LOADING__' ? (
+                      <div className="pana-chat__loading">
+                        <div className="pana-chat__loading-dot"></div>
+                        <div className="pana-chat__loading-dot"></div>
+                        <div className="pana-chat__loading-dot"></div>
+                      </div>
+                    ) : (
+                      message.text
+                    )}
                     {message.metadata && message.metadata.sources && message.metadata.sources.length > 0 && (
                       <div className="pana-chat__message-sources">
                         <div className="pana-chat__sources-label">Sources:</div>

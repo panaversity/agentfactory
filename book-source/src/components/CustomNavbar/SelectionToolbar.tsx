@@ -17,6 +17,12 @@ interface HighlightColor {
   label: string;
 }
 
+interface SummaryStyle {
+  name: string;
+  label: string;
+  description: string;
+}
+
 const HIGHLIGHT_COLORS: HighlightColor[] = [
   { name: 'yellow', color: '#fef08a', label: 'Yellow' },
   { name: 'green', color: '#86efac', label: 'Green' },
@@ -24,6 +30,12 @@ const HIGHLIGHT_COLORS: HighlightColor[] = [
   { name: 'pink', color: '#f9a8d4', label: 'Pink' },
   { name: 'purple', color: '#d8b4fe', label: 'Purple' },
   { name: 'orange', color: '#fdba74', label: 'Orange' },
+];
+
+const SUMMARY_STYLES: SummaryStyle[] = [
+  { name: 'short', label: 'Short', description: '2-3 sentence summary' },
+  { name: 'medium', label: 'Medium', description: '1 paragraph summary' },
+  { name: 'detailed', label: 'Detailed', description: 'Comprehensive with key points' },
 ];
 
 const SelectionToolbar: React.FC<SelectionToolbarProps> = ({ onAction }) => {
@@ -36,8 +48,10 @@ const SelectionToolbar: React.FC<SelectionToolbarProps> = ({ onAction }) => {
   const [selectedText, setSelectedText] = useState('');
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [selectedColor, setSelectedColor] = useState<string>('yellow');
+  const [showSummaryPicker, setShowSummaryPicker] = useState(false);
   const toolbarRef = useRef<HTMLDivElement>(null);
   const colorPickerRef = useRef<HTMLDivElement>(null);
+  const summaryPickerRef = useRef<HTMLDivElement>(null);
 
   const calculateToolbarPosition = useCallback(() => {
     const selection = window.getSelection();
@@ -49,7 +63,7 @@ const SelectionToolbar: React.FC<SelectionToolbarProps> = ({ onAction }) => {
     // Get actual toolbar dimensions if it exists
     const toolbarWidth = toolbarRef.current?.offsetWidth || 320;
     const toolbarHeight = toolbarRef.current?.offsetHeight || 48;
-    const gap = 5; // 5px gap between toolbar and selection
+    const gap = 2; // 2px gap between toolbar and selection
 
     // Calculate vertical position - position above the selection (viewport coordinates)
     // Use rect.top directly since position: fixed uses viewport coordinates
@@ -154,6 +168,58 @@ const SelectionToolbar: React.FC<SelectionToolbarProps> = ({ onAction }) => {
       setVisible(false);
     }
   }, [selectedText, onAction]);
+
+  const buildSummaryPrompt = useCallback((text: string, style: string): string => {
+    // Get page metadata
+    const pageTitle = document.title;
+    const pageUrl = window.location.pathname;
+
+    // Extract chapter/section if available
+    const h1 = document.querySelector('h1')?.textContent || 'Unknown Section';
+
+    // Style-specific instructions
+    const styleInstructions: Record<string, string> = {
+      short: 'Provide a concise 2-3 sentence summary highlighting the key takeaway',
+      medium: 'Provide a comprehensive 1-paragraph summary covering the main points',
+      detailed: 'Provide a detailed summary with key points listed as bullets, covering all important concepts'
+    };
+
+    return `Context: This text is from "${pageTitle}" (${pageUrl}), section: "${h1}"
+
+${styleInstructions[style] || styleInstructions.medium}.
+
+Selected Text:
+"""
+${text}
+"""
+
+Please provide the summary now.`;
+  }, []);
+
+  const handleSummary = useCallback((style: string) => {
+    if (!selectedText) return;
+
+    // Build the summary prompt with context
+    const summaryPrompt = buildSummaryPrompt(selectedText, style);
+
+    // Dispatch custom event to open PanaChat with the message
+    window.dispatchEvent(new CustomEvent('openPanaChatWithMessage', {
+      detail: { message: summaryPrompt }
+    }));
+
+    // Clear selection and hide toolbar
+    window.getSelection()?.removeAllRanges();
+    setVisible(false);
+    setShowSummaryPicker(false);
+  }, [selectedText, buildSummaryPrompt]);
+
+  const toggleSummaryPicker = useCallback(() => {
+    setShowSummaryPicker(prev => !prev);
+    // Close color picker if open
+    if (showColorPicker) {
+      setShowColorPicker(false);
+    }
+  }, [showColorPicker]);
 
   const createHighlightSpan = (text: string, color: string, highlightId: string) => {
     const span = document.createElement('span');
@@ -341,13 +407,29 @@ const SelectionToolbar: React.FC<SelectionToolbarProps> = ({ onAction }) => {
     document.addEventListener('mouseup', handleSelection);
     document.addEventListener('keyup', handleSelection);
 
-    // Click outside to hide toolbar and color picker
+    // Listen for selection changes to hide toolbar when text is deselected
+    const handleSelectionChange = () => {
+      const selection = window.getSelection();
+      const text = selection?.toString().trim();
+
+      // If no text is selected, hide the toolbar immediately
+      if (!text || text.length === 0) {
+        setVisible(false);
+        setShowColorPicker(false);
+        setShowSummaryPicker(false);
+      }
+    };
+
+    document.addEventListener('selectionchange', handleSelectionChange);
+
+    // Click outside to hide toolbar and pickers
     const handleClickOutside = (event: MouseEvent) => {
       if (toolbarRef.current && !toolbarRef.current.contains(event.target as Node)) {
         const selection = window.getSelection();
         if (!selection?.toString().trim()) {
           setVisible(false);
           setShowColorPicker(false);
+          setShowSummaryPicker(false);
         }
       }
 
@@ -355,6 +437,13 @@ const SelectionToolbar: React.FC<SelectionToolbarProps> = ({ onAction }) => {
       if (colorPickerRef.current && !colorPickerRef.current.contains(event.target as Node)) {
         if (!(event.target as Element).closest('.selection-toolbar__highlighter-button')) {
           setShowColorPicker(false);
+        }
+      }
+
+      // Close summary picker if clicking outside of it
+      if (summaryPickerRef.current && !summaryPickerRef.current.contains(event.target as Node)) {
+        if (!(event.target as Element).closest('.selection-toolbar__summary-button')) {
+          setShowSummaryPicker(false);
         }
       }
     };
@@ -375,6 +464,7 @@ const SelectionToolbar: React.FC<SelectionToolbarProps> = ({ onAction }) => {
     return () => {
       document.removeEventListener('mouseup', handleSelection);
       document.removeEventListener('keyup', handleSelection);
+      document.removeEventListener('selectionchange', handleSelectionChange);
       document.removeEventListener('mousedown', handleClickOutside);
       window.removeEventListener('scroll', handleScroll, true);
     };
@@ -602,6 +692,58 @@ const SelectionToolbar: React.FC<SelectionToolbarProps> = ({ onAction }) => {
         </svg>
         <span>Assessment</span>
       </button>
+
+      {/* Summary with Style Picker */}
+      <div className="selection-toolbar__summary">
+        <button
+          className="selection-toolbar__button selection-toolbar__summary-button"
+          onClick={toggleSummaryPicker}
+          title="Summarize selected text"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M2 3H14M2 8H14M2 13H10"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span>Summary</span>
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            className="selection-toolbar__dropdown-arrow"
+          >
+            <path
+              d="M3 5L6 8L9 5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+
+        {/* Summary Style Picker Dropdown */}
+        {showSummaryPicker && (
+          <div ref={summaryPickerRef} className="selection-toolbar__summary-picker">
+            {SUMMARY_STYLES.map((styleOption) => (
+              <button
+                key={styleOption.name}
+                className="selection-toolbar__summary-option"
+                onClick={() => handleSummary(styleOption.name)}
+                title={styleOption.description}
+              >
+                <span className="selection-toolbar__summary-option-label">{styleOption.label}</span>
+                <span className="selection-toolbar__summary-option-description">{styleOption.description}</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
 
       {/* Highlighter with Color Picker */}
       <div className="selection-toolbar__highlighter">

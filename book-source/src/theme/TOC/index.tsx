@@ -70,25 +70,8 @@ export default function TOC({ className, ...props }: TOCProps): JSX.Element | nu
   }, [isVisible]);
 
   if (!isVisible) {
-    // Initial/default state: only a small "Show Table of Contents" button,
-    // positioned at the top of the TOC column.
-    return (
-      <div
-        className={clsx(
-          styles.tocContainer,
-          styles.tocHidden,
-          className,
-        )}
-      >
-        <button
-          type="button"
-          className={styles.tocShowButton}
-          onClick={() => setTocMode('expanded')}
-        >
-          Show Table of Contents
-        </button>
-      </div>
-    );
+    // When TOC is hidden, return null - the toggle is now in the navbar
+    return null;
   }
 
   // Visible state: full TOC panel with headings and scroll tracking,
@@ -104,13 +87,6 @@ export default function TOC({ className, ...props }: TOCProps): JSX.Element | nu
     >
       <div className={styles.tocHeader}>
         <span className={styles.tocTitle}>Table of Contents</span>
-        <button
-          type="button"
-          className={styles.tocHideButton}
-          onClick={() => setTocMode('hidden')}
-        >
-          Hide
-        </button>
       </div>
 
       <div className={styles.tocBody} ref={tocBodyRef}>
