@@ -127,52 +127,52 @@
 
 ### Backend: Separate Personalization Agent (Decision 2, FR-009, FR-010, FR-022, FR-024)
 
-- [ ] T037 [US2] Create `generate_personalized_content()` async function in `api/src/services/openai_agent.py`
-- [ ] T038 [US2] Implement separate Agent instance in generate_personalized_content: `Agent(name="Content Personalizer", instructions=..., model=...)`
-- [ ] T039 [US2] Build proficiency-specific instructions using programming_level and ai_proficiency parameters (Decision 5 templates)
-- [ ] T040 [US2] Construct session_id as `f"{page_id}_{programming_level}_{ai_proficiency}"` for agent context isolation
-- [ ] T041 [US2] Implement streaming with `Runner.run_streamed()` yielding chunks as strings
-- [ ] T042 [US2] Export `generate_personalized_content` in `api/src/services/__init__.py`
+- [x] T037 [US2] Create `generate_personalized_content()` async function in `api/src/services/openai_agent.py`
+- [x] T038 [US2] Implement separate Agent instance in generate_personalized_content: `Agent(name="Content Personalizer", instructions=..., model=...)`
+- [x] T039 [US2] Build proficiency-specific instructions using programming_level and ai_proficiency parameters (Decision 5 templates)
+- [x] T040 [US2] Construct session_id as `f"{page_id}_{programming_level}_{ai_proficiency}"` for agent context isolation
+- [x] T041 [US2] Implement streaming with `Runner.run_streamed()` yielding chunks as strings
+- [x] T042 [US2] Export `generate_personalized_content` in `api/src/services/__init__.py`
 
 ### Backend: Personalization Endpoint (FR-024, FR-013, FR-015)
 
-- [ ] T043 [US2] Create `personalize.py` router in `api/src/routers/`
-- [ ] T044 [US2] Implement `GET /personalize` endpoint accepting query params: pageId, content, token, programmingLevel, aiLevel
-- [ ] T045 [US2] Add token validation in /personalize endpoint (check token exists, return 401 if missing/invalid)
-- [ ] T046 [US2] Validate query params: content min 100 chars, proficiency levels in ProficiencyLevel enum (return 400 on validation failure)
-- [ ] T047 [US2] Set response content type to `text/event-stream` for SSE streaming
-- [ ] T048 [US2] Stream chunks from `generate_personalized_content()` as SSE events (format: `data: {chunk, done, error}\n\n`)
-- [ ] T049 [US2] Implement error handling: catch exceptions, yield error chunk, set done=true (FR-015a, FR-015b)
-- [ ] T050 [US2] Register personalization router in `api/src/main.py` with prefix `/api/v1`
+- [x] T043 [US2] Create `personalize.py` router in `api/src/routers/`
+- [x] T044 [US2] Implement `GET /personalize` endpoint accepting query params: pageId, content, token, programmingLevel, aiLevel
+- [x] T045 [US2] Add token validation in /personalize endpoint (check token exists, return 401 if missing/invalid)
+- [x] T046 [US2] Validate query params: content min 100 chars, proficiency levels in ProficiencyLevel enum (return 400 on validation failure)
+- [x] T047 [US2] Set response content type to `text/event-stream` for SSE streaming
+- [x] T048 [US2] Stream chunks from `generate_personalized_content()` as SSE events (format: `data: {chunk, done, error}\n\n`)
+- [x] T049 [US2] Implement error handling: catch exceptions, yield error chunk, set done=true (FR-015a, FR-015b)
+- [x] T050 [US2] Register personalization router in `api/src/main.py` with prefix `/api/v1`
 
 ### Frontend: Personalization Service (FR-013, FR-015, FR-021)
 
-- [ ] T051 [US2] Create `personalizationService.ts` in `book-source/src/services/`
-- [ ] T052 [US2] Implement `generatePersonalizedContent()` function using EventSource for SSE streaming
-- [ ] T053 [US2] Construct URL with query params: pageId, content, token (from authService), programmingLevel, aiLevel (from profile)
-- [ ] T054 [US2] Parse SSE events extracting {chunk, done, error} JSON from data field
-- [ ] T055 [US2] Implement callback pattern: onChunk(text), onComplete(), onError(message, partialContent)
-- [ ] T056 [US2] Close EventSource on completion or error
-- [ ] T057 [US2] Handle network errors and timeout scenarios (FR-015)
+- [x] T051 [US2] Create `personalizationService.ts` in `book-source/src/services/`
+- [x] T052 [US2] Implement `generatePersonalizedContent()` function using EventSource for SSE streaming
+- [x] T053 [US2] Construct URL with query params: pageId, content, token (from authService), programmingLevel, aiLevel (from profile)
+- [x] T054 [US2] Parse SSE events extracting {chunk, done, error} JSON from data field
+- [x] T055 [US2] Implement callback pattern: onChunk(text), onComplete(), onError(message, partialContent)
+- [x] T056 [US2] Close EventSource on completion or error
+- [x] T057 [US2] Handle network errors and timeout scenarios (FR-015)
 
 ### Frontend: PersonalizationTab Component (FR-001, FR-008, FR-014, FR-021a, FR-021b)
 
-- [ ] T058 [US2] Create `PersonalizationTab.tsx` component in `book-source/src/components/ContentTabs/`
-- [ ] T059 [US2] Check authentication on mount: if not authenticated, render "Login to Personalize" button routing to `/login?returnTo=<current-page>#personalization`
-- [ ] T060 [US2] If authenticated, render "Generate Personalized Content" button and content display area
-- [ ] T061 [US2] Implement generate button click handler calling `personalizationService.generatePersonalizedContent()`
-- [ ] T062 [US2] Disable generate button during streaming (FR-021a) and show "Generating..." text (FR-021b)
-- [ ] T063 [US2] Display streaming chunks progressively in content area (append each chunk as received)
-- [ ] T064 [US2] Implement auto-scroll to bottom during streaming (smooth scroll behavior)
-- [ ] T065 [US2] On streaming completion, re-enable generate button and show success indicator
-- [ ] T066 [US2] On streaming error, preserve partial content (FR-015a), show error message (FR-015b), and display retry button (FR-015c)
-- [ ] T067 [US2] Implement retry button handler re-calling generatePersonalizedContent (clears previous error state)
+- [x] T058 [US2] Create `PersonalizationTab.tsx` component in `book-source/src/components/ContentTabs/`
+- [x] T059 [US2] Check authentication on mount: if not authenticated, render "Login to Personalize" button routing to `/login?returnTo=<current-page>#personalization`
+- [x] T060 [US2] If authenticated, render "Generate Personalized Content" button and content display area
+- [x] T061 [US2] Implement generate button click handler calling `personalizationService.generatePersonalizedContent()`
+- [x] T062 [US2] Disable generate button during streaming (FR-021a) and show "Generating..." text (FR-021b)
+- [x] T063 [US2] Display streaming chunks progressively in content area (append each chunk as received)
+- [x] T064 [US2] Implement auto-scroll to bottom during streaming (smooth scroll behavior)
+- [x] T065 [US2] On streaming completion, re-enable generate button and show success indicator
+- [x] T066 [US2] On streaming error, preserve partial content (FR-015a), show error message (FR-015b), and display retry button (FR-015c)
+- [x] T067 [US2] Implement retry button handler re-calling generatePersonalizedContent (clears previous error state)
 
 ### Frontend: Tab Integration
 
-- [ ] T068 [US2] Update `book-source/src/components/ContentTabs/index.tsx` to add Personalization tab alongside Summary and Learn tabs
-- [ ] T069 [US2] Add tab styling in `styles.module.css` for personalization tab (consistent with existing tabs)
-- [ ] T070 [US2] Ensure PersonalizationTab receives pageId and content props from parent component
+- [x] T068 [US2] Update `book-source/src/components/ContentTabs/index.tsx` to add Personalization tab alongside Summary and Learn tabs
+- [x] T069 [US2] Add tab styling in `styles.module.css` for personalization tab (consistent with existing tabs)
+- [x] T070 [US2] Ensure PersonalizationTab receives pageId and content props from parent component
 
 **US2 Acceptance**: ✅ Authenticated user clicks "Generate Personalized Content" → Content streams progressively → Button shows "Generating..." → Content complexity matches proficiency level → Errors preserve partial content with retry option
 
@@ -188,29 +188,29 @@
 
 ### Frontend: Cache Service Enhancement (FR-016, FR-017, FR-017a, FR-018, FR-019, FR-020)
 
-- [ ] T071 [US3] Add `getPersonalizedContentFromCache(pageId, profileFingerprint)` function to cache service
-- [ ] T072 [US3] Add `savePersonalizedContentToCache(pageId, profileFingerprint, content)` function to cache service
-- [ ] T073 [US3] Implement cache key format: `personalized_{pageId}_{profileFingerprint}` (e.g., "personalized_intro_Novice-Beginner")
-- [ ] T074 [US3] Store PersonalizationCacheEntry objects in sessionStorage: {pageId, profileFingerprint, personalizedText, timestamp, cached: true}
-- [ ] T075 [US3] Implement cache retrieval returning PersonalizationCacheEntry | null
+- [x] T071 [US3] Add `getPersonalizedContentFromCache(pageId, profileFingerprint)` function to cache service
+- [x] T072 [US3] Add `savePersonalizedContentToCache(pageId, profileFingerprint, content)` function to cache service
+- [x] T073 [US3] Implement cache key format: `personalized_{pageId}_{profileFingerprint}` (e.g., "personalized_intro_Novice-Beginner")
+- [x] T074 [US3] Store PersonalizationCacheEntry objects in sessionStorage: {pageId, profileFingerprint, personalizedText, timestamp, cached: true}
+- [x] T075 [US3] Implement cache retrieval returning PersonalizationCacheEntry | null
 
 ### Frontend: PersonalizationTab Cache Integration (FR-018, FR-019, FR-020)
 
-- [ ] T076 [US3] Update PersonalizationTab to check cache on mount before showing generate button
-- [ ] T077 [US3] Get profile fingerprint from `authService.generateProfileFingerprint(profile)`
-- [ ] T078 [US3] Call `getPersonalizedContentFromCache(pageId, fingerprint)` and display if found
-- [ ] T079 [US3] Show cache indicator when displaying cached content (e.g., "📋 Cached content from {timestamp}")
-- [ ] T080 [US3] Skip generate button if cached content displayed (or show "Regenerate" option)
-- [ ] T081 [US3] After successful personalization generation, call `savePersonalizedContentToCache()` to store result
-- [ ] T082 [US3] Update cache indicator to show "freshly generated" vs "from cache" state
+- [x] T076 [US3] Update PersonalizationTab to check cache on mount before showing generate button
+- [x] T077 [US3] Get profile fingerprint from `authService.generateProfileFingerprint(profile)`
+- [x] T078 [US3] Call `getPersonalizedContentFromCache(pageId, fingerprint)` and display if found
+- [x] T079 [US3] Show cache indicator when displaying cached content (e.g., "📋 Cached content from {timestamp}")
+- [x] T080 [US3] Skip generate button if cached content displayed (or show "Regenerate" option)
+- [x] T081 [US3] After successful personalization generation, call `savePersonalizedContentToCache()` to store result
+- [x] T082 [US3] Update cache indicator to show "freshly generated" vs "from cache" state
 
 ### State Machine Implementation (from data-model.md)
 
-- [ ] T083 [US3] Implement 9-state machine in PersonalizationTab: IDLE → CHECKING_CACHE → CACHE_HIT/CHECKING_AUTH → LOADING → STREAMING → SUCCESS/ERROR
-- [ ] T084 [US3] Add state transitions: IDLE → CHECKING_CACHE (on mount), CHECKING_CACHE → CACHE_HIT (if cached) or CHECKING_AUTH (if not cached)
-- [ ] T085 [US3] Add transition: CHECKING_AUTH → LOGIN_REQUIRED (not authenticated) or LOADING (authenticated)
-- [ ] T086 [US3] Add transition: LOADING → STREAMING (generation starts) → SUCCESS (complete) or ERROR (failure)
-- [ ] T087 [US3] Render UI based on current state: CACHE_HIT shows content immediately, LOADING shows spinner, STREAMING shows progressive chunks
+- [x] T083 [US3] Implement 9-state machine in PersonalizationTab: IDLE → CHECKING_CACHE → CACHE_HIT/CHECKING_AUTH → LOADING → STREAMING → SUCCESS/ERROR
+- [x] T084 [US3] Add state transitions: IDLE → CHECKING_CACHE (on mount), CHECKING_CACHE → CACHE_HIT (if cached) or CHECKING_AUTH (if not cached)
+- [x] T085 [US3] Add transition: CHECKING_AUTH → LOGIN_REQUIRED (not authenticated) or LOADING (authenticated)
+- [x] T086 [US3] Add transition: LOADING → STREAMING (generation starts) → SUCCESS (complete) or ERROR (failure)
+- [x] T087 [US3] Render UI based on current state: CACHE_HIT shows content immediately, LOADING shows spinner, STREAMING shows progressive chunks
 
 **US3 Acceptance**: ✅ First visit generates content → Second visit loads instantly from cache (<500ms) → Cache indicator shows source → Different profiles get different cached content → Cache hit rate reaches 80% for repeat visits
 

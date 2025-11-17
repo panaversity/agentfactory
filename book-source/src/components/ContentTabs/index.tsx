@@ -9,7 +9,7 @@ import { TabType } from '../../types/contentTabs';
 import TabBar from './TabBar';
 import OriginalTab from './OriginalTab';
 import SummaryTab from './SummaryTab';
-import PersonalizedTab from './PersonalizedTab';
+import PersonalizationTab from './PersonalizationTab';
 import ErrorBoundary from './ErrorBoundary';
 import styles from './styles.module.css';
 
@@ -60,7 +60,7 @@ export default function ContentTabs({ children, pageId = '' }: ContentTabsProps)
           )}
           
           {activeTab === 'personalized' && (
-            <PersonalizedTab />
+            <PersonalizationTab pageId={pageId} content={getContentAsString()} />
           )}
         </div>
       </div>
