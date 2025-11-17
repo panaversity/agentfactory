@@ -6,8 +6,8 @@ description: |
   for curriculum planning, or ensure objectives are specific and testable rather than vague.
   This skill helps break down complex topics into progressively building learning goals with clear
   assessment methods and success criteria.
-version: "2.0.0"
-constitution_alignment: v3.1.2
+version: "2.1.0"
+constitution_alignment: v4.0.1
 ---
 
 # Learning Objectives Skill
@@ -23,7 +23,7 @@ Enable educators to create **measurable, actionable learning objectives** aligne
 - **Map to international proficiency standards (CEFR A1-C2) for portability**
 - **Include AI co-learning outcomes (working WITH AI, not just independently)**
 
-**Constitution v3.1.2 Alignment**: This skill implements evals-first objective design—defining success criteria BEFORE creating learning objectives, and integrating CEFR proficiency levels for international standards alignment.
+**Constitution v4.0.1 Alignment**: This skill implements evals-first objective design—defining success criteria BEFORE creating learning objectives, integrating CEFR proficiency levels (Principle 5: Progressive Complexity), and incorporating Section IIb (AI Three Roles Framework) co-learning outcomes.
 
 ## When to Activate
 
@@ -35,7 +35,7 @@ Use this skill when:
 - Reviewing existing objectives and wondering if they're specific enough
 - Designing a lesson and unsure what students should be able to do by the end
 
-## Evals-First Objective Design (Constitution v3.1.2)
+## Evals-First Objective Design (Constitution v4.0.1)
 
 **CRITICAL WORKFLOW**:
 1. **Evals First**: Review success criteria from chapter spec BEFORE writing objectives
@@ -149,9 +149,9 @@ Use the template as guidance:
 
 **Proficiency Progression Rule**: Lessons should progress A1→A2→B1 within a chapter (not jump from A1 to C1).
 
-### Three-Role AI Partnership Objectives (Constitution v3.1.2 Principle 18)
+### Three-Role AI Partnership Objectives (Section IIb, Constitution v4.0.1)
 
-**CRITICAL**: AI-native learning objectives must include ability to work WITH AI, not just independently.
+**CRITICAL**: AI-native learning objectives must include ability to work WITH AI in bidirectional co-learning partnership (per Section IIb forcing functions), not just independently.
 
 **Traditional Objective Format**:
 ```

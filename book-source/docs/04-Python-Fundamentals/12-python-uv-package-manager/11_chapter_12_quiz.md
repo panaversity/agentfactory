@@ -1,11 +1,11 @@
 ---
-sidebar_position: 7
+sidebar_position: 11
 title: "Chapter 12: Python UV Quiz"
 ---
 
 # Chapter 12: Python UV - Package Manager Quiz
 
-Test your understanding of modern Python package management with UV through AI-driven workflows. This quiz covers concepts from all six lessons: understanding UV's value proposition, installation, project creation, dependency management, code execution, and team collaboration with reproducible environments.
+Test your understanding of modern Python package management with UV through AI-driven workflows. This quiz covers concepts from all ten lessons: understanding UV's value proposition, installation, project creation, dependency management, code execution, team collaboration, and the Lightning Python Stack tools (Zed, Ruff, Pyright).
 
 <Quiz
   title="Chapter 12: Python UV Assessment"

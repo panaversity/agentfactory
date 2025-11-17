@@ -8,67 +8,104 @@ description: |
   Cognitive Load Theory and scaffolding strategies to create 3-7 step learning progressions.
   Use for concepts like: object-oriented programming, decorators, async/await, metaclasses,
   comprehensions, generators, context managers, or any Python feature requiring prerequisite knowledge.
-constitution_alignment: v3.1.2
+constitution_alignment: v4.0.1
+version: "2.1.0"
 ---
 
 ## Purpose
 
 The concept-scaffolding skill helps educators break down complex Python concepts into manageable, progressive learning steps that respect cognitive load limitations. This skill applies evidence-based strategies from Cognitive Load Theory and scaffolding research to create effective learning progressions.
 
-## Relationship to Graduated Teaching Pattern (Constitution Principle 13)
+## Relationship to Teaching Patterns (Constitution v5.0.0)
 
-**This skill determines HOW to break down concepts; the graduated teaching pattern determines WHO delivers each piece:**
+**This skill determines HOW to break down concepts; teaching patterns determine WHEN and WHO delivers:**
 
-**Graduated Teaching Pattern** (Constitution Principle 13) answers: "Should the book teach this, or should AI handle it?"
+### Pattern 1: Panaversity 4-Layer Method (Section IIa) — LESSON TIMING
+
+**Answers**: "In which lessons should I teach each scaffolding step?"
+
+- **Layer 1 (Lessons 1-2):** Manual practice — teach foundational scaffolding steps
+- **Layer 2 (Lessons 3-5):** AI-assisted — teach complex steps with AI help
+- **Layer 3 (Lessons 6-8):** Reusable intelligence — create skills encapsulating concept
+- **Layer 4 (Capstone):** Spec-driven integration — apply concept in project context
+
+### Pattern 2: Graduated Teaching (Principle 2) — DELIVERY METHOD
+
+**Answers**: "Should book teach this step, or should AI handle it?"
+
 - **Tier 1 (Foundational):** Book teaches stable, basic concepts
 - **Tier 2 (Complex):** AI companion handles complex syntax/execution
-- **Tier 3 (Orchestration):** AI orchestrates scaling operations
+- **Tier 3 (Scale):** AI orchestrates scaling operations
 
-**Concept Scaffolding** (this skill) answers: "How do I break this complex concept into progressive steps?"
+### This Skill's Role: CONCEPT BREAKDOWN
+
+**Answers**: "How do I break this complex concept into progressive steps?"
+
 - Applies cognitive load theory (max 2-4 concepts per step)
 - Creates 3-7 step learning progressions
 - Builds from simple to complex
 
-**Integration in Practice:**
+### Integration in Practice:
 
 ```
-Teaching "Python Decorators" (complex concept):
+Teaching "Python Decorators" (complex concept across 3 lessons):
 
-Step 1: Apply concept-scaffolding to identify progression
+**Step 1: Apply concept-scaffolding** (this skill)
    → Step 1: Functions as first-class objects (foundational)
    → Step 2: Functions returning functions (foundational)
    → Step 3: Simple decorator syntax (complex)
    → Step 4: Decorators with arguments (complex)
    → Step 5: Class-based decorators (complex)
 
-Step 2: Apply graduated teaching pattern to each step
-   → Steps 1-2: Book teaches directly (Tier 1 - foundational)
-   → Steps 3-5: AI companion helps with complex syntax (Tier 2)
+**Step 2: Apply 4-Layer Method** (Section IIa)
+   → Lesson 1 (Layer 1): Manual practice — Steps 1-2 (foundational understanding)
+   → Lesson 3 (Layer 2): AI-assisted — Steps 3-4 (complex syntax with AI help)
+   → Lesson 6 (Layer 3): Create decorator-builder skill — Step 5 encapsulated
+
+**Step 3: Apply Graduated Teaching** (Principle 2)
+   → Steps 1-2: Book teaches directly (Tier 1 - stable fundamentals)
+   → Steps 3-5: AI companion helps (Tier 2 - complex, forgettable syntax)
    → Practice: AI orchestrates applying decorators across project (Tier 3)
 ```
 
-**Key Principle:** Use concept-scaffolding to break down the learning progression, then apply graduated teaching pattern to determine delivery method for each step.
+**Decision Matrix:**
 
-## Nine Pillars of AI-Native Development Context (Constitution v3.1.2)
+| Scaffolding Step | Layer (When) | Tier (Who Delivers) | Example |
+|------------------|--------------|---------------------|---------|
+| Foundational Step 1-2 | Layer 1 (Lesson 1-2) | Tier 1 (Book teaches) | Functions as first-class objects |
+| Complex Step 3-4 | Layer 2 (Lesson 3-5) | Tier 2 (AI handles) | Decorator syntax |
+| Advanced Step 5 | Layer 3 (Lesson 6-8) | Tier 2 (AI handles) | Class-based decorators |
+| Application | Layer 4 (Capstone) | Tier 3 (AI orchestrates) | Apply decorators in spec-driven project |
 
-When scaffolding concepts, integrate the Nine Pillars framework:
+**Key Principle:** Use this skill to break down concepts, Section IIa to time the progression across lessons, and Principle 2 to determine delivery method for each step.
 
-1. **Evals-First**: Define success checkpoints BEFORE designing scaffolding steps
-2. **Spec-Driven**: Each step should include a mini-spec (what, why, success criteria)
-3. **AI as Co-Learning Partner**: Show how AI helps scaffold understanding (not just execute)
-4. **Validation Skills Taught**: Include verification checkpoints after each step
-5. **Graduated Complexity**: Respect tier limits (beginner: max 5 concepts, intermediate: 7, advanced: 10)
-6. **Human Orchestration**: Student decides learning pace and which steps to explore deeper
-7. **Prompt Quality**: When AI companion used, show clear prompts for each scaffolding step
-8. **Tool Fluency**: Specify when book teaches vs. when AI companion helps
-9. **Evolution Awareness**: For agentic concepts (Parts 6-7), note LLM vs. LAM distinctions
+## Nine Pillars of AI-Native Development Context (Section I, Constitution v4.0.1)
+
+When scaffolding concepts, integrate the Nine Pillars:
+
+1. **🤖 AI CLI & Coding Agents** — Show students how to use Claude Code, Gemini CLI for scaffolded learning
+2. **📝 Markdown as Lingua Franca** — If concept involves documentation, scaffold markdown syntax progressively
+3. **🔌 Model Context Protocol (MCP)** — For advanced concepts (Parts 6+), scaffold context passing techniques
+4. **💻 AI-First IDEs** — Introduce tools designed for AI collaboration during scaffolding
+5. **🐧 Cross-Platform Development** — Ensure examples work across Windows, Mac, Linux
+6. **✅ Evaluation-Driven & Test-Driven Development** — Define success checkpoints BEFORE designing scaffolding steps
+7. **📋 Specification-Driven Development** — Each scaffolding step includes mini-spec (what, why, success criteria)
+8. **🧩 Composable Domain Skills** — Scaffold toward reusable agent skills/patterns (Layer 3 application)
+9. **☁️ Universal Cloud-Native Deployment** — For deployment concepts (Parts 9-13), scaffold production patterns
+
+**Scaffolding Alignment by Part**:
+- **Parts 1-3 (Foundational)**: Focus Pillars 1-2, 5-7 (AI CLI, Markdown, Cross-Platform, Evals/TDD, Spec-Driven)
+- **Parts 4-8 (Intermediate/Advanced)**: Add Pillars 3-4, 8 (MCP, AI-First IDEs, Composable Skills)
+- **Parts 9-13 (Professional)**: Emphasize Pillar 9 (Cloud-Native Deployment)
 
 **Scaffolding Design Checklist**:
-- [ ] Success evals defined for each step BEFORE creating content
-- [ ] Each step specifies: Book teaches (Tier 1) or AI companion helps (Tier 2)
+- [ ] Success evals defined for each step BEFORE creating content (Pillar 6)
+- [ ] Each step includes mini-spec: what, why, success criteria (Pillar 7)
+- [ ] Layer assignment clear: Manual (L1), AI-assisted (L2), Reusable (L3), Spec-driven (L4)
+- [ ] Tier assignment clear: Book teaches (T1), AI handles (T2), AI orchestrates (T3)
 - [ ] Convergence opportunities identified (where student + AI iterate together)
 - [ ] Validation checkpoints include both "Did I understand?" and "How do I verify?"
-- [ ] Cognitive load respects tier limits from Nine Pillars #5
+- [ ] Cognitive load respects CEFR-aligned limits (Principle 5: Progressive Complexity)
 
 ## When to Activate
 

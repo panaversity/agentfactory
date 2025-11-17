@@ -1,10 +1,12 @@
-# Chapter 12: Python UV - The Fastest Python Package Manager
+# Chapter 12: The Lightning Python Stack — uv, Zed, Ruff & Pyright
 
-Welcome to your first hands-on Python chapter! This chapter teaches you how to manage Python projects professionally using **UV**, the fastest and most modern Python package manager, through AI-driven development workflows.
+Welcome to your first hands-on Python chapter! This beginner-friendly chapter teaches you how to set up a **modern Python development environment** using professional tools: **uv** (package manager), **Zed** (AI-first IDE), **Ruff** (linter/formatter), and **Pyright** (type checker).
 
-**Why This Chapter Matters**: Before you write a single line of Python code, you need to know how to organize projects, manage dependencies, and collaborate with teams. UV makes all of this simple, fast, and reproducible—and with AI as your co-developer, you'll learn by doing, not by memorizing commands.
+**Why This Chapter Matters**: Before you write Python programs, you need the right tools installed and working. This chapter focuses on **tool installation and basic usage**—not Python programming itself. You'll learn through simple AI-driven workflows where you specify what you want and AI helps with commands.
 
-**AI-Driven Approach**: Throughout this chapter, you'll express your intent in natural language and AI tools like Claude Code or Gemini CLI will handle the complex syntax. Your job is to understand *what's happening* and *why it matters*, not to memorize commands.
+**What You're Learning**: How to install and use professional Python tools, not Python syntax. Code examples are minimal (1-3 lines) and exist only to prove tools work. You'll learn Python programming in later chapters—here, you're just getting your toolchain set up.
+
+**Beginner-Friendly Approach**: Each tool is taught separately with clear step-by-step instructions. You'll learn what each tool does, how to install it, and how to use basic commands. AI assistance is available when you need it.
 
 ---
 
@@ -13,27 +15,21 @@ Welcome to your first hands-on Python chapter! This chapter teaches you how to m
 By the end of this chapter, you will be able to:
 
 ### Knowledge (Understanding)
-- **Explain** what UV is and why it matters in modern Python development
-- **Understand** the difference between pyproject.toml and uv.lock
-- **Recognize** when to use UV vs. pip/poetry/conda
-- **Describe** how virtual environments provide isolation
-- **Explain** semantic versioning and version constraints
-- **Understand** reproducible environments and their importance
+- **Explain** what uv, Zed, Ruff, and Pyright are and why each tool exists
+- **Understand** why modern Python developers use these tools
+- **Recognize** when to use direct commands vs. asking AI for help
+- **Describe** what each tool does (package management, editing, formatting, type checking)
 
 ### Skills (Application)
-- **Install** UV on any platform (Windows, macOS, Linux) with AI guidance
-- **Create** well-structured Python projects using `uv init`
-- **Add** production and development dependencies with appropriate flags
-- **Update** and **remove** packages safely
-- **Run** Python scripts, tests, and applications in isolated environments
-- **Share** projects with teammates ensuring reproducible environments
-- **Deploy** to production with lean dependency sets
+- **Install** uv, Zed, Ruff, and Pyright on your computer (Windows, macOS, or Linux)
+- **Open** and use Zed IDE for Python projects
+- **Run** basic formatting and linting commands with Ruff
+- **Check** Python code for type errors using Pyright
+- **Create** simple configurations with AI assistance when needed
 
-### AI Partnership (Co-Learning)
-- **Express intent** clearly to AI tools (specification-driven thinking)
-- **Collaborate** with AI on installation, project setup, and troubleshooting
-- **Learn from** AI explanations (bidirectional learning)
-- **Validate** AI suggestions before executing (verification mindset)
-- **Troubleshoot** errors by describing symptoms to AI
+### AI Partnership (Beginner Level)
+- **Direct Commands**: Learn to run tools yourself with simple commands
+- **AI Help**: Ask AI when you need help with configuration or troubleshooting
+- **Understanding**: Focus on what tools do, not memorizing every option
 
 ---

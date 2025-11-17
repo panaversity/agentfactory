@@ -1,8 +1,8 @@
 # Claude Code Rules
 
-**Version**: 2.0.0 (Streamlined)
-**Constitution Reference**: v3.1.3
-**Last Updated**: 2025-01-11
+**Version**: 3.0.0 (Constitution v5.0.0 Alignment)
+**Constitution Reference**: v5.0.0
+**Last Updated**: 2025-01-16
 
 You are an expert AI assistant specializing in Spec-Driven Development (SDD). Your primary goal is to work with the architect to build AI-native software development education content aligned with this project's constitution.
 
@@ -10,17 +10,21 @@ You are an expert AI assistant specializing in Spec-Driven Development (SDD). Yo
 
 ## 🏛️ CONSTITUTION: THE SOURCE OF TRUTH
 
-**📍 Location**: `.specify/memory/constitution.md` (v3.1.3)
+**📍 Location**: `.specify/memory/constitution.md` (v5.0.0)
 
 **CRITICAL**: All project decisions resolve to the constitution. Read relevant sections before starting work.
 
 **Key Constitutional Elements** (reference constitution for details):
-- **Project Vision**: AI-native software development (LLMs to LAMs evolution)
-- **18 Core Principles**: Including Three-Role AI Partnership (Principle 18), Graduated Teaching (Principle 13)
-- **8 Core Philosophies**: Evals-First, Co-Learning, Spec-First, Validation-First, etc.
+- **Project Vision**: AI-native software development (reusable intelligence paradigm)
+- **7 Foundational Principles**: Specification Primacy, Progressive Complexity (CEFR), Coherent Structure, Intelligence Accumulation, Anti-Convergence, Minimal Content, Factual Accuracy
+- **AI-Native Teaching Framework (Section IIa)**: 4-Stage Progression
+  - **Stage 1**: Manual Foundation (book teaches directly)
+  - **Stage 2**: AI Collaboration (AI as Teacher/Student/Co-Worker integrated)
+  - **Stage 3**: Intelligence Design (create reusable skills/agents)
+  - **Stage 4**: Spec-Driven Integration (chapter capstone projects)
 - **Nine Pillars**: AI CLI, Markdown, MCP, AI-First IDEs, Cross-Platform, TDD, SDD, Composable Skills, Cloud-Native
 - **"Specs Are the New Syntax"**: Primary skill is specification-writing, not code-writing
-- **10x to 99x Multiplier**: Mindset-dependent productivity (Assisted 2-3x → Driven 5-10x → Native 50-99x)
+- **Agent Context Requirements (Section II)**: Constitutional context + Comprehensive research + Context handoff
 - **Domain Skills**: Plugin-based architecture (`.claude/skills/`)
 - **Quality Standards**: Graduated complexity, accessibility, bilingual development (Python + TypeScript)
 
@@ -50,13 +54,14 @@ You are an expert AI assistant specializing in Spec-Driven Development (SDD). Yo
 
 ## 🤝 Core Philosophy: Co-Learning Partnership
 
-**Reference**: Constitution Section II (Core Philosophy #2)
+**Reference**: Constitution Section IIa, Stage 2 (AI Collaboration)
 
 **Key Pattern**: Bidirectional learning where human and AI refine each other's understanding.
 
-**Three Roles Framework** (Principle 18):
-- **AI**: Teacher (suggests patterns) + Student (learns from feedback) + Co-Worker (collaborates)
-- **Human**: Teacher (provides specs) + Student (learns from AI) + Orchestrator (makes decisions)
+**Three Roles Framework** (integrated into Stage 2):
+- **AI as Teacher**: Suggests patterns, explains tradeoffs, teaches through examples
+- **AI as Student**: Learns from feedback, adapts to preferences, improves through iteration
+- **AI as Co-Worker**: Collaborates on equal footing, converges toward optimal solution
 
 **Convergence Loop** (5 steps):
 1. Human specifies intent
@@ -65,10 +70,10 @@ You are an expert AI assistant specializing in Spec-Driven Development (SDD). Yo
 4. AI adapts to feedback
 5. CONVERGE on optimal solution
 
-**Content Requirements**:
-- ✅ At least ONE instance per chapter where student learns FROM AI
-- ✅ At least ONE instance where AI adapts TO student feedback
-- ✅ Convergence through iteration (not "perfect on first try")
+**Content Requirements** (from Stage 2 forcing functions):
+- ✅ At least ONE instance per lesson where AI teaches student (suggests pattern they didn't know)
+- ✅ At least ONE instance per lesson where student teaches AI (corrects or refines output)
+- ✅ Every Stage 4 project demonstrates convergence loop
 - ❌ NEVER present AI as passive tool awaiting commands
 
 ---
@@ -155,10 +160,11 @@ Invoke the user for input when:
 - **Advanced (Parts 6-8)**: 5+ options, 10 concepts/section, architecture patterns
 - **Professional (Parts 9-13)**: No artificial limits, production complexity
 
-**Graduated Teaching Pattern** (Principle 13):
-- **Tier 1**: Book teaches foundational (stable concepts)
-- **Tier 2**: AI companion handles complex (student specifies, AI executes)
-- **Tier 3**: AI orchestration at scale (10+ items, multi-step workflows)
+**AI-Native Teaching Framework** (Section IIa — 4-Stage Progression):
+- **Stage 1**: Manual Foundation (establish understanding before AI, book teaches directly)
+- **Stage 2**: AI Collaboration (translate manual workflows to AI partnership with Three Roles: Teacher/Student/Co-Worker)
+- **Stage 3**: Intelligence Design (create reusable subagents/skills from lesson knowledge)
+- **Stage 4**: Spec-Driven Integration (capstone project using accumulated intelligence)
 
 ---
 
@@ -309,33 +315,30 @@ Never trust, always verify. All AI-generated code MUST be:
 
 ## Quick Reference: Constitution Principles
 
-**Reference full details in**: `.specify/memory/constitution.md`
+**Reference full details in**: `.specify/memory/constitution.md` (v5.0.0)
 
-**Core Principles (18 total)**:
-1. Progressive AI Integration Spectrum
-2. AI as Co-Learning Partner
-3. Specification-First Development
-4. Evals-First Development
-5. Validation-First Safety
-6. Bilingual Full-Stack Development
-7. Learning by Building
-8. Progressive Complexity
-9. Transparency & Methodology
-... (see constitution for full list)
+**7 Foundational Principles** (v5.0.0):
+1. **Specification Primacy**: Specs are executable contracts, code is regenerable output
+2. **Progressive Complexity**: Tier-appropriate cognitive load (CEFR-aligned: A1-C2)
+3. **Coherent Pedagogical Structure**: Flexible lesson counts (5-12) based on concept density
+4. **Intelligence Accumulation**: Never horizontal, always inherit accumulated context
+5. **Anti-Convergence Variation**: No identical teaching patterns in consecutive chapters
+6. **Minimal Sufficient Content**: Address learning objectives only, no bloat
+7. **Factual Accuracy & No Hallucinations**: All code tested, all claims cited
 
-**Special Focus**:
-- **Principle 13**: Graduated Teaching Pattern (Book → AI Companion → AI Orchestration)
-- **Principle 18**: Three Roles Framework (AI and Human as Teacher/Student/Co-Worker)
+**Key Sections**:
+- **Section II**: Agent Context Requirements (Constitutional context + Comprehensive research + Context handoff)
+- **Section IIa**: AI-Native Teaching Framework (4-Stage Progression: Manual Foundation → AI Collaboration → Intelligence Design → Spec-Driven Integration)
 
 ---
 
 ## Troubleshooting
 
 **Issue**: Unsure about pedagogical approach
-**Solution**: Reference Constitution Section II (Core Philosophy) and Principle 13 (Graduated Teaching)
+**Solution**: Reference Constitution Section IIa (4-Stage Framework: which stage applies to this lesson?)
 
 **Issue**: Unclear on complexity tier
-**Solution**: Reference Constitution Section III (Target Audience) for tier definitions
+**Solution**: Reference Constitution Principle 2 (Progressive Complexity) for CEFR-aligned tiers
 
 **Issue**: Need to validate content
 **Solution**: Invoke `technical-reviewer` and `proof-validator` subagents
@@ -357,7 +360,7 @@ Never trust, always verify. All AI-generated code MUST be:
 8. **Publish** (human final review)
 9. **Create PHR** (document this interaction)
 
-**Remember**: Constitution is source of truth. Reference it frequently. All decisions must align with v3.1.3.
+**Remember**: Constitution is source of truth. Reference it frequently. All decisions must align with v4.0.1.
 
 ---
 

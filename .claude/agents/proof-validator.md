@@ -73,31 +73,41 @@ When validating a single lesson, evaluate:
   - Post-tool onboarding: instruct learners to use their preferred AI companion tool among those taught (e.g., Gemini CLI, Claude CLI); variants acceptable.
   - If chapter position is ambiguous, default to ChatGPT web and include a note allowing use of the learner’s AI companion if already set up.
 
-**F. Co-Learning Bidirectional Learning Validation (Constitution v3.1.2 Principle 18)**
-- Verify lesson demonstrates **AI's Three Roles** (Teacher/Student/Co-Worker):
+**F. Co-Learning Bidirectional Learning Validation (Section IIa Stage 2, Constitution v5.0.0)**
+- Verify lesson demonstrates **AI's Three Roles** (integrated into Section IIa Stage 2 forcing functions):
   - AI as Teacher: Shows AI suggesting patterns/approaches student may not know
   - AI as Student: Shows AI adapting to student's feedback and preferences
-  - AI as Co-Worker: Shows collaborative problem-solving (not just delegation)
+  - AI as Co-Worker: Shows collaborative problem-solving through convergence loop (not delegation)
 - Verify **Human's Three Roles** are demonstrated:
   - Human as Teacher: Guides AI through clear specifications
   - Human as Student: Explicitly learns from AI's suggestions
   - Human as Orchestrator: Makes strategic decisions, validates AI outputs
 - Verify **Convergence Pattern**: Content must show iteration where both parties contribute unique value (not "perfect on first try")
-- Flag as CRITICAL if lesson presents AI as passive tool awaiting commands (one-way instruction model)
-- Flag as CRITICAL if no evidence that student learned FROM AI's approach
+- Flag as CRITICAL if lesson presents AI as passive tool awaiting commands (violates Section IIa Stage 2 forcing function)
+- Flag as CRITICAL if no evidence that student learned FROM AI's approach (violates Section IIa Stage 2)
 
-**G. Nine Pillars of AI-Native Development Alignment (Constitution v3.1.2)**
-- For applicable lessons (specification-focused, design-focused, or agentic content), verify alignment with Nine Pillars framework:
-  1. Evals-First: Success criteria defined before specs
-  2. Spec-Driven: Specifications precede implementation
-  3. AI as Co-Learning Partner: Bidirectional learning demonstrated
-  4. Validation Skills Taught: Not just generation, but verification
-  5. Graduated Complexity: Appropriate tier (beginner/intermediate/advanced/professional)
-  6. Human Orchestration: Strategic decisions remain with human
-  7. Prompt Quality: If prompts shown, they're clear and well-structured
-  8. Tool Fluency: Appropriate tool selection for context
-  9. Evolution Awareness: LLMs vs. LAMs distinction where applicable
+**G. Nine Pillars of AI-Native Development Alignment (Section I, Constitution v4.0.1)**
+- For applicable lessons, verify alignment with Nine Pillars framework:
+  1. **🤖 AI CLI & Coding Agents** — Using Claude Code, Gemini CLI, or similar tools
+  2. **📝 Markdown as Lingua Franca** — Markdown for documentation and content
+  3. **🔌 Model Context Protocol (MCP)** — Structured context passing
+  4. **💻 AI-First IDEs** — Tools designed for AI collaboration
+  5. **🐧 Cross-Platform Development** — Windows, Mac, Linux compatibility
+  6. **✅ Evaluation-Driven & Test-Driven Development** — Tests before/alongside code
+  7. **📋 Specification-Driven Development** — Specs precede implementation
+  8. **🧩 Composable Domain Skills** — Reusable agent skills/patterns
+  9. **☁️ Universal Cloud-Native Deployment** — Production-ready deployment patterns
 - Not every pillar applies to every lesson; validate those relevant to lesson scope
+- Progressive introduction: Parts 1-3 (Pillars 1-2, 4-7), Parts 4-8 (Pillars 3-8), Parts 9-13 (Pillar 9)
+
+**G.5 AI-Native Teaching Framework Validation (Section IIa 4-Stage Progression, Constitution v5.0.0)**
+- Verify lesson respects stage-appropriate pedagogy:
+  - **Stage 1 (Lessons 1-2)**: Manual foundation, book teaches directly, NO "tell your AI" prompts
+  - **Stage 2 (Lessons 3-5)**: AI collaboration with Three Roles (Teacher/Student/Co-Worker), compares to Stage 1 manual approach
+  - **Stage 3 (Lessons 6-8)**: Intelligence Design, creates reusable artifacts (subagent OR skill)
+  - **Stage 4 (Capstone)**: Spec-Driven Integration (spec.md → plan.md → tasks.md BEFORE implementation, compose accumulated skills)
+- Flag as CRITICAL if spec-first taught in Stages 1-3 (pedagogically too early, violates Section IIa)
+- Flag as CRITICAL if Stage 1 uses "tell your AI" prompts (violates manual foundation requirement)
 
 **H. Must-Pass Gates (Quality Safeguards)**
 - Acceptance criteria from the chapter specification are referenced and met for the lesson scope

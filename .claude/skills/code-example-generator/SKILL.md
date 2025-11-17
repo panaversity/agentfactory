@@ -8,18 +8,19 @@ description: |
   progressive example sequences (simple → realistic → complex) with clear explanations of what, how,
   and why. Use when generating examples for: functions, data structures, OOP, control flow, error
   handling, or any concept requiring demonstration through working code.
-constitution_alignment: v3.1.2
+version: "2.1.0"
+constitution_alignment: v4.0.1
 ---
 
 ## Purpose
 
 The code-example-generator skill helps authors create runnable, well-structured code examples (Python and TypeScript) that clearly demonstrate specific concepts for learners. This skill produces examples that are pedagogically sound, follow best practices, and are validated for correctness through syntax checking and optional sandbox execution.
 
-**Constitution v3.1.2 Alignment**: This skill implements "Specs Are the New Syntax" paradigm—teaching students that specification clarity is the primary skill, not code writing.
+**Constitution v4.0.1 Alignment**: This skill implements Principle 1 (Specification Primacy)—teaching students that specification clarity is the primary skill, not code writing.
 
 ### Requirements (Evals-First, Then Spec-First, Then Implementation)
 
-**CRITICAL WORKFLOW** (Constitution v3.1.2):
+**CRITICAL WORKFLOW** (Constitution v4.0.1, aligned with Section IIa for Layer 4 spec-driven work):
 1. **Evals First**: Define success criteria (what makes this example "good"?) BEFORE writing spec
 2. **Spec Second**: Reference approved chapter specification (path to spec file)
 3. **Prompt Third**: Document exact AI prompt(s) used to generate code

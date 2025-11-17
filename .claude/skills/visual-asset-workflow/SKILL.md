@@ -98,8 +98,8 @@ Apply the teaching test:
 
 Evaluate against core principles:
 
-- **Principle 13 (Graduated Teaching)**: Does visual help student build mental model progressively?
-  - ✅ Good: Visual breaks down complex concept into scannable components
+- **Section IIa (4-Layer Method) & Principle 2 (Graduated Teaching)**: Does visual help student build mental model progressively?
+  - ✅ Good: Visual breaks down complex concept into scannable components (supports concept scaffolding across layers)
   - ❌ Bad: Visual adds complexity without teaching structure
 
 - **Philosophy #2 (Co-Learning Partnership)**: Does visual enable AI-learner convergence?
@@ -159,7 +159,7 @@ For each opportunity, record:
 ✅ **PASS**: Economic Calculation Flow Diagram
 - **Teaches**: Structure of how individual value compounds to aggregate economy
 - **Message**: "Developer value multiplies at scale: 30M individuals × $100K each = $3T total"
-- **Constitutional**: Principle 13 (builds mental model of multiplication → aggregation)
+- **Constitutional**: Section IIa & Principle 2 (builds mental model of multiplication → aggregation progressively)
 - **Redundancy**: UNIQUE
 - **Verdict**: HIGH VALUE - Reveals causality structure not obvious from "30M × $100K = $3T"
 
@@ -173,7 +173,7 @@ For each opportunity, record:
 ✅ **PASS**: Technology Adoption Descending Staircase Timeline
 - **Teaches**: Exponential acceleration pattern (each wave faster than previous)
 - **Message**: "Technology adoption is accelerating exponentially: 12y → 10y → 8y → 3y"
-- **Constitutional**: Principle 13 (staircase metaphor teaches acceleration visually)
+- **Constitutional**: Section IIa & Principle 2 (staircase metaphor teaches acceleration progressively)
 - **Redundancy**: UNIQUE
 - **Verdict**: HIGH VALUE - Descending pattern reveals acceleration structure
 

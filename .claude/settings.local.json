@@ -1,14 +1,18 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(.specify/scripts/bash/create-new-feature.sh:*)",
+      "Bash(cat:*)",
+      "Bash(.specify/scripts/bash/setup-plan.sh:*)",
+      "Bash(.specify/scripts/bash/setup-tasks.sh 013-chapter-14-redesign)"
     ],
     "deny": [],
     "ask": []
   },
-  "alwaysThinkingEnabled": false,
   "disabledMcpjsonServers": [
     "playwright",
     "context7"
-  ]
+  ],
+  "alwaysThinkingEnabled": false
 }

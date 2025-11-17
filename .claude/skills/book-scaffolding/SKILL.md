@@ -8,15 +8,20 @@ description: |
   that balance foundational scaffolding with advanced independence. Activate when tasks
   involve structuring books, managing cognitive load across chapters, defining part-level
   narratives, or coordinating multi-phase content development workflows.
-version: "2.0.0"
-constitution_alignment: "v3.1.2"
+version: "2.1.0"
+constitution_alignment: "v4.0.1"
 ---
 
 # Skill: Book Scaffolding and Structure Planning
 
 **Purpose**: Plan, structure, and scaffold large educational books using cognitive load management, just-in-time specification, and pedagogical best practices.
 
-**Constitution Alignment**: v3.1.2 emphasizing "Specs Are the New Syntax", Nine Pillars framework, Co-Learning partnership, and LLMs to LAMs evolution
+**Constitution Alignment**: v4.0.1 emphasizing:
+- **Principle 1**: Specification Primacy ("Specs Are the New Syntax")
+- **Section IIa**: Panaversity 4-Layer Teaching Method (progressive lesson structure)
+- **Section IIb**: AI Three Roles Framework (bidirectional co-learning partnership)
+- **Nine Pillars** (Section I): AI CLI, Markdown, MCP, AI-First IDEs, Cross-Platform, TDD, SDD, Composable Skills, Cloud-Native
+- **Principle 4**: Coherent Pedagogical Structure (flexible lesson counts based on concept density)
 
 **Status**: Reusable skill (learned from 002-book-structure sprint, enhanced with structural patterns)
 **Application**: Any multi-part, multi-chapter educational work
