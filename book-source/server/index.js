@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const { chatRouter } = require('./routes/chat');
+const { assessmentRouter } = require('./routes/assessment');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -15,8 +16,9 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'Chatbot API is running' });
 });
 
-// Chat routes
+// API routes
 app.use('/api/chat', chatRouter);
+app.use('/api/assessment', assessmentRouter);
 
 app.listen(PORT, () => {
   console.log(`🚀 Chatbot API server running on http://localhost:${PORT}`);

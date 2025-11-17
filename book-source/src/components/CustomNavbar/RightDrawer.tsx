@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import BookmarkContent from './BookmarkContent';
 import MindmapContent from './MindmapContent';
+import AssessmentContent from './AssessmentContent';
 import { useBookmarks } from '../../contexts/BookmarkContext';
 import './rightDrawer.css';
 
@@ -79,6 +80,8 @@ const RightDrawer: React.FC<RightDrawerProps> = ({ isOpen, onClose, title, child
             <BookmarkContent />
           ) : title === 'Mindmap' ? (
             <MindmapContent />
+          ) : title === 'Assessment' ? (
+            <AssessmentContent onClose={onClose} />
           ) : children ? (
             children
           ) : (
