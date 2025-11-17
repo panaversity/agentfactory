@@ -36,6 +36,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "gray-matter": "^4.0.3",
+    "jspdf": "^2.5.2",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
