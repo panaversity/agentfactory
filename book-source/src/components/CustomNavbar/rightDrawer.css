@@ -343,16 +343,18 @@ html[data-theme='dark'] .right-drawer__input:focus {
 }
 
 html[data-theme='dark'] .right-drawer__button--primary {
-  background-color: #ffffff;
-  color: #0a0a0a;
+  background: linear-gradient(135deg, #2a2a2a 0%, #333333 50%, #444444 100%);
+  color: #ffffff;
+  border: 1px solid rgba(170, 170, 170, 0.2);
 }
 
 html[data-theme='dark'] .right-drawer__button--primary:hover {
-  background-color: #f0f0f0;
+  background: linear-gradient(135deg, #333333 0%, #3d3d3d 50%, #4d4d4d 100%);
+  border-color: rgba(170, 170, 170, 0.3);
 }
 
 html[data-theme='dark'] .right-drawer__button--primary:active {
-  background-color: #e5e5e5;
+  background: linear-gradient(135deg, #252525 0%, #2e2e2e 50%, #383838 100%);
 }
 
 .right-drawer__button--secondary {
@@ -373,18 +375,18 @@ html[data-theme='dark'] .right-drawer__button--primary:active {
 
 html[data-theme='dark'] .right-drawer__button--secondary {
   background-color: transparent;
-  color: #cccccc;
-  border-color: #2a2a2a;
+  color: #aaaaaa;
+  border-color: rgba(170, 170, 170, 0.2);
 }
 
 html[data-theme='dark'] .right-drawer__button--secondary:hover {
-  background-color: #1a1a1a;
-  border-color: #333333;
-  color: #ffffff;
+  background-color: rgba(170, 170, 170, 0.08);
+  border-color: rgba(170, 170, 170, 0.3);
+  color: #dddddd;
 }
 
 html[data-theme='dark'] .right-drawer__button--secondary:active {
-  background-color: #151515;
+  background-color: rgba(170, 170, 170, 0.12);
 }
 
 /* Responsive Design */
