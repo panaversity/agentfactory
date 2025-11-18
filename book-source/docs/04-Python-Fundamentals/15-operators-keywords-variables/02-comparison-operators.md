@@ -243,7 +243,7 @@ Write the code and predictions BEFORE asking AI.
 
 Now check your work with AI:
 
-> "Here's my age verification code: [paste code]. For user_age = 16, verify my predictions for all 6 comparisons. Explain the logic of each operator (>=, <, ==, !=). Which ones return True? Which return False? Why?"
+> "Here's my age verification code: [paste code]. For user_age = 16, verify my predictions for all 6 comparisons. Explain the logic of each operator (>=, &lt;, ==, !=). Which ones return True? Which return False? Why?"
 
 **Your task**: Compare AI's results to your predictions.
 - Did you get them all right?

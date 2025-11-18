@@ -166,7 +166,7 @@ What this assessment will NOT cover:
 - [Example: "Manual deployment scripts — no CI/CD automation"]
 - [Example: "No infrastructure-as-code — AWS resources manually configured"]
 
-**Estimated Refactoring Cost**: [Low: <1 month / Medium: 1-3 months / High: 6+ months]
+**Estimated Refactoring Cost**: [Low: &lt;1 month / Medium: 1-3 months / High: 6+ months]
 
 **Rationale**: [Example: "Medium technical debt. Core logic is functional but poorly structured. Would require 2-3 months of refactoring for production-grade quality."]
 

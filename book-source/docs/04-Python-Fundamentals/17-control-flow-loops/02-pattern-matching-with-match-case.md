@@ -502,7 +502,7 @@ Share your implementation with AI:
 
 **Your task**: Evaluate AI's design guidance.
 - Does it explain that `match-case` is clearer for **discrete values**?
-- Does it show that `if-elif` is better for **ranges** (>=, <)?
+- Does it show that `if-elif` is better for **ranges** (>=, &lt;)?
 - Can you articulate the rule: "Exact values → match-case, Comparisons → if-elif"?
 
 ---

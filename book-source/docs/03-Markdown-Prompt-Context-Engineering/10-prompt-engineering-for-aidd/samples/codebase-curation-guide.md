@@ -39,7 +39,7 @@
 
 ## Complexity Tiers
 
-### Small Codebases (5-15 files, <2K LOC)
+### Small Codebases (5-15 files, &lt;2K LOC)
 **Use for**: Lessons 1-3 (foundation, early practice)
 
 **Characteristics**:
@@ -259,7 +259,7 @@
 ### ❌ DO NOT SELECT:
 
 **Toy Examples**:
-- Todo apps with <100 LOC
+- Todo apps with &lt;100 LOC
 - "Hello World" tutorials
 - Code golf submissions
 - Academic exercises with no real-world applicability

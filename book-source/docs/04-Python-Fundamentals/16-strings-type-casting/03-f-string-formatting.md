@@ -493,7 +493,7 @@ AI helped with formatting. But does it know how to handle edge cases?
 
 Challenge AI with difficult scenarios:
 
-> "What happens if: (1) Item name is very long ('Super Ultra Premium Extended Warranty Protection Plan')—does it break alignment? (2) Price is huge ($1,234,567.89)—should I use thousand separators? (3) Quantity is 0—should the receipt still show? For each case, show how to handle it with f-strings. Explain format specifiers like {:>10} for alignment and {:,} for thousand separators."
+> "What happens if: (1) Item name is very long ('Super Ultra Premium Extended Warranty Protection Plan')—does it break alignment? (2) Price is huge ($1,234,567.89)—should I use thousand separators? (3) Quantity is 0—should the receipt still show? For each case, show how to handle it with f-strings. Explain format specifiers like `{:>10}` for alignment and `{:,}` for thousand separators."
 
 **Your task**: Compare AI's solutions.
 - Does it show width and alignment specifiers (`:>10` for right-align)?

@@ -183,7 +183,7 @@ Before prompting AI to analyze code, clarify for yourself:
 
 - **Decision**: Adopt library vs. build custom
 - **Information needed**: Does it support our payment flows? Is it maintained? Any security issues? How hard to integrate with our Django backend?
-- **Constraints**: Must support subscriptions and one-time payments, integrate in <2 weeks, no GPL licenses (legal requirement)
+- **Constraints**: Must support subscriptions and one-time payments, integrate in &lt;2 weeks, no GPL licenses (legal requirement)
 - **Background**: Product manager, understand REST APIs but not Python internals
 
 </details>
