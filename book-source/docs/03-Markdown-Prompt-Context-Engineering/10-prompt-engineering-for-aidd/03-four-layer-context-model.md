@@ -64,7 +64,7 @@ We have 50+ docstrings to convert, need automated updates on each release.
 We need to know if this library's API fits our docstring → markdown workflow.
 ```
 
-**What the AI learns**: This isn't academic analysis—it's a tooling decision. The AI should focus on suitability for your specific workflow, not generic feature coverage.
+**Effect**: With this context, the AI focuses on workflow suitability rather than generic feature coverage—treating this as a tooling decision, not academic analysis.
 
 ### Layer 2: Code Context (The "What")
 
@@ -79,7 +79,7 @@ Output formats: HTML, Markdown, PDF
 Key use cases: Documentation generation, blog rendering, note-taking apps
 ```
 
-**What the AI learns**: The scope and structure. The AI can now ask targeted questions ("How does docstring parsing work?" vs. generic "What are the features?")
+**Effect**: The AI can now ask targeted questions about scope and structure ("How does docstring parsing work?" instead of "What are the features?").
 
 ### Layer 3: Constraints Context (The "How")
 
@@ -95,7 +95,7 @@ Constraints: Cannot rewrite existing docstrings (Google-style format)
 Timeline: 30 minutes to assessment for team meeting
 ```
 
-**What the AI learns**: The specific requirements and limitations. Now the AI can assess "Does this library fit OUR workflow?" not "Is this a good library in general?"
+**Effect**: The AI can now assess workflow fit based on specific requirements ("Does this library fit OUR workflow?" instead of "Is this a good library in general?").
 
 ### Layer 4: Analyst Context (The "Who")
 
@@ -111,7 +111,7 @@ What I need: Integration steps, example workflow (docstring → markdown), perfo
 Decision threshold: If integration < 1 day AND performance acceptable, we adopt. If > 3 days, we keep manual process.
 ```
 
-**What the AI learns**: The human context. The AI can explain things at the right level (not too basic, not too expert), focus on what matters for the decision, and flag issues that apply to this specific decision-maker.
+**Effect**: The AI can now explain at the right level (not too basic, not too expert), focus on what matters for this decision, and flag issues relevant to this specific decision-maker.
 
 ### The Four Layers Visualized
 
@@ -200,7 +200,7 @@ What you may not have realized: The extension includes Sphinx compatibility mode
 meaning you can keep your existing Sphinx configuration and just swap the backend.
 ```
 
-**What you learned**: You didn't know about the Google-style docstring extension. The AI taught you a feature that directly solves your workflow problem. This is **AI as Teacher**.
+**What you discovered**: The Google-style docstring extension—a feature you weren't aware of—directly solves your workflow problem. This is **AI as Teacher**.
 
 **Evidence**: The AI identified a specific feature (docstring parser extension) and explained why it matters for YOUR specific workflow (preserves Sphinx config, handles Google-style). This is reasoning, not just summarizing features.
 
@@ -234,9 +234,9 @@ features, not performance. Your 10-second limit is critical—recommend testing
 with realistic docstrings before full adoption.
 ```
 
-**What AI learned**: You taught the AI about your CI/CD constraint. The AI adapted its assessment based on your feedback, recalibrating from "feature fit" to "performance fit". This is **AI as Student**.
+**What changed**: The assessment recalibrated from "feature fit" to "performance fit" based on the CI/CD constraint you provided. This is **AI as Student**.
 
-**Evidence**: The AI initially focused on features (docstring extension). You caught the performance gap. The AI incorporated your constraint and recalibrated its recommendation. This is bidirectional learning.
+**Evidence**: The AI initially focused on features (docstring extension). You introduced the performance gap. The AI incorporated your constraint and recalibrated its recommendation. This is bidirectional learning.
 
 ---
 
@@ -269,10 +269,10 @@ So our assessment evolved:
 - Final: "Strong fit with selective extension loading" (optimized solution)
 ```
 
-**What happened**: Neither you nor the AI had the perfect solution initially:
-- You didn't know about the docstring parser extension (AI taught you)
-- The AI didn't know about your 10-second CI constraint (you taught AI)
-- Together, you designed a selective loading approach neither would have considered alone
+**What emerged**: The final solution combined insights from both sides:
+- The docstring parser extension (discovered through AI's documentation analysis)
+- The 10-second CI constraint (critical context you provided)
+- The selective loading approach (designed through collaborative iteration)
 
 **This is AI as Co-Worker**: Convergence through iteration toward a better solution.
 
@@ -432,7 +432,7 @@ Read this dialogue:
 - AI as Co-Worker? (Yes/No - explain)
 
 **Answer**:
-- **AI as Teacher**: Yes. You asked about "security vulnerabilities" (vague), and AI taught you the specific concept of rate limiting as a security pattern.
+- **AI as Teacher**: Yes. You asked about "security vulnerabilities" (vague), and the response introduced the specific concept of rate limiting as a security pattern.
 - **AI as Student**: Not in this exchange (no feedback loop yet).
 - **AI as Co-Worker**: Not yet (need iteration).
 
