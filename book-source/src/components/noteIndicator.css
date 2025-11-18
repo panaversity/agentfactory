@@ -1,0 +1,162 @@
+/* Note Indicator - Inline icon that marks noted text */
+.note-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-left: 6px;
+  margin-right: 2px;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  z-index: 10;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(96, 165, 250, 0.08) 100%);
+  border-radius: 6px;
+  padding: 3px 6px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 1px 3px rgba(59, 130, 246, 0.1);
+}
+
+html[data-theme='dark'] .note-indicator {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.15) 0%, rgba(59, 130, 246, 0.1) 100%);
+  border-color: rgba(96, 165, 250, 0.25);
+  box-shadow: 0 1px 3px rgba(96, 165, 250, 0.15);
+}
+
+.note-indicator__icon {
+  font-size: 16px;
+  line-height: 1;
+  opacity: 0.9;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: grayscale(0);
+  animation: note-pulse 2s ease-in-out infinite;
+}
+
+@keyframes note-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.note-indicator:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(96, 165, 250, 0.15) 100%);
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+  transform: translateY(-1px);
+}
+
+html[data-theme='dark'] .note-indicator:hover {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.25) 0%, rgba(59, 130, 246, 0.18) 100%);
+  border-color: rgba(96, 165, 250, 0.4);
+  box-shadow: 0 2px 8px rgba(96, 165, 250, 0.25);
+}
+
+.note-indicator:hover .note-indicator__icon {
+  opacity: 1;
+  transform: scale(1.15);
+  animation: none;
+}
+
+.note-indicator:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(59, 130, 246, 0.15);
+}
+
+.note-indicator:active .note-indicator__icon {
+  transform: scale(1.05);
+}
+
+/* Tooltip */
+.note-indicator__tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  background: #1a1a1a;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 6px;
+  white-space: nowrap;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+  animation: note-tooltip-fade-in 0.2s ease;
+  z-index: 1000;
+}
+
+.note-indicator__tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: #1a1a1a;
+}
+
+html[data-theme='dark'] .note-indicator__tooltip {
+  background: #3a3a3a;
+  color: #ffffff;
+}
+
+html[data-theme='dark'] .note-indicator__tooltip::after {
+  border-top-color: #3a3a3a;
+}
+
+@keyframes note-tooltip-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Alternative positioning when near top of viewport */
+.note-indicator--tooltip-bottom .note-indicator__tooltip {
+  top: calc(100% + 8px);
+  bottom: auto;
+}
+
+.note-indicator--tooltip-bottom .note-indicator__tooltip::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: #1a1a1a;
+}
+
+html[data-theme='dark'] .note-indicator--tooltip-bottom .note-indicator__tooltip::after {
+  border-bottom-color: #3a3a3a;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .note-indicator {
+    margin-left: 8px;
+    margin-right: 3px;
+    padding: 4px 7px;
+  }
+
+  .note-indicator__icon {
+    font-size: 18px;
+  }
+
+  .note-indicator__tooltip {
+    font-size: 11px;
+    padding: 5px 10px;
+    max-width: 150px;
+  }
+}

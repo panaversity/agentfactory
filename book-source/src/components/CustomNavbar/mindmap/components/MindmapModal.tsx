@@ -26,7 +26,7 @@ interface MindmapModalProps {
 const MindmapModal: React.FC<MindmapModalProps> = ({ isOpen, mindmap, onClose }) => {
   const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isMaximized, setIsMaximized] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const reactFlowInstance = useRef<ReactFlowInstance | null>(null);
 
@@ -76,34 +76,14 @@ const MindmapModal: React.FC<MindmapModalProps> = ({ isOpen, mindmap, onClose })
     };
   }, [isOpen]);
 
-  // Toggle fullscreen using Fullscreen API
-  const toggleFullscreen = useCallback(async () => {
-    if (!modalRef.current) return;
+  // Toggle maximized panel state
+  const toggleMaximize = useCallback(() => {
+    setIsMaximized((prev) => {
+      const newState = !prev;
 
-    try {
-      if (!document.fullscreenElement) {
-        // Enter fullscreen
-        await modalRef.current.requestFullscreen();
-        setIsFullscreen(true);
-      } else {
-        // Exit fullscreen
-        await document.exitFullscreen();
-        setIsFullscreen(false);
-      }
-    } catch (error) {
-      console.error('Error toggling fullscreen:', error);
-    }
-  }, []);
-
-  // Listen for fullscreen changes and auto-fit view when entering fullscreen
-  useEffect(() => {
-    const handleFullscreenChange = () => {
-      const isNowFullscreen = !!document.fullscreenElement;
-      setIsFullscreen(isNowFullscreen);
-
-      // Auto-fit view when entering fullscreen
-      if (isNowFullscreen && reactFlowInstance.current) {
-        // Small delay to ensure fullscreen transition is complete
+      // Auto-fit view when maximizing
+      if (newState && reactFlowInstance.current) {
+        // Small delay to ensure panel expansion is complete
         setTimeout(() => {
           reactFlowInstance.current?.fitView({
             padding: 0.2,
@@ -111,14 +91,11 @@ const MindmapModal: React.FC<MindmapModalProps> = ({ isOpen, mindmap, onClose })
           });
         }, 100);
       }
-    };
 
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
-
-    return () => {
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
-    };
+      return newState;
+    });
   }, []);
+
 
   if (!isOpen || !mindmap) {
     return null;
@@ -128,7 +105,7 @@ const MindmapModal: React.FC<MindmapModalProps> = ({ isOpen, mindmap, onClose })
     <div className="mindmap-modal-overlay" onClick={onClose}>
       <div
         ref={modalRef}
-        className={`mindmap-modal ${isFullscreen ? 'mindmap-modal--fullscreen' : ''}`}
+        className={`mindmap-modal ${isMaximized ? 'mindmap-modal--maximized' : ''}`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
@@ -136,12 +113,12 @@ const MindmapModal: React.FC<MindmapModalProps> = ({ isOpen, mindmap, onClose })
           <h2 className="mindmap-modal__title">{mindmap.title}</h2>
           <div className="mindmap-modal__header-actions">
             <button
-              className="mindmap-modal__fullscreen"
-              onClick={toggleFullscreen}
-              aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
-              title={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
+              className="mindmap-modal__maximize"
+              onClick={toggleMaximize}
+              aria-label={isMaximized ? 'Minimize panel' : 'Maximize panel'}
+              title={isMaximized ? 'Minimize panel' : 'Maximize panel'}
             >
-              {isFullscreen ? (
+              {isMaximized ? (
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M8 3V8H3M21 8H16V3M16 21V16H21M3 16H8V21"

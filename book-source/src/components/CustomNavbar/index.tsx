@@ -1,6 +1,8 @@
 import { useBookmarks } from '@/contexts/BookmarkContext';
+import { useNotes } from '@/contexts/NotesContext';
 import { useSearch } from '@/contexts/SearchContext';
 import { useSidebarControl } from '@/contexts/SidebarContext';
+import { useNoteMarkers } from '@/hooks/useNoteMarkers';
 import Link from '@docusaurus/Link';
 import { useColorMode } from '@docusaurus/theme-common';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -33,6 +35,11 @@ const CustomNavbar: React.FC = () => {
   const { search, isLoading: searchLoading } = useSearch();
   const { isSidebarCollapsed, collapseSidebar, expandSidebar } = useSidebarControl();
   const { setSelectedText, setSelectedElementId, setInitialView, tocMode, setTocMode } = useBookmarks();
+  const {
+    setSelectedText: setNotesSelectedText,
+    setInitialView: setNotesInitialView,
+    setCurrentNoteId
+  } = useNotes();
   const [searchFocused, setSearchFocused] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -45,6 +52,18 @@ const CustomNavbar: React.FC = () => {
     setColorMode(colorMode === 'dark' ? 'light' : 'dark');
   }, [colorMode, setColorMode]);
 
+  // Handle note indicator clicks
+  const handleNoteClick = useCallback((noteId: string) => {
+    setCurrentNoteId(noteId);
+    setNotesInitialView('view');
+    setDrawerTitle('Notes');
+    setDrawerOpen(true);
+    collapseSidebar();
+  }, [setCurrentNoteId, setNotesInitialView, collapseSidebar]);
+
+  // Initialize note markers hook
+  useNoteMarkers({ onNoteClick: handleNoteClick });
+
   const openDrawer = useCallback((title: string, viewMode: 'add' | 'view' = 'view') => {
     setDrawerTitle(title);
     setDrawerOpen(true);
@@ -52,9 +71,13 @@ const CustomNavbar: React.FC = () => {
     if (title === 'Bookmark') {
       setInitialView(viewMode);
     }
+    // Set the initial view mode for notes panel
+    if (title === 'Notes') {
+      setNotesInitialView(viewMode);
+    }
     // Collapse left sidebar when opening right drawer for maximum space
     collapseSidebar();
-  }, [collapseSidebar]);
+  }, [collapseSidebar, setInitialView, setNotesInitialView]);
 
   const closeDrawer = useCallback(() => {
     setDrawerOpen(false);
@@ -71,13 +94,21 @@ const CustomNavbar: React.FC = () => {
       }
       // Open the drawer in 'add' mode with selected text
       openDrawer(action, 'add');
+    } else if (action === 'Notes') {
+      setNotesSelectedText(selectedTextParam);
+      // Store text anchor in sessionStorage for NotesContent to use
+      if (textAnchor) {
+        sessionStorage.setItem('pendingNoteTextAnchor', JSON.stringify(textAnchor));
+      }
+      // Open the drawer in 'add' mode with selected text
+      openDrawer(action, 'add');
     } else {
       // For other actions, open normally
       openDrawer(action, 'view');
     }
 
     console.log(`Action: ${action}, Selected Text: ${selectedTextParam}, ElementId: ${elementId}, TextAnchor:`, textAnchor);
-  }, [openDrawer, setSelectedText, setSelectedElementId]);
+  }, [openDrawer, setSelectedText, setSelectedElementId, setNotesSelectedText]);
 
   const toggleChat = useCallback(() => {
     setChatOpen((prev) => !prev);
@@ -136,6 +167,23 @@ const CustomNavbar: React.FC = () => {
       }, 100);
     }
   }, [openDrawer]);
+
+  // Check if we should keep the notes drawer open after navigation
+  useEffect(() => {
+    const shouldKeepDrawerOpen = sessionStorage.getItem('keepNotesDrawerOpen');
+    const highlightNoteId = sessionStorage.getItem('highlightNoteId');
+    if (shouldKeepDrawerOpen === 'true') {
+      sessionStorage.removeItem('keepNotesDrawerOpen');
+      sessionStorage.removeItem('highlightNoteId');
+      // Small delay to ensure page is fully loaded
+      setTimeout(() => {
+        if (highlightNoteId) {
+          setCurrentNoteId(highlightNoteId);
+        }
+        openDrawer('Notes', 'view');
+      }, 100);
+    }
+  }, [openDrawer, setCurrentNoteId]);
 
   // Use the real search function from context
   const filteredResults = searchQuery ? search(searchQuery) : [];

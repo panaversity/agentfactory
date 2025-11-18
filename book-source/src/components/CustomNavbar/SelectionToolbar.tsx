@@ -241,8 +241,8 @@ const SelectionToolbar: React.FC<SelectionToolbarProps> = ({ onAction }) => {
       let elementId: string | undefined;
       let textAnchor: TextAnchor | undefined;
 
-      // For bookmarks, capture both element ID (if available) and text anchor
-      if (action === 'Bookmark') {
+      // For bookmarks and notes, capture both element ID (if available) and text anchor
+      if (action === 'Bookmark' || action === 'Notes') {
         elementId = getElementIdIfAvailable();
         textAnchor = extractTextAnchor();
       }
