@@ -172,6 +172,50 @@ Write down your answers. They'll help you track your mindset shift as you progre
 
 ---
 
+## You're Ready for Part 2 When...
+
+Part 1 built your conceptual foundation—you understand the paradigm shift, the evidence supporting it, strategic opportunities, and the complete system architecture. Part 2 introduces hands-on AI collaboration where you'll use these concepts to build real projects.
+
+**Self-Assessment**: You're ready to transition from Layer 1 (conceptual understanding) to Layer 2 (hands-on AI collaboration) when you can:
+
+✅ **1. Explain the paradigm shift clearly**
+- Can you articulate to someone else why AI-native development is fundamentally different from "coding with AI autocomplete"?
+- Can you explain the difference between using AI as a tool vs. using AI as a system?
+
+✅ **2. Evaluate evidence quality**
+- When you see an AI capability claim, can you distinguish between hype and evidence-based reality?
+- Can you identify which evidence source (ICPC, DORA, Stack Overflow, billion-dollar acquisitions) is strongest for a given claim?
+
+✅ **3. Apply strategic frameworks**
+- Can you explain the Snakes and Ladders framework and identify one vertical market opportunity?
+- Can you articulate why vertical intelligence is more valuable than horizontal code?
+
+✅ **4. Recognize system completeness**
+- Can you name all nine pillars and explain why partial adoption (6/9) creates gaps while complete adoption (9/9) creates advantage?
+- Can you identify which pillars you're most excited to learn and which feel most challenging?
+
+**How to use this checklist:**
+
+If you answered **"yes" to 3-4 criteria**: You're ready for Part 2. Your conceptual foundation is solid. Move forward with confidence.
+
+If you answered **"yes" to 1-2 criteria**: You have partial understanding. Consider:
+- Re-reading chapters where you felt uncertain
+- Discussing concepts with your AI companion to clarify confusion
+- Writing brief explanations in your own words to test comprehension
+
+If you answered **"no" to all criteria**: You rushed through Part 1. **This is okay—slow down.** Part 1's value isn't in reading speed, it's in paradigm understanding. Return to Chapter 1 and engage more deeply with the "Try With AI" exercises.
+
+**What changes in Part 2:**
+
+- **Part 1 (Layer 1)**: You learned ABOUT AI-native development (conceptual understanding)
+- **Part 2 (Layer 2)**: You'll learn WITH AI (hands-on collaboration, bidirectional learning)
+
+In Part 2, you won't just read about AI collaboration—you'll experience it. You'll see AI suggest patterns you didn't know, teach AI your constraints, and iterate toward solutions neither of you had initially. This is the Three-Role AI Partnership in action: AI as teacher, student, and co-worker.
+
+**Ready?** Take a moment to honestly assess where you are. If you're ready, Part 2 awaits. If not, there's no penalty for strengthening your foundation now—it compounds forward.
+
+---
+
 ## Try With AI
 
 Use your AI companion tool set up from Chapter 5. If you haven't reached that chapter yet, use ChatGPT web or Claude for this activity.

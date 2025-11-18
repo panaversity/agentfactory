@@ -175,6 +175,20 @@ Translating technical concepts into relatable terms through AI partnership helps
 
 **Example**: A startup building a healthcare app needed HIPAA compliance expertise. Instead of hiring a compliance consultant, they loaded a "HIPAA compliance for healthcare APIs" skill into their AI agent. The agent then reviewed their codebase, identified compliance gaps, suggested fixes, and generated audit documentation—all using expert-encoded rules from the skill module.
 
+#### 🎓 Intelligence Accumulation: Your Path Forward
+
+**Important**: Right now, you're learning ABOUT composable skills conceptually. But in Parts 3-5, you'll CREATE your own reusable intelligence:
+
+**Part 3 (Markdown & Prompts)**: You'll build your first skill—a "specification validator" that checks markdown specs for completeness. This transforms your Part 3 learning into reusable intelligence you can apply to every future project.
+
+**Part 4 (Python Foundations)**: You'll create Python debugging subagents that understand common error patterns in your code. Each lesson adds intelligence to your personal capability library.
+
+**Part 5 (Spec-Driven Development)**: You'll orchestrate the skills and subagents you created in Parts 3-4, composing them into complete development workflows. Your accumulated intelligence becomes your competitive advantage.
+
+**This is the shift from "using AI tools" to "building AI-native capability"**: Every lesson after Part 1 creates reusable intelligence. By Part 12, you'll have a library of 20+ skills and subagents that compound your productivity. This isn't about memorizing syntax—it's about accumulating intelligence that works FOR you.
+
+The nine pillars you're learning now provide the foundation. The intelligence you create in Parts 3-12 makes these pillars YOUR competitive advantage.
+
 ## Pillar 9: Universal Cloud Deployment
 
 **What it is**: Production-ready distributed systems infrastructure using standardized technologies like Kubernetes (container orchestration), Docker (containerization), Dapr (microservices runtime), Kafka (event streaming), and Ray (distributed computing).
