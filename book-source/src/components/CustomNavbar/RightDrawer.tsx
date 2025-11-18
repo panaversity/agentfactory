@@ -85,6 +85,8 @@ const RightDrawer: React.FC<RightDrawerProps> = ({ isOpen, onClose, title, child
             <NotesContent />
           ) : title === 'Assessment' ? (
             <AssessmentContent onClose={onClose} />
+          ) : title === 'Notes' ? (
+            <NotesContent />
           ) : children ? (
             children
           ) : (
