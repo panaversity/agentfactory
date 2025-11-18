@@ -70,7 +70,7 @@ In this lesson, you'll master the complete four-block exception handling structu
 
 ---
 
-## Part 1: Student Predicts Flow Control in File Operations
+## Part 1: Predict Flow Control in File Operations
 
 **Your Role**: Flow control analyst predicting execution paths
 
@@ -167,7 +167,7 @@ Based on your experiments, document these rules:
 
 ---
 
-## Part 2: AI Explains Else (Success Path) vs Finally (Cleanup Guarantee)
+## Part 2: Learn Else (Success Path) vs Finally (Cleanup Guarantee)
 
 **Your Role**: Student learning semantic distinctions from AI Teacher
 
@@ -249,7 +249,7 @@ def process_log_file(filename: str) -> int:
 
 ---
 
-## Part 3: Student Challenges AI with Return Statement Edge Cases
+## Part 3: Challenge AI with Return Statement Edge Cases
 
 **Your Role**: Student teaching AI by exploring complex control flow
 

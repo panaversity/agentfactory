@@ -70,7 +70,7 @@ This lesson teaches you to think defensively from the function designer's perspe
 
 ---
 
-## Part 1: Student Designs Domain Exceptions
+## Part 1: Design Domain Exceptions
 
 **Your Role**: Domain modeler designing exception types for business logic
 
@@ -179,7 +179,7 @@ Users familiar with ValueError will understand this pattern.
 
 ---
 
-## Part 2: AI Explains When to Create Custom vs Use Built-In
+## Part 2: Learn When to Create Custom vs Use Built-In
 
 **Your Role**: Student learning exception design principles from AI Teacher
 
@@ -311,7 +311,7 @@ def set_password(password: str) -> None:
 
 ---
 
-## Part 3: Student Challenges AI with Exception Inheritance and `__init__` Customization
+## Part 3: Challenge AI with Exception Inheritance and `__init__` Customization
 
 **Your Role**: Student teaching AI by exploring advanced exception patterns
 

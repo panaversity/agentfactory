@@ -38,7 +38,7 @@ colearning_elements: ["conceptual_prompt", "teaching_commentary", "specification
 # Global scope
 message: str = "I'm global"
 
-def demonstrate_scope():
+def demonstrate_scope() -> None:
     """Show scope boundaries."""
     local_message: str = "I'm local to this function"
     print(local_message)          # Works: local_message exists here
@@ -70,7 +70,7 @@ Scope is about clarity and preventing bugs. When you see a variable, understandi
 ### 💻 Code Idea: Local Scope Isolation
 
 ```python
-def example_local_scope():
+def example_local_scope() -> None:
     """Demonstrate that function variables are local."""
     message: str = "Inside function"
     print(f"Inside: {message}")  # Works: message is in local scope
@@ -79,7 +79,7 @@ example_local_scope()
 # print(message)  # ERROR: NameError - message doesn't exist here
 
 # Another function can have a variable with same name—no conflict
-def another_function():
+def another_function() -> None:
     message: str = "Different function"
     print(f"In another: {message}")
 
@@ -104,14 +104,14 @@ another_function()
 application_name: str = "MyApp"
 version: float = 1.0
 
-def show_app_info():
+def show_app_info() -> None:
     """Show global app information (reading only)."""
     print(f"App: {application_name} v{version}")
     # This function reads global variables—no global keyword needed
 
 show_app_info()  # App: MyApp v1.0
 
-def reset_app():
+def reset_app() -> None:
     """Reset app state (modifying globals)."""
     global application_name, version  # Declare we're modifying these globals
     application_name = "MyApp (Reset)"
@@ -130,7 +130,7 @@ show_app_info()  # App: MyApp (Reset) v2.0
 ```python
 counter: int = 0  # Global counter
 
-def increment_counter():
+def increment_counter() -> None:
     """This does NOT modify global counter."""
     counter: int = 1  # Local variable shadows global
     counter += 1      # Modifies LOCAL counter, not global
@@ -140,7 +140,7 @@ print(f"Before: {counter}")    # 0
 increment_counter()            # Inside: 2
 print(f"After: {counter}")     # Still 0! (global unchanged)
 
-def increment_global_counter():
+def increment_global_counter() -> None:
     """This DOES modify global counter."""
     global counter
     counter += 1
@@ -261,10 +261,10 @@ Python searches for variables in this order:
 ```python
 x: str = "global"  # Global scope
 
-def outer():
+def outer() -> None:
     x: str = "enclosing"  # Enclosing scope (for nested function)
 
-    def inner():
+    def inner() -> None:
         x: str = "local"  # Local scope
         print(f"Local x: {x}")
 

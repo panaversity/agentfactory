@@ -160,7 +160,7 @@ After running all three experiments, you've discovered Python's three most commo
 
 ---
 
-## Part 2: AI Explains Exception Hierarchy
+## Part 2: Learn Exception Hierarchy
 
 **Your Role**: Student learning from AI Teacher
 
@@ -229,7 +229,7 @@ def process_calculation(value_str: str, divisor_str: str) -> float:
 
 ---
 
-## Part 3: Student Challenges AI with Multiple Except Blocks
+## Part 3: Challenge AI with Multiple Except Blocks
 
 **Your Role**: Student teaching AI by identifying edge cases
 
