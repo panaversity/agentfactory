@@ -30,10 +30,10 @@ WHAT CHANGED:
 - Meta-awareness sections added (self-monitoring for convergence)
 WHAT'S NEW:
 - Section 0: Constitutional Persona (establishes reasoning stance for all agents)
-- Explicit transition criteria for Stages 1→2, 2→3, 3→4
+- Explicit transition criteria for Layers 1→2, 2→3, 3→4
 - "Right Altitude" guidance for every principle
 - Self-correcting meta-instructions throughout
-- Progressive disclosure: Universal principles + Stage-specific principles
+- Progressive disclosure: Universal principles + Layer-specific principles
 MIGRATION IMPACT: BREAKING CHANGE
 - Agents must shift from rule-following to reasoning mode
 - "NEVER X" rules replaced with "Consider X framework when Y context"
@@ -76,7 +76,7 @@ Previous versions: See v5.0.0 below
 
 **2. Reasoning Activation Assessment**
 - Does this content ask students to REASON about concepts or PREDICT common patterns?
-- How do teaching methods shift as students progress through Stages 1→4?
+- How do teaching methods shift as students progress through Layers 1→4?
 - What meta-awareness do students need to evaluate their own learning?
 
 **3. Intelligence Accumulation**
@@ -235,21 +235,21 @@ If 0 answers are "yes" → Pattern-based development (1-2 hours)
 
 ---
 
-## IIa. The AI-Native Teaching Framework (4-Stage Progression)
+## IIa. The AI-Native Teaching Framework (4-Layer Progression)
 
-<!-- REASONING ACTIVATION: Progressive decision frameworks by stage -->
+<!-- REASONING ACTIVATION: Progressive decision frameworks by layer -->
 
 ### Educational Philosophy
 
-This book applies a **4-stage pedagogical framework** that systematically builds competence from manual practice through AI collaboration to spec-driven project execution.
+This book applies a **4-layer pedagogical framework** that systematically builds competence from manual practice through AI collaboration to spec-driven project execution.
 
-**Critical Principle**: This is NOT "spec-first from day one." Students master manual foundations (Stage 1) before AI assistance (Stage 2), then design reusable intelligence (Stage 3), and finally apply spec-driven methodology (Stage 4).
+**Critical Principle**: This is NOT "spec-first from day one." Students master manual foundations (Layer 1) before AI assistance (Layer 2), then design reusable intelligence (Layer 3), and finally apply spec-driven methodology (Layer 4).
 
-**Each stage requires different reasoning from both students and agents.**
+**Each layer requires different reasoning from both students and agents.**
 
 ---
 
-### Stage 1: Manual Foundation (Book Teaches Directly)
+### Layer 1: Manual Foundation (Book Teaches Directly)
 
 **Applied to**: Beginning of each lesson + foundational concepts
 
@@ -257,24 +257,24 @@ This book applies a **4-stage pedagogical framework** that systematically builds
 
 **Agent Reasoning Goal**: Determine when direct teaching activates learning vs when exploration serves better
 
-#### Decision Framework: When to Use Stage 1
+#### Decision Framework: When to Use Layer 1
 
 **Ask yourself:**
 - **Concept stability**: Will this concept change in next 2 years?
-  - If unchanging (git commit basics) → Stage 1 appropriate
-  - If rapidly evolving (AI framework APIs) → Consider Stage 2 immediately
+  - If unchanging (git commit basics) → Layer 1 appropriate
+  - If rapidly evolving (AI framework APIs) → Consider Layer 2 immediately
 
 - **Mental model requirement**: Must students internalize this to evaluate AI outputs?
-  - If foundational (data structures, control flow) → Stage 1 required
-  - If mechanical (boilerplate syntax) → Can skip to Stage 2
+  - If foundational (data structures, control flow) → Layer 1 required
+  - If mechanical (boilerplate syntax) → Can skip to Layer 2
 
 - **Error diagnosis**: Will students need to debug this manually?
-  - If yes (networking concepts, async patterns) → Stage 1 builds intuition
-  - If no (AI handles entirely) → Stage 1 may be excessive
+  - If yes (networking concepts, async patterns) → Layer 1 builds intuition
+  - If no (AI handles entirely) → Layer 1 may be excessive
 
-**Principle**: Use Stage 1 when manual practice builds schema required for reasoning about quality.
+**Principle**: Use Layer 1 when manual practice builds schema required for reasoning about quality.
 
-#### What Happens in Stage 1
+#### What Happens in Layer 1
 
 **Teaching approach:**
 - Book explains concepts with analogies and diagrams
@@ -289,7 +289,7 @@ This book applies a **4-stage pedagogical framework** that systematically builds
 - "What would happen if I changed this value?"
 - "How do I know if my output is correct?"
 
-#### Transition Decision: Stage 1 → Stage 2
+#### Transition Decision: Layer 1 → Layer 2
 
 **When should content transition from manual to AI-assisted?**
 
@@ -298,37 +298,37 @@ Consider these signals:
 2. **Independent execution**: Can student complete basic task without referring to instructions?
 3. **Error recognition**: Can student identify when something goes wrong?
 
-If student exhibits 2+ signals → Ready for Stage 2 (AI collaboration)
-If student lacks these signals → Continue Stage 1 (more manual practice needed)
+If student exhibits 2+ signals → Ready for Layer 2 (AI collaboration)
+If student lacks these signals → Continue Layer 1 (more manual practice needed)
 
-**Meta-awareness**: You tend to rush to Stage 2 (AI collaboration) because it's more engaging. Resist this. Stage 1 builds the foundation that makes Stage 2 effective.
+**Meta-awareness**: You tend to rush to Layer 2 (AI collaboration) because it's more engaging. Resist this. Layer 1 builds the foundation that makes Layer 2 effective.
 
 ---
 
-### Stage 2: AI Collaboration (AI as Teacher + Student + Co-Worker)
+### Layer 2: AI Collaboration (AI as Teacher + Student + Co-Worker)
 
-**Applied to**: Each lesson (after Stage 1 manual foundation)
+**Applied to**: Each lesson (after Layer 1 manual foundation)
 
 **Student Reasoning Goal**: Develop prompting, validation, and collaboration skills through bidirectional learning
 
 **Agent Reasoning Goal**: Design interactions that activate reasoning in students, not just pattern retrieval
 
-#### Decision Framework: When to Use Stage 2
+#### Decision Framework: When to Use Layer 2
 
 **Ask yourself:**
 - **Complexity**: Is this multi-step with evolving best practices?
-  - If yes (Docker multi-stage builds) → Stage 2 valuable
-  - If no (simple one-liner) → Stage 1 may suffice
+  - If yes (Docker multi-stage builds) → Layer 2 valuable
+  - If no (simple one-liner) → Layer 1 may suffice
 
 - **Optimization opportunity**: Can AI suggest approaches student wouldn't consider?
-  - If yes (performance patterns, security hardening) → Stage 2 demonstrates value
-  - If no (trivial task) → Stage 2 overhead not justified
+  - If yes (performance patterns, security hardening) → Layer 2 demonstrates value
+  - If no (trivial task) → Layer 2 overhead not justified
 
 - **Validation requirement**: Must student evaluate AI output quality?
-  - If yes (all production code) → Stage 2 teaches critical skill
+  - If yes (all production code) → Layer 2 teaches critical skill
   - If no → Not ready for AI collaboration
 
-**Principle**: Use Stage 2 when AI collaboration teaches both execution AND evaluation skills.
+**Principle**: Use Layer 2 when AI collaboration teaches both execution AND evaluation skills.
 
 #### The Three Roles Framework (Co-Learning Partnership)
 
@@ -380,7 +380,7 @@ But: Iterative refinement (human proposes → AI suggests alternative → human 
 
 #### Lesson Design Requirements
 
-**Every Stage 2 lesson must include:**
+**Every Layer 2 lesson must include:**
 
 1. At least ONE instance where AI teaches student (suggests pattern they didn't know)
 2. At least ONE instance where student teaches AI (corrects or refines output)
@@ -390,7 +390,7 @@ But: Iterative refinement (human proposes → AI suggests alternative → human 
 
 **Why this matters**: The co-learning partnership is the CORE PEDAGOGICAL INNOVATION of this book. Without it, we're just teaching "how to use ChatGPT," not "how to think with AI."
 
-#### Transition Decision: Stage 2 → Stage 3
+#### Transition Decision: Layer 2 → Layer 3
 
 **When should content transition from AI collaboration to intelligence design?**
 
@@ -399,16 +399,16 @@ Consider these signals:
 2. **Reusability**: Will this pattern apply to future projects?
 3. **Complexity**: Is this pattern worth encoding as reusable intelligence?
 
-If pattern exhibits all 3 characteristics → Ready for Stage 3 (create skill/subagent)
-If pattern is one-off or trivial → No need for Stage 3 (move to next concept)
+If pattern exhibits all 3 characteristics → Ready for Layer 3 (create skill/subagent)
+If pattern is one-off or trivial → No need for Layer 3 (move to next concept)
 
-**Meta-awareness**: You tend to over-complicate Stage 2 by showing too many variations. Focus on ONE clear collaboration pattern per concept, not exhaustive coverage.
+**Meta-awareness**: You tend to over-complicate Layer 2 by showing too many variations. Focus on ONE clear collaboration pattern per concept, not exhaustive coverage.
 
 ---
 
-### Stage 3: Intelligence Design (Create Reusable Components)
+### Layer 3: Intelligence Design (Create Reusable Components)
 
-**Applied to**: Each lesson (after Stage 2 collaboration)
+**Applied to**: Each lesson (after Layer 2 collaboration)
 
 **Student Reasoning Goal**: Transform tacit knowledge into explicit, reusable intelligence
 
@@ -416,7 +416,7 @@ If pattern is one-off or trivial → No need for Stage 3 (move to next concept)
 
 #### Decision Framework: When to Create Reusable Intelligence
 
-**Ask yourself about the pattern from Stage 2:**
+**Ask yourself about the pattern from Layer 2:**
 
 - **Frequency**: Will this pattern recur across 3+ projects?
   - If yes → Worth encoding as reusable intelligence
@@ -432,7 +432,7 @@ If pattern is one-off or trivial → No need for Stage 3 (move to next concept)
 
 **Principle**: Create reusable intelligence when pattern complexity and frequency justify encoding cost.
 
-#### What Happens in Stage 3
+#### What Happens in Layer 3
 
 **Teaching approach:**
 - Define specialized subagents that encapsulate lesson concepts
@@ -468,7 +468,7 @@ If pattern is one-off or trivial → No need for Stage 3 (move to next concept)
 
 **Self-check**: Does this skill activate reasoning mode (context analysis) or prediction mode (pattern retrieval)?
 
-#### Transition Decision: Stage 3 → Stage 4
+#### Transition Decision: Layer 3 → Layer 4
 
 **When should students transition from creating reusable intelligence to orchestrating at scale?**
 
@@ -477,14 +477,14 @@ Consider these signals:
 2. **Orchestration need**: Does a project require composing multiple components?
 3. **Specification capability**: Can student write clear specifications that compose intelligence?
 
-If all signals present → Ready for Stage 4 (spec-driven capstone)
-If lacking intelligence library → Continue Stage 3 across more lessons
+If all signals present → Ready for Layer 4 (spec-driven capstone)
+If lacking intelligence library → Continue Layer 3 across more lessons
 
 **Meta-awareness**: You tend to create skills that are too specific (Docker-for-FastAPI-on-Ubuntu) instead of general (production containerization). Design for reusability.
 
 ---
 
-### Stage 4: Spec-Driven Integration (Orchestrate at Scale)
+### Layer 4: Spec-Driven Integration (Orchestrate at Scale)
 
 **Applied to**: Once per chapter (capstone project)
 
@@ -492,7 +492,7 @@ If lacking intelligence library → Continue Stage 3 across more lessons
 
 **Agent Reasoning Goal**: Validate that specifications are sufficient to drive implementation without additional guidance
 
-#### Decision Framework: When to Use Stage 4
+#### Decision Framework: When to Use Layer 4
 
 **Ask yourself:**
 - **Capstone timing**: Has student completed all foundational lessons in chapter?
@@ -507,15 +507,15 @@ If lacking intelligence library → Continue Stage 3 across more lessons
   - If yes → Specification-first approach manages complexity
   - If no → May be overengineering (smaller project works)
 
-**Principle**: Use Stage 4 when project complexity and available intelligence justify specification-first approach.
+**Principle**: Use Layer 4 when project complexity and available intelligence justify specification-first approach.
 
-#### What Happens in Stage 4
+#### What Happens in Layer 4
 
 **Teaching approach:**
 - Design projects using specification-first approach
 - Begin with spec.md BEFORE any implementation
 - Use SpecKit Plus (or similar) to structure specifications
-- Compose previously created subagents and skills (from Stage 3 of all lessons)
+- Compose previously created subagents and skills (from Layer 3 of all lessons)
 - Orchestrate multi-agent workflows
 - Validate that specifications drive implementation successfully
 
@@ -528,7 +528,7 @@ If lacking intelligence library → Continue Stage 3 across more lessons
 
 #### Specification Quality Framework
 
-**When writing Stage 4 specifications, reason through:**
+**When writing Layer 4 specifications, reason through:**
 
 1. **Intent Clarity**
    - Does spec articulate WHAT system should do without prescribing HOW?
@@ -541,13 +541,13 @@ If lacking intelligence library → Continue Stage 3 across more lessons
    - What quality standards must be met?
 
 3. **Intelligence Composition**
-   - Which skills/subagents from Stages 1-3 apply?
+   - Which skills/subagents from Layers 1-3 apply?
    - How do components compose into system architecture?
    - What gaps exist that require new intelligence creation?
 
 **Self-check**: If you gave this spec to another developer with same accumulated intelligence, would they produce equivalent system?
 
-#### Stage 4 Success Validation
+#### Layer 4 Success Validation
 
 **Project succeeds when:**
 - Specification was written FIRST (before implementation)
@@ -555,30 +555,30 @@ If lacking intelligence library → Continue Stage 3 across more lessons
 - Implementation aligns with specification (validated through acceptance tests)
 - Student can articulate design decisions and tradeoffs made
 
-**Detection**: If spec was written AFTER code, or if reusable intelligence wasn't applied, Stage 4 pattern was not followed.
+**Detection**: If spec was written AFTER code, or if reusable intelligence wasn't applied, Layer 4 pattern was not followed.
 
 ---
 
-### The 4-Stage Framework Summary
+### The 4-Layer Framework Summary
 
-| **Stage** | **When** | **Student Reasoning** | **Agent Reasoning** | **Output** |
+| **Layer** | **When** | **Student Reasoning** | **Agent Reasoning** | **Output** |
 |-----------|----------|----------------------|---------------------|------------|
 | **1: Manual Foundation** | Introducing new concepts | Build mental models for evaluation | When does direct teaching vs discovery serve learning? | Understanding + quality schema |
 | **2: AI Collaboration** | After manual competence | Prompt, validate, refine iteratively | How to design bidirectional learning? | Working solution + collaboration patterns |
 | **3: Intelligence Design** | After pattern recognition | Transform tacit to explicit knowledge | When to encode as skill vs subagent? | Reusable components |
 | **4: Spec-Driven Integration** | Chapter capstone | Orchestrate through specifications | Validate spec sufficiency | Production project |
 
-**Meta-awareness for agents**: You tend to apply all 4 stages rigidly to every concept. Not every concept needs all stages. Simple concepts may only need Stages 1-2. Complex patterns benefit from all 4.
+**Meta-awareness for agents**: You tend to apply all 4 layers rigidly to every concept. Not every concept needs all layers. Simple concepts may only need Layers 1-2. Complex patterns benefit from all 4.
 
 ---
 
 ### Student-Facing Language Protocol
 
-**Internal vs Student-Facing Language**: Instructional designers (agents, content creators) use stage/layer terminology for planning. Students experience stages through pedagogy, NOT through explicit labels.
+**Internal vs Student-Facing Language**: Instructional designers (agents, content creators) use stage/layer terminology for planning. Students experience layers through pedagogy, NOT through explicit labels.
 
 **Internal Language** (planning documents, agent prompts, ADRs):
-- ✅ "Stage 1: Manual Foundation"
-- ✅ "Stage 2: AI Collaboration with Three Roles"
+- ✅ "Layer 1: Manual Foundation"
+- ✅ "Layer 2: AI Collaboration with Three Roles"
 - ✅ "This lesson demonstrates AI as Teacher/Student/Co-Worker"
 - ✅ "Apply Layer 2 collaboration patterns"
 
@@ -589,12 +589,12 @@ If lacking intelligence library → Continue Stage 3 across more lessons
 - ✅ "Work with AI to improve your code"
 
 **Forbidden in Student Text**:
-- ❌ "Stage 2 Focus: You'll experience bidirectional learning"
+- ❌ "Layer 2 Focus: You'll experience bidirectional learning"
 - ❌ "## Three Roles in Action"
 - ❌ "This is Layer 2, so we'll use AI collaboration"
-- ❌ "Part 2: Stage 2 AI Collaboration — Three Roles Framework"
+- ❌ "Part 2: Layer 2 AI Collaboration — Three Roles Framework"
 
-**Why**: Exposing instructional scaffolding breaks immersion and adds cognitive load without learning value. Students should EXPERIENCE pedagogical design, not STUDY it. Stage labels are like showing movie set scaffolding during the film—it ruins the experience.
+**Why**: Exposing instructional scaffolding breaks immersion and adds cognitive load without learning value. Students should EXPERIENCE pedagogical design, not STUDY it. Layer labels are like showing movie set scaffolding during the film—it ruins the experience.
 
 **Basic Validation**: Grep student-facing lesson files for `"Stage [0-9]"`, `"Layer [0-9]"`, `"Three Roles (Framework|in Action)"`. Zero matches required.
 
@@ -908,10 +908,10 @@ Before finalizing chapter structure, ask:
 
 **Pedagogical phases** (NOT rigid lesson numbers):
 1. **Foundation Phase**: Introduce core concepts, mental models, vocabulary
-2. **Application Phase**: Hands-on practice with AI collaboration (Stages 1-3)
+2. **Application Phase**: Hands-on practice with AI collaboration (Layers 1-3)
 3. **Integration Phase**: Combine concepts into workflows
 4. **Validation Phase**: Test understanding, catch misconceptions
-5. **Mastery Phase**: Advanced synthesis, real-world application (Stage 4)
+5. **Mastery Phase**: Advanced synthesis, real-world application (Layer 4)
 
 **Lesson count flexibility**:
 - Simple chapters (foundational concepts): 5-7 lessons may suffice
@@ -1274,13 +1274,13 @@ Each agent:
 
 ### The Missing Piece from v5.0.0
 
-**Critical gap**: Constitution v5.0.0 defined 4 stages but didn't specify WHEN to transition between them.
+**Critical gap**: Constitution v5.0.0 defined 4 layers but didn't specify WHEN to transition between them.
 
 **This section provides decision frameworks for each transition.**
 
 ---
 
-### Transition: Stage 1 → Stage 2 (Manual → AI-Assisted)
+### Transition: Layer 1 → Layer 2 (Manual → AI-Assisted)
 
 **Core Question**: When is student ready to transition from manual practice to AI collaboration?
 
@@ -1291,25 +1291,25 @@ Each agent:
 1. **Comprehension**: Can student explain concept to someone else?
    - Test: Ask student to teach concept
    - If clear explanation → Comprehension achieved
-   - If confused explanation → Need more Stage 1
+   - If confused explanation → Need more Layer 1
 
 2. **Independent execution**: Can student complete basic task without instructions?
    - Test: Give simple task without step-by-step guide
    - If student completes successfully → Independence achieved
-   - If student relies on instructions → Need more Stage 1
+   - If student relies on instructions → Need more Layer 1
 
 3. **Error recognition**: Can student identify when something goes wrong?
    - Test: Introduce intentional error, observe reaction
    - If student recognizes error → Diagnostic capability exists
-   - If student doesn't notice → Need more Stage 1
+   - If student doesn't notice → Need more Layer 1
 
-**Transition criteria**: If student exhibits 2+ capabilities → Ready for Stage 2
+**Transition criteria**: If student exhibits 2+ capabilities → Ready for Layer 2
 
-**Why this matters**: Students who skip Stage 1 cannot evaluate AI outputs. They accept whatever AI produces without quality judgment.
+**Why this matters**: Students who skip Layer 1 cannot evaluate AI outputs. They accept whatever AI produces without quality judgment.
 
 ---
 
-### Transition: Stage 2 → Stage 3 (AI-Assisted → Intelligence Design)
+### Transition: Layer 2 → Layer 3 (AI-Assisted → Intelligence Design)
 
 **Core Question**: When should workflow pattern transition from collaboration to reusable intelligence?
 
@@ -1339,7 +1339,7 @@ Each agent:
 
 ---
 
-### Transition: Stage 3 → Stage 4 (Intelligence Design → Spec-Driven Integration)
+### Transition: Layer 3 → Layer 4 (Intelligence Design → Spec-Driven Integration)
 
 **Core Question**: When is student ready for specification-first capstone project?
 
@@ -1349,7 +1349,7 @@ Each agent:
 
 1. **Intelligence accumulation**: Has student created 3+ reusable components?
    - If yes → Library exists to compose
-   - If no → Build more components in Stage 3
+   - If no → Build more components in Layer 3
 
 2. **Specification skill**: Can student write clear specifications?
    - Test: Review student's spec.md attempts
@@ -1360,9 +1360,9 @@ Each agent:
    - If yes → Specification-first manages complexity
    - If no → May be overengineering, simpler project works
 
-**Transition criteria**: If student has intelligence library + specification skill + complex project → Ready for Stage 4
+**Transition criteria**: If student has intelligence library + specification skill + complex project → Ready for Layer 4
 
-**Why this matters**: Stage 4 is not just "write spec then code." It's orchestrating accumulated intelligence through specifications. Without the library, there's nothing to orchestrate.
+**Why this matters**: Layer 4 is not just "write spec then code." It's orchestrating accumulated intelligence through specifications. Without the library, there's nothing to orchestrate.
 
 ---
 
@@ -1380,7 +1380,7 @@ Common convergence points we've observed:
 - Following topic taxonomy instead of learning progression
 - Presenting information without forcing active reasoning
 - Creating overly specific skills (not reusable)
-- Rushing to Stage 2 before Stage 1 foundation is solid
+- Rushing to Layer 2 before Layer 1 foundation is solid
 
 **This section provides self-monitoring prompts to detect and correct convergence.**
 
@@ -1444,14 +1444,14 @@ Common convergence points we've observed:
 
 #### 5. Stage Progression Check
 
-"Am I rushing to AI collaboration (Stage 2) before manual foundation (Stage 1) is solid?"
+"Am I rushing to AI collaboration (Layer 2) before manual foundation (Layer 1) is solid?"
 
 **Self-correction**:
 - Can student explain the concept clearly?
 - Can student execute basic task independently?
 - Can student recognize errors?
 
-**Action**: If 2+ answers are "no" → Strengthen Stage 1 before proceeding to Stage 2.
+**Action**: If 2+ answers are "no" → Strengthen Layer 1 before proceeding to Layer 2.
 
 ---
 
@@ -1565,6 +1565,6 @@ Common convergence points we've observed:
 
 ---
 
-**This constitution activates reasoning mode in AI agents through Persona + Questions + Principles pattern. It replaces rule-following (prediction mode) with decision frameworks (reasoning mode). All principles are progressive—applying differently across Stages 1-4 and complexity tiers A1-C2.**
+**This constitution activates reasoning mode in AI agents through Persona + Questions + Principles pattern. It replaces rule-following (prediction mode) with decision frameworks (reasoning mode). All principles are progressive—applying differently across Layers 1-4 and complexity tiers A1-C2.**
 
 **Version 6.0.0 represents a BREAKING CHANGE from rule-based governance (v5.0) to reasoning-based governance (v6.0). Agents must shift from "never do X" compliance to "when Y context, apply Z framework" reasoning.**

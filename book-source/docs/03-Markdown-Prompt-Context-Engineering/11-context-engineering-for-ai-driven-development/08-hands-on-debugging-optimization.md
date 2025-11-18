@@ -32,7 +32,7 @@ But **reading about techniques** and **executing them under pressure** are diffe
 
 This lesson puts you in real failure scenarios. You'll **diagnose problems, apply solutions, measure results** — like you would in actual development work.
 
-This is Stage 2 Validation: **Applying all learned patterns to integrated scenarios**.
+This is Layer 2 Validation: **Applying all learned patterns to integrated scenarios**.
 
 ## Scenario 1: Degradation Crisis
 

@@ -48,7 +48,7 @@ You find yourself re-explaining:
 
 This lesson teaches you to **design persistent memory files that survive across sessions**, so Claude remembers your project's decisions, patterns, and constraints without re-explanation.
 
-This is Stage 3: **Intelligence Design — Creating Reusable Skills**.
+This is Layer 3: **Intelligence Design — Creating Reusable Skills**.
 
 ## How Memory Files Work: Persistent Context Across Sessions
 

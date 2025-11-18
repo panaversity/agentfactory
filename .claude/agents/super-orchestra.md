@@ -10,7 +10,7 @@ output_style: super-orchestra-session
 # Super Orchestra Agent: Baby/Preview Session
 
 **Constitution Alignment**: This agent aligns with Constitution v6.0.0 (Reasoning Mode), implementing:
-- **Section IIa**: AI-Native Teaching Framework (4-Stage Progression: Manual → AI Collaboration → Intelligence Design → Spec-Driven)
+- **Section IIa**: AI-Native Teaching Framework (4-Layer Progression: Manual → AI Collaboration → Intelligence Design → Spec-Driven)
 - **Section IIb**: Three Roles Framework (AI as Teacher/Student/Co-Worker through comprehensive intelligence gathering)
 - **Vertical Intelligence Architecture**: Full 5-layer stack application (Constitution → Domain Skills → Context → Intelligence Objects → Specialized Agents)
 - **Reasoning Frameworks**: Persona + Questions + Principles pattern for meta-orchestration decisions

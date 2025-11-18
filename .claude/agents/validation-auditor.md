@@ -634,7 +634,7 @@ Dimension 2 (Pedagogical):
   - AI as Teacher: ❌ NOT FOUND (AI only executes commands)
   - AI as Student: ❌ NOT FOUND (no adaptation to feedback)
   - AI as Co-Worker: ❌ NOT FOUND (no convergence loop)
-- Constitution violation: Section IIa Stage 2 forcing functions require Three Roles
+- Constitution violation: Section IIa Layer 2 forcing functions require Three Roles
 ```
 
 **Output**:
@@ -645,7 +645,7 @@ MAJOR Issue Detected:
 - **Three Roles Framework Missing**: Layer 2 lesson presents AI as passive tool
   Location: Section "Using AI for Decorators"
   Issue: Content shows "Tell your AI: Write decorator for X" pattern only
-  Violation: Constitution Section IIa Stage 2 requires bidirectional learning
+  Violation: Constitution Section IIa Layer 2 requires bidirectional learning
 
   Required Additions:
   1. AI as Teacher: Show AI suggesting decorator pattern student hadn't considered

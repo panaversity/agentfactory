@@ -44,7 +44,7 @@ Imagine a CLI tool that:
 
 Instead, you'll write a **complete specification** that could be handed to another developer who has never taken this course, and they could build the system from your spec alone.
 
-This is Stage 4: **Spec-Driven Integration — Specification before implementation.**
+This is Layer 4: **Spec-Driven Integration — Specification before implementation.**
 
 ## Understanding Specification Quality: What Makes a Spec "Implementation-Ready"?
 

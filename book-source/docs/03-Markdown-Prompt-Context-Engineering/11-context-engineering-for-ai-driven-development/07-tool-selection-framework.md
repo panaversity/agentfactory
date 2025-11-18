@@ -42,7 +42,7 @@ You have two tools available:
 
 This lesson teaches you to **recognize task characteristics, evaluate tool capabilities, and select the right tool for your situation** — sometimes Claude Code, sometimes Gemini CLI, sometimes both in sequence.
 
-This is Stage 2-3 Hybrid: **AI Collaboration (evaluating options) + Intelligence Design (creating reusable framework)**.
+This is Layer 2-3 Hybrid: **AI Collaboration (evaluating options) + Intelligence Design (creating reusable framework)**.
 
 ## Tool Comparison: Verified 2025 Specifications
 
