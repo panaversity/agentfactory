@@ -5,7 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "node --localstorage-file=/tmp/docusaurus-localstorage ./node_modules/.bin/docusaurus build",
+    "build": "bash scripts/build.sh",
     "check:jsonld": "node scripts/check-jsonld-ssr.mjs",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
