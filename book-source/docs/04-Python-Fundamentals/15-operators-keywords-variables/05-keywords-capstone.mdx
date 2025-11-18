@@ -287,87 +287,23 @@ print("=" * 50)
 
 ---
 
-## Try With AI: Multi-Operator Calculator Capstone
+## Try With AI
 
-You've learned ALL 4 operator types across this chapter. Now integrate them into one comprehensive calculator—with AI as your integration coach.
+Ready to integrate all 4 operator types into one comprehensive calculator?
 
-### Part 1: Design Integrated Calculator (Your Turn First)
+**🔍 Explore Multi-Operator Integration:**
+> "Show me how arithmetic, comparison, logical, and assignment operators work together. Create a calculator that: (1) performs 7 arithmetic ops (+,-,*,/,//,%,**) on two numbers, (2) uses comparisons to validate result > 0 and < 1000, (3) uses logical operators to check (num1 > 0) and (num2 > 0), (4) uses += to track running total. Explain how each operator type serves a different purpose."
 
-**Before asking AI**, design a calculator that uses ALL operator types:
+**🎯 Practice Comprehensive Validation:**
+> "Build a production-ready calculator with type hints and validation: (1) Check num2 != 0 before division operations, (2) Validate inputs are positive using logical operators, (3) Compare results against expected ranges, (4) Use assignment operators to accumulate totals, (5) Check if proposed variable names avoid Python keywords using keyword.iskeyword(). Show complete code with clear error messages."
 
-**Requirements**:
-1. **Arithmetic**: Perform `+`, `-`, `*`, `/`, `//`, `%`, `**`
-2. **Comparison**: Check if result `> 0`, `< 100`, `== expected_value`
-3. **Logical**: Validate both inputs are positive: `(num1 > 0) and (num2 > 0)`
-4. **Assignment**: Track total with `total += result`
-5. **Keywords**: Use `keyword.iskeyword()` to check if variable names are valid
+**🧪 Test Edge Cases:**
+> "Test this calculator with 4 cases: (1) normal (10, 3), (2) zero divisor (10, 0), (3) negative inputs (-5, -3), (4) large numbers (1000000, 500000). For each test, show: arithmetic results, comparison validations, logical checks, and accumulated total. What breaks? How do we handle division by zero gracefully? Should we allow negative numbers or reject them?"
 
-**Your task**: Sketch the program structure. What variables do you need? What checks should you include? What would be good test cases?
-
-Write your design before coding.
+**🚀 Apply to Your Domain Calculator:**
+> "I need a calculator for [describe your domain: financial calculations, game scoring, data analysis, etc.]. Help me integrate all operator types: (1) domain-specific arithmetic operations, (2) validation ranges using comparisons, (3) multi-condition checks using logical operators, (4) state tracking with assignment operators, (5) keyword validation for user-defined names. Make it robust against bad input."
 
 ---
-
-### Part 2: Build with AI (Collaborative Construction)
-
-Now build it with AI's help:
-
-> "Help me build a comprehensive Python calculator integrating all 4 operator types. Requirements: (1) Two numbers as input, (2) Perform all 7 arithmetic operations, (3) Use comparisons to validate results are reasonable, (4) Use logical operators to check both inputs are positive, (5) Use assignment operators to track running total, (6) Check if variable names avoid Python keywords. Show complete code with type hints and clear output."
-
-**Your task**: Review AI's implementation.
-- Does it demonstrate ALL 4 operator types clearly?
-- Does it use type hints throughout?
-- Is output formatted clearly (f-strings)?
-- Can you explain what EVERY line does?
-
----
-
-### Part 3: Student Teaches AI (Edge Case Hardening)
-
-AI built the calculator. But is it robust against bad input?
-
-Challenge AI with edge cases:
-
-> "What happens if: (1) num2 is 0 (division by zero), (2) Inputs are negative (fails positive check), (3) Someone tries to use 'class' or 'def' as variable name? Add validation that: prevents division by zero, allows negative numbers but warns user, shows clear error for keyword variable names. Make it crash-proof."
-
-**Your task**: Evaluate AI's hardened version.
-- Does it check `num2 != 0` before dividing?
-- Does it handle negative numbers gracefully?
-- Does it use `keyword.iskeyword()` to prevent reserved words?
-- Can you explain WHY each validation prevents a crash?
-
----
-
-### Part 4: Test and Iterate (Convergence)
-
-Now thoroughly test the calculator:
-
-> "Let's test with: (1) Normal case (10, 3), (2) Zero case (10, 0), (3) Negative case (-5, -3), (4) Large numbers (1000000, 500000). For each test, show: all arithmetic results, comparison checks, logical validation, updated total. Identify any bugs or unexpected behavior."
-
-**Your task**: Review test results.
-- Which tests passed?
-- Which revealed bugs?
-- How would you fix the bugs?
-
-Iterate with AI:
-> "The division by zero check doesn't work correctly. Fix it using: `if num2 != 0:` before division operations."
-
-Keep iterating until ALL tests pass.
-
----
-
-### Part 5: Extend with Keywords Knowledge
-
-Final enhancement—integrate keyword checking:
-
-> "Add a feature: user can input a proposed variable name, and the program checks: (1) Is it a Python keyword? (2) Does it start with a number? (3) Does it contain spaces? Use keyword.iskeyword() and string methods. For each check, explain why it would fail."
-
-**Outcome**: If you complete this with working validation, you've mastered Chapter 15 completely—all operators plus keyword awareness at production level.
-
----
-
-**Time**: 35-45 minutes total
-**Outcome**: You've built a comprehensive calculator integrating arithmetic, comparison, logical, and assignment operators; hardened it against edge cases; tested thoroughly; and added keyword validation. This capstone demonstrates mastery of all Chapter 15 concepts.
 
 ---
 

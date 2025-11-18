@@ -240,90 +240,20 @@ This is why using parentheses is smart—even when not required, they make your 
 
 ---
 
-## Try With AI: Access Control Logic Challenge
+## Try With AI
 
-You've learned 3 logical operators (`and`, `or`, `not`). Now build real access control systems to understand how conditions combine—with AI as your logic validator.
+Ready to combine conditions with and, or, and not operators?
 
-### Part 1: Build Access Rules (Your Turn First)
+**🔍 Explore Logical Operator Behavior:**
+> "Explain and, or, and not operators with truth tables. For each operator, show me 3 examples combining boolean values and explain the result. Why does 'True and False' return False but 'True or False' returns True? Include short-circuit evaluation: does 'False and expensive_function()' call the function?"
 
-**Before asking AI**, design access control for a website feature:
+**🎯 Practice Access Control Logic:**
+> "Create access control for premium content. Users can access if: (is_subscriber AND is_active) OR is_admin. Test these 3 cases: (1) subscriber=True, active=True, admin=False, (2) subscriber=False, active=False, admin=True, (3) subscriber=True, active=False, admin=False. Show the step-by-step evaluation. Then compare to this modified rule: (is_subscriber OR is_admin) AND is_active. How do results change?"
 
-**Scenario**: Users can access premium content if:
-- They have a paid subscription AND their account is active
-  OR
-- They are an admin (admins bypass payment requirement)
+**🧪 Test Operator Precedence:**
+> "Compare these two rules for an admin with inactive account (subscriber=False, active=False, admin=True): Rule A: is_subscriber AND is_active OR is_admin, Rule B: (is_subscriber OR is_admin) AND is_active. Which grants access and which denies? Show me how parentheses change the evaluation order. Which rule is more secure for access control?"
 
-**Your task**: Write the logic using variables and predict results:
-
-```python
-# User 1: Regular user
-is_subscriber: bool = True
-is_active: bool = True
-is_admin: bool = False
-# Can access? (Your prediction: _____)
-
-# User 2: Admin
-is_subscriber: bool = False
-is_active: bool = False
-is_admin: bool = True
-# Can access? (Your prediction: _____)
-
-# User 3: Inactive subscriber
-is_subscriber: bool = True
-is_active: bool = False
-is_admin: bool = False
-# Can access? (Your prediction: _____)
-```
-
-Write the access check using `and`/`or` operators. Predict results BEFORE asking AI.
+**🚀 Apply to Your Business Logic:**
+> "I'm building [describe your system]. Help me write multi-condition logic for: user permissions, eligibility checks, validation rules, or workflow conditions. For each rule, combine conditions with and, or, not. Add parentheses to make precedence clear. Explain why each condition is necessary."
 
 ---
-
-### Part 2: Validate Logic with AI
-
-Share your logic with AI:
-
-> "Here's my access control logic: [paste code]. For each of the 3 users, verify if they can access premium content. Explain the evaluation order: does `and` or `or` evaluate first? Show me step-by-step how Python processes the combined condition."
-
-**Your task**: Compare AI's results to your predictions.
-- Did you get the logic right?
-- Do you understand operator precedence (`and` before `or`)?
-- Can you explain WHY User 2 (admin) can access even without subscription?
-
----
-
-### Part 3: Student Teaches AI (Parentheses Matter)
-
-AI validated basic logic. But does it understand how parentheses change evaluation?
-
-Challenge AI with a modified rule:
-
-> "What if the rule changes to: 'User is (subscriber OR admin) AND account is active'? How is this different from 'User is subscriber AND active OR is admin'? Show both versions with parentheses. For User 2 (admin with inactive account), which rule grants access and which denies? Explain the difference."
-
-**Your task**: Study AI's explanation.
-- Does it show that parentheses change the logic completely?
-- Can you trace through BOTH versions step-by-step?
-- Which rule makes more sense for security? Why?
-
-This teaches AI about precedence subtleties—and how to write unambiguous logic.
-
----
-
-### Part 4: Build Multi-Condition Validator Together
-
-Now design complex access rules:
-
-> "Build age + permission checker for a driving license system. User can get license if: (1) Age >= 16, (2) Has passed written test, (3) Has NOT failed road test more than 3 times, (4) Either has parent consent OR age >= 18. Combine all conditions with appropriate logical operators. Use descriptive variable names and type hints."
-
-**Your task**: Review AI's complex logic.
-- Does it use `and`, `or`, and `not` correctly?
-- Does it use parentheses to make precedence clear?
-- Can you explain the logic in plain English?
-
-Iterate:
-> "Add a `not` operator to reverse a condition. For example, check 'is NOT suspended'."
-
----
-
-**Time**: 25-30 minutes total
-**Outcome**: You've built access control systems combining multiple conditions, discovered how parentheses affect evaluation order, and created complex multi-condition validators that combine `and`, `or`, and `not` logically.

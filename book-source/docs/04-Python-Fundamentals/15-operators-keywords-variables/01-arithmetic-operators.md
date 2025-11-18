@@ -319,73 +319,20 @@ result: int = 5 ** 2          # 25 (5 squared)
 
 ---
 
-## Try With AI: Calculator Building Challenge
+## Try With AI
 
-You've learned 7 arithmetic operators. Now build a real calculator to apply them—with AI as your code review partner.
+Ready to apply all 7 arithmetic operators in real calculations?
 
-### Part 1: Build Basic Calculator (Your Turn First)
+**🔍 Explore Operator Behaviors:**
+> "Compare the 7 arithmetic operators (+, -, *, /, //, %, **). For 10 and 3, show me the result of each operation and explain: (1) what type the result is (int or float?), (2) why / returns float but // returns int, (3) when I'd use each operator in real applications. Include type() verification for each result."
 
-**Before asking AI**, write a calculator program that:
+**🎯 Practice Calculator Building:**
+> "Create a calculator program that takes num1 = 10 and num2 = 3, performs all 7 operations, and displays results with f-strings like '10 + 3 = 13'. Add type hints for all variables. Then review my code for: correct operator usage, proper type hints (especially division results), and clear output formatting. Point out any type inconsistencies."
 
-1. Takes two numbers: `num1 = 10` and `num2 = 3`
-2. Performs ALL 7 operations and displays results:
-   - Addition: `num1 + num2`
-   - Subtraction: `num1 - num2`
-   - Multiplication: `num1 * num2`
-   - Division: `num1 / num2`
-   - Floor division: `num1 // num2`
-   - Modulus: `num1 % num2`
-   - Exponentiation: `num1 ** num2`
-3. Uses type hints for all variables
-4. Uses f-strings to display: `"10 + 3 = 13"`
+**🧪 Test Division Edge Cases:**
+> "I'm calculating how many groups of 3 people I can make from 10 people. Compare 10 / 3 vs. 10 // 3. Which is correct for counting groups? Show me: (1) the result and type of each, (2) why one makes sense for counting and the other doesn't, (3) what happens with 10 / 0 vs. 10 // 0. Create code demonstrating the ZeroDivisionError."
 
-Write this yourself. Save as `calculator.py` and run it.
+**🚀 Apply to Your Calculations:**
+> "I need to do these calculations in my project: [describe calculations like splitting items, calculating prices, computing averages, etc.]. For each, recommend which arithmetic operator(s) to use. Add validation to prevent division by zero and explain why some operations need float while others need int results."
 
 ---
-
-### Part 2: AI Reviews Your Calculator
-
-Share your code with AI:
-
-> "Here's my Python calculator: [paste code]. Review it for: (1) Correct use of all 7 arithmetic operators, (2) Proper type hints (are results int or float?), (3) Clear output formatting. What did I do well? What should I improve?"
-
-**Your task**: Read AI's feedback.
-- Did it catch type errors? (`/` returns float, not int!)
-- Did it suggest better f-string formatting?
-- Do you understand WHY each operator produces its result?
-
----
-
-### Part 3: Student Teaches AI (Division Edge Case)
-
-AI reviewed your code. But does it understand the `/` vs `//` distinction deeply?
-
-Challenge AI with a scenario:
-
-> "I'm calculating how many groups of 3 people I can make from 10 people. Should I use `10 / 3` or `10 // 3`? Explain: (1) What each gives, (2) Which one makes sense for counting groups, (3) What type each result is. Show code with type() to verify."
-
-**Your task**: Evaluate AI's explanation.
-- Does it explain that `//` gives whole groups (no partial people!)?
-- Does it show that `/` gives 3.333... which doesn't make sense for counting?
-- Can you now explain when to use `/` vs `//` in your own words?
-
----
-
-### Part 4: Extend Calculator with Validation
-
-Now iterate to add error handling:
-
-> "Extend my calculator to: (1) Check if num2 is zero before dividing, (2) Show an error message instead of crashing, (3) Add a calculation that shows `num1 % num2` only makes sense when num2 != 0. Keep type hints and clear output."
-
-**Your task**: Review AI's enhanced version.
-- Does it prevent division by zero crashes?
-- Does it explain WHY we check for zero?
-- Can you add more validations yourself now?
-
-Iterate if needed:
-> "Explain why `10 / 0` crashes but `10 ** 100` doesn't. What's the difference?"
-
----
-
-**Time**: 25-30 minutes total
-**Outcome**: You've built a complete calculator applying all 7 operators, learned code review with AI, discovered the `/` vs `//` distinction through practical use, and added error handling for edge cases.
