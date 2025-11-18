@@ -271,45 +271,22 @@ export default function SummaryTab({
     );
   }
 
-  // Show summary content
+  // Show summary content - clean format without header, badges, or regenerate button
   return (
     <div
       role="tabpanel"
       id="summary-panel"
       aria-labelledby="summary-tab"
-      className={styles.summaryPanel}
     >
       {(summary || streamingText) && (
         <>
-          <div className={styles.summaryHeader}>
-            <h3 className={styles.summaryTitle}>
-              <span className={styles.summaryIcon}>✨</span>
-              AI-Generated Summary
-            </h3>
-            {isCached && !isGenerating && (
-              <div
-                className={styles.cacheIndicator}
-                title="Loaded from cache - no API call made"
-              >
-                <span className={styles.cacheIcon}>💾</span> Cached
-              </div>
-            )}
-            {isGenerating && (
-              <div className={styles.streamingBadge}>
-                <span className={styles.streamingDot}></span>
-                Streaming...
-              </div>
-            )}
+          <div className="markdown" ref={summaryContainerRef}>
+            <ReactMarkdown>
+              {isGenerating ? streamingText : summary}
+            </ReactMarkdown>
+            {isGenerating && <span className={styles.cursor}>|</span>}
           </div>
-          <div className={styles.summaryContent} ref={summaryContainerRef}>
-            <div className={styles.summaryText}>
-              <ReactMarkdown>
-                {isGenerating ? streamingText : summary}
-              </ReactMarkdown>
-              {isGenerating && <span className={styles.cursor}>|</span>}
-            </div>
-            <div ref={summaryEndRef} />
-          </div>
+          <div ref={summaryEndRef} />
         </>
       )}
     </div>
