@@ -1,6 +1,24 @@
 <!--
 Constitution Evolution Log:
 
+v6.0.1 (PATCH — Meta-Commentary Prohibition) — 2025-11-18
+Rationale: Prevent scaffolding exposure in "Try With AI" sections following Chapter 9 violation
+WHAT CHANGED:
+- Added comprehensive "Meta-Commentary Prohibition" section to Student-Facing Language Protocol
+- Explicit forbidden patterns: "What to notice", "AI is teaching you", "AI learned from you"
+- Added correct pattern template for "Try With AI" sections (5-part active collaboration)
+- Enhanced validation grep patterns to catch meta-commentary
+WHAT'S NEW:
+- Complete "Try With AI" template using action prompts + self-reflection (no framework labels)
+- Distinction between acceptable activity names ("Constraint Teaching") vs forbidden meta-commentary
+- Narrative example guidance: "What emerged" (CORRECT) vs "What AI learned" (WRONG)
+MIGRATION IMPACT: PATCH
+- Content-implementer must use new "Try With AI" template
+- All existing lessons must be validated for meta-commentary patterns
+- Validation-auditor checklist updated with meta-commentary grep checks
+SIZE: ~1180 lines (+80 lines for meta-commentary section)
+Trigger: Chapter 9 redesign exposed Three Roles framework through "What to notice" commentary
+
 v6.0.0 (MAJOR — Reasoning Activation Redesign) — 2025-01-17
 Rationale: Transform constitution from rule-based (prediction mode) to reasoning-based (decision frameworks)
 WHAT CHANGED:
@@ -29,9 +47,9 @@ Previous versions: See v5.0.0 below
 
 # AI Native Software Development Book — Constitution
 
-**Version:** 6.0.0 (MAJOR — Reasoning Activation Redesign)
+**Version:** 6.0.1 (PATCH — Meta-Commentary Prohibition)
 **Ratified:** 2025-01-17
-**Last Amended:** 2025-01-17
+**Last Amended:** 2025-11-18
 **Scope:** Educational content governance (book chapters, lessons, exercises)
 **Audience:** AI Agents (Super-Orchestra, chapter-planner, content-implementer, validation-auditor)
 
@@ -578,7 +596,115 @@ If lacking intelligence library → Continue Stage 3 across more lessons
 
 **Why**: Exposing instructional scaffolding breaks immersion and adds cognitive load without learning value. Students should EXPERIENCE pedagogical design, not STUDY it. Stage labels are like showing movie set scaffolding during the film—it ruins the experience.
 
-**Validation**: Grep student-facing lesson files for `"Stage [0-9]"`, `"Layer [0-9]"`, `"Three Roles (Framework|in Action)"`. Zero matches required.
+**Basic Validation**: Grep student-facing lesson files for `"Stage [0-9]"`, `"Layer [0-9]"`, `"Three Roles (Framework|in Action)"`. Zero matches required.
+
+---
+
+#### CRITICAL: Meta-Commentary Prohibition (Scaffolding Exposure)
+
+**Added**: 2025-11-18 (v6.0.1 amendment following Chapter 9 scaffolding violation)
+
+**Problem**: Meta-commentary that explains the pedagogical framework DURING the learning experience exposes scaffolding and breaks immersion.
+
+**Forbidden Meta-Commentary Patterns**:
+
+❌ **"What to notice" explanations**:
+- "What to notice: AI is teaching you patterns"
+- "What to notice: You taught AI your constraints. AI learned from you."
+- "What to expect: AI validates clarity"
+
+❌ **Explicit framework explanations**:
+- "This is AI as Teacher: AI suggests patterns you didn't know"
+- "This is AI as Student: You teach AI your requirements"
+- "This is AI as Co-Worker: Convergence through iteration"
+
+❌ **"AI learned/knows" meta-commentary**:
+- "AI learned from you: [bullet list]"
+- "AI now knows your priorities"
+- "AI adapted to your domain requirements"
+- "AI is teaching you specification thoroughness"
+
+❌ **Passive Q&A with explanatory commentary**:
+```markdown
+**Prompt 1**: Ask AI to explain X
+**What to notice**: AI teaches you patterns
+
+**Prompt 2**: Tell AI your constraints
+**What to notice**: AI learns from you
+```
+
+**✅ CORRECT: Active Collaboration with Effects (No Labels)**
+
+Use action prompts + self-reflection questions that create the Three Roles EXPERIENCE without exposing the framework:
+
+```markdown
+## Try With AI: [Challenge Name]
+
+**Part 1: Initial Request**
+Ask AI: "[specific prompt]"
+
+**Part 2: Critical Evaluation**
+Review AI's response. Ask yourself:
+- Does this match my requirements?
+- Which suggestions add unnecessary complexity?
+- What assumptions did AI make?
+
+**Part 3: Constraint Teaching**
+Based on your evaluation, tell AI your constraints:
+"[specific constraints]"
+
+**Part 4: Refinement**
+Ask AI to validate: "[validation prompt]"
+
+**Part 5: Final Check**
+Compare your original to the final version:
+- What improved through iteration?
+- What did you add based on AI's suggestions?
+- What did you reject as out-of-scope?
+- Is the result better than your first draft? Why?
+```
+
+**Key Principle**: Students EXPERIENCE bidirectional learning through:
+- Action prompts (what to DO)
+- Self-reflection questions (what to THINK about)
+- Validation checks (how to EVALUATE outcomes)
+
+NOT through:
+- Meta-commentary explaining roles ("AI is teaching you")
+- Framework labels ("Three Roles", "AI as Teacher")
+- Scaffolding exposition ("What to notice")
+
+**Narrative Examples**: When showing collaboration examples in lesson content, focus on WHAT CHANGED, not WHO TAUGHT WHOM:
+
+❌ **WRONG**:
+```markdown
+**What AI learned from you:**
+- MVP constraints
+- Domain requirements
+AI adapted to your priorities.
+```
+
+✅ **CORRECT**:
+```markdown
+**What emerged from iteration:**
+- MVP scope clarified through your feedback
+- Domain requirements specified
+- Edge cases discovered through questioning
+```
+
+**Validation**: Grep student-facing lesson files for:
+```bash
+grep -i "What to notice\|What to expect\|AI.*teach\|AI.*learn\|teach.*AI\|AI as\|AI now knows\|AI adapted" [lesson-files]
+```
+
+**Acceptable matches** (not violations):
+- Section headers describing activities: "Part 3: Constraint Teaching" (activity name, not framework label)
+- Reflection questions: "What did AI assume about your project?" (prompts thinking, not meta-commentary)
+
+**Zero matches required** for:
+- "What to notice", "What to expect" (meta-commentary)
+- "AI is teaching you", "AI learned from you" (framework exposition)
+- "AI as Teacher/Student/Co-Worker" (role labels)
 
 ---
 
