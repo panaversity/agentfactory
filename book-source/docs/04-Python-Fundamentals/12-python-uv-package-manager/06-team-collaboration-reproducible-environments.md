@@ -369,95 +369,21 @@ No environment mismatches. No "works on my machine" problems. Every developer, e
 
 ---
 
-## Try With AI: The Team Sync Challenge
+## Try With AI
 
-### Part 1: Explore Before You Ask (Your Turn First)
+Why do we need both `pyproject.toml` and `uv.lock`, and how do teams stay synchronized?
 
-**Before asking AI**, create a scenario to understand reproducible environments:
+**🔍 Explore Lockfile Differences:**
+> "I added requests to my UV project. Now `pyproject.toml` shows `requests>=2.31.0` but `uv.lock` shows `requests==2.32.1`. Why does pyproject.toml use >= while uv.lock uses ==? What happens if my teammate clones the project without the lockfile? Which files should Git track and why?"
 
-1. Create a new UV project: `uv init team-sync-test`
-2. Add a dependency: `uv add requests`
-3. Examine both `pyproject.toml` and `uv.lock` files in your editor
-4. Note the difference: How are version numbers specified in each file?
+**🧪 Test Team Conflict Scenarios:**
+> "My team hit these problems: Scenario A - I added pandas on my branch, teammate added numpy on theirs, we merged and now uv.lock has Git conflicts. Scenario B - Maria has requests 2.31.0, I have 2.32.1, we need matching versions. Scenario C - Alex cloned the repo but forgot to run uv sync and ran code directly. For each scenario, show me the fix commands, explain why they work, and what breaks if I manually edit uv.lock."
 
-**Your prediction task**: Write down your answers:
-- What do you think happens if you delete `uv.lock` and run `uv sync`?
-- If a teammate clones your project without `uv.lock`, will they get the same versions?
-- Why might two developers end up with different request versions?
+**🎯 Practice Environment Recreation:**
+> "Walk me through the complete workflow: I'm preparing a UV project for my team to clone. What files do I commit? How do I verify the lockfile is current? Then from my teammate's perspective: exact commands to clone, recreate the environment, and verify it worked. What happens if sync fails?"
 
----
-
-### Part 2: AI Explains the Lockfile System (Discovery)
-
-Share your observations with AI:
-
-> "I created a UV project and added requests. Here's what I see:
->
-> In pyproject.toml: `requests>=2.31.0`
-> In uv.lock: `requests==2.32.1`
->
-> Questions:
-> 1. Why does pyproject.toml use >= and uv.lock use ==?
-> 2. What happens if my teammate only gets pyproject.toml without the lockfile?
-> 3. Which file should Git track, and why both?"
-
-**Your evaluation task**:
-- Can you explain to someone else why both files are necessary?
-- What would you tell a new teammate about cloning and setting up the project?
+**🚀 Build Team Onboarding Guide:**
+> "Create a team onboarding checklist for UV projects covering: project maintainer responsibilities (file commits, lockfile verification, README documentation) and new developer steps (cloning, environment setup, verification tests). Add a troubleshooting section with the top 3 mistakes new developers make, showing error messages and fixes for each."
 
 ---
-
-### Part 3: Student Teaches AI (Version Conflict Scenarios)
-
-Challenge AI with realistic team problems:
-
-> "My team has these scenarios. For EACH one, show me:
->
-> **Scenario A**: I added `pandas` on my branch. Teammate added `numpy` on theirs. We merge. Now `uv.lock` has Git conflicts.
->
-> **Scenario B**: Teammate Maria has `requests==2.31.0`. I have `requests==2.32.1`. We need the same version.
->
-> **Scenario C**: New developer Alex clones the repo but forgot to run `uv sync`. They run code directly. What breaks and why?
->
-> For EACH:
-> 1. Show me the exact commands to fix it
-> 2. Explain why this approach works
-> 3. What would happen if I manually edited uv.lock instead?"
-
-**Your debugging task**:
-- Run one of these scenarios in your test project
-- Deliberately create a conflict and use AI's solution to resolve it
-- Identify what surprised you about the resolution process
-
----
-
-### Part 4: Build Team Onboarding Checklist (Convergence)
-
-Create a teammate onboarding guide with AI:
-
-> "Generate a complete team onboarding checklist for UV projects. Include:
->
-> **For the project maintainer** (preparing project):
-> - Which files to commit
-> - How to verify lockfile is current
-> - What to document in README
->
-> **For new team members** (joining project):
-> - Clone steps
-> - Environment recreation (exact commands)
-> - Verification tests to run
-> - What to do if sync fails
->
-> For EACH step:
-> - The command to run
-> - Why it matters (not just what)
-> - How to verify it worked"
-
-**Refinement**:
-> "Add a troubleshooting section: What are the top 3 mistakes new developers make when joining a UV project? For each, show the error message they'll see and the fix."
-
----
-
-**Time**: 25-30 minutes
-**Outcome**: You'll have a reusable team workflow checklist that ensures every new developer can clone and start working in under 5 minutes, with identical environments across the entire team.
 

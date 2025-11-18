@@ -235,70 +235,20 @@ Having the right tools (like UV) means:
 
 UV puts professional tooling in your hands from day one.
 
-## Try With AI: Package Manager Decision Challenge
+## Try With AI
 
-### Part 1: Identify Your Pain Points (Your Turn First)
+Ready to decide which package manager fits your actual projects?
 
-**Before asking AI**, reflect on your experience with Python setup:
+**🔍 Explore Tool Tradeoffs:**
+> "Show me the practical differences between UV, pip, poetry, and conda. For each, explain when it's the best choice and when it's not. What are the deal-breakers that would make me pick one over the others?"
 
-Think about the last time you tried to:
-1. Set up a Python project from scratch
-2. Install a library (like `requests` or `pandas`)
-3. Share code with a classmate or teammate
+**🎯 Practice Tool Selection Decisions:**
+> "I want to start a Python project. Ask me questions about my requirements, team setup, and constraints to help determine whether UV, pip, poetry, or conda is the best fit. Don't let me skip important factors like team experience or legacy dependencies."
 
-**Your reflection task**:
-- Write down 2-3 problems you encountered (confusing commands? slow installation? version conflicts?)
-- If you're brand new to Python: What concerns do you have about managing libraries and environments?
+**🧪 Test Your Decision Framework:**
+> "Here's a scenario: My teammate insists on using poetry because they know it well, but I want to use UV for speed. Analyze the tradeoffs and recommend what we should actually do. Consider team dynamics, learning curve, and project success."
 
----
-
-### Part 2: AI Explains Modern Solutions (Discovery)
-
-Now share your pain points with AI:
-
-> "I've experienced these problems with Python setup: [list your 2-3 issues from Part 1]. How does UV solve each of these problems specifically? Explain using concrete examples."
-
-**Your evaluation task**:
-- Does AI's explanation connect UV's features to YOUR specific problems?
-- Can you now explain to someone else why UV's speed matters for YOUR workflow?
+**🚀 Apply to Your Project:**
+> "I'm starting [describe your actual Python project]. Based on my project type, team situation, and requirements, recommend which package manager to use. Justify your choice with specific reasons tied to my context."
 
 ---
-
-### Part 3: Challenge AI on Tool Selection (Student Teaches AI)
-
-Now test AI's understanding with real-world tradeoffs:
-
-> "You said UV is better than pip/poetry/conda. But what if:
-> 1. My teammate insists we use poetry because they already know it
-> 2. My course instructor requires conda for data science packages
-> 3. I'm working on a legacy project that already uses pip
->
-> For EACH scenario, should I still switch to UV? What are the tradeoffs?"
-
-**Your decision task**:
-- Evaluate AI's advice on when NOT to use UV
-- Can you identify at least one scenario where sticking with an older tool makes sense?
-- What decision criteria emerge from this conversation?
-
----
-
-### Part 4: Build Your Decision Framework (Convergence)
-
-Create a personalized tool selection guide with AI:
-
-> "Let's build a decision tree for MY projects. Help me create a simple guide:
->
-> - **New personal project**: Use _____ because _____
-> - **Team project with no existing setup**: Use _____ because _____
-> - **Data science project**: Use _____ because _____
-> - **Contributing to open source**: Use _____ because _____
->
-> Fill in the blanks based on what we've discussed. Make it specific to my skill level (beginner/intermediate)."
-
-**Refinement if needed**:
-> "This decision tree doesn't account for [specific scenario you care about]. Add that case and explain the reasoning."
-
----
-
-**Time**: 25-30 minutes total
-**Outcome**: You've built a personalized mental model of when to use UV vs. alternatives, grounded in your actual workflow and concerns—not just abstract theory.

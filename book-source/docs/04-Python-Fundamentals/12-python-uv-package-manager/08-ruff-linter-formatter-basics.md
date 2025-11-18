@@ -274,115 +274,21 @@ For now, just know:
 
 ---
 
-## Try With AI: The Code Quality Discovery Challenge
+## Try With AI
 
-### Part 1: Create Messy Code (Your Turn First)
+What's the difference between linting and formatting, and when should you ignore Ruff warnings?
 
-**Before asking AI**, write intentionally bad Python code to understand what Ruff catches:
+**🔍 Explore Linting vs Formatting:**
+> "I ran Ruff on messy Python code with unused imports, inconsistent spacing, and mixed quotes. The output shows error codes like F401, E501 with [*] markers for some. Explain the difference between formatting and linting, what the error code letters mean (F, E, W, I, N), how Ruff knows which errors are auto-fixable, and the difference between `ruff format` vs `ruff check`."
 
-Create a file `messy_code.py` with these problems:
-```python
-import os
-import sys
-import json
+**🧪 Test False Positive Handling:**
+> "Ruff is flagging three scenarios I think are legitimate: a 120-character URL string (E501 line too long), a logging import only used in exception handlers (F401 unused), and intentional mixed quotes for SQL vs Python strings. For each, is it a false positive or valid warning? Show me how to ignore specific rules per-line with `# noqa` and how to configure project-wide exceptions in pyproject.toml. When should I ignore vs fix?"
 
-def calculate(x,y,z):
-    result=x+y+z
-    return result
+**🎯 Practice Code Quality Workflow:**
+> "Create a Ruff workflow for UV projects covering: daily development (when to run format vs check, fixing incrementally, handling disagreements), pre-commit quality gates (command sequence, verification, unfixable errors), and team standards (which error categories to enable, which to ignore for learning projects, using # noqa for exceptions). Include exact commands and expected outputs."
 
-print('hello world')
-```
-
-**Your analysis task**: Before running Ruff, identify issues:
-- List every style problem you notice (spacing, quotes, formatting)
-- List every logic problem (unused imports, unnecessary code)
-- Predict: Which problems will Ruff fix automatically vs just warn about?
+**🚀 Integrate with Zed IDE:**
+> "Show me how to set up Ruff in Zed IDE: run formatting automatically on file save, display Ruff errors inline in the editor instead of just terminal, and use quick-fix commands for auto-fixable errors. What's the optimal workflow—fix in editor or terminal?"
 
 ---
-
-### Part 2: AI Explains Linting Categories (Discovery)
-
-Run Ruff and share results with AI:
-
-> "I installed Ruff and ran it on this code:
-> [paste your messy_code.py]
->
-> When I ran `uv run ruff check .`, I got these errors:
-> [paste the error output]
->
-> Questions:
-> 1. What's the difference between 'formatting' and 'linting'?
-> 2. Why are error codes like F401, E501 important? What do the letters mean?
-> 3. Some errors show [*] (fixable). How does Ruff know which are fixable?
-> 4. If I run `ruff format` vs `ruff check`, what's the difference in what they do?"
-
-**Your evaluation task**:
-- Can you categorize each error as "style" vs "logic" vs "safety"?
-- Which would you fix first if you couldn't fix all at once?
-
----
-
-### Part 3: Student Teaches AI (False Positives)
-
-Challenge AI with legitimate code that Ruff complains about:
-
-> "Ruff is flagging code I think is correct. For EACH scenario:
->
-> **Scenario A**: I have a long URL string that's 120 characters. Ruff says E501 (line too long). Breaking it makes it unreadable. Is this a false positive?
->
-> **Scenario B**: I imported `logging` at the top but only use it in an exception handler. Ruff says F401 (unused). It IS used, but conditionally.
->
-> **Scenario C**: I intentionally used single quotes for SQL strings and double quotes for Python strings. Ruff wants all double quotes. Can I keep my convention?
->
-> For EACH:
-> 1. Is this a false positive or legitimate warning?
-> 2. Show me how to ignore this specific rule (for this line only)
-> 3. Show me how to configure Ruff to allow this pattern project-wide
-> 4. Explain when to ignore vs when to fix"
-
-**Your debugging task**:
-- Actually run Scenario A in your test project
-- Use `# noqa: E501` to ignore the line length warning
-- Verify Ruff stops complaining about that specific line
-
----
-
-### Part 4: Build Code Quality Workflow (Convergence)
-
-Create a pre-commit code quality checklist with AI:
-
-> "Generate a complete Ruff workflow for UV Python projects. Include:
->
-> **Daily development** (as you code):
-> - When to run format vs check
-> - How to fix errors incrementally
-> - What to do when you disagree with Ruff
->
-> **Before committing** (quality gate):
-> - Commands to run in sequence
-> - How to verify no errors remain
-> - Handling unfixable errors
->
-> **Team standards** (configuration):
-> - Which error categories to enable (F, E, W, I, N)
-> - Which to ignore for learning projects
-> - How to document exceptions (# noqa usage)
->
-> For EACH step:
-> - The exact command with flags
-> - Expected output (success vs errors)
-> - How to interpret results (what to fix first)"
-
-**Refinement**:
-> "Show me how to combine Ruff with Zed IDE:
-> 1. Run Ruff automatically on file save
-> 2. Show Ruff errors inline in the editor (not just terminal)
-> 3. Quick-fix command for auto-fixable errors
->
-> What's the optimal workflow: fix in editor or fix in terminal?"
-
----
-
-**Time**: 25-30 minutes
-**Outcome**: You'll understand the difference between style enforcement and bug detection, know when to fix vs ignore errors, and have a reproducible workflow for maintaining code quality throughout development.
 

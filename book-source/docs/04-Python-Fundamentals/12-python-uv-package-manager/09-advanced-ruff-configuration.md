@@ -328,116 +328,21 @@ These are **Lesson 12 topics**. For now, just know: your `pyproject.toml` is the
 
 ---
 
-## Try With AI: The Quality Toolchain Integration Challenge
+## Try With AI
 
-### Part 1: Analyze Your Codebase (Your Turn First)
+How do you configure Ruff for team standards and integrate multiple quality tools without conflicts?
 
-**Before asking AI**, examine your existing code to identify patterns worth enforcing:
+**🔍 Explore Configuration Hierarchy:**
+> "My Python codebase has mixed styles: some files use 88-char lines, others 120; imports aren't sorted consistently; mix of single and double quotes; varying blank lines before functions. Which should I enforce via Ruff config vs leave flexible? Explain the difference between `[tool.ruff]`, `[tool.ruff.lint]`, and `[tool.ruff.format]` sections. How do I choose which rule categories (E, F, B, I, N, D) to enable? Can I have different rules for tests vs production?"
 
-1. Open an existing Python project (or create test files with various styles)
-2. Look for inconsistencies:
-   - Mixed quote styles (single vs double)
-   - Different line lengths
-   - Unsorted imports
-   - Missing or excessive blank lines
+**🧪 Test Tool Conflicts:**
+> "I'm using Ruff, Pyright, and Black together and hitting conflicts: Ruff and Black disagree on line breaking, Pyright catches type errors Ruff doesn't, and Zed's format-on-save sometimes formats twice or not at all. For each conflict, show me the pyproject.toml config to prevent it, explain which tool takes precedence, how to verify they work together, and the proper execution order (format → lint → type-check)."
 
-**Your pattern-recognition task**: Document what you find:
-- Which inconsistencies would confuse a new teammate?
-- Which patterns are team preferences vs objective errors?
-- What would you want enforced automatically vs left flexible?
+**🎯 Build Production Configuration:**
+> "Generate a production-ready `pyproject.toml` integrating Ruff (line length 88, Python 3.13 target, enable E/F/B/I categories, ignore E501, double quotes, space indentation) and Pyright (basic mode, exclude .venv and __pycache__). Ensure no conflicts, configure for Zed LSP integration, and add comments explaining each setting. For each, explain why this value (industry standard, team preference, safety) and how to test it works."
 
----
-
-### Part 2: AI Explains Configuration Strategy (Discovery)
-
-Share your findings with AI:
-
-> "I analyzed my Python codebase and found:
->
-> - Some files use 88-char lines, others use 120
-> - Imports are not sorted consistently
-> - Mix of single and double quotes
-> - Some files have 2 blank lines before functions, others have 1
->
-> Questions:
-> 1. Which of these should I enforce via Ruff config vs leave to developer choice?
-> 2. What's the difference between [tool.ruff], [tool.ruff.lint], and [tool.ruff.format] sections?
-> 3. How do I choose which rule categories (E, F, B, I, N, D) to enable?
-> 4. Can I have different rules for tests vs production code?"
-
-**Your evaluation task**:
-- Can you explain why `line-length = 88` goes in `[tool.ruff]` but `select = ["E", "F"]` goes in `[tool.ruff.lint]`?
-- What's the relationship between enabling category "E" and then ignoring specific rules like "E501"?
-
----
-
-### Part 3: Student Teaches AI (Tool Conflicts)
-
-Challenge AI with realistic multi-tool scenarios:
-
-> "I'm using Ruff, Pyright, and Black together. Here are conflicts I'm seeing:
->
-> **Conflict A**: Ruff and Black disagree on line breaking. Ruff formats one way, Black reformats differently. How do I make them compatible?
->
-> **Conflict B**: Pyright says I have type errors but Ruff doesn't catch them. Are they checking different things? Should both be enabled?
->
-> **Conflict C**: My Zed settings have format-on-save enabled, but when I save, sometimes nothing formats. Other times it formats twice. What's the LSP coordination issue?
->
-> For EACH:
-> 1. Show me the pyproject.toml config that prevents the conflict
-> 2. Explain which tool should take precedence and why
-> 3. Show me how to verify they're working together (test command)
-> 4. What's the proper tool execution order: format → lint → type-check?"
-
-**Your debugging task**:
-- Install Black alongside Ruff: `uv add black --dev`
-- Run both formatters on the same file
-- Compare outputs—do they produce identical results?
-- Use AI's config to make Ruff Black-compatible
-
----
-
-### Part 4: Build Comprehensive Quality Configuration (Convergence)
-
-Create a complete quality toolchain config with AI:
-
-> "Generate a production-ready pyproject.toml configuration integrating:
->
-> **Ruff settings**:
-> - Line length: 88 characters
-> - Python target: 3.13
-> - Enable: style (E), safety (F), bugs (B), import sorting (I)
-> - Ignore: E501 (line too long, since we set explicit length)
-> - Format: double quotes, space indentation
->
-> **Pyright settings** (preview for Lesson 10):
-> - Type checking mode: basic
-> - Exclude: .venv, __pycache__
->
-> **Tool coordination**:
-> - Ensure Ruff and Pyright don't conflict
-> - Configure for Zed LSP integration
-> - Add comments explaining each section
->
-> For EACH setting:
-> - The TOML structure
-> - Why this value (industry standard, team preference, or safety)
-> - How to verify it works (command to test)"
-
-**Refinement**:
-> "Now generate the matching Zed settings.json that:
-> 1. Uses Ruff for formatting (format-on-save enabled)
-> 2. Shows Ruff diagnostics inline
-> 3. Shows Pyright type errors inline
-> 4. Excludes .venv from file watching
-> 5. Sets Python-specific tab width to 4 spaces
->
-> Include both user-level settings (apply to all projects) and workspace settings (this project only)."
-
----
-
-**Time**: 30-35 minutes
-**Outcome**: You'll have a professional-grade quality toolchain with Ruff + Pyright integration, proper configuration hierarchy, and IDE integration that catches errors in real-time while maintaining team code standards.
+**🚀 Configure IDE Integration:**
+> "Create matching Zed `settings.json` that uses Ruff for formatting with format-on-save enabled, shows Ruff diagnostics and Pyright type errors inline, excludes .venv from file watching, and sets Python tab width to 4 spaces. Include both user-level settings (all projects) and workspace settings (project-specific)."
 
 ---
 

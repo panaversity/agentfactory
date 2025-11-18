@@ -325,104 +325,20 @@ A: No. Add it to `.gitignore`. Your teammates install their own .venv/ by runnin
 - You express intent to AI; AI handles the commands
 - Specification (pyproject.toml) and installation (.venv/) are separate concepts
 
-## Try With AI: Project Structure Discovery Challenge
+## Try With AI
 
-### Part 1: Explore Project Files (Your Turn First)
+What does `uv init` create, and how do virtual environments prevent dependency conflicts?
 
-**After running `uv init my-project`**, explore what was created:
+**🔍 Explore Project Structure:**
+> "I just ran `uv init my-project`. Explain what each generated file does: `pyproject.toml`, `.venv/`, `.python-version`, `README.md`, and `hello.py`. Compare this to legacy Python projects using `requirements.txt` or `setup.py`. What makes this approach modern?"
 
-**Your exploration task**:
-1. List ALL files and folders created (including hidden ones like `.venv/`)
-2. For EACH file/folder, predict its purpose:
-   - `pyproject.toml`: ?
-   - `.venv/`: ?
-   - `.python-version`: ?
-   - `README.md`: ?
-   - `hello.py`: ?
-3. Compare to old Python projects (if you've seen `requirements.txt` or `setup.py`): What's different?
+**🧪 Test Dependency Isolation:**
+> "I have two projects on the same machine: Project A needs pandas 2.0.0, Project B needs pandas 1.5.0. Explain what happens if I install globally without virtual environments. Then show how each project's `.venv/` solves this conflict and how I verify they're truly isolated."
 
-Document your predictions BEFORE asking AI.
+**💡 Understand Environment Recovery:**
+> "If I accidentally delete my `.venv/` folder, what happens? Walk me through detecting the problem, recreating the environment with exact package versions using `uv.lock`, and explain what would differ without the lockfile."
+
+**🚀 Create Project Setup Workflow:**
+> "Build a checklist for starting new Python projects and joining existing ones. For new projects: cover creation, verification, dependency setup, and git integration. For existing projects: cover cloning and environment sync. Make each step actionable with specific commands."
 
 ---
-
-### Part 2: AI Explains Modern Project Structure (Discovery)
-
-Share your findings with AI:
-
-> "I created a UV project and found these files: [list from Part 1]
->
-> Here's what I think each does: [your predictions]
->
-> Questions:
-> 1. Are my predictions correct?
-> 2. Why does `.venv/` exist? (What's a virtual environment?)
-> 3. Why `pyproject.toml` instead of `requirements.txt`?
-> 4. The `.venv/` folder is HUGE (100+ MB). What's in there?
-> 5. Can I delete `.venv/` and recreate it? How?"
-
-**Your evaluation task**:
-- Does AI explain isolation (why each project needs its own environment)?
-- Can you now explain to someone: "What problem do virtual environments solve?"
-- Try this: Delete `.venv/`, run `uv sync`. What happens?
-
----
-
-### Part 3: Student Teaches AI (Dependency Conflicts)
-
-Challenge AI with realistic project scenarios:
-
-> "I'm building TWO projects on the same machine:
->
-> **Project A** (data analysis):
-> - Needs `pandas==2.0.0`
-> - Needs `numpy==1.24.0`
->
-> **Project B** (web scraping):
-> - Needs `pandas==1.5.0`
-> - Needs `requests==2.31.0`
->
-> **Problem**: Both need DIFFERENT versions of pandas!
->
-> For this scenario:
-> 1. Show me what happens if I DON'T use virtual environments (install globally)
-> 2. Explain how `.venv/` solves this (each project gets isolated pandas)
-> 3. Demonstrate: If I have both projects, how do I switch between them?
->
-> **Bonus Challenge**: What if Project A's numpy requirement CONFLICTS with Project B's pandas requirement (transitive dependency issue)? How does `uv.lock` help?"
-
-**Your debugging task**:
-- Create two UV projects with different dependency versions
-- Activate each `.venv/` and verify they're isolated
-- Run `pip list` in each—do they show different packages?
-
----
-
-### Part 4: Build Project Template Workflow (Convergence)
-
-Create a reusable project setup checklist with AI:
-
-> "Let's design a project initialization workflow I can use for EVERY new Python project:
->
-> **Workflow Steps**:
-> 1. Create project: `uv init <name>`
-> 2. Verify structure (check for pyproject.toml, .venv, etc.)
-> 3. Configure Python version (how do I specify Python 3.13?)
-> 4. Add initial dependencies (requests? pytest?)
-> 5. Create `.gitignore` (what should I exclude? `.venv/`?)
-> 6. Initialize git repo
-> 7. Write first test to verify setup works
->
-> For EACH step, give me:
-> - The exact command
-> - Why it matters
-> - What to verify afterward
->
-> Make this a copy-paste checklist I can reuse."
-
-**Refinement**:
-> "This workflow assumes I'm starting fresh. What if I'm joining an EXISTING UV project? Show me the `git clone` → `uv sync` → verify workflow."
-
----
-
-**Time**: 25-30 minutes total
-**Outcome**: You've mastered UV project structure, understand virtual environment isolation through hands-on experimentation, and built a reusable initialization workflow—not just "run this command."
