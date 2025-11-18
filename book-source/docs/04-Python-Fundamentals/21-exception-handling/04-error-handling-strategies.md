@@ -552,114 +552,23 @@ This systematic thinking transforms error handling from "catch and hope" to "ant
 
 ---
 
-## Try With AI: The Error Strategy Decision Challenge
+## Try With AI
 
-### Part 1: Analyze Real-World Errors (Your Turn First)
+Master strategic error handling through decision frameworks for production systems.
 
-**Before asking AI**, examine this production scenario and categorize errors:
+**🔍 Explore Strategy Selection:**
+> "Explain the four error handling strategies: retry (transient errors), fallback (use defaults), graceful degradation (feature unavailable, core works), and fail-fast (unrecoverable). Show weather app examples for API fetch (critical), cached history (optional), location upload (background), and profile picture (UI)."
 
-You're building a weather app with these operations:
-1. Fetch current temperature from API (critical feature)
-2. Load cached weather history from local file (nice to have)
-3. Upload user's location preferences to server (background task)
-4. Download user's profile picture (UI enhancement)
+**🎯 Practice Error Classification:**
+> "I have a weather app with 4 operations. For each, identify: what errors occur (API timeout, file missing, network failure), are they transient or permanent, which strategy fits best, and what to log. Walk me through decision criteria for each operation."
 
-**Your analysis task**: For EACH operation, predict:
-- What errors could occur? (list 2-3 per operation)
-- Is each error transient (temporary) or permanent?
-- Which error handling strategy fits: retry, fallback, degradation, or fail-fast?
-- What should you log when the error happens?
+**🧪 Test Strategy Edge Cases:**
+> "Analyze three scenarios: (A) Database connection retry with exponential backoff, (B) Corrupted image upload retry, (C) Silent fallback for corrupted JSON preferences. For each, critique my strategy choice and explain when retry vs fail-fast vs fallback is appropriate."
 
-Document your predictions in `error_strategy_analysis.txt` before continuing.
+**🚀 Apply Production Decision Framework:**
+> "Build `error_strategies.py` with four decorator functions: `@retry_on_failure(max_attempts=3, backoff=exponential)`, `@fallback_on_error(default_value=None)`, `@degrade_gracefully(feature_name)`, and `@log_errors(log_level)`. Include decision tree for error classification (transient vs permanent, critical vs non-critical) and logging best practices."
 
 ---
-
-### Part 2: AI Explains Strategy Selection (Discovery)
-
-Share your analysis with AI:
-
-> "I analyzed a weather app with 4 operations and predicted error types:
->
-> [paste your analysis from Part 1]
->
-> Questions:
-> 1. For temperature API fetch (critical), you said retry. But what if the API is down for maintenance? When do I give up?
-> 2. For cached history (non-critical), you said fallback. What's a sensible fallback when history file is missing?
-> 3. For location upload (background), you said degradation. What does 'graceful degradation' mean here—does the app still work?
-> 4. How do I decide between retry (keeps trying) and fallback (gives up, uses default) when an error could be either transient or permanent?"
-
-**Your evaluation task**:
-- Can you explain the tradeoffs between retry (keeps trying) and fallback (gives up, uses default)?
-- Which strategy preserves the best user experience for critical vs non-critical features?
-
----
-
-### Part 3: Student Teaches AI (Edge Case Strategies)
-
-Challenge AI with complex error scenarios:
-
-> "I have these error scenarios. For EACH, tell me if my strategy is correct or wrong:
->
-> **Scenario A**: Database connection fails. I retry 3 times with exponential backoff. On 4th failure, I show user "Service unavailable, try again later" and log the error. **Is this correct?**
->
-> **Scenario B**: User uploads profile picture, but image file is corrupted (invalid format). I retry 3 times. **Is retry appropriate here, or should I use a different strategy?**
->
-> **Scenario C**: Loading user preferences from JSON file. File is corrupted (JSONDecodeError). I fallback to system defaults silently without telling user. **Is silent fallback acceptable?**
->
-> For EACH:
-> 1. Is my strategy correct? If not, what's better?
-> 2. What should I log in each case?
-> 3. What should the user see (error message, fallback behavior)?
-> 4. Would this strategy work in production? What would break?"
-
-**Your debugging task**:
-- Implement Scenario B in code with your proposed strategy
-- Test it with a corrupted file
-- Verify your strategy produces sensible behavior
-
----
-
-### Part 4: Build Error Strategy Decision Tree (Convergence)
-
-Create a reusable decision framework with AI:
-
-> "Generate a complete error handling decision tree for production systems. Include:
->
-> **For error classification**:
-> - How to identify transient vs permanent errors (symptoms of each)
-> - How to identify critical vs non-critical operations
-> - Examples of each category
->
-> **For strategy selection**:
-> - When to retry (conditions, max attempts, backoff strategy)
-> - When to fallback (acceptable defaults, user notification)
-> - When to degrade gracefully (feature unavailable, core continues)
-> - When to fail-fast (unrecoverable, stop immediately)
->
-> **For logging**:
-> - What to log for each strategy (context, timestamps, user ID)
-> - Log levels (ERROR, WARN, INFO) for each scenario
-> - What NOT to log (sensitive data)
->
-> For EACH branch:
-> - Decision criteria
-> - Code pattern (retry loop, fallback template)
-> - User experience impact
-> - Example scenario"
-
-**Refinement**:
-> "Now create a Python module `error_strategies.py` with 4 reusable decorator functions:
-> 1. `@retry_on_failure(max_attempts=3, backoff=exponential)`
-> 2. `@fallback_on_error(default_value=None)`
-> 3. `@degrade_gracefully(feature_name='...')`
-> 4. `@log_errors(log_level='ERROR')`
->
-> Show me how to apply each decorator to real functions and test them."
-
----
-
-**Time**: 40-50 minutes
-**Outcome**: You'll have a systematic decision framework for choosing error handling strategies, understand tradeoffs between retry/fallback/degradation, and have reusable decorator patterns for production error handling.
 
 **Safety and Responsible Error Handling**
 
