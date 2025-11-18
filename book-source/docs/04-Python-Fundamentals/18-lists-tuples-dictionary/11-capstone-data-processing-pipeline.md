@@ -771,7 +771,7 @@ Challenge AI with production edge cases:
 Now add complex features with AI:
 
 > "Extend the pipeline with:
-> 1. Multi-category aggregation (revenue by category AND by price bracket: <$100, $100-$500, $500+)
+> 1. Multi-category aggregation (revenue by category AND by price bracket: &lt;$100, $100-$500, $500+)
 > 2. Top 3 products by total revenue (sort list of dicts)
 > 3. Summary statistics (total products, total revenue, avg price)
 > 4. Formatted output table with aligned columns
