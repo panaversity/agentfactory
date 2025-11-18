@@ -629,31 +629,41 @@ This improves usability by allowing data to be opened in Excel, Google Sheets, o
 
 ### Self-Validation Checklist
 
-After you write your spec, verify using the quality checklist from Part 3:
+After you write your spec, validate against the **Quality Checklist for Specifications** from the Quality Awareness section above:
 
-**Quality Validation:**
-- ✅ **Clear Intent?** Not "export data" but WHY this matters (user value, business need)
-- ✅ **Testable Success Criteria?** Each measurable (avoid "works correctly", "handles properly")
-- ✅ **Explicit Constraints?** Edge cases addressed (errors, empty data, special characters)
-- ✅ **Prevents Scope Creep?** Non-goals explicitly defer features to v2
-- ✅ **No Ambiguity?** Two developers could implement independently with identical behavior
+**Use These 5 Quality Questions:**
+1. ✅ **Clear Intent?** (Section: Quality Awareness → Quality Checklist #1) — Can someone unfamiliar with the project understand the purpose in 30 seconds?
+2. ✅ **Testable Success Criteria?** (Section: Quality Awareness → Quality Checklist #2) — Could you write a pytest test that verifies each criterion?
+3. ✅ **Explicit Constraints?** (Section: Quality Awareness → Quality Checklist #3) — Are all edge cases and "what if...?" questions answered?
+4. ✅ **Prevents Scope Creep?** (Section: Quality Awareness → Quality Checklist #4) — Can you point to Non-Goals and defer future features?
+5. ✅ **No Ambiguity?** (Section: Quality Awareness → Quality Checklist #5) — Could two developers implement this independently with identical behavior?
 
 **Common Pitfalls to Avoid:**
+Reference the pitfalls from Quality Awareness section:
 - ❌ Vague language ("save properly" → "save to JSON with UTF-8 encoding")
 - ❌ Missing edge cases ("export data" → "handle empty lists, special characters")
 - ❌ Over-specification (don't specify algorithm, specify intent)
+- ❌ Conflating spec with implementation (WHAT, not HOW)
+- ❌ Forgetting why (include rationale for constraints)
 
-**If any answer is "no"**, rewrite that section using the good spec vs bad spec examples from Part 3.
+**Validation Protocol**: For each criterion that's vague or missing, rewrite using the good spec vs bad spec examples from the **Good Specs vs Bad Specs Comparison** section (Quality Awareness → Part 3).
 
 #### 🤝 Practice Exercise
 
 **Exercise 1 (10-15 minutes)**: Write your spec for CSV exporter using the structure above.
 
-**Exercise 2 (5 minutes)**: Review your spec against the checklist. Rewrite any sections that are vague.
+**Exercise 2 (5 minutes)**: Review your spec against the Self-Validation Checklist above. Rewrite any sections that are vague or unclear.
 
 **Exercise 3 (Reflection)**: Compare your spec to the configuration file manager example earlier. What did you do well? What could be clearer?
 
-**Exercise 4 (Quality Check)**: Review your CSV exporter spec against the quality checklist. For each criterion that's vague or missing, rewrite using the patterns from Part 3.
+**Exercise 4 (Quality Checklist Validation)**: Use the **5 Quality Questions** from the Self-Validation Checklist to validate your CSV exporter spec:
+   - Does it answer "Clear Intent?" clearly and concisely?
+   - Are all Success Criteria testable (could you write pytest tests)?
+   - Are Constraints explicit with edge cases covered (empty lists, special characters)?
+   - Does Non-Goals section prevent scope creep?
+   - Is there any ambiguity? Could another developer implement identically?
+
+   For each criterion that fails, rewrite using the **Good Specs vs Bad Specs** patterns from Quality Awareness section.
 
 ---
 

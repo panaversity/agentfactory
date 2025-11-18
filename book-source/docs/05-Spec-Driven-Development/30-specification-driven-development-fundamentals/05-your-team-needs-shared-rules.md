@@ -58,6 +58,23 @@ Every developer reads this before writing code. Every AI agent follows these rul
 
 ---
 
+### Constitutions Enforce Quality at Scale
+
+Beyond consistency, Constitutions ensure **every spec meets minimum quality standards**.
+
+**Without Constitution**: Each developer decides what "good spec" means
+- Some specs define edge cases, others don't
+- Some specify error handling, others assume happy path
+- Quality varies across team (inconsistent, unpredictable)
+
+**With Constitution**: Global quality rules apply to ALL specs
+- "All API specs MUST define error response format"
+- "All authentication specs MUST specify token expiry and rotation policy"
+- "All data validation specs MUST list edge cases and rejection responses"
+- Quality becomes predictable and measurable
+
+---
+
 ## What Goes in a Memory Bank / Constitution?
 
 ### 1. Product Vision
@@ -106,13 +123,20 @@ Deployment: Docker + Kubernetes
 ### 5. Quality Standards
 
 ```
+CODE QUALITY:
 - Minimum test coverage: 80% per file
 - All functions have docstrings
 - All code formatted with Black (automatic)
 - Type hints on all functions (mypy strict mode)
+
+SPECIFICATION QUALITY (prevents quality gaps):
+- All API specs MUST define error response format (not just happy path)
+- All authentication specs MUST specify token expiry and rotation
+- All data validation specs MUST document edge cases and rejections
+- All feature specs MUST list non-functional requirements (performance, security)
 ```
 
-**Why**: Quality is measurable. CI enforces it.
+**Why**: Quality is measurable at both spec AND code level. Bugs prevented at spec time, not caught in testing.
 
 ### 6. Common Patterns and Anti-Patterns
 
@@ -168,6 +192,38 @@ Code is generated. It automatically:
 
 Reviewer checks: "Does code follow Constitution?"
 Always yes, because Constitution was enforced in step 1-3.
+
+---
+
+### Encoding Lessons Learned: Bug → Rule
+
+But Constitutions aren't written once and then forgotten. They evolve as your team learns.
+
+**Pattern**: Production bug discovered → Root cause: vague specification → Add constitutional rule → Future specs prevent the same bug
+
+**Example: The Forgotten Token Expiry**
+
+```
+INCIDENT: Leaked password reset token doesn't expire
+  Users found: Reset tokens from weeks ago still work (critical security gap)
+
+ROOT CAUSE: Original spec didn't specify token lifetime
+  Spec said: "Create password reset token"
+  Never said: "Token expires after X minutes"
+
+CONSEQUENCE: Generated code has no expiry logic. Tests don't check expiry.
+
+CONSTITUTIONAL FIX:
++ Add to Constitution, under Authentication:
+  "All temporary access tokens (password reset, email verification, etc.)
+   MUST specify time-based expiry. Default: 30 minutes unless otherwise justified."
+
+RESULT: Future password reset specs automatically include token expiry.
+         Generated code includes expiry logic.
+         Team learns from mistake: quality rule prevents recurrence.
+```
+
+This is **organizational learning**. Your team encounters a gap once, encodes it as a rule, and prevents that gap from happening again in 50 other features across 10 teams.
 
 ---
 
@@ -347,11 +403,20 @@ Don't write an ADR for:
    - Constitution enforces quality across all specs
    - No conflict: they work together
 
-#### 🤝 Practice Exercise
+#### 🤝 Practice Exercise: Encode Quality Rules
 
-> **Ask your AI**: "Help me draft a Constitution for a [describe your domain: e-commerce, fintech, healthcare, etc.] application. What security rules should apply to every feature? What architecture patterns should be mandatory? What quality standards should be non-negotiable?"
+> **Ask your AI**: "Help me draft a Constitution for a [describe your domain: e-commerce, fintech, healthcare, etc.] application. What security rules should apply to every feature? What architecture patterns should be mandatory? **What quality gaps has our team experienced repeatedly?** What specification quality rules would prevent those gaps?"
 
-**Expected Outcome**: Your AI will suggest domain-specific constitutional rules (e.g., PCI-DSS for payments, HIPAA for healthcare, GDPR for EU data) and help you think through non-negotiable standards before building individual features.
+**Two-part exercise**:
+
+1. **Domain-Specific Rules**: Ask AI to suggest security (PCI-DSS for payments, HIPAA for healthcare, GDPR for EU data) and architecture rules.
+
+2. **Quality-at-Scale Rules**: Ask AI to help you identify and encode specification quality standards:
+   - "What should every API spec specify?" (error handling, status codes, rate limits)
+   - "What should every authentication spec require?" (token expiry, refresh rotation, session management)
+   - "What should every data validation spec include?" (edge cases, rejection responses, format validation)
+
+**Expected Outcome**: Constitution that prevents common quality gaps before they become production bugs. Your team learns from past mistakes by encoding them as rules.
 
 ---
 
@@ -360,6 +425,24 @@ Don't write an ADR for:
 They write down the rules (Constitution / Memory Bank). Everyone follows them. Consistency emerges.
 
 This is how teams scale without chaos.
+
+---
+
+## What Happens Next: From Patterns to Reusable Intelligence
+
+You now understand how Constitutions enforce quality across team specs. But you're noticing something:
+
+**The same patterns repeat**:
+- Every API spec defines endpoints, error handling, authentication
+- Every authentication spec specifies tokens, expiry, rotation
+- Every data validation spec documents edge cases, rejections
+- Every feature spec includes the same quality checklists
+
+**Question**: If the same patterns show up in 30 different specs, could those patterns become **reusable**?
+
+**Lesson 6 introduces Reusable Intelligence (RI)**—where specification patterns become Skills and Subagents that your team and AI agents use to write better specs faster.
+
+Constitution + Reusable Intelligence = Teams that scale without losing quality.
 
 ---
 

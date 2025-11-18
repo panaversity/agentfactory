@@ -232,6 +232,103 @@ Now create a calc/spec.md file and document the complete specification there. Al
 6. **Unambiguous:** No room for interpretation (e.g., "division always returns float")
 ```
 
+## Part 4a: Quality Iteration (Validate and Refine)
+
+You've drafted a spec collaboratively. Now comes the critical step: **validating your spec against quality standards** before you ask AI to implement.
+
+Remember the quality checklist from Lesson 3? Use it now.
+
+### Step 1: Apply the Quality Checklist
+
+Review your calculator spec against these criteria:
+
+```
+✅ Clear Intent?
+   - Does the spec explain what the calculator is for?
+   - Do user stories explain "why," not just "what"?
+
+✅ Testable Success Criteria?
+   - Can you write tests that prove success?
+   - Are acceptance criteria specific (examples, not vague descriptions)?
+
+✅ Explicit Constraints?
+   - What types can operations accept? (int, float, both?)
+   - What about very large numbers? Negative numbers?
+   - What operations return float vs int?
+
+✅ Edge Cases Covered?
+   - What about division by zero? 0 + 0? 0.1 + 0.2?
+   - How do you handle type preservation across operations?
+   - What happens with invalid inputs?
+
+✅ No Implementation Details?
+   - Does your spec avoid prescribing HOW to build it?
+   - Could a different AI implement it and still be correct?
+```
+
+### Step 2: Identify Vagueness (AI as Co-Reviewer)
+
+Ask your companion:
+
+```
+Review my calculator spec for ambiguities:
+
+[Paste your current spec.md here]
+
+Which parts are unclear?
+- Operations: Do you know exactly which operations to implement?
+- Input handling: Do you know what types are acceptable?
+- Output: Do you know what type each operation returns?
+- Error handling: Do you know exactly what to do with division by zero?
+- Edge cases: Are all boundary conditions explicit?
+
+For each ambiguity, explain what assumptions you would make if it's not specified.
+```
+
+Your companion identifies gaps (like "spec doesn't say if 1 + 1.0 returns int or float").
+
+### Step 3: Refine (You as Teacher)
+
+For each gap your companion identified, refine your spec with explicit answers:
+
+**Before (vague)**:
+```
+Operations: Addition, subtraction, multiplication, division
+Error handling: Handle errors gracefully
+```
+
+**After (explicit)**:
+```
+Operations:
+- add(a, b): Returns int | float (preserves input types)
+- subtract(a, b): Returns int | float (preserves input types)
+- multiply(a, b): Returns int | float (preserves input types)
+- divide(a, b): Always returns float (consistency over type preservation)
+
+Error handling:
+- Division by zero: Raises ZeroDivisionError with message "Cannot divide by zero"
+- Invalid types: Type hints expected; runtime validation not required
+```
+
+### Step 4: Validate Together (Convergence)
+
+Ask your companion:
+
+```
+I've updated my spec. Before you implement, tell me:
+- Can you understand each operation's exact behavior?
+- Are there any remaining ambiguities?
+- What assumptions are you NOT making because the spec is explicit?
+
+[Paste refined spec]
+```
+
+**This convergence loop is crucial:** AI validates your spec clarity without implementing yet. Both of you improve the specification together.
+
+**Key insight:** A good spec should make AI's implementation obvious and correct, not require the AI to guess or ask questions during coding.
+
+---
+
 ## Part 5: Test Your Specification (Co-Learning in Action)
 
 Now comes the crucial moment. Ask your companion:
@@ -337,7 +434,14 @@ This is **AI-native specification development** in action:
 
 ### Reflection: The Co-Learning Pattern
 
-Notice what just happened across the three scenarios:
+Notice what just happened across all steps:
+
+**Quality Iteration (Parts 1-4a):**
+- You drafted spec with AI (user stories, acceptance criteria, edge cases)
+- AI identified ambiguities: "Does 1 + 1.0 return int or float?"
+- You taught AI: "Division always returns float for consistency"
+- Together, you refined spec before any code was written
+- **This is convergence at the specification level—neither perfect alone, both better together**
 
 **AI as Teacher** (Scenario 2):
 - AI suggested runtime type validation pattern you hadn't considered
@@ -350,11 +454,13 @@ Notice what just happened across the three scenarios:
 - AI learned your constraint and regenerated correctly
 
 **Convergence Together** (All scenarios):
-- Draft spec → Code generation → Validation → Gaps revealed → Spec refinement → Regeneration
+- Draft spec → Quality check → Identify gaps → Refine with AI → Code generation → Validation → Remaining gaps revealed → Spec refinement → Regeneration
 - Neither human nor AI could have written the perfect spec alone
 - Iteration produced production-ready specification
 
 This is **bidirectional learning**—both human and AI improve through collaboration. You bring domain knowledge and intent; AI brings systematic thinking and edge case discovery. Together, you create specifications that neither could write independently.
+
+**The quality iteration step (Part 4a) is where this truly shines:** You didn't just generate code and hope for the best. You validated your spec against quality criteria first. AI helped identify vagueness. You taught it your constraints. Only then did you ask for code.
 
 **This pattern is the foundation of AI-native software development.**
 
