@@ -34,44 +34,6 @@ export default function SummaryTab({
   const generatingRef = useRef(false);
   const summaryContainerRef = useRef<HTMLDivElement>(null);
 
-  // Format summary text with better structure
-  const formatSummaryText = (text: string): string => {
-    if (!text) return text;
-    
-    // Split into lines for processing
-    const lines = text.split('\n');
-    const formatted: string[] = [];
-    
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i].trim();
-      
-      // Skip empty lines but preserve paragraph breaks
-      if (!line) {
-        if (formatted.length > 0 && formatted[formatted.length - 1] !== '') {
-          formatted.push('');
-        }
-        continue;
-      }
-      
-      // Detect heading patterns (short lines at start or after empty line)
-      const isHeading = (
-        line.length < 50 && // Short line
-        line.length > 3 &&  // Not too short
-        !line.endsWith('.') && // Doesn't end with period
-        !line.endsWith(',') && // Doesn't end with comma
-        (i === 0 || !lines[i - 1].trim()) // First line or after empty line
-      );
-      
-      if (isHeading) {
-        formatted.push(`◆ ${line}`); // Add marker for visual emphasis
-      } else {
-        formatted.push(line);
-      }
-    }
-    
-    return formatted.join('\n');
-  };
-
   // Check authentication on mount
   useEffect(() => {
     const authenticated = authService.isAuthenticated();
@@ -150,7 +112,7 @@ export default function SummaryTab({
             setIsLoading(false);
           }
 
-          // Progressive text append and normalize whitespace aggressively
+          // Progressive text append and normalize whitespace
           accumulatedSummary += chunk;
           const normalized = accumulatedSummary
             .replace(/\n{2,}/g, '\n\n')      // Collapse any multiple newlines to exactly 2
@@ -158,8 +120,7 @@ export default function SummaryTab({
             .replace(/\s+$/g, '')             // Remove trailing whitespace
             .trim();
           
-          const formatted = formatSummaryText(normalized);
-          setStreamingText(formatted);
+          setStreamingText(normalized);
         },
         () => {
           // On completion - normalize and cache the final summary
@@ -167,11 +128,9 @@ export default function SummaryTab({
             .replace(/\n{2,}/g, '\n\n')
             .trim();
           
-          const formatted = formatSummaryText(finalSummary);
-          
           setIsLoading(false);
           setIsGenerating(false);
-          setSummary(formatted);
+          setSummary(finalSummary);
           setStreamingText("");
           generatingRef.current = false;
 
@@ -179,7 +138,7 @@ export default function SummaryTab({
           const cacheKey = `summary_${pageId}`;
           const cacheEntry: SummaryCacheEntry = {
             pageId,
-            summary: formatted,
+            summary: finalSummary,
             timestamp: Date.now(),
           };
           cacheService.set(cacheKey, cacheEntry);
