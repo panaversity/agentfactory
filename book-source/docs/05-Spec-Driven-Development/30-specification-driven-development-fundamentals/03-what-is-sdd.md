@@ -306,6 +306,206 @@ Python applications need a way to save and load user settings (log level, output
 
 ---
 
+## Part 3: Quality Awareness — Good Specs vs Bad Specs
+
+You've seen what a good specification looks like. But how do you recognize a **bad spec**—and more importantly, how do you fix it?
+
+Quality isn't about length or formality. It's about **clarity, testability, and completeness**.
+
+### Good Spec vs Bad Spec Comparison
+
+**❌ Bad Spec (Vague Intent)**:
+```
+Make the system fast
+```
+
+**Problem**: "Fast" is subjective. Fast for what? How fast? Measured how?
+
+**✅ Good Spec (Clear Intent)**:
+```
+API response time must be <200ms for 95th percentile of requests under normal load (1000 req/sec)
+```
+
+**Why better**: Measurable (200ms), specific percentile (95th), defined load (1000 req/sec).
+
+---
+
+**❌ Bad Spec (Untestable Success Criteria)**:
+```
+UI should look good and be user-friendly
+```
+
+**Problem**: "Look good" and "user-friendly" are opinions, not testable criteria.
+
+**✅ Good Spec (Testable Success Criteria)**:
+```
+- All buttons have 8px padding and use primary color #007bff
+- Font size is 16px minimum for body text (WCAG AA compliance)
+- All interactive elements have 44x44px touch targets (mobile accessibility)
+```
+
+**Why better**: Concrete measurements (8px, 16px, 44x44px), verifiable (color code, WCAG standard).
+
+---
+
+**❌ Bad Spec (Missing Constraints)**:
+```
+Save user data to file
+```
+
+**Problem**: What format? What encoding? What happens if file exists? If disk is full?
+
+**✅ Good Spec (Explicit Constraints)**:
+```
+- File format: JSON (UTF-8 encoding)
+- If file exists: Overwrite with new data
+- If disk full: Raise OSError with clear message
+- File path: Relative paths resolved from current working directory
+```
+
+**Why better**: No ambiguity. Every edge case addressed.
+
+---
+
+**❌ Bad Spec (Over-Specification)**:
+```
+Use PostgreSQL 14.2 with connection pooling (pgbouncer) on port 5432,
+with max_connections=200, shared_buffers=256MB, effective_cache_size=1GB
+```
+
+**Problem**: Over-constrains implementation. What if PostgreSQL 15 is better? What if pooling isn't needed?
+
+**✅ Good Spec (Balanced Constraints)**:
+```
+- Database: PostgreSQL 14+ (team expertise, production environment)
+- Connection management: Must support concurrent connections (implementation flexible)
+```
+
+**Why better**: Specifies intent (concurrent connections) with justified technology choice (PostgreSQL 14+), without micromanaging configuration.
+
+---
+
+### Quality Checklist for Specifications
+
+Before finalizing any spec, validate against these criteria:
+
+#### 1. Clear Intent?
+- ✅ Answers "What problem does this solve?"
+- ✅ Explains why this feature matters (user value, business need)
+- ❌ Avoid: Vague statements like "improve user experience" without specifics
+
+**Self-Check**: Can someone unfamiliar with the project understand the purpose in 30 seconds?
+
+#### 2. Testable Success Criteria?
+- ✅ Each criterion is measurable (numbers, formats, behaviors)
+- ✅ Can write automated tests from these criteria
+- ❌ Avoid: Subjective terms like "works well", "looks nice", "is fast"
+
+**Self-Check**: Could I write a pytest test that verifies this criterion passes or fails?
+
+#### 3. Explicit Constraints?
+- ✅ Technology choices are justified (team expertise, environment limits)
+- ✅ Edge cases are handled (errors, missing data, invalid inputs)
+- ✅ Non-negotiables are stated clearly
+- ❌ Avoid: Assuming "obvious" behavior (always make it explicit)
+
+**Self-Check**: Are there any "what if...?" questions left unanswered?
+
+#### 4. Prevents Scope Creep?
+- ✅ Non-goals section explicitly defers features
+- ✅ MVP scope is clear
+- ❌ Avoid: Feature lists without priorities
+
+**Self-Check**: If someone asks "What about [feature X]?", can I point to Non-Goals and say "v2"?
+
+#### 5. No Ambiguity?
+- ✅ Technical terms are defined or industry-standard
+- ✅ Examples illustrate expected behavior
+- ❌ Avoid: Terms like "handle properly", "as needed", "reasonable"
+
+**Self-Check**: Could two developers implement this independently and produce identical behavior?
+
+---
+
+### Common Specification Pitfalls
+
+**Pitfall 1: Vague Language**
+
+❌ "System should handle errors gracefully"
+✅ "System catches FileNotFoundError and returns default_settings dict"
+
+**Pitfall 2: Missing Edge Cases**
+
+❌ "Function divides two numbers"
+✅ "Function divides two numbers; raises ZeroDivisionError if divisor is 0"
+
+**Pitfall 3: Over-Specification (Premature Optimization)**
+
+❌ "Use quicksort algorithm for sorting (O(n log n) average case)"
+✅ "Sort user list by name (alphabetical order)"
+
+**Why**: Intent is "sort by name". Algorithm choice (quicksort vs mergesort vs Python's Timsort) is implementation detail.
+
+**Pitfall 4: Conflating Spec with Implementation**
+
+❌ "Use for loop to iterate through config keys and write each to file"
+✅ "Save config dict to JSON file"
+
+**Why**: Spec defines **what** (save to JSON), not **how** (loop implementation).
+
+**Pitfall 5: Forgetting Why**
+
+❌ "Password reset tokens expire after 30 minutes"
+✅ "Password reset tokens expire after 30 minutes (security: prevents token reuse if email compromised)"
+
+**Why**: Rationale helps future developers understand tradeoffs.
+
+---
+
+### Quality Integration Example: CSV Exporter
+
+Let's apply quality thinking to the CSV exporter from the practice exercise:
+
+**❌ Vague Version**:
+```
+Export data to CSV file
+```
+
+**✅ Quality Version**:
+```
+## Intent
+Applications need to export Python list-of-dicts to CSV format for
+non-technical users to open in Excel/Google Sheets.
+
+## Success Criteria
+- export_to_csv(data: list[dict], filename: str) writes valid CSV file
+- CSV opens in Excel without errors
+- Column headers match dict keys from first row
+- Special characters (commas, quotes) are escaped per RFC 4180
+- Empty data list produces valid CSV with headers only
+
+## Constraints
+- Must use Python's built-in csv module (no pandas—too heavy)
+- File encoding: UTF-8 (international character support)
+- Must handle empty lists gracefully (no crashes)
+
+## Non-Goals
+- Custom delimiters (comma-only for MVP)
+- Excel .xlsx format (CSV only)
+- Data validation (caller's responsibility)
+```
+
+**Quality improvements made**:
+1. Intent explains **why** (for non-technical users)
+2. Success criteria are **testable** (can verify CSV opens in Excel)
+3. Constraints are **justified** (no pandas—too heavy)
+4. Edge cases addressed (empty lists, special characters)
+5. Non-goals prevent scope creep (no xlsx, no validation)
+
+---
+
+---
+
 ## Memory Banks vs Specs: Understanding the Distinction
 
 Before diving deeper into specs, it's crucial to understand an important distinction: **specs are not the same as memory banks**.
@@ -429,15 +629,21 @@ This improves usability by allowing data to be opened in Excel, Google Sheets, o
 
 ### Self-Validation Checklist
 
-After you write your spec, verify:
+After you write your spec, verify using the quality checklist from Part 3:
 
-- ✅ Intent is specific (not "export data" but WHY this matters)
-- ✅ Each success criterion is measurable (avoid vague words like "works correctly", "handles properly")
-- ✅ Constraints limit implementation (they should eliminate some options)
-- ✅ Non-goals prevent scope creep (they name what's NOT included)
-- ✅ Someone else could read this and implement it without asking questions
+**Quality Validation:**
+- ✅ **Clear Intent?** Not "export data" but WHY this matters (user value, business need)
+- ✅ **Testable Success Criteria?** Each measurable (avoid "works correctly", "handles properly")
+- ✅ **Explicit Constraints?** Edge cases addressed (errors, empty data, special characters)
+- ✅ **Prevents Scope Creep?** Non-goals explicitly defer features to v2
+- ✅ **No Ambiguity?** Two developers could implement independently with identical behavior
 
-**If any answer is "no"**, rewrite that section with more specificity.
+**Common Pitfalls to Avoid:**
+- ❌ Vague language ("save properly" → "save to JSON with UTF-8 encoding")
+- ❌ Missing edge cases ("export data" → "handle empty lists, special characters")
+- ❌ Over-specification (don't specify algorithm, specify intent)
+
+**If any answer is "no"**, rewrite that section using the good spec vs bad spec examples from Part 3.
 
 #### 🤝 Practice Exercise
 
@@ -446,6 +652,21 @@ After you write your spec, verify:
 **Exercise 2 (5 minutes)**: Review your spec against the checklist. Rewrite any sections that are vague.
 
 **Exercise 3 (Reflection)**: Compare your spec to the configuration file manager example earlier. What did you do well? What could be clearer?
+
+**Exercise 4 (Quality Check)**: Review your CSV exporter spec against the quality checklist. For each criterion that's vague or missing, rewrite using the patterns from Part 3.
+
+---
+
+## What's Next: Writing Better Specs WITH AI
+
+You've learned to:
+- ✅ Write specifications manually (understanding the structure)
+- ✅ Recognize quality criteria (clear intent, testable criteria, explicit constraints)
+- ✅ Validate specs using the quality checklist
+
+**Next lesson**: You'll learn how to write better specs **collaboratively with AI**—using AI as a partner to identify vagueness, suggest edge cases, and iterate toward production-ready specifications.
+
+You can write a spec manually. Lesson 4 shows how to write **better specs WITH AI**.
 
 ---
 
