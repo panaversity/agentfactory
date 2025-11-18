@@ -6,6 +6,47 @@
   overflow: hidden;
 }
 
+/* Bookmark Highlight Animation */
+@keyframes bookmark-highlight-pulse {
+  0% {
+    background-color: rgba(255, 235, 59, 0.3);
+    box-shadow: 0 0 0 0 rgba(255, 235, 59, 0.5);
+  }
+  50% {
+    background-color: rgba(255, 235, 59, 0.5);
+    box-shadow: 0 0 0 8px rgba(255, 235, 59, 0);
+  }
+  100% {
+    background-color: rgba(255, 235, 59, 0.3);
+    box-shadow: 0 0 0 0 rgba(255, 235, 59, 0);
+  }
+}
+
+.bookmark-highlight {
+  animation: bookmark-highlight-pulse 2s ease-in-out;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+html[data-theme='dark'] .bookmark-highlight {
+  animation-name: bookmark-highlight-pulse-dark;
+}
+
+@keyframes bookmark-highlight-pulse-dark {
+  0% {
+    background-color: rgba(255, 193, 7, 0.2);
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4);
+  }
+  50% {
+    background-color: rgba(255, 193, 7, 0.35);
+    box-shadow: 0 0 0 8px rgba(255, 193, 7, 0);
+  }
+  100% {
+    background-color: rgba(255, 193, 7, 0.2);
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+  }
+}
+
 /* Header with Tabs */
 .bookmark-content__header {
   flex-shrink: 0;

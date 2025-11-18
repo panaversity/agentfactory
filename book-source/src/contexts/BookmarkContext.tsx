@@ -15,6 +15,15 @@ export interface Bookmark {
   note: string;
   timestamp: number;
   isEntirePage: boolean;
+  elementId?: string; // ID of heading if available (for TOC items)
+  // Text-based anchoring (works for any text, not just headings)
+  textAnchor?: {
+    selectedText: string;      // The exact text that was selected
+    prefix: string;             // Text before selection (for context)
+    suffix: string;             // Text after selection (for context)
+    startOffset: number;        // Character offset within container
+    endOffset: number;          // Character offset within container
+  };
 }
 
 // Lightweight representation of the current doc's TOC + metadata,
@@ -50,6 +59,9 @@ interface BookmarkContextValue {
   // Selected text for bookmarking
   selectedText: string;
   setSelectedText: (text: string) => void;
+  // Selected element ID for bookmarking
+  selectedElementId: string | undefined;
+  setSelectedElementId: (elementId: string | undefined) => void;
   // Initial view mode
   initialView: 'add' | 'view';
   setInitialView: (view: 'add' | 'view') => void;
@@ -69,6 +81,8 @@ export const BookmarkProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const [currentDoc, setCurrentDoc] = useState<CurrentDocInfo | null>(null);
   // Selected text for bookmarking
   const [selectedText, setSelectedText] = useState<string>('');
+  // Selected element ID for bookmarking
+  const [selectedElementId, setSelectedElementId] = useState<string | undefined>(undefined);
   // Initial view mode
   const [initialView, setInitialView] = useState<'add' | 'view'>('view');
 
@@ -188,6 +202,8 @@ export const BookmarkProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     setCurrentDoc,
     selectedText,
     setSelectedText,
+    selectedElementId,
+    setSelectedElementId,
     initialView,
     setInitialView,
   };

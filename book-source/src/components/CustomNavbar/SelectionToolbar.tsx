@@ -2,8 +2,16 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import './selectionToolbar.css';
 
+interface TextAnchor {
+  selectedText: string;
+  prefix: string;
+  suffix: string;
+  startOffset: number;
+  endOffset: number;
+}
+
 interface SelectionToolbarProps {
-  onAction: (action: string, selectedText: string) => void;
+  onAction: (action: string, selectedText: string, elementId?: string, textAnchor?: TextAnchor) => void;
 }
 
 interface Position {
@@ -158,16 +166,95 @@ const SelectionToolbar: React.FC<SelectionToolbarProps> = ({ onAction }) => {
     }
   }, [calculateToolbarPosition]);
 
+  // Extract text anchor information for precise text location
+  const extractTextAnchor = useCallback(() => {
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return undefined;
+
+    const range = selection.getRangeAt(0);
+    const selectedText = range.toString().trim();
+
+    if (!selectedText) return undefined;
+
+    // Get the main content container
+    const mainContent = document.querySelector('article, .theme-doc-markdown, main, [role="main"]');
+    if (!mainContent) return undefined;
+
+    // Get all text content from main content
+    const fullText = mainContent.textContent || '';
+
+    // Find the position of selected text in the full content
+    const selectedIndex = fullText.indexOf(selectedText);
+
+    if (selectedIndex === -1) return undefined;
+
+    // Extract prefix (up to 100 characters before)
+    const prefixStart = Math.max(0, selectedIndex - 100);
+    const prefix = fullText.substring(prefixStart, selectedIndex);
+
+    // Extract suffix (up to 100 characters after)
+    const suffixEnd = Math.min(fullText.length, selectedIndex + selectedText.length + 100);
+    const suffix = fullText.substring(selectedIndex + selectedText.length, suffixEnd);
+
+    // Get offsets within the range
+    const startOffset = range.startOffset;
+    const endOffset = range.endOffset;
+
+    return {
+      selectedText,
+      prefix: prefix.trim(),
+      suffix: suffix.trim(),
+      startOffset,
+      endOffset,
+    };
+  }, []);
+
+  // Generate element ID for headings (if selection is within a heading with ID)
+  const getElementIdIfAvailable = useCallback((): string | undefined => {
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return undefined;
+
+    const range = selection.getRangeAt(0);
+    let element = range.commonAncestorContainer;
+
+    if (element.nodeType === Node.TEXT_NODE) {
+      element = element.parentElement!;
+    }
+
+    // Traverse up to find a heading with an existing ID
+    while (element && element !== document.body) {
+      const tagName = (element as Element).tagName?.toLowerCase();
+      if (['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(tagName)) {
+        const existingId = (element as Element).getAttribute('id');
+        if (existingId) {
+          return existingId;
+        }
+      }
+      element = (element as Element).parentElement!;
+    }
+
+    return undefined;
+  }, []);
+
   const handleAction = useCallback((action: string) => {
     if (selectedText) {
-      onAction(action, selectedText);
+      let elementId: string | undefined;
+      let textAnchor: TextAnchor | undefined;
+
+      // For bookmarks, capture both element ID (if available) and text anchor
+      if (action === 'Bookmark') {
+        elementId = getElementIdIfAvailable();
+        textAnchor = extractTextAnchor();
+      }
+
+      onAction(action, selectedText, elementId, textAnchor);
       // Collapse left sidebar when opening right drawer for maximum space
       window.dispatchEvent(new CustomEvent('collapseSidebar'));
       // Clear selection after action
       window.getSelection()?.removeAllRanges();
       setVisible(false);
     }
-  }, [selectedText, onAction]);
+  }, [selectedText, onAction, getElementIdIfAvailable, extractTextAnchor]);
 
   const buildSummaryPrompt = useCallback((text: string, style: string): string => {
     // Get page metadata

@@ -32,7 +32,7 @@ const CustomNavbar: React.FC = () => {
   const { colorMode, setColorMode } = useColorMode();
   const { search, isLoading: searchLoading } = useSearch();
   const { isSidebarCollapsed, collapseSidebar, expandSidebar } = useSidebarControl();
-  const { setSelectedText, setInitialView, tocMode, setTocMode } = useBookmarks();
+  const { setSelectedText, setSelectedElementId, setInitialView, tocMode, setTocMode } = useBookmarks();
   const [searchFocused, setSearchFocused] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -60,10 +60,15 @@ const CustomNavbar: React.FC = () => {
     setDrawerOpen(false);
   }, []);
 
-  const handleSelectionAction = useCallback((action: string, selectedTextParam: string) => {
+  const handleSelectionAction = useCallback((action: string, selectedTextParam: string, elementId?: string, textAnchor?: any) => {
     // Store the selected text in context
     if (action === 'Bookmark') {
       setSelectedText(selectedTextParam);
+      setSelectedElementId(elementId);
+      // Store text anchor in sessionStorage for BookmarkContent to use
+      if (textAnchor) {
+        sessionStorage.setItem('pendingBookmarkTextAnchor', JSON.stringify(textAnchor));
+      }
       // Open the drawer in 'add' mode with selected text
       openDrawer(action, 'add');
     } else {
@@ -71,8 +76,8 @@ const CustomNavbar: React.FC = () => {
       openDrawer(action, 'view');
     }
 
-    console.log(`Action: ${action}, Selected Text: ${selectedTextParam}`);
-  }, [openDrawer, setSelectedText]);
+    console.log(`Action: ${action}, Selected Text: ${selectedTextParam}, ElementId: ${elementId}, TextAnchor:`, textAnchor);
+  }, [openDrawer, setSelectedText, setSelectedElementId]);
 
   const toggleChat = useCallback(() => {
     setChatOpen((prev) => !prev);
@@ -119,6 +124,18 @@ const CustomNavbar: React.FC = () => {
       window.removeEventListener('openPanaChatWithMessage', handleOpenChatEvent);
     };
   }, []);
+
+  // Check if we should keep the bookmark drawer open after navigation
+  useEffect(() => {
+    const shouldKeepDrawerOpen = sessionStorage.getItem('keepBookmarkDrawerOpen');
+    if (shouldKeepDrawerOpen === 'true') {
+      sessionStorage.removeItem('keepBookmarkDrawerOpen');
+      // Small delay to ensure page is fully loaded
+      setTimeout(() => {
+        openDrawer('Bookmark', 'view');
+      }, 100);
+    }
+  }, [openDrawer]);
 
   // Use the real search function from context
   const filteredResults = searchQuery ? search(searchQuery) : [];
