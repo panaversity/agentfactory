@@ -17,14 +17,6 @@ try_with_ai_prompts: 4
 colearning_elements: ["conceptual_prompt", "teaching_commentary", "specification_challenge", "ai_tip"]
 ---
 
-## Lesson 2: Writing Functions with Intent
-
-**CEFR Level**: A2-B1 (Foundational with Application)
-**Time Estimate**: 60 minutes
-**What You'll Learn**: Functions are reusable blocks of code. You'll learn to write functions with clear intent—using type hints to tell Python (and AI) what data you need, and docstrings to explain what your function does.
-
----
-
 ## Why Write Functions? — Code Reuse and Clear Intent
 
 **The Problem**: You find yourself writing the same code over and over. A calculation you need in three different places. A data validation check used throughout your script.

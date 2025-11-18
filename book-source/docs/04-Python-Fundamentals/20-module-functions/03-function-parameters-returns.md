@@ -18,14 +18,6 @@ try_with_ai_prompts: 4
 colearning_elements: ["conceptual_prompt", "teaching_commentary", "specification_challenge", "ai_tip"]
 ---
 
-## Lesson 3: Function Parameters and Returns
-
-**CEFR Level**: B1 (Intermediate Application)
-**Time Estimate**: 60 minutes
-**What You'll Learn**: Real functions have optional behavior. You'll learn to write functions where some parameters are required and others are optional with defaults, and how to call functions flexibly using positional and keyword arguments. You'll also master returning and unpacking multiple values.
-
----
-
 ## Required vs. Optional Parameters — Flexibility
 
 **Pattern**: Functions often have some parameters you must provide and others that are optional with sensible defaults.

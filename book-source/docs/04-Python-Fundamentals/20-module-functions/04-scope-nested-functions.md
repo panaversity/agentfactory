@@ -18,14 +18,6 @@ try_with_ai_prompts: 4
 colearning_elements: ["conceptual_prompt", "teaching_commentary", "specification_challenge", "ai_tip"]
 ---
 
-## Lesson 4: Scope and Nested Functions
-
-**CEFR Level**: B1-B2 (Intermediate to Advanced Application)
-**Time Estimate**: 55 minutes
-**What You'll Learn**: Variables don't exist everywhere in your code—they have scope. Understanding where a variable exists and is accessible is critical for writing correct code. You'll also explore nested functions, which prepare you for advanced patterns in later chapters.
-
----
-
 ## Why Scope Matters — Preventing Bugs and Clarifying Intent
 
 **The Problem**: You define a variable inside a function, then try to use it outside. Python says "NameError: variable not defined." You modify a global variable inside a function expecting the change to persist, but it doesn't.

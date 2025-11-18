@@ -17,14 +17,6 @@ try_with_ai_prompts: 4
 colearning_elements: ["conceptual_prompt", "teaching_commentary", "specification_challenge", "ai_tip"]
 ---
 
-## Lesson 1: Understanding Modules and Imports
-
-**CEFR Level**: A2 (Foundational)
-**Time Estimate**: 55 minutes
-**What You'll Learn**: Python code is organized into modules (files with reusable code). You'll learn how to bring that code into your scripts using imports, and explore three different import patterns to see when each one makes sense.
-
----
-
 ## What Is a Module? — Why Organization Matters
 
 **The Problem**: Imagine writing a huge Python script with thousands of lines. Finding a specific function becomes hard. Sharing code with others becomes confusing. Reusing code in different projects requires copying and pasting.

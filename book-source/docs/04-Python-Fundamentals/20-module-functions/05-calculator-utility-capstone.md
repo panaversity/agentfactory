@@ -18,14 +18,6 @@ try_with_ai_prompts: 4
 colearning_elements: ["conceptual_prompt", "teaching_commentary", "specification_challenge", "ai_tip"]
 ---
 
-## Lesson 5: Building a Calculator Utility (Capstone Project)
-
-**CEFR Level**: B1-B2 (Integrated Application and Synthesis)
-**Time Estimate**: 70 minutes
-**What You'll Learn**: You'll build a complete Python project using modules and functions. This capstone integrates everything from Lessons 1-4: module organization, function design, parameter patterns, returns, scope, and testing. You'll see professional code organization patterns.
-
----
-
 ## Capstone Project Overview
 
 **The Task**: Build a multi-module calculator application that demonstrates:
