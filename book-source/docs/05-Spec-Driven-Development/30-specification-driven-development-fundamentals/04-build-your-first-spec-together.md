@@ -476,16 +476,16 @@ This is **AI-native specification development** in action:
 5. **You refined spec with AI's help** (learning from failures)
 6. **AI regenerated** (both improved together)
 
-**Key insight:** Specifications improve through iteration. When AI generated wrong code (Scenario 3), it wasn't AI's fault—it was an **ambiguous specification**. The failure taught you where precision was needed. Professional specs are written iteratively, using AI as a co-reasoning partner to catch gaps early.
+**Key insight:** Specifications improve through iteration. When AI generated wrong code (Scenario 3), it wasn't AI's fault—it was an **ambiguous specification**. The failure revealed where precision was needed. Professional specs are written iteratively, using AI as a co-reasoning partner to catch gaps early.
 
 #### 💬 AI Colearning Prompt
-> "Reflect on the calculator spec we just built together. Identify one moment where (1) AI taught me something I didn't consider, (2) I taught AI a constraint it didn't assume, and (3) we converged on a better spec through iteration. How is this different from 'prompting AI to write code'?"
+> "Reflect on the calculator spec we just built together. Identify one moment where (1) AI suggested something you didn't consider, (2) you provided a constraint AI didn't assume, and (3) the result converged on a better spec through iteration. How is this different from 'prompting AI to write code'?"
 
 ---
 
-### Reflection: The Co-Learning Pattern
+### Reflection: The Collaborative Pattern
 
-Notice what just happened across all steps:
+Notice what emerged across all steps:
 
 **Quality Iteration (Parts 1-4a):**
 - You drafted spec with AI (user stories, acceptance criteria, edge cases)
@@ -511,7 +511,7 @@ Notice what just happened across all steps:
 
 This is **collaborative specification**—both human and AI improve through iteration. You bring domain knowledge and intent; AI brings systematic thinking and edge case discovery. Together, you create specifications that neither could write independently.
 
-**The quality iteration step (Part 4a) is where this truly shines:** You didn't just generate code and hope for the best. You validated your spec against quality criteria first. AI helped identify vagueness. You taught it your constraints. Only then did you ask for code.
+**The quality iteration step (Part 4a) is where this truly shines:** You didn't just generate code and hope for the best. You validated your spec against quality criteria first. AI helped identify vagueness. You provided your constraints. Only then did you ask for code.
 
 **This pattern is the foundation of AI-native software development.**
 
@@ -540,7 +540,7 @@ You started with **why** (user needs), not **how** (implementation). This forced
 - **Multiplication:** Zero is special (absorbing element)
 - **Division:** Requires error handling (zero check), always returns float
 
-Each operation taught you something about **specification decisions**. Division forced you to think about error handling in ways addition didn't.
+Each operation revealed different **specification decisions**. Division forced you to think about error handling in ways addition didn't.
 
 ### ✅ Edge Cases ARE the Specification
 
@@ -562,9 +562,9 @@ assert divide(10, 2) == 5.0  # Not 5! This is a contract.
 
 The spec isn't separate from tests; **tests ARE the specification** in executable form.
 
-### ✅ Co-Learning Through Validation
+### ✅ Iterative Validation
 
-When AI generated wrong code (Scenario 3), you learned your spec was ambiguous. When AI asked questions (Scenario 2), you learned your spec had gaps. **This is how specs improve**—through iteration, not perfection on first try.
+When AI generated wrong code (Scenario 3), it revealed your spec was ambiguous. When AI asked questions (Scenario 2), it revealed your spec had gaps. **This is how specs improve**—through iteration, not perfection on first try.
 
 **The AI-native approach**: You used AI to help write the specification itself (user stories, edge cases, acceptance criteria), not just implement it. This catches problems earlier and produces clearer specs.
 

@@ -286,7 +286,7 @@ In each of your three terminals, run `/sp.tasks`:
 
 Again, fire these off quickly. All three will run in parallel. After ~20 minutes, you'll have complete task lists for all three features.
 
-### What to Expect
+### Task Quality Indicators
 
 When tasks are generated from good plans, they should:
 

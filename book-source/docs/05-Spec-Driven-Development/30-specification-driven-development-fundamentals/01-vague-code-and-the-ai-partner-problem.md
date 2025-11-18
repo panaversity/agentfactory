@@ -278,7 +278,7 @@ to avoid implementation surprises?
 
 **Reflect**: Which of these questions surprised you? Which requirements did you initially overlook?
 
-### Step 1.5: You Teach AI (Your Constraints)
+### Step 1.5: Provide Your Constraints
 
 Now you refine AI's generic suggestions with YOUR specific constraints.
 
@@ -336,7 +336,7 @@ Also add rate limiting: max 3 reset requests per email per hour.
 
 **Your companion:** will generate the final spec.
 
-**What emerged from this dialogue?** Through 3 rounds of conversation:
+Through 3 rounds of conversation:
 1. Your companion suggested questions you hadn't considered
 2. You provided domain-specific constraints and context
 3. Together, you discovered edge cases and refined requirements
