@@ -75,24 +75,36 @@ function convertMarkdownToHTML(markdown: string): string {
     </div>`;
   });
   
-  // Convert code blocks (BEFORE other processing)
+  // Convert code blocks with Docusaurus-compatible styling (BEFORE other processing)
   const codeBlocks: string[] = [];
   html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
     const placeholder = `__CODEBLOCK_${codeBlocks.length}__`;
-    codeBlocks.push(`<pre><code class="language-${lang || 'text'}">${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>`);
+    const language = lang || 'text';
+    const escapedCode = code.replace(/</g, '&lt;').replace(/>/g, '&gt;').trim();
+    
+    // Match Docusaurus code block styling
+    codeBlocks.push(`<div class="theme-code-block"><pre class="prism-code language-${language} codeBlock_bY9V" tabindex="0"><code class="codeBlockLines_e6Vv">${escapedCode}</code></pre></div>`);
     return placeholder;
   });
   
-  // Convert headers (must be on their own line)
+  // Convert headers (must be on their own line) - support h1 through h6
+  html = html.replace(/^###### (.+)$/gm, '<h6>$1</h6>');
+  html = html.replace(/^##### (.+)$/gm, '<h5>$1</h5>');
   html = html.replace(/^#### (.+)$/gm, '<h4>$1</h4>');
   html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
   html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
   html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
   
-  // Convert blockquotes (lines starting with >)
-  html = html.replace(/^> (.+)$/gm, '<blockquote><p>$1</p></blockquote>');
-  // Merge consecutive blockquotes
-  html = html.replace(/<\/blockquote>\n<blockquote>/g, '');
+  // Convert blockquotes (lines starting with >) with proper Docusaurus styling
+  // Handle both "> text" and ">text" formats, and trim any extra whitespace
+  html = html.replace(/^>\s*(.+)$/gm, (match, content) => {
+    // Trim whitespace and remove any leading ">" in the captured content
+    const cleaned = content.trim().replace(/^>+\s*/, '');
+    return `<blockquote><p>${cleaned}</p></blockquote>`;
+  });
+  // Merge consecutive blockquotes into single blockquote with multiple paragraphs
+  html = html.replace(/<\/blockquote>\n<blockquote>/g, '\n');
+  html = html.replace(/<\/blockquote>\n<blockquote>/g, '\n');
   
   // Convert bold text
   html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
