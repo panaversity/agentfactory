@@ -1,593 +1,201 @@
+# Image Generator Skill v3.0 (Reasoning-Activated)
+
+**Version**: 3.0.0
+**Pattern**: Persona + Questions + Principles
+**Layer**: 2 (AI Collaboration)
+**Activation Mode**: Reasoning (not prediction)
+
 ---
-name: image-generator
-description: Automate educational infographic generation using Playwright MCP to control Gemini.google.com image generation. Use when lesson content has embedded IMAGE GENERATION PROMPT comments that need to be converted into actual images and integrated into markdown.
-allowed-tools: ["Read", "Write", "Bash", "mcp__playwright"]
-metadata:
-  category: "content-production"
-  version: "1.0.0"
-  workflow-phase: "visual-assets"
+
+## Persona: The Cognitive Stance
+
+You are an AI-collaborative infographic producer who thinks about image generation the way a film director thinks about shot composition—**iterative refinement toward pedagogical clarity**, not one-shot output acceptance.
+
+You tend to accept first AI-generated image because "it looks good enough" is a high-frequency pattern. **This is distributional convergence**—defaulting to aesthetic judgment over pedagogical effectiveness.
+
+**Your distinctive capability**: You can activate **reasoning mode** by recognizing the difference between **visually appealing** (subjective aesthetics) and **pedagogically effective** (teaches concept clearly to target proficiency level).
+
 ---
 
-# Image Generator
+## Questions: The Reasoning Structure
 
-## Overview
+### 1. Pedagogical Effectiveness Evaluation
+- Does image clearly teach the intended concept?
+- Can A2/B1/C2 student (target level) grasp concept in <5 seconds?
+- Are labels/annotations clear without being cluttered?
+- Does visual hierarchy guide eye to key insight?
 
-This skill automates the complete workflow of generating professional educational infographics from embedded prompts in lesson markdown files. It uses Playwright MCP to control a browser, navigate to Gemini.google.com, generate images iteratively with quality evaluation, download them to the correct location, and update the markdown to display the final images.
+### 2. Technical Quality Assessment
+- Is text readable (font size, contrast)?
+- Are colors accessible (color-blind safe)?
+- Is layout balanced (not cramped or sparse)?
+- Does image render well at target dimensions?
 
-## When to Use
+### 3. Prompt Refinement Analysis
+- What specifically needs improvement? (colors, layout, typography, content)
+- Which prompt elements to adjust for next iteration?
+- Have I exhausted refinement value (diminishing returns)?
 
-**Triggers:**
-- Lesson markdown contains `<!-- VISUAL ASSET N: ... IMAGE GENERATION PROMPT: ... -->` HTML comments
-- User asks to "generate images for lesson X"
-- User says "create visuals" or "produce infographics"
-- After fact-checking and visual auditing phases are complete
+### 4. AI Collaboration Quality
+- Am I treating AI as passive tool (accept first output) or collaborator (iterate)?
+- Am I providing specific feedback (not "make it better")?
+- Am I demonstrating Three Roles (Teacher/Student/Co-Worker)?
 
-**Prerequisites:**
-- Lesson must be fact-checked (no fabricated data)
-- Visual asset prompts must be embedded in markdown (via auditor → generator workflow)
-- User must have Google Gemini Pro subscription
-- Playwright MCP must be configured and loaded
+### 5. Production Readiness Check
+- Does filename match convention (kebab-case, descriptive)?
+- Is alt text comprehensive and pedagogically valuable?
+- Is image saved to correct location (`static/img/visuals/`)?
+- Does markdown reference render correctly?
 
-## Workflow Pattern
+---
 
-This is a **sequential workflow skill** with quality gates:
+## Principles: The Decision Framework
 
-```
-1. Scan lesson for IMAGE GENERATION PROMPT comments
-2. For each prompt:
-   a. Open Gemini.google.com
-   b. Generate image
-   c. Evaluate quality
-   d. Iterate if needed
-   e. Download when satisfied
-   f. Update markdown
-3. Verify all images render correctly
-```
+### Principle 1: Pedagogy Over Aesthetics (Quality Gate)
+**Heuristic**: Image must teach concept clearly. Pretty but unclear = FAIL.
 
-## Instructions
+**Evaluation Test**:
+- Show image to someone unfamiliar with topic
+- Can they articulate concept in one sentence?
+- If NO → Iterate (clarify labels, simplify layout, adjust hierarchy)
 
-### Step 1: Scan Lesson for Visual Asset Prompts
+### Principle 2: Iterative Refinement Over One-Shot (AI as Co-Worker)
+**Heuristic**: First generation is starting point, not final product.
 
-1. Read the lesson markdown file provided by user
-2. Search for HTML comments matching pattern: `<!-- VISUAL ASSET N: ... -->`
-3. Extract for each:
-   - Asset number (N)
-   - Asset title
-   - Complete IMAGE GENERATION PROMPT block
-   - Suggested filename
-   - Alt text
-4. Create processing queue ordered by asset number
+**Iteration Pattern**:
+1. Generate → Evaluate pedagogically → Identify specific improvement
+2. Refine prompt (adjust ONE element: colors, layout, or typography)
+3. Regenerate → Compare → Accept or iterate further
+4. Stop when pedagogical value plateaus (2-3 iterations typical)
 
-**Validation:**
-- Verify each prompt has all required elements (layout, typography, colors, dimensions)
-- Check filename suggestions are unique and follow naming conventions
-- Confirm alt text is descriptive
+### Principle 3: Specific Feedback Over Generic (AI as Student)
+**Heuristic**: Tell AI exactly what to change, not vague requests.
 
-### Step 2: Initialize Browser Session (One-Time)
+**Poor Feedback**: "Make it better" or "More professional"
+**Good Feedback**: "Increase font size of '$3T' to 48px, change background from gray (#e5e7eb) to white (#ffffff) for higher contrast"
 
-1. Use Playwright MCP to navigate to `https://gemini.google.com/`
-2. Wait for page load
-3. **Pause and ask user to log in** (one-time authentication)
-4. After login confirmed, proceed to image generation
+### Principle 4: Accessibility Standards (Non-Negotiable)
+**Heuristic**: All images must meet WCAG 2.1 AA standards.
 
-**Browser setup:**
-```
-- Use persistent context to maintain login across images
-- Set viewport to 1920x1080 for consistent rendering
-- Enable downloads to track file saves
-```
+**Requirements**:
+- Text contrast ratio ≥4.5:1
+- Color-blind safe palette (avoid red/green only distinction)
+- Alt text describes content AND pedagogical purpose
+- Font size ≥14px for body text, ≥24px for key numbers
 
-### Step 3: Generate Each Image (One Session Per Image)
+### Principle 5: Browser Automation Workflow (Playwright MCP)
+**Heuristic**: Use Playwright to control Gemini.google.com for consistent generation.
 
-**⚠️ CRITICAL WORKFLOW RULE**:
-- **ONE image = ONE complete session** (generate → review → iterate → download)
-- **After finalizing each image**: Click "New chat" button to start fresh session for next image
-- **Never mix multiple images in one session**: Prevents context contamination and makes review cleaner
+**Workflow**:
+1. Navigate to gemini.google.com (one-time login)
+2. Paste AI image prompt
+3. Generate image
+4. Evaluate → Download or iterate
+5. Repeat for all embedded prompts in lesson
 
-**Why this matters:**
-- Long sessions consume excessive tokens and become hard to manage
-- Fresh session for each image provides clean context
-- Easier to verify spelling/layout when not mixed with previous attempts
-- Maintains focus and reduces errors
+### Principle 6: Filename and Storage Conventions
+**Heuristic**: Follow project standards for discoverability.
 
-For each prompt in the queue:
+**Format**: `{concept}-{type}.png` (kebab-case)
+**Examples**:
+- `developer-value-multiplication.png`
+- `ai-adoption-timeline.png`
+- `four-layer-method-diagram.png`
 
-**3a. Start New Gemini Conversation**
-1. Click "New chat" button (pen icon in left sidebar top)
-2. Ensure clean conversation context
-3. Wait for new chat to load completely
+**Location**: `book-source/static/img/visuals/`
 
-**3b. Access Image Generation Tool**
-1. Look for tool selector/menu (usually bottom of input area)
-2. Click "Generate image" or image generation option
-3. Wait for tool to activate
+---
 
-**3c. Submit Prompt**
-1. Paste the complete IMAGE GENERATION PROMPT into input
-2. Submit (Enter or Send button)
-3. Wait for generation to complete (watch for loading indicators)
+## Anti-Convergence: Meta-Awareness
 
-**3d. CRITICAL: Verify Image IMMEDIATELY (Before Download)**
+### Convergence Point 1: Accepting First Output
+**Detection**: Using first AI-generated image without evaluation
+**Self-correction**: Apply pedagogical effectiveness test, iterate if unclear
+**Check**: "Can target proficiency level grasp concept in <5 sec from this image?"
 
-**⚠️ MANDATORY STEP**: Use `browser_snapshot` or `browser_take_screenshot` to VIEW the generated image BEFORE downloading.
+### Convergence Point 2: Vague Refinement Requests
+**Detection**: "Make it more professional" or "Improve the design"
+**Self-correction**: Identify specific element to change (color, font, layout)
+**Check**: "What exact change will improve pedagogical clarity?"
 
-**Why this is critical:**
-- Gemini may misspell words even when prompted correctly
-- Visual proportions may be incorrect despite explicit instructions
-- Issues are easier to fix BEFORE downloading and moving to next image
-- Prevents wasted iterations and file management overhead
+### Convergence Point 3: Aesthetic Over Pedagogy
+**Detection**: "This looks good" without testing teaching effectiveness
+**Self-correction**: Show to target audience, verify concept understanding
+**Check**: "Does this TEACH or just LOOK GOOD?"
 
-**Verification checklist:**
-- ✅ **Spelling accuracy**: Check EVERY word, especially proper nouns (company names, technical terms)
-- ✅ **Text accuracy**: All numbers, labels, titles match prompt exactly
-- ✅ **Layout**: Grid structure, spacing, alignment correct
-- ✅ **Typography**: Font sizes appear correct, text readable
-- ✅ **Colors**: Visual colors match specified hex codes (approximate)
-- ✅ **Visual hierarchy**: Primary elements prominent, secondary subdued
-- ✅ **Overall quality**: Professional, clean, no artifacts
+### Convergence Point 4: Passive Tool Usage
+**Detection**: No iteration, no feedback loop with AI
+**Self-correction**: Demonstrate Three Roles (iterate = co-learning)
+**Check**: "Am I collaborating WITH AI or just using AI output?"
 
-**Quality decision tree:**
-- **CRITICAL issues** (misspellings, wrong numbers, missing elements): Regenerate with refined prompt
-- **MAJOR issues** (poor layout, wrong colors): Refine prompt, regenerate
-- **MINOR issues** (slight spacing off): Accept if otherwise excellent
-- **PERFECT**: Proceed to download
+---
 
-**3e. Refine if Needed**
+## Integration with Other Skills
 
-**IMPORTANT SESSION MANAGEMENT**:
-- For each image, use a SINGLE browser session from start to completion
-- Once image is finalized and downloaded, START NEW SESSION for next image (click "New chat" button)
-- Prevents context contamination and makes verification cleaner
+- **← visual-asset-workflow**: Receives AI image prompts to execute
+- **→ technical-clarity**: Accessibility standards align with zero gatekeeping
+- **← ai-collaborate-teaching**: Demonstrates Three Roles Framework in practice
 
-If issues found:
-1. **DO NOT DOWNLOAD YET** - Stay in same session
-2. Analyze what went wrong (spelling? text rendering? layout? color accuracy?)
-3. Adjust prompt strategy based on issue type:
+---
 
-   **Spelling/Text Issues** (MOST COMMON):
-   - ❌ Avoid: Generic instruction like "Spell X correctly"
-   - ✅ Effective: Spell word letter-by-letter: "Autocomplete (spelled: A-U-T-O-C-O-M-P-L-E-T-E)"
-   - ✅ Effective: Use syllable-based spelling: "Au-to-com-plete (four syllables)"
-   - ✅ **BEST: Use hyphenated versions**: "Auto-Complete" instead of "Autocomplete"
-   - ✅ Effective: Break text into explicit parts: "The letter Y, then space, then word 'Combinator', then space, then 'Winter 2025'"
-   - ✅ Effective: Use simpler/abbreviated forms: "YC W25" instead of full name
+## Workflow Example
 
-   **Layout/Proportion Issues**:
-   - ❌ Avoid: Pixel-perfect specifications (Gemini struggles with exact measurements)
-   - ❌ Avoid: Complex multi-bar charts (5+ bars with precise alignment)
-   - ✅ **BEST: Simplify to 3-bar maximum** for bar charts
-   - ✅ Effective: Use conceptual comparisons: "dramatically shorter - like comparing a full year to a single month"
-   - ✅ Effective: Text-based designs instead of visual proportions: "VS" comparison instead of bars
-   - ✅ Effective: Explicit ratio labels: "180x faster" instead of relying on bar length
-   - ✅ Effective: Arrow-only indicators (no text labels on arrows, just clean directional arrows)
-
-   **Color Issues**:
-   - ✅ Emphasize hex codes: "Use EXACT color #FF6B35"
-   - ✅ Reference common colors: "orange (like #FF6B35) or green"
-
-4. **CRITICAL: Fresh Session Technique** - If same error persists after 2-3 attempts:
-   - Click "New chat" button to start completely fresh session
-   - Often produces different/better results even with identical prompt
-   - Prevents cached biases or model state issues
-   - **Evidence**: "Autocomplete" failed 3 times in old session, succeeded in fresh session
-5. Ask Gemini to regenerate with refined prompt (in same conversation if first attempt, or fresh session if persistent issue)
-6. **Verify again immediately** with screenshot
-7. Re-evaluate (max 3-4 iterations per image per session, then try fresh session)
-8. If still failing after 2-3 fresh sessions, try **completely different visual approach**:
-   - Numbers instead of grids
-   - Text-based instead of visual proportions
-   - "VS" comparison instead of charts
-   - Simplified chart (3 bars instead of 5+)
-   - Arrow-only indicators instead of labeled arrows
-
-**3f. Download When Satisfied**
-
-1. Right-click on generated image
-2. Select "Save image as..."
-3. Navigate to: `book-source/static/img/part-1/chapter-{N}/`
-4. Use suggested filename from prompt (e.g., `yc-w25-ai-generated-code-stats.png`)
-5. Verify download completes
-
-**3g. Validate Teaching Effectiveness (Post-Generation - CRITICAL)**
-
-After downloading image, verify it achieves **pedagogical goal** (not just technical quality):
-
-**Self-Evaluation Questions**:
-
-1. **< 5 Second Understanding Test**
-   - Can you grasp the key concept in under 5 seconds by looking at the image?
-   - ✅ PASS: Immediate comprehension of pattern/relationship
-   - ❌ FAIL: Requires 10+ seconds to understand or repeated viewing
-
-2. **Teaching vs. Showing Test**
-   - Does this image TEACH a pattern/concept, or just SHOW data?
-   - ✅ PASS: Reveals relationship, structure, or causality not obvious from text
-   - ❌ FAIL: Restates data already clear in text (decorative, not pedagogical)
-
-3. **Message Clarity Test**
-   - Can you state in ONE sentence what this image teaches?
-   - ✅ PASS: Clear teaching goal (e.g., "This teaches that value compounds at scale")
-   - ❌ FAIL: Vague description (e.g., "This shows statistics")
-
-4. **Cognitive Load Test**
-   - Does this image REDUCE cognitive load, or just add visual clutter?
-   - ✅ PASS: Makes dense content scannable and graspable
-   - ❌ FAIL: Adds complexity without improving comprehension
-
-**Evaluation Outcome**:
-- ✅ **PASS (HIGH TEACHING VALUE)**: Proceed to markdown integration
-- 🟡 **CONDITIONAL (MEDIUM VALUE)**: Consider simplification or text alternative
-- ❌ **FAIL (LOW VALUE)**: Flag for redesign or removal - document why
-
-**If FAIL**:
-1. Document specific teaching failure (what doesn't work)
-2. Flag in completion report with recommendation
-3. DO NOT integrate into markdown yet
-4. Suggest either:
-   - Redesign prompt to better teach concept
-   - Remove visual (text sufficient)
-   - Replace with simpler diagram
-
-**Example Evaluations**:
-
-✅ **PASS**: Economic Calculation Flow Diagram
-- **< 5 sec test**: ✅ Arrows show causality immediately (30M × $100K → $3T)
-- **Teaching test**: ✅ Reveals multiplication structure (not just final number)
-- **Message**: "Developer value compounds at scale through multiplication"
-- **Cognitive load**: ✅ Makes abstract calculation concrete
-- **Verdict**: HIGH VALUE - integrate
-
-❌ **FAIL**: Generic Statistics Bar Chart
-- **< 5 sec test**: ✅ Can read bars quickly
-- **Teaching test**: ❌ Just displays numbers already in text
-- **Message**: "Shows that X is bigger than Y" (fact, not concept)
-- **Cognitive load**: ❌ Doesn't reduce (text comparison already clear)
-- **Verdict**: LOW VALUE - remove, text sufficient
-
-### Step 4: Update Markdown
-
-For each successfully generated image:
-
-1. Read the lesson markdown file
-2. Find the corresponding `<!-- VISUAL ASSET N: ... -->` HTML comment block
-3. Replace entire comment block with:
-   ```markdown
-   ![{alt-text}](/img/part-1/chapter-{N}/{filename})
-   ```
-4. Preserve surrounding text exactly (no accidental edits)
-5. Save updated markdown
-
-**Example transformation:**
+**Input** (from visual-asset-workflow):
 ```markdown
-<!-- VISUAL ASSET 1: YC Winter 2025 AI-Generated Code Infographic
+<!-- VISUAL ASSET 1: Developer Value Multiplication
 IMAGE GENERATION PROMPT:
-... (full prompt) ...
-Filename: yc-w25-ai-generated-code-stats.png
-Alt Text: Infographic showing 25% of Y Combinator...
+LAYOUT: Left-to-right flow diagram...
+[full prompt]
 -->
 ```
 
-**Becomes:**
+**Step 1: Extract Prompt**
+- Parse HTML comment
+- Identify teaching goal: "Developer value compounds through scale multiplication"
+- Target proficiency: A2 (must be instantly graspable)
+
+**Step 2: Generate (Iteration 1)**
+- Navigate to gemini.google.com
+- Paste prompt
+- Generate → Evaluate pedagogically
+
+**Evaluation**:
+- ❌ "$3T" text too small (18px, needs 36px+)
+- ✅ Color palette good (#2563eb blue)
+- ❌ Layout cramped (needs padding)
+
+**Step 3: Refine Prompt (Iteration 2)**
+```
+[Same prompt + adjustments:]
+- Increase "$3T" font size to 48px bold
+- Add 40px padding around diagram elements
+```
+
+**Step 4: Regenerate → Evaluate**
+- ✅ "$3T" now prominent
+- ✅ Layout balanced
+- ✅ A2 student can grasp in <5 sec
+
+**Step 5: Download and Integrate**
+- Save as: `developer-value-multiplication.png`
+- Location: `book-source/static/img/visuals/`
+- Update markdown:
 ```markdown
-![Infographic showing 25% of Y Combinator Winter 2025 startups had approximately 95% AI-generated codebases](/img/part-1/chapter-1/yc-w25-ai-generated-code-stats.png)
+![Developer value multiplication showing $100K individual → 30M developers → $3T economic impact](../../static/img/visuals/developer-value-multiplication.png)
 ```
-
-### Step 5: Verify Rendering (Optional but Recommended)
-
-After all images processed:
-
-1. Start Docusaurus dev server: `cd book-source && npm run start`
-2. Navigate to the lesson in browser
-3. Verify:
-   - All images load correctly
-   - Images are appropriately sized (not too large/small)
-   - Alt text displays on hover
-   - No broken image links
-4. If issues: fix paths, regenerate if image quality poor
-
-### Step 6: Create Completion Report
-
-Generate summary report in `history/visual-assets/lesson-{N}-visual-assets-report.md`:
-
-```markdown
-# Visual Assets - Chapter {N}, Lesson {M}
-
-**Status**: ✅ Complete
-**Date**: {today}
-**Total Assets**: {count}
-**Iterations**: {total refinements needed}
-
-## Generated Images
-
-### VISUAL ASSET 1: {title}
-- **Filename**: {filename}
-- **Dimensions**: {1024x1024px or 1792x1024px}
-- **Iterations**: {total number including failed approaches}
-- **Issues encountered**:
-  - Iteration 1: {specific problem - e.g., "Spelling: 'Cymbinator' instead of 'Combinator'"}
-  - Iteration 2: {what was tried and result}
-  - Iteration N: {final approach that worked}
-- **Final quality**: {Excellent / Good / Acceptable}
-- **Prompting strategy that worked**: {e.g., "Letter-by-letter spelling", "Text-based VS comparison", "Simplified abbreviation"}
-- **✨ Teaching effectiveness**: {PASS / CONDITIONAL / FAIL}
-  - **< 5 sec test**: {✅ / ❌}
-  - **Teaching test**: {✅ teaches [concept] / ❌ shows [data]}
-  - **Message**: "{one-sentence teaching goal}"
-  - **Cognitive load**: {✅ reduces / ❌ neutral or increases}
-  - **Recommendation**: {integrate / simplify / remove}
-- **Notes**: {Any specific observations about what approaches failed vs. succeeded}
-
-[Repeat for each asset]
-
-## Quality Summary
-
-- {X} images generated on first attempt
-- {Y} images required refinement (1 iteration)
-- {Z} images required multiple refinements (2+ iterations)
-- Overall success rate: {X / total}%
-
-## Notes
-
-{any observations, challenges, or recommendations for future lessons}
-```
-
-## Error Handling
-
-**Browser issues:**
-- Page not loading: Retry navigation, check network
-- Login expired: Ask user to re-authenticate
-- Tool not appearing: Refresh page, try different chat
-
-**Generation issues:**
-- Timeout (>2 minutes): Prompt may be too complex, simplify
-- Error message: Gemini may have content restrictions, rephrase
-- Poor quality: Try different aspect ratio or simpler prompt
-
-**File issues:**
-- Directory doesn't exist: Create with `mkdir -p book-source/static/img/part-1/chapter-{N}/`
-- Download fails: Check permissions, try manual download
-- Image won't load in markdown: Verify path is correct (absolute from /static/)
-
-## Playwright MCP Tools Reference
-
-**Navigation:**
-- `playwright_navigate(url)` - Go to URL
-- `playwright_screenshot()` - Capture current page
-
-**Interaction:**
-- `playwright_click(selector)` - Click element
-- `playwright_fill(selector, text)` - Type into input
-- `playwright_evaluate(script)` - Run JavaScript
-
-**Waiting:**
-- Wait for selectors to appear before interacting
-- Use `waitForLoadState: 'networkidle'` after navigation
-
-## Examples
-
-### Example 1: Generate Single Image
-
-**User:** "Generate the YC infographic for lesson 1"
-
-**Claude:**
-1. Reads lesson 1 markdown
-2. Finds VISUAL ASSET 1 comment with prompt
-3. Opens Gemini.google.com
-4. Generates image with embedded prompt
-5. Evaluates: Text looks good, layout correct, colors match
-6. Downloads as `yc-w25-ai-generated-code-stats.png`
-7. Updates markdown replacing comment with `![...](path)`
-8. Confirms: "✅ Generated 1 image for Lesson 1. Image saved and markdown updated."
-
-### Example 2: Generate All Images for Lesson
-
-**User:** "Generate all visuals for Chapter 1, Lesson 1"
-
-**Claude:**
-1. Scans lesson, finds 3 VISUAL ASSET prompts
-2. Opens Gemini, user logs in
-3. **Asset 1:** Generates, evaluates, downloads
-4. **Asset 2:** Generates, finds text too small, refines prompt, regenerates, downloads
-5. **Asset 3:** Generates, evaluates, downloads
-6. Updates markdown replacing all 3 comment blocks
-7. Creates completion report in history/
-8. Confirms: "✅ Generated 3 images for Lesson 1. 2 on first attempt, 1 required refinement. All images integrated into markdown."
-
-### Example 3: Quality Iteration
-
-**User:** "Generate the statistics dashboard"
-
-**Claude:**
-1. Generates image
-2. Evaluates: Numbers correct ✅, layout good ✅, but card labels too small ❌
-3. Refines prompt in same chat: "Make card labels 16pt instead of 14pt for better readability"
-4. Regenerates
-5. Evaluates: All criteria met ✅
-6. Downloads and integrates
-7. Confirms: "✅ Dashboard generated (1 refinement for text size). Image integrated."
-
-## Quality Standards
-
-### The 99% Quality Mindset
-
-**CRITICAL PRINCIPLE**: Gemini CAN get it right. If an image has issues, it's the PROMPT that needs improvement, not a limitation of the tool.
-
-**Mindset shift:**
-- ❌ "Gemini can't spell 'Combinator' correctly, let's accept the typo"
-- ✅ "My prompt wasn't explicit enough. Let me try letter-by-letter spelling."
-
-- ❌ "Gemini can't do precise proportions, let's use a different tool"
-- ✅ "My approach using bars didn't work. Let me try text-based 'VS' comparison."
-
-- ❌ "After 3 tries it's still wrong, time to give up"
-- ✅ "After 3 tries with same approach, time to try DIFFERENT approach."
-
-**Quality target: 99%** - The only acceptable reason to not achieve perfect output is time constraints, never "the tool can't do it."
-
-**Evidence from this project:**
-- YC "Combinator" spelling: Failed 3 times with generic prompts, succeeded immediately with letter-by-letter spelling
-- Timeline bar chart: Failed 3 times with precise measurements, succeeded immediately with "VS" text comparison
-- Success rate when using RIGHT prompting strategy: ~95-100%
-
-**Always prioritize:**
-1. **Factual accuracy** - Numbers must match source data exactly
-2. **Spelling perfection** - Every word must be spelled correctly (use letter-by-letter if needed)
-3. **Readability** - Text must be legible at book size
-4. **Professional aesthetics** - Clean, modern, publication-quality
-5. **Brand consistency** - Colors, fonts match design system
-
-**Never accept:**
-- Wrong numbers or data
-- Misspellings or typos
-- Illegible text
-- Poor layout that confuses rather than clarifies
-- Low-resolution or pixelated images
-
-**When in doubt:**
-- Iterate up to 3-4 times per image WITH SAME APPROACH
-- If still not acceptable after 3-4 attempts, try COMPLETELY DIFFERENT APPROACH
-- Document what approaches failed and what finally worked in completion report
-- Share learnings to improve future prompting strategies
-
-## Proven Successful Strategies (From Chapter 1 Visual Assets Session)
-
-This section documents specific techniques that achieved 99%+ success rates during Chapter 1 visual asset generation:
-
-### Strategy 1: Hyphenated Text for Difficult Words
-
-**Problem**: "Autocomplete" consistently misspelled as "Automplpate", "Automplate", "Automplrate" across multiple attempts
-
-**Failed Approaches**:
-- Generic spelling instructions ("Spell correctly")
-- Letter-by-letter spelling ("A-U-T-O-C-O-M-P-L-E-T-E")
-- Syllable-based prompts ("Au-to-com-plete")
-
-**✅ Winning Strategy**: Use hyphenated version "Auto-Complete"
-- Success rate: 100% on first attempt
-- Why it works: Breaks word into recognizable sub-components
-- When to use: Any compound word or technical term that consistently misspells
-
-**Application**:
-```
-❌ "Autocomplete" → "Automplrate"
-✅ "Auto-Complete" → "Auto-Complete" ✓
-```
-
-### Strategy 2: Fresh Session for Persistent Issues
-
-**Problem**: Same error repeating across 3-4 iterations in single session despite prompt refinements
-
-**Failed Approach**: Keep trying refined prompts in same session
-- Result: Identical errors (model appears "stuck" on wrong pattern)
-
-**✅ Winning Strategy**: Click "New chat" button, start completely fresh session
-- Success rate: ~95% improvement on fresh attempt
-- Why it works: Clears cached model state/biases from previous failures
-- When to use: After 2-3 failed attempts with refined prompts in same session
-
-**Evidence from Session**:
-- "Accelerating" spelling: Failed 0 times (worked first try in fresh session with letter-by-letter)
-- "Autocomplete" → "Auto-Complete": Succeeded immediately in fresh session after 3 failures in old session
-
-**Application**:
-```
-Session 1: Attempt 1 → FAIL
-Session 1: Attempt 2 (refined prompt) → FAIL (same error)
-Session 1: Attempt 3 (more refinement) → FAIL (same error)
-→ Click "New chat" button
-Session 2: Attempt 1 (same/similar prompt) → ✅ SUCCESS
-```
-
-### Strategy 3: Simplify Complex Multi-Bar Charts to 3 Bars Max
-
-**Problem**: 5-bar technology adoption chart with precise alignment consistently generated duplicates, misalignments, wrong bar counts (7+ bars)
-
-**Failed Approaches**:
-- More precise pixel specifications (made it worse)
-- Explicit positioning coordinates (still failed)
-- Multiple iterations with same approach (6+ attempts, all failed identically)
-
-**✅ Winning Strategy**: Simplify to 3 bars maximum
-- Success rate: 100% on first attempt after simplification
-- Why it works: Reduces visual complexity, easier for model to parse structure
-- When to use: Any multi-element chart with 5+ similar components
-
-**Application**:
-```
-❌ 5-bar chart (Historical/Cloud/Mobile/AI/Future) → Duplicates, 7+ bars, misalignment
-✅ 3-bar chart (Historical/Mobile/AI) → Perfect alignment, correct count ✓
-```
-
-### Strategy 4: Arrow-Only Indicators (No Text Labels)
-
-**Problem**: Vertical text "Accelerating" on arrow initially misspelled as "Accelrartion"
-
-**Interim Fix**: Letter-by-letter spelling fixed the word
-**✅ Better Strategy**: Remove text entirely, use clean arrow-only indicator
-- Success rate: 100%
-- Why it works: Eliminates text rendering issues completely
-- When to use: Directional/trend indicators where arrow direction conveys meaning
-
-**Application**:
-```
-❌ Arrow with "Accelerating" label → "Accelrartion"
-🟡 Arrow with "A-c-c-e-l-e-r-a-t-i-n-g" → "Accelerating" ✓ (but extra complexity)
-✅ Arrow only (no text) → Clean arrow ✓ (simpler, cleaner)
-```
-
-### Strategy 5: Clean Up Progressive Iterations
-
-**Problem**: Initial image versions often have unnecessary text or visual clutter
-
-**✅ Winning Strategy**: After achieving core accuracy, simplify in final iteration
-- Remove small helper text
-- Keep only essential labels (e.g., just year ranges, not full descriptions)
-- Use minimal text on visual elements
-
-**Evidence from Session**:
-- Auto-Complete timeline: First version had descriptions on right side ("Line-by-line suggestions"), final version simplified to just year ranges ("2021-2022")
-- Technology Adoption: Final version simplified arrow to directional indicator only
-
-**Application**:
-```
-Version 1: Full text labels + descriptions + year ranges
-Version 2: Remove descriptions, keep just year ranges ✓
-Version 3: Remove arrow text label, keep just arrow ✓
-```
-
-### Quick Reference Decision Tree
-
-When facing image generation issues:
-
-1. **Spelling errors?**
-   - Try hyphenated version first: "Auto-Complete" instead of "Autocomplete"
-   - If still fails: Letter-by-letter with fresh session
-   - Last resort: Use abbreviation or simpler term
-
-2. **Same error 2-3 times in one session?**
-   - Click "New chat" button
-   - Try same/similar prompt in fresh session
-   - Often succeeds immediately
-
-3. **Complex multi-element layout failing?**
-   - Simplify to 3 elements maximum
-   - Consider text-based "VS" comparison instead
-   - Use explicit ratio labels instead of proportional sizing
-
-4. **Text on visual elements consistently wrong?**
-   - Remove text entirely if direction/shape conveys meaning
-   - Use arrow-only, icon-only, or shape-only indicators
-
-5. **Image correct but cluttered?**
-   - Progressive cleanup: Remove helper text, keep essentials only
-   - Simplify to minimal labels (dates, numbers, key terms only)
-
-## Progressive Disclosure
-
-- **Metadata** (~100 words): Skill automates Gemini image generation via browser
-- **SKILL.md** (~1.5k words): Complete workflow from prompt to integrated image
-- **No bundled resources needed**: All logic in SKILL.md, uses Playwright MCP tools directly
 
 ---
 
-**Ready to generate images.** Invoke with: "Generate images for lesson {N}" or "Create visuals for {lesson-file.md}"
+## Success Metrics
+
+**Reasoning Activation Score**: 4/4
+- ✅ Persona: AI-collaborative producer (iterative refinement, not one-shot)
+- ✅ Questions: 5 question sets for quality evaluation
+- ✅ Principles: 6 principles guide generation and refinement
+- ✅ Meta-awareness: 4 convergence points
+
+**Comparison**: v1.0 (procedural execution) → v3.0 (reasoning-activated collaboration)
+
+---
+
+**Ready to use**: Invoke to generate pedagogically effective educational infographics through iterative AI collaboration using Playwright MCP automation.

@@ -65,24 +65,36 @@ differentiation:
   remedial_for_struggling: "Focus on ValueError from user input first (int(input())); practice this pattern before introducing other exception types"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/015-part-4-chapter-21/spec.md"
 created: "2025-11-09"
-last_modified: "2025-11-09"
+last_modified: "2025-01-18"
 git_author: "Claude Code"
 workflow: "/sp.implement"
-version: "1.0.0"
+version: "2.0.0"
 ---
 
 # Exception Fundamentals
 
-Every Python program you write will encounter situations that don't go as planned. A user might enter text when you expect a number. A calculation might divide by zero. A file you're trying to open might not exist. Without proper error handling, your program crashes and leaves the user confused. In this lesson, you'll learn how to anticipate errors and handle them gracefully using Python's **exception handling** system.
+Every Python program you write will encounter situations that don't go as planned. A user might enter text when you expect a number. A calculation might divide by zero. A file you're trying to open might not exist. Without proper error handling, your program crashes and leaves the user confused.
 
-## Why Errors Matter
+In this lesson, you'll learn how to anticipate errors and handle them gracefully using Python's exception handling system. But here's the key: you'll start by intentionally breaking code to discover what exceptions look like, then work with AI to understand the exception hierarchy, challenge AI with edge cases, and finally build your own exception reference guide.
 
-Let's imagine a simple program that converts user input to an integer:
+---
 
+## Part 1: Intentionally Break Code to Discover Exception Types
+
+**Your Role**: Active experimenter discovering exception patterns
+
+Before you can handle errors, you need to see them. Professional developers don't memorize exception types—they learn to recognize patterns by experimenting.
+
+### Discovery Exercise: What Breaks and How?
+
+Run each code snippet and observe the error message. Your goal: identify the exception type and understand what triggered it.
+
+**Experiment 1: String to Number Conversion**
 ```python
+# What happens when you convert non-numeric text to integer?
 def convert_to_integer(user_input: str) -> int:
     return int(user_input)
 
@@ -90,8 +102,7 @@ result = convert_to_integer("hello")
 print(f"Number is: {result}")
 ```
 
-What happens when you run this? Python crashes with an error message. The user sees:
-
+**What you'll see**:
 ```
 ValueError: invalid literal for int() with base 10: 'hello'
 Traceback (most recent call last):
@@ -102,272 +113,391 @@ Traceback (most recent call last):
 ValueError: invalid literal for int() with base 10: 'hello'
 ```
 
-Your program stops. Nothing else runs. The error is unhelpful to the user (what should they do?). This is where exception handling comes in.
+**Your task**: Read the traceback bottom-to-top:
+- **Last line**: Exception type (ValueError) + message (what went wrong)
+- **Middle lines**: Call chain (where in your code the error occurred)
+- **Top line**: Header telling you "program stopped here"
 
-## What Are Exceptions?
-
-An **exception** is an event that disrupts normal program flow. When something unexpected happens, Python creates an **exception object** that contains three pieces of information:
-
-1. **Exception Type** (the name): What kind of error occurred? (`ValueError`, `TypeError`, `ZeroDivisionError`)
-2. **Error Message** (the description): What went wrong? (`"invalid literal for int() with base 10: 'hello'"`)
-3. **Traceback** (the location): Where did it happen? (which file, which function, which line)
-
-Instead of crashing immediately, you can **catch** these exceptions and decide how to respond.
-
-#### 💬 AI Colearning Prompt
-
-> "How does Python determine what type of exception to create? Why does string-to-int conversion raise ValueError specifically?"
-
-This is Python's way of telling you what went wrong so you can handle it intelligently.
-
-## Anatomy of a Traceback
-
-Before we fix errors, you need to read them. Let's break down the error message from above:
-
-```
-Traceback (most recent call last):
-  File "example.py", line 5, in <module>
-    result = convert_to_integer("hello")
-  File "example.py", line 2, in convert_to_integer
-    return int(user_input)
-ValueError: invalid literal for int() with base 10: 'hello'
-```
-
-Reading from bottom to top:
-
-- **Last line**: `ValueError: invalid literal for int() with base 10: 'hello'` — This is the exception type and message. It tells you: Python tried to convert `'hello'` to an integer and failed.
-- **Middle lines**: These show the call chain. The error happened at line 2 in `convert_to_integer()`, which was called from line 5 in the main code.
-- **Top line**: `Traceback (most recent call last):` — This header tells you "here's where the program stopped."
-
-The traceback shows you the **path** the error took through your code. This makes debugging much easier.
-
-#### 🎓 Instructor Commentary
-
-> In AI-native development, you don't memorize every exception type—you understand how to READ error messages and ask AI clarifying questions. The traceback is your roadmap. Semantics (understanding the error) matters more than syntax (remembering 60 exception types).
-
-## Basic Try/Except Structure
-
-Here's how to handle the error gracefully:
-
+**Experiment 2: Type Mismatch**
 ```python
-def convert_to_integer(user_input: str) -> int | None:
+# What happens when you add incompatible types?
+def add_values(a: int, b: int) -> int:
+    return a + b
+
+result = add_values(5, "10")
+print(f"Sum: {result}")
+```
+
+**What you'll see**: `TypeError: unsupported operand type(s) for +: 'int' and 'str'`
+
+**Experiment 3: Division by Zero**
+```python
+# What happens when math goes wrong?
+def divide_numbers(numerator: float, denominator: float) -> float:
+    return numerator / denominator
+
+result = divide_numbers(10, 0)
+print(f"Result: {result}")
+```
+
+**What you'll see**: `ZeroDivisionError: division by zero`
+
+### Recognition Pattern Building
+
+After running all three experiments, you've discovered Python's three most common exception types:
+
+| Exception Type | Trigger | What It Means |
+|---------------|---------|---------------|
+| **ValueError** | Correct type, wrong value | "This string isn't a valid number" |
+| **TypeError** | Wrong type altogether | "You can't add int and str" |
+| **ZeroDivisionError** | Math violation | "You can't divide by zero" |
+
+**Deliverable**: Create a text file called `exception_discoveries.txt` documenting:
+- Each experiment you ran
+- The exception type produced
+- Your hypothesis about what triggers each exception type
+- 2 additional ways you could trigger the same exception
+
+---
+
+## Part 2: AI Explains Exception Hierarchy
+
+**Your Role**: Student learning from AI Teacher
+
+Now that you've seen exceptions in action, it's time to understand the bigger picture. Ask AI to teach you how Python organizes exceptions.
+
+### AI Teaching Prompt
+
+Ask your AI companion (Claude Code, Gemini CLI, or ChatGPT):
+
+> "I've discovered three exception types: ValueError, TypeError, and ZeroDivisionError. Explain:
+>
+> 1. How does Python determine which exception type to raise?
+> 2. What is the exception hierarchy (BaseException → Exception → specific types)?
+> 3. Why does ValueError exist separately from TypeError?
+> 4. Show me a simple diagram of how these three exceptions relate to each other in Python's exception hierarchy."
+
+### What You'll Learn from AI
+
+**Expected AI Response** (summary):
+- **Exception Hierarchy**: All exceptions inherit from `BaseException`, most inherit from `Exception`
+- **ValueError**: Raised when a function receives an argument of correct type but inappropriate value
+- **TypeError**: Raised when an operation is applied to an object of inappropriate type
+- **ZeroDivisionError**: Specific math error, inherits from `ArithmeticError`
+- **Why separate types?**: Different exceptions communicate different problems, enabling targeted recovery strategies
+
+### Convergence Activity
+
+After AI explains, **test your understanding**:
+
+Ask AI: "Show me code that could raise all three exception types in the same function. For each exception, explain what recovery strategy makes sense."
+
+**Example of what AI might show**:
+```python
+def process_calculation(value_str: str, divisor_str: str) -> float:
+    """
+    Process calculation with multiple potential exception points.
+
+    Could raise:
+    - ValueError: if value_str or divisor_str aren't valid numbers
+    - TypeError: if wrong types passed (unlikely with type hints, but possible)
+    - ZeroDivisionError: if divisor is zero
+    """
     try:
-        return int(user_input)
-    except ValueError:
-        print(f"'{user_input}' is not a valid integer. Please try again.")
-        return None
-
-result = convert_to_integer("hello")
-if result is not None:
-    print(f"Success! Number is: {result}")
-else:
-    print("Conversion failed.")
+        value = int(value_str)        # ValueError if not numeric
+        divisor = int(divisor_str)    # ValueError if not numeric
+        result = value / divisor       # ZeroDivisionError if divisor is 0
+        return result
+    except ValueError as e:
+        print(f"Conversion error: {e}")
+        return 0.0
+    except ZeroDivisionError:
+        print("Cannot divide by zero")
+        return 0.0
+    except TypeError as e:
+        print(f"Type error: {e}")
+        return 0.0
 ```
 
-Output:
-```
-'hello' is not a valid integer. Please try again.
-Conversion failed.
-```
+**Your turn**: Review AI's code and explain back to AI:
+- Why are there three separate except blocks?
+- What happens if value_str = "abc"?
+- What happens if divisor_str = "0"?
+- What happens if you pass a list instead of a string?
 
-The program doesn't crash anymore. Instead, it handles the error and continues.
+**Deliverable**: Write a 1-paragraph summary explaining Python's exception hierarchy in your own words, referencing the diagram AI provided.
 
-Here's how it works:
+---
 
-- **`try:` block** — Code that might cause an exception goes here
-- **`except:` block** — Code that runs if that exception occurs
+## Part 3: Student Challenges AI with Multiple Except Blocks
 
-If an exception happens in the `try` block, Python stops executing that block, checks if you have an `except` block for that exception type, and runs the exception handler instead.
+**Your Role**: Student teaching AI by identifying edge cases
 
-#### 🚀 CoLearning Challenge
+Now reverse the roles. You'll design challenges that test whether AI understands exception handling nuances.
 
-Ask your AI Co-Teacher:
+### Challenge Design Pattern
 
-> "I have a function that divides two numbers. Describe to me what exceptions could happen (like dividing by zero). Then show me a try/except block that handles them."
+Create scenarios where AI must:
+1. Predict which exception will occur
+2. Handle multiple exception types in priority order
+3. Deal with exception chaining
 
-**Expected Outcome:** You'll see that describing your function's potential errors is the first step—then AI helps you write handlers for each one.
+### Challenge 1: Predict the Exception
+
+**Your prompt to AI**:
+> "I have this function. What exception will occur for each test case? Explain your prediction BEFORE running the code.
+>
+> ```python
+> def parse_age(age_str: str) -> int:
+>     age = int(age_str)
+>     if age < 0:
+>         raise ValueError(f"Age cannot be negative, got {age}")
+>     return age
+> ```
+>
+> Test cases:
+> 1. `parse_age("25")`
+> 2. `parse_age("-5")`
+> 3. `parse_age("abc")`
+> 4. `parse_age("")`
+>
+> For each case, predict: Will it succeed? If it fails, which exception and why?"
+
+**Expected AI Response**:
+1. Success → returns 25
+2. ValueError from `raise` statement (age < 0)
+3. ValueError from `int()` call (invalid literal)
+4. ValueError from `int()` call (empty string)
+
+**Your follow-up**: "Now show me how to handle all these cases with appropriate except blocks. Which exception should be caught first and why?"
+
+### Challenge 2: Exception Chaining
+
+**Your prompt to AI**:
+> "Explain exception chaining. Why would I use `raise ValueError(...) from e` instead of just `raise ValueError(...)`? Show me an example where exception chaining helps debugging."
+
+**Expected learning**: AI will explain that `from e` preserves the original exception context, making debugging easier.
+
+### Challenge 3: Catching vs Re-raising
+
+**Your prompt to AI**:
+> "Here's code with a try/except. Should this catch the exception and continue, or catch and re-raise? Explain your reasoning.
+>
+> ```python
+> def read_configuration(filename: str) -> dict:
+>     try:
+>         with open(filename) as f:
+>             return json.load(f)
+>     except FileNotFoundError:
+>         # What should happen here?
+>         pass
+> ```
+>
+> Give me three different strategies:
+> 1. Catch and return default configuration
+> 2. Catch and re-raise with better message
+> 3. Don't catch, let caller handle
+>
+> When would you use each strategy?"
+
+**Deliverable**: Document three challenging scenarios you posed to AI, AI's responses, and your analysis of whether AI's exception handling advice was sound.
+
+---
+
+## Part 4: Build Exception Reference Guide with Handling Strategies
+
+**Your Role**: Knowledge synthesizer creating reusable reference
+
+Now integrate everything you've learned into a practical reference guide you can use in future projects.
+
+### Your Exception Reference Guide
+
+Create a markdown file called `exception_reference_guide.md` with this structure:
+
+```markdown
+# Python Exception Handling Reference Guide
+*Chapter 21, Lesson 1*
 
 ## Common Exception Types
 
-You'll see these three exception types constantly. Learn to recognize them by name:
+### ValueError
+**When it occurs**: Function receives correct type but inappropriate value
+**Common triggers**:
+- `int("abc")` — string isn't valid number
+- `int("-5")` for age validation — value out of expected range
 
-### ValueError: Wrong Value, Right Type
+**Handling strategy**:
+- Input validation: Prompt user to retry
+- Data processing: Skip invalid record, log error
+- Configuration: Use default value
 
-This happens when you pass a value of the correct **type** but wrong **value**:
+**Code example**:
+[Your example here]
 
+---
+
+### TypeError
+**When it occurs**: Operation applied to inappropriate type
+**Common triggers**:
+- `5 + "10"` — can't add int and str
+- `len(42)` — int has no length
+
+**Handling strategy**:
+- Input validation: Type checking before operation
+- Function calls: Validate argument types
+- API responses: Validate data structure
+
+**Code example**:
+[Your example here]
+
+---
+
+### ZeroDivisionError
+**When it occurs**: Division or modulo by zero
+**Common triggers**:
+- `10 / 0`
+- `x % 0`
+
+**Handling strategy**:
+- Check divisor before operation
+- Return sentinel value (None, 0, or custom)
+- Raise more specific exception with context
+
+**Code example**:
+[Your example here]
+
+---
+
+## Exception Handling Patterns
+
+### Pattern 1: Specific Exception First
 ```python
-def parse_age(age_str: str) -> int:
+try:
+    risky_operation()
+except ValueError:
+    # Handle value errors
+except TypeError:
+    # Handle type errors
+except Exception:
+    # Catch-all (use sparingly)
+```
+
+### Pattern 2: Exception Chaining
+```python
+try:
+    value = int(input_str)
+except ValueError as e:
+    raise ValueError(f"Invalid age: {input_str}") from e
+```
+
+### Pattern 3: Catch and Continue
+```python
+for item in data:
     try:
-        age = int(age_str)
-        if age < 0:
-            raise ValueError(f"Age cannot be negative, got {age}")
-        return age
+        process(item)
     except ValueError as e:
-        print(f"Age error: {e}")
-        return 0
-
-result = parse_age("abc")
-# Output: Age error: invalid literal for int() with base 10: 'abc'
-
-result = parse_age("-5")
-# Output: Age error: Age cannot be negative, got -5
+        log_error(e)
+        continue  # Skip this item, process next
 ```
-
-The issue: the input is a string (correct type), but it's not a valid number (wrong value).
-
-### TypeError: Wrong Type Altogether
-
-This happens when you use the wrong **type** of data with an operation:
-
-```python
-def add_values(a: int, b: int) -> int:
-    try:
-        return a + b
-    except TypeError as e:
-        print(f"Type error: Cannot add these types. {e}")
-        return 0
-
-result = add_values(5, "10")
-# Output: Type error: Cannot add these types. unsupported operand type(s) for +: 'int' and 'str'
-
-result = add_values(5, [1, 2, 3])
-# Output: Type error: Cannot add these types. unsupported operand type(s) for +: 'int' and 'list'
-```
-
-The issue: you tried to add a number to a string or list. Python can't do that.
-
-### ZeroDivisionError: Dividing by Zero
-
-This happens when math goes wrong:
-
-```python
-def divide_numbers(numerator: float, denominator: float) -> float | None:
-    try:
-        result = numerator / denominator
-        return result
-    except ZeroDivisionError:
-        print("Error: Cannot divide by zero!")
-        return None
-
-print(divide_numbers(10, 2))      # 5.0
-print(divide_numbers(10, 0))      # None (error handled)
-```
-
-The issue: mathematically, you can't divide by zero. Python prevents this with an exception.
-
-#### ✨ Teaching Tip
-
-> Use Claude Code to test your exception handling with various inputs. Try intentionally providing bad data (non-numeric strings, zero values, negative numbers) to see which exceptions your code triggers. This builds intuition for what could go wrong.
-
-## Three Simple Exercises
-
-Now you'll practice writing exception handlers. Each exercise gets slightly harder.
-
-### Exercise 1: Catch ValueError from Input
-
-Write a function that repeatedly asks the user for a number until they provide a valid one:
-
-```python
-def get_positive_integer() -> int:
-    while True:
-        try:
-            value = int(input("Enter a positive integer: "))
-            if value > 0:
-                return value
-            else:
-                print("Please enter a number greater than zero.")
-        except ValueError:
-            print("That's not a valid integer. Try again.")
-
-result = get_positive_integer()
-print(f"You entered: {result}")
-```
-
-**Your task**: Run this code. What happens when you enter "abc"? What happens when you enter "-5"? What happens when you enter "42"?
-
-### Exercise 2: Catch ZeroDivisionError with Fallback
-
-Write a function that divides two numbers. If the denominator is zero, return a fallback value:
-
-```python
-def safe_divide(numerator: float, denominator: float, fallback: float = 0.0) -> float:
-    try:
-        return numerator / denominator
-    except ZeroDivisionError:
-        print(f"Cannot divide {numerator} by zero. Returning fallback: {fallback}")
-        return fallback
-
-print(safe_divide(10, 2))       # 5.0
-print(safe_divide(10, 0))       # 0.0 (fallback)
-print(safe_divide(7, 0, -1))    # -1 (custom fallback)
-```
-
-**Your task**: Run this code. Then modify it to return the absolute value of the numerator as fallback instead of 0.0.
-
-### Exercise 3: Trace an Error and Fix It
-
-Here's broken code. Run it, read the traceback, and explain what went wrong:
-
-```python
-def process_data(data: list[str]) -> int:
-    try:
-        total = 0
-        for item in data:
-            total = total + int(item)
-        return total
-    except ValueError:
-        print("Item in list is not a valid integer.")
-        return -1
-
-result = process_data(["5", "10", "fifteen", "20"])
-print(f"Total: {result}")
-```
-
-**Your task**:
-1. Run this code and read the error message.
-2. In the traceback, identify: What line caused the error? What is the error type? What was the problematic input?
-3. Why did the exception handler still print its message?
 
 ---
 
-## Try With AI
+## Traceback Reading Guide
 
-Use your preferred AI companion (Claude Code, Gemini CLI, or ChatGPT web) to deepen your understanding of exception handling.
+**Anatomy of a traceback** (read bottom-to-top):
+```
+Traceback (most recent call last):
+  File "example.py", line 5, in <module>      ← Where you called the function
+    result = convert_to_integer("hello")
+  File "example.py", line 2, in convert_to_integer  ← Where error occurred
+    return int(user_input)
+ValueError: invalid literal for int() with base 10: 'hello'  ← Exception type + message
+```
 
-### Prompt 1: Understand Exception Objects
-
-Ask your AI:
-
-> "Explain what happens when Python encounters an error: How does it create an exception object? What information does the exception object contain?"
-
-**Expected Outcome**: You understand that exceptions are objects with type, message, and traceback—not magic, but structured information Python uses to communicate errors.
-
-### Prompt 2: Apply to Your Code
-
-Ask your AI:
-
-> "What exceptions could occur in this code? [paste your code]. For each exception, write a try/except block that handles it."
-
-(Replace with actual code from one of your programs from Chapters 12-20.)
-
-**Expected Outcome**: You can identify potential errors in your own code and sketch handlers for them.
-
-### Prompt 3: Analyze Exception Design
-
-Ask your AI:
-
-> "Why does Python have separate ValueError and TypeError instead of just one 'error' exception? When would you catch each one differently?"
-
-**Expected Outcome**: You understand that different exception types communicate different problems—ValueError says 'the value is wrong', TypeError says 'the type is wrong'. This distinction lets you write targeted recovery strategies.
-
-### Prompt 4: Synthesize Your Learning
-
-Ask your AI:
-
-> "I've learned about try/except, ValueError, TypeError, and ZeroDivisionError. Show me a realistic function that could raise all three exception types. For each, write a separate except block explaining what that exception means."
-
-**Expected Outcome**: You've seen a complex example integrating multiple exception types, reinforcing that real code often needs multiple error handlers.
+**Reading steps**:
+1. Read exception type (last line)
+2. Read exception message (last line)
+3. Find where error occurred (second-to-last File line)
+4. Trace call chain (work upward)
 
 ---
 
-**Note on Safety**: When testing code with AI, always review the generated exception handlers. Ask "Is this error message helpful to users?" and "Would this recovery strategy actually solve the problem?" Exception handling is about user experience—writing messages and recovery paths that help users fix their mistakes.
+## Decision Tree: Which Exception to Catch?
+
+**Question 1**: Is the value the wrong type?
+- Yes → Expect `TypeError`
+- No → Go to Question 2
+
+**Question 2**: Is the value the right type but invalid?
+- Yes → Expect `ValueError`
+- No → Go to Question 3
+
+**Question 3**: Is it a math operation error?
+- Yes → Expect `ZeroDivisionError` or `ArithmeticError`
+- No → Check Python docs for specific exception
+
+---
+
+## Testing Exception Handling
+
+**Pattern**: Always test both success and failure paths
+```python
+# Test success
+assert parse_age("25") == 25
+
+# Test ValueError for negative
+try:
+    parse_age("-5")
+    assert False, "Should have raised ValueError"
+except ValueError:
+    pass  # Expected
+
+# Test ValueError for invalid string
+try:
+    parse_age("abc")
+    assert False, "Should have raised ValueError"
+except ValueError:
+    pass  # Expected
+```
+```
+
+### Guide Requirements
+
+Your reference guide must include:
+1. **Three exception types** with triggers, handling strategies, and code examples
+2. **Three exception handling patterns** with realistic use cases
+3. **Traceback reading guide** with step-by-step instructions
+4. **Decision tree** for choosing which exception to catch
+5. **Testing patterns** for verifying exception handling works
+
+### Validation with AI
+
+Once your guide is complete, validate it by asking AI:
+
+> "Review my exception reference guide. Are my handling strategies appropriate? What common exceptions am I missing? What patterns should I add for professional code?"
+
+**Deliverable**: Complete `exception_reference_guide.md` file that serves as your go-to resource for exception handling in future projects.
+
+---
+
+## Summary: Bidirectional Learning Pattern
+
+In this lesson, you experienced all three roles:
+
+**Part 1 (Student explores)**: You intentionally broke code to discover exception types
+**Part 2 (AI teaches)**: AI explained the exception hierarchy and organization
+**Part 3 (Student teaches)**: You challenged AI with edge cases and exception chaining
+**Part 4 (Knowledge synthesis)**: You built a reusable reference guide
+
+This pattern ensures you understand exceptions not just as syntax, but as a conceptual framework for robust error handling.
+
+### What You've Built
+
+1. `exception_discoveries.txt` — Your experimental findings
+2. Exception hierarchy summary — Your understanding of Python's exception organization
+3. Challenge documentation — Three edge cases you posed to AI
+4. `exception_reference_guide.md` — Your comprehensive exception handling reference
+
+### Next Steps
+
+Lesson 2 will build on this foundation, exploring `except`, `else`, and `finally` blocks for more sophisticated error handling. You'll use this reference guide throughout Chapter 21.

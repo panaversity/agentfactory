@@ -46,7 +46,7 @@ differentiation:
   remedial_for_struggling: "For A2 students needing reinforcement: Provide starter templates with blanks to fill; simplified examples with 5 steps instead of 8; visual flowcharts before text-based steps; guided prompting where AI shows step-by-step thinking before implementation"
 ---
 
-# Lesson 4: Specifying Logic - Implementation Steps for Real Features
+# Specifying Logic - Implementation Steps for Real Features
 
 You've mastered three critical skills: **clear commands**, **rich context**, and **architectural thinking**. Now comes the breakthrough moment that separates casual AI users from true software architects.
 

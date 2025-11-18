@@ -54,7 +54,7 @@ differentiation:
   remedial_for_struggling: "Focus on object creation first; use simple date strings (YYYY-MM-DD format); ask AI for format code explanations before complex parsing"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.2"
+generated_by: "content-implementer v3.0.2"
 source_spec: "specs/001-part-4-chapter-23/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -96,7 +96,7 @@ print(f"Day: {my_birthday.day}, Month: {my_birthday.month}, Year: {my_birthday.y
 
 **What's happening**: The `date` constructor takes three parameters: `year`, `month` (1-12), and `day` (1-31, depending on the month). The type hint `date` tells Python (and anyone reading your code) that the variable holds a date object.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize date constructor parameters—you type `date(` in your IDE and let AI autocomplete show you the parameters. Your job: understand that a date object separates year/month/day into distinct attributes.
 
@@ -271,7 +271,7 @@ All parse to the same date object because Python internally stores dates the sam
 
 **CRITICAL FOR USERS**: When you receive a date string, you need to know its format. If the user enters "11/09/2025", is that November 9 (US) or September 11 (EU)? Always clarify the expected format in your application!
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Before Python 3.14, parsing dates required workarounds. Now you parse directly—syntax is cheap, knowing WHEN to parse (user input) vs construct (programmatic dates) is gold. Ask AI when you're unsure about format codes; you don't memorize all 30+.
 
@@ -475,28 +475,260 @@ invalid: date | None = parse_birthday("not-a-date")
 5. ✅ Includes type hints throughout
 6. ✅ Tested with valid and invalid input
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Notice the error handling: When the user enters "not-a-date", Python raises `ValueError` with a descriptive message. Your job isn't to memorize error messages—it's to catch them and provide helpful feedback to the user. AI helps you understand what went wrong.
 
-## Try With AI
+## Try With AI: The Date Arithmetic Workshop
 
-Use **Claude Code** (or your preferred AI companion) to explore datetime parsing and object creation with these progressive prompts.
+You've learned Python 3.14's new parsing methods and datetime object creation. Now you'll apply this knowledge by building date arithmetic utilities that demonstrate age calculation, duration measurement, and timezone-aware datetime handling.
 
-**Prompt 1 (Recall)**: "What's new in Python 3.14 for date and time parsing? Explain the difference between date.strptime() and the old approach."
+### Challenge Overview
 
-**Expected outcome**: You understand Python 3.14's new methods and why they're improvements.
+**The Date Arithmetic Workshop**: You're building utilities that perform practical date calculations—calculating someone's age, finding the number of days until an event, understanding the difference between naive and timezone-aware datetimes. This demonstrates why Python 3.14's new parsing methods matter.
 
-**Prompt 2 (Understand)**: "Explain the difference between naive and timezone-aware datetime objects. When would you use each one?"
+---
 
-**Expected outcome**: You can articulate when timezone awareness matters and when you can skip it.
+## Part 1: Date Arithmetic Exploration (Independent Exploration)
 
-**Prompt 3 (Apply)**: "Generate a Python function that takes a user's birth date string (YYYY-MM-DD format) and calculates how many days old they are today. Include type hints and error handling."
+**Your Role**: Researcher understanding date calculations manually
 
-**Expected outcome**: You understand parsing user input, date arithmetic (coming in the next lesson), and validation.
+Before using AI, manually explore how date arithmetic works and understand the limitations of naive datetimes.
 
-**Prompt 4 (Analyze)**: "Why is timezone awareness important for global applications? When building a scheduling app used in NYC, London, and Tokyo, what could go wrong if you use naive datetimes?"
+### Part 1 Task: Create `date_arithmetic_analysis.md`
 
-**Expected outcome**: You recognize that timezone handling is a real-world concern and understand the principle of storing UTC + converting on display.
+Document your findings:
 
-**Safety Note**: When parsing user input, always validate the format. Never assume users will enter dates correctly—use try/except to catch and report errors gracefully. Ask your AI: "How do I provide helpful error messages when date parsing fails?"
+**Scenario 1: Age Calculation Precision**
+- Birth date: "1999-03-15" (parse this using Python 3.14's `date.strptime()`)
+- Today's date: Get using `date.today()`
+- Calculate age in days: Subtract dates (what does the result tell you?)
+- Calculate age in years: How would you handle leap years?
+- Question: If someone was born on February 29 (leap year), how old are they on Feb 28 non-leap years?
+
+**Scenario 2: Naive vs Timezone-Aware Confusion**
+- Create naive datetime: `datetime(2025, 11, 9, 14, 30, 0)`
+- Create aware datetime: `datetime(2025, 11, 9, 14, 30, 0, tzinfo=timezone.utc)`
+- Compare them: What happens if you subtract naive from aware?
+- Question: Why would you get an error mixing naive and aware datetimes?
+
+**Scenario 3: Duration Representation**
+- Start: "2025-11-09 09:00:00" (parsed)
+- End: "2025-11-10 17:30:45" (parsed)
+- Duration: End - Start produces what type? What does it contain?
+- Question: How would you extract "32 hours and 30 minutes" from a duration?
+
+### Part 1 Deliverable
+
+File: `date_arithmetic_analysis.md` with three scenarios and your observations
+
+**Time**: 15-20 minutes
+
+---
+
+## Part 2: AI as Teacher (Learning Principles)
+
+**Your Role**: Student learning datetime arithmetic patterns
+
+### Part 2 Prompts
+
+**Prompt 1**: "I've explored date arithmetic and got confused mixing naive and timezone-aware datetimes. Explain: When should I use naive datetimes vs timezone-aware? What breaks if I mix them?"
+
+**Prompt 2**: "Show me the pattern for age calculation. If someone is born on 1999-03-15 and today is 2025-11-09, how do I calculate their age in years? In days?"
+
+**Prompt 3**: "I calculated a duration by subtracting two datetimes. The result is a timedelta. Show me how to extract days, hours, and minutes from it and display as 'X days, Y hours, Z minutes'."
+
+### Part 2 Outcome
+
+You understand:
+- Naive datetimes are local (unaware of timezone)
+- Aware datetimes include timezone info
+- Timedelta is the result of subtracting datetimes
+- How to work with durations in human-readable forms
+
+---
+
+## Part 3: Student as Teacher (Challenging Edge Cases)
+
+**Your Role**: Quality tester finding real-world complications
+
+### Part 3 Challenges
+
+**Challenge 1: Leap Year Edge Cases**
+> "If someone is born on February 29, 2000 (leap year), how old are they on February 28, 2025? Is it 24 or 25? Show me how Python handles this edge case."
+
+**Challenge 2: Timezone Mixing Danger**
+> "Show me what happens if I create two naive datetimes in different timezones and subtract them. How would I prevent bugs where times are incorrectly compared?"
+
+**Challenge 3: Parsing Ambiguity**
+> "When parsing a date string '11/09/2025', is that November 9 (US) or September 11 (EU)? How do I handle this ambiguity safely in international applications?"
+
+### Part 3 Deliverable
+
+File: `date_arithmetic_challenges.md` with your assessment of AI's responses
+
+**Time**: 15-20 minutes
+
+---
+
+## Part 4: Build Date Calculator (Convergence)
+
+**Your Role**: Developer building practical date utilities
+
+### Part 4 Deliverable: `date_calculator.py`
+
+```python
+from datetime import date, datetime, timezone, timedelta
+
+class DateCalculator:
+    """Practical date and time calculation utilities."""
+
+    @staticmethod
+    def parse_date_safe(date_string: str, format_str: str = "%Y-%m-%d") -> date | None:
+        """Parse date string safely using Python 3.14's date.strptime().
+
+        Args:
+            date_string: Date string to parse
+            format_str: Format pattern (default: YYYY-MM-DD)
+
+        Returns:
+            Parsed date object, or None if invalid
+        """
+        try:
+            return date.strptime(date_string, format_str)
+        except ValueError:
+            return None
+
+    @staticmethod
+    def calculate_age(birth_date: date) -> int:
+        """Calculate age in years from birth date.
+
+        Args:
+            birth_date: Birth date as date object
+
+        Returns:
+            Age in complete years
+        """
+        today = date.today()
+        age = today.year - birth_date.year
+        # Adjust if birthday hasn't occurred this year
+        if (today.month, today.day) < (birth_date.month, birth_date.day):
+            age -= 1
+        return age
+
+    @staticmethod
+    def days_since(reference_date: date) -> int:
+        """Calculate days since a reference date.
+
+        Args:
+            reference_date: Reference date
+
+        Returns:
+            Days elapsed
+        """
+        return (date.today() - reference_date).days
+
+    @staticmethod
+    def days_until(target_date: date) -> int:
+        """Calculate days until a target date.
+
+        Args:
+            target_date: Target date in future
+
+        Returns:
+            Days remaining (negative if past)
+        """
+        return (target_date - date.today()).days
+
+    @staticmethod
+    def format_duration(td: timedelta) -> str:
+        """Format timedelta as human-readable string.
+
+        Args:
+            td: timedelta object
+
+        Returns:
+            Formatted string like '2 days, 3 hours, 15 minutes'
+        """
+        total_seconds = int(td.total_seconds())
+
+        days = total_seconds // 86400
+        hours = (total_seconds % 86400) // 3600
+        minutes = (total_seconds % 3600) // 60
+        seconds = total_seconds % 60
+
+        parts = []
+        if days > 0:
+            parts.append(f"{days} day{'s' if days != 1 else ''}")
+        if hours > 0:
+            parts.append(f"{hours} hour{'s' if hours != 1 else ''}")
+        if minutes > 0:
+            parts.append(f"{minutes} minute{'s' if minutes != 1 else ''}")
+        if seconds > 0:
+            parts.append(f"{seconds} second{'s' if seconds != 1 else ''}")
+
+        return ", ".join(parts) if parts else "less than a second"
+
+    @staticmethod
+    def is_timezone_aware(dt: datetime) -> bool:
+        """Check if datetime is timezone-aware.
+
+        Args:
+            dt: datetime object
+
+        Returns:
+            True if timezone-aware, False if naive
+        """
+        return dt.tzinfo is not None and dt.tzinfo.utcoffset(dt) is not None
+
+    @staticmethod
+    def make_aware_utc(dt: datetime) -> datetime:
+        """Convert naive datetime to UTC-aware datetime.
+
+        Args:
+            dt: Naive datetime object
+
+        Returns:
+            UTC-aware datetime
+        """
+        if DateCalculator.is_timezone_aware(dt):
+            return dt
+        return dt.replace(tzinfo=timezone.utc)
+```
+
+### Part 4 Requirements
+
+Your calculator must include:
+1. Safe date parsing with error handling
+2. Age calculation with leap year handling
+3. Duration formatting
+4. Timezone awareness checking
+5. Comprehensive type hints
+6. Docstrings explaining each function
+
+### Part 4 Deliverable
+
+File: `date_calculator.py` with working calculator
+
+**Time**: 25-35 minutes
+
+---
+
+## Integrated Learning Outcomes
+
+You've practiced all Three Roles:
+
+**Part 1 - Student Explores**: You discovered date arithmetic through manual experimentation
+**Part 2 - AI Teaches**: You learned the principles and patterns
+**Part 3 - Student Teaches**: You challenged AI with edge cases
+**Part 4 - Team Builds**: You synthesized everything into utilities
+
+### What You've Created
+
+1. `date_arithmetic_analysis.md` — Your manual exploration of date calculations
+2. `date_arithmetic_challenges.md` — Edge cases you challenged AI with
+3. `date_calculator.py` — Working date calculation utilities
+
+---
+
+**Next**: Lesson 4 builds on this with datetime formatting and manipulation, showing how to display dates in different formats and work with timezones.

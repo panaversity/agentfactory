@@ -54,7 +54,7 @@ differentiation:
   remedial_for_struggling: "Focus on ISO 8601 format first; use timedelta for simple day arithmetic; default to UTC timezone before exploring local conversions"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.2"
+generated_by: "content-implementer v3.0.2"
 source_spec: "specs/001-part-4-chapter-23/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -131,7 +131,7 @@ print(friendly)  # Sunday, November 09, 2025 at 02:30 PM
 
 Notice how the same `moment` looks different depending on the format. Your job isn't to remember these strings—it's to choose the right format for your audience.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize all 30+ format codes. You understand the pattern (`%Y` = year, `%m` = month, `%d` = day) and ask AI when you need a specific format. **Syntax is cheap; knowing WHEN to use ISO 8601 vs localized format is gold.** ISO for data storage and APIs. Friendly format for user interfaces.
 
@@ -265,7 +265,7 @@ else:
 
 Notice we calculate remaining and check if it's positive. This is the pattern for deadlines, event scheduling, and countdowns.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > You're not calculating duration by hand (that's error-prone and wasteful). You subtract two datetime objects and timedelta does the work. **Syntax is cheap; knowing to subtract datetime objects and handle the result is gold.** This is why we use timedelta.
 
@@ -431,7 +431,7 @@ Tokyo: Monday 11:30 PM
 
 This is real production code. You're solving an actual problem: helping people understand when a meeting happens in their timezone.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > You don't calculate timezone offsets in your head (that's why timezones exist as objects). You understand: "UTC is the reference, offsets are +/- hours, astimezone() does the conversion." **Syntax is cheap; knowing to keep everything in UTC internally and convert on display is gold.** This pattern prevents bugs.
 
@@ -453,34 +453,205 @@ Timezones aren't simple. During daylight saving time transitions, an hour doesn'
 
 ---
 
-## Try With AI
+## Try With AI: The Date Format Migration Challenge
 
-Use Claude Code or your AI companion tool to explore these concepts deeper. Work through the prompts below progressively, and don't be afraid to experiment with variations.
+You've learned `strftime()` for formatting and `timedelta` for manipulation. Now you'll migrate between different date formats, understand formatting edge cases, and build a multi-format date parser/generator.
 
-#### 1. Recall: Common Format Codes
+### Challenge Overview
 
-Ask your AI:
-> "List 5 common `strftime` format codes (%Y, %m, %d, %H, %M) and show me what each produces for today's date."
+**The Date Format Migration**: You're building a system that converts dates between multiple formats—ISO 8601 for storage, US format for display, friendly format for user interfaces. This demonstrates why understanding format codes and timezone conversion is critical in real applications.
 
-**Expected Output**: A list of format codes with examples for the current date.
+---
 
-#### 2. Understand: Timedelta vs Datetime
+## Part 1: Format Ambiguity Analysis (Independent Exploration)
 
-Ask your AI:
-> "Explain the difference between a `datetime` object and a `timedelta` object. When would you use each?"
+**Your Role**: Investigator discovering format ambiguity issues
 
-**Expected Output**: Clear explanation that datetime represents a moment, timedelta represents a duration, with practical examples.
+### Part 1 Task: Create `format_ambiguity_analysis.md`
 
-#### 3. Apply: Multi-Format Output Function
+**Scenario 1: Date Format Confusion**
+- You receive: "11/09/2025"
+- Is this November 9 (US) or September 11 (EU)?
+- What does ISO 8601 say? (YYYY-MM-DD)
+- Try parsing with different format codes
+- Question: How would you build a system that accepts multiple formats safely?
 
-Ask your AI:
-> "Generate a function that takes any datetime and returns it formatted in three ways: ISO 8601, US format (MM/DD/YYYY), and friendly format ('Day, Month DD, YYYY'). Include type hints."
+**Scenario 2: Timezone Offset in Output**
+- Format same datetime three ways:
+  - `strftime("%Y-%m-%d %H:%M:%S")` (no timezone)
+  - `strftime("%Y-%m-%dT%H:%M:%S%z")` (with offset)
+  - `strftime("%Y-%m-%dT%H:%M:%S%Z")` (with zone name)
+- Compare outputs
+- Question: Which format is best for APIs? Logs? User display?
 
-**Expected Output**: Working function with proper type hints that converts a datetime to three formats.
+**Scenario 3: Localization Challenges**
+- Month name: `strftime("%B")` produces English
+- What if users are in different locales?
+- Question: How do you handle translating month names?
 
-#### 4. Analyze: Timezone Conversion Challenges
+### Part 1 Deliverable
 
-Ask your AI:
-> "What are the main challenges when converting times between timezones? How would you build a reliable system for a global application?"
+File: `format_ambiguity_analysis.md`
 
-**Expected Output**: Discussion of DST transitions, ambiguous times, and strategies to keep your system reliable.
+**Time**: 15-20 minutes
+
+---
+
+## Part 2: AI as Teacher
+
+**Your Role**: Student learning format patterns
+
+### Part 2 Prompts
+
+**Prompt 1**: "I'm confused about date formats. When should I use ISO 8601 vs US format vs friendly format? Where does each format belong in an application?"
+
+**Prompt 2**: "Show me how to convert between formats. If I have a datetime in US format (MM/DD/YYYY), how do I convert it to ISO 8601 and friendly format?"
+
+**Prompt 3**: "Explain timedelta. I calculated end - start and got a timedelta. How do I extract days, hours, and minutes separately?"
+
+### Part 2 Outcome
+
+You understand:
+- Format codes and their purposes
+- Where each format is appropriate
+- How to convert between formats
+
+---
+
+## Part 3: Student as Teacher (Edge Cases)
+
+**Your Role**: Tester challenging format logic
+
+### Part 3 Challenges
+
+**Challenge 1: Ambiguous Format**
+> "If I parse '01-02-2025', three formats all work: MM-DD-YYYY (Jan 2), DD-MM-YYYY (Feb 1), and YYYY-MM-DD fails. How do I prevent bugs where the wrong format is assumed?"
+
+**Challenge 2: Timezone Offset Ambiguity**
+> "The format code %z produces '+0500' but I want '+05:00'. Is there a code for that? How do I format timezone offsets correctly?"
+
+**Challenge 3: Leap Second Handling**
+> "If a timestamp represents a leap second (23:59:60), how does strftime handle it? What seconds value would be displayed?"
+
+### Part 3 Deliverable
+
+File: `format_challenges.md`
+
+**Time**: 15-20 minutes
+
+---
+
+## Part 4: Build Multi-Format Date Tool (Convergence)
+
+**Your Role**: Developer building format migration utilities
+
+### Part 4 Deliverable: `date_formatter.py`
+
+```python
+from datetime import datetime, timezone, timedelta
+
+class DateFormatter:
+    """Format and parse dates across multiple contexts."""
+
+    FORMATS = {
+        "iso": "%Y-%m-%dT%H:%M:%S",
+        "us": "%m/%d/%Y",
+        "eu": "%d/%m/%Y",
+        "friendly": "%A, %B %d, %Y",
+        "iso_time": "%H:%M:%S",
+        "us_time": "%I:%M %p",
+        "log": "%Y-%m-%d %H:%M:%S",
+    }
+
+    @staticmethod
+    def format_datetime(dt: datetime, format_name: str = "iso") -> str:
+        """Format datetime using predefined format names.
+
+        Args:
+            dt: datetime to format
+            format_name: Name of format ('iso', 'us', 'friendly', etc.)
+
+        Returns:
+            Formatted datetime string
+        """
+        if format_name not in DateFormatter.FORMATS:
+            raise ValueError(f"Unknown format: {format_name}")
+        return dt.strftime(DateFormatter.FORMATS[format_name])
+
+    @staticmethod
+    def format_multiple(dt: datetime) -> dict[str, str]:
+        """Format datetime in all available formats.
+
+        Args:
+            dt: datetime to format
+
+        Returns:
+            Dictionary with all formats
+        """
+        return {
+            name: dt.strftime(code)
+            for name, code in DateFormatter.FORMATS.items()
+        }
+
+    @staticmethod
+    def format_with_timezone(dt: datetime) -> str:
+        """Format datetime with timezone information.
+
+        Args:
+            dt: timezone-aware datetime
+
+        Returns:
+            Formatted string with offset
+        """
+        base = dt.strftime("%Y-%m-%dT%H:%M:%S")
+        if dt.tzinfo:
+            offset = dt.strftime("%z")
+            return f"{base}{offset[:3]}:{offset[3:]}"
+        return base
+
+    @staticmethod
+    def format_duration(td: timedelta) -> str:
+        """Format timedelta as human-readable.
+
+        Args:
+            td: timedelta object
+
+        Returns:
+            Formatted string
+        """
+        total_seconds = int(td.total_seconds())
+        hours = total_seconds // 3600
+        minutes = (total_seconds % 3600) // 60
+        return f"{hours}h {minutes}m"
+```
+
+### Part 4 Requirements
+
+Your tool must:
+1. Define common format patterns
+2. Format datetime in multiple contexts
+3. Handle timezone display
+4. Format durations
+5. Include type hints and docstrings
+
+### Part 4 Deliverable
+
+File: `date_formatter.py`
+
+**Time**: 25-35 minutes
+
+---
+
+## Integrated Learning Outcomes
+
+You've practiced all Three Roles and synthesized format knowledge into reusable tools.
+
+### What You've Created
+
+1. `format_ambiguity_analysis.md` — Your investigation of format issues
+2. `format_challenges.md` — Edge cases you challenged AI with
+3. `date_formatter.py` — Working format utilities
+
+---
+
+**Next**: Lesson 5 covers calendar operations and advanced math, bringing together everything you've learned about time, precision, and mathematical operations.

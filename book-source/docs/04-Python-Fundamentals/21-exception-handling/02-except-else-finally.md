@@ -53,517 +53,591 @@ differentiation:
   remedial_for_struggling: "Focus on simple two-except case first; use flowchart diagrams showing execution path; test interactively"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/015-part-4-chapter-21/spec.md"
 created: "2025-11-09"
-last_modified: "2025-11-09"
+last_modified: "2025-01-18"
 git_author: "Claude Code"
-workflow: "lesson-writer subagent"
-version: "1.0.0"
+workflow: "content-implementer subagent"
+version: "2.0.0"
 ---
 
 # Except, Else, and Finally
 
-You've already learned that `try/except` catches errors and prevents crashes. But what if your code could encounter *different* types of errors? What if you want to run code only when NO error occurs? What if you need to clean up resources no matter what happens?
+You've already learned that `try/except` catches errors and prevents crashes. But what if your code could encounter different types of errors? What if you want to run code only when NO error occurs? What if you need to clean up resources no matter what happens?
 
-In this lesson, you'll master the complete four-block exception handling structure: `try`, multiple `except` blocks, `else`, and `finally`. You'll understand when each block executes and build robust programs that handle complex error scenarios elegantly.
+In this lesson, you'll master the complete four-block exception handling structure through prediction and discovery. You'll start by predicting flow control in file operations, learn from AI about else vs finally semantics, challenge AI with return statement edge cases, and build a file operation template for production use.
 
-Think of it like this: `try` is your attempt to do something, `except` is how you recover from each type of failure, `else` is what happens on success, and `finally` is your cleanup crew that always arrives—whether things went right or wrong.
+---
 
-## Quick Review: Single Try/Except
+## Part 1: Student Predicts Flow Control in File Operations
 
-From Lesson 1, you know the basic structure:
+**Your Role**: Flow control analyst predicting execution paths
 
-```python
-try:
-    # Code that might raise an exception
-    risky_operation()
-except ValueError:
-    # Code to run if ValueError occurs
-    print("Error: Invalid value")
-```
+Before learning the syntax, develop intuition about control flow. Professional developers reason about execution paths before writing code.
 
-This works well when you only expect one type of error. But what about real-world code?
+### Prediction Exercise: Which Block Runs When?
 
-## Multiple Except Blocks: Handling Different Errors
-
-When your code could raise **different** exception types, you need **multiple except blocks**. Each block handles a specific error type.
-
-**Why multiple except blocks?** Because different errors deserve different recovery strategies. A `FileNotFoundError` means "file missing—create it or ask user." A `ValueError` means "user entered wrong type—prompt for retry." Treating them the same way loses important context.
-
-Here's the syntax:
+Study this code structure (don't run it yet):
 
 ```python
-try:
-    # Code that might raise multiple exception types
-    risky_operation()
-except ValueError:
-    # Handles ValueError specifically
-    print("Invalid value")
-except TypeError:
-    # Handles TypeError specifically
-    print("Wrong type")
-except ZeroDivisionError:
-    # Handles ZeroDivisionError specifically
-    print("Can't divide by zero")
-```
-
-**Critical rule**: Python evaluates except blocks **top-to-bottom**. The first matching except block runs, and Python skips the rest.
-
-Let's see this with real code:
-
-```python
-# Example 1: Multiple Except Blocks for Different Errors
-
-def divide_numbers(a: str, b: str) -> None:
-    """Attempt to divide two numbers, handling multiple error types."""
-    try:
-        num_a: int = int(a)
-        num_b: int = int(b)
-        result: float = num_a / num_b
-        print(f"{num_a} / {num_b} = {result}")
-    except ValueError:
-        print("Error: Could not convert input to number. Please enter integers.")
-    except ZeroDivisionError:
-        print("Error: Cannot divide by zero.")
-
-# Test cases
-divide_numbers("10", "2")      # Works: 10 / 2 = 5.0
-divide_numbers("10", "0")      # ZeroDivisionError caught
-divide_numbers("abc", "2")     # ValueError caught
-divide_numbers("10", "xyz")    # ValueError caught
-```
-
-**Output:**
-```
-10 / 2 = 5.0
-Error: Cannot divide by zero.
-Error: Could not convert input to number. Please enter integers.
-Error: Could not convert input to number. Please enter integers.
-```
-
-#### 💬 AI Colearning Prompt
-> "Show me two exceptions in the same function. Why do we need to catch them separately? What happens if we catch them the same way?"
-
-## When to Use Multiple Except Blocks
-
-**Use multiple except blocks when**:
-- Different error types need different recovery strategies
-- Your code touches multiple systems (file system, network, user input)
-- You want to log or report different error causes
-
-**Example scenario**: Reading a user CSV file
-- `FileNotFoundError`: Tell user "file not found"
-- `PermissionError`: Tell user "you don't have permission"
-- `ValueError`: Skip the malformed row and continue
-
-## The Else Block: Success Path Only
-
-Here's something powerful: what if you want code to run *only when NO exception occurred*?
-
-That's what the `else` block does.
-
-**Syntax:**
-
-```python
-try:
-    # Code that might raise an exception
-    risky_operation()
-except SpecificError:
-    # Code to run if SpecificError occurs
-    handle_error()
-else:
-    # Code to run only if NO exception occurred
-    handle_success()
-```
-
-**Critical**: The `else` block is optional. Use it only when you have distinct "success" code to run.
-
-Let's see it in action:
-
-```python
-# Example 2: Try/Except/Else Showing When Else Runs
-
-def process_user_input(input_str: str) -> None:
-    """Process user input, showing different paths for success vs error."""
-    try:
-        age: int = int(input_str)
-        print(f"Attempting to process age: {age}")
-    except ValueError:
-        print(f"Error: '{input_str}' is not a valid integer.")
-    else:
-        # This runs ONLY if no exception occurred
-        if age >= 18:
-            print(f"Success: User is an adult (age {age})")
-        else:
-            print(f"Success: User is a minor (age {age})")
-
-# Test cases
-process_user_input("25")    # No error → else block runs
-process_user_input("abc")   # ValueError → else block SKIPPED
-```
-
-**Output:**
-```
-Attempting to process age: 25
-Success: User is an adult (age 25)
-Error: 'abc' is not a valid integer.
-```
-
-#### 🎓 Instructor Commentary
-> In AI-native development, you don't memorize when else vs except runs—you understand the **semantics**. The semantics: else runs on the *success path*, except runs on the *error path*. That's the distinction that matters. Syntax comes later.
-
-## The Finally Block: Guaranteed Execution
-
-Now for the most powerful block: `finally`. Code in the finally block runs **no matter what**—whether an exception occurred or not, whether you caught it or not.
-
-**Why does finally matter?** Cleanup. If you open a file, allocate memory, or start a database connection, you absolutely must clean up those resources. Finally guarantees cleanup runs regardless of success or failure.
-
-**Syntax:**
-
-```python
-try:
-    # Code that might raise an exception
-    risky_operation()
-except SpecificError:
-    # Code to run if error occurs
-    handle_error()
-finally:
-    # Code to run ALWAYS (success, error, or even if except block fails)
-    cleanup()
-```
-
-Let's see finally in action:
-
-```python
-# Example 3: Try/Except/Finally Showing Guaranteed Execution
-
-def validate_age_with_cleanup(age_str: str) -> None:
-    """Validate age, demonstrating finally's guaranteed execution."""
-    try:
-        print(f"Processing age input: '{age_str}'")
-        age: int = int(age_str)
-
-        if age < 0:
-            raise ValueError("Age cannot be negative")
-
-        print(f"Success: Age is {age}")
-    except ValueError as error:
-        print(f"Error caught: {error}")
-    finally:
-        # This runs regardless of success or error
-        print("Cleanup: Releasing resources")
-        print()  # Blank line for readability
-
-# Test cases
-validate_age_with_cleanup("25")      # Success
-validate_age_with_cleanup("abc")     # ValueError from int()
-validate_age_with_cleanup("-5")      # ValueError from if condition
-```
-
-**Output:**
-```
-Processing age input: '25'
-Success: Age is 25
-Cleanup: Releasing resources
-
-Processing age input: 'abc'
-Error caught: invalid literal for int() with base 10: 'abc'
-Cleanup: Releasing resources
-
-Processing age input: '-5'
-Error caught: Age cannot be negative
-Cleanup: Releasing resources
-```
-
-Notice: The "Cleanup: Releasing resources" message printed in all three cases. That's finally at work.
-
-#### 🚀 CoLearning Challenge
-
-Ask your AI Co-Teacher:
-> "Show me a real file operation using try/except/finally. Then explain why finally is essential for closing files."
-
-**Expected Outcome**: You'll understand how finally prevents resource leaks in real-world code.
-
-## Order Matters: The Complete Four-Block Structure
-
-When you use all four blocks together, order is **absolutely critical**:
-
-```python
-try:
-    # 1. Code that might raise an exception
-    risky_operation()
-except SpecificError:
-    # 2. Exception handlers (can have multiple)
-    handle_error()
-else:
-    # 3. Runs only if no exception occurred
-    handle_success()
-finally:
-    # 4. Runs always—ALWAYS LAST
-    cleanup()
-```
-
-**The execution order for different scenarios:**
-
-| Scenario | Execution |
-|----------|-----------|
-| **No exception** | try → else → finally |
-| **Exception caught** | try → except → finally |
-| **Exception not caught** | try → except → finally (then exception propagates) |
-
-Let's demonstrate this with the complete structure:
-
-```python
-# Example 4: Complete Four-Block Structure
-
-def robust_calculation(a_str: str, b_str: str) -> None:
-    """Calculate a/b with all four blocks showing complete control flow."""
-    try:
-        print(f"Attempting: {a_str} ÷ {b_str}")
-        a: int = int(a_str)
-        b: int = int(b_str)
-        result: float = a / b
-        print(f"Calculation successful: {a} / {b} = {result}")
-    except ValueError:
-        print("Error: Could not convert to number")
-    except ZeroDivisionError:
-        print("Error: Cannot divide by zero")
-    else:
-        # Runs only if calculation succeeded
-        print(f"Success path: Result is {result}")
-    finally:
-        # Runs always
-        print("Cleanup: Releasing calculation resources\n")
-
-# Test scenarios
-print("Scenario 1: Successful calculation")
-robust_calculation("10", "2")
-
-print("Scenario 2: Invalid input")
-robust_calculation("abc", "2")
-
-print("Scenario 3: Division by zero")
-robust_calculation("10", "0")
-```
-
-**Output:**
-```
-Scenario 1: Successful calculation
-Attempting: 10 ÷ 2
-Calculation successful: 10 / 2 = 5.0
-Success path: Result is 5.0
-Cleanup: Releasing calculation resources
-
-Scenario 2: Invalid input
-Attempting: abc ÷ 2
-Error: Could not convert to number
-Cleanup: Releasing calculation resources
-
-Scenario 3: Division by zero
-Attempting: 10 ÷ 0
-Error: Cannot divide by zero
-Cleanup: Releasing calculation resources
-```
-
-## Real-World Pattern: File Operations with Finally
-
-One of the most important uses of finally is ensuring files always close, even if an error occurs:
-
-```python
-# Pattern: File operations with guaranteed cleanup
-
 def read_file_safely(filename: str) -> str:
-    """Read file, ensuring proper cleanup with finally."""
-    content: str = ""
+    """Read file with complete error handling."""
+    content = ""
+
+    try:
+        print("A: Opening file...")
+        file = open(filename, 'r')
+        content = file.read()
+        print("B: File read successfully")
+    except FileNotFoundError:
+        print("C: File not found, handling error")
+    else:
+        print("D: No errors occurred, success path")
+    finally:
+        print("E: Cleanup phase")
+        if 'file' in locals():
+            file.close()
+
+    return content
+```
+
+### Your Prediction Task
+
+**Before running code**, predict which print statements execute for each scenario:
+
+**Scenario 1**: File exists and is readable
+- Which prints execute?
+- In what order?
+- Your prediction: ________________
+
+**Scenario 2**: File does not exist
+- Which prints execute?
+- In what order?
+- Your prediction: ________________
+
+**Scenario 3**: File exists but has permission issues (PermissionError, not caught)
+- Which prints execute?
+- What happens to the program?
+- Your prediction: ________________
+
+### Test Your Predictions
+
+Now create test files and run the code:
+
+```python
+# Test 1: File exists
+with open("test_success.txt", "w") as f:
+    f.write("Success case")
+
+result = read_file_safely("test_success.txt")
+print(f"Result: {result}\n")
+
+# Test 2: File doesn't exist
+result = read_file_safely("nonexistent.txt")
+print(f"Result: {result}\n")
+```
+
+**Compare your predictions to actual output.**
+
+### Discovery Questions
+
+After running tests, answer these:
+
+1. **When does the `else` block run?** (Only when try succeeds? Even if except runs?)
+2. **When does the `finally` block run?** (Always? Only on success? Only on error?)
+3. **What's the execution order?** (try → except → else → finally, or different?)
+4. **What happens if you have multiple except blocks?** (Which one runs? All of them? First match?)
+
+### Flow Control Rules You Discovered
+
+Based on your experiments, document these rules:
+
+| Scenario | try | except | else | finally |
+|----------|-----|--------|------|---------|
+| No error | Runs completely | Skipped | Runs | Runs |
+| Error caught | Runs until error | Matching block runs | Skipped | Runs |
+| Error NOT caught | Runs until error | None match | Skipped | Runs, then propagates |
+
+**Deliverable**: Create `flow_control_predictions.txt` documenting:
+- Your initial predictions for all 3 scenarios
+- Actual results from running the code
+- The rules you discovered about when each block executes
+- One new scenario you designed to test an edge case
+
+---
+
+## Part 2: AI Explains Else (Success Path) vs Finally (Cleanup Guarantee)
+
+**Your Role**: Student learning semantic distinctions from AI Teacher
+
+Now that you've observed the behavior, understand the WHY behind it. Ask AI to explain the semantic purpose of each block.
+
+### AI Teaching Prompt
+
+Ask your AI companion:
+
+> "I've experimented with try/except/else/finally blocks. I observed that:
+> - `else` runs only when try succeeds (no exception)
+> - `finally` runs always, even after exceptions
+>
+> Explain:
+> 1. What is the SEMANTIC purpose of the else block? Why not just put success code at the end of try?
+> 2. What is the SEMANTIC purpose of the finally block? Why is 'always runs' important?
+> 3. Show me a real-world file operation example where else and finally have different purposes."
+
+### What You'll Learn from AI
+
+**Expected AI Response** (summary):
+
+**Else block purpose**:
+- Separates "success-only" code from "might fail" code
+- Makes exception source clear (if exception happens in else, it's not from try block)
+- Communicates intent: "This code should only run if NO errors occurred"
+
+**Finally block purpose**:
+- Guarantees cleanup regardless of success, failure, or even return statements
+- Essential for resource management (files, network connections, locks)
+- Runs even if exception is re-raised or not caught
+
+**Key distinction**:
+- `else` = "success path logic"
+- `finally` = "cleanup that must happen no matter what"
+
+### Convergence Activity
+
+After AI explains, test your understanding:
+
+Ask AI: "Show me a file operation where I open a file, process it, log success in else block, and close it in finally. Then explain: what happens if processing raises an exception not caught by any except block?"
+
+**Example AI might show**:
+```python
+def process_log_file(filename: str) -> int:
+    """Process log file, count lines, ensure file is closed."""
+    file = None
+    line_count = 0
+
+    try:
+        file = open(filename, 'r')
+        for line in file:
+            line_count += 1
+            # Processing could raise various exceptions
+    except FileNotFoundError:
+        print(f"Log file not found: {filename}")
+        return 0
+    except PermissionError:
+        print(f"Cannot read {filename}: permission denied")
+        return 0
+    else:
+        # Success path: log the result
+        print(f"Successfully processed {line_count} lines")
+    finally:
+        # Guaranteed cleanup: close file if opened
+        if file is not None:
+            file.close()
+            print("File closed")
+
+    return line_count
+```
+
+**Your turn**: Explain back to AI:
+- Why is `file.close()` in finally, not in else?
+- What happens if an `IOError` occurs during line processing (not caught)?
+- Does finally run before or after the function returns?
+
+**Deliverable**: Write a 1-paragraph summary explaining the semantic difference between else (success-specific logic) and finally (guaranteed cleanup), with one real-world example.
+
+---
+
+## Part 3: Student Challenges AI with Return Statement Edge Cases
+
+**Your Role**: Student teaching AI by exploring complex control flow
+
+Now reverse the roles. You'll design challenges that test AI's understanding of try/except/finally with return statements—one of the trickiest edge cases.
+
+### Challenge Design Pattern
+
+Create scenarios where:
+1. Return statements appear in different blocks
+2. AI must predict which value is actually returned
+3. Finally block interacts with return statements
+
+### Challenge 1: Multiple Return Points
+
+**Your prompt to AI**:
+> "Predict what this function returns for each scenario. Explain your reasoning BEFORE running the code.
+>
+> ```python
+> def mystery_return(should_fail: bool) -> str:
+>     try:
+>         if should_fail:
+>             raise ValueError("Intentional error")
+>         return "A: try block return"
+>     except ValueError:
+>         return "B: except block return"
+>     else:
+>         return "C: else block return"
+>     finally:
+>         print("D: finally block executed")
+> ```
+>
+> What does this return when:
+> 1. `mystery_return(False)` — which return executes?
+> 2. `mystery_return(True)` — which return executes?
+> 3. Why doesn't the else block return ever execute?"
+
+**Expected AI Response**:
+1. Returns "A: try block return" (try succeeds, returns immediately, else is skipped)
+2. Returns "B: except block return" (exception caught, except returns)
+3. Else only runs when try completes WITHOUT returning (rare case)
+
+**Key insight**: Return in try or except skips else, but finally still runs.
+
+### Challenge 2: Finally Overriding Return
+
+**Your prompt to AI**:
+> "What does this function return? Explain what's happening and whether this is good practice.
+>
+> ```python
+> def finally_override(value: int) -> int:
+>     try:
+>         return value * 2
+>     finally:
+>         return value * 3
+> ```
+>
+> When called with `finally_override(10)`, what's returned: 20 or 30? Why is this pattern dangerous?"
+
+**Expected AI Response**: Returns 30 (finally return overrides try return). This is dangerous because finally is meant for cleanup, not altering control flow. It hides the intended return value.
+
+### Challenge 3: Finally Without Return
+
+**Your prompt to AI**:
+> "Contrast the previous example with this one. What's the difference?
+>
+> ```python
+> def finally_cleanup(value: int) -> int:
+>     result = 0
+>     try:
+>         result = value * 2
+>         return result
+>     finally:
+>         print(f"Finally: result was {result}")
+>         result = value * 3  # This won't change the return value
+> ```
+>
+> When called with `finally_cleanup(10)`, what's returned? Why is this version better than the previous one?"
+
+**Expected AI Response**: Returns 20 (try block return). Finally runs, prints the message, modifies local variable, but doesn't override return. This is proper use of finally—cleanup and logging without altering control flow.
+
+### Your Analysis
+
+After AI responds to all three challenges, write:
+- Which pattern is correct professional practice?
+- Why should finally avoid return statements?
+- When would you use return in except blocks?
+
+**Deliverable**: Document three return statement challenges you posed to AI, AI's predictions, and your analysis of best practices for return placement in try/except/else/finally blocks.
+
+---
+
+## Part 4: Build File Operation Template with Proper Cleanup
+
+**Your Role**: Template designer creating reusable production patterns
+
+Now integrate everything into a production-ready file operation template that handles all scenarios correctly.
+
+### Your File Operation Template Library
+
+Create a Python file called `file_operations_template.py` with these patterns:
+
+```python
+"""
+File Operation Templates with Comprehensive Error Handling
+Chapter 21, Lesson 2
+"""
+
+from typing import Optional
+import json
+
+
+def read_text_file(filename: str, default: str = "") -> str:
+    """
+    Read text file with guaranteed cleanup.
+
+    Pattern: try/except/else/finally for file reading
+
+    Args:
+        filename: Path to file
+        default: Value to return if file not found
+
+    Returns:
+        File contents or default value
+
+    Error handling:
+        - FileNotFoundError: Return default
+        - PermissionError: Log and return default
+        - Finally: Ensure file is closed
+    """
+    file = None
+    content = default
+
+    try:
+        file = open(filename, 'r')
+        content = file.read()
+    except FileNotFoundError:
+        print(f"File not found: {filename}, using default")
+        return default
+    except PermissionError:
+        print(f"Permission denied: {filename}, using default")
+        return default
+    else:
+        print(f"Successfully read {len(content)} characters from {filename}")
+    finally:
+        if file is not None:
+            file.close()
+            print(f"File closed: {filename}")
+
+    return content
+
+
+def write_text_file(filename: str, content: str) -> bool:
+    """
+    Write text file with error handling.
+
+    Pattern: try/except/finally for file writing
+
+    Args:
+        filename: Path to file
+        content: Text to write
+
+    Returns:
+        True if successful, False otherwise
+
+    Error handling:
+        - PermissionError: Log and return False
+        - IOError: Log and return False
+        - Finally: Ensure file is closed
+    """
+    file = None
+    success = False
+
+    try:
+        file = open(filename, 'w')
+        file.write(content)
+        success = True
+    except PermissionError:
+        print(f"Cannot write to {filename}: permission denied")
+    except IOError as e:
+        print(f"IO error writing {filename}: {e}")
+    else:
+        print(f"Successfully wrote {len(content)} characters to {filename}")
+    finally:
+        if file is not None:
+            file.close()
+
+    return success
+
+
+def load_json_file(filename: str, default: Optional[dict] = None) -> dict:
+    """
+    Load JSON file with fallback to default.
+
+    Pattern: Multiple except blocks for different error types
+
+    Args:
+        filename: Path to JSON file
+        default: Default dict if file missing or invalid
+
+    Returns:
+        Parsed JSON dict or default
+
+    Error handling:
+        - FileNotFoundError: Return default
+        - json.JSONDecodeError: Log error, return default
+        - Finally: Ensure file is closed
+    """
+    if default is None:
+        default = {}
+
     file = None
 
     try:
-        file = open(filename, "r")
-        content = file.read()
-        print(f"Successfully read {len(content)} characters")
+        file = open(filename, 'r')
+        data = json.load(file)
     except FileNotFoundError:
-        print(f"Error: File '{filename}' not found")
+        print(f"JSON file not found: {filename}, using default")
+        return default
+    except json.JSONDecodeError as e:
+        print(f"Invalid JSON in {filename}: {e}, using default")
+        return default
+    except PermissionError:
+        print(f"Cannot read {filename}: permission denied, using default")
+        return default
     else:
-        print("File reading succeeded")
+        print(f"Successfully loaded JSON from {filename}")
+        return data
     finally:
-        # This ensures file closes even if exception occurred
         if file is not None:
             file.close()
-            print("File closed successfully")
 
-# Test
-read_file_safely("example.txt")  # File may or may not exist
-```
 
-#### ✨ Teaching Tip
-> Use Claude Code to test different exception scenarios. Write code that triggers each path (success, specific errors, finally). Ask: "What order do these blocks execute in?" Then trace execution yourself before running the code.
+def process_file_lines(filename: str, max_errors: int = 10) -> tuple[list[str], int]:
+    """
+    Process file line by line with graceful degradation.
 
-## Exercises: Master Multi-Block Exception Handling
+    Pattern: Nested try/except (outer for file, inner for line processing)
 
-### Exercise 1: Multiple Except Blocks
+    Args:
+        filename: Path to file
+        max_errors: Maximum errors before stopping
 
-Write a function that reads two numbers from strings and calculates their sum. Handle both `ValueError` (invalid number) and display different error messages. Test with valid numbers, invalid numbers, and edge cases.
+    Returns:
+        Tuple of (valid_lines, error_count)
 
-**Starter code:**
-```python
-def add_numbers(a_str: str, b_str: str) -> None:
-    """Add two numbers from string input, handling errors."""
+    Error handling:
+        - FileNotFoundError: Return empty list
+        - Errors per line: Skip line, increment counter
+        - Finally: Ensure file is closed
+    """
+    file = None
+    valid_lines = []
+    error_count = 0
+
     try:
-        # Your code here
-        pass
-    except ValueError:
-        # Your error message
-        pass
-    # Add another except block for a different error if desired
+        file = open(filename, 'r')
 
-# Test cases
-add_numbers("5", "3")      # Should print: 5 + 3 = 8
-add_numbers("5", "abc")    # Should print error
-```
+        for line_num, line in enumerate(file, start=1):
+            try:
+                # Process line (example: strip and validate)
+                processed = line.strip()
+                if not processed:
+                    raise ValueError("Empty line")
+                valid_lines.append(processed)
+            except ValueError as e:
+                error_count += 1
+                print(f"Line {line_num}: {e}, skipping")
 
-### Exercise 2: Try/Except/Else Pattern
+                if error_count >= max_errors:
+                    print(f"Max errors ({max_errors}) reached, stopping")
+                    break
 
-Write a function that validates email addresses. If the input can be converted to a string (always true for strings), print success. If validation fails, catch it. Use else to confirm validation succeeded.
-
-**Starter code:**
-```python
-def validate_email(email: str) -> None:
-    """Validate email format using try/except/else."""
-    try:
-        # Check if email contains '@'
-        if "@" not in email:
-            raise ValueError("Email must contain '@'")
-        print(f"Email format looks good: {email}")
-    except ValueError as error:
-        print(f"Validation failed: {error}")
-    else:
-        # Code runs only if no exception
-        print("Email is valid")
-
-# Test
-validate_email("user@example.com")  # Success path
-validate_email("user")              # Error path
-```
-
-### Exercise 3: Try/Except/Finally Pattern
-
-Write a function that reads a configuration file. Even if the file doesn't exist or has an error, always print "Configuration cleanup complete" using finally.
-
-**Starter code:**
-```python
-def load_config(filename: str) -> None:
-    """Load configuration file with guaranteed cleanup."""
-    config_file = None
-    try:
-        config_file = open(filename, "r")
-        content: str = config_file.read()
-        print(f"Config loaded: {len(content)} bytes")
     except FileNotFoundError:
-        print(f"Config file not found: {filename}")
+        print(f"File not found: {filename}")
+        return [], 0
+    except PermissionError:
+        print(f"Cannot read {filename}: permission denied")
+        return [], 0
+    else:
+        print(f"Processed {len(valid_lines)} valid lines")
     finally:
-        # Guaranteed cleanup
-        if config_file:
-            config_file.close()
-        print("Configuration cleanup complete")
+        if file is not None:
+            file.close()
 
-# Test
-load_config("settings.txt")
+    return valid_lines, error_count
+
+
+# Example usage and testing
+if __name__ == "__main__":
+    print("=== Testing File Operation Templates ===\n")
+
+    # Test 1: Read existing file
+    print("Test 1: Read text file")
+    content = read_text_file("test_read.txt", default="No content")
+    print(f"Content: {content[:50]}...\n")
+
+    # Test 2: Write file
+    print("Test 2: Write text file")
+    success = write_text_file("test_write.txt", "Hello, World!")
+    print(f"Write successful: {success}\n")
+
+    # Test 3: Load JSON
+    print("Test 3: Load JSON file")
+    data = load_json_file("config.json", default={"theme": "light"})
+    print(f"Config: {data}\n")
+
+    # Test 4: Process lines with errors
+    print("Test 4: Process file lines")
+    lines, errors = process_file_lines("data.txt")
+    print(f"Valid lines: {len(lines)}, Errors: {errors}")
 ```
 
-## Common Mistakes to Avoid
+### Template Requirements
 
-**Mistake 1**: Forgetting that except blocks are evaluated top-down
-```python
-# WRONG: More specific exception first, then generic
-try:
-    risky()
-except Exception:           # This catches everything
-    print("Error")
-except ValueError:          # This never runs!
-    print("Value error")    # Unreachable
+Your file operation template library must include:
 
-# RIGHT: Specific exceptions first, generic last (if needed)
-try:
-    risky()
-except ValueError:
-    print("Value error")
-except TypeError:
-    print("Type error")
-except Exception:           # Catches everything else
-    print("Other error")
-```
+1. **Read text file template**
+   - FileNotFoundError handling
+   - PermissionError handling
+   - Finally block for cleanup
+   - Else block for success logging
 
-**Mistake 2**: Using else when you don't need it
-```python
-# UNNECESSARY: else does nothing special
-try:
-    result = int("5")
-except ValueError:
-    print("Error")
-else:
-    print(f"Success: {result}")  # Could just go in try block
+2. **Write text file template**
+   - IOError handling
+   - Permission handling
+   - Success/failure return value
 
-# CLEANER: Put success code in try if no else-specific logic
-try:
-    result = int("5")
-    print(f"Success: {result}")
-except ValueError:
-    print("Error")
-```
+3. **Load JSON template**
+   - Multiple except blocks for different errors
+   - Fallback to default values
+   - Proper JSON decoding error handling
 
-**Mistake 3**: Not using finally for cleanup
-```python
-# BAD: File might not close if exception occurs
-file = open("data.txt")
-try:
-    data = file.read()
-except IOError:
-    print("Error reading file")
-file.close()  # Might not reach here!
+4. **Process lines template**
+   - Nested try/except (file-level and line-level)
+   - Graceful degradation (skip bad lines)
+   - Error threshold enforcement
 
-# GOOD: finally guarantees cleanup
-file = open("data.txt")
-try:
-    data = file.read()
-except IOError:
-    print("Error reading file")
-finally:
-    file.close()  # Always runs
-```
+5. **Testing section**
+   - Test cases for each template
+   - Both success and failure scenarios
 
-## Try With AI
+### Validation with AI
 
-Your AI companion has learned about multiple except blocks, else, and finally. Use it to deepen your understanding and test your control flow knowledge.
+Once your template is complete, validate it by asking AI:
 
-**Tool**: Use your preferred AI companion (Claude Code CLI, Gemini CLI, or ChatGPT web).
+> "Review my file operation templates. For each function:
+> 1. Is the exception handling appropriate for the error types?
+> 2. Are else and finally blocks used correctly?
+> 3. What edge cases am I missing?
+> 4. Are there any resource leaks or cleanup issues?
+> 5. Suggest one improvement for each template."
 
-### Prompt 1 (Remember): Recall the Blocks
-> "What's the difference between an except block and a finally block? When does each one run?"
-
-**Expected Outcome**: AI explains that except runs when an error occurs, finally always runs.
+**Deliverable**: Complete `file_operations_template.py` with all 4 templates, comprehensive error handling, and test cases demonstrating both success and failure paths.
 
 ---
 
-### Prompt 2 (Understand): Explain the Execution Path
-> "Write a function with try/except/else/finally. Now trace through what happens if: (a) no exception occurs, (b) ValueError is raised."
+## Summary: Bidirectional Learning Pattern
 
-**Expected Outcome**: AI shows execution traces for both scenarios, demonstrating the order of block execution.
+In this lesson, you experienced all three roles:
 
----
+**Part 1 (Student predicts)**: You predicted flow control before running code, building intuition
+**Part 2 (AI teaches)**: AI explained the semantic purpose of else (success) vs finally (cleanup)
+**Part 3 (Student teaches)**: You challenged AI with return statement edge cases
+**Part 4 (Knowledge synthesis)**: You built production-ready file operation templates
 
-### Prompt 3 (Apply): Write Code with All Blocks
-> "Write a Python function that: (1) tries to open a file, (2) catches FileNotFoundError, (3) runs else to process file content on success, (4) uses finally to close the file. Include all four blocks."
+This pattern ensures you understand exception handling control flow not just as syntax, but as a reasoning framework for robust resource management.
 
-**Expected Outcome**: AI provides working code showing all four blocks in proper sequence with realistic file handling.
+### What You've Built
 
----
+1. `flow_control_predictions.txt` — Your predictions vs actual behavior for each scenario
+2. Semantic distinction summary — Understanding of else vs finally purposes
+3. Return statement edge case analysis — Three challenges and best practices
+4. `file_operations_template.py` — Reusable file operation templates with proper cleanup
 
-### Prompt 4 (Analyze): Compare Finally vs Else
-> "When would you use finally instead of else? Show an example where they have different purposes and explain the difference."
+### Key Insights
 
-**Expected Outcome**: AI demonstrates that finally handles cleanup (always needed), while else handles success-path logic (conditional). Finally is about resources; else is about flow.
+**Flow control rules**:
+- **try**: Runs first, stops at first exception
+- **except**: Runs only if matching exception occurs
+- **else**: Runs only if try completed without exception (no return)
+- **finally**: ALWAYS runs, even with return statements
 
----
+**Best practices**:
+- Use **else** for success-specific logic (separates concerns)
+- Use **finally** for guaranteed cleanup (resource management)
+- Avoid **return in finally** (overrides other returns)
+- Use **multiple except blocks** for different error types (specific handling)
 
-**Safety Note**: Exception handling is about being defensive. When you see code, ask yourself: "What could go wrong here?" The answer guides whether you need multiple except blocks (different error types), else (success path logic), or finally (cleanup). Test your assumptions by intentionally triggering errors.
+### Next Steps
+
+Lesson 3 builds on this foundation, teaching you how to raise your own exceptions and create custom exception classes for domain-specific errors. Your file operation templates will serve as examples of where custom exceptions make code clearer.

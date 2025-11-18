@@ -2,17 +2,17 @@
 name: ai-collaborate-teaching
 category: "pedagogical"
 applies_to: ["all-chapters"]
-required_for: ["lesson-writer", "chapter-planner"]
+required_for: ["content-implementer", "chapter-planner"]
 description: |
   Design learning experiences for AI-native software development, integrating the Three Roles Framework 
   (AI as Teacher/Student/Co-Worker), co-learning partnership pedagogy, and "Specs Are the New Syntax" 
   paradigm into programming curriculum. Use this skill when educators need to prepare students for 
   professional AI-driven development workflows, teach effective specification-first collaboration, or 
-  balance AI assistance with foundational learning goals. This skill helps create lessons that leverage 
-  AI tools appropriately while ensuring students build independent capability, bidirectional learning 
-  patterns, and ethical AI use practices. Aligned with Constitution v3.1.2.
-version: "2.0.0"
-dependencies: ["constitution:v3.1.2"]
+  balance AI assistance with foundational learning goals. This skill helps create lessons that leverage
+  AI tools appropriately while ensuring students build independent capability, bidirectional learning
+  patterns, and ethical AI use practices. Aligned with Constitution v4.0.1.
+version: "2.1.0"
+dependencies: ["constitution:v4.0.1"]
 ---
 
 # AI Collaborate Teaching
@@ -29,9 +29,9 @@ Enable educators to design **co-learning experiences** where AI is a bidirection
 - Create ethical guidelines for responsible AI use
 - Assess appropriate balance of AI integration in curriculum
 
-## The Three Roles Framework (Constitution Principle 18)
+## The Three Roles Framework (Section IIa Stage 2, Constitution v5.0.0)
 
-**CRITICAL**: All co-learning content MUST demonstrate this framework:
+**CRITICAL**: All co-learning content MUST demonstrate this framework (per Section IIa Stage 2 forcing functions):
 
 ### AI's Three Roles:
 1. **Teacher**: Suggests patterns, architectures, best practices students may not know
@@ -102,11 +102,17 @@ Enable educators to design **co-learning experiences** where AI is a bidirection
 ```
 
 **Key Integration Points:**
-- Tier 1 (Book teaches foundational): Minimal AI collaboration (students build independent capability)
-- Tier 2 (AI companion handles complex): Apply AI collaboration patterns from this skill
-- Tier 3 (AI orchestration): Full AI pair programming with strategic oversight
 
-Refer to Constitution Principle 13 for decisions about WHAT book teaches vs WHAT AI handles. Use this skill for HOW students collaborate with AI once AI is involved.
+**With 4-Layer Method (Section IIa):**
+- Layer 1 (Manual practice): Minimal AI collaboration — build independent capability first
+- Layer 2-4 (AI-assisted onward): Apply this skill's collaboration patterns
+
+**With Graduated Teaching (Principle 2):**
+- Tier 1 (Foundational): Book teaches directly — minimal AI patterns needed
+- Tier 2 (Complex): AI companion handles — apply this skill's collaboration patterns
+- Tier 3 (Scale): AI orchestration — full pair programming with strategic oversight
+
+Refer to Section IIa (4-Layer Method) and Principle 2 (Graduated Teaching) for decisions about WHEN and WHAT. Use this skill for HOW students collaborate with AI effectively.
 
 ## When to Activate
 

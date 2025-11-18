@@ -72,7 +72,7 @@ differentiation:
   remedial_for_struggling: "Start with Code Example 5.1 (basic validator) and modify incrementally. Add one validation rule at a time. Use AI to help debug each addition. Focus on getting name cleaning working before moving to email/phone validation."
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/part-4-chapter-16/spec.md"
 created: "2025-11-08"
 last_modified: "2025-11-08"
@@ -649,109 +649,127 @@ Ask your AI companion how to add any of these features. Each one uses Chapter 16
 
 ---
 
-## Try With AI
+## Try With AI: Contact Validator Capstone Challenge
 
-### Setup
+You've completed all 4 lessons of Chapter 16. Now integrate everything—strings, methods, f-strings, and type casting—into a production-quality contact validator. This is YOUR capstone project with AI as your code review partner.
 
-Use your preferred AI companion tool (Claude Code, Gemini CLI, or ChatGPT web chat). The prompts below progress from understanding the problem to building and extending the validator.
+### Part 1: Design Your Validator (Your Turn First)
 
-### Prompt 1: Understand the Problem (Analyze)
+**Before asking AI to write code**, design the validation logic yourself:
 
+**Data Quality Problems**:
+```python
+# Users will enter messy data like:
+name_input = "  bob_SMITH  "          # Extra spaces, underscores, wrong case
+email_input = "BOB@EXAMPLE.COM"       # Uppercase
+phone_input = "555-123-4567"          # Formatted with dashes
+age_input = "  30  "                  # Extra whitespace
 ```
-I'm about to build a contact validator for a registration form. Real users will enter:
-- Names with inconsistent capitalization and whitespace
-- Emails in various formats (some invalid)
-- Phone numbers with different formatting characters
-- Ages that might not be numbers
 
-What data quality problems should I anticipate? What validation rules are most important for each field?
-```
+**Your Design Task**:
+1. List the string methods you'll use for EACH field (name, email, phone, age)
+2. Define validation rules:
+   - Name: Non-empty after stripping, title case
+   - Email: Contains `@` (not at start/end), lowercase
+   - Phone: Exactly 10 digits, format as (XXX) XXX-XXXX
+   - Age: Must be number 0-120, convert to int
+3. Decide: Show errors one-at-a-time or all-at-once? (Which is better UX?)
 
-**Expected Outcome**: You understand the problem domain before coding. This is professional development—knowing WHY you're validating, not just HOW.
+Write your design (pseudocode or bullet points) BEFORE coding.
 
 ---
 
-### Prompt 2: Build the Validator (Apply)
+### Part 2: Build Validator with AI (Collaborative Construction)
 
-```
-Help me build a Contact Card Validator that:
+Share your design with AI:
 
-1. Collects name, email, phone, and age from user input
-2. Cleans names (strips whitespace, title case, replaces underscores)
-3. Validates email (must contain @ not at start/end, lowercase)
-4. Formats phone numbers (removes formatting, validates 10 digits, displays as (XXX) XXX-XXXX)
-5. Validates age (converts string to int, checks 0-120 range, determines adult status)
-6. Displays a formatted contact card only if ALL fields are valid
-7. Uses proper type hints (str, int, bool)
+> "Here's my contact validator design: [paste your design]. Build the code with:
+> 1. Type hints for all variables
+> 2. Clean → Validate → Convert pattern for each field
+> 3. F-string formatted output showing validation results
+> 4. Contact card displays ONLY if all fields valid
+>
+> Show complete working code I can test."
 
-Show me complete, working Python code I can run.
-```
+**Your task**: Review AI's implementation critically.
+- Does it use the methods you identified?
+- Does it validate BEFORE converting (age to int)?
+- Does it match your UX decision (one-at-a-time vs. all-at-once)?
+- Can you explain EVERY line?
 
-**Expected Outcome**: You have a working validator that demonstrates all Chapter 16 concepts solving a real problem. Test it with the scenarios from Phase 3.
-
----
-
-### Prompt 3: Test Edge Cases (Validate)
-
-```
-My contact validator works for normal input, but I need to test edge cases:
-
-Test these scenarios and tell me what should happen:
-1. Name: "  bob_SMITH  " (spaces, underscores, mixed case)
-2. Email: "user@" or "@example.com" (@ at edges)
-3. Phone: "555-123-456" (only 9 digits) or "555-123-4567-8" (11 digits)
-4. Age: "0", "120", "150", "twenty-five", "-5"
-5. All fields empty (user just presses Enter)
-
-For each case, show me what my validator should output and why.
-```
-
-**Expected Outcome**: You discover edge cases and learn defensive programming. Real applications must handle bad input gracefully.
+If AI's code differs from your design, ask:
+> "Why did you use `.title()` instead of `.capitalize()` for names? What's the difference?"
 
 ---
 
-### Prompt 4: Reflect and Extend (Synthesize)
+### Part 3: Student Teaches AI (Edge Case Stress Test)
 
-```
-I've completed my contact validator. Looking back at Chapter 16:
+AI built a basic validator. But does it handle production-level edge cases?
 
-1. Which string methods were most critical? (I'm thinking strip(), title(), replace(), find(), isdigit())
-2. Why is "clean → validate → convert → use" the right pattern?
-3. How would I add email domain validation (checking for "." in domain part)?
-4. What would I need from future chapters to add features like:
-   - Retry on invalid input (Chapter 17: Control Flow)
-   - Save contacts to a file (Chapter 22: File Handling)
-   - Multiple contacts with a menu (Chapter 17: Loops)
+Challenge AI with impossible scenarios:
 
-Connect this project to real applications I'll build and explain why data validation matters in production systems.
-```
+> "My validator passes normal tests. But what happens with:
+> 1. Name: '123' (all numbers—is that valid?)
+> 2. Email: 'user@@example.com' (double @)
+> 3. Phone: '(555) 123-4567 ext 89' (contains extension text)
+> 4. Age: '30.5' (decimal—should we round or reject?)
+> 5. All fields empty (user just hits Enter 4 times)
+>
+> For EACH, tell me: Should validation pass or fail? If fail, what error message? If pass, what's the cleaned result? Then show code that handles ALL these cases."
 
-**Expected Outcome**: You synthesize learning, connect to professional development, and see the path forward to more complex applications.
+**Your task**: Evaluate AI's hardened validator.
+- Does it reject numeric-only names?
+- Does it handle multiple `@` symbols gracefully?
+- Does it strip ALL non-digits from phone (including text)?
+- Does it have clear error messages for each failure?
 
----
-
-### Prompt 5: Real-World Extension (Create)
-
-```
-I want to extend my contact validator with these features:
-
-1. Email domain validation: Check that email contains "." after "@" (e.g., "user@example.com")
-2. International phone support: Accept 11-digit numbers (country code) and format as +1 (XXX) XXX-XXXX
-3. Validation summary: Show count of valid/invalid fields at the end
-4. Detailed error messages: For each invalid field, explain exactly what's wrong and how to fix it
-
-Show me how to add these features using only Chapter 16 concepts (strings, methods, f-strings, type casting).
-```
-
-**Expected Outcome**: You apply Chapter 16 concepts to new requirements independently. This is where learning becomes mastery.
+If AI's solution is too complex, iterate:
+> "The `.replace()` chain for phone cleaning is hard to read. Is there a cleaner pattern using a loop or list comprehension?"
 
 ---
 
-**Safety & Ethics Note**: When using AI to help build your validator, remember:
-- **You design the validation rules**, AI helps implement them
-- **Always test with realistic messy data** before deploying
-- **If validation is too strict**, legitimate users get frustrated
-- **If validation is too loose**, bad data corrupts your database
-- **Your job is learning when to validate and when to be flexible**
+### Part 4: Production Review (Convergence to Best Practices)
 
-This project shows how professional development works: you solve a user problem (data quality), partner with AI for implementation, and validate with realistic data. Every application you build will use these exact skills.
+Now get AI to review YOUR implementation:
+
+> "Here's my complete contact validator: [paste YOUR code after incorporating AI feedback]. Review it like a senior developer:
+> 1. Code quality: Are variable names clear? Is logic readable?
+> 2. Validation completeness: Did I miss any edge cases?
+> 3. User experience: Are error messages helpful?
+> 4. Type safety: Are type hints accurate?
+> 5. Efficiency: Any redundant operations?
+>
+> Give me specific improvements with before/after code examples."
+
+**Your task**: Apply AI's review feedback selectively.
+- Which suggestions improve readability?
+- Which catch bugs you missed?
+- Which are over-engineering for this skill level?
+
+---
+
+### Part 5: Extend Beyond Chapter 16 (Preview Next Skills)
+
+Final challenge—preview what's possible with future chapters:
+
+> "My validator works perfectly for one contact. How would I extend it to:
+> 1. Let users re-enter invalid fields (instead of restarting)?
+> 2. Validate 10 contacts in a batch?
+> 3. Save validated contacts to a CSV file?
+>
+> For EACH, tell me: What concept from future chapters do I need? (Control flow? Lists? File I/O?) Show a preview of the pattern WITHOUT full implementation."
+
+**Outcome**: You see how Chapter 16 skills integrate with upcoming chapters—understanding the learning path ahead.
+
+---
+
+**Time**: 45-60 minutes total (this is a capstone!)
+**Outcome**: You've designed, built, hardened, and reviewed a production-quality contact validator—experiencing the full development lifecycle with AI as a collaborative partner, not just a code generator.
+
+---
+
+**Safety & Ethics Note**: When building validators:
+- **You decide validation rules** (AI implements them)
+- **Test with realistic messy data** before deploying
+- **Balance strictness vs. user frustration** (too strict → users give up)
+- **Your judgment matters**—AI can't know your users' needs

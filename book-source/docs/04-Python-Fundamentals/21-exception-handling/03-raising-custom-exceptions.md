@@ -53,490 +53,806 @@ differentiation:
   remedial_for_struggling: "Start with simple validation (single check, simple message); build to multiple validations"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/015-part-4-chapter-21/spec.md"
 created: "2025-11-09"
-last_modified: "2025-11-09"
+last_modified: "2025-01-18"
 git_author: "Claude Code"
 workflow: "/sp.implement"
-version: "1.0.0"
+version: "2.0.0"
 ---
 
 # Raising and Custom Exceptions
 
-So far, you've written code that *catches* exceptions—code that anticipates errors and handles them gracefully. But what about the functions *you* write? How do they signal errors to their callers?
+So far, you've written code that catches exceptions—code that anticipates errors and handles them gracefully. But what about the functions you write? How do they signal errors to their callers?
 
-This lesson teaches you to think defensively: Write functions that check their inputs, then raise exceptions when something goes wrong. You'll also create custom exception classes that tell the world exactly what problem occurred. This is how professional Python code communicates errors—not through error codes or return values, but through well-designed exceptions that carry meaning.
+This lesson teaches you to think defensively from the function designer's perspective. You'll start by designing domain exceptions for real-world systems, learn from AI about when to create custom vs use built-in exceptions, challenge AI with exception inheritance and `__init__` customization, and finally build a custom exception library for domain modeling.
 
-## Why Raise Exceptions?
+---
 
-Consider this simple function:
+## Part 1: Student Designs Domain Exceptions
 
-```python
-def set_age(age: int) -> None:
-    """Set the user's age (must be 0-150)."""
-    if age < 0 or age > 150:
-        print("Invalid age!")  # Problem: vague, hard to handle
-        return
+**Your Role**: Domain modeler designing exception types for business logic
 
-    print(f"Age set to {age}")
+Before learning syntax, think about error categories in real systems. Professional developers design exception hierarchies that communicate business domain knowledge.
+
+### Domain Design Exercise: User Authentication System
+
+You're building a user authentication system. Identify what can go wrong and design appropriate exception types.
+
+**System Requirements**:
+- Users must provide username and password
+- Passwords must meet complexity requirements (8+ characters, mix of types)
+- User accounts can be locked after failed attempts
+- User accounts can expire
+- Sessions can time out
+
+### Your Design Task
+
+**Before writing code**, design exception types for each error scenario:
+
+| Error Scenario | Exception Name | Parent Class | Error Message Pattern |
+|---------------|---------------|--------------|----------------------|
+| Username not found | UserNotFoundError | Exception | `"User '{username}' does not exist"` |
+| Password incorrect | InvalidCredentialsError | Exception | `"Invalid password for user '{username}'"` |
+| Password too weak | WeakPasswordError | ValueError | "Password must be 8+ chars with mixed types" |
+| Account locked | AccountLockedError | Exception | `"Account '{username}' is locked (too many failed attempts)"` |
+| Account expired | AccountExpiredError | Exception | `"Account '{username}' expired on {date}"` |
+| Session timeout | SessionExpiredError | Exception | `"Session expired after {minutes} minutes of inactivity"` |
+
+### Design Questions
+
+For each exception, answer:
+
+1. **Should this be a custom exception or use a built-in?**
+   - Custom if it represents domain-specific business logic
+   - Built-in if it represents a generic validation error
+
+2. **What parent class should it inherit from?**
+   - `Exception` for most custom exceptions
+   - `ValueError` if it's specifically about invalid input values
+   - `RuntimeError` if it's about state violations
+
+3. **What information should the error message include?**
+   - What went wrong (the error)
+   - What was expected (the rule)
+   - What value caused the error (the context)
+
+### Your Design Deliverable
+
+Create a file called `auth_exceptions_design.md`:
+
+```markdown
+# Authentication System Exception Design
+
+## Exception Hierarchy
+
+```
+Exception
+├── AuthenticationError (base for all auth errors)
+│   ├── UserNotFoundError
+│   ├── InvalidCredentialsError
+│   ├── AccountLockedError
+│   └── AccountExpiredError
+├── ValueError
+│   └── WeakPasswordError
+└── SessionExpiredError
 ```
 
-This function catches the error, but it just prints a message. The caller has no idea an error occurred—the function returned normally. Compare it to a defensive version:
+## Exception Specifications
 
+### UserNotFoundError
+**When raised**: User lookup fails in database
+**Parent**: AuthenticationError
+**Required info**: username attempted
+**Error message**: `"User '{username}' does not exist in the system"`
+**Recovery strategy**: Prompt user to check spelling or register
+
+### InvalidCredentialsError
+**When raised**: Password doesn't match stored hash
+**Parent**: AuthenticationError
+**Required info**: username (NOT password for security)
+**Error message**: `"Invalid credentials for user '{username}'"`
+**Recovery strategy**: Prompt user to retry or reset password
+
+[Continue for all exception types...]
+
+## Design Rationale
+
+### Why AuthenticationError base class?
+Allows callers to catch all auth-related errors with single except block:
 ```python
-class InvalidAgeError(Exception):
-    """Raised when age is outside valid range."""
+try:
+    authenticate(username, password)
+except AuthenticationError:
+    # Handle any authentication failure
+except ValueError:
+    # Handle validation errors (weak password)
+```
+
+### Why WeakPasswordError inherits from ValueError?
+Password validation is input validation—ValueError is semantically correct.
+Users familiar with ValueError will understand this pattern.
+```
+
+**Deliverable**: Complete `auth_exceptions_design.md` with exception hierarchy, specifications for all 6 exception types, and design rationale explaining your inheritance choices.
+
+---
+
+## Part 2: AI Explains When to Create Custom vs Use Built-In
+
+**Your Role**: Student learning exception design principles from AI Teacher
+
+Now that you've designed exceptions, understand when custom exceptions add value vs when built-ins suffice.
+
+### AI Teaching Prompt
+
+Ask your AI companion:
+
+> "I've designed a custom exception hierarchy for an authentication system:
+> - AuthenticationError (base)
+> - UserNotFoundError
+> - InvalidCredentialsError
+> - AccountLockedError
+> - WeakPasswordError (inherits from ValueError)
+>
+> Explain:
+> 1. When should I create custom exceptions vs using built-in ValueError, TypeError, or RuntimeError?
+> 2. What are the benefits of a base exception class like AuthenticationError?
+> 3. Show me how callers can catch exceptions at different levels of granularity (specific error vs category of errors).
+> 4. Is WeakPasswordError better as a custom exception or inheriting from ValueError? What are the tradeoffs?"
+
+### What You'll Learn from AI
+
+**Expected AI Response** (summary):
+
+**When to create custom exceptions**:
+- Domain-specific business logic errors (not generic validation)
+- When you want callers to handle different error types differently
+- When error messages need domain-specific context
+- When you want to add custom attributes (e.g., `username`, `lock_reason`)
+
+**Benefits of base exception classes**:
+- Callers can catch all related errors with one except block
+- Organizes exception hierarchy by domain
+- Makes error handling intent clearer
+- Allows for shared behavior (custom `__init__`, `__str__`)
+
+**Granularity example**:
+```python
+# Catch specific error
+try:
+    authenticate(user, pwd)
+except UserNotFoundError:
+    print("Create account?")
+except InvalidCredentialsError:
+    print("Forgot password?")
+
+# Catch category of errors
+try:
+    authenticate(user, pwd)
+except AuthenticationError:
+    print("Authentication failed")
+
+# Catch validation errors separately
+try:
+    set_password(new_pwd)
+except WeakPasswordError:
+    print("Password too weak")
+except ValueError:
+    print("Invalid input")
+```
+
+**WeakPasswordError tradeoffs**:
+- **Inherit from ValueError**: Semantically correct (input validation), familiar to Python developers
+- **Custom exception**: More explicit about domain, easier to catch specifically
+- **Recommendation**: Inherit from ValueError for input validation, custom for business logic
+
+### Convergence Activity
+
+After AI explains, test your understanding:
+
+Ask AI: "Show me an authentication function that raises all these exception types. For each exception, include context (username, attempt count, etc.) in the error message."
+
+**Example AI might show**:
+```python
+class AuthenticationError(Exception):
+    """Base class for authentication errors."""
     pass
 
-def set_age(age: int) -> None:
-    """Set the user's age (must be 0-150)."""
-    if age < 0 or age > 150:
-        raise InvalidAgeError(f"Age must be 0-150, got {age}")
+class UserNotFoundError(AuthenticationError):
+    """Raised when username doesn't exist."""
+    def __init__(self, username: str):
+        self.username = username
+        super().__init__(f"User '{username}' does not exist")
 
-    print(f"Age set to {age}")
+class InvalidCredentialsError(AuthenticationError):
+    """Raised when password is incorrect."""
+    def __init__(self, username: str, attempt_count: int):
+        self.username = username
+        self.attempt_count = attempt_count
+        super().__init__(
+            f"Invalid credentials for '{username}' (attempt {attempt_count})"
+        )
+
+class WeakPasswordError(ValueError):
+    """Raised when password doesn't meet requirements."""
+    def __init__(self, password_length: int, min_length: int = 8):
+        self.password_length = password_length
+        self.min_length = min_length
+        super().__init__(
+            f"Password too short ({password_length} chars, need {min_length}+)"
+        )
+
+def authenticate(username: str, password: str, user_db: dict) -> bool:
+    """Authenticate user, raising specific exceptions for different failures."""
+    if username not in user_db:
+        raise UserNotFoundError(username)
+
+    if user_db[username]['password'] != password:
+        attempt_count = user_db[username].get('failed_attempts', 0) + 1
+        raise InvalidCredentialsError(username, attempt_count)
+
+    return True
+
+def set_password(password: str) -> None:
+    """Set password, validating complexity."""
+    if len(password) < 8:
+        raise WeakPasswordError(len(password), min_length=8)
+    print(f"Password set successfully")
 ```
 
-Now the error is *explicit*. The caller knows something failed and can respond accordingly:
+**Your turn**: Explain back to AI:
+- Why does `UserNotFoundError.__init__` call `super().__init__(message)`?
+- What's the benefit of storing `username` and `attempt_count` as instance attributes?
+- How would a caller differentiate between `UserNotFoundError` and `InvalidCredentialsError`?
 
-```python
-try:
-    set_age(-5)
-except InvalidAgeError as e:
-    print(f"Error: {e}")
-    # Maybe retry, use a default, or ask the user again
-```
-
-#### 💬 AI Colearning Prompt
-
-> "Show me an example where raising an exception is better than returning an error code. What makes exceptions easier to handle than if/else checks?"
-
-Raising exceptions solves a fundamental problem: **Functions can signal errors clearly, and callers can handle them strategically.** Without exceptions, you'd need to check every return value for errors—tedious and error-prone.
+**Deliverable**: Write a 1-paragraph summary explaining when to create custom exceptions (domain logic) vs when to use built-in exceptions (generic validation), with examples from the authentication system.
 
 ---
 
-## The `raise` Statement
+## Part 3: Student Challenges AI with Exception Inheritance and `__init__` Customization
 
-To signal an error from your function, use the `raise` keyword:
+**Your Role**: Student teaching AI by exploring advanced exception patterns
 
+Now reverse the roles. You'll design challenges that test AI's understanding of exception customization, particularly `__init__` methods and instance attributes.
+
+### Challenge Design Pattern
+
+Create scenarios where:
+1. Custom exceptions need additional context beyond a message
+2. `__init__` methods accept domain-specific parameters
+3. Exception attributes enable programmatic error handling
+
+### Challenge 1: Exception with Validation Context
+
+**Your prompt to AI**:
+> "I want an exception that captures multiple validation errors. Design a `ValidationError` exception that:
+> - Accepts a list of field names and error messages
+> - Stores them as instance attributes
+> - Formats them nicely in the exception message
+> - Allows callers to iterate through individual field errors
+>
+> Show me the exception class and an example of how to use it."
+
+**Expected AI Response**:
 ```python
-def divide(a: float, b: float) -> float:
-    """Divide a by b. Raise ValueError if b is 0."""
-    if b == 0:
-        raise ValueError("Cannot divide by zero")
-    return a / b
+class ValidationError(Exception):
+    """Raised when multiple validation rules fail."""
+    def __init__(self, errors: dict[str, str]):
+        self.errors = errors
+        error_summary = "; ".join(f"{field}: {msg}" for field, msg in errors.items())
+        super().__init__(f"Validation failed: {error_summary}")
 
-# Using it:
+# Usage
+errors = {
+    "username": "Must be 3-20 characters",
+    "email": "Must contain @",
+    "age": "Must be positive integer"
+}
+raise ValidationError(errors)
+
+# Caller can access individual errors
 try:
-    result = divide(10, 0)
-except ValueError as e:
-    print(f"Math error: {e}")
+    validate_form(data)
+except ValidationError as e:
+    for field, message in e.errors.items():
+        print(f"Field '{field}': {message}")
 ```
 
-When `raise` executes, the function stops immediately and passes the exception up the call stack. The nearest `try/except` catches it (or the program crashes if no handler exists).
+**Your follow-up**: "Now show me how to extend this to support error codes for internationalization."
 
-#### 🎓 Instructor Commentary
+### Challenge 2: Exception Chaining with Context
 
-> In AI-native development, raising exceptions is how functions *communicate intent*. You're not just saying "error"—you're saying *what* error and *why* it matters. That's professional defensive programming.
+**Your prompt to AI**:
+> "Explain exception chaining with `raise ... from e`. Show me an example where:
+> - An inner function raises a `json.JSONDecodeError`
+> - An outer function catches it and raises a custom `ConfigurationError`
+> - The original exception is preserved for debugging
+> - The new exception adds business context
+>
+> Why is this better than just catching and re-raising the original exception?"
 
-### Key Points About `raise`
-
-- **Stops execution immediately**: Code after `raise` doesn't run
-- **Passes control to nearest try/except**: Callers can handle the error
-- **Includes a message**: Always explain what went wrong
-- **Works with any exception type**: ValueError, TypeError, custom exceptions, etc.
-
----
-
-## Code Example 1: Basic Validation and Raising
-
-Here's a complete example showing when to raise and how it's handled:
-
+**Expected AI Response**:
 ```python
-def validate_positive_integer(value: int) -> None:
-    """Ensure value is positive. Raise ValueError if not."""
-    if not isinstance(value, int):
-        raise TypeError(f"Expected int, got {type(value).__name__}")
-
-    if value <= 0:
-        raise ValueError(f"Must be positive, got {value}")
-
-    print(f"Valid: {value}")
-
-# Caller's perspective:
-try:
-    validate_positive_integer(5)    # Success: prints "Valid: 5"
-    validate_positive_integer(-3)   # Raises ValueError
-except ValueError as e:
-    print(f"Validation error: {e}")
-except TypeError as e:
-    print(f"Type error: {e}")
-```
-
-**Specification → AI Prompt → Validation Steps**:
-
-- **Spec Reference**: Function validates precondition (positive integer) and raises exception when violated
-- **AI Prompt Used**: "Create a function that validates input and raises appropriate exceptions for type and value errors"
-- **Validation Steps**:
-  1. Call with valid input (5) → prints success message
-  2. Call with negative input (-3) → catches ValueError
-  3. Call with wrong type ("5") → catches TypeError
-- **Result**: All three paths work correctly; exceptions communicate specific errors
-
-#### 🚀 CoLearning Challenge
-
-Ask your AI Co-Teacher:
-> "I need a function that validates an email address (must contain @). Generate the function with custom exceptions. Then explain: when should I raise ValueError vs creating a custom exception?"
-
-**Expected Outcome**: You'll understand that custom exceptions are worth creating when you want to communicate domain-specific errors clearly.
-
----
-
-## Custom Exception Classes
-
-When Python's built-in exceptions don't quite fit, create your own. A custom exception class inherits from `Exception`:
-
-```python
-class InvalidAgeError(Exception):
-    """Raised when age is outside valid range (0-150)."""
+class ConfigurationError(Exception):
+    """Raised when configuration file is invalid."""
     pass
 
-class InvalidEmailError(Exception):
-    """Raised when email format is invalid."""
+def load_config(filename: str) -> dict:
+    """Load configuration from JSON file."""
+    try:
+        with open(filename) as f:
+            return json.load(f)
+    except json.JSONDecodeError as e:
+        # Chain exception: preserve original, add business context
+        raise ConfigurationError(
+            f"Invalid configuration file '{filename}'"
+        ) from e
+
+# When this fails, traceback shows both exceptions
+try:
+    config = load_config("settings.json")
+except ConfigurationError as e:
+    print(f"Config error: {e}")
+    print(f"Caused by: {e.__cause__}")  # Original JSONDecodeError
+```
+
+**Key insight**: Exception chaining preserves debugging information while adding business context.
+
+### Challenge 3: Exception Hierarchy for E-Commerce
+
+**Your prompt to AI**:
+> "Design an exception hierarchy for an e-commerce order system. The system has:
+> - Product not found
+> - Insufficient inventory
+> - Invalid payment method
+> - Payment declined
+> - Shipping address invalid
+>
+> Create:
+> 1. A base `OrderError` exception
+> 2. Subclasses for each error type
+> 3. Custom `__init__` methods with relevant attributes
+> 4. Example usage showing how callers can catch at different levels
+>
+> Explain: which exceptions should be recoverable (user can retry) vs fatal (cancel order)?"
+
+**Expected AI Response** (structure):
+```python
+class OrderError(Exception):
+    """Base exception for order processing errors."""
     pass
 
-class InsufficientFundsError(Exception):
-    """Raised when account balance is too low."""
+class ProductNotFoundError(OrderError):
+    """Product ID doesn't exist."""
+    def __init__(self, product_id: str):
+        self.product_id = product_id
+        super().__init__(f"Product '{product_id}' not found")
+
+class InsufficientInventoryError(OrderError):
+    """Not enough stock available."""
+    def __init__(self, product_id: str, requested: int, available: int):
+        self.product_id = product_id
+        self.requested = requested
+        self.available = available
+        super().__init__(
+            f"Product '{product_id}': requested {requested}, only {available} available"
+        )
+
+class PaymentError(OrderError):
+    """Base for payment-related errors."""
     pass
-```
 
-Custom exceptions are **minimal**—just a class inheriting from Exception with a docstring. The docstring explains what this exception means and when it should be raised.
+class InvalidPaymentMethodError(PaymentError):
+    """Payment method not supported."""
+    pass
 
-### Using Custom Exceptions
+class PaymentDeclinedError(PaymentError):
+    """Payment processor declined transaction."""
+    def __init__(self, reason: str, transaction_id: str):
+        self.reason = reason
+        self.transaction_id = transaction_id
+        super().__init__(f"Payment declined: {reason} (txn: {transaction_id})")
 
-Once defined, custom exceptions work exactly like built-ins:
-
-```python
-def set_age(age: int) -> None:
-    """Set user's age. Raise InvalidAgeError if out of range."""
-    if age < 0 or age > 150:
-        raise InvalidAgeError(f"Age must be 0-150, got {age}")
-
-    print(f"Age set to {age}")
-
-# Caller handles the custom exception:
+# Granular error handling
 try:
-    set_age(200)
-except InvalidAgeError as e:
-    print(f"Please enter a valid age: {e}")
+    process_order(order)
+except InsufficientInventoryError as e:
+    # Recoverable: reduce quantity or wait
+    print(f"Only {e.available} available, retry with less?")
+except PaymentDeclinedError as e:
+    # Recoverable: try different payment method
+    print(f"Payment failed: {e.reason}, try another card?")
+except ProductNotFoundError:
+    # Fatal: remove item from cart
+    print("Product no longer exists")
+except OrderError:
+    # Catch-all for unexpected order errors
+    print("Order processing failed")
 ```
 
-#### Code Example 2: Custom Exception Classes
-
-Here's a complete banking example showing multiple custom exceptions:
-
-```python
-class BankAccount:
-    """Simple bank account with error handling."""
-
-    class InsufficientFundsError(Exception):
-        """Raised when withdrawal exceeds balance."""
-        pass
-
-    class InvalidAmountError(Exception):
-        """Raised when amount is negative or zero."""
-        pass
-
-    def __init__(self, balance: float):
-        if balance < 0:
-            raise ValueError("Initial balance cannot be negative")
-        self.balance = balance
-
-    def withdraw(self, amount: float) -> None:
-        """Withdraw money. Raise exceptions if preconditions fail."""
-        if amount <= 0:
-            raise self.InvalidAmountError(f"Amount must be positive, got {amount}")
-
-        if amount > self.balance:
-            raise self.InsufficientFundsError(
-                f"Cannot withdraw {amount}. Balance: {self.balance}"
-            )
-
-        self.balance -= amount
-        print(f"Withdrew {amount}. New balance: {self.balance}")
-
-# Using it:
-try:
-    account = BankAccount(100)
-    account.withdraw(50)        # Success
-    account.withdraw(200)       # Raises InsufficientFundsError
-except BankAccount.InsufficientFundsError as e:
-    print(f"Transaction failed: {e}")
-```
+**Deliverable**: Document three advanced exception challenges you posed to AI, AI's solutions, and your analysis of:
+- When to add custom `__init__` methods
+- When to store exception context as instance attributes
+- When to use exception chaining vs simple re-raising
 
 ---
 
-## Meaningful Error Messages
+## Part 4: Build Custom Exception Library for Domain Modeling
 
-A good error message does three things:
+**Your Role**: Library designer creating reusable exception types
 
-1. **Explains what went wrong**: Not just "Error!" but "Age must be 0-150, got 200"
-2. **Shows the actual value**: Include the problematic value so users understand the context
-3. **Hints at the solution**: "Email must contain @ symbol" helps users fix it
+Now integrate everything into a production-ready exception library that models domain concepts clearly.
 
-Compare:
+### Your Custom Exception Library
 
-```python
-# Poor: Vague message
-raise ValueError("Invalid age")
-
-# Better: Shows value
-raise ValueError(f"Invalid age: {age}")
-
-# Best: Explains range and shows value
-raise ValueError(f"Age must be 0-150, got {age}")
-```
-
----
-
-## Code Example 3: Complete Validation Function
-
-Here's a realistic example—validating form data with multiple checks:
+Create a Python file called `domain_exceptions.py` with these patterns:
 
 ```python
-def validate_user_signup(name: str, age: int, email: str) -> None:
-    """Validate user signup data. Raise exceptions for invalid inputs."""
+"""
+Custom Exception Library for Domain Modeling
+Chapter 21, Lesson 3
 
-    # Check name
-    if not isinstance(name, str):
-        raise TypeError(f"Name must be string, got {type(name).__name__}")
+This library demonstrates professional exception design patterns:
+- Base exception classes for domains
+- Custom __init__ with context attributes
+- Exception chaining
+- Clear error messages
+"""
 
-    if not name or name.isspace():
-        raise ValueError("Name cannot be empty")
+from datetime import datetime
+from typing import Optional
 
-    # Check age
-    if not isinstance(age, int):
-        raise TypeError(f"Age must be int, got {type(age).__name__}")
 
-    if age < 0:
-        raise ValueError(f"Age cannot be negative, got {age}")
+# =============================================================================
+# Authentication Domain
+# =============================================================================
 
-    if age > 150:
-        raise ValueError(f"Age seems unrealistic, got {age}")
+class AuthenticationError(Exception):
+    """Base exception for authentication failures."""
+    pass
 
-    # Check email
-    if not isinstance(email, str):
-        raise TypeError(f"Email must be string, got {type(email).__name__}")
 
-    if "@" not in email:
-        raise ValueError(f"Email missing @ symbol: {email}")
+class UserNotFoundError(AuthenticationError):
+    """User doesn't exist in system."""
 
-    if "." not in email.split("@")[1]:
-        raise ValueError(f"Email domain missing dot: {email}")
+    def __init__(self, username: str):
+        self.username = username
+        self.timestamp = datetime.now()
+        super().__init__(f"User '{username}' does not exist")
 
-    print(f"Valid signup: {name}, {age}, {email}")
 
-# Caller handles specific errors:
-try:
-    validate_user_signup("Alice", 30, "alice@example.com")  # Success
-except (TypeError, ValueError) as e:
-    print(f"Validation failed: {e}")
-```
+class InvalidCredentialsError(AuthenticationError):
+    """Invalid username/password combination."""
 
----
+    def __init__(self, username: str, attempt_number: int):
+        self.username = username
+        self.attempt_number = attempt_number
+        self.timestamp = datetime.now()
+        super().__init__(
+            f"Invalid credentials for '{username}' (attempt {attempt_number})"
+        )
 
-## Code Example 4: Raising from Lessons 1-2
 
-Combining what you've learned about try/except with raising exceptions:
+class AccountLockedError(AuthenticationError):
+    """Account locked due to too many failed attempts."""
 
-```python
-def process_data_file(filename: str) -> list[dict]:
-    """Read and validate data from file. Handle and raise exceptions."""
+    def __init__(self, username: str, locked_until: datetime):
+        self.username = username
+        self.locked_until = locked_until
+        super().__init__(
+            f"Account '{username}' locked until {locked_until.isoformat()}"
+        )
 
-    validated_records = []
+
+class WeakPasswordError(ValueError):
+    """Password doesn't meet complexity requirements."""
+
+    def __init__(
+        self,
+        password_length: int,
+        min_length: int = 8,
+        missing_requirements: Optional[list[str]] = None
+    ):
+        self.password_length = password_length
+        self.min_length = min_length
+        self.missing_requirements = missing_requirements or []
+
+        msg = f"Password too weak ({password_length} chars, need {min_length}+)"
+        if self.missing_requirements:
+            msg += f". Missing: {', '.join(self.missing_requirements)}"
+
+        super().__init__(msg)
+
+
+# =============================================================================
+# Data Validation Domain
+# =============================================================================
+
+class ValidationError(Exception):
+    """Base exception for validation failures."""
+
+    def __init__(self, errors: dict[str, str]):
+        """
+        Args:
+            errors: Dict mapping field names to error messages
+        """
+        self.errors = errors
+        self.field_count = len(errors)
+
+        error_summary = "; ".join(
+            f"{field}: {msg}" for field, msg in errors.items()
+        )
+        super().__init__(f"Validation failed ({self.field_count} errors): {error_summary}")
+
+    def has_error(self, field: str) -> bool:
+        """Check if specific field has error."""
+        return field in self.errors
+
+    def get_error(self, field: str) -> Optional[str]:
+        """Get error message for specific field."""
+        return self.errors.get(field)
+
+
+# =============================================================================
+# File Processing Domain
+# =============================================================================
+
+class FileProcessingError(Exception):
+    """Base exception for file processing failures."""
+    pass
+
+
+class InvalidFileFormatError(FileProcessingError):
+    """File format doesn't match expected structure."""
+
+    def __init__(self, filename: str, expected_format: str, detected_format: str):
+        self.filename = filename
+        self.expected_format = expected_format
+        self.detected_format = detected_format
+        super().__init__(
+            f"File '{filename}': expected {expected_format}, got {detected_format}"
+        )
+
+
+class CorruptedDataError(FileProcessingError):
+    """Data in file is corrupted or invalid."""
+
+    def __init__(self, filename: str, line_number: int, reason: str):
+        self.filename = filename
+        self.line_number = line_number
+        self.reason = reason
+        super().__init__(
+            f"File '{filename}' line {line_number}: {reason}"
+        )
+
+
+# =============================================================================
+# Business Logic Domain (E-Commerce)
+# =============================================================================
+
+class OrderError(Exception):
+    """Base exception for order processing errors."""
+    pass
+
+
+class ProductNotFoundError(OrderError):
+    """Product ID doesn't exist in catalog."""
+
+    def __init__(self, product_id: str, catalog_version: str = "latest"):
+        self.product_id = product_id
+        self.catalog_version = catalog_version
+        super().__init__(
+            f"Product '{product_id}' not found in catalog ({catalog_version})"
+        )
+
+
+class InsufficientInventoryError(OrderError):
+    """Not enough inventory to fulfill order."""
+
+    def __init__(self, product_id: str, requested: int, available: int):
+        self.product_id = product_id
+        self.requested = requested
+        self.available = available
+        self.shortfall = requested - available
+        super().__init__(
+            f"Product '{product_id}': requested {requested}, "
+            f"only {available} available (short by {self.shortfall})"
+        )
+
+
+class PaymentError(OrderError):
+    """Base exception for payment failures."""
+    pass
+
+
+class PaymentDeclinedError(PaymentError):
+    """Payment processor declined transaction."""
+
+    def __init__(self, reason: str, transaction_id: str, retry_allowed: bool = True):
+        self.reason = reason
+        self.transaction_id = transaction_id
+        self.retry_allowed = retry_allowed
+        super().__init__(
+            f"Payment declined: {reason} (txn: {transaction_id}, "
+            f"retry: {'yes' if retry_allowed else 'no'})"
+        )
+
+
+# =============================================================================
+# Example Usage and Testing
+# =============================================================================
+
+def example_authentication():
+    """Example: Authentication error handling."""
+    print("=== Authentication Example ===\n")
 
     try:
-        with open(filename, 'r') as f:
-            for line_num, line in enumerate(f, 1):
-                try:
-                    # Try to parse each line
-                    parts = line.strip().split(",")
-                    if len(parts) != 3:
-                        raise ValueError(f"Expected 3 fields, got {len(parts)}")
+        # Simulate failed login
+        raise InvalidCredentialsError("alice", attempt_number=3)
+    except InvalidCredentialsError as e:
+        print(f"Login failed: {e}")
+        print(f"  Username: {e.username}")
+        print(f"  Attempt: {e.attempt_number}")
+        print(f"  Time: {e.timestamp.isoformat()}\n")
 
-                    name, age_str, email = parts
-                    age = int(age_str)  # ValueError if not numeric
 
-                    # Validate
-                    if age < 0 or age > 150:
-                        raise ValueError(f"Age {age} out of range")
+def example_validation():
+    """Example: Multi-field validation."""
+    print("=== Validation Example ===\n")
 
-                    if "@" not in email:
-                        raise ValueError(f"Invalid email: {email}")
+    errors = {
+        "username": "Must be 3-20 characters",
+        "email": "Must contain @",
+        "age": "Must be positive integer",
+    }
 
-                    # Success
-                    validated_records.append({
-                        "name": name,
-                        "age": age,
-                        "email": email
-                    })
+    try:
+        raise ValidationError(errors)
+    except ValidationError as e:
+        print(f"Form validation failed: {e}\n")
+        print("Individual field errors:")
+        for field, message in e.errors.items():
+            print(f"  - {field}: {message}")
+        print()
 
-                except ValueError as e:
-                    print(f"Line {line_num}: Skipping - {e}")
-                    continue
 
-    except FileNotFoundError:
-        print(f"File not found: {filename}")
-        return []
+def example_inventory():
+    """Example: Inventory error with context."""
+    print("=== Inventory Example ===\n")
 
-    finally:
-        print(f"Processed {len(validated_records)} valid records")
+    try:
+        raise InsufficientInventoryError("WIDGET-123", requested=50, available=30)
+    except InsufficientInventoryError as e:
+        print(f"Order failed: {e}")
+        print(f"  Product: {e.product_id}")
+        print(f"  Requested: {e.requested}")
+        print(f"  Available: {e.available}")
+        print(f"  Shortfall: {e.shortfall}")
+        print(f"  Suggestion: Reduce quantity by {e.shortfall} and retry\n")
 
-    return validated_records
 
-# Usage:
-records = process_data_file("users.txt")
+def example_payment():
+    """Example: Payment error with retry logic."""
+    print("=== Payment Example ===\n")
+
+    try:
+        raise PaymentDeclinedError(
+            reason="Insufficient funds",
+            transaction_id="TXN-2025-001",
+            retry_allowed=True
+        )
+    except PaymentDeclinedError as e:
+        print(f"Payment failed: {e}")
+        print(f"  Reason: {e.reason}")
+        print(f"  Transaction ID: {e.transaction_id}")
+        print(f"  Retry allowed: {e.retry_allowed}")
+        if e.retry_allowed:
+            print("  Action: Prompt user for different payment method\n")
+
+
+if __name__ == "__main__":
+    print("=== Custom Exception Library Examples ===\n")
+
+    example_authentication()
+    example_validation()
+    example_inventory()
+    example_payment()
+
+    print("=== Exception Hierarchy Example ===\n")
+
+    # Demonstrate catching at different levels
+    try:
+        raise PaymentDeclinedError("Card expired", "TXN-999", retry_allowed=False)
+    except PaymentError:
+        print("Caught as PaymentError (base class)")
+    except OrderError:
+        print("Caught as OrderError (would not reach here)")
+
+    try:
+        raise InsufficientInventoryError("PROD-001", 10, 5)
+    except OrderError:
+        print("Caught as OrderError (base class)\n")
 ```
 
-#### ✨ Teaching Tip
+### Library Requirements
 
-> Use Claude Code to design error messages. Ask: "What should my error message tell the user so they can fix the problem? Show me good vs bad examples." Test with real scenarios where you intentionally trigger errors.
+Your exception library must include:
 
----
+1. **Authentication domain** (4 exception types)
+   - Base `AuthenticationError`
+   - User-specific errors with context
+   - Custom `__init__` methods storing username, timestamps, attempt counts
 
-## Practice Exercise 1: Age Validator with Custom Exception
+2. **Validation domain** (1 exception type)
+   - `ValidationError` accepting dict of field errors
+   - Helper methods (`has_error`, `get_error`)
+   - Useful for form validation
 
-Write a function `set_user_age()` that:
-- Takes an integer age as parameter
-- Raises `InvalidAgeError` if age < 0 or age > 150
-- Error message: `"Age must be 0-150, got {age}"`
-- Otherwise prints success: `"Age set to {age}"`
+3. **File processing domain** (3 exception types)
+   - Base `FileProcessingError`
+   - Format and corruption errors
+   - Line numbers and file context
 
-Then write code that calls it with an invalid age and catches the exception.
+4. **Business logic domain** (5 exception types)
+   - E-commerce order errors
+   - Inventory and payment errors
+   - Retry logic and context for recovery
 
-**Hint**: Start with the custom exception class definition, then the function.
+5. **Example usage** for each domain
+   - Demonstrates exception raising
+   - Shows attribute access
+   - Illustrates recovery strategies
 
----
+### Validation with AI
 
-## Practice Exercise 2: Email Validator
+Once your library is complete, validate it by asking AI:
 
-Write a function `validate_email()` that:
-- Takes an email string
-- Checks: contains exactly one "@" symbol
-- Checks: has text before and after the "@"
-- Checks: domain (after @) contains a dot
-- Raises `InvalidEmailError` with helpful message if any check fails
-- Otherwise returns True
+> "Review my custom exception library. For each exception:
+> 1. Is the inheritance hierarchy appropriate?
+> 2. Are the custom `__init__` parameters useful for callers?
+> 3. Do the error messages provide enough context?
+> 4. What exception types am I missing for these domains?
+> 5. Are there any patterns I should add (e.g., exception chaining, error codes)?"
 
-Test it with:
-- Valid: "alice@example.com"
-- Invalid: "alice" (no @)
-- Invalid: "@example.com" (no local part)
-- Invalid: "alice@example" (no dot in domain)
-
----
-
-## Practice Exercise 3: Multiple Validations and Custom Exceptions
-
-Create two custom exceptions:
-- `NegativeNumberError` - raised when number < 0
-- `TooLargeError` - raised when number > 1000
-
-Write a function `process_number()` that:
-- Takes an integer
-- Raises `NegativeNumberError` if < 0
-- Raises `TooLargeError` if > 1000
-- Otherwise prints `"Processing: {number}"`
-
-Write code that catches each exception separately and handles appropriately.
+**Deliverable**: Complete `domain_exceptions.py` with all 4 domains, comprehensive `__init__` methods, clear error messages, and example usage for each exception type.
 
 ---
 
-## Common Mistakes to Avoid
+## Summary: Bidirectional Learning Pattern
 
-**❌ Mistake 1: Forgetting to pass a message**
-```python
-raise ValueError()  # Vague! User sees no context
-```
+In this lesson, you experienced all three roles:
 
-**✅ Better:**
-```python
-raise ValueError(f"Expected positive int, got {value}")
-```
+**Part 1 (Student designs)**: You designed domain exceptions for authentication system
+**Part 2 (AI teaches)**: AI explained when to create custom vs use built-in exceptions
+**Part 3 (Student teaches)**: You challenged AI with exception inheritance and `__init__` customization
+**Part 4 (Knowledge synthesis)**: You built a reusable exception library for domain modeling
 
----
+This pattern ensures you understand exceptions not just as error handling, but as a domain modeling tool that communicates business logic through type systems.
 
-**❌ Mistake 2: Raising but not catching in caller**
-```python
-def dangerous_function():
-    raise ValueError("Something went wrong")
+### What You've Built
 
-dangerous_function()  # Crashes! No try/except
-```
+1. `auth_exceptions_design.md` — Your exception hierarchy design with rationale
+2. Custom vs built-in summary — Understanding of when each approach is appropriate
+3. Advanced exception challenges — Three patterns exploring `__init__`, inheritance, and chaining
+4. `domain_exceptions.py` — Production-ready exception library for 4 domains
 
-**✅ Better:**
-```python
-try:
-    dangerous_function()
-except ValueError as e:
-    print(f"Error handled: {e}")
-```
+### Key Insights
 
----
+**Exception design principles**:
+- **Custom exceptions for domain logic** (business rules, not generic validation)
+- **Built-in exceptions for generic errors** (ValueError for input validation)
+- **Base exception classes** enable catching categories of errors
+- **Custom `__init__` methods** store context for programmatic error handling
+- **Exception chaining** preserves debugging information while adding business context
 
-**❌ Mistake 3: Using generic Exception instead of specific types**
-```python
-raise Exception("Age is invalid")  # Too vague
-```
+**Error message best practices**:
+- Explain what went wrong (the error)
+- Show what was expected (the rule)
+- Include relevant context (values, timestamps, IDs)
+- Suggest recovery actions when possible
 
-**✅ Better:**
-```python
-raise ValueError(f"Age must be positive, got {age}")
-# Or custom:
-raise InvalidAgeError(f"Age must be 0-150, got {age}")
-```
+### Next Steps
 
----
-
-## Try With AI
-
-Use your preferred AI companion tool (Claude Code, Gemini CLI, or ChatGPT web) to explore these prompts. Each one builds on your understanding of raising exceptions and designing custom exceptions.
-
-### Prompt 1: Apply — Choosing Exception Types
-
-**Ask your AI**:
-> "I'm writing a function that validates age (0-150). Should I use ValueError or create a custom InvalidAgeError? What are the pros and cons of each approach?"
-
-**Expected Outcome**: You'll understand that built-in exceptions work for general validation, but custom exceptions communicate intent more clearly in domain code.
-
----
-
-### Prompt 2: Analyze — When to Raise vs Return Errors
-
-**Ask your AI**:
-> "Compare two approaches to error handling: (1) raising exceptions, (2) returning error codes (like returning -1 on failure). When should you use each? What makes exceptions better for Python?"
-
-**Expected Outcome**: You'll recognize that exceptions separate error handling from normal control flow, making code clearer and easier to debug.
-
----
-
-### Prompt 3: Evaluate — Custom Exception Design
-
-**Ask your AI**:
-> "Review this custom exception design and tell me if it's too specific or too generic: I have separate exceptions for InvalidAgeError, InvalidNameError, InvalidEmailError in my user validator. Should these be separate exceptions or one ValidationError? Explain your reasoning."
-
-**Expected Outcome**: You'll think about exception granularity and understand that domain-specific exceptions are better than generic ones.
-
----
-
-### Prompt 4: Create — Design Exception Hierarchy
-
-**Ask your AI**:
-> "I'm building an email validator service. Design an exception hierarchy (parent and child exceptions) for these scenarios: (1) email format invalid, (2) domain doesn't exist, (3) email already registered, (4) user not authorized. Then ask me: what structure did you choose and why? Is that better than having one ValidationError?"
-
-**Expected Outcome**: You'll understand that exception hierarchies allow callers to handle categories of errors (ValidationError) or specific errors (FormatInvalidError) as needed.
-
----
-
-**Safety Note**: When testing code that raises exceptions, intentionally trigger errors to verify your exception handling works correctly. Always test both the happy path (valid data) and the error path (invalid data).
-
+Lesson 4 builds on this foundation, teaching error handling strategies: when to retry, when to fall back to defaults, when to degrade gracefully, and how to log errors for debugging. Your custom exception library will serve as the foundation for strategic error recovery.

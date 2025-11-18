@@ -307,7 +307,7 @@ tasks:
     depends_on: ["T002"]
 
   - task_id: "T00X"
-    content: "Run technical-reviewer validation"
+    content: "Run validation-auditor validation"
     depends_on: [all lesson tasks]
 ```
 
@@ -349,7 +349,7 @@ differentiation:
   extension_for_advanced: "[For A2 students pushing toward B1]"
   remedial_for_struggling: "[For A1 students needing support]"
 
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/part-5-chapter-${N}/spec.md"
 version: "1.0.0"
 ---
@@ -559,7 +559,7 @@ Step 6: Deliver
       ├── spec.md (with evals)
       ├── plan.md (with skills metadata)
       └── tasks.md (with acceptance criteria)
-   └─ Ready for lesson-writer implementation
+   └─ Ready for content-implementer implementation
 ```
 
 ---
@@ -629,7 +629,7 @@ $ /sp.python-chapter 13
 
 [User approves tasks]
 
-✅ Complete package ready for lesson-writer subagent
+✅ Complete package ready for content-implementer subagent
 ```
 
 ### Example 2: Chapter 17 (Control Flow)

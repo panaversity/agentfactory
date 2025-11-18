@@ -67,7 +67,7 @@ differentiation:
   remedial_for_struggling: "Focus on Book example as primary case study; practice ValidationError handling with simplified model (3 fields); use AI to explain each error message"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/001-part-4-chapter-27/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -404,44 +404,143 @@ except ValidationError as e:
 
 ---
 
-## Try With AI
+## Try With AI: The Data Validation Discovery (4-Part Learning Challenge)
 
-Using your AI companion (Claude Code, Gemini CLI, or ChatGPT), practice Pydantic validation. These prompts progress from understanding concepts to creating production-ready validation.
+This challenge teaches you bidirectional learning: you discover problems, AI teaches concepts, you challenge AI's approach, then you build real artifacts.
 
-### Prompt 1: Understand Type Hints vs Validation
+---
+
+### Part 1: You Discover (Student Discovers Problems)
+
+**Your Turn** — Write code WITHOUT Pydantic to experience the validation problem:
+
+```python
+# Part 1: Manual validation (the hard way)
+# Write a simple user registration system that validates data manually:
+
+user_data = {
+    "username": "alice",
+    "email": "alice@example.com",
+    "age": 25,
+    "bio": "Software developer"
+}
+
+# Challenge: Write validation functions that ensure:
+# 1. username: required, 3-20 characters, alphanumeric + underscore
+# 2. email: required, contains @, domain has dot
+# 3. age: required, integer between 13-120
+# 4. bio: optional, max 200 characters
+
+# Problem to discover:
+# - You'll write lots of boilerplate validation code
+# - Each field needs separate checks
+# - Error messages aren't centralized
+# - You can't reuse validation logic easily
+# - Testing validation is tedious
+```
+
+**What You'll Realize**: Manual validation is repetitive, error-prone, and impossible to scale. Each field needs its own checks. This is where Pydantic saves you.
+
+---
+
+### Part 2: AI as Teacher (AI Explains Concepts)
 
 **Ask your AI:**
 
-> "Explain the difference between Python's built-in type hints and Pydantic's runtime validation. Give 2-3 concrete examples showing when type hints aren't enough and why Pydantic matters."
+> "I just wrote manual validation code for a user registration system (3-5 fields with different constraints). It's repetitive and error-prone. Show me how Pydantic solves this problem.
+>
+> First, explain the difference between type hints (static) and validation (runtime) with concrete examples from my validation code that would break. Then show me the same validation using Pydantic—how would you define a User model that validates the same rules automatically?"
 
-**Expected Outcome**: Your AI should explain that type hints are static (only visible to your IDE), while Pydantic enforces rules at runtime. Examples might include API requests with wrong data types, AI-generated JSON that doesn't match your schema, or configuration files with invalid values.
+**What AI Should Show You**:
+- How Pydantic BaseModel replaces your manual validation functions
+- How type hints alone (str, int) aren't enough—Pydantic enforces them at runtime
+- How Field() constraints replace your custom validation logic
+- Side-by-side comparison: your manual code vs. Pydantic
 
----
-
-### Prompt 2: Apply - Create Your First Model
-
-**Tell your AI:**
-
-> "Create a Pydantic model for a Product with: name (required string), price (required float, must be >= 0), quantity (required integer), and description (optional string). Then write code that validates both valid and invalid product data, showing what validation errors look like."
-
-**Expected Outcome**: A working Product model with proper field types, test cases showing successful validation, and examples of validation errors with explanations of what went wrong.
+**Your Role**: Ask clarifying questions. "Why does Pydantic report ALL errors at once instead of stopping at the first one?" "Can I add custom validation beyond Field()?" "How does Pydantic know about email format?"
 
 ---
 
-### Prompt 3: Analyze - When to Use Pydantic
+### Part 3: You as Teacher (You Challenge AI's Approach)
 
-**Ask your AI:**
+**Challenge AI** — Ask it to handle edge cases it might miss:
 
-> "When would you use Pydantic instead of just type hints? Give 3 real-world scenarios where runtime validation is critical. For each scenario, explain what could go wrong without validation."
+> "Now test your Pydantic model with edge cases I discovered in my manual validation:
+> 1. What happens if I pass a string like '25' (quoted number) instead of integer 25?
+> 2. What if email is 'alice@localhost' (no dot in domain)?
+> 3. What if someone passes username='alice_' (underscore at end)?
+> 4. What if age is 120.5 (float instead of int)?
+>
+> For each case, show me: a) What Pydantic does, b) Whether that's correct behavior, c) How to fix it if needed."
 
-**Expected Outcome**: Scenarios like API input validation (preventing bad data from reaching your code), LLM output validation (ensuring AI responses match your expected format), configuration file validation (catching typos in .env or YAML), or database schema enforcement. Each should explain the consequence of missing validation.
+**Your Role**: Push back. "Your model accepts 'test@localhost'—but we need a proper domain. How do we add that validation?" or "Can we coerce '25' to integer 25 automatically?" This forces AI to improve its model.
+
+**AI's Response Should Show**:
+- How Pydantic handles type coercion (strings → ints when possible)
+- How to add custom validators for complex rules
+- How to reject invalid data with clear error messages
 
 ---
 
-### Prompt 4: Create - Nested Models with Validation
+### Part 4: You Build (Production Artifact)
 
-**Tell your AI:**
+**Build a Complete User Validation System** — Synthesize everything into a working module:
 
-> "Build a UserProfile model with a nested Address model. Include: UserProfile (name, email, age), Address (street, city, zip_code). Add validation that zip_code must be exactly 5 digits. Generate test data showing both valid and invalid zip codes, and demonstrate the validation errors."
+```python
+# deliverable: user_validation.py
 
-**Expected Outcome**: Nested UserProfile and Address models with custom validation on zip_code, example data for valid cases (zip: "12345"), invalid cases (zip: "ABC"), and clear error messages showing which field failed validation and why.
+from pydantic import BaseModel, Field, field_validator, ValidationError
+from typing import Optional
+
+class User(BaseModel):
+    """Production User model with comprehensive validation."""
+
+    # Define your fields with type hints + constraints
+    username: str = Field(min_length=3, max_length=20, pattern=r"^[a-z0-9_]+$")
+    email: str
+    age: int = Field(ge=13, le=120)
+    bio: Optional[str] = Field(default=None, max_length=200)
+
+    # Custom validators for complex rules
+    @field_validator('email')
+    @classmethod
+    def validate_email(cls, v: str) -> str:
+        if '@' not in v or '.' not in v.split('@')[1]:
+            raise ValueError('Invalid email format')
+        return v.lower()
+
+# Test your implementation
+if __name__ == "__main__":
+    # Valid user
+    user = User(
+        username="alice_123",
+        email="alice@example.com",
+        age=25,
+        bio="Software developer"
+    )
+    print(f"✓ User created: {user.username}")
+
+    # Invalid user—Pydantic catches all errors
+    try:
+        bad_user = User(
+            username="ab",  # Too short
+            email="alice@localhost",  # No dot in domain
+            age=150,  # Too old
+            bio="a" * 201  # Too long
+        )
+    except ValidationError as e:
+        print(f"✗ Validation failed with {len(e.errors())} errors:")
+        for error in e.errors():
+            print(f"  {error['loc'][0]}: {error['msg']}")
+```
+
+**Success Criteria**:
+- Your model validates all fields (no manual checks needed)
+- Invalid data raises ValidationError with clear messages
+- You understand why Field() worked vs. why you needed @field_validator
+- You can explain the difference between Pydantic's automatic and custom validation
+
+---
+
+## Time Estimate
+**25-30 minutes** (5 min discover, 8 min AI teaches, 7 min you challenge, 5 min build)

@@ -281,12 +281,7 @@ Explain what each command does and how data flows between them.
 | Count them | `wc -l` | (AI's counting command) |
 | Data flow | all files → Python files → count | (Same pattern) |
 
-**Observation**:
-- Is the command pattern the same? (Yes—list → filter → count)
-- Can you trace the data flow? (Yes—each step transforms the previous output)
-- Does your AI explain WHAT each command does? (Yes—not just the syntax, but the purpose)
-
-**Key Insight**: Pipes chain simple commands into powerful workflows. You don't memorize complex syntax—you specify what you want, and AI builds the pipeline.
+**Observation**: You specified WHAT you wanted (count Python files), AI built the HOW (pipeline). Then you traced the data flow to understand it. This is how complex workflows become understandable through AI collaboration.
 
 ---
 
@@ -308,6 +303,8 @@ Using the pipeline from above (list → filter → count Python files):
 Your AI will show the intermediate outputs at each stage and explain how modifications change the data flow. This builds your understanding of pipelines as transformations.
 
 **Key Principle**: Pipes are powerful because you can trace, predict, and modify them by understanding data flow.
+
+**Key Insight**: Through iterative refinement (trace → understand → modify → verify), you and AI converge on pipelines that solve your exact need. You're not memorizing syntax—you're reasoning about data transformations.
 
 ---
 

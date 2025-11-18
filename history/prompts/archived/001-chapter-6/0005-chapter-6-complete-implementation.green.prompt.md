@@ -31,7 +31,7 @@ tests:
 ground with context @context\07_chap6_spec\ and follow the links
 
 Implement Chapter 6 (Gemini CLI: Installation and Basics) following the Spec-Driven Development workflow.
-Complete all remaining lessons (4, 5, 6) for the chapter using lesson-writer subagents where appropriate.
+Complete all remaining lessons (4, 5, 6) for the chapter using content-implementer subagents where appropriate.
 
 ## Response snapshot
 

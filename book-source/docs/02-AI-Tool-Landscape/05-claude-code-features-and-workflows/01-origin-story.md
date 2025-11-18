@@ -1,14 +1,72 @@
 ---
-sidebar_position: 1
 title: "The Claude Code Origin Story and Paradigm Shift"
-duration: "8-10 min"
+sidebar_position: 1
+chapter: 5
+lesson: 1
+duration_minutes: 10
+
+# PEDAGOGICAL LAYER METADATA
+primary_layer: "Layer 1"
+layer_progression: "L1 (Manual Foundation)"
+layer_1_foundation: "Paradigm shift understanding (passive AI vs agentic AI), context-aware development concepts"
+layer_2_collaboration: "N/A"
+layer_3_intelligence: "N/A"
+layer_4_capstone: "N/A"
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+skills:
+  - name: "Understanding Agentic AI vs Passive AI Assistance"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify and explain the fundamental difference between passive AI tools (web chat, copilots) and agentic AI systems (Claude Code) with context awareness and file integration"
+
+learning_objectives:
+  - objective: "Understand the fundamental difference between passive AI assistance and agentic AI collaboration"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Explanation comparing chat-based AI vs context-aware agentic systems"
+  - objective: "Recognize how context-aware file integration enables better AI suggestions"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Identification of how Claude Code reads project files vs web-based AI"
+  - objective: "Identify the paradigm shift from chat-based tools to development partners"
+    proficiency_level: "A2"
+    bloom_level: "Analyze"
+    assessment_method: "Analysis of workflow differences between traditional and agentic AI development"
+  - objective: "Explain why Claude Code represents a paradigm shift in AI-assisted development"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of paradigm shift with concrete examples"
+
+# Cognitive load tracking
+cognitive_load:
+  new_concepts: 5
+  assessment: "5 concepts (agentic AI, context awareness, file integration, terminal-based AI, paradigm shift) - within A2 limit of 7 ✓"
+
+# Differentiation guidance
+differentiation:
+  extension_for_advanced: "Research GitHub Copilot Workspace, Cursor, Windsurf, and compare their agentic capabilities to Claude Code's approach"
+  remedial_for_struggling: "Focus on single concrete example: Claude Code reading CLAUDE.md vs ChatGPT copy-pasting context"
+
+# Generation metadata
+generated_by: "content-implementer v1.0.0 (029-chapter-5-refinement)"
+source_spec: "specs/029-chapter-5-refinement/spec.md"
+created: "2025-01-17"
+last_modified: "2025-01-17"
+git_author: "Claude Code"
+workflow: "/sp.implement"
+version: "2.0.0"
+
+# Legacy compatibility (Docusaurus)
+prerequisites:
+  - "Understanding of what AI is and basic terminal usage"
 ---
 
 # The Claude Code Origin Story and Paradigm Shift
 
-## The Development Tool That Nobody Meant to Build
-
-In February 2025, a small team at Anthropic shipped what they thought was a modest developer experiment. They called it "Claude Code"—a command-line interface that let developers chat with Claude AI directly from their terminal. The team expected a niche audience: maybe a few thousand command-line enthusiasts.
+When Anthropic shipped Claude Code, they created what seemed like a modest developer experiment—a command-line interface that let developers chat with Claude AI directly from their terminal. The team expected a niche audience: maybe a few thousand command-line enthusiasts.
 
 What happened next surprised everyone.
 
@@ -31,6 +89,9 @@ Think of it this way:
 - **Claude Code**: You describe what you need. Claude reads your actual files, proposes specific changes to your real codebase, and can apply those changes directly (with your approval).
 
 The difference is profound: one is a consultant giving advice, the other is a pair programmer actively collaborating on your project.
+
+#### 💬 AI Colearning Prompt
+> "Explain the difference between a web-based AI assistant and an agentic AI tool like Claude Code. What can agentic AI do that web chat can't?"
 
 ---
 
@@ -94,6 +155,9 @@ Terminal commands are explicit and visible. When Claude Code proposes a file cha
 
 #### 💬 AI Colearning Prompt
 > "Why is direct file system access more powerful than copy-pasting code between a browser and editor?"
+
+#### 🎓 Expert Insight
+> In AI-native development, you don't memorize CLI commands or terminal workflows—you understand WHY terminal integration removes context-switching friction. The tool's interface is cheap; recognizing where productivity bottlenecks hide is gold.
 
 ---
 

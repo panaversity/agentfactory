@@ -41,11 +41,11 @@ Executed comprehensive audit using Explore agent to review all subagents and ski
 **Findings**:
 - **CRITICAL Drifts** (2 files): 
   - ai-collaborate-teaching: "co-reasoning" terminology, missing Three Roles Framework
-  - lesson-writer.md: v3.0.0 references, missing evals-first, missing co-learning convergence
+  - content-implementer.md: v3.0.0 references, missing evals-first, missing co-learning convergence
   
 - **HIGH Drifts** (7 files):
-  - chapter-planner, technical-reviewer, book-scaffolding, content-evaluation-framework
-  - quiz-generator, proof-validator, docusaurus-deployer
+  - chapter-planner, validation-auditor, book-scaffolding, content-evaluation-framework
+  - quiz-generator, factual-verifier, docusaurus-deployer
   - Missing: Nine Pillars validation, LLM→LAM context, co-learning validation
   
 - **MEDIUM Drifts** (5 files):
@@ -86,4 +86,4 @@ Executed comprehensive audit using Explore agent to review all subagents and ski
 - Failure modes observed: Constitutional updates (v3.0.0 → v3.1.2) not propagated to subagents/skills; terminology inconsistency across files
 - Graders run and results (PASS/FAIL): AUDIT COMPLETE - 14/18 files need updates (2 CRITICAL, 7 HIGH, 5 MEDIUM)
 - Prompt variant (if applicable): Used Explore agent with "thorough" search level
-- Next experiment (smallest change to try): Fix CRITICAL files first (ai-collaborate-teaching, lesson-writer) before proceeding to HIGH/MEDIUM
+- Next experiment (smallest change to try): Fix CRITICAL files first (ai-collaborate-teaching, content-implementer) before proceeding to HIGH/MEDIUM

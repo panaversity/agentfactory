@@ -50,8 +50,6 @@ cognitive_load:
 
 # The Safety-First Dialogue Pattern
 
-## The Most Important Skill You'll Learn This Lesson
-
 Your AI companion is powerful and helpful. But power without safety is dangerous. This lesson teaches you a pattern that keeps you safe: a structured dialogue that ensures understanding BEFORE your AI executes anything.
 
 This isn't about memorizing commands. It's not about understanding bash syntax. It's about having conversations that prevent mistakes.
@@ -461,6 +459,8 @@ Here's what REAL dialogues look like. Try these with your AI tool and see how yo
 > Please tell me what criteria I should use to identify the files that should be deleted. For example, "delete all files last modified before today"."
 
 **Notice**: Gemini asked YOU to clarify what "old" means. **This is the agent asking Step 4 questions on your behalf.** You still get to decide safety parameters before anything happens.
+
+**Observation**: Notice how Gemini asked YOU to clarify what "old" means—this demonstrates AI as student, learning project-specific context from you. You refined AI's understanding through your constraints.
 
 ---
 

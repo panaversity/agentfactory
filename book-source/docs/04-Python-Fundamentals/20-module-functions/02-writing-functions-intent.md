@@ -345,80 +345,126 @@ Better specifications → better AI output. This is how AI-native developers wor
 
 ---
 
-## Try With AI
+## Try With AI: Function Design Workshop
 
-Use your AI companion (Claude Code or Gemini CLI). You'll explore function definitions, type hints, and docstrings by writing and testing functions.
+### Part 1: Refactor Repetitive Code (Your Turn First)
 
-### Prompt 1: Recognize Function Components (Remember Level)
+**Before asking AI**, you have this repetitive script:
 
+```python
+# User registration system with duplicate code
+email1 = "alice@test.com"
+username1 = "alice"
+if "@" not in email1 or len(username1) < 3:
+    print("Invalid user data")
+else:
+    print(f"User {username1} registered: {email1}")
+
+email2 = "bob@test.com"
+username2 = "bob"
+if "@" not in email2 or len(username2) < 3:
+    print("Invalid user data")
+else:
+    print(f"User {username2} registered: {email2}")
+
+email3 = "charlie@test.com"
+username3 = "charlie"
+if "@" not in email3 or len(username3) < 3:
+    print("Invalid user data")
+else:
+    print(f"User {username3} registered: {email3}")
+
+# ... imagine 50 more users like this
 ```
-Look at this function and identify each part:
 
-def multiply(a: int, b: int) -> int:
-    """Return the product of two integers."""
-    return a * b
+**Your task**: Design function signatures (NO implementation yet)
+- What function(s) would eliminate this repetition?
+- What parameters do you need? What types?
+- What should each function return? What type?
+- Write ONLY the `def` line + docstring for each function
 
-Point out:
-1. The function name
-2. The parameters and their types
-3. The return type
-4. The docstring
-
-What does each part tell you about what this function does?
-```
-
-**Expected outcome**: You identify all components and understand that type hints communicate intent clearly.
+Document your function signatures before Part 2.
 
 ---
 
-### Prompt 2: Write a Simple Function (Understand/Apply Level)
+### Part 2: AI Explains Single Responsibility (Discovery)
 
-```
-Write a function called `double` that:
-1. Takes an integer as input
-2. Returns that integer multiplied by 2
-3. Includes type hints and a docstring
+Share your signatures with AI:
 
-Test your function with 3 different inputs (positive, negative, zero).
-What do you observe about the behavior?
-```
+> "Here are my function signatures to refactor repetitive code: [paste your signatures]
+>
+> Teach me about function design:
+> 1. Review my signatures - are they following the 'single responsibility principle'? (one function, one job)
+> 2. Show me good vs bad function naming: `process_data()` vs `validate_email()` - which is clearer?
+> 3. Explain when to split one function into two - how do you know when a function is doing too much?
+> 4. Implement my functions and show how they eliminate the repetition"
 
-**Expected outcome**: You write a valid function with type hints, docstring, and test it successfully.
-
----
-
-### Prompt 3: Write Function with Multiple Returns (Apply Level)
-
-```
-Write a function called `summarize_scores` that:
-1. Takes a list of test scores (floats) as input
-2. Returns three values as a tuple: (highest_score, lowest_score, average_score)
-3. Includes appropriate type hints and docstring
-
-Call your function with a list: [85.0, 92.0, 78.0, 88.0, 95.0]
-Unpack the three return values into separate variables.
-Print each one with a label.
-```
-
-**Expected outcome**: You write function returning `tuple[float, float, float]`, call it correctly, and unpack the result.
+**Your evaluation**:
+- Compare AI's implementation to what you imagined - same logic?
+- Try calling the functions with edge cases: empty string, None, very long input
+- Does the function name clearly describe what it does? Could you improve it?
 
 ---
 
-### Prompt 4: Connect Intent to Implementation (Analyze/Synthesize Level)
+### Part 3: Student Teaches AI (When NOT to Create Functions)
 
-```
-Think of a real task you do (convert a temperature, check if a password is valid,
-calculate a discount).
+Challenge AI with over-abstraction:
 
-Write the function signature WITH a clear docstring that describes:
-- What the function does
-- What inputs it needs (and their types)
-- What it returns (and the type)
+> "I wrote this function to avoid repetition:
+> ```python
+> def add_numbers(a: int, b: int) -> int:
+>     '''Add two numbers.'''
+>     return a + b
+>
+> # Used like this:
+> total = add_numbers(5, 3)
+> ```
+>
+> Analyze this decision:
+> 1. Is wrapping `a + b` in a function actually helpful? Why or why not?
+> 2. When does extracting code into a function make things WORSE (over-abstraction)?
+> 3. Give me three examples where creating a function is wrong: too simple, too specific, too unclear
+> 4. Create a decision checklist: 'Should I extract this into a function?' with yes/no criteria"
 
-Ask your AI: "Generate the implementation for this function."
+**Your debugging**:
+- Find a place in your code where you created an unnecessary function
+- What's the cost? (More code, more indirection, harder to read?)
+- Refactor it back to inline code - is it actually simpler?
 
-Compare what you expected vs. what AI generated. Did the docstring guide the AI well?
-What was unclear? This teaches you how clear specifications improve AI code generation.
-```
+---
 
-**Expected outcome**: You experience how function signatures + docstrings guide AI code generation. You learn that clarity of intent is more valuable than perfect syntax.
+### Part 4: Build Function Design Checklist (Convergence)
+
+Create a practical function design guide:
+
+> "Build a comprehensive function design toolkit for me:
+>
+> 1. **Naming Convention Guide**: Show me 10 function names (5 good, 5 bad) with explanations
+>    - Good: `validate_email()`, `calculate_tax()`, `format_date()`
+>    - Bad: `do_stuff()`, `process()`, `handle()`
+>
+> 2. **Parameter Design Patterns**: Create functions demonstrating:
+>    - Required parameters only
+>    - Mix of required + optional with defaults
+>    - When to use `bool` flags vs separate functions
+>
+> 3. **Return Value Patterns**: Show me these scenarios:
+>    - Function that returns a single value
+>    - Function that returns multiple values as tuple
+>    - Function that might fail: `Type | None` pattern
+>
+> 4. **Docstring Template**: Give me a reusable template with Parameters, Returns, Raises sections"
+
+**Refinement**:
+> "Apply this toolkit to a real scenario: design a user authentication system with these functions:
+> - `validate_password()` - check password strength
+> - `hash_password()` - secure password storage
+> - `authenticate_user()` - login verification
+> - `create_session()` - session management
+>
+> For EACH function: write signature + docstring ONLY (no implementation). Show me how good design makes the implementation obvious."
+
+---
+
+**Time**: 30 minutes
+**Outcome**: You can identify when to extract functions vs keep code inline, apply single responsibility principle, design clear function signatures that make implementation obvious, and create professional naming conventions and documentation patterns.

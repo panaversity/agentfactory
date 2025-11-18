@@ -481,7 +481,7 @@ Read [lesson-file-path]
 - **Extract** excellent examples, explanations, analogies, code samples
 - **Identify** sections needing rewrite (documentation tone, missing partnership, ordering issues)
 - **Regenerate** with constitution + output style + preserved content:
-  - Use lesson-writer skill
+  - Use content-implementer skill
   - Provide extracted content as "preserve these examples"
   - **Reference `.claude/output-styles/lesson.md` explicitly** for CoLearning element standards
   - Emphasize constitutional framing (Three-Role Partnership, exploration focus)
@@ -517,12 +517,12 @@ Read [lesson-file-path]
   - **What's the CoLearning element count for this proficiency tier?** (from output style)
   - **What are the exact CoLearning element formats?** (from output style)
 - **Generate** with constitutional lens:
-  - Use lesson-writer skill with constitutional constraints
+  - Use content-implementer skill with constitutional constraints
   - **Explicitly instruct**: "Follow `.claude/output-styles/lesson.md` CoLearning standards (lines 302-435)"
   - Build Three-Role Partnership from start (not added later)
   - Natural CoLearning element integration (correct count, correct format)
   - Conversational, exploration-focused tone throughout
-- **Validate**: Run technical-reviewer for constitutional alignment
+- **Validate**: Run validation-auditor for constitutional alignment
 
 **Time**: 30-45 minutes per lesson
 
@@ -543,7 +543,7 @@ Read [lesson-file-path]
 - ✅ Nothing to improve
 
 **What this involves**:
-- Validate with technical-reviewer (quick check)
+- Validate with validation-auditor (quick check)
 - Document as exemplar (can reference for other lessons)
 - Move to next lesson
 
@@ -770,10 +770,10 @@ Rationale: Excellent format, specific to content, encourages exploration
 
 **3. Regenerate with Constitution + Output Style + Preservation**
 
-**Use lesson-writer skill** with specific instructions:
+**Use content-implementer skill** with specific instructions:
 
 ```markdown
-Invoke lesson-writer:
+Invoke content-implementer:
 - Spec: [path to spec.md, if exists]
 - Plan: [path to plan.md, lesson N section, if exists]
 - Preserved Content: [extracted examples and explanations from Step 1]
@@ -803,7 +803,7 @@ Invoke lesson-writer:
 - ✅ **CoLearning element formats match output style exactly?** (no drift)
 - ✅ **CoLearning elements specific to content?** (not generic)
 
-**Run technical-reviewer** for constitutional alignment validation.
+**Run validation-auditor** for constitutional alignment validation.
 
 ---
 
@@ -842,10 +842,10 @@ Invoke lesson-writer:
 
 **3. Generate with Constitutional Lens + Output Style Standards**
 
-**Use lesson-writer skill** with constitutional constraints:
+**Use content-implementer skill** with constitutional constraints:
 
 ```markdown
-Invoke lesson-writer:
+Invoke content-implementer:
 - Spec: [spec.md path]
 - Plan: [plan.md lesson section]
 - Constitutional Framework:
@@ -867,9 +867,9 @@ Invoke lesson-writer:
 
 **4. Validate Against Constitution + Output Style**
 
-**Run technical-reviewer**:
+**Run validation-auditor**:
 ```bash
-Invoke technical-reviewer:
+Invoke validation-auditor:
 - File: [lesson file path]
 - Focus: Constitutional alignment (Three-Role Partnership, CoLearning elements, tone, ordering)
 - CoLearning validation: Count matches tier, formats match output style, quality is excellent

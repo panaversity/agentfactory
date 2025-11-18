@@ -65,7 +65,7 @@ differentiation:
   remedial_for_struggling: "Focus on append() and remove() first. Add extend() after mastery. Use concrete shopping cart example exclusively. Practice with simple lists."
 
 # Generation metadata
-generated_by: "lesson-writer v1.0.0"
+generated_by: "content-implementer v1.0.0"
 source_spec: "specs/001-part-4-chapter-18/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -159,7 +159,7 @@ print(cart2)  # ["milk", "eggs", "butter", "jam"]
 **`append()`** adds the argument as a single item (whatever it is).
 **`extend()`** unpacks the argument and adds each item individually.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize 47 list methods. You understand: "I'm adding ONE item (append) vs MANY items (extend)." That semantic distinction is gold. The syntax? AI fills it in.
 
@@ -366,7 +366,7 @@ sorted_cart = sorted(cart)
 cart.sort()  # Method, modifies cart directly
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > This pattern—methods modify in-place and return None, functions preserve the original and return new objects—appears throughout Python. Understand it once, and you'll read Python code confidently forever. AI handles syntax; you focus on this semantic pattern.
 

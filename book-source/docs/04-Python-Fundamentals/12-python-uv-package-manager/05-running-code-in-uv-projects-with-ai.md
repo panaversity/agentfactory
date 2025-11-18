@@ -58,7 +58,7 @@ differentiation:
   remedial_for_struggling: "Focus on core concept: 'uv run means use this project's packages.' Use analogy: separate toolboxes for each project. Let AI handle all commands."
 
 # Generation metadata
-generated_by: "lesson-writer v3.1.0"
+generated_by: "content-implementer v3.1.0"
 source_spec: "specs/011-python-uv/plan.md"
 created: "2025-11-13"
 last_modified: "2025-11-13"
@@ -305,38 +305,122 @@ The `--reload` flag restarts the server automatically when you save code changes
 
 ---
 
-## Try With AI
+## Try With AI: Environment Activation Mystery
 
-Use your AI companion (ChatGPT, Claude Code, Gemini CLI, etc.) for these exercises.
+### Part 1: Break It with Wrong Commands (Your Turn First)
 
-### Prompt 1: Understanding Environment Isolation
+**Try running your UV project the WRONG way** and observe what happens:
 
-```
-Explain why `python main.py` fails but `uv run python main.py` works when my script imports requests. What is environment isolation and why does it matter?
-```
-
-**Expected outcome:** You'll understand how `uv run` activates your project environment and why bare `python` doesn't have access to project packages.
-
-### Prompt 2: Debugging a Failed Test
-
-```
-I have a test that's failing with this error:
-test_math.py::test_divide FAILED
-AssertionError: assert 4.0 == 4
-
-What does this mean? How do I fix it? Explain the difference between float and integer comparison in Python tests.
+**Experiment**:
+```bash
+# In your UV project directory with requests installed:
+python main.py     # Run WITHOUT uv run
+uv run python main.py  # Run WITH uv run
 ```
 
-**Expected outcome:** You'll learn how to read test output and work with AI to diagnose and fix test failures.
+**Your analysis task**:
+1. Does bare `python main.py` work? What error do you get?
+2. Why does `uv run python main.py` work?
+3. Run `which python` vs `uv run which python` - are they the same Python?
+4. Hypothesis: What does `uv run` actually do behind the scenes?
 
-### Prompt 3: Multi-Project Isolation
+Document your errors and predictions BEFORE asking AI.
 
-```
-I have two UV projects on my computer:
-- project-a needs requests==2.28.0
-- project-b needs requests==2.31.0
+---
 
-Show me how UV keeps these isolated so they don't conflict. Create a demonstration showing both projects maintaining their own versions.
-```
+### Part 2: AI Explains Environment Activation (Discovery)
 
-**Expected outcome:** You'll see concrete proof that environment isolation prevents version conflicts between projects.
+Share your findings with AI:
+
+> "I tried running my UV project two ways:
+>
+> **Command 1**: `python main.py`
+> - Error: [paste your error]
+>
+> **Command 2**: `uv run python main.py`
+> - Works fine
+>
+> Questions:
+> 1. What is `uv run` doing that bare `python` isn't?
+> 2. Where does `uv run` find the project's installed packages?
+> 3. Show me: `which python` output vs what `uv run` uses
+> 4. Can I activate the environment manually (like old `source .venv/bin/activate`)?"
+
+**Your evaluation task**:
+- Does AI explain PATH modification?
+- Can you visualize: System Python vs Project Python (.venv/)
+- Try this: Run `uv run which python` and verify it points to `.venv/bin/python`
+
+---
+
+### Part 3: Student Teaches AI (Multi-Project Conflicts)
+
+Challenge AI with the version conflict scenario:
+
+> "I have TWO UV projects that need DIFFERENT package versions:
+>
+> **Project A** (data-analysis/):
+> ```bash
+> cd data-analysis
+> uv add requests==2.28.0
+> ```
+>
+> **Project B** (web-scraper/):
+> ```bash
+> cd web-scraper
+> uv add requests==2.31.0
+> ```
+>
+> **Test the isolation**:
+> 1. In Project A: `uv run python -c 'import requests; print(requests.__version__)'`
+> 2. In Project B: `uv run python -c 'import requests; print(requests.__version__)'`
+>
+> **What I expect**:
+> - Project A shows 2.28.0
+> - Project B shows 2.31.0
+>
+> **Challenge AI**:
+> 1. Show me the proof that both coexist without conflict
+> 2. What if I run `python -c 'import requests; print(requests.__version__)'` (WITHOUT uv run) in both directories? Same version or different?
+> 3. Explain: How does `.venv/` make this work? (Each project has its own isolated copy)"
+
+**Your debugging task**:
+- Create two UV projects with different package versions
+- Verify isolation by checking versions in each
+- What happens if you delete one `.venv/`—does the other project still work?
+
+---
+
+### Part 4: Build Test Execution Workflow (Convergence)
+
+Create a reliable testing workflow with AI:
+
+> "Let's design a workflow for running tests in UV projects:
+>
+> **Scenario**: I have `test_math.py` with pytest tests
+>
+> **Requirements**:
+> 1. Install pytest: `uv add --dev pytest`
+> 2. Run tests: `uv run pytest`
+> 3. Run specific test: `uv run pytest test_math.py::test_divide`
+> 4. Run with verbose output: `uv run pytest -v`
+> 5. Debug failed test (I got `AssertionError: assert 4.0 == 4`)
+>
+> For the failed test:
+> - Explain the error: Why does 4.0 ≠ 4 in pytest?
+> - Fix options: Should I use `pytest.approx()` or change assertion?
+> - Show me the corrected test code
+>
+> Create a testing checklist:
+> - How to add pytest
+> - How to run all tests
+> - How to debug specific failures
+> - How to check test coverage (with pytest-cov)"
+
+**Refinement**:
+> "This workflow runs tests locally. How would I run the SAME tests in CI/CD (GitHub Actions)? Show me the equivalent workflow file that uses `uv sync` and `uv run pytest`."
+
+---
+
+**Time**: 25-30 minutes total
+**Outcome**: You've discovered environment activation through experimentation, proven multi-project isolation, and built a systematic testing workflow—understanding the "why" behind `uv run`, not just memorizing commands.

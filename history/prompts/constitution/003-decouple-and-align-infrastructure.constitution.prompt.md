@@ -98,7 +98,7 @@ Executed comprehensive infrastructure refactoring in 3 phases:
 
 5. **Section VI (Infrastructure)** — **Aligned with Reality**:
    - References actual 8 CoLearning Domain Skills (not phantom files)
-   - Lists 3 actual subagents (chapter-planner, lesson-writer, technical-reviewer)
+   - Lists 3 actual subagents (chapter-planner, content-implementer, validation-auditor)
    - References actual output-styles (chapters.md, lesson.md)
 
 6. **Section V (Workflow)** — **Matches Actual Subagents**:

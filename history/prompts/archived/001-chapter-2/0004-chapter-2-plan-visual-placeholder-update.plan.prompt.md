@@ -85,7 +85,7 @@ Updated Chapter 2 implementation plan to incorporate **visual placeholder strate
 - ✅ Impact: Plan updated to enable non-blocking workflow; content creation decoupled from visual design without sacrificing quality or accessibility
 - 🧪 Tests: Placeholder format ensures accessibility requirements met (text descriptions serve as alt text when visuals added)
 - 📁 Files: Updated specs/001-chapter-2/plan.md with 3 new sections and enhanced Next Steps
-- 🔁 Next prompts: (1) Proceed with /sp.tasks to generate implementation checklist, (2) Invoke lesson-writer with updated plan, (3) Visual creation after content approval
+- 🔁 Next prompts: (1) Proceed with /sp.tasks to generate implementation checklist, (2) Invoke content-implementer with updated plan, (3) Visual creation after content approval
 - 🧠 Reflection: Visual placeholder approach is practical solution for content-first development; triple-purpose text descriptions (placeholder + spec + alt text) maximize value while minimizing rework; this pattern could be reused for other chapters
 
 ## Evaluation notes (flywheel)

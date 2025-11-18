@@ -74,7 +74,7 @@ differentiation:
   remedial_for_struggling: "Start with simple composition examples (Car has Engine) before aggregation; use visual diagrams for module relationships"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/020-oop-part-1-2/spec-chapter-25.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -138,7 +138,7 @@ print(car.stop())   # Toyota: Engine stopped
 
 Notice: `Car` doesn't inherit from `Engine`. Instead, `Car` has an `Engine` as an attribute. When you call `car.start()`, the car delegates to its engine's `start()` method.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, composition is the default pattern. Multi-agent systems use composition—an orchestrator agent *has* specialized sub-agents. Understanding composition is more critical than mastering inheritance hierarchies.
 
@@ -427,7 +427,7 @@ Now the design makes sense:
 - `Manager` IS-AN `Employee` (inheritance for real "is-a" relationships)
 - `Manager` HAS-A `Printer` (composition for optional capabilities)
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > The rule: **Inheritance models unchanging identity ("is-a"), composition models changeable capabilities ("has-a")**. An object's type rarely changes, but its capabilities often do.
 
@@ -541,21 +541,394 @@ This design is flexible: agents are composed from interchangeable engines. You c
 
 ---
 
-## Try With AI
+## Challenge: Building Flexible Agent Architectures with Composition
 
-**Prompt 1: Recall - Composition Syntax**
+In this challenge, you'll discover why inheritance creates rigid designs, learn how composition provides flexibility, challenge AI with design questions, and build a production agent system.
 
-Create a `Computer` class that has-a `Processor`, `Memory`, and `Storage` (each as separate classes). Show composition, not inheritance. Include type hints.
+---
 
-**Prompt 2: Understand - When to Choose Composition**
+## Part 1: Student Discovers Inheritance Rigidity in Agent Design
 
-I'm designing a Zoo system where animals can be organized by habitat. Should I use inheritance (`class Penguin(ArcticHabitat)`) or composition? Explain the tradeoffs and which you'd choose.
+**Your Role**: System architect identifying design constraints
 
-**Prompt 3: Apply - Refactoring to Composition**
+### Discovery Exercise: Build an Agent System with Inheritance (the Wrong Way)
 
-Here's problematic code: `class Manager(Employee, Printer)`. The Printer shouldn't be a parent class. Refactor to use composition instead, explaining why this is better.
+Imagine you're building an agent framework where agents need different capabilities. You try to model this with inheritance.
 
-**Prompt 4: Synthesize - Module Organization**
+**Stage 1: The Inheritance Hierarchy Problem**
 
-Design a package structure for an e-commerce system with products, orders, payments, and users. Create the directory structure, __init__.py files, and show imports. Explain your organizational decisions.
+Create a rigid hierarchy of agent classes:
 
+```python
+# agents_inheritance.py - PROBLEMATIC
+class BaseAgent:
+    """Base for all agents"""
+    def __init__(self, name: str):
+        self.name = name
+
+
+class LLMAgent(BaseAgent):
+    """Agent with LLM capability"""
+    def reason(self, question: str) -> str:
+        return f"LLM reasoning: {question}"
+
+
+class DatabaseAgent(BaseAgent):
+    """Agent with database capability"""
+    def query(self, query: str) -> str:
+        return f"Database result: {query}"
+
+
+class CombinedAgent(LLMAgent, DatabaseAgent):
+    """Agent with BOTH capabilities - multiple inheritance!"""
+    pass
+
+
+# Test
+agent = CombinedAgent("MultiAgent")
+print(agent.reason("What is the answer?"))
+print(agent.query("SELECT * FROM users"))
+```
+
+**Your task 1**: Copy this code and document in `inheritance_rigidity_analysis.md`:
+- How many parent classes does CombinedAgent have?
+- If you need an agent with LLM + database + web-search, what inheritance structure would you need?
+- What happens with three capabilities? Five?
+- What pattern do you notice?
+
+**Stage 2: The Capability Explosion**
+
+**Your task 2**: Try to design an agent that has:
+- LLM reasoning
+- Database access
+- Web search
+- File I/O
+- Code execution
+
+Document:
+- How many inheritance paths would be needed?
+- Which capabilities would conflict?
+- Why is inheritance a poor fit for "mixing capabilities"?
+- What would a better design look like?
+
+### Your Discovery Document
+
+Create `composition_vs_inheritance_problem.md` with:
+
+1. **The Rigidity Problem**: Inheritance locks in capability combinations at compile time
+2. **The Explosion Problem**: Each new capability combination requires a new class
+3. **The Modification Problem**: Adding a new capability to existing agents is hard
+4. **Your Prediction**: What design pattern would allow mixing capabilities dynamically?
+
+---
+
+## Part 2: AI Teaches Composition as the Flexible Solution
+
+**Your Role**: Student learning from AI Teacher
+
+### AI Teaching Prompt
+
+Ask your AI companion:
+
+> "I'm building an agent framework. Agents need different capabilities: some have LLM reasoning, some have database access, some have web search. I tried inheritance (LLMAgent, DatabaseAgent, LLMDatabaseAgent, etc.) but it explodes combinatorially.
+>
+> Explain:
+> 1. What is composition? How is it different from inheritance?
+> 2. Design an agent system where agents are composed from capability objects (ReasoningEngine, DatabaseEngine, SearchEngine)
+> 3. Show me how to add a new agent with new capabilities WITHOUT creating a new class
+> 4. What are the trade-offs between inheritance and composition?"
+
+### Expected AI Response Summary
+
+AI will explain:
+- **Composition**: Objects contain other objects; capabilities come from components, not class hierarchy
+- **Flexible design**: New agents are created by combining engines, not creating new subclasses
+- **Dynamic capabilities**: Add/remove capabilities at runtime by adding/removing components
+- **Scalability**: 5 engines can combine into unlimited agent types without creating new classes
+- **Trade-off**: Inheritance enforces contracts; composition requires more careful design
+
+**AI will show code like**:
+
+```python
+# SOLUTION: Composition
+class ReasoningEngine:
+    def reason(self, question: str) -> str:
+        return f"Reasoning: {question}"
+
+class DatabaseEngine:
+    def query(self, query: str) -> str:
+        return f"Query result: {query}"
+
+class Agent:
+    def __init__(self, name: str, engines: dict):
+        self.name = name
+        self.engines = engines  # HAS-A engines, not IS-A subclass
+
+    def get_capability(self, capability_name: str):
+        return self.engines.get(capability_name)
+
+# Create agents with different capability combinations
+reasoning_agent = Agent("Reasoner", {
+    "reasoning": ReasoningEngine()
+})
+
+combined_agent = Agent("Combined", {
+    "reasoning": ReasoningEngine(),
+    "database": DatabaseEngine()
+})
+```
+
+### Convergence Activity
+
+After AI explains, verify understanding:
+
+> "Show me how this composition design makes it easy to add 5 new agents with different capability combinations. Explain why inheritance couldn't handle this as elegantly. What happens if I want agents to share the same engine instance?"
+
+### Deliverable
+
+Write 1-paragraph summary: "How Composition Replaces Inheritance in Agent Design" explaining the core insight about flexibility and scalability.
+
+---
+
+## Part 3: Student Challenges AI with Architecture Edge Cases
+
+**Your Role**: Student testing AI's understanding
+
+### Challenge Design Scenarios
+
+Ask AI to handle these cases:
+
+#### Challenge 1: Shared Engines
+
+> "If multiple agents share the same ReasoningEngine instance, what happens when one agent modifies engine state? How is this different from inheritance where each subclass might override methods? Which is safer?"
+
+**Expected learning**: AI explains state management in composition vs method overriding in inheritance.
+
+#### Challenge 2: Engine Dependency Chain
+
+> "What if ReasoningEngine depends on DatabaseEngine? I have Agent A with both, and Agent B with only DatabaseEngine. Show me how to wire dependencies correctly. What problems could occur?"
+
+**Expected learning**: AI explains dependency injection and how composition manages complex dependencies.
+
+#### Challenge 3: Module Organization
+
+> "I have an e-commerce system: products, orders, payments, shipping. Should some of these be capabilities (composition) and others base classes (inheritance)? Design the module structure with __init__.py files."
+
+**Expected learning**: AI shows how to mix inheritance (for stable hierarchies) with composition (for flexible capabilities) and organize into packages.
+
+### Deliverable
+
+Document your three challenges, AI's responses, and analysis of when composition beats inheritance and how to organize large systems with modules.
+
+---
+
+## Part 4: Build Flexible Agent System with Composition and Modules
+
+**Your Role**: Knowledge synthesizer creating reusable code
+
+### Your Modular Agent System
+
+Create a professional project structure:
+
+```
+agent_system/
+├── agents/
+│   ├── __init__.py
+│   └── agent.py          # Flexible Agent class
+├── engines/
+│   ├── __init__.py
+│   ├── reasoning.py      # ReasoningEngine (composition)
+│   ├── database.py       # DatabaseEngine (composition)
+│   └── search.py         # SearchEngine (composition)
+├── config.py             # Agent configurations
+└── main.py               # Usage examples
+```
+
+**engines/reasoning.py**:
+```python
+class ReasoningEngine:
+    """Provides reasoning capability - composed into agents"""
+
+    def reason(self, question: str) -> str:
+        """Process a reasoning question"""
+        return f"Reasoning about: {question}"
+
+
+class DatabaseEngine:
+    """Provides database capability - composed into agents"""
+
+    def query(self, sql: str) -> str:
+        """Execute database query"""
+        return f"Query executed: {sql}"
+
+
+class SearchEngine:
+    """Provides web search capability - composed into agents"""
+
+    def search(self, query: str) -> str:
+        """Search the web"""
+        return f"Search results for: {query}"
+```
+
+**agents/agent.py**:
+```python
+from typing import Any
+
+
+class Agent:
+    """Flexible agent class composed from capability engines"""
+
+    def __init__(self, name: str, engines: dict[str, Any]) -> None:
+        """
+        Create an agent with specific engines
+
+        Args:
+            name: Agent name
+            engines: Dict mapping capability names to engine instances
+        """
+        self.name = name
+        self.engines = engines
+
+    def has_capability(self, capability: str) -> bool:
+        """Check if agent has a capability"""
+        return capability in self.engines
+
+    def execute_reasoning(self, question: str) -> str:
+        """Execute reasoning if available"""
+        if self.has_capability("reasoning"):
+            return self.engines["reasoning"].reason(question)
+        raise AttributeError(f"{self.name} has no reasoning capability")
+
+    def execute_query(self, sql: str) -> str:
+        """Execute database query if available"""
+        if self.has_capability("database"):
+            return self.engines["database"].query(sql)
+        raise AttributeError(f"{self.name} has no database capability")
+
+    def execute_search(self, query: str) -> str:
+        """Execute web search if available"""
+        if self.has_capability("search"):
+            return self.engines["search"].search(query)
+        raise AttributeError(f"{self.name} has no search capability")
+
+    def get_capabilities(self) -> list[str]:
+        """List all capabilities"""
+        return list(self.engines.keys())
+```
+
+**agents/__init__.py**:
+```python
+from .agent import Agent
+
+__all__ = ['Agent']
+```
+
+**engines/__init__.py**:
+```python
+from .reasoning import ReasoningEngine
+from .database import DatabaseEngine
+from .search import SearchEngine
+
+__all__ = ['ReasoningEngine', 'DatabaseEngine', 'SearchEngine']
+```
+
+**config.py**:
+```python
+"""Pre-configured agent types"""
+from agents import Agent
+from engines import ReasoningEngine, DatabaseEngine, SearchEngine
+
+
+def create_reasoning_agent(name: str) -> Agent:
+    """Agent with reasoning only"""
+    return Agent(name, {
+        "reasoning": ReasoningEngine()
+    })
+
+
+def create_database_agent(name: str) -> Agent:
+    """Agent with database access only"""
+    return Agent(name, {
+        "database": DatabaseEngine()
+    })
+
+
+def create_full_agent(name: str) -> Agent:
+    """Agent with all capabilities"""
+    return Agent(name, {
+        "reasoning": ReasoningEngine(),
+        "database": DatabaseEngine(),
+        "search": SearchEngine()
+    })
+```
+
+**main.py**:
+```python
+from config import create_reasoning_agent, create_database_agent, create_full_agent
+
+# Create agents with different capability combinations
+reasoner = create_reasoning_agent("Thinker")
+analyst = create_database_agent("Analyst")
+researcher = create_full_agent("Researcher")
+
+# Each agent has only its needed capabilities
+print(f"Reasoner capabilities: {reasoner.get_capabilities()}")
+print(f"Analyst capabilities: {analyst.get_capabilities()}")
+print(f"Researcher capabilities: {researcher.get_capabilities()}")
+
+# Execute capability-specific operations
+print(f"\nReasoner: {reasoner.execute_reasoning('What is AI?')}")
+print(f"Analyst: {analyst.execute_query('SELECT * FROM data')}")
+print(f"Researcher: {researcher.execute_search('latest AI trends')}")
+
+# Adding new agents is trivial - just combine existing engines!
+```
+
+**Your task**: Expand this system with:
+1. Add 2-3 more engine types (FileEngine, APIEngine, CodeExecutionEngine)
+2. Create new agent configurations combining different engines
+3. Add a comparison document: `composition_vs_inheritance_guide.md`
+4. Create a module organization guide: `project_structure.md`
+
+### Validation Checklist
+
+- ✅ Agents are composed from engines, not inherited
+- ✅ New agent types require only new configurations, not new classes
+- ✅ Engines are reusable across agents
+- ✅ Adding a new engine doesn't require modifying Agent or existing engines
+- ✅ Module structure is clear with logical packages
+- ✅ __init__.py files define public APIs
+
+### Deliverable
+
+Complete agent system with:
+- Modular organization (agents/, engines/, config.py)
+- Flexible Agent class using composition
+- Multiple engine types demonstrating capability-based design
+- Configuration functions for common agent types
+- Documentation explaining composition benefits
+
+---
+
+## Summary: Bidirectional Learning in Action
+
+**Part 1 (Student discovers)**: You found that inheritance creates rigid, combinatorial designs that don't scale
+
+**Part 2 (AI teaches)**: AI explained how composition provides flexibility—mix capabilities without creating new classes
+
+**Part 3 (Student teaches)**: You challenged AI with edge cases about state management, dependencies, and module organization
+
+**Part 4 (Knowledge synthesis)**: You built a production agent system with flexible composition and professional module organization
+
+### What You've Built
+
+1. `inheritance_rigidity_analysis.md` — Problem analysis
+2. `composition_vs_inheritance_problem.md` — Clear problem statement
+3. Challenge documentation — Three architectural edge cases
+4. `agent_system/` — Production modular project with composition
+5. `composition_vs_inheritance_guide.md` — When to use each pattern
+6. `project_structure.md` — Module organization best practices
+
+### Next Steps
+
+Lesson 4 teaches special methods that make composed objects feel like built-in Python types. You'll use this flexible agent system and add Python protocol support.

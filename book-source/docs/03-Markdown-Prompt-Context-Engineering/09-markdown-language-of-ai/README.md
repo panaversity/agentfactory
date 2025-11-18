@@ -1,50 +1,17 @@
----
-title: "Chapter 9: Markdown - The Language of AI Communication"
-description: "Master markdown as the specification language that bridges human intent and AI implementation"
-sidebar_label: "Chapter 9: Markdown - The Language of AI Communication"
-sidebar_position: 0
-chapter: 9
-part: 3
----
-
 # Chapter 9: Markdown - The Language of AI Communication
 
-Markdown is the **specification language** that lets you tell AI agents what to build. It's simple, structured, and understood by both humans and AI.
+Markdown is the **Intent Layer** of Spec-Driven Development. It's how you tell AI agents WHAT to build—clearly, structured, and unambiguously—so they can figure out HOW to implement it.
 
-By the end of this chapter, you'll write clear specifications that AI agents can parse and implement - the foundation of AI-native development.
+By the end of this chapter, you'll write specifications in markdown that AI agents can parse and implement. This is the foundation of AI-native development: specification-first thinking.
+
+**No programming code in this chapter.** You'll learn specification language (markdown) BEFORE implementation language (Python in Part 4).
 
 ## What You'll Learn
 
-This chapter teaches **5 essential markdown skills** using AI-Native principles:
+This chapter teaches **markdown as a specification language** through 5 progressive lessons:
 
-### **Lesson 1: Why Markdown Matters**
-- Understand markdown's role in AI-Driven Development
-- Learn how specifications form the Intent Layer
-- See the difference between structured and unstructured communication
-
-### **Lesson 2: Headings - Creating Document Hierarchy**
-- Use `#` symbols to create heading structure
-- Build clear document organization
-- Help AI agents parse your specifications
-
-### **Lesson 3: Lists - Organizing Ideas**
-- Create bullet lists (`-`) for features and requirements
-- Create numbered lists (`1.`) for sequential steps
-- Choose the right list type for different contexts
-
-### **Lesson 4: Code Blocks - Showing Examples**
-- Use triple backticks to show code and output
-- Add language tags (`python`, `bash`, `text`) for clarity
-- Use inline code (single backticks) for commands and variables
-
-### **Lesson 5: Links, Images & Your First Complete Specification**
-- Create links `[text](url)` to documentation
-- Add images `![alt](url)` to show screenshots and diagrams
-- **Write your first complete specification** integrating all skills
-- Validate your spec with AI feedback
-
----
-
-This chapter teaches you to **collaborate with AI**, not memorize every markdown feature.
-
----
+- **Markdown as Specification Language** — Understand markdown's role as Intent Layer, learn the difference between specification (WHAT) and implementation (HOW), create document hierarchy using heading levels, practice manual validation of markdown syntax
+- **Lists for Structured Requirements** — Use bullet lists for alternative options, numbered lists for sequential requirements, distinguish when to use bullets vs numbers, collaborate with AI to refine list structure
+- **Code Blocks for Specifications (Not Code)** — Use code blocks for expected outputs and API descriptions, show WHAT system does (specifications) not HOW it's built (implementation), iterate with AI to converge on unambiguous specification
+- **Links, Images, and Reusable Templates** — Use links to reference authoritative sources, use images for diagrams and examples, create reusable Feature Specification Template using Persona + Questions + Principles pattern, apply template to new features
+- **Complete System Specification (Capstone)** — Write specification FIRST for task management system (3-4 core features), compose all markdown skills (headings, lists, code blocks, links), validate specification clarity through AI feedback WITHOUT implementation, produce complete `spec.md` clear enough that AI could implement from spec alone

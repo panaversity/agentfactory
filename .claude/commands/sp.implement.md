@@ -102,10 +102,10 @@ You **MUST** consider the user input before proceeding (if not empty).
    - **Task details**: ID, description, file paths, parallel markers [P]
    - **Execution flow**: Order and dependency requirements
 
-6. Execute implementation following the task plan: 
-   - For each lesson, use a separate lesson-writer subagent. You can run them in parallel or sequentially based on the task details in tasks.md.
+6. Execute implementation following the task plan:
+   - For each lesson, use a separate content-implementer subagent. You can run them in parallel or sequentially based on the task details in tasks.md.
    - You're in collaboration with user and responsible to orchestrate the subagents. Ensure the instructions are clear and well-defined, use the evaluation rubric skill to assess the quality of the implementation. Continuously iterate, once you're satisfied with each lesson, and add them in the directory.
-   - All lesson-writer subagents report back to you and you're responsible to add the lessons in the main file system. 
+   - All content-implementer subagents report back to you and you're responsible to add the lessons in the main file system. 
    - **Phase-by-phase execution**: Complete each phase before moving to the next
    - **Respect dependencies**: Run sequential tasks in order, parallel tasks [P] can run together  
    - **Follow TDD approach**: Execute test tasks before their corresponding implementation tasks

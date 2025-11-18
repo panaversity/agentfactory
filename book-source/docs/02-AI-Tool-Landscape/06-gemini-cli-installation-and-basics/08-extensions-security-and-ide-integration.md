@@ -1,45 +1,73 @@
 ---
 sidebar_position: 8
-title: Extensions, Security & IDE Integration
+title: Extensions, Security & Tool Safety
+cefr_level: A2
+proficiency: Beginner
+teaching_stage: 2
+stage_name: "AI Collaboration"
+cognitive_load:
+  concepts_count: 7
+  a2_compliant: true
+learning_objectives:
+  - id: LO1
+    description: "Understand what Gemini CLI extensions are and why they simplify setup sharing"
+    bloom_level: "Understand"
+    digcomp: "1.3 Managing data, information and digital content"
+  - id: LO2
+    description: "Install and manage extensions using basic commands"
+    bloom_level: "Apply"
+    digcomp: "3.1 Developing digital content"
+  - id: LO3
+    description: "Recognize why tool filtering protects your computer from unwanted changes"
+    bloom_level: "Understand"
+    digcomp: "4.2 Protecting personal data and privacy"
+  - id: LO4
+    description: "Apply allowlist approach to control which tools AI can use"
+    bloom_level: "Apply"
+    digcomp: "4.2 Protecting personal data and privacy"
+  - id: LO5
+    description: "Explain when extensions are useful for learning setups"
+    bloom_level: "Understand"
+    digcomp: "1.3 Managing data, information and digital content"
+  - id: LO6
+    description: "Evaluate which MCP capabilities are safe for beginner learning"
+    bloom_level: "Evaluate"
+    digcomp: "4.2 Protecting personal data and privacy"
 ---
 
-# Extensions, Security & IDE Integration
+# Extensions, Security & Tool Safety
 
-**Duration**: 18-20 minutes
-
-> **A Word Before We Begin**
->
-> You've spent hours perfecting your Gemini CLI setup: 3 MCP servers, 5 custom commands, a detailed GEMINI.md file. Now your teammate asks: "How do I get the same setup?" You realize you're about to send them a 15-step instruction document. There has to be a better way. In this lesson, you'll see the team setup problem firsthand, then learn how extensions turn "send 15 instructions" into one command: `gemini extensions install`
+You've spent hours perfecting your Gemini CLI setup: 2 MCP servers, 3 custom commands, a detailed GEMINI.md file. Now your study partner asks: "How do I get the same setup for our learning group?" You realize you're about to write them a long step-by-step guide. There has to be a better way. In this lesson, you'll learn how extensions turn "follow 15 instructions" into one command: `gemini extensions install`
 
 ---
 
 ## The Problem: Sharing Your Setup is Painful
 
-You've built a powerful Gemini CLI setup: MCP servers, custom commands, team context. Now your teammate asks: "How do I get the same setup?"
+You've built a useful Gemini CLI setup: MCP servers, custom commands, learning context. Now your study partner asks: "How do I get the same setup for our study group?"
 
 **The manual way**:
 ```
 STEP 1: Install MCP servers (2 commands)
-STEP 2: Configure tool security (edit settings.json)
+STEP 2: Configure tool safety (edit settings.json)
 STEP 3: Download 3 custom command files
-STEP 4: Create GEMINI.md with team standards
-STEP 5: Set environment variables
+STEP 4: Create GEMINI.md with learning standards
+STEP 5: Set environment settings
 ```
 
 **The problems**:
 - ❌ 15+ manual steps per person
-- ❌ Easy to miss steps (wrong directory, missed security config)
-- ❌ Version drift (teammates have different versions)
-- ❌ Update nightmare (re-send everything when you improve something)
+- ❌ Easy to miss steps (wrong folder, missed safety config)
+- ❌ Different versions (everyone has slightly different setups)
+- ❌ Update difficulty (re-send everything when you improve something)
 
 ---
 
 ## The Solution: Extensions Bundle Everything
 
-What if new teammates could get your **entire setup** with **one command**?
+What if your study partners could get your **entire setup** with **one command**?
 
 ```bash
-gemini extensions install https://github.com/myteam/dev-tools-extension
+gemini extensions install https://github.com/learning-group/ai-study-tools
 ```
 
 **That's what extensions do.**
@@ -49,21 +77,21 @@ gemini extensions install https://github.com/myteam/dev-tools-extension
 An **extension** is a **pre-packaged bundle** containing everything:
 
 **Included automatically**:
-- ✅ MCP servers (pre-configured with security settings)
+- ✅ MCP servers (pre-configured with safety settings)
 - ✅ Custom slash commands (all `.toml` files)
-- ✅ Persistent context (GEMINI.md with team standards)
+- ✅ Persistent context (GEMINI.md with learning standards)
 - ✅ Configuration templates
-- ✅ Tool filtering rules
-- ✅ Environment variable templates
+- ✅ Tool filtering rules (safety controls)
+- ✅ Environment settings
 - ✅ Documentation
 
-**MCP server alone**: Single capability (e.g., Playwright)
-**Extension (complete package)**: MCP servers + commands + context + security + docs
+**MCP server alone**: Single capability (e.g., Playwright for web research)
+**Extension (complete package)**: MCP servers + commands + context + safety + docs
 
 #### 💬 AI Colearning Prompt
-> "If extensions just bundle MCP servers and commands, couldn't we just share a GitHub repo with install instructions? What's the real advantage of the extension format?"
+> "If extensions just bundle MCP servers and commands, couldn't we just share a folder with setup files? What's the real advantage of the extension format?"
 >
-> **Hint**: Think about what happens when you update the extension vs. when you update a document with install instructions.
+> **Hint**: Think about what happens when you update the extension vs. when you update a document with setup instructions.
 
 ---
 
@@ -71,55 +99,66 @@ An **extension** is a **pre-packaged bundle** containing everything:
 
 **Without Extension**:
 - Follow 15-step document (30 minutes)
-- Miss a step (wrong directory, no tool filtering)
+- Miss a step (wrong folder, no tool filtering)
 - Fix issues (another 30 minutes)
 - Update available next week → Re-download and replace files
 
 **With Extension**:
 ```bash
-gemini extensions install https://github.com/myteam/dev-tools-extension
+gemini extensions install https://github.com/learning-group/ai-study-tools
 ```
 
-**What happens**: Everything installs automatically—MCP servers, commands, context, security settings.
+**What happens**: Everything installs automatically—MCP servers, commands, context, safety settings.
 
-**Update**: `gemini extensions update dev-tools-extension`
+**Update**: `gemini extensions update ai-study-tools`
 
 **The transformation**: 60 minutes → 2 minutes (30x faster), zero errors, always in sync.
 
 ---
 
-## Part 1: Extension Development Workflow
+## Part 1: Working with Extensions
 
-### Creating Extensions
+### Installing Extensions
 
-You now understand WHY extensions matter. Let's see HOW to create them.
+You now understand WHY extensions matter. Let's see HOW to use them.
 
-#### Create from Template
+#### Install from URL
 
 ```bash
-gemini extensions new my-extension mcp-server
+gemini extensions install https://github.com/learning-group/ai-study-tools
 ```
 
-**Creates**:
+**What this does**:
+- Downloads all extension files
+- Installs MCP servers automatically
+- Adds custom commands
+- Applies safety settings
+- Creates GEMINI.md context file
+
+#### What's Inside an Extension?
+
+When you install an extension, it creates this structure:
+
 ```
-my-extension/
-├── gemini-extension.json   (manifest)
-├── GEMINI.md                (persistent context)
+ai-study-tools/
+├── gemini-extension.json   (configuration file - lists what's included)
+├── GEMINI.md                (learning context for AI)
 ├── commands/                (custom slash commands)
-│   ├── analyze.toml
-│   └── research/
-│       └── competitor.toml
-└── dist/
-    └── server.js            (MCP server code, if included)
+│   ├── study-plan.toml     (command to create study plans)
+│   └── quiz-me.toml        (command to generate quizzes)
+└── docs/
+    └── how-to-use.md       (instructions)
 ```
 
-#### Extension Manifest (`gemini-extension.json`)
+#### Understanding the Configuration
+
+The `gemini-extension.json` file tells Gemini what to install:
 
 ```json
 {
-  "name": "my-extension",
+  "name": "ai-study-tools",
   "version": "1.0.0",
-  "description": "Research and analysis tools",
+  "description": "Tools for learning with AI",
   "mcpServers": {
     "playwright": {
       "command": "npx",
@@ -127,38 +166,15 @@ my-extension/
     }
   },
   "contextFileName": "GEMINI.md",
-  "excludeTools": ["run_shell_command"],
-  "settings": [
-    {
-      "name": "API Key",
-      "description": "Your API key for the service",
-      "envVar": "MY_API_KEY"
-    }
-  ]
+  "excludeTools": ["delete_file", "run_shell_command"]
 }
 ```
 
-### Development vs Production Workflow
-
-**Development Mode** (while building):
-```bash
-gemini extensions link ~/my-extension
-```
-
-Changes to your extension's files are **immediately reflected** without reinstalling.
-
-**Use when**:
-- Actively developing the extension
-- Testing commands and MCP configuration
-- Iterating on GEMINI.md content
-
-**Production Mode** (when ready to share):
-```bash
-gemini extensions install ~/my-extension
-gemini extensions install https://github.com/user/my-extension
-```
-
-Users must **reinstall** to get updates.
+**Key parts**:
+- **name**: What the extension is called
+- **mcpServers**: Which MCP servers to install (Playwright for web research)
+- **contextFileName**: The GEMINI.md file with learning context
+- **excludeTools**: Dangerous tools AI cannot use (for safety)
 
 ### Managing Extensions
 
@@ -167,81 +183,74 @@ Users must **reinstall** to get updates.
 gemini extensions list
 ```
 
-**Enable/disable extensions**:
-```bash
-gemini extensions disable my-extension
-gemini extensions enable my-extension --scope=workspace
-```
+This shows all extensions you've installed.
 
 **Update extensions**:
 ```bash
-gemini extensions update my-extension
+gemini extensions update ai-study-tools
+```
+
+When the extension creator improves it, you get the updates automatically.
+
+**Update all extensions at once**:
+```bash
 gemini extensions update --all
 ```
 
-**Uninstall extensions**:
+**Remove an extension**:
 ```bash
-gemini extensions uninstall my-extension
+gemini extensions uninstall ai-study-tools
 ```
 
-### Extension Manifest Structure (Key Fields)
-
-| Field | Purpose | Example |
-|-------|---------|---------|
-| `name` | Extension identifier | `"competitive-research"` |
-| `version` | Semantic versioning | `"1.0.0"` |
-| `mcpServers` | Included MCP servers | `{ "playwright": {...} }` |
-| `contextFileName` | Persistent context file | `"GEMINI.md"` |
-| `excludeTools` | Blocked tools (security) | `["run_shell_command"]` |
-| `settings` | Configuration required | API keys, etc. |
+This removes the extension but keeps any work you created with it.
 
 ---
 
-## Part 2: Tool Filtering for Security
+## Part 2: Tool Filtering for Safety
 
 ### Why Tool Filtering Matters
 
-External MCP servers might have **dangerous capabilities**. A single MCP server might offer:
-- `read_file` (safe for analysis)
-- `write_file` (risky - could overwrite your code)
-- `delete_file` (very dangerous - could destroy files)
-- `run_arbitrary_code` (extremely dangerous)
+MCP servers give AI capabilities. Some are safe; some could change your files. A single MCP server might offer:
+- `read_file` (safe - just reads, doesn't change anything)
+- `write_file` (risky - could change your files)
+- `delete_file` (very risky - could remove your files)
+- `run_shell_command` (extremely risky - could run any command)
 
-**Without filtering**: Gemini has access to all tools, including dangerous ones.
-**With filtering**: You control exactly which tools Gemini can use.
+**Without filtering**: AI has access to all tools, including risky ones.
+**With filtering**: You control exactly which tools AI can use.
 
 ### Two Filtering Approaches
 
-#### Allowlist: `includeTools` (Recommended)
+#### Allowlist: `includeTools` (Safer)
 
-Only allow safe tools:
+Only allow specific safe tools:
 
 ```json
 {
   "mcpServers": {
-    "myServer": {
-      "command": "python",
-      "args": ["server.py"],
-      "includeTools": ["read_file", "analyze_data", "generate_report"]
+    "file-helper": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-filesystem"],
+      "includeTools": ["read_file", "list_directory"]
     }
   }
 }
 ```
 
-**Result**: Gemini can ONLY use `read_file`, `analyze_data`, and `generate_report`. All other tools are blocked.
+**Result**: AI can ONLY use `read_file` and `list_directory`. All other tools are blocked.
 
-**Strategy**: Start very restrictive, expand only as needed.
+**Think of it like**: "AI can ONLY do these specific things I list."
 
-#### Blocklist: `excludeTools` (Fallback)
+#### Blocklist: `excludeTools` (Less Safe)
 
-Block dangerous tools only:
+Block specific dangerous tools:
 
 ```json
 {
   "mcpServers": {
-    "myServer": {
-      "command": "python",
-      "args": ["server.py"],
+    "file-helper": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-filesystem"],
       "excludeTools": ["delete_file", "run_shell_command"]
     }
   }
@@ -250,278 +259,234 @@ Block dangerous tools only:
 
 **Result**: All tools available EXCEPT `delete_file` and `run_shell_command`.
 
-**Risk**: Might miss dangerous tools you didn't think of.
+**Risk**: If the MCP server adds a new dangerous tool later, you might not know to block it.
 
-### Real-World Security Scenario
+**Think of it like**: "AI can do anything EXCEPT these specific things."
 
-**Situation**: You want to use an MCP server for code analysis. The server offers these tools:
-- `read_file` - Read source code ✅ Safe
-- `analyze_code` - Find issues ✅ Safe
-- `write_file` - Create fixed versions ⚠️ Risky
-- `commit_changes` - Auto-commit to git ❌ Very Dangerous
-- `delete_test_files` - Cleanup ⚠️ Risky
+### Learning Scenario: Choosing Safe Tools
 
-**Secure Configuration**:
+**Situation**: You want to use an MCP server for organizing study notes. The server offers these tools:
+- `read_file` - Read your notes ✅ Safe (just reading)
+- `search_content` - Find topics in notes ✅ Safe (just searching)
+- `write_file` - Edit notes ⚠️ Risky (could change your notes)
+- `delete_file` - Remove notes ❌ Very Risky (could delete your work)
+- `run_command` - Run terminal commands ❌ Extremely Risky
+
+**Safe Configuration**:
 ```json
 {
   "mcpServers": {
-    "codeAnalyzer": {
-      "command": "python",
-      "args": ["analyzer.py"],
-      "includeTools": ["read_file", "analyze_code"]
+    "noteOrganizer": {
+      "command": "npx",
+      "args": ["note-organizer"],
+      "includeTools": ["read_file", "search_content"]
     }
   }
 }
 ```
 
-**Result**: Gemini can analyze code but **cannot write or delete files**.
+**Result**: AI can read and search your notes but **cannot change or delete them**.
 
-### Best Practices
+### Safety Best Practices
 
-1. **Understand what tools MCP offers**: Ask Gemini about each server
-2. **Use allowlist approach**: Start with safe tools only
-3. **Test before enabling**: Verify behavior on non-critical data
-4. **Monitor tool usage**: Check what tools Gemini actually uses
-5. **Review regularly**: Remove access as needs change
-
----
-
-## Part 3: IDE Integration
-
-### What IDE Integration Adds
-
-When Gemini CLI connects to your IDE (VS Code), it gains:
-- **10 most recent files** (you just edited)
-- **Cursor position** (exactly where you're working)
-- **Selected text** (the code snippet you're focusing on)
-- **Native diff viewer** (review changes before applying)
-- **One-click apply** (accept changes in editor)
-
-**Result**: Gemini understands your exact context without you copy-pasting.
-
-### Setup: One Time Only
-
-**Install IDE companion**:
-```bash
-/ide install
-```
-
-Installs the VS Code extension (one-time setup).
-
-### Enable/Disable Per Session
-
-**Enable IDE connection**:
-```bash
-/ide enable
-```
-
-VS Code companion starts connecting. Gemini sees your file context.
-
-**Check status**:
-```bash
-/ide status
-```
-
-**Disable IDE connection**:
-```bash
-/ide disable
-```
-
-Disconnects without uninstalling. You can re-enable anytime.
-
-### VS Code Workflow Example
-
-1. **Working in VS Code** on file `src/main.py`, cursor at line 45
-2. **Run in Gemini CLI**:
-   ```
-   /ide enable
-   Review this code and suggest improvements
-   ```
-3. **What Gemini sees**:
-   - 10 recently edited files
-   - `src/main.py` (full content)
-   - Cursor position (line 45)
-   - Selected code (if any)
-4. **Gemini responds** with suggestions
-5. **Diff viewer opens** in VS Code showing changes
-6. **Review** changes side-by-side
-7. **Accept with one click** or modify suggestions
-
-### When IDE Integration Adds Value
-
-**Great for**:
-- Multi-file code reviews (AI sees all context)
-- Large refactoring (no copy-paste needed)
-- Complex suggestions (visual diff review)
-- Context-aware changes (AI understands your exact location)
-
-**Less useful for**:
-- Simple questions (no code context needed)
-- Terminal-only workflows (not using VS Code)
-- Writing new code from scratch (no reference files)
-- Non-VS Code editors (IDE integration is VS Code specific)
+1. **Ask before enabling**: "What tools does this MCP server have?"
+2. **Use allowlist**: Only include tools you need and trust
+3. **Start small**: Begin with reading/searching tools only
+4. **Test safely**: Try on a test folder first, not your real work
+5. **Check regularly**: Review which tools you've allowed
 
 ---
 
-## Part 4: Choosing the Right Workflow
+## Part 3: When to Use Extensions
 
 ### Decision Framework
 
-**When to use CLI only** (no IDE, no MCP):
-- Simple prompts ("Explain this concept")
-- Playing with ideas
-- Learning Gemini CLI basics
-- No specific code context needed
+Extensions are most useful when you need to:
 
-**When to add MCP servers**:
-- Need external capabilities (Playwright, databases, APIs)
-- Automating research or analysis
-- Accessing constantly updated information
-- Business workflows
+**Share a complete setup**:
+- Study group wants same MCP servers and commands
+- Learning partner needs your GEMINI.md context
+- Online course provides standard AI setup for all students
+- Want everyone to have identical, tested configuration
 
-**When to add IDE integration**:
-- Working on existing code (refactoring, reviewing)
-- Need visual diff review
-- Multi-file changes
-- Using VS Code as your editor
+**Example**: "Our Python learning group uses the same research tools and study commands. Installing the extension gives everyone the setup instantly."
 
-**When to bundle as extensions**:
-- Team standardization (everyone uses same setup)
-- Complex workflows (multiple MCP + commands)
-- Repeatable patterns (same setup for all projects)
+**Keep setups in sync**:
+- Creator improves the extension → Everyone updates easily
+- No "version drift" (everyone different)
+- Updates happen with one command
 
-### Professional Setup Example
+**Example**: "When the course instructor improves the study tools, we all run `gemini extensions update course-tools` instead of re-downloading files."
 
-A complete setup for a 5-person development team:
+**Bundle safety settings**:
+- Extension includes pre-configured tool filtering
+- Beginners don't need to figure out which tools are safe
+- Safety rules update when extension updates
 
-**Extension includes**:
-- Playwright MCP (competitive research, documentation browsing)
-- Context7 MCP (API documentation access)
-- Custom `/code-review` command (team code review standards)
-- Custom `/plan` command (feature planning)
-- GEMINI.md (team conventions, architecture)
-- Configured tool filtering (no write/delete access)
+**Example**: "The extension blocks risky file operations automatically. I don't have to remember which tools to exclude."
 
-**Installation**:
-```bash
-gemini extensions install https://github.com/myteam/dev-tools-extension
-```
+### When Extensions Are NOT Needed
 
-**Result**: All 5 team members get consistent setup, standards, and capabilities.
+**Simple, personal setup**:
+- You're just trying different MCP servers
+- Experimenting with commands
+- Not sharing with anyone
+- Setup changes frequently
 
-### Real Scenario Walkthrough
+**Example**: "I'm still figuring out which MCP servers I like. I'll just install them one at a time for now."
 
-**Task**: Review and refactor authentication module
+**One-time use**:
+- Testing a single MCP server
+- Temporary project
+- Don't need updates
 
-1. **CLI only** (simple question):
-   ```
-   /ide enable
-   Explain JWT token refresh flow in 5 sentences
-   ```
-
-2. **Add MCP** (research security patterns):
-   ```
-   Use Context7 to fetch latest OAuth 2.0 best practices
-   ```
-
-3. **Add IDE integration** (refactor code):
-   ```
-   /ide enable
-   Review this authentication module for security and suggest refactoring
-   ```
-   (VS Code shows diff, review changes, apply)
-
-4. **Use extension** (team adoption):
-   ```
-   /code-review auth/module.py
-   ```
-   (Custom command uses team standards from extension)
+**Example**: "I just want to try Playwright MCP once. I don't need a full extension."
 
 ---
 
-## Red Flags to Watch
+## Common Questions
+
+### "Can I use multiple extensions at once?"
+
+Yes! Install as many as you need:
+```bash
+gemini extensions install https://github.com/group-a/study-tools
+gemini extensions install https://github.com/course-b/research-tools
+```
+
+Both extensions work together. Each adds its own MCP servers and commands.
+
+### "What if two extensions conflict?"
+
+If two extensions try to add the same command name, the second one wins. You can disable one:
+```bash
+gemini extensions list
+gemini extensions disable study-tools
+```
+
+Now only `research-tools` is active.
+
+### "How do I know which tools an extension allows?"
+
+Look inside the `gemini-extension.json` file:
+- Check `includeTools` (what's allowed)
+- Check `excludeTools` (what's blocked)
+
+Or ask AI: "What tools does this extension give you access to?"
+
+### "Can I modify an extension after installing?"
+
+Extensions install to a special folder. Your changes get overwritten on update.
+
+**Better approach**: Create your own GEMINI.md in your project folder. It adds to (doesn't replace) the extension's context.
+
+---
+
+## Troubleshooting
 
 ### "Extension installation failed"
-- Check GitHub URL is correct: `github.com/user/repo`
-- Verify extension manifest is valid JSON
-- Check network connection
 
-### "Tool not available: write_file"
-- Verify `includeTools` configuration is correct
-- Check tool name exactly (case-sensitive)
-- Try `gemini extensions list` to verify extension loaded
+**Check these**:
+1. Is the GitHub URL correct? `github.com/user/repo`
+2. Is your internet connection working?
+3. Try installing again
 
-### "IDE connection failed"
-- Run `/ide install` to reinstall companion
-- Check VS Code is open and focused
-- Restart both VS Code and Gemini CLI
+**Fix**: Copy the URL exactly as shown, including `https://`
 
-### "Security concern: Too much access"
-- Review `excludeTools` and `includeTools` configuration
-- Test MCP server behavior on dummy data first
-- Use allowlist approach (safer than blocklist)
-- Ask AI: "What tools can this MCP server access? Which should I block?"
+### "Tool not available"
+
+**Error message**: `Tool "search_web" not available`
+
+**This means**: The extension's tool filtering blocked this tool, OR the MCP server doesn't have it.
+
+**Check**:
+1. Look at extension's `gemini-extension.json`
+2. Check if tool is in `excludeTools` (blocked)
+3. Check if tool is missing from `includeTools` (not allowed)
+
+**Fix**: If you need the tool and it's safe, you can install the MCP server separately without the extension's restrictions.
+
+### "Safety concern: Extension wants too much access"
+
+**Before installing**, check what tools it enables:
+1. Look at the extension's GitHub page
+2. Read `gemini-extension.json`
+3. Check if `includeTools` limits access (safer)
+4. Check if `excludeTools` only blocks a few things (less safe)
+
+**Ask AI**: "This extension includes [MCP server name]. What tools does it give you? Are any risky?"
+
+**Rule**: If unsure, don't install. Try the MCP server individually first with strict `includeTools`.
 
 ---
 
 ## Try With AI
 
-### Prompt 1: Creating an Extension
+**Use Gemini CLI** for these prompts to practice what you learned.
+
+### Prompt 1: Understanding Tool Safety
 ```
-I want to create a Gemini CLI extension for [describe your use case].
-The extension should include:
-- Which MCP servers? (Playwright, Context7, custom, etc.)
-- What custom commands? (What workflows do you want to automate?)
-- What persistent context? (What should AI always know about your project?)
-- Tool filtering? (Which tools should be restricted?)
+I'm looking at an extension that includes the filesystem MCP server.
+It has these tools available:
+- read_file
+- write_file
+- delete_file
+- list_directory
+- create_directory
 
-Walk me through creating the gemini-extension.json manifest and directory structure.
-```
-
-**Expected outcome**: Extension manifest and setup instructions.
-
-### Prompt 2: Security Configuration
-```
-I'm creating an MCP server that has 12 different tools.
-I only need 3 of them: read_file, analyze_code, generate_report.
-
-All others could be risky. Show me:
-1. The JSON configuration using includeTools
-2. Why allowlist is safer than blocklist
-3. What to do if I need a tool I didn't include
+Which tools are safe for a beginner learning AI tools?
+Which should I block with excludeTools?
+Explain why each dangerous tool is risky.
 ```
 
-**Expected outcome**: Secure configuration with security principles explained.
+**Expected outcome**: AI explains safety levels of each tool and recommends allowlist configuration.
 
-### Prompt 3: IDE Integration Workflow
+### Prompt 2: Planning a Learning Group Extension
 ```
-I'm using VS Code and just ran /ide enable.
-Design a workflow for reviewing and refactoring a Python file.
+I'm in a Python learning group (5 beginners).
+We want to create an extension for our study setup.
+
+We need:
+- Playwright MCP for researching documentation
+- A custom /study-plan command
+- A GEMINI.md with our learning goals
+- Safe tool filtering (read-only access)
+
 Show me:
-1. What to type in Gemini CLI
-2. What Gemini sees (context from IDE)
-3. How the diff viewer helps
-4. How to apply changes safely
+1. What the gemini-extension.json should include
+2. Which tools to allow (and which to block)
+3. How to share it with the group
 ```
 
-**Expected outcome**: Step-by-step IDE integration workflow.
+**Expected outcome**: Basic extension structure designed for learning context, with safe tool filtering.
 
-### Prompt 4: Complete Team Setup
+### Prompt 3: Evaluating Extension Safety
 ```
-I'm setting up Gemini CLI for my team of [X developers / team size].
-Our main workflows are [describe: web dev / data analysis / etc].
+I found a Gemini CLI extension for "AI Research Tools" on GitHub.
+Before installing, what questions should I ask to evaluate if it's safe?
 
-Design a complete setup including:
-1. Which MCP servers would help?
-2. What custom commands should we standardize?
-3. Should we create an extension?
-4. Security configuration?
-5. IDE integration strategy?
-
-Give me a checklist we can implement together.
+Specifically about:
+- Which MCP servers it includes
+- Tool filtering approach (includeTools vs excludeTools)
+- What capabilities AI will have
+- Whether it's appropriate for beginners
 ```
 
-**Expected outcome**: Team onboarding strategy with complete setup plan.
+**Expected outcome**: Checklist of safety questions to ask before installing any extension.
+
+### Prompt 4: Choosing Between MCP and Extension
+```
+My study partner shared:
+Option A: Install Playwright MCP directly
+Option B: Install their "research-bundle" extension (includes Playwright + commands + context)
+
+I'm a beginner just learning AI tools.
+Which should I choose and why?
+
+Consider: ease of use, safety, flexibility, learning value.
+```
+
+**Expected outcome**: Decision framework comparing direct MCP installation vs extension, tailored to beginner needs.
 
 
 

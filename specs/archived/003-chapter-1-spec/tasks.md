@@ -178,16 +178,16 @@
 
 ## Lesson-Writer Agent Assignments
 
-**Each lesson should be assigned to lesson-writer agent with specific guidelines below.**
+**Each lesson should be assigned to content-implementer agent with specific guidelines below.**
 
 ### Lesson 1 Assignment (T008-T010)
 
-**Agent**: lesson-writer
+**Agent**: content-implementer
 **Input**: plan.md (Lesson 1 section)
 **Output**: `01-lesson-1.md` in chapter directory
 **Word Budget**: 300-400 words | **Time**: 3-4 minutes
 
-**Guidelines for lesson-writer**:
+**Guidelines for content-implementer**:
 - Hook readers immediately with provocative statement
 - Show proof first (fastest-growing startup sector exists NOW)
 - Make stakes personal ("You're entering profession at pivotal moment")
@@ -203,12 +203,12 @@
 
 ### Lesson 2 Assignment (T011-T014)
 
-**Agent**: lesson-writer
+**Agent**: content-implementer
 **Input**: plan.md (Lesson 2 section) + context document (sections 2.1)
 **Output**: `02-lesson-2.md` in chapter directory
 **Word Budget**: 400-500 words | **Time**: 4-5 minutes
 
-**Guidelines for lesson-writer**:
+**Guidelines for content-implementer**:
 - Present $3T number, let it land
 - Make concrete: 30M developers × $100k = $3T (show calculation)
 - Use France's GDP comparison for scale perspective (relatable)
@@ -224,12 +224,12 @@
 
 ### Lesson 3 Assignment (T015-T018)
 
-**Agent**: lesson-writer
+**Agent**: content-implementer
 **Input**: plan.md (Lesson 3 section) + plan.md (Four Dimensions table)
 **Output**: `03-lesson-3.md` in chapter directory
 **Word Budget**: 400-500 words | **Time**: 3-4 minutes
 
-**Guidelines for lesson-writer**:
+**Guidelines for content-implementer**:
 - Frame as shift FROM code writer (execution) TO orchestrator (direction + judgment)
 - Explain each dimension clearly:
   - Specification Writer: Clear requirements
@@ -248,12 +248,12 @@
 
 ### Lesson 4 Assignment (T019-T022)
 
-**Agent**: lesson-writer
+**Agent**: content-implementer
 **Input**: plan.md (Lesson 4 section) + foundational assets (examples)
 **Output**: `04-lesson-4.md` in chapter directory
 **Word Budget**: 300-400 words | **Time**: 3-4 minutes
 
-**Guidelines for lesson-writer**:
+**Guidelines for content-implementer**:
 - Counter displacement anxiety with evidence (not just reassurance)
 - Show market expansion: vibe coding boom + enterprise hiring surge
 - Include real examples naturally (vibe coding, Cursor vs. GitHub Copilot, hiring data)
@@ -270,12 +270,12 @@
 
 ### Lesson 5 Assignment (T023-T027)
 
-**Agent**: lesson-writer
+**Agent**: content-implementer
 **Input**: plan.md (Lesson 5 section) + spec.md (pedagogical approach section)
 **Output**: `05-lesson-5.md` in chapter directory
 **Word Budget**: 300-400 words | **Time**: 2-3 minutes
 
-**Guidelines for lesson-writer**:
+**Guidelines for content-implementer**:
 - Clarify distinction: Learning WITH agents (you direct) vs. FROM agents (you consume)
 - Explain what WITH means: You write specs, direct agents, evaluate, decide
 - Emphasize reader's ACTIVE role (empower, don't diminish)
@@ -293,7 +293,7 @@
 
 ## Implementation Notes
 
-**For lesson-writer subagent**:
+**For content-implementer subagent**:
 - Follow lesson outlines exactly (word counts, time budgets)
 - Ground ALL claims in context document (no speculation, cite sources)
 - Use Show-Then-Explain: examples first → then concepts

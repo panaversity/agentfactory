@@ -553,7 +553,7 @@ Explicitly taught in Lesson 2; reinforced in every subsequent lesson through dia
 
 ## Next Steps for Implementation
 
-### Phase 1: Content Creation (lesson-writer subagent)
+### Phase 1: Content Creation (content-implementer subagent)
 1. Create 8 lesson `.md` files
 2. Source all dialogue examples (real interactions)
 3. Write exercises with answer keys
@@ -590,7 +590,7 @@ Explicitly taught in Lesson 2; reinforced in every subsequent lesson through dia
 - Example sourcing requirements clear
 - Edge cases addressed
 - Skills mapping complete
-- Ready for lesson-writer implementation
+- Ready for content-implementer implementation
 
 ✅ Implementation will produce:
 - 8 authentic dialogue-first lesson files
@@ -604,4 +604,4 @@ Explicitly taught in Lesson 2; reinforced in every subsequent lesson through dia
 
 **Plan Status**: READY FOR IMPLEMENTATION
 
-This detailed plan provides lesson-writer with everything needed to create authentic, dialogue-first bash content that teaches AI collaboration, safety-first thinking, and verification habits—not bash command syntax.
+This detailed plan provides content-implementer with everything needed to create authentic, dialogue-first bash content that teaches AI collaboration, safety-first thinking, and verification habits—not bash command syntax.

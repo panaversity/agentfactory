@@ -1,11 +1,42 @@
 ---
 sidebar_position: 6
 title: MCP Servers & Integration
+duration: "20 minutes"
+cefr_level: A2
+proficiency: Beginner
+teaching_stage: 2
+stage_name: "AI Collaboration"
+cognitive_load:
+  concepts_count: 6
+  a2_compliant: true
+learning_objectives:
+  - id: LO1
+    description: "Explain why MCP extends AI capabilities beyond local files to external systems"
+    bloom_level: "Understand"
+    digcomp: "1.3 Managing data, information and digital content"
+  - id: LO2
+    description: "Install MCP servers (Playwright, Context7) using Gemini CLI commands"
+    bloom_level: "Apply"
+    digcomp: "3.1 Developing digital content"
+  - id: LO3
+    description: "Execute web browsing workflows using Playwright MCP to gather information"
+    bloom_level: "Apply"
+    digcomp: "1.1 Browsing, searching and filtering data"
+  - id: LO4
+    description: "Retrieve current documentation using Context7 MCP for learning"
+    bloom_level: "Apply"
+    digcomp: "1.2 Evaluating data, information and digital content"
+  - id: LO5
+    description: "Apply security best practices when enabling external MCP server access"
+    bloom_level: "Apply"
+    digcomp: "4.2 Protecting personal data and privacy"
+  - id: LO6
+    description: "Design workflows combining MCP servers with built-in tools for research tasks"
+    bloom_level: "Create"
+    digcomp: "3.2 Integrating and re-elaborating digital content"
 ---
 
 # MCP Servers & Integration
-
-**Duration**: 20 minutes
 
 > **A Word Before We Begin**
 >
@@ -24,10 +55,11 @@ gemini
 Now try this request:
 
 ```
-I need to check the latest release of React on GitHub. Show me:
-1. The latest version number
-2. Release date
-3. Key changes in the changelog
+I want to learn about beginner-friendly laptops for students.
+Browse a product review website and show me:
+1. Top 3 recommended laptops for beginners
+2. Price range for each
+3. Key features that make them good for students
 
 Use whatever tools you have available.
 ```
@@ -38,78 +70,77 @@ Gemini will use its **built-in web fetch tool** to try getting this information:
 
 ```
 🔧 Using tool: web_fetch
-   URL: https://github.com/facebook/react/releases/latest
+   URL: https://www.example-reviews.com/best-student-laptops
 
 📄 Fetching...
 
-I can see the GitHub releases page, but I'm getting the static HTML only.
-The actual release data (version, date, changelog details) is loaded
-dynamically via JavaScript, which the basic web fetch tool cannot execute.
+I can see the review website, but I'm getting only the basic page structure.
+The actual product information (reviews, prices, specifications) loads after
+the page opens, which the basic web fetch tool cannot wait for.
 
-Here's what I found in the static HTML:
-- Page title mentions "Releases · facebook/react"
-- There are some navigation elements
-- The actual release content area is empty: <div id="repo-content-turbo-frame"></div>
+Here's what I found on the initial page:
+- Page title mentions "Best Laptops for Students 2025"
+- There are some navigation menus
+- The detailed product reviews haven't loaded yet
 
-The release information you need is rendered client-side by JavaScript,
+The product information you need appears after the page fully loads,
 so I cannot access it with the current tools.
 
 **What you can do instead:**
-1. Visit https://github.com/facebook/react/releases manually
-2. Use GitHub CLI: gh release view --repo facebook/react
-3. Use npm: npm view react version
-4. Use the GitHub API directly with curl
+1. Visit the review website manually in your browser
+2. Search Google for "best student laptops 2025"
+3. Ask me to help you understand what features to look for
 
 Would you like me to help you with any of these alternatives?
 ```
 
 **The limitation**: Gemini tried to help using its web fetch tool, but:
 - ✅ It attempted to fetch the URL
-- ❌ Only got static HTML (no JavaScript execution)
+- ❌ Only got initial page content (before full load)
 - ❌ Modern websites load content dynamically
 - ❌ Can't interact with the page (click buttons, scroll, wait for loading)
 - ❌ No direct GitHub API access
 
 **The reality**: Gemini is brilliant but **limited by built-in tools**. It can't:
-- ❌ Execute JavaScript on web pages (static HTML only)
-- ❌ Access authenticated APIs (like GitHub API)
-- ❌ Query databases directly
-- ❌ Browse websites with modern dynamic content
-- ❌ Interact with forms, buttons, or dynamic elements
+- ❌ Wait for pages to fully load (only sees initial content)
+- ❌ Access websites that require login
+- ❌ Browse interactive websites with buttons and forms
+- ❌ See content that appears after clicking or scrolling
+- ❌ Access specialized databases or private information
 
 ### What Gemini CAN Do (Out of the Box)
 
 The built-in tools from Lesson 3 give you:
 
 ✅ **File operations**: Read/write files on your local computer
-✅ **Shell execution**: Run terminal commands (`ls`, `git status`, etc.)
-✅ **Web fetching**: Simple HTTP GET requests (static HTML only)
-✅ **Search**: Google Search results (metadata, not full content)
+✅ **Shell execution**: Run basic terminal commands
+✅ **Web fetching**: Get initial page content from websites
+✅ **Search**: Google Search results summaries
 
-These are **local, static capabilities**—perfect for many tasks, but limited when you need:
-- Real-time external data
-- Advanced browser interactions (JavaScript, forms, authentication)
-- Database queries
-- API integrations
-- Custom tool connections
+These are **basic capabilities**—perfect for many tasks, but limited when you need:
+- Websites that require clicking buttons or filling forms
+- Content that appears after scrolling or waiting
+- Information behind login walls
+- Interactive website features
+- Specialized databases or tools
 
 ### The Gap in Your Workflow
 
-**Real-world scenario**: You're researching competitors.
+**Real-world scenario**: You're researching online courses to learn photography.
 
 **What you need**:
-1. Browse 10 competitor websites
-2. Navigate to pricing pages (which load dynamically via JavaScript)
-3. Extract pricing tiers and features
-4. Compare side-by-side in a table
-5. Save results to a spreadsheet
+1. Browse 3 popular online learning platforms
+2. Navigate to photography course pages (which load after page opens)
+3. Extract course details: price, duration, student ratings
+4. Compare which course is best for beginners
+5. Make an informed decision
 
 **What Gemini's built-in tools can do**:
-- Web fetch retrieves HTML (but JavaScript content doesn't load)
-- You see raw HTML source code
-- Pricing info is hidden in JavaScript (`<div id="pricing"></div>` with no content)
-- You manually visit each site, copy-paste data
-- **Time: 1-2 hours**
+- Web fetch gets initial page (but course details don't load)
+- You see page structure without the detailed content
+- Course details aren't visible yet (still loading)
+- You manually visit each site, take notes, compare yourself
+- **Time: 45-60 minutes**
 
 This is the **isolation problem**.
 
@@ -134,45 +165,29 @@ Think of MCP like **USB for AI**:
 - Developers build once, use everywhere
 - Community creates hundreds of MCP servers (databases, APIs, browsers, custom tools)
 
-### How MCP Works: The Technical View
+### How MCP Works: Simple Explanation
 
-MCP servers are **small programs** that:
-1. Expose capabilities (tools) through a standard protocol
-2. Run locally (your computer) or remotely (cloud API)
-3. Handle authentication, data fetching, and responses
-4. Return structured data Gemini can understand
+Think of MCP servers as **specialists in a phone directory**:
 
-**Example**: GitHub MCP Server
+1. **You ask Gemini a question** that needs external information
+2. **Gemini checks its directory** of available MCP servers (specialists)
+3. **Gemini calls the right specialist** (e.g., Playwright for web browsing, Context7 for documentation)
+4. **The specialist does the work** (browses website, fetches docs, queries database)
+5. **The specialist reports back** with the information
+6. **Gemini shows you the results** in a readable format
 
-```typescript
-// Simplified structure (you don't write this—you just install it)
-interface GitHubMCPServer {
-  name: "github";
+**Example workflow**:
 
-  tools: [
-    {
-      name: "list_pull_requests",
-      description: "Fetch open PRs from a repository",
-      parameters: {
-        repo: "tensorflow/tensorflow",
-        status: "open",
-        since: "2025-01-08"
-      }
-    },
-    {
-      name: "create_issue",
-      description: "Create a new GitHub issue",
-      parameters: { title: string, body: string, labels: string[] }
-    }
-  ];
-}
-```
+You ask: "What are the top-rated student laptops under $500?"
 
-**When you ask Gemini** to show pull requests:
-1. Gemini recognizes it needs GitHub data
-2. Gemini calls the `list_pull_requests` tool on GitHub MCP server
-3. MCP server authenticates with GitHub, fetches data, returns JSON
-4. Gemini formats the data into a readable response
+Behind the scenes:
+- Gemini recognizes it needs to browse review websites
+- Gemini calls the **Playwright MCP server** (web browsing specialist)
+- Playwright opens a browser, navigates to tech review sites, extracts the information
+- Playwright returns the data to Gemini
+- Gemini shows you: "HP Pavilion 15 ($449, 4.5/5 stars), Lenovo IdeaPad 3 ($399, 4.4/5 stars)"
+
+**Key point**: You don't manage any of this. You just ask questions naturally, and Gemini coordinates with the right specialists automatically.
 
 ### MCP Server vs Built-In Tools
 
@@ -180,7 +195,7 @@ interface GitHubMCPServer {
 |-----------|----------------|-------------|
 | **File operations** | ✅ Read/write local files | ✅ Same |
 | **Shell commands** | ✅ Run `ls`, `git`, `npm` | ✅ Same |
-| **Web fetching** | ✅ Static HTML only | ✅ **Full browser automation** (Playwright MCP) |
+| **Web fetching** | ✅ Initial page only | ✅ **Full browser automation** (Playwright MCP) |
 | **Search** | ✅ Google Search metadata | ✅ **Real-time doc access** (Context7 MCP) |
 | **GitHub** | ❌ No access | ✅ **Full API access** (GitHub MCP) |
 | **Databases** | ❌ No access | ✅ **SQL queries** (PostgreSQL MCP) |
@@ -191,24 +206,24 @@ interface GitHubMCPServer {
 **Scenario**: Analyze 10 competitor websites for pricing.
 
 **Without MCP** (built-in web fetch only):
-1. Fetch each URL → get static HTML
-2. JavaScript-rendered prices don't load
-3. Manually visit sites, copy-paste
-4. **Time: 1-2 hours**
+1. Fetch each URL → get initial page only
+2. Course details that appear after page load aren't visible
+3. Manually visit sites, take notes, compare
+4. **Time: 45-60 minutes**
 
 **With Playwright MCP**:
 ```
-Use Playwright to browse these 10 competitor sites, navigate to
-pricing pages, extract all pricing tiers and features, and create
-a comparison table.
+Use Playwright to browse these 3 photography course platforms,
+navigate to beginner course pages, extract course details, and
+create a comparison table.
 ```
 
 Gemini:
-1. Launches headless browser via Playwright MCP
-2. Navigates to each site, waits for JavaScript to load
-3. Clicks "Pricing" links, scrolls, extracts data
-4. Returns structured table
-5. **Time: 5-10 minutes**
+1. Launches browser via Playwright MCP
+2. Navigates to each platform, waits for pages to fully load
+3. Finds course information, extracts prices, ratings, duration
+4. Returns structured comparison table
+5. **Time: 3-5 minutes**
 
 ---
 
@@ -278,10 +293,11 @@ Let's see what happens when you have MCP servers installed. Using the **exact sa
 
 **Prompt**:
 ```
-I need to check the latest release of React on GitHub. Show me:
-1. The latest version number
-2. Release date
-3. Key changes in the changelog
+I want to learn about beginner-friendly laptops for students.
+Browse a product review website and show me:
+1. Top 3 recommended laptops for beginners
+2. Price range for each
+3. Key features that make them good for students
 
 Use whatever tools you have available.
 ```
@@ -290,92 +306,93 @@ Use whatever tools you have available.
 
 ```
 🔧 Using tool: playwright_navigate
-   URL: https://github.com/facebook/react/releases
+   URL: https://www.example-reviews.com/best-student-laptops
 
 🌐 Launching browser...
-📄 Waiting for page to load (including JavaScript)...
+📄 Waiting for page to fully load...
 ✅ Page loaded successfully
 
-Latest Release: React 19.0.0
-Released: December 5, 2024
+Top 3 Student Laptops (2025):
 
-Key Changes:
-• Actions: New API for handling form submissions and data mutations
-• Document Metadata: Built-in support for <title>, <meta>, and <link> tags
-• Asset Loading: Improved preloading and loading strategies
-• Web Components: Better integration with custom elements
-• React Compiler: New optimization features (experimental)
+1. **HP Pavilion 15** - $449
+   - 15.6" display, great for reading and writing
+   - Long battery life (8+ hours)
+   - Lightweight and portable
+   - Student discount available
 
-Breaking Changes:
-- Removed: Legacy Context API (use createContext instead)
-- Changed: StrictMode now runs effects twice in development
-- Updated: Error boundary behavior for async errors
+2. **Lenovo IdeaPad 3** - $399
+   - Budget-friendly option
+   - Fast performance for everyday tasks
+   - Includes Microsoft Office
+   - Good keyboard for typing
 
-Migration Guide: https://react.dev/blog/2024/12/05/react-19
+3. **Acer Aspire 5** - $499
+   - Best value for features
+   - Excellent display quality
+   - Comfortable for long study sessions
+   - 1-year warranty included
 
-📊 Downloads: 25M+ per week on npm
-🔗 Full changelog: https://github.com/facebook/react/releases/tag/v19.0.0
+💡 All three support video calls, document editing, and web browsing perfectly for student needs.
 
 Would you like me to:
-1. Check compatibility with your current dependencies?
-2. Show migration steps for your project?
-3. Compare with the previous version (18.3.0)?
+1. Compare these with other options?
+2. Check which one has the longest warranty?
+3. Find student discount programs?
 ```
 
 **The transformation**:
-- ✅ **Real browser automation** (JavaScript executes fully)
-- ✅ **Accurate, real-time data** from the actual page
-- ✅ **Structured extraction** of version, date, changelog
-- ✅ **Follow-up actions** suggested based on context
-- ✅ **Time saved**: From "go do this manually" → complete answer in seconds
+- ✅ **Real browser automation** (waits for full page load)
+- ✅ **Accurate, current information** from actual review sites
+- ✅ **Structured comparison** of laptops, prices, features
+- ✅ **Follow-up options** suggested based on what you need
+- ✅ **Time saved**: From "go browse manually" → complete answer in seconds
 
-### Example 2: Multi-Step Workflow (Competitive Research)
+### Example 2: Multi-Step Workflow (Comparing Learning Resources)
 
-**Scenario**: Research pricing for 3 AI API providers.
+**Scenario**: Compare beginner-friendly online courses for digital skills.
 
 **Without MCP** (manual process):
 ```
-You: "Compare pricing for OpenAI, Anthropic, and Google AI APIs"
+You: "Compare 3 popular websites for learning photography as a beginner"
 
-Gemini: "I can provide general guidance, but pricing changes frequently.
-You should visit:
-1. https://openai.com/pricing
-2. https://anthropic.com/pricing
-3. https://cloud.google.com/vertex-ai/pricing
+Gemini: "I can provide general guidance, but you'll need to visit the sites
+to see current course offerings. You should check:
+1. https://www.skillshare.com/photography
+2. https://www.udemy.com/photography
+3. https://www.creativelive.com/photography
 
-And manually compare the tiers."
+And compare which one suits beginners best."
 
 Your manual work:
 1. Visit 3 websites
-2. Navigate to pricing pages
-3. Copy-paste into spreadsheet
-4. Format and compare
-⏱️ Time: 15-20 minutes
+2. Browse their photography courses
+3. Take notes on prices, duration, ratings
+4. Compare and decide
+⏱️ Time: 20-30 minutes
 ```
 
 **With Playwright MCP** (automated):
 ```
-You: "Use Playwright to browse OpenAI, Anthropic, and Google AI pricing
-pages, extract current pricing for their flagship models, and create a
-comparison table."
+You: "Use Playwright to browse Skillshare, Udemy, and CreativeLive photography
+beginner courses, extract key details, and create a comparison table."
 
 Gemini: ✅ Launching Playwright...
-        ✅ Browsing openai.com/pricing...
-        ✅ Browsing anthropic.com/pricing...
-        ✅ Browsing cloud.google.com/vertex-ai/pricing...
+        ✅ Browsing Skillshare photography courses...
+        ✅ Browsing Udemy photography courses...
+        ✅ Browsing CreativeLive photography courses...
 
-| Provider   | Model          | Input ($/1M tokens) | Output ($/1M tokens) |
-|------------|----------------|---------------------|----------------------|
-| OpenAI     | GPT-4 Turbo    | $10.00              | $30.00               |
-| Anthropic  | Claude 3 Opus  | $15.00              | $75.00               |
-| Google AI  | Gemini Pro     | $0.50               | $1.50                |
+| Platform     | Course Name                    | Price       | Duration  | Rating |
+|--------------|--------------------------------|-------------|-----------|--------|
+| Skillshare   | Photography Basics             | $14/month   | 3 hours   | 4.7/5  |
+| Udemy        | Complete Photography Masterclass| $79.99      | 20 hours  | 4.6/5  |
+| CreativeLive | Fundamentals of Photography    | $39/month   | 15 hours  | 4.8/5  |
 
 Notes:
-- OpenAI offers volume discounts (>$100k/month)
-- Anthropic has academic pricing (50% off with .edu email)
-- Google AI pricing effective as of Jan 2025
+- Skillshare has monthly subscription model
+- Udemy offers one-time purchase, lifetime access
+- CreativeLive includes live sessions with instructors
 
-⏱️ Time: 2 minutes
+⏱️ Time: 3-4 minutes
 ```
 
 ### The Key Insight
@@ -399,8 +416,8 @@ The modern way to add MCP servers is **CLI commands**—not manual JSON editing.
 ### Adding MCP Servers
 
 ```bash
-# Add stdio MCP server (local Python/Node.js)
-gemini mcp add my-server python server.py --port 8080
+# Add stdio MCP server (runs locally on your computer)
+gemini mcp add my-server-name command-to-run --port 8080
 
 # Add HTTP MCP server (remote API)
 gemini mcp add --transport http secure-api https://api.example.com/mcp \
@@ -411,9 +428,9 @@ gemini mcp add --transport sse events-api https://api.example.com/sse
 ```
 
 **Transport types**:
-- **Stdio**: Local process (Python script, Node.js server)
-- **HTTP**: Remote HTTP server
-- **SSE**: Server-Sent Events (real-time streaming)
+- **Stdio**: Runs locally on your computer
+- **HTTP**: Connects to remote server on the internet
+- **SSE**: Real-time streaming connections
 
 ### Listing MCP Servers
 
@@ -464,20 +481,45 @@ More control, but error-prone for beginners. The previous lesson ([Configuration
 
 ---
 
-## Part 3: OAuth for MCP Servers
+## Part 3: Security and Authentication for MCP Servers
 
-Some MCP servers need **authentication**—API keys, cloud credentials, or OAuth tokens. Gemini CLI handles this automatically.
+### Why Security Matters
 
-### Why OAuth Matters
+**Important**: MCP servers can access the internet and external systems. This is powerful but requires trust and caution.
 
-**Problem**: External APIs need credentials to verify you.
-- Database API key
-- Google Drive access token
-- Cloud service authentication
+Think of it like this: When you give your house key to a contractor, you:
+- ✅ Use trusted, recommended contractors (not random people)
+- ✅ Check their credentials and reviews
+- ✅ Know exactly what work they're authorized to do
+- ✅ Revoke access when the job is done
 
-**Solution**: OAuth lets you authenticate securely without exposing secrets.
+**Same principles apply to MCP servers.**
 
-### Using OAuth: `/mcp auth`
+### Security Best Practices
+
+**Before adding any MCP server**:
+
+1. ✅ **Use trusted sources**: In this lesson, we use widely-adopted servers (Playwright, Context7)
+2. ✅ **Check what access it needs**: Read descriptions carefully
+3. ✅ **Start with minimal permissions**: Add only what you need
+4. ✅ **Review regularly**: Remove servers you no longer use
+
+**What Gemini CLI does for you**:
+- Stores sensitive tokens in your system keychain (not plain text files)
+- Encrypts authentication credentials
+- Auto-refreshes tokens so you don't handle them manually
+- Shows you which servers are connected: `gemini mcp list`
+
+### OAuth Authentication: `/mcp auth`
+
+Some MCP servers need **authentication** to access protected systems (like your Google Drive or GitHub account).
+
+**When you need OAuth**:
+- MCP server accesses your cloud accounts (Google Drive, GitHub)
+- API requires login credentials
+- Database access is protected
+
+**Using OAuth** (Gemini handles the complexity):
 
 ```bash
 /mcp auth
@@ -489,34 +531,34 @@ Lists servers that need authentication.
 /mcp auth my-database-server
 ```
 
-Authenticates with specific server:
-1. Browser opens to OAuth provider (Google, GitHub, etc.)
-2. You log in
-3. Tokens stored automatically in `~/.gemini/mcp-oauth-tokens.json`
-4. Tokens auto-refresh when needed
+What happens:
+1. Your browser opens to the login page (Google, GitHub, etc.)
+2. You log in and approve access
+3. Gemini stores the token securely in `~/.gemini/mcp-oauth-tokens.json`
+4. Tokens auto-refresh—you never touch them manually
 
-**Key point**: You never manage tokens manually. Gemini CLI handles it.
-
-### When to Use OAuth
-
-**You need OAuth when**:
-- MCP server accesses user's Google Drive
-- API requires authentication (GitHub, Stripe, etc.)
-- Cloud service needs credentials
-- Database access is controlled
-
-**You don't need OAuth when**:
-- Public APIs (most web browsing)
-- Local tools (no external access)
+**You don't need OAuth for**:
+- Public websites (Playwright browsing Amazon, Wikipedia)
 - Open documentation (Context7)
+- Local-only tools
+
+### Security Checklist
+
+Before adding any new MCP server, ask:
+
+- [ ] Is this from a trusted source? (Official npm packages, verified GitHub repos)
+- [ ] Do I understand what this server can access?
+- [ ] Do I actually need this capability right now?
+- [ ] Have I checked recent reviews or issues on the server's repository?
+- [ ] Can I remove it easily if I don't use it? (Yes: `gemini mcp remove server-name`)
 
 ---
 
-## Part 4: Business Workflows
+## Part 4: Practical Workflows for Learning and Research
 
-### Workflow 1: Competitive Research (Playwright)
+### Workflow 1: Research and Compare Products (Playwright)
 
-**Goal**: Compare 5 competitors' pricing and features.
+**Goal**: Compare 3 beginner laptops for students.
 
 **Setup**:
 ```bash
@@ -525,27 +567,25 @@ gemini mcp add playwright npx @playwright/mcp@latest
 
 **Prompt**:
 ```
-Use the Playwright MCP server to analyze these 5 competitors:
-1. https://competitor-a.com
-2. https://competitor-b.com
-3. https://competitor-c.com
-4. https://competitor-d.com
-5. https://competitor-e.com
+Use the Playwright MCP server to research student laptops on these review sites:
+1. https://www.example-tech-reviews.com/laptops
+2. https://www.student-tech-guide.com/best-laptops
+3. https://www.beginner-tech.com/laptop-reviews
 
 For each site:
-- Find their pricing page
-- Extract all pricing tiers
-- List key features per tier
-- Note any current promotions
+- Find their top recommended laptops for students
+- Extract price, specifications, and ratings
+- Note any beginner-friendly features
+- Check for student discounts
 
-Create a comparison table.
+Create a comparison table showing the top 3 options.
 ```
 
-**Result**: Structured competitive intelligence in minutes.
+**Result**: Clear comparison of beginner-friendly laptops in minutes.
 
-### Workflow 2: API Documentation Research (Context7)
+### Workflow 2: Learning New Tools (Context7)
 
-**Goal**: Understand a new API before integration.
+**Goal**: Quickly understand a new tool or library you're interested in learning.
 
 **Setup**:
 ```bash
@@ -554,32 +594,32 @@ gemini mcp add context7 npx -y @upstash/context7-mcp
 
 **Prompt**:
 ```
-Use Context7 to research Stripe's API:
-1. What are the main endpoints?
-2. What's the authentication method?
-3. What are rate limits?
-4. What's the most recent major version change?
-5. Are there breaking changes I should know about?
+Use Context7 to help me learn about [tool/library name]. I'm a beginner.
+1. What is it used for?
+2. What are the main features beginners should know?
+3. What are common use cases?
+4. Are there any recent major updates?
+5. What resources are best for learning it?
 
-Give me a summary suitable for a technical decision-maker.
+Give me a beginner-friendly summary with links.
 ```
 
-**Result**: Current, accurate documentation without manually reading docs.
+**Result**: Current, accurate documentation and learning resources without manually searching multiple websites.
 
-### Workflow 3: Multi-Tool Combination
+### Workflow 3: Multi-Tool Combination for Research
 
-**Goal**: Analyze market trends across multiple sources.
+**Goal**: Research budget-friendly home office setup for remote learning.
 
 ```
-1. Use Playwright to browse 5 market research sites
-2. Use shell to analyze local data files
-3. Use Context7 to fetch industry documentation
-4. Compile a market analysis report
+1. Use Playwright to browse 3 tech review sites for desk, chair, and laptop recommendations
+2. Use Context7 to find current information on ergonomic workspace setup
+3. Use file operations to save the combined research to a file
+4. Create a shopping list with budget breakdown under $500
 
-Combine all three MCP capabilities in one workflow.
+Combine all MCP capabilities and built-in tools in one workflow.
 ```
 
-**Key insight**: MCP servers chain together. One prompt can use multiple capabilities.
+**Key insight**: MCP servers work together with Gemini's built-in tools. One prompt can coordinate multiple capabilities.
 
 ---
 
@@ -609,6 +649,8 @@ Combine all three MCP capabilities in one workflow.
 
 ## Try With AI
 
+**Setup**: Use Gemini CLI for this activity (preferred for this lesson). You may use Claude Code or other AI tools with MCP support if you prefer.
+
 ### Prompt 1: Setting Up Your First MCP Server
 ```
 I want to add the Playwright MCP server to browse websites.
@@ -621,33 +663,37 @@ Walk me through:
 
 **Expected outcome**: Step-by-step setup with verification commands.
 
+**Safety reminder**: Only add MCP servers from trusted sources. Playwright is widely used and maintained by Microsoft.
+
 ### Prompt 2: Choosing the Right MCP Server
 ```
-I have this business need: [describe your need]
+I have this goal: [describe what you want to accomplish]
 
 Examples:
-- "Research 20+ competitor websites"
-- "Stay current with API documentation"
-- "Access our company database"
+- "Research products on e-commerce websites"
+- "Stay current with documentation for tools I'm learning"
+- "Gather information from multiple websites for a report"
 
 Which MCP server should I use? Why? How do I set it up?
+Explain like I'm a beginner with no programming experience.
 ```
 
-**Expected outcome**: Specific recommendation with setup instructions.
+**Expected outcome**: Specific recommendation with beginner-friendly setup instructions.
 
-### Prompt 3: Multi-Tool Workflow Design
+### Prompt 3: Safe Workflow Design
 ```
-I need to combine multiple MCP servers for this task: [describe]
+I want to use MCP servers to help with: [describe your research or learning goal]
 
-Design a workflow that uses:
-1. Which MCP servers? (Playwright, Context7, custom, etc.)
-2. In what order?
-3. How do they work together?
-4. What's the exact prompt I give you?
-5. What's the expected output?
+Design a safe, beginner-friendly workflow for me:
+1. Which MCP server(s) should I use? (Playwright for browsing? Context7 for docs?)
+2. What's the exact prompt I should give you?
+3. How do I know if it's working correctly?
+4. What are the security considerations I should be aware of?
+
+Show me step-by-step with copyable prompts.
 ```
 
-**Expected outcome**: Complete workflow architecture.
+**Expected outcome**: Complete workflow design with security guidance customized to your needs.
 
 ### Prompt 4: Troubleshooting MCP Issues
 ```
@@ -656,7 +702,8 @@ I'm getting this error: [your error message]
 After running: [your command]
 
 Debug this for me. What's wrong? How do I fix it?
+Give me troubleshooting steps I can follow as a beginner.
 ```
 
-**Expected outcome**: Specific debugging steps for your error.
+**Expected outcome**: Specific debugging steps for your error with beginner-appropriate explanations.
 

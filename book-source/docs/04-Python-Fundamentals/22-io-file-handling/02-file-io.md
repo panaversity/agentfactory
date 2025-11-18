@@ -91,7 +91,7 @@ differentiation:
   remedial_for_struggling: "Start with simple read-only operations before introducing write/append modes; use before/after file state diagrams; practice context manager syntax separately"
 
 # Generation metadata
-generated_by: "claude-code lesson-writer"
+generated_by: "claude-code content-implementer"
 source_spec: "specs/001-part-4-chapter-22/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -723,34 +723,91 @@ Current config:
 
 ---
 
-## Try With AI
+## Try With AI: The Safe File Operations Workshop
 
-### Prompt 1: Remember/Understand
+### Part 1: Predict Context Manager Behavior (Your Turn First)
 
-Ask your AI: "What is a context manager? Why do we use the `with` statement when opening files?"
+**Before asking AI**, predict what happens in these two scenarios:
 
-**Expected Outcome**: You'll understand that context managers automatically clean up resources, preventing file corruption and resource leaks.
+**Scenario A** (without context manager):
+```python
+file = open("data.txt", "r")
+content = file.read()
+# Some code here might crash...
+file.close()  # Will this always execute?
+```
+
+**Scenario B** (with context manager):
+```python
+with open("data.txt", "r") as file:
+    content = file.read()
+    # Some code might crash here...
+# File is automatically closed
+```
+
+**Your task**: Write a document `context_manager_comparison.md` that:
+1. Explains what happens if code crashes in Scenario A (between read and close)
+2. Explains what happens if code crashes in Scenario B (inside the with block)
+3. Lists 3 reasons why `with` is safer
+4. Predicts what error message you'd see if you try to read a file that doesn't exist
+
+**Deliverable**: A markdown file comparing the two approaches with specific predictions about resource leaks and error handling.
 
 ---
 
-### Prompt 2: Apply
+### Part 2: AI Explains Resource Management (Discovery)
 
-Ask your AI: "Write a program that reads a file containing CSV data (each line has name,age,city), parses it, and writes a formatted report to a new file."
+**Share your predictions with AI:**
 
-**Expected Outcome**: You'll see file reading, string parsing, and writing combined in a practical workflow.
+> "Here's my analysis of context managers [paste your comparison]. Verify my predictions about what happens when code crashes. Explain the term 'resource leak.' Why is it dangerous to open files without automatically closing them? What happens at the operating system level?"
 
----
-
-### Prompt 3: Analyze
-
-Ask your AI: "Compare reading a file with `read()` vs `readlines()`. When would you use each? What are the memory implications for large files?"
-
-**Expected Outcome**: You'll understand performance tradeoffs and method selection criteria based on file size and use case.
+**Your evaluation**:
+- Did the AI confirm your predictions about crashes?
+- Did it explain resource leaks in a way you understand?
+- Can you now explain to someone else why context managers are essential?
 
 ---
 
-### Prompt 4: Synthesize/Create
+### Part 3: Student Tests Edge Cases (Debugging)
 
-Ask your AI: "Design a file backup program that reads the original file, makes modifications (e.g., removing blank lines), and writes to a backup file. Include error handling for missing files and write failures. What's the overall structure?"
+**Challenge the AI with real problems:**
 
-**Expected Outcome**: You'll see how file I/O integrates with data processing and error management at application level, preparing you for Lesson 5 capstone.
+> "Show me what happens when:
+> 1. I open a file that doesn't exist in read mode
+> 2. I try to write to a file in a directory that doesn't exist
+> 3. I use write mode on an existing file (what data is lost?)
+> 4. I open the same file twice simultaneously
+>
+> For each case, show the error message AND how to handle it gracefully with try/except."
+
+**Your debugging**: Create a test file `file_operations_test.py` that demonstrates each scenario and handles the errors properly.
+
+---
+
+### Part 4: Build a File Backup Utility (Convergence)
+
+**Build a complete utility:**
+
+> "Help me write a file backup program that:
+> 1. Takes a filename as input from the user
+> 2. Reads the original file using a context manager
+> 3. Removes blank lines and trailing whitespace
+> 4. Writes the cleaned content to a backup file named 'original_filename.backup'
+> 5. Uses try/except to handle these errors:
+>    - FileNotFoundError (input file doesn't exist)
+>    - PermissionError (can't write to directory)
+>    - IOError (general disk errors)
+> 6. Shows helpful messages for each error type
+> 7. Displays the number of lines removed
+>
+> The program should be production-ready with clear error handling throughout."
+
+**Refinement**:
+- Add a feature to compare file sizes (original vs backup) and show bytes saved
+- Implement a log file that records each backup operation with timestamp
+- Add a restore function that can revert to the original file
+
+**Time**: 30-40 min
+**Outcome**: Complete file backup utility with robust error handling and resource management
+
+---

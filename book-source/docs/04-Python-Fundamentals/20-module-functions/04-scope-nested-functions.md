@@ -345,86 +345,138 @@ When you see the `global` keyword in code, pause and think: **"Is this really ne
 
 ---
 
-## Try With AI
+## Try With AI: Scope Debugging Workshop
 
-Use your AI companion (Claude Code or Gemini CLI). You'll explore scope behavior by running code and predicting results.
+### Part 1: Predict Scope Behavior (Your Turn First)
 
-### Prompt 1: Predict Scope Behavior (Analyze Level)
+**Before asking AI**, analyze this nested code and predict the output:
 
+```python
+# Scope prediction challenge
+counter = 0  # Global
+
+def process_batch():
+    counter = 10  # Local or global?
+
+    def process_item():
+        counter = 20  # Which scope?
+        print(f"Item: {counter}")
+
+    process_item()
+    print(f"Batch: {counter}")
+
+process_batch()
+print(f"Global: {counter}")
 ```
-Run this code and predict what will print. Then actually run it.
-Was your prediction correct? If not, what did you learn?
 
-x: int = 10
+**Your task**: Write predictions
+- What prints for "Item:", "Batch:", "Global:"?
+- Draw a scope diagram showing which `counter` variable exists where
+- Identify: Which `counter` is shadowing which?
+- Predict: How would you modify the global counter from inside `process_item()`?
 
-def modify_x():
-    x = 20  # Local variable, shadows global
-    print(f"Inside: {x}")
-
-modify_x()
-print(f"Outside: {x}")
-```
-
-**Expected outcome**: You predict Inside: 20, Outside: 10. You understand variable shadowing.
+Write your predictions with reasoning before Part 2.
 
 ---
 
-### Prompt 2: Analyze Scope Design (Analyze/Evaluate Level)
+### Part 2: AI Explains LEGB Rule (Discovery)
 
-```
-Here's code that uses global to track state:
+Share your predictions with AI:
 
-count: int = 0
-def increment():
-    global count
-    count += 1
+> "Here are my scope predictions for the nested code: [paste your predictions]
+>
+> Teach me the LEGB rule (Local, Enclosing, Global, Built-in):
+> 1. Run my code and show the actual output - were my predictions correct?
+> 2. Draw a scope chain diagram showing the LEGB lookup order for each `print()` statement
+> 3. Explain variable shadowing: why does `counter = 10` create a new local variable instead of modifying global?
+> 4. Show me three versions: one using `global`, one using `nonlocal`, one redesigned without either keyword"
 
-Ask your AI: "Is this good design? What are the risks?
-What would be a better approach?"
-
-Listen to the reasoning about state management and design patterns.
-```
-
-**Expected outcome**: You evaluate trade-offs and understand why global state can be problematic.
-
----
-
-### Prompt 3: Write Nested Function with Closure (Apply Level)
-
-```
-Write a function called `create_adder` that:
-1. Takes one number as input
-2. Returns a function
-3. The returned function takes another number and returns the sum
-
-Example:
-add_5 = create_adder(5)
-result = add_5(3)
-print(result)  # 8
-
-Include type hints and docstrings.
-Test your implementation with different values.
-```
-
-**Expected outcome**: You write closure correctly and demonstrate understanding of nested functions.
+**Your evaluation**:
+- Run each version AI creates - trace the variable values
+- Add `print(locals())` in each function - what do you see?
+- Which version is easiest to understand and debug?
 
 ---
 
-### Prompt 4: Connect Scope to Architecture (Analyze/Synthesize Level)
+### Part 3: Student Teaches AI (Closure Edge Cases)
 
-```
-Think about a project where you might need to maintain state across function calls
-(like a game with a score, a shopping cart with items, a settings object).
+Challenge AI with closure debugging:
 
-Sketch the design:
-- Where would state go (global, parameter, return value, closure)?
-- What are the pros and cons of each approach?
-- Which approach feels cleanest?
+> "I wrote this closure that's behaving strangely:
+> ```python
+> def create_multipliers():
+>     multipliers = []
+>     for i in range(3):
+>         multipliers.append(lambda x: x * i)
+>     return multipliers
+>
+> funcs = create_multipliers()
+> print(funcs[0](10))  # Expected: 0, Actual: ?
+> print(funcs[1](10))  # Expected: 10, Actual: ?
+> print(funcs[2](10))  # Expected: 20, Actual: ?
+> ```
+>
+> Debug this step-by-step:
+> 1. What's the ACTUAL output? Why doesn't it match expectations?
+> 2. Explain the closure capture problem: when does `i` get evaluated?
+> 3. Show me THREE ways to fix this: default argument, closure factory, list comprehension
+> 4. Which fix is most Pythonic and why?"
 
-Ask your AI: "Are there design patterns that reduce dependency on global state?
-Why do they matter?"
+**Your debugging**:
+- Create this bug yourself and run it - verify the broken behavior
+- Implement all three fixes AI suggests - do they all work?
+- Add print statements to trace when variables are captured vs evaluated
 
-This teaches you that scope is an architectural decision.
-```
+---
 
-**Expected outcome**: You see scope choices as design decisions with trade-offs. You understand that good design minimizes hidden dependencies.
+### Part 4: Build Scope Debugging Workflow (Convergence)
+
+Create a practical scope debugging toolkit:
+
+> "Build me a comprehensive scope debugging workflow:
+>
+> 1. **Scope Inspector**: Write a function `inspect_scope()` that:
+>    - Prints local variables using `locals()`
+>    - Prints global variables using `globals()`
+>    - Shows the difference between the two
+>    - Demonstrates calling it from nested functions
+>
+> 2. **Closure Debugger**: Create `debug_closure(func)` that:
+>    - Takes a closure function as input
+>    - Prints the closure's captured variables using `func.__closure__`
+>    - Shows the values stored in the closure
+>
+> 3. **Scope Test Suite**: Write test cases demonstrating:
+>    - Local variable shadowing global
+>    - Closure capturing outer scope
+>    - LEGB resolution order with all four scopes
+>    - Common scope bugs (accessing before assignment, closure loop problem)"
+
+**Refinement**:
+> "Apply this toolkit to a real debugging scenario:
+>
+> You have a game with score tracking that's buggy. The score resets unexpectedly. Here's simplified code:
+> ```python
+> score = 0
+>
+> def play_round():
+>     score = 100  # Bug: creates local instead of modifying global
+>     return score
+>
+> def get_score():
+>     return score
+>
+> play_round()
+> print(get_score())  # Prints 0, not 100!
+> ```
+>
+> Use your debugging tools to:
+> 1. Diagnose WHY the score isn't updating
+> 2. Show me the scope state before/after `play_round()`
+> 3. Provide THREE solutions: using `global`, using return values, using a class
+> 4. Explain which solution is best for production code and why"
+
+---
+
+**Time**: 30 minutes
+**Outcome**: You can predict scope behavior using LEGB rules, debug closure capture problems, identify shadowing bugs, and choose appropriate scope patterns (parameters/returns vs global/nonlocal) for production code.

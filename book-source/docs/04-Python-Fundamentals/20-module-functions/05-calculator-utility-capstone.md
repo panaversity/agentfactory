@@ -486,82 +486,194 @@ Your calculator imports operations like `import operations`. This works because 
 
 ---
 
-## Try With AI
+## Try With AI: Calculator Utility Capstone
 
-Use your AI companion (Claude Code or Gemini CLI). You'll build, test, and extend the calculator project.
+### Part 1: Design Complete Module Architecture (Your Turn First)
 
-### Prompt 1: Build and Run the Project (Apply Level)
+**Before asking AI**, design a production-ready calculator from scratch:
 
 ```
-Create the calculator project with these files:
-1. operations.py (with add, subtract, multiply, divide, power, square_root)
-2. utils.py (with display_menu, get_operation_choice, get_numbers, display_result)
-3. main.py (with run_calculator that imports and uses the modules)
-
-Run the calculator. Try all operations:
-- Add two numbers
-- Subtract
-- Multiply
-- Divide by zero (should handle gracefully)
-- Square root of negative (should handle gracefully)
-
-Did the program handle all cases correctly?
+calculator/
+├── operations.py      # Your design?
+├── utils.py          # Your design?
+├── main.py           # Your design?
+└── test_calculator.py # Your design?
 ```
 
-**Expected outcome**: You build a working project and understand how modules fit together.
+**Your architecture tasks**:
+- **For operations.py**: List 6+ mathematical operations you'll implement
+  - Which functions can fail? (Design `Type | None` returns)
+  - Which operations need input validation?
+  - How will you handle edge cases (sqrt negative, divide by zero)?
+
+- **For utils.py**: List all I/O functions needed
+  - Menu display, input capture, error handling, result formatting
+  - Design function signatures with type hints
+
+- **For main.py**: Sketch the program flow
+  - How will you map user choices to operations?
+  - Where does validation happen?
+  - How do you gracefully exit?
+
+- **Design decision**: If you add calculation history, which module owns it?
+
+Document your complete design before Part 2.
 
 ---
 
-### Prompt 2: Review Module Design (Analyze Level)
+### Part 2: AI Implements Core Operations (Discovery)
 
-```
-Look at the three files (operations.py, utils.py, main.py).
+Share your architecture with AI:
 
-For each file, answer:
-1. What does this file do?
-2. Why is it separate from the others?
-3. What would break if you moved its functions to main.py?
-4. Could you reuse this file in a different project?
+> "Here's my calculator architecture design: [paste your complete design]
+>
+> Implement the foundation:
+>
+> 1. **operations.py**: Create all mathematical functions following this pattern:
+>    - Type hints: `def divide(a: float, b: float) -> float | None:`
+>    - Docstrings with Parameters and Returns sections
+>    - Edge case handling (return None for invalid operations)
+>    - Pure functions (no printing, no side effects)
+>
+> 2. **test_calculator.py**: Write comprehensive tests:
+>    - At least 3 test cases per operation
+>    - Test normal cases, edge cases, and error cases
+>    - Use assert statements to validate behavior
+>    - Run all tests and show me the output
+>
+> 3. **Code review**: Compare your design to the implementation
+>    - Did AI follow your type hints?
+>    - Are edge cases handled correctly?
+>    - What would you improve?"
 
-This teaches you separation of concerns and why modular design matters.
-```
-
-**Expected outcome**: You articulate the value of modular organization and understand design principles.
-
----
-
-### Prompt 3: Extend the Project (Create Level)
-
-```
-Add two new operations to your calculator:
-1. Modulo (remainder): a % b
-2. Absolute value: abs(a)
-
-For each:
-- Add the function to operations.py with type hints and docstring
-- Add a test to test_calculator.py
-- Update main.py to call the new operation
-
-Run the calculator and test the new operations.
-Run the test file to verify all tests pass.
-```
-
-**Expected outcome**: You extend the project successfully, showing you understand the module structure.
+**Your evaluation**:
+- Run the tests yourself - add one test that FAILS on purpose to see error messages
+- Call operations directly in Python REPL - verify behavior matches expectations
+- Review docstrings - are they clear enough for another developer?
 
 ---
 
-### Prompt 4: Synthesize Professional Patterns (Synthesize Level)
+### Part 3: Student Teaches AI (Challenge Module Responsibility)
 
-```
-Imagine sharing your calculator project with a team.
-Ask your AI: "What would a professional Python project add?
-Examples: documentation files, type checking (mypy), more tests, configuration files,
-error logging, version numbers, requirements.txt, etc."
+Challenge AI with separation of concerns:
 
-Pick one suggestion and research it.
-Example: "How do I create a requirements.txt for my project?"
+> "I want to extend the calculator with these features. For EACH feature, analyze which module should own it:
+>
+> **Feature A: Calculation History**
+> - Store last 10 calculations as list of tuples: (operation, num1, num2, result)
+> - Show history on demand
+>
+> **Feature B: Result Formatting**
+> - Format results as currency, percentages, scientific notation
+> - User chooses format style
+>
+> **Feature C: Operation Validation**
+> - Check if inputs are valid before calling operations
+> - Prevent invalid type combinations
+>
+> For EACH feature, evaluate:
+> 1. Should it go in operations.py, utils.py, or a NEW module? Why?
+> 2. What would break if you put it in the WRONG module?
+> 3. How does this choice affect testability and reusability?
+> 4. Implement your recommended architecture for ONE feature"
 
-This bridges to Chapter 30 (Specification-Driven Development) and shows how projects evolve.
-```
+**Your debugging**:
+- Deliberately implement a feature in the wrong module (e.g., put UI code in operations.py)
+- Run the calculator - it might work, but what's wrong architecturally?
+- Refactor to the correct module - measure the difference in code clarity
 
-**Expected outcome**: You see the project as a starting point for professional development. You understand that good code organization scales to larger projects.
+---
+
+### Part 4: Build Complete Working Calculator (Convergence)
+
+Integrate everything into a working application:
+
+> "Complete the full calculator implementation:
+>
+> 1. **utils.py**: Implement all I/O functions
+>    ```python
+>    def display_menu() -> None: ...
+>    def get_operation_choice() -> str: ...
+>    def get_numbers() -> tuple[float, float] | None: ...
+>    def get_single_number() -> float | None: ...
+>    def display_result(operation: str, result: float | None) -> None: ...
+>    ```
+>    - Each function handles its own validation
+>    - Return None for invalid input
+>    - Clear error messages for users
+>
+> 2. **main.py**: Orchestrate the calculator
+>    - Import using `import operations` and `import utils`
+>    - Menu loop with user choice handling (1-7)
+>    - Call the correct operation based on choice
+>    - Handle None returns from both utils and operations
+>    - Use `if __name__ == '__main__':` pattern
+>
+> 3. **Extensions**: Add these operations
+>    - Modulo (remainder): 17 % 5 = 2
+>    - Absolute value: |-15| = 15
+>    - Update menu, add to operations.py, add tests
+>
+> 4. **Full integration test**: Run the calculator
+>    - Test every menu option including new operations
+>    - Trigger error cases (invalid input, divide by zero)
+>    - Verify graceful exit"
+
+**Refinement**:
+> "Refactor to a plugin architecture:
+> ```python
+> OPERATIONS = {
+>     '1': ('Addition', operations.add, 2),
+>     '2': ('Subtraction', operations.subtract, 2),
+>     # ... map choice to (name, function, num_inputs)
+> }
+> ```
+> - Replace if/elif chain with dictionary lookup
+> - Show how this makes adding operations trivial (just add dict entry)
+> - Demonstrate extensibility: add a new operation without modifying main loop logic"
+
+---
+
+### Part 5: Reflect and Integrate Chapter 20 Concepts (Capstone Reflection)
+
+Synthesize everything you learned across all 5 lessons:
+
+> "Review your complete calculator project and reflect on Chapter 20 concepts:
+>
+> **Module Organization (Lesson 1)**:
+> - How did you decide what goes in each module?
+> - What import patterns did you use? Why those specific patterns?
+> - What would break if you used `from operations import *`?
+>
+> **Function Design (Lesson 2)**:
+> - Review your function names - do they communicate intent clearly?
+> - Are your docstrings useful? Would another developer understand them?
+> - Which functions follow single responsibility principle? Which don't?
+>
+> **Parameters & Returns (Lesson 3)**:
+> - Which functions use optional parameters? Are the defaults sensible?
+> - Where did you use `Type | None` returns? Why there specifically?
+> - Show me a function call using keyword arguments for clarity
+>
+> **Scope & Closures (Lesson 4)**:
+> - Did you use any global variables? Could you eliminate them?
+> - Are all variables in appropriate scopes (local vs module-level)?
+> - Where could closures improve your design? (e.g., creating operation factories)
+>
+> **Integration Analysis**:
+> - What was the HARDEST design decision? Why?
+> - If you started over, what would you do differently?
+> - How would you extend this to support:
+>   - Persistent history (save to file)
+>   - Custom user-defined operations
+>   - Unit conversion (temperature, distance, etc.)
+>
+> Create a '**lessons_learned.md**' documenting:
+> - Top 3 design principles you applied
+> - Top 3 mistakes you made and how you fixed them
+> - Top 3 concepts that 'clicked' during this capstone"
+
+---
+
+**Time**: 45-60 minutes
+**Outcome**: You've built a production-quality multi-module calculator demonstrating module organization, function design, parameter patterns, scope management, and separation of concerns. You can articulate design decisions, evaluate trade-offs, and apply all Chapter 20 concepts in an integrated system.

@@ -47,12 +47,12 @@ differentiation:
   remedial_for_struggling: "Start with += operator only; practice equivalence (x += 3 means x = x + 3); build confidence before introducing other operators"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/part-4-chapter-15/spec.md"
 created: "2025-11-08"
 last_modified: "2025-11-08"
 git_author: "Claude Code"
-workflow: "lesson-writer subagent"
+workflow: "content-implementer subagent"
 version: "1.0.0"
 ---
 
@@ -257,74 +257,82 @@ Type behavior with assignment operators follows the same rules as regular operat
 
 ---
 
-## Try With AI
+## Try With AI: Score Tracker Building Challenge
 
-Now it's your turn to explore assignment operators with an AI co-teacher. These prompts build from understanding to application to edge cases to synthesis.
+You've learned 5 assignment operators (`+=`, `-=`, `*=`, `/=`, `//=`). Now build a game score tracker to understand how variables update—with AI as your iteration partner.
 
-**Tool Choice**: Use Claude Code, Gemini CLI, or ChatGPT web—whatever you have access to.
+### Part 1: Build Score Tracker (Your Turn First)
 
-### Prompt 1: Concept Exploration (Understand)
+**Before asking AI**, write a game score tracking system:
 
-Copy and ask your AI:
+**Scenario**: Track a player's score through multiple game events:
 
-> "I can already write `x = x + 5` to add 5 to a variable. So why do I need `x += 5`?
->
-> - What's the point of x += 5?
-> - Is it faster? Clearer? Both?
-> - When should I use += vs. = ? When should I use the expanded form?
-> - Show me examples of when += makes code cleaner."
+```python
+# Starting score
+score: int = 0
 
-**Expected Outcome**: You'll learn that `+=` is shorthand for readability (not just speed); understand it expresses "increment by" more clearly than "reassign to sum"; appreciate efficiency in code writing.
+# Events (predict final score after each):
+# 1. Player collects 10 coins: score += 10
+# 2. Player loses 3 coins: score -= 3
+# 3. Score doubles (power-up): score *= 2
+# 4. Score splits between teammates: score /= 2
+# 5. Round down to whole number: score //= 1
+```
 
----
+**Your task**:
+1. Write the code with all 5 operations
+2. Predict the score after EACH step
+3. Use `type()` after division to check: is score still int or now float?
 
-### Prompt 2: Application (Apply)
-
-Copy and ask your AI:
-
-> "Write Python code that simulates a bank account with these transactions:
-> - Start with balance = 100 (dollars)
-> - Add deposit: balance += 50
-> - Subtract withdrawal: balance -= 25
-> - Apply interest (multiply by 1.05): balance *= 1.05
-> - Divide equally among 2 people: balance /= 2
->
-> Show the balance after each step. Use type hints and verify the type at the end. What type is the final balance?"
-
-**Expected Outcome**: You'll apply all five operators in realistic scenario; trace through type behavior (final result is float); see practical value of shorthand operators; understand how types change during operations.
+Write this yourself before asking AI.
 
 ---
 
-### Prompt 3: Edge Case Discovery (Explore)
+### Part 2: AI Validates Your Tracker
 
-Copy and ask your AI:
+Share your code with AI:
 
-> "Try these and explain what happens:
-> - x: int = 5; x /= 2 (What type is x now? Why?)
-> - y: str = 'hello'; y += ' world' (Can you add strings?)
-> - z: int = 10; z += 2.5 (What type is z now? Why?)
-> - a: float = 10.0; a //= 3 (What's the result and type?)
->
-> Which ones surprise you? Why does the type change?"
+> "Here's my score tracker: [paste code]. Verify: (1) Did I use all 5 assignment operators correctly? (2) What's the final score? (3) What type is score after each operation? Show me with type() checks. (4) Why does /= change the type to float?"
 
-**Expected Outcome**: You'll discover that `/=` always produces float; learn that `+=` works with strings (concatenation); find that mixing types changes variable type; understand operator behavior is type-dependent.
+**Your task**: Compare AI's results to your predictions.
+- Did you predict types correctly?
+- Do you understand WHY `/=` produces float but `//=` keeps int?
+- Can you explain each operator's effect on the score?
 
 ---
 
-### Prompt 4: Synthesis & Validation (Understand + Analyze)
+### Part 3: Student Teaches AI (String Concatenation)
 
-Copy and ask your AI:
+AI validated numeric operations. But does it know assignment operators work with strings too?
 
-> "I notice += will be useful for counting in loops (Chapter 17).
-> - Why does `count += 1` make sense in a loop?
-> - What about `total += item`? How is that different?
-> - How does this pattern help avoid bugs?
-> - Why learn += in Chapter 15 instead of waiting for Chapter 17?
->
-> Show me a preview of what a counting loop looks like (even if you haven't learned loops yet)."
+Challenge AI:
 
-**Expected Outcome**: You'll understand that `+=` pattern prepares for loop structure (Chapter 17); see how variable updates accumulate; understand why this matters for practical programming; grasp chapter sequence (operators first, then loops that use them repeatedly).
+> "Can I use += with strings? Write code that builds a message character-by-character: Start with empty string, use += to add 'Hello', then ' ', then 'World', then '!'. Show each step. Why does += work for both numbers AND strings? What about *= with strings?"
+
+**Your task**: Evaluate AI's explanation.
+- Does it show that `+=` concatenates strings?
+- Does it explain that `*=` repeats strings? (`"Hi" *= 3` → `"HiHiHi"`)
+- Can you explain why `score -= "text"` would fail but `message += "text"` works?
+
+This teaches AI that operators are type-dependent—and reinforces your understanding.
 
 ---
 
-**Safety Note**: Assignment operators follow the same type rules as regular arithmetic operators. If you get an unexpected type, use `type()` to check and ask AI: "Why did the type change here?" This verification habit will serve you well in all your Python coding.
+### Part 4: Build Bank Account Simulator Together
+
+Now apply all operators to financial tracking:
+
+> "Build a bank account simulator with: (1) Starting balance $1000, (2) Deposit $200 (+=), (3) Withdrawal $150 (-=), (4) Monthly interest 2% (*= 1.02), (5) Split between 2 account holders (/=). Show balance after each transaction with type hints. Add checks: balance should never go below 0."
+
+**Your task**: Review AI's simulator.
+- Does it use assignment operators correctly?
+- Does it maintain type consistency (float for money)?
+- Can you add more transactions (tax deduction, fees)?
+
+Iterate:
+> "Add a counter that tracks number of transactions using `count += 1`. Explain why += is perfect for counting."
+
+---
+
+**Time**: 25-30 minutes total
+**Outcome**: You've built score tracking and financial simulators using all 5 assignment operators, discovered that operators work with different types (numbers, strings), and practiced type-aware variable updates.

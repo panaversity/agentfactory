@@ -287,88 +287,87 @@ print("=" * 50)
 
 ---
 
-## Try With AI
+## Try With AI: Multi-Operator Calculator Capstone
 
-Now it's your turn to explore keywords and integrate all your operator knowledge with an AI co-teacher.
+You've learned ALL 4 operator types across this chapter. Now integrate them into one comprehensive calculator—with AI as your integration coach.
 
-**Tool Choice**: Use Claude Code, Gemini CLI, or ChatGPT web—whatever you have access to.
+### Part 1: Design Integrated Calculator (Your Turn First)
 
-### Prompt 1: Concept Exploration (Understand)
+**Before asking AI**, design a calculator that uses ALL operator types:
 
-Copy and ask your AI:
+**Requirements**:
+1. **Arithmetic**: Perform `+`, `-`, `*`, `/`, `//`, `%`, `**`
+2. **Comparison**: Check if result `> 0`, `< 100`, `== expected_value`
+3. **Logical**: Validate both inputs are positive: `(num1 > 0) and (num2 > 0)`
+4. **Assignment**: Track total with `total += result`
+5. **Keywords**: Use `keyword.iskeyword()` to check if variable names are valid
 
-> "I just learned about Python keywords. I ran:
-> ```
-> import keyword
-> print(keyword.kwlist)
-> ```
->
-> - What are Python keywords and why does Python have them?
-> - Why can't I use 'if' or 'for' as variable names?
-> - Can I use 'For' or 'IF' (different capitalization)?
-> - Show me what error I get if I try to use 'def' as a variable name."
+**Your task**: Sketch the program structure. What variables do you need? What checks should you include? What would be good test cases?
 
-**Expected Outcome**: You'll understand keywords are reserved syntax elements; learn Python is case-sensitive (For is valid, for is not); see SyntaxError demonstration; grasp language design constraints.
+Write your design before coding.
 
 ---
 
-### Prompt 2: Application (Apply)
+### Part 2: Build with AI (Collaborative Construction)
 
-Copy and ask your AI:
+Now build it with AI's help:
 
-> "Write a simple calculator that:
-> 1. Gets two numbers from the user
-> 2. Adds them (arithmetic operator)
-> 3. Checks if first > second (comparison operator)
-> 4. Combines conditions: (num1 > 0) and (num2 > 0) (logical operators)
-> 5. Updates a total using += (assignment operator)
-> 6. Uses type() to verify result types
->
-> You can skip function definitions - just write straightforward code. Show me the complete calculator."
+> "Help me build a comprehensive Python calculator integrating all 4 operator types. Requirements: (1) Two numbers as input, (2) Perform all 7 arithmetic operations, (3) Use comparisons to validate results are reasonable, (4) Use logical operators to check both inputs are positive, (5) Use assignment operators to track running total, (6) Check if variable names avoid Python keywords. Show complete code with type hints and clear output."
 
-**Expected Outcome**: You'll implement capstone project (or simplified version); apply all operator types; practice type validation; create working, testable code.
+**Your task**: Review AI's implementation.
+- Does it demonstrate ALL 4 operator types clearly?
+- Does it use type hints throughout?
+- Is output formatted clearly (f-strings)?
+- Can you explain what EVERY line does?
 
 ---
 
-### Prompt 3: Edge Case Discovery (Explore)
+### Part 3: Student Teaches AI (Edge Case Hardening)
 
-Copy and ask your AI:
+AI built the calculator. But is it robust against bad input?
 
-> "Test your calculator with different inputs:
-> - Two positive numbers (10, 5)
-> - Two negative numbers (-10, -5)
-> - Zero and a positive (0, 5)
-> - Very large numbers (1000000, 2000000)
->
-> Which inputs work well? Are there edge cases that break the calculator? How would you fix them? Show me the problematic outputs."
+Challenge AI with edge cases:
 
-**Expected Outcome**: You'll test edge cases (negative numbers, zero, large numbers); discover any type safety issues; learn defensive programming; ask AI about error handling for robustness.
+> "What happens if: (1) num2 is 0 (division by zero), (2) Inputs are negative (fails positive check), (3) Someone tries to use 'class' or 'def' as variable name? Add validation that: prevents division by zero, allows negative numbers but warns user, shows clear error for keyword variable names. Make it crash-proof."
 
----
-
-### Prompt 4: Synthesis & Validation (Understand + Analyze)
-
-Copy and ask your AI:
-
-> "I've now learned 4 different operator types:
-> - Arithmetic (Lesson 1): do math
-> - Comparison (Lesson 2): ask True/False
-> - Logical (Lesson 3): combine conditions
-> - Assignment (Lesson 4): update variables
->
-> How do these fit together in a complete program?
-> - In the calculator, where does each operator type appear?
-> - Why do I need all 4 types?
-> - How does this prepare me for Chapter 17 (Control Flow with if/while/for)?
-> - What would Chapter 17 look like using these operators?
->
-> Draw a connection map showing how the 4 operator types work together."
-
-**Expected Outcome**: You'll synthesize understanding: arithmetic operators perform calculations; assignment operators store results; comparison operators enable validation logic; logical operators would combine conditions in Chapter 17; see how all 4 types work together in real code; understand chapter progression toward control flow.
+**Your task**: Evaluate AI's hardened version.
+- Does it check `num2 != 0` before dividing?
+- Does it handle negative numbers gracefully?
+- Does it use `keyword.iskeyword()` to prevent reserved words?
+- Can you explain WHY each validation prevents a crash?
 
 ---
 
-**Safety Note**: As you test the calculator, you might encounter ZeroDivisionError or TypeError. These are learning opportunities, not failures. Ask your AI: "What does this error mean and how do I prevent it?" Error handling will be taught in Chapter 21, but understanding errors now prepares you for that chapter.
+### Part 4: Test and Iterate (Convergence)
+
+Now thoroughly test the calculator:
+
+> "Let's test with: (1) Normal case (10, 3), (2) Zero case (10, 0), (3) Negative case (-5, -3), (4) Large numbers (1000000, 500000). For each test, show: all arithmetic results, comparison checks, logical validation, updated total. Identify any bugs or unexpected behavior."
+
+**Your task**: Review test results.
+- Which tests passed?
+- Which revealed bugs?
+- How would you fix the bugs?
+
+Iterate with AI:
+> "The division by zero check doesn't work correctly. Fix it using: `if num2 != 0:` before division operations."
+
+Keep iterating until ALL tests pass.
+
+---
+
+### Part 5: Extend with Keywords Knowledge
+
+Final enhancement—integrate keyword checking:
+
+> "Add a feature: user can input a proposed variable name, and the program checks: (1) Is it a Python keyword? (2) Does it start with a number? (3) Does it contain spaces? Use keyword.iskeyword() and string methods. For each check, explain why it would fail."
+
+**Outcome**: If you complete this with working validation, you've mastered Chapter 15 completely—all operators plus keyword awareness at production level.
+
+---
+
+**Time**: 35-45 minutes total
+**Outcome**: You've built a comprehensive calculator integrating arithmetic, comparison, logical, and assignment operators; hardened it against edge cases; tested thoroughly; and added keyword validation. This capstone demonstrates mastery of all Chapter 15 concepts.
 
 ---
 

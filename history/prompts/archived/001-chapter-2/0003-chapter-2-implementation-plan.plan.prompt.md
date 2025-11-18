@@ -71,7 +71,7 @@ Created comprehensive lesson-by-lesson implementation plan for Chapter 2 with **
 - ✅ Impact: Comprehensive 4-lesson plan ready for task generation and lesson writing; clear roadmap from specification to implementation with constitution alignment validated
 - 🧪 Tests: 10 success criteria defined with validation methods; Quick Checks and assessments integrated into each lesson
 - 📁 Files: Created specs/001-chapter-2/plan.md (approximately 15,000 words of detailed planning guidance)
-- 🔁 Next prompts: (1) /sp.tasks to generate implementation checklist, (2) Invoke lesson-writer subagent with plan, (3) Invoke technical-reviewer after completion
+- 🔁 Next prompts: (1) /sp.tasks to generate implementation checklist, (2) Invoke content-implementer subagent with plan, (3) Invoke validation-auditor after completion
 - 🧠 Reflection: Plan successfully adapts software implementation template to educational content planning; lesson structure balances depth (9 revolutions + 4 tools) with accessibility (simple English, concise, engaging per user guidance); domain skills application matrix ensures all 8 skills are systematically applied
 
 ## Evaluation notes (flywheel)

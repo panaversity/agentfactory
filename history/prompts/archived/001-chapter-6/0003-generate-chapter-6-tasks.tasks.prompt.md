@@ -95,7 +95,7 @@ This is a **book chapter** (educational content), not software development. Task
 
 ## Outcome
 
-- ✅ Impact: Complete, formatted task checklist ready for lesson-writer implementation; 84 discrete tasks with clear dependencies and parallel work identification
+- ✅ Impact: Complete, formatted task checklist ready for content-implementer implementation; 84 discrete tasks with clear dependencies and parallel work identification
 - 🧪 Tests: Format validation passed (all T001-T084 format correct), User story coverage validated (all US1-US7 mapped), Parallel work identified (45+ [P] markers)
 - 📁 Files: Updated specs/001-chapter-6/tasks.md (367 lines, 84 tasks across 11 phases)
 - 🔁 Next prompts: Begin implementation with /sp.implement or manually work through tasks starting with Phase 1 (lesson outlines)

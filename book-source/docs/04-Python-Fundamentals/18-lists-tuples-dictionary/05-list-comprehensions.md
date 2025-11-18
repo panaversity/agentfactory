@@ -64,7 +64,7 @@ differentiation:
   remedial_for_struggling: "Struggling students practice step-by-step loop-to-comprehension transformation with explicit syntax breakdown; use simplified examples (doubling numbers, filtering even numbers) before moving to string filtering"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/001-part-4-chapter-18/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -147,7 +147,7 @@ Execution:
 
 Notice: the expression runs for each item in the iterable, and the result of each expression becomes an element in the new list.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize the syntax—you understand the intent: "I want to transform each item from a source list." The syntax is just Python's way of expressing that idea concisely. When syntax feels confusing, ask AI: "Break down this comprehension step-by-step."
 
@@ -352,50 +352,114 @@ The traditional loop is much clearer. Use it.
 
 ---
 
-## Try With AI
+## Try With AI: Comprehension Mastery Challenge
 
-Use **Claude Code** (or your preferred AI companion) to reinforce comprehension mastery. Work through each prompt sequentially.
+You've learned list comprehension syntax `[expression for item in iterable if condition]`. Now master when to use comprehensions vs. loops by building data transformations—with AI as your readability judge.
 
-### Prompt 1 (Remember): Syntax Recall
-> "Write the basic syntax for a list comprehension. What three parts must every comprehension have? Show examples."
+### Part 1: Convert Loop to Comprehension (Your Turn First)
 
-**Expected Outcome**: You recall the three-part structure (`[expression for item in iterable]`) and understand each part's role. AI might mention optional `if` conditions as a fourth element.
+**Before asking AI**, convert these for loops to list comprehensions:
+
+**Challenge 1**: Square even numbers
+```python
+# Loop version
+squares: list[int] = []
+for n in range(1, 11):
+    if n % 2 == 0:
+        squares.append(n ** 2)
+
+# Your comprehension version:
+squares: list[int] = ???
+```
+
+**Challenge 2**: Extract first letters
+```python
+names: list[str] = ["Alice", "Bob", "Charlie"]
+# Your comprehension: first letter of each name
+initials: list[str] = ???
+```
+
+**Your task**:
+1. Write both comprehensions
+2. Predict the output
+3. Decide: Is comprehension MORE readable than the loop?
 
 ---
 
-### Prompt 2 (Understand): Tracing Execution
-> "Trace through this comprehension step-by-step: `[x * 3 for x in [1, 2, 3, 4] if x > 2]`. Show which numbers are included and what the final list is."
+### Part 2: AI Explains Comprehension Patterns (Discovery)
 
-**Expected Outcome**: You understand that `if` filtering happens first, then the expression is applied. You can trace execution mentally and predict the result without running code.
+Share your comprehensions with AI:
+
+> "Here are my comprehensions: [paste code]. For each:
+> 1. Is the syntax correct?
+> 2. Trace execution step-by-step (show intermediate values)
+> 3. Which pattern does it use: filter-only, transform-only, or filter+transform?
+> 4. Would YOU use a comprehension here or a loop? Why?"
+
+**Your task**: Evaluate AI's pattern analysis.
+- Does it identify filter pattern (`if` condition)?
+- Does it identify transform pattern (expression changes value)?
+- Does it explain that simple comprehensions are more readable?
+- Can you articulate the rule: "1-line comprehension = good, complex = use loop"?
 
 ---
 
-### Prompt 3 (Apply): Building Your Own
-> "I have a list of prices: `[10.50, 25.00, 5.99, 100.00, 15.00]`. Write a comprehension that keeps only prices less than $50 and adds a 10% tax (multiply by 1.10). What's the final list?"
+### Part 3: Student Teaches AI (When NOT to Use Comprehensions)
 
-**Expected Outcome**: You write a working comprehension combining filtering and transformation, correctly apply the type hints (`list[float]`), and verify the output makes sense.
+AI explained when comprehensions work. But does it know their LIMITS?
 
----
+Challenge AI with unmaintainable code:
 
-### Prompt 4 (Analyze): Readability Judgment
-> "Compare these two approaches to the same problem. Which is more readable for a team code review? Why? When would you choose the comprehension vs the loop?
->
-> **Option A** (Comprehension):
+> "I wrote this 'clever' comprehension:
 > ```python
-> result: list[int] = [n**2 for n in range(1, 11) if n % 2 == 0]
+> result = [[x*y for x in range(1, 6) if x % 2 == 0] for y in range(1, 4) if y != 2]
 > ```
 >
-> **Option B** (Loop):
-> ```python
-> result: list[int] = []
-> for n in range(1, 11):
->     if n % 2 == 0:
->         result.append(n ** 2)
-> ```"
+> Problems:
+> 1. What does this even do? (Trace it)
+> 2. Why is this TERRIBLE code for a team project?
+> 3. Rewrite it using nested loops with clear variable names
+> 4. Give me a RULE: When should I NEVER use a comprehension?
+>
+> Show me the refactored version and explain why it's better."
 
-**Expected Outcome**: You evaluate both styles objectively, recognizing that simple comprehensions are readable while complex ones aren't. You understand the tradeoff between conciseness and clarity, and you can make context-aware decisions about which to use.
+**Your task**: Understand readability limits.
+- Does AI explain this is a nested comprehension (hard to read)?
+- Does it show the loop version is clearer with comments?
+- Does it give a rule like "If you can't explain it in one sentence, use a loop"?
+- Can you now judge when a comprehension is too clever?
 
 ---
 
-**Safety Note**: List comprehensions are safe Python constructs. Always verify the output matches your intent—use `print()` to inspect results, and ask AI to explain unexpected behavior. When filtering or transforming data, check a few examples manually before deploying comprehensions in real applications.
+### Part 4: Build Data Pipeline Together (Convergence)
+
+Now apply comprehensions to real data processing:
+
+> "Build a grade processing pipeline:
+> 1. Start with test scores: `[95, 67, 88, 72, 55, 91, 100, 45, 80]`
+> 2. Filter: Keep only passing scores (>= 60)
+> 3. Transform: Convert to letter grades (90-100='A', 80-89='B', 70-79='C', 60-69='D')
+> 4. Count: How many of each grade?
+>
+> Requirements:
+> - Use comprehension for filter step
+> - Use loop for transform step (letter grades need multiple conditions)
+> - Show type hints
+> - Explain: Why comprehension for step 2 but loop for step 3?"
+
+**Your task**: Review the hybrid approach.
+- Does it use comprehension for simple filter (`score >= 60`)?
+- Does it use loop for complex transform (if-elif-else for grades)?
+- Does it explain that comprehensions work for SIMPLE expressions?
+- Can you explain when to mix comprehensions and loops?
+
+Iterate if needed:
+> "Can the letter grade conversion be done with a comprehension using conditional expressions (ternary)? Show me, then tell me if it's more or less readable."
+
+---
+
+**Time**: 25-30 minutes total
+**Outcome**: You've mastered list comprehension syntax, learned when they improve readability (simple filter/transform) vs. hurt it (nested/complex logic), and practiced hybrid approaches.
+
+**Safety Note**: Comprehensions execute eagerly (build full list in memory). For large datasets (millions of items), use generator expressions `(x for x in items)` instead—you'll learn these in Chapter 20.
 

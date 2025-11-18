@@ -2,10 +2,18 @@
 name: super-orchestra
 description: |
   Baby/Preview of Super Orchestra Session - 40x engineer workflow combining deep thinking, deep research (Context7 + WebFetch), deep planning, and agentic execution. This is the future of SDD+AIDD in the intelligence abundance era. Use when a task requires multi-modal intelligence gathering (docs research, source analysis, gap identification) + comprehensive planning + iterative refinement to reach publication-ready quality. This agent embodies the complete human-AI co-learning partnership where vertical intelligence (constitution + domain knowledge) meets horizontal exploration (Context7 library docs, official blogs, technical specifications).
+model: sonnet
+color: gold
 output_style: super-orchestra-session
 ---
 
 # Super Orchestra Agent: Baby/Preview Session
+
+**Constitution Alignment**: This agent aligns with Constitution v6.0.0 (Reasoning Mode), implementing:
+- **Section IIa**: AI-Native Teaching Framework (4-Layer Progression: Manual → AI Collaboration → Intelligence Design → Spec-Driven)
+- **Section IIb**: Three Roles Framework (AI as Teacher/Student/Co-Worker through comprehensive intelligence gathering)
+- **Vertical Intelligence Architecture**: Full 5-layer stack application (Constitution → Domain Skills → Context → Intelligence Objects → Specialized Agents)
+- **Reasoning Frameworks**: Persona + Questions + Principles pattern for meta-orchestration decisions
 
 **Philosophy**: "In the intelligence abundance era, value shifts from execution speed to THINKING DEPTH. A 40x engineer at Google/OpenAI doesn't type faster—they think deeper, research comprehensively, and plan systematically before execution."
 
@@ -18,7 +26,7 @@ A **Super Orchestra Session** is when:
 2. **Deep Research**: Context7 library docs (8000 tokens), WebFetch official sources (3+ URLs), cross-reference analysis
 3. **Deep Planning**: Spec → Plan → Tasks with iterative refinement based on research findings
 4. **Deep Search**: Pattern recognition across constitution, existing specs, domain skills
-5. **Agentic Execution**: Subagents (chapter-planner, lesson-writer, proof-validator) with full intelligence context
+5. **Agentic Execution**: Subagents (chapter-planner, content-implementer, factual-verifier) with full intelligence context
 6. **Human Value Addition**: Strategic decisions, gap identification, constitutional alignment verification
 7. **Business Value**: Publication-ready output that surpasses official documentation in comprehensiveness
 
@@ -65,9 +73,10 @@ A **Super Orchestra Session** is when:
 
 ### Deep Search Phase (Pattern Recognition)
 **Constitutional Principles Applied**:
-- Principle 13 (Graduated Teaching): Tier 1 (book) → Tier 2 (AI companion) → Tier 3 (orchestration)
-- Principle 18 (Three Roles): AI as Teacher/Student/Co-Worker
-- Cognitive Load (A2): Maximum 7 concepts per section maintained
+- Section IIa (Panaversity 4-Layer Method): Manual → AI-Assisted → Reusable Intelligence → Spec-Driven progression
+- Section IIb (Three Roles Framework): AI as Teacher/Student/Co-Worker demonstrated
+- Principle 2 (Graduated Teaching): Tier 1 (foundational) → Tier 2 (complex) → Tier 3 (scale)
+- Principle 5 (Progressive Complexity): Cognitive Load (A2 = max 7 concepts per section) maintained
 - AIDD Personalization: Plugins enable workflow customization for AI-Driven Development
 
 **Pattern Recognition**: Chapter 5 now mirrors Chapter 1's pedagogical structure (clean "Try With AI" format, realistic durations, anti-over-engineering).
@@ -150,10 +159,11 @@ A **Super Orchestra Session** is when:
    ```
 
 3. **Constitution Cross-Reference**:
-   - Read `.specify/memory/constitution.md`
-   - Apply Principle 13 (Graduated Teaching)
-   - Apply Principle 18 (Three Roles)
-   - Validate Cognitive Load (A2 = max 7 concepts)
+   - Read `.specify/memory/constitution.md` (v4.0.1)
+   - Apply Section IIa (Panaversity 4-Layer Teaching Method)
+   - Apply Section IIb (AI Three Roles Framework)
+   - Apply Principle 2 (Graduated Teaching Pattern)
+   - Validate Cognitive Load (Principle 5: CEFR-aligned limits)
 
 **Output**: Intelligence object with:
 - What's missing (Skills progressive disclosure, Plugin installation, MCP configuration, Relationship hierarchy)
@@ -202,7 +212,7 @@ A **Super Orchestra Session** is when:
 
 ### Phase 4: Implementation Intelligence (With Full Context)
 **AI Executes**:
-- Invoke lesson-writer with complete intelligence stack
+- Invoke content-implementer with complete intelligence stack
 - Apply all constitutional principles
 - Maintain cognitive load limits
 - Encode AI usage strategy
@@ -283,8 +293,8 @@ claude plugin list  # Verify installation
 
 **Tools Used**:
 - Context7: 8000 tokens from `/anthropics/claude-code` library
-- WebFetch: 3 official sources (engineering blog, docs, announcement)
-- Constitution: Cross-reference for Graduated Teaching, Three Roles, Cognitive Load
+- WebFetch: 3+ official sources (engineering blog, docs, announcement)
+- Constitution v4.0.1: Cross-reference for Section IIa (4-Layer Method), Section IIb (Three Roles), Principle 5 (Cognitive Load)
 
 **Result**: Comprehensive understanding that surpasses any single official source.
 

@@ -88,7 +88,7 @@ differentiation:
   remedial_for_struggling: "Start with basic Point dataclass (just x, y); practice understanding auto-generated __init__ before adding defaults or parameters"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.2"
+generated_by: "content-implementer v3.0.2"
 source_spec: "specs/001-part-4-chapter-26/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -530,34 +530,434 @@ except Exception as e:
 
 ---
 
-## Try With AI
+---
 
-Use your AI companion (Claude Code, Gemini CLI, or ChatGPT) to solidify your understanding of dataclasses.
+## Part 1: Discover What @dataclass Does by Writing It Manually First
 
-#### Prompt 1 (Recall): What does @dataclass auto-generate?
+**Your Role**: Active experimenter discovering boilerplate reduction
 
-> "I have a simple dataclass with name and age fields. Without me writing any methods, what does @dataclass automatically create? List the methods and explain what each one does."
+Before learning what `@dataclass` does, write the boilerplate it eliminates. This makes you appreciate the abstraction.
 
-**Expected Outcome**: AI lists `__init__()`, `__repr__()`, and `__eq__()` with clear explanations of what each does.
+### Discovery Exercise: Manual vs Decorated
 
-#### Prompt 2 (Understand): Why must dataclass fields have type hints?
+**Step 1: Write a class with boilerplate methods**
 
-> "Why does Python require type hints for dataclass fields? Show me an example of what happens if I try to create a dataclass without type hints on a field."
+```python
+# WITHOUT @dataclass - manual approach
+class PersonManual:
+    def __init__(self, name: str, email: str, age: int = 0):
+        self.name = name
+        self.email = email
+        self.age = age
 
-**Expected Outcome**: AI explains that type hints tell the decorator which variables are fields (vs class variables), and shows a concrete example of ambiguity without them.
+    def __repr__(self) -> str:
+        return f"PersonManual(name='{self.name}', email='{self.email}', age={self.age})"
 
-#### Prompt 3 (Apply): Create a dataclass for a User
+    def __eq__(self, other) -> bool:
+        if not isinstance(other, PersonManual):
+            return False
+        return self.name == other.name and self.email == other.email and self.age == other.age
 
-> "Create a dataclass for a User with these fields: name (required, str), email (required, str), age (optional int, default 0), bio (optional str, default 'No bio'). Show me the code and explain what parameters you used."
+person1 = PersonManual("Alice", "alice@example.com", 30)
+person2 = PersonManual("Alice", "alice@example.com", 30)
+print(repr(person1))
+print(person1 == person2)  # True - equality works
+```
 
-**Expected Outcome**: AI creates a working dataclass with required fields first, then optional fields with defaults. You verify by creating instances with different parameter counts.
+**Step 2: Now write the same with @dataclass**
 
-#### Prompt 4 (Analyze): When should I use frozen=True?
+```python
+from dataclasses import dataclass
 
-> "Show me three scenarios where frozen=True makes sense for a dataclass, and three where it would be wrong. Explain the tradeoff between flexibility and safety."
+@dataclass
+class PersonDataclass:
+    name: str
+    email: str
+    age: int = 0
 
-**Expected Outcome**: AI gives concrete examples (e.g., frozen=True for config objects, False for request DTOs) and explains immutability benefits (thread safety, hashability) vs costs (can't adapt data).
+person1 = PersonDataclass("Alice", "alice@example.com", 30)
+person2 = PersonDataclass("Alice", "alice@example.com", 30)
+print(repr(person1))
+print(person1 == person2)  # True - equality works automatically
+```
+
+**Observations you'll make**:
+- The dataclass version is 50% shorter
+- No manual `__init__()`, `__repr__()`, or `__eq__()`
+- Behavior is identical
+- Type hints are mandatory (they tell the decorator which fields to use)
+
+**Deliverable**: Document both approaches and note:
+- Lines saved with @dataclass
+- Methods generated automatically
+- Why type hints are required (to distinguish fields from class variables)
 
 ---
 
-**Next Lesson**: Advanced Dataclass Features – Fields, Metadata, Post-Init, and Validation, where you'll add validation logic, handle mutable defaults correctly, and serialize dataclasses to JSON.
+## Part 2: AI Explains @dataclass Parameters
+
+**Your Role**: Student learning from AI Teacher
+
+Now ask AI to teach you all the options and tradeoffs.
+
+### AI Teaching Prompt
+
+Ask your AI companion:
+
+> "I've seen @dataclass creates __init__, __repr__, and __eq__ automatically. But what are all the parameters I can pass to @dataclass?
+>
+> Explain:
+> 1. What does frozen=True do and when would I use it?
+> 2. What does order=True do?
+> 3. What does init=False do?
+> 4. Show me a dataclass with all these parameters and explain the behavior."
+
+### What You'll Learn from AI
+
+**Expected AI Response** (summary):
+- **frozen=True**: Makes instances immutable (can't change attributes after creation)
+- **order=True**: Generates `<`, `<=`, `>`, `>=` comparison methods
+- **init=False**: Don't auto-generate `__init__()` (you write it yourself)
+- **repr=False**: Don't auto-generate `__repr__()`
+- **eq=False**: Don't auto-generate `__eq__()`
+
+### Convergence Activity
+
+After AI explains, **test each parameter**:
+
+Ask AI: "Create three dataclasses:
+1. A Config class with frozen=True (immutable configuration)
+2. A Task class with order=True (so I can sort tasks by priority)
+3. A CustomUser class with init=False (you write custom __init__)
+
+For each, show me code demonstrating the behavior."
+
+**Deliverable**: Write a 3-paragraph summary:
+1. Explain what each major parameter does
+2. When you'd use frozen=True (immutability needs)
+3. When you'd use order=True (comparable objects)
+
+---
+
+## Part 3: Student Challenges AI with Default Values and Errors
+
+**Your Role**: Student teaching AI about subtle pitfalls
+
+Now test AI's understanding of dataclass edge cases.
+
+### Challenge Design Pattern
+
+Create scenarios where AI must:
+1. Predict errors with mutable default values
+2. Handle optional vs required fields correctly
+3. Understand field ordering requirements
+
+### Challenge 1: Mutable Default Values Problem
+
+**Your prompt to AI**:
+> "I wrote this dataclass:
+>
+> ```python
+> from dataclasses import dataclass
+>
+> @dataclass
+> class Container:
+>     items: list = []  # Bug: mutable default!
+>
+> c1 = Container()
+> c1.items.append('a')
+>
+> c2 = Container()
+> print(c2.items)  # What will this print?
+> ```
+>
+> Predict the output BEFORE running the code. Then explain why this is a bug and how to fix it."
+
+**Expected AI Response**:
+- Predicts c2.items will be ['a'] (shared mutable default)
+- This is a classic Python bug (mutable default arguments)
+- Solution: Use `field(default_factory=list)`
+
+**Your follow-up**: "Show me the corrected version using field() and default_factory. Explain why default_factory solves the problem."
+
+### Challenge 2: Field Ordering
+
+**Your prompt to AI**:
+> "Here's code with required and optional fields:
+>
+> ```python
+> @dataclass
+> class User:
+>     age: int = 0  # optional
+>     name: str     # required
+> ```
+>
+> Will this work? If not, what error will Python raise and why?"
+
+**Expected learning**: Required fields must come before optional fields. Python requires this to make `__init__()` signatures valid.
+
+### Challenge 3: Nested Dataclasses
+
+**Your prompt to AI**:
+> "I have nested dataclasses:
+>
+> ```python
+> @dataclass
+> class Address:
+>     street: str
+>     city: str
+>
+> @dataclass
+> class Person:
+>     name: str
+>     address: Address
+>
+> p = Person('Alice', Address('Main St', 'NYC'))
+> p2 = Person('Alice', Address('Main St', 'NYC'))
+> print(p == p2)
+> ```
+>
+> Will this print True? Why or why not? What does __eq__ do for nested dataclasses?"
+
+**Deliverable**: Document three edge cases you posed to AI and verify the predictions. Did AI understand mutable defaults, field ordering, and nesting correctly?
+
+---
+
+## Part 4: Build Dataclass Design Patterns Reference
+
+**Your Role**: Knowledge synthesizer creating practical patterns
+
+Create a reference guide for real-world dataclass usage.
+
+### Your Dataclass Patterns Reference
+
+Create a file called `dataclass_patterns_guide.md` with this structure:
+
+```markdown
+# Dataclass Design Patterns and Best Practices
+*Chapter 26, Lesson 3*
+
+## Why Dataclasses?
+
+**Without @dataclass**: Manual `__init__`, `__repr__`, `__eq__` boilerplate
+**With @dataclass**: One decorator, all methods auto-generated
+
+**Result**: 50% less code, clearer intent, fewer bugs
+
+## Pattern 1: Simple Data Container
+
+```python
+from dataclasses import dataclass
+
+@dataclass
+class Person:
+    name: str
+    email: str
+    age: int = 0  # optional field (has default)
+
+# Usage
+alice = Person("Alice", "alice@example.com", 30)
+bob = Person("Bob", "bob@example.com")  # age defaults to 0
+```
+
+**When to use**: API responses, DTOs (data transfer objects), config objects
+
+## Pattern 2: Immutable Configuration (frozen=True)
+
+```python
+@dataclass(frozen=True)
+class Config:
+    host: str
+    port: int
+    debug: bool = False
+
+config = Config("localhost", 8000)
+config.port = 9000  # Error: cannot assign to field 'port'
+```
+
+**When to use**: Configuration objects that shouldn't change after creation
+**Benefit**: Thread-safe, hashable (can use as dict key)
+
+## Pattern 3: Comparable Objects (order=True)
+
+```python
+@dataclass(order=True)
+class Task:
+    priority: int
+    description: str
+
+tasks = [
+    Task(3, "Low priority"),
+    Task(1, "High priority"),
+    Task(2, "Medium priority"),
+]
+
+tasks.sort()  # Works! Sorted by priority
+print(tasks[0])  # Task(priority=1, description='High priority')
+```
+
+**When to use**: Objects that need to be sortable/comparable
+
+## Pattern 4: Mutable Defaults (using field() and default_factory)
+
+```python
+from dataclasses import dataclass, field
+
+@dataclass
+class TaskList:
+    name: str
+    tasks: list = field(default_factory=list)  # Correct!
+
+tl1 = TaskList("My Tasks")
+tl1.tasks.append("Task A")
+
+tl2 = TaskList("Other Tasks")
+print(len(tl2.tasks))  # 0, not 1 (correct behavior)
+```
+
+**Key point**: Never use mutable defaults like `= []`. Always use `field(default_factory=list)`.
+
+## Pattern 5: Post-Init Validation
+
+```python
+@dataclass
+class User:
+    name: str
+    age: int
+
+    def __post_init__(self):
+        """Validate fields after __init__."""
+        if len(self.name) < 2:
+            raise ValueError("Name too short")
+        if self.age < 0:
+            raise ValueError("Age cannot be negative")
+
+u = User("A", 25)  # Error: Name too short
+```
+
+## Pattern 6: Custom Initialization (init=False)
+
+```python
+@dataclass(init=False)
+class Custom:
+    value: int
+
+    def __init__(self, x):
+        self.value = x * 2  # Custom logic
+
+c = Custom(5)
+print(c.value)  # 10
+```
+
+**When to use**: When auto-generated `__init__()` doesn't fit your needs
+
+---
+
+## Quick Reference: Common Parameters
+
+| Parameter | Default | Effect |
+|-----------|---------|--------|
+| `init` | True | Generate `__init__()`? |
+| `repr` | True | Generate `__repr__()`? |
+| `eq` | True | Generate `__eq__()`? |
+| `frozen` | False | Make immutable? |
+| `order` | False | Generate comparison methods? |
+
+---
+
+## Dataclass vs Alternatives
+
+### vs NamedTuple
+- **Dataclass**: Mutable by default, more options
+- **NamedTuple**: Immutable, lighter weight
+
+### vs TypedDict
+- **Dataclass**: Runtime behavior, methods
+- **TypedDict**: Type-checking only, no runtime
+
+### vs Pydantic
+- **Dataclass**: Standard library, lightweight
+- **Pydantic**: Powerful validation, data parsing
+
+---
+
+## Gotchas and Fixes
+
+### Gotcha 1: Mutable defaults
+```python
+# WRONG
+@dataclass
+class Foo:
+    items: list = []  # Shared across all instances!
+
+# CORRECT
+@dataclass
+class Foo:
+    items: list = field(default_factory=list)
+```
+
+### Gotcha 2: Field ordering
+```python
+# WRONG - required field after optional
+@dataclass
+class Bar:
+    age: int = 0
+    name: str  # Error!
+
+# CORRECT
+@dataclass
+class Bar:
+    name: str
+    age: int = 0
+```
+
+### Gotcha 3: Frozen but with mutable fields
+```python
+# DANGEROUS
+@dataclass(frozen=True)
+class Config:
+    settings: dict = field(default_factory=dict)
+
+c = Config()
+c.settings['key'] = 'value'  # Works! Frozen prevents reassignment, not mutation
+```
+```
+
+### Guide Requirements
+
+Your reference guide must include:
+1. **Why dataclasses** — Clear boilerplate reduction example
+2. **Six practical patterns** — From simple to advanced
+3. **Parameter quick reference** — init, repr, eq, frozen, order
+4. **Comparison to alternatives** — When to use dataclass vs NamedTuple/TypedDict/Pydantic
+5. **Common gotchas** — Mutable defaults, field ordering, frozen mutations
+
+### Validation with AI
+
+Once your guide is complete, validate it:
+
+> "Review my dataclass patterns guide. Are the patterns production-ready? What critical gotchas am I missing? Should I add anything about serialization (JSON, etc)?"
+
+**Deliverable**: Complete `dataclass_patterns_guide.md` as your go-to resource.
+
+---
+
+## Summary: Bidirectional Learning Pattern
+
+In this lesson, you experienced all three roles:
+
+**Part 1 (Student explores)**: You wrote manual boilerplate, then used @dataclass to eliminate it
+**Part 2 (AI teaches)**: AI explained all @dataclass parameters and options
+**Part 3 (Student teaches)**: You challenged AI with mutable defaults, field ordering, and nesting
+**Part 4 (Knowledge synthesis)**: You built a production patterns reference
+
+### What You've Built
+
+1. Before/after comparison showing boilerplate reduction
+2. Understanding of @dataclass parameters (in your own words)
+3. Edge case documentation from AI challenges
+4. `dataclass_patterns_guide.md` — Production-ready patterns
+
+### Next Steps
+
+Lesson 4 builds on this, showing advanced features like `field()` metadata, `__post_init__()` validation, and when to use Pydantic instead of dataclasses.

@@ -58,7 +58,7 @@ differentiation:
   remedial_for_struggling: "Focus on core concept: 'A project is a folder with configuration telling UV what your code needs.' Virtual environment = separate toolbox (analogy). Let AI handle all commands."
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/011-python-uv/plan.md"
 created: "2025-11-13"
 last_modified: "2025-11-13"
@@ -325,38 +325,104 @@ A: No. Add it to `.gitignore`. Your teammates install their own .venv/ by runnin
 - You express intent to AI; AI handles the commands
 - Specification (pyproject.toml) and installation (.venv/) are separate concepts
 
-## Try With AI
+## Try With AI: Project Structure Discovery Challenge
 
-Use your AI companion (ChatGPT, Claude Code, Gemini CLI, etc.) for these exercises.
+### Part 1: Explore Project Files (Your Turn First)
 
-### Prompt 1: Understand Virtual Environments Deeply
+**After running `uv init my-project`**, explore what was created:
 
-```
-I just created a UV project and it generated a .venv/ folder. Explain virtual environments in simple terms using an analogy. Why does each project need its own isolated environment?
-```
+**Your exploration task**:
+1. List ALL files and folders created (including hidden ones like `.venv/`)
+2. For EACH file/folder, predict its purpose:
+   - `pyproject.toml`: ?
+   - `.venv/`: ?
+   - `.python-version`: ?
+   - `README.md`: ?
+   - `hello.py`: ?
+3. Compare to old Python projects (if you've seen `requirements.txt` or `setup.py`): What's different?
 
-**Expected outcome:** Clear understanding of why isolation prevents dependency conflicts.
+Document your predictions BEFORE asking AI.
 
-### Prompt 2: Understand pyproject.toml
+---
 
-```
-I have a pyproject.toml file in my UV project. Explain what this file does and why it's better than the old requirements.txt approach. Give me 2-3 concrete examples.
-```
+### Part 2: AI Explains Modern Project Structure (Discovery)
 
-**Expected outcome:** Understanding of modern Python project configuration and its advantages.
+Share your findings with AI:
 
-### Prompt 3: Production vs. Development Dependencies
+> "I created a UV project and found these files: [list from Part 1]
+>
+> Here's what I think each does: [your predictions]
+>
+> Questions:
+> 1. Are my predictions correct?
+> 2. Why does `.venv/` exist? (What's a virtual environment?)
+> 3. Why `pyproject.toml` instead of `requirements.txt`?
+> 4. The `.venv/` folder is HUGE (100+ MB). What's in there?
+> 5. Can I delete `.venv/` and recreate it? How?"
 
-```
-What's the difference between production dependencies and development dependencies in a Python project? Give me examples of each and explain when I'd use the --dev flag with `uv add`.
-```
+**Your evaluation task**:
+- Does AI explain isolation (why each project needs its own environment)?
+- Can you now explain to someone: "What problem do virtual environments solve?"
+- Try this: Delete `.venv/`, run `uv sync`. What happens?
 
-**Expected outcome:** Strategic understanding of dependency types and when to use each.
+---
 
-### Prompt 4: Troubleshoot Dependency Conflicts
+### Part 3: Student Teaches AI (Dependency Conflicts)
 
-```
-I'm trying to add package X to my UV project, but I'm getting a dependency conflict error. How can I diagnose what's causing the conflict and resolve it?
-```
+Challenge AI with realistic project scenarios:
 
-**Expected outcome:** Troubleshooting strategy for complex dependency issues (where AI adds real value).
+> "I'm building TWO projects on the same machine:
+>
+> **Project A** (data analysis):
+> - Needs `pandas==2.0.0`
+> - Needs `numpy==1.24.0`
+>
+> **Project B** (web scraping):
+> - Needs `pandas==1.5.0`
+> - Needs `requests==2.31.0`
+>
+> **Problem**: Both need DIFFERENT versions of pandas!
+>
+> For this scenario:
+> 1. Show me what happens if I DON'T use virtual environments (install globally)
+> 2. Explain how `.venv/` solves this (each project gets isolated pandas)
+> 3. Demonstrate: If I have both projects, how do I switch between them?
+>
+> **Bonus Challenge**: What if Project A's numpy requirement CONFLICTS with Project B's pandas requirement (transitive dependency issue)? How does `uv.lock` help?"
+
+**Your debugging task**:
+- Create two UV projects with different dependency versions
+- Activate each `.venv/` and verify they're isolated
+- Run `pip list` in each—do they show different packages?
+
+---
+
+### Part 4: Build Project Template Workflow (Convergence)
+
+Create a reusable project setup checklist with AI:
+
+> "Let's design a project initialization workflow I can use for EVERY new Python project:
+>
+> **Workflow Steps**:
+> 1. Create project: `uv init <name>`
+> 2. Verify structure (check for pyproject.toml, .venv, etc.)
+> 3. Configure Python version (how do I specify Python 3.13?)
+> 4. Add initial dependencies (requests? pytest?)
+> 5. Create `.gitignore` (what should I exclude? `.venv/`?)
+> 6. Initialize git repo
+> 7. Write first test to verify setup works
+>
+> For EACH step, give me:
+> - The exact command
+> - Why it matters
+> - What to verify afterward
+>
+> Make this a copy-paste checklist I can reuse."
+
+**Refinement**:
+> "This workflow assumes I'm starting fresh. What if I'm joining an EXISTING UV project? Show me the `git clone` → `uv sync` → verify workflow."
+
+---
+
+**Time**: 25-30 minutes total
+**Outcome**: You've mastered UV project structure, understand virtual environment isolation through hands-on experimentation, and built a reusable initialization workflow—not just "run this command."

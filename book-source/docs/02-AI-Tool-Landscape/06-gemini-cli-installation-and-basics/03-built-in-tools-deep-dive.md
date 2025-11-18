@@ -1,417 +1,867 @@
 ---
-title: "How Your AI Reads the World: Built-In Tools in Action"
-chapter: 2
-lesson: 3
-estimated_time: "20-25 minutes"
+sidebar_position: 3
+title: "What Gemini Can Do: Built-In Tools in Action"
+cefr_level: A2
+proficiency: Beginner
+teaching_stage: 2
+stage_name: "AI Collaboration"
+stage_description: "Students actively use AI tools and understand their capabilities"
+cognitive_load:
+  concepts_count: 7
+  a2_compliant: true
+  scaffolding_level: "Heavy"
 learning_objectives:
-  - "Understand how AI tools extend beyond text to access files, the web, and real-time information"
-  - "Recognize when and why AI needs to use specific tools (files vs. web vs. search)"
-  - "Apply tools in natural dialogue without memorizing commands"
-  - "Identify what data you're sharing and privacy implications of web-based tools"
-  - "Combine multiple tools to answer complex business questions"
+  - id: LO1
+    description: "Identify the four built-in tools Gemini uses (Google Search, File Operations, Shell, Web Fetch)"
+    bloom_level: "Remember"
+  - id: LO2
+    description: "Recognize visual indicators showing which tool Gemini is using"
+    bloom_level: "Understand"
+  - id: LO3
+    description: "Explain when Gemini chooses each tool based on query context"
+    bloom_level: "Understand"
+  - id: LO4
+    description: "Apply tools by crafting queries that trigger appropriate tool usage"
+    bloom_level: "Apply"
+  - id: LO5
+    description: "Analyze tool output to verify Gemini used correct tool for the task"
+    bloom_level: "Analyze"
+  - id: LO6
+    description: "Practice using tools through realistic developer scenarios"
+    bloom_level: "Apply"
+  - id: LO7
+    description: "Evaluate when to use Gemini's tools vs manual methods for development tasks"
+    bloom_level: "Evaluate"
+digcomp_mapping:
+  - objective_id: LO1
+    competency_area: "1. Information and Data Literacy"
+    competency: "1.1 Browsing, searching and filtering data, information and digital content"
+  - objective_id: LO2
+    competency_area: "1. Information and Data Literacy"
+    competency: "1.2 Evaluating data, information and digital content"
+  - objective_id: LO3
+    competency_area: "5. Problem Solving"
+    competency: "5.2 Identifying needs and technological responses"
+  - objective_id: LO4
+    competency_area: "3. Digital Content Creation"
+    competency: "3.4 Programming"
+  - objective_id: LO5
+    competency_area: "1. Information and Data Literacy"
+    competency: "1.2 Evaluating data, information and digital content"
+  - objective_id: LO6
+    competency_area: "3. Digital Content Creation"
+    competency: "3.4 Programming"
+  - objective_id: LO7
+    competency_area: "5. Problem Solving"
+    competency: "5.1 Solving technical problems"
 ---
 
-## The Collaboration Shift: AI Becomes Your Research Partner
+# What Gemini Can Do: Built-In Tools in Action
 
-Let's start with a simple experiment. Open your Gemini CLI and ask:
+You're starting your programming journey and want to learn about Python before diving into coding. You could:
+- Open multiple browser tabs
+- Search through scattered articles
+- Find reliable sources
+- Read and compare information
+- Synthesize what you've learned
+
+Or you could just ask Gemini:
 
 ```
-What is the current temperature in San Francisco?
+What is Python and what is it used for in 2025?
 ```
 
-Here's what happens when you run this:
+Within seconds, Gemini searches the web, finds reliable sources, and gives you a current answer with citations. **This is the power of built-in tools** - your AI doesn't just answer from memory, it actively reaches out to get current information, read your files, and execute commands.
+
+In this lesson, you'll learn what Gemini can actually do for you as you learn to code.
+
+---
+
+## Tools Activate Automatically
+
+Here's the key insight that changes everything: **You don't invoke tools manually.** You ask naturally, and Gemini decides which tool to use.
+
+When you ask Gemini a question, it analyzes what you need:
+- Current information from the web? → Google Search tool activates
+- Read a file in your project? → File operations tool activates
+- Run a terminal command? → Shell integration activates
+- Fetch a specific webpage? → Web fetch tool activates
+
+You'll know a tool is active when you see visual indicators:
+- 🔍 **Searching the web...**
+- 📁 **Reading file...**
+- ⚡ **Running command...**
+- 🌐 **Fetching webpage...**
+
+Let's see each tool in action.
+
+---
+
+## Tool 1: Google Search — Getting Current Information
+
+**When Gemini uses this**: You need current information from across the web, and you don't know which specific site has it.
+
+### Example: Learning About Python
+
+You ask Gemini:
 
 ```
-> What is the current temperature in San Francisco?
+What is Python and what is it used for in 2025?
+```
+
+**What you'll see:**
+
+```
+> What is Python and what is it used for in 2025?
 
 🔍 Searching the web...
 
-The current temperature in San Francisco is approximately 62°F (17°C) with partly
-cloudy skies. Conditions vary by neighborhood, with coastal areas typically cooler.
+Python is one of the most popular programming languages today, used for:
+
+**Web Development:**
+- Building websites with frameworks like Django and Flask
+- Example: Instagram, Spotify, and Pinterest use Python
+
+**Data Science and AI:**
+- Analyzing large datasets
+- Building machine learning models
+- Libraries like NumPy, Pandas, TensorFlow are industry-standard
+
+**Automation:**
+- Writing scripts to automate repetitive tasks
+- Helpful for managing files, systems, and workflows
+
+**Scientific Computing:**
+- Universities use Python for research
+- Physics, biology, chemistry simulations
+
+**Why Python is Popular for Beginners:**
+- Readable syntax (looks like English)
+- Huge community with tons of tutorials
+- Runs on Windows, Mac, and Linux
+- In high demand for jobs
+
+**Next Steps in Your Learning:**
+You'll learn Python starting in Chapter 12 of this book after mastering Bash and Git basics.
 
 Sources:
-- weather.com (retrieved 2024-01-14)
-- National Weather Service
+- python.org (official website)
+- Stack Overflow Developer Survey 2024
+- GitHub Octoverse Report 2024
 ```
 
-Notice something important: You didn't tell Gemini HOW to get this information. You didn't type a command like `/search-web` or configure APIs. You just asked naturally, and Gemini knew it needed current data, so it automatically used its web search tool.
+**What happened**: Gemini recognized you needed current information about Python adoption and use cases, activated Google Search, found reliable sources, and synthesized the answer in beginner-friendly language.
 
-This is the shift we're exploring today. Your AI doesn't just respond from memory—it actively reaches out to find fresh information, read files, and access the world beyond its training data. The key difference from traditional software: **you don't memorize commands. You ask naturally.**
+### Example: Understanding Tools Before Learning Them
 
-This lesson shows you what tools your AI has available, when it uses them, and what's happening behind the scenes. By the end, you'll understand how to work with AI tools safely and effectively.
-
----
-
-## The Three Tools: When Gemini Reaches Beyond Its Training Data
-
-Your AI has three ways to get information beyond what it learned during training. Let's see each in action.
-
----
-
-## Tool 1: Web Search — Finding Current Information Across the Web
-
-**When to use:** You need current information but don't know which specific website has it.
-
-Ask Gemini:
+You ask Gemini:
 
 ```
-What is the current stock price of Tesla?
+What is Git and why do developers use it?
 ```
 
 **What you'll see:**
+
 ```
-> What is the current stock price of Tesla?
+> What is Git and why do developers use it?
 
 🔍 Searching the web...
 
-Tesla (TSLA) is currently trading at $242.84, up 2.3% today. The stock opened
-at $238.12 and has a 52-week range of $138.80 - $299.29.
+Git is a version control system - a tool that tracks changes to your code.
 
-Market cap: $769 billion
-P/E ratio: 76.45
-Volume: 89.2M shares
+**What It Does:**
+- Saves a history of every change you make to your files
+- Lets you go back to previous versions if something breaks
+- Allows multiple people to work on the same project without conflicts
+- Creates backups of your work
+
+**Real-World Example:**
+Imagine you have a document:
+- Version 1: "Draft 1"
+- Version 2: "Added chapter 3"
+- Version 3: "Fixed typos"
+
+Instead of saving "Draft1_final_real_v2.docx", Git automatically tracks all these versions.
+
+**Why Developers Care:**
+- Never lose work (every version is saved)
+- Collaborate with teammates safely
+- Experiment without fear (easy to revert changes)
+- Professional standard (most tech jobs require Git)
+
+**You'll Learn Git In:**
+Chapter 8 of this book - we'll teach you Bash first (Chapter 7) so you're ready.
 
 Sources:
-- Yahoo Finance (retrieved 2024-01-14, 14:23 UTC)
-- NASDAQ real-time data
+- git-scm.com (official Git documentation)
+- GitHub Learning Lab
+- Atlassian Git Tutorials
 ```
 
-**What happened:** Gemini searched multiple sources, synthesized the answer, and cited where it got the data.
+**What happened**: Gemini explained Git concepts for a beginner learning Bash in Chapter 7, helping you understand "what to expect next" before diving into commands.
 
-**Watch for:** `🔍 Searching the web...` indicator
+### When Google Search Activates
+
+Gemini uses Google Search when you ask about:
+- **Concepts you're learning**: "What is REST API?" or "What is MongoDB?"
+- **Prerequisite knowledge**: "What should I learn before Python?"
+- **Career information**: "What programming languages have the most jobs in 2025?"
+- **Tool comparisons**: "What's the difference between VS Code and PyCharm?"
+- **Learning resources**: "What are the best free Python tutorials for beginners?"
 
 ---
 
-## Tool 2: Web Fetching — Reading Specific Websites
+## Tool 2: File Operations — Reading Your Files
 
-**When to use:** You know exactly which website has the information you need.
+**When Gemini uses this**: You need Gemini to read or analyze text files in your current directory.
 
-Ask Gemini:
+### Example: Reading Your Learning Plan
+
+You ask Gemini:
 
 ```
-Fetch the Stripe pricing page and summarize their main pricing tiers
+Read my learning-plan.md and tell me what topics I'm studying this week
 ```
 
 **What you'll see:**
-```
-> Fetch the Stripe pricing page and summarize their main pricing tiers
-
-🌐 Fetching https://stripe.com/pricing...
-
-Based on Stripe's pricing page, here are the main tiers:
-
-**Integrated Pricing (Pay-as-you-go)**
-- 2.9% + $0.30 per successful card charge
-- No monthly fees
-- Best for: Startups and small businesses
-
-**Custom Pricing**
-- Volume discounts available
-- Contact sales for rates
-- Best for: High-volume businesses
-
-Additional services:
-- Stripe Billing: Subscription management
-- Stripe Terminal: In-person payments (different rates)
-- International cards: +1.5% fee
-
-Source: stripe.com/pricing (retrieved 2024-01-14)
-```
-
-**What happened:** Gemini visited the specific URL, read the page, extracted pricing info, and organized it.
-
-**Watch for:** `🌐 Fetching https://...` indicator
-
-**Difference from web search:**
-- **Web Search** (Tool 1): "Find me current Tesla stock price" → AI searches to find the answer
-- **Web Fetch** (Tool 2): "Read Stripe's pricing page" → AI reads the specific page you named
-
----
-
-## Tool 3: File Reading — Analyzing Your Local Data
-
-**When to use:** You have data in a file on your computer and want insights from it.
-
-Create a file called `sales.txt`:
 
 ```
-Q1: $45,000
-Q2: $52,000
-Q3: $48,000
-Q4: $61,000
+> Read my learning-plan.md and tell me what topics I'm studying this week
+
+📁 Reading learning-plan.md...
+
+Your learning plan for this week covers:
+
+**Chapter 6: Gemini CLI (Current)**
+- Lesson 1: Installation and setup (completed)
+- Lesson 2: Using Gemini for questions (completed)
+- Lesson 3: Built-in tools (you're here!)
+- Lesson 4: Conversation context (next)
+
+**Chapter 7: Bash Essentials (Next week)**
+- Basic commands: pwd, ls, cd
+- File operations: mkdir, cp, rm
+- Understanding the terminal
+
+**Chapter 8: Git Basics (Following week)**
+- Repository creation
+- Commits and branches
+- Collaborative workflows
+
+**Your Progress:**
+You've completed 2 of 4 lessons in Chapter 6. After Gemini CLI, you'll be ready for Bash and Git!
+
+Would you like help preparing for Chapter 7 Bash topics?
 ```
 
-Ask Gemini:
+**What happened**: Gemini read your learning-plan.md file, summarized your progress, and offered supportive guidance aligned with your learning journey.
+
+### Example: Reading Course Notes
+
+You ask Gemini:
 
 ```
-Read sales.txt and tell me which quarter had the highest revenue
+Read my chapter-6-notes.md and summarize the main concepts I've learned so far
 ```
 
 **What you'll see:**
+
 ```
-> Read sales.txt and tell me which quarter had the highest revenue
+> Read my chapter-6-notes.md and summarize the main concepts I've learned so far
 
-📄 Reading file: sales.txt...
+📁 Reading chapter-6-notes.md...
 
-Based on the data in sales.txt, Q4 had the highest revenue at $61,000.
+From your Chapter 6 notes, you've learned:
 
-Breakdown:
-- Q1: $45,000
-- Q2: $52,000
-- Q3: $48,000
-- Q4: $61,000 ← Highest
+**Key Concepts:**
+1. Gemini CLI is an AI assistant that runs in your terminal
+2. You ask questions naturally (no special syntax needed)
+3. Gemini has 4 built-in tools that activate automatically:
+   - Google Search for current information
+   - File Operations for reading local files
+   - Shell Integration for running commands
+   - Web Fetch for specific URLs
 
-Q4 exceeded Q1 by 35.6%, showing strong year-end performance.
+**How It Helps Learning:**
+- Instead of searching multiple websites, ask Gemini one question
+- Gemini finds current information from reliable sources
+- Cites where information comes from
+
+**What You're Ready For:**
+- ✅ Understanding Bash concepts before coding
+- ✅ Learning Git fundamentals
+- ✅ Reading documentation with AI help
+- ✅ Researching programming topics independently
+
+Your notes show solid foundational understanding. You're ready to move to the next lesson!
 ```
 
-**What happened:** Gemini read your local file, analyzed the data, and gave you insights.
+**What happened**: Gemini read your notes file, identified key learning points, and gave you feedback on readiness for the next chapter.
 
-**Watch for:** `📄 Reading file:` indicator
+### When File Operations Activate
 
-**What files can Gemini read?**
-- ✅ Text files (.txt, .md)
-- ✅ CSV files (spreadsheet data)
-- ✅ JSON files (structured data)
-- ✅ Code files (.py, .js, etc.)
-
-#### 💬 AI Colearning Prompt
-> "When Gemini reads a CSV file, what's actually happening behind the scenes? How does it convert rows and columns into understanding that answers business questions?"
+Gemini reads files when you ask about:
+- **Your notes**: "Read my study-notes.md and quiz me on key concepts"
+- **Documentation**: "Read the README.md file and explain what this project does"
+- **Lists and plans**: "Read my TODO.txt and help me prioritize tasks"
+- **Configuration examples**: "Read the .gitignore template and explain what each line means"
+- **Course materials**: "Read chapter-7-overview.md and prepare me for Bash"
 
 ---
 
-## Tool 4: Shell Integration — AI-Assisted Terminal Commands
+## Tool 3: Shell Integration — Running Terminal Commands
 
-**When to use:** You need to run terminal commands but don't remember the exact syntax, or you want AI to suggest the best approach.
+**When Gemini uses this**: You need to execute basic terminal commands and get the results.
 
-### The AI-Native Way: Ask First, Run Second
+### Example: Checking Your Current Directory
 
-**Step 1:** Ask Gemini for the command
-
-In Gemini CLI, ask:
+You ask Gemini:
 
 ```
-I need to find all Excel files modified in the last month. What command should I use?
+What directory am I currently in? Show me what files are here.
 ```
 
 **What you'll see:**
-```
-> I need to find all Excel files modified in the last month. What command should I use?
-
-To find all Excel files modified in the last 30 days, use this command:
-
-find . -name "*.xlsx" -mtime -30 -type f
-
-Breaking it down:
-- find .           → Search in current directory and subdirectories
-- -name "*.xlsx"   → Match files ending in .xlsx
-- -mtime -30       → Modified within last 30 days
-- -type f          → Only files (not directories)
-
-This searches recursively. If you want to search a specific folder instead of
-the current one, replace . with the folder path.
-```
-
-**Step 2:** Run the command using Shell Mode
-
-Press `!` to enter shell mode in Gemini CLI, then run the command:
 
 ```
-!find . -name "*.xlsx" -mtime -30 -type f
+> What directory am I currently in? Show me what files are here.
+
+⚡ Running: pwd
+
+Current directory: /Users/alex/Documents/learning
+
+⚡ Running: ls
+
+Files and folders in your current directory:
+- learning-plan.md
+- chapter-6-notes.md
+- chapter-7-prep.md
+- README.md
+- images/ (folder)
+
+You're in your learning directory with organized study materials. Would you like me to:
+- Read any of these files?
+- Help you organize your study materials?
+- Create a new file for upcoming lessons?
 ```
 
-Press `ESC` to exit shell mode and return to Gemini.
+**What happened**: Gemini ran the `pwd` command to show your location and `ls` to list files, helping you understand your file organization.
+
+### Example: Checking System Information
+
+You ask Gemini:
+
+```
+What is today's date? Show me the current time.
+```
+
+**What you'll see:**
+
+```
+> What is today's date? Show me the current time.
+
+⚡ Running: date
+
+Current date and time:
+Monday, January 17, 2025 - 2:30 PM EST
+
+This helps you:
+- Know when you started learning today
+- Track your progress this week
+- Plan your next learning session
+
+You've been learning about Gemini CLI for about 2 hours now - time for a break!
+```
+
+**What happened**: Gemini ran the date command to show current time and used it to give you helpful context.
+
+### Example: Seeing What Shell You're Using (Prep for Bash)
+
+You ask Gemini:
+
+```
+What shell am I using? Is it Bash?
+```
+
+**What you'll see:**
+
+```
+> What shell am I using? Is it Bash?
+
+⚡ Running: echo $SHELL
+
+Your current shell: /bin/bash
+
+Great! You're using Bash, which is what you'll learn in Chapter 7.
+
+**What This Means:**
+- Bash is the most common shell for beginners
+- When you start Chapter 7 (Bash Essentials), you already have it installed
+- You'll learn to use commands like: pwd, ls, mkdir, cp, rm
+
+This puts you in a great position to learn Bash fundamentals!
+```
+
+**What happened**: Gemini checked your shell environment and connected it to your upcoming learning in Chapter 7, showing how this tool helps you prepare.
+
+### When Shell Integration Activates
+
+Gemini runs commands when you ask about:
+- **System info**: "What's my current directory?" or "What shell am I using?"
+- **File listings**: "Show me what files are in this folder"
+- **Checking setup**: "Is Python installed on my computer?"
+- **Getting information**: "What's today's date?" or "Who am I logged in as?"
+- **Preparation**: "Check what tools I have before learning Chapter 7"
 
 ---
 
-### Alternative: Direct Shell Commands (When You Know the Command)
+## Tool 4: Web Fetch — Retrieving Specific Pages
 
-If you already know the command you want to run, you can execute it directly in shell mode without asking Gemini first:
+**When Gemini uses this**: You know the exact URL and want Gemini to fetch and analyze that specific page.
 
-1. Press `!` to enter shell mode
-2. Type your command: `ls -la`
-3. Press `Enter` to execute
-4. Press `ESC` to return to Gemini
+### Example: Learning Python Fundamentals from Official Docs
 
-**When to ask AI first:**
-- ✅ You're unsure of the exact syntax
-- ✅ You want the safest/best approach
-- ✅ You need the command explained before running it
-- ✅ Complex tasks (multiple steps, flags, conditions)
+You ask Gemini:
 
-**When to run directly:**
-- ✅ You know the command and just need quick execution
-- ✅ Simple commands like `ls`, `pwd`, `cd`
-- ✅ You've run this specific command before
+```
+Fetch the Python.org getting started page and explain what Python can do
+```
 
-#### 🎓 Expert Insight
-> In AI-native development, you don't memorize terminal commands. You ask your AI partner for the right command, understand what it does, then execute. The skill isn't memorization—it's knowing how to describe what you want accomplished and validating the AI's suggestion before running it.
+**What you'll see:**
+
+```
+> Fetch the Python.org getting started page and explain what Python can do
+
+🌐 Fetching https://www.python.org/about/...
+
+What is Python?
+
+Python is a programming language that lets you:
+
+**Easy to Learn:**
+- Simple, readable syntax (looks like English)
+- Great for beginners
+- Large community with tons of tutorials
+
+**Powerful & Versatile:**
+- Web development (Django, Flask)
+- Data science and analysis (NumPy, Pandas)
+- Machine learning (TensorFlow, Scikit-learn)
+- Automation and scripting
+- Scientific computing
+
+**In High Demand:**
+- Top 3 most popular programming languages
+- Strong job market for Python developers
+- Used by companies: Google, Netflix, Spotify, Instagram
+
+**Why Start With Python?**
+- Beginner-friendly syntax
+- Can build real projects quickly
+- Skills transfer to other languages
+- Active community means lots of help available
+
+You'll learn Python starting in Chapter 12 of this book!
+
+Source: python.org (Official Python Website)
+```
+
+**What happened**: Gemini fetched Python's official website, extracted beginner-friendly information, and connected it to your learning journey.
+
+### Example: Understanding Bash Before You Learn It
+
+You ask Gemini:
+
+```
+Fetch the Bash introduction from the GNU Bash manual and explain why it matters for learners
+```
+
+**What you'll see:**
+
+```
+> Fetch the Bash introduction from the GNU Bash manual and explain why it matters for learners
+
+🌐 Fetching https://www.gnu.org/software/bash/manual/html_node/What-is-Bash_003f...
+
+What is Bash?
+
+Bash is a command interpreter and shell - your interface to communicate with your computer.
+
+**What You'll Do With Bash:**
+- Navigate folders (pwd, ls, cd)
+- Create and delete files (touch, rm)
+- Run programs and scripts
+- Automate repetitive tasks
+- Manage your development environment
+
+**Why Programmers Care:**
+- Universal across Mac, Linux, and most systems
+- Professional standard (used in all tech jobs)
+- Foundation for understanding systems
+- Essential for using Git and development tools
+
+**Your Learning Path:**
+- Chapter 7: Bash Essentials (basic commands)
+- Chapter 8: Git (uses Bash commands)
+- Chapters 9+: All use Bash for tools and automation
+
+**Pro Tip:**
+Once you understand Bash, learning Git becomes much easier because Git uses Bash commands!
+
+Source: GNU Bash Manual (Official Documentation)
+```
+
+**What happened**: Gemini fetched official Bash documentation, extracted relevant concepts for a beginner, and showed how it connects to your learning path.
+
+### When Web Fetch Activates
+
+Gemini fetches specific pages when you ask about:
+- **Official documentation**: "Fetch Python.org to learn about Python"
+- **Official tutorials**: "Get the Git official tutorial from git-scm.com"
+- **Release notes**: "Fetch the latest Python release notes"
+- **Official guides**: "Get the Bash user guide from the GNU website"
+- **Course materials**: "Fetch the official Markdown guide from commonmark.org"
 
 ---
 
-## How Tools Work Together
+## How Gemini Decides Which Tool to Use
 
-Tools don't work in isolation—Gemini combines them automatically based on your question. Here's what that looks like:
+Understanding the decision logic helps you craft better queries:
 
-**You ask one question:**
-```
-Compare Notion and Coda pricing, then tell me which is better for a 20-person startup
-```
+| Your Need | Tool Gemini Uses | Example Query |
+|-----------|------------------|---------------|
+| Current information/concepts | 🔍 Google Search | "What is Python used for?" |
+| Read your learning notes | 📁 File Operations | "Read my learning-plan.md" |
+| Check system information | ⚡ Shell Integration | "What directory am I in?" |
+| Official documentation | 🌐 Web Fetch | "Fetch Python.org getting started page" |
+| Learning resources | 🔍 Google Search | "What are best free tutorials for Bash?" |
+| Your study notes | 📁 File Operations | "Read chapter-6-notes.md and quiz me" |
+| Check your setup | ⚡ Shell Integration | "What shell am I using?" |
+| Official guides | 🌐 Web Fetch | "Get Git guide from git-scm.com" |
 
-**Behind the scenes, Gemini automatically:**
-1. 🌐 Fetches Notion pricing page
-2. 🌐 Fetches Coda pricing page
-3. Analyzes both datasets
-4. Applies your constraint (20-person startup)
-5. Provides recommendation with reasoning
-
-**You see:**
-```
-> Compare Notion and Coda pricing...
-
-🌐 Fetching https://notion.so/pricing...
-🌐 Fetching https://coda.io/pricing...
-
-[Comparison table with both pricing structures]
-
-For a 20-person startup, Coda's Team plan ($10/user = $200/month) offers better
-value than Notion's Team plan ($15/user = $300/month) if you need advanced
-automations. However, if you prioritize databases and wikis, Notion provides
-more robust features at that tier.
-
-Recommendation: Start with Coda to save $1,200/year, migrate to Notion if you
-outgrow Coda's database features.
-
-Sources: notion.so/pricing, coda.io/pricing (retrieved 2024-01-14)
-```
-
-**The key:** You asked naturally. Gemini orchestrated multiple tools. You got actionable intelligence.
+**The Pattern**:
+- **Learning concepts/comparisons/current info** → Google Search
+- **Your notes/plans/local files** → File Operations
+- **System commands/directory info** → Shell Integration
+- **Official documentation/specific URLs** → Web Fetch
 
 ---
 
-## Understanding Errors and Data Privacy
+## Recognizing When Tools Are Active
 
-### When Something Goes Wrong: The AI-Native Approach
+As you use Gemini, watch for these indicators:
 
-You'll encounter error messages. Instead of memorizing error codes, **ask your AI to explain and fix them.**
+### Visual Indicators
 
-**Example:** You get this error:
+**Status messages appear before results:**
 ```
-ERROR: File not found: sales.txt
-```
-
-**Ask Gemini:**
-```
-I got this error: "File not found: sales.txt". What does this mean and how do I fix it?
+🔍 Searching the web...
+📁 Reading package.json...
+⚡ Running: git status
+🌐 Fetching https://docs.python.org/3.13/...
 ```
 
-**Gemini will explain:**
-- The file doesn't exist in the current directory
-- Show you how to check where you are (`pwd`)
-- Suggest how to find the file or create it
-- Explain the next steps
+### Source Citations
 
-**Common tool indicators you'll see:**
-- ✅ `🔍 Searching...` or `🌐 Fetching...` → Normal, tool is working
-- ✅ `Sources: [URLs]` → Good! You can verify the data
-- ⚠️ `ERROR:` → Something failed, ask AI to explain
-- ⚠️ `Rate limited` → You're requesting too fast, wait a moment
+When Gemini uses tools, it cites sources:
+```
+Sources:
+- nodejs.org (official release page)
+- GitHub nodejs/node releases
+- Retrieved: January 17, 2025
+```
 
-**The pattern:** Don't troubleshoot alone. Copy the error, paste it to Gemini, ask what happened and how to fix it.
+### Structured Output
+
+Tool responses often have clear structure:
+```
+Your project has 8 dependencies:
+
+Production Dependencies:
+- react: ^18.2.0
+- next: ^14.0.4
+
+Development Dependencies:
+- typescript: ^5.3.3
+```
+
+### Command Echo
+
+Shell integration shows the exact command run:
+```
+⚡ Running: node --version
+
+v20.10.0
+```
+
+**Why this matters**: Knowing which tool activated helps you verify Gemini did what you expected and learn when each tool is appropriate.
 
 ---
 
-### 🔐 Privacy & Data Safety: Critical Rules
+## Real-World Learning Scenarios
 
-When tools access data, you need to understand what's being shared:
+Here's how tools work together in your learning journey:
 
-**What Stays Private:**
-- ✅ **File reading** → Your files stay on your computer, only you and Gemini see them
-- ✅ Gemini processes data temporarily, doesn't permanently store your file contents
+### Scenario 1: Starting Your Learning Journey
 
-**What Goes to the Web:**
-- ⚠️ **Web search/fetch** → Your queries may be logged (like Google searches)
-- ⚠️ **Shell commands** → Execute on your computer but Gemini sees the commands
+**You**: "I'm new to programming. What should I learn first, and how does it connect to what I'm learning now?"
 
-**Never Ask AI to Access:**
-- 🚫 Files with passwords, API keys, or secrets
-- 🚫 Personal Identifiable Information (PII): SSN, medical records, financial data
-- 🚫 Private account pages (email, bank, social media logged-in views)
-- 🚫 Customer data (GDPR/CCPA violations)
-- 🚫 Confidential business documents
+**Gemini**:
+```
+🔍 Searching the web...
 
-**Safe to Use:**
-- ✅ Public websites (pricing pages, documentation, news)
-- ✅ Your own files with test/anonymized data
-- ✅ General searches ("industry trends 2024" not "my company's confidential strategy")
+Your Learning Path (Beginner-Friendly):
 
-**Rule of thumb:** If you wouldn't share it in a public coffee shop, don't share it with AI.
+**Part 1-4: Foundations (No Coding Yet)**
+✓ Chapter 1-4: AI Development concepts (you completed these)
+✓ Chapter 5: Claude Code basics (you completed this)
+→ Chapter 6: Gemini CLI (you're here!)
 
-#### 🤝 Practice Exercise
-> **Ask your AI**: "What are the privacy risks when I ask you to fetch a pricing page from a competitor's website? What data is shared and what stays private?"
+**Part 2: Developer Fundamentals (Next)**
+→ Chapter 7: Bash Essentials (terminal commands)
+→ Chapter 8: Git Basics (version control)
+→ Chapters 9-11: Documentation (Markdown, Prompts, Context)
 
-**Expected outcome:** Your AI will explain what happens during web fetching, what the website sees (a request, but not your identity), and how to stay safe.
+**Part 3: Programming Starts Here**
+→ Chapter 12-17: Python Fundamentals (your first programming language)
+→ Chapters 18+: Advanced Python and beyond
+
+**Why This Order?**
+1. Learn concepts before code (less overwhelming)
+2. Master terminal before programming (essential skill)
+3. Learn version control early (professional practice)
+4. Start with Python (beginner-friendly language)
+
+**Next Steps:**
+Finish Chapter 6, then Chapter 7 teaches you terminal basics before Chapter 12 coding!
+
+Sources:
+- Educational programming standards
+- Stack Overflow Learning Path reports
+```
+
+**Tools used**: Google Search (learning paths), conceptual understanding
 
 ---
 
-## Try With AI: Your First Multi-Tool Workflow
+### Scenario 2: Understanding What You're About to Learn
 
-Now that you've seen each tool individually, try this complete workflow combining all three tools.
+**You**: "Read my chapter-7-prep.md and tell me what I should expect from Bash"
 
-### Real-World Scenario: Product Pricing Research
-
-You're launching a new SaaS product and need to research competitor pricing. Here's a complete workflow:
-
-**Step 1: Search for Market Overview**
+**Gemini**:
 ```
-Search for SaaS pricing trends in project management tools for 2024
+📁 Reading chapter-7-prep.md...
+
+Based on your preparation notes, here's what Chapter 7 will teach:
+
+**Chapter 7: Bash Essentials Overview**
+
+**What You'll Learn:**
+1. Navigating directories (pwd, ls, cd)
+2. Working with files (touch, mkdir, cp, rm)
+3. Understanding the file system structure
+4. Reading file contents (cat, less)
+5. Basic text manipulation (echo, grep)
+
+**Why This Matters:**
+- Bash is the foundation for all terminal work
+- Essential for using Git (Chapter 8)
+- Required for Python development (Chapter 12+)
+- Professional standard across all tech jobs
+
+**You're Ready When:**
+- You can navigate your file system
+- You understand what "current directory" means
+- You can create and delete files and folders
+- You feel comfortable with terminal basics
+
+**Your Current Status:**
+You have Bash installed and ready (verified in Chapter 6)!
+
+**Confidence Check:**
+After Chapter 7, you'll have the skills needed for Chapter 8 (Git).
+
+Would you like me to quiz you on any Chapter 6 concepts before moving forward?
 ```
 
-Watch for: `🔍 Searching...` — Gemini finds industry trends across multiple sources
+**Tools used**: File Operations (your prep notes), contextual learning support
 
 ---
 
-**Step 2: Fetch Specific Competitor Data**
+### Scenario 3: Researching Tools Before Learning Them
+
+**You**: "What is Git? Why is it important before I learn programming?"
+
+**Gemini**:
 ```
-Fetch Monday.com's pricing page and summarize their tiers and features
+🔍 Searching the web...
+
+Why Git Matters for Every Programmer:
+
+**What Is Git?**
+Git is a version control system - it tracks every change you make to code.
+
+**Real Analogy:**
+- Google Docs auto-saves versions? Git does that for code
+- Git tracks who changed what, when, and why
+- You can go back to any previous version anytime
+
+**Why Learn Git Before Programming?**
+1. **Professional Standard**: Every programming job uses Git
+2. **Collaboration**: Work with teams safely
+3. **Backup**: Never lose your code
+4. **Experimentation**: Try ideas without fear
+5. **Understanding History**: See how projects evolved
+
+**The Professional Workflow:**
+1. Write code (Chapter 12+)
+2. Save version with Git (Chapter 8 skills)
+3. Push to GitHub for backup
+4. Collaborate with teammates
+5. Review code before merging
+
+**Your Timeline:**
+- Chapter 7: Master Bash (terminal skills)
+- Chapter 8: Learn Git (version control)
+- Chapter 12: Start coding (now Git skills matter!)
+- Chapters 13+: Git becomes daily tool
+
+**Key Insight:**
+Bash and Git are the "infrastructure" skills that all programmers need before coding. You're learning in the right order!
+
+Sources:
+- GitHub Learning resources
+- Stack Overflow Developer Survey
+- Professional development standards
 ```
 
-Watch for: `🌐 Fetching...` — Gemini reads the specific pricing page
+**Tools used**: Google Search (Git importance), learning pathway context
 
 ---
 
-**Step 3: Compare with Another Competitor**
+### Scenario 4: Verifying Your Setup for Next Chapter
+
+**You**: "Check what files I have for Chapter 7 preparation. List what's in my current directory."
+
+**Gemini**:
 ```
-Now fetch Asana's pricing and create a comparison table with Monday.com
+⚡ Running: pwd
+
+Current directory: /Users/alex/learning/ai-dev
+
+⚡ Running: ls
+
+Your preparation files:
+- chapter-6-notes.md (completed Chapter 6 notes)
+- chapter-7-prep.md (Chapter 7 preparation guide)
+- learning-plan.md (overall learning roadmap)
+- README.md (project overview)
+- bash-cheatsheet.md (Bash command reference - ready for Chapter 7!)
+
+**Your Setup Status:**
+✅ You're organized and ready for Chapter 7!
+✅ You have preparation materials for Bash
+✅ Your notes show good progress
+
+**What to Do Next:**
+1. Review chapter-7-prep.md one more time
+2. Start Chapter 7 when ready
+3. Keep bash-cheatsheet.md handy while learning
+
+🔍 Quick check - should we verify what Bash version you have installed before Chapter 7?
 ```
 
-Watch for: Second `🌐 Fetching...` then synthesis of both datasets
+**Tools used**: Shell Integration (verify setup), File Operations (review your files)
 
 ---
 
-**Step 4: Analyze Your Own Data**
+### Scenario 5: Getting Official Documentation Before Starting
 
-Create a file called `our_costs.txt`:
+**You**: "Fetch the official Python tutorial from python.org so I know what to expect when I reach Chapter 12"
+
+**Gemini**:
 ```
-Development: $8,000/month
-Hosting: $1,200/month
-Support: $3,500/month
-Total: $12,700/month
+🌐 Fetching https://docs.python.org/3/tutorial/index.html...
+
+Python Tutorial Overview (What You'll Learn Eventually):
+
+**Chapter 1: Whetting Your Appetite**
+- What Python can do
+- Why it's great for beginners
+
+**Chapter 2: Using Python (Chapter 7-type concepts)**
+- Running Python interpreter
+- Using command-line arguments
+- Understanding the environment
+
+**Chapters 3-5: Basic Concepts (Chapter 12-15 will cover)**
+- Variables and data types
+- Control flow (if/while/for)
+- Functions
+
+**Chapters 6-10: Advanced Topics (Chapters 16+)**
+- Classes and objects
+- Modules and packages
+- File handling
+- Error handling
+
+**Why This Preview Helps:**
+- You know what concepts are coming
+- You understand the progression
+- Python has a gentle learning curve
+- You're already building foundational skills (Bash, Git, terminal)
+
+**Your Position:**
+You're in Chapter 6 of a 83-chapter learning journey. You're building skills in the right order to be successful with Python starting in Chapter 12!
+
+Source: python.org Official Tutorial
 ```
 
-Then ask:
-```
-Read our_costs.txt. Based on our monthly costs and the competitor pricing you found, what should our pricing strategy be to achieve 40% profit margin?
-```
-
-Watch for: `📄 Reading file...` then strategic analysis combining all data
+**Tools used**: Web Fetch (official documentation), learning pathway visualization
 
 ---
 
-**Step 5: Get Strategic Recommendation**
+## Try With AI
+
+Now practice using Gemini's tools with these exercises. Use your preferred AI companion (Gemini CLI or Claude Code) - the prompts work with any tool.
+
+### Prompt 1: Practice Google Search — Learning Concepts
+
 ```
-Based on everything we've researched, what pricing tier structure would you recommend and why?
+What is Bash and why do I need to learn it before Python?
 ```
 
-Watch for: Synthesis of all previous data (no new tool use, pure analysis)
+**Expected outcome**: You'll see 🔍 indicator, Gemini searches the web, returns current information about Bash, its importance, and how it connects to Python programming.
+
+---
+
+### Prompt 2: Practice File Operations — Your Learning Files
+
+```
+Read my learning-plan.md and tell me what I should focus on for the next week
+```
+
+**Expected outcome**: You'll see 📁 indicator, Gemini reads your learning-plan.md file, understands your current progress, and suggests a focused next step.
+
+
+---
+
+### Prompt 3: Practice Shell Integration — Your System Setup
+
+```
+What directory am I in? Show me what files I have for my learning.
+```
+
+**Expected outcome**: You'll see ⚡ indicators for `pwd` and `ls` commands, showing your current directory and files in that directory. Gemini explains what files you have ready for learning.
+
+---
+
+### Prompt 4: Practice Web Fetch — Official Documentation
+
+```
+Fetch the Python.org getting started page and tell me what Python is used for
+```
+
+**Expected outcome**: You'll see 🌐 indicator, Gemini retrieves Python.org content, extracts beginner-friendly information about Python's uses, and connects it to your learning timeline (Chapter 12).
 
 

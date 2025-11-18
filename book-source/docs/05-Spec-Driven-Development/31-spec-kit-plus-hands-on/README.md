@@ -37,14 +37,17 @@ Welcome to hands-on specification-driven development. This chapter transforms un
 
 By completing this chapter, you'll master:
 
-1. **Spec-Kit Plus Architecture** - Understand Horizontal Intelligence (ADRs + PHRs) and Vertical Intelligence (orchestrator + subagents)
-2. **Evals-First Collaboration** - How to explore problem space with AI BEFORE writing formal specifications
-3. **Constitution Creation** - Setting project-wide quality standards that cascade to all features
-4. **Specification Writing** - Creating clear, testable requirements using SMART criteria
-5. **Iterative Refinement** - Using `/sp.clarify` to identify and resolve specification gaps
-6. **Architecture Planning** - Generating implementation plans and documenting decisions with ADRs
-7. **Task Decomposition** - Breaking plans into atomic work units with checkpoint-driven execution
-8. **AI-Driven Implementation** - Orchestrating code generation with systematic validation protocols
-9. **Independent Workflow** - Applying all skills end-to-end without guidance
+1. **Spec-Kit Plus Foundation** - Understand WHAT Spec-Kit Plus is, WHY this book uses it, and HOW it implements SDD-RI concepts
+2. **Spec-Kit Plus Architecture** - Recognize Horizontal Intelligence (ADRs + PHRs) and Vertical Intelligence (orchestrator + subagents)
+3. **Installation & Configuration** - Install Spec-Kit Plus, configure your AI tool, initialize projects
+4. **Evals-First Collaboration** - How to explore problem space with AI BEFORE writing formal specifications
+5. **Constitution Creation** - Setting project-wide quality standards that cascade to all features
+6. **Specification Writing** - Creating clear, testable requirements using SMART criteria
+7. **Iterative Refinement** - Using `/sp.clarify` to identify and resolve specification gaps
+8. **Architecture Planning** - Generating implementation plans and documenting decisions with ADRs
+9. **Task Decomposition** - Breaking plans into atomic work units with checkpoint-driven execution
+10. **AI-Driven Implementation** - Orchestrating code generation with systematic validation protocols
+11. **Reusable Intelligence Design** - Transforming workflow patterns into skills and subagents that compound across projects
+12. **Independent Workflow** - Applying all skills end-to-end without guidance
 
-Most importantly, you'll build the muscle memory for specification-first thinking that makes you dramatically faster in Chapters 32 and beyond. Let's build something real.
+Most importantly, you'll build the muscle memory for specification-first thinking AND intelligence accumulation that makes you dramatically faster in Chapters 32 and beyond. Let's build something real.

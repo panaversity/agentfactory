@@ -76,7 +76,7 @@ differentiation:
   remedial_for_struggling: "Focus on simple benchmark examples before advanced decision trees; use visual comparisons (threading graph vs InterpreterPoolExecutor graph)"
 
 # Generation metadata
-generated_by: "lesson-writer v1.0.0"
+generated_by: "content-implementer v1.0.0"
 source_spec: "specs/001-part-4-chapter-28/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -141,7 +141,7 @@ def heavy_calculation(iterations: int) -> int:
 
 This function spends 100% of its time doing math—no waiting for I/O. Perfect for testing parallelism.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize the GIL limitation—you recognize the pattern: "My task is CPU-heavy, so threading won't help." That recognition is worth more than any theory.
 
@@ -412,7 +412,7 @@ ProcessPoolExecutor (4 workers): 2.34s (more startup overhead)
 InterpreterPoolExecutor (4 workers): 1.15s (lighter weight)
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > The GIL isn't a bug—it's a design tradeoff. Python 3.14 gives you tools to work around it when you need true parallelism. For most code, you'll prefer `InterpreterPoolExecutor` over `ProcessPoolExecutor` because it's lighter and faster.
 
@@ -540,67 +540,135 @@ Ask your AI Co-Teacher:
 
 ---
 
-## Try With AI
+## Challenge 4: The CPU Parallelism Workshop
 
-Your AI companion tool (Claude Code, Gemini CLI, or ChatGPT web) is your co-teacher for this lesson. Work through these prompts progressively:
+This is a **4-part bidirectional learning challenge** where you discover how to parallelize CPU work despite the GIL.
 
-### Prompt 1: Understanding the GIL
+### Part 1: Discover Independently (Student as Scientist)
+**Your Challenge**: Experience the GIL's effect without AI.
 
-Ask your AI:
-> "What is the Global Interpreter Lock (GIL) in Python? Why does it exist, and why does it prevent threading from parallelizing CPU work? Keep it to 3-4 sentences."
+**Deliverable**: Create `/tmp/gil_discovery.py` containing:
+1. A CPU-intensive function: sum of squares from 0 to 50 million (takes ~2-3 seconds on modern hardware)
+2. Run it 4 times sequentially — measure total time (should be ~8-12 seconds)
+3. Attempt to parallelize with `concurrent.futures.ThreadPoolExecutor(max_workers=4)` — measure time (still ~8-12 seconds, proves GIL blocks parallelism)
+4. Measure with `concurrent.futures.ProcessPoolExecutor(max_workers=4)` — measure time (should be ~2-3 seconds, 4x faster)
 
-**Expected Output**: Brief explanation (not deep technical details) that the GIL allows only one thread to run Python bytecode at once, preventing CPU parallelism with threading. Reference to memory safety or design decisions. Forward reference to Chapter 29 for deep dive.
+**Expected Observation**:
+- Sequential: ~8-12 seconds
+- ThreadPoolExecutor: ~8-12 seconds (GIL prevents parallelism)
+- ProcessPoolExecutor: ~2-3 seconds (true parallelism)
 
----
-
-### Prompt 2: Using InterpreterPoolExecutor
-
-Tell your AI:
-> "Generate code that: 1) Defines a CPU-intensive function that computes the sum of squares for 50 million iterations, 2) Benchmarks it with InterpreterPoolExecutor using 4 workers, 3) Shows timing and speedup calculation. Use modern Python 3.14+ patterns with type hints."
-
-**Expected Output**: Working code with `InterpreterPoolExecutor`, `time.perf_counter()`, proper context managers, and calculation of speedup (should be ~3-4x on 4-core machine). Verify the code runs on your machine.
-
----
-
-### Prompt 3: Comparing Executors
-
-Ask your AI:
-> "Compare InterpreterPoolExecutor vs ProcessPoolExecutor for CPU-bound work. What are the key differences in startup overhead, memory usage, and when you'd choose each? Create a decision table."
-
-**Expected Output**: Table or structured comparison showing:
-- InterpreterPoolExecutor: lightweight, faster, shared namespace, good for Python calculations
-- ProcessPoolExecutor: isolated processes, higher overhead, serialization cost, good for long-running independent tasks
+**Self-Validation**:
+- Why doesn't threading help CPU work?
+- Why do processes work better?
+- What's the overhead of creating processes vs threads?
 
 ---
 
-### Prompt 4: Designing Hybrid Systems
+### Part 2: AI as Teacher (Teaching Executor Patterns)
+**Your AI Prompt**:
+> "I tried to speed up my CPU calculation using ThreadPoolExecutor with 4 workers, but it's no faster than sequential. I read something about the GIL. Teach me: 1) What is the GIL? 2) Why does it prevent threading from helping CPU work? 3) What should I use instead of threading for CPU work? Show me code that actually achieves parallelism."
 
-Design with your AI:
-> "I need to build a system that: fetches 5 URLs concurrently using httpx, processes each response with expensive parsing (CPU), and stores results in a list. How would I architect this with asyncio + InterpreterPoolExecutor? Sketch the structure and explain where I/O and CPU overlap."
+**AI's Role**: Explain GIL concept (memory safety, reference counting), why threading can't help CPU work, and show ProcessPoolExecutor or InterpreterPoolExecutor pattern.
 
-**Expected Output**:
-- Async function to fetch data with `httpx.AsyncClient`
-- Sync function for CPU-intensive parsing
-- Main async function using `TaskGroup()` for concurrent fetches
-- `loop.run_in_executor()` for parallel processing
-- Explanation of why this is faster than sequential execution
+**Interactive Moment**: Ask a clarifying question:
+> "You mentioned ProcessPoolExecutor and InterpreterPoolExecutor—what's the difference? When would I choose one over the other? What about startup overhead?"
 
-**Validation**: Run your AI-assisted code. Verify that:
-- All URLs are fetched concurrently (not sequentially)
-- Processing happens in parallel
-- Total time is approximately max(fetch_time) + max(process_time), not sum of all
+**Expected Outcome**: AI clarifies that InterpreterPoolExecutor is lightweight (shared Python runtime) while ProcessPoolExecutor has high overhead (separate Python instances). You understand the tradeoff.
 
 ---
 
-### Safety & Ethics Note
+### Part 3: You as Teacher (Discovering Hybrid Patterns)
+**Setup**: AI generates hybrid asyncio + executor code. Your job is to test it and teach AI about optimization.
 
-- **AI-generated code may contain security vulnerabilities.** Always review for: proper error handling, no exposed credentials, input validation.
-- **Test performance claims locally.** Speedups depend on your machine's cores, workload characteristics, and system load.
-- **GIL is a real constraint, but Chapter 29 explores experimental solutions** like free-threaded Python mode (Python 3.13+). Stay informed as Python evolves.
-- **Respect resource limits.** Don't create 1000 worker interpreters—bind to `os.cpu_count()` for optimal parallelism.
+**AI's Initial Code** (ask for this):
+```python
+import asyncio
+from concurrent.futures import ProcessPoolExecutor
+import time
+
+def cpu_work(n: int) -> int:
+    """CPU-intensive: sum of squares"""
+    return sum(i*i for i in range(n))
+
+async def fetch_data(name: str) -> str:
+    """Simulate I/O"""
+    await asyncio.sleep(1)
+    return f"Data: {name}"
+
+async def main():
+    loop = asyncio.get_event_loop()
+
+    # Fetch 4 datasets concurrently
+    fetch_tasks = [
+        fetch_data("A"), fetch_data("B"),
+        fetch_data("C"), fetch_data("D")
+    ]
+    fetch_results = await asyncio.gather(*fetch_tasks)
+
+    # Process each result in parallel
+    with ProcessPoolExecutor(max_workers=4) as executor:
+        process_tasks = [
+            loop.run_in_executor(executor, cpu_work, 50_000_000)
+            for _ in range(4)
+        ]
+        process_results = await asyncio.gather(*process_tasks)
+
+    print(f"Fetched: {fetch_results}, Processed: {process_results}")
+
+asyncio.run(main())
+```
+
+**Your Task**:
+1. Run this code. Measure timing.
+2. Identify the opportunity: Fetch and process happen sequentially (fetch takes 1s, then process takes 3s, total ~4s)
+3. Teach AI:
+> "Your code fetches all 4 datasets (1 second, concurrent), then processes them in parallel (3 seconds). But what if I start processing while still fetching? How would I overlap I/O and CPU? Show me an architecture that does 'fetch one, process one, fetch next, process next' all concurrently."
+
+**Your Edge Case Discovery**: Ask AI:
+> "What if one task has much more CPU work than others (task A needs 10s, task B needs 1s)? Load balancing matters. How would I distribute work fairly across 4 workers? What's the difference between using 4 workers vs using `os.cpu_count()` workers?"
+
+**Expected Outcome**: You discover that hybrid systems need careful orchestration—overlapping I/O and CPU requires async/executor coordination, not just sequential stages.
 
 ---
 
-### Next Step
+### Part 4: Build Production Artifact (Student as Engineer)
+**Your Capstone for This Challenge**: Build a realistic I/O + CPU pipeline.
 
-Once you've explored these prompts and validated your understanding, move to **Lesson 5: Hybrid Workloads**, where you'll build complete real-world systems combining all the patterns you've learned.
+**Specification**:
+- Fetch from 6 data sources concurrently (simulate with asyncio.sleep, each 0.5-1.5s)
+- Each source returns a dataset (list of 50M integers, simulated)
+- Process each dataset with expensive calculation (sum of squares, simulated)
+- 4 worker processes for CPU work
+- Fetch and process should overlap (not sequential)
+- Measure: total time, fetch time, process time
+- Return: `{source: (fetch_ms, process_ms, result)}`
+- Type hints throughout
+
+**Deliverable**: Save to `/tmp/hybrid_pipeline.py`
+
+**Testing Your Work**:
+```bash
+python /tmp/hybrid_pipeline.py
+# Expected output:
+# Total time: ~4-5 seconds (1-2s fetch + 2-3s process, overlapped)
+# NOT 9-12 seconds (sequential) or 3-6 seconds (only parallel process)
+# Fetch completed: 6 sources in ~2s (concurrent)
+# Process completed: 6 sources in ~2s (parallel)
+# Overlap confirmed: total < fetch + process
+```
+
+**Validation Checklist**:
+- [ ] Code runs without errors
+- [ ] Fetch tasks run concurrently (all 6 fetch < 2s)
+- [ ] Process tasks run in parallel (uses ProcessPoolExecutor)
+- [ ] I/O and CPU overlap (fetch_time + process_time > total_time)
+- [ ] Total time < 6 seconds (proves parallelism)
+- [ ] Type hints complete
+- [ ] Proper executor cleanup (context manager or explicit shutdown)
+
+---
+
+**Time Estimate**: 35-40 minutes (5 min discover, 8 min teach/learn, 10 min edge cases, 12-17 min build artifact)
+
+**Key Takeaway**: You've mastered hybrid I/O + CPU systems. The GIL doesn't prevent parallelism—you just need the right tool (ProcessPoolExecutor) and careful orchestration to overlap I/O and CPU work.

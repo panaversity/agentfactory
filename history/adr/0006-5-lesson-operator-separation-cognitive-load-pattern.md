@@ -43,7 +43,7 @@
 
 5. **Prepares for Chapter 17**: Comparison and logical operators get dedicated lessons, providing solid foundation for Control Flow (if/while/for statements)
 
-6. **Manageable Implementation**: lesson-writer can focus on one operator type per lesson; easier to review and validate than monolithic operator lesson
+6. **Manageable Implementation**: content-implementer can focus on one operator type per lesson; easier to review and validate than monolithic operator lesson
 
 7. **Skills Proficiency Mapping**: CEFR levels (A1/A2/B1) map cleanly to lessons; cognitive load validation straightforward (count concepts per lesson)
 

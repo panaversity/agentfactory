@@ -95,7 +95,7 @@ differentiation:
   remedial_for_struggling: "Provide starter code with menu loop and function stubs, focus on one CRUD operation at a time, use simpler JSON structure without timestamps, work through creating a single note before attempting full app"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/001-part-4-chapter-22/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -831,44 +831,121 @@ Your application is complete when:
 
 ---
 
-## Try With AI
+## Try With AI: The Log File Analyzer Capstone
 
-The following prompts guide you through building and extending this capstone project. Use them in your AI tool (Claude Code, Gemini CLI, or ChatGPT) to explore concepts and validate your work.
+### Part 1: Design Data Pipeline Architecture (Your Turn First)
 
-### Prompt 1: Understand Architecture (Remember/Understand)
+**Before asking AI**, design the application structure:
 
-**Ask your AI**: "Show me the overall architecture of a note-taking app. What are the main components (menu loop, CRUD functions, data structure, file organization) and how do they interact with each other?"
+**Problem**: You're building a file-processing system that:
+1. **Inputs**: Reads log files (one per category: error, warning, info)
+2. **Transforms**: Filters by severity level, counts occurrences, extracts patterns
+3. **Outputs**: Generates a JSON report with statistics
 
-**Expected Outcome**: You'll get a clear picture of how the pieces fit together before writing code. Understanding architecture prevents design mistakes.
+**Your task**: Create an architecture document `capstone_design.md` that describes:
+1. **Input**: What log file format (line-by-line text, CSV, JSON)?
+2. **Processing flow**: What functions process logs? What data structures?
+3. **Output**: What JSON report structure? What statistics?
+4. **File organization**: Where do logs live? Where does output go?
+5. **Error handling**: What breaks? How do you recover?
 
----
-
-### Prompt 2: Implement Menu Loop (Apply)
-
-**Ask your AI**: "Write the main menu loop that displays options 1-7 and calls different functions based on user input. Add input validation to reject invalid choices and handle errors gracefully."
-
-**Expected Outcome**: You'll see how menu dispatch works—accepting input, validating it, routing to functions, and returning to menu. This is the "control flow" of the application.
-
----
-
-### Prompt 3: Analyze Data Structure Decisions (Analyze)
-
-**Ask your AI**: "I'm building a note-taking app and deciding: should I store all notes in one JSON file or create one file per note? Compare these approaches. Which is better and why? What are the performance implications?"
-
-**Expected Outcome**: You'll understand that file-per-note is better for this scale (10-50 notes) because:
-- Each note is independent (easier to update/delete)
-- Disk I/O is proportional to number of operations (not total data)
-- Categories naturally map to directories
-- Scaling to hundreds of notes remains responsive
+**Deliverable**: A text file showing your design with:
+- Pseudocode for main flow
+- Example input log file format
+- Example JSON output structure
+- List of potential errors and how to handle them
 
 ---
 
-### Prompt 4: Design Complete Application (Synthesize/Create)
+### Part 2: AI Guides Application Design (Discovery)
 
-**Ask your AI**: "Design a complete Note-Taking app with Create/Read/Update/Delete operations. Walk me through the application flow: user sees menu → selects option → app responds → returns to menu. What data structures do we need? What error cases must we handle? Show me the overall code structure."
+**Share your design with AI:**
 
-**Expected Outcome**: Cognitive closure. You'll integrate all Chapter 22 I/O concepts into a production-quality application demonstrating mastery. You're ready to build file-based CLI applications in your professional work and ready for Chapters 23+ (datetime operations, OOP, etc.).
+> "Here's my design for a log file analyzer [paste your architecture]. Review it:
+> 1. Is my design sound? What should I improve?
+> 2. Show me how to structure the code with CRUD functions and a menu loop
+> 3. What error cases from my list need special handling?
+> 4. Walk me through the complete application flow: start → menu → operation → return to menu"
+
+**Your evaluation**:
+- Did the AI improve your design?
+- Does the code structure make sense?
+- Can you explain the flow to someone else?
 
 ---
 
-**Congratulations!** You've completed the Note-Taking App capstone, integrating all I/O concepts from Chapter 22. Your application demonstrates professional-level CLI development using Python 3.14+, pathlib, JSON, file I/O, and menu-driven interaction. You're now ready to extend this pattern to larger applications and real-world projects.
+### Part 3: Student Tests Real Edge Cases (Debugging)
+
+**Challenge the AI with realistic problems:**
+
+> "Test my understanding of the capstone:
+> 1. What happens if a log file has corrupted JSON lines?
+> 2. If I'm in the middle of generating a report and the user presses Ctrl+C, what cleanup needs to happen?
+> 3. How do I handle a log file that's 1GB (can't load all at once)?
+> 4. What if two users run the app simultaneously on the same notes directory?
+>
+> For each case, show the error handling code I need."
+
+**Your debugging**: Create a test file `capstone_edge_cases.py` that demonstrates your understanding of each edge case.
+
+---
+
+### Part 4: Build the Complete Application (Convergence)
+
+**Build the full Note-Taking App (from Code Examples 5.1-5.3):**
+
+> "Help me build a complete note-taking application with all these features:
+> 1. Menu loop showing: Create/Read/Update/Delete/Search/List All/Exit
+> 2. CRUD functions using file I/O with context managers
+> 3. Directory organization by category (work/personal/learning)
+> 4. JSON persistence with proper encoding
+> 5. Input validation for all user inputs
+> 6. Error handling for missing files, corrupted JSON, permissions
+> 7. Search functionality that finds notes by keyword
+> 8. List that organizes notes by category
+>
+> The application should be production-ready and demonstrate all Chapter 22 concepts."
+
+**Refinement**:
+- Add support for 50+ notes without performance issues
+- Implement timestamps using datetime (Chapter 23 preview)
+- Add categories management: users can create custom categories
+- Implement a backup feature that exports all notes to JSON
+- Add search filtering: find notes created in the last 7 days
+
+---
+
+### Part 5: Reflect on Chapter 22 Concepts (Integration)
+
+**Synthesize everything you learned:**
+
+Create a file `capstone_reflection.md` with:
+
+1. **Console I/O (Lesson 1)**: How do you validate user input in the menu loop? Describe 2 validation patterns you used.
+
+2. **File I/O (Lesson 2)**: How do you safely read and write note files? Explain why context managers matter in your application. What file errors did you handle?
+
+3. **Path Handling (Lesson 3)**: How do you organize notes by category using pathlib? Why is pathlib better than string paths in your application?
+
+4. **Structured Data (Lesson 4)**: Why did you choose JSON instead of CSV for note storage? What data structure did you create? How do you handle encoding for international characters?
+
+5. **Integration**: How do all four lessons come together in your capstone? Walk through one complete operation (e.g., "Create a note") describing which lessons' concepts apply.
+
+6. **Architecture Decision**: Why did you choose file-per-note instead of all-notes-in-one-file? What tradeoffs did you make?
+
+7. **Error Handling Hierarchy**: Where do errors happen in your application? How does input validation differ from file operation error handling?
+
+**Deliverable**: A markdown reflection document (500-800 words) showing deep understanding of:
+- How all I/O concepts connect
+- Design decisions and tradeoffs
+- Error handling strategy across multiple layers
+- Real-world application of Python file operations
+
+**Time**: 50-65 min total (35-45 min coding + 15-20 min reflection)
+**Outcome**:
+- Complete Note-Taking App with all Chapter 22 concepts integrated
+- Reflection document demonstrating mastery of file I/O architecture
+
+---
+
+**Congratulations!** You've completed the Note-Taking App capstone, integrating all I/O concepts from Chapter 22. Your application demonstrates professional-level CLI development using Python 3.14+, pathlib, JSON, file I/O, and menu-driven interaction. Your reflection document proves you understand not just the "how" but the "why" of each design decision. You're now ready to extend this pattern to larger applications and ready for Chapters 23+ (datetime operations, OOP, etc.).

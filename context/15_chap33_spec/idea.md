@@ -637,12 +637,12 @@
 
   H. Subagents (Claude Code Delegation)
 
-  Already present in SpecKit Plus: chapter-planner, lesson-writer, technical-reviewer
+  Already present in SpecKit Plus: chapter-planner, content-implementer, validation-auditor
 
   # Main session (orchestrator)
   claude-code
-  > Launch lesson-writer subagent for Chapter 5, Lesson 1
-  > [lesson-writer subagent running...]
+  > Launch content-implementer subagent for Chapter 5, Lesson 1
+  > [content-implementer subagent running...]
   > Meanwhile, I'll review Chapter 4 validation results
 
   Use Case: Delegate repetitive implementation to specialized subagents while you focus on strategic

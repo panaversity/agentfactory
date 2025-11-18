@@ -53,7 +53,7 @@ differentiation:
   remedial_for_struggling: "Start with provided template code; focus on understanding each try/except block before adding new error handling"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/015-part-4-chapter-21/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -180,7 +180,7 @@ def validate_name(name: str) -> str:
     return name.strip()
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Notice that validation functions *raise* exceptions rather than returning success/failure flags. This is professional Python style. Your function either returns the validated data or signals an error. No ambiguity.
 
@@ -444,49 +444,178 @@ Once your basic parser works, here are ways to extend it:
 
 ---
 
-## Try With AI
+## Try With AI: The Robust CSV Parser Challenge
 
-Now let's apply everything you've learned by building and testing your CSV parser with AI guidance.
+### Part 1: Design Error Handling Architecture (Your Turn First)
 
-### Using Claude Code or Gemini CLI
+**Before asking AI**, analyze the CSV parser specification and predict all error scenarios:
 
-**Setup**: Open Claude Code (or your preferred AI companion) and prepare to implement the CSV parser interactively.
+**Given specification**:
+- Read CSV file with name, age, email columns
+- Validate: name (non-empty), age (0-150 integer), email (contains '@')
+- Handle: FileNotFoundError, PermissionError, ValueError
 
-### Prompt Set (Progressive Scope)
+**Your architecture task**: Create `error_scenarios.md` documenting:
 
-**Prompt 1 (Understand Specification)**:
-> "I'm building a CSV parser that validates user data and handles errors gracefully. The file contains name, age, email. I need to catch FileNotFoundError, ValueError (for bad age), and report bad rows without crashing. Show me the structure of a solution (not full code yet, just the outline and error handling strategy)."
+1. **Fatal errors** (stop entire program):
+   - What errors fall here? (file not found, permission denied, ...?)
+   - Where in code do these occur? (before loop, during loop, after loop?)
+   - What should user see when each happens?
 
-**Expected Output**: AI should describe:
-- File opening with error handling for file not found
-- Loop processing each row
-- Try/except around validation
-- Summary reporting
+2. **Recoverable errors** (skip row, continue):
+   - What errors fall here? (bad age, invalid email, ...?)
+   - How do you track which rows failed?
+   - What information should error messages contain?
+
+3. **Edge cases**:
+   - What if file exists but is empty?
+   - What if CSV has wrong number of columns?
+   - What if age is empty string `""`?
+   - What if row has trailing commas?
+
+**Your prediction**: For each error type above, write:
+- Which exception type will Python raise?
+- Where will you catch it? (outer try/except or inner loop try/except?)
+- What happens after you catch it? (stop program, skip row, use default?)
 
 ---
 
-**Prompt 2 (Implement Core Logic)**:
-> "Now write the validation functions for age (must be 0-150 integer), email (must contain '@'), and name (non-empty). Each should raise ValueError with a helpful message if invalid. Use type hints and docstrings."
+### Part 2: AI Explains Error Handling Layers (Discovery)
 
-**Expected Output**: Three functions with proper error handling, type hints, and docstrings. Validate the functions work by asking: "Show me test code that calls each function with both valid and invalid inputs."
+Share your architecture with AI:
+
+> "I designed error handling for a CSV parser. Here's my architecture:
+>
+> [paste your error_scenarios.md]
+>
+> Questions:
+> 1. You categorized errors as 'fatal' vs 'recoverable'. What's the rule for deciding which category an error belongs to?
+> 2. I said FileNotFoundError should stop the program. But what if I want to retry with a different filename? How would the architecture change?
+> 3. For recoverable errors (bad age), I'll skip the row. But should I track error details? What information is useful for debugging?
+> 4. I listed edge cases (empty file, wrong columns). Are these ValueError, or different exception types? How do I handle each?"
+
+**Your evaluation task**:
+- Can you explain why file errors (FileNotFoundError) should be caught OUTSIDE the row loop, but validation errors (ValueError) should be caught INSIDE?
+- What's the difference between catching an exception and re-raising it with `raise`?
 
 ---
 
-**Prompt 3 (Test Error Handling)**:
-> "I'm testing my parser. Create 3 test CSV files: one with valid data, one with bad age values, one with invalid emails. Then write test code that runs my parser against each file and shows the results."
+### Part 3: Student Teaches AI (Test-Driven Error Handling)
 
-**Expected Output**: Sample CSV files and test script demonstrating your parser works correctly for valid data and gracefully handles invalid data without crashing.
+Challenge AI by writing test cases BEFORE implementing the parser:
+
+> "I'm writing tests for my CSV parser before implementing it. Here are my test cases:
+>
+> **Test 1: Valid data**
+> ```
+> name,age,email
+> Alice,28,alice@example.com
+> Bob,35,bob@example.com
+> ```
+> Expected: 2 valid records, 0 errors
+>
+> **Test 2: Mixed valid/invalid**
+> ```
+> name,age,email
+> Alice,28,alice@example.com
+> Bob,invalid,bob@example.com
+> Charlie,35,charlie-at-example.com
+> ```
+> Expected: 1 valid record, 2 errors (bad age on row 2, bad email on row 3)
+>
+> **Test 3: Fatal error**
+> File: `nonexistent.csv`
+> Expected: FileNotFoundError with message showing filename
+>
+> **For EACH test**:
+> 1. What assertions should I write? (what to check for success/failure?)
+> 2. Show me pytest code that verifies my parser behaves correctly
+> 3. What if my parser raises an exception instead of returning a result dict? How do I test that?
+> 4. How do I test that error messages contain useful information (row number, field name, bad value)?"
+
+**Your implementation task**:
+- Write the 3 pytest test functions AI suggested
+- Run them (they'll fail—parser doesn't exist yet)
+- Now implement the parser to make tests pass
+- Which test was hardest to satisfy? Why?
 
 ---
 
-**Prompt 4 (Debug and Validate)**:
-> "Test my parser with these edge cases: empty file, file with only header, file where age is an empty string, email without '@'. Does it handle all of these without crashing? What improvements would make it more robust?"
+### Part 4: Build Production-Ready CSV Parser (Convergence)
 
-**Expected Output**: AI identifies missing edge cases and suggests improvements like:
-- Checking for empty lines
-- Validating CSV format (correct number of fields)
-- Better error messages including row numbers
-- Handling files with unusual line endings (Windows vs Unix)
+Create a complete, robust CSV parser with AI:
+
+> "Generate a production-ready CSV parser with comprehensive error handling. Include:
+>
+> **Validation functions** (3 functions):
+> - `validate_name(name: str) -> str` — raises ValueError if empty
+> - `validate_age(age_str: str) -> int` — raises ValueError if not 0-150
+> - `validate_email(email: str) -> str` — raises ValueError if no '@'
+>
+> **Parser function**:
+> - `parse_csv_file(filename: str) -> dict`
+> - Returns: `{'valid': [...], 'invalid': [...], 'total': int}`
+> - Handles: FileNotFoundError, PermissionError, ValueError
+> - Logs each error with row number and details
+>
+> **Main function**:
+> - Calls parser
+> - Prints summary report (total rows, valid count, invalid count)
+> - Shows all validation errors with context
+>
+> For EACH component:
+> - Type hints on all functions
+> - Docstrings with Raises section
+> - Example usage in docstring
+> - Error messages that help user fix the problem"
+
+**Refinement**:
+> "Now extend the parser with these production features:
+> 1. **Retry logic**: If file is locked (PermissionError), retry 3 times with 1-second delays
+> 2. **Logging**: Write all errors to `parser.log` with timestamps
+> 3. **Graceful degradation**: If validation fails on ALL rows, still return summary (don't crash)
+> 4. **Multiple file formats**: Support both CSV and JSON input
+>
+> Show me the modified code and how each feature integrates with existing error handling."
+
+---
+
+### Part 5: Reflect on Chapter 21 Concepts (Integration)
+
+> "Let's reflect on the CSV parser project and all of Chapter 21:
+>
+> **Exception Fundamentals (Lesson 1)**:
+> - Which exception types did your parser encounter? (FileNotFoundError, ValueError, PermissionError)
+> - How did try/except prevent crashes? Give specific example from your code.
+> - Did you use exception chaining (`raise ... from e`)? Where and why?
+>
+> **Except-Else-Finally (Lesson 2)**:
+> - Did you use `else` block anywhere? (runs when try succeeds)
+> - Did you use `finally` for cleanup? (close file, release resources)
+> - How did flow control work in your nested try/except blocks?
+>
+> **Custom Exceptions (Lesson 3)**:
+> - Did you create custom exceptions (CSVParsingError, ValidationError)?
+> - If not, where COULD custom exceptions improve your parser?
+> - Show me a custom exception hierarchy for CSV parsing errors
+>
+> **Error Strategies (Lesson 4)**:
+> - Which strategies did you apply? (retry, fallback, degradation, logging)
+> - For FileNotFoundError, you chose fail-fast. Why not retry or fallback?
+> - For ValueError (bad age), you chose skip-row. Why not fail-fast?
+> - What would change if this parser ran in production handling 1M rows?
+>
+> **Integration**:
+> - What was hardest about combining all these concepts?
+> - If you could redesign error handling from scratch, what would you change?
+> - What error handling pattern will you reuse in future projects?
+>
+> Write `chapter_21_reflection.md` documenting insights and reusable patterns."
+
+---
+
+**Time**: 55-65 minutes
+**Outcome**: You'll have a production-grade CSV parser demonstrating all Chapter 21 concepts (try/except/else/finally, custom exceptions, error strategies, logging), comprehensive test coverage, and clear understanding of when to apply each error handling pattern. The reflection integrates all 5 lessons into cohesive understanding.
 
 ---
 

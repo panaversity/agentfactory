@@ -772,43 +772,396 @@ class User:
     created_at: datetime = field(compare=False)
 ```
 
-## Try With AI
+---
 
-In this lesson, you mastered advanced dataclass features: field customization, validation through `__post_init__()`, InitVar for temporary data, and serialization patterns. Now let's synthesize and extend your understanding.
+## Part 1: Discover Validation by Building Broken Code First
 
-Use **Claude Code** or your preferred AI companion to work through these prompts. For each, describe what you want before asking for code:
+**Your Role**: Active experimenter discovering why validation matters
 
-**Prompt 1 (Recall)**: "What's the difference between `default`, `default_factory`, and `InitVar`? When would you use each?"
+Before learning `__post_init__()`, experience what happens without validation.
 
-**Expected Outcome**: You explain that `default` works for immutable types, `default_factory` creates new mutable objects per instance, and `InitVar` passes data to `__post_init__()` without storing.
+### Discovery Exercise: Invalid States Without Validation
 
-**Prompt 2 (Understand)**: "How does `__post_init__()` work? Show me step-by-step what happens when I create a dataclass instance."
+**Step 1: Create invalid instances easily**
 
-**Expected Outcome**: You trace: dataclass `__init__()` runs → `__post_init__()` runs → validation happens → computed fields set.
+```python
+from dataclasses import dataclass
 
-**Prompt 3 (Apply)**: "Create a `Product` dataclass with:
-- Required: sku, name, base_price
-- Optional: discount_percent (InitVar, used in __post_init__)
-- Computed: final_price (calculated in __post_init__)
-- Validation: prices > 0, discount 0-100%
+@dataclass
+class Product:
+    name: str
+    price: float
 
-Include __post_init__() with validation. Test creating valid and invalid products."
+# Easy to create invalid states:
+p1 = Product("Widget", -50)      # Negative price!
+p2 = Product("", 100)             # Empty name!
+p3 = Product("Invalid", "lots")   # Wrong type!
 
-**Expected Outcome**: Working dataclass with InitVar, validation, and computed field. Attempts to create invalid instances fail with clear error messages.
+print(p1)  # Product(name='Widget', price=-50)
+# No error—bad data is silently accepted
 
-**Prompt 4 (Create)**: "Design a `BlogPost` dataclass for an API response. Include:
-- Required: post_id, title, author, content
-- Optional: tags, published_at
-- Metadata on title field (e.g., max length)
-- __post_init__() validation
-- Methods to convert to dict and from dict for JSON serialization
+# Hours later, bugs appear:
+print(p1.price * 100)  # Calculation with negative price
+```
 
-Show how you'd handle nested comments (Comment dataclass)."
+**Problem you'll notice**: Dataclasses accept any data without validation. Invalid states silently propagate through your code.
 
-**Expected Outcome**: Production-ready dataclass design with metadata, validation, serialization methods, and handling of nested objects.
+**Step 2: What we want instead**
 
-**Safety/Ethics Note**: Dataclass validation prevents invalid states at creation time, which is safer than discovering invalid data later. Always validate in `__post_init__()` for production code. When handling user input, validate thoroughly—don't trust user-provided emails, URLs, or sensitive data.
+```python
+# Desired behavior:
+# Try to create Product("Widget", -50) → Immediate error: "Price must be positive"
+# Try to create Product("", 100) → Immediate error: "Name cannot be empty"
+```
+
+**Deliverable**: Document problems with unvalidated data:
+- Invalid states accepted silently
+- Bugs appear far from the source
+- Hard to debug
 
 ---
 
-**You've now mastered both basic dataclasses (Lesson 3) and advanced features (Lesson 4).** In Lesson 5, you'll synthesize everything by comparing metaclasses, dataclasses, and traditional classes to choose the right tool for different problems.
+## Part 2: AI Teaches `__post_init__()` Validation
+
+**Your Role**: Student learning from AI Teacher
+
+Now ask AI to teach you how `__post_init__()` enables validation.
+
+### AI Teaching Prompt
+
+Ask your AI companion:
+
+> "I want to add validation to a dataclass so invalid instances can't be created. Explain:
+>
+> 1. What is `__post_init__()` and when does it run?
+> 2. Show me how to validate fields in `__post_init__()` (raise ValueError if invalid)
+> 3. What's the difference between `default` and `default_factory`?
+> 4. What is `InitVar` and when would you use it?
+> 5. Show me a complete Product dataclass with validation, defaults, and InitVar"
+
+### What You'll Learn from AI
+
+**Expected AI Response** (summary):
+- **`__post_init__()`**: Runs after `__init__()`, perfect for validation
+- **Validation pattern**: Raise ValueError/TypeError with clear messages
+- **`default`**: For immutable types (int, str, tuple)
+- **`default_factory`**: For mutable types (list, dict)
+- **`InitVar`**: Temporary fields passed to `__post_init__()` but not stored
+
+### Convergence Activity
+
+After AI explains, **test your understanding**:
+
+Ask AI: "Create a Product dataclass with:
+1. name (required, non-empty string)
+2. price (required, positive float)
+3. discount_percent (InitVar, optional, 0-100)
+4. final_price (computed field, set in __post_init__)
+5. tags (optional, default empty list)
+
+Show __post_init__() that validates all inputs and computes final_price."
+
+**Deliverable**: Write a 3-paragraph explanation:
+1. How `__post_init__()` enables fail-fast validation
+2. The difference between `default` and `default_factory`
+3. When and why you'd use `InitVar`
+
+---
+
+## Part 3: Student Challenges AI with Edge Cases
+
+**Your Role**: Student teaching AI about validation subtleties
+
+Test AI's understanding of dataclass validation patterns.
+
+### Challenge 1: Mutable Defaults in `__post_init__()`
+
+**Your prompt to AI**:
+> "Here's code with a bug:
+>
+> ```python
+> @dataclass
+> class Container:
+>     items: list = field(default_factory=list)
+>
+>     def __post_init__(self):
+>         if len(self.items) > 10:
+>             raise ValueError('Too many items')
+> ```
+>
+> If I do this:
+> ```python
+> c1 = Container([1, 2, 3, 4, 5])  # Valid
+> c2 = Container()  # Creates empty list
+> ```
+>
+> Predict: Will c2.items be shared across instances? Why or why not?"
+
+**Expected learning**: `default_factory=list` creates a NEW list each time, so no sharing. AI should explain why this is essential.
+
+### Challenge 2: Validation After Nested Object Creation
+
+**Your prompt to AI**:
+> "I have nested dataclasses:
+>
+> ```python
+> @dataclass
+> class Address:
+>     zip_code: str
+>
+>     def __post_init__(self):
+>         if not self.zip_code.isdigit() or len(self.zip_code) != 5:
+>             raise ValueError('Invalid zip code')
+>
+> @dataclass
+> class Person:
+>     name: str
+>     address: Address
+>
+>     def __post_init__(self):
+>         if len(self.name) < 2:
+>             raise ValueError('Name too short')
+> ```
+>
+> If I create `Person('Alice', Address('INVALID'))`, which error appears first and why?"
+
+**Expected learning**: Address validation runs first (in Address's `__post_init__()`), so that error appears before Person's validation.
+
+### Challenge 3: Computing Derived Fields
+
+**Your prompt to AI**:
+> "Show me how to use InitVar to pass a discount_percent, then compute final_price in __post_init__():
+>
+> ```python
+> @dataclass
+> class Product:
+>     name: str
+>     price: float
+>     discount_percent: InitVar[float] = 0  # ???
+>     final_price: float = field(init=False)  # ???
+> ```
+>
+> Explain: What happens to discount_percent? Why is final_price set to field(init=False)?"
+
+**Deliverable**: Document three edge cases and verify AI's predictions through testing.
+
+---
+
+## Part 4: Build Advanced Dataclass Patterns Reference
+
+**Your Role**: Knowledge synthesizer creating production patterns
+
+### Your Advanced Dataclass Patterns Reference
+
+Create a file called `advanced_dataclass_patterns.md`:
+
+```markdown
+# Advanced Dataclass Patterns and Validation
+*Chapter 26, Lesson 4*
+
+## Pattern 1: Basic Validation in `__post_init__()`
+
+```python
+from dataclasses import dataclass
+
+@dataclass
+class User:
+    name: str
+    age: int
+
+    def __post_init__(self):
+        if len(self.name) < 2:
+            raise ValueError("Name must be at least 2 characters")
+        if self.age < 0 or self.age > 150:
+            raise ValueError("Age must be between 0 and 150")
+
+# Valid
+u = User("Alice", 30)
+
+# Invalid - raises ValueError immediately
+try:
+    u = User("A", 25)  # Error: Name must be at least 2 characters
+except ValueError as e:
+    print(f"Validation failed: {e}")
+```
+
+## Pattern 2: Using `field()` with Defaults
+
+```python
+from dataclasses import dataclass, field
+
+@dataclass
+class TaskList:
+    name: str
+    tasks: list = field(default_factory=list)
+    metadata: dict = field(default_factory=dict)
+    priority: int = 0
+
+# All these work
+tl1 = TaskList("Work")
+tl2 = TaskList("Personal", [1, 2], {"owner": "me"})
+
+# Each instance gets its own list/dict
+tl1.tasks.append("Task A")
+tl2.tasks  # Still empty
+```
+
+## Pattern 3: Using `InitVar` for Temporary Initialization Data
+
+```python
+from dataclasses import dataclass, InitVar, field
+
+@dataclass
+class Product:
+    name: str
+    price: float
+    discount_percent: InitVar[float] = 0
+    final_price: float = field(init=False)
+
+    def __post_init__(self, discount_percent):
+        # discount_percent is available here but NOT stored as attribute
+        self.final_price = self.price * (1 - discount_percent / 100)
+
+p = Product("Widget", 100.0, discount_percent=10)
+print(p.final_price)  # 90.0
+print(hasattr(p, 'discount_percent'))  # False - not stored
+```
+
+## Pattern 4: Field Metadata for Documentation
+
+```python
+from dataclasses import dataclass, field
+
+@dataclass
+class APIResponse:
+    user_id: int = field(metadata={"description": "Unique user ID"})
+    email: str = field(metadata={"description": "User email", "pattern": ".*@.*"})
+    created_at: str = field(metadata={"format": "ISO8601"})
+
+# Access metadata
+for f in APIResponse.__dataclass_fields__.values():
+    print(f.name, f.metadata)
+```
+
+## Pattern 5: Serialization Methods
+
+```python
+from dataclasses import dataclass, asdict, astuple
+import json
+
+@dataclass
+class Person:
+    name: str
+    age: int
+
+p = Person("Alice", 30)
+
+# Convert to dict
+d = asdict(p)  # {'name': 'Alice', 'age': 30}
+
+# Convert to JSON string
+json_str = json.dumps(d)
+
+# Reconstruct from dict
+p2 = Person(**json.loads(json_str))
+```
+
+## Pattern 6: Nested Dataclasses
+
+```python
+from dataclasses import dataclass
+
+@dataclass
+class Address:
+    street: str
+    city: str
+
+@dataclass
+class Person:
+    name: str
+    address: Address  # Nested dataclass
+
+p = Person("Alice", Address("Main St", "NYC"))
+print(p.address.city)  # NYC
+
+# Equality works recursively
+p2 = Person("Alice", Address("Main St", "NYC"))
+print(p == p2)  # True
+```
+
+---
+
+## Validation Best Practices
+
+1. **Fail fast**: Validate in `__post_init__()`, not later
+2. **Clear messages**: Always include what was wrong in ValueError
+3. **Type hints first**: Use @dataclass with full type hints
+4. **Immutable when possible**: Use frozen=True for config objects
+5. **Test invalid creation**: Always test that invalid inputs raise errors
+
+## Common Gotchas
+
+### Gotcha 1: InitVar not accessible outside `__post_init__()`
+```python
+@dataclass
+class Bad:
+    password: InitVar[str]
+
+    def some_method(self):
+        print(self.password)  # Error! Not stored as attribute
+```
+
+### Gotcha 2: Validation doesn't prevent mutation
+```python
+@dataclass(frozen=False)
+class Config:
+    value: int
+
+    def __post_init__(self):
+        if self.value < 0:
+            raise ValueError("Must be positive")
+
+c = Config(10)
+c.value = -5  # Works! Validation only runs at creation
+```
+
+### Gotcha 3: Field metadata is not enforced
+```python
+@dataclass
+class User:
+    age: int = field(metadata={"min": 0})
+
+    def __post_init__(self):
+        # Metadata doesn't auto-validate!
+        # You must manually check:
+        if self.age < 0:
+            raise ValueError("Age must be positive")
+```
+```
+
+**Guide Requirements**:
+1. **Six practical patterns** — Basic validation through nested dataclasses
+2. **Validation best practices** — 5+ guidelines
+3. **Common gotchas** — 3-4 with fixes
+
+**Deliverable**: Complete `advanced_dataclass_patterns.md` as your production reference.
+
+---
+
+## Summary: Bidirectional Learning Pattern
+
+**Part 1 (Student explores)**: You experienced problems with unvalidated dataclasses
+**Part 2 (AI teaches)**: AI explained `__post_init__()`, `InitVar`, and field()
+**Part 3 (Student teaches)**: You challenged AI with mutable defaults, nested validation, and InitVar semantics
+**Part 4 (Knowledge synthesis)**: You built production-ready validation patterns
+
+### What You've Built
+
+1. Documentation of validation problems
+2. Understanding of `__post_init__()`, `InitVar`, and `field()` (in your own words)
+3. Edge case testing with AI
+4. `advanced_dataclass_patterns.md` — Production patterns
+
+### Next Steps
+
+You've now mastered dataclasses. Future chapters will show you Pydantic (which automates even more validation), and you'll understand why Pydantic is sometimes worth adding as a dependency.

@@ -64,12 +64,12 @@ differentiation:
   remedial_for_struggling: "Focus on one rounding function at a time; use concrete examples (money amounts, temperature) before abstract concepts; start with positive numbers only"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.2"
+generated_by: "content-implementer v3.0.2"
 source_spec: "specs/001-part-4-chapter-23/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
 git_author: "Claude Code"
-workflow: "lesson-writer subagent"
+workflow: "content-implementer subagent"
 version: "1.0.0"
 ---
 
@@ -156,7 +156,7 @@ print(safe_sqrt(2.25))    # 1.5
 
 The key insight: **validation before operation**. Check your inputs first, handle errors gracefully, and give users clear feedback.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize every function's constraints—you understand the principle: some operations are mathematically impossible. You ask AI to help you understand error messages and explain *why* an operation failed. Syntax is cheap; understanding mathematical validity is gold.
 
@@ -371,56 +371,325 @@ This is validation-first thinking: check inputs, understand constraints, communi
 
 ---
 
-## Try With AI
+## Try With AI: The Scientific Calculator Challenge
 
-You've learned the foundations of Python's math module. Now let's apply that knowledge with your AI companion.
+You've learned the foundations of Python's math module. Now you're ready to apply this knowledge by building a production-focused scientific calculator that demonstrates precision handling, validation, and the Three Roles Framework (Student, AI Teacher, Co-Worker).
 
-### Setup
+### Challenge Overview
 
-Open ChatGPT (or your preferred AI companion—Gemini CLI, Claude CLI, or another tool if you've already configured it). You'll reference this lesson as context while exploring mathematical operations.
+**The Scientific Calculator Builder**: You're building a calculator that performs precise mathematical operations, demonstrating why Python's math module matters in scientific contexts where precision, validation, and error handling directly impact results.
 
-### Prompt Set (Progressive Exploration)
+---
 
-**Prompt 1 (Recall):**
+## Part 1: Precision Comparison (Independent Exploration)
 
-> "Explain the difference between `round()`, `math.ceil()`, and `math.floor()` with examples. What are the input and output for each when you round 2.7?"
+**Your Role**: Researcher discovering precision differences
 
-**Expected Outcome:**
-- Clear explanation that `round()` uses banker's rounding, `ceil()` always rounds up, `floor()` always rounds down
-- Examples showing different results for the same input (2.7 → 3, 3, 2)
-- Understanding that negative numbers behave differently with `ceil()` and `floor()`
+Before working with AI, you'll manually investigate how Python's math module differs from built-in operations. This builds intuition about *why* precision matters.
 
-**Prompt 2 (Understand):**
+### Part 1 Task: Create `precision_comparison.md`
 
-> "Why does Python separate built-in functions like `pow()` and `round()` from the math module functions like `math.sqrt()` and `math.sin()`? What's the design philosophy?"
+Document your findings in a markdown file. You'll explore three scenarios:
 
-**Expected Outcome:**
-- Explanation of namespace and module design
-- Understanding that not every function belongs in the core language
-- Appreciation for importing modules only when needed
+**Scenario 1: Circle Calculations**
+- Calculate circle area using hardcoded `3.14159` vs `math.pi`
+- Try with radius: 1000, 100000, 1000000
+- Record: How much error accumulates with each? When does error matter?
+- Question: In what applications would this precision matter (GPS, physics simulations, engineering)?
 
-**Prompt 3 (Apply):**
+**Scenario 2: Rounding in Financial Systems**
+- Calculate total: 0.1 + 0.2 (known floating-point problem)
+- Try `round()`, `math.ceil()`, `math.floor()` on the result
+- Record: Which rounding strategy works for pricing? Currency conversion?
+- Question: Why can't you just use `round()` everywhere?
 
-> "Generate a function that validates input before calculating square root. It should accept a number, check if it's valid (not negative), and return either the square root or an informative error message. Include type hints."
+**Scenario 3: Domain Error Handling**
+- Test: `math.sqrt(-1)`, `math.log(0)`, `math.sin(999999)`
+- Record: Which produce errors? Which produce weird values?
+- Question: How would you validate inputs before operations?
 
-**Expected Outcome:**
-- Working function with try/except or conditional validation
-- Proper type hints on parameters and return value
-- User-friendly error messages (not just domain errors)
-- Code you can test and modify
+### Part 1 Deliverable
 
-**Prompt 4 (Analyze):**
+File: `precision_comparison.md` with:
+- Three scenario investigations
+- Your observations about when precision matters
+- Three questions you want to ask AI
 
-> "When would you use `math.tau` instead of `math.pi` in a real application? Give specific examples and explain why one is better than the other in each case."
+**Time**: 15-20 minutes (hands-on exploration)
 
-**Expected Outcome:**
-- Recognition that τ = 2π represents full rotations
-- Examples like rotating something 360 degrees (use τ) vs calculating semicircle area (use π)
-- Understanding that mathematical constants communicate intent—choosing the right one makes code clearer
+---
 
-### Safety & Ethics Note
+## Part 2: AI as Teacher (Learning from AI)
 
-AI can generate mathematical functions quickly, but always verify the logic. Domain errors (negative sqrt, log of zero) are intentional constraints—not bugs. When AI generates code, test it with edge cases: zero, negative numbers, very large values. Understanding *why* an operation fails teaches you more than just getting the correct answer.
+**Your Role**: Student receiving expert explanation
+
+Now you'll bring your observations to AI and learn the *principles* behind precise mathematical operations.
+
+### Part 2 Prompts
+
+**Prompt 1 (Establish Context)**:
+
+> "I've been exploring Python's math module and how it differs from built-in functions. Here's what I noticed [paste your precision findings]. Explain why Python separates math module functions from built-in operations. What's the design philosophy?"
+
+**Expected AI Response**: Explanation of:
+- Namespace and module design principles
+- Precision vs performance tradeoffs
+- When to use `math.pi` vs hardcoded constants
+- Why domain validation matters
+
+**Prompt 2 (Deepen Understanding)**:
+
+> "Looking at my findings, I discovered that different rounding strategies produce different results. Explain banker's rounding (round half to even) vs standard rounding. When would I use `round()` vs `math.ceil()` vs `math.floor()` in a real application?"
+
+**Expected AI Response**: Practical guidance on:
+- How banker's rounding minimizes bias in large datasets
+- When ceiling/floor are necessary (pagination, quotas, deadlines)
+- Code examples showing tradeoffs
+
+**Prompt 3 (Learn the Pattern)**:
+
+> "Show me the pattern for safe mathematical operations. How do I validate inputs before calling `math.sqrt()`, `math.log()`, or other functions that have domain constraints? Include type hints and error messages."
+
+**Expected AI Response**: Working code demonstrating:
+- Input validation before operations
+- Proper error messages (not just domain errors)
+- Type hints for clarity
+- Tests with edge cases
+
+### Part 2 Outcome
+
+You understand:
+- The principles behind math module design
+- When precision is critical vs when it doesn't matter
+- How to validate mathematical operations safely
+
+---
+
+## Part 3: Student as Teacher (Challenging AI with Edge Cases)
+
+**Your Role**: Quality tester challenging AI with edge cases
+
+Now you flip roles. You've learned the theory—now push AI to clarify tricky scenarios.
+
+### Part 3 Challenges
+
+**Challenge 1: Floating-Point Precision Limits**
+
+> "You said to use `math.pi` for precision. But show me: what is the difference between `math.pi` and `3.141592653589793` in a calculation with 1 billion iterations? At what scale does floating-point precision actually matter? When can I use hardcoded values safely?"
+
+**Your role**: Parse AI's response. Is the answer testable? Does it explain when you can simplify?
+
+**Challenge 2: Validation vs User Experience**
+
+> "If I validate input before every `math.sqrt()` call, my code becomes verbose. Show me how professional applications handle this tradeoff. Do they validate aggressively, or do they let exceptions happen and catch them? What's the pattern you see in production code?"
+
+**Your role**: Evaluate AI's answer. Does it explain real-world tradeoffs? Does it show professional practice?
+
+**Challenge 3: Constants Communication**
+
+> "You explained that `math.tau` vs `math.pi` communicates intent. But when I see legacy code using `2 * math.pi`, how do I decide: keep it as-is for compatibility, or refactor to `math.tau`? What's the professional decision?"
+
+**Your role**: Assess whether AI acknowledges the complexity (there's no single right answer). Good responses explain tradeoffs; bad responses declare one way "correct."
+
+### Part 3 Deliverable
+
+File: `edge_case_challenges.md` with:
+- Three challenges you posed to AI
+- AI's responses
+- Your assessment: Was AI's answer helpful? Complete? Did it acknowledge complexity?
+
+**Time**: 15-20 minutes (interactive exploration)
+
+---
+
+## Part 4: Build Validated Scientific Calculator (Convergence)
+
+**Your Role**: Developer building production code
+
+Now integrate everything—precision insights, validation patterns, and AI partnerships—into a real calculator.
+
+### Part 4 Deliverable: `scientific_calculator.py`
+
+Build a calculator with these features:
+
+```python
+from datetime import datetime
+import math
+
+class ScientificCalculator:
+    """Production-grade calculator demonstrating precise math operations."""
+
+    def __init__(self):
+        """Initialize calculator with operation logging."""
+        self.operations_log: list[dict] = []
+
+    def sqrt_safe(self, value: float) -> float | None:
+        """Calculate square root with validation.
+
+        Args:
+            value: Number to find square root of
+
+        Returns:
+            Square root as float, or None if invalid
+        """
+        # Validate input BEFORE operation
+        if value < 0:
+            return None
+        return math.sqrt(value)
+
+    def circle_area(self, radius: float, use_precise_pi: bool = True) -> float:
+        """Calculate circle area with optional precision control.
+
+        Args:
+            radius: Circle radius
+            use_precise_pi: Use math.pi (True) or hardcoded value (False)
+
+        Returns:
+            Area calculated with specified precision
+        """
+        if radius < 0:
+            raise ValueError(f"Radius must be positive, got {radius}")
+
+        pi_value: float = math.pi if use_precise_pi else 3.14159
+        area: float = pi_value * (radius ** 2)
+
+        # Log the operation
+        self._log_operation("circle_area", {"radius": radius, "pi_precise": use_precise_pi, "result": area})
+        return area
+
+    def round_money(self, amount: float, strategy: str = "ceil") -> int:
+        """Round money with chosen strategy (critical for financial apps).
+
+        Args:
+            amount: Dollar amount with cents
+            strategy: "round" (banker's), "ceil" (always up), "floor" (always down)
+
+        Returns:
+            Rounded amount in cents
+        """
+        if strategy == "round":
+            return round(amount * 100)
+        elif strategy == "ceil":
+            return math.ceil(amount * 100)
+        elif strategy == "floor":
+            return math.floor(amount * 100)
+        else:
+            raise ValueError(f"Unknown strategy: {strategy}")
+
+    def safe_log(self, value: float, base: str = "natural") -> float | None:
+        """Calculate logarithm with validation (log domain: x > 0).
+
+        Args:
+            value: Number to find logarithm of
+            base: "natural" (ln) or "base10" (log10)
+
+        Returns:
+            Logarithm result, or None if invalid
+        """
+        if value <= 0:
+            return None
+
+        if base == "natural":
+            return math.log(value)
+        elif base == "base10":
+            return math.log10(value)
+        else:
+            raise ValueError(f"Unknown base: {base}")
+
+    def _log_operation(self, operation: str, details: dict) -> None:
+        """Track operations for debugging and validation."""
+        self.operations_log.append({
+            "timestamp": datetime.now(),
+            "operation": operation,
+            "details": details
+        })
+
+    def show_operations_log(self) -> None:
+        """Display all operations performed (for validation/debugging)."""
+        if not self.operations_log:
+            print("No operations logged yet")
+            return
+
+        print("Operations Log:")
+        for entry in self.operations_log:
+            print(f"  {entry['timestamp'].isoformat()} - {entry['operation']}: {entry['details']}")
+```
+
+### Part 4 Testing
+
+Test your calculator with:
+
+```python
+# Create calculator
+calc: ScientificCalculator = ScientificCalculator()
+
+# Test 1: Precision comparison
+area_precise = calc.circle_area(1000000, use_precise_pi=True)
+area_approx = calc.circle_area(1000000, use_precise_pi=False)
+print(f"Precision difference: {abs(area_precise - area_approx)}")
+
+# Test 2: Rounding strategies
+print(f"$9.995 with ceil: ${calc.round_money(9.995, 'ceil') / 100}")
+print(f"$9.995 with floor: ${calc.round_money(9.995, 'floor') / 100}")
+print(f"$9.995 with round: ${calc.round_money(9.995, 'round') / 100}")
+
+# Test 3: Error handling
+print(f"sqrt(-1) = {calc.sqrt_safe(-1)}")  # Returns None (safe)
+print(f"log(0) = {calc.safe_log(0)}")      # Returns None (safe)
+print(f"log(100) = {calc.safe_log(100, base='base10')}")  # Works
+
+# Show operations performed
+calc.show_operations_log()
+```
+
+### Part 4 Requirements
+
+Your calculator must:
+1. Implement `sqrt_safe()` with validation ✓
+2. Implement `circle_area()` with precision toggle ✓
+3. Implement `round_money()` with three strategies ✓
+4. Implement `safe_log()` with domain validation ✓
+5. Include operation logging for debugging ✓
+6. Include comprehensive type hints ✓
+7. Include docstrings explaining each method ✓
+8. Pass test suite with edge cases ✓
+
+### Part 4 Conversation with AI
+
+Before finalizing, ask AI:
+
+> "I've built a scientific calculator with validation, logging, and precision handling. Does this demonstrate production-grade practices? Are there edge cases I'm missing? Should I add features like batch operations or performance metrics?"
+
+**What you're validating**: Does your implementation align with professional expectations?
+
+### Part 4 Deliverable
+
+File: `scientific_calculator.py` with working, documented calculator code
+
+**Time**: 25-35 minutes (implementation + testing)
+
+---
+
+## Integrated Learning Outcomes
+
+You've now practiced all Three Roles:
+
+**Part 1 - Student Explores**: You discovered precision matters through hands-on testing
+**Part 2 - AI Teaches**: You learned the principles from expert explanation
+**Part 3 - Student Teaches**: You challenged AI with edge cases and complexity
+**Part 4 - Team Builds**: You synthesized everything into production code
+
+### What You've Created
+
+1. `precision_comparison.md` — Your investigation of precision tradeoffs
+2. `edge_case_challenges.md` — Complex scenarios you posed to AI
+3. `scientific_calculator.py` — Working calculator with validation and logging
+
+### Reflection Question
+
+> "Compare building this calculator with and without AI. Which parts did AI accelerate? Which parts required your thinking? How is this different from 'copy-paste code from the internet'?"
+
+**Answer in your head**: The difference is understanding. You didn't copy code—you understood the principles, challenged the implementation, and built something you can modify and extend.
 
 ---
 

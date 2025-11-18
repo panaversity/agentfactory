@@ -53,7 +53,7 @@ differentiation:
   remedial_for_struggling: "Focus on core goal: Run the command for your platform, verify it worked. Use AI only if you encounter errors."
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/011-python-uv/plan.md"
 created: "2025-01-13"
 last_modified: "2025-01-13"
@@ -245,40 +245,94 @@ This pattern will continue throughout the chapter:
 
 ---
 
-## Try With AI
+## Try With AI: Installation Troubleshooting Challenge
 
-Use your AI companion (ChatGPT, Claude Code, Gemini CLI, etc.) for these exercises.
+### Part 1: Predict Installation Issues (Your Turn First)
 
-### Prompt 1: Understand PATH Deeply
+**Before installing UV**, predict what could go wrong:
 
-```
-I just installed UV and it updated my PATH. Explain PATH in simple terms—what is it, why does it matter, and what would happen if UV wasn't added to PATH? Use an analogy I can relate to.
-```
+**Your analysis task**:
+1. The installation script is: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+2. Break down this command: What does each part do? (`curl`, `-LsSf`, `|`, `sh`)
+3. List 3 things that could fail (network? permissions? PATH?)
+4. For YOUR operating system (Windows/Mac/Linux), what's unique about installation?
 
-**Expected outcome:** Clear understanding of PATH without needing technical background.
+Write down your predictions BEFORE running the command.
 
-### Prompt 2: Troubleshoot "command not found"
+---
 
-```
-I installed UV but I'm getting "uv: command not found" when I run `uv --version`. I'm using [YOUR OS]. Walk me through diagnosing and fixing this issue step by step.
-```
+### Part 2: AI Explains Installation Process (Discovery)
 
-**Expected outcome:** Concrete troubleshooting steps tailored to your platform.
+Now ask AI to validate your understanding:
 
-### Prompt 3: When to Use AI vs. Direct Commands
+> "I'm about to install UV with this command:
+> `curl -LsSf https://astral.sh/uv/install.sh | sh`
+>
+> Here's what I think each part does: [your breakdown from Part 1]
+>
+> Questions:
+> 1. Is my understanding correct?
+> 2. What does this script actually modify on my system? (PATH? files?)
+> 3. For [YOUR OS], what's different about the installation?
+> 4. How do I verify this is the OFFICIAL installer, not malicious?"
 
-```
-This lesson says "don't use AI for everything." Help me understand: when should I use AI for package management tasks, and when should I just run commands directly? Give me 3 examples of each.
-```
+**Your evaluation task**:
+- Compare AI's explanation to your predictions. What did you miss?
+- Does AI mention PATH modification? Why does that matter?
+- Can you now explain to someone else: "What is PATH and why does UV need to be in it?"
 
-**Expected outcome:** Strategic understanding of when AI adds value vs. when it's overhead.
+---
 
-### Prompt 4: Installation Security Review
+### Part 3: Student Teaches AI (Security & Troubleshooting)
 
-```
-I ran this installation command: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+Challenge AI with edge cases:
 
-Is this safe? What risks exist when running installation scripts from the internet? How can I verify this is the official UV installer?
-```
+> "I have concerns about running installation scripts from the internet:
+>
+> **Security Scenario 1**: What if someone compromised astral.sh and replaced the script with malware?
+> - How can I verify the script is safe BEFORE running it?
+> - Show me how to inspect the script content first
+> - What signs indicate a malicious vs. legitimate installer?
+>
+> **Troubleshooting Scenario 2**: After installation, I run `uv --version` and get 'command not found'
+> - Diagnose: What are the 3 most common causes?
+> - For EACH cause, give me the diagnostic command to check it
+> - Then the fix command
+>
+> **Platform-Specific Issue**: I'm on [Windows/Mac/Linux] and the installation command looks different than the docs
+> - Why are installation methods OS-specific?
+> - What's the equivalent for my OS?"
 
-**Expected outcome:** Understanding of installation security practices and how to verify sources.
+**Your debugging task**:
+- Run the diagnostic commands AI suggests. Do they work?
+- Which troubleshooting step surprised you most?
+
+---
+
+### Part 4: Build Installation Verification Checklist (Convergence)
+
+Create a post-installation validation workflow with AI:
+
+> "Let's create a checklist I can use EVERY TIME I install a new command-line tool (not just UV):
+>
+> **Checklist Requirements**:
+> 1. Pre-installation security check (verify source, inspect script)
+> 2. Installation command (document what it does)
+> 3. Post-installation verification (3 tests to confirm it worked)
+> 4. Troubleshooting steps (what to check if `command not found`)
+> 5. Rollback procedure (how to uninstall if needed)
+>
+> For UV specifically:
+> - Test 1: `uv --version` (should show version number)
+> - Test 2: `which uv` or `where uv` (should show installation path)
+> - Test 3: `echo $PATH` (should include UV's bin directory)
+>
+> Make it generic enough I can reuse for other tools."
+
+**Refinement**:
+> "This checklist assumes I have terminal access. What if I'm installing in a restricted corporate environment where I can't modify PATH? How would the process change?"
+
+---
+
+**Time**: 20-25 minutes total
+**Outcome**: You've built a systematic approach to installing command-line tools safely, diagnosing PATH issues, and creating reusable verification workflows—not just "run this command and hope it works."

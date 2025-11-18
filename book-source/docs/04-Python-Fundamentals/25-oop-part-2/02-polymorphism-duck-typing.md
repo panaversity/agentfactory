@@ -86,7 +86,7 @@ differentiation:
   remedial_for_struggling: "Focus on duck typing examples first (simpler conceptually); build to ABC as enforcement mechanism; use shape example as primary case study"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/020-oop-part-1-2/spec-chapter-25.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -270,7 +270,7 @@ for agent in agents:
 #   Processing: Code analysis result for: Hello
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, ABCs are **critical**. You cannot deploy an agent that doesn't implement `process()`. Python checks this at instantiation (when you create the object), not at runtime (when you call the method). This shifts errors from "oh no, the production system crashed" to "oops, my agent class isn't complete yet."
 
@@ -473,7 +473,7 @@ checkout(crypto_processor, 29.99, wallet_address="0x123abc456def789...")
 
 **No `Payment` base class. No `@abstractmethod` decorators. Just objects that do what we need them to do.**
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Duck typing is the heart of Python's philosophy. It's more flexible than inheritance because you don't need to plan a hierarchy ahead of time. If you need a new processor, just implement `process_payment()` and it works. No inheritance chain, no complex base class design—just implement the interface you need.
 
@@ -689,45 +689,363 @@ This pattern is **foundational for multi-agent systems**. You have a collection 
 
 ---
 
-## Try With AI
+## Challenge: Building a Polymorphic Agent Dispatcher
 
-Use your AI companion (Claude Code, Gemini CLI, or ChatGPT) to explore polymorphism and duck typing in depth.
-
-### Prompt 1: Recall - ABC Syntax
-
-Create an abstract `Vehicle` class with abstract methods `start()`, `stop()`, and `refuel()`. Create two concrete subclasses: `Car` and `ElectricCar`. Show what happens if you forget to implement a method in `ElectricCar`.
-
-**Expected outcome**: You'll see the `TypeError` when trying to instantiate a class that doesn't implement all abstract methods.
+In this challenge, you'll discover why polymorphism matters, learn how both ABC and duck typing work, test your understanding against AI, and build a production-ready system.
 
 ---
 
-### Prompt 2: Understand - Polymorphism vs Duck Typing
+## Part 1: Student Discovers Type-Checking Problems in Agent Dispatch
 
-Explain when to use abstract base classes versus duck typing. Give me three scenarios where ABC is the right choice and three where duck typing is better. For each, explain the reasoning.
+**Your Role**: System architect identifying design gaps
 
-**Expected outcome**: You'll develop design judgment about when to enforce contracts (ABC) versus relying on behavior (duck typing).
+### Discovery Exercise: Build an Agent Dispatcher Without Polymorphism
+
+Imagine you're building a multi-agent dispatcher that routes messages to different agent types. Without polymorphism, you must check types explicitly.
+
+**Stage 1: The Type-Checking Problem**
+
+Create three agent classes and a dispatcher that checks type explicitly:
+
+```python
+# agents.py - Type-checking approach (PROBLEMATIC)
+class ChatAgent:
+    def __init__(self, name: str):
+        self.name = name
+
+    def process(self, message: str) -> str:
+        return f"Chat: {message}"
+
+
+class CodeAgent:
+    def __init__(self, name: str):
+        self.name = name
+
+    def process(self, message: str) -> str:
+        return f"Code Analysis: {message}"
+
+
+class DataAgent:
+    def __init__(self, name: str):
+        self.name = name
+
+    def process(self, message: str) -> str:
+        return f"Data Processing: {message}"
+
+
+# dispatcher.py - Without polymorphism
+def dispatch_message(agent, message: str) -> str:
+    """Route message to agent - REQUIRES TYPE CHECKING"""
+    if isinstance(agent, ChatAgent):
+        return agent.process(message)
+    elif isinstance(agent, CodeAgent):
+        return agent.process(message)
+    elif isinstance(agent, DataAgent):
+        return agent.process(message)
+    else:
+        raise ValueError(f"Unknown agent type: {type(agent)}")
+```
+
+**Your task 1**: Copy this code and document in `dispatcher_type_checking_analysis.md`:
+- How many `isinstance()` checks exist?
+- If you add a 4th agent type (ImageAgent), what must change in `dispatch_message()`?
+- What happens if you forget to add the check?
+- What pattern do you notice?
+
+**Stage 2: Adding New Agents Breaks Existing Code**
+
+**Your task 2**: Try adding `ImageAgent` without modifying `dispatch_message()`. Document:
+- The dispatcher still works, but does it route correctly?
+- How would you even know it's broken?
+- What architectural problem does this reveal?
+
+### Your Discovery Document
+
+Create `polymorphism_problem_statement.md` with:
+
+1. **The Type-Checking Problem**: Dispatcher code is coupled to specific agent types
+2. **The Scaling Problem**: What happens at 20 agent types? 100?
+3. **The Maintenance Risk**: How risky is adding a new agent type?
+4. **Your Prediction**: What language feature would eliminate this coupling?
 
 ---
 
-### Prompt 3: Apply - Building an Agent System
+## Part 2: AI Teaches Polymorphism and Duck Typing as Solutions
 
-Design an abstract `Agent` base class for a multi-agent system. Include abstract methods `process_message()` and `get_status()`. Create three concrete agent types (ChatAgent, CodeAgent, DataAgent). Demonstrate polymorphic message routing where different agent types handle messages differently.
+**Your Role**: Student learning from AI Teacher
 
-**Expected outcome**: You'll build a realistic multi-agent architecture where all agents share a common interface but specialize in different domains.
+### AI Teaching Prompt
+
+Ask your AI companion:
+
+> "I built an agent dispatcher with type checking. ChatAgent, CodeAgent, DataAgent each have a `process(message)` method. The dispatcher uses `isinstance()` to route messages:
+>
+> ```python
+> if isinstance(agent, ChatAgent):
+>     return agent.process(message)
+> elif isinstance(agent, CodeAgent):
+>     return agent.process(message)
+> # ... more checks
+> ```
+>
+> This is fragile. If I add ImageAgent, I must modify the dispatcher.
+>
+> Explain:
+> 1. What is polymorphism? How does it eliminate type checking?
+> 2. Show me two solutions: ABC with @abstractmethod, and duck typing without inheritance
+> 3. In each approach, what happens when I add a new agent type? Must I modify the dispatcher?
+> 4. When would you choose ABC vs duck typing for this problem?"
+
+### Expected AI Response Summary
+
+AI will explain:
+- **Polymorphism**: Same interface, different implementations—Python calls the right method based on object type
+- **ABC approach**: Inherit from Agent base class with @abstractmethod process(); dispatcher accepts Agent, no type checking
+- **Duck typing approach**: No inheritance; any object with process() method works; dispatcher is even simpler
+- **Adding new agents**: Both approaches allow adding agents WITHOUT modifying the dispatcher
+- **Design trade-off**: ABC enforces contracts explicitly; duck typing gives flexibility
+
+**AI will show code like**:
+
+```python
+# SOLUTION 1: ABC Polymorphism
+from abc import ABC, abstractmethod
+
+class Agent(ABC):
+    @abstractmethod
+    def process(self, message: str) -> str:
+        pass
+
+class ChatAgent(Agent):
+    def process(self, message: str) -> str:
+        return f"Chat: {message}"
+
+# Dispatcher is simple - no type checking!
+def dispatch_message(agent: Agent, message: str) -> str:
+    return agent.process(message)  # Works for any Agent subclass
+
+
+# SOLUTION 2: Duck Typing (No Inheritance)
+class ChatAgent:  # No inheritance!
+    def process(self, message: str) -> str:
+        return f"Chat: {message}"
+
+# Same dispatcher - even simpler!
+def dispatch_message(agent, message: str) -> str:
+    return agent.process(message)  # Works if agent has process()
+```
+
+### Convergence Activity
+
+After AI explains, verify understanding:
+
+> "Explain what happens in the ABC approach when I create 100 different agent types. Do I need to modify the dispatcher each time? Walk me through the duck typing approach and explain why it's even more flexible."
+
+### Deliverable
+
+Write 1-paragraph summary: "How Polymorphism Eliminates Type Checking" explaining the core insight and trade-offs between ABC and duck typing.
 
 ---
 
-### Prompt 4: Analyze - Protocol vs ABC
+## Part 3: Student Challenges AI with Design Edge Cases
 
-Python 3.8+ introduced `Protocol` from the `typing` module as an alternative to ABC. Compare `Protocol` versus `ABC`:
+**Your Role**: Student testing AI's understanding
 
-1. How do they differ in how they define contracts?
-2. When would you choose `Protocol` over `ABC`?
-3. Show a code example of the same system using both approaches.
+### Challenge Design Scenarios
 
-**Expected outcome**: You'll understand structural subtyping (Protocol) versus nominal subtyping (ABC)—advanced concepts that enable you to write even more flexible code.
+Ask AI to handle these cases:
+
+#### Challenge 1: ABC Contract Enforcement
+
+> "Show me what happens if I create a ChatAgent that inherits from Agent but forgets to implement process(). Then show what happens if I use duck typing and forget to implement process(). What's different about when these errors are caught?"
+
+**Expected learning**: AI explains that ABC catches errors at instantiation time; duck typing catches them at call time.
+
+#### Challenge 2: Adding Capability to All Agents
+
+> "I want to add logging to all agents. With ABC, I add a log() method to the Agent base class. All agents inherit it automatically. How would duck typing handle this? What's the problem?"
+
+**Expected learning**: AI explains that duck typing requires manual updates to each class, showing the trade-off.
+
+#### Challenge 3: Runtime Behavior Discovery
+
+> "I have a duck-typed processor function that accepts any object with process(). I pass in an object that has process() but it crashes. How is this different from ABC, which would have caught the problem earlier?"
+
+**Expected learning**: AI explains structural vs nominal typing, and when each catches errors.
+
+### Deliverable
+
+Document your three challenges, AI's responses, and analysis of when each approach (ABC vs duck typing) is appropriate.
 
 ---
 
-**Safety & Ethics Note**: When designing polymorphic systems with AI, remember: **The contract matters**. If an agent claims to implement `process()`, it must actually do what users expect. Use ABC to enforce contracts in production systems; use duck typing when you control all implementations and want flexibility during development.
+## Part 4: Build Polymorphic Agent Dispatcher for Production
+
+**Your Role**: Knowledge synthesizer creating reusable code
+
+### Your Agent Dispatcher System
+
+Create `agent_dispatcher.py` with both approaches, demonstrating when each is appropriate:
+
+```python
+from abc import ABC, abstractmethod
+from typing import Protocol
+
+
+# ============ APPROACH 1: ABC Polymorphism ============
+
+class AgentABC(ABC):
+    """Contract-based polymorphism - enforces implementation"""
+
+    def __init__(self, name: str) -> None:
+        self.name = name
+
+    @abstractmethod
+    def process(self, message: str) -> str:
+        """All agents MUST implement message processing"""
+        pass
+
+    def log(self, message: str) -> None:
+        """Shared logging - inherited by all agents"""
+        print(f"[{self.name}] {message}")
+
+
+class ChatAgentABC(AgentABC):
+    """Concrete chat agent using ABC"""
+
+    def process(self, message: str) -> str:
+        self.log(f"Processing: {message}")
+        return f"Chat response to: {message}"
+
+
+class CodeAgentABC(AgentABC):
+    """Concrete code agent using ABC"""
+
+    def process(self, message: str) -> str:
+        self.log(f"Analyzing: {message}")
+        return f"Code analysis for: {message}"
+
+
+def dispatch_with_abc(agent: AgentABC, message: str) -> str:
+    """Polymorphic dispatcher using ABC - no type checking!"""
+    return agent.process(message)
+
+
+# ============ APPROACH 2: Duck Typing ============
+
+class ChatAgentDuck:
+    """Chat agent using duck typing - no inheritance"""
+
+    def __init__(self, name: str) -> None:
+        self.name = name
+
+    def process(self, message: str) -> str:
+        return f"Chat response to: {message}"
+
+
+class CodeAgentDuck:
+    """Code agent using duck typing - no inheritance"""
+
+    def __init__(self, name: str) -> None:
+        self.name = name
+
+    def process(self, message: str) -> str:
+        return f"Code analysis for: {message}"
+
+
+def dispatch_with_duck(agent, message: str) -> str:
+    """Polymorphic dispatcher using duck typing - even simpler!"""
+    return agent.process(message)
+
+
+# ============ APPROACH 3: Protocol (Structural Typing) ============
+
+class ProcessorProtocol(Protocol):
+    """Structural protocol - defines what agents must do"""
+
+    def process(self, message: str) -> str:
+        """Any object implementing this interface works"""
+        ...
+
+
+def dispatch_with_protocol(agent: ProcessorProtocol, message: str) -> str:
+    """Polymorphic dispatcher using Protocol - type-safe but flexible"""
+    return agent.process(message)
+
+
+# Test all three approaches
+if __name__ == "__main__":
+    print("=== ABC Approach ===")
+    chat_abc = ChatAgentABC("ChatBot")
+    code_abc = CodeAgentABC("CodeHelper")
+
+    print(dispatch_with_abc(chat_abc, "hello"))
+    print(dispatch_with_abc(code_abc, "debug this"))
+
+    print("\n=== Duck Typing Approach ===")
+    chat_duck = ChatAgentDuck("ChatBot")
+    code_duck = CodeAgentDuck("CodeHelper")
+
+    print(dispatch_with_duck(chat_duck, "hello"))
+    print(dispatch_with_duck(code_duck, "debug this"))
+
+    # Add a completely new agent type without modifying dispatcher
+    class ImageAgentDuck:
+        def __init__(self, name: str) -> None:
+            self.name = name
+
+        def process(self, message: str) -> str:
+            return f"Image processing for: {message}"
+
+    print("\n=== New Agent (Duck Typing) ===")
+    image = ImageAgentDuck("ImageBot")
+    print(dispatch_with_duck(image, "analyze image"))
+```
+
+**Your task**: Expand this system with:
+1. Add 2-3 more specialized agent types (SearchAgent, ResearchAgent)
+2. Create a dispatcher registry that tracks all agent types
+3. Add a comparison document: `abc_vs_duck_typing.md` explaining when to use each
+4. Show that adding new agent types requires NO changes to dispatcher code
+
+### Validation Checklist
+
+- ✅ ABC approach works with inherited agents
+- ✅ Duck typing approach works with unrelated classes
+- ✅ Protocol approach provides static type safety
+- ✅ Dispatcher code never uses isinstance() or type checks
+- ✅ Adding new agent types requires changing only the agent class
+- ✅ All three approaches produce identical behavior
+
+### Deliverable
+
+Complete `agent_dispatcher.py` with all three polymorphic approaches and documentation explaining:
+- How polymorphism eliminates type checking
+- When ABC provides value (contracts, inheritance of shared methods)
+- When duck typing wins (flexibility, loose coupling)
+- When Protocol is useful (static type checking without inheritance)
+
+---
+
+## Summary: Bidirectional Learning in Action
+
+**Part 1 (Student discovers)**: You identified the type-checking and coupling problems with explicit isinstance checks
+
+**Part 2 (AI teaches)**: AI explained how polymorphism—both ABC and duck typing—eliminates this coupling
+
+**Part 3 (Student teaches)**: You challenged AI with edge cases about when each approach catches errors
+
+**Part 4 (Knowledge synthesis)**: You built a production dispatcher demonstrating all three polymorphic approaches
+
+### What You've Built
+
+1. `dispatcher_type_checking_analysis.md` — Problem analysis
+2. `polymorphism_problem_statement.md` — Clear problem statement
+3. Challenge documentation — Three edge cases you posed to AI
+4. `agent_dispatcher.py` — Production dispatcher with ABC, duck typing, and Protocol approaches
+5. `abc_vs_duck_typing.md` — Comparison guide for design decisions
+
+### Next Steps
+
+Lesson 3 shows how composition and modules organize agent systems. You'll use this polymorphic agent framework to build modular, scalable architectures.
 

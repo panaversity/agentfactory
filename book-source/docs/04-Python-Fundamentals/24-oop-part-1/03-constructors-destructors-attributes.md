@@ -72,7 +72,7 @@ differentiation:
   remedial_for_struggling: "Focus on simple BankAccount example first; use diagrams to show memory layout of class vs instance attributes; practice __dict__ inspection before moving to destructors"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/020-oop-part-1-2/spec-chapter-24.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -83,70 +83,94 @@ version: "1.0.0"
 
 # Constructors, Destructors, and Attributes
 
-Now that you can create basic classes with simple constructors, we'll move into more sophisticated initialization patterns. You'll learn how to give your objects multiple parameters, provide sensible defaults, understand the critical difference between class and instance attributes, and properly manage object cleanup when objects are destroyed.
+Now that you can create basic classes, you'll dive deeper into sophisticated patterns: constructors with flexible parameters, the critical distinction between class and instance attributes, and object cleanup with destructors.
 
-These concepts are foundational for building robust, maintainable Python classes. Whether you're building a simple data class or a complex AI agent, understanding how objects initialize and store data will transform the quality of your code.
-
-## Parameterized Constructors with Defaults
-
-In Lesson 2, you saw simple constructors with required parameters. Real-world classes often need **optional parameters** with sensible defaults.
-
-### Constructors with Required Parameters
-
-Let's start with a constructor that requires all arguments:
-
-```python
-class Car:
-    def __init__(self, make: str, model: str, year: int):
-        self.make = make
-        self.model = model
-        self.year = year
-
-# Must provide all three arguments
-car1 = Car("Toyota", "Camry", 2024)
-car2 = Car("Honda", "Civic", 2023)
-
-print(car1.make)  # Toyota
-```
-
-### Adding Default Parameters
-
-Now add defaults for flexibility:
-
-```python
-class Car:
-    def __init__(self, make: str = "Unknown", model: str = "Unknown", year: int = 2024):
-        self.make = make
-        self.model = model
-        self.year = year
-
-# Can provide all arguments
-car1 = Car("Toyota", "Camry", 2024)
-
-# Or use defaults
-car2 = Car()  # Uses all defaults: Unknown, Unknown, 2024
-
-# Or provide some arguments
-car3 = Car("Honda", "Civic")  # Uses default year: 2024
-```
-
-The pattern is **required parameters first, then optional parameters with defaults**.
-
-#### 💬 AI Colearning Prompt
-> "When should we use default parameters in constructors? Give me 3 scenarios where defaults are helpful and 1 where they're dangerous."
+In this lesson, you'll discover why these patterns matter through hands-on experiments, learn from AI explanations, challenge the AI with subtle edge cases, and build a comprehensive reference guide.
 
 ---
 
-## Class Attributes vs Instance Attributes
+## Part 1: Student Discovers Default Parameters and Attribute Types
 
-This is a **critical concept** that confuses many beginners. Let's clarify:
+**Your Role**: Code experimenter discovering initialization patterns and attribute scoping
 
-### Understanding the Difference
+### Discovery Exercise 1: Why Default Parameters Matter
 
-**Instance attributes** are unique to each object. Every instance of a class has its own copy:
+**Stage 1: Required parameters only**
+
+Create a file called `attribute_experiments.py`:
 
 ```python
 class Dog:
+    def __init__(self, name: str, breed: str, age: int):
+        self.name = name
+        self.breed = breed
+        self.age = age
+
+# This works, but requires every parameter
+dog1 = Dog("Max", "Labrador", 5)
+dog2 = Dog("Buddy", "Golden", 3)
+
+# But what if you don't know the age?
+# You're forced to guess or use a placeholder
+dog3 = Dog("Unknown", "Mixed", 0)  # Awkward!
+```
+
+**Your task 1**: Run this and document:
+- Do you have to provide all parameters?
+- What if some info is optional?
+- What design pattern solves this problem?
+
+**Stage 2: Add Default Parameters**
+
+Modify the class:
+
+```python
+class Dog:
+    def __init__(self, name: str, breed: str, age: int = 0):
+        self.name = name
+        self.breed = breed
+        self.age = age
+
+# Much more flexible!
+dog1 = Dog("Max", "Labrador", 5)
+dog2 = Dog("Buddy", "Golden")  # Uses default age
+dog3 = Dog("Unknown", "Mixed")  # No guessing needed
+```
+
+**Your task 2**: Run this and answer:
+- How many ways can you now call Dog()?
+- Why is this better than forcing all parameters?
+
+### Discovery Exercise 2: Class vs Instance Attributes
+
+**Stage 3: Observe Instance Attributes (we know these)**
+
+```python
+class Dog:
+    def __init__(self, name: str, breed: str):
+        self.name = name      # Each dog has its own name
+        self.breed = breed    # Each dog has its own breed
+
+dog1 = Dog("Max", "Labrador")
+dog2 = Dog("Buddy", "Golden Retriever")
+
+# Modify dog1
+dog1.breed = "Lab Mix"
+
+# Is dog2 affected?
+print(dog2.breed)  # Still "Golden Retriever"
+```
+
+**Your task 3**: Run this and confirm:
+- Each object has its own attribute values (instance attributes)
+- Modifying one doesn't affect the other
+
+**Stage 4: Discover Class Attributes (something new)**
+
+```python
+class Dog:
+    species = "Canis familiaris"  # Class attribute (defined outside __init__)
+
     def __init__(self, name: str, breed: str):
         self.name = name      # Instance attribute
         self.breed = breed    # Instance attribute
@@ -154,316 +178,329 @@ class Dog:
 dog1 = Dog("Max", "Labrador")
 dog2 = Dog("Buddy", "Golden Retriever")
 
-print(dog1.name)  # Max
-print(dog2.name)  # Buddy - different value!
+# Both dogs share the same species
+print(dog1.species)  # Canis familiaris
+print(dog2.species)  # Canis familiaris (same!)
+
+# Change the CLASS attribute
+Dog.species = "Canis lupus familiaris"
+print(dog1.species)  # Now shows the new value!
+print(dog2.species)  # Both are affected!
 ```
 
-Each dog has its own `name`. They don't share.
+**Your task 4**: Run this and document:
+- What's a class attribute?
+- Is it shared between objects or independent?
+- If you change it on one object, what happens?
 
-**Class attributes** are shared across ALL instances of a class:
+**Stage 5: The Shadowing Problem**
 
 ```python
-class BankAccount:
-    interest_rate = 0.03  # Class attribute (shared by all accounts)
+class Dog:
+    tricks_known = 0  # Class attribute tracking total tricks
 
-    def __init__(self, holder: str, balance: float = 0.0):
-        self.holder = holder    # Instance attribute
-        self.balance = balance  # Instance attribute
+    def __init__(self, name: str):
+        self.name = name  # Instance attribute
 
-account1 = BankAccount("Alice", 1000)
-account2 = BankAccount("Bob", 2000)
+dog1 = Dog("Max")
+dog2 = Dog("Buddy")
 
-# All accounts share the same interest rate
-print(account1.interest_rate)  # 0.03
-print(account2.interest_rate)  # 0.03 (same value)
+print(dog1.tricks_known)  # 0
+print(dog2.tricks_known)  # 0
 
-# Changing the class attribute affects all instances
-BankAccount.interest_rate = 0.04
-print(account1.interest_rate)  # 0.04 - changed!
-print(account2.interest_rate)  # 0.04 - changed!
+# Now something interesting happens
+dog1.tricks_known = 5  # Create an instance attribute that SHADOWS the class attribute
+
+print(dog1.tricks_known)  # 5 (instance attribute)
+print(dog2.tricks_known)  # 0 (still using class attribute)
+print(Dog.tricks_known)   # 0 (class attribute unchanged)
 ```
 
-### The Shadowing Problem (Critical!)
+**Your task 5**: Run this and answer:
+- Why did dog2.tricks_known stay 0?
+- What happened in memory?
+- Is this a bug or a feature?
 
-Here's where it gets tricky. If you assign to an attribute through an instance, you create an **instance attribute** that shadows (hides) the class attribute:
+### Your Discoveries
 
-```python
-class BankAccount:
-    interest_rate = 0.03  # Class attribute
-
-    def __init__(self, holder: str):
-        self.holder = holder
-
-account1 = BankAccount("Alice")
-account2 = BankAccount("Bob")
-
-print(account1.interest_rate)  # 0.03 (using class attribute)
-
-# Now assign through instance - creates NEW instance attribute!
-account1.interest_rate = 0.05
-
-print(account1.interest_rate)  # 0.05 (instance attribute)
-print(account2.interest_rate)  # 0.03 (still using class attribute)
-print(BankAccount.interest_rate)  # 0.03 (class attribute unchanged)
-```
-
-This is **not a bug—it's by design**. Python first looks for instance attributes, then class attributes.
-
-#### 🎓 Instructor Commentary
-> "The class vs instance attribute distinction is CRITICAL for AI agents. Configuration settings (API keys, model names, timeouts) are often class attributes shared across all agents of that type. But conversation history is an instance attribute—each agent needs its own separate history."
-
-#### 💬 AI Colearning Prompt
-> "Explain why modifying a class attribute through an instance (like `account1.interest_rate = 0.05`) creates a new instance attribute instead of modifying the class attribute. What's happening in memory?"
+Document your findings in `attribute_types_analysis.md`:
+1. What are instance attributes? When do you use them?
+2. What are class attributes? When do you use them?
+3. Why is the shadowing behavior important to understand?
+4. How would you design a class that uses both types appropriately?
 
 ---
 
-## Inspecting Attributes with `__dict__`
+## Part 2: AI Explains Advanced Constructor Patterns
 
-When debugging, you need to see what attributes an object actually has. Python provides `__dict__` for this:
+**Your Role**: Student receiving instruction from AI Teacher
+
+### AI Teaching Prompt
+
+Ask your AI companion:
+
+> "I'm designing classes with optional parameters and I've discovered two types of attributes:
+> - Instance attributes like `self.name` (each object has its own)
+> - Class attributes like `tricks_known = 0` (shared across all objects)
+>
+> Explain:
+> 1. When should I use default parameters in `__init__`?
+> 2. What's the memory layout difference between instance and class attributes?
+> 3. If dog1.tricks_known = 5 creates a new instance attribute, what happens to the class attribute?
+> 4. Show me a real example where class attributes are useful (not artificial)."
+
+### What You'll Learn from AI
+
+**Expected AI Response** (summary):
+
+- **Default parameters**: Make constructors flexible for optional data
+- **Instance attributes**: Each object has independent copies
+- **Class attributes**: All objects share one copy
+- **Shadowing**: Creating instance attribute hides class attribute temporarily
+- **Real use case**: Configuration values (class) vs instance data (instance)
+
+### Convergence Activity
+
+After AI explains, ask:
+
+> "Walk me through what happens in memory when I create `dog = Dog('Max')` in a class that has both `species = 'Dog'` (class attribute) and `self.name = name` (instance attribute)."
+
+**Deliverable**: Write a summary explaining when to use default parameters, class vs instance attributes, and why shadowing is important.
+
+---
+
+## Part 3: Student Challenges AI with Edge Cases
+
+**Your Role**: Student teaching AI by testing edge case understanding
+
+#### Challenge 1: Default Parameters and Mutability
+
+**Your prompt to AI**:
+
+> "I see a lot of code that uses `def __init__(self, items: list = []):`. But online I see warnings that this is dangerous. Why is using a mutable default parameter (list, dict) problematic? Show me an example where this goes wrong and explain what's happening."
+
+**Expected learning**: AI will explain that mutable defaults are shared across all instances, causing hidden bugs.
+
+#### Challenge 2: Class Attributes in AI Agents
+
+**Your prompt to AI**:
+
+> "I'm designing a ChatAgent class. Configuration like `model_name = 'gpt-4'` could be:
+> - A class attribute (all agents use same model)
+> - An instance attribute in __init__ (each agent can use different model)
+>
+> For these scenarios, which should it be:
+> 1. All agents in production use gpt-4, test agents use gpt-3.5
+> 2. Each conversation with a user uses a potentially different model
+> 3. The API key for authentication
+>
+> Explain your reasoning."
+
+**Expected learning**: AI will explain design decisions about when to share data.
+
+#### Challenge 3: Attribute Inheritance Behavior
+
+**Your prompt to AI**:
+
+> "If I create a subclass of Dog:
+> ```python
+> class Dog:
+>     species = 'Canis familiaris'
+>
+> class Husky(Dog):
+>     pass
+>
+> h = Husky()
+> h.species = 'Husky Mix'
+> ```
+>
+> Does this create an instance attribute on h that shadows Dog.species? Or does it modify the class attribute? Show me how to verify which happened."
+
+### Deliverable
+
+Document your three challenges and AI's responses with your analysis of correctness.
+
+---
+
+## Part 4: Build Your Attributes and Constructors Reference
+
+**Your Role**: Knowledge synthesizer creating design patterns
+
+Create `constructor_and_attributes_guide.md`:
+
+```markdown
+# Constructors with Defaults and Attributes Guide
+
+## Pattern 1: Basic Constructor with Defaults
+
+**When to use**: Optional parameters that don't need validation
 
 ```python
 class Person:
-    species = "Human"  # Class attribute
-
-    def __init__(self, name: str, age: int):
-        self.name = name  # Instance attribute
-        self.age = age    # Instance attribute
-
-p = Person("Alice", 30)
-
-# See instance attributes only
-print(p.__dict__)
-# Output: {'name': 'Alice', 'age': 30}
-
-# Class attributes aren't in instance __dict__
-print("species" in p.__dict__)  # False
-
-# But you can still access via instance
-print(p.species)  # Human
-```
-
-`__dict__` shows only instance attributes, not class attributes. This is useful for debugging—if an attribute isn't in `__dict__`, it's a class attribute.
-
-#### ✨ Teaching Tip
-> "Use `__dict__` to debug attribute issues. When an attribute isn't showing up where you expect, check `__dict__`. Ask Claude: 'Why isn't my attribute showing up in __dict__?'"
-
----
-
-## Destructors: The `__del__` Method
-
-Just as `__init__` is called when an object is **created**, `__del__` (destructor) is called when an object is **destroyed** (garbage collected).
-
-### When Do You Need Destructors?
-
-Destructors are useful for **cleanup**: closing files, disconnecting from databases, releasing network connections, freeing memory.
-
-### A FileHandler Example
-
-```python
-class FileHandler:
-    def __init__(self, filename: str):
-        self.filename = filename
-        self.file = open(filename, 'w')
-        print(f"Opened {filename}")
-
-    def write(self, data: str):
-        self.file.write(data)
-
-    def __del__(self):
-        if hasattr(self, 'file'):  # Make sure file exists
-            self.file.close()
-            print(f"Closed {self.filename}")
-
-# Create handler
-handler = FileHandler("test.txt")
-handler.write("Hello, World!")
-
-# When handler goes out of scope, __del__ is called automatically
-del handler  # Explicit deletion
-# Output: "Closed test.txt"
-```
-
-### Important: Destructors Are Unreliable!
-
-While `__del__` seems convenient, **it's not guaranteed to be called immediately**:
-- Python's garbage collector decides when to clean up
-- Exceptions might prevent `__del__` from running
-- Circular references can delay cleanup indefinitely
-
-**Better approach**: Use **context managers** (covered in Part 4 later):
-
-```python
-# Better: Use 'with' statement for guaranteed cleanup
-with open("test.txt", 'w') as file:
-    file.write("Hello")
-# File GUARANTEED to close here, no matter what
-```
-
-#### 🚀 CoLearning Challenge
-> "Ask your AI: Create a DatabaseConnection class that connects in `__init__` and disconnects in `__del__`. Then explain why `__del__` is NOT reliable for critical cleanup (hint: what happens if an exception occurs?). What's the better approach?"
-
----
-
-## Putting It Together: A Real Example
-
-Let's build a `Product` class that uses all these concepts:
-
-```python
-class Product:
-    # Class attributes (shared by all products)
-    tax_rate = 0.1  # 10% tax
-    product_count = 0  # Track total products created
-
-    def __init__(self, name: str, price: float, quantity: int = 1):
-        # Instance attributes (unique to each product)
+    def __init__(self, name: str, age: int = 0, city: str = "Unknown"):
         self.name = name
-        self.price = price  # Must be positive
-        self.quantity = quantity
+        self.age = age
+        self.city = city
 
-        # Increment class attribute
-        Product.product_count += 1
-
-    @property
-    def total_price(self) -> float:
-        """Computed property: price including tax"""
-        return self.price * self.quantity * (1 + Product.tax_rate)
-
-    def __str__(self) -> str:
-        return f"{self.name}: ${self.price} x {self.quantity}"
-
-    def __del__(self):
-        """Cleanup when product is destroyed"""
-        Product.product_count -= 1
-        print(f"Removed {self.name} from inventory")
-
-# Create products
-p1 = Product("Laptop", 1000.0, quantity=2)
-p2 = Product("Mouse", 25.0)
-
-print(Product.product_count)  # 2 - class attribute tracks total
-print(p1.total_price)  # 2200.0 (1000 * 2 * 1.1)
-
-print(p1.__dict__)  # Shows instance attributes only
-# Output: {'name': 'Laptop', 'price': 1000.0, 'quantity': 2}
+# All these work
+Person("Alice", 30, "NYC")      # All parameters
+Person("Bob", 25)                # Uses default city
+Person("Charlie")                # Uses default age and city
 ```
 
-**Notice**:
-- `tax_rate` and `product_count` are class attributes (shared)
-- `name`, `price`, `quantity` are instance attributes (unique per product)
-- We access `Product.product_count` (class-level) to increment a counter
-- `__del__` decrements the counter when products are removed
-- `__dict__` shows only instance attributes
+**Key principle**: Required parameters first, optional last
 
 ---
 
-## Common Mistakes to Avoid
-
-### Mistake 1: Forgetting Default Parameters Come Last
+## Pattern 2: Default Parameters with Validation
 
 ```python
-# ❌ WRONG - required parameter after default
-def __init__(self, name: str = "Unknown", age: int):
-    pass
-# SyntaxError: non-default argument follows default argument
-
-# ✅ CORRECT - defaults come after required
-def __init__(self, name: str, age: int = 0):
-    pass
+class BankAccount:
+    def __init__(self, holder: str, initial_balance: float = 0.0):
+        if initial_balance < 0:
+            raise ValueError("Balance cannot be negative")
+        self.holder = holder
+        self.balance = initial_balance
 ```
 
-### Mistake 2: Modifying Mutable Class Attributes
+**Key principle**: Validate before storing
 
+---
+
+## Pattern 3: Distinguishing Instance vs Class Attributes
+
+**Instance attributes** (use in `__init__`):
 ```python
-# ❌ DANGEROUS
-class Student:
-    courses: list[str] = []  # Class attribute - MUTABLE!
+class Dog:
+    def __init__(self, name: str, breed: str):
+        self.name = name        # Each dog has its own name
+        self.breed = breed      # Each dog has its own breed
+```
+
+**Class attributes** (define in class body):
+```python
+class Dog:
+    species = "Canis familiaris"  # All dogs are this species
+    total_dogs = 0                # Track total dogs created
 
     def __init__(self, name: str):
         self.name = name
-
-s1 = Student("Alice")
-s1.courses.append("Python")
-
-s2 = Student("Bob")
-print(s2.courses)  # ["Python"] - BOTH students share the list!
-
-# ✅ SAFE - Mutable data belongs in instances
-class Student:
-    def __init__(self, name: str):
-        self.name = name
-        self.courses: list[str] = []  # Instance attribute
 ```
 
-### Mistake 3: Relying on `__del__` for Critical Cleanup
+**Rule**: If data is specific to one object → instance attribute. If data is shared → class attribute.
+
+---
+
+## Pattern 4: Updating Class Attributes
 
 ```python
-# ❌ RISKY
-class DatabaseConnection:
-    def __init__(self, host: str):
-        self.conn = connect_to_db(host)
+class Game:
+    high_score = 0  # Class attribute
 
-    def __del__(self):
-        self.conn.close()  # Might never be called!
+    def __init__(self, player_name: str):
+        self.player_name = player_name  # Instance
+        self.score = 0                  # Instance
 
-# ✅ SAFE - Use context managers
-class DatabaseConnection:
-    def __enter__(self):
-        self.conn = connect_to_db(self.host)
-        return self
+g1 = Game("Alice")
+g1.score = 100
 
-    def __exit__(self, *args):
-        self.conn.close()  # Guaranteed to be called
+# To update class attribute, use ClassName.attribute
+Game.high_score = 100  # All Game objects see this
+
+# NOT through instance (creates shadowing):
+# g1.high_score = 100  # This creates instance attribute, doesn't modify class attribute
 ```
 
 ---
 
-## Try With AI
+## Pattern 5: Detecting Attribute Type
 
-Use your AI companion (Claude Code or Gemini CLI). In these prompts, you'll practice managing object initialization and attribute scoping.
+```python
+obj = Dog("Max")
+obj.name = "Max Jr."
 
-**Prompt 1: Recall - Constructor Types**
+# Is name instance or class attribute?
+print("name" in obj.__dict__)  # True = instance, False = class
 
+print(Dog.__dict__["species"])  # Access class attribute via class
 ```
-Create a Product class with name, price, and quantity.
-Provide default values: price=0.0, quantity=0.
-Show how to create a product with all values specified vs using defaults.
-```
-
-**Expected outcome**: You'll master default parameters in constructors and understand when to use them.
 
 ---
 
-**Prompt 2: Understand - Class vs Instance Attributes**
+## Pattern 6: Avoiding Mutable Default Parameters
 
-```
-I have a VideoGame class where all games share the same 'platform' (e.g., "PC").
-Should 'platform' be a class attribute or instance attribute?
-What if each game can be on multiple platforms?
-```
+```python
+# ❌ WRONG - Mutable default shared between instances!
+class Classroom:
+    def __init__(self, name: str, students: list = []):
+        self.name = name
+        self.students = students
 
-**Expected outcome**: You'll learn to choose the right attribute scope based on data semantics (shared vs unique).
+class1 = Classroom("A")
+class2 = Classroom("B")
+class1.students.append("Alice")
+print(class2.students)  # ["Alice"] - SHARED!
+
+# ✅ CORRECT - Use None, create new list inside
+class Classroom:
+    def __init__(self, name: str, students: list = None):
+        self.name = name
+        self.students = students if students is not None else []
+```
 
 ---
 
-**Prompt 3: Apply - Debugging with `__dict__`**
+## Pattern 7: Class Attributes for Configuration
 
-```
-Write a Student class with name, grade, and courses (list).
-Create a student object.
-Use __dict__ to inspect its attributes.
-Then add a class attribute 'school' and check if it appears in the instance's __dict__.
-```
+```python
+class APIClient:
+    # Configuration shared by all clients
+    base_url = "https://api.example.com"
+    timeout = 30
 
-**Expected outcome**: You'll use `__dict__` for debugging and understanding how Python stores attributes.
+    def __init__(self, api_key: str):
+        # Each client has unique credentials
+        self.api_key = api_key
+
+# All clients use same base URL and timeout
+# But each has different API key
+```
 
 ---
 
-**Prompt 4: Analyze - Destructor Use Cases**
+## Constructor Pattern Checklist
 
-```
-When is __del__ useful for resource cleanup?
-When is it dangerous or unreliable?
-Give me a better alternative for guaranteed cleanup in Python.
+When designing a constructor, ask:
+
+1. **What parameters are required?** (must provide)
+2. **What parameters are optional?** (have sensible defaults)
+3. **Should this be a class attribute?** (shared across instances)
+4. **Should this be an instance attribute?** (specific to each object)
+5. **Do I need validation?** (check constraints)
 ```
 
-**Expected outcome**: You'll understand destructors and their limitations, and learn about context managers as a safer alternative.
+### Validation with AI
+
+> "Review my constructor and attribute design patterns. Are my recommendations about when to use defaults vs required parameters sound? What patterns am I missing?"
+
+**Deliverable**: Complete guide with all patterns and checklist.
+
+---
+
+## Summary: Bidirectional Learning Pattern
+
+**Part 1 (Student discovers)**: You experimented with default parameters and discovered instance vs class attributes
+**Part 2 (AI teaches)**: AI explained advanced constructor patterns and attribute design
+**Part 3 (Student teaches)**: You challenged AI with edge cases about mutability and inheritance
+**Part 4 (Knowledge synthesis)**: You built patterns for advanced constructors and attributes
+
+### What You've Built
+
+1. `attribute_types_analysis.md` — Your findings on attribute scoping
+2. Summary — Understanding defaults and instance/class distinctions
+3. Challenge documentation — Edge cases you posed to AI
+4. `constructor_and_attributes_guide.md` — Comprehensive reference
+
+### Next Steps
+
+Lesson 4 builds on these foundations with encapsulation, access control (public/protected/private), and three types of methods (instance, class, static). You now understand the data layer; next you'll master method design.

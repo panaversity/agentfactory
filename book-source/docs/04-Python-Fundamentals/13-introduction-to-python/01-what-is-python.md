@@ -45,7 +45,7 @@ differentiation:
   extension_for_advanced: "Research current AI frameworks built in Python (TensorFlow, PyTorch); analyze why readability matters for AI"
   remedial_for_struggling: "Focus on ChatGPT example as primary case study before introducing other applications"
 
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/016-part-4-chapter-13/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -151,56 +151,51 @@ This practice of describing intent through type hints prepares you for Spec-Driv
 
 *Reality*: Professional developers use AI every single day. The skill isn't "memorize syntax"—it's "know when and how to use AI effectively." That's what we're teaching throughout this chapter and book.
 
-## Try With AI
+## Try With AI: Mental Model Test
 
-Use your AI companion (Claude Code or Gemini CLI) for these prompts. These are designed to progress from recall to analysis.
+This lesson introduced Python as "the language of AI development." Now test if you've built a solid mental model.
 
-**Prompt 1: Recall – Python's Definition**
+### Part 1: Explain It Back (Your Turn First)
 
-```
-What is Python? Give a one-sentence definition suitable for someone who's never coded.
-```
+**Before asking AI anything**, write down your own answers:
 
-**Expected Outcome**: You compare the AI's definition to the one in this lesson. Does it make sense? Can you explain it to someone else now?
+1. **What is Python?** (One sentence, like you're explaining to a friend)
+2. **Why Python for AI?** (Pick the most important reason)
+3. **How does Python connect to this book?** (What role does it play in AI-Driven Development?)
 
----
-
-**Prompt 2: Understand – Why Python Matters for AI**
-
-```
-The lesson says "Python is ideal for AI because of readable syntax and library ecosystem."
-Explain what "readable syntax" means and why it matters for AI development.
-Give one example of a Python library used in AI.
-```
-
-**Expected Outcome**: You understand the connection between code readability and AI collaboration. You learn the name of at least one real Python AI library. You can explain why this matters.
+Write these down. Don't peek at the lesson. This tests what stuck.
 
 ---
 
-**Prompt 3: Apply – Connecting Python to Your Goals**
+### Part 2: Compare with AI's Explanation
 
-```
-Think about what you want to build with AI in the future (a chatbot, an analysis tool, content generator, etc.).
-Explain how Python could help you build that.
-Ask: Why would Python be a good choice for my project?
-```
+Now ask your AI companion:
 
-**Expected Outcome**: You apply your Python knowledge to a real goal. Learning becomes personal and relevant. You see Python not as abstract but as a tool for your own ambitions.
+> "Explain what Python is and why it's the dominant language for AI development. Give me a one-sentence definition and three reasons."
 
----
-
-**Prompt 4: Analyze – Python vs. Other Languages**
-
-```
-The lesson mentions Python is different from other languages. Here's a comparison prompt:
-"Compare Python to JavaScript (another popular language).
-For building AI applications, what are the tradeoffs?
-When would you choose Python? When would you choose JavaScript?"
-Why is this an important question for developers to think about?
-```
-
-**Expected Outcome**: You understand that every language has tradeoffs. Python isn't the only tool. You practice analytical thinking about tool selection—a professional developer's skill. You close out Lesson 1 with broader perspective.
+**Your task**: Compare AI's explanation to yours.
+- Did you miss anything important?
+- Did AI explain something differently?
+- Which explanation is clearer—yours or AI's? Why?
 
 ---
 
-**Safety Note**: All prompts are designed to deepen understanding, not generate code for you. If an AI response suggests code, read it carefully, run it yourself, and make sure you understand what it does before using it.
+### Part 3: Push Back on AI (Critical Thinking)
+
+AI gave you three reasons why Python dominates AI. But every tool has limitations.
+
+Ask AI this challenging question:
+
+> "You said Python is ideal for AI development. But what are Python's WEAKNESSES? When would I NOT choose Python? Give me 2-3 scenarios where another language might be better."
+
+**Your task**: Evaluate AI's response.
+- Does it feel honest, or like it's avoiding criticism?
+- Do the weaknesses make sense?
+- Can you think of a weakness AI didn't mention?
+
+This teaches you: **AI can be overly positive. Always ask for tradeoffs.**
+
+---
+
+**Time**: 15-20 minutes total
+**Outcome**: You've tested your understanding, compared it to AI, and practiced critical evaluation—not just passive acceptance.

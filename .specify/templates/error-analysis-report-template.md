@@ -269,7 +269,7 @@ severity: {{SEVERITY}}  # PASS | DEGRADED | FAIL
 {{SYSTEMIC_FIXES}}
 
 <!-- Example format:
-1. **Update lesson-writer agent prompt**
+1. **Update content-implementer agent prompt**
    - Add explicit check: "No sections after Try With AI"
    - Add validation: CoLearning element minimum counts
    - Time: 1 hour

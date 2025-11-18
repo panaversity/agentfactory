@@ -19,9 +19,9 @@ files:
   - .specify/memory/constitution.md
   - CLAUDE.md
   - .claude/agents/chapter-planner.md
-  - .claude/agents/lesson-writer.md
-  - .claude/agents/technical-reviewer.md
-  - .claude/agents/proof-validator.md
+  - .claude/agents/content-implementer.md
+  - .claude/agents/validation-auditor.md
+  - .claude/agents/factual-verifier.md
   - .claude/skills/code-example-generator/SKILL.md
   - .claude/skills/ai-augmented-teaching/SKILL.md
   - .claude/skills/learning-objectives/SKILL.md
@@ -54,7 +54,7 @@ PROMPT_TEXT:
 RESPONSE_TEXT:
 
 - Confirmed constitution v3 alignment; added AI Development Spectrum (Assisted → Driven → Native) to `.specify/memory/constitution.md`.
-- Scoped subagent updates (chapter-planner, lesson-writer, technical-reviewer, proof-validator) to enforce spec-first, acceptance criteria, closure policy, and spec→prompt→code→validation sequence.
+- Scoped subagent updates (chapter-planner, content-implementer, validation-auditor, factual-verifier) to enforce spec-first, acceptance criteria, closure policy, and spec→prompt→code→validation sequence.
 - Constrained `code-example-generator` to require SpecRef, exact prompts, and validation steps; added test snippet, security lint, and failure-mode example.
 - Renamed skill label to `ai-collaborate-learning` and updated references.
 - Removed references to non-present skills in `CLAUDE.md`; added repository-availability note in constitution.

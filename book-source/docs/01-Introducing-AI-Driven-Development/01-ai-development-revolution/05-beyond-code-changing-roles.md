@@ -188,6 +188,67 @@ You're not writing the code—but you're steering the AI toward the right soluti
 
 > **Practice the orchestrator workflow**: "I need a simple task management function in Python that adds tasks to a list and marks them complete. First, you generate the initial implementation. Then I'll act as the orchestrator: I'll review your code, identify improvements (add validation, handle edge cases, improve error messages), and guide you through iterations. This mirrors the real developer-as-orchestrator role."
 
+## Building Reusable Intelligence, Not Just Code
+
+As you develop orchestration skills, you'll discover something profound: **the most valuable asset isn't the code AI generates—it's the reusable intelligence you create to guide that generation.**
+
+In traditional development, experienced developers built **reusable code** (libraries, frameworks, components). In AI-native development, experienced developers build **reusable intelligence**—patterns and capabilities that compound across projects.
+
+**Three forms of reusable intelligence you'll create:**
+
+### 1. Specialized Subagents — Focused Autonomous Expertise
+
+**What they are:** AI agents with specific domain knowledge and decision-making capabilities
+
+**Examples:**
+- Security reviewer that checks code for vulnerabilities using OWASP patterns
+- Performance optimizer that analyzes bottlenecks and suggests improvements
+- Accessibility auditor that validates WCAG compliance
+- API documentation generator that produces OpenAPI specs from code
+
+**When to create:** A workflow requires 5+ decisions with specialized knowledge that recurs across projects
+
+**Your value:** You define the agent's persona, decision framework, and quality criteria based on accumulated expertise
+
+### 2. Domain Skills — Packaged Knowledge Bundles
+
+**What they are:** Reusable patterns, instructions, and tools for specific problem domains
+
+**Examples:**
+- Healthcare compliance checker (HIPAA validation rules)
+- Financial reporting generator (regulatory requirements, formatting standards)
+- E-commerce checkout flow (payment processing, inventory, tax calculation patterns)
+- Real-time data pipeline builder (streaming, transformation, monitoring patterns)
+
+**When to create:** A pattern recurs 2+ times and involves 2-4 decision points
+
+**Your value:** You encode domain expertise that AI alone doesn't possess—industry regulations, business rules, organizational standards
+
+### 3. Orchestration Patterns — Multi-Agent Workflows
+
+**What they are:** Proven sequences for coordinating multiple agents and skills to accomplish complex tasks
+
+**Examples:**
+- Code review pipeline: Static analysis → Security scan → Performance check → Human approval
+- Deployment sequence: Build → Test → Stage → Smoke test → Production rollout
+- Feature development workflow: Spec generation → Implementation → Testing → Documentation → Integration
+- Incident response: Detection → Diagnosis → Mitigation → Root cause analysis → Prevention
+
+**When to create:** A complex task requires coordinating 3+ agents, skills, or human decision points
+
+**Your value:** You design the collaboration strategy—which agents run when, what outputs flow between them, where human judgment is required
+
+### The Compounding Effect
+
+Here's why this matters: **Reusable intelligence accumulates.**
+
+- **Week 1:** You build a security reviewer agent for your authentication system
+- **Week 4:** You reuse that agent to review your API endpoints
+- **Week 8:** You compose the security agent + performance optimizer + documentation generator into a "production-ready API" orchestration
+- **Week 12:** Your entire team uses your orchestration pattern for all new APIs
+
+By Chapter 30, you'll learn systematic frameworks for creating and composing reusable intelligence at scale. For now, just recognize: **your future value isn't typing code faster—it's designing intelligence that makes every project better than the last.**
+
 ## How This Transforms Across Seniority Levels
 
 The orchestrator role manifests differently depending on experience level:

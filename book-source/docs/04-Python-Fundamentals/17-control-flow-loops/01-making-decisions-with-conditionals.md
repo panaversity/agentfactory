@@ -74,12 +74,12 @@ differentiation:
   remedial_for_struggling: "Focus on simple if/else binary decisions first; practice with flowchart visualizations before code; use concrete real-world scenarios (age verification, price calculation)"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/001-part-4-chapter-17/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
 git_author: "Claude Code"
-workflow: "lesson-writer subagent"
+workflow: "content-implementer subagent"
 version: "1.0.0"
 ---
 
@@ -614,92 +614,121 @@ if age >= 18:
 
 ---
 
-## Try With AI
+## Try With AI: Conditional Logic Debugging Challenge
 
-Now that you've learned conditional logic, strengthen your understanding by exploring these concepts with your AI companion. Use **ChatGPT** (web chat) or your preferred AI tool (Claude Code, Gemini CLI, etc.) if you've already set one up.
+You've learned `if`, `elif`, `else`, and nested conditionals. Now debug broken decision logic to understand how conditionals fail—with AI as your logic validator.
 
-### Prompt 1: Recall — Understanding if vs elif
+### Part 1: Find the Bug (Your Turn First)
 
-Copy this prompt into ChatGPT:
-
-> "What's the difference between using `if` and `elif` in Python? Give me a concrete example showing when to use each."
-
-**Expected Outcome:** You'll get a clear explanation that `if` starts a new condition check (independent), while `elif` is part of a chain (dependent on earlier conditions). The AI will likely show a grade classifier or similar example demonstrating that `elif` only runs when preceding conditions are false.
-
----
-
-### Prompt 2: Understand — Trace Execution
-
-Copy this prompt into ChatGPT:
-
-> "Explain step-by-step how this if-elif-else chain evaluates when score=85. What happens at each condition check?
->
-> ```python
-> score: int = 85
->
-> if score >= 90:
->     grade = 'A'
-> elif score >= 80:
->     grade = 'B'
-> elif score >= 70:
->     grade = 'C'
-> else:
->     grade = 'F'
-> ```
-> What's the final value of `grade`?"
-
-**Expected Outcome:** The AI will trace through each condition: "First, check if 85 >= 90 (False, skip). Next, check if 85 >= 80 (True, set grade='B', stop checking remaining conditions)." You'll understand how Python short-circuits evaluation after the first match.
-
----
-
-### Prompt 3: Apply — Generate Code
-
-Copy this prompt into ChatGPT:
-
-> "Generate a Python conditional that checks if a number is positive, negative, or zero. Include type hints for all variables. Test it with the values 10, -5, and 0, and show the expected output for each."
-
-**Expected Outcome:** The AI will generate an if-elif-else structure similar to:
+**Before asking AI**, analyze these broken conditionals and predict what's wrong:
 
 ```python
-number: int = 10
+# Bug 1: Unreachable code
+score: int = 85
 
-if number > 0:
-    print(f"{number} is positive")
-elif number < 0:
-    print(f"{number} is negative")
-else:
-    print(f"{number} is zero")
+if score >= 60:
+    grade: str = "D or better"
+elif score >= 80:  # Will this ever run?
+    grade: str = "B or better"
+
+# Your prediction: What's wrong? What will grade be for score=85?
+
+# Bug 2: Impossible condition
+age: int = 25
+
+if age >= 18 and age < 13:  # Will this ever be True?
+    print("Teen discount")
+
+# Your prediction: Can this condition EVER be True? Why or why not?
+
+# Bug 3: Type mismatch
+user_age: str = "25"  # Notice: string, not int
+
+if user_age >= 18:
+    print("Access granted")
+
+# Your prediction: Will this crash? If yes, what error?
 ```
 
-You'll see test outputs for all three cases and understand how to structure a three-way decision.
+**Your task**:
+1. For each bug, predict: What will happen?
+2. Write down: Why is it broken?
+3. Sketch the fix BEFORE running the code
 
 ---
 
-### Prompt 4: Analyze — Edge Cases
+### Part 2: AI Explains Decision Logic (Discovery)
 
-Copy this prompt into ChatGPT:
+Share your bug predictions with AI:
 
-> "What edge cases should I test for age verification logic that checks `if age >= 18`? List at least 5 test cases with explanations of why each is important."
+> "I found 3 bugs in conditional logic: [paste code and your predictions]. For each:
+> 1. Confirm if my prediction is correct
+> 2. Explain WHY it's broken (unreachable code? impossible logic? type error?)
+> 3. Show the correct version with explanation
+> 4. What's the general principle to avoid this bug?"
 
-**Expected Outcome:** The AI will suggest test cases like:
-- `age = 17` (just below threshold)
-- `age = 18` (exact threshold—boundary value)
-- `age = 19` (just above threshold)
-- `age = 0` (minimum valid age)
-- `age = -5` (invalid input—negative age)
-- `age = 120` (extreme but valid value)
-
-You'll learn to think about **boundary values** (the edges where behavior changes) and **invalid inputs** (what happens when data is wrong).
+**Your task**: Evaluate AI's explanations.
+- Does it explain that Python stops at the FIRST matching condition (bug 1)?
+- Does it show that `age >= 18 AND age < 13` is logically impossible (bug 2)?
+- Does it explain you can't compare string "25" with int 18 (bug 3)?
+- Can you now write rules to avoid these bugs?
 
 ---
 
-### Safety & Ethics Note
+### Part 3: Student Teaches AI (Condition Ordering)
 
-**Validation mindset:** When your AI generates conditionals, always:
-1. **Test boundary values** (the exact threshold, just above, just below)
-2. **Check for unreachable code** (conditions that never execute)
-3. **Verify logical operators** (is it `and` or `or`?)
-4. **Trace execution manually** for at least one test case
+AI explained the bugs. But does it know the BEST way to order conditions?
 
-Your AI is excellent at generating syntactically correct code, but **you're responsible for validating the logic**. A program that runs without errors isn't necessarily correct—it must also make the right decisions.
+Challenge AI with complex logic:
+
+> "I'm building a grade classifier:
+> - 90+ = A
+> - 80-89 = B
+> - 70-79 = C
+> - 60-69 = D
+> - Below 60 = F
+>
+> Show me THREE different ways to write this:
+> 1. Using `if-elif` chain (high to low)
+> 2. Using `if-elif` chain (low to high)
+> 3. Using multiple independent `if` statements
+>
+> For each, explain: Does it work correctly? Is it efficient? Which is most readable?"
+
+**Your task**: Compare the patterns.
+- Why does high-to-low ordering work but low-to-high breaks?
+- Why is `if-elif` better than multiple independent `if` statements?
+- Which pattern would YOU use and why?
+
+This teaches AI about decision tree optimization.
+
+---
+
+### Part 4: Build Multi-Condition Validator Together (Convergence)
+
+Now build complex logic with AI:
+
+> "Build a login validator that grants access ONLY if:
+> 1. User is 18+ years old
+> 2. Account is verified (bool)
+> 3. Has NOT failed login more than 3 times
+>
+> Show two implementations:
+> 1. Using nested if statements (if inside if inside if)
+> 2. Using a single if with `and` operators
+>
+> For each, show test cases: (age=20, verified=True, failures=2) should PASS, (age=17, verified=True, failures=0) should FAIL, (age=20, verified=False, failures=0) should FAIL."
+
+**Your task**: Compare nested vs. combined conditions.
+- Which is more readable?
+- Which is easier to debug?
+- Which would fail faster if one condition is False?
+
+Iterate if needed:
+> "The nested version is hard to read. Add clear error messages for EACH failure reason."
+
+---
+
+**Time**: 25-30 minutes total
+**Outcome**: You've debugged unreachable code, impossible logic, and type errors; learned to order conditions correctly; and built multi-condition validators using both nested and combined patterns.
 

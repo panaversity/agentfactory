@@ -93,7 +93,7 @@ differentiation:
   remedial_for_struggling: "Focus on single concept: CPU (does work) vs I/O (waits). Use concrete analogies: CPU is like a restaurant chef cooking (busy all the time); I/O is like a waiter waiting for customers (idle time). Have AI generate simple classification exercises with feedback; measure basic threading benchmark to experience GIL behavior empirically"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/part-4-chapter-29/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -203,7 +203,7 @@ PyList_SetItem(list, 0, PyLong_FromLong(42)); // Safe!
 
 This simplification is enormous. Without the GIL, every C extension would need complex thread-safety code. With the GIL, extensions just execute knowing they're protected.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 Here's the professional perspective: the GIL made perfect sense in 1989 when Guido van Rossum created Python. Single-core machines. No parallelism benefit possible anyway. The GIL simplified interpreter design and C API—huge wins for a language trying to be extensible and pragmatic.
 
@@ -553,7 +553,7 @@ print("Result: Threading is often SLOWER than single-threaded for CPU work.")
 - 2-8 threads: similar or slightly slower (GIL overhead dominates)
 - Never a speedup (GIL prevents it)
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 Understanding WHY this benchmark shows no speedup is more valuable than memorizing THAT it does. Here's the professional insight:
 
@@ -742,7 +742,7 @@ This solves the 30-year constraint. But how? By using **biased reference countin
 
 Result: Remove the global lock while maintaining thread safety. That's the innovation behind Lesson 4.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 Understanding the GIL means understanding **technological constraints and their evolution**. The GIL wasn't a mistake—it was the right call for 1989. The problem was that constraints which made sense for single-core machines became bottlenecks for multi-core machines 30 years later.
 
@@ -752,59 +752,112 @@ Free-threading is the rethinking of GIL fundamentals. Lesson 4 shows how.
 
 ---
 
-## Try With AI
+## Challenge 3: The GIL Impact Workshop
 
-Now it's your turn to explore the GIL and its impact on concurrency strategy. Work through these prompts in order, allowing 15 minutes total.
+This is a **4-part bidirectional learning challenge** where you understand the GIL's consequences and limitations.
 
-### Prompt 1: Recall (Remember)
+### Part 1: Discover Independently (Student as Scientist)
+**Your Challenge**: Experience the GIL's blocking firsthand.
 
-> "Explain in one sentence: What is the GIL? Then ask your AI: 'Did I capture the essence? What would you add about why it exists?'"
+**Deliverable**: Create `/tmp/gil_discovery.py` containing:
+1. CPU-bound task: calculate sum of squares for 50M numbers (takes ~3 seconds)
+2. Run sequentially: task 4 times (should be ~12 seconds)
+3. Run with `threading.Thread`: 4 threads executing tasks (should still be ~12 seconds—GIL blocks parallelism)
+4. Measure CPU utilization (one core only, not all 4)
+5. Compare to single-process (`multiprocessing.Process`): should be ~3 seconds (true parallelism)
 
-**What you'll learn**: Validate your core understanding of the Global Interpreter Lock.
+**Expected Observation**:
+- Sequential: 12 seconds
+- Threading: 12 seconds (GIL prevents parallelism)
+- Multiprocessing: 3 seconds (true parallelism)
 
-**Expected time**: 2 minutes
-
----
-
-### Prompt 2: Explain (Understand Mechanics)
-
-> "Ask your AI: 'Walk me through what happens when I create 4 threads to run a CPU-bound task. What does the GIL do? Why don't I get 4x speedup?' Then sketch: 'How would you visualize the GIL constraint with a diagram or timeline?'"
-
-**What you'll learn**: Develop mental model of GIL mechanics; understand why threading fails for CPU work.
-
-**Expected time**: 3 minutes
-
----
-
-### Prompt 3: Apply and Classify (The Critical Skill)
-
-> "Tell your AI: 'I'm building 5 AI components: (1) transformer inference, (2) web API calls, (3) vector database queries, (4) prompt generation, (5) file I/O. For each, is it CPU-bound or I/O-bound? What threading strategy would you use?' Then verify: 'Explain your reasoning for each classification.'"
-
-**What you'll learn**: Apply CPU vs I/O classification to real AI scenarios; make strategic concurrency decisions based on workload type.
-
-**Expected time**: 4 minutes
+**Self-Validation**:
+- Why doesn't threading help?
+- Why does multiprocessing work?
+- What's the difference at the implementation level?
 
 ---
 
-### Prompt 4: Analyze and Connect to Future (Build Cognitive Bridge)
+### Part 2: AI as Teacher (Teaching GIL Constraints)
+**Your AI Prompt**:
+> "I ran 4 threads for CPU work and got zero speedup—it took the same time as sequential. But I have 4 CPU cores. Teach me: 1) What is the GIL and why does it exist? 2) Why can't Python just remove it? 3) When DOES threading help in Python? 4) What alternatives exist (multiprocessing, asyncio)? Show me the architecture of each."
 
-> "Ask your AI: 'The GIL has been in Python for 30 years. What finally changed that made removal possible in 3.14? How does free-threading solve the problem that GIL existed to solve? What were the tradeoffs CPython developers had to make to enable free-threading?' Then reflect: 'If the GIL goes away, do I still need to understand it?'"
+**AI's Role**: Explain GIL (memory safety mechanism), discuss why it's hard to remove, clarify when threading helps (I/O bound), and compare solutions.
 
-**What you'll learn**: Build cognitive bridge to Lesson 4 (free-threading); understand paradigm shift coming; develop appreciation for why constraints exist and how they evolve.
+**Interactive Moment**: Ask a clarifying question:
+> "You said the GIL protects reference counting from race conditions. But why not just use locks per object instead of a global lock? Wouldn't that allow parallelism?"
 
-**Expected time**: 6 minutes
+**Expected Outcome**: AI explains the tradeoff—fine-grained locks would be slower than global lock in practice. You learn about systems-level tradeoffs.
 
 ---
 
-**If you're using a CLI tool** (Claude Code or Gemini CLI), here are command equivalents:
+### Part 3: You as Teacher (Discovering Workarounds)
+**Setup**: AI generates code showing GIL workarounds. Your job is to test each and teach AI about real-world constraints.
 
+**AI's Initial Code** (ask for this):
+> "Show me 3 ways to work around the GIL: 1) Multiprocessing for CPU-bound work, 2) Asyncio for I/O-bound work, 3) C extensions (ctypes/cffi) that release the GIL. Code examples for each, showing speedup compared to threading. Explain when each workaround is appropriate."
+
+**Your Task**:
+1. Run each approach. Measure speedup
+2. Identify issues:
+   - Multiprocessing: high overhead for small tasks
+   - Asyncio: only helps I/O, not CPU
+   - C extensions: require external dependencies
+3. Teach AI:
+> "Your multiprocessing example has 50% overhead—the setup cost eats speedup. How do I batch work to amortize overhead? When is multiprocessing worth it? For what task sizes?"
+
+**Your Edge Case Discovery**: Ask AI:
+> "I have a hybrid workload: fetch data (I/O), process data (CPU), store results (I/O). Threading for I/O won't help CPU part (GIL blocks). Multiprocessing wastes resources. Should I use asyncio + executor? Show me the hybrid pattern."
+
+**Expected Outcome**: You discover that workarounds have tradeoffs. No single solution fits all problems. You learn to choose based on workload characteristics.
+
+---
+
+### Part 4: Build Production Artifact (Student as Engineer)
+**Your Capstone for This Challenge**: Build a concurrency strategy recommendation system.
+
+**Specification**:
+- Analyze 5 workload types (CPU-heavy, I/O-heavy, hybrid, GPU-bound, memory-bound)
+- For each workload, recommend concurrency strategy: threading, multiprocessing, asyncio, or hybrid
+- Explain reasoning (GIL impact, overhead, scaling characteristics)
+- Provide decision matrix: `{workload_type: (recommended_strategy, reasoning, expected_speedup)}`
+- Include code template for each strategy
+- Type hints throughout
+
+**Deliverable**: Save to `/tmp/concurrency_strategy.py`
+
+**Testing Your Work**:
 ```bash
-# Run Prompt 1 directly
-claude code "Explain in one sentence: What is the GIL?..."
-
-# Or use plain-text chat equivalent if using web interface
+python /tmp/concurrency_strategy.py
+# Expected output:
+# === Workload Analysis ===
+# CPU-bound (50M calculation):
+#   Recommended: Multiprocessing (ProcessPoolExecutor)
+#   Reasoning: CPU-bound, GIL prevents threading parallelism
+#   Expected speedup: 3.5x on 4 cores
+#
+# I/O-bound (5 API calls, 1s each):
+#   Recommended: Asyncio (TaskGroup/gather)
+#   Reasoning: I/O-bound, asyncio allows concurrency, low overhead
+#   Expected speedup: 5x (concurrent vs sequential)
+#
+# Hybrid (fetch + process + store):
+#   Recommended: Asyncio + ProcessPoolExecutor
+#   Reasoning: Async I/O + parallel CPU work
+#   Expected speedup: 3x overall (limited by slowest stage)
 ```
 
-If you've already set up an AI companion tool from previous chapters, use it instead. All these prompts work with any major AI language model.
+**Validation Checklist**:
+- [ ] Code runs without errors
+- [ ] All 5 workloads have recommendations
+- [ ] Reasoning explains GIL impact
+- [ ] Speedup estimates are realistic
+- [ ] Code templates are correct
+- [ ] Type hints complete
+- [ ] Could guide real project decisions
 
-**Safety & Ethics Note**: When exploring concurrency, you're learning engineering decisions, not discovering security vulnerabilities. The GIL is a historical design choice, not a bug. Understanding it teaches you systems thinking: constraints exist for reasons, architecture determines capabilities, and removing constraints requires solving deeper problems. Modern free-threading solves the parallelism problem by addressing the fundamental reason GIL was needed—thread-safe reference counting—not by ignoring it.
+---
+
+**Time Estimate**: 30-35 minutes (5 min discover, 8 min teach/learn, 8 min edge cases, 9-14 min build artifact)
+
+**Key Takeaway**: The GIL isn't a bug to ignore—it's a constraint to understand. Different workloads need different solutions. Knowing when threading helps (I/O), when it fails (CPU), and what alternatives exist is essential for Python system design.

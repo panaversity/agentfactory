@@ -64,7 +64,7 @@ differentiation:
   remedial_for_struggling: "Focus on sort() vs sorted() distinction first; practice count() and index() separately before combining; use AI to debug aliasing errors"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/001-part-4-chapter-18/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -106,7 +106,7 @@ Why does Python design it this way? Because the designers wanted to make **inten
 
 **Expected outcome**: You'll understand that `.sort()` returns `None`, making `result = scores.sort()` a common mistake.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize this distinction—you understand: "I need to preserve the original" or "I'm okay modifying it." Then ask AI: "Which method should I use?" The why matters more than the syntax.
 
@@ -350,7 +350,7 @@ print(f"Are they the same object? {original_list is independent_copy}")  # False
 - ✓ Copying: `.copy()` creates independent list, changes don't affect original
 - ✓ `is` operator confirms whether two variables reference the same object
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > This aliasing concept is crucial before you get to functions (Ch 20). When you pass a list to a function and modify it, you're modifying the original because it's passed by reference, not value. Understand this now, and debugging later becomes much easier.
 

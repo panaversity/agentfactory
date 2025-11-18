@@ -98,7 +98,7 @@ differentiation:
   remedial_for_struggling: "Scaffold with Example 8 foundation code; focus initially on 2-agent system before expanding; use provided benchmark templates"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/part-4-chapter-29/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -181,7 +181,7 @@ This difference is revolutionary for AI-native development—multi-agent reasoni
 
 > "Explain how a multi-agent system differs from a traditional multi-threaded application. What makes agents independent units? How does free-threading change the performance characteristics?"
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't design multi-agent systems by accident. You understand that agent independence unlocks parallelism, and free-threading unlocks the hardware you paid for. This capstone teaches you to think architecturally about concurrency.
 
@@ -777,85 +777,158 @@ Free-threading excels for **CPU-bound workloads with shared state**. It's not au
 
 ---
 
-## Try With AI
+## Challenge 6: The Complete Multi-Agent System Capstone (5-Part)
 
-### Prompt 1: Recall and Verification
+This is a **5-part bidirectional learning challenge** where you complete, evaluate, and reflect on your production multi-agent concurrency system.
 
-Use Claude Code or Gemini CLI:
+### Part 1: Verify and Benchmark Your Implementation (Student as Quality Engineer)
+**Your Challenge**: Ensure your built system actually demonstrates the concurrency concepts.
 
-> "Show me the multi-agent system you built in this capstone. Describe: (1) How many agents? (2) What does each agent do? (3) How do agents communicate results? Then ask: Did I capture the key architecture? What's missing?"
+**Verification Checklist**:
+1. Run your complete multi-agent system from Part 4 of the main lesson
+2. Measure performance with three approaches:
+   - Traditional Python (GIL enabled)
+   - Free-threaded Python 3.14 (if available)
+   - ProcessPoolExecutor (for comparison)
+3. Verify correct results: all agents complete successfully
+4. Test error handling: kill one agent mid-run; system continues
+5. Document timing: `{approach: (total_time, speedup_vs_sequential, cpu_utilization)}`
 
-**Expected time**: 3 minutes
+**Expected Behavior**:
+- Traditional threading: 1.0x speedup (GIL blocks parallelism)
+- Free-threaded Python: 3-4x speedup on 4 cores (true parallelism)
+- ProcessPoolExecutor: 2-3x speedup (process overhead overhead)
+- All approaches produce identical results (correctness verified)
 
-**Expected outcome**: AI confirms your architecture is sound and identifies any gaps.
-
----
-
-### Prompt 2: Explain Performance Characteristics
-
-> "Ask your AI: I benchmarked my system. With traditional threading, speedup is ~1.0x. With free-threaded Python, speedup is ~3.2x on 4 cores. Why? Explain the GIL's role in the difference."
-
-**Expected time**: 3 minutes
-
-**Expected outcome**: AI explains GIL mechanics in context of your specific results.
-
----
-
-### Prompt 3: Apply and Analyze
-
-> "Share your benchmarking results with your AI. Ask: (a) Which approach is fastest for my workload? (b) Why did that approach win? (c) What's the CPU utilization for each? (d) If I scale to 8 agents, which approach do you expect to still win? (e) What's the memory overhead?"
-
-**Expected time**: 6 minutes
-
-**Expected outcome**: AI analyzes your data and predicts scaling behavior.
+**Deliverable**: Create `/tmp/multi_agent_verification.md` documenting:
+- Measured speedups for each approach
+- CPU core utilization patterns
+- Memory usage comparison
+- Error handling confirmation
+- Recommendation: which approach for production?
 
 ---
 
-### Prompt 4: Synthesize Production Context
+### Part 2: Analyze Performance and Identify Optimization Opportunities (Student as Systems Engineer)
+**Your Challenge**: Understand WHERE time is spent and HOW to optimize.
 
-> "Ask your AI: How does my single-machine multi-agent system scale to production? Walk through: (1) Deploying with Kubernetes (Part 11)—how many pods, how agents communicate across pods. (2) Further scaling with Ray (Part 14)—how it becomes distributed actors. (3) Resource efficiency gains with free-threading. (4) What monitoring and observability would you add in production?"
+**Analysis Tasks**:
+1. Profile each agent: Which agent is slowest? Which uses most CPU?
+2. Identify critical path: Which agent blocks other agents from completing?
+3. Measure agent communication overhead: How much time spent passing results?
+4. Test scaling: Run with 2, 3, 4, 5, 6 agents—what's the speedup pattern?
+5. Create timeline visualization: Show when each agent runs, where idle time exists
 
-**Expected time**: 8 minutes
+**Expected Observations**:
+- One agent is likely the bottleneck (slowest)
+- Agent communication is negligible vs computation
+- Scaling benefits flatten after ~4 agents (diminishing returns as CPU cores saturate)
+- Idle time exists if agents are load-imbalanced
 
-**Expected outcome**: AI connects capstone to Parts 10-14 deployment reality, helping you see how these patterns scale.
-
----
-
-## What's Next
-
-You've completed Chapter 29 and built a production-capable multi-agent system. Your next steps:
-
-**Immediately** (next chapter):
-- Chapter 30: Specification-Driven Development formally teaches the methodology you've been using (evals → spec → implement → validate)
-- You now have a capstone project demonstrating these principles in action
-
-**Short-term** (Parts 5-8):
-- Chapters 31-48: Advanced Python patterns, system architecture, data persistence
-- Your multi-agent system becomes a reference for how AI-native development works
-
-**Medium-term** (Parts 9-14):
-- Chapters 49-56: Production deployment with Docker, Kubernetes, Ray, Dapr
-- Your capstone becomes a case study for scaling multi-agent systems
-- Free-threading decision you made here directly impacts infrastructure costs
+**Self-Validation**:
+- Can you explain why performance stops improving beyond 4 agents?
+- What would happen if you rebalanced workload across agents?
+- How would results change with 20 agents on 4 cores?
 
 ---
 
-## Capstone Checklist
+### Part 3: AI as Optimization Coach (AI Teaching Production Optimization)
+**Your AI Prompt**:
+> "I built a 4-agent system that achieves 3.2x speedup on 4 cores with free-threading. But when I test with 8 agents, speedup only goes to 3.4x, not 4x. Teach me: 1) Why does speedup plateau? 2) How do I profile to find the bottleneck? 3) What optimization strategies exist (load balancing, work distribution, architectural changes)? 4) Is 3.4x good enough or should I redesign? Show me decision framework."
 
-Before considering this lesson complete:
+**AI's Role**: Explain scaling limitations (Amdahl's law), show profiling techniques, discuss realistic optimization strategies, help you decide between "good enough" and "optimize more."
 
-- [ ] **Multi-agent system works** (3+ agents, thread-safe results)
-- [ ] **Free-threading detection active** (system prints status at startup)
-- [ ] **Benchmarking compares three approaches** (traditional, free-threaded, multiprocessing)
-- [ ] **Dashboard displays results clearly** (formatted table, winner analysis)
-- [ ] **Error handling tested** (system continues if agent fails)
-- [ ] **Timing accurate** (using `time.perf_counter()`, not `time.time()`)
-- [ ] **Speedup measured and explained** (e.g., "3.2x on 4 cores because free-threading eliminates GIL")
-- [ ] **Production context documented** (Kubernetes/Ray scaling explained)
-- [ ] **All code typed** (type hints throughout)
-- [ ] **Code tested on your machine** (works with and without free-threading)
+**Interactive Moment**: Ask a clarifying question:
+> "You mentioned load balancing. But my agents do different work (fetch, process, store). They can't be perfectly balanced. How do I handle inherently unbalanced workloads?"
+
+**Expected Outcome**: AI clarifies that perfect scalability is rare, optimization is contextual, and knowing when to stop optimizing is important. You learn production mindset.
 
 ---
+
+### Part 4: You as Architect (Extending and Validating the System)
+**Setup**: AI generates an optimized version using techniques like load balancing and work stealing. Your job is to verify benefits and teach AI about trade-offs.
+
+**AI's Initial Code** (ask for this):
+> "Show me an optimized version of the multi-agent system that: 1) Implements load balancing (distribute work based on agent capacity), 2) Uses work-stealing queues (idle agents grab work from busy agents), 3) Measures and reports per-agent efficiency. Benchmark against my original version and show if optimization actually helps."
+
+**Your Task**:
+1. Run the optimized version. Measure speedup and overhead
+2. Compare to original: did optimization help or hurt?
+3. Identify issues:
+   - Did load balancing add complexity?
+   - Does work-stealing introduce contention?
+   - Is the overhead worth the gain?
+4. Teach AI:
+> "Your optimized version is 5% faster but uses 3x more code. For production, is that worth it? How do I measure 'complexity cost' vs performance gain?"
+
+**Your Edge Case Discovery**: Ask AI:
+> "What if I extend this to 100 agents on 4 cores? Your current optimization still won't help because we're CPU-limited, not work-imbalanced. What architectural changes are needed? Is free-threading still the right choice, or should I switch to distributed (Ray, Kubernetes)?"
+
+**Expected Outcome**: You discover that optimization has diminishing returns. You learn to think about architectural limits and when to change approach entirely.
+
+---
+
+### Part 5: Reflect and Synthesize (Student as Thoughtful Systems Architect)
+**Your Challenge**: Synthesize everything you've learned about CPython and concurrency into principle-based thinking.
+
+**Reflection Tasks**:
+1. **Conceptual Mapping**: Create diagram showing how Lessons 1-5 concepts connect:
+   - CPython internals (Lesson 1) → GIL design choice
+   - Performance optimizations (Lesson 2) → only help single-threaded
+   - GIL constraints (Lesson 3) → blocked threading for CPU work
+   - Free-threading solution (Lesson 4) → removes GIL constraint
+   - Concurrency decision framework (Lesson 5) → applies decision at scale
+
+2. **Decision Artifacts**: Document your production decisions:
+   - Why did you choose free-threaded Python for this workload?
+   - What performance metric mattered most (latency? throughput? memory)?
+   - What would trigger a redesign (more agents? more cores)?
+   - How does this system connect to Kubernetes/Ray deployment?
+
+3. **Production Readiness Checklist**:
+   - [ ] System demonstrates 3x+ speedup on 4 cores (GIL solved)
+   - [ ] Correct results on all approaches (functional equivalence)
+   - [ ] Error handling resilient (agents fail independently)
+   - [ ] Scaling characteristics understood (where speedup plateaus)
+   - [ ] Thread safety verified (no race conditions on shared state)
+   - [ ] Performance profiled (bottleneck identified)
+   - [ ] Deployment strategy defined (free-threading vs alternatives)
+
+4. **AI Conversation**: Discuss system as if explaining to colleague:
+> "Our multi-agent system uses free-threaded Python because [reason]. It achieves [speedup] on [cores]. The bottleneck is [component]. For production, we'd scale by [approach - vertical to more cores, or horizontal to Kubernetes]. We chose free-threading over multiprocessing because [tradeoff analysis]. What production issues might we hit?"
+
+**Expected Outcome**: AI identifies realistic production concerns (dependency compatibility, deployment complexity, monitoring needs). You learn from production experience vicariously.
+
+**Deliverable**: Save to `/tmp/capstone_reflection.md`:
+- Concept map showing how CPython → GIL → free-threading → production
+- Decision documentation: why free-threading for this workload
+- Performance characteristics: speedup, bottleneck, scaling limits
+- Production deployment strategy: how this scales beyond single machine
+- Identified risks and mitigation strategies
+- Lessons learned about concurrency decision-making
+
+---
+
+### Chapter Synthesis: From CPython Internals to Production AI Systems
+
+**You've now mastered**:
+- Layer 1 (Foundations): CPython architecture and implementation choices
+- Layer 2 (Collaboration): Understanding GIL and its consequences
+- Layer 3 (Intelligence): Free-threading as solution and its tradeoffs
+- Layer 4 (Integration): Concurrency decision framework applied at scale
+
+**You can now**:
+- Make informed choices about Python implementation and concurrency approach
+- Benchmark systems and identify bottlenecks using data
+- Scale from single-machine to distributed systems (preview for Parts 10-14)
+- Design multi-agent systems with appropriate parallelism strategy
+- Explain CPython design choices and their production implications
+
+---
+
+**Time Estimate**: 55-70 minutes (10 min verification, 12 min analysis, 12 min coach interaction, 12 min optimization, 9-24 min reflection)
+
+**Key Takeaway**: You've moved from "I understand CPython" to "I design production systems knowing how CPython works and what constraints/capabilities it provides." The next frontier is scaling beyond single-machine (Parts 10-14).
 
 **Congratulations!** You've completed Chapter 29 and mastered:
 - CPython's architecture

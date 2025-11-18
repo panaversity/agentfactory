@@ -17,13 +17,13 @@ links:
   pr: null
 files:
   - .claude/skills/ai-collaborate-teaching/SKILL.md
-  - .claude/agents/lesson-writer.md
+  - .claude/agents/content-implementer.md
   - .claude/agents/chapter-planner.md
-  - .claude/agents/technical-reviewer.md
+  - .claude/agents/validation-auditor.md
   - .claude/skills/book-scaffolding/SKILL.md
   - .claude/skills/content-evaluation-framework/SKILL.md
   - .claude/skills/quiz-generator/SKILL.md
-  - .claude/agents/proof-validator.md
+  - .claude/agents/factual-verifier.md
   - .claude/skills/docusaurus-deployer/SKILL.md
   - .claude/skills/code-example-generator/SKILL.md
   - .claude/skills/concept-scaffolding/SKILL.md
@@ -56,7 +56,7 @@ Executed systematic remediation of all 14 identified files using general-purpose
    - Added "Specs Are the New Syntax" as PRIMARY skill emphasis
    - Added convergence loop pattern with requirements
 
-2. ✅ lesson-writer.md:
+2. ✅ content-implementer.md:
    - Updated Constitution reference v3.0.0 → v3.1.2
    - Added comprehensive "Three Roles Framework" section (260 lines)
    - Added "'Specs Are the New Syntax'" section (75 lines)
@@ -67,11 +67,11 @@ Executed systematic remediation of all 14 identified files using general-purpose
 
 **Phase 2: HIGH Priority Fixes** (7 files - 12-15 hours estimated):
 3. ✅ chapter-planner.md: v3.1.2 alignment, Nine Pillars context, LLM→LAM evolution
-4. ✅ technical-reviewer.md: Nine Pillars validation, co-learning checks, Specs-As-Syntax validation
+4. ✅ validation-auditor.md: Nine Pillars validation, co-learning checks, Specs-As-Syntax validation
 5. ✅ book-scaffolding.md: Nine Pillars scaffolding, LLM→LAM section, co-learning scaffolding
 6. ✅ content-evaluation-framework.md: Enhanced AI-First Teaching criteria, Nine Pillars gate
 7. ✅ quiz-generator.md: v3.1.2 alignment, evals-first integration
-8. ✅ proof-validator.md: Co-learning validation (Section F), Nine Pillars alignment (Section G)
+8. ✅ factual-verifier.md: Co-learning validation (Section F), Nine Pillars alignment (Section G)
 9. ✅ docusaurus-deployer.md: v1.0 → v1.1, constitution alignment, quality gates
 
 **Phase 3: MEDIUM Priority Fixes** (5 files - 10-12 hours estimated):

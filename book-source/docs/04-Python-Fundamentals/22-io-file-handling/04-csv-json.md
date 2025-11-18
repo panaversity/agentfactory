@@ -91,7 +91,7 @@ differentiation:
   remedial_for_struggling: "Focus on csv.DictReader and json.dump/load first; delay format selection comparison until concepts solidify"
 
 # Generation metadata
-generated_by: "lesson-writer v4.5.0"
+generated_by: "content-implementer v4.5.0"
 source_spec: "specs/001-part-4-chapter-22/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -746,56 +746,98 @@ Write error-handling code that:
 
 ---
 
-## Try With AI
+## Try With AI: The Data Format Migration Workshop
 
-These prompts help you synthesize everything this lesson taught: reading/writing both formats, handling encoding, managing errors, and choosing appropriate formats.
+### Part 1: Manually Convert Data Formats (Your Turn First)
 
-### Prompt 1: Understand Format Differences
+**Before asking AI**, understand the tradeoffs by converting data manually:
 
+**Given CSV data**:
 ```
-Ask your AI: "What's the difference between CSV and JSON?
-When would you use each format for real-world applications?
-Show me examples."
-
-Expected Outcome: You understand when tabular (CSV) is appropriate
-vs hierarchical/nested (JSON) data, and can justify format selection.
-```
-
-### Prompt 2: Apply Format Conversion
-
-```
-Ask your AI: "Write code that reads a CSV file containing contacts
-(name, email, phone), filters for a specific email domain, and saves
-the results to JSON with proper UTF-8 encoding."
-
-Expected Outcome: You see CSV→JSON transformation with filtering,
-and understand how csv.DictReader and json.dump work together.
+name,email,department,start_year
+Alice Johnson,alice@example.com,Engineering,2020
+Bob Smith,bob@example.com,Sales,2021
+Carol White,carol@example.com,Marketing,2019
 ```
 
-### Prompt 3: Analyze Performance Tradeoffs
+**Your task**: Without using code, manually convert this CSV to JSON by:
+1. Writing out the JSON structure by hand (what keys do you use?)
+2. Documenting what information you **lose** in conversion (formatting, types, metadata)
+3. Writing a document `format_tradeoffs.md` that explains:
+   - Why CSV works well for this data
+   - Why JSON might be better for this data
+   - What happens if you tried to reverse the conversion (JSON back to CSV)?
+   - List 3 reasons to choose CSV and 3 reasons to choose JSON for employee data
 
-```
-Ask your AI: "Compare reading a large CSV file (10,000 rows) with
-csv.reader vs csv.DictReader. What's the memory and performance
-difference? When would you use each?"
+**Deliverable**: A markdown file showing your manual conversion and analysis of format tradeoffs.
 
-Expected Outcome: You understand tradeoffs between convenience
-(DictReader) and efficiency (reader), and when each is appropriate.
-```
+---
 
-### Prompt 4: Synthesize Real-World Scenario
+### Part 2: AI Explains Format Conversion Patterns (Discovery)
 
-```
-Ask your AI: "Design a data import system that reads CSV from a
-user's export, validates required fields, handles encoding issues
-(international names), converts to JSON, saves to file, and
-implements comprehensive error handling. What error cases must
-you handle? What does the data structure look like?"
+**Share your manual conversion with AI:**
 
-Expected Outcome: You've integrated CSV/JSON with validation and
-error handling in a realistic workflow, demonstrating mastery of
-structured data formats. This prepares you for Lesson 5's Note-Taking
-App capstone that persists data as JSON files.
-```
+> "I manually converted CSV employee data to JSON [paste your JSON]. Evaluate my structure:
+> 1. Is my JSON structure reasonable for representing employees?
+> 2. What information should I add (created date, modified date, ID)?
+> 3. Show me what `csv.DictReader` and `json.dump()` do, and how they automate what I did manually.
+> 4. When would CSV be better than JSON and vice versa?"
+
+**Your evaluation**:
+- Does the AI approve of your JSON structure or suggest improvements?
+- Did it explain the automated functions clearly?
+- Can you now articulate the decision framework for choosing formats?
+
+---
+
+### Part 3: Student Challenges AI—Real-World Edge Cases (Debugging)
+
+**Push the boundaries of both formats:**
+
+> "What happens in these scenarios?
+> 1. A name field contains a comma (Alice, Jr. Johnson) - how does CSV handle this?
+> 2. A description field contains a newline - what breaks?
+> 3. A JSON file has emoji in names (café, José) - what encoding settings matter?
+> 4. You have 100,000 employee records - which format is faster to read?
+>
+> Show me the actual data and explain each issue."
+
+**Your debugging**: Create a test file `format_edge_cases.py` that:
+- Creates CSV/JSON with special characters
+- Demonstrates where each format breaks
+- Shows how to handle each edge case properly
+
+---
+
+### Part 4: Build a Data Migration Tool (Convergence)
+
+**Build a complete converter:**
+
+> "Help me write a data migration tool that:
+> 1. Reads employee data from CSV (name, email, department, start_year)
+> 2. Validates all required fields are present
+> 3. Converts each row to a Python dictionary
+> 4. Adds metadata: ID (UUID), import_date (timestamp), data_source='csv'
+> 5. Handles international characters (ensure_ascii=False)
+> 6. Converts to JSON with proper indentation
+> 7. Saves to `employees.json`
+> 8. Implements error handling for:
+>    - Missing fields (skip with warning)
+>    - Invalid email format (report and skip)
+>    - File not found (helpful error message)
+>    - Corrupted JSON if we load it back (report issue)
+>
+> The tool should show: 'Imported 47 employees, skipped 3 with errors'"
+
+**Refinement**:
+- Add reverse conversion: read JSON and export to CSV
+- Implement validation: check email format, start_year is valid, no duplicate IDs
+- Add conflict detection: if an employee already exists, skip with message
+- Create a report: how many records imported, how many skipped, why
+
+**Time**: 30-40 min
+**Outcome**: Complete bi-directional data migration tool with validation and error handling
+
+---
 
 **Safety & Ethics Note**: When importing data from external sources, always validate and sanitize inputs. Don't assume CSV/JSON files are trustworthy—implement bounds checking, type validation, and error handling. This protects your application and data integrity.

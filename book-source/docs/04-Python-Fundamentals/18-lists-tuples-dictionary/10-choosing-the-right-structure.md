@@ -60,7 +60,7 @@ differentiation:
   remedial_for_struggling: "Focus on 3-scenario decision tree: (1) Need to change? List. (2) Need order? List/Tuple. (3) Need fast lookup? Dict. Use decision flowchart as reference throughout."
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/001-part-4-chapter-18/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -137,7 +137,7 @@ contacts: dict[str, str] = {
 alice_phone = contacts["Alice"]  # ✓
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > In AI-native development, you're not memorizing how Python sorts dicts (insertion order in 3.7+). You're understanding the *intent*: lists when order is semantically meaningful, dicts when you need named lookup. Structure choice is communication.
 
 ---
@@ -562,51 +562,114 @@ Design the data structures for a simple **music playlist application**:
 
 ---
 
-## Try With AI
+## Try With AI: Data Structure Architecture Challenge
 
-Choose your preferred AI companion (ChatGPT web, Claude Code, or Gemini CLI).
+You've learned the decision framework: mutability, ordering, lookup pattern, performance. Now apply it to real system design—with AI as your code reviewer.
 
-### Prompt 1: Recall Decision Criteria (Remember)
-> "List the four key questions I should ask when choosing between list, tuple, and dict. For each question, explain what each structure provides."
+### Part 1: Design Music Library (Your Turn First)
 
-**Expected Outcome**: You'll recall the decision framework and reinforce when to use each structure based on mutability, ordering, and lookup patterns.
+**Before asking AI**, design data structures for a music streaming app:
 
----
+**Requirements**:
+1. **Songs in playlist** - Ordered, can reorder, add/remove
+2. **Artist → Song mapping** - Fast lookup of all songs by artist name
+3. **Song metadata** - (title, artist, duration) never changes once created
+4. **User favorites** - Need fast "is this song favorited?" check
 
-### Prompt 2: Analyze a Real Scenario (Understand)
-> "I'm building a social media app. I need to store:
-> - User posts (need to display newest first)
-> - User's followers (need to check if person X follows them)
-> - Post metadata (likes, timestamps, author ID)
->
-> Which data structures would you use and why? Explain the tradeoffs."
+**Your task**: For EACH, choose list/tuple/dict. Write:
+1. Type hint showing your choice
+2. WHY (mutability? ordering? lookup performance?)
+3. Sample data for 2-3 items
 
-**Expected Outcome**: You'll understand how different requirements drive different structural choices and can articulate tradeoffs between performance and simplicity.
-
----
-
-### Prompt 3: Evaluate Architectural Decisions (Apply)
-> "Here's a design: I'm using a list of dicts for user records and searching by user ID every time. Explain why this might be a problem for a site with 1 million users. What structure would be better and why?"
-
-**Expected Outcome**: You'll connect structure choice to real-world performance implications and can argue for refactoring in code reviews.
+Make all decisions BEFORE asking AI.
 
 ---
 
-### Prompt 4: Justify a Design Decision (Analyze/Evaluate)
-> "Imagine you're in a code review and see this:
->
+### Part 2: AI Reviews Your Architecture (Discovery)
+
+Share your design with AI:
+
+> "Here's my music library design: [paste your choices]. For each:
+> 1. Is my structure choice optimal?
+> 2. What's the performance cost? (O(1) vs O(n) lookup)
+> 3. Would this scale to 100,000 songs?
+> 4. Show me the code to create these structures with sample data"
+
+**Your task**: Evaluate AI's performance feedback.
+- Does it confirm list for playlist (ordered, mutable)?
+- Does it confirm dict for artist→songs (O(1) lookup)?
+- Does it confirm tuple for song metadata (immutable)?
+- Does it suggest set for favorites (O(1) membership test)?
+- Can you explain WHY each choice scales?
+
+---
+
+### Part 3: Student Teaches AI (Anti-Pattern Recognition)
+
+AI reviewed your design. But does it catch ANTI-PATTERNS?
+
+Challenge AI with bad architecture:
+
+> "A developer wrote this:
 > ```python
-> student_records: list[tuple[int, str, str, float]] = [
->     (1001, 'Alice', 'CS', 3.8),
->     (1002, 'Bob', 'Math', 3.2),
+> # 1 million user records
+> users: list[dict[str, str]] = [
+>     {'id': 'user1', 'name': 'Alice'},
+>     {'id': 'user2', 'name': 'Bob'},
+>     # ... million more
 > ]
+>
+> def find_user(user_id: str) -> dict | None:
+>     for user in users:
+>         if user['id'] == user_id:
+>             return user
+>     return None
 > ```
 >
-> The developer says 'I used tuples because the data never changes.' Is this the best choice? What would you suggest and why? Show me the refactored version."
+> Problems:
+> 1. What's the performance cost of find_user with 1M records?
+> 2. Why is this an anti-pattern?
+> 3. Refactor to dict[str, str] - show the new structure
+> 4. Calculate: How much faster is dict lookup? (O(1) vs O(n))"
 
-**Expected Outcome**: You'll develop professional judgment about architectural decisions and can communicate recommendations constructively. You'll understand when semantic clarity (using dict) trumps technical correctness (using tuple).
+**Your task**: Understand performance reality.
+- Does AI explain O(n) search means 500,000 comparisons average?
+- Does it show dict gives O(1) instant lookup?
+- Does it refactor to `users: dict[str, str] = {'user1': 'Alice', ...}`?
+- Can you explain when list→dict refactoring is critical?
 
 ---
 
-**Safety & Ethics Note**: When AI suggests structures, verify they match your requirements. Sometimes multiple structures could work—your job is understanding the tradeoffs. Always ask "Why this over that?" to deepen your architectural thinking.
+### Part 4: Design E-Commerce System Together (Convergence)
+
+Now design a complete system with AI:
+
+> "Design data structures for an e-commerce cart:
+> 1. Shopping cart items (ordered, quantity per item, can modify)
+> 2. Product catalog (10,000 products, fast lookup by SKU)
+> 3. Product details (name, price, category - fixed after creation)
+> 4. Order history (need chronological display)
+>
+> For EACH component:
+> - Choose structure (list/tuple/dict/set)
+> - Write type hint
+> - Justify: Why this structure?
+> - Show sample code
+> - Explain performance implications"
+
+**Your task**: Review the complete architecture.
+- Does it use appropriate structures for each requirement?
+- Does it nest structures where needed (dict of lists? list of tuples?)?
+- Does it explain tradeoffs (memory vs. speed)?
+- Can you defend every architectural decision?
+
+Iterate if needed:
+> "The cart uses list of dicts. What if user adds same item twice? Should we prevent duplicates or track quantity? How does this change the structure?"
+
+---
+
+**Time**: 30-40 minutes total
+**Outcome**: You've designed multi-structure systems, understood O(1) vs O(n) performance implications, recognized anti-patterns, and made architecture decisions you can defend in code reviews.
+
+**Safety Note**: Structure choice is an architectural decision. Wrong choice can make 1M record system unusable (O(n) search) vs. instant (O(1) dict). Always consider scale.
 

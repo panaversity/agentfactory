@@ -31,7 +31,7 @@
 
 ## 🎯 Vision
 
-**AI Native Software Development** is a **56-chapter technical book, open specification, and development framework** that teaches you to build intelligent systems where AI is the core.
+**AI Native Software Development** teaches you to build intelligent systems where AI is the core using AIDD.
 
 Rather than using AI to code faster, we teach you to **architect systems where intelligent agents are fundamental components** — applications that reason, learn, and collaborate. The learning journey progresses through three critical stages:
 
@@ -113,22 +113,6 @@ As you scale AI adoption in your organization, you'll progress through maturity 
 **Key Insight**: You cannot skip levels. Master Levels 1-2 before attempting Level 3. Master Level 3 before building AI-Native products.
 
 ---
-
-## 📘 Structure Overview
-
-1. **AI-Driven Development Foundations**
-2. **AI Tool Landscape: Gemini, Claude, Codex**
-3. **Prompt & Context Engineering**
-4. **Python: The Language of AI Agents**
-5. **Spec-Driven Development**
-6. **OpenAI Agents SDK in Python**
-7. **MCP & FastMCP Fundamentals**
-8. **TypeScript for Realtime & Interaction**
-9. **Building Realtime & Voice Agents**
-10. **Containerization & Orchestration**
-11. **Data, State & Memory (SQL, Graph, Vector)**
-12. **Event-Driven Architecture with Kafka & Dapr**
-13. **Stateful Agents with Dapr Actors & Workflows**
 
 ## 🔬 Core Philosophy
 

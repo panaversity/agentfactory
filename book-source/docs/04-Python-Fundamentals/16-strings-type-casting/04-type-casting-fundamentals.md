@@ -67,7 +67,7 @@ differentiation:
   remedial_for_struggling: "Focus on simple conversions first (int and str); practice validation patterns before exploring error cases; use isinstance() as safety net"
 
 # Generation metadata
-generated_by: "lesson-writer v1.0.0"
+generated_by: "content-implementer v1.0.0"
 source_spec: "specs/part-4-chapter-16/spec.md"
 created: "2025-11-08"
 last_modified: "2025-11-08"
@@ -384,85 +384,92 @@ This table helps you choose the right conversion:
 
 ---
 
-## Try With AI
+## Try With AI: Type Conversion Debug Challenge
 
-Now it's time to practice type conversions with your AI companion. Use Claude Code or your preferred AI tool.
+You've learned `int()`, `float()`, `str()`, and `bool()` conversions. Now debug real conversion errors to understand when and why conversions fail—with AI as your debugging partner.
 
-### Prompt 1: Recall/Understand — Type Conversion Basics
+### Part 1: Break Conversions Deliberately (Your Turn First)
 
-Ask your AI:
+**Before asking AI**, run these conversions and observe what happens:
 
+```python
+# Which of these will crash? Predict first, then test:
+test_1 = int("42")        # Your prediction: ___
+test_2 = int("3.14")      # Your prediction: ___
+test_3 = int("  100  ")   # Your prediction: ___
+test_4 = float("hello")   # Your prediction: ___
+test_5 = bool("")         # Your prediction: ___
+test_6 = bool("0")        # Your prediction: ___
 ```
-I'm learning about type conversions.
 
-- What's the difference between int("42") and str(42)?
-- Why does int("3.14") fail while float("3.14") works?
-- What does bool("") return? What about bool("0")?
-
-Show me examples and explain the results.
-```
-
-**Expected Outcome**: You learn conversion direction and can predict which conversions work or fail.
+**Your task**:
+1. Predict which will work, which will crash
+2. Run the code and collect the actual errors
+3. Write down: WHY did each succeed or fail?
 
 ---
 
-### Prompt 2: Apply — Parse User Input Safely
+### Part 2: AI Explains Conversion Rules (Discovery)
 
-Ask your AI:
+Share your error results with AI:
 
-```
-Write Python code that:
-- Asks user for their age (as a string)
-- Converts to integer
-- Validates conversion succeeded using isinstance()
-- Calculates their age 10 years from now
-- Validates result type
+> "I tested type conversions and got these results: [paste predictions vs. actual]. Explain:
+> 1. Why does `int('3.14')` fail but `float('3.14')` works?
+> 2. Why does `int(' 100 ')` work (with spaces)?
+> 3. Why does `bool('')` return False but `bool('0')` return True?
+> 4. What's the rule for when conversions succeed vs. fail?"
 
-Show me the code and test it with different inputs (valid number, invalid text).
-```
-
-**Expected Outcome**: You apply conversions to solve a real problem and understand how to validate before and after.
+**Your task**: Evaluate AI's explanation.
+- Does it explain that `int()` requires EXACTLY an integer format?
+- Does it show that `int()` ignores leading/trailing whitespace?
+- Can you explain the bool truthiness rules now?
 
 ---
 
-### Prompt 3: Analyze — Type Conversion Edge Cases
+### Part 3: Student Teaches AI (Safe Conversion Patterns)
 
-Ask your AI:
+AI explained conversion rules. But does it know the SAFEST way to convert?
 
-```
-I'm testing type conversions with edge cases:
+Challenge AI with validation patterns:
 
-- What happens with int(" 42 ") (spaces around number)?
-- What's the result of bool(0), bool(0.0), and bool("0")?
-- Can I convert "3.14" directly to int? Why or why not?
-- What if I have a negative number string: int("-42")?
+> "Show me 3 ways to safely convert user input `'42'` to int:
+> 1. Using try/except to catch ValueError
+> 2. Using `.isdigit()` to check before converting
+> 3. Using a default value if conversion fails
+>
+> For each, explain: When would you use this pattern? Which is most 'pythonic'? What are the tradeoffs?"
 
-Show me results and explain the patterns.
-```
+**Your task**: Compare the patterns.
+- Which pattern is most readable?
+- Which handles edge cases like negative numbers (`'-42'`)?
+- Which pattern would YOU use in production code?
 
-**Expected Outcome**: You discover edge cases and learn to predict and validate behavior in unusual situations.
+This teaches AI about defensive programming styles.
 
 ---
 
-### Prompt 4: Synthesize — Real-World Type Safety Pattern
+### Part 4: Build Input Validator Together (Convergence)
 
-Ask your AI:
+Now build a robust input validator with AI:
 
-```
-I'm building a program that processes user data:
-- Get user's height as a string
-- Convert to float
-- Get user's weight as a string
-- Convert to float
-- Calculate BMI = weight / (height * height)
-- Display result formatted to 2 decimals
+> "Build a safe calculator that:
+> 1. Takes two string inputs (number1, number2)
+> 2. Validates both can convert to float
+> 3. Performs addition if valid
+> 4. Shows clear error message if invalid
+> 5. Uses type hints throughout
+>
+> Make it crash-proof—handle all edge cases (empty strings, text, spaces, negative numbers)."
 
-Show me a complete solution with:
-1. Type hints for all variables
-2. Validation before conversions
-3. Formatted output using f-strings
+**Your task**: Review AI's validator.
+- Does it check validity BEFORE converting?
+- Does it handle all edge cases you tested in Part 1?
+- Does it provide helpful error messages?
 
-Connect this to what I've learned about types, conversions, and f-strings.
-```
+Iterate if needed:
+> "The error messages aren't helpful. Make them explain WHAT was wrong and HOW to fix it."
 
-**Expected Outcome**: You integrate type conversions with validation and formatting—combining Lessons 1-4 skills into a practical program.
+---
+
+**Time**: 25-30 minutes total
+**Outcome**: You've discovered when conversions fail through experimentation, learned safe validation patterns, and built a crash-proof input validator that handles all edge cases.

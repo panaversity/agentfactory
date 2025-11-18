@@ -76,7 +76,7 @@ differentiation:
   remedial_for_struggling: "Focus on simple timeout examples before retry logic; use timing diagrams and AI-assisted debugging sessions"
 
 # Generation metadata
-generated_by: "lesson-writer v1.0.0"
+generated_by: "content-implementer v1.0.0"
 source_spec: "specs/001-part-4-chapter-28/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -761,69 +761,120 @@ maximum delay cap of 32 seconds. Add jitter to prevent thundering herd."
 
 ---
 
-## Try With AI
+## Challenge 3: The Async Context Manager Workshop
 
-Now apply these advanced patterns to build resilient async code. Your AI can help you implement, debug, and optimize.
+This is a **4-part bidirectional learning challenge** where you master resilient async patterns through collaborative design.
 
-### Prompt Set (Bloom's Progression)
+### Part 1: Discover Independently (Student as Scientist)
+**Your Challenge**: Experience timeouts and error handling without AI guidance.
 
-**Prompt 1 — Understand Level** (Check your understanding):
+**Deliverable**: Create `/tmp/timeout_discovery.py` containing:
+1. A function that sometimes slow (takes 5+ seconds) using `asyncio.sleep()`
+2. Code that calls it with `asyncio.timeout(2)` — should raise `TimeoutError`
+3. Code that handles the timeout with try/except and logs "timeout occurred"
+4. Test different timeout values and observe behavior
 
-> Ask your AI: "How does `asyncio.timeout()` work? What happens internally when the timeout expires? What's the difference between TimeoutError and CancelledError?"
+**Expected Observation**:
+- No timeout (10s): function completes normally
+- Timeout=2s: raises TimeoutError after 2 seconds
+- Handling timeout: exception caught, can continue execution
 
-**Expected Output**: AI explains timeout mechanics (context manager enters, sets timer, raises TimeoutError if exceeded), and distinguishes TimeoutError (operation too slow) from CancelledError (task cancelled externally).
-
----
-
-**Prompt 2 — Apply Level** (Build something):
-
-> Tell your AI: "Generate code that fetches 5 URLs in parallel with a 3-second timeout per request. If any request times out, continue with the others (partial success). Return results and list which ones failed."
-
-**Expected Output**: Code using `gather(return_exceptions=True)` or `TaskGroup` with timeout context, returning results and failure information. Verify the code runs and correctly handles timeout scenarios.
-
----
-
-**Prompt 3 — Analyze Level** (Compare approaches):
-
-> Compare these approaches with your AI:
->
-> 1. Using `asyncio.timeout()` with retry loop
-> 2. Using `asyncio.gather()` with `return_exceptions=True`
-> 3. Using `TaskGroup()` with exception handling
->
-> Ask: "Which pattern is best for fetching from multiple sources where some might fail? What are the tradeoffs?"
-
-**Expected Output**: AI discusses patterns: TaskGroup (fail-fast), gather (collect all results), retry loop (persistence). You choose based on your use case.
+**Self-Validation**:
+- What's the difference between TimeoutError and CancelledError?
+- If you have 3 concurrent tasks and 1 times out, what happens to the others?
+- How would you retry a timed-out operation?
 
 ---
 
-**Prompt 4 — Create Level** (Design a system):
+### Part 2: AI as Teacher (Teaching Defensive Patterns)
+**Your AI Prompt**:
+> "I built an async API client that sometimes hangs forever waiting for responses. I added a timeout, but now I get TimeoutError and my whole program crashes. Teach me how to handle timeouts gracefully. Show me: 1) How to timeout a single request, 2) How to retry on timeout, 3) How to continue fetching other APIs if one times out. Code examples please."
 
-> Design a resilient API client with your AI:
->
-> "Build an async API client class that:
-> - Fetches data with a 5s timeout
-> - Retries up to 3 times with exponential backoff
-> - Returns None if all retries fail (graceful degradation)
-> - Implements a circuit breaker: if 5 consecutive requests fail, stop trying for 60 seconds
->
-> Explain the design: Why retry? Why circuit breaker? What problems does this solve in production?"
+**AI's Role**: Explain timeout mechanics (asyncio.timeout as context manager), show retry pattern with exponential backoff, and demonstrate partial failure handling.
 
-**Expected Output**: Complete implementation with circuit breaker pattern, you understand when each component activates (timeout → retry logic → circuit breaker engagement).
+**Interactive Moment**: Ask a clarifying question:
+> "You showed me catching TimeoutError inside a gather() call. But what's the difference between TimeoutError from asyncio.timeout() vs CancelledError from task cancellation? When would I see each one?"
+
+**Expected Outcome**: AI clarifies timeout behavior and task lifecycle. You understand that timeouts and cancellations are different mechanisms with different implications.
 
 ---
 
-### Safety & Ethics Note
+### Part 3: You as Teacher (Discovering Resilience Patterns)
+**Setup**: AI generates a basic timeout implementation. Your job is to improve it and teach AI about resilience.
 
-When using AI to generate async code:
+**AI's Initial Code** (ask for this):
+```python
+async def fetch_with_timeout(url: str) -> str:
+    try:
+        async with asyncio.timeout(2):
+            # simulate API call
+            await asyncio.sleep(3)
+            return f"Data from {url}"
+    except TimeoutError:
+        return None
 
-- ✓ Always add timeout controls to prevent infinite waits
-- ✓ Verify exception handling doesn't silently swallow important errors
-- ✓ Test retry logic with actual failures (don't assume immediate success)
-- ✓ Monitor circuit breaker activation in production (indicates upstream issues)
-- ⚠️ Avoid hardcoding timeout values—parameterize them for different scenarios
-- ⚠️ Be careful with retry logic—retrying too aggressively can overwhelm struggling services
+async def main():
+    results = await asyncio.gather(
+        fetch_with_timeout("api1"),
+        fetch_with_timeout("api2"),
+        fetch_with_timeout("api3"),
+    )
+    print(results)
+```
+
+**Your Task**:
+1. Run this. One or more will timeout (sleep 3s with 2s timeout)
+2. Identify the issue: no retry logic, timeouts are fatal
+3. Teach AI:
+> "Your code times out and returns None. But what if I retry once? What if I retry 3 times with exponential backoff (wait 1s, then 2s, then 4s between attempts)? Show me the retry pattern. How would I implement exponential backoff?"
+
+**Your Edge Case Discovery**: Ask AI:
+> "What happens if I set a global timeout for all 3 API calls combined (instead of per-request)? Like 'fetch all 3 within 5 seconds total, but don't care how they divide the time'? That's different from per-request timeout. Show me both patterns and explain when to use each."
+
+**Expected Outcome**: You discover retry strategy (exponential backoff), global vs per-request timeouts, and circuit breaker concepts. You teach AI the resilience patterns production systems need.
 
 ---
+
+### Part 4: Build Production Artifact (Student as Engineer)
+**Your Capstone for This Challenge**: Build a resilient multi-source data fetcher.
+
+**Specification**:
+- Fetch from 6 external services (simulated with asyncio.sleep)
+- 3 services: normal (0.5s), 1 service: slow (4s), 2 services: flaky (random timeout)
+- Per-request timeout: 2 seconds
+- Retry logic: up to 3 attempts with exponential backoff (1s, 2s, 4s between retries)
+- Global timeout: entire operation must complete within 15 seconds
+- Return: `{service_name: (status, data/error_msg, retry_count)}`
+- Type hints throughout
+
+**Deliverable**: Save to `/tmp/resilient_fetcher.py`
+
+**Testing Your Work**:
+```bash
+python /tmp/resilient_fetcher.py
+# Expected output:
+# Service 1: success (data, 1 attempt)
+# Service 2: success (data, 1 attempt)
+# Service 3: success (data, 2 attempts - retried once)
+# Service 4: timeout (after 3 attempts)
+# Service 5: success (data, 1 attempt)
+# Service 6: timeout (after 2 attempts, global timeout kicked in)
+# Total time: ~12-15 seconds
+```
+
+**Validation Checklist**:
+- [ ] Code runs without crashing
+- [ ] Slow services are retried (retry count > 1)
+- [ ] Global timeout prevents infinite waits (completes within 15s)
+- [ ] Failed services don't prevent others from completing
+- [ ] Exponential backoff visible in timing (gaps between retries increase)
+- [ ] Type hints complete
+- [ ] Follows production pattern (asyncio.run at top, try/except with proper cleanup)
+
+---
+
+**Time Estimate**: 32-38 minutes (5 min discover, 8 min teach/learn, 9 min edge cases, 10-17 min build artifact)
+
+**Key Takeaway**: You understand how production systems handle cascading failures—timeouts prevent hangs, retries handle transient errors, and circuit breakers prevent overwhelming struggling services.
 
 **Next lesson**: Lesson 4 tackles CPU-bound work and the GIL, introducing `InterpreterPoolExecutor` for true parallelism within async systems.

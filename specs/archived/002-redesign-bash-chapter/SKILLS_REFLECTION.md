@@ -633,7 +633,7 @@ OPTIMIZATION PHASE:
   (Do all lessons meet quality standards? Are all skills effectively applied?)
 
 NEXT PHASE (READY):
-  docosaurus-deployer → technical-reviewer → publication
+  docosaurus-deployer → validation-auditor → publication
   (Build and validate for deployment)
 ```
 
@@ -722,7 +722,7 @@ Using skill names enabled clear communication:
 | Docosaurus Deploy | ✅ Plan | ✅ Prepare | ✅ Metadata | ✅ Ready | ⏭️ Next |
 | Technical Reviewer | ✅ Plan | ✅ Prepare | ✅ Ready | ✅ Document | ⏭️ Next |
 
-**Coverage**: 13/14 skills actively applied; 1/14 (technical-reviewer) prepared for next phase
+**Coverage**: 13/14 skills actively applied; 1/14 (validation-auditor) prepared for next phase
 
 ---
 

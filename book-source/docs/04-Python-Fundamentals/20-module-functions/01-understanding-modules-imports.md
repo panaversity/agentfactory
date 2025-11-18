@@ -253,74 +253,108 @@ This is how professionals work—not from memory, but from clear thinking and AI
 
 ---
 
-## Try With AI
+## Try With AI: Import Strategy Workshop
 
-Use your AI companion (Claude Code or Gemini CLI). You'll explore imports and built-in modules by asking questions and validating what you learn.
+### Part 1: Organize Code Into Modules (Your Turn First)
 
-### Prompt 1: Recognize Import Variants (Remember/Understand Level)
+**Before asking AI**, you have this scattered calculator code in one file:
 
+```python
+# messy_calculator.py - everything in one file!
+import math
+
+price = 100.0
+tax_rate = 0.08
+discount = 0.15
+
+discounted = price * (1 - discount)
+with_tax = discounted * (1 + tax_rate)
+final = math.ceil(with_tax)
+
+print(f"Final price: ${final}")
+
+# ... more calculations
+# ... validation functions
+# ... display functions
+# ... all mixed together
 ```
-Explain the difference between these three import statements:
-1. import math
-2. from math import sqrt
-3. from math import sqrt as square_root
 
-For each one, explain:
-- What does the import statement do?
-- How do you use the function after importing?
-- What are the advantages and disadvantages of each style?
-```
+**Your task**: Design a module structure
+- Sketch 2-3 module files (what would you name them?)
+- For each module, list what code belongs there (calculations? validation? display?)
+- Predict: Which import pattern would you use for each module and why?
 
-**Expected outcome**: You understand that all three import from math, but access the function differently. You can articulate when to use each style.
+Write your module organization plan before Part 2.
 
 ---
 
-### Prompt 2: Use the Math Module (Understand/Apply Level)
+### Part 2: AI Explains Import Strategies (Discovery)
 
-```
-Write Python code that:
-1. Imports the math module
-2. Calculates the square root of 144
-3. Calculates 2 to the power of 10 using math.pow()
-4. Finds the floor and ceiling of 3.7
-5. Prints all results with clear labels
+Share your design with AI:
 
-Run your code and show me the output. What does the math module do that you can't do with regular Python?
-```
+> "I have calculator code scattered in one file. Here's my module organization plan: [paste your design]
+>
+> Help me understand import strategies:
+> 1. Compare `import math` vs `from math import ceil` - which is better for my calculator and why?
+> 2. Show me the difference between these three patterns with real examples: import X, from X import Y, from X import Y as Z
+> 3. Create a decision guide: when should I use each pattern?
+> 4. What's the danger of `from math import *`? (importing everything)"
 
-**Expected outcome**: You can write valid import statements and use math functions without errors. You understand that modules provide specialized capabilities.
-
----
-
-### Prompt 3: Choose the Right Module (Apply Level)
-
-```
-You need to solve these three tasks:
-1. Find the absolute value of -42
-2. Round 3.7 to the nearest integer
-3. Calculate 2 to the power of 8
-
-Which module would you use for each? Write the code to solve all three.
-Hint: math module has most of these functions.
-```
-
-**Expected outcome**: You can identify the math module for these operations and use functions like `math.fabs()`, `math.floor()` or `round()` (built-in), and `math.pow()` correctly.
+**Your evaluation**:
+- Test each import pattern AI shows you - run the code
+- Try the `from math import *` pattern - what happens? Can you see why it's risky?
+- Which pattern makes your code easiest to read?
 
 ---
 
-### Prompt 4: Connect Modules to Real Projects (Analyze/Synthesize Level)
+### Part 3: Student Teaches AI (Name Collision Chaos)
 
-```
-Think about a project you'd like to build. It could be:
-- A game (card game, number guessing game)
-- A data analysis tool
-- A utility (scheduler, calculator, note organizer)
+Challenge AI with this scenario:
 
-List 3 built-in modules that would be useful for your project. For each one, explain:
-- What does this module do?
-- Why would you need it for your project?
+> "I'm building a data processing tool. Analyze this code:
+> ```python
+> from statistics import mean
+> from numpy import mean  # Same name, different library!
+>
+> data = [10, 20, 30]
+> result = mean(data)  # Which mean() gets called?
+> ```
+>
+> For EACH of these questions:
+> 1. Which `mean` function actually runs? Why?
+> 2. How would you fix this to use BOTH libraries in the same file?
+> 3. In a 1000-line project, how would you prevent this naming collision bug?
+> 4. Show me three valid import patterns that avoid the collision"
 
-Share your ideas with your AI. Ask: "Would I need any other modules for this project? Are there standard libraries I should know about?"
-```
+**Your debugging**:
+- Create a file with this collision yourself
+- Add print statements to trace which function runs
+- Try AI's suggested fixes - do they all work?
 
-**Expected outcome**: You connect module organization to real development. You understand that modules solve concrete problems and enable you to build more complex applications.
+---
+
+### Part 4: Build Import Organization Template (Convergence)
+
+Create a reusable import organization pattern:
+
+> "Create a Python project template showing professional import organization:
+>
+> **data_processor/**
+> - `calculations.py` - math operations using `math` module
+> - `validators.py` - data validation (import using `from X import Y` pattern)
+> - `formatters.py` - output formatting using aliases
+> - `main.py` - imports all custom modules and orchestrates them
+>
+> Requirements:
+> 1. Each file uses a DIFFERENT import pattern (demonstrate all three)
+> 2. Include comments explaining why each pattern was chosen
+> 3. Add a `module_guide.md` documenting your import decisions
+> 4. Demonstrate circular import prevention (if main imports calculations, calculations shouldn't import main)"
+
+**Refinement**:
+> "Add this challenge: create a `config.py` module that's imported by multiple files. Show me how to structure it to avoid repeated initialization. Bonus: use `if __name__ == '__main__'` to demonstrate the difference between importing vs running."
+
+---
+
+**Time**: 30 minutes
+**Outcome**: You can organize messy code into clean modules, choose import patterns that optimize for clarity and maintainability, prevent naming collisions in large projects, and create professional project structures.

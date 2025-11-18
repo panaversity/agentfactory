@@ -67,7 +67,7 @@ differentiation:
   remedial_for_struggling: "Start with just input() and print() together; practice type conversion with simple examples before adding try/except"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/specs/001-part-4-chapter-22/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -459,47 +459,79 @@ Create a function `get_positive_float()` that:
 - Input: "-2.5", then "5.0" → Rejects negative, accepts positive
 - Input: "abc", "12.5" → Rejects non-numeric, accepts valid number
 
-## Try With AI
+## Try With AI: The Interactive CLI Builder
 
-Use **Claude Code**, **ChatGPT**, or your preferred AI companion tool for these exercises. Each prompt builds on the previous one.
+### Part 1: Design a Menu System (Your Turn First)
 
-### Prompt 1 — Remember/Understand
+**Before asking AI**, design a simple calculator CLI with a menu that:
+- Shows the user 4 options: (1) Add, (2) Subtract, (3) Multiply, (4) Exit
+- Gets their choice
+- Gets two numbers
+- Performs the operation
+- Returns to menu
 
-**Ask your AI:**
+**Your task**: Write pseudocode or a rough outline describing:
+1. How the menu loop starts
+2. What happens after the user selects an option
+3. Where validation should occur (menu choice, number inputs)
+4. How the program exits
 
-> "What does the `input()` function do in Python? Show me an example where someone types a number. What type of value does `input()` return?"
+Create a file `calculator_design.md` with your design notes.
 
-**Expected Outcome**: You'll understand that `input()` always returns a string, regardless of what the user types. This is foundational to understanding why we need type conversion.
-
----
-
-### Prompt 2 — Apply
-
-**Ask your AI:**
-
-> "Write a program that asks for a user's height in inches and weight in pounds, converts both to numbers, then calculates BMI. Add error handling so if the user types invalid input, the program asks them to try again."
-
-**Expected Outcome**: You'll see input validation, type conversion, and calculation patterns combined in a practical program. Pay attention to how the retry loop works and when error messages appear.
-
----
-
-### Prompt 3 — Analyze
-
-**Ask your AI:**
-
-> "Compare two approaches to input validation: (1) using a `while True` loop with try/except inside a function, (2) checking user input immediately after input() without a loop. Which is better for user experience and why? Show code examples."
-
-**Expected Outcome**: You'll understand different validation patterns and their tradeoffs. You'll recognize when a retry loop is essential for good user experience.
+**Deliverable**: A text file showing your planned structure before writing Python code.
 
 ---
 
-### Prompt 4 — Synthesize/Create (Cognitive Closure)
+### Part 2: AI Explains Input Validation Patterns (Discovery)
 
-**Ask your AI:**
+**Share your design with AI:**
 
-> "Design a quiz program that asks 5 multiple-choice questions, validates that the user enters only A, B, C, or D, tracks their score, and displays a formatted final result with their percentage correct. What would the overall structure look like? Show me the main loop and one complete question function."
+> "Here's my calculator CLI design [paste your pseudocode]. Explain the input validation strategy I should use. Show me the difference between validating the menu choice vs validating numbers. What try/except patterns should I use for each?"
 
-**Expected Outcome**: You've integrated console I/O, input validation, and formatted output into an interactive application. You can now see how individual skills combine to build real programs. This prepares you for the menu-driven capstone in Lesson 5.
+**Your evaluation**:
+- Does the AI explain when to use try/except vs when to check conditions?
+- Does it show at least two different validation patterns?
+- Can you understand which pattern to use for each input type?
+
+---
+
+### Part 3: Student Teaches AI—Edge Cases (Debugging)
+
+**Challenge the AI with scenarios:**
+
+> "What happens if a user:
+> 1. Types 'abc' when asked for a number?
+> 2. Types 5 when menu shows only options 1-4?
+> 3. Types nothing and just presses Enter?
+> 4. Enters a floating-point number (3.5) when I need an integer?
+>
+> Show me specific error messages my code should display for each case, and which error type Python will raise."
+
+**Your debugging**: Test the AI's answers by predicting what your calculator code should do, then verify with actual Python.
+
+---
+
+### Part 4: Build an Interactive Calculator (Convergence)
+
+**Build the complete calculator:**
+
+> "Now help me write a complete interactive calculator that:
+> 1. Displays menu (Add, Subtract, Multiply, Exit)
+> 2. Validates menu choice (must be 1-4)
+> 3. Gets two numbers with try/except handling
+> 4. Performs calculation
+> 5. Shows formatted result
+> 6. Returns to menu automatically
+>
+> The calculator should handle all the edge cases we discussed. Show me the complete, production-ready code with input validation throughout."
+
+**Refinement**:
+- Extend the calculator to add Division (with zero-division checking)
+- Add input history: show the last 3 calculations before the menu
+- Test with invalid inputs and verify error messages are helpful
+
+**Time**: 25-35 min
+**Outcome**: Working interactive CLI calculator with robust input validation
 
 ---
 

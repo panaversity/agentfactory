@@ -117,7 +117,7 @@ differentiation:
   remedial_for_struggling: "For struggling students: Focus on paradigm shift (concept 1) and detection code (concept 6); use detection code as anchor; progress to performance characteristics only after detection is solid"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/part-4-chapter-29/spec.md (Lesson 4)"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -179,7 +179,7 @@ Critical distinction: **The GIL is not removed. It's optional.**
 - Backward compatibility is preserved: existing code works on both builds
 - You choose which version to install based on your workload
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > Free-threading isn't just a feature—it's a fundamental shift in how Python executes. Understanding this prepares you for the next 30 years of Python development, not just today's code. The GIL defined Python's capabilities for 30 years. Its optionality defines the next era.
 
 ---
@@ -284,7 +284,7 @@ Think of it like this: "This dict is usually accessed by Thread 1, so optimize f
 
 This optimization keeps the 5-10% overhead small. If every lock access required expensive synchronization, overhead would be much higher.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > Benchmarks show 2-10x gains, but YOUR workload may differ. Always measure. Professional developers don't trust marketing claims—they validate with real data. Free-threading's benefits depend on: (1) CPU-bound workloads, (2) multi-core hardware, (3) sufficient parallelism to justify overhead.
 
 ---
@@ -665,7 +665,7 @@ if __name__ == "__main__":
 
 **Expected Outcome**: You'll understand the break-even analysis and when to choose free-threading.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > Don't believe claims about free-threading speedup. Ask your AI: "Generate a realistic benchmark for my AI workload. Measure traditional threading vs free-threaded vs multiprocessing. Show me the data." Measurement is your friend. Professional developers validate everything.
 
 ---
@@ -858,74 +858,110 @@ Tell your AI Co-Teacher:
 
 **Expected Outcome**: You'll understand why free-threading is the right choice for multi-agent AI systems and when to use alternatives.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > This is where theory meets practice. Multi-agent systems are the book's core focus. Free-threading in 3.14 makes this practical on a single machine. In Parts 10-14 you'll scale this to Kubernetes and Ray. Today you learn the foundation.
 
 ---
 
-## Try With AI
+## Challenge 4: The Free-Threading Discovery
 
-Now it's your turn to explore free-threaded Python and its revolutionary impact on multi-agent systems.
+This is a **4-part bidirectional learning challenge** where you explore Python 3.14's paradigm shift and its implications.
 
-### Prompt 1: Recall — Understanding the Paradigm Shift
+### Part 1: Discover Independently (Student as Scientist)
+**Your Challenge**: Compare traditional and free-threaded Python performance.
 
-> "Explain in 2-3 sentences: What changed between Python 3.13 and 3.14 regarding the GIL? Then ask your AI: 'Did I capture the significance? Why is this such a big deal for Python development?'"
+**Deliverable**: Create `/tmp/free_threading_discovery.py` containing:
+1. Detect if free-threading is available: `sys.flags.nogil` or `python --disable-gil`
+2. Create a CPU-bound task (sum of squares, 50M iterations)
+3. Run with 1 thread (baseline)
+4. Run with 4 threads (measure speedup)
+5. Document: Does Python 3.14 free-threading mode actually give 4x speedup?
 
-**What you'll learn**: Validate your understanding of the paradigm shift and its historical importance.
+**Expected Observation**:
+- With GIL (traditional): 4 threads = 1x speedup (no improvement)
+- With free-threading (Python 3.14 optional): 4 threads = 3-4x speedup (true parallelism)
 
-**Expected outcome**: Clear 2-3 sentence explanation that captures the revolutionary nature of optional free-threading.
-
-**Time**: 3 minutes
-
----
-
-### Prompt 2: Explain — Practical Implications
-
-> "Ask your AI: 'Now that the GIL is optional, what becomes possible in Python that wasn't before? How does this change multi-threaded programming specifically? What do developers need to relearn about concurrency?'"
-
-**What you'll learn**: Understand practical implications beyond the theory.
-
-**Expected outcome**: AI explanation covering: (1) true CPU-bound parallelism now possible, (2) thread safety understanding deepens (no automatic safety), (3) performance implications, (4) decision-making framework.
-
-**Time**: 3 minutes
+**Self-Validation**:
+- What's the difference at the code level between GIL and no-GIL Python?
+- Why would multiprocessing overhead go away with free-threading?
+- What safety guarantees do we lose when GIL is gone?
 
 ---
 
-### Prompt 3: Apply — Build Detection & Recommendation
+### Part 2: AI as Teacher (Teaching the Paradigm Shift)
+**Your AI Prompt**:
+> "I just learned that Python 3.14 makes the GIL optional. Teach me: 1) What actually changed in CPython to make this possible? 2) Why couldn't this be done 10 years ago? 3) What problems come with removing the GIL (thread safety, performance monitoring)? 4) When should I use free-threading vs traditional Python? 5) How does this affect my AI system design?"
 
-> "Tell your AI: 'Help me write a Python script that: (1) detects if free-threading is available, (2) checks if GIL is currently enabled, (3) recommends the best concurrency approach for a given workload. Include error handling and test it on my Python build. Then explain your design choices.'"
+**AI's Role**: Explain the architectural change (biased reference counting), discuss implementation tradeoffs, clarify when free-threading is beneficial vs overhead.
 
-**What you'll learn**: Write working free-threading detection code; create a reusable tool; understand why design choices matter.
+**Interactive Moment**: Ask a clarifying question:
+> "You said free-threading still has overhead compared to single-threaded Python. Why? And if overhead exists, isn't there a performance cliff where multiprocessing is still better?"
 
-**Expected outcome**: Runnable Python script that:
-- Correctly identifies free-threading status
-- Recommends concurrency approach based on status
-- Includes error handling for edge cases
-- Works on both free-threaded and traditional Python
-
-**Time**: 5 minutes
+**Expected Outcome**: AI clarifies that free-threading gains come at cost of per-thread memory overhead and slightly slower single-threaded performance. You understand the tradeoff.
 
 ---
 
-### Prompt 4: Analyze — Connect to AI-Native Systems
+### Part 3: You as Teacher (Discovering Production Constraints)
+**Setup**: AI generates detection and recommendation code. Your job is to test it and teach AI about deployment realities.
 
-> "Ask your AI: 'I'm building an AI system with 4 agents running reasoning tasks. How would free-threaded Python 3.14 improve this compared to traditional Python? Show me: (a) expected speedup on a 4-core machine, (b) code pattern changes, (c) memory overhead comparison vs multiprocessing, (d) deployment implications. Connect this to Ray and Kubernetes (Parts 11-14).'"
+**AI's Initial Code** (ask for this):
+> "Create a detection tool that: 1) Identifies free-threading availability, 2) Measures single-thread vs multi-thread performance on the current build, 3) Recommends using free-threading or traditional Python based on workload. Test on both modes and show performance deltas."
 
-**What you'll learn**: See free-threading as foundation for production multi-agent architecture; understand production context; prepare for future lessons.
+**Your Task**:
+1. Run the tool on traditional and free-threaded Python (if available)
+2. Measure actual speedup (does it match theory?)
+3. Identify issues:
+   - Free-threading overhead for I/O workloads?
+   - Single-threaded regression?
+   - Compatibility issues?
+4. Teach AI:
+> "Your tool recommends free-threading for a 4-thread workload, expecting 3x speedup. But our deployment runs on a single core in containers. Free-threading overhead would hurt us. How should the recommendation logic change?"
 
-**Expected outcome**: AI response covering:
-- Quantified speedup expectations (2-4x)
-- Threading patterns vs multiprocessing patterns
-- Memory overhead analysis
-- Production deployment considerations
-- Connection to Ray and Kubernetes
+**Your Edge Case Discovery**: Ask AI:
+> "What about existing code that assumes GIL safety? Like code that modifies shared dictionaries without locks? Will it work in free-threading Python? What compatibility issues might we hit migrating existing code?"
 
-**Safety/Ethics Note**: Free-threading enables genuine parallelism, but thread safety remains your responsibility. Always use locks for multi-step operations on shared state. Validate with benchmarks on your hardware before production deployment.
-
-**Time**: 9 minutes
+**Expected Outcome**: You discover that free-threading isn't just a performance improvement—it's a paradigm shift requiring architectural changes. You learn about migration paths and gotchas.
 
 ---
 
-**Total time**: 20 minutes
+### Part 4: Build Production Artifact (Student as Engineer)
+**Your Capstone for This Challenge**: Build a free-threading readiness assessment tool.
 
-This "Try With AI" activity synthesizes all lesson concepts and connects free-threading to the production multi-agent systems you'll build in Parts 10-14.
+**Specification**:
+- Detect Python version and free-threading availability
+- Measure performance: single-thread, multi-thread on current Python
+- Analyze workload: CPU-bound, I/O-bound, or hybrid
+- Recommend: use free-threading, traditional Python, or multiprocessing
+- Document: `{python_version, free_threading_available, speedup_measured, recommendation, caveats}`
+- Include migration checklist if switching to free-threading
+- Type hints throughout
+
+**Deliverable**: Save to `/tmp/free_threading_readiness.py`
+
+**Testing Your Work**:
+```bash
+python /tmp/free_threading_readiness.py
+# Expected output:
+# Python Version: 3.14.0
+# Free-threading Available: Yes
+# 1-thread baseline: 123.4ms
+# 4-thread speedup: 3.2x
+# Workload (CPU-bound): Good fit for free-threading
+# Recommendation: Migrate to free-threading Python 3.14
+# Caveats: Verify thread-safety of dependencies; test on target platform
+```
+
+**Validation Checklist**:
+- [ ] Code runs without errors
+- [ ] Correctly detects free-threading availability
+- [ ] Measures performance accurately
+- [ ] Recommendation logic is sound
+- [ ] Migration checklist is practical
+- [ ] Type hints complete
+- [ ] Works on both GIL and no-GIL Python
+
+---
+
+**Time Estimate**: 30-38 minutes (6 min discover, 8 min teach/learn, 8 min edge cases, 8-16 min build artifact)
+
+**Key Takeaway**: Free-threading is a paradigm shift, not just a performance hack. It enables true parallelism but requires understanding thread safety. It's powerful for CPU-bound work but not always beneficial for I/O-bound or single-threaded work. Smart decisions come from measurement and understanding your workload.

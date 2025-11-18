@@ -89,7 +89,7 @@ differentiation:
   remedial_for_struggling: "Start with intersection (simpler logic), then union, then difference; practice with small, concrete sets before scaling"
 
 # Generation metadata
-generated_by: "lesson-writer v1.0.0"
+generated_by: "content-implementer v1.0.0"
 source_spec: "specs/001-part-4-chapter-19/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -152,7 +152,7 @@ print(f"Commutative: {team_a | team_b == team_b | team_a}")  # True
 
 Your AI can walk you through practical applications and help you see why union matters in business scenarios.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize whether union is `|` or `.union()`—both are correct. Your AI instantly reminds you. What matters is recognizing "I need to combine collections without duplicates" and choosing union.
 
@@ -273,7 +273,7 @@ print(f"Products unique to one catalog: {unique_to_either}")  # {'Widget A', 'Wi
 
 **Key observation:** Symmetric difference is *commutative*—order doesn't matter. It's like XOR in logic: true if one or the other, but not both.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Symmetric difference seems more complex than the others, but it answers a practical question: "What's different between these two datasets?" It's powerful for data reconciliation.
 

@@ -65,7 +65,7 @@ differentiation:
   remedial_for_struggling: "Focus on core pattern: 'Use Claude Code to add packages. Production = runtime. Development = testing/tools. That's it.' Don't get lost in version constraint syntax—let AI handle it."
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/011-python-uv/plan.md"
 created: "2025-11-13"
 last_modified: "2025-11-13"
@@ -450,31 +450,85 @@ Every time you manage dependencies, follow this mental model:
 
 **You don't memorize commands. You articulate intent. AI does the rest.**
 
-## Try With AI
+## Try With AI: Dependency Conflict Resolution Challenge
 
-Use your AI companion (ChatGPT, Claude Code, Gemini CLI, etc.) for these exercises.
+### Part 1: Design Dependency Structure (Your Turn First)
 
-### Prompt 1: Understanding Dependency Conflicts
+**Before asking AI**, plan your weather app dependencies:
 
-```
-I'm trying to add both scikit-learn==1.0.0 and numpy==1.20.0 to my project, but I get a version conflict error. Help me understand why this happens and show me how to resolve it.
-```
+**Your app needs**:
+1. Fetch weather data from an API
+2. Run automated tests
+3. Format code consistently
+4. Display data in a web interface
 
-**Expected outcome:** You'll learn how to diagnose version conflicts and work with AI to find compatible versions.
+**Your categorization task**:
+- For EACH need, choose a library (requests? Flask? pytest? black?)
+- Decide: Production dependency or development-only? Write WHY.
+- Predict: Which libraries will bring in transitive dependencies?
 
-### Prompt 2: Reviewing Dependency Tree
+---
 
-```
-Show me the complete dependency tree for my project. Explain which packages I directly added vs. which were installed as transitive dependencies. Why does adding one package bring in so many others?
-```
+### Part 2: AI Reveals the Dependency Tree (Discovery)
 
-**Expected outcome:** You'll understand how dependencies cascade and why UV handles this automatically.
+Now ask AI to show the full picture:
 
-### Prompt 3: Production vs. Development Dependencies
+> "I'm building a weather app. I need:
+> 1. `requests` for API calls
+> 2. `Flask` for web interface
+> 3. `pytest` for testing
+> 4. `black` for formatting
+>
+> For EACH: Show me the complete dependency tree (transitive dependencies included). Which should be production vs. dev?"
 
-```
-I have a project with requests, Flask, pytest, and black installed. Which of these should be production dependencies and which should be development-only? Explain your reasoning and show me the correct commands.
-```
+**Your evaluation task**:
+- Compare AI's categorization to yours. Did you get it right?
+- Count total packages installed. Does the number surprise you?
+- Can you now explain to someone else why `requests` needs `urllib3`?
 
-**Expected outcome:** You'll solidify your understanding of when to use `--dev` flag and why this separation matters.
+---
+
+### Part 3: Student Teaches AI (Create and Resolve Conflicts)
+
+Challenge AI with a realistic conflict scenario:
+
+> "I want to add BOTH:
+> - `scikit-learn==1.0.0` (for machine learning)
+> - `numpy==1.20.0` (for numerical computing)
+>
+> But they have a version conflict. Show me:
+> 1. The exact error UV would produce
+> 2. WHY the conflict happens (examine version requirements)
+> 3. THREE different solutions with tradeoffs for each
+>
+> Then I'll challenge your recommendation: What if I MUST use numpy==1.20.0 for compatibility with another tool? What's the solution now?"
+
+**Your decision task**:
+- Evaluate AI's three solutions. Which would YOU choose? Why?
+- Can you identify a scenario where AI's "best" solution wouldn't work?
+
+---
+
+### Part 4: Build a Real Dependency Strategy (Convergence)
+
+Create a complete dependency management workflow with AI:
+
+> "Let's design a dependency strategy for MY weather app:
+>
+> **Requirements**:
+> 1. Add production dependencies with appropriate version constraints
+> 2. Add dev dependencies in a separate group
+> 3. Show me the resulting `pyproject.toml` structure
+> 4. Create commands to sync environment on a teammate's machine
+> 5. Add a policy: When should we update dependencies? When should we NOT?
+>
+> Walk me through each command and explain what changes in the project files."
+
+**Refinement if needed**:
+> "This strategy doesn't handle security updates to dependencies. Add a process for monitoring and applying security patches without breaking compatibility."
+
+---
+
+**Time**: 30-35 minutes total
+**Outcome**: You've designed a production-ready dependency management workflow, debugged conflicts with AI assistance, and built mental models for categorizing production vs. development dependencies.
 

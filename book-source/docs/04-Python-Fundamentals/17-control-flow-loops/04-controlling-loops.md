@@ -78,7 +78,7 @@ differentiation:
   remedial_for_struggling: "Focus on break (early exit) and continue (skip) with simple list examples before introducing else clauses"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/001-part-4-chapter-17/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -404,7 +404,7 @@ Now that you understand the basics, let's explore more complex patterns with you
 
 Ask your AI to generate this scenario:
 
-#### 🎓 Note: You Might See try-except in AI Responses
+#### 🎓 Expert Insight: You Might See try-except in AI Responses
 
 When you ask your AI to validate user input, it might generate code using `try` and `except` keywords. This is **exception handling**—a powerful Python feature you'll learn in **Chapter 21**. For now:
 
@@ -593,78 +593,108 @@ for i in range(5):
 
 (Better solutions involve functions with `return`, which you'll learn in Chapter 18.)
 
-## Try With AI
+## Try With AI: Search and Validation Patterns
 
-Now that you understand loop control statements, reinforce your learning by working with your AI companion. Use **ChatGPT web** (if you haven't set up an AI tool yet) or **your preferred AI companion** (Gemini CLI, Claude CLI, etc.).
+You've learned `break`, `continue`, and `for...else`. Now master search and validation patterns by discovering when each control statement fits—with AI as your pattern validator.
 
-### 1. Recall: Break vs Continue
+### Part 1: Build Prime Number Finder (Your Turn First)
 
-**Prompt**:
-> "What's the difference between `break` and `continue` in Python loops? Give me a simple example showing both in the same loop."
+**Before asking AI**, implement a prime number checker using loop control:
 
-**Expected Outcome**: Your AI will explain that `break` exits the entire loop while `continue` skips the current iteration and moves to the next. You should see a code example demonstrating both.
+**Task**: Find the first prime number after 20 using `break`:
+```python
+# Find first prime > 20
+number: int = 21
+while True:
+    # Check if number is prime
+    # If prime: print and break
+    # If not prime: increment and continue
+```
+
+**Your implementation**:
+1. Use nested loop to check divisors (2 to number-1)
+2. Use `break` when prime is found
+3. Use `continue` implicitly (or explicitly) to skip non-primes
+
+Write the code BEFORE asking AI.
 
 ---
 
-### 2. Understand: Trace For...Else Execution
+### Part 2: AI Explains For...Else Pattern (Discovery)
 
-**Prompt**:
-> "Trace this code step-by-step and tell me whether the `else` clause runs:
->
+Share your prime finder with AI:
+
+> "Here's my prime number finder: [paste code]. Explain:
+> 1. Could I use `for...else` to simplify the prime check?
+> 2. Show me how for...else works for search patterns
+> 3. Rewrite my code using `for...else` instead of flag variables
+> 4. When is for...else better than a flag variable like `is_prime = True`?"
+
+**Your task**: Evaluate AI's for...else explanation.
+- Does it show that `else` runs when loop completes WITHOUT break?
+- Does it demonstrate that for...else eliminates the need for flag variables?
+- Can you explain the pattern: "Search loop + break on found + else for not-found"?
+
+---
+
+### Part 3: Student Teaches AI (Break Limitations)
+
+AI explained for...else. But does it know when break DOESN'T work?
+
+Challenge AI with nested loop problems:
+
+> "I want to exit BOTH loops when I find a match:
 > ```python
-> numbers = [2, 4, 6, 8]
-> for num in numbers:
->     if num == 5:
->         print('Found 5!')
->         break
-> else:
->     print('5 not found')
+> for i in range(10):
+>     for j in range(10):
+>         if i * j == 24:
+>             break  # Only exits inner loop!
+>     # Outer loop continues - how do I stop it?
 > ```
 >
-> Explain WHY the else clause does or doesn't run."
+> Show me THREE solutions:
+> 1. Using a flag variable (`found = True`)
+> 2. Using for...else on BOTH loops
+> 3. Why would a function with `return` be better? (preview Chapter 20)
+>
+> For each, explain tradeoffs: readability vs. complexity."
 
-**Expected Outcome**: Your AI will trace each iteration, show that 5 is never found, `break` is never called, and therefore the `else` clause executes, printing "5 not found".
+**Your task**: Compare break strategies.
+- Does AI show the flag pattern correctly (check flag after inner loop)?
+- Does it explain that nested for...else can get confusing?
+- Does it preview that functions with `return` are cleaner for nested exits?
+- Which approach would YOU use and why?
 
 ---
 
-### 3. Apply: Retry Logic with While...Else
+### Part 4: Build Retry Validator Together (Convergence)
 
-**Prompt**:
-> "Generate a `while` loop that asks a user to guess a secret number (7). Give them 3 attempts. If they guess correctly, use `break` and print 'Correct!'. If they run out of attempts, use the `else` clause to print 'Out of attempts, the answer was 7'. Include type hints and input validation."
+Now combine all loop control concepts—while, break, continue, else:
 
-**Expected Outcome**: Your AI will generate code similar to the retry pattern you learned earlier. Test it by entering wrong guesses (e.g., 5, 3, 9) to trigger the `else` clause, then try again with a correct guess to trigger the `break`.
+> "Build a password validator with retry logic:
+> 1. User gets 3 attempts to enter password 'secret123'
+> 2. Skip empty inputs with `continue` (don't count as attempt)
+> 3. Exit with `break` on correct password
+> 4. Use `while...else` to show 'Account locked' if all attempts fail
+> 5. Use type hints and track attempt count
+>
+> Show complete code that handles:
+> - Correct password on attempt 2
+> - Empty input (doesn't count)
+> - 3 failed attempts (triggers else)"
+
+**Your task**: Review the complete pattern.
+- Does it use `while attempts < 3:` with increment?
+- Does it use `continue` for empty input (before incrementing)?
+- Does it use `break` on success?
+- Does `else` clause execute only when attempts exhausted?
+
+Iterate if needed:
+> "The empty input check increments attempt counter. Fix it so empty inputs don't count against the limit."
 
 ---
 
-### 4. Evaluate: For...Else vs Flag Variable
+**Time**: 25-30 minutes total
+**Outcome**: You've mastered search patterns (for...else), nested break strategies, and retry validation combining all loop control statements.
 
-**Prompt**:
-> "Compare these two approaches for searching a list:
->
-> **Approach 1 (flag variable)**:
-> ```python
-> found = False
-> for item in items:
->     if item == target:
->         found = True
->         break
-> if not found:
->     print('Not found')
-> ```
->
-> **Approach 2 (for...else)**:
-> ```python
-> for item in items:
->     if item == target:
->         break
-> else:
->     print('Not found')
-> ```
->
-> When is for...else more elegant? When might a flag variable be clearer? Give me an example where each is better."
-
-**Expected Outcome**: Your AI will explain that `for...else` is more concise for simple search patterns, but flag variables can be clearer when you need to check the result in multiple places or when the logic is complex. You'll gain intuition for when to use each pattern.
-
----
-
-**Safety & Ethics Note**: Loop control statements can create infinite loops or skip critical validation logic if used incorrectly. Always trace your loop logic manually or with your AI before deploying code that controls retries, validation, or search operations. Ask your AI to review your loop control flow for potential bugs.
+**Safety Note**: Always test break/continue logic with edge cases (empty input, first attempt success, exhausted attempts) to verify control flow.

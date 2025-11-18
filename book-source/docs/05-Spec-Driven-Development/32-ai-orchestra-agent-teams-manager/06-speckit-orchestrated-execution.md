@@ -60,7 +60,7 @@ differentiation:
   remedial_for_struggling: "Start with 3-feature system; emphasize contract.md clarity; use manual terminal spawning before tmux scripting"
 
 # Generation metadata
-generated_by: "Claude Code (lesson-writer)"
+generated_by: "Claude Code (content-implementer)"
 source_spec: "specs/002-chapter-32-redesign/spec.md"
 created: "2025-11-06"
 last_modified: "2025-11-06"

@@ -53,7 +53,7 @@ differentiation:
   remedial_for_struggling: "Focus on core concept: 'UV is faster, simpler, and lets AI handle commands you don't need to memorize'"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/011-python-uv/plan.md"
 created: "2025-11-13"
 last_modified: "2025-11-13"
@@ -237,28 +237,63 @@ UV puts professional tooling in your hands from day one.
 
 ## Try With AI
 
-Use your AI companion (ChatGPT, Claude Code, Gemini CLI, etc.) for these exercises.
+### Part 1: Identify Your Pain Points (Your Turn First)
 
-### Prompt 1: Understand UV's Speed Advantage
+**Before asking AI**, reflect on your experience with Python setup:
 
-```
-Explain the main advantage of UV over pip in simple terms. Why is it 10-100x faster? Use an analogy I can understand.
-```
+Think about the last time you tried to:
+1. Set up a Python project from scratch
+2. Install a library (like `requests` or `pandas`)
+3. Share code with a classmate or teammate
 
-**Expected outcome:** Clear understanding of why Rust-based tools are faster than Python-based tools.
+**Your reflection task**:
+- Write down 2-3 problems you encountered (confusing commands? slow installation? version conflicts?)
+- If you're brand new to Python: What concerns do you have about managing libraries and environments?
 
-### Prompt 2: Tool Selection for Your Project
+---
 
-```
-I'm building a small project with a teammate. Should I use UV or pip? Why? Give me 3 concrete reasons.
-```
+### Part 2: AI Explains Modern Solutions (Discovery)
 
-**Expected outcome:** Personalized advice on tool selection with actionable reasons.
+Now share your pain points with AI:
 
-### Prompt 3: UV in Action
+> "I've experienced these problems with Python setup: [list your 2-3 issues from Part 1]. How does UV solve each of these problems specifically? Explain using concrete examples."
 
-```
-Show me a short example where UV installs a simple dependency (like `requests`) and explain what just happened. What files were created or modified?
-```
+**Your evaluation task**:
+- Does AI's explanation connect UV's features to YOUR specific problems?
+- Can you now explain to someone else why UV's speed matters for YOUR workflow?
 
-**Expected outcome:** Concrete example of UV workflow and understanding of what happens behind the scenes.
+---
+
+### Part 3: Challenge AI on Tool Selection (Student Teaches AI)
+
+Now test AI's understanding with real-world tradeoffs:
+
+> "You said UV is better than pip/poetry/conda. But what if:
+> 1. My teammate insists we use poetry because they already know it
+> 2. My course instructor requires conda for data science packages
+> 3. I'm working on a legacy project that already uses pip
+>
+> For EACH scenario, should I still switch to UV? What are the tradeoffs?"
+
+**Your decision task**:
+- Evaluate AI's advice on when NOT to use UV
+- Can you identify at least one scenario where sticking with an older tool makes sense?
+- What decision criteria emerge from this conversation?
+
+---
+
+### Part 4: Build Your Decision Framework (Convergence)
+
+Create a personalized tool selection guide with AI:
+
+> "Let's build a decision tree for MY projects. Help me create a simple guide:
+>
+> - **New personal project**: Use _____ because _____
+> - **Team project with no existing setup**: Use _____ because _____
+> - **Data science project**: Use _____ because _____
+> - **Contributing to open source**: Use _____ because _____
+>
+> Fill in the blanks based on what we've discussed. Make it specific to my skill level (beginner/intermediate)."
+
+**Refinement if needed**:
+> "This decision tree doesn't account for [specific scenario you care about]. Add that case and explain the reasoning."

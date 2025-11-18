@@ -34,7 +34,7 @@ The refactored constitution should:
 Move detailed technical specifications to:
 - Output styles: formatting requirements (docusaurus-chapter.md, lesson.md, code-example.md, exercise.md)
 - Skills: pedagogical and writing guidance (planning.md, technical-writing.md, pedagogy.md, ai-collaboration.md)
-- Sub-agents: workflow orchestration (planner, chapter-writer, lesson-writer, code-validator, technical-reviewer)
+- Sub-agents: workflow orchestration (planner, chapter-writer, content-implementer, code-validator, validation-auditor)
 - Separate spec template: chapter-specific implementation details
 
 Keep in constitution only:
@@ -63,7 +63,7 @@ Keep in constitution only:
 - Removed: Content metrics (word counts, readability targets moved to spec template)
 - Removed: Writing style examples (moved to technical-writing skill)
 - Removed: Docusaurus format requirements (moved to docusaurus-chapter output style)
-- Removed: QA checklist (moved to code-validator and technical-reviewer sub-agents)
+- Removed: QA checklist (moved to code-validator and validation-auditor sub-agents)
 - Removed: Glossary (moved to separate glossary.md reference document)
 - Removed: Code standards (moved to code-example output style and code standards spec)
 

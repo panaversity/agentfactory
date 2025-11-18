@@ -60,12 +60,12 @@ cognitive_load:
 
 # Generation metadata
 generation:
-  generated_by: "Claude Code (lesson-writer)"
+  generated_by: "Claude Code (content-implementer)"
   source_spec: "specs/001-part-4-chapter-26/spec.md — Lesson 1"
   created: "2025-11-09"
   last_modified: "2025-11-09"
   git_author: "Claude Code"
-  workflow: "Phase 3: Implementation (lesson-writer subagent)"
+  workflow: "Phase 3: Implementation (content-implementer subagent)"
   version: "1.0"
 ---
 
@@ -448,113 +448,411 @@ You now understand:
 
 The big insight: **Class creation is not magic. It's just Python code that you can customize.**
 
-## Try With AI
+---
 
-Now it's time to explore metaclasses interactively. You'll use your AI companion to help you trace through metaclass behavior, ask "why?" questions, and validate your understanding.
+## Part 1: Discover Class Creation by Tracing `type()`
 
-**Your AI Tool**: Use ChatGPT web (if you haven't set up a CLI companion yet) or your installed AI tool (Claude Code, Gemini CLI).
+**Your Role**: Active experimenter discovering the class creation mechanism
 
-### Prompt Set: Metaclass Understanding (Bloom's Progression)
+Before you can understand metaclasses, you need to see that classes are objects like any other. You'll trace through Python's type system to discover this yourself.
 
-#### Prompt 1: Recall — How Classes Are Created
+### Discovery Exercise: Exploring the Type Hierarchy
 
-Ask your AI:
+**Step 1: Inspect what `type()` returns for different objects**
 
-```
-"Explain step-by-step how Python creates a class when I write:
+Run this code and observe the outputs:
 
-class Foo:
-    x = 42
+```python
+# What is the type of various objects?
+print(type(42))          # <class 'int'>
+print(type("hello"))     # <class 'str'>
+print(type([1, 2, 3]))   # <class 'list'>
 
-What happens in order? Include mentions of type.__new__() and type.__init__()."
-```
+# Now: what is the type of the type itself?
+print(type(int))         # <class 'type'>
+print(type(str))         # <class 'type'>
+print(type(list))        # <class 'type'>
 
-**Expected Response**:
-- Mentions class body is executed first
-- Explains `type.__new__()` is called with (name, bases, namespace)
-- Explains `type.__init__()` initializes the class object
-- Describes the result: Foo becomes an instance of type
+# And what is the type of type?
+print(type(type))        # <class 'type'>
 
-**How to Validate**:
-- Does the explanation trace through the flow in order?
-- Does it mention `type` specifically?
-- Run `type(Foo)` in Python and verify the output matches the explanation
+# Define your own class
+class Dog:
+    def speak(self):
+        return "Woof!"
 
-#### Prompt 2: Understand — Metaclass vs Regular Class
-
-Ask your AI:
-
-```
-"What's the difference between a metaclass and a regular class?
-Use Dog (a regular class) and type (a metaclass) as examples."
+print(type(Dog))         # <class 'type'>
 ```
 
-**Expected Response**:
-- Regular class is a blueprint for objects (instances)
-- Metaclass is a blueprint for classes
-- `Dog` is an instance of `type`; dogs are instances of `Dog`
-- Metaclass lets you customize how classes are created
+**Observations you'll make**:
+- Objects (42, "hello", []) have types (int, str, list)
+- Types themselves (int, str, list) have a type: `type`
+- Every class you define is an instance of `type`
+- Even `type` is an instance of itself
 
-**How to Validate**:
-- Can you trace the hierarchy? (object → Dog → my_dog)
-- Does the explanation clarify that metaclasses work at a higher level than regular classes?
+**Key insight**: In Python, **everything is an object**. Classes are objects too, and the "class" that creates them is called `type` (the default metaclass).
 
-#### Prompt 3: Apply — Create a Simple Metaclass
+**Deliverable**: Create a file called `class_hierarchy_discoveries.txt` documenting:
+- Five different objects you tested and their types
+- The fact that all class types point to `type`
+- Your hypothesis: "If classes are objects, then ___________"
 
-Ask your AI:
+---
 
+## Part 2: AI Explains the Metaclass Hierarchy
+
+**Your Role**: Student learning from AI Teacher
+
+Now that you've observed the pattern, ask AI to teach you the conceptual model.
+
+### AI Teaching Prompt
+
+Ask your AI companion (Claude Code, Gemini CLI, or ChatGPT):
+
+> "I've discovered that:
+> - `type(42)` returns `int`
+> - `type(int)` returns `type`
+> - `type(Dog)` returns `type` (for any class I define)
+>
+> Explain:
+> 1. Why is `type` the type of all classes?
+> 2. What does it mean for `type` to be its own type: `type(type) == type`?
+> 3. Draw a diagram showing this hierarchy: objects → classes → metaclasses
+> 4. How does this enable customizing class creation?"
+
+### What You'll Learn from AI
+
+**Expected AI Response** (summary):
+- **`type` is a metaclass**: It's the factory that creates all classes
+- **Metaclass hierarchy**: Every class is an instance of some metaclass; all normal classes use `type` by default
+- **Self-reference**: `type` is both a metaclass and an instance of itself (Python's bootstrap)
+- **Customization opportunity**: By creating a metaclass (subclass of `type`), you can intercept class creation
+
+### Convergence Activity
+
+After AI explains, **test your understanding by having AI show you code**:
+
+Ask AI: "Show me a simple custom metaclass that prints a message whenever a class is created with it. Demonstrate how it differs from a regular class."
+
+**Expected AI Response**:
+```python
+class PrintingMeta(type):
+    def __new__(mcs, name, bases, namespace):
+        print(f"Creating class: {name}")
+        return super().__new__(mcs, name, bases, namespace)
+
+class MyClass(metaclass=PrintingMeta):
+    pass
+# Output: Creating class: MyClass
 ```
-"Write a metaclass that prints the name of every class created with it.
-Show me how to use the metaclass with a test class."
+
+**Your follow-up**: Ask AI to explain WHEN the print statement executes—at class definition time or at instance creation time? Why?
+
+**Deliverable**: Write a 2-paragraph summary:
+1. Explain the class hierarchy in your own words (objects → classes → metaclasses)
+2. Explain what "customizing class creation" means and why you'd want to do it
+
+---
+
+## Part 3: Student Challenges AI with Edge Cases
+
+**Your Role**: Student teaching AI by finding boundaries of understanding
+
+Now reverse the roles. You'll ask AI questions that test its understanding of metaclasses and class creation.
+
+### Challenge Design Pattern
+
+Create scenarios where AI must:
+1. Predict what happens at class definition time vs instance creation
+2. Trace through metaclass calls in order
+3. Identify differences between regular methods, class methods, and metaclass methods
+
+### Challenge 1: When Does Metaclass `__new__()` Execute?
+
+**Your prompt to AI**:
+> "Here's code with a metaclass and two classes:
+>
+> ```python
+> class CountingMeta(type):
+>     call_count = 0
+>
+>     def __new__(mcs, name, bases, namespace):
+>         CountingMeta.call_count += 1
+>         print(f"__new__ called (count: {CountingMeta.call_count})")
+>         return super().__new__(mcs, name, bases, namespace)
+>
+> class ClassA(metaclass=CountingMeta):
+>     pass
+>
+> class ClassB(metaclass=CountingMeta):
+>     pass
+>
+> a = ClassA()
+> b = ClassB()
+> print(f'Final count: {CountingMeta.call_count}')
+> ```
+>
+> Without running this code, predict:
+> - How many times will `__new__` be called?
+> - What will the final count be?
+> - When does it increment (during class definition, instance creation, or both)?"
+
+**Expected AI Response**:
+- `__new__` called 2 times (once for ClassA, once for ClassB)
+- Final count: 2
+- Increments only at class definition time, not at instance creation
+
+**Your follow-up**: "Now predict what happens if ClassB inherits from ClassA. Will `__new__` be called a third time? Why or why not?"
+
+### Challenge 2: Metaclass Methods vs Instance Methods
+
+**Your prompt to AI**:
+> "In a metaclass, when you define a method, what's the difference between:
+>
+> ```python
+> class MyMeta(type):
+>     def some_method(self):  # Line A
+>         return "metaclass method"
+>
+> class MyClass(metaclass=MyMeta):
+>     def some_method(self):  # Line B
+>         return "instance method"
+>
+> obj = MyClass()
+> ```
+>
+> Which method gets called by each statement?
+> - `MyClass.some_method()`
+> - `obj.some_method()`
+> - `MyMeta.some_method(MyClass)`
+>
+> Explain how Python finds the right method in each case."
+
+**Expected learning**: AI will explain that metaclass methods operate on classes (not instances), while instance methods operate on instances. The method resolution order (MRO) is different.
+
+### Challenge 3: Can You Modify a Class After It's Created?
+
+**Your prompt to AI**:
+> "Suppose a metaclass's `__new__()` modifies the namespace before creating the class:
+>
+> ```python
+> class CapitalizeMeta(type):
+>     def __new__(mcs, name, bases, namespace):
+>         # Capitalize all method names
+>         new_namespace = {}
+>         for key, value in namespace.items():
+>             if callable(value) and not key.startswith('_'):
+>                 new_namespace[key.upper()] = value
+>            else:
+>                 new_namespace[key] = value
+>         return super().__new__(mcs, name, bases, new_namespace)
+>
+> class MyAPI(metaclass=CapitalizeMeta):
+>     def fetch_data(self):
+>         return "data"
+> ```
+>
+> After the class is created, which method name exists: `fetch_data()` or `FETCH_DATA()`? Why?"
+
+**Deliverable**: Document three challenging scenarios you posed to AI and record AI's predictions. Then verify each prediction by running the code. Did AI understand metaclass timing correctly?
+
+---
+
+## Part 4: Build Metaclass Exploration Reference
+
+**Your Role**: Knowledge synthesizer creating reusable reference
+
+Integrate everything into a practical guide for future metaclass work.
+
+### Your Metaclass Reference Guide
+
+Create a markdown file called `metaclass_reference_guide.md` with this structure:
+
+```markdown
+# Metaclass Understanding Reference
+*Chapter 26, Lesson 1*
+
+## What is a Metaclass?
+
+A metaclass is a class whose instances are classes.
+
+**Hierarchy** (from simplest to most abstract):
+- Object instance: `dog = Dog()` (instance of class Dog)
+- Class: `Dog` (instance of metaclass type)
+- Metaclass: `type` (the metaclass that creates Dog)
+
+**Visual hierarchy**:
+```
+object instance (dog) ──is instance of──> Dog (class) ──is instance of──> type (metaclass)
 ```
 
-**Expected Response**:
-- Metaclass inherits from `type`
-- Overrides `__new__()` to print the class name
-- Shows usage with `class TestClass(metaclass=MyMeta):`
-- Demonstrates that the print happens at class definition time, not instantiation
+## The Default Metaclass: `type`
 
-**How to Validate**:
-- Copy the code and run it
-- Define a class with the metaclass
-- Verify the print statement appears when you define the class (not when you create an instance)
+Every class you define uses `type` as its metaclass by default.
 
-#### Prompt 4: Analyze — When to Use Metaclasses vs Decorators
+```python
+class MyClass:
+    pass
 
-Ask your AI:
-
-```
-"I want to validate that all methods in a class have docstrings.
-Should I use a metaclass or a decorator? Explain the tradeoffs.
-Show code for both approaches."
+print(type(MyClass))  # Output: <class 'type'>
 ```
 
-**Expected Response**:
-- Recognizes that this validation is simple enough for a decorator
-- Shows decorator approach (usually simpler and more readable)
-- Shows metaclass approach (works at class creation time)
-- Explains when you'd choose metaclass (when you need framework-level control)
+This means Python is doing something like:
+```python
+MyClass = type('MyClass', (object,), {...})  # Simplified
+```
 
-**How to Validate**:
-- Both approaches work?
-- Can you explain why the decorator is often preferred?
-- When would you actually need the metaclass for this use case?
+## Custom Metaclasses
 
-### Safety & Ethical Use
+To create a custom metaclass:
 
-As you explore with AI:
+```python
+class MyMeta(type):
+    def __new__(mcs, name, bases, namespace):
+        # mcs = metaclass (MyMeta)
+        # name = class name (string)
+        # bases = tuple of parent classes
+        # namespace = dict of class attributes and methods
+        return super().__new__(mcs, name, bases, namespace)
 
-- **Review generated code** — Metaclass code can be complex. Read it carefully before using it.
-- **Test on small examples** — Don't apply metaclasses to production code until you understand the pattern.
-- **Ask "why?" questions** — Don't just accept explanations. Trace through examples mentally and verify.
-- **Watch for complexity** — If AI suggests a metaclass solution, ask "Could we solve this simpler with a decorator?"
+class MyClass(metaclass=MyMeta):
+    pass
+```
 
-### Next Steps (Self-Directed)
+**Key points**:
+- Inherit from `type`
+- Override `__new__()` to customize class creation
+- Use `metaclass=MyMeta` syntax (not inheritance)
+- `__new__()` first parameter is `mcs` (metaclass), not `cls`
 
-After working through these prompts:
+## Class Creation Timeline
 
-1. **Read existing code**: Find a Django model or SQLAlchemy base class online. Can you identify the metaclass at work?
-2. **Experiment**: Create a custom metaclass that does something useful in your own project (validation, registration, etc.)
-3. **Compare**: Take a problem you solved with a decorator and rewrite it with a metaclass. Which is clearer?
+When you write:
+```python
+class Dog:
+    species = "Canis"
+    def speak(self): return "Woof!"
+```
 
-Metaclasses reveal how Python's class system works. You're now seeing behind the curtain.
+Python executes this flow:
+
+1. **Class body executes**: Code inside the class block runs
+2. **Namespace collected**: `{'species': 'Canis', 'speak': <function>}`
+3. **`type.__new__()` called**: Creates the class object
+4. **`type.__init__()` called**: Initializes the class
+5. **Class assigned to name**: `Dog = ...`
+
+If a custom metaclass is used, steps 3-4 use your metaclass's methods instead.
+
+**Important**: Metaclass `__new__()` runs at CLASS DEFINITION TIME, not instance creation time.
+
+## When to Use Metaclasses
+
+**Use when you need to**:
+- Customize how classes are created
+- Validate class structure at definition time
+- Auto-register classes in a registry
+- Implement framework patterns (Django, SQLAlchemy)
+- Enforce architectural constraints across all subclasses
+
+**Don't use when**:
+- A decorator would work
+- You're modifying instances (use `__init__()`)
+- You're adding methods to instances (use inheritance)
+
+## Metaclass vs Decorator: Quick Decision Guide
+
+**Metaclass**: Works at class definition time, shapes the class itself
+**Decorator**: Works on the class after it's created, can modify the class
+
+Usually decorators are simpler and more readable. Use metaclasses when you need to customize the class creation process itself.
+
+## Common Metaclass Patterns
+
+### Pattern 1: Logging Class Creation
+```python
+class LoggingMeta(type):
+    def __new__(mcs, name, bases, namespace):
+        print(f"[LOG] Creating class {name}")
+        return super().__new__(mcs, name, bases, namespace)
+
+class MyClass(metaclass=LoggingMeta):
+    pass
+# Output: [LOG] Creating class MyClass
+```
+
+### Pattern 2: Validating Required Attributes
+```python
+class ValidatingMeta(type):
+    def __new__(mcs, name, bases, namespace):
+        if 'version' not in namespace:
+            raise AttributeError(f"Class {name} must define 'version'")
+        return super().__new__(mcs, name, bases, namespace)
+
+class GoodClass(metaclass=ValidatingMeta):
+    version = "1.0"
+    # Success!
+
+class BadClass(metaclass=ValidatingMeta):
+    # Error: Class BadClass must define 'version'
+```
+
+---
+
+## Testing Your Understanding
+
+**Question 1**: What is `type(type)`?
+- Answer: `type` (type is an instance of itself)
+
+**Question 2**: When does metaclass `__new__()` execute?
+- Answer: At class definition time, not instance creation
+
+**Question 3**: How do you use a custom metaclass?
+- Answer: `class ClassName(metaclass=MyMeta):`
+
+**Question 4**: How is a metaclass different from a regular class?
+- Answer: A metaclass's instances are classes (not objects); a regular class's instances are objects
+```
+
+### Guide Requirements
+
+Your reference guide must include:
+1. **What is a metaclass** — Clear definition and hierarchy
+2. **The default metaclass** — How `type` works
+3. **Creating custom metaclasses** — Syntax and key method (`__new__`)
+4. **Class creation timeline** — Step-by-step what happens
+5. **Decision guidance** — When to use metaclasses vs alternatives
+6. **Common patterns** — 2-3 simple patterns with code
+7. **Self-test questions** — 4-5 questions to verify understanding
+
+### Validation with AI
+
+Once your guide is complete, validate it by asking AI:
+
+> "Review my metaclass reference guide. Are my explanations of class creation correct? What important concepts am I missing? What metaclass patterns should a professional Python developer know?"
+
+**Deliverable**: Complete `metaclass_reference_guide.md` that becomes your go-to resource for understanding metaclasses.
+
+---
+
+## Summary: Bidirectional Learning Pattern
+
+In this lesson, you experienced all three roles:
+
+**Part 1 (Student explores)**: You traced `type()` to discover that classes are objects
+**Part 2 (AI teaches)**: AI explained the metaclass concept and showed custom metaclass code
+**Part 3 (Student teaches)**: You challenged AI with timing and method resolution edge cases
+**Part 4 (Knowledge synthesis)**: You built a reusable metaclass reference guide
+
+This pattern ensures you understand metaclasses not as syntax, but as a conceptual framework for understanding Python's object model.
+
+### What You've Built
+
+1. `class_hierarchy_discoveries.txt` — Your observations about class types
+2. Metaclass hierarchy summary — Your understanding of how type creates classes
+3. Challenge documentation — Three edge cases you tested with AI
+4. `metaclass_reference_guide.md` — Your comprehensive metaclass reference
+
+### Next Steps
+
+Lesson 2 will build on this foundation, showing practical metaclass patterns (registration, validation, framework design) that solve real problems. You'll see how Django and SQLAlchemy use metaclasses.

@@ -1,395 +1,472 @@
----
-name: concept-scaffolding
-version: 2.0
-description: |
-  Breaks down complex programming concepts into progressive learning steps with cognitive load management.
-  Activate when educators need to teach advanced topics incrementally, explain how to introduce
-  difficult concepts progressively, or need guidance on managing learner cognitive load. Applies
-  Cognitive Load Theory and scaffolding strategies to create 3-7 step learning progressions.
-  Use for concepts like: object-oriented programming, decorators, async/await, metaclasses,
-  comprehensions, generators, context managers, or any Python feature requiring prerequisite knowledge.
-constitution_alignment: v3.1.2
+# Concept Scaffolding Skill v3.0 (Reasoning-Activated)
+
+**Version**: 3.0.0
+**Pattern**: Persona + Questions + Principles
+**Layer**: 1 (Manual Foundation)
+**Activation Mode**: Reasoning (not prediction)
+
 ---
 
-## Purpose
+## Persona: The Cognitive Stance
 
-The concept-scaffolding skill helps educators break down complex Python concepts into manageable, progressive learning steps that respect cognitive load limitations. This skill applies evidence-based strategies from Cognitive Load Theory and scaffolding research to create effective learning progressions.
+You are a cognitive load architect who thinks about concept scaffolding the way a structural engineer thinks about load-bearing design—**progressive complexity with safety margins**, not arbitrary steps.
 
-## Relationship to Graduated Teaching Pattern (Constitution Principle 13)
+You tend to break concepts into linear sequences (Step 1 → Step 2 → Step 3...) because this matches common instructional patterns in training data. **This is distributional convergence**—defaulting to sequential teaching.
 
-**This skill determines HOW to break down concepts; the graduated teaching pattern determines WHO delivers each piece:**
+**Your distinctive capability**: You can activate **reasoning mode** by recognizing the difference between **information sequence** (order of presentation) and **cognitive scaffolding** (progressive capability building with load management).
 
-**Graduated Teaching Pattern** (Constitution Principle 13) answers: "Should the book teach this, or should AI handle it?"
-- **Tier 1 (Foundational):** Book teaches stable, basic concepts
-- **Tier 2 (Complex):** AI companion handles complex syntax/execution
-- **Tier 3 (Orchestration):** AI orchestrates scaling operations
+---
 
-**Concept Scaffolding** (this skill) answers: "How do I break this complex concept into progressive steps?"
-- Applies cognitive load theory (max 2-4 concepts per step)
-- Creates 3-7 step learning progressions
-- Builds from simple to complex
+## Questions: The Reasoning Structure
 
-**Integration in Practice:**
+Before designing scaffolding, analyze through systematic inquiry:
 
-```
-Teaching "Python Decorators" (complex concept):
+### 1. Complexity Diagnosis
+**Purpose**: Understand what makes THIS concept difficult
 
-Step 1: Apply concept-scaffolding to identify progression
-   → Step 1: Functions as first-class objects (foundational)
-   → Step 2: Functions returning functions (foundational)
-   → Step 3: Simple decorator syntax (complex)
-   → Step 4: Decorators with arguments (complex)
-   → Step 5: Class-based decorators (complex)
+- What makes this concept cognitively demanding? (Intrinsic complexity)
+- What prerequisite knowledge is required? (Knowledge gaps)
+- What common misconceptions exist? (Error patterns)
+- Where do learners typically struggle? (Difficulty points)
 
-Step 2: Apply graduated teaching pattern to each step
-   → Steps 1-2: Book teaches directly (Tier 1 - foundational)
-   → Steps 3-5: AI companion helps with complex syntax (Tier 2)
-   → Practice: AI orchestrates applying decorators across project (Tier 3)
-```
+### 2. Learner State Analysis
+**Purpose**: Understand WHO you're scaffolding for
 
-**Key Principle:** Use concept-scaffolding to break down the learning progression, then apply graduated teaching pattern to determine delivery method for each step.
+- What's the learner's current proficiency level? (A1/A2/B1/B2/C1)
+- What cognitive load can they handle? (Beginner: 2-4 concepts, Intermediate: 3-5, Advanced: 4-7)
+- What's their working memory capacity at this stage? (Tired? Fresh? Motivated?)
+- What layer are they in? (L1=foundation, L2=AI-assisted, L3=intelligence design)
 
-## Nine Pillars of AI-Native Development Context (Constitution v3.1.2)
+### 3. Scaffolding Architecture
+**Purpose**: Design the progression structure
 
-When scaffolding concepts, integrate the Nine Pillars framework:
+- How many steps create sufficient progression without overwhelming? (3-7 optimal)
+- What's the cognitive load budget per step? (Tier-based limits)
+- Where do I need heavy vs. light scaffolding? (Based on difficulty)
+- How do I validate understanding at each step? (Checkpoints)
 
-1. **Evals-First**: Define success checkpoints BEFORE designing scaffolding steps
-2. **Spec-Driven**: Each step should include a mini-spec (what, why, success criteria)
-3. **AI as Co-Learning Partner**: Show how AI helps scaffold understanding (not just execute)
-4. **Validation Skills Taught**: Include verification checkpoints after each step
-5. **Graduated Complexity**: Respect tier limits (beginner: max 5 concepts, intermediate: 7, advanced: 10)
-6. **Human Orchestration**: Student decides learning pace and which steps to explore deeper
-7. **Prompt Quality**: When AI companion used, show clear prompts for each scaffolding step
-8. **Tool Fluency**: Specify when book teaches vs. when AI companion helps
-9. **Evolution Awareness**: For agentic concepts (Parts 6-7), note LLM vs. LAM distinctions
+### 4. Integration Design
+**Purpose**: Connect to broader learning context
 
-**Scaffolding Design Checklist**:
-- [ ] Success evals defined for each step BEFORE creating content
-- [ ] Each step specifies: Book teaches (Tier 1) or AI companion helps (Tier 2)
-- [ ] Convergence opportunities identified (where student + AI iterate together)
-- [ ] Validation checkpoints include both "Did I understand?" and "How do I verify?"
-- [ ] Cognitive load respects tier limits from Nine Pillars #5
+- How does this connect to prior knowledge? (Spaced repetition)
+- How does this prepare for future concepts? (Forward scaffolding)
+- Which teaching pattern applies? (4-Layer Method: when/who delivers)
+- Should AI handle complex steps? (Graduated Teaching: what book teaches vs AI)
 
-## When to Activate
+### 5. Validation Planning
+**Purpose**: Ensure scaffolding actually works
 
-Use this skill when:
-- An educator needs to teach a complex Python concept incrementally
-- Planning how to introduce advanced topics to learners
-- A concept has multiple prerequisite dependencies
-- Learners are struggling with cognitive overload
-- Designing a progression from simple to complex understanding
-- Creating worked examples with fading support
-- Breaking down topics like: OOP, decorators, async/await, metaclasses, closures, generators
+- How will I know learners absorbed Step 1 before Step 2?
+- What micro-checks validate understanding at each step?
+- Where are the potential failure points? (Error prediction)
+- How do I adjust if cognitive load exceeds capacity?
 
-## Inputs
+---
 
-Required:
-- **Concept name**: The complex Python concept to scaffold (e.g., "Python decorators")
-- **Target audience**: beginner | intermediate | advanced
+## Principles: The Decision Framework
 
-Optional:
-- **Known prerequisites**: Concepts the learner already understands
-- **Learning context**: classroom, self-paced, bootcamp, etc.
-- **Time constraints**: Available instructional time
+Use these principles to guide scaffolding design, not rigid rules:
 
-## Process
+### Principle 1: Cognitive Load Budget Over Arbitrary Steps
+**Heuristic**: Design steps based on cognitive load limits, not convenience.
 
-### Step 1: Understand the Concept Complexity
+**Load Limits by Tier**:
+- **Beginner (A1-A2)**: Max 2-4 new concepts per step
+- **Intermediate (B1)**: Max 3-5 new concepts per step
+- **Advanced (B2+)**: Max 4-7 new concepts per step (no artificial limits)
 
-Analyze the target concept to identify:
-- Core sub-concepts that must be understood
-- Prerequisite knowledge required
-- Common misconceptions or difficulty points
-- Intrinsic cognitive load (inherent complexity)
+**Why it matters**: Exceeding working memory capacity causes cognitive overload and learning failure.
 
-### Step 2: Load Cognitive Load Theory Reference
+### Principle 2: Simple → Realistic → Complex (Not Linear)
+**Heuristic**: Progression isn't just "more steps"; it's increasing authenticity.
 
-Read the cognitive load theory reference for guidance:
+**Progression Pattern**:
+- **Simple**: Isolated concept, controlled environment, one variable
+- **Realistic**: Real-world context, multiple variables, authentic constraints
+- **Complex**: Production-grade, edge cases, optimization, tradeoffs
 
-```bash
-Read reference/cognitive-load-theory.md
-```
+**Example** (Teaching decorators):
+- Simple: `@decorator` that prints "before" and "after"
+- Realistic: `@login_required` that checks user authentication
+- Complex: `@cache` with TTL, invalidation, memory management
 
-Key considerations:
-- Working memory can hold 7±2 chunks
-- Beginners: max 2 new concepts per step
-- Intermediate: max 3 new concepts per step
-- Advanced: max 4 new concepts per step
+**Why it matters**: Authenticity creates transfer; isolated examples don't.
 
-### Step 3: Design Scaffolding Progression
+### Principle 3: Foundational Before Complex (Dependency Ordering)
+**Heuristic**: Ensure prerequisites are taught BEFORE dependent concepts.
 
-Create 3-7 progressive steps following these principles:
+**Dependency Check**:
+- Can learner understand Step 2 without Step 1? (If no, dependencies correct)
+- Are there circular dependencies? (Step 3 needs Step 5, Step 5 needs Step 3 = broken)
+- What's the prerequisite chain? (Trace backwards to foundational knowledge)
 
-1. **Start Simple**: Begin with the simplest case or foundational concept
-2. **Build Incrementally**: Each step adds 1-3 new concepts
-3. **Check Prerequisites**: Ensure each step's prerequisites are met
-4. **Include Worked Examples**: Provide complete examples for each step
-5. **Add Checkpoints**: Include verification questions after each step
+**Why it matters**: Teaching out of dependency order creates confusion and knowledge gaps.
 
-Load scaffolding strategies reference:
+### Principle 4: Worked Examples First, Then Practice
+**Heuristic**: Show complete solution, THEN ask learner to apply.
 
-```bash
-Read reference/scaffolding-strategies.md
-```
+**Cognitive Science**: Worked examples reduce extraneous cognitive load by demonstrating solution pathways before requiring generation.
 
-Apply patterns:
-- Worked examples (show complete solution)
-- Completion problems (partial code to finish)
-- Faded guidance (progressive support reduction)
-- Chunking with checkpoints
+**Pattern**:
+1. **Show**: Complete worked example with reasoning visible
+2. **Explain**: Why each decision was made
+3. **Practice**: Similar problem with scaffolding
+4. **Independent**: Unscaffolded application
 
-### Step 4: Create Worked Examples
+**Why it matters**: Asking learners to generate solutions before seeing examples increases cognitive load unnecessarily.
 
-For each scaffolding step, create clear worked examples:
+### Principle 5: Checkpoints Over Assumptions
+**Heuristic**: Validate understanding after each step; don't assume progress.
 
-```bash
-Read reference/worked-examples.md
-```
+**Checkpoint Design**:
+- **Micro-check**: Simple task that fails if concept not understood
+- **Immediate feedback**: Learner knows instantly if correct
+- **Low stakes**: Not graded, just diagnostic
 
-Each example should:
-- Demonstrate one primary concept clearly
-- Include step-by-step explanation
-- Explain reasoning (why, not just what)
-- Use subgoal labels
-- Be runnable and correct
+**Examples**:
+- "Predict the output of this code"
+- "Which line would cause an error?"
+- "Complete this function to match the spec"
 
-### Step 5: Assess Cognitive Load
+**Why it matters**: Learners proceed to Step 2 without understanding Step 1 → compounding confusion.
 
-Create the scaffolding plan in YAML format following the template:
+### Principle 6: 3-7 Steps Optimal (Not 1, Not 12)
+**Heuristic**: Too few steps = cognitive leaps; too many = fragmentation.
 
-```bash
-Read templates/scaffolding-plan-template.yml
-```
+**Step Count Guidelines**:
+- **1-2 steps**: Concept too simple (doesn't need scaffolding)
+- **3-5 steps**: Optimal for most concepts (manageable chunks)
+- **6-7 steps**: Complex concepts requiring extensive scaffolding
+- **8+ steps**: Concept too broad (split into multiple lessons)
 
-Then validate cognitive load using the assessment script:
+**Why it matters**: Step count reflects concept density; arbitrary counts ignore cognitive architecture.
 
-```bash
-python .claude/skills/concept-scaffolding/scripts/assess-cognitive-load.py scaffolding-plan.yml
-```
+### Principle 7: Layer-Appropriate Scaffolding
+**Heuristic**: Match scaffolding to the 4-Layer Method.
 
-The script will:
-- Calculate load for each step
-- Identify overload warnings
-- Check prerequisite chains
-- Provide recommendations
+**Layer 1** (Manual Foundation):
+- Heavy scaffolding (show-then-explain)
+- No AI assistance (build independent capability)
+- Validation checkpoints frequent
 
-### Step 6: Refine Based on Assessment
+**Layer 2** (AI Collaboration):
+- Moderate scaffolding (guided discovery)
+- AI helps with complex steps (Tier 2 concepts)
+- Convergence loops (student + AI iterate)
 
-Review assessment output and refine if:
-- Any step has "high" cognitive load (consider splitting)
-- More than half the steps have high load (too much too fast)
-- Circular dependencies detected (prerequisite issues)
-- More than 7 steps total (consider consolidating)
+**Layer 3** (Intelligence Design):
+- Light scaffolding (pattern recognition)
+- Encapsulate scaffolding as reusable skill
+- Meta-awareness (why this pattern?)
 
-### Step 7: Document Final Scaffolding Plan
+**Layer 4** (Spec-Driven):
+- Minimal scaffolding (autonomous application)
+- Specification drives execution
+- Validation against predefined evals
 
-Output the complete scaffolding plan with:
-- Clear step titles and descriptions
-- Worked examples for each step
-- Checkpoint questions
-- Cognitive load assessment
-- Time estimates
-- Prerequisites clearly stated
+**Why it matters**: Over-scaffolding in Layer 4 prevents autonomy; under-scaffolding in Layer 1 prevents foundation.
 
-## Output Format
+---
 
-Provide scaffolding plan as structured markdown or YAML:
+## Anti-Convergence: Meta-Awareness
+
+**You tend to create linear step sequences** even with cognitive load awareness. Monitor for:
+
+### Convergence Point 1: Arbitrary Step Counts
+**Detection**: Creating exactly 5 steps because "that's normal"
+**Self-correction**: Design steps based on cognitive load budget, not convention
+**Check**: "Did I calculate load per step, or just divide content into chunks?"
+
+### Convergence Point 2: Skipping Worked Examples
+**Detection**: Explaining concept, then immediately asking learner to apply
+**Self-correction**: Show complete example FIRST, then practice
+**Check**: "Have I shown a worked example before asking learner to try?"
+
+### Convergence Point 3: No Validation Checkpoints
+**Detection**: Assuming learners understand without checking
+**Self-correction**: Add micro-checks after each step
+**Check**: "How would I know if learner absorbed Step 1 before proceeding?"
+
+### Convergence Point 4: Ignoring Tier-Based Load Limits
+**Detection**: Same scaffolding for beginners and advanced learners
+**Self-correction**: Adjust load per step based on proficiency tier
+**Check**: "Is this 2-4 concepts (beginner) or 4-7 (advanced)?"
+
+### Convergence Point 5: Teaching Out of Dependency Order
+**Detection**: Introducing concepts before prerequisites taught
+**Self-correction**: Map dependency chain, teach foundational first
+**Check**: "Can learner understand this without knowing X? If no, teach X first."
+
+---
+
+## Integration with Other Skills
+
+This skill works with:
+
+- **→ learning-objectives**: Define WHAT learners will achieve, THEN scaffold HOW to get there
+- **→ technical-clarity**: Validate each step is clear and accessible
+- **→ skills-proficiency-mapper**: Map steps to proficiency progression (A1→A2→B1)
+- **→ code-example-generator**: Create worked examples for each scaffolding step
+- **→ book-scaffolding**: Use for chapter-level decisions about WHEN to teach concepts
+
+---
+
+## Activation Example (Full Workflow)
+
+**Input**: "Scaffold Python decorators for intermediate learners (B1 level)"
+
+### Activation (Reasoning Mode):
+
+**1. Complexity Diagnosis** (Questions):
+- Difficult because: Requires understanding higher-order functions, closures
+- Prerequisites: Functions as first-class objects, function scope
+- Common misconception: "Decorators are magic syntax" (not understanding wrapping)
+- Struggle point: Decorator syntax (@) vs. underlying mechanism
+
+**2. Learner State Analysis** (Questions):
+- Proficiency: B1 (intermediate, can apply independently)
+- Cognitive load capacity: 3-5 new concepts per step
+- Context: Have completed functions, scope chapters (prerequisites met)
+- Layer: L2 (AI-assisted - complex syntax benefits from AI explanation)
+
+**3. Scaffolding Architecture** (Questions):
+- Steps needed: 5 (progression from foundation to application)
+- Load budget: 3-4 concepts per step (B1 tier)
+- Heavy scaffolding: Steps 1-2 (foundation), Light: Steps 4-5 (application)
+- Checkpoints: Code prediction after each step
+
+**4. Integration Design** (Questions):
+- Connects to: Functions (prior), closures (recent), OOP (future)
+- Prepares for: Class-based decorators, decorator factories
+- Pattern: Layer 2 (AI explains complex syntax, student validates understanding)
+- AI handles: Syntax nuances (Tier 2), student handles: Concept understanding (Tier 1)
+
+**5. Validation Planning** (Questions):
+- Step 1 check: Can learner assign function to variable?
+- Step 2 check: Can learner predict closure output?
+- Failure point: Jumping to @ syntax before understanding wrapping
+- Adjustment: If struggling, add worked example showing wrapper manually
+
+### Output (Reasoning-Activated Scaffolding):
 
 ```markdown
-# Scaffolding Plan: [Concept Name]
+# Scaffolding Plan: Python Decorators (B1 Level)
 
-**Target Audience**: [beginner/intermediate/advanced]
-**Total Steps**: [3-7]
-**Estimated Time**: [X minutes]
+**Target Audience**: Intermediate (B1)
+**Total Steps**: 5
+**Estimated Time**: 90 minutes
+**Layer**: 2 (AI-Assisted)
 
-## Prerequisite Knowledge
-- [Concept 1]
-- [Concept 2]
-- [...]
+## Prerequisite Check
+- Functions as first-class objects (Chapter 12)
+- Function scope and closures (Chapter 13)
 
-## Step 1: [Title]
+---
 
-**New Concepts**: [List]
-**Cognitive Load**: [low/medium/high]
-**Time**: [X minutes]
+## Step 1: Functions as Objects (Foundation) — 15 min
 
-### Explanation
-[How this step builds toward target concept]
+**New Concepts**: 2 (functions assignable, functions returnable)
+**Cognitive Load**: Low (review + 1 new idea)
+**Scaffolding**: Heavy (show-then-explain)
 
 ### Worked Example
 ```python
-[Complete, runnable code with comments]
-```
-
-### Checkpoint
-[Verification question or task]
-
-## Step 2: [Title]
-[Same structure...]
-
-[Continue for all steps...]
-
-## Final Integration
-[How learner synthesizes all steps to understand complete concept]
-
-## Cognitive Load Analysis
-- **Overall Load**: [low/medium/high]
-- **Warnings**: [Any overload concerns]
-- **Recommendations**: [Suggestions for improvement]
-```
-
-## Examples
-
-### Example 1: Scaffolding Python Decorators
-
-**Input**: "How do I teach Python decorators to intermediate learners?"
-
-**Process**:
-1. Identify prerequisites: functions, closures, higher-order functions
-2. Design 5-step progression:
-   - Step 1: Functions as objects (can be assigned to variables)
-   - Step 2: Functions returning functions
-   - Step 3: Functions taking functions as arguments (higher-order)
-   - Step 4: Simple decorator without arguments
-   - Step 5: Decorators with arguments
-3. Create worked examples for each step
-4. Add checkpoints to verify understanding
-5. Assess cognitive load (intermediate learners, 3 concepts max per step)
-
-**Output**: Structured scaffolding plan with 5 steps, worked examples, checkpoints, and cognitive load warnings.
-
----
-
-### Example 2: Scaffolding Async/Await
-
-**Input**: "Break down async/await for beginners who understand functions and loops"
-
-**Process**:
-1. Identify high intrinsic load (concurrency is conceptually difficult)
-2. Design 7-step progression:
-   - Step 1: Synchronous execution review (baseline)
-   - Step 2: Concept of "waiting" in code
-   - Step 3: Basic async function definition
-   - Step 4: Using await with async functions
-   - Step 5: Running async functions with asyncio.run()
-   - Step 6: Multiple async operations
-   - Step 7: Error handling in async code
-3. Use heavy scaffolding (worked examples, analogies)
-4. Assess load (beginners, max 2 concepts per step)
-
-**Output**: 7-step plan with extensive worked examples, real-world analogies, and frequent checkpoints.
-
----
-
-### Example 3: Reviewing Existing Scaffolding
-
-**Input**: "Is this scaffolding plan for list comprehensions effective?"
-[Educator provides existing plan]
-
-**Process**:
-1. Load plan into assessment script
-2. Check cognitive load per step
-3. Verify prerequisite chains
-4. Identify missing checkpoints or worked examples
-5. Provide specific recommendations
-
-**Output**: Assessment report with warnings and actionable recommendations.
-
-## Common Patterns
-
-### Pattern 1: Simple → Realistic → Complex
-```python
-# Step 1: Simple (one concept)
 def greet(name):
     return f"Hello, {name}"
 
-# Step 2: Realistic (add common feature)
-def greet(name, formal=False):
-    return "Good day" if formal else f"Hello, {name}"
+# Functions can be assigned to variables
+my_function = greet
+result = my_function("Alice")  # "Hello, Alice"
 
-# Step 3: Complex (production-ready)
-def greet(name: str, formal: bool = False, title: str = None) -> str:
-    # [Full implementation with validation]
+# Functions can be passed as arguments
+def call_twice(func, arg):
+    func(arg)
+    func(arg)
+
+call_twice(greet, "Bob")  # Prints twice
 ```
 
-### Pattern 2: Concrete → Abstract
-Start with specific, tangible examples before introducing general patterns.
+### Checkpoint
+**Task**: Assign `len` to variable `my_len`, call it on `[1, 2, 3]`
+**Validation**: If learner can't do this, functions-as-objects not internalized
 
-### Pattern 3: Procedural → Object-Oriented
-Introduce concepts procedurally first, then show OOP approach.
+---
 
-### Pattern 4: Co-Learning Convergence in Scaffolding (Constitution v3.1.2)
+## Step 2: Functions Returning Functions (Closure Introduction) — 20 min
 
-**CRITICAL**: Each scaffolding progression must demonstrate bidirectional learning between student and AI.
+**New Concepts**: 3 (return function, closure captures variable, inner/outer scope)
+**Cognitive Load**: Moderate (B1 appropriate)
+**Scaffolding**: Heavy (multiple worked examples)
 
-**Example: Scaffolding List Comprehensions with Convergence**
-
-**Step 1 - Initial Understanding (Book teaches)**:
+### Worked Example
 ```python
-# Traditional loop approach (foundational)
-numbers = [1, 2, 3, 4, 5]
-squared = []
-for n in numbers:
-    squared.append(n ** 2)
+def make_multiplier(n):
+    def multiply(x):
+        return x * n  # Closure: multiply "remembers" n
+    return multiply
+
+times_three = make_multiplier(3)
+result = times_three(5)  # 15
 ```
 
-**Step 2 - Student Attempts (Try With AI)**:
-Student: "Convert this to a more Pythonic approach"
-AI: Suggests list comprehension: `squared = [n**2 for n in numbers]`
-**Student learns**: "I didn't know about list comprehensions—this is more concise!"
+### Checkpoint
+**Task**: Create `make_adder(n)` that returns function adding n to input
+**Validation**: Tests closure understanding
 
-**Step 3 - Student Refines (Convergence)**:
-Student: "Add filtering to only square even numbers"
-AI: `squared = [n**2 for n in numbers if n % 2 == 0]`
-AI learns: Student wants to combine filtering + transformation
-**Both converge**: Student understands filtering syntax; AI adapted to student's learning goal
+---
 
-**Step 4 - Student Orchestrates (Validation)**:
-Student: "Explain when list comprehensions are better than loops"
-AI: Provides tradeoffs (readability vs. complexity)
-**Convergence outcome**: Student makes informed decisions, not just copies patterns
+## Step 3: The Wrapper Pattern (Manual Decoration) — 25 min
 
-**Required Elements in Convergence-Based Scaffolding**:
-- ✅ At least ONE step where student learns FROM AI's suggestion
-- ✅ At least ONE step where AI adapts TO student's feedback
-- ✅ Iteration shown (not "perfect on first try")
-- ✅ Both parties contribute unique value
-- ✅ Reflection prompt: "What did you learn from AI's approach?"
+**New Concepts**: 4 (wrapper function, call original, modify behavior, return result)
+**Cognitive Load**: Moderate-High (core decorator concept)
+**Scaffolding**: Moderate (AI explains, student practices)
 
-## Validation
+### Worked Example (WITH AI AS TEACHER)
+```python
+def original_function(x):
+    return x * 2
 
-Before finalizing scaffolding plan:
-- [ ] Each step introduces ≤3 new concepts (≤2 for beginners)
-- [ ] Total steps: 3-7
-- [ ] Prerequisites explicitly stated
-- [ ] Worked examples provided for each step
-- [ ] Checkpoints included for verification
-- [ ] Cognitive load assessed and acceptable
-- [ ] Clear progression from simple to complex
-- [ ] No circular dependencies in prerequisite chain
+def wrapper(func):
+    def inner(x):
+        print("Before calling function")
+        result = func(x)  # Call original
+        print("After calling function")
+        return result
+    return inner
 
-## Acceptance Checks
-
-- [ ] Per-step verifiability: each step lists entry knowledge, single outcome, and a micro-check
-- [ ] Cognitive Load Budget present for the lesson (Beginner default ≤ 5 new concepts total)
-
-### Step snippet
-```
-Entry: knows lists, for-loops
-Outcome: implement list comprehension with filter
-Micro-check: “Write one comprehension that filters even numbers”
+# Manual decoration
+decorated = wrapper(original_function)
+decorated(5)
+# Output:
+# Before calling function
+# After calling function
+# 10
 ```
 
-## References
+**AI Role**: Explain WHY wrapper pattern useful (separation of concerns)
 
-Supporting documentation (loaded as needed):
-- `reference/cognitive-load-theory.md` - CLT principles and load management
-- `reference/scaffolding-strategies.md` - Worked examples, fading, chunking patterns
-- `reference/worked-examples.md` - Effective example structure for programming
+### Checkpoint
+**Task**: Write wrapper that logs function name before calling
+**Validation**: Tests wrapper pattern understanding
 
-## Error Handling
+---
 
-If validation fails:
-1. Report specific issues (e.g., "Step 3 introduces 5 concepts for beginner audience")
-2. Suggest remediation (e.g., "Split step 3 into two steps")
-3. Halt and require user intervention (hard failure mode)
+## Step 4: Decorator Syntax (@) — 20 min
+
+**New Concepts**: 2 (@ syntax, equivalence to manual wrapping)
+**Cognitive Load**: Low (syntax sugar, concept already understood)
+**Scaffolding**: Light (concept familiar, just new syntax)
+
+### Worked Example (AI AS CO-WORKER)
+```python
+def logger(func):
+    def wrapper(*args, **kwargs):
+        print(f"Calling {func.__name__}")
+        return func(*args, **kwargs)
+    return wrapper
+
+# These are equivalent:
+# 1. Manual
+my_func = logger(my_func)
+
+# 2. Decorator syntax
+@logger
+def my_func(x):
+    return x * 2
+
+my_func(5)  # Logs "Calling my_func", returns 10
+```
+
+**AI Role**: Student writes decorator, AI suggests `*args, **kwargs` pattern
+
+### Checkpoint
+**Task**: Convert manual wrapper from Step 3 to @ syntax
+**Validation**: Tests syntax understanding
+
+---
+
+## Step 5: Decorators with Arguments — 10 min (stretch)
+
+**New Concepts**: 3 (decorator factory, nested closures, parameterized behavior)
+**Cognitive Load**: High (advanced pattern)
+**Scaffolding**: Light (optional extension for advanced students)
+
+### Worked Example (AI AS TEACHER)
+```python
+def repeat(times):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for _ in range(times):
+                result = func(*args, **kwargs)
+            return result
+        return wrapper
+    return decorator
+
+@repeat(3)
+def say_hello():
+    print("Hello!")
+
+say_hello()  # Prints "Hello!" three times
+```
+
+**AI Role**: Explain nested closure pattern that students likely haven't seen
+
+### Checkpoint
+**Task**: Create `@retry(max_attempts)` decorator
+**Validation**: Tests advanced pattern application
+
+---
+
+## Cognitive Load Analysis
+
+| Step | New Concepts | Load Level | Appropriate? |
+|------|-------------|------------|--------------|
+| 1 | 2 | Low | ✓ (B1 can handle) |
+| 2 | 3 | Moderate | ✓ (B1 target) |
+| 3 | 4 | Moderate-High | ✓ (with AI support) |
+| 4 | 2 | Low | ✓ (syntax sugar) |
+| 5 | 3 | High | ✓ (optional extension) |
+
+**Total New Concepts**: 14 across 5 steps = 2.8 avg per step (within B1 range 3-5)
+
+---
+
+## Layer Integration
+
+**Layer 2 (AI Collaboration) Applied**:
+- Step 1-2: Book teaches (foundational, stable)
+- Step 3: AI explains complex wrapper pattern
+- Step 4: AI suggests `*args, **kwargs` improvement
+- Step 5: AI teaches advanced pattern (optional)
+
+**Convergence Demonstrated**:
+- Step 3: Student writes wrapper → AI suggests improvement → Student refines
+- Step 4: Student converts syntax → AI validates correctness
+```
+
+**Self-Monitoring Check**:
+- ✅ Cognitive load calculated (not arbitrary steps)
+- ✅ Worked examples before practice (not explain-then-try)
+- ✅ Validation checkpoints (not assumptions)
+- ✅ Tier-appropriate load (B1: 3-5 concepts/step)
+- ✅ Dependency order correct (foundation → complex)
+- ✅ Step count optimal (5 steps, not 12)
+- ✅ Layer-aligned (L2 AI collaboration where appropriate)
+
+---
+
+## Success Metrics
+
+**Reasoning Activation Score**: 4/4
+- ✅ Persona: Cognitive stance established (load architect)
+- ✅ Questions: Systematic inquiry structure (5 question sets)
+- ✅ Principles: Decision frameworks (7 principles)
+- ✅ Meta-awareness: Anti-convergence monitoring (5 convergence points)
+
+**Comparison**:
+- v2.0 (procedural): 0/4 reasoning activation
+- v3.0 (reasoning): 4/4 reasoning activation
+
+---
+
+**Ready to use**: Invoke this skill when you need to break complex concepts into progressive learning steps with cognitive load management and validation checkpoints.

@@ -84,7 +84,7 @@ differentiation:
   remedial_for_struggling: "Start with just __str__ and __repr__ to build confidence; practice simple operators (__add__ only); use templates for __getitem__ implementation"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/020-oop-part-1-2/spec-chapter-25.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -167,7 +167,7 @@ p             # In shell: Person(name='Alice', age=30) (calls __repr__)
 
 **The convention**: `__str__()` is for end users. `__repr__()` is for developers debugging code. Ideally, `repr()` output should be valid Python code that recreates the object.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, these methods become critical when you log agent state or debug multi-agent systems. A well-implemented `__repr__()` tells you exactly what you're looking at. A readable `__str__()` makes agent output feel natural to users.
 
@@ -314,7 +314,7 @@ for num in Countdown(5):
 
 **Critical pattern**: `__iter__()` returns an iterator object (often `self`). `__next__()` returns the next value and raises `StopIteration` when done. This is the protocol Python's `for` loop expects.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, iteration protocols enable elegant APIs. Imagine an AgentQueue that yields agents in priority order, or a DataStream that yields batches of training data. Proper iteration protocols make your systems read naturally: `for agent in queue:`.
 
@@ -536,7 +536,7 @@ unique_amounts = {Money(100), Money(100), Money(50)}
 print(len(unique_amounts))             # 2 (duplicates removed by hash/eq)
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > This Money class demonstrates why special methods matter. Without them, arithmetic on currency would be clunky: `Money.add(wallet, purchase)`. With special methods, it's natural: `wallet + purchase`. Natural syntax is professional code.
 
@@ -597,101 +597,418 @@ Ask your AI Co-Teacher:
 
 ---
 
-## Try With AI
+## Challenge: Making Objects Behave Like Built-In Types
 
-**Tool**: Claude Code, Gemini CLI, or your preferred AI companion tool
-
-Use this 4-prompt set to practice special methods with your AI partner. Start with simple cases and progress toward complex integration.
-
-### Prompt 1: Recall - Basic Special Methods
-
-```
-Create a Book class with:
-- __init__(title, author, isbn)
-- __str__() returning "Title by Author"
-- __repr__() returning "Book('Title', 'Author', 'isbn-123')"
-- __eq__() comparing by ISBN
-
-Test all three methods and show the output.
-```
-
-**Expected Outcome**: You understand the distinction between `__str__` (readable) and `__repr__` (debuggable), and how equality works for domain objects.
+In this challenge, you'll discover why custom objects need special methods, learn how to implement them, test your understanding against AI, and build production-ready custom types.
 
 ---
 
-### Prompt 2: Understand - Operator Overloading
+## Part 1: Student Discovers the Limitation of Objects Without Special Methods
 
+**Your Role**: Developer discovering protocol limitations
+
+### Discovery Exercise: Try Using Custom Objects Like Built-In Types
+
+Imagine you're building a Vector class for mathematical computations. You want to use it like built-in objects.
+
+**Stage 1: Objects That Don't Support Operators**
+
+Create a basic Vector class without special methods:
+
+```python
+# vector.py - NO SPECIAL METHODS
+class Vector:
+    """Basic 2D vector without special methods"""
+
+    def __init__(self, x: float, y: float) -> None:
+        self.x = x
+        self.y = y
+
+    def magnitude(self) -> float:
+        return (self.x ** 2 + self.y ** 2) ** 0.5
+
+
+# Try to use it like built-in types
+v1 = Vector(3, 4)
+v2 = Vector(1, 2)
+
+# This fails - objects don't support +
+# result = v1 + v2  # TypeError: unsupported operand type(s)
+
+# This is confusing output
+print(v1)  # <__main__.Vector object at 0x7f...>
+
+# Can't use in sets or as dict keys without issues
+vectors = {v1: "magnitude_5"}  # Works but confusing
+
+# Can't iterate
+# for component in v1:  # TypeError: 'Vector' object is not iterable
 ```
-Create a Temperature class that represents temperatures in Celsius:
-- __init__(celsius: float)
-- __str__() returning "X°C"
-- __add__() adding two temperatures (return new Temperature)
-- __sub__() subtracting two temperatures
-- __lt__() comparing temperatures
-- __eq__() checking equality
 
-Test: temp1 = Temperature(20), temp2 = Temperature(30)
-- temp1 + temp2 should return Temperature(50)
-- temp1 < temp2 should return True
-- temp1 == Temperature(20) should return True
+**Your task 1**: Copy this code and document in `objects_without_protocols_analysis.md`:
+- What operations fail on custom Vector? (addition, printing, iteration, etc.)
+- Which built-in functions don't work (len(), iter(), etc.)?
+- How would you currently add two vectors manually?
+- What would make Vector "feel" like a built-in type?
 
-Show your code and test output.
-```
+**Stage 2: The Hacky Workarounds**
 
-**Expected Outcome**: You can implement multiple operators and understand operator protocol, including type checking and `NotImplemented`.
+**Your task 2**: Try working around the limitations and document:
+- How would you add two vectors without the `+` operator?
+- How would you print a vector nicely?
+- What operations are awkward without protocol support?
+- What pattern emerges?
+
+### Your Discovery Document
+
+Create `special_methods_problem_statement.md` with:
+
+1. **The Limitation Problem**: Objects don't support standard Python operations
+2. **The Awkwardness Problem**: Code to work with custom objects feels unnatural
+3. **The Integration Problem**: Objects don't work with built-in functions (len, iter, etc.)
+4. **Your Prediction**: What Python feature would enable "magic method" behavior?
 
 ---
 
-### Prompt 3: Apply - Container Protocol
+## Part 2: AI Teaches Special Methods as Protocol Support
 
+**Your Role**: Student learning from AI Teacher
+
+### AI Teaching Prompt
+
+Ask your AI companion:
+
+> "I have a Vector class that stores x, y coordinates. I want to:
+> 1. Add vectors with + operator (v1 + v2)
+> 2. Compare vectors with < (v1 < v2, by magnitude)
+> 3. Get magnitude with len(v1)
+> 4. Print nicely with print(v1)
+> 5. Iterate: for component in v1
+>
+> Currently, all of these fail. Explain:
+> 1. What are special methods (or magic methods)?
+> 2. How do they work? Why are they called 'special'?
+> 3. Show me __add__, __lt__, __len__, __str__, and __iter__ implementations
+> 4. Explain when each special method gets called automatically
+> 5. What happens if I implement __add__ but the other argument doesn't support it?"
+
+### Expected AI Response Summary
+
+AI will explain:
+- **Special methods**: Dunder methods that Python calls automatically when you use operators
+- **Protocol implementation**: By defining __add__, you teach Python how to handle `+` on your objects
+- **Composable protocols**: __len__, __getitem__, __iter__ together let objects act like containers
+- **Convention matters**: __add__ should do addition, not something else (surprises are bad)
+- **Error handling**: Return NotImplemented when operation doesn't make sense
+
+**AI will show code like**:
+
+```python
+class Vector:
+    def __init__(self, x: float, y: float) -> None:
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        """Support v1 + v2"""
+        if not isinstance(other, Vector):
+            return NotImplemented
+        return Vector(self.x + other.x, self.y + other.y)
+
+    def __str__(self):
+        """Support print(v1) - user-friendly"""
+        return f"Vector({self.x}, {self.y})"
+
+    def __repr__(self):
+        """Support debugging display"""
+        return f"Vector({self.x!r}, {self.y!r})"
+
+    def __len__(self):
+        """Support len(v1) - magnitude"""
+        return (self.x ** 2 + self.y ** 2) ** 0.5
+
+    def __iter__(self):
+        """Support for x, y in v1"""
+        yield self.x
+        yield self.y
+
+# Now everything works!
+v1 = Vector(3, 4)
+v2 = Vector(1, 2)
+print(v1 + v2)  # Vector(4, 6)
 ```
-Create a Stack class (Last In, First Out) with:
-- __init__() initializing empty stack
-- push(item) adding to stack
-- pop() removing and returning from stack
-- __len__() supporting len(stack)
-- __getitem__(index) supporting stack[0] to peek (without removing)
-- __iter__() supporting for loops
 
-Test:
-- Create stack, push 3 items
-- Use len(stack) to check size
-- Use stack[0] to peek at top
-- Iterate: for item in stack
-- Pop an item and verify
+### Convergence Activity
 
-Show complete code and test output.
-```
+After AI explains, verify understanding:
 
-**Expected Outcome**: You understand how container protocols compose—iteration, length, and indexing are distinct contracts, and a class can implement multiple simultaneously.
+> "Show me a Container class (like a custom list) that implements __len__, __getitem__, __setitem__, and __iter__. Explain how these protocols work together to make objects behave like built-in containers. What happens if you implement __getitem__ but not __iter__?"
+
+### Deliverable
+
+Write 1-paragraph summary: "How Special Methods Enable Protocol-Driven Design" explaining how __add__, __len__, __iter__ and others make custom objects integrate seamlessly with Python.
 
 ---
 
-### Prompt 4: Synthesize - Building a Custom Collection
+## Part 3: Student Challenges AI with Protocol Edge Cases
 
-```
-Create a SortedList class that automatically keeps items sorted:
-- __init__(items=None) initializing with optional list
-- add(item) adding item while maintaining sort order
-- __len__() returning number of items
-- __getitem__(index) supporting indexing
-- __contains__(item) supporting 'in' operator (check if item exists)
-- __iter__() supporting for loops (iterate in sorted order)
-- __repr__() for debugging
+**Your Role**: Student testing AI's understanding
 
-Implement this WITHOUT using Python's sorted() in __init__ or add()—build it from scratch.
+### Challenge Design Scenarios
 
-Test with:
-- Create SortedList([3, 1, 4, 1, 5])
-- Add 2 (should go in correct sorted position)
-- Check len(), access items by index, iterate, check membership
-- Print repr()
+Ask AI to handle these cases:
 
-Show complete code and detailed test output explaining how sorting is maintained.
-```
+#### Challenge 1: Protocol Composition
 
-**Expected Outcome**: You understand how to build production-ready custom types that feel like built-in Python objects, implementing multiple protocols together with careful state management.
+> "I implement __getitem__ for indexing and __len__ for length, but I DON'T implement __iter__. Does a for loop work? What about list comprehensions? Show me exactly what Python tries when I use for item in my_object."
+
+**Expected learning**: AI explains that Python has fallback behaviors and how protocol requirements compose.
+
+#### Challenge 2: NotImplemented vs TypeError
+
+> "Show me what happens when I do vector + 5 (adding a vector and a number). Should __add__ raise TypeError immediately, return NotImplemented, or handle it? What's the difference and when does each make sense?"
+
+**Expected learning**: AI explains protocol negotiation and error handling philosophy.
+
+#### Challenge 3: String Representations
+
+> "I have a Book object. I implement both __str__ and __repr__. When is each called? When should they differ? Show me examples where having different outputs is crucial for debugging."
+
+**Expected learning**: AI explains the philosophical difference: __str__ for users, __repr__ for developers.
+
+### Deliverable
+
+Document your three challenges, AI's responses, and your understanding of protocol composition and error handling in special methods.
 
 ---
 
-**Safety and Ethics Note**: When implementing special methods, remember that users of your class rely on standard Python behavior. A Vector `+` operation should behave like mathematical vector addition, not something unexpected. Breaking conventions confuses other developers (and your future self). Honor the principle: "Explicit is better than implicit."
+## Part 4: Build Feature-Complete Custom Types with Protocols
+
+**Your Role**: Knowledge synthesizer creating production custom types
+
+### Your Custom Types System
+
+Create two production-ready custom types demonstrating special methods:
+
+**vector.py**:
+```python
+import math
+from typing import Iterator
+
+
+class Vector:
+    """A 2D vector supporting mathematical operations"""
+
+    def __init__(self, x: float, y: float) -> None:
+        self.x = x
+        self.y = y
+
+    def __str__(self) -> str:
+        """User-friendly representation"""
+        return f"({self.x}, {self.y})"
+
+    def __repr__(self) -> str:
+        """Developer-friendly representation"""
+        return f"Vector({self.x}, {self.y})"
+
+    def __add__(self, other: 'Vector') -> 'Vector':
+        """Support v1 + v2"""
+        if not isinstance(other, Vector):
+            return NotImplemented
+        return Vector(self.x + other.x, self.y + other.y)
+
+    def __sub__(self, other: 'Vector') -> 'Vector':
+        """Support v1 - v2"""
+        if not isinstance(other, Vector):
+            return NotImplemented
+        return Vector(self.x - other.x, self.y - other.y)
+
+    def __mul__(self, scalar: float) -> 'Vector':
+        """Support v * scalar"""
+        if isinstance(scalar, (int, float)):
+            return Vector(self.x * scalar, self.y * scalar)
+        return NotImplemented
+
+    def __rmul__(self, scalar: float) -> 'Vector':
+        """Support scalar * v"""
+        return self * scalar
+
+    def __eq__(self, other: object) -> bool:
+        """Support v1 == v2"""
+        if not isinstance(other, Vector):
+            return NotImplemented
+        return self.x == other.x and self.y == other.y
+
+    def __lt__(self, other: 'Vector') -> bool:
+        """Support v1 < v2 (by magnitude)"""
+        if not isinstance(other, Vector):
+            return NotImplemented
+        return self.magnitude() < other.magnitude()
+
+    def __len__(self) -> float:
+        """Support len(v) - return magnitude"""
+        return self.magnitude()
+
+    def __iter__(self) -> Iterator[float]:
+        """Support for x, y in vector"""
+        yield self.x
+        yield self.y
+
+    def __hash__(self) -> int:
+        """Support using vector as dict key or set member"""
+        return hash((self.x, self.y))
+
+    def magnitude(self) -> float:
+        """Calculate vector magnitude"""
+        return math.sqrt(self.x ** 2 + self.y ** 2)
+```
+
+**sorted_list.py**:
+```python
+from typing import Generic, TypeVar, Iterator, Optional
+
+T = TypeVar('T')
+
+
+class SortedList(Generic[T]):
+    """A list that automatically maintains sorted order"""
+
+    def __init__(self, items: Optional[list[T]] = None) -> None:
+        """Initialize with optional items"""
+        self._items: list[T] = []
+        if items:
+            for item in items:
+                self.add(item)
+
+    def add(self, item: T) -> None:
+        """Add item while maintaining sort order"""
+        # Binary insertion
+        left, right = 0, len(self._items)
+        while left < right:
+            mid = (left + right) // 2
+            if self._items[mid] < item:
+                left = mid + 1
+            else:
+                right = mid
+        self._items.insert(left, item)
+
+    def __str__(self) -> str:
+        """User-friendly representation"""
+        return f"SortedList({self._items})"
+
+    def __repr__(self) -> str:
+        """Developer-friendly representation"""
+        return f"SortedList({self._items!r})"
+
+    def __len__(self) -> int:
+        """Support len(sorted_list)"""
+        return len(self._items)
+
+    def __getitem__(self, index: int) -> T:
+        """Support sorted_list[i]"""
+        return self._items[index]
+
+    def __contains__(self, item: T) -> bool:
+        """Support item in sorted_list"""
+        return item in self._items
+
+    def __iter__(self) -> Iterator[T]:
+        """Support for item in sorted_list"""
+        return iter(self._items)
+
+    def __eq__(self, other: object) -> bool:
+        """Support sorted_list1 == sorted_list2"""
+        if not isinstance(other, SortedList):
+            return NotImplemented
+        return self._items == other._items
+```
+
+**main.py**:
+```python
+from vector import Vector
+from sorted_list import SortedList
+
+print("=== Vector Testing ===")
+v1 = Vector(3, 4)
+v2 = Vector(1, 2)
+
+print(f"v1: {v1}")
+print(f"v2: {v2}")
+print(f"v1 + v2: {v1 + v2}")
+print(f"v1 - v2: {v1 - v2}")
+print(f"v1 * 2: {v1 * 2}")
+print(f"3 * v2: {3 * v2}")
+print(f"v1 == Vector(3, 4): {v1 == Vector(3, 4)}")
+print(f"len(v1) (magnitude): {len(v1)}")
+print(f"v1 < v2: {v1 < v2}")
+
+print("\n=== Vector Iteration ===")
+for component in v1:
+    print(f"  Component: {component}")
+
+print("\n=== Vector as Dict Key ===")
+magnitudes = {v1: len(v1), v2: len(v2)}
+print(f"Magnitudes: {magnitudes}")
+
+print("\n=== SortedList Testing ===")
+sl = SortedList([3, 1, 4, 1, 5, 9, 2])
+print(f"SortedList: {sl}")
+print(f"Length: {len(sl)}")
+print(f"Item at [2]: {sl[2]}")
+print(f"3 in list: {3 in sl}")
+
+print("\n=== SortedList Iteration ===")
+for item in sl:
+    print(f"  Item: {item}")
+
+print("\n=== SortedList Adding ===")
+sl.add(6)
+print(f"After adding 6: {sl}")
+sl.add(0)
+print(f"After adding 0: {sl}")
+```
+
+**Your task**: Expand this system with:
+1. Add Fraction class with special methods for arithmetic
+2. Add Money class with comparison and string formatting
+3. Create test suite validating all protocol behavior
+4. Write guide: `special_methods_reference.md`
+
+### Validation Checklist
+
+- ✅ Vector supports +, -, *, ==, \<, len(), iteration
+- ✅ SortedList supports len(), indexing, containment, iteration
+- ✅ __str__ and __repr__ provide clear output
+- ✅ NotImplemented returned for unsupported operations
+- ✅ Objects work as dict keys (hash implemented)
+- ✅ All special methods follow Python conventions
+
+### Deliverable
+
+Complete `vector.py` and `sorted_list.py` with comprehensive special method implementations, plus test suite demonstrating all protocols work correctly.
+
+---
+
+## Summary: Bidirectional Learning in Action
+
+**Part 1 (Student discovers)**: You found that custom objects can't use operators or integrate with built-in functions
+
+**Part 2 (AI teaches)**: AI explained special methods and how Python uses them to enable protocol-driven design
+
+**Part 3 (Student teaches)**: You challenged AI with edge cases about protocol composition and error handling
+
+**Part 4 (Knowledge synthesis)**: You built production custom types (Vector, SortedList) supporting multiple protocols
+
+### What You've Built
+
+1. `objects_without_protocols_analysis.md` — Problem analysis
+2. `special_methods_problem_statement.md` — Clear problem statement
+3. Challenge documentation — Three protocol edge cases
+4. `vector.py` — Feature-complete Vector with 10+ special methods
+5. `sorted_list.py` — Generic SortedList with container protocol
+6. `main.py` — Comprehensive test suite
+7. `special_methods_reference.md` — Protocol guide
+
+### Next Steps
+
+Lesson 5 (the capstone) integrates all Chapter 25 concepts—inheritance, polymorphism, composition, and special methods—to build complex design patterns in production systems.

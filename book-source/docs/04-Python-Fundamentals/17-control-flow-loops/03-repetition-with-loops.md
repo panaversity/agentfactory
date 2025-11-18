@@ -84,7 +84,7 @@ differentiation:
   remedial_for_struggling: "Practice range() variations separately before combining with loops; use visual number line diagrams for range() sequences"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/001-part-4-chapter-17/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -485,44 +485,117 @@ for i in range(0, 10, 0):  # ❌ Step can't be zero
 **AI Troubleshooting Prompt:**
 > "I got 'range() arg 3 must not be zero' error. What does this mean?"
 
-## Try With AI
+## Try With AI: Loop Patterns Mastery Challenge
 
-Now that you understand `for` and `while` loops, test your knowledge with your AI companion. Use **ChatGPT web** (or your AI companion tool if you've already set one up from earlier chapters).
+You've learned `for` loops (definite iteration) and `while` loops (condition-based). Now master loop patterns by building accumulator, counter, and search patterns—with AI as your debugging partner.
 
-**1. Recall: Understand the Difference**
+### Part 1: Build Loop Patterns (Your Turn First)
 
-> "What's the difference between `for` loops and `while` loops in Python? When should I use each?"
+**Before asking AI**, implement these 3 core loop patterns:
 
-**Expected Outcome:** Your AI will explain that `for` is for known iteration counts, `while` is for condition-based repetition. You'll see examples of ideal use cases for each.
+**Pattern 1: Accumulator** (sum numbers 1-10)
+```python
+total: int = 0
+for i in range(1, 11):  # Your code here
+    # Add i to total
+```
 
-**2. Understand: Trace Execution Step-by-Step**
+**Pattern 2: Counter** (count even numbers from 1-20)
+```python
+count: int = 0
+for i in range(1, 21):
+    # Count how many are even
+```
 
-> "Trace this `for` loop step-by-step: `for i in range(2, 6, 1): print(i)`. What values does `i` take, and what is the output?"
+**Pattern 3: Search** (find first number > 50 in [10, 25, 55, 60, 30])
+```python
+numbers: list[int] = [10, 25, 55, 60, 30]
+found: int | None = None
+# Your code: find first > 50
+```
 
-**Expected Outcome:** Your AI will walk through each iteration: i=2 (prints 2), i=3 (prints 3), i=4 (prints 4), i=5 (prints 5). Loop stops before 6. You'll understand how `range(start, stop, step)` works.
+**Your task**:
+1. Write the code for all 3 patterns
+2. Predict the output BEFORE running
+3. Identify which pattern uses `for`, which could use `while`
 
-**3. Apply: Generate Countdown Loop**
+---
 
-> "Generate a `while` loop that counts down from 10 to 1, printing each number. Include type hints and proper termination logic."
+### Part 2: AI Explains Pattern Design (Discovery)
 
-**Expected Outcome:** Your AI will provide code with:
-- Type-hinted variable initialization (`count: int = 10`)
-- While condition (`while count >= 1`)
-- Print statement
-- Decrement logic (`count -= 1`)
+Share your implementations with AI:
 
-Review the code and verify it would print: 10, 9, 8, ..., 1
+> "I implemented 3 loop patterns: [paste code]. For each:
+> 1. Is my implementation correct?
+> 2. Explain the pattern: accumulator adds values, counter increments conditionally, search stops early
+> 3. Which pattern MUST use `for`? Which could use `while`? Why?
+> 4. Show how to implement Pattern 3 (search) with BOTH `for` and `while` loops"
 
-**4. Analyze: Diagnose Infinite Loop**
+**Your task**: Evaluate AI's explanation.
+- Does it confirm accumulator pattern (`total += i`)?
+- Does it show counter pattern uses conditional increment (`if i % 2 == 0: count += 1`)?
+- Does it explain that search should stop when found (early exit)?
+- Can you explain when `for` vs. `while` is better?
 
-> "What happens if I forget to update the loop counter in this `while` loop? Show me an example of the error and how to fix it:
-> ```
-> i = 0
+---
+
+### Part 3: Student Teaches AI (Infinite Loop Dangers)
+
+AI explained patterns. But does it know how to PREVENT infinite loops?
+
+Challenge AI with dangerous code:
+
+> "I wrote a `while` loop that never terminates:
+> ```python
+> i: int = 0
 > while i < 5:
 >     print(i)
+>     # Forgot to increment i!
 > ```
-> "
+>
+> Explain:
+> 1. Why is this an infinite loop?
+> 2. How would I detect this BEFORE running (code review)?
+> 3. What's the safety pattern for while loops? (initialize → condition → update)
+> 4. Show me 3 common infinite loop mistakes and fixes"
 
-**Expected Outcome:** Your AI will explain that the loop runs forever because `i` never changes. It will show the fix: adding `i += 1` inside the loop. You'll understand why loop variable updates are critical.
+**Your task**: Compare AI's safety checks.
+- Does it emphasize the "update variable" requirement?
+- Does it show the pattern: initialize BEFORE loop, check in condition, update INSIDE loop?
+- Does it warn about `while True:` loops (need explicit `break`)?
+- Can you now review loops for termination safety?
 
-**Safety Note:** AI-generated code may contain infinite loops. Always review loop termination logic before running code. If your program hangs, use Ctrl+C to stop execution.
+---
+
+### Part 4: Build FizzBuzz Together (Convergence)
+
+Now solve the classic FizzBuzz challenge with AI:
+
+> "Build FizzBuzz: For numbers 1-100:
+> - If divisible by 3: print 'Fizz'
+> - If divisible by 5: print 'Buzz'
+> - If divisible by BOTH: print 'FizzBuzz'
+> - Otherwise: print the number
+>
+> Requirements:
+> 1. Use a `for` loop with `range(1, 101)`
+> 2. Use `if-elif-else` for logic
+> 3. Check divisibility by BOTH first (order matters!)
+> 4. Include type hints
+>
+> Show complete code and first 20 lines of output."
+
+**Your task**: Review AI's FizzBuzz.
+- Does it check `i % 15 == 0` FIRST (or `i % 3 == 0 and i % 5 == 0`)?
+- Does it demonstrate why order matters (if % 3 comes first, FizzBuzz never prints)?
+- Does output match expected pattern (1, 2, Fizz, 4, Buzz, Fizz, 7, ...)?
+
+Iterate if needed:
+> "Why must we check divisibility by 15 BEFORE checking 3 or 5? Show what happens if we don't."
+
+---
+
+**Time**: 30-35 minutes total
+**Outcome**: You've mastered accumulator, counter, and search patterns; learned to prevent infinite loops; and solved FizzBuzz—understanding loop logic and condition ordering.
+
+**Safety Note**: Always verify `while` loop termination logic. If unsure, use `for` loops with `range()` (guaranteed termination).

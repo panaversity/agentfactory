@@ -71,7 +71,7 @@
 
 8. **Capstone Integration**: Lesson 11 reinforces all structures in cohesive project without introducing new concepts (integration not addition)
 
-9. **Manageable Implementation**: lesson-writer can focus on one structure aspect per lesson; easier to review and validate than monolithic collections lesson
+9. **Manageable Implementation**: content-implementer can focus on one structure aspect per lesson; easier to review and validate than monolithic collections lesson
 
 10. **Constitutional Alignment**: Follows Principle 12 (Cognitive Load Management) and Principle 13 (Graduated Teaching Pattern)
 
@@ -79,7 +79,7 @@
 
 1. **Higher Chapter Scope**: 11 lessons = 44 hours (vs typical 8 lessons = 32 hours); risk of student drop-off (mitigated by cognitive load limits)
 
-2. **Implementation Complexity**: lesson-writer must maintain coherence across 11 lessons; requires careful cross-referencing
+2. **Implementation Complexity**: content-implementer must maintain coherence across 11 lessons; requires careful cross-referencing
 
 3. **Repetition Risk**: "Try With AI" sections must vary across 11 lessons to avoid monotony
 

@@ -75,7 +75,7 @@ differentiation:
   remedial_for_struggling: "Start with 2 sources instead of 3; scaffold error handling patterns step-by-step; use skeleton code liberally"
 
 # Generation metadata
-generated_by: "lesson-writer v1.0.0"
+generated_by: "content-implementer v1.0.0"
 source_spec: "specs/001-part-4-chapter-28/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -543,7 +543,7 @@ Before implementing, study the provided skeleton code above. Notice:
 
 Your job: **Implement `ai_agent_query()` function** using TaskGroup and InterpreterPoolExecutor.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't code from scratch. You understand a pattern, see a skeleton, and ask AI to help fill the gaps. The `ai_agent_query()` function is that gap—it's where all concepts combine. You're not memorizing how to use TaskGroup and InterpreterPoolExecutor in isolation. You're architecting a system where both work together, optimally using I/O concurrency and CPU parallelism.
 
@@ -782,59 +782,149 @@ This capstone demonstrates:
 
 ---
 
-## Try With AI
+## Challenge 6: The Complete AI Agent Capstone (5-Part)
 
-Your capstone is now complete and tested. Use these prompts to deepen your understanding and explore extensions:
+This is a **5-part bidirectional learning challenge** where you complete, evaluate, and reflect on your production AI agent system.
 
-### 1. Understand Level: System Execution Flow
+### Part 1: Verify and Test Your Implementation (Student as Quality Engineer)
+**Your Challenge**: Ensure your built system actually works as intended.
 
-**Ask your AI:**
+**Verification Checklist**:
+1. Run your complete AI agent system from Part 4 of the main lesson
+2. Measure actual execution time (should be ~5-6 seconds, not 9+ seconds sequential)
+3. Verify concurrent fetching: all 3 sources start within 100ms of each other
+4. Verify parallel processing: CPU work happens on multiple cores simultaneously
+5. Test error handling: simulate one source timing out; system should continue
+6. Document timing: `{fetch_time, process_time, total_time, speedup_vs_sequential}`
 
-> "Walk me through the execution timeline of the AI agent system. Specifically: (1) When does TaskGroup start fetching from all 3 sources? (2) When does InterpreterPoolExecutor start processing? (3) Can they overlap? (4) What's the critical path—the bottleneck that limits overall execution time?"
+**Expected Behavior**:
+- Concurrent fetch: 3 seconds (longest single source, not sum)
+- Parallel process: 2 seconds (3 tasks on multiple cores)
+- Total: 5-6 seconds (stages overlap, not sequential)
+- Speedup: 1.5-2x vs sequential (~10 seconds)
 
-**Expected Output**: AI explains that TaskGroup fetches all 3 sources concurrently (bottleneck: 3-second longest source), then InterpreterPoolExecutor processes all 3 in parallel (bottleneck: 2 seconds per result, ~2 seconds total if you have enough cores). Total time is ~5 seconds because the stages overlap.
-
-**What This Proves**: You understand system architecture and critical path analysis.
-
-### 2. Apply Level: Handle Partial Failures
-
-**Tell your AI:**
-
-> "My current implementation might crash if 2 sources timeout before returning results. I want graceful degradation—the system should continue with whatever results arrived and return them plus error messages. Show me how to catch TimeoutError and continue processing only the successful results. Then explain why this is better than failing completely."
-
-**Expected Output**: AI shows how to use `gather(return_exceptions=True)` or try/except blocks to isolate failures, then filter results to process only successful ones.
-
-**What This Proves**: You can handle real-world unreliability (not everything works perfectly).
-
-### 3. Analyze Level: Performance Optimization
-
-**Ask your AI:**
-
-> "My hybrid system runs in 5 seconds, but I want it faster. Looking at my code, what's the bottleneck? Is it the TaskGroup (fetching), the InterpreterPoolExecutor (processing), or something else? How could I optimize each stage?"
-
-**Expected Output**: AI analyzes your specific implementation and identifies bottlenecks (e.g., "Your longest fetch takes 3 seconds, and you have 3 cores for inference. The bottleneck is the longest fetch. To optimize: fetch from faster sources first, implement timeouts to fail fast, or add caching").
-
-**What This Proves**: You can reason about system performance and make optimization decisions.
-
-### 4. Synthesize Level: Extend to Real AI Workload
-
-**Challenge your AI:**
-
-> "Now extend this to a real language model API (like Claude's API or GPT-4). What changes? Should I cache results? Should I implement backoff/retry for rate limits? How does the architecture change when using real async libraries like httpx instead of simulated sleeps?"
-
-**Expected Output**: AI guides you through real API integration (httpx, API key management, rate limiting, retry strategies) while maintaining the TaskGroup + InterpreterPoolExecutor pattern.
-
-**What This Proves**: You can apply the pattern to production systems.
+**Deliverable**: Create `/tmp/capstone_verification.md` documenting:
+- Actual measured timings
+- Proof of concurrency (execution timeline)
+- Proof of parallelism (core utilization)
+- Error scenarios tested
+- Performance improvement quantified
 
 ---
 
-**Congratulations!** You've built a production-style AI agent system that integrates all asyncio concepts from this chapter. You understand:
+### Part 2: Discover Optimization Opportunities (Student as Scientist)
+**Your Challenge**: Identify bottlenecks without AI help first.
 
-- How **event loops** manage concurrency
-- When to use **TaskGroup** for structured I/O concurrency
-- How **InterpreterPoolExecutor** solves the GIL for parallelism
-- How to **combine both** for optimal hybrid workloads
-- How to **handle errors gracefully** in real systems
-- How to **measure performance** and prove improvements
+**Analysis Tasks**:
+1. Run with different number of fetch sources (2, 3, 4, 5) — how does total time scale?
+2. Run with different process times (1s, 2s, 3s) — what becomes the bottleneck?
+3. Add timing instrumentation: log exactly when each fetch starts/completes, when each process starts/completes
+4. Create a timeline visualization showing overlap (or lack thereof)
+5. Identify the critical path: which task/stage limits overall execution?
 
-You're ready to build production AI systems with Python 3.14+ asyncio patterns.
+**Expected Observations**:
+- Adding more sources increases fetch time (more tasks)
+- Processing time affects when results are ready
+- Critical path is: max(fetch_times) + max(process_times), not sum
+- Pipeline is NOT fully optimal—there's opportunity for improvement
+
+**Self-Validation**:
+- Can you explain why adding a 4th source didn't increase time much?
+- What would happen if processing was much slower than fetching?
+- How would you fix a bottlenecked pipeline?
+
+---
+
+### Part 3: AI as Optimization Coach (AI Teaching You Production Patterns)
+**Your AI Prompt**:
+> "I built an AI agent that fetches from 3 sources (2-3s each) and processes results (2s each). Total time is ~5 seconds. I added timing instrumentation and identified that fetch is the bottleneck. Teach me about optimization strategies: 1) Early timeout to fail fast, 2) Caching to avoid refetching, 3) Request prioritization (fetch fast sources first), 4) Adaptive batch sizing. Show me code examples for each. Which would help most in my system?"
+
+**AI's Role**: Explain production optimization patterns, show code for each strategy, help you reason about tradeoffs (latency vs memory, throughput vs latency).
+
+**Interactive Moment**: Ask a clarifying question:
+> "You showed me timeout for fast-fail. But what if a source is occasionally slow (97% of time 0.5s, but sometimes 5s)? How do I balance reliability (waiting for slow source) with latency (timing out)? What's the right timeout value?"
+
+**Expected Outcome**: AI clarifies that optimization is contextual—you optimize for your constraints (latency SLO, error budget, resource limits). You learn to make principled engineering decisions, not just chase speedup.
+
+---
+
+### Part 4: You as Architect (Correcting and Extending the System)
+**Setup**: AI generates an optimized version of your system. Your job is to test it, find issues, and teach AI about production realities.
+
+**AI's Initial Code** (ask for this):
+> "Show me an optimized version of the AI agent that: 1) Implements per-source timeout (fail fast on slow sources), 2) Uses asyncio.as_completed() to process results as they arrive (not wait for all), 3) Adds exponential backoff for retries. Explain why this is better than my current version."
+
+**Your Task**:
+1. Run the optimized version. Measure timing.
+2. Compare to your original: is it faster? By how much?
+3. Identify potential issues:
+   - Does early timeout help or hurt? (Might fail unnecessarily)
+   - Does as_completed() improve UX or create race conditions?
+   - Is retry logic robust or does it hang on certain failures?
+4. Teach AI:
+> "Your optimized version is 10% faster but sometimes times out sources that would have succeeded in 3.5 seconds. The timeout you chose (3s) is too aggressive for my use case. How do I determine the right timeout for each source? Should it be static or adaptive based on historical latency?"
+
+**Your Edge Case Discovery**: Ask AI:
+> "What if I want to return 'best effort' results as soon as 2 out of 3 sources complete, instead of waiting for all 3? How would that change the architecture? What problems might that create?"
+
+**Expected Outcome**: You discover that optimization has tradeoffs—faster timeouts mean more failures, early returns mean incomplete results. You learn to think about requirements first, then optimize.
+
+---
+
+### Part 5: Reflect and Synthesize (Student as Thoughtful Engineer)
+**Your Challenge**: Synthesize everything you've learned about asyncio into principle-based thinking.
+
+**Reflection Tasks**:
+1. **Conceptual Mapping**: Draw a diagram showing how Lessons 1-5 concepts connect:
+   - Event loops (Lesson 1) enable TaskGroup (Lesson 2)
+   - await/pause points (Lesson 1) create opportunities for timeouts (Lesson 3)
+   - TaskGroup (Lesson 2) can't help CPU work, so InterpreterPoolExecutor (Lesson 4) needed
+   - All together form the hybrid system (Lesson 5)
+
+2. **Principles Documentation**: Write 3-5 principles you've learned:
+   - Example: "I/O-bound work benefits from concurrency (TaskGroup), CPU-bound work needs parallelism (InterpreterPoolExecutor)"
+   - Example: "Timeouts are defensive—without them, one slow source hangs the whole system"
+   - Example: "Error handling must distinguish transient (retry) vs permanent (fail fast) failures"
+
+3. **Production Checklist**: Create a checklist for building production asyncio systems:
+   - [ ] Event loop management (asyncio.run at top level)
+   - [ ] Structured concurrency (TaskGroup, not raw create_task)
+   - [ ] Timeout controls (prevent infinite waits)
+   - [ ] Error handling (distinguish error types)
+   - [ ] Resource cleanup (executor shutdown, queue drains)
+   - [ ] Performance measurement (baseline vs optimized)
+
+4. **AI Conversation**: Talk to AI about your system as if you were explaining it to a colleague:
+> "Our AI agent works like this: [describe your architecture]. The key insights are: [principles]. I'd optimize by [your optimization strategy]. What are the risks I haven't considered? What production issues might I hit?"
+
+**Expected Outcome**: AI identifies edge cases you missed (concurrency bugs, resource exhaustion, corner cases). You learn from production experience vicariously.
+
+**Deliverable**: Save to `/tmp/capstone_reflection.md`:
+- Concept map (text or ASCII diagram)
+- 5 Core principles you've learned
+- Production checklist
+- Summary of architecture and optimization choices
+- Identified risks and mitigation strategies
+
+---
+
+### Chapter Synthesis: From Concepts to Production
+
+**You've now mastered**:
+- Layer 1 (Foundations): Understanding event loops and coroutines
+- Layer 2 (Collaboration): TaskGroup, gather(), timeout patterns
+- Layer 3 (Intelligence): Hybrid I/O+CPU systems, bottleneck analysis
+- Layer 4 (Integration): Production-grade system with error handling, timeouts, optimization
+
+**You can now**:
+- Build systems that scale to 1000+ concurrent I/O operations
+- Parallelize CPU work across cores despite the GIL
+- Handle real-world failures gracefully
+- Optimize based on bottleneck analysis
+- Explain architectural decisions to colleagues
+
+---
+
+**Time Estimate**: 50-65 minutes (10 min verification, 10 min discovery, 12 min coach interaction, 12 min optimization, 6-15 min reflection)
+
+**Key Takeaway**: Asyncio isn't just syntax—it's a mindset. Event loops, structured concurrency, careful error handling, and measurement are how real systems are built. You've learned the architecture, not just the code.

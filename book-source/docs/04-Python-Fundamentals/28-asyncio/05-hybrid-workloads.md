@@ -82,7 +82,7 @@ differentiation:
   remedial_for_struggling: "Start with simple 2-item fetch+process before scaling; use timing diagrams to visualize I/O and CPU overlap; focus on one pattern (batch OR pipeline) before combining"
 
 # Generation metadata
-generated_by: "lesson-writer v1.0.0"
+generated_by: "content-implementer v1.0.0"
 source_spec: "specs/001-part-4-chapter-28/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -141,7 +141,7 @@ While you're **fetching** item #2, you're **processing** item #1 (CPU cores stay
 
 This is what **hybrid workloads** achieve: **parallel execution of fundamentally different types of work**.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't choose between concurrency and parallelism—you use both. This is why Python 3.14's InterpreterPoolExecutor paired with asyncio creates such powerful systems. The pattern is: "concurrent I/O boundaries" around "parallel CPU cores."
 
@@ -529,7 +529,7 @@ if __name__ == "__main__":
 - **Throughput**: Queues decouple stages, each stage keeps busy
 - **Resource Control**: Queues have max sizes, preventing runaway memory
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Pipeline patterns are everywhere in production systems: data ETL, stream processing, real-time inference. The pattern is simple: decouple stages with queues, run concurrently, and watch throughput improve. This is why asyncio + queues are so powerful for backend systems.
 
@@ -1108,47 +1108,128 @@ Ask your AI Co-Teacher:
 
 ---
 
-## Try With AI
+## Challenge 5: The Hybrid Workload Builder
 
-You've now learned how to build hybrid systems that leverage both I/O concurrency and CPU parallelism. Use your AI co-teacher to deepen your understanding and explore real-world applications.
+This is a **4-part bidirectional learning challenge** where you architect complete production systems combining asyncio, executors, and intelligent orchestration.
 
-### Prompt 1: Understanding (Explain Concepts)
+### Part 1: Discover Independently (Student as Scientist)
+**Your Challenge**: Experience the power of pipelining without AI guidance.
 
-**Tell your AI co-teacher:**
-> "I'm building a system that fetches 10,000 items from an API and processes each with machine learning inference. Explain how I/O concurrency and CPU parallelism would overlap in this system. What would the execution timeline look like?"
+**Deliverable**: Create `/tmp/pipeline_discovery.py` containing:
+1. A 3-stage pipeline (fetch, process, store) each taking 1 second
+2. Sequential version: run all 3 for 5 items — measure time (should be ~15 seconds)
+3. Pipelined version: start fetching item 2 while processing item 1, start storing item 0 while processing item 2 — measure time (should be ~7 seconds)
 
-**Expected Outcome**: AI explains pipelining—while you're fetching batch 2, you're processing batch 1, and storing batch 0. Understanding this overlap is the key to hybrid performance.
+**Expected Observation**:
+- Sequential (stage after stage): ~15 seconds
+- Pipelined (stages overlap): ~7 seconds
+- Lesson: Pipelining nearly halves the time by overlapping stages
 
-### Prompt 2: Application (Generate and Validate Code)
-
-**Tell your AI co-teacher:**
-> "Generate a hybrid system that fetches from 3 different APIs concurrently and processes each with a CPU-intensive task (use time.sleep for simulation). Use asyncio.TaskGroup for fetching and a ThreadPoolExecutor for processing. Include type hints and proper error handling."
-
-**Expected Outcome**: AI generates complete code. You validate by running it and verifying:
-- All 3 fetches happen concurrently (measure time)
-- Processing happens in parallel (monitor CPU usage)
-- Total time is less than sequential (typical speedup: 2-3x)
-
-### Prompt 3: Analysis (Identify Bottlenecks)
-
-**Ask your AI co-teacher:**
-> "Given this hybrid system: fetch takes 1s per item, process takes 2s per item, store takes 0.5s per item. I have 100 items and a 4-core machine. What's the bottleneck? How would you optimize it? What batch size would you choose?"
-
-**Expected Outcome**: AI identifies CPU as bottleneck (process is slowest), recommends batch size based on resource constraints, suggests worker allocation. You learn systematic bottleneck analysis.
-
-### Prompt 4: Design (Architect a Real System)
-
-**Design challenge:**
-> "You're building an AI data pipeline: fetch documents from cloud storage (10s per batch), extract text (CPU-intensive, 5s per document), generate embeddings (CPU-intensive, 2s per document), and store in vector database (0.1s per document). You have a 8-core machine and budget for 10 concurrent cloud operations. Design the optimal architecture: batch sizes, worker counts, and stage orchestration. Ask your AI what trade-offs exist."
-
-**Expected Outcome**: You design a production-grade system, articulate resource constraints, explain optimization choices to AI, receive feedback on architecture. This is what production AI engineering looks like.
+**Self-Validation**:
+- How does pipelining differ from just running stages in parallel?
+- What's the minimum time needed with pipelining? (max stage time + buffer time, not sum of all)
+- When does pipelining help? (When stages have different speeds, creating bottlenecks)
 
 ---
 
-**Safety & Ethics Note**: When using AI to generate parallel/concurrent systems, always verify:
-- No race conditions (shared state protected by locks)
-- Proper timeout handling (system can't hang indefinitely)
-- Resource cleanup (executor shutdown, queue drains)
-- Error resilience (partial failures don't crash the whole system)
+### Part 2: AI as Teacher (Teaching System Design)
+**Your AI Prompt**:
+> "I have a system: fetch documents (2s), extract text (3s), generate embeddings (4s), store results (1s). I run these sequentially: 4 documents = 40 seconds. I tried running them in parallel but wasted resources. Teach me about pipelining. How would I fetch doc 2 while extracting doc 1 while generating embeddings for doc 0? Show me the architecture using asyncio + executors. What's the optimal pipeline depth?"
 
-Ask your AI co-teacher: "Are there any race conditions or resource leaks in this code?" when validating generated systems.
+**AI's Role**: Explain pipelining concept, show queue-based architecture, discuss how to balance stage speeds, and explain resource tradeoffs.
+
+**Interactive Moment**: Ask a clarifying question:
+> "You used a Queue to buffer between stages. What happens if the extract stage is much slower than fetch? Does the queue grow infinitely? How do I prevent memory exhaustion? What's backpressure?"
+
+**Expected Outcome**: AI clarifies queue dynamics and backpressure concepts. You understand that pipelines need flow control, not just throughput maximization.
+
+---
+
+### Part 3: You as Teacher (Discovering Bottleneck Optimization)
+**Setup**: AI generates a simple pipeline. Your job is to identify bottlenecks and teach AI how to optimize.
+
+**AI's Initial Code** (ask for this):
+```python
+import asyncio
+from concurrent.futures import ProcessPoolExecutor
+import time
+
+async def fetch(item_id: int) -> str:
+    await asyncio.sleep(1)  # I/O: 1s
+    return f"Data-{item_id}"
+
+def process(data: str) -> str:
+    # time.sleep(2)  # CPU: 2s (simulated)
+    return f"Processed-{data}"
+
+async def store(result: str) -> None:
+    await asyncio.sleep(0.5)  # I/O: 0.5s
+    return f"Stored-{result}"
+
+async def pipeline():
+    loop = asyncio.get_event_loop()
+
+    with ProcessPoolExecutor(max_workers=4) as executor:
+        for i in range(10):
+            data = await fetch(i)
+            processed = await loop.run_in_executor(executor, process, data)
+            await store(processed)
+
+    print("Done")
+
+asyncio.run(pipeline())
+```
+
+**Your Task**:
+1. Run this code. Measure time. (Should be sequential: ~35 seconds for 10 items)
+2. Identify the problem: stages run one-at-a-time, no parallelism
+3. Teach AI:
+> "This takes 35 seconds sequentially. I want it pipelined: fetch multiple items while processing previous ones. Show me how to use asyncio.Queue to buffer between fetch and process, and between process and store. How deep should the queues be?"
+
+**Your Edge Case Discovery**: Ask AI:
+> "What if fetch is fast (0.5s) but process is slow (3s)? Process becomes the bottleneck. How many concurrent process workers should I have? What if I can't increase workers due to memory limits? How do I measure which stage is the bottleneck?"
+
+**Expected Outcome**: You discover bottleneck analysis—profiling each stage, identifying slowest link, optimizing for throughput (not latency). You teach AI how production systems think about optimization.
+
+---
+
+### Part 4: Build Production Artifact (Student as Engineer)
+**Your Capstone for This Challenge**: Build an optimized end-to-end data pipeline.
+
+**Specification**:
+- 3-stage pipeline: Fetch, Process, Store
+- Fetch 12 items from API simulation (asyncio.sleep 0.5-1.5s each)
+- Process each with CPU work (simulated with time.sleep, 1-2s each)
+- Store results (asyncio.sleep 0.1-0.3s each)
+- Stages connected with asyncio.Queue (implement backpressure)
+- Measure: throughput (items/second), latency (item start to finish), bottleneck identification
+- Return: `{item: (fetch_ms, process_ms, store_ms, e2e_ms)}`, plus throughput metrics
+- Type hints throughout
+
+**Deliverable**: Save to `/tmp/data_pipeline.py`
+
+**Testing Your Work**:
+```bash
+python /tmp/data_pipeline.py
+# Expected output:
+# Processed 12 items in ~12 seconds (pipelined, not ~24s sequential)
+# Throughput: ~1 item/second
+# Bottleneck: Process stage (slowest at 1-2s per item)
+# Fetch queue depth: varies (shows backpressure)
+# Pipeline efficiency: ~75% (good sign of effective overlap)
+```
+
+**Validation Checklist**:
+- [ ] Code runs without deadlocks or race conditions
+- [ ] Stages run concurrently (not sequentially)
+- [ ] Queues implement backpressure (don't grow unbounded)
+- [ ] Total time < sequential time by at least 20%
+- [ ] Bottleneck identified correctly (slowest stage)
+- [ ] Type hints complete
+- [ ] Production-ready: proper cleanup, error handling, queue drains
+
+---
+
+**Time Estimate**: 35-42 minutes (5 min discover, 8 min teach/learn, 10 min edge cases, 12-19 min build artifact)
+
+**Key Takeaway**: You've mastered production system design. Pipelining, queues, backpressure, and bottleneck analysis are the foundation of real-world AI data systems.

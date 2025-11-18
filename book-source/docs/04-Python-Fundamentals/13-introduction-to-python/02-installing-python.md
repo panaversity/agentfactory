@@ -33,7 +33,7 @@ differentiation:
   extension_for_advanced: "Explore Python installation from source code; compare package managers across platforms"
   remedial_for_struggling: "Focus on Windows installation first; use step-by-step screenshots"
 
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/016-part-4-chapter-13/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -270,59 +270,95 @@ If both work and show correct output, your installation is correct. Done.
 
 ---
 
-## Try With AI
+## Try With AI: Installation Troubleshooting Partnership
 
-Use your AI companion (Claude Code or Gemini CLI) for these prompts.
+Installation errors are frustrating. This exercise teaches you to diagnose problems systematically—with AI as your troubleshooting partner.
 
-**Prompt 1: Recall – Where and Why**
+### Part 1: Predict the Problem (Your Turn First)
 
+**Before asking AI anything**, analyze this scenario:
+
+A classmate sends you this message:
 ```
-Where did you download Python from? Why does the lesson specify python.org (not some random website)?
+I installed Python on Windows. When I run `python --version` in Command Prompt, I get:
+
+'python' is not recognized as an internal or external command...
 ```
 
-**Expected Outcome**: You recall the official source. You understand why downloading from the official website matters (authenticity, security).
+**Your diagnostic thinking**:
+1. What do you think went wrong? (Write down your hypothesis)
+2. What questions would you ask your classmate?
+3. What's your suggested fix?
+
+*Write these down before moving to Part 2.*
 
 ---
 
-**Prompt 2: Understand – Version Requirements**
+### Part 2: Compare with AI's Diagnosis
 
-```
-The lesson says "Python 3.14+ is required." Explain:
-1. Why do we need a specific version (why not any Python 3.x)?
-2. What does "3.14+" mean? (What's the "+" symbol mean?)
-3. How did you check your version?
-```
+Now share the same error message with your AI companion:
 
-**Expected Outcome**: You understand semantic versioning (3.14 means major.minor). You see "3.14+" as "version 3.14 or higher". You can explain why version matters.
+> "A Windows user installed Python from python.org but gets this error when running `python --version`: 'python' is not recognized as an internal or external command'. What's the likely cause and solution?"
 
----
-
-**Prompt 3: Apply – Troubleshoot an Error**
-
-```
-Imagine a friend says: "I installed Python but when I run `python --version` I get an error: 'python: command not found'."
-
-What would you tell them to do? You're the expert now!
-Explain the likely cause and solution.
-```
-
-**Expected Outcome**: You apply your troubleshooting knowledge to a real problem. You practice explaining technical solutions—a valuable skill.
+**Your task**: Compare AI's diagnosis to yours.
+- Did you identify the same root cause?
+- Did AI suggest something you didn't think of?
+- Which diagnosis is more complete—yours or AI's?
 
 ---
 
-**Prompt 4: Analyze – Verification Strategies**
+### Part 3: Student Teaches AI (Edge Case Discovery)
 
-```
-We verified Python installation with TWO commands:
-1. `python --version`
-2. `python -c "print('Hello')"`
+AI gave you a solution. But every platform has quirks.
 
-Why use two commands instead of just one?
-What does each command tell us?
+Tell AI about an edge case:
 
-Ask your AI: "What's the difference between `python --version` and running a test print statement?"
-Think about: What information does each provide? Why do both matter?
-```
+> "Your solution assumed Python wasn't added to PATH during installation. But what if the user DID check 'Add Python to PATH' and it still doesn't work? What are 2-3 other reasons this error could happen?"
 
-**Expected Outcome**: You understand that version checking and functionality testing are different. You learn about verification strategies—a professional skill for validating that software works.
+**Your task**: Evaluate AI's response.
+- Did it identify edge cases you didn't know existed?
+- Are the solutions platform-specific (Windows registry, environment variables)?
+- Can you explain WHY each edge case causes this error?
+
+This teaches AI about the troubleshooting complexity you're experiencing.
+
+---
+
+### Part 4: Build a Troubleshooting Guide Together
+
+Now iterate with AI to create something reusable.
+
+> "Let's create a step-by-step troubleshooting guide for 'python: command not found' errors on Windows. Include: (1) Most common cause, (2) How to verify PATH, (3) How to fix if PATH is wrong, (4) Alternative solutions if PATH is correct."
+
+**Your task**: Review AI's guide.
+- Is each step clear enough for a beginner?
+- Are there missing verification steps?
+- Suggest improvements: "This step is unclear because..."
+
+Iterate 2-3 times until the guide is genuinely helpful.
+
+---
+
+### Part 5: Validate Your Understanding
+
+Final check—can you troubleshoot independently now?
+
+**Scenario**: A Mac user says `python3 --version` shows "Python 2.7.x" instead of Python 3.14.
+
+**Your task** (WITHOUT asking AI first):
+1. What's the problem?
+2. What's your diagnosis?
+3. What's your solution?
+
+*Write your answer.*
+
+Now ask AI:
+> "Here's my diagnosis for this Mac Python version issue: [paste your answer]. Is my reasoning correct? What did I miss?"
+
+**Outcome**: If you got it mostly right, you've learned to troubleshoot independently. If not, you learned where your mental model has gaps.
+
+---
+
+**Time**: 45-60 minutes total
+**Outcome**: You've practiced systematic troubleshooting, taught AI about edge cases, built a reusable resource, and validated your independent problem-solving ability.
 

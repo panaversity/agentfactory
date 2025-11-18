@@ -75,7 +75,7 @@ differentiation:
   remedial_for_struggling: "Start with simple 2-3 task examples before scaling to 10; use timing diagrams to visualize concurrent execution"
 
 # Generation metadata
-generated_by: "lesson-writer v1.0.0"
+generated_by: "content-implementer v1.0.0"
 source_spec: "specs/001-part-4-chapter-28/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -259,7 +259,7 @@ results = await asyncio.gather(
 
 It's much more concise than creating and awaiting individual tasks.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize which pattern to use—you understand the tradeoff. `create_task()` gives you fine-grained control (inspect tasks, cancel them individually). `gather()` is cleaner for "run these concurrently and give me all results." Syntax is cheap; architectural clarity is gold.
 
@@ -789,44 +789,114 @@ Now you understand three approaches. How do you choose?
 
 ---
 
-## Try With AI
+## Challenge 2: The Concurrent Tasks Builder
 
-Now you're ready to practice building concurrent systems. Work through these prompts with your AI companion tool (Claude Code, Gemini CLI, or ChatGPT).
+This is a **4-part bidirectional learning challenge** where you master task scheduling patterns through collaborative exploration.
 
-### Prompt 1: Understanding (Understand Level)
+### Part 1: Discover Independently (Student as Scientist)
+**Your Challenge**: Explore the difference between sequential and concurrent patterns without AI.
 
-Ask your AI:
+**Deliverable**: Create `/tmp/task_patterns.py` containing:
+1. A sequential version: `await fetch_api("A", 1); await fetch_api("B", 1)` — measure time (should be ~2s)
+2. A concurrent version using `asyncio.create_task()` — schedule both tasks, then await them — measure time (should be ~1s)
+3. A third version using `asyncio.gather()` — same as concurrent but more concise
 
-> "What's the difference between awaiting a coroutine immediately (`await fetch()`) vs scheduling it with create_task() first (`task = asyncio.create_task(fetch()); await task`)? How does this enable concurrency?"
+**Expected Observation**:
+- Sequential: ~2 seconds (tasks run one after another)
+- Concurrent: ~1 second (tasks run simultaneously)
+- Gather: ~1 second (but cleaner syntax)
 
-**Expected Outcome**: Your AI explains that `create_task()` schedules the coroutine to run in the background immediately, while the event loop executes other tasks while waiting. With `await fetch()`, you block until that specific coroutine finishes.
-
----
-
-### Prompt 2: Application (Apply Level)
-
-Tell your AI:
-
-> "I need to fetch data from 5 different APIs concurrently. Each API call takes 2 seconds. Generate Python code using `asyncio.gather()` that fetches all 5 APIs in parallel and returns the results. Include type hints and timing measurements to verify concurrency works."
-
-**Expected Outcome**: Your AI generates code with 5 async functions, uses `asyncio.gather()` to run them concurrently, and includes timing that shows ~2 seconds total (not 10 seconds). Verify the code runs and achieves the speedup.
-
----
-
-### Prompt 3: Analysis (Analyze Level)
-
-Ask your AI:
-
-> "Show me the same 5-API fetching example using two approaches: (1) `asyncio.gather(return_exceptions=True)` and (2) `asyncio.TaskGroup()`. Explain when you'd choose each. What's the difference in behavior if one API times out?"
-
-**Expected Outcome**: Your AI shows both implementations and explains that `gather()` returns exceptions in the results list (partial success), while `TaskGroup()` cancels all remaining tasks on first failure (all-or-nothing semantics). You understand the architectural tradeoff.
+**Self-Validation**:
+- Can you explain why concurrent is faster? (Tasks overlap in execution time)
+- What happens if you schedule 10 tasks instead of 2? (Still ~1s, not ~10s)
+- How would error handling differ in sequential vs concurrent? (Sequential: first error stops all; concurrent: might continue)
 
 ---
 
-### Prompt 4: Synthesis (Analyze/Synthesize Level)
+### Part 2: AI as Teacher (Teaching You Patterns)
+**Your AI Prompt**:
+> "I want to run 10 database queries concurrently, each taking 1 second. I tried wrapping them in `async def` and using `await` inside a for loop, but it still takes 10 seconds. Teach me the difference between 'awaiting immediately' and 'scheduling first.' Show me code using both `asyncio.gather()` and `asyncio.create_task()`. Which should I use when?"
 
-Design challenge:
+**AI's Role**: Explain the conceptual difference (immediate await blocks; scheduling creates pending tasks), show both patterns, and guide you on when each applies.
 
-> "You're building a weather dashboard that fetches from 5 services. Some might be down, some might be slow (up to 30s). You want to display the best data available within 10 seconds. Ask your AI: What concurrency pattern would you choose (gather/TaskGroup/create_task), and why? How would you implement timeout handling?"
+**Interactive Moment**: Ask a clarifying question:
+> "You showed me `asyncio.gather(*[task() for task in ...]`. Explain exactly what gather() does—does it start the tasks? When do they actually start running?"
 
-**Expected Outcome**: Your AI discusses using `gather()` with timeout and `return_exceptions` to get best-effort data within time limit. You understand that resilience (tolerating partial failures) is sometimes more important than atomicity (all-or-nothing).
+**Expected Outcome**: AI clarifies that gather() takes coroutines (not tasks) and schedules them internally, then awaits all their results. You understand gather() as a convenience wrapper.
+
+---
+
+### Part 3: You as Teacher (Discovering Edge Cases)
+**Setup**: AI generates code using TaskGroup. Your job is to explore behavior differences and teach AI.
+
+**AI's Initial Code** (ask for this):
+```python
+async def fetch_with_error(name: str, delay: float, fail: bool = False):
+    await asyncio.sleep(delay)
+    if fail:
+        raise ValueError(f"{name} failed")
+    return f"Data: {name}"
+
+async def main():
+    async with asyncio.TaskGroup() as tg:
+        t1 = tg.create_task(fetch_with_error("API-1", 1))
+        t2 = tg.create_task(fetch_with_error("API-2", 1, fail=True))
+        t3 = tg.create_task(fetch_with_error("API-3", 1))
+    print([t1.result(), t2.result(), t3.result()])
+
+asyncio.run(main())
+```
+
+**Your Task**:
+1. Run this code. What happens? (Should fail with exception from API-2, cancels API-3)
+2. Compare to the same code using `asyncio.gather(return_exceptions=True)` — what's the difference?
+3. Teach AI:
+> "TaskGroup cancelled API-3 even though it was running. But I want API-1 and API-3 to complete even if API-2 fails. Show me gather() with return_exceptions=True and explain why it's different. When would you choose TaskGroup (all-or-nothing) vs gather (best-effort)?"
+
+**Your Edge Case Discovery**: Ask AI:
+> "What happens if I set a timeout on gather()? Like `asyncio.wait_for(asyncio.gather(...), timeout=2)`. How does this interact with return_exceptions?"
+
+**Expected Outcome**: You discover the difference between fail-fast (TaskGroup) and resilient (gather) patterns, and learn when each applies in production.
+
+---
+
+### Part 4: Build Production Artifact (Student as Engineer)
+**Your Capstone for This Challenge**: Build a real-world task coordinator.
+
+**Specification**:
+- Fetch from 8 external services with varied latency (use asyncio.sleep):
+  - 3 services: 0.5s each
+  - 3 services: 1.5s each
+  - 2 services: 2.5s each
+- 2 services fail randomly (raise exception)
+- Use `asyncio.gather(return_exceptions=True)` for resilience
+- Include timeout: if total fetch takes >5 seconds, cancel remaining tasks
+- Return: (successful_results, failed_services, timed_out_flag)
+- Type hints throughout
+
+**Deliverable**: Save to `/tmp/task_coordinator.py`
+
+**Testing Your Work**:
+```bash
+python /tmp/task_coordinator.py
+# Expected output:
+# Successfully fetched: 6 services
+# Failed services: 2 (handled gracefully)
+# Total time: ~2.5 seconds (longest service)
+# Timeout triggered: False (or True if >5s)
+```
+
+**Validation Checklist**:
+- [ ] Code runs without raising exceptions
+- [ ] All 8 services attempted (gather runs all)
+- [ ] Failed services caught by return_exceptions=True
+- [ ] Total time ~2.5s (longest latency, not sum)
+- [ ] Timeout mechanism works (can adjust latency to test)
+- [ ] Type hints complete
+- [ ] Follows production pattern (asyncio.run at top, gather for coordination)
+
+---
+
+**Time Estimate**: 30-35 minutes (5 min discover, 8 min teach/learn, 8 min edge cases, 9-14 min build artifact)
+
+**Key Takeaway**: You've mastered three task coordination patterns and understand when to choose resilience (gather) over atomicity (TaskGroup).

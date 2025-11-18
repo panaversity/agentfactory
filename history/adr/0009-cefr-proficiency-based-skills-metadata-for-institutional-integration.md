@@ -103,7 +103,7 @@ Example:
 
 ### Negative
 
-1. **Metadata Overhead**: lesson-writer must tag every skill with CEFR + Bloom's + category (adds 10-15 minutes per lesson)
+1. **Metadata Overhead**: content-implementer must tag every skill with CEFR + Bloom's + category (adds 10-15 minutes per lesson)
 
 2. **Learning Curve**: Authors unfamiliar with CEFR need training (mitigated: skills-proficiency-mapper skill provides guidance)
 

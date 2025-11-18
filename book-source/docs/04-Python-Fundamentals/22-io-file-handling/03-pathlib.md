@@ -84,7 +84,7 @@ differentiation:
   remedial_for_struggling: "Focus on basic Path() and exists() checks first; practice / operator before glob patterns; use reference solutions for security section"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/specs/001-part-4-chapter-22/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -717,30 +717,94 @@ source.copy_into(Path("backup/"))  # Creates backup/source.txt
 
 **For this chapter**: We focus on the core pathlib patterns that work in Python 3.4+. When you're ready to use Python 3.14+ exclusively, explore these new methods with your AI tool.
 
-## Try With AI
+## Try With AI: The Cross-Platform Path Builder
 
-Use your preferred AI companion tool (Claude Code, Gemini CLI, or ChatGPT web) to deepen your understanding of pathlib and explore advanced patterns.
+### Part 1: Solve a Problem Using String Paths (Your Turn First)
 
-### Prompt 1: Remember and Understand (Foundational)
+**Before asking AI about pathlib**, try building a file path using string concatenation:
 
-**Ask your AI**: "What is pathlib and why is it better than using os.path or string concatenation for file paths?"
+**Problem**: You need to organize backup files like this:
+```
+backups/
+├── 2025/
+│   ├── january/
+│   │   └── data.txt
+│   └── february/
+│       └── data.txt
+└── 2024/
+    └── december/
+        └── data.txt
+```
 
-**Expected Outcome**: You'll understand pathlib solves cross-platform path problems elegantly and why object-oriented path handling is superior to string manipulation.
+**Your task**: Write a Python script that:
+1. Creates this directory structure using **string paths only** (no pathlib)
+2. Uses something like `os.mkdir()` or string concatenation with `/` or `\`
+3. Document the **problems** you encounter:
+   - What happens if you run it on Windows vs Mac/Linux?
+   - How do you handle the backslash vs forward slash issue?
+   - What if a parent directory doesn't exist?
 
-### Prompt 2: Apply (Practical Implementation)
+**Deliverable**: A file `path_comparison.md` describing:
+- The string-based approach you tried
+- All the issues you discovered
+- How many lines of error-handling code you needed
 
-**Ask your AI**: "Write code that creates a directory structure with subdirectories for each month of 2025, then tells me how many directories were created."
+---
 
-**Expected Outcome**: You'll see pathlib's power for organizing data programmatically and understand `.mkdir(parents=True)` in a realistic context.
+### Part 2: AI Shows You a Better Way (Discovery)
 
-### Prompt 3: Analyze (Deeper Understanding)
+**Share your string-based approach with AI:**
 
-**Ask your AI**: "Compare these three approaches: (1) hardcoding paths like 'data/notes/file.txt', (2) using os.path.join(), (3) using pathlib with the / operator. Which works on all operating systems and why?"
+> "Here's my attempt to create nested directories using string paths [paste your code]. What problems do I have? Now show me how to do the same thing with pathlib. Explain the `/` operator and why `Path.mkdir(parents=True, exist_ok=True)` is better than my approach."
 
-**Expected Outcome**: You'll understand the historical evolution of path handling in Python and why pathlib is the modern standard adopted by professional developers.
+**Your evaluation**:
+- Is the pathlib version shorter and clearer?
+- Does it work the same on Windows, Mac, and Linux?
+- Can you understand why `/` is used instead of string concatenation?
 
-### Prompt 4: Synthesize and Create (Cognitive Closure)
+---
 
-**Ask your AI**: "Design a file management system that finds all notes in a directory tree, validates they're not trying to escape the notes directory using path traversal, and displays them organized by type. What pathlib methods would you use?"
+### Part 3: Student Challenges AI—Cross-Platform Edge Cases (Debugging)
 
-**Expected Outcome**: You've connected pathlib to security, file discovery, and real-world application patterns. You're ready for Lesson 4 (structured data formats) and especially Lesson 5 (Capstone Note-Taking App) which heavily uses pathlib for organizing files by category.
+**Test the AI's solution:**
+
+> "Let me make sure I understand pathlib correctly:
+> 1. If I use `Path('data') / 'notes' / 'file.txt'`, will it work on Windows (with backslashes) and Mac (with forward slashes)?
+> 2. How would I get just the filename from a full path like `Path('/home/user/documents/notes.txt')`?
+> 3. What does `.resolve()` do, and when would I use it?
+> 4. How do I check if a path is a file vs a directory?
+>
+> Show me code examples for each."
+
+**Your debugging**: Create a test script `pathlib_examples.py` that verifies each concept works as the AI described.
+
+---
+
+### Part 4: Build a Cross-Platform File Organizer (Convergence)
+
+**Build a complete utility:**
+
+> "Help me write a file organizer that:
+> 1. Takes a source directory as input
+> 2. Creates a backup directory structure: `backups/YYYY/MONTH/` (example: `backups/2025/november/`)
+> 3. Finds all `.txt` and `.md` files in the source directory
+> 4. Copies them to the backup organized by year/month
+> 5. Uses pathlib exclusively (no os.path)
+> 6. Works identically on Windows, Mac, and Linux
+> 7. Shows helpful output: 'Organized 12 files into 3 directories'
+>
+> The code should be production-ready with pathlib methods for:
+> - Creating directories with `mkdir(parents=True, exist_ok=True)`
+> - Finding files with `.glob()` patterns
+> - Extracting filenames with `.name` and `.suffix`
+> - Joining paths with the `/` operator"
+
+**Refinement**:
+- Add recursive search: find files in subdirectories too using `**/*.txt` glob pattern
+- Implement file validation: only copy files under 10MB
+- Add a status report showing how many files were organized by type
+
+**Time**: 30-40 min
+**Outcome**: Working cross-platform file organizer using pathlib exclusively
+
+---

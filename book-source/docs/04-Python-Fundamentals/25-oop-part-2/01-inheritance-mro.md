@@ -88,7 +88,7 @@ differentiation:
   remedial_for_struggling: "Focus on single inheritance first; use simplified diamond diagrams before exploring full MRO"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/020-oop-part-1-2/spec-chapter-25.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -181,7 +181,7 @@ print(car.describe())  # A Toyota with 4 doors
 
 The key insight: **`super()` respects the parent's initialization**, ensuring both parent and child set up their state correctly. This is critical for avoiding bugs.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, inheritance hierarchies model agent types and capabilities. Understanding super() prevents subtle bugs where initialization gets skipped. In multi-agent systems, a misconfigured agent might seem to have a capability it doesn't actually have because its parent's initialization was skipped.
 
@@ -325,7 +325,7 @@ The MRO tells us: Check D, then B, then C, then A, then object. That's the order
 2. **Inheritance order preserved** — If a class inherits from (B, C), search B before C
 3. **No class visited twice** — Once A is in the search order, it appears exactly once, at the deepest level
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > C3 Linearization prevents the chaos of older languages where the diamond problem could cause the same parent method to be called twice. Python solved this elegantly: every class appears exactly once, in a consistent order. This matters profoundly in AI agent hierarchies where you might have BaseAgent → SpecializedAgent → (ChatMixin, ToolMixin) → SomeAgent. Without C3, you'd have ambiguous behavior.
 
@@ -524,73 +524,325 @@ print(sports.describe())  # Vehicle: Ferrari (V12), 2 doors, 220 mph top speed
 
 ---
 
-## Try With AI
+## Challenge: Build an Agent Hierarchy System
 
-Use your preferred AI companion (Claude Code, Gemini CLI, or ChatGPT web) to complete these prompts in order. They progress from recalling basic syntax to analyzing design decisions.
-
-### Prompt 1: Recall - Inheritance Syntax
-
-**Copy this prompt to your AI:**
-
-```
-Create an Employee base class with name (string) and salary (float).
-Create a Manager subclass that adds department (string).
-Use super().__init__() in Manager's constructor to call the parent constructor.
-Both classes should have a describe() method.
-Create instances and test them.
-```
-
-**Expected Outcome**: Working code with proper super() usage where Manager can call parent's __init__ and override describe().
+In this challenge, you'll move through all four roles: discovering requirements independently, learning from AI, challenging AI's understanding, and building production code. The result: a reusable agent framework demonstrating inheritance and MRO in professional AI systems.
 
 ---
 
-### Prompt 2: Understand - The super() Function
+## Part 1: Student Discovers Inheritance Problems in Agent Systems
 
-**Copy this prompt to your AI:**
+**Your Role**: System architect identifying design gaps
 
+### Discovery Exercise: Build an Agent Framework Without Inheritance
+
+Imagine you're building a multi-agent system. Each agent type (ChatAgent, CodeAgent, DataAgent) needs to process messages, but if you don't use inheritance, you'll duplicate code.
+
+**Stage 1: The Duplication Problem**
+
+Create three agent classes WITHOUT inheritance:
+
+```python
+# agents.py - Procedural approach (WRONG)
+class ChatAgent:
+    def __init__(self, name: str, model: str):
+        self.name = name
+        self.model = model
+        self.messages_processed = 0
+
+    def process(self, message: str) -> str:
+        self.messages_processed += 1
+        return f"ChatAgent: Processing '{message}'"
+
+    def get_status(self) -> dict:
+        return {"name": self.name, "type": "chat", "processed": self.messages_processed}
+
+
+class CodeAgent:
+    def __init__(self, name: str, model: str):
+        self.name = name
+        self.model = model
+        self.messages_processed = 0
+
+    def process(self, message: str) -> str:
+        self.messages_processed += 1
+        return f"CodeAgent: Analyzing '{message}'"
+
+    def get_status(self) -> dict:
+        return {"name": self.name, "type": "code", "processed": self.messages_processed}
+
+
+class DataAgent:
+    def __init__(self, name: str, model: str):
+        self.name = name
+        self.model = model
+        self.messages_processed = 0
+
+    def process(self, message: str) -> str:
+        self.messages_processed += 1
+        return f"DataAgent: Analyzing data '{message}'"
+
+    def get_status(self) -> dict:
+        return {"name": self.name, "type": "data", "processed": self.messages_processed}
 ```
-Why do we use super().__init__(self, ...) instead of calling Parent.__init__(self, ...)?
-Show me a concrete example where super() is critical (hint: multiple inheritance).
-Explain what problem it solves.
-```
 
-**Expected Outcome**: Clear explanation of why super() handles MRO correctly while direct class calling bypasses it, including a multiple inheritance example.
+**Your task 1**: Copy this code and run it. Document in `agent_duplication_analysis.md`:
+- How many lines of duplicate code exist?
+- If you find a bug in the `__init__` method, how many places need fixing?
+- If you need to add a new agent type (ImageAgent), how many lines of code must you write?
+- What pattern do you notice?
+
+**Stage 2: Imagine 100 Agent Types**
+
+**Your task 2**: Predict in your analysis file:
+- If there were 100 different agent types, how many times would `__init__` be duplicated?
+- If you discovered a bug in message processing logic, how risky would it be to fix?
+- What feature of Python could solve this problem?
+
+### Your Discovery Document
+
+Create `inheritance_problem_statement.md` with:
+
+1. **The Code Duplication Problem**: Explain what you observed
+2. **The Scaling Problem**: What happens at 100 agent types?
+3. **The Bug Risk**: Why fixing one method in one class is risky
+4. **Your Prediction**: What language feature would solve this?
 
 ---
 
-### Prompt 3: Apply - Diamond Inheritance
+## Part 2: AI Teaches Inheritance and MRO as the Solution
 
-**Copy this prompt to your AI:**
+**Your Role**: Student learning from AI Teacher
 
+### AI Teaching Prompt
+
+Ask your AI companion:
+
+> "I built a multi-agent system with ChatAgent, CodeAgent, and DataAgent. Each has duplicate `__init__`, `process()`, and `get_status()` methods. The code is unmaintainable.
+>
+> How would inheritance solve this? Explain:
+> 1. What is a base class? How does it eliminate duplication?
+> 2. How do subclasses inherit from a base class and add specialized behavior?
+> 3. What is super() and why is it critical for initialization?
+> 4. If I have multiple parents (multiple inheritance), how does Python know which parent method to call? What is Method Resolution Order (MRO)?
+> 5. Show me the same agent system using inheritance with a BaseAgent class."
+
+### Expected AI Response Summary
+
+AI will explain:
+- **Base Class**: A template that defines common attributes and methods
+- **Subclass**: Inherits everything from base, adds specialization
+- **super()**: Gateway to parent class methods—ensures correct initialization
+- **MRO**: Python's algorithm for searching parent classes in hierarchies
+- **Inheritance code**: Typically 40% less duplication
+
+**AI will show code like**:
+
+```python
+class BaseAgent:
+    """All agents share this"""
+    def __init__(self, name: str, model: str):
+        self.name = name
+        self.model = model
+        self.messages_processed = 0
+
+    def process(self, message: str) -> str:
+        """Subclasses override this"""
+        raise NotImplementedError("Subclasses must implement process()")
+
+    def get_status(self) -> dict:
+        """Common for all agents"""
+        return {"name": self.name, "processed": self.messages_processed}
+
+
+class ChatAgent(BaseAgent):
+    """Specializes BaseAgent for chat"""
+    def process(self, message: str) -> str:
+        self.messages_processed += 1
+        return f"ChatAgent: {message}"
+
+
+# Same pattern for CodeAgent, DataAgent - much less code!
 ```
-Create classes: Device (with power_on() method),
-Phone (Device, adds call()),
-Computer (Device, adds compute()),
-Smartphone (Phone, Computer, inherits from both).
-Override power_on() in Phone and Computer with different messages.
-Call phone_obj.power_on() and show the MRO with .mro() method.
-Explain which power_on() was called and why.
-```
 
-**Expected Outcome**: Working diamond inheritance with proper MRO output showing Device appears once and left parent (Phone) is searched before right parent (Computer).
+### Convergence Activity
+
+After AI explains, verify understanding:
+
+> "In your inheritance solution, explain how 100 agent types would inherit from BaseAgent. Show me how adding a new bug fix to `get_status()` would automatically apply to all 100 agent types. Walk me through the MRO for a Smartphone class that inherits from Phone and Computer (diamond inheritance)."
+
+### Deliverable
+
+Write 1-paragraph summary: "How Inheritance Solves Agent Duplication" explaining the base class pattern and why MRO prevents the diamond problem.
 
 ---
 
-### Prompt 4: Analyze - When Inheritance is Wrong
+## Part 3: Student Challenges AI with Design Edge Cases
 
-**Copy this prompt to your AI:**
+**Your Role**: Student testing AI's understanding
 
-```
-I want to design a software with Shape, Circle, Rectangle, and Color.
-Should Circle inherit from Shape?
-Should Circle inherit from Color?
-For each decision, explain if it's right or wrong and why.
-What is the "is-a" vs "has-a" principle?
-```
+### Challenge Design Scenarios
 
-**Expected Outcome**: Analysis showing Circle **is-a** Shape (correct inheritance) but Circle **has-a** Color (should be composition), with explanation of design principles.
+Ask AI to handle these cases:
+
+#### Challenge 1: super() Initialization Chain
+
+> "I have this hierarchy: BaseAgent → SpecializedAgent → CustomChatAgent (3-level inheritance). Write __init__ methods using super() correctly so all three initialize properly. Then show what happens if the middle class (SpecializedAgent) forgets to call super().__init__()."
+
+**Expected learning**: AI explains the initialization chain and why forgetting super() breaks inheritance.
+
+#### Challenge 2: Diamond Inheritance with MRO
+
+> "Create Processor (has process() method), TextProcessor (Processor, adds text logic), CodeProcessor (Processor, adds code logic), UniversalProcessor (TextProcessor, CodeProcessor). Implement process() in all classes using super(). Call .mro() and explain the search order. What problem does C3 Linearization solve?"
+
+**Expected learning**: AI explains why C3 ensures no class is visited twice and why order matters.
+
+#### Challenge 3: MRO in Multi-Agent Coordination
+
+> "I have BaseAgent with execute(). I want ChatMixin (adds chat capability), ToolMixin (adds tool capability), and SmartAgent(ChatMixin, ToolMixin, BaseAgent). All have different execute() logic. Show the MRO and explain which execute() runs. What if the order matters—how would I change it?"
+
+**Expected learning**: AI shows that inheritance order in `class SmartAgent()` determines search priority.
+
+### Deliverable
+
+Document your three challenges, AI's responses, and analysis of whether AI's explanations were complete and accurate.
 
 ---
 
-**Safety Note**: When AI generates inheritance hierarchies, always verify the MRO with `.mro()` method. Unexpected inheritance orders signal design problems. Test your inheritance code before using it in larger systems.
+## Part 4: Build Agent Hierarchy Framework for Production
+
+**Your Role**: Knowledge synthesizer creating reusable code
+
+### Your Agent Framework
+
+Create `agent_framework.py` with a complete, production-ready agent system:
+
+```python
+from abc import ABC, abstractmethod
+from typing import Any
+
+
+class BaseAgent(ABC):
+    """Foundation for all agent types - defines the contract"""
+
+    def __init__(self, name: str, model: str) -> None:
+        """Initialize agent with common attributes"""
+        self.name = name
+        self.model = model
+        self._message_history: list[dict[str, Any]] = []
+        self._performance_metrics = {
+            "messages_processed": 0,
+            "errors": 0,
+            "avg_latency_ms": 0.0
+        }
+
+    @abstractmethod
+    def process(self, message: str) -> str:
+        """Process a message - subclasses must implement"""
+        pass
+
+    def get_status(self) -> dict[str, Any]:
+        """Report agent status - common to all agents"""
+        return {
+            "name": self.name,
+            "model": self.model,
+            "type": self.__class__.__name__,
+            "metrics": self._performance_metrics.copy()
+        }
+
+    def _log_message(self, message: str, response: str) -> None:
+        """Log interaction - shared by all agents"""
+        self._message_history.append({
+            "message": message,
+            "response": response
+        })
+        self._performance_metrics["messages_processed"] += 1
+
+
+class ChatAgent(BaseAgent):
+    """Specializes BaseAgent for conversational AI"""
+
+    def process(self, message: str) -> str:
+        response = f"Chat: {message} (using {self.model})"
+        self._log_message(message, response)
+        return response
+
+
+class CodeAgent(BaseAgent):
+    """Specializes BaseAgent for code analysis"""
+
+    def process(self, message: str) -> str:
+        response = f"Code Analysis: {message} (using {self.model})"
+        self._log_message(message, response)
+        return response
+
+
+class DataAgent(BaseAgent):
+    """Specializes BaseAgent for data processing"""
+
+    def process(self, message: str) -> str:
+        response = f"Data Processing: {message} (using {self.model})"
+        self._log_message(message, response)
+        return response
+
+
+# Verify it works
+if __name__ == "__main__":
+    # Create agents
+    agents: list[BaseAgent] = [
+        ChatAgent("Claude-Chat", "claude-opus"),
+        CodeAgent("Claude-Code", "claude-opus"),
+        DataAgent("Claude-Data", "claude-opus")
+    ]
+
+    # Polymorphic usage - same interface, different behaviors
+    for agent in agents:
+        result = agent.process("Hello world")
+        print(f"{agent.get_status()['type']}: {result}")
+```
+
+**Your task**: Expand this framework with:
+1. Add 2-3 more specialized agent types (ImageAgent, APIAgent)
+2. Implement a mechanism to track which agents have processed messages
+3. Create a test that demonstrates MRO by printing `.mro()` for each agent class
+4. Add documentation showing this scales to 100+ agent types with zero duplication
+
+### Validation Checklist
+
+- ✅ BaseAgent defines the contract
+- ✅ All subclasses call super() properly
+- ✅ No code duplication across agent types
+- ✅ Adding a new agent type requires \<10 lines of code
+- ✅ Bug fix in BaseAgent applies to all agents automatically
+
+### Deliverable
+
+Complete `agent_framework.py` with working implementation and docstring explaining:
+- Why BaseAgent reduces code duplication
+- How super() ensures proper initialization
+- What happens when you add a new agent type
+- How MRO works in your agent hierarchy
+
+---
+
+## Summary: Bidirectional Learning in Action
+
+**Part 1 (Student discovers)**: You identified the duplication and scaling problems with procedural agent code
+
+**Part 2 (AI teaches)**: AI explained how inheritance and super() solve these exact problems
+
+**Part 3 (Student teaches)**: You challenged AI with edge cases to deepen mutual understanding
+
+**Part 4 (Knowledge synthesis)**: You built a reusable agent framework proving the pattern
+
+### What You've Built
+
+1. `agent_duplication_analysis.md` — Problem analysis
+2. `inheritance_problem_statement.md` — Clear statement of scaling issues
+3. Challenge documentation — Three edge cases you posed to AI
+4. `agent_framework.py` — Production-ready agent system demonstrating inheritance, super(), and MRO
+
+### Next Steps
+
+Lesson 2 deepens this with polymorphism and Abstract Base Classes. You'll use this agent framework to show how different agents respond differently to the same method call.
 

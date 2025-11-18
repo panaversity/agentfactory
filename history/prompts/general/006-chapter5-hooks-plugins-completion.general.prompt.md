@@ -61,4 +61,4 @@ Task: Verify final state, ensure all Chapter 5 work is complete and properly sta
 - Failure modes observed: Initial plugins lesson positioned only as "CI/CD automation" (architectural misunderstanding corrected by user); Initial hooks lesson overly complex for beginners (simplified per user request)
 - Graders run and results: Content grounded in Claude Code official docs via MCP context7 (PASS); Lesson sequence pedagogically sound A1→B1 progression (PASS); Complexity tier appropriate for Chapter 5 intermediate level (PASS)
 - Prompt variant: User's explicit feedback ("simplify to echo examples") more effective than initial comprehensive approach
-- Next experiment: Validate final chapter against technical-reviewer before publication
+- Next experiment: Validate final chapter against validation-auditor before publication

@@ -67,7 +67,7 @@ differentiation:
   remedial_for_struggling: "Start with upper/lower only; build slowly to split/join; use print statements with isinstance() to validate after each step"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/part-4-chapter-16/spec.md"
 created: "2025-11-08"
 last_modified: "2025-11-08"
@@ -347,66 +347,90 @@ This validation habit prevents errors and reinforces that *different operations 
 
 Use your preferred AI companion (ChatGPT web, Claude Code, or Gemini CLI) for the following prompts. Each builds toward deeper understanding of string methods.
 
-### Prompt 1: Recall/Understand — "What Do These Methods Do?"
+### Part 1: Build a Username Cleaner (Your Turn First)
 
-```
-I know strings have methods like upper() and lower().
+**Before asking AI**, create a username cleaner for user input:
 
-- What does split() do? Why does it return a list instead of a string?
-- What does join() do? Why does it accept a list instead of strings?
-- When would I use replace() vs find()?
-
-Show me an example of each.
+**Scenario**: Users type their username with inconsistent formatting:
+```python
+user_input: str = "  JohnDOE123  "
 ```
 
-**Expected outcome**: You learn method purposes; understand why `split()`/`join()` return different types; begin to predict when to use each method.
+**Your task**: Clean and normalize it to: "johndoe123"
+1. Remove leading/trailing whitespace
+2. Convert to lowercase
+3. Validate it worked (check type, length, content)
 
-### Prompt 2: Apply — "Text Processing Task"
+Write the code yourself. Which methods will you use? Predict the output before running.
 
-```
-Write Python code that:
-- Starts with user_input = "  PYTHON is FUN  "
-- Uses strip() to remove whitespace
-- Uses lower() to normalize case
-- Uses replace() to change "python" to "coding"
-- Uses split() to break into words
-- Validates result types using isinstance() or type()
+---
 
-Show me the code and explain what each method does.
-```
+### Part 2: AI Explains Method Design (Discovery)
 
-**Expected outcome**: You apply 4+ methods in sequence; understand immutability and chaining; validate results after each step.
+Share your approach with AI:
 
-### Prompt 3: Analyze — "Method Behavior and Edge Cases"
+> "Here's my username cleaner: [paste code]. Explain:
+> 1. Why does `.strip()` return a NEW string instead of changing the original?
+> 2. What would happen if I chained methods like `user_input.strip().lower()`?
+> 3. Are there other methods I should know for cleaning text (`.replace()`, `.removeprefix()`)?
+> 4. What's the difference between `.lower()` and `.casefold()` for normalization?"
 
-```
-I'm testing string methods. What happens with these edge cases?
+**Your task**: Evaluate AI's explanation.
+- Does it reinforce immutability (methods return new strings)?
+- Does it show method chaining patterns?
+- Can you explain WHY chaining works?
 
-- What does "hello".find("x") return? (substring not found)
-- What does "hello world".split() do without arguments?
-- What does "".join(["a", "b", "c"]) do? (empty separator)
-- What happens if I try to use a method on a number instead of a string?
+---
 
-Show me results for each.
-```
+### Part 3: Student Teaches AI (Edge Cases & Split/Join)
 
-**Expected outcome**: You discover edge cases (`find()` returns -1, `split()` defaults to space, empty separator joins without separator, numbers don't have string methods). AI explains design patterns.
+AI explained basic methods. But does it know the trickiest string methods?
 
-### Prompt 4: Synthesize — "Real-World Text Processing"
+Challenge AI with `split()` and `join()`:
 
-```
-I have messy user input:
-```
-text = "  alice smith , bob jones , charlie brown  "
-```
+> "I don't understand `split()` and `join()`:
+> 1. Why does `'a,b,c'.split(',')` return a LIST not a string?
+> 2. Why does `' '.join(['a', 'b', 'c'])` have the separator BEFORE `.join()`?
+> 3. What happens with `'hello world'.split()` (no argument)?
+> 4. Show me how to split a CSV line, clean each part with `.strip()`, then join back together.
+>
+> For each, explain the design—why are split/join designed this way?"
 
-How would I use string methods to:
-1. Clean whitespace
-2. Split into individual names
-3. Normalize each name (uppercase first letter)
-4. Rejoin with proper formatting
+**Your task**: Compare AI's explanation to your understanding.
+- Can you now explain why `split()` produces a list?
+- Does the `.join()` syntax make sense (separator is the "glue")?
+- Can you chain split/join with other methods?
 
-Show me a step-by-step approach using split(), join(), strip(), and upper()/lower().
-```
+---
 
-**Expected outcome**: You design a text processing pipeline; understand how methods combine; think about data transformations as sequences of operations. You're starting to think like a developer!
+### Part 4: Build Text Processor Together (Convergence)
+
+Now solve a real problem with AI:
+
+> "Build a name formatter that takes messy input:
+> ```python
+> names: str = '  alice smith , bob jones , charlie brown  '
+> ```
+>
+> And produces clean output: `'Alice Smith, Bob Jones, Charlie Brown'`
+>
+> Steps:
+> 1. Split by comma into list of names
+> 2. For each name: strip whitespace, capitalize first letters
+> 3. Join back with ', ' separator
+>
+> Show the complete code with type hints and validation."
+
+**Your task**: Study AI's solution.
+- Does it use `.split(',')` to separate names?
+- Does it use `.strip()` on each name?
+- Does it use `.title()` or `.capitalize()` for capitalization?
+- Does it use `', '.join()` to recombine?
+
+Iterate if needed:
+> "The code works but isn't readable. Add comments explaining each transformation step."
+
+---
+
+**Time**: 25-30 minutes total
+**Outcome**: You've built text cleaners and processors, discovered why split/join have unique syntax, and learned to chain methods into data transformation pipelines.

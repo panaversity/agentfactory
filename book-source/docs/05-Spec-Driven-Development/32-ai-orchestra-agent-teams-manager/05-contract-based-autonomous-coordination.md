@@ -65,7 +65,7 @@ differentiation:
   remedial_for_struggling: "Start with simple 2-feature contract before attempting 3-feature exercise; use visual diagrams of feature dependencies; pair with debugging support for hook configuration"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/002-chapter-32-redesign/spec.md"
 created: "2025-11-06"
 last_modified: "2025-11-06"

@@ -67,7 +67,7 @@ differentiation:
   remedial_for_struggling: "Focus on list and dict examples; defer tuple complexity to Lesson 6. Use concrete shopping cart analogy exclusively."
 
 # Generation metadata
-generated_by: "lesson-writer v1.0.0"
+generated_by: "content-implementer v1.0.0"
 source_spec: "specs/001-part-4-chapter-18/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -175,7 +175,7 @@ Think of it like a phone book: you don't ask for "person #5", you ask for "Alice
 - Order doesn't matter
 - You want fast lookups by key ("find this student's grade instantly")
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you're not memorizing index numbers or key names. You're understanding the **intent**: Am I working with ordered items, or am I looking things up by meaningful names? That conceptual difference is what matters. AI will handle syntax; you think about structure.
 
@@ -393,7 +393,7 @@ Notice how each structure serves its purpose:
 - **Tuple**: stores the unchanging enrollment date
 - **Dict**: enables fast lookup of student records by ID
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > This is the fundamental insight: collections aren't features to memorize—they're architectural decisions. You're not asking "How do I use a list?" You're asking "What's the best way to organize this data?" The collection type is the answer.
 
@@ -426,42 +426,99 @@ You now understand the **big picture**: why Python has three fundamental collect
 
 ---
 
-## Try With AI
+## Try With AI: Data Structure Selection Challenge
 
-Use **ChatGPT web** (or your AI companion tool if already set up) for the following prompts.
+You've learned the WHY behind lists, tuples, and dictionaries. Now practice choosing the right structure for real problems—with AI as your architecture reviewer.
 
-### Prompt 1 (Remember): Define and Compare
+### Part 1: Design Game Data Structures (Your Turn First)
 
-> "In a few sentences, explain the difference between a list, a tuple, and a dictionary. What's one key difference between each?"
+**Before asking AI**, design data structures for a simple RPG game:
 
-**Expected Outcome**: You can recall that lists are mutable sequences, tuples are immutable sequences, and dictionaries are key-value mappings.
+**Requirements**:
+1. **Player stats** (health=100, mana=50, level=1) - need fast lookup by stat name
+2. **Inventory slots** (5 items in order: sword, potion, shield, null, null) - indexed access
+3. **Starting position** (x=10, y=20) - never changes during game initialization
+4. **Enemy IDs to names** (101='Goblin', 102='Dragon', 103='Troll') - fast lookup by ID
 
----
+**Your task**: For EACH requirement, choose list, tuple, or dict. Write:
+1. The data structure you'd use
+2. WHY that structure (mutable/immutable? ordered? keyed?)
+3. Type hint for each
 
-### Prompt 2 (Understand): Mutability in Action
-
-> "Explain what 'immutable' means in simple terms. Why would a programmer want immutable data? Give one real-world example where immutability is important."
-
-**Expected Outcome**: You understand that immutability prevents accidental changes and enables safety. You can articulate a concrete scenario (coordinates, RGB colors, enrollment dates).
-
----
-
-### Prompt 3 (Apply): Structure Selection
-
-> "I'm building a contact manager. For each contact, I need to store their name, phone number, and email address. Should I use a list, tuple, or dictionary? Why? Show me the type hint for how you'd structure one contact."
-
-**Expected Outcome**: You select dict and explain that meaningful lookups (by contact name/ID) are faster and clearer than position-based access. You write a type hint like `dict[str, str]`.
+Make decisions BEFORE asking AI.
 
 ---
 
-### Prompt 4 (Analyze): Real-World Decision-Making
+### Part 2: AI Reviews Your Architecture (Discovery)
 
-> "Design data structures for a simple game. You need: (1) a list of enemy positions that change as they move, (2) a player's starting coordinates that never change, and (3) quick lookup of enemy health by ID. Justify which structure you'd use for each and why."
+Share your design with AI:
 
-**Expected Outcome**: You apply architectural thinking to a realistic scenario. You choose list for enemy positions (mutable, ordered), tuple for player coordinates (immutable), and dict for health lookup (key-based access).
+> "Here's my game data structure design: [paste your choices]. For each:
+> 1. Is my choice correct? If wrong, explain why
+> 2. What's the performance difference? (O(1) lookup vs O(n) search)
+> 3. Show me the code to create each structure with sample data
+> 4. Explain: Why is tuple RIGHT for starting position but WRONG for current position?"
+
+**Your task**: Evaluate AI's architecture feedback.
+- Does it confirm dict for player stats (fast key-based access)?
+- Does it confirm list for inventory (ordered, mutable, indexed)?
+- Does it confirm tuple for starting position (immutable)?
+- Does it explain lookup performance (dict O(1) vs. list O(n))?
+- Can you now articulate the decision framework?
 
 ---
 
-**Safety Note**: Type hints in Python are documentation and tooling support—they don't enforce types at runtime. If you add a string to a `list[int]`, Python won't stop you, but your editor will warn you. This is by design: flexibility with safety guardrails. Your AI can help you check types with `mypy` if you want strict validation.
+### Part 3: Student Teaches AI (Edge Cases & Tradeoffs)
 
-**Next Lesson Preview**: Lesson 2 dives into **lists**. You'll learn how to create them, access items by position, and understand the difference between indexing and slicing. You'll write real code and see lists in action.
+AI reviewed your choices. But does it understand the TRADEOFFS?
+
+Challenge AI with conflicting requirements:
+
+> "What if requirements CONFLICT?
+> 1. Inventory needs ordering (suggests list) BUT also fast 'does player have sword?' checks (suggests set/dict)
+> 2. Config settings are key-value (suggests dict) BUT order matters for display (suggests list of tuples)
+> 3. Player coordinates change (suggests list) BUT want to prevent accidental modification (suggests tuple)
+>
+> For each conflict:
+> - Show me TWO valid approaches
+> - Explain tradeoffs (performance vs. safety vs. clarity)
+> - Which would YOU choose and why?"
+
+**Your task**: Compare tradeoff solutions.
+- Does AI show hybrid approaches (list + set for inventory)?
+- Does it mention OrderedDict or dict (Python 3.7+ preserves order)?
+- Does it explain that immutability can be enforced with tuples returned from functions?
+- Which tradeoffs make sense to YOU?
+
+---
+
+### Part 4: Build Student Roster Together (Convergence)
+
+Now design a complete data structure with AI:
+
+> "Design a student roster system:
+> - Store 100 students by ID (fast lookup)
+> - Each student has: name (str), grades (list of floats), enrollment_date (immutable)
+> - Need to iterate students in ID order
+>
+> Requirements:
+> 1. Type hints for everything
+> 2. Sample data for 3 students
+> 3. Show how to: look up student by ID, add a grade, calculate average
+> 4. Explain: Why nested structures (dict of dicts with lists inside)?"
+
+**Your task**: Review the nested structure.
+- Does it use `dict[int, dict[str, Any]]` or similar type hint?
+- Does student dict contain grades as `list[float]`?
+- Does enrollment_date use tuple or date object?
+- Can you explain when nesting is appropriate vs. over-engineering?
+
+Iterate if needed:
+> "The type hint uses `Any`. Make it more specific showing exact structure of student dict."
+
+---
+
+**Time**: 25-30 minutes total
+**Outcome**: You've designed data structures for real requirements, learned the performance implications (O(1) vs O(n)), understood tradeoffs, and practiced nested structures.
+
+**Safety Note**: Choice of data structure affects both correctness AND performance. A dict lookup is instant (O(1)), but searching a list of 1M items is slow (O(n)). Your architecture decisions matter.

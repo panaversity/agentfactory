@@ -4,11 +4,11 @@ title: "Pattern Matching with match-case"
 description: "Learn Python's modern match-case syntax for clearer decision-making code"
 reading_level: "Grade 7-9"
 time_estimate: "50-65 minutes"
-generated_by: "lesson-writer"
+generated_by: "content-implementer"
 source_spec: "specs/001-part-4-chapter-17/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
-git_author: "lesson-writer-agent"
+git_author: "content-implementer-agent"
 workflow: "spec-driven-development"
 version: "1.0.0"
 skills:
@@ -506,8 +506,7 @@ match color:
         action = "Unknown signal"
 ```
 
-Walk me through step-by-step.
-```
+Walk me through step-by-step."
 
 **Expected Outcome:**
 Your AI should trace the execution:

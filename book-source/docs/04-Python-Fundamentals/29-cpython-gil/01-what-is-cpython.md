@@ -86,7 +86,7 @@ differentiation:
   remedial_for_struggling: "Focus on detection code example; build intuition through simple mental model (bytecode as 'recipe card' that interpreter follows); use analogies to human processes (reference counting as 'tracking who's using something')"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/part-4-chapter-29/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -165,7 +165,7 @@ The `.cpython-314.pyc` filename tells you:
 - `314`: This is Python 3.14
 - `.pyc`: Compiled Python code
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 In AI-native development, you don't memorize what bytecode looks like or how to read it. What matters is understanding **when** bytecode affects your workflow:
 
@@ -450,59 +450,105 @@ Alternative implementations like PyPy escape these constraints by using differen
 
 ---
 
-## Try With AI
+## Challenge 1: The CPython Internals Discovery
 
-Use Claude Code or Gemini CLI (or your AI companion tool if already set up). Work through these prompts in order, allowing 10-15 minutes total.
+This is a **4-part bidirectional learning challenge** where you explore CPython's architecture and design tradeoffs.
 
-### Prompt 1: Remember – Define CPython
+### Part 1: Discover Independently (Student as Scientist)
+**Your Challenge**: Investigate CPython's execution pipeline without AI guidance.
 
-> "In your own words, explain what CPython is and why it's called the 'reference implementation.' Then ask your AI: 'Is my explanation accurate? What am I missing?' Refine your understanding based on feedback."
+**Deliverable**: Create `/tmp/cpython_discovery.py` containing:
+1. Use `platform.python_implementation()` to detect your Python implementation
+2. Use `sys.version_info` to get version details
+3. Import `dis` module and disassemble a simple function to see bytecode
+4. Create a simple script that:
+   - Calculates sum of 1 to 100
+   - Write both Python source and bytecode to a file
+   - Explain: why does CPython compile to bytecode? Why not execute source directly?
 
-**What you'll learn**: Validate your understanding of CPython's role in the Python ecosystem and its relationship to alternative implementations.
+**Expected Observation**:
+- Your Python implementation is "CPython" (likely)
+- Bytecode is not human-readable but lower-level than source
+- Bytecode allows CPython to interpret quickly without re-parsing
 
-**Expected time**: 2-3 minutes
-
----
-
-### Prompt 2: Understand – Execution Pipeline
-
-> "Ask your AI: 'Walk me through the Python execution pipeline step-by-step. What happens when I type `python script.py`? What is the CPython interpreter doing at each stage?' Then ask: 'Where does bytecode fit in? Why can't CPython just execute source code directly?'"
-
-**What you'll learn**: Develop a mental model of how source code becomes execution, including bytecode compilation and the role of the CPython interpreter.
-
-**Expected time**: 3-4 minutes
-
----
-
-### Prompt 3: Apply – Implementation Detection
-
-> "Tell your AI: 'Create a Python script that detects what Python implementation I'm using and prints helpful diagnostic information. Include: implementation name, version, executable path. Make it useful for CI/CD systems.' Then run the script and verify it works."
-
-**What you'll learn**: Write production-ready code using the `platform` module; understand why implementation detection matters for deployment systems.
-
-**Expected time**: 3-4 minutes
+**Self-Validation**:
+- What's the difference between compilation (source → bytecode) and execution (bytecode → behavior)?
+- Why is reference counting important for memory management?
+- How does bytecode differ from machine code?
 
 ---
 
-### Prompt 4: Analyze – CPython Design and GIL Connection
+### Part 2: AI as Teacher (Teaching Implementation Landscape)
+**Your AI Prompt**:
+> "I just discovered that Python has different implementations (CPython, PyPy, Jython, IronPython). Teach me: 1) Why are there multiple implementations instead of just one? 2) What's the difference between CPython and PyPy? 3) Why would someone use PyPy instead of CPython? 4) How do they differ in memory management and threading? Show me code that reveals these differences."
 
-> "Ask your AI: 'How does CPython's design (reference counting + C API) affect the GIL (which we'll learn about next)? What's the connection between memory management and threading constraints?' Then speculate: 'Why might alternative implementations like PyPy avoid the GIL? How does different memory management lead to different threading behavior?'"
+**AI's Role**: Explain the Python language vs CPython interpreter distinction, discuss design tradeoffs (simplicity vs speed, reference counting vs garbage collection), and preview how these choices affect threading.
 
-**What you'll learn**: Make the cognitive leap from CPython internals to GIL consequences; preview why Lesson 2 focuses on threading constraints; understand how design choices cascade through a system.
+**Interactive Moment**: Ask a clarifying question:
+> "You said PyPy doesn't have a GIL. But CPython does. How is that possible if they both run Python? What's the technical difference that allows one to have threading and the other not?"
 
-**Expected time**: 3-5 minutes
+**Expected Outcome**: AI clarifies that the GIL is a CPython implementation detail, not a Python language requirement. You understand that design choices (reference counting) cascade to threading constraints (GIL).
 
 ---
 
-**Safety & Ethics Note**: When exploring implementation differences, you're learning about computational tradeoffs, not discovering security vulnerabilities. Understanding why CPython makes certain choices builds respect for the engineering involved. Different implementations exist because they solve different problems—there's no "wrong" choice, just "right for this use case."
+### Part 3: You as Teacher (Discovering Design Tradeoffs)
+**Setup**: AI generates code that reveals CPython design constraints. Your job is to test it and teach AI about implementation realities.
 
-**If you're using a CLI tool** (Claude Code or Gemini CLI), here are the command equivalents:
+**AI's Initial Code** (ask for this):
+> "Show me code that demonstrates: 1) Reference counting in action (creating/deleting objects shows count), 2) The overhead of reference counting vs garbage collection, 3) Why CPython needs the GIL (hint: reference counting isn't thread-safe). Use sys.getrefcount() to show actual reference counts."
 
+**Your Task**:
+1. Run the code. Observe reference counts changing
+2. Create multiple objects and see memory usage
+3. Identify the issue: reference counting is overhead, GIL is a necessity for safety
+4. Teach AI:
+> "Your code shows that CPython counts every reference to every object. That's overhead. But you said it's necessary for safety. Why is reference counting not thread-safe? What happens if two threads try to modify the same object's reference count simultaneously?"
+
+**Your Edge Case Discovery**: Ask AI:
+> "You mentioned PyPy uses a garbage collector instead of reference counting. What's the tradeoff? Does PyPy use less memory? More memory? Faster startup? Slower startup? When would I choose CPython vs PyPy for a real application?"
+
+**Expected Outcome**: You discover that implementations are designed for different use cases—CPython optimizes for C integration and simple memory model; PyPy optimizes for execution speed. You learn to think about architectural tradeoffs.
+
+---
+
+### Part 4: Build Production Artifact (Student as Engineer)
+**Your Capstone for This Challenge**: Build an implementation-agnostic detection and profiling tool.
+
+**Specification**:
+- Detect Python implementation (CPython, PyPy, Jython, etc.)
+- For CPython: show bytecode of a function using `dis`
+- Measure function execution time on current implementation
+- Create a report: `{implementation, version, bytecode, execution_time}`
+- Test with different implementations if possible (or document what you'd test)
+- Show reference counting (CPython only) using `sys.getrefcount()`
+- Type hints throughout
+
+**Deliverable**: Save to `/tmp/implementation_profiler.py`
+
+**Testing Your Work**:
 ```bash
-# Run prompt 3 directly
-claude code "Create a Python script that detects what Python implementation I'm using..."
-
-# Or use a plain-text chat equivalent
+python /tmp/implementation_profiler.py
+# Expected output:
+# Implementation: CPython
+# Version: 3.14.0
+# Bytecode for test_function:
+#   1 LOAD_CONST   0 (100)
+#   2 RETURN_VALUE
+# Execution time: 0.0001ms
+# Reference count: 2 (for this object)
 ```
 
-If you've already set up an AI companion tool from previous chapters, use it instead of the web interface. All these prompts work with any major AI language model.
+**Validation Checklist**:
+- [ ] Code runs without errors
+- [ ] Correctly identifies implementation
+- [ ] Shows bytecode clearly
+- [ ] Timing measurement accurate
+- [ ] Reference counting works (CPython)
+- [ ] Type hints complete
+- [ ] Could be extended to test PyPy/other implementations
+
+---
+
+**Time Estimate**: 25-30 minutes (5 min discover, 8 min teach/learn, 7 min edge cases, 5 min build artifact)
+
+**Key Takeaway**: CPython is one implementation among many. Its design choices (reference counting, C API, GIL) make sense given its constraints. Understanding why these choices exist prepares you for the GIL deep-dive in Lesson 2.

@@ -46,7 +46,7 @@ differentiation:
   remedial_for_struggling: "Focus on 3-feature system; use time tracking to show 2x speedup"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/002-chapter-32-redesign/spec.md"
 created: "2025-11-06"
 last_modified: "2025-11-06"

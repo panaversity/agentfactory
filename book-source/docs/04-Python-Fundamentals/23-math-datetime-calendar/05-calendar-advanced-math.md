@@ -54,7 +54,7 @@ differentiation:
   remedial_for_struggling: "Students needing support: Focus on calendar display first (simplest concept), practice degree-to-radian conversion separately before trig functions, use calculators to verify results before examining code"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.2"
+generated_by: "content-implementer v3.0.2"
 source_spec: "specs/001-part-4-chapter-23/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -128,7 +128,7 @@ print(f"2025 is a leap year: {is_leap}")
 
 These functions solve real scheduling problems: "What day of the week should I display this date?" and "How many days should this calendar have?"
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize calendar functions—you understand WHEN you need them (scheduling logic, date calculations, UI layout). You know what functions exist (`weekday()`, `monthrange()`, `isleap()`) and ask AI when you need them. Syntax is cheap; recognizing "I need to know the first weekday of a month" is gold.
 
@@ -488,30 +488,257 @@ This function:
 
 ---
 
-## Try With AI
+## Try With AI: The Calendar and Math Workshop
 
-Your AI companion is ready to explore these advanced mathematical concepts deeper. Remember: you're learning to ask for explanations and understanding, not just requesting code.
+You've learned calendar operations and advanced math functions. Now you'll apply this knowledge by building practical utilities that combine calendars, trigonometry, and logarithms—demonstrating why these tools exist and how they solve real problems.
 
-**Using ChatGPT, Gemini CLI, or your AI companion of choice:**
+### Challenge Overview
 
-### 1. Recall: Practical Uses for Logarithms
-> "What are three practical uses for logarithms in programming? Give real-world examples beyond math class."
+**The Calendar and Math Workshop**: You're building utilities that display calendars, calculate trigonometric functions for physics problems, and handle logarithmic scales. This demonstrates why Python's `math` and `calendar` modules are essential in scientific and business applications.
 
-**Expected outcome**: You name applications like decibels, pH scale, data compression, earthquake magnitude, or exponential growth measurements.
+---
 
-### 2. Understand: Special Numeric Values
-> "Explain what math.inf and math.nan represent. Why would a program need to handle these rather than crashing with an error?"
+## Part 1: Calendar and Math Exploration (Independent Exploration)
 
-**Expected outcome**: You describe infinity as a sentinel value for "no valid result" and NaN as "mathematically undefined," and explain why catching them matters for robust code.
+**Your Role**: Researcher understanding calendar logic and mathematical applications
 
-### 3. Apply: Multi-Function Calendar and Math
-> "Generate code that displays a calendar for next month AND calculates the sine wave for a 440Hz tone at 5 different times. Then explain when each piece (calendar, trigonometry) would be used in a real application."
+### Part 1 Task: Create `calendar_math_analysis.md`
 
-**Expected outcome**: You get working code that combines `calendar.month()`, `math.sin()`, and `math.radians()`, and you can articulate that calendars power scheduling UIs while trigonometric waves power audio processing and game physics.
+**Scenario 1: Calendar Display Logic**
+- Generate calendar for November 2025
+- Identify: What weekday does the month start on?
+- Count: How many days in November?
+- Calculate: How many complete weeks? Leftover days?
+- Question: How would you highlight weekends in a calendar display?
 
-### 4. Analyze: Real-World Math Problem
-> "You're building a game where a ball bounces at an angle. What mathematical concepts would you use (trigonometry, logarithms, special values)? How would you validate that calculations don't produce infinity or NaN?"
+**Scenario 2: Trigonometry Application**
+- Convert 45 degrees to radians manually
+- Calculate sin(45°), cos(45°), tan(45°) (or ask AI)
+- Try with 0°, 90°, 180°
+- Question: In what applications would you use sine/cosine? (game rotations? wave simulation?)
 
-**Expected outcome**: You explain that you'd use trigonometry to calculate trajectory components, validate inputs before mathematical operations, and test results for special values before using them in game logic.
+**Scenario 3: Logarithmic Scale**
+- Compare: 10^1 = 10, 10^2 = 100, 10^3 = 1000
+- Calculate log₁₀(10), log₁₀(100), log₁₀(1000) (pattern?)
+- Real example: Sound intensity on decibel scale
+- Question: Why use logarithmic scale instead of linear?
 
-**Safety note**: When working with mathematical calculations, always validate inputs before operations. Be aware that some operations (square root of negative, log of zero) produce domain errors that Python's enhanced error messages help you understand with AI assistance.
+**Scenario 4: Edge Cases with Special Values**
+- What happens if: sqrt(-1)? log(0)? sin(infinity)?
+- How would you validate before operations?
+
+### Part 1 Deliverable
+
+File: `calendar_math_analysis.md`
+
+**Time**: 15-20 minutes
+
+---
+
+## Part 2: AI as Teacher
+
+**Your Role**: Student learning calendar and math patterns
+
+### Part 2 Prompts
+
+**Prompt 1**: "I'm confused about calendar display. How does calendar.month() work? How do I programmatically find the first weekday of a month?"
+
+**Prompt 2**: "Explain trigonometry for game development. If I want to rotate an object 45 degrees, how do I use sin/cos?"
+
+**Prompt 3**: "Explain logarithmic scales. Why is pH on a log scale? Why is sound in decibels?"
+
+### Part 2 Outcome
+
+You understand calendar operations, trigonometric concepts, and when logarithmic scales matter.
+
+---
+
+## Part 3: Student as Teacher (Edge Cases)
+
+**Your Role**: Tester challenging math edge cases
+
+### Part 3 Challenges
+
+**Challenge 1**: "How do I handle invalid angles? Can sin() receive any number? What's the range of sine output?"
+
+**Challenge 2**: "The calendar module doesn't highlight today's date automatically. How would I modify calendar.month() output to highlight a specific date?"
+
+**Challenge 3**: "For logarithms, what happens with negative inputs? How do I prevent domain errors?"
+
+### Part 3 Deliverable
+
+File: `calendar_math_challenges.md`
+
+**Time**: 15-20 minutes
+
+---
+
+## Part 4: Build Calendar and Math Utility (Convergence)
+
+**Your Role**: Developer building practical tools
+
+### Part 4 Deliverable: `calendar_math_utility.py`
+
+```python
+import calendar
+import math
+from datetime import date
+
+class CalendarMathUtility:
+    """Calendar display and advanced math operations."""
+
+    @staticmethod
+    def get_month_calendar(year: int, month: int) -> str:
+        """Get calendar display for month.
+
+        Args:
+            year: Year
+            month: Month (1-12)
+
+        Returns:
+            Calendar as string
+        """
+        return calendar.month(year, month)
+
+    @staticmethod
+    def first_weekday_of_month(year: int, month: int) -> int:
+        """Get first weekday of month (0=Monday, 6=Sunday).
+
+        Args:
+            year: Year
+            month: Month (1-12)
+
+        Returns:
+            Weekday number
+        """
+        return calendar.weekday(year, month, 1)
+
+    @staticmethod
+    def days_in_month(year: int, month: int) -> int:
+        """Get number of days in month.
+
+        Args:
+            year: Year
+            month: Month (1-12)
+
+        Returns:
+            Number of days
+        """
+        return calendar.monthrange(year, month)[1]
+
+    @staticmethod
+    def is_leap_year(year: int) -> bool:
+        """Check if year is leap year.
+
+        Args:
+            year: Year
+
+        Returns:
+            True if leap year
+        """
+        return calendar.isleap(year)
+
+    @staticmethod
+    def calculate_trajectory(angle_degrees: float, velocity: float) -> dict:
+        """Calculate projectile trajectory.
+
+        Args:
+            angle_degrees: Launch angle in degrees
+            velocity: Initial velocity in m/s
+
+        Returns:
+            Dictionary with trajectory info
+        """
+        angle_rad = math.radians(angle_degrees)
+        gravity = 9.81
+
+        max_height = (velocity ** 2 * math.sin(angle_rad) ** 2) / (2 * gravity)
+        time_to_max = (velocity * math.sin(angle_rad)) / gravity
+        horizontal_range = (velocity ** 2 * math.sin(2 * angle_rad)) / gravity
+
+        return {
+            "max_height": max_height,
+            "time_to_max": time_to_max,
+            "horizontal_range": horizontal_range,
+        }
+
+    @staticmethod
+    def decibel_scale(intensity: float, reference: float = 1e-12) -> float:
+        """Convert intensity to decibels.
+
+        Args:
+            intensity: Intensity in watts per m²
+            reference: Reference intensity (default: hearing threshold)
+
+        Returns:
+            Decibels
+        """
+        if intensity <= 0:
+            return float('-inf')
+        return 10 * math.log10(intensity / reference)
+
+    @staticmethod
+    def safe_log(value: float, base: str = "natural") -> float | None:
+        """Calculate logarithm safely.
+
+        Args:
+            value: Value (must be > 0)
+            base: "natural" or "base10"
+
+        Returns:
+            Logarithm, or None if invalid
+        """
+        if value <= 0:
+            return None
+
+        if base == "natural":
+            return math.log(value)
+        elif base == "base10":
+            return math.log10(value)
+        return None
+
+    @staticmethod
+    def safe_sqrt(value: float) -> float | None:
+        """Calculate square root safely.
+
+        Args:
+            value: Value (must be >= 0)
+
+        Returns:
+            Square root, or None if invalid
+        """
+        if value < 0:
+            return None
+        return math.sqrt(value)
+```
+
+### Part 4 Requirements
+
+Your utility must:
+1. Implement calendar operations
+2. Implement trigonometric calculations
+3. Implement safe logarithm functions
+4. Include proper validation
+5. Include type hints and docstrings
+
+### Part 4 Deliverable
+
+File: `calendar_math_utility.py`
+
+**Time**: 25-35 minutes
+
+---
+
+## Integrated Learning Outcomes
+
+You've practiced all Three Roles and brought together calendar and math knowledge.
+
+### What You've Created
+
+1. `calendar_math_analysis.md` — Your exploration of calendar and math concepts
+2. `calendar_math_challenges.md` — Edge cases you challenged AI with
+3. `calendar_math_utility.py` — Working utilities combining both
+
+---
+
+**Next**: Lesson 6 is the capstone project—building a complete Time Zone Converter that integrates concepts from all 5 lessons.

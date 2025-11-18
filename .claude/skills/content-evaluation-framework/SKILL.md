@@ -1,14 +1,20 @@
 ---
 name: content-evaluation-framework
 description: This skill should be used when evaluating the quality of book chapters, lessons, or educational content. It provides a systematic 6-category rubric with weighted scoring (Technical Accuracy 30%, Pedagogical Effectiveness 25%, Writing Quality 20%, Structure & Organization 15%, AI-First Teaching 10%, Constitution Compliance Pass/Fail) and multi-tier assessment (Excellent/Good/Needs Work/Insufficient). Use this during iterative drafting, after content completion, on-demand review requests, or before validation phases.
-constitution_alignment: "v3.1.2"
+version: "2.1.0"
+constitution_alignment: "v4.0.1"
 ---
 
 # Content Evaluation Framework
 
 This skill provides a comprehensive, systematic rubric for evaluating educational book chapters and lessons with quantifiable quality standards.
 
-**Constitution Alignment**: v3.1.2 emphasizing "Specs Are the New Syntax", Nine Pillars framework, Three Roles Framework, and Co-Learning partnership
+**Constitution Alignment**: v4.0.1 emphasizing:
+- **Principle 1**: Specification Primacy ("Specs Are the New Syntax")
+- **Section IIa**: Panaversity 4-Layer Teaching Method
+- **Section IIb**: AI Three Roles Framework (bidirectional co-learning)
+- **8 Foundational Principles**: Including Factual Accuracy, Coherent Structure, Progressive Complexity
+- **Nine Pillars** (Section I): AI CLI, Markdown, MCP, AI-First IDEs, Cross-Platform, TDD, SDD, Composable Skills, Cloud-Native
 
 ## Purpose
 

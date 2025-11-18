@@ -803,126 +803,453 @@ You now understand:
 
 The biggest insight: **Metaclasses exist to make building frameworks easier, not to make writing applications easier. For application code, use simpler approaches.**
 
-## Try With AI
+---
 
-Now it's time to apply metaclass patterns to problems. You'll use your AI companion to help you understand framework patterns and make architectural decisions.
+## Part 1: Build a Simple Plugin System Discovery
 
-**Your AI Tool**: Use ChatGPT web (if you haven't set up a CLI companion yet) or your installed AI tool (Claude Code, Gemini CLI).
+**Your Role**: Active builder discovering real metaclass use
 
-### Prompt Set: Metaclass Patterns (Bloom's Progression)
+Instead of learning patterns abstractly, you'll build something concrete: a plugin system that auto-registers plugins. This forces you to understand why metaclasses solve this problem.
 
-#### Prompt 1: Recall — Registration Pattern Explanation
+### Discovery Exercise: The Manual Way First
 
-Ask your AI:
+Before using a metaclass, experience the problem it solves.
 
-```
-"I want to build a plugin system where plugins auto-register when defined.
-Explain how a registration metaclass would work. Include:
-1. Where the registry is stored
-2. When registration happens (class definition vs instantiation)
-3. How to retrieve registered plugins"
-```
+**Step 1: Plugin system WITHOUT a metaclass (manual)**
 
-**Expected Response**:
-- Explains registry is class-level attribute on metaclass
-- Clarifies registration happens at class definition time
-- Shows how to access registry (e.g., `Meta.registry`)
-- Mentions examples like `load_and_execute(plugin_name)`
+```python
+# Manual approach - error-prone
+PLUGIN_REGISTRY: dict[str, type] = {}
 
-**How to Validate**:
-- Does the explanation trace through the flow clearly?
-- Does it distinguish class definition time from instance creation?
-- Could you implement it based on this explanation?
+class AnalysisPlugin:
+    """Base class for plugins."""
+    pass
 
-#### Prompt 2: Understand — Django's Field Collection Pattern
+class TextAnalyzerPlugin(AnalysisPlugin):
+    """Concrete plugin."""
+    name = "text_analyzer"
+    pass
 
-Ask your AI:
+class SentimentAnalyzerPlugin(AnalysisPlugin):
+    """Another plugin."""
+    name = "sentiment_analyzer"
+    pass
 
-```
-"How does Django's Model metaclass work? Specifically:
-1. How does it find Field definitions in a class?
-2. What happens to those fields?
-3. How does it auto-generate __init__ and other methods?"
-```
+# Manual registration (easy to forget!)
+PLUGIN_REGISTRY['text_analyzer'] = TextAnalyzerPlugin
+PLUGIN_REGISTRY['sentiment_analyzer'] = SentimentAnalyzerPlugin
 
-**Expected Response**:
-- Explains iterating through class `__dict__` to find Field instances
-- Describes storing fields in `_fields` or similar
-- Mentions auto-generating `__init__`, `__repr__`, SQL queries
-- References descriptor protocol or similar mechanism
+# What if someone adds a plugin and forgets to register it?
+# No error—the plugin is just silently unused.
 
-**How to Validate**:
-- Can you sketch how to collect fields?
-- Does the explanation help you understand real Django code?
-
-#### Prompt 3: Apply — Create a Logging Metaclass
-
-Ask your AI:
-
-```
-"Create a metaclass that logs every method call on a class.
-When any method is called, it should print:
-  '[LOG] ClassName.method_name() called'
-
-Show me:
-1. The metaclass implementation
-2. How to use it with a test class
-3. An example output when methods are called"
+print(f"Registered: {list(PLUGIN_REGISTRY.keys())}")
 ```
 
-**Expected Response**:
-- Metaclass that wraps all methods
-- Uses `__getattribute__()` or decorates methods
-- Shows usage: `class MyClass(metaclass=LoggingMeta):`
-- Demonstrates log output when methods are called
+**Problem you'll notice**: It works, but developers must remember to manually register every plugin. This is error-prone.
 
-**How to Validate**:
-- Copy and run the code
-- Define a class with a few methods
-- Call methods and verify logging output appears
+**Step 2: What we want instead**
 
-#### Prompt 4: Evaluate — Metaclass vs Alternative Approaches
-
-Ask your AI:
-
-```
-"I want to ensure all methods in a class have docstrings.
-Should I use:
-  A) A metaclass
-  B) A class decorator
-  C) __init_subclass__
-  D) Something else?
-
-Show me code for the best approach, and explain why it's better
-than the other options."
+```python
+# Desired behavior:
+# Define a plugin → automatically appears in registry
+# No manual registration needed
 ```
 
-**Expected Response**:
-- Likely recommends decorator or `__init_subclass__` as simpler
-- Shows metaclass as valid but more complex
-- Explains tradeoffs (readability, maintainability, framework needs)
-- Demonstrates code for preferred approach
+**Deliverable**: Document the manual approach's problems:
+- Error-prone: Easy to forget registration
+- Boilerplate: Redundant code for every plugin
+- Hard to audit: Which plugins are actually registered?
 
-**How to Validate**:
-- Does the explanation justify the choice?
-- Do you agree with the tradeoff assessment?
-- Could you explain this choice to another developer?
+---
 
-### Safety & Ethical Use
+## Part 2: AI Teaches the Metaclass Solution
 
-As you explore with AI:
+**Your Role**: Student learning from AI Teacher
 
-- **Test on small examples** — Metaclass behavior can be surprising. Test thoroughly before applying to production code.
-- **Ask about simpler alternatives** — Always ask "Is there a decorator or `__init_subclass__` that would work?"
-- **Review generated code carefully** — Complex metaclass code should be understood, not just copied.
-- **Watch for performance impact** — Metaclass overhead can accumulate in large systems.
+Now ask AI to teach you how a registration metaclass solves this problem.
 
-### Next Steps (Self-Directed)
+### AI Teaching Prompt
 
-After working through these prompts:
+Ask your AI companion:
 
-1. **Read framework code**: Find Django's `ModelBase` or SQLAlchemy's `DeclarativeMeta` on GitHub. Can you identify the patterns you learned?
-2. **Build a simple framework**: Create your own plugin system or field-collection system using a metaclass
-3. **Compare approaches**: Take a problem you'd solve with a metaclass and rewrite it using `__init_subclass__()`. Which is clearer?
+> "I have a plugin system where each plugin needs to be manually registered in a dictionary. This is error-prone—developers forget to register new plugins.
+>
+> Show me how a metaclass can auto-register plugins when they're defined. Include:
+>
+> 1. The registration metaclass code
+> 2. How to use it with a simple base plugin class
+> 3. An example with 2-3 plugins
+> 4. Code to list registered plugins and show how many are registered
+> 5. Explain: WHEN does registration happen (class definition or instance creation)?"
 
-You've now seen behind the curtain of how frameworks work. The next lesson shifts gears completely: from the powerful-but-specialized metaclass to the practical-and-daily dataclass.
+### What You'll Learn from AI
+
+**Expected AI Response** (summary):
+```python
+class PluginRegistry(type):
+    """Metaclass that auto-registers plugins."""
+    REGISTRY: dict[str, type] = {}
+
+    def __new__(mcs, name: str, bases: tuple, namespace: dict):
+        cls = super().__new__(mcs, name, bases, namespace)
+        # Register all subclasses (skip base Plugin class)
+        if name != 'Plugin':
+            mcs.REGISTRY[name] = cls
+        return cls
+
+class Plugin(metaclass=PluginRegistry):
+    """Base plugin class—uses PluginRegistry metaclass."""
+    pass
+
+class TextAnalyzer(Plugin):
+    """Automatically registered!"""
+    pass
+
+class SentimentAnalyzer(Plugin):
+    """Also automatically registered!"""
+    pass
+
+print(PluginRegistry.REGISTRY)  # Both appear automatically
+```
+
+**Key insight**: Registration happens at class definition time (when Python evaluates `class TextAnalyzer(Plugin):`), not when you create an instance.
+
+### Convergence Activity
+
+After AI explains, **test your understanding**:
+
+Ask AI: "In your plugin system, what happens if:
+1. I define a new plugin subclass called `LanguageDetector`?
+2. I create 5 instances of `TextAnalyzer`?
+3. I check `PluginRegistry.REGISTRY.keys()`?
+
+Predict: Will `LanguageDetector` appear in the registry? Will there be 5 entries for TextAnalyzer, or just 1?"
+
+**Expected learning**: AI will clarify that registration happens once at class definition time, not repeatedly. One plugin class = one registry entry, regardless of how many instances you create.
+
+**Deliverable**: Write a 2-paragraph explanation:
+1. How a registration metaclass works (in your own words)
+2. Why this is better than manual registration (automation, safety, clarity)
+
+---
+
+## Part 3: Student Challenges AI with Real Scenarios
+
+**Your Role**: Student teaching AI by testing edge cases
+
+Now reverse the roles. You'll pose real-world scenarios that test AI's understanding of metaclass registration.
+
+### Challenge Design Pattern
+
+Create scenarios where AI must:
+1. Predict what appears in the registry
+2. Handle inheritance correctly
+3. Deal with conflicting names
+
+### Challenge 1: Inheritance and Registration
+
+**Your prompt to AI**:
+> "Here's a plugin hierarchy:
+>
+> ```python
+> class Plugin(metaclass=PluginRegistry):
+>     pass
+>
+> class DataProcessor(Plugin):
+>     pass
+>
+> class JSONProcessor(DataProcessor):
+>     pass
+>
+> class XMLProcessor(DataProcessor):
+>     pass
+> ```
+>
+> Predict: What entries appear in `PluginRegistry.REGISTRY`?
+> - Just Plugin?
+> - All four classes?
+> - Plugin, DataProcessor, JSONProcessor, XMLProcessor?
+> - Something else?
+>
+> Explain your prediction BEFORE running the code."
+
+**Expected AI Response**:
+- All four classes registered (Plugin, DataProcessor, JSONProcessor, XMLProcessor)
+- Each class definition triggers `__new__()`, so all are registered
+- Inheritance doesn't exclude classes from registration
+
+**Your follow-up**: "Now, what if I want only LEAF plugins (JSONProcessor, XMLProcessor) registered, not intermediate classes like DataProcessor? How would you modify the metaclass to detect and skip intermediate classes?"
+
+### Challenge 2: Name Conflicts
+
+**Your prompt to AI**:
+> "What happens if two plugins have the same class name?
+>
+> ```python
+> class Plugin(metaclass=PluginRegistry):
+>     pass
+>
+> # Module A
+> class ReportGenerator(Plugin):
+>     version = "1.0"
+>
+> # Module B (reloaded or reimported)
+> class ReportGenerator(Plugin):
+>     version = "2.0"
+>
+> print(PluginRegistry.REGISTRY['ReportGenerator'].version)
+> ```
+>
+> Will this print '1.0', '2.0', or raise an error? Why?"
+
+**Expected learning**: The second definition overwrites the first in the registry. This is a real problem in plugin systems. AI should suggest using module-qualified names or other strategies.
+
+### Challenge 3: Registry Queries
+
+**Your prompt to AI**:
+> "Now that plugins auto-register, show me how to:
+> 1. Load and instantiate a specific plugin by name
+> 2. Instantiate ALL plugins at once
+> 3. Filter plugins by some attribute (e.g., only plugins with `version >= 2.0`)
+>
+> Write production-ready code for each."
+
+**Deliverable**: Document three scenarios you posed to AI and verify AI's predictions by running the code. Did AI understand registration timing and inheritance correctly?
+
+---
+
+## Part 4: Build Plugin Framework Reference
+
+**Your Role**: Knowledge synthesizer creating production patterns
+
+Now integrate everything into a reference guide for building real plugin systems.
+
+### Your Plugin System Reference Guide
+
+Create a file called `plugin_system_patterns.md` with this structure:
+
+```markdown
+# Plugin System Design Patterns with Metaclasses
+*Chapter 26, Lesson 2*
+
+## Why Metaclasses for Plugins?
+
+Without a metaclass: Plugins must be manually registered. Error-prone, boilerplate, auditing is hard.
+
+With a metaclass: Plugins auto-register at class definition time. No manual work, impossible to forget.
+
+## Pattern 1: Basic Auto-Registration
+
+```python
+class PluginRegistry(type):
+    REGISTRY: dict[str, type] = {}
+
+    def __new__(mcs, name: str, bases: tuple, namespace: dict):
+        cls = super().__new__(mcs, name, bases, namespace)
+        if name != 'Plugin':  # Skip base class
+            mcs.REGISTRY[name] = cls
+        return cls
+
+class Plugin(metaclass=PluginRegistry):
+    """Base class for all plugins."""
+    pass
+
+class MyPlugin(Plugin):
+    """Automatically registered!"""
+    pass
+
+print(PluginRegistry.REGISTRY)  # {'MyPlugin': <class 'MyPlugin'>}
+```
+
+**Key points**:
+- Registration happens in `__new__()` at class definition time
+- Check `name != 'Plugin'` to avoid registering the base class
+- Each subclass appears exactly once, regardless of instance count
+
+## Pattern 2: Validate Plugin Requirements
+
+```python
+class ValidatedPluginRegistry(type):
+    REGISTRY: dict[str, type] = {}
+    REQUIRED_METHODS = ['execute', 'get_name']
+
+    def __new__(mcs, name: str, bases: tuple, namespace: dict):
+        # Skip base class
+        if name != 'Plugin':
+            # Validate required methods exist
+            for method_name in mcs.REQUIRED_METHODS:
+                if method_name not in namespace:
+                    raise TypeError(
+                        f"Plugin '{name}' must implement method '{method_name}'"
+                    )
+
+        cls = super().__new__(mcs, name, bases, namespace)
+        if name != 'Plugin':
+            mcs.REGISTRY[name] = cls
+        return cls
+
+class Plugin(metaclass=ValidatedPluginRegistry):
+    pass
+
+class GoodPlugin(Plugin):
+    def execute(self): return "working"
+    def get_name(self): return "good"
+    # Success!
+
+class BadPlugin(Plugin):
+    def execute(self): return "broken"
+    # Error: BadPlugin must implement method 'get_name'
+```
+
+**Benefit**: Plugins that don't meet requirements can't even be defined. Errors are caught early.
+
+## Pattern 3: Versioned Plugins
+
+```python
+class VersionedRegistry(type):
+    REGISTRY: dict[str, dict] = {}
+
+    def __new__(mcs, name: str, bases: tuple, namespace: dict):
+        cls = super().__new__(mcs, name, bases, namespace)
+        if name != 'Plugin':
+            version = namespace.get('version', '0.0.0')
+            if name not in mcs.REGISTRY:
+                mcs.REGISTRY[name] = {}
+            mcs.REGISTRY[name][version] = cls
+        return cls
+
+class Plugin(metaclass=VersionedRegistry):
+    version = "0.0.0"
+
+class DataProcessor(Plugin):
+    version = "1.0"
+    pass
+
+class DataProcessor(Plugin):  # Redefine with new version
+    version = "2.0"
+    pass
+
+# Both versions are preserved
+print(VersionedRegistry.REGISTRY['DataProcessor'])
+# {'1.0': <class...>, '2.0': <class...>}
+```
+
+## Loading and Using Plugins
+
+### Load by name
+```python
+def load_plugin(name: str):
+    if name not in PluginRegistry.REGISTRY:
+        raise ValueError(f"Plugin '{name}' not found")
+    PluginClass = PluginRegistry.REGISTRY[name]
+    return PluginClass()
+
+plugin = load_plugin('MyPlugin')
+plugin.execute()
+```
+
+### Load all plugins
+```python
+def load_all_plugins():
+    return [
+        plugin_class()
+        for plugin_class in PluginRegistry.REGISTRY.values()
+    ]
+
+for plugin in load_all_plugins():
+    plugin.execute()
+```
+
+### Filter by attribute
+```python
+def load_plugins_matching(criteria):
+    """Load plugins where all criteria attributes match."""
+    return [
+        plugin_class()
+        for plugin_class in PluginRegistry.REGISTRY.values()
+        if all(getattr(plugin_class, k, None) == v for k, v in criteria.items())
+    ]
+
+# Load only plugins with version >= 2.0
+plugins = load_plugins_matching({'min_version': '2.0'})
+```
+
+---
+
+## When NOT to Use Plugin Metaclasses
+
+**Use decorator instead if**:
+- You only have a few plugins
+- Plugins are defined in one place (not scattered)
+- You don't need validation at definition time
+
+**Use function registry instead if**:
+```python
+# Simple approach without metaclass
+PLUGINS = {}
+
+def register_plugin(name):
+    def decorator(cls):
+        PLUGINS[name] = cls
+        return cls
+    return decorator
+
+@register_plugin('my_plugin')
+class MyPlugin:
+    pass
+```
+
+Simpler and more readable for most applications.
+
+---
+
+## Design Checklist
+
+When building a plugin system, ask:
+- [ ] Do plugins auto-register or require manual registration?
+- [ ] What validation must happen at class definition time?
+- [ ] How are plugins loaded and instantiated?
+- [ ] How do you handle plugin versioning?
+- [ ] What error messages appear if plugins are misconfigured?
+```
+
+### Guide Requirements
+
+Your reference guide must include:
+1. **Why metaclasses for plugins** — Clear problem/solution statement
+2. **Three practical patterns** — Basic registration, validation, versioning
+3. **Plugin loading code** — How to load by name, all at once, with filters
+4. **When NOT to use this** — Simpler alternatives (decorators, functions)
+5. **Design checklist** — 5+ questions to ask when building plugin systems
+
+### Validation with AI
+
+Once your guide is complete, validate it by asking AI:
+
+> "Review my plugin system reference. Are these patterns production-ready? What edge cases am I missing? What best practices for error handling and logging should I add?"
+
+**Deliverable**: Complete `plugin_system_patterns.md` that becomes your reference for building real plugin systems.
+
+---
+
+## Summary: Bidirectional Learning Pattern
+
+In this lesson, you experienced all three roles:
+
+**Part 1 (Student explores)**: You experienced the manual plugin registration problem
+**Part 2 (AI teaches)**: AI showed how a metaclass solves it automatically
+**Part 3 (Student teaches)**: You challenged AI with inheritance, naming, and loading scenarios
+**Part 4 (Knowledge synthesis)**: You built a production-ready plugin system reference
+
+This pattern ensures you understand metaclasses not as syntax, but as solutions to real architectural problems.
+
+### What You've Built
+
+1. Documentation of manual registration problems
+2. Metaclass solution explanation (in your own words)
+3. Challenge scenarios with AI predictions
+4. `plugin_system_patterns.md` — Production-ready plugin patterns
+
+### Next Steps
+
+Lesson 3 shifts gears completely: from metaclasses (powerful but specialized) to dataclasses (practical and daily). You'll see how dataclasses use metaclasses under the hood, but abstract away the complexity for developer convenience.

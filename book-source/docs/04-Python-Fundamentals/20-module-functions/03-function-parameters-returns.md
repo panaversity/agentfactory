@@ -330,81 +330,99 @@ This is very Pythonic and your AI will expect this pattern. Use it in your speci
 
 ---
 
-## Try With AI
+## Try With AI: Parameter Pattern Detective
 
-Use your AI companion (Claude Code or Gemini CLI). You'll explore parameters, defaults, and returns by writing and testing functions.
+### Part 1: Decode Function Signatures (Your Turn First)
 
-### Prompt 1: Recognize Parameter Types (Remember/Understand Level)
+**Before asking AI**, analyze these three function signatures:
 
+```python
+# Function A
+def send_email(recipient: str, subject: str, body: str = "", cc: list[str] = []) -> bool:
+    pass
+
+# Function B
+def calculate_price(base: float, tax: float, discount: float = 0) -> float:
+    pass
+
+# Function C
+def process_data(data: list[int], sort: bool = True, reverse: bool = False, limit: int | None = None) -> list[int]:
+    pass
 ```
-Look at this function signature:
 
-def build_url(domain: str, path: str, protocol: str = "https", port: int = 443) -> str:
+**Your analysis tasks**:
+- For each function, list required vs. optional parameters
+- Predict: Which function calls are VALID? `send_email("alice@test.com")` or `calculate_price(100.0)` or `process_data([1,2,3], limit=5)`?
+- Spot the bug: What's dangerous about Function A's default parameter `cc: list[str] = []`?
 
-Identify:
-1. Which parameters are required? How do you know?
-2. Which are optional? How do you know?
-3. What are the default values?
-4. What will the return type be?
-```
-
-**Expected outcome**: You identify domain and path as required, protocol and port as optional with defaults.
+Write your analysis before Part 2.
 
 ---
 
-### Prompt 2: Call a Function Flexibly (Understand/Apply Level)
+### Part 2: AI Guides Parameter Design (Discovery)
 
-```
-Write code that calls this function 3 different ways:
+Now share with AI:
 
-def create_file(filename: str, format: str = "txt", overwrite: bool = False) -> bool:
-    '''Create a file. Return True if successful.'''
-    return True  # Simplified for this exercise
+> "Here's my analysis of these function signatures: [paste your analysis]
+>
+> Validate my predictions:
+> 1. Which function calls are valid/invalid? Show me the errors for invalid ones
+> 2. Explain the mutable default argument bug in Function A - why is `cc: list[str] = []` dangerous?
+> 3. Show me the CORRECT way to write Function A with a default empty list
+> 4. For Function C, demonstrate calling it with: all positional args, all keyword args, and mixed style"
 
-1. Call with minimum required arguments
-2. Call with all arguments using positional style
-3. Call with keyword arguments for clarity
-
-For each call, explain what arguments you're passing and why.
-```
-
-**Expected outcome**: You call function correctly with different argument patterns and explain the advantages of keyword arguments.
-
----
-
-### Prompt 3: Return and Unpack Multiple Values (Apply Level)
-
-```
-Write a function called `get_user_info` that:
-1. Takes a user ID (string or integer) as input
-2. Returns a tuple with (name, email, role) — all strings
-3. Include type hints and a docstring
-
-Call your function with a test user ID.
-Unpack the three return values into separate variables: name, email, role.
-Print each one with a label.
-```
-
-**Expected outcome**: You write function with `tuple[str, str, str]` return type, call it, and unpack correctly.
+**Your evaluation task**:
+- Test each valid call pattern AI suggests - do they work?
+- Run the buggy Function A multiple times - do you see the mutable default problem?
+- Compare the corrected version - how does `None` avoid the bug?
 
 ---
 
-### Prompt 4: Design Function Parameters (Analyze/Synthesize Level)
+### Part 3: Student Teaches AI (Challenge Return Unpacking)
 
-```
-Design a function for a real task (calculate total cost with tax and shipping,
-format an address with optional country, validate a password with various rules).
+Challenge AI with unpacking edge cases:
 
-Write just the function signature with:
-- All parameters (both required and optional)
-- Type hints for each parameter
-- Return type
-- A docstring
+> "Analyze this code:
+> ```python
+> def get_stats(numbers: list[int]) -> tuple[int, int, float]:
+>     return min(numbers), max(numbers), sum(numbers)/len(numbers)
+>
+> data = [10, 20, 30]
+> result = get_stats(data)  # Not unpacking!
+> print(result[0])  # Accessing by index
+> ```
+>
+> This works, but is it good style? Show me THREE different ways to handle the return value:
+> 1. Full unpacking (min_val, max_val, avg = ...)
+> 2. Partial unpacking with _ for unused values
+> 3. Tuple indexing (current approach)
+>
+> For EACH approach, explain when it's appropriate and when it's bad practice."
 
-Ask your AI: "Should I have more or fewer parameters? Should some be optional instead of required?
-What are the tradeoffs in my design?"
+**Your debugging task**:
+- Write a function returning 4 values, but you only need the first and last
+- Test AI's suggestion for partial unpacking with `_`
+- Which approach makes your intent clearest?
 
-This teaches you that parameter design is about flexibility and clarity.
-```
+---
 
-**Expected outcome**: You design function parameters thoughtfully, considering what's required vs. optional, and understand design tradeoffs.
+### Part 4: Build a Flexible Configuration Function (Convergence)
+
+Create a function demonstrating professional parameter design:
+
+> "Write a function `create_database_connection()` that:
+> 1. Required parameters: `host` (str), `database` (str)
+> 2. Optional parameters: `port` (int, default 5432), `timeout` (int, default 30), `ssl` (bool, default True), `retries` (int, default 3)
+> 3. Returns: `tuple[bool, str]` where bool is success/failure, str is connection string or error message
+> 4. Include full type hints and docstring
+> 5. Demonstrate calling it THREE ways: minimal args, all keyword args, mixed style
+>
+> Then add validation: raise ValueError if port < 1 or port > 65535"
+
+**Refinement**:
+> "Extend this function to return `tuple[bool, str, dict[str, Any] | None]` where the third value is connection metadata (host, port, ssl status) on success, None on failure. Show me how to unpack and handle both success and failure cases."
+
+---
+
+**Time**: 30 minutes
+**Outcome**: You understand required vs. optional parameters, avoid mutable default argument bugs, unpack return values strategically, and design flexible function signatures with proper validation.

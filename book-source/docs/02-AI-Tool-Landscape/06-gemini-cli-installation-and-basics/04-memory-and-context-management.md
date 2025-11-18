@@ -1,13 +1,61 @@
 ---
 sidebar_position: 4
 title: Memory & Context Management
+cefr_level: A2
+proficiency: Beginner
+teaching_stage: 2
+stage_name: "AI Collaboration"
+cognitive_load:
+  concepts_count: 6
+  a2_compliant: true
+  scaffolding_level: "Heavy"
+learning_objectives:
+  - id: LO1
+    description: "Distinguish between short-term context and long-term memory in Gemini CLI"
+    bloom_level: "Understand"
+  - id: LO2
+    description: "Create project-level GEMINI.md file with architecture and team conventions"
+    bloom_level: "Create"
+  - id: LO3
+    description: "Apply appropriate context management command (/clear, /compress, /chat save) for specific scenarios"
+    bloom_level: "Apply"
+  - id: LO4
+    description: "Use memory commands (/memory show, /memory add, /memory refresh) to manage persistent context"
+    bloom_level: "Apply"
+  - id: LO5
+    description: "Implement conversation branching workflow using /chat save and /chat resume"
+    bloom_level: "Apply"
+  - id: LO6
+    description: "Recognize context window limits and select appropriate management strategy"
+    bloom_level: "Analyze"
+digcomp_mapping:
+  - objective_id: LO1
+    competency_area: "1. Information and Data Literacy"
+    competency: "1.2 Evaluating data, information and digital content"
+    proficiency_level: "Basic"
+  - objective_id: LO2
+    competency_area: "3. Digital Content Creation"
+    competency: "3.4 Programming"
+    proficiency_level: "Basic"
+  - objective_id: LO3
+    competency_area: "2. Communication and Collaboration"
+    competency: "2.4 Collaborating through digital technologies"
+    proficiency_level: "Basic"
+  - objective_id: LO4
+    competency_area: "3. Digital Content Creation"
+    competency: "3.4 Programming"
+    proficiency_level: "Basic"
+  - objective_id: LO5
+    competency_area: "5. Problem Solving"
+    competency: "5.3 Creatively using digital technologies"
+    proficiency_level: "Basic"
+  - objective_id: LO6
+    competency_area: "5. Problem Solving"
+    competency: "5.2 Identifying needs and technological responses"
+    proficiency_level: "Basic"
 ---
 
 # Memory & Context Management
-
-**Duration**: 18-20 minutes
-
-## The Context Problem
 
 Imagine you're working on an e-commerce API project. You open a fresh Gemini CLI session and ask:
 
@@ -112,7 +160,7 @@ export const validateEmail = async (email: string): Promise<boolean> => {
 
 AI merged context from **multiple levels**—your personal style + project requirements.
 
-This is the power of **persistent memory hierarchy**—and in this lesson, you'll master it alongside Gemini CLI's massive **1 million token context window**.
+This is the power of **persistent memory hierarchy**—and in this lesson, you'll master it alongside Gemini CLI's massive **1 million token context window** (Gemini 2.0 Flash, January 2025).
 
 ---
 
@@ -120,7 +168,7 @@ This is the power of **persistent memory hierarchy**—and in this lesson, you'l
 
 ### What Is Context?
 
-Your context window is like **the amount of information Gemini can "see" at once**. Gemini CLI gives you 1 million tokens—approximately:
+Your context window is like **the amount of information Gemini can "see" at once**. Gemini CLI gives you 1 million tokens (Gemini 2.0 Flash, January 2025)—approximately:
 - 750,000 words (average 1.33 tokens per word)
 - 100,000 lines of code (average 10 tokens per line)
 - 20-30 large software projects worth of code
@@ -258,37 +306,42 @@ gemini
 - Temporary task status
 - One-off questions
 
-### Example GEMINI.md
+### Example Project-Level GEMINI.md Template
 
 ```markdown
-# Project Context: My Web App
+# Project Context: [Your Project Name]
 
 ## Team Conventions
-- Use TypeScript for all new code
-- Prefer async/await over promises
-- Run `npm test` before committing
-- Keep components under 200 lines
+- [Programming language and version]
+- [Code style preferences (e.g., async/await, functional vs OOP)]
+- [Testing requirements (e.g., run tests before commit)]
+- [Code organization rules (e.g., max function length)]
 
 ## Architecture
-- **Frontend**: React + TypeScript on port 3000
-- **Backend**: Express.js + Node.js on port 5000
-- **Database**: PostgreSQL (localhost:5432 for dev)
-- **Auth**: JWT tokens, 24-hour expiry
+- **Frontend**: [Framework + language + port]
+- **Backend**: [Framework + language + port]
+- **Database**: [Database type + ORM/query tool]
+- **Auth**: [Authentication method + token expiry]
 
-## Key Decision: Monorepo Structure
-We chose a monorepo (not separate repos) because:
-- Shared types between frontend/backend
-- Atomic commits for related changes
-- Easier dependency management
+## Key Decisions
+### [Decision Name]: [Chosen Approach]
+Why we chose this:
+- [Reason 1]
+- [Reason 2]
+- [Reason 3]
 
 ## Setup Checklist
-1. `npm install` in root
-2. `npm run build:frontend`
-3. `npm run dev:backend`
-4. Postgres running locally
+1. [Installation command]
+2. [Build command]
+3. [Run development server command]
+4. [External dependencies (databases, services)]
+
+## Common Commands
+- `[command]` - [what it does]
+- `[command]` - [what it does]
 ```
 
-Every time you start a session in this project, Gemini reads this file and understands your architecture.
+Every time you start a session in this project, Gemini reads this file and understands your architecture and team conventions.
 
 ### Token Impact
 
@@ -315,6 +368,17 @@ Now that you have GEMINI.md for **long-term persistent memory**, let's explore c
 :::note Slash Commands Are Interactive
 All commands starting with `/` work only in **interactive mode** (`gemini` command). They cannot be used with CLI flags (e.g., `gemini --clear` doesn't exist). Start an interactive session to use these commands.
 :::
+
+### Command Decision Framework
+
+| Command | When to Use | When NOT to Use | Example Scenario |
+|---------|-------------|-----------------|------------------|
+| **`/clear`** | Starting completely new topic; context pollution from unrelated work; need fresh perspective | Current work is valuable; might need conversation later; just running low on tokens | You were debugging auth for 2 hours. Now switching to database schema planning—completely different context needed. |
+| **`/compress`** | Approaching 1M token limit; want to continue same task; need more tokens but keep context | Context is polluted with errors; switching topics entirely; don't need any history | Long conversation about API design. You're at 800k tokens. Compress to free space while keeping design decisions. |
+| **`/chat save [name]`** | Might return to this work later; handling interruptions; experimenting with different approaches | One-time throwaway work; no future value; prefer fresh start next time | Working on Feature A. Urgent bug arrives. Save Feature A, handle bug, resume Feature A with full context intact. |
+| **`/chat resume [name]`** | Returning to saved conversation; need exact context from before | Starting similar but different work; previous context will pollute new work | You saved "feature-A" yesterday. Today you want to continue exactly where you left off. |
+| **`/chat list`** | Forgot what conversations you saved; deciding which context to resume | You remember the save name; just want to resume immediately | You have 5 saved conversations. You forgot which one had the API design work. List them to find it. |
+| **`/chat delete [name]`** | Cleaning up old saved conversations; work is complete and archived elsewhere | Might need this context again; unsure if work is done | Feature shipped 3 months ago. Code is in production. Delete the saved conversation to clean up. |
 
 ### Hard Reset: `/clear`
 
@@ -510,6 +574,10 @@ This is **automatic** (AI-triggered), unlike `/memory add` which is **manual** (
 ---
 
 ## Try With AI
+
+:::tip Instruction for AI Tools
+When practicing these prompts, use **Gemini CLI** as your preferred tool for this lesson. Gemini's built-in memory management commands (`/clear`, `/compress`, `/chat save`, `/memory add`) are specifically designed for this workflow.
+:::
 
 ### Prompt 1: Context Management Strategy
 ```

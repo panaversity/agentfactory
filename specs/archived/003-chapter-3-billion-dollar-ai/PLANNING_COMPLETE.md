@@ -11,7 +11,7 @@
 ### 1. Detailed Lesson Plan (`plan.md`)
 **File**: `C:\Users\HP\Documents\colearning-python\specs\003-chapter-3-billion-dollar-ai\plan.md`
 **Size**: ~30 KB | **Length**: 8 detailed lessons + architecture guide
-**Status**: Ready for lesson-writer subagent
+**Status**: Ready for content-implementer subagent
 
 **Contents**:
 - **Chapter Overview**: Positioning within Part 1, core message, learning objective alignment
@@ -34,7 +34,7 @@
 ### 2. Implementation Task Checklist (`tasks.md`)
 **File**: `C:\Users\HP\Documents\colearning-python\specs\003-chapter-3-billion-dollar-ai\tasks.md`
 **Size**: ~48 KB | **Length**: 35+ specific, actionable tasks
-**Status**: Ready for lesson-writer subagent execution
+**Status**: Ready for content-implementer subagent execution
 
 **Contents**:
 
@@ -127,7 +127,7 @@ Each diagram task includes format, content, accessibility requirements, and file
 ### Practical Implementation Design
 - **Each task is atomic**: 1-3 hours per task, independently executable
 - **Clear acceptance criteria**: Testable, objective requirements (not "make it good")
-- **Dependency mapping**: Explicit sequencing so lesson-writer knows what must be done first
+- **Dependency mapping**: Explicit sequencing so content-implementer knows what must be done first
 - **Effort estimates**: 40-50 story points total (60-80 hours, reasonable for 8 lessons + visuals + assessments)
 - **Review gates**: Phase 5 ensures quality before handoff
 - **Iteration loops**: Expected review cycles built in
@@ -155,7 +155,7 @@ The plan directly enables achievement of all success criteria from the spec:
 
 ## Ready for Lesson-Writer Handoff
 
-This plan is **immediately actionable** by the lesson-writer subagent. The lesson-writer will:
+This plan is **immediately actionable** by the content-implementer subagent. The content-implementer will:
 
 1. **Read this plan** (`plan.md`) to understand architecture and learning flow
 2. **Read the task checklist** (`tasks.md`) for specific execution steps
@@ -164,7 +164,7 @@ This plan is **immediately actionable** by the lesson-writer subagent. The lesso
 5. **Execute Phase 3** (Tasks 4.1-4.4): Create worksheet, prompts, quiz, exercise
 6. **Execute Phase 4** (Tasks 5.1-5.4): Embed videos and reference PDFs
 7. **Execute Phase 5** (Tasks 6.1-6.6): Review each area for quality
-8. **Complete Phase 6** (Task 7.1): Final checklist before handoff to technical-reviewer
+8. **Complete Phase 6** (Task 7.1): Final checklist before handoff to validation-auditor
 
 ---
 
@@ -207,7 +207,7 @@ This plan is **immediately actionable** by the lesson-writer subagent. The lesso
 | File | Location | Size | Purpose |
 |------|----------|------|---------|
 | `plan.md` | `specs/003-chapter-3-billion-dollar-ai/plan.md` | 30 KB | Lesson-by-lesson teaching plan with learning objectives, scope, assessment strategy |
-| `tasks.md` | `specs/003-chapter-3-billion-dollar-ai/tasks.md` | 48 KB | 35+ actionable tasks for lesson-writer with acceptance criteria and dependencies |
+| `tasks.md` | `specs/003-chapter-3-billion-dollar-ai/tasks.md` | 48 KB | 35+ actionable tasks for content-implementer with acceptance criteria and dependencies |
 | `PLANNING_COMPLETE.md` | This file | 5 KB | Completion summary and validation checklist |
 
 ---
@@ -217,7 +217,7 @@ This plan is **immediately actionable** by the lesson-writer subagent. The lesso
 ### For the User:
 1. **Review** the `plan.md` and `tasks.md` files
 2. **Approve** or request changes
-3. **Invoke lesson-writer subagent** with reference to `tasks.md`
+3. **Invoke content-implementer subagent** with reference to `tasks.md`
 
 ### For the Lesson-Writer:
 1. **Read** `plan.md` for architecture and learning flow
@@ -257,4 +257,4 @@ This plan was created following the chapter-planner agent role definition and ap
 
 ---
 
-**PLANNING PHASE COMPLETE** — Chapter 3 is ready for lesson-writer implementation.
+**PLANNING PHASE COMPLETE** — Chapter 3 is ready for content-implementer implementation.

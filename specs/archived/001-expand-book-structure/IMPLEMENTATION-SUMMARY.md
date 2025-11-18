@@ -274,7 +274,7 @@ $ ls book-source/docs/ | wc -l
 
 ### Short-Term (Next Sprint)
 1. Create full part specs for Parts 6-8 (using part outlines)
-2. Write Chapter 1 using lesson-writer subagent (test new structure)
+2. Write Chapter 1 using content-implementer subagent (test new structure)
 3. Update Docusaurus theme to handle 13-part navigation
 
 ### Long-Term (Future Sprints)

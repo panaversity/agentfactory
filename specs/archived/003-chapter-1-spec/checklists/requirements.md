@@ -64,7 +64,7 @@
 ## Specification Maturity
 
 - [x] Specification is complete and ready for planning phase
-- [x] No ambiguities that would prevent lesson-writer from creating content
+- [x] No ambiguities that would prevent content-implementer from creating content
 - [x] All sections follow template structure
 - [x] Formatting is clear and scannable
 - [x] Cross-references to Part 1 Spec and Constitution are accurate

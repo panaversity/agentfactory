@@ -77,7 +77,7 @@ differentiation:
   remedial_for_struggling: "Start with single-type Stack[T] before multiple parameters; focus on why bounds matter through concrete comparison examples; pair programming with AI for complex implementations"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/001-part-4-chapter-27/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -676,55 +676,265 @@ class IntegerCalculator:
 
 ---
 
-## Try With AI
+## Try With AI: The Type-Safe Container Workshop (4-Part Learning Challenge)
 
-Now let's practice generic classes and protocols with your AI companion. These prompts progress from understanding concepts to designing sophisticated generic systems.
-
-### Prompt 1: Understand How Generic Classes Preserve Type Safety
-
-**Ask your AI**: "Explain how generic classes work in Python using a Stack[T] example. Show how type parameters flow through all methods (push, pop, peek) and how type information is preserved. What's the advantage over using a non-generic Stack with Any type?"
-
-**Expected Outcome**: An explanation demonstrating:
-- How Stack[int] and Stack[str] are different types to the IDE
-- How push(item: T) and pop() -> T | None maintain type consistency
-- Concrete examples showing where IDE catches type errors with generics but not with Any
-- Clear distinction between type safety at design time vs runtime flexibility
+This challenge teaches you to design generic classes that scale: containers working with any type, with type-safe operations and careful architectural decisions.
 
 ---
 
-### Prompt 2: Apply Generics to Create a Repository[T] Class
+### Part 1: You Discover (Student Discovers Problems)
 
-**Tell your AI**: "Create a generic Repository[T] class with add(item: T), find_by_id(id: int) -> T | None, and get_all() -> list[T] methods. Show usage with both User and Product types, demonstrating how type safety works across different types. Include type hints and a docstring explaining the generic pattern."
+**Your Turn** — Build containers WITHOUT Generics to experience type loss:
 
-**Expected Outcome**: A working Repository class with:
-- Proper PEP 695 generic syntax
-- CRUD operations (Create, Read, List) working with type parameter T
-- Type preservation: Repository[User] knows it stores Users, Repository[Product] knows it stores Products
-- Usage examples showing IDE type inference and autocomplete for each type
-- Explanation of why this pattern is useful for data access layers
+```python
+# Part 1: Non-generic container (the fragile way)
+
+class UntypedStack:
+    """A stack without generics—loses type information."""
+
+    def __init__(self):
+        self._items = []  # list[Any]—what's inside?
+
+    def push(self, item):  # item: what type?
+        self._items.append(item)
+
+    def pop(self):  # returns what?
+        return self._items.pop() if self._items else None
+
+# Problem to discover:
+# - When you pop(), your IDE has no idea what type you got back
+# - You can push(1) then push("string")—now the stack has mixed types!
+# - No type safety—you can't refactor safely
+# - IDE can't catch errors like: stack.push([1,2]); result = stack.pop().upper()
+# - For a Repository, same problem—you don't know what types it stores
+
+# You COULD write separate classes for each type:
+class IntStack:
+    def __init__(self): self._items: list[int] = []
+    def push(self, item: int): self._items.append(item)
+    def pop(self) -> int | None: return self._items.pop() if self._items else None
+
+class StringStack:
+    def __init__(self): self._items: list[str] = []
+    def push(self, item: str): self._items.append(item)
+    def pop(self) -> str | None: return self._items.pop() if self._items else None
+
+# But this duplicates code for every type!
+```
+
+**What You'll Realize**: Without Generics, you either lose type information or duplicate code for every type. Generic classes solve both problems.
 
 ---
 
-### Prompt 3: Analyze When to Add Type Bounds to Generics
+### Part 2: AI as Teacher (AI Explains Concepts)
 
-**Ask your AI**: "When should you add type bounds to a generic class? Give me 3 scenarios where bounds are necessary (the class needs specific methods) and 2 scenarios where bounds are not needed (storage-only classes). For each, explain why the bound is or isn't necessary."
+**Ask your AI:**
 
-**Expected Outcome**: Scenarios covering:
-- **Bounds necessary**: Comparison (need __lt__, __gt__), serialization (need to_json), iteration (need __iter__)
-- **Bounds not necessary**: Just storing items (Stack[T]), caching objects (Cache[K, V])
-- Clear explanation of the decision: "Do my methods need to call specific operations on T?"
-- Examples showing what breaks without bounds and why
+> "I'm building a Stack container that should work with any type (int, str, User objects, etc.). I don't want to write IntStack, StringStack, UserStack separately.
+>
+> Show me how to write ONE generic Stack[T] class that works for all types while preserving type information. Explain:
+> 1. How PEP 695 syntax works for classes: `class Stack[T]:`
+> 2. How methods like push(item: T) and pop() -> T | None preserve type
+> 3. How to use it: `Stack[int]()`, `Stack[str]()`, etc.
+> 4. Why type information matters—show an example where IDE catches an error with generics but not without"
+
+**What AI Should Show You**:
+- Generic class syntax: `class Stack[T]:` with type parameter T
+- How methods reference T to maintain consistency
+- Usage with type specifications: `int_stack = Stack[int]()`
+- Examples showing IDE provides correct autocomplete for each type
+- Why using `Any` isn't good enough—types get lost
+
+**Your Role**: Ask clarifying questions. "So Stack[int] and Stack[str] are completely different to the IDE?" "Can I mix types if I'm not careful?" Push for understanding the safety guarantees.
 
 ---
 
-### Prompt 4: Design a PriorityQueue[T: Comparable] Class
+### Part 3: You as Teacher (You Challenge AI's Approach)
 
-**Tell your AI**: "Design and implement a generic PriorityQueue[T: Comparable] class. It should maintain items in priority order (highest first) with enqueue(item: T) and dequeue() -> T | None methods. Justify why the Comparable bound is necessary. Implement a concrete example using a custom Task class that implements the comparison methods. Show how the type safety works."
+**Challenge AI** — Ask it to handle advanced scenarios:
 
-**Expected Outcome**: A PriorityQueue implementation with:
-- Correct bounded generic syntax: `class PriorityQueue[T: Comparable]:`
-- Full type hints on all parameters and return types
-- Clear explanation of why Comparable bound is required (need to compare priorities)
-- Working Task class implementing comparison operators
-- Usage examples showing type preservation and correct priority ordering
-- Comments explaining how the bound enables the comparison logic
+> "Your Stack[T] works, but I need more sophisticated patterns:
+>
+> 1. **Repository[T]**: A generic data store with add(T), find_by_id(int) -> T | None, get_all() -> list[T]. Show how type information flows through all methods.
+>
+> 2. **Type Bounds**: What if I need a Sortable container that can order items? Create a Comparable protocol and show a SortedList[T: Comparable] class. Explain why the bound is necessary.
+>
+> 3. **Multiple Type Parameters**: Create a `Cache[K, V]` that maps keys to values. Show usage: `Cache[str, int]()` for string->int mapping.
+>
+> For each, show: a) Working code, b) Concrete usage example, c) How type safety works, d) Where bounds matter"
+
+**Your Role**: Push back on incomplete designs. "Can my custom User class work with Repository[User] without inheritance?" or "What happens if I try to sort items that aren't Comparable?" This forces AI to justify design decisions.
+
+**AI's Response Should Show**:
+- Generic Repository pattern with type preservation
+- How Protocols define structural contracts (no inheritance needed)
+- Multiple type parameters (K, V) working independently
+- Why bounds are necessary vs. why they're optional
+
+---
+
+### Part 4: You Build (Production Artifact)
+
+**Build a Complete Generic Container Library** — Production-quality components:
+
+```python
+# deliverable: generic_containers.py
+
+from typing import Protocol, TypeVar, Generic
+
+T = TypeVar("T")
+K = TypeVar("K")
+V = TypeVar("V")
+
+# Part 1: Basic Stack[T]
+class Stack[T]:
+    """Type-safe stack container."""
+
+    def __init__(self) -> None:
+        self._items: list[T] = []
+
+    def push(self, item: T) -> None:
+        """Add item to top of stack."""
+        self._items.append(item)
+
+    def pop(self) -> T | None:
+        """Remove and return top item."""
+        return self._items.pop() if self._items else None
+
+    def peek(self) -> T | None:
+        """View top item without removing."""
+        return self._items[-1] if self._items else None
+
+    def is_empty(self) -> bool:
+        """Check if stack is empty."""
+        return len(self._items) == 0
+
+# Part 2: Generic Repository[T]
+class Repository[T]:
+    """Generic data store for any entity type."""
+
+    def __init__(self) -> None:
+        self._store: dict[int, T] = {}
+        self._next_id: int = 1
+
+    def add(self, item: T) -> int:
+        """Store item and return its ID."""
+        item_id = self._next_id
+        self._store[item_id] = item
+        self._next_id += 1
+        return item_id
+
+    def find_by_id(self, item_id: int) -> T | None:
+        """Retrieve item by ID."""
+        return self._store.get(item_id)
+
+    def get_all(self) -> list[T]:
+        """Get all stored items."""
+        return list(self._store.values())
+
+    def delete(self, item_id: int) -> bool:
+        """Delete item by ID."""
+        if item_id in self._store:
+            del self._store[item_id]
+            return True
+        return False
+
+# Part 3: Cache[K, V] with multiple type parameters
+class Cache[K, V]:
+    """Generic cache mapping keys to values."""
+
+    def __init__(self, max_size: int = 100) -> None:
+        self._store: dict[K, V] = {}
+        self._max_size = max_size
+
+    def set(self, key: K, value: V) -> None:
+        """Store key-value pair."""
+        if len(self._store) >= self._max_size:
+            # Simple eviction: remove first key
+            first_key = next(iter(self._store))
+            del self._store[first_key]
+        self._store[key] = value
+
+    def get(self, key: K) -> V | None:
+        """Retrieve value by key."""
+        return self._store.get(key)
+
+    def has(self, key: K) -> bool:
+        """Check if key exists."""
+        return key in self._store
+
+    def clear(self) -> None:
+        """Remove all entries."""
+        self._store.clear()
+
+# Part 4: Protocol for Comparable (structural typing)
+class Comparable(Protocol):
+    """Protocol for types supporting comparison."""
+
+    def __lt__(self, other: object) -> bool: ...
+    def __le__(self, other: object) -> bool: ...
+    def __gt__(self, other: object) -> bool: ...
+    def __ge__(self, other: object) -> bool: ...
+
+# Part 5: SortedList with bounded type parameter
+class SortedList[T: Comparable]:
+    """Generic list that maintains sorted order."""
+
+    def __init__(self) -> None:
+        self._items: list[T] = []
+
+    def add(self, item: T) -> None:
+        """Add item in sorted position."""
+        # Find correct position
+        for i, existing in enumerate(self._items):
+            if item < existing:
+                self._items.insert(i, item)
+                return
+        self._items.append(item)
+
+    def get_all(self) -> list[T]:
+        """Get all items in sorted order."""
+        return self._items.copy()
+
+# Test implementation
+if __name__ == "__main__":
+    # Stack[int]
+    int_stack = Stack[int]()
+    int_stack.push(1)
+    int_stack.push(2)
+    first = int_stack.pop()  # IDE knows this is int | None
+
+    # Repository[User]
+    class User:
+        def __init__(self, name: str):
+            self.name = name
+
+    user_repo = Repository[User]()
+    user_id = user_repo.add(User("Alice"))
+    alice: User | None = user_repo.find_by_id(user_id)  # Type preserved!
+
+    # Cache[str, int]
+    cache = Cache[str, int]()
+    cache.set("count", 42)
+    count: int | None = cache.get("count")
+
+    # SortedList[int]
+    sorted_nums = SortedList[int]()
+    sorted_nums.add(3)
+    sorted_nums.add(1)
+    sorted_nums.add(2)
+    print(sorted_nums.get_all())  # [1, 2, 3]
+```
+
+**Success Criteria**:
+- Stack[T] works with any type (int, str, custom objects)
+- Repository[T] pattern works with different entity types
+- Type information is preserved through method calls
+- Cache[K, V] demonstrates multiple independent type parameters
+- SortedList[T: Comparable] shows how bounds work
+- IDE provides perfect autocomplete for each type
+
+---
+
+## Time Estimate
+**35-40 minutes** (7 min discover, 9 min AI teaches, 9 min you challenge, 10 min build)

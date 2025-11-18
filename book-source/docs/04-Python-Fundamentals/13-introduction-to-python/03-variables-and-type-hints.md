@@ -47,7 +47,7 @@ differentiation:
   extension_for_advanced: "Explore type checking tools; research Python typing module for advanced type hints"
   remedial_for_struggling: "Focus on one type at a time; practice only int and str before float and bool"
 
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/016-part-4-chapter-13/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -348,64 +348,99 @@ Remember: Start with letter/underscore, use lowercase_with_underscores, no space
 
 ---
 
-## Try With AI
+## Try With AI: User Profile Design Challenge
 
-Use your AI companion (Claude Code or Gemini CLI) for these prompts.
+You've learned variables and type hints as syntax. Now apply them to a real problem: designing a user profile system from scratch.
 
-**Prompt 1: Recall – Type Hint Syntax**
+### Part 1: Describe Your Data Needs (Before AI)
 
-```
-From Lesson 3, what is the correct syntax for a type hint?
-Write the pattern: name: _______ = _______
-Give three examples with different types (int, str, float).
-```
+**Scenario**: You're designing a user profile system. For each user, you need to store:
 
-**Expected Outcome**: You recall exact syntax. You can replicate the pattern. You demonstrate syntax memorization.
+1. **Username** (like "alex_2024")
+2. **Age** (like 25)
+3. **Account balance** (like $47.50)
+4. **Is verified?** (yes or no)
 
----
+**Your task (before asking AI)**:
+For EACH piece of data, answer in plain English:
+- What kind of data is this? (whole number? text? decimal? yes/no?)
+- What Python type would you use? (Guess: `int`, `str`, `float`, `bool`)
 
-**Prompt 2: Understand – Why Type Hints Matter**
-
-```
-Explain: "Type hints describe intent."
-What does this mean? How does `age: int = 25` describe intent differently than `age = 25`?
-Ask your AI: "Why is `age: int = 25` better than `age = 25` from an AI collaboration perspective?"
-```
-
-**Expected Outcome**: You understand type hints as communication tools. You see connection to AI. You can explain the difference in clarity.
+Write your thinking down. Don't write Python code yet. Just describe WHAT you need.
 
 ---
 
-**Prompt 3: Apply – Creating Typed Variables**
+### Part 2: AI Introduces Type Hints (Discovery)
 
-```
-Write 5 variables with correct type hints for:
-1. A person's name (string)
-2. How many years they've been coding (integer)
-3. Their coding skill level as a percentage (float, 0-100)
-4. Whether they prefer Python (boolean, True/False)
-5. Something else important to you
+Now describe your needs to AI in plain English:
 
-Check your work: Ask your AI "Are these type hints correct? Can you explain why each one is right?"
-```
+> "I'm building a user profile system. I need to store: username (text), age (whole number), account balance (dollars and cents), and verification status (yes/no). What Python variables with type hints should I use? Show me the code."
 
-**Expected Outcome**: You write correct syntax. You validate with AI. You demonstrate mastery of basic type hints.
+**Your task**: Compare AI's code to your Part 1 answers.
+- Did you guess the right types?
+- Does AI's code match your thinking?
+- Ask AI: "Why did you choose `float` for balance instead of `int`?"
+
+This teaches you: **Describe intent in English → AI suggests implementation.**
 
 ---
 
-**Prompt 4: Analyze – Type Validation and Intent (Cognitive Closure)**
+### Part 3: Student Teaches AI (Naming Conventions)
 
+AI gave you working code, but the variable names might not follow PEP 8.
+
+Check AI's code against these rules:
+1. ✓ Uses lowercase_with_underscores (not camelCase)?
+2. ✓ Descriptive names (not `x`, `a`, `data`)?
+3. ✓ Starts with letter (not number)?
+
+If AI violated a rule, tell it:
+
+> "Your variable names don't follow PEP 8. The lesson says Python uses lowercase_with_underscores, not camelCase. Can you revise?"
+
+**Your task**: Verify AI corrects the mistake.
+- Did it fix the naming?
+- Did it explain WHY PEP 8 matters?
+
+This teaches AI about the professional standards you're learning.
+
+---
+
+### Part 4: Iterate on the Design (Convergence)
+
+Now expand the requirements. Tell AI:
+
+> "I need to add 3 more fields: email address, registration date (text like '2025-01-15'), and premium membership status (yes/no). Update the code with correct type hints and PEP 8 naming."
+
+**Your task**: Review AI's updated code.
+- Are all 7 variables present?
+- Are type hints correct?
+- Do names follow PEP 8?
+- Can you explain WHY each type was chosen?
+
+If something is unclear, iterate:
+> "Why did you use `str` for registration date instead of a date type?"
+
+Keep iterating until the design makes perfect sense.
+
+---
+
+### Part 5: Validate with isinstance() (Your Turn)
+
+Final challenge—write validation code WITHOUT AI first.
+
+**Task**: Add validation checks using `isinstance()` for all 7 variables. Example:
+```python
+print(isinstance(username, str))  # Should print True
 ```
-Here's a puzzle: Python allows this code to run:
 
-age: int = "twenty-five"  # Type hint says int, but we assigned a string!
+Write the validation code yourself. Then ask AI:
+> "Here's my validation code: [paste code]. Is this correct? What did I miss?"
 
-Ask your AI:
-1. Why does Python allow this (wrong data for the type hint)?
-2. What's the difference between "type hints" and "type enforcement"?
-3. How would you check if age is actually an integer? (Hint: isinstance())
-4. Why would violating type hints be a bad idea in professional code?
-```
+**Outcome**: If you got it right, you understand type hints deeply. If not, you learned what you're still confused about.
 
-**Expected Outcome**: You understand distinction between hints and enforcement. You learn isinstance() for validation. You grasp importance of type consistency. You close Lesson 3 with clear understanding of why this matters.
+---
+
+**Time**: 25-30 minutes total
+**Outcome**: You've practiced spec-first design (describe needs before coding), learned to critique AI code against standards (PEP 8), iterated on requirements, and validated your understanding independently.
 

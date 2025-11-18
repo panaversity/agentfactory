@@ -343,8 +343,8 @@ This chapter MUST apply these domain skills from `.claude/skills/`:
 ## Next Steps
 
 1. **Plan Phase** (`/sp.plan`): Use chapter-planner agent to create detailed lesson plans
-2. **Write Phase**: Use lesson-writer agent for each lesson; **I am responsible for writing outputs to files**
-3. **Validate Phase**: Use technical-reviewer agent to validate pedagogy and technical accuracy
+2. **Write Phase**: Use content-implementer agent for each lesson; **I am responsible for writing outputs to files**
+3. **Validate Phase**: Use validation-auditor agent to validate pedagogy and technical accuracy
 4. **Integration**: Update book index and cross-references
 5. **Publish**: Deploy to Docusaurus
 

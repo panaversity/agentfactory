@@ -74,7 +74,7 @@ differentiation:
   remedial_for_struggling: "Work through core application step-by-step with AI, focusing on parse_datetime() first, then other functions progressively"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.2"
+generated_by: "content-implementer v3.0.2"
 source_spec: "specs/001-part-4-chapter-23/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -133,7 +133,7 @@ Before you write a single line of code, you're going to architect your applicati
 
 Take that suggestion and adapt it. Maybe you want to add more functions. Maybe you want to combine some. The point is: **you decide the design with AI's help, not AI deciding for you**.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, architecture comes from thinking clearly about requirements, not from memorizing design patterns. You described what you need, AI suggested a structure, and now you're taking ownership of that design. This is what professionals do every day.
 
@@ -390,7 +390,7 @@ def format_output(dt: datetime, tz_name: str) -> str:
 
 **What you're doing**: Combining learned concepts into one function.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > This is synthesis—you're not learning new datetime methods here. You're taking `strftime()` from Lesson 4, combining it with timestamp from Lesson 2, and building one function that displays multiple formats. This is how professionals build real applications: by composing smaller pieces you already understand into larger wholes.
 
@@ -532,42 +532,267 @@ This is how teams at Google, Anthropic, and Stripe actually work. You just pract
 
 ---
 
-## Try With AI
+## Try With AI: The Global Meeting Scheduler Capstone Challenge
 
-You're almost done. But the capstone isn't complete until you reflect on what you built and what you learned. Your AI can help with this.
+You've learned all Chapter 23 concepts. Now you'll integrate everything into a production application that manages timezone conversions for global scheduling—demonstrating the power of combining math validation, timestamp understanding, datetime parsing, formatting, and calendar operations.
 
-### Setup
+### Challenge Overview
 
-Open **Claude Code**, **Gemini CLI**, or **ChatGPT web**. Have your completed Time Zone Converter code ready.
-
-### Prompt 1: Recall
-
-> "I just built a Time Zone Converter capstone for a Python chapter on math, datetime, and calendars. List all the concepts from the chapter that my application uses. Be specific about which functions use which concepts."
-
-**Expected outcome**: Complete inventory of integrated concepts (math validation, time module for timestamps, datetime module parsing and conversion, optional calendar display). You'll see how comprehensively your application synthesized the chapter.
-
-### Prompt 2: Understand
-
-> "Look at my application architecture. Why did I structure it with separate functions for parsing, timezone conversion, and formatting? What would break if I combined them all into one big main() function?"
-
-**Expected outcome**: Explanation of separation of concerns, modularity, testability. You'll deepen your understanding of why professionals structure code this way.
-
-### Prompt 3: Apply
-
-> "Add a feature that converts multiple timezones at once. For example, given a datetime in UTC, show the time in NYC, London, and Tokyo simultaneously. How would I refactor my code to support this without duplicating logic?"
-
-**Expected outcome**: Working extension demonstrating your ability to evolve the application. You'll experience how good design makes extensions easy.
-
-### Prompt 4: Synthesize
-
-> "Reflect on building this capstone with AI help. How did AI change the way you approached this project compared to coding alone? What did AI do well? What did you do better than AI? How is this different from traditional 'copy-paste code from Stack Overflow' learning?"
-
-**Expected outcome**: Metacognitive reflection on AI partnership. This is the most important outcome. You're not just learning Python—you're learning a fundamentally new way of working with intelligent tools.
-
-**What you're validating**: Understanding of AI-native development, not just technical syntax.
+**The Global Meeting Scheduler**: A complete application that takes meeting information and displays it in multiple timezones, accounting for DST transitions, formatting requirements, and calendar context. This is a real problem that companies like Slack, Stripe, and Notion solve daily.
 
 ---
 
-**Your capstone is complete.** You've built a practical application that integrates all chapter concepts, partnered with AI throughout the process, and reflected on how AI-native development actually works.
+## Part 1: Architecture Design (Independent Exploration)
 
-You're ready for the next chapter.
+**Your Role**: Architect designing the system before implementation
+
+### Part 1 Task: Create `scheduler_architecture.md`
+
+Design your system (without building yet):
+
+**System Requirements**
+- Input: Meeting date/time string, source timezone, list of target timezones
+- Processing: Parse input, validate, convert to UTC, convert to each timezone
+- Output: Display meeting time in each timezone, calendar context, formatted nicely
+- Challenges: Handle DST transitions, validate timezones, format for clarity
+
+**Architecture Decisions**
+- What functions will you create?
+- What data structures will you use?
+- How will you handle errors?
+- How will you validate input?
+- How will you test this?
+
+### Part 1 Deliverable
+
+File: `scheduler_architecture.md` with:
+- System requirements breakdown
+- Function signatures (without implementation)
+- Data structures and types
+- Error handling strategy
+- Testing plan
+
+**Time**: 20-25 minutes
+
+---
+
+## Part 2: Build Core Components (AI Partnership)
+
+**Your Role**: Developer building with AI guidance
+
+Work through these components with AI help:
+
+### Part 2A: Input Parsing
+Ask AI: "Help me parse meeting input like '2025-12-25 14:30' in UTC timezone. Use Python 3.14's datetime.strptime()."
+
+### Part 2B: Timezone Handling
+Ask AI: "Show me how to handle multiple timezones. I have a list like ['UTC', 'US/Eastern', 'Europe/London', 'Asia/Tokyo']. How do I convert a UTC time to each?"
+
+### Part 2C: Formatting and Display
+Ask AI: "Format the converted time for display like 'December 25, 2025 at 2:30 PM EST'. How do I include the timezone abbreviation?"
+
+### Part 2 Outcome
+
+You have working code for the three core functions.
+
+**Time**: 30-40 minutes
+
+---
+
+## Part 3: Student as Teacher (Integration & Edge Cases)
+
+**Your Role**: Quality tester verifying everything works together
+
+### Part 3 Challenges
+
+**Challenge 1**: "My system works for UTC times, but what if the user enters a time in US/Eastern? I need to convert that to UTC first, then to other timezones. How do I handle this?"
+
+**Challenge 2**: "I'm converting a time that falls during a DST transition. My output shows impossible times. How do I detect and warn about these edge cases?"
+
+**Challenge 3**: "One user wants 12-hour format (2:30 PM), another wants 24-hour format (14:30). How do I support both without duplicating code?"
+
+### Part 3 Deliverable
+
+File: `integration_tests.md` with:
+- Test cases you ran
+- Edge cases you discovered
+- How you resolved them
+
+**Time**: 20-30 minutes
+
+---
+
+## Part 4: Build Complete Meeting Scheduler (Convergence)
+
+**Your Role**: Developer integrating all components
+
+### Part 4 Deliverable: `meeting_scheduler.py`
+
+Build the complete application using the pattern from the capstone code shown earlier in this lesson, incorporating your refined architecture and test insights.
+
+Your scheduler must:
+1. Parse meeting datetime and timezones ✓
+2. Validate all inputs ✓
+3. Convert to each timezone ✓
+4. Format output nicely ✓
+5. Handle errors gracefully ✓
+6. Include comprehensive logging ✓
+7. Support batch operations ✓
+8. Include type hints throughout ✓
+
+### Part 4 Deliverable
+
+File: `meeting_scheduler.py` with complete working application
+
+**Time**: 40-50 minutes
+
+---
+
+## Part 5: Reflection on AI-Native Development (Synthesis & Metacognition)
+
+**Your Role**: Learner reflecting on the process and what you've learned
+
+This is the most important part. You're not just building code—you're learning a new way of working.
+
+### Part 5 Reflection Task: Create `capstone_reflection.md`
+
+Write a reflective document answering these questions:
+
+**Section 1: What You Built**
+- Describe your meeting scheduler application
+- What problem does it solve?
+- What chapter concepts does it integrate?
+
+**Section 2: The Three Roles in Action**
+
+Write one example of each role from your capstone experience:
+
+**Student**: What did you explore independently? (Part 1 architecture decisions, Part 3 edge case discoveries)
+
+**AI Teacher**: What did AI help you understand? (code examples, explanations of timezone offsets, how datetime.now() works)
+
+**Co-Worker**: How did you challenge AI or fix bugs it created? (spotted timezone offset mistakes, realized format codes weren't complete)
+
+**Section 3: Comparison: With AI vs Without**
+
+Complete these:
+- "Without AI, I would have spent X minutes on [task]. With AI, I spent Y minutes. The difference is _____."
+- "AI was best at _____. I was better at _____."
+- "The biggest insight I had was _____. AI suggested it / I discovered it independently."
+
+**Section 4: AI-Native Development vs Copy-Paste**
+
+How is this different from:
+- Finding code on Stack Overflow and copying it?
+- Using tutorials that show you complete solutions?
+- Building entirely without AI help?
+
+What's unique about the partnership model?
+
+**Section 5: What's Next**
+
+- What would you improve in your scheduler?
+- What new features would you add?
+- How did this chapter prepare you for the next chapter?
+- What skills are you more confident in now?
+
+### Part 5 Validation Prompts for AI
+
+Once you've written your reflection, validate it with AI:
+
+**Prompt 1**: "I've written a reflection on building this capstone with AI. Does my analysis of the three roles demonstrate genuine understanding? Am I being honest about what AI did well vs what I did better?"
+
+**Prompt 2**: "How does my comparison of 'AI-native development' vs 'copy-paste from Stack Overflow' stand up? Have I captured the real difference?"
+
+**Prompt 3**: "Looking at my code and my reflection together, can you confirm that I understand the integrated concepts? Where might I have misconceptions?"
+
+### Part 5 Deliverable
+
+File: `capstone_reflection.md` with:
+- Description of what you built
+- One concrete example of each Three Roles
+- Honest comparison: with AI vs without
+- Explanation of AI-native development
+- Reflection on what's next
+
+**Time**: 30-40 minutes (includes AI validation)
+
+---
+
+## Complete Capstone Deliverables
+
+You've now created 5 artifacts for the capstone:
+
+1. **scheduler_architecture.md** — System design before building
+2. **integration_tests.md** — Testing and edge case documentation
+3. **meeting_scheduler.py** — Complete working application
+4. **capstone_reflection.md** — Deep reflection on learning
+
+Plus all 4 previous deliverables from Part 4 implementation.
+
+---
+
+## Integrated Chapter Outcomes
+
+Verify that your capstone integrates ALL chapter concepts:
+
+**From Lesson 1 (Math/Precision)**:
+- ✓ Input validation with proper error messages
+- ✓ Understanding domain constraints (valid timezones, valid dates)
+
+**From Lesson 2 (Epoch/Time)**:
+- ✓ Using timestamps internally for calculations
+- ✓ Understanding that timestamps are UTC-based
+
+**From Lesson 3 (DateTime Objects)**:
+- ✓ Parsing user input with Python 3.14's `datetime.strptime()`
+- ✓ Understanding naive vs timezone-aware datetimes
+
+**From Lesson 4 (Formatting)**:
+- ✓ Using `strftime()` to format output for display
+- ✓ Using `timedelta` or timezone conversions
+- ✓ Handling multiple timezone display formats
+
+**From Lesson 5 (Calendar/Advanced Math)**:
+- ✓ Optional: Display calendar context with the meeting
+- ✓ Optional: Calculate meeting duration using math
+
+---
+
+## What AI-Native Development Looks Like
+
+In this capstone, you experienced professional development:
+
+**You Specified**: Requirements, architecture, testing strategy
+**AI Suggested**: Code structure, implementation details, edge case handling
+**You Validated**: That code matches requirements, handles edge cases, makes sense
+**You Owned**: Understanding, decisions, quality
+
+This is fundamentally different from:
+- **Copy-paste learning**: You own nothing except the ability to find answers
+- **Passive tutorials**: You follow steps but don't think about why
+- **Solo coding**: You solve problems alone without expert guidance
+
+AI-native development is **thinking clearly + AI execution + your validation**.
+
+---
+
+## Final Reflection Question
+
+> "Compare the Path:
+> - Lesson 1: You built a calculator. You understand precision matters.
+> - Lesson 2: You built a timestamp utility. You understand why UTC exists.
+> - Lesson 3: You built a date calculator. You understand naive vs aware.
+> - Lesson 4: You built a formatter. You understand format codes.
+> - Lesson 5: You built a calendar/math tool. You understand when each applies.
+> - Lesson 6: You built a meeting scheduler. You integrated everything.
+>
+> This progression from components to integration mirrors how professionals actually work. What did this progression teach you about learning to code?"
+
+**Answer in your head**: The answer is your capstone success.
+
+---
+
+**Your chapter is complete.** You've mastered Python's mathematical, temporal, and calendar operations. You've learned the Three Roles Framework. You've built production-grade code with AI partnership.
+
+**You're ready for the next chapter.**

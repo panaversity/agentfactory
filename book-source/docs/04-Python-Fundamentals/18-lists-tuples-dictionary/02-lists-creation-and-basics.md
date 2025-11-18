@@ -65,7 +65,7 @@ differentiation:
   remedial_for_struggling: "Focus on positive indexing first (0-based); defer negative indexing to practice; use concrete list examples (fruit, colors)"
 
 # Generation metadata
-generated_by: "lesson-writer v1.0.0"
+generated_by: "content-implementer v1.0.0"
 source_spec: "specs/001-part-4-chapter-18/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -112,7 +112,7 @@ Notice the **type hints** like `list[int]` and `list[str]`. These tell you (and 
 
 This exploration helps you understand the difference between **runtime behavior** (what Python actually does when you run code) and **static analysis** (what type checkers like mypy flag as potential bugs). Both matter in professional code.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, type hints are documentation that enable tools. When you write `numbers: list[int]`, you're saying "this list holds integers." Python won't stop you from adding a string at runtime, but a type checker will warn you, and your AI partner can catch errors before they cause problems.
 
@@ -284,7 +284,7 @@ Ask your AI Co-Teacher:
 
 **Expected Outcome**: You'll understand that Python offers multiple ways to express the same operation. Choose the clearest one for your context.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > You don't memorize slice syntax. You understand: "I need items 2 through 5, so I write [2:5]." If you forget whether stop is inclusive or exclusive, ask your AI partner. The understanding—why you're slicing—matters far more than remembering the edge cases.
 

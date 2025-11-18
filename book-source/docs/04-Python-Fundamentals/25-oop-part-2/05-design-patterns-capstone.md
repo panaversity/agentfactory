@@ -89,7 +89,7 @@ differentiation:
   remedial_for_struggling: "Start with individual pattern implementation first; build integrated system step-by-step; use provided code templates as scaffolding; focus on understanding pattern intent before optimization"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/020-oop-part-1-2/spec-chapter-25.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -196,7 +196,7 @@ print(f"Agents in manager2: {manager2.list_agents()}")  # ['chat_bot', 'code_bot
 2. `__init__()` might be called multiple times (once per reference), so we guard initialization with `_initialized` flag.
 3. Result: `AgentManager()` always returns the exact same object, no matter how many times you call it.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Singletons are controversial in software engineering. **Use for**: configuration managers, loggers, connection pools—stateless or simple-state resources. **Avoid for**: anything that needs different state in tests or multiple independent instances. The controversy exists because global state makes testing and reasoning about code harder. But for true global coordination points (like the agent manager), Singleton is appropriate.
 
@@ -339,7 +339,7 @@ Ask your AI Co-Teacher:
 
 **Expected Outcome**: You'll understand how to decouple class registration from class creation, enabling true plugin-like architecture.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > The Factory pattern is critical in AI systems. Your agent creation might be dynamic—loading from configuration, database, or user choice. Factory decouples "which agent type" (decided at runtime) from "how to create it" (stateless factory code). This is professional architecture.
 
@@ -629,7 +629,7 @@ print(agent.make_decision(context))
 3. `Agent` holds a reference to a strategy and delegates decisions to it.
 4. `set_strategy()` switches strategies at runtime without changing Agent code.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Strategy pattern is essential in AI systems. Different models, different reasoning approaches, different risk profiles—all are strategies. By encapsulating them, agents adapt their behavior without core logic changes. This is how real AI systems handle A/B testing and experimentation.
 
@@ -726,7 +726,7 @@ These patterns work together seamlessly because each solves one specific problem
 - Observer handles *loose coupling communication*
 - Strategy handles *algorithm selection*
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > This integrated system represents professional architecture. In production AI systems:
 > - Singleton coordinates resources (expensive to create, need single instance)
@@ -738,99 +738,505 @@ These patterns work together seamlessly because each solves one specific problem
 
 ---
 
-## Try With AI
+## Challenge: Building Complex AI Systems with Design Patterns
 
-In this capstone, you've mastered four fundamental design patterns. Now apply them with AI guidance.
-
-### Prompt 1: Pattern Recognition
-
-Ask your AI Co-Teacher:
-
-```
-For each design pattern (Singleton, Factory, Observer, Strategy),
-give me a real-world AI system example where it's used.
-For each example, explain:
-1. What problem does the pattern solve?
-2. What would happen without the pattern?
-3. How would the system be harder to maintain?
-```
-
-**Expected Outcome**: You'll recognize patterns in real systems and understand their architectural value.
+In this capstone challenge, you'll integrate all four design patterns (plus additional ones) into a complete agent orchestration system. This is where theory meets practice—designing production-ready architectures.
 
 ---
 
-### Prompt 2: Tradeoffs and Alternatives
+## Part 1: Student Discovers Pattern Interactions Through a Growing System
 
-Ask your AI Co-Teacher:
+**Your Role**: System architect designing for evolving requirements
 
+### Discovery Exercise: Build Agent Systems, Discover Missing Patterns
+
+Imagine you're building a customer service platform with increasingly complex requirements.
+
+**Stage 1: Naive Implementation (Single-Agent)**
+
+Start simple—one agent, no patterns:
+
+```python
+# Stage 1: No patterns - simple chatbot
+class ChatAgent:
+    def __init__(self, name: str):
+        self.name = name
+
+    def process(self, message: str) -> str:
+        return f"Chat response: {message}"
+
+# Usage
+agent = ChatAgent("Helper")
+print(agent.process("help me"))
 ```
-Compare Singleton vs Dependency Injection for creating the AgentManager.
-- Singleton: Global instance, easy access, hard to test
-- Dependency Injection: Pass manager as parameter, harder to access, easy to test
 
-When is Singleton appropriate vs anti-pattern? Give me 3 scenarios for each approach,
-and explain the reasoning.
-```
+**Your task 1**: Document in `pattern_evolution_analysis.md`:
+- How many ChatAgent instances exist? (Can there be multiple?)
+- How do you create different agent types without modifying ChatAgent?
+- How would agents communicate with each other?
+- What happens when you need to switch algorithms at runtime?
 
-**Expected Outcome**: You'll understand when patterns are beneficial vs harmful, a critical architectural skill.
+**Stage 2: Requirements Grow**
+
+Now you need:
+- Multiple agent types (ChatAgent, TicketAgent, EscalationAgent)
+- Agents to communicate via events
+- Different routing strategies based on sentiment
+- Only one manager coordinating all agents
+
+Document:
+- How would you create different agent types without duplicate code?
+- How would agents notify each other of events?
+- How would you select routing strategy dynamically?
+- Which design patterns solve each problem?
+
+### Your Discovery Document
+
+Create `pattern_necessity_analysis.md` with:
+
+1. **Single Instance Problem**: Multiple managers cause conflicts; need Singleton
+2. **Creation Complexity Problem**: Creating different agent types is repetitive; need Factory
+3. **Communication Problem**: Agents are tightly coupled; need Observer
+4. **Algorithm Switching Problem**: Routing logic is hardcoded; need Strategy
+5. **Your Prediction**: What patterns would solve each problem? Why?
 
 ---
 
-### Prompt 3: Extending the Architecture
+## Part 2: AI Teaches Pattern Design Through Architecture
 
-Ask your AI Co-Teacher:
+**Your Role**: Student learning architectural patterns from AI Teacher
 
+### AI Teaching Prompt
+
+Ask your AI companion:
+
+> "I'm building a customer service agent system. Currently:
+> - I create new agent instances everywhere (Problem: multiple managers)
+> - I add new agent types by copy-pasting code (Problem: duplicated initialization)
+> - Agents update each other directly by calling methods (Problem: tight coupling)
+> - Routing logic is hardcoded in one function (Problem: can't switch strategies)
+>
+> For EACH problem, explain:
+> 1. What design pattern solves it?
+> 2. Show me the pattern implementation
+> 3. What benefit do I get?
+> 4. How do I add a new agent type without modifying existing code?
+> 5. What about combining patterns—how would Singleton, Factory, Observer, and Strategy work together?"
+
+### Expected AI Response Summary
+
+AI will explain:
+- **Singleton**: Ensure AgentManager exists once across the system
+- **Factory**: Create agents by type without knowing exact classes
+- **Observer**: Agents register with EventBus; events notify all observers
+- **Strategy**: Pass routing strategy to manager; swap at runtime
+- **Integration**: Each pattern solves one problem; together they create flexible architecture
+
+**AI will show architecture like**:
+
+```python
+# Singleton
+class AgentManager:
+    _instance = None
+    def __new__(cls):
+        if not cls._instance:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
+# Factory
+class AgentFactory:
+    def create(self, agent_type: str, name: str):
+        if agent_type == "chat":
+            return ChatAgent(name)
+        elif agent_type == "ticket":
+            return TicketAgent(name)
+
+# Observer
+class EventBus:
+    def __init__(self):
+        self.observers = []
+    def attach(self, observer):
+        self.observers.append(observer)
+    def notify(self, event):
+        for observer in self.observers:
+            observer.handle(event)
+
+# Strategy
+class RoutingStrategy:
+    def route(self, sentiment: str) -> str:
+        raise NotImplementedError
 ```
-Extend the multi-agent system with these additional patterns:
-1. Mediator pattern - centralized communication between agents
-2. Command pattern - queue agent actions for execution
-3. Decorator pattern - add capabilities to agents dynamically
 
-Show the code architecture and explain how these patterns interact with
-Singleton, Factory, Observer, and Strategy.
-```
+### Convergence Activity
 
-**Expected Outcome**: You'll learn pattern composition—how to combine multiple patterns in complex systems.
+After AI explains, verify understanding:
+
+> "Walk me through how these patterns interact: AgentManager uses Factory to create agents, agents register with EventBus, EventBus notifies agents of events, and RoutingStrategy selects which agent handles each message. Explain what happens when a new agent type is added."
+
+### Deliverable
+
+Write 2-paragraph summary: "How Design Patterns Compose to Enable Scalable Architectures" explaining:
+- What each pattern contributes
+- How they work together
+- Why you need all four for complete flexibility
 
 ---
 
-### Prompt 4: System Design
+## Part 3: Student Challenges AI with Complex Architecture Questions
 
-Ask your AI Co-Teacher:
+**Your Role**: Student testing AI's understanding of pattern interactions
 
-```
-Design a complete AI agent orchestration system for a customer service platform:
-- Multiple agent types (chat, support ticket routing, escalation)
-- Event-driven communication
-- Dynamic strategy selection based on customer sentiment
-- Logging and monitoring
+### Challenge Design Scenarios
 
-Sketch the architecture using:
-- Singleton for coordination
-- Factory for agent creation
-- Observer for event routing
-- Strategy for routing decisions
-- Any other patterns you think are appropriate
+Ask AI to handle these cases:
 
-Explain your design decisions and why each pattern belongs where.
-```
+#### Challenge 1: Pattern Conflicts
 
-**Expected Outcome**: You'll practice thinking architecturally—designing systems, not just coding features.
+> "If I use Singleton for AgentManager and Dependency Injection to pass the manager to agents, which is better? Can I use both? What problems could arise if I mix them?"
+
+**Expected learning**: AI explains trade-offs between patterns and when to mix/match approaches.
+
+#### Challenge 2: Pattern Composition
+
+> "I want to add three more patterns: Mediator (for agent communication), Command (for queuing tasks), Decorator (for dynamic capabilities). How do they interact with Singleton, Factory, Observer, and Strategy? Show the architecture diagram."
+
+**Expected learning**: AI shows how multiple patterns compose into larger systems without conflicting.
+
+#### Challenge 3: Testing and Patterns
+
+> "With Singleton and Observer, testing becomes harder (global state, hidden dependencies). How would you design these patterns to be testable? Should I use Dependency Injection instead?"
+
+**Expected learning**: AI explains testability implications of patterns and how to design for both.
+
+### Deliverable
+
+Document your three challenges, AI's responses, and your understanding of pattern trade-offs and composition.
 
 ---
 
-## Validation Checklist
+## Part 4: Build Complete Multi-Pattern Agent Orchestration System
 
-Before moving forward, verify you can:
+**Your Role**: Architect designing production system
 
-- [ ] Implement Singleton pattern with proper initialization guards
-- [ ] Create Factory pattern with registry of agent types
-- [ ] Build Observer pattern with event bus and multiple observer types
-- [ ] Implement Strategy pattern with runtime algorithm switching
-- [ ] Integrate all 4 patterns into a cohesive multi-agent system
-- [ ] Explain when to use each pattern and what problem it solves
-- [ ] Recognize patterns in existing codebases
-- [ ] Extend systems by adding new agents without modifying core pattern code
+Create a professional multi-agent system integrating all four patterns:
+
+```
+agent_system/
+├── patterns/
+│   ├── __init__.py
+│   ├── singleton.py       # AgentManager (Singleton)
+│   ├── factory.py         # AgentFactory (Factory)
+│   ├── observer.py        # EventBus (Observer)
+│   └── strategy.py        # RoutingStrategy (Strategy)
+├── agents/
+│   ├── __init__.py
+│   ├── base.py            # Agent base class
+│   ├── chat_agent.py      # Concrete agent
+│   ├── ticket_agent.py    # Concrete agent
+│   └── escalation_agent.py
+├── events/
+│   ├── __init__.py
+│   └── events.py          # Event definitions
+└── main.py                # Integration
+```
+
+**patterns/singleton.py**:
+```python
+from typing import Dict, List, Optional
+
+
+class AgentManager:
+    """Singleton pattern - ensures single manager instance"""
+
+    _instance: Optional['AgentManager'] = None
+    _initialized = False
+
+    def __new__(cls) -> 'AgentManager':
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
+    def __init__(self) -> None:
+        if not AgentManager._initialized:
+            self.agents: Dict[str, 'Agent'] = {}
+            self.event_bus: Optional['EventBus'] = None
+            self.routing_strategy: Optional['RoutingStrategy'] = None
+            AgentManager._initialized = True
+
+    def register_agent(self, name: str, agent: 'Agent') -> None:
+        self.agents[name] = agent
+
+    def route_message(self, message: str) -> str:
+        if not self.routing_strategy:
+            raise RuntimeError("Routing strategy not set")
+        agent_name = self.routing_strategy.route(message)
+        return self.agents[agent_name].process(message)
+```
+
+**patterns/factory.py**:
+```python
+from typing import Dict, Type, Optional
+
+
+class AgentFactory:
+    """Factory pattern - creates agents without exposing types"""
+
+    def __init__(self) -> None:
+        self._registry: Dict[str, Type] = {}
+
+    def register(self, agent_type: str, agent_class: Type) -> None:
+        self._registry[agent_type] = agent_class
+
+    def create(self, agent_type: str, name: str) -> 'Agent':
+        if agent_type not in self._registry:
+            raise ValueError(f"Unknown agent type: {agent_type}")
+        return self._registry[agent_type](name)
+
+    def get_available_types(self) -> list[str]:
+        return list(self._registry.keys())
+```
+
+**patterns/observer.py**:
+```python
+from typing import List, Callable, Any
+
+
+class EventBus:
+    """Observer pattern - publish-subscribe event system"""
+
+    def __init__(self) -> None:
+        self._observers: List[Callable] = []
+
+    def attach(self, observer: Callable) -> None:
+        self._observers.append(observer)
+
+    def detach(self, observer: Callable) -> None:
+        if observer in self._observers:
+            self._observers.remove(observer)
+
+    def notify(self, event: Any) -> None:
+        for observer in self._observers:
+            observer(event)
+```
+
+**patterns/strategy.py**:
+```python
+from abc import ABC, abstractmethod
+
+
+class RoutingStrategy(ABC):
+    """Strategy pattern - encapsulates routing algorithms"""
+
+    @abstractmethod
+    def route(self, message: str) -> str:
+        pass
+
+
+class SentimentBasedStrategy(RoutingStrategy):
+    """Route based on message sentiment"""
+
+    def route(self, message: str) -> str:
+        if "urgent" in message.lower():
+            return "escalation_agent"
+        elif "ticket" in message.lower():
+            return "ticket_agent"
+        return "chat_agent"
+
+
+class RoundRobinStrategy(RoutingStrategy):
+    """Route in round-robin fashion"""
+
+    def __init__(self) -> None:
+        self.counter = 0
+        self.agents = ["chat_agent", "ticket_agent", "escalation_agent"]
+
+    def route(self, message: str) -> str:
+        agent = self.agents[self.counter % len(self.agents)]
+        self.counter += 1
+        return agent
+```
+
+**agents/base.py**:
+```python
+from abc import ABC, abstractmethod
+
+
+class Agent(ABC):
+    """Base agent class"""
+
+    def __init__(self, name: str) -> None:
+        self.name = name
+
+    @abstractmethod
+    def process(self, message: str) -> str:
+        pass
+```
+
+**agents/chat_agent.py**:
+```python
+from agents.base import Agent
+
+
+class ChatAgent(Agent):
+    """Concrete chat agent"""
+
+    def process(self, message: str) -> str:
+        return f"[ChatAgent {self.name}] Processing: {message}"
+```
+
+**main.py**:
+```python
+from patterns.singleton import AgentManager
+from patterns.factory import AgentFactory
+from patterns.observer import EventBus
+from patterns.strategy import SentimentBasedStrategy, RoundRobinStrategy
+from agents.chat_agent import ChatAgent
+
+# Initialize patterns
+manager = AgentManager()  # Singleton - same instance always
+factory = AgentFactory()  # Factory - creates agents
+event_bus = EventBus()    # Observer - event system
+strategy = SentimentBasedStrategy()  # Strategy - routing logic
+
+# Register agent types with factory
+factory.register("chat", ChatAgent)
+
+# Create agents via factory
+chat = factory.create("chat", "Helper")
+
+# Register agents with manager
+manager.register_agent("chat_agent", chat)
+
+# Set up event system and routing
+manager.event_bus = event_bus
+manager.routing_strategy = strategy
+
+# Use the system
+result = manager.route_message("I need help")
+print(result)
+```
+
+**Your task**: Expand this system with:
+1. Add TicketAgent and EscalationAgent
+2. Implement EventBus with agent event handlers
+3. Add Mediator pattern for complex agent communication
+4. Create comprehensive test suite for all patterns
+5. Write architecture guide: `design_patterns_integration.md`
+
+### Validation Checklist
+
+- ✅ AgentManager is true Singleton (same instance everywhere)
+- ✅ AgentFactory creates agents without revealing classes
+- ✅ EventBus allows pub-sub between agents
+- ✅ RoutingStrategy can be swapped at runtime
+- ✅ All patterns work together seamlessly
+- ✅ Adding new agent type requires only Factory registration
+- ✅ Adding new routing strategy needs only new Strategy class
+
+### Deliverable
+
+Complete multi-agent system with:
+- All 4 core patterns (Singleton, Factory, Observer, Strategy)
+- At least 3 concrete agent types
+- Multiple routing strategies
+- Event system connecting agents
+- Comprehensive test suite
+- Architecture documentation
+
+---
+
+## Part 5: Reflect on All Chapter 25 Concepts
+
+**Your Role**: Educational synthesist integrating all learning
+
+This is unique to the capstone—you'll reflect on what you've learned across all five lessons.
+
+### Reflection Prompt
+
+Write a comprehensive reflection document: `chapter_25_integration_reflection.md` with sections:
+
+#### Section 1: Inheritance and MRO (Lesson 1)
+Reflect on:
+- How did understanding Method Resolution Order change your thinking about class hierarchies?
+- When would you use single vs multiple inheritance?
+- How did inheritance patterns appear in later lessons?
+
+#### Section 2: Polymorphism and Duck Typing (Lesson 2)
+Reflect on:
+- What's the key insight that separates polymorphism from duck typing?
+- In your multi-agent system, where did you use each approach? Why?
+- How would your design differ if you HAD to use duck typing everywhere?
+
+#### Section 3: Composition Over Inheritance (Lesson 3)
+Reflect on:
+- Your agents are composed from engines. How is this better than inheritance?
+- What would the codebase look like if agents inherited from TicketAgent, ChatAgent, etc.?
+- How did composition principles appear in your strategy and observer implementations?
+
+#### Section 4: Special Methods and Protocols (Lesson 4)
+Reflect on:
+- How did special methods make your custom types feel like built-ins?
+- In an agent system, where might you use __call__, __enter__/__exit__, or __iter__?
+- What's the relationship between protocols and polymorphism?
+
+#### Section 5: Design Patterns Integration (Lesson 5)
+Reflect on:
+- How do Singleton, Factory, Observer, and Strategy solve fundamental OOP problems?
+- Could you design your system with only some patterns? What would you lose?
+- What's the relationship between design patterns and the OOP concepts from Lessons 1-4?
+
+#### Section 6: Architectural Synthesis
+Reflect on:
+- In your system, inheritance is used for agent types. Composition is used for agent capabilities. Polymorphism makes routing work. Special methods make events feel natural.
+- How are all these concepts working together?
+- Can you trace a message through your system and identify which OOP concept is responsible at each step?
+- What would break if you removed each concept?
+
+### Deliverable
+
+Complete `chapter_25_integration_reflection.md` with thoughtful answers to all reflection questions, demonstrating deep understanding of how all Chapter 25 concepts interconnect.
+
+---
+
+## Summary: Capstone Integration
+
+**Part 1 (Student discovers)**: You identified problems that design patterns solve
+
+**Part 2 (AI teaches)**: AI explained how patterns compose into scalable architectures
+
+**Part 3 (Student teaches)**: You challenged AI with complex interaction scenarios
+
+**Part 4 (Knowledge synthesis)**: You built a production multi-agent system using all patterns
+
+**Part 5 (Reflection)**: You reflected on how all Chapter 25 concepts integrate together
+
+### What You've Built
+
+1. `pattern_evolution_analysis.md` — Problem analysis
+2. `pattern_necessity_analysis.md` — Pattern necessity statement
+3. Challenge documentation — Three complex architecture scenarios
+4. `agent_system/` — Production system with all 4 patterns
+5. `design_patterns_integration.md` — Architecture guide
+6. `chapter_25_integration_reflection.md` — Comprehensive learning synthesis
+
+### Chapter 25 Complete
+
+You've mastered:
+- **Lesson 1**: Inheritance and Method Resolution Order
+- **Lesson 2**: Polymorphism and Duck Typing
+- **Lesson 3**: Composition Over Inheritance and Code Organization
+- **Lesson 4**: Special Methods (Magic Methods) and Protocols
+- **Lesson 5**: Design Patterns and Architectural Integration
+
+You can now design and build sophisticated object-oriented systems that are:
+- Flexible through polymorphism and composition
+- Maintainable through design patterns
+- Scalable through proper architecture
+- Extensible without modifying existing code
+
+### Next
+
+In Part 5, you'll apply these OOP skills to build real-world projects integrating multiple domains: data processing, API design, testing frameworks, and more.
 
 ---
 

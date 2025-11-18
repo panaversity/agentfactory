@@ -74,7 +74,7 @@ cognitive_load:
   assessment: "B1 tier allows max 10 concepts; 9 is within limit with clear progression from foundational (hash functions) to applied (performance decisions)"
 
 # Generation metadata
-generated_by: "lesson-writer"
+generated_by: "content-implementer"
 source_spec: "specs/001-part-4-chapter-19/spec.md (FR-013 to FR-018)"
 created: "2025-11-09"
 last_modified: "2025-11-09"

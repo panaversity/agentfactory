@@ -75,7 +75,7 @@ differentiation:
   remedial_for_struggling: "Focus on simple asyncio.sleep() examples before introducing network simulation; use timing diagrams"
 
 # Generation metadata
-generated_by: "lesson-writer v1.0.0"
+generated_by: "content-implementer v1.0.0"
 source_spec: "specs/001-part-4-chapter-28/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -190,7 +190,7 @@ result = asyncio.run(fetch_user_async(1))
 print(result)  # {'id': 1, 'name': 'Alice'}
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize the difference between `async def` and `def`—you understand *why it matters*. Async functions let tasks overlap. That's the insight. Syntax is cheap; architecture is gold.
 
@@ -692,32 +692,101 @@ Async version (5 calls, concurrent): 1.00s
 
 ---
 
-## Try With AI
+## Challenge 1: The Blocking I/O Discovery
 
-Use your AI partner to deepen understanding. Choose your AI tool (Claude Code, Gemini CLI, or ChatGPT web):
+This is a **4-part bidirectional learning challenge** where you and AI explore asyncio through collaborative discovery.
 
-### Prompt 1: Understand Level
-**Ask your AI:**
-> "Explain what happens when I await asyncio.sleep(2) in an async function. Why doesn't it block other tasks? What is the event loop doing?"
+### Part 1: Discover Independently (Student as Scientist)
+**Your Challenge**: Build two small programs without AI help.
 
-**Expected Outcome**: You'll understand that `await` is a pause point where the event loop can switch to other tasks. Spend 3-5 minutes discussing this with AI.
+**Deliverable**: Create a file `/tmp/blocking_discovery.py` containing:
+1. A function that simulates blocking I/O using `time.sleep(3)` — print "Starting sync fetch" and "Done with sync fetch"
+2. A version using `asyncio.sleep(3)` — print the same messages
+3. Run both and measure elapsed time
 
-### Prompt 2: Apply Level
-**Tell your AI:**
-> "Generate async code that fetches 3 different APIs in parallel using asyncio.run() and asyncio.gather(). Each API should simulate a 2-second delay with asyncio.sleep(). Make sure to include type hints."
+**Expected Observation**: The first takes 3 seconds minimum. The second also takes 3 seconds, but *why* is the key question.
 
-**Expected Outcome**: Run the code and measure the total time. It should complete in ~2 seconds, not 6 seconds. Verify concurrency actually works.
+**Self-Validation**:
+- Does the sync version block? (Yes—measure it)
+- Does the async version also block? (Yes, in this simple case—it's a single task)
+- How would you prove asyncio helps with *multiple* tasks? (Create 3+ concurrent tasks)
 
-### Prompt 3: Analyze Level
-**Ask your AI:**
-> "Show me both a synchronous and asynchronous version of fetching 5 APIs, each taking 1 second. Measure the time for both on my machine. Why is the async version faster? Is it parallelism or concurrency?"
+---
 
-**Expected Outcome**: You'll measure the difference (sync: 5 seconds, async: 1 second) and understand it's concurrency (single-threaded task switching), not parallelism (multiple cores).
+### Part 2: AI as Teacher (Teaching You the Pattern)
+**Your AI Prompt**:
+> "I built a sync program that calls time.sleep(3) five times in a row—takes 15 seconds total. Then I wrapped it in asyncio, but it still takes 15 seconds. Why doesn't asyncio help? Show me what I'm missing. Teach me the exact code pattern that makes asyncio run 5 tasks concurrently instead of sequentially."
 
-### Prompt 4: Evaluate Level
-**Give your AI a task:**
-> "Here's a task: 'Read 100 files from disk, each taking 10ms.' Is this I/O-bound or CPU-bound? Would asyncio help here? Why or why not? What about 'Calculate the sum of 100 million numbers'—is that I/O or CPU-bound?"
+**AI's Role**: Explain the conceptual gap (sequential vs concurrent scheduling), then show you the specific code pattern (asyncio.gather or create_task).
 
-**Expected Outcome**: You'll correctly classify tasks and justify your reasoning. Understand when asyncio is the right tool and when it's not.
+**Interactive Moment**: Ask AI a follow-up question:
+> "You showed me asyncio.gather—explain what's happening inside gather() when I pass it 5 coroutines. How does it make them run 'at the same time' on a single thread?"
 
-**Safety Note**: The code examples use simulated I/O (`asyncio.sleep()`). In production, you'd use real async libraries like `httpx` (HTTP), `aiofiles` (file I/O), or `asyncpg` (PostgreSQL). Always validate AI-generated code—check for security (no hardcoded secrets), proper error handling, and type safety.
+**Expected Outcome**: AI articulates that gather() schedules all tasks, and the event loop switches between them when they hit await points. You understand task scheduling, not just syntax.
+
+---
+
+### Part 3: You as Teacher (Correcting the Pattern)
+**Setup**: AI generates code with a subtle bug. Your job is to diagnose and teach AI why it's wrong.
+
+**AI's Initial Code** (You ask AI to generate this):
+```python
+async def fetch_api(name: str, delay: float) -> str:
+    await asyncio.sleep(delay)
+    return f"Data from {name}"
+
+async def main():
+    # This runs 5 fetches sequentially
+    for i in range(5):
+        result = await fetch_api(f"API-{i}", 1)
+    print("Done")
+
+asyncio.run(main())
+```
+
+**Your Task**:
+1. Run this code. Measure the time. (Should be 5 seconds)
+2. Identify the problem: `await` inside the loop blocks—it doesn't parallelize
+3. Teach AI what the fix is. Ask AI:
+> "This takes 5 seconds. But I want it to take 1 second. The problem is in the for loop—I'm awaiting immediately instead of scheduling. Show me the fix using either create_task() or asyncio.gather(). Explain the difference between 'await' and 'schedule' in plain language."
+
+**Your Edge Case Discovery**: Ask AI:
+> "What happens if one of the 5 APIs fails (raises an exception)? Does gather() stop all tasks or continue? Test this with return_exceptions=True vs False."
+
+**Expected Outcome**: You discover error handling nuances and teach AI how gather() differs from TaskGroup in failure scenarios.
+
+---
+
+### Part 4: Build Production Artifact (Student as Engineer)
+**Your Capstone for This Challenge**: Build a realistic concurrent API fetcher.
+
+**Specification**:
+- Fetch data from 5 simulated "external services" (use asyncio.sleep to simulate latency)
+- Each service has different latency: 0.5s, 1.5s, 2s, 0.7s, 1.2s
+- Services are named: weather, news, stock, traffic, health
+- Measure total wall-clock time (should be ~2s, the longest latency, not 6.4s sum)
+- Include error handling: one service fails randomly; system continues
+- Type hints throughout
+
+**Deliverable**: Save to `/tmp/async_fetcher.py`
+
+**Testing Your Work**:
+```bash
+time python /tmp/async_fetcher.py
+# Expected output: ~2 seconds, not 6.4 seconds
+# All 5 services fetched, with 1 error handled gracefully
+```
+
+**Validation Checklist**:
+- [ ] Code runs without errors
+- [ ] Total time ~2 seconds (longest service latency)
+- [ ] All services shown in output (concurrency verified)
+- [ ] One failure handled; others continue
+- [ ] Type hints complete
+- [ ] Matches production patterns (asyncio.run at top level, asyncio.gather for coordination)
+
+---
+
+**Time Estimate**: 25-30 minutes (5 min discover, 8 min teach/learn, 7 min edge cases, 5-10 min build artifact)
+
+**Key Takeaway**: You've moved from "I know asyncio syntax" to "I understand how to design concurrent systems and can teach the pattern to others."

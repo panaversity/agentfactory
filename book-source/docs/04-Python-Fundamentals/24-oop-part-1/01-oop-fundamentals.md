@@ -77,7 +77,7 @@ differentiation:
   remedial_for_struggling: "Focus primarily on the bank account analogy. Use 'data storage' and 'actions' as foundational language before introducing 'attributes' and 'methods.'"
 
 # Generation metadata
-generated_by: "lesson-writer v1.0.0"
+generated_by: "content-implementer v1.0.0"
 source_spec: "specs/020-oop-part-1-2/spec-chapter-24.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -88,45 +88,147 @@ version: "1.0.0"
 
 # What is OOP? Why OOP?
 
-## The Problem with Functions Alone
+In this lesson, you'll discover why Object-Oriented Programming exists by first experiencing the pain of procedural code, then learning how OOP solves real problems, then challenging AI's explanations with edge cases, and finally building your own mental model for when to use OOP.
 
-Imagine you're building a banking application. With functions alone, you might organize it like this:
+---
+
+## Part 1: Student Discovers Procedural Pain Points
+
+**Your Role**: Software architect discovering OOP necessity
+
+Before learning OOP concepts, you'll experience why they exist. Real developers don't memorize definitions—they discover problems that drive design decisions.
+
+### Discovery Exercise: Build a Bank System Without OOP
+
+**Scenario**: You're building a banking application. You decide to use only functions and variables. Let's see what happens.
+
+**Stage 1: One Account Works Fine**
 
 ```python
 # Procedural approach: data and functions are separate
-balance = 1000
-account_holder = "Alice"
+balance_alice = 1000
+account_holder_alice = "Alice"
 
-def deposit(amount):
-    global balance
-    balance += amount
-    print(f"Deposited {amount}. New balance: {balance}")
+def deposit_alice(amount):
+    global balance_alice
+    balance_alice += amount
+    print(f"Deposited {amount}. New balance: {balance_alice}")
 
-def withdraw(amount):
-    global balance
-    if amount <= balance:
-        balance -= amount
-        print(f"Withdrew {amount}. New balance: {balance}")
+def withdraw_alice(amount):
+    global balance_alice
+    if amount <= balance_alice:
+        balance_alice -= amount
+        print(f"Withdrew {amount}. New balance: {balance_alice}")
     else:
         print("Insufficient funds")
 
-# Create another account? Create MORE global variables
-balance2 = 5000
-account_holder2 = "Bob"
+deposit_alice(200)
+withdraw_alice(50)
 ```
 
-This works for one account, but what if you have 100,000 accounts? You'd need 200,000 variables and duplicate functions for each account. This is where **Object-Oriented Programming** solves a real problem.
+**Your task 1**: Run this code and verify it works. What do you notice?
+- How many variables per account?
+- How many functions per account?
+- How clearly does it show "this function works on this account"?
+- Document your observations in `procedural_analysis.md`
 
-## What is OOP?
+**Stage 2: Add a Second Account**
 
-**Object-Oriented Programming (OOP)** is a paradigm that organizes code around **objects**—self-contained entities that bundle **data (attributes)** and **behavior (methods)** together.
-
-Instead of separating data from functions, OOP says: "These belong together. A bank account HAS a balance and HAS the ability to deposit and withdraw."
-
-**Key insight**: Real-world things aren't just data floating in space. They're entities with properties and capabilities.
+Now the bank hires you and says: "We need two accounts: Alice and Bob."
 
 ```python
-# OOP approach: data and behavior bundled together
+# Add Bob's account
+balance_alice = 1000
+account_holder_alice = "Alice"
+balance_bob = 5000        # ← New variable
+account_holder_bob = "Bob"  # ← New variable
+
+def deposit_alice(amount):
+    global balance_alice
+    balance_alice += amount
+
+def withdraw_alice(amount):
+    global balance_alice
+    if amount <= balance_alice:
+        balance_alice -= amount
+    else:
+        print("Insufficient funds")
+
+# Copy-paste ALL functions with new names for Bob
+def deposit_bob(amount):
+    global balance_bob
+    balance_bob += amount
+
+def withdraw_bob(amount):
+    global balance_bob
+    if amount <= balance_bob:
+        balance_bob -= amount
+    else:
+        print("Insufficient funds")
+
+deposit_alice(200)
+deposit_bob(100)
+withdraw_alice(50)
+```
+
+**Your task 2**: Add Bob and notice the problems:
+- How many duplicate function definitions?
+- If you find a bug in `withdraw_alice`, where else do you need to fix it?
+- What if you needed 100,000 accounts?
+- Document the scaling problem in your analysis file.
+
+**Stage 3: Predict the Enterprise Problem**
+
+**Your task 3**: Before running code, answer these questions:
+- How many variables would you need for 100 accounts?
+- How many functions?
+- If you fix a bug in withdrawal logic, how many function definitions do you change?
+- How easy would it be to accidentally use wrong account's withdraw function?
+
+### Your Discoveries
+
+Write a summary called `procedural_problem_statement.md` with:
+1. The core problem: Why does procedural code with accounts become unmaintainable?
+2. The scaling problem: What happens at 100 accounts? 1 million?
+3. The bug-fix problem: Why is fixing one bug potentially risky across all account types?
+4. Your prediction: What programming feature would solve this problem?
+
+---
+
+## Part 2: AI Explains OOP as a Solution
+
+**Your Role**: Student receiving instruction from AI Teacher
+
+Now that you've discovered the problems, it's time to learn how OOP solves them.
+
+### AI Teaching Prompt
+
+Ask your AI companion (Claude Code, Gemini CLI, or ChatGPT):
+
+> "I tried building a banking system with functions and separate variables. The problems I discovered:
+> 1. For N accounts, I need 2N variables (balance, holder name)
+> 2. For each operation (deposit, withdraw, check_balance), I need N duplicate functions
+> 3. If I find a bug in withdrawal logic, I have to fix it in N places
+>
+> How would OOP solve these problems? Explain:
+> 1. What is a class and what is an object?
+> 2. How do data (attributes) and functions (methods) belong together in OOP?
+> 3. How does creating 100,000 accounts become trivial with OOP?
+> 4. Show me the same banking system using a class instead of functions."
+
+### What You'll Learn from AI
+
+**Expected AI Response** (summary):
+
+- **Class Definition**: A blueprint for creating objects (template)
+- **Object**: A specific instance created from the blueprint (like a building from architectural plans)
+- **Attributes**: Data that belongs to an object (balance, account_holder)
+- **Methods**: Functions that belong to an object (deposit, withdraw)
+- **Key insight**: Each object manages its own data. 100,000 objects = 100,000 independent balances
+
+**AI will likely show you code like**:
+
+```python
 class BankAccount:
     def __init__(self, account_holder: str, initial_balance: float = 0.0):
         self.account_holder = account_holder
@@ -134,341 +236,222 @@ class BankAccount:
 
     def deposit(self, amount: float) -> None:
         self.balance += amount
-        print(f"Deposited {amount}. New balance: {self.balance}")
 
     def withdraw(self, amount: float) -> None:
         if amount <= self.balance:
             self.balance -= amount
-            print(f"Withdrew {amount}. New balance: {self.balance}")
         else:
             print("Insufficient funds")
 
-# Now creating 100,000 accounts is trivial
-alice_account = BankAccount("Alice", 1000)
-bob_account = BankAccount("Bob", 5000)
-
-alice_account.deposit(200)  # Alice's balance, not Bob's
-bob_account.withdraw(100)   # Bob's balance, not Alice's
+# Create 100,000 accounts trivially
+accounts = [BankAccount(f"Customer{i}", 1000) for i in range(100000)]
+accounts[0].deposit(200)  # Only affects Customer0's balance
 ```
 
-**Compare the approaches**:
+### Convergence Activity
 
-| Procedural | OOP |
-|-----------|-----|
-| Data and functions separate | Data and methods bundled together |
-| Global variables increase with complexity | Each object manages its own state |
-| Duplicate code for similar entities | One class, many objects |
-| Hard to organize as systems grow | Scales naturally with complexity |
+After AI explains, **verify your understanding**:
 
-#### 💬 AI Colearning Prompt
+Ask AI: "In your class-based solution, show me how 100 different accounts can coexist without interfering with each other. Walk me through the memory layout when I create two BankAccount objects."
 
-> Ask your AI Co-Teacher: "Why did Python adopt OOP when it could have stayed purely procedural? What problems does OOP solve that functions alone can't?"
-
-This helps you think beyond syntax to the **why** behind language design decisions.
+**Deliverable**: Write 1-paragraph summary explaining OOP's solution to your procedural problems, referencing the class-based code AI provided.
 
 ---
 
-## The Four Pillars of OOP
+## Part 3: Student Challenges AI with Design Edge Cases
 
-All OOP systems rest on four foundational concepts. They're called the "pillars" because everything else builds on them.
+**Your Role**: Student teaching AI by testing its understanding
+
+Now reverse roles. You'll design challenging scenarios to test whether AI really understands why OOP is superior.
+
+### Challenge Design Pattern
+
+Ask AI to handle these edge cases:
+
+#### Challenge 1: State Isolation
+
+**Your prompt to AI**:
+
+> "I have a bank with two accounts:
+> ```python
+> alice = BankAccount("Alice", 1000)
+> bob = BankAccount("Bob", 5000)
+> alice.deposit(200)
+> ```
+>
+> After this code, what is:
+> - alice.balance?
+> - bob.balance?
+>
+> Why didn't bob.balance increase to 5200? Explain what's happening in memory that makes these separate."
+
+**Expected learning**: AI will explain that each object has its own independent memory space for `balance`. This is **the core advantage over global variables**.
+
+#### Challenge 2: Method Behavior by Object
+
+**Your prompt to AI**:
+
+> "Show me a scenario where:
+> 1. alice.withdraw(50) succeeds
+> 2. bob.withdraw(5001) fails (insufficient funds)
+> 3. Both calls use the same withdraw method code
+>
+> How can the same method produce different results for different objects?"
+
+**Expected learning**: AI will explain that methods operate on `self`—the specific instance calling the method. Different objects, different self, different results.
+
+#### Challenge 3: Scaling Comparison
+
+**Your prompt to AI**:
+
+> "Compare these two scenarios:
+> - **Procedural**: I need to add a new account type (SavingsAccount with interest). How many places do I modify code?
+> - **OOP**: I need to add SavingsAccount class. How many places do I modify code?
+>
+> Which approach is more maintainable as the system grows?"
+
+### Deliverable
+
+Document your three challenges, AI's responses, and your analysis of whether AI's OOP reasoning was sound and complete.
+
+---
+
+## Part 4: Build Your OOP Mental Model
+
+**Your Role**: Knowledge synthesizer creating decision framework
+
+Now integrate everything into a practical decision framework you'll use throughout your Python career.
+
+### Your OOP Decision Framework
+
+Create a markdown file called `oop_decision_framework.md` with this structure:
+
+```markdown
+# When Should I Use OOP? Decision Framework
+
+## Core Problem OOP Solves
+
+OOP solves the **scaling and organization problem**: When you have many entities (accounts, users, game characters) with similar data and behavior, OOP lets you:
+- Define structure once (the class)
+- Create as many instances as needed (different objects)
+- Each instance manages its own data independently
+- Changes to logic affect all instances automatically
+
+## Procedural vs OOP Comparison
+
+### When Procedural is Fine
+- Script with <5 variables
+- No repetition of similar logic
+- One-time use, never maintained
+
+**Example**: A script that calculates π to 1000 digits
+
+### When OOP is Necessary
+- 3+ entities with similar data structure
+- Duplicate functions for similar operations
+- Code will grow over time
+- Multiple instances of same concept
+
+**Example**: Game with Player, Enemy, NPC classes
+
+---
+
+## Real-World Recognition Pattern
+
+When building a system, ask:
+
+**Question 1**: Are there multiple similar entities?
+- Yes → Go to Q2
+- No → Procedural might work
+
+**Question 2**: Does each entity have the same type of data?
+- Yes → Go to Q3
+- No → Procedural might work
+
+**Question 3**: Does each entity perform the same type of operations?
+- Yes → OOP is the right choice
+- No → OOP might still help, but carefully design inheritance
+
+---
+
+## The Four Pillars (Conceptual Overview)
 
 ### 1. Encapsulation: Bundle and Protect
-
-**Encapsulation** means bundling related data and methods together, and controlling who can access the data from outside.
-
-Think of a thermostat: You can see the temperature and press buttons to adjust it, but you can't reach inside to directly modify the circuit board. The internal components are protected.
-
-```python
-class Thermostat:
-    def __init__(self, current_temp: float = 20.0):
-        self._internal_temp = current_temp  # Protected: don't touch directly
-
-    def set_temperature(self, desired: float) -> None:
-        """Controlled access through a method"""
-        if 15 <= desired <= 30:  # Validate before changing
-            self._internal_temp = desired
-        else:
-            print("Temperature out of safe range")
-
-    def get_temperature(self) -> float:
-        return self._internal_temp
-
-thermostat = Thermostat(20)
-thermostat.set_temperature(22)  # Safe: goes through validation
-```
-
-**Why this matters**: Encapsulation prevents bugs. If someone could directly set temperature to 500 degrees, the thermostat breaks. By protecting the data, we ensure it's always valid.
-
-#### 🎓 Instructor Commentary
-
-> In AI-native development, encapsulation isn't about being secretive—it's about being intentional. When you design a ChatAgent class, its conversation history (data) and message processing methods are bundled together. This prevents other code from accidentally corrupting the history. Clean boundaries = fewer bugs.
+**Problem it solves**: Data corruption (external code modifying critical data incorrectly)
+**Solution**: Bind data and methods together, control access
 
 ### 2. Abstraction: Hide Complexity
+**Problem it solves**: Overwhelming users with unnecessary detail
+**Solution**: Show only essential interface, hide implementation
 
-**Abstraction** means showing only what's essential and hiding unnecessary complexity.
+### 3. Inheritance: Reuse Code
+**Problem it solves**: Duplicate code across similar classes
+**Solution**: Base class holds shared code, child classes specialize
 
-Your phone's camera app shows you a viewfinder and a "Take Photo" button. You don't see the 10,000 lines of code managing sensors, compression algorithms, or file systems. That complexity is abstracted away.
-
-```python
-class Camera:
-    def take_photo(self) -> None:
-        """Simple interface hiding complex internal process"""
-        self._focus_sensor()
-        self._adjust_exposure()
-        self._capture_frame()
-        self._compress_image()
-        self._save_to_storage()
-        print("Photo saved!")
-
-    def _focus_sensor(self) -> None:
-        """Internal detail - user doesn't need to know this exists"""
-        pass
-
-    def _adjust_exposure(self) -> None:
-        """Another internal detail"""
-        pass
-
-    # ... more internal methods ...
-
-camera = Camera()
-camera.take_photo()  # One simple call, complex work happens inside
-```
-
-**Why this matters**: Users don't need to understand all the complexity. They just call `take_photo()` and trust it works.
-
-### 3. Inheritance: Reuse Code Through Hierarchy
-
-**Inheritance** means a new class can reuse code from an existing class and extend it with new functionality.
-
-Imagine a furniture store. Different items (chair, table, bed) share common properties (price, color, dimensions) but have unique features (chairs have a height, tables have a shape, beds have a mattress size).
-
-```python
-class Furniture:
-    """Base class - shared code for all furniture"""
-    def __init__(self, name: str, price: float, color: str):
-        self.name = name
-        self.price = price
-        self.color = color
-
-    def display_info(self) -> None:
-        print(f"{self.name}: {self.color}, ${self.price}")
-
-class Chair(Furniture):
-    """Inherits from Furniture, adds chair-specific features"""
-    def __init__(self, name: str, price: float, color: str, height: float):
-        super().__init__(name, price, color)  # Reuse parent's __init__
-        self.height = height
-
-class Table(Furniture):
-    """Inherits from Furniture, adds table-specific features"""
-    def __init__(self, name: str, price: float, color: str, shape: str):
-        super().__init__(name, price, color)  # Reuse parent's __init__
-        self.shape = shape
-
-chair = Chair("Office Chair", 150, "black", 1.1)
-table = Table("Dining Table", 400, "oak", "rectangular")
-
-chair.display_info()  # Method inherited from Furniture
-table.display_info()  # Method inherited from Furniture
-```
-
-**Why this matters**: Don't write the same code twice. Both Chair and Table share color and price, so they inherit from Furniture. Changes to the base class benefit all subclasses automatically.
-
-**Note**: We're introducing inheritance conceptually here. Lesson 2 will show you the code syntax in detail.
-
-### 4. Polymorphism: Same Interface, Different Behavior
-
-**Polymorphism** means "many forms"—different objects respond to the same method call in their own way.
-
-A music player has a `play()` button. Pressing it plays a MP3 file differently than a WAV file, but the interface is the same.
-
-```python
-class MediaPlayer:
-    def play(self) -> None:
-        """Override this in subclasses"""
-        raise NotImplementedError
-
-class MP3Player(MediaPlayer):
-    def play(self) -> None:
-        print("🎵 Playing MP3 with compression-friendly codec")
-
-class WAVPlayer(MediaPlayer):
-    def play(self) -> None:
-        print("🎵 Playing WAV with lossless audio")
-
-# Different objects, same interface
-players = [MP3Player(), WAVPlayer()]
-for player in players:
-    player.play()  # Each responds differently, but same method call
-```
-
-Output:
-```
-🎵 Playing MP3 with compression-friendly codec
-🎵 Playing WAV with lossless audio
-```
-
-**Why this matters**: You can write code that works with multiple object types without knowing which specific type it is. This makes systems flexible and extensible.
-
-#### 🚀 CoLearning Challenge
-
-Ask your AI Co-Teacher:
-
-> "Generate a simple class that models a thermometer with a current_temp attribute and a read() method that returns the temperature. Then explain why we'd use a class instead of just functions. What's the advantage?"
-
-**Expected Outcome**: You'll practice identifying real-world entities that should become classes and understanding why bundling makes sense.
+### 4. Polymorphism: Flexible Interface
+**Problem it solves**: Code that works with only one type is inflexible
+**Solution**: Different objects respond differently to same method call
 
 ---
 
-## Why OOP Matters
+## Decision Tree: Procedural or OOP?
 
-OOP solves real problems that emerge when code becomes complex:
-
-### Problem 1: Organization
-
-**Procedural**: You have 50 functions and 200 variables. Which variables does each function use? You have to read the code to find out.
-
-**OOP**: Functions (methods) belong to objects (classes). It's clear: `bank_account.withdraw()` operates on `bank_account`'s data, not some random global variable.
-
-### Problem 2: Reusability
-
-**Procedural**: You wrote a `Player` for a game. Now you need a `NPC` with similar abilities. You copy-paste code and modify it. Two years later, you find a bug in both. You fix it twice.
-
-**OOP**: `Player` and `NPC` inherit from `Character`. Fix the bug once in `Character`, both benefit automatically.
-
-### Problem 3: Maintainability
-
-**Procedural**: Adding a new feature requires touching 10 files. Risk of breaking something else is high.
-
-**OOP**: Each class is responsible for one thing. Add a feature to one class; other classes are unaffected.
-
-### Problem 4: Scalability
-
-**Procedural**: Managing 100,000 bank accounts means 200,000 global variables.
-
-**OOP**: One `BankAccount` class, 100,000 objects created from it.
-
-#### ✨ Teaching Tip
-
-> Use Claude Code to explore OOP in practice: "Show me how Python's built-in list class is designed. What data does it store (attributes) and what actions can it do (methods)? Why is it an object instead of just a function?"
+```
+START: "Do I have 3+ similar entities?"
+├─ NO → Stay procedural
+│
+└─ YES: "Will this system grow over time?"
+   ├─ NO → Could work either way
+   │
+   └─ YES: "Would a bug fix need to happen in multiple places?"
+      ├─ NO → Procedural is fine
+      │
+      └─ YES: "Use OOP!" → Create a class, instantiate multiple objects
+```
 
 ---
 
-## OOP in AI-Native Development
+## Testing Your Understanding
 
-This is important: **In AI-native development, agents themselves are objects.**
+Ask yourself these questions about a system you're building:
 
-Imagine you're building a system with multiple AI agents:
+1. What are the entities?
+2. What data does each entity store?
+3. What operations does each entity perform?
+4. Would you ever need 100 of these entities?
+5. If you discovered a bug in an operation, how many places would you fix it?
 
-```python
-class ChatAgent:
-    """An AI agent is an object with state and behavior"""
-    def __init__(self, name: str, model: str = "gpt-4"):
-        self.name = name
-        self.model = model
-        self.conversation_history = []  # Each agent tracks its own history
-
-    def process_message(self, user_input: str) -> str:
-        """Behavior: respond to messages"""
-        self.conversation_history.append(user_input)
-        response = f"{self.name} (using {self.model}) says: understood!"
-        return response
-
-class CodeAgent(ChatAgent):
-    """Specialized agent inherits from ChatAgent"""
-    def __init__(self, name: str, model: str = "gpt-4"):
-        super().__init__(name, model)
-        self.compiled_code = []
-
-    def process_message(self, user_input: str) -> str:
-        """Override: respond differently"""
-        result = super().process_message(user_input)
-        # Additional code-specific logic
-        return f"{result} [Code verified]"
-
-# Multi-agent system using OOP
-chat_agent = ChatAgent("Assistant", "gpt-4")
-code_agent = CodeAgent("CodeGenius", "gpt-4")
-
-print(chat_agent.process_message("Hello"))    # Standard response
-print(code_agent.process_message("Write code"))  # Code-specialized response
+**If answers suggest many similar entities and operations → Use OOP**
 ```
 
-Each agent is an object with its own state (`conversation_history`, `compiled_code`) and behavior (how it `process_message`). This is why OOP is essential for building professional AI systems.
+### Validation with AI
 
-#### 🎓 Instructor Commentary
+Once your framework is complete, validate it:
 
-> In the next few lessons, you'll learn the syntax of OOP (how to write `class`, `def __init__`, etc.). But remember: the point isn't memorizing syntax. The point is understanding that real-world systems—whether they're games, banking apps, or multi-agent AI systems—are best modeled as objects interacting with each other. Syntax is just the vehicle for that idea.
+> "Review my OOP decision framework. Is my 'when to use OOP' advice sound? What common mistakes do students make when deciding between procedural and OOP? Give me 3 real-world examples where procedural is correct (and students wrongly use OOP)."
+
+**Deliverable**: Complete `oop_decision_framework.md` that you'll reference throughout Chapter 24 and beyond.
 
 ---
 
-## Concept Summary
+## Summary: Bidirectional Learning Pattern
 
-Before moving to the next lesson, make sure you can explain:
+In this lesson, you experienced all three roles:
 
-1. **OOP Definition**: A paradigm that bundles data (attributes) and behavior (methods) together in objects
-2. **Encapsulation**: Bundling and protecting data from unauthorized access
-3. **Abstraction**: Hiding complexity and showing only essentials
-4. **Inheritance**: Reusing code from parent classes in child classes
-5. **Polymorphism**: Different objects responding differently to the same method call
+**Part 1 (Student discovers)**: You built procedural code and discovered why it fails at scale
+**Part 2 (AI teaches)**: AI explained how OOP solves those exact problems
+**Part 3 (Student teaches)**: You challenged AI with edge cases testing its understanding
+**Part 4 (Knowledge synthesis)**: You built a reusable decision framework
 
-These five concepts are the foundation of everything you'll learn in this chapter.
+This pattern ensures you understand OOP not as abstract theory, but as a practical response to real coding problems.
 
----
+### What You've Built
 
-## Try With AI
+1. `procedural_analysis.md` — Your analysis of procedural approach pain points
+2. `procedural_problem_statement.md` — Clear statement of scaling problems
+3. Challenge documentation — Three edge cases you posed to AI
+4. `oop_decision_framework.md` — Your reusable decision framework
 
-Use your AI companion tool (Claude Code or Gemini CLI). You're exploring why OOP exists and what problems it solves for professional development.
+### Next Steps
 
-### Prompt 1: Recall - Understanding OOP Pillars
-
-```
-Explain the four pillars of OOP (Encapsulation, Abstraction, Inheritance,
-Polymorphism) in simple terms. Give a real-world analogy for each one that
-has nothing to do with programming.
-```
-
-**Expected Outcome**: You'll understand each pillar conceptually before touching code.
-
----
-
-### Prompt 2: Understand - Procedural vs OOP
-
-```
-Compare a procedural approach (functions + data separate) vs OOP approach
-(classes + objects bundled) for modeling a library system (books, members,
-checkouts, fines). For each approach, explain: how would you organize the
-code? Which is better and why?
-```
-
-**Expected Outcome**: You'll see why OOP organizes complex systems better than procedural for real-world scenarios.
-
----
-
-### Prompt 3: Apply - Identifying Objects
-
-```
-I'm building a task management app with projects, tasks, team members, and
-due dates. What classes (objects) would I need? For each class, describe
-what data (attributes) it would store and what actions (methods) it would
-perform.
-```
-
-**Expected Outcome**: You'll practice recognizing real-world entities as potential classes and designing their structure.
-
----
-
-### Prompt 4: Analyze - OOP in AI Systems
-
-```
-How would you design a multi-agent AI system for software development with
-these roles: ChatAgent (conversation), CodeAgent (code generation), TestAgent
-(testing), and DeployAgent (deployment)? What would be shared across all agents
-(base class)? What would be unique to each? Why is OOP the right design for this?
-```
-
-**Expected Outcome**: You'll connect OOP principles to professional AI development and see inheritance and specialization in action.
-
----
-
-**Safety Note**: When examining AI-generated class designs, always ask: "Is this structure logical? Does the data organization make sense? Would this handle 100,000 users without breaking?" Critical thinking about design is more important than memorizing syntax.
+Lesson 2 will build on this foundation by teaching the syntax for creating classes and objects. You'll use this decision framework to understand not just HOW to write classes, but WHY that syntax exists.

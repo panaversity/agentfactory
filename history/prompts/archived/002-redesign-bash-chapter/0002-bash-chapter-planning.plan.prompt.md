@@ -61,10 +61,10 @@ Now let's carefully plan the redesign we have chapter lessons and the business r
 
 ## Outcome
 
-- ✅ Impact: Transformed specification into actionable lesson-by-lesson plan ready for lesson-writer implementation; all 8 lessons detailed with learning objectives, exercises, assessments
+- ✅ Impact: Transformed specification into actionable lesson-by-lesson plan ready for content-implementer implementation; all 8 lessons detailed with learning objectives, exercises, assessments
 - 🧪 Tests: All validation checkpoints pass (cognitive load, skills mapping, constitution alignment, assessment strategy)
 - 📁 Files: plan.md created (607 lines); dialogues and examples specified for sourcing
-- 🔁 Next prompts: lesson-writer subagent to implement each lesson; technical-reviewer to validate; no tasks.md until after implementation complete
+- 🔁 Next prompts: content-implementer subagent to implement each lesson; validation-auditor to validate; no tasks.md until after implementation complete
 - 🧠 Reflection: Plan successfully captures dialogue-first innovation while maintaining pedagogical rigor. Key challenge during implementation: sourcing authentic dialogue examples from real Claude Code/Gemini CLI interactions
 
 ## Evaluation notes (flywheel)
@@ -72,4 +72,4 @@ Now let's carefully plan the redesign we have chapter lessons and the business r
 - Failure modes observed: None. Plan addresses all specification requirements and user stories.
 - Graders run and results (PASS/FAIL): Completeness check PASS; cognitive load check PASS; skills mapping PASS; constitution alignment PASS
 - Prompt variant (if applicable): Original specification intact; plan elaborates without adding scope creep
-- Next experiment (smallest change to try): During lesson-writer phase, validate that dialogue patterns feel natural (not forced) through learner feedback
+- Next experiment (smallest change to try): During content-implementer phase, validate that dialogue patterns feel natural (not forced) through learner feedback

@@ -2,6 +2,8 @@
 
 Welcome to Chapter 17! In this chapter, you'll learn how to make your Python programs intelligent and efficient by teaching them to make decisions and repeat actions automatically.
 
+Control flow structures are the foundation of programming logic—they let your code respond to different conditions and automate repetitive tasks. You'll master conditional statements, pattern matching, loops, and control mechanisms that transform simple scripts into intelligent programs.
+
 ## What You'll Learn
 
 By the end of this chapter, you will be able to:

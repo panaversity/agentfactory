@@ -64,6 +64,27 @@ But code generation is just one piece of a much larger transformation. Every pha
 
 Understanding this systemic change helps you see why this isn't just about "coding faster." It's about fundamentally rethinking how software gets built.
 
+## A Fundamental Realization
+
+As AI tools transform every phase of development, a profound insight emerges:
+
+**Code is becoming a regenerable artifact**, not the primary asset.
+
+When specifications are clear and AI agents handle implementation, you can regenerate code on demand. Change a requirement? Regenerate. Migrate frameworks? Regenerate. Refactor for performance? Regenerate.
+
+**What becomes durable?**
+- Your specifications (clear articulation of what the system should do)
+- Your architectural decisions (how components interact and scale)
+- Your domain expertise (understanding of the problem space)
+- Your patterns and practices (reusable intelligence that compounds)
+
+**What becomes temporary?**
+- The specific code implementation (can be regenerated from specs)
+- Framework-specific syntax (can be migrated with AI assistance)
+- Boilerplate and repetitive patterns (automated through intelligent generation)
+
+This is the shift from "reusable code" to "reusable intelligence." We'll explore what this means for your development practice throughout this book—starting with how specifications become your primary development artifact (Chapter 30).
+
 ## The Traditional Development Lifecycle
 
 Let's establish a baseline. The traditional software development lifecycle looks something like this:

@@ -79,7 +79,7 @@ differentiation:
   remedial_for_struggling: "Focus on conceptual understanding of 'pause time' and 'latency'; use analogies (restaurant service speed vs wait times); have AI create simple performance demonstrations; build intuition before diving into benchmark interpretation"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/part-4-chapter-29/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -164,7 +164,7 @@ Less impact on:
 - Short-lived scripts (overhead is amortized over few instructions)
 - I/O-heavy code (waiting dominates; interpreter overhead is negligible)
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 Here's a professional insight: modern CPython developers don't memorize bytecode instruction sets or interpreter dispatch details. What they understand is **where overhead occurs** and **how to measure it**. When you hit a performance bottleneck, you don't manually optimize the interpreter—you measure, profile, and ask AI for interpretation.
 
@@ -378,59 +378,108 @@ Each lesson builds on the previous. The performance improvements in Lesson 2 mat
 
 ---
 
-## Try With AI
+## Challenge 2: The Performance Optimization Discovery
 
-Now it's your turn to explore Python 3.14 performance improvements with your AI companion. Work through these prompts in order, allowing 10 minutes total.
+This is a **4-part bidirectional learning challenge** where you understand Python 3.14 performance improvements and their real-world impact.
 
-### Prompt 1: Recall (Remember)
+### Part 1: Discover Independently (Student as Scientist)
+**Your Challenge**: Measure performance without AI guidance first.
 
-> "List 3 performance improvements in Python 3.14 that we discussed in this lesson. Then ask your AI: 'Did I get these right? Are there other Python 3.14 improvements I should know about? Create a quick summary with the top 5 performance improvements and what each one does.'"
+**Deliverable**: Create `/tmp/performance_discovery.py` containing:
+1. Two identical tight loops (calculating sum of 1 to 1,000,000 repeated 100 times)
+2. Time the loop execution
+3. Create a simple garbage collection heavy workload (create/destroy many objects)
+4. Measure GC pause time (time when program can't respond)
+5. Run with different GC strategies if possible
 
-**What you'll learn**: Validate your understanding of Python 3.14's key performance enhancements; discover whether you can recall accurately or need to revisit explanations.
+**Expected Observation**:
+- Tight loops have measurable execution time
+- GC pauses are real but often small (unless lots of objects)
+- Performance varies with workload characteristics
 
-**Expected time**: 2 minutes
-
----
-
-### Prompt 2: Understand (Explain Implications)
-
-> "Ask your AI: 'Why does reducing garbage collection pause time matter specifically for AI agents? How does latency sensitivity apply to multi-agent systems that respond to real-time requests?' Then explore: 'What are the worst-case scenarios without incremental GC—where would pause times hurt most?'"
-
-**What you'll learn**: Connect garbage collection improvements to real-world AI system requirements; develop domain-specific intuition for why performance optimizations matter.
-
-**Expected time**: 2 minutes
-
----
-
-### Prompt 3: Apply (Measure Performance)
-
-> "Tell your AI: 'Help me set up pyperformance benchmarks on my machine. Run the suite and show me how Python 3.14 compares to Python 3.13 or 3.12 (if available). Explain the results—which benchmarks improved most? Are there any that got slower?'"
-
-**What you'll learn**: Practical benchmarking workflow; how to measure performance improvements empirically; understanding benchmark methodology; building confidence in data-driven decision making.
-
-**Expected time**: 3 minutes
+**Self-Validation**:
+- What factors affect performance? (loop count, GC frequency, object churn)
+- How would you measure interpreter overhead?
+- What does "pause time" mean in context of AI systems?
 
 ---
 
-### Prompt 4: Analyze and Connect (Build Cognitive Bridge)
+### Part 2: AI as Teacher (Teaching Performance Optimization Context)
+**Your AI Prompt**:
+> "I measured Python's performance and want to understand improvements. Teach me: 1) What changed in Python 3.14 that makes it faster? 2) Which optimizations matter most for AI workloads? 3) What's the difference between interpreter speed (tail-call optimization) and GC speed (incremental GC)? 4) How much faster is Python 3.14 actually—5% or 50%? Show me benchmarks."
 
-> "Ask your AI: 'How does Python 3.14's interpreter optimization interact with the GIL? If the interpreter is faster but the GIL still prevents true parallelism, what does that mean for multi-threaded AI tasks? Why is performance optimization important if parallelism is still blocked? What makes free-threading (in Lesson 4) the solution to this puzzle?'"
+**AI's Role**: Explain performance improvements (tail-call interpreter, incremental GC, deferred annotations), discuss which matter for different workloads, and show real-world benchmark numbers.
 
-**What you'll learn**: Build cognitive bridge between performance improvements (Lesson 2) and GIL constraints (Lesson 3-4); understand how optimizations at different layers (interpreter speed vs parallelism) work together; develop systems-thinking about performance optimization.
+**Interactive Moment**: Ask a clarifying question:
+> "You said incremental GC reduces pause times. But doesn't that mean longer total collection time? What's the tradeoff? When would I prefer longer total time with shorter pauses vs shorter total time with one long pause?"
 
-**Expected time**: 3 minutes
+**Expected Outcome**: AI clarifies latency vs throughput—different applications optimize for different metrics. You learn to think about constraints (real-time AI needs low latency; batch processing cares about throughput).
 
 ---
 
-**If you're using a CLI tool** (Claude Code or Gemini CLI), here are command equivalents:
+### Part 3: You as Teacher (Discovering Optimization Tradeoffs)
+**Setup**: AI generates micro-benchmarks showing improvements. Your job is to verify they're meaningful and teach AI about real-world constraints.
 
+**AI's Initial Code** (ask for this):
+> "Create simple benchmarks that show: 1) Tail-call interpreter speedup (tight loop of simple operations), 2) Incremental GC pause time reduction (create/destroy lots of objects, measure pause), 3) Deferred annotation speedup (import heavy module with many type hints). Compare results between Python 3.13 and 3.14 if available, or simulate expected improvements."
+
+**Your Task**:
+1. Run the benchmarks. Measure actual improvements
+2. Identify: which optimizations help YOUR workloads? Which don't?
+3. Teach AI:
+> "Your benchmarks show 5% interpreter speedup, but my AI model inference is 95% C code (numpy/tensorflow). The 5% Python speedup doesn't help. What should I optimize for in my actual workload? Is interpreter speed the bottleneck?"
+
+**Your Edge Case Discovery**: Ask AI:
+> "You mentioned that different optimizations matter for different workloads. How do I profile MY code to identify the bottleneck? Should I use timeit for tight loops or cProfile for production code? How do I tell if I'm bottle-necked on Python interpreter vs library calls vs GC pauses?"
+
+**Expected Outcome**: You discover that optimization is contextual—micro-benchmarks don't tell the full story. You learn to profile first, optimize based on data.
+
+---
+
+### Part 4: Build Production Artifact (Student as Engineer)
+**Your Capstone for This Challenge**: Build a benchmarking and profiling toolkit.
+
+**Specification**:
+- Benchmark simple Python loop (tight loop of arithmetic)
+- Benchmark GC-heavy workload (allocate/deallocate many objects)
+- Benchmark import time (measure how fast to import a module)
+- Measure: baseline time, time to first execution, GC pause times
+- Use `timeit` for tight loops, `cProfile` for code profiling
+- Output results in milliseconds with confidence intervals
+- Include hypothesis about where bottlenecks are in your code
+- Type hints throughout
+
+**Deliverable**: Save to `/tmp/performance_profiler.py`
+
+**Testing Your Work**:
 ```bash
-# Run Prompt 1 directly
-claude code "List 3 performance improvements in Python 3.14..."
-
-# Or use plain-text chat equivalent if using web interface
+python /tmp/performance_profiler.py
+# Expected output:
+# === Tight Loop Benchmark ===
+# Time: 45.2ms +/- 2.1ms
+# Verdict: Not a bottleneck (very fast)
+#
+# === GC Workload Benchmark ===
+# Time: 234.5ms +/- 5.3ms
+# GC pause times: [0.1ms, 0.2ms, 0.15ms, ...]
+# Verdict: Memory churn is the issue
+#
+# === Import Benchmark ===
+# Time: 23.4ms +/- 1.2ms
+# Verdict: Reasonable for startup
 ```
 
-If you've already set up an AI companion tool from previous chapters, use it instead. All these prompts work with any major AI language model.
+**Validation Checklist**:
+- [ ] Code runs without errors
+- [ ] Benchmarks produce consistent timing results
+- [ ] Output includes meaningful statistics (mean, std dev)
+- [ ] GC impact measured separately
+- [ ] Hypothesis about bottlenecks documented
+- [ ] Type hints complete
+- [ ] Results can guide optimization decisions
 
-**Safety & Ethics Note**: When exploring performance optimizations, you're learning engineering tradeoffs, not discovering security vulnerabilities. Each optimization involves cost-benefit analysis. Understanding why CPython made certain performance design choices builds appreciation for systems thinking—rarely is there a "free" improvement without tradeoffs elsewhere.
+---
+
+**Time Estimate**: 25-32 minutes (5 min discover, 8 min teach/learn, 7 min edge cases, 5-12 min build artifact)
+
+**Key Takeaway**: Performance optimization starts with measurement, not guessing. Python 3.14's improvements are real but context-dependent. The key is profiling your code to see where time actually goes.

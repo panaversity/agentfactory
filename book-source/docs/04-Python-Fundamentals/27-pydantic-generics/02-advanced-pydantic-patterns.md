@@ -67,7 +67,7 @@ differentiation:
   remedial_for_struggling: "B1 students: Start with simple Field() constraints, then add one custom @field_validator; use templates for @field_validator structure; pair with AI exploration"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/001-part-4-chapter-27/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -587,108 +587,221 @@ class Model(BaseModel):
 
 ---
 
-## Try With AI
+## Try With AI: The Custom Validator Builder (4-Part Learning Challenge)
 
-Now let's apply these patterns with AI as your collaborative partner. Each prompt below moves from understanding to synthesis, with expected outcomes that show what correct application looks like.
-
-### Prompt 1: Understanding (Explain the Decision)
-
-**Your turn**: Ask your AI to explain when you'd use Field() constraints vs @field_validator. Request a decision tree or comparison table.
-
-```
-Ask your AI:
-"When should I use Field() constraints versus @field_validator in Pydantic?
-Create a comparison table with these columns:
-- Validation Type
-- Use Field() When...
-- Use @field_validator When...
-- Example for each
-
-Include examples like: email validation, age range, password confirmation,
-product SKU."
-```
-
-**Expected Outcome**: A clear table showing Field() for simple structural constraints (min/max, length, pattern) and @field_validator for logic-based validation (format checking, cross-field relationships, external validation). The table should justify each choice with reasoning.
+This challenge teaches you to design validation strategies: understanding when tools apply, building mixed approaches, evaluating tradeoffs, and creating production systems.
 
 ---
 
-### Prompt 2: Application (Design with Mixed Approaches)
+### Part 1: You Discover (Student Discovers Problems)
 
-**Your turn**: Tell your AI to create a User model combining both approaches correctly.
+**Your Turn** — Implement validation WITHOUT proper tools to see limitations:
 
+```python
+# Part 1: Ad-hoc validation (the fragile way)
+# You're building an e-commerce system with products and users.
+# Implement validation the wrong way first:
+
+def validate_email_manually(email: str) -> bool:
+    # Your attempt at email validation (incomplete)
+    if '@' not in email:
+        return False
+    if email.count('@') > 1:
+        return False
+    # What about domain format? Special characters? Encoding?
+    return True
+
+def validate_password_manually(pwd: str) -> bool:
+    # Your attempt at password validation
+    if len(pwd) < 8:
+        return False
+    # Does it need uppercase? Numbers? What about weak patterns?
+    # How do you validate password != username?
+    return True
+
+# Problem to discover:
+# - Email validation is incomplete (doesn't validate domain format)
+# - Password validation doesn't check complexity
+# - Can't validate password != username (cross-field rule)
+# - Can't add regex patterns, examples, or constraints
+# - No way to collect ALL validation errors at once
+# - No way to share validation logic across projects
 ```
-Tell your AI:
-"Create a Pydantic User model with these requirements:
-- email field: use @field_validator to check format (must contain @,
-  domain must have dot, no spaces)
-- age field: use Field() constraint (must be 13-120)
-- bio field: use Field() constraint (max 500 characters)
-- username field: use Field() constraint (3-20 chars, alphanumeric + underscore)
 
-Show the model code and 3 test cases:
-1. Valid user
-2. Invalid email
-3. Invalid age
-
-Explain which approach you used for each field and why."
-```
-
-**Expected Outcome**: A working User model demonstrating correct tool selection. Email uses @field_validator for format logic; age, bio, and username use Field() constraints. Test cases show validation working correctly.
+**What You'll Realize**: Ad-hoc validation is fragile, incomplete, and impossible to maintain. You need a declarative way to specify rules.
 
 ---
 
-### Prompt 3: Analysis (Evaluate Architectural Choices)
+### Part 2: AI as Teacher (AI Explains Concepts)
 
-**Your turn**: Ask your AI to explain why BaseSettings is better than manual environment variable reading.
+**Ask your AI:**
 
-```
-Ask your AI:
-"Why is Pydantic BaseSettings better than manually reading environment
-variables with os.getenv()? What problems does it solve?
+> "I'm struggling with validation design. I need to validate:
+> 1. Email: Must contain @, domain must have a dot, no spaces
+> 2. Password: Min 8 chars, must differ from email, should have number and uppercase
+> 3. Username: 3-20 chars, alphanumeric + underscore only
+>
+> Show me the difference between Field() constraints and @field_validator. When would you use each? Build a User model that uses BOTH correctly—which fields use Field(), which use @field_validator, and why?"
 
-Create two code examples:
-1. Reading config with os.getenv() (manual way)
-2. Reading config with BaseSettings (Pydantic way)
+**What AI Should Show You**:
+- Field() for structural constraints (length, regex, range)
+- @field_validator for logic-based validation (format checking, cross-field rules)
+- How to combine them: Field() runs first (fast), then @field_validator (complex logic)
+- Side-by-side examples showing when to use each
 
-Then explain the problems with approach 1 and how BaseSettings solves them.
-Include: type validation, required fields, .env file support, testing
-benefits, and secret field handling."
-```
-
-**Expected Outcome**: Explanation covering: type safety (os.getenv returns strings; BaseSettings validates types), required field enforcement (os.getenv with defaults hides errors; BaseSettings fails if missing), .env file support (BaseSettings loads .env automatically), testing benefits (can override via code in tests), and secret handling (Field(repr=False)). Both code examples should be runnable.
+**Your Role**: Push for clarity. "Why does email need @field_validator when Field(pattern=...) could work?" This forces AI to explain tradeoffs.
 
 ---
 
-### Prompt 4: Creation (Build Production Settings System)
+### Part 3: You as Teacher (You Challenge AI's Approach)
 
-**Your turn**: Tell your AI to build a complete AppSettings model for a real system.
+**Challenge AI** — Ask it to handle production requirements:
 
+> "Your User model looks good, but I have production requirements:
+> 1. Passwords must contain: at least 1 uppercase, 1 lowercase, 1 number, 1 special character
+> 2. Email addresses from 'test.com' domain are not allowed (testing only)
+> 3. Password must be different from username AND email
+> 4. When validation fails, show all errors at once
+>
+> For each requirement, show me: a) How to implement it, b) Whether to use Field() or @field_validator, c) How to test that the validation actually works.
+>
+> Also, can you create a BaseSettings model that loads these from environment variables with APP_USER_ prefix and validates them?"
+
+**Your Role**: Push back on incomplete solutions. "Your regex doesn't check for special characters." or "How do I test that password != email actually works?" This forces AI to refine the design.
+
+**AI's Response Should Show**:
+- Multi-line @field_validator for complex password rules
+- @model_validator for cross-field relationships
+- How BaseSettings automates environment variable loading
+- Testing patterns for validation
+
+---
+
+### Part 4: You Build (Production Artifact)
+
+**Build a Complete User Settings System** — Synthesize into a deployable module:
+
+```python
+# deliverable: user_settings.py
+
+from pydantic import BaseModel, Field, field_validator, model_validator, ValidationError
+from pydantic_settings import BaseSettings
+import re
+
+class User(BaseModel):
+    """User model with comprehensive validation strategy."""
+
+    username: str = Field(
+        min_length=3,
+        max_length=20,
+        pattern=r"^[a-z0-9_]+$",
+        description="Username (3-20 chars, alphanumeric + underscore)"
+    )
+    email: str = Field(
+        description="Valid email address"
+    )
+    password: str = Field(
+        min_length=8,
+        description="Password (min 8 chars, complex)"
+    )
+
+    # Custom validators for complex rules
+    @field_validator('email')
+    @classmethod
+    def validate_email_format(cls, v: str) -> str:
+        """Validate email format and reject test domains."""
+        if '@' not in v or '.' not in v.split('@')[1]:
+            raise ValueError('Invalid email format')
+
+        domain = v.split('@')[1]
+        if domain == 'test.com':
+            raise ValueError('Test domain not allowed in production')
+
+        return v.lower()
+
+    @field_validator('password')
+    @classmethod
+    def validate_password_strength(cls, v: str) -> str:
+        """Validate password complexity requirements."""
+        if not re.search(r'[A-Z]', v):
+            raise ValueError('Password must contain uppercase letter')
+        if not re.search(r'[a-z]', v):
+            raise ValueError('Password must contain lowercase letter')
+        if not re.search(r'\d', v):
+            raise ValueError('Password must contain number')
+        if not re.search(r'[!@#$%^&*]', v):
+            raise ValueError('Password must contain special character (!@#$%^&*)')
+        return v
+
+    # Cross-field validation
+    @model_validator(mode='after')
+    def password_not_username_or_email(self) -> 'User':
+        """Ensure password differs from username and email."""
+        if self.password.lower() == self.username.lower():
+            raise ValueError('Password cannot be same as username')
+        if self.password.lower() == self.email.split('@')[0]:
+            raise ValueError('Password cannot be same as email username')
+        return self
+
+
+class AppSettings(BaseSettings):
+    """Application settings with environment variable loading."""
+
+    app_name: str = "MyApp"
+    debug: bool = False
+    user: User  # Nested validation
+
+    class Config:
+        env_prefix = "APP_"
+        env_nested_delimiter = "__"
+        env_file = ".env"
+
+# Test implementation
+if __name__ == "__main__":
+    # Valid user
+    user = User(
+        username="alice_123",
+        email="alice@example.com",
+        password="SecurePass123!"
+    )
+    print(f"✓ User created: {user.username}")
+
+    # Invalid users—shows validation strategy
+    test_cases = [
+        {
+            "name": "Weak password",
+            "data": {"username": "bob", "email": "bob@example.com", "password": "weak"},
+            "expected_error": "Password must contain uppercase letter"
+        },
+        {
+            "name": "Password = username",
+            "data": {"username": "charlie", "email": "charlie@example.com", "password": "Charlie123!"},
+            "expected_error": "Password cannot be same as username"
+        },
+        {
+            "name": "Test domain",
+            "data": {"username": "dave", "email": "dave@test.com", "password": "TestPass123!"},
+            "expected_error": "Test domain not allowed"
+        }
+    ]
+
+    for test in test_cases:
+        try:
+            User(**test["data"])
+            print(f"✗ {test['name']}: Should have failed")
+        except ValidationError as e:
+            print(f"✓ {test['name']}: Caught correctly")
 ```
-Tell your AI:
-"Build a production-quality AppSettings model with:
-1. DatabaseConfig (nested model):
-   - host (required, default localhost)
-   - port (required, valid range 1-65535)
-   - username (required, secret field)
-   - password (required, secret field)
-   - database (required)
 
-2. Main AppSettings:
-   - api_key (required, secret field)
-   - debug (bool, default False)
-   - log_level (enum: DEBUG, INFO, WARNING, ERROR)
-   - database (nested DatabaseConfig)
+**Success Criteria**:
+- Field() handles structural constraints (length, pattern, range)
+- @field_validator handles complex format checking
+- @model_validator handles cross-field relationships
+- All validation errors reported together
+- Validation strategy is clear and maintainable
 
-Include:
-- Type hints on all fields
-- Field constraints (min/max for port, valid values for log_level)
-- Environment variable mapping (use env_prefix)
-- A complete .env file example
-- Code to load and use the settings
-- Example of accessing nested config: settings.database.host
+---
 
-Make it production-quality and comment it."
-```
-
-**Expected Outcome**: Complete AppSettings implementation with nested models, environment prefixes, validation, secrets management, and .env example. Should demonstrate: 1) Nested model composition, 2) Environment variable reading with prefixes, 3) Type validation and constraints, 4) Secret field handling, 5) Production-ready error messages, 6) Real usage example. This becomes a template for every project configuration you build.
+## Time Estimate
+**35-40 minutes** (7 min discover, 10 min AI teaches, 10 min you challenge, 8 min build)
 

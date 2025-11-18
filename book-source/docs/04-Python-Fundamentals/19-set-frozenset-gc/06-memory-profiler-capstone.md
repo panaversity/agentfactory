@@ -91,7 +91,7 @@ cognitive_load:
 
 # Generation metadata
 generation_metadata:
-  generated_by: "lesson-writer (Claude Haiku 4.5)"
+  generated_by: "content-implementer (Claude Haiku 4.5)"
   source_spec: "specs/001-part-4-chapter-19/spec.md (FR-030 to FR-035)"
   source_plan: "specs/001-part-4-chapter-19/plan.md (Lesson 6, lines 1247-1586)"
   created: "2025-11-09"
@@ -803,84 +803,158 @@ Write a paragraph explaining the integration:
 
 ---
 
-## Try With AI — Capstone Practice
+## Try With AI: Memory Profiler Capstone
 
-This section contains 4 progressively challenging prompts to apply what you've learned. Pick the first prompt that matches your current understanding, then try the next level.
+This capstone integrates ALL Chapter 19 concepts: sets, frozensets, and garbage collection.
 
-### Prompt 1: Design Collaboration (Specification Refinement)
+### Part 1: Design Memory Tracker Architecture (Your Turn First)
 
-**Your Turn**:
-> "I want to build a memory profiler. Help me write a detailed specification. Should it track objects by type? Should it warn about potential memory leaks? What's the minimal viable version? What features would be nice-to-have but not essential?"
+**Before asking AI**, design a memory profiling tool:
 
-**Expected Outcome**: You get a refined specification with requirements clearly separated into "must have" vs. "nice to have." This is **specification thinking**—defining what to build before coding.
+**Requirements**:
+1. Track object creation/deletion (using object IDs)
+2. Detect memory leaks (objects that should be deleted but aren't)
+3. Categorize objects by type (dict, list, set, etc.)
+4. Report memory usage statistics
 
-**AI Tool**: ChatGPT web (for spec discussion) or Claude Code
-**Follow-up**: "What's one requirement in your spec that would be tricky to implement? How would you handle it?"
+**Your design task**:
+- Which data structure for tracking object IDs? (list? set? Why?)
+- How do you detect "leaked" objects? (compare created vs deleted)
+- Can you use `frozenset` anywhere? (immutable keys in a dict?)
+- Sketch pseudocode for `track()`, `release()`, and `report()` methods
 
 ---
 
-### Prompt 2: Implementation Scaffold (Creating Code)
+### Part 2: Build MemoryProfiler with AI (Discovery)
 
-**Your Turn**:
-> "Generate Python code for a MemoryProfiler class that:
-> - Tracks object IDs using a set
-> - Provides a method to count living objects (created - deleted)
-> - Uses the gc module to analyze memory
-> - Returns a dictionary with statistics: current_objects, created_total, memory_bytes
+Implement your design with AI guidance:
+
+> "I'm building a Memory Profiler tool. Here's my design:
 >
-> Include type hints and docstrings."
+> **Class: MemoryProfiler**
+> - `tracked: set[int]` — IDs of living objects
+> - `created_count: int` — Total objects ever created
+> - `deleted_count: int` — Total objects deleted
+> - `type_counts: dict[str, int]` — Count per type ('dict', 'list', etc.)
+>
+> **Methods**:
+> 1. `track(obj: object) -> None` — Add object ID to tracked set
+> 2. `release(obj: object) -> None` — Remove object ID from tracked set
+> 3. `report() -> dict[str, int]` — Return stats (living, created, deleted)
+> 4. `detect_leaks() -> list[int]` — Find objects that should be garbage collected but aren't (use `gc.get_objects()`)
+>
+> Help me:
+> 1. Write complete code with type hints
+> 2. Use `id(obj)` to get object IDs
+> 3. Integrate `gc.collect()` and `gc.get_objects()`
+> 4. Handle edge case: What if user calls `release()` on non-tracked object?"
 
-**Expected Outcome**: Working, type-hinted code with proper docstrings. You review it, understand it, potentially modify it. This demonstrates **AI as implementation partner**—you specify clearly, AI generates, you validate.
-
-**AI Tool**: Claude Code (for code generation)
-**Follow-up**: "Can you add a method to categorize objects by type using frozensets as dictionary keys?"
-
----
-
-### Prompt 3: Testing Strategy (Validation Design)
-
-**Your Turn**:
-> "How would I test a memory profiler? What edge cases should I worry about? How would I verify that:
-> - Objects are actually being tracked?
-> - Memory usage changes correctly when I delete objects?
-> - Circular references are handled properly?
-> - The tool works with large object graphs (1000+ objects)?"
-
-**Expected Outcome**: A test strategy that covers the edge cases mentioned in Example 3. You think about **validation first**—how to prove the tool works before shipping it.
-
-**AI Tool**: ChatGPT web or Claude Code (for test strategy discussion)
-**Follow-up**: "Show me code for one of those tests."
-
----
-
-### Prompt 4: Integration Reflection (Synthesis & Evaluation)
-
-**Your Turn**:
-> "Explain how a Memory Profiler tool uses **all** Chapter 19 concepts:
-> - How do sets (Lesson 1) contribute?
-> - Why are frozensets (Lesson 4) useful?
-> - How does the gc module (Lesson 5) integrate?
-> - What does reference counting (Lesson 5) tell us?
-> - How do these work TOGETHER to solve the memory tracking problem?"
-
-**Expected Outcome**: A clear explanation showing you understand not just individual concepts, but how they integrate. This is **synthesis**—the highest level of learning.
-
-**AI Tool**: ChatGPT web (for conceptual discussion)
-**Follow-up**: "What would happen if you built this tool without using sets? Why would it be slower?"
+**Your evaluation task**:
+- Does AI use `set[int]` for `tracked`? Why is that better than `list[int]`?
+- Run the code. Create objects, track them, delete them, call `report()`. Do the numbers make sense?
 
 ---
 
-### Safety & Responsibility Note
+### Part 3: Student Teaches AI (Edge Cases & Memory Leaks)
 
-⚠️ **A Note on AI-Generated Code**:
+Challenge AI with realistic memory leak scenarios:
 
-Your AI companion can generate working code, but remember:
-- **Review before running**: Don't execute code you don't understand
-- **Check for security**: Ensure no hardcoded secrets or unsafe patterns
-- **Verify correctness**: Run tests to prove it works
-- **Understand the approach**: Ask "Why did you use this pattern?"
+> "Let's test my Memory Profiler with edge cases:
+>
+> **Edge Case 1: Circular References**
+> ```python
+> class Node:
+>     def __init__(self, value):
+>         self.value = value
+>         self.next = None
+>
+> # Create circular reference
+> a = Node(1)
+> b = Node(2)
+> a.next = b
+> b.next = a  # Circular!
+>
+> profiler.track(a)
+> profiler.track(b)
+> del a
+> del b
+> gc.collect()  # Will GC clean up circular refs?
+> ```
+>
+> For this case:
+> 1. Predict: After `del` and `gc.collect()`, are objects freed?
+> 2. Show how `profiler.detect_leaks()` would catch this
+> 3. Explain: Why doesn't reference counting alone handle this?
+>
+> **Edge Case 2: Large Object Graphs**
+> - Create 1000 objects, track them all
+> - Delete 500 randomly
+> - Run `detect_leaks()`
+> - Measure: How long does it take? Is `set[int]` lookup fast enough (O(1))?
+>
+> **Edge Case 3: Frozenset as Dict Key**
+> - Can I group objects by their attributes using frozensets?
+> - Example: Group nodes by `frozenset` of their values
+> - Show code where `frozenset[str]` is a dict key"
 
-The goal is **collaboration**, not blind trust. You're the expert on your requirements; AI is the expert on implementation patterns. Together, you're more powerful than either alone.
+**Your debugging task**:
+- Run Edge Case 1. Do circular refs get collected?
+- Which edge case surprised you most?
+
+---
+
+### Part 4: Add Memory Leak Detection (Integration)
+
+Extend profiler with leak detection:
+
+> "Enhance Memory Profiler with leak detection:
+>
+> **New Feature: `detect_leaks()`**
+> 1. Get ALL Python objects using `gc.get_objects()`
+> 2. Filter to objects we're tracking (IDs in `tracked` set)
+> 3. For EACH tracked object:
+>    - Check if it's still referenced (use `gc.get_referrers()`)
+>    - If references exist ONLY in profiler's set → it's leaked
+> 4. Return list of leaked object IDs
+>
+> **Integration**:
+> - Use `set` operations (intersection? difference?)
+> - Handle types with `isinstance()`
+> - Report memory size with `sys.getsizeof()`
+>
+> Show complete implementation with type hints."
+
+**Refinement**:
+> "This works, but `detect_leaks()` is slow on 10,000+ objects. Optimize it: Can I use set operations instead of loops? What's the time complexity?"
+
+---
+
+### Part 5: Validate and Reflect (Convergence)
+
+Test your profiler and connect to Chapter 19 concepts:
+
+> "Let's validate the Memory Profiler and reflect on Chapter 19 integration:
+>
+> **Validation Tests**:
+> 1. Create 100 objects, track them, delete 50, verify `report()` shows 50 living
+> 2. Create circular reference, verify `detect_leaks()` finds it
+> 3. Benchmark: Track 10,000 objects, measure `report()` speed
+>
+> **Reflection Questions**:
+> 1. **Sets (Lesson 1)**: Why is `set[int]` better than `list[int]` for tracked IDs? (O(1) lookup vs O(n))
+> 2. **Frozensets (Lesson 4)**: Where could frozensets be dict keys in this tool?
+> 3. **GC (Lesson 5)**: How does `gc.collect()` interact with reference counting?
+> 4. **Integration**: How do these three concepts (sets/frozensets/GC) work TOGETHER?
+>
+> For each question, give me a specific example from the Memory Profiler code."
+
+**Final challenge**:
+> "If I removed sets and used lists for everything, how would performance change? Calculate time complexity difference for 10,000 objects."
+
+---
+
+**Time**: 60-90 minutes total
+**Outcome**: You've built a production-quality Memory Profiler integrating sets (O(1) lookup), frozensets (immutable dict keys), and garbage collection (leak detection)—demonstrating mastery of ALL Chapter 19 concepts in a cohesive system.
 
 ---
 

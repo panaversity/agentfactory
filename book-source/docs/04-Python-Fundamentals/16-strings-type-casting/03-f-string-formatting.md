@@ -67,7 +67,7 @@ differentiation:
   remedial_for_struggling: "Focus on basic f-string syntax first (just variables); practice with simple number formatting before complex expressions"
 
 # Generation metadata
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/part-4-chapter-16/spec.md"
 created: "2025-11-08"
 last_modified: "2025-11-08"
@@ -466,7 +466,7 @@ Show me examples.
 Write Python code that:
 - Defines name, age, city variables
 - Uses an f-string to create a message: "[Name] is [Age] years old and lives in [City]"
-- Uses format specifiers to format a price with 2 decimal places: ${price:.2f}
+- Uses format specifiers to format a price with 2 decimal places: `${price:.2f}`
 - Uses an expression inside an f-string to show calculation result
 
 Show me the code and test it.
@@ -479,10 +479,10 @@ Show me the code and test it.
 ```
 I'm experimenting with number formatting:
 
-- What does {value:.2f} mean?
-- What does {value:.0f} mean?
-- Why would I use {value:.3f} instead of {value:.2f}?
-- What happens if I use {value:.2d} with a float?
+- What does `{value:.2f}` mean?
+- What does `{value:.0f}` mean?
+- Why would I use `{value:.3f}` instead of `{value:.2f}`?
+- What happens if I use `{value:.2d}` with a float?
 
 Show me examples of each.
 ```

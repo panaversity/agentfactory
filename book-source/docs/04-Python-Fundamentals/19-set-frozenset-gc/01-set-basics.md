@@ -62,7 +62,7 @@ differentiation:
   remedial_for_struggling: "Start with concrete set[int] examples before introducing mixed types; practice add() before remove()"
 
 # Generation metadata
-generated_by: "lesson-writer v1.0.0"
+generated_by: "content-implementer v1.0.0"
 source_spec: "specs/001-part-4-chapter-19/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -95,7 +95,7 @@ Before we dive into syntax, let's understand what sets actually do. A **set** is
 
 This question gets at the heart of why sets exist. Your AI can walk you through the performance difference and explain when the choice matters practically.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize when to use which collection type. You understand the properties—uniqueness, speed of lookup, unordered nature—and choose based on what your code needs. Your AI assistant can explain trade-offs instantly.
 
@@ -343,48 +343,125 @@ Ask your AI Co-Teacher:
 
 ---
 
-## Try With AI
+## Try With AI: Deduplication Detective Challenge
 
-### Setup
+### Part 1: Find Duplicate Problems (Your Turn First)
 
-Use your preferred AI companion (ChatGPT web, Claude Code, or Gemini CLI if you've set one up from previous lessons).
+**Before asking AI**, analyze these three datasets and identify which ones have duplicates:
 
-### Prompt Set (Bloom's Progression)
+**Dataset 1: User IDs from login logs**
+```python
+user_ids: list[int] = [101, 102, 103, 101, 104, 102, 105, 101]
+```
 
-**Prompt 1 - Concept Exploration (Understand Level):**
+**Dataset 2: Unique product codes**
+```python
+product_codes: list[str] = ["A1", "B2", "C3", "A1", "D4", "B2"]
+```
 
-> "I'm learning about Python sets. Give me 3 real-world examples where you'd want a collection that automatically eliminates duplicates. For each example, explain why a set is better than a list."
+**Dataset 3: Temperature readings (Celsius)**
+```python
+temps: list[float] = [23.5, 24.0, 23.5, 22.1, 24.0]
+```
 
-**Expected Outcome:** You see practical business scenarios where sets solve actual problems. The AI helps you connect abstract uniqueness to concrete use cases.
-
----
-
-**Prompt 2 - Syntax Clarification (Apply Level):**
-
-> "Explain the difference between these three: `my_set = {1, 2, 3}` vs. `empty = {}` vs. `my_list = [1, 2, 3]`. What is each one, and why can't I use `{}` to create an empty set?"
-
-**Expected Outcome:** You understand literal syntax variations and the quirk of `{}` being a dict, not an empty set. The distinction becomes clear.
-
----
-
-**Prompt 3 - Hashability Deep Dive (Analyze Level):**
-
-> "I tried to add a list to a set and got an error: 'unhashable type: list'. Explain what a hash value is, why sets need hashable elements, and why lists can't be in sets but tuples can be."
-
-**Expected Outcome:** You grasp the deeper "why" behind the constraint—not memorizing a rule, but understanding the system design.
+**Your task**:
+1. For EACH dataset, count how many duplicates exist (manually or with code)
+2. Convert each to a set and predict the final size
+3. Write down: "Which type should I use for the set? `set[int]`? `set[str]`? `set[float]`?"
 
 ---
 
-**Prompt 4 - Error Handling Connection (Evaluate Level):**
+### Part 2: AI Explains Set Deduplication (Discovery)
 
-> "Show me code that demonstrates the difference between `.remove()` and `.discard()`. When should I use each one in production code? What principle guides this choice?"
+Share your predictions with AI:
 
-**Expected Outcome:** You practice decision-making: when do you want an error to alert you (`.remove()`) versus when do you want silent tolerance (`.discard()`)? You think like a professional developer.
+> "I have three datasets with duplicates:
+> 1. User IDs (integers): [paste data]
+> 2. Product codes (strings): [paste data]
+> 3. Temperatures (floats): [paste data]
+>
+> For EACH:
+> 1. Show me how to convert to a set with type hints
+> 2. Tell me the final size (unique count)
+> 3. Explain: Did I lose any important information when converting to set? (What about order? Duplicates might be meaningful!)
+>
+> Then explain the syntax quirk: Why is `empty = {}` a dict, not an empty set?"
 
-**Safety Note:** "Both methods work correctly. The choice depends on your program's intent: fail-fast on mistakes or silent tolerance? There's no universally 'right' answer—context determines the choice."
+**Your evaluation task**:
+- Compare AI's unique counts to yours. Did you get them right?
+- Does AI mention that sets are UNORDERED? Why does that matter?
+- Can you now explain the `{}` vs `set()` quirk to someone else?
 
 ---
 
-**Closing Reflection:**
+### Part 3: Student Teaches AI (Hashability Edge Cases)
 
-You now understand sets as unique, unordered, hash-based collections. You can create them with modern type hints, add and remove elements safely, and understand why they require immutable elements. In the next lesson, you'll explore what sets actually **do**—the mathematical operations that make them powerful.
+Challenge AI with tricky hashability scenarios:
+
+> "I want to create sets with different types. Predict which will FAIL:
+>
+> ```python
+> # Test 1: Set of tuples
+> coords: set[tuple[float, float]] = {(10.5, 20.3), (15.0, 25.0)}
+>
+> # Test 2: Set of lists
+> paths: set[list[str]] = {['home', 'docs'], ['home', 'photos']}
+>
+> # Test 3: Set of frozensets
+> groups: set[frozenset[int]] = {frozenset([1, 2]), frozenset([3, 4])}
+>
+> # Test 4: Set of dicts
+> configs: set[dict[str, int]] = {{'width': 800}, {'width': 1024}}
+> ```
+>
+> For EACH:
+> 1. Will it work or fail? Why?
+> 2. If it fails, show me the EXACT error message
+> 3. Explain the rule: What makes a type 'hashable'?
+>
+> Then I'll challenge you: If I NEED to store lists in a collection without duplicates, what's my alternative? (Hint: Convert lists to something hashable)"
+
+**Your debugging task**:
+- Run each test. Which ones actually fail?
+- Can you explain why `tuple` works but `list` doesn't using the word "mutable"?
+
+---
+
+### Part 4: Build a Tag Deduplication System (Convergence)
+
+Create a real-world application with AI:
+
+> "Let's build a blog tag deduplication system:
+>
+> **Requirements**:
+> 1. Multiple blog posts, each with tags (some tags repeat across posts)
+> 2. Extract ALL unique tags from all posts
+> 3. Handle case-insensitivity ('Python' and 'python' should be same tag)
+> 4. Remove empty tags ('')
+> 5. Sort final tags alphabetically (sets are unordered—how do we sort?)
+>
+> **Sample data**:
+> ```python
+> posts: list[dict[str, list[str]]] = [
+>     {'title': 'Intro to Python', 'tags': ['Python', 'beginner', 'tutorial']},
+>     {'title': 'Advanced Python', 'tags': ['python', 'advanced', '']},
+>     {'title': 'Data Science', 'tags': ['Python', 'data', 'tutorial', '']},
+> ]
+> ```
+>
+> Walk me through:
+> 1. Extract all tags into one list (with duplicates)
+> 2. Normalize to lowercase
+> 3. Convert to set (deduplicates)
+> 4. Remove empty string
+> 5. Sort alphabetically (convert set→list→sort)
+>
+> Show complete code with type hints."
+
+**Refinement**:
+> "This works, but what if I want to COUNT how many times each tag appears (before deduplication)? Sets lose that info. What data structure would I use instead? (Preview: Chapter 18 dicts)"
+
+---
+
+**Time**: 25-30 minutes total
+**Outcome**: You've mastered set creation, understood hashability constraints through debugging, and built a production-pattern deduplication workflow.

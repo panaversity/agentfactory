@@ -54,7 +54,7 @@ differentiation:
   extension_for_advanced: "Explore older string formatting methods; research Python style guide (PEP 8) comprehensively"
   remedial_for_struggling: "Focus on simple print() before introducing f-strings; practice indentation with editor that shows whitespace"
 
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/016-part-4-chapter-13/spec.md"
 created: "2025-11-09"
 last_modified: "2025-11-09"
@@ -342,78 +342,123 @@ F-strings are cleaner and professional.
 
 ---
 
-## Try With AI
+## Try With AI: Program Quality Review Partnership
 
-Use your AI companion (Claude Code or Gemini CLI) for these prompts.
+You've learned syntax elements. Now apply them to write a complete program—then review it for quality with AI as your code review partner.
 
-**Prompt 1: Recall – Syntax Elements**
+### Part 1: Write Your First Program (Your Turn First)
 
-```
-What are the five syntax elements introduced in Lesson 4?
-1. _______ (Python shows code structure with this)
-2. _______ (marked with #, explains code)
-3. _______ (function that displays output)
-4. _______ (modern way to format text)
-5. _______ (file extension for Python programs)
+**Task**: Create a Python program that displays information about a product. Requirements:
 
-Bonus: What's the syntax for an f-string? (f"...{variable}...")
-```
+1. Create 4 typed variables:
+   - Product name (string)
+   - Price (float, with cents)
+   - Quantity in stock (integer)
+   - On sale (boolean, True/False)
 
-**Expected Outcome**: You recall core syntax. You demonstrate memorization of lesson concepts.
+2. Use f-strings to display formatted output like:
+   ```
+   Product: Wireless Mouse
+   Price: $29.99
+   In Stock: 45 units
+   On Sale: Yes
+   ```
 
----
+3. Add comments explaining what each section does
 
-**Prompt 2: Understand – F-Strings vs. String Concatenation**
+**Save as `product_info.py` and run it.**
 
-```
-Explain the difference between these two approaches:
-1. "Hello " + name + ", welcome to Python"
-2. f"Hello {name}, welcome to Python"
-
-Why does the lesson recommend f-strings?
-Ask your AI: "What are the advantages of f-strings over string concatenation?"
-```
-
-**Expected Outcome**: You understand readability advantage. You learn professional conventions. You can explain why f-strings are preferred.
+Write this program YOURSELF before asking AI. This tests what you've learned.
 
 ---
 
-**Prompt 3: Apply – Write Your Own Program**
+### Part 2: AI Reviews Your Code (Discovery)
 
-```
-Create a Python program that:
-1. Creates 3 variables with type hints (any types/values you choose)
-2. Uses print() and f-strings to display them in a sentence
-3. Includes at least 2 comments explaining what the code does
+Now share your code with AI:
 
-Example output might be:
-"My name is Alice, I'm 25 years old, and I live in Portland"
+> "Here's my Python program: [paste your code]. Review it for: (1) Correct type hints, (2) Proper indentation, (3) Good comments, (4) Professional f-string usage. What did I do well? What should I improve?"
 
-Save it as `my_program.py`. Run it with `python my_program.py`.
-Show your AI the code: "Does this look correct? Any improvements?"
-```
+**Your task**: Read AI's feedback carefully.
+- Did it catch errors you missed?
+- Did it suggest improvements to your comments?
+- Did it recommend better f-string formatting?
+- Do you understand WHY each suggestion makes the code better?
 
-**Expected Outcome**: You write working program. You demonstrate mastery of variables, type hints, print, and f-strings. You practice code review with AI.
+This teaches you: **Code review is how professionals improve.**
 
 ---
 
-**Prompt 4: Analyze – Error Interpretation and Debugging (Cognitive Closure)**
+### Part 3: Student Teaches AI (Comment Quality)
 
-```
-Here's a broken program—can you fix it?
+AI reviewed your code. But does it understand GOOD vs. BAD comments?
 
-name: str = "Alex"
-age int = 30  # ← Something is wrong here!
-print(f"Name: {name}, Age: {age}")
+Show AI these two comment styles:
 
-Questions:
-1. What's the error in this code? (Hint: look at line 2)
-2. Why is it an error? (What rule did it break?)
-3. How would you fix it?
-4. If Python gave you an error message, what would it say?
+```python
+# Bad comment style
+price: float = 29.99  # Set price to 29.99
 
-Ask your AI: "Here's the error message I got: [paste error]. Can you explain what went wrong?"
+# Good comment style
+price: float = 29.99  # Launch price includes 25% promotional discount
 ```
 
-**Expected Outcome**: You identify missing type hint syntax (colon). You understand error messages. You learn debugging process. You demonstrate analytical thinking about code. You close Lesson 4 with confidence in syntax.
+Ask AI:
+> "The lesson says comments should explain WHY, not WHAT. Which comment style is better and why? Then review MY comments from the program I wrote—are they explaining WHY or just repeating WHAT?"
+
+**Your task**: Evaluate AI's response.
+- Did it correctly identify the better comment style?
+- Did it give honest feedback about YOUR comments?
+- Revise your comments based on AI's feedback
+
+This teaches AI the professional standards you're learning.
+
+---
+
+### Part 4: Iterate Until Professional (Convergence)
+
+Now refine the program through iteration.
+
+Tell AI:
+> "Let's improve this program together. Add: (1) A formatted header/footer using string multiplication (like `'=' * 40`), (2) Better visual spacing, (3) Currency formatting for price (show $ symbol), (4) Convert boolean to 'Yes'/'No' text. Show me the improved version."
+
+**Your task**: Review AI's improved version.
+- Is it more readable than your original?
+- Can you explain what EVERY line does?
+- Are there parts you don't understand?
+
+If confused, iterate:
+> "I don't understand this line: [paste line]. Explain what it does and why it's better."
+
+Keep iterating until you can explain the entire program confidently.
+
+---
+
+### Part 5: Error Debugging Challenge (Your Turn)
+
+Final test—can you debug broken code independently?
+
+**Scenario**: A classmate shares this broken code:
+```python
+# Product information
+product_name str = "Keyboard"
+price: float = 49.99
+quantity int = 20
+print(f"Product: {product_name}, Price: ${price}")
+print(f"Stock: {quantity} units")
+```
+
+**Your task** (WITHOUT asking AI first):
+1. Find ALL the errors (there are 2)
+2. Explain WHY each is an error
+3. Write the corrected code
+
+Now ask AI:
+> "I found 2 errors in this code: [paste code]. Here's my diagnosis: [your analysis]. Am I correct? What did I miss?"
+
+**Outcome**: If you found both errors and explained them correctly, you've mastered basic syntax. If not, you learned what concepts need more practice.
+
+---
+
+**Time**: 25-30 minutes total
+**Outcome**: You've practiced writing complete programs, learned code review with AI, iterated to professional quality, and validated your debugging skills independently.
 
