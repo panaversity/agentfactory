@@ -464,118 +464,164 @@ match choice:
 
 ---
 
-## Try With AI: Pattern Matching Design Challenge
+## Try With AI
 
-You've learned `match-case` syntax for exact value matching. Now discover when pattern matching improves readability vs. when `if-elif` is better—with AI as your design critic.
+Time to practice pattern matching with your AI companion! Work through these four prompts in order.
 
-### Part 1: Build HTTP Status Handler (Your Turn First)
+**Tool Selection:** Since we're in Part 4, and AI companion tools were introduced in Parts 1-3, use **your AI companion tool** (ChatGPT web, Claude CLI, Gemini CLI, or whichever you've set up). If you're using a CLI tool, the prompts below will work as-is. If you're using a web interface, just paste the prompt text.
 
-**Before asking AI**, implement an HTTP status code handler using `match-case`:
+---
 
-**Scenario**: Handle HTTP response codes:
-```python
-status_code: int = 404  # Could be 200, 404, 500, etc.
+### 1. Recall: Wildcard Pattern Purpose
 
-# Your task: Use match-case to map:
-# 200 → "Success"
-# 404 → "Not Found"
-# 500 → "Server Error"
-# _ → "Unknown Status"
+**Prompt:**
+```
+What's the purpose of the wildcard pattern _ in match-case? When should you use it?
 ```
 
-**Your task**:
-1. Write the complete `match-case` structure
-2. Test with status_code = 200, 404, 500, 999
-3. Predict: Why is `match-case` better here than `if-elif`?
+**Expected Outcome:**
+Your AI should explain that `_` matches any value that didn't match previous cases. It's like the `else` clause in `if/elif/else`. You should use it to handle unexpected inputs or provide a default action.
+
+**Why this matters:** Understanding the wildcard helps you write defensive code that handles edge cases gracefully.
 
 ---
 
-### Part 2: AI Explains Match vs If-Elif (Discovery)
+### 2. Understand: Trace Execution
 
-Share your implementation with AI:
+**Prompt:**
+```
+Explain how this match-case evaluates when color='yellow':
 
-> "Here's my HTTP status handler using match-case: [paste code]. Explain:
-> 1. Is my syntax correct? (Python 3.10+ required)
-> 2. Why is match-case better for this than if status_code == 200: elif status_code == 404:?
-> 3. What makes a problem 'match-case friendly' vs. 'if-elif friendly'?
-> 4. Show me a counter-example where if-elif is BETTER (hint: grade ranges with >=)"
+```python
+color: str = "yellow"
 
-**Your task**: Evaluate AI's design guidance.
-- Does it explain that `match-case` is clearer for **discrete values**?
-- Does it show that `if-elif` is better for **ranges** (>=, <)?
-- Can you articulate the rule: "Exact values → match-case, Comparisons → if-elif"?
+match color:
+    case "red":
+        action = "Stop"
+    case "yellow":
+        action = "Slow down"
+    case "green":
+        action = "Go"
+    case _:
+        action = "Unknown signal"
+```
 
----
+Walk me through step-by-step."
 
-### Part 3: Student Teaches AI (When Match-Case Fails)
+**Expected Outcome:**
+Your AI should trace the execution:
+1. Python sees `match color` and looks at the value: `"yellow"`
+2. Checks `case "red"`: no match, continues
+3. Checks `case "yellow"`: **match found!** Runs `action = "Slow down"`
+4. Stops checking (doesn't evaluate `case "green"` or `case _`)
+5. Final value of `action` is `"Slow down"`
 
-AI explained when to use `match-case`. But does it know its limitations?
-
-Challenge AI with impossible scenarios:
-
-> "I tried to use match-case for grade ranges and it doesn't work:
-> ```python
-> grade: int = 85
-> match grade:
->     case >= 90:  # SyntaxError!
->         letter = 'A'
-> ```
->
-> Explain:
-> 1. Why does this fail? (match-case doesn't support comparison operators)
-> 2. Could I use match-case with structural patterns instead? (Show if possible)
-> 3. For each scenario, tell me: match-case or if-elif?
->    - Menu choices (1=Save, 2=Load, 3=Quit)
->    - Age verification (>= 18)
->    - HTTP status codes (200, 404, 500)
->    - Temperature ranges (< 0, 0-32, > 32)"
-
-**Your task**: Understand the boundaries.
-- Can you now identify which problems suit `match-case`?
-- Does AI explain that Python 3.10 match-case is for **structural pattern matching**, not comparison logic?
-- Which of the 4 scenarios should use `match-case`? (Menu: yes, Age: no, HTTP: yes, Temp: no)
+**Why this matters:** Tracing execution helps you understand control flow and predict outputs.
 
 ---
 
-### Part 4: Convert Between Patterns (Convergence)
+### 3. Apply: Generate Code
 
-Now practice converting between `if-elif` and `match-case`:
+**Prompt:**
+```
+Generate a match-case for days of the week. It should:
+- Take an integer (1-7) representing the day
+- Case 1 → "Monday"
+- Case 2 → "Tuesday"
+- ... (continue through Sunday)
+- Include type hints
+- Include a default case for invalid numbers (like 0 or 8)
 
-> "Convert this if-elif chain to match-case if appropriate:
-> ```python
-> command: str = 'save'
->
-> if command == 'save':
->     action = 'Saving file...'
-> elif command == 'load':
->     action = 'Loading file...'
-> elif command == 'quit':
->     action = 'Exiting...'
-> else:
->     action = 'Unknown command'
-> ```
->
-> Then convert THIS one (grade ranges):
-> ```python
-> if grade >= 90:
->     letter = 'A'
-> elif grade >= 80:
->     letter = 'B'
-> else:
->     letter = 'F'
-> ```
->
-> For each: Should it be converted? If yes, show match-case version. If no, explain why."
+Show the complete code with an example where day_number = 3.
+```
 
-**Your task**: Review conversions.
-- Does AI convert the command example (exact string matching)?
-- Does AI refuse to convert the grade example (range comparisons)?
-- Can you explain WHY the first converts but the second doesn't?
+**Expected Outcome:**
+Your AI should generate code like this:
+
+```python
+day_number: int = 3
+
+match day_number:
+    case 1:
+        day_name: str = "Monday"
+    case 2:
+        day_name: str = "Tuesday"
+    case 3:
+        day_name: str = "Wednesday"
+    case 4:
+        day_name: str = "Thursday"
+    case 5:
+        day_name: str = "Friday"
+    case 6:
+        day_name: str = "Saturday"
+    case 7:
+        day_name: str = "Sunday"
+    case _:
+        day_name: str = "Invalid day number"
+
+print(f"Day {day_number} is {day_name}")
+# Output: Day 3 is Wednesday
+```
+
+**Your validation steps:**
+- Run the code with `day_number = 3` → Should print "Wednesday" ✅
+- Change to `day_number = 7` → Should print "Sunday" ✅
+- Change to `day_number = 0` → Should print "Invalid day number" ✅
+- Check that type hints are present ✅
+
+**Why this matters:** Practicing code generation helps you communicate intent clearly to AI.
 
 ---
 
-**Time**: 20-25 minutes total
-**Outcome**: You've mastered when to use `match-case` (exact values, discrete options) vs. `if-elif` (ranges, complex conditions), and can convert between patterns appropriately.
+### 4. Evaluate: Readability Comparison
 
-**Safety Note**: `match-case` requires Python 3.10+. If you get `SyntaxError: invalid syntax`, check your Python version with `python --version`.
+**Prompt:**
+```
+Compare the readability of this if/elif chain vs. a match-case equivalent:
+
+```python
+# Version A: if/elif
+grade: int = 85
+
+if grade >= 90:
+    letter = "A"
+elif grade >= 80:
+    letter = "B"
+elif grade >= 70:
+    letter = "C"
+elif grade >= 60:
+    letter = "D"
+else:
+    letter = "F"
+```
+
+When is if/elif better than match-case? When is match-case better than if/elif?
+```
+
+**Expected Outcome:**
+Your AI should explain:
+
+**When if/elif is better:**
+- For **range comparisons** (`>=`, `<`, etc.)
+- For **complex conditions** combining multiple variables (`if age > 18 and has_license`)
+- When you need to evaluate **different variables** in each branch
+
+**When match-case is better:**
+- For **exact value matching** (comparing one variable against multiple specific values)
+- When you have a **fixed set of options** (like menu choices, status codes, enums)
+- When **readability as a table** helps understanding
+
+**For this specific example (grade ranges):** `if/elif` is better because you're comparing ranges (`>= 90`), not exact values. `match-case` works with specific values like `200`, `404`, `"red"`, not ranges.
+
+**Why this matters:** Choosing the right control structure makes your code easier to read and maintain. This is a critical judgment skill for professional development.
+
+---
+
+**🎓 Safety Note:** When AI generates code with `match-case`, always verify:
+1. You're using Python 3.10+ (check `python --version`)
+2. Type hints match between the variable and case values (int vs int, str vs str)
+3. The wildcard `_` is at the **end**, not in the middle
+4. Test all cases, including the default
+
+**Next Self-Directed Variation:** Try asking your AI to convert one of your `if/elif/else` chains from Lesson 1 into `match-case` syntax. Then evaluate: did it improve readability? Why or why not?
 

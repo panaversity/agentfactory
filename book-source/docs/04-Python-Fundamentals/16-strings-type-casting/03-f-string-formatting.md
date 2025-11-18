@@ -442,88 +442,69 @@ price_str: str = f"${price:.2f}"  # "$19.50"
 
 ---
 
-## Try With AI: Receipt Formatter Challenge
+## Try With AI
 
-You've learned f-string syntax, expressions, and format specifiers. Now build a real receipt formatter to understand how formatting expresses intent—with AI as your refinement partner.
+Use your Claude Code or Gemini CLI companion for this structured practice. These prompts progress from basic recall through analysis, helping you master f-strings with AI as your learning partner.
 
-### Part 1: Build Your Receipt Formatter (Your Turn First)
+### Prompt 1: Recall/Understand — "F-String Basics"
 
-**Before asking AI**, create a receipt formatter for a simple purchase:
+```
+I'm learning about f-strings.
 
-**Requirements**:
-```python
-# Your data
-item_name: str = "Laptop"
-price: float = 999.50
-quantity: int = 2
-tax_rate: float = 0.08
+- What's the syntax for putting a variable in an f-string?
+- Why are f-strings better than concatenation with +?
+- What happens if I forget the f before the quote?
+
+Show me examples.
 ```
 
-**Your task**: Build a receipt showing:
-1. Item name and quantity
-2. Price per item (formatted with `:.2f`)
-3. Subtotal (price × quantity, formatted)
-4. Tax amount (subtotal × tax_rate, formatted)
-5. Final total (formatted)
+**Expected outcome**: You'll learn that f-string syntax uses curly braces for variables, understand the readability advantage, and know that the `f` prefix is essential.
 
-Write the code yourself. Use f-strings with proper format specifiers. Predict what the output should show before running it.
+### Prompt 2: Apply — "Format Output Task"
 
----
+```
+Write Python code that:
+- Defines name, age, city variables
+- Uses an f-string to create a message: "[Name] is [Age] years old and lives in [City]"
+- Uses format specifiers to format a price with 2 decimal places: `${price:.2f}`
+- Uses an expression inside an f-string to show calculation result
 
-### Part 2: AI Reviews Your Formatting (Discovery)
+Show me the code and test it.
+```
 
-Share your receipt with AI:
+**Expected outcome**: You'll apply f-string syntax, variable embedding, format specifiers, and expressions in working code.
 
-> "Here's my receipt formatter: [paste code]. Review my formatting:
-> 1. Did I use format specifiers correctly (:.2f for currency)?
-> 2. Is the output clear and readable?
-> 3. How can I improve alignment so numbers line up?
-> 4. Should I add any separators or labels for clarity?"
+### Prompt 3: Analyze — "Format Specifier Patterns"
 
-**Your task**: Evaluate AI's feedback.
-- Does it suggest better alignment patterns?
-- Does it recommend adding visual separators (=== lines)?
-- Can you apply the suggestions to make your receipt clearer?
+```
+I'm experimenting with number formatting:
 
----
+- What does `{value:.2f}` mean?
+- What does `{value:.0f}` mean?
+- Why would I use `{value:.3f}` instead of `{value:.2f}`?
+- What happens if I use `{value:.2d}` with a float?
 
-### Part 3: Student Teaches AI (Edge Cases)
+Show me examples of each.
+```
 
-AI helped with formatting. But does it know how to handle edge cases?
+**Expected outcome**: You'll understand format specifier syntax (`:.Nf` where N is number of decimals), predict output format for different specifiers, and learn error cases (wrong format specifier for data type).
 
-Challenge AI with difficult scenarios:
+### Prompt 4: Synthesize — "Clear Output Design"
 
-> "What happens if: (1) Item name is very long ('Super Ultra Premium Extended Warranty Protection Plan')—does it break alignment? (2) Price is huge ($1,234,567.89)—should I use thousand separators? (3) Quantity is 0—should the receipt still show? For each case, show how to handle it with f-strings. Explain format specifiers like {:>10} for alignment and {:,} for thousand separators."
+```
+I have data about a product:
 
-**Your task**: Compare AI's solutions.
-- Does it show width and alignment specifiers (`:>10` for right-align)?
-- Does it demonstrate thousand separator (`:,.2f`)?
-- Which solution is most robust for production use?
+name = "Laptop"
+price = 999.50
+discount_percent = 10
 
----
+How would I use f-strings to create clear output showing:
+1. Original price
+2. Discount amount (calculated)
+3. Final price (calculated)
+4. A complete, readable receipt
 
-### Part 4: Optimize Together (Convergence)
+Show me different options and explain which is clearest.
+```
 
-Now build a production-grade receipt formatter with AI:
-
-> "Let's create a complete receipt formatter that:
-> 1. Handles item names of any length with consistent alignment
-> 2. Uses thousand separators for large amounts
-> 3. Right-aligns all numbers for readability
-> 4. Includes visual separators and clear labels
-> 5. Works with multiple items (show pattern for 3 items)
->
-> Show the code with comments explaining each format specifier."
-
-**Your task**: Review the production version.
-- Can you explain what EVERY format specifier does?
-- Does the output look professional?
-- Could you extend it to handle more items or discounts?
-
-Iterate if needed:
-> "The alignment breaks when item names are longer than 20 characters. Fix it by using dynamic width calculation."
-
----
-
-**Time**: 25-30 minutes total
-**Outcome**: You've built a receipt formatter from scratch, discovered format specifiers for alignment and thousand separators, and iterated with AI to create production-grade output formatting.
+**Expected outcome**: You'll design clear output using f-strings; understand that format choices express intent; think about audience needs (what information matters most). This connects f-strings to the broader skill of clear communication through code.

@@ -208,82 +208,70 @@ You might wonder: "Why are we learning comparisons separately from if statements
 
 ---
 
-## Try With AI: Age Verification System Challenge
+## Try With AI
 
-You've learned 6 comparison operators. Now build a real age verification system to understand how comparisons work—with AI as your validation partner.
+Now it's your turn to explore comparison operators with an AI co-teacher. These prompts build from understanding to application to edge cases to synthesis.
 
-### Part 1: Build Verification Logic (Your Turn First)
+**Tool Choice**: Use Claude Code, Gemini CLI, or ChatGPT web—whatever you have access to.
 
-**Before asking AI**, write code that checks age requirements for different activities:
+### Prompt 1: Concept Exploration (Understand)
 
-```python
-# User's age
-user_age: int = 16
+Copy and ask your AI:
 
-# Requirements
-voting_age: int = 18
-driving_age: int = 16
-drinking_age: int = 21
-child_ticket_age: int = 12
-```
+> "I'm learning comparison operators in Python.
+> - What do `==`, `!=`, `>`, `<`, `>=`, and `<=` do?
+> - Why does Python use `==` for comparison but `=` for assignment?
+> - Show me examples of each operator with numbers and explain True/False results."
 
-**Your task**: Write comparisons for each check and predict the result (True/False):
-1. Can vote? `user_age >= voting_age` → ?
-2. Can drive? `user_age >= driving_age` → ?
-3. Can drink? `user_age >= drinking_age` → ?
-4. Gets child ticket? `user_age < child_ticket_age` → ?
-5. Is exactly driving age? `user_age == driving_age` → ?
-6. Is not voting age yet? `user_age != voting_age` → ?
-
-Write the code and predictions BEFORE asking AI.
+**Expected Outcome**: You'll understand what each comparison operator does; clearly distinguish = (assignment) from == (equality test); see that comparisons produce True/False answers.
 
 ---
 
-### Part 2: Validate with AI
+### Prompt 2: Application (Apply)
 
-Now check your work with AI:
+Copy and ask your AI:
 
-> "Here's my age verification code: [paste code]. For user_age = 16, verify my predictions for all 6 comparisons. Explain the logic of each operator (>=, <, ==, !=). Which ones return True? Which return False? Why?"
+> "Write Python code that checks if a user can buy a movie ticket.
+> - movie_age_rating = 13
+> - user_age = 12
+>
+> Write a comparison that checks if user_age &gt;= movie_age_rating.
+> Is the result True or False? Explain the logic using the comparison operator."
 
-**Your task**: Compare AI's results to your predictions.
-- Did you get them all right?
-- Do you understand WHY `>=` includes the exact age but `>` doesn't?
-- Can you explain the difference between `==` (equals) and `=` (assignment)?
-
----
-
-### Part 3: Student Teaches AI (Type Comparison Edge Case)
-
-AI validated your logic. But does it understand comparison across types?
-
-Challenge AI with edge cases:
-
-> "What happens if I compare these: (1) `5 == 5.0` (int vs float), (2) `'16' == 16` (string vs int), (3) `True == 1` (bool vs int). Which return True? Which return False? Show code with type() to explain why. When do type differences matter in comparisons?"
-
-**Your task**: Study AI's explanation.
-- Does it explain that `5 == 5.0` is True (same value, different type)?
-- Does it show that `'16' == 16` is False (different types, no automatic conversion)?
-- Does it explain the special bool/int relationship (`True == 1`, `False == 0`)?
-
-This teaches AI about type coercion in comparisons—and deepens your understanding.
+**Expected Outcome**: You'll apply comparison operators to realistic problems; understand how conditions work in real scenarios; predict results correctly before running code.
 
 ---
 
-### Part 4: Build Permission Checker Together
+### Prompt 3: Edge Case Discovery (Explore)
 
-Now combine multiple comparisons:
+Copy and ask your AI:
 
-> "Build a permission system that checks: (1) User is old enough to drive (age >= 16), (2) User has exactly 0 traffic violations, (3) License is NOT expired. Use comparison operators and boolean variables. Show clear output for each check with type hints."
+> "I noticed something weird about comparisons. Try these:
+> - 5 == 5.0 (integer vs. float)
+> - '5' == 5 (string vs. integer)
+> - True == 1 (boolean vs. integer)
+> - False == 0 (boolean vs. integer)
+>
+> Which ones return True? Which return False? Why does Python compare some types differently?"
 
-**Your task**: Review AI's code.
-- Does it use `>=`, `==`, and `!=` correctly?
-- Does it use descriptive variable names?
-- Can you extend it to check other permissions?
-
-Iterate:
-> "Add a check that age is in valid range: `age >= 16 and age <= 100`. Explain why we need TWO comparisons."
+**Expected Outcome**: You'll discover that Python compares values (5 and 5.0 are the same value, different types); learn that bool has special relationships with int (True==1, False==0); understand type coercion in comparisons.
 
 ---
 
-**Time**: 25-30 minutes total
-**Outcome**: You've built age verification logic applying all 6 comparison operators, discovered type coercion behavior, and combined multiple comparisons to build permission systems.
+### Prompt 4: Synthesis & Validation (Understand + Analyze)
+
+Copy and ask your AI:
+
+> "I see how comparisons work, but why are they in Chapter 15 BEFORE Chapter 17 (Control Flow)?
+>
+> - What is the connection between comparisons and if statements?
+> - Why do I need to understand == before learning if x == y: ?
+> - How does Chapter 15 prepare me for Chapter 17?
+>
+> Show me an example if statement that uses comparison operators, and explain the connection."
+
+**Expected Outcome**: You'll understand that comparisons are foundational (standalone True/False values) before they're used in if statements; see how Chapter 15 (operators producing True/False) prepares for Chapter 17 (using True/False in decisions); appreciate the learning progression from understanding operators to using them in control structures.
+
+---
+
+**Safety Note**: AI-generated code may contain errors. Always run it, check the results, and ask "Why is this True?" or "Why is this False?" when results surprise you. Comparisons are deterministic—once you understand the logic, you'll predict results accurately.
