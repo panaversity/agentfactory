@@ -1,513 +1,410 @@
----
-title: "Writing Clear Commands - Your First Code Generation"
-chapter: 10
-lesson: 2
-part: 3
-duration_minutes: 40
-
-# HIDDEN SKILLS METADATA (Institutional Integration Layer)
-# Not visible to students; enables competency assessment, accreditation alignment, and differentiation
-skills:
-  - name: "Writing Clear AI Commands"
-    proficiency_level: "A2"
-    category: "Technical"
-    bloom_level: "Apply"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student writes 3+ prompts using strong technical verbs that produce usable AI responses"
-
-  - name: "Iterating with AI Feedback"
-    proficiency_level: "A2"
-    category: "Soft"
-    bloom_level: "Apply"
-    digcomp_area: "Communication & Collaboration"
-    measurable_at_this_level: "Student refines initial prompt based on AI response to improve output quality"
-
-learning_objectives:
-  - objective: "Use strong technical action verbs (Create, Debug, Refactor) to guide AI"
-    proficiency_level: "A2"
-    bloom_level: "Apply"
-    assessment_method: "Prompt writing exercises with verification through AI tool"
-
-  - objective: "Transform vague prompts into specific, actionable commands"
-    proficiency_level: "A2"
-    bloom_level: "Apply"
-    assessment_method: "Rewrite exercise with before/after comparison"
-
-  - objective: "Generate working code using an AI coding agent"
-    proficiency_level: "A2"
-    bloom_level: "Apply"
-    assessment_method: "Hands-on code generation with executed output validation"
-
-cognitive_load:
-  new_concepts: 5
-  assessment: "5 new concepts (technical action verbs, vague vs. specific, command structure, testing prompts, iterative refinement) within A2 limit of 7 ✓"
-
-differentiation:
-  extension_for_advanced: "Students write prompts for more complex features; combine multiple verbs in single prompt; explore how different verbs affect AI output"
-  remedial_for_struggling: "Use simplified verb list (just Create, Debug, Refactor first); provide more examples of vague vs. strong prompts; scaffold Exercise 3 with template"
----
-
-## Your AI Orchestrator Moment
-
-You're about to cross a threshold. In Lesson 1, you learned *how* AI agents think. In this lesson, you'll make your first real command and watch an AI build code for you. This isn't theoretical—by the end of this lesson, you'll have written actual working code with an AI partner.
-
-Thousands of developers build production systems this way every day. They don't memorize Python syntax or JavaScript templates. They learn to think strategically, express intent clearly, and validate what AI produces. That's what you're learning right now.
-
-In 40 minutes, you'll understand why a single word can mean the difference between AI generating exactly what you need and AI generating generic boilerplate you'll spend an hour debugging.
+# Lesson 2: Writing Clear Commands — Specification-First Fundamentals
 
 ---
 
-## WHAT: Technical Action Verbs - The Vocabulary of AI Direction
+## What Should This Lesson Enable You to Do?
 
-**Definition**: Technical action verbs are precise, unambiguous words that tell AI agents exactly what to do. Instead of vague language like "help me" or "make something," strong verbs communicate intent with laser focus.
+By the end of this lesson, you should be able to:
 
-Think of it like giving instructions to a contractor:
-- **Weak**: "Help me with a roof" → Contractor asks 20 clarifying questions
-- **Strong**: "Build a pitched roof with 8-inch trusses and architectural shingles" → Contractor knows exactly what to build
+- **Write specifications that define WHAT you want before attempting HOW to ask for it**
+- **Distinguish between vague and falsifiable specifications** and recognize why clarity compounds output quality
+- **Apply a specification-first framework** to prompt design (outcome → success criteria → constraints → prompt)
+- **Recognize the relationship between specification quality and AI output quality**
+- **Evaluate prompt specifications for completeness** using a decision framework
 
-AI agents work the same way. Strong verbs eliminate confusion.
-
-### The 8 Core Developer Verbs
-
-These eight verbs appear constantly in software development work. Master them, and you'll guide AI effectively across 90% of development tasks.
-
-#### 1. **Create** — Build new features or components from scratch
-
-**Definition**: Construct something entirely new that doesn't exist yet.
-
-**When to use**: Building new functions, designing new API endpoints, writing new classes, implementing new features
-
-**Example prompt**: "Create a Python function that validates email addresses using regex"
-
-**What you get**: AI generates complete, working code for a new function
-
-**Red flags avoided**: Generic tutorials (vague), unclear scope (missed requirements)
+**Success criteria**: You can take a vague problem statement ("evaluate this codebase") and transform it into a clear specification that guides accurate AI reasoning.
 
 ---
 
-#### 2. **Debug** — Identify and fix specific issues in existing code
+## The Professional Reality: Vague Specifications Fail
 
-**Definition**: Find problems in code that isn't working and provide solutions.
+### The Scenario
 
-**When to use**: Code crashes, produces wrong output, throws errors, behaves unexpectedly
+You are a **Technical Writer** creating documentation for your team's new Python library. Your manager asks:
 
-**Example prompt**: "Debug the login function that throws a 'KeyError: username' exception when users submit the form"
+> "We need docs for our authentication library. Can you write something that explains how to use it?"
 
-**What you get**: AI analyzes the error, explains the root cause, and provides a fix
+This is your raw requirement. **Stop and think**: What does "explains how to use it" mean? Installation guide? API reference? Tutorial with examples? Security best practices?
 
-**Why this matters**: Debugging with AI is faster than debugging alone. You provide the error message and context; AI finds the issue.
-
----
-
-#### 3. **Refactor** — Restructure existing code without changing its behavior
-
-**Definition**: Improve code quality, readability, or maintainability while keeping functionality identical.
-
-**When to use**: Code works but is hard to read, has duplicate logic, needs better structure, is slower than it should be
-
-**Example prompt**: "Refactor the calculateTotal function to eliminate duplicate loops and improve readability"
-
-**What you get**: AI restructures code to be cleaner, faster, or easier to understand—but still does the same thing
-
-**The difference**: "Refactor" is NOT the same as "fix a bug." It's about improving code that already works.
-
----
-
-#### 4. **Optimize** — Improve performance, memory usage, or efficiency
-
-**Definition**: Make code run faster, use less memory, or be more resource-efficient.
-
-**When to use**: Code is slow, uses too much memory, makes unnecessary API calls, has bottlenecks
-
-**Example prompt**: "Optimize the data processing function to use vectorized NumPy operations instead of loops"
-
-**What you get**: AI redesigns code to be more efficient—often 10x-100x faster
-
----
-
-#### 5. **Generate** — Produce boilerplate, tests, or documentation
-
-**Definition**: Create repetitive content that follows patterns (tests, docs, configuration files, templates).
-
-**When to use**: Writing test cases, creating documentation, generating configuration files, building templates
-
-**Example prompt**: "Generate unit tests for the calculateTotal function covering edge cases like negative numbers and zero"
-
-**What you get**: AI creates comprehensive test code following testing best practices
-
----
-
-#### 6. **Analyze** — Review code for issues, patterns, problems, or improvements
-
-**Definition**: Examine code and identify patterns, problems, security issues, or architectural concerns.
-
-**When to use**: Code review, security audit, understanding complex code, identifying patterns
-
-**Example prompt**: "Analyze this authentication function for security vulnerabilities"
-
-**What you get**: AI reviews code and reports issues, suggests fixes, explains risks
-
-**Note**: Analyze is diagnostic (find issues). Debug is corrective (fix issues). Both are useful at different times.
-
----
-
-#### 7. **Migrate** — Convert code between languages, frameworks, or versions
-
-**Definition**: Transform code from one technology to another while preserving functionality.
-
-**When to use**: Upgrading to new versions, switching frameworks, translating between languages
-
-**Example prompt**: "Migrate this Python 2 code to Python 3.11 syntax"
-
-**What you get**: AI updates code to work with new versions, frameworks, or languages
-
----
-
-#### 8. **Integrate** — Connect different systems, APIs, or components
-
-**Definition**: Make separate pieces of code work together seamlessly.
-
-**When to use**: Connecting to external APIs, combining components, adding to existing systems
-
-**Example prompt**: "Integrate the payment processing module with the checkout workflow"
-
-**What you get**: AI connects components together with proper error handling and data flow
-
----
-
-## Before and After: Vague vs. Strong Commands
-
-To cement this, let's contrast weak and strong prompts side by side.
-
-| **Context** | **Weak Prompt** | **Strong Prompt** | **What Happens** |
-|---|---|---|---|
-| **Create a function** | "Help me with a function" | "Create a Python function named `sum_positive_numbers` that takes a list of integers and returns the sum of only positive values" | Weak: AI asks 5 clarifying questions. Strong: AI generates exactly what you need on first try |
-| **Debug code** | "My code is broken" | "Debug the `read_csv` function that throws 'UnicodeDecodeError: utf-8' when processing CSV files with special characters" | Weak: AI needs more context. Strong: AI identifies the encoding issue and fixes it immediately |
-| **Improve code** | "Make this better" | "Refactor the `process_orders` function to eliminate nested loops and improve readability without changing behavior" | Weak: AI guesses what "better" means. Strong: AI knows exactly what you want |
-| **Optimize performance** | "This is slow" | "Optimize the `search_products` function to use indexed database queries instead of scanning all 100,000 rows" | Weak: AI tries random improvements. Strong: AI targets the specific bottleneck |
-
-Notice the pattern: **vague prompts require AI to guess; strong prompts require AI to execute.**
-
----
-
-## WHY: Why Strong Commands Matter (The Business Case)
-
-Here's the real cost: **Time and frustration.**
-
-### The Numbers
-
-Research from AI development teams shows:
-- **Vague prompts**: 30% success rate on first try → Average 50 minutes to get working code
-- **Strong prompts**: 70% success rate on first try → Average 5 minutes to get working code
-
-That's a **10x productivity increase** from one word change.
-
-### Why Vague Prompts Fail
-
-When you ask AI "Help me with authentication," the AI doesn't know:
-- What language you're using (Python? JavaScript? Go?)
-- What framework (FastAPI? Express? Flask?)
-- What authentication method (JWT? OAuth2? Sessions?)
-- What level of security you need
-- How it integrates with your project
-
-So AI picks ONE interpretation and hopes it's right. Usually it's wrong. Then you spend 45 minutes explaining what you really wanted.
-
-### Why Strong Prompts Work
-
-When you ask AI "Create a Python function that validates JWT tokens using the PyJWT library," AI immediately knows:
-- You want Python (not JavaScript)
-- You want a specific library (PyJWT)
-- You want JWT validation (specific authentication method)
-- You want a complete function (not a tutorial)
-
-No guessing. No back-and-forth. Working code in minutes.
-
-### Time Isn't the Only Benefit
-
-Strong prompts also:
-- **Reduce frustration**: You get what you asked for, not something you have to debug
-- **Improve code quality**: AI can optimize for specific frameworks and patterns
-- **Build confidence**: Quick wins show you that "I can direct AI to build things"
-- **Scale your skills**: As tasks get complex, strong commands are the difference between working and failing
-
-#### 🎓 Expert Insight
-
-> The 10x productivity difference isn't about typing speed—it's about decision clarity. When you use strong verbs, you're forcing yourself to think precisely about what you want. That clarity not only helps AI; it helps you recognize whether you've actually thought through the problem. Vague prompts often reveal vague thinking.
-
-This lesson is about mastering that one difference.
-
----
-
-## HOW: Command Structure — The Formula
-
-Strong commands follow a simple, repeatable structure:
-
+**Without a specification**, you ask an AI agent:
 ```
-[VERB] + [TARGET] + [DESIRED OUTCOME]
+"Write documentation for this authentication library"
 ```
 
-![Diagram showing command structure formula with three components (Verb, Target, Desired Outcome) connected by plus signs, with arrow pointing to concrete example: Create + Python function + validates email with regex](/img/part-3/chapter-10/command-structure-formula.png)
+**The AI responds** with generic README structure (Installation, Usage, License). You get 60% of what you need.
 
-Let's break this down with real examples:
-
-### Pattern: [Verb] + [Target] + [Desired Outcome]
-
-#### Example 1: Creating Something
+**With a specification**, you first define:
 ```
-CREATE a Python function
-TARGET: that calculates the Fibonacci sequence
-OUTCOME: up to n terms with type hints
+Intent: Create user-facing documentation for developers integrating our auth library
+Success criteria: Quickstart guide (5 min setup), authentication flow diagram, 3 code examples (basic/OAuth/2FA), troubleshooting section
+Constraints: Audience is intermediate Python developers; library uses FastAPI; docs must be Markdown for GitHub
+Risks to validate: Common integration errors, security misconfigurations
 ```
 
-**Full prompt**: "Create a Python function that calculates the Fibonacci sequence up to n terms with type hints"
+**Now you ask the AI** with that specification as context. You get 95% of what you need.
+
+**The difference is massive**: Same AI, same library, but specification quality determines output quality.
 
 ---
 
-#### Example 2: Debugging Something
+## Concept 1: Specification vs. Vague Request
+
+### What's the Difference?
+
+**Vague Request** (60% quality):
+- Single sentence or question
+- No success criteria defined
+- No constraints mentioned
+- Ambiguous terms ("better", "understand", "analyze")
+- AI guesses what you want
+
+Example:
 ```
-DEBUG the user registration endpoint
-TARGET: that returns 500 errors
-OUTCOME: when email already exists
+"Write documentation for this library"
 ```
+→ AI responds with generic README template, not user-focused guide
 
-**Full prompt**: "Debug the user registration endpoint that returns 500 errors when the email already exists in the database"
+**Specification** (95% quality):
+- Intent clearly stated (what problem are you solving?)
+- Success criteria defined (what does a good answer look like?)
+- Constraints listed (what limits exist?)
+- Non-goals defined (what's explicitly out of scope?)
+- Falsifiable (AI can verify if it answered correctly)
 
----
-
-#### Example 3: Refactoring Something
+Example:
 ```
-REFACTOR the authentication module
-TARGET: currently using session-based auth
-OUTCOME: to use JWT tokens instead
+Intent: Create onboarding documentation for developers new to our markdown parser library
+Success criteria: Quickstart (working example in 5 min), 3 usage scenarios (basic/tables/extensions), API reference table, troubleshooting section
+Constraints: Markdown format, audience is Python developers with basic markdown knowledge, must include code examples with expected outputs
+Non-goals: Markdown syntax tutorial, performance optimization guide, comparison to other parsers
 ```
+→ AI responds with exactly what you specified
 
-**Full prompt**: "Refactor the authentication module to use JWT tokens instead of sessions while maintaining backward compatibility"
+### Socratic Discovery
+
+**Question 1**: If I ask an AI agent "Write documentation for this library" without any context, what could the agent produce? (What would 60% of the possible output look like?)
+
+**Question 2**: What would 95% look like? What information would make you confident the documentation serves your users?
+
+**Key Insight**: The gap between 60% and 95% is **specification clarity**. Not smarter AI, not longer prompts—specification quality.
 
 ---
 
-#### Example 4: Optimizing Something
+## Concept 2: Falsifiable Success Criteria
+
+### What Makes a Specification Falsifiable?
+
+**Falsifiable** means: "I can verify if you answered my question correctly."
+
+**Non-falsifiable specification**:
 ```
-OPTIMIZE the database query
-TARGET: that loads all user records
-OUTCOME: to use pagination and indexing
+Success criteria: "Write good documentation"
 ```
+→ Vague. How do you verify "good"? AI could respond with anything.
 
-**Full prompt**: "Optimize the database query that loads all user records to use pagination and database indexing for faster performance"
-
----
-
-#### Example 5: Analyzing Something
+**Falsifiable specification**:
 ```
-ANALYZE the login function
-TARGET: for security issues
-OUTCOME: like SQL injection and password storage
+Success criteria:
+1. Provide quickstart guide (user can run example in 5 minutes)
+2. Include 3 code examples (basic usage, advanced feature, error handling)
+3. Add troubleshooting section (5 most common errors with solutions)
+4. Answer: "Can a new developer integrate this library in < 30 minutes?"
 ```
+→ Clear. You can verify each criterion independently.
 
-**Full prompt**: "Analyze the login function for security vulnerabilities including SQL injection, weak password hashing, and insecure token storage"
+### Exercise: Falsifiability Assessment
 
----
+For each specification below, identify which are falsifiable:
 
-### Why This Structure Works
-
-The structure works because it gives AI:
-1. **Action** (Verb): What operation to perform
-2. **Scope** (Target): What piece you're talking about
-3. **Success criteria** (Outcome): How you'll know if it's right
-
-AI fills in all the technical details because you've eliminated ambiguity.
-
-#### 💬 AI Colearning Prompt
-
-> **Explore with your AI**: "I've learned 8 technical action verbs (Create, Debug, Refactor, Optimize, Generate, Analyze, Migrate, Integrate). Help me understand: when would I use 'Refactor' instead of 'Optimize'? Give me a concrete example where choosing the wrong verb would lead to the wrong solution."
-
----
-
-## Common Mistakes to Avoid
-
-As you start writing prompts, watch out for these common pitfalls:
-
-### ❌ **Mistake 1: Vague Requirements**
-**Bad**: "Make an API for my app"
-**Better**: "Create a FastAPI endpoint `GET /users/{id}` that retrieves a user by ID from PostgreSQL"
-
-**Why it matters**: Vague prompts force AI to guess what you want, leading to generic code that doesn't fit your project.
-
----
-
-### ❌ **Mistake 2: Missing Action Verb**
-**Bad**: "I need something for user authentication"
-**Better**: "Create a user authentication function with JWT token generation"
-
-**Why it matters**: Without a clear action verb, AI doesn't know whether to create, debug, refactor, or analyze.
-
----
-
-### ❌ **Mistake 3: No Target Specified**
-**Bad**: "Help me with this code" (what code?)
-**Better**: "Debug the login() function in auth.py that throws KeyError on line 45"
-
-**Why it matters**: AI needs to know exactly what piece of code you're working on.
-
----
-
-### ✅ **The Pattern That Works**
-Always use: **[Strong Verb] + [Specific Target] + [Clear Outcome]**
-
-Example: "**Create** a Python **function** that **validates email addresses using regex and returns True/False**"
-
----
-
-## PRACTICE: Three Exercises (20 minutes total)
-
-### Exercise 1: Identify Strong Commands (5 minutes)
-
-**Task**: Read these five prompts. Identify which uses the strongest command.
-
-1. "I need something for user authentication"
-2. "Help me make a login system"
-3. "Create a user authentication function with email validation and bcrypt password hashing"
-4. "Can you do authentication?"
-5. "Fix my login code"
-
-**Success criteria**: Correctly identify the strongest prompt + explain why
-
-<details>
-<summary>Answer (Click to reveal)</summary>
-
-**Correct answer: Prompt #3**
-
-Why it's strongest:
-- Uses clear verb: "Create"
-- Specifies target: "user authentication function"
-- Specifies outcome: "email validation and bcrypt password hashing"
-- Eliminates ambiguity: AI knows exactly what to build
-
-Why others are weak:
-- #1: No verb, vague ("something")
-- #2: Weak verb ("help"), vague scope ("system")
-- #4: Not a command, asks permission
-- #5: Wrong verb (Fix assumes there's existing code)
-
-</details>
-
----
-
-### Exercise 2: Rewrite Vague Prompts to Strong Commands (10 minutes)
-
-**Task**: Transform these vague prompts into strong commands using the [Verb] + [Target] + [Outcome] structure.
-
-**Prompt 1**: "Help me with a function"
-
-<details>
-<summary>Example answer (Click to reveal)</summary>
-
-**Strong rewrite**: "Create a Python function that calculates the area of a rectangle given length and width parameters, with type hints and a docstring"
-
-Why this is better:
-- Verb: Create (clear action)
-- Target: Python function (specific scope)
-- Outcome: Calculate area of rectangle with specific requirements (what success looks like)
-
-</details>
-
-**Prompt 2**: "Make my code better"
-
-<details>
-<summary>Example answer (Click to reveal)</summary>
-
-**Strong rewrite**: "Refactor the calculateTotal function to reduce cyclomatic complexity, eliminate duplicate code, and improve readability without changing its behavior"
-
-Why this is better:
-- Verb: Refactor (not "better," specific action)
-- Target: calculateTotal function (exactly which code)
-- Outcome: Specific improvements (complexity, duplication, readability)
-
-</details>
-
-**Prompt 3**: "Something is broken"
-
-<details>
-<summary>Example answer (Click to reveal)</summary>
-
-**Strong rewrite**: "Debug the database connection function that throws 'connection refused' errors when connecting to PostgreSQL on port 5432"
-
-Why this is better:
-- Verb: Debug (diagnostic action)
-- Target: database connection function (exact component)
-- Outcome: Fix specific error (connection refused, specific context)
-
-</details>
-
----
-
-### Exercise 3: Write Your Own Prompt and Test with AI (5 minutes)
-
-**This is your first code generation. Your moment.**
-
-**Task**:
-1. Choose a simple task you'd like to build (examples below)
-2. Write a prompt using the [Verb] + [Target] + [Outcome] structure
-3. Test it with your AI agent (ChatGPT or Claude Code)
-4. Observe: Does AI understand your intent? Is the output usable?
-
-**Starter ideas** (pick one):
-- Create a function that checks if a number is prime
-- Create a function that reverses a string without built-in methods
-- Create a function that counts how many times each word appears in text
-- Create a function that converts temperatures from Celsius to Fahrenheit
-- Debug a function that should return the maximum value in a list but returns the minimum instead
-
-**Your prompt structure**:
+**Specification A**:
 ```
-[Verb] a [Language] [Type] that [Desired outcome]
+"Write documentation that's easy to understand"
+```
+→ Is this falsifiable? Why or why not?
+(Answer: No. "Easy to understand" is subjective. For whom? What's their background?)
+
+**Specification B**:
+```
+"Create documentation with: quickstart guide (working example < 5 min), API reference table (all public functions), 3 code examples (with expected outputs), troubleshooting section (5 common errors)"
+```
+→ Is this falsifiable? Why?
+(Answer: Yes. You can verify each element independently: Does quickstart exist? Does it have working example? Are all functions documented?)
+
+**Specification C**:
+```
+"Generate README with: installation instructions (pip install), usage section (import statement + basic example), configuration options (environment variables table), license section (MIT)"
+```
+→ Is this falsifiable? Why?
+(Answer: Yes. Each section has clear presence/absence criteria. You can verify: Are installation steps present? Is there a usage example?)
+
+---
+
+## Concept 3: The Specification Layers Framework
+
+### Four Layers of Specification Detail
+
+When you write a specification, include these layers (in order):
+
+**Layer 1: Intent** (Why are you asking this question?)
+```
+"We're creating developer documentation for our new markdown parser library"
 ```
 
-**Examples**:
-- "Create a Python function that checks if a number is prime and returns True or False"
-- "Create a JavaScript function that reverses a string without using built-in reverse methods"
-- "Create a Python function that counts word frequency in a text and returns a dictionary"
+**Layer 2: Success Criteria** (What does a good answer look like?)
+```
+"Need: quickstart guide (< 5 min setup), usage examples (3 scenarios), API reference, troubleshooting section"
+```
 
-**Success criteria**:
-- Your prompt follows [Verb] + [Target] + [Outcome] structure ✓
-- AI understands your intent ✓
-- Output is functional (even if not perfect) ✓
-- You can read and understand what the AI generated ✓
+**Layer 3: Constraints** (What limits exist?)
+```
+"Audience: Python developers (intermediate level)
+Format: Markdown for GitHub
+Style: Match existing docs (code-first examples, minimal prose)"
+```
 
+**Layer 4: Prompt** (Now ask the question)
+```
+"Generate documentation for markdown parser [with Layer 1-3 context provided]"
+```
 
----
+### Why This Order Matters
 
-## Try With AI: Test Your Command Structure
+**If you skip Layer 1-3 and jump to Layer 4**: AI guesses what you want
 
-In Lesson 1, you saw how vague prompts ("Help me with Python code") lead to confusion while specific prompts get immediate results. Now it's time to test the command structure you learned in this lesson.
+**If you include Layer 1-3**: AI has framework for answering precisely
 
-### Setup
+**Example comparison**:
 
-Open your AI tool:
-- **ChatGPT** (web version): Go to chat.openai.com and start a new chat (easiest option)
-- **Alternative**: If you've already set up Claude Code from previous lessons, use that instead
+**Without layers**:
+```
+User: "Write documentation for this library"
+AI: Generic README with standard sections (Installation, Usage, License)
+Result: 60% relevance
+```
 
----
-
-### Test Your Own Prompt (Your first milestone)
-
-**Copy your prompt from Exercise 3 above** (the one you wrote yourself).
-
-**Paste it into your AI tool** and run it.
-
-**Observe**:
-- Did the AI understand your intent?
-- Is the generated code something you could use?
-- Are there parts you don't understand? (That's okay—ask AI to explain)
-- Does the output have the structure you expected?
-
-**Reflection Questions**:
-
-- **Which prompt saved more time?** Vague or strong?
-- **Why did the strong command produce better results?**
-- **Can you identify the verb, target, and outcome in your Exercise 3 prompt?**
-- **What would you change about your prompt to make it even stronger?**
+**With layers**:
+```
+Layer 1: "We're creating docs for developer onboarding"
+Layer 2: "We need: quickstart (< 5 min), 3 examples, API reference, troubleshooting"
+Layer 3: "Audience: Python devs (intermediate); Format: Markdown; Style: code-first examples"
+User: "Generate documentation for markdown parser"
+AI: Targeted documentation with quickstart, code-heavy examples, troubleshooting for common errors
+Result: 95% relevance
+```
 
 ---
 
+## Concept 4: Contrast Exercise — Specification vs. Non-Specification
 
+### Before and After: Real Examples
+
+**Example 1: Library Documentation**
+
+❌ **Vague** (without specification):
+```
+"Write documentation for this library"
+```
+
+✅ **Specified** (with layers):
+```
+Intent: Create onboarding docs for developers new to our HTTP client library
+Success Criteria: Quickstart guide (< 5 min), 3 code examples (GET/POST/auth), API reference table, error handling section
+Constraints: Audience is Python developers (intermediate); Markdown format; Must work with code version 2.0+
+Non-Goals: HTTP protocol tutorial, performance benchmarks, comparison to requests/httpx
+```
+
+**The difference**: First gets generic README. Second gets user-focused onboarding guide.
+
+---
+
+**Example 2: Tutorial Content**
+
+❌ **Vague**:
+```
+"Create a tutorial for beginners"
+```
+
+✅ **Specified**:
+```
+Intent: Teach markdown basics to content creators (non-developers) for documentation workflows
+Success Criteria: 10-minute walkthrough (headings/lists/links/code blocks), 5 practice exercises (progressive difficulty), cheat sheet reference
+Constraints: Audience has zero programming experience; Must use visual examples; Practice exercises use real-world scenarios (blog posts, documentation)
+Non-Goals: HTML/CSS integration, advanced markdown extensions, static site generators
+```
+
+---
+
+## Concept 5: Building Your Specification
+
+### The Specification Template
+
+Use this structure every time you need AI to create documentation or content:
+
+```
+## Intent (1-2 sentences)
+Why are you creating this content? What purpose does it serve?
+
+## Success Criteria (3-5 items)
+What would complete, useful documentation include?
+
+## Constraints (3-5 items)
+What limits exist? (audience, format, length, style?)
+
+## Non-Goals (2-3 items)
+What are you explicitly NOT including?
+
+## Context Layers (optional)
+What background does the AI need to understand?
+- Content purpose
+- Audience background
+- Existing documentation style
+- Integration requirements
+```
+
+### Exercise: Write Your Specification
+
+**Scenario**: You need to create a README for your team's new CLI tool that helps developers manage environment variables.
+
+**Try this**: Write a 4-layer specification for this documentation (Intent, Success Criteria, Constraints, Non-Goals).
+
+**Hint**: What would make this README useful for new users? What constraints apply? What's out of scope?
+
+(Example answer at end of lesson)
+
+---
+
+## Synthesis: From Vague to Clear
+
+### The Journey
+
+1. **Start**: Vague question ("Write documentation")
+2. **Layer 1**: Add Intent ("We're creating onboarding docs for new developers")
+3. **Layer 2**: Add Success Criteria ("We need quickstart + 3 examples + API reference + troubleshooting")
+4. **Layer 3**: Add Constraints ("Audience: Python devs (intermediate), Markdown format, code-first style")
+5. **Result**: Clear specification that guides accurate AI content creation
+
+### Why This Matters Strategically
+
+**Strategic content creation is built on clear specifications, not smart tools.**
+
+Before AI agents, you'd hire a technical writer to create documentation. You wouldn't just say "write docs." You'd provide a specification:
+- "What we're creating it for" (Intent)
+- "What the documentation needs to cover" (Success Criteria)
+- "What we already know about the audience" (Constraints)
+- "What's out of scope" (Non-Goals)
+
+**AI agents have inverted this**: We think more capability means we need less clarity. Actually, it's the opposite. More powerful tools need clearer specifications.
+
+---
+
+## Self-Assessment: Specification Evaluation Exercise
+
+### Exercise 1: Identify the Specification Gaps
+
+Below is a specification someone wrote. Identify what's missing or unclear:
+
+```
+Intent: Write good documentation
+Success Criteria: Make it easy to understand
+Constraints: I know markdown
+Non-Goals: I don't want to explain everything
+```
+
+**What's missing?**
+- Intent is too vague ("good documentation" is subjective)
+- Success Criteria is not falsifiable ("easy to understand" can't be verified)
+- Constraints incomplete (what's the audience? what format? what content type?)
+
+**How would you improve it?**
+
+---
+
+### Exercise 2: Refactor a Vague Request
+
+**Original request**:
+```
+"Write a tutorial for this tool"
+```
+
+**Your task**: Refactor this into a specification with Intent, Success Criteria, Constraints, Non-Goals
+
+**Possible refactoring**:
+```
+Intent: Create beginner tutorial for our CLI tool (environment variable manager)
+Success Criteria: Installation guide (< 2 min), 3 usage examples (set/get/delete vars), troubleshooting section (5 common errors)
+Constraints: Audience is developers new to CLI tools, Markdown format, must include copy-paste commands
+Non-Goals: Advanced configuration options, shell scripting tutorial, comparison to other env managers
+```
+
+---
+
+## What's Next
+
+You now understand **specification as the foundation** of clear AI prompting. In Lesson 3, you'll apply this framework in collaboration with an AI agent, using what you've learned here to guide systematic codebase analysis.
+
+---
+
+## Try With AI
+
+**This is a Stage 1 lesson (manual foundation)**: Use this reflection exercise without AI tools.
+
+### Reflection Exercise: Specification-First Thinking
+
+Answer these questions in writing (no AI assistance):
+
+1. **Recall**: Think of a time you asked someone (a colleague, teacher, AI) a vague question and got an unhelpful answer. What was missing in your question?
+
+2. **Apply**: Take that scenario and write a proper specification (Intent, Success Criteria, Constraints, Non-Goals) that would have gotten a better answer.
+
+3. **Synthesize**: How is writing a clear specification like giving someone detailed instructions before asking them to do a task? What's the parallel?
+
+4. **Evaluate**: For your own work (evaluating codebases, learning frameworks), where could you benefit from writing specifications first instead of asking vague questions?
+
+**After completing this reflection, you're ready for Lesson 3, where you'll practice this with an actual AI agent.**
+
+---
+
+## Lesson Metadata
+
+- **Stage**: 1 (Manual Foundation — NO AI tools)
+- **Modality**: Specification-first + Socratic dialogue
+- **Concepts**: 5 (Vague vs. falsifiable specs, 4-layer framework, specification quality, intent/criteria/constraints, falsifiability)
+- **Cognitive Load**: 5 ≤ 7 (B1 tier Stage 1 limit ✅)
+- **AI Tools Used**: NONE (Stage 1 principle)
+- **Duration**: 50-60 minutes
+- **Version**: 1.0.0
+- **Constitution**: v6.0.0 Compliance
+- **Generated**: 2025-01-18
+- **Feature**: 025-chapter-10-redesign
+- **Source Spec**: `specs/025-chapter-10-redesign/plan.md` (Lesson 2 structure)
+
+---
+
+## Answer Key: Specification Exercise (Concept 5)
+
+**Example specification for "Create README for CLI tool managing environment variables"**:
+
+```
+Intent: Create onboarding documentation for developers new to our env-manager CLI tool
+
+Success Criteria:
+1. Installation guide (pip install + verify setup < 2 min)
+2. Quickstart example (set, get, delete env vars with copy-paste commands)
+3. Three usage scenarios (local dev, testing, CI/CD integration)
+4. Troubleshooting section (5 common errors: permission issues, path not found, syntax errors, conflicts, shell compatibility)
+5. API reference table (all commands with arguments and examples)
+
+Constraints:
+- Audience: Developers familiar with command line but new to env management tools
+- Format: Markdown for GitHub
+- Style: Code-first examples (minimal prose, max clarity)
+- Length: Must fit in GitHub's README preview (< 5-minute read)
+
+Non-Goals:
+- Shell scripting tutorial
+- Environment variable concepts explained from scratch
+- Comparison to other env managers (direnv, dotenv)
+- Advanced configuration (encryption, remote storage)
+```
+
+This specification guides AI to give you exactly what you need for user onboarding.
