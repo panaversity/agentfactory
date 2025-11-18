@@ -1,4 +1,5 @@
 import { useBookmarks } from '@/contexts/BookmarkContext';
+import { useNotes } from '@/contexts/NotesContext';
 import { useSearch } from '@/contexts/SearchContext';
 import { useSidebarControl } from '@/contexts/SidebarContext';
 import Link from '@docusaurus/Link';
@@ -33,6 +34,7 @@ const CustomNavbar: React.FC = () => {
   const { search, isLoading: searchLoading } = useSearch();
   const { isSidebarCollapsed, collapseSidebar, expandSidebar } = useSidebarControl();
   const { setSelectedText, setSelectedElementId, setInitialView, tocMode, setTocMode } = useBookmarks();
+  const { setView: setNotesView } = useNotes();
   const [searchFocused, setSearchFocused] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -71,13 +73,23 @@ const CustomNavbar: React.FC = () => {
       }
       // Open the drawer in 'add' mode with selected text
       openDrawer(action, 'add');
+    } else if (action === 'Notes') {
+      // Open notes drawer in add mode and dispatch event to append text
+      setNotesView('add');
+      openDrawer(action, 'add');
+      // Dispatch custom event to append text to active note
+      setTimeout(() => {
+        window.dispatchEvent(new CustomEvent('appendToNote', {
+          detail: { selectedText: selectedTextParam }
+        }));
+      }, 100);
     } else {
       // For other actions, open normally
       openDrawer(action, 'view');
     }
 
     console.log(`Action: ${action}, Selected Text: ${selectedTextParam}, ElementId: ${elementId}, TextAnchor:`, textAnchor);
-  }, [openDrawer, setSelectedText, setSelectedElementId]);
+  }, [openDrawer, setSelectedText, setSelectedElementId, setNotesView]);
 
   const toggleChat = useCallback(() => {
     setChatOpen((prev) => !prev);

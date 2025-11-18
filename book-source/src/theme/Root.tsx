@@ -11,6 +11,7 @@
 import React from 'react';
 import { AnalyticsTracker } from '@/components/AnalyticsTracker';
 import { BookmarkProvider } from '@/contexts/BookmarkContext';
+import { NotesProvider } from '@/contexts/NotesContext';
 import { SearchProvider } from '@/contexts/SearchContext';
 import { SidebarProvider } from '@/contexts/SidebarContext';
 
@@ -19,9 +20,11 @@ export default function Root({ children }: { children: React.ReactNode }) {
     <SidebarProvider>
       <SearchProvider>
         <BookmarkProvider>
-          <AnalyticsTracker>
-            {children}
-          </AnalyticsTracker>
+          <NotesProvider>
+            <AnalyticsTracker>
+              {children}
+            </AnalyticsTracker>
+          </NotesProvider>
         </BookmarkProvider>
       </SearchProvider>
     </SidebarProvider>
