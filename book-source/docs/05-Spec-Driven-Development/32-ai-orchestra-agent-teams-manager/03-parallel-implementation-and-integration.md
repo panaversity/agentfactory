@@ -243,14 +243,18 @@ Your parallel execution: _____ min
 
 ## Try With AI
 
-Use Claude Code to analyze your merge experience:
+Ready to validate your parallel implementation and analyze integration feedback? Test your decomposition thinking:
 
-```
-I merged 3 feature branches and had [N] conflicts in these files:
-- [list files]
+**🔍 Explore Merge Conflict Analysis:**
+> "I merged 3 feature branches and encountered [N] conflicts in these files: [list files with conflict details]. Analyze what these conflicts reveal about my decomposition quality: (1) Were these features truly independent? (2) What shared concerns caused conflicts (state, dependencies, interfaces)? (3) What decomposition patterns would have prevented these conflicts? (4) How should I decompose differently next time?"
 
-What does this tell me about my decomposition quality?
-What should I decompose differently next time?
-```
+**🎯 Practice Non-Blocking Coordination:**
+> "I'm running 3 parallel `/sp.implement` sessions across worktrees. Guide me through non-blocking coordination: (1) How do I prevent one agent from blocking others? (2) What signals indicate a dependency bottleneck? (3) How should I sequence merges to minimize integration risk? (4) If feature-001 takes longer than expected, how do I adjust feature-002 and feature-003 timelines? Create a coordination playbook."
 
-**Expected**: AI identifies decomposition issues and suggests improvements.
+**🧪 Test Integration Strategy:**
+> "I have 3 completed features ready to merge: feature-001 (base), feature-002 (depends on feature-001), feature-003 (independent). Walk me through the optimal integration strategy: (1) What's the merge order? (2) What tests do I run after each merge? (3) How do I validate that integration didn't break individual features? (4) If I discover a breaking change during integration, how do I isolate and fix it?"
+
+**🚀 Apply to Scale:**
+> "I'm planning a system with 7-9 parallel features. Based on my 3-feature experience, help me scale my approach: (1) What decomposition principles prevent integration pain at scale? (2) How do I identify and sequence dependencies across 9 features? (3) What's my critical path for integration? (4) How many integration conflicts should I expect if decomposition is good vs bad? Design my scaled orchestration strategy."
+
+---

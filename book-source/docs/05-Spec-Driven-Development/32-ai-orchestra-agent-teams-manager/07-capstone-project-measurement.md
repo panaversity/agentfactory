@@ -449,23 +449,18 @@ Not because you're a faster coder. But because you understand how **clear specs 
 
 ## Try With AI
 
-Use your AI companion to refine your portfolio narrative:
+You've completed a multi-feature project with measurable results—now transform those metrics into a portfolio narrative that demonstrates strategic orchestration capability.
 
-```
-Review my capstone project portfolio narrative. Does it emphasize
-decomposition thinking and strategic capability (not tool proficiency)?
+**🔍 Explore Project Design:**
+> "Help me design a 3-feature capstone project for [domain]. Identify which features can be parallelizable, what dependencies exist, and what integration contracts I need. Then predict where merge conflicts might occur if decomposition is poor."
 
-[PASTE YOUR 2-MINUTE PITCH]
+**🎯 Practice Portfolio Narrative:**
+> "Review my capstone project pitch: [paste your 2-minute pitch]. Does it emphasize decomposition thinking and strategic capability, or does it focus too much on tools? Give me specific feedback on what works and what to strengthen for employer conversations."
 
-Give me specific feedback on what works and what to strengthen.
-```
+**🧪 Test Metrics Analysis:**
+> "I measured [X]x speedup with [N] merge conflicts on my 3-feature project. Analyze what this tells me about my decomposition quality. What patterns scaled well? What would break if I built 5-7 features? What should I improve before scaling?"
 
-Also ask:
+**🚀 Apply Scaling Insights:**
+> "Based on my capstone metrics, help me articulate the path from coordinating 3 agents to 5-7 agents to 10-15 agents. What changes at each inflection point? How does this orchestration skill transfer to leading human teams, not just AI agents?"
 
-```
-I measured [X]x speedup with [N] merge conflicts on my 3-feature project.
-What does this tell me about my decomposition quality? What would change
-if I built 5-7 features?
-```
-
-**Expected**: AI feedback on narrative clarity and scaling insights based on your actual measurements.
+---

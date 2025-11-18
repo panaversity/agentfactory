@@ -435,37 +435,18 @@ This manual coordination prepares you for Lesson 2, where you'll learn to manage
 
 ## Try With AI
 
-Now use AI to validate your understanding and explore scaling.
+Ready to master parallel specification workflows with git worktrees? Practice orchestration thinking:
 
-**Validate worktree setup:**
+**🔍 Explore Worktree Isolation:**
+> "I just set up 3 git worktrees for parallel features: (1) grader-upload on branch feature/upload, (2) grader-grade on branch feature/grade, (3) grader-feedback on branch feature/feedback. Help me verify isolation: Walk me through commands to test that changes in one worktree don't affect others. Then explain why this isolation is critical for parallel AI agent work."
 
-```
-I just set up 3 git worktrees for an Assignment Grader:
-- grader-upload (upload feature)
-- grader-grade (grading logic)
-- grader-feedback (feedback generation)
+**🎯 Practice Multi-Agent Coordination:**
+> "I'm running 3 Claude Code sessions simultaneously—one per worktree. Guide me through the coordination workflow: (1) How do I keep track of which terminal runs which agent on which feature? (2) What naming conventions help? (3) How do I avoid context confusion when switching between sessions? (4) Create a checklist for managing 3 parallel agent sessions without errors."
 
-Run git worktree list and verify:
-1. All 3 worktrees exist
-2. Each is on its own branch
-3. They're completely isolated
+**🧪 Test Scaling Limits:**
+> "I'm managing 3 agents with worktrees. Help me understand scaling limits: (1) How would this change with 5 agents? 10 agents? (2) How many terminal windows/tabs would I need? (3) What coordination overhead would emerge? (4) At what point does manual coordination break down and require automation? Calculate the complexity increase from 3 to 10 agents."
 
-Then demonstrate isolation by:
-- Creating a file in worktree 1
-- Verifying it doesn't appear in worktrees 2-3
-```
+**🚀 Apply to Your Project:**
+> "I have a project with [describe 3-5 independent features]. Help me design a parallel workflow: (1) Which features can be developed in parallel (no dependencies)? (2) What git worktree structure should I use? (3) How should I coordinate AI agents across features? (4) What's my integration strategy when all features are ready? Design my orchestration plan."
 
-**Explore scaling:**
-
-```
-I'm currently managing 3 Claude agent sessions with git worktrees.
-How would I scale this to 10 agents working on 10 features?
-
-What changes:
-1. How many terminal windows would I need?
-2. How would I keep track of which session is which?
-3. What tools could help manage 10 parallel sessions?
-4. At what point does manual coordination become unmanageable?
-```
-
-**Your job:** Understand the scaling challenges NOW (with 3 agents) to prepare for LATER (automated orchestration in lessons 6-8).
+---

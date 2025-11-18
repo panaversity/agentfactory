@@ -319,69 +319,18 @@ You can switch between terminals to check progress, but avoid constantly jumping
 
 ## Try With AI
 
-You've now run `/sp.plan` and `/sp.tasks` in parallel and reflected on decomposition quality. Now use your AI companion to validate your thinking and design for scale.
+Ready to validate parallel planning quality and design for scale? Test your orchestration skills:
 
-### Setup
+**🔍 Explore Plan Quality & Balance:**
+> "Analyze my 3 parallel feature plans (feature-001, feature-002, feature-003). Compare their complexity: (1) How many tasks in each? (2) What's the dependency depth? (3) Are they balanced or is one feature too ambitious? (4) Do you spot any circular dependencies or hidden integration points? Format as a comparison table showing metrics for each feature. Identify refactoring opportunities if decomposition is unbalanced."
 
-Use **Claude Code CLI** or your preferred AI partner (Gemini CLI, ChatGPT web—your choice). The prompts below work with any of these tools.
+**🎯 Practice Terminal Management Strategy:**
+> "I'm managing 3 parallel AI planning sessions right now. Help me design a terminal management strategy for 10 parallel sessions: (1) What tools would you recommend (tmux, iTerm2, VS Code terminals)? (2) How should I organize and label 10 terminals/worktrees to prevent confusion? (3) What naming conventions help track which agent works on which feature? (4) How do I monitor progress across all 10 without constant context-switching? Give me a concrete architecture."
 
-### Prompt Set
+**🧪 Test Decomposition Independence:**
+> "Evaluate whether my 3 features are truly independent enough for parallel work. My explicit dependencies: [list your dependencies, e.g., 'feature-002 needs User ID from feature-001']. Based on these dependencies: (1) What integration pain points should I expect? (2) What timing risks emerge (if feature-001 slips, does feature-002 block)? (3) Should I adjust my decomposition? (4) How do I sequence integration to minimize risk?"
 
-**Prompt 1: Validate Plan Quality & Dependencies**
+**🚀 Apply to Your System:**
+> "I'm designing [describe your system with 5+ features]. Help me decompose it for parallel development: (1) Which features have zero dependencies (can start immediately)? (2) Which features have dependencies (need sequencing)? (3) What's my critical path? (4) How many agents could work in parallel? (5) Design my phased rollout strategy that maximizes parallelism while respecting dependencies."
 
-Copy and paste your three plans into Claude Code and run:
-
-```
-Analyze these 3 feature plans and give me:
-1. A summary of each plan's complexity (length, task count, dependencies)
-2. Any circular dependencies or hidden integration points you spot
-3. Whether the decomposition looks balanced or if one feature is too ambitious
-
-Format as a table comparing the three features.
-```
-
-**Expected outcome**: A table showing plan metrics and a verdict on whether your decomposition is balanced. If any feature is flagged as too complex, you've identified a refactoring opportunity.
-
-**Prompt 2: Terminal Management Strategy for Scale**
-
-Run this prompt (no files needed—you're designing for the future):
-
-```
-I'm learning to manage parallel planning sessions. Right now I'm running 3 in parallel.
-
-If I needed to run 10 parallel planning sessions simultaneously, what terminal management strategy would you recommend? Consider:
-
-- How would you organize 10 separate terminals/worktrees?
-- What tools (tmux, iTerm2, VS Code terminal, something else) would you choose and why?
-- What labeling/naming convention would prevent confusion?
-- How would you monitor progress across all 10 without constant context-switching?
-
-Give me a concrete, actionable architecture.
-```
-
-**Expected outcome**: A proposed terminal/session architecture designed for 10 parallel workflows. You'll use this thinking as you scale the parallel approach in future lessons.
-
-**Prompt 3: Decomposition Depth (Stretch)**
-
-If you're ready to go deeper, run this:
-
-```
-Looking at my 3 features, I'm evaluating whether they're truly independent enough for parallel implementation.
-
-Here are the explicit dependencies I found:
-- [paste your dependencies here, e.g., "feature-002 depends on User ID from feature-001"]
-
-Given these dependencies, what integration pain points should I expect during implementation? And is there any signal from these dependencies that my decomposition should change?
-```
-
-**Expected outcome**: Concrete risks identified (e.g., "feature-002's task list assumes User ID API will be available by day 3—if feature-001 slips, this becomes critical"). Use this to refine your task timing and ordering.
-
-### Safety & Validation Note
-
-AI plans often look reasonable but miss edge cases. When Claude Code suggests a terminal strategy or identifies dependencies, verify by:
-
-1. **Checking your actual specifications** against the AI's analysis—do they match?
-2. **Running a quick test**: Do your current 3 panes work smoothly with the suggested layout?
-3. **Trusting but verifying**: Use AI to brainstorm, then validate against your domain knowledge
-
-The skill here is not "believe the AI" but "AI + your judgment = better thinking."
+---

@@ -350,63 +350,20 @@ The Constitution is now **the foundation** for all your feature work. Every spec
 
 ---
 
-## Try With AI: Validate Your Constitution
+## Try With AI
 
-Now let's use your AI companion to review your Constitution and ensure it's clear enough that specs, plans, and code can build on it without ambiguity.
+Ready to validate your Constitution and understand how quality rules cascade through your project? Test your setup:
 
-### Setup
+**🔍 Explore Cascade Effect:**
+> "I wrote a Constitution for my calculator project defining type hints, error handling, and test coverage requirements. Explain how these rules cascade into downstream work: If my Constitution requires 'all functions use type hints', how does that constraint affect the Specification phase? The Planning phase? The Implementation phase? Show me the cascade with a concrete example."
 
-**Tool**: Claude Code (or your configured AI orchestrator)
-**Goal**: Ensure Constitution is clear, testable, and specific enough to guide downstream work
+**🎯 Practice Constitution Review:**
+> "Review my Constitution at `.specify/memory/constitution.md`. Check for: (1) Are all rules testable and specific (not vague)? (2) Did I cover essential categories (quality, error handling, types, testing)? (3) Are any rules too strict or unrealistic for a calculator project? Suggest 2-3 improvements to make it clearer and more practical."
 
-### Prompt Set (Copy-Paste Ready)
+**🧪 Test Specification Alignment:**
+> "Imagine I'm writing a specification for the calculator's divide operation. Based on my Constitution rules, what constraints MUST the divide spec include? Walk through: error handling requirements (division by zero), type system rules (input/output types), testing requirements (edge cases), and code quality standards. This tests if my Constitution is specific enough to guide specs."
 
-**Prompt 1 - Constitution Clarity Check**
+**🚀 Apply to Your Project:**
+> "I'm starting a [describe your project type: web API / CLI tool / data pipeline]. Help me draft a Constitution tailored to my project. What quality standards, error handling rules, testing requirements, and code style guidelines should I define? Compare how Constitution rules differ between my project type and the calculator example."
 
-Copy and paste this into Claude Code:
-
-```
-I've written a Constitution for my calculator project. Please review it for clarity:
-
-1. Are all rules testable? (Can you verify during code review?)
-2. Are any rules vague or ambiguous?
-3. Do I cover the essential categories (quality, error handling, types, testing)?
-
-Here's my Constitution:
-@.specify/memory/constitution.md
-
-Please identify any rules that need clarification.
-```
-
-**Prompt 2 - Cascade Validation**
-
-After reviewing clarity, ask:
-
-```
-Now imagine I'm writing a specification for the calculator's divide operation.
-Looking at my Constitution, what constraints must my spec respect?
-
-- What error handling must the divide spec include?
-- What type system rules must divide follow?
-- What testing requirements must divide meet?
-
-This helps me understand if my Constitution is specific enough to guide specs.
-```
-
-**Prompt 3 - Reality Check**
-
-Finally, ask:
-
-```
-Is my Constitution realistic for a calculator project, or am I being too strict?
-Any advice on making it more practical without sacrificing quality?
-```
-
-### Expected Outcomes
-
-After these prompts, you should understand:
-
-- **Constitution clarity**: Rules are testable and specific (not vague philosophy)
-- **Cascade impact**: You can trace how Constitution rules flow into specifications
-- **Realism**: Standards are ambitious but achievable
-- **Readiness**: You're prepared to write specifications that respect the Constitution
+---

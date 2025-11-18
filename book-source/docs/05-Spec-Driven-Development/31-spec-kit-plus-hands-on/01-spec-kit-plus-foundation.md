@@ -240,74 +240,20 @@ This is why Reusable Intelligence (not reusable code) is the primary artifact.
 
 ---
 
-## Try With AI: Validate Your Understanding
+## Try With AI
 
-Now let's test your grasp of how Spec-Kit Plus makes intelligence reusable.
+Ready to understand how Spec-Kit Plus turns project work into reusable intelligence? Explore these patterns:
 
-### Setup
+**🔍 Explore Intelligence Patterns:**
+> "Compare Horizontal Intelligence (ADRs/PHRs) vs Vertical Intelligence (Subagents) in Spec-Kit Plus. Show me a concrete example: if I build a calculator in Project 1 and create 3 ADRs and 10 PHRs, how exactly does that intelligence help me when I build an authentication system in Project 2?"
 
-**Tool**: Claude Code (or your configured AI orchestrator)
+**🎯 Practice P+Q+P Analysis:**
+> "I want to create a subagent for API design review. Help me design it using Persona+Questions+Principles (P+Q+P). What persona should it adopt? What questions should it ask to activate reasoning? What principles should guide its decisions? Show me why this approach works better than a generic prompt."
 
-**Goal**: Ensure you understand the difference between Horizontal and Vertical Intelligence
+**🧪 Test Compounding Understanding:**
+> "Calculate the compounding effect: If Project 1 creates 5 ADRs + 12 PHRs, Project 2 creates 4 ADRs + 9 PHRs, and Project 3 creates 3 ADRs + 7 PHRs, how much intelligence is available when I start Project 4? Explain why intelligence accumulation makes later projects faster."
 
-:::tip ⚠️ Learning WITH AI (Not Generating FROM AI)
+**🚀 Apply to Your Domain:**
+> "I work in [describe your domain/industry]. Help me design an intelligence architecture using Spec-Kit Plus. What Horizontal Intelligence should I capture (what decisions repeat across projects)? What Vertical Intelligence should I create (what specialized subagents would help)? Outline 3-5 intelligence artifacts I should build first."
 
-**What this exercise teaches:**
-- ❌ **DON'T ask**: "Explain Spec-Kit Plus architecture"
-- ✅ **DO ask**: "How do ADRs from Project 1 help me in Project 2? Give concrete example."
-- ✅ **DO ask**: "Why does the Specification Subagent use P+Q+P pattern instead of generic prompts?"
-
-**Your role**: Test your mental model, ask clarifying questions, validate understanding
-**AI's role**: Distinguish Horizontal vs Vertical Intelligence, explain compounding effects
-
-:::
-
-### Prompt Set (Copy-Paste Ready)
-
-**Prompt 1 - Horizontal Intelligence Understanding**
-
-Copy and paste this into Claude Code:
-
-```
-I just learned that Spec-Kit Plus captures Horizontal Intelligence through
-ADRs and PHRs. Help me understand the compounding effect:
-
-1. If Project 1 creates 5 ADRs and 12 PHRs, what happens in Project 2?
-2. Give a concrete example: If an ADR in Project 1 documents "Why JWT over sessions",
-   how does that ADR help me in Project 2 (e-commerce cart)?
-3. How do AI agents USE the ADRs and PHRs (not just humans)?
-
-This will help me see why intelligence accumulates across projects.
-```
-
-**Prompt 2 - Vertical Intelligence Understanding**
-
-After you receive the response, ask:
-
-```
-Now explain Vertical Intelligence (delegation pattern):
-
-1. What's the difference between a generic AI prompt and a subagent designed
-   with Persona+Questions+Principles (P+Q+P)?
-2. Why is the Specification Subagent REUSABLE across projects (calculator,
-   e-commerce, authentication)?
-3. In Lesson 9, I'll create my own subagent. What makes it "intelligence"
-   instead of just "a prompt"?
-
-I'm trying to understand why P+Q+P activates reasoning, not just prediction.
-```
-
-**Prompt 3 - Intelligence Artifacts Preview**
-
-Finally, ask:
-
-```
-Looking at Lessons 2-9 in Chapter 31, help me map out what intelligence
-I'll actually build:
-
-1. Which lessons create ADRs (Horizontal Intelligence)?
-2. Which lessons use existing subagents (Vertical Intelligence)?
-3. In Lesson 9, what SPECIFIC intelligence will I create?
-
-This preview will help me understand the chapter progression.
-```
+---

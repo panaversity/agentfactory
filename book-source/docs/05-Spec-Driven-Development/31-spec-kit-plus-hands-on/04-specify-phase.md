@@ -278,35 +278,20 @@ A bad spec has:
 
 ---
 
-## Try With AI: Get Specification Feedback
+## Try With AI
 
-Now let's use your AI companion to validate your specification and ensure it's clear enough for planning.
+Ready to write your first complete specification with AI collaboration? Practice the evals-first approach:
 
-### Setup
+**🔍 Explore Success Criteria:**
+> "I want to build a calculator library with 5 operations (add, subtract, multiply, divide, power). Before I write the formal spec, help me define success: What does 'working correctly' mean for each operation? Ask me clarifying questions about edge cases, error handling, and acceptance criteria. Don't let me write vague requirements."
 
-**Tool**: Claude Code (or your configured AI orchestrator)
+**🎯 Practice SMART Criteria:**
+> "Review my calculator specification at `specs/calculator/spec.md`. For each operation's acceptance criteria, check if they're SMART (Specific, Measurable, Achievable, Relevant, Testable). Identify any vague criteria (like 'works correctly' or 'handles errors well') and suggest specific, measurable alternatives with concrete examples."
 
-**Context**: Your calculator specification (written in `specs/calculator/spec.md`)
+**🧪 Test Edge Case Coverage:**
+> "Looking at my calculator spec, identify missing edge cases for each operation. For division, did I specify division by zero? For power, what about 0^0 or negative exponents? For all operations, what about type mixing (int + float) or very large numbers? Generate a list of 10+ edge cases I should add to my spec."
 
-**Goal**: Validate that your specification is specific, measurable, and complete
+**🚀 Apply to Your Feature:**
+> "I need to write a specification for [describe your feature]. Help me work through the evals-first approach: (1) What does success look like for my feature? (2) What are the 5-10 most important acceptance criteria? (3) What edge cases am I likely to miss? (4) How can I make my criteria SMART? Walk me through the conversation before I write the formal spec."
 
-### Prompt Set (Copy-Paste Ready)
-
-**Prompt 1 - Specification Completeness**
-
-Copy and paste this into Claude Code:
-
-```
-I've written a specification for my calculator Python library.
-Please review it for completeness and clarity:
-
-1. Is every operation fully specified? (add, subtract, multiply, divide, power)
-2. Are acceptance criteria SMART (Specific, Measurable, Achievable, Relevant)?
-3. Did I cover edge cases adequately?
-4. Would a developer know exactly what to build from this spec?
-
-Here's my specification:
-@specs/
-
-Please identify any ambiguities or missing details.
-```
+---

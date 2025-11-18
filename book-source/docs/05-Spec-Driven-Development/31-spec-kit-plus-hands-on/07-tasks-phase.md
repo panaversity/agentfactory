@@ -332,73 +332,20 @@ Commit the generated tasks to git:
 
 ---
 
-## Try With AI: Validate Task Breakdown
+## Try With AI
 
-Use your AI companion to confirm your tasks are well-decomposed and ready for implementation.
+Ready to validate your task breakdown and prepare for implementation? Test your tasks:
 
-### Setup
+**🔍 Explore Task Atomicity:**
+> "Review my task breakdown at `specs/calculator/tasks.md`. For each task, evaluate: (1) Is it atomic (does ONE thing with ONE acceptance criterion)? (2) Is it sized right (1-2 hours, not days or minutes)? (3) Can it be tested independently? Identify any tasks that are too large (need splitting) or too small (should be combined)."
 
-**Tool**: Claude Code (or your configured AI orchestrator)
+**🎯 Practice Dependency Analysis:**
+> "Analyze the dependencies in my task list. Are they correct and logical? What's the critical path (minimum sequence to reach 'done')? Which tasks could run in parallel? If I had 3 developers, how would you distribute these tasks? Draw me a dependency graph showing which tasks block others."
 
-**Context**: Your tasks.md file
+**🧪 Test Checkpoint Readiness:**
+> "I'm about to implement Task 1: [describe your first task]. Walk me through the checkpoint pattern: (1) What should AI generate? (2) What should I review for (not just 'does it work')? (3) What makes a good commit message? (4) How do I know I'm ready for the next task? Give me a checklist for each checkpoint phase."
 
-**Goal**: Confirm tasks are atomic, dependencies are correct, and checkpoint pattern will work
+**🚀 Apply to Your Project:**
+> "I need to break down [describe your project] into atomic tasks. Help me apply the task decomposition principles: Show me how to decompose ONE complex feature (like 'user authentication') into 5-8 atomic tasks with clear dependencies and acceptance criteria. Explain your reasoning for each split."
 
-:::tip ⚠️ Learning WITH AI (Not Generating FROM AI)
-
-**What this exercise teaches:**
-- ❌ **DON'T ask**: "Implement all these tasks for me"
-- ❌ **DON'T ask**: "Write the code for Task 1"
-- ✅ **DO ask**: "Are my tasks atomic (1-2 hours each)?"
-- ✅ **DO ask**: "Are the dependencies correct?"
-- ✅ **DO ask**: "Which tasks could I run in parallel?"
-
-**Your role**: Validate task breakdown, understand dependencies, plan execution strategy
-**AI's role**: Review atomicity, validate dependencies, suggest improvements
-
-:::
-
-### Prompt Set (Copy-Paste Ready)
-
-**Prompt 1 - Task Atomicity Check**
-
-Copy and paste this into Claude Code:
-
-```
-I've broken my calculator plan into tasks. 
-
-For each task, is it:
-1. Atomic? (Does it do one thing with one acceptance criterion?)
-2. Sized appropriately? (1-2 hours, not too small or large?)
-3. Independent? (Can it be reviewed and tested separately?)
-
-Any tasks that are too big, too small, or trying to do multiple things?
-```
-
-**Prompt 2 - Dependency Validation**
-
-After task validation, ask:
-
-```
-Looking at my task dependencies, are they correct?
-
-Are these dependencies logical? Would you change the order?
-What's the critical path (minimum tasks to complete before "done")?
-```
-
-**Prompt 3 - Checkpoint Pattern Understanding**
-
-Finally, ask:
-
-```
-I'm about to start the implementation phase, and I want to use the
-checkpoint pattern (Agent→Human Review→Commit→Next).
-Is this the right approach? Any guidance on what to look for during review?
-```
-
-### Expected Outcomes
-
-- **Tasks are atomic and appropriately sized**
-- **Dependencies are correct**
-- **You understand the checkpoint pattern**
-- **Ready for implementation (Lesson 7)**
+---

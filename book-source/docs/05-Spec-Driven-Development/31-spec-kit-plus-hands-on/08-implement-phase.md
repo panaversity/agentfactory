@@ -394,77 +394,20 @@ Run ruff to check code quality and formatting.
 
 ---
 
-## Try With AI: Reflect on Implementation and Decisions
+## Try With AI
 
-Use your AI companion to reflect on your implementation and capture important decisions.
+Ready to validate your implementation and understand intelligence capture? Reflect on your work:
 
-### Setup
+**🔍 Explore Implementation Quality:**
+> "Review my calculator implementation at `calculator/operations.py` and tests at `tests/test_operations.py`. Verify: (1) Does the code match my specification exactly? (2) Are all acceptance criteria met? (3) Do I follow my Constitution rules (type hints, docstrings, error handling)? (4) Are there code quality issues (complexity, duplication, unclear naming)? Provide a detailed quality assessment."
 
-**Tool**: Claude Code (or your configured AI orchestrator)
+**🎯 Practice Checkpoint Review:**
+> "I just completed Task 3: Implement divide() function. Walk me through the checkpoint review: (1) Run the tests—what should I look for beyond 'all passing'? (2) Review the code—what security issues might I miss (like division by zero handling)? (3) Check Constitution compliance—did I follow all project rules? (4) Verify acceptance criteria—did I meet every requirement from the spec? Create a review checklist."
 
-**Context**: Your completed implementation code and tests
+**🧪 Test PHR Understanding:**
+> "Explain how PHRs capture implementation decisions: (1) What PHRs were auto-created during my `/sp.implement` run? (2) Where are they stored (`history/prompts/calculator/`)?  (3) What information do they contain? (4) If I discover floating-point precision issues, should I create an explicit PHR? When is manual PHR creation warranted vs automatic?"
 
-**Goal**: Validate implementation quality and reflect on key decisions captured in PHRs
+**🚀 Apply to Your Implementation:**
+> "I'm implementing [describe your feature]. Help me plan the implementation checkpoints: (1) How many tasks should I complete before committing? (2) What should I review at each checkpoint? (3) What tests prove the task is truly done? (4) How do I balance 'perfect code' vs 'good enough to move forward'? Give me practical checkpoint guidelines."
 
-:::tip ⚠️ Learning WITH AI (Not Generating FROM AI)
-
-**What this exercise teaches:**
-- ❌ **DON'T ask**: "Write more code for me"
-- ❌ **DON'T ask**: "Add more features automatically"
-- ✅ **DO ask**: "Does this code match my specification?"
-- ✅ **DO ask**: "What decisions were captured in PHRs?"
-- ✅ **DO ask**: "Are there security issues I should address?"
-
-**Your role**: Validate implementation, review generated code, verify acceptance criteria
-**AI's role**: Answer questions about code, explain PHRs, identify potential issues
-
-:::
-
-### Prompt Set (Copy-Paste Ready)
-
-**Prompt 1 - Implementation Quality**
-
-Copy and paste this into Claude Code:
-
-```
-I've completed implementation of core operations (add, subtract, multiply).
-
-Summary:
-- 3 functions implemented
-- Type hints included
-- Docstrings included
-- 15 tests written, all passing
-- 100% coverage achieved
-
-Review my code at: calculator/operations.py
-Review my tests at: tests/test_operations.py
-
-Is the implementation quality good? Any suggestions for improvement?
-What patterns from this implementation should I maintain for the remaining operations?
-```
-
-**Prompt 2 - Decision Capture**
-
-After quality review, ask:
-
-```
-During implementation, we made several design decisions.
-These decisions are being captured in PHRs automatically.
-If I need to understand "why" something was implemented this way in the future,
-where would I look?
-```
-
-**Prompt 3 - PHR Exploration**
-
-Finally, ask:
-
-```
-Can you help me understand the PHRs created during my calculator implementation?
-
-Which files in history/prompts/calculator/ were auto-created?
-What does each one capture?
-
-And if I had discovered something surprising during implementation
-(like floating-point precision issues), should I request an explicit PHR?
-When is that warranted?
-```
+---

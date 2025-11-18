@@ -248,58 +248,20 @@ Then decide: Accept, Reject, or Modify.
 
 ---
 
-## Try With AI: Validate Clarification Progress
+## Try With AI
 
-Use your AI companion to validate that your clarification has improved the specification.
+Ready to validate your clarified specification and ensure it's complete enough for planning? Test your improvements:
 
-### Setup
+**🔍 Explore Ambiguity Detection:**
+> "Compare my original calculator spec with the clarified version at `specs/calculator/spec.md`. What ambiguities were resolved? What gaps were filled? Show me specific examples where clarification improved implementation readiness. Are there still any vague requirements remaining?"
 
-**Tool**: Claude Code (or your configured AI orchestrator)
+**🎯 Practice Implementation Readiness:**
+> "Imagine you're a developer who's never seen this project before. Read my clarified calculator specification and tell me: (1) Can you implement all 5 operations from this spec alone? (2) What questions would you still need to ask me? (3) What edge cases or error conditions are unclear? (4) Is the specification complete enough to write tests before code?"
 
-**Context**: Your original specification + clarification changes
+**🧪 Test Prioritization Decisions:**
+> "I received 7 clarification suggestions from `/sp.clarify`: [list your suggestions]. Help me prioritize: Which are CRITICAL (spec won't work without them)? Which are NICE-TO-HAVE (improve quality but not blocking)? Which can I defer to later? Explain your reasoning for each category."
 
-**Goal**: Confirm specification is clear, complete, and ready for planning
+**🚀 Apply to Your Spec:**
+> "I just ran `/sp.clarify` on my [describe your feature] specification. I got feedback about [describe feedback areas]. Help me decide which clarifications to address now vs later. What's the minimum set of changes needed to make my spec ready for the planning phase? Walk me through your decision framework."
 
-:::tip ⚠️ Learning WITH AI (Not Generating FROM AI)
-
-**What this exercise teaches:**
-- ❌ **DON'T ask**: "Fix my specification for me"
-- ❌ **DON'T ask**: "Write the missing sections"
-- ✅ **DO ask**: "What ambiguities did you find in my spec?"
-- ✅ **DO ask**: "Can a developer implement from my specification alone?"
-- ✅ **DO ask**: "Are there critical gaps I should address?"
-
-**Your role**: Interpret feedback, decide which changes to make, refine specifications
-**AI's role**: Identify gaps, suggest clarifications, validate improvements
-
-:::
-
-### Prompt Set (Copy-Paste Ready)
-
-**Prompt 1 - Clarification Impact Assessment**
-
-Copy and paste this into Claude Code:
-
-```
-I've clarified my calculator specification based on initial feedback.
-
-Can a developer now implement this calculator from my specification alone?
-Any remaining critical gaps?
-```
-
-**Prompt 2 - Specification Quality Self-Assessment**
-
-Finally, ask:
-
-```
-Let me self-assess my specification quality:
-
-My specification now:
-- ✅ Clearly defines 5 operations (add, subtract, multiply, divide, power)
-- ✅ Specifies error handling for each operation
-- ✅ Defines precision expectations (float, 6+ decimals)
-- ✅ Covers edge cases (negative numbers, zero, large numbers)
-- ✅ Respects project Constitution
-
-Is this assessment accurate? What would you add?
-```
+---

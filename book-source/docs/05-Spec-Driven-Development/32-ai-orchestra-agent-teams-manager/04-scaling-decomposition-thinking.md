@@ -436,82 +436,19 @@ Look at your 3-feature system. Honestly identify:
 
 ## Try With AI
 
-You've proven you can coordinate 3 agents. Now test your understanding against 5-agent scenarios and ask Claude Code to help you think strategically about scaling.
+You've coordinated 3 agents successfully—now discover what changes when you scale to 5, 7, or 10 features and why decomposition quality matters exponentially more at scale.
 
-Use **Claude Code CLI** or **ChatGPT (if you prefer web chat)** for this exercise. Copy the prompts below and paste them into your AI tool of choice.
+**🔍 Explore Scaling Patterns:**
+> "I decomposed a system into 3 features that I built in parallel. Analyze what would break if I scaled this to 7 features. Which of my current patterns scale well, and which need redesign?"
 
-### Prompt 1: Scalability Analysis
+**🎯 Practice Dependency Analysis:**
+> "Help me map the communication complexity for a 5-feature system. Calculate the integration points (N×(N-1)/2), identify any circular dependencies, and show me which features should have tightly coupled vs. loosely coupled APIs."
 
-**Paste this into Claude Code or ChatGPT:**
+**🧪 Test Red Flag Detection:**
+> "Review my 3-feature decomposition and identify red flags: unbalanced feature sizes, potential merge conflicts, cross-cutting concerns that would become bottlenecks at 5+ features, and any implicit dependencies I missed."
 
-```
-I've successfully decomposed a project into 3 features and coordinated them with AI agents.
-Here's my decomposition:
-
-[Paste your 3 features and their specs here]
-
-Now I want to scale this to 5 features. Analyze my current decomposition:
-1. Which patterns scale well?
-2. What breaks at 5+ features?
-3. What shared services would I need to introduce?
-4. Are there any hidden circular dependencies?
-5. How would I prioritize fixing issues before scaling?
-```
-
-**Expected outcome**: Claude identifies scaling risks specific to YOUR system and gives concrete recommendations.
-
-### Prompt 2: Feature Dependency Analysis
-
-**Paste this into Claude Code or ChatGPT:**
-
-```
-I want to understand the communication complexity in my system. Here are my 5 planned features:
-
-[Paste feature list and brief descriptions]
-
-Please:
-1. Map all the dependencies between features
-2. Identify any circular dependencies
-3. Calculate the integration complexity (N*(N-1)/2)
-4. Suggest which features should have tightly coupled APIs vs. loosely coupled ones
-5. Propose a dependency graph that minimizes coupling
-```
-
-**Expected outcome**: Claude gives you a visual understanding of your system's complexity and suggests specific architectural improvements.
-
-### Prompt 3: Scaling Scenario
-
-**Paste this into Claude Code or ChatGPT:**
-
-```
-Let's think strategically. I want to scale from 5 agents to 10 agents over the next month.
-
-My current decomposition approach is [briefly describe]:
-- [Pattern 1]
-- [Pattern 2]
-- [Pattern 3]
-
-What would need to change:
-1. In how I write specifications?
-2. In how I test integration?
-3. In how I coordinate features?
-4. In my tooling and automation?
-
-Be specific about the transition path: 5→7 agents (what needs to happen) vs. 10 agents (what's fundamentally different).
-```
-
-**Expected outcome**: Claude helps you see the path from where you are to 10-agent scale and the inflection points where manual approaches stop working.
-
-### Safety and Verification
-
-As always with AI-generated architecture advice:
-
-1. **Ask clarifying questions**: "Why would you decompose it that way?" and "What are the trade-offs?"
-2. **Test against your constraints**: Does the advice fit your project, team, and timeline?
-3. **Verify with real examples**: Look up how companies like Stripe, Netflix, or Linux actually solve these problems
-4. **Trust but verify**: Claude's suggestions are starting points, not gospel. Your judgment as an architect matters
-
-**Critical insight**: The fact that you can articulate your decomposition well enough to ask Claude for feedback means you're thinking clearly about architecture. That's the real win here.
+**🚀 Apply to Your Architecture:**
+> "I'm planning to scale from [current number] agents to [target number] agents. What needs to change in my specification approach, testing strategy, and coordination patterns? Be specific about inflection points where manual approaches stop working."
 
 ---
 

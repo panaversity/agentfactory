@@ -665,108 +665,21 @@ Make it more specific like "handle errors properly."
 
 ---
 
-## Try With AI: Create Your Intelligence Library
+## Try With AI
 
-Now let's build your complete intelligence library for the SDD workflow.
+Ready to create reusable intelligence that works across projects? Build your intelligence library:
 
-### Setup
+**🔍 Explore Skill vs Subagent:**
+> "Explain the difference between a Skill and a Subagent in Spec-Kit Plus. For specification quality review, show me: (1) What would a Skill look like (Persona + Questions + Principles)? (2) What would a Subagent look like (autonomous with decision authority)? (3) When would I use each? (4) Can they work together? Give me concrete examples of both for the same task."
 
-**Tool**: Claude Code (or your configured AI orchestrator)
+**🎯 Practice Creating a Skill:**
+> "Help me create a reusable Skill for specification quality review. Guide me through the P+Q+P pattern: (1) What Persona should it adopt (cognitive stance with analogy)? (2) What 5-7 Analytical Questions should it ask to review specs? (3) What 5 Decision Principles should guide its evaluation? Structure it as a complete skill file following `.claude/skills/` format with metadata, usage example, and self-check validation."
 
-**Context**: Your calculator project with completed SDD workflow (Lessons 1-7)
+**🧪 Test Intelligence Reuse:**
+> "I created a Specification Review skill for my calculator project. Now I'm starting a REST API for user authentication. Apply my skill to audit this API acceptance criterion: 'API should return proper status codes'. Show me how the P+Q+P pattern adapts to API context vs library context. Does the skill identify vagueness? What API-specific questions does it ask? How does it demonstrate reusability?"
 
-**Goal**: Create 2 reusable intelligence components
+**🚀 Apply to Your Domain:**
+> "I work on [describe your project type]. Help me identify what reusable intelligence I should create: (1) What decisions do I repeat across projects? (2) What reviews could be systematic (skills)? (3) What workflows could be autonomous (subagents)? (4) Design ONE skill or subagent using P+Q+P that would save me time on my next 3 projects. Explain its structure and provide the complete file."
 
-### Exercise 1: Create Specification Review Skill
-
-**Prompt**:
-
-```
-I want to create a reusable skill for specification quality review.
-
-The skill should use the Persona + Questions + Principles pattern to guide
-systematic review of specifications for:
-- SMART criteria compliance
-- Edge case coverage
-- Scope clarity
-- Constitution alignment
-- Completeness
-
-Create a skill file following this structure:
-1. Metadata header (name, version, when to use)
-2. Persona section (cognitive stance with analogy)
-3. Analytical Questions (5-7 context-specific questions)
-4. Decision Principles (5 concrete frameworks)
-5. Usage Example (scenario + expected output)
-6. Self-Check Validation
-
-Save to .claude/skills/specification-review.md
-```
-
-**Expected Outcome**: AI generates complete skill file with:
-- Clear persona using specification auditor analogy
-- 5-7 analytical questions covering SMART/edge cases/scope/constitution/completeness
-- 5 decision principles with concrete criteria
-- Usage example showing invocation + expected review output
-- Self-check validation criteria
-
-**Validation**: Ask AI to apply the skill to your calculator spec and verify it generates context-specific analysis (not generic "looks good").
-
-### Exercise 2: Design Spec Auditor Subagent Foundation
-
-**Prompt**:
-
-```
-I want to design a subagent for automated specification auditing.
-
-The subagent should:
-- Operate autonomously (no human prompting per review)
-- Apply Specification Quality Review skill systematically
-- Make pass/fail/conditional-pass decisions
-- Generate structured audit reports
-- Integrate into post-specify workflow hooks
-
-Design the subagent persona including:
-1. Role definition (autonomy level, decision authority)
-2. Cognitive stance (how it thinks about auditing)
-3. Decision framework (pass/conditional/fail/escalate criteria)
-4. Reporting format (structured output template)
-5. Self-monitoring checklist
-
-Save to .claude/subagents/spec-auditor.md
-```
-
-**Expected Outcome**: AI generates subagent foundation with:
-- Role definition specifying high autonomy + decision authority
-- Persona adapted from skill but enhanced for autonomous operation
-- Clear pass/conditional/fail/escalate criteria with thresholds
-- Structured report template with specific sections
-- Self-monitoring checklist for audit completeness
-
-**Validation**: Ask AI to explain the difference between the skill (guidance for humans) and subagent (autonomous executor) for the same specification review task.
-
-### Exercise 3: Test Intelligence Reuse
-
-**Prompt**:
-
-```
-I'm starting a new project: A REST API for user authentication.
-
-I want to reuse the intelligence I created for the calculator project.
-
-Apply the Specification Quality Review skill to audit this acceptance criterion:
-
-"API should return proper status codes"
-
-Use the Persona + Questions + Principles pattern from
-.claude/skills/specification-review.md
-
-Show me how the skill adapts to API context vs library context.
-```
-
-**Expected Outcome**: AI applies skill framework to API context:
-- Identifies "proper" as vague language (same as library context)
-- Asks API-specific questions (which endpoints? which status codes? error cases?)
-- Suggests SMART alternative: "API returns 200 OK for success, 400 Bad Request for invalid input, 401 Unauthorized for auth failures, 500 Internal Server Error for server exceptions"
-- Demonstrates intelligence reuse across different project types
+---
 

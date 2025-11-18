@@ -270,69 +270,20 @@ If the command is recognized, your orchestrator is configured correctly.
 
 ---
 
-## Try With AI: Verify Your Complete Setup
+## Try With AI
 
-Now let's use your newly configured Spec-Kit Plus to run a real test. This activity consolidates your learning about Spec-Kit Plus architecture and validates that everything is working.
+Ready to verify your Spec-Kit Plus installation and test the complete setup? Use these prompts:
 
-### Setup
+**🔍 Explore Directory Structure:**
+> "I just installed Spec-Kit Plus in my calculator-project directory. Walk me through the directory structure: What's the purpose of `.specify/`, `specs/`, `history/adr/`, and `history/prompts/`? Explain how these directories implement Horizontal Intelligence (ADRs/PHRs) vs Vertical Intelligence (subagents)."
 
-**Tool**: Claude Code (or your configured AI orchestrator)
+**🎯 Practice Command Verification:**
+> "Help me verify my Spec-Kit Plus installation is complete. I'll run `ls -la .specify/` and show you the output. Then guide me through testing one slash command to confirm the orchestrator works. Which command should I test first, and what output indicates success?"
 
-**Context**: Your calculator-project directory with all infrastructure in place
+**🧪 Test Tool Configuration:**
+> "I configured [Claude Code / Gemini CLI] to work with Spec-Kit Plus. Explain the difference between Spec-Kit Plus (framework) and my AI tool (orchestrator). If I switch from Claude Code to Gemini CLI later, what changes and what stays the same? Test my understanding with a scenario."
 
-:::tip ⚠️ Learning WITH AI (Not Generating FROM AI)
+**🚀 Apply to First Project:**
+> "I'm about to start my first Spec-Kit Plus project: [describe your project idea]. Based on the installation I just completed, outline the exact workflow I'll follow: Which slash commands in which order? What intelligence artifacts (ADRs/PHRs) will I create? Help me plan the first 3 steps."
 
-**What this exercise teaches:**
-- ❌ **DON'T ask**: "Write this code for me"
-- ❌ **DON'T ask**: "Generate the implementation"
-- ✅ **DO ask**: "Explain why Spec-Kit Plus is separate from Claude Code"
-- ✅ **DO ask**: "What's the difference between ADRs and PHRs?"
-
-**Your role**: Understand concepts, validate setup, ask clarifying questions
-**AI's role**: Explain architecture, verify configuration, answer questions
-
-:::
-
-### Prompt Set (Copy-Paste Ready)
-
-**Prompt 1 - Framework Verification**
-
-Copy and paste this into Claude Code:
-
-```
-I've installed Spec-Kit Plus and set up my calculator-project. Let me verify
-the setup is correct by asking about the core concepts:
-
-1. What is Spec-Kit Plus? (In one sentence, distinguish it from Claude Code)
-2. What are ADRs and PHRs, and how do they differ?
-
-Then, tell me: Am I ready to write my first specification, or do I need to
-do anything else?
-```
-
-**Prompt 2 - Command Verification**
-
-After you receive the response, ask:
-
-```
-Thanks for confirming. Now can you tell me:
-1. What are the 7 main Spec-Kit Plus workflow commands?
-   (Hint: /sp.specify, /sp.clarify, /sp.plan, /sp.adr, /sp.tasks, /sp.implement, /sp.phr)
-2. In what order should I use them (from specification through implementation)?
-3. Which commands are explicit (I run them) vs automatic (system runs them)?
-```
-
-**Prompt 3 - Architecture Confirmation**
-
-Finally, ask:
-
-```
-One more question to confirm my mental model: In the Vertical Intelligence
-architecture (You → Orchestrator → Subagents), what is MY job at each phase?
-
-- Specification phase: What do I do?
-- Planning phase: What do I do?
-- Implementation phase: What do I do?
-
-(I'm trying to understand that I'm architect/validator, not coder)
-```
+---

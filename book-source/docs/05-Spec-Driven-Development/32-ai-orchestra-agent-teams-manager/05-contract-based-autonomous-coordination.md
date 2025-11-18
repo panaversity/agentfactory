@@ -544,74 +544,19 @@ The insight: **At 3 agents, this feels overkill. But at 15 agents, this is essen
 
 ## Try With AI
 
-You've learned to write contracts and configure hooks. Now let's refine your intuition with AI as your thinking partner.
+When contracts are precise enough that agents can work without asking questions, you've unlocked autonomous coordination—test your contract-writing intuition now.
 
-**Tool**: Claude Code CLI (or your preferred AI companion if you've set one up)
+**🔍 Explore Contract Quality:**
+> "Review this integration contract I wrote for a task management feature. Identify what's ambiguous, which acceptance criteria are too vague (requiring human judgment vs. measurable verification), and which integration points an agent might misunderstand."
 
-**Setup**: Open 3 parallel Claude Code sessions (in 3 terminal windows or tmux splits). In each, you'll ask different questions about contracts.
+**🎯 Practice Writing Testable Criteria:**
+> "Help me convert these vague acceptance criteria into measurable ones: 'API should be fast,' 'error handling should be robust,' 'code should be clean.' Show me the difference between criteria that require judgment vs. criteria that enable autonomous verification."
 
-### Prompt 1: Contract Quality Check
+**🧪 Test Hook Configuration:**
+> "Explain how completion hooks eliminate the need for constant status checking. If I'm coordinating 5 features with dependencies (Feature B needs Feature A complete first), how would I design hooks that notify me only when prerequisites are met?"
 
-**In Session 1**, paste your Feature B contract from Exercise 1 and ask:
-
-```
-Review my integration contract for the Task CRUD feature.
-
-Looking for:
-1. Are integration points clear and unambiguous?
-2. Are acceptance criteria testable (not subjective)?
-3. Did I miss any integration points with Feature A or C?
-4. What would an agent find confusing or unclear?
-
-Here's my contract:
-[PASTE YOUR CONTRACT HERE]
-```
-
-**Expected outcome**: AI identifies 2-4 specific gaps. You refine your contract. This is how you develop contract intuition.
-
-### Prompt 2: Scaling Hooks
-
-**In Session 2**, ask about scaling to 10 features:
-
-```
-I currently use hooks and status files to track 3 feature completions.
-
-How would I configure this system to track 10 parallel feature sessions?
-
-Specifically:
-1. Would status files scale, or do I need a different mechanism?
-2. How would I handle feature dependencies (Feature B can't integrate until Feature A is complete)?
-3. What would break if I tried to scale to 15 features?
-
-Here's my current orchestrator polling script:
-[PASTE YOUR SCRIPT]
-```
-
-**Expected outcome**: AI suggests improvements (e.g., database instead of files, dependency resolution logic). You see the path to larger scale.
-
-### Prompt 3: Autonomy Through Criteria
-
-**In Session 3**, ask about the philosophy:
-
-```
-I'm trying to understand why acceptance criteria matter for autonomous work.
-
-Here are two versions of acceptance criteria for the same feature:
-
-VERSION A (vague):
-- The API should be fast
-- Error handling should be robust
-- Code should be clean
-
-VERSION B (specific):
-- All endpoints respond in &lt;100ms (p95)
-- Error handling covers 5 scenarios: invalid input, timeout, rate limit, database error, malformed JSON
-- Code passes linter, >80% test coverage, docstrings on all public functions
-
-Explain: Why does VERSION B enable autonomous work while VERSION A requires constant oversight?
-```
-
-**Expected outcome**: AI articulates the principle clearly: **Vague criteria require judgment; specific criteria enable verification.** This insight unlocks your understanding of why contracts matter.
+**🚀 Apply to Your Coordination:**
+> "I'm coordinating [number] agents building [features]. Help me write integration contracts with explicit APIs, data models, dependencies, and testable acceptance criteria. Then identify what would break if I scaled to 10 features."
 
 ---
 

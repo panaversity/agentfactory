@@ -241,70 +241,20 @@ If not all three → Skip the ADR.
 
 ---
 
-## Try With AI: Validate Your Plan and ADRs
+## Try With AI
 
-Use your AI companion to review your implementation plan and ADRs.
+Ready to validate your implementation plan and architectural decisions? Test your planning work:
 
-### Setup
+**🔍 Explore Plan Completeness:**
+> "Review my implementation plan at `specs/calculator/plan.md`. Does it address all requirements from the specification? Are the implementation phases in logical order? Identify any gaps: missing components, unclear dependencies, or phases that need more detail. Compare the plan against the spec to verify nothing was missed."
 
-**Tool**: Claude Code (or your configured AI orchestrator)
+**🎯 Practice ADR Evaluation:**
+> "I created ADRs for my calculator project documenting [describe your decisions]. Evaluate each ADR: (1) Is this decision architecturally significant (affects multiple components or long-term maintainability)? (2) Does the ADR explain WHY this choice over alternatives? (3) Are trade-offs clearly documented? (4) What critical decisions am I missing that should have ADRs?"
 
-**Context**: Your plan.md and 1-2 ADRs
+**🧪 Test Plan-to-Tasks Readiness:**
+> "Based on my plan at `specs/calculator/plan.md`, simulate breaking it into tasks. For each implementation phase, can you create 3-5 atomic tasks? If you struggle to create clear tasks, identify which parts of my plan are too vague or need more detail. This tests if my plan is detailed enough for the Tasks phase."
 
-**Goal**: Confirm plan is sound and ADRs capture key architectural decisions
+**🚀 Apply to Your Project:**
+> "I'm planning [describe your project]. Help me identify architecturally significant decisions that need ADRs. For my project type, what decisions typically affect: (1) Long-term maintainability? (2) Multiple components? (3) Team coordination? (4) Technical debt? Draft an ADR template for my most critical decision."
 
-:::tip ⚠️ Learning WITH AI (Not Generating FROM AI)
-
-**What this exercise teaches:**
-- ❌ **DON'T ask**: "Write the implementation code for me"
-- ❌ **DON'T ask**: "Generate all the functions"
-- ✅ **DO ask**: "Is my plan realistic and well-structured?"
-- ✅ **DO ask**: "Do my ADRs capture architecturally significant decisions?"
-- ✅ **DO ask**: "What alternatives should I consider for this decision?"
-
-**Your role**: Review plan structure, evaluate ADR quality, make architectural decisions
-**AI's role**: Validate plan soundness, suggest improvements, identify missing ADRs
-
-:::
-
-### Prompt Set (Copy-Paste Ready)
-
-**Prompt 1 - Plan Review**
-
-Copy and paste this into Claude Code:
-
-```
-I've generated an implementation plan for my calculator.
-
-Looking at my specification, does this plan address all requirements?
-Are the phases in the right order? Any missing components?
-```
-
-**Prompt 2 - ADR Completeness**
-
-After plan review, ask:
-
-```
-I've documented these architectural decisions.
-
-Are these the most important decisions? Did I miss any critical architectural
-choices? 
-```
-
-**Prompt 3 - Plan to Tasks Readiness**
-
-Finally, ask:
-
-```
-Based on my plan and ADRs, am I ready for the Tasks phase?
-
-Tasks will break my plan into atomic work units.
-Is my plan detailed enough that tasks will be clear and unambiguous?
-```
-
-### Expected Outcomes
-
-- **Plan is sound and complete**
-- **ADRs capture key architectural decisions**
-- **Specification quality has cascaded into plan and ADR quality**
-- **Ready for task breakdown (Lesson 6)**
+---
