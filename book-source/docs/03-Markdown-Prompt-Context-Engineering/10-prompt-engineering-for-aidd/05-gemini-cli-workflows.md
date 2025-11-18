@@ -324,7 +324,7 @@ This gives you a reusable template. You fill in the variables each time:
 gemini api-docs service_file=@src/routes.py base_url=https://api.example.com auth_type=Bearer
 ```
 
-**What you learned**: You didn't know about the variable interpolation pattern ({variable_name}) in TOML commands. The AI taught you a reusable template structure. This is **AI as Teacher**.
+**What you discovered**: The variable interpolation pattern (`{variable_name}`) in TOML commands—a reusable template structure you weren't aware of. This is **AI as Teacher**.
 
 **Evidence**: The AI suggested a specific TOML pattern (description + prompt + args) and explained WHY each part matters. This is reasoning about workflow design, not just template generation.
 
@@ -383,7 +383,7 @@ Your team standards (rate limiting, error codes, sequence diagrams, quick start)
 are now encoded in the prompt. Every API doc generated will include these.
 ```
 
-**What AI learned**: You taught the AI your team's documentation standards (rate limiting, specific error codes, mermaid diagrams, curl examples). The AI adapted the TOML to include those requirements. This is **AI as Student**.
+**What changed**: The TOML command now includes your team's documentation standards (rate limiting, specific error codes, mermaid diagrams, curl examples)—requirements that were incorporated after your feedback. This is **AI as Student**.
 
 **Evidence**: The AI's initial TOML was generic. You corrected it with team-specific standards. The AI incorporated your requirements into the prompt template. Bidirectional learning.
 

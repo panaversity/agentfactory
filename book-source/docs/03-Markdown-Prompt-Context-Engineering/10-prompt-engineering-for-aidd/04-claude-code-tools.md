@@ -281,7 +281,7 @@ conceptual docs, then see real usage.
 Let me start with Glob to map the territory.
 ```
 
-**What you learned**: You didn't know about the Glob → Read → Grep orchestration pattern. The AI taught you a systematic approach for documentation exploration. This is **AI as Teacher**.
+**What you discovered**: The Glob → Read → Grep orchestration pattern—a systematic approach for documentation exploration you weren't aware of. This is **AI as Teacher**.
 
 **Evidence**: The AI suggested a 3-step tool chain you weren't using. This is reasoning about tool selection, not just executing commands.
 
@@ -318,7 +318,7 @@ Your constraint (WHY, not HOW) means I should prioritize:
 Let me search for "design" and "philosophy" in the docs first.
 ```
 
-**What AI learned**: You taught the AI your learning goal (conceptual understanding, not usage patterns). The AI adapted its tool selection and search strategy based on your feedback. This is **AI as Student**.
+**What changed**: The search strategy shifted from usage examples to conceptual understanding—refocusing on design rationale based on your feedback about learning goals. This is **AI as Student**.
 
 **Evidence**: The AI initially focused on usage examples (Depends() calls). You corrected it. The AI changed approach to prioritize design rationale. Bidirectional learning.
 
