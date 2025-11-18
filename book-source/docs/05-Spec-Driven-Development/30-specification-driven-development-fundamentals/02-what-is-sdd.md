@@ -48,9 +48,34 @@ A **specification** (or spec) is a structured, behavior-oriented document that c
 
 ---
 
+## What Is Specification-Driven Development?
+
+**Specification-Driven Development (SDD)** is a software development workflow where you write specifications BEFORE code, treating specs as the primary source of truth.
+
+**The SDD Workflow**:
+1. **Write spec first** → Define intent, constraints, success criteria
+2. **Generate/write code** → Implementation from spec
+3. **Validate** → Verify code matches spec acceptance criteria
+4. **Iterate** → Refine spec if requirements change, regenerate code
+
+**Key Principle**: Code is the OUTPUT of specification, not the INPUT. The spec comes first, always.
+
+**How SDD Differs from Other Approaches**:
+
+| Approach | Workflow | Problem |
+|----------|----------|---------|
+| **Vibe coding** | Prompt → hope | No structured spec, AI guesses intent |
+| **Code-first** | Code → documentation | Spec written after code exists (reactive) |
+| **Traditional TDD** | Tests → code | Tests guide code, but no overarching spec |
+| **SDD** | Spec → tests + code | Specification guides both implementation AND validation |
+
+In SDD, the **specification** is the authoritative document that drives both your tests and your implementation.
+
+---
+
 ## The Evals-First Principle
 
-Here's the core insight that separates spec-driven development from casual prompting: **You define success criteria BEFORE you implement.**
+Here's the core insight that makes SDD work: **You define success criteria BEFORE you implement.**
 
 This is called the **evals-first principle**.
 
@@ -139,6 +164,7 @@ Each criterion should be testable, not vague.
 
 ```
 Non-negotiable requirements that limit implementation choices.
+These can include technology choices when justified.
 ```
 
 **Example**:
@@ -148,6 +174,13 @@ Non-negotiable requirements that limit implementation choices.
 - Must handle file permission errors gracefully (e.g., read-only files)
 - Must not allow null values in configuration settings
 ```
+
+**When to include tech stack in constraints**:
+- ✅ **DO specify** when technology choice matters: "Must use Python's json module (deployment environment restrictions)"
+- ✅ **DO specify** when team expertise limits options: "Must use PostgreSQL (team familiar with SQL)"
+- ❌ **DON'T over-specify** when intent is general: Don't say "Use React with Redux" when "Build interactive web UI" is sufficient
+
+**Good constraint**: Balances intent (general problem) with justified technical boundaries (specific tooling when required).
 
 ### 4. Non-Goals (What's intentionally NOT included?)
 
