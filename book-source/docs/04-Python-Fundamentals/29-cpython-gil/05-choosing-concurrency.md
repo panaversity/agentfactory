@@ -693,62 +693,117 @@ Memorizing this tree won't help you. Understanding the WHY behind each decision 
 
 ---
 
-## Try With AI
+## Challenge 5: The Concurrency Strategy Selection Workshop
 
-### Prompt 1: Recall (Remember) - 3 minutes
+This is a **4-part bidirectional learning challenge** where you master decision-making using the concurrency selection framework.
 
-> "List the 5 concurrency approaches covered in this lesson and their primary use cases. Ask Claude Code to validate your list and add one insight you might have missed."
+### Part 1: Discover Independently (Student as Scientist)
+**Your Challenge**: Classify real-world workloads using the decision framework.
 
-**Expected outcome**: You can recall the decision framework.
+**Deliverable**: Create `/tmp/concurrency_classification.py` containing:
+1. Classify 8 real AI workloads:
+   - API server (web requests)
+   - ML model inference (CPU-bound)
+   - Data pipeline (fetch + process + store)
+   - Chat bot (I/O for API calls, CPU for LLM)
+   - Web scraper (many HTTP requests + text parsing)
+   - Vector database (I/O-bound queries)
+   - Report generator (CPU-heavy calculations)
+   - Real-time monitoring (continuous I/O + light processing)
+2. For each: decide single-threaded, free-threaded, multiprocessing, asyncio, or hybrid
+3. Document reasoning for each
 
-**Example correct answer**:
-- Single-threaded: When no concurrency needed
-- Free-threaded: CPU-parallel with shared state
-- Multiprocessing: CPU-parallel with isolation
-- Asyncio: I/O-bound event-driven
-- Hybrid: Both CPU and I/O
+**Expected Observation**:
+- I/O-dominant workloads map to asyncio
+- CPU-dominant workloads map to free-threaded or multiprocessing
+- Hybrid workloads need combined approaches
+- Single-threaded is rare but appropriate for sequential-only tasks
 
----
-
-### Prompt 2: Explain (Understand) - 3 minutes
-
-> "Ask your AI: For each of the 5 approaches, explain the memory model (shared vs separate) and when it matters. Include Python 3.14 improvements for each."
-
-**Expected outcome**: You understand architectural differences, not just names.
-
-**Example correct answer**:
-- Free-threaded: Shared memory within process; data sharing is direct; matters when agents collaborate
-- Multiprocessing: Separate memory per process; data must be serialized; matters for isolation/crash safety
-
----
-
-### Prompt 3: Apply - Benchmark (5 minutes)
-
-> "Tell your AI: I have a web scraper that downloads 100 pages and extracts text (CPU-intensive). Should I use asyncio for downloads and free-threaded for processing? Implement a benchmark to prove which approach is fastest: (a) single-threaded sequential, (b) asyncio downloads + sync processing, (c) asyncio downloads + threaded processing. Show time for each."
-
-**Expected outcome**: You'll see that combining asyncio (I/O) with threading (CPU) beats either alone.
-
-**Expected output**: Benchmark comparing 3 approaches; asyncio+threaded should be fastest.
+**Self-Validation**:
+- Can you explain your classification choices?
+- Would your choices change with different Python versions?
+- Where would you use each approach in a real system?
 
 ---
 
-### Prompt 4: Analyze - Production System (4 minutes)
+### Part 2: AI as Teacher (Teaching Decision Framework)
+**Your AI Prompt**:
+> "I classified 8 workloads using the concurrency decision framework. Teach me: 1) Are my classifications correct? 2) For each workload type, what are the performance implications of wrong choices? 3) How does Python 3.14 free-threading change the classification (some that needed multiprocessing before might not now)? 4) When would I deliberately choose a suboptimal approach and why?"
 
-> "Ask your AI: Design a production AI system with these components: (1) 10 agents doing NLP (CPU-bound), (2) 5 agents fetching live data (I/O-bound), (3) coordinator that orchestrates them. Which concurrency approach for each component? Why? How would you deploy this on Kubernetes (preview: Part 11)? Connect to the decision framework from this lesson."
+**AI's Role**: Validate classifications, explain consequences, discuss tradeoffs, clarify when "wrong" choice is actually pragmatic.
 
-**Expected outcome**: You integrate all lesson concepts into a real-world design.
+**Interactive Moment**: Ask a clarifying question:
+> "You said 'choice depends on SLA requirements.' Can you show me an example where the same workload would use different concurrency approaches based on latency vs throughput requirements?"
 
-**Expected answer should include**:
-- Agents doing NLP: Free-threaded Python
-- Fetching live data: Asyncio
-- Coordinator: Main thread orchestrating both
-- Kubernetes: Each component as separate pod (Part 11 detail)
-- Decision framework: Applied at each architectural choice
+**Expected Outcome**: AI clarifies that decision-making is contextual, based on constraints (latency, memory, availability, team expertise). You learn systems thinking.
 
 ---
 
-## Next Steps
+### Part 3: You as Teacher (Discovering Edge Cases)
+**Setup**: AI generates a benchmark comparing all approaches on a hybrid workload. Your job is to verify and teach AI about real-world constraints.
 
-You now have the knowledge to make concurrency decisions confidently. Lesson 6 (Capstone) is where you'll build a full multi-agent system using these approaches, complete with a benchmarking dashboard. You'll see these concepts in action at production scale.
+**AI's Initial Code** (ask for this):
+> "Create a comprehensive benchmark: web scraper that downloads 100 pages (I/O-bound, 1s each) and extracts text (CPU-bound, 0.5s each). Compare: (a) single-threaded sequential, (b) asyncio for fetch + sync processing, (c) asyncio for fetch + free-threaded processing, (d) asyncio for fetch + ProcessPoolExecutor processing. Show time and resource usage for each."
 
-But first: practice the decision framework on your own problems. When you face a new workload, think through the decision tree. Measure baselines. Benchmark approaches. Let data guide your choice.
+**Your Task**:
+1. Run all approaches. Measure timing and memory usage
+2. Identify surprises (does theory match practice?)
+3. Teach AI:
+> "Theory says asyncio + free-threaded should be fastest, but memory usage is higher. ProcessPoolExecutor is slower but uses 50% less memory. How do I decide in production where memory budget is tight?"
+
+**Your Edge Case Discovery**: Ask AI:
+> "What if the hybrid workload is unbalanced: 1000 pages to fetch (5 seconds total) but only 50MB of text to process (1 second total)? Fetch dominates. How does this imbalance affect which approach is best?"
+
+**Expected Outcome**: You discover that benchmarks reveal real tradeoffs. You learn to choose based on actual constraints, not theory alone.
+
+---
+
+### Part 4: Build Production Artifact (Student as Engineer)
+**Your Capstone for This Challenge**: Build an interactive concurrency strategy recommendation engine.
+
+**Specification**:
+- Accept workload characteristics: {workload_type, latency_requirement_ms, memory_budget_mb, cpu_cores, has_expensive_startup}
+- Apply decision framework: return recommended approach + reasoning
+- Show alternatives with tradeoffs
+- Include benchmark template for validation
+- Provide migration guide if changing approaches
+- Type hints throughout
+
+**Deliverable**: Save to `/tmp/concurrency_selector.py`
+
+**Testing Your Work**:
+```bash
+python /tmp/concurrency_selector.py
+# Interactive prompt:
+# Enter workload type: hybrid
+# Latency requirement (ms): 100
+# Memory budget (mb): 256
+# CPU cores: 4
+# Has expensive startup (y/n): n
+#
+# === Recommendation ===
+# Approach: Asyncio + Free-Threaded Python 3.14
+# Reasoning: Hybrid workload with tight latency needs free-threading for CPU+concurrency overlap
+# Expected speedup: 3.2x vs sequential
+# Memory overhead: ~80MB per thread
+# Migration effort: Medium (need thread-safety review)
+#
+# === Alternatives ===
+# 1. ProcessPoolExecutor: Higher memory, no latency advantage
+# 2. Pure asyncio: Can't handle CPU-bound part efficiently
+```
+
+**Validation Checklist**:
+- [ ] Code runs without errors
+- [ ] Accepts realistic workload characteristics
+- [ ] Recommends appropriate concurrency approach
+- [ ] Reasoning is clear and data-driven
+- [ ] Alternatives section present
+- [ ] Migration guidance helpful
+- [ ] Type hints complete
+
+---
+
+**Time Estimate**: 32-38 minutes (6 min discover, 8 min teach/learn, 8 min edge cases, 10-16 min build artifact)
+
+**Key Takeaway**: Concurrency decisions aren't about "best" approach—they're about "best for your constraints." Master the decision framework and benchmark on your actual workload to make confident, data-driven choices.
