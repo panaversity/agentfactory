@@ -1,8 +1,13 @@
+---
+sidebar_position: 27
+title: "Chapter 27: Pydantic and Generics"
+---
+
 # Chapter 27: Pydantic and Generics
 
-This chapter teaches advanced type safety and data validation for AI-native Python development through **Pydantic** (runtime validation) and **Generics** (static type safety). You'll learn to validate LLM outputs, build type-safe containers, and combine both patterns in a production-quality Config Manager.
+Modern AI applications require robust data validation. LLM outputs need validation before use, configuration systems need type safety across environments, and API integrations require structured data contracts. Two powerful tools address these needs: **Pydantic** (runtime validation that catches bad data) and **Generics** (static type safety that catches errors before runtime).
 
-Modern AI applications require robust data validation—LLM outputs need validation before use, configuration systems need type safety across environments, and API integrations require structured data contracts. This chapter equips you with Pydantic V2 for runtime validation, modern PEP 695 Generic syntax (Python 3.14+), and production patterns for config management and AI output validation.
+This chapter teaches advanced type safety and data validation for AI-native Python development through **Pydantic** (runtime validation) and **Generics** (static type safety). You'll learn to validate LLM outputs, build type-safe containers, and combine both patterns in a production-quality Config Manager. This chapter equips you with Pydantic V2 for runtime validation, modern PEP 695 Generic syntax (Python 3.14+), and production patterns for config management and AI output validation.
 
 By the end, you'll build a **Type-Safe Config Manager** capstone—a production-quality configuration system that's a portfolio-worthy project you can use in your own Python applications.
 

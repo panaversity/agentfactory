@@ -1,6 +1,11 @@
+---
+sidebar_position: 17
+title: "Chapter 17: Control Flow and Loops"
+---
+
 # Chapter 17: Control Flow and Loops
 
-Welcome to Chapter 17! In this chapter, you'll learn how to make your Python programs intelligent and efficient by teaching them to make decisions and repeat actions automatically.
+Programs need to make decisions and repeat actions. Should we process this user's order or reject it? Should we retry a failed network request? Should we validate every item in a list? Control flow structures answer these questions by letting your code respond to different conditions and automate repetitive tasks.
 
 Control flow structures are the foundation of programming logic—they let your code respond to different conditions and automate repetitive tasks. You'll master conditional statements, pattern matching, loops, and control mechanisms that transform simple scripts into intelligent programs.
 

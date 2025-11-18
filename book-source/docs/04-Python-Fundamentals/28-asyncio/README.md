@@ -1,6 +1,11 @@
+---
+sidebar_position: 28
+title: "Chapter 28: Asyncio — Concurrent I/O and CPU-Parallel Workloads"
+---
+
 # Chapter 28: Asyncio — Concurrent I/O and CPU-Parallel Workloads
 
-Master modern Python 3.14+ asyncio patterns for building high-performance concurrent systems that handle both I/O operations and CPU-intensive work efficiently.
+Modern applications don't wait—they fetch from multiple APIs concurrently, process data in parallel, and combine results efficiently. An AI agent making sequential API calls wastes time. A data pipeline processing items one-by-one underutilizes CPU cores. **Asyncio** enables concurrent I/O operations, and **InterpreterPoolExecutor** enables true CPU parallelism.
 
 This chapter teaches you to build production-ready asynchronous systems using Python 3.14's latest asyncio features. You'll learn when asyncio helps (I/O-bound tasks), when it doesn't (CPU-bound work), and how to combine both patterns for optimal performance in AI-native applications. Modern AI applications are inherently hybrid workloads—fetching from multiple LLM APIs, databases, and vector stores concurrently while running inference, embeddings, and data processing in parallel.
 

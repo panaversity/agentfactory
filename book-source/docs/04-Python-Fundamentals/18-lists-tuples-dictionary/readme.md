@@ -1,8 +1,13 @@
+---
+sidebar_position: 18
+title: "Chapter 18: Lists, Tuples, and Dictionary"
+---
+
 # Chapter 18: Lists, Tuples, and Dictionary
 
-This chapter teaches Python's three foundational collection structures: **lists** (mutable sequences), **tuples** (immutable sequences), and **dictionaries** (key-value mappings). You'll learn when to use each structure, how to manipulate them effectively, and how to combine them in real-world applications.
+Real programs work with collections of data, not individual values. User lists, product inventories, shopping carts, API responses—all require storing multiple related items together. Python provides three foundational collection structures for this purpose: **lists** (mutable sequences), **tuples** (immutable sequences), and **dictionaries** (key-value mappings).
 
-By the end of this chapter, you'll build a complete **Data Processing Pipeline** that ingests CSV data, filters it with comprehensions, aggregates statistics with dictionaries, and outputs formatted reports—demonstrating how all three structures work together in production code.
+You'll learn when to use each structure, how to manipulate them effectively, and how to combine them in real-world applications. By the end of this chapter, you'll build a complete **Data Processing Pipeline** that ingests CSV data, filters it with comprehensions, aggregates statistics with dictionaries, and outputs formatted reports—demonstrating how all three structures work together in production code.
 
 ---
 

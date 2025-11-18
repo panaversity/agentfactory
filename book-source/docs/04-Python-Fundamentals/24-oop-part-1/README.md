@@ -1,6 +1,13 @@
+---
+sidebar_position: 24
+title: "Chapter 24: Object-Oriented Programming - Part 1"
+---
+
 # Chapter 24: Object-Oriented Programming - Part 1
 
-This chapter introduces **Object-Oriented Programming (OOP)**, a fundamental paradigm for organizing code around objects that bundle data (attributes) and behavior (methods) together. You'll learn why OOP matters for building scalable, maintainable applications—especially in AI-native development where agents themselves are objects with state and capabilities.
+Real-world programs model real-world entities. A banking app has accounts with balances and transactions. A game has characters with health and abilities. An AI system has agents with state and capabilities. **Object-Oriented Programming (OOP)** is the paradigm for organizing code around these objects—bundles of data (attributes) and behavior (methods) that work together.
+
+You'll learn why OOP matters for building scalable, maintainable applications—especially in AI-native development where agents themselves are objects with state and capabilities.
 
 Starting from the limitations of procedural programming, you'll discover how OOP solves real-world problems through the **four pillars**: encapsulation, abstraction, inheritance, and polymorphism. Through practical examples ranging from bank accounts to AI agents, you'll build a solid foundation in class design, object creation, and method implementation.
 

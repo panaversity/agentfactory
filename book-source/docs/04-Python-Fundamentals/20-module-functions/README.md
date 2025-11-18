@@ -1,6 +1,11 @@
+---
+sidebar_position: 20
+title: "Chapter 20: Modules and Functions"
+---
+
 # Chapter 20: Modules and Functions
 
-Chapter 20 teaches you how to organize and reuse Python code through **modules** and **functions**. Modules are `.py` files containing reusable code. Functions are reusable blocks of code with clear parameters and return values.
+As programs grow, copy-pasting code becomes unsustainable. You need to organize code into reusable pieces—**functions** that perform specific tasks with clear inputs and outputs, and **modules** (`.py` files) that group related functions together. This is how professional Python developers build maintainable applications.
 
 This chapter bridges foundational Python syntax (Chapters 13-19) with production-oriented patterns by teaching you to describe intent through function signatures with type hints, organize code into logical modules with clear separation of concerns, reuse code through imports and function calls, and validate behavior through testing.
 

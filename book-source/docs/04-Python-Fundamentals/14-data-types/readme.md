@@ -1,3 +1,8 @@
+---
+sidebar_position: 14
+title: "Chapter 14: Understanding Python Data Types"
+---
+
 # Chapter 14: Understanding Python Data Types
 
 You've learned to write Python programs with variables, print statements, and type hints in Chapter 13. Now comes a foundational question: **Why does `:int` matter?** Why do we write `age: int = 25` instead of just `age = 25`? What makes `int` different from `float` or `str`?

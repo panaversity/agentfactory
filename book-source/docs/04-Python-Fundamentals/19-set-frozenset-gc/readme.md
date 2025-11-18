@@ -1,3 +1,8 @@
+---
+sidebar_position: 19
+title: "Chapter 19: Set, Frozen Set, and GC"
+---
+
 # Chapter 19: Set, Frozen Set, and GC
 
 Need to check if a million user IDs exist in your database? Need to find common connections between social networks? Need to eliminate duplicates from a massive dataset? Sets are your answer.

@@ -1,6 +1,11 @@
+---
+sidebar_position: 13
+title: "Chapter 13: Introduction to Modern Python"
+---
+
 # Chapter 13: Introduction to Modern Python
 
-Welcome to your first hands-on Python chapter! You've spent Chapters 1–12 learning the philosophy and tools of AI-Driven Development. Now it's time to apply that philosophy to Python programming.
+You've spent Chapters 1–12 learning the philosophy and tools of AI-Driven Development. Now it's time to apply that philosophy to Python programming—the language that powers modern AI applications and enables you to describe your intent clearly so AI agents can help you build.
 
 This chapter isn't about memorizing Python syntax—it's about understanding Python as a tool for describing intent that AI agents can execute. You'll install Python, write your first typed variables and programs, and build an interactive capstone project that integrates everything you've learned. Most importantly, you'll understand how to use Python with AI collaboration: you describe what you want your code to do (using type hints and clear specifications), your AI partner helps you explore and implement, and you validate the results.
 
