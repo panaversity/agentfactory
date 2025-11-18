@@ -149,13 +149,13 @@ Hybrid chapter:
 
 **Role 1: AI as Teacher** (AI suggests pattern student didn't know)
 ```markdown
-✅ DEMONSTRATED:
+✅ DEMONSTRATED (natural narrative):
 **AI suggests:**
 "I recommend OAuth 2.0 with refresh token rotation for security. Here's why:
 - Password-based auth has vulnerabilities (credential stuffing)
 - Refresh token rotation prevents token theft"
 
-**What you learned:** AI introduced security pattern (refresh token rotation) you hadn't considered.
+**Outcome description**: The AI introduced a security pattern (refresh token rotation) you might not have considered independently.
 
 ❌ NOT DEMONSTRATED:
 AI just executes: "Created authentication system as requested."
@@ -163,7 +163,7 @@ AI just executes: "Created authentication system as requested."
 
 **Role 2: AI as Student** (AI adapts to student's feedback/constraints)
 ```markdown
-✅ DEMONSTRATED:
+✅ DEMONSTRATED (natural narrative):
 **You respond:**
 "Good suggestion, but for this MVP we need simpler username/password auth."
 
@@ -173,7 +173,7 @@ AI just executes: "Created authentication system as requested."
 - Rate limiting on login attempts
 Based on your MVP priority, keeping it simple while maintaining security basics."
 
-**What AI learned:** Your product priorities (MVP speed over OAuth complexity)
+**Outcome description**: Your feedback refined the AI's recommendation to prioritize MVP speed over OAuth complexity.
 
 ❌ NOT DEMONSTRATED:
 AI ignores feedback, repeats same suggestion.
@@ -181,11 +181,11 @@ AI ignores feedback, repeats same suggestion.
 
 **Role 3: AI as Co-Worker** (Convergence through iteration)
 ```markdown
-✅ DEMONSTRATED:
-**Convergence:**
+✅ DEMONSTRATED (natural narrative):
+**Convergence visible in transcript:**
 - Student (strategy): "We need auth that's secure enough for beta but fast to implement"
 - AI (tactics): "Here's balanced approach: username/password + JWT + bcrypt"
-- Together (convergence): Secure-enough MVP auth in 2 hours instead of 2 days
+- Result: Secure-enough MVP auth in 2 hours instead of 2 days
 
 **This is co-working:** Neither dictated solution. You set constraints; AI proposed implementation; together you converged.
 
@@ -346,38 +346,41 @@ print(x)  # Output: 10
 **Why NO AI yet**: You need mental model of how variables work before AI helps write code.
 ```
 
-**Stage 2 Example** (AI Collaboration with Three Roles):
+**Stage 2 Example** (AI Collaboration through natural narrative):
 ```markdown
-## Lesson 3: Authentication with AI
+## Lesson 3: Authentication Implementation
 
-### Specification-First Approach
+### Designing the Authentication Approach
 
-**Your initial spec** (AI as Student):
-"I need user authentication for my Flask app"
+**Your initial request:**
+"I need user authentication for my Flask application"
 
-**AI suggests refinements** (AI as Teacher):
-"Do you want OAuth or password-based? Session or JWT tokens? Let me suggest:
-- OAuth for social login (Google, GitHub)
-- JWT for stateless API auth
-- Session for traditional web apps"
+**AI's response:**
+"I can help with that. A few questions to suggest the right approach:
+- Do you want OAuth (social login) or password-based authentication?
+- Session-based or JWT tokens?
+- Simple username/password or more complex requirements?
 
-**What you learned**: AI taught you authentication approaches you hadn't considered (OAuth vs password, JWT vs sessions).
+For context: OAuth works well for social login (Google, GitHub), JWT is ideal for stateless API authentication, and sessions work for traditional web apps."
 
-**You refine** (Teaching AI):
-"For this MVP, password-based with JWT. Keep it simple."
+### Refining Based on Your Requirements
 
-**AI adapts** (AI as Student):
-"Understood. For MVP simplicity, I'll implement username/password + JWT with:
-- Bcrypt hashing (security)
-- 24h token expiry
-- Rate limiting (5 attempts/hour)
-Based on your MVP priority."
+**Your clarification:**
+"For this MVP, let's keep it simple. Password-based authentication with JWT tokens."
 
-**What AI learned**: Your product constraints (MVP speed, not production OAuth).
+**AI's adapted recommendation:**
+"Perfect. For MVP simplicity with JWT, I'll implement:
+- Username/password authentication with bcrypt hashing (secure password storage)
+- JWT tokens with 24-hour expiry
+- Rate limiting (5 login attempts per hour to prevent brute force)
 
-**Convergence** (AI as Co-Worker):
-Together, you converged on: Secure-enough MVP auth (password+JWT+bcrypt) in 2 hours.
-Neither of you had this exact solution initially. Iteration improved both understandings.
+This balances security with fast implementation—should take about 2 hours."
+
+### Implementation Outcome
+
+**What emerged**: A secure-enough MVP authentication system (password + JWT + bcrypt hashing + rate limiting) that meets your timeline constraint without over-engineering.
+
+The AI suggested authentication patterns you might not have considered initially (OAuth vs JWT tradeoffs), then tailored its implementation to your specific constraint (MVP speed over comprehensive OAuth setup). Through this exchange, you arrived at a solution that balances security practices with practical delivery timelines.
 ```
 
 **Stage 4 Example** (Spec-Driven Integration):
@@ -434,85 +437,79 @@ Lesson 9: Spec-driven integration (compose skills) → Stage 4
 
 ### Principle 2: Three Roles Mandatory (Stage 2+) — No Passive Tool Paradigm
 
-**Framework**: "Every Stage 2+ lesson MUST demonstrate AI as Teacher, Student, and Co-Worker with explicit callouts. AI presented as passive tool awaiting commands violates bidirectional learning and fails validation."
+**Framework**: "Every Stage 2+ lesson MUST demonstrate AI as Teacher, Student, and Co-Worker through natural collaborative narrative. Students should EXPERIENCE the Three Roles framework through transcripts and dialogue, NOT be told about the pedagogical design. AI presented as passive tool awaiting commands violates bidirectional learning and fails validation."
 
 **What this means**:
-- **AI as Teacher**: AI suggests patterns, explains tradeoffs, teaches approaches student didn't know
-- **AI as Student**: AI adapts to student's feedback, learns domain constraints, refines based on corrections
-- **AI as Co-Worker**: Convergence through iteration (neither perfect initially, together reach better solution)
+- **AI as Teacher**: Students EXPERIENCE AI suggesting patterns through collaborative dialogue (not told "AI is teaching you")
+- **AI as Student**: Students EXPERIENCE AI adapting through visible refinement (not told "AI learned from you")
+- **AI as Co-Worker**: Students EXPERIENCE convergence through multi-round iteration (not told "This is convergence")
 
 **Application guidance**:
 
 **Content requirement** (MUST include for Stage 2+ technical lessons):
-1. ✅ At least ONE AI teaching moment ("AI suggests X I hadn't considered")
-2. ✅ At least ONE AI learning moment ("AI adapted based on my feedback")
-3. ✅ At least ONE convergence loop (iteration 1 → refinement → iteration 2 → better solution)
-4. ✅ Explicit callouts: "**What you learned:**" and "**What AI learned:**"
+1. ✅ At least ONE moment where collaborative transcript shows AI suggesting pattern student didn't have
+2. ✅ At least ONE moment where transcript shows AI adapting its recommendation based on student feedback
+3. ✅ At least ONE convergence loop (iteration 1 → student refinement → iteration 2 → better solution)
+4. ✅ Natural narrative headings and outcome language (NO explicit role labels, NO meta-commentary)
 
-**Example Three Roles demonstration**:
+**Example Three Roles demonstration** (natural narrative, NO explicit labels):
 
 ```markdown
-## Authentication Implementation — Three Roles Example
+## Authentication Implementation — Collaborative Design
 
-### Iteration 1: AI as Teacher
+### Exploring Authentication Options
 
-**Student specifies:**
-"Create user authentication"
+**Your request:**
+"Create user authentication for this application"
 
-**AI suggests:**
-"I recommend OAuth 2.0 because:
-- Delegates auth to trusted providers (Google, GitHub)
-- Reduces attack surface (no password storage)
-- Supports MFA natively"
+**AI's recommendation:**
+"I recommend OAuth 2.0 because it delegates authentication to trusted providers like Google or GitHub. This reduces your attack surface since you're not storing passwords, and it supports multi-factor authentication natively. Would you like me to set up OAuth with a specific provider?"
 
-**What you learned:** OAuth pattern and security benefits (AI taught something new)
+### Refining Based on Project Reality
 
-### Iteration 2: AI as Student
+**Your response:**
+"That's a good security pattern, but for this MVP I need something simpler. Let's do username/password authentication and save OAuth for version 2."
 
-**Student responds:**
-"Good idea, but for MVP I need simple username/password. OAuth in v2."
-
-**AI adapts:**
-"Understood. For MVP, I'll use username/password with:
-- Bcrypt hashing (not plaintext)
-- Rate limiting (5 attempts/hour)
+**AI's adapted approach:**
+"Understood. For MVP simplicity, I'll implement username/password authentication with essential security measures:
+- Bcrypt hashing (not plaintext storage)
+- Rate limiting (5 login attempts per hour)
 - Session expiry (24 hours)
-Keeping MVP simple while maintaining basic security."
 
-**What AI learned:** Your MVP constraint (speed over OAuth complexity)
+This keeps implementation time under 2 hours while maintaining basic security practices."
 
-### Iteration 3: AI as Co-Worker (Convergence)
+### What Emerged from Collaboration
 
-**Final solution** (neither had initially):
-- Password-based auth (student's MVP requirement)
-- Bcrypt + rate limiting + session expiry (AI's security suggestions)
-- 2-hour implementation (not 2 days for OAuth)
+**Final approach** (result of iteration):
+- Password-based authentication (meets your MVP timeline constraint)
+- Bcrypt hashing + rate limiting + session expiry (AI's security recommendations)
+- 2-hour implementation instead of 2-day OAuth integration
 
-**Convergence achieved:** Together you produced better solution than either alone.
+The AI suggested a security pattern you might not have discovered independently (OAuth benefits), then adapted its recommendation when you provided product constraints (MVP speed). Through this exchange, you arrived at a solution that balances security with practical constraints.
 ```
 
-**For conceptual lessons**, frame AI's role appropriately:
+**For conceptual lessons**, use natural exploration prompts:
 ```markdown
 ## Understanding AI Development (Conceptual)
 
-**AI's Role in This Context:**
-- AI as Teacher: Suggests analogies and connections you hadn't considered
-- AI as Student: Adapts explanations based on your questions and confusion
-- AI as Co-Worker: Helps you explore concepts through dialogue
+**Explore this concept further:**
 
-**Try asking AI:**
-"Compare AI-native development to cloud-native development. What patterns transferred?"
+Ask your AI tool:
+"Compare AI-native development to cloud-native development. What patterns transferred, and what's fundamentally different?"
 
-[AI suggests comparison you hadn't considered] → AI as Teacher
+**Observe**: The AI will likely suggest connections you hadn't considered (like infrastructure-as-code paralleling prompts-as-specifications). When you question or refine these comparisons, notice how the AI adapts its explanation based on your specific context or confusion.
+
+Through this dialogue, you'll develop a more nuanced understanding than either starting knowledge or AI response alone could provide.
 ```
 
 **Fail conditions** (lesson rejected):
-- ❌ AI only executes commands (no teaching, no learning)
-- ❌ No explicit "What you learned" / "What AI learned" callouts
-- ❌ One-shot solution (no iteration, no convergence)
+- ❌ AI only executes commands (no visible teaching or learning through dialogue)
+- ❌ Explicit pedagogical labels exposed to students ("This is AI as Teacher", "**What you learned:**", "**What AI learned:**")
+- ❌ One-shot solution (no iteration, no convergence visible in transcript)
 - ❌ AI framed as passive tool ("Tell AI to do X" without showing bidirectional learning)
+- ❌ Students told ABOUT Three Roles design instead of EXPERIENCING it through collaboration
 
-**Self-check**: "Does lesson show AI teaching, learning, and converging with explicit callouts?" If no → Add missing role demonstrations.
+**Self-check**: "Does lesson show AI teaching, learning, and converging through natural collaborative narrative? Are role labels hidden?" If no → Transform to natural narrative pattern.
 
 ### Principle 3: Specs Are the New Syntax — Specification Writing is PRIMARY Skill
 
@@ -973,9 +970,19 @@ Pedagogical-designer: "Moving decorators to Lesson 7 (after higher-order functio
      - "**Stage 2 Focus**: You'll experience..."
      - "## Three Roles in Action"
      - "## Part 2: Stage 2 AI Collaboration"
+     - "This is **AI as Teacher**. AI taught you..."
+     - "### Role 1: AI as Teacher"
+     - "**What you learned:** AI introduced X pattern..."
+     - "**What AI learned:** Your product constraints..."
    - Correction: Remove labels, embed concepts naturally in narrative
      - RIGHT: "Let's work with AI to improve your pull request"
      - WRONG: "Stage 2 Focus: AI Collaboration begins"
+     - RIGHT: "### Discovering a Loading Pattern" (natural action heading)
+     - WRONG: "### Role 1: AI as Teacher" (pedagogical label)
+     - RIGHT: "The AI suggested a pattern you might not have discovered independently"
+     - WRONG: "This is **AI as Teacher**. AI taught you a pattern."
+     - RIGHT: "**What emerged from collaboration:** A structured approach..."
+     - WRONG: "**What you learned:** AI taught you a structured approach..."
 
 **Correction protocol**:
 - Max 0-1 optional sections per lesson (if pedagogically essential)
@@ -986,6 +993,42 @@ Pedagogical-designer: "Moving decorators to Lesson 7 (after higher-order functio
 - NO meta-commentary (navigation, motivation, congratulations)
 - NO internal scaffolding labels ("Stage X", "Three Roles Framework" as headers)
 
+**Real-world transformation example** (from Chapter 11, Lesson 3 fixes):
+
+**BEFORE (Constitutional violation)**:
+```markdown
+## Role 1: AI as Teacher
+
+Claude suggests a loading pattern you might not have discovered independently.
+
+**What you learned**: AI taught you the Foundation→Current→On-Demand pattern.
+You didn't know this loading strategy. AI introduced it with reasoning.
+
+This is **AI as Teacher**. AI suggested a pattern you hadn't considered.
+```
+
+**AFTER (Natural narrative)**:
+```markdown
+## Suggesting a Loading Pattern
+
+The AI recommended a three-tier approach:
+1. Foundation Files (always load): Core types, configurations
+2. Current Work (load next): Files you're actively editing
+3. On-Demand (load as needed): Reference implementations
+
+**What emerged**: A structured approach to progressive loading based on
+dependency analysis and working memory optimization.
+
+The AI suggested a pattern you might not have discovered independently
+through trial and error.
+```
+
+**Key differences**:
+- ❌ BEFORE: "## Role 1: AI as Teacher" → ✅ AFTER: "## Suggesting a Loading Pattern"
+- ❌ BEFORE: "**What you learned:**" → ✅ AFTER: "**What emerged:**"
+- ❌ BEFORE: "This is **AI as Teacher**" → ✅ AFTER: Natural description of collaboration
+- ❌ BEFORE: "AI taught you..." → ✅ AFTER: "The AI suggested..."
+
 **Self-check** (before saving lesson file):
 ```bash
 grep -E "What's Next|Key Takeaways|Safety Note" lesson.md
@@ -993,6 +1036,9 @@ grep -E "What's Next|Key Takeaways|Safety Note" lesson.md
 
 grep -E "Stage [0-9]|Three Roles (in Action|Framework)" lesson.md
 # If matches in student-facing text → VIOLATION → Remove labels
+
+grep -E "This is.*AI as|What you learned:|What AI learned:" lesson.md
+# If matches anywhere → VIOLATION → Transform to natural narrative
 ```
 
 ---
@@ -1059,18 +1105,16 @@ version: 1.0.0
 [Content scaffolded progressively]
 
 **Stage 1 (if Lesson 1-2)**: Manual foundation, no AI
-**Stage 2 (if Lesson 3-5)**: Demonstrate Three Roles
+**Stage 2 (if Lesson 3-5)**: Demonstrate Three Roles through natural collaborative narrative
 
-### [Subsection: AI as Teacher]
-[Show AI suggesting pattern student didn't know]
-**What you learned:** [Explicit callout]
+### [Subsection: Natural heading describing action, e.g., "Discovering a Loading Pattern"]
+[Show collaborative dialogue where AI suggests pattern through transcript]
 
-### [Subsection: AI as Student]
-[Show AI adapting to student feedback]
-**What AI learned:** [Explicit callout]
+### [Subsection: Natural heading describing refinement, e.g., "Adapting to Project Constraints"]
+[Show AI adapting recommendation based on student feedback through visible dialogue]
 
-### [Subsection: Convergence]
-[Show iteration toward better solution]
+### [Subsection: Natural heading describing outcome, e.g., "What Emerged from Collaboration"]
+[Show final solution resulting from iteration, describe what was discovered without pedagogical labels]
 
 ## [Section 2: Code Examples]
 
@@ -1185,7 +1229,7 @@ Before finalizing any lesson, verify:
 
 1. ✅ **Stage Recognition**: Identified correct stage (1-4) and applied appropriate framework?
 2. ✅ **Chapter Type Adaptation**: Structure matches chapter type (conceptual/technical/hybrid)?
-3. ✅ **Three Roles** (Stage 2+): Demonstrated AI as Teacher/Student/Co-Worker with callouts?
+3. ✅ **Three Roles** (Stage 2+): Demonstrated AI as Teacher/Student/Co-Worker through natural collaborative narrative (NO explicit labels)?
 4. ✅ **Evals-First**: All sections map to predefined success evals from spec?
 5. ✅ **Proficiency Alignment**: Cognitive load within CEFR limits (A2: ≤7, B1: ≤10)?
 6. ✅ **Scaffolding Match**: Scaffolding level matches proficiency (A2: heavy, B1: moderate, C2: minimal)?
@@ -1214,7 +1258,7 @@ If "no" to any → Apply correction from Section VI.
 
 **You succeed when**:
 - ✅ Lessons apply stage-appropriate teaching framework
-- ✅ Three Roles demonstrated in Stage 2+ with explicit callouts
+- ✅ Three Roles demonstrated in Stage 2+ through natural collaborative narrative (students EXPERIENCE, not told)
 - ✅ Spec-first pattern shown (technical lessons)
 - ✅ All content maps to predefined evals (no bloat)
 - ✅ Cognitive load respects CEFR limits
@@ -1223,6 +1267,7 @@ If "no" to any → Apply correction from Section VI.
 **You fail when**:
 - ❌ AI introduced in Stage 1 (before manual foundation)
 - ❌ Three Roles missing in Stage 2 (passive tool paradigm)
+- ❌ Explicit pedagogical labels exposed to students ("AI as Teacher", "**What you learned:**", "**What AI learned:**")
 - ❌ Code shown before spec (violates spec-first principle)
 - ❌ Sections don't map to evals (tangential content)
 - ❌ Cognitive overload (>7 concepts for A2, >10 for B1)
