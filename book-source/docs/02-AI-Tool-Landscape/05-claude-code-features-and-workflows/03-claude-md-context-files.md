@@ -208,11 +208,11 @@ In later lessons, you'll see how subagents (Lesson 5) and skills (Lesson 6) inhe
 
 ---
 
-## Co-Learning: Improving CLAUDE.md Together
+## Iterative Refinement: Building CLAUDE.md Through Conversation
 
-Let's see the **Three Roles Framework** in action—where you and Claude Code learn from each other to create a better CLAUDE.md.
+Creating an effective CLAUDE.md isn't about getting it perfect on the first try—it's about building it through conversation with Claude Code.
 
-### Stage 1: Your First Draft
+### Start With What You Know
 
 You create an initial CLAUDE.md:
 
@@ -227,7 +227,7 @@ A Python web app
 
 It's basic, but it's a start.
 
-### Stage 2: AI as Teacher (Claude Teaches You)
+### Ask for Feedback
 
 Ask Claude to review:
 
@@ -247,11 +247,11 @@ Ask Claude to review:
 >
 > For a FastAPI project, these sections help me give better suggestions about imports, file locations, and best practices."
 
-**What just happened?** 🎓 **AI taught you** CLAUDE.md best practices you didn't know. You learned what makes context useful.
+Claude suggests improvements you might not have considered. This is valuable because Claude knows what context helps it work better.
 
-### Stage 3: AI as Student (You Teach Claude)
+### Add Your Project-Specific Details
 
-Now you provide domain-specific knowledge Claude doesn't have:
+Now you provide details that are unique to your project:
 
 ```
 "Good points, but our team uses a custom auth pattern. Update CLAUDE.md to reflect:
@@ -270,11 +270,11 @@ Now you provide domain-specific knowledge Claude doesn't have:
 >
 > Here's the updated CLAUDE.md..."
 
-**What just happened?** 🎓 **You taught AI** your team's constraints and patterns. Claude now understands context that doesn't exist in its training data.
+You're providing context that doesn't exist in Claude's training data—your team's specific constraints and patterns.
 
-### Stage 4: AI as Co-Worker (Converging Together)
+### Refine Through Discussion
 
-You and Claude iterate to refine:
+You and Claude continue iterating:
 
 ```
 "This is better, but the directory structure doesn't show where database migrations live.
@@ -295,11 +295,11 @@ How should we organize database-related files?"
 "Option 1—we separate concerns. Migrations are infrastructure, models are app code. Update it."
 ```
 
-**What just happened?** 🎓 **Neither of you** had the complete picture at start. Through conversation, you **converged** on the right solution—Claude offered options, you selected based on team context.
+Through this back-and-forth, you're building a CLAUDE.md that combines Claude's knowledge of what makes good context with your knowledge of your project's specifics.
 
-### The Result: Context Created Through Co-Learning
+### The Final Result
 
-Your final CLAUDE.md is now:
+Your refined CLAUDE.md now looks like this:
 
 ```markdown
 # Project Overview
@@ -340,12 +340,7 @@ alembic/             # Database migrations
 - All endpoints require authentication except /health
 ```
 
-**This CLAUDE.md is better** because:
-- ✅ Claude taught you what sections to include
-- ✅ You taught Claude your team's specific patterns
-- ✅ You converged together on the right organization
-
-**This is the Three Roles Framework**—AI collaboration that makes both you and Claude smarter.
+This collaborative refinement process—asking for feedback, providing your constraints, discussing options—creates better context than either you or Claude could produce alone.
 
 ---
 
