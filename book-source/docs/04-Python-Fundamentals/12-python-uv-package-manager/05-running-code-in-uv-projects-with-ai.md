@@ -176,10 +176,10 @@ uv add --dev pytest
 Create a test file `test_math.py`:
 
 ```python
-def add(a, b):
+def add(a: int, b: int) -> int:
     return a + b
 
-def test_add():
+def test_add() -> None:
     assert add(2, 3) == 5
     assert add(-1, 1) == 0
     assert add(0, 0) == 0

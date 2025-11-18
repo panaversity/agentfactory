@@ -170,7 +170,7 @@ This tiny file contains just one line:
 UV creates a simple `main.py` file to get you started:
 
 ```python
-def main():
+def main() -> None:
     print("Hello from my-first-app!")
 
 
