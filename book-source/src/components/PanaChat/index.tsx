@@ -676,7 +676,11 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
   return (
     <div className={`pana-chat ${isMinimized ? 'pana-chat--minimized' : ''}`}>
       {/* Chat Header */}
-      <div className="pana-chat__header">
+      <div
+        className="pana-chat__header"
+        onClick={isMinimized ? toggleMinimize : undefined}
+        style={isMinimized ? { cursor: 'pointer' } : undefined}
+      >
         <div className="pana-chat__header-left">
           <div className="pana-chat__logo">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -717,7 +721,10 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
           </button>
           <button
             className="pana-chat__header-btn"
-            onClick={toggleMinimize}
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleMinimize();
+            }}
             aria-label={isMinimized ? 'Maximize' : 'Minimize'}
             title={isMinimized ? 'Maximize' : 'Minimize'}
           >

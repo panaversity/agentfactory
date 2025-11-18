@@ -22,7 +22,21 @@
 }
 
 .pana-chat--minimized {
-  height: 60px;
+  height: 64px;
+  width: auto;
+  min-width: 200px;
+  max-width: 200px;
+  cursor: pointer;
+  box-shadow:
+    0 8px 32px rgba(0, 31, 63, 0.18),
+    0 4px 16px rgba(0, 31, 63, 0.12);
+}
+
+.pana-chat--minimized:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 40px rgba(0, 31, 63, 0.24),
+    0 6px 20px rgba(0, 31, 63, 0.16);
 }
 
 @keyframes slideUp {
@@ -46,6 +60,12 @@ html[data-theme='dark'] .pana-chat {
   border-color: rgba(170, 170, 170, 0.12);
 }
 
+html[data-theme='dark'] .pana-chat--minimized:hover {
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.7),
+    0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
 /* Header - Polar Night Deep Navy with premium styling */
 .pana-chat__header {
   background: linear-gradient(135deg, #001428 0%, #001f3f 50%, #003366 100%);
@@ -59,6 +79,20 @@ html[data-theme='dark'] .pana-chat {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   position: relative;
   z-index: 1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Minimized header styling - compact and centered */
+.pana-chat--minimized .pana-chat__header {
+  padding: 12px 16px;
+  border-bottom: none;
+  cursor: pointer;
+  border-radius: 16px;
+  user-select: none;
+}
+
+.pana-chat--minimized .pana-chat__header:active {
+  transform: scale(0.98);
 }
 
 .pana-chat__header::after {
@@ -96,6 +130,14 @@ html[data-theme='dark'] .pana-chat__header::after {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Minimized state - center the content */
+.pana-chat--minimized .pana-chat__header-left {
+  justify-content: center;
+  gap: 10px;
 }
 
 .pana-chat__logo {
@@ -104,6 +146,14 @@ html[data-theme='dark'] .pana-chat__header::after {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+/* Minimized logo - slightly smaller */
+.pana-chat--minimized .pana-chat__logo {
+  width: 24px;
+  height: 24px;
 }
 
 .pana-chat__logo svg {
@@ -118,12 +168,43 @@ html[data-theme='dark'] .pana-chat__header::after {
   letter-spacing: 0.3px;
   text-transform: uppercase;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease;
+}
+
+/* Minimized title - smaller and compact */
+.pana-chat--minimized .pana-chat__title {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .pana-chat__header-actions {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Hide new chat and close buttons when minimized */
+.pana-chat--minimized .pana-chat__new-chat-btn,
+.pana-chat--minimized .pana-chat__close-btn {
+  display: none;
+}
+
+/* Adjust minimize/maximize button in minimized state */
+.pana-chat--minimized .pana-chat__header-btn {
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+}
+
+.pana-chat--minimized .pana-chat__header-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
 }
 
 .pana-chat__header-btn {

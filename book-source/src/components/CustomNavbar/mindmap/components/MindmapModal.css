@@ -246,18 +246,17 @@
 
 /* Maximized panel mode - expands as a large overlay popup */
 .mindmap-modal--maximized {
-  top: 50% !important;
-  left: 50% !important;
-  right: auto !important;
-  transform: translate(-50%, -50%) !important;
-  width: 95vw !important;
-  max-width: 95vw !important;
-  height: 96vh !important;
-  max-height: 96vh !important;
+  top: 2vh !important;
+  left: 2.5vw !important;
+  right: 2.5vw !important;
+  bottom: 2vh !important;
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
+  max-height: none !important;
   border: 1px solid var(--ifm-color-emphasis-300) !important;
   border-radius: 12px !important;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mindmap-modal--maximized .mindmap-modal__header {
