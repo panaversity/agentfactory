@@ -5,6 +5,15 @@
 **Status**: Draft  
 **Input**: User description: "Add login/logout button to navbar between GitHub and theme toggle for MVP authentication UI with dummy auth, preparing for future Clerk SSO integration"
 
+## Clarifications
+
+### Session 2025-11-18
+
+- Q: What visual indicator should the logout button display to show authenticated state? → A: User icon only (generic avatar icon)
+- Q: What level of keyboard accessibility and screen reader support is required? → A: Full keyboard support (Tab, Enter, Escape) and ARIA labels for screen readers
+- Q: What is the session timeout behavior for authenticated users? → A: Browser session only (logged in until browser closes or manual logout, no inactivity timeout)
+- Q: How should the system handle logout when user has multiple tabs open? → A: Independent tabs (logout in one tab doesn't affect other tabs)
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Guest User Login (Priority: P1)
@@ -19,8 +28,9 @@ A guest user visits the site and wants to access personalized features. They cli
 
 1. **Given** user is not logged in, **When** user views the navbar, **Then** a "Login" button appears between the GitHub link and theme toggle button
 2. **Given** user clicks the "Login" button, **When** the login modal opens, **Then** user can enter name, email, programming experience, and AI proficiency
-3. **Given** user completes the login form, **When** user submits, **Then** the modal closes and navbar shows "Logout" button with user indicator (icon or name)
+3. **Given** user completes the login form, **When** user submits, **Then** the modal closes and navbar shows "Logout" button with user icon
 4. **Given** user is logged in, **When** user refreshes the page, **Then** the authenticated state persists and "Logout" button remains visible
+5. **Given** user navigates with keyboard, **When** user presses Tab to focus login/logout button and presses Enter, **Then** appropriate action triggers (modal opens or logout occurs)
 
 ---
 
@@ -51,9 +61,9 @@ Users need clear visual indicators of their authentication status. The navbar bu
 **Acceptance Scenarios**:
 
 1. **Given** user is not logged in, **When** user hovers over login button, **Then** button shows hover state (color change or underline)
-2. **Given** user is logged in, **When** user views navbar, **Then** logout button displays a user icon or username
+2. **Given** user is logged in, **When** user views navbar, **Then** logout button displays a user icon (generic avatar)
 3. **Given** user clicks login/logout, **When** action is processing, **Then** button shows loading state
-4. **Given** login form is open, **When** user clicks outside modal, **Then** modal closes without logging in
+4. **Given** login form is open, **When** user clicks outside modal or presses Escape key, **Then** modal closes without logging in
 
 ---
 
@@ -61,9 +71,10 @@ Users need clear visual indicators of their authentication status. The navbar bu
 
 - What happens when the user is already logged in and navigates to a different page? (Authentication state should persist)
 - How does the system handle login form validation errors? (Display inline error messages, keep modal open)
-- What happens if the user closes the browser and returns later? (Session-based: user stays logged in during browser session)
+- What happens if the user closes the browser and returns later? (Session cleared: user must log in again; authentication does not persist across browser sessions)
 - How does the logout button appear on mobile devices? (Responsive design maintains button between GitHub and theme toggle)
 - What happens if the existing DummyLoginWithProfile modal is already being used elsewhere? (Reuse the same component, ensure it works from navbar trigger)
+- What happens when user logs out in one browser tab while logged in on other tabs? (Each tab maintains independent state; logout in one tab does not affect other tabs)
 
 ## Requirements *(mandatory)*
 
@@ -73,13 +84,19 @@ Users need clear visual indicators of their authentication status. The navbar bu
 - **FR-002**: System MUST position the login/logout button between the GitHub link and theme toggle button in the navbar
 - **FR-003**: System MUST open the existing DummyLoginWithProfile modal when user clicks the "Login" button
 - **FR-004**: System MUST replace "Login" button with "Logout" button after successful authentication
-- **FR-005**: System MUST display a visual indicator (user icon or username) on the logout button to show authenticated state
+- **FR-005**: System MUST display a user icon (generic avatar icon) on the logout button to show authenticated state
 - **FR-006**: System MUST clear authentication state when user clicks "Logout" button
 - **FR-007**: System MUST persist authentication state across page navigations within the same browser session
-- **FR-008**: System MUST integrate with existing authService methods (isAuthenticated, getSession, saveSession, clearToken)
-- **FR-009**: System MUST maintain existing UI layout and not break current navbar functionality
-- **FR-010**: System MUST use dummy authentication for MVP (no actual backend integration yet)
-- **FR-011**: Logout button MUST be clearly distinguishable from login button through visual styling
+- **FR-008**: System MUST clear authentication state when browser is closed (no persistent login across browser sessions)
+- **FR-009**: System MUST NOT implement inactivity timeout (user remains logged in until manual logout or browser close)
+- **FR-010**: System MUST NOT synchronize authentication state across multiple browser tabs (each tab maintains independent session state)
+- **FR-011**: System MUST integrate with existing authService methods (isAuthenticated, getSession, saveSession, clearToken)
+- **FR-012**: System MUST maintain existing UI layout and not break current navbar functionality
+- **FR-013**: System MUST use dummy authentication for MVP (no actual backend integration yet)
+- **FR-014**: Logout button MUST be clearly distinguishable from login button through visual styling
+- **FR-015**: Login/logout button MUST be keyboard accessible (Tab to focus, Enter/Space to activate)
+- **FR-016**: Login modal MUST support Escape key to close without logging in
+- **FR-017**: Login/logout button MUST include ARIA labels for screen reader accessibility
 
 ### Key Entities
 
@@ -96,4 +113,5 @@ Users need clear visual indicators of their authentication status. The navbar bu
 - **SC-003**: Authentication state persists correctly across 100% of page navigations during a browser session
 - **SC-004**: Navbar layout remains visually consistent with current design (no UI breakage or misalignment)
 - **SC-005**: Login/logout button is visible and functional on all screen sizes (desktop, tablet, mobile)
-- **SC-006**: Logged-in users see a clear visual indicator (icon or name) on the logout button 100% of the time
+- **SC-006**: Logged-in users see a user icon on the logout button 100% of the time
+- **SC-007**: Users can complete login/logout flow using only keyboard (no mouse) 100% of the time
