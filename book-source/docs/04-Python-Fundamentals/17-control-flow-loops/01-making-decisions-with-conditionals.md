@@ -164,7 +164,7 @@ Now that we've refreshed our memory, let's use these operators to make real deci
 
 ---
 
-## Tier 1: Book Teaches — Making Your First Decision
+## Making Your First Decision
 
 ### The `if` Statement: Single-Condition Decisions
 
@@ -358,9 +358,9 @@ The first condition matches, so Python never even checks the rest.
 
 ---
 
-## Tier 2: AI Companion — Complex Conditions and Nested Decisions
+## Complex Conditions and Nested Decisions
 
-Now that you understand the basics, let's explore patterns that AI companions handle well: combining multiple conditions and nesting decisions.
+Now that you understand the basics, let's explore more advanced patterns: combining multiple conditions and nesting decisions.
 
 ### Complex Conditions with `and` / `or`
 

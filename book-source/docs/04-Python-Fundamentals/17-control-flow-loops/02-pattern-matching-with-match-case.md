@@ -104,7 +104,7 @@ match status_code:
 
 ---
 
-## 🎓 Tier 1: Book Teaches - Basic match-case Syntax
+## Basic match-case Syntax
 
 ### The match-case Structure
 
@@ -221,7 +221,7 @@ Both work. The `match-case` version makes the intent clearer: "Here's a menu of 
 
 ---
 
-## 🚀 Tier 2: AI Companion - Converting and Extending Patterns
+## Converting and Extending Patterns
 
 ### Example 3: Converting if/elif to match-case (Traffic Light Logic)
 
