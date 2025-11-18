@@ -1,7 +1,7 @@
 ---
-title: "Lesson 1: Markdown as Specification Language"
+title: "Markdown as Specification Language"
 description: "Understand markdown as the Intent Layer for communicating with AI agents"
-sidebar_label: "Lesson 1: Markdown as Specification Language"
+sidebar_label: "Markdown as Specification Language"
 sidebar_position: 1
 lesson: 1
 chapter: 9
@@ -22,7 +22,7 @@ skills:
     proficiency: A2
 ---
 
-# Lesson 1: Markdown as Specification Language
+# Markdown as Specification Language
 
 Before you write a single line of code, you need to describe WHAT you're building. That's where markdown comes in.
 

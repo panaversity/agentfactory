@@ -1,7 +1,7 @@
 ---
-title: "Lesson 2: Lists for Structured Requirements"
+title: "Lists for Structured Requirements"
 description: "Organize features and requirements using bullet and numbered lists"
-sidebar_label: "Lesson 2: Lists for Requirements"
+sidebar_label: "Lists for Requirements"
 sidebar_position: 2
 lesson: 2
 chapter: 9
@@ -24,7 +24,7 @@ skills:
     proficiency: A2
 ---
 
-# Lesson 2: Lists for Structured Requirements
+# Lists for Structured Requirements
 
 In Lesson 1, you used headings to create document structure. Now you'll learn to enumerate requirements using **lists**.
 

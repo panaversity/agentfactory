@@ -1,7 +1,7 @@
 ---
-title: "Lesson 5: Complete System Specification (Capstone)"
+title: "Complete System Specification (Capstone)"
 description: "Compose all markdown skills into a complete task management system specification"
-sidebar_label: "Lesson 5: Complete System Specification"
+sidebar_label: "Complete System Specification"
 sidebar_position: 5
 lesson: 5
 chapter: 9
@@ -26,7 +26,7 @@ skills:
     proficiency: A2
 ---
 
-# Lesson 5: Complete System Specification (Capstone)
+# Complete System Specification (Capstone)
 
 This is it: your capstone project. You'll write a **complete specification** for a Task Management System using ALL the markdown skills you've learned:
 

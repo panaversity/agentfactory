@@ -1,7 +1,7 @@
 ---
-title: "Lesson 3: Code Blocks for Specifications (Not Code)"
+title: "Code Blocks for Specifications (Not Code)"
 description: "Use code blocks to show expected outputs and API descriptions without implementation code"
-sidebar_label: "Lesson 3: Code Blocks for Specifications"
+sidebar_label: "Code Blocks for Specifications"
 sidebar_position: 3
 lesson: 3
 chapter: 9
@@ -24,7 +24,7 @@ skills:
     proficiency: A2
 ---
 
-# Lesson 3: Code Blocks for Specifications (Not Code)
+# Code Blocks for Specifications (Not Code)
 
 You've learned headings (Lesson 1) and lists (Lesson 2). Now comes a powerful markdown feature that's **easy to misunderstand**: code blocks.
 

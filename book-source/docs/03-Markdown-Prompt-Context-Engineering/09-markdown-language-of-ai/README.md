@@ -17,7 +17,7 @@ By the end of this chapter, you'll write specifications in markdown that AI agen
 
 This chapter teaches **markdown as a specification language** through 5 progressive lessons:
 
-### **Lesson 1: Markdown as Specification Language**
+### **Markdown as Specification Language**
 **Duration**: 45 minutes | **Stage**: 1 (Manual Foundation)
 
 - Understand markdown's role as Intent Layer in SDD-RI
@@ -29,7 +29,7 @@ This chapter teaches **markdown as a specification language** through 5 progress
 
 ---
 
-### **Lesson 2: Lists for Structured Requirements**
+### **Lists for Structured Requirements**
 **Duration**: 50 minutes | **Stage**: 2 (AI Collaboration Begins)
 
 - Use bullet lists (`-`) for alternative options
@@ -41,7 +41,7 @@ This chapter teaches **markdown as a specification language** through 5 progress
 
 ---
 
-### **Lesson 3: Code Blocks for Specifications (Not Code)**
+### **Code Blocks for Specifications (Not Code)**
 **Duration**: 55 minutes | **Stage**: 2 (AI Collaboration Deepened)
 
 - Use code blocks (` ``` `) for expected outputs and API descriptions
@@ -53,7 +53,7 @@ This chapter teaches **markdown as a specification language** through 5 progress
 
 ---
 
-### **Lesson 4: Links, Images, and Reusable Templates**
+### **Links, Images, and Reusable Templates**
 **Duration**: 50 minutes | **Stage**: 3 (Intelligence Design)
 
 - Use links (`[text](url)`) to reference authoritative sources
@@ -65,7 +65,7 @@ This chapter teaches **markdown as a specification language** through 5 progress
 
 ---
 
-### **Lesson 5: Complete System Specification (Capstone)**
+### **Complete System Specification (Capstone)**
 **Duration**: 75 minutes | **Stage**: 4 (Spec-Driven Integration)
 
 - Write **specification FIRST** for task management system (3-4 core features)

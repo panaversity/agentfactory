@@ -1,7 +1,7 @@
 ---
-title: "Lesson 4: Links, Images, and Reusable Templates"
+title: "Links, Images, and Reusable Templates"
 description: "Create reusable specification intelligence using links for references and templates with Persona + Questions + Principles pattern"
-sidebar_label: "Lesson 4: Links, Images, and Templates"
+sidebar_label: "Links, Images, and Templates"
 sidebar_position: 4
 lesson: 4
 chapter: 9
@@ -26,7 +26,7 @@ skills:
     proficiency: A2
 ---
 
-# Lesson 4: Links, Images, and Reusable Templates
+# Links, Images, and Reusable Templates
 
 You've learned the core markdown elements: headings (structure), lists (requirements), and code blocks (outputs). Now you'll add **references** and create **reusable intelligence**.
 
