@@ -293,56 +293,8 @@ Also add rate limiting: max 3 reset requests per email per hour.
 
 **Your companion:**
 
-> "Got it. Here's the complete specification we've built together:"
+> The complete specification shall be shared.
 
-```
-## Login System Specification
-
-### Intent
-Allow users to create accounts and securely authenticate. Support account recovery.
-
-### Inputs
-- create_account(email, password, full_name)
-- login(email, password)
-- request_password_reset(email) -> reset_token
-- reset_password(reset_token, new_password)
-
-### Outputs
-- create_account: success (boolean) + user_id
-- login: success (boolean) + session_token (valid for 24 hours)
-- password_reset: success (boolean)
-
-### Functional Requirements
-- Passwords must be at least 12 characters, one uppercase, one number, one special char
-- Accounts use email (unique per account) not username
-- Email verification required before login enabled
-- Password reset link valid for 1 hour
-- Rate limiting: max 5 login attempts per IP per minute
-- Rate limiting: max 3 password reset requests per email per hour
-- Failed login attempts logged with timestamp, IP, attempted email
-- Previous password reset tokens invalidated when new token requested
-- Session timeout after 15 minutes of inactivity
-
-### Non-Functional Requirements
-- Authentication must use bcrypt (cost factor 12)
-- All passwords encrypted at rest
-- Rate limiting for security, not just cosmetic
-- Password reset must email user (not SMS)
-- API designed to support 2FA in future versions
-
-### Test Scenarios
-Given: email="alice@example.com", password="SecurePassword123!"
-When: create_account(email, password, "Alice")
-Then: success=True, user created
-
-Given: valid login attempt
-When: 6 failed attempts in 60 seconds
-Then: Further login attempts blocked for 5 minutes
-
-Given: user requests password reset twice
-When: First token not yet expired
-Then: First token invalidated, only second token valid
-```
 
 **What just happened?** Through 3 rounds of dialogue:
 1. **AI taught you** (suggested questions you didn't think of)
