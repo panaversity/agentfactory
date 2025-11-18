@@ -5,9 +5,8 @@ chapter: 11
 lesson: 3
 learning_objectives:
   - Apply three-phase progressive loading (Foundation → Current → On-Demand) to new codebase
-  - Demonstrate AI as Teacher through suggested loading patterns
-  - Demonstrate AI as Student through refining constraints based on feedback
-  - Demonstrate Co-Worker convergence through iterative strategy refinement
+  - Collaborate with AI to discover optimal loading patterns for project-specific constraints
+  - Iterate with AI to refine loading strategies based on context budget and task requirements
 estimated_time: 60 minutes
 proficiency_level: B1
 generated_by: content-implementer v1.0.0
@@ -26,9 +25,7 @@ What do you load first?
 
 Lessons 1-2 taught you to recognize degradation when it arrives. This lesson teaches you to **prevent degradation before it starts** through strategic, progressive loading of context.
 
-And unlike Lessons 1-2 (where you worked alone), this lesson brings AI into the conversation. You'll discover that context loading isn't something AI does *to* you—it's something you **collaborate on together**. AI suggests patterns, you correct assumptions based on your project's reality, and together you converge on a loading strategy that fits your specific codebase.
-
-This is Stage 2: **AI Collaboration with Three Roles**.
+This lesson brings AI into the conversation. You'll discover that context loading isn't something AI does *to* you—it's something you **collaborate on together**. AI suggests patterns, you correct assumptions based on your project's reality, and together you converge on a loading strategy that fits your specific codebase.
 
 ## The Three Phases of Progressive Loading
 
@@ -172,17 +169,17 @@ project/
 
 This is the efficiency of progressive loading.
 
-## Now: Observing Three Roles in Action
+## Collaborative Loading Strategy in Action
 
-In Lessons 1-2, you worked alone—manually diagnosing context issues. Now you bring AI in. But AI isn't a passive tool that loads files on command. You're **collaborating** on loading strategy.
+AI isn't a passive tool that loads files on command. You collaborate on loading strategy through back-and-forth dialogue.
 
 Watch this happen in a real conversation.
 
-## Session Transcript: AI as Teacher, Student, and Co-Worker
+## Session Transcript: Discovering the Optimal Loading Pattern
 
-This is a complete session showing all three roles in action. I've annotated each role so you can see when learning happens.
+This is a complete session showing how collaborative refinement works.
 
-### Role 1: AI as Teacher
+### Suggesting a Loading Pattern
 
 You start the session and describe your task:
 
@@ -222,16 +219,13 @@ preventing surprises from hidden dependencies.
 What's in config.py? Does it already have OAuth2 settings?
 ```
 
-**What you learned**: AI taught you a **loading pattern** you might not have invented independently. The pattern is:
-1. Structure → Entity → Configuration → Routes → Business Logic → Utilities → Tests
-2. This specific order prevents "hidden dependency" surprises
-3. AI explained the reasoning (dependencies, testing patterns, reusability)
+**What emerged**: A structured approach to file loading based on dependency analysis—structure first, then entities, configuration, routes, business logic, utilities, and finally tests. This specific order prevents "hidden dependency" surprises.
 
-This is **AI as Teacher**. You didn't know this pattern. AI suggested it with reasoning. You learned something.
+The AI suggested a pattern you might not have discovered independently through trial and error.
 
 ---
 
-### Role 2: AI as Student
+### Refining Based on Project Reality
 
 Now you describe your project's reality:
 
@@ -263,13 +257,11 @@ QUESTION: Do you have a models/oauth_session.py or similar for storing
 OAuth tokens? Or does that logic live in auth_service.py?
 ```
 
-**What happened**: AI adapted. You taught AI something about your project (environment-driven config, separate oauth_providers file). AI acknowledged this was better than the generic suggestion. AI refined the recommendation based on YOUR knowledge.
-
-This is **AI as Student**. You corrected AI's assumption with domain knowledge. AI learned and adjusted.
+**What happened**: Your project-specific feedback refined the recommendation. You corrected the initial assumption about config.py structure, explaining that OAuth provider configuration lives in a separate service file. What started as a generic suggestion became tailored to your architecture.
 
 ---
 
-### Role 3: Co-Worker Convergence (Iteration 1)
+### Iterative Refinement: Balancing Context Budget
 
 ```
 You: We store OAuth tokens in models/oauth_token.py. But I'm worried—
@@ -304,13 +296,13 @@ implementation tells us we need them.
 Does this feel more balanced?
 ```
 
-**What happened**: You expressed a concern (context budget anxiety). AI heard it. AI revised the strategy to address your specific constraint. Neither of you had this exact two-tier approach initially—it **emerged from collaboration**.
+**What happened**: You raised a constraint (context budget concern). The AI revised the strategy to address your specific limitation. Neither of you had this exact two-tier approach initially—it **emerged from the dialogue**.
 
-This is **Co-Worker** work. You weren't passively receiving a strategy. You raised a concern. AI adapted. You converged on a solution that fit your needs.
+The collaboration produced a solution that balanced completeness with efficiency.
 
 ---
 
-### Role 3: Co-Worker Convergence (Iteration 2)
+### Further Iteration: Dependency Discovery
 
 ```
 You: I like the two-tier idea. But actually, looking at my routes/auth.py,
@@ -363,11 +355,9 @@ additional context during coding, we load it on-demand.
 What's the first thing you want to implement?
 ```
 
-**What happened**: You continued refining. AI asked clarifying questions (middleware, notifications). You clarified. Together, you eliminated unnecessary files. The loading strategy became sharp, specific to YOUR project, not generic.
+**What happened**: Through continued back-and-forth, you discovered additional dependencies (auth_service.py called from routes, tests importing oauth_providers). The AI asked clarifying questions about middleware and notifications. Together, you eliminated unnecessary files. The loading strategy became sharp and specific to YOUR project, not generic.
 
-Neither of you had this final strategy at the beginning. It **emerged from dialogue**. That's convergence.
-
-This is **Co-Worker at its peak**. You trusted AI's questions. AI trusted your domain knowledge. You met in the middle at a better solution.
+Neither of you had this final strategy at the beginning. It **emerged from iterative dialogue**.
 
 ---
 
@@ -494,24 +484,24 @@ You have a real FastAPI project with these files. Your task: Add a payment webho
 
 </details>
 
-## The Three Roles Are Not Sequential—They're Simultaneous
+## How the Collaboration Works
 
-A misconception: "First AI teaches, then I teach, then we converge."
+The OAuth2 session above demonstrates several key interaction patterns:
+- AI suggests an initial approach based on common practices
+- You provide project-specific context that refines the suggestion
+- You raise constraints (like context budget concerns)
+- AI asks clarifying questions about dependencies
+- Together you iterate toward a solution tailored to your codebase
 
-**Reality**: All three roles can happen in a single conversation. In the OAuth2 session above:
-- AI taught a loading pattern (Teacher)
-- You corrected it (Student)
-- Together you refined it (Co-Worker)
+This happens when you **ask good questions**, **share domain knowledge**, and **iterate together**.
 
-All three roles happened because you **asked good questions**, **shared domain knowledge**, and **iterated together**.
+### Making Collaboration Effective
 
-### How You Enable Each Role
+**Get initial suggestions**: Ask "What's the recommended pattern here?" to get AI's baseline recommendation.
 
-**AI as Teacher**: Ask "What's the recommended pattern here?" Give AI room to suggest.
+**Provide project context**: Share specifics: "Actually, our setup is different..." so AI can adapt.
 
-**AI as Student**: Provide domain-specific context: "Actually, our setup is different..." AI learns and adapts.
-
-**Co-Worker**: Raise concerns ("context budget!"), ask clarifying questions ("what about transitive dependencies?"), iterate on solutions.
+**Raise concerns**: Voice constraints ("context budget!"), ask clarifying questions ("what about transitive dependencies?"), iterate on solutions.
 
 ## Common Mistakes in Progressive Loading
 
@@ -583,7 +573,7 @@ I have about 200K context window and want to stay under 5%
 for planning. What files should I load?
 ```
 
-**Observe**: AI as Teacher. It suggests a loading pattern.
+**Observe**: AI suggests a loading pattern based on common dependency flows.
 
 **Part 2: Correct and Refine**
 
@@ -594,7 +584,7 @@ Actually, we structure things differently. We have [your-reality].
 Does that change your suggestion?
 ```
 
-**Observe**: AI as Student. It adapts to your domain knowledge.
+**Observe**: AI adapts its recommendation to your project's architecture.
 
 **Part 3: Iterate**
 
@@ -605,14 +595,14 @@ I'm worried we're loading too much. Context is approaching 10%.
 Should I pause and load on-demand instead of preloading [file]?
 ```
 
-**Observe**: Co-Worker. You iterate together toward better strategy.
+**Observe**: Through iteration, you arrive at a better strategy together.
 
 ### Measure Success
 
 When done, you should:
 - ✅ Have a clear loading strategy specific to YOUR project
 - ✅ Know what files are Foundation vs Current vs On-Demand
-- ✅ Have experienced AI as Teacher (suggesting), Student (learning), and Co-Worker (converging)
+- ✅ Have experienced collaborative refinement through iterative dialogue
 - ✅ Have avoided degradation by staying under 70% context utilization during implementation
 
 ### Safety Note

@@ -700,7 +700,7 @@ Use this template during your next extended Claude Code session (60+ minutes):
 
 ## Try With AI
 
-You now understand degradation symptoms and three mitigation strategies. Validate this through self-check exercises—no AI collaboration yet (Stage 1 foundation continues):
+You now understand degradation symptoms and three mitigation strategies. Validate this through self-check exercises:
 
 **Exercise 1: Symptom Recognition**
 
@@ -812,6 +812,6 @@ You've now learned to:
 - ✅ Decide when to compress/isolate/restart
 - ✅ Track degradation manually
 
-**Stage 1 manual foundation is complete.** You can diagnose context issues without AI assistance.
+**Manual foundation is complete.** You can diagnose context issues independently.
 
-In Lesson 3, you'll bring AI into the conversation. You'll learn to collaborate with AI on managing context—demonstrating how AI can suggest strategies, how you can teach AI your constraints, and how you converge together on optimal approaches. That's where Stage 2 begins.
+In Lesson 3, you'll collaborate with AI on managing context—discovering how AI can suggest strategies, how you can teach AI your constraints, and how you converge together on optimal approaches.

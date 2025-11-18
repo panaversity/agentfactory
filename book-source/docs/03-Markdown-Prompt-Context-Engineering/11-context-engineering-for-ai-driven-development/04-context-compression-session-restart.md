@@ -6,9 +6,8 @@ lesson: 4
 learning_objectives:
   - Create structured checkpoint summaries capturing architectural decisions, progress, and next steps
   - Measure context reclamation after session restart (50%+ recovery target)
-  - Demonstrate AI as Teacher through compression pattern guidance
-  - Demonstrate AI as Student by refining checkpoints based on project-specific needs
-  - Demonstrate Co-Worker convergence through iterative checkpoint optimization
+  - Collaborate with AI to develop effective checkpoint structures tailored to project needs
+  - Iterate with AI to optimize checkpoint density and information preservation
 estimated_time: 75 minutes
 proficiency_level: B1
 generated_by: content-implementer v1.0.0
@@ -40,8 +39,6 @@ Claude forgot.
 The context window is full. Lessons 1-2 taught you to recognize this degradation. Lesson 3 taught you to prevent it through strategic loading. But here you are, two hours into focused work, and degradation has arrived anyway.
 
 This lesson teaches you to **recover from degradation** through compression: creating a checkpoint summary that preserves essential knowledge, restarting the session with that checkpoint, and reclaiming context space to continue working.
-
-This is Stage 2: **AI Collaboration with Three Roles**.
 
 ## Understanding Checkpoints: Context Preservation Strategy
 
@@ -308,11 +305,11 @@ What happens:
 
 You've reclaimed **65%** of your context budget.
 
-## Exercise 2: The Three Roles of Checkpoint Creation
+## Exercise 2: Collaborating on Checkpoint Creation
 
-Now let's see how checkpoint creation itself demonstrates all three roles.
+Now let's see how checkpoint creation benefits from collaboration with AI.
 
-### Role 1: AI as Teacher
+### Discovering Checkpoint Structure
 
 **Scenario**: Session is degrading. You ask Claude for help structuring a checkpoint.
 
@@ -347,16 +344,13 @@ A CHECKPOINT HAS THREE CORE SECTIONS:
 Good commit messages are specific, structured, and future-proof.
 ```
 
-**What you learned**: AI taught you a **checkpoint pattern** you might not have discovered independently. You learned:
-- What sections matter (decisions, progress, next steps)
-- Why each section matters (for future clarity)
-- Token budget discipline (500 tokens for preservation efficiency)
+**What emerged**: A structured approach to checkpoint creation with three key sections (decisions, progress, next steps), explicit token budget discipline (500 tokens maximum), and clear reasoning for why each section matters for future session continuity.
 
-This is **AI as Teacher**. You didn't know this pattern. AI suggested it with reasoning.
+The AI suggested a pattern that helps extract signal from noise in your session history.
 
 ---
 
-### Role 2: AI as Student
+### Refining with Project Specifics
 
 **Scenario**: You start drafting your checkpoint, then realize your generic structure misses important context.
 
@@ -416,13 +410,11 @@ This captures the DECISION RATIONALE and specific CONSTRAINTS
 that matter when you resume work.
 ```
 
-**What happened**: You corrected Claude's generic approach with project-specific knowledge. Claude acknowledged the deficit and revised to capture specifics you care about: why Celery was rejected, what constraints exist, which files have what purpose.
-
-This is **AI as Student**. You taught Claude what "specific enough" means in YOUR project context. Claude learned and adapted.
+**What happened**: Your feedback about specificity prompted a revision. You explained what was missing (the WHY behind decisions, the specific constraints like 5-minute cron intervals, the rejection of Celery). The checkpoint evolved from generic template to project-specific documentation that captures what you actually need to remember.
 
 ---
 
-### Role 3: Co-Worker Convergence (Iteration Toward Optimal Checkpoint)
+### Iterative Optimization: Balancing Detail and Brevity
 
 **Scenario**: Working together to optimize token budget vs information density.
 
@@ -486,14 +478,14 @@ FINAL CHECKPOINT: 480 tokens
 - Points to specific code state (line counts, completion %)
 ```
 
-**What happened**: You had concerns about token budget. Claude suggested compression. You discussed what could be trimmed vs preserved. Together, you iterated toward a checkpoint that was:
+**What happened**: Through multiple iterations, you and the AI converged on an optimal checkpoint. You raised the token budget concern, the AI suggested compression techniques, and together you identified what could be trimmed (verbose explanations) versus what must be preserved (decision names, constraints, specific file states).
+
+The result was:
 - **Detailed enough** to preserve critical context
 - **Concise enough** to reclaim budget
 - **Specific enough** to guide implementation in next session
 
-Neither of you had this exact balance initially. It **emerged from iteration**.
-
-This is **Co-Worker at work**. You raised a constraint (token budget). Claude offered approaches. You refined together. The final checkpoint was better than either of you would have created alone.
+Neither of you had this exact balance initially. It **emerged from iterative refinement**.
 
 ---
 
@@ -601,7 +593,7 @@ Now it's your turn. Using a real or imagined project, create a checkpoint summar
 
 **Prompt Set**:
 
-**Prompt 1 (AI as Teacher - Learn the Pattern)**:
+**Prompt 1: Request Checkpoint Guidance**:
 ```
 I've been working on authentication implementation for our FastAPI
 application. My context window is getting full (85% utilization).
@@ -610,9 +602,9 @@ What's a good structure for a checkpoint that will help me continue
 work efficiently in a new session?
 ```
 
-Listen for: AI suggests checkpoint structure. Did AI explain WHY each section matters?
+Listen for: AI suggests checkpoint structure with reasoning for each section.
 
-**Prompt 2 (AI as Student - Teach AI About Your Project)**:
+**Prompt 2: Provide Project Specifics**:
 ```
 Good structure. Here's my situation specifically:
 
@@ -634,9 +626,9 @@ Help me refine this into a proper checkpoint. What's missing
 that you'd need to understand to continue this work?
 ```
 
-Listen for: AI asks clarifying questions about YOUR project specifics. Does AI adapt suggestions based on your details?
+Listen for: AI asks clarifying questions about your project and adapts suggestions based on details.
 
-**Prompt 3 (Co-Worker Convergence - Iterate Toward Optimal Checkpoint)**:
+**Prompt 3: Optimize for Efficiency**:
 ```
 AI is asking for details on my refresh token rotation. This is what
 I decided:
@@ -650,16 +642,16 @@ My checkpoint is getting long though (already 650 tokens). How do I
 capture this decision concisely without losing the important details?
 ```
 
-Listen for: AI helps you balance detail vs brevity. Do you two converge on a checkpoint that's both complete and efficient?
+Listen for: AI helps you balance detail vs brevity to create an efficient yet complete checkpoint.
 
 **Expected Outcomes**:
-- Prompt 1: You learn checkpoint structure (AI as Teacher)
-- Prompt 2: AI understands your project constraints (AI as Student)
-- Prompt 3: Together you optimize checkpoint efficiency (Co-Worker convergence)
+- Prompt 1: Discover effective checkpoint structure patterns
+- Prompt 2: Tailor checkpoint to your project's specific needs
+- Prompt 3: Optimize checkpoint for both completeness and token efficiency
 
 **Safety Note**: Checkpoints are most effective when they're honest about incomplete work and known issues—don't hide "abandoned attempts" or "bugs to fix" because that information helps AI avoid the same mistakes.
 
 ---
 
-**Version 1.0.0 — Stage 2 AI Collaboration Framework**
+**Version 1.0.0**
 **Next Lesson**: Lesson 5 - Context Isolation for Parallel Tasks (identifying when to separate vs combine contexts)

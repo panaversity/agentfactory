@@ -7,9 +7,7 @@ learning_objectives:
   - Distinguish between compression (same context, different session) and isolation (completely separate contexts)
   - Apply task similarity scoring and context pollution risk assessment
   - Recognize when parallel tasks require separate sessions
-  - Demonstrate AI as Teacher through isolation pattern guidance
-  - Demonstrate AI as Student by learning domain boundaries from project context
-  - Demonstrate Co-Worker convergence through iterative isolation criteria refinement
+  - Collaborate with AI to determine optimal isolation strategies for specific project architectures
 estimated_time: 75 minutes
 proficiency_level: B1
 generated_by: content-implementer v1.0.0
@@ -49,8 +47,6 @@ You have a choice:
 When should you compress (Lesson 4)? When should you isolate?
 
 This lesson teaches you to **recognize context pollution, identify task boundaries, and apply isolation strategy** to prevent unrelated contexts from contaminating each other.
-
-This is Stage 2: **AI Collaboration with Three Roles**.
 
 ## Understanding Context Pollution: Why Mixing Contexts Breaks Code
 
@@ -379,11 +375,11 @@ Alternative: ISOLATE to be safe if anyone new reviews code
 
 ---
 
-## Exercise 2: The Three Roles of Isolation Decision-Making
+## Exercise 2: Collaborating on Isolation Decisions
 
-Now let's see how isolation decisions themselves demonstrate all three roles.
+Now let's see how isolation decisions benefit from AI collaboration.
 
-### Role 1: AI as Teacher
+### Learning Isolation Patterns
 
 **Scenario**: Urgent payment bug arrives mid-authentication work. You ask Claude about isolation.
 
@@ -422,16 +418,13 @@ Why this matters: Keeps Claude focused. Payment context won't be
 polluted by auth patterns. Bug fix will be correct on first attempt.
 ```
 
-**What you learned**: AI taught you **isolation pattern** and decision criteria. You learned:
-- When isolation is necessary (different domains, pollution risk)
-- How to execute isolation (checkpoint, new session, merge later)
-- Why it matters (prevents pattern pollution)
+**What emerged**: A clear decision framework for isolation with specific criteria (different domains, conflicting patterns, pollution risk), execution steps (checkpoint current work, create new session, work in isolation, merge later), and reasoning for why isolation prevents pattern pollution.
 
-This is **AI as Teacher**. You didn't know this framework independently.
+The AI explained an approach you might not have systematically developed on your own.
 
 ---
 
-### Role 2: AI as Student
+### Adapting to Project Architecture
 
 **Scenario**: You start following the isolation advice, then realize your project's structure doesn't match the generic pattern Claude described.
 
@@ -477,13 +470,11 @@ Given your tight coupling, COMPRESSION might actually be better:
 You know your codebase better than I do. Which feels right?
 ```
 
-**What happened**: You corrected Claude's generic assumption with project-specific knowledge. Claude acknowledged the coupling and revised the recommendation.
-
-This is **AI as Student**. You taught Claude how YOUR project is structured. Claude learned and adapted.
+**What happened**: Your project-specific context changed the analysis. By explaining that auth and payment share the User model, database session, and middleware in your architecture, you revealed higher coupling than the AI initially assumed. This prompted a revised recommendation that accounts for your specific project structure.
 
 ---
 
-### Role 3: Co-Worker Convergence (Iteration Toward Right Decision)
+### Discovering Hybrid Solutions
 
 **Scenario**: Working together to find the optimal decision for YOUR situation.
 
@@ -546,11 +537,9 @@ This approach emerged from understanding YOUR architecture.
 Neither of us would have invented it separately.
 ```
 
-**What happened**: You had a concern (conflicting constraints). Claude suggested compression. You flagged a problem (stateless vs stateful). Together you invented a hybrid approach: compression with explicit context switching and constraint reminders.
+**What happened**: Through iterative dialogue, a hybrid solution emerged that neither party proposed initially. You raised the concern about conflicting architectural constraints (stateless auth vs. stateful payment tracking). The AI suggested approaches. You identified problems with each. Together you arrived at a solution: compression at the session level with explicit context switching to maintain mental model boundaries.
 
-Neither of you had this exact solution initially. It **emerged from dialogue about YOUR specific situation**.
-
-This is **Co-Worker at its best**. You understood architecture. Claude understood isolation patterns. Together you created something better than either alone.
+This hybrid approach accommodates your tight coupling while preventing the constraint confusion that worried you.
 
 ---
 
@@ -650,7 +639,7 @@ Now it's your turn. Evaluate a real or hypothetical scenario.
 
 **Prompt Set**:
 
-**Prompt 1 (AI as Teacher - Learn the Pattern)**:
+**Prompt 1: Request Isolation Guidance**:
 ```
 I'm working on authentication (JWT tokens, refresh token rotation).
 A production bug just appeared in payment webhook handling. It's urgent.
@@ -659,9 +648,9 @@ or create a completely separate session for the payment bug?
 What factors should I consider?
 ```
 
-Listen for: AI explains compression vs isolation factors. Does AI teach you decision criteria?
+Listen for: AI explains decision criteria for compression vs isolation.
 
-**Prompt 2 (AI as Student - Teach AI Your Architecture)**:
+**Prompt 2: Share Architecture Details**:
 ```
 Thanks for the framework. Here's my actual situation:
 
@@ -678,9 +667,9 @@ Given this architecture, which is better: compress or isolate?
 And WHY? What factors favor one over the other?
 ```
 
-Listen for: AI asks clarifying questions about YOUR architecture. Does AI adapt recommendation based on your specifics?
+Listen for: AI adapts recommendation based on your architecture specifics.
 
-**Prompt 3 (Co-Worker Convergence - Iterate Toward Your Decision)**:
+**Prompt 3: Explore Hybrid Approaches**:
 ```
 I'm torn. Here's my concern with compression:
 "Stateless auth" and "stateful payment" patterns directly conflict.
@@ -694,16 +683,16 @@ might generate code that violates auth assumptions about user structure.
 What's the hybrid approach that avoids both pitfalls?
 ```
 
-Listen for: AI helps you find a middle ground. Does it propose explicit context switching? Do you converge on a decision that works for YOUR situation?
+Listen for: AI helps you discover middle-ground solutions like explicit context switching.
 
 **Expected Outcomes**:
-- Prompt 1: Learn isolation decision framework (AI as Teacher)
-- Prompt 2: AI understands YOUR architecture (AI as Student)
-- Prompt 3: Together design optimal approach (Co-Worker convergence)
+- Prompt 1: Understand isolation decision criteria
+- Prompt 2: Get recommendation tailored to your specific architecture
+- Prompt 3: Discover hybrid approaches that balance competing constraints
 
 **Safety Note**: The best isolation decision depends on YOUR project structure, not generic rules. Don't isolate just because the guide says "different domains"—evaluate your specific coupling and pollution risk first.
 
 ---
 
-**Version 1.0.0 — Stage 2 AI Collaboration Framework**
+**Version 1.0.0**
 **Next Lesson**: Lesson 6 - Memory Files and Persistent Intelligence (creating reusable context across sessions)
