@@ -335,139 +335,21 @@ Comments explain WHAT and WHY, not just HOW.
 
 ---
 
-## Try With AI: Information Collector Design Challenge
+## Try With AI
 
-This capstone integrates ALL Chapter 13 concepts through bidirectional collaboration.
+Build a complete information collector integrating all Chapter 13 concepts.
 
-### Part 1: Design Your Own Variation (Your Turn First)
+**🔍 Explore Domain Design:**
+> "I'm building a [Book Tracker/Recipe Collector/Travel Journal - choose one]. Help me design it to collect 5 fields with appropriate type hints. For a Book Tracker: title, author, genre, pages, rating. Should I use `str` for everything, or would `int` be better for some fields like rating or pages? Show me the complete Python code with `input()` for all fields, formatted output with f-strings, and section comments."
 
-**Before asking AI**, design a DIFFERENT information collector:
+**🧪 Test Edge Cases:**
+> "My information collector has three problems: users can enter empty strings for required fields, numeric values are stored as strings (can't do math), and output looks messy with very long field values. For each problem, show me example input that breaks the current code, explain why it fails, and propose a fix with validation. Then challenge: what if a user enters '999999' for pages—should we reject it?"
 
-**Instead of personal info, choose ONE**:
-1. **Book Tracker**: Title, author, genre, pages, rating
-2. **Recipe Collector**: Dish name, cuisine, cooking time, difficulty, main ingredient
-3. **Travel Journal**: Destination, country, travel date, budget, favorite memory
+**🎯 Practice Feature Extension:**
+> "Enhance the collector with: asking 'Add another entry? (yes/no)' after each entry, storing multiple entries in a list, displaying all entries in a formatted table with aligned columns, and calculating statistics (total pages read, average rating, etc.). Show me the updated code with type hints for the list structure."
 
-**Your design task**:
-- Choose one domain (book/recipe/travel)
-- List 5 fields to collect (like name/age/color in the example)
-- For EACH field, decide the type hint (all `str`? or should rating be `int`?)
-- Sketch the output format (how will you display the summary?)
-
-Write this design in comments BEFORE coding.
-
----
-
-### Part 2: Build with AI Guidance (Discovery)
-
-Now implement your design with AI:
-
-> "I'm building a [Book Tracker/Recipe Collector/Travel Journal]. Here's my design:
->
-> **Fields to collect**:
-> 1. [field 1]: [type]
-> 2. [field 2]: [type]
-> 3. [field 3]: [type]
-> 4. [field 4]: [type]
-> 5. [field 5]: [type]
->
-> **Output**: Formatted summary showing all fields
->
-> Help me:
-> 1. Write the complete Python code with type hints
-> 2. Use `input()` for all fields
-> 3. Display formatted output with f-strings
-> 4. Add section comments
->
-> Should I use `str` for everything, or would `int` be better for some fields (like rating or pages)?"
-
-**Your evaluation task**:
-- Does AI suggest keeping everything as `str` (simpler) or converting some to `int`?
-- Run the code. Does it work as you envisioned?
-- Compare AI's code structure to the capstone example. What's similar? What's different?
-
----
-
-### Part 3: Student Teaches AI (Edge Cases and Validation)
-
-Challenge AI with real-world problems:
-
-> "My [Book Tracker/Recipe/Travel] program has these issues:
->
-> **Problem 1**: User enters empty string (just presses Enter) for a required field
-> **Problem 2**: User enters number for rating/pages, but it's stored as string—can't do math with it
-> **Problem 3**: Output looks messy when field values are very long
->
-> For EACH problem:
-> 1. Show me how current code FAILS (example input that breaks it)
-> 2. Explain WHY it fails (what assumption did we make?)
-> 3. Propose a fix WITHOUT changing requirements (add validation, better formatting)
->
-> Then I'll challenge your fix: What if user enters '999999' for pages? Is that valid or should we reject it?"
-
-**Your debugging task**:
-- Which problem is hardest to fix? Why?
-- Can you explain the difference between "accepting any input" (current code) and "validating input" (production code)?
-
----
-
-### Part 4: Add Interactive Features (Integration)
-
-Extend your program with new capabilities:
-
-> "Let's enhance my collector with these features:
->
-> **Feature 1**: After showing summary, ask 'Add another entry? (yes/no)'
-> - If yes: Collect another set of data
-> - If no: Display all entries collected so far
-> - (Hint: You'll need a list to store multiple entries)
->
-> **Feature 2**: Display entries in a nice table format using formatted strings
-> - Align columns (Name, Genre, Pages)
-> - Use separators between entries
->
-> **Feature 3**: Calculate statistics
-> - For Book Tracker: Total pages read, average rating
-> - For Recipe: Average cooking time
-> - For Travel: Total budget
->
-> Show me the complete updated code with type hints for the list structure."
-
-**Refinement**:
-> "This works, but the code is getting long. How would I split this into functions (preview of Chapter 20)? Just explain the concept—don't refactor yet."
-
----
-
-### Part 5: Reflect on Spec-Driven Development (Convergence)
-
-Connect your capstone to professional practice:
-
-> "Let's reflect on the process we just used:
->
-> **What we did**:
-> 1. Started with specification (design before code)
-> 2. Implemented step-by-step (build incrementally)
-> 3. Tested edge cases (validate assumptions)
-> 4. Extended features (iterate on working code)
-> 5. Considered refactoring (improve structure)
->
-> **Your task**: Explain how this mini-project demonstrates 'specification-first thinking.'
->
-> Questions:
-> 1. How did designing BEFORE coding help avoid mistakes?
-> 2. When did I (the student) make design decisions vs. when did you (AI) implement details?
-> 3. If I were building a REAL app (with a database, user accounts, web interface), which parts of this process would stay the same?
-> 4. What's ONE thing I learned about working with AI that surprised me?
->
-> Be specific about the division of labor between human (design intent) and AI (implementation details)."
-
-**Final validation**:
-> "Based on this capstone, give me a 'Development Readiness Checklist': What skills from Chapter 13 am I confident with? What should I review before Chapter 14?"
-
----
-
-**Time**: 60-90 minutes total
-**Outcome**: You've designed, built, debugged, and extended a complete Python program using specification-first thinking. You understand the relationship between human design (intent) and AI implementation (execution), preparing you for larger projects in later chapters.
+**🚀 Reflect on Spec-Driven Process:**
+> "Explain how this project demonstrates specification-first thinking. How did designing before coding help? What was the division of labor between me (design intent) and you (implementation details)? If building a REAL app with database and web interface, which parts of this process would stay the same? Give me a Development Readiness Checklist: what Chapter 13 skills am I confident with vs what needs review?"
 
 ---
 

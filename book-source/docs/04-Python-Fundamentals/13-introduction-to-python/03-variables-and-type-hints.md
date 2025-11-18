@@ -348,99 +348,21 @@ Remember: Start with letter/underscore, use lowercase_with_underscores, no space
 
 ---
 
-## Try With AI: User Profile Design Challenge
+## Try With AI
 
-You've learned variables and type hints as syntax. Now apply them to a real problem: designing a user profile system from scratch.
+How do you design a data structure with appropriate types and naming conventions?
 
-### Part 1: Describe Your Data Needs (Before AI)
+**🔍 Explore Type Selection:**
+> "I'm building a user profile system needing: username (text), age (whole number), account balance (dollars and cents), and verification status (yes/no). What Python variables with type hints should I use? Show me the code and explain why you chose `float` for balance instead of `int`."
 
-**Scenario**: You're designing a user profile system. For each user, you need to store:
+**🧪 Test PEP 8 Compliance:**
+> "Review this variable naming: `userName`, `AccountBalance`, `is_verified`, `age1`. Which names violate PEP 8 style guidelines? Fix them to use proper `lowercase_with_underscores` convention and explain why PEP 8 naming matters for professional code."
 
-1. **Username** (like "alex_2024")
-2. **Age** (like 25)
-3. **Account balance** (like $47.50)
-4. **Is verified?** (yes or no)
+**🎯 Practice Design Iteration:**
+> "Add 3 more fields to the user profile: email address, registration date (text like '2025-01-15'), and premium membership status (yes/no). Update the code with correct type hints and PEP 8 naming for all 7 variables. Why did you use `str` for registration date instead of a datetime type?"
 
-**Your task (before asking AI)**:
-For EACH piece of data, answer in plain English:
-- What kind of data is this? (whole number? text? decimal? yes/no?)
-- What Python type would you use? (Guess: `int`, `str`, `float`, `bool`)
-
-Write your thinking down. Don't write Python code yet. Just describe WHAT you need.
+**🚀 Validate Type Understanding:**
+> "Write validation code using `isinstance()` to verify all 7 variables have the correct types. Show me the complete code with checks like `isinstance(username, str)`. Then explain: What happens if I assign the wrong type to a variable—does Python catch it at assignment time or when I use `isinstance()`?"
 
 ---
-
-### Part 2: AI Introduces Type Hints (Discovery)
-
-Now describe your needs to AI in plain English:
-
-> "I'm building a user profile system. I need to store: username (text), age (whole number), account balance (dollars and cents), and verification status (yes/no). What Python variables with type hints should I use? Show me the code."
-
-**Your task**: Compare AI's code to your Part 1 answers.
-- Did you guess the right types?
-- Does AI's code match your thinking?
-- Ask AI: "Why did you choose `float` for balance instead of `int`?"
-
-This teaches you: **Describe intent in English → AI suggests implementation.**
-
----
-
-### Part 3: Student Teaches AI (Naming Conventions)
-
-AI gave you working code, but the variable names might not follow PEP 8.
-
-Check AI's code against these rules:
-1. ✓ Uses lowercase_with_underscores (not camelCase)?
-2. ✓ Descriptive names (not `x`, `a`, `data`)?
-3. ✓ Starts with letter (not number)?
-
-If AI violated a rule, tell it:
-
-> "Your variable names don't follow PEP 8. The lesson says Python uses lowercase_with_underscores, not camelCase. Can you revise?"
-
-**Your task**: Verify AI corrects the mistake.
-- Did it fix the naming?
-- Did it explain WHY PEP 8 matters?
-
-This teaches AI about the professional standards you're learning.
-
----
-
-### Part 4: Iterate on the Design (Convergence)
-
-Now expand the requirements. Tell AI:
-
-> "I need to add 3 more fields: email address, registration date (text like '2025-01-15'), and premium membership status (yes/no). Update the code with correct type hints and PEP 8 naming."
-
-**Your task**: Review AI's updated code.
-- Are all 7 variables present?
-- Are type hints correct?
-- Do names follow PEP 8?
-- Can you explain WHY each type was chosen?
-
-If something is unclear, iterate:
-> "Why did you use `str` for registration date instead of a date type?"
-
-Keep iterating until the design makes perfect sense.
-
----
-
-### Part 5: Validate with isinstance() (Your Turn)
-
-Final challenge—write validation code WITHOUT AI first.
-
-**Task**: Add validation checks using `isinstance()` for all 7 variables. Example:
-```python
-print(isinstance(username, str))  # Should print True
-```
-
-Write the validation code yourself. Then ask AI:
-> "Here's my validation code: [paste code]. Is this correct? What did I miss?"
-
-**Outcome**: If you got it right, you understand type hints deeply. If not, you learned what you're still confused about.
-
----
-
-**Time**: 25-30 minutes total
-**Outcome**: You've practiced spec-first design (describe needs before coding), learned to critique AI code against standards (PEP 8), iterated on requirements, and validated your understanding independently.
 

@@ -151,51 +151,20 @@ This practice of describing intent through type hints prepares you for Spec-Driv
 
 *Reality*: Professional developers use AI every single day. The skill isn't "memorize syntax"—it's "know when and how to use AI effectively." That's what we're teaching throughout this chapter and book.
 
-## Try With AI: Mental Model Test
+## Try With AI
 
-This lesson introduced Python as "the language of AI development." Now test if you've built a solid mental model.
+Can you explain Python's role in AI development and identify its limitations?
 
-### Part 1: Explain It Back (Your Turn First)
+**🔍 Explore Python's Purpose:**
+> "Explain what Python is and why it's the dominant language for AI development. Give me a one-sentence definition and three key reasons why AI developers choose Python."
 
-**Before asking AI anything**, write down your own answers:
+**💡 Understand Trade-offs:**
+> "You said Python is ideal for AI development. But what are Python's WEAKNESSES? When would I NOT choose Python? Give me 2-3 scenarios where another language might be better and explain the specific limitations that make Python unsuitable."
 
-1. **What is Python?** (One sentence, like you're explaining to a friend)
-2. **Why Python for AI?** (Pick the most important reason)
-3. **How does Python connect to this book?** (What role does it play in AI-Driven Development?)
+**🧪 Test Conceptual Understanding:**
+> "Compare Python to another language you know (JavaScript, Java, C++, etc.). For each, explain: What problems does it solve best? Where does it struggle? When would you reach for one over the other in a real project?"
 
-Write these down. Don't peek at the lesson. This tests what stuck.
-
----
-
-### Part 2: Compare with AI's Explanation
-
-Now ask your AI companion:
-
-> "Explain what Python is and why it's the dominant language for AI development. Give me a one-sentence definition and three reasons."
-
-**Your task**: Compare AI's explanation to yours.
-- Did you miss anything important?
-- Did AI explain something differently?
-- Which explanation is clearer—yours or AI's? Why?
+**🚀 Connect to AI-Native Development:**
+> "This book teaches AI-Driven Development with Python. Explain how Python's design (readability, libraries, community) makes it especially good for working WITH AI assistants to build software. What about Python makes human-AI collaboration effective?"
 
 ---
-
-### Part 3: Push Back on AI (Critical Thinking)
-
-AI gave you three reasons why Python dominates AI. But every tool has limitations.
-
-Ask AI this challenging question:
-
-> "You said Python is ideal for AI development. But what are Python's WEAKNESSES? When would I NOT choose Python? Give me 2-3 scenarios where another language might be better."
-
-**Your task**: Evaluate AI's response.
-- Does it feel honest, or like it's avoiding criticism?
-- Do the weaknesses make sense?
-- Can you think of a weakness AI didn't mention?
-
-This teaches you: **AI can be overly positive. Always ask for tradeoffs.**
-
----
-
-**Time**: 15-20 minutes total
-**Outcome**: You've tested your understanding, compared it to AI, and practiced critical evaluation—not just passive acceptance.

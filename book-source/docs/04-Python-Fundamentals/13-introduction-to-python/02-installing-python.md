@@ -270,95 +270,21 @@ If both work and show correct output, your installation is correct. Done.
 
 ---
 
-## Try With AI: Installation Troubleshooting Partnership
+## Try With AI
 
-Installation errors are frustrating. This exercise teaches you to diagnose problems systematically—with AI as your troubleshooting partner.
+How do you diagnose Python installation problems systematically?
 
-### Part 1: Predict the Problem (Your Turn First)
+**🔍 Explore Common Installation Errors:**
+> "A Windows user installed Python from python.org but gets 'python is not recognized as an internal or external command' when running `python --version`. What's the likely cause and step-by-step solution? Explain what PATH is and why it matters."
 
-**Before asking AI anything**, analyze this scenario:
+**🧪 Test Edge Case Diagnosis:**
+> "The user says they DID check 'Add Python to PATH' during installation, but the error persists. What are 2-3 other reasons this error could happen on Windows? For each, give me the diagnostic command to verify it's the problem and the fix."
 
-A classmate sends you this message:
-```
-I installed Python on Windows. When I run `python --version` in Command Prompt, I get:
+**🎯 Build Troubleshooting Guide:**
+> "Create a troubleshooting guide for 'python: command not found' errors on Windows covering: most common cause, how to verify PATH configuration, how to fix PATH if wrong, alternative solutions if PATH is correct, and how to test that the fix worked. Make each step clear for beginners."
 
-'python' is not recognized as an internal or external command...
-```
-
-**Your diagnostic thinking**:
-1. What do you think went wrong? (Write down your hypothesis)
-2. What questions would you ask your classmate?
-3. What's your suggested fix?
-
-*Write these down before moving to Part 2.*
+**🚀 Practice Cross-Platform Debugging:**
+> "A Mac user runs `python3 --version` and sees 'Python 2.7.x' instead of Python 3.14. Diagnose the problem, explain why macOS has this version conflict, and provide the solution. What's different about Python installation on Mac vs Windows?"
 
 ---
-
-### Part 2: Compare with AI's Diagnosis
-
-Now share the same error message with your AI companion:
-
-> "A Windows user installed Python from python.org but gets this error when running `python --version`: 'python' is not recognized as an internal or external command'. What's the likely cause and solution?"
-
-**Your task**: Compare AI's diagnosis to yours.
-- Did you identify the same root cause?
-- Did AI suggest something you didn't think of?
-- Which diagnosis is more complete—yours or AI's?
-
----
-
-### Part 3: Student Teaches AI (Edge Case Discovery)
-
-AI gave you a solution. But every platform has quirks.
-
-Tell AI about an edge case:
-
-> "Your solution assumed Python wasn't added to PATH during installation. But what if the user DID check 'Add Python to PATH' and it still doesn't work? What are 2-3 other reasons this error could happen?"
-
-**Your task**: Evaluate AI's response.
-- Did it identify edge cases you didn't know existed?
-- Are the solutions platform-specific (Windows registry, environment variables)?
-- Can you explain WHY each edge case causes this error?
-
-This teaches AI about the troubleshooting complexity you're experiencing.
-
----
-
-### Part 4: Build a Troubleshooting Guide Together
-
-Now iterate with AI to create something reusable.
-
-> "Let's create a step-by-step troubleshooting guide for 'python: command not found' errors on Windows. Include: (1) Most common cause, (2) How to verify PATH, (3) How to fix if PATH is wrong, (4) Alternative solutions if PATH is correct."
-
-**Your task**: Review AI's guide.
-- Is each step clear enough for a beginner?
-- Are there missing verification steps?
-- Suggest improvements: "This step is unclear because..."
-
-Iterate 2-3 times until the guide is genuinely helpful.
-
----
-
-### Part 5: Validate Your Understanding
-
-Final check—can you troubleshoot independently now?
-
-**Scenario**: A Mac user says `python3 --version` shows "Python 2.7.x" instead of Python 3.14.
-
-**Your task** (WITHOUT asking AI first):
-1. What's the problem?
-2. What's your diagnosis?
-3. What's your solution?
-
-*Write your answer.*
-
-Now ask AI:
-> "Here's my diagnosis for this Mac Python version issue: [paste your answer]. Is my reasoning correct? What did I miss?"
-
-**Outcome**: If you got it mostly right, you've learned to troubleshoot independently. If not, you learned where your mental model has gaps.
-
----
-
-**Time**: 45-60 minutes total
-**Outcome**: You've practiced systematic troubleshooting, taught AI about edge cases, built a reusable resource, and validated your independent problem-solving ability.
 

@@ -342,123 +342,21 @@ F-strings are cleaner and professional.
 
 ---
 
-## Try With AI: Program Quality Review Partnership
+## Try With AI
 
-You've learned syntax elements. Now apply them to write a complete program—then review it for quality with AI as your code review partner.
+Can you write a complete program and improve it through code review?
 
-### Part 1: Write Your First Program (Your Turn First)
+**🔍 Explore Code Review Process:**
+> "Review this product information program for: correct type hints, proper indentation, good comments, and professional f-string usage. Then explain: What makes a comment GOOD (explains why) vs BAD (repeats what the code does)? [Paste your program code]"
 
-**Task**: Create a Python program that displays information about a product. Requirements:
+**🧪 Test Comment Quality:**
+> "Compare these two comment styles: `price: float = 29.99  # Set price to 29.99` vs `price: float = 29.99  # Launch price includes 25% promotional discount`. Which is better and why? Then review the comments in my program—are they explaining WHY or just repeating WHAT? Suggest improvements."
 
-1. Create 4 typed variables:
-   - Product name (string)
-   - Price (float, with cents)
-   - Quantity in stock (integer)
-   - On sale (boolean, True/False)
+**🎯 Practice Program Enhancement:**
+> "Improve this product display program by adding: a formatted header/footer using string multiplication (like `'=' * 40`), better visual spacing, currency formatting for price (show $ symbol), and boolean to 'Yes'/'No' text conversion. Show me the enhanced version and explain what each improvement does."
 
-2. Use f-strings to display formatted output like:
-   ```
-   Product: Wireless Mouse
-   Price: $29.99
-   In Stock: 45 units
-   On Sale: Yes
-   ```
-
-3. Add comments explaining what each section does
-
-**Save as `product_info.py` and run it.**
-
-Write this program YOURSELF before asking AI. This tests what you've learned.
+**🚀 Debug Broken Code:**
+> "Find and fix ALL errors in this code: `product_name str = 'Keyboard'` and `quantity int = 20`. Explain WHY each is an error (missing colon? wrong syntax?) and show the corrected version. What Python syntax rules do these violations break?"
 
 ---
-
-### Part 2: AI Reviews Your Code (Discovery)
-
-Now share your code with AI:
-
-> "Here's my Python program: [paste your code]. Review it for: (1) Correct type hints, (2) Proper indentation, (3) Good comments, (4) Professional f-string usage. What did I do well? What should I improve?"
-
-**Your task**: Read AI's feedback carefully.
-- Did it catch errors you missed?
-- Did it suggest improvements to your comments?
-- Did it recommend better f-string formatting?
-- Do you understand WHY each suggestion makes the code better?
-
-This teaches you: **Code review is how professionals improve.**
-
----
-
-### Part 3: Student Teaches AI (Comment Quality)
-
-AI reviewed your code. But does it understand GOOD vs. BAD comments?
-
-Show AI these two comment styles:
-
-```python
-# Bad comment style
-price: float = 29.99  # Set price to 29.99
-
-# Good comment style
-price: float = 29.99  # Launch price includes 25% promotional discount
-```
-
-Ask AI:
-> "The lesson says comments should explain WHY, not WHAT. Which comment style is better and why? Then review MY comments from the program I wrote—are they explaining WHY or just repeating WHAT?"
-
-**Your task**: Evaluate AI's response.
-- Did it correctly identify the better comment style?
-- Did it give honest feedback about YOUR comments?
-- Revise your comments based on AI's feedback
-
-This teaches AI the professional standards you're learning.
-
----
-
-### Part 4: Iterate Until Professional (Convergence)
-
-Now refine the program through iteration.
-
-Tell AI:
-> "Let's improve this program together. Add: (1) A formatted header/footer using string multiplication (like `'=' * 40`), (2) Better visual spacing, (3) Currency formatting for price (show $ symbol), (4) Convert boolean to 'Yes'/'No' text. Show me the improved version."
-
-**Your task**: Review AI's improved version.
-- Is it more readable than your original?
-- Can you explain what EVERY line does?
-- Are there parts you don't understand?
-
-If confused, iterate:
-> "I don't understand this line: [paste line]. Explain what it does and why it's better."
-
-Keep iterating until you can explain the entire program confidently.
-
----
-
-### Part 5: Error Debugging Challenge (Your Turn)
-
-Final test—can you debug broken code independently?
-
-**Scenario**: A classmate shares this broken code:
-```python
-# Product information
-product_name str = "Keyboard"
-price: float = 49.99
-quantity int = 20
-print(f"Product: {product_name}, Price: ${price}")
-print(f"Stock: {quantity} units")
-```
-
-**Your task** (WITHOUT asking AI first):
-1. Find ALL the errors (there are 2)
-2. Explain WHY each is an error
-3. Write the corrected code
-
-Now ask AI:
-> "I found 2 errors in this code: [paste code]. Here's my diagnosis: [your analysis]. Am I correct? What did I miss?"
-
-**Outcome**: If you found both errors and explained them correctly, you've mastered basic syntax. If not, you learned what concepts need more practice.
-
----
-
-**Time**: 25-30 minutes total
-**Outcome**: You've practiced writing complete programs, learned code review with AI, iterated to professional quality, and validated your debugging skills independently.
 
