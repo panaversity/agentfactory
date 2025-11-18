@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 31
 title: "Chapter 31: Spec-Kit Plus Hands-On"
 ---
 

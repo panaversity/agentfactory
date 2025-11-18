@@ -2,7 +2,7 @@
 title: "Chapter 32: AI Orchestra - Agent Teams Manager"
 chapter: 32
 part: 5
-sidebar_position: 4
+sidebar_position: 32
 description: "Master decomposition thinking and task management to coordinate 5-7 autonomous agents (AI or human)"
 ---
 

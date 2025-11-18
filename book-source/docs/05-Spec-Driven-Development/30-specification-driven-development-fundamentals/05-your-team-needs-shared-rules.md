@@ -2,21 +2,64 @@
 title: "Your Team Needs Shared Rules: Memory Banks and Constitutions"
 chapter: 30
 lesson: 5
-duration: "45-60 minutes"
+duration_minutes: 53
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
 skills:
   - name: "Team Governance"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can explain how Constitutions prevent inconsistency at scale, understanding the difference between feature-specific specs and system-wide rules"
+
   - name: "Constitution Writing"
-    proficiency: "A2"
+    proficiency_level: "A2"
     category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can draft basic constitutional rules covering security, architecture, quality, and technology stack decisions"
+
   - name: "Scaling Specifications"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Conceptual"
+    bloom_level: "Analyze"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can identify when team size and complexity require constitutional governance, analyzing cost of inconsistency vs overhead of rules"
+
 learning_objectives:
-  - "Understand the problem of specification consistency across teams (B1)"
-  - "Define a Constitution (Memory Bank) that applies globally to all specifications (B1)"
-  - "Apply constitutional rules to ensure uniform implementation across team members (B1)"
+  - objective: "Understand the problem of specification consistency across teams"
+    proficiency_level: "B1"
+    bloom_level: "Understand"
+    assessment_method: "Explain scenarios where lack of shared rules causes inconsistency (security, architecture, quality); analyze impact at 5, 50, 500 developers"
+
+  - objective: "Define a Constitution (Memory Bank) that applies globally to all specifications"
+    proficiency_level: "B1"
+    bloom_level: "Create"
+    assessment_method: "Draft a Constitution for a domain (healthcare, fintech, e-commerce) including security rules, architecture patterns, quality standards"
+
+  - objective: "Apply constitutional rules to ensure uniform implementation across team members"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Review a specification for constitutional compliance; identify violations and correct them using constitutional rules"
+
+cognitive_load:
+  new_concepts: 7
+  assessment: "7 new concepts (Constitution, Memory Banks, system-wide vs feature-specific rules, ADRs, PHRs, organizational learning, encoding lessons learned) within B1 limit of 7-10 ✓"
+
+differentiation:
+  extension_for_advanced: "Design constitutional evolution process: how to convert production bugs into constitutional rules, including incident analysis template and rule proposal workflow"
+  remedial_for_struggling: "Focus on single concrete example: password security rule applies to 10 different features; use visual comparison of 'without Constitution' (chaos) vs 'with Constitution' (consistency)"
+
+# Generation metadata
+generated_by: "content-implementer v3.0.0"
+source_spec: "specs/book/chapter-30-sdd-fundamentals/spec.md"
+created: "2025-01-15"
+last_modified: "2025-11-18"
+git_author: "Claude Code"
+workflow: "format-standardization"
+version: "2.0.0"
 ---
 
 # Your Team Needs Shared Rules: Memory Banks and Constitutions

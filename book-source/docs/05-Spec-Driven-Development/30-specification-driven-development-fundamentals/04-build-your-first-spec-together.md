@@ -2,25 +2,76 @@
 title: "Build Your First Spec: Basic Calculator"
 chapter: 30
 lesson: 4
-duration: "75-90 minutes"
+duration_minutes: 83
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
 skills:
   - name: "Specification Writing"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can write complete specifications through AI collaboration, transforming vague requirements into explicit user stories, acceptance criteria, and edge cases"
+
   - name: "Requirements Clarity"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Soft"
+    bloom_level: "Analyze"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can identify ambiguities in specifications and refine them through iterative dialogue with AI, demonstrating convergence pattern"
+
   - name: "User Story Writing"
-    proficiency: "A2"
+    proficiency_level: "A2"
     category: "Soft"
+    bloom_level: "Apply"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can write user stories in 'As a [user], I want to [action], so that [benefit]' format, focusing on WHY not HOW"
+
   - name: "Acceptance Criteria Definition"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Technical"
+    bloom_level: "Create"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can define testable acceptance criteria using GIVEN-WHEN-THEN format, covering happy path, edge cases, and error handling"
+
 learning_objectives:
-  - "Write user stories that express user intent without prescribing implementation (A2)"
-  - "Define clear acceptance criteria that AI agents can execute (B1)"
-  - "Specify edge cases and error handling for all four arithmetic operations (B1)"
-  - "Experience the complete spec-first workflow across a real feature (B1)"
+  - objective: "Write user stories that express user intent without prescribing implementation"
+    proficiency_level: "A2"
+    bloom_level: "Apply"
+    assessment_method: "Create user stories for calculator operations using standard format; verify stories focus on user needs not technical implementation"
+
+  - objective: "Define clear acceptance criteria that AI agents can execute"
+    proficiency_level: "B1"
+    bloom_level: "Create"
+    assessment_method: "Write acceptance criteria for calculator functions with specific examples, testable conditions, and measurable outcomes"
+
+  - objective: "Specify edge cases and error handling for all four arithmetic operations"
+    proficiency_level: "B1"
+    bloom_level: "Analyze"
+    assessment_method: "Identify and document edge cases (division by zero, floating point precision, type handling, negative numbers) with explicit behavior specifications"
+
+  - objective: "Experience the complete spec-first workflow across a real feature"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Complete full workflow: user stories → acceptance criteria → edge cases → spec → code generation → validation → refinement"
+
+cognitive_load:
+  new_concepts: 8
+  assessment: "8 new concepts (user story format, acceptance criteria, GIVEN-WHEN-THEN, edge cases, type preservation, error handling strategies, quality iteration, convergence loop) within B1 limit of 7-10 ✓"
+
+differentiation:
+  extension_for_advanced: "Add exponentiation operation with comprehensive edge case analysis (0^0, negative bases with fractional exponents, overflow handling); design CLI wrapper demonstrating spec layering"
+  remedial_for_struggling: "Start with addition only, completing full cycle (stories → criteria → edge cases → code) before adding other operations; use provided templates with fill-in-the-blank sections"
+
+# Generation metadata
+generated_by: "content-implementer v3.0.0"
+source_spec: "specs/book/chapter-30-sdd-fundamentals/spec.md"
+created: "2025-01-15"
+last_modified: "2025-11-18"
+git_author: "Claude Code"
+workflow: "format-standardization"
+version: "2.0.0"
 ---
 
 # Build Your First Spec: Basic Calculator

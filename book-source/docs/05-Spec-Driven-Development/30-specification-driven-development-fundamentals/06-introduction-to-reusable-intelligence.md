@@ -2,21 +2,64 @@
 title: "Introduction to Reusable Intelligence"
 chapter: 30
 lesson: 6
-duration: "60-75 minutes"
+duration_minutes: 68
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
 skills:
   - name: "Strategic Asset Recognition"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Conceptual"
+    bloom_level: "Analyze"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can analyze why intelligence (specifications, decision frameworks, expertise) becomes strategic asset when AI commoditizes code implementation"
+
   - name: "Agent Architecture Understanding"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Technical"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can explain microservices analogy for agent architecture, understanding how modular intelligence units compose to solve complex problems"
+
   - name: "Component Distinction"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Analytical"
+    bloom_level: "Analyze"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can distinguish Skills (horizontal, 2-4 decisions, guidance) from Subagents (vertical, 5+ decisions, autonomous) using decision-point counting"
+
 learning_objectives:
-  - "Understand the paradigm shift from reusable code to reusable intelligence in AI-native development (B1)"
-  - "Identify the three components of reusable intelligence: Skills, Subagents, and Orchestration Patterns (B1)"
-  - "Distinguish between Skills (horizontal expertise) and Subagents (vertical specialization) by their characteristics (B1)"
+  - objective: "Understand the paradigm shift from reusable code to reusable intelligence in AI-native development"
+    proficiency_level: "B1"
+    bloom_level: "Understand"
+    assessment_method: "Explain historical evolution from assembly→high-level code→specifications; analyze why specs become 'source' when AI generates code"
+
+  - objective: "Identify the three components of reusable intelligence: Skills, Subagents, and Orchestration Patterns"
+    proficiency_level: "B1"
+    bloom_level: "Understand"
+    assessment_method: "Define and provide examples of each component; explain how they compose in multi-agent workflows"
+
+  - objective: "Distinguish between Skills (horizontal expertise) and Subagents (vertical specialization) by their characteristics"
+    proficiency_level: "B1"
+    bloom_level: "Analyze"
+    assessment_method: "Given patterns from student's work, classify as Skill or Subagent using decision matrix (decision points, autonomy, applicability)"
+
+cognitive_load:
+  new_concepts: 9
+  assessment: "9 new concepts (reusable intelligence, Skills, Subagents, Orchestration, horizontal vs vertical, microservices analogy, intelligence as asset, three-layer stack, platform generalization) within B1 limit of 7-10 ✓"
+
+differentiation:
+  extension_for_advanced: "Design intelligence library structure for organization: categorize existing codebase patterns into Skills/Subagents/Orchestrations; estimate productivity multiplier from reuse"
+  remedial_for_struggling: "Focus on concrete analogy: error handling pattern repeats 50 times in codebase → create Error Handling Skill once → AI applies it correctly 50 times"
+
+# Generation metadata
+generated_by: "content-implementer v3.0.0"
+source_spec: "specs/book/chapter-30-sdd-fundamentals/spec.md"
+created: "2025-01-15"
+last_modified: "2025-11-18"
+git_author: "Claude Code"
+workflow: "format-standardization"
+version: "2.0.0"
 ---
 
 # Introduction to Reusable Intelligence

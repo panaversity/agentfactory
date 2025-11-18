@@ -2,18 +2,57 @@
 title: "Why Do Specs Matter NOW? The AI Moment"
 chapter: 30
 lesson: 2
-duration: "60-75 minutes"
+duration_minutes: 68
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
 skills:
   - name: "AI and SDD Convergence"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can explain why AI literal-mindedness made specifications mandatory in 2025, connecting technical capabilities to workflow changes"
+
   - name: "Strategic Thinking"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Soft"
+    bloom_level: "Analyze"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can analyze cost-benefit tradeoffs between vague prompts and clear specifications, understanding when investment in specs produces measurable time savings"
+
 learning_objectives:
-  - "Explain why SDD emerged NOW in 2025 (not in 1970s, 2000s, or 2010s) (B1)"
-  - "Connect AI literal-mindedness to specification necessity (B1)"
-  - "Understand cost-benefit shift: specs save time with AI agents (B1)"
+  - objective: "Explain why SDD emerged NOW in 2025 (not in 1970s, 2000s, or 2010s)"
+    proficiency_level: "B1"
+    bloom_level: "Understand"
+    assessment_method: "Compare historical specification approaches (Formal Methods, Design by Contract, MDD, Agile) and explain what changed in 2025 to make SDD viable"
+
+  - objective: "Connect AI literal-mindedness to specification necessity"
+    proficiency_level: "B1"
+    bloom_level: "Analyze"
+    assessment_method: "Contrast how human developers vs AI agents interpret vague requirements, demonstrating understanding of why AI needs explicit specifications"
+
+  - objective: "Understand cost-benefit shift: specs save time with AI agents"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Calculate time savings for spec-first vs vague-prompt workflows, applying cost-benefit math to real scenarios"
+
+cognitive_load:
+  new_concepts: 5
+  assessment: "5 new concepts (AI literal-mindedness, cost-benefit math, historical context, MDD vs SDD differences, specifications as interface) within B1 limit of 7-10 ✓"
+
+differentiation:
+  extension_for_advanced: "Research and compare MDD tools from 2000s (UML code generators, Enterprise Architect) with modern LLMs; analyze what technical advances enabled SDD success where MDD failed"
+  remedial_for_struggling: "Focus on single concrete example: vague prompt (12 hours) vs clear spec (4 hours); use visual timeline showing iteration cycles vs spec-first workflow"
+
+# Generation metadata
+generated_by: "content-implementer v3.0.0"
+source_spec: "specs/book/chapter-30-sdd-fundamentals/spec.md"
+created: "2025-01-15"
+last_modified: "2025-11-18"
+git_author: "Claude Code"
+workflow: "format-standardization"
+version: "2.0.0"
 ---
 
 # Why Do Specs Matter NOW? The AI Moment

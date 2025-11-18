@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 30
 title: "Chapter 30: Understanding Spec-Driven Development with Reusable Intelligence"
 ---
 

@@ -2,18 +2,57 @@
 title: "SDD-RI Framework Landscape & What's Next"
 chapter: 30
 lesson: 8
-duration: "45-60 minutes"
+duration_minutes: 53
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
 skills:
   - name: "Framework Context Assessment"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Soft"
+    bloom_level: "Evaluate"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can assess context factors (team size, complexity, compliance) and evaluate which SDD framework fits, understanding tradeoffs"
+
   - name: "Architectural Decision Reasoning"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Technical"
+    bloom_level: "Analyze"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can analyze why Spec-Kit Plus adds ADRs, PHRs, and Intelligence Templates, connecting features to AI-native team needs"
+
 learning_objectives:
-  - "Compare four SDD approaches (Kiro, Spec-Kit, Spec-Kit Plus, Tesel) and understand their evolution (B1)"
-  - "Assess context factors (team size, compliance, scale) that determine framework fit (B1)"
-  - "Understand why this book teaches Spec-Kit Plus and how it implements SDD-RI concepts (B1)"
+  - objective: "Compare four SDD approaches (Kiro, Spec-Kit, Spec-Kit Plus, Tesel) and understand their evolution"
+    proficiency_level: "B1"
+    bloom_level: "Understand"
+    assessment_method: "Explain philosophy, workflow, and best-fit context for each framework; identify what problems each solves"
+
+  - objective: "Assess context factors (team size, compliance, scale) that determine framework fit"
+    proficiency_level: "B1"
+    bloom_level: "Evaluate"
+    assessment_method: "Given scenarios (solo dev, 5-person team, 50-person enterprise), recommend framework and justify based on context factors"
+
+  - objective: "Understand why this book teaches Spec-Kit Plus and how it implements SDD-RI concepts"
+    proficiency_level: "B1"
+    bloom_level: "Understand"
+    assessment_method: "Explain how Spec-Kit Plus implements SDD-RI (ADRs capture reasoning, PHRs log interactions, Templates provide expertise); connect to Lessons 6-7 concepts"
+
+cognitive_load:
+  new_concepts: 6
+  assessment: "6 new concepts (four frameworks, context factors, ADRs, PHRs, Intelligence Templates, framework selection criteria) within B1 limit of 7-10 ✓"
+
+differentiation:
+  extension_for_advanced: "Design framework selection decision tree: create flowchart with context questions leading to framework recommendations; include migration paths between frameworks"
+  remedial_for_struggling: "Focus on single comparison: Kiro (simple, solo) vs Spec-Kit Plus (governance, teams); use visual table showing what each adds/sacrifices"
+
+# Generation metadata
+generated_by: "content-implementer v3.0.0"
+source_spec: "specs/book/chapter-30-sdd-fundamentals/spec.md"
+created: "2025-01-15"
+last_modified: "2025-11-18"
+git_author: "Claude Code"
+workflow: "format-standardization"
+version: "2.0.0"
 ---
 
 # SDD-RI Framework Landscape & What's Next

@@ -2,25 +2,76 @@
 title: "Designing Skills and Subagents with P+Q+P"
 chapter: 30
 lesson: 7
-duration: "75-90 minutes"
+duration_minutes: 83
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
 skills:
   - name: "Intelligence Design"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Technical"
+    bloom_level: "Create"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can design Skills and Subagents using P+Q+P pattern (Persona activates thinking, Questions force reasoning, Principles guide decisions)"
+
   - name: "Persona Development"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Soft"
+    bloom_level: "Create"
+    digcomp_area: "Communication & Collaboration"
+    measurable_at_this_level: "Student can write specific Personas that activate domain expertise (not generic 'expert'), using cognitive stance and thinking patterns"
+
   - name: "Question Framework Design"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Technical"
+    bloom_level: "Create"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can articulate context-specific questions that force analysis (not pattern matching), covering scope, strategy, and location of decisions"
+
   - name: "Principle Definition"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Technical"
+    bloom_level: "Create"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can establish decision frameworks with clear rationale (not vague aspirations), providing actionable guidance for tradeoffs"
+
 learning_objectives:
-  - "Design reusable intelligence using Persona + Questions + Principles (P+Q+P) pattern (B1)"
-  - "Understand why P+Q+P activates reasoning, not just pattern matching (B1)"
-  - "Distinguish between Skills (2-4 decisions) and Subagents (5+ decisions) by design complexity (B1)"
-  - "Create 2 designed components: 1 Skill + 1 Subagent using P+Q+P template (B1)"
+  - objective: "Design reusable intelligence using Persona + Questions + Principles (P+Q+P) pattern"
+    proficiency_level: "B1"
+    bloom_level: "Create"
+    assessment_method: "Design 2 components (1 Skill + 1 Subagent) with complete P+Q+P documentation; demonstrate each component activates appropriate thinking"
+
+  - objective: "Understand why P+Q+P activates reasoning, not just pattern matching"
+    proficiency_level: "B1"
+    bloom_level: "Understand"
+    assessment_method: "Compare prediction mode (generic instructions) vs reasoning mode (P+Q+P); explain how Persona/Questions/Principles shift AI behavior"
+
+  - objective: "Distinguish between Skills (2-4 decisions) and Subagents (5+ decisions) by design complexity"
+    proficiency_level: "B1"
+    bloom_level: "Analyze"
+    assessment_method: "Count decision points in patterns; apply decision matrix to classify as Skill or Subagent; justify classification"
+
+  - objective: "Create 2 designed components: 1 Skill + 1 Subagent using P+Q+P template"
+    proficiency_level: "B1"
+    bloom_level: "Create"
+    assessment_method: "Complete practice exercises (Security Review Subagent + API Design Skill); self-critique using provided checklist"
+
+cognitive_load:
+  new_concepts: 8
+  assessment: "8 new concepts (P+Q+P pattern, Persona as cognitive stance, reasoning activation, decision frameworks, Skills vs Subagents distinction, 2-4 vs 5+ decision threshold, horizontal vs vertical design) within B1 limit of 7-10 ✓"
+
+differentiation:
+  extension_for_advanced: "Design meta-framework: create a Skill or Subagent for helping teams design Skills and Subagents (P+Q+P applied to P+Q+P design itself)"
+  remedial_for_struggling: "Use fill-in-the-blank templates for Input Validation Skill; focus on transforming weak Persona ('expert') into strong Persona ('defensive programming specialist focused on attack surfaces')"
+
+# Generation metadata
+generated_by: "content-implementer v3.0.0"
+source_spec: "specs/book/chapter-30-sdd-fundamentals/spec.md"
+created: "2025-01-15"
+last_modified: "2025-11-18"
+git_author: "Claude Code"
+workflow: "format-standardization"
+version: "2.0.0"
 ---
 
 # Designing Skills and Subagents with P+Q+P

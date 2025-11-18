@@ -2,19 +2,57 @@
 title: "Anatomy of a Specification"
 chapter: 30
 lesson: 3
-duration: "75-90 minutes"
-stage: "Manual Foundation"
+duration_minutes: 83
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
 skills:
   - name: "Specification Writing"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can write a complete spec.md file with Intent, Success Criteria, Constraints, and Non-Goals sections, using testable language and explicit constraints"
+
   - name: "Quality Evaluation"
-    proficiency: "B1"
+    proficiency_level: "B1"
     category: "Analytical"
+    bloom_level: "Evaluate"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can evaluate specification quality using 5-question checklist, identifying vague language, missing edge cases, and ambiguities"
+
 learning_objectives:
-  - "Identify the core sections of a production-ready spec (Intent, Constraints, Acceptance Criteria)"
-  - "Write a simple spec.md file manually (no AI yet)"
-  - "Evaluate spec quality using evals-first principle"
+  - objective: "Identify the core sections of a production-ready spec (Intent, Constraints, Acceptance Criteria)"
+    proficiency_level: "B1"
+    bloom_level: "Understand"
+    assessment_method: "Analyze a complete spec and label each section with its purpose; explain why each section is necessary"
+
+  - objective: "Write a simple spec.md file manually (no AI yet)"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Create a CSV exporter specification from scratch following the 4-section structure, demonstrating manual specification writing"
+
+  - objective: "Evaluate spec quality using evals-first principle"
+    proficiency_level: "B1"
+    bloom_level: "Evaluate"
+    assessment_method: "Apply the 5-question quality checklist to specifications, identifying and correcting vague or ambiguous sections"
+
+cognitive_load:
+  new_concepts: 7
+  assessment: "7 new concepts (evals-first principle, spec anatomy, success criteria, constraints, non-goals, memory banks vs specs, quality checklist) within B1 limit of 7-10 ✓"
+
+differentiation:
+  extension_for_advanced: "Design a meta-specification framework: create a spec for how to write specs, including validation rules, quality metrics, and automated checks"
+  remedial_for_struggling: "Use fill-in-the-blank spec template for CSV exporter; focus on transforming vague statements ('save properly') into specific constraints ('save to JSON with UTF-8 encoding')"
+
+# Generation metadata
+generated_by: "content-implementer v3.0.0"
+source_spec: "specs/book/chapter-30-sdd-fundamentals/spec.md"
+created: "2025-01-15"
+last_modified: "2025-11-18"
+git_author: "Claude Code"
+workflow: "format-standardization"
+version: "2.0.0"
 ---
 
 # Anatomy of a Specification
