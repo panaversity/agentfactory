@@ -371,9 +371,9 @@ SUCCESS CRITERIA:
 
 #### Performance Criteria (Is it fast enough?)
 ```
-- Processes 1000 files in <10 seconds
-- Uses <50MB memory during execution
-- Completes incremental backup in <2 seconds
+- Processes 1000 files in \<10 seconds
+- Uses \<50MB memory during execution
+- Completes incremental backup in \<2 seconds
 ```
 
 #### Quality Criteria (Is the code good?)
@@ -474,7 +474,7 @@ These are the common mistakes that turn specifications into vague requests:
 
 **✅ Good**:
 ```
-"Optimize backup.sh to process 10,000 files in <5 seconds (currently takes 30 seconds). Bottleneck is line-by-line file reading. Suggest using find + xargs or parallel processing."
+"Optimize backup.sh to process 10,000 files in \<5 seconds (currently takes 30 seconds). Bottleneck is line-by-line file reading. Suggest using find + xargs or parallel processing."
 ```
 
 ---
@@ -580,7 +580,7 @@ SUCCESS CRITERIA:
 - Reader can create and merge feature branch after reading
 - All commands are copy-pasteable and working
 - Merge conflict resolution explained with example
-- Explanation takes <5 minutes to read
+- Explanation takes \<5 minutes to read
 ```
 
 ---
@@ -604,7 +604,7 @@ SUCCESS CRITERIA:
 - Developer can run script correctly after reading docs
 - All command examples are tested and working
 - Error codes documented (what each exit code means)
-- Documentation <200 lines (concise, not exhaustive)
+- Documentation \<200 lines (concise, not exhaustive)
 ```
 
 ---

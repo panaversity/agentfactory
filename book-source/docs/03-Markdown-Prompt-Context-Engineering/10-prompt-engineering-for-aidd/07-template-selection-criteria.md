@@ -383,7 +383,7 @@ CURRENT ISSUES:
 
 OPTIMIZATION GOALS:
 Primary goal: Performance
-Success criteria: Query completes in <500ms for 10,000 orders
+Success criteria: Query completes in \<500ms for 10,000 orders
 
 WHAT MUST STAY THE SAME:
 - Query results: Identical data returned (no behavior change)
@@ -474,7 +474,7 @@ Include step-by-step tutorial showing:
 - Faster than full custom prompt
 
 **When NOT to use hybrid**:
-- Template covers <50% (write custom instead)
+- Template covers \<50% (write custom instead)
 - Customization requires rewriting multiple sections (write custom instead)
 
 ---
@@ -646,7 +646,7 @@ For each task below:
 
 **Reflection Questions**:
 
-1. How long did each decision take? (Goal: <30 seconds per task)
+1. How long did each decision take? (Goal: \<30 seconds per task)
 2. Did you consider template assumptions or just category? (Assumptions matter!)
 3. For tasks where you chose "custom," would this task recur enough to justify creating a template?
 

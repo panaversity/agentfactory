@@ -364,7 +364,7 @@ const data = await authenticatedFetch('https://api.example.com/user/profile');
 ### Token Refresh Strategy
 
 **When to refresh**:
-- Proactive: Refresh when access token has <2 minutes remaining
+- Proactive: Refresh when access token has \<2 minutes remaining
 - Reactive: Refresh when API returns 401 Unauthorized
 
 **Proactive approach**:

@@ -63,7 +63,7 @@ By the end of this chapter, you will be able to:
 
 7. **Apply template selection decision frameworks** (B1, Evaluate)
    - Classify tasks by category (Diagnostic, Transformative, Generative, Explanatory, Evaluative)
-   - Evaluate template applicability in <30 seconds
+   - Evaluate template applicability in \<30 seconds
    - Decide between template, custom prompt, or hybrid approach
 
 8. **Write peer-reviewable specifications** (B1, Create)
@@ -145,7 +145,7 @@ This chapter follows the constitutional **4-Stage Teaching Framework**:
   - Hybrid approach (template + custom sections)
   - **Try With AI**: Evaluate 5 tasks, select template or custom
 
-**Student Capability After Stage 3**: Create and organize reusable prompt templates, select appropriate template in <30 seconds
+**Student Capability After Stage 3**: Create and organize reusable prompt templates, select appropriate template in \<30 seconds
 
 ---
 

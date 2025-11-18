@@ -343,7 +343,7 @@ TECHNICAL CONSTRAINTS:
   - No database schema changes
   - Match current design system styles
 SUCCESS CRITERIA:
-  - Search returns results in <500ms
+  - Search returns results in \<500ms
   - Results accurately match search query
   - UI feels responsive (no lag during typing)
 ```
@@ -433,7 +433,7 @@ SUCCESS CRITERIA:
 ```
 WHAT: Optimize database query in getUserOrders function
 PERFORMANCE ISSUE: Query takes 3.2s with 1000+ orders
-GOAL: Reduce query time to <500ms
+GOAL: Reduce query time to \<500ms
 APPROACH:
   - Add index on orders.userId
   - Paginate results (50 orders per page)
