@@ -97,103 +97,181 @@ version: "1.0.0"
 
 # Game Character System (Capstone)
 
-This capstone lesson integrates everything from Lessons 1-4 into a real system. You'll move from learning individual OOP concepts to designing and building a complete multi-class game system using the Four-Layer approach: (1) Specification discovery through AI, (2) Hands-on implementation with feedback, (3) Peer review with AI, (4) Extension and optimization.
+This capstone integrates everything from Lessons 1-4, but instead of manually typing 200+ lines of code, you'll work at a higher level: **planning with AI, having AI generate code, then validating and refining the design**. This is how professionals build complex systems with AI collaboration.
+
+**Key shift**: You focus on game design decisions and validation. AI handles typing and syntax details.
 
 ---
 
-## Part 1: Student Discovers Requirements Through AI Collaboration
+## Part 1: Student Plans Game Architecture with AI
 
-**Your Role**: System architect working with AI to clarify requirements
+**Your Role**: Game designer collaborating with AI to plan (not write formal specs - just plain language planning)
 
-### Collaborative Specification Exercise
+### Planning Exercise: Design Your Game System
 
-**Stage 1: Ask AI to Describe the System**
+You'll have a **design conversation** with AI about what you want to build. No formal specs - just game design thinking.
 
-Ask your AI companion:
+#### 💬 AI CoLearning Prompt - Initial Game Design
 
-> "I need to build a Game Character System for a turn-based RPG. I want:
-> - A base Character class (Player and Enemy inherit from this)
-> - Characters have: name, health, max_health, attack_power, defense
-> - Characters can: attack(), take_damage(), heal()
-> - Player can have an inventory (list of items)
-> - Enemy has an AI strategy (random or aggressive)
+> "I want to build a turn-based RPG character system. Help me think through the design (don't write code yet, just help me plan):
 >
-> Before I code, help me think through the design:
-> 1. What attributes should be protected/private vs public?
-> 2. Should attack() be different for Player vs Enemy?
-> 3. How would you structure the class hierarchy?
-> 4. What data validation is critical?"
+> **What I want:**
+> - Player and Enemy characters that can fight each other
+> - Characters have health, attack power, defense
+> - Player can level up and has inventory
+> - Enemy has different AI behaviors (random or aggressive)
+>
+> **Help me decide:**
+> 1. Should I have a base Character class that both Player and Enemy inherit from? What goes in the base vs subclasses?
+> 2. How do I prevent health from going negative or above max?
+> 3. Should attack() be in the base class or different for Player vs Enemy?
+> 4. What's the simplest way to handle inventory for Player?
+> 5. How should I structure this so I can easily add new character types later?
+>
+> Give me a simple game design plan with class structure and main decisions. Use plain language, not technical jargon."
 
-**Stage 2: Clarify Through Questions**
+**Expected AI Output**: A plain-language plan explaining:
+- Character (base) → Player/Enemy (subclasses)
+- Base class has shared behavior (attack, take_damage, heal)
+- Use properties to keep health between 0 and max
+- Player adds inventory list, Enemy adds AI behavior
+- Design rationale in simple terms
 
-Based on AI's response, ask:
-
-> "For my game design, I need to clarify:
-> 1. Should healing restore HP instantly or trigger a cooldown?
-> 2. Can attack_power change during battle?
-> 3. What happens if health goes below 0? (instant death or states like 'knocked down'?)
-> 4. Should Enemy class be able to do anything Player can't?"
-
-**Your task 1**: Document AI's responses in `system_design_specification.md`:
-- Base class design (what goes in Character vs subclasses?)
-- Attribute access levels (public/protected/private)
-- Method type selection (instance/class/static)
-- Game logic rules
-
-### Your Requirements Document
-
-Create `game_system_requirements.md` with:
-
-```markdown
-# Game Character System Requirements
-
-## Classes Needed
-
-### Character (Base Class)
-**Attributes**:
-- name: str
-- _health: float (protected)
-- _max_health: float (protected)
-- _attack_power: float (protected)
-- _defense: float (protected)
-
-**Methods**:
-- attack(target: Character) -> float: Deal damage based on attack_power and target defense
-- take_damage(amount: float): Reduce health, prevent going below 0
-- heal(amount: float): Restore health, cap at max_health
-- is_alive() -> bool: Check if health > 0
-
-### Player(Character)
-**Additional Attributes**:
-- level: int
-- experience: int
-- inventory: list
-
-**Additional Methods**:
-- gain_experience(amount: int)
-- use_item(item: str)
-- level_up()
-
-### Enemy(Character)
-**Additional Attributes**:
-- enemy_type: str
-- ai_strategy: str ('random' or 'aggressive')
-
-**Additional Methods**:
-- choose_action() -> str: Decide attack or defend based on AI
-```
-
-**Deliverable**: Specification document that you'll use as the blueprint for implementation.
+**Your task**: Read AI's plan. Does the game design make sense? Can you visualize how the classes work together?
 
 ---
 
-## Part 2: Student Implements the System Hands-On
+### Challenge AI's Design with "What If" Scenarios
 
-**Your Role**: Developer building from specification
+Now test if AI thought through edge cases:
 
-### Implementation Exercise
+#### 💬 AI CoLearning Prompt - Edge Case Planning
 
-Using your specification, build the complete system:
+> "I like your plan, but I need to think through some game scenarios:
+>
+> **Scenario 1**: Player attacks Enemy, Enemy health would go to -10. What should happen?
+> **Scenario 2**: Dead character (health = 0) tries to attack. What should happen?
+> **Scenario 3**: Player heals for 50 but only needs 20 to reach max_health. What should happen?
+>
+> For each, tell me what REAL games do and why. How should my design handle these cases?"
+
+**Expected Learning**: AI will explain game design patterns (health clamps at 0/max, dead characters can't act, healing caps at max, etc.). You're learning **design thinking**, not just coding syntax.
+
+---
+
+### Your Simple Game Design Plan
+
+After your conversation with AI, write down a simple plan (no formal template needed):
+
+**My Game Design Notes:**
+- Character (base class) - shared stuff all characters need (health, attack, defend)
+- Player extends Character - adds inventory and experience
+- Enemy extends Character - adds AI behavior
+- Health stays between 0 and max (use properties)
+- Dead characters can't attack (check is_alive() first)
+- Keep it simple - can extend later
+
+**Key Learning**: You planned the ARCHITECTURE through conversation, not by writing formal specs. That skill comes later in Part 5.
+
+**Deliverable**: Simple game design notes from your AI conversation. You've planned the architecture - now AI will help generate the implementation.
+
+---
+
+## Part 2: AI Generates Code, Student Validates Design
+
+**Your Role**: Design validator working with AI to generate and refine the system
+
+### AI-Assisted Implementation
+
+Instead of typing 200+ lines manually, you'll have AI generate the system, then YOU validate it against your design plan.
+
+#### 💬 AI CoLearning Prompt - Generate Base System
+
+> "Based on my game design plan, generate the Python code for my character system:
+>
+> **Requirements:**
+> - Character base class with:
+>   - name, _health, _max_health, _attack_power, _defense attributes (use protected _underscore)
+>   - attack(target), take_damage(amount), heal(amount), is_alive() methods
+>   - Use @property for health to keep it between 0 and max
+> - Player class inheriting from Character with:
+>   - inventory (list), level (int), experience (int)
+>   - gain_experience(amount), use_item(item), level_up() methods
+> - Enemy class inheriting from Character with:
+>   - enemy_type (str), ai_strategy ('random' or 'aggressive')
+>   - choose_action() method
+>
+> **Important:**
+> - Add type hints to everything
+> - Health must stay between 0 and max (validate in property setter)
+> - Dead characters (health = 0) can't attack (check in attack method)
+> - Include docstrings
+>
+> Generate the complete code. I'll validate it against my design."
+
+**Expected AI Output**: ~100-150 lines of complete code implementing your design.
+
+---
+
+### Validation Exercise: Check AI's Implementation
+
+**Your task**: Read the AI-generated code and validate these design decisions:
+
+**✅ Validation Checklist:**
+
+1. **Inheritance Structure**:
+   - Does Player inherit from Character? ✓
+   - Does Enemy inherit from Character? ✓
+   - Is shared behavior in the base class? ✓
+
+2. **Encapsulation (Lesson 4 concept)**:
+   - Are health, attack_power, defense protected (_underscore)? ✓
+   - Is there a @property for health with validation? ✓
+   - Does the setter prevent health < 0 or > max? ✓
+
+3. **Edge Cases (from Part 1 planning)**:
+   - Dead character attack: Does attack() check is_alive()? ✓
+   - Negative health: Does take_damage() clamp at 0? ✓
+   - Overheal: Does heal() cap at max_health? ✓
+
+4. **Type Hints (Chapter 24 standard)**:
+   - Does every method have parameter and return type hints? ✓
+   - Are attributes typed in `__init__`? ✓
+
+---
+
+### Challenge AI's Code with Test Cases
+
+#### 💬 AI CoLearning Prompt - Test Edge Cases
+
+> "I want to validate your code handles edge cases correctly. Show me test code for:
+>
+> **Test 1: Health Clamping**
+> ```python
+> player = Player("Hero", max_health=100, attack_power=20, defense=5)
+> enemy = Enemy("Goblin", max_health=50, attack_power=15, defense=2)
+>
+> # Attack multiple times - health should stop at 0, not go negative
+> enemy.take_damage(30)  # 50 - 30 = 20
+> enemy.take_damage(30)  # Should clamp at 0, not -10
+> print(enemy.health)  # Should print 0
+> ```
+>
+> **Test 2: Dead Character Can't Attack**
+> ```python
+> print(enemy.attack(player))  # Should return 0 (can't attack when dead)
+> ```
+>
+> **Test 3: Overheal Caps at Max**
+> ```python
+> player.take_damage(20)  # Now at 80 health
+> player.heal(50)  # Should heal only to 100, not 130
+> print(player.health)  # Should print 100
+> ```
+>
+> Run these tests and show me the output. Do they all pass as expected?"
+
+**Expected Learning**: You validate AI's implementation through testing, not by reading every line. This is professional workflow - specify requirements, generate, validate.
 
 ```python
 from abc import ABC, abstractmethod
@@ -303,82 +381,120 @@ Create `game_character_system.py` with:
 
 ---
 
-## Part 3: AI Reviews Your Implementation
+## Part 3: Student Challenges AI with "What If" Extensions
 
-**Your Role**: Developer receiving code review from AI
+**Your Role**: Game designer testing design flexibility
 
-### Code Review Exercise
+### Extension Challenge Exercise
 
-Paste your code and ask:
+Now that you have a working system, challenge AI to extend it. Can the design handle new features?
 
-> "Review my Game Character System for design quality. Check:
-> 1. Are my access levels (public/protected/private) appropriate?
-> 2. Did I use inheritance effectively or is there duplication?
-> 3. Are my method types (instance/class/static) correct?
-> 4. What edge cases did I miss?
-> 5. What would a professional production system add that I'm missing?"
+#### 💬 AI CoLearning Prompt - Add Boss Character
 
-### Convergence Activity
+> "I want to add a Boss character to my game. Bosses should:
+> - Have multiple health bars (when one empties, another appears)
+> - Have special attacks that do area damage
+> - Drop better loot when defeated
+>
+> How should I design this? Should Boss inherit from Enemy, or be its own class? Show me the code changes needed. Explain the design trade-offs."
 
-Based on AI's feedback, ask:
-
-> "For the three things I should fix immediately, show me the refactored code and explain why each change improves the design."
-
-**Deliverable**: List of improvements and refactored code sections addressing AI's feedback.
+**Expected Learning**: AI will show you how to extend your class hierarchy. You'll see if your original design was flexible or needs refactoring. This is real-world design validation.
 
 ---
 
-## Part 4: Student Extends the System
+#### 💬 AI CoLearning Prompt - Add Equipment System
 
-**Your Role**: Designer adding features based on deeper understanding
+> "I want Players to equip weapons and armor that boost their stats:
+> - Weapon increases attack_power
+> - Armor increases defense
+> - Players can equip/unequip items
+>
+> Should equipment be:
+> a) Attributes on Player class?
+> b) Separate Equipment class with composition?
+> c) Something else?
+>
+> Show me the design and explain why it's better than alternatives. Generate the Equipment class code."
 
-### Extension Exercise
+**Expected Learning**: AI will introduce **composition** (objects containing other objects) as an alternative to inheritance. You're learning advanced OOP design patterns.
 
-Choose one extension and implement it:
+---
 
-**Option A: Combat System**
-```python
-# Add turn-based combat simulation
-class Battle:
-    def __init__(self, player: Player, enemy: Enemy):
-        self.player = player
-        self.enemy = enemy
-        self.turn = 0
+#### 💬 AI CoLearning Prompt - Add Save/Load System
 
-    def simulate_turn(self):
-        """Execute one combat round"""
-        # Player acts
-        # Enemy decides action
-        # Apply effects
-        # Check end conditions
-        pass
+> "I want to save the game state to a JSON file and load it later:
+> - Save all character attributes (health, inventory, level, etc.)
+> - Load and recreate characters from saved data
+>
+> Show me:
+> 1. How to convert a Player object to JSON (serialization)
+> 2. How to recreate a Player object from JSON (deserialization)
+> 3. What methods should I add to my classes to support this?
+>
+> Generate the code for save_game() and load_game() functions."
 
-    def run_battle(self) -> str:
-        """Simulate until one character dies, return winner"""
-        pass
-```
+**Expected Learning**: You're seeing how your OOP design enables features you didn't originally plan. Good design is flexible.
 
-**Option B: Item System**
-```python
-class Item:
-    def __init__(self, name: str, item_type: str, value: float):
-        self.name = name
-        self.item_type = item_type
-        self.value = value
+**Deliverable**: Extended game system with 1-2 new features (Boss, Equipment, or Save/Load) generated and validated through AI collaboration.
 
-    def use(self, character: Character):
-        """Apply item effects"""
-        pass
-```
+---
 
-**Option C: Experience and Progression**
-- Implement experience scaling
-- Add equipment (weapons, armor)
-- Create skill system
+## Part 4: Build Your OOP Design Framework
 
-**Your task**: Implement one extension that requires new classes or significant refactoring.
+**Your Role**: Experienced designer extracting lessons learned
 
-**Deliverable**: Extended system with 1-2 new features, tested and documented.
+### Reflection Exercise
+
+After building and extending your system with AI, extract the **design patterns** you learned.
+
+#### 💬 AI CoLearning Prompt - Synthesize Lessons
+
+> "Based on my Game Character System project, help me create a simple design guide for future OOP projects:
+>
+> **What I learned:**
+> 1. When to use inheritance (base class + subclasses)
+> 2. When to use composition (objects containing other objects)
+> 3. How to use properties for validation
+> 4. How to design for extensibility
+>
+> Give me a simple framework with:
+> - When to use each pattern
+> - Common mistakes to avoid
+> - Quick decision guide ('If X, use Y')
+>
+> Use my game system as the example throughout."
+
+**Expected AI Output**: A personalized OOP design guide based on your actual project experience.
+
+---
+
+### Your OOP Design Framework
+
+Save AI's framework as your reference. Example structure:
+
+**My OOP Design Guide (From Game System Project):**
+
+**When to Use Inheritance:**
+- Base class = shared behavior (Character: attack, take_damage, heal)
+- Subclasses = specialization (Player adds inventory, Enemy adds AI)
+- Ask: "Is this an IS-A relationship?" (Player IS-A Character ✓)
+
+**When to Use Composition:**
+- Objects contain other objects (Player HAS-A Equipment)
+- More flexible than inheritance (can swap equipment)
+- Ask: "Is this a HAS-A relationship?" (Player HAS-A Inventory ✓)
+
+**Design for Extensibility:**
+- Use protected attributes (_health) so subclasses can access
+- Use properties for validation (keeps data valid)
+- Keep methods focused (single responsibility)
+
+**Common Mistakes I Avoided:**
+- Making everything inherit (sometimes composition is better)
+- Forgetting validation (properties saved me)
+- Not planning for extensions (had to refactor Boss class)
+
+**Deliverable**: Personal OOP design framework extracted from your project. You've learned by building, not just reading.
 
 ---
 
