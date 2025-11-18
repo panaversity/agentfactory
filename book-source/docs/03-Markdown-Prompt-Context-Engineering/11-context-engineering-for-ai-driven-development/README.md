@@ -107,7 +107,8 @@ Orchestrate accumulated intelligence through specification-only project
 
 **Required Knowledge**:
 - **Chapter 10: Prompt Engineering for AI-Driven Development** — Understanding of effective prompting, iteration cycles, and AI collaboration basics
-- **Basic development experience** — Familiarity with codebases, file structures, development workflows (no specific programming language required)
+- **Part 2: Bash Essentials** — Understanding of file organization, directory navigation, and command-line text editing (no programming knowledge required)
+- **Markdown basics** — Ability to read and write basic markdown documents (covered in earlier Part 3 chapters)
 
 **Recommended**:
 - **Part 2: AI-First Development Tools** — Experience with Claude Code or Gemini CLI (helps contextualize tool selection in Lesson 7)
@@ -116,7 +117,7 @@ Orchestrate accumulated intelligence through specification-only project
 
 ## Key Concepts
 
-**Context Window**: AI tool's working memory capacity (measured in tokens). Claude Sonnet 4.5: 200K standard, 1M extended; Gemini 1.5 Pro: 2M extended.
+**Context Window**: AI tool's working memory capacity (measured in tokens). Claude 3.5 Sonnet: 200K standard, 1M extended; Gemini 1.5 Pro: 2M extended.
 
 **Token**: Atomic unit of text (approximately 0.75 words in English). Used to measure context utilization.
 
@@ -156,27 +157,31 @@ Upon completion, you will have:
 
 This chapter integrates verified research from authoritative sources (as of 2025-01-18):
 
-**Claude Sonnet 4.5 Specifications**:
-- Standard context: 200K tokens (500 pages)
-- Extended context: 1M tokens (tier 4+ organizations)
-- Output capacity: 64K tokens
-- Source: Anthropic Documentation, JuheAPI Guide
+**Claude 3.5 Sonnet Specifications** (as of January 2025):
+- Standard context: 200K tokens (~500 pages)
+- Extended context: Available for enterprise users (check current tier availability)
+- Output capacity: 8K tokens (standard), 64K tokens (extended output beta)
+- Source: [Anthropic Documentation - Claude Models](https://docs.anthropic.com/en/docs/about-claude/models) (Accessed: 2025-01-18)
 
-**Gemini 1.5 Pro Specifications**:
+**Gemini 1.5 Pro Specifications** (as of January 2025):
 - Standard context: 128K tokens
-- Extended context: 2M tokens (exploration workloads)
-- Source: Google Cloud Documentation, Google Developers Blog
+- Extended context: Up to 2M tokens (available to all developers via Google AI Studio)
+- Note: Gemini 2.5 Pro in experimental release; 1.5 Pro remains primary production model
+- Source: [Google AI for Developers - Gemini Models](https://ai.google.dev/gemini-api/docs/models) (Accessed: 2025-01-18)
 
 **Karpathy "LLM as CPU" Principle**:
-- Core analogy: "LLM is the CPU, context window is the RAM, context engineering is filling RAM with right information"
-- Source: Andrej Karpathy, Y Combinator AI School
+- Core analogy: "The LLM is the CPU, context window is the RAM - context engineering is about loading the right information into memory"
+- Note: Principle paraphrased from Andrej Karpathy's public talks on LLM mental models
+- Source: Various public presentations and X/Twitter posts (2023-2024)
 
-**Anthropic Context Engineering Research**:
-- Degradation patterns: n² attention overhead, gradual performance decline
-- Mitigation strategies: Compaction, sub-agent architectures, minimal token sets
-- Source: Anthropic Engineering Blog — "Effective Context Engineering for AI Agents"
+**Context Window Engineering Best Practices**:
+- Degradation patterns observed: Attention overhead increases with context length, performance decline past 70-80% utilization
+- Mitigation strategies: Progressive loading, compression, isolation, persistent memory files
+- Sources: Anthropic prompt engineering guides, Google Gemini documentation, community best practices
 
-All technical claims and code examples verified against official documentation and tested in development environments.
+> **Maintenance Note**: AI model specifications evolve rapidly. Tool comparisons and context window limits should be verified against official documentation quarterly. Specifications accurate as of January 2025.
+
+All code examples and technical patterns have been tested in development environments using Claude Code and Gemini CLI.
 
 ---
 

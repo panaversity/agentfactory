@@ -186,7 +186,7 @@ A **token** is an atomic unit of text that an AI model processes. Think of it li
 - **Code** is more token-dense because special characters (`:`, `{`, `}`, `.`, etc.) are separate tokens
 - **Whitespace** and formatting characters count as tokens
 
-**Why this matters for context engineering**: If your context window is 200,000 tokens (Claude Sonnet 4.5 standard), and you load a 500-page document, you've used up a significant chunk. If you load 5 large Python files, you're approaching the midpoint. Understanding token scale helps you make decisions about what to load.
+**Why this matters for context engineering**: If your context window is 200,000 tokens (Claude 3.5 Sonnet standard), and you load a 500-page document, you've used up a significant chunk. If you load 5 large Python files, you're approaching the midpoint. Understanding token scale helps you make decisions about what to load.
 
 ## Types of Content in Your Context Window
 
@@ -237,7 +237,7 @@ Utilization % = (Tokens Used ÷ Context Window Size) × 100
 **Example calculations**:
 
 **Scenario A: Fresh Claude Code session**
-- Context window: 200,000 tokens (Claude Sonnet 4.5)
+- Context window: 200,000 tokens (Claude 3.5 Sonnet)
 - Used so far: 5,000 tokens (2 files loaded, brief conversation)
 - Utilization: (5,000 ÷ 200,000) × 100 = **2.5%** ✅ Very comfortable
 
@@ -371,7 +371,7 @@ Different AI models have different context window capacities. If you're designin
 
 | Model | Standard Context | Extended Context | Use Case |
 |---|---|---|---|
-| **Claude Sonnet 4.5** | 200K tokens | 1M tokens (tier 4+) | Focused development, deep reasoning on focused codebases |
+| **Claude 3.5 Sonnet** | 200K tokens | 1M tokens (tier 4+) | Focused development, deep reasoning on focused codebases |
 | **Gemini 1.5 Pro** | 128K tokens | 2M tokens | Large codebase exploration, pattern analysis across files |
 
 **Context window growth over time** (2024-2025):
