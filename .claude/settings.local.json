@@ -15,20 +15,21 @@
       "Bash(\"D:\\ai-native-software-development\\book-source\\src\\components\\CustomNavbar\\customNavbar.css.tmp\")",
       "Bash(dir:*)",
       "Bash(nul)",
-      "Bash(test:*)"
+      "Bash(test:*)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []
   },
-  "disabledMcpjsonServers": [
-    "playwright",
-    "context7"
-  ],
-  "alwaysThinkingEnabled": false,
+  "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "playwright",
     "context7",
     "shadcn"
   ],
-  "enableAllProjectMcpServers": true
+  "disabledMcpjsonServers": [
+    "playwright",
+    "context7"
+  ],
+  "alwaysThinkingEnabled": false
 }

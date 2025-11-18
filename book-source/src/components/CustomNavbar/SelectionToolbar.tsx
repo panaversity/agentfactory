@@ -196,6 +196,33 @@ ${text}
 Please provide the summary now.`;
   }, []);
 
+  const handleExplain = useCallback(() => {
+    if (!selectedText) return;
+
+    // Get page metadata
+    const pageTitle = document.title;
+    const pageUrl = window.location.pathname;
+    const h1 = document.querySelector('h1')?.textContent || 'Unknown Section';
+
+    // Build the explain prompt with context
+    const explainPrompt = `Context: This text is from "${pageTitle}" (${pageUrl}), section: "${h1}"
+
+Please explain the following text in detail. Break down complex concepts, provide examples if helpful, and make it easy to understand:
+
+"""
+${selectedText}
+"""`;
+
+    // Dispatch custom event to open PanaChat with the message
+    window.dispatchEvent(new CustomEvent('openPanaChatWithMessage', {
+      detail: { message: explainPrompt }
+    }));
+
+    // Clear selection and hide toolbar
+    window.getSelection()?.removeAllRanges();
+    setVisible(false);
+  }, [selectedText]);
+
   const handleSummary = useCallback((style: string) => {
     if (!selectedText) return;
 
@@ -675,7 +702,33 @@ Please provide the summary now.`;
         <span>Notes</span>
       </button>
 
-{/* 
+      <button
+        className="selection-toolbar__button"
+        onClick={handleExplain}
+        title="Explain selected text"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle
+            cx="8"
+            cy="8"
+            r="6"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M8 12V8M8 5.5V5"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+        <span>Explain</span>
+      </button>
+
+{/*
       <button
         className="selection-toolbar__button"
         onClick={() => handleAction('Assessment')}

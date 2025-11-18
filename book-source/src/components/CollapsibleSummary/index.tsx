@@ -6,26 +6,37 @@ interface CollapsibleSummaryProps {
   pageTitle: string;
 }
 
+type SummarySize = 'short' | 'medium' | 'long';
+
+const SIZE_SENTENCE_LIMITS = {
+  short: '2 sentences',
+  medium: '4 sentences',
+  long: '6 sentences',
+};
+
 const CollapsibleSummary: React.FC<CollapsibleSummaryProps> = ({ pagePath, pageTitle }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [summary, setSummary] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasCheckedCache, setHasCheckedCache] = useState(false);
+  const [selectedSize, setSelectedSize] = useState<SummarySize>('medium');
 
   const API_BASE = 'http://localhost:3001/api/summary';
 
-  // Check if summary exists when component mounts
+  // Check if summary exists when component mounts or size changes
   useEffect(() => {
     const checkExistingSummary = async () => {
       try {
         const response = await fetch(
-          `${API_BASE}/check?pagePath=${encodeURIComponent(pagePath)}`
+          `${API_BASE}/check?pagePath=${encodeURIComponent(pagePath)}&size=${selectedSize}`
         );
         const data = await response.json();
 
         if (data.exists && data.summary) {
           setSummary(data.summary);
+        } else {
+          setSummary(null);
         }
         setHasCheckedCache(true);
       } catch (err) {
@@ -35,7 +46,7 @@ const CollapsibleSummary: React.FC<CollapsibleSummaryProps> = ({ pagePath, pageT
     };
 
     checkExistingSummary();
-  }, [pagePath]);
+  }, [pagePath, selectedSize]);
 
   const handleToggle = async () => {
     const newIsOpen = !isOpen;
@@ -48,19 +59,53 @@ const CollapsibleSummary: React.FC<CollapsibleSummaryProps> = ({ pagePath, pageT
   };
 
   const generateSummary = async () => {
+    // Use the helper function with current selected size
+    await generateSummaryWithSize(selectedSize);
+  };
+
+  const handleSizeChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newSize = e.target.value as SummarySize;
+
+    console.log('🔄 [Frontend] Size changed:', {
+      oldSize: selectedSize,
+      newSize: newSize,
+      isOpen: isOpen,
+    });
+
+    // Update state first
+    setSelectedSize(newSize);
+    setError(null);
+    setSummary(null); // Clear current summary when size changes
+
+    // If panel is open, generate with new size directly
+    // (Can't rely on state update since it's async)
+    if (isOpen) {
+      console.log('🔄 [Frontend] Panel is open, triggering regeneration with new size:', newSize);
+      await generateSummaryWithSize(newSize);
+    }
+  };
+
+  const generateSummaryWithSize = async (size: SummarySize) => {
     setIsLoading(true);
     setError(null);
 
+    console.log('🔍 [Frontend] Generating summary with size:', size);
+
     try {
+      const requestBody = {
+        pagePath,
+        pageTitle,
+        size: size,
+      };
+
+      console.log('📤 [Frontend] Sending request body:', requestBody);
+
       const response = await fetch(`${API_BASE}/generate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          pagePath,
-          pageTitle,
-        }),
+        body: JSON.stringify(requestBody),
       });
 
       if (!response.ok) {
@@ -69,8 +114,16 @@ const CollapsibleSummary: React.FC<CollapsibleSummaryProps> = ({ pagePath, pageT
 
       const data = await response.json();
 
+      console.log('📥 [Frontend] Received response:', {
+        success: data.success,
+        size: data.size,
+        summaryLength: data.summary?.length,
+        summaryPreview: data.summary?.substring(0, 100) + '...',
+      });
+
       if (data.success && data.summary) {
         setSummary(data.summary);
+        console.log('✅ [Frontend] Summary set successfully');
       } else {
         throw new Error('Invalid response from server');
       }
@@ -84,18 +137,37 @@ const CollapsibleSummary: React.FC<CollapsibleSummaryProps> = ({ pagePath, pageT
 
   return (
     <div className={styles.summaryContainer}>
-      <button
-        className={styles.summaryToggle}
-        onClick={handleToggle}
-        aria-expanded={isOpen}
-        aria-controls="page-summary"
-      >
-        <span className={styles.summaryIcon}>{isOpen ? '▼' : '▶'}</span>
-        <span className={styles.summaryTitle}>Page Summary</span>
-        {summary && !isOpen && (
-          <span className={styles.cachedBadge}>Cached</span>
-        )}
-      </button>
+      <div className={styles.summaryHeader}>
+        <button
+          className={styles.summaryToggle}
+          onClick={handleToggle}
+          aria-expanded={isOpen}
+          aria-controls="page-summary"
+        >
+          <span className={styles.summaryIcon}>{isOpen ? '▼' : '▶'}</span>
+          <span className={styles.summaryTitle}>Page Summary</span>
+          {summary && !isOpen && (
+            <span className={styles.cachedBadge}>Cached</span>
+          )}
+        </button>
+
+        <div className={styles.sizeSelector}>
+          <label htmlFor="summary-size" className={styles.sizeLabel}>
+            Size:
+          </label>
+          <select
+            id="summary-size"
+            value={selectedSize}
+            onChange={handleSizeChange}
+            className={styles.sizeDropdown}
+            aria-label="Summary size"
+          >
+            <option value="short">Short (2 sentences)</option>
+            <option value="medium">Medium (4 sentences)</option>
+            <option value="long">Long (6 sentences)</option>
+          </select>
+        </div>
+      </div>
 
       {isOpen && (
         <div
@@ -104,78 +176,41 @@ const CollapsibleSummary: React.FC<CollapsibleSummaryProps> = ({ pagePath, pageT
           role="region"
           aria-label="Page summary"
         >
-          {isLoading && (
-            <div className={styles.loadingState}>
-              <div className={styles.spinner}></div>
-              <p>Generating summary...</p>
+          <div className={styles.summaryCard}>
+            <div className={styles.summaryCardHeader}>
+              <span className={styles.summaryIcon}>📝</span>
+              <span className={styles.summaryCardTitle}>Summary</span>
             </div>
-          )}
 
-          {error && (
-            <div className={styles.errorState}>
-              <p className={styles.errorMessage}>⚠️ {error}</p>
-              <button
-                className={styles.retryButton}
-                onClick={generateSummary}
-              >
-                Retry
-              </button>
-            </div>
-          )}
+            {isLoading && (
+              <div className={styles.loadingState}>
+                <div className={styles.spinner}></div>
+                <p>Generating summary...</p>
+              </div>
+            )}
 
-          {summary && !isLoading && (
-            <div
-              className={styles.summaryText}
-              dangerouslySetInnerHTML={{
-                __html: renderMarkdown(summary),
-              }}
-            />
-          )}
+            {error && (
+              <div className={styles.errorState}>
+                <p className={styles.errorMessage}>⚠️ {error}</p>
+                <button
+                  className={styles.retryButton}
+                  onClick={generateSummary}
+                >
+                  Retry
+                </button>
+              </div>
+            )}
+
+            {summary && !isLoading && (
+              <div className={styles.summaryText}>
+                {summary}
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>
   );
 };
-
-// Simple markdown renderer for basic formatting
-function renderMarkdown(text: string): string {
-  let html = text;
-
-  // Headers
-  html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
-  html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
-  html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
-
-  // Bold
-  html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
-  // Italic
-  html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
-
-  // Code inline
-  html = html.replace(/`(.*?)`/g, '<code>$1</code>');
-
-  // Lists - unordered
-  html = html.replace(/^\* (.*$)/gim, '<li>$1</li>');
-  html = html.replace(/^- (.*$)/gim, '<li>$1</li>');
-
-  // Wrap consecutive <li> in <ul>
-  html = html.replace(/(<li>.*<\/li>)/s, (match) => {
-    return '<ul>' + match + '</ul>';
-  });
-
-  // Line breaks
-  html = html.replace(/\n\n/g, '</p><p>');
-  html = '<p>' + html + '</p>';
-
-  // Clean up empty paragraphs
-  html = html.replace(/<p><\/p>/g, '');
-  html = html.replace(/<p>(<h[1-3]>)/g, '$1');
-  html = html.replace(/(<\/h[1-3]>)<\/p>/g, '$1');
-  html = html.replace(/<p>(<ul>)/g, '$1');
-  html = html.replace(/(<\/ul>)<\/p>/g, '$1');
-
-  return html;
-}
 
 export default CollapsibleSummary;

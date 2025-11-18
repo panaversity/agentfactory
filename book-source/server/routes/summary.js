@@ -6,7 +6,16 @@ const router = express.Router();
 // Generate summary for a specific page
 router.post('/generate', async (req, res) => {
   try {
-    const { pagePath, pageTitle } = req.body;
+    console.log('\n📨 [Backend Route] Received generate request');
+    console.log('📦 [Backend Route] Request body:', req.body);
+
+    const { pagePath, pageTitle, size = 'medium' } = req.body;
+
+    console.log('🔍 [Backend Route] Extracted values:', {
+      pagePath,
+      pageTitle,
+      size,
+    });
 
     if (!pagePath || typeof pagePath !== 'string') {
       return res.status(400).json({
@@ -20,12 +29,26 @@ router.post('/generate', async (req, res) => {
       });
     }
 
-    const summary = await generateSummary(pagePath, pageTitle);
+    // Validate size parameter
+    const validSizes = ['short', 'medium', 'long'];
+    if (size && !validSizes.includes(size)) {
+      return res.status(400).json({
+        error: 'size must be one of: short, medium, long'
+      });
+    }
+
+    console.log('🚀 [Backend Route] Calling generateSummary with size:', size);
+
+    const summary = await generateSummary(pagePath, pageTitle, size);
+
+    console.log('✅ [Backend Route] Summary generated successfully');
+    console.log('📊 [Backend Route] Summary length:', summary.length);
 
     res.json({
       success: true,
       summary,
-      pagePath
+      pagePath,
+      size
     });
   } catch (error) {
     console.error('Error generating summary:', error);
@@ -39,7 +62,7 @@ router.post('/generate', async (req, res) => {
 // Check if summary exists for a page
 router.get('/check', async (req, res) => {
   try {
-    const { pagePath } = req.query;
+    const { pagePath, size = 'medium' } = req.query;
 
     if (!pagePath || typeof pagePath !== 'string') {
       return res.status(400).json({
@@ -47,12 +70,21 @@ router.get('/check', async (req, res) => {
       });
     }
 
-    const summary = await getSummary(pagePath);
+    // Validate size parameter
+    const validSizes = ['short', 'medium', 'long'];
+    if (size && !validSizes.includes(size)) {
+      return res.status(400).json({
+        error: 'size must be one of: short, medium, long'
+      });
+    }
+
+    const summary = await getSummary(pagePath, size);
 
     res.json({
       exists: !!summary,
       summary: summary || null,
-      pagePath
+      pagePath,
+      size
     });
   } catch (error) {
     console.error('Error checking summary:', error);
