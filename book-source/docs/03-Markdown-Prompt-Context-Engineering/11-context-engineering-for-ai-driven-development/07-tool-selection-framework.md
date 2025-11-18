@@ -117,7 +117,7 @@ Your choice depends on **task characteristics**: scope, complexity, reasoning ne
 
 ### Dimension 1: Task Scope — How Much Code?
 
-**Small scope** (1-5 files, <10K lines):
+**Small scope** (1-5 files, &lt;10K lines):
 - **Choose**: Claude Code
 - **Why**: 200K context is more than enough. You get IDE integration and deep reasoning.
 - **Example**: Implement single endpoint in FastAPI module

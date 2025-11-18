@@ -609,7 +609,7 @@ For each scenario below, decide: **Compress, Isolate, or Restart?**
 - Planning to continue immediately (OAuth2 is part of same feature)
 - Context is 80% (compression point)
 - Suggestions are degrading but not severely
-- Recovery time (5 min) << benefit time (30+ more minutes of work)
+- Recovery time (5 min) &lt;&lt; benefit time (30+ more minutes of work)
 - Checkpoint captures architectural decisions made so far
 - New session can continue with clear context
 

@@ -120,13 +120,13 @@ Trigger: Alert when crossing 70%, 80%, 90% thresholds
 When: Utilization exceeds 80% AND session duration > 60 minutes
 What: Extract architectural decisions, progress summary, next steps
 How: Generate checkpoint in <2 minutes
-Size: Checkpoint < 600 tokens
+Size: Checkpoint &lt;600 tokens
 Output: Save as CHECKPOINT.md in project
 
 ### Requirement 3: Task Isolation Detection
 When: User starts new task
 What: Measure semantic similarity to current context (0-100%)
-Trigger: If similarity < 50%, recommend isolation
+Trigger: If similarity &lt;50%, recommend isolation
 User choice: Accept recommendation (create new session) or continue mixed
 
 ### Requirement 4: Memory File Persistence
@@ -169,7 +169,7 @@ Reasoning: Explain why chosen
   - Same API routes? (+15 points)
   - Shared test suite? (+15 points)
   - Score: Sum of matched criteria
-  - Isolated if score < 50
+  - Isolated if score &lt;50
 
 **Memory File Manager** (Component 4)
 - Responsibility: Load project context at session start, update at end
@@ -185,7 +185,7 @@ Reasoning: Explain why chosen
 - Inputs: Task scope (codebase size), complexity assessment
 - Outputs: Tool recommendation + reasoning
 - Decision logic:
-  - If codebase < 50K lines: Recommend Claude Code
+  - If codebase &lt;50K lines: Recommend Claude Code
   - If codebase 50K-500K lines: Evaluate complexity
     - If deep architectural reasoning needed: Claude Code
     - If broad pattern analysis needed: Gemini CLI
@@ -229,7 +229,7 @@ How the system applies progressive loading:
 **Decision Logic**:
 - Foundation constant (always loaded)
 - Current varies by task
-- Total target: < 70% utilization after Foundation + Current
+- Total target: &lt;70% utilization after Foundation + Current
 - Reserve: 30% for on-demand fetching
 
 ## Compression/Isolation Decision Logic (From Lessons 4-5)
@@ -244,7 +244,7 @@ THEN create checkpoint and restart session
 
 **Isolation Triggers** (Different task, context separation):
 ```
-IF similarity_score < 50%
+IF similarity_score &lt;50%
 AND new_task_complexity > current_context_complexity
 THEN recommend isolated session
 
@@ -254,7 +254,7 @@ Similarity calculation:
   - shared_service: +20
   - shared_routes: +15
   - shared_tests: +15
-  - total < 50: ISOLATE
+  - total &lt;50: ISOLATE
 ```
 
 ## Memory File Update Strategy (From Lesson 6)
@@ -446,11 +446,11 @@ Your spec should demonstrate mastery of all 8 lessons:
 
 **Lesson 1-2: Degradation Recognition** → Spec includes: "Context Monitor tracks utilization, alerts at 70%/80%/90%"
 
-**Lesson 3: Progressive Loading** → Spec includes: "Foundation/Current/On-Demand phases, target <70% utilization"
+**Lesson 3: Progressive Loading** → Spec includes: "Foundation/Current/On-Demand phases, target &lt;70% utilization"
 
 **Lesson 4: Compression** → Spec includes: "Checkpoint Engine creates checkpoint when 80% utilization + 60min"
 
-**Lesson 5: Isolation** → Spec includes: "Task Similarity Analyzer recommends isolation when score < 50%"
+**Lesson 5: Isolation** → Spec includes: "Task Similarity Analyzer recommends isolation when score &lt;50%"
 
 **Lesson 6: Memory Files** → Spec includes: "Memory File Manager loads CLAUDE.md/architecture.md/decisions.md at start, updates at end"
 
