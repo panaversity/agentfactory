@@ -271,14 +271,12 @@ Python applications need a way to save and load user settings (log level, output
 
 | Scenario | Steps | Expected Result |
 |----------|-------|-----------------|
-| Save new config | Call save_config({"log_level": "DEBUG"}) | config.json created with JSON content |
-| Load existing config | Call load_config() after save | Returns {"log_level": "DEBUG"} |
+| Save new config | Call save_config(\{"log_level": "DEBUG"\}) | config.json created with JSON content |
+| Load existing config | Call load_config() after save | Returns \{"log_level": "DEBUG"\} |
 | Load missing file | Call load_config("missing.json") | Returns default_settings dict |
 | Load corrupted JSON | File contains invalid JSON; call load_config() | Raises JSONDecodeError with message |
 | Load with absolute path | Call load_config("/tmp/app_config.json") | Correctly reads from absolute path |
 | Permission denied (Unix) | Config file has read-only permissions; call load_config() | Raises PermissionError |
-
-```
 
 ### What This Specification Contains
 

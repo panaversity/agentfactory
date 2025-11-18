@@ -510,7 +510,7 @@ Now it's your turn. You'll design **two reusable intelligence components** using
 - Persona should activate threat-modeling mindset
 - Questions should cover: threat actors, data sensitivity, compliance, attack vectors
 - Principles should guide real security decisions (not generic "be secure")
-- Consider: Is this 5+ decision points? (If <5, it's a Skill instead)
+- Consider: Is this 5+ decision points? (If &lt;5, it's a Skill instead)
 
 ### Exercise 2: Design an API Design Skill
 
