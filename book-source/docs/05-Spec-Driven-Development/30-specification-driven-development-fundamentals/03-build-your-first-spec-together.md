@@ -330,6 +330,34 @@ This is **AI-native specification development** in action:
 
 **Key insight:** Specifications improve through iteration. When AI generated wrong code (Scenario 3), it wasn't AI's fault—it was an **ambiguous specification**. The failure taught you where precision was needed. Professional specs are written iteratively, using AI as a co-reasoning partner to catch gaps early.
 
+#### 💬 AI Colearning Prompt
+> "Reflect on the calculator spec we just built together. Identify one moment where (1) AI taught me something I didn't consider, (2) I taught AI a constraint it didn't assume, and (3) we converged on a better spec through iteration. How is this different from 'prompting AI to write code'?"
+
+---
+
+### Reflection: The Co-Learning Pattern
+
+Notice what just happened across the three scenarios:
+
+**AI as Teacher** (Scenario 2):
+- AI suggested runtime type validation pattern you hadn't considered
+- AI asked "type hints or isinstance checks?" revealing a specification gap
+- You learned from AI's question (type checking strategies)
+
+**You as Teacher** (Scenario 3):
+- AI assumed division by zero should return 0 (wrong)
+- You corrected: "Must raise ZeroDivisionError" (domain knowledge)
+- AI learned your constraint and regenerated correctly
+
+**Convergence Together** (All scenarios):
+- Draft spec → Code generation → Validation → Gaps revealed → Spec refinement → Regeneration
+- Neither human nor AI could have written the perfect spec alone
+- Iteration produced production-ready specification
+
+This is **bidirectional learning**—both human and AI improve through collaboration. You bring domain knowledge and intent; AI brings systematic thinking and edge case discovery. Together, you create specifications that neither could write independently.
+
+**This pattern is the foundation of AI-native software development.**
+
 ---
 
 ## What You Just Learned (By Doing)
