@@ -475,7 +475,7 @@ Ready to use pattern matching with match-case for cleaner conditionals?
 > "Create a command router that takes user input ('help', 'quit', 'save', 'load', etc.) and executes actions using match-case. Compare this to equivalent if/elif/else code. Which is more readable? When should I use match-case vs. if/elif?"
 
 **🧪 Test Advanced Patterns:**
-> "Demonstrate match-case with structural patterns: matching list lengths [x, y], dict keys {"type": "user"}, object attributes. Show me a real example like processing API responses with different structures. How does the wildcard pattern _ work as a catch-all?"
+> "Demonstrate match-case with structural patterns: matching list lengths [x, y], dict keys `{"type": "user"}`, object attributes. Show me a real example like processing API responses with different structures. How does the wildcard pattern _ work as a catch-all?"
 
 **🚀 Apply to Your Routing Logic:**
 > "I'm building [describe your application]. Help me use match-case for: command routing, event handling, API response processing, or state machine transitions. Show me when match-case is clearer than if/elif and when if/elif is actually better."

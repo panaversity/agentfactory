@@ -213,7 +213,7 @@ You might wonder: "Why are we learning comparisons separately from if statements
 Ready to master comparison operators and understand why = is different from ==?
 
 **🔍 Explore Comparison Operators:**
-> "Explain the 6 comparison operators: ==, !=, >, <, >=, <=. For each, show me 2 examples with numbers and explain the True/False result. Why does Python use == for comparison but = for assignment? Show me what happens if I accidentally write if x = 5: instead of if x == 5:"
+> "Explain the 6 comparison operators: `==`, `!=`, `>`, `<`, `>=`, `<=`. For each, show me 2 examples with numbers and explain the True/False result. Why does Python use == for comparison but = for assignment? Show me what happens if I accidentally write if x = 5: instead of if x == 5:"
 
 **🎯 Practice Comparison Logic:**
 > "Create a movie ticket checker: movie_age_rating = 13, user_age = 12. Write comparisons to check: (1) if user can watch (user_age >= movie_age_rating), (2) if user is too young (user_age < movie_age_rating), (3) if ages are exactly equal (user_age == movie_age_rating). For each, predict True or False, then verify with code."

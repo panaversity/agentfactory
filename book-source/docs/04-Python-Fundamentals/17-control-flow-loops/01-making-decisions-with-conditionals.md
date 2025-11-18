@@ -619,10 +619,10 @@ if age >= 18:
 Ready to make decisions with if, elif, and else statements?
 
 **🔍 Explore Conditional Logic:**
-> "Explain if, elif, and else statements with examples. Show me how Python evaluates conditions top-to-bottom and stops at the first True. Why do we need elif instead of multiple if statements? Demonstrate with age checking: child (<13), teen (13-17), adult (18+)."
+> "Explain if, elif, and else statements with examples. Show me how Python evaluates conditions top-to-bottom and stops at the first True. Why do we need elif instead of multiple if statements? Demonstrate with age checking: child (`<13`), teen (13-17), adult (18+)."
 
 **🎯 Practice Decision Trees:**
-> "Create a grade calculator that takes a score (0-100) and returns letter grade: A (90-100), B (80-89), C (70-79), D (60-69), F (<60). Use if/elif/else with comparison operators. Then extend it to handle edge cases: scores > 100, negative scores, non-numeric input."
+> "Create a grade calculator that takes a score (0-100) and returns letter grade: A (90-100), B (80-89), C (70-79), D (60-69), F (`<60`). Use if/elif/else with comparison operators. Then extend it to handle edge cases: scores `> 100`, negative scores, non-numeric input."
 
 **🧪 Test Nested Conditions:**
 > "Show me the difference between nested if statements and elif chains. For a login validator checking (1) username exists AND (2) password correct, compare: nested ifs vs. combined condition with 'and'. Which is more readable? Which handles error messages better?"

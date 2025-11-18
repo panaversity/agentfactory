@@ -1,6 +1,9 @@
 #!/bin/bash
 # Build script that conditionally adds --localstorage-file flag for Node.js 25+
 
+# Change to book-source directory (parent of scripts/)
+cd "$(dirname "$0")/.."
+
 NODE_VERSION=$(node -v | cut -d'.' -f1 | sed 's/v//')
 
 if [ "$NODE_VERSION" -ge 25 ]; then

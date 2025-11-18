@@ -695,7 +695,7 @@ Build a complete sales data pipeline integrating all Chapter 18 concepts.
 > "Debug production CSV issues: empty lines, missing fields, invalid prices ('N/A'), duplicate products. Show how code breaks for each, add validation (skip? defaults?), explain strict vs lenient tradeoffs."
 
 **🚀 Apply Multi-Dimensional Analysis:**
-> "Build advanced pipeline: revenue by category AND price bracket (<$100, $100-$500, $500+), top 3 products by revenue (sorted), summary stats, formatted table. Use nested dicts, comprehensions, sorted(), f-strings. Integrate all Chapter 18 concepts."
+> "Build advanced pipeline: revenue by category AND price bracket (`<$100`, $100-$500, `$500+`), top 3 products by revenue (sorted), summary stats, formatted table. Use nested dicts, comprehensions, sorted(), f-strings. Integrate all Chapter 18 concepts."
 
 ---
 

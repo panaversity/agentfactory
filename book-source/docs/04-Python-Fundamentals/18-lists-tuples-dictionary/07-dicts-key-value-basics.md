@@ -495,7 +495,7 @@ Master dictionary access patterns and understand when to use bracket notation vs
 > "Help me create a user profile dict with name, email, age, premium. Access email with brackets, phone (missing) with .get('phone', 'Not provided'). Show what happens with user['phone']."
 
 **🧪 Test Type Hint Limits:**
-> "Debug this: user: dict[str, str|int|bool] = {'name': 'Alice'}; user['scores'] = [95, 88]. Does Python stop me? What do type hints actually do? Would mypy catch this? Show TypedDict for strict typing."
+> "Debug this: `user: dict[str, str|int|bool] = {'name': 'Alice'}; user['scores'] = [95, 88]`. Does Python stop me? What do type hints actually do? Would mypy catch this? Show TypedDict for strict typing."
 
 **🚀 Apply to Config System:**
 > "Build app config with required fields (app_name, port, debug) using brackets, and optional fields (log_file='app.log', max_connections=100) using .get(). Explain why required SHOULD crash if missing."

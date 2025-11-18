@@ -716,7 +716,7 @@ Master dictionary iteration methods and dictionary comprehensions.
 > "Show me .keys(), .values(), and .items() with examples. Explain what each returns and when I'd use each (keys-only search, values-only processing, key-value pairs for both)."
 
 **🎯 Practice Dict Comprehensions:**
-> "Help me write dict comprehension for temperature conversion: {'New York': 20, 'Los Angeles': 25} to Fahrenheit. Show formula (C*9/5)+32 and add filter for cities above 70°F."
+> "Help me write dict comprehension for temperature conversion: `{'New York': 20, 'Los Angeles': 25}` to Fahrenheit. Show formula `(C*9/5)+32` and add filter for cities above 70°F."
 
 **🧪 Test Loop vs Comprehension:**
 > "Debug filtering student grades >= 70: show both for-loop version and dict comprehension. Compare readability. When would I choose loop over comprehension for clarity?"
