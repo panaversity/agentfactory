@@ -68,45 +68,33 @@ version: "1.0.0"
 
 ## What You'll Learn
 
-- What variables are and why every program needs them
-- How to create variables in Python
-- How to modify (reassign) variable values
-- Variable naming rules and best practices
-- Common mistakes with variables
+- What are Variables
+- Creating Variables
+- Modifying Variables
+- Variable Naming Rules
 
 ---
 
-## Opening Hook: Your Robot Learns to Remember
+## Opening: Your Robot Learns to Remember
 
 Remember our robot? In Lesson 1, you taught it what programming is. In Lesson 2, it spoke its first words using `print()`. But there's a problem: **the robot has no memory**.
 
-Imagine asking your robot:
-- "Robot, what's my name?"
-- "Robot, how old am I?"
-- "Robot, what's my favorite color?"
+Imagine asking: "Robot, what's my name?" The robot stares blankly. It can follow instructions in the moment, but can't remember anything.
 
-The robot stares blankly. It can follow instructions in the moment, but it can't **remember** anything. Every interaction starts from scratch.
+Now imagine teaching it to remember:
+- "My name is Alex. Remember that."
+- "I'm 25 years old. Store that."
+- "My favorite color is blue."
 
-Now imagine teaching your robot to remember. You say:
+Suddenly, the robot can recall: "What's my name?" → "Your name is Alex."
 
-- "Robot, my name is Alex. Remember that."
-- "Robot, I'm 25 years old. Store that information."
-- "Robot, my favorite color is blue. Don't forget."
-
-Suddenly, the robot can recall facts:
-- "What's my name?" → "Your name is Alex."
-- "How old am I?" → "You're 25 years old."
-- "What's my favorite color?" → "Your favorite color is blue."
-
-**This is what variables do.** They give programs the ability to **remember** information—names, ages, scores, preferences, calculations, anything you need to store and use later.
-
-Without variables, programs would be useless. With variables, programs become powerful tools that adapt, calculate, and respond intelligently.
+**This is what variables do.** They give programs the ability to **remember** information—names, ages, scores, preferences, calculations—anything you need to store and use later. Without variables, programs would be useless. With variables, programs become powerful tools that adapt, calculate, and respond intelligently.
 
 ---
 
 ## What Are Variables?
 
-### The Concept (WHAT)
+### Understanding Variables
 
 A **variable** is a named storage location in your computer's memory where you can store data.
 
@@ -141,7 +129,7 @@ print(name)  # Displays: Alex
 
 Just like naming your pet lets you call them easily, naming your data lets you use it easily throughout your program.
 
-### The Purpose (WHY)
+### Why Programs Need Variables
 
 Why do programs need variables? Because **programs need to remember things**.
 
@@ -179,7 +167,7 @@ Without variables, games couldn't track scores, levels, health, or any changing 
 
 ## Creating Variables in Python
 
-Now let's learn the syntax (HOW).
+Now let's learn the syntax for creating variables.
 
 ### The Assignment Operator: =
 
@@ -686,9 +674,3 @@ After each answer, tell me if I'm correct and explain.
 **What to look for:** Can you answer without looking back?
 
 **Reflection:** Which concept is clearest? Which needs review?
-
----
-
-**Safety Note:** When practicing with AI-generated code, always run it yourself and verify it works as expected. The goal is understanding, not just copying code.
-
-**Next Steps:** You've learned how to store data in variables! In [Lesson 4: Type Hints: Organizing Your Data](./04-type-hints-organizing-data.md), you'll learn how to tell Python what KIND of data each variable should hold.

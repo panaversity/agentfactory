@@ -68,40 +68,30 @@ version: "1.0.0"
 
 ## What You'll Learn
 
-- What programming means (in plain language, no jargon)
-- What Python is and why it exists
-- Why Python is perfect for learning to code
-- Real-world applications powered by Python
-- How this chapter fits into your learning journey
+- What is Programming
+- What is Python
+- Why Python for Beginners
+- Real-World Python Applications
 
 ---
 
-## Opening Hook: Teaching a Robot to Make Sandwiches
+## Opening: Teaching a Robot to Make Sandwiches
 
-Imagine you have a robot in your kitchen. This robot is eager to help, but it has one limitation: **it knows absolutely nothing**. It doesn't know what "bread" is. It doesn't understand "spread peanut butter." Words like "assemble" or "layer" are meaningless to it.
+Imagine you have a robot in your kitchen. This robot is eager to help, but it has one limitation: **it knows absolutely nothing**.
 
-Your job is to teach this robot how to make your favorite sandwich. But here's the challenge: you can only communicate using **extremely precise, step-by-step instructions**. Every single action must be spelled out:
+Your job is to teach it how to make a peanut butter sandwich. But you can only communicate using **extremely precise, step-by-step instructions**:
 
 1. Open the refrigerator door
-2. Locate the bread bag (second shelf, left side)
-3. Remove two slices of bread
-4. Close the refrigerator door
-5. Place both slices on the counter
-6. Open the peanut butter jar lid
-7. Pick up a knife
-8. Scoop one tablespoon of peanut butter
-9. Spread peanut butter evenly on first bread slice
-10. ...
+2. Remove two slices of bread
+3. Pick up a knife
+4. Scoop peanut butter
+5. Spread on bread...
 
-You get the idea. Every tiny step matters. If you skip step 3 ("remove two slices"), the robot will try to spread peanut butter on a closed bread bag. If you forget to say "pick up a knife," the robot might try spreading peanut butter with its fingers.
+Every tiny step matters. If you skip "remove bread slices," the robot will try spreading peanut butter on the closed bag. If you forget "pick up knife," it might use its fingers.
 
-**This is exactly what programming is.**
+**This is exactly what programming is.** When you write a program, you're teaching a computer (which knows nothing) how to perform a task. The computer follows your instructions *exactly*—no interpretation, no guessing, no common sense.
 
-When you write a program, you're teaching a computer (which, like our robot, knows nothing) how to perform a task. The computer follows your instructions *exactly*—no interpretation, no guessing, no common sense. If your instructions are clear and complete, the computer succeeds. If they're vague or incomplete, the computer fails.
-
-**Programming is the art of giving precise instructions to computers.**
-
-And **Python** is the language you use to write those instructions.
+**Programming is the art of giving precise instructions to computers.** And **Python** is the language you use to write those instructions.
 
 ---
 
@@ -109,7 +99,7 @@ And **Python** is the language you use to write those instructions.
 
 Before we talk about Python specifically, let's answer a more fundamental question: **What is programming?**
 
-### The Concept (WHAT)
+### Understanding Programming
 
 **Programming** is writing a set of instructions that a computer can understand and execute. That's it. No magic, no mystery.
 
@@ -117,7 +107,7 @@ Computers are incredibly fast and powerful, but they're also incredibly literal.
 
 When you write a program, you're creating a **recipe** for the computer. Just as a cooking recipe tells you how to make chocolate chip cookies, a program tells the computer how to perform a task: display a website, calculate taxes, recommend a song, edit a photo, send an email.
 
-### The Purpose (WHY)
+### Why Programming Matters
 
 Why do we need programming? Because computers are tools, and tools need instructions.
 
@@ -171,7 +161,7 @@ This is advanced programming, but it's still instructions: "If user watched X, Y
 
 Now that you understand programming (giving instructions to computers), let's talk about **Python**.
 
-### The Definition (WHAT)
+### Python as a Programming Language
 
 **Python is a programming language**—a specific set of rules and vocabulary for writing instructions that computers understand.
 
@@ -187,7 +177,7 @@ That single line is a complete Python program. It tells the computer: "Display t
 
 Simple, right? That's intentional. Python was designed to be **readable** and **beginner-friendly**.
 
-### Why Python Exists (WHY)
+### Why Python Was Created
 
 There are hundreds of programming languages (Python, JavaScript, Java, C++, Ruby, Go, Rust...). Why was Python created? What problem does it solve?
 
@@ -419,8 +409,3 @@ After I answer each question, tell me if I'm correct and explain why.
 
 **Reflection**: Which concept felt clearest? Which needs more review?
 
----
-
-**Safety Note**: AI is your practice partner, not your teacher. The lesson taught you the concepts. AI helps you explore, clarify, and practice. Always verify AI suggestions—don't trust them blindly.
-
-**Next Steps**: When you're ready, move to [Lesson 2: Your First Python Program](./02-first-python-program.md), where you'll write and run actual code!

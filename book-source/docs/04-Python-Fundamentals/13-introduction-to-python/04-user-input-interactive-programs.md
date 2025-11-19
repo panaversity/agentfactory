@@ -1,8 +1,8 @@
 ---
 title: "User Input: Interactive Programs"
 chapter: 13
-lesson: 5
-duration_minutes: 35
+lesson: 4
+duration_minutes: 30
 proficiency_level: "CEFR A2"
 blooms_level: "Apply"
 
@@ -16,12 +16,12 @@ skills:
     digcomp_area: "Problem-Solving"
     measurable_at_this_level: "Student can write input() statements with prompts, store user responses in variables, and use those variables in program logic"
 
-  - name: "Integrating print(), Variables, Type Hints, and input()"
+  - name: "Integrating print(), Variables, and input()"
     proficiency_level: "A2"
     category: "Technical"
     bloom_level: "Apply"
     digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can create programs combining all Chapter 13 concepts: display prompts with print(), gather data with input(), store in typed variables, and generate dynamic output"
+    measurable_at_this_level: "Student can create programs combining all Chapter 13 concepts: display prompts with print(), gather data with input(), store in variables, and generate dynamic output"
 
 learning_objectives:
   - objective: "Use input() to gather user data in programs"
@@ -35,8 +35,8 @@ learning_objectives:
     assessment_method: "Student builds program that asks questions, processes answers, and displays personalized output based on user responses"
 
 cognitive_load:
-  new_concepts: 2
-  assessment: "2 new concepts (input() function, integration of all prior concepts) at A2 limit of 5-7 ✓"
+  new_concepts: 1
+  assessment: "1 new concept (input() function) at A2 limit of 5-7 ✓"
 
 differentiation:
   extension_for_advanced: "Explore type conversion (int(input())), input validation, multi-line prompts using triple quotes, f-strings for formatted output"
@@ -56,34 +56,20 @@ version: "1.0.0"
 
 ## What You'll Learn
 
-- How to use the `input()` function to gather user data
-- How to create interactive conversations in programs
-- How to integrate print(), variables, type hints, and input()
-- Common patterns for interactive programs
-- How to handle user input effectively
+- The input() Function
+- Storing User Input
+- Interactive Programs
+- Input Patterns
 
 ---
 
-## Opening Hook: Your Robot Learns to Listen
+## Opening: Your Robot Learns to Listen
 
-Our robot's evolution is almost complete. It can:
-- **Speak** (`print()`) — "Hello, World!"
-- **Remember** (`variables`) — Store your name, age, preferences
-- **Organize** (`type hints`) — Know what kind of data it's storing
+Our robot's evolution is almost complete. It can **speak** (`print()`) and **remember** (`variables`). But there's one critical skill missing: **the robot can't listen**.
 
-But there's one critical skill missing: **the robot can't listen**.
-
-Right now, all the robot's data is hard-coded:
-
-```python
-name: str = "Alex"
-age: int = 25
-```
-
-The robot knows these facts, but only because *you* programmed them in. The robot can't *ask* for information. It can't adapt to different users.
+Right now, all the robot's data is hard-coded. The robot knows facts only because *you* programmed them in. It can't *ask* for information or adapt to different users.
 
 Imagine if the robot could have a conversation:
-
 ```
 Robot: "What is your name?"
 You: "Sarah"
@@ -92,7 +78,7 @@ You: "30"
 Robot: "Nice to meet you, Sarah. You're 30 years old!"
 ```
 
-This is **dynamic** interaction. The robot asks, you answer, and the robot responds based on *your* specific input.
+This is **dynamic interaction**. The robot asks, you answer, and it responds based on *your* specific input.
 
 **This is what `input()` enables.** It transforms programs from static scripts into interactive conversations.
 
@@ -100,7 +86,7 @@ This is **dynamic** interaction. The robot asks, you answer, and the robot respo
 
 ## The input() Function: How Programs Listen
 
-### What Is input()? (WHAT)
+### Understanding the input() Function
 
 `input()` is a built-in Python function that:
 1. Displays a prompt to the user
@@ -130,7 +116,7 @@ Hello, Sarah
 3. Line 1: `input()` returns "Sarah", which is stored in `name`
 4. Line 2: Program prints "Hello, Sarah"
 
-### Why Use input()? (WHY)
+### Why input() Matters
 
 Without `input()`, every program would work the same way for everyone:
 
@@ -212,7 +198,7 @@ Even if you type `25`, Python stores it as `"25"` (text), not `25` (number).
 ### Pattern 1: Ask and Store
 
 ```python
-name: str = input("What is your name? ")
+name = input("What is your name? ")
 print("Nice to meet you,", name)
 ```
 
@@ -227,9 +213,9 @@ Nice to meet you, Alex
 ### Pattern 2: Multiple Questions
 
 ```python
-name: str = input("What is your name? ")
-city: str = input("Where do you live? ")
-hobby: str = input("What's your favorite hobby? ")
+name = input("What is your name? ")
+city = input("Where do you live? ")
+hobby = input("What's your favorite hobby? ")
 
 print("Hi", name, "from", city, "who enjoys", hobby)
 ```
@@ -244,37 +230,18 @@ Hi Sarah from Boston who enjoys Photography
 
 ---
 
-### Pattern 3: Build Strings with Input
-
-```python
-first_name: str = input("First name: ")
-last_name: str = input("Last name: ")
-
-full_name: str = first_name + " " + last_name
-print("Full name:", full_name)
-```
-
-**Output:**
-```
-First name: Alex
-Last name: Johnson
-Full name: Alex Johnson
-```
-
----
-
-### Pattern 4: Interactive Conversation
+### Pattern 3: Interactive Conversation
 
 ```python
 print("Welcome to the Greeting Program!")
 print()  # Blank line for spacing
 
-name: str = input("What's your name? ")
-print("Hello,", name + "!")
+name = input("What's your name? ")
+print("Hello,", name)
 print()
 
-mood: str = input("How are you feeling today? ")
-print("I hope you have a great day feeling", mood + "!")
+mood = input("How are you feeling today? ")
+print("I hope you have a great day feeling", mood)
 ```
 
 **Output:**
@@ -282,17 +249,17 @@ print("I hope you have a great day feeling", mood + "!")
 Welcome to the Greeting Program!
 
 What's your name? Alex
-Hello, Alex!
+Hello, Alex
 
 How are you feeling today? excited
-I hope you have a great day feeling excited!
+I hope you have a great day feeling excited
 ```
 
 ---
 
 ## Integrating All Chapter 13 Concepts
 
-Now we bring everything together: `print()`, `variables`, `type hints`, and `input()`.
+Now we bring everything together: `print()`, `variables`, and `input()`.
 
 ### Complete Example: Personal Introduction
 
@@ -301,10 +268,10 @@ Now we bring everything together: `print()`, `variables`, `type hints`, and `inp
 print("Let's create your introduction card!")
 print()
 
-name: str = input("What is your name? ")
-age: str = input("How old are you? ")  # Stored as string for now
-city: str = input("Where do you live? ")
-hobby: str = input("What's your favorite hobby? ")
+name = input("What is your name? ")
+age = input("How old are you? ")
+city = input("Where do you live? ")
+hobby = input("What's your favorite hobby? ")
 
 # Display formatted introduction
 print()
@@ -339,13 +306,12 @@ Hobby: Reading
 
 **What's Happening:**
 1. **Lines 2-3:** Introduction message
-2. **Lines 5-8:** Gather user input with `input()`, store in typed variables
+2. **Lines 5-8:** Gather user input with `input()`, store in variables
 3. **Lines 11-18:** Display formatted output using stored variables
 
-This program combines **all four core concepts**:
+This program combines **all three core concepts**:
 - ✅ `print()` for output
 - ✅ `variables` for storage
-- ✅ `type hints` for documentation
 - ✅ `input()` for gathering data
 
 ---
@@ -357,9 +323,9 @@ This program combines **all four core concepts**:
 Create `questionnaire.py`:
 
 ```python
-favorite_color: str = input("What's your favorite color? ")
-favorite_food: str = input("What's your favorite food? ")
-favorite_animal: str = input("What's your favorite animal? ")
+favorite_color = input("What's your favorite color? ")
+favorite_food = input("What's your favorite food? ")
+favorite_animal = input("What's your favorite animal? ")
 
 print()
 print("Your Favorites:")
@@ -380,10 +346,10 @@ Create `madlibs.py`:
 print("Let's create a silly story!")
 print()
 
-noun: str = input("Enter a noun: ")
-verb: str = input("Enter a verb: ")
-adjective: str = input("Enter an adjective: ")
-place: str = input("Enter a place: ")
+noun = input("Enter a noun: ")
+verb = input("Enter a verb: ")
+adjective = input("Enter an adjective: ")
+place = input("Enter a place: ")
 
 print()
 print("Here's your story:")
@@ -413,9 +379,9 @@ Create `profile.py`:
 print("=== Create Your Profile ===")
 print()
 
-username: str = input("Choose a username: ")
-email: str = input("Enter your email: ")
-favorite_language: str = input("Favorite programming language: ")
+username = input("Choose a username: ")
+email = input("Enter your email: ")
+favorite_language = input("Favorite programming language: ")
 
 print()
 print("Profile Created Successfully!")
@@ -488,51 +454,6 @@ SyntaxError: unterminated string literal
 ```python
 name = input("What is your name? ")  # Close quote and parenthesis
 ```
-
----
-
-## For Curious Learners: Type Conversion Preview
-
-*Optional section. You can skip this and still master this lesson.*
-
-Remember: `input()` always returns a string. But what if you need a number?
-
-**Problem:**
-```python
-age = input("How old are you? ")  # User types "25"
-next_year = age + 1  # ERROR! Can't add int to str
-```
-
-**Error:**
-```
-TypeError: can only concatenate str (not "int") to str
-```
-
-**Solution (Preview of Chapter 14):**
-
-Convert the string to an integer using `int()`:
-
-```python
-age_text = input("How old are you? ")  # Returns "25" (string)
-age = int(age_text)  # Converts "25" to 25 (integer)
-next_year = age + 1  # Now we can do math: 25 + 1 = 26
-print("Next year you'll be", next_year)
-```
-
-**Shorthand version:**
-```python
-age = int(input("How old are you? "))
-next_year = age + 1
-print("Next year you'll be", next_year)
-```
-
-**What's happening:**
-1. `input(...)` returns `"25"` (string)
-2. `int(...)` converts `"25"` to `25` (integer)
-3. Now `age` holds an actual number you can do math with
-
-**You'll learn type conversion in detail in Chapter 14 (Data Types).** For now, just know that `input()` always gives you text, and you can convert it to numbers when needed.
-
 ---
 
 ## Try With AI
@@ -613,8 +534,3 @@ After each answer, tell me if I'm correct and explain.
 
 **Reflection:** Which concept is clearest? Which needs review before the capstone?
 
----
-
-**Safety Note:** When AI generates interactive programs, test them yourself with various inputs. Make sure prompts are clear and output is well-formatted.
-
-**Next Steps:** You've mastered all the core concepts! In [Lesson 6: Capstone - Personal Introduction Program](./06-capstone-personal-introduction.md), you'll combine everything into one complete project that demonstrates your Chapter 13 skills.

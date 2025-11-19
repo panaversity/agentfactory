@@ -61,15 +61,14 @@ version: "1.0.0"
 
 ## What You'll Learn
 
-- How to run a Python program from the terminal
-- What the `print()` function does and why it's important
-- How to write your first "Hello, World!" program
-- Common mistakes and how to fix them
-- How to use AI to practice `print()` variations
+- How to Run Python Programs
+- The print() Function
+- "Hello World" Program
+- Common Syntax Errors
 
 ---
 
-## Opening Hook: Your Robot Speaks Its First Words
+## Opening: Your Robot Speaks Its First Words
 
 Remember our robot from Lesson 1? You taught it what programming is (giving instructions). Now it's time for a breakthrough moment: **the robot speaks**.
 
@@ -93,7 +92,7 @@ In this lesson, you'll have that exact experience. You'll write a program, run i
 
 Before you write code, let's understand the process. How do you actually *run* a Python program?
 
-### The Concept (WHAT)
+### Understanding Python Programs
 
 A **Python program** is just a text file with instructions written in Python language. The file extension is `.py` (like `hello.py` or `calculator.py`).
 
@@ -101,14 +100,14 @@ When you **run** the program, you're telling your computer: "Read this file, int
 
 The result appears in your **terminal** (also called command line or shell)—the text-based interface where you type commands.
 
-### The Purpose (WHY)
+### Why Use the Terminal?
 
 Why use the terminal instead of clicking a button? Two reasons:
 
 1. **Universal Interface** — Terminals work the same way on Windows, Mac, and Linux. Once you learn terminal commands, you can program anywhere.
 2. **Professional Workflow** — Real developers use terminals constantly. Web servers, databases, deployment tools—all controlled via command line. Learning this now builds professional habits.
 
-### The Process (HOW)
+### How to Run a Python Program
 
 Here's the step-by-step workflow for running a Python program:
 
@@ -142,7 +141,7 @@ That's it! Every Python program follows this process.
 
 Now that you know *how* to run programs, let's learn your first Python command: **print()**.
 
-### What Is print()? (WHAT)
+### Introducing the print() Function
 
 `print()` is a **built-in function** in Python that displays text (or other data) in the terminal.
 
@@ -158,7 +157,7 @@ print("Your message here")
 - **`()`** — Parentheses that hold the data you want to display
 - **`"Your message here"`** — The text (called a **string**) to display, enclosed in quotes
 
-### Why Use print()? (WHY)
+### Why print() Matters
 
 Why is `print()` important? Because **programs need to communicate results**.
 
@@ -172,7 +171,7 @@ Examples of what `print()` does:
 
 **Without `print()`, you'd have no way to see what your program is doing.**
 
-### Common Uses (HOW)
+### Using print() in Different Ways
 
 Here are several ways to use `print()`:
 
@@ -553,8 +552,5 @@ After each answer, tell me if I'm correct and clarify any misconceptions.
 
 **Reflection:** Which concept is clearest? Which needs more practice?
 
----
 
-**Safety Note:** When AI suggests code, always run it yourself and observe what happens. Don't just copy/paste blindly. The goal is understanding, not just working code.
 
-**Next Steps:** You've now written and executed Python programs! In [Lesson 3: Variables: Python's Memory](./03-variables-python-memory.md), you'll learn how to make programs remember information.

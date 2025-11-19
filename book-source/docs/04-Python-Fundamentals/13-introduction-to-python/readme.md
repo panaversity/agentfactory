@@ -2,16 +2,16 @@
 
 Welcome to your first programming chapter! If you've never written code before, you're in exactly the right place. This chapter introduces you to Python through a story-based narrative journey—not as a list of disconnected facts to memorize, but as a coherent learning experience that builds your confidence step by step.
 
-You'll discover that programming isn't mysterious or intimidating. It's simply the art of giving clear instructions to computers, much like teaching a robot to make your favorite sandwich. By the end of this chapter, you'll have written real Python programs, understood foundational concepts like variables and type hints, and built a personal introduction program that showcases your new skills.
+You'll discover that programming isn't mysterious or intimidating. It's simply the art of giving clear instructions to computers, much like teaching a robot to make your favorite sandwich. By the end of this chapter, you'll have written real Python programs, understood foundational concepts like variables and user input, and built a personal introduction program that showcases your new skills.
 
 ## What You'll Master
 
-- **What Programming Is** — Understand programming as instruction-giving, not magic
-- **Your First Python Program** — Write and execute "Hello, World!" with confidence
-- **Variables Concept** — Grasp variables as labeled memory boxes that store information
-- **Type Hints** — Learn why `:int`, `:str`, `:float` matter for expressing intent
-- **User Input** — Create interactive programs that listen and respond
-- **Integration Skills** — Combine everything in a capstone project (personal introduction program)
+- **What is Programming**
+- **What is Python**
+- **The print() Function**
+- **Variables and Assignment**
+- **The input() Function**
+- **Capstone Project**
 
 ## Before You Start
 
@@ -35,7 +35,7 @@ This chapter is designed for **absolute beginners**. If a concept feels new, tha
 
 ## How This Chapter Works
 
-This is a **6-lesson narrative journey** from discovery to mastery:
+This is a **5-lesson narrative journey** from discovery to mastery:
 
 ### Lesson 1: What is Python? Your First Step into Programming (30-35 minutes)
 **Story Element**: "Teaching a Robot to Make Sandwiches"
@@ -70,40 +70,29 @@ This is a **6-lesson narrative journey** from discovery to mastery:
 
 ---
 
-### Lesson 4: Type Hints: Organizing Your Data (35-40 minutes)
-**Story Element**: "Your Robot Organizes Its Knowledge"
-
-**Key Question**: Why `:int` and `:str`? What are type hints?
-
-**What You'll Learn**: Understand data types as classification systems. Just as a library organizes books by genre (fiction, history, science), Python classifies data (numbers, text, true/false values). You'll learn type hint syntax (`age: int = 25`, `name: str = "Alex"`) and why type hints matter—they express INTENT, telling both Python and other programmers what kind of data a variable should hold.
-
-**Insight**: Type hints aren't enforcement (Python won't stop you from breaking them). They're documentation—a way to say "this variable is INTENDED to hold a number" or "this variable is INTENDED to hold text."
-
----
-
-### Lesson 5: User Input: Interactive Programs (30-35 minutes)
+### Lesson 4: User Input: Interactive Programs (30 minutes)
 **Story Element**: "Your Robot Learns to Listen"
 
 **Key Question**: How do programs interact with users?
 
-**What You'll Learn**: Transform static programs into interactive conversations using the `input()` function. You'll create programs that ask questions, store user responses in variables, and respond dynamically. This integrates everything from Lessons 1-4: `print()` for output, variables for storage, type hints for clarity, and now `input()` for interaction.
+**What You'll Learn**: Transform static programs into interactive conversations using the `input()` function. You'll create programs that ask questions, store user responses in variables, and respond dynamically. This integrates everything from Lessons 1-3: `print()` for output, variables for storage, and now `input()` for interaction.
 
 **Insight**: Interactive programs are more powerful than static scripts. They adapt to users. This is where programming becomes truly useful—solving real problems for real people.
 
 ---
 
-### Lesson 6: Capstone - Personal Introduction Program (45-50 minutes)
+### Lesson 5: Capstone - Personal Introduction Program (40 minutes)
 **Story Element**: "Your Robot Introduces Itself"
 
 **Key Question**: Can I build something on my own?
 
-**What You'll Build**: A complete personal introduction program that asks for your name, age, and favorite hobby, then creates a formatted greeting like a digital introduction card. This capstone project integrates EVERY concept from Chapter 13: print(), variables, type hints, and input(). You'll plan the program (pseudocode), implement it step-by-step with checkpoints, debug common issues, and extend it with your own creative ideas.
+**What You'll Build**: A complete personal introduction program that asks for your name, age, and favorite hobby, then creates a formatted greeting like a digital introduction card. This capstone project integrates EVERY concept from Chapter 13: print(), variables, and input(). You'll plan the program (pseudocode), implement it step-by-step with checkpoints, debug common issues, and extend it with your own creative ideas.
 
 **Insight**: This is your proof of mastery. If you can build this independently (with light AI guidance), you've truly learned Chapter 13. This working program is something you created—not copied, not memorized, but BUILT from understanding.
 
 ---
 
-**Total Learning Time**: 4-5 hours across 6 lessons
+**Total Learning Time**: 3-4 hours across 5 lessons
 
 ## Learning Philosophy: WHAT-WHY-HOW (Concept Before Syntax)
 
@@ -126,7 +115,7 @@ age = 25  # "This is a variable"
 
 This chapter establishes **foundational understanding** before introducing AI collaboration. Here's what that means:
 
-**Manual Foundation (Lessons 1-6)**:
+**Manual Foundation (Lessons 1-5)**:
 You build mental models by doing things manually first. You write variables by hand, debug errors yourself, and understand what "works" vs "doesn't work" through direct experience. This builds the judgment needed to evaluate AI suggestions later.
 
 **AI as Practice Partner**:
@@ -169,11 +158,11 @@ Chapter 12: UV Package Manager & Python Setup
 
 Chapter 13: Introduction to Python ← YOU ARE HERE
     ↓
-    You'll master: What programming is, first programs, variables, type hints, user input
+    You'll master: What programming is, first programs, variables, user input
 
 Chapter 14: Data Types
     ↓
-    You'll learn: int, float, str, bool, lists, dictionaries (building on Chapter 13 type hints)
+    You'll learn: int, float, str, bool, type hints, type conversion (building on Chapter 13 variables)
 
 Chapter 15: Operators, Keywords & Variables
     ↓
@@ -197,14 +186,14 @@ Don't copy/paste. Type every example. Muscle memory helps learning. Making typos
 **3. Do the "Try With AI" Sections**
 These aren't optional. They're designed practice. Use AI to explore variations, test understanding, and build confidence.
 
-**4. Complete the Capstone (Lesson 6)**
+**4. Complete the Capstone (Lesson 5)**
 This is your proof of mastery. If you can build the introduction program independently, you've truly learned Chapter 13.
 
 **5. Ask Questions When Confused**
 If something doesn't make sense, use your AI companion to clarify: "AI, can you explain variables using a different analogy?" or "AI, why did I get this error?"
 
 **6. Take Breaks**
-Programming requires focus. Don't try to complete all 6 lessons in one sitting. Spread learning across 2-3 days. Your brain needs time to process new concepts.
+Programming requires focus. Don't try to complete all 5 lessons in one sitting. Spread learning across 2-3 days. Your brain needs time to process new concepts.
 
 ---
 
