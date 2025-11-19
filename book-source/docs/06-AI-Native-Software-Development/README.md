@@ -23,7 +23,7 @@ By completing Part 6, you will:
 
 Part 6's 16 chapters build through six thematic stages:
 
-### Agent Frameworks (Chapters 34-37)
+### Agent Frameworks (Chapters 35-37)
 Establish core agent concepts and framework-specific patterns. Start with agent fundamentals (34), then explore implementation across OpenAI (35), Google (36), and Anthropic (37) platforms using AIDD and spec-driven development.
 
 ### Integration Patterns (Chapters 38-40)

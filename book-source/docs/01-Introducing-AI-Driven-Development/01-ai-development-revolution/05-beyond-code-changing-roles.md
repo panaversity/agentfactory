@@ -247,7 +247,7 @@ Here's why this matters: **Reusable intelligence accumulates.**
 - **Week 8:** You compose the security agent + performance optimizer + documentation generator into a "production-ready API" orchestration
 - **Week 12:** Your entire team uses your orchestration pattern for all new APIs
 
-By Chapter 30, you'll learn systematic frameworks for creating and composing reusable intelligence at scale. For now, just recognize: **your future value isn't typing code faster—it's designing intelligence that makes every project better than the last.**
+By Chapter 32, you'll learn systematic frameworks for creating and composing reusable intelligence at scale. For now, just recognize: **your future value isn't typing code faster—it's designing intelligence that makes every project better than the last.**
 
 ## How This Transforms Across Seniority Levels
 

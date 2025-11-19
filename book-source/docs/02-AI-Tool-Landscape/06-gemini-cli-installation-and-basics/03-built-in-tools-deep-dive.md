@@ -145,7 +145,7 @@ Python is one of the most popular programming languages today, used for:
 - In high demand for jobs
 
 **Next Steps in Your Learning:**
-You'll learn Python starting in Chapter 12 of this book after mastering Bash and Git basics.
+You'll learn Python starting in Chapter 14 of this book after mastering Bash and Git basics.
 
 Sources:
 - python.org (official website)
@@ -193,7 +193,7 @@ Instead of saving "Draft1_final_real_v2.docx", Git automatically tracks all thes
 - Professional standard (most tech jobs require Git)
 
 **You'll Learn Git In:**
-Chapter 8 of this book - we'll teach you Bash first (Chapter 7) so you're ready.
+Chapter 10 of this book - we'll teach you Bash first (Chapter 7) so you're ready.
 
 Sources:
 - git-scm.com (official Git documentation)
@@ -246,7 +246,7 @@ Your learning plan for this week covers:
 - File operations: mkdir, cp, rm
 - Understanding the terminal
 
-**Chapter 8: Git Basics (Following week)**
+**Chapter 10: Git Basics (Following week)**
 - Repository creation
 - Commits and branches
 - Collaborative workflows
@@ -464,7 +464,7 @@ Python is a programming language that lets you:
 - Skills transfer to other languages
 - Active community means lots of help available
 
-You'll learn Python starting in Chapter 12 of this book!
+You'll learn Python starting in Chapter 14 of this book!
 
 Source: python.org (Official Python Website)
 ```
@@ -505,7 +505,7 @@ Bash is a command interpreter and shell - your interface to communicate with you
 
 **Your Learning Path:**
 - Chapter 7: Bash Essentials (basic commands)
-- Chapter 8: Git (uses Bash commands)
+- Chapter 10: Git (uses Bash commands)
 - Chapters 9+: All use Bash for tools and automation
 
 **Pro Tip:**
@@ -622,11 +622,11 @@ Your Learning Path (Beginner-Friendly):
 
 **Part 2: Developer Fundamentals (Next)**
 → Chapter 7: Bash Essentials (terminal commands)
-→ Chapter 8: Git Basics (version control)
-→ Chapters 9-11: Documentation (Markdown, Prompts, Context)
+→ Chapter 10: Git Basics (version control)
+→ Chapters 11-11: Documentation (Markdown, Prompts, Context)
 
 **Part 3: Programming Starts Here**
-→ Chapter 12-17: Python Fundamentals (your first programming language)
+→ Chapter 14-17: Python Fundamentals (your first programming language)
 → Chapters 18+: Advanced Python and beyond
 
 **Why This Order?**
@@ -636,7 +636,7 @@ Your Learning Path (Beginner-Friendly):
 4. Start with Python (beginner-friendly language)
 
 **Next Steps:**
-Finish Chapter 6, then Chapter 7 teaches you terminal basics before Chapter 12 coding!
+Finish Chapter 6, then Chapter 7 teaches you terminal basics before Chapter 14 coding!
 
 Sources:
 - Educational programming standards
@@ -668,8 +668,8 @@ Based on your preparation notes, here's what Chapter 7 will teach:
 
 **Why This Matters:**
 - Bash is the foundation for all terminal work
-- Essential for using Git (Chapter 8)
-- Required for Python development (Chapter 12+)
+- Essential for using Git (Chapter 10)
+- Required for Python development (Chapter 14+)
 - Professional standard across all tech jobs
 
 **You're Ready When:**
@@ -682,7 +682,7 @@ Based on your preparation notes, here's what Chapter 7 will teach:
 You have Bash installed and ready (verified in Chapter 6)!
 
 **Confidence Check:**
-After Chapter 7, you'll have the skills needed for Chapter 8 (Git).
+After Chapter 7, you'll have the skills needed for Chapter 10 (Git).
 
 Would you like me to quiz you on any Chapter 6 concepts before moving forward?
 ```
@@ -717,16 +717,16 @@ Git is a version control system - it tracks every change you make to code.
 5. **Understanding History**: See how projects evolved
 
 **The Professional Workflow:**
-1. Write code (Chapter 12+)
-2. Save version with Git (Chapter 8 skills)
+1. Write code (Chapter 14+)
+2. Save version with Git (Chapter 10 skills)
 3. Push to GitHub for backup
 4. Collaborate with teammates
 5. Review code before merging
 
 **Your Timeline:**
 - Chapter 7: Master Bash (terminal skills)
-- Chapter 8: Learn Git (version control)
-- Chapter 12: Start coding (now Git skills matter!)
+- Chapter 10: Learn Git (version control)
+- Chapter 14: Start coding (now Git skills matter!)
 - Chapters 13+: Git becomes daily tool
 
 **Key Insight:**
@@ -780,7 +780,7 @@ Your preparation files:
 
 ### Scenario 5: Getting Official Documentation Before Starting
 
-**You**: "Fetch the official Python tutorial from python.org so I know what to expect when I reach Chapter 12"
+**You**: "Fetch the official Python tutorial from python.org so I know what to expect when I reach Chapter 14"
 
 **Gemini**:
 ```
@@ -797,7 +797,7 @@ Python Tutorial Overview (What You'll Learn Eventually):
 - Using command-line arguments
 - Understanding the environment
 
-**Chapters 3-5: Basic Concepts (Chapter 12-15 will cover)**
+**Chapters 3-5: Basic Concepts (Chapter 14-15 will cover)**
 - Variables and data types
 - Control flow (if/while/for)
 - Functions
@@ -815,7 +815,7 @@ Python Tutorial Overview (What You'll Learn Eventually):
 - You're already building foundational skills (Bash, Git, terminal)
 
 **Your Position:**
-You're in Chapter 6 of a 83-chapter learning journey. You're building skills in the right order to be successful with Python starting in Chapter 12!
+You're in Chapter 6 of a 83-chapter learning journey. You're building skills in the right order to be successful with Python starting in Chapter 14!
 
 Source: python.org Official Tutorial
 ```

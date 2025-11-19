@@ -13,13 +13,13 @@ You open your terminal (or maybe you've never opened one before), and you're sta
 
 **Now It's Time to Get Your Hands Dirty**
 
-This part solves that problem. By the end of these four chapters, you won't just know about AI development tools—you'll have them installed, configured, and ready to use. You'll understand the command line well enough to navigate confidently. You'll have Git and GitHub set up for professional development. And you'll know exactly which tool to reach for in any situation.
+This part solves that problem. By the end of these five chapters, you won't just know about AI development tools—you'll have them installed, configured, and ready to use. You'll understand the command line well enough to navigate confidently. You'll have Git and GitHub set up for professional development. And you'll know exactly which tool to reach for in any situation.
 
 More importantly, you'll experience the paradigm shift from Part 1 becoming reality. The tools described theoretically in earlier chapters are now in your hands, ready to collaborate with you on real work.
 
 ## What You'll Learn in Part 2
 
-This part consists of four interconnected chapters that build practical proficiency with AI development tools and professional workflows.
+This part consists of five interconnected chapters that build practical proficiency with AI development tools and professional workflows.
 
 ### Chapter 5: How It All Started—The Claude Code Phenomenon
 
@@ -39,7 +39,13 @@ The command line is the native language of serious development. This chapter is 
 
 The practical focus: master the 90% of Bash workflows that matter for AI-driven development. Skip the esoteric corner cases. Focus on what you actually use.
 
-### Chapter 8: Git & GitHub for AI-Driven Development
+### Chapter 10: AI-Native IDEs: Zed, Cursor, and the Future of Development
+
+Modern development environments integrate AI directly into the editor. This chapter explores AI-native IDEs—development tools designed from the ground up for AI collaboration. You'll install and configure Zed (Anthropic's blazingly fast IDE with built-in AI), explore Cursor (VS Code fork with enhanced AI features), and compare different approaches to AI-assisted editing.
+
+Critical insight: The IDE is where you spend most of your development time. Choosing the right AI-native environment dramatically impacts productivity. You'll learn selection criteria, installation processes, and essential workflows for each tool.
+
+### Chapter 11: Git & GitHub for AI-Driven Development
 
 Git and GitHub aren't optional when working with AI agents—they're essential safety mechanisms. This chapter is also split into two parts: **Part I** covers essential Git commands (init, add, commit, push, branches, pull requests). **Part II** shows natural language workflows for requesting AI tools handle Git operations.
 
