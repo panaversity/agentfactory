@@ -35,7 +35,7 @@ That's what this part teaches you.
 
 ## What You'll Learn in Part 5
 
-This part consists of four interconnected chapters that transform you from code-first to specification-first:
+This part consists of three complete chapters (with Chapter 33 planned for future release) that transform you from code-first to specification-first:
 
 ### Chapter 30: Understanding Specification-Driven Development Fundamentals
 
@@ -49,9 +49,11 @@ Here you'll practice specification-first development with your AI companion. You
 
 You'll master decomposition thinking to orchestrate 10-15 autonomous AI agents and achieve 10x productivity. Starting with manual 3-agent coordination using git worktrees and parallel SpecKit Plus workflows, you'll experience the FIRST CLIMAX (understanding what scales from 3 to 5 to 7-9 agents), learn contract-based autonomous coordination with explicit integration contracts and completion hooks, then experience the SECOND CLIMAX where SpecKit Plus itself becomes your orchestrator—coordinating 5-10 agents while you focus on strategy. The chapter culminates in a capstone project where you build a 3-5 feature system with measurable 2.5-3x speedup, creating a portfolio artifact that demonstrates strategic thinking and proves you can manage autonomous teams at scale.
 
-### Chapter 33:  Tessl and SpecifyPlus - The Ultimate Workflow for Reliable AI-Native Software
+### Chapter 33:  Tessl and SpecifyPlus - The Ultimate Workflow (Planned for Future Release)
 
-This chapter takes you beyond specification workflows to explore Tessl's approach to making specifications the true source of truth and how to use it with SpecifyPlus. You'll understand how Tessl's Framework and Registry address the reliability crisis in AI-assisted development—preventing API hallucinations with 10,000+ versioned usage specs, eliminating regressions through test-enforced guardrails, and providing long-term memory through specifications stored in your codebase. 
+**Note**: Chapter 33 is currently in planning stages and scheduled for a future release. Chapters 30-32 provide a complete, production-ready introduction to Specification-Driven Development. Chapter 33 will extend this foundation with advanced Tessl integration.
+
+**Planned content**: This chapter will take you beyond specification workflows to explore Tessl's approach to making specifications the true source of truth and how to use it with SpecifyPlus. You'll understand how Tessl's Framework and Registry address the reliability crisis in AI-assisted development—preventing API hallucinations with 10,000+ versioned usage specs, eliminating regressions through test-enforced guardrails, and providing long-term memory through specifications stored in your codebase. 
 
 ## What You Won't Learn (Yet)
 

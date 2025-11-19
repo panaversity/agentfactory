@@ -384,24 +384,14 @@ Now that you understand exactly what gets overwritten, let's work with AI to exe
 
 **The collaborative pattern**: Create safety net → Test → Inspect → Merge → Commit
 
-### Experiencing Three Roles: AI Teaching, Learning, and Converging
-
-You'll collaborate with AI through three distinct modes (this is the Three Roles Framework in action):
-
-1. **AI teaches you**: Suggests git safety workflow you might not have considered
-2. **You teach AI**: Describe your project's specific custom content and constraints
-3. **Together you converge**: Decide how to merge custom content with SpecKit Plus template
-
-Let's see this unfold in a realistic conversation.
-
 ---
 
-#### Discovering Safety Patterns
+### Designing a Safety Workflow with AI
 
 **Your initial request:**
 > "I want to test `specifyplus init --here` on my existing project. It has a custom CLAUDE.md with about 200 lines of team knowledge we've refined over 6 months—coding standards, architecture decisions, AI collaboration patterns. I saw the warning about overwrites but I'm not sure what's safe. How do I test this without losing our content?"
 
-**AI's response** (suggesting patterns you might not know):
+**AI's response:**
 
 > "Excellent question—testing experimental features safely requires isolation and redundant recovery paths. `init --here` **will completely overwrite your CLAUDE.md** (it's a full file replacement, not a merge), so we need multiple backup strategies.
 >
@@ -444,19 +434,16 @@ Let's see this unfold in a realistic conversation.
 >
 > Want me to explain exactly what `init --here` will do to your files, and then we can plan your merge strategy?"
 
-**What just happened** (Three Roles analysis):
-
-- **AI as Teacher**: The AI suggested a safety pattern (experimental branch + multiple backups) you might not have designed independently. This is new knowledge transferred TO you.
-- **Next**: You'll teach the AI about your specific project (knowledge transferred FROM you).
-- **Later**: You'll converge on a merge strategy together (collaborative problem-solving).
-
-This is **bidirectional learning**, not passive tool use. Pay attention to what you learned from the AI's response (branching strategy? redundant backups? multiple recovery options?).
+**Reflect on this interaction:**
+- What safety strategies did AI suggest that you hadn't considered?
+- How does having three recovery methods (branch, backup files, git history) reduce risk?
+- What would happen if you only had one recovery method and it failed?
 
 ---
 
-#### Sharing Project Specifics
+### Understanding File Changes and Planning Integration
 
-**Your response** (teaching the AI about your project):
+**Your response:**
 > "Yes, please explain the actual file changes. For context, my CLAUDE.md has three main sections:
 >
 > 1. **Coding standards** (50 lines): Python type hints, Google-style docstrings, 100-char line limit
@@ -465,7 +452,7 @@ This is **bidirectional learning**, not passive tool use. Pay attention to what 
 >
 > Will any of this survive the init automatically, or is it all lost?"
 
-**AI's response** (learning from your specifics):
+**AI's response:**
 
 > "Thank you for those details—understanding your content structure lets me give you accurate merge guidance.
 >
@@ -504,13 +491,11 @@ This is **bidirectional learning**, not passive tool use. Pay attention to what 
 >
 > Does this merge strategy make sense for your content?"
 
-**What just happened**:
-
-- **You as Teacher**: You described your project's specific content categories (coding standards, architecture, AI patterns). The AI didn't know this before—you provided domain knowledge.
-- **AI as Student**: The AI adapted its recommendation based on YOUR project specifics. It learned your content structure and tailored the merge strategy accordingly.
-- **Convergence starting**: The AI proposed a categorization (constitution vs CLAUDE.md) but asked for your validation ("Does this make sense?"). You're moving toward a shared solution.
-
-This is collaborative problem-solving. Notice how the AI's merge strategy is MORE SPECIFIC now because you taught it your project's structure.
+**Reflect on how the conversation evolved:**
+- You provided specific details about your project structure (3 content categories)
+- AI adapted its generic advice to YOUR specific situation
+- The merge strategy is now tailored to your content, not generic
+- What changed between AI's first response and this one?
 
 ---
 

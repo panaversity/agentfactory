@@ -87,7 +87,7 @@ Professional development workflow: specifications and planning
 | 30 | Understanding Spec-Driven Development | `30-specification-driven-development-fundamentals/` | ✅ Implemented |
 | 31 | Spec-Kit Plus Hands-On | `31-spec-kit-plus-hands-on/` | ✅ Implemented |
 | 32 | AI Orchestration: Agent Teams and Manager Patterns | `32-ai-orchestra-agent-teams-manager/` | ✅ Implemented |
-| 33 | The Tessl Vision: Spec-as-Source | `33-tessl-framework-and-integration/` | ✅ Implemented |
+| 33 | The Tessl Vision: Spec-as-Source | `33-tessl-framework-and-integration/` | 📋 Planned |
 
 ---
 
