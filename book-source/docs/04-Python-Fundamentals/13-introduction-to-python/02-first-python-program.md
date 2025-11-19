@@ -551,6 +551,3 @@ After each answer, tell me if I'm correct and clarify any misconceptions.
 **What to look for:** Can you answer without looking back? If not, review the lesson sections.
 
 **Reflection:** Which concept is clearest? Which needs more practice?
-
-
-
