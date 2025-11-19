@@ -1,206 +1,426 @@
 ---
-title: "What Is Python?"
+title: "What is Python? Your First Step into Programming"
 chapter: 13
 lesson: 1
-duration_minutes: 40
+duration_minutes: 35
+proficiency_level: "CEFR A2"
+blooms_level: "Understand"
 
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+# Not visible to students; enables competency assessment and differentiation
 skills:
-  - name: "Understanding Python's Role in AI Development"
-    proficiency_level: "A1"
-    category: "Conceptual"
-    bloom_level: "Remember"
-    digcomp_area: "Information Literacy"
-    measurable_at_this_level: "Student can identify Python as a programming language and explain why it's used for AI"
-
-  - name: "Recognizing Python's Advantages for AI"
-    proficiency_level: "A1"
-    category: "Conceptual"
+  - name: "Understanding Programming as Instruction-Giving"
+    proficiency_level: "A2"
+    category: "Technical"
     bloom_level: "Understand"
     digcomp_area: "Information Literacy"
-    measurable_at_this_level: "Student can explain that Python's readable syntax and library ecosystem make it ideal for AI agents"
+    measurable_at_this_level: "Student can explain programming as giving instructions to computers using real-world analogies (robot, recipe)"
 
-  - name: "Connecting Python to AI-Driven Development"
-    proficiency_level: "A1"
-    category: "Conceptual"
+  - name: "Identifying Python as a Programming Language"
+    proficiency_level: "A2"
+    category: "Technical"
+    bloom_level: "Remember"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can state what Python is and name 2-3 real-world applications that use it"
+
+  - name: "Recognizing Why Python is Beginner-Friendly"
+    proficiency_level: "A2"
+    category: "Technical"
     bloom_level: "Understand"
     digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can articulate how type hints in Python help describe intent for AI execution"
+    measurable_at_this_level: "Student can explain 2-3 reasons why Python is ideal for learning programming (readable syntax, simple structure, large community)"
 
 learning_objectives:
-  - objective: "Explain what Python is and why it's used for AI development"
-    proficiency_level: "A1"
-    bloom_level: "Remember"
-    assessment_method: "Student can write 2-3 sentences explaining Python and one real-world AI use case"
-
-  - objective: "Understand how Python connects to AI-Driven Development methodology"
-    proficiency_level: "A1"
+  - objective: "Explain what programming is without using technical jargon"
+    proficiency_level: "A2"
     bloom_level: "Understand"
-    assessment_method: "Student can explain how type hints help AI understand intent"
+    assessment_method: "Student describes programming as 'giving instructions to computers' using own analogies (cooking, teaching, navigation)"
+
+  - objective: "Identify Python as a programming language and state its purpose"
+    proficiency_level: "A2"
+    bloom_level: "Remember"
+    assessment_method: "Student can answer: 'What is Python?' with 1-2 sentence explanation and name at least 2 companies/products that use it"
+
+  - objective: "Articulate why Python is suitable for beginners"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Student lists 3 beginner-friendly features of Python (readable, simple, helpful community) and explains why each matters"
 
 cognitive_load:
-  new_concepts: 5
-  assessment: "5 concepts (programming language, Python, AI superpower, book relevance, dev workflow) within A1 limit ✓"
+  new_concepts: 3
+  assessment: "3 new concepts (programming as instructions, Python as language, why Python for learning) at A2 limit of 5-7 ✓"
 
 differentiation:
-  extension_for_advanced: "Research current AI frameworks built in Python (TensorFlow, PyTorch); analyze why readability matters for AI"
-  remedial_for_struggling: "Focus on ChatGPT example as primary case study before introducing other applications"
+  extension_for_advanced: "Research Python's history (Guido van Rossum, 1991); compare Python to other beginner languages (JavaScript, Ruby); explore Python Enhancement Proposals (PEPs)"
+  remedial_for_struggling: "Focus on the robot sandwich analogy as single reference point; skip real-world application examples if overwhelming; watch 3-5 minute intro to Python video"
 
+# Generation metadata
 generated_by: "content-implementer v3.0.0"
-source_spec: "specs/016-part-4-chapter-13/spec.md"
-created: "2025-11-09"
-last_modified: "2025-11-09"
+source_spec: "specs/014-chapter-13-redesign/spec.md"
+created: "2025-01-18"
+last_modified: "2025-01-18"
 git_author: "Claude Code"
 workflow: "/sp.implement"
 version: "1.0.0"
 ---
 
-# Lesson 1: What Is Python?
+# What is Python? Your First Step into Programming
 
-You've learned that AI-Driven Development is about describing intent clearly and letting AI handle the execution. You've practiced this with specifications, prompts, and context engineering. Now you're ready to learn Python—the primary language for expressing that intent to AI agents.
+## What You'll Learn
 
-But here's the thing: Python isn't just another programming language. It's become the lingua franca of AI development worldwide. When you write Python, you're writing in a language that both humans and AI systems understand fluently. That's not coincidence—it's by design.
+- What programming means (in plain language, no jargon)
+- What Python is and why it exists
+- Why Python is perfect for learning to code
+- Real-world applications powered by Python
+- How this chapter fits into your learning journey
 
-## What Exactly Is Python?
+---
 
-**Python is a programming language**—a set of rules that tell computers what to do. Like English is the language of international business, Python is the language of software development and AI.
+## Opening Hook: Teaching a Robot to Make Sandwiches
 
-When you write Python code, you're giving instructions to your computer. Python reads those instructions and executes them. That's it. The magic comes from what you can express and how clearly you can express it.
+Imagine you have a robot in your kitchen. This robot is eager to help, but it has one limitation: **it knows absolutely nothing**. It doesn't know what "bread" is. It doesn't understand "spread peanut butter." Words like "assemble" or "layer" are meaningless to it.
 
-Here's a concrete example. If you wanted to tell your AI companion "add these two numbers," you could say:
+Your job is to teach this robot how to make your favorite sandwich. But here's the challenge: you can only communicate using **extremely precise, step-by-step instructions**. Every single action must be spelled out:
+
+1. Open the refrigerator door
+2. Locate the bread bag (second shelf, left side)
+3. Remove two slices of bread
+4. Close the refrigerator door
+5. Place both slices on the counter
+6. Open the peanut butter jar lid
+7. Pick up a knife
+8. Scoop one tablespoon of peanut butter
+9. Spread peanut butter evenly on first bread slice
+10. ...
+
+You get the idea. Every tiny step matters. If you skip step 3 ("remove two slices"), the robot will try to spread peanut butter on a closed bread bag. If you forget to say "pick up a knife," the robot might try spreading peanut butter with its fingers.
+
+**This is exactly what programming is.**
+
+When you write a program, you're teaching a computer (which, like our robot, knows nothing) how to perform a task. The computer follows your instructions *exactly*—no interpretation, no guessing, no common sense. If your instructions are clear and complete, the computer succeeds. If they're vague or incomplete, the computer fails.
+
+**Programming is the art of giving precise instructions to computers.**
+
+And **Python** is the language you use to write those instructions.
+
+---
+
+## What Is Programming?
+
+Before we talk about Python specifically, let's answer a more fundamental question: **What is programming?**
+
+### The Concept (WHAT)
+
+**Programming** is writing a set of instructions that a computer can understand and execute. That's it. No magic, no mystery.
+
+Computers are incredibly fast and powerful, but they're also incredibly literal. They can't think for themselves. They can't improvise. They only follow the instructions you give them—precisely, repeatedly, without error (assuming your instructions are correct).
+
+When you write a program, you're creating a **recipe** for the computer. Just as a cooking recipe tells you how to make chocolate chip cookies, a program tells the computer how to perform a task: display a website, calculate taxes, recommend a song, edit a photo, send an email.
+
+### The Purpose (WHY)
+
+Why do we need programming? Because computers are tools, and tools need instructions.
+
+Think about it: A hammer doesn't know what to do on its own. You use the hammer to accomplish a task (building a shelf, hanging a picture). Similarly, a computer doesn't magically do useful things. **You** program it to accomplish tasks.
+
+Programming lets you:
+- **Automate repetitive work** — Instead of manually copying 1,000 files, write a program that does it in 2 seconds
+- **Solve complex problems** — Computers can process millions of calculations per second that would take humans years
+- **Create new tools** — Every app, website, and game you've ever used was built with programming
+- **Control technology** — From smartphones to self-driving cars, programming makes devices smart
+
+**Programming is how you turn computers from passive machines into active problem-solvers.**
+
+### Real-World Examples
+
+To make this concrete, here are three everyday examples of programming:
+
+**Example 1: Google Search**
+When you type "best pizza near me" into Google, a program:
+1. Takes your text input
+2. Searches billions of web pages for relevant results
+3. Ranks results by relevance
+4. Displays the top 10 matches in 0.5 seconds
+
+That's programming. Someone wrote instructions telling computers how to search, rank, and display results.
+
+**Example 2: Your Smartphone Alarm**
+When your alarm wakes you up at 7:00 AM, a program:
+1. Checks the current time every second
+2. Compares it to your alarm setting (7:00 AM)
+3. When the time matches, plays your chosen sound
+4. Continues until you tap "stop"
+
+Simple, but it required precise instructions: "If current_time equals alarm_time, then play_sound()."
+
+**Example 3: Netflix Recommendations**
+When Netflix suggests "You might also like..." shows, a program:
+1. Analyzes what you've watched
+2. Finds patterns (you like comedies with strong characters)
+3. Searches for similar shows
+4. Ranks them by prediction confidence
+5. Shows the top recommendations
+
+This is advanced programming, but it's still instructions: "If user watched X, Y, Z, then recommend shows similar to X."
+
+**Programming makes all of this possible.**
+
+---
+
+## What Is Python?
+
+Now that you understand programming (giving instructions to computers), let's talk about **Python**.
+
+### The Definition (WHAT)
+
+**Python is a programming language**—a specific set of rules and vocabulary for writing instructions that computers understand.
+
+Think of it like human languages. If you want to communicate with someone in Tokyo, you might speak Japanese. If you want to communicate with someone in Paris, you might speak French. If you want to communicate with a computer, you speak a **programming language** like Python.
+
+Python looks like this:
 
 ```python
-result = 5 + 3
+print("Hello, World!")
 ```
 
-That single line says: "Create a variable called `result`, it will hold a whole number, and its value is 5 + 3." Your AI understands this immediately. That clarity is what makes Python special.
+That single line is a complete Python program. It tells the computer: "Display the text 'Hello, World!' on the screen."
 
-### Why Python, Though?
+Simple, right? That's intentional. Python was designed to be **readable** and **beginner-friendly**.
 
-You could ask your computer to do things in other languages: JavaScript, Java, C++, Rust, Go. Each has strengths. But Python stands out for three reasons:
+### Why Python Exists (WHY)
 
-**1. Readability** — Python code reads almost like English. Compare these two ways to print text:
-- Python: `print("Hello, World!")`
-- JavaScript: `console.log("Hello, World!")`
+There are hundreds of programming languages (Python, JavaScript, Java, C++, Ruby, Go, Rust...). Why was Python created? What problem does it solve?
 
-Both do the same thing, but Python's `print` is more intuitive. This matters enormously for AI. When you describe code to Claude or another AI, readability means the AI understands your intent more accurately.
+**Python was designed to prioritize clarity over complexity.**
 
-**2. The Ecosystem** — Python has an enormous library ecosystem. Need to work with data? NumPy and Pandas. Need machine learning? TensorFlow and PyTorch. Need web development? Django and Flask. Need scientific computing? SciPy. Every major AI framework is built on Python because it enables rapid development.
+Many older languages (like C or Java) require a lot of "boilerplate" code—technical setup that doesn't directly relate to what you're trying to accomplish. Python strips that away. Compare these two ways to display "Hello, World!":
 
-**3. Community and Standards** — Python has a massive, mature community that's produced best practices and standards (like PEP 8 style guide). This consistency means when you learn Python, you're learning how professionals write Python worldwide.
+**In Java** (another language):
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
 
-## Why Python for AI Development?
+**In Python**:
+```python
+print("Hello, World!")
+```
 
-Let's make this concrete. Here are three real-world examples of AI systems built with Python:
+Both do the same thing, but Python is **5x shorter and infinitely more readable**. This matters enormously when you're learning. You can focus on *what* you're telling the computer to do, not *how* to satisfy the language's complex syntax rules.
 
-**ChatGPT and Other LLMs** — The APIs you interact with ChatGPT through? Built on Python. The infrastructure serving millions of requests? Python powers significant portions. Why? Because when researchers were developing these systems, they needed a language that let them express complex AI concepts clearly and iterate fast. Python won.
+**Python exists to make programming accessible, readable, and productive.**
 
-**Spotify's Recommendation Engine** — When you open Spotify and see "Recommended For You," that's Python working behind the scenes, analyzing your listening patterns and predicting songs you'll love. Python's data science libraries (pandas, scikit-learn) made this feasible.
+### Python's Creator and Philosophy
 
-**Tesla's Autonomous Driving** — Tesla's neural networks that enable autopilot? Built on Python (specifically TensorFlow, which is Python-based). The car's AI vision system processes real-time video and makes split-second decisions—all coded in Python.
+Python was created in 1991 by a Dutch programmer named **Guido van Rossum**. He wanted a language that:
+- **Read like English** — Code should be understandable at a glance
+- **Was simple to learn** — Beginners shouldn't struggle with arcane syntax
+- **Scaled from simple to complex** — You can write a 5-line script or a million-line system
 
-These aren't small projects. These are production systems serving billions of users. They chose Python because it let them express complex AI logic clearly.
+Python's philosophy is captured in "The Zen of Python" (a set of guiding principles). Here are three key ideas:
 
-## How Python Fits Into This Book
+1. **"Beautiful is better than ugly"** — Code should be elegant and clean
+2. **"Simple is better than complex"** — Don't overcomplicate solutions
+3. **"Readability counts"** — Other people (including future you) will read your code; make it clear
 
-This chapter is the bridge between understanding AI-Driven Development and practicing it.
+This philosophy makes Python perfect for beginners and professionals alike.
 
-In Chapters 1–4, you learned the philosophy: **AI development is about describing intent, and AI handles execution.**
+---
 
-In Chapters 5–8, you learned the tools: Claude Code, Gemini CLI, git, bash.
+## Why Python Is Perfect for Learning
 
-In Chapters 9–11, you learned the communication skills: how to write specs, engineer prompts, provide context.
+You might wonder: "If there are so many languages, why am I learning Python specifically?"
 
-**Now you're learning Python as the language for expressing specifications to AI.**
+Great question. Here are **three reasons Python is ideal for beginners**:
 
-Here's the key insight: **Type hints are specifications.** When you write:
+### Reason 1: Python Reads Like English
+
+Look at this Python code:
 
 ```python
-user_name: str = "Alice"
-user_age: int = 25
+age = 25
+if age >= 18:
+    print("You are an adult")
+else:
+    print("You are a minor")
 ```
 
-You're not just creating variables. You're describing intent. You're saying "I want `user_name` to be text, and `user_age` to be a whole number." Your AI reads that and understands exactly what you mean.
+Even without knowing Python, you can probably guess what this does:
+- Stores the number 25 in a variable called `age`
+- Checks if age is greater than or equal to 18
+- If yes, prints "You are an adult"
+- If no, prints "You are a minor"
 
-This practice of describing intent through type hints prepares you for Spec-Driven Development in Part 5, where you'll write formal specifications that AI systems execute as complete programs.
+That's the power of readable syntax. You don't need a computer science degree to understand the logic.
 
-#### 💬 AI Colearning Prompt
-> "Explain what Python is in a way a 10-year-old would understand. Focus on: What is it? Why does it matter for AI?"
+### Reason 2: Python Has Simple Structure
 
-#### 🎓 Expert Insight
-> In AI-native development, syntax is cheap—semantics is gold. You don't memorize how to write an f-string (ask AI). You understand when to use strings vs numbers, why type hints matter, how code flows. Your job: strategic thinking and design. AI's job: syntax details and error debugging. This partnership is what makes you 10x more productive.
+Python doesn't require lots of setup. You can write a useful program in 1-3 lines:
 
-#### 🤝 Practice Exercise
+```python
+name = input("What's your name? ")
+print(f"Hello, {name}!")
+```
 
-> **Ask your AI**: "Find 3 real-world AI applications built with Python (besides ChatGPT). For each one, explain: What problem does it solve? Why did the creators choose Python over other languages? Then identify one common technical advantage Python provides for all three."
+This program asks for your name and greets you. That's it. No imports, no classes, no boilerplate. Just clear instructions.
 
-**Expected Outcome**: You'll discover concrete examples of Python in production AI systems, understand the pattern of why Python dominates AI development, and practice researching technology decisions with AI as your collaborative partner.
+### Reason 3: Python Has a Massive, Helpful Community
 
-## Common Mistakes
+When you get stuck (and you will—everyone does), Python's community is there to help:
+- **Stack Overflow** has millions of Python questions answered
+- **Python.org** offers free official documentation and tutorials
+- **YouTube** has thousands of Python learning videos
+- **Reddit's r/learnpython** has 500,000+ members helping each other
 
-**Mistake 1**: "I need to memorize all of Python before I can code"
+Because Python is so popular (it's the #1 language for beginners and #1 language for data science), you'll never struggle to find help.
 
-*Reality*: You'll learn about 20 core concepts in this book. AI knows the rest. Your job is understanding the core concepts so deeply that you can design programs even when you don't remember the exact syntax.
+**Bottom line**: Python removes obstacles. You can focus on learning *programming concepts* (logic, problem-solving, algorithms) without fighting the language itself.
 
-*How to think about it*: Professional developers spend more time reading other people's code and understanding architecture than typing syntax. Syntax is the easy part.
+---
 
-**Mistake 2**: "Python is only for data science or machine learning"
+## Real-World Applications of Python
 
-*Reality*: Python is general-purpose. Yes, it dominates data science and AI. But Python also builds web applications (Instagram, Spotify), system tools (Dropbox), scientific software, automation scripts, and more. We're using it for AI-Driven Development, but Python is flexible.
+Python isn't just for learning. It powers some of the world's biggest applications. Here are five examples:
 
-**Mistake 3**: "Using AI to help understand Python means I'm not really learning"
+**1. YouTube** (Video Streaming)
+YouTube's backend (the system that stores, processes, and serves billions of videos) is largely built with Python. Why? Because Python handles large-scale data efficiently.
 
-*Reality*: Professional developers use AI every single day. The skill isn't "memorize syntax"—it's "know when and how to use AI effectively." That's what we're teaching throughout this chapter and book.
+**2. Instagram** (Social Media)
+Instagram's web application runs on Django, a Python web framework. Over 2 billion users interact with Python code every day when they scroll Instagram.
+
+**3. Netflix** (Recommendation Engine)
+Netflix's recommendation system ("Because you watched...") uses Python for data analysis. Python's libraries (NumPy, Pandas) process viewing patterns to suggest shows.
+
+**4. Spotify** (Music Recommendations)
+Spotify analyzes your listening habits with Python to create personalized playlists like "Discover Weekly."
+
+**5. NASA** (Scientific Computing)
+NASA uses Python for data analysis, simulations, and even controlling spacecraft. Python's scientific libraries (SciPy, Matplotlib) make complex calculations manageable.
+
+**The Pattern**: Python is used wherever **data**, **automation**, or **scalability** matter. It's not a "toy language"—it's production-grade, professional software.
+
+---
+
+## For Curious Learners: How Python Runs Your Code
+
+*This section is optional. You can skip it and still master Chapter 13. But if you're curious how Python actually works "under the hood," read on.*
+
+When you write Python code and run it, here's what happens behind the scenes:
+
+### Step 1: You Write Source Code
+You create a file (like `hello.py`) with Python instructions:
+```python
+print("Hello, World!")
+```
+
+### Step 2: Python Compiles to Bytecode
+When you run the program, Python doesn't execute your text directly. First, it **compiles** (translates) your code into **bytecode**—a lower-level format that computers process faster.
+
+Your `hello.py` becomes something like this (invisible to you):
+```
+LOAD_NAME (print)
+LOAD_CONST ("Hello, World!")
+CALL_FUNCTION (1)
+```
+
+This bytecode is what the Python interpreter actually executes.
+
+### Step 3: The Python Virtual Machine Executes Bytecode
+Python's "virtual machine" (a program that runs programs) reads the bytecode and performs the actions: loading the `print` function, passing it the string "Hello, World!", and calling it.
+
+### Step 4: You See Output
+The result appears in your terminal:
+```
+Hello, World!
+```
+
+**Why This Matters**: This two-step process (source code → bytecode → execution) is what makes Python fast enough for production use while staying readable for humans.
+
+**You don't need to understand this to write Python.** But knowing the basics helps you appreciate why Python is called an "interpreted language" (it interprets bytecode, not source code directly).
+
+---
 
 ## Try With AI
 
-Use your AI companion (Claude Code or Gemini CLI) for these prompts. These are designed to progress from recall to analysis.
+Now it's time to practice what you've learned with your AI coding companion. These prompts are designed to deepen understanding, not just test recall.
 
-**Prompt 1: Recall – Python's Definition**
+### Prompt 1: Explain Programming in Your Own Words
+
+Copy this into your AI assistant (Claude Code, Gemini CLI, or ChatGPT):
 
 ```
-What is Python? Give a one-sentence definition suitable for someone who's never coded.
+I just learned that programming is "giving instructions to computers."
+
+Help me explain this concept to a 10-year-old using an analogy.
+Don't use the robot or sandwich examples from the lesson.
+Create a NEW analogy that shows what programming is.
 ```
 
-**Expected Outcome**: You compare the AI's definition to the one in this lesson. Does it make sense? Can you explain it to someone else now?
+**What to look for**: Does the AI's analogy make sense? Can you explain it to someone else? Do you understand programming better after hearing a different perspective?
+
+**Reflection**: Write 1-2 sentences summarizing programming in your own words (no copying from the lesson or AI).
 
 ---
 
-**Prompt 2: Understand – Why Python Matters for AI**
+### Prompt 2: Discover More Python Applications
 
 ```
-The lesson says "Python is ideal for AI because of readable syntax and library ecosystem."
-Explain what "readable syntax" means and why it matters for AI development.
-Give one example of a Python library used in AI.
+The lesson mentioned 5 real-world applications of Python:
+YouTube, Instagram, Netflix, Spotify, NASA.
+
+Find 3 MORE real-world companies or products that use Python.
+For each one, explain:
+1. What does the product do?
+2. Why did they choose Python?
+3. What problem does Python solve for them?
 ```
 
-**Expected Outcome**: You understand the connection between code readability and AI collaboration. You learn the name of at least one real Python AI library. You can explain why this matters.
+**What to look for**: You'll discover Python is used *everywhere*. Look for patterns (data processing, web applications, automation, AI).
+
+**Reflection**: Which application surprised you most? Why?
 
 ---
 
-**Prompt 3: Apply – Connecting Python to Your Goals**
+### Prompt 3: Why Python Over Other Languages?
 
 ```
-Think about what you want to build with AI in the future (a chatbot, an analysis tool, content generator, etc.).
-Explain how Python could help you build that.
-Ask: Why would Python be a good choice for my project?
+The lesson says Python is "beginner-friendly."
+
+But there are other languages (JavaScript, Ruby, Swift).
+Ask the AI:
+"What are 2 advantages of Python for beginners, and 2 advantages
+of JavaScript for beginners? When would someone choose JavaScript
+instead of Python?"
 ```
 
-**Expected Outcome**: You apply your Python knowledge to a real goal. Learning becomes personal and relevant. You see Python not as abstract but as a tool for your own ambitions.
+**What to look for**: No language is perfect for everything. Python excels at certain tasks, JavaScript at others. Understanding tradeoffs is a professional skill.
+
+**Reflection**: Based on what you learned, why is Python the right choice for *this* book?
 
 ---
 
-**Prompt 4: Analyze – Python vs. Other Languages**
+### Prompt 4: Validate Your Understanding
 
 ```
-The lesson mentions Python is different from other languages. Here's a comparison prompt:
-"Compare Python to JavaScript (another popular language).
-For building AI applications, what are the tradeoffs?
-When would you choose Python? When would you choose JavaScript?"
-Why is this an important question for developers to think about?
+Quiz me on Lesson 1 concepts.
+
+Ask me 3 questions about:
+1. What programming is
+2. What Python is
+3. Why Python is good for beginners
+
+After I answer each question, tell me if I'm correct and explain why.
 ```
 
-**Expected Outcome**: You understand that every language has tradeoffs. Python isn't the only tool. You practice analytical thinking about tool selection—a professional developer's skill. You close out Lesson 1 with broader perspective.
+**What to look for**: Can you answer without looking back at the lesson? If you struggle, that's okay—revisit the relevant sections and try again.
+
+**Reflection**: Which concept felt clearest? Which needs more review?
 
 ---
 
-**Safety Note**: All prompts are designed to deepen understanding, not generate code for you. If an AI response suggests code, read it carefully, run it yourself, and make sure you understand what it does before using it.
+**Safety Note**: AI is your practice partner, not your teacher. The lesson taught you the concepts. AI helps you explore, clarify, and practice. Always verify AI suggestions—don't trust them blindly.
+
+**Next Steps**: When you're ready, move to [Lesson 2: Your First Python Program](./02-first-python-program.md), where you'll write and run actual code!
