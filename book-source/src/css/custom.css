@@ -86,7 +86,10 @@ pre code {
 .navbar {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(10px);
-    position: relative;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
 }
 
