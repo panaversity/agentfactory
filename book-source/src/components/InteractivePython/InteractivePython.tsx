@@ -73,6 +73,17 @@ export const InteractivePython: React.FC<InteractivePythonProps> = ({
   const { pyodide, isLoading } = usePyodide();
   const outputRef = useRef<HTMLDivElement>(null);
 
+  // Calculate dynamic editor height based on code lines
+  const lineCount = code.split('\n').length;
+  const lineHeight = 19; // Monaco default line height in pixels
+  const padding = 32; // Top + bottom padding
+  const minHeight = 100;
+  const maxHeight = 400;
+  const editorHeight = Math.min(
+    Math.max(lineCount * lineHeight + padding, minHeight),
+    maxHeight
+  );
+
   // Auto-scroll output to bottom when new content is added
   useEffect(() => {
     if (outputRef.current) {
@@ -159,7 +170,7 @@ export const InteractivePython: React.FC<InteractivePythonProps> = ({
           </div>
         )}
         <Editor
-          height="200px"
+          height={`${editorHeight}px`}
           defaultLanguage="python"
           value={code}
           onChange={(value) => setCode(value || '')}
