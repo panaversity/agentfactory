@@ -14,6 +14,7 @@ export class PyodideRunner {
   private static instance: PyodideRunner | null = null;
   private pyodide: PyodideInterface | null = null;
   private initPromise: Promise<void> | null = null;
+  private isRunning: boolean = false;
 
   /**
    * Private constructor - use getInstance() instead
@@ -94,6 +95,11 @@ export class PyodideRunner {
     onOutput: (text: string) => void,
     onError: (text: string) => void
   ): Promise<void> {
+    // Prevent concurrent executions
+    if (this.isRunning) {
+      throw new Error('Another code execution is already in progress. Please wait for it to complete.');
+    }
+
     // Ensure Pyodide is initialized
     await this.init();
 
@@ -101,26 +107,29 @@ export class PyodideRunner {
       throw new Error('Pyodide failed to initialize');
     }
 
-    // Set up stdout/stderr capture with batched callbacks
-    // batched: Called when newline appears or on flush
-    // This provides real-time output as code executes
-    this.pyodide.setStdout({
-      batched: (msg: string) => {
-        if (msg) {
-          onOutput(msg + '\n');
-        }
-      }
-    });
-
-    this.pyodide.setStderr({
-      batched: (msg: string) => {
-        if (msg) {
-          onError(msg + '\n');
-        }
-      }
-    });
+    // Mark as running before setting up handlers
+    this.isRunning = true;
 
     try {
+      // Set up stdout/stderr capture with batched callbacks
+      // batched: Called when newline appears or on flush
+      // This provides real-time output as code executes
+      this.pyodide.setStdout({
+        batched: (msg: string) => {
+          if (msg) {
+            onOutput(msg + '\n');
+          }
+        }
+      });
+
+      this.pyodide.setStderr({
+        batched: (msg: string) => {
+          if (msg) {
+            onError(msg + '\n');
+          }
+        }
+      });
+
       // Use runPythonAsync to support both sync and async code
       const result = await this.pyodide.runPythonAsync(code);
 
@@ -136,6 +145,9 @@ export class PyodideRunner {
       // Python errors are caught here and sent to onError
       const errorMsg = error instanceof Error ? error.message : String(error);
       onError(errorMsg);
+    } finally {
+      // Always release the lock, even if an error occurred
+      this.isRunning = false;
     }
   }
 
