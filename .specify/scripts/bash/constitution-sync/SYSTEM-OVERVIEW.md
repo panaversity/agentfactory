@@ -285,7 +285,7 @@ Execution:
     [...]
     ✓ Insert 15 complete
 
-  Validation: Running technical-reviewer...
+  Validation: Running validation-auditor...
     ✅ PASS (CoLearning elements: 4/4 types present)
 
 ✅ Lesson 1 updated: Surgical edit (8 minutes)
@@ -373,7 +373,7 @@ Execution:
     NOT in scope: Type conversions (defer to Chapter 16), string parsing
 
   Generating enhanced lesson...
-    Using lesson-writer skill with:
+    Using content-implementer skill with:
       ├─ Preserved examples (3 examples)
       ├─ Preserved explanations (2 sections)
       ├─ Constitution constraints (no forward refs, CoLearning elements throughout)
@@ -389,7 +389,7 @@ Execution:
     Fixed: 2 pedagogical ordering violations
     Fixed: 4 tone/style issues
 
-  Validation: Running technical-reviewer...
+  Validation: Running validation-auditor...
     ✅ PASS (All rules compliant, quality preserved)
 
 ✅ Lesson 2 updated: Enhanced regeneration (12 minutes)
@@ -425,7 +425,7 @@ Rationale:
   - Already fully compliant with all constitutional rules
   - No changes needed
 
-Validation: Running technical-reviewer...
+Validation: Running validation-auditor...
   ✅ PASS (All rules compliant)
 
 ✅ Lesson 3: No change needed (1 minute)
@@ -507,7 +507,7 @@ Execution:
       → Deep manipulation
 
   Generating new lesson from scratch...
-    Using lesson-writer skill with strict constraints:
+    Using content-implementer skill with strict constraints:
       ├─ Constitution-compliant structure
       ├─ CoLearning elements throughout
       ├─ NO iteration (just show static examples)
@@ -525,7 +525,7 @@ Execution:
     Fixed: Lesson closure (removed "What's Next" section)
     Restructured: From API reference to learning narrative
 
-  Validation: Running technical-reviewer...
+  Validation: Running validation-auditor...
     ✅ PASS (Fundamental issues resolved)
 
 ✅ Lesson 4 updated: Full regeneration (18 minutes)
@@ -585,7 +585,7 @@ Execution:
 
   ✓ Deletion complete (18 lines removed)
 
-  Validation: Running technical-reviewer...
+  Validation: Running validation-auditor...
     ✅ PASS (Closure pattern compliant)
 
 ✅ Lesson 5 updated: Surgical removal (2 minutes)
@@ -916,7 +916,7 @@ When constitution changes:
 - JSON structured data (parseable outputs)
 - Markdown narrative reports (human-readable)
 - Edit tool (surgical modifications)
-- lesson-writer skill (enhanced/full regeneration)
+- content-implementer skill (enhanced/full regeneration)
 
 ---
 

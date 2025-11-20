@@ -73,7 +73,7 @@ Additionally, finalize the infrastructure architecture:
 **Architecture Finalized:**
 - **4 Skills:** planning.md, technical-writing.md, pedagogy.md, ai-collaboration.md
 - **4 Output Styles:** docusaurus-chapter.md, lesson.md, code-example.md, exercise.md
-- **5 Sub-Agents:** planner → chapter-writer → lesson-writer → code-validator → technical-reviewer
+- **5 Sub-Agents:** planner → chapter-writer → content-implementer → code-validator → validation-auditor
 - **Key Design:** Iterative collaborative loop (humans + AI work together), specification-first approach, shared infrastructure ensures consistency
 
 **Planning Document Updated (pre_plan.md):**

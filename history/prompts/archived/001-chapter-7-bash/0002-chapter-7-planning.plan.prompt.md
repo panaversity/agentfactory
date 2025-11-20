@@ -67,7 +67,7 @@ Successfully generated comprehensive lesson-by-lesson implementation plan for Ch
 - ✅ Impact: Comprehensive 8-lesson plan ready for implementation. Transforms specification into actionable lesson structure with clear acceptance criteria, time estimates, and pedagogical rationale.
 - 🧪 Tests: Constitutional alignment verified, requirements coverage validated, user story mapping confirmed, success criteria with validation points established
 - 📁 Files: Created plan.md (292 lines) with complete lesson breakdown, prerequisites, content outlines, exercises, and acceptance criteria
-- 🔁 Next prompts: Ready for lesson implementation - use lesson-writer subagent to create individual lesson content files (01-08) following the plan
+- 🔁 Next prompts: Ready for lesson implementation - use content-implementer subagent to create individual lesson content files (01-08) following the plan
 - 🧠 Reflection: The two-part structure effectively balances foundational command knowledge (Part I) with AI-augmented productivity (Part II), preventing over-reliance while maximizing learner capability. Progressive scaffolding and clear prioritization (P1/P2/P3) enable iterative development if needed.
 
 ## Evaluation notes (flywheel)
@@ -75,4 +75,4 @@ Successfully generated comprehensive lesson-by-lesson implementation plan for Ch
 - Failure modes observed: None - chapter-planner subagent successfully generated complete plan on first attempt
 - Graders run and results (PASS/FAIL): PASS - Constitutional alignment check passed, requirements coverage complete, all acceptance criteria defined
 - Prompt variant (if applicable): Standard /sp.plan workflow with chapter-planner subagent
-- Next experiment (smallest change to try): Implement Lesson 1 using lesson-writer subagent to validate plan provides sufficient detail for content creation
+- Next experiment (smallest change to try): Implement Lesson 1 using content-implementer subagent to validate plan provides sufficient detail for content creation

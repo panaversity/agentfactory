@@ -1,14 +1,72 @@
 ---
-sidebar_position: 1
 title: "The Claude Code Origin Story and Paradigm Shift"
-duration: "8-10 min"
+sidebar_position: 1
+chapter: 5
+lesson: 1
+duration_minutes: 10
+
+# PEDAGOGICAL LAYER METADATA
+primary_layer: "Layer 1"
+layer_progression: "L1 (Manual Foundation)"
+layer_1_foundation: "Paradigm shift understanding (passive AI vs agentic AI), context-aware development concepts"
+layer_2_collaboration: "N/A"
+layer_3_intelligence: "N/A"
+layer_4_capstone: "N/A"
+
+# HIDDEN SKILLS METADATA (Institutional Integration Layer)
+skills:
+  - name: "Understanding Agentic AI vs Passive AI Assistance"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can identify and explain the fundamental difference between passive AI tools (web chat, copilots) and agentic AI systems (Claude Code) with context awareness and file integration"
+
+learning_objectives:
+  - objective: "Understand the fundamental difference between passive AI assistance and agentic AI collaboration"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Explanation comparing chat-based AI vs context-aware agentic systems"
+  - objective: "Recognize how context-aware file integration enables better AI suggestions"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Identification of how Claude Code reads project files vs web-based AI"
+  - objective: "Identify the paradigm shift from chat-based tools to development partners"
+    proficiency_level: "A2"
+    bloom_level: "Analyze"
+    assessment_method: "Analysis of workflow differences between traditional and agentic AI development"
+  - objective: "Explain why Claude Code represents a paradigm shift in AI-assisted development"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of paradigm shift with concrete examples"
+
+# Cognitive load tracking
+cognitive_load:
+  new_concepts: 5
+  assessment: "5 concepts (agentic AI, context awareness, file integration, terminal-based AI, paradigm shift) - within A2 limit of 7 ✓"
+
+# Differentiation guidance
+differentiation:
+  extension_for_advanced: "Research GitHub Copilot Workspace, Cursor, Windsurf, and compare their agentic capabilities to Claude Code's approach"
+  remedial_for_struggling: "Focus on single concrete example: Claude Code reading CLAUDE.md vs ChatGPT copy-pasting context"
+
+# Generation metadata
+generated_by: "content-implementer v1.0.0 (029-chapter-5-refinement)"
+source_spec: "specs/029-chapter-5-refinement/spec.md"
+created: "2025-01-17"
+last_modified: "2025-01-17"
+git_author: "Claude Code"
+workflow: "/sp.implement"
+version: "2.0.0"
+
+# Legacy compatibility (Docusaurus)
+prerequisites:
+  - "Understanding of what AI is and basic terminal usage"
 ---
 
 # The Claude Code Origin Story and Paradigm Shift
 
-## The Development Tool That Nobody Meant to Build
-
-In February 2025, a small team at Anthropic shipped what they thought was a modest developer experiment. They called it "Claude Code"—a command-line interface that let developers chat with Claude AI directly from their terminal. The team expected a niche audience: maybe a few thousand command-line enthusiasts.
+When Anthropic shipped Claude Code, they created what seemed like a modest developer experiment—a command-line interface that let developers chat with Claude AI directly from their terminal. The team expected a niche audience: maybe a few thousand command-line enthusiasts.
 
 What happened next surprised everyone.
 
@@ -31,6 +89,9 @@ Think of it this way:
 - **Claude Code**: You describe what you need. Claude reads your actual files, proposes specific changes to your real codebase, and can apply those changes directly (with your approval).
 
 The difference is profound: one is a consultant giving advice, the other is a pair programmer actively collaborating on your project.
+
+#### 💬 AI Colearning Prompt
+> "Explain the difference between a web-based AI assistant and an agentic AI tool like Claude Code. What can agentic AI do that web chat can't?"
 
 ---
 
@@ -95,6 +156,9 @@ Terminal commands are explicit and visible. When Claude Code proposes a file cha
 #### 💬 AI Colearning Prompt
 > "Why is direct file system access more powerful than copy-pasting code between a browser and editor?"
 
+#### 🎓 Expert Insight
+> In AI-native development, you don't memorize CLI commands or terminal workflows—you understand WHY terminal integration removes context-switching friction. The tool's interface is cheap; recognizing where productivity bottlenecks hide is gold.
+
 ---
 
 ## Why This Matters: The Future of Development
@@ -120,39 +184,23 @@ This doesn't mean AI writes all your code. It means AI handles the *friction*—
 
 ---
 
-## Try With AI 
+## Try With AI
 
-Use ChatGPT web for this activity. If you've already set up an AI companion tool from later chapters, you may use it instead.
+Let's solidify your understanding of the paradigm shift from passive to agentic AI assistance.
 
-### Prompt 1: ChatGPT vs. Claude Code Comparison
+**🔍 Explore Workflow Limitations:**
 
-```
-The lesson compares 'passive AI' (like ChatGPT web) with 'agentic AI' (like Claude Code). I use ChatGPT regularly. Help me understand: What's ONE specific workflow where ChatGPT FAILS me today (because it can't see my files) that Claude Code would handle better? Give me a concrete before/after example.
-```
+> "I use ChatGPT web regularly for coding help. Show me ONE specific workflow where ChatGPT fails me today (because it can't see my files) that Claude Code would handle better. Give me a concrete before/after comparison with actual commands I'd type."
 
-**Expected outcome:** Concrete understanding of where ChatGPT limits you today (and how agentic AI solves it)
+**💡 Understand Trust Boundaries:**
 
-### Prompt 2: Trust and Risk Assessment
+> "I'm nervous about letting AI read my files and propose changes. Help me think through the trust boundary: What are the real risks? What protections exist? Compare this to tools I already trust (like GitHub Copilot or IDE auto-complete). Is Claude Code actually riskier, or does it just FEEL riskier because it's more visible?"
 
-```
-I'm nervous about letting AI 'read my files' and 'propose changes.' Help me think through the trust boundary: What are the REAL risks? What protections exist? Compare this to other tools I already trust (like GitHub Copilot or auto-complete). Is Claude Code actually riskier, or does it just FEEL riskier because it's more visible?
-```
+**🎯 Apply to Your Workflow:**
 
-**Expected outcome:** Rational assessment of risks vs. protections (not fear-based thinking)
+> "I work on [describe your daily work: debugging / learning frameworks / building projects / etc.]. Walk me through exactly how Claude Code would help with my specific workflow. What would I TYPE? What would Claude SEE? What would happen step-by-step?"
 
-### Prompt 3: Personal Workflow Analysis
+**🚀 Connect Through Analogy:**
 
-```
-The lesson shows 7 scenarios where Claude Code transforms development work. Pick the scenario CLOSEST to my daily work [describe what you do: debugging / learning new frameworks / building projects / etc.]. Break it down step-by-step: How would Claude Code actually help me? What would I TYPE? What would I SEE?
-```
-
-**Expected outcome:** Step-by-step visualization of Claude Code in action for YOUR workflow
-
-### Prompt 4: Terminal Integration Analogy
-
-```
-I finished this lesson but still don't fully 'get' why terminal integration matters so much. Explain it using a non-programming analogy (maybe: cooking, construction, writing). Why is 'AI in the terminal' fundamentally better than 'AI in a separate tab'?
-```
-
-**Expected outcome:** Intuitive grasp of why terminal integration is revolutionary
+> "I understand the concept but don't fully grasp WHY terminal integration is revolutionary. Explain it using a non-programming analogy (cooking, construction, writing, etc.). Why is 'AI in the terminal' fundamentally different from 'AI in a separate browser tab'?"
 

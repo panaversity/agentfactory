@@ -98,7 +98,7 @@ Created ADR-0011 documenting constitutional redesign as decision cluster.
   - `history/adr/0011-constitutional-v4-0-0-redesign-scope-narrowing-and-forcing-function-enforcement.md` (97 lines)
 
 - 🔁 **Next prompts**:
-  1. **Task 2**: Update agents (chapter-planner, lesson-writer, technical-reviewer) to enforce new forcing functions
+  1. **Task 2**: Update agents (chapter-planner, content-implementer, validation-auditor) to enforce new forcing functions
   2. **Task 4**: Implement automated constitutional validators (linters for forcing function detection)
   3. **Migration Audit**: Scan existing chapters for constitutional v4.0.0 violations
 

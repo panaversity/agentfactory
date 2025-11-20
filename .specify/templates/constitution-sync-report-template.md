@@ -204,7 +204,7 @@ Based on change history, predicted likely violations:
 **Deletions Applied**: 1 post-section
   - Delete 1: Lines 678-695 ("What's Next" section removed)
 
-**Validation**: ✅ PASS (technical-reviewer confirms compliance)
+**Validation**: ✅ PASS (validation-auditor confirms compliance)
 -->
 
 <!-- For ENHANCED REGENERATION:
@@ -219,7 +219,7 @@ Based on change history, predicted likely violations:
 
 **Added**: 8 CoLearning elements throughout
 **Fixed**: 2 pedagogical ordering violations
-**Validation**: ✅ PASS (technical-reviewer confirms compliance)
+**Validation**: ✅ PASS (validation-auditor confirms compliance)
 -->
 
 <!-- For FULL REGENERATION:
@@ -230,18 +230,18 @@ Based on change history, predicted likely violations:
 
 **Regeneration Strategy**:
   - Used spec.md + plan.md as source of truth
-  - Invoked lesson-writer skill with strict constitution constraints
+  - Invoked content-implementer skill with strict constitution constraints
   - Removed: 15+ code examples with iteration/methods
   - Added: 6 simple static examples
   - Added: 12 CoLearning elements
   - Fixed: All pedagogical ordering violations
 
-**Validation**: ✅ PASS (technical-reviewer confirms compliance)
+**Validation**: ✅ PASS (validation-auditor confirms compliance)
 -->
 
 <!-- For NO CHANGE:
 **Reason**: Already 100% compliant
-**Validation**: ✅ PASS (technical-reviewer confirms continued compliance)
+**Validation**: ✅ PASS (validation-auditor confirms continued compliance)
 **Time**: 1 minute (validation only)
 -->
 

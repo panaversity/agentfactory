@@ -74,7 +74,7 @@ Agent: "You are in Users/mjs/Documents directory."
 - ✅ Impact: Transformed specification and plan into 68 executable tasks enabling parallel content creation; each user story independently testable and deployable
 - 🧪 Tests: All validation checkpoints defined (T019, T023, T026, T029, T031, T034, T043, T057)
 - 📁 Files: Generated tasks.md (400+ lines); organized by phase, user story, parallel opportunities
-- 🔁 Next prompts: lesson-writer subagent to implement lessons; technical-reviewer to validate authenticity
+- 🔁 Next prompts: content-implementer subagent to implement lessons; validation-auditor to validate authenticity
 - 🧠 Reflection: Tasks successfully capture dialogue-first philosophy while maintaining pedagogical rigor. Implementation can start with MVP (US1 only) then add iteratively or in parallel by multiple writers
 
 ## Evaluation notes (flywheel)

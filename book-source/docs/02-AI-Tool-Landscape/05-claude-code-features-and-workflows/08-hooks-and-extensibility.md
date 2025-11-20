@@ -1,17 +1,71 @@
 ---
-sidebar_position: 7
 title: "Hooks and Extensibility"
-duration: "5-7 min"
+sidebar_position: 8
+chapter: 5
+lesson: 8
+duration_minutes: 6
+
+# PEDAGOGICAL LAYER METADATA
+primary_layer: "Layer 2"
+layer_progression: "L2 (AI Collaboration)"
+layer_1_foundation: "N/A"
+layer_2_collaboration: "Co-designing hooks for specific workflows (Step 5), AI as Teacher suggesting hook patterns, Student as Teacher providing workflow context, AI as Co-Worker refining hook commands"
+layer_3_intelligence: "N/A"
+layer_4_capstone: "N/A"
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Implementing Event-Driven Automation with Hooks"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can understand hook event types, create SessionStart hooks in settings.json, recognize automation opportunities, and co-design hooks through AI collaboration"
+
 learning_objectives:
-  - "Understand hooks as event-triggered automation"
-  - "Create a simple SessionStart hook"
-  - "Recognize common hook events (PreToolUse, PostToolUse, SessionStart, SessionEnd)"
-  - "Test hooks in a real Claude Code session"
+  - objective: "Understand hooks as event-triggered automation"
+    proficiency_level: "B1"
+    bloom_level: "Understand"
+    assessment_method: "Explanation of hook architecture and event-trigger-action pattern"
+  - objective: "Create a simple SessionStart hook"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Creation of functional SessionStart hook that displays project context"
+  - objective: "Recognize common hook events (PreToolUse, PostToolUse, SessionStart, SessionEnd)"
+    proficiency_level: "B1"
+    bloom_level: "Understand"
+    assessment_method: "Identification of appropriate hook events for different automation scenarios"
+  - objective: "Test hooks in a real Claude Code session"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Verification that hook executes correctly during session start"
+
+# Cognitive load tracking
+cognitive_load:
+  new_concepts: 5
+  assessment: "5 concepts (hooks definition, event types [PreToolUse/PostToolUse/SessionStart/SessionEnd], automation patterns, settings.json configuration, Three Roles co-design) - within B1 limit of 10 ✓"
+
+# Differentiation guidance
+differentiation:
+  extension_for_advanced: "Create PostToolUse hooks for code formatting and test automation; design hook chains that trigger sequentially"
+  remedial_for_struggling: "Start with simple SessionStart echo message before adding project context; understand conceptually before implementing"
+
+# Generation metadata
+generated_by: "content-implementer v1.0.0 (029-chapter-5-refinement)"
+source_spec: "specs/029-chapter-5-refinement/spec.md"
+created: "2025-01-17"
+last_modified: "2025-01-17"
+git_author: "Claude Code"
+workflow: "/sp.implement"
+version: "2.0.0"
+
+# Legacy compatibility
+prerequisites:
+  - "Lessons 2-6: Claude Code, CLAUDE.md, MCP, Subagents, Skills"
+  - "Understanding of event-driven automation"
 ---
 
 # Hooks and Extensibility
-
-## The Problem: Repeating Setup Every Session
 
 You're working on a project. Every time you start a new Claude Code session, you manually:
 1. Explain the project structure
@@ -84,6 +138,9 @@ Here are three practical scenarios showing hooks in action:
 
 Each hook saves time by automating what you would otherwise do manually after specific events.
 
+#### 💬 AI Colearning Prompt
+> "Explain the difference between PreToolUse and PostToolUse hooks. Give 2 examples where each would be more appropriate than the other."
+
 ---
 
 ## Why Hooks Matter for Professional Workflows
@@ -127,11 +184,15 @@ Edit `.claude/settings.json` and add:
 
 ```json
 {
-  "hooks": [
+  "SessionStart": [
     {
-      "event": "SessionStart",
-      "type": "command",
-      "command": "echo 'Welcome to your project! Claude Code session started.'"
+      "matcher": {},
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo 'Welcome to your project! Claude Code session started.'"
+        }
+      ]
     }
   ]
 }
@@ -164,14 +225,19 @@ Update `.claude/settings.json` to show project info:
 
 ```json
 {
-  "hooks": [
+  "SessionStart": [
     {
-      "event": "SessionStart",
-      "type": "command",
-      "command": "echo 'Project: $(basename $(pwd)) | Files: $(ls -1 | wc -l) | Last modified: $(ls -lt | head -2 | tail -1 | awk \"{print \\$6, \\$7, \\$8}\")'"
+      "matcher": {},
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo \"Project: $(basename $(pwd)) | Files: $(ls -1 | wc -l) | Last modified: $(ls -lt | head -2 | tail -1 | awk '{print \\$6, \\$7, \\$8}')\""
+        }
+      ]
     }
   ]
 }
+
 ```
 
 Restart Claude Code:
@@ -187,6 +253,29 @@ Project: my-project | Files: 15 | Last modified: Nov 14 10:23
 ```
 
 Useful project context **automatically** every session!
+
+### Step 5: Co-Design a Hook for Your Workflow (Optional but Recommended)
+
+Now that you understand hooks, let's collaborate with Claude Code to design one for YOUR specific needs.
+
+**🤝 Practice Exercise: Three Roles Co-Design**
+
+Ask Claude Code:
+
+```
+"I want to create a hook that automates [YOUR SPECIFIC TASK].
+What event should trigger it? What command should run?
+What should I watch out for?"
+```
+
+**What happens in this collaboration**:
+1. **AI as Teacher**: Claude suggests appropriate hook design patterns you might not have considered
+2. **AI as Student**: You provide context about your specific workflow that Claude doesn't know
+3. **AI as Co-Worker**: Together you refine the design, converging on a hook that actually solves your problem
+
+This is the Three Roles Framework in action—not just "asking AI to do something," but genuine collaboration where both you and Claude Code learn from each other.
+
+**Try it now** with a real automation you need in your current project.
 
 ---
 
@@ -225,30 +314,20 @@ Not necessary. Claude Code works perfectly fine without custom hooks. You can:
 
 ## Try With AI
 
-Open Claude Code and explore hooks conceptually with your AI companion.
+Let's explore how hooks can automate repetitive tasks in your development workflow.
 
-### Prompt 1: Understand Hooks
+**💡 Understand Hook Fundamentals:**
 
-```
-claude "Explain hooks in Claude Code. Give 2-3 useful examples where a hook would save time by automating a repetitive task."
-```
+> "Explain hooks in Claude Code. Give me 3 concrete examples where a hook would save time by automating a repetitive task I currently do manually. For each example, explain: what event triggers the hook, what the hook does automatically, and how much time it saves."
 
-**Expected outcome**: AI explains hooks as event-triggered automation and provides concrete examples (format code, run tests, load environment).
+**🔍 Identify Automation Opportunities:**
 
-### Prompt 2: Identify Opportunities
+> "I frequently [describe your repetitive task: run tests before committing / format code after editing / check linting / load environment variables / deploy to staging]. Could a Claude Code hook automate this? If so, what would the hook do? Which event would trigger it? Walk me through what the automation would look like."
 
-Think of a task you do repeatedly in your projects (running tests, formatting code, checking linting, deploying, loading configuration).
+**🎯 Design Your First Hook:**
 
-```
-claude "I frequently [describe your repetitive task]. Could a Claude Code hook help automate this? If so, what would it do?"
-```
+> "Based on my workflow, help me design a simple hook to automate [your most annoying repetitive task]. What would the hook configuration look like? What command would it run? What event should trigger it? What could go wrong and how do I troubleshoot it?"
 
-**Expected outcome**: AI identifies how a hook could eliminate the repetitive step, discusses which event would trigger it, and explains the time savings.
+**🚀 Plan Your Learning Path:**
 
-### Prompt 3: Future Learning Path
-
-```
-claude "Can I build custom hooks in Claude Code? How hard is it? When would I learn this? What are the prerequisites?"
-```
-
-**Expected outcome**: AI clarifies that hook building is intermediate-to-advanced content, explains prerequisites (Part 5), and positions hooks in the larger Claude Code customization landscape.
+> "I want to learn how to build custom hooks. What are the prerequisites? When in this book will I learn this? How hard is it compared to what I've learned so far (CLAUDE.md, MCP servers, subagents, skills)? Give me a roadmap for mastering Claude Code extensibility."

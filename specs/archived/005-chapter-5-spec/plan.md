@@ -191,7 +191,7 @@ All 8 mandatory domain skills applied throughout:
 
 ## Implementation Status
 
-**This lesson plan is complete and ready for the lesson-writer subagent to create detailed content for all 5 lessons.**
+**This lesson plan is complete and ready for the content-implementer subagent to create detailed content for all 5 lessons.**
 
 All specifications, requirements, and success criteria from the approved spec are addressed and mapped to specific lessons.
 

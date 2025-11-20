@@ -68,14 +68,15 @@ Given that feature description, do this:
       git fetch --all --prune
       ```
    
-   b. Find the highest feature number across all sources for the short-name:
-      - Remote branches: `git ls-remote --heads origin | grep -E 'refs/heads/[0-9]+-<short-name>$'`
-      - Local branches: `git branch | grep -E '^[* ]*[0-9]+-<short-name>$'`
-      - Specs directories: Check for directories matching `specs/[0-9]+-<short-name>`
-   
+   b. Find the highest feature number across all sources (globally):
+      - Remote branches: `git ls-remote --heads origin | grep -E 'refs/heads/[0-9]+-'`
+      - Local branches: `git branch | grep -E '^[* ]*[0-9]+-'`
+      - Specs directories: Check for directories matching `specs/[0-9]+-*`
+      - Archived specs: Check for directories matching `specs/archived/[0-9]+-*`
+
    c. Determine the next available number:
-      - Extract all numbers from all three sources
-      - Find the highest number N
+      - Extract all numbers from all four sources (regardless of short-name)
+      - Find the highest number N globally
       - Use N+1 for the new branch number
    
    d. Run the script `.specify/scripts/bash/create-new-feature.sh --json "$ARGUMENTS"` with the calculated number and short-name:
@@ -84,9 +85,10 @@ Given that feature description, do this:
       - PowerShell example: `.specify/scripts/bash/create-new-feature.sh --json "$ARGUMENTS" -Json -Number 5 -ShortName "user-auth" "Add user authentication"`
    
    **IMPORTANT**:
-   - Check all three sources (remote branches, local branches, specs directories) to find the highest number
-   - Only match branches/directories with the exact short-name pattern
-   - If no existing branches/directories found with this short-name, start with number 1
+   - Check all four sources (remote branches, local branches, specs directories, archived specs) to find the highest number globally
+   - Match ALL branches/directories regardless of short-name to get global highest number
+   - If no existing branches/directories found anywhere, start with number 1
+   - Numbers are assigned sequentially across ALL features (global counter, not per-feature)
    - You must only ever run this script once per feature
    - The JSON is provided in the terminal as output - always refer to it to get the actual content you're looking for
    - The JSON output will contain BRANCH_NAME and SPEC_FILE paths
@@ -122,99 +124,82 @@ Given that feature description, do this:
 
 5. Write the specification to SPEC_FILE using the template structure, replacing placeholders with concrete details derived from the feature description (arguments) while preserving section order and headings.
 
-6. **Specification Quality Validation**: After writing the initial spec, validate it against quality criteria:
+6. **Specification Quality Validation**: Invoke spec-architect subagent to validate specification completeness and quality.
 
-   a. **Create Spec Quality Checklist**: Generate a checklist file at `FEATURE_DIR/checklists/requirements.md` using the checklist template structure with these validation items:
+   a. **Invoke spec-architect agent**:
 
-      ```markdown
-      # Specification Quality Checklist: [FEATURE NAME]
-      
-      **Purpose**: Validate specification completeness and quality before proceeding to planning
-      **Created**: [DATE]
-      **Feature**: [Link to spec.md]
-      
-      ## Content Quality
-      
-      - [ ] No implementation details (languages, frameworks, APIs)
-      - [ ] Focused on user value and business needs
-      - [ ] Written for non-technical stakeholders
-      - [ ] All mandatory sections completed
-      
-      ## Requirement Completeness
-      
-      - [ ] No [NEEDS CLARIFICATION] markers remain
-      - [ ] Requirements are testable and unambiguous
-      - [ ] Success criteria are measurable
-      - [ ] Success criteria are technology-agnostic (no implementation details)
-      - [ ] All acceptance scenarios are defined
-      - [ ] Edge cases are identified
-      - [ ] Scope is clearly bounded
-      - [ ] Dependencies and assumptions identified
-      
-      ## Feature Readiness
-      
-      - [ ] All functional requirements have clear acceptance criteria
-      - [ ] User scenarios cover primary flows
-      - [ ] Feature meets measurable outcomes defined in Success Criteria
-      - [ ] No implementation details leak into specification
-      
-      ## Notes
-      
-      - Items marked incomplete require spec updates before `/sp.clarify` or `/sp.plan`
+      Use the Task tool to launch spec-architect with this prompt:
+
+      ```
+      Validate specification completeness and quality for: {SPEC_FILE}
+
+      Context:
+      - Feature directory: {FEATURE_DIR}
+      - Feature description: {original user arguments}
+      - Spec just written, needs validation before planning
+
+      Your task:
+      1. Analyze spec against your reasoning framework:
+         - Testability Analysis (are requirements falsifiable?)
+         - Completeness Check (constraints, non-goals, edge cases defined?)
+         - Ambiguity Detection (would 3 engineers implement identically?)
+         - Traceability Mapping (prerequisites, downstream impacts clear?)
+
+      2. Generate quality checklist to: {FEATURE_DIR}/checklists/requirements.md
+         Use your standard checklist template covering:
+         - Content Quality (no implementation details, user-focused)
+         - Requirement Completeness (testable, measurable, technology-agnostic)
+         - Feature Readiness (acceptance criteria, user scenarios, scope boundaries)
+
+      3. Identify issues with severity levels:
+         - CRITICAL: Blocks planning (vague requirements, missing success criteria)
+         - MAJOR: Needs refinement (ambiguous constraints, undefined edge cases)
+         - MINOR: Nice to have (clarifying examples, additional context)
+
+      4. If [NEEDS CLARIFICATION] markers exist:
+         - Extract all markers from spec
+         - Prioritize by impact: scope > security/privacy > UX > technical details
+         - Keep ONLY top 3 most critical clarifications
+         - For each, generate clarification question with 3-4 option table format
+         - Make informed guesses for lower-priority items
+
+      5. If CRITICAL issues found (non-clarification):
+         - Provide specific spec improvements (quote line, suggest fix)
+         - Apply fixes automatically where unambiguous
+         - Maximum 2 auto-fix iterations
+
+      Return structured validation report with:
+      - Checklist status (pass/fail per item)
+      - Issue list (severity + specific location + suggested fix)
+      - Clarification questions (max 3, table format ready for user)
+      - Overall readiness verdict (READY / NEEDS_CLARIFICATION / NEEDS_FIXES)
       ```
 
-   b. **Run Validation Check**: Review the spec against each checklist item:
-      - For each item, determine if it passes or fails
-      - Document specific issues found (quote relevant spec sections)
+   b. **Process spec-architect response**:
 
-   c. **Handle Validation Results**:
+      - **If verdict is READY**:
+        - Checklist auto-generated and all items pass
+        - Proceed to step 7 (report completion)
 
-      - **If all items pass**: Mark checklist complete and proceed to step 6
+      - **If verdict is NEEDS_FIXES**:
+        - Review spec-architect's suggested fixes
+        - Apply fixes to spec.md
+        - Re-invoke spec-architect for validation (max 1 additional iteration)
+        - If still failing after re-validation, warn user with specific remaining issues
 
-      - **If items fail (excluding [NEEDS CLARIFICATION])**:
-        1. List the failing items and specific issues
-        2. Update the spec to address each issue
-        3. Re-run validation until all items pass (max 3 iterations)
-        4. If still failing after 3 iterations, document remaining issues in checklist notes and warn user
+      - **If verdict is NEEDS_CLARIFICATION**:
+        - spec-architect has generated clarification questions (max 3)
+        - Present questions to user in spec-architect's table format
+        - Wait for user responses (e.g., "Q1: A, Q2: Custom - [details], Q3: B")
+        - Update spec by replacing [NEEDS CLARIFICATION] markers with user answers
+        - Re-invoke spec-architect for final validation
 
-      - **If [NEEDS CLARIFICATION] markers remain**:
-        1. Extract all [NEEDS CLARIFICATION: ...] markers from the spec
-        2. **LIMIT CHECK**: If more than 3 markers exist, keep only the 3 most critical (by scope/security/UX impact) and make informed guesses for the rest
-        3. For each clarification needed (max 3), present options to user in this format:
+   c. **Checklist Management**:
+      - spec-architect auto-generates checklist at {FEATURE_DIR}/checklists/requirements.md
+      - Updates checklist after each validation iteration
+      - Final checklist reflects pass/fail status of all quality criteria
 
-           ```markdown
-           ## Question [N]: [Topic]
-           
-           **Context**: [Quote relevant spec section]
-           
-           **What we need to know**: [Specific question from NEEDS CLARIFICATION marker]
-           
-           **Suggested Answers**:
-           
-           | Option | Answer | Implications |
-           |--------|--------|--------------|
-           | A      | [First suggested answer] | [What this means for the feature] |
-           | B      | [Second suggested answer] | [What this means for the feature] |
-           | C      | [Third suggested answer] | [What this means for the feature] |
-           | Custom | Provide your own answer | [Explain how to provide custom input] |
-           
-           **Your choice**: _[Wait for user response]_
-           ```
-
-        4. **CRITICAL - Table Formatting**: Ensure markdown tables are properly formatted:
-           - Use consistent spacing with pipes aligned
-           - Each cell should have spaces around content: `| Content |` not `|Content|`
-           - Header separator must have at least 3 dashes: `|--------|`
-           - Test that the table renders correctly in markdown preview
-        5. Number questions sequentially (Q1, Q2, Q3 - max 3 total)
-        6. Present all questions together before waiting for responses
-        7. Wait for user to respond with their choices for all questions (e.g., "Q1: A, Q2: Custom - [details], Q3: B")
-        8. Update the spec by replacing each [NEEDS CLARIFICATION] marker with the user's selected or provided answer
-        9. Re-run validation after all clarifications are resolved
-
-   d. **Update Checklist**: After each validation iteration, update the checklist file with current pass/fail status
-
-7. Report completion with branch name, spec file path, checklist results, and readiness for the next phase (`/sp.clarify` or `/sp.plan`).
+7. Report completion with branch name, spec file path, spec-architect validation verdict, checklist results, and readiness for the next phase (`/sp.clarify` or `/sp.plan`).
 
 **NOTE:** The script creates and checks out the new branch and initializes the spec file before writing.
 

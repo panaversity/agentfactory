@@ -50,7 +50,7 @@ Successfully implemented all 8 lessons + README (~67KB total content):
 - ✅ Impact: Complete chapter ready for validation (10 files created)
 - 🧪 Tests: Manual validation performed
 - 📁 Files: All 8 lessons + README + implementation summary
-- 🔁 Next: Run proof-validator agent for quality verification
+- 🔁 Next: Run factual-verifier agent for quality verification
 - 🧠 Reflection: Hybrid approach balanced thoroughness with efficiency
 
 ## Evaluation notes

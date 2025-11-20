@@ -1,12 +1,57 @@
 ---
 sidebar_position: 5
-title: Configuration & Settings
+chapter: 6
+lesson: 5
+duration_minutes: 25
+title: "Configuration & Settings"
+cefr_level: A2
+proficiency: Beginner
+teaching_stage: 2
+stage_name: "AI Collaboration"
+cognitive_load:
+  concepts_count: 5
+  a2_compliant: true
+  scaffolding_level: "Heavy"
+learning_objectives:
+  - id: LO1
+    description: "Explain the 7-level configuration hierarchy and precedence order"
+    bloom_level: "Understand"
+  - id: LO2
+    description: "Create project-level .env file with environment variables"
+    bloom_level: "Create"
+  - id: LO3
+    description: "Apply security best practices using .env, .gitignore, and .env.example pattern"
+    bloom_level: "Apply"
+  - id: LO4
+    description: "Configure project-specific settings that override user-level defaults"
+    bloom_level: "Apply"
+  - id: LO5
+    description: "Analyze configuration errors and determine which level is causing conflicts"
+    bloom_level: "Analyze"
+digcomp_mapping:
+  - objective_id: LO1
+    competency_area: "1. Information and Data Literacy"
+    competency: "1.2 Evaluating data, information and digital content"
+    proficiency_level: "Basic"
+  - objective_id: LO2
+    competency_area: "3. Digital Content Creation"
+    competency: "3.4 Programming"
+    proficiency_level: "Basic"
+  - objective_id: LO3
+    competency_area: "4. Safety"
+    competency: "4.2 Protecting personal data and privacy"
+    proficiency_level: "Basic"
+  - objective_id: LO4
+    competency_area: "3. Digital Content Creation"
+    competency: "3.4 Programming"
+    proficiency_level: "Basic"
+  - objective_id: LO5
+    competency_area: "5. Problem Solving"
+    competency: "5.1 Solving technical problems"
+    proficiency_level: "Basic"
 ---
 
 # Configuration & Settings
-
-
-## The Configuration Problem
 
 Imagine you're working on two projects with Gemini CLI:
 
@@ -139,6 +184,36 @@ One of the biggest advantages of Gemini CLI being open source and command-line b
 
 Gemini CLI doesn't just read one configuration file. Instead, it checks **7 different levels** and merges them in order, with higher levels overriding lower ones.
 
+### Visual Hierarchy: Precedence Flow
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  1. CLI Flags (--model, --theme)          [HIGHEST PRIORITY]│
+│     ↓ (overrides everything below)                          │
+├─────────────────────────────────────────────────────────────┤
+│  2. Environment Variables (GEMINI_MODEL=...)                 │
+│     ↓ (session-specific temporary overrides)                │
+├─────────────────────────────────────────────────────────────┤
+│  3. .env File (project secrets)                              │
+│     ↓ (project-level secrets, gitignored)                   │
+├─────────────────────────────────────────────────────────────┤
+│  4. Project Settings (.gemini/settings.json in project root) │
+│     ↓ (team-shared configuration)                           │
+├─────────────────────────────────────────────────────────────┤
+│  5. Workspace Settings (.gemini/settings.json in workspace)  │
+│     ↓ (multi-project shared settings)                       │
+├─────────────────────────────────────────────────────────────┤
+│  6. User Settings (~/.gemini/settings.json)                  │
+│     ↓ (your personal defaults)                              │
+├─────────────────────────────────────────────────────────────┤
+│  7. System Defaults (built-in fallbacks)    [LOWEST PRIORITY]│
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Key Rule**: If a setting exists at a higher level, it completely overrides the same setting at a lower level.
+
+### Detailed Level Reference
+
 Here's the complete precedence order (highest to lowest priority):
 
 | Level | Location | Scope | Use Case |
@@ -251,13 +326,19 @@ Both syntaxes are verified working: `${DB_URL}` and `$DB_URL`. The `${VAR}` synt
 Create a `.env` file in your project root:
 
 ```bash
-# Database connection
-DB_CONNECTION_STRING=postgresql://localhost:5432/mydb
-EXTERNAL_API_KEY=sk-abc123xyz789
+# Gemini CLI Configuration
+# These settings override defaults when you start Gemini CLI
 
-# Gemini CLI defaults
-GEMINI_MODEL=gemini-2.5-pro
+# Model Selection
+# Options: gemini-2.5-flash (faster), gemini-2.5-pro (more accurate)
+GEMINI_MODEL=gemini-2.5-flash
+
+# Theme Preference
+# Options: dark, light, auto (matches system)
 GEMINI_THEME=dark
+
+# Auto-save your conversations every 5 minutes (in milliseconds)
+GEMINI_CHECKPOINT_INTERVAL=300000
 ```
 
 **Loading Order**:
@@ -341,22 +422,116 @@ All configuration parameters shown below have been tested and verified in Gemini
 
 ---
 
-## Part 5: Security Best Practices
+## Part 5: Security Best Practices (Enhanced)
 
-Here's a practical workflow for keeping your project secure:
+### The Three-File Security Pattern
+
+Here's the industry-standard workflow for keeping secrets safe:
+
+#### 1. `.env` File (NEVER COMMIT)
+Contains your personal settings and any sensitive values. Add to `.gitignore` immediately.
+
+```bash
+# .env (GITIGNORED - your personal settings)
+GEMINI_MODEL=gemini-2.5-pro
+GEMINI_THEME=dark
+GEMINI_API_KEY=your-actual-api-key-here
+```
+
+#### 2. `.env.example` File (SAFE TO COMMIT)
+Template showing structure without real values. Commit this to version control.
+
+```bash
+# .env.example (SAFE TO COMMIT - no real values)
+# Copy this file to .env and fill in your actual preferences
+
+# Gemini CLI Configuration
+GEMINI_MODEL=gemini-2.5-flash
+GEMINI_THEME=dark
+GEMINI_API_KEY=your_api_key_here
+```
+
+#### 3. `.gitignore` File (COMMIT THIS)
+Prevents accidental commits of secrets.
+
+```bash
+# .gitignore
+
+# Environment files with secrets
+.env
+.env.local
+.env.production
+.env.*.local
+
+# API keys and credentials
+*.key
+*.pem
+secrets/
+credentials.json
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+```
+
+### Complete Security Workflow
+
+**Step 1**: Create `.gitignore` FIRST (before creating .env)
+```bash
+echo ".env" >> .gitignore
+echo ".env.local" >> .gitignore
+echo "*.key" >> .gitignore
+```
+
+**Step 2**: Create `.env.example` with structure only
+```bash
+# .env.example
+GEMINI_MODEL=gemini-2.5-flash
+GEMINI_THEME=dark
+GEMINI_API_KEY=your_api_key_here
+```
+
+**Step 3**: Copy to `.env` and add your actual values
+```bash
+cp .env.example .env
+# Edit .env with your preferences and API key (never commit this!)
+```
 
 ### ✅ DO:
 - Use environment variables for API keys, database URLs, and secrets
 - Store sensitive values in `.env` files
-- Add `.env` to `.gitignore`
-- Create `.env.example` with structure only
-- Rotate API keys periodically
+- Add `.env` to `.gitignore` **before** creating the file
+- Create `.env.example` with structure only (safe to commit)
+- Rotate API keys periodically (every 90 days recommended)
+- Use different API keys for development, staging, and production
+- Review `.gitignore` before every commit
 
 ### ⚠️ DON'T:
 - Hardcode secrets in `settings.json`
 - Commit `.env` files to version control
 - Use the same API key across multiple projects
 - Leave API keys in shell history
+- Share `.env` files via email or chat (use secure secrets managers)
+- Commit database passwords or JWT secrets
+- Use production credentials in development
+
+### Red Flag: Secrets in Git History
+
+If you accidentally committed secrets:
+
+```bash
+# DON'T just delete the file - it's still in git history!
+# DO this instead:
+
+# 1. Rotate the compromised credential immediately
+# 2. Remove from git history using git-filter-repo or BFG Repo-Cleaner
+# 3. Force push (only if safe to do so)
+# 4. Notify your team
+```
 
 ### Example: Safe Configuration Setup
 
@@ -422,31 +597,23 @@ DATABASE_API_KEY=sk-secret-key-xyz789
 
 ## Try With AI
 
-### Prompt 1: Configuration Hierarchy Explained
-```
-I'm confused about Gemini CLI's configuration hierarchy.
-Explain the 7 levels and show an example where project-level settings override user-level settings.
-Also explain why this matters for teams.
-```
+Let's understand Gemini CLI's multi-level configuration system and how to secure sensitive data with `.env` files.
 
-**Expected outcome**: Clear explanation of precedence with a practical team scenario.
+**💡 Understand Configuration Hierarchy:**
 
-### Prompt 2: Setting Up .env for Your Project
-```
-I'm setting up a Gemini CLI project that needs to connect to a PostgreSQL database
-and use an external API. Show me:
-1. What to put in settings.json
-2. What to put in .env
-3. What to add to .gitignore
-4. How to access these variables in a custom MCP server
-```
+> "Explain Gemini CLI's 7-level configuration hierarchy in order of precedence. Give me a practical example where project-level settings override user-level settings. Then explain why this hierarchy matters for teams working on shared projects."
 
-**Expected outcome**: Complete secure setup example you can copy for your project.
+**🛡️ Set Up Secure Configuration:**
 
-### Prompt 3: Troubleshooting Configuration Issues
-```
-I'm getting "Variable not found: DATABASE_URL" when trying to use an MCP server.
-My .env file has DATABASE_URL=postgresql://localhost/mydb.
+> "I'm setting up a Gemini CLI project that needs to connect to a PostgreSQL database and use an external API. Show me: what to put in settings.json (non-sensitive config), what to put in .env (sensitive secrets), what to add to .gitignore (to avoid committing secrets), and how to access these variables securely in my custom MCP server."
+
+**🧪 Troubleshoot Configuration Problems:**
+
+> "I'm getting 'Variable not found: DATABASE_URL' when trying to use an MCP server. My .env file has DATABASE_URL=postgresql://localhost/mydb. Walk me through debugging: How do I verify Gemini CLI is reading my .env file? What are common mistakes with .env loading? How do I check which settings are actually active?"
+
+**🚀 Design Team Configuration:**
+
+> "My team is using Gemini CLI for a shared project. Help me design our configuration strategy: What goes in version-controlled settings.json (team standards)? What goes in .env (developer secrets)? What goes in personal user-level config? How do we document this so new team members set up correctly?"
 What could be wrong? How do I debug this?
 ```
 

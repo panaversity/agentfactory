@@ -282,7 +282,7 @@ cycles → 85% completion target
 ```
 1. Synthesize findings across all checks
 2. Identify recurring patterns:
-   - Pattern 1: Context pollution (lesson-writer has future chapters)
+   - Pattern 1: Context pollution (content-implementer has future chapters)
    - Pattern 2: Weak convergence guidance (prompt doesn't enforce cycles)
    - Pattern 3: Tier boundary confusion (Tier 1 vs Tier 2 unclear)
 3. Recommend systemic fixes (prevents recurrence)
@@ -302,14 +302,14 @@ cycles → 85% completion target
 ### Pattern 2: Weak Convergence Guidance
 - **Evidence**: 80% one-shot prompts
 - **Root Cause**: Prompt lacks convergence cycle template
-- **Fix**: Add iteration structure to lesson-writer prompt
+- **Fix**: Add iteration structure to content-implementer prompt
 - **Effort**: 1 hour
 - **Impact**: 80% of lessons will have convergence
 
 ### Pattern 3: Tier Boundary Confusion
 - **Evidence**: 30% foundational concepts delegated to AI
 - **Root Cause**: No Tier 1/2 decision matrix
-- **Fix**: Add rubric to lesson-writer prompt
+- **Fix**: Add rubric to content-implementer prompt
 - **Effort**: 30 minutes
 - **Impact**: 90% correct tier assignments
 ```
@@ -354,7 +354,7 @@ cycles → 85% completion target
 1. Quick fix (2.5h) → Publish with conditional pass
 2. Recommended fix (3.5h) → Publish with pass quality
 3. Ideal fix (7h) → Publish as model chapter
-4. Systemic first (7.5h) → Fix lesson-writer, regenerate Chapter 14
+4. Systemic first (7.5h) → Fix content-implementer, regenerate Chapter 14
 
 I'm here to execute your decision. What's the strategic priority?
 ```
@@ -452,7 +452,7 @@ When constitution changes:
 - [ ] Automated fix suggestions (generate edit patches)
 - [ ] Batch analysis (analyze multiple chapters in parallel)
 - [ ] Visual dashboards (quality metrics over time)
-- [ ] Integration with validation workflow (run before technical-reviewer)
+- [ ] Integration with validation workflow (run before validation-auditor)
 
 ### Long-Term (Next Year)
 - [ ] Predictive analysis (flag issues during spec phase)

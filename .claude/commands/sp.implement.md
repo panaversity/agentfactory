@@ -102,15 +102,51 @@ You **MUST** consider the user input before proceeding (if not empty).
    - **Task details**: ID, description, file paths, parallel markers [P]
    - **Execution flow**: Order and dependency requirements
 
-6. Execute implementation following the task plan: 
-   - For each lesson, use a separate lesson-writer subagent. You can run them in parallel or sequentially based on the task details in tasks.md.
+6. Execute implementation following the task plan:
+   - For each lesson, use a separate content-implementer subagent. You can run them in parallel or sequentially based on the task details in tasks.md.
    - You're in collaboration with user and responsible to orchestrate the subagents. Ensure the instructions are clear and well-defined, use the evaluation rubric skill to assess the quality of the implementation. Continuously iterate, once you're satisfied with each lesson, and add them in the directory.
-   - All lesson-writer subagents report back to you and you're responsible to add the lessons in the main file system. 
+   - All content-implementer subagents report back to you and you're responsible to add the lessons in the main file system.
    - **Phase-by-phase execution**: Complete each phase before moving to the next
-   - **Respect dependencies**: Run sequential tasks in order, parallel tasks [P] can run together  
+   - **Respect dependencies**: Run sequential tasks in order, parallel tasks [P] can run together
    - **Follow TDD approach**: Execute test tasks before their corresponding implementation tasks
    - **File-based coordination**: Tasks affecting the same files must run sequentially
    - **Validation checkpoints**: Verify each phase completion before proceeding
+
+6a. **Constitutional Validation Gate** (for educational content):
+   - **MANDATORY** for lesson/chapter creation tasks
+   - **Two-Pass Workflow**: content-implementer → educational-validator → filesystem
+
+   **Process**:
+   ```
+   1. content-implementer generates draft lesson
+      ↓ (report back to orchestrator)
+   2. educational-validator validates constitutional compliance
+      ↓
+      ├─→ PASS: Write to filesystem, mark task complete
+      └─→ FAIL: Show violations
+          ↓
+          Option A: Auto-fix (if trivial: metadata, heading format)
+          Option B: Regenerate with violations as context
+          Option C: Report to user for manual review
+   ```
+
+   **Validation Checks** (automated):
+   - ✅ Framework invisibility (no meta-commentary: "AI as Teacher", "Part 2:", etc.)
+   - ✅ Evidence presence (70%+ code has output, claims have citations)
+   - ✅ Structural compliance (ends with "Try With AI/Practice/Explore" ONLY)
+   - ✅ Proficiency metadata (uses `proficiency_level`, not deprecated `cefr_level`)
+
+   **When to Skip**:
+   - ❌ Non-educational tasks (API endpoints, database models, scripts)
+   - ❌ Documentation files (README, ADRs, specifications)
+   - ✅ ONLY educational lessons/chapters require validation
+
+   **Invocation**:
+   - Use Task tool with `subagent_type: "educational-validator"`
+   - Pass generated lesson content as input
+   - Review validation report before filesystem write
+
+   **Reference**: `.claude/agents/educational-validator.md` for full validation framework
 
 7. Implementation execution rules:
    - **Setup first**: Initialize project structure, dependencies, configuration
@@ -118,6 +154,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - **Core development**: Implement models, services, CLI commands, endpoints
    - **Integration work**: Database connections, middleware, logging, external services
    - **Polish and validation**: Unit tests, performance optimization, documentation
+   - **Educational content**: Apply step 6a validation gate before filesystem write
 
 8. Progress tracking and error handling:
    - Report progress after each completed task
@@ -126,6 +163,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Provide clear error messages with context for debugging
    - Suggest next steps if implementation cannot proceed
    - **IMPORTANT** For completed tasks, make sure to mark the task off as [X] in the tasks file.
+   - **Educational content**: Track validation results (PASS/FAIL counts, common violations)
 
 9. Completion validation:
    - Verify all required tasks are completed
@@ -133,6 +171,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Validate that tests pass and coverage meets requirements
    - Confirm the implementation follows the technical plan
    - Report final status with summary of completed work
+   - **Educational content**: Ensure all lessons passed constitutional validation (step 6a)
 
 Note: This command assumes a complete task breakdown exists in tasks.md. If tasks are incomplete or missing, suggest running `/sp.tasks` first to regenerate the task list.
 

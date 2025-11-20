@@ -33,7 +33,7 @@ function HomepageHeader() {
               <br />
               <span className={styles.heroTitleAccent}>
                 Colearning Agentic AI with Python and TypeScript –{" "}
-                <strong>The AI & Spec Driven Way</strong>
+                <strong>Spec Driven Reusable Intelligence</strong>
               </span>
             </Heading>
 
@@ -627,7 +627,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title="AI Native Software Development"
-      description="Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way. Build production-ready intelligent systems."
+      description="Colearning Agentic AI with Python and TypeScript – Spec Driven Reusable Intelligence. Build production-ready intelligent systems."
     >
       <HomepageHeader />
       <AISpectrumSection />

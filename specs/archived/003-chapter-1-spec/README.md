@@ -304,7 +304,7 @@ Additional assets:
 
 ## Next Phase: Implementation
 
-This README and the accompanying `plan.md` are ready for handoff to the **lesson-writer subagent**, who will:
+This README and the accompanying `plan.md` are ready for handoff to the **content-implementer subagent**, who will:
 
 1. Implement each of the 6 lessons using `.claude/output-styles/lesson.md` structure
 2. Create all 5 required diagrams with detailed specifications
@@ -315,13 +315,13 @@ This README and the accompanying `plan.md` are ready for handoff to the **lesson
 7. Validate against Constitution principles and domain skills
 8. Prepare for technical review
 
-The lesson-writer will work lesson-by-lesson, with human review checkpoints after every 2-3 lessons.
+The content-implementer will work lesson-by-lesson, with human review checkpoints after every 2-3 lessons.
 
 ---
 
 ## Quality Checklist
 
-Before the lesson-writer begins, this README confirms:
+Before the content-implementer begins, this README confirms:
 
 - [x] Chapter purpose is clear and aligned with specification
 - [x] 6 lessons identified with clear boundaries and dependencies
@@ -339,4 +339,4 @@ Before the lesson-writer begins, this README confirms:
 
 ---
 
-**This README and `plan.md` constitute the complete pedagogical plan for Chapter 1. The lesson-writer subagent can now proceed with content implementation.**
+**This README and `plan.md` constitute the complete pedagogical plan for Chapter 1. The content-implementer subagent can now proceed with content implementation.**

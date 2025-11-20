@@ -1,13 +1,61 @@
 ---
 sidebar_position: 2
-title: Installation, Authentication & First Steps
+title: "Installation, Authentication & First Steps"
+chapter: 6
+lesson: 2
+duration_minutes: 35
+cefr_level: A2
+proficiency: Beginner
+teaching_stage: 1
+stage_name: "Manual Foundation"
+stage_description: "Direct teaching of installation and setup before AI collaboration"
+cognitive_load:
+  concepts_count: 6
+  a2_compliant: true
+  scaffolding_level: "Heavy"
+learning_objectives:
+  - id: LO1
+    description: "Install Gemini CLI using appropriate method for their environment"
+    bloom_level: "Apply"
+  - id: LO2
+    description: "Authenticate using Google OAuth to access free tier"
+    bloom_level: "Apply"
+  - id: LO3
+    description: "Navigate the Gemini CLI interface components (input box, status bar, context info)"
+    bloom_level: "Understand"
+  - id: LO4
+    description: "Execute basic slash commands (/help, /tools, /stats, /quit)"
+    bloom_level: "Apply"
+  - id: LO5
+    description: "Use shell mode (!command) to run terminal commands from within Gemini CLI"
+    bloom_level: "Apply"
+  - id: LO6
+    description: "Apply AI-native troubleshooting pattern when encountering installation errors"
+    bloom_level: "Apply"
+digcomp_mapping:
+  - objective_id: LO1
+    competency_area: "3. Digital Content Creation"
+    competency: "3.4 Programming"
+  - objective_id: LO2
+    competency_area: "4. Safety"
+    competency: "4.2 Protecting personal data and privacy"
+  - objective_id: LO3
+    competency_area: "1. Information and Data Literacy"
+    competency: "1.1 Browsing, searching and filtering data, information and digital content"
+  - objective_id: LO4
+    competency_area: "3. Digital Content Creation"
+    competency: "3.4 Programming"
+  - objective_id: LO5
+    competency_area: "3. Digital Content Creation"
+    competency: "3.4 Programming"
+  - objective_id: LO6
+    competency_area: "5. Problem Solving"
+    competency: "5.1 Solving technical problems"
 ---
 
 # Installation, Authentication & First Steps
 
-> **A Word Before We Begin**
-> 
-> Installing Gemini CLI is like meeting a new colleague—someone who's available 24/7 to help with your work, answer questions, and solve problems. In this lesson, you'll install and launch Gemini CLI, which will then automatically guide you through authentication. You'll be up and running in minutes.
+Installing Gemini CLI is like meeting a new colleague—someone who's available 24/7 to help with your work, answer questions, and solve problems. In this lesson, you'll install and launch Gemini CLI, which will then automatically guide you through authentication. You'll be up and running in minutes.
 
 
 ## Prerequisites: What You Need
@@ -18,7 +66,6 @@ Make sure you have these before starting:
 |------------|-----------|-------------|
 | **Node.js 20+** | Runtime for JavaScript applications | Open terminal, type: `node --version` |
 | **npm** | Package manager (comes with Node.js) | Open terminal, type: `npm --version` |
-| **Internet connection** | For installation and Google authentication | You have this already ✓ |
 | **Google account** | For secure authentication | Gmail, YouTube, or any Google account |
 
 ### Don't Have Node.js 20+?
@@ -120,7 +167,7 @@ Gemini CLI will ask you to select a visual theme for the terminal interface. Cho
 ### Step 2: Choose Authentication Method
 
 You'll see options for authentication:
-- **Google login** (free tier: 60 requests/min, 1,000 requests/day)
+- **Google login** (free tier: 60 requests/min, 1,000 requests/day - Google AI Studio, 2025)
 - **Gemini API Key** (requires API setup)
 - **Vertex AI** (requires Google Cloud Project)
 
@@ -222,12 +269,12 @@ Once you configure Gemini CLI (in later lessons), you'll see context information
 Using: 2 context files | 1 MCP server
 ```
 
-- **Context files**: GEMINI.md or CONTEXT.md files (covered in Lesson 4)
+- **Context files**: GEMINI.md files (covered in Lesson 4)
 - **MCP servers**: Connected external tool servers (covered in Lesson 6)
 
 **For first-time users**: This line won't appear until you add context files or MCP servers. That's normal!
 
-### Slash Commands
+### Basic Slash Commands
 
 Type these commands at the prompt:
 
@@ -238,12 +285,90 @@ Type these commands at the prompt:
 - `/chat save <name>` - Save current conversation
 - `/quit` - Exit Gemini CLI
 
-**Shell Mode:**
-- Type `!` followed by a command to run terminal commands
-- Example: `!ls -la` to list files
+---
+
+## Shell Mode: Running Terminal Commands Inside Gemini
+
+One of Gemini CLI's most powerful features is **shell mode**—the ability to run terminal commands directly from within your Gemini session without exiting.
+
+### How Shell Mode Works
+
+Type `!` followed by any terminal command:
+
+```
+!ls -la
+```
+
+Gemini executes the command in your current directory and shows you the output.
+
+### Practical Shell Mode Example
+
+Let's say you're working on a project and want to check your current directory structure:
+
+**Inside Gemini CLI, type:**
+```
+!pwd
+```
+
+**Output:**
+```
+/Users/yourname/projects/my-app
+```
+
+**Now list all files:**
+```
+!ls -la
+```
+
+**Output:**
+```
+total 24
+drwxr-xr-x   6 yourname  staff   192 Jan 17 10:30 .
+drwxr-xr-x  15 yourname  staff   480 Jan 15 14:20 ..
+drwxr-xr-x  12 yourname  staff   384 Jan 17 09:15 .git
+-rw-r--r--   1 yourname  staff   245 Jan 16 16:45 README.md
+drwxr-xr-x  45 yourname  staff  1440 Jan 17 10:25 node_modules
+-rw-r--r--   1 yourname  staff   512 Jan 17 10:30 package.json
+```
+
+**Check Node.js version:**
+```
+!node --version
+```
+
+**Output:**
+```
+v20.10.0
+```
+
+### Why Shell Mode Matters
+
+Shell mode lets you:
+- ✅ Check your environment (versions, paths, variables)
+- ✅ Navigate directories without leaving Gemini
+- ✅ Run build scripts, tests, or git commands
+- ✅ Verify file operations suggested by Gemini
+- ✅ Debug issues by checking actual system state
+
+**Common shell mode use cases:**
+- `!git status` - Check git repository state
+- `!npm install` - Install dependencies
+- `!python --version` - Verify Python installation
+- `!cat filename.txt` - Read file contents
+- `!mkdir new-folder` - Create directories
+
+### Exiting Shell Mode
+
+After running a shell command, you're automatically returned to normal Gemini chat mode. To exit Gemini CLI entirely, use `/quit`.
 
 #### 🎓 Expert Insight
 > In AI-native development, you don't memorize commands like `/help` or `/tools`—you explore conversationally. If you forget a command, just ask: "What commands are available?" Your AI partner tells you. The skill isn't memorization; it's knowing how to ask.
+
+![Gemini CLI Interface](/img/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/l2-gemini-cli-interface.svg)
+
+
+> **Tip:** This is what your interface should look like after choosing a theme and authenticating. You can now type your first message or use slash commands (`/`) to explore Gemini CLI features.
+
 
 ---
 
@@ -263,7 +388,7 @@ Gemini will respond with an explanation. That's it—you're using Gemini CLI!
 
 When you run `gemini`, you're entering an interactive session. Inside this session, you have access to powerful commands and can ask Gemini multiple questions without exiting.
 
-### Basic Session Commands
+### Session Commands Reference
 
 These slash commands work inside Gemini CLI:
 
@@ -281,14 +406,6 @@ To exit Gemini CLI, simply type:
 ```
 
 Or press **Ctrl+C twice** to force quit.
-
-### Shell Mode (Running Terminal Commands)
-
-You can run terminal commands directly inside Gemini without exiting:
-
-- Type `!` to enter shell mode
-- Run any terminal command
-- Press **ESC** to exit shell mode and return to Gemini
 
 #### 🤝 Practice Exercise
 
@@ -347,7 +464,7 @@ When you encounter an error during installation or setup:
 - Include the full terminal output, not just the last line
 - Capture context: what command you ran, your operating system, Node.js version
 
-**Step 2: Ask your AI assistant (ChatGPT, Claude, Gemini, Grok, etc.)**
+**Step 2: Ask your AI assistant**
 
 Use this prompt template:
 
@@ -388,7 +505,7 @@ npm ERR! syscall access
 npm ERR! path /usr/local/lib/node_modules
 ```
 
-**Ask your AI Assisstant:**
+**Ask your AI Assistant:**
 
 ```
 I'm getting this error when installing Gemini CLI:
@@ -430,33 +547,20 @@ AI troubleshooting:
 
 ## Try With AI
 
-Now that you've installed Gemini CLI, try these prompts to explore what your AI collaborator can do.
+Now that Gemini CLI is installed and authenticated, let's test it with varied tasks to build confidence.
 
-### Prompt 1: Learn a New Concept
-```
-Explain machine learning to me in simple terms with a real example. Then give me 3 real-world applications of machine learning.
-```
+**💡 Learn a New Concept:**
 
-**Expected outcome**: Clear explanation with concrete examples and practical applications you can understand.
+> "Explain machine learning to me in simple terms with a real example I can understand. Then give me 3 real-world applications of machine learning that I interact with daily without realizing it."
 
-### Prompt 2: Write Professional Content
-```
-Write a professional email to my manager about my project status. The project is [describe your situation]. Make it concise and positive.
-```
+**🎯 Practice Professional Communication:**
 
-**Expected outcome**: Well-structured professional email you can use or adapt.
+> "Write a professional email to my manager about my project status. The project is [describe your situation: what you're working on, current progress, any blockers]. Make it concise, positive, and action-oriented."
 
-### Prompt 3: Problem Solving
-```
-I'm getting an error when I try to install a package. The error message is: [paste error]. What does it mean and how do I fix it?
-```
+**🧪 Troubleshoot Technical Issues:**
 
-**Expected outcome**: Clear explanation of the error and step-by-step solution.
+> "I'm getting an error when trying to [describe what you're doing]. The error message is: [paste your error]. Explain what this error means in simple terms and give me step-by-step instructions to fix it. If there are multiple possible causes, help me diagnose which one applies to my situation."
 
-### Prompt 4: Plan and Organize
-```
-I want to learn programming. What programming language should I start with and why? Give me a 4-week learning plan with specific goals for each week.
-```
+**🚀 Plan Your Learning Path:**
 
-**Expected outcome**: Personalized learning recommendation with structured plan you can follow immediately.
-
+> "I want to learn programming from scratch. Help me choose the right programming language to start with based on my interests: [describe what you want to build or your goals]. Then create a 4-week learning plan with specific, actionable goals for each week that I can follow using Gemini CLI as my learning partner."

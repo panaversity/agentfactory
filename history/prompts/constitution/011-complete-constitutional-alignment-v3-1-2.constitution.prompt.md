@@ -120,7 +120,7 @@ Executed systematic 4-phase alignment of entire AI Native Software Development p
 
 **Findings**:
 - **Files with drifts**: 14/18 (78%)
-- **CRITICAL**: 2 files (ai-collaborate-teaching, lesson-writer)
+- **CRITICAL**: 2 files (ai-collaborate-teaching, content-implementer)
 - **HIGH**: 7 files (planning/validation workflows)
 - **MEDIUM**: 5 files (supporting skills)
 
@@ -148,15 +148,15 @@ Executed systematic 4-phase alignment of entire AI Native Software Development p
 
 **CRITICAL Fixes** (2 files, 12 hours):
 1. ✅ ai-collaborate-teaching: Version 2.0.0, Three Roles Framework, co-learning terminology
-2. ✅ lesson-writer: 520+ lines added (Three Roles, Specs-As-Syntax, Convergence Loop, Evals-First)
+2. ✅ content-implementer: 520+ lines added (Three Roles, Specs-As-Syntax, Convergence Loop, Evals-First)
 
 **HIGH Priority Fixes** (7 files, 12-15 hours):
 3. ✅ chapter-planner: v3.1.2, Nine Pillars, LLM→LAM
-4. ✅ technical-reviewer: Nine Pillars validation, co-learning checks
+4. ✅ validation-auditor: Nine Pillars validation, co-learning checks
 5. ✅ book-scaffolding: Nine Pillars scaffolding, co-learning
 6. ✅ content-evaluation-framework: Enhanced criteria
 7. ✅ quiz-generator: Evals-first alignment
-8. ✅ proof-validator: Co-learning validation, Nine Pillars
+8. ✅ factual-verifier: Co-learning validation, Nine Pillars
 9. ✅ docusaurus-deployer: Quality gates
 
 **MEDIUM Priority Fixes** (5 files, 10-12 hours):

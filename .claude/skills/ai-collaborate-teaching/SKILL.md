@@ -2,7 +2,7 @@
 name: ai-collaborate-teaching
 category: "pedagogical"
 applies_to: ["all-chapters"]
-required_for: ["lesson-writer", "chapter-planner"]
+required_for: ["content-implementer", "chapter-planner"]
 description: |
   Design learning experiences for AI-native software development, integrating the Three Roles Framework 
   (AI as Teacher/Student/Co-Worker), co-learning partnership pedagogy, and "Specs Are the New Syntax" 

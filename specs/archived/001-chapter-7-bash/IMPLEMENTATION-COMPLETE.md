@@ -164,7 +164,7 @@ Readers who complete this chapter will be able to:
 
 ## Next Steps
 
-1. **Technical Review**: Submit chapter for validation by proof-validator agent
+1. **Technical Review**: Submit chapter for validation by factual-verifier agent
 2. **User Testing**: Have beginner test Lessons 1-3 for clarity
 3. **Git Commit**: Commit all files to 001-chapter-7-bash branch
 4. **Pull Request**: Create PR to main for chapter integration

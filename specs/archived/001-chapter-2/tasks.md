@@ -13,14 +13,14 @@ task_count: 31
 
 **For all lesson-writing tasks (T009, T012, T015, T017):**
 
-Use the lesson-writer subagent to implement each lesson. Each task provides:
+Use the content-implementer subagent to implement each lesson. Each task provides:
 - Complete content structure with word count targets
 - 5-6 domain skills to apply with specific guidance
 - Detailed acceptance criteria aligned with pedagogical standards
 - References to spec.md and plan.md for full context
 
 **Invocation pattern**:
-Pass the full task specification (including content structure, domain skills, and acceptance criteria) to the lesson-writer subagent. The subagent will create publication-ready lesson markdown using all specified domain skills.
+Pass the full task specification (including content structure, domain skills, and acceptance criteria) to the content-implementer subagent. The subagent will create publication-ready lesson markdown using all specified domain skills.
 
 **Quality gates**: Each lesson-writing task has a corresponding validation task (T010, T013, T016, T019) to review clarity, scaffolding, and success criteria alignment.
 
@@ -132,7 +132,7 @@ Pass the full task specification (including content structure, domain skills, an
 ### T009: Write Lesson 1: "The AI Inflection Point"
 - **Status**: `[x] Completed`
 - **Description**: Write complete lesson establishing that 2025 is a genuine inflection point using quantitative evidence
-- **Delegation**: **Invoke lesson-writer subagent** with this task specification
+- **Delegation**: **Invoke content-implementer subagent** with this task specification
 - **File**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/book-source/docs/01-Introducing-AI-Driven-Development/02-understanding-ai-tools/01-the-inflection-point.md`
 - **Word Count**: 1,000-1,200 words
 - **Content Structure**:
@@ -197,7 +197,7 @@ Pass the full task specification (including content structure, domain skills, an
 ### T012: Write Lesson 2: "Two Development Patterns"
 - **Status**: `[x] Completed`
 - **Description**: Write complete lesson introducing vibe coding vs. Spec-Driven Development with Team A/B example
-- **Delegation**: **Invoke lesson-writer subagent** with this task specification
+- **Delegation**: **Invoke content-implementer subagent** with this task specification
 - **File**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/book-source/docs/01-Introducing-AI-Driven-Development/02-understanding-ai-tools/02-development-patterns.md`
 - **Word Count**: 1,200-1,400 words
 - **Content Structure**:
@@ -257,7 +257,7 @@ Pass the full task specification (including content structure, domain skills, an
 ### T015: Write Lesson 3: "The DORA Perspective"
 - **Status**: `[x] Completed`
 - **Description**: Write complete lesson explaining why discipline matters with AI; organizational perspective
-- **Delegation**: **Invoke lesson-writer subagent** with this task specification
+- **Delegation**: **Invoke content-implementer subagent** with this task specification
 - **File**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/book-source/docs/01-Introducing-AI-Driven-Development/02-understanding-ai-tools/03-dora-perspective.md`
 - **Word Count**: 800-1,000 words
 - **Content Structure**:
@@ -301,7 +301,7 @@ Pass the full task specification (including content structure, domain skills, an
 ### T017: Write Lesson 4: "The New Wave of AI Coding Agents"
 - **Status**: `[x] Completed`
 - **Description**: Write complete lesson introducing four tools, selection criteria, MCP, open vs. proprietary
-- **Delegation**: **Invoke lesson-writer subagent** with this task specification
+- **Delegation**: **Invoke content-implementer subagent** with this task specification
 - **File**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/book-source/docs/01-Introducing-AI-Driven-Development/02-understanding-ai-tools/04-ai-coding-agents.md`
 - **Word Count**: 1,000-1,200 words
 - **Content Structure**:
@@ -520,7 +520,7 @@ Pass the full task specification (including content structure, domain skills, an
 Once all 29 tasks complete and Chapter 2 passes Definition of Done:
 
 1. **Merge to main branch**: Commit all files to feature branch `001-chapter-2`
-2. **Invoke technical-reviewer subagent**: Final validation
+2. **Invoke validation-auditor subagent**: Final validation
 3. **Docusaurus build & deployment**: Build and verify rendering
 4. **Publication**: Deploy Chapter 2 to production
 

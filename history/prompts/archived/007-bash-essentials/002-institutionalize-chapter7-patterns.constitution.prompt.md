@@ -18,7 +18,7 @@ links:
 files:
   - .specify/memory/constitution.md (updated: added Principles 12 & 13, extended 8)
   - CLAUDE.md (updated: added Beginner Content Creation Guidelines section)
-  - .claude/agents/lesson-writer.md (updated: added Beginner Content checklist)
+  - .claude/agents/content-implementer.md (updated: added Beginner Content checklist)
 tests:
   - (Manual verification that updated files are syntactically valid)
   - (Verification that new principles reference Chapter 7 examples)
@@ -42,7 +42,7 @@ These patterns worked in Chapter 7. Now we need to institutionalize them so they
 **Questions to answer:**
 - Where should these patterns live? (Constitution? CLAUDE.md? Agents?)
 - What's the minimal set of updates needed to guarantee future chapters follow this approach?
-- How do we enforce these patterns in the lesson-writer agent?
+- How do we enforce these patterns in the content-implementer agent?
 
 ---
 
@@ -100,12 +100,12 @@ Added **Beginner Content Only checklist** (12 items):
 - 🧪 **Tests**:
   - Constitution updated with 2 new principles + extended principle 8
   - CLAUDE.md has 6-point beginner guidelines section with examples
-  - lesson-writer agent has 12-item beginner checklist in self-validation
+  - content-implementer agent has 12-item beginner checklist in self-validation
 
 - 📁 **Files**:
   - `.specify/memory/constitution.md` (3 sections added/updated)
   - `CLAUDE.md` (new Beginner Content Guidelines section, 155+ lines)
-  - `.claude/agents/lesson-writer.md` (12-item beginner checklist added)
+  - `.claude/agents/content-implementer.md` (12-item beginner checklist added)
 
 - 🔁 **Next prompts**:
   - Update `concept-scaffolding` skill with beginner-specific guidance
@@ -113,7 +113,7 @@ Added **Beginner Content Only checklist** (12 items):
   - Apply beginner patterns to Chapter 8+ lessons
 
 - 🧠 **Reflection**:
-  We went from "Chapter 7 works well" to "Chapter 7 patterns are now governance artifacts." The patterns are now part of the constitution (principles), the development guidelines (CLAUDE.md), and the execution checklist (lesson-writer). This ensures consistency across all future chapters targeting non-programmers.
+  We went from "Chapter 7 works well" to "Chapter 7 patterns are now governance artifacts." The patterns are now part of the constitution (principles), the development guidelines (CLAUDE.md), and the execution checklist (content-implementer). This ensures consistency across all future chapters targeting non-programmers.
 
 ---
 
@@ -126,7 +126,7 @@ Added **Beginner Content Only checklist** (12 items):
 - **Graders run and results**:
   - ✅ Constitution: New principles are principle-structured (Why It Matters + What This Means)
   - ✅ CLAUDE.md: Beginner guidelines are practical with examples
-  - ✅ lesson-writer: Checklist aligns with governance intentions
+  - ✅ content-implementer: Checklist aligns with governance intentions
 
 - **Prompt variant**: (N/A—this is institutional governance, not experimental)
 
@@ -186,7 +186,7 @@ All chapters targeting non-programmers (business founders, complete beginners) s
   - Includes examples from Chapter 5 and implementation guidance
   - Practical thresholds (max 2 options, max 5 concepts, etc.)
 
-### `.claude/agents/lesson-writer.md`
+### `.claude/agents/content-implementer.md`
 - **Added**: "Beginner Content Only" checklist — 12 items
   - Covers: concept-first, cognitive load, non-programmer examples, scenarios, red flags, AI-as-partner, product context, etc.
   - Integrated into existing Self-Validate section
@@ -199,8 +199,8 @@ All chapters targeting non-programmers (business founders, complete beginners) s
 **How these patterns will be enforced:**
 
 1. **Constitution** → Used by chapter-planner to validate beginner chapter specs
-2. **CLAUDE.md** → Referenced by lesson-writer during content creation
-3. **lesson-writer checklist** → Automated check during content validation
+2. **CLAUDE.md** → Referenced by content-implementer during content creation
+3. **content-implementer checklist** → Automated check during content validation
 4. **Technical-reviewer** → Will verify against these standards before publication
 
 Pattern is now self-reinforcing: spec → plan → write → validate

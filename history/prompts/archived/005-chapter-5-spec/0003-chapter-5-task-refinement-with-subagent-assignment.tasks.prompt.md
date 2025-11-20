@@ -19,7 +19,7 @@ files:
   - specs/005-chapter-5-spec/tasks-refined.md
 tests:
   - All tasks follow strict checklist format
-  - Each lesson assigned to dedicated lesson-writer subagent
+  - Each lesson assigned to dedicated content-implementer subagent
   - content-evaluation-framework skill added to all lessons
   - 13 parallelizable tasks identified
   - 38.5 hour efficiency gain
@@ -27,11 +27,11 @@ tests:
 
 ## Prompt
 
-Review the current tasks and ensure that they are inlined with the plan. Assign each lesson in the tasks to a separate lesson-writer subagent. Also request them to use the evaluation skill as well. Only review the tasks and refine them. Do not implement them yet.
+Review the current tasks and ensure that they are inlined with the plan. Assign each lesson in the tasks to a separate content-implementer subagent. Also request them to use the evaluation skill as well. Only review the tasks and refine them. Do not implement them yet.
 
 ## Response snapshot
 
-Created refined task checklist with 39 tasks across 6 phases. Each of 5 lessons assigned to dedicated lesson-writer subagent with content-evaluation-framework skill. 38.5 hours saved (now 131h vs 169.5h). Parallel execution reduces calendar time from 8-11 weeks to 6-8 weeks.
+Created refined task checklist with 39 tasks across 6 phases. Each of 5 lessons assigned to dedicated content-implementer subagent with content-evaluation-framework skill. 38.5 hours saved (now 131h vs 169.5h). Parallel execution reduces calendar time from 8-11 weeks to 6-8 weeks.
 
 ## Outcome
 

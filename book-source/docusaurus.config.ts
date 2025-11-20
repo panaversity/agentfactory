@@ -7,7 +7,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 const config: Config = {
   title: "AI Native Software Development",
   tagline:
-    "Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way",
+    "Colearning Agentic AI with Python and TypeScript – Spec Driven Reusable Intelligence",
   favicon: "img/favicon.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -155,7 +155,7 @@ const config: Config = {
       {
         property: "og:description",
         content:
-          "Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way",
+          "Colearning Agentic AI with Python and TypeScript – Spec Driven Reusable Intelligence",
       },
       { property: "og:type", content: "website" },
       {
@@ -170,7 +170,7 @@ const config: Config = {
       {
         name: "twitter:description",
         content:
-          "Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way",
+          "Colearning Agentic AI with Python and TypeScript – Spec Driven Reusable Intelligence",
       },
       {
         name: "twitter:image",

@@ -44,7 +44,7 @@
 
 1. **Self-Containment**: Constitution usable without external dependencies (VI architecture embedded, no paper cross-references required)
 2. **Automatic Enforcement**: Forcing functions are falsifiable, can be automated as constitutional validators (e.g., linters detecting code-before-spec violations)
-3. **Clear Audience**: Book content governance only — AI Super Orchestrator, subagents (chapter-planner, lesson-writer, technical-reviewer), human spec writers
+3. **Clear Audience**: Book content governance only — AI Super Orchestrator, subagents (chapter-planner, content-implementer, validation-auditor), human spec writers
 4. **Minimal Sufficient Governance**: 53% size reduction while adding enforcement mechanisms (eliminated bloat)
 5. **Vocabulary Expansion**: Provides conceptual decision tools (Section V) instead of rigid rules
 6. **Anti-Convergence Design**: Forcing functions prevent AI from producing generic outputs (Principle 7)

@@ -88,7 +88,7 @@ All 8 dialogue-first lessons verified in project directory:
 - ✅ Impact: Complete Bash chapter redesign implemented, tested, optimized. All 8 lessons operational. Old files removed. Redundancy eliminated. Chapter ready for technical review and validation phases.
 - 🧪 Tests: All pedagogical validations PASS (dialogue-first format, CEFR alignment, cognitive load within limits, 5-step safety pattern integrated, assessments complete)
 - 📁 Files: 8 lesson files in /book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/; tasks.md updated with completion status; old files removed
-- 🔁 Next prompts: (1) Run technical-reviewer agent for final validation; (2) Create chapter README with learning path; (3) Verify Docosaurus build renders all lessons; (4) Merge to main and deploy
+- 🔁 Next prompts: (1) Run validation-auditor agent for final validation; (2) Create chapter README with learning path; (3) Verify Docosaurus build renders all lessons; (4) Merge to main and deploy
 - 🧠 Reflection: Specification-driven development workflow proven effective. Clear specs → detailed plan → phased implementation → optimization cycle. Chapter teaches dialogue-first approach to bash through 100% authentic AI-learner conversations. Safety culture embedded throughout. Proficiency progression A1→A2→B1 validated at each lesson. Ready for publication.
 
 ## Evaluation notes (flywheel)

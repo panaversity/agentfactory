@@ -397,7 +397,7 @@ This pattern teaches learners to:
 
 1. **Specification Review & Approval** — Get feedback on dialogue-first approach
 2. **Plan Phase** (`/sp.plan`) — Chapter-planner breaks spec into detailed lesson plans
-3. **Implementation** (`lesson-writer`) — Write each lesson following dialogue-first pattern
-4. **Validation** (`technical-reviewer`) — Verify authenticity of examples and pedagogical soundness
+3. **Implementation** (`content-implementer`) — Write each lesson following dialogue-first pattern
+4. **Validation** (`validation-auditor`) — Verify authenticity of examples and pedagogical soundness
 5. **Integration** — Replace existing Chapter 7 with redesigned version
 6. **Publish** — Deploy to Docusaurus

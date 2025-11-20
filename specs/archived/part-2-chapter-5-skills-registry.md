@@ -561,7 +561,7 @@ L1-L5: Personalizing Claude Code for Individual Learning Path (A2→B1)
    - Lesson 4: 1.6, 3.1 (2 skills)
    - Lesson 5: 2.1, 2.2, 2.3, 2.4, 2.5, 3.3 (6 skills)
 
-2. **Validate lesson content matches proficiency levels** (lesson-writer responsibility)
+2. **Validate lesson content matches proficiency levels** (content-implementer responsibility)
 
 3. **Create Chapter 5 skills frontmatter in lesson .md files** (following Part 1 pattern)
 

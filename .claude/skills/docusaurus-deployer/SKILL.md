@@ -117,7 +117,7 @@ For common issues and solutions, see `references/troubleshooting.md`, which cove
 ## Quality Gates (Constitution v3.1.2)
 
 Before deployment to production, verify:
-- [ ] All content passes technical-reviewer validation
+- [ ] All content passes validation-auditor validation
 - [ ] Local build completes without errors
 - [ ] No broken links or missing resources
 - [ ] TypeScript type checking passes

@@ -80,7 +80,7 @@ Constitution v4.0.1 contained three overlapping frameworks describing the same p
 
 ### Breaking Changes
 
-❌ **All agents must update**: chapter-planner, lesson-writer, technical-reviewer, proof-validator
+❌ **All agents must update**: chapter-planner, content-implementer, validation-auditor, factual-verifier
 ❌ **All skills must update**: 10+ skills reference old frameworks
 ❌ **Commands must update**: sp.loopflow.md, sp.python-chapter.md
 ❌ **CLAUDE.md references**: Main config file needs full update
@@ -117,9 +117,9 @@ Constitution v4.0.1 contained three overlapping frameworks describing the same p
 
 **Agents (4)**:
 - ✅ `.claude/agents/chapter-planner.md`
-- ✅ `.claude/agents/lesson-writer.md`
-- ✅ `.claude/agents/technical-reviewer.md`
-- ✅ `.claude/agents/proof-validator.md`
+- ✅ `.claude/agents/content-implementer.md`
+- ✅ `.claude/agents/validation-auditor.md`
+- ✅ `.claude/agents/factual-verifier.md`
 
 **Skills (7+)**:
 - ✅ `.claude/skills/ai-collaborate-teaching/SKILL.md`

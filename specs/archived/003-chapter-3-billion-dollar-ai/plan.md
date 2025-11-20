@@ -608,7 +608,7 @@ Lesson 5: Real-World Examples and Your Path Forward
 
 ## Next Steps for Lesson-Writer
 
-This plan is designed to be **implementable by lesson-writer subagent**. Each lesson includes:
+This plan is designed to be **implementable by content-implementer subagent**. Each lesson includes:
 - Clear learning objective (Bloom's level specified)
 - Estimated duration
 - Key concepts and scope

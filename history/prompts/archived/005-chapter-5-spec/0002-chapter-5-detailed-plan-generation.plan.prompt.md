@@ -85,7 +85,7 @@ Successfully created comprehensive plan for Chapter 5 using chapter-planner suba
 - ✅ Impact: Complete architectural plan for Chapter 5 implementation with 5 lessons, progressive complexity, and full constitutional alignment
 - 🧪 Tests: All functional requirements, success criteria, and user stories validated against lesson structure
 - 📁 Files: plan.md (lesson architecture), tasks.md (implementation checklist with ~100+ tasks)
-- 🔁 Next prompts: /sp.implement to begin Lesson 1 content creation using lesson-writer subagent
+- 🔁 Next prompts: /sp.implement to begin Lesson 1 content creation using content-implementer subagent
 - 🧠 Reflection: Plan successfully balances beginner accessibility with comprehensive coverage of Claude Code's most strategic features (subagents, skills, MCP). Progressive scaffolding ensures no cognitive overload while maintaining technical depth.
 
 ## Evaluation notes (flywheel)

@@ -685,7 +685,7 @@ print(f"{name} is a {type(name)}")    # Alice is a <class 'str'>
 - Violates Constitution Principle 13: "Lesson N only uses concepts from Lessons 1 through N"
 
 **Root Cause** (High Confidence):
-Lesson-writer context pollution. During generation, lesson-writer had access to Chapter 15-20 content and assumed student knowledge.
+Lesson-writer context pollution. During generation, content-implementer had access to Chapter 15-20 content and assumed student knowledge.
 
 **Pattern Detected**:
 All violations involve assuming knowledge from future chapters:
@@ -694,7 +694,7 @@ All violations involve assuming knowledge from future chapters:
 - `def` → Chapter 20 (Functions)
 
 **Systemic Fix Required**:
-Pre-validation gate to filter lesson-writer context:
+Pre-validation gate to filter content-implementer context:
 1. Extract: All concepts taught in Chapters 1 through N
 2. Filter: Remove all content from Chapters N+1 onwards
 3. Validate: Lesson-writer context contains ONLY Chapters 1-N material
@@ -837,7 +837,7 @@ Lesson-writer may lack clear guidance on Tier 1 vs. Tier 2 boundary:
 - Misses pedagogical goal: "Book teaches what's stable, AI handles what's complex"
 
 **Recommendation**:
-Add Tier Decision Matrix to lesson-writer prompt:
+Add Tier Decision Matrix to content-implementer prompt:
 
 | If Concept Is... | Then... |
 |------------------|---------|
@@ -849,7 +849,7 @@ Add Tier Decision Matrix to lesson-writer prompt:
 
 **Fix Effort**:
 - Immediate: 1 hour to rewrite 3 sections (type conversion, float precision)
-- Systemic: 30 minutes to update lesson-writer prompt with decision matrix
+- Systemic: 30 minutes to update content-implementer prompt with decision matrix
 ```
 
 ---
@@ -1144,7 +1144,7 @@ truly LEARN WITH AI (missing convergence, iteration, refinement).
 **Fix Impact**:
 - Immediate (remove forward refs): +15% completion
 - Major (add convergence cycles): +10% completion, +40% confidence
-- Systemic (lesson-writer training): Prevents recurrence
+- Systemic (content-implementer training): Prevents recurrence
 ```
 
 ---
@@ -1173,7 +1173,7 @@ Assumes student knowledge beyond Chapter N.
 **Impact**: Critical (student cannot follow examples)
 
 **Systemic Fix**:
-Pre-validation gate that filters lesson-writer context:
+Pre-validation gate that filters content-implementer context:
 
 ```python
 def filter_lesson_context(chapter_num: int, full_context: dict) -> dict:
@@ -1217,7 +1217,7 @@ Lesson-writer prompt may emphasize "show AI value" but lacks explicit
 **Impact**: Major (students miss core pedagogy: co-learning through iteration)
 
 **Systemic Fix**:
-Add convergence cycle template to lesson-writer prompt:
+Add convergence cycle template to content-implementer prompt:
 
 ```markdown
 ### Required: Convergence Cycle Structure (1-2 per lesson)
@@ -1252,7 +1252,7 @@ AI: "Based on your performance requirement, use dict with names as keys..."
 ```
 ```
 
-**Implementation Effort**: 1 hour (update lesson-writer prompt)
+**Implementation Effort**: 1 hour (update content-implementer prompt)
 **Expected Impact**: 80% of lessons will have convergence cycles
 **Worth it?**: YES (core pedagogy, must be present)
 
@@ -1272,7 +1272,7 @@ Lesson-writer lacks clear decision rubric for Tier 1 vs. Tier 2.
 **Impact**: Major (students don't build strong mental models for foundations)
 
 **Systemic Fix**:
-Add Tier Decision Matrix to lesson-writer prompt:
+Add Tier Decision Matrix to content-implementer prompt:
 
 | Concept Type | Tier | Who Teaches | Example |
 |--------------|------|-------------|---------|
@@ -1467,7 +1467,7 @@ print(contacts["Alice"])  # Fast lookup!
 ### Systemic Fixes (Prevents Future Issues)
 
 #### Systemic Fix 1: Pre-Validation Gate (Pattern 1)
-**What**: Filter lesson-writer context to only Chapters 1-N
+**What**: Filter content-implementer context to only Chapters 1-N
 **Effort**: 4-6 hours (development + testing)
 **Impact**: 90% reduction in pedagogical ordering violations
 **When**: Before Chapter 15 (prevents recurrence across 42 chapters)
@@ -1477,7 +1477,7 @@ print(contacts["Alice"])  # Fast lookup!
 ---
 
 #### Systemic Fix 2: Convergence Cycle Template (Pattern 2)
-**What**: Add convergence structure to lesson-writer prompt
+**What**: Add convergence structure to content-implementer prompt
 **Effort**: 1 hour (prompt update)
 **Impact**: 80% of future lessons will have convergence cycles
 **When**: Before Chapter 15
@@ -1485,7 +1485,7 @@ print(contacts["Alice"])  # Fast lookup!
 ---
 
 #### Systemic Fix 3: Tier Decision Matrix (Pattern 3)
-**What**: Add clear Tier 1/2/3 rubric to lesson-writer prompt
+**What**: Add clear Tier 1/2/3 rubric to content-implementer prompt
 **Effort**: 30 minutes (prompt update)
 **Impact**: 90% correct tier assignments in future chapters
 **When**: Before Chapter 15
@@ -1557,7 +1557,7 @@ I've analyzed Chapter 14 through three lenses:
 1. **Quick fix** (2.5h) → Publish with "conditional pass"
 2. **Recommended fix** (3.5h) → Publish with "pass" quality
 3. **Ideal fix** (7h) → Publish as model chapter
-4. **Systemic first** (7.5h) → Fix lesson-writer, regenerate Chapter 14
+4. **Systemic first** (7.5h) → Fix content-implementer, regenerate Chapter 14
 
 I'm here to execute your decision. What's the strategic priority?
 

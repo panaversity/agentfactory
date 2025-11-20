@@ -403,8 +403,8 @@ Each lesson builds on previous understanding; readers who complete all four have
 Once this plan is approved:
 
 1. ✅ **Phase 0 & 1 Complete**: Research and planning done
-2. ⏭️ **Invoke lesson-writer subagent**: Implement all 4 lessons following this plan
-3. ⏭️ **Invoke technical-reviewer subagent**: Validate completed chapter
+2. ⏭️ **Invoke content-implementer subagent**: Implement all 4 lessons following this plan
+3. ⏭️ **Invoke validation-auditor subagent**: Validate completed chapter
 4. 📦 **Integration**: Commit to feature branch; merge to main after approval
 
 ---

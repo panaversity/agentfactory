@@ -146,12 +146,18 @@ The 'Snakes and Ladders' framework describes four competitive layers. Explain th
 
 **Expected outcome**: Intuitive understanding of the four competitive layers using relatable analogies.
 
-### Prompt 2: Evaluate Layer 1 Opportunities
+### Prompt 2: Evaluate Layer 1 Opportunities (Bidirectional Challenge)
 ```
-The lesson says Layer 1 (consumer AI like ChatGPT) is a 'snake' I should avoid. But I use ChatGPT every day! Let's explore this together: First, help me understand if there's ANY opportunity for individuals in Layer 1. Then, I'll push back with counterarguments (what about plugins? what about niche consumer markets?). Adapt your reasoning based on my counterarguments. Let's iterate until we have a clear decision framework for when Layer 1 makes sense vs. when it's truly a snake to avoid.
+The lesson says Layer 1 (consumer AI like ChatGPT) is a 'snake' I should avoid. But I use ChatGPT every day! Let's test this framework together:
+
+**Part 1**: Give me your best case for why Layer 1 DOES have opportunities for solo developers (niche markets, plugins, specialized models). Suggest possibilities I haven't considered.
+
+**Part 2**: Now I'll argue the opposite using examples from MY experience or research [describe what you've observed about consumer AI markets]. Based on my pushback, tell me: Did I raise valid concerns that change your reasoning? Or are my counterarguments missing something?
+
+**Part 3**: Let's converge on a decision framework that combines your strategic knowledge with my market observations. The result should handle both general wisdom AND my specific situation.
 ```
 
-**Expected outcome**: Clear guidance on which layer to pursue, achieved through **collaborative iteration** where you challenge the framework and your AI adapts its reasoning.
+**Expected outcome**: Notice how you and your AI challenged each other's reasoning—it suggested opportunities you missed, you corrected with reality checks, and together you converged on better understanding than either had initially. This is how you build strategic judgment WITH AI, not just receive advice FROM AI.
 
 ### Prompt 3: Identify Bridging Opportunities
 ```

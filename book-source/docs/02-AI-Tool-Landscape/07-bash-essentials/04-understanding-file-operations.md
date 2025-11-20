@@ -197,12 +197,7 @@ Let's practice safe file copying.
 | Verify | `ls -la README*` | `ls -la` (to show both files) |
 | Check original | Still exists | Still exists |
 
-**Observation**:
-- Are the commands the same pattern? (Yes—`cp source destination`)
-- Is the original file unchanged? (Yes—in both cases)
-- Can you see both the original and copy? (Yes—both appear in `ls`)
-
-**Key Insight**: Copy is safe because nothing is destroyed. You and your AI follow the same pattern.
+**Observation**: Here you taught AI the safety verification pattern—before any file operation, check what exists. AI learns project-specific safety habits from your requirements.
 
 #### 🤝 Practice Exercise
 
@@ -232,6 +227,7 @@ Your AI will describe asking:
 
 This is the foundation of safe collaboration—thinking before acting.
 
----
+**Key Insight**: Through this dialogue, you and AI established a safety protocol together. You specified the questions, AI internalized the pattern. This is collaborative safety culture.
 
+---
 

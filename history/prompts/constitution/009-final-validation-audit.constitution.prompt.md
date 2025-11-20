@@ -41,7 +41,7 @@ Executed comprehensive final validation using Explore agent with line-by-line ve
 **Constitutional Alignment Score**: 93.4% (A grade)
 
 **Per-File Status**:
-- CRITICAL (2): ai-collaborate-teaching ✅ 14/14, lesson-writer ✅ 15/15
+- CRITICAL (2): ai-collaborate-teaching ✅ 14/14, content-implementer ✅ 15/15
 - HIGH (7): All 7 files ✅ PASS (12-14 items each)
 - MEDIUM (5): All 5 files ✅ PASS (10-11 items each)
 
@@ -62,7 +62,7 @@ Executed comprehensive final validation using Explore agent with line-by-line ve
 - 0 regressions detected
 
 **Production Readiness Checklist**:
-- ✅ Subagents updated (lesson-writer, chapter-planner, technical-reviewer, proof-validator)
+- ✅ Subagents updated (content-implementer, chapter-planner, validation-auditor, factual-verifier)
 - ✅ Skills updated (all 9 domain skills + 5 utilities)
 - ✅ Pedagogical model clarified (co-learning, Three Roles, Convergence Loop)
 - ✅ Validation gates operational (Nine Pillars, co-learning, evals-first)

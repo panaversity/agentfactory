@@ -164,8 +164,8 @@ Reader connects theory to practice through videos, case studies, and market data
 1. Get spec approval
 2. Create visual assets
 3. Invoke chapter-planner subagent
-4. Implement via lesson-writer subagent
-5. Validate via technical-reviewer
+4. Implement via content-implementer subagent
+5. Validate via validation-auditor
 6. Iterate and integrate
 
 ---

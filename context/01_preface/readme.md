@@ -1,8 +1,8 @@
-# AI Native Software Development: Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way
+# AI Native Software Development: Colearning Agentic AI with Python and TypeScript – Spec Driven Reusable Intelligence
 
 The Book title: "AI Native Software Development" 
 
-The Sub-title: " Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way"
+The Sub-title: " Colearning Agentic AI with Python and TypeScript – Spec Driven Reusable Intelligence"
 
 URLs:
 
@@ -22,7 +22,7 @@ https://panaversity.com/books/ai-native-software-development
 
 For the first time in human history, we’re not teaching machines *what* to do — we’re teaching them *how to learn with us*. Software development has always been about logic, syntax, and structure, but in the **AI-Driven Development (AIDD)** era, it becomes something more human, conversational, and collaborative.
 
-This book, **“AI Native Software Development: Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way,”** is your guide to becoming fluent in this new language of creation — a language spoken by humans and intelligent agents alike.
+This book, **“AI Native Software Development: Colearning Agentic AI with Python and TypeScript – Spec Driven Reusable Intelligence,”** is your guide to becoming fluent in this new language of creation — a language spoken by humans and intelligent agents alike.
 
 You’ll learn to:
 

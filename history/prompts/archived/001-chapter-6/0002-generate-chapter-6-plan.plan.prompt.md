@@ -77,10 +77,10 @@ Successfully invoked chapter-planner subagent to generate comprehensive planning
 
 ## Outcome
 
-- ✅ Impact: Complete, detailed lesson plan and task checklist ready for lesson-writer implementation phase
+- ✅ Impact: Complete, detailed lesson plan and task checklist ready for content-implementer implementation phase
 - 🧪 Tests: Constitutional alignment verified, all specification requirements mapped, pedagogical approach validated
 - 📁 Files: Created plan.md (lesson architecture) and tasks.md (40+ implementation tasks, 620 lines)
-- 🔁 Next prompts: Execute lesson-writer subagent to implement each of 6 lessons following the detailed plan and tasks
+- 🔁 Next prompts: Execute content-implementer subagent to implement each of 6 lessons following the detailed plan and tasks
 - 🧠 Reflection: Planning demonstrates strong pedagogical design with clear progressive scaffolding (heavy support for installation, lighter support for decision-making), comprehensive platform coverage, and effective integration with adjacent chapters. The 6-lesson structure balances depth (Built-In Tools Deep Dive) with breadth (Tool Comparison Framework) while maintaining learner engagement through hands-on verification at every step.
 
 ## Evaluation notes (flywheel)
@@ -88,4 +88,4 @@ Successfully invoked chapter-planner subagent to generate comprehensive planning
 - Failure modes observed: None - planning workflow executed successfully with chapter-planner subagent
 - Graders run and results (PASS/FAIL): Constitutional alignment check - PASS; Specification coverage check - PASS; Pedagogical approach validation - PASS
 - Prompt variant (if applicable): Standard /sp.plan invocation with chapter-planner subagent
-- Next experiment (smallest change to try): Implement Lesson 1 using lesson-writer subagent to validate whether plan provides sufficient detail for content creation
+- Next experiment (smallest change to try): Implement Lesson 1 using content-implementer subagent to validate whether plan provides sufficient detail for content creation

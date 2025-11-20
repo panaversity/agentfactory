@@ -334,12 +334,18 @@ Let's explore development approaches through MY experiences. I'll describe a pro
 
 **What you're learning**: Pattern recognition through reflection—your AI helps you extract principles from your experiences, not just memorize rules.
 
-### Prompt 2: Co-Create a Mini-Spec
+### Prompt 2: Co-Create a Mini-Spec (Bidirectional Learning)
 ```
-I want to build [describe your project idea]. Before we write any code, let's co-create a mini-specification together. Start by asking me clarifying questions: What problem does this solve? Who will use it? What does "done" look like? What could go wrong? As I answer, help me shape a 1-page spec. Let's iterate—you suggest structure, I provide content, we refine together until we both feel clear about what we're building.
+I want to build [describe your project idea]. Before we write any code, let's co-create a mini-specification together.
+
+**Part 1**: Start by suggesting 3-4 edge cases or failure modes I might not have considered. Teach me what experienced developers think about when spec-writing.
+
+**Part 2**: Now I'll tell you about MY specific constraints and context [describe your situation: time limits, technical constraints, user needs]. Adjust your edge case suggestions based on what I just taught you about my situation.
+
+**Part 3**: Let's iterate on the spec structure together—you suggest sections, I refine based on what matters for my project, we converge on a 1-page spec that captures both your experience and my context.
 ```
 
-**What you're learning**: Specification as dialogue—you and your AI converge on clarity through iteration, not documentation.
+**What you're learning**: Notice how this interaction works both ways—your AI suggests patterns you didn't know, then learns your constraints and adapts. You're not just receiving a spec template; you're building it together through iteration. This is what AI collaboration actually looks like.
 
 ### Prompt 3: Debug Together Through Failure Analysis
 ```
@@ -348,11 +354,19 @@ Here's a real scenario I faced (or a hypothetical): I built something quickly wi
 
 **What you're learning**: Root cause analysis through dialogue—your AI teaches you to debug by asking questions, not just providing answers.
 
-### Prompt 4: Build Decision Framework Together
+### Prompt 4: Build Decision Framework Together (Iterative Convergence)
 ```
-I need a simple decision framework: Given a project, how do I choose between "explore fast" and "plan first"? But don't just give me a framework—let's BUILD one together. Ask me about projects I've done: Which ones benefited from planning? Which ones needed exploration? Help me discover what factors matter most (stakes? team size? complexity? familiarity?). Then co-create a decision tree or checklist that fits MY context, not generic best practices.
+I need a simple decision framework: Given a project, how do I choose between "explore fast" and "plan first"?
+
+**Part 1**: Create a first-draft framework based on standard software engineering wisdom.
+
+**Part 2**: Now I'll critique your framework based on MY reality [tell AI what's unrealistic, what you'd never actually use, what's missing for your situation]. Be honest—if something won't work for you, say so.
+
+**Part 3**: Revise the framework based on my feedback. Then I'll test it on 2-3 of my real past projects and tell you where it succeeds or fails.
+
+**Part 4**: Final iteration—we converge on a framework that combines your engineering knowledge with my practical constraints. The result should be something I'll actually use, not just "technically correct."
 ```
 
-**What you're learning**: Framework co-creation—you're building decision tools WITH your AI, not just receiving them. This is AI partnership in action.
+**What you're learning**: Notice the progression—AI provides expertise, you provide reality checks, you both iterate toward something better than either had initially. Neither of you "owns" the final framework—it emerged from collaboration. This is how you build with AI: convergence through iteration, not passive acceptance.
 
 

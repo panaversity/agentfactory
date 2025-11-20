@@ -5,39 +5,39 @@
 **Feature Branch**: `005-chapter-5-spec`
 **Approved Plan**: `specs/005-chapter-5-spec/plan.md`
 **Estimated Total Effort**: 50-65 hours (reduced through subagent specialization)
-**Implementation Strategy**: 5 parallel lesson-writer subagents + 1 integration phase
+**Implementation Strategy**: 5 parallel content-implementer subagents + 1 integration phase
 
 ---
 
 ## Overview
 
-This refined task checklist assigns each lesson to a **dedicated lesson-writer subagent** with **content-evaluation-framework** skill integration. Tasks now follow strict checklist format with Task IDs, [P] markers for parallelizable work, and clear file paths.
+This refined task checklist assigns each lesson to a **dedicated content-implementer subagent** with **content-evaluation-framework** skill integration. Tasks now follow strict checklist format with Task IDs, [P] markers for parallelizable work, and clear file paths.
 
 **Key Changes from Original**:
-1. ✅ Each lesson assigned to separate lesson-writer subagent
+1. ✅ Each lesson assigned to separate content-implementer subagent
 2. ✅ content-evaluation-framework skill requirement added to all lessons
 3. ✅ Strict checklist format enforced (Task IDs, [P] markers, file paths)
 4. ✅ Reduced task granularity (subagents handle internal subtasks)
 5. ✅ Clear subagent invocation specifications
 
 **Chapter Scope**: 5 lessons totaling 75-95 minutes (30-35 reading + 45-60 hands-on)
-- Lesson 1: Origin story (narrative) → lesson-writer-1
-- Lesson 2: Installation & authentication (technical) → lesson-writer-2
-- Lesson 3: Subagents tutorial (technical) → lesson-writer-3
-- Lesson 4: Agent Skills tutorial (technical) → lesson-writer-4
-- Lesson 5: MCP servers & workflows (technical/practical) → lesson-writer-5
+- Lesson 1: Origin story (narrative) → content-implementer-1
+- Lesson 2: Installation & authentication (technical) → content-implementer-2
+- Lesson 3: Subagents tutorial (technical) → content-implementer-3
+- Lesson 4: Agent Skills tutorial (technical) → content-implementer-4
+- Lesson 5: MCP servers & workflows (technical/practical) → content-implementer-5
 
 ---
 
 ## Phase 1: Lesson 1 - Origin Story and Paradigm Shift
 
-**Assigned Subagent**: `lesson-writer` (instance 1)
+**Assigned Subagent**: `content-implementer` (instance 1)
 **Status**: Can start immediately (no dependencies)
 
 ### Primary Content Development Task
 
-- [ ] T001 [P] Invoke lesson-writer subagent for Lesson 1 with evaluation skill in book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/01-origin-story.md
-  - **Subagent**: lesson-writer
+- [ ] T001 [P] Invoke content-implementer subagent for Lesson 1 with evaluation skill in book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/01-origin-story.md
+  - **Subagent**: content-implementer
   - **Required Skills**: learning-objectives, concept-scaffolding, technical-clarity, book-scaffolding, ai-augmented-teaching, content-evaluation-framework
   - **Input Files**:
     - `specs/005-chapter-5-spec/plan.md` (Lesson 1 section, lines 25-31)
@@ -82,7 +82,7 @@ This refined task checklist assigns each lesson to a **dedicated lesson-writer s
 
 ## Phase 2: Lesson 2 - Installation and Authentication
 
-**Assigned Subagent**: `lesson-writer` (instance 2)
+**Assigned Subagent**: `content-implementer` (instance 2)
 **Status**: Can start immediately (no content dependencies, but requires installation testing first)
 
 ### Prerequisite Testing
@@ -123,9 +123,9 @@ This refined task checklist assigns each lesson to a **dedicated lesson-writer s
 
 ### Primary Content Development Task
 
-- [ ] T006 Invoke lesson-writer subagent for Lesson 2 with evaluation skill in book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md
+- [ ] T006 Invoke content-implementer subagent for Lesson 2 with evaluation skill in book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md
   - **Dependencies**: T004, T005 (requires verified commands and troubleshooting guide)
-  - **Subagent**: lesson-writer
+  - **Subagent**: content-implementer
   - **Required Skills**: learning-objectives, concept-scaffolding, code-example-generator, technical-clarity, book-scaffolding, ai-augmented-teaching, content-evaluation-framework
   - **Input Files**:
     - `specs/005-chapter-5-spec/plan.md` (Lesson 2 section, lines 33-41)
@@ -168,7 +168,7 @@ This refined task checklist assigns each lesson to a **dedicated lesson-writer s
 
 ## Phase 3: Lesson 3 - Understanding and Using Subagents
 
-**Assigned Subagent**: `lesson-writer` (instance 3)
+**Assigned Subagent**: `content-implementer` (instance 3)
 **Status**: Can start immediately (parallel with other lessons)
 
 ### Prerequisite Code Example Development
@@ -196,9 +196,9 @@ This refined task checklist assigns each lesson to a **dedicated lesson-writer s
 
 ### Primary Content Development Task
 
-- [ ] T011 Invoke lesson-writer subagent for Lesson 3 with evaluation skill in book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/03-subagents.md
+- [ ] T011 Invoke content-implementer subagent for Lesson 3 with evaluation skill in book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/03-subagents.md
   - **Dependencies**: T009, T010 (requires working examples)
-  - **Subagent**: lesson-writer
+  - **Subagent**: content-implementer
   - **Required Skills**: learning-objectives, concept-scaffolding, code-example-generator, exercise-designer, technical-clarity, book-scaffolding, ai-augmented-teaching, content-evaluation-framework
   - **Input Files**:
     - `specs/005-chapter-5-spec/plan.md` (Lesson 3 section, lines 43-49)
@@ -243,7 +243,7 @@ This refined task checklist assigns each lesson to a **dedicated lesson-writer s
 
 ## Phase 4: Lesson 4 - Creating and Using Agent Skills
 
-**Assigned Subagent**: `lesson-writer` (instance 4)
+**Assigned Subagent**: `content-implementer` (instance 4)
 **Status**: Can start immediately (parallel with other lessons)
 
 ### Prerequisite Research and Example Development
@@ -279,9 +279,9 @@ This refined task checklist assigns each lesson to a **dedicated lesson-writer s
 
 ### Primary Content Development Task
 
-- [ ] T017 Invoke lesson-writer subagent for Lesson 4 with evaluation skill in book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/04-agent-skills.md
+- [ ] T017 Invoke content-implementer subagent for Lesson 4 with evaluation skill in book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/04-agent-skills.md
   - **Dependencies**: T014, T015, T016 (requires research and examples)
-  - **Subagent**: lesson-writer
+  - **Subagent**: content-implementer
   - **Required Skills**: learning-objectives, concept-scaffolding, code-example-generator, exercise-designer, technical-clarity, book-scaffolding, ai-augmented-teaching, content-evaluation-framework
   - **Input Files**:
     - `specs/005-chapter-5-spec/plan.md` (Lesson 4 section, lines 51-58)
@@ -334,7 +334,7 @@ This refined task checklist assigns each lesson to a **dedicated lesson-writer s
 
 ## Phase 5: Lesson 5 - Connecting MCP Servers and Common Workflows
 
-**Assigned Subagent**: `lesson-writer` (instance 5)
+**Assigned Subagent**: `content-implementer` (instance 5)
 **Status**: Can start immediately (parallel with other lessons)
 
 ### Prerequisite Research and Example Development
@@ -374,9 +374,9 @@ This refined task checklist assigns each lesson to a **dedicated lesson-writer s
 
 ### Primary Content Development Task
 
-- [ ] T026 Invoke lesson-writer subagent for Lesson 5 with evaluation skill in book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/05-mcp-servers-and-workflows.md
+- [ ] T026 Invoke content-implementer subagent for Lesson 5 with evaluation skill in book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/05-mcp-servers-and-workflows.md
   - **Dependencies**: T021, T022, T023, T024, T025 (requires all research and verified workflows)
-  - **Subagent**: lesson-writer
+  - **Subagent**: content-implementer
   - **Required Skills**: learning-objectives, concept-scaffolding, code-example-generator, exercise-designer, technical-clarity, book-scaffolding, ai-augmented-teaching, content-evaluation-framework
   - **Input Files**:
     - `specs/005-chapter-5-spec/plan.md` (Lesson 5 section, lines 60-67)
@@ -570,7 +570,7 @@ This refined task checklist assigns each lesson to a **dedicated lesson-writer s
 
 ### Subagent-Specific Quality Gates
 
-- [ ] Each lesson-writer subagent received complete input specification
+- [ ] Each content-implementer subagent received complete input specification
 - [ ] Each subagent applied content-evaluation-framework skill
 - [ ] Self-evaluation reports identify strengths and improvement areas
 - [ ] All subagent outputs reviewed by human before integration
@@ -650,11 +650,11 @@ After all tasks complete, the chapter is successful when:
 
 ### Standard Invocation Pattern
 
-For each lesson (T001, T006, T011, T017, T026), use the Task tool with subagent_type="lesson-writer".
+For each lesson (T001, T006, T011, T017, T026), use the Task tool with subagent_type="content-implementer".
 
 ### Subagent Context Provided
 
-Each lesson-writer subagent receives:
+Each content-implementer subagent receives:
 1. **Specification**: `specs/005-chapter-5-spec/spec.md` (requirements, success criteria)
 2. **Plan**: `specs/005-chapter-5-spec/plan.md` (lesson details, Bloom's levels, time estimates)
 3. **Output Style**: `.claude/output-styles/lesson.md` (formatting template)
@@ -689,11 +689,11 @@ Each lesson-writer subagent receives:
 - ✅ Effort estimates realistic
 - ✅ Reference materials accessible
 - ✅ Strict checklist format enforced (Task IDs, [P] markers, file paths)
-- ✅ Each lesson assigned to dedicated lesson-writer subagent
+- ✅ Each lesson assigned to dedicated content-implementer subagent
 - ✅ content-evaluation-framework skill requirement added to all lessons
 - ✅ Parallel execution opportunities identified and marked
 
-**Next Step**: `/sp.implement` to begin parallel lesson development with lesson-writer subagents
+**Next Step**: `/sp.implement` to begin parallel lesson development with content-implementer subagents
 
 **Recommended Execution Order**:
 1. **Start All Prerequisite Tasks in Parallel** (Week 1-2): T004-T005, T009-T010, T014-T016, T021-T025

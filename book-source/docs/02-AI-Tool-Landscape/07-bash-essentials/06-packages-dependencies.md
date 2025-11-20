@@ -260,12 +260,7 @@ Show me:
 | See output | (Installation progress) | (Installation progress) |
 | Verify | `pip show requests` | (AI verifies it) |
 
-**Observation**:
-- Are the commands the same pattern? (Yes—`pip install`, `npm install`, etc.)
-- Does your AI explain what's being installed? (Yes—shows dependencies)
-- Can you verify it worked? (Yes—with `pip show`, `npm list`, or import test)
-
-**Key Insight**: Package managers automate dependency resolution. You don't have to find 5+ packages manually—you ask for one, and the manager finds the rest.
+**Observation**: AI knows which package manager to use (`pip`, `npm`, `brew`) because it understands your project context. You verify it worked through testing. Together you ensure dependencies are correctly installed.
 
 #### 🤝 Practice Exercise
 
@@ -293,6 +288,8 @@ Explain:
 Your AI will explain that packages depend on other packages, which depend on others. The package manager traces this entire dependency tree and installs everything needed. This is called transitive dependency resolution.
 
 **Key Principle**: Package managers handle complexity you'd never want to manage manually.
+
+**Key Insight**: Package management through AI collaboration means you focus on understanding what's being installed (and whether it worked), not memorizing package manager flags.
 
 ---
 

@@ -8,12 +8,15 @@ description: |
   automatic batch shuffling on retake, no passing/failing threshold, color-coded feedback,
   theme support. Globally-registered Quiz component handles all UI/UX.
   Follows ##_chapter_##_quiz.md naming convention.
-version: 4.0.0
+  INCLUDES: Automated answer redistribution with intelligent explanation regeneration (consolidates quiz-answer-redistributor functionality).
+version: 5.0.0
+allowed-tools: [Bash]
+replaces: quiz-answer-redistributor (v3.0.0)
 ---
 
 # Quiz Generator: College-Level Interactive Chapter Assessments
 
-**Version:** 4.0.0 | **Alignment:** Constitution v3.1.2, Co-Learning Partnership, "Specs Are the New Syntax" | **KEY FEATURES:** 50 total questions, 15-20 displayed per batch, immediate feedback per question, randomized batching on retake, no pass/fail threshold, evals-aligned questions
+**Version:** 5.0.0 | **Consolidates:** quiz-answer-redistributor v3.0.0 | **Alignment:** Constitution v3.1.2, Co-Learning Partnership, "Specs Are the New Syntax" | **KEY FEATURES:** 50 total questions, automated answer redistribution with intelligent explanation regeneration, 15-20 displayed per batch, immediate feedback per question, randomized batching on retake, no pass/fail threshold, evals-aligned questions
 
 **Quiz Component Location:** `book-source/src/components/Quiz.tsx` (globally registered—no imports needed)
 **Usage Reference:** `book-source/src/components/QUIZ_USAGE.md` (example structure + best practices)
@@ -244,12 +247,69 @@ Component shows completely DIFFERENT shuffle: [25, 9, 48, 2, 18, ...]
 }
 ```
 
-**How to Randomize (for 50 questions):**
-1. Write all 50 questions first (don't worry about correctOption distribution)
-2. After ALL questions written, shuffle correctOption values across all questions
-3. Verify distribution: aim for ~12-13 questions per index (0,1,2,3)
-4. Ensure no 3+ consecutive same correctOption values
-5. Spot-check: visually verify longest sequence is ≤2 same indices
+**Workflow: Generate → Redistribute → Validate**
+
+LLMs are excellent at content creation but struggle with strict procedural constraints like answer distribution. Therefore, this skill uses a **two-step process**:
+
+**Step 1: Generate Quiz (Content Creation)**
+1. Write all 50 questions first (focus on quality, don't worry about correctOption distribution)
+2. Use natural answer placement (what makes pedagogical sense)
+
+**Step 2: Automated Redistribution (Procedural Validation)**
+
+After quiz generation, automatically fix answer distribution bias using the bundled Python script:
+
+```bash
+python .claude/skills/quiz-generator/scripts/redistribute_answers_v2.py <quiz_file_path> <sequence_letter>
+```
+
+**Example:**
+```bash
+python .claude/skills/quiz-generator/scripts/redistribute_answers_v2.py \
+  book-source/docs/04-Python-Fundamentals/14-data-types/quiz.md A
+```
+
+**Available Sequences (A-H):**
+- **Sequence A**: 13 Index-0, 13 Index-1, 12 Index-2, 12 Index-3
+- **Sequence B**: 12 Index-0, 13 Index-1, 13 Index-2, 12 Index-3
+- **Sequence C**: 12 Index-0, 12 Index-1, 13 Index-2, 13 Index-3
+- **Sequence D**: 13 Index-0, 12 Index-1, 12 Index-2, 13 Index-3
+- **Sequence E**: 12 Index-0, 13 Index-1, 12 Index-2, 13 Index-3
+- **Sequence F**: 13 Index-0, 12 Index-1, 13 Index-2, 12 Index-3
+- **Sequence G**: 12 Index-0, 13 Index-1, 13 Index-2, 12 Index-3 (alternative)
+- **Sequence H**: 13 Index-0, 12 Index-1, 12 Index-2, 13 Index-3 (alternative)
+
+**What the Redistributor Does:**
+1. Parses quiz questions from MDX
+2. Swaps option positions to match the chosen sequence
+3. **Intelligently regenerates explanations** to reference new answer positions
+4. Validates ALL explanations ensure correctOption and explanation match
+5. Reports comprehensive statistics
+
+**Critical Features:**
+- **Smart explanation updates**: Only updates explanations that explicitly reference option letters (e.g., "Option B is correct")
+- **Preserves context-based explanations**: Leaves explanations untouched if they don't reference specific options
+- **Validation**: Checks every question to ensure explanations match the correct answer
+- **No annotation markers**: Keeps explanations clean for students (no "[Updated to reflect...]" markers)
+
+**Output Report Example:**
+```
+Successfully re-distributed quiz using Sequence C
+
+Execution Summary:
+* Questions Processed: 50
+* Options Swapped: 18
+* Explanations Updated: 18
+* Validation: ALL CHECKS PASSED
+
+Final Distribution:
+* Index 0: 12
+* Index 1: 12
+* Index 2: 13
+* Index 3: 13
+
+All 50 explanations verified. Each explanation correctly references the corresponding correct answer option.
+```
 
 📖 **Reference:** [answer-distribution.md](./references/answer-distribution.md) for verification methods
 

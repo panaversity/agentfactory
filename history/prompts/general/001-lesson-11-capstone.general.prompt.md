@@ -4,12 +4,12 @@ id: 001
 title: Write Lesson 11 Capstone Data Processing Pipeline
 stage: general
 date: 2025-11-09
-surface: lesson-writer
+surface: content-implementer
 model: claude-haiku-4-5-20251001
 feature: chapter-18-lists-tuples-dictionary
 branch: main
 user: architect
-command: lesson-writer subagent invocation for Lesson 11
+command: content-implementer subagent invocation for Lesson 11
 labels: [capstone, data-pipeline, b1-intermediate, lesson-implementation]
 links:
   spec: specs/001-part-4-chapter-18/spec.md

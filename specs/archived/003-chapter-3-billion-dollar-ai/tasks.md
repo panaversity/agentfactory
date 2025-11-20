@@ -2,7 +2,7 @@
 
 **Status**: Ready for Development
 **Feature Branch**: `003-chapter-3-billion-dollar-ai`
-**Owner**: To be assigned to lesson-writer subagent
+**Owner**: To be assigned to content-implementer subagent
 **Estimated Total Effort**: 30-40 story points (approximately 45-60 hours of writing + creation)
 
 **Input**: `specs/003-chapter-3-billion-dollar-ai/plan.md` (revised consolidated lesson plan with 5 lessons)
@@ -12,7 +12,7 @@
 
 ## Overview
 
-This task checklist decomposes the CONSOLIDATED lesson plan (5 lessons instead of 8) into concrete, implementable tasks for the lesson-writer subagent. Each task is atomic (1-3 hours), testable, and has clear acceptance criteria.
+This task checklist decomposes the CONSOLIDATED lesson plan (5 lessons instead of 8) into concrete, implementable tasks for the content-implementer subagent. Each task is atomic (1-3 hours), testable, and has clear acceptance criteria.
 
 **Key Changes from 8-Lesson to 5-Lesson Structure**:
 - Consolidated Lessons 1-2 → New Lesson 1 (10-12 min)
@@ -1177,7 +1177,7 @@ Chapter 3 is COMPLETE when:
 - [ ] Constitution alignment confirmed (all 10 principles met)
 - [ ] Cross-chapter coherence verified (Chapters 1-2 + forward references)
 - [ ] Docusaurus builds without errors
-- [ ] Ready for technical-reviewer final validation
+- [ ] Ready for validation-auditor final validation
 - [ ] Ready for publication
 
 ---

@@ -204,12 +204,7 @@ Let's practice safe configuration.
 | Verify it | `echo $TEST` | (AI verifies) |
 | Persistent (.env) | Create .env file | (AI creates .env file) |
 
-**Observation**:
-- Are the commands the same pattern? (Yes—both use environment variables)
-- What's the main difference? (One is temporary, one is persistent)
-- Why use .env for secrets? (Survives terminal restarts, easier to manage)
-
-**Key Insight**: Both temporary and persistent approaches keep secrets out of code. The difference is how long they last.
+**Observation**: Notice how AI suggested both temporary and persistent approaches—it taught you configuration options. Then you chose based on your project needs—teaching AI your context. This bidirectional learning is the pattern.
 
 #### 🤝 Practice Exercise
 
@@ -242,6 +237,8 @@ Your AI will explain:
 4. Add `.env` to `.gitignore` to prevent accidental commits
 
 **Key Principle**: Secrets belong in environment variables or configuration files, never in code.
+
+**Key Insight**: Configuration isn't about memorizing `export` syntax—it's about understanding persistence and verification through conversation with AI.
 
 ---
 

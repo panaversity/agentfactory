@@ -19,9 +19,9 @@ files:
   - .specify/memory/constitution.md
   - CLAUDE.md
   - .claude/agents/chapter-planner.md
-  - .claude/agents/lesson-writer.md
-  - .claude/agents/technical-reviewer.md
-  - .claude/agents/proof-validator.md
+  - .claude/agents/content-implementer.md
+  - .claude/agents/validation-auditor.md
+  - .claude/agents/factual-verifier.md
   - .claude/skills/code-example-generator/SKILL.md
   - .claude/skills/ai-augmented-teaching/SKILL.md
   - .claude/skills/learning-objectives/SKILL.md
@@ -42,7 +42,7 @@ RESPONSE_TEXT:
 
 - Constitution v3.0: Added “AI Development Spectrum (Assisted → Driven → Native)” under Section I. Clarified emphasis on Driven and Native; preserved planning-first, validation-before-trust, bilingual, deployment principles. Added repo-availability note for skills in II.B.
 - CLAUDE.md: Generalized skills references to those present; listed current core skills; ensured subagents/flows enforce spec-first and validation steps.
-- Agents: chapter-planner (spec-first, acceptance criteria, tier, closure); lesson-writer (spec→prompt→code→validation, SpecRef, closure); technical-reviewer (spectrum note, sequence check); proof-validator (must-pass gates: acceptance, closure, sources/tests).
+- Agents: chapter-planner (spec-first, acceptance criteria, tier, closure); content-implementer (spec→prompt→code→validation, SpecRef, closure); validation-auditor (spectrum note, sequence check); factual-verifier (must-pass gates: acceptance, closure, sources/tests).
 - Skills improvements: learning-objectives (Bloom tags, evidence mapping), assessment-builder (objective coverage matrix, validation pack), technical-clarity (gatekeeping auto-fix, spec alignment, audience band), book-scaffolding (tier tags, dependency index), concept-scaffolding (per-step verifiability, load budget), code-example-generator (test snippet, security lint, failure-mode), exercise-designer (difficulty bands, hints, rubric), ai-collaborate-learning (spectrum tag, verification prompts).
 
 OUTCOME:

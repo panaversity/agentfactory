@@ -17,9 +17,28 @@ For the first time in human history, you can ship production AI-native software 
 
 ---
 
+## Fast-Track Tour to Supercharge Reusable Intelligence with Rise of AI Agents
+
+:::tip Open Full Slideshow
+**[🎯 View Full Presentation](https://docs.google.com/presentation/d/1UGvCUk1-O8m5i-aTWQNxzg8EXoKzPa8fgcwfNh8vRjQ/edit?usp=sharing)** — Experience the paradigm shift from traditional coding to AI-native development—perfect for visual learners.
+:::
+
+<div style={{position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%', marginBottom: '2rem', border: '1px solid var(--ifm-color-emphasis-300)', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)'}}>
+  <iframe
+    src="https://docs.google.com/presentation/d/1UGvCUk1-O8m5i-aTWQNxzg8EXoKzPa8fgcwfNh8vRjQ/embed?start=false&loop=false&delayms=3000"
+    frameborder="0"
+    style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', borderRadius: '8px'}}
+    allowfullscreen="true"
+    mozallowfullscreen="true"
+    webkitallowfullscreen="true">
+  </iframe>
+</div>
+
+---
+
 ## What This Book Is About
 
-This book, **"AI Native Software Development: Colearning Agentic AI with Python and TypeScript — The AI & Spec Driven Way,"** teaches you a fundamentally different approach to building software.
+This book, **"AI Native Software Development: Colearning Agentic AI with Python and TypeScript — Spec Driven Reusable Intelligence,"** teaches you a fundamentally different approach to building software.
 
 ### The Core Paradigm Shift
 
@@ -54,6 +73,14 @@ By the end of this book, you will be able to:
 - **Develop reusable vertical skills** — composable intelligence that compounds with each project
 - **Compete in specialized markets** — where deep domain knowledge + AI execution = competitive moats
 - **Think like a "super orchestrator"** — combine your expertise with AI agents to dominate niches
+
+**The strategic shift**: In traditional development, reusable code (libraries, frameworks) was the primary asset. In AI-native development, **reusable intelligence** becomes the strategic differentiator:
+
+- **Specifications** that capture intent with precision (executable contracts, not documentation)
+- **Agent Architectures** that encode domain expertise (subagents specialized for your vertical)
+- **Skills** that bundle recurring patterns (composable capabilities that compound)
+
+Code becomes regenerable output; intelligence becomes your durable asset. **This book teaches you to design intelligence, not just write code.**
 
 ### Master the Complete AI-Native Stack
 
@@ -496,6 +523,8 @@ This book is built on nine foundational pillars that work together as a complete
 **The Infrastructure:**
 - ☁️ **Universal Cloud-Native Deployment** — Docker, Kubernetes, Dapr standardized infrastructure
 
+**Pedagogical Innovation**: This book applies the **Panaversity Teaching Method**—a systematic four-layer framework (Manual → AI-Collaboration → Intelligence Design → Spec-Driven) that prepares developers for AI-native software engineering by progressively building competence from foundational practice through autonomous orchestration.
+
 These nine pillars aren't taught in isolation—they're integrated holistically throughout your learning journey. Each chapter explicitly connects to relevant pillars, building your understanding progressively from introduction to mastery.
 
 ---
@@ -530,6 +559,18 @@ The companies that adopt AI-native development NOW will dominate their markets. 
 - Entire lifecycle AI-driven
 - AI handles implementation, testing, deployment, monitoring
 - **Advantage**: 50-99x productivity gains
+
+### Strategic Investment Shift: From Code Libraries to Intelligence Libraries
+
+Organizations that adopt AI-native development are discovering a fundamental change in what constitutes a strategic asset:
+
+**Traditional investment**: Build reusable code libraries, frameworks, and components. Hire developers to write and maintain codebases.
+
+**AI-native investment**: Curate specification libraries, agent architectures, and intelligence components. Hire developers to design systems and orchestrate execution.
+
+**The competitive advantage**: Two teams using similar AI models and languages may achieve vastly different productivity based on how well they've structured their specifications and intelligence libraries. Version control shifts from primarily tracking code to tracking specs + agent configurations alongside generated implementations.
+
+**For engineering leaders**: Success increasingly depends on the quality of your organization's intelligence assets—the accumulated specifications, proven agent patterns, and reusable skills that compound with every project.
 
 ---
 

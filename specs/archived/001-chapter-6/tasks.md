@@ -396,7 +396,7 @@
 
 ## Next Steps After Task Completion
 
-1. **Technical Review**: Invoke technical-reviewer subagent to validate technical accuracy
+1. **Technical Review**: Invoke validation-auditor subagent to validate technical accuracy
 2. **Pedagogical Review**: Verify Bloom's progression and learning outcomes met
 3. **Integration Verification**: Check flow with Chapters 5, 7, 8
 4. **Docusaurus Publication**: Build and publish to book website

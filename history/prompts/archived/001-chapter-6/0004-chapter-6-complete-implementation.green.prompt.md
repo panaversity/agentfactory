@@ -36,9 +36,9 @@ tests:
 
 ground with context given here @context\07_chap6_spec\ and do follow the links provided.
 
-**Context**: User requested implementation of Chapter 6 following specification and planning phases. The /sp.implement command was triggered to execute all tasks from tasks.md using lesson-writer subagents for parallel content generation.
+**Context**: User requested implementation of Chapter 6 following specification and planning phases. The /sp.implement command was triggered to execute all tasks from tasks.md using content-implementer subagents for parallel content generation.
 
-**Approach**: Launched 6 lesson-writer subagents in parallel (one per lesson) with detailed prompts specifying content requirements, user stories addressed, and structural expectations. Each subagent worked independently with access to:
+**Approach**: Launched 6 content-implementer subagents in parallel (one per lesson) with detailed prompts specifying content requirements, user stories addressed, and structural expectations. Each subagent worked independently with access to:
 - Official Gemini CLI documentation (fetched via WebFetch)
 - Chapter specification (spec.md)
 - Task requirements (tasks.md with T001-T084 mapping)
@@ -49,7 +49,7 @@ ground with context given here @context\07_chap6_spec\ and do follow the links p
 
 Successfully implemented complete Chapter 6: Gemini CLI—Installation and Basics with all 6 lessons and chapter README.
 
-**Implementation Strategy**: Parallel lesson generation using specialized lesson-writer subagents
+**Implementation Strategy**: Parallel lesson generation using specialized content-implementer subagents
 - Each subagent received detailed context about its specific lesson
 - Fetched official Gemini CLI documentation from 7 source URLs
 - Applied appropriate lesson structure (conceptual, technical, or hybrid)
@@ -132,12 +132,12 @@ Successfully implemented complete Chapter 6: Gemini CLI—Installation and Basic
 - ✅ Impact: Complete Chapter 6 implementation with 6 publication-ready lessons covering Gemini CLI from motivation through strategic tool comparison; all user stories addressed; all functional requirements met; ready for technical review and publication
 - 🧪 Tests: All 9 domain skills applied appropriately per lesson type; Constitutional alignment verified (AI-first teaching, accessibility grade 7, show-then-explain, progressive complexity); User story mapping validated (all US1-US7 covered); Functional requirements validated (all FR-001 through FR-015 met); Output style compliance confirmed (conceptual, technical, and hybrid lesson structures followed)
 - 📁 Files: Created 7 files (1 README + 6 lessons) totaling ~15,050 words; Updated tasks.md marking T001-T007 complete; All files in book-source/docs/06-gemini-cli-installation-and-basics/
-- 🔁 Next prompts: Technical review of all 6 lessons using technical-reviewer or proof-validator subagent; Cross-platform command verification (test all installation and CLI commands on Windows, macOS, Linux); Integration verification with Chapter 5 (Claude Code) and preview Chapter 7 (GitHub Copilot); Docusaurus build validation; Optional: Create supplementary materials (cheat sheets, command reference, troubleshooting guide)
+- 🔁 Next prompts: Technical review of all 6 lessons using validation-auditor or factual-verifier subagent; Cross-platform command verification (test all installation and CLI commands on Windows, macOS, Linux); Integration verification with Chapter 5 (Claude Code) and preview Chapter 7 (GitHub Copilot); Docusaurus build validation; Optional: Create supplementary materials (cheat sheets, command reference, troubleshooting guide)
 - 🧠 Reflection: Parallel lesson generation with specialized subagents proved highly effective for educational content—each subagent maintained context for its specific lesson while applying all 9 domain skills appropriately. The hybrid approach (conceptual Lesson 1, technical Lessons 2-5, hybrid Lesson 6) provides natural pedagogical progression from motivation → hands-on → strategic thinking. Grounding content in official documentation (7 WebFetch calls) ensured technical accuracy. The 6-lesson structure successfully balances depth (2-3 hours total) with Part 2's goal of transforming learners from theory to capability. Key pedagogical wins: (1) Platform equality (Windows/macOS/Linux given equal treatment), (2) Security-first approach (OAuth, .gitignore, shell command warnings), (3) Strategic tool comparison without bias (honest tradeoffs between Gemini CLI and Claude Code), (4) Real-world scenarios (5 decision-making exercises in Lesson 6), (5) Progressive scaffolding (heavy support for installation, lighter for decision-making). All content publication-ready pending technical review.
 
 ## Evaluation notes (flywheel)
 
-- Failure modes observed: None—all 6 lesson-writer subagents completed successfully; tasks.md updated without errors; README created following established template
+- Failure modes observed: None—all 6 content-implementer subagents completed successfully; tasks.md updated without errors; README created following established template
 - Graders run and results (PASS/FAIL): Domain skills application—PASS (all 9 skills applied contextually per lesson type); Constitutional alignment—PASS (AI-first teaching, accessibility, show-then-explain, progressive complexity verified); User story mapping—PASS (all US1-US7 addressed across lessons); Functional requirements—PASS (all FR-001 through FR-015 met); Output style compliance—PASS (conceptual, technical, hybrid structures followed)
-- Prompt variant (if applicable): Standard /sp.implement with lesson-writer subagents; variation: parallel execution (6 subagents simultaneously) vs. sequential (common alternative); parallel approach saved ~2-3 hours of clock time
-- Next experiment (smallest change to try): Test single technical-reviewer subagent run on all 6 lessons simultaneously (validate holistic chapter coherence) vs. individual lesson validation (validate granular quality); hypothesis: holistic review may catch cross-lesson inconsistencies better; smallest test: run technical-reviewer on Lessons 1-3 as batch, compare findings to individual lesson review
+- Prompt variant (if applicable): Standard /sp.implement with content-implementer subagents; variation: parallel execution (6 subagents simultaneously) vs. sequential (common alternative); parallel approach saved ~2-3 hours of clock time
+- Next experiment (smallest change to try): Test single validation-auditor subagent run on all 6 lessons simultaneously (validate holistic chapter coherence) vs. individual lesson validation (validate granular quality); hypothesis: holistic review may catch cross-lesson inconsistencies better; smallest test: run validation-auditor on Lessons 1-3 as batch, compare findings to individual lesson review

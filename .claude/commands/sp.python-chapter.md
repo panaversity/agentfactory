@@ -409,7 +409,7 @@ Lessons MUST end with "Try With AI" section ONLY. Prompt 4 provides cognitive cl
 - Prepares for shipping era (professional AI-native development patterns)
 
 **Validation**:
-- technical-reviewer MUST check for CoLearning elements throughout
+- validation-auditor MUST check for CoLearning elements throughout
 - Missing 💬🎓🤝 = CRITICAL VIOLATION (regeneration required)
 - Documentation tone (not conversational) = MAJOR VIOLATION (revision required)
 
@@ -578,9 +578,9 @@ WAIT: User reviews tasks.md + analysis report
 → Invoke: /sp.implement [chapter-slug]
   ├─ Read: specs/part-4-chapter-[N]/spec.md + plan.md + tasks.md (all approved)
   ├─ Strategy: Parallel team approach (Lessons 1-4 parallel, Lesson 5 sequential capstone)
-  ├─ Invoke: lesson-writer subagent (per lesson) WITH EXPLICIT COLEARNING INSTRUCTIONS
-  ├─ Pass to lesson-writer:
-  │   CRITICAL INSTRUCTIONS FOR lesson-writer:
+  ├─ Invoke: content-implementer subagent (per lesson) WITH EXPLICIT COLEARNING INSTRUCTIONS
+  ├─ Pass to content-implementer:
+  │   CRITICAL INSTRUCTIONS FOR content-implementer:
   │
   │   Apply these domain skills IN THIS ORDER:
   │   1. ai-collaborate-teaching (CoLearning pedagogy THROUGHOUT lesson)
@@ -647,7 +647,7 @@ WAIT: User reviews tasks.md + analysis report
   │   └─ 05-[capstone-name].md (if applicable, with 💬🎓🤝 throughout)
   └─ Report: "All lessons implemented with CoLearning pedagogy."
 
-→ Invoke: technical-reviewer (Quality Gate)
+→ Invoke: validation-auditor (Quality Gate)
   ├─ Read: All lesson files
   ├─ Validate: AI-Native CoLearning compliance (💬🎓🤝 elements present throughout)
   ├─ Check: Conversational tone (not documentation style)
@@ -673,7 +673,7 @@ WAIT: User reviews tasks.md + analysis report
 
 → If CONDITIONAL PASS or FAIL:
   ├─ Apply fixes for critical issues (especially missing CoLearning elements)
-  ├─ Re-run technical-reviewer
+  ├─ Re-run validation-auditor
   └─ Repeat until PASS
 
 WAIT: User reviews lessons + validation report
@@ -976,7 +976,7 @@ chapter_intelligence = {
    ```
    Ready to implement?
 
-   A) Implement with lesson-writer subagent
+   A) Implement with content-implementer subagent
    B) Manual implementation (use tasks.md as checklist)
    C) Done for now (keep designs, skip implementation)
    ```
@@ -985,7 +985,7 @@ chapter_intelligence = {
 
 #### PHASE 4: Implementation (Optional) - Triggered Only If User Chooses A
 
-**THIS PHASE INVOKES lesson-writer subagent IF AND ONLY IF USER CHOOSES OPTION A**
+**THIS PHASE INVOKES content-implementer subagent IF AND ONLY IF USER CHOOSES OPTION A**
 
 1. **Prepare context** (Read all 3 approved artifacts):
    - Read: `specs/part-[P]-chapter-[N]/spec.md`
@@ -995,11 +995,11 @@ chapter_intelligence = {
    - Add: CEFR levels for validation
    - Add: Validation-first approach (test understanding before moving on)
 
-2. **Invoke lesson-writer subagent** (Only if user chose Option A):
+2. **Invoke content-implementer subagent** (Only if user chose Option A):
    ```
    Task(
-       subagent_type="lesson-writer",
-       prompt=prepare_lesson_writer_prompt(
+       subagent_type="content-implementer",
+       prompt=prepare_content_implementer_prompt(
            spec, plan, tasks,
            aidd_teaching_pattern=True,
            cefr_levels=True,
@@ -1008,15 +1008,15 @@ chapter_intelligence = {
    )
    ```
 
-3. **Wait for lesson-writer completion**:
+3. **Wait for content-implementer completion**:
    - ✅ `docs/part-[P]/chapter-[N]/{01,02,03,04}-lesson-*.md` created
    - ✅ Full AI-Native Learning methodology applied
    - ✅ AI partnership approach emphasized
 
-4. **Invoke technical-reviewer** (Automatic validation):
+4. **Invoke validation-auditor** (Automatic validation):
    ```
    Task(
-       subagent_type="technical-reviewer",
+       subagent_type="validation-auditor",
        prompt=f"""
        Validate Chapter {N}: {Title} with special focus on:
 
@@ -1055,7 +1055,7 @@ chapter_intelligence = {
    - Critical issues: MUST fix before proceeding
    - Major issues: SHOULD fix for quality
    - Minor issues: Optional improvements
-   - Re-run technical-reviewer after fixes
+   - Re-run validation-auditor after fixes
 
 6. **Final report**:
    ```
@@ -1116,7 +1116,7 @@ chapter_intelligence = {
 - ✅ Validation points defined
 - ✅ Lesson closure pattern specified (Try With AI ONLY)
 
-**PHASE 4 Validation** (before lesson-writer):
+**PHASE 4 Validation** (before content-implementer):
 - ✅ All 3 design files exist and are valid
 - ✅ User chose implementation option
 - ✅ Context filtered ruthlessly (no future chapters)
@@ -1124,7 +1124,7 @@ chapter_intelligence = {
 - ✅ Graduated teaching pattern clear
 - ✅ Ready for lesson content creation
 
-**PHASE 4 Post-Implementation Validation** (technical-reviewer):
+**PHASE 4 Post-Implementation Validation** (validation-auditor):
 - ✅ All lessons implement AI-Native Learning pattern
 - ✅ No SDD terminology used inappropriately
 - ✅ Lesson closure pattern followed (Try With AI ONLY)
@@ -1375,10 +1375,10 @@ All design artifacts approved:
 Invoking: /sp.implement 014-data-types
 
 📚 Implementing lessons with parallel team strategy...
-  → Lessons 1-4: Parallel (4 lesson-writer subagents)
+  → Lessons 1-4: Parallel (4 content-implementer subagents)
   → Lesson 5: Sequential (capstone after L1-4 complete)
 
-[lesson-writer subagents working...]
+[content-implementer subagents working...]
 
 ✅ All 5 lessons created:
   ✓ book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/readme.md
@@ -1390,7 +1390,7 @@ Invoking: /sp.implement 014-data-types
 
 ---
 
-🔍 Invoking technical-reviewer for validation...
+🔍 Invoking validation-auditor for validation...
 
 Validating AI-Native Learning compliance...
   ✓ 4-step pattern applied (describe → explore → validate → learn)
@@ -1425,7 +1425,7 @@ Applying automatic fix...
 
 ---
 
-🔍 Re-running technical-reviewer...
+🔍 Re-running validation-auditor...
 
 ✅ PASS: All requirements met
   - Lesson closure pattern compliant
@@ -1509,8 +1509,8 @@ Run `/sp.python-chapter [N]` and the system executes this opinionated workflow:
 ✅ Human review → Approval gate
 
 **PHASE 4: Implementation + Technical Review Gate**
-✅ `/sp.implement` → lesson-writer creates all lessons (parallel + sequential strategy)
-✅ `technical-reviewer` → Validates AI-Native Learning compliance, code quality, lesson closure
+✅ `/sp.implement` → content-implementer creates all lessons (parallel + sequential strategy)
+✅ `validation-auditor` → Validates AI-Native Learning compliance, code quality, lesson closure
 ✅ Auto-fix critical issues → Re-validate until PASS
 ✅ Human review → Final approval
 

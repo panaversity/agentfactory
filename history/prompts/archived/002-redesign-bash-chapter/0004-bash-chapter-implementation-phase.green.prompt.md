@@ -68,7 +68,7 @@ We will complete implementation
 - ✅ Impact: Initiated full lesson implementation; 2 foundation lessons complete (25% of chapter); both lessons establish dialogue-first pedagogy that subsequent lessons will build upon
 - 🧪 Tests: All pedagogical validations PASS (proficiency levels, cognitive load, format compliance, safety integration)
 - 📁 Files: 2 lesson files created in project directory; total chapter size starting (32 KB from 2 lessons)
-- 🔁 Next prompts: Continue with Lessons 3-8 implementation (can proceed in parallel or sequentially); technical-reviewer to validate pedagogical quality; minor adjustments based on learner feedback
+- 🔁 Next prompts: Continue with Lessons 3-8 implementation (can proceed in parallel or sequentially); validation-auditor to validate pedagogical quality; minor adjustments based on learner feedback
 - 🧠 Reflection: Foundation lessons successfully demonstrate dialogue-first innovation. Lesson 1 establishes workspace awareness; Lesson 2 establishes safety pattern that ALL subsequent lessons reinforce. Ready to scale lesson implementation.
 
 ## Evaluation notes (flywheel)

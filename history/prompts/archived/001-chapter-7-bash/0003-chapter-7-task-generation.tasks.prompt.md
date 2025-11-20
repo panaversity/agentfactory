@@ -85,7 +85,7 @@ Successfully generated comprehensive task breakdown for Chapter 7 organized by u
 - ✅ Impact: Complete implementation task breakdown ready for lesson content creation. Enables independent, parallel development of lessons with clear acceptance criteria and dependencies.
 - 🧪 Tests: Format validation passed (all 88 tasks), user story coverage verified (38+20+12=70 story tasks), parallel opportunities identified (42 [P] tasks)
 - 📁 Files: Created tasks.md with 88 tasks across 6 phases organized by user story priorities
-- 🔁 Next prompts: Ready for lesson implementation - use lesson-writer subagent to create content for lessons 1-8 following task breakdown. Start with MVP scope (T001-T046) for User Story 1.
+- 🔁 Next prompts: Ready for lesson implementation - use content-implementer subagent to create content for lessons 1-8 following task breakdown. Start with MVP scope (T001-T046) for User Story 1.
 - 🧠 Reflection: Task organization by user story enables true incremental delivery - each story represents complete, independently testable value. MVP (US1) delivers foundational command knowledge, US2 adds AI augmentation, US3 adds professional refinement. This aligns perfectly with book's progressive scaffolding philosophy.
 
 ## Evaluation notes (flywheel)
@@ -93,4 +93,4 @@ Successfully generated comprehensive task breakdown for Chapter 7 organized by u
 - Failure modes observed: None - task generation completed successfully with proper format and story organization
 - Graders run and results (PASS/FAIL): PASS - All 88 tasks validated for format compliance, story labels correct, file paths included, parallel opportunities identified
 - Prompt variant (if applicable): Standard /sp.tasks workflow with user story organization
-- Next experiment (smallest change to try): Implement first lesson (Lesson 1: Terminal Interface, tasks T009-T014) using lesson-writer subagent to validate task granularity is appropriate for content creation
+- Next experiment (smallest change to try): Implement first lesson (Lesson 1: Terminal Interface, tasks T009-T014) using content-implementer subagent to validate task granularity is appropriate for content creation

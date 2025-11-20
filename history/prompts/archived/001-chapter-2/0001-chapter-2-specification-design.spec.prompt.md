@@ -57,15 +57,15 @@ Successfully created comprehensive specification for Chapter 2: "Understanding A
 
 **Next Steps:**
 1. Invoke chapter-planner subagent to create lesson breakdown and task checklist
-2. Invoke lesson-writer subagent to write actual content
-3. Invoke technical-reviewer subagent to validate against constitution and quality standards
+2. Invoke content-implementer subagent to write actual content
+3. Invoke validation-auditor subagent to validate against constitution and quality standards
 
 ## Outcome
 
 - ✅ Impact: Comprehensive specification created that bridges Chapter 1's mindset shift with Chapter 3's hands-on setup; provides clear roadmap for implementing Chapter 2 content
 - 🧪 Tests: Specification includes 10 measurable success criteria and 4 user stories with acceptance scenarios to validate learning outcomes
 - 📁 Files: Created specs/001-chapter-2/spec.md (approximately 8,500 words) and feature branch 001-chapter-2
-- 🔁 Next prompts: (1) Invoke chapter-planner subagent with approved spec, (2) Review stakeholder questions for final direction, (3) Execute lesson-writer workflow
+- 🔁 Next prompts: (1) Invoke chapter-planner subagent with approved spec, (2) Review stakeholder questions for final direction, (3) Execute content-implementer workflow
 - 🧠 Reflection: Specification successfully synthesizes two distinct source documents (academic paper + developer narrative) into unified pedagogical approach; concept hierarchy and risk mitigation strategies provide strong foundation for implementation phase
 
 ## Evaluation notes (flywheel)

@@ -275,13 +275,13 @@ Measurable Target: "90%+ of readers can explain (in own words) without prompting
 
 ### Phase 4: Lesson-Writer Phase (Invoke Subagent)
 **Input**: chapter-NN-plan.md (from Phase 3)
-**Subagent**: lesson-writer (iterative)
+**Subagent**: content-implementer (iterative)
 **Output**: Complete lesson content
 **Process**: Write one lesson at a time, review, refine, approve
 
 ### Phase 5: Validation Phase (Invoke Subagent)
 **Input**: Completed chapter (from Phase 4)
-**Subagent**: technical-reviewer
+**Subagent**: validation-auditor
 **Output**: Validation report
 **Checks**: Code correctness, pedagogical effectiveness, Constitution alignment
 

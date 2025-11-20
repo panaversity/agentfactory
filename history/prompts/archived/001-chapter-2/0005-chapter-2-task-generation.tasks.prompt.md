@@ -64,7 +64,7 @@ Generated comprehensive implementation task checklist for Chapter 2 with **50 ta
 - Independent test criteria for each lesson
 
 **User Guidance Integration**:
-- Each lesson phase assigned to lesson-writer subagent
+- Each lesson phase assigned to content-implementer subagent
 - Domain skills explicitly noted for each task type
 - Simple English and concise structure emphasized throughout
 
@@ -72,15 +72,15 @@ Generated comprehensive implementation task checklist for Chapter 2 with **50 ta
 
 ## Outcome
 
-- ✅ Impact: 50-task implementation checklist ready for lesson-writer subagent execution; all 4 user stories mapped with independent testability; 22 parallelizable tasks identified enabling 4x speedup with team collaboration
+- ✅ Impact: 50-task implementation checklist ready for content-implementer subagent execution; all 4 user stories mapped with independent testability; 22 parallelizable tasks identified enabling 4x speedup with team collaboration
 - 🧪 Tests: Each lesson phase includes independent test criteria (Quick Checks for US1-US4); MVP scope defined (Lesson 1 = 23h minimum viable chapter)
 - 📁 Files: Created specs/001-chapter-2/tasks.md (8,006 words, 975 lines) and context/TASK_GENERATION_REPORT.md (comprehensive analysis)
-- 🔁 Next prompts: (1) Review and approve tasks.md checklist, (2) Invoke lesson-writer subagent for Phase 1-2 (setup + foundation), (3) Assign lesson writers to Phases 3-6 (4 lessons in parallel), (4) Execute Phase 8 quality review after content complete
-- 🧠 Reflection: Chapter-planner subagent successfully orchestrated task generation with explicit domain skill attribution per user request; lesson-by-lesson organization enables parallel execution with 4 separate lesson-writer subagents; visual placeholder strategy integrated into tasks ensures non-blocking workflow; 64-hour estimate provides realistic timeline for single developer (8 days) or team (2 days with 4 writers)
+- 🔁 Next prompts: (1) Review and approve tasks.md checklist, (2) Invoke content-implementer subagent for Phase 1-2 (setup + foundation), (3) Assign lesson writers to Phases 3-6 (4 lessons in parallel), (4) Execute Phase 8 quality review after content complete
+- 🧠 Reflection: Chapter-planner subagent successfully orchestrated task generation with explicit domain skill attribution per user request; lesson-by-lesson organization enables parallel execution with 4 separate content-implementer subagents; visual placeholder strategy integrated into tasks ensures non-blocking workflow; 64-hour estimate provides realistic timeline for single developer (8 days) or team (2 days with 4 writers)
 
 ## Evaluation notes (flywheel)
 
 - Failure modes observed: None; task generation succeeded with all requirements met (50 tasks, 8 domain skills, 4 user stories, parallelization opportunities)
 - Graders run and results (PASS/FAIL): Format validation PASS (all 50 tasks follow `[ID] [P?] [Story] Description` specification); Domain skill coverage PASS (8/8 skills applied with explicit attribution); User story mapping PASS (all 4 stories independently testable)
 - Prompt variant (if applicable): Standard /sp.tasks with user-specified customization: "use the domain skills you have for each task and assign each lesson to a separate lesson-planner subagent"
-- Next experiment (smallest change to try): Consider whether task granularity (50 tasks for 4 lessons) is optimal, or if lesson-writer subagents would benefit from fewer high-level tasks with more autonomy in breaking down implementation details (current approach: prescriptive checklist vs. alternative: goal-oriented delegation)
+- Next experiment (smallest change to try): Consider whether task granularity (50 tasks for 4 lessons) is optimal, or if content-implementer subagents would benefit from fewer high-level tasks with more autonomy in breaking down implementation details (current approach: prescriptive checklist vs. alternative: goal-oriented delegation)
