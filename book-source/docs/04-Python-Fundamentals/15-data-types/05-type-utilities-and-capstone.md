@@ -668,7 +668,7 @@ value3 = 3.14
 value4 = True
 value5 = None
 
-print("=== Type Inspection Results ===\\n")
+print("=== Type Inspection Results ===\n")
 
 # Analyze value1
 print(f"Value: {value1}")
@@ -716,7 +716,7 @@ back_to_str: str = str(as_float)
 print(f"Back to string: '{back_to_str}' (type: {type(back_to_str).__name__})")
 
 # Compare original vs final
-print(f"\\nOriginal: '{original}'")
+print(f"\nOriginal: '{original}'")
 print(f"Final: '{back_to_str}'")
 print(f"Same value? {original == back_to_str}")
 
