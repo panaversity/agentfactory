@@ -152,7 +152,7 @@ print(f"Square root of 16: {math.sqrt(16)}")`}
 
 ⚠️ **No Network Requests** - Cannot make HTTP requests from the browser
 
-⚠️ **Single-threaded** - Uses web workers internally (no multi-threading)
+⚠️ **Single-threaded** - Executes in main thread (no multi-threading)
 
 ⚠️ **Performance** - Pyodide initialization takes ~2-5 seconds on first load
 
@@ -169,15 +169,15 @@ print(f"Square root of 16: {math.sqrt(16)}")`}
 
 The `InteractivePython` component uses:
 
-1. **react-py** - React hooks for Python execution
-2. **Pyodide** - CPython compiled to WebAssembly
-3. **Web Workers** - Runs Python in background threads
+1. **Pyodide** - CPython compiled to WebAssembly
+2. **Monaco Editor** - Code editor with syntax highlighting
+3. **Custom Pyodide singleton** - Manages Python runtime initialization and execution
 
 This means:
 - No compilation needed on the user's machine
 - No server-side execution (everything is client-side)
 - Works offline once loaded
-- Zero latency for simple programs
+- Executes in the main thread (no separate workers)
 
 ## Tips for Educational Content
 
@@ -227,8 +227,6 @@ Students can:
 ## Future Enhancements
 
 Planned features for the component:
-- [ ] Line numbers in code editor
-- [ ] Syntax highlighting in editor
 - [ ] Code sharing/export
 - [ ] Async/await support
 - [ ] Package installation UI
