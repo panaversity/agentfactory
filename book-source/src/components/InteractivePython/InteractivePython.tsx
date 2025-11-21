@@ -25,7 +25,7 @@ import Editor from '@monaco-editor/react';
 import { usePyodide } from '@/contexts/PyodideContext';
 import styles from './styles.module.css';
 
-interface InteractivePythonProps {
+export interface InteractivePythonProps {
   initialCode?: string;
   language?: string;
   title?: string;
