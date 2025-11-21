@@ -1,227 +1,340 @@
 ---
-title: "Comparison Operators — Making True/False Decisions"
-chapter: 15
-lesson: 2
-duration_minutes: 50
-
-# HIDDEN SKILLS METADATA (Institutional Integration Layer)
-skills:
-  - name: "Comparison Logic with Type Awareness"
-    proficiency_level: "A2"
-    category: "Technical"
-    bloom_level: "Understand + Apply"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can write comparisons like 5 > 3, x == y, predict True/False results, explain why 5 == 5.0 gives True"
-
-  - name: "Boolean Results and Type Validation"
-    proficiency_level: "A2"
-    category: "Technical"
-    bloom_level: "Understand"
-    digcomp_area: "Digital Content Creation"
-    measurable_at_this_level: "Student can verify comparisons return bool type using type(), understand True/False as values not strings"
-
-  - name: "Preparing for Conditional Logic (Chapter 19 Foundation)"
-    proficiency_level: "A2"
-    category: "Conceptual"
-    bloom_level: "Understand"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can explain why comparisons precede if statements in Chapter 19 and give examples"
-
-learning_objectives:
-  - objective: "Understand what each comparison operator (==, !=, >, <, >=, <=) does"
-    proficiency_level: "A2"
-    bloom_level: "Understand"
-    assessment_method: "Explanation of operators; code predictions"
-
-  - objective: "Apply comparison operators correctly to evaluate expressions and predict True/False results"
-    proficiency_level: "A2"
-    bloom_level: "Apply"
-    assessment_method: "Write comparisons; predict outcomes; verify with type()"
-
-cognitive_load:
-  new_concepts: 5
-  assessment: "5 new concepts (equality comparison, magnitude comparison, combined comparison, boolean result type, value vs type equality) within A2 limit of 7 ✓"
-
-differentiation:
-  extension_for_advanced: "Explore type coercion in comparisons; ask AI about why True == 1 and False == 0; investigate string comparison (lexicographic ordering)"
-  remedial_for_struggling: "Start with simple integer comparisons (5 > 3); practice each operator in isolation before combining; use concrete numbers before variables"
-
-# Generation metadata
-generated_by: "content-implementer v3.0.0"
-source_spec: "specs/part-4-chapter-17/spec.md"
-created: "2025-11-08"
-last_modified: "2025-11-08"
-git_author: "Claude Code"
-workflow: "content-implementer subagent"
-version: "1.0.0"
+title: "Comparison Operators"
+sidebar_position: 2
 ---
 
-# Comparison Operators — Making True/False Decisions
+# Comparison Operators
 
-Now that you can do math with arithmetic operators, it's time to ask questions. Can I compare two values? Is 10 bigger than 5? Are these two numbers the same? Comparison operators let you answer these questions. Instead of doing math and getting a number back, comparisons return True or False—answers to yes/no questions.
+## What You'll Learn
 
-Think of comparison operators like a referee in a game: they look at two things, make a judgment, and give you an answer: "True" (yes, this condition is met) or "False" (no, it's not).
+- Six Comparison Operators
+- Equality vs Assignment
+- Greater/Less Than Comparisons
+- Boolean Results
+- Common Comparison Patterns
 
-## What It Is: Asking True/False Questions
+## The Problem
 
-A **comparison operator** evaluates whether a condition is true or false. When you write `5 > 3`, you're asking Python: "Is 5 greater than 3?" Python answers: "True."
+You're building a login system. The user enters a password, and you need to check: does it match the stored password? You're not calculating anything—you're asking a yes/no question. Is this equal to that?
 
-Python has **six comparison operators**:
+## Why You Need Comparison Operators
 
-- `==` **Equality** — Are these values the same?
-- `!=` **Not equal** — Are these values different?
-- `>` **Greater than** — Is the left side bigger?
-- `<` **Less than** — Is the left side smaller?
-- `>=` **Greater than or equal** — Is the left side bigger or the same?
-- `<=` **Less than or equal** — Is the left side smaller or the same?
+Comparison operators ask questions and return answers: `True` or `False`. Without these operators, you couldn't:
 
-All comparisons return a **boolean value**: either `True` or `False`. This is different from arithmetic operators, which return numbers. Comparisons return yes/no answers.
+- Check if a password matches
+- Verify if a user is old enough
+- Test if a value is within a range
+- Make any decisions in your code
 
-## The Six Comparison Operators
+Every comparison in Python gives you one of two values: `True` or `False`. Let's discover how to ask these questions.
 
-Let's see all six in action. Each one asks a different question about two values.
+## Discovery: How Do You Ask Questions in Python?
 
-### Equality and Inequality: Are They the Same?
-
-```python
-# Equality: asking if values are the same
-x: int = 10
-y: int = 5
-
-equal: bool = x == y            # False - 10 is not equal to 5
-print(f"{x} == {y}: {equal}")   # 10 == 5: False
-
-# Inequality: asking if values are different
-not_equal: bool = x != y        # True - 10 is different from 5
-print(f"{x} != {y}: {not_equal}")  # 10 != 5: True
-
-# Type verification - comparisons return bool
-print(f"Type of result: {type(equal)}")  # <class 'bool'>
-```
-
-Important distinction: In Lesson 1, we saw that `=` assigns a value to a variable. Here, `==` compares two values. One `=` stores; two `==` compare. This is a common mistake, so remember it well.
-
-#### 💬 AI Colearning Prompt
-
-> "Why does Python use = for assignment but == for equality checking? Compare this to other programming languages. Why is this distinction important?"
-
-Notice that we're asking AI to explain the **design choice** behind the operators, not just what they do. This helps you understand Python's thinking, not memorize syntax.
-
-### Magnitude Comparisons: Which is Bigger?
+**Problem**: You're checking if a user is old enough to vote. Voting age is 18, user is 16. How do you ask "Is 16 greater than or equal to 18?"
 
 ```python
-# Greater than and less than
-x: int = 10
-y: int = 5
+user_age = 16
+voting_age = 18
 
-greater: bool = x > y           # True - 10 is greater than 5
-print(f"{x} > {y}: {greater}")  # 10 > 5: True
-
-less: bool = x < y              # False - 10 is NOT less than 5
-print(f"{x} < {y}: {less}")     # 10 < 5: False
-
-# Greater than or equal, less than or equal
-greater_equal: bool = x >= y    # True - 10 is greater than or equal to 5
-print(f"{x} >= {y}: {greater_equal}")  # 10 >= 5: True
-
-less_equal: bool = x <= y       # False - 10 is NOT less than or equal to 5
-print(f"{x} <= {y}: {less_equal}")     # 10 <= 5: False
-
-# What about comparing a value with itself?
-same: bool = x >= x             # True - 10 is equal to 10
-print(f"{x} >= {x}: {same}")    # 10 >= 10: True
+# Your prediction: What will this return?
+can_vote = user_age >= voting_age
+print(can_vote)
 ```
 
-The operators `>`, `<`, `>=`, `<=` compare magnitude—which value is bigger. They answer: "Is the left side bigger, smaller, or equal?" The `=` in `>=` and `<=` means "or equal to," so `10 >= 10` is True (they're equal).
+**Run it.** You get `False`. The `>=` operator asks "is left side greater than or equal to right side?" and returns the answer.
 
-#### 🎓 Expert Insight
-
-> In AI-native development, you don't memorize the difference between `>` and `>=`. You think: "Do I want to include the equal case or not?" Then you use the operator that matches your intent. If you're uncertain, you ask AI: "Should I use > or >= here?" and let AI help you reason through the condition.
-
-### Value Equality vs. Type Equality
-
-Here's something that surprises many beginners: Python compares **values**, not types.
+Now try other comparisons:
 
 ```python
-# Integer 5 and float 5.0 are VALUE-equal (but different types)
-int_five: int = 5
-float_five: float = 5.0
+# Experiment: Try each comparison
+a = 10
+b = 5
 
-# These have different types
-type_different: bool = type(int_five) != type(float_five)  # True - types differ
-print(f"Types are different: {type_different}")  # True
-
-# But the VALUES are equal
-values_equal: bool = int_five == float_five     # True - values are the same
-print(f"Values are equal: {values_equal}")      # True
-
-# String "5" is NOT equal to integer 5
-string_five: str = "5"
-string_int_compare: bool = int_five == string_five  # False - different types AND values
-
-print(f"5 == 5.0: {int_five == float_five}")   # True (value equality)
-print(f"5 == '5': {int_five == string_five}")  # False (different types)
+print(a == b)   # Equal to - what do you get?
+print(a != b)   # Not equal to
+print(a > b)    # Greater than
+print(a < b)    # Less than
 ```
 
-This is crucial: `5 == 5.0` returns True because the **values** are the same, even though one is int and one is float. But `5 == "5"` returns False because "5" is text, not a number.
+**What did you discover?**
+- `==` checks equality (False - 10 is not equal to 5)
+- `!=` checks inequality (True - 10 is different from 5)
+- `>` checks greater than (True - 10 is greater than 5)
+- `<` checks less than (False - 10 is not less than 5)
 
-#### 🤝 Practice Exercise
+**Important**: Notice `==` uses two equals signs. One `=` assigns a value, two `==` compares values. This is a common mistake.
 
-> **Ask your AI**: "I'm confused about why 5 == 5.0 is True, but 5 == '5' is False. Explain value equality vs. type equality. When does Python care about types vs. just values in comparisons?"
+## Discovery: The Six Comparison Operators
 
-**Expected Outcome**: You'll understand that `==` checks if values are the same (regardless of type in most cases), but type mismatches between completely different types (int vs. string) make them not equal. You'll see how Python's flexibility can be useful but also requires careful thinking.
+### Equality and Inequality
 
-### Comparisons in Real Scenarios
+**Problem**: You're verifying a PIN code. User entered 1234, correct PIN is 1234. Do they match?
 
 ```python
-# Real scenario: Checking age eligibility
-user_age: int = 16
-voting_age: int = 18
-driving_age: int = 16
+entered_pin = 1234
+correct_pin = 1234
 
-can_vote: bool = user_age >= voting_age       # False (16 is not >= 18)
-can_drive: bool = user_age >= driving_age     # True (16 is >= 16)
-
-print(f"Can vote: {can_vote}")                 # False
-print(f"Can drive: {can_drive}")               # True
-
-# Another real scenario: Password length
-password: str = "SecurePass123"
-min_length: int = 8
-
-is_long_enough: bool = len(password) >= min_length  # True
-print(f"Password meets length requirement: {is_long_enough}")
-
-# Checking if values are in a specific range (prepare for logical operators in Lesson 3)
-test_score: int = 85
-passing_score: int = 70
-perfect_score: int = 100
-
-is_passing: bool = test_score >= passing_score  # True
-is_perfect: bool = test_score == perfect_score  # False
-is_valid: bool = test_score <= perfect_score    # True (score can't exceed 100)
+# Check if they match
+is_correct = entered_pin == correct_pin
+print(is_correct)  # What do you get?
 ```
 
-## Why Comparisons Matter for Chapter 19
+You get `True`. Now check the opposite:
 
-You might wonder: "Why are we learning comparisons separately from if statements?" The answer is that comparisons are **building blocks**. In Chapter 19, you'll learn control flow: making decisions with `if` statements. When you write `if x > 5:`, that `x > 5` is a comparison operator at work. By mastering comparisons now, Chapter 19 will feel natural—you'll already understand how to ask True/False questions.
+```python
+# Check if they're different
+is_wrong = entered_pin != correct_pin
+print(is_wrong)  # What do you get?
+```
 
----
+You get `False`. They're not different—they match.
+
+**Pattern discovered**: `==` returns True if values match, `!=` returns True if values differ.
+
+### Greater Than and Less Than
+
+**Problem**: You're checking temperature thresholds. Current temp is 75°F. Is it above the 70°F comfort threshold?
+
+```python
+current_temp = 75
+comfort_threshold = 70
+
+# Is it warmer than the threshold?
+is_warm = current_temp > comfort_threshold
+print(is_warm)  # What do you get?
+```
+
+You get `True`. Now check if it's below freezing:
+
+```python
+freezing = 32
+
+is_freezing = current_temp < freezing
+print(is_freezing)  # What do you get?
+```
+
+You get `False`. 75 is not less than 32.
+
+### Greater/Less Than OR Equal
+
+**Problem**: You're checking if someone qualifies for a discount. Must be 65 or older.
+
+```python
+customer_age = 65
+discount_age = 65
+
+# Does 65 qualify? (must be 65 OR older)
+qualifies = customer_age >= discount_age
+print(qualifies)  # What do you get?
+```
+
+You get `True`. The `>=` includes the equal case.
+
+**Try it**: What if customer_age is 64? What about 66?
+
+```python
+# Experiment with different ages
+print(64 >= 65)  # ?
+print(65 >= 65)  # ?
+print(66 >= 65)  # ?
+```
+
+**Pattern discovered**: `>=` and `<=` include the equal case, `>` and `<` exclude it.
+
+## Reference Table: All Six Operators
+
+| Operator | Name | Example | Result | Question Asked |
+|----------|------|---------|--------|----------------|
+| `==` | Equal | `5 == 5` | `True` | Are they the same? |
+| `!=` | Not equal | `5 != 3` | `True` | Are they different? |
+| `>` | Greater than | `5 > 3` | `True` | Is left bigger? |
+| `<` | Less than | `5 < 3` | `False` | Is left smaller? |
+| `>=` | Greater or equal | `5 >= 5` | `True` | Is left bigger or same? |
+| `<=` | Less or equal | `5 <= 3` | `False` | Is left smaller or same? |
+
+## Discovery: Comparisons Always Return Booleans
+
+Every comparison returns either `True` or `False`—these are called **boolean values**.
+
+```python
+# All comparisons return True or False
+result1 = 10 > 5
+result2 = 10 < 5
+
+print(result1)        # True
+print(result2)        # False
+print(type(result1))  # What type is this?
+```
+
+You get `<class 'bool'>`. Boolean is Python's type for True/False values.
+
+**Why this matters**: In Chapter 18, you'll use these True/False values to make decisions with `if` statements. The comparison gives you the answer, the `if` acts on it.
+
+## Discovery: Value Equality Surprises
+
+**Problem**: Is the integer 5 equal to the float 5.0?
+
+```python
+int_five = 5
+float_five = 5.0
+
+# Predict: True or False?
+print(int_five == float_five)
+```
+
+**Surprising result**: You get `True`. Python compares **values**, not types. 5 and 5.0 represent the same value.
+
+Now try this:
+
+```python
+int_five = 5
+string_five = "5"
+
+# Predict: True or False?
+print(int_five == string_five)
+```
+
+You get `False`. The string "5" is text, not a number—completely different values.
+
+**Pattern discovered**:
+- Same value, different numeric types → `True` (5 == 5.0)
+- Different value types entirely → `False` (5 == "5")
+
+## Practice: Solve Real Problems
+
+### Challenge 1: Age Verification
+
+You're building an age gate for a website. Check multiple age thresholds:
+
+```python
+user_age = 17
+
+# Voting (18+)
+can_vote = user_age >= 18
+print(f"Can vote: {can_vote}")
+
+# Driving (16+)
+can_drive = user_age >= 16
+print(f"Can drive: {can_drive}")
+
+# Senior discount (65+)
+is_senior = user_age >= 65
+print(f"Senior discount: {is_senior}")
+```
+
+**Change the age**: Try 18, 65, and 15. What changes?
+
+### Challenge 2: Password Checker
+
+You're validating a password. But first, you need to know how long it is.
+
+**The `len()` function**: Python has a built-in function called `len()` that counts characters in a string (or items in a list). It returns a number.
+
+```python
+# len() counts characters
+password = "secret123"
+length = len(password)
+print(length)  # 9
+```
+
+Now use it with comparisons:
+
+```python
+password = "secret123"
+min_length = 8
+stored_password = "secret123"
+
+# Is it long enough?
+long_enough = len(password) >= min_length
+print(f"Long enough: {long_enough}")
+
+# Does it match?
+matches = password == stored_password
+print(f"Matches stored: {matches}")
+
+# Is it too short?
+too_short = len(password) < min_length
+print(f"Too short: {too_short}")
+```
+
+**Try it**: What if password is "abc"? What if it's "wrongpassword"?
+
+### Challenge 3: Score Checker
+
+You're grading a test. Check various thresholds:
+
+```python
+score = 85
+passing = 70
+perfect = 100
+
+# Did they pass?
+passed = score >= passing
+print(f"Passed: {passed}")
+
+# Perfect score?
+is_perfect = score == perfect
+print(f"Perfect: {is_perfect}")
+
+# Failed?
+failed = score < passing
+print(f"Failed: {failed}")
+```
+
+## Common Mistakes
+
+**Mistake 1: Using `=` instead of `==`**
+
+```python
+# Wrong: This assigns, doesn't compare
+x = 5
+# if x = 5:  # SyntaxError!
+
+# Right: Use == to compare
+if x == 5:
+    print("x is 5")
+```
+
+**Mistake 2: Confusing `>` and `>=`**
+
+```python
+age = 18
+limit = 18
+
+# Wrong: Excludes exactly 18
+print(age > limit)   # False
+
+# Right: Includes 18
+print(age >= limit)  # True
+```
+
+**Mistake 3: Expecting string-number equality**
+
+```python
+# Wrong assumption: "5" equals 5
+print("5" == 5)  # False - string is not a number
+
+# Right: Convert first if needed
+print(int("5") == 5)  # True
+```
 
 ## Try With AI
 
-Ready to master comparison operators and understand why = is different from ==?
+**Explore edge cases:**
+> "What happens when I compare True to 1 and False to 0? Are booleans secretly numbers in Python?"
 
-**🔍 Explore Comparison Operators:**
-> "Explain the 6 comparison operators: `==`, `!=`, `>`, `<`, `>=`, `<=`. For each, show me 2 examples with numbers and explain the True/False result. Why does Python use == for comparison but = for assignment? Show me what happens if I accidentally write if x = 5: instead of if x == 5:"
+**Solve a real problem:**
+> "I'm building a thermostat. I need to check if temperature is below 60 (turn on heat), above 75 (turn on AC), or between (do nothing). What comparisons do I need?"
 
-**🎯 Practice Comparison Logic:**
-> "Create a movie ticket checker: movie_age_rating = 13, user_age = 12. Write comparisons to check: (1) if user can watch (user_age >= movie_age_rating), (2) if user is too young (user_age < movie_age_rating), (3) if ages are exactly equal (user_age == movie_age_rating). For each, predict True or False, then verify with code."
+**Understand the difference:**
+> "Explain why `=` and `==` exist as separate operators. Show me what goes wrong if I accidentally use the wrong one."
 
-**🧪 Test Type Comparison Edge Cases:**
-> "Test these comparisons and explain which return True: (1) 5 == 5.0 (int vs. float), (2) '5' == 5 (string vs. int), (3) True == 1 (bool vs. int), (4) False == 0 (bool vs. int). Why does Python treat some cross-type comparisons as equal but not others? Show me the type() of each value."
+## What You Discovered
 
-**🚀 Apply to Your Validation:**
-> "I'm building [describe your application]. Help me write comparison logic for: age restrictions, price checks, quota limits, version compatibility, or other validation rules. For each condition, show me the correct comparison operator and explain why that operator is the right choice."
+- Python has 6 comparison operators: `==`, `!=`, `>`, `<`, `>=`, `<=`
+- All comparisons return `True` or `False` (boolean values)
+- `=` assigns, `==` compares (common mistake!)
+- `>=` and `<=` include the equal case
+- Python compares values, not types (5 == 5.0 is True)
 
----
+**Next**: You'll discover logical operators—how to combine multiple True/False values with `and`, `or`, and `not`.
