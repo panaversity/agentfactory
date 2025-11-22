@@ -12,51 +12,77 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 36px;
-  padding: 0 12px;
+  height: 40px;
+  padding: 0 14px;
   background: #f9fafb;
   border-bottom: 1px solid #e5e7eb;
   border-left: none;
 }
 
+.titleContainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 1;
+  min-width: 0;
+  cursor: help;
+}
+
+.titleIcon {
+  flex-shrink: 0;
+  color: #16a34a;
+  width: 18px;
+  height: 18px;
+}
+
 .title {
   margin: 0;
   padding: 0;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.025em;
   color: #111827;
   text-transform: uppercase;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-width: 0;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   line-height: 1;
 }
 
-.iconButtons {
+.buttonGroup {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   align-items: center;
   margin-left: auto;
 }
 
 .iconButton {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
-  background: transparent;
-  border-radius: 5px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 6px;
   cursor: pointer;
   color: #6b7280;
   transition: all 0.2s ease;
   padding: 0;
+  flex-shrink: 0;
 }
 
 .iconButton:hover:not(:disabled) {
   background: #f3f4f6;
   color: #111827;
+  border-color: #d1d5db;
+}
+
+.iconButton:active:not(:disabled) {
+  background: #e5e7eb;
+  transform: scale(0.95);
 }
 
 .iconButton:disabled {
@@ -64,29 +90,36 @@
   cursor: not-allowed;
 }
 
-.playButton {
-  width: 28px;
-  height: 28px;
+.runButton {
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   border: none;
   background: #16a34a;
   border-radius: 6px;
   cursor: pointer;
   color: white;
   transition: all 0.2s ease;
-  padding: 0;
-  font-size: 0;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 500;
+  flex-shrink: 0;
 }
 
-.playButton:hover:not(:disabled) {
+.runButton:hover:not(:disabled) {
   background: #15803d;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
 }
 
-.playButton:disabled {
+.runButton:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.2);
+}
+
+.runButton:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
@@ -150,18 +183,12 @@
 
 /* Output Section */
 .outputSection {
-  padding: 16px;
+  display: flex;
+  flex-direction: column;
   background: #f9fafb;
   border-top: 1px solid #e5e7eb;
-  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
-  font-size: 13px;
-  line-height: 1.6;
-  color: #374151;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  word-break: break-word;
   max-height: 400px;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .outputSection.hasError {
@@ -169,9 +196,74 @@
   border-top-color: #fca5a5;
 }
 
-.outputContent {
-  margin: 0;
+.outputHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 36px;
+  padding: 0 14px;
+  border-bottom: 1px solid #e5e7eb;
+  background: inherit;
+  flex-shrink: 0;
+}
+
+.outputSection.hasError .outputHeader {
+  border-bottom-color: #fca5a5;
+}
+
+.outputLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.outputSection.hasError .outputLabel {
+  color: #dc2626;
+}
+
+.outputActions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.outputActionBtn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s ease;
   padding: 0;
+}
+
+.outputActionBtn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #111827;
+}
+
+.outputSection.hasError .outputActionBtn {
+  color: #dc2626;
+}
+
+.outputSection.hasError .outputActionBtn:hover {
+  background: rgba(220, 38, 38, 0.1);
+}
+
+.outputContent {
+  flex: 1;
+  padding: 12px 14px;
+  overflow-y: auto;
+  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 .outputText {
@@ -179,6 +271,7 @@
   color: #374151;
   white-space: pre-wrap;
   word-wrap: break-word;
+  word-break: break-word;
 }
 
 .errorText {
@@ -203,13 +296,33 @@
   color: #e0e0e0;
 }
 
+[data-theme="dark"] .titleIcon {
+  color: #10b981;
+}
+
 [data-theme="dark"] .iconButton {
+  background: #2d2d2d;
+  border-color: #444;
   color: #9ca3af;
 }
 
 [data-theme="dark"] .iconButton:hover:not(:disabled) {
-  background: #2d2d2d;
+  background: #3d3d3d;
   color: #f3f4f6;
+  border-color: #555;
+}
+
+[data-theme="dark"] .iconButton:active:not(:disabled) {
+  background: #444;
+}
+
+[data-theme="dark"] .runButton {
+  background: #16a34a;
+}
+
+[data-theme="dark"] .runButton:hover:not(:disabled) {
+  background: #15803d;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
 }
 
 [data-theme="dark"] .editorWrapper {
@@ -229,6 +342,39 @@
   border-top-color: #dc2626;
 }
 
+[data-theme="dark"] .outputHeader {
+  border-bottom-color: #444;
+}
+
+[data-theme="dark"] .outputSection.hasError .outputHeader {
+  border-bottom-color: #dc2626;
+}
+
+[data-theme="dark"] .outputLabel {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .outputSection.hasError .outputLabel {
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .outputActionBtn {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .outputActionBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f3f4f6;
+}
+
+[data-theme="dark"] .outputSection.hasError .outputActionBtn {
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .outputSection.hasError .outputActionBtn:hover {
+  background: rgba(252, 165, 165, 0.1);
+}
+
 [data-theme="dark"] .outputText {
   color: #e0e0e0;
 }
@@ -240,26 +386,56 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .header {
-    height: 32px;
-    padding: 0 10px;
+    height: 40px;
+    padding: 0 12px;
+    gap: 6px;
+  }
+
+  .titleContainer {
+    gap: 5px;
+  }
+
+  .titleIcon {
+    width: 16px;
+    height: 16px;
   }
 
   .title {
-    font-size: 10px;
+    font-size: 11px;
+  }
+
+  .buttonGroup {
+    gap: 6px;
   }
 
   .iconButton {
+    width: 30px;
+    height: 30px;
+  }
+
+  .runButton {
+    height: 30px;
+    padding: 0 10px;
+    font-size: 12px;
+    gap: 4px;
+  }
+
+  .outputHeader {
+    height: 34px;
+    padding: 0 12px;
+  }
+
+  .outputLabel {
+    font-size: 10px;
+  }
+
+  .outputContent {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .outputActionBtn {
     width: 26px;
     height: 26px;
-  }
-
-  .playButton {
-    width: 28px;
-    height: 28px;
-  }
-
-  .outputSection {
-    padding: 12px;
-    font-size: 12px;
   }
 }
