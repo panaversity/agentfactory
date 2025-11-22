@@ -22,6 +22,7 @@
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Editor from '@monaco-editor/react';
+import { RotateCcw, Copy, Zap, Code } from 'lucide-react';
 import { usePyodide } from '@/contexts/PyodideContext';
 import styles from './styles.module.css';
 
@@ -31,34 +32,6 @@ export interface InteractivePythonProps {
   title?: string;
   showLineNumbers?: boolean;
 }
-
-/**
- * Play Icon Component
- */
-const PlayIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
-    <path d="M2.5 1.5v11l9-5.5-9-5.5z" />
-  </svg>
-);
-
-/**
- * Refresh Icon Component
- */
-const RefreshIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
-    <path d="M7 1a6 6 0 1 0 6 6h1a7 7 0 1 1-7-7zm.5 1.5v3h3v-1H8.5V2.5h-1z" />
-  </svg>
-);
-
-/**
- * Copy Icon Component
- */
-const CopyIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
-    <path d="M3 1a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V1z" />
-    <path d="M1 3a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2H5a2 2 0 0 1-2-2V3a2 2 0 0 0-2-2z" />
-  </svg>
-);
 
 export const InteractivePython: React.FC<InteractivePythonProps> = ({
   initialCode = 'print("Hello, World!")',
@@ -145,38 +118,56 @@ export const InteractivePython: React.FC<InteractivePythonProps> = ({
     }
   };
 
+  const handleClearOutput = () => {
+    setOutput('');
+    setError('');
+  };
+
+  const handleCopyOutput = async () => {
+    const outputText = error || output;
+    try {
+      await navigator.clipboard.writeText(outputText);
+    } catch (err) {
+      console.error('Failed to copy output:', err);
+    }
+  };
+
   return (
     <div className={styles.container}>
       {/* Header with title and icon buttons */}
       <div className={styles.header}>
-        {title && <h4 className={styles.title}>{title.toUpperCase()}</h4>}
-        <div className={styles.iconButtons}>
+        <div className={styles.titleContainer}>
+          <Code size={18} className={styles.titleIcon} />
+          {title && <h4 className={styles.title} title={title}>{title.toUpperCase()}</h4>}
+        </div>
+        <div className={styles.buttonGroup}>
           <button
             className={styles.iconButton}
             onClick={handleReset}
             disabled={isLoading || isRunning}
-            title="Reset code"
+            title="Reset code to initial state"
             aria-label="Reset code"
           >
-            <RefreshIcon />
+            <RotateCcw size={16} />
           </button>
           <button
             className={styles.iconButton}
             onClick={handleCopy}
             disabled={isLoading || isRunning}
-            title="Copy code"
+            title="Copy code to clipboard"
             aria-label="Copy code"
           >
-            <CopyIcon />
+            <Copy size={16} />
           </button>
           <button
-            className={styles.playButton}
+            className={styles.runButton}
             onClick={handleRun}
             disabled={isLoading || isRunning}
             title="Run code (or press Shift+Enter)"
             aria-label="Run code"
           >
-            <PlayIcon />
+            <Zap size={16} />
+            <span>Run</span>
           </button>
         </div>
       </div>
@@ -228,7 +219,30 @@ export const InteractivePython: React.FC<InteractivePythonProps> = ({
       {/* Output Section - only shows when there's output or error */}
       {(output || error) && (
         <div className={`${styles.outputSection} ${error ? styles.hasError : ''}`}>
-          <div className={styles.outputContent}>
+          <div className={styles.outputHeader}>
+            <span className={styles.outputLabel}>
+              {error ? 'Error' : 'Output'}
+            </span>
+            <div className={styles.outputActions}>
+              <button
+                className={styles.outputActionBtn}
+                onClick={handleCopyOutput}
+                title="Copy output"
+                aria-label="Copy output"
+              >
+                <Copy size={14} />
+              </button>
+              <button
+                className={styles.outputActionBtn}
+                onClick={handleClearOutput}
+                title="Clear output"
+                aria-label="Clear output"
+              >
+                <RotateCcw size={14} />
+              </button>
+            </div>
+          </div>
+          <div className={styles.outputContent} ref={outputRef}>
             {error ? (
               <div className={styles.errorText}>{error}</div>
             ) : (
