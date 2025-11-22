@@ -27,9 +27,9 @@ Assignment operators are shortcuts for updating variables. Without them, you'd w
 
 Let's discover the shortcuts.
 
-## Discovery: What's the Shortcut?
+## Tracking Player Health
 
-**Problem**: You're tracking a player's health. It starts at 100, and they take 25 damage. How do you update it?
+You're tracking a player's health. It starts at 100, and they take 25 damage. How do you update it?
 
 ```python
 health = 100
@@ -53,11 +53,11 @@ Same result: `75`. The `-=` operator subtracts and assigns in one step.
 
 **Pattern discovered**: `variable -= value` is the same as `variable = variable - value`.
 
-## Discovery: The Five Assignment Operators
+## The Five Assignment Operators
 
-### Addition Assignment: `+=`
+### Addition Assignment: Counting Visitors
 
-**Problem**: You're counting website visitors. Each visit adds 1 to the counter.
+You're counting website visitors. Each visit adds 1 to the counter.
 
 ```python
 visitors = 0
@@ -84,9 +84,9 @@ count = count + 1
 count += 1
 ```
 
-### Subtraction Assignment: `-=`
+### Subtraction Assignment: Managing Inventory
 
-**Problem**: You're tracking inventory. You have 50 items and sell 12.
+You're tracking inventory. You have 50 items and sell 12.
 
 ```python
 inventory = 50
@@ -102,9 +102,9 @@ print(inventory)  # Now?
 
 You get `38`, then `30`.
 
-### Multiplication Assignment: `*=`
+### Multiplication Assignment: Compound Growth
 
-**Problem**: You're calculating compound growth. A value doubles each round.
+You're calculating compound growth. A value doubles each round.
 
 ```python
 value = 1
@@ -134,9 +134,9 @@ price *= 1.10
 print(price)  # 110.0
 ```
 
-### Division Assignment: `/=`
+### Division Assignment: Splitting Bills
 
-**Problem**: You're splitting a bill. Total is $120 among 4 people.
+You're splitting a bill. Total is $120 among 4 people.
 
 ```python
 total = 120
@@ -150,9 +150,9 @@ You get `30.0`. Notice it's a float, even though 120 divides evenly by 4.
 
 **Important**: `/=` always produces a float, just like `/`.
 
-### Floor Division Assignment: `//=`
+### Floor Division Assignment: Whole Number Results
 
-**Problem**: You need whole number results when dividing.
+You need whole number results when dividing.
 
 ```python
 items = 25
@@ -176,7 +176,7 @@ You get `6`. Floor division drops the decimal.
 | `/=` | Divide assign | `x /= 3` | `x = x / 3` |
 | `//=` | Floor divide assign | `x //= 3` | `x = x // 3` |
 
-## Discovery: Common Patterns
+## Common Patterns in Games
 
 ### The Counter Pattern
 
@@ -259,95 +259,95 @@ print(f"After power-up: {score}")
 
 **Extend it**: Add more events. What's the final score?
 
-### Challenge 2: Shopping Cart
+### Challenge 2: Health and Mana
 
-Calculate a cart total with discounts:
-
-```python
-cart = 0
-
-# Add items
-cart += 29.99  # Shirt
-cart += 49.99  # Pants
-cart += 15.00  # Socks
-print(f"Subtotal: ${cart:.2f}")
-
-# Apply 20% discount
-cart *= 0.80
-print(f"After discount: ${cart:.2f}")
-
-# Add tax (8%)
-cart *= 1.08
-print(f"Final total: ${cart:.2f}")
-```
-
-### Challenge 3: Resource Management
-
-Track resources in a simulation:
+Track player resources during combat:
 
 ```python
-fuel = 100
-distance = 0
+health = 100
+mana = 50
 
-# Travel 30 units (costs 15 fuel)
-distance += 30
-fuel -= 15
-print(f"Distance: {distance}, Fuel: {fuel}")
+# Take damage (-30)
+health -= 30
+print(f"After hit: Health={health}")
 
-# Travel 50 more units (costs 25 fuel)
-distance += 50
-fuel -= 25
-print(f"Distance: {distance}, Fuel: {fuel}")
+# Use healing spell (costs 20 mana, restores 25 health)
+mana -= 20
+health += 25
+print(f"After heal: Health={health}, Mana={mana}")
 
-# Refuel (+40)
-fuel += 40
-print(f"Distance: {distance}, Fuel: {fuel}")
+# Drink mana potion (+40 mana)
+mana += 40
+print(f"After potion: Health={health}, Mana={mana}")
 ```
 
-## Common Mistakes
+### Challenge 3: Experience and Leveling
 
-**Mistake 1: Forgetting the equals sign**
+Track XP with multipliers:
 
 ```python
-# Wrong: This is subtraction, not assignment
-score = 100
-score - 10  # Does nothing to score!
-print(score)  # Still 100
+xp = 0
 
-# Right: Use -=
-score -= 10
-print(score)  # 90
+# Defeat enemies (+50 each)
+xp += 50
+xp += 50
+xp += 50
+print(f"After enemies: {xp} XP")
+
+# Apply XP boost (double)
+xp *= 2
+print(f"After boost: {xp} XP")
+
+# Complete quest (+100)
+xp += 100
+print(f"After quest: {xp} XP")
 ```
 
-**Mistake 2: Using assignment in comparisons**
+## Debugging With AI
+
+When your variable updates don't work as expected, here's how to get help:
+
+**"The variable isn't changing"**
+
+You want to subtract 10 from the score:
 
 ```python
 score = 100
-
-# Wrong: = assigns, doesn't compare
-# if score = 100:  # SyntaxError!
-
-# Right: == compares
-if score == 100:
-    print("Perfect score!")
+score - 10
+print(score)  # Still 100!
 ```
 
-**Mistake 3: Expecting integer from `/=`**
+Tell AI: *"I subtracted 10 from score but it's still 100."*
+
+AI will explain: `score - 10` calculates the result but doesn't save it anywhere. You need `score = score - 10` or the shortcut `score -= 10`.
+
+**"I'm getting decimals instead of whole numbers"**
+
+You want to split 10 coins between 2 players:
 
 ```python
-value = 10
-
-# This becomes a float
-value /= 2
-print(value)       # 5.0 (not 5)
-print(type(value)) # <class 'float'>
-
-# Use //= for integer result
-value = 10
-value //= 2
-print(value)       # 5
-print(type(value)) # <class 'int'>
+coins = 10
+coins /= 2
+print(coins)  # 5.0 (not 5)
 ```
+
+Tell AI: *"I divided coins by 2 but got 5.0 instead of 5. I want a whole number."*
+
+AI will explain: `/=` always gives decimals. Use `//=` for whole number results.
+
+**"I get an error when checking a value"**
+
+You want to check if score equals 100:
+
+```python
+score = 100
+if score = 100:  # SyntaxError!
+    print("Won!")
+```
+
+Tell AI: *"I'm trying to check if score is 100 but I get a syntax error."*
+
+AI will explain: `=` assigns a value, `==` checks equality. Use `if score == 100:`.
 
 ## Try With AI
 

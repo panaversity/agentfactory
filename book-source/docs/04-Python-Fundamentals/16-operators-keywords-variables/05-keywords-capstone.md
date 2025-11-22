@@ -1,301 +1,162 @@
 ---
-title: "Capstone: Calculator Program"
+title: "Capstone: Game Score System"
 sidebar_position: 5
 ---
 
-# Capstone: Calculator Program
+# Capstone: Game Score System
 
 ## What You'll Build
 
-- Complete Calculator Program
+- Complete Game Score System
 - All Four Operator Types Combined
-- Input Validation
-- Running Total Tracker
-
-## The Problem
-
-You've learned arithmetic, comparison, logical, and assignment operators separately. But real programs use them all together. How do you combine these operator types into one working application?
+- Win/Lose Condition Checking
+- Score Tracking and Bonuses
 
 ## The Challenge
 
-Build a calculator program that demonstrates all four operator types working together.
+You've learned arithmetic, comparison, logical, and assignment operators separately—all using game examples. Now combine them into one working game score system.
+
+Build a game score system that demonstrates all four operator types working together.
 
 ### Requirements
 
-Your calculator must:
+Your game system must:
 
-1. **Get two numbers from the user** using `input()`
-2. **Perform arithmetic operations**: addition, subtraction, multiplication, division
-3. **Compare the numbers**: equal, greater than, less than
-4. **Check conditions with logical operators**: both positive, either large
-5. **Track a running total** using assignment operators
-6. **Handle division by zero** safely
+1. **Get player stats from user** using `input()` (score and health)
+2. **Calculate bonuses** using arithmetic: coin bonus, combo multiplier
+3. **Check win/lose conditions** using comparisons: score threshold, health check
+4. **Validate game state** with logical operators: can continue playing
+5. **Update running totals** using assignment operators
+6. **Handle edge cases** safely (e.g., division for team splits)
 
 ### Expected Output
 
-When the user enters `10` and `3`, your program should display something like:
+When the user enters score `85` and health `50`, your program should display something like:
 
 ```
 ========================================
-CALCULATOR PROGRAM
+GAME SCORE SYSTEM
 ========================================
 
-Enter first number: 10
-Enter second number: 3
+Enter your score: 85
+Enter your health: 50
 
---- ARITHMETIC OPERATIONS ---
-10.0 + 3.0 = 13.0
-10.0 - 3.0 = 7.0
-10.0 * 3.0 = 30.0
-10.0 / 3.0 = 3.3333333333333335
+--- SCORE CALCULATIONS ---
+Base score: 85
+Coin bonus (10 coins × 5): 50
+Total with bonus: 135
+With 2x combo multiplier: 270
 
---- COMPARISONS ---
-10.0 == 3.0: False
-10.0 > 3.0: True
-10.0 < 3.0: False
+--- WIN/LOSE CONDITIONS ---
+Score >= 100 to win: True
+Health > 0 (alive): True
+Beat high score (200): True
 
---- LOGICAL CHECKS ---
-Both numbers positive: True
-Either number > 100: False
+--- GAME STATE ---
+Can continue (score >= 50 AND health > 0): True
+Gets bonus loot (score > 100 OR health == 100): True
 
---- RUNNING TOTAL ---
+--- RUNNING TOTALS ---
 Starting total: 0
-After adding sum: 13.0
-After subtracting 5: 8.0
-After doubling: 16.0
+After adding score: 270
+After enemy hit (-20): 250
+After power-up (×1.5): 375.0
 
 ========================================
-Calculation complete!
+Game complete!
 ========================================
-```
-
-### Pseudocode
-
-Here's the structure to guide you:
-
-```
-# Display header
-
-# Get two numbers from user (convert to float)
-
-# ARITHMETIC OPERATIONS
-# Calculate: sum, difference, product, quotient
-# Print each result
-
-# COMPARISONS
-# Check: equal, greater, less
-# Print each result (True/False)
-
-# LOGICAL CHECKS
-# Check: both positive (num1 > 0 AND num2 > 0)
-# Check: either large (num1 > 100 OR num2 > 100)
-# Print each result
-
-# RUNNING TOTAL
-# Start at 0
-# Add the sum result (+=)
-# Subtract 5 (-=)
-# Double it (*=)
-# Print after each operation
-
-# SAFE DIVISION
-# Check if num2 is not zero before dividing
-# Print result or error message
-
-# Display footer
 ```
 
 ## Hints
 
 <details>
-<summary>Hint 1: Getting numbers from user</summary>
+<summary>Hint 1: Getting player stats from user</summary>
 
-Use `input()` and convert to float:
+Use `input()` and convert to int:
 ```python
-num1 = float(input("Enter first number: "))
+score = int(input("Enter your score: "))
+health = int(input("Enter your health: "))
 ```
 </details>
 
 <details>
-<summary>Hint 2: Arithmetic operations</summary>
+<summary>Hint 2: Score calculations (arithmetic)</summary>
 
 Store results in variables:
 ```python
-sum_result = num1 + num2
-print(f"{num1} + {num2} = {sum_result}")
+coin_bonus = 10 * 5  # 10 coins worth 5 each
+total = score + coin_bonus
+final_score = total * 2  # combo multiplier
 ```
 </details>
 
 <details>
-<summary>Hint 3: Comparison operations</summary>
+<summary>Hint 3: Win/lose conditions (comparisons)</summary>
 
 Comparisons return True or False:
 ```python
-is_equal = num1 == num2
-print(f"{num1} == {num2}: {is_equal}")
+won = score >= 100
+alive = health > 0
+print(f"Won: {won}")
 ```
 </details>
 
 <details>
-<summary>Hint 4: Logical operations</summary>
+<summary>Hint 4: Game state (logical)</summary>
 
 Combine conditions with `and` and `or`:
 ```python
-both_positive = (num1 > 0) and (num2 > 0)
+can_continue = (score >= 50) and (health > 0)
+gets_bonus = (score > 100) or (health == 100)
 ```
 </details>
 
 <details>
-<summary>Hint 5: Running total with assignment operators</summary>
+<summary>Hint 5: Running totals (assignment)</summary>
 
 Update a variable step by step:
 ```python
 total = 0
-total += sum_result
-total -= 5
-total *= 2
+total += final_score
+total -= 20  # enemy damage
+total *= 1.5  # power-up
 ```
 </details>
 
 <details>
-<summary>Hint 6: Safe division</summary>
+<summary>Hint 6: Safe team split</summary>
 
 Check before dividing:
 ```python
-if num2 != 0:
-    result = num1 / num2
-    print(f"Result: {result}")
+team_size = 4
+if team_size != 0:
+    per_player = total / team_size
+    print(f"Each player gets: {per_player}")
 else:
-    print("Cannot divide by zero")
+    print("No team to split with")
 ```
 </details>
 
-## Testing Your Calculator
+## Testing Your Game System
 
 Test with these input combinations:
 
-| Test Case | num1 | num2 | What to Check |
-|-----------|------|------|---------------|
-| Normal | 10 | 3 | All operations work |
-| Equal numbers | 5 | 5 | Equality is True |
-| Zero divisor | 10 | 0 | Division handled safely |
-| Negative | -5 | 3 | "Both positive" is False |
-| Large numbers | 150 | 200 | "Either > 100" is True |
-
-## Common Errors
-
-**Error 1: Forgetting to convert input**
-```python
-# Wrong: input() returns string
-num1 = input("Number: ")
-result = num1 + 5  # TypeError!
-
-# Right: Convert to float
-num1 = float(input("Number: "))
-result = num1 + 5  # Works!
-```
-
-**Error 2: Using = instead of ==**
-```python
-# Wrong: Assignment, not comparison
-is_equal = num1 = num2  # Assigns num2 to num1!
-
-# Right: Use == for comparison
-is_equal = num1 == num2
-```
-
-**Error 3: Missing parentheses in logical expressions**
-```python
-# Confusing: What gets evaluated first?
-result = num1 > 0 and num2 > 0 or num1 == num2
-
-# Clear: Use parentheses
-result = (num1 > 0 and num2 > 0) or (num1 == num2)
-```
-
-**Error 4: Dividing without checking for zero**
-```python
-# Dangerous: Crashes if num2 is 0
-result = num1 / num2
-
-# Safe: Check first
-if num2 != 0:
-    result = num1 / num2
-```
-
-## Extensions
-
-Once your basic calculator works, try these enhancements:
-
-### Extension 1: Add More Operations
-Add floor division, modulus, and exponentiation:
-```python
-# Floor division
-floor_result = num1 // num2
-
-# Modulus (remainder)
-mod_result = num1 % num2
-
-# Exponentiation
-exp_result = num1 ** num2
-```
-
-### Extension 2: Add Input Validation
-Check that inputs are valid numbers before calculating.
-
-### Extension 3: Add Type Display
-Show the type of each result:
-```python
-print(f"Result: {result} (type: {type(result).__name__})")
-```
-
-### Extension 4: Menu System
-Let user choose which operation to perform (requires concepts from Chapter 18).
-
-## Reflection Questions
-
-After completing your calculator, consider:
-
-1. **Which operator type did you use most?** Why?
-2. **Where did logical operators help?** What would happen without the zero check?
-3. **How did assignment operators simplify the running total?** Compare `total = total + value` vs `total += value`.
-4. **What surprised you?** Any unexpected results or behaviors?
+| Test Case | Score | Health | What to Check |
+|-----------|-------|--------|---------------|
+| Normal win | 85 | 50 | All conditions and calculations work |
+| Low score | 30 | 100 | Can't continue (score < 50) |
+| Zero health | 100 | 0 | Game over (health check fails) |
+| Perfect game | 200 | 100 | Gets bonus loot (health == 100) |
+| Edge case | 50 | 1 | Minimum to continue playing |
 
 ## Success Criteria
 
-Your calculator is complete when:
+Your game system is complete when:
 
-- [ ] Gets two numbers from user input
-- [ ] Performs all four arithmetic operations (+, -, *, /)
-- [ ] Shows three comparisons (==, >, <)
-- [ ] Uses `and` and `or` for logical checks
+- [ ] Gets score and health from user input
+- [ ] Calculates bonuses using arithmetic (+, *, /)
+- [ ] Checks win/lose conditions with comparisons (>=, >, ==)
+- [ ] Uses `and` and `or` for game state logic
 - [ ] Tracks running total with +=, -=, *=
-- [ ] Handles division by zero without crashing
-- [ ] Displays clear, formatted output
-
-## Try With AI
-
-After building your calculator, use AI to enhance it:
-
-**Debug your code:**
-> "Here's my calculator code: [paste code]. It's not working correctly when I enter [specific input]. Help me find the bug."
-
-**Add features:**
-> "I built a basic calculator with arithmetic, comparison, logical, and assignment operators. Help me add floor division and modulus operations."
-
-**Improve output:**
-> "My calculator works but the output is hard to read. Show me how to format it with aligned columns and clear section headers."
-
-## What You've Accomplished
-
-By completing this capstone, you've demonstrated:
-
-- **Arithmetic operators**: Calculations with +, -, *, /
-- **Comparison operators**: True/False questions with ==, >, <
-- **Logical operators**: Combined conditions with and, or
-- **Assignment operators**: Efficient updates with +=, -=, *=
-- **Safe programming**: Checking before dividing by zero
-
-You now have a solid foundation in Python operators—the building blocks for everything that comes next.
-
-**Next Chapter**: You'll learn about strings and type casting, where you'll see that some operators work with text too!
+- [ ] Handles team split safely (checks for zero)
+- [ ] Displays clear, formatted output with sections

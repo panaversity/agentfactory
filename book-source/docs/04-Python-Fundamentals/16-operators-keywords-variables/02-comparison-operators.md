@@ -15,30 +15,30 @@ sidebar_position: 2
 
 ## The Problem
 
-You're building a login system. The user enters a password, and you need to check: does it match the stored password? You're not calculating anything—you're asking a yes/no question. Is this equal to that?
+Your game needs to check conditions: Did the player reach 100 points to win? Do they have enough health to survive? Is their score higher than the current high score? You're not calculating—you're asking yes/no questions.
 
 ## Why You Need Comparison Operators
 
-Comparison operators ask questions and return answers: `True` or `False`. Without these operators, you couldn't:
+Comparison operators ask questions and return answers: `True` or `False`. Without them, your game couldn't:
 
-- Check if a password matches
-- Verify if a user is old enough
-- Test if a value is within a range
-- Make any decisions in your code
+- Check if player reached the winning score
+- Verify if health dropped to zero (game over)
+- Test if player beat the high score
+- Make any decisions based on game state
 
-Every comparison in Python gives you one of two values: `True` or `False`. Let's discover how to ask these questions.
+Every comparison gives you `True` or `False`. Let's discover how to ask these questions.
 
-## Discovery: How Do You Ask Questions in Python?
+## Checking Win Conditions
 
-**Problem**: You're checking if a user is old enough to vote. Voting age is 18, user is 16. How do you ask "Is 16 greater than or equal to 18?"
+Player has 85 points. They need 100 to win. Did they win?
 
 ```python
-user_age = 16
-voting_age = 18
+score = 85
+win_threshold = 100
 
 # Your prediction: What will this return?
-can_vote = user_age >= voting_age
-print(can_vote)
+player_won = score >= win_threshold
+print(player_won)
 ```
 
 **Run it.** You get `False`. The `>=` operator asks "is left side greater than or equal to right side?" and returns the answer.
@@ -64,79 +64,79 @@ print(a < b)    # Less than
 
 **Important**: Notice `==` uses two equals signs. One `=` assigns a value, two `==` compares values. This is a common mistake.
 
-## Discovery: The Six Comparison Operators
+## The Six Comparison Operators
 
-### Equality and Inequality
+### Equality and Inequality: Code Matching
 
-**Problem**: You're verifying a PIN code. User entered 1234, correct PIN is 1234. Do they match?
+Player enters a secret code to unlock a bonus level. Did they enter the right code?
 
 ```python
-entered_pin = 1234
-correct_pin = 1234
+entered_code = 1234
+secret_code = 1234
 
 # Check if they match
-is_correct = entered_pin == correct_pin
-print(is_correct)  # What do you get?
+unlocked = entered_code == secret_code
+print(unlocked)  # What do you get?
 ```
 
 You get `True`. Now check the opposite:
 
 ```python
 # Check if they're different
-is_wrong = entered_pin != correct_pin
-print(is_wrong)  # What do you get?
+wrong_code = entered_code != secret_code
+print(wrong_code)  # What do you get?
 ```
 
 You get `False`. They're not different—they match.
 
 **Pattern discovered**: `==` returns True if values match, `!=` returns True if values differ.
 
-### Greater Than and Less Than
+### Greater Than and Less Than: Health Thresholds
 
-**Problem**: You're checking temperature thresholds. Current temp is 75°F. Is it above the 70°F comfort threshold?
+Player has 75 health. Is it above the danger threshold of 30?
 
 ```python
-current_temp = 75
-comfort_threshold = 70
+health = 75
+danger_threshold = 30
 
-# Is it warmer than the threshold?
-is_warm = current_temp > comfort_threshold
-print(is_warm)  # What do you get?
+# Is health above danger?
+is_safe = health > danger_threshold
+print(is_safe)  # What do you get?
 ```
 
-You get `True`. Now check if it's below freezing:
+You get `True`. Now check if it's critical (below 10):
 
 ```python
-freezing = 32
+critical = 10
 
-is_freezing = current_temp < freezing
-print(is_freezing)  # What do you get?
+is_critical = health < critical
+print(is_critical)  # What do you get?
 ```
 
-You get `False`. 75 is not less than 32.
+You get `False`. 75 is not less than 10.
 
-### Greater/Less Than OR Equal
+### Greater/Less Than OR Equal: Level Unlocks
 
-**Problem**: You're checking if someone qualifies for a discount. Must be 65 or older.
+Player needs exactly 100 points or more to unlock the next level.
 
 ```python
-customer_age = 65
-discount_age = 65
+score = 100
+unlock_threshold = 100
 
-# Does 65 qualify? (must be 65 OR older)
-qualifies = customer_age >= discount_age
-print(qualifies)  # What do you get?
+# Does 100 unlock it? (must be 100 OR more)
+unlocked = score >= unlock_threshold
+print(unlocked)  # What do you get?
 ```
 
 You get `True`. The `>=` includes the equal case.
 
-**Try it**: What if customer_age is 64? What about 66?
+**Try it**: What if score is 99? What about 101?
 
 ```python
-# Experiment with different ages
-print(64 >= 65)  # ?
-print(65 >= 65)  # ?
-print(66 >= 65)  # ?
+# Experiment with different scores
+print(99 >= 100)   # ?
+print(100 >= 100)  # ?
+print(101 >= 100)  # ?
 ```
 
 **Pattern discovered**: `>=` and `<=` include the equal case, `>` and `<` exclude it.
@@ -152,7 +152,7 @@ print(66 >= 65)  # ?
 | `>=` | Greater or equal | `5 >= 5` | `True` | Is left bigger or same? |
 | `<=` | Less or equal | `5 <= 3` | `False` | Is left smaller or same? |
 
-## Discovery: Comparisons Always Return Booleans
+## Comparisons Always Return Booleans
 
 Every comparison returns either `True` or `False`—these are called **boolean values**.
 
@@ -170,9 +170,9 @@ You get `<class 'bool'>`. Boolean is Python's type for True/False values.
 
 **Why this matters**: In Chapter 18, you'll use these True/False values to make decisions with `if` statements. The comparison gives you the answer, the `if` acts on it.
 
-## Discovery: Value Equality Surprises
+## Value Equality Surprises
 
-**Problem**: Is the integer 5 equal to the float 5.0?
+Is the integer 5 equal to the float 5.0?
 
 ```python
 int_five = 5
@@ -202,121 +202,129 @@ You get `False`. The string "5" is text, not a number—completely different val
 
 ## Practice: Solve Real Problems
 
-### Challenge 1: Age Verification
+### Challenge 1: Level Progression
 
-You're building an age gate for a website. Check multiple age thresholds:
+Check if player qualifies for different game milestones:
 
 ```python
-user_age = 17
+player_score = 85
 
-# Voting (18+)
-can_vote = user_age >= 18
-print(f"Can vote: {can_vote}")
+# Bronze badge (50+)
+bronze = player_score >= 50
+print(f"Bronze badge: {bronze}")
 
-# Driving (16+)
-can_drive = user_age >= 16
-print(f"Can drive: {can_drive}")
+# Silver badge (100+)
+silver = player_score >= 100
+print(f"Silver badge: {silver}")
 
-# Senior discount (65+)
-is_senior = user_age >= 65
-print(f"Senior discount: {is_senior}")
+# Gold badge (200+)
+gold = player_score >= 200
+print(f"Gold badge: {gold}")
 ```
 
-**Change the age**: Try 18, 65, and 15. What changes?
+**Change the score**: Try 100, 200, and 45. What changes?
 
-### Challenge 2: Password Checker
+### Challenge 2: Inventory Check
 
-You're validating a password. But first, you need to know how long it is.
+Check if player has enough items. First, you need to know how many they have.
 
-**The `len()` function**: Python has a built-in function called `len()` that counts characters in a string (or items in a list). It returns a number.
+**The `len()` function**: Python has a built-in function called `len()` that counts items in a list (or characters in a string). It returns a number.
 
 ```python
-# len() counts characters
-password = "secret123"
-length = len(password)
-print(length)  # 9
+# len() counts items
+inventory = ["sword", "shield", "potion"]
+item_count = len(inventory)
+print(item_count)  # 3
 ```
 
 Now use it with comparisons:
 
 ```python
-password = "secret123"
-min_length = 8
-stored_password = "secret123"
+inventory = ["sword", "shield", "potion", "key", "map"]
+required_items = 3
+max_capacity = 10
 
-# Is it long enough?
-long_enough = len(password) >= min_length
-print(f"Long enough: {long_enough}")
+# Has enough items for quest?
+ready_for_quest = len(inventory) >= required_items
+print(f"Ready for quest: {ready_for_quest}")
 
-# Does it match?
-matches = password == stored_password
-print(f"Matches stored: {matches}")
+# Inventory full?
+is_full = len(inventory) >= max_capacity
+print(f"Inventory full: {is_full}")
 
-# Is it too short?
-too_short = len(password) < min_length
-print(f"Too short: {too_short}")
+# Has room for more?
+has_room = len(inventory) < max_capacity
+print(f"Has room: {has_room}")
 ```
 
-**Try it**: What if password is "abc"? What if it's "wrongpassword"?
+**Try it**: What if inventory has only 2 items? What if it has 10?
 
-### Challenge 3: Score Checker
+### Challenge 3: High Score Check
 
-You're grading a test. Check various thresholds:
+Check if player beat various records:
 
 ```python
-score = 85
-passing = 70
-perfect = 100
+player_score = 850
+high_score = 1000
+personal_best = 850
 
-# Did they pass?
-passed = score >= passing
-print(f"Passed: {passed}")
+# Beat the high score?
+new_record = player_score > high_score
+print(f"New high score: {new_record}")
 
-# Perfect score?
-is_perfect = score == perfect
-print(f"Perfect: {is_perfect}")
+# Tied personal best?
+tied_best = player_score == personal_best
+print(f"Tied personal best: {tied_best}")
 
-# Failed?
-failed = score < passing
-print(f"Failed: {failed}")
+# Below high score?
+keep_trying = player_score < high_score
+print(f"Keep trying: {keep_trying}")
 ```
 
-## Common Mistakes
+## Debugging With AI
 
-**Mistake 1: Using `=` instead of `==`**
+When your comparisons give unexpected results, here's how to get help:
+
+**"I get a syntax error when checking equality"**
+
+You want to check if score equals 100:
 
 ```python
-# Wrong: This assigns, doesn't compare
-x = 5
-# if x = 5:  # SyntaxError!
-
-# Right: Use == to compare
-if x == 5:
-    print("x is 5")
+score = 100
+if score = 100:  # SyntaxError!
+    print("Won!")
 ```
 
-**Mistake 2: Confusing `>` and `>=`**
+Tell AI: *"I'm trying to check if score equals 100, but I get a syntax error."*
+
+AI will explain: Use `==` for comparison, not `=`. One equals sign assigns a value, two equals signs compare values.
+
+**"Score of 100 doesn't pass my check"**
+
+You want players with 100 or more to win:
 
 ```python
-age = 18
-limit = 18
-
-# Wrong: Excludes exactly 18
-print(age > limit)   # False
-
-# Right: Includes 18
-print(age >= limit)  # True
+score = 100
+won = score > 100
+print(won)  # False (but 100 should win!)
 ```
 
-**Mistake 3: Expecting string-number equality**
+Tell AI: *"A score of exactly 100 should win, but my check returns False."*
+
+AI will explain: `>` means "greater than" (excludes 100). Use `>=` for "greater than or equal to".
+
+**"My comparison is always False"**
+
+You compare user input to a number:
 
 ```python
-# Wrong assumption: "5" equals 5
-print("5" == 5)  # False - string is not a number
-
-# Right: Convert first if needed
-print(int("5") == 5)  # True
+user_score = input("Enter score: ")  # User types 100
+print(user_score == 100)  # False (why?)
 ```
+
+Tell AI: *"I typed 100 but the comparison to 100 is False."*
+
+AI will explain: `input()` returns text, not a number. `"100"` (text) is not the same as `100` (number). Convert it with `int()`.
 
 ## Try With AI
 
@@ -328,13 +336,3 @@ print(int("5") == 5)  # True
 
 **Understand the difference:**
 > "Explain why `=` and `==` exist as separate operators. Show me what goes wrong if I accidentally use the wrong one."
-
-## What You Discovered
-
-- Python has 6 comparison operators: `==`, `!=`, `>`, `<`, `>=`, `<=`
-- All comparisons return `True` or `False` (boolean values)
-- `=` assigns, `==` compares (common mistake!)
-- `>=` and `<=` include the equal case
-- Python compares values, not types (5 == 5.0 is True)
-
-**Next**: You'll discover logical operators—how to combine multiple True/False values with `and`, `or`, and `not`.
