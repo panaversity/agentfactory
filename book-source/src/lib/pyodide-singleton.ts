@@ -54,6 +54,10 @@ export class PyodideRunner {
           this.pyodide = await loadPyodide({
             indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.29.0/full/'
           });
+
+          // Pre-load commonly used packages for educational content
+          // requests: For HTTP operations and API interactions
+          await this.pyodide.loadPackage(['requests']);
         } catch (error) {
           this.initPromise = null; // Reset on error so it can be retried
           throw error;
