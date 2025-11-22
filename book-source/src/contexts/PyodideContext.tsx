@@ -44,7 +44,7 @@ export const PyodideProvider: React.FC<{ children: React.ReactNode }> = ({ child
         setError(err instanceof Error ? err : new Error(String(err)));
         setIsLoading(false);
       });
-  }, []);
+  }, [pyodide]);
 
   // Memoize the context value to prevent unnecessary re-renders of consumers
   const contextValue = useMemo(
