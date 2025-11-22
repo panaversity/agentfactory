@@ -1,6 +1,6 @@
 ---
 title: "Capstone: Game Score System"
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Capstone: Game Score System

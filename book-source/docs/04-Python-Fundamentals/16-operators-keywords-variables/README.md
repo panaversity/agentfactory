@@ -1,13 +1,13 @@
 ---
 sidebar_position: 16
-title: "Chapter 16: Operators"
+title: "Chapter 16: Operators and Keywords"
 ---
 
-# Chapter 16: Operators
+# Chapter 16: Operators and Keywords
 
-In the previous chapters, you learned about data types and how to store values in variables. Now it's time to learn what you can DO with that data using operators—the symbols that tell Python to perform actions.
+In the previous chapters, you learned about data types and how to store values in variables. Now it's time to learn what you can DO with that data using operators—the symbols that tell Python to perform actions—and understand which words Python reserves for itself.
 
-Operators are the verbs of programming. Data types are the nouns (what you work with). Operators are the verbs (what you do with them). Together, they let you build calculations, make decisions, and update values.
+Operators are the verbs of programming. Data types are the nouns (what you work with). Operators are the verbs (what you do with them). Keywords are special words Python reserves for its own syntax. Together, they let you build calculations, make decisions, and update values.
 
 ## What You'll Master
 
@@ -15,7 +15,8 @@ Operators are the verbs of programming. Data types are the nouns (what you work 
 - Comparison Operators
 - Logical Operators
 - Assignment Operators
-- Capstone Calculator
+- Python Keywords
+- Capstone Game Score System
 
 ## Chapter Structure
 
@@ -39,8 +40,13 @@ Update variables efficiently with shortcuts. Instead of `score = score + 10`, wr
 
 **Topics**: `=`, `+=`, `-=`, `*=`, `/=`, counter pattern, accumulator pattern
 
-### Lesson 5: Capstone - Calculator Program
-Build a complete calculator that uses all four operator types. Get user input, perform calculations, validate with comparisons, combine conditions with logic, and track running totals.
+### Lesson 5: Python Keywords
+Understand which words Python reserves for itself. You can't use `class`, `for`, or `True` as variable names—they're part of Python's syntax.
+
+**Topics**: Reserved words, `True`/`False`/`None`, `in`/`is`, keyword categories, naming best practices
+
+### Lesson 6: Capstone - Game Score System
+Build a complete game score system that uses all four operator types plus keywords. Get user input, perform calculations, validate with comparisons, combine conditions with logic, and track running totals.
 
 **Challenge**: Integrate arithmetic, comparison, logical, and assignment operators into one working program.
 
