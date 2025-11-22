@@ -210,15 +210,20 @@ print(result)  # True
 **Why this matters**: You can use this to avoid errors:
 
 ```python
-# Safe division check
+# Safe division
 denominator = 0
 
 # This is safe - Python won't divide if denominator is 0
-if denominator != 0 and 10 / denominator > 2:
-    print("Result is greater than 2")
-else:
-    print("Can't divide or result too small")
+is_large_result = denominator != 0 and 10 / denominator > 2
+print(is_large_result)  # False (never attempted the division)
+
+# Try with a valid denominator
+denominator = 2
+is_large_result = denominator != 0 and 10 / denominator > 2
+print(is_large_result)  # True (10/2 = 5, which is > 2)
 ```
+
+The first check stops at `denominator != 0` (False), so Python never evaluates `10 / denominator`—avoiding the division-by-zero error.
 
 ## Practice: Solve Real Problems
 

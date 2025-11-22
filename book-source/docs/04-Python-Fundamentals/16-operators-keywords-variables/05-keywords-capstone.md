@@ -126,15 +126,14 @@ total *= 1.5  # power-up
 <details>
 <summary>Hint 6: Safe team split</summary>
 
-Check before dividing:
+For now, assume team_size is never 0:
 ```python
 team_size = 4
-if team_size != 0:
-    per_player = total / team_size
-    print(f"Each player gets: {per_player}")
-else:
-    print("No team to split with")
+per_player = total / team_size
+print(f"Each player gets: {per_player}")
 ```
+
+**Note**: To handle the case where team_size might be 0, you'll need `if/else` statements—which you'll learn in Chapter 18. For this capstone, use a non-zero team size.
 </details>
 
 ## Testing Your Game System

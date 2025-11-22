@@ -185,17 +185,20 @@ The most common use of `+=` is counting things:
 ```python
 count = 0
 
-# Process items
-items = ["apple", "banana", "cherry"]
+# Process items one by one
+count += 1
+print(f"Processed {count}: apple")
 
-for item in items:
-    count += 1
-    print(f"Processed {count}: {item}")
+count += 1
+print(f"Processed {count}: banana")
+
+count += 1
+print(f"Processed {count}: cherry")
 
 print(f"Total: {count}")
 ```
 
-You'll use `count += 1` constantly when you learn loops in Chapter 18.
+You'll use `count += 1` constantly when you learn loops in Chapter 18—that's when you'll automate this pattern instead of writing each line manually.
 
 ### The Accumulator Pattern
 
@@ -204,12 +207,15 @@ Adding up values as you go:
 ```python
 total = 0
 
-# Add up prices
-prices = [10.50, 20.00, 15.75]
+# Add up prices one by one
+total += 10.50
+print(f"Running total: ${total:.2f}")
 
-for price in prices:
-    total += price
-    print(f"Running total: ${total:.2f}")
+total += 20.00
+print(f"Running total: ${total:.2f}")
+
+total += 15.75
+print(f"Running total: ${total:.2f}")
 
 print(f"Final total: ${total:.2f}")
 ```
@@ -335,19 +341,19 @@ Tell AI: *"I divided coins by 2 but got 5.0 instead of 5. I want a whole number.
 
 AI will explain: `/=` always gives decimals. Use `//=` for whole number results.
 
-**"I get an error when checking a value"**
+**"I'm confused about = vs =="**
 
 You want to check if score equals 100:
 
 ```python
 score = 100
-if score = 100:  # SyntaxError!
-    print("Won!")
+is_winner = score = 100  # This is assignment, not comparison!
+print(is_winner)  # Prints 100, not True or False
 ```
 
-Tell AI: *"I'm trying to check if score is 100 but I get a syntax error."*
+Tell AI: *"I want to check if score equals 100 but I used = instead of ==."*
 
-AI will explain: `=` assigns a value, `==` checks equality. Use `if score == 100:`.
+AI will explain: `=` assigns a value, `==` checks equality. Use `is_winner = score == 100` to get True or False.
 
 ## Try With AI
 
