@@ -48,13 +48,13 @@ Total with bonus: 135
 With 2x combo multiplier: 270
 
 --- WIN/LOSE CONDITIONS ---
-Score >= 100 to win: True
+Final score >= 100 to win: True
 Health > 0 (alive): True
-Beat high score (200): True
+Final score >= high score (200): True
 
 --- GAME STATE ---
-Can continue (score >= 50 AND health > 0): True
-Gets bonus loot (score > 100 OR health == 100): True
+Can continue (base score >= 50 AND health > 0): True
+Gets bonus loot (final score > 100 OR health == 100): True
 
 --- RUNNING TOTALS ---
 Starting total: 0
@@ -157,5 +157,5 @@ Your game system is complete when:
 - [ ] Checks win/lose conditions with comparisons (>=, >, ==)
 - [ ] Uses `and` and `or` for game state logic
 - [ ] Tracks running total with +=, -=, *=
-- [ ] Handles team split safely (checks for zero)
+- [ ] Calculates team split (assumes non-zero team size)
 - [ ] Displays clear, formatted output with sections

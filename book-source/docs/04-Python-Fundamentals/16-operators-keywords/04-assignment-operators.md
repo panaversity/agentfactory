@@ -156,10 +156,10 @@ You need whole number results when dividing.
 
 ```python
 items = 25
-boxes = 25
+boxes = 4
 
 # How many items per box (whole numbers only)?
-items //= 4
+items //= boxes
 print(items)  # ?
 ```
 
