@@ -25,3 +25,13 @@ By the end of this chapter, you'll understand:
 - **The Piggyback Protocol Pivot strategy**: Your three-phase playbook for entering vertical markets—start with broad AI tools (Piggyback), build vertical reputation and relationships (Protocol), pivot to your chosen domain with credibility (Pivot)
 - **The three requirements for success**: Domain access (relationships in your target vertical), capital efficiency (staying lean through AI leverage), and timing (why 2025-2027 is the window of maximum opportunity)
 - **Your strategic positioning**: Where you stand today and which path to a billion dollars fits your background, resources, and risk tolerance
+
+import PDFViewer from '@site/src/components/PDFViewer';
+
+## 📊 Chapter Slides
+
+<PDFViewer
+  src="slides/chapter-03-slides.pdf"
+  title="Chapter 3: How to Make a Billion Dollars in the AI Era"
+  height={700}
+/>

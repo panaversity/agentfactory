@@ -23,4 +23,13 @@ By the end of this chapter, you'll understand:
 - **Organizational readiness**: The "AI as amplifier" thesis and how to assess your team's readiness across the seven DORA capabilities that predict AI development success
 - **The modern AI development stack**: The three-layer architecture (Frontier Models, AI-First IDEs, Development Agents) and how the Model Context Protocol (MCP) prevents vendor lock-in
 
+import PDFViewer from '@site/src/components/PDFViewer';
+
+## 📊 Chapter Slides
+
+<PDFViewer
+  src="slides/chapter-02-slides.pdf"
+  title="Chapter 2: The AI Turning Point"
+  height={700}
+/>
 

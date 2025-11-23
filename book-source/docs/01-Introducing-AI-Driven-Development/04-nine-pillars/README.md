@@ -28,3 +28,13 @@ By the end of this chapter, you'll understand:
 5. **The M-Shaped Developer profile**: The skills and mental models you need to thrive in AIDD
 6. **Why all nine matter**: Competitive implications of partial vs. complete adoption
 7. **Your roadmap ahead**: How the remaining chapters of this book build mastery in each pillar
+
+import PDFViewer from '@site/src/components/PDFViewer';
+
+## 📊 Chapter Slides
+
+<PDFViewer
+  src="slides/chapter-04-slides.pdf"
+  title="Chapter 4: The Nine Pillars of AI-Driven Development"
+  height={700}
+/>

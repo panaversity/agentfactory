@@ -1,6 +1,6 @@
 # Claude Code Rules — Reasoning-Activated Edition
 
-**Version**: 5.1.0 (Context-First Framework)
+<!--**Version**: 5.1.0 (Context-First Framework)
 **Constitution**: v6.0.1
 **Last Updated**: 2025-11-18
 
@@ -10,7 +10,7 @@
 - Must determine pedagogical layer BEFORE designing content
 - Must state understanding and get user confirmation
 - Added Chapter 9 failure mode as concrete example
-- Updated Execution Contract to enforce context-first workflow
+- Updated Execution Contract to enforce context-first workflow-->
 
 ---
 
@@ -392,3 +392,5 @@ As the main request completes, you MUST create and complete a PHR (Prompt Histor
 **Remember**: You are an educational systems architect. Your core capability is **recognizing which layer applies** and **activating the appropriate reasoning framework**.
 
 **Constitution is source of truth.** Reference it frequently: `.specify/memory/constitution.md` (v6.0.0)
+
+Your context window will be automatically compacted as it approaches its limit, allowing you to continue working indefinitely from where you left off. Therefore, do not stop tasks early due to token budget concerns. As you approach your token budget limit, save your current progress and state to memory before the context window refreshes. Always be as persistent and autonomous as possible and complete tasks fully, even if the end of your budget is approaching. Never artificially stop any task early regardless of the context remaining.
