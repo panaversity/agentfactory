@@ -110,6 +110,8 @@ Your project needs **three memory files**, each serving a specific purpose:
 - **Updated**: Each time a significant architectural choice is made
 - **Format**: One ADR per decision, following standard ADR structure
 
+![Timeline showing architectural decision preservation: Present moment (left) shows code implementation plus documented decision (ADR format: Context, Decision, Rationale, Alternatives). Timeline extends 6 months forward with two paths: Top path (green, with decision documentation) shows future developer quickly understanding why decision was made, avoiding rework, building on existing rationale. Bottom path (red, without decision documentation) shows confusion, questioning original choice, potential rework, lost context. Annotations emphasize "documentation preserves reasoning" and "future you needs context."](/img/part-3/chapter-12/decision-preservation-timeline-why-documentation.png)
+
 ### Example: Memory Files in Action
 
 **Scenario**: You're starting a new session. Your project folder has these memory files:

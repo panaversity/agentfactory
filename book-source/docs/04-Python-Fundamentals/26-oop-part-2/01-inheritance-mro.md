@@ -111,6 +111,8 @@ In this lesson, you'll master the technical skill of inheritance and the concept
 
 Let's start simple. The most common pattern is **single inheritance**: a child class has one parent.
 
+![Inheritance hierarchy diagram showing parent-child relationships in Python classes, demonstrating single and multiple inheritance patterns with method override and super() call flow](/img/part-4/chapter-26/python-inheritance-diagram.png)
+
 ```python
 class Animal:
     """Parent class (superclass) - general animal properties"""

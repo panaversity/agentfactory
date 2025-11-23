@@ -117,6 +117,12 @@ According to GitHub's documentation, almost every software project has a README 
 
 When you write in markdown, you're using the same format that millions of developers use to communicate with both humans and AI.
 
+![Visual breakdown showing four markdown elements side-by-side: heading syntax (# Header), list syntax (- item), inline code (`code`), and link syntax ([text](url)). Each element displays raw markdown on left and rendered output on right, with arrows indicating how AI interprets structure for parsing specifications.](/img/part-3/chapter-10/markdown-syntax-anatomy.png)
+
+![Reference sheet displaying common markdown file extensions and their use cases: .md (standard markdown), .markdown (verbose alternative), .mdown (deprecated), and .mdx (markdown with JSX components for React). Includes table showing which extensions are recognized by GitHub, VS Code, and Docusaurus, with checkmarks indicating compatibility for each platform.](/img/part-3/chapter-10/markdown-file-types-extensions.png)
+
+![Comprehensive markdown syntax cheatsheet organized by category: Headers (# through ######), Emphasis (bold, italic, strikethrough), Lists (ordered, unordered, nested), Code (inline backticks, fenced blocks with language tags), Links (inline, reference-style), Images, Blockquotes, and Tables. Each syntax element shows both the markdown source and rendered output side-by-side for quick reference.](/img/part-3/chapter-10/markdown-cheatsheet-common-syntax.png)
+
 ---
 
 ## Concept 1: Structured Text vs. Unstructured Text
@@ -136,6 +142,8 @@ An AI reading this has to **guess**:
 - How many features are there? (Temperature, conditions, humidity, wind — is that 4 features or 1?)
 - What's required vs optional?
 - What order should things appear?
+
+![Split-screen comparison showing plain text document (left side: dense paragraph with no structure, hard to parse) versus markdown rendered output (right side: clear hierarchy with headings, formatted lists, code blocks). Annotations highlight how structured markdown enables AI parsing and human readability simultaneously.](/img/part-3/chapter-10/plain-text-vs-rendered-markdown.png)
 
 ### Version 2: Structured (Markdown)
 
@@ -197,6 +205,8 @@ The AI reads your markdown specification and figures out:
 ### Layer 3: Implementation Layer (AI generates here)
 
 The AI writes actual code that matches your specification.
+
+![Three-layer architecture diagram showing markdown as Intent Layer (top, human-written specifications defining what to build), AI Reasoning Layer (middle, interpreting structure and planning implementation), and Implementation Layer (bottom, generated code). Arrows show how structured markdown flows down through reasoning to executable code, demonstrating AIDD workflow.](/img/part-3/chapter-10/markdown-intent-layer.png)
 
 **AI's responsibility**: Execute the plan and generate working code.
 

@@ -123,6 +123,8 @@ You'll discover that implementing a language is a bootstrapping problem—you ne
 
 ## Section 2: The Python Execution Pipeline
 
+![Pipeline diagram showing CPython execution flow from Python source code through parsing and bytecode compilation to interpreter execution with virtual machine and C runtime integration](/img/part-4/chapter-30/python-cpython-pipeline.png)
+
 To understand CPython, you need to understand how code becomes execution. There are three main stages:
 
 ### Stage 1: Source Code (Your Python Files)

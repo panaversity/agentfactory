@@ -123,6 +123,8 @@ Before we begin, verify you have the following:
 
 ## Installation
 
+![Installation flowchart showing Node.js check, npx/npm install options, authentication with API key or web login, and verification steps with decision points and success/error paths](/img/part-2/chapter-05/claude-code-installation-authentication-flow.png)
+
 ### Step 1: Install Claude Code Globally
 
 Claude Code offers **four installation methods**. Choose the one that matches your operating system:

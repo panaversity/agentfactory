@@ -40,6 +40,10 @@ Think of a branch as a parallel universe. You can:
 - Compare results
 - Merge the winner, delete the rest
 
+![Branch diagram showing main branch (stable) with feature branches (feature-auth, feature-ui) diverging for development, then merging back via pull requests after review](/img/part-2/chapter-09/branch-workflow-diagram.png)
+
+![Strategic branching diagram showing main (production), develop (integration), feature branches (temporary), hotfix branches (emergency fixes), and release branches (staging), with merge paths and policies](/img/part-2/chapter-09/git-branching-strategy-diagram.png)
+
 This lesson shows you how to use branches for **safe parallel testing** with AI-generated code.
 
 ---
@@ -367,6 +371,8 @@ git switch main
 ```bash
 git merge feature-fast
 ```
+
+![Annotated conflict showing HEAD marker with your changes, divider, and branch marker with their changes, with resolution steps: identify conflict markers, choose changes, remove markers, test, commit](/img/part-2/chapter-09/merge-conflict-resolution-anatomy.png)
 
 **Expected output:**
 ```

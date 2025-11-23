@@ -18,21 +18,6 @@ import PDFViewer from '@site/src/components/PDFViewer';
 
 ---
 
-## Building on Previous Chapters
-
-This chapter integrates skills from earlier chapters in Part 2:
-
-**From Chapter 5 (Claude Code)**: You'll use Claude Code's file integration to commit changes across multiple files simultaneously, building on the project context patterns you learned.
-
-**From Chapter 7 (Bash Essentials)**: Git operations rely heavily on command-line skills. You'll apply your understanding of:
-- File navigation (`pwd`, `cd`) to locate repositories
-- File operations (`ls`, `mkdir`) to manage project structure
-- The supervision pattern (verify location before operations)
-
-**Skills Composition**: By combining Bash navigation + Git version control + AI assistance, you can safely experiment with AI-generated code while maintaining full control over your project.
-
----
-
 ## What You'll Learn
 
 By completing this chapter, you will be able to:
@@ -45,3 +30,7 @@ By completing this chapter, you will be able to:
 - **Create and use Git branches** to test AI-generated changes before merging to main code
 - **Connect local repositories to GitHub** for backup, sharing, and portfolio building
 - **Create pull requests** that document AI assistance and demonstrate professional Git workflows
+
+By combining Bash navigation + Git version control + AI assistance, you can safely experiment with AI-generated code while maintaining full control over your project.
+
+![Workflow showing AI helping at each stage: analyzing diffs for commit messages, reviewing PR changes for suggestions, resolving conflicts by understanding context, with Three Roles framework (Teacher/Student/Co-Worker) highlighted](/img/part-2/chapter-09/ai-assisted-git-workflow.png)

@@ -88,6 +88,8 @@ Make sure you have these before starting:
 
 ## Installation Methods
 
+![Installation flowchart showing Python check, pip/uv install options, API key configuration, authentication verification, and troubleshooting branches](/img/part-2/chapter-06/gemini-cli-installation-setup-flow.png)
+
 There are three ways to install Gemini CLI, depending on your needs:
 
 ### Method 1: Global Installation (Recommended)
@@ -204,6 +206,8 @@ Tips for getting started:
 ╰────────────────────────────────────────────────────────────────────────╯
  ~/Your/Current/Directory       no sandbox       auto
 ```
+
+![Gemini CLI terminal interface showing ASCII logo, welcome tips, input box with prompt, and status bar displaying directory, sandbox mode, and execution mode](/img/part-2/chapter-06/gemini-cli-terminal-interface.png)
 
 **What you see:**
 - **Logo**: The "GEMINI" banner at the top

@@ -103,6 +103,10 @@ A **Pull Request (PR)** is a GitHub feature that lets you propose merging code f
 4. You review changes and add description
 5. You merge PR when satisfied
 
+![Lifecycle flowchart showing PR creation (branch → GitHub), review phase (comments, requested changes, approvals), merge decision (squash, rebase, or merge commit), and branch cleanup](/img/part-2/chapter-09/pull-request-lifecycle-workflow.png)
+
+![Code review interface showing diff view, comment threads, requested changes, approval status, and merge button with options (merge, squash, rebase)](/img/part-2/chapter-09/pull-request-code-review.png)
+
 **Why PRs Matter for AI Development**:
 - **Safety check**: Gives you moment to evaluate AI-generated code before it affects main
 - **Documentation**: Forces you to write WHY you made changes (and if AI helped)

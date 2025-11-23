@@ -85,6 +85,8 @@ Instead of having one global settings file, Claude Code uses a **three-level hie
 
 ## The Three Settings Levels
 
+![Pyramid showing three configuration levels—Global settings (base, system-wide defaults), Project settings (middle, .claude/config for repo), File settings (top, frontmatter overrides)—with precedence arrows showing file > project > global](/img/part-2/chapter-05/settings-hierarchy-global-project-file.png)
+
 Claude Code settings exist at three levels, from general to specific:
 
 ### Level 1: User Settings (Most General)

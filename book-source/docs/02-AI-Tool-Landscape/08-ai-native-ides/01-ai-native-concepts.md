@@ -100,6 +100,8 @@ Let's compare the two approaches directly:
 | **Ecosystem** | Smaller (newer tools) | Larger (mature platforms) |
 | **Learning Curve** | New interface to learn | Familiar if you know base editor |
 
+![Architecture diagram showing IDE sending code context to AI service, model processing with retrieval/reasoning, response generation, and integration back into editor with inline suggestions, chat, and refactoring](/img/part-2/chapter-08/ai-ide-integration-architecture.png)
+
 ### When Does Architecture Matter?
 
 **Architecture matters more for**:

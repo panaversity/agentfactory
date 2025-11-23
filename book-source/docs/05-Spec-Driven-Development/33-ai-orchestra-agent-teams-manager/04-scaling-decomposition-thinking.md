@@ -99,6 +99,8 @@ Pull up your git worktrees, your specs, and your integration test results. Ask y
 - Did one feature take 3x longer than others, becoming a bottleneck?
 - How many times did you need to rework specs because contracts were unclear?
 
+![Graph showing communication complexity scaling: 3 developers = 3 connections, 10 developers = 45 connections, demonstrating quadratic growth and need for orchestration](/img/part-5/chapter-33/communication-complexity-graph.png)
+
 ### Measuring Your Decomposition Quality
 
 Use this rubric to rate your 3-feature system honestly (1 = poor, 5 = excellent):

@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "last_updated": "2025-11-21T21:58:00Z",
+  "repository": "tutorsgpt/md",
+  "visual_skills_version": "v4.0.0",
+  "total_assets": 0,
+  "assets_by_status": {
+    "production": 0,
+    "pending": 0,
+    "deprecated": 0
+  },
+  "assets_by_type": {
+    "static": 0,
+    "interactive": 0,
+    "text_in_image": 0,
+    "multi_image": 0
+  },
+  "assets_by_proficiency": {
+    "A1": 0,
+    "A2": 0,
+    "B1": 0,
+    "B2": 0,
+    "C1": 0,
+    "C2": 0
+  },
+  "grounding_stats": {
+    "grounded": 0,
+    "ungrounded": 0
+  },
+  "assets": []
+}

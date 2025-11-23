@@ -383,6 +383,8 @@ Features usually don't have a required order.
 
 Installation steps must be in the right sequence.
 
+![Side-by-side comparison clarifying when to use lists versus code blocks: Left panel shows unordered lists (bullet points for features, independent items), ordered lists (numbered steps for sequential processes), and when each applies. Right panel shows fenced code blocks (triple backticks for showing code examples, command output, or multi-line text). Decision tree helps identify: "Are these separate ideas/steps?" → Lists. "Are you showing code/output?" → Code blocks.](/img/part-3/chapter-10/lists-vs-code-blocks-distinction.png)
+
 ---
 
 ## Why This Matters for AI

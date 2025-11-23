@@ -259,6 +259,8 @@ print(f"{val3} is decimal: {is_decimal}")  # True
 
 **Type casting** (also called **type conversion**) means converting data from one type to another.
 
+![Network diagram showing types (blue nodes: str, int, float, bool) connected by casting functions with green edges (valid: int("42"), str(42)) and red edges (invalid: int("hello"), float("text"))](/img/part-4/chapter-15/type-casting-flow-valid-invalid-conversions.png)
+
 ### Explicit Casting: You Control It
 
 You've been doing this without realizing it. When you write `int("25")`, you're explicitly converting a string to an integer.

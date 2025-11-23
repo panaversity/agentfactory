@@ -97,6 +97,8 @@ Think of it as a **persistent project brief** that travels with your code:
 
 When Claude Code starts a new session, it reads CLAUDE.md automatically. Claude **immediately understands your project** without you saying a word.
 
+![Four-layer context architecture showing Working Directory (base), .claude/context files (project knowledge), Message History (conversation state), and Current Tools (active capabilities), with information flow arrows](/img/part-2/chapter-05/claude-code-context-architecture-four-layers.png)
+
 #### 💬 AI Colearning Prompt
 
 > "Why is having persistent context in CLAUDE.md more efficient than repeating project details in every session?"

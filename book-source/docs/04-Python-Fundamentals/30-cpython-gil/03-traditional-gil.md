@@ -122,6 +122,8 @@ In this lesson, you'll understand:
 
 ### The Basic Definition
 
+![Diagram illustrating Global Interpreter Lock mechanism showing how only one thread can execute Python bytecode at a time, with threads taking turns acquiring and releasing the GIL, preventing true parallelism](/img/part-4/chapter-30/python-gil-diagram.png)
+
 The **Global Interpreter Lock** is a mutex (mutual exclusion lock) that protects CPython's interpreter state. Think of it like a single-user license for a room: only one thread can hold the lock and execute Python bytecode at a time.
 
 ```

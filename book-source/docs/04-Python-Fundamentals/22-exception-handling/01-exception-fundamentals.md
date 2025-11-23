@@ -320,6 +320,8 @@ Create a markdown file called `exception_reference_guide.md` with this structure
 
 ## Common Exception Types
 
+![Tree diagram showing Python exception hierarchy across three tiers: root BaseException (gray) branches to Exception (blue) which branches to seven common exceptions with descriptions—ValueError in red ("Invalid value type"), TypeError in red ("Wrong data type"), KeyError in orange ("Missing dictionary key"), IndexError in orange ("List index out of range"), AttributeError in yellow ("Missing attribute"), FileNotFoundError in purple ("File doesn't exist"), ZeroDivisionError in red ("Division by zero")—connecting lines show inheritance relationships, colors indicate severity (red for critical, orange for common, yellow/purple for specific errors)](/img/part-4/chapter-22/python-exception-hierarchy-tree.png)
+
 ### ValueError
 **When it occurs**: Function receives correct type but inappropriate value
 **Common triggers**:

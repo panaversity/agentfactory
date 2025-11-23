@@ -96,6 +96,10 @@ Both set temporary variables. Both verified with `echo $`. Both will disappear w
 
 **Key insight**: Temporary variables are useful for testing but disappear when you exit the terminal.
 
+![Diagram showing export command syntax (export VAR=value), variable scope (current shell session only), and echo command retrieving variable value with $ prefix](/img/part-2/chapter-07/bash-environment-variables-export.png)
+
+![Flow diagram showing shell startup reading .bashrc/.zshrc, loading environment variables (PATH, HOME, USER), and programs accessing these variables at runtime](/img/part-2/chapter-07/environment-variables-flow.png)
+
 #### 💬 AI Colearning Prompt
 > "When would you use `export` for temporary configuration vs. a `.env` file for persistent configuration?"
 

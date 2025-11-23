@@ -63,6 +63,8 @@ INTENT → CONSTRAINTS → SUCCESS CRITERIA
 **Constraints**: Rules that MUST be followed (boundaries)
 **Success Criteria**: How you'll know the output is good (validation)
 
+![Four-component prompt template diagram showing: Persona section (purple, "Act as [expert role]"), Task section (blue, "Create [specific deliverable]"), Context section (orange, "For [target audience/use case] with [technical constraints]"), and Format section (green, "Output as [structure/format]"). Right side shows filled example: "Act as senior backend developer", "Create authentication API", "For mobile app with JWT tokens", "Output as Python FastAPI code". Arrows connect template components to concrete example.](/img/part-3/chapter-11/prompt-pattern-template-four-components.png)
+
 Let's break down each component.
 
 ---
@@ -283,6 +285,8 @@ conventional commits format (<type>(<scope>): <description>)
 **These verbs tell AI to BUILD, not explain.** You're directing implementation.
 
 When you use CREATE, DEBUG, REFACTOR, GENERATE — you're making AI a development partner who BUILDS code, scripts, and documentation with you. This is AI-Driven Development: specifying WHAT you need (using precise verbs + constraints), and AI generates HOW to implement it.
+
+![Diagram showing command structure formula with three components connected by plus signs: VERB (action to take) + TARGET (what to act upon) + DESIRED OUTCOME (specific result wanted). Arrow points downward to concrete example showing formula in action: "Create" + "Python function" + "validates email with regex". Clean, minimalist design emphasizes the 3-part pattern for constructing effective AI prompts.](/img/part-3/chapter-10/command-structure-formula.png)
 
 **In the next lesson**, you'll see how iteration refines these verb-based prompts from 60% to 97% through collaboration.
 

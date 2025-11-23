@@ -1325,5 +1325,7 @@ In this lesson, you've discovered how Gemini CLI extensions transform setup shar
 - Creating basic extensions using templates
 - Deciding when extensions are valuable vs. overkill
 
+![Comparison matrix showing Claude Code, Gemini CLI, Cursor, and Zed across dimensions: autonomy level, context size, multimodal support, offline capability, learning curve, and ideal use cases](/img/part-2/chapter-06/tool-comparison-matrix-four-tools.png)
+
 **Key Insight**:
 Extensions aren't just about bundling—they're about **maintaining consistency** across collaborators and **evolving setups** without resending files. The transformation from 45-minute manual setup to 2-minute installation isn't just about speed; it's about removing friction from learning and collaboration.

@@ -240,6 +240,8 @@ Let's calculate what vague specification costs:
 
 **Total time: 10-20 hours for a feature that could have been built right in 4-6 hours if the specification was clear upfront.**
 
+![Timeline comparison showing vague prompt approach taking 10-20 hours across multiple iterations versus clear specification approach taking 4-6 hours with upfront collaboration](/img/part-5/chapter-31/vague-vs-clear-spec-timeline.png)
+
 #### 🎓 Expert Insight
 > In AI-native development, you don't iterate your way to clarity—you collaborate upfront to achieve clarity. Vague specs aren't "good enough to start"; they're expensive technical debt disguised as rapid prototyping. The time you save skipping specification work gets multiplied 5-10x in iteration cycles.
 

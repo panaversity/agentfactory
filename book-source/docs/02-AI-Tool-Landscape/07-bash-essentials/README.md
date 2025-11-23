@@ -40,3 +40,9 @@ The command-line skills you develop here become the foundation for professional 
 **Chapter 10 (Git & GitHub)**: Git operations happen in the terminal. You'll use `pwd` to verify repository location, `ls` to see which files are tracked, and the supervision pattern (check location → verify files → execute safely) when committing code.
 
 **Future Chapters**: Every professional tool you'll use—Python package managers, Docker, Kubernetes, CI/CD pipelines—operates through the command line. Mastering Bash fundamentals now means you can confidently supervise AI operations across your entire development career.
+
+## Quick Reference
+
+![Reference card showing 12 essential bash commands (ls, cd, pwd, mkdir, rm, cp, mv, cat, grep, find) with syntax, common flags, and practical usage examples](/img/part-2/chapter-07/bash-commands-reference-card.png)
+
+![Common CLI patterns showing command chaining (&&, ||, ;), pipes (|), redirection (>, >>), background processes (&), and command substitution ($())](/img/part-2/chapter-07/bash-common-cli-patterns.png)

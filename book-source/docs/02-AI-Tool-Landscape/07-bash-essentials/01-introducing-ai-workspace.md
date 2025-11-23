@@ -88,6 +88,8 @@ A black or white window with a blinking cursor. This is your **command prompt**â
 user@computer:~$
 ```
 
+![Annotated terminal screenshot showing prompt (username@host), command (ls), arguments (-la /home), and output (file listing), with labels explaining each component and their purposes](/img/part-2/chapter-07/terminal-anatomy-annotated.png)
+
 That `$` symbol means "I'm ready for your command."
 
 ### Your First Command: Say Hello
@@ -132,6 +134,8 @@ By the end of this lesson, you'll be able to ask your AI companion three simple 
 1. **Where are you working right now?** (It will show you the path)
 2. **What files can you see here?** (It will list them for you)
 3. **Why does location matter?** (It affects what files it can access and operate on)
+
+![Directory tree diagram showing typical workspace structure (home directory with Documents, projects, src folders), current working directory highlighted, and common file types indicated](/img/part-2/chapter-07/bash-workspace-directory-tree.png)
 
 ---
 

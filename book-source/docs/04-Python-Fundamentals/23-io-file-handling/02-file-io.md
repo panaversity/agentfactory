@@ -114,6 +114,8 @@ This lesson teaches you how to safely read from and write to files using Python'
 
 Let's start with the most important pattern in file I/O: the **context manager**, accessed using Python's `with` statement.
 
+![Diagram showing Python file operations flow including open, read/write, and close operations with context manager pattern ensuring automatic cleanup](/img/part-4/chapter-23/python-file-operations-flow.png)
+
 ### The Problem: What Happens Without Context Managers
 
 Without context managers, you might open a file like this:
@@ -132,6 +134,8 @@ This approach has serious problems:
 - **Data corruption**: Writing to files without properly closing them can lose data
 
 ### The Solution: Context Managers with `with`
+
+![Comparison showing manual file handling with explicit open/close versus context manager using with statement, highlighting automatic resource cleanup and exception safety](/img/part-4/chapter-23/python-context-manager-comparison.png)
 
 Context managers automatically handle setup and cleanup:
 

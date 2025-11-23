@@ -76,6 +76,8 @@ Every successful prompt refinement follows this loop:
 Initial Prompt → AI Output → Analyze → Refine → Improved Output → Repeat
 ```
 
+![Circular iterative refinement workflow showing: Initial Prompt (starting point, basic intent), AI Output (first generation, 60% quality), Review & Analyze (identify gaps, missing constraints, wrong assumptions), Refine Prompt (add specificity, examples, constraints), Better AI Output (75% quality), continuing in upward spiral. Each iteration adds layer of precision (structure → examples → reasoning) moving from 60% to 97% quality through collaborative convergence.](/img/part-3/chapter-11/prompt-iteration-refinement-loop.png)
+
 Let's break down each step:
 
 ### Anthropic's Progressive Refinement: Adding Layers of Precision

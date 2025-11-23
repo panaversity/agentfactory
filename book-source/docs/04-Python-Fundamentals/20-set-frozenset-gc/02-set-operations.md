@@ -100,6 +100,8 @@ version: "1.0.0"
 
 # Set Operations
 
+![Venn diagrams showing Python set operations: union (combining all elements), intersection (common elements), difference (elements in A not in B), and symmetric difference (elements in either but not both)](/img/part-4/chapter-20/python-set-operations-venn-diagrams.png)
+
 Now that you understand what sets are and how to create them, it's time to discover their real power. Sets aren't just useful for storing unique items—they're designed to perform mathematical operations on collections. In this lesson, you'll learn the four fundamental set operations that make sets essential for data comparison, filtering, and analysis.
 
 When you need to find common interests between people, identify differences in datasets, or combine information without duplicates, set operations are your answer. And unlike many technical concepts, these operations have intuitive real-world meanings.

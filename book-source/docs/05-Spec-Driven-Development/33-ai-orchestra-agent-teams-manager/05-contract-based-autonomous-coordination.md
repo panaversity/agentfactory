@@ -98,6 +98,8 @@ Contracts solve all of these:
 
 This lesson teaches you HOW to write contracts that enable 5-7 agent coordination without synchronous meetings or constant oversight.
 
+![Architecture diagram showing Manager Agent orchestrating multiple Worker Agents through contract-based coordination with shared specification as source of truth](/img/part-5/chapter-33/orchestration-architecture.png)
+
 ---
 
 ## Why Contracts Enable Autonomy

@@ -118,6 +118,8 @@ Claude Code introduced an **agentic assistance model**:
 
 The AI becomes an **agent**—an active participant in your development workflow, not just a question-answering service.
 
+![Split-screen workflow comparison showing traditional chat AI requiring manual copy-paste steps (left, red bottlenecks) versus Claude Code's autonomous workflow with file context and command execution (right, green flow)](/img/part-2/chapter-05/traditional-chat-vs-claude-code-workflow.png)
+
 ### Comparison: Passive vs. Agentic AI Assistance
 
 | Aspect | Passive AI (Chat-based) | Agentic AI (Claude Code) |

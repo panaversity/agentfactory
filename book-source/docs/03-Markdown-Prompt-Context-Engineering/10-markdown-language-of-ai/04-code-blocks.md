@@ -172,6 +172,8 @@ Use these tags based on what you're showing:
 - **`json`** - Data formats
 - **`yaml`** - Configuration files
 
+![Four code blocks displayed side-by-side showing syntax highlighting differences: Python code (blue keywords, green strings), JavaScript (purple keywords, orange functions), Bash commands (gray comments, blue flags), and JSON (red keys, green values). Each block shows the language identifier (```python, ```js, ```bash, ```json) at the top demonstrating how language tags enable proper syntax highlighting.](/img/part-3/chapter-10/code-block-syntax-highlighting.png)
+
 ### Why Language Tags Matter
 
 Language tags help:
@@ -202,6 +204,10 @@ print(greet("Alice"))
 ```
 
 The `python` tag makes it clear this is Python code to implement.
+
+![Demonstration showing how backslash escape sequences work in markdown code blocks: Top section shows raw markdown with \` backticks escaped as \\\`, \n newlines shown literally, and \\ backslashes escaped. Bottom section shows rendered output where escaped characters display correctly. Includes common escape patterns: \\` (literal backtick), \\\\ (literal backslash), \\n in strings (preserved in code), and \\* \\_ (literal asterisk/underscore outside code).](/img/part-3/chapter-10/escape-sequences-backslashes.png)
+
+![Diagram illustrating newline handling in markdown blocks: Shows three scenarios - (1) Fenced code blocks preserve all newlines exactly as typed, (2) Regular paragraphs collapse single newlines into spaces (need double newline for paragraph break), (3) HTML line breaks \<br\> force newlines in paragraphs. Examples demonstrate each with source markdown and rendered output side-by-side.](/img/part-3/chapter-10/newline-escaping-markdown-blocks.png)
 
 #### 🎓 Expert Insight
 

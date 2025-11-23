@@ -62,6 +62,10 @@ By the end of this lesson, you'll understand how Spec-Kit Plus captures and reus
 
 Spec-Kit Plus is an **SDD-RI framework** built around one core idea: **capture intelligence, not just deliver code**.
 
+![Architecture diagram showing Spec-Kit-Plus workflow with Constitution, Specification, Planning, Tasks, and Implementation phases](/img/part-5/chapter-32/spec-kit-plus-architecture.png)
+
+![Eight-phase Spec-Kit-Plus workflow showing Constitution → Specify → Clarify → Plan → Tasks → Implement → Validate → Refactor progression](/img/part-5/chapter-32/eight-phase-workflow.png)
+
 Every feature you build generates two outputs:
 1. **Working code** (the deliverable - ephemeral, could be rewritten)
 2. **Reusable intelligence** (reasoning patterns, decision frameworks, AI prompts that work - permanent)

@@ -127,6 +127,8 @@ Notice: `type(Dog)` returns `type`, not `<class 'Dog'>`. The class object itself
 
 **This is the first big insight**: *In Python, classes are objects too. And the class that creates them is called a metaclass.*
 
+![Flow diagram showing Python class creation process from class definition through type metaclass, __new__ and __init__ methods, to final class object instantiation](/img/part-4/chapter-27/python-class-creation-flow.png)
+
 ## Core Concept 2: The `type` Metaclass
 
 The `type` metaclass is special. It's the default metaclass for every class you create, and it can also act as a **class factory**—a function that creates classes dynamically.
@@ -192,6 +194,8 @@ When you write:
 class MyClass:
     attr = 42
 ```
+
+![Flow diagram illustrating Python class creation process from class definition through metaclass __new__ and __init__ methods, showing how type creates class objects and the role of namespace, bases, and class name](/img/part-4/chapter-27/python-class-creation-flow.png)
 
 Python executes this flow:
 

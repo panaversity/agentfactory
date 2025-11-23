@@ -192,6 +192,8 @@ This is the **virtual environment**—a special folder that contains all the pac
 
 Without isolation, installing both projects on the same computer would cause conflicts. The second installation would overwrite the first. **Virtual environments solve this:** each project gets its own separate `requests` installation.
 
+![Three-tier diagram showing Global Python (gray, system-wide with conflict indicators) versus isolated Venv A (blue, Django 3) and Venv B (green, Django 4), with arrows demonstrating dependency isolation](/img/part-4/chapter-13/virtual-environment-isolation-concept.png)
+
 #### 🎓 Expert Insight: The Separate Toolbox Analogy
 
 > Think of your computer as a warehouse. Without virtual environments, all your projects share one toolbox. If Project A needs a hammer of size 10 and Project B needs a hammer of size 12, you'd have a conflict. Virtual environments give each project its own toolbox. Problem solved.

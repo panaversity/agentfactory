@@ -59,6 +59,8 @@ Syntax is cheap; organization is gold. The `import` statement is easy to write, 
 
 ## Import Pattern 1: `import module_name` — Full Module Access
 
+![Diagram showing Python module import patterns: import math (full module), from math import sqrt (specific function), from math import sqrt as sq (aliasing), with namespace implications and best practices](/img/part-4/chapter-21/python-module-import-patterns.png)
+
 **What it does**: The statement `import math` brings the entire math module into your script. You access functions and variables using dot notation: `math.function_name()`.
 
 ### 💻 Code Idea: Accessing a Module's Functions

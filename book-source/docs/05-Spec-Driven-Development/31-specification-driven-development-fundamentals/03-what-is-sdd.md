@@ -172,6 +172,8 @@ When you write these criteria first, you're writing your acceptance tests. The i
 
 A production-ready spec.md file has these sections:
 
+![Diagram showing four core sections of a specification: Intent, Success Criteria, Constraints, and Non-Goals, with examples illustrating each section](/img/part-5/chapter-31/spec-anatomy-four-sections.png)
+
 ### 1. Intent (What problem does this solve?)
 
 ```

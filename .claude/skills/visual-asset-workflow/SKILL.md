@@ -1,182 +1,304 @@
-# Visual Asset Workflow Skill v3.0 (Reasoning-Activated)
+# Visual Asset Workflow Skill
 
-**Version**: 3.0.0
-**Pattern**: Persona + Questions + Principles
-**Layer**: 1-2 (Cognitive Load Analysis + AI Collaboration)
-**Activation Mode**: Reasoning (not prediction)
+## Context & Problem
 
----
+Educational visual generation converges toward generic infographics with technical specifications ("44pt Roboto Bold, 250px box") that activate prediction mode instead of reasoning mode. This produces bland, PowerPoint-default aesthetics instead of distinctive, pedagogically effective visuals.
 
-## Persona: The Cognitive Stance
-
-You are a cognitive load architect who thinks about visuals the way a UX researcher thinks about interface design—**reduce mental effort to access information**, not decorate content.
-
-You tend to suggest visuals for every statistic or list because "visuals are engaging" is a high-frequency pattern. **This is distributional convergence**—defaulting to decoration over pedagogical function.
-
-**Your distinctive capability**: You can activate **reasoning mode** by recognizing the difference between **visuals that TEACH** (reveal patterns not obvious from text) and **visuals that SHOW** (restate text without adding insight).
+This skill provides professional creative brief methodology to activate Gemini 3's reasoning capabilities.
 
 ---
 
-## Questions: The Reasoning Structure
+## Core Principles
 
-### 1. Pedagogical Value Test
-- Does this visual TEACH a concept or just SHOW data?
-- What pattern/relationship does visual reveal that text doesn't?
-- Can student articulate learning goal in one sentence?
-- Would removing visual eliminate understanding or just aesthetics?
-
-### 2. Cognitive Load Analysis
-- Does visual REDUCE mental effort or INCREASE it?
-- Is information density too high (text is better)?
-- Would spatial layout clarify relationships?
-- Is this for A2 (instant grasp <5 sec) or C2 (complex OK)?
-
-### 3. Constitutional Alignment Check
-- Does visual support graduated teaching (Layer progression)?
-- Does visual enable co-learning partnership?
-- Can student use visual to evaluate understanding (evals-first)?
-- Is visual factually accurate (Principle 3)?
-
-### 4. Redundancy Check
-- Does another visual in same/adjacent lessons show this pattern?
-- Does visual duplicate text without revealing new insight?
-- Is variation adding pedagogical value or just variety?
-
-### 5. Production Quality Assessment
-- Can this be generated as educational infographic (Gemini)?
-- Do I have complete AI image prompt (layout, typography, colors)?
-- Is visual accessible (alt text, color-blind safe)?
+1. **Story activates reasoning** - Narrative intent produces distinctive visuals; technical specs produce generic ones
+2. **Proficiency dictates complexity** - A2 students need <5 sec grasp; C2 professionals handle dense information
+3. **Prerequisites gate content** - Visuals cannot assume knowledge students don't have yet
+4. **Pedagogy drives hierarchy** - Visual weight teaches importance, not arbitrary aesthetics
 
 ---
 
-## Principles: The Decision Framework
+## Dimensional Guidance
 
-### Principle 1: TEACH Over SHOW (Message Test)
-**Heuristic**: If you can't state teaching goal in one sentence, visual adds no pedagogical value.
+### Planning Before Execution
 
-**Examples**:
-- ✅ "This visual teaches that developer value compounds through multiplication at scale"
-- ❌ "This visual shows France GDP is $3T" (restates fact, doesn't teach concept)
+**Avoid:** Jumping into visual analysis without context
+**Prefer:** Strategic planning phase (Q0)
 
-### Principle 2: Reduce Cognitive Load Over Decoration
-**Heuristic**: Visual must make information EASIER to process, not just prettier.
+Read FIRST:
+- `book-source/docs/chapter-index.md` → Extract part, proficiency (A2/B1/C2), prerequisites
+- `book-source/docs/[part]/[chapter]/README.md` → Understand lesson structure
 
-**High-Value Patterns**:
-- Statistics Dashboard (3-6 metrics scannab le at glance)
-- Timeline/Evolution (progression across stages)
-- Comparison Grid (before/after, A vs B)
-- Process Map (sequential steps with causality)
+Detect conflicts BEFORE work:
+- Proficiency-complexity mismatch (complex visual for A2 beginners)
+- Prerequisite violations (Python code when students haven't learned it)
+- Pedagogical layer incoherence (Layer 1 content using Layer 4 approaches)
 
-**Low-Value Patterns** (text is better):
-- Single statistic (just one number)
-- Short lists (2-3 items)
-- Code examples (code blocks are visual enough)
+Output strategic plan, WAIT for approval before proceeding.
 
-### Principle 3: Factual Accuracy First (No Fabrication)
-**Heuristic**: Only visualize fact-checked content. No hallucinated data.
+**Principle:** Plan prevents wasted work (Chapter 9 failure: 5 wrong lessons from skipping planning)
 
-### Principle 4: Proficiency-Appropriate Complexity
-**Heuristic**: A2 visuals must be instantly graspable (<5 sec), C2 can be complex.
+---
 
-### Principle 5: Non-Redundant Across Lessons
-**Heuristic**: Each visual must have unique teaching goal.
+### Prompt Structure: Professional Creative Briefs
 
-### Principle 6: Complete AI Image Prompts
-**Heuristic**: Generate full prompts (layout, typography, colors, dimensions) for image-generator skill.
-
-**Prompt Template**:
+**Avoid:** Technical specifications
 ```
-LAYOUT: [Infographic structure]
-TYPOGRAPHY: [Font choices, hierarchy]
-COLORS: [Palette with accessibility]
-CONTENT ELEMENTS: [What to display]
-DIMENSIONS: [1200x800px standard]
-STYLE: [Educational, professional, clean]
+❌ "Title: 44pt Roboto Bold at (50, 20)"
+❌ "Box: 250px × 90px, #aaaaaa, 8px corners"
+❌ "Shadow: 4px offset, 8px blur"
 ```
 
----
-
-## Anti-Convergence: Meta-Awareness
-
-### Convergence Point 1: Decorative Visuals
-**Detection**: "Let's add a visual here to break up text"
-**Self-correction**: Apply Message Test—does it TEACH?
-**Check**: "What concept does this visual teach in one sentence?"
-
-### Convergence Point 2: Redundant Patterns
-**Detection**: Multiple visuals showing same pattern
-**Self-correction**: Keep first, remove duplicates
-**Check**: "Is this teaching goal already covered?"
-
-### Convergence Point 3: Text-as-Image
-**Detection**: Converting list to visual list (no insight gained)
-**Self-correction**: Keep as text, save visuals for complex patterns
-**Check**: "Does spatial layout reveal relationship text can't?"
-
-### Convergence Point 4: Complexity Overload
-**Detection**: Visual too dense for target proficiency (A2)
-**Self-correction**: Simplify or split into multiple visuals
-**Check**: "Can A2 learner grasp this in <5 seconds?"
-
----
-
-## Integration with Other Skills
-
-- **→ image-generator**: Provides AI prompts for infographic generation
-- **← fact-check-lesson**: Must run BEFORE visual planning (no fabricated data)
-- **→ technical-clarity**: Visual accessibility aligns with zero gatekeeping
-
----
-
-## Workflow Output
-
-**Embed prompts as HTML comments in markdown**:
-```markdown
-<!-- VISUAL ASSET 1: Developer Value Multiplication
-TEACHING GOAL: This visual teaches that developer value compounds through scale multiplication, not linear addition.
-
-IMAGE GENERATION PROMPT:
-LAYOUT: Left-to-right flow diagram showing: Individual Developer ($100K) → 30M Developers → Economic Impact ($3T = France GDP)
-TYPOGRAPHY: Bold numbers (Impact Sans), annotations in clean sans-serif
-COLORS: Professional blue gradient (#2563eb to #3b82f6), gold accent for $3T
-CONTENT ELEMENTS: 3 connected boxes with multiplication symbols between, labeled "Individual," "Multiplication at Scale," "Transformative Impact"
-DIMENSIONS: 1200x600px (2:1 ratio for inline display)
-STYLE: Clean educational infographic, minimal decoration, high contrast
-
-SUGGESTED FILENAME: developer-value-multiplication.png
-ALT TEXT: "Flow diagram showing individual developer value ($100K) multiplying across 30M developers to create $3T economic impact equivalent to France's GDP"
--->
+**Prefer:** Story + Intent + Metaphor
+```
+✅ The Story: [1-2 sentence narrative of what's visualized]
+✅ Emotional Intent: Should feel [exponential growth, surprising magnitude]
+✅ Visual Metaphor: [Multiplication cascade - like compound interest]
+✅ Key Insight: [ONE thing students must grasp]
+✅ Color Semantics: Blue (#2563eb) = Authority (teaches governance concept)
+✅ Typography Hierarchy: Largest = Key insight (not arbitrary sizing)
+✅ Pedagogical Reasoning: Why these choices serve teaching
 ```
 
-**Audit Report** (at end of lesson):
-```markdown
-## Visual Assets Audit Report
+**Principle:** Creative briefs activate reasoning mode; specifications activate prediction mode
 
-### Identified Opportunities: 3
-1. ✅ Developer Value Multiplication (APPROVED - teaches compounding concept)
-2. ✅ AI Adoption Timeline (APPROVED - reveals acceleration pattern)
-3. ❌ List of AI Tools (REJECTED - text sufficient, no pattern revealed)
+**Why it matters:** Gemini 3 reasons about HOW to achieve intent → Distinctive visuals instead of generic
 
-### Teaching Goals Met:
-- Concept 1: Scale multiplication principle
-- Concept 2: Exponential vs linear growth
+---
 
-### Prompts Generated: 2
-All embedded in lesson markdown as HTML comments, ready for image-generator skill.
+### Token Conservation Strategy
+
+**When:** Batch mode with >8 visuals OR continuation session
+
+**Apply condensation while preserving reasoning activation:**
+
+**ALWAYS KEEP:**
+- Story (1-2 sentence narrative)
+- Emotional Intent (what it should FEEL like)
+- Visual Metaphor (universal concept)
+- Key Insight (ONE thing students must grasp)
+- Color semantics with hex codes (#2563eb)
+- Pedagogical reasoning (why these choices)
+
+**CONDENSE:**
+- Long examples → Short labels
+- Verbose descriptions → Bullet points
+- Repeated patterns → Compact notation
+
+**NEVER REMOVE:**
+- Narrative elements
+- Intent statements
+- Reasoning explanations
+
+**Example:**
+```
+FULL: "Top Layer shows the Coordinator at center top with label..."
+CONDENSED: "Top Layer - Coordinator: Center top: 'Orchestrator'..."
 ```
 
----
+**Target:** 60-70% token reduction, 100% reasoning activation preserved
 
-## Success Metrics
-
-**Reasoning Activation Score**: 4/4
-- ✅ Persona: Cognitive load architect (pedagogical function over decoration)
-- ✅ Questions: 5 question sets for visual value analysis
-- ✅ Principles: 6 principles guide visual selection
-- ✅ Meta-awareness: 4 convergence points
-
-**Comparison**: v1.0 (procedural audit) → v3.0 (reasoning-activated selection)
+**Principle:** Efficiency through compression, not through elimination of reasoning triggers
 
 ---
 
-**Ready to use**: Invoke to analyze lessons for high-value visual opportunities using cognitive load theory and constitutional pedagogy, generating complete AI image prompts for approved visuals.
+### Proficiency-Complexity Alignment
+
+**Avoid:** One-size-fits-all complexity
+
+**Prefer:** Proficiency-gated constraints
+
+**A2 Beginner** (Non-negotiable limits):
+- Max 5-7 elements
+- <5 second grasp
+- Static only (no interactive)
+- Max 2×2 grids
+- Clear hierarchy (largest = most important)
+
+**B1 Intermediate**:
+- Max 7-10 elements
+- <10 second grasp
+- Interactive Tier 1 OK (tap-to-reveal)
+- Max 3×3 grids
+
+**C2 Professional**:
+- No artificial limits
+- Dense infographics OK
+- Full interactive architecture
+- Production complexity
+
+**Principle:** Overwhelming A2 students = learning failure; artificial simplicity for C2 = patronizing
+
+---
+
+### Prerequisite Validation Gate
+
+**Avoid:** Assuming knowledge students don't have
+
+**Prefer:** Validate against chapter prerequisites
+
+**Detection:**
+- Check Part number: Part 1-2 = no programming, Part 3 = markdown/prompts, Part 4+ = Python
+- Check prerequisite list from chapter-index.md
+
+**Example Violations:**
+- ❌ Python code in Chapter 9 (Part 3 - students haven't learned it)
+- ❌ Git commands in Part 2 (students haven't learned CLI)
+
+**Exception:** Meta-level teaching OK
+- ✅ Teaching "markdown code block syntax" by showing Python code block (teaches markdown, not Python)
+
+**Principle:** Visual cannot require unknown knowledge
+
+---
+
+### Constitutional Alignment
+
+**Avoid:** Decorative visuals without pedagogical purpose
+
+**Prefer:** Every visual serves specific learning objective
+
+**Principle 3 (Factual Accuracy):**
+- Verify all statistics, dates, technical specs
+- Enable Google Search grounding for factual claims
+- Cite sources for data
+
+**Principle 7 (Minimal Content):**
+- Reject "let's add a visual for variety"
+- Every element must teach something
+- Remove non-teaching decoration
+
+**Principle:** Visual decisions align with project constitution
+
+---
+
+### Pedagogical Layer Coherence
+
+**Avoid:** Layer mismatch
+
+**Prefer:** Visual approach matches chapter's pedagogical layer
+
+**L1 (Manual Foundation):**
+- Step-by-step diagrams
+- Concrete examples
+- Clear labeling (building vocabulary)
+
+**L2 (AI Collaboration):**
+- Before/after comparisons
+- Iteration flows
+- Three Roles Framework INVISIBLE (no role labels)
+
+**L3 (Intelligence Design):**
+- Architecture diagrams
+- Reusable pattern illustrations
+
+**L4 (Spec-Driven):**
+- Specification → implementation flow
+- Component composition diagrams
+
+**Principle:** Visual design reinforces pedagogical approach
+
+---
+
+### Duplicate Prevention Protocol
+
+**Avoid:** Generating different prompts that produce the same visual
+
+**Prevent BEFORE generation:**
+
+1. **Review existing visuals in chapter:**
+   - List all `*.png` files in target chapter directory
+   - Read corresponding `*.prompt.md` files
+   - Identify visual patterns already used
+
+2. **Validate prompt distinctiveness:**
+   - Does this prompt's intent differ clearly from existing prompts?
+   - Example conflicts to detect:
+     - ❌ Timeline + Graph → Both might render as timeline
+     - ❌ Architecture + Workflow → Both might render as hierarchy
+     - ❌ Same metaphor, different names → Same visual result
+
+3. **Differentiation strategy:**
+   - Make visual type explicit in story ("GRAPH showing exponential growth" not just "showing growth")
+   - Use distinct metaphors (cascade vs tree vs timeline vs curve)
+   - Specify unique structural elements (2D axes vs linear flow vs hierarchical pyramid)
+
+**Detect AFTER generation (in image-generator):**
+- Visual comparison with existing chapter images
+- Prompt alignment check (does output match brief intent?)
+
+**Principle:** Prevention cheaper than rework
+
+---
+
+## Anti-Patterns
+
+**Never:**
+- Generate visuals without reading chapter-index.md first (skipping context)
+- Use pixel specifications, font sizes, coordinates in prompts (kills reasoning)
+- Assume knowledge not in prerequisites (prerequisite violation)
+- Create decorative visuals without learning objective (Principle 7 violation)
+- Apply same complexity to A2 and C2 students (proficiency mismatch)
+- Create prompts without checking for duplicate visual patterns (causes rework)
+
+**Even if it seems reasonable:**
+- Don't use Python examples in Part 3 (students don't know Python yet)
+- Don't create complex multi-step visuals for A2 (cognitive overload)
+- Don't specify "44pt Roboto Bold" (removes Gemini's judgment)
+- Don't skip distinctiveness validation "because they have different filenames" (names differ, visuals might not)
+
+---
+
+## Creative Variance
+
+You tend to default to comparison diagrams even with story-driven prompts. Vary visual types:
+
+- **Timeline progressions** (evolution over time)
+- **Multiplication cascades** (compound growth visualization)
+- **Hierarchical authority flows** (governance models)
+- **Transformation sequences** (before → after → impact)
+- **Conceptual metaphors** (abstract → concrete mapping)
+
+Match visual type to story, not habit.
+
+---
+
+## Post-Generation Reflection
+
+After batch completion, analyze systematically (Q8):
+
+**Success patterns:**
+- Quality gate performance (which caught most issues?)
+- Average iterations (efficiency indicator)
+- Time vs estimate (planning accuracy)
+
+**Failure analysis:**
+- Deferred visuals root causes (layout? spelling? concept mismatch?)
+- Guardrail gaps (what principle would have prevented this?)
+- Planning effectiveness (conflicts caught early vs missed?)
+
+**Continuous improvement:**
+- Pattern-based updates (not one-off fixes)
+- New guardrails from learnings
+- Prompt template refinements
+
+Document in: `history/visual-assets/reflections/chapter-{NN}-reflection.md`
+
+**Principle:** Systematic reflection → Improved future performance
+
+---
+
+## Success Indicators
+
+You'll know this skill is working when:
+
+- ✅ Zero pixel specifications in prompts (creative briefs only)
+- ✅ Strategic plan created before visual analysis (Q0 complete)
+- ✅ Proficiency conflicts detected early (A2 limits enforced)
+- ✅ Prerequisite violations prevented (no unknown concepts)
+- ✅ Story/Intent/Metaphor in every prompt (reasoning activated)
+- ✅ Token conservation applied in batch mode (60-70% reduction)
+- ✅ Duplicate prevention validation passed (zero duplicate visuals)
+- ✅ Visuals feel distinctive and compelling (not generic PowerPoint)
+- ✅ Reflection document created after batch (systematic learning)
+
+**Result:** Professional-quality visuals that teach effectively, generated efficiently through planning, with zero duplicates requiring rework.

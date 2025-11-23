@@ -31,3 +31,5 @@ By the end of this chapter, you will be able to:
 5. **Compare AI-native IDEs** through hands-on observation, documenting workflow differences
 6. **Critically evaluate** AI-generated code for correctness, security, and quality
 
+![Landscape overview showing AI-native IDE ecosystem: Zed (performance), Cursor (VS Code evolution), Antigravity (agent architecture), with positioning across AI integration depth and extensibility axes](/img/part-2/chapter-08/ai-native-ide-landscape.png)
+

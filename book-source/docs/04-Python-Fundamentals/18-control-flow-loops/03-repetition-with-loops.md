@@ -339,6 +339,8 @@ while count <= 5:
 
 Both loop types can accomplish many of the same tasks, but each has its ideal use cases:
 
+![Comparison diagram showing for loop vs while loop characteristics, use cases, and when to choose each loop type](/img/part-4/chapter-18/loop-types-comparison-for-vs-while.png)
+
 | Loop Type | Use When | Example Scenarios |
 |-----------|----------|-------------------|
 | **`for`** | You know how many iterations you need | Print numbers 1-100, process each item in a list, run code exactly N times |

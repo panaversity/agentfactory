@@ -81,6 +81,8 @@ In this lesson, you'll learn what makes sets special, how to create them with mo
 
 ## What Makes Sets Different?
 
+![Spectrum diagram showing Python mutability from immutable types (int, str, tuple, frozenset) to mutable types (list, set, dict) with memory implications and use cases](/img/part-4/chapter-20/python-mutability-spectrum-immutable-mutable.png)
+
 Before we dive into syntax, let's understand what sets actually do. A **set** is an unordered collection of unique, hashable elements. That's three important properties:
 
 **Uniqueness**: Sets automatically eliminate duplicates. If you try to add "apple" twice, it stays in the set only once.

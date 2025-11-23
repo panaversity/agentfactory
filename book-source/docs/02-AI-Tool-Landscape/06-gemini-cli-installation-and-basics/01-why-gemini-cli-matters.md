@@ -59,6 +59,8 @@ The story of Gemini CLI is the story of open source meeting cutting-edge AI. And
 
 ## Two Game-Changing Differences
 
+![Side-by-side comparison showing web interface workflow (browser, mouse clicks, copy-paste) versus CLI workflow (terminal, keyboard commands, direct file access) with efficiency indicators](/img/part-2/chapter-06/cli-vs-web-interface-workflow.png)
+
 ### 1. Open Source: From Black Box to Building Block
 
 Claude Code is proprietary software. You use it as-is, or you don't use it at all. Its internal workings, decision logic, and tool implementations remain hidden behind Anthropic's walls.

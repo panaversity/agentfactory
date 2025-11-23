@@ -54,6 +54,8 @@ This lesson teaches you to recognize:
 2. **Relative paths** (directions from where you are like `cd folder-name`)
 3. **Path symbols** that help navigate (`..` means up one level, `.` means current folder)
 
+![File system tree showing root (/), home directory, common paths (Documents, Downloads), with pwd current location indicator and cd navigation arrows](/img/part-2/chapter-07/file-system-navigation-tree.png)
+
 ---
 
 ## Use `cd` to Navigate Folders
