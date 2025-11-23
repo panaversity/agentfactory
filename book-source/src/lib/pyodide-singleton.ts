@@ -15,6 +15,17 @@ export class PyodideRunner {
   private pyodide: PyodideInterface | null = null;
   private initPromise: Promise<void> | null = null;
   private isRunning: boolean = false;
+  private loadedPackages: Set<string> = new Set();
+
+  // Map of package names to their Pyodide package names
+  private packageMap: Record<string, string> = {
+    'requests': 'requests',
+    'httpx': 'httpx',
+    'pydantic': 'pydantic',
+    'numpy': 'numpy',
+    'pandas': 'pandas',
+    'matplotlib': 'matplotlib',
+  };
 
   /**
    * Private constructor - use getInstance() instead
@@ -55,9 +66,8 @@ export class PyodideRunner {
             indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.29.0/full/'
           });
 
-          // Pre-load the requests package for HTTP operations
-          // It's in the Pyodide distribution but needs explicit loading
-          await this.pyodide.loadPackage(['requests']);
+          // Don't pre-load packages - use lazy loading instead
+          // Packages will be loaded on-demand when detected in user code
         } catch (error) {
           this.initPromise = null; // Reset on error so it can be retried
           throw error;
@@ -93,15 +103,73 @@ export class PyodideRunner {
   }
 
   /**
+   * Detect required packages from import statements in code
+   * @param code - Python code to analyze
+   * @returns Array of package names that need to be loaded
+   */
+  private detectRequiredPackages(code: string): string[] {
+    const packages: string[] = [];
+    const lines = code.split('\n');
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+
+      // Match: import package or from package import ...
+      const importMatch = trimmed.match(/^(?:import|from)\s+([a-zA-Z_][a-zA-Z0-9_]*)/);
+
+      if (importMatch) {
+        const packageName = importMatch[1];
+
+        // Check if this is a known package we can load
+        if (this.packageMap[packageName] && !this.loadedPackages.has(packageName)) {
+          packages.push(packageName);
+        }
+      }
+    }
+
+    return [...new Set(packages)]; // Remove duplicates
+  }
+
+  /**
+   * Load required packages on-demand
+   * @param packages - Array of package names to load
+   * @param onProgress - Optional callback for loading progress
+   */
+  private async loadRequiredPackages(
+    packages: string[],
+    onProgress?: (packageName: string, loaded: number, total: number) => void
+  ): Promise<void> {
+    if (packages.length === 0) return;
+
+    const packagesToLoad = packages.filter(pkg => !this.loadedPackages.has(pkg));
+
+    if (packagesToLoad.length === 0) return;
+
+    for (let i = 0; i < packagesToLoad.length; i++) {
+      const pkg = packagesToLoad[i];
+      const pyodidePackage = this.packageMap[pkg];
+
+      if (onProgress) {
+        onProgress(pkg, i + 1, packagesToLoad.length);
+      }
+
+      await this.pyodide.loadPackage([pyodidePackage]);
+      this.loadedPackages.add(pkg);
+    }
+  }
+
+  /**
    * Run Python code with direct output callbacks
    * @param code - Python code to execute
    * @param onOutput - Callback for stdout (print statements)
    * @param onError - Callback for stderr (errors and tracebacks)
+   * @param onPackageLoad - Optional callback for package loading progress
    */
   async run(
     code: string,
     onOutput: (text: string) => void,
-    onError: (text: string) => void
+    onError: (text: string) => void,
+    onPackageLoad?: (packageName: string, loaded: number, total: number) => void
   ): Promise<void> {
     // Prevent concurrent executions
     if (this.isRunning) {
@@ -119,6 +187,12 @@ export class PyodideRunner {
     this.isRunning = true;
 
     try {
+      // Detect and load required packages before execution
+      const requiredPackages = this.detectRequiredPackages(code);
+      if (requiredPackages.length > 0) {
+        await this.loadRequiredPackages(requiredPackages, onPackageLoad);
+      }
+
       // Set up stdout/stderr capture with batched callbacks
       // batched: Called when newline appears or on flush
       // This provides real-time output as code executes

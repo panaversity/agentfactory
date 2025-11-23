@@ -86,22 +86,22 @@
   gap: 5px;
   flex-shrink: 0;
   padding: 4px 8px;
-  background: linear-gradient(135deg, rgba(22, 163, 74, 0.08), rgba(34, 197, 94, 0.04));
-  border: 1px solid #d1fae5;
+  background: linear-gradient(135deg, rgba(0, 31, 63, 0.08), rgba(0, 51, 102, 0.04));
+  border: 1px solid #bfdbfe;
   border-radius: 12px;
   transition: all 0.2s ease;
   cursor: help;
 }
 
 .languageBadge:hover {
-  background: linear-gradient(135deg, rgba(22, 163, 74, 0.12), rgba(34, 197, 94, 0.08));
-  border-color: #a7f3d0;
-  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.1);
+  background: linear-gradient(135deg, rgba(0, 31, 63, 0.12), rgba(0, 51, 102, 0.08));
+  border-color: #93c5fd;
+  box-shadow: 0 2px 8px rgba(0, 31, 63, 0.1);
 }
 
 .badgeIcon {
   flex-shrink: 0;
-  color: #16a34a;
+  color: #001f3f;
   width: 14px;
   height: 14px;
 }
@@ -109,7 +109,7 @@
 .badgeLabel {
   font-size: 12px;
   font-weight: 600;
-  color: #16a34a;
+  color: #001f3f;
   letter-spacing: 0.02em;
 }
 
@@ -168,6 +168,26 @@
   cursor: not-allowed;
 }
 
+/* Copy button success state with kinetic feedback - brand blue theme */
+.iconButton.copied {
+  background: #0066cc !important;
+  border-color: #004d99 !important;
+  color: white !important;
+  animation: copySuccess 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes copySuccess {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15) rotate(5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
 .runButton {
   height: 32px;
   display: flex;
@@ -175,7 +195,7 @@
   justify-content: center;
   gap: 6px;
   border: none;
-  background: #16a34a;
+  background: #0066cc;
   border-radius: 6px;
   cursor: pointer;
   color: white;
@@ -187,14 +207,14 @@
 }
 
 .runButton:hover:not(:disabled) {
-  background: #15803d;
+  background: #0052a3;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
 }
 
 .runButton:active:not(:disabled) {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 102, 204, 0.2);
 }
 
 .runButton:disabled {
@@ -241,7 +261,7 @@
   width: 32px;
   height: 32px;
   border: 3px solid #6b7280;
-  border-top-color: #16a34a;
+  border-top-color: #0066cc;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
   margin-bottom: 12px;
@@ -251,6 +271,62 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Package loading overlay (shown when loading packages on-demand) */
+.packageLoadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 15;
+  border-radius: 0 0 0 0;
+  backdrop-filter: blur(4px);
+}
+
+.packageLoadingContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border: 2px solid #0066cc;
+}
+
+.packageSpinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #0066cc;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+.packageLoadingText {
+  margin: 0;
+  font-size: 14px;
+  color: #111827;
+  font-weight: 500;
+}
+
+.packageLoadingText strong {
+  color: #0066cc;
+  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+.packageLoadingProgress {
+  margin: 0;
+  font-size: 12px;
+  color: #6b7280;
+  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
 }
 
 .loadingOverlay p {
@@ -335,6 +411,13 @@
   background: rgba(220, 38, 38, 0.1);
 }
 
+/* Output copy button success state - brand blue theme */
+.outputActionBtn.copied {
+  background: #0066cc !important;
+  color: white !important;
+  animation: copySuccess 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
 .outputContent {
   flex: 1;
   padding: 12px 14px;
@@ -375,22 +458,22 @@
 }
 
 [data-theme="dark"] .languageBadge {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(52, 211, 153, 0.06));
-  border-color: #064e3b;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(96, 165, 250, 0.06));
+  border-color: #1e3a8a;
 }
 
 [data-theme="dark"] .languageBadge:hover {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(52, 211, 153, 0.10));
-  border-color: #047857;
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.16), rgba(96, 165, 250, 0.10));
+  border-color: #1e40af;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
 }
 
 [data-theme="dark"] .badgeIcon {
-  color: #10b981;
+  color: #60a5fa;
 }
 
 [data-theme="dark"] .badgeLabel {
-  color: #10b981;
+  color: #60a5fa;
 }
 
 [data-theme="dark"] .windowControlRed {
@@ -440,12 +523,12 @@
 }
 
 [data-theme="dark"] .runButton {
-  background: #16a34a;
+  background: #003366;
 }
 
 [data-theme="dark"] .runButton:hover:not(:disabled) {
-  background: #15803d;
-  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+  background: #004080;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.3);
 }
 
 [data-theme="dark"] .editorWrapper {
@@ -504,6 +587,27 @@
 
 [data-theme="dark"] .errorText {
   color: #fca5a5;
+}
+
+[data-theme="dark"] .packageLoadingOverlay {
+  background: rgba(0, 0, 0, 0.95);
+}
+
+[data-theme="dark"] .packageLoadingContent {
+  background: #1f1f1f;
+  border-color: #60a5fa;
+}
+
+[data-theme="dark"] .packageLoadingText {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .packageLoadingText strong {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .packageLoadingProgress {
+  color: #9ca3af;
 }
 
 /* Responsive Design */

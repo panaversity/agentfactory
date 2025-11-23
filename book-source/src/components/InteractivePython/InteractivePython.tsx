@@ -21,8 +21,9 @@
 
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import Editor from '@monaco-editor/react';
-import { RotateCcw, Copy, Zap } from 'lucide-react';
+import { RotateCcw, Copy, Zap, Check } from 'lucide-react';
 import { usePyodide } from '@/contexts/PyodideContext';
+import { ErrorDisplay } from './ErrorDisplay';
 import styles from './styles.module.css';
 
 export interface InteractivePythonProps {
@@ -38,6 +39,10 @@ export const InteractivePython: React.FC<InteractivePythonProps> = ({
   const [output, setOutput] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [isRunning, setIsRunning] = useState(false);
+  const [codeCopied, setCodeCopied] = useState(false);
+  const [outputCopied, setOutputCopied] = useState(false);
+  const [loadingPackage, setLoadingPackage] = useState<string | null>(null);
+  const [packageProgress, setPackageProgress] = useState<{ loaded: number; total: number } | null>(null);
   const { pyodide, isLoading } = usePyodide();
   const outputRef = useRef<HTMLDivElement>(null);
   
@@ -78,19 +83,27 @@ export const InteractivePython: React.FC<InteractivePythonProps> = ({
     setIsRunning(true);
     setOutput('');
     setError('');
+    setLoadingPackage(null);
+    setPackageProgress(null);
 
     try {
-      // Run Python code with direct output callbacks
+      // Run Python code with direct output callbacks and package loading progress
       await pyodide.run(
         code,
         (text) => setOutput(prev => prev + text),  // stdout callback
-        (text) => setError(prev => prev + text)     // stderr callback
+        (text) => setError(prev => prev + text),   // stderr callback
+        (packageName, loaded, total) => {          // package loading callback
+          setLoadingPackage(packageName);
+          setPackageProgress({ loaded, total });
+        }
       );
     } catch (err) {
       // Preserve any stderr output that was already captured
       setError(prev => prev + `Error: ${err instanceof Error ? err.message : String(err)}`);
     } finally {
       setIsRunning(false);
+      setLoadingPackage(null);
+      setPackageProgress(null);
     }
   }, [code, pyodide]);
 
@@ -109,7 +122,8 @@ export const InteractivePython: React.FC<InteractivePythonProps> = ({
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(code);
-      // Optional: could show a toast notification here
+      setCodeCopied(true);
+      setTimeout(() => setCodeCopied(false), 2000);
     } catch (err) {
       console.error('Failed to copy code:', err);
     }
@@ -124,6 +138,8 @@ export const InteractivePython: React.FC<InteractivePythonProps> = ({
     const outputText = error || output;
     try {
       await navigator.clipboard.writeText(outputText);
+      setOutputCopied(true);
+      setTimeout(() => setOutputCopied(false), 2000);
     } catch (err) {
       console.error('Failed to copy output:', err);
     }
@@ -150,13 +166,13 @@ export const InteractivePython: React.FC<InteractivePythonProps> = ({
             <RotateCcw size={16} />
           </button>
           <button
-            className={styles.iconButton}
+            className={`${styles.iconButton} ${codeCopied ? styles.copied : ''}`}
             onClick={handleCopy}
             disabled={isLoading || isRunning}
-            title="Copy code to clipboard"
+            title={codeCopied ? "Copied!" : "Copy code to clipboard"}
             aria-label="Copy code"
           >
-            <Copy size={16} />
+            {codeCopied ? <Check size={16} /> : <Copy size={16} />}
           </button>
           <button
             className={styles.runButton}
@@ -177,6 +193,19 @@ export const InteractivePython: React.FC<InteractivePythonProps> = ({
           <div className={styles.loadingOverlay}>
             <div className={styles.spinner} />
             <p>Loading Python environment...</p>
+          </div>
+        )}
+        {loadingPackage && packageProgress && (
+          <div className={styles.packageLoadingOverlay}>
+            <div className={styles.packageLoadingContent}>
+              <div className={styles.packageSpinner} />
+              <p className={styles.packageLoadingText}>
+                Loading <strong>{loadingPackage}</strong>...
+              </p>
+              <p className={styles.packageLoadingProgress}>
+                ({packageProgress.loaded} of {packageProgress.total} packages)
+              </p>
+            </div>
           </div>
         )}
         <Editor
@@ -228,12 +257,12 @@ export const InteractivePython: React.FC<InteractivePythonProps> = ({
             </span>
             <div className={styles.outputActions}>
               <button
-                className={styles.outputActionBtn}
+                className={`${styles.outputActionBtn} ${outputCopied ? styles.copied : ''}`}
                 onClick={handleCopyOutput}
-                title="Copy output"
+                title={outputCopied ? "Copied!" : "Copy output"}
                 aria-label="Copy output"
               >
-                <Copy size={14} />
+                {outputCopied ? <Check size={14} /> : <Copy size={14} />}
               </button>
               <button
                 className={styles.outputActionBtn}
@@ -247,7 +276,7 @@ export const InteractivePython: React.FC<InteractivePythonProps> = ({
           </div>
           <div className={styles.outputContent} ref={outputRef}>
             {error ? (
-              <div className={styles.errorText}>{error}</div>
+              <ErrorDisplay errorText={error} sourceCode={code} />
             ) : (
               <div className={styles.outputText}>{output}</div>
             )}

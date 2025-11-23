@@ -1,0 +1,275 @@
+/* Enhanced Python Error Display Styles */
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  border-left: 4px solid #dc2626;
+  border-radius: 8px;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 13px;
+}
+
+.errorHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.errorBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: #dc2626;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.errorIcon {
+  font-size: 14px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.errorType {
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+}
+
+.lineIndicator {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 4px 10px;
+  background: white;
+  border: 1px solid #fecaca;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.lineLabel {
+  color: #991b1b;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 10px;
+}
+
+.lineNumber {
+  color: #dc2626;
+  font-weight: 700;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 13px;
+}
+
+.errorMessage {
+  padding: 12px;
+  background: white;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  color: #991b1b;
+  line-height: 1.6;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 13px;
+  word-wrap: break-word;
+}
+
+/* Educational Hint Section */
+.hint {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-left: 3px solid #3b82f6;
+  border-radius: 6px;
+}
+
+.hintHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: #1e40af;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.hintIcon {
+  font-size: 14px;
+}
+
+.hintLabel {
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.hintText {
+  color: #1e3a8a;
+  line-height: 1.6;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+}
+
+/* Traceback Section (Collapsible) */
+.tracebackDetails {
+  margin: 0;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  overflow: hidden;
+  background: white;
+}
+
+.tracebackSummary {
+  padding: 10px 12px;
+  background: #fef2f2;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 500;
+  color: #991b1b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.2s ease;
+  font-size: 12px;
+  list-style: none;
+}
+
+.tracebackSummary::-webkit-details-marker {
+  display: none;
+}
+
+.tracebackSummary::before {
+  content: '▶';
+  display: inline-block;
+  margin-right: 8px;
+  transition: transform 0.2s ease;
+  font-size: 10px;
+  color: #dc2626;
+}
+
+.tracebackDetails[open] .tracebackSummary::before {
+  transform: rotate(90deg);
+}
+
+.tracebackSummary:hover {
+  background: #fee2e2;
+}
+
+.tracebackCount {
+  font-size: 11px;
+  color: #991b1b;
+  opacity: 0.7;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+}
+
+.traceback {
+  padding: 12px;
+  background: #fafafa;
+  max-height: 300px;
+  overflow-y: auto;
+  border-top: 1px solid #fecaca;
+}
+
+.tracebackLine {
+  padding: 4px 0;
+  color: #7f1d1d;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.tracebackLine:not(:last-child) {
+  border-bottom: 1px solid #fee2e2;
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+}
+
+/* Dark theme support */
+[data-theme="dark"] .errorContainer {
+  background: linear-gradient(135deg, #3f1515 0%, #4c1d1d 100%);
+  border-left-color: #f87171;
+}
+
+[data-theme="dark"] .errorBadge {
+  background: #dc2626;
+}
+
+[data-theme="dark"] .lineIndicator {
+  background: #1f1f1f;
+  border-color: #7f1d1d;
+}
+
+[data-theme="dark"] .lineLabel {
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .lineNumber {
+  color: #f87171;
+}
+
+[data-theme="dark"] .errorMessage {
+  background: #1f1f1f;
+  border-color: #7f1d1d;
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .hint {
+  background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 100%);
+  border-left-color: #60a5fa;
+}
+
+[data-theme="dark"] .hintHeader {
+  color: #93c5fd;
+}
+
+[data-theme="dark"] .hintText {
+  color: #dbeafe;
+}
+
+[data-theme="dark"] .tracebackDetails {
+  border-color: #7f1d1d;
+  background: #1f1f1f;
+}
+
+[data-theme="dark"] .tracebackSummary {
+  background: #2a1515;
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .tracebackSummary:hover {
+  background: #3f1515;
+}
+
+[data-theme="dark"] .tracebackCount {
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .traceback {
+  background: #1a1a1a;
+  border-top-color: #7f1d1d;
+}
+
+[data-theme="dark"] .tracebackLine {
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .tracebackLine:not(:last-child) {
+  border-bottom-color: #3f1515;
+}
