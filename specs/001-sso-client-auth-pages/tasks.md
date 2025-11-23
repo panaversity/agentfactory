@@ -19,44 +19,44 @@ All paths are relative to monorepo: `apps/sso-client/` for client code, `package
 
 ---
 
-## Phase 1: Setup (Shared Infrastructure)
+## Phase 1: Setup (Shared Infrastructure) ✅
 
 **Purpose**: Project initialization and dependency installation
 
-- [ ] T001 Install npm dependencies in apps/sso-client: `pnpm add react-hook-form zod @hookform/resolvers @hcaptcha/react-hcaptcha`
-- [ ] T002 [P] Add shadcn/ui input component to packages/ui: `pnpm dlx shadcn@latest add input`
-- [ ] T003 [P] Add shadcn/ui form component to packages/ui: `pnpm dlx shadcn@latest add form`
-- [ ] T004 [P] Add shadcn/ui label component to packages/ui: `pnpm dlx shadcn@latest add label`
-- [ ] T005 [P] Add shadcn/ui card component to packages/ui: `pnpm dlx shadcn@latest add card`
-- [ ] T006 [P] Add shadcn/ui alert component to packages/ui: `pnpm dlx shadcn@latest add alert`
-- [ ] T007 Configure environment variables in apps/sso-client/.env.local with NEXT_PUBLIC_SSO_SERVER_URL and NEXT_PUBLIC_HCAPTCHA_SITE_KEY
-- [ ] T008 Create apps/sso-client/app/(auth)/layout.tsx for centered authentication page layout
+- [X] T001 Install npm dependencies in apps/sso-client: `pnpm add react-hook-form zod @hookform/resolvers @hcaptcha/react-hcaptcha`
+- [X] T002 [P] Add shadcn/ui input component to packages/ui: `pnpm dlx shadcn@latest add input`
+- [X] T003 [P] Add shadcn/ui form component to packages/ui: `pnpm dlx shadcn@latest add form`
+- [X] T004 [P] Add shadcn/ui label component to packages/ui: `pnpm dlx shadcn@latest add label`
+- [X] T005 [P] Add shadcn/ui card component to packages/ui: `pnpm dlx shadcn@latest add card`
+- [X] T006 [P] Add shadcn/ui alert component to packages/ui: `pnpm dlx shadcn@latest add alert`
+- [X] T007 Configure environment variables in apps/sso-client/.env.local with NEXT_PUBLIC_SSO_SERVER_URL and NEXT_PUBLIC_HCAPTCHA_SITE_KEY
+- [X] T008 Create apps/sso-client/app/(auth)/layout.tsx for centered authentication page layout
 
-**Checkpoint**: Dependencies installed, shadcn components available, environment configured
+**Checkpoint**: ✅ Dependencies installed, shadcn components available, environment configured
 
 ---
 
-## Phase 2: Foundational (Blocking Prerequisites)
+## Phase 2: Foundational (Blocking Prerequisites) ✅
 
 **Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T009 Create Zod validation schemas in apps/sso-client/lib/schemas/auth.ts (signUpSchema, signInSchema, forgotPasswordSchema, resetPasswordSchema)
-- [ ] T010 [P] Create error handling utilities in apps/sso-client/lib/utils/api.ts (withTimeout function, handleAuthError function, AUTH_ERROR_CODES constant)
-- [ ] T011 [P] Create redirect utilities in apps/sso-client/lib/utils/redirect.ts (getRedirectUrl function to handle callbackUrl query parameter)
-- [ ] T012 [P] Create failed attempts tracking utilities in apps/sso-client/lib/utils/failed-attempts.ts (getFailedAttempts, incrementFailedAttempts, clearFailedAttempts, shouldShowCaptcha functions using localStorage)
-- [ ] T013 [P] Create FormError component in apps/sso-client/components/auth/form-error.tsx (displays form-level errors using Alert component from @repo/ui)
-- [ ] T014 [P] Create useAuthRedirect hook in apps/sso-client/lib/hooks/use-auth-redirect.ts (checks session with authClient.getSession, redirects logged-in users to dashboard or callbackUrl)
-- [ ] T015 [P] Create useCaptcha hook in apps/sso-client/lib/hooks/use-captcha.ts (manages CAPTCHA state: required, token, verified)
-- [ ] T016 [P] Create Captcha wrapper component in apps/sso-client/components/auth/captcha.tsx (wraps @hcaptcha/react-hcaptcha with consistent styling)
-- [ ] T017 Create constants file in apps/sso-client/lib/constants.ts (ERROR_MESSAGES object with all error message strings, ROUTES object with page paths)
+- [X] T009 Create Zod validation schemas in apps/sso-client/lib/schemas/auth.ts (signUpSchema, signInSchema, forgotPasswordSchema, resetPasswordSchema)
+- [X] T010 [P] Create error handling utilities in apps/sso-client/lib/utils/api.ts (withTimeout function, handleAuthError function, AUTH_ERROR_CODES constant)
+- [X] T011 [P] Create redirect utilities in apps/sso-client/lib/utils/redirect.ts (getRedirectUrl function to handle callbackUrl query parameter)
+- [X] T012 [P] Create failed attempts tracking utilities in apps/sso-client/lib/utils/failed-attempts.ts (getFailedAttempts, incrementFailedAttempts, clearFailedAttempts, shouldShowCaptcha functions using localStorage)
+- [X] T013 [P] Create FormError component in apps/sso-client/components/auth/form-error.tsx (displays form-level errors using Alert component from @repo/ui)
+- [X] T014 [P] Create useAuthRedirect hook in apps/sso-client/lib/hooks/use-auth-redirect.ts (checks session with authClient.getSession, redirects logged-in users to dashboard or callbackUrl)
+- [X] T015 [P] Create useCaptcha hook in apps/sso-client/lib/hooks/use-captcha.ts (manages CAPTCHA state: required, token, verified)
+- [X] T016 [P] Create Captcha wrapper component in apps/sso-client/components/auth/captcha.tsx (wraps @hcaptcha/react-hcaptcha with consistent styling)
+- [X] T017 Create constants file in apps/sso-client/lib/constants.ts (ERROR_MESSAGES object with all error message strings, ROUTES object with page paths)
 
-**Checkpoint**: Foundation ready - user story implementation can now begin in parallel
+**Checkpoint**: ✅ Foundation ready - user story implementation can now begin in parallel
 
 ---
 
-## Phase 3: User Story 1 - User Registration with Email and Password (Priority: P1) 🎯 MVP
+## Phase 3: User Story 1 - User Registration with Email and Password (Priority: P1) 🎯 MVP ✅
 
 **Goal**: Enable new users to create accounts using email, password, and name, with proper validation and redirect to dashboard or callback URL
 
@@ -64,16 +64,16 @@ All paths are relative to monorepo: `apps/sso-client/` for client code, `package
 
 ### Implementation for User Story 1
 
-- [ ] T018 [P] [US1] Create signup page component in apps/sso-client/app/(auth)/signup/page.tsx (imports SignUpForm, uses useAuthRedirect hook)
-- [ ] T019 [US1] Create SignUpForm component in apps/sso-client/app/(auth)/signup/signup-form.tsx (uses react-hook-form with signUpSchema, calls authClient.signUp.email, handles loading/error states, redirects on success)
-- [ ] T020 [US1] Implement email already exists error handling in SignUpForm (display fieldErrors from API response, show EMAIL_ALREADY_EXISTS message)
-- [ ] T021 [US1] Implement weak password validation feedback in SignUpForm (client-side validation with Zod, display inline errors for each password requirement)
-- [ ] T022 [US1] Implement invalid email format validation in SignUpForm (Zod email validation, display inline error below email field)
-- [ ] T023 [US1] Add loading spinner to submit button in SignUpForm (use isSubmitting from react-hook-form, disable button and show loading text)
-- [ ] T024 [US1] Add link to sign-in page in apps/sso-client/app/(auth)/signup/page.tsx (below form: "Already have an account? Sign in")
-- [ ] T025 [US1] Implement redirect logic in SignUpForm (use getRedirectUrl utility, redirect to callbackUrl or /dashboard after successful registration)
+- [X] T018 [P] [US1] Create signup page component in apps/sso-client/app/(auth)/signup/page.tsx (imports SignUpForm, uses useAuthRedirect hook)
+- [X] T019 [US1] Create SignUpForm component in apps/sso-client/app/(auth)/signup/signup-form.tsx (uses react-hook-form with signUpSchema, calls authClient.signUp.email, handles loading/error states, redirects on success)
+- [X] T020 [US1] Implement email already exists error handling in SignUpForm (display fieldErrors from API response, show EMAIL_ALREADY_EXISTS message)
+- [X] T021 [US1] Implement weak password validation feedback in SignUpForm (client-side validation with Zod, display inline errors for each password requirement)
+- [X] T022 [US1] Implement invalid email format validation in SignUpForm (Zod email validation, display inline error below email field)
+- [X] T023 [US1] Add loading spinner to submit button in SignUpForm (use isSubmitting from react-hook-form, disable button and show loading text)
+- [X] T024 [US1] Add link to sign-in page in apps/sso-client/app/(auth)/signup/page.tsx (below form: "Already have an account? Sign in")
+- [X] T025 [US1] Implement redirect logic in SignUpForm (use getRedirectUrl utility, redirect to callbackUrl or /dashboard after successful registration)
 
-**Checkpoint**: User Story 1 complete - users can register with email/password and are redirected appropriately
+**Checkpoint**: ✅ User Story 1 complete - users can register with email/password and are redirected appropriately
 
 ---
 
