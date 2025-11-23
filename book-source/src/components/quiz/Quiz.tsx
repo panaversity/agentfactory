@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 import styles from './Quiz.module.css';
 
 export interface QuizQuestion {
@@ -220,25 +221,42 @@ const Quiz: React.FC<QuizProps> = ({
                       {isCorrect ? '✓ Correct' : '✗ Incorrect'}
                     </span>
                   </div>
-                  <p className={styles.reviewQuestion}>{q.question}</p>
+                  <div className={styles.reviewQuestion}>
+                    <ReactMarkdown components={{ p: ({node, ...props}) => <p {...props} />, a: ({node, ...props}) => <a {...props} target="_blank" rel="noopener noreferrer" /> }}>
+                      {q.question}
+                    </ReactMarkdown>
+                  </div>
                   <div className={styles.reviewAnswers}>
                     <div className={styles.reviewAnswer}>
                       <strong>Your answer:</strong>{' '}
                       <span className={isCorrect ? styles.correctText : styles.incorrectText}>
-                        {userAnswer !== null ? q.options[userAnswer] : 'Not answered'}
+                        {userAnswer !== null ? (
+                          <ReactMarkdown components={{ p: ({node, ...props}) => <span {...props} />, a: ({node, ...props}) => <a {...props} target="_blank" rel="noopener noreferrer" /> }}>
+                            {q.options[userAnswer]}
+                          </ReactMarkdown>
+                        ) : (
+                          'Not answered'
+                        )}
                       </span>
                     </div>
                     {!isCorrect && (
                       <div className={styles.reviewAnswer}>
                         <strong>Correct answer:</strong>{' '}
                         <span className={styles.correctText}>
-                          {q.options[q.correctOption]}
+                          <ReactMarkdown components={{ p: ({node, ...props}) => <span {...props} />, a: ({node, ...props}) => <a {...props} target="_blank" rel="noopener noreferrer" /> }}>
+                            {q.options[q.correctOption]}
+                          </ReactMarkdown>
                         </span>
                       </div>
                     )}
                     {q.explanation && (
                       <div className={styles.explanation}>
-                        <strong>Explanation:</strong> {q.explanation}
+                        <strong>Explanation:</strong>
+                        <div className={styles.explanationContent}>
+                          <ReactMarkdown components={{ p: ({node, ...props}) => <p {...props} />, a: ({node, ...props}) => <a {...props} target="_blank" rel="noopener noreferrer" /> }}>
+                            {q.explanation}
+                          </ReactMarkdown>
+                        </div>
                       </div>
                     )}
                   </div>
@@ -281,7 +299,11 @@ const Quiz: React.FC<QuizProps> = ({
         </div>
 
         <div className={styles.questionSection}>
-          <h3 className={styles.questionText}>{question.question}</h3>
+          <h3 className={styles.questionText}>
+            <ReactMarkdown components={{ p: ({node, ...props}) => <span {...props} />, a: ({node, ...props}) => <a {...props} target="_blank" rel="noopener noreferrer" /> }}>
+              {question.question}
+            </ReactMarkdown>
+          </h3>
 
           <div className={styles.optionsGrid}>
             {question.options.map((option, index) => (
@@ -300,7 +322,11 @@ const Quiz: React.FC<QuizProps> = ({
                 <span className={styles.optionLetter}>
                   {String.fromCharCode(65 + index)}
                 </span>
-                <span className={styles.optionText}>{option}</span>
+                <span className={styles.optionText}>
+                  <ReactMarkdown components={{ p: ({node, ...props}) => <span {...props} />, a: ({node, ...props}) => <a {...props} target="_blank" rel="noopener noreferrer" /> }}>
+                    {option}
+                  </ReactMarkdown>
+                </span>
                 {showFeedback && index === question.correctOption && (
                   <span className={styles.correctCheckmark}>✓</span>
                 )}
@@ -349,7 +375,11 @@ const Quiz: React.FC<QuizProps> = ({
               {question.explanation && (
                 <div className={styles.feedbackExplanation}>
                   <strong>Explanation:</strong>
-                  <p>{question.explanation}</p>
+                  <div className={styles.explanationContent}>
+                    <ReactMarkdown components={{ p: ({node, ...props}) => <p {...props} />, a: ({node, ...props}) => <a {...props} target="_blank" rel="noopener noreferrer" /> }}>
+                      {question.explanation}
+                    </ReactMarkdown>
+                  </div>
                 </div>
               )}
 

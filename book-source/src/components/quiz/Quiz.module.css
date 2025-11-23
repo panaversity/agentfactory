@@ -30,8 +30,8 @@
 }
 
 [data-theme='dark'] .quizCard {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(17, 17, 17, 0.5);
+  border: 1px solid rgba(170, 170, 170, 0.15);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -125,8 +125,10 @@
 }
 
 [data-theme='dark'] .optionButton {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(17, 17, 17, 0.6);
+  border-color: rgba(170, 170, 170, 0.25);
+  color: #dddddd;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.02);
 }
 
 .optionButton:hover {
@@ -136,7 +138,10 @@
 }
 
 [data-theme='dark'] .optionButton:hover {
-  background: rgba(123, 164, 196, 0.1);
+  background: rgba(170, 170, 170, 0.15);
+  border-color: rgba(170, 170, 170, 0.4);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(170, 170, 170, 0.1);
 }
 
 .optionButton.selected {
@@ -146,8 +151,10 @@
 }
 
 [data-theme='dark'] .optionButton.selected {
-  background: linear-gradient(135deg, rgba(123, 164, 196, 0.2) 0%, rgba(123, 164, 196, 0.1) 100%);
-  border-color: var(--ifm-color-primary-lighter);
+  background: linear-gradient(135deg, rgba(170, 170, 170, 0.2) 0%, rgba(170, 170, 170, 0.1) 100%);
+  border-color: #aaaaaa;
+  color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(170, 170, 170, 0.3), inset 0 1px 3px rgba(255, 255, 255, 0.05);
 }
 
 .optionLetter {
@@ -166,6 +173,14 @@
 
 .optionButton.selected .optionLetter {
   box-shadow: 0 0 0 3px rgba(0, 77, 153, 0.2);
+}
+
+[data-theme='dark'] .optionLetter {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .optionButton.selected .optionLetter {
+  box-shadow: 0 0 0 3px rgba(123, 164, 196, 0.4), 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .optionButton.correctOption {
@@ -716,6 +731,194 @@
 .resetButton:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 77, 153, 0.4);
+}
+
+/* Markdown Content Styling */
+.explanationContent p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ifm-font-color-base);
+}
+
+.explanationContent code {
+  background: rgba(0, 77, 153, 0.1);
+  color: var(--ifm-code-color);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
+  font-size: 0.9em;
+  word-break: break-word;
+}
+
+[data-theme='dark'] .explanationContent code {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.explanationContent strong {
+  font-weight: 600;
+  color: var(--ifm-font-color-base);
+}
+
+.explanationContent em {
+  font-style: italic;
+}
+
+.explanationContent a {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 77, 153, 0.3);
+  transition: all 0.2s ease;
+}
+
+.explanationContent a:hover {
+  color: var(--ifm-color-primary-dark);
+  border-bottom-color: var(--ifm-color-primary-dark);
+}
+
+[data-theme='dark'] .explanationContent a {
+  border-bottom-color: rgba(123, 164, 196, 0.3);
+}
+
+[data-theme='dark'] .explanationContent a:hover {
+  border-bottom-color: var(--ifm-color-primary-lighter);
+}
+
+/* Inline markdown in options */
+.optionText code {
+  background: rgba(0, 77, 153, 0.1);
+  color: var(--ifm-code-color);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
+  font-size: 0.9em;
+  word-break: break-word;
+}
+
+[data-theme='dark'] .optionText code {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.optionText strong {
+  font-weight: 600;
+}
+
+.optionText em {
+  font-style: italic;
+}
+
+.optionText a {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 77, 153, 0.3);
+  transition: all 0.2s ease;
+}
+
+.optionText a:hover {
+  color: var(--ifm-color-primary-dark);
+  border-bottom-color: var(--ifm-color-primary-dark);
+}
+
+[data-theme='dark'] .optionText a {
+  border-bottom-color: rgba(123, 164, 196, 0.3);
+}
+
+[data-theme='dark'] .optionText a:hover {
+  border-bottom-color: var(--ifm-color-primary-lighter);
+}
+
+/* Inline markdown in question text */
+.questionText code {
+  background: rgba(0, 77, 153, 0.1);
+  color: var(--ifm-code-color);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
+  font-size: 0.9em;
+  word-break: break-word;
+}
+
+[data-theme='dark'] .questionText code {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.questionText strong {
+  font-weight: 600;
+}
+
+.questionText em {
+  font-style: italic;
+}
+
+.questionText a {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 77, 153, 0.3);
+  transition: all 0.2s ease;
+}
+
+.questionText a:hover {
+  color: var(--ifm-color-primary-dark);
+  border-bottom-color: var(--ifm-color-primary-dark);
+}
+
+[data-theme='dark'] .questionText a {
+  border-bottom-color: rgba(123, 164, 196, 0.3);
+}
+
+[data-theme='dark'] .questionText a:hover {
+  border-bottom-color: var(--ifm-color-primary-lighter);
+}
+
+/* Review section markdown styling */
+.reviewQuestion code,
+.reviewAnswer code {
+  background: rgba(0, 77, 153, 0.1);
+  color: var(--ifm-code-color);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
+  font-size: 0.9em;
+  word-break: break-word;
+}
+
+[data-theme='dark'] .reviewQuestion code,
+[data-theme='dark'] .reviewAnswer code {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.reviewQuestion strong,
+.reviewAnswer strong {
+  font-weight: 600;
+}
+
+.reviewQuestion em,
+.reviewAnswer em {
+  font-style: italic;
+}
+
+.reviewQuestion a,
+.reviewAnswer a {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 77, 153, 0.3);
+  transition: all 0.2s ease;
+}
+
+.reviewQuestion a:hover,
+.reviewAnswer a:hover {
+  color: var(--ifm-color-primary-dark);
+  border-bottom-color: var(--ifm-color-primary-dark);
+}
+
+[data-theme='dark'] .reviewQuestion a,
+[data-theme='dark'] .reviewAnswer a {
+  border-bottom-color: rgba(123, 164, 196, 0.3);
+}
+
+[data-theme='dark'] .reviewQuestion a:hover,
+[data-theme='dark'] .reviewAnswer a:hover {
+  border-bottom-color: var(--ifm-color-primary-lighter);
 }
 
 /* Responsive Design */
