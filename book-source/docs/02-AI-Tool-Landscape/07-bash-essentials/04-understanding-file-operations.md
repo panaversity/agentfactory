@@ -231,7 +231,7 @@ This is the foundation of safe collaboration—thinking before acting.
 
 **Key Insight**: Through this dialogue, you and AI established a safety protocol together. You specified the questions, AI internalized the pattern. This is collaborative safety culture.
 
-![Reference card showing 12 essential commands (ls, cd, pwd, mkdir, rm, cp, mv, cat, grep, find) with syntax, common flags, and practical examples](/img/part-2/chapter-07/common-bash-commands-reference.png)
+![Reference card showing 12 essential commands (ls, cd, pwd, mkdir, rm, cp, mv, cat, grep, find) with syntax, common flags, and practical examples](/img/part-2/chapter-07/bash-commands-reference-card.png)
 
 ---
 

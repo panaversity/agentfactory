@@ -88,7 +88,7 @@ A black or white window with a blinking cursor. This is your **command prompt**â
 user@computer:~$
 ```
 
-![Annotated terminal screenshot showing prompt (username@host), command (ls), arguments (-la /home), and output (file listing), with labels explaining each component and their purposes](/img/part-2/chapter-07/terminal-anatomy-prompt-command-output.png)
+![Annotated terminal screenshot showing prompt (username@host), command (ls), arguments (-la /home), and output (file listing), with labels explaining each component and their purposes](/img/part-2/chapter-07/terminal-anatomy-annotated.png)
 
 That `$` symbol means "I'm ready for your command."
 

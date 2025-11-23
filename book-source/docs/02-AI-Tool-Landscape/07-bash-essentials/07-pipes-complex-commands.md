@@ -107,7 +107,7 @@ Output: Only Python files
 - Pipes chain them together
 - The output of one becomes input to the next
 
-![Pipeline diagram showing command output flowing through pipe (|) to next command, with examples of ls | grep, redirection operators (>, >>, <), and tee for splitting output](/img/part-2/chapter-07/bash-piping-redirection.png)
+![Pipeline diagram showing command output flowing through pipe to next command, with examples of ls and grep, redirection operators, and tee for splitting output](/img/part-2/chapter-07/bash-piping-redirection.png)
 
 #### 💬 AI Colearning Prompt
 > "Why do pipes use the `|` symbol? What's the conceptual connection between 'pipeline' and the vertical bar character?"

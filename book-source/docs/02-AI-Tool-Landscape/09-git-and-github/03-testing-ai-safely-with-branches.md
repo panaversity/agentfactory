@@ -372,7 +372,7 @@ git switch main
 git merge feature-fast
 ```
 
-![Annotated conflict showing <<<<<<< HEAD (your changes), ======= (divider), >>>>>>> branch (their changes), with resolution steps: identify conflict markers, choose changes, remove markers, test, commit](/img/part-2/chapter-09/merge-conflict-resolution-anatomy.png)
+![Annotated conflict showing HEAD marker with your changes, divider, and branch marker with their changes, with resolution steps: identify conflict markers, choose changes, remove markers, test, commit](/img/part-2/chapter-09/merge-conflict-resolution-anatomy.png)
 
 **Expected output:**
 ```
