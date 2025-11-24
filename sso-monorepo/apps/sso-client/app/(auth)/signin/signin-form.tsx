@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { authClient } from '@repo/auth-config/client';
+import { signInAction } from '@/app/server/auth';
 import { 
   Form, 
   FormControl, 
@@ -44,47 +44,47 @@ export function SignInForm() {
     try {
       setFormError('');
 
-      console.log('Attempting sign-in with Better Auth client...');
-      
-      // Use Better Auth client directly for proper session handling
-      const result = await authClient.signIn.email({
-        email: data.email,
-        password: data.password,
-      });
-
-      console.log('Sign-in result:', result);
+      // Call server action with timeout
+      const result = await withTimeout(
+        signInAction({
+          email: data.email,
+          password: data.password,
+          callbackURL: getRedirectUrl(searchParams),
+        }),
+        30000
+      );
 
       if (result.error) {
-        console.error('Sign-in error:', result.error);
-        // Handle Better Auth errors
-        const errorMsg = result.error.message || '';
+        // Handle backend errors
+        const error = result.error;
 
         // Check for invalid credentials
-        if (errorMsg.toLowerCase().includes('invalid') ||
-            errorMsg.toLowerCase().includes('password') ||
-            errorMsg.toLowerCase().includes('credentials')) {
+        if (error.message?.toLowerCase().includes('invalid') ||
+            error.message?.toLowerCase().includes('password') ||
+            error.message?.toLowerCase().includes('credentials')) {
           setFormError(ERROR_MESSAGES.INVALID_CREDENTIALS);
           return;
         }
 
         // Check for email not verified
-        if (errorMsg.toLowerCase().includes('verify') ||
-            errorMsg.toLowerCase().includes('verification')) {
+        if (error.message?.toLowerCase().includes('verify') ||
+            error.message?.toLowerCase().includes('verification')) {
           setFormError(ERROR_MESSAGES.EMAIL_NOT_VERIFIED);
           return;
         }
 
         // Generic error
-        setFormError(errorMsg || ERROR_MESSAGES.UNKNOWN);
+        setFormError(error.message || ERROR_MESSAGES.UNKNOWN);
         return;
       }
 
-      // Success - redirect to dashboard or callback URL
-      const redirectUrl = getRedirectUrl(searchParams);
-      console.log('Sign-in successful, redirecting to:', redirectUrl);
-      router.push(redirectUrl);
+      // Success - redirect
+      if (result.data) {
+        const redirectUrl = getRedirectUrl(searchParams);
+        router.push(redirectUrl);
+        router.refresh(); // Force refresh to update session
+      }
     } catch (error) {
-      console.error('Sign-in exception:', error);
       const apiError = handleAuthError(error);
       setFormError(apiError.message);
     }
