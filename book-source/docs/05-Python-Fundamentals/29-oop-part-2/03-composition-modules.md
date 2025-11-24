@@ -858,7 +858,7 @@ print(f"Analyst capabilities: {analyst.get_capabilities()}")
 print(f"Researcher capabilities: {researcher.get_capabilities()}")
 
 # Execute capability-specific operations
-print(f"\nReasoner: {reasoner.execute_reasoning('What is AI?')}")
+print(f"Reasoner: {reasoner.execute_reasoning('What is AI?')}")
 print(f"Analyst: {analyst.execute_query('SELECT * FROM data')}")
 print(f"Researcher: {researcher.execute_search('latest AI trends')}")
 
