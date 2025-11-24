@@ -1,8 +1,8 @@
 ---
-sidebar_position: 18
+sidebar_position: 21
 title: "Chapter 18: Control Flow and Loops"
 slides:
-  source: "slides/chapter-18-slides.pdf"
+  source: "slides/chapter-21-slides.pdf"
   title: "Chapter 18: Control Flow and Loops"
   height: 700
 ---

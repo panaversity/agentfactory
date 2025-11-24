@@ -1,8 +1,8 @@
 ---
-sidebar_position: 21
+sidebar_position: 24
 title: "Chapter 21: Modules and Functions"
 slides:
-  source: "slides/chapter-21-slides.pdf"
+  source: "slides/chapter-24-slides.pdf"
   title: "Chapter 21: Modules and Functions"
   height: 700
 ---

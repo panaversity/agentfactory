@@ -1,8 +1,8 @@
 ---
-sidebar_position: 23
+sidebar_position: 26
 title: "Chapter 23: IO and File Handling"
 slides:
-  source: "slides/chapter-23-slides.pdf"
+  source: "slides/chapter-26-slides.pdf"
   title: "Chapter 23: IO and File Handling"
   height: 700
 ---

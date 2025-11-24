@@ -1,8 +1,8 @@
 ---
-sidebar_position: 20
+sidebar_position: 23
 title: "Chapter 20: Set, Frozen Set, and GC"
 slides:
-  source: "slides/chapter-20-slides.pdf"
+  source: "slides/chapter-23-slides.pdf"
   title: "Chapter 20: Set, Frozen Set, and GC"
   height: 700
 ---

@@ -2,10 +2,10 @@
 title: "Chapter 33: AI Orchestra - Agent Teams Manager"
 chapter: 32
 part: 5
-sidebar_position: 33
+sidebar_position: 35
 description: "Master decomposition thinking and task management to coordinate 5-7 autonomous agents (AI or human)"
 slides:
-  source: "slides/chapter-33-slides.pdf"
+  source: "slides/chapter-35-slides.pdf"
   title: "Chapter 33: AI Orchestra - Agent Teams Manager"
   height: 700
 ---

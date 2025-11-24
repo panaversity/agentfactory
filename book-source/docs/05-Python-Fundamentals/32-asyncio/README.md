@@ -1,8 +1,8 @@
 ---
-sidebar_position: 29
+sidebar_position: 32
 title: "Chapter 29: Asyncio — Concurrent I/O and CPU-Parallel Workloads"
 slides:
-  source: "slides/chapter-29-slides.pdf"
+  source: "slides/chapter-32-slides.pdf"
   title: "Chapter 29: Asyncio — Concurrent I/O and CPU-Parallel Workloads"
   height: 700
 ---

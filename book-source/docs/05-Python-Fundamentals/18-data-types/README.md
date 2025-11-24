@@ -1,8 +1,8 @@
 ---
-sidebar_position: 15
+sidebar_position: 18
 title: "Chapter 15: Understanding Python Data Types"
 slides:
-  source: "slides/chapter-15-slides.pdf"
+  source: "slides/chapter-18-slides.pdf"
   title: "Chapter 15: Understanding Python Data Types"
   height: 700
 ---

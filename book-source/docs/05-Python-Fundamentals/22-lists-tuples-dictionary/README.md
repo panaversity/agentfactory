@@ -1,8 +1,8 @@
 ---
-sidebar_position: 19
+sidebar_position: 22
 title: "Chapter 19: Lists, Tuples, and Dictionary"
 slides:
-  source: "slides/chapter-19-slides.pdf"
+  source: "slides/chapter-22-slides.pdf"
   title: "Chapter 19: Lists, Tuples, and Dictionary"
   height: 700
 ---

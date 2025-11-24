@@ -1,8 +1,8 @@
 ---
-sidebar_position: 26
+sidebar_position: 29
 title: "Chapter 26: Object-Oriented Programming Part II"
 slides:
-  source: "slides/chapter-26-slides.pdf"
+  source: "slides/chapter-29-slides.pdf"
   title: "Chapter 26: Object-Oriented Programming Part II"
   height: 700
 ---

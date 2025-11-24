@@ -1,8 +1,8 @@
 ---
-sidebar_position: 22
+sidebar_position: 25
 title: "Chapter 22: Exception Handling"
 slides:
-  source: "slides/chapter-22-slides.pdf"
+  source: "slides/chapter-25-slides.pdf"
   title: "Chapter 22: Exception Handling"
   height: 700
 ---

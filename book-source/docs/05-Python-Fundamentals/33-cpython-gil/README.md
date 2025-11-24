@@ -1,8 +1,8 @@
 ---
-sidebar_position: 30
+sidebar_position: 33
 title: "Chapter 30: CPython and GIL"
 slides:
-  source: "slides/chapter-30-slides.pdf"
+  source: "slides/chapter-33-slides.pdf"
   title: "Chapter 30: CPython and GIL"
   height: 700
 ---

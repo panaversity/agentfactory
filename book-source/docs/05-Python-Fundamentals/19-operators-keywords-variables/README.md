@@ -1,8 +1,8 @@
 ---
-sidebar_position: 16
+sidebar_position: 19
 title: "Chapter 16: Operators, Keywords, and Variables"
 slides:
-  source: "slides/chapter-16-slides.pdf"
+  source: "slides/chapter-19-slides.pdf"
   title: "Chapter 16: Operators, Keywords, and Variables"
   height: 700
 ---

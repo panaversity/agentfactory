@@ -1,8 +1,8 @@
 ---
-sidebar_position: 28
+sidebar_position: 31
 title: "Chapter 28: Pydantic and Generics"
 slides:
-  source: "slides/chapter-28-slides.pdf"
+  source: "slides/chapter-31-slides.pdf"
   title: "Chapter 28: Pydantic and Generics"
   height: 700
 ---

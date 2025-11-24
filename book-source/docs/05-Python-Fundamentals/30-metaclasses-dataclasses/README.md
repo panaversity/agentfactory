@@ -1,8 +1,8 @@
 ---
-sidebar_position: 27
+sidebar_position: 30
 title: "Chapter 27: Metaclasses and Dataclasses"
 slides:
-  source: "slides/chapter-27-slides.pdf"
+  source: "slides/chapter-30-slides.pdf"
   title: "Chapter 27: Metaclasses and Dataclasses"
   height: 700
 ---

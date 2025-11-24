@@ -1,8 +1,8 @@
 ---
-sidebar_position: 24
+sidebar_position: 27
 title: "Chapter 24: Math, Date Time Calendar"
 slides:
-  source: "slides/chapter-24-slides.pdf"
+  source: "slides/chapter-27-slides.pdf"
   title: "Chapter 24: Math, Date Time Calendar"
   height: 700
 ---

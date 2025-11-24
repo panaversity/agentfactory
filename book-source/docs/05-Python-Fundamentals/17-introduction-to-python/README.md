@@ -1,8 +1,8 @@
 ---
-sidebar_position: 14
+sidebar_position: 17
 title: "Chapter 14: Introduction to Modern Python"
 slides:
-  source: "slides/chapter-14-slides.pdf"
+  source: "slides/chapter-17-slides.pdf"
   title: "Chapter 14: Introduction to Modern Python"
   height: 700
 ---

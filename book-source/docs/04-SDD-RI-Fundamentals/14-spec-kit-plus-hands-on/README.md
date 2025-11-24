@@ -1,8 +1,8 @@
 ---
-sidebar_position: 32
+sidebar_position: 14
 title: "Chapter 32: Spec-Kit Plus Hands-On"
 slides:
-  source: "slides/chapter-32-slides.pdf"
+  source: "slides/chapter-14-slides.pdf"
   title: "Chapter 32: Spec-Kit Plus Hands-On"
   height: 700
 ---

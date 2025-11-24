@@ -1,8 +1,8 @@
 ---
-sidebar_position: 17
+sidebar_position: 20
 title: "Chapter 17: Strings and Type Casting"
 slides:
-  source: "slides/chapter-17-slides.pdf"
+  source: "slides/chapter-20-slides.pdf"
   title: "Chapter 17: Strings and Type Casting"
   height: 700
 ---

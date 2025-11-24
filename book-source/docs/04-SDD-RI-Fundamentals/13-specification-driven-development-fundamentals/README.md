@@ -1,8 +1,8 @@
 ---
-sidebar_position: 31
+sidebar_position: 13
 title: "Chapter 31: Understanding Spec-Driven Development with Reusable Intelligence"
 slides:
-  source: "slides/chapter-31-slides.pdf"
+  source: "slides/chapter-13-slides.pdf"
   title: "Chapter 31: Understanding Spec-Driven Development with Reusable Intelligence"
   height: 700
 ---
