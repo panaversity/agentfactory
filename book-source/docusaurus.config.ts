@@ -48,17 +48,17 @@ const config: Config = {
     // See docs/ANALYTICS/ga4-setup.md for setup instructions
     ...(process.env.GA4_MEASUREMENT_ID
       ? [
-          {
-            tagName: "script",
-            attributes: {
-              async: "true",
-              src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GA4_MEASUREMENT_ID}`,
-            },
+        {
+          tagName: "script",
+          attributes: {
+            async: "true",
+            src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GA4_MEASUREMENT_ID}`,
           },
-          {
-            tagName: "script",
-            attributes: {},
-            innerHTML: `
+        },
+        {
+          tagName: "script",
+          attributes: {},
+          innerHTML: `
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
@@ -68,8 +68,8 @@ const config: Config = {
             'allow_ad_personalization_signals': false
           });
         `,
-          },
-        ]
+        },
+      ]
       : []),
   ],
 
@@ -80,7 +80,17 @@ const config: Config = {
     defaultLocale: "en",
     locales: ["en"],
   },
-  
+
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        hashed: true,
+      }),
+    ],
+  ],
+
   presets: [
     [
       "classic",
