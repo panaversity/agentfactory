@@ -456,7 +456,7 @@ for category in categories:
 
 # Verify the structure was created
 if notes_base.exists():
-    print(f"\nDirectory structure created at: {notes_base}")
+    print(f"Directory structure created at: {notes_base}")
     subdirs: list[Path] = [d for d in notes_base.iterdir() if d.is_dir()]
     print(f"Subdirectories: {[d.name for d in subdirs]}")
 ```
@@ -509,13 +509,13 @@ for file in txt_files:
 
 # Find all files of any type
 all_files: list[Path] = list(notes_dir.glob("*"))
-print(f"\nAll files in {notes_dir.name}:")
+print(f"All files in {notes_dir.name}:")
 print(f"  Files: {[f.name for f in all_files if f.is_file()]}")
 
 # Count files by type
 txt_count: int = len(list(notes_dir.glob("*.txt")))
 md_count: int = len(list(notes_dir.glob("*.md")))
-print(f"\nSummary: {txt_count} .txt files, {md_count} .md files")
+print(f"Summary: {txt_count} .txt files, {md_count} .md files")
 ```
 
 **Expected Output**:
@@ -592,12 +592,12 @@ if content:
     print(f"Read: {content}")
 
 # Unsafe attempt: blocked by security check
-print("\n=== Attempted Path Traversal ===")
+print("=== Attempted Path Traversal ===")
 content = read_note(base_dir, "../../etc/passwd")
 # Output: Security error: Attempted access outside allowed directory
 
 # Another unsafe attempt: using relative path tricks
-print("\n=== Another Traversal Attempt ===")
+print("=== Another Traversal Attempt ===")
 content = read_note(base_dir, "../outside_file.txt")
 # Output: Security error: Attempted access outside allowed directory
 ```
