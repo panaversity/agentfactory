@@ -40,6 +40,7 @@ def main():
         # This must happen after mcp is created
         from panaversity_fs.tools import content
         from panaversity_fs.tools import assets
+        from panaversity_fs.tools import summaries
         # Additional tool imports will be added as they're implemented
 
         print(f"Tools registered successfully", file=sys.stderr)

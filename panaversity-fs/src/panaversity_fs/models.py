@@ -226,3 +226,41 @@ class ListAssetsInput(BaseModel):
 
     book_id: str = Field(..., description="Book identifier", pattern=r'^[a-z0-9-]+$', min_length=3, max_length=50)
     asset_type: AssetType | None = Field(default=None, description="Filter by asset type (optional)")
+
+
+# ============================================================================
+# Summary Input Models
+# ============================================================================
+
+class AddSummaryInput(BaseModel):
+    """Input model for add_summary tool (FR-014)."""
+    model_config = ConfigDict(str_strip_whitespace=True, extra='forbid')
+
+    book_id: str = Field(..., description="Book identifier", pattern=r'^[a-z0-9-]+$', min_length=3, max_length=50)
+    chapter_id: str = Field(..., description="Chapter identifier (e.g., 'chapter-01')", pattern=r'^chapter-\d{2}$')
+    content: str = Field(..., description="Summary markdown content", min_length=1, max_length=100_000)
+
+
+class UpdateSummaryInput(BaseModel):
+    """Input model for update_summary tool (FR-015)."""
+    model_config = ConfigDict(str_strip_whitespace=True, extra='forbid')
+
+    book_id: str = Field(..., description="Book identifier", pattern=r'^[a-z0-9-]+$', min_length=3, max_length=50)
+    chapter_id: str = Field(..., description="Chapter identifier (e.g., 'chapter-01')", pattern=r'^chapter-\d{2}$')
+    content: str = Field(..., description="Summary markdown content", min_length=1, max_length=100_000)
+
+
+class GetSummaryInput(BaseModel):
+    """Input model for get_summary tool (FR-016)."""
+    model_config = ConfigDict(str_strip_whitespace=True, extra='forbid')
+
+    book_id: str = Field(..., description="Book identifier", pattern=r'^[a-z0-9-]+$', min_length=3, max_length=50)
+    chapter_id: str = Field(..., description="Chapter identifier (e.g., 'chapter-01')", pattern=r'^chapter-\d{2}$')
+
+
+class ListSummariesInput(BaseModel):
+    """Input model for list_summaries tool (FR-017)."""
+    model_config = ConfigDict(str_strip_whitespace=True, extra='forbid')
+
+    book_id: str = Field(..., description="Book identifier", pattern=r'^[a-z0-9-]+$', min_length=3, max_length=50)
+    chapter_id: str | None = Field(default=None, description="Filter by chapter ID (optional)", pattern=r'^chapter-\d{2}$')
