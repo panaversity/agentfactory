@@ -137,7 +137,7 @@ You are an expert in programming
 
 The strong version activates a **specific thinking pattern** (defensive-against-invalid-input) while the weak version just says "be good."
 
-![Decision matrix comparing Skills (2-4 decision points) versus Subagents (5+ decision points), showing when to use each based on complexity and autonomy needs](/img/part-5/chapter-31/skill-vs-subagent-decision-matrix.png)
+![Decision matrix comparing Skills (2-4 decision points) versus Subagents (5+ decision points), showing when to use each based on complexity and autonomy needs](/img/part-4/chapter-13/skill-vs-subagent-decision-matrix.png)
 
 #### 2. Questions: Reasoning Activation
 

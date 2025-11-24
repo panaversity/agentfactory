@@ -99,7 +99,7 @@ These rules have names: **Memory Banks** (Kiro framework) or **Constitutions** (
 
 Every developer reads this before writing code. Every AI agent follows these rules. **Consistency becomes automatic.**
 
-![Flow diagram showing how constitution principles cascade through specifications to ensure quality and consistency across team development](/img/part-5/chapter-31/constitution-cascade-quality-flow.png)
+![Flow diagram showing how constitution principles cascade through specifications to ensure quality and consistency across team development](/img/part-4/chapter-13/constitution-cascade-quality-flow.png)
 
 ---
 
