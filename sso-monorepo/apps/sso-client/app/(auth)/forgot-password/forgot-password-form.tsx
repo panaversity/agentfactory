@@ -95,6 +95,7 @@ export function ForgotPasswordForm() {
                   placeholder="john@example.com"
                   autoComplete="email"
                   disabled={isSubmitting}
+                  autoFocus
                   {...field}
                 />
               </FormControl>

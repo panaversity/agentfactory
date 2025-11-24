@@ -18,6 +18,7 @@ import {
 } from '@repo/ui';
 import { resetPasswordSchema, type ResetPasswordFormData } from '@/lib/schemas/auth';
 import { FormError } from '@/components/auth/form-error';
+import { PasswordInput } from '@/components/auth/password-input';
 import { withTimeout, handleAuthError } from '@/lib/utils/api';
 import { ERROR_MESSAGES } from '@/lib/constants';
 import { Loader2, XCircle, CheckCircle } from 'lucide-react';
@@ -177,11 +178,11 @@ export function ResetPasswordForm() {
             <FormItem>
               <FormLabel>New Password</FormLabel>
               <FormControl>
-                <Input
-                  type="password"
+                <PasswordInput
                   placeholder="••••••••"
                   autoComplete="new-password"
                   disabled={isSubmitting}
+                  autoFocus
                   {...field}
                 />
               </FormControl>
@@ -200,8 +201,7 @@ export function ResetPasswordForm() {
             <FormItem>
               <FormLabel>Confirm Password</FormLabel>
               <FormControl>
-                <Input
-                  type="password"
+                <PasswordInput
                   placeholder="••••••••"
                   autoComplete="new-password"
                   disabled={isSubmitting}

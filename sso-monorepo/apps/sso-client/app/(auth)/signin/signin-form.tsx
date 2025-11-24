@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { signInAction } from '@/app/server/auth';
+import { authClient } from '@repo/auth-config/client';
 import { 
   Form, 
   FormControl, 
@@ -18,6 +18,8 @@ import {
 } from '@repo/ui';
 import { signInSchema, type SignInFormData } from '@/lib/schemas/auth';
 import { FormError } from '@/components/auth/form-error';
+import { SocialLoginButtons } from '@/components/auth/social-login-buttons';
+import { PasswordInput } from '@/components/auth/password-input';
 import { withTimeout, handleAuthError } from '@/lib/utils/api';
 import { getRedirectUrl } from '@/lib/utils/redirect';
 import { ERROR_MESSAGES } from '@/lib/constants';
@@ -42,46 +44,47 @@ export function SignInForm() {
     try {
       setFormError('');
 
-      // Call server action with timeout
-      const result = await withTimeout(
-        signInAction({
-          email: data.email,
-          password: data.password,
-          callbackURL: getRedirectUrl(searchParams),
-        }),
-        30000
-      );
+      console.log('Attempting sign-in with Better Auth client...');
+      
+      // Use Better Auth client directly for proper session handling
+      const result = await authClient.signIn.email({
+        email: data.email,
+        password: data.password,
+      });
+
+      console.log('Sign-in result:', result);
 
       if (result.error) {
-        // Handle backend errors
-        const error = result.error;
+        console.error('Sign-in error:', result.error);
+        // Handle Better Auth errors
+        const errorMsg = result.error.message || '';
 
         // Check for invalid credentials
-        if (error.message?.toLowerCase().includes('invalid') ||
-            error.message?.toLowerCase().includes('password') ||
-            error.message?.toLowerCase().includes('credentials')) {
+        if (errorMsg.toLowerCase().includes('invalid') ||
+            errorMsg.toLowerCase().includes('password') ||
+            errorMsg.toLowerCase().includes('credentials')) {
           setFormError(ERROR_MESSAGES.INVALID_CREDENTIALS);
           return;
         }
 
         // Check for email not verified
-        if (error.message?.toLowerCase().includes('verify') ||
-            error.message?.toLowerCase().includes('verification')) {
+        if (errorMsg.toLowerCase().includes('verify') ||
+            errorMsg.toLowerCase().includes('verification')) {
           setFormError(ERROR_MESSAGES.EMAIL_NOT_VERIFIED);
           return;
         }
 
         // Generic error
-        setFormError(error.message || ERROR_MESSAGES.UNKNOWN);
+        setFormError(errorMsg || ERROR_MESSAGES.UNKNOWN);
         return;
       }
 
-      // Success - redirect
-      if (result.data) {
-        const redirectUrl = getRedirectUrl(searchParams);
-        router.push(redirectUrl);
-      }
+      // Success - redirect to dashboard or callback URL
+      const redirectUrl = getRedirectUrl(searchParams);
+      console.log('Sign-in successful, redirecting to:', redirectUrl);
+      router.push(redirectUrl);
     } catch (error) {
+      console.error('Sign-in exception:', error);
       const apiError = handleAuthError(error);
       setFormError(apiError.message);
     }
@@ -104,6 +107,7 @@ export function SignInForm() {
                   placeholder="john@example.com"
                   autoComplete="email"
                   disabled={isSubmitting}
+                  autoFocus
                   {...field}
                 />
               </FormControl>
@@ -119,8 +123,7 @@ export function SignInForm() {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input
-                  type="password"
+                <PasswordInput
                   placeholder="••••••••"
                   autoComplete="current-password"
                   disabled={isSubmitting}
@@ -155,6 +158,8 @@ export function SignInForm() {
             'Sign in'
           )}
         </Button>
+
+        <SocialLoginButtons callbackUrl={getRedirectUrl(searchParams)} />
       </form>
     </Form>
   );

@@ -17,6 +17,8 @@ import {
 } from '@repo/ui';
 import { signUpSchema, type SignUpFormData } from '@/lib/schemas/auth';
 import { FormError } from '@/components/auth/form-error';
+import { SocialLoginButtons } from '@/components/auth/social-login-buttons';
+import { PasswordInput } from '@/components/auth/password-input';
 import { withTimeout, handleAuthError } from '@/lib/utils/api';
 import { getRedirectUrl } from '@/lib/utils/redirect';
 import { ERROR_MESSAGES } from '@/lib/constants';
@@ -107,6 +109,7 @@ export function SignUpForm() {
                   placeholder="John Doe"
                   autoComplete="name"
                   disabled={isSubmitting}
+                  autoFocus
                   {...field}
                 />
               </FormControl>
@@ -142,8 +145,7 @@ export function SignUpForm() {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input
-                  type="password"
+                <PasswordInput
                   placeholder="••••••••"
                   autoComplete="new-password"
                   disabled={isSubmitting}
@@ -154,6 +156,8 @@ export function SignUpForm() {
             </FormItem>
           )}
         />
+
+        <SocialLoginButtons callbackUrl={getRedirectUrl(searchParams)} />
 
         <Button
           type="submit"
