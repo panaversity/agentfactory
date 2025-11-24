@@ -607,7 +607,7 @@ Here's the structure. Your job is to complete the validation logic:
 # User Profile Validator
 # A real-world data validation program
 
-print("=== User Profile Validator ===\n")
+print("=== User Profile Validator ===")
 
 # Step 1: Collect user input
 print("Enter your profile information:")
@@ -615,7 +615,7 @@ name: str = input("Name: ")
 age_input: str = input("Age: ")
 email: str = input("Email: ")
 
-print("\n--- Validation Results ---\n")
+print("--- Validation Results ---")
 
 # Step 2: Validate name (check type and content)
 # Using truthy/falsy from Lesson 3: empty strings are falsy
@@ -644,11 +644,11 @@ print(f"  - Has content: {email_has_content}")
 # Note: Checking email format (@) requires operators from Chapter 20
 
 # Step 5: Summary
-print("\n--- Summary ---")
+print("--- Summary ---")
 print("All validations complete! Review results above.")
 
 # Step 6: Show type information (educational)
-print("\n--- Type Information ---")
+print("--- Type Information ---")
 print(f"Name type: {type(name)}")
 print(f"Age type: {type(age)} (converted from {type(age_input)})")
 print(f"Email type: {type(email)}")
@@ -723,7 +723,7 @@ value3 = 3.14
 value4 = True
 value5 = None
 
-print("=== Type Inspection Results ===\n")
+print("=== Type Inspection Results ===")
 
 # Analyze value1
 print(f"Value: {value1}")
@@ -773,7 +773,7 @@ back_to_str: str = str(as_float)
 print(f"Back to string: '{back_to_str}' (type: {type(back_to_str).__name__})")
 
 # Compare original vs final
-print(f"\nOriginal: '{original}'")
+print(f"Original: '{original}'")
 print(f"Final: '{back_to_str}'")
 print(f"Same value? {original == back_to_str}")
 
