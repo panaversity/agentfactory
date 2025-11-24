@@ -292,7 +292,7 @@ print(f"Final set size: {len(my_set)}")              # 1,000,000
 
 Now let's tie this together with a concrete example showing why immutability is foundational:
 
-**SPECIFICATION REFERENCE**: Chapter 21, Lesson 3, Functional Requirements FR-014
+**SPECIFICATION REFERENCE**: Chapter 24, Lesson 3, Functional Requirements FR-014
 
 **AI PROMPTS USED**:
 1. "Explain why lists can't be in sets with an example showing what would break"

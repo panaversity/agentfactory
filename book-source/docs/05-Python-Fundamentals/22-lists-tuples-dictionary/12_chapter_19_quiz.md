@@ -1,14 +1,14 @@
 ---
 sidebar_position: 12
-title: "Chapter 19: Lists, Tuples, and Dictionary Quiz"
+title: "Chapter 22: Lists, Tuples, and Dictionary Quiz"
 ---
 
-# Chapter 19: Lists, Tuples, and Dictionary Quiz
+# Chapter 22: Lists, Tuples, and Dictionary Quiz
 
 Test your understanding of Python's three fundamental collection types: lists (mutable sequences), tuples (immutable sequences), and dictionaries (key-value mappings).
 
 <Quiz
-  title="Chapter 19: Lists, Tuples, and Dictionary Assessment"
+  title="Chapter 22: Lists, Tuples, and Dictionary Assessment"
   questions={[
     {
       question: "You're building an API client that processes paginated user records. Each page returns a list of users that you filter, then store filtered results. Which collection choice is most appropriate for the filtered results?",

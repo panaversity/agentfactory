@@ -737,7 +737,7 @@ Create a file called `dataclass_patterns_guide.md` with this structure:
 
 ```markdown
 # Dataclass Design Patterns and Best Practices
-*Chapter 28, Lesson 3*
+*Chapter 31, Lesson 3*
 
 ## Why Dataclasses?
 

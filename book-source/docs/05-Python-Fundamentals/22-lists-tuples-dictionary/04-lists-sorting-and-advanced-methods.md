@@ -352,7 +352,7 @@ print(f"Are they the same object? {original_list is independent_copy}")  # False
 
 #### 🎓 Expert Insight
 
-> This aliasing concept is crucial before you get to functions (Ch 20). When you pass a list to a function and modify it, you're modifying the original because it's passed by reference, not value. Understand this now, and debugging later becomes much easier.
+> This aliasing concept is crucial before you get to functions (Ch 23). When you pass a list to a function and modify it, you're modifying the original because it's passed by reference, not value. Understand this now, and debugging later becomes much easier.
 
 ---
 

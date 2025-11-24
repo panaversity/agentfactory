@@ -1,13 +1,13 @@
 ---
 sidebar_position: 17
-title: "Chapter 14: Introduction to Modern Python"
+title: "Chapter 17: Introduction to Modern Python"
 slides:
   source: "slides/chapter-17-slides.pdf"
-  title: "Chapter 14: Introduction to Modern Python"
+  title: "Chapter 17: Introduction to Modern Python"
   height: 700
 ---
 
-# Chapter 14: Introduction to Modern Python
+# Chapter 17: Introduction to Modern Python
 
 You've spent Chapters 1–12 learning the philosophy and tools of AI-Driven Development. Now it's time to apply that philosophy to Python programming—the language that powers modern AI applications and enables you to describe your intent clearly so AI agents can help you build.
 
@@ -27,4 +27,4 @@ By the end of this chapter, you will be able to:
 - **Installing Python 3.14+** Set up a working Python environment on Windows, Mac, or Linux with AI assistance for troubleshooting
 - **Variables and Type Hints** Create typed variables that describe intent clearly, preparing for specification-first thinking
 - **Basic Syntax and Programs** Write and run Python programs using indentation, comments, print statements, and f-strings
-- **Capstone Project** Build an interactive program that collects and validates user information, demonstrating all Chapter 15 concepts
+- **Capstone Project** Build an interactive program that collects and validates user information, demonstrating all Chapter 18 concepts

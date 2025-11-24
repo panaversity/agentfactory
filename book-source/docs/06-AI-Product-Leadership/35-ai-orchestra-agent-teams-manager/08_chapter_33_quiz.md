@@ -1,14 +1,14 @@
 ---
 sidebar_position: 8
-title: "Chapter 33: AI Orchestra Quiz"
+title: "Chapter 35: AI Orchestra Quiz"
 ---
 
-# Chapter 33: AI Orchestra - Agent Teams Manager Quiz
+# Chapter 35: AI Orchestra - Agent Teams Manager Quiz
 
 Test your understanding of multi-agent orchestration, decomposition thinking, and contract-based coordination through specifications.
 
 <Quiz
-  title="Chapter 33: AI Orchestra Assessment"
+  title="Chapter 35: AI Orchestra Assessment"
   questions={[    {
       question: "You have three agents working on authentication, database, and API features. Each agent keeps asking you questions about how their work connects. What does this communication pattern reveal about your decomposition?",
       options: [

@@ -309,9 +309,9 @@ print(f"isinstance check: {isinstance(converted, bool)}")  # True
 - **Numbers**: `0` and `0.0` → False; any other number → True
 - **Use this for**: Understanding what Python considers "empty" vs "has a value"
 
-#### 🔮 Coming in Chapter 19
+#### 🔮 Coming in Chapter 22
 
-> You'll use boolean conversions in **conditionals** (Chapter 19: Control Flow and Loops). There, you'll learn why understanding True/False matters for `if` statements and decision-making in your programs. For now, focus on how `bool()` converts different types.
+> You'll use boolean conversions in **conditionals** (Chapter 22: Control Flow and Loops). There, you'll learn why understanding True/False matters for `if` statements and decision-making in your programs. For now, focus on how `bool()` converts different types.
 
 ---
 

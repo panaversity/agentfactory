@@ -24,7 +24,7 @@ const { visit } = require('unist-util-visit');
 function remarkInteractivePython(options = {}) {
   const {
     // Only transform code blocks in specific paths (e.g., Python Fundamentals)
-    includePaths = ['/04-Python-Fundamentals/'],
+    includePaths = ['/05-Python-Fundamentals/'],
     // Exclude certain code blocks by checking meta string
     excludeMeta = ['nointeractive', 'static'],
   } = options;

@@ -125,14 +125,14 @@ loop_count: int = 5          # Descriptive name
 iterations: int = 5          # Alternative name
 
 # Common keywords and what they do
-# if, elif, else — conditional logic (Chapter 19)
-# for, while — loops (Chapter 19)
-# def — define functions (Chapter 22)
-# class — define classes (Chapter 26)
-# import, from — import modules (Chapter 22)
-# return — return from function (Chapter 22)
-# try, except, finally — error handling (Chapter 23)
-# True, False, None — special values (Chapter 16)
+# if, elif, else — conditional logic (Chapter 22)
+# for, while — loops (Chapter 22)
+# def — define functions (Chapter 25)
+# class — define classes (Chapter 29)
+# import, from — import modules (Chapter 25)
+# return — return from function (Chapter 25)
+# try, except, finally — error handling (Chapter 26)
+# True, False, None — special values (Chapter 19)
 # and, or, not — logical operators (Lesson 3, this chapter!)
 ```
 
@@ -327,7 +327,7 @@ Calculation complete!
 
 **That's the complete calculator!** You've now integrated all four operator types (arithmetic, comparison, logical, assignment) plus keyword awareness and type validation—all using only the Python concepts you've learned so far (Chapters 15-15).
 
-**What about functions?** You might wonder why the calculator code is all in one block instead of organized into functions. That's intentional! Functions are taught in Chapter 22. For now, focus on understanding how operators work together. When you reach Chapter 22, you can come back and refactor this calculator using functions as practice.
+**What about functions?** You might wonder why the calculator code is all in one block instead of organized into functions. That's intentional! Functions are taught in Chapter 25. For now, focus on understanding how operators work together. When you reach Chapter 25, you can come back and refactor this calculator using functions as practice.
 
 ---
 
@@ -351,12 +351,12 @@ Ready to integrate all 4 operator types into one comprehensive calculator?
 
 ---
 
-## Chapter 17 Complete
+## Chapter 20 Complete
 
 Congratulations! You've mastered all four operator types: arithmetic, comparison, logical, and assignment. You understand how to combine them, validate types, and recognize Python's language boundaries (keywords).
 
-**What's Next (Chapter 18)**: Strings and text manipulation—you'll see that operators work with strings too (concatenation with `+`, repetition with `*`).
+**What's Next (Chapter 21)**: Strings and text manipulation—you'll see that operators work with strings too (concatenation with `+`, repetition with `*`).
 
-**Looking Ahead (Chapter 19)**: Control flow and loops—you'll use comparison and logical operators in `if` statements and loops, applying everything you learned here to make decisions and repeat code.
+**Looking Ahead (Chapter 22)**: Control flow and loops—you'll use comparison and logical operators in `if` statements and loops, applying everything you learned here to make decisions and repeat code.
 
 Your foundation is solid. Keep this chapter's concepts close as you move forward.

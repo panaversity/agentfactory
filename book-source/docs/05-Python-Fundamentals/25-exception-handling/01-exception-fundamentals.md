@@ -316,7 +316,7 @@ Create a markdown file called `exception_reference_guide.md` with this structure
 
 ```markdown
 # Python Exception Handling Reference Guide
-*Chapter 23, Lesson 1*
+*Chapter 26, Lesson 1*
 
 ## Common Exception Types
 

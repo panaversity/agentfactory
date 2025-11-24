@@ -1,13 +1,13 @@
 ---
 sidebar_position: 16
-title: "Chapter 16: Python UV — The Fastest Python Package Manager"
+title: "Chapter 19: Python UV — The Fastest Python Package Manager"
 slides:
   source: "slides/chapter-16-slides.pdf"
-  title: "Chapter 16: Python UV — The Fastest Python Package Manager"
+  title: "Chapter 19: Python UV — The Fastest Python Package Manager"
   height: 700
 ---
 
-# Chapter 13: Python UV — The Fastest Python Package Manager
+# Chapter 16: Python UV — The Fastest Python Package Manager
 
 Before you write Python programs, you need professional tools for managing dependencies, virtual environments, and project structure. This beginner-friendly chapter teaches you **UV**, the fastest Python package manager (written in Rust), along with complementary tools **Ruff** (linter/formatter) and **Pyright** (type checker) that integrate seamlessly with UV.
 

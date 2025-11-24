@@ -1,13 +1,13 @@
 ---
 sidebar_position: 21
-title: "Chapter 18: Control Flow and Loops"
+title: "Chapter 21: Control Flow and Loops"
 slides:
   source: "slides/chapter-21-slides.pdf"
-  title: "Chapter 18: Control Flow and Loops"
+  title: "Chapter 21: Control Flow and Loops"
   height: 700
 ---
 
-# Chapter 18: Control Flow and Loops
+# Chapter 21: Control Flow and Loops
 
 Programs need to make decisions and repeat actions. Should we process this user's order or reject it? Should we retry a failed network request? Should we validate every item in a list? Control flow structures answer these questions by letting your code respond to different conditions and automate repetitive tasks.
 

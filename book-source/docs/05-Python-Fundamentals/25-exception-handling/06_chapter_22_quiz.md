@@ -1,14 +1,14 @@
 ---
 sidebar_position: 6
-title: "Chapter 22: Exception Handling Quiz"
+title: "Chapter 25: Exception Handling Quiz"
 ---
 
-# Chapter 22: Exception Handling Quiz
+# Chapter 25: Exception Handling Quiz
 
 Test your understanding of exception handling fundamentals, control flow patterns, custom exceptions, error handling strategies, and building robust programs that handle errors gracefully.
 
 <Quiz
-  title="Chapter 22: Exception Handling Assessment"
+  title="Chapter 25: Exception Handling Assessment"
   questions={[    {
       question: "You're building a user registration function. The user enters 'twenty-five' for age. Which exception type will `int('twenty-five')` raise?",
       options: [

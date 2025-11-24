@@ -1,14 +1,14 @@
 ---
 sidebar_position: 6
-title: "Chapter 15: Understanding Python Data Types Quiz"
+title: "Chapter 18: Understanding Python Data Types Quiz"
 ---
 
-# Chapter 15: Understanding Python Data Types Quiz
+# Chapter 18: Understanding Python Data Types Quiz
 
 Test your understanding of Python's type system, from basic types to collections and type utilities.
 
 <Quiz
-  title="Chapter 15: Understanding Python Data Types Assessment"
+  title="Chapter 18: Understanding Python Data Types Assessment"
   questions={[    {
       question: "Why does Python need a type system to classify different kinds of data?",
       options: [
@@ -375,7 +375,7 @@ Test your understanding of Python's type system, from basic types to collections
         "Range automatically sorts numbers unlike lists that maintain order"
       ],
       correctOption: 2,
-      explanation: "The correct answer is that range is memory efficient because it generates numbers on demand. range(0, 10) doesn't store all 10 numbers in memory—it calculates them as needed. For range(0, 1000000), the memory savings are huge. Option 2 is misleading—iteration speed is similar, but memory usage is the real benefit. Option 3 is true (range is immutable) but not the primary reason to use it. Option 4 is wrong—ranges don't sort anything; they generate sequences in order. The lesson: use range for iteration in loops (Chapter 19) and when you need number sequences efficiently. When prompting AI, say 'generate numbers 0 to 99' and AI will suggest range(100), not a 100-item list.",
+      explanation: "The correct answer is that range is memory efficient because it generates numbers on demand. range(0, 10) doesn't store all 10 numbers in memory—it calculates them as needed. For range(0, 1000000), the memory savings are huge. Option 2 is misleading—iteration speed is similar, but memory usage is the real benefit. Option 3 is true (range is immutable) but not the primary reason to use it. Option 4 is wrong—ranges don't sort anything; they generate sequences in order. The lesson: use range for iteration in loops (Chapter 22) and when you need number sequences efficiently. When prompting AI, say 'generate numbers 0 to 99' and AI will suggest range(100), not a 100-item list.",
       source: "Lesson 4: Collections and Binary Types"
     },
     {

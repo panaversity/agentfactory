@@ -205,7 +205,7 @@ for item in items:
 print(f"Total items: {count}")  # 4
 ```
 
-You'll see `count += 1` everywhere in Chapter 19 (loops). This pattern is so common it's almost universal.
+You'll see `count += 1` everywhere in Chapter 22 (loops). This pattern is so common it's almost universal.
 
 ### The Accumulator Pattern
 
@@ -225,7 +225,7 @@ for price in prices:
 print(f"Final total: ${total:.2f}")  # $46.49
 ```
 
-Again, you'll see this pattern frequently in Chapter 19.
+Again, you'll see this pattern frequently in Chapter 22.
 
 ## Type Behavior with Assignment Operators
 

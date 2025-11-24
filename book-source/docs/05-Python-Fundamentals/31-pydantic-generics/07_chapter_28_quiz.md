@@ -1,14 +1,14 @@
 ---
 sidebar_position: 7
-title: "Chapter 28: Pydantic and Generics Quiz"
+title: "Chapter 31: Pydantic and Generics Quiz"
 ---
 
-# Chapter 28: Pydantic and Generics Quiz
+# Chapter 31: Pydantic and Generics Quiz
 
 Test your understanding of Pydantic validation, generic programming, and type-safe configuration management for AI-native Python development.
 
 <Quiz
-  title="Chapter 28: Pydantic and Generics Assessment"
+  title="Chapter 31: Pydantic and Generics Assessment"
   questions={[    {
       question: "What is the fundamental difference between Python type hints and Pydantic validation?",
       options: [

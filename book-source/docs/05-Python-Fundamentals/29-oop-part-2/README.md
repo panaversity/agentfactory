@@ -1,17 +1,17 @@
 ---
 sidebar_position: 29
-title: "Chapter 26: Object-Oriented Programming Part II"
+title: "Chapter 29: Object-Oriented Programming Part II"
 slides:
   source: "slides/chapter-29-slides.pdf"
-  title: "Chapter 26: Object-Oriented Programming Part II"
+  title: "Chapter 29: Object-Oriented Programming Part II"
   height: 700
 ---
 
-# Chapter 26: Object-Oriented Programming Part II
+# Chapter 29: Object-Oriented Programming Part II
 
 Basic classes and objects are just the beginning. Professional OOP involves inheritance hierarchies, polymorphic behaviors, composable designs, and industry-standard patterns. You need to know when to inherit, when to compose, how to make objects behave like built-in types, and which design patterns solve recurring architectural problems.
 
-This chapter builds on Chapter 26 foundations to teach advanced OOP patterns: inheritance hierarchies with Method Resolution Order, polymorphism and duck typing, composition over inheritance, special methods (magic methods), and professional design patterns. You'll understand when to use inheritance vs composition, how Python's special methods make objects Pythonic, and how design patterns enable scalable architectures.
+This chapter builds on Chapter 29 foundations to teach advanced OOP patterns: inheritance hierarchies with Method Resolution Order, polymorphism and duck typing, composition over inheritance, special methods (magic methods), and professional design patterns. You'll understand when to use inheritance vs composition, how Python's special methods make objects Pythonic, and how design patterns enable scalable architectures.
 
 This chapter is foundational for AI-native software development—real multi-agent systems rely on these concepts. Understanding these patterns prepares you for professional AI engineering in Parts 5-13.
 

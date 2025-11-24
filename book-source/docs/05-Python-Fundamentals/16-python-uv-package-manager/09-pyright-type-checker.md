@@ -206,7 +206,7 @@ uv run pyright types.py
 
 Success! No type errors.
 
-**Note**: This code demonstrates type checking, not Python programming. You'll learn more about functions and types in Chapter 15.
+**Note**: This code demonstrates type checking, not Python programming. You'll learn more about functions and types in Chapter 18.
 
 **Source**: Verified in intelligence/001-verified-tool-documentation.md
 

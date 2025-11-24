@@ -1,14 +1,14 @@
 ---
 sidebar_position: 7
-title: "Chapter 24: Math, Date Time Calendar Quiz"
+title: "Chapter 27: Math, Date Time Calendar Quiz"
 ---
 
-# Chapter 24: Math, Date Time Calendar Quiz
+# Chapter 27: Math, Date Time Calendar Quiz
 
 Test your understanding of Python's math module, datetime operations, timezone conversions, and calendar functions. This comprehensive assessment covers mathematical validation, epoch concepts, Python 3.14's new parsing methods, formatting patterns, and timezone handling.
 
 <Quiz
-  title="Chapter 24: Math, Date Time Calendar Assessment"
+  title="Chapter 27: Math, Date Time Calendar Assessment"
   questions={[    {
       question: "You need to calculate a circle's area using math.pi. Why should you use math.pi instead of hardcoding 3.14159?",
       options: [

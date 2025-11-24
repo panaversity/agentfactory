@@ -403,7 +403,7 @@ Once your framework is complete, validate it with AI collaboration:
 
 ### Deliverable
 
-Complete `oop_decision_framework.md` following the template structure above. This framework becomes your reference throughout Chapter 26 and your entire Python career—you'll use it to make architecture decisions in real projects.
+Complete `oop_decision_framework.md` following the template structure above. This framework becomes your reference throughout Chapter 29 and your entire Python career—you'll use it to make architecture decisions in real projects.
 
 ---
 

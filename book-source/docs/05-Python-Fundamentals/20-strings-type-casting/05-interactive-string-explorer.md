@@ -48,7 +48,7 @@ learning_objectives:
     bloom_level: "Apply + Create"
     assessment_method: "Design phase produces clear intent description and validation requirements"
 
-  - objective: "Implement a complete working program that integrates all Chapter 18 concepts (Lessons 1-4) to solve a practical problem"
+  - objective: "Implement a complete working program that integrates all Chapter 21 concepts (Lessons 1-4) to solve a practical problem"
     proficiency_level: "B1"
     bloom_level: "Create"
     assessment_method: "Running program validates contact data using string methods, formatting, type conversions, and validation"
@@ -58,7 +58,7 @@ learning_objectives:
     bloom_level: "Analyze"
     assessment_method: "Testing summary shows program handles valid and invalid contact information gracefully"
 
-  - objective: "Reflect on how contact validator demonstrates Chapter 18 concepts in real-world context"
+  - objective: "Reflect on how contact validator demonstrates Chapter 21 concepts in real-world context"
     proficiency_level: "B1"
     bloom_level: "Evaluate"
     assessment_method: "Reflection connects validator features to specific Lesson 1-4 skills and real applications"
@@ -89,7 +89,7 @@ Every application needs to collect user data: registration forms, profile pages,
 
 This project is different from exercises. You'll start by describing what the program should do, then build it with AI as your partner, test it with realistic data, and validate that it works correctly. This is how real programming works: you solve a problem someone has, not just demonstrate concepts.
 
-By the end of this lesson, you'll have built a practical tool that validates contact information using all Chapter 18 concepts—string methods, f-strings, type casting, and validation—skills you'll use in every application you build.
+By the end of this lesson, you'll have built a practical tool that validates contact information using all Chapter 21 concepts—string methods, f-strings, type casting, and validation—skills you'll use in every application you build.
 
 ---
 
@@ -166,7 +166,7 @@ This conversation helps you understand the problem domain before coding.
 
 ## Phase 2: Building Your Validator — AI-Guided Implementation
 
-Now let's build the Contact Card Validator. This code demonstrates all Chapter 18 concepts solving a real problem.
+Now let's build the Contact Card Validator. This code demonstrates all Chapter 21 concepts solving a real problem.
 
 ### Code Example 5.1: Basic Contact Card Validator
 
@@ -455,7 +455,7 @@ This is how professional applications validate forms:
 3. Show all errors at once (not one-by-one)
 4. Only proceed if everything is valid
 
-**Note**: Functions and tuples are from Chapter 22. This example shows how your validator could evolve; focus on understanding the validation patterns, not memorizing function syntax.
+**Note**: Functions and tuples are from Chapter 25. This example shows how your validator could evolve; focus on understanding the validation patterns, not memorizing function syntax.
 
 ---
 
@@ -548,9 +548,9 @@ Expected behavior:
 
 ---
 
-## Phase 4: Reflection — Connecting Back to Chapter 18
+## Phase 4: Reflection — Connecting Back to Chapter 21
 
-The most important part of this project is understanding how all Chapter 18 concepts solve a real problem together.
+The most important part of this project is understanding how all Chapter 21 concepts solve a real problem together.
 
 ### What Lessons 1-4 Did Your Validator Use?
 
@@ -635,23 +635,23 @@ Once your basic validator works, you can add real-world features:
 - **Username validation**: Check length, allowed characters, no spaces
 - **Password strength**: Check length, special characters, numbers
 
-**Data Storage** (Chapter 24: File Handling):
+**Data Storage** (Chapter 27: File Handling):
 - **Save contacts to file**: Store validated contacts in CSV or JSON format
 - **Load and edit**: Read existing contacts and update them
 - **Search contacts**: Find contacts by name or email
 
-**User Experience** (Chapter 19: Control Flow):
+**User Experience** (Chapter 22: Control Flow):
 - **Retry on error**: Let users re-enter invalid data instead of restarting
 - **Menu system**: Choose to add, view, edit, or delete contacts
 - **Batch import**: Validate multiple contacts at once from a file
 
-Ask your AI companion how to add any of these features. Each one uses Chapter 18 concepts plus skills from upcoming chapters.
+Ask your AI companion how to add any of these features. Each one uses Chapter 21 concepts plus skills from upcoming chapters.
 
 ---
 
 ## Try With AI: Contact Validator Capstone Challenge
 
-You've completed all 4 lessons of Chapter 18. Now integrate everything—strings, methods, f-strings, and type casting—into a production-quality contact validator. This is YOUR capstone project with AI as your code review partner.
+You've completed all 4 lessons of Chapter 21. Now integrate everything—strings, methods, f-strings, and type casting—into a production-quality contact validator. This is YOUR capstone project with AI as your code review partner.
 
 ## Try With AI
 

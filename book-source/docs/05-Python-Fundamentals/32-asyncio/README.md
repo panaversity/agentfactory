@@ -1,13 +1,13 @@
 ---
 sidebar_position: 32
-title: "Chapter 29: Asyncio — Concurrent I/O and CPU-Parallel Workloads"
+title: "Chapter 32: Asyncio — Concurrent I/O and CPU-Parallel Workloads"
 slides:
   source: "slides/chapter-32-slides.pdf"
-  title: "Chapter 29: Asyncio — Concurrent I/O and CPU-Parallel Workloads"
+  title: "Chapter 32: Asyncio — Concurrent I/O and CPU-Parallel Workloads"
   height: 700
 ---
 
-# Chapter 29: Asyncio — Concurrent I/O and CPU-Parallel Workloads
+# Chapter 32: Asyncio — Concurrent I/O and CPU-Parallel Workloads
 
 Modern applications don't wait—they fetch from multiple APIs concurrently, process data in parallel, and combine results efficiently. An AI agent making sequential API calls wastes time. A data pipeline processing items one-by-one underutilizes CPU cores. **Asyncio** enables concurrent I/O operations, and **InterpreterPoolExecutor** enables true CPU parallelism.
 

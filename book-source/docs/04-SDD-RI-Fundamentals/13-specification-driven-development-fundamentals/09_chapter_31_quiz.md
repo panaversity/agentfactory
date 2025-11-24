@@ -1,14 +1,14 @@
 ---
 sidebar_position: 9
-title: "Chapter 31: SDD-RI Fundamentals Quiz"
+title: "Chapter 16: SDD-RI Fundamentals Quiz"
 ---
 
-# Chapter 31: Understanding Spec-Driven Development with Reusable Intelligence Quiz
+# Chapter 16: Understanding Spec-Driven Development with Reusable Intelligence Quiz
 
-Test your understanding of specification-driven development, reusable intelligence design, and the frameworks that enable AI-native software development. This comprehensive assessment covers all fundamental concepts from Chapter 31.
+Test your understanding of specification-driven development, reusable intelligence design, and the frameworks that enable AI-native software development. This comprehensive assessment covers all fundamental concepts from Chapter 16.
 
 <Quiz
-  title="Chapter 31: SDD-RI Fundamentals Assessment"
+  title="Chapter 16: SDD-RI Fundamentals Assessment"
   questions={[
     {
       question: "A developer writes 'Build a login system' as their prompt to an AI agent. After 10 iterations addressing missing password reset, rate limiting, and email verification, they've spent 12 hours. What core problem does this scenario demonstrate?",

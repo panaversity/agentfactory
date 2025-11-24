@@ -1,14 +1,14 @@
 ---
 sidebar_position: 11
-title: "Chapter 13: Python UV Quiz"
+title: "Chapter 16: Python UV Quiz"
 ---
 
-# Chapter 13: Python UV — The Fastest Python Package Manager Quiz
+# Chapter 16: Python UV — The Fastest Python Package Manager Quiz
 
 Test your understanding of UV package management, dependency handling, code quality tools, and professional Python workflows.
 
 <Quiz
-  title="Chapter 13: Python UV Package Manager Assessment"
+  title="Chapter 16: Python UV Package Manager Assessment"
   questions={[    {
       question: "Why was UV created when pip, poetry, and conda already existed?",
       options: [

@@ -291,7 +291,7 @@ Notice something: We already used **type hints** (the `: str`, `: int`, `: float
 
 ### Quick Review of print()
 
-From Chapter 15, you remember `print()`. It displays output. Here, we're using it to show what `type()` returns:
+From Chapter 18, you remember `print()`. It displays output. Here, we're using it to show what `type()` returns:
 
 ```python
 print(type(42))  # Displays: <class 'int'>

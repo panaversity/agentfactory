@@ -463,7 +463,7 @@ Once your basic parser works, here are ways to extend it:
 
 ## Try With AI
 
-Build a production-grade CSV parser integrating all Chapter 23 exception handling concepts.
+Build a production-grade CSV parser integrating all Chapter 26 exception handling concepts.
 
 **🔍 Explore Error Architecture:**
 > "Design CSV parser error handling for reading name, age, email columns with validation (name non-empty, age 0-150, email has @). Categorize errors as fatal (FileNotFoundError, PermissionError—stop program) vs recoverable (ValueError—skip row). Explain why file errors caught outside loop, validation errors inside loop."
@@ -475,7 +475,7 @@ Build a production-grade CSV parser integrating all Chapter 23 exception handlin
 > "Write pytest tests BEFORE implementing parser: (1) Valid data expects 2 records/0 errors, (2) Mixed data expects 1 valid/2 errors with row numbers, (3) Missing file expects FileNotFoundError. Show assertions checking result dict structure and error message content."
 
 **🚀 Apply Production Features:**
-> "Build complete parser with validation functions (validate_name, validate_age, validate_email raising ValueError), parse_csv_file returning `{'valid': [...], 'invalid': [...], 'total': int}`, and main function with summary report. Extend with: retry logic, error logging to parser.log, graceful degradation for all-invalid data, and reflection integrating all Chapter 23 concepts."
+> "Build complete parser with validation functions (validate_name, validate_age, validate_email raising ValueError), parse_csv_file returning `{'valid': [...], 'invalid': [...], 'total': int}`, and main function with summary report. Extend with: retry logic, error logging to parser.log, graceful degradation for all-invalid data, and reflection integrating all Chapter 26 concepts."
 
 ---
 
@@ -497,4 +497,4 @@ You've now completed all five lessons on exception handling. You've learned to:
 4. Apply error handling strategies (retry, fallback, graceful degradation, logging)
 5. Build a realistic project integrating all these concepts
 
-From here, Chapter 24 (IO & File Handling) builds directly on this foundation—exception handling is the primary tool for safe file operations. You're ready for that next step.
+From here, Chapter 27 (IO & File Handling) builds directly on this foundation—exception handling is the primary tool for safe file operations. You're ready for that next step.

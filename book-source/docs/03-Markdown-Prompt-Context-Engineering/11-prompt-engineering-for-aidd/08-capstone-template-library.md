@@ -692,7 +692,7 @@ You now understand:
 - ✅ Template selection decision frameworks
 - ✅ Writing peer-reviewable specifications
 
-**Coming in Chapter 13**: Context Engineering for AI-Driven Development
+**Coming in Chapter 16**: Context Engineering for AI-Driven Development
 - Context windows and token limits
 - Progressive loading strategies
 - Context compression techniques

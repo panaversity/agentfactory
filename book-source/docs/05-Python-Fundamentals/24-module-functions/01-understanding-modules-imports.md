@@ -6,7 +6,7 @@ keywords: ["modules", "imports", "built-in modules", "import variants", "math", 
 proficiency_level: "A2"
 estimated_time: "55 minutes"
 proficiency_by_end: "Students can import built-in modules (math, random, os) and use their functions correctly"
-prerequisites: ["Chapter 15: Python basics (variables, print, execution flow)", "Chapter 16: Type hints syntax"]
+prerequisites: ["Chapter 18: Python basics (variables, print, execution flow)", "Chapter 19: Type hints syntax"]
 learning_objectives:
   - "Explain what a module is and why Python developers organize code into modules"
   - "Use three import variants (import, from X import Y, from X import Y as Z) correctly"

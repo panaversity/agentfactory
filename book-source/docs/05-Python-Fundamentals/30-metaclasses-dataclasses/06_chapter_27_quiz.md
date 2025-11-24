@@ -1,14 +1,14 @@
 ---
 sidebar_position: 6
-title: "Chapter 27: Metaclasses and Dataclasses Quiz"
+title: "Chapter 30: Metaclasses and Dataclasses Quiz"
 ---
 
-# Chapter 27: Metaclasses and Dataclasses Quiz
+# Chapter 30: Metaclasses and Dataclasses Quiz
 
 Test your understanding of metaclasses (the machinery that creates classes) and dataclasses (modern, declarative data containers). This quiz covers the metaclass mechanism, practical metaclass patterns, dataclass fundamentals, advanced dataclass features, and architectural decision-making.
 
 <Quiz
-  title="Chapter 27: Metaclasses and Dataclasses Assessment"
+  title="Chapter 30: Metaclasses and Dataclasses Assessment"
   questions={[
     {
       question: "What does type(MyClass) return when MyClass is a normal user-defined class?",

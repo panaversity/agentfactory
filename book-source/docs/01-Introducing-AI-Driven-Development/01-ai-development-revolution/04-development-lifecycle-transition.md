@@ -83,7 +83,7 @@ When specifications are clear and AI agents handle implementation, you can regen
 - Framework-specific syntax (can be migrated with AI assistance)
 - Boilerplate and repetitive patterns (automated through intelligent generation)
 
-This is the shift from "reusable code" to "reusable intelligence." We'll explore what this means for your development practice throughout this book—starting with how specifications become your primary development artifact (Chapter 32).
+This is the shift from "reusable code" to "reusable intelligence." We'll explore what this means for your development practice throughout this book—starting with how specifications become your primary development artifact (Chapter 17).
 
 ## The Traditional Development Lifecycle
 

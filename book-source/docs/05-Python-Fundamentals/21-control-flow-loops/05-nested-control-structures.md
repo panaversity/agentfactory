@@ -94,7 +94,7 @@ You've learned how to make decisions with conditionals (Lessons 1-2) and automat
 
 Think of nested control structures like boxes inside boxes. You open a big box, and inside it there’s a smaller one, and inside that, another one. Each layer fits inside the previous one. In the same way, when you place an `if` statement inside a loop, or a loop inside another loop, you build powerful structures that can handle multi-step, layered problems.
 
-In this lesson, you'll integrate everything you've learned in Chapter 19 to handle scenarios like:
+In this lesson, you'll integrate everything you've learned in Chapter 22 to handle scenarios like:
 - Checking multiple criteria before making a decision (nested `if` statements)
 - Processing two-dimensional data like grids or tables (nested loops)
 - Filtering items while iterating through a list (conditionals inside loops)
@@ -388,7 +388,7 @@ Processing cart items:
 
 #### 🎓 Expert Insight: You Might See Functions in AI Responses
 
-When you ask your AI to generate code examples, it might create code using `def` keyword to define **functions**. Functions are reusable blocks of code—a powerful Python feature you'll learn in **Chapter 22**.
+When you ask your AI to generate code examples, it might create code using `def` keyword to define **functions**. Functions are reusable blocks of code—a powerful Python feature you'll learn in **Chapter 25**.
 
 For now, when working through this chapter:
 

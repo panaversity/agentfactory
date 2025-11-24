@@ -1,14 +1,14 @@
 ---
 sidebar_position: 6
-title: "Chapter 17: Strings and Type Casting Quiz"
+title: "Chapter 20: Strings and Type Casting Quiz"
 ---
 
-# Chapter 17: Strings and Type Casting Quiz
+# Chapter 20: Strings and Type Casting Quiz
 
 Test your understanding of string fundamentals, essential string methods, f-string formatting, and type casting. This quiz covers all concepts from Lessons 1-5.
 
 <Quiz
-  title="Chapter 17: Strings and Type Casting Assessment"
+  title="Chapter 20: Strings and Type Casting Assessment"
   questions={[    {
       question: "What happens when you try to change a single character in an existing string?",
       options: [

@@ -106,7 +106,7 @@ When Claude Code generates JSON for you, you need to validate it's correct BEFOR
 
 ### Installing Pydantic
 
-Like any Python library, Pydantic needs to be installed first. You've already learned this pattern in Chapter 14 with `uv`:
+Like any Python library, Pydantic needs to be installed first. You've already learned this pattern in Chapter 17 with `uv`:
 
 ```bash
 uv add pydantic

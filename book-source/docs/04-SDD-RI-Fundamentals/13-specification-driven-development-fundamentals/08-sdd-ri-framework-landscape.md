@@ -57,7 +57,7 @@ version: "2.0.0"
 
 # SDD-RI Framework Landscape & What's Next
 
-You've now completed your journey through SDD fundamentals (Lessons 1-5) and learned how to design reusable intelligence with RI (Lessons 6-7). Before you move into implementation in Chapter 33, it's critical to understand the landscape of SDD frameworks and recognize where Spec-Kit Plus — the framework this book teaches — fits within the larger ecosystem.
+You've now completed your journey through SDD fundamentals (Lessons 1-5) and learned how to design reusable intelligence with RI (Lessons 6-7). Before you move into implementation in Chapter 35, it's critical to understand the landscape of SDD frameworks and recognize where Spec-Kit Plus — the framework this book teaches — fits within the larger ecosystem.
 
 **This lesson is not about choosing a framework for YOUR projects** (that's a decision you'll make later with your own team constraints). Instead, this is **landscape awareness**: understanding four major SDD approaches that emerged in 2025, recognizing what context factors matter in framework selection, and understanding why Panaversity designed Spec-Kit Plus specifically for AI-native teams learning SDD-RI.
 
@@ -172,9 +172,9 @@ The answer lies in how this book teaches SDD-RI and what you need to succeed.
 
 ### The SDD-RI Choice: Why Spec-Kit Plus
 
-**Chapter 32 (This Chapter)** teaches SDD fundamentals—the WHAT and HOW of specification-driven development.
+**Chapter 17 (This Chapter)** teaches SDD fundamentals—the WHAT and HOW of specification-driven development.
 
-**Chapter 33+ (Next)** teaches SDD-RI implementation—the WHY and HOW TO DESIGN alongside AI agents.
+**Chapter 35+ (Next)** teaches SDD-RI implementation—the WHY and HOW TO DESIGN alongside AI agents.
 
 When you're learning to design reusable intelligence (L6-7) and orchestrate components (L8+), you need a framework that:
 
@@ -217,7 +217,7 @@ You're not learning abstract theory. You're learning the practical framework tha
 
 ### What's Next 
 
-Next chapter 33 takes everything you've learned and puts it into practice:
+Next chapter 35 takes everything you've learned and puts it into practice:
 
 - **Build real features** using Spec-Kit Plus (not toy examples)
 - **Practice the complete SDD-RI workflow**: Specification → ADR decisions → Prompt → Code → PHR logging → Validation
@@ -227,18 +227,18 @@ Next chapter 33 takes everything you've learned and puts it into practice:
 ### The Synthesis
 
 ```
-Chapter 32 Complete
+Chapter 17 Complete
   └─ SDD Fundamentals (L1-5)
   └─ RI Concepts (L6-7)
   └─ Framework Awareness (L8)
        ↓
-Chapter 33+ Implementation
+Chapter 35+ Implementation
   └─ Spec-Kit Plus in practice
   └─ Real feature development
   └─ SDD-RI workflow executed
 ```
 
-**In Chapter 33, you'll see:**
+**In Chapter 35, you'll see:**
 - How specifications trigger Spec-Kit Plus phases
 - How ADRs capture architectural reasoning
 - How PHRs log AI interactions and improve future prompts

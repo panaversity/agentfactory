@@ -289,7 +289,7 @@ tags: list[str] = tags_input.strip().split(",")  # ["JavaScript", " Python", " R
 
 # Note: Each tag has spaces—let's fix that
 cleaned_tags: list[str] = [tag.strip() for tag in tags]  # Clean each tag
-# (list comprehension is Chapter 20+; shown for reference here)
+# (list comprehension is Chapter 23+; shown for reference here)
 
 # Simpler chaining without comprehension:
 single_tag: str = "  HELLO  "

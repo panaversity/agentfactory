@@ -262,7 +262,7 @@ print(type(is_student)) # <class 'bool'>
 
 ## Concept 3: Truthy and Falsy Values
 
-Here's a powerful concept that prepares you for **conditional statements** (Chapter 19):
+Here's a powerful concept that prepares you for **conditional statements** (Chapter 22):
 
 **In Python, almost EVERY value can be treated as True or False.** Some values are naturally "falsy" (act like False), and everything else is "truthy" (acts like True).
 
@@ -320,7 +320,7 @@ print(bool(value2))  # False ("" is falsy)
 print(bool(value3))  # True (42 is truthy)
 print(bool(value4))  # True ("hello" is truthy)
 
-# This becomes useful in conditional statements (Chapter 19):
+# This becomes useful in conditional statements (Chapter 22):
 # if value3:           # If truthy
 #     print("yes")     # This will execute
 # if value2:           # If falsy
@@ -329,7 +329,7 @@ print(bool(value4))  # True ("hello" is truthy)
 
 ### Why Truthy/Falsy Matters
 
-Understanding truthy/falsy values prepares you for Chapter 19, where you'll learn to write conditional logic like:
+Understanding truthy/falsy values prepares you for Chapter 22, where you'll learn to write conditional logic like:
 - Checking if a username is not empty (truthy check)
 - Verifying if age meets requirements (comparison)
 - Testing if a user has premium status (boolean check)
@@ -340,7 +340,7 @@ Understanding truthy/falsy values prepares you for Chapter 19, where you'll lear
 **Generated Code**:
 ```python
 # Truthy and falsy demonstration
-# (Full loop version requires Chapter 19 - Control Flow)
+# (Full loop version requires Chapter 22 - Control Flow)
 
 print("=== FALSY VALUES ===")
 # Demonstrating each falsy value individually
@@ -367,7 +367,7 @@ print(f"{repr({'a': 1}):20} → bool() = {bool({'a': 1})}")
 - ✓ Correctly identifies all falsy values evaluate to False
 - ✓ Correctly identifies all truthy values evaluate to True
 - ✓ Output format clear and easy to understand
-- ✓ No control flow statements (loops/conditionals taught in Chapter 19)
+- ✓ No control flow statements (loops/conditionals taught in Chapter 22)
 
 ---
 
@@ -432,7 +432,7 @@ is_none = user_phone is None
 print(f"Phone is None: {is_none}")  # False
 print(f"Phone: {user_phone}")       # Phone: 555-1234
 
-# Note: Functions that return None are covered in Chapter 22
+# Note: Functions that return None are covered in Chapter 25
 ```
 
 **Key syntax**: Use `str | None` (read as "string or None") to indicate a value that could be text OR nothing.
@@ -586,7 +586,7 @@ print(value is None)     # True (None is specifically None)
 is_absent: bool = value is None
 print(f"Value is absent: {is_absent}")  # True (when value is None)
 
-# You'll learn to use 'is None' in conditional statements in Chapter 19
+# You'll learn to use 'is None' in conditional statements in Chapter 22
 ```
 
 ### Pitfall 4: Trying to Modify Strings

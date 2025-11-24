@@ -6,13 +6,13 @@ keywords: ["scope", "local scope", "global scope", "nested functions", "closures
 proficiency_level: "B1-B2"
 estimated_time: "55 minutes"
 proficiency_by_end: "Students predict variable scope correctly and write nested functions with closures"
-prerequisites: ["Lessons 1-3: Function definition and calling", "Chapter 19: If/else logic", "Mental model of variable existence in code"]
+prerequisites: ["Lessons 1-3: Function definition and calling", "Chapter 22: If/else logic", "Mental model of variable existence in code"]
 learning_objectives:
   - "Predict whether a variable is accessible in a given scope"
   - "Understand the global keyword and when to use it (rarely)"
   - "Write nested functions that access outer scope variables (closures)"
   - "Apply scope understanding to avoid bugs and design better code"
-  - "Recognize nested functions as preparation for advanced patterns (Chapter 28)"
+  - "Recognize nested functions as preparation for advanced patterns (Chapter 31)"
 ai_native_learning: true
 try_with_ai_prompts: 4
 colearning_elements: ["conceptual_prompt", "teaching_commentary", "specification_challenge", "ai_tip"]

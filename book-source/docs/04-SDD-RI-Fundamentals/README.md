@@ -37,11 +37,11 @@ That's what this part teaches you.
 
 This part consists of three complete chapters (with Chapter 35 planned for future release) that transform you from code-first to specification-first:
 
-### Chapter 32: Understanding Specification-Driven Development Fundamentals
+### Chapter 17: Understanding Specification-Driven Development Fundamentals
 
 You'll discover why specifications matter through experience, not lectures. Starting with a vague requirement that fails, you'll diagnose the problem, then work with your AI companion to understand SDD philosophy, tools, and history. You'll learn why SDD is now making shipping 10x better NOW (not 10 years ago), explore the tools ecosystem (Kiro, Spec-Kit Plus, Tessel), and confront the spec-as-source vision realistically.
 
-### Chapter 33: Spec-Kit Plus Hands-On
+### Chapter 35: Spec-Kit Plus Hands-On
 
 Here you'll practice specification-first development with your AI companion. You'll build a Python calculator project starting from specification (not code), learning the SpecifyPlus optionated workflow. Then you'll write a real-world grading system specification that becomes the foundation for Chapter 34's capstone.
 

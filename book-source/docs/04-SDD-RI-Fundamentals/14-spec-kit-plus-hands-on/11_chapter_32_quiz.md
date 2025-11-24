@@ -1,14 +1,14 @@
 ---
 sidebar_position: 11
-title: "Chapter 32: Spec-Kit Plus Hands-On Quiz"
+title: "Chapter 17: Spec-Kit Plus Hands-On Quiz"
 ---
 
-# Chapter 32: Spec-Kit Plus Hands-On Quiz
+# Chapter 17: Spec-Kit Plus Hands-On Quiz
 
 Test your understanding of Spec-Driven Development with Reusable Intelligence (SDD-RI) through this comprehensive assessment covering the complete workflow from constitution to brownfield adoption.
 
 <Quiz
-  title="Chapter 32: Spec-Kit Plus Hands-On Assessment"
+  title="Chapter 17: Spec-Kit Plus Hands-On Assessment"
   questions={[
     {
       question: "Your team adopted Spec-Kit Plus but developers skip the constitution phase, arguing 'we already know our coding standards.' Six months later, specifications vary wildly in structure and quality. What does this reveal about the constitution's role?",

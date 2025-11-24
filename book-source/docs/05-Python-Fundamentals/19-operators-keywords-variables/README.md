@@ -1,17 +1,17 @@
 ---
 sidebar_position: 19
-title: "Chapter 16: Operators, Keywords, and Variables"
+title: "Chapter 19: Operators, Keywords, and Variables"
 slides:
   source: "slides/chapter-19-slides.pdf"
-  title: "Chapter 16: Operators, Keywords, and Variables"
+  title: "Chapter 19: Operators, Keywords, and Variables"
   height: 700
 ---
 
-# Chapter 16: Operators, Keywords, and Variables
+# Chapter 19: Operators, Keywords, and Variables
 
-In Chapter 16, you learned about Python's core data types and how to store data in variables with type hints. Now it's time to learn **what you can DO with that data** using operators—the symbols that tell Python to perform actions.
+In Chapter 19, you learned about Python's core data types and how to store data in variables with type hints. Now it's time to learn **what you can DO with that data** using operators—the symbols that tell Python to perform actions.
 
-Operators are the verbs of programming. In Chapter 16, you learned the nouns (data types). Now you learn the verbs (operators). In Chapter 19, you'll combine them into sentences (control flow).
+Operators are the verbs of programming. In Chapter 19, you learned the nouns (data types). Now you learn the verbs (operators). In Chapter 22, you'll combine them into sentences (control flow).
 
 ## 🎯 Before You Begin
 
@@ -28,4 +28,4 @@ By the end of this chapter, you will:
 - Recognize Python's 35 reserved keywords and avoid using them as variable names
 - Build a complete calculator integrating all operator types with type validation
 
-Operators are the verbs of programming. In Chapter 16, you learned the nouns (data types). Now you learn the verbs (operators). In Chapter 19, you'll combine them into sentences (control flow).
+Operators are the verbs of programming. In Chapter 19, you learned the nouns (data types). Now you learn the verbs (operators). In Chapter 22, you'll combine them into sentences (control flow).

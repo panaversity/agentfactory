@@ -27,7 +27,7 @@ skills:
     measurable_at_this_level: "Student runs program end-to-end; tests with different inputs; verifies output matches specification"
 
 learning_objectives:
-  - objective: "Design and build an interactive program that demonstrates all Chapter 15 concepts"
+  - objective: "Design and build an interactive program that demonstrates all Chapter 18 concepts"
     proficiency_level: "B1"
     bloom_level: "Apply"
     assessment_method: "Complete capstone program runs without errors and meets all requirements"
@@ -64,7 +64,7 @@ This cycle—spec, plan, implement, validate—is exactly how professional AI-Dr
 
 ## Understanding the Capstone
 
-Throughout Chapter 15, you've learned individual pieces:
+Throughout Chapter 18, you've learned individual pieces:
 - Variables (Lesson 3)
 - Type hints (Lesson 3)
 - Syntax, `print()`, f-strings (Lesson 4)
@@ -362,7 +362,7 @@ Comments explain WHAT and WHY, not just HOW.
 
 ## Try With AI
 
-Build a complete information collector integrating all Chapter 15 concepts.
+Build a complete information collector integrating all Chapter 18 concepts.
 
 **🔍 Explore Domain Design:**
 > "I'm building a [Book Tracker/Recipe Collector/Travel Journal - choose one]. Help me design it to collect 5 fields with appropriate type hints. For a Book Tracker: title, author, genre, pages, rating. Should I use `str` for everything, or would `int` be better for some fields like rating or pages? Show me the complete Python code with `input()` for all fields, formatted output with f-strings, and section comments."
@@ -374,7 +374,7 @@ Build a complete information collector integrating all Chapter 15 concepts.
 > "Enhance the collector with: asking 'Add another entry? (yes/no)' after each entry, storing multiple entries in a list, displaying all entries in a formatted table with aligned columns, and calculating statistics (total pages read, average rating, etc.). Show me the updated code with type hints for the list structure."
 
 **🚀 Reflect on Spec-Driven Process:**
-> "Explain how this project demonstrates specification-first thinking. How did designing before coding help? What was the division of labor between me (design intent) and you (implementation details)? If building a REAL app with database and web interface, which parts of this process would stay the same? Give me a Development Readiness Checklist: what Chapter 15 skills am I confident with vs what needs review?"
+> "Explain how this project demonstrates specification-first thinking. How did designing before coding help? What was the division of labor between me (design intent) and you (implementation details)? If building a REAL app with database and web interface, which parts of this process would stay the same? Give me a Development Readiness Checklist: what Chapter 18 skills am I confident with vs what needs review?"
 
 ---
 
@@ -391,4 +391,4 @@ Before you submit your capstone, verify:
 - [ ] Displays formatted summary with user's information
 - [ ] You can explain how it works to someone else
 
-If you checked everything, congratulations! You've completed the Chapter 15 capstone.
+If you checked everything, congratulations! You've completed the Chapter 18 capstone.

@@ -6,7 +6,7 @@ keywords: ["capstone", "modules", "multi-file", "separation of concerns", "testi
 proficiency_level: "B1-B2"
 estimated_time: "70 minutes"
 proficiency_by_end: "Students complete a working multi-module calculator project with clear separation of concerns"
-prerequisites: ["Lessons 1-4: All module and function concepts", "Chapter 16-18: Data types and operations"]
+prerequisites: ["Lessons 1-4: All module and function concepts", "Chapter 19-18: Data types and operations"]
 learning_objectives:
   - "Organize code into multiple modules with clear responsibilities"
   - "Import and use custom functions from self-written modules"
@@ -485,14 +485,14 @@ This teaches you how good module design enables extensibility without breaking e
 
 Your calculator imports operations like `import operations`. This works because Python looks for `operations.py` in the same directory. When sharing code:
 - **Same directory**: Use `import operations`
-- **Different directories**: Use packages with `__init__.py` (more advanced, Chapter 26+)
+- **Different directories**: Use packages with `__init__.py` (more advanced, Chapter 29+)
 - **Not sure**: Ask your AI: "How do I organize Python modules for sharing?"
 
 ---
 
 ## Try With AI
 
-Build a complete multi-module calculator project integrating all Chapter 22 concepts.
+Build a complete multi-module calculator project integrating all Chapter 25 concepts.
 
 **🔍 Explore Module Architecture:**
 > "Design a calculator with operations.py (math functions), utils.py (I/O), main.py (orchestration), and test_calculator.py (validation). For each module, define its responsibilities and explain why this separation improves testability and reusability."

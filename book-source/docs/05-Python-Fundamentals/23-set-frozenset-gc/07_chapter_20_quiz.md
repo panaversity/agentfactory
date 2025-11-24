@@ -1,14 +1,14 @@
 ---
 sidebar_position: 7
-title: "Chapter 20: Set, Frozen Set, and GC Quiz"
+title: "Chapter 23: Set, Frozen Set, and GC Quiz"
 ---
 
-# Chapter 20: Set, Frozen Set, and GC Quiz
+# Chapter 23: Set, Frozen Set, and GC Quiz
 
 Test your understanding of Python's hash-based data structures and automatic memory management—from O(1) lookups with sets to immutable frozensets and garbage collection internals.
 
 <Quiz
-  title="Chapter 20: Set, Frozen Set, and GC Assessment"
+  title="Chapter 23: Set, Frozen Set, and GC Assessment"
   questions={[    {
       question: "You create a list with duplicate values: `[1, 2, 3, 1, 2, 4]`. What happens when you convert it to a set?",
       options: [

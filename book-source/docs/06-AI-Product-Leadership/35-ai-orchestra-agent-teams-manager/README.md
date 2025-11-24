@@ -1,16 +1,16 @@
 ---
-title: "Chapter 33: AI Orchestra - Agent Teams Manager"
+title: "Chapter 35: AI Orchestra - Agent Teams Manager"
 chapter: 32
 part: 5
 sidebar_position: 35
 description: "Master decomposition thinking and task management to coordinate 5-7 autonomous agents (AI or human)"
 slides:
   source: "slides/chapter-35-slides.pdf"
-  title: "Chapter 33: AI Orchestra - Agent Teams Manager"
+  title: "Chapter 35: AI Orchestra - Agent Teams Manager"
   height: 700
 ---
 
-# Chapter 33: AI Orchestra – Manage Agent Teams
+# Chapter 35: AI Orchestra – Manage Agent Teams
 
 This chapter transforms you into an **AI team lead** — someone who can coordinate multiple agents to achieve complex goals. The skills you’ll build here apply equally to managing AI agents and leading human teams.
 

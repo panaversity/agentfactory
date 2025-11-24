@@ -113,7 +113,7 @@ Grace,Physics,3.8
 """
 ```
 
-This simulates reading a CSV file (we'll learn actual file I/O in Chapter 24). For now, it's just a multi-line string.
+This simulates reading a CSV file (we'll learn actual file I/O in Chapter 27). For now, it's just a multi-line string.
 
 ### Step 2: Parsed Data (List of Dicts)
 
@@ -181,7 +181,7 @@ Let's start with the foundation. You have a CSV-like string, and your job is to 
 
 #### Code Example: Data Parsing
 
-> **📘 Note**: In Chapter 22, you'll learn how to organize this parsing logic into reusable functions. For now, we're writing the code inline to focus on the data structure transformations—how lists and dicts work together to structure raw text.
+> **📘 Note**: In Chapter 25, you'll learn how to organize this parsing logic into reusable functions. For now, we're writing the code inline to focus on the data structure transformations—how lists and dicts work together to structure raw text.
 
 ```python
 # Raw CSV-like data (simulates reading a file)
@@ -299,7 +299,7 @@ Filtering is useful, but aggregation is powerful. Now calculate statistics **by 
 
 #### Code Example: Aggregation with Dict
 
-> **📘 Note**: This aggregation pattern—grouping data and calculating statistics—is fundamental to data analysis. In Chapter 22, you'll learn to package this logic into reusable functions. For now, focus on understanding the dict-based accumulation pattern.
+> **📘 Note**: This aggregation pattern—grouping data and calculating statistics—is fundamental to data analysis. In Chapter 25, you'll learn to package this logic into reusable functions. For now, focus on understanding the dict-based accumulation pattern.
 
 ```python
 students: list[dict[str, str | float]] = [
@@ -622,7 +622,7 @@ stem_students: list[dict[str, str | float]] = [
 
 Sort students by GPA (highest first) before output:
 
-> **📘 Note**: The `lambda` syntax below is a shorthand for defining small, inline operations. You'll learn lambda functions in Chapter 22. For now, just understand: `key=lambda s: s["gpa"]` means "sort by the 'gpa' field of each student dict."
+> **📘 Note**: The `lambda` syntax below is a shorthand for defining small, inline operations. You'll learn lambda functions in Chapter 25. For now, just understand: `key=lambda s: s["gpa"]` means "sort by the 'gpa' field of each student dict."
 
 ```python
 students: list[dict[str, str | float]] = [
@@ -701,7 +701,7 @@ Check yourself against these criteria:
 
 ## Try With AI
 
-Build a complete sales data pipeline integrating all Chapter 20 concepts.
+Build a complete sales data pipeline integrating all Chapter 23 concepts.
 
 **🔍 Explore Pipeline Architecture:**
 > "Show me a sales CSV pipeline design: parse to list[dict], filter Electronics with price>$100, aggregate revenue by category. Explain structure choices and why dict for records, list for collection, dict for aggregation."
@@ -713,7 +713,7 @@ Build a complete sales data pipeline integrating all Chapter 20 concepts.
 > "Debug production CSV issues: empty lines, missing fields, invalid prices ('N/A'), duplicate products. Show how code breaks for each, add validation (skip? defaults?), explain strict vs lenient tradeoffs."
 
 **🚀 Apply Multi-Dimensional Analysis:**
-> "Build advanced pipeline: revenue by category AND price bracket (`<$100`, $100-$500, `$500+`), top 3 products by revenue (sorted), summary stats, formatted table. Use nested dicts, comprehensions, sorted(), f-strings. Integrate all Chapter 20 concepts."
+> "Build advanced pipeline: revenue by category AND price bracket (`<$100`, $100-$500, `$500+`), top 3 products by revenue (sorted), summary stats, formatted table. Use nested dicts, comprehensions, sorted(), f-strings. Integrate all Chapter 23 concepts."
 
 ---
 
@@ -730,8 +730,8 @@ You've now completed the full journey from raw data to insights. You've:
 
 This is real work. Data engineers, backend developers, analytics engineers do this every day. You've demonstrated the core competency: **architectural thinking combined with execution**.
 
-Congratulations on completing Chapter 20. You're ready for Chapter 21 (Sets and Frozen Sets) and beyond. The collection structures you've mastered form the foundation for everything that comes next—from functions that operate on collections to objects that contain collections as attributes.
+Congratulations on completing Chapter 23. You're ready for Chapter 24 (Sets and Frozen Sets) and beyond. The collection structures you've mastered form the foundation for everything that comes next—from functions that operate on collections to objects that contain collections as attributes.
 
-**What's next**: In Chapter 22, you'll learn how to encapsulate this pipeline logic into reusable functions. In Chapter 23, you'll handle exceptions robustly when data is malformed. In Chapter 24, you'll read/write data from actual files. But the core pattern—ingest, transform, aggregate, output—remains your north star.
+**What's next**: In Chapter 25, you'll learn how to encapsulate this pipeline logic into reusable functions. In Chapter 26, you'll handle exceptions robustly when data is malformed. In Chapter 27, you'll read/write data from actual files. But the core pattern—ingest, transform, aggregate, output—remains your north star.
 
 Keep building. Keep asking your AI partner. Keep validating. You're thinking like a developer now.

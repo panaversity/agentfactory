@@ -6,7 +6,7 @@ keywords: ["parameters", "default parameters", "keyword arguments", "unpacking",
 proficiency_level: "B1"
 estimated_time: "60 minutes"
 proficiency_by_end: "Students correctly call functions with positional and keyword arguments, and unpack multiple return values"
-prerequisites: ["Lesson 1-2: Function basics and type hints", "Chapter 20: Tuples (used for multiple returns)", "Chapter 16: Type hints with generics"]
+prerequisites: ["Lesson 1-2: Function basics and type hints", "Chapter 23: Tuples (used for multiple returns)", "Chapter 19: Type hints with generics"]
 learning_objectives:
   - "Distinguish between required and optional parameters in function signatures"
   - "Call functions using positional arguments, keyword arguments, and mixed patterns"

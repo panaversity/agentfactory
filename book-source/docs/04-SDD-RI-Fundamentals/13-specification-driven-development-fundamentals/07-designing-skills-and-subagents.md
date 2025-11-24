@@ -664,7 +664,7 @@ You can now:
 ✅ **Distinguish Skills from Subagents** by complexity and autonomy
 ✅ **Create documentation** that produces consistent AI outputs
 
-**Key insight**: RI design ≠ RI implementation. In this lesson, you designed components. In Chapter 33+, you'll implement them using specific frameworks (skills architecture, subagent runtimes, etc.).
+**Key insight**: RI design ≠ RI implementation. In this lesson, you designed components. In Chapter 35+, you'll implement them using specific frameworks (skills architecture, subagent runtimes, etc.).
 
 ---
 

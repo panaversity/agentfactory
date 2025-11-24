@@ -354,7 +354,7 @@ Create a Python file called `file_operations_template.py` with these patterns:
 ```python
 """
 File Operation Templates with Comprehensive Error Handling
-Chapter 23, Lesson 2
+Chapter 26, Lesson 2
 """
 
 from typing import Optional

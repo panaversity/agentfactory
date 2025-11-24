@@ -91,7 +91,7 @@ cognitive_load:
 
 # Differentiation guidance
 differentiation:
-  extension_for_advanced: "Add timestamps with datetime module (Chapter 25 preview), implement categories as nested structure, add export-to-CSV feature, implement undo/redo with history"
+  extension_for_advanced: "Add timestamps with datetime module (Chapter 28 preview), implement categories as nested structure, add export-to-CSV feature, implement undo/redo with history"
   remedial_for_struggling: "Provide starter code with menu loop and function stubs, focus on one CRUD operation at a time, use simpler JSON structure without timestamps, work through creating a single note before attempting full app"
 
 # Generation metadata
@@ -108,7 +108,7 @@ version: "1.0.0"
 
 ## Introduction: Building a Real-World CLI Application
 
-Welcome to the capstone project for Chapter 24! Everything you've learned in Lessons 1-4 comes together here. You're going to build a complete, production-quality CLI note-taking application that integrates:
+Welcome to the capstone project for Chapter 27! Everything you've learned in Lessons 1-4 comes together here. You're going to build a complete, production-quality CLI note-taking application that integrates:
 
 - **Lesson 1**: Console I/O with input validation (menu-driven interface)
 - **Lesson 2**: Safe file operations (reading and writing notes)
@@ -288,7 +288,7 @@ with open(note_path, 'w', encoding='utf-8') as f:
 print(f"✅ Note saved to: {note_path}")
 ```
 
-**Specification Reference**: Path traversal prevention using `Path.resolve()` + `is_relative_to()` from Chapter 24, Lesson 3
+**Specification Reference**: Path traversal prevention using `Path.resolve()` + `is_relative_to()` from Chapter 27, Lesson 3
 
 **Prompt Used**: "Show me how to safely construct file paths that prevent directory traversal attacks using pathlib"
 
@@ -839,7 +839,7 @@ Your application is complete when:
 
 ## Try With AI
 
-Build a production-ready note-taking application integrating all Chapter 24 I/O concepts.
+Build a production-ready note-taking application integrating all Chapter 27 I/O concepts.
 
 **🔍 Explore Application Architecture:**
 > "Design note-taking app with CRUD operations (Create/Read/Update/Delete/Search/List). Explain: menu loop structure, pathlib organization by category (work/personal/learning), JSON persistence with context managers, input validation strategies, and error handling layers (input validation vs file operation errors)."
@@ -851,8 +851,8 @@ Build a production-ready note-taking application integrating all Chapter 24 I/O 
 > "Handle edge cases: corrupted JSON lines (skip with warning), Ctrl+C during operation (context manager cleanup), 1GB log file (stream line-by-line), concurrent access (file locking), 50+ notes (performance optimization), international characters (ensure_ascii=False), and invalid category (validation/creation prompt)."
 
 **🚀 Apply Complete Integration:**
-> "Build full app: menu (Create/Read/Update/Delete/Search/List/Exit), pathlib category directories, JSON storage with proper encoding, input validation throughout, error handling (missing files, corrupted data, permissions), search filtering, timestamp tracking (datetime preview), backup export, and reflection integrating all Chapter 24 concepts (console I/O, file I/O, pathlib, JSON)."
+> "Build full app: menu (Create/Read/Update/Delete/Search/List/Exit), pathlib category directories, JSON storage with proper encoding, input validation throughout, error handling (missing files, corrupted data, permissions), search filtering, timestamp tracking (datetime preview), backup export, and reflection integrating all Chapter 27 concepts (console I/O, file I/O, pathlib, JSON)."
 
 ---
 
-**Congratulations!** You've completed the Note-Taking App capstone, integrating all I/O concepts from Chapter 24. Your application demonstrates professional-level CLI development using Python 3.14+, pathlib, JSON, file I/O, and menu-driven interaction. Your reflection document proves you understand not just the "how" but the "why" of each design decision. You're now ready to extend this pattern to larger applications and ready for Chapters 23+ (datetime operations, OOP, etc.).
+**Congratulations!** You've completed the Note-Taking App capstone, integrating all I/O concepts from Chapter 27. Your application demonstrates professional-level CLI development using Python 3.14+, pathlib, JSON, file I/O, and menu-driven interaction. Your reflection document proves you understand not just the "how" but the "why" of each design decision. You're now ready to extend this pattern to larger applications and ready for Chapters 23+ (datetime operations, OOP, etc.).

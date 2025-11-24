@@ -161,7 +161,7 @@ def foo(x, y, z):
 - Operators have spaces: `x + y + z`
 - Two blank lines before function definition (PEP 8 standard)
 
-**Note**: This code demonstrates Ruff's formatting, not Python programming. You'll learn Python functions in Chapter 15.
+**Note**: This code demonstrates Ruff's formatting, not Python programming. You'll learn Python functions in Chapter 18.
 
 ---
 

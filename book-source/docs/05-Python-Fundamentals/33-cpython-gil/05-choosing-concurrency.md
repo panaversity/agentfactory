@@ -333,7 +333,7 @@ Asyncio uses a single thread with an event loop. When one task waits for I/O (ne
 - Scales to high concurrency
 - Limited by CPU (you need threads/processes for CPU work alongside I/O)
 
-This connects directly to Chapter 30 (Asyncio fundamentals). Lesson 5 adds Python 3.14 improvements.
+This connects directly to Chapter 33 (Asyncio fundamentals). Lesson 5 adds Python 3.14 improvements.
 
 ### Python 3.14 Asyncio Improvements: CLI Debugging
 

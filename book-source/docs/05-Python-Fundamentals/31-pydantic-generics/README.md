@@ -1,13 +1,13 @@
 ---
 sidebar_position: 31
-title: "Chapter 28: Pydantic and Generics"
+title: "Chapter 31: Pydantic and Generics"
 slides:
   source: "slides/chapter-31-slides.pdf"
-  title: "Chapter 28: Pydantic and Generics"
+  title: "Chapter 31: Pydantic and Generics"
   height: 700
 ---
 
-# Chapter 28: Pydantic and Generics
+# Chapter 31: Pydantic and Generics
 
 Modern AI applications require robust data validation. LLM outputs need validation before use, configuration systems need type safety across environments, and API integrations require structured data contracts. Two powerful tools address these needs: **Pydantic** (runtime validation that catches bad data) and **Generics** (static type safety that catches errors before runtime).
 

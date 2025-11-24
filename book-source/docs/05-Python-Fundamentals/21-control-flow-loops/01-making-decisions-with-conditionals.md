@@ -93,7 +93,7 @@ Think of conditionals as the traffic signals of your code: they control which pa
 
 ## Quick Review: Comparison Operators
 
-Before we dive into conditionals, let's refresh what we learned in Chapter 17 about **comparison operators**—the building blocks of decision-making.
+Before we dive into conditionals, let's refresh what we learned in Chapter 20 about **comparison operators**—the building blocks of decision-making.
 
 **Comparison operators** evaluate a relationship between two values and return `True` or `False`:
 

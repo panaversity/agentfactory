@@ -92,7 +92,7 @@ const config: Config = {
           remarkPlugins: [
             // Auto-transform Python code blocks into interactive components
             [require('./plugins/remark-interactive-python'), {
-              includePaths: ['/04-Python-Fundamentals/'],
+              includePaths: ['/05-Python-Fundamentals/'],
               excludeMeta: ['nointeractive', 'static'],
             }],
             // Metadata-driven content enhancements (slides, etc.)

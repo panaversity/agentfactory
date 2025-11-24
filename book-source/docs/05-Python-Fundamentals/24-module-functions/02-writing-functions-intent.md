@@ -6,7 +6,7 @@ keywords: ["functions", "def", "type hints", "docstrings", "parameters", "return
 proficiency_level: "A2-B1"
 estimated_time: "60 minutes"
 proficiency_by_end: "Students can write functions with type hints and docstrings that clearly communicate intent"
-prerequisites: ["Lesson 1: Module imports concept", "Chapter 16: Type hints syntax", "Chapter 20: Collections (lists, dicts)"]
+prerequisites: ["Lesson 1: Module imports concept", "Chapter 19: Type hints syntax", "Chapter 23: Collections (lists, dicts)"]
 learning_objectives:
   - "Write function definitions with parameters, return values, and type hints"
   - "Write docstrings that explain function purpose, parameters, and return value"

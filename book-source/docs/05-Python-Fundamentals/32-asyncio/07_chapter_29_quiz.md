@@ -1,14 +1,14 @@
 ---
 sidebar_position: 7
-title: "Chapter 29: Asyncio Quiz"
+title: "Chapter 32: Asyncio Quiz"
 ---
 
-# Chapter 29: Asyncio — Concurrent I/O and CPU-Parallel Workloads Quiz
+# Chapter 32: Asyncio — Concurrent I/O and CPU-Parallel Workloads Quiz
 
 Test your understanding of asynchronous programming with asyncio, concurrent I/O operations, CPU parallelism with InterpreterPoolExecutor, and hybrid workload patterns for modern AI applications.
 
 <Quiz
-  title="Chapter 29: Asyncio Assessment"
+  title="Chapter 32: Asyncio Assessment"
   questions={[    {
       question: "You're building a weather dashboard that fetches from 10 APIs, each taking 2 seconds. Using asyncio.gather(), how long will the total fetch take compared to sequential execution?",
       options: [

@@ -20,12 +20,12 @@ skills:
     digcomp_area: "Digital Content Creation"
     measurable_at_this_level: "Student can verify comparisons return bool type using type(), understand True/False as values not strings"
 
-  - name: "Preparing for Conditional Logic (Chapter 19 Foundation)"
+  - name: "Preparing for Conditional Logic (Chapter 22 Foundation)"
     proficiency_level: "A2"
     category: "Conceptual"
     bloom_level: "Understand"
     digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can explain why comparisons precede if statements in Chapter 19 and give examples"
+    measurable_at_this_level: "Student can explain why comparisons precede if statements in Chapter 22 and give examples"
 
 learning_objectives:
   - objective: "Understand what each comparison operator (==, !=, >, <, >=, <=) does"
@@ -202,9 +202,9 @@ is_perfect: bool = test_score == perfect_score  # False
 is_valid: bool = test_score <= perfect_score    # True (score can't exceed 100)
 ```
 
-## Why Comparisons Matter for Chapter 19
+## Why Comparisons Matter for Chapter 22
 
-You might wonder: "Why are we learning comparisons separately from if statements?" The answer is that comparisons are **building blocks**. In Chapter 19, you'll learn control flow: making decisions with `if` statements. When you write `if x > 5:`, that `x > 5` is a comparison operator at work. By mastering comparisons now, Chapter 19 will feel natural—you'll already understand how to ask True/False questions.
+You might wonder: "Why are we learning comparisons separately from if statements?" The answer is that comparisons are **building blocks**. In Chapter 22, you'll learn control flow: making decisions with `if` statements. When you write `if x > 5:`, that `x > 5` is a comparison operator at work. By mastering comparisons now, Chapter 22 will feel natural—you'll already understand how to ask True/False questions.
 
 ---
 

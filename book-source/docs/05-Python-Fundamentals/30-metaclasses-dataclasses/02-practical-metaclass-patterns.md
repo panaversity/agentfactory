@@ -1024,7 +1024,7 @@ Create a file called `plugin_system_patterns.md` with this structure:
 
 ```markdown
 # Plugin System Design Patterns with Metaclasses
-*Chapter 28, Lesson 2*
+*Chapter 31, Lesson 2*
 
 ## Why Metaclasses for Plugins?
 

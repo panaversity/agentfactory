@@ -1,14 +1,14 @@
 ---
 sidebar_position: 6
-title: "Chapter 23: IO and File Handling Quiz"
+title: "Chapter 26: IO and File Handling Quiz"
 ---
 
-# Chapter 23: IO and File Handling Quiz
+# Chapter 26: IO and File Handling Quiz
 
 Test your understanding of console I/O, file operations, cross-platform path handling, and structured data formats.
 
 <Quiz
-  title="Chapter 23: IO and File Handling Assessment"
+  title="Chapter 26: IO and File Handling Assessment"
   questions={[    {
       question: "You're building a CLI tool that processes user input for age. The user types '25'. What type does input() return, and what must you do before using it in calculations?",
       options: [

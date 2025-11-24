@@ -1,14 +1,14 @@
 ---
 sidebar_position: 6
-title: "Chapter 26: Object-Oriented Programming Part II Quiz"
+title: "Chapter 29: Object-Oriented Programming Part II Quiz"
 ---
 
-# Chapter 26: Object-Oriented Programming Part II Quiz
+# Chapter 29: Object-Oriented Programming Part II Quiz
 
 Test your understanding of advanced OOP patterns including inheritance with Method Resolution Order, polymorphism and duck typing, composition over inheritance, special methods, and professional design patterns.
 
 <Quiz
-  title="Chapter 26: Object-Oriented Programming Part II Assessment"
+  title="Chapter 29: Object-Oriented Programming Part II Assessment"
   questions={[    {
       question: "You have a class hierarchy: Vehicle → Car → SportsCar. When SportsCar calls super().__init__(), what happens if Car forgets to call super().__init__()?",
       options: [

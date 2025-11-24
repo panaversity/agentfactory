@@ -406,7 +406,7 @@ Ask your AI to generate this scenario:
 
 #### 🎓 Expert Insight: You Might See try-except in AI Responses
 
-When you ask your AI to validate user input, it might generate code using `try` and `except` keywords. This is **exception handling**—a powerful Python feature you'll learn in **Chapter 23**. For now:
+When you ask your AI to validate user input, it might generate code using `try` and `except` keywords. This is **exception handling**—a powerful Python feature you'll learn in **Chapter 26**. For now:
 
 - **Don't worry if you see it**: Your AI is showing you professional Python code
 - **You don't need to memorize it yet**: Focus on the loop control (`break`, `continue`, `while...else`)
@@ -542,7 +542,7 @@ for i in range(100):
             break  # Which loop does this exit?
 ```
 
-**✅ CLEARER with Functions** (coming in Chapter 20):
+**✅ CLEARER with Functions** (coming in Chapter 23):
 ```python
 def find_pair(limit: int) -> tuple[int, int] | None:
     for i in range(limit):
@@ -591,7 +591,7 @@ for i in range(5):
         break  # Exit outer loop
 ```
 
-(Better solutions involve functions with `return`, which you'll learn in Chapter 20.)
+(Better solutions involve functions with `return`, which you'll learn in Chapter 23.)
 
 ## Try With AI
 

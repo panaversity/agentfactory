@@ -84,7 +84,7 @@ learning_objectives:
     bloom_level: "Understand"
     assessment_method: "Student explains scaling from single machine (threading) to distributed (pods, virtual actors)"
 
-  - objective: "Synthesize all Chapter 31 concepts (CPython, GIL, free-threading, concurrency decisions) into coherent capstone project"
+  - objective: "Synthesize all Chapter 16 concepts (CPython, GIL, free-threading, concurrency decisions) into coherent capstone project"
     proficiency_level: "B2"
     bloom_level: "Evaluate"
     assessment_method: "Student builds project demonstrating mastery of all prior lessons"

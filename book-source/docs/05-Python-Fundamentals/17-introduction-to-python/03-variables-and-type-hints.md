@@ -62,7 +62,7 @@ You've learned what Python is. You've got it installed. Now you're ready for you
 
 In this lesson, you'll learn the most fundamental concept in programming: **variables**. A variable is simply a named container that holds data. Type hints are how you describe what kind of data goes in that container.
 
-But here's where Chapter 15 differs from traditional Python courses: **Type hints aren't optional or advanced. They're core.** Type hints are how you describe intent—and describing intent is the core of AI-Driven Development.
+But here's where Chapter 18 differs from traditional Python courses: **Type hints aren't optional or advanced. They're core.** Type hints are how you describe intent—and describing intent is the core of AI-Driven Development.
 
 ## Variables: Names for Values
 

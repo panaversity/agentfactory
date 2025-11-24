@@ -8,7 +8,7 @@ learning_objectives:
   - objective: "Understand the Global Interpreter Lock (GIL) limitation in Python threading"
     proficiency_level: "B1"
     bloom_level: "Understand"
-    assessment_method: "2-3 sentence explanation of GIL with forward reference to Chapter 31"
+    assessment_method: "2-3 sentence explanation of GIL with forward reference to Chapter 16"
 
   - objective: "Apply InterpreterPoolExecutor for true CPU parallelism in async programs"
     proficiency_level: "B1"
@@ -104,7 +104,7 @@ The culprit: **the Global Interpreter Lock (GIL).** And this lesson teaches you 
 
 Python's **Global Interpreter Lock (GIL)** is a mechanism that allows only one thread to execute Python bytecode at a time. This was a design choice made to simplify memory management in CPython (the standard Python interpreter). The GIL prevents true parallelism for CPU-bound work—even with multiple threads, only one thread can run Python code at any moment. Threading helps with I/O-bound work (one thread waits while others run), but for CPU-bound tasks where every thread is doing calculations, the GIL becomes a bottleneck.
 
-**Deep exploration of GIL internals (how it works, why it exists, free-threaded mode) is covered in Chapter 31.** For now, understand this simple fact: *If you want true parallelism for CPU-bound work in Python, you need separate interpreters, not threads.*
+**Deep exploration of GIL internals (how it works, why it exists, free-threaded mode) is covered in Chapter 16.** For now, understand this simple fact: *If you want true parallelism for CPU-bound work in Python, you need separate interpreters, not threads.*
 
 #### 💬 AI Colearning Prompt
 

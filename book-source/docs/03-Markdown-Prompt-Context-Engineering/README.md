@@ -16,7 +16,7 @@ You're no longer just writing code—you're directing intelligent agents like Cl
 
 **Why it matters:** Clear prompts = working code on the first try. Vague prompts = hours spent debugging AI-generated mistakes. Mastering prompting techniques is essential for effective AI collaboration.
 
-### Chapter 13: Context Engineering for AI-Driven Development
+### Chapter 16: Context Engineering for AI-Driven Development
 
 **What it is:** Context engineering is managing what your AI agent "knows" about your project—the files, patterns, and decisions that make code fit your specific needs rather than generic tutorials.
 

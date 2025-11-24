@@ -103,7 +103,7 @@ generation_metadata:
 
 # Memory Profiler Capstone: Building an Object Tracking Tool
 
-🚀 **What You'll Build**: A working Memory Profiler tool that tracks Python objects, displays memory statistics, and handles edge cases. This capstone integrates **everything** you've learned in Chapter 21: sets for tracking, frozensets for organization, garbage collection for analysis, and AI collaboration for design.
+🚀 **What You'll Build**: A working Memory Profiler tool that tracks Python objects, displays memory statistics, and handles edge cases. This capstone integrates **everything** you've learned in Chapter 24: sets for tracking, frozensets for organization, garbage collection for analysis, and AI collaboration for design.
 
 **Duration**: 60 minutes (design 10 min + implement 20 min + test 15 min + reflect 10 min + reflection 5 min)
 
@@ -113,7 +113,7 @@ generation_metadata:
 
 ## 💬 Why This Capstone Matters
 
-Throughout Chapter 21, you've learned individual concepts:
+Throughout Chapter 24, you've learned individual concepts:
 - **Lesson 1**: Sets for fast membership testing
 - **Lesson 2**: Set operations for data analysis
 - **Lesson 3**: Hash tables and O(1) performance
@@ -820,7 +820,7 @@ Now reflect on what you've built. Answer these questions in your own words:
 
 Write a paragraph explaining the integration:
 
-> "The Memory Profiler tool brings together all Chapter 21 concepts. I use **sets** (Lesson 1) to efficiently track which objects have been created and deleted—adding object IDs is O(1), which matters when tracking thousands of objects. I use **frozensets** (Lesson 4) to create immutable categorization keys in my dictionary, because regular sets can't be dictionary keys. I use **gc module** (Lesson 5) to analyze actual memory state, detecting circular references and freeing large object graphs. The tool integrates reference counting (refcount hitting zero) with cycle detection (gc finding orphaned cycles) to validate that Python is cleaning up properly. Together, these concepts create a professional-grade memory profiler."
+> "The Memory Profiler tool brings together all Chapter 24 concepts. I use **sets** (Lesson 1) to efficiently track which objects have been created and deleted—adding object IDs is O(1), which matters when tracking thousands of objects. I use **frozensets** (Lesson 4) to create immutable categorization keys in my dictionary, because regular sets can't be dictionary keys. I use **gc module** (Lesson 5) to analyze actual memory state, detecting circular references and freeing large object graphs. The tool integrates reference counting (refcount hitting zero) with cycle detection (gc finding orphaned cycles) to validate that Python is cleaning up properly. Together, these concepts create a professional-grade memory profiler."
 
 #### 🤝 Practice Exercise
 
@@ -832,7 +832,7 @@ Write a paragraph explaining the integration:
 
 ## Try With AI
 
-Build a Memory Profiler integrating all Chapter 21 concepts: sets, frozensets, and GC.
+Build a Memory Profiler integrating all Chapter 24 concepts: sets, frozensets, and GC.
 
 **🔍 Explore Profiler Architecture:**
 > "Show me Memory Profiler design: track object IDs using set[int] (why not list?), detect leaks (compare created vs deleted), categorize by type dict[str, int]. Explain structure choices and sketch track(), release(), report() methods."

@@ -19,7 +19,7 @@ You'll learn to structure prompts clearly, iterate through collaboration with AI
 
 ## What You'll Learn
 
-This chapter focuses exclusively on **what you SAY** to your AI agent (prompt engineering). Chapter 13 will teach **what your AI agent KNOWS** when you say it (context engineering). By the end of this chapter, you'll have:
+This chapter focuses exclusively on **what you SAY** to your AI agent (prompt engineering). Chapter 16 will teach **what your AI agent KNOWS** when you say it (context engineering). By the end of this chapter, you'll have:
 
 - **A Personal Prompt Toolkit**: 5-7 tested templates for recurring development tasks (git commits, bash debugging, markdown documentation, etc.)
 - **A Decision Guide**: Clear mapping from tasks to templates, so you know which template to use when

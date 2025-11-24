@@ -1,13 +1,13 @@
 ---
 sidebar_position: 27
-title: "Chapter 24: Math, Date Time Calendar"
+title: "Chapter 27: Math, Date Time Calendar"
 slides:
   source: "slides/chapter-27-slides.pdf"
-  title: "Chapter 24: Math, Date Time Calendar"
+  title: "Chapter 27: Math, Date Time Calendar"
   height: 700
 ---
 
-# Chapter 24: Math, Date Time Calendar
+# Chapter 27: Math, Date Time Calendar
 
 Every useful program involves numbers and time. Whether you're building financial calculators, scheduling systems, data analyzers, or AI agents that reason about deadlines and timezones, you need to handle math correctly and manage time precisely. Mathematical operations and date/time handling are essential tools for building real-world applications that calculate, schedule, and work with temporal data.
 

@@ -348,7 +348,7 @@ Debug Info (from Lesson 2):
 **What just happened**: You saw a complete, working Time Zone Converter. Every function has:
 - Type hints (from Lesson 1: validation)
 - Docstrings explaining purpose
-- Error handling (try/except from Chapter 23)
+- Error handling (try/except from Chapter 26)
 - Clear responsibility (one thing per function)
 
 Now let's understand how to build this with your AI companion.

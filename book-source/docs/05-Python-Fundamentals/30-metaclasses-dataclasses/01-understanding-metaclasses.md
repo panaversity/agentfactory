@@ -734,7 +734,7 @@ Here's the reference structure AI should generate:
 
 ```markdown
 # Metaclass Understanding Reference
-*Chapter 28, Lesson 1*
+*Chapter 31, Lesson 1*
 
 ## What is a Metaclass?
 

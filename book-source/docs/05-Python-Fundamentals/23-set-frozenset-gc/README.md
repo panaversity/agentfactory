@@ -1,13 +1,13 @@
 ---
 sidebar_position: 23
-title: "Chapter 20: Set, Frozen Set, and GC"
+title: "Chapter 23: Set, Frozen Set, and GC"
 slides:
   source: "slides/chapter-23-slides.pdf"
-  title: "Chapter 20: Set, Frozen Set, and GC"
+  title: "Chapter 23: Set, Frozen Set, and GC"
   height: 700
 ---
 
-# Chapter 20: Set, Frozen Set, and GC
+# Chapter 23: Set, Frozen Set, and GC
 
 Need to check if a million user IDs exist in your database? Need to find common connections between social networks? Need to eliminate duplicates from a massive dataset? Sets are your answer.
 

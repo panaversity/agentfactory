@@ -1,14 +1,14 @@
 ---
 sidebar_position: 6
-title: "Chapter 16: Operators, Keywords, and Variables Quiz"
+title: "Chapter 19: Operators, Keywords, and Variables Quiz"
 ---
 
-# Chapter 16: Operators, Keywords, and Variables Quiz
+# Chapter 19: Operators, Keywords, and Variables Quiz
 
 Test your understanding of Python's arithmetic, comparison, logical, and assignment operators, plus keyword awareness and type behavior.
 
 <Quiz
-  title="Chapter 16: Operators, Keywords, and Variables Assessment"
+  title="Chapter 19: Operators, Keywords, and Variables Assessment"
   questions={[    {
       question: "When you divide two integers using `/`, what type does Python return?",
       options: [
@@ -186,11 +186,11 @@ Test your understanding of Python's arithmetic, comparison, logical, and assignm
         "Printing formatted strings to console output"
       ],
       correctOption: 1,
-      explanation: "The correct answer is age validation. Comparisons are perfect for validation: `user_age >= 18` (can vote?), `balance > purchase_price` (can afford?), `score == 100` (perfect score?). These produce True/False for decision-making. Option 2 is wrong—that's arithmetic (`total = a + b`). Option 3 is incorrect—that's assignment (`x = y = 5`). Option 4 is wrong—that's output (`print()`). Comparisons answer yes/no questions about values, preparing for control flow in Chapter 18.",
+      explanation: "The correct answer is age validation. Comparisons are perfect for validation: `user_age >= 18` (can vote?), `balance > purchase_price` (can afford?), `score == 100` (perfect score?). These produce True/False for decision-making. Option 2 is wrong—that's arithmetic (`total = a + b`). Option 3 is incorrect—that's assignment (`x = y = 5`). Option 4 is wrong—that's output (`print()`). Comparisons answer yes/no questions about values, preparing for control flow in Chapter 21.",
       source: "Lesson 2: Comparison Operators"
     },
     {
-      question: "Why are comparison operators foundational for control flow in Chapter 18?",
+      question: "Why are comparison operators foundational for control flow in Chapter 21?",
       options: [
         "Functions depend on comparison syntax",
         "Loops need arithmetic operation results",
@@ -198,7 +198,7 @@ Test your understanding of Python's arithmetic, comparison, logical, and assignm
         "Classes require comparison operator methods"
       ],
       correctOption: 2,
-      explanation: "The correct answer is if statements need bool values. When you write `if x > 5:`, the `x > 5` is a comparison that returns True or False, determining which code block executes. Mastering comparisons now (Chapter 16) makes control flow natural later (Chapter 18). Option 2 is wrong—loops use comparisons too, not just arithmetic. Option 3 is incorrect—functions don't inherently depend on comparisons. Option 4 is wrong—class design is Chapter 25, not related to basic comparisons.",
+      explanation: "The correct answer is if statements need bool values. When you write `if x > 5:`, the `x > 5` is a comparison that returns True or False, determining which code block executes. Mastering comparisons now (Chapter 19) makes control flow natural later (Chapter 21). Option 2 is wrong—loops use comparisons too, not just arithmetic. Option 3 is incorrect—functions don't inherently depend on comparisons. Option 4 is wrong—class design is Chapter 28, not related to basic comparisons.",
       source: "Lesson 2: Comparison Operators"
     },
     {
@@ -270,7 +270,7 @@ Test your understanding of Python's arithmetic, comparison, logical, and assignm
         "Use expression with and operator"
       ],
       correctOption: 3,
-      explanation: "The correct answer is `(x > 5) and (x < 10)`. A range check requires TWO comparisons joined with `and` because both conditions must be True: x must be greater than 5 AND less than 10. Option 2 is wrong—`or` would include values outside the range (x < 5 or x > 10 means OUTSIDE range). Option 3 is incorrect—single comparison only checks one boundary. Option 4 is also incomplete. In Chapter 18, you'll use this pattern in if statements: `if (x > 5) and (x < 10):`.",
+      explanation: "The correct answer is `(x > 5) and (x < 10)`. A range check requires TWO comparisons joined with `and` because both conditions must be True: x must be greater than 5 AND less than 10. Option 2 is wrong—`or` would include values outside the range (x < 5 or x > 10 means OUTSIDE range). Option 3 is incorrect—single comparison only checks one boundary. Option 4 is also incomplete. In Chapter 21, you'll use this pattern in if statements: `if (x > 5) and (x < 10):`.",
       source: "Lesson 3: Logical Operators"
     },
     {
@@ -330,7 +330,7 @@ Test your understanding of Python's arithmetic, comparison, logical, and assignm
         "Printing formatted output to console display"
       ],
       correctOption: 1,
-      explanation: "The correct answer is multi-condition validation. Real systems check multiple requirements: `(is_logged_in and is_verified) or is_admin` (can post if logged+verified OR admin). Comparisons produce True/False, logical operators combine them. Option 2 is wrong—that's arithmetic, not logical. Option 3 is incorrect—that's assignment. Option 4 is wrong—that's output. Combined operators create complex decision logic essential for Chapter 18's control flow.",
+      explanation: "The correct answer is multi-condition validation. Real systems check multiple requirements: `(is_logged_in and is_verified) or is_admin` (can post if logged+verified OR admin). Comparisons produce True/False, logical operators combine them. Option 2 is wrong—that's arithmetic, not logical. Option 3 is incorrect—that's assignment. Option 4 is wrong—that's output. Combined operators create complex decision logic essential for Chapter 21's control flow.",
       source: "Lesson 3: Logical Operators"
     },
     {
@@ -438,7 +438,7 @@ Test your understanding of Python's arithmetic, comparison, logical, and assignm
         "Map pattern for transforming items"
       ],
       correctOption: 2,
-      explanation: "The correct answer is counter pattern. Starting with `count = 0` and incrementing `count += 1` each iteration is THE standard way to count: 'how many items did I process?', 'what's the current iteration number?'. This pattern is universal in Chapter 18's loops. Option 2 is wrong—accumulator pattern uses `total += value` (summing, not counting). Option 3 is incorrect—filtering uses conditionals, not `+=`. Option 4 is wrong—mapping transforms items, not counts them.",
+      explanation: "The correct answer is counter pattern. Starting with `count = 0` and incrementing `count += 1` each iteration is THE standard way to count: 'how many items did I process?', 'what's the current iteration number?'. This pattern is universal in Chapter 21's loops. Option 2 is wrong—accumulator pattern uses `total += value` (summing, not counting). Option 3 is incorrect—filtering uses conditionals, not `+=`. Option 4 is wrong—mapping transforms items, not counts them.",
       source: "Lesson 4: Assignment Operators"
     },
     {
@@ -570,7 +570,7 @@ Test your understanding of Python's arithmetic, comparison, logical, and assignm
         "Uses assert statements for validation"
       ],
       correctOption: 1,
-      explanation: "The correct answer is `type()`. The calculator prints `type(result)` to show: 'this operation returned float', 'this comparison returned bool', etc. This reinforces understanding of type behavior across operators. Option 2 is wrong—`isinstance()` is for class checking (Chapter 25). Option 3 is incorrect—error handling is Chapter 22. Option 4 is wrong—assertions aren't used in this calculator. The `type()` function is the A2-level approach for understanding types.",
+      explanation: "The correct answer is `type()`. The calculator prints `type(result)` to show: 'this operation returned float', 'this comparison returned bool', etc. This reinforces understanding of type behavior across operators. Option 2 is wrong—`isinstance()` is for class checking (Chapter 28). Option 3 is incorrect—error handling is Chapter 25. Option 4 is wrong—assertions aren't used in this calculator. The `type()` function is the A2-level approach for understanding types.",
       source: "Lesson 5: Keywords and Capstone"
     },
     {
@@ -586,7 +586,7 @@ Test your understanding of Python's arithmetic, comparison, logical, and assignm
       source: "Lesson 5: Keywords and Capstone"
     },
     {
-      question: "What progression does Chapter 16 build toward?",
+      question: "What progression does Chapter 19 build toward?",
       options: [
         "File handling in Chapter twenty three",
         "Function definitions in Chapter twenty two",
@@ -594,7 +594,7 @@ Test your understanding of Python's arithmetic, comparison, logical, and assignm
         "Control flow with if statements in eighteen"
       ],
       correctOption: 3,
-      explanation: "The correct answer is Chapter 18 control flow. Chapter 16 teaches operators (comparisons return bool, logical operators combine conditions), which are the building blocks for Chapter 18's if statements and loops. When you write `if (x > 5) and (x < 10):`, you're using comparison and logical operators learned here. Option 2 is wrong—functions come later. Option 3 is incorrect—OOP is much later. Option 4 is wrong—file handling doesn't directly build on operators. Operators → Control Flow is the natural progression.",
+      explanation: "The correct answer is Chapter 21 control flow. Chapter 19 teaches operators (comparisons return bool, logical operators combine conditions), which are the building blocks for Chapter 21's if statements and loops. When you write `if (x > 5) and (x < 10):`, you're using comparison and logical operators learned here. Option 2 is wrong—functions come later. Option 3 is incorrect—OOP is much later. Option 4 is wrong—file handling doesn't directly build on operators. Operators → Control Flow is the natural progression.",
       source: "Lesson 5: Keywords and Capstone"
     },
     {
@@ -606,7 +606,7 @@ Test your understanding of Python's arithmetic, comparison, logical, and assignm
         "Functions reduce calculator performance significantly"
       ],
       correctOption: 0,
-      explanation: "The correct answer is Chapter 22 teaches functions. The capstone intentionally uses sequential code (no functions) because functions haven't been taught yet. It focuses on operator mastery. When you reach Chapter 22, you can refactor this calculator into functions as practice. Option 2 is wrong—the calculator would benefit from functions. Option 3 is absurd—functions and operators work together. Option 4 is incorrect—functions don't reduce performance meaningfully. The design teaches one concept at a time: operators now, functions later.",
+      explanation: "The correct answer is Chapter 25 teaches functions. The capstone intentionally uses sequential code (no functions) because functions haven't been taught yet. It focuses on operator mastery. When you reach Chapter 25, you can refactor this calculator into functions as practice. Option 2 is wrong—the calculator would benefit from functions. Option 3 is absurd—functions and operators work together. Option 4 is incorrect—functions don't reduce performance meaningfully. The design teaches one concept at a time: operators now, functions later.",
       source: "Lesson 5: Keywords and Capstone"
     }
   ]}

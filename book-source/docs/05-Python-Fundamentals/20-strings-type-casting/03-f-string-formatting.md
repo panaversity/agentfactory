@@ -396,7 +396,7 @@ person2_name: str = "Bob"
 person2_age: int = 30
 person2_score: float = 88.3
 
-# Create formatted output (note: this shows the concept; real tables use loops in Chapter 20)
+# Create formatted output (note: this shows the concept; real tables use loops in Chapter 23)
 data_line: str = f"{person1_name:15} | Age: {person1_age:2} | Score: {person1_score:.1f}"
 print(data_line)  # "Alice           | Age: 25 | Score: 92.5"
 ```

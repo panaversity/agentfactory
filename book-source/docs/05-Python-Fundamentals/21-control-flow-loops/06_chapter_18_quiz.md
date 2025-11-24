@@ -1,14 +1,14 @@
 ---
 sidebar_position: 6
-title: "Chapter 18: Control Flow and Loops Quiz"
+title: "Chapter 21: Control Flow and Loops Quiz"
 ---
 
-# Chapter 18: Control Flow and Loops Quiz
+# Chapter 21: Control Flow and Loops Quiz
 
 Test your understanding of conditionals, pattern matching, loops, loop control, and nested structures—the foundations of programming logic.
 
 <Quiz
-  title="Chapter 18: Control Flow and Loops Assessment"
+  title="Chapter 21: Control Flow and Loops Assessment"
   questions={[    {
       question: "When debugging a multi-condition eligibility check, you discover users with age 85 and valid payment are denied. What's the most likely cause?",
       options: [
@@ -26,7 +26,7 @@ Test your understanding of conditionals, pattern matching, loops, loop control, 
       options: [
       ],
       correctOption: 0,
-      explanation: "The correct answer is checking if key in dict before accessing. This conditional pattern safely verifies key existence before attempting access, preventing KeyError without exception handling overhead. Option 1 (try-except) works but is more complex and slower for expected scenarios (you'll learn exceptions in Chapter 22). Option 2 (match-case) can't directly match dict keys as patterns—it requires exact value matching, not membership testing. Option 3 (type checking) doesn't address the missing key problem. The 'if key in dict' pattern is Pythonic, efficient, and clear: it explicitly states 'check before use.' When describing this to AI, say 'verify key exists before accessing' rather than prescribing exception handling. This demonstrates defensive programming—validating assumptions before operations.",
+      explanation: "The correct answer is checking if key in dict before accessing. This conditional pattern safely verifies key existence before attempting access, preventing KeyError without exception handling overhead. Option 1 (try-except) works but is more complex and slower for expected scenarios (you'll learn exceptions in Chapter 25). Option 2 (match-case) can't directly match dict keys as patterns—it requires exact value matching, not membership testing. Option 3 (type checking) doesn't address the missing key problem. The 'if key in dict' pattern is Pythonic, efficient, and clear: it explicitly states 'check before use.' When describing this to AI, say 'verify key exists before accessing' rather than prescribing exception handling. This demonstrates defensive programming—validating assumptions before operations.",
       source: "Lesson 1: Making Decisions with Conditionals"
     },
     {
@@ -134,7 +134,7 @@ Test your understanding of conditionals, pattern matching, loops, loop control, 
         "Recursive function calling itself until no more pages returned"
       ],
       correctOption: 1,
-      explanation: "The correct answer is while loop checking for items. While loops excel at indefinite iteration—you don't know how many pages exist, but you know when to stop (empty page). The condition 'while page has items' naturally expresses the logic. Option 1 (for with range(1000)) works but uses arbitrary large number, which is fragile—what if 1001 pages exist? Option 2 (StopIteration) misuses exception handling for control flow—you'll learn exceptions in Chapter 22. Option 3 (recursion) risks stack overflow with many pages and is less idiomatic Python for iteration. When describing this to AI, say: 'loop while pages remain' or 'continue until empty page'—this maps directly to while loop condition. For loops work best when iteration count is known; while loops when iteration depends on runtime condition. Understanding this distinction guides loop type selection.",
+      explanation: "The correct answer is while loop checking for items. While loops excel at indefinite iteration—you don't know how many pages exist, but you know when to stop (empty page). The condition 'while page has items' naturally expresses the logic. Option 1 (for with range(1000)) works but uses arbitrary large number, which is fragile—what if 1001 pages exist? Option 2 (StopIteration) misuses exception handling for control flow—you'll learn exceptions in Chapter 25. Option 3 (recursion) risks stack overflow with many pages and is less idiomatic Python for iteration. When describing this to AI, say: 'loop while pages remain' or 'continue until empty page'—this maps directly to while loop condition. For loops work best when iteration count is known; while loops when iteration depends on runtime condition. Understanding this distinction guides loop type selection.",
       source: "Lesson 3: Repetition with Loops"
     },
     {
@@ -218,7 +218,7 @@ Test your understanding of conditionals, pattern matching, loops, loop control, 
         "The else clause handles exceptions raised during validation inside the loop"
       ],
       correctOption: 2,
-      explanation: "The correct answer is else runs when loop completes without break. In retry logic: break on success (valid input), else on failure (exhausted attempts). The pattern: while attempts < 3: if valid: break; attempts += 1 else: print('Failed'). Option 1 (after each iteration) misunderstands—else runs once after loop ends, not during. Option 2 (default value) is wrong—else doesn't provide values. Option 3 (exception handling) confuses control flow with error handling—you'll learn exceptions in Chapter 22. Without while...else, you'd need a flag variable: success = False; while...: if valid: success = True; break. The else clause eliminates this boilerplate. When asking AI for retry logic, say: 'try up to 3 times, detect if any succeeded' naturally maps to while...else. This pattern is uncommon but powerful for failure detection.",
+      explanation: "The correct answer is else runs when loop completes without break. In retry logic: break on success (valid input), else on failure (exhausted attempts). The pattern: while attempts < 3: if valid: break; attempts += 1 else: print('Failed'). Option 1 (after each iteration) misunderstands—else runs once after loop ends, not during. Option 2 (default value) is wrong—else doesn't provide values. Option 3 (exception handling) confuses control flow with error handling—you'll learn exceptions in Chapter 25. Without while...else, you'd need a flag variable: success = False; while...: if valid: success = True; break. The else clause eliminates this boilerplate. When asking AI for retry logic, say: 'try up to 3 times, detect if any succeeded' naturally maps to while...else. This pattern is uncommon but powerful for failure detection.",
       source: "Lesson 4: Controlling Loops"
     },
     {
@@ -278,7 +278,7 @@ Test your understanding of conditionals, pattern matching, loops, loop control, 
         "Loop variables from outer loops become inaccessible in deeper nested levels"
       ],
       correctOption: 1,
-      explanation: "The correct answer is reduced readability and maintainability. Deep nesting (4+ levels) makes code hard to reason about: what context am I in? Which loop am I in? What conditions are active? Developers spend more time tracing execution flow than understanding logic. Option 1 (interpreter limit) is wrong—Python has no hard nesting limit (you'd hit practical limits like stack size first). Option 2 (memory exponential) is incorrect—memory usage depends on data structures, not nesting depth. Option 3 (variable accessibility) is false—inner blocks can access outer variables. Red flag: if you have 4+ indentation levels, consider flattening: combine conditions with and/or, use early continue/break to reduce nesting, or extract inner logic to functions (Chapter 21). When asking AI: 'simplify this deeply nested code' or 'flatten these conditions' signals refactoring need. Maintainable code prioritizes clarity—if nesting makes logic opaque, restructure.",
+      explanation: "The correct answer is reduced readability and maintainability. Deep nesting (4+ levels) makes code hard to reason about: what context am I in? Which loop am I in? What conditions are active? Developers spend more time tracing execution flow than understanding logic. Option 1 (interpreter limit) is wrong—Python has no hard nesting limit (you'd hit practical limits like stack size first). Option 2 (memory exponential) is incorrect—memory usage depends on data structures, not nesting depth. Option 3 (variable accessibility) is false—inner blocks can access outer variables. Red flag: if you have 4+ indentation levels, consider flattening: combine conditions with and/or, use early continue/break to reduce nesting, or extract inner logic to functions (Chapter 24). When asking AI: 'simplify this deeply nested code' or 'flatten these conditions' signals refactoring need. Maintainable code prioritizes clarity—if nesting makes logic opaque, restructure.",
       source: "Lesson 5: Nested Control Structures"
     },
     {
@@ -290,7 +290,7 @@ Test your understanding of conditionals, pattern matching, loops, loop control, 
         "The loop specified by optional break label argument exits selectively"
       ],
       correctOption: 0,
-      explanation: "The correct answer is only the innermost loop exits. Break affects only the loop it's directly inside: for i in range(3): for j in range(3): if j == 1: break # exits j loop only. After break, i loop continues with next iteration. Option 1 (all loops) is wrong—break doesn't cascade outward. Option 2 (outermost first) reverses behavior. Option 3 (labeled break) refers to other languages (Java)—Python doesn't have loop labels. To exit both loops, use a flag: found = False; for i: for j: if condition: found = True; break; if found: break. Or better: move logic to a function and use return (Chapter 21). When asking AI: 'exit inner loop only' vs 'exit all nested loops' clarifies intent—AI will use flag pattern or suggest function extraction for the latter. Understanding break scope prevents bugs where you continue outer loop when you meant to stop everything.",
+      explanation: "The correct answer is only the innermost loop exits. Break affects only the loop it's directly inside: for i in range(3): for j in range(3): if j == 1: break # exits j loop only. After break, i loop continues with next iteration. Option 1 (all loops) is wrong—break doesn't cascade outward. Option 2 (outermost first) reverses behavior. Option 3 (labeled break) refers to other languages (Java)—Python doesn't have loop labels. To exit both loops, use a flag: found = False; for i: for j: if condition: found = True; break; if found: break. Or better: move logic to a function and use return (Chapter 24). When asking AI: 'exit inner loop only' vs 'exit all nested loops' clarifies intent—AI will use flag pattern or suggest function extraction for the latter. Understanding break scope prevents bugs where you continue outer loop when you meant to stop everything.",
       source: "Lesson 5: Nested Control Structures"
     },
     {
@@ -614,7 +614,7 @@ Test your understanding of conditionals, pattern matching, loops, loop control, 
         "Code uses more than 3 if statements anywhere in program"
       ],
       correctOption: 0,
-      explanation: "The correct answer is 3-4+ indentation levels signals complexity. Deep nesting makes code hard to understand: which context am I in? What conditions are active? Reading deeply nested code requires mental stack management. Option 1 (variable naming) is unrelated to complexity. Option 2 (iteration count) conflates complexity with performance—10k iterations might be necessary and clear. Option 3 (3+ ifs anywhere) is absurd—if statements don't indicate complexity by count alone. Refactoring options: combine conditions with and/or to flatten, use early continue/break to reduce nesting, extract inner logic to functions (Chapter 21). When asking AI: 'simplify this deeply nested code' or 'flatten these nested ifs' signals refactoring request. Maintainable code prioritizes readability—if you can't understand the nesting at a glance, simplify.",
+      explanation: "The correct answer is 3-4+ indentation levels signals complexity. Deep nesting makes code hard to understand: which context am I in? What conditions are active? Reading deeply nested code requires mental stack management. Option 1 (variable naming) is unrelated to complexity. Option 2 (iteration count) conflates complexity with performance—10k iterations might be necessary and clear. Option 3 (3+ ifs anywhere) is absurd—if statements don't indicate complexity by count alone. Refactoring options: combine conditions with and/or to flatten, use early continue/break to reduce nesting, extract inner logic to functions (Chapter 24). When asking AI: 'simplify this deeply nested code' or 'flatten these nested ifs' signals refactoring request. Maintainable code prioritizes readability—if you can't understand the nesting at a glance, simplify.",
       source: "Lesson 5: Nested Control Structures"
     },
     {
@@ -626,7 +626,7 @@ Test your understanding of conditionals, pattern matching, loops, loop control, 
         "Break behavior depends on loop nesting depth automatically"
       ],
       correctOption: 0,
-      explanation: "The correct answer is break affects only its containing loop's scope. In for i: for j: break, the break is inside the j loop, so it exits j only. The i loop continues. Python doesn't have labeled breaks like Java (break outerLoop;). Option 1 (safety limit) invents nonexistent restriction. Option 2 (searches outward) is wrong—break doesn't search; it exits its immediate loop. Option 3 (automatic depth) misunderstands—break always affects innermost loop, regardless of nesting depth. To exit both loops: use flag (found = False; for i: for j: if cond: found = True; break; if found: break) or extract to function and return (Chapter 21). When asking AI: 'exit inner loop only' vs 'exit all nested loops' clarifies intent—AI uses appropriate pattern. Understanding break scope prevents bugs where outer loop continues when you expected full exit.",
+      explanation: "The correct answer is break affects only its containing loop's scope. In for i: for j: break, the break is inside the j loop, so it exits j only. The i loop continues. Python doesn't have labeled breaks like Java (break outerLoop;). Option 1 (safety limit) invents nonexistent restriction. Option 2 (searches outward) is wrong—break doesn't search; it exits its immediate loop. Option 3 (automatic depth) misunderstands—break always affects innermost loop, regardless of nesting depth. To exit both loops: use flag (found = False; for i: for j: if cond: found = True; break; if found: break) or extract to function and return (Chapter 24). When asking AI: 'exit inner loop only' vs 'exit all nested loops' clarifies intent—AI uses appropriate pattern. Understanding break scope prevents bugs where outer loop continues when you expected full exit.",
       source: "Lesson 5: Nested Control Structures"
     },
     {

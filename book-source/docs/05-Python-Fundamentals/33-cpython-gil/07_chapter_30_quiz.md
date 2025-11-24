@@ -1,14 +1,14 @@
 ---
 sidebar_position: 7
-title: "Chapter 30: CPython and GIL Quiz"
+title: "Chapter 33: CPython and GIL Quiz"
 ---
 
-# Chapter 30: CPython and GIL Quiz
+# Chapter 33: CPython and GIL Quiz
 
 Test your understanding of CPython architecture, the Global Interpreter Lock, free-threading revolution in Python 3.14, and concurrency decision-making for AI-native development.
 
 <Quiz
-  title="Chapter 30: CPython and GIL Assessment"
+  title="Chapter 33: CPython and GIL Assessment"
   questions={[    {
       question: "You're building an AI agent that processes 1M records with NumPy matrix operations. Each operation releases the GIL during computation. Which concurrency approach provides the best performance?",
       options: [

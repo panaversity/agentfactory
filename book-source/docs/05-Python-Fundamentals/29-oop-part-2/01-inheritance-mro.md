@@ -99,7 +99,7 @@ version: "1.0.0"
 
 # Inheritance and Method Resolution Order
 
-In Chapter 26, you built the foundations of object-oriented programming: classes that encapsulate data and behavior, methods that transform state, and principles of good design. Now we're stepping into the professional OOP world where you design systems with multiple related classes that share behavior and specialize behavior through **inheritance**.
+In Chapter 29, you built the foundations of object-oriented programming: classes that encapsulate data and behavior, methods that transform state, and principles of good design. Now we're stepping into the professional OOP world where you design systems with multiple related classes that share behavior and specialize behavior through **inheritance**.
 
 Inheritance is the mechanism that lets you create hierarchies of classes, from general to specific. A `Dog` **is-a** `Animal`, an `ElectricCar` **is-a** `Car`. This "is-a" relationship is powerful: it lets you reuse code, create flexible designs, and build systems where many different types work through a common interface. But inheritance is also subtle. Get it wrong, and you'll spend hours debugging which method actually got called.
 

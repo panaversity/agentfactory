@@ -1,14 +1,14 @@
 ---
 sidebar_position: 6
-title: "Chapter 21: Modules and Functions Quiz"
+title: "Chapter 24: Modules and Functions Quiz"
 ---
 
-# Chapter 21: Modules and Functions Quiz
+# Chapter 24: Modules and Functions Quiz
 
 Test your understanding of module organization, function design with type hints, parameter patterns, variable scope, and professional project structure.
 
 <Quiz
-  title="Chapter 21: Modules and Functions Assessment"
+  title="Chapter 24: Modules and Functions Assessment"
   questions={[    {
       question: "You're building an API client that needs to use the `requests` library. Which import pattern is most professional and why?",
       options: [

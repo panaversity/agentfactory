@@ -957,7 +957,7 @@ Create a file called `advanced_dataclass_patterns.md`:
 
 ```markdown
 # Advanced Dataclass Patterns and Validation
-*Chapter 28, Lesson 4*
+*Chapter 31, Lesson 4*
 
 ## Pattern 1: Basic Validation in `__post_init__()`
 

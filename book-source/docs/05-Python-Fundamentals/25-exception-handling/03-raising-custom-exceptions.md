@@ -492,7 +492,7 @@ Create a Python file called `domain_exceptions.py` with these patterns:
 ```python
 """
 Custom Exception Library for Domain Modeling
-Chapter 23, Lesson 3
+Chapter 26, Lesson 3
 
 This library demonstrates professional exception design patterns:
 - Base exception classes for domains

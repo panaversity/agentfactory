@@ -409,7 +409,7 @@ print(f"-5 is {type(-5)}")
 print(f"0.5 is {type(0.5)}")
 print(f"100 is {type(100)}")
 # (Continue for remaining values...)
-# Note: Loops for repetitive tasks are covered in Chapter 19
+# Note: Loops for repetitive tasks are covered in Chapter 22
 ```
 
 ### Exercise 2: Fix the Type Errors
@@ -449,7 +449,7 @@ e = 10 // 2
 f = 10.0 / 2
 g = type(10)  # Special: what's the type of type()?
 
-# Check each one (loops covered in Chapter 19)
+# Check each one (loops covered in Chapter 22)
 print(f"{a} has type {type(a)}")
 print(f"{b} has type {type(b)}")
 print(f"{c} has type {type(c)}")

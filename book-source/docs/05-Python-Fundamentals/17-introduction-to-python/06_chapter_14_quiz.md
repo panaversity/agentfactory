@@ -1,14 +1,14 @@
 ---
 sidebar_position: 6
-title: "Chapter 14: Introduction to Modern Python Quiz"
+title: "Chapter 17: Introduction to Modern Python Quiz"
 ---
 
-# Chapter 14: Introduction to Modern Python Quiz
+# Chapter 17: Introduction to Modern Python Quiz
 
 Test your understanding of Python fundamentals, installation, variables, type hints, basic syntax, and your first Python programs.
 
 <Quiz
-  title="Chapter 14: Introduction to Modern Python Assessment"
+  title="Chapter 17: Introduction to Modern Python Assessment"
   questions={[    {
       question: "Why is Python considered the 'lingua franca' of AI development compared to other programming languages?",
       options: [
@@ -474,7 +474,7 @@ Test your understanding of Python fundamentals, installation, variables, type hi
         "Input function is faster than all other methods"
       ],
       correctOption: 2,
-      explanation: "The chapter focuses on 'input()' for simplicity—teaching one interaction method thoroughly is better for beginners than superficially covering many. File reading is absolutely possible in Python—it's taught in Chapter 23 (IO and File Handling). Databases are not deprecated—Python has excellent database support, taught in later parts. Speed is not the reason—'input()' is about user interaction, files/databases serve different purposes. Pedagogical design: introduce one concept at a time, master it, then build complexity.",
+      explanation: "The chapter focuses on 'input()' for simplicity—teaching one interaction method thoroughly is better for beginners than superficially covering many. File reading is absolutely possible in Python—it's taught in Chapter 26 (IO and File Handling). Databases are not deprecated—Python has excellent database support, taught in later parts. Speed is not the reason—'input()' is about user interaction, files/databases serve different purposes. Pedagogical design: introduce one concept at a time, master it, then build complexity.",
       source: "Lesson 5: Capstone Project – Personal Information Collector"
     },
     {
@@ -574,7 +574,7 @@ Test your understanding of Python fundamentals, installation, variables, type hi
       source: "Lesson 5: Capstone Project – Personal Information Collector"
     },
     {
-      question: "What is the relationship between Chapter 14's type hints and Part 5's Spec-Driven Development?",
+      question: "What is the relationship between Chapter 17's type hints and Part 5's Spec-Driven Development?",
       options: [
         "Spec-Driven Development replaces the need for type hints",
         "They are completely unrelated concepts taught separately",

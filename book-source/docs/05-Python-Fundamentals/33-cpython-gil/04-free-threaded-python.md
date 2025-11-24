@@ -138,7 +138,7 @@ Python 3.14 made free-threading production-ready. For the first time in Python's
 
 The GIL isn't removed (backward compatibility matters). It's now **optional**. You can choose to disable it.
 
-This lesson is the centerpiece of Chapter 31 because free-threading transforms how you'll design multi-agent AI systems in Parts 10-14. You'll learn what changed, why it matters, how to use it, and when it's worth the 5–10% single-threaded overhead.
+This lesson is the centerpiece of Chapter 16 because free-threading transforms how you'll design multi-agent AI systems in Parts 10-14. You'll learn what changed, why it matters, how to use it, and when it's worth the 5–10% single-threaded overhead.
 
 ---
 

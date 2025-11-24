@@ -1,14 +1,14 @@
 ---
 sidebar_position: 6
-title: "Chapter 25: Object-Oriented Programming - Part 1 Quiz"
+title: "Chapter 28: Object-Oriented Programming - Part 1 Quiz"
 ---
 
-# Chapter 25: Object-Oriented Programming - Part 1 Quiz
+# Chapter 28: Object-Oriented Programming - Part 1 Quiz
 
 Test your understanding of object-oriented programming fundamentals, including classes, objects, constructors, encapsulation, and method types.
 
 <Quiz
-  title="Chapter 25: Object-Oriented Programming - Part 1 Assessment"
+  title="Chapter 28: Object-Oriented Programming - Part 1 Assessment"
   questions={[
     {
       question: "You're building a banking system and need 1,000 account objects. What's the core advantage of OOP over procedural programming for this scenario?",
