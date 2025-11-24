@@ -2,8 +2,19 @@
 
 **Feature Branch**: `001-sso-client-auth-pages`
 **Created**: 2025-11-21
+**Updated**: 2025-11-23
 **Status**: Draft
-**Input**: User description: "read the '/home/dell/pana-sso/sso/README.md' its a big file after reading make a new branch and 001 we need to create the sso-client now which will be our sso sign register and other pages make the branch switch to it and then in there do this"
+**Input**: User description: "Build authentication UI pages that connect to the existing backend. Create Sign Up, Sign In, Forgot Password, Reset Password, and Email Verification pages using shadcn UI components from @repo/ui package. Pages should use authClient from @repo/auth-config/client to call existing SSO server endpoints running on localhost:3000."
+
+## Clarifications
+
+### Session 2025-11-23
+
+- Q: When users complete registration or sign-in, what should the redirect targets be? → A: Redirect to callback URL if provided in query parameters, otherwise redirect to application dashboard (no intermediate success page)
+- Q: What mechanism should be used after 5 failed login attempts? → A: Show CAPTCHA challenge after 5 failed attempts (user can continue trying with CAPTCHA verification)
+- Q: What should happen when already logged-in users access auth pages? → A: Automatically redirect to dashboard (or callback URL if provided in query parameters)
+- Q: What should be the API timeout duration before showing an error? → A: 30 seconds timeout (standard web application timeout)
+- Q: What should happen when registering with an unverified existing email? → A: Allow registration and resend verification email (overwrite pending unverified account)
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -17,7 +28,7 @@ As a new user, I need to create an account using my email address and password s
 
 **Acceptance Scenarios**:
 
-1. **Given** I am on the registration page, **When** I enter a valid email address, a secure password, and my name, **Then** my account is created and I am redirected to a success confirmation page
+1. **Given** I am on the registration page, **When** I enter a valid email address, a secure password, and my name, **Then** my account is created and I am redirected to the callback URL if provided, otherwise to the application dashboard
 2. **Given** I am on the registration page, **When** I enter an email that already exists, **Then** I see an error message indicating the email is already registered
 3. **Given** I am on the registration page, **When** I enter a weak password (less than 8 characters), **Then** I see an error message indicating password requirements
 4. **Given** I am on the registration page, **When** I enter an invalid email format, **Then** I see an error message indicating the email format is invalid
@@ -39,7 +50,7 @@ As a registered user, I need to sign in using my email and password so that I ca
 2. **Given** I am on the sign-in page, **When** I enter an incorrect password, **Then** I see an error message indicating invalid credentials
 3. **Given** I am on the sign-in page, **When** I enter an email that doesn't exist, **Then** I see an error message indicating invalid credentials (no user enumeration)
 4. **Given** I am signed in, **When** I close the browser and return later, **Then** my session persists based on "remember me" preference
-5. **Given** I have failed to sign in 5 times consecutively, **Then** my account is temporarily locked or I see a CAPTCHA challenge
+5. **Given** I have failed to sign in 5 times consecutively, **Then** I am required to complete a CAPTCHA challenge before attempting further login attempts
 
 ---
 
@@ -106,6 +117,19 @@ As an external application developer, I need to integrate with the SSO client us
 - How does the system handle special characters in email addresses or names?
 - What happens if the user closes the browser during the OAuth redirect flow?
 - How does the system handle database connection failures during authentication?
+- What happens when the SSO server (backend) is unavailable or returns an error?
+- How does the UI handle slow network connections or API timeouts?
+- What happens when a user clicks the password reset link multiple times?
+- How does the system handle users who navigate directly to the reset password page without a token?
+- What happens when a user tries to use an already-used password reset token?
+- How does the UI handle validation errors from the server (e.g., password too common)?
+- What happens when a user refreshes the page during form submission?
+
+### Edge Case Resolutions
+
+- **Already logged-in users visiting auth pages**: Users who are already authenticated are automatically redirected to the dashboard (or callback URL if provided) without displaying auth forms
+- **API timeout handling**: All authentication API calls timeout after 30 seconds, displaying a user-friendly error message prompting retry
+- **Registration with unverified existing email**: System allows re-registration with an unverified email address, overwrites the pending account, and resends the verification email
 
 ## Requirements *(mandatory)*
 
@@ -127,10 +151,29 @@ As an external application developer, I need to integrate with the SSO client us
 - **FR-014**: System MUST maintain session state across OIDC flows to enable true single sign-on
 - **FR-015**: System MUST redirect users back to the requesting application after successful authentication
 - **FR-016**: System MUST log all authentication events (sign-in, sign-up, password reset, OAuth events)
-- **FR-017**: System MUST handle rate limiting to prevent brute force attacks (max 5 failed attempts per 15 minutes)
+- **FR-017**: System MUST display a CAPTCHA challenge after 5 failed login attempts within a 15-minute period to prevent brute force attacks
 - **FR-018**: System MUST provide responsive UI that works on mobile, tablet, and desktop devices
 - **FR-019**: System MUST use HTTPS for all authentication endpoints in production
 - **FR-020**: System MUST sanitize all user inputs to prevent XSS and injection attacks
+- **FR-021**: System MUST provide a dedicated Sign Up page at `/auth/signup` that collects email, password, and name
+- **FR-022**: System MUST provide a dedicated Sign In page at `/auth/signin` that collects email and password
+- **FR-023**: System MUST provide a Forgot Password page at `/auth/forgot-password` that collects email address
+- **FR-024**: System MUST provide a Reset Password page at `/auth/reset-password` that accepts a token parameter and collects new password
+- **FR-025**: System MUST provide an Email Verification confirmation page that handles email verification tokens
+- **FR-026**: System MUST display social login buttons (GitHub and Google) on both Sign Up and Sign In pages
+- **FR-027**: System MUST use reusable UI components (form inputs, buttons, cards) for consistent design across all authentication pages
+- **FR-028**: System MUST display inline validation errors for form fields (email format, password strength, required fields)
+- **FR-029**: System MUST show loading states during API calls to provide feedback to users
+- **FR-030**: System MUST redirect users to callback URL (from query parameter) after successful authentication, or to application dashboard at `/dashboard` if no callback URL is provided
+- **FR-031**: Sign In page MUST include a "Forgot Password?" link that navigates to the Forgot Password page
+- **FR-032**: All authentication pages MUST include a link to switch between Sign In and Sign Up pages
+- **FR-033**: System MUST display success messages after password reset request submission
+- **FR-034**: System MUST validate token expiration and display appropriate error messages for expired reset links
+- **FR-035**: System MUST provide OIDC login page at `/auth/login` for external application authentication flows
+- **FR-036**: System MUST provide OIDC consent page at `/auth/consent` showing requesting application details and permissions
+- **FR-037**: System MUST redirect already authenticated users from auth pages (signup, signin, forgot-password) to dashboard or callback URL without showing the auth forms
+- **FR-038**: System MUST timeout authentication API calls after 30 seconds and display a user-friendly error message with retry option
+- **FR-039**: System MUST allow re-registration with an unverified email address, overwriting the pending account and resending the verification email
 
 ### Key Entities
 
@@ -140,6 +183,30 @@ As an external application developer, I need to integrate with the SSO client us
 - **Password Reset Token**: Represents a time-limited token for password reset with attributes including token value, user reference, expiration time, and used status
 - **OAuth Application**: Represents an external application registered for OIDC with attributes including client ID, client secret, application name, redirect URLs, trusted status, and consent requirements
 - **OAuth Consent**: Represents user consent for an application with attributes including user reference, application reference, granted scopes, and consent timestamp
+- **Authentication Page**: Represents a UI page in the client application with attributes including page route (e.g., `/auth/signin`), form fields required, validation rules, API endpoint to call, success redirect target, and error handling behavior
+- **UI Component**: Represents a reusable interface element (form input, button, card, alert) with attributes including component type, styling properties, validation behavior, and accessibility features
+
+## Assumptions and Dependencies
+
+### Assumptions
+
+- **A-001**: Users have modern web browsers that support JavaScript and cookies
+- **A-002**: Users have access to their email inbox to receive verification and password reset emails
+- **A-003**: The SSO server backend is fully operational and accessible at the configured base URL
+- **A-004**: Email delivery service (Resend) is configured and operational for sending authentication emails
+- **A-005**: OAuth providers (GitHub, Google) are correctly configured with valid client IDs and secrets
+- **A-006**: Users understand basic web navigation and form filling
+- **A-007**: The application runs in environments with stable network connectivity for API calls
+
+### Dependencies
+
+- **D-001**: SSO Server must be running and accessible on port 3000 with all authentication endpoints operational
+- **D-002**: Shared UI component library (@repo/ui) must provide necessary components (Input, Form, Card, Button, Alert)
+- **D-003**: Authentication client library (@repo/auth-config/client) must expose methods for all authentication operations
+- **D-004**: Database must be accessible and contain proper schema for user, session, and OAuth tables
+- **D-005**: OIDC provider configuration in SSO server must include correct login and consent page paths
+- **D-006**: Shadcn UI components must be properly installed and configured in the shared UI package
+- **D-007**: Environment variables must be set for API base URL and OAuth provider configuration
 
 ## Success Criteria *(mandatory)*
 
@@ -157,3 +224,9 @@ As an external application developer, I need to integrate with the SSO client us
 - **SC-010**: Pages load and become interactive in under 2 seconds on 4G mobile connections
 - **SC-011**: Authentication forms are fully accessible and usable with screen readers
 - **SC-012**: System maintains 99.9% uptime for authentication services
+- **SC-013**: Users receive immediate visual feedback (within 100ms) when interacting with form elements
+- **SC-014**: Form validation errors appear inline within 200ms of user input
+- **SC-015**: Users can navigate entire authentication flow using only keyboard (full keyboard accessibility)
+- **SC-016**: All UI components maintain consistent visual design across all authentication pages
+- **SC-017**: Social login buttons are clearly distinguishable and labeled with provider names
+- **SC-018**: Users can complete password reset flow without leaving the application (no external tab navigation required)
