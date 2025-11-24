@@ -50,6 +50,7 @@ class Config(BaseSettings):
     log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR"] = "INFO"
 
     # Asset Upload Configuration
+    cdn_base_url: str = "https://cdn.panaversity.com"  # CDN base URL for asset access (FR-013)
     max_direct_upload_mb: int = 10  # Assets <10MB use direct upload, ≥10MB use presigned URLs
     max_asset_size_mb: int = 100  # Maximum asset size (FR-010)
 

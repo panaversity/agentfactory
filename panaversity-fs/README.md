@@ -1,6 +1,6 @@
 # PanaversityFS - Agent-Native Multi-Book Storage System
 
-**Status**: Phase 2 - MCP Server Implementation (In Progress)
+**Status**: Phase 3 - MCP Server Implementation (In Progress)
 
 PanaversityFS is a Python MCP server providing unified CRUD operations for educational content across multiple storage backends using OpenDAL abstraction.
 
@@ -14,14 +14,14 @@ PanaversityFS is a Python MCP server providing unified CRUD operations for educa
 
 ## MCP Tools (14 Total)
 
-**Content** (3 tools): read_content, write_content, delete_content 
-**Assets** (3 tools): upload_asset, get_asset, list_assets =ß
-**Summaries** (4 tools): add/update/get/list_summaries Û
-**Bulk** (1 tool): get_book_archive Û
-**Registry** (1 tool): list_books Û
-**Search** (2 tools): glob/grep_search Û
+**Content** (3 tools): read_content, write_content, delete_content ‚úÖ
+**Assets** (3 tools): upload_asset, get_asset, list_assets ‚úÖ
+**Summaries** (4 tools): add/update/get/list_summaries ‚è≥
+**Bulk** (1 tool): get_book_archive ‚è≥
+**Registry** (1 tool): list_books ‚è≥
+**Search** (2 tools): glob/grep_search ‚è≥
 
-**Progress**: 3/14 tools implemented (21%)
+**Progress**: 6/14 tools implemented (43%)
 
 ## Quick Start
 
@@ -43,9 +43,10 @@ npx @modelcontextprotocol/inspector http://localhost:8000/mcp
 
 ## Implementation Status
 
--  Phase 0: Learning & architecture
--  Phase 1: Core infrastructure (869 lines)
-- =ß Phase 2: MCP tools (3/14 complete)
+- ‚úÖ Phase 0: Learning & architecture
+- ‚úÖ Phase 1: Core infrastructure (869 lines)
+- ‚úÖ Phase 2: Content tools (3/14 tools)
+- ‚úÖ Phase 3: Asset tools (6/14 tools)
 
 ## Links
 
