@@ -534,7 +534,7 @@ async def analyze_data_async(dataset_ids: list[int]) -> list[int]:
     results = []
     for dataset_id in dataset_ids:
         # This blocks! No I/O, so await doesn't help
-        result = cpu_intensive_calculation(100_000_000)
+        result = cpu_intensive_calculation(10_000_000)
         results.append(result)
 
     return results
@@ -542,7 +542,7 @@ async def analyze_data_async(dataset_ids: list[int]) -> list[int]:
 # Benchmark: sequential vs "concurrent" (which isn't really concurrent)
 async def benchmark() -> None:
     start = time.perf_counter()
-    results = await analyze_data_async([1, 2, 3, 4])
+    results = await analyze_data_async([1, 2])
     elapsed = time.perf_counter() - start
     print(f"'Async' CPU-bound (still sequential): {elapsed:.2f}s")
 
@@ -551,15 +551,14 @@ asyncio.run(benchmark())
 
 **Output**:
 ```
-'Async' CPU-bound (still sequential): ~4 seconds
+'Async' CPU-bound (still sequential): ~2 seconds
 ```
 
 Compare to **asyncio.gather() with the same CPU work**:
-
 ```python
 async def analyze_single(dataset_id: int) -> int:
     """Still synchronous CPU work, just wrapped in async."""
-    return cpu_intensive_calculation(100_000_000)
+    return cpu_intensive_calculation(10_000_000)
 
 async def benchmark_gather() -> None:
     start = time.perf_counter()
@@ -568,8 +567,6 @@ async def benchmark_gather() -> None:
     results = await asyncio.gather(
         analyze_single(1),
         analyze_single(2),
-        analyze_single(3),
-        analyze_single(4),
     )
     elapsed = time.perf_counter() - start
     print(f"asyncio.gather() with CPU work (still sequential): {elapsed:.2f}s")
@@ -579,7 +576,7 @@ asyncio.run(benchmark_gather())
 
 **Output**:
 ```
-asyncio.gather() with CPU work (still sequential): ~4 seconds
+asyncio.gather() with CPU work (still sequential): ~2 seconds
 ```
 
 No difference! That's because asyncio has no pause points in CPU-bound code. It's all blocking.
