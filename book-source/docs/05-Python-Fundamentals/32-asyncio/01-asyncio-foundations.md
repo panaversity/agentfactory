@@ -184,6 +184,8 @@ The async version *looks* the same, but it has superpowers:
 When you call a coroutine without awaiting, you get a coroutine object—not the result:
 
 ```python
+import asyncio
+
 # ❌ Wrong: This doesn't run the coroutine
 result = fetch_user_async(1)
 print(result)  # <coroutine object fetch_user_async at 0x...>
@@ -210,6 +212,8 @@ The **`await` keyword** marks a pause point. When Python hits `await`, it:
 You can only use `await` inside an `async` function.
 
 ```python
+import asyncio
+
 async def example() -> None:
     print("1: Starting")
     await asyncio.sleep(2)  # Pause for 2 seconds
@@ -414,7 +418,7 @@ This is often confused, so let's be precise:
 - Task A waits → Task B runs → Task A resumes
 - Total time ≈ longest task (not sum of all tasks)
 
-```python
+```
 Task A: [====] (4 seconds, but pauses at I/O)
 Task B:      [==] (2 seconds)
 Task C:         [====] (4 seconds, but pauses at I/O)
