@@ -3,11 +3,11 @@
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@repo/ui';
 import { SignUpForm } from './signup-form';
-import { useAuthRedirect } from '@/lib/hooks/use-auth-redirect';
+// import { useAuthRedirect } from '@/lib/hooks/use-auth-redirect';
 
 export default function SignUpPage() {
   // Redirect logged-in users to dashboard
-  useAuthRedirect();
+  // useAuthRedirect();
 
   return (
     <Card>

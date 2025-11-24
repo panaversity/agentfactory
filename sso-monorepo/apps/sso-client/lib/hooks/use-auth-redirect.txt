@@ -1,3 +1,5 @@
+We do not need this function since we are blocking user to access by the nextjs proxy file
+
 'use client';
 
 import { useEffect } from 'react';

@@ -236,6 +236,9 @@ importers:
       react-dom:
         specifier: ^19.2.0
         version: 19.2.0(react@19.2.0)
+      react-hook-form:
+        specifier: ^7.66.1
+        version: 7.66.1(react@19.2.0)
       tailwind-merge:
         specifier: ^2.6.0
         version: 2.6.0

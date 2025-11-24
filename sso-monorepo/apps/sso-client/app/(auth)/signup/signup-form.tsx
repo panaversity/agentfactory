@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { authClient } from '@repo/auth-config/client';
+import { signUpAction } from '@/app/server/auth';
 import { 
   Form, 
   FormControl, 
@@ -42,9 +42,9 @@ export function SignUpForm() {
     try {
       setFormError('');
 
-      // Call auth API with timeout
+      // Call server action with timeout
       const result = await withTimeout(
-        authClient.signUp.email({
+        signUpAction({
           email: data.email,
           password: data.password,
           name: data.name,
@@ -56,9 +56,9 @@ export function SignUpForm() {
       if (result.error) {
         // Handle backend errors
         const error = result.error;
-        
+
         // Check for email already exists
-        if (error.message?.toLowerCase().includes('email') && 
+        if (error.message?.toLowerCase().includes('email') &&
             error.message?.toLowerCase().includes('exist')) {
           setFormError(ERROR_MESSAGES.EMAIL_ALREADY_EXISTS);
           form.setError('email', {
