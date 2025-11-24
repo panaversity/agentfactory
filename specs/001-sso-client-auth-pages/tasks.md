@@ -85,16 +85,16 @@ All paths are relative to monorepo: `apps/sso-client/` for client code, `package
 
 ### Implementation for User Story 2
 
-- [ ] T026 [P] [US2] Create signin page component in apps/sso-client/app/(auth)/signin/page.tsx (imports SignInForm, uses useAuthRedirect hook)
-- [ ] T027 [US2] Create SignInForm component in apps/sso-client/app/(auth)/signin/signin-form.tsx (uses react-hook-form with signInSchema, calls authClient.signIn.email, handles loading/error states, redirects on success)
-- [ ] T028 [US2] Implement invalid credentials error handling in SignInForm (display INVALID_CREDENTIALS message without user enumeration, increment failed attempts counter)
+- [X] T026 [P] [US2] Create signin page component in apps/sso-client/app/(auth)/signin/page.tsx (imports SignInForm, uses useAuthRedirect hook)
+- [X] T027 [US2] Create SignInForm component in apps/sso-client/app/(auth)/signin/signin-form.tsx (uses react-hook-form with signInSchema, calls authClient.signIn.email, handles loading/error states, redirects on success)
+- [X] T028 [US2] Implement invalid credentials error handling in SignInForm (display INVALID_CREDENTIALS message without user enumeration, increment failed attempts counter)
 - [ ] T029 [US2] Implement remember me checkbox in SignInForm (add rememberMe field to form, pass to authClient.signIn.email)
 - [ ] T030 [US2] Implement CAPTCHA challenge after 5 failed attempts in SignInForm (use useCaptcha hook, check shouldShowCaptcha utility, display Captcha component, pass token to API)
 - [ ] T031 [US2] Implement failed attempt counter reset on successful login in SignInForm (call clearFailedAttempts from failed-attempts.ts)
-- [ ] T032 [US2] Add "Forgot Password?" link in apps/sso-client/app/(auth)/signin/page.tsx (link to /auth/forgot-password below password field)
-- [ ] T033 [US2] Add link to sign-up page in apps/sso-client/app/(auth)/signin/page.tsx (below form: "Don't have an account? Sign up")
-- [ ] T034 [US2] Implement redirect logic in SignInForm (use getRedirectUrl utility, redirect to callbackUrl or /dashboard after successful sign-in)
-- [ ] T035 [US2] Implement API timeout handling in SignInForm (use withTimeout wrapper with 30s timeout, display TIMEOUT error message with retry option)
+- [X] T032 [US2] Add "Forgot Password?" link in apps/sso-client/app/(auth)/signin/page.tsx (link to /auth/forgot-password below password field)
+- [X] T033 [US2] Add link to sign-up page in apps/sso-client/app/(auth)/signin/page.tsx (below form: "Don't have an account? Sign up")
+- [X] T034 [US2] Implement redirect logic in SignInForm (use getRedirectUrl utility, redirect to callbackUrl or /dashboard after successful sign-in)
+- [X] T035 [US2] Implement API timeout handling in SignInForm (use withTimeout wrapper with 30s timeout, display TIMEOUT error message with retry option)
 
 **Checkpoint**: User Story 2 complete - users can sign in with email/password, CAPTCHA protection active, redirect working
 

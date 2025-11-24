@@ -47,7 +47,30 @@ export async function signUpAction(params: {
       credentials: 'include',
     });
 
-    const data = await response.json();
+    let data;
+    try {
+      data = await response.json();
+    } catch (jsonError) {
+      // If JSON parsing fails but response was successful, treat as success
+      // This happens when backend requires email verification and returns empty response
+      if (response.ok) {
+        console.log('[signUpAction] Success with no JSON body - email verification required');
+        return {
+          data: {
+            token: '',
+            user: {
+              id: '',
+              email: params.email,
+              name: params.name,
+              emailVerified: false,
+              createdAt: new Date().toISOString(),
+            },
+          },
+        };
+      }
+      // If response was not ok, throw the error
+      throw new Error('Sign up failed');
+    }
 
     // Handle error response
     if (!response.ok) {

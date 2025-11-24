@@ -43,7 +43,7 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: false, // Set to true when you're ready to enforce it
-    autoSignIn: true, // Users can sign in immediately after sign up
+    autoSignIn: true, // Users can sign in immediately after sign up (even without email verification)
     minPasswordLength: 8,
     maxPasswordLength: 128,
 
