@@ -39,7 +39,27 @@ python -m panaversity_fs.server
 
 # Test with MCP Inspector
 npx @modelcontextprotocol/inspector http://localhost:8000/mcp
+
+# Or run comprehensive tool tests
+uv run python test_all_tools.py
 ```
+
+## Testing
+
+The implementation includes a comprehensive test suite (`test_all_tools.py`) that exercises all 14 tools:
+
+```bash
+# Run all tool tests
+uv run python test_all_tools.py
+```
+
+**Test Coverage:**
+- ✅ Content tools: read, write, delete
+- ✅ Summary tools: get, update, list
+- ✅ Registry tools: list_books
+- ✅ Search tools: glob_search, grep_search
+- ✅ Bulk tools: get_book_archive
+- ⚠️ Asset tools: Require binary data (not included in automated tests)
 
 ## Implementation Status
 
