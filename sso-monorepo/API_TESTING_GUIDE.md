@@ -329,6 +329,520 @@ curl -X GET "http://localhost:3000/api/auth/verify-email?token=OLD_USED_TOKEN&ca
 
 ---
 
+## 🔗 Flow 5: GitHub & Google Social Login (OAuth)
+
+### Overview
+
+BetterAuth supports OAuth social login providers like GitHub and Google. This section covers:
+- Setting up OAuth apps in GitHub/Google
+- Configuring BetterAuth with credentials
+- Testing social login flows via API
+
+### Part A: GitHub OAuth Setup
+
+#### Step 1: Create GitHub OAuth App
+
+1. Go to GitHub Settings → Developer settings → OAuth Apps
+2. Click "New OAuth App"
+3. Fill in the form:
+   - **Application name**: `SSO Platform` (or your app name)
+   - **Homepage URL**: `http://localhost:3000`
+   - **Authorization callback URL**: `http://localhost:3000/api/auth/callback/github`
+4. Click "Register application"
+5. You'll receive:
+   - **Client ID**: `Iv1.abc123...`
+   - Click "Generate a new client secret" to get **Client Secret**: `abc123xyz...`
+
+#### Step 2: Configure BetterAuth with GitHub
+
+Add to your `.env` file:
+
+```bash
+GITHUB_CLIENT_ID=Iv1.abc123...
+GITHUB_CLIENT_SECRET=abc123xyz...
+```
+
+Add to your BetterAuth configuration (server-side):
+
+```typescript
+// packages/auth-config/src/index.ts
+import { betterAuth } from "better-auth";
+
+export const auth = betterAuth({
+  // ... existing config
+  socialProviders: {
+    github: {
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+      // Optional: custom redirect URI
+      // redirectURI: "http://localhost:3000/api/auth/callback/github"
+    },
+  },
+});
+```
+
+#### Step 3: Test GitHub OAuth Flow
+
+**Option 1: Via Browser (Recommended for OAuth)**
+
+1. Navigate to:
+```
+http://localhost:3000/api/auth/signin/github?callbackURL=/dashboard
+```
+
+2. You'll be redirected to GitHub's authorization page
+3. Click "Authorize" to grant permissions
+4. GitHub redirects back to your app at the callback URL
+5. BetterAuth creates/updates user and session
+
+**Option 2: Via API Client (Programmatic)**
+
+```typescript
+// Client-side code
+import { authClient } from "@repo/auth-config/client";
+
+const signInWithGitHub = async () => {
+  const { data, error } = await authClient.signIn.social({
+    provider: "github",
+    callbackURL: "/dashboard",
+  });
+
+  if (error) {
+    console.error("GitHub sign-in failed:", error);
+  } else {
+    console.log("Signed in:", data.user);
+  }
+};
+```
+
+**Option 3: Test via cURL (Get Authorization URL)**
+
+```bash
+# This will return a redirect to GitHub's OAuth page
+curl -X GET "http://localhost:3000/api/auth/signin/github?callbackURL=/dashboard" \
+  -L -v
+```
+
+#### Step 4: Verify GitHub User Creation
+
+After successful GitHub OAuth:
+
+```bash
+curl -X GET http://localhost:3000/api/auth/session \
+  -H "Cookie: better-auth.session_token=YOUR_SESSION_TOKEN" \
+  | jq
+```
+
+**Expected Response:**
+```json
+{
+  "user": {
+    "id": "user_github123",
+    "email": "user@github.com",
+    "name": "GitHub Username",
+    "image": "https://avatars.githubusercontent.com/...",
+    "emailVerified": true  // Auto-verified via GitHub
+  },
+  "session": {
+    "id": "session_xyz",
+    "userId": "user_github123"
+  }
+}
+```
+
+**Check linked accounts:**
+
+```bash
+curl -X GET http://localhost:3000/api/auth/list-accounts \
+  -H "Cookie: better-auth.session_token=YOUR_SESSION_TOKEN" \
+  | jq
+```
+
+**Expected Response:**
+```json
+{
+  "accounts": [
+    {
+      "id": "acc_123",
+      "provider": "github",
+      "providerId": "12345678",  // GitHub user ID
+      "userId": "user_github123"
+    }
+  ]
+}
+```
+
+---
+
+### Part B: Google OAuth Setup
+
+#### Step 1: Create Google OAuth App
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select existing one
+3. Enable "Google+ API" (in APIs & Services → Library)
+4. Go to "Credentials" → Click "Create Credentials" → "OAuth client ID"
+5. Configure OAuth consent screen first (if not done):
+   - User Type: External
+   - App name: `SSO Platform`
+   - User support email: your email
+   - Authorized domains: `localhost` (for testing)
+   - Developer contact: your email
+6. Create OAuth Client ID:
+   - Application type: **Web application**
+   - Name: `SSO Platform Web Client`
+   - Authorized JavaScript origins: `http://localhost:3000`
+   - Authorized redirect URIs: `http://localhost:3000/api/auth/callback/google`
+7. You'll receive:
+   - **Client ID**: `123456789-abc.apps.googleusercontent.com`
+   - **Client Secret**: `GOCSPX-abc123xyz...`
+
+#### Step 2: Configure BetterAuth with Google
+
+Add to your `.env` file:
+
+```bash
+GOOGLE_CLIENT_ID=123456789-abc.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=GOCSPX-abc123xyz...
+```
+
+Add to your BetterAuth configuration:
+
+```typescript
+// packages/auth-config/src/index.ts
+import { betterAuth } from "better-auth";
+
+export const auth = betterAuth({
+  // ... existing config
+  socialProviders: {
+    github: {
+      // ... existing GitHub config
+    },
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      // Optional: custom redirect URI
+      // redirectURI: "http://localhost:3000/api/auth/callback/google"
+    },
+  },
+});
+```
+
+#### Step 3: Test Google OAuth Flow
+
+**Via Browser (Recommended):**
+
+1. Navigate to:
+```
+http://localhost:3000/api/auth/signin/google?callbackURL=/dashboard
+```
+
+2. You'll be redirected to Google's sign-in page
+3. Select your Google account
+4. Click "Allow" to grant permissions
+5. Google redirects back to your app
+6. BetterAuth creates/updates user and session
+
+**Via API Client:**
+
+```typescript
+// Client-side code
+import { authClient } from "@repo/auth-config/client";
+
+const signInWithGoogle = async () => {
+  const { data, error } = await authClient.signIn.social({
+    provider: "google",
+    callbackURL: "/dashboard",
+  });
+
+  if (error) {
+    console.error("Google sign-in failed:", error);
+  } else {
+    console.log("Signed in:", data.user);
+  }
+};
+```
+
+#### Step 4: Verify Google User Creation
+
+```bash
+curl -X GET http://localhost:3000/api/auth/session \
+  -H "Cookie: better-auth.session_token=YOUR_SESSION_TOKEN" \
+  | jq
+```
+
+**Expected Response:**
+```json
+{
+  "user": {
+    "id": "user_google456",
+    "email": "user@gmail.com",
+    "name": "John Doe",
+    "image": "https://lh3.googleusercontent.com/...",
+    "emailVerified": true  // Auto-verified via Google
+  }
+}
+```
+
+---
+
+### Part C: Linking Multiple Social Accounts
+
+Users can link multiple social accounts (GitHub + Google) to one account.
+
+#### Link Additional Account (When Already Logged In)
+
+```typescript
+// Client-side: User is logged in with email, now linking GitHub
+const linkGitHub = async () => {
+  const { data, error } = await authClient.linkSocial({
+    provider: "github",
+    callbackURL: "/settings/accounts",
+  });
+};
+
+// Or link Google
+const linkGoogle = async () => {
+  const { data, error } = await authClient.linkSocial({
+    provider: "google",
+    callbackURL: "/settings/accounts",
+  });
+};
+```
+
+#### List All Linked Accounts
+
+```bash
+curl -X GET http://localhost:3000/api/auth/list-accounts \
+  -H "Cookie: better-auth.session_token=YOUR_SESSION_TOKEN" \
+  | jq
+```
+
+**Expected Response:**
+```json
+{
+  "accounts": [
+    {
+      "id": "acc_email",
+      "provider": "credential",  // Email/password account
+      "userId": "user_123"
+    },
+    {
+      "id": "acc_gh",
+      "provider": "github",
+      "providerId": "87654321",
+      "userId": "user_123"
+    },
+    {
+      "id": "acc_google",
+      "provider": "google",
+      "providerId": "109876543210",
+      "userId": "user_123"
+    }
+  ]
+}
+```
+
+#### Unlink Social Account
+
+```typescript
+// Client-side: Unlink GitHub account
+const unlinkGitHub = async () => {
+  await authClient.unlinkAccount({
+    accountId: "acc_gh",  // ID from list-accounts
+  });
+};
+```
+
+Or via API:
+
+```bash
+curl -X POST http://localhost:3000/api/auth/unlink-account \
+  -H "Content-Type: application/json" \
+  -H "Cookie: better-auth.session_token=YOUR_SESSION_TOKEN" \
+  -d '{
+    "accountId": "acc_gh"
+  }' | jq
+```
+
+---
+
+### Part D: Environment Variables Summary
+
+Complete `.env` file for all auth methods:
+
+```bash
+# Database
+DATABASE_URL=your-database-url
+
+# Email (Resend)
+RESEND_API_KEY=re_...
+RESEND_FROM_EMAIL=noreply@yourdomain.com
+
+# GitHub OAuth
+GITHUB_CLIENT_ID=Iv1.abc123...
+GITHUB_CLIENT_SECRET=abc123xyz...
+
+# Google OAuth
+GOOGLE_CLIENT_ID=123456789-abc.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=GOCSPX-abc123xyz...
+
+# BetterAuth Secret (for session signing)
+BETTER_AUTH_SECRET=your-secret-key-here
+BETTER_AUTH_URL=http://localhost:3000
+```
+
+---
+
+### Part E: Testing Complete OAuth Integration
+
+#### Test Scenario 1: Sign up with email, then link social accounts
+
+```bash
+# 1. Sign up with email
+curl -X POST http://localhost:3000/api/auth/sign-up/email \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "test@example.com",
+    "password": "Pass123!",
+    "name": "Test User"
+  }' | jq
+
+# Save the session token from response
+
+# 2. Link GitHub (must be done via browser)
+# Navigate to: http://localhost:3000/api/auth/link/github?callbackURL=/settings
+
+# 3. Link Google (must be done via browser)
+# Navigate to: http://localhost:3000/api/auth/link/google?callbackURL=/settings
+
+# 4. Verify all accounts linked
+curl -X GET http://localhost:3000/api/auth/list-accounts \
+  -H "Cookie: better-auth.session_token=SESSION_TOKEN" | jq
+```
+
+#### Test Scenario 2: Sign in with GitHub, verify auto-created user
+
+```bash
+# 1. Sign in with GitHub (via browser)
+# Navigate to: http://localhost:3000/api/auth/signin/github?callbackURL=/
+
+# 2. After redirect, check session
+curl -X GET http://localhost:3000/api/auth/session \
+  -H "Cookie: better-auth.session_token=SESSION_TOKEN" | jq
+
+# 3. Verify email is auto-verified
+# emailVerified should be true
+```
+
+#### Test Scenario 3: Sign in with Google, then add password
+
+```bash
+# 1. Sign in with Google (via browser)
+# Navigate to: http://localhost:3000/api/auth/signin/google?callbackURL=/
+
+# 2. User now wants to add password to their account
+# (This requires implementing a "set password" endpoint)
+```
+
+---
+
+### Part F: Common OAuth Issues & Troubleshooting
+
+#### Issue 1: "Redirect URI mismatch"
+
+**Cause:** The callback URL in your OAuth app doesn't match BetterAuth's callback URL.
+
+**Fix:**
+- GitHub: Must be exactly `http://localhost:3000/api/auth/callback/github`
+- Google: Must be exactly `http://localhost:3000/api/auth/callback/google`
+- No trailing slashes
+- Check port number matches
+
+#### Issue 2: "Invalid client credentials"
+
+**Cause:** Wrong Client ID or Client Secret in `.env`
+
+**Fix:**
+```bash
+# Double-check your .env file
+cat .env | grep CLIENT_ID
+cat .env | grep CLIENT_SECRET
+
+# Restart server after changing .env
+```
+
+#### Issue 3: User signs in with both email and Google using same email
+
+**Behavior:** BetterAuth automatically links accounts if emails match.
+
+**Verify:**
+```bash
+curl -X GET http://localhost:3000/api/auth/list-accounts \
+  -H "Cookie: better-auth.session_token=TOKEN" | jq
+```
+
+You should see both `credential` and `google` providers for the same `userId`.
+
+#### Issue 4: OAuth works in development but not production
+
+**Checklist:**
+- Update OAuth app callback URLs to production domain
+- Update `BETTER_AUTH_URL` in production `.env`
+- Ensure HTTPS is enabled in production
+- Check CORS settings if using separate frontend domain
+
+---
+
+### Part G: OAuth Flow Diagram (For Reference)
+
+```
+User clicks "Sign in with GitHub"
+    ↓
+Browser redirects to GitHub: https://github.com/login/oauth/authorize?client_id=...
+    ↓
+User authorizes app on GitHub
+    ↓
+GitHub redirects to: http://localhost:3000/api/auth/callback/github?code=abc123
+    ↓
+BetterAuth exchanges code for access token (server-side)
+    ↓
+BetterAuth fetches user info from GitHub API
+    ↓
+BetterAuth creates/updates user in database
+    ↓
+BetterAuth creates session and sets cookie
+    ↓
+User is redirected to callbackURL (e.g., /dashboard)
+```
+
+---
+
+### Part H: Available OAuth Endpoints
+
+```bash
+# Social Sign-In (redirects to OAuth provider)
+GET  /api/auth/signin/github?callbackURL=/dashboard
+GET  /api/auth/signin/google?callbackURL=/dashboard
+
+# OAuth Callbacks (handled by BetterAuth automatically)
+GET  /api/auth/callback/github?code=...
+GET  /api/auth/callback/google?code=...
+
+# Link Social Account (requires existing session)
+GET  /api/auth/link/github?callbackURL=/settings
+GET  /api/auth/link/google?callbackURL=/settings
+
+# Unlink Social Account
+POST /api/auth/unlink-account
+Body: { "accountId": "acc_123" }
+
+# List Linked Accounts
+GET  /api/auth/list-accounts
+```
+
+---
+
 ## 📊 Quick Testing Cheat Sheet
 
 ### All Available Endpoints
@@ -347,6 +861,18 @@ GET  /api/auth/verify-email               # Verify with token
 # Password Reset
 POST /api/auth/forget-password            # Request reset
 POST /api/auth/reset-password             # Reset with token
+
+# OAuth Social Login
+GET  /api/auth/signin/github              # Sign in with GitHub
+GET  /api/auth/signin/google              # Sign in with Google
+GET  /api/auth/callback/github            # GitHub OAuth callback
+GET  /api/auth/callback/google            # Google OAuth callback
+
+# Account Linking
+GET  /api/auth/link/github                # Link GitHub to existing account
+GET  /api/auth/link/google                # Link Google to existing account
+POST /api/auth/unlink-account             # Unlink social account
+GET  /api/auth/list-accounts              # List all linked accounts
 ```
 
 ### Example: Complete Test Flow (Copy & Paste)
