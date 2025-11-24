@@ -269,7 +269,7 @@ class DatabasePlugin(Plugin):
         return "Storing in database..."
 
 # Check the registry
-print("\nAvailable plugins:")
+print("Available plugins:")
 for name, cls in RegistryMeta.get_registry().items():
     print(f"  - {name}: {cls.__name__}")
 
@@ -294,7 +294,7 @@ def load_and_execute(plugin_name: str) -> str:
     instance = plugin_cls()
     return instance.execute()
 
-print(f"\nExecuting 'slackplugin': {load_and_execute('slackplugin')}")
+print(f"Executing 'slackplugin': {load_and_execute('slackplugin')}")
 # Output: Executing 'slackplugin': Sending to Slack...
 ```
 
@@ -353,12 +353,12 @@ db2 = DatabaseConnection(host="different_host")  # Parameters ignored!
 db3 = DatabaseConnection()
 
 # All point to the same object
-print(f"\ndb1 is db2: {db1 is db2}")  # True
+print(f"db1 is db2: {db1 is db2}")  # True
 print(f"db2 is db3: {db2 is db3}")  # True
 print(f"id(db1) == id(db2): {id(db1) == id(db2)}")  # True
 
 # Verify the connection is truly shared
-print(f"\ndb1.host: {db1.host}")
+print(f"db1.host: {db1.host}")
 print(f"db2.host: {db2.host}")
 print(f"db3.host: {db3.host}")
 # All show "localhost" because they're the same object
@@ -563,14 +563,14 @@ for field_name, field_obj in User._fields.items():
 
 # Create an instance
 user = User(id=1, name="Alice", email="alice@example.com")
-print(f"\nUser created: {user.name} ({user.email})")
+print(f"User created: {user.name} ({user.email})")
 print(f"Bio: {user.bio}")  # Uses default
 
 # Try creating without required field
 try:
     bad_user = User(name="Bob")  # Missing 'id'
 except ValueError as e:
-    print(f"\nError creating user: {e}")
+    print(f"Error creating user: {e}")
     # Output: Error creating user: Field 'id' is required
 ```
 
@@ -637,7 +637,7 @@ try:
     class BadComponent1(BaseComponent):
         pass  # Missing 'name'
 except TypeError as e:
-    print(f"\nMetaclass error: {e}")
+    print(f"Metaclass error: {e}")
 
 try:
     class BadComponent2(BaseComponentSimpler):
@@ -647,7 +647,7 @@ except TypeError as e:
 
 
 # COMPARISON TABLE
-print("\n" + "="*70)
+print("="*70)
 print("WHEN TO USE WHAT")
 print("="*70)
 print("""
