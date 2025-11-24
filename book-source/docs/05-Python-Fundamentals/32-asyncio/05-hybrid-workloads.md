@@ -242,7 +242,7 @@ async def main() -> None:
     results = await simple_hybrid([1, 2, 3, 4, 5], executor)
     elapsed = time.time() - start
 
-    print(f"\n✓ Total hybrid time: {elapsed:.2f}s")
+    print(f"✓ Total hybrid time: {elapsed:.2f}s")
     print(f"✓ Sequential time would be: ~{5 * 1.4:.1f}s")
     print(f"✓ Speedup: {5 * 1.4 / elapsed:.1f}x")
     print(f"✓ Processed {len(results)} items")
@@ -355,7 +355,7 @@ async def main() -> None:
     )
     elapsed = time.time() - start
 
-    print(f"\n✓ Processed {len(results)} items in {elapsed:.2f}s")
+    print(f"✓ Processed {len(results)} items in {elapsed:.2f}s")
     print(f"  Batch size: 5 items")
     print(f"  Number of batches: {(20 + 4) // 5}")
 
@@ -507,13 +507,13 @@ async def main() -> None:
 
     print("Three-Stage Pipeline Demo")
     print("=" * 50)
-    print("Fetching, transforming, and storing 30 items with pipeline overlap\n")
+    print("Fetching, transforming, and storing 30 items with pipeline overlap")
 
     start = time.time()
     await three_stage_pipeline(total_items=30, executor=executor)
     elapsed = time.time() - start
 
-    print(f"\n✓ Total pipeline time: {elapsed:.2f}s")
+    print(f"✓ Total pipeline time: {elapsed:.2f}s")
     print(f"  Sequential (no overlap) would take: ~{30 * (0.05 + 0.1 + 0.02):.1f}s")
     print(f"  Pipeline speedup: {30 * 0.17 / elapsed:.1f}x")
 
@@ -649,17 +649,17 @@ async def main() -> None:
     results = await ai_workload_hybrid("python asyncio", executor)
     hybrid_time = time.time() - start
 
-    print(f"\n✓ Hybrid approach time: {hybrid_time:.2f}s")
+    print(f"✓ Hybrid approach time: {hybrid_time:.2f}s")
     print(f"  - Fetch phase: ~0.4s (max of 3 concurrent fetches)")
     print(f"  - Inference phase: ~0.5s (3 items processed in parallel)")
 
     # Calculate sequential time for comparison
     sequential_time = 0.3 + 0.4 + 0.25 + 3 * 0.5  # All fetches + all inferences sequentially
-    print(f"\n✗ Sequential approach would take: {sequential_time:.2f}s")
+    print(f"✗ Sequential approach would take: {sequential_time:.2f}s")
     print(f"  Speedup: {sequential_time / hybrid_time:.1f}x faster")
 
     # Show results
-    print(f"\nResults from {len(results)} sources:")
+    print(f"Results from {len(results)} sources:")
     for result in results:
         print(f"  [{result.source}] → {result.inference_result[:50]}...")
 
@@ -1001,7 +1001,7 @@ async def main() -> None:
     )
 
     # Results summary
-    print("\n" + "=" * 60)
+    print("=" * 60)
     print("RESULTS SUMMARY")
     print("=" * 60)
     print(f"Total items: {metrics['total']}")
@@ -1018,7 +1018,7 @@ async def main() -> None:
         avg_fetch = sum(item.fetch_time for item in successful_items) / len(successful_items)
         avg_process = sum(item.process_time for item in successful_items) / len(successful_items)
         avg_store = sum(item.store_time for item in successful_items) / len(successful_items)
-        print(f"\nAverage per-item times:")
+        print(f"Average per-item times:")
         print(f"  Fetch:   {avg_fetch * 1000:.1f}ms")
         print(f"  Process: {avg_process * 1000:.1f}ms")
         print(f"  Store:   {avg_store * 1000:.1f}ms")
