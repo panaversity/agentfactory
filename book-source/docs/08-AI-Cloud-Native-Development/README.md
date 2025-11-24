@@ -1,8 +1,8 @@
 # Part 8: AI Cloud Native Development
 
-You've built AI agents locally in Parts 1-6—designing agent architectures, implementing integrations, and mastering spec-driven development. Part 8 bridges local development to production deployment at scale. You'll learn containerization strategies, orchestration patterns, and operational excellence practices that transform agents from learning projects into production systems serving real users.
+You've built AI agents locally in Parts 1-7—designing agent architectures, implementing integrations, and mastering spec-driven development. Part 8 bridges local development to production deployment at scale. You'll learn containerization strategies, orchestration patterns, and operational excellence practices that transform agents from learning projects into production systems serving real users.
 
-**Prerequisites**: Parts 4-5 (Python fundamentals and spec-driven development) are required. Part 6 (AI Native Software Development) is strongly recommended for agent building experience before tackling deployment.
+**Prerequisites**: Parts 4-5 (SDD-RI fundamentals and Python fundamentals) are required. Part 7 (AI Native Software Development) is strongly recommended for agent building experience before tackling deployment.
 
 ---
 

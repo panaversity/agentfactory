@@ -1,6 +1,6 @@
 # Part 7: AI Native Software Development
 
-Part 7 bridges your foundational skills from Parts 1-5 into production agent development. You've learned Python fundamentals (Part 4) and spec-driven development methodology (Part 5)—now you'll apply these skills to design, implement, test, and deploy AI agents for real-world applications.
+Part 7 bridges your foundational skills from Parts 1-6 into production agent development. You've learned SDD-RI fundamentals (Part 4), Python fundamentals (Part 5), and AI product leadership (Part 6)—now you'll apply these skills to design, implement, test, and deploy AI agents for real-world applications.
 
 This part introduces agent frameworks, integration patterns, testing strategies, and data persistence—the building blocks of production AI systems. You'll move from educational examples to patterns you'd encounter building professional agent applications.
 

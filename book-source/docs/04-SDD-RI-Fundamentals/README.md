@@ -1,9 +1,9 @@
 ---
-sidebar_position: 5
-title: "Part 5: Spec-Driven Development"
+sidebar_position: 4
+title: "Part 4: SDD-RI Fundamentals"
 ---
 
-# Part 5: Spec-Driven Development
+# Part 4: SDD-RI Fundamentals - Write Specs and Build AI Product Thinking
 
 ## The $10 Million Specification
 
@@ -33,25 +33,21 @@ But here's what matters most: **Specifications aren't documentation—they're AI
 
 That's what this part teaches you.
 
-## What You'll Learn in Part 5
+## What You'll Learn in Part 4
 
-This part consists of three complete chapters (with Chapter 35 planned for future release) that transform you from code-first to specification-first:
+This part consists of three chapters (13-15) that transform you from code-first to specification-first thinking:
 
-### Chapter 17: Understanding Specification-Driven Development Fundamentals
+### Chapter 13: Understanding Specification-Driven Development with Reusable Intelligence
 
-You'll discover why specifications matter through experience, not lectures. Starting with a vague requirement that fails, you'll diagnose the problem, then work with your AI companion to understand SDD philosophy, tools, and history. You'll learn why SDD is now making shipping 10x better NOW (not 10 years ago), explore the tools ecosystem (Kiro, Spec-Kit Plus, Tessel), and confront the spec-as-source vision realistically.
+You'll discover why specifications matter through experience, not lectures. Starting with a vague requirement that fails, you'll diagnose the problem, then work with your AI companion to understand SDD-RI philosophy, tools, and history. You'll learn why SDD is now making shipping 10x better NOW (not 10 years ago), explore the tools ecosystem (Kiro, Spec-Kit Plus, Tessel), and confront the spec-as-source vision realistically.
 
-### Chapter 35: Spec-Kit Plus Hands-On
+### Chapter 14: SDD-RI Hands-On: YouTube Content Workflow with Gemini
 
-Here you'll practice specification-first development with your AI companion. You'll build a Python calculator project starting from specification (not code), learning the SpecifyPlus optionated workflow. Then you'll write a real-world grading system specification that becomes the foundation for Chapter 34's capstone.
+Here you'll practice specification-first development with your AI companion building a real-world YouTube content workflow using Gemini. You'll learn the SpecifyPlus opinionated workflow and how to apply it to practical projects.
 
-### Chapter 34: The Super AI Orchestra - Managing 7-9 AI Agents
+### Chapter 15: AI Product & Business Intelligence + Capstone
 
-You'll master decomposition thinking to orchestrate 10-15 autonomous AI agents and achieve 10x productivity. Starting with manual 3-agent coordination using git worktrees and parallel SpecKit Plus workflows, you'll experience the FIRST CLIMAX (understanding what scales from 3 to 5 to 7-9 agents), learn contract-based autonomous coordination with explicit integration contracts and completion hooks, then experience the SECOND CLIMAX where SpecKit Plus itself becomes your orchestrator—coordinating 5-10 agents while you focus on strategy. The chapter culminates in a capstone project where you build a 3-5 feature system with measurable 2.5-3x speedup, creating a portfolio artifact that demonstrates strategic thinking and proves you can manage autonomous teams at scale.
-
-### Chapter 35:  Tessl and SpecifyPlus - The Ultimate Workflow (Planned for Future Release)
-
-**Note**: Chapter 35 is currently in planning stages and scheduled for a future release. Chapters 32-32 provide a complete, production-ready introduction to Specification-Driven Development. Chapter 35 will extend this foundation with advanced Tessl integration.
+This chapter culminates in building your own AI product with business thinking. You'll apply everything learned about SDD-RI to create a capstone project that demonstrates strategic thinking and specification-driven development mastery.
 
 **Planned content**: This chapter will take you beyond specification workflows to explore Tessl's approach to making specifications the true source of truth and how to use it with SpecifyPlus. You'll understand how Tessl's Framework and Registry address the reliability crisis in AI-assisted development—preventing API hallucinations with 10,000+ versioned usage specs, eliminating regressions through test-enforced guardrails, and providing long-term memory through specifications stored in your codebase. 
 
@@ -61,7 +57,7 @@ You'll master decomposition thinking to orchestrate 10-15 autonomous AI agents a
 
 Here's why: Jumping into implementation patterns before mastering specifications leads to the same technical debt that plagues traditional development. You'd be optimizing code structure when you should be optimizing requirement clarity. You'd be debugging integration issues that specifications would prevent.
 
-Think of Part 5 as learning architecture before interior design. Without clear specifications, everything built later requires constant rework. With them, subsequent development becomes faster and more reliable.
+Think of Part 4 as learning architecture before interior design. Without clear specifications, everything built later requires constant rework. With them, subsequent development becomes faster and more reliable.
 
 ## A Note on Mindset
 
