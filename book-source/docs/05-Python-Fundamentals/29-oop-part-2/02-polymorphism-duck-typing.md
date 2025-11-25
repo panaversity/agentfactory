@@ -256,7 +256,7 @@ code_agent = CodeAgent("CodeHelper")
 agents: list[Agent] = [chat_agent, code_agent]
 
 for agent in agents:
-    print(f"\n{agent.name}:")
+    print(f"{agent.name}:")
     print(f"  Capabilities: {agent.get_capabilities()}")
     print(f"  Processing: {agent.process('Hello')}")
 
@@ -446,9 +446,9 @@ def checkout(processor, amount: float, **kwargs) -> None:
         **kwargs: Additional arguments (card_number, email, wallet_address, etc.)
     """
     if processor.process_payment(amount, list(kwargs.values())[0]):
-        print(f"✓ Payment of ${amount} successful\n")
+        print(f"✓ Payment of ${amount} successful")
     else:
-        print(f"✗ Payment of ${amount} failed\n")
+        print(f"✗ Payment of ${amount} failed")
 
 
 # All three processors work without inheritance or a common base class!
@@ -672,7 +672,7 @@ agents: list[Agent] = [
 # Route a task to all agents
 task = "explain machine learning"
 
-print(f"Task: {task}\n")
+print(f"Task: {task}")
 for agent in agents:
     result = agent.process(task)
     print(f"  {result}")
@@ -956,7 +956,7 @@ if __name__ == "__main__":
     print(dispatch_with_abc(chat_abc, "hello"))
     print(dispatch_with_abc(code_abc, "debug this"))
 
-    print("\n=== Duck Typing Approach ===")
+    print("=== Duck Typing Approach ===")
     chat_duck = ChatAgentDuck("ChatBot")
     code_duck = CodeAgentDuck("CodeHelper")
 
@@ -971,7 +971,7 @@ if __name__ == "__main__":
         def process(self, message: str) -> str:
             return f"Image processing for: {message}"
 
-    print("\n=== New Agent (Duck Typing) ===")
+    print("=== New Agent (Duck Typing) ===")
     image = ImageAgentDuck("ImageBot")
     print(dispatch_with_duck(image, "analyze image"))
 ```

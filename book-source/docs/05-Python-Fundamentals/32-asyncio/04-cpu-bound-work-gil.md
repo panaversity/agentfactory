@@ -179,7 +179,7 @@ def benchmark_sequential(iterations: int = 50_000_000) -> None:
     print(f"Result: {results}")
 
 if __name__ == "__main__":
-    print("=== CPU-Bound Work Benchmarks ===\n")
+    print("=== CPU-Bound Work Benchmarks ===")
     benchmark_sequential()
     benchmark_threading()
 ```
@@ -257,7 +257,7 @@ def benchmark_interpreter_pool(num_workers: int = 4, iterations: int = 50_000_00
     print(f"Speedup: {4.53 / elapsed:.2f}x")  # Compare to sequential
 
 if __name__ == "__main__":
-    print("=== CPU-Bound Work Benchmarks ===\n")
+    print("=== CPU-Bound Work Benchmarks ===")
     print("Sequential (1 thread): 4.53s")
     benchmark_interpreter_pool()
 ```
@@ -398,7 +398,7 @@ def benchmark_interpreter_pool(iterations: int = 50_000_000) -> None:
     print(f"InterpreterPoolExecutor (4 workers): {elapsed:.2f}s")
 
 if __name__ == "__main__":
-    print("=== Executor Comparison ===\n")
+    print("=== Executor Comparison ===")
     benchmark_process_pool()
     benchmark_interpreter_pool()
 ```

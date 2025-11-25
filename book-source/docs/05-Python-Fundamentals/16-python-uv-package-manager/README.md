@@ -1,6 +1,6 @@
 ---
 sidebar_position: 16
-title: "Chapter 19: Python UV — The Fastest Python Package Manager"
+title: "Chapter 16: Python UV — The Fastest Python Package Manager"
 slides:
   source: "slides/chapter-16-slides.pdf"
   title: "Chapter 19: Python UV — The Fastest Python Package Manager"

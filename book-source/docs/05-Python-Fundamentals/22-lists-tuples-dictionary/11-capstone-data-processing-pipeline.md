@@ -195,7 +195,7 @@ Frank,Mathematics,3.6
 Grace,Physics,3.8"""
 
 # Step 1: Split the raw string into lines
-lines: list[str] = raw_data.strip().split('\n')
+lines: list[str] = raw_data.strip().splitlines()
 
 # Step 2: Extract headers from first line
 headers: list[str] = lines[0].split(',')
@@ -404,7 +404,7 @@ lines.append("")
 lines.append("=" * 50)
 
 # Combine all lines into a single string with newlines
-report: str = '\n'.join(lines)
+report: str = '\\n'.join(lines)
 print(report)
 
 # Output looks like:
@@ -447,7 +447,7 @@ Frank,Mathematics,3.6
 Grace,Physics,3.8"""
 
 # Split into lines and extract headers
-lines: list[str] = raw_student_data.strip().split('\n')
+lines: list[str] = raw_student_data.strip().splitlines()
 headers: list[str] = lines[0].split(',')
 
 # Parse each line into a dict
@@ -470,7 +470,7 @@ for line in lines[1:]:
 
     students.append(record)
 
-print(f"✓ Parsed {len(students)} student records\n")
+print(f"✓ Parsed {len(students)} student records")
 
 # ============================================================
 # PHASE 2: FILTER DATA
@@ -479,7 +479,7 @@ cs_students: list[dict[str, str | float]] = [
     s for s in students
     if s["major"] == "Computer Science"
 ]
-print(f"✓ Found {len(cs_students)} Computer Science students\n")
+print(f"✓ Found {len(cs_students)} Computer Science students")
 
 # ============================================================
 # PHASE 3: AGGREGATE STATISTICS
@@ -504,7 +504,7 @@ for major in stats:
     stats[major]["average_gpa"] = round(total_gpa / count, 2)
     del stats[major]["total_gpa"]
 
-print("✓ Calculated statistics by major\n")
+print("✓ Calculated statistics by major")
 
 # ============================================================
 # PHASE 4: FORMAT AND OUTPUT REPORT
@@ -521,7 +521,7 @@ for major in sorted_majors:
 lines.append("")
 lines.append("=" * 50)
 
-report: str = '\n'.join(lines)
+report: str = "\\n".join(lines)
 print(report)
 ```
 

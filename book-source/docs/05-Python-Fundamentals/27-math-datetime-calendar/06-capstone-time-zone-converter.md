@@ -289,7 +289,7 @@ def main() -> None:
         target_tz_name: str = input("Enter target timezone (e.g., US/Pacific, Asia/Tokyo): ").strip()
 
         # Parse input
-        print("\nParsing input...")
+        print("Parsing input...")
         dt: datetime = parse_datetime(date_input, time_input)
 
         # Get timezone objects
@@ -306,12 +306,12 @@ def main() -> None:
         print(output)
 
         # Debug info (timestamp from Lesson 2)
-        print("\nDebug Info (from Lesson 2):")
+        print("Debug Info (from Lesson 2):")
         print(f"  Source datetime: {dt} in {source_tz_name}")
         print(f"  Target datetime: {converted} in {target_tz_name}")
 
     except ValueError as e:
-        print(f"\nError: {e}")
+        print(f"Error: {e}")
         print("Please check your input and try again.")
         sys.exit(1)
 

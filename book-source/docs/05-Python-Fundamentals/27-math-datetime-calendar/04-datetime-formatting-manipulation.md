@@ -218,6 +218,7 @@ today: datetime = datetime.now(timezone.utc)
 # Calculate important dates
 tomorrow: datetime = today + timedelta(days=1)
 next_week: datetime = today + timedelta(weeks=1)
+next_month: datetime = today + timedelta(days=30)
 next_year: datetime = today + timedelta(days=365)
 
 # Go backwards
@@ -408,12 +409,12 @@ class MeetingScheduler:
             "Tokyo": timezone(timedelta(hours=9)),
         }
 
-        lines = ["MEETING AGENDA\n"]
+        lines = ["MEETING AGENDA"]
         for city, tz in timezones.items():
             local = self.meeting_utc.astimezone(tz)
             lines.append(f"{city}: {local.strftime('%A %I:%M %p')}")
 
-        return "\n".join(lines)
+        return "\\n".join(lines)
 
 # Use it
 meeting = MeetingScheduler(datetime(2025, 11, 9, 14, 30, tzinfo=timezone.utc))

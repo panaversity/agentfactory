@@ -1,15 +1,15 @@
 ---
 sidebar_position: 14
-title: "Chapter 17: Spec-Kit Plus Hands-On"
+title: "Chapter 14: Spec-Kit Plus Hands-On"
 slides:
   source: "slides/chapter-14-slides.pdf"
-  title: "Chapter 17: Spec-Kit Plus Hands-On"
+  title: "Chapter 14: Spec-Kit Plus Hands-On"
   height: 700
 ---
 
-# Chapter 17: Spec-Kit Plus Hands-On
+# Chapter 14: Spec-Kit Plus Hands-On
 
-Welcome to hands-on specification-driven development. This chapter transforms understanding (from Chapter 17) into practice. You won't read about specifications-you'll write them. You won't learn about AI collaboration - you'll build project with your AI companion from specifications to implementation. Chapter 17 gave you the map. Chapter 35 teaches you to drive.
+Welcome to hands-on specification-driven development. This chapter transforms understanding (from Chapter 14) into practice. You won't read about specifications-you'll write them. You won't learn about AI collaboration - you'll build project with your AI companion from specifications to implementation. Chapter 14 gave you the map. Chapter 35 teaches you to drive.
 ## 🎯 Before You Begin
 
 ## What You'll Learn

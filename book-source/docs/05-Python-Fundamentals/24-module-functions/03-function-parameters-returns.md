@@ -112,9 +112,15 @@ def schedule_meeting(
     time: str = "9:00 AM",
     duration_minutes: int = 60,
     online: bool = True
-) -> str:
+) -> dict:
     """Schedule a meeting with many optional parameters."""
-    meeting_info = f"Meeting: {title}\nDate: {date}\nTime: {time}\nDuration: {duration_minutes} min\nOnline: {online}"
+    meeting_info = {
+        "Meeting" : title,
+        "Date": date,
+        "Time": time,
+        "Duration": f"{duration_minutes} min",
+        "Online": online
+    }
     return meeting_info
 
 # Positional arguments (order matters):

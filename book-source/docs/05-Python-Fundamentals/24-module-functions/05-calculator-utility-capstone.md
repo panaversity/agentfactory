@@ -140,7 +140,7 @@ These functions handle I/O while operations.py handles math.
 
 def display_menu() -> None:
     """Display the calculator menu."""
-    print("\n" + "=" * 25)
+    print("=" * 25)
     print("    Simple Calculator")
     print("=" * 25)
     print("1. Add")
@@ -371,7 +371,7 @@ if __name__ == "__main__":
     test_divide()
     test_power()
     test_square_root()
-    print("\n✓ All tests passed!")
+    print("✓ All tests passed!")
 ```
 
 **Output:**

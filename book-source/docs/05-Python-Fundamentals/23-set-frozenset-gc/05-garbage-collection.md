@@ -304,7 +304,7 @@ print("=" * 50)
 # Create initial list
 my_list: list[int] = [1, 2, 3, 4, 5]
 initial_refcount: int = sys.getrefcount(my_list) - 1  # -1 for getrefcount arg
-print(f"\n1. Created list: refcount = {initial_refcount}")
+print(f"1. Created list: refcount = {initial_refcount}")
 
 # Create second reference
 another_ref: list[int] = my_list
@@ -331,7 +331,7 @@ del third_ref
 print(f"6. Deleted third_ref: object is freed")
 
 # Real-world example: temporary variables
-print("\n" + "=" * 50)
+print("=" * 50)
 print("Real-World: Temporary Variables in Loops")
 print("=" * 50)
 
@@ -376,28 +376,28 @@ class Node:
         print(f"✗ Node({self.name}) freed")
 
 # Create two nodes
-print("\n1. Creating nodes...")
+print("1. Creating nodes...")
 node_a: Node = Node("A")
 node_b: Node = Node("B")
 
 # Create circular reference
-print("\n2. Creating circular reference...")
+print("2. Creating circular reference...")
 node_a.next = node_b  # A → B
 node_b.next = node_a  # B → A (circle!)
 print("   A → B → A (circular!)")
 
-print(f"\n3. Reference counts:")
+print(f"3. Reference counts:")
 print(f"   node_a refcount: {sys.getrefcount(node_a) - 1}")
 print(f"   node_b refcount: {sys.getrefcount(node_b) - 1}")
 
 # Delete external references
-print("\n4. Deleting external references...")
+print("4. Deleting external references...")
 del node_a
 del node_b
 print("   Objects NOT freed (still reference each other!)")
 
 # Manual garbage collection
-print("\n5. Running garbage collection...")
+print("5. Running garbage collection...")
 collected: int = gc.collect()
 print(f"   Freed {collected} objects")
 print("   (Node A and B __del__ printed above)")
@@ -431,34 +431,34 @@ gc.disable()
 try:
     # Baseline
     initial_count: int = len(gc.get_objects())
-    print(f"\nBaseline: {initial_count} objects")
+    print(f"Baseline: {initial_count} objects")
 
     # Create integers
-    print("\n1. Creating 50,000 integers...")
+    print("1. Creating 50,000 integers...")
     integers: list[int] = list(range(50_000))
     after_integers: int = len(gc.get_objects())
     print(f"   Objects: {after_integers} (+{after_integers - initial_count})")
 
     # Create strings
-    print("\n2. Creating 50,000 strings...")
+    print("2. Creating 50,000 strings...")
     strings: list[str] = [str(i) for i in range(50_000)]
     after_strings: int = len(gc.get_objects())
     print(f"   Objects: {after_strings} (+{after_strings - after_integers})")
 
     # Create sets
-    print("\n3. Creating 10,000 sets...")
+    print("3. Creating 10,000 sets...")
     sets: list[set[int]] = [{i, i+1, i+2} for i in range(10_000)]
     after_sets: int = len(gc.get_objects())
     print(f"   Objects: {after_sets} (+{after_sets - after_strings})")
 
     # Delete everything
-    print("\n4. Deleting all structures...")
+    print("4. Deleting all structures...")
     del integers, strings, sets
     after_deletion: int = len(gc.get_objects())
     print(f"   Objects: {after_deletion} (-{after_strings - after_deletion})")
 
     # Manual collection (mostly for circular refs)
-    print("\n5. Running garbage collection...")
+    print("5. Running garbage collection...")
     collected: int = gc.collect()
     print(f"   Freed {collected} objects (circular refs)")
 
@@ -466,7 +466,7 @@ finally:
     # Re-enable GC
     gc.enable()
 
-print("\n" + "=" * 60)
+print("=" * 60)
 print("Key Insight: Reference counting freed everything immediately.")
 print("gc.collect() freed any circular references (none in this example).")
 print("=" * 60)
@@ -501,7 +501,7 @@ print("=" * 50)
 
 # Create data outside function
 my_data: list[int] = [1, 2, 3, 4, 5]
-print(f"\n1. Before function call: refcount = {sys.getrefcount(my_data) - 1}")
+print(f"1. Before function call: refcount = {sys.getrefcount(my_data) - 1}")
 
 # Call function
 result: int = process_data(my_data)
@@ -513,7 +513,7 @@ del my_data
 print(f"3. After del my_data: object freed")
 
 # Practical insight
-print("\n" + "=" * 50)
+print("=" * 50)
 print("Practical Pattern: Automatic Cleanup in Loops")
 print("=" * 50)
 
@@ -522,7 +522,7 @@ for i in range(5):
     processed: int = sum(temp_data)
     print(f"Iteration {i}: processed {processed} (temp freed automatically)")
 
-print("\nAll temporary lists freed as each iteration ended")
+print("All temporary lists freed as each iteration ended")
 print("No memory accumulation despite creating 5 large lists")
 ```
 
@@ -548,11 +548,11 @@ print("Generational Garbage Collection")
 print("=" * 60)
 
 # Check if GC is enabled
-print(f"\nGC enabled: {gc.isenabled()}")
+print(f"GC enabled: {gc.isenabled()}")
 
 # Get thresholds
 thresholds: tuple[int, int, int] = gc.get_threshold()
-print(f"\nGC Thresholds (generation 0, 1, 2): {thresholds}")
+print(f"GC Thresholds (generation 0, 1, 2): {thresholds}")
 print("  Default (700, 10, 10) means:")
 print("    - Collect gen0 when 700+ new objects created")
 print("    - Collect gen1 when gen0 collected 10 times")
@@ -560,13 +560,13 @@ print("    - Collect gen2 when gen1 collected 10 times")
 
 # Get current collection counts
 counts: tuple[int, ...] = gc.get_count()
-print(f"\nCurrent object counts per generation: {counts}")
+print(f"Current object counts per generation: {counts}")
 print(f"  Gen0 (young): {counts[0]} objects (collected frequently)")
 print(f"  Gen1 (middle): {counts[1]} collections")
 print(f"  Gen2 (old): {counts[2]} collections")
 
 # Trigger manual collection
-print("\nManually triggering garbage collection...")
+print("Manually triggering garbage collection...")
 collected: int = gc.collect()
 print(f"Freed {collected} objects")
 
@@ -575,7 +575,7 @@ counts_after: tuple[int, ...] = gc.get_count()
 print(f"After collection: {counts_after}")
 
 # Optional: Adjust thresholds (rarely needed)
-print("\n" + "=" * 60)
+print("=" * 60)
 print("Advanced: Adjusting GC Thresholds")
 print("=" * 60)
 print("Original:", gc.get_threshold())

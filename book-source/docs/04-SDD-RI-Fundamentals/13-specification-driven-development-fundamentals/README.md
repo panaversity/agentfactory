@@ -1,13 +1,13 @@
 ---
 sidebar_position: 13
-title: "Chapter 16: Understanding Spec-Driven Development with Reusable Intelligence"
+title: "Chapter 13: Understanding Spec-Driven Development with Reusable Intelligence"
 slides:
   source: "slides/chapter-13-slides.pdf"
-  title: "Chapter 16: Understanding Spec-Driven Development with Reusable Intelligence"
+  title: "Chapter 13: Understanding Spec-Driven Development with Reusable Intelligence"
   height: 700
 ---
 
-# Chapter 16: Understanding Spec-Driven Development with Reusable Intelligence
+# Chapter 13: Understanding Spec-Driven Development with Reusable Intelligence
 
 Spec-Driven Development bridges human creativity and AI precision: it turns vague ideas into executable contracts so coding agents can operate within clear boundaries and shared truths. But specifications alone aren't enough—recurring patterns demand reusable intelligence.
 

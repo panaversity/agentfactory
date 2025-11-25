@@ -177,7 +177,7 @@ This is a working version that validates and formats contact information using a
 # Demonstrates: string cleaning, validation, f-strings, type casting
 
 print("=== Contact Card Validator ===")
-print("Clean and validate contact information\n")
+print("Clean and validate contact information")
 
 # Step 1: Name Validation (Lessons 1-2: Strings and Methods)
 print("STEP 1: NAME VALIDATION")
@@ -191,7 +191,7 @@ cleaned_name = cleaned_name.replace("_", " ")  # Replace underscores with spaces
 cleaned_name = cleaned_name.title()  # Capitalize properly (Title Case)
 
 # Display results (Lesson 3: F-Strings)
-print(f"\nOriginal name: '{name_input}'")
+print(f"Original name: '{name_input}'")
 print(f"Cleaned name: '{cleaned_name}'")
 print(f"Length: {len(cleaned_name)} characters")
 
@@ -202,7 +202,7 @@ else:
     print("✗ Invalid: Name cannot be empty")
 
 # Step 2: Email Validation (Lesson 2: String Methods)
-print(f"\nSTEP 2: EMAIL VALIDATION")
+print(f"STEP 2: EMAIL VALIDATION")
 print("-" * 50)
 
 email_input: str = input("Enter email address: ")
@@ -213,7 +213,7 @@ cleaned_email: str = email_input.strip().lower()  # Remove whitespace, lowercase
 # Basic validation: must contain @ and not be empty
 at_position: int = cleaned_email.find("@")
 
-print(f"\nOriginal email: '{email_input}'")
+print(f"Original email: '{email_input}'")
 print(f"Cleaned email: '{cleaned_email}'")
 
 if at_position > 0 and at_position < len(cleaned_email) - 1:
@@ -223,7 +223,7 @@ else:
     print("✗ Invalid: Email must contain @ symbol (not at start or end)")
 
 # Step 3: Phone Number Formatting (Lesson 2: String Methods)
-print(f"\nSTEP 3: PHONE NUMBER FORMATTING")
+print(f"STEP 3: PHONE NUMBER FORMATTING")
 print("-" * 50)
 
 phone_input: str = input("Enter phone number: ")
@@ -236,7 +236,7 @@ cleaned_phone = cleaned_phone.replace("-", "")
 cleaned_phone = cleaned_phone.replace(".", "")
 cleaned_phone = cleaned_phone.replace(" ", "")
 
-print(f"\nOriginal phone: '{phone_input}'")
+print(f"Original phone: '{phone_input}'")
 print(f"Digits only: '{cleaned_phone}'")
 
 # Validate length and format nicely
@@ -249,7 +249,7 @@ else:
     print("✗ Invalid: Phone must be exactly 10 digits")
 
 # Step 4: Age Validation (Lesson 4: Type Casting)
-print(f"\nSTEP 4: AGE VALIDATION")
+print(f"STEP 4: AGE VALIDATION")
 print("-" * 50)
 
 age_input: str = input("Enter age: ")
@@ -260,7 +260,7 @@ cleaned_age: str = age_input.strip()
 if cleaned_age.isdigit():
     age: int = int(cleaned_age)
 
-    print(f"\nString: '{cleaned_age}'")
+    print(f"String: '{cleaned_age}'")
     print(f"Integer: {age} (type: {type(age).__name__})")
 
     # Validate reasonable age range
@@ -277,7 +277,7 @@ else:
     print("Reason: Age must contain only digits")
 
 # Step 5: Display Contact Card (Lesson 3: F-Strings)
-print(f"\n{'=' * 50}")
+print(f"{'=' * 50}")
 print("CONTACT CARD")
 print("=" * 50)
 
@@ -301,7 +301,7 @@ if len(cleaned_name) > 0:
 else:
     print("Error: Cannot create contact card with invalid name")
 
-print("\n=== Validation Complete ===")
+print("=== Validation Complete ===")
 ```
 
 **What This Code Demonstrates**:
@@ -384,7 +384,7 @@ def validate_age(raw_age: str) -> tuple[int | None, bool, str]:
         return age, False, "Age must be between 0 and 120"
 
 # Main program
-print("=== Contact Card Validator (Enhanced) ===\n")
+print("=== Contact Card Validator (Enhanced) ===")
 
 # Collect all input
 name_raw: str = input("Enter full name: ")
@@ -399,26 +399,26 @@ phone_formatted, phone_valid, phone_msg = format_phone(phone_raw)
 age_value, age_valid, age_msg = validate_age(age_raw)
 
 # Display validation results
-print(f"\n{'=' * 50}")
+print(f"{'=' * 50}")
 print("VALIDATION RESULTS")
 print("=" * 50)
 
-print(f"\nName:  '{name_raw}' → '{name_clean}'")
+print(f"Name:  '{name_raw}' → '{name_clean}'")
 print(f"       {'✓ Valid' if name_valid else '✗ Invalid'}")
 
-print(f"\nEmail: '{email_raw}' → '{email_clean}'")
+print(f"Email: '{email_raw}' → '{email_clean}'")
 print(f"       {'✓' if email_valid else '✗'} {email_msg}")
 
-print(f"\nPhone: '{phone_raw}' → '{phone_formatted}'")
+print(f"Phone: '{phone_raw}' → '{phone_formatted}'")
 print(f"       {'✓' if phone_valid else '✗'} {phone_msg}")
 
-print(f"\nAge:   '{age_raw}' → {age_value if age_value else '(invalid)'}")
+print(f"Age:   '{age_raw}' → {age_value if age_value else '(invalid)'}")
 print(f"       {'✓' if age_valid else '✗'} {age_msg}")
 
 # Display contact card only if all valid
 all_valid: bool = name_valid and email_valid and phone_valid and age_valid
 
-print(f"\n{'=' * 50}")
+print(f"{'=' * 50}")
 if all_valid:
     print("CONTACT CARD — ALL FIELDS VALID")
     print("=" * 50)
@@ -435,7 +435,7 @@ else:
     print("=" * 50)
     print("Fix the errors above and try again.")
 
-print("\n=== Validation Complete ===")
+print("=== Validation Complete ===")
 ```
 
 **Why This Version Is Better**:

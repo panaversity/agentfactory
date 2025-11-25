@@ -306,7 +306,7 @@ async def main() -> None:
 
     elapsed = time.time() - start
 
-    print(f"\nFetched from {len(results)} services in {elapsed:.2f}s")
+    print(f"Fetched from {len(results)} services in {elapsed:.2f}s")
     for result in results:
         print(f"  {result['service']}: {result['conditions']} at {result['temperature']}°F")
 
@@ -444,7 +444,7 @@ async def main() -> None:
         ]
 
         elapsed = time.time() - start
-        print(f"\nFetched {len(results)} services in {elapsed:.2f}s")
+        print(f"Fetched {len(results)} services in {elapsed:.2f}s")
         for result in results:
             print(f"  {result['service']}: {result['conditions']}")
 
@@ -657,13 +657,13 @@ async def main() -> None:
     time_seq = time.time() - start
     print(f"  Time: {time_seq:.2f}s")
 
-    print("\nConcurrent approach:")
+    print("Concurrent approach:")
     start = time.time()
     results_conc = await concurrent_approach()
     time_conc = time.time() - start
     print(f"  Time: {time_conc:.2f}s")
 
-    print(f"\nSpeedup: {time_seq / time_conc:.1f}x faster!")
+    print(f"Speedup: {time_seq / time_conc:.1f}x faster!")
     print(f"Results match: {len(results_seq) == len(results_conc)}")
 
 asyncio.run(main())
@@ -733,7 +733,7 @@ async def main() -> None:
         print(f"Results: {task1.result()}, {task2.result()}, {task3.result()}")
 
     except ExceptionGroup as eg:
-        print(f"\nTaskGroup failed: {eg}")
+        print(f"TaskGroup failed: {eg}")
         print("Key point: Task 1 and Task 3 were cancelled automatically!")
         print("(They never reached completion despite having 5s allocated)")
 

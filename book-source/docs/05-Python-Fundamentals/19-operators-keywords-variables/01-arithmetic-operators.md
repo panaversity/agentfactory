@@ -279,7 +279,7 @@ print(f"Modulus:        {x} % {y} = {x % y}")           # 6 (remainder when 20 Ã
 print(f"Exponentiation: {x} ** 2 = {x ** 2}")           # 400 (20 squared)
 
 # Verify types
-print(f"\nType verification:")
+print(f"Type verification:")
 print(f"Type of {x} + {y}: {type(x + y)}")              # <class 'int'>
 print(f"Type of {x} / {y}: {type(x / y)}")              # <class 'float'>
 print(f"Type of {x} // {y}: {type(x // y)}")            # <class 'int'>

@@ -148,7 +148,7 @@ Now build your program step by step.
 
 ```python
 # Collect Information
-print("=== Personal Information Collector ===\n")
+print("=== Personal Information Collector ===")
 
 name: str = input("What is your name? ")
 age: str = input("How old are you? ")
@@ -165,14 +165,14 @@ Use f-strings to display formatted output:
 
 ```python
 # Display Summary
-print("\n=== Your Profile ===")
+print("=== Your Profile ===")
 print(f"Name: {name}")
 print(f"Age: {age}")
 print(f"Favorite Color: {favorite_color}")
 print(f"Favorite Hobby: {hobby}")
 print(f"City: {city}")
 
-print(f"\nThank you, {name}! Your information has been recorded.")
+print(f"Thank you, {name}! Your information has been recorded.")
 print("This profile demonstrates:")
 print("- Variables with type hints (all str)")
 print("- input() function to collect information")
@@ -189,7 +189,7 @@ Here's the full program together:
 # This program collects user information and displays a formatted summary
 
 # ===== COLLECT INFORMATION =====
-print("=== Personal Information Collector ===\n")
+print("=== Personal Information Collector ===")
 
 name: str = input("What is your name? ")
 age: str = input("How old are you? ")
@@ -198,14 +198,14 @@ hobby: str = input("What is your favorite hobby? ")
 city: str = input("What city do you live in? ")
 
 # ===== DISPLAY SUMMARY =====
-print("\n=== Your Profile ===")
+print("=== Your Profile ===")
 print(f"Name: {name}")
 print(f"Age: {age}")
 print(f"Favorite Color: {favorite_color}")
 print(f"Favorite Hobby: {hobby}")
 print(f"City: {city}")
 
-print(f"\nThank you, {name}! Your information has been recorded.")
+print(f"Thank you, {name}! Your information has been recorded.")
 print("This profile demonstrates:")
 print("- Variables with type hints (all str)")
 print("- input() function to collect information")

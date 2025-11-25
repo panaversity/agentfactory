@@ -430,7 +430,7 @@ print(f"CPU-bound time: {cpu_time:.3f}s")
 print(f"During this time, CPU was busy with computation")
 
 # Test I/O-bound task
-print("\n=== I/O-Bound Task ===")
+print("=== I/O-Bound Task ===")
 io_time = measure_time(io_bound_task, 2.0)
 print(f"I/O-bound time: {io_time:.3f}s")
 print(f"During this time, GIL was released, other threads could run")
@@ -518,14 +518,14 @@ def benchmark_single_threaded(task: Callable, n: int, num_iterations: int) -> fl
 # Benchmark configuration
 WORK_SIZE = 15**6  # CPU work size (scales computation)
 
-print("=== CPU-Bound Task Benchmarks ===\n")
+print("=== CPU-Bound Task Benchmarks ===")
 print("Comparing threading (with GIL) vs single-threaded")
-print(f"Work size: {WORK_SIZE:,} iterations\n")
+print(f"Work size: {WORK_SIZE:,} iterations")
 
 # Single-threaded baseline
 print("Single-threaded (baseline):")
 single_time = benchmark_single_threaded(cpu_task, WORK_SIZE, 1)
-print(f"  1 iteration:  {single_time:.3f}s\n")
+print(f"  1 iteration:  {single_time:.3f}s")
 
 # Multi-threaded attempts (worse due to GIL and context switching)
 thread_counts = [1, 2, 4, 8]
@@ -544,7 +544,7 @@ for num_threads in thread_counts:
     else:
         print(f"({overhead_percent:+.1f}% faster—lucky timing)")
 
-print("\nConclusion:")
+print("Conclusion:")
 print("Threading does NOT speed up CPU-bound tasks.")
 print("The GIL prevents parallelism. Context switching adds overhead.")
 print("Result: Threading is often SLOWER than single-threaded for CPU work.")

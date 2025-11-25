@@ -336,7 +336,7 @@ def get_positive_integer(prompt: str) -> int:
 
 
 # Use the function
-print("Welcome to the Age Calculator!\n")
+print("Welcome to the Age Calculator!")
 age: int = get_positive_integer("Enter your age: ")
 print(f"You entered: {age}")
 print(f"Next year you will be: {age + 1}")
@@ -386,7 +386,7 @@ print(f"Total cost: ${total:,.2f}")
 print("=" * 40)
 
 # Example 2: Building a receipt with user input
-print("\nRECEIPT BUILDER\n")
+print("RECEIPT BUILDER")
 
 # Get quantity from user
 quantity_str: str = input("How many items? ")
@@ -400,7 +400,7 @@ tax: float = subtotal * tax_rate
 final_total: float = subtotal + tax
 
 # Display receipt
-print("\n" + "=" * 40)
+print("=" * 40)
 print("RECEIPT")
 print("=" * 40)
 print(f"Unit price:        ${unit_price:>8.2f}")

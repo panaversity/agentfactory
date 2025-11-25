@@ -319,7 +319,7 @@ with open(csv_file, 'r', encoding='utf-8') as f:
         print(f"  {row[0]} ({row[2]})")
 
 # ========== Pattern 2: csv.DictReader (dictionaries) ==========
-print("\nUsing csv.DictReader (by name):")
+print("Using csv.DictReader (by name):")
 with open(csv_file, 'r', encoding='utf-8') as f:
     reader = csv.DictReader(f)  # Automatically reads headers
     for row in reader:
@@ -433,7 +433,7 @@ with open(json_file, 'w', encoding='utf-8') as f:
 print(f"Written {json_file}")
 
 # ========== Display raw file content ==========
-print("\nFile content (human-readable):")
+print("File content (human-readable):")
 print(json_file.read_text(encoding='utf-8'))
 
 # Output:
@@ -461,7 +461,7 @@ print(json_file.read_text(encoding='utf-8'))
 with open(json_file, 'r', encoding='utf-8') as f:
     loaded_notes: list[dict] = json.load(f)
 
-print(f"\nLoaded {len(loaded_notes)} notes:")
+print(f"Loaded {len(loaded_notes)} notes:")
 for note in loaded_notes:
     print(f"  - {note['title']} (tags: {', '.join(note['tags'])})")
 
@@ -521,7 +521,7 @@ print(content)
 # Output shows: \u1f44b (escaped emoji) and \u043f (escaped Cyrillic)
 
 # ========== CORRECT: use ensure_ascii=False ==========
-print("\n\nWITH ensure_ascii=False:")
+print("WITH ensure_ascii=False:")
 with open(json_file, 'w', encoding='utf-8') as f:
     json.dump(messages, f, indent=2, ensure_ascii=False)
 
@@ -532,7 +532,7 @@ print(content)
 # Output shows readable emoji 👋 and text "Привет", "你好"
 
 # ========== Read back and verify ==========
-print("\n\nLoaded messages:")
+print("Loaded messages:")
 with open(json_file, 'r', encoding='utf-8') as f:
     loaded = json.load(f)
     for msg in loaded:
@@ -623,19 +623,19 @@ data = safe_load_json("valid.json")
 print(f"Loaded JSON: {data}")
 
 valid_csv = Path("valid.csv")
-valid_csv.write_text("name,age\nAlice,28\nBob,35")
+valid_csv.write_text("name,age\\nAlice,28\\nBob,35")
 data = safe_load_csv("valid.csv")
 print(f"Loaded CSV: {data}")
 
 # ========== Test with invalid files ==========
 invalid_json = Path("invalid.json")
 invalid_json.write_text('[{"name": "Alice"} BROKEN')  # Missing closing bracket
-print("\nAttempting to load invalid JSON:")
+print("Attempting to load invalid JSON:")
 data = safe_load_json("invalid.json")
 # Output: Error: Invalid JSON format - Expecting ',' delimiter at line 1
 
 # Missing file
-print("\nAttempting to load missing file:")
+print("Attempting to load missing file:")
 data = safe_load_json("nonexistent.json")
 # Output: Error: File 'nonexistent.json' not found
 ```

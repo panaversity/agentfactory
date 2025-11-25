@@ -322,9 +322,9 @@ def run_multi_agent_system(
     is_free_threading = sys._is_gil_enabled() == False
 
     status = "✓ Free-threading active" if is_free_threading else "✗ GIL enabled"
-    print(f"\n{'='*60}")
+    print(f"{'='*50}")
     print(f"Multi-Agent System Status: {status}")
-    print(f"{'='*60}")
+    print(f"{'='*50}")
 
     # Create agents and results collector
     agents = [AIAgent(i) for i in range(num_agents)]
@@ -369,15 +369,15 @@ if __name__ == "__main__":
     )
 
     # Display results
-    print(f"\n{'='*60}")
+    print(f"{'='*50}")
     print("Agent Results")
-    print(f"{'='*60}")
+    print(f"{'='*50}")
 
     for result in results:
         status_str = "✓" if result.success else "✗"
         print(f"{status_str} Agent {result.agent_id}: {result.duration:.3f}s")
 
-    print(f"\n{'='*60}")
+    print(f"{'='*50}")
     print(f"Total System Time: {total_time:.3f}s")
 
     # Calculate speedup (ideal would be num_agents x speedup)
@@ -386,7 +386,7 @@ if __name__ == "__main__":
         ideal_sequential = avg_individual * len(results)
         speedup = ideal_sequential / total_time
         print(f"Speedup: {speedup:.2f}x (ideal: {len(results)}x)")
-    print(f"{'='*60}")
+    print(f"{'='*50}")
 ```
 
 **Validation steps**:

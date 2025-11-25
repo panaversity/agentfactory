@@ -459,7 +459,7 @@ import json
 
 def create_note() -> None:
     """Prompt for new note and save."""
-    print("\n--- Create New Note ---")
+    print("--- Create New Note ---")
     title: str = input("Title: ").strip()
     body: str = input("Body: ").strip()
     category: str = input("Category (work/personal/learning) [personal]: ").strip() or "personal"
@@ -491,24 +491,24 @@ def read_note() -> None:
     notes = get_all_notes()
 
     if not notes:
-        print("\n📝 No notes found.")
+        print("📝 No notes found.")
         return
 
     # Display list
-    print("\n--- Your Notes ---")
+    print("--- Your Notes ---")
     for i, note in enumerate(notes, 1):
         print(f"{i}. {note['title']} ({note['category']})")
 
     # Get selection
     try:
-        choice = int(input("\nSelect note (number): ")) - 1
+        choice = int(input("Select note (number): ")) - 1
         if 0 <= choice < len(notes):
             note = notes[choice]
-            print(f"\n📄 {note['title']}")
+            print(f"📄 {note['title']}")
             print(f"Category: {note['category']}")
             print(f"Created: {note['created']}")
             print(f"Modified: {note['modified']}")
-            print(f"\n{note['body']}")
+            print(f"{note['body']}")
         else:
             print("❌ Invalid selection.")
     except ValueError:
@@ -520,17 +520,17 @@ def update_note() -> None:
     notes = get_all_notes()
 
     if not notes:
-        print("\n📝 No notes found.")
+        print("📝 No notes found.")
         return
 
     # Display list
-    print("\n--- Select Note to Update ---")
+    print("--- Select Note to Update ---")
     for i, note in enumerate(notes, 1):
         print(f"{i}. {note['title']}")
 
     # Get selection
     try:
-        choice = int(input("\nSelect note (number): ")) - 1
+        choice = int(input("Select note (number): ")) - 1
         if 0 <= choice < len(notes):
             note = notes[choice]
 
@@ -558,17 +558,17 @@ def delete_note_menu() -> None:
     notes = get_all_notes()
 
     if not notes:
-        print("\n📝 No notes found.")
+        print("📝 No notes found.")
         return
 
     # Display list
-    print("\n--- Select Note to Delete ---")
+    print("--- Select Note to Delete ---")
     for i, note in enumerate(notes, 1):
         print(f"{i}. {note['title']}")
 
     # Get selection
     try:
-        choice = int(input("\nSelect note (number): ")) - 1
+        choice = int(input("Select note (number): ")) - 1
         if 0 <= choice < len(notes):
             note = notes[choice]
 
@@ -589,7 +589,7 @@ def delete_note_menu() -> None:
 
 def search_notes_menu() -> None:
     """Search notes by keyword."""
-    keyword: str = input("\nSearch keyword: ").strip()
+    keyword: str = input("Search keyword: ").strip()
 
     if not keyword:
         print("❌ Please enter a search term.")
@@ -598,7 +598,7 @@ def search_notes_menu() -> None:
     results = search_notes(keyword)
 
     if results:
-        print(f"\n--- Found {len(results)} note(s) ---")
+        print(f"--- Found {len(results)} note(s) ---")
         for note in results:
             print(f"• {note['title']} ({note['category']})")
     else:
@@ -610,7 +610,7 @@ def list_all_notes() -> None:
     notes = get_all_notes()
 
     if not notes:
-        print("\n📝 No notes found.")
+        print("📝 No notes found.")
         return
 
     # Group by category
@@ -621,9 +621,9 @@ def list_all_notes() -> None:
             by_category[cat] = []
         by_category[cat].append(note)
 
-    print("\n--- All Notes ---")
+    print("--- All Notes ---")
     for category in sorted(by_category.keys()):
-        print(f"\n{category.upper()} ({len(by_category[category])} notes):")
+        print(f"{category.upper()} ({len(by_category[category])} notes):")
         for note in by_category[category]:
             print(f"  • {note['title']}")
 
@@ -640,7 +640,7 @@ def main() -> None:
 
     while True:
         # Display menu
-        print("\n" + "="*50)
+        print("="*50)
         print("1. Create Note")
         print("2. Read Note")
         print("3. Update Note")
@@ -673,7 +673,7 @@ def main() -> None:
             elif choice == 6:
                 list_all_notes()
             elif choice == 7:
-                print("\n👋 Goodbye! Your notes are saved.")
+                print("👋 Goodbye! Your notes are saved.")
                 break
 
         except ValueError:

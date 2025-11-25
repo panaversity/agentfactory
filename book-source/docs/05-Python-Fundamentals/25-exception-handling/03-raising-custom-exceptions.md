@@ -686,7 +686,7 @@ class PaymentDeclinedError(PaymentError):
 
 def example_authentication():
     """Example: Authentication error handling."""
-    print("=== Authentication Example ===\n")
+    print("=== Authentication Example ===")
 
     try:
         # Simulate failed login
@@ -695,12 +695,12 @@ def example_authentication():
         print(f"Login failed: {e}")
         print(f"  Username: {e.username}")
         print(f"  Attempt: {e.attempt_number}")
-        print(f"  Time: {e.timestamp.isoformat()}\n")
+        print(f"  Time: {e.timestamp.isoformat()}")
 
 
 def example_validation():
     """Example: Multi-field validation."""
-    print("=== Validation Example ===\n")
+    print("=== Validation Example ===")
 
     errors = {
         "username": "Must be 3-20 characters",
@@ -711,7 +711,7 @@ def example_validation():
     try:
         raise ValidationError(errors)
     except ValidationError as e:
-        print(f"Form validation failed: {e}\n")
+        print(f"Form validation failed: {e}")
         print("Individual field errors:")
         for field, message in e.errors.items():
             print(f"  - {field}: {message}")
@@ -720,7 +720,7 @@ def example_validation():
 
 def example_inventory():
     """Example: Inventory error with context."""
-    print("=== Inventory Example ===\n")
+    print("=== Inventory Example ===")
 
     try:
         raise InsufficientInventoryError("WIDGET-123", requested=50, available=30)
@@ -730,12 +730,12 @@ def example_inventory():
         print(f"  Requested: {e.requested}")
         print(f"  Available: {e.available}")
         print(f"  Shortfall: {e.shortfall}")
-        print(f"  Suggestion: Reduce quantity by {e.shortfall} and retry\n")
+        print(f"  Suggestion: Reduce quantity by {e.shortfall} and retry")
 
 
 def example_payment():
     """Example: Payment error with retry logic."""
-    print("=== Payment Example ===\n")
+    print("=== Payment Example ===")
 
     try:
         raise PaymentDeclinedError(
@@ -749,18 +749,18 @@ def example_payment():
         print(f"  Transaction ID: {e.transaction_id}")
         print(f"  Retry allowed: {e.retry_allowed}")
         if e.retry_allowed:
-            print("  Action: Prompt user for different payment method\n")
+            print("  Action: Prompt user for different payment method")
 
 
 if __name__ == "__main__":
-    print("=== Custom Exception Library Examples ===\n")
+    print("=== Custom Exception Library Examples ===")
 
     example_authentication()
     example_validation()
     example_inventory()
     example_payment()
 
-    print("=== Exception Hierarchy Example ===\n")
+    print("=== Exception Hierarchy Example ===")
 
     # Demonstrate catching at different levels
     try:
@@ -773,7 +773,7 @@ if __name__ == "__main__":
     try:
         raise InsufficientInventoryError("PROD-001", 10, 5)
     except OrderError:
-        print("Caught as OrderError (base class)\n")
+        print("Caught as OrderError (base class)")
 ```
 
 ### Library Requirements
