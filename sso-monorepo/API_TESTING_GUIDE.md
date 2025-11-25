@@ -843,6 +843,557 @@ GET  /api/auth/list-accounts
 
 ---
 
+## 🔐 Flow 6: OIDC Provider Endpoints (OpenID Connect)
+
+Your SSO server is configured as an **OpenID Connect (OIDC) Provider**, allowing other applications to use it for authentication. This section covers testing the OIDC endpoints.
+
+### OIDC Architecture Overview
+
+```
+Client Application (e.g., Dashboard)
+    ↓ (1) Authorization Request
+SSO Server (OIDC Provider) - http://localhost:3000
+    ↓ (2) User Login + Consent
+    ↓ (3) Authorization Code
+Client Application
+    ↓ (4) Exchange Code for Tokens
+SSO Server
+    ↓ (5) ID Token + Access Token
+Client Application (User Authenticated)
+```
+
+### Current OIDC Configuration
+
+Based on your `packages/auth-config/index.ts`:
+
+- **JWT Signing**: RS256 (Asymmetric)
+- **Login Page**: `/auth/login`
+- **Consent Page**: `/auth/consent`
+- **Dynamic Client Registration**: Enabled
+- **Trusted Client**: `internal-dashboard`
+- **Token Endpoint**: Disabled (line 41)
+
+---
+
+### Part A: OIDC Discovery Endpoint
+
+The discovery endpoint returns all available OIDC endpoints and supported features.
+
+#### Test Discovery Endpoint
+
+```bash
+curl -X GET http://localhost:3000/api/auth/.well-known/openid-configuration | jq
+```
+
+**Note:** All OIDC endpoints are under `/api/auth/` because that's Better Auth's basePath.
+
+**Expected Response:**
+
+```json
+{
+  "issuer": "http://localhost:3000",
+  "authorization_endpoint": "http://localhost:3000/api/auth/oauth2/authorize",
+  "token_endpoint": "http://localhost:3000/api/auth/oauth2/token",
+  "userinfo_endpoint": "http://localhost:3000/api/auth/oauth2/userinfo",
+  "jwks_uri": "http://localhost:3000/api/auth/jwks",
+  "registration_endpoint": "http://localhost:3000/api/auth/oauth2/register",
+  "response_types_supported": ["code"],
+  "response_modes_supported": ["query"],
+  "grant_types_supported": ["authorization_code", "refresh_token"],
+  "subject_types_supported": ["public"],
+  "id_token_signing_alg_values_supported": ["RS256", "EdDSA"],
+  "scopes_supported": ["openid", "profile", "email", "offline_access"],
+  "token_endpoint_auth_methods_supported": ["client_secret_basic", "client_secret_post", "none"],
+  "code_challenge_methods_supported": ["S256"],
+  "claims_supported": ["sub", "iss", "aud", "exp", "nbf", "iat", "jti", "email", "email_verified", "name"]
+}
+```
+
+**What it tells you:**
+- All available OIDC endpoints
+- Supported authentication flows
+- Supported scopes and claims
+- Signing algorithms
+
+---
+
+### Part B: JWKS Endpoint (Public Keys)
+
+The JWKS endpoint exposes public keys used to verify ID tokens signed by your SSO server.
+
+#### Test JWKS Endpoint
+
+```bash
+curl -X GET http://localhost:3000/api/auth/jwks | jq
+```
+
+**Expected Response:**
+
+```json
+{
+  "keys": [
+    {
+      "kty": "RSA",
+      "use": "sig",
+      "kid": "key-id-123",
+      "n": "modulus...",
+      "e": "AQAB",
+      "alg": "RS256"
+    }
+  ]
+}
+```
+
+**What this is used for:**
+- Client applications fetch these public keys to verify ID tokens
+- Ensures tokens were actually issued by your SSO server
+- Rotates automatically when keys change
+
+---
+
+### Part C: Dynamic Client Registration
+
+Register a new OIDC client application dynamically.
+
+#### Register New OIDC Client
+
+```bash
+curl -X POST http://localhost:3000/api/auth/oauth2/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "client_name": "My Test App",
+    "redirect_uris": ["http://localhost:4000/callback"],
+    "grant_types": ["authorization_code", "refresh_token"],
+    "response_types": ["code"],
+    "scope": "openid email profile"
+  }' | jq
+```
+
+**Expected Response:**
+
+```json
+{
+  "client_id": "generated_client_id_abc123",
+  "client_secret": "generated_secret_xyz789",
+  "client_name": "My Test App",
+  "redirect_uris": ["http://localhost:4000/callback"],
+  "grant_types": ["authorization_code", "refresh_token"],
+  "response_types": ["code"],
+  "token_endpoint_auth_method": "client_secret_basic",
+  "registration_access_token": "access_token_for_updates",
+  "registration_client_uri": "http://localhost:3000/api/auth/oauth2/register/generated_client_id_abc123"
+}
+```
+
+**Save these values:**
+- `client_id` - Use for authorization requests
+- `client_secret` - Use for token exchange
+- `registration_access_token` - Use to update client config later
+
+---
+
+### Part D: Authorization Code Flow (Complete OIDC Flow)
+
+This is the most common OIDC authentication flow.
+
+#### Step 1: Create Authorization URL
+
+```bash
+# Build the authorization URL
+CLIENT_ID="internal-dashboard"  # Or use dynamically registered client_id
+REDIRECT_URI="http://localhost:3001/auth/callback"
+STATE="random_state_string_12345"
+NONCE="random_nonce_67890"
+
+echo "http://localhost:3000/api/auth/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=openid%20email%20profile&state=${STATE}&nonce=${NONCE}"
+```
+
+#### Step 2: Open URL in Browser
+
+Copy the generated URL and open it in your browser. You'll be:
+
+1. **Redirected to login page** (if not logged in)
+   - URL: `http://localhost:3000/auth/login?...`
+   - Log in using email/password or social login
+
+2. **Redirected to consent page** (if consent required)
+   - URL: `http://localhost:3000/auth/consent?...`
+   - Grant permissions for scopes (openid, email, profile)
+
+3. **Redirected back to your callback URL with authorization code**
+   - Example: `http://localhost:3001/auth/callback?code=AUTH_CODE_HERE&state=random_state_string_12345`
+
+#### Step 3: Extract Authorization Code
+
+From the redirect URL, extract the `code` parameter:
+
+```bash
+CODE="AUTH_CODE_FROM_REDIRECT"
+```
+
+#### Step 4: Exchange Code for Tokens
+
+**⚠️ IMPORTANT**: Your config has `/token` endpoint disabled (line 41 in `index.ts`). You need to enable it first:
+
+To enable the token endpoint, remove or comment out line 41:
+```typescript
+// disabledPaths: ['/token'],  // Comment this out
+```
+
+Then exchange the code:
+
+```bash
+curl -X POST http://localhost:3000/api/auth/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -u "internal-dashboard:secret-for-internal-dashboard" \
+  -d "grant_type=authorization_code" \
+  -d "code=${CODE}" \
+  -d "redirect_uri=http://localhost:3001/auth/callback" | jq
+```
+
+**Expected Response:**
+
+```json
+{
+  "access_token": "access_token_abc123...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "refresh_token_xyz789...",
+  "id_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "scope": "openid email profile"
+}
+```
+
+**Token Breakdown:**
+- `access_token`: Use to call UserInfo endpoint or APIs
+- `id_token`: JWT containing user identity (verify with JWKS)
+- `refresh_token`: Use to get new tokens when access_token expires
+
+#### Step 5: Decode and Verify ID Token
+
+The `id_token` is a JWT. Decode it to see user information:
+
+**Online Tool:** Copy the `id_token` to https://jwt.io
+
+**Expected Payload:**
+
+```json
+{
+  "sub": "user_abc123",
+  "email": "user@example.com",
+  "email_verified": true,
+  "name": "Test User",
+  "picture": null,
+  "iat": 1700000000,
+  "exp": 1700003600,
+  "aud": "internal-dashboard",
+  "iss": "http://localhost:3000",
+  "nonce": "random_nonce_67890"
+}
+```
+
+**Verification:**
+1. Verify `iss` matches your SSO server URL
+2. Verify `aud` matches your `client_id`
+3. Verify `exp` (expiration) is in the future
+4. Verify `nonce` matches what you sent
+5. Verify signature using public key from JWKS endpoint
+
+#### Step 6: Call UserInfo Endpoint
+
+Use the `access_token` to get user information:
+
+```bash
+curl -X GET http://localhost:3000/api/auth/oauth2/userinfo \
+  -H "Authorization: Bearer ACCESS_TOKEN_HERE" | jq
+```
+
+**Expected Response:**
+
+```json
+{
+  "sub": "user_abc123",
+  "email": "user@example.com",
+  "email_verified": true,
+  "name": "Test User",
+  "picture": null
+}
+```
+
+---
+
+### Part E: Refresh Token Flow
+
+When your `access_token` expires, use the `refresh_token` to get new tokens without requiring user login.
+
+```bash
+curl -X POST http://localhost:3000/api/auth/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -u "internal-dashboard:secret-for-internal-dashboard" \
+  -d "grant_type=refresh_token" \
+  -d "refresh_token=REFRESH_TOKEN_HERE" | jq
+```
+
+**Expected Response:**
+
+```json
+{
+  "access_token": "new_access_token_def456...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "new_refresh_token_uvw321...",
+  "id_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "scope": "openid email profile"
+}
+```
+
+---
+
+### Part F: Client Credentials Flow (Machine-to-Machine)
+
+For server-to-server authentication without a user.
+
+```bash
+curl -X POST http://localhost:3000/api/auth/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -u "internal-dashboard:secret-for-internal-dashboard" \
+  -d "grant_type=client_credentials" \
+  -d "scope=api:read api:write" | jq
+```
+
+**Expected Response:**
+
+```json
+{
+  "access_token": "machine_token_ghi789...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "scope": "api:read api:write"
+}
+```
+
+**Note:** No `id_token` or `refresh_token` since there's no user context.
+
+---
+
+### Part G: OIDC Scopes and Claims
+
+#### Standard OIDC Scopes
+
+| Scope | Claims Returned | Description |
+|-------|----------------|-------------|
+| `openid` | `sub` | Required for OIDC; returns user ID |
+| `email` | `email`, `email_verified` | User's email address |
+| `profile` | `name`, `picture`, etc. | User's profile information |
+| `offline_access` | N/A | Request refresh token |
+
+#### Example: Request Only Email
+
+```bash
+# Only request email scope (no profile)
+curl "http://localhost:3000/api/auth/oauth2/authorize?client_id=internal-dashboard&redirect_uri=http://localhost:3001/auth/callback&response_type=code&scope=openid%20email&state=state123"
+```
+
+The resulting ID token will only contain:
+```json
+{
+  "sub": "user_123",
+  "email": "user@example.com",
+  "email_verified": true
+}
+```
+
+---
+
+### Part H: Testing with Trusted Client (Skip Consent)
+
+Your config has a trusted client: `internal-dashboard` with `skipConsent: true`.
+
+```bash
+# This client skips the consent screen
+curl "http://localhost:3000/api/auth/oauth2/authorize?client_id=internal-dashboard&redirect_uri=http://localhost:3001/auth/callback&response_type=code&scope=openid%20email%20profile&state=xyz"
+```
+
+**Flow:**
+1. User logs in (if needed)
+2. **Consent screen is skipped** ✅
+3. Immediately redirected with authorization code
+
+---
+
+### Part I: Update Client Configuration
+
+If you saved the `registration_access_token` from registration, you can update the client:
+
+```bash
+curl -X PUT http://localhost:3000/api/auth/oauth2/register/YOUR_CLIENT_ID \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer REGISTRATION_ACCESS_TOKEN" \
+  -d '{
+    "client_id": "YOUR_CLIENT_ID",
+    "client_name": "Updated App Name",
+    "redirect_uris": [
+      "http://localhost:4000/callback",
+      "http://localhost:5000/callback"
+    ]
+  }' | jq
+```
+
+---
+
+### Part J: OIDC Logout / End Session
+
+End the user's SSO session:
+
+```bash
+# Via browser redirect
+curl -L "http://localhost:3000/api/auth/oauth2/end-session?id_token_hint=ID_TOKEN&post_logout_redirect_uri=http://localhost:3001/"
+```
+
+**Parameters:**
+- `id_token_hint`: The ID token from login (optional but recommended)
+- `post_logout_redirect_uri`: Where to redirect after logout
+
+---
+
+### Part K: Common OIDC Testing Scenarios
+
+#### Scenario 1: Multi-App SSO (Single Sign-On)
+
+Test that logging into one app automatically logs you into another:
+
+```bash
+# 1. Login to App A (localhost:3001)
+# Open: http://localhost:3000/api/auth/oauth2/authorize?client_id=internal-dashboard&redirect_uri=http://localhost:3001/auth/callback&response_type=code&scope=openid&state=a
+
+# User logs in, gets redirected with code
+
+# 2. Immediately login to App B (localhost:3002) WITHOUT entering credentials
+# Open: http://localhost:3000/api/auth/oauth2/authorize?client_id=another-client&redirect_uri=http://localhost:3002/auth/callback&response_type=code&scope=openid&state=b
+
+# Should get code immediately without login screen! ✅
+```
+
+#### Scenario 2: Token Verification
+
+Verify an ID token's signature using JWKS:
+
+```bash
+# 1. Get JWKS
+curl http://localhost:3000/api/auth/jwks | jq > jwks.json
+
+# 2. Use a JWT library to verify the token signature
+# Example in Node.js:
+node -e "
+const jose = require('jose');
+const fs = require('fs');
+const jwks = JSON.parse(fs.readFileSync('jwks.json'));
+const token = 'YOUR_ID_TOKEN';
+// Verify token using jwks
+"
+```
+
+#### Scenario 3: Expired Token Handling
+
+```bash
+# Wait for access_token to expire (default: 1 hour)
+# Try calling UserInfo with expired token
+
+curl -X GET http://localhost:3000/api/auth/oauth2/userinfo \
+  -H "Authorization: Bearer EXPIRED_TOKEN" | jq
+
+# Expected: 401 Unauthorized
+# Solution: Use refresh_token to get new access_token
+```
+
+---
+
+### Part L: Environment Variables for OIDC
+
+Update your `.env` file:
+
+```bash
+# Required for OIDC Provider
+BETTER_AUTH_SECRET=your-long-random-secret-here
+BETTER_AUTH_URL=http://localhost:3000
+
+# Trusted Client Credentials (optional, defaults provided)
+INTERNAL_CLIENT_ID=internal-dashboard
+INTERNAL_CLIENT_SECRET=secret-for-internal-dashboard
+
+# Production URLs (optional)
+CLIENT_PRODUCTION_URL=https://client.yourdomain.com
+ADMIN_PRODUCTION_URL=https://admin.yourdomain.com
+```
+
+---
+
+### Part M: Enable Token Endpoint
+
+**Current Issue:** The `/token` endpoint is disabled in your config (line 41).
+
+To enable OIDC token exchange, update `packages/auth-config/index.ts`:
+
+```typescript
+export const auth = betterAuth({
+  // ... other config
+
+  // Option 1: Remove this line entirely
+  // disabledPaths: ['/token'],
+
+  // Option 2: Comment it out
+  // disabledPaths: ['/token'],
+
+  // Option 3: Use different paths to disable
+  disabledPaths: [],
+
+  // ... rest of config
+});
+```
+
+**After making this change:**
+1. Restart your server
+2. Test the token endpoint works:
+
+```bash
+curl -X POST http://localhost:3000/api/auth/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -u "internal-dashboard:secret-for-internal-dashboard" \
+  -d "grant_type=client_credentials" | jq
+
+# Should return tokens, not 404
+```
+
+---
+
+### Part N: All OIDC Endpoints Summary
+
+```bash
+# Discovery & Metadata
+GET  /api/auth/.well-known/openid-configuration   # OIDC discovery endpoint
+GET  /api/auth/jwks                               # Public keys for token verification
+
+# Client Management
+POST /api/auth/oauth2/register                    # Register new OIDC client
+PUT  /api/auth/oauth2/register/:client_id         # Update client configuration
+GET  /api/auth/oauth2/register/:client_id         # Get client configuration
+
+# Authentication Flow
+GET  /api/auth/oauth2/authorize                   # Authorization endpoint (start login)
+POST /api/auth/oauth2/token                       # Token endpoint (exchange code for tokens)
+GET  /api/auth/oauth2/userinfo                    # Get user info with access token
+
+# Session Management
+GET  /api/auth/oauth2/end-session                 # Logout / end session
+
+# Better Auth Endpoints (still available)
+POST /api/auth/sign-up/email             # Create account
+POST /api/auth/sign-in/email             # Email login
+GET  /api/auth/session                   # Get current session
+```
+
+---
+
 ## 📊 Quick Testing Cheat Sheet
 
 ### All Available Endpoints
@@ -873,6 +1424,16 @@ GET  /api/auth/link/github                # Link GitHub to existing account
 GET  /api/auth/link/google                # Link Google to existing account
 POST /api/auth/unlink-account             # Unlink social account
 GET  /api/auth/list-accounts              # List all linked accounts
+
+# OIDC Provider (SSO Server)
+GET  /api/auth/.well-known/openid-configuration    # OIDC discovery endpoint
+GET  /api/auth/jwks                                # Public keys for token verification
+GET  /api/auth/oauth2/authorize                    # Authorization endpoint (start OIDC flow)
+POST /api/auth/oauth2/token                        # Token endpoint (⚠️ currently disabled)
+GET  /api/auth/oauth2/userinfo                     # Get user info with access token
+POST /api/auth/oauth2/register                     # Register new OIDC client
+PUT  /api/auth/oauth2/register/:client_id          # Update OIDC client
+GET  /api/auth/oauth2/end-session                  # OIDC logout
 ```
 
 ### Example: Complete Test Flow (Copy & Paste)
