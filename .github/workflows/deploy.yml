@@ -1,12 +1,23 @@
 name: Deploy to GitHub Pages
 
 on:
+  # Trigger after sync-content completes (when PanaversityFS is enabled)
+  workflow_run:
+    workflows: ["Sync Content to R2"]
+    types:
+      - completed
+    branches:
+      - main
+  # Direct trigger for changes that don't affect docs content
+  # (e.g., config changes, component updates)
   push:
     branches:
       - main
     paths:
       - "book-source/**"
       - ".github/workflows/deploy.yml"
+      # Exclude docs/ since those trigger via sync-content workflow
+      - "!book-source/docs/**"
   workflow_dispatch:
 
 permissions:
@@ -22,6 +33,14 @@ jobs:
   build:
     name: Build Docusaurus
     runs-on: ubuntu-latest
+    # Run if:
+    # - NOT triggered by workflow_run (direct push or workflow_dispatch), OR
+    # - Triggered by workflow_run AND sync completed successfully, OR
+    # - Triggered by workflow_run AND sync was skipped (PanaversityFS disabled)
+    if: |
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success' ||
+      github.event.workflow_run.conclusion == 'skipped'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -66,6 +85,8 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     needs: build
+    # Only deploy if build job succeeded (not skipped)
+    if: needs.build.result == 'success'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
