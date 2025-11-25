@@ -14,6 +14,32 @@ description: Universal reasoning-activated LoopFlow orchestrator implementing Sp
 
 ---
 
+## 🚨 CRITICAL: Slash Command Invocation Enforcement
+
+**MANDATORY RULE**: LoopFlow MUST invoke slash commands using the `SlashCommand` tool, NOT by directly writing artifacts.
+
+| Phase | Command | Invocation Method | ❌ NEVER |
+|-------|---------|-------------------|----------|
+| Phase 1 | `/sp.specify` | `SlashCommand` tool | Write spec.md directly |
+| Phase 1 | `/sp.clarify` | `SlashCommand` tool | Edit spec.md directly |
+| Phase 2 | `/sp.plan` | `SlashCommand` tool | Write plan.md directly |
+| Phase 2 | `/sp.adr` | `SlashCommand` tool | Write ADR directly |
+| Phase 3 | `/sp.tasks` | `SlashCommand` tool | Write tasks.md directly |
+| Phase 3 | `/sp.analyze` | `SlashCommand` tool | Write analysis directly |
+| Phase 4 | `/sp.implement` | `SlashCommand` tool | Implement without command |
+| Phase 5 | `/sp.phr` | `SlashCommand` tool | Write PHR directly |
+
+**Why This Matters**:
+- Slash commands contain specialized logic, validation, and templates
+- Direct file writing bypasses quality gates built into commands
+- Commands maintain consistency with project conventions
+- PHRs track that proper commands were used
+
+**Self-Check Before Each Phase**:
+> "Am I about to use SlashCommand tool to invoke `/sp.X`? If not, STOP and correct."
+
+---
+
 ## 0. Constitutional Persona: You Are a Workflow Reasoning Architect
 
 <!-- REASONING ACTIVATION: Meta-cognitive stance -->
@@ -700,16 +726,33 @@ Now execute: Create reasoning-activated specification that guides downstream imp
 
 ### STEP 6: Invoke /sp.specify WITH Generated Prompt
 
-**Execute command with complete reasoning framework:**
+**🚨 CRITICAL ENFORCEMENT: You MUST use the SlashCommand tool to invoke /sp.specify**
 
+The reasoning-activated prompt you generated is passed AS CONTEXT when you invoke the slash command. You do NOT write spec.md directly — the /sp.specify command creates it.
+
+**MANDATORY EXECUTION SEQUENCE:**
+
+1. **Create feature branch FIRST** (if not already on it):
 ```bash
-# YOU MUST invoke /sp.specify NOW with reasoning-activated prompt
-
-/sp.specify [feature-slug]
-
-# Prompt passed:
-[Complete assembled prompt from Step 5]
+git checkout -b [feature-slug] 2>/dev/null || git checkout [feature-slug]
 ```
+
+2. **Invoke /sp.specify using SlashCommand tool** (NOT direct file writing):
+```
+Use SlashCommand tool with command: "/sp.specify [feature-slug]"
+```
+
+3. **Pass reasoning context**: The assembled prompt from Step 5 becomes the context that /sp.specify uses to create the spec
+
+**❌ FAILURE MODE (What you must NOT do):**
+- Writing `specs/[feature-slug]/spec.md` directly with Write/Edit tools
+- Skipping branch creation
+- Generating the prompt without invoking the actual slash command
+
+**✅ SUCCESS MODE (What you MUST do):**
+- Use `SlashCommand` tool to invoke `/sp.specify [feature-slug]`
+- The slash command handler creates spec.md, not you directly
+- Branch exists before spec creation
 
 **Wait for /sp.specify to complete** (it will create specs/[feature-slug]/spec.md)
 
@@ -1096,14 +1139,15 @@ Now execute: Create reasoning-activated lesson plan that guides implementation.
 
 ### STEP 5: Invoke /sp.plan WITH Generated Prompt
 
-```bash
-# YOU MUST invoke /sp.plan NOW
+**🚨 CRITICAL ENFORCEMENT: You MUST use the SlashCommand tool to invoke /sp.plan**
 
-/sp.plan [feature-slug]
-
-# Prompt passed:
-[Complete assembled prompt from Step 4]
+**MANDATORY EXECUTION:**
 ```
+Use SlashCommand tool with command: "/sp.plan [feature-slug]"
+```
+
+**❌ FAILURE MODE**: Writing `specs/[feature-slug]/plan.md` directly
+**✅ SUCCESS MODE**: Using `SlashCommand` tool to invoke `/sp.plan [feature-slug]`
 
 **Wait for /sp.plan to complete**
 
@@ -1239,12 +1283,15 @@ FOR production code:
 
 ### STEP 4: Assemble Prompt and Invoke
 
-```bash
-/sp.tasks [feature-slug]
+**🚨 CRITICAL ENFORCEMENT: You MUST use the SlashCommand tool to invoke /sp.tasks**
 
-# Reasoning-activated prompt:
-[Persona + Questions + Principles as above]
+**MANDATORY EXECUTION:**
 ```
+Use SlashCommand tool with command: "/sp.tasks [feature-slug]"
+```
+
+**❌ FAILURE MODE**: Writing `specs/[feature-slug]/tasks.md` directly
+**✅ SUCCESS MODE**: Using `SlashCommand` tool to invoke `/sp.tasks [feature-slug]`
 
 ### STEP 5: Invoke /sp.analyze (Quality Gate)
 
@@ -1630,15 +1677,17 @@ Now execute: Implement with reasoning-activated context awareness.
 
 ### STEP 7: Invoke Subagent WITH Complete Intelligence
 
-```bash
-# YOU MUST invoke /sp.implement NOW
+**🚨 CRITICAL ENFORCEMENT: You MUST use the SlashCommand tool to invoke /sp.implement**
 
-/sp.implement [feature-slug]
-
-# This will internally route to appropriate subagent based on task type
-# Prompt passed: [Complete assembled prompt from Step 6]
-# Intelligence object passed: [Full object from Step 2]
+**MANDATORY EXECUTION:**
 ```
+Use SlashCommand tool with command: "/sp.implement [feature-slug]"
+```
+
+**❌ FAILURE MODE**: Implementing lessons/code directly without using the command
+**✅ SUCCESS MODE**: Using `SlashCommand` tool to invoke `/sp.implement [feature-slug]`
+
+The /sp.implement command routes to the appropriate subagent (content-implementer for educational content) with the complete intelligence context.
 
 ### STEP 8: Validation Reasoning
 
@@ -1795,12 +1844,17 @@ Respond with:
 
 ### STEP 2: Capture Meta-Learning
 
-**Create comprehensive PHR (Prompt History Record):**
+**🚨 CRITICAL ENFORCEMENT: You MUST use the SlashCommand tool to invoke /sp.phr**
 
-```bash
-/sp.phr
+**MANDATORY EXECUTION:**
+```
+Use SlashCommand tool with command: "/sp.phr"
+```
 
-# Include in PHR:
+**❌ FAILURE MODE**: Writing PHR file directly without using the command
+**✅ SUCCESS MODE**: Using `SlashCommand` tool to invoke `/sp.phr`
+
+**Include in PHR:
 # - Complete intelligence object from all phases
 # - All reasoning-activated prompts generated
 # - All decisions made with rationale

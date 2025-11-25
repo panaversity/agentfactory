@@ -1,6 +1,6 @@
 ---
 title: "Brownfield Adoption - Adding Spec-Kit Plus to Existing Projects"
-chapter: 31
+chapter: 14
 lesson: 10
 duration_minutes: 90
 
@@ -643,33 +643,31 @@ Now that you understand exactly what gets overwritten, let's work with AI to exe
 - **You remain in control**: Decide whether to merge to main or test longer
 - **Collaboration complete**: Together you designed a solution that preserves 6 months of team knowledge while adopting SpecKit Plus
 
-This is **active collaboration**—you and the AI converged on a solution neither of you had at the start. The AI taught you git safety, you taught the AI your content structure, and together you created a merge strategy.
+This is **active collaboration**—you and your AI companion converged on a solution neither of you had at the start.
 
 ---
 
-### Reflecting on the Three Roles Experience
+### Validating Your Brownfield Integration
 
-**Pause and check your understanding of what just happened:**
+**Verify your workflow accomplishes the goals:**
 
-**Did you experience all three roles?**
+Ask your AI companion:
 
-1. ✅ **AI taught you**: Git safety workflow (experimental branch + redundant backups + multiple recovery options)
-2. ✅ **You taught AI**: Your project's content structure (coding standards vs architecture vs AI patterns)
-3. ✅ **Convergence happened**: Together determined where each content type belongs (constitution vs CLAUDE.md)
+> "I've completed the brownfield adoption safety workflow for my project. Can you help me verify success? Check that:
+> 1. My custom CLAUDE.md content was preserved (not lost to init --here overwrite)
+> 2. My experimental branch allows rollback to main without risk
+> 3. My backup files enable recovery if something goes wrong
+> 4. My merge strategy correctly separates coding standards (→ constitution) from AI patterns (→ CLAUDE.md)
+>
+> Show me evidence that the workflow protects my team's knowledge."
 
-**What specific knowledge did you gain that you didn't have before this conversation?**
+**Self-check questions:**
 
-Possible answers:
-- Experimental branch isolation technique for testing risky operations
-- Redundant backup strategy (branch + file backup + git commit)
-- Constitution as separate file for project-specific rules
-- CLAUDE.md as behavioral instructions vs constitution as project constraints
-- Manual merge requirement (no automatic preservation)
+- Do you have a clear backup recovery path if something goes wrong?
+- Can you explain why experimental branch isolation prevents data loss?
+- Do you understand the difference between constitution (project rules) and CLAUDE.md (AI behaviors)?
 
-**Would you feel confident testing `init --here` on a real client project now?**
-
-If "yes": You understand the safety workflow and merge strategy.
-If "no": What specific uncertainty remains? (Surface it before moving to Layer 3 hands-on practice.)
+If you answered "yes" to these questions, you're ready for hands-on practice.
 
 ---
 
