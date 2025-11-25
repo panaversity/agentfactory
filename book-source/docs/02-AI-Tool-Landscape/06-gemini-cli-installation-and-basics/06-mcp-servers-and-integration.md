@@ -517,7 +517,7 @@ Think of it like this: When you give your house key to a contractor, you:
 Some MCP servers need **authentication** to access protected systems (like your Google Drive or GitHub account).
 
 **When you need OAuth**:
-- MCP server accesses your cloud accounts (Google Drive, GitHub)
+- MCP server accesses your cloud accounts (Google Drive, etc.)
 - API requires login credentials
 - Database access is protected
 
@@ -534,7 +534,7 @@ Lists servers that need authentication.
 ```
 
 What happens:
-1. Your browser opens to the login page (Google, GitHub, etc.)
+1. Your browser opens to the login page (Google, etc.)
 2. You log in and approve access
 3. Gemini stores the token securely in `~/.gemini/mcp-oauth-tokens.json`
 4. Tokens auto-refresh—you never touch them manually
