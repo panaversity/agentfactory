@@ -103,6 +103,8 @@ Without timeouts, your entire system hangs indefinitely. It's like calling a res
 When working with I/O operations (network calls, database queries, file reads), you can't assume they'll finish quickly. Networks are unreliable. Services go down. Queries hang.
 
 ```python
+import httpx
+
 # Without timeout - WRONG ❌
 async def fetch_api_call(url: str) -> dict:
     response = await httpx.AsyncClient().get(url)

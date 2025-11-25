@@ -241,7 +241,7 @@ print("=== Current Inventory ===")
 for item, quantity in inventory.items():
     print(f"{item:12} {quantity:3} units")
 
-print("\n=== Low Stock Alert ===")
+print("=== Low Stock Alert ===")
 for item, quantity in inventory.items():
     if quantity < 25:
         print(f"⚠️ {item} is low: {quantity} units")
@@ -451,7 +451,7 @@ student_records: dict[str, dict[str, int | str]] = {
 
 # Print each student's info
 for name, info in student_records.items():
-    print(f"\n{name}:")
+    print(f"{name}:")
     for key, value in info.items():
         print(f"  {key}: {value}")
 ```
@@ -683,7 +683,7 @@ print("=== Word Frequency ===")
 for word, count in sorted_words:
     print(f"{word:12} appears {count} times")
 
-print(f"\nTotal unique words: {len(word_counts)}")
+print(f"Total unique words: {len(word_counts)}")
 print(f"Words appearing 2+ times: {len(frequent_words)}")
 ```
 

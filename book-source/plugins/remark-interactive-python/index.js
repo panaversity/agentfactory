@@ -31,7 +31,8 @@ function remarkInteractivePython(options = {}) {
 
   return (tree, file) => {
     // Check if this file should be processed
-    const filePath = file.history[0] || '';
+    // Normalize Windows backslashes to forward slashes for cross-platform compatibility
+    const filePath = (file.history[0] || '').replace(/\\/g, '/');
     const shouldProcess = includePaths.some(path => filePath.includes(path));
 
     if (!shouldProcess) {

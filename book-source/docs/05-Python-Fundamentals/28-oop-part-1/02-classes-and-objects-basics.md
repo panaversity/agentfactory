@@ -169,12 +169,12 @@ other_dog = Dog()
 other_dog.name = "Buddy"
 other_dog.breed = "Golden Retriever"
 
-print(f"\nFirst dog: {my_dog.name} ({my_dog.breed})")
+print(f"First dog: {my_dog.name} ({my_dog.breed})")
 print(f"Second dog: {other_dog.name} ({other_dog.breed})")
 
 # Question: If I change my_dog.name, does other_dog.name change?
 my_dog.name = "Max Jr."
-print(f"\nAfter changing my_dog:")
+print(f"After changing my_dog:")
 print(f"First dog name: {my_dog.name}")
 print(f"Second dog name: {other_dog.name}")
 ```

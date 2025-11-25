@@ -179,19 +179,19 @@ Let me show you what this means in practice:
 # File initially doesn't exist
 # Open in write mode → file is created
 with open("example.txt", 'w', encoding='utf-8') as f:
-    f.write("First line\n")
-    f.write("Second line\n")
+    f.write("First line")
+    f.write("Second line")
 # File now contains 2 lines
 
 # Open same file in write mode again → **content is deleted**
 with open("example.txt", 'w', encoding='utf-8') as f:
-    f.write("New content\n")
+    f.write("New content")
 # File now contains only the new content (previous data is gone!)
 
 # Open in append mode → add without deleting
 with open("example.txt", 'a', encoding='utf-8') as f:
-    f.write("Appended line\n")
-# File now contains: "New content\n" + "Appended line\n"
+    f.write("Appended line")
+# File now contains: "New content" + "Appended line"
 ```
 
 #### 🎓 Expert Insight
@@ -219,9 +219,9 @@ with open("notes.txt", 'r', encoding='utf-8') as f:
 
 ```python
 with open("notes.txt", 'r', encoding='utf-8') as f:
-    line1: str = f.readline()  # "First line\n"
-    line2: str = f.readline()  # "Second line\n"
-    line3: str = f.readline()  # "Third line\n"
+    line1: str = f.readline()  # "First line"
+    line2: str = f.readline()  # "Second line"
+    line3: str = f.readline()  # "Third line"
 ```
 
 **Use when**: You want to process the file line-by-line; useful for large files.
@@ -231,9 +231,9 @@ with open("notes.txt", 'r', encoding='utf-8') as f:
 ```python
 with open("notes.txt", 'r', encoding='utf-8') as f:
     lines: list[str] = f.readlines()
-    # lines = ["First line\n", "Second line\n", "Third line\n"]
+    # lines = ["First line", "Second line", "Third line"]
     for line in lines:
-        print(f"Line: {line.strip()}")  # strip() removes \n
+        print(f"Line: {line.strip()}")  # strip() removes 
 ```
 
 **Use when**: You want all lines as a list but want to iterate or process them later.
@@ -271,13 +271,13 @@ with open("output.txt", 'w', encoding='utf-8') as f:
 # File contents: "Line 1Line 2Line 3" (all on one line)
 ```
 
-**Correct approach**: Always include `'\n'` explicitly:
+**Correct approach**: Always include `''` explicitly:
 
 ```python
 with open("output.txt", 'w', encoding='utf-8') as f:
-    f.write("Line 1\n")
-    f.write("Line 2\n")
-    f.write("Line 3\n")
+    f.write("Line 1")
+    f.write("Line 2")
+    f.write("Line 3")
 
 # File contents:
 # Line 1
@@ -289,9 +289,9 @@ For multiple lines, use `writelines()`:
 
 ```python
 lines: list[str] = [
-    "First note\n",
-    "Second note\n",
-    "Third note\n",
+    "First note",
+    "Second note",
+    "Third note",
 ]
 
 with open("notes.txt", 'w', encoding='utf-8') as f:
@@ -344,7 +344,7 @@ try:
 except FileNotFoundError:
     print("Error: File not found. Creating a new one.")
     with open("data.txt", 'w', encoding='utf-8') as f:
-        f.write("Initial content\n")
+        f.write("Initial content")
 except PermissionError:
     print("Error: You don't have permission to read this file.")
 except IOError as e:
@@ -383,7 +383,7 @@ def read_file_safely(filename: str) -> str | None:
 # Test
 result: str | None = read_file_safely("notes.txt")
 if result:
-    print(f"Content:\n{result}")
+    print(f"Content:{result}")
 else:
     print("Could not read file")
 ```
@@ -407,17 +407,17 @@ filename: str = "data.txt"
 
 # WRITE MODE: Create new file or overwrite existing
 with open(filename, 'w', encoding='utf-8') as f:
-    f.write("Alice,25,Engineering\n")
-    f.write("Bob,30,Sales\n")
-    f.write("Carol,28,Marketing\n")
+    f.write("Alice,25,Engineering")
+    f.write("Bob,30,Sales")
+    f.write("Carol,28,Marketing")
 
-print(f"Created {filename} with 3 lines\n")
+print(f"Created {filename} with 3 lines")
 
 # METHOD 1: read() - entire file as one string
 print("=== Using read() ===")
 with open(filename, 'r', encoding='utf-8') as f:
     full_content: str = f.read()
-    print(f"File contents:\n{full_content}")
+    print(f"File contents:{full_content}")
 
 # METHOD 2: readline() - one line at a time
 print("=== Using readline() ===")
@@ -491,26 +491,26 @@ filename: str = "log.txt"
 # INITIAL WRITE: Create the log file
 print("=== Creating log file ===")
 with open(filename, 'w', encoding='utf-8') as f:
-    f.write("2025-11-09 10:00 - Program started\n")
-    f.write("2025-11-09 10:05 - User login\n")
+    f.write("2025-11-09 10:00 - Program started")
+    f.write("2025-11-09 10:05 - User login")
 
 print("Log file created with 2 entries")
 
 # READ to show current state
 with open(filename, 'r', encoding='utf-8') as f:
-    print(f"\nCurrent log:\n{f.read()}")
+    print(f"Current log: {f.read()}")
 
 # APPEND MODE: Add more entries without deleting
 print("=== Appending new entries ===")
 with open(filename, 'a', encoding='utf-8') as f:
-    f.write("2025-11-09 10:15 - Data processing started\n")
-    f.write("2025-11-09 10:30 - Data processing complete\n")
-    f.write("2025-11-09 10:35 - Program ended\n")
+    f.write("2025-11-09 10:15 - Data processing started")
+    f.write("2025-11-09 10:30 - Data processing complete")
+    f.write("2025-11-09 10:35 - Program ended")
 
 print("Added 3 new entries")
 
 # READ final state
-print("\nFinal log:")
+print("Final log:")
 with open(filename, 'r', encoding='utf-8') as f:
     for i, line in enumerate(f, 1):
         print(f"  {i}. {line.strip()}")
@@ -606,17 +606,17 @@ result: str | None = safe_read_file("nonexistent.txt")
 if result:
     print(f"Content: {result}")
 else:
-    print("Read failed\n")
+    print("Read failed")
 
 # Test writing and reading back
 print("=== Write and read test ===")
-test_content: str = "Hello from Python!\nThis file was created safely.\n"
+test_content: str = "Hello from Python! This file was created safely."
 success: bool = safe_write_file("test.txt", test_content)
 
 if success:
     result = safe_read_file("test.txt")
     if result:
-        print(f"Verified content:\n{result}")
+        print(f"Verified content:{result}")
 ```
 
 **Output**:

@@ -330,7 +330,7 @@ cart_reference: list[str] = shopping_cart  # ALIAS, not copy
 cart_reference.append("butter")
 print(f"Original: {shopping_cart}")      # ["milk", "eggs", "bread", "butter"]
 print(f"Reference: {cart_reference}")    # ["milk", "eggs", "bread", "butter"]
-print("They're the same object!\n")
+print("They're the same object!")
 
 # Solution: Use .copy()
 original_list: list[str] = ["milk", "eggs", "bread"]

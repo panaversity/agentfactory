@@ -481,10 +481,10 @@ async def run_benchmarks(user_question: str = "What's happening right now?") -> 
 
     Students run this to validate that their hybrid system is faster.
     """
-    print("\n" + "="*70)
+    print("="*70)
     print("ASYNCIO CAPSTONE: PERFORMANCE BENCHMARK")
     print("="*70)
-    print(f"Question: {user_question}\n")
+    print(f"Question: {user_question}")
 
     # Run sequential baseline
     print("Running SEQUENTIAL baseline (fetch one at a time, process one at a time)...")
@@ -492,7 +492,7 @@ async def run_benchmarks(user_question: str = "What's happening right now?") -> 
     print(f"Sequential execution: {seq_time:.2f} seconds")
 
     # Run hybrid optimized
-    print("\nRunning HYBRID execution (concurrent fetch + parallel processing)...")
+    print("Running HYBRID execution (concurrent fetch + parallel processing)...")
     hybrid_result, hybrid_time = await benchmark_hybrid(user_question)
     print(f"Hybrid execution: {hybrid_time:.2f} seconds")
 
@@ -500,10 +500,10 @@ async def run_benchmarks(user_question: str = "What's happening right now?") -> 
     speedup = seq_time / hybrid_time
     improvement_pct = (1 - hybrid_time / seq_time) * 100
 
-    print("\n" + "-"*70)
+    print("-"*50)
     print(f"Speedup: {speedup:.2f}x")
     print(f"Time saved: {seq_time - hybrid_time:.2f} seconds ({improvement_pct:.1f}%)")
-    print("-"*70)
+    print("-"*50)
 
     # Validation
     if speedup >= 1.4:  # Target: 40%+ improvement
@@ -511,7 +511,7 @@ async def run_benchmarks(user_question: str = "What's happening right now?") -> 
     else:
         print("⚠ Performance below target. Review executor configuration and task distribution.")
 
-    print("="*70 + "\n")
+    print("="*50)
 
 
 # ============================================================================

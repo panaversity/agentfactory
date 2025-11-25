@@ -444,7 +444,7 @@ if __name__ == "__main__":
     for key, value in detection.items():
         print(f"  {key}: {value}")
 
-    print(f"\nRecommendation: {recommend_concurrency_model()}")
+    print(f"Recommendation: {recommend_concurrency_model()}")
 ```
 
 **Validation Steps**:
@@ -628,10 +628,10 @@ if __name__ == "__main__":
     gil_status = sys._is_gil_enabled()
     if gil_status == True:
         print("GIL is ENABLED (traditional Python)")
-        print("Threading will NOT provide parallelism for CPU-bound work\n")
+        print("Threading will NOT provide parallelism for CPU-bound work")
     elif gil_status == False:
         print("GIL is DISABLED (free-threaded Python)")
-        print("Threading WILL provide parallelism for CPU-bound work\n")
+        print("Threading WILL provide parallelism for CPU-bound work")
 
     # Baseline
     seq_time = benchmark_sequential(ITERATIONS, NUM_THREADS)

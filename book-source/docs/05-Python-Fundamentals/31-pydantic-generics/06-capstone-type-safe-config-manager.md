@@ -539,9 +539,9 @@ def load_config_safe(yaml_file: str = "config.yaml") -> AppConfig:
         return AppConfig(**merged)
 
     except ValidationError as e:
-        print("\n" + "="*60)
+        print("="*50)
         print("CONFIGURATION ERROR - Cannot start application")
-        print("="*60 + "\n")
+        print("="*50)
 
         for error in e.errors():
             field_path: str = ".".join(str(x) for x in error["loc"])
@@ -550,7 +550,7 @@ def load_config_safe(yaml_file: str = "config.yaml") -> AppConfig:
 
             print(f"Field: {field_path}")
             print(f"  Error: {message}")
-            print(f"  Type: {error_type}\n")
+            print(f"  Type: {error_type}")
 
         print("Configuration sources (in order of precedence):")
         print(f"  1. Defaults (from config.py)")

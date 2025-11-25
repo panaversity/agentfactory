@@ -923,26 +923,26 @@ print(f"v1 == Vector(3, 4): {v1 == Vector(3, 4)}")
 print(f"len(v1) (magnitude): {len(v1)}")
 print(f"v1 < v2: {v1 < v2}")
 
-print("\n=== Vector Iteration ===")
+print("=== Vector Iteration ===")
 for component in v1:
     print(f"  Component: {component}")
 
-print("\n=== Vector as Dict Key ===")
+print("=== Vector as Dict Key ===")
 magnitudes = {v1: len(v1), v2: len(v2)}
 print(f"Magnitudes: {magnitudes}")
 
-print("\n=== SortedList Testing ===")
+print("=== SortedList Testing ===")
 sl = SortedList([3, 1, 4, 1, 5, 9, 2])
 print(f"SortedList: {sl}")
 print(f"Length: {len(sl)}")
 print(f"Item at [2]: {sl[2]}")
 print(f"3 in list: {3 in sl}")
 
-print("\n=== SortedList Iteration ===")
+print("=== SortedList Iteration ===")
 for item in sl:
     print(f"  Item: {item}")
 
-print("\n=== SortedList Adding ===")
+print("=== SortedList Adding ===")
 sl.add(6)
 print(f"After adding 6: {sl}")
 sl.add(0)

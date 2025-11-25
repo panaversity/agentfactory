@@ -222,7 +222,7 @@ Let's create a multiplication table showing products from 1×1 through 10×10:
 ```python
 # Generate a 10x10 multiplication table
 size: int = 10
-print(f"\nMultiplication Table (1 to {size}):\n")
+print(f"Multiplication Table (1 to {size}):")
 
 # Outer loop: iterate through rows (first number)
 for row in range(1, size + 1):
@@ -286,7 +286,7 @@ for num in numbers:
     else:
         print(f"Skipped {num} (not positive)")
 
-print(f"\nFinal sum of positive numbers: {total}")
+print(f"Final sum of positive numbers: {total}")
 
 # You can try different lists:
 # numbers = [10, -5, 3, 0, 7, -2]  # Mix of positive, negative, and zero
@@ -328,13 +328,13 @@ has_payment_method: bool = True
 # Check prerequisites BEFORE attempting to process
 if user_authenticated and has_payment_method:
     print("✓ User authenticated and payment method verified")
-    print("Processing cart items:\n")
+    print("Processing cart items:")
 
     # Loop runs only if condition above is True
     for item in cart:
         print(f"  - Processing: {item}")
 
-    print("\n✓ All items processed successfully")
+    print("✓ All items processed successfully")
 else:
     # Condition failed - loop never runs
     print("✗ Cannot process cart:")
@@ -343,7 +343,7 @@ else:
     if not has_payment_method:
         print("  - Payment method required")
 
-print("\n" + "="*50 + "\n")
+print("="*50 +)
 
 # Test case 2: Missing authentication
 user_authenticated = False
@@ -351,12 +351,12 @@ has_payment_method = True
 
 if user_authenticated and has_payment_method:
     print("✓ User authenticated and payment method verified")
-    print("Processing cart items:\n")
+    print("Processing cart items:")
 
     for item in cart:
         print(f"  - Processing: {item}")
 
-    print("\n✓ All items processed successfully")
+    print("✓ All items processed successfully")
 else:
     print("✗ Cannot process cart:")
     if not user_authenticated:
@@ -450,7 +450,7 @@ for row_index in range(len(game_grid)):
             print(f"Row {row_index}, Col {col_index}: Hit trap! (-5) Score: {score}")
         # If empty, no action needed (could add else for verbosity)
 
-print(f"\n🎮 Game Over! Final Score: {score}")
+print(f"🎮 Game Over! Final Score: {score}")
 ```
 
 **Output (partial)**:

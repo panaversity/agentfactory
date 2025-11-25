@@ -131,11 +131,11 @@ with open("test_success.txt", "w") as f:
     f.write("Success case")
 
 result = read_file_safely("test_success.txt")
-print(f"Result: {result}\n")
+print(f"Result: {result}")
 
 # Test 2: File doesn't exist
 result = read_file_safely("nonexistent.txt")
-print(f"Result: {result}\n")
+print(f"Result: {result}")
 ```
 
 **Compare your predictions to actual output.**
@@ -539,22 +539,22 @@ def process_file_lines(filename: str, max_errors: int = 10) -> tuple[list[str], 
 
 # Example usage and testing
 if __name__ == "__main__":
-    print("=== Testing File Operation Templates ===\n")
+    print("=== Testing File Operation Templates ===")
 
     # Test 1: Read existing file
     print("Test 1: Read text file")
     content = read_text_file("test_read.txt", default="No content")
-    print(f"Content: {content[:50]}...\n")
+    print(f"Content: {content[:50]}...")
 
     # Test 2: Write file
     print("Test 2: Write text file")
     success = write_text_file("test_write.txt", "Hello, World!")
-    print(f"Write successful: {success}\n")
+    print(f"Write successful: {success}")
 
     # Test 3: Load JSON
     print("Test 3: Load JSON file")
     data = load_json_file("config.json", default={"theme": "light"})
-    print(f"Config: {data}\n")
+    print(f"Config: {data}")
 
     # Test 4: Process lines with errors
     print("Test 4: Process file lines")

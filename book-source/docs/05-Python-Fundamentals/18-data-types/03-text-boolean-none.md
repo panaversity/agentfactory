@@ -352,7 +352,7 @@ print(f"{repr([]):20} → bool() = {bool([])}")
 print(f"{repr({}):20} → bool() = {bool({})}")
 print(f"{repr(None):20} → bool() = {bool(None)}")
 
-print("\n=== TRUTHY VALUES ===")
+print("=== TRUTHY VALUES ===")
 # Demonstrating each truthy value individually
 print(f"{repr(True):20} → bool() = {bool(True)}")
 print(f"{repr(1):20} → bool() = {bool(1)}")
@@ -509,8 +509,8 @@ order_completed: ??? = True
 
 **Your answers:**
 ```python
-1. email: str = "alice@example.com"
-2. is_email_confirmed: bool = True
+email: str = "alice@example.com"
+is_email_confirmed: bool = True
 # ... continue for 3-10
 ```
 

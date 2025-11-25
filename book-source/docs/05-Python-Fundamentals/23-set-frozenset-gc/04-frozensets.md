@@ -329,7 +329,7 @@ except TypeError as e:
     print(f"  ❌ Error: {e}")  # unhashable type: 'set'
 
 # Now show the solution with frozensets
-print("\nUsing frozenset as dictionary key:")
+print("Using frozenset as dictionary key:")
 
 # Scenario: Coordinate lookup for locations
 location_coordinates: dict[frozenset[tuple[int, int]], str] = {
@@ -384,7 +384,7 @@ except TypeError as e:
     print(f"  ❌ Error: {e}")  # unhashable type: 'set'
 
 # Solution: Use frozensets
-print("\nNesting frozensets in sets:")
+print("Nesting frozensets in sets:")
 
 # Represent student groups in different clubs
 clubs: set[frozenset[str]] = {
@@ -452,7 +452,7 @@ print("=" * 60)
 my_set: set[int] = {1, 2, 3}
 my_frozen: frozenset[int] = frozenset([1, 2, 3])
 
-print("\n1. MUTABILITY TEST")
+print("1. MUTABILITY TEST")
 print("-" * 60)
 
 # Try to modify set
@@ -468,7 +468,7 @@ try:
 except AttributeError:
     print("✗ Fails — frozenset has no .add() method")
 
-print("\n2. HASHABILITY TEST (Can use as dict key?)")
+print("2. HASHABILITY TEST (Can use as dict key?)")
 print("-" * 60)
 
 # Try set as dict key
@@ -487,7 +487,7 @@ try:
 except TypeError:
     print("✗ Fails")
 
-print("\n3. CAN BE SET MEMBER TEST")
+print("3. CAN BE SET MEMBER TEST")
 print("-" * 60)
 
 # Try set as set member
@@ -506,7 +506,7 @@ try:
 except TypeError:
     print("✗ Fails")
 
-print("\n4. READ-ONLY OPERATIONS (Both support these)")
+print("4. READ-ONLY OPERATIONS (Both support these)")
 print("-" * 60)
 
 set_union: set[int] = my_set | {5, 6}
@@ -517,7 +517,7 @@ set_inter: set[int] = my_set & {2, 3, 4}
 frozen_inter: frozenset[int] = my_frozen & frozenset([2, 3, 4])
 print(f"  Intersection: set={set_inter}, frozen={frozen_inter}")
 
-print("\n5. DECISION MATRIX: WHEN TO USE EACH")
+print("5. DECISION MATRIX: WHEN TO USE EACH")
 print("-" * 60)
 print("""
   Use SET when:

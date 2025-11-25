@@ -273,7 +273,7 @@ def main() -> None:
         results = parse_csv_file(filename)
 
         # Print summary report
-        print("\n" + "="*50)
+        print("="*50)
         print("CSV PARSING SUMMARY")
         print("="*50)
         print(f"Total rows processed: {results['total']}")
@@ -281,16 +281,16 @@ def main() -> None:
         print(f"Invalid records: {len(results['invalid'])}")
 
         if results['valid']:
-            print("\nValid Records:")
+            print("Valid Records:")
             for record in results['valid']:
                 print(f"  - {record['name']} ({record['age']}) {record['email']}")
 
         if results['invalid']:
-            print("\nErrors Encountered:")
+            print("Errors Encountered:")
             for error in results['invalid']:
                 print(f"  - {error}")
 
-        print("="*50 + "\n")
+        print("="*50)
 
     except FileNotFoundError as e:
         # File doesn't exist—this stops the whole program

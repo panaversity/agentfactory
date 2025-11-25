@@ -212,11 +212,11 @@ print("SIMPLE CALCULATOR WITH TYPE SAFETY")
 print("=" * 50)
 
 # Input two numbers
-num1: float = float(input("\nEnter first number: "))
+num1: float = float(input("Enter first number: "))
 num2: float = float(input("Enter second number: "))
 
 # Arithmetic operators (Lesson 1)
-print("\n--- ARITHMETIC OPERATORS ---")
+print("--- ARITHMETIC OPERATORS ---")
 add_result: float = num1 + num2
 print(f"{num1} + {num2} = {add_result} (type: {type(add_result).__name__})")
 
@@ -227,7 +227,7 @@ mul_result: float = num1 * num2
 print(f"{num1} * {num2} = {mul_result} (type: {type(mul_result).__name__})")
 
 # Comparison operators (Lesson 2)
-print("\n--- COMPARISON OPERATORS ---")
+print("--- COMPARISON OPERATORS ---")
 is_equal: bool = num1 == num2
 print(f"{num1} == {num2}: {is_equal} (type: {type(is_equal).__name__})")
 
@@ -238,7 +238,7 @@ is_less: bool = num1 < num2
 print(f"{num1} < {num2}: {is_less} (type: {type(is_less).__name__})")
 
 # Logical operators (Lesson 3)
-print("\n--- LOGICAL OPERATORS ---")
+print("--- LOGICAL OPERATORS ---")
 both_positive: bool = (num1 > 0) and (num2 > 0)
 print(f"Both positive: {both_positive} (type: {type(both_positive).__name__})")
 
@@ -249,7 +249,7 @@ not_equal_result: bool = not (num1 == num2)
 print(f"Not equal: {not_equal_result} (type: {type(not_equal_result).__name__})")
 
 # Assignment operators (Lesson 4)
-print("\n--- ASSIGNMENT OPERATORS ---")
+print("--- ASSIGNMENT OPERATORS ---")
 total: float = 0.0
 total += add_result
 print(f"After adding result: total = {total}")
@@ -261,7 +261,7 @@ total *= 0.5
 print(f"After halving: total = {total} (type: {type(total).__name__})")
 
 # Keyword awareness
-print("\n--- KEYWORD AWARENESS ---")
+print("--- KEYWORD AWARENESS ---")
 test_words: list[str] = ["count", "for", "result", "if", "my_var"]
 print("Checking variable names:")
 for word in test_words:
@@ -271,14 +271,14 @@ for word in test_words:
         print(f"  '{word}' is OK - can use as variable name")
 
 # Division with safety check
-print("\n--- SAFE DIVISION ---")
+print("--- SAFE DIVISION ---")
 if num2 != 0:
     div_result: float = num1 / num2
     print(f"{num1} / {num2} = {div_result} (type: {type(div_result).__name__})")
 else:
     print("Cannot divide by zero")
 
-print("\n" + "=" * 50)
+print("=" * 50)
 print("Calculation complete!")
 print("=" * 50)
 ```

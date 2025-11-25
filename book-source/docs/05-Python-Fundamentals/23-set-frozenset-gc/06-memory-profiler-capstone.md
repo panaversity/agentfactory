@@ -298,7 +298,7 @@ class MemoryProfiler:
         """
         stats: dict[str, int] = self.profile_memory()
 
-        print("\n" + "=" * 50)
+        print("=" * 50)
         print("MEMORY PROFILER REPORT")
         print("=" * 50)
         print(f"Current objects in memory:  {stats['current_objects']:>6}")
@@ -307,7 +307,7 @@ class MemoryProfiler:
         print(f"Peak object count:          {stats['peak_objects']:>6}")
         print(f"Total memory used:          {stats['memory_bytes']:>6,} bytes")
         print(f"Unreachable (cycles):       {stats['unreachable']:>6}")
-        print("=" * 50 + "\n")
+        print("=" * 50)
 
 
 # Usage Example
@@ -453,7 +453,7 @@ class AdvancedMemoryProfiler(MemoryProfiler):
 
         Shows which types consume most objects in memory.
         """
-        print("\n" + "-" * 40)
+        print("-" * 40)
         print("OBJECTS BY CATEGORY")
         print("-" * 40)
 
@@ -465,7 +465,7 @@ class AdvancedMemoryProfiler(MemoryProfiler):
 
         total: int = sum(len(ids) for ids in self.categories.values())
         print(f"  {'total':>10}: {total:>5} objects")
-        print("-" * 40 + "\n")
+        print("-" * 40)
 
 
 # Usage Example
@@ -517,7 +517,7 @@ def test_circular_references(profiler: MemoryProfiler) -> None:
 
     This validates the integration of Lesson 5 (GC cycle detection).
     """
-    print("\n" + "=" * 50)
+    print("=" * 50)
     print("TEST 1: Circular References")
     print("=" * 50)
 
@@ -559,7 +559,7 @@ def test_circular_references(profiler: MemoryProfiler) -> None:
 
     # Verify the cycle was freed
     assert after_count < before_count, "gc should have freed circular objects"
-    print("✓ Circular references properly handled by gc\n")
+    print("✓ Circular references properly handled by gc")
 
 
 def test_large_graph(profiler: MemoryProfiler) -> None:
@@ -601,7 +601,7 @@ def test_large_graph(profiler: MemoryProfiler) -> None:
     print(f"Memory freed: {memory_freed:,} bytes")
 
     assert memory_freed > 0, "Large graph should free significant memory"
-    print("✓ Large graph properly freed\n")
+    print("✓ Large graph properly freed")
 
 
 def test_mixed_types(profiler: MemoryProfiler) -> None:
@@ -636,7 +636,7 @@ def test_mixed_types(profiler: MemoryProfiler) -> None:
 
     # Verify all were tracked
     assert stats['created_total'] >= 5, "Should track all created objects"
-    print("✓ Mixed types handled correctly\n")
+    print("✓ Mixed types handled correctly")
 
 
 # Run all tests

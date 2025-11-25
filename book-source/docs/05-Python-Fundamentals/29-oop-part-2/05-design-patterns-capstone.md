@@ -465,7 +465,7 @@ event_bus.notify("user_message", {"user_id": "user123", "message": "Hello"})
 event_bus.notify("task_created", {"task_id": "task001", "priority": "high"})
 event_bus.notify("agent_status_changed", {"agent_id": "agent1", "status": "busy"})
 
-print(f"\nEvent history: {event_bus.get_history()}")
+print(f"Event history: {event_bus.get_history()}")
 print(f"Queued tasks: {task_queue.tasks}")
 print(f"Log entries: {logger.logs}")
 ```
@@ -602,23 +602,23 @@ print(agent.make_decision(context))
 
 # Switch to aggressive strategy
 agent.set_strategy(AggressiveStrategy())
-print("\nAfter switching to Aggressive:")
+print("After switching to Aggressive:")
 print(agent.make_decision(context))
 
 # Switch to defensive strategy
 agent.set_strategy(DefensiveStrategy())
-print("\nAfter switching to Defensive:")
+print("After switching to Defensive:")
 print(agent.make_decision(context))
 
 # Use adaptive strategy that learns
 adaptive = AdaptiveStrategy()
 agent.set_strategy(adaptive)
-print("\nAdaptive strategy (initially neutral):")
+print("Adaptive strategy (initially neutral):")
 print(agent.make_decision(context))
 
 adaptive.record_success()
 adaptive.record_success()
-print("\nAfter 2 successes:")
+print("After 2 successes:")
 print(agent.make_decision(context))
 ```
 
@@ -668,7 +668,7 @@ for agent_obj in agents:
     manager.register_agent(agent_obj.name, {"instance": agent_obj})
 
 # 3. OBSERVER: Event-driven communication
-print("\nSetting up event-driven communication:")
+print("Setting up event-driven communication:")
 event_bus = EventBus()
 
 # Wrap agents as observers
@@ -689,7 +689,7 @@ for agent_obj in agents:
     event_bus.attach(observer)
 
 # 4. STRATEGY: Agents with decision strategies
-print("\nAdding Strategy pattern for agent decisions:")
+print("Adding Strategy pattern for agent decisions:")
 strategies = {
     agents[0]: AggressiveStrategy(),  # ChatBot is aggressive
     agents[1]: BalancedStrategy(),    # CodeHelper is balanced
@@ -703,14 +703,14 @@ for agent_obj, strategy in strategies.items():
     print(f"  {agent_obj.name} decides: {decision}")
 
 # 5. ORCHESTRATION: Events trigger agent actions
-print("\nPublishing events (triggers all agents via Observer):")
+print("Publishing events (triggers all agents via Observer):")
 event_bus.notify("user_request", {
     "message": "Please help me understand this error",
     "user_id": "user123"
 })
 
 # Check manager state (Singleton)
-print(f"\nAgents registered with Singleton manager: {manager.list_agents()}")
+print(f"Agents registered with Singleton manager: {manager.list_agents()}")
 ```
 
 **What you've accomplished**:

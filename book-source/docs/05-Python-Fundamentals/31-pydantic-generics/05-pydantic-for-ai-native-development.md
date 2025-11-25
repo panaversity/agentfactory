@@ -492,7 +492,7 @@ def generate_and_validate_with_retry(
 
 def improve_prompt_from_errors(original: str, error: ValidationError) -> str:
     """Generate improved prompt based on validation errors"""
-    error_details: str = "\n".join([
+    error_details: str = r"\n".join([
         f"- {e['loc'][0]}: {e['msg']}"
         for e in error.errors()
     ])
