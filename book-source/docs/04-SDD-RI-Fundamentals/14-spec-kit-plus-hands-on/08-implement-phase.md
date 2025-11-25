@@ -1,413 +1,355 @@
 ---
-title: "Implement Phase - AI-Driven Code Generation and Validation"
-chapter: 31
+title: "Implement Phase - Execute Video Generation with AI"
+chapter: 14
 lesson: 8
-duration_minutes: 150
+duration_minutes: 120
+proficiency_level: "B1"
 
 # HIDDEN SKILLS METADATA (Institutional Integration Layer)
 # Not visible to students; enables competency assessment and differentiation
 skills:
-  - name: "Using /sp.implement Command"
+  - name: "Executing /sp.implement Command"
     proficiency_level: "B1"
     category: "Technical"
     bloom_level: "Apply"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can run /sp.implement to orchestrate code generation for tasks"
+    measurable_at_this_level: "Student can orchestrate 12 atomic tasks for video generation using /sp.implement"
 
-  - name: "Code Review and Comprehension"
-    proficiency_level: "B2"
-    category: "Technical"
-    bloom_level: "Analyze"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can read AI-generated code and verify it matches specification before acceptance"
-
-  - name: "Validation Against Acceptance Criteria"
-    proficiency_level: "B2"
-    category: "Technical"
-    bloom_level: "Evaluate"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student systematically validates each acceptance criterion (test, verify, sign-off)"
-
-  - name: "Understanding PHR Auto-Creation"
-    proficiency_level: "A2"
-    category: "Conceptual"
-    bloom_level: "Understand"
-    digcomp_area: "Information Literacy"
-    measurable_at_this_level: "Student understands PHRs are auto-created by system, knows where to find them, when to request explicit PHRs"
-
-  - name: "Executing Checkpoint Pattern During Implementation"
+  - name: "Checkpoint Pattern Review"
     proficiency_level: "B1"
     category: "Soft"
     bloom_level: "Apply"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student reviews→tests→approves→commits for each implementation phase"
+    measurable_at_this_level: "Student reviews output, approves, and directs next phase at each checkpoint"
+
+  - name: "Playwright MCP Browser Automation Validation"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Evaluate"
+    measurable_at_this_level: "Student validates Playwright successfully navigates Gemini and persists sessions"
+
+  - name: "Video Quality Validation Against Specification"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Evaluate"
+    measurable_at_this_level: "Student verifies video matches specification (duration, codec, content)"
+
+  - name: "Iteration and Debugging with AI"
+    proficiency_level: "B1"
+    category: "Soft"
+    bloom_level: "Apply"
+    measurable_at_this_level: "Student identifies failures, iterates with AI, and re-executes tasks"
 
 learning_objectives:
-  - objective: "Use /sp.implement to orchestrate AI-driven code generation for calculator tasks"
+  - objective: "Execute /sp.implement to orchestrate 12 atomic video generation tasks"
     proficiency_level: "B1"
     bloom_level: "Apply"
-    assessment_method: "Successful implementation orchestration with checkpoint reviews"
+    assessment_method: "Successful implementation with visible checkpoints"
 
-  - objective: "Validate AI-generated code against specification acceptance criteria"
-    proficiency_level: "B2"
+  - objective: "Validate AI-generated video against specification and quality criteria"
+    proficiency_level: "B1"
     bloom_level: "Evaluate"
-    assessment_method: "Systematic validation of each criterion with pass/fail evidence"
+    assessment_method: "ffprobe verification and playback validation"
 
-  - objective: "Understand PHR auto-creation and know where to find them"
-    proficiency_level: "A2"
-    bloom_level: "Understand"
-    assessment_method: "Navigation to PHR files and understanding their content"
-
-  - objective: "Identify and request explicit PHRs when system auto-creation might miss important decisions"
+  - objective: "Apply checkpoint pattern to maintain control during complex automation"
     proficiency_level: "B1"
     bloom_level: "Apply"
-    assessment_method: "Judgment about when to request PHR creation"
+    assessment_method: "Evidence of review at each phase boundary"
+
+  - objective: "Debug failures and iterate toward specification compliance"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Successfully resolve issues and re-execute tasks"
 
 cognitive_load:
-  new_concepts: 10
-  assessment: "10 new concepts (Implement command, code generation, code review, validation protocol, acceptance criteria verification, PHR auto-creation, PHR locations, explicit PHR requests, checkpoint pattern execution, error handling during implementation) within B2 limit of 10 ✓"
+  new_concepts: 8
+  assessment: "8 new concepts (implement orchestration, checkpoint review, Playwright validation, video validation, iteration loops, session persistence, quality gates, artifact preservation) within B1 limit of 10 ✓"
 
 differentiation:
-  extension_for_advanced: "Request explicit PHRs for complex decisions; analyze generated PHRs for quality; run full test suite before committing"
-  remedial_for_struggling: "Focus on core operations first; validate against top 3-4 acceptance criteria before diving into edge cases"
+  extension_for_advanced: "Analyze implementation decisions captured in PHRs; modify video prompt for different product types"
+  remedial_for_struggling: "Focus on Phase 1-2 (Setup/Session) before attempting video generation; validate with simplified success criteria"
 
-# Generation metadata
-generated_by: "content-implementer v3.0.0"
-source_spec: "specs/10-chapter-33-redesign/spec.md"
-created: "2025-11-05"
-last_modified: "2025-11-05"
+generated_by: "content-implementer v1.0.0"
+source_spec: "specs/013-chapter-14-redesign/spec.md"
+source_plan: "specs/013-chapter-14-redesign/plan.md"
+source_tasks: "specs/013-chapter-14-redesign/tasks.md"
+created: "2025-11-25"
+last_modified: "2025-11-25"
 git_author: "Claude Code"
-workflow: "manual-implementation"
+workflow: "/sp.implement"
 version: "1.0.0"
 ---
 
-# Implement Phase - AI-Driven Code Generation and Validation
+# Implement Phase - Execute Video Generation with AI
 
-This is it: **Implementation**. Everything you've done-specification, planning, tasking-leads to this moment.
+Here's where theory becomes reality. You have a specification, a plan, and 12 atomic tasks. Now you'll execute them with your AI companion.
 
-`/sp.implement` orchestrates AI code generation. The agent generates code, you review it, you validate against acceptance criteria, you commit. Then the next task.
-
-This lesson teaches two critical skills:
-1. **Code validation** - How to review AI-generated code
-2. **PHR auto-creation** - Understanding automatic documentation of AI collaboration
+This lesson focuses on **control and validation**. The checkpoint pattern keeps you in charge while AI handles the heavy lifting. You'll review, approve, and direct—maintaining human judgment at every critical decision.
 
 ---
 
-## What Does /sp.implement Do? 
+## What Happens During Implementation
 
-### The Implement Command
+When you run `/sp.implement`, the workflow follows this pattern:
 
-`/sp.implement` analyzes your tasks and generates:
-- **Code implementing each task**
-- **Tests validating the code**
-- **Documentation (docstrings, comments)**
+```
+Phase 1: Setup Verification
+├─ Task 1.1: Verify Playwright MCP
+├─ Task 1.2: Create session storage
+├─ Task 1.3: Verify Gemini accessibility
+└─ CHECKPOINT 1: Review setup outputs
 
-It works task-by-task, respecting your checkpoint pattern.
+Phase 2: Browser Session Establishment
+├─ Task 2.1: First-run login (you enter credentials)
+├─ Task 2.2: Verify session persistence
+└─ CHECKPOINT 2: Review session file
 
-### How Implementation Works
+Phase 3: Video Generation
+├─ Task 3.1: Finalize video prompt
+├─ Task 3.2: Login with saved session
+├─ Task 3.3: Submit prompt to Gemini
+├─ Task 3.4: Download generated video
+└─ CHECKPOINT 3: Review video file
 
-**Input**: Your specifications, plans, tasks
+Phase 4: Validation & Completion
+├─ Task 4.1: Move video to project directory
+├─ Task 4.2: Verify format (ffprobe)
+├─ Task 4.3: Test playback and content
+└─ CHECKPOINT 4: Project complete
+```
 
-**Agent's Process**:
-1. Read spec, plan, and current task
-2. Generate code matching the specification
-3. Include type hints, docstrings, error handling
-4. Generate tests verifying acceptance criteria
-5. Output code + tests, ready for human review
-
-**Your Process**:
-1. Review generated code
-2. Understand what it does
-3. Verify acceptance criteria
-4. Approve or request changes
-5. Ask to Commit to git
-6. Tell agent: "Next task"
-
-#### 💬 AI Colearning Prompt
-> "Why is the 5-step validation protocol systematic (Read → Check Spec → Run Tests → Manual Test → Approve) instead of just 'run tests and commit'? What issues does this prevent?"
+At each checkpoint, **you** decide whether to continue. This prevents wasting time on downstream tasks if an earlier phase has issues.
 
 ---
 
-## The Validation Protocol
+## Running /sp.implement
 
-Validation is NOT just "does it work?" It's systematic verification against your specification.
-
-### The 5-Step Validation Process
-
-**Step 1: Read and Understand**
-
-Read the generated code without running anything:
-- Do you understand what it does?
-- Does it follow your Constitution (type hints, docstrings)?
-- Is the logic clear or does it seem hacky?
-
-**RED FLAG**: If you don't understand the code, don't approve it. Ask the agent to explain or simplify.
-
-**Step 2: Check Against Specification**
-
-Compare code to your specification:
-- Does it do what the spec says?
-- Does it handle the edge cases you specified?
-- Does it match the error handling strategy (exceptions)?
-
-**RED FLAG**: If code does something the spec doesn't mention, question it.
-
-**Step 3: Run Acceptance Criteria Tests**
-
-Run the generated tests:
-- All tests pass?
-- Coverage adequate?
-- Edge cases included?
-
-**RED FLAG**: Any failing tests = don't approve. Agent fixes and retries.
-
-**Step 4: Manual Testing (Optional)**
-
-**Step 5: Review and Approve**
-
-If all checks pass:
-- Mark as approved
-- Ask to Commit to git
-- Provide feedback to agent on quality
-- Request next task
-
----
-
-## PHRs - Automatic Documentation 
-
-While ADRs capture architectural decisions, PHRs capture collaboration and implementation decisions. Together, they form the project’s explainable memory.
-
-### What Are PHRs?
-
-**PHR** = **Prompt History Record**
-
-A PHR automatically documents:
-- What prompt you gave the agent
-- What the agent responded with
-- What decision was made
-- When it happened
-
-PHRs are auto-created for all `/sp.` commands and Important clarifications during coding
-
-### Where Are PHRs Stored?
-
-```
-history/prompts/
-├── calculator/
-│   ├── 001-specify-phase.md          (auto-created by /sp.specify)
-│   ├── 002-clarify-phase.md          (auto-created by /sp.clarify)
-│   ├── 003-plan-phase.md             (auto-created by /sp.plan)
-│   ├── 004-tasks-phase.md            (auto-created by /sp.tasks)
-│   ├── 005-implement-phase-pt1.md    (auto-created by /sp.implement)
-└── general/
-    └── [Other non-feature PHRs]
-```
-
-### What You Do With PHRs
-
-**You don't create them.** You:
-1. **Know they exist** (understand they're being created automatically)
-2. **Know where to find them** (`history/prompts/<feature>/`)
-3. **Review them later** (for learning, compliance, debugging)
-4. **Request explicit PHRs** (only when system might miss something)
-
-### When to Request Explicit PHRs
-
-Normally, the system auto-creates PHRs for every `/sp.*` command and major decisions. But occasionally you might ask:
-
-```
-Agent, this debugging session was complex and taught me something important
-about floating-point precision. Can you record this as a PHR for future reference?
-
-[Describe what you learned]
-```
-
-**When to request**:
-- ✅ Novel problem-solving approach
-- ✅ Non-obvious error resolution
-- ✅ Complex tradeoff decision
-- ✅ Learning moment worth preserving
-
-**When NOT to request**:
-- ❌ Routine coding (PHRs already auto-created)
-- ❌ Simple bug fixes (already captured in git history)
-- ❌ Repeated issues (first occurrence captured, repeats unnecessary)
-
-### Your Interaction With PHRs
-
-**During Implementation**:
-- You don't think about PHRs; agent creates them automatically
-- Focus on reviewing code and validating
-
-**After Implementation**:
-- Browse `history/prompts/calculator/` to see all implementation decisions
-- Review PHRs to understand "why" decisions were made
-- Use for documentation, compliance, or learning
-
-**If System Misses Something**:
-- "Record this debugging session as PHR"
-- Agent creates explicit PHR for that decision
-- Rare; most things are auto-captured
-
-#### 🎓 Expert Insight
-> In AI-native development, validation is where human judgment creates value. AI can generate syntactically correct code that completely misses the specification intent. The 5-step protocol (Read → Spec Check → Test → Manual → Approve) catches three critical failure modes: (1) AI misunderstood requirements, (2) tests pass but don't cover edge cases, (3) code works but violates Constitution standards. Professional developers NEVER skip validation—the 10 minutes you invest prevents hours of debugging production failures.
-
-#### 🤝 Practice Exercise
-
-> **Ask your AI**: "I'm about to implement Task 1 (add operation) using /sp.implement. Walk me through what the 5-step validation protocol should check: (1) What Constitution standards should I verify in the generated code? (2) What specific acceptance criteria from my spec should the tests cover? (3) What edge cases must be tested (negative numbers, zero, floats vs ints)? (4) If tests pass but I don't understand the code, should I approve it? Why or why not? Then explain how PHRs will automatically capture this implementation session."
-
-**Expected Outcome**: Your AI should identify Constitution standards (type hints, docstrings, error handling), map spec acceptance criteria to test cases (e.g., "add(5, 3) = 8.0", "add(-2, 5) = 3.0"), list calculator-specific edge cases, explain why understanding code is mandatory before approval (can't maintain what you don't understand), and clarify that PHRs auto-capture this workflow without manual intervention.
-
----
-
-## Implementing Your Calculator (50 minutes)
-
-Now let's implement your calculator using the checkpoint pattern.
-
-- **Step 1: Run /sp.implement**
-
-In Claude Code, from your calculator-project directory:
+Start the implementation in Claude Code:
 
 ```
 /sp.implement
 
-My calculator tasks are at specs/calculator/tasks.md
+Context:
+- Specification: specs/013-chapter-14-redesign/spec.md
+- Plan: specs/013-chapter-14-redesign/plan.md
+- Tasks: specs/013-chapter-14-redesign/tasks.md
 
-Please implement tasks 1-3 (core operations: add, subtract, multiply):
-
-1. Implement each operation with full type hints and docstrings
-2. Generate comprehensive tests (unit + edge case + error handling)
-3. Verify 100% code coverage for each operation
-4. Output ready for my review
-
-After I review and approve, I'll request the next tasks.
+Execute Phase 1 (Setup Verification) with checkpoint.
 ```
 
-- **Step 2: Review Generated Code**
-
-Your Review Checklist:
-- [ ] Code is understandable (clear variable names, readable logic)
-- [ ] Type hints present on all functions
-- [ ] Docstrings present and clear
-- [ ] Follows Constitution standards
-- [ ] Handles edge cases specified
-- [ ] Error handling matches your error strategy
-- [ ] Tests cover all acceptance criteria
-
-- **Step 3: Ask Agent to Run Tests**
-
-**Your Prompt:**
-
-```
-Run the complete test suite and show me the results.
-Include coverage report to verify we meet the constitution requirements.
-```
-
-**Agent Does:**
-
-- Runs `uv run pytest -v --cov=calculator --cov-report=term-missing`
-- Shows all tests passing
-- Displays coverage report (should be 100%)
-- Confirms constitution requirements met
-
-- **Step 4: Validate Acceptance Criteria**
-
-## Verification Steps
-
-### Step 1: Run Complete Test Suite
-
-**Your Prompt:**
-
-```
-Run the complete test suite and show me the results.
-Include coverage report to verify we meet the constitution requirements.
-```
-
-**Agent Does:**
-
-- Runs `uv run pytest -v --cov=calculator --cov-report=term-missing`
-- Shows all tests passing
-- Displays coverage report (should be 100%)
-- Confirms constitution requirements met
-
-### Step 2: Type Checking
-
-**Your Prompt:**
-
-```
-Run mypy to verify all type hints are correct.
-```
-
-**Agent Does:**
-
-- Runs `uv run mypy src/`
-- Shows type checking results
-- Confirms no type errors
-
-### Step 3: Code Quality Check
-
-**Your Prompt:**
-
-```
-Run ruff to check code quality and formatting.
-```
-
-**Agent Does:**
-
-- Runs `uv run ruff check src/ tests/`
-- Shows linting results
-- Confirms code follows standards
-
-
-### Step 4: Approve and Commit
-
-- If all checks pass run `/sp.git.commit_pr`
-- Continue Implementation (Divide, Power, Tests, Docs)
-- Repeat the checkpoint pattern for remaining tasks.
+The agent will:
+1. Read your tasks.md
+2. Execute Phase 1 tasks sequentially
+3. Show outputs (verified configs, created directories)
+4. Wait for your checkpoint review
 
 ---
 
-## Common Mistakes
+## Checkpoint Review Pattern
 
-### Mistake 1: Accepting AI Code Without Reading It First
+**CHECKPOINT 1: After Phase 1 (Setup)**
 
-**The Error**: AI generates code → You immediately commit without review
+Your AI companion reports:
+```
+✓ Playwright MCP verified in claude-config.json
+✓ Session storage directory created at .session-storage/
+✓ Gemini.google.com accessible (no geoblocking)
 
-**Why It's Wrong**: AI makes mistakes (missing error handling, hardcoded values, security issues). Blind trust leads to bugs.
+Ready for Phase 2: Browser session establishment
+```
 
-**The Fix**: Validation protocol (5-step checklist):
-1. **Read without running** - Understand what code does
-2. **Ask questions** - "Why this approach?" "What does this line do?"
-3. **Check against spec** - Does it match acceptance criteria?
-4. **Run tests** - Do all tests pass?
-5. **Review security** - Any hardcoded secrets? Input validation?
+**Your review checklist:**
+- [ ] Playwright MCP actually configured? (check file)
+- [ ] Directory exists? (file explorer confirms)
+- [ ] Can you see Gemini homepage in regular browser?
+- [ ] Any errors or warnings?
 
-### Mistake 2: Requesting Too Many Features at Once
+**Your decision:**
+- ✅ "Looks good. Committing Phase 1. Proceed to Phase 2."
+- ❌ "Playwright not appearing in config. Let me fix and retry."
 
-**The Error**: "Implement all 5 operations + tests + error handling + logging in one go"
+**What happens next:**
+- You direct the next phase
+- Agent doesn't continue autonomously
+- You maintain control
 
-**Why It's Wrong**: Violates checkpoint pattern. No opportunity to review incrementally.
+---
 
-**The Fix**: One task at a time:
-- Implement add() → Review → Commit → Next task
-- Not: Implement everything → Review 1000 lines → Hope it works
+## The Iteration Loop: What When Things Fail
+
+**Real scenario**: You reach Phase 3 (video generation). Gemini's response timeout happens.
+
+**Without checkpoints** (risky):
+```
+Agent: "I've completed everything. Phase 3 failed silently at task 3.3.
+        Now I need to fix task 3.3, re-run 3.4, and validate everything
+        again. I'm going to try this 3 times automatically."
+You: "Wait, what exactly failed? Why are you retrying without asking?"
+```
+
+**With checkpoints** (controlled):
+```
+After Phase 2: You review, commit, approve Phase 3
+After Task 3.2: You see "Login successful"
+After Task 3.3: Timeout error appears
+You: "Gemini timed out. Let me check the website manually...
+      Gemini is actually running fine. Network issue on our end.
+      Let's retry Task 3.3."
+Agent: "Understood. Retrying Task 3.3 with extended timeout..."
+Task 3.3 succeeds, continues to 3.4
+```
+
+You caught the network issue immediately, narrowed the failure to one task, and fixed it. Without checkpoints, the agent might waste 10 minutes retrying blindly.
+
+---
+
+## Phase 3 Details: The Video Generation Happens Here
+
+This is where you see Playwright MCP in action. The agent:
+
+1. **Uses saved session** to log back into Gemini (no manual login needed)
+2. **Inputs your video prompt** into the Gemini chat interface
+3. **Waits for generation** (typically 60-90 seconds)
+4. **Downloads the video** when complete
+
+Example terminal output you'll see:
+```
+Task 3.2: Playwright opening Gemini with saved session...
+  ✓ Session cookies loaded from .session-storage/gemini-session.json
+  ✓ Gemini.google.com loaded
+  ✓ Verified logged-in state (no login form visible)
+
+Task 3.3: Submitting video generation prompt...
+  ✓ Chat input field focused
+  ✓ Prompt pasted (847 characters)
+  ✓ Submit button clicked
+  ✓ Gemini displays "Generating video..."
+
+Task 3.4: Waiting for generation...
+  [60s] Generating... (progress indicator visible)
+  [90s] Download button appeared
+  ✓ Video downloaded: ~/Downloads/Gemini-Generated-Video-20251125.mp4
+```
+
+**This is the payoff moment.** A video file exists on your machine—generated by AI through browser automation orchestrated by specification.
+
+---
+
+## Validation Phase: Proving Your Video Meets Requirements
+
+After generation, Phase 4 validates the video against your specification.
+
+**Task 4.2: Verify File Properties**
+
+The agent runs ffprobe to confirm video specifications:
+
+```bash
+ffprobe -v error -select_streams v:0 \
+  -show_entries stream=codec_name,width,height,duration \
+  ./output/demo-video.mp4
+```
+
+Expected output:
+```
+codec_name=h264
+width=1920
+height=1080
+duration=48.0
+```
+
+**What you're checking:**
+- ✅ Codec: h264 (web-compatible, as specified)
+- ✅ Resolution: 1920x1080 (matches spec)
+- ✅ Duration: 48 seconds (within 45-60s requirement)
+- ✅ File size: > 2MB (indicates full render, not truncated)
+
+**Task 4.3: Playback Validation**
+
+You play the video and verify:
+- Dashboard scene appears at start
+- Sign-up button interaction visible
+- Form filling animation smooth
+- Success confirmation with confetti
+- Text overlay: "Sign up in under 60 seconds"
+- Background music present (no voiceover)
+- No distorted frames or artifacts
+
+---
+
+## What You Get After Completion
+
+The visible artifact:
+
+```
+./output/demo-video.mp4
+├─ File size: 3.2 MB
+├─ Duration: 48 seconds
+├─ Codec: H.264
+├─ Resolution: 1920x1080
+└─ Content: Product demo matching specification
+```
+
+The invisible artifact:
+
+```
+history/prompts/chapter-14/
+├─ 001-specify-phase.md (auto-captured)
+├─ 002-clarify-phase.md (auto-captured)
+├─ 003-plan-phase.md (auto-captured)
+├─ 004-tasks-phase.md (auto-captured)
+└─ 005-implement-phase.md (auto-captured your implementation decisions)
+```
+
+PHRs (Prompt History Records) capture every major decision during implementation. Later, when you create the `generate-video` skill in Lesson 09, these PHRs explain **why** you chose this architecture.
+
+---
+
+## Common Implementation Mistakes
+
+### Mistake 1: Skipping Checkpoint Review
+
+**The error**: Agent says "Phase 1 complete" and you immediately say "Next phase"
+
+**Why it fails**: Hidden issues don't surface until Phase 3, when you've wasted time
+
+**The fix**: Spend 2 minutes reviewing at each checkpoint:
+- Does the output match the plan?
+- Are there error messages?
+- Does anything look suspicious?
+
+### Mistake 2: Accepting Video Without Validation
+
+**The error**: "Video generated! Project done!"
+
+**Why it fails**: Video might be 15 seconds (truncated), wrong codec, or completely missing required scenes
+
+**The fix**: Run ffprobe AND play the video. Both checks matter.
+
+### Mistake 3: Not Iterating When First Attempt Fails
+
+**The error**: "Gemini timed out. Oh well, the project failed."
+
+**Why it fails**: Timeouts are often transient. Retrying works.
+
+**The fix**: When Phase 3 fails, work with AI to diagnose:
+- Network timeout? Retry with longer wait.
+- Prompt too complex? Simplify and retry.
+- Gemini down? Check manually, then retry.
 
 ---
 
 ## Try With AI
 
-Ready to validate your implementation and understand intelligence capture? Reflect on your work:
+Ready to execute your video generation? Practice this workflow:
 
-**🔍 Explore Implementation Quality:**
-> "Review my calculator implementation at `calculator/operations.py` and tests at `tests/test_operations.py`. Verify: (1) Does the code match my specification exactly? (2) Are all acceptance criteria met? (3) Do I follow my Constitution rules (type hints, docstrings, error handling)? (4) Are there code quality issues (complexity, duplication, unclear naming)? Provide a detailed quality assessment."
+**Explore Checkpoint Review:**
+> "I'm about to run `/sp.implement` for video generation. At each checkpoint, what should I review? For Phase 1: How do I verify Playwright MCP is actually configured? For Phase 2: What does a valid session file look like (where do I check the file size and cookie tokens)? For Phase 3: How do I know if video generation actually started vs. failed silently? Create a specific review checklist for each phase."
 
-**🎯 Practice Checkpoint Review:**
-> "I just completed Task 3: Implement divide() function. Walk me through the checkpoint review: (1) Run the tests—what should I look for beyond 'all passing'? (2) Review the code—what security issues might I miss (like division by zero handling)? (3) Check Constitution compliance—did I follow all project rules? (4) Verify acceptance criteria—did I meet every requirement from the spec? Create a review checklist."
+**Practice Validation:**
+> "After the agent downloads the video to `./output/demo-video.mp4`, walk me through validation: (1) What ffprobe command verifies codec, resolution, and duration? (2) What does correct output look like? (3) What would indicate a problem (wrong resolution, truncated duration)? (4) How do I manually verify content (scenes present, timing correct, quality acceptable)?"
 
-**🧪 Test PHR Understanding:**
-> "Explain how PHRs capture implementation decisions: (1) What PHRs were auto-created during my `/sp.implement` run? (2) Where are they stored (`history/prompts/calculator/`)?  (3) What information do they contain? (4) If I discover floating-point precision issues, should I create an explicit PHR? When is manual PHR creation warranted vs automatic?"
+**Prepare for Failure:**
+> "What could go wrong during video generation? (1) Gemini times out—how do I retry? (2) Video is 15 seconds instead of 45—what caused this? (3) Downloaded file is corrupted—how do I detect and fix? (4) Session expires—how do I re-login? For each scenario, outline steps to recover and continue."
 
-**🚀 Apply to Your Implementation:**
-> "I'm implementing [describe your feature]. Help me plan the implementation checkpoints: (1) How many tasks should I complete before committing? (2) What should I review at each checkpoint? (3) What tests prove the task is truly done? (4) How do I balance 'perfect code' vs 'good enough to move forward'? Give me practical checkpoint guidelines."
+**Reflect on Your Outcome:**
+> "After generating my video, I'll have a tangible artifact: `./output/demo-video.mp4`. What does this file prove? How is this different from 'I learned about Spec-Kit Plus'? How would you explain to someone why specification-driven video generation is more reliable than 'just telling AI to make a video'?"
 
 ---
