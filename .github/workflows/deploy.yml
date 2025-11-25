@@ -53,6 +53,9 @@ jobs:
         working-directory: book-source
         env:
           GA4_MEASUREMENT_ID: ${{ secrets.GA4_MEASUREMENT_ID }}
+          # PanaversityFS: Fetch content from MCP server at build time
+          PANAVERSITY_PLUGIN_ENABLED: ${{ vars.PANAVERSITY_PLUGIN_ENABLED || 'false' }}
+          PANAVERSITY_SERVER_URL: ${{ secrets.PANAVERSITY_SERVER_URL }}
         run: npm run build
 
       - name: Upload build artifacts

@@ -1,0 +1,128 @@
+# Sync Content to PanaversityFS (R2 Storage)
+#
+# Uploads changed markdown files from book-source/docs/ to PanaversityFS MCP server.
+# The server stores content in Cloudflare R2, which Docusaurus fetches at build time.
+#
+# Workflow:
+# 1. Content changes merged to main (book-source/docs/**)
+# 2. This workflow uploads changed files to R2 via MCP server
+# 3. deploy.yml workflow builds site (fetches from R2 via plugin)
+
+name: Sync Content to R2
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "book-source/docs/**"
+  workflow_dispatch:
+    inputs:
+      full_sync:
+        description: "Force full sync (all files, not just changed)"
+        type: boolean
+        default: false
+
+jobs:
+  sync:
+    name: Upload to PanaversityFS
+    runs-on: ubuntu-latest
+    # Only run if PanaversityFS is configured
+    if: ${{ vars.PANAVERSITY_PLUGIN_ENABLED == 'true' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # Need previous commit to detect changes
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Get changed files
+        id: changed
+        if: ${{ github.event.inputs.full_sync != 'true' }}
+        run: |
+          # Get list of changed markdown files in docs/
+          CHANGED=$(git diff --name-only HEAD~1 HEAD -- 'book-source/docs/**/*.md' | tr '\n' ' ')
+          echo "files=$CHANGED" >> $GITHUB_OUTPUT
+          echo "Changed files: $CHANGED"
+
+      - name: Sync content to R2
+        env:
+          PANAVERSITY_SERVER_URL: ${{ secrets.PANAVERSITY_SERVER_URL }}
+          PANAVERSITY_API_KEY: ${{ secrets.PANAVERSITY_API_KEY }}
+        run: |
+          # Upload changed files to PanaversityFS MCP server
+          # Uses write_content tool via JSON-RPC
+
+          BOOK_ID="ai-native-dev"
+          SERVER_URL="${PANAVERSITY_SERVER_URL:-http://localhost:8000/mcp}"
+
+          # Determine files to sync
+          if [ "${{ github.event.inputs.full_sync }}" = "true" ]; then
+            echo "Full sync requested - uploading all files"
+            FILES=$(find book-source/docs -name "*.md" -type f)
+          else
+            FILES="${{ steps.changed.outputs.files }}"
+          fi
+
+          if [ -z "$FILES" ]; then
+            echo "No markdown files to sync"
+            exit 0
+          fi
+
+          echo "Syncing files to $SERVER_URL"
+
+          # Process each file
+          for FILE in $FILES; do
+            if [ ! -f "$FILE" ]; then
+              echo "Skipping (not found): $FILE"
+              continue
+            fi
+
+            # Convert path: book-source/docs/Part/Chapter/file.md -> content/Part/Chapter/file.md
+            CONTENT_PATH=$(echo "$FILE" | sed 's|^book-source/docs/|content/|')
+
+            echo "Uploading: $FILE -> $CONTENT_PATH"
+
+            # Read file content and escape for JSON
+            CONTENT=$(cat "$FILE" | jq -Rs .)
+
+            # Create JSON-RPC request for write_content tool
+            REQUEST=$(cat <<EOF
+          {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "method": "tools/call",
+            "params": {
+              "name": "write_content",
+              "arguments": {
+                "book_id": "$BOOK_ID",
+                "path": "$CONTENT_PATH",
+                "content": $CONTENT
+              }
+            }
+          }
+          EOF
+          )
+
+            # Send to MCP server
+            RESPONSE=$(curl -s -X POST "$SERVER_URL" \
+              -H "Content-Type: application/json" \
+              -H "Accept: application/json" \
+              -d "$REQUEST")
+
+            # Check for errors
+            if echo "$RESPONSE" | jq -e '.error' > /dev/null 2>&1; then
+              echo "Error uploading $FILE:"
+              echo "$RESPONSE" | jq '.error'
+              exit 1
+            fi
+
+            echo "✓ Uploaded: $CONTENT_PATH"
+          done
+
+          echo "Content sync complete!"
