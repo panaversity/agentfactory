@@ -1,25 +1,35 @@
 ---
 sidebar_position: 3
 title: "Feature 2: ICP Scorer"
+proficiency_level: "B1"
+estimated_time: "30-45 minutes"
+cognitive_load:
+  new_concepts: 4
+  reused_concepts: 6
+generated_by: content-implementer v1.0.0
+created: "2025-11-25"
+workflow: "/sp.implement"
 ---
 
 # Feature 2: ICP Scorer
 
 Your Feature 1 (Lead Profiler) outputs structured lead profiles. Feature 2 scores those profiles against your Ideal Customer Profile (ICP) criteria and outputs a priority category (hot/warm/cold).
 
-This is where you'll first experience acceleration: You're reusing the spec→plan→tasks→implement workflow from F1. This feature should build faster.
+This is where you experience **intelligence acceleration in action**: The specification→plan→tasks→implement workflow you executed for F1 directly transfers to F2. You're applying the same decision-making process, reusing the same SDD-RI rhythm, and leveraging patterns you've already proven work.
 
-**Start your timer now.** Check your F1 duration: _____ minutes. Your goal: complete F2 in less time.
+**This feature should build in 60-70% of your F1 time.**
 
-## Define ICP Criteria
+**Start your timer now.** Check your F1 duration from your notes: _____ minutes. Your goal: complete F2 in _____ minutes (60-70% of F1).
 
-Before specification, define what makes a customer ideal for your AI Sales Assistant. Create this file:
+## Step 1: Define ICP Criteria (5-10 minutes)
+
+Before writing the specification, define what makes a customer ideal **for your business**. Create this configuration file:
 
 ```bash
 touch icp_criteria.json
 ```
 
-Add your scoring criteria with weights:
+Add your scoring criteria with weights. This is YOUR decision—tailor it to your product vision:
 
 ```json
 {
@@ -76,10 +86,13 @@ Add your scoring criteria with weights:
 }
 ```
 
-## Data Flow: F1 → F2
+**Save this file now.** You've defined your first business rule—the criteria your ICP Scorer will use to evaluate every lead.
 
-Feature 2 receives Feature 1's output directly. This is the JSON your Lead Profiler generates:
+## Step 2: Understand Data Flow (Pipeline Architecture)
 
+This is critical: **F2 consumes F1's output directly.** You're not building in isolation—you're building part of a pipeline.
+
+**F1 Output** (what Lead Profiler generates):
 ```json
 {
   "company_name": "Stripe",
@@ -91,8 +104,14 @@ Feature 2 receives Feature 1's output directly. This is the JSON your Lead Profi
 }
 ```
 
-Feature 2 ingests this profile and outputs a scored assessment:
+**What F2 Does** (takes F1 output, applies your ICP criteria):
+- Reads `estimated_size` → matches against your size weights
+- Reads `industry` → matches against your industry weights
+- Counts `tech_indicators` → calculates sophistication score
+- Searches `pain_points` for your keywords → calculates alignment score
+- Sums scores → produces final priority
 
+**F2 Output** (what ICP Scorer produces):
 ```json
 {
   "score": 87,
@@ -107,117 +126,261 @@ Feature 2 ingests this profile and outputs a scored assessment:
 }
 ```
 
-## Write the Specification
+**Connection**: F1's output JSON structure MUST match F2's input expectations. This is the contract between features.
 
-Run the specification workflow:
+## Step 3: Write the Specification (10-15 minutes)
 
+**What you're reusing from F1**:
+- The `/sp.specify` workflow itself (same command)
+- The structure: define intent, input/output contracts, success criteria
+- The validation approach: verify spec against implementation
+
+**Run specification workflow**:
 ```bash
 /sp.specify
 ```
 
-Provide this feature description:
-
+**Provide this feature description**:
 ```
 ICP Scorer: Takes a Lead Profile JSON (from Feature 1) and scores it against
-Ideal Customer Profile criteria. Outputs a numeric score (0-100), priority
-category (hot/warm/cold), per-criterion breakdown, and reasoning.
+Ideal Customer Profile criteria defined in icp_criteria.json. Outputs a numeric
+score (0-100), priority category (hot/warm/cold), per-criterion breakdown, and
+business reasoning.
 ```
 
-Your specification should define:
+**Your spec.md should define these sections**:
 
-**Input**: Lead Profile JSON (with structure: company_name, industry, estimated_size, tech_indicators, pain_points, confidence_score)
+**Input Contract**:
+- Source: Lead Profile JSON from Feature 1 (lead_profiler.py output)
+- Schema: `{company_name, industry, estimated_size, tech_indicators[], pain_points[], confidence_score}`
+- Example: Show a Stripe profile flowing into F2
 
-**Output**:
-```yaml
+**Output Contract**:
+```json
 {
-  "score": number (0-100),
-  "category": string (hot|warm|cold),
+  "score": "number (0-100)",
+  "category": "string (hot|warm|cold)",
   "breakdown": {
-    "company_size_score": number,
-    "industry_fit_score": number,
-    "tech_sophistication_score": number,
-    "pain_point_alignment_score": number
+    "company_size_score": "number",
+    "industry_fit_score": "number",
+    "tech_sophistication_score": "number",
+    "pain_point_alignment_score": "number"
   },
-  "reasoning": string
+  "reasoning": "string (1-2 sentences explaining the score)"
 }
 ```
 
-**Success Criteria**:
-- Score calculated consistently for same input
-- Category correctly assigned based on score ranges
-- Breakdown shows each criterion's contribution
-- Reasoning includes references to specific profile data
+**Success Criteria** (these must be testable):
+- ✓ Same input produces identical score every run (deterministic)
+- ✓ Category assignment matches score_ranges from icp_criteria.json
+- ✓ Breakdown totals approximately equal final score
+- ✓ Reasoning references specific data from lead profile (company name, tech indicators, pain point matches)
+- ✓ Handles missing fields (null pain_points, etc.) without crashing
 
 **Constraints**:
-- Load ICP criteria from icp_criteria.json
-- Handle missing fields gracefully
-- Reasoning should be 1-2 sentences
+- Load ICP criteria from icp_criteria.json (file-based, not hardcoded)
+- Accept input as JSON file OR stdin (enables pipeline: `lead_profiler | icp_scorer`)
+- Reasoning should be business-focused (why this lead matters for sales), not technical
 
-## Plan, Tasks, Implement
+## Step 4: Plan, Tasks, Implement (15-20 minutes)
 
-Generate your implementation plan:
+**The acceleration happens here.** You've executed this sequence once (F1). This time, you're doing it faster because the workflow is familiar.
 
+**Generate your implementation plan**:
 ```bash
 /sp.plan
 ```
 
-Review the plan, then generate tasks:
+Review it:
+```bash
+cat .specify/specs/*/plan.md
+```
 
+**Key decision point**: How much of F1's pattern will you reuse? Think:
+- Did F1 use environment variables for API keys? Use same approach.
+- Did F1 have helper functions for JSON validation? Adapt them for F2.
+- Did F1 handle errors with try/except blocks? Reuse that pattern.
+
+**Generate tasks**:
 ```bash
 /sp.tasks
 ```
 
-Execute the implementation:
+**Critical tasks to watch for** (these appeared in F1 and should be faster now):
+1. JSON input parsing (you've done this)
+2. Criteria matching and weighting logic (new logic, but familiar structure)
+3. Score aggregation (new calculation, similar flow to F1)
+4. Category assignment (straightforward—lookup table)
+5. Reasoning generation (new, but similar to F1's output formatting)
 
+**Execute implementation**:
 ```bash
 /sp.implement
 ```
 
-Work with AI systematically. You've already done this workflow in F1—reuse those patterns. You'll need:
-1. JSON input parsing
-2. Criteria matching and weighting logic
-3. Score aggregation
-4. Category assignment
-5. Reasoning generation
+**Work systematically with AI**. Ask specific questions:
+- "How should I structure the scoring function to match my icp_criteria.json schema?"
+- "For pain_point_alignment, should I do substring matching, regex, or exact matches? Trade-offs?"
+- "How do I pipe Feature 1 output directly to Feature 2 without intermediate files?"
 
-## Test the Pipeline
+**Record decisions** (you'll explain these in retrospective):
+- What patterns transferred directly from F1?
+- What required new logic?
+- Where did F2 deviate from F1's approach? Why?
 
-Test Feature 2 independently first:
+## Step 5: Test Feature 2 + Pipeline (8-12 minutes)
+
+### Test 1: F2 Standalone (Validate Input/Output Contract)
+
+Test Feature 2 with a sample lead profile:
 
 ```bash
-# Score a single lead profile
+# Create test input (copy your earlier F1 output)
+cat > test_lead.json << 'EOF'
+{
+  "company_name": "Stripe",
+  "industry": "technology",
+  "estimated_size": "enterprise",
+  "tech_indicators": ["API-driven architecture", "Developer-friendly", "Cloud infrastructure"],
+  "pain_points": ["Scale management", "Integration complexity"],
+  "confidence_score": 92
+}
+EOF
+
+# Run F2 with test input
+python icp_scorer.py test_lead.json
+```
+
+**Verify output**:
+- [ ] Score is between 0-100
+- [ ] Category is hot/warm/cold
+- [ ] Breakdown has all 4 scores
+- [ ] Reasoning references the lead's specific data (company name, industry, pain points)
+- [ ] Output is valid JSON
+
+### Test 2: Full Pipeline (F1 → F2)
+
+This is the real test—does F2 actually consume F1's output?
+
+**Option A: Using saved F1 output**
+```bash
+# If you saved F1 output earlier
 python icp_scorer.py lead_profile.json
 ```
 
-Then test the full pipeline (F1 → F2):
-
+**Option B: Real-time pipeline (no intermediate files)**
 ```bash
-# Generate lead profile from F1
-python lead_profiler.py https://stripe.com > lead_profile.json
-
-# Score that profile with F2
-python icp_scorer.py lead_profile.json
-```
-
-Or pipe them directly:
-
-```bash
+# Generate F1 output and pipe directly to F2
 python lead_profiler.py https://stripe.com | python icp_scorer.py
 ```
 
-Verify the JSON output matches your specification schema and all success criteria are met.
+This is acceleration in action: F1's JSON flows directly into F2. No manual steps, no file copying.
 
-**Stop your timer.** Record in TIME_TRACKER.md:
+**Test multiple companies** to validate your ICP criteria:
+```bash
+# Test 3-5 different URLs
+python lead_profiler.py https://openai.com | python icp_scorer.py
+python lead_profiler.py https://github.com | python icp_scorer.py
+python lead_profiler.py https://yourcompany.com | python icp_scorer.py
+```
 
+**Observe patterns**:
+- Which companies score hot? (Match your ICP)
+- Which score cold? (Different profile)
+- Do the scores make sense for your business?
+
+### Test 3: Edge Cases
+
+Test scenarios that F1 might produce:
+
+```bash
+# Missing pain_points
+cat > edge_case.json << 'EOF'
+{
+  "company_name": "NoData Inc",
+  "industry": "unknown",
+  "estimated_size": "startup",
+  "tech_indicators": [],
+  "pain_points": null,
+  "confidence_score": 30
+}
+EOF
+
+python icp_scorer.py edge_case.json
 ```
-Feature 2 Duration: _____ minutes
-Feature 1 Duration: _____ minutes (reference)
-Acceleration: F2 took ___% of F1 time
-Pattern Reuse Notes: [What patterns transferred from F1?]
+
+Does it handle gracefully? Score should be calculable even with missing data.
+
+**Stop your timer now.** You've completed Feature 2 from specification through pipeline testing.
+
+## Record Your Acceleration
+
+Open `TIME_TRACKER.md` (or create it):
+
+```markdown
+# Intelligence Acceleration Tracking
+
+## Feature 1: Lead Profiler
+- Start time: [time]
+- End time: [time]
+- **Duration: _____ minutes** (BASELINE)
+
+## Feature 2: ICP Scorer
+- Start time: [time]
+- End time: [time]
+- **Duration: _____ minutes**
+- **% of F1 time: _____%** (Goal: 60-70%)
+
+## Pattern Reuse: What Transferred from F1?
+- [ ] JSON input parsing structure
+- [ ] Error handling approach
+- [ ] Configuration file pattern (icp_criteria.json similar to other config)
+- [ ] Output formatting (JSON structure)
+- [ ] Command-line interface pattern
+- [ ] Pipeline capability (stdin/stdout)
+
+## What Was Different in F2?
+(Describe any decisions that deviated from F1's approach)
+
+---
 ```
+
+**Analyze your acceleration**:
+- If F2 took 60-70% of F1 time: Patterns transferred effectively
+- If F2 took >70% of F1 time: Identify what wasn't reused
+- If F2 took <60% of F1 time: You found shortcuts (document them for F3)
 
 ## Try With AI
 
-**Prompt 1**: "I built Feature 1 in [X] minutes and Feature 2 in [Y] minutes. What patterns did I reuse from F1? Why was F2 faster?"
+Work with your AI companion to deepen understanding of acceleration patterns and scoring logic.
 
-**Prompt 2**: "I'm scoring leads with these criteria [show icp_criteria.json]. Given this sample lead profile [paste F1 output], walk me through your scoring logic step-by-step and explain if you'd adjust the criteria weights."
+**Prompt 1: Analyze Your Acceleration**
+```
+I built Feature 1 (Lead Profiler) in [X] minutes and Feature 2 (ICP Scorer) in [Y] minutes.
+
+Analyze which patterns I reused from F1 to F2:
+1. What code structures transferred directly?
+2. What required new logic?
+3. Why did F2 build faster? (or slower?)
+4. What patterns should I prepare to reuse for Feature 3?
+```
+
+**Expected outcome**: AI identifies specific patterns (JSON parsing, error handling, CLI structure) that accelerated F2. You capture this for Feature 3 planning.
+
+---
+
+**Prompt 2: Debug Your Scoring Logic**
+```
+My ICP criteria are [paste icp_criteria.json].
+
+Here's a sample lead profile from Feature 1:
+[paste your F1 output JSON]
+
+Walk me through step-by-step:
+1. How would you score this lead using my criteria?
+2. Show the calculation for each criterion
+3. What final score and category would this get?
+4. If the score surprises you, what ICP weights should I adjust?
+```
+
+**Expected outcome**: AI demonstrates scoring logic transparently. You validate if your ICP criteria align with your actual business preferences.

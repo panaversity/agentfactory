@@ -5,56 +5,50 @@ title: "Project Setup + Constitution"
 
 # Project Setup + Constitution
 
-You're building an AI Sales Assistant with four features: Lead Profiler, ICP Scorer, Outreach Generator, and Campaign Dashboard. Before writing any code, you'll establish a project structure and a constitution that defines quality standards. This constitution becomes your source of truth for design decisions across all four features, preventing quality drift and keeping implementation consistent.
-
-The work in this lesson is foundational. You're not building features yet—you're building the decision framework that will guide feature development.
+You're building an AI Sales Assistant with four features: Lead Profiler, ICP Scorer, Outreach Generator, and Campaign Dashboard. Before writing any code, you'll establish a project structure and a constitution that defines quality standards. This constitution becomes your source of truth—the decision framework you reference when building Feature 1, Feature 2, and Feature 3. If Feature 4 builds significantly faster, you'll know it's because you stopped re-deciding quality standards and reused the constitution from Feature 1.
 
 ## Create Your Project Directory
 
-Start in your terminal. Create a dedicated directory for this capstone and navigate into it:
+Start in your terminal:
 
 ```bash
 mkdir ai-sales-assistant
 cd ai-sales-assistant
-```
-
-**Verify you're in the right location:**
-
-```bash
 pwd
 ```
 
-You should see a path ending in `ai-sales-assistant`. Now initialize Spec-Kit Plus (the framework you learned in Chapter 14):
+**Expected output**: Path ending in `ai-sales-assistant`
+
+Initialize Spec-Kit Plus (the framework you learned in Chapter 14):
 
 ```bash
 specifyplus init --here
 ```
 
-This command creates the `.specify/` directory structure and configuration files. Verify the setup:
+Verify the structure:
 
 ```bash
 ls -la
 ```
 
-You should see:
-- `.specify/` directory (framework folder)
-- `.specify/memory/` (stores decisions)
-- `.specify/templates/` (reusable templates)
-- Configuration files (`.specify.yaml` or similar)
+**Expected output**: You see `.specify/` directory with subdirectories:
+- `.specify/memory/` (stores constitution)
+- `.specify/templates/` (reusable patterns)
+- `.specify/scripts/` (utilities)
 
-If you don't see `.specify/`, check that you installed Spec-Kit Plus in Chapter 14 and try the `specifyplus init --here` command again.
+**Troubleshooting**: If `.specify/` is missing, check Chapter 14 installation. Run `specifyplus --version` to confirm it's installed, then retry `specifyplus init --here`.
 
 ## Write Your Constitution
 
-The constitution is a single document that captures your project's quality standards, scope, and non-goals. It answers questions that will come up repeatedly during feature development: "Should we include this?" "How detailed should this be?" "What's outside scope?"
+The constitution answers questions that come up during Feature 1, 2, 3, and 4 builds: "Should we include this?" "How detailed?" "In scope or out?"
 
-Create the constitution file:
+Create the file:
 
 ```bash
 touch .specify/memory/constitution.md
 ```
 
-Open this file in your editor and write the following constitution for your AI Sales Assistant project:
+Open in your editor and write:
 
 ```markdown
 # AI Sales Assistant Constitution
@@ -166,19 +160,27 @@ The system processes company information, evaluates fit against ideal customer p
 - All external API calls (if any) must be wrapped with fallback/mock data
 ```
 
-**Save this file.** Read it through once. You now have a written standard that every feature must meet.
+**Save this file and verify:**
+
+```bash
+cat .specify/memory/constitution.md
+```
+
+You should see the full constitution. This is your quality gate document—every feature (F1, F2, F3, F4) must satisfy these standards.
+
+**Quick practice**: Read through the constitution once. Pick ONE feature (Lead Profiler). What quality gates does it have? (Hint: See "Quality Gate:" line for each feature.)
 
 ## Create Your Time Tracker
 
-As you build each feature, you'll measure how long it takes. This helps you evaluate SDD-RI acceleration: does Feature 4 (which reuses decisions from Feature 1) build faster because you're not re-deciding quality standards?
+The time tracker measures how intelligence compounds. When you build Feature 1, you'll spend time deciding quality standards. When you build Feature 4, you'll reuse those decisions—so Feature 4 should take less than 50% of Feature 1's time.
 
-Create the time tracker file:
+Create the file:
 
 ```bash
 touch TIME_TRACKER.md
 ```
 
-Open this file and write:
+Add this content:
 
 ```markdown
 # Feature Build Times - AI Sales Assistant
@@ -192,55 +194,86 @@ Open this file and write:
 
 ## Acceleration Analysis
 
-After completing all four features, fill in:
+After all four features, calculate:
 
-- F1 baseline: _____ minutes (total time to complete Feature 1)
-- F2 time: _____ minutes
-- F3 time: _____ minutes
-- F4 target: _____ minutes (goal: 50% of F1 time, achieved through constitution reuse)
-- F4 actual: _____ minutes
-- Achieved 50% acceleration? Yes / No
+- F1 baseline time: _____ minutes (Feature 1 total time)
+- F2 actual time: _____ minutes
+- F3 actual time: _____ minutes
+- F4 actual time: _____ minutes
+- F4 vs F1 ratio: _____ % (calculate: F4_time / F1_time × 100)
+- **Target: F4 should be ≤50% of F1**
 
-## Notes
+## Decision Time Breakdown (Optional)
 
-Document anything that sped up or slowed down development:
-- Did constitution clarity reduce decision time?
-- Did reusing quality standards from Feature 1 speed up Feature 4 decisions?
-- What decisions took longest to make?
+For each feature, track WHERE time went:
+
+- Designing specification: _____ min
+- Making quality decisions: _____ min
+- Writing code: _____ min
+- Testing: _____ min
+
+This shows if reusing the constitution actually reduces "quality decision" time in Features 2-4.
 
 ---
 ```
 
-Save this file. You'll fill it in as you complete each feature over the next lessons.
+Verify the file:
+
+```bash
+cat TIME_TRACKER.md
+```
+
+You'll fill in start/end times as you complete each feature lesson.
 
 ## Verify Your Project Structure
 
-You now have the foundation in place. Your project directory should contain:
-
-```
-ai-sales-assistant/
-├── .specify/
-│   ├── memory/
-│   │   └── constitution.md          (just created)
-│   ├── templates/
-│   └── (other Spec-Kit Plus files)
-├── TIME_TRACKER.md                  (just created)
-└── (Spec-Kit Plus config files)
-```
-
-Verify this structure:
+Check your setup:
 
 ```bash
 ls -la
-cat .specify/memory/constitution.md
 ```
 
-The first command shows your project contents. The second displays your constitution to confirm it was saved correctly. If either shows errors, troubleshoot before proceeding to Feature 1.
+**Expected output**: Shows `.specify/`, `TIME_TRACKER.md`, and config files.
+
+Verify constitution is in place:
+
+```bash
+ls -la .specify/memory/
+```
+
+**Expected output**: `constitution.md` listed
+
+Verify content is correct:
+
+```bash
+wc -l .specify/memory/constitution.md
+wc -l TIME_TRACKER.md
+```
+
+You should see:
+- `constitution.md`: ~160 lines (full feature specs + quality gates)
+- `TIME_TRACKER.md`: ~30 lines (empty cells to fill during feature builds)
+
+If files are missing or empty, troubleshoot before proceeding to Feature 1.
 
 ## Try With AI
 
-Before starting Feature 1 (Lead Profiler), get AI feedback on your decision framework and setup:
+**Prompt 1: Constitution Review**
 
-**Prompt 1**: "I've written a constitution for an AI Sales Assistant. Review it for completeness: Are there quality constraints or specifications I've missed that would cause problems when building the four features (Lead Profiler, ICP Scorer, Outreach Generator, Campaign Dashboard)?"
+Open your AI tool and copy your entire constitution. Ask:
 
-**Prompt 2**: "Help me design the specification for Feature 1 (Lead Profiler). What should I specify before starting implementation? Cover: What inputs the feature accepts, what structure the output should have, how to validate that a lead profile is 'complete' enough."
+"Review this constitution for missing constraints. Specifically: Are there quality gates that would prevent Feature 1 (Lead Profiler) or Feature 4 (Campaign Dashboard) from working together? What integration points between features did I miss?"
+
+**Observe**: The AI will likely identify gaps in your Feature 1 output format that affect Feature 2 (which consumes Feature 1's output). This is exactly what you need to fix BEFORE building.
+
+**Prompt 2: Feature 1 Specification Start**
+
+Now ask:
+
+"Using this constitution, outline the specification for Feature 1 (Lead Profiler). What should I specify? Cover: (1) What structure the input is (company name, URL, or both?), (2) What JSON structure the output has (show an example), (3) How I validate a profile is 'complete' according to the constitution's quality gate."
+
+**Observe**: The AI will help you move from constitution (principles) to specification (executable requirements).
+
+---
+
+**You're ready for Feature 1.** Close this lesson. Start Lesson 2: Build Feature 1: Lead Profiler. When you start, open TIME_TRACKER.md and record your start time.

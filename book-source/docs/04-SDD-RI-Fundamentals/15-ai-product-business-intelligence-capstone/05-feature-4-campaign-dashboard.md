@@ -7,84 +7,79 @@ title: "Feature 4: Campaign Dashboard"
 
 You've built three features. Now you aggregate them into a unified dashboard—your proof of intelligence acceleration. This is the test: **your target is to complete Feature 4 in less than 50% of your Feature 1 time**.
 
-**Start your timer now.** Write down your Feature 1 duration from Lesson 02. Calculate your target: F1 time ÷ 2. That's your ceiling. Can you build F4 underneath it?
+**Start your timer now.** Pull your Feature 1 duration from Lesson 02 and write it here:
 
-## Hands-On: Define Dashboard Scope
+```
+F1 Time (from Lesson 02): _____ minutes
+F4 Target (50% of F1):    _____ minutes
+```
 
-Stop reading. Open a file. Define what the dashboard displays:
+Calculate: F1 time ÷ 2. That's your ceiling. Can you build F4 underneath it?
 
+## Hands-On: Dashboard Scope (3 minutes)
+
+Stop reading. Open a terminal. You'll build a single Python script that reads the outputs from F1, F2, and F3 and combines them into one view.
+
+**Your dashboard displays:**
 - All processed leads in a table
 - ICP scores with visual indicators (emoji or symbols)
-- Outreach message previews
-- Campaign summary statistics
+- Outreach message previews (first 50 characters)
+- Campaign summary statistics (total leads, category counts, average score)
 
-**Your choice**: Output format.
-- Option A: CLI table (simpler, faster—recommended for hitting 50% target)
-- Option B: HTML file (more visual, takes longer)
+**Output format**: CLI table (fastest path to 50% target).
 
-**For this lesson, use Option A.** You can enhance later.
+Write down your scope now:
 
-Write this down. 2 minutes max.
+```
+Dashboard Input: ./campaign_data/
+  ├── profiles/ (from Feature 1)
+  ├── scores/ (from Feature 2)
+  └── outreach/ (from Feature 3)
 
-## Hands-On: Write Your Specification
+Dashboard Output: Formatted CLI table with summary
 
-You know the pattern now. This should be **much faster** than Feature 1 because you're reusing familiar structure.
+Script Name: campaign_dashboard.py
+```
 
-Open a new file: `specs/feature-4-dashboard/spec.md`
+## Hands-On: Write Your Specification (5 minutes)
 
-**Your specification template:**
+Open `specs/feature-4-dashboard/spec.md`. This spec should be **much shorter** than F1 because you're reusing familiar structure.
+
+**Your spec must include:**
 
 ```yaml
 intent: |
-  Aggregate all processed leads from Feature 1-3 outputs into a single
-  formatted table view. Display lead profiles, ICP scores, and outreach
-  message previews. Provide campaign-level summary statistics.
-
-success_criteria:
-  - All leads display in table format
-  - Leads sorted by ICP score (descending)
-  - Category shown with visual indicator (emoji)
-  - Summary statistics: total leads, hot/warm/cold counts, average score
-  - Handles empty campaigns gracefully
+  Aggregate processed leads from Feature 1-3 into a single CLI table.
+  Display company info, ICP scores, and outreach previews.
 
 inputs:
-  - type: directory
-    path: ./campaign_data/
-    description: Contains profiles/, scores/, outreach/ subdirectories
-    format: JSON files from Features 1-3
+  - directory: ./campaign_data/profiles/ (F1 output)
+  - directory: ./campaign_data/scores/ (F2 output)
+  - directory: ./campaign_data/outreach/ (F3 output)
 
 outputs:
-  - type: formatted_table
-    columns:
-      - company_name
-      - industry
-      - icp_score
-      - category (hot/warm/cold)
-      - outreach_preview (first 50 characters)
-    summary_section:
-      - total_leads
-      - hot_leads
-      - warm_leads
-      - cold_leads
-      - average_score
+  - CLI table with columns: company_name, industry, icp_score, category, outreach_preview
+  - Summary section: total_leads, hot_count, warm_count, cold_count, average_score
+
+success_criteria:
+  - All leads appear in table
+  - Sorted by ICP score (descending)
+  - Categories show with emoji (hot=🔥, warm=🟡, cold=🔵)
+  - Summary stats calculated correctly
+  - Handles empty campaign gracefully
 
 constraints:
-  - Single Python script (campaign_dashboard.py)
-  - Reuse JSON parsing from Feature 1-3
-  - No external dependencies beyond what Feature 1-3 already use
-  - Output to console only (no file writing)
-
-non_goals:
-  - Real-time data updates
-  - Database persistence
-  - HTML/web interface (defer to future iteration)
+  - Single Python script
+  - Reuse JSON parsing from F1-F3
+  - No new dependencies
+  - Console output only
 ```
 
-**Stop. Write YOUR spec. Don't copy this exactly.** Make it yours. 5 minutes max.
+**Key reuse pattern:** You're not building a new JSON parser. You're importing the parsing logic you already wrote in F1-F3.
 
-## Hands-On: Plan and Implement
+## Hands-On: Plan and Implement (10-15 minutes)
 
-Run the workflow:
+Execute the workflow:
 
 ```bash
 /sp.plan
@@ -92,38 +87,52 @@ Run the workflow:
 /sp.implement
 ```
 
-**Notice the difference from Feature 1:**
-- Your plan should be shorter (you've done this pattern 3 times)
-- Your tasks should reference existing Features (reuse, don't rebuild)
-- Your implementation should be faster (familiar patterns)
+**Speed signals (you should see these):**
+- Plan is 60-70% shorter than F1 plan (you know the pattern)
+- Tasks reference F1-F3 by name (e.g., "Reuse JSON parsing from Feature 1")
+- Implementation pulls existing code, doesn't rewrite it
 
-**Track time as you work.** You're measuring intelligence reuse.
+**If your implementation takes longer than expected:**
+- Did you copy-paste F1-F3 code instead of importing it? (Wrong—adds lines)
+- Did you add features beyond the spec? (Wrong—scope creep)
+- Did you write a new JSON parser instead of reusing F1? (Wrong—ignores intelligence)
 
-**If you hit 50% of F1 time before fully implementing:**
-This is the test. Stop and assess: what's missing? What could wait for Lesson 06?
+**Time check:** Are you still under your F1 time?
 
-## Hands-On: Create Test Data
+## Hands-On: Create Test Data (3 minutes)
 
-Populate your dashboard with real data. Run the same companies through your Feature 1-3 pipeline:
+Run all three companies through your Feature 1-3 pipeline:
 
 ```bash
 mkdir -p campaign_data/{profiles,scores,outreach}
 
-# Process leads through your existing features
+# Stripe
 python lead_profiler.py https://stripe.com > campaign_data/profiles/stripe.json
 python icp_scorer.py campaign_data/profiles/stripe.json > campaign_data/scores/stripe.json
 python outreach_generator.py campaign_data/profiles/stripe.json campaign_data/scores/stripe.json > campaign_data/outreach/stripe.json
 
+# Shopify
 python lead_profiler.py https://shopify.com > campaign_data/profiles/shopify.json
 python icp_scorer.py campaign_data/profiles/shopify.json > campaign_data/scores/shopify.json
 python outreach_generator.py campaign_data/profiles/shopify.json campaign_data/scores/shopify.json > campaign_data/outreach/shopify.json
 
+# Notion
 python lead_profiler.py https://notion.so > campaign_data/profiles/notion.json
 python icp_scorer.py campaign_data/profiles/notion.json > campaign_data/scores/notion.json
 python outreach_generator.py campaign_data/profiles/notion.json campaign_data/scores/notion.json > campaign_data/outreach/notion.json
 ```
 
-## Hands-On: Run Your Dashboard
+**Verify data created:**
+
+```bash
+ls campaign_data/profiles/
+ls campaign_data/scores/
+ls campaign_data/outreach/
+```
+
+Each should have 3 files: stripe.json, shopify.json, notion.json.
+
+## Hands-On: Run Your Dashboard (2 minutes)
 
 Execute your implementation:
 
@@ -131,7 +140,7 @@ Execute your implementation:
 python campaign_dashboard.py ./campaign_data/
 ```
 
-**Expected output (approximate):**
+**Expected output (your actual numbers may differ):**
 
 ```
 ╔════════════════════════════════════════════════════════════════════════════╗
@@ -147,30 +156,112 @@ python campaign_dashboard.py ./campaign_data/
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```
 
-Verify: Does every lead appear? Are scores sorted descending? Do categories show?
+**Verification checklist** (all must pass):
 
-**Stop your timer.**
+- ✓ All 3 leads appear in table
+- ✓ Table sorted by score (highest first)
+- ✓ Category shows with emoji
+- ✓ Outreach preview truncated to ~50 chars
+- ✓ Summary stats correct
 
-## Hands-On: Calculate Your Acceleration
+If any fail, check:
+- Is your F1 JSON output valid?
+- Is your F2 scoring logic correct?
+- Did you handle the JSON file paths correctly?
 
-Pull your Feature 1 time from Lesson 02. Fill in your actual times:
+## Hands-On: Measure Your Acceleration
 
-| Feature | Your Time | % of F1 | Target |
-|---------|-----------|---------|--------|
-| F1: Lead Profiler | ___ min | 100% | 100% |
-| F2: ICP Scorer | ___ min | ___% | <100% |
-| F3: Outreach Generator | ___ min | ___% | <75% |
-| F4: Campaign Dashboard | ___ min | ___% | **<50%** |
+**Stop your timer now.**
 
-**The question:** Did F4 take less than 50% of F1?
+Get your Feature 1 time from Lesson 02. Fill in your actual times:
 
-- **Yes**: You've proven intelligence accumulation. Patterns and skills you created in F1 accelerated F2, F3, F4. Reusable intelligence works.
-- **No**: Lesson 07 (Retrospective) will analyze why. Was there a blocker? An underestimated complexity? A skill gap? Track it.
+| Feature | Your Time | % of F1 | Target | Status |
+|---------|-----------|---------|--------|--------|
+| F1: Lead Profiler | ___ min | 100% | 100% | Baseline |
+| F2: ICP Scorer | ___ min | ___% | <100% | Should be faster |
+| F3: Outreach Generator | ___ min | ___% | <75% | Should be faster |
+| F4: Campaign Dashboard | ___ min | ___% | **<50%** | THE TEST |
 
-Write this in a file: `TIME_TRACKER.md`
+**The test result:**
+
+```
+If F4 time < 50% of F1 time:
+  ✓ Intelligence accumulation proven
+  ✓ Reusable patterns work
+  ✓ You've proven spec-driven development compounds
+
+If F4 time ≥ 50% of F1 time:
+  ? Blocker detected (Lesson 07 will diagnose)
+  ? Scope creep happened
+  ? Reuse didn't materialize as expected
+```
+
+Save this to `TIME_TRACKER.md`:
+
+```markdown
+# Intelligence Acceleration Results
+
+## Actual Times
+- Feature 1: ___ minutes (Lesson 02)
+- Feature 2: ___ minutes
+- Feature 3: ___ minutes
+- Feature 4: ___ minutes
+
+## Analysis
+- F4 as % of F1: ___% (Target: <50%)
+- Result: PASS / NEEDS REVIEW
+
+## Observations
+What accelerated F4?
+What slowed it down?
+```
+
+## Troubleshooting Dashboard Issues
+
+**Problem: "No such file or directory: campaign_data/profiles/..."**
+- Solution: Did you run the test data creation commands? Run the 9 commands above.
+
+**Problem: Table shows empty (no leads)**
+- Check: `cat campaign_data/profiles/stripe.json` — is F1 JSON valid?
+- Check: Did you run Feature 1, 2, and 3 successfully before F4?
+
+**Problem: Scores show 0 or wrong values**
+- Check: Is your ICP scorer logic correct? (Lesson 03)
+- Check: Did you pass the right JSON files to F2?
+
+**Problem: "Average: NaN" in summary**
+- Check: Are all scores valid numbers? Did F2 output JSON correctly?
+
+**Problem: Table doesn't sort by score**
+- Check: Is your sort logic `sorted(..., key=lambda x: x['icp_score'], reverse=True)`?
+
+**If you're stuck:**
+Ask your AI tool: "My dashboard runs but shows [specific problem]. Here's my code: [paste campaign_dashboard.py]. What's wrong?"
 
 ## Try With AI
 
-**Prompt 1**: "Here's my feature acceleration data: F1=[X]min, F2=[Y]min, F3=[Z]min, F4=[W]min. Analyze this trajectory. What drove the acceleration? What would I need to do to push F4 even lower?"
+**Setup**: You've completed Feature 4 and calculated your F4 time. Now analyze what you built.
 
-**Prompt 2**: "Based on my acceleration pattern, if I built a Feature 5 (Lead Nurture Sequencer), how long should it take? What patterns from F1-F4 would transfer to F5?"
+**Prompt 1 (Acceleration Analysis)**:
+```
+Here's my feature acceleration data:
+- F1: [X] minutes
+- F2: [Y] minutes
+- F3: [Z] minutes
+- F4: [W] minutes
+
+Analyze: What drove the acceleration from F1 to F4?
+What patterns from F1-F3 helped me build F4 faster?
+```
+
+**Prompt 2 (Extrapolation)**:
+```
+Based on this acceleration pattern, if I built Feature 5 (Lead Nurture Sequencer),
+how long should it take?
+What patterns from F1-F4 would directly transfer to F5?
+What's new about F5 that wouldn't transfer?
+```
+
+**Expected outcomes**:
+- Prompt 1 reveals your reuse patterns (JSON parsing, sorting logic, summary calculations)
+- Prompt 2 lets you predict F5 complexity based on F1-F4 acceleration
