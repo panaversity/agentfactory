@@ -141,16 +141,27 @@ module.exports = function panaversityFSPlugin(context, options) {
       } catch (error) {
         console.error('[PanaversityFS] Error fetching content:', error.message);
 
-        // Check if docs/ exists - if not, this is a fatal error
-        if (!fs.existsSync(docsPath)) {
+        // Check if docsfs/ has any content (not just exists - it may be empty)
+        // The directory is pre-created empty at plugin init, so we need to check for actual files
+        const hasContent = fs.existsSync(docsPath) &&
+          fs.readdirSync(docsPath).some(entry => {
+            const entryPath = path.join(docsPath, entry);
+            return fs.statSync(entryPath).isFile() ||
+              (fs.statSync(entryPath).isDirectory() && fs.readdirSync(entryPath).length > 0);
+          });
+
+        if (!hasContent) {
+          // docsfs/ is empty or doesn't exist - this is a fatal error
+          // The build cannot proceed without content
           throw new Error(
-            `PanaversityFS failed to fetch content and no docs/ folder exists. ` +
-              `Either disable the plugin or ensure the server is running at ${serverUrl}`
+            `PanaversityFS failed to fetch content and docsfs/ folder is empty. ` +
+              `Server error: ${error.message}. ` +
+              `Either disable the plugin (PANAVERSITY_PLUGIN_ENABLED=false) or ensure the server is running at ${serverUrl}`
           );
         }
 
-        // docs/ exists, warn and continue with existing content
-        console.warn('[PanaversityFS] Using existing docs/ folder as fallback');
+        // docsfs/ has content from a previous build, warn and continue
+        console.warn('[PanaversityFS] Using existing docsfs/ folder as fallback');
         return {
           totalFiles: 0,
           writtenFiles: 0,
