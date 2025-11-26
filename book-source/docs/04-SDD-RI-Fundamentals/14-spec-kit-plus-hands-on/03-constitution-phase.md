@@ -1,134 +1,71 @@
 ---
-title: "Constitution Phase - Project-Wide Rules"
+title: "Constitution Phase — Project-Wide Quality Standards"
 chapter: 14
 lesson: 3
-duration_minutes: 90
-
-# HIDDEN SKILLS METADATA (Institutional Integration Layer)
-# Not visible to students; enables competency assessment and differentiation
-skills:
-  - name: "Creating Project Constitution"
-    proficiency_level: "B1"
-    category: "Technical"
-    bloom_level: "Apply"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can write project Constitution defining video output quality, Gemini usage constraints, and testing requirements"
-
-  - name: "Distinguishing Global Rules from Feature Requirements"
-    proficiency_level: "B1"
-    category: "Conceptual"
-    bloom_level: "Understand"
-    digcomp_area: "Information Literacy"
-    measurable_at_this_level: "Student can explain difference between Constitution (applies to ALL video features) and Specification (applies to ONE video generation task)"
-
-  - name: "Understanding Cascade Starting Point"
-    proficiency_level: "B1"
-    category: "Conceptual"
-    bloom_level: "Understand"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student recognizes that Constitution quality determines all downstream video generation quality"
-
-  - name: "Defining Quality Standards for AI-Generated Content"
-    proficiency_level: "B1"
-    category: "Technical"
-    bloom_level: "Apply"
-    digcomp_area: "Safety & Security"
-    measurable_at_this_level: "Student can define testable quality criteria for video output (format, codec, duration, playback validation)"
-
-  - name: "Technical Constraint Documentation"
-    proficiency_level: "B1"
-    category: "Technical"
-    bloom_level: "Apply"
-    digcomp_area: "Safety & Security"
-    measurable_at_this_level: "Student documents Gemini free tier constraints, Playwright session requirements, and recovery patterns"
-
-learning_objectives:
-  - objective: "Write a project Constitution defining output quality, Gemini constraints, and testing requirements for video generation project"
-    proficiency_level: "B1"
-    bloom_level: "Apply"
-    assessment_method: "Constitution document review against template completeness, testability, and video-domain relevance"
-
-  - objective: "Explain why Constitution is created once per project, not per video generation task"
-    proficiency_level: "B1"
-    bloom_level: "Understand"
-    assessment_method: "Written or verbal explanation of Constitution scope across video, thumbnail, metadata features"
-
-  - objective: "Understand how Constitution quality cascades through all downstream phases"
-    proficiency_level: "B1"
-    bloom_level: "Understand"
-    assessment_method: "Identification of how Constitution rules affect video specifications and implementation plans"
-
+duration_minutes: 30
+proficiency_level: "A2"
 cognitive_load:
-  new_concepts: 9
-  assessment: "9 new concepts (Constitution role, Global vs feature rules, Cascade starting point, Video quality standards, Gemini constraints, Playwright requirements, Testing approach, Retry patterns, Git workflow integration) within B1 limit of 10 ✓"
-
-differentiation:
-  extension_for_advanced: "Write Constitution for 2-3 different video project types (product demo, tutorial, social media clips); compare how Gemini, output format, and quality standards differ by project type"
-  remedial_for_struggling: "Use provided Constitution template; fill in only essential sections (video output, Gemini constraints, error recovery, testing) before moving to Lesson 4"
-
-# Generation metadata
+  new_concepts: 4
+learning_objectives:
+  - "Use `/sp.constitution` command to define project-wide quality standards"
+  - "Understand how constitution guides all downstream specification and implementation phases"
+  - "Write testable quality criteria that apply across all features in a project"
+  - "Distinguish between constitution (global rules) and specification (feature-specific requirements)"
 generated_by: "content-implementer v1.0.0"
-source_spec: "specs/chapter-14-video-pivot/spec.md"
-created: "2025-11-25"
-last_modified: "2025-11-25"
+source_spec: "specs/chapter-14-spec-kit-plus/lesson-3-spec.md"
+created: "2025-11-26"
+last_modified: "2025-11-26"
 git_author: "Claude Code"
-workflow: "manual-implementation"
-version: "1.0.0"
+workflow: "/sp.implement"
+version: "2.0.0"
 ---
 
-# Constitution Phase - Project-Wide Rules
+# Constitution Phase — Project-Wide Quality Standards
 
-Welcome to the third lesson of hands-on SDD-RI development. You've installed the Spec-Kit Plus framework and configured your AI tool for Playwright automation. Now it's time to establish the **foundational rules** that will guide every part of your video generation project.
+Welcome to hands-on work with `/sp.constitution`. In Chapter 13, you learned that a Constitution is a document defining immutable standards applying to **all features** in a project. Now you'll create one for a research paper project.
 
-The Constitution is Spec-Kit Plus's answer to a critical question: **What standards apply to every piece of work you do?** Not just for this video feature, but for all features. Not just for this demo, but for the life of the project.
+The Constitution answers a critical question: **What standards apply to every piece of work I do?** Not just for this paper, but for every paper in your academic career. Not just for this deadline, but for your professional reputation.
 
-Imagine you're working with your AI assistant to generate product demo videos. Before you start, you need to agree on rules so nothing breaks:
-
-*   What if you want all videos to be **MP4 format with H.264 codec**, but your assistant generates **WebM format**?
-*   What if you decide videos must **download successfully** within **60 seconds**, but your assistant times out at **90 seconds**?
-
-That would be a mess!
-
-The **Constitution** is your team's **rulebook** for video generation. It defines the standards that both you and your AI orchestrator **MUST** follow. It makes sure every video, every upload, every automation workflow follows the same quality standards.
+Before diving in, let's understand what a Constitution actually is and why it matters for **any** project—papers, code, data pipelines, books.
 
 ---
 
 ## What Is a Constitution?
 
-Before writing one, let's understand what a Constitution actually is and why it matters for video generation.
-
 ### Constitution: Global Rules, One Per Project
 
-A **Constitution** is a document that defines **immutable standards** applying to **all video-related features** in a project. It's distinct from a **Specification**, which applies to **one feature**.
+A **Constitution** is a document that defines **immutable standards** applying to **all features** in a project. It's distinct from a **Specification**, which applies to **one feature**.
 
-**Constitution applies to**:
-- Video output standards (format, codec, resolution, duration limits)
-- Gemini.google.com usage constraints (free tier limits, session handling, timeout policy)
-- Browser automation patterns (Playwright session persistence, error recovery, retry logic)
-- Testing and validation (video playback verification, file format validation, automated testing)
-- Quality gates (download success criteria, format verification, duration validation)
-- Error handling strategies (retry policies, timeout handling, session recovery)
+**Constitution applies to (research paper project)**:
+- Quality standards for all papers (citation accuracy, source verification, writing clarity)
+- Audience-level consistency (all papers written for same proficiency level)
+- Academic integrity requirements (plagiarism checking, source documentation)
+- Structural standards (formatting, section organization, reference style)
+- Revision and review processes (how feedback loops work)
 
-**Specification applies to**:
-- Specific video feature requirements (product demo script, background music, text overlay specifications)
-- User stories for that video feature
-- Acceptance criteria for that specific video
-- Edge cases specific to that video type
+**Specification applies to (one specific research paper)**:
+- This paper's thesis statement
+- Specific research questions to explore
+- Sources to investigate (this paper's sources, not all papers)
+- Target length and deadline
+- Specific acceptance criteria for this paper's completion
 
 **Example**:
 
 ```
-CONSTITUTION (applies to ALL video features):
-  ✅ "All video outputs must be MP4 format with H.264 codec"
-  ✅ "All videos must be downloadable within 60 seconds"
-  ✅ "Gemini timeouts retry up to 3 times before failing"
-  ✅ "All video downloads must be validated for format and playability"
+CONSTITUTION (applies to ALL research papers):
+  ✅ "All papers must cite primary sources, not just secondary sources"
+  ✅ "All claims must be verified against authoritative sources"
+  ✅ "Writing must be clear and direct (Flesch-Kincaid grade 10-12)"
+  ✅ "All papers reviewed for plagiarism before submission"
+  ✅ "All references formatted in APA style"
 
-SPECIFICATION (applies only to PRODUCT DEMO video):
-  ✅ "Demo video shows sign-up workflow in 45 seconds"
-  ✅ "Background music: royalty-free, 10 seconds, fades at end"
-  ✅ "Text overlay displays company logo (top-right corner)"
-  ✅ "Video background: clean desk environment with neutral colors"
+SPECIFICATION (applies only to SPECIFIC RESEARCH PAPER):
+  ✅ "This paper explores AI development methodology"
+  ✅ "Target length: 5,000 words"
+  ✅ "Minimum 12 peer-reviewed sources required"
+  ✅ "Due date: December 15"
+  ✅ "Thesis: AI-native development requires thinking in specifications, not code"
 ```
 
 ### Why Constitution Matters: The Cascade
@@ -138,271 +75,412 @@ The Constitution is the **starting point of the cascade**:
 ```
 Clear Constitution
     ↓
-(ensures that every spec follows video quality standards)
+(ensures every spec respects quality standards)
     ↓
 Clear Specification
     ↓
-(ensures that planning accounts for Gemini constraints)
+(ensures planning accounts for quality gates)
     ↓
 Clear Plan
     ↓
-(ensures that tasks handle Playwright automation correctly)
+(ensures tasks include review and verification)
     ↓
 Clear Tasks
     ↓
-(enables AI to generate reliable video automation code)
+(enables AI to generate writing that's accurate and well-cited)
     ↓
-Working Video Generation System
+Published Research Paper
 ```
 
 **Weak Constitution** produces:
-- Specs that don't specify video format (leading to incompatible outputs)
-- Plans that don't account for Gemini free tier timeouts
-- Code that lacks error recovery when sessions fail
-- Videos that can't be validated for quality after generation
-- Integration issues because output standards weren't enforced upstream
+- Specs that don't specify citation requirements (leading to uncited claims)
+- Plans that don't include plagiarism checking
+- Writing that lacks source verification
+- Papers that fail fact-checking
+- Integration issues because quality standards weren't enforced upstream
 
 **Strong Constitution** produces:
-- Specs that automatically include output format requirements
-- Plans with Gemini timeout handling built in
-- Code with robust session recovery and retry logic
-- Automated validation that verifies video format and playability
-- Integration that works because standards were clear from the start
+- Specs that automatically include source quality and citation requirements
+- Plans with built-in fact-checking and verification steps
+- Writing that's automatically verified against sources
+- Papers that pass publication standards
+- Integration that works because quality was clear from the start
 
-### Constitution is One-Time, Video Work is Repetitive
+### Constitution Is One-Time, Project Work Is Repetitive
 
-This is crucial: You write the Constitution **once per project**. Then, for each video feature, you:
+This is crucial: You write the Constitution **once per project**. Then, for each paper you write, you:
 
-1. Write a specification (addressing this video feature only)
+1. Write a specification (addressing this paper only)
 2. Generate a plan
 3. Generate tasks
-4. Implement the video generation code
+4. Implement the paper with AI collaboration
 
-But you never rewrite the Constitution for each video. It's the foundation everything builds on.
+But you never rewrite the Constitution for each paper. It's the foundation everything builds on.
 
 **Best Practice Pattern**:
 
 ```
-1. Initialize project
-2. Write Constitution
+1. Initialize research project
+2. Write Constitution (quality standards for ALL papers in this project)
 3. Commit Constitution to git
-4. FOR EACH VIDEO FEATURE:
-   - Run /sp.specify (new specification)
+4. FOR EACH PAPER:
+   - Run /sp.specify (new specification for this paper)
    - Run /sp.clarify (refine specification)
-   - Run /sp.plan (new plan for this video)
-   - Run /sp.tasks (new tasks for this video)
-   - Run /sp.implement (new video generation for this video)
-   - Commit video feature to git
+   - Run /sp.plan (new plan for this paper)
+   - Run /sp.tasks (new tasks for this paper)
+   - Run /sp.implement (write paper with AI collaboration)
+   - Commit paper to git
 ```
 
-#### 💬 AI Colearning Prompt
-> "Why does the Constitution cascade its quality to all downstream phases? What would happen if I wrote a vague Constitution about video output (like 'good quality videos') but tried to write a precise specification for a product demo video?"
+#### 💬 Explore This Concept
+
+> "Why does a strong Constitution cascade to all downstream work? What would happen if I wrote a vague Constitution like 'papers should be good' but tried to write a precise specification for a specific research paper?"
 
 ---
 
-## Reading Existing Constitutions (15 minutes)
+## Part A: Understanding `/sp.constitution` Command
 
-Before writing your own, let's look at the base Constitution file. Open:
+Before writing your Constitution, let's understand what the `/sp.constitution` command does.
 
-```bash
-.specify/memory/constitution.md
+### What `/sp.constitution` Does
+
+The `/sp.constitution` command **interactively guides you** to create a Constitution by asking targeted questions about:
+
+1. **Project intent**: What are you building? What matters most?
+2. **Quality principles**: What non-negotiable standards apply to ALL work?
+3. **Constraints**: What limitations or requirements always apply?
+4. **Success criteria**: How will you know if quality standards are met?
+5. **Technical requirements**: What tools, formats, or processes are required?
+
+**The command does NOT**:
+- Write your Constitution for you (you make decisions)
+- Assume your project type (it asks)
+- Copy templates blindly (it personalizes to YOUR project)
+
+### Constitution Structure
+
+When you run `/sp.constitution`, the agent creates a document with sections like:
+
+```markdown
+# Project Constitution
+
+## Section 1: Core Principles
+[Your project's non-negotiable values]
+
+## Section 2: Quality Standards
+[Testable criteria for evaluating work]
+
+## Section 3: Technical Requirements
+[Tools, formats, processes required]
+
+## Section 4: Constraints
+[Limitations that always apply]
+
+## Section 5: Success Criteria
+[How to verify quality standards are met]
 ```
 
-Remember the Goal: document the non-negotiable principles that every video spec, plan, and task must honor.
-
-**The Key Insight**: Constitutions are project-specific. Your video generation Constitution focuses on Gemini constraints, output formats, and browser automation—irrelevant for a calculator or data pipeline project.
+Each section contains **specific, testable** statements—not vague aspirations.
 
 #### 🎓 Expert Insight
-> In AI-native development, the Constitution isn't bureaucracy—it's leverage. Write it once with clear, testable standards ("all videos must be MP4 with H.264 codec and download within 60 seconds"), and every AI-generated spec, plan, and implementation automatically inherits those standards. Vague Constitutions produce vague downstream work. Precise Constitutions produce precise downstream work. The 30 minutes you invest here saves hours of rework later when you discover your videos are in the wrong format or fail to download reliably.
+
+> In specification-driven development, the Constitution isn't bureaucracy—it's leverage. Write it once with clear, testable standards ("all papers must cite primary sources and pass plagiarism checking before submission"), and every specification and plan you create automatically inherits those standards. Vague Constitutions produce vague downstream work. Precise Constitutions produce precise downstream work.
 
 ---
 
-## Part B: Writing Your Video Generation Constitution
+## Part B: Create Your Research Paper Constitution
 
-Now let's write YOUR Constitution for the video generation project.
+Now you'll create a Constitution for a research paper project using `/sp.constitution`.
 
-### Step 1: Create the Constitution
+### Step 1: Plan Your Constitution (5 minutes)
 
-In your project directory:
+Before running the command, think about your research paper project. Answer these questions:
 
-1. Start an agent chat and type `/sp.constitution`.
-2. Explain your video project requirements:
+**About your project**:
+- What is the research paper about?
+- Who is the audience (academic, general public, specific discipline)?
+- What's most important: accuracy? Clarity? Innovation? Accessibility?
+
+**About your quality standards**:
+- What citation standard matters (APA, Chicago, MLA)?
+- Must sources be primary or secondary or both?
+- How will you verify claims are accurate?
+- What writing clarity is expected?
+
+**About constraints**:
+- How long should papers be (word count range)?
+- How many sources are required?
+- Are there format requirements (margins, fonts, spacing)?
+
+### Step 2: Run `/sp.constitution` Command
+
+Open your agent (Claude Code or similar) and run:
+
+```bash
+/sp.constitution
+```
+
+**Then describe your research paper project**. Example prompt:
+
 ```
 /sp.constitution
 
-Project principles and standards:
-- Generate reliable, downloadable videos from Gemini.google.com
-- Use Playwright MCP for browser automation and session management
-- Ensure all videos pass quality validation before storage
-- Document all AI interactions with clear error recovery
-- Follow production-ready patterns for automation
+Project: Research paper on AI-native software development
 
-Technical stack:
-- Gemini.google.com (free tier, no API key required)
-- Playwright MCP for browser control and session persistence
-- Node.js environment for automation
-- Local file storage with validation
+Core principles:
+- Accuracy through primary source verification
+- Clarity for academic audience (computer science background)
+- Reproducibility (all claims cited and traceable)
+- Rigor (only peer-reviewed sources or authoritative technical documentation)
 
-Quality requirements:
-- All videos must be MP4 format with H.264 codec
-- Video duration: 45-60 seconds (within Gemini free tier limits)
-- All videos must validate successfully after download (format check, playability test)
-- Gemini timeouts retry up to 3 times before failing
-- Session recovery for interrupted Playwright operations
-- All automation operations logged for debugging
+Key standards:
+- All factual claims must be traceable to sources
+- Citation format: APA style
+- Source types: minimum 50% peer-reviewed articles
+- Plagiarism check: 0% tolerance before submission
+- Writing clarity: Flesch-Kincaid grade 10-12
+
+Constraints:
+- Word count: 5,000-7,000 words
+- Minimum 15 sources
+- Deadlines: draft by Dec 1, final by Dec 15
+- Format: PDF with embedded citations
+
+Success criteria:
+- All claims verified against sources
+- Zero plagiarism detected
+- Passes fact-checking review
+- Meets word count and source requirements
 ```
 
-3. Agent Does:
-  - Creates comprehensive constitution file
-  - Sets up video output standards and Gemini constraints
-  - Defines browser automation patterns and session recovery
-  - Establishes quality gates and validation requirements
+**What the agent does**:
+- Asks clarifying questions if needed
+- Creates a comprehensive Constitution file
+- Defines testable quality standards
+- Documents all constraints and success criteria
+- Shows you the generated Constitution
 
-### Step 2: Improve your Constitution
+### Step 3: Review and Improve Your Constitution
 
-Think about what "good video generation" means for this project:
+After the agent generates your Constitution, **review it carefully**:
 
-```markdown
-Update .specify/memory/constitution.md to improve Video Output Standards
+**Check these aspects**:
 
-## Video Output Standards
-- All videos must be MP4 format with H.264 codec
-  - Example: `video_demo_2025-11-25.mp4` (not WebM, not MOV, not AVI)
-- Resolution: 1920x1080 preferred, 1280x720 acceptable
-- Frame rate: 30 FPS (standard for web videos)
-- File size: under 50MB for reliable YouTube upload
-- Duration: 45-60 seconds (respects Gemini free tier timeout)
+1. **Are standards testable?** (NOT vague like "good writing")
+   - ❌ Vague: "Papers should be well-written"
+   - ✅ Testable: "Papers use active voice 75% of time; Flesch-Kincaid grade 10-12"
 
-## Gemini.google.com Constraints
-- Free tier only (no API key, browser-based)
-- Maximum generation timeout: 90 seconds wall-clock time
-- Session persistence required (maintain Google authentication across retries)
-- No concurrent video generations (single-session model)
-- Rate limiting: 1 video per 5 minutes (conservative, prevents blocks)
+2. **Are constraints explicit?** (NOT assumptions)
+   - ❌ Assumption: "Sources should be recent"
+   - ✅ Explicit: "Primary sources published within 10 years; seminal papers published within 30 years"
 
-## Browser Automation (Playwright MCP)
-- Session persistence: maintain browser state across operations
-- Timeout handling: retry failed downloads up to 3 times
-- Error recovery: detect and recover from network interruptions
-- Logging: log all automation steps for debugging
+3. **Are success criteria measurable?** (NOT subjective)
+   - ❌ Subjective: "Paper is well-researched"
+   - ✅ Measurable: "15+ sources; 50%+ peer-reviewed; all claims cited"
 
-## Quality Validation
-- Video download verification: confirm file exists and is readable
-- Format validation: verify MP4 codec and container
-- Playability test: attempt 5-second playback using system video player
-- Metadata check: confirm duration is 45-60 seconds as specified
-```
+4. **Does it cover all essential categories?**
+   - Quality standards (citation accuracy, source types, writing clarity)
+   - Constraints (length, format, deadline)
+   - Academic integrity (plagiarism checking, source verification)
+   - Review process (how feedback loops work)
 
-**Try writing 4-5 quality standards for your video project. Think about**:
-- What format and constraints will ensure YouTube accepts your videos?
-- What would prevent videos from uploading reliably?
-- What Gemini limits might break your automation?
-- How will you know if video generation succeeded?
-
-### Step 3: Review and Complete Your Constitution
-
-**Your Prompt:**
+**If anything is vague or missing, ask the agent**:
 
 ```
-Show me the generated constitution file and explain what it contains.
+Review my Constitution and suggest improvements:
+(1) Which standards are testable vs vague?
+(2) What critical standards am I missing?
+(3) Are constraints realistic for this research project?
+Suggest 2-3 concrete improvements.
 ```
 
-**Agent Does:**
+### Step 4: Commit Constitution to Git
 
-- Displays the constitution content
-- Explains each section:
-  - **Video Output Standards** - Format, codec, resolution, duration constraints
-  - **Gemini Constraints** - Free tier limits, timeout policy, session requirements
-  - **Browser Automation Patterns** - Session handling, error recovery, retry logic
-  - **Quality Validation** - How videos are tested after generation
-  - **Error Handling Strategy** - Retry policies and session recovery patterns
+Once your Constitution is complete and reviewed, commit it:
+
+```bash
+/sp.git.commit_pr Commit research paper constitution to feature branch
+```
+
+**Why commit first?**
+1. **Immutability**: Constitution is foundational; committing signals "this is our standard"
+2. **Clarity**: Everyone sees Constitution as baseline for all paper work
+3. **Traceability**: Git history shows when and why Constitution was created
+4. **Reversibility**: You can revert to previous Constitution if needed (rarely)
 
 ---
 
-## Part C: Commit Constitution to Git (15 minutes)
+## Part C: How Constitution Guides Downstream Phases
 
-Here's a critical best practice: **Always commit the Constitution before starting feature work.**
+Now that you've created a Constitution, let's see how it cascades through every other phase.
 
-### Why Commit First?
+### Constitution → Specification Phase
 
-1. **Immutability**: Constitution is foundational; committing it signals "this is our standard for video generation"
-2. **Clarity**: Everyone (including your AI orchestrator) sees the Constitution as the baseline for all video features
-3. **Traceability**: Git history shows when and why Constitution was created and updated
-4. **Reversibility**: If you need to, you can revert to a previous Constitution (rarely happens, but important)
+When you write a specification for a **specific research paper**, your Constitution automatically influences it:
 
-### Commit Steps
-
-**Your Prompt**
-
-Use the agent to commit and open a PR for the constitution:
-
+**Your Constitution says**:
 ```
-/sp.git.commit_pr Commit and push the constitution along with current work.
+- All papers must cite primary sources
+- Minimum 50% peer-reviewed sources
+- APA citation format
+- Flesch-Kincaid grade 10-12
+- Zero plagiarism tolerance
 ```
 
-**Agent Does:**
+**Your Specification for Paper #1 must respect this**:
+```
+This specification inherits Constitution standards:
+- Thesis: "Explain ML model interpretability for non-technical audience"
+- Length: 5,000 words
+- Sources: minimum 15 total, minimum 8 peer-reviewed, minimum 5 primary
+- Format: APA style (inherited from Constitution)
+- Deadline: December 15
+- Success criteria: Thesis supported by cited sources, Flesch-Kincaid 10-12
+```
 
-- Create a conventional commit for the constitution and push to a new feature branch
-- Create a draft PR (or share the compare URL if `gh` auth is missing)
+Notice: You DON'T re-specify citation format or plagiarism checking. The Constitution already requires it.
 
+### Constitution → Plan Phase
 
-The Constitution is now **the foundation** for all your video generation work. Every specification you write, every plan you generate, every task you break down—they all work within the Constitution's constraints.
+When you create a plan for research, your Constitution shapes the planning:
 
-#### 🤝 Practice Exercise
+**Your Constitution says**:
+```
+- All claims must be verified against sources
+- Plagiarism check required before submission
+- Fact-checking review process in place
+```
 
-> **Ask your AI**: "I've created my video generation Constitution with standards for MP4 format, Gemini timeout handling, and video playback validation. Can you review `.specify/memory/constitution.md` and tell me: (1) Are my quality standards testable or vague? (2) Did I miss any critical standards for reliable video generation? Then explain how these standards will cascade to my video specifications and plans."
+**Your Plan must account for this**:
+```
+Phase 1: Research and source identification (find sources meeting Constitution standards)
+Phase 2: Detailed outline with source assignments (map claims to sources)
+Phase 3: Draft writing (write with inline citations as per Constitution)
+Phase 4: Fact-checking pass (verify all claims against sources)
+Phase 5: Plagiarism scanning (check against Constitution's 0% tolerance)
+Phase 6: Final review and submission
+```
 
-**Expected Outcome**: Your AI should identify whether standards like "all videos must be MP4 with H.264 codec and download within 60 seconds" are testable (✅) versus vague phrases like "good video quality" (❌), suggest any missing video-specific standards (like Gemini timeout retry logic), and explain how the Constitution influences video specification-writing.
+Notice: The plan INCLUDES verification steps because Constitution REQUIRES them.
+
+### Constitution → Task Phase
+
+When you break work into tasks, Constitution constraints apply:
+
+**Your Constitution says**:
+```
+- Maximum 7,000 words
+- Minimum 15 sources (50%+ peer-reviewed)
+- APA format
+- Deadline: December 15
+```
+
+**Your Tasks must respect these**:
+```
+Task 1: Find 15+ sources (prioritize peer-reviewed)
+Task 2: Create outline with source assignments
+Task 3: Write Section 1 (Introduction, ~1,200 words with citations)
+Task 4: Write Section 2 (Literature Review, ~2,000 words with citations)
+Task 5: Write Section 3 (Analysis, ~2,000 words with citations)
+Task 6: Write Conclusion (~800 words)
+Task 7: Format all citations in APA style
+Task 8: Run plagiarism check (must be 0% before submission)
+Task 9: Fact-check all claims
+Task 10: Final review and submission
+```
+
+Every task respects Constitution constraints (word count, sources, format, plagiarism check).
+
+### Constitution → Implementation
+
+When you write the paper with AI collaboration, Constitution standards guide every interaction:
+
+```
+You: "Write the Introduction section for my research paper.
+Use these sources: [list].
+Follow the Constitution: APA citations, Flesch-Kincaid 10-12,
+verify all claims against sources."
+
+AI: "I'll write the introduction accounting for:
+- In-text APA citations for each claim
+- Plain language targeting grade 10-12 reading level
+- Verification of claims against provided sources
+- ~1,200 words to fit your Constitution word-count budget"
+
+[AI writes introduction with citations and source verification]
+
+You: "This is good, but the third claim about ML interpretability
+needs a primary source, not just secondary. The Constitution requires
+50% primary sources. Can you verify this claim?"
+
+AI: "You're right. Let me check the sources... The primary research
+on LIME (Local Interpretable Model-Agnostic Explanations) is at [source].
+I'll revise to cite this primary paper instead."
+
+[AI revises with primary source citation]
+```
+
+Notice: Constitution REQUIREMENTS (primary sources, APA style, verification) shape every interaction.
+
+#### 🤝 Reflection Exercise
+
+> Think about YOUR Constitution for the research paper project. How would these standards change the way you write the paper? What would be different if your Constitution required "primary sources only" vs "primary sources not required"? How would that change your Plan? Your Tasks? Your Implementation?
 
 ---
 
 ## Common Mistakes
 
-### Mistake 1: Copying Constitution from Another Project Without Customization
+### Mistake 1: Writing Too General a Constitution
 
-**The Error**: "I'll just use a Python calculator Constitution for my video project."
+**The Error**: "All papers must be good quality and well-researched"
 
-**Why It's Wrong**: Constitutions are project-specific. A calculator Constitution focuses on type hints and error handling—irrelevant for video generation. A video Constitution must address Gemini constraints, video format standards, and browser automation patterns.
-
-**The Fix**: Read example Constitutions for structure, but write rules specific to YOUR project needs. Your Constitution should be unrecognizable to someone building a calculator—it's that different.
-
-### Mistake 2: Vague Video Quality Standards
-
-**The Error**: "Videos must be good quality" or "Download should work reliably"
-
-**Why It's Wrong**: "Good" and "reliably" are subjective. No one can verify these during code review or automated testing.
+**Why It's Wrong**: "Good" and "well-researched" are subjective. No one can verify these or test them during review.
 
 **The Fix**: Use testable criteria:
-- ❌ Vague: "Videos should be good quality"
-- ✅ Testable: "All videos MP4 format with H.264 codec; duration 45-60 seconds; download completes within 60 seconds; playback validates successfully"
+- ❌ Vague: "Papers should be good quality"
+- ✅ Testable: "Papers must pass plagiarism check; all claims verified against sources; Flesch-Kincaid grade 10-12; APA citations"
 
-### Mistake 3: Ignoring Gemini Free Tier Constraints
+### Mistake 2: Constitution Too Specific to One Paper
 
-**The Error**: "Constitution doesn't mention Gemini timeout or session limits—we'll figure it out during implementation"
+**The Error**: "This Constitution applies only to my AI research paper"
 
-**Why It's Wrong**: Specs, plans, and implementations written downstream won't account for these constraints. You'll discover them too late, when code fails mysteriously.
+**Why It's Wrong**: You can't reuse it for future papers. Constitution should guide ALL papers in your project.
 
-**The Fix**: Document Gemini constraints explicitly:
-- ✅ "Gemini free tier maximum timeout: 90 seconds"
-- ✅ "Session recovery: retry up to 3 times on timeout"
-- ✅ "Rate limiting: 1 video per 5 minutes to prevent blocks"
+**The Fix**: Write Constitution that applies to ANY paper:
+- ❌ Too specific: "AI research papers must cite these 5 AI researchers"
+- ✅ General: "All papers must cite primary sources; minimum 50% peer-reviewed; APA citations"
+
+### Mistake 3: Forgetting to Commit Constitution
+
+**The Error**: Create Constitution, then start writing spec without committing
+
+**Why It's Wrong**: Constitution becomes "whatever I remember" instead of "documented standard." No traceability.
+
+**The Fix**: Always commit Constitution first:
+```
+1. Create Constitution
+2. Commit Constitution (git add + git commit)
+3. THEN start /sp.specify for specific papers
+```
 
 ---
 
 ## Try With AI
 
-Ready to validate your Constitution and understand how quality rules cascade through your video generation project? Test your setup:
+Ready to validate your Constitution and understand how quality standards cascade through your research work? Explore these prompts with your AI companion:
 
-**🔍 Explore Cascade Effect:**
-> "I wrote a Constitution for my video generation project defining MP4 format, Gemini timeout handling, and playback validation. Explain how these rules cascade into downstream work: If my Constitution requires 'all videos must download within 60 seconds and pass playback validation', how does that constraint affect the Specification phase? The Planning phase? The Implementation phase? Show me the cascade with a concrete example for a product demo video."
+**Setup**: You've created a Constitution for your research paper project with standards for citation accuracy, source verification, and writing clarity.
 
-**🎯 Practice Constitution Review:**
-> "Review my Constitution at `.specify/memory/constitution.md`. Check for: (1) Are all rules testable and specific (not vague)? (2) Did I cover essential categories (video output standards, Gemini constraints, browser automation, validation, error handling)? (3) Are any rules too strict or unrealistic for Gemini free tier? Suggest 2-3 improvements to make it clearer and more practical for video generation."
+**Explore Cascade Effect:**
+> "I created a Constitution for my research paper project with standards for: (1) all claims must cite primary sources, (2) writing clarity must be Flesch-Kincaid grade 10-12, (3) zero plagiarism tolerance before submission. Explain how these Constitution rules cascade into downstream phases: How do they affect the Specification I write for a specific paper? How do they affect the Plan I create? How do they affect the Tasks I break down? Give me a concrete example."
 
-**🧪 Test Specification Alignment:**
-> "Imagine I'm writing a specification for a product demo video. Based on my Constitution rules, what constraints MUST the video spec include? Walk through: output format requirements (MP4/H.264), Gemini timeout handling (retry logic), download validation requirements (format/playability checks), and quality validation steps. This tests if my Constitution is specific enough to guide video specifications."
+**Test Constitution Completeness:**
+> "Review my Constitution at `.specify/memory/constitution.md`. Check for: (1) Are all quality standards testable and specific (not vague)? (2) Did I cover essential categories (citation standards, source types, writing clarity, plagiarism checking, review process)? (3) Are any standards unrealistic or conflicting? Suggest 2-3 concrete improvements to make it clearer and more practical for research papers."
 
-**🚀 Apply to Your Project:**
-> "I'm planning to generate [describe your video type: product demo / tutorial / social media clip]. Help me draft a Constitution tailored to my video project. What output standards, Gemini constraint documentation, Playwright automation patterns, and validation requirements should I define? Compare how Constitution rules differ between my video type and a generic example."
+**Validate Against Specification:**
+> "Based on my Constitution, what requirements MUST a specification for a specific research paper include? Walk through: (1) Citation and source requirements inherited from Constitution, (2) Plagiarism checking and fact-verification requirements, (3) Writing clarity and format standards. This shows if my Constitution is specific enough to guide paper specifications."
+
+**Apply to Your Domain:**
+> "Help me draft a Constitution for [describe your research project: climate policy analysis / medical literature review / AI ethics research]. What quality standards, citation requirements, source verification, plagiarism checking, and writing clarity standards should I define? How would Constitution rules differ for different research domains?"
 
 ---

@@ -1,227 +1,339 @@
 ---
-title: "Spec-Kit Plus Foundation: What You're About to Build With"
+title: "Spec-Kit Plus Foundation"
 chapter: 14
 lesson: 1
 duration_minutes: 20
 proficiency_level: "A2"
 cognitive_load:
-  new_concepts: 2
-  assessment: "2 new concepts (Horizontal Intelligence, Vertical Intelligence) within A2 limit of 7 ✓"
+  new_concepts: 4
+  assessment: "4 new concepts (Spec-Kit Plus, Horizontal Intelligence, Vertical Intelligence, workflow phases) within A2 limit of 7 ✓"
 
-# HIDDEN SKILLS METADATA (Institutional Integration Layer)
-# Not visible to students; enables competency assessment and differentiation
+learning_objectives:
+  - objective: "Explain what Spec-Kit Plus is and why it implements SDD-RI methodology"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Verbal explanation with concrete examples"
+
+  - objective: "Distinguish between Horizontal Intelligence (ADRs/PHRs capturing reasoning across time) and Vertical Intelligence (skills/subagents/tools you create)"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Compare and contrast with concrete examples"
+
+  - objective: "Recognize how intelligence accumulates and compounds across projects"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Predict Project 4 capabilities from Projects 1-3 intelligence"
+
 skills:
   - name: "Understanding Reusable Intelligence Architecture"
     proficiency_level: "A2"
     category: "Conceptual"
     bloom_level: "Understand"
-    digcomp_area: "Information Literacy"
-    measurable_at_this_level: "Student can explain how Spec-Kit Plus captures intelligence through Horizontal (ADRs/PHRs) and Vertical (Subagents) patterns"
 
   - name: "Distinguishing Intelligence Types"
     proficiency_level: "A2"
     category: "Conceptual"
     bloom_level: "Understand"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can differentiate Horizontal Intelligence (reasoning across time) from Vertical Intelligence (delegation hierarchy)"
 
-learning_objectives:
-  - objective: "Explain how Spec-Kit Plus captures Reusable Intelligence through ADRs, PHRs, and Subagents"
-    proficiency_level: "A2"
-    bloom_level: "Understand"
-    assessment_method: "Verbal explanation with concrete examples"
-
-  - objective: "Recognize the compounding effect of intelligence accumulation across projects"
-    proficiency_level: "A2"
-    bloom_level: "Understand"
-    assessment_method: "Compare Project 1 vs Project 10 intelligence availability"
-
-differentiation:
-  extension_for_advanced: "Design hypothetical intelligence library for video production; map compounding effects across 5+ projects"
-  remedial_for_struggling: "Focus on concrete ADR/PHR examples from video generation project; use visual diagrams"
-
-# Generation metadata
 generated_by: "content-implementer v1.0.0"
-source_spec: "specs/chapter-14-video-generation/spec.md"
-created: "2025-11-25"
-last_modified: "2025-11-25"
+source_spec: "specs/chapter-14-spec-kit-plus-hands-on/spec.md"
+created: "2025-11-26"
+last_modified: "2025-11-26"
 git_author: "Claude Code"
 workflow: "/sp.implement"
-version: "2.0.0"
+version: "3.0.0"
 ---
 
-# Spec-Kit Plus Foundation: What You're About to Build With
+# Spec-Kit Plus Foundation
 
-Before you start building AI-generated product demo videos, understand WHAT Spec-Kit Plus is and HOW it makes Reusable Intelligence practical.
+Before you start building your first project with Spec-Kit Plus, understand WHAT this framework is and HOW it makes Reusable Intelligence practical.
 
-By the end of this lesson, you'll understand how Spec-Kit Plus captures and reuses intelligence through its two-architecture pattern, and see exactly what intelligence artifacts you'll build in this chapter.
+By the end of this lesson, you'll understand the core concept that makes Spec-Kit Plus different: **every project generates two deliverables—working code AND reusable intelligence**. You'll see how this shapes everything you'll learn in this chapter.
 
 ---
 
 ## What Is Spec-Kit Plus?
 
-Spec-Kit Plus is an **SDD-RI framework** built around one core idea: **capture intelligence, not just deliver code**.
+Spec-Kit Plus is an **SDD-RI (Specification-Driven Development with Reusable Intelligence) framework** built around one core idea:
 
-![Architecture diagram showing Spec-Kit-Plus workflow with Constitution, Specification, Planning, Tasks, and Implementation phases](/img/part-4/chapter-14/spec-kit-plus-architecture.png)
+**Capture intelligence, not just deliver code.**
 
-![Eight-phase Spec-Kit-Plus workflow showing Constitution → Specify → Clarify → Plan → Tasks → Implement → Validate → Refactor progression](/img/part-4/chapter-14/eight-phase-workflow.png)
+### The Two-Output Philosophy
 
-Every feature you build generates two outputs:
-1. **Working code** (the deliverable - ephemeral, could be rewritten)
-2. **Reusable intelligence** (reasoning patterns, decision frameworks, AI prompts that work - permanent)
+Every feature you build produces two distinct outputs:
 
-**The framework provides**:
-- Templates for specifications, plans, ADRs (Architectural Decision Records), PHRs (Prompt History Records)
-- Slash commands (`/sp.specify`, `/sp.plan`, `/sp.implement`) that orchestrate AI subagents
-- Directory structure that separates ephemeral code from permanent intelligence
+**1. Working Code** (ephemeral)
+- The deliverable—a feature that works and adds value
+- Could be rewritten entirely tomorrow without loss
+- Project-specific, technology-locked to current choices
 
-**Critical distinction**: Spec-Kit Plus is NOT an AI service. It's a methodology framework that works WITH your AI tool (Claude Code, Gemini CLI, etc.).
+**2. Reusable Intelligence** (permanent)
+- Reasoning patterns: "Why did we choose this approach?"
+- Decision frameworks: "How do we evaluate similar choices?"
+- Prompt templates: "What prompts work for this type of problem?"
+- Preserved in `history/` directory for YOUR future reference
+
+**Example**:
+```
+PROJECT 1: Build Authentication System
+  Deliverable: Working Flask + JWT authentication (could be rewritten)
+  Intelligence captured (stays in Project 1):
+    - ADR: "Chose JWT over sessions because..."
+    - PHR: "These specific prompts generated secure, validated code"
+
+PROJECT 2: Build Database System (new project)
+  Starts fresh — no automatic access to Project 1's artifacts
+  But YOU learned from Project 1:
+    - YOU remember the decision patterns that worked
+    - YOU apply similar prompt structures that succeeded
+    - YOUR experience compounds even without explicit artifact transfer
+```
+
+### Framework Components
+
+**Templates**: Standardized documents for capturing thinking
+- Specifications (what you're building)
+- Plans (how you're building it)
+- ADRs (why you chose this approach)
+- PHRs (what prompts worked)
+
+**Slash Commands**: AI orchestration tools
+- `/sp.specify` - Write clear specifications
+- `/sp.clarify` - Identify missing requirements
+- `/sp.plan` - Generate implementation plans
+- `/sp.tasks` - Break work into atomic units
+- `/sp.implement` - Execute tasks with AI
+
+**Directory Structure**: Intelligence preservation
+- `specs/` - Specifications for each feature
+- `history/adr/` - Architectural Decision Records (your reasoning)
+- `history/prompts/` - Prompt History Records (what worked for you)
+
+**Critical distinction**: Spec-Kit Plus is NOT an AI service. It's a methodology framework that works WITH your AI tool (Claude Code, Gemini CLI, etc.). It activates your AI tool's reasoning capabilities through structured workflows.
 
 ---
 
-## Horizontal Intelligence: Capturing Reasoning Across Time
+## Horizontal Intelligence: YOUR Learning Across Time
 
-Horizontal Intelligence is how Spec-Kit Plus turns decisions into reusable knowledge that persists across projects.
+Horizontal Intelligence answers: "What have I learned that makes me better at this?"
+
+YOUR knowledge flows **across time**—each project makes you smarter. The artifacts (ADRs, PHRs) document your learning within each project; the wisdom lives in YOU.
 
 ### ADRs (Architectural Decision Records)
 
-Document the "WHY" behind significant decisions, not just the "WHAT" you built.
+An ADR documents the "WHY" behind significant decisions, not just the "WHAT" you built.
 
-**Example**:
-- **Bad documentation**: "Used Playwright MCP for browser automation"
-- **ADR (Horizontal Intelligence)**: "Chose Playwright MCP over Selenium because: (1) Gemini.google.com requires real browser context with session persistence, (2) MCP provides native session management, (3) tradeoff accepted: MCP learning curve vs robust video recording"
+**Bad documentation** (loses reasoning):
+```
+"Used PostgreSQL for user data storage"
+```
 
-**When you create ADRs**:
-- During Constitution phase (Lesson 3) - Document video generation quality standards
-- During Planning phase (Lesson 6) - Explain architectural choices for Playwright + Gemini integration
-- When designing skills/subagents (Lesson 9) - Justify pattern selection for `generate-video` and `upload-youtube`
+**ADR (preserves reasoning)**:
+```
+DECISION: Use PostgreSQL for user data storage (not MongoDB)
 
-**Storage**: `history/adr/` directory becomes your team's knowledge base
+CONTEXT:
+- Application requires ACID guarantees for financial transactions
+- Team has PostgreSQL expertise (no MongoDB learning curve)
+- Schema is well-defined (no document-oriented benefits)
 
-**Reusability**: Six months later, new team member asks "Why Playwright MCP?" → ADR answers immediately. AI agents READ ADRs to understand project context before generating code.
+REASONS:
+1. Transaction integrity: Financial data cannot tolerate eventual consistency
+2. Operational knowledge: Team expertise reduces deployment risk
+3. Cost: PostgreSQL license vs MongoDB enterprise features
+
+TRADEOFF ACCEPTED:
+- Flexibility: SQL schema less flexible than document model (acceptable, schema is stable)
+- Scalability: Horizontal scaling more complex (acceptable, vertical scaling sufficient for 5 years)
+
+CONSEQUENCE: Future financial features inherit this decision
+```
+
+**Why this matters**: Six months later, new team member asks "Why PostgreSQL?" The ADR explains immediately. Within this project, everyone understands the reasoning behind decisions.
 
 ### PHRs (Prompt History Records)
 
-Automatically log AI collaboration sessions, capturing what prompts work vs what fails.
+PHRs log AI collaboration sessions, capturing what prompts work vs what fails.
 
 **Example**:
-- **Prompt A**: "Generate a product demo video" → Resulted in generic, unconvincing video
-- **Prompt B**: "Generate a 30-second product demo video highlighting the pricing page conversion flow using Gemini video generation API with high-quality voiceover" → Generated compelling video with strong marketing message
-- **PHR captures**: Prompt B works, Prompt A fails, reasoning logged
+```
+PROMPT A (generic):
+"Generate a database schema"
+→ Result: Incomplete, missing indexes, poor naming
 
-**When PHRs are created**:
-- Automatically during `/sp.specify`, `/sp.plan`, `/sp.implement` execution
-- You don't manually invoke PHRs - the system creates them
+PROMPT B (specific):
+"Generate PostgreSQL schema for financial transactions with:
+ - Indexes on all foreign keys
+ - Constraints for data integrity
+ - Audit trail for compliance
+ - Clear naming conventions"
+→ Result: Production-ready schema
 
-**Storage**: `history/prompts/<feature>/` directory
+PHR CAPTURES: Prompt B works 85% better than Prompt A
+```
 
-**Reusability**: Project 2 (authentication system) starts with Project 1's (video generation) PHRs. Your AI reads: "Last time, prompts emphasizing specific marketing objectives and quality criteria worked better than vague requests." Project 2 specifications are immediately better.
+**Automatic creation**: PHRs are automatically created during `/sp.specify`, `/sp.plan`, and `/sp.implement` phases within a project. The system logs what prompts worked vs. failed as you work.
 
-### What Makes This "Intelligence"
+**Project-scoped**: PHRs belong to the project where they were created. They do NOT transfer to your next project. The value is in YOUR learning—as you work, you internalize what prompts succeed. That knowledge stays with YOU.
 
-This isn't documentation for humans only:
-- **AI agents read ADRs** to understand project context before reasoning
-- **AI agents reference PHRs** to avoid repeating past mistakes
-- **Intelligence accumulates** - Project 10 is dramatically faster than Project 1
+### Intelligence Accumulation: The Compounding Effect
 
-**The compounding effect**:
-- Project 1 (Video Generation): Create 5 ADRs + 12 PHRs (learning from scratch, figuring out Playwright MCP + Gemini integration)
-- Project 2 (New Feature): Start with 5 ADRs + 12 PHRs, create 3 new ADRs + 8 new PHRs (total: 8 ADRs, 20 PHRs)
-- Project 10: Start with accumulated intelligence from 9 projects, rarely repeat mistakes, new features built 3-4x faster
+Each project generates intelligence artifacts. Even though artifacts stay in their project, YOUR learning compounds.
+
+**Your Learning Timeline**:
+```
+PROJECT 1 (Month 1):
+  System creates ADRs and PHRs within this project
+  Time investment: 60 hours (learning and figuring things out)
+  YOU learn: What decisions worked, what prompts succeeded
+
+PROJECT 2 (Month 2):
+  Starts fresh — new project, new artifacts
+  But YOU are smarter: You remember patterns from Project 1
+  Time investment: 35 hours (40% faster because YOU learned)
+
+PROJECT 3 (Month 3):
+  YOU recognize patterns even faster
+  YOU make decisions more confidently
+  Time investment: 25 hours (further acceleration)
+
+PROJECT 10 (Year 2):
+  YOU have internalized learnings from 9 projects
+  YOU build complex features in days instead of weeks
+  YOUR expertise compounds — each project made you better
+```
+
+This is **Horizontal Intelligence** because YOUR knowledge flows across time—from past projects to future ones. The artifacts document your learning within each project; the wisdom lives in YOU.
 
 ---
 
-## Vertical Intelligence: Delegation Through Specialization
+## Vertical Intelligence: Components You Create
 
-Vertical Intelligence is how Spec-Kit Plus distributes work to specialized AI subagents, each designed with the Persona+Questions+Principles (P+Q+P) pattern.
+Vertical Intelligence answers: "What reusable components can I create to handle recurring problems better?"
 
-### The Delegation Pattern
+After sessions that go particularly well, YOU can create reusable intelligence components. These come in different forms:
+
+### Types of Reusable Intelligence
+
+| Component | What It Is | When to Create |
+|-----------|------------|----------------|
+| **Skill** | Structured prompt with Persona + Questions + Principles | Pattern recurs, needs guided reasoning |
+| **Subagent** | Specialized agent with focused expertise | Complex autonomous task (5+ decisions) |
+| **Tool/MCP Server** | Custom capability the agent can invoke | Need to connect to external systems |
+
+**Lesson 9** teaches you how to design these components. For now, understand the core idea:
+
+### The Core Idea
 
 ```
-YOU: "Build a system that generates product demo videos and uploads to YouTube"
-  ↓
-ORCHESTRATOR: Routes to Specification Subagent
-  ↓
-SPEC SUBAGENT: Asks clarifying questions (What's the target video length?
-                What marketing message?), generates complete spec
-  ↓
-YOU: Review and approve
-  ↓
-ORCHESTRATOR: Routes to Planning Subagent
-  ↓
-PLAN SUBAGENT: Identifies Playwright MCP + Gemini architecture, breaks
-               into atomic tasks
-  ↓
-(Cycle repeats through Tasks → Implement → Skill Design)
+1. YOU have a great session (e.g., writing a security specification)
+2. YOU recognize: "This approach would work for similar problems"
+3. YOU create a reusable component (skill, subagent, or tool)
+4. AGENT invokes your component in future sessions
 ```
 
-### What Makes Subagents "Intelligent"
+**All reusable intelligence is:**
+- **User-created**: YOU decide when to create them, YOU design them
+- **Agent-invoked**: Once created, the agent uses them when appropriate
+- **Reusable**: Well-designed components work across similar problems
 
-Each subagent is designed with three components that activate reasoning (not just prediction):
+### Why This Matters
 
-**1. Persona** - Cognitive stance defining how to think
-- Example: "You are a video production specialist who obsesses over marketing messaging and production quality before implementation"
-- Not generic: "You are a helpful assistant"
+Unlike PHRs (which document what happened), reusable intelligence components are **active tools**:
+- PHRs: "Here's what worked" (your learning record)
+- Skills/Subagents/Tools: "Here's how to do this type of task" (agent's capabilities)
 
-**2. Questions** - Analytical framework guiding reasoning
-- Example: "What makes this video compelling for SaaS marketing? What production constraints does Gemini.google.com have? How do we validate video quality?"
-- Not vague: "Is this good?"
-
-**3. Principles** - Decision criteria for evaluating options
-- Example: "Every video must have clear call-to-action. Every specification must document Gemini constraints (max length, supported formats). Every test must validate marketing effectiveness."
-- Not arbitrary: "Make it good"
-
-### Example: Video Generation Specification Subagent
-
-**Persona**: Video production specialist who thinks about marketing messaging and technical constraints before implementation
-
-**Questions**:
-- What's the core marketing message this video needs to communicate?
-- What are the technical constraints of Gemini.google.com video generation (video length, format, quality)?
-- What happens if Gemini API fails mid-recording? How do we retry?
-- What's the simplest test that proves the video meets marketing objectives?
-
-**Principles**:
-- SMART criteria enforcement (Specific, Measurable, Achievable, Relevant, Testable)
-- Every video specification documents target audience, marketing message, and success metrics
-- Every API integration has documented failure cases and retry strategies
-- Every generated video includes validation (is it > 80% of intended length? Does voiceover match script?)
-
-**Result**: The Video Generation Specification Subagent doesn't just generate output - it **reasons through production problems** using video production expertise patterns.
-
-### What Makes This "Reusable Intelligence"
-
-- **Not video-generation-specific**: The Specification Subagent works for ANY feature needing clear requirements (database design, payment processing, file uploads)
-- **Not rebuilt every project**: You don't re-teach "how to write specs" - the subagent embeds that expertise
-- **Composable**: Lesson 9 teaches you to CREATE your own subagents (like `generate-video` and `upload-youtube`) using the P+Q+P pattern, adding them to your intelligence library
-
-**Why "Vertical"**: Intelligence flows down a hierarchy (You → Orchestrator → Specialists), unlike Horizontal Intelligence which flows across time.
+This is **Vertical Intelligence** because you build specialized components that make AI collaboration more effective over time.
 
 ---
 
-## Why This Matters for Video Generation
+## The Two Architectures Work Together
 
-SaaS companies spend $5,000-$50,000 per professional demo video, yet struggle to produce them at scale. By building a system that **captures intelligence** (not just code), you're creating:
+**Horizontal Intelligence** (YOUR learning across time):
+- "What did I learn from Project 1?"
+- "What prompts worked for me?"
+- "Why did I choose this approach?"
+- Captured in: ADRs, PHRs
 
-1. **Immediate value**: A video file generated with AI
-2. **Reusable skills**: `generate-video` and `upload-youtube` that work across projects
-3. **Compounding knowledge**: ADRs explaining Playwright + Gemini integration that future projects inherit
-4. **Portfolio proof**: You've mastered SDD-RI by turning specification into production-quality deliverables
+**Vertical Intelligence** (YOUR reusable components):
+- "What components have I created?"
+- "Which one fits this problem?"
+- "How can I improve them?"
+- Captured in: Skills, Subagents, Tools
+
+Together, they create **YOUR compounding expertise**:
+
+```
+Horizontal Intelligence (ADRs, PHRs):
+  YOU document learnings: Project 1 → Project 2 → Project 3 → ...
+
+Vertical Intelligence (Skills, Subagents, Tools):
+  After good sessions, YOU create reusable components
+  YOU improve them based on experience
+
+Result:
+  By Project 10, YOU have documented reasoning (ADRs), proven prompts (PHRs),
+  and specialized components—YOUR work becomes 5-10x faster than Project 1
+```
+
+---
+
+## Workflow Phases Overview
+
+Throughout this chapter, you'll work with these workflow phases:
+
+**Phase 1: Constitution** (Lesson 3)
+- Document project-wide quality standards
+- Define success criteria across all work
+
+**Phase 2: Specification** (Lesson 4)
+- Write clear, testable requirements using SMART criteria
+- Capture intent before implementation
+
+**Phase 3: Clarification** (Lesson 5)
+- Identify missing constraints and edge cases
+- Refine specifications based on feasibility
+
+**Phase 4: Planning** (Lesson 6)
+- Design architecture and technology choices
+- Document rationale in ADRs
+
+**Phase 5: Tasks** (Lesson 7)
+- Break work into atomic, measurable units
+- Define checkpoints and validation
+
+**Phase 6: Implementation** (Lesson 8)
+- Execute tasks with AI using `/sp.implement`
+- Generate working features
+
+**Phase 7: Intelligence Design** (Lesson 9)
+- Learn to create reusable components after good sessions
+- Design skills, subagents, or tools based on pattern complexity
+
+**Phase 8: Adoption** (Lessons 10-11)
+- Apply Spec-Kit Plus to existing projects
+- Experience how documented intelligence accelerates YOUR work
+
+Throughout this workflow, YOU decide when to capture intelligence. The framework shows you HOW—but YOU control WHEN and WHAT to create.
 
 ---
 
 ## Try With AI
 
-Ready to understand how Spec-Kit Plus turns video generation work into reusable intelligence? Explore these patterns:
+Explore what you learned with these simple prompts:
 
-**Explore Intelligence Patterns:**
-> "In Spec-Kit Plus, compare Horizontal Intelligence (ADRs/PHRs) vs Vertical Intelligence (Subagents). Imagine I build a video generation system in Project 1 and create 5 ADRs (about Playwright MCP, Gemini constraints, quality validation) and 12 PHRs (about what prompts generate compelling videos). How exactly does that intelligence help when I build an authentication system in Project 2? Show me concrete examples of what the AI agents would know."
+**Understand the Two Outputs:**
 
-**Practice P+Q+P for Video Production:**
-> "Help me design a subagent for video script writing. Using Persona+Questions+Principles (P+Q+P), what persona should it adopt (think about marketing, production quality, SaaS context)? What questions should it ask to activate reasoning about video effectiveness? What principles should guide its decisions? Why does this approach work better than just asking 'write a video script'?"
+> "Explain the two outputs of every Spec-Kit Plus project: working code and reusable intelligence. Why does capturing the 'why' behind decisions matter more than just delivering code?"
 
-**Calculate Intelligence Compounding:**
-> "If Project 1 (video generation) creates 5 ADRs + 12 PHRs, Project 2 (auth system) creates 3 ADRs + 8 PHRs, and Project 3 (payment system) creates 2 ADRs + 6 PHRs, how much intelligence is available when I start Project 4? Explain why even projects with different domains benefit from accumulated intelligence."
+**See How ADRs Help Within a Project:**
 
-**Apply to Your Domain:**
-> "I work in [describe your domain/industry]. Help me design an intelligence architecture using Spec-Kit Plus for a project I'm planning. What Horizontal Intelligence should I capture (what architectural decisions repeat across projects)? What Vertical Intelligence should I create (what specialized subagents would accelerate future work)? Outline 3-5 intelligence artifacts I should build first."
+> "A new team member joins my project and asks 'Why did we choose PostgreSQL?' I show them the ADR that says 'Chose PostgreSQL because we needed transaction guarantees.' How does this ADR help the team?"
+
+**Understand PHRs:**
+
+> "What's the difference between a generic prompt like 'Generate a database schema' and a specific prompt like 'Generate PostgreSQL schema with indexes on foreign keys and audit trail for compliance'? Why would I want to save what worked?"
+
+**Preview Skills (Lesson 9):**
+
+> "In Spec-Kit Plus, what's a 'skill' and why would I create one after a session goes really well? Just give me a simple overview—I'll learn the details later."

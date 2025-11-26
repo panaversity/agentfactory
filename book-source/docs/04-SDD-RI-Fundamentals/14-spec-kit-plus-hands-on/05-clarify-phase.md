@@ -1,8 +1,9 @@
 ---
-title: "Clarify Phase - Refining Video Specs with /sp.clarify"
+title: "Clarify Phase"
 chapter: 14
 lesson: 5
-duration_minutes: 90
+duration_minutes: 30
+proficiency_level: "B1"
 
 # HIDDEN SKILLS METADATA (Institutional Integration Layer)
 # Not visible to students; enables competency assessment and differentiation
@@ -12,72 +13,65 @@ skills:
     category: "Technical"
     bloom_level: "Apply"
     digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can run /sp.clarify on video specification and interpret feedback about Gemini constraints"
+    measurable_at_this_level: "Student can run /sp.clarify on specification and interpret gap-detection feedback"
 
-  - name: "Identifying Video-Specific Specification Gaps"
+  - name: "Identifying Specification Gaps"
     proficiency_level: "B1"
     category: "Technical"
     bloom_level: "Analyze"
     digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student recognizes ambiguities in video requirements (resolution, format, quality), missing Gemini assumptions, incomplete edge cases"
+    measurable_at_this_level: "Student recognizes ambiguities and missing assumptions in specifications"
 
-  - name: "Iterative Specification Refinement for AI-Generated Video"
+  - name: "Iterative Specification Refinement"
     proficiency_level: "B1"
     category: "Technical"
     bloom_level: "Evaluate"
     digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student revises video specification based on /sp.clarify feedback and makes critical decisions about Gemini constraints vs desired outcomes"
-
-  - name: "Addressing Technology Constraints in Specifications"
-    proficiency_level: "B1"
-    category: "Technical"
-    bloom_level: "Analyze"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student identifies where Gemini free tier limitations affect spec (session timeout, format availability) and documents fallback behaviors"
+    measurable_at_this_level: "Student revises specifications based on /sp.clarify feedback and makes refinement decisions"
 
 learning_objectives:
-  - objective: "Use /sp.clarify command to analyze video specification for gaps and video-specific edge cases"
+  - objective: "Use /sp.clarify command to identify gaps in specifications"
     proficiency_level: "B1"
     bloom_level: "Apply"
-    assessment_method: "Successful execution of /sp.clarify on video spec and interpretation of video-domain feedback"
+    assessment_method: "Successful execution of /sp.clarify and interpretation of feedback"
 
-  - objective: "Identify and resolve specification ambiguities in video generation (quality, format, duration, interactions)"
+  - objective: "Recognize ambiguities and missing assumptions in written specifications"
     proficiency_level: "B1"
     bloom_level: "Analyze"
-    assessment_method: "Refined specification addressing video-specific gaps (resolution, frame rate, Gemini constraints)"
+    assessment_method: "Refined specification addressing identified gaps"
 
-  - objective: "Understand how /sp.clarify identifies technology-specific edge cases that affect specifications"
+  - objective: "Iteratively refine specifications based on AI feedback"
     proficiency_level: "B1"
-    bloom_level: "Understand"
-    assessment_method: "Explanation of how clarification surfaced Gemini availability or session timeout concerns"
+    bloom_level: "Evaluate"
+    assessment_method: "Completed clarification cycle with documented refinements"
 
 cognitive_load:
-  new_concepts: 6
-  assessment: "6 new concepts (Clarify workflow, video-specific gap detection, Gemini constraint handling, quality ambiguity resolution, edge case identification, technology fallback decisions) within B1 limit of 10 ✓"
+  new_concepts: 4
+  assessment: "4 new concepts (Clarify workflow, gap detection, ambiguity resolution, iterative refinement) within B1 limit of 10 ✓"
 
 differentiation:
-  extension_for_advanced: "Run /sp.clarify multiple times on video spec; document spec evolution; create contingency plans for Gemini unavailability; design fallback video strategies"
-  remedial_for_struggling: "Focus on top 3-4 clarifying questions from /sp.clarify; resolve those before moving to planning (ignore advanced Gemini optimizations for now)"
+  extension_for_advanced: "Run /sp.clarify multiple times; document specification evolution; analyze how each clarification improves plan quality"
+  remedial_for_struggling: "Focus on top 2-3 clarifying questions from /sp.clarify; resolve those before moving to planning"
 
 # Generation metadata
 generated_by: "content-implementer v1.0.0"
-source_spec: "Chapter 14 Spec-Kit Plus"
-created: "2025-11-25"
-last_modified: "2025-11-25"
+source_spec: "specs/037-chapter-14-research-paper-pivot/spec.md"
+created: "2025-11-26"
+last_modified: "2025-11-26"
 git_author: "Claude Code"
 workflow: "/sp.implement"
 version: "1.0.0"
 ---
 
-# Clarify Phase - Refining Video Specs with /sp.clarify
+# Clarify Phase
 
-You've written a video generation specification. It looks good. But there are always gaps you didn't catch—ambiguities that seemed clear in your head but are actually unclear on paper. Edge cases specific to Gemini video generation that you missed. Assumptions about video quality, format, or timing you didn't state explicitly.
+In Lesson 04, you wrote a specification for your research paper. It looked complete. But there are always gaps you didn't catch—ambiguities that seemed clear in your head but are actually vague on paper. Assumptions about scope, audience, or success that you didn't state explicitly.
 
-This is where the `/sp.clarify` command helps. **Clarify is NOT a formal workflow phase** like `/sp.specify` or `/sp.plan`. It's a **quick check** that your specification is complete before moving to planning.
+This is where the `/sp.clarify` command helps. **Clarify is a quick check** that your specification is complete before moving to planning.
 
-Think of `/sp.clarify` as your AI companion putting on a "devil's advocate" hat and asking: "Wait, what about Gemini's session timeout? What if the video is shorter than you expected? What happens if the free tier can't generate MP4?" It finds gaps you might have missed, then you decide whether to update your spec.
+Think of `/sp.clarify` as your AI companion putting on a "detail detective" hat and asking: "Wait, who exactly is your audience? What counts as a 'well-researched' paper? How many sources is enough? What format should this follow?" It finds gaps you might have missed, then you decide whether to update your spec.
 
-The goal: Make your specification **so clear** that the planning phase can generate a perfect plan for Playwright MCP integration.
+The goal: Make your specification **so clear** that the planning phase can generate a perfect implementation plan.
 
 ---
 
@@ -87,147 +81,191 @@ The goal: Make your specification **so clear** that the planning phase can gener
 
 `/sp.clarify` analyzes your specification and reports:
 
-1. **Ambiguous Terms** - Words that could mean multiple things in video context
-
-   - Example: "professional quality video" (1080p or 720p? 30fps or 60fps? Which codec?)
-   - Example: "clear sign-up flow demonstration" (how many clicks? what transitions?)
+1. **Ambiguous Terms** - Words that could mean multiple things
+   - Example: "well-researched paper" (5 sources? 50 sources? What counts as credible?)
+   - Example: "professional format" (APA? MLA? Chicago? Single-spaced? Double-spaced?)
 
 2. **Missing Assumptions** - Things you assumed but didn't state
-
-   - Example: You assumed Gemini would generate MP4, but didn't state fallback if only WebM available
-   - Example: You assumed video duration would be exactly 45 seconds, but Gemini might generate 40s or 50s
-   - Example: You assumed free tier Gemini can handle your prompt, but didn't specify constraints or rate limits
+   - Example: You assumed academic paper but didn't specify citation style
+   - Example: You assumed 3,000-word length but didn't state minimum or maximum
+   - Example: You assumed English but didn't specify if other languages acceptable
 
 3. **Incomplete Requirements** - Scenarios or cases you didn't cover
+   - Example: You specified content but didn't specify editing or revision process
+   - Example: You specified research but didn't specify how to handle conflicting sources
+   - Example: You specified "introduce topic" but didn't define what introduction contains
 
-   - Example: You specified video generation but didn't specify download timeout handling
-   - Example: You specified single interaction flow but didn't specify multi-step demo structure
-   - Example: You specified success case but didn't specify Gemini unavailability fallback
+4. **Scope Conflicts** - Places where scope is unclear or inconsistent
+   - Example: "Comprehensive research" on what exactly? All historical context or just recent developments?
+   - Example: "Clear structure" using what organization method? Chronological? Thematic?
+   - Example: "Compelling conclusion" appealing to whom? Academic audience? General readers?
 
-4. **Technology Constraint Conflicts** - Where spec assumes capabilities Gemini may not have
+### Why Clarify Matters Before Planning
 
-   - Example: Spec says "generate 2-minute video" but free tier may have duration limits
-   - Example: Spec says "use advanced animations" but Gemini may have styling constraints
-   - Example: Spec says "guaranteed fast generation" but API rate limits may cause delays
+A vague specification creates a vague plan. When the planning phase can't understand exactly what you want, it generates ambiguous design decisions. Then you spend time during implementation realizing your actual intention wasn't captured.
 
-5. **Edge Case Gaps** - Cases that should be handled but aren't documented
-   - Example: Session timeout after how long? (60s? 90s? 120s?)
-   - Example: What happens if Gemini generates video shorter than specified?
-   - Example: What if download fails mid-transfer? Retry strategy?
-   - Example: What video formats does Gemini support, and what's your fallback?
+**Without clarification** (vague spec):
+```
+Intent: Write research paper on climate change
+Success Criteria: Paper is well-researched and professionally written
+```
 
-#### 💬 AI Colearning Prompt
-> "Why is /sp.clarify valuable for video generation specs specifically? What kinds of gaps do AI video tools create that you might not anticipate?"
+Planning phase has questions:
+- What specific aspect of climate change? Global warming trends? Policy solutions? Historical development?
+- How many sources? Academic only or include journalistic sources?
+- What length? 2 pages? 10 pages? 50 pages?
+- What citation style? Who's the audience?
 
-#### 🎓 Expert Insight
-> Video generation introduces technology-specific edge cases that traditional specs miss: format compatibility (MP4 vs WebM), API rate limits, session timeouts, free-tier constraints. Gemini has constraints that affect what you can ask it to generate. Clarify surfaces these upfront, preventing implementation surprises. Two rounds of clarification produce video specs that Playwright MCP can execute reliably rather than failing mid-generation because of an unstated assumption about Gemini behavior.
+**With clarification** (precise spec):
+```
+Intent: Write research paper on climate policy solutions adopted since 2015
+Success Criteria:
+- Minimum 5 peer-reviewed sources (journals, not news)
+- APA format, 3,000-4,000 words
+- Three policy solutions compared (effectiveness, adoption barriers, future outlook)
+- Audience: undergraduate economics students
+- Conclusion: assessment of which policy approach shows most promise
+```
+
+Planning phase now has clear requirements and generates specific implementation tasks.
 
 ---
 
-## Part B: The Clarify Workflow
-
-Here's how clarification works in practice for your video specification.
+## The Clarify Workflow
 
 ### Step 1: Run /sp.clarify
 
-In Claude Code, from your video-project directory:
+In Claude Code, from your research-paper directory:
 
 ```
 /sp.clarify
 
-My video generation specification is at specs/video-generation/spec.md
+My research paper specification is at specs/paper/spec.md
 Please analyze it for:
-1. Ambiguous terms in video requirements (what does "professional quality" mean? resolution? frame rate?)
-2. Missing assumptions about Gemini video generation (duration limits? format constraints? session timeout behavior?)
-3. Incomplete requirements (what happens if video is shorter than expected? what format fallbacks?)
-4. Technology-specific edge cases (Gemini unavailability? rate limiting? download failure handling?)
-5. Conflicts between spec and Gemini free-tier capabilities
+1. Ambiguous terms (what does "well-researched" mean? How many sources? What type?)
+2. Missing assumptions (citation style? audience? paper length? structure?)
+3. Incomplete requirements (what does "introduce topic" contain? how to handle conflicting sources? revision process?)
+4. Scope conflicts (is this historical overview or current policy analysis? broad or narrowly focused?)
 
-What gaps should I address before planning the Playwright MCP implementation?
+What gaps should I address before planning the paper structure?
 ```
 
-Your companion will analyze your specification, identify video-generation-specific gaps or ambiguities, and ask clarifying questions. Review its findings and update your specification accordingly.
+Your AI companion will analyze your specification, identify gaps or ambiguities, and ask clarifying questions. Review its findings and consider which gaps are critical versus nice-to-have.
 
-### Step 2: Re-Run /sp.clarify (Optional)
+### Step 2: Update Your Specification
 
-If you made significant changes to address Gemini constraints or edge cases, run `/sp.clarify` again:
+For each clarifying question, decide: **Do I need to answer this before planning?**
+
+- **Critical gaps** (planning can't work without this): Update spec immediately
+  - Example: Citation style is critical (affects all references)
+  - Example: Paper length is critical (determines research scope)
+  - Example: Audience is critical (determines tone and complexity)
+
+- **Nice-to-have clarifications** (planning can proceed): Update spec or defer
+  - Example: Specific revision timeline
+  - Example: Preferred formatting tools
+  - Example: Aesthetic preferences
+
+### Step 3: Re-Run /sp.clarify (Optional)
+
+If you made significant changes, run `/sp.clarify` again:
 
 ```
-I've updated my video specification based on your feedback.
+I've updated my research paper specification based on your feedback.
 Please analyze it again for remaining gaps.
-Should I proceed to planning with Playwright MCP, or are there more clarifications needed?
+Is this specification clear enough to proceed to the planning phase?
 ```
 
-Most video specifications need 1-2 clarification rounds. After that, they're ready for planning.
+Most specifications need 1-2 clarification rounds. After that, they're ready for planning.
 
 ---
 
-## Clarify Your Video Specification
+## Clarifying Your Paper Specification
 
-Now let's clarify YOUR video specification—the one you wrote in Lesson 04.
+Now let's clarify YOUR research paper specification—the one you wrote in Lesson 04.
 
-### Step 1: Run /sp.clarify on Your Video Specification
+### Step 1: Run /sp.clarify on Your Specification
 
-In Claude Code, from your video-project directory, run:
+In Claude Code, from your research-paper directory, run:
 
 ```
 /sp.clarify
 
-My video generation specification is at specs/video-generation/spec.md
+My research paper specification is at specs/paper/spec.md
 
 Please analyze it for:
 
 1. AMBIGUOUS TERMS
-   - What does "professional quality" mean? (1080p? 720p? codec? bitrate?)
-   - What does "smooth transitions" mean? (fade? dissolve? duration?)
-   - What does "clear sign-up flow" mean exactly? (how many steps? which UI elements?)
+   - What does "well-researched" mean in my spec? (how many sources? which types?)
+   - What does "professional format" mean? (which citation style? spacing? margins?)
+   - What does "clear structure" mean? (how many sections? what should each contain?)
 
-2. MISSING GEMINI ASSUMPTIONS
-   - What video formats can Gemini generate? (MP4? WebM? Others?)
-   - What are the session timeout constraints? (timeout after how long of inactivity?)
-   - What are the rate limits? (videos per minute? concurrent requests?)
-   - What's the maximum video duration Gemini can generate?
+2. MISSING ASSUMPTIONS
+   - What citation style should I use? (APA, MLA, Chicago, Harvard?)
+   - What's the target audience? (academic, general readers, specific field?)
+   - What's the paper length? (minimum and maximum word count?)
+   - How recent should sources be? (published in last 5 years? 10 years?)
 
-3. INCOMPLETE EDGE CASES
-   - If Gemini generates video shorter than expected, what do I do?
-   - If desired video format isn't available, what's my fallback?
-   - If download fails mid-transfer, what's my retry strategy?
-   - If Gemini is unavailable, what's my fallback behavior?
+3. INCOMPLETE REQUIREMENTS
+   - What should the introduction contain? (background? thesis statement? scope?)
+   - How do I handle conflicting sources? (which viewpoints to include?)
+   - What constitutes a "credible" source? (peer-reviewed only? news acceptable?)
+   - How should I structure the paper? (chronological? thematic? by source?)
 
-4. TECHNOLOGY CONFLICTS
-   - Does my spec assume capabilities Gemini free tier doesn't have?
-   - Are there timing or performance assumptions that conflict with API constraints?
-   - Does my spec require sustained API usage that might trigger rate limiting?
+4. SCOPE CONFLICTS
+   - Is this narrowly focused on one aspect or broadly covering the topic?
+   - Is this historical overview or current-state analysis?
+   - Are there sub-questions I should address or exclude?
 
-List any gaps or questions. Which ones are CRITICAL (block implementation) vs NICE-TO-HAVE (improve quality)?
+List any gaps or questions. Which ones are CRITICAL (planning won't work without them) vs NICE-TO-HAVE (improve quality but not blocking)?
 ```
 
-### Step 2: Verify Readiness
+### Step 2: Evaluate Feedback
+
+Review the clarifying questions your AI companion identified. For each one, ask:
+
+- Is this critical to planning the paper structure?
+- Can planning proceed without this answer, or does it affect section design?
+- Should I resolve this now or defer it?
+
+### Step 3: Update Your Specification
+
+Update your spec.md with the clarifications you decide are critical. You might add:
+
+```
+Audience: Undergraduate economics students (not specialized researchers)
+Citation Style: APA format, 7th edition
+Length: 3,000-3,500 words
+Source Types: Peer-reviewed journals (80%), reputable news sources (20%)
+Structure: Introduction → Problem Analysis → Three Solutions → Comparison → Conclusion
+```
+
+### Step 4: Verify Readiness
 
 Ask your AI companion:
 
 ```
-Based on the clarification feedback, is my video specification now ready for the planning phase?
-What's the minimum set of clarifications I need to address before proceeding?
-Which suggestions can I defer to future iterations?
+Based on the clarifications I've made, is my research paper specification now ready for the planning phase?
+Can you explain the paper structure and success criteria back to me to confirm we're aligned?
 ```
 
 ---
 
-## Cascade Quality Validation
+## Why Clarification Prevents Implementation Problems
 
-Now test the cascade effect: Does your clarified specification improve Playwright MCP planning potential?
+Skipping clarification creates cascading problems during implementation:
 
-**Ask yourself**:
+**Missing specification clarity** →
+**Vague planning decisions** →
+**Confused implementation tasks** →
+**Rework and frustration**
 
-- ✅ Can a developer read your spec and understand exactly what Gemini needs to generate?
-- ✅ Are Gemini's constraints and limitations explicitly documented?
-- ✅ Are all video quality parameters defined (resolution, frame rate, codec, duration)?
-- ✅ Are fallback behaviors documented for Gemini unavailability or format incompatibility?
-- ✅ Is the interaction flow specific enough for Playwright to automate it?
-- ✅ Are edge case handling strategies explicit (timeout behavior, retry logic)?
+Here's how clarification breaks this chain:
 
-If yes to most, your spec is ready for planning.
+1. You run `/sp.clarify` and discover ambiguity: "What's the minimum number of sources?"
+2. You update spec: "Minimum 6 peer-reviewed sources"
+3. Planning phase generates clear implementation task: "Research and select 6+ peer-reviewed sources on [topic]"
+4. Implementation proceeds smoothly because the requirement is explicit
 
 ---
 
@@ -235,58 +273,49 @@ If yes to most, your spec is ready for planning.
 
 ### Mistake 1: Skipping /sp.clarify Because "Spec Looks Good to Me"
 
-**The Error**: "I wrote a detailed video spec. I don't need clarification."
+**The Error**: "I wrote a detailed spec. I don't need clarification."
 
-**Why It's Wrong**: Video generation introduces technology-specific ambiguities. What's "obvious" to you (1080p quality? MP4 format? 45 second duration?) may be unclear or impossible given Gemini's actual constraints.
+**Why It's Wrong**: Every specification has ambiguities you didn't notice. Clarify surfaces them now (5 minutes) instead of during implementation (5 hours).
 
-**The Fix**: Always run `/sp.clarify`. You'll be surprised what video-specific gaps emerge. Most video specs need 1-2 clarification rounds.
+**The Fix**: Always run `/sp.clarify`. You'll be surprised what gaps emerge. Most specs need 1-2 clarification rounds.
 
-### Mistake 2: Ignoring Gemini Constraints Because "I'll Figure It Out Later"
+### Mistake 2: Ignoring Critical Clarifications
 
-**The Error**: "My spec doesn't specify video format or duration limits. I'll handle that during implementation."
+**The Error**: "AI asked about citation style but I'll just figure that out later."
 
-**Why It's Wrong**: Unaddressed constraints create implementation surprises (Gemini can't generate your requested format, session times out before video completes, free tier has undocumented rate limits). This breaks planning.
+**Why It's Wrong**: Citation style affects every source reference. Deferring this decision means planning the paper structure without knowing how citations work, then discovering mid-implementation you chose wrong.
 
-**The Fix**: Address critical constraints upfront:
-- "Gemini generates MP4; if unavailable, accept WebM"
-- "Maximum 90-second video duration (Gemini constraint)"
-- "If session times out after 120 seconds, retry up to 3 times"
+**The Fix**: Address critical gaps upfront. Test: "If planning didn't know this, would they make a different choice?" If yes, it's critical.
 
-### Mistake 3: Accepting All AI Suggestions Without Critical Thinking
+### Mistake 3: Accepting All AI Suggestions Without Thinking
 
-**The Error**: AI says "Consider adding format validation" → immediately adding it without evaluating necessity
+**The Error**: AI suggests adding source diversity requirements → immediately adding without evaluating necessity
 
-**Why It's Wrong**: Not all suggestions improve your spec. Some add unnecessary complexity or over-engineer for a simple case.
+**Why It's Wrong**: Not all suggestions improve your spec. Some add unnecessary complexity.
 
 **The Fix**: Evaluate each suggestion:
-- Is this edge case likely in your actual use case?
-- Does handling this improve clarity or add noise?
-- Can I defer this to version 2?
+- Is this critical to paper quality or nice-to-have?
+- Does this affect planning or just implementation?
+- Can I defer this to revision?
 
 Then decide: Accept, Reject, or Modify.
-
-#### 🤝 Practice Exercise
-
-> **Ask your AI**: "I ran /sp.clarify on my video specification and received 6-8 suggestions for improvement. Help me categorize them: (1) Which are CRITICAL (Playwright implementation won't work without them)? (2) Which are NICE-TO-HAVE (improve robustness but not blocking)? (3) Which can I defer to future iterations? Then explain how addressing the critical gaps will help the planning phase generate a better Playwright MCP implementation."
-
-**Expected Outcome**: Your AI should categorize clarification feedback by urgency (e.g., "Gemini format compatibility = critical, retry logic optimization = nice-to-have"), explain why critical gaps block planning (unclear Gemini constraints → unclear Playwright automation approach), and help you make informed decisions about which changes to prioritize before moving to `/sp.plan`.
 
 ---
 
 ## Try With AI
 
-Ready to validate your clarified video specification and ensure it's ready for Playwright MCP planning? Test your improvements:
+Ready to clarify your research paper specification? Test these prompts:
 
-**🔍 Explore Video-Specific Ambiguities:**
-> "Compare my original video spec with the clarified version. What video-specific ambiguities were resolved? Show me exact examples: (1) Where I clarified video quality requirements, (2) Where I documented Gemini format constraints, (3) Where I added edge case handling. Are there still any vague video requirements remaining?"
+**Explore Specification Gaps:**
+> "I'm ready to run /sp.clarify on my research paper specification. Before I do, what are the most common gaps in paper specifications? What questions should I expect the clarification process to surface?"
 
-**🎯 Practice Technology Constraint Handling:**
-> "Imagine you're implementing this spec with Playwright MCP. Read my clarified video specification and tell me: (1) Can you automate the sign-up flow from this spec alone without asking questions? (2) What are the Gemini constraints you need to know about? (3) What edge cases need explicit handling? (4) Is the specification complete enough to write tests before implementation?"
+**Interpret Clarification Feedback:**
+> "Here are the clarifying questions my AI identified about my paper spec: [paste the questions]. Help me categorize them: (1) Which are CRITICAL (planning won't work without this)? (2) Which are NICE-TO-HAVE (improve quality but not blocking)? (3) Which can I defer? Explain how each critical gap affects the planning phase."
 
-**🧪 Test Prioritization for Video Edge Cases:**
-> "I received 7 clarification suggestions about my video spec: [describe them]. Help me prioritize for Playwright MCP implementation: Which are CRITICAL (implementation won't work without them)? Which are NICE-TO-HAVE (improve quality but not blocking)? Which can I defer to later? Explain how each critical gap affects Playwright automation planning."
+**Validate Clarity:**
+> "I've updated my research paper specification based on clarification feedback. Read my updated spec and tell me: (1) Is the paper scope clear? (2) Would a planner know what paper structure to design? (3) Are there any remaining ambiguities? (4) Is this specification ready for the planning phase?"
 
-**🚀 Apply to Your Video Spec:**
-> "I ran `/sp.clarify` on my video generation specification. The feedback focused on [describe areas: Gemini constraints? Format compatibility? Session timeout handling?]. Help me decide which clarifications to implement now vs later. What's the minimum set of changes needed to make my spec ready for Playwright MCP planning? Walk me through your decision framework for video-specific edge cases."
+**Practice Decision-Making:**
+> "My clarification feedback included suggestions about [topic]. Help me decide whether to address each suggestion now: Is it critical for planning? Does it affect success criteria? Can I defer it to revision? Walk me through your decision framework."
 
 ---

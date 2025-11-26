@@ -1,30 +1,41 @@
-### Core Concept
-Brownfield adoption (adding Spec-Kit Plus to existing projects) requires evidence-based backup strategy and intelligent merge planning because `init --here` COMPLETELY overwrites CLAUDE.md—not automatically merged, requiring manual recovery and categorization.
+## Lesson Title
 
-### Key Mental Models
-- **Experimental branch isolation**: Keeps main branch untouched so rollback is git checkout (zero risk exposure to team)
-- **Backup redundancy**: Three recovery methods (git history, backup file, branch rollback) means single failure doesn't cause data loss
-- **Content categorization**: Standards/architecture → constitution.md (project rules); AI patterns → CLAUDE.md (behavioral instructions)
-- **Risk assessment matrix**: Content volume + refinement time → determine backup strategy (LOW risk = standard workflow; VERY HIGH = manual integration safer than init)
+Brownfield adoption teaches the safe, strategic process of integrating Spec-Kit Plus into existing projects while preserving team knowledge. Unlike greenfield projects where you control the entire structure from the start, brownfield work requires protecting accumulated institutional knowledge (custom CLAUDE.md, slash commands, team conventions) while avoiding data loss from framework-driven overwrites. The lesson establishes a three-layer safety workflow (git branches + manual backups + git commit history) before running `specifyplus init --here`, then shows students how to classify and merge their existing knowledge into the appropriate Spec-Kit Plus locations (constitution.md for standards, CLAUDE.md for collaboration patterns).
 
-### Critical Patterns
-- **Evidence before action**: File inspection reveals exactly what overwrites (CLAUDE.md yes, custom commands no, source code untouched)
-- **Safety checklist**: Pre-flight validation (git exists, branches available, time allocated, merge complexity estimated) before running init
-- **File preservation zones**: `.claude/commands/` safe; `.specify/` new; CLAUDE.md overwritten; source code untouched (understanding boundaries prevents surprises)
-- **Merge strategy by risk**: LOW (backup sufficient) → MODERATE (git + file backups) → HIGH (team review first) → VERY HIGH (don't use init --here)
+### Mental Models
 
-### AI Collaboration Keys
-- AI helps design safety workflow (redundant recovery methods)
-- AI adapts merge guidance to your specific content categories
-- Convergence toward solution: You provide constraints → AI suggests approach → You refine → Merged result matches neither starting proposal
+- **Greenfield vs Brownfield**: Greenfield means starting from scratch with no existing code, conventions, or institutional knowledge. Brownfield means inheriting an existing codebase with months/years of accumulated decisions, team knowledge, and working code that must be protected during framework adoption.
+
+- **File Preservation Profile**: Not all files are equally at risk during init. Understanding exactly what gets overwritten (CLAUDE.md, .specify/), what gets created (constitution.md, templates), and what stays completely safe (source code, git history, custom slash commands) lets students make informed decisions about backup strategy.
+
+- **Content Classification**: Team knowledge stored in a single CLAUDE.md file must be sorted by destination after adoption—coding standards and architecture principles belong in constitution.md (project-specific rules), while AI collaboration patterns and behavioral instructions belong appended to CLAUDE.md (instructions for AI working with the team).
+
+- **Redundant Safety Strategy**: Multiple recovery paths (git branch isolation, manual backup files, git commit history, diffs) provide overlapping protection. If one recovery method fails, others can restore content—eliminating single points of failure.
+
+### Key Patterns
+
+- **Three-Layer Safety Workflow**: Create experiment branch (isolates main branch from risk) + create backup files (manual recovery) + commit current state (git recovery history) BEFORE running init. This produces three independent ways to recover if needed.
+
+- **Diff-Based Verification**: After running init, inspect actual changes via `git diff --name-only` to confirm only expected files changed. This prevents surprising overwrites and builds confidence in the safety of the process.
+
+- **Content Routing Decision Matrix**: Establish clear classification rules before merging—coding standards/architecture/design patterns go to constitution.md (project constraints), collaboration behaviors/AI interaction patterns go to CLAUDE.md (behavioral instructions). This prevents mixing concerns and maintains clean separation.
+
+- **Incremental Adoption Strategy**: Teams don't have to adopt Spec-Kit Plus all at once. Testing safely on a branch, merging selectively, and keeping both systems coexisting temporarily lets teams transition gradually without disrupting existing workflows.
 
 ### Common Mistakes
-- **No-backup YOLO**: Running init without branch/backup/commit (one typo = permanent 800-line knowledge loss)
-- **Misunderstanding "merge"**: Warning says "merge with existing content" (true at directory level) but CLAUDE.md is OVERWRITTEN not merged (false at file level)
-- **Assuming git exists**: No git = no recovery method besides manual backup (critical blocker)
-- **Time pressure shortcuts**: "30-min demo needed, skip safety workflow" → demo fails, turns into data recovery crisis
 
-### Connections
-- **Builds on**: Understanding Spec-Kit Plus structure (chapters 13-14) before adopting it in real projects
-- **Leads to**: Capability to safely integrate new workflows without destroying institutional knowledge
-- **Critical for**: Consulting work where client CLAUDE.md contains 6-12 months irreplaceable team knowledge
+- **No Backup Before Init**: Running `specifyplus init --here` without backing up CLAUDE.md first. If the init overwrites your team knowledge and you don't have backups or git history, the content is permanently lost—no recovery mechanism exists.
+
+- **Single Point of Failure**: Relying on only one recovery method (like git commit) and ignoring the others. If you used git and the git history gets corrupted or accidentally reset, you have no fallback. Multiple overlapping recovery methods prevent total loss.
+
+- **Wrong Content Destination**: Putting coding standards into CLAUDE.md instead of constitution.md, or putting behavioral AI instructions into constitution.md instead of CLAUDE.md. This confuses concerns—constitution defines project rules, CLAUDE.md defines how AI should behave within those rules.
+
+- **Testing on Main Branch**: Running init directly on main branch instead of an experiment branch. If something unexpected happens, your production branch is affected immediately instead of isolated in a test branch.
+
+- **Losing Context During Merge**: After init creates the new files, failing to understand what your original content was for. If you don't read and categorize your CLAUDE.md.backup content before attempting the merge, you might accidentally discard important team knowledge while integrating the new structure.
+
+### Progression Context
+
+- **Builds on**: Chapter 14 foundation lessons teaching greenfield workflow, CLAUDE.md structure, constitution.md purpose, slash commands, and specifyplus initialization. Students understand what Spec-Kit Plus does and how it organizes knowledge before learning how to integrate it into existing systems.
+
+- **Leads to**: Capstone (Lesson 15, Chapter 14) where students apply full Spec-Kit Plus workflow to real-scale projects combining all previous lessons, including safe brownfield adoption patterns for teams inheriting existing systems.

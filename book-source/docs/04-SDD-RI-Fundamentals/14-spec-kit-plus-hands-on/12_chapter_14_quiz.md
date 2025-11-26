@@ -1,18 +1,18 @@
 ---
 sidebar_position: 12
-title: "Chapter 14: Spec-Kit Plus Hands-On Quiz"
+title: "Chapter 14: Master Spec-Kit Plus Quiz"
 chapter: 14
 lesson: 12
 duration_minutes: 20
 proficiency_level: "B1"
 ---
 
-# Chapter 14: Spec-Kit Plus Hands-On Quiz
+# Chapter 14: Master Spec-Kit Plus Quiz
 
 Test your mastery of Spec-Kit Plus workflow. This assessment covers command recognition, artifact matching, workflow sequencing, and the P+Q+P framework through your research paper project.
 
 <Quiz
-  title="Chapter 14: Spec-Kit Plus Workflow Mastery"
+  title="Chapter 14: Master Spec-Kit Plus"
   questions={[
     {
       question: "Which Spec-Kit Plus command creates project-wide quality standards that all subsequent work must satisfy?",
