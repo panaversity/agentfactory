@@ -1,468 +1,443 @@
 ---
-title: "Specify Phase - Writing Your Video Generation Specification"
+title: "Specify Phase"
 chapter: 14
 lesson: 4
-duration_minutes: 90
-proficiency_level: "B1"
-
-# HIDDEN SKILLS METADATA (Institutional Integration Layer)
-# Not visible to students; enables competency assessment and differentiation
-skills:
-  - name: "Business-First Video Specification"
-    proficiency_level: "B1"
-    category: "Technical"
-    bloom_level: "Apply"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can write specification defining video intent, constraints, and success criteria without implementation details"
-
-  - name: "Evals-First Collaboration Pattern"
-    proficiency_level: "B1"
-    category: "Technical"
-    bloom_level: "Apply"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student conducts informal conversation with AI to clarify video requirements before formal specification"
-
-  - name: "Video-Domain Success Criteria"
-    proficiency_level: "B1"
-    category: "Technical"
-    bloom_level: "Apply"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student identifies testable success criteria for video generation (duration, format, playability, file size)"
-
-  - name: "Specification Template Completion"
-    proficiency_level: "B1"
-    category: "Technical"
-    bloom_level: "Apply"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student writes complete specification with Intent, Constraints, Success Evals, Non-Goals sections"
+duration_minutes: 45
+proficiency_level: "A2-B1"
 
 learning_objectives:
-  - objective: "Conduct evals-first conversation with AI to clarify video success criteria before formal specification"
-    proficiency_level: "B1"
-    bloom_level: "Understand"
-    assessment_method: "Completion of pre-specification dialogue with AI companion"
-
-  - objective: "Write complete product demo video specification with clear intent, constraints, and success criteria"
-    proficiency_level: "B1"
+  - objective: "Execute the `/sp.specify` command to convert vague requirements into clear specifications"
     bloom_level: "Apply"
-    assessment_method: "Specification completeness review (all required sections included, no implementation details)"
+    assessment_method: "Student produces valid spec.md with all required sections"
 
-  - objective: "Distinguish video success evals (marketing impact) from technical constraints (format, duration, file size)"
-    proficiency_level: "B1"
-    bloom_level: "Analyze"
-    assessment_method: "Accurate categorization of video requirements into evals vs constraints"
+  - objective: "Write specification with clear Intent, Constraints, Success Evals, and Non-Goals"
+    bloom_level: "Apply"
+    assessment_method: "Specification review checklist confirms all sections present and SMART"
 
-  - objective: "Identify edge cases and constraints specific to video generation (Gemini availability, file downloads, playback validation)"
-    proficiency_level: "B1"
-    bloom_level: "Analyze"
-    assessment_method: "Edge case documentation includes video-domain specific concerns"
+  - objective: "Distinguish what from how (specification vs implementation)"
+    bloom_level: "Understand"
+    assessment_method: "Student identifies implementation details leaked into spec and corrects them"
 
 cognitive_load:
-  new_concepts: 8
-  assessment: "8 new concepts (Evals-first pattern, Video-domain context, Intent definition, Constraint documentation, Success criteria, Non-goals, Specification structure, Business vs technical requirements) within B1 limit of 10 ✓"
+  new_concepts: 4
+  assessment: "4 new concepts (Specification definition, `/sp.specify` command, SMART success criteria, Non-Goals scope boundaries) within A2-B1 limit ✓"
 
 differentiation:
-  extension_for_advanced: "Write specifications for 3 different video types (product demo, tutorial, social media clip); compare how requirements differ by format, duration, audience"
-  remedial_for_struggling: "Use provided video specification template; fill in essential sections (Intent, Constraints, Success Evals) before moving to Clarify phase"
+  extension_for_advanced: "Write specification for different types of documents (blog post, technical guide, presentation outline); compare how success criteria differ by document type"
+  remedial_for_struggling: "Use provided specification template; fill in essential sections (Intent, Success Evals) before moving to Clarify phase"
 
-# Generation metadata
 generated_by: "content-implementer v1.0.0"
-source_spec: "specs/chapter-14-video-pivot/spec.md"
-created: "2025-11-25"
-last_modified: "2025-11-25"
+source_spec: "specs/037-chapter-14-research-paper-pivot/spec.md"
+created: "2025-11-26"
+last_modified: "2025-11-26"
 git_author: "Claude Code"
-workflow: "manual-implementation"
+workflow: "/sp.implement"
 version: "1.0.0"
 ---
 
-# Specify Phase - Writing Your Video Generation Specification
+# Specify Phase
 
-Welcome to the most critical phase in SDD-RI: **Specification**. In the last lesson, you defined your project's global rules. Now you're writing the blueprint for a specific feature: a **product demo video**.
+Welcome to the fourth lesson of hands-on SDD-RI development. You've established your project's global rules in the Constitution phase. Now it's time to specify what you're actually building: **a clear, measurable description of one feature**.
 
-Here's the paradigm shift: In AI-native video generation, **your ability to describe what success looks like is more valuable than your ability to write video generation code**. Vague prompts produce mediocre videos. Clear specifications produce exactly what you need—the first time.
-
-In this lesson, you'll learn how professionals write video specifications by practicing an evals-first approach: having a real conversation with AI to clarify what success means before writing the formal specification document.
+In this lesson, you'll learn the `/sp.specify` command—the tool that transforms vague ideas into actionable specifications. You'll practice by specifying a research paper, then apply the same approach to any project.
 
 ---
 
-## Understanding Video Success: Beyond "Good Looking"
+## The Core Skill: Writing Clear Specifications
 
-Before writing a specification, professionals define what success actually means. This isn't technical validation ("Does the file download?"). This is **business validation**: "Does this video convert prospects into customers?"
+Before showing you the command, let's understand what a specification actually is.
 
-### Why Evals-First Matters for Video
+### What Is a Specification?
 
-Consider these two approaches to the same problem:
+A **specification** answers one question: **What are we building?**
 
-**Without evals-first** (vague):
-> "Create a product demo video showing our sign-up flow"
+It is NOT a plan (how), NOT a task list (what steps), NOT code. It is a description of intent, constraints, success criteria, and scope boundaries.
 
-AI generates a video. But did you want:
-- 30 seconds or 2 minutes?
-- Silent or with voiceover?
-- Professional animation or screen recording?
-- Vertical (mobile) or horizontal (web)?
+**Example: Research Paper Project**
 
-**With evals-first** (clear):
-> "Create a 45-60 second product demo video. Success means:
-> - Potential customers understand sign-up in under 60 seconds (target: 100+ views on YouTube)
-> - Sign-up process is clearly visible (no blurry text, no fast-forwarding)
-> - Video ends with call-to-action (CTA visible for 3+ seconds)
-> - Marketing message: 'Sign up in under 60 seconds'"
+Instead of vague ideas:
+> "Write a paper on artificial intelligence and education"
 
-Now AI knows exactly what you're optimizing for.
+A specification makes it concrete:
+> - **Intent**: 3000-5000 word research paper on AI's impact on K-12 classroom efficiency
+> - **Success**: Paper defines 3+ concrete AI applications, includes 8+ academic sources, reader understands economic ROI
+> - **Constraints**: APA format, markdown source, no images (text only for MVP)
+> - **Not Building**: Literature review of entire AI field, implementation guide, code examples
 
-### The Evals-First Conversation Pattern
+Now you know exactly what "done" looks like.
 
-Here's how professionals work in practice:
+### Why Specifications Matter
 
-**Step 1: You Drive the Exploration**
+Specifications are the foundation of specification-driven development. Here's why:
 
-YOU ask questions to explore what success looks like. The AI helps you think through requirements—it doesn't interview you.
-
-```
-You: "I want to create a product demo video for our SaaS platform.
-What makes a demo video successful for converting prospects?"
-
-AI: "Great question. Successful demo videos typically:
-- Show the core workflow (not all features)
-- Demonstrate value in under 90 seconds (attention span constraint)
-- Include clear call-to-action at the end
-- Have good visual clarity (text readable, no fast-forwarding)
-
-For your SaaS, what's the single most important workflow to demo?"
-
-You: "Our sign-up flow. We want prospects to see how fast it is."
-
-AI: "Perfect. So success metric: 'Prospects understand sign-up speed.'
-How fast is it realistically? 30 seconds? 60 seconds?"
-
-You: "Sign-up takes about 45-60 seconds end-to-end."
-
-AI: "So your video should show:
-- Start: User on landing page
-- Middle: User filling out form (showing each field)
-- End: User logged in, on dashboard
-- Total duration: 45-90 seconds (matches actual speed + some context)"
-
-You: "That works. What about quality? MP4 format? Resolution?"
-
-AI: "For YouTube: 1080p MP4 is standard.
-Duration: 45-60 seconds is optimal for YouTube recommendations.
-File size: Keep under 50MB for fast upload.
-For Gemini generation: We'll specify these as constraints."
-```
-
-**Step 2: Formalize Into Specification**
-
-That conversation becomes the spec. The spec says: "Here's what success looks like for THIS video" (one feature). Now you can write it down with structure:
-
-- **Intent**: What problem does this video solve? (Product demo for sign-up)
-- **Constraints**: Technical requirements (MP4, 1080p, 45-60 seconds)
-- **Success Evals**: How do we know it worked? (Marketing impact, clarity, CTA visible)
-- **Non-Goals**: What are we NOT doing? (No post-editing, no custom animation)
+1. **Clarity for AI**: A clear spec produces clear outputs. A vague spec produces confusion.
+2. **Measurable Success**: You can verify success objectively, not subjectively ("looks good" is not measurable).
+3. **Scope Management**: Non-Goals prevent creep ("Can we add images?" → "No, not in this spec").
+4. **Reduced Rework**: Clear intent prevents misunderstandings that lead to rewrites.
 
 ---
 
-## Writing Your Video Specification
+## Understanding the `/sp.specify` Command
 
-Now it's your turn. Use the evals-first approach to write a specification for your product demo video.
+The `/sp.specify` command is a Spec-Kit Plus tool that guides you through writing a specification.
 
-### Step 1: Explore Success Criteria
+### Command: `/sp.specify`
 
-Open your AI companion and have this conversation:
+**What it does**: Converts a vague feature idea into a structured specification document
 
-```
-I'm writing a specification for a product demo video showing our [feature/workflow].
+**When to use it**: When you have an idea and need to clarify exactly what success looks like before planning implementation
 
-Before I write the formal spec, help me clarify what success means:
+**Output**: A `spec.md` file with Intent, Constraints, Success Evals, and Non-Goals sections
 
-1. What's the single most important workflow to demonstrate?
-2. How long should the video be? (30 sec? 60 sec? 2 min?)
-3. Who's watching this video? (prospects? existing users? marketing team?)
-4. What action do you want viewers to take after watching? (sign up? contact sales?)
-5. What makes a demo video "clear"? (readable text, pacing, visual quality?)
-6. What format and resolution do we need? (YouTube? LinkedIn? Email?)
+### Command Syntax
 
-[Have the conversation with your AI companion. Take notes on insights that emerge.]
+In your Claude Code terminal:
+
+```bash
+/sp.specify "Your feature idea or problem to solve"
 ```
 
-### Step 2: Create Your Video Specification File
+**Example**:
+```bash
+/sp.specify "Research paper on AI's impact on K-12 classroom efficiency"
+```
 
-Based on your conversation, create a file called `specs/video-generation/product-demo.md` with this structure:
+The command then guides you through:
+1. **Clarifying Intent**: What problem does this feature solve?
+2. **Defining Success Evals**: How do we know it worked? (Measurable outcomes)
+3. **Listing Constraints**: What are the limits? (Format, length, scope)
+4. **Acknowledging Non-Goals**: What are we NOT building? (Explicit boundaries)
 
+---
+
+## The Four Required Sections
+
+Every specification has these sections. They're the backbone of clear communication.
+
+### Section 1: Intent
+
+**Purpose**: Describes what problem this feature solves and who benefits
+
+**Questions to answer**:
+- What are we building?
+- Why are we building it?
+- Who will use it?
+- What problem does it solve?
+
+**Example (Research Paper)**:
 ```markdown
-# Specification: Product Demo Video
-
 ## Intent
-Generate a [X] second product demo video showcasing [workflow name].
-Target audience: [prospects/users/partners]
-Marketing message: [one-sentence value proposition]
-Platform: [YouTube/LinkedIn/website]
 
+Write a 3000-5000 word research paper exploring artificial intelligence's impact
+on classroom efficiency in K-12 education. Target audience: education administrators
+and technology decision-makers. Purpose: Provide evidence-based analysis of AI's
+role in reducing teacher workload and improving student outcomes.
+```
+
+**Strong intent**: Specific, contextual, audience-aware
+**Weak intent**: "Write a paper about AI and education"
+
+### Section 2: Constraints
+
+**Purpose**: Defines the boundaries, technical requirements, and limitations
+
+**Questions to answer**:
+- What's the scope? (Length, time, format)
+- What tools/platforms do we use?
+- What are the technical requirements?
+- What limits do we respect?
+
+**Example (Research Paper)**:
+```markdown
 ## Constraints
-- Duration: [X-X seconds]
-- Format: MP4, H.264 codec
-- Resolution: 1080p (1920x1080), 30 FPS
-- File size: < [X] MB (for fast upload)
-- Tool: Gemini.google.com (free tier, browser-based)
-- Playback validation: Must download and play without errors
 
-## Success Evals (How We Know It Worked)
-- Video file downloads successfully within 60 seconds
-- Video duration matches specification (X-X seconds)
-- Video plays without errors on standard players (VLC, YouTube, web browser)
-- Core workflow is clearly visible (text readable, no fast-forwarding)
-- Call-to-action is present and visible for 3+ seconds
-- File is valid MP4 format
-
-## Non-Goals (What We're NOT Building)
-- Post-generation editing (no custom transitions, effects)
-- Voiceover or background music (screen recording + silence)
-- Multi-language versions (English only for MVP)
-- Mobile-optimized vertical format (horizontal only)
-- Custom branding animations (demo of core workflow only)
+- Word count: 3000-5000 words
+- Format: Markdown source file, APA citation style
+- Sources: Academic peer-reviewed journals only (minimum 8 sources)
+- Deadline: Written within 2 weeks
+- No visual elements (text-based only for MVP)
+- Time investment: Max 20 hours research and writing
 ```
 
-### Step 3: Review Your Specification
+**Strong constraints**: Specific, testable, realistic
+**Weak constraints**: "Make it professional", "Use good sources"
 
-Ask yourself (or your AI companion):
+### Section 3: Success Evals
 
-- [ ] **Intent is clear**: Could someone outside your project explain what this video demonstrates?
-- [ ] **Constraints are testable**: Can you verify duration, format, and playability?
-- [ ] **Success Evals are measurable**: Can you check these without subjective judgment?
-- [ ] **Non-goals are explicit**: Did you clearly state what's NOT in scope?
-- [ ] **No implementation details**: Does the spec avoid "how to build" (that's the Plan phase)?
-- [ ] **Video-domain specific**: Does this account for Gemini constraints, file downloads, playback validation?
+**Purpose**: Defines measurable success criteria—how you'll know this is "done"
 
-### Step 4: Test Your Specification Quality
+**Questions to answer**:
+- What does success look like?
+- How do we verify it objectively?
+- What's measurable vs subjective?
 
-Ask your AI companion:
+**Example (Research Paper)**:
+```markdown
+## Success Evals
 
+- ✓ Paper is between 3000-5000 words
+- ✓ Paper identifies 3+ concrete AI applications in K-12 classrooms
+- ✓ At least 8 citations from peer-reviewed academic sources
+- ✓ Each major claim is supported by evidence
+- ✓ Reader can explain ROI (return on investment) of classroom AI after reading
+- ✓ Paper is valid Markdown with proper APA formatting
+- ✓ Paper completed within 2-week timeframe
 ```
-I've written this video specification:
 
-[Paste your spec]
+**Strong evals**: Specific, observable, measurable
+**Weak evals**: "Paper is well-written", "Sources are credible"
 
-Can you review it for clarity?
+### Section 4: Non-Goals
 
-1. What's ambiguous? (Where could I misunderstand what success looks like?)
-2. What constraints are missing? (Duration? File size? Format validation?)
-3. What edge cases might I encounter? (Gemini timeout? File download failure? Playback error?)
-4. How would you describe this video to someone who hasn't read the spec?
+**Purpose**: Explicitly states what's OUT of scope to prevent creep and misunderstanding
+
+**Questions to answer**:
+- What are we NOT building?
+- What features are deferred?
+- What could be confusing to clarify?
+
+**Example (Research Paper)**:
+```markdown
+## Non-Goals
+
+- Not a comprehensive literature review (focused analysis only)
+- Not a how-to guide for implementing AI (conceptual analysis only)
+- Not a comparison of specific AI tools (focus on application patterns)
+- No implementation code examples
+- No discussion of ethical concerns (separate paper)
+- Not a quantitative study (qualitative analysis based on existing research)
 ```
+
+**Strong non-goals**: Clear, specific, prevent common misunderstandings
+**Weak non-goals**: "No extra stuff"
 
 ---
 
-## Specification Quality Indicators
+## The SMART Criteria for Success Evals
 
-### A Strong Specification
+Success Evals must be SMART: Specific, Measurable, Achievable, Relevant, Time-bound.
 
-A strong video spec has:
-- ✅ Clear intent (what workflow is being demonstrated)
-- ✅ Explicit constraints (duration, format, file size, platform)
-- ✅ Measurable success evals (testable, not subjective)
-- ✅ Acknowledged non-goals (what's explicitly OUT of scope)
-- ✅ No implementation details (no "use Gemini to..." or "prompt the AI to...")
-- ✅ Video-domain awareness (file download, playback validation, Gemini free tier limits)
+### SMART Checklist
 
-### A Weak Specification
+**Is it Specific?**
+- ❌ "Paper is high quality"
+- ✅ "Paper identifies 3+ AI applications with specific classroom examples"
 
-A weak video spec has:
-- ❌ Vague intent ("Create a demo video") - what workflow?
-- ❌ Missing constraints ("Make it nice quality") - what's "nice"?
-- ❌ Subjective evals ("Video should look professional") - professional to whom?
-- ❌ No non-goals (scope creeps: "also add music", "also add text overlays")
-- ❌ Implementation buried in spec ("Use Gemini's text-to-video feature with this prompt...")
-- ❌ Ignores video realities (no mention of file downloads, Gemini timeouts, playback validation)
+**Is it Measurable?**
+- ❌ "Reader understands the topic"
+- ✅ "Reader can explain 3 concrete AI use cases in education"
+
+**Is it Achievable?**
+- ❌ "Paper citations come from top 1% most cited journals"
+- ✅ "At least 8 citations from peer-reviewed journals"
+
+**Is it Relevant?**
+- ❌ "Paper has creative formatting" (doesn't matter for this research paper)
+- ✅ "Paper uses APA formatting correctly"
+
+**Is it Time-bound?**
+- ❌ "Paper is completed eventually"
+- ✅ "Paper is completed within 2 weeks"
 
 ---
 
 ## Common Specification Mistakes
 
-### Mistake 1: Vague Success Criteria
+### Mistake 1: Leaking Implementation Into Specification
 
 **The Error**:
-```
-Success Evals:
-- Video looks professional
-- Sign-up is clearly shown
-- Viewers understand the product
+```markdown
+## Specification: Research Paper
+
+The paper will be written using Claude AI to:
+1. Research the topic
+2. Outline the structure
+3. Generate each section based on the outline
+4. Ask Claude to review and refine
+
+Use these prompts with Claude...
 ```
 
-**Why It's Wrong**: "Looks professional," "clearly shown," and "understand" are subjective. How would you verify them objectively?
-
-**The Fix** (Make it measurable):
-```
-Success Evals:
-- Video file downloads successfully within 60 seconds
-- Text on screen is readable at YouTube standard quality (1080p)
-- Sign-up form occupies 50%+ of video frame during input steps
-- Video includes explicit call-to-action (visible for 3+ seconds)
-- File plays without errors in 3+ video players (YouTube, VLC, browser)
-```
-
-### Mistake 2: Missing Video-Specific Constraints
-
-**The Error**:
-```
-Constraints:
-- Duration: 45-60 seconds
-- Format: MP4
-```
-
-**Why It's Wrong**: You forgot critical video realities:
-- How large should the file be? (Affects upload time)
-- What if Gemini times out? (Affects retry strategy)
-- How will you validate the video works? (Affects testing approach)
+**Why It's Wrong**: This is IMPLEMENTATION (HOW). Specification is WHAT. Planning phase (next lesson) is HOW.
 
 **The Fix**:
-```
-Constraints:
-- Duration: 45-60 seconds
-- Format: MP4, H.264 codec
-- Resolution: 1080p (1920x1080), 30 FPS
-- File size: < 50 MB (YouTube guideline)
-- Frame rate: 30 FPS (standard for screen recording)
-- Playback validation: Must download and play in at least 2 different players
-- Gemini timeout: If generation exceeds 5 minutes, retry up to 3 times before failing
+```markdown
+## Intent
+
+5000-word research paper on AI in K-12 education that explains
+economic impact and classroom efficiency gains.
+
+## Constraints
+
+- Word count: 5000 ± 500 words
+- Sources: Peer-reviewed academic journals only (8+ minimum)
+- Format: APA style, markdown source file
+
+## Success Evals
+
+- Paper word count is between 4500-5500 words
+- At least 8 academic citations
+- Paper structure includes introduction, 3+ findings, conclusion
+- Each finding is supported by evidence
+
+## Non-Goals
+
+- No implementation guide
+- No discussion of technology challenges
 ```
 
-### Mistake 3: Implementation Leaking Into Specification
+[Implementation details go in `/sp.plan`, not here]
+
+### Mistake 2: Subjective Success Criteria
 
 **The Error**:
-```
-Specification: Product Demo Video
+```markdown
+## Success Evals
 
-...
-
-Constraints:
-- Use Gemini.google.com in an automated browser session
-- Prompt Gemini with: "Generate a 60-second demo showing sign-up workflow"
-- Capture browser output and save as MP4
+- Paper is high-quality
+- Sources are credible
+- Writing is clear
+- Reader finds it valuable
 ```
 
-**Why It's Wrong**: Specification defines WHAT. Implementation (Plan phase) defines HOW. Mixing them creates ambiguity.
+**Why It's Wrong**: You cannot verify these objectively. Different people will disagree.
 
 **The Fix**:
-```
-Constraints:
-- Must use browser-automation tool (Playwright or similar)
-- Must use Gemini.google.com (free tier available)
-- Generation timeout: 5 minutes maximum
-- File must be downloadable directly (not copied manually)
+```markdown
+## Success Evals
 
-[Implementation details go in the Plan phase, not here]
+- Paper cites 8+ sources from peer-reviewed journals
+- Average citation date is within past 10 years
+- Each paragraph includes at least one citation or supporting evidence
+- Paper word count is 5000 ± 500 words
+- Paper uses APA formatting correctly
+```
+
+### Mistake 3: Vague Intent
+
+**The Error**:
+```markdown
+## Intent
+
+Write a paper on AI and education.
+```
+
+**Why It's Wrong**: Too vague. What aspect of AI? What level of education? What's the focus?
+
+**The Fix**:
+```markdown
+## Intent
+
+Analyze AI's measurable impact on K-12 classroom efficiency (teacher time savings,
+student engagement improvements) based on existing research. Audience: school
+administrators evaluating AI adoption. Goal: Provide evidence-based recommendations
+for implementation.
 ```
 
 ---
 
-## Evals-First Conversation Example
+## Writing Your Research Paper Specification
 
-Here's what a real evals-first conversation looks like:
+Now it's your turn. Use this process to write a specification for your research paper.
 
-```
-You: "I want to create a demo video for our scheduling platform.
-It's for prospects who haven't used the app yet. They need to see
-how simple it is to schedule a meeting."
+### Step 1: Clarify Your Topic (5 minutes)
 
-AI: "Great. A few clarifying questions:
+Before writing the spec, think about:
 
-1. What's the simplest happy path? (E.g., opening the app → creating one meeting?)
-2. Should the video show the actual app or explain features verbally?
-3. How much context do viewers need? (Sign-up → first meeting? Or assume they're already signed in?)
-4. What's your call-to-action? (Sign up? Request a demo? Download?)
-5. Where will this video live? (Website? YouTube? Email?)"
+1. **What's your research paper about?** (Specific topic, not just "AI")
+2. **Who needs this paper?** (Audience context)
+3. **What problem does it solve?** (Why does this paper matter?)
+4. **How will you know it's done?** (Success indicators)
 
-You: "1) Create one meeting from scratch (opening app to confirmation).
-2) Show the app directly (no voiceover yet).
-3) Assume they're signed in (skip login).
-4) Call-to-action: 'Sign up free.'
-5) On our website homepage."
+Take notes. You're creating the raw material for your specification.
 
-AI: "Perfect. Based on that:
-- Duration: 30-45 seconds is ideal for website embedding
-- Format: MP4, but also consider WebM for better compression
-- Resolution: 720p is fine for website (not YouTube)
-- Call-to-action: Show as text overlay (3-5 seconds at end)
+### Step 2: Use `/sp.specify` Command
 
-A few more constraints to nail down:
+In your Claude Code terminal:
 
-- Should the video loop? (Or does it play once?)
-- What if they have multiple calendars? (Show selection or skip?)
-- File size limit? (Affects compression)"
-
-You: "Loop is fine. Skip calendar selection (assume default).
-Keep under 10MB for fast loading on mobile."
-
-AI: "Now I can help you structure the spec:
-
-Intent: 45-second product demo showing scheduling workflow
-Constraints:
-  - 30-45 seconds duration
-  - MP4 format, < 10MB
-  - 720p resolution
-  - Loops continuously on website
-
-Success Evals:
-  - Video downloads and plays in < 2 seconds on 3G connection
-  - User sees full meeting creation workflow (open → select time → confirm)
-  - Call-to-action visible for 4+ seconds
-  - Video loops smoothly (no black frames between loops)
-
-Non-Goals:
-  - No voiceover (MVP is visual only)
-  - No calendar selection (assumes default calendar)
-  - No multiple user accounts (single user demo)"
-
-You: "That's exactly what I need. Let me write that up formally."
+```bash
+/sp.specify "Research paper on [your topic]. Target audience: [who]. Goal: [why]."
 ```
 
-Notice what happened: Through conversation, you moved from vague ("create a demo video") to crystal-clear requirements. AI didn't interview you—you drove the exploration, and AI helped you think through video-domain realities (duration for website, file size for mobile, loop behavior).
+**Example**:
+```bash
+/sp.specify "Research paper on AI's impact on K-12 classroom efficiency. Target: school administrators. Goal: provide evidence-based ROI analysis."
+```
+
+The command will guide you through writing Intent, Constraints, Success Evals, and Non-Goals.
+
+### Step 3: Review Your Specification
+
+After the command generates your spec, check these:
+
+```
+Specification Checklist:
+
+[ ] Intent is clear (someone unfamiliar with your project can understand the goal)
+[ ] Constraints are specific and testable (not vague "do good work")
+[ ] Success Evals are SMART (Specific, Measurable, Achievable, Relevant, Time-bound)
+[ ] Non-Goals are explicit (prevents scope creep)
+[ ] No "how" leaked in (specification describes what, not how to build)
+[ ] Specification is 1-2 pages (concise, not essay-length)
+```
+
+### Step 4: Refine Based on Feedback
+
+Ask your AI companion:
+
+```
+I've written this research paper specification:
+
+[paste your spec.md]
+
+Can you review it for:
+1. Is the intent clear enough for someone to write from?
+2. Are the success evals measurable? Can I verify them without ambiguity?
+3. What constraints am I missing?
+4. Did I accidentally leak implementation details?
+5. How would you describe this paper to someone who hasn't read the spec?
+```
 
 ---
 
-## Your Turn: Write and Refine
+## Specification vs Plan vs Implementation
 
-### Practice Exercise
+Here's how to know which phase you're in:
 
-1. **Have the conversation** (15 minutes)
-   - Open your AI companion
-   - Describe the video you want to create
-   - Answer the clarifying questions above
-   - Take notes on the requirements that emerge
+| Phase | Answers | Example |
+|-------|---------|---------|
+| **Specify** | WHAT are we building? | "5000-word research paper with 3+ AI applications, 8+ sources" |
+| **Plan** | HOW will we build it? | "Research step 1→2→3, outline structure, write section by section, get feedback, refine" |
+| **Implement** | DO the work | "Search databases, read sources, write intro paragraph, save to file" |
 
-2. **Write the specification** (20 minutes)
-   - Create `specs/video-generation/product-demo.md`
-   - Use the template structure (Intent, Constraints, Success Evals, Non-Goals)
-   - Ensure constraints are testable, evals are measurable
-   - Avoid implementation details
+**If you're writing about HOW → You're in Plan or Implementation, not Specification**
 
-3. **Get feedback** (10 minutes)
-   - Ask your AI: "Is this spec clear enough for someone to build a video from?"
-   - Refine based on ambiguities AI identifies
-   - Add any missing video-domain constraints
+---
 
-4. **Validate completeness** (5 minutes)
-   - Check all required sections
-   - Verify evals are measurable (not subjective)
-   - Confirm no implementation details leaked in
+## Why Research Paper as Example?
+
+The research paper is simple but teaches the same specification skills you'll use for anything:
+
+- **Like a software feature**: Both need clear intent, measurable success, explicit boundaries
+- **Like a documentation project**: Both benefit from concrete constraints and SMART criteria
+- **Like a deployment**: Both require specification before execution
+
+The framework (Intent → Constraints → Success Evals → Non-Goals) works for any project.
 
 ---
 
 ## Try With AI
 
-Ready to write your first complete video specification with AI collaboration? Practice the evals-first approach:
+Ready to master the `/sp.specify` command? Practice writing specifications with your AI companion:
 
-**Explore Success Criteria:**
-> "I want to create a product demo video for my SaaS platform. Before writing the formal specification, help me clarify what success looks like. Ask me about: (1) What workflow am I demonstrating? (2) Who's the target audience? (3) Where will this video be used? (4) What should viewers do after watching? (5) What duration and format makes sense for that platform? Guide me through these questions so I understand what success means before I write the spec."
+**Explore Specification Structure:**
+> "I'm learning to write specifications using the `/sp.specify` command. Before I run the command, help me understand: (1) What's the difference between Intent and Non-Goals? (2) How do I write success evals that are measurable instead of subjective? (3) What kind of constraints matter? (4) Can you give me examples of strong vs weak specifications?"
 
-**Practice Video-Domain Constraints:**
-> "Here are my video requirements: 45-60 second demo, MP4 format, 1080p resolution, YouTube upload. What constraints am I missing? Should I specify: file size limits? Frame rate? Playback validation approach? How Gemini generation failures should be handled? Help me identify constraints specific to video generation that I didn't think of."
+**Practice With Your Topic:**
+> "I want to write a research paper on [your topic]. Help me clarify the specification by asking: (1) Who exactly is the audience for this paper? (2) What specific problem does it solve? (3) How will we measure success—what will prove it's a good paper? (4) What aspects of the topic are we NOT covering? Guide me through these before I run `/sp.specify`."
 
-**Test Specification Clarity:**
-> "I've written a video specification at [path]. Can you review it and tell me: (1) What's ambiguous? (2) What video-domain constraints might I be missing? (3) What edge cases could happen during generation (Gemini timeout, file corruption, format issues)? (4) How would you build this video from my spec—would you have questions?"
+**Test Specification Quality:**
+> "After I run `/sp.specify` and get my specification, review it. Tell me: (1) Is the intent clear enough for someone to work from? (2) Are success criteria measurable (not vague)? (3) What constraints am I missing? (4) Did I leak any implementation details? (5) Are the non-goals explicit?"
 
 **Apply to Your Feature:**
-> "I need to write a specification for a [describe your video feature]. Walk me through the evals-first approach: (1) What problem does this video solve? (2) How do we measure success (marketing impact, clarity, viewer action)? (3) What are technical constraints (format, duration, file size, platform)? (4) What are we explicitly NOT building? Help me work through this conversation before I write the formal specification."
-
----
+> "Help me think through my research paper specification. I'm planning to write about [topic]. The paper needs to [goal]. My audience is [who]. But I'm not sure about: (1) How long should it be? (2) What format and sources? (3) How do I know when it's done? (4) What should I definitely NOT include? Walk me through writing a strong specification."

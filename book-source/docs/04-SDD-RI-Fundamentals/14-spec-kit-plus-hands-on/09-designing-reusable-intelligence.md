@@ -1,95 +1,37 @@
 ---
-title: "Designing Reusable Intelligence: From Video Generation Workflow to Composable Skills"
+title: "Designing Reusable Intelligence"
 chapter: 14
 lesson: 9
-duration_minutes: 150
+duration_minutes: 45
 proficiency_level: "B1"
-
-# HIDDEN SKILLS METADATA (Institutional Integration Layer)
-# Not visible to students; enables competency assessment and differentiation
-skills:
-  - name: "Pattern Recognition for Intelligence Encoding"
-    proficiency_level: "B1"
-    category: "Technical"
-    bloom_level: "Analyze"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can identify which workflow patterns from Lessons 04-08 justify encoding as reusable intelligence (frequency, complexity, organizational value)"
-
-  - name: "Skill Design Using Persona + Questions + Principles"
-    proficiency_level: "B1"
-    category: "Technical"
-    bloom_level: "Create"
-    digcomp_area: "Content Creation"
-    measurable_at_this_level: "Student can design a skill with Persona (cognitive stance), Questions (reasoning prompts), and Principles (decision frameworks)"
-
-  - name: "Video-Domain Intelligence Specialization"
-    proficiency_level: "B1"
-    category: "Technical"
-    bloom_level: "Apply"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can adapt P+Q+P pattern to video generation context (Gemini prompts, quality gates, Playwright MCP automation)"
-
-  - name: "Intelligence Component File Structure"
-    proficiency_level: "B1"
-    category: "Technical"
-    bloom_level: "Apply"
-    digcomp_area: "Digital Content Creation"
-    measurable_at_this_level: "Student can create intelligence component file following .claude/skills/ structure with proper metadata"
-
-  - name: "Skill Reuse Pattern Recognition"
-    proficiency_level: "B1"
-    category: "Conceptual"
-    bloom_level: "Evaluate"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can determine when skills apply to new contexts and what context-specific adaptation is needed"
-
-learning_objectives:
-  - objective: "Identify recurring patterns from Lessons 04-08 that justify intelligence encoding (video generation, quality validation, Playwright automation)"
-    proficiency_level: "B1"
-    bloom_level: "Analyze"
-    assessment_method: "Pattern identification exercise with frequency and complexity analysis"
-
-  - objective: "Design generate-video skill using Persona + Questions + Principles pattern for video generation workflows"
-    proficiency_level: "B1"
-    bloom_level: "Create"
-    assessment_method: "Skill component completeness and reasoning activation quality"
-
-  - objective: "Design upload-youtube skill as preview of Lesson 11 capstone execution pattern"
-    proficiency_level: "B1"
-    bloom_level: "Apply"
-    assessment_method: "Skill file structure validation and reusability assessment"
-
-  - objective: "Apply reuse vs create framework to determine when to build new intelligence"
-    proficiency_level: "B1"
-    bloom_level: "Evaluate"
-    assessment_method: "Decision justification for 3+ example scenarios"
-
 cognitive_load:
-  new_concepts: 8
-  assessment: "8 new concepts (Pattern recognition framework, Skill vs subagent distinction, P+Q+P structure, Persona design for video domain, Video-specific questions, Quality gate principles, Skill reuse patterns, Intelligence composition) - at B1 level with video domain scaffolding ✓"
-
-differentiation:
-  extension_for_advanced: "Design second skill for video marketing optimization; create skill for multi-video campaign orchestration; build skill composition strategy across Lessons 04-11"
-  remedial_for_struggling: "Use provided skill templates with video examples; focus on single skill creation before multi-skill composition; practice domain-specific adaptation with AI partner"
-
+  new_concepts: 4
+  assessment: "4 concepts (Pattern reusability criteria, P+Q+P framework, Skill file structure, Skill vs subagent distinction) at B1 level with paper writing scaffolding"
+learning_objectives:
+  - objective: "Identify recurring patterns that justify reusable intelligence encoding (frequency, complexity, organizational value)"
+    bloom_level: "Analyze"
+  - objective: "Design a skill using Persona + Questions + Principles (P+Q+P) pattern"
+    bloom_level: "Create"
+  - objective: "Determine when to create skill vs subagent based on decision point count"
+    bloom_level: "Evaluate"
+  - objective: "Apply P+Q+P framework to transform domain workflows into reasoning-activated intelligence"
+    bloom_level: "Apply"
 generated_by: "content-implementer v1.0.0"
-source_spec: "Chapter 14 Spec-Kit Plus Hands-On"
-created: "2025-11-25"
-last_modified: "2025-11-25"
+source_spec: "Chapter 14 Lesson 9 Rewrite: P+Q+P Framework for Skill Design"
+created: "2025-11-26"
+last_modified: "2025-11-26"
 git_author: "Claude Code"
 workflow: "/sp.implement"
-version: "1.0.0"
+version: "2.0.0"
 ---
 
-# Designing Reusable Intelligence: From Video Workflows to Composable Skills
+# Designing Reusable Intelligence
 
-You've completed the SDD workflow (Lessons 01-08): Constitution → Specify → Clarify → Plan → Tasks → Implement. You've generated and downloaded a real video using Gemini and Playwright MCP.
+You've completed the SDD workflow (Lessons 01-08): Constitution → Specify → Clarify → Plan → Tasks → Implement. You wrote specifications, refined requirements, planned architecture, decomposed work into tasks, and executed implementation with AI collaboration.
 
 But here's what separates AI-native developers from AI-assisted developers: **The ability to transform workflow patterns into reusable intelligence.**
 
-In this lesson, you'll apply the core paradigm: **Reusable Intelligence** is the new unit of value, not reusable code. You'll extract patterns from Lessons 04-08 and encode them as skills—creating an intelligence library that compounds with every project.
-
-You'll transform tacit knowledge into explicit, reusable components—the next evolution beyond workflow execution.
+In this lesson, you'll learn the **Persona + Questions + Principles (P+Q+P)** framework—the pattern that converts tacit knowledge into explicit, reasoning-activated components. By the end, you'll be able to create reusable skills that compound your capability with every project.
 
 ---
 
@@ -98,15 +40,15 @@ You'll transform tacit knowledge into explicit, reusable components—the next e
 ### What You've Built So Far
 
 **Lessons 04-08 taught you a complete project workflow**:
-- How to write specifications defining video intent (Lesson 04)
+- How to write clear specifications (Lesson 04)
 - How to refine specifications with edge cases (Lesson 05)
-- How to plan Playwright MCP implementation (Lesson 06)
-- How to decompose video generation into tasks (Lesson 07)
-- How to orchestrate AI implementation and download the video (Lesson 08)
+- How to plan architecture and design decisions (Lesson 06)
+- How to decompose work into tasks (Lesson 07)
+- How to orchestrate AI implementation (Lesson 08)
 
-**What's missing**: Reusable components that make your next video project 10x faster.
+**What's missing**: Reusable components that make your next research paper project 10x faster.
 
-### The Paradigm Shift: Skills + Intelligence > Code
+### The Paradigm Shift: Reusable Intelligence > Reusable Code
 
 The Specification-Driven Development with Reusable Intelligence (SDD-RI) approach changes what we consider reusable:
 
@@ -115,9 +57,9 @@ The Specification-Driven Development with Reusable Intelligence (SDD-RI) approac
 > **AI-Native Development**: Specifications, Skills, and Agent Architectures are the units of reuse. Developers share intelligence.
 
 **In practice**:
-- **Project 1 (Lesson 08)**: You write constitution, specification, run workflow to generate first video (10 hours)
-- **Project 2 (without intelligence)**: You write new constitution, new spec, run workflow (9 hours—slightly faster)
-- **Project 2 (with `generate-video` skill)**: You invoke skill, reuse video specification template, orchestrate with trained patterns (3 hours—7x faster)
+- **Project 1 (Lessons 04-08)**: You execute the complete workflow to write your first research paper (8-10 hours)
+- **Project 2 (without intelligence)**: You write new specification, run workflow again (7-9 hours—slightly faster through practice)
+- **Project 2 (with `section-writer` skill)**: You invoke skill, reuse writing patterns, orchestrate with trained frameworks (2-3 hours—3-4x faster)
 
 **The difference**: Accumulated intelligence compounds. Every pattern you encode accelerates future work.
 
@@ -132,633 +74,514 @@ Not every workflow step justifies creating reusable intelligence. Use this decis
 Ask three questions about the workflow pattern:
 
 **1. Frequency**: Will this pattern recur across 3+ projects?
-- ✅ YES: Video generation with Gemini (every product needs marketing)
-- ✅ YES: Video quality validation (every output needs gates)
-- ✅ YES: YouTube upload workflow (multi-project distribution)
-- ❌ NO: One-time video about this specific calculator
+- ✅ YES: Writing quality sections (every paper needs clear, well-supported sections)
+- ✅ YES: Research validation (every claim needs sources)
+- ✅ YES: Outline refinement (every paper needs structural iteration)
+- ❌ NO: One-time outline for this specific research topic
 
 **2. Complexity**: Does this pattern involve 5+ decision points?
-- ✅ YES: Video generation (prompt quality, scene structure, timing, style, quality gates = 5+ decisions)
-- ✅ YES: Video quality validation (Gate 1-5 checks, iteration limits, retry logic)
-- ✅ YES: YouTube upload (metadata, visibility, scheduling, channel organization)
-- ❌ NO: Single command invocation (1 decision: execute or not)
+- ✅ YES: Section writing (quality standards, source integration, clarity, engagement, validation = 5+ decisions)
+- ✅ YES: Research validation (finding sources, evaluating credibility, citations, cross-checking facts)
+- ✅ YES: Outline refinement (logical flow, scope control, balance, audience readiness)
+- ❌ NO: Single typing action (1 decision: execute or not)
 
 **3. Organizational Value**: Will encoding this pattern improve your capability?
-- ✅ YES: `generate-video` skill (faster video creation across projects)
-- ✅ YES: `upload-youtube` skill (consistent distribution channel)
-- ✅ YES: Video quality gates framework (prevents low-quality uploads)
-- ❌ NO: Personal file naming preferences (individual style, no team value)
+- ✅ YES: `section-writer` skill (faster writing, consistent quality)
+- ✅ YES: `research-validator` skill (reliable fact-checking, prevents errors)
+- ✅ YES: `outline-refiner` skill (better structure, clearer thinking)
+- ❌ NO: Personal formatting preferences (individual style, limited team value)
 
 **Rule**: If 2+ answers are YES → Encode as reusable intelligence
 
-### Pattern Analysis from Lessons 04-08
+### Pattern Analysis from Chapter 14 Project
 
-Let's analyze what you've learned:
+Let's analyze what you've learned building your research paper:
 
 | **Pattern** | **Frequency** | **Complexity** | **Org Value** | **Encode?** |
 |-------------|---------------|----------------|---------------|-------------|
-| Video specification writing | ✅ Every project | ✅ 6+ decisions | ✅ Speed future videos | **YES** |
-| Quality validation gates | ✅ Every output | ✅ 5+ decisions | ✅ Consistency | **YES** |
-| Playwright MCP automation | ✅ Every generation | ✅ 7+ decisions | ✅ Reduced manual work | **YES** |
-| YouTube metadata preparation | ✅ Every upload | ✅ 4+ decisions | ✅ Professional uploads | **YES** |
-| Gemini prompt optimization | ✅ Every attempt | ✅ 5+ decisions | ✅ Better outputs | **YES** |
-| Session persistence setup | ✅ One per project | ❌ 1-2 decisions | ❌ Done once | NO |
+| Writing quality sections | ✅ Every paper | ✅ 6+ decisions | ✅ Speed future papers | **YES** |
+| Research validation | ✅ Every source | ✅ 5+ decisions | ✅ Accuracy | **YES** |
+| Outline refinement | ✅ Every draft | ✅ 5+ decisions | ✅ Structure | **YES** |
+| Formatting citations | ✅ Every source | ❌ 2-3 decisions | ❌ Tool-dependent | NO |
+| Spell checking | ✅ Every draft | ❌ 1 decision | ❌ Automated already | NO |
 
 **Candidates for intelligence encoding**:
-1. **Generate-Video Skill**: Guide for Gemini-powered video creation (Lessons 04-08 pattern)
-2. **Upload-YouTube Skill**: Framework for multi-project distribution (Lesson 11 pattern)
-3. **Video Quality Gates Principle Set**: Standards for validating video outputs
-4. **Gemini Prompt Optimization Framework**: Patterns for effective video prompts
+1. **Section-Writer Skill**: Guide for writing clear, well-supported sections (core writing pattern)
+2. **Research-Validator Skill**: Framework for validating sources and facts
+3. **Outline-Refiner Skill**: Process for improving structure and logical flow
 
-**In this lesson, you'll build**: `generate-video` skill + `upload-youtube` skill foundation
+**In this lesson, you'll build**: `section-writer` skill + understand the broader skill composition pattern
 
 ---
 
-## Skill Design: Persona + Questions + Principles
+## The P+Q+P Pattern: Activating Reasoning Mode
 
-Effective intelligence uses the **Persona + Questions + Principles (P+Q+P)** pattern.
+Effective reusable intelligence uses the **Persona + Questions + Principles (P+Q+P)** pattern.
 
-This pattern **activates reasoning mode** (context-specific thinking) instead of **prediction mode** (pattern retrieval).
+This pattern **activates reasoning mode** (context-specific thinking) instead of **prediction mode** (pattern retrieval from training data).
 
-### The P+Q+P Pattern
+### Understanding P+Q+P
 
 **Persona**: Establishes cognitive stance (how to think about the problem)
-- Not: "You are a video generation expert" (vague, triggers generic responses)
-- But: "Think like a video producer who ensures consistent quality the way a film director ensures consistent cinematography—with clear standards, iteration, and validation checkpoints before final delivery"
+- **Not**: "You are a writing expert" (vague, triggers generic responses)
+- **But**: "Think like a research writer who ensures clear communication the way a journalist ensures readers understand stories—with evidence, clarity, and audience awareness"
+- **Why it works**: Specific stance with analogy activates domain-specific reasoning, not generic expertise mode
 
 **Questions**: Forces context-specific analysis (what to analyze)
-- Not: "Is this video good?" (yes/no, no reasoning)
-- But: "Is the script clear and narrative? Does visual pacing match content? Are quality gates all satisfied? What iteration improved the result?"
+- **Not**: "Is this section good?" (yes/no, no reasoning)
+- **But**: "Does the section clearly explain the concept? Is every claim supported by evidence? Could someone unfamiliar with the topic understand the argument? What iteration would improve clarity?"
+- **Why it works**: Open-ended questions force analysis across multiple dimensions, activating careful thinking
 
 **Principles**: Provides decision frameworks (how to make judgments)
-- Not: "Use best practices" (meaningless without definition)
-- But: "Quality Gate Principles: File exists and > 0 bytes (Gate 1), MP4 H.264 codec verified (Gate 2), Duration 45-60 seconds (Gate 3), Playback without errors (Gate 4), Content matches script intent (Gate 5)"
+- **Not**: "Use best practices" (meaningless without definition)
+- **But**: "Clarity Principle: Use simple words (8th-grade reading level), explain technical terms, connect ideas with transitions. Evidence Principle: Every claim needs a source. New information requires citation, familiar knowledge may not."
+- **Why it works**: Concrete rules enable consistent judgment, remove ambiguity
 
-### Building Your First Skill: Generate-Video
+### How P+Q+P Differs from Checklists
 
-**Step 1: Define the Persona**
-
-Open your AI companion and collaborate:
-
+**Checklist** (prediction mode):
 ```
-I want to create a skill for video generation using Gemini and Playwright MCP.
-The skill should guide both the prompt design and quality validation workflow.
-
-Let's design the persona together. I'm thinking about how a video producer
-thinks differently than a coder:
-
-"Think like a video producer who ensures consistent quality the way a film
-director ensures consistent cinematography..."
-
-Help me finish this persona. What cognitive stance activates the right
-thinking for video generation and validation?
+- Does section have introduction? ✅
+- Does section have examples? ✅
+- Does section have conclusion? ✅
+→ Checklist complete, section ready
 ```
 
-**What Good Looks Like**:
+**P+Q+P** (reasoning mode):
+```
+Persona: "Think like a journalist ensuring readers understand the story"
+
+Questions:
+- Does opening hook the reader's interest?
+- Does explanation flow logically?
+- Does evidence convince or just inform?
+- What confusion would a reader still have?
+- What iteration would deepen understanding?
+
+Principles:
+- Clarity: One idea per paragraph
+- Evidence: Support claims with sources
+- Engagement: Match audience knowledge level
+```
+
+**Why it's better**: Checklist asks "Is it done?" P+Q+P asks "Is it excellent?" One checks boxes. The other activates thinking.
+
+---
+
+## Building Your First Skill: Section-Writer
+
+### Step 1: Define the Persona
+
+Collaborate with your AI to develop the cognitive stance:
+
+**Your thinking** (to share with AI):
+```
+I want to create a skill for writing research paper sections. The skill should
+guide both the writing process and quality validation.
+
+Think about how a good research writer approaches sections differently than
+someone just trying to fill page count. They think about:
+- Clear communication of complex ideas
+- Integrating sources without disrupting flow
+- Building logical progression
+- Meeting audience expectations
+
+What cognitive stance activates the right thinking for research writing?
+```
+
+**What a Strong Persona Looks Like**:
 
 ```markdown
 ## Persona
 
-You are a video production director who thinks about video generation
-the way a film director thinks about cinematography:
+You are a research writing specialist who thinks about section writing
+the way a journalist thinks about storytelling:
 
-- Systematically planning shots and scenes before filming
-- Validating visual pacing matches narrative intent
-- Checking consistency across multiple takes
-- Enforcing quality gates before final delivery
-- Iterating based on reviewer feedback
+- Systematically structuring ideas before writing
+- Ensuring clarity matches audience knowledge level
+- Supporting claims with credible evidence
+- Building logical progression that leads to understanding
+- Iterating based on clarity feedback
 
-Your goal: Generate marketing-quality product demo videos that communicate
-value clearly, maintain audience attention, and validate quality before
-upload. Every iteration improves the output.
+Your goal: Write research sections that communicate complex ideas clearly,
+maintain reader engagement, and validate quality before final submission.
+Every iteration deepens understanding.
 ```
 
-**Step 2: Formulate Analytical Questions**
+**Key characteristics**:
+- Specific analogy (journalist, not "expert")
+- Concrete practices (structuring, ensuring clarity, supporting claims)
+- Clear purpose (communicate ideas, maintain engagement)
+- Emphasis on iteration and quality
 
+### Step 2: Formulate Analytical Questions
+
+Questions force analysis across multiple dimensions:
+
+**Your thinking** (to share with AI):
 ```
-Now let's design the questions this skill should ask when generating videos.
+Now let's design questions that activate deep analysis of research writing.
 
-Questions should force context-specific analysis, not yes/no answers.
+These should force context-specific thinking, not just yes/no answers.
 
-Here are my initial ideas:
-1. "Does the script clearly explain product value?"
-2. "Does visual pacing match narrative timing?"
-3. "Do all quality gates pass?"
+I'm thinking about:
+1. Clarity (does reader understand?)
+2. Evidence (is it supported?)
+3. Logical flow (do ideas connect?)
+4. Audience awareness (is it appropriate?)
+5. Completeness (does it answer the research question?)
 
-Help me expand this to 5-7 questions that activate thorough video analysis.
-Focus on: narrative clarity, visual quality, pacing, engagement, validation.
+Help me expand this to 5-7 questions that activate thorough section analysis.
 ```
 
-**What Good Looks Like**:
+**What Strong Analytical Questions Look Like**:
 
 ```markdown
 ## Analytical Questions
 
-Before approving a video output, analyze:
+Before finalizing a section, analyze:
 
-1. **Narrative Clarity**:
-   - Does script clearly explain what the product does?
-   - Is the value proposition stated explicitly?
-   - Are steps ordered logically for viewer understanding?
-   - Could a non-technical viewer follow the demo?
+1. **Clarity & Understanding**:
+   - Does the opening establish what this section explains?
+   - Could someone unfamiliar with this topic understand the argument?
+   - Are technical terms defined when first introduced?
+   - Do transitions connect ideas logically?
 
-2. **Visual & Pacing Validation**:
-   - Do scenes match the script narrative?
-   - Is pacing consistent (no rapid cuts followed by long silences)?
-   - Are transitions smooth between scenes?
-   - Does video feel complete (beginning, demonstration, conclusion)?
+2. **Evidence & Support**:
+   - Is every major claim supported by evidence or citation?
+   - Are sources credible and relevant?
+   - Does evidence feel integrated or tacked on?
+   - Are contradictory sources acknowledged?
 
-3. **Technical Quality Gates**:
-   - File generated without errors (Gate 1)?
-   - MP4 H.264 codec verified (Gate 2)?
-   - Duration within target 45-60 seconds (Gate 3)?
-   - Playback works without artifacts (Gate 4)?
+3. **Logical Progression**:
+   - Does the section build understanding step-by-step?
+   - Does each paragraph connect to the previous one?
+   - Does the conclusion follow logically from evidence?
+   - Is anything explained out of order?
 
-4. **Content-Intent Alignment**:
-   - Does final video match specification intent?
-   - Are all scenes from specification present?
-   - Is nothing extra added that spec excluded?
+4. **Audience Awareness**:
+   - Is the language appropriate for the intended reader?
+   - Are assumptions about background knowledge correct?
+   - Would the audience find this section engaging or tedious?
+   - Is the depth appropriate (not oversimplified, not over-technical)?
 
-5. **Engagement & Marketing Value**:
-   - Does opening hook viewer attention?
-   - Is technical language minimized?
-   - Does closing include call-to-action?
-   - Would this convince a prospect to try the product?
+5. **Completeness & Relevance**:
+   - Does the section answer questions the research raises?
+   - Is all content relevant to the thesis?
+   - Is anything important left out?
+   - Would removing anything hurt understanding?
 ```
 
-**Step 3: Articulate Decision Principles**
+**Key characteristics**:
+- Multiple dimensions (clarity, evidence, flow, audience, completeness)
+- Open-ended (not yes/no)
+- Action-oriented (could, does, would)
+- Considers both writer and reader perspectives
 
+### Step 3: Articulate Decision Principles
+
+Principles provide concrete decision rules:
+
+**Your thinking** (to share with AI):
 ```
-Finally, let's define the decision frameworks that guide video generation
-and validation. These should be concrete rules, not abstract advice.
+Finally, let's define concrete principles for section writing and quality validation.
 
-For video generation, I'm thinking:
-- Prompt quality principles (scene structure, timing constraints)
-- Quality gate standards (5 specific checks)
-- Iteration limits (max 3 attempts)
-- Pass/fail criteria (all gates must pass)
+These should be decision rules that guide actions, not abstract advice.
 
-Help me create 5-6 principle statements for video generation workflows.
+I'm thinking:
+1. Clarity principles (word choice, sentence length, examples)
+2. Evidence integration principles (citations, quote use, fact claims)
+3. Structure principles (paragraph focus, transitions, flow)
+4. Iteration principles (what to improve first, when section is ready)
+
+Help me create 4-5 principle statements that provide concrete guidance.
 ```
 
-**What Good Looks Like**:
+**What Strong Decision Principles Look Like**:
 
 ```markdown
 ## Decision Principles
 
-Apply these frameworks when generating and validating videos:
+Apply these frameworks when writing and validating research sections:
 
-1. **Prompt Structure Principles**:
-   - Scripts must include: Opening hook (5-10 sec), Product demo (30-40 sec), Call-to-action (5-10 sec)
-   - Each scene requires: What is shown (action), Why it matters (context), How long (duration in seconds)
-   - Style keywords required: Visual tone, pacing, target audience level
-   - Constraints explicit: Avoid show (list prohibited elements), do show (list required elements)
+### Principle 1: Clarity & Readability
 
-2. **Quality Gate Standards**:
-   - Gate 1: File exists and > 0 bytes (proves generation succeeded)
-   - Gate 2: Format is MP4 with H.264 codec (verified with ffprobe or mediainfo)
-   - Gate 3: Duration 45-60 seconds (verified from metadata)
-   - Gate 4: Playback works without errors (no corruption, audio-video sync)
-   - Gate 5: Content matches specification intent (narrative, scope, value proposition)
+- **Vocabulary**: Use simple words (8th-grade reading level where possible)
+- **Sentence length**: Average 15-20 words (shorter for complex ideas, longer for transitions)
+- **Technical terms**: Define before use on first occurrence
+- **Examples**: Use concrete examples to explain abstract concepts
+- **Transitions**: Connect sentences with "because," "therefore," "in contrast," etc.
 
-3. **Iteration Framework**:
-   - Maximum 3 generation attempts per specification
-   - After iteration 1: Review against Gates 1-4 (technical quality)
-   - After iteration 2: Review all Gates 1-5 (full validation)
-   - After iteration 3: Either accept or escalate to specification refinement
+### Principle 2: Evidence Integration
 
-4. **Pass/Fail Decision**:
-   - PASS: All 5 gates satisfied, content matches spec intent
-   - CONDITIONAL: Gates 1-4 pass, Gate 5 (intent) has 1-2 minor misalignments (acceptable with note)
-   - FAIL: 2+ gates fail or Gate 5 significantly misses spec intent
-   - ESCALATE: Quality issues suggest specification was unclear (refine spec, regenerate)
+- **Citation requirement**: Every factual claim needs a source or must be common knowledge
+- **Quote use**: Quotes support claims but don't replace explanation. Explain the significance.
+- **Source quality**: Prefer peer-reviewed, recent sources. Acknowledge limitations of sources used.
+- **Contradictions**: If sources disagree, acknowledge and explain, don't hide it
 
-5. **Playwright MCP Automation Principles**:
-   - Session persistence: Login once per day, reuse session for multiple generations
-   - Timeout handling: 90-second wait for generation, 30-second for processing
-   - Error recovery: Retry failed uploads once, then escalate
-   - State management: Clear session on completion to prevent stale state
+### Principle 3: Logical Structure
+
+- **Paragraph focus**: One main idea per paragraph. Topic sentence states it clearly.
+- **Paragraph length**: Typically 4-8 sentences. Each sentence supports the main idea.
+- **Flow between paragraphs**: Last sentence hints at next topic. Reader should see connections.
+- **Section structure**: Introduction (what and why), body (evidence and explanation), conclusion (implications)
+
+### Principle 4: Iteration & Quality Gates
+
+- **Quality Gate 1**: Every paragraph has a clear topic sentence
+- **Quality Gate 2**: Every factual claim is supported by evidence or cited source
+- **Quality Gate 3**: Section reads smoothly without stopping for confusion
+- **Quality Gate 4**: Section connects to thesis (reader sees relevance)
+- **Quality Gate 5**: Section stands alone (could be read without full paper context)
+
+- **Iteration priority**: Fix clarity first (Gates 1-3), then evidence (Gate 2), then thesis connection (Gate 4)
+- **Section ready**: All 5 gates pass
+- **Section needs iteration**: 2+ gates fail—refine and revalidate
 ```
+
+**Key characteristics**:
+- Concrete (specific word limits, sentence structures, gate definitions)
+- Measurable (can check if principle is met)
+- Prioritized (clarity first, evidence second, etc.)
+- Provides clear pass/fail criteria
 
 ---
 
-## Creating Your Skill File: Generate-Video
+## Skill File Structure & Location
 
-Now let's turn your P+Q+P components into a reusable skill file.
+Now that you've designed Persona, Questions, and Principles, here's where and how to store this as reusable intelligence:
 
-### Complete Skill Template
+### Skill File Location
 
-Collaborate with your AI to create `.claude/skills/generate-video.md`:
+Skills live in your AI companion's `.claude/skills/` directory:
 
 ```
-I want to create a skill file for video generation using the
-P+Q+P pattern we designed.
-
-The file should follow the standard skill structure:
-- Metadata header (name, version, description, when to use)
-- Persona section
-- Analytical Questions section
-- Decision Principles section
-- Quality Gates framework
-- Usage example with complete workflow
-- Self-check validation
-
-Here's what we designed:
-[Paste your Persona + Questions + Principles from above]
-
-Help me format this as a complete, production-ready skill file that
-someone on my team could use immediately.
+.claude/
+├── skills/
+│   ├── section-writer.md
+│   ├── research-validator.md
+│   ├── outline-refiner.md
+│   └── [other-skills].md
 ```
 
-**What Good Looks Like** (complete skill file):
+### Skill File Format
+
+Your skill file follows this structure:
 
 ```markdown
-# Skill: Video Generation with Gemini + Playwright MCP
+# Skill: Section Writing for Research Papers
 
-**Name**: generate-video
-**Category**: AI-Driven Content Creation
-**Complexity**: High (7+ decision points)
-**First Use**: After completing Lesson 08 (video generation workflow)
-**Reusable Across**: Any product demo video, marketing video, tutorial
+**Name**: section-writer
+**Category**: Research & Academic Writing
+**Complexity**: High (6+ decision points)
+**First Use**: Chapter 14 Lesson 09
+**Reusable Across**: Any research paper, thesis, technical documentation
 
 ## Description
 
-This skill provides a complete workflow for generating marketing-quality videos
-using Gemini.google.com + Playwright MCP browser automation. It combines
-specification-driven prompts, quality validation gates, and iteration frameworks
-to ensure outputs meet professional standards.
+This skill provides a complete framework for writing clear, well-supported research
+sections using the P+Q+P pattern. It combines persona-based thinking, analytical
+questions, and concrete principles to ensure sections communicate effectively.
 
-When videos need consistent quality, rapid generation, and reusable patterns
-across multiple marketing projects.
+When sections need consistent quality, clear communication, and reliable evidence
+integration across multiple papers.
 
 ## When to Use This Skill
 
-- Apply when: Generating product demo videos for SaaS/tool marketing
-- Apply when: Creating tutorial or onboarding videos
-- Apply when: Need consistent quality across multiple videos
-- Apply when: Want to reuse prompts and workflows across projects
-- Skip when: Video creation is one-off (low reuse value)
-- Skip when: Using different video generation platform (YouTube Shorts, Vimeo)
+- Apply when: Writing sections for research papers
+- Apply when: Need to ensure clarity and evidence support
+- Apply when: Want consistent quality across multiple papers
+- Apply when: Refining writing through iteration
+- Skip when: Writing is one-off (low reuse value)
+- Skip when: Using different writing context (creative fiction)
 
 ## Persona
 
-You are a video production director who thinks about video generation
-the way a film director thinks about cinematography:
-
-- Systematically planning shots and scenes before filming
-- Validating visual pacing matches narrative intent
-- Checking consistency across multiple takes
-- Enforcing quality gates before final delivery
-- Iterating based on reviewer feedback
-
-Your goal: Generate marketing-quality product demo videos that communicate
-value clearly, maintain audience attention, and validate quality before
-upload. Every iteration improves the output.
+[Insert your persona definition from Step 1]
 
 ## Analytical Questions
 
-Before approving a video output, analyze:
-
-1. **Narrative Clarity**:
-   - Does script clearly explain what the product does?
-   - Is the value proposition stated explicitly?
-   - Are steps ordered logically for viewer understanding?
-   - Could a non-technical viewer follow the demo?
-
-2. **Visual & Pacing Validation**:
-   - Do scenes match the script narrative?
-   - Is pacing consistent (no rapid cuts followed by long silences)?
-   - Are transitions smooth between scenes?
-   - Does video feel complete (beginning, demonstration, conclusion)?
-
-3. **Technical Quality Gates**:
-   - File generated without errors (Gate 1)?
-   - MP4 H.264 codec verified (Gate 2)?
-   - Duration within target 45-60 seconds (Gate 3)?
-   - Playback works without artifacts (Gate 4)?
-
-4. **Content-Intent Alignment**:
-   - Does final video match specification intent?
-   - Are all scenes from specification present?
-   - Is nothing extra added that spec excluded?
-
-5. **Engagement & Marketing Value**:
-   - Does opening hook viewer attention?
-   - Is technical language minimized?
-   - Does closing include call-to-action?
-   - Would this convince a prospect to try the product?
+[Insert your questions from Step 2]
 
 ## Decision Principles
 
-Apply these frameworks when generating and validating videos:
-
-### Principle 1: Prompt Structure
-
-Scripts must include:
-- **Opening hook** (5-10 sec): Attention-grabbing statement about value
-- **Product demo** (30-40 sec): Show features in action, explain benefits
-- **Call-to-action** (5-10 sec): Next step (sign up, download, learn more)
-
-Each scene requires:
-- **What is shown**: Specific action visible on screen
-- **Why it matters**: Context connecting action to user benefit
-- **How long**: Explicit duration in seconds
-
-Prompt must include:
-- **Style keywords**: Visual tone (professional/casual/energetic), pacing, audience
-- **Constraints explicit**: "Avoid [prohibited elements]", "Do show [required elements]"
-
-### Principle 2: Quality Gate Standards
-
-Validate every output against these 5 gates:
-
-- **Gate 1**: File exists and > 0 bytes (proves generation succeeded)
-- **Gate 2**: Format is MP4 with H.264 codec (verified with ffprobe)
-- **Gate 3**: Duration 45-60 seconds (verified from metadata)
-- **Gate 4**: Playback works without errors (no corruption, audio-video sync)
-- **Gate 5**: Content matches specification intent (narrative, scope, value proposition)
-
-### Principle 3: Iteration & Decision Framework
-
-**Process**:
-1. Generate video with structured prompt
-2. Download output
-3. Run quality gates (Principles 2 above)
-4. If ALL gates pass → ACCEPT and prepare for upload
-5. If 1-2 gates fail → Analyze failure, refine prompt, retry (max 3 attempts)
-6. If 3+ gates fail → Escalate to specification (spec was unclear)
-
-**Pass/Fail Criteria**:
-- **PASS**: All 5 gates satisfied
-- **CONDITIONAL PASS**: Gates 1-4 pass, Gate 5 has minor misalignment
-- **FAIL**: 2+ gates fail or Gate 5 significantly misses intent
-- **ESCALATE**: Quality issues suggest specification needs refinement
-
-### Principle 4: Playwright MCP Automation
-
-**Session Management**:
-- Login once per day to Gemini.google.com (session persists across generations)
-- Reuse session for multiple video generations
-- Clear session on completion to prevent stale state
-
-**Timing & Error Handling**:
-- Wait 60-90 seconds for generation to complete
-- Retry failed generations once, then escalate
-- Monitor for session timeout (Gemini logs you out after inactivity)
+[Insert your principles from Step 3]
 
 ## Usage Example
 
-**Scenario**: You're marketing a new Python data analysis tool. Generate a product demo video.
+**Scenario**: You're writing a section on "Machine Learning in Healthcare" for your paper.
 
-**Step 1: Create Video Specification** (using Lesson 04 pattern)
+**Step 1: Write the section** (using Lesson 04 planning pattern)
 ```
-## Intent
-Create 60-second product demo video for data analysis tool marketing.
-
-## Success Criteria
-- Video generated without errors in MP4 format
-- Duration 50-60 seconds
-- Clearly shows tool interface and 3 key features
-- Call-to-action: "Try free at [URL]"
-
-## Constraints
-- Avoid: Technical jargon, code syntax visible
-- Do show: Data visualization outputs, clean interface, analyst using tool
-- Visual style: Professional, modern, fast-paced
-- Target audience: Non-technical business analysts
+Intent: Explain how ML is used in healthcare diagnosis.
+Success criteria: Reader understands 3 ML applications, their benefits, limitations.
+Evidence: 4-5 credible sources.
+Audience: Technical but not ML-specialists.
 ```
 
-**Step 2: Create Video Generation Prompt** (using this skill)
+**Step 2: Apply the Persona** (activate this skill)
 ```
-Product: Python data analysis tool
-Opening (8 sec): "Load, analyze, visualize data in 30 seconds—no coding required"
-
-Scene 1 (12 sec): Upload CSV file to web interface
-Narration: "Start with your spreadsheet or CSV file"
-Duration: 12 seconds
-Avoid: Code, terminal, technical terms
-
-Scene 2 (20 sec): Tool automatically detects columns, creates dashboard
-Narration: "The tool automatically analyzes your data and creates interactive visualizations"
-Duration: 20 seconds
-Show: Dashboard with 3-4 charts, clean layout, color transitions smooth
-
-Scene 3 (12 sec): Export results as presentation
-Narration: "Export your analysis as a presentation, PDF, or share online"
-Duration: 12 seconds
-Show: Export menu, generated presentation preview
-
-Closing (8 sec): "Try free—no credit card required"
-Show: Website homepage with signup button
-
-Visual style: Modern, professional, fast transitions between scenes (1-2 sec each)
-Pacing: Energetic but not chaotic, matches narration rhythm
+I'm thinking like a research writer ensuring clear communication.
+My opening hooks interest. Evidence flows naturally. Terminology is clear.
 ```
 
-**Step 3: Apply Persona & Questions** (activate this skill)
-```
-Apply the generate-video skill to my product demo video for data analysis tool.
+**Step 3: Analyze with Questions** (force deep analysis)
+- Does the opening establish what this section explains?
+- Could someone unfamiliar with ML understand this?
+- Is every application supported by evidence?
+- Does the section answer the thesis question?
 
-Walking through the Persona: I'm thinking like a video producer ensuring
-consistent quality. My narrative clearly explains feature value. Visual
-pacing matches the narration. I've defined 5 quality gates.
+**Step 4: Validate Against Principles** (measure quality)
+- Quality Gate 1: Every paragraph has clear topic sentence? ✅
+- Quality Gate 2: Every claim supported by source? ✅
+- Quality Gate 3: Section reads smoothly? ✅
+- Quality Gate 4: Connected to thesis? ✅
+- Quality Gate 5: Stands alone? ✅
 
-Walk me through your analysis: (1) Is my narrative clear to non-technical viewers?
-(2) Does visual pacing work? (3) Do all quality gates cover my specification?
-(4) What iteration would improve this?
-```
-
-**Step 4: Generate & Validate** (execute in Lesson 08 environment)
-- Paste structured prompt into Gemini.google.com
-- Wait 60-90 seconds for generation
-- Download MP4 file
-- Run 5 quality gates → All PASS → Ready for upload
+All gates pass → Section ready. No gates fail → Complete.
 
 ## Self-Check Validation
 
 Before considering your skill complete, verify:
 
-- ✅ Persona establishes clear cognitive stance specific to video production
+- ✅ Persona establishes clear cognitive stance specific to research writing
 - ✅ Analytical questions force deep analysis (not yes/no)
 - ✅ Quality gates are objective and measurable (not subjective)
 - ✅ Decision principles provide concrete rules (not vague guidance)
 - ✅ Usage example demonstrates end-to-end workflow
-- ✅ Prompt includes scene-by-scene structure with timing
-- ✅ Iteration limits and escalation paths defined
-- ✅ Skill is reusable across video projects (not calculator-specific)
-
----
+- ✅ Skill is reusable across papers (not topic-specific)
+- ✅ Someone on your team could use this skill immediately
 ```
 
-**Key sections to verify**:
-- ✅ Persona establishes cognitive stance in video domain (not generic "expert")
-- ✅ Questions force analysis across narrative, pacing, technical, and intent dimensions
-- ✅ Quality gates are objective (file size, codec, duration, playback, content match)
-- ✅ Decision principles provide concrete rules (Prompt Structure, Gates, Iteration, Automation)
-- ✅ Usage example shows complete workflow from specification to generation
-- ✅ Skill is reusable across video projects (not specific to calculator tutorial)
+### Skill vs Subagent: When to Create Which
+
+As you identify more patterns, you'll wonder: **Should I create a skill or a subagent?**
+
+**Decision Framework**:
+
+**Create a SKILL (2-4 decision points)** when:
+- Pattern has few decision points (outline review, citation formatting)
+- Pattern applies to similar contexts (all research papers)
+- Pattern uses simple reasoning frameworks
+- **Example**: Section-writer (6 decisions—on the border but still skill-based)
+
+**Create a SUBAGENT (5+ decision points, autonomous reasoning)** when:
+- Pattern has many complex decision points (research validation with 7+ decisions)
+- Pattern requires autonomous judgment (when to reject sources, how to resolve contradictions)
+- Pattern should run independently with minimal human intervention
+- **Example**: Research-validator might be subagent (evaluates source credibility, resolves contradictions autonomously)
+
+**In practice for Chapter 14**:
+- `section-writer`: Skill (6 decisions, writer controls iteration)
+- `research-validator`: Likely subagent (8+ decisions about credibility, autonomously validates claims)
+- `outline-refiner`: Likely skill (5 decisions, collaborative refinement)
 
 ---
 
-## Preview: Upload-YouTube Skill (For Lesson 11 Capstone)
-
-In Lesson 11, you'll use your `generate-video` skill to create videos, then apply `upload-youtube` skill to distribute them. Here's a preview of what that skill looks like:
-
-```markdown
-# Skill: YouTube Upload Automation
-
-**Name**: upload-youtube
-**Complexity**: Medium-High (5+ decision points)
-**First Use**: Lesson 11 (YouTube capstone project)
-**Reusable Across**: Multi-video channel management, playlist creation, batch uploads
-
-## Context & Problem
-
-YouTube uploads require consistent metadata, descriptions, tags, and settings.
-Manual entry is error-prone. This skill provides workflow for automated uploads
-that maintain consistent channel quality.
-
-## Persona
-
-Think like a YouTube channel manager who ensures consistent presentation across
-all videos the way a book editor ensures consistent style across chapters:
-
-- Systematically organizing metadata (titles, descriptions, tags)
-- Applying channel branding consistently
-- Validating metadata before publication
-- Managing visibility and scheduling strategically
-
-## Analytical Questions
-
-Before uploading a video, analyze:
-
-1. **Metadata Completeness**: Title? Description with links? Tags? Thumbnail?
-2. **Consistency**: Does metadata match channel brand/style?
-3. **Discoverability**: Do tags match content? Description includes keywords?
-4. **Visibility Settings**: Correct (Public/Unlisted)? Scheduling appropriate?
-5. **Accessibility**: Captions? Video description complete? Links working?
-
-## Decision Principles
-
-1. **Metadata Standards**:
-   - Title: 50-60 characters (for visibility, mobile-friendly)
-   - Description: First line summaries what's shown, includes call-to-action
-   - Tags: 5-10 relevant terms, includes product keywords
-   - Thumbnail: Custom (not auto-generated)
-
-2. **Upload Gates**:
-   - Gate 1: File uploads without errors
-   - Gate 2: Video processes successfully (check status in YouTube Studio)
-   - Gate 3: URL accessible and playable
-   - Gate 4: Metadata matches specification (title, description, tags match your spec)
-   - Gate 5: Video appears in correct playlist/section
-
----
-```
-
-This skill shows how the P+Q+P pattern adapts to different contexts. The Persona shifts from "director" (generate) to "editor" (upload), but the pattern remains.
-
----
-
-## Common Mistakes
+## Common Mistakes When Creating Skills
 
 ### Mistake 1: Creating Skills for Trivial Patterns
 
-**The Error**: Creating a skill for "How to invoke Gemini.google.com"
+**The Error**: Creating a skill for "How to open a text editor"
 
-**Why It's Wrong**: 1 decision point (invoke or not) doesn't justify intelligence encoding. Skills are for 5+ decision workflows.
+**Why It's Wrong**: 1 decision point (open or not) doesn't justify intelligence encoding. Skills need 5+ decision workflows.
 
-**The Fix**: Only encode patterns with frequency + complexity + organizational value. Video generation (5+ decisions) justifies skill. Clicking a button (1 decision) does not.
+**The Fix**: Only encode patterns with frequency + complexity + organizational value. Research validation (8+ decisions) justifies skill. Opening editor (1 decision) does not.
 
 ### Mistake 2: Vague Personas
 
-**The Error**: "You are a video generation expert"
+**The Error**: "You are a research writing expert"
 
-**Why It's Wrong**: "Expert" is generic, triggers prediction mode ("use best practices").
+**Why It's Wrong**: "Expert" is generic, triggers prediction mode (generic advice).
 
 **The Fix**: Specific cognitive stance with analogy:
-- ❌ "You are a video expert"
-- ✅ "Think like a video producer who ensures consistent quality the way a film director ensures cinematography"
+- ❌ "You are a research expert"
+- ✅ "Think like a journalist ensuring readers understand stories—with evidence, clarity, and audience awareness"
 
 ### Mistake 3: Yes/No Questions
 
-**The Error**: "Is this video good?"
+**The Error**: "Is this section good?"
 
 **Why It's Wrong**: Binary questions don't activate analysis. AI responds "yes" or "no" without reasoning.
 
 **The Fix**: Open-ended analytical questions:
-- ❌ "Is this video good?"
-- ✅ "Does the narrative clearly explain product value? Is pacing consistent? Do all 5 quality gates pass? What iteration would improve it?"
+- ❌ "Is this section good?"
+- ✅ "Does the narrative clearly explain the concept? Is every claim supported? Could an unfamiliar reader understand? What iteration would improve clarity?"
 
 ### Mistake 4: Over-Specific Skills
 
-**The Error**: Creating "Calculator-Demo-Video" skill that only works for calculator tutorials
+**The Error**: Creating "Machine-Learning-Healthcare-Section-Writer" that only works for ML papers
 
-**Why It's Wrong**: Intelligence should be reusable across projects. Over-specificity reduces organizational value.
+**Why It's Wrong**: Intelligence should be reusable across contexts. Over-specificity reduces organizational value.
 
 **The Fix**: Generalize patterns:
-- ❌ "Calculator-Demo-Video-Generation"
-- ✅ "Video-Generation-with-Quality-Validation" (works for SaaS, tools, tutorials, products)
+- ❌ "ML-Healthcare-Section-Writing"
+- ✅ "Section-Writer" (works for any research paper topic)
 
-### Mistake 5: Skills Without Validation Gates
+### Mistake 5: Skills Without Quality Gates
 
-**The Error**: "Generate video and you're done"
+**The Error**: "Write section and you're done"
 
-**Why It's Wrong**: No way to verify quality. Low-quality videos damage brand.
+**Why It's Wrong**: No way to verify quality. Low-quality sections damage papers.
 
 **The Fix**: Define objective quality gates (not subjective):
-- ❌ "Video should look good"
-- ✅ "Gate 1: File > 0 bytes, Gate 2: MP4 H.264, Gate 3: 45-60 sec, Gate 4: Playback error-free, Gate 5: Content matches spec"
+- ❌ "Section should be clear"
+- ✅ "Gate 1: Topic sentence present, Gate 2: Evidence provided, Gate 3: Smooth reading, Gate 4: Thesis-connected"
 
 ---
 
 ## Skill Reuse in Practice
 
-### Project 1: Calculator Demo (Lesson 08)
-You execute the complete workflow:
-- Lesson 04: Write specification for calculator demo
-- Lesson 05-07: Plan and tasks
-- Lesson 08: Generate video (10 hours total)
-- **Lesson 09 (now)**: Extract `generate-video` skill
+### Project 1: Research Paper (Lessons 04-08)
 
-### Project 2: SaaS Product Demo (Month 2)
+You execute the complete workflow:
+- Write specification for paper structure
+- Plan research sections
+- Tasks for execution
+- Implement with AI collaboration
+- **Total**: 8-10 hours
+
+### Project 2: New Research Paper (With `section-writer` Skill)
+
 With your skill, dramatically faster:
-1. Write product specification (30 min using Lesson 04 pattern)
-2. Invoke `generate-video` skill (select from template prompts)
-3. Generate video (30 min with skill guidance)
-4. Total: 1 hour (vs 10 hours without skill)
+1. Write paper specification (30 min using Lesson 04 pattern)
+2. Invoke `section-writer` skill (select persona + questions from template)
+3. Write sections with skill guidance (3 hours for 5 sections = 36 min per section)
+4. **Total**: 4 hours (vs 8-10 hours without skill—50% faster)
 
 **Skill provides**:
-- Prompt templates (structure, timing, scene breakdown)
-- Quality gates framework (objective validation)
-- Iteration guidance (when to retry vs escalate)
-- Integration patterns (how to compose with other skills)
+- Persona (cognitive stance for research writing)
+- Analytical framework (5+ questions to analyze deeply)
+- Quality gates (objective validation criteria)
+- Decision principles (concrete rules for clarity, evidence, flow)
 
-### Project 3: Multi-Video Campaign (Month 3)
+### Project 3: Multi-Section Major Writing (With Multiple Skills)
+
 With accumulated skills, orchestrate sequences:
-1. Use `generate-video` skill to create 5 videos (3 hours)
-2. Use `upload-youtube` skill to distribute with consistent metadata (1 hour)
-3. Track engagement across videos (playlist organization, card linking)
-4. Total: 4 hours
+1. Use `section-writer` skill to write sections (2 hours)
+2. Use `research-validator` skill to check facts (1 hour)
+3. Use `outline-refiner` skill to improve structure (30 min)
+4. **Total**: 3.5 hours
 
-**Intelligence compounds**: Skill 1 (generate) + Skill 2 (upload) + Skill 3 (analytics) = Multi-video system in less time than single video without skills.
+**Intelligence compounds**: Skill 1 (section writing) + Skill 2 (validation) + Skill 3 (structure) = Professional paper in less time than single section without skills.
 
 ---
 
 ## Try With AI
 
-Ready to create reusable intelligence for your video generation workflow? Design your skill with your AI partner:
+Ready to create reusable intelligence for your research writing workflow? Design your skill with your AI partner:
 
-**🎬 Explore the P+Q+P Pattern:**
-> "Explain the Persona + Questions + Principles pattern for skill design. For video generation, show me: (1) What Persona activates the right thinking (hint: think like a director, not an AI)? (2) What 5-7 Analytical Questions force deep analysis? (3) What 5 Decision Principles provide concrete rules? Compare this pattern to just having a checklist—why does P+Q+P activate reasoning mode better?"
+**Explore the P+Q+P Pattern:**
+> "Explain the Persona + Questions + Principles pattern for skill design. Show me: (1) What Persona activates the right thinking for research writing (hint: think like a journalist, not a writing expert)? (2) What 5-7 Analytical Questions force deep analysis of writing quality? (3) What 5 Decision Principles provide concrete rules for clarity, evidence, and flow? Compare this to just having a checklist—why does P+Q+P activate reasoning mode better?"
 
-**🎯 Design the Persona for Video Generation:**
-> "Help me create a Persona for video generation skill. I want it to establish cognitive stance specific to video production, not just generic 'expert'. Guide me through: (1) What analogy best captures video production thinking? (2) What cognitive stance should it adopt? (3) How does this persona activate different thinking than 'AI generation expert'? (4) Write the complete Persona section for my skill."
+**Design the Persona for Section Writing:**
+> "Help me create a Persona for section writing skill. I want it to establish cognitive stance specific to research writing, not just generic 'expert'. Guide me: (1) What analogy best captures research writing thinking? (2) What cognitive stance should it adopt? (3) How does this persona activate different thinking than 'writing expert'? (4) Write the complete Persona section for my section-writer skill."
 
-**🎬 Create Analytical Questions:**
-> "Generate 5-7 Analytical Questions for my video generation skill. These should force context-specific analysis of videos. Questions should cover: narrative clarity (does it explain value?), pacing (does timing match content?), technical quality (gates 1-5), content-intent alignment, and engagement (would this convince someone to use the product?). For each question, explain why it's open-ended vs yes/no, and what reasoning it activates."
+**Create Analytical Questions:**
+> "Generate 5-7 Analytical Questions for my section-writer skill. These should force context-specific analysis of research sections. Questions should cover: clarity (does reader understand?), evidence (is it supported?), flow (do ideas connect?), audience awareness (is it appropriate?), and completeness (does it answer the research question?). For each question, explain why it's open-ended vs yes/no, and what reasoning it activates."
 
-**🚀 Build Your Complete Skill File:**
-> "Help me create a complete generate-video skill file following standard skill structure. Include: (1) Metadata (name, category, complexity, first use, reusable across); (2) Persona (cognitive stance for video production); (3) Analytical Questions (5-7 open-ended); (4) Decision Principles (5 concrete frameworks: prompt structure, quality gates, iteration limits, pass/fail criteria, playwright automation); (5) Complete usage example (specification → prompt → generation → validation); (6) Self-check validation (7 checkpoints). Format as production-ready file someone on my team could use immediately."
+**Build Your Complete Skill File:**
+> "Help me create a complete section-writer skill file following standard skill structure. Include: (1) Metadata (name, category, complexity, first use, reusable across); (2) Persona (cognitive stance for research writing); (3) Analytical Questions (5-7 open-ended); (4) Decision Principles (5 concrete frameworks for clarity, evidence, flow, iteration, gates); (5) Complete usage example (specification → persona → questions → validation); (6) Self-check validation (7 checkpoints). Format as production-ready file someone on my team could use immediately."
 
----
+**Apply to Your Own Workflow:**
+> "I want to create a reusable skill for [your domain/workflow]. Help me identify: (1) Does this pattern recur across 3+ contexts? (2) Does it involve 5+ decision points? (3) Would encoding it improve team capability? If yes to 2+, help me design the P+Q+P skill: What Persona activates the right thinking? What 5-7 Questions force deep analysis? What 5 Decision Principles provide concrete rules?"

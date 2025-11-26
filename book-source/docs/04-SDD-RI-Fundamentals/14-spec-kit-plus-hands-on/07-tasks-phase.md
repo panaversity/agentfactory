@@ -2,7 +2,8 @@
 title: "Tasks Phase - Atomic Work Units and Checkpoints"
 chapter: 14
 lesson: 7
-duration_minutes: 90
+duration_minutes: 30
+proficiency_level: "B1"
 
 # HIDDEN SKILLS METADATA (Institutional Integration Layer)
 # Not visible to students; enables competency assessment and differentiation
@@ -35,55 +36,40 @@ skills:
     digcomp_area: "Problem-Solving"
     measurable_at_this_level: "Student understands Agent→Review→Commit→Continue workflow and human's role in each checkpoint"
 
-  - name: "Playwright MCP Task Execution"
-    proficiency_level: "B1"
-    category: "Technical"
-    bloom_level: "Apply"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can recognize browser automation tasks using Playwright MCP"
-
-  - name: "Video Prompt Engineering"
-    proficiency_level: "B1"
-    category: "Technical"
-    bloom_level: "Apply"
-    digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student understands structure of effective prompts for AI video generation (scene-by-scene, timing, style, constraints)"
-
 learning_objectives:
-  - objective: "Use /sp.tasks to decompose video generation plan into atomic work units"
+  - objective: "Use /sp.tasks to decompose research paper plan into atomic work units"
     proficiency_level: "B1"
     bloom_level: "Apply"
     assessment_method: "Successful execution of /sp.tasks and understanding of task breakdown"
 
-  - objective: "Understand checkpoint pattern for video generation: Setup → Session → Generation → Validation"
+  - objective: "Understand checkpoint pattern for task execution: Agent Complete → Human Review → Human Approve → Continue"
     proficiency_level: "B1"
     bloom_level: "Understand"
     assessment_method: "Explanation of checkpoint pattern and human's control role"
-
-  - objective: "Create production-ready video generation prompt with scene-by-scene structure and timing"
-    proficiency_level: "B1"
-    bloom_level: "Apply"
-    assessment_method: "Ability to write prompt with explicit scene structure, durations, and style keywords"
 
   - objective: "Trace requirement lineage from specification through plan to tasks"
     proficiency_level: "B1"
     bloom_level: "Analyze"
     assessment_method: "Ability to follow a requirement from spec to task unit"
 
+  - objective: "Identify tasks with clear acceptance criteria and explicit dependencies"
+    proficiency_level: "B1"
+    bloom_level: "Analyze"
+    assessment_method: "Ability to review task list and validate quality"
+
 cognitive_load:
-  new_concepts: 8
-  assessment: "8 new concepts (Tasks command, atomic units, dependencies, checkpoint pattern, video prompts, Playwright MCP, session persistence, quality gates) within B1 limit of 10 ✓"
+  new_concepts: 4
+  assessment: "4 new concepts (/sp.tasks command, atomic units, dependencies, checkpoint pattern) within B1 limit of 10 ✓"
 
 differentiation:
-  extension_for_advanced: "Design video prompts for 2-3 different product types (SaaS, mobile app, API); analyze how prompt structure changes by domain"
-  remedial_for_struggling: "Focus on Phase 1 (Setup) and Phase 3 (Video Generation) tasks; delay Phase 4 validation until initial success"
+  extension_for_advanced: "Design task breakdown for 2-3 different projects (paper, research proposal, literature review); compare how task structure varies by project complexity"
+  remedial_for_struggling: "Focus on understanding what makes a 'good' task (atomic, testable, 15-30 min) without detailed dependency analysis"
 
 # Generation metadata
 generated_by: "content-implementer v1.0.0"
-source_spec: "specs/chapter-14-redesign/spec.md"
-source_plan: "specs/chapter-14-redesign/plan.md"
-created: "2025-11-25"
-last_modified: "2025-11-25"
+source_spec: "specs/036-chapter-14-sdd-ri-hands-on/spec.md"
+created: "2025-11-26"
+last_modified: "2025-11-26"
 git_author: "Claude Code"
 workflow: "/sp.implement"
 version: "1.0.0"
@@ -92,20 +78,20 @@ version: "1.0.0"
 # Tasks Phase - Atomic Work Units and Checkpoints
 
 You now have:
-- ✅ A clear video generation specification
-- ✅ A detailed Playwright MCP implementation plan
-- ✅ Documented architecture decisions (ADRs)
+- ✅ A clear research paper specification (intent, success criteria, scope)
+- ✅ A detailed implementation plan (research approach, structure, timeline)
+- ✅ Documented architecture decisions (citation style, source strategy, outline format)
 
 Next: Break the plan into **atomic work units** (tasks) that you'll execute. Each task is 15-30 minutes, has one acceptance criterion, and produces a verifiable output.
 
 This lesson teaches the **checkpoint pattern**—the critical workflow practice that keeps YOU in control. The pattern is:
 
 ```
-Agent: "Here's Phase 1 - Setup complete"
-You: "Review... looks good!"
+Agent: "Here's Section 1 research complete"
+You: "Review... sources are credible!"
 You: "Commit to git"
 You: "Tell me what's next"
-Agent: "Phase 2 - Session Setup starting"
+Agent: "Section 2 outline refinement starting"
 ```
 
 NOT:
@@ -124,26 +110,27 @@ A **task** is a unit of work that:
 - Takes 15-30 minutes to complete
 - Has a single, clear acceptance criterion
 - Depends on specific other tasks
-- Produces one verifiable output (file, directory, validated state)
+- Produces one verifiable output (file, section, validated state)
 
 ### Task Properties
 
 **Size**: 15-30 minutes
 - Too small (under 10 minutes) = too many micro-tasks, checkpoint overhead
 - Too large (over 45 minutes) = hard to review, hard to fix if wrong
+- Just right (15-30) = meaningful progress, reviewable scope
 
 **Criterion**: Single, testable
-- "Verify Playwright MCP configured" ✅
-- "Verify MCP AND create directory AND test access" ❌ (three things)
-- "Do setup stuff" ❌ (untestable)
+- "Research section 1 sources and verify credibility" ✅
+- "Research section 1 AND outline section 1 AND find images" ❌ (three things)
+- "Work on research stuff" ❌ (untestable)
 
 **Independence**: Can be reviewed individually
 - Doesn't require other tasks to be done first
 - Or clearly depends on specific other tasks
 
 **Clarity**: Defines exact acceptance criterion that signals completion
-- ✅ "Session file exists at `.session-storage/gemini-session.json` AND contains valid cookies"
-- ❌ "Session is working"
+- ✅ "Section 1 has 5+ credible sources (peer-reviewed or authoritative), each with full citation"
+- ❌ "Section 1 is researched"
 
 ---
 
@@ -165,44 +152,42 @@ Loop:
 
 **Without Checkpoints** (dangerous):
 ```
-You: "Generate a video for my product"
-Agent: "Done! I've completed 12 tasks, logged into Gemini,
-        navigated through 10 pages, generated video,
-        moved it to output. All automated. You're welcome."
-You: "Wait, which step failed? How do I fix it?
-      I can't see what happened!"
-Agent: "Already committed. Sorry! Rollback the whole thing?"
+You: "Write my research paper"
+Agent: "Done! I've completed 15 tasks, researched all sections,
+        synthesized 50 sources, written full paper, formatted
+        everything. All automated. You're welcome."
+You: "Wait, which sources did you use? Is section 3 accurate?
+      How do I verify what you wrote?"
+Agent: "Already committed. Sorry! Check it now?"
 ```
 
 **With Checkpoints** (controlled):
 ```
-You: "Start video generation workflow"
-Agent: "Phase 1 (Setup) complete:
-        ✓ Playwright MCP verified
-        ✓ Session directory created
-        ✓ Gemini.google.com accessible
+You: "Start research paper workflow"
+Agent: "Phase 1 (Section 1 Research) complete:
+        ✓ 5 credible sources identified
+        ✓ Notes summarizing key points
+        ✓ Citations formatted
         Ready for review."
-You: "Read setup results... all looks good. Commit. What's next?"
-Agent: "Phase 2 (Session Setup) - First run login..."
-You: "I'm logging in now. Continue when ready."
-Agent: "Phase 3 (Video Generation) - Here's the prompt..."
-You: "Found issue with prompt timing. Fixing..."
-Agent: "Phase 4 (Validation) - Video complete. Running checks..."
-You: "Video validated. All quality gates pass. Project complete!"
+You: "Read sources... all high-quality. Commit. What's next?"
+Agent: "Phase 2 (Section 1 Outline) - Key points ordered..."
+You: "Found issue with point sequence. Fixing..."
+Agent: "Phase 3 (Section 2 Research) - Starting literature review..."
+You: "Paper structure looks good so far. Paper complete!"
 ```
 
 ### Your Role in Each Checkpoint
 
 **Step 1: Human Reviews**
-- See the actual output (file, directory structure, logged state)
+- See the actual output (written section, bibliography, research notes)
 - Ask: "Does this match the plan?"
-- Ask: "Are there issues I should fix before continuing?"
+- Ask: "Are there accuracy issues I should fix before continuing?"
 - Ask: "Is this ready for the next phase?"
 
 **Step 2: Human Decides**
 - Approve ("Looks good, commit")
 - Reject ("Fix this issue before continuing")
-- Request clarification ("Explain this step")
+- Request clarification ("Where did you get this source?")
 
 **Step 3: Human Directs**
 - "What's the next phase?"
@@ -211,194 +196,95 @@ You: "Video validated. All quality gates pass. Project complete!"
 
 ---
 
-## Task Structure for Video Generation
+## Task Structure for Research Paper
 
-Your video generation workflow breaks into **4 phases with 12 atomic tasks**. Here's the breakdown:
+Your research paper project breaks into **4 phases with 10 atomic tasks**. Here's the breakdown:
 
-### Phase 1: Setup & Verification (3 tasks, 30-45 minutes)
+### Phase 1: Research Foundation (3 tasks, 45-60 minutes)
 
-These tasks verify your environment is ready BEFORE attempting browser automation.
+These tasks establish credible sources and research notes BEFORE writing.
 
-**Task 1.1: Verify Playwright MCP Configuration**
-- **Duration**: 15 minutes
+**Task 1.1: Research Section 1 - Find Credible Sources**
+- **Duration**: 20 minutes
 - **Depends on**: Nothing
-- **What to do**: Check that Playwright MCP is installed and configured in Claude Desktop
-- **Acceptance**: "Claude Desktop config file contains Playwright MCP with correct server path"
-- **Output**: Verified `.claude/claude-config.json` file or console confirmation
+- **What to do**: Identify 5+ credible sources for Section 1 (topic introduction)
+- **Acceptance**: "5+ sources identified; each is peer-reviewed OR from authoritative domain expert; full citations recorded"
+- **Output**: Bibliography file with 5+ sources and notes on why each is credible
 
-**Task 1.2: Create Session Storage Directory**
-- **Duration**: 10 minutes
+**Task 1.2: Research Section 1 - Synthesize Key Points**
+- **Duration**: 15 minutes
 - **Depends on**: Task 1.1
-- **What to do**: Create `.session-storage/` directory for persisting browser sessions
-- **Acceptance**: "Directory exists at correct path with 0755 permissions"
-- **Output**: Directory visible in file explorer, path confirmed
+- **What to do**: Read sources and extract key points for Section 1
+- **Acceptance**: "3-5 key points documented; each has source attribution; points relate directly to introduction goal"
+- **Output**: Research notes file with key points and source citations
 
-**Task 1.3: Verify Gemini.google.com Accessibility**
+**Task 1.3: Create Outline Structure**
 - **Duration**: 15 minutes
 - **Depends on**: Task 1.2
-- **What to do**: Open Gemini in regular browser to confirm it's accessible from your network
-- **Acceptance**: "Gemini loads fully with no access restrictions or geoblocking"
-- **Output**: Screenshot showing Gemini.google.com homepage loaded
+- **What to do**: Draft outline for all sections with main points and sub-points
+- **Acceptance**: "Outline has all 4+ sections; each section has 2-3 main points; structure flows logically"
+- **Output**: Markdown outline file showing section hierarchy
 
-### Phase 2: Browser Session Setup (2 tasks, 30-45 minutes)
+### Phase 2: Content Research and Organization (4 tasks, 60-90 minutes)
 
-These tasks establish and verify a persistent browser session using Playwright MCP.
+These tasks research remaining sections and organize findings.
 
-**Task 2.1: Execute First-Run Login Workflow**
+**Task 2.1: Research Section 2 - Find Credible Sources**
 - **Duration**: 20 minutes
 - **Depends on**: Task 1.3
-- **What to do**: Use Playwright MCP to navigate to Gemini and login (manually enter credentials)
-- **Steps**:
-  1. Playwright navigates to `https://gemini.google.com/`
-  2. You enter Google credentials when prompted
-  3. Browser saves session cookies to `.session-storage/gemini-session.json`
-- **Acceptance**: "Session file exists, contains valid cookies, file size > 1KB"
-- **Output**: Session file at `.session-storage/gemini-session.json` with persisted login state
+- **What to do**: Identify 5+ credible sources for Section 2 (main topic)
+- **Acceptance**: "5+ sources identified; each is peer-reviewed OR from domain expert; full citations recorded"
+- **Output**: Bibliography update with Section 2 sources and credibility notes
 
-**Task 2.2: Verify Session Persistence**
+**Task 2.2: Research Section 2 - Synthesize Key Points**
 - **Duration**: 15 minutes
 - **Depends on**: Task 2.1
-- **What to do**: Close browser, reopen with saved session, verify still logged in
-- **Steps**:
-  1. Close Playwright browser instance
-  2. Reopen Playwright with saved session file
-  3. Navigate to Gemini
-  4. Verify "already logged in" state (no login form)
-- **Acceptance**: "Browser loads Gemini WITHOUT requiring login; session reused successfully"
-- **Output**: Confirmation log showing second session reused cookies
+- **What to do**: Read sources and extract key points for Section 2
+- **Acceptance**: "4-6 key points documented; source attributed; points advance main argument"
+- **Output**: Research notes update with Section 2 key points
 
-### Phase 3: Video Generation (4 tasks, 60-90 minutes)
-
-These tasks execute the actual video generation using the prompt prepared from L06 research.
-
-**Task 3.1: Structure and Finalize Video Generation Prompt**
-- **Duration**: 15 minutes
+**Task 2.3: Research Section 3 and Beyond - Find Sources**
+- **Duration**: 20 minutes
 - **Depends on**: Task 2.2
-- **What to do**: Take the research from L06 and structure it into the video prompt
-- **Acceptance**: "Prompt has 4+ explicit scenes with start/end times, style keywords, and constraint descriptions"
-- **Output**: Complete prompt text ready to paste into Gemini chat
-- **THE PROMPT** (from L06 research, FINAL VERSION):
-  ```
-  Create a 45-second product demo video showing:
+- **What to do**: Research remaining sections (conclusion, implications) and gather sources
+- **Acceptance**: "All remaining sections have 3+ credible sources each; citations recorded"
+- **Output**: Complete bibliography with all sections covered
 
-  Scene 1 (0-10s): Modern SaaS dashboard with clean UI
-  - Show dashboard interface with charts, metrics, user list
-  - Fade in smoothly from black
-  - Keep animations minimal, business-focused
-
-  Scene 2 (10-20s): User clicks "Sign Up" button
-  - Button highlight, form appears with smooth slide-in
-  - Shows email field, password field, name field
-  - Form is modern, minimal, professional design
-
-  Scene 3 (20-35s): Form filling animation
-  - Auto-fill animation for each field (very smooth, 0.5s per field)
-  - Fields light up as they complete
-  - Smooth transitions between fields, no jarring movements
-
-  Scene 4 (35-45s): Success confirmation
-  - Confetti animation (subtle, professional, not cartoonish)
-  - "Account created!" message fades in
-  - Text overlay: "Sign up in under 60 seconds" appears
-  - Fade to black
-
-  Overall Style:
-  - Professional corporate aesthetic (SaaS marketing standard)
-  - Minimal design language (Apple-like, not cluttered)
-  - Smooth transitions (nothing abrupt, 3+ second minimum per scene)
-  - Color palette: Modern blues, grays, whites (tech company standard)
-
-  Video Specifications:
-  - Format: MP4 with H.264 codec
-  - Resolution: 1920x1080 (standard for marketing)
-  - Duration: 45-50 seconds (strict)
-  - Frame rate: 30fps (standard for web)
-  - Audio: Subtle upbeat corporate background music (no voiceover)
-
-  Important:
-  - NO spoken narration (music only)
-  - NO distracting animations or emoji
-  - NO flashy effects (this is B2B marketing, not entertainment)
-  - Content must match prompt exactly (validate before delivery)
-  ```
-
-**Task 3.2: Login with Persisted Session and Navigate**
+**Task 2.4: Organize All Research Notes by Section**
 - **Duration**: 15 minutes
+- **Depends on**: Task 2.3
+- **What to do**: Consolidate all research notes; organize by section; verify coverage
+- **Acceptance**: "All sections have research notes; notes are organized by topic; no gaps identified"
+- **Output**: Organized research notes file; verified coverage checklist
+
+### Phase 3: Writing and Synthesis (2 tasks, 60-90 minutes)
+
+These tasks transform research into written paper.
+
+**Task 3.1: Write and Synthesize Content**
+- **Duration**: 45 minutes
+- **Depends on**: Task 2.4
+- **What to do**: Write paper sections using research notes; synthesize findings
+- **Acceptance**: "All sections written; each section 300+ words; citations embedded; argument flows"
+- **Output**: Complete draft paper with citations
+
+**Task 3.2: Format and Verify Citations**
+- **Duration**: 20 minutes
 - **Depends on**: Task 3.1
-- **What to do**: Use Playwright MCP to open Gemini with saved session
-- **Acceptance**: "Gemini.google.com loads and confirms logged-in state in URL/page structure"
-- **Output**: Console logs showing successful session reuse, no login prompts
+- **What to do**: Apply citation style; verify all sources cited; check bibliography completeness
+- **Acceptance**: "All citations follow APA format; bibliography complete; in-text citations present"
+- **Output**: Formatted paper with verified citations; complete bibliography
 
-**Task 3.3: Submit Video Generation Prompt to Gemini**
-- **Duration**: 20 minutes
+### Phase 4: Review and Finalization (1 task, 30 minutes)
+
+These tasks validate final paper quality.
+
+**Task 4.1: Review Paper Quality and Finalize**
+- **Duration**: 30 minutes
 - **Depends on**: Task 3.2
-- **What to do**: Paste prompt from Task 3.1 into Gemini chat and submit
-- **Steps**:
-  1. Playwright inputs prompt text into chat field
-  2. Playwright presses Enter/Submit button
-  3. Gemini begins video generation (shows progress indicator)
-- **Acceptance**: "Gemini displays 'Generating...' message; progress indicator visible"
-- **Output**: Screenshot or console log showing prompt submitted and generation starting
-
-**Task 3.4: Wait for Generation and Download Video**
-- **Duration**: 20 minutes
-- **Depends on**: Task 3.3
-- **What to do**: Wait for Gemini to complete video generation, then download
-- **Steps**:
-  1. Wait 60-90 seconds for Gemini to generate video
-  2. Verify "Download" button appears on page
-  3. Click download button (Playwright can trigger or you can manually)
-  4. Video file downloads to Downloads folder as `Gemini-Generated-Video-*.mp4`
-- **Acceptance**: "Video file exists in Downloads folder, file size > 1MB"
-- **Output**: Video file path confirmed: `~/Downloads/Gemini-Generated-Video-[timestamp].mp4`
-
-### Phase 4: Validation & Finalization (3 tasks, 45-60 minutes)
-
-These tasks verify the video meets quality standards before considering project complete.
-
-**Task 4.1: Move Video to Project Directory**
-- **Duration**: 10 minutes
-- **Depends on**: Task 3.4
-- **What to do**: Move downloaded video from Downloads to project output folder
-- **Steps**:
-  1. Locate downloaded file: `~/Downloads/Gemini-Generated-Video-*.mp4`
-  2. Create `./output/` directory if needed
-  3. Move file to `./output/demo-video.mp4`
-- **Acceptance**: "File exists at `./output/demo-video.mp4`, original removed from Downloads"
-- **Output**: Video file at expected path in project directory
-
-**Task 4.2: Verify Video File Format and Properties**
-- **Duration**: 15 minutes
-- **Depends on**: Task 4.1
-- **What to do**: Validate video codec, resolution, duration using ffprobe
-- **Commands**:
-  ```bash
-  ffprobe -v error -select_streams v:0 \
-    -show_entries stream=codec_name,width,height,duration \
-    ./output/demo-video.mp4
-  ```
-- **Acceptance Criteria** (ALL must pass):
-  - Codec: H.264 (required for web compatibility)
-  - Resolution: 1920x1080 or similar (not tiny)
-  - Duration: 45-60 seconds (matches prompt requirement)
-  - File size: > 2MB (indicates full render, not truncated)
-- **Output**: ffprobe output showing all properties meet requirements
-
-**Task 4.3: Test Video Playback and Validate Content**
-- **Duration**: 20 minutes
-- **Depends on**: Task 4.2
-- **What to do**: Play video and verify content matches the prompt
-- **What to check**:
-  1. Video plays without errors or artifacts
-  2. Dashboard scene visible at start
-  3. Sign-up button and form visible in Scene 2
-  4. Form filling animation smooth (not jerky)
-  5. Success confirmation with confetti in Scene 4
-  6. Text overlay "Sign up in under 60 seconds" present
-  7. Audio is corporate background music (no narration)
-  8. Transitions are smooth (no abrupt cuts)
-- **Acceptance**: "Playback successful; all content scenes present and match prompt intent"
-- **Output**: Playback logs; confirmation that content matches specification
+- **What to do**: Read complete paper; verify accuracy, clarity, argument coherence; finalize
+- **Acceptance**: "Paper reads smoothly; argument is clear; sources are credible; no typos; ready to submit"
+- **Output**: Final paper ready for submission; quality checklist completed
 
 ---
 
@@ -406,72 +292,74 @@ These tasks verify the video meets quality standards before considering project 
 
 Here's how the workflow actually progresses with human checkpoints:
 
-### Checkpoint 1: After Phase 1 (Setup)
+### Checkpoint 1: After Phase 1 (Research Foundation)
 ```
-AGENT: "Setup verification complete:
-        ✓ Playwright MCP configured
-        ✓ Session storage directory created
-        ✓ Gemini accessible without restrictions
+AGENT: "Research foundation complete:
+        ✓ Section 1 sources identified (5 peer-reviewed articles)
+        ✓ Key points synthesized from sources
+        ✓ Outline structure created (4 sections, logical flow)
 
-        Ready for Phase 2: Browser Session Setup"
+        Ready for Phase 2: Content Research"
 
-YOU: "Review... MCP is working, directory created.
-      Looks good! Committing setup phase."
+YOU: "Review sources... all high-quality academic journals.
+      Read outline... structure makes sense.
+      Looks good! Committing Phase 1."
 
 YOU: (git commit)
 
 YOU: "Proceed to Phase 2"
 ```
 
-### Checkpoint 2: After Phase 2 (Session)
+### Checkpoint 2: After Phase 2 (Content Research)
 ```
-AGENT: "Session setup complete:
-        ✓ First-run login successful
-        ✓ Session file saved to .session-storage/gemini-session.json
-        ✓ Session persistence verified (logged in after restart)
+AGENT: "Content research complete:
+        ✓ Sections 2-4 sources identified (15+ total sources)
+        ✓ Key points extracted and organized by section
+        ✓ Research notes consolidated and verified for gaps
 
-        Ready for Phase 3: Video Generation"
+        Ready for Phase 3: Writing"
 
-YOU: "Review session file... valid cookies present.
-      Committing session phase."
+YOU: "Review research notes... coverage is comprehensive.
+      Check bibliography... all sources have full citations.
+      Committing Phase 2."
 
 YOU: (git commit)
 
 YOU: "Proceed to Phase 3"
 ```
 
-### Checkpoint 3: After Phase 3 (Generation)
+### Checkpoint 3: After Phase 3 (Writing)
 ```
-AGENT: "Video generation complete:
-        ✓ Prompt submitted to Gemini
-        ✓ Generation completed (90 seconds)
-        ✓ Video downloaded: ~/Downloads/Gemini-Generated-Video-*.mp4
-        ✓ Moved to ./output/demo-video.mp4
+AGENT: "Writing complete:
+        ✓ All sections written (2,500+ words total)
+        ✓ Research synthesized into narrative
+        ✓ Citations formatted in APA style
+        ✓ Bibliography complete
 
-        Ready for Phase 4: Validation"
+        Ready for Phase 4: Finalization"
 
-YOU: "Review video in file explorer... 3.2MB file.
-      Committing generation phase."
+YOU: "Read draft... argument is clear and well-supported.
+      Check citations... all formatted correctly.
+      Committing Phase 3."
 
 YOU: (git commit)
 
 YOU: "Proceed to Phase 4"
 ```
 
-### Checkpoint 4: After Phase 4 (Validation)
+### Checkpoint 4: After Phase 4 (Finalization)
 ```
-AGENT: "Validation complete:
-        ✓ File format: MP4 H.264 codec
-        ✓ Duration: 48 seconds (within 45-60s requirement)
-        ✓ Resolution: 1920x1080 (matches spec)
-        ✓ Content validated: All 4 scenes present
+AGENT: "Review and finalization complete:
+        ✓ Paper reads smoothly, no formatting issues
+        ✓ All sources properly cited
+        ✓ Argument coherent from introduction to conclusion
         ✓ Quality gates: All pass
 
-        PROJECT COMPLETE: demo-video.mp4 ready for use"
+        PROJECT COMPLETE: Paper ready for submission"
 
-YOU: "Review ffprobe output... all properties correct.
-      Watch final video... excellent quality.
-      Committing validation phase. Project complete!"
+YOU: "Final read-through... excellent quality.
+      All requirements met. Committing final version.
+      Project complete!"
 
 YOU: (final git commit)
 ```
@@ -483,43 +371,39 @@ YOU: (final git commit)
 Here's how your tasks depend on each other:
 
 ```
-Phase 1 (Setup): Sequential path (each depends on previous)
+Phase 1 (Research Foundation): Sequential path (each depends on previous)
 ┌────────────────────────────────────────────────────────────┐
-│  Task 1.1: Verify Playwright MCP                           │
+│  Task 1.1: Research Section 1 Sources                      │
 │      ↓                                                      │
-│  Task 1.2: Create Session Directory                        │
+│  Task 1.2: Synthesize Section 1 Key Points                 │
 │      ↓                                                      │
-│  Task 1.3: Verify Gemini Access                            │
+│  Task 1.3: Create Outline Structure                        │
 │      ↓ [CHECKPOINT 1]                                      │
 └────────────────────────────────────────────────────────────┘
 
-Phase 2 (Session): Sequential path (each depends on Phase 1)
+Phase 2 (Content Research): Sequential path (each depends on previous)
 ┌────────────────────────────────────────────────────────────┐
-│  Task 2.1: First-Run Login (depends on 1.3)                │
+│  Task 2.1: Research Sections 2+ Sources (depends on 1.3)   │
 │      ↓                                                      │
-│  Task 2.2: Verify Session Persistence                      │
+│  Task 2.2: Synthesize Sections 2+ Key Points               │
+│      ↓                                                      │
+│  Task 2.3: Research Final Sections Sources                 │
+│      ↓                                                      │
+│  Task 2.4: Organize All Research by Section                │
 │      ↓ [CHECKPOINT 2]                                      │
 └────────────────────────────────────────────────────────────┘
 
-Phase 3 (Generation): Linear path (each depends on previous)
+Phase 3 (Writing): Linear path (each depends on previous)
 ┌────────────────────────────────────────────────────────────┐
-│  Task 3.1: Structure Video Prompt (depends on 2.2)         │
+│  Task 3.1: Write and Synthesize Content (depends on 2.4)   │
 │      ↓                                                      │
-│  Task 3.2: Login with Session (depends on 3.1)             │
-│      ↓                                                      │
-│  Task 3.3: Submit Prompt to Gemini (depends on 3.2)        │
-│      ↓                                                      │
-│  Task 3.4: Wait and Download Video (depends on 3.3)        │
+│  Task 3.2: Format and Verify Citations                     │
 │      ↓ [CHECKPOINT 3]                                      │
 └────────────────────────────────────────────────────────────┘
 
-Phase 4 (Validation): Linear path (each depends on previous)
+Phase 4 (Finalization): Final review (depends on Phase 3)
 ┌────────────────────────────────────────────────────────────┐
-│  Task 4.1: Move Video to Output (depends on 3.4)           │
-│      ↓                                                      │
-│  Task 4.2: Verify File Properties (depends on 4.1)         │
-│      ↓                                                      │
-│  Task 4.3: Test Playback & Content (depends on 4.2)        │
+│  Task 4.1: Review and Finalize (depends on 3.2)            │
 │      ↓ [CHECKPOINT 4 - PROJECT COMPLETE]                   │
 └────────────────────────────────────────────────────────────┘
 
@@ -534,15 +418,18 @@ Legend: Each task must complete before next starts (strict dependency)
 Can you trace a task back to specification? Try this one:
 
 ```
-Specification: "Generate video demonstrating product demo workflow"
+Specification: "Write 2,500+ word research paper on AI in education
+               with academic rigor and clear argument structure"
   ↓
-Plan: "Phase 3: Video Generation - Submit refined prompt to Gemini,
-       capture generated video, validate against quality criteria"
+Plan: "Phase 1: Establish research foundation with credible sources;
+       Phase 2: Organize research by section;
+       Phase 3: Synthesize into written paper;
+       Phase 4: Verify quality and finalize"
   ↓
-Task 3.1: "Structure and Finalize Video Generation Prompt"
+Task 2.1: "Research Section 2 - Find Credible Sources"
   ↓
-Acceptance Criterion: "Prompt has 4+ explicit scenes with start/end times,
-                       style keywords, and constraint descriptions"
+Acceptance Criterion: "5+ sources identified; each peer-reviewed OR
+                       from domain expert; full citations recorded"
 ```
 
 If you can trace this lineage for each task, your task breakdown is well-connected to your specification.
@@ -553,52 +440,66 @@ If you can trace this lineage for each task, your task breakdown is well-connect
 
 ### Mistake 1: Tasks Too Large (45+ Minutes)
 
-**The Error**: "Task: Complete entire video generation (2+ hours)"
+**The Error**: "Task: Complete entire section research and writing (2+ hours)"
 
-**Why It's Wrong**: Large tasks hide complexity, delay feedback, and make checkpoints meaningless. You can't validate progress until the entire video generation completes.
+**Why It's Wrong**: Large tasks hide complexity, delay feedback, and make checkpoints meaningless. You can't validate progress until the entire section completes.
 
 **The Fix**: Break into atomic units (15-30 minutes each):
-- ❌ Large: "Generate and validate video"
-- ✅ Atomic: "Structure prompt" (15 min), "Submit to Gemini" (20 min), "Download" (20 min), "Validate format" (15 min)
+- ❌ Large: "Research and write section 1"
+- ✅ Atomic: "Find sources" (20 min), "Synthesize points" (15 min), "Outline structure" (15 min), "Write section" (45 min)
 
-### Mistake 2: Combining Manual and Automated Steps
+### Mistake 2: Combining Research and Writing
 
-**The Error**: Task includes "login, wait for generation, download, validate" all as one task
+**The Error**: Task includes "research section, synthesize findings, write content, format citations" all as one task
 
-**Why It's Wrong**: If Gemini generation takes 90 seconds and you need to intervene (quality issue, timeout), you can't easily restart from the right point. Mixing manual + automated confuses where failures occur.
+**Why It's Wrong**: If you find issues with source credibility mid-task, you can't easily restart research without redoing writing. Mixing research + writing confuses where quality issues originate.
 
-**The Fix**: Separate manual steps from automated:
-- Task 3.2: "Login with persisted session" (automation)
-- Task 3.3: "Submit prompt to Gemini" (automation)
-- **CHECKPOINT**: Human reviews before continuing
-- Task 3.4: "Wait for generation and download" (you watch, system generates)
+**The Fix**: Separate research from writing:
+- Task 2.1: "Research Section 2 Sources" (automation/research)
+- Task 2.2: "Synthesize Section 2 Points" (analysis)
+- **CHECKPOINT**: Human reviews research quality before continuing
+- Task 3.1: "Write and Synthesize Content" (composition)
 
 ### Mistake 3: Vague Acceptance Criteria
 
-**The Error**: "Task: Setup is complete" (what does "complete" mean?)
+**The Error**: "Task: Section 1 is researched" (what does "researched" mean?)
 
-**Why It's Wrong**: You won't know if the task is done or if there's a hidden failure.
+**Why It's Wrong**: You won't know if the task is done or if there's a hidden gap.
 
 **The Fix**: Make acceptance criteria specific and testable:
-- ✅ "Session file exists at `.session-storage/gemini-session.json` AND file size > 1KB AND contains valid cookie tokens"
-- ✅ "Video plays without errors AND all 4 scenes visible AND duration is 45-60 seconds"
+- ✅ "Section 1 has 5+ peer-reviewed sources AND each source has full citation AND notes summarize key points"
+- ✅ "Paper has 2,500+ words AND all sources cited AND bibliography complete AND no formatting errors"
+
+---
+
+## What Makes /sp.tasks Powerful
+
+The `/sp.tasks` command analyzes your specification and plan, then **generates a complete task breakdown** that includes:
+
+1. **Atomic Unit Definition** - Each task is 15-30 minutes with one acceptance criterion
+2. **Dependency Ordering** - Tasks ordered so dependencies are clear
+3. **Checkpoint Placement** - Human review points between phases
+4. **Lineage Traceability** - You can trace each task back to specification
+5. **Acceptance Criteria** - Each task has specific, testable completion condition
+
+You don't write tasks from scratch. **`/sp.tasks` writes them for you** based on your specification and plan. Your job is to **understand the task structure, validate it's atomic, and execute it with checkpoints**.
 
 ---
 
 ## Try With AI
 
-Ready to validate your task breakdown and prepare for implementation? Test your understanding:
+Ready to validate your task breakdown and understand how `/sp.tasks` works? Test your understanding:
 
 **Explore Task Atomicity:**
-> "I've broken video generation into 12 tasks across 4 phases. Review my task list: (1) Is each task atomic (does ONE thing with ONE acceptance criterion)? (2) Are they sized right (15-30 minutes, not hours or minutes)? (3) Can each be reviewed independently? (4) Identify any tasks that should be split further or combined. (5) Which tasks would you add or remove?"
+> "I'm using `/sp.tasks` to break my research paper into atomic work units. Review my task list: (1) Is each task atomic (does ONE thing with ONE acceptance criterion)? (2) Are they sized right (15-30 minutes, not hours or minutes)? (3) Can each be reviewed independently? (4) Identify any tasks that should be split further or combined. (5) Which tasks would you add or remove?"
 
 **Practice Checkpoint Validation:**
-> "Walk me through the checkpoint pattern for my video generation workflow. For each checkpoint (after Phases 1, 2, 3, 4): (1) What should I review for? (2) What makes a 'good' output at this checkpoint? (3) What issues could arise that I should catch before continuing? (4) Create a checklist I can use at each checkpoint to decide 'ready to proceed'."
+> "Walk me through the checkpoint pattern for my research paper workflow. For each checkpoint (after Phases 1, 2, 3, 4): (1) What should I review for? (2) What makes a 'good' output at this checkpoint? (3) What issues could arise that I should catch before continuing? (4) Create a checklist I can use at each checkpoint to decide 'ready to proceed'."
 
 **Analyze Dependencies:**
-> "Examine my task dependencies: (1) Are they logically correct? (2) Which tasks could theoretically run in parallel? (3) What's the critical path (minimum sequence to completion)? (4) If one task failed (e.g., video generation timeout), which downstream tasks would be affected? (5) How would I recover and restart?"
+> "Examine my task dependencies: (1) Are they logically correct? (2) Which tasks could theoretically run in parallel? (3) What's the critical path (minimum sequence to completion)? (4) If one task failed (e.g., couldn't find enough credible sources), which downstream tasks would be affected? (5) How would I recover and restart?"
 
-**Test Prompt Quality:**
-> "Review my video generation prompt (Task 3.1): (1) Does it have explicit scene structure with start/end times? (2) Are style keywords clear enough for Gemini to understand? (3) Are constraints explicit (resolution, duration, codec)? (4) What ambiguities exist that Gemini might interpret differently? (5) How would you improve this prompt to increase likelihood of first-attempt success?"
+**Understanding /sp.tasks Command:**
+> "Explain what `/sp.tasks` does: (1) What INPUT does it take (spec + plan)? (2) What OUTPUT does it generate (task list structure)? (3) How does it ensure tasks are atomic? (4) How does it order tasks by dependency? (5) When would you run `/sp.tasks` in a Spec-Kit Plus workflow?"
 
 ---
