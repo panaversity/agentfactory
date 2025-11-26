@@ -1,31 +1,41 @@
 # Installation and Setup
 
-This lesson teaches students how to set up a Spec-Kit Plus project by creating a folder structure that organizes decision-making frameworks, specifications, and AI collaboration patterns. Students create four key directories—.specify/memory/, .claude/skills/, specs/research-paper/, and the paper.md deliverable—then establish a minimal constitution file to guide their entire project. The lesson emphasizes that folder organization is not bureaucratic overhead but a system for helping AI companions understand project values and reusing intelligent patterns across projects.
+This lesson teaches students how to install Spec-Kit Plus framework and initialize their first project. Students install the framework via `pip install specifyplus`, run `specifyplus init` to create a properly structured project, and verify slash commands work in their AI tool (Claude Code or Gemini CLI). The lesson emphasizes that Spec-Kit Plus is a framework separate from the AI tool—you need BOTH.
 
 ### Mental Models
 
-- **Artifact Organization by Purpose**: Different types of thinking artifacts belong in different directories (.specify/ for principles, specs/ for planning documents, .claude/ for reusable patterns), which signals to both humans and AI what kind of work each folder contains
-- **Constitution as Decision Framework**: The constitution file captures project values upfront, then acts as a reference point when making tradeoffs later (clarity vs. formality, rigor vs. brevity)
-- **Folder Structure as AI Communication**: The physical organization of folders teaches the AI companion where to find decision-making context, so it doesn't have to guess what matters in this project
-- **Specification Layers**: The three-file structure (spec.md → plan.md → tasks.md) represents increasing levels of implementation detail, moving from intent → architecture → actionable steps
+- **Framework vs Tool Distinction**: Spec-Kit Plus is a framework (installed via pip) that provides structure, templates, and slash commands. Claude Code/Gemini CLI is the AI tool that executes those commands. They work together but are installed separately.
+
+- **Artifact Organization by Purpose**: Different types of thinking artifacts belong in different directories (`.specify/` for constitution and templates, `.claude/commands/` for slash commands, `specs/` for specifications). This organization helps both humans and AI understand where each artifact type belongs.
+
+- **Constitution as Decision Framework**: The constitution file in `.specify/memory/` captures project values upfront, then acts as a reference point when making tradeoffs throughout the project.
+
+- **Slash Commands as Workflow Steps**: Each `/sp.` command represents a phase in the SDD-RI workflow—from constitution to specification to planning to implementation. The commands are your interface to the methodology.
 
 ### Key Patterns
 
-- Hidden configuration folders (prefixed with dots) contain meta-work about the project, while regular folders contain deliverables
-- Constitution is written once at project start and referenced throughout, establishing stable decision criteria before implementation begins
-- Directory structure mirrors the Spec-Kit Plus workflow (specify → plan → task), making the methodology visible in how files are organized
-- Skills directory starts empty but grows as reusable patterns are discovered during the project
-- Mental model table (artifact type → storage location) makes it clear where new documents belong as students work
+- **Python 3.12+ Prerequisite**: Spec-Kit Plus requires Python 3.12 or higher. Check version before installation with `python --version`.
+
+- **pip install specifyplus**: The framework is installed like any Python package. This gives you the `specifyplus` command-line tool.
+
+- **specifyplus init <project-name>**: Creates complete project structure with templates, slash commands, scripts, and configuration. Never create folders manually.
+
+- **Directory Structure**: `.claude/commands/` holds slash commands, `.specify/memory/` holds constitution, `.specify/templates/` holds templates for specs/plans/tasks. `specs/` and `history/` are created when you start features.
+
+- **Command Verification**: Type `/sp.` in your AI tool to see available commands. If they appear, installation is complete.
 
 ### Common Mistakes
 
-- Treating folder structure as busywork rather than as a communication system with the AI companion
-- Skipping or delaying the constitution, making decisions ad-hoc instead of guided by established values
-- Creating folders but not understanding what they represent (assuming .specify/ and .claude/ are just naming conventions rather than functional divisions)
-- Mixing artifact types (putting planning documents in wrong folders, making reusability harder)
-- Not verifying the AI companion can actually access the project structure before proceeding (troubleshooting access issues later)
+- **Confusing framework with AI tool**: Installing Claude Code doesn't give you Spec-Kit Plus. You need `pip install specifyplus` separately.
+
+- **Creating folders manually**: Running `mkdir` commands instead of `specifyplus init` means missing critical infrastructure (templates, scripts, configuration).
+
+- **Wrong Python version**: Spec-Kit Plus requires Python 3.12+. Older versions will fail. Check version first.
+
+- **Skipping verification**: Not testing `/sp.` commands means you might discover installation problems later during actual work.
 
 ### Progression Context
 
-- **Builds on**: Lesson 1 (conceptual understanding of Spec-Kit Plus as framework for capturing working artifacts AND reusable intelligence)
-- **Leads to**: Lesson 3 (Writing a constitution using `/sp.constitution` command to expand the minimal version created here), followed by Lesson 4 (Writing formal specification using `/sp.specify`)
+- **Builds on**: Lesson 1 (conceptual understanding of Spec-Kit Plus as SDD-RI framework, Horizontal/Vertical Intelligence)
+
+- **Leads to**: Lesson 3 (Constitution Phase) where students run `/sp.constitution` to create their project's decision framework. The constitution file created by `specifyplus init` is a starter version—Lesson 3 expands it.
