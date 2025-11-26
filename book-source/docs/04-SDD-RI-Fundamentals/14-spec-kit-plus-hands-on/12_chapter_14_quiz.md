@@ -1,230 +1,258 @@
 ---
 sidebar_position: 12
 title: "Chapter 14: Spec-Kit Plus Hands-On Quiz"
+chapter: 14
+lesson: 12
+duration_minutes: 20
+proficiency_level: "B1"
 ---
 
 # Chapter 14: Spec-Kit Plus Hands-On Quiz
 
-Test your understanding of SDD-RI through the video generation project. This assessment covers the complete workflow from specification to skill creation.
+Test your mastery of Spec-Kit Plus workflow. This assessment covers command recognition, artifact matching, workflow sequencing, and the P+Q+P framework through your research paper project.
 
 <Quiz
-  title="Chapter 14: SDD-RI Video Generation Assessment"
+  title="Chapter 14: Spec-Kit Plus Workflow Mastery"
   questions={[
     {
-      question: "You're writing a specification for video generation. Your first draft says 'Generate a good product demo video.' During clarify phase, this is flagged as inadequate. What makes this specification insufficient?",
+      question: "Which Spec-Kit Plus command creates project-wide quality standards that all subsequent work must satisfy?",
       options: [
-        "It doesn't specify which AI tool to use for generation",
-        "It lacks measurable success criteria and constraints",
-        "It focuses on video instead of the underlying business problem",
-        "It doesn't include implementation details like Playwright MCP"
+        "/sp.specify — defines what you're building",
+        "/sp.constitution — establishes non-negotiable project standards",
+        "/sp.plan — documents how you'll build it",
+        "/sp.clarify — identifies missing requirements"
       ],
       correctOption: 1,
-      explanation: "The specification lacks measurable success criteria ('good' is subjective) and constraints (duration, format, resolution). A proper specification would say: 'Generate a 45-60 second MP4 video at 1080p showing the sign-up flow with clear CTA.' The first option is incorrect because tool choice belongs in the planning phase, not specification. The third option is partially valid but not the primary issue—video IS the deliverable. The fourth option confuses specification with implementation; Playwright MCP details belong in the plan, not the spec.",
-      source: "Lesson 4: Specify Phase"
-    },
-    {
-      question: "During the planning phase for video generation, AI researches Gemini.google.com capabilities. Why is this research step essential before creating the implementation plan?",
-      options: [
-        "To document AI usage for compliance and audit purposes",
-        "To generate marketing materials about Gemini features",
-        "To discover actual constraints that shape architectural decisions",
-        "To compare Gemini with competitor AI video tools"
-      ],
-      correctOption: 2,
-      explanation: "Research discovers actual constraints (free tier limits, timeout behavior, output formats) that shape architectural decisions. Without research, you might plan for capabilities Gemini doesn't have or miss constraints that cause implementation failures. The plan must reflect real tool behavior, not assumed capabilities. Compliance documentation and competitor comparison aren't purposes of the planning phase. Marketing materials are completely unrelated to SDD-RI workflow.",
-      source: "Lesson 6: Plan Phase"
-    },
-    {
-      question: "Your tasks.md includes a video generation prompt as a deliverable. A teammate questions why a 'prompt' is a task output. What principle does this demonstrate?",
-      options: [
-        "Tasks should document AI conversations for future reference",
-        "Tasks deliver concrete artifacts, including research-backed prompts",
-        "Prompts must be version-controlled separately from code",
-        "AI prompts require approval before execution"
-      ],
-      correctOption: 1,
-      explanation: "Tasks deliver concrete artifacts—the video prompt IS an artifact derived from planning research. It's not just documentation; it's an executable specification that Gemini will process. The prompt encodes decisions about scene structure, timing, style keywords, and constraints discovered during planning. This transforms 'generate video' from vague to actionable. Version control and approval are process concerns, not the core principle being demonstrated.",
-      source: "Lesson 7: Tasks Phase"
-    },
-    {
-      question: "After executing /sp.implement, you have a video file but it's only 30 seconds instead of the specified 45-60 seconds. The checkpoint pattern says you should:",
-      options: [
-        "Accept the video since it partially meets requirements",
-        "Delete the video and start the entire workflow from specification",
-        "Iterate with refined prompt, maintaining checkpoint before retry",
-        "Document the failure and move to the next project phase"
-      ],
-      correctOption: 2,
-      explanation: "The checkpoint pattern supports iteration: you have a stable state (video exists, workflow works), so you iterate with a refined prompt while keeping the checkpoint. If the retry fails, you can rollback. Accepting partial success violates spec requirements. Deleting and starting over wastes the working infrastructure you've built. Documenting failure without attempting fixes abandons the goal prematurely. The iteration loop is designed for exactly this scenario—quality refinement through cycles.",
-      source: "Lesson 8: Implement Phase"
-    },
-    {
-      question: "You've completed the video generation workflow (L04-L08) and now need to create a 'generate-video' skill. What should this skill primarily capture?",
-      options: [
-        "The specific video prompt you used for your product demo",
-        "Step-by-step Playwright MCP commands with exact selectors",
-        "Decision frameworks for video generation that apply across projects",
-        "Documentation of Gemini.google.com's current feature set"
-      ],
-      correctOption: 2,
-      explanation: "Skills capture decision frameworks that apply across projects—how to structure prompts, what quality gates to apply, when to iterate. Project-specific prompts and exact selectors are too narrow; they work for THIS video but not future videos. Gemini documentation changes over time and isn't reusable intelligence. The P+Q+P framework (Persona + Questions + Principles) encodes transferable expertise: 'When generating video, ask about target audience, duration constraints, and quality standards' applies universally.",
-      source: "Lesson 9: Designing Reusable Intelligence"
-    },
-    {
-      question: "In Lesson 11 (YouTube Capstone), your YouTube upload specification is shorter than your original video generation specification. Why is this a sign of successful intelligence accumulation?",
-      options: [
-        "YouTube upload is inherently simpler than video generation",
-        "You've learned to write more concise specifications through practice",
-        "Skills handle complexity that would otherwise be in the specification",
-        "The upload task requires less stakeholder coordination"
-      ],
-      correctOption: 2,
-      explanation: "Skills handle complexity that would otherwise be in the specification. Your 'upload-youtube' skill encodes workflow decisions (browser automation, metadata fields, validation steps), so the specification only needs to define intent and success criteria. The skill IS reusable intelligence—it removes decisions from future specs. YouTube upload isn't inherently simpler; it involves browser automation, authentication, metadata management. Concise writing is good but doesn't explain WHY you can write less. Stakeholder coordination is unchanged.",
-      source: "Lesson 11: YouTube Capstone"
-    },
-    {
-      question: "Your video generation took 3.5 hours (Lessons 4-8). Your YouTube upload took 70 minutes using skills you created. What does this 65% time reduction demonstrate?",
-      options: [
-        "YouTube is a faster platform than Gemini for content creation",
-        "Intelligence accumulation accelerates subsequent projects",
-        "Skills eliminate the need for specification in future projects",
-        "Second attempts at any task are naturally faster"
-      ],
-      correctOption: 1,
-      explanation: "Intelligence accumulation accelerates subsequent projects—the skills you created encode decisions and workflows that you don't need to rediscover. This is the core SDD-RI value proposition: build intelligence once, reuse across projects. Platform speed differences don't explain the reduction (both use Playwright MCP). Skills don't eliminate specification; they make it simpler. While practice helps, 65% reduction specifically comes from reusing encoded intelligence, not just familiarity.",
-      source: "Lesson 11: YouTube Capstone"
-    },
-    {
-      question: "The Constitution phase for your video project defines 'All videos must be MP4 format with H.264 codec.' During implementation, Gemini generates WebM format. What should happen?",
-      options: [
-        "Accept WebM since Gemini determined it's the best format",
-        "Update the Constitution to allow WebM format",
-        "Fail the quality gate and iterate until MP4 is achieved",
-        "Create exception documentation for this specific video"
-      ],
-      correctOption: 2,
-      explanation: "The Constitution defines non-negotiable standards. If Gemini outputs WebM, you fail the quality gate and iterate—either refine the prompt to request MP4 specifically, or add a conversion step. Accepting non-compliant output violates the cascade principle. Updating Constitution for one failure undermines its purpose as stable foundation. Exception documentation creates drift. The Constitution exists precisely to prevent accepting 'close enough' outputs that cause downstream problems (YouTube might reject WebM, or playback fails on certain devices).",
+      explanation: "The `/sp.constitution` command creates project-wide quality standards (formatting, style, citation rules, quality gates) that cascade through all phases. These standards are foundational and rarely change. `/sp.specify` defines WHAT you're building (scope, success criteria), not standards. `/sp.plan` documents HOW you'll build it (research approach, structure decisions). `/sp.clarify` refines existing specifications.",
       source: "Lesson 3: Constitution Phase"
     },
     {
-      question: "Playwright MCP session persistence saves your Google login. Why is this an architectural decision documented in an ADR rather than just implementation detail?",
+      question: "You're writing a research paper specification. Your first draft says 'Write a good paper about AI development.' During clarify phase, what makes this specification inadequate?",
       options: [
-        "Session persistence affects multiple features and has long-term implications",
-        "ADRs are required for all browser automation configurations",
-        "Session persistence is a security decision requiring formal approval",
-        "Implementation details must be documented somewhere for compliance"
-      ],
-      correctOption: 0,
-      explanation: "Session persistence affects multiple features (video generation, YouTube upload, any future Gemini automation) and has long-term implications (security considerations, session expiration handling, credential management). ADR-worthy decisions have broad impact and are costly to reverse. Not all browser configs need ADRs—only significant architectural choices. While security is relevant, the ADR documents the reasoning, not approval. Compliance isn't the driver; understanding future maintenance implications is.",
-      source: "Lesson 9: Designing Reusable Intelligence"
-    },
-    {
-      question: "Your video generation prompt includes 'Scene 1 (0-10s): Modern SaaS dashboard with clean UI.' This scene-by-scene structure was discovered during which phase?",
-      options: [
-        "Specification phase when defining success criteria",
-        "Clarification phase when resolving ambiguities",
-        "Planning phase when researching Gemini capabilities",
-        "Implementation phase when iterating on output quality"
-      ],
-      correctOption: 2,
-      explanation: "Scene-by-scene structure is discovered during planning when AI researches what prompt structures work best with Gemini. This is research-driven planning: you learn that Gemini responds better to explicit scene breakdowns than vague descriptions. Specification defines WHAT (45-60 second video showing sign-up flow), not HOW to prompt. Clarification refines existing spec content, not prompt engineering. Implementation might refine the structure, but the pattern is discovered in planning.",
-      source: "Lesson 6: Plan Phase"
-    },
-    {
-      question: "The quality gate 'Duration is 45-60 seconds' uses ffprobe for validation. What makes this gate effective compared to 'Video is the right length'?",
-      options: [
-        "ffprobe is a standard tool that all developers know",
-        "Technical tools are always more reliable than human judgment",
-        "The gate is measurable, automated, and produces pass/fail result",
-        "Duration checking requires specialized video processing software"
-      ],
-      correctOption: 2,
-      explanation: "Effective quality gates are measurable (45-60 seconds is precise), automated (ffprobe runs without manual inspection), and produce unambiguous pass/fail results. 'Right length' is subjective—one person's 'right' might be 30 seconds, another's 90 seconds. Tool familiarity and reliability aren't the key factors; measurability is. Not all duration checks require specialized software, but the principle—objective, automated verification—applies to any effective quality gate.",
-      source: "Lesson 8: Implement Phase"
-    },
-    {
-      question: "During brownfield adoption, you want to add Spec-Kit Plus to an existing project with its own folder structure. The safest approach is:",
-      options: [
-        "Reorganize existing folders to match Spec-Kit Plus conventions",
-        "Initialize Spec-Kit Plus alongside existing structure with clear boundaries",
-        "Create a new repository and migrate code after Spec-Kit Plus setup",
-        "Defer adoption until the project has fewer active changes"
+        "It doesn't specify which AI tools you'll use for research",
+        "It lacks measurable success criteria and explicit constraints",
+        "It focuses on AI development instead of a narrower topic",
+        "It doesn't include the table of contents structure"
       ],
       correctOption: 1,
-      explanation: "Initialize alongside existing structure with clear boundaries—this is the strangler fig pattern. Spec-Kit Plus can coexist with existing patterns; new features use SDD-RI while legacy code remains unchanged until touched. Reorganizing existing folders risks breaking working code. Migration to new repository is disruptive and unnecessary. Waiting for 'fewer changes' often means waiting forever. Brownfield adoption works precisely because it doesn't require wholesale changes.",
-      source: "Lesson 10: Brownfield Adoption"
-    },
-    {
-      question: "Your 'upload-youtube' skill includes a Persona: 'Content publisher focused on SEO optimization and audience engagement.' What purpose does this Persona serve?",
-      options: [
-        "Documents the intended user of the skill for future reference",
-        "Activates reasoning mode with domain-specific decision frameworks",
-        "Provides marketing description for skill catalog listings",
-        "Identifies which team member should use the skill"
-      ],
-      correctOption: 1,
-      explanation: "The Persona activates reasoning mode—when AI adopts this persona, it thinks about SEO, audience engagement, and publishing best practices rather than generic code generation. This is the P+Q+P framework: Persona provides cognitive stance, Questions guide analysis, Principles constrain decisions. The persona isn't documentation, marketing, or team assignment; it's an activation mechanism that transforms how AI reasons about the task.",
-      source: "Lesson 9: Designing Reusable Intelligence"
-    },
-    {
-      question: "The specification Non-Goals section states 'No post-generation video editing.' A stakeholder later asks for trimming capability. How should this be handled?",
-      options: [
-        "Add trimming to current specification since stakeholder requested it",
-        "Explain that Non-Goals explicitly excluded editing; create separate feature spec if needed",
-        "Implement trimming anyway since it's a minor enhancement",
-        "Remove the Non-Goals section to allow more flexibility"
-      ],
-      correctOption: 1,
-      explanation: "Non-Goals explicitly excluded editing. If trimming is now needed, it requires a separate feature specification with its own planning and implementation. Non-Goals prevent scope creep by making exclusions explicit—when stakeholders request excluded features, the answer is 'that's a new feature, not part of this scope.' Adding it silently violates the specification contract. Implementing 'minor' enhancements without specification is how scope creep happens. Removing Non-Goals defeats their purpose.",
+      explanation: "The specification lacks measurable success criteria ('good' is subjective) and constraints (page count, citation count, target audience, scope boundaries). A proper specification would say: 'Write 15-20 page research paper on AI development for computer science students, with 30+ citations, 5 main sections, demonstrating SDD-RI principles.' Tool choice belongs in planning, not specification. Topic scope might be refined but that's separate from measurability. Table of contents is an implementation detail, not specification.",
       source: "Lesson 4: Specify Phase"
     },
     {
-      question: "After completing Chapter 14, a student can explain 'why YouTube upload was faster than video generation.' This explanation demonstrates understanding of:",
+      question: "The `/sp.clarify` command identifies missing constraints in your specification. Your specification said 'Use academic sources' but didn't define academic. What should happen next?",
       options: [
-        "Technical differences between Gemini and YouTube APIs",
-        "How skills encode decisions that don't need to be remade",
-        "Practice effects where second attempts are naturally faster",
-        "Specification complexity differences between upload and generation"
+        "Add the missing definition directly to the specification",
+        "Accept the ambiguity since reviewers will understand 'academic'",
+        "Document the ambiguity and update specification with concrete examples",
+        "Skip clarification and proceed to planning phase"
       ],
-      correctOption: 1,
-      explanation: "The explanation demonstrates understanding of intelligence accumulation—skills encode decisions (workflow steps, quality gates, prompt patterns) that don't need to be remade. This is the core learning outcome: students experience acceleration and can articulate WHY it happened. Technical API differences don't explain 65% time reduction. Practice helps but doesn't account for the dramatic difference. Specification complexity differences are a symptom (skills make specs simpler), not the root cause.",
-      source: "Lesson 11: YouTube Capstone"
+      correctOption: 2,
+      explanation: "The `/sp.clarify` workflow surfaces ambiguities (like 'academic sources'), then you resolve them with concrete definitions in the updated specification. Clear definition might be: 'Academic sources include peer-reviewed journals, conference proceedings, university research publications, and industry white papers.' Ambiguities not resolved now will cause planning and implementation delays. Skipping clarification compounds problems.",
+      source: "Lesson 5: Clarify Phase"
     },
     {
-      question: "Throughout Chapter 14, you collaborated with AI to build a video generation system. What approach best supports effective AI collaboration in learning?",
+      question: "Which file contains the completed research paper specification after `/sp.specify` command?",
       options: [
-        "Detailed explanations of how AI processes information internally",
-        "Natural interaction where AI suggests approaches and adapts to your feedback",
-        "Studying theoretical frameworks before hands-on practice",
-        "Reading documentation about AI collaboration patterns"
+        "plan.md — documents your research and writing approach",
+        "spec.md — describes what you're building with success criteria",
+        "tasks.md — breaks work into atomic implementation units",
+        "constitution.md — defines project-wide quality standards"
       ],
       correctOption: 1,
-      explanation: "Effective AI collaboration happens through natural interaction—AI suggests approaches you might not know, adapts when you provide feedback, and together you converge on solutions. Students learn by DOING, not by studying theory about how collaboration works. Detailed AI explanations distract from the task. Theory-first delays hands-on learning. Reading documentation doesn't build practical skill. The best learning happens through action.",
-      source: "Chapter 14: Hands-On AI Collaboration"
+      explanation: "The `spec.md` file (specification) describes WHAT you're building: intent, success criteria, constraints, and non-goals. It answers 'What constitutes a completed research paper?' plan.md documents HOW you'll research and write. tasks.md breaks the work into atomic units. constitution.md defines project standards.",
+      source: "Lesson 4: Specify Phase"
     },
     {
-      question: "Horizontal Intelligence (ADRs, PHRs) and Vertical Intelligence (Skills, Subagents) serve different purposes. Which statement correctly distinguishes them?",
+      question: "Your plan.md describes research methodology: 'Review 40+ recent papers, organize by theme, synthesize findings.' When should this plan be completed?",
       options: [
-        "Horizontal captures decisions over time; Vertical delegates specialized tasks",
-        "Horizontal is for teams; Vertical is for individuals",
-        "Horizontal documents failures; Vertical documents successes",
-        "Horizontal is required; Vertical is optional"
+        "During the specification phase when defining success criteria",
+        "During the planning phase after understanding feasibility and approach",
+        "During the implementation phase when actually researching papers",
+        "During the clarification phase when resolving ambiguities"
+      ],
+      correctOption: 1,
+      explanation: "The planning phase generates plan.md after you've clarified the specification and researched feasible approaches. Planning discovers constraints (only 2 weeks available, access limitations) and designs the strategy to meet spec requirements within constraints. Specification doesn't include implementation approach. Clarification refines the spec, not the plan. Implementation executes the plan, not creates it.",
+      source: "Lesson 6: Plan Phase"
+    },
+    {
+      question: "Which phase outputs define your P+Q+P (Persona, Questions, Principles) framework for a reusable 'academic-research' skill?",
+      options: [
+        "Specification phase — the spec IS the persona",
+        "Planning phase — research approach informs persona design",
+        "Tasks phase — task descriptions encode the framework",
+        "Implementation phase — what you learn becomes the framework"
+      ],
+      correctOption: 1,
+      explanation: "The planning phase generates understanding of 'how to research academically' that informs P+Q+P design. After completing the research paper project, you extract this into a reusable skill: Persona ('Academic Researcher focused on rigor and synthesis'), Questions ('What themes emerge?', 'Which sources best support each claim?'), Principles ('Prioritize peer review', 'Synthesize across sources'). The spec defines WHAT, not HOW to think. Tasks execute, they don't define frameworks. Learning happens throughout but becomes crystallized into a skill after implementation.",
+      source: "Lesson 9: Designing Reusable Intelligence"
+    },
+    {
+      question: "During implementation, you discover that your literature search is taking 40% longer than planned. The checkpoint pattern says you should:",
+      options: [
+        "Accept the delay and continue without adjustment",
+        "Stop and restart the entire workflow with revised timeline",
+        "Document the delay and iterate with refined search strategy",
+        "Skip literature review to meet original timeline"
+      ],
+      correctOption: 2,
+      explanation: "The checkpoint pattern supports iteration: you have a working state (literature organized, some sources reviewed), so you iterate with refinement (more efficient search strategy, better database queries) while maintaining the checkpoint. This avoids losing completed work. Accepting arbitrary delays violates time constraints. Restarting wastes progress. Skipping deliverables violates the specification.",
+      source: "Lesson 8: Implement Phase"
+    },
+    {
+      question: "Your constitution defines 'All citations must follow APA 7th edition.' During writing, you use Chicago style for a quote. What should happen?",
+      options: [
+        "Accept Chicago style since it's also an academic standard",
+        "Update the constitution to allow multiple citation styles",
+        "Fail the quality gate and convert to APA 7th edition",
+        "Document the exception and continue writing"
+      ],
+      correctOption: 2,
+      explanation: "The Constitution defines non-negotiable standards. If your writing violates this, you fail the quality gate and correct it—convert Chicago citations to APA 7th edition. Constitution standards cascade to all phases and catch errors before final delivery. Accepting non-compliant output violates the contract. Updating Constitution for one exception undermines its role as stable foundation. Exception documentation creates drift.",
+      source: "Lesson 3: Constitution Phase"
+    },
+    {
+      question: "Arrange these Spec-Kit Plus phases in correct execution order: Tasks, Specify, Implement, Clarify, Plan",
+      options: [
+        "Specify → Clarify → Plan → Tasks → Implement",
+        "Plan → Specify → Clarify → Tasks → Implement",
+        "Clarify → Specify → Plan → Implement → Tasks",
+        "Specify → Plan → Clarify → Tasks → Implement"
       ],
       correctOption: 0,
-      explanation: "Horizontal Intelligence (ADRs, PHRs) captures decisions and reasoning over time—why we chose Playwright MCP, what prompts worked. Vertical Intelligence (Skills, Subagents) delegates specialized tasks through P+Q+P frameworks. Both serve different accumulation patterns: horizontal builds institutional memory; vertical builds executable expertise. The other options mischaracterize these concepts—both are for teams, both capture successes and failures, and both are integral to SDD-RI.",
-      source: "Lesson 1: Spec-Kit Plus Foundation"
+      explanation: "The standard SDD-RI workflow is: 1) Specify (define what you're building), 2) Clarify (resolve ambiguities in the spec), 3) Plan (research approach and design strategy), 4) Tasks (break work into atomic units), 5) Implement (execute tasks). This sequence is intentional: specification must be clear before planning, planning must be solid before tasking, tasks must be well-defined before implementation.",
+      source: "Chapter 14: Foundation and Integration"
     },
     {
-      question: "Your video generation task has checkpoint after Phase 2 (session setup) and Phase 4 (validation). Phase 3 (generation) fails midway. What does the checkpoint pattern enable?",
+      question: "Which command-to-purpose matching is correct?",
       options: [
-        "Automatic rollback to the beginning of the project",
-        "Resumption from Phase 2 checkpoint without repeating session setup",
-        "Skip to Phase 4 validation despite incomplete generation",
-        "Manual review of all phases before any retry attempt"
+        "/sp.specify identifies missing constraints and edge cases",
+        "/sp.clarify breaks work into atomic checkpoint-driven units",
+        "/sp.plan researches feasibility and generates implementation strategy",
+        "/sp.tasks generates project-wide quality standards"
+      ],
+      correctOption: 2,
+      explanation: "`/sp.plan` researches approach feasibility and generates the implementation strategy. `/sp.specify` writes what you're building. `/sp.clarify` identifies missing constraints. `/sp.tasks` breaks work into atomic units. `/sp.constitution` (not listed) generates standards.",
+      source: "Lessons 3-8: Spec-Kit Plus Phases"
+    },
+    {
+      question: "Your research paper specification includes success criteria: 'Minimum 30 citations' and 'Cover 5 major themes.' What makes these effective success criteria?",
+      options: [
+        "They're ambitious goals that stretch your research effort",
+        "They're measurable, objective, and provide clear pass/fail validation",
+        "They're derived from academic publishing best practices",
+        "They're negotiable based on research progress"
       ],
       correctOption: 1,
-      explanation: "Checkpoints enable resumption from stable states—you don't repeat Phase 1-2 (setup and session already work), you resume from Phase 2 checkpoint and retry Phase 3. This is the value of granular checkpoints: minimize work lost on failure. Automatic rollback to beginning wastes completed work. Skipping to validation makes no sense—there's nothing to validate. Manual review of all phases is unnecessary overhead when you know exactly where failure occurred.",
+      explanation: "Effective success criteria are measurable ('30 citations' is countable, '5 themes' is verifiable) and objective (no subjective judgment needed). They enable automated quality gates: citation counter validates 30+, theme reviewer validates 5 major themes. Ambitious goals are motivating but not the defining feature of good criteria. Publishing standards might inform criteria but aren't the core principle. Success criteria must be non-negotiable once specified; renegotiation destroys the contract.",
+      source: "Lesson 4: Specify Phase"
+    },
+    {
+      question: "After completing your research paper project, you create an 'academic-research' skill. What does the skill's Persona component primarily activate?",
+      options: [
+        "User profiles for which teams will use the skill",
+        "AI reasoning mode with domain-specific decision frameworks",
+        "Documentation for skill catalog listings",
+        "Quality standards for skill implementation"
+      ],
+      correctOption: 1,
+      explanation: "The Persona (e.g., 'Academic Researcher focused on synthesis and rigor') activates reasoning mode—when AI adopts this persona, it thinks about academic rigor, synthesis, and evidence-based claims rather than generic information gathering. Persona is a cognitive activation mechanism, not user documentation or team assignment. Quality standards belong in the skill's Principles, not Persona.",
+      source: "Lesson 9: Designing Reusable Intelligence"
+    },
+    {
+      question: "Your tasks.md includes: 'Research foundational papers on AI development.' Why is this description useful for implementation?",
+      options: [
+        "It's a detailed step-by-step instruction that AI can execute directly",
+        "It captures sufficient intent and context for AI and you to refine approach collaboratively",
+        "It specifies exact databases and search terms to use",
+        "It guarantees consistent results across multiple implementations"
+      ],
+      correctOption: 1,
+      explanation: "Good task descriptions capture sufficient intent ('foundational papers on AI development') and context (from planning decisions about what 'foundational' means, which subtopics matter) to guide implementation without being prescriptive. They enable collaborative refinement: AI suggests databases and search terms, you confirm they fit the project. Over-specifying (option 3) creates brittle tasks; under-specifying creates ambiguity. The task doesn't guarantee results—it provides direction for intelligent execution.",
+      source: "Lesson 7: Tasks Phase"
+    },
+    {
+      question: "The `/sp.clarify` command surfaces the ambiguity: 'recent papers' in your spec. What does 'recent' mean for AI research papers?",
+      options: [
+        "Papers published within the last 6 months",
+        "Papers that reference current LLM models",
+        "Papers you haven't read yet",
+        "Papers your clarification output must define specifically"
+      ],
+      correctOption: 3,
+      explanation: "The clarification phase surfaces the ambiguity ('recent' is undefined) and requires you to define it explicitly in the updated specification. Your definition might be: 'Papers published between 2022-2025 that discuss transformer models or large language models.' This becomes non-negotiable for implementation. Options 1-3 are example definitions, not the principle—the principle is that clarification makes you define ambiguities.",
+      source: "Lesson 5: Clarify Phase"
+    },
+    {
+      question: "You've written your specification and completed clarification. Your stakeholder asks for new requirements: 'Add comparative analysis of AI frameworks.' How should this be handled?",
+      options: [
+        "Add it to the current specification since clarification is complete",
+        "Create a separate feature specification since current scope is already defined",
+        "Include it as an optional section to maintain flexibility",
+        "Document it as a future enhancement and revisit after current paper is complete"
+      ],
+      correctOption: 1,
+      explanation: "New requirements after specification are handled through separate feature specifications—not by expanding current scope. This prevents scope creep and maintains specification integrity. If comparative analysis is critical, create its own spec with its own clarification and planning. Adding it silently violates the specification contract. Optional sections and future enhancement documentation delay decisions that should be made explicitly. Clear scope boundaries enable focused delivery.",
+      source: "Lesson 4: Specify Phase"
+    },
+    {
+      question: "During implementation, you write a section synthesizing three research papers. This section took longer than planned because you discovered additional nuances. The checkpoint pattern enables:",
+      options: [
+        "Automatic completion detection so you can move forward",
+        "Resumption from your last stable state with refined approach",
+        "Documentation of time estimate errors for future projects",
+        "Skipping remaining sections to meet original timeline"
+      ],
+      correctOption: 1,
+      explanation: "Checkpoints enable resumption from stable states with iterative refinement. You have a working synthesis (checkpoint), so you iterate with deeper nuance (refined approach) rather than starting over. This minimizes rework while improving quality. Automatic completion detection isn't what checkpoints do. Time tracking is secondary to capability. Skipping sections violates specification.",
       source: "Lesson 8: Implement Phase"
+    },
+    {
+      question: "What is the primary advantage of building reusable intelligence (skills) from your research paper project?",
+      options: [
+        "It documents what you learned for teaching purposes",
+        "It enables future research projects to reuse decision frameworks without rediscovering them",
+        "It creates portfolio items for job applications",
+        "It ensures future papers are identical to the current one"
+      ],
+      correctOption: 1,
+      explanation: "Reusable intelligence through skills encodes decision frameworks (how to identify foundational vs. current papers, synthesis patterns, quality validation approaches) that apply across future research projects. This is the core SDD-RI value: accumulate intelligence once, apply across projects. Skills accelerate subsequent projects because decisions are pre-made. Documentation is a side effect, not the purpose. Portfolio building is secondary. Skills don't enforce identical approaches; they provide frameworks that adapt to new contexts.",
+      source: "Lesson 9: Designing Reusable Intelligence"
+    },
+    {
+      question: "Your specification's Non-Goals section states 'No original primary research.' A team member asks to add conducting interviews with AI researchers. What should happen?",
+      options: [
+        "Add interviews to the current specification as a significant enhancement",
+        "Explain that Non-Goals explicitly excluded primary research; create separate feature spec if needed",
+        "Include interviews only if time permits after current scope is complete",
+        "Remove the Non-Goals section to allow flexibility"
+      ],
+      correctOption: 1,
+      explanation: "Non-Goals explicitly exclude primary research. New requests for excluded work require separate feature specifications with their own planning and implementation. Non-Goals prevent scope creep by making exclusions explicit. When stakeholders request excluded features, the answer is 'that's a new feature, not part of this scope.' Including conditionally ('if time permits') creates ambiguity. Removing Non-Goals defeats their purpose.",
+      source: "Lesson 4: Specify Phase"
+    },
+    {
+      question: "A colleague is starting their own research paper project. They ask: 'Should I use the 'academic-research' skill you created?' What guidance best supports their project success?",
+      options: [
+        "Use it directly since you built it to handle all research paper scenarios",
+        "Use it as a decision framework to guide your own planning, then adapt for your specific project",
+        "Skip the skill and follow the original workflow from Chapter 14 exactly",
+        "Use it if you understand the Persona, Questions, and Principles driving it"
+      ],
+      correctOption: 3,
+      explanation: "Skills are reusable decision frameworks, not rigid templates. Your colleague should use the skill if they understand the underlying Persona (what reasoning mode it activates), Questions (what decisions it guides), and Principles (what constraints it enforces). This understanding enables adaptation to their specific project. Option 2 is close but emphasizes adaptation separately from skill use. Direct reuse without understanding (option 1) violates the intelligence reuse principle. Skipping reusable intelligence wastes accumulated knowledge.",
+      source: "Lesson 9: Designing Reusable Intelligence"
+    },
+    {
+      question: "After completing your research paper project (specification through implementation), you measure success. What demonstrates effective Spec-Kit Plus execution?",
+      options: [
+        "Your paper is the highest quality paper ever written",
+        "Your specification criteria were met, and you understand the decision frameworks for reuse",
+        "You completed the project faster than traditional writing approaches",
+        "You used all six phases without skipping any steps"
+      ],
+      correctOption: 1,
+      explanation: "Effective execution means specification criteria were met (30 citations, 5 themes, APA formatting, etc.) AND you captured reusable intelligence (decision frameworks) for future projects. Quality is relative (option 1 is unprovable). Speed varies by project (option 3). Using all phases is means, not ends (option 4). The outcome is: delivered specification + accumulated intelligence.",
+      source: "Chapter 14: Integration and Learning Outcomes"
     }
   ]}
   questionsPerBatch={18}
