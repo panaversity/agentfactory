@@ -3,11 +3,16 @@ title: "What Is an AI Agent?"
 sidebar_position: 1
 description: "Define AI agents using Google's authoritative framework, understand the 5-Level Taxonomy, and discover the paradigm shift from bricklayer to director."
 proficiency_level: B1
-estimated_time: 35
+cognitive_load:
+  new_concepts: 9
+  estimated_difficulty: B1
+estimated_time: 45 minutes
 learning_objectives:
-  - "Define AI agents using the paper's definition and explain its components"
-  - "Classify systems (LLMs, tools, agents) using the 5-Level Taxonomy (Level 0-4)"
-  - "Articulate the paradigm shift from 'bricklayer' (traditional development) to 'director' (agent development)"
+  - "Explain what distinguishes an AI agent from a chatbot using the paper's definition"
+  - "Classify systems using the 5-Level Taxonomy (Level 0-4)"
+  - "Articulate the paradigm shift from developer as 'bricklayer' to 'director'"
+  - "Describe how Claude Code exemplifies Level 2-3 agent patterns"
+  - "Understand why agent development is becoming a high-value skill"
 skills:
   agent_terminology:
     proficiency: B1
@@ -17,272 +22,329 @@ generated_by: content-implementer v1.0.0
 source_spec: specs/038-chapter-33-intro-ai-agents/spec.md
 created: 2025-11-27
 last_modified: 2025-11-27
+git_author: Claude Code
+workflow: /sp.implement
 version: 1.0.0
 ---
 
 # What Is an AI Agent?
 
-You've spent the last five months becoming proficient with Claude Code—learning prompts, specifications, Python, testing, and how to collaborate with AI on complex projects. Claude Code is powerful because it reasons about problems, suggests solutions, and refines work based on your feedback. But Claude Code is fundamentally a *collaborator*—it responds to your requests, it doesn't autonomously decide what to do next.
+You've been using AI agents without fully knowing it. Claude Code operates autonomously—breaking complex problems into steps, using tools, learning from failures, and adapting to constraints. You've developed intuitions about how agents behave through months of interaction. Now you'll understand the architecture beneath that behavior.
 
-Starting in 2025, AI development is shifting. The systems being built are moving from *assistant* (responds to requests) to *agent* (perceives situations, makes decisions, takes action independently). This shift changes what you'll build, how teams coordinate, and what skills are most valuable.
+This lesson defines what an AI agent actually is, distinguishes it from tools you're already familiar with, and begins building the mental model you'll use for the rest of this chapter. By the end, you'll understand why AI agents represent a fundamental shift in how we think about software development—and why that shift matters for your career.
 
-This lesson establishes the mental models you need to understand that shift. By the end, you'll be able to define what makes a system an agent, classify systems using a clear taxonomy, and understand why agent development is becoming a core skill.
+## Why Agents Matter Now (The Numbers Tell the Story)
 
-## Why Understanding Agents Matters Now
+The scale of AI adoption has reached an inflection point. These aren't projections; they describe shifts already underway:
 
-The statistics tell a story about where the industry is moving:
+**User adoption and economic impact**:
+- **800+ million people** use ChatGPT weekly (OpenAI, 2025)
+- **90%+ of software developers** use AI coding tools regularly (GitHub Copilot survey 2024; Stack Overflow 2024)
+- **44% of US work hours** could potentially involve AI agent task automation by 2030 (McKinsey, 2024)
+- **$2.9 trillion in economic value potential** from human-agent partnerships by 2030 (McKinsey, 2024)
 
-**Today's Landscape**:
-- **800+ million people** use ChatGPT weekly, yet the vast majority interact with it as a chatbot (query-response, no autonomy) [OpenAI, 2025]
-- **90%+ of developers** now use AI coding assistants daily, but mostly as code generation tools (describe problem, get code) [GitHub Copilot survey, 2024]
+**Skill market dynamics**:
+- **AI fluency demand has grown 7x faster** than any other professional skill in the last two years (LinkedIn Skills Index, 2024)
 
-**The Emerging Frontier**:
-- **44% of US work hours** could potentially involve tasks suitable for AI agent automation by 2030 (McKinsey)—work that requires autonomous reasoning and decision-making, not just generation
-- **$2.9 trillion economic value potential** from agent automation by 2030 (McKinsey)
-- **7x growth** in AI fluency demand (fastest-growing skill category in the labor market)
+What these numbers reveal: AI is transitioning from "tool you query" to "autonomous system you direct." That's not a semantic distinction. It changes what's possible, what's profitable, and which skills companies hire for.
 
-The gap between "AI assists humans" (current state) and "AI acts autonomously in defined domains" (emerging state) is where new value concentrates. Developers who learn agent patterns in 2025 will build systems in 2026-2027 that seem impossible today.
+Most developers today can use ChatGPT. Far fewer understand how to design, build, and operate systems where AI takes autonomous action safely and effectively. That gap is where opportunity exists.
 
-## What Is an AI Agent?
+## The Definition: What Makes Something an Agent
 
-The clearest definition comes from Google's "Introduction to Agents" whitepaper (November 2025):
+The Google "Introduction to Agents" whitepaper (November 2025) provides the definitive working definition:
 
-> "The combination of models, tools, an orchestration layer, and runtime services which uses the LM in a loop to accomplish a goal"
+> **An AI agent is the combination of models, tools, an orchestration layer, and runtime services which uses the LM in a loop to accomplish a goal.**
 
-This definition contains the essential components. Let's unpack each:
+Let's unpack this because it's doing precise work:
 
-**Model** ("Brain"): The reasoning engine—typically an LLM like Claude, GPT-4, or Gemini—that processes information, understands context, and makes decisions about next steps.
+**"the combination of models, tools, an orchestration layer, and runtime services"** — An agent isn't just software; it's four integrated components working together. You can't have an agent with just a model (that's a chatbot). You need tools (to act), orchestration (to think strategically), and deployment (to run reliably).
 
-**Tools** ("Hands"): Mechanisms that connect the model to the outside world. These could be APIs (fetch current weather), databases (search documents), code execution environments, or functions that perform specific actions. Without tools, the model can only reason; it can't act.
+**"uses the LM in a loop"** — The core pattern is iterative: the model reasons, takes action, observes the result, and reasons again. Not a single query-response. A cycle.
 
-**Orchestration Layer** ("Nervous System"): The governing logic that coordinates the reasoning process. This includes planning strategies (breaking complex problems into steps), memory management (both short-term context and long-term knowledge), and decision-making about when to think longer, call a tool, or ask a human. The orchestration layer is what distinguishes agents from simple tool-calling LLMs.
+**"to accomplish a goal"** — This is the output that matters. An agent succeeds when it achieves the goal, not when it produces a single response.
 
-**Runtime Services** ("Body"): The deployment infrastructure that makes the agent accessible—hosting, APIs, monitoring, logging. This is what makes the agent operational and observable.
+This definition separates agents from everything you've used before:
 
-**The Loop**: What ties everything together is the *loop*. The model doesn't make one decision and stop. It reasons, takes action, observes the result, and reasons again. This feedback loop is what enables agents to handle complex, multi-step problems that would be difficult for a single LLM call.
+- **ChatGPT** (without plugins): A model alone. No tools. No loop. Not an agent.
+- **ChatGPT with plugins**: A model + tools. Better, but the loop is still driven by humans. Borderline agent.
+- **Claude Code**: A model + tools + orchestration that reasons about how to use them + a deployment layer serving you. This is a full agent.
 
-**Example**: Think about Claude Code analyzing your codebase. It reads files, identifies issues, proposes changes, observes your feedback, and refines its suggestions. That's not a single question-answer cycle—it's a loop. The loop is what makes it feel intelligent.
+Claude Code demonstrates agent patterns you've observed directly. When you ask it to "refactor this code and verify it works," it:
+1. Reads the code (perceives context)
+2. Reasons about refactoring approach (thinks)
+3. Writes new code (acts)
+4. Runs tests (observes)
+5. Reflects on results and adjusts if needed (loops)
+
+That loop—reason, act, observe, refine—is the core agentic pattern.
 
 ---
 
-## The 5-Level Taxonomy: From LLM to Autonomous System
+## The 5-Level Taxonomy: A Classification System
 
-Not every AI system is an agent, and not all agents are equally autonomous. The paper provides a clear taxonomy for classifying systems based on their capabilities:
+Not all "agents" are equal. Some are sophisticated; some are barely agents at all. The paper defines a 5-level taxonomy to classify agentic systems by capability:
 
 ### Level 0: Core Reasoning System
 
-A pure LLM with no tools, no planning, no loop. Users ask questions; the LLM generates responses. This includes ChatGPT in its simplest form—powerful for conversation and explanation, but unable to take action in the world or access real-time information.
+**What it is**: A language model alone. No tools, no orchestration, no goal-oriented behavior.
 
-**Capability**: Generation only (no action)
+**Example**: ChatGPT in basic mode, Claude in the browser without extensions, any LLM responding to a single prompt.
 
-**Example**: ChatGPT answering "Explain what machine learning is"
+**Capability**: Can reason about problems, but cannot act on the world or iterate. When the response is generated, it's done.
 
----
+**Level of autonomy**: None. Each interaction is isolated.
 
 ### Level 1: Connected Problem-Solver
 
-An LLM equipped with tools for accessing real-time information and taking basic actions. The model can call functions, query APIs, or execute code, but the reasoning is relatively straightforward—typically a single reasoning pass with tool calls.
+**What it is**: An LLM connected to tools for real-time information access. The model can call tools and incorporate results, but the overall strategy is still driven by the human.
 
-**Capability**: Access external data and execute basic actions based on a single reasoning step
+**Example**: ChatGPT with web search enabled, Claude with access to APIs, a customer service chatbot that can look up account status.
 
-**Example**: ChatGPT with plugins that can check current weather, look up stock prices, or search the web. Claude Code with the ability to run test suites and observe results.
+**Capability**: Can gather live information and use it to answer questions. Can iterate once (search, then respond with results), but the human still drives what happens next.
 
----
+**Level of autonomy**: Low. Humans initiate each action.
+
+**Real-world scenario**: You ask Claude Code "What's the latest version of Node.js?" It calls a tool to check npm registries and reports back. Useful, but you still decide what to do with that information.
 
 ### Level 2: Strategic Problem-Solver
 
-An LLM with context engineering—the ability to actively select, package, and manage the most relevant information for each step of its plan. This level includes multi-step planning, where the agent reasons about what it needs to accomplish, breaks down the problem, and executes steps sequentially while adapting based on observations.
+**What it is**: An LLM with tools plus context engineering—the ability to actively select, package, and manage the most relevant information for each step of its plan. The system can reason about multi-step problems and manage its own planning.
 
-**Capability**: Multi-step planning with context optimization
+**Example**: Claude Code working on a multi-file refactor where it decides which files to read, in what order, what the dependencies are, and how to validate the changes. A research assistant that plans what documents to search, how to synthesize findings, and what to verify.
 
-**Example**: Claude Code executing a full development workflow—analyzing requirements, designing architecture, implementing in stages, testing, and refining based on feedback. This is what "agentic capabilities" typically means in practice.
+**Capability**: Can break complex problems into steps, manage context strategically, and execute plans autonomously. Still requires human initiation, but the system controls the problem-solving approach.
 
----
+**Level of autonomy**: Medium. The human sets the goal; the system chooses the strategy.
+
+**Real-world scenario**: You tell Claude Code "Refactor this codebase for better error handling." It independently:
+- Reads multiple files
+- Identifies patterns
+- Plans which changes to make first
+- Validates each change
+- Reports back with reasoning
+
+You didn't specify the steps. The system generated them.
 
 ### Level 3: Collaborative Multi-Agent System
 
-Multiple specialized agents working together. One agent might handle data retrieval, another reasoning about implications, a third generating responses. A coordinator agent (or orchestration logic) routes problems to the right specialist and synthesizes their work.
+**What it is**: Multiple specialized agents, each with distinct roles, working together. A coordinator agent might route tasks to specialists (a code agent, a documentation agent, a test agent). Each agent has its own tools and reasoning.
 
-**Capability**: Decompose complex problems into specialist domains and coordinate solutions
+**Example**: A software development team where one agent specializes in writing code, another in writing tests, another in documentation. The coordinator agent decides who works on what and synthesizes results.
 
-**Example**: A system where one agent researches customer needs, another proposes technical solutions, a third evaluates feasibility, and a coordinator synthesizes recommendations.
+**Capability**: Can handle complex problems by composing specialized perspectives. Can parallelize work, bring expertise to bear from multiple domains.
 
----
+**Level of autonomy**: High. The system manages team coordination without human intervention.
+
+**Real-world scenario**: You ask a multi-agent system to "Implement feature X with full test coverage and documentation." A coordinator agent distributes work: the code agent implements, the test agent writes comprehensive tests, the docs agent updates the handbook. Each agent reviews the others' work. The coordinator assembles the final output.
 
 ### Level 4: Self-Evolving System
 
-An agent that can create new tools, new sub-agents, or refine its own processes based on experience. This is the frontier—systems that don't just execute predefined workflows but actively design and improve their own capabilities.
+**What it is**: An agent system that can create new tools or spawn new agents to accomplish goals. Not just using existing tools, but designing new ones as problems demand.
 
-**Capability**: Autonomously create new tools or agents to handle new problems
+**Example**: An agent that, when faced with a repeated task, creates a new tool to automate it. An agent that spawns a specialized subagent when it recognizes a novel problem type. A system that improves itself by building new capabilities.
 
-**Example**: An agent that encounters a recurring problem, recognizes it needs a specialized capability, creates a tool or sub-agent to handle it, and integrates that new capability into its future workflows.
+**Capability**: Can adapt to unprecedented problems by creating new solutions autonomously. Maximum flexibility and capability growth.
+
+**Level of autonomy**: Highest. The system evolves its own capabilities.
+
+**Real-world scenario**: A data analysis agent encounters a novel pattern it hasn't seen before. Rather than asking for human help, it creates a specialized analyzer for that pattern type, adds it to its toolkit, and uses it to solve the current problem—all autonomously.
 
 ---
 
-## Where Do You Fit Into This Taxonomy?
+## The Taxonomy in Action: What Claude Code Actually Is
 
-You've been working with **Level 2** systems. Claude Code demonstrates multi-step planning (analyze the problem, design a solution, implement in stages, test, refine). It manages context—deciding what information is relevant at each step. It iterates based on your feedback. These are Level 2 capabilities.
+You've been using Claude Code, which is a Level 2-3 agent, depending on the task. This is worth understanding because it makes concrete what these levels mean.
 
-When you think about agent development, you're not starting from scratch. You already understand how LLMs reason, how to use tools (APIs, code execution), and how to think about specifications (from Part 4). The shift is understanding how to design systems that operate in this multi-step, context-aware, feedback-loop model—and eventually, how to orchestrate multiple agents (Level 3) or create self-improving systems (Level 4).
+**When Claude Code is Level 2:**
+
+You ask: "Debug this production error and tell me what's happening."
+
+Claude Code:
+1. Asks clarifying questions to understand context (scans the scene)
+2. Requests error logs, stack traces, relevant code sections (context engineering)
+3. Reasons through the problem step by step (plans)
+4. Writes diagnostic code or suggests fixes (acts)
+5. Tests the solution (observes)
+6. Refines if needed (iterates)
+
+The system controlled the strategy. You didn't tell it to ask for logs first, then read the code, then test. It reasoned that sequence autonomously.
+
+**When Claude Code exhibits Level 3 characteristics:**
+
+You ask: "Audit this codebase for security, performance, and correctness."
+
+Behind the scenes:
+- A "security reviewer" examines authentication, data handling, secrets management
+- A "performance analyst" profiles bottlenecks, identifies n+1 queries, checks memory usage
+- A "code quality agent" checks style, documentation, test coverage
+
+These agents coordinate, share findings, and synthesize a unified report. You get specialist expertise composed together.
+
+This is why Claude Code feels intelligent in ways that ChatGPT doesn't. It's not just because the model is better. It's because the *architecture* is agentic—reasoning about tools, managing its own strategy, coordinating multiple specialized perspectives.
 
 ## The Paradigm Shift: Director vs Bricklayer
 
-The emergence of agents represents a fundamental shift in how developers think about building systems. The paper articulates this shift using a powerful metaphor:
+The Google whitepaper identifies a profound change in how developers work with AI:
 
-> "The traditional developer acts as a 'bricklayer,' precisely defining every logical step. The agent developer is more like a director—setting the scene, selecting the cast, providing context."
+> **The traditional developer acts as a "bricklayer," precisely defining every logical step. The agent-era developer is more like a "director"—setting the scene, selecting the cast, providing guidance and constraints, and letting the agent figure out how to accomplish the vision.**
 
-**Traditional Development (Bricklayer)**:
-- You write code that controls *every* decision: if X, then Y; if Z, then A
-- You specify the exact sequence of operations
-- You handle every edge case explicitly
-- The system does exactly what you programmed, nothing more
+This shift has real implications for your role and career trajectory.
 
-**Agent Development (Director)**:
-- You specify the *goal* and provide context
-- The agent reasons about how to achieve that goal
-- You write specifications and provide examples of good outcomes
-- The agent adapts to situations you didn't explicitly program for
+### The Bricklayer Approach (Pre-Agent Era)
 
-**Practical Example**:
+You specify every step:
+- Define the algorithm precisely
+- Write code implementing each logical branch
+- Anticipate edge cases and handle them explicitly
+- Control exactly what happens when
 
-**Bricklayer approach** (traditional): Write code that authenticates a user, checks permissions, fetches data, transforms it, validates it, formats it, and returns it. Every step is explicit control flow.
+The developer is the executor of a predetermined plan. Quality depends on how thoroughly you anticipated problems.
 
-**Director approach** (agent): Provide the agent with access to authentication tools, permission systems, data sources, and validation rules. Tell the agent: "A user has requested customer data. Verify they're authorized, fetch what they're allowed to see, and present it clearly." The agent reasons about the steps, adapts if permissions are denied, retries failed data fetches, and decides on the best presentation format.
+### The Director Approach (Agent Era)
 
-This shift has profound implications:
+You specify the intent and constraints:
+- Define the goal clearly: "Refactor this code for readability"
+- Set constraints and guardrails: "Don't change API signatures. Maintain backward compatibility."
+- Provide context: "This module is used by 50+ other services"
+- Let the agent reason about *how* to accomplish it
 
-**For Building**: You move from specifying *implementation* to specifying *intent*. Instead of "call function A, then B, then C," you're writing specifications that describe what success looks like and letting the agent figure out how.
+The developer becomes the architect of a system that reasons autonomously. Quality depends on how well you constrain and guide the reasoning.
 
-**For Reliability**: You move from "did I handle every case?" to "did I provide enough context and feedback for the agent to handle cases well?" Agent systems use evaluation frameworks (testing against rubrics) and feedback loops to improve.
+**In practice**, you shift from:
+- "Write this validation function with these exact checks" → "Validate user input securely; prevent injection attacks and validate type constraints"
+- "Read file X, parse format Y, transform to schema Z" → "Extract structured data from these documents; ensure data quality matches these criteria"
+- "Call API A, retry on timeout up to 3 times, handle these 4 error codes" → "Reliably fetch the required data, handling network issues gracefully"
 
-**For Complexity**: You can tackle problems that would require enormous amounts of control-flow code. A reservation system with an agent might adapt to cancellations, suggest alternatives, and handle disputes—without you programming every scenario.
+The agent fills in the concrete implementation details.
+
+**Why this matters**: Director-level thinking is harder than bricklayer thinking. It requires understanding intent deeply, anticipating failure modes without prescribing solutions, and trusting a system to reason toward your goal. But it's more powerful—because the agent can adapt in ways you didn't anticipate, find solutions you wouldn't have thought of, and handle edge cases you never foresaw.
 
 ---
 
-## Career Implications: Why This Matters to You
+## Career Implications: Why This Matters Now
 
-The paradigm shift has real consequences for employment and career development.
+The paradigm shift from "bricklayer" to "director" has three career implications:
 
-**The transformation isn't replacement; it's transformation**. Jobs don't disappear; workflows change. A customer service agent might handle routine inquiries, but it needs human "directors" to:
-- Design the agent (what it should do, what it shouldn't)
-- Evaluate its performance (does it satisfy customers?)
-- Handle escalations (when the agent encounters cases it shouldn't decide alone)
-- Improve it iteratively (feedback loops, new capabilities)
+**1. Skill scarcity at the top**
 
-**The skill premium is accelerating**. AI fluency is now the fastest-growing skill category. Within that, *agent design and orchestration* is emerging as the highest-value specialization. Companies building agent systems in 2025 will have severe talent shortages; developers who understand agent patterns will be in extraordinary demand.
+Today, most developers can use Claude Code or ChatGPT to write code or get help debugging. Far fewer can:
+- Design agent systems that work reliably
+- Specify agent behavior precisely enough to work
+- Evaluate and debug agent reasoning
+- Decide when to use agents vs. traditional code
 
-**The mental models matter more than syntax**. You don't need to master every agent SDK (OpenAI, Google, Anthropic, LangChain). The frameworks change. But the mental models—how to think about agent goals, context management, evaluation, failure modes—transfer across all of them. This lesson teaches the mental models; Chapters 34-36 teach the SDKs.
+This scarcity makes the skill valuable. Companies will pay for developers who can build agent systems, not just use them.
+
+**2. The value of specification skills increases dramatically**
+
+In the bricklayer era, detailed specifications were nice-to-have. In the director era, they're essential. A vague goal creates an unreliable agent. A precise specification with clear success criteria creates a predictable system.
+
+You've already learned SDD-RI (Specification-Driven Development with Reusable Intelligence) in Part 4. Those skills—writing clear specifications, defining success criteria, thinking about design trade-offs—become central to agent development.
+
+**3. Workflow transformation, not replacement**
+
+McKinsey research on "Agents, robots, and us: Skill partnerships in the age of AI" shows that agent adoption transforms workflows rather than replacing workers. A customer service representative still exists, but now works with an agent handling routine inquiries, escalating complex cases, and synthesizing information. A developer still exists, but now works with an agent that writes routine functions, runs tests, and suggests improvements.
+
+The job changes. The need for humans doesn't disappear. But the humans who thrive are those who can work *with* agents—thinking at the director level, not the bricklayer level.
 
 ---
 
 ## Try With AI
 
-You now understand the 5-Level Taxonomy. Let's use it to classify real systems.
+Open Claude, ChatGPT, or Gemini and explore how these systems are already agents.
 
-**Setup**: Open ChatGPT (chat.openai.com) or Claude (claude.ai). You'll classify several AI systems using the framework from this lesson.
+**Setup**: You'll classify real-world AI systems using the 5-Level Taxonomy. For each scenario, decide: What level is this system? Why?
 
-**Classification Exercise 1: Claude Code**
+**Scenario 1: The Chatbot**
 
-Using the 5-Level Taxonomy, classify Claude Code.
+You're using a customer service chatbot on a bank's website. You ask: "What's my current account balance?"
 
-**Prompt**:
-```
-I'm learning about AI agent classifications using this taxonomy:
-- Level 0: LLM alone, no tools
-- Level 1: LLM + tools for real-time data
-- Level 2: Multi-step planning with context optimization
-- Level 3: Multiple specialized agents coordinated
-- Level 4: Self-evolving systems that create new tools
+The chatbot responds: "I can help with that, but I'll need to verify your identity first. Please provide your account number."
 
-Claude Code is an AI development assistant that can:
-1. Analyze codebases and understand requirements
-2. Write code across multiple files
-3. Run tests and observe results
-4. Refactor based on feedback
-5. Adapt its approach when tests fail
+**Classify this**:
+- Is this a Level 0, 1, 2, 3, or 4 system?
+- What tools does it have access to?
+- Where is the human's role in the decision-making?
+- Ask your AI: "Explain why this is a Level 1 (or whichever you chose) system, not a higher level."
 
-What level of the taxonomy does Claude Code fit, and why?
-```
-
-**Expected Outcome**: The AI should recognize Claude Code as **Level 2**. Here's why: It performs multi-step planning (analyze → design → implement → test → refine). It manages context—deciding what code to look at and what solutions are appropriate. It adapts based on feedback (test failures, your corrections). These are Level 2 capabilities.
+**Expected outcome**: The system is likely Level 1. It has tools (identity verification systems, account databases) but limited autonomy. The human drives the conversation flow.
 
 ---
 
-**Classification Exercise 2: ChatGPT vs ChatGPT with Browsing**
+**Scenario 2: The Research Agent**
 
-Understand the difference between abstraction levels.
+Imagine a system designed to answer: "Summarize the latest research on AI agent safety, highlighting disagreements between researchers."
 
-**Prompt**:
-```
-Compare these two scenarios using the 5-Level Taxonomy:
+The system (a real agent) would:
+1. Search for recent papers on agent safety
+2. Read and analyze multiple perspectives
+3. Identify points of agreement and disagreement
+4. Synthesize a coherent summary
 
-Scenario A: ChatGPT (standard) answering "What's the stock price of Apple?"
-Scenario B: ChatGPT with web browsing enabled, answering the same question
+**Classify this**:
+- Is this Level 1, 2, 3, or 4?
+- What makes it more advanced than the chatbot?
+- Where does context engineering come into play?
+- Ask your AI: "Walk me through the reasoning steps this system would take, showing where multi-step planning and context management happen."
 
-How would you classify each scenario, and why does the ability to browse move it to a different level?
-```
-
-**Expected Outcome**: The AI should explain:
-- **Scenario A** (no browsing) = Level 0 (generates response based on training data, which is outdated)
-- **Scenario B** (with browsing) = Level 1 (can access real-time data via tools)
-
-This illustrates how a single capability—tool access—shifts the level.
+**Expected outcome**: This is a Level 2 system. It exhibits strategic planning (deciding what to search, in what order), context management (choosing which papers matter), and multi-step reasoning. The human set the goal; the system controlled the approach.
 
 ---
 
-**Classification Exercise 3: Personal Experience**
+**Scenario 3: Claude Code Refactoring**
 
-Apply the taxonomy to a system you use.
+You've just asked Claude Code: "Refactor this 500-line Python file for maintainability. Current test coverage is 60%; improve it to 85%+."
 
-**Prompt**:
-```
-Think about an AI system you use regularly (ChatGPT, Claude, GitHub Copilot, your phone's assistant, etc.).
+**Classify this**:
+- What level of agent is Claude Code in this context?
+- What tools is it using?
+- How is it managing context strategically?
+- Ask your AI: "Describe the loop (reason, act, observe) that Claude Code goes through, step by step."
 
-Describe what it does, then classify it using the 5-Level Taxonomy. Be specific about which capabilities put it at that level.
-```
-
-**Expected Outcome**: You should be able to articulate why your chosen system is at its level based on concrete capabilities (tool access, planning, multi-agent coordination, etc.).
-
----
-
-**Optional Stretch: The Director Paradigm**
-
-Deepen your understanding of the paradigm shift.
-
-**Prompt**:
-```
-A traditional developer (bricklayer) writes a function like this:
-
-```javascript
-function processOrder(order) {
-  if (order.status === 'pending') {
-    checkInventory(order.items);
-    if (inventoryAvailable) {
-      chargeCard(order.payment);
-      if (cardSuccessful) {
-        shipOrder(order);
-        sendConfirmationEmail();
-      } else {
-        markOrderFailed();
-      }
-    } else {
-      notifyOutOfStock();
-    }
-  }
-}
-```
-
-An agent developer would approach the same problem differently. How would a director specify this workflow instead of writing the code above? What would they tell an agent to do?
-```
-
-**Expected Outcome**: The AI should articulate the director approach:
-- Specify the goal: "Process this order"
-- Provide context: "Here's the inventory system, payment processor, shipping system, and notification service"
-- Provide rules: "Only charge if inventory is available. Only ship if payment succeeds. Always notify the customer."
-- Let the agent reason: The agent decides the sequence, handles failures, adapts to edge cases
-
-This shifts from *control flow* (explicit if-then-else) to *specification* (goal + context + rules).
+**Expected outcome**: Claude Code here is Level 2, potentially exhibiting Level 3 patterns if it's coordinating between code-refactoring and test-writing specialists. It's reasoning about strategy: which functions to refactor first, how to maintain API compatibility, where test gaps exist.
 
 ---
 
-**Safety Note**: As you use AI to explore these concepts, pay attention to how the AI reasons. Does it make assumptions? Does it ask clarifying questions? Notice how your feedback shapes its responses—that interaction illustrates the "director" role in action.
+**Scenario 4: Compare and Synthesize**
+
+Now compare the three scenarios:
+
+- Which required the most human direction?
+- Which had the most autonomy?
+- As you move from chatbot to research agent to Claude Code, what's changing about how the system operates?
+- Ask your AI: "Explain how the 5-Level Taxonomy helps you understand the differences between these three systems."
+
+**Expected outcome**: You're mapping the taxonomy to real systems. You should see that as autonomy increases, the system takes on more responsibility for strategy and reasoning, not just tool calling.
+
+---
+
+**Optional Stretch Challenge**:
+
+Think of a system you use regularly that has some "agent-like" features (email with auto-complete, recommendation algorithms, your phone's voice assistant).
+
+- Where does it fit in the 5-Level Taxonomy?
+- What would it need to move to the next level?
+- Ask your AI: "Given the constraints of this system, what's the highest level it could realistically reach? What architectural changes would be needed?"
+
+This exercise builds your intuition for agent architecture by recognizing it in systems you already know.
+
+---
+
+## Summary
+
+**Key takeaways from this lesson**:
+
+An AI agent is fundamentally different from a chatbot. It's a system that reasons, acts, observes, and iterates—a loop. The 5-Level Taxonomy classifies agents by their autonomy and capability:
+
+- **Level 0**: Just a model, isolated interactions, no autonomy
+- **Level 1**: Model + tools for information access, human-driven strategy
+- **Level 2**: Model + tools + context engineering, system-driven multi-step planning
+- **Level 3**: Multiple specialized agents coordinating
+- **Level 4**: System creates new capabilities autonomously
+
+Claude Code is a Level 2-3 system because you've watched it plan multi-step solutions and coordinate specialized perspectives. It's not a Level 4 system because it operates within tools and constraints you've set.
+
+The paradigm shift from "bricklayer" (defining every step) to "director" (setting intent and constraints) reflects a fundamental change in how developers work. Developers who can think like directors—specifying intent clearly, setting constraints precisely, trusting agents to reason toward solutions—will be valuable. This skill is scarce now. By the end of Chapter 33, you'll have the mental models to start building that capability.
+
+Why does this matter for you? Because agent development is becoming a core skill, companies are hiring for it, and the developers who understand agents deeply will lead the next wave of software development. That opportunity starts here.
