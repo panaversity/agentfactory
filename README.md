@@ -94,22 +94,39 @@ Signup → Hardware Survey → Personalized Content
 
 ```
 .claude/
-├── skills/                      # HOW (reusable across all books)
-│   ├── authoring/
-│   │   ├── lesson-generator/SKILL.md
-│   │   ├── mermaid-diagram/SKILL.md
-│   │   └── urdu-translator/SKILL.md
-│   └── engineering/
-│       ├── hardware-filter/SKILL.md
-│       ├── ros2-code/SKILL.md
-│       └── pyodide-exercise/SKILL.md
-├── agents/                      # WHO (workers)
-│   ├── authoring/
-│   │   ├── lesson-writer/AGENT.md
-│   │   └── content-architect/AGENT.md
-│   └── engineering/
-│       └── *.md                 # Discover available agents
-└── .mcp.json
+├── skills/                           # HOW (reusable patterns)
+│   ├── authoring/                    # Content creation skills
+│   │   ├── lesson-generator/         # Generate lessons (4-layer framework)
+│   │   ├── assessment-builder/       # Create quizzes and assessments
+│   │   ├── learning-objectives/      # Design learning objectives
+│   │   ├── mermaid-diagram/          # Generate educational diagrams
+│   │   ├── urdu-translator/          # Translate content to Urdu
+│   │   ├── quiz-generator/           # Generate quiz questions
+│   │   ├── summary-generator/        # Create lesson summaries
+│   │   ├── notebooklm-slides/        # Generate slide decks
+│   │   └── concept-scaffolding/      # Scaffold complex concepts
+│   └── engineering/                  # Platform development skills
+│       ├── hardware-filter/          # Filter by hardware tier (1-4)
+│       ├── ros2-code/                # Generate ROS 2 examples
+│       ├── pyodide-exercise/         # Browser-based Python exercises
+│       ├── docusaurus-deployer/      # Deploy to GitHub Pages
+│       ├── frontend-design/          # UI component design
+│       ├── mcp-builder/              # Create MCP servers
+│       ├── skill-creator/            # Create new skills
+│       └── session-intelligence-harvester/  # Capture learnings
+│
+├── agents/                           # WHO (autonomous workers)
+│   ├── authoring/                    # Content creation agents
+│   │   ├── content-implementer.md    # Implement lessons from specs
+│   │   ├── chapter-planner.md        # Plan chapter structure
+│   │   └── educational-validator.md  # Validate constitutional compliance
+│   └── engineering/                  # Platform development agents
+│       ├── spec-architect.md         # Design specifications
+│       ├── validation-auditor.md     # Quality validation
+│       └── super-orchestra.md        # Workflow orchestration
+│
+├── commands/                         # Slash commands (/sp.*)
+└── .mcp.json                         # MCP server configuration
 
 # Domain knowledge lives in authoritative sources:
 # - requirement.md (course structure, hardware specs)
