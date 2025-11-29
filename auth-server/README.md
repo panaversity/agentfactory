@@ -21,9 +21,6 @@ DATABASE_URL=postgresql://user:pass@host.neon.tech/db?sslmode=require
 BETTER_AUTH_SECRET=your-32-char-secret  # openssl rand -base64 32
 BETTER_AUTH_URL=http://localhost:3001
 ALLOWED_ORIGINS=http://localhost:3000
-
-# Client URLs
-NEXT_PUBLIC_BOOK_URL=http://localhost:3000
 NEXT_PUBLIC_BETTER_AUTH_URL=http://localhost:3001
 
 # Optional: Email verification (Resend free tier: 100/day)

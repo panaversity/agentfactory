@@ -91,15 +91,8 @@ export function SignInForm() {
         return;
       }
 
-      // Default: Redirect to the book interface
-      // NEXT_PUBLIC_BOOK_URL must be set for production
-      const redirectUrl = process.env.NEXT_PUBLIC_BOOK_URL;
-      if (redirectUrl) {
-        window.location.href = redirectUrl;
-      } else {
-        // Development fallback - stay on auth server
-        window.location.href = "/";
-      }
+      // Stay on auth server after direct login
+      window.location.href = "/";
     } catch (error) {
       setErrors({ general: "An unexpected error occurred. Please try again." });
     } finally {

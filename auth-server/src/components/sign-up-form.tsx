@@ -96,18 +96,10 @@ export function SignUpForm() {
 
       // Check if we have an OAuth redirect URL
       if (redirectParam) {
-        // Continue the OAuth flow
         window.location.href = redirectParam;
       } else {
-        // Default: Redirect to the book interface
-        // NEXT_PUBLIC_BOOK_URL must be set for production
-        const redirectUrl = process.env.NEXT_PUBLIC_BOOK_URL;
-        if (redirectUrl) {
-          window.location.href = redirectUrl;
-        } else {
-          // Development fallback - avoid hardcoding in production
-          window.location.href = "/";
-        }
+        // Stay on auth server after direct signup
+        window.location.href = "/";
       }
     } catch (error) {
       setErrors({ general: "An unexpected error occurred. Please try again." });
