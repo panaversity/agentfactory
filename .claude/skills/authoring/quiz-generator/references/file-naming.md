@@ -50,7 +50,7 @@ Files sort alphabetically, placing quiz at chapter end:
 
 List all lesson files in the chapter directory:
 ```
-book-source/docs/part-1-foundations/chapter-02-ai-turning-point/
+robolearn-interface/docs/part-1-foundations/chapter-02-ai-turning-point/
   01_lesson_01.md
   02_lesson_02.md
   03_lesson_03.md
@@ -247,7 +247,7 @@ Where:
 ### Directory Structure
 
 ```
-book-source/docs/
+robolearn-interface/docs/
 └── [part-folder]/
     └── [chapter-folder]/
         ├── 01_lesson_01.md
@@ -261,17 +261,17 @@ book-source/docs/
 
 **Chapter 2:**
 ```
-book-source/docs/part-1-foundations/chapter-02-ai-turning-point/05_chapter_02_quiz.md
+robolearn-interface/docs/part-1-foundations/chapter-02-ai-turning-point/05_chapter_02_quiz.md
 ```
 
 **Chapter N:**
 ```
-book-source/docs/part-2-workflows/chapter-05-claude-features/07_chapter_05_quiz.md
+robolearn-interface/docs/part-2-workflows/chapter-05-claude-features/07_chapter_05_quiz.md
 ```
 
 **Chapter N:**
 ```
-book-source/docs/part-3-advanced/chapter-N-debugging/06_chapter_14_quiz.md
+robolearn-interface/docs/part-3-advanced/chapter-N-debugging/06_chapter_14_quiz.md
 ```
 
 ---
@@ -330,7 +330,7 @@ Before finalizing quiz file:
 **Location Checks:**
 - [ ] File saved in correct chapter directory
 - [ ] File appears AFTER all lesson files alphabetically
-- [ ] Path is: `book-source/docs/[part]/[chapter]/##_chapter_##_quiz.md`
+- [ ] Path is: `robolearn-interface/docs/[part]/[chapter]/##_chapter_##_quiz.md`
 
 **Frontmatter Checks:**
 - [ ] YAML frontmatter includes `sidebar_position`

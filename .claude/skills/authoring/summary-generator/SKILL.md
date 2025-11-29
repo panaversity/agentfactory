@@ -124,10 +124,10 @@ Summary files are named by appending `.summary.md` to the lesson filename (witho
 
 ```
 # Lesson file:
-book-source/docs/05-Python/17-intro/01-what-is-python.md
+robolearn-interface/docs/05-Python/17-intro/01-what-is-python.md
 
 # Summary file:
-book-source/docs/05-Python/17-intro/01-what-is-python.summary.md
+robolearn-interface/docs/05-Python/17-intro/01-what-is-python.summary.md
 ```
 
 ## Workflow

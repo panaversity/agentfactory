@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "book-source/**"
+      - "robolearn-interface/**"
       - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
@@ -31,7 +31,7 @@ jobs:
         with:
           node-version: "20"
           cache: npm
-          cache-dependency-path: book-source/package-lock.json
+          cache-dependency-path: robolearn-interface/package-lock.json
 
       - name: Install system dependencies for OG image generation
         run: |
@@ -42,17 +42,17 @@ jobs:
             libvips-dev
 
       - name: Install dependencies
-        working-directory: book-source
+        working-directory: robolearn-interface
         run: npm ci
 
       - name: Build site
-        working-directory: book-source
+        working-directory: robolearn-interface
         run: npm run build
 
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: book-source/build
+          path: robolearn-interface/build
 
   deploy:
     name: Deploy to GitHub Pages

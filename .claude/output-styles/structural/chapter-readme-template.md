@@ -11,7 +11,7 @@ Use this template when creating or updating **chapter-level README.md files**. T
 ## File Location
 
 ```
-book-source/docs/
+robolearn-interface/docs/
 └── NN-Part-Name/
     └── NN-chapter-name/
         ├── README.md        ← This file (MUST be uppercase)

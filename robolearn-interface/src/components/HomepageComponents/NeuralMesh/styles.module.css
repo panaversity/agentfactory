@@ -1,0 +1,60 @@
+/* NeuralMesh - Animated neural network background */
+
+.meshContainer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.meshCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Scan line effect - moves vertically */
+.scanLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 212, 255, 0.3) 20%,
+    rgba(0, 212, 255, 0.6) 50%,
+    rgba(0, 212, 255, 0.3) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  animation: scanDown 8s linear infinite;
+}
+
+@keyframes scanDown {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .meshCanvas,
+  .scanLine {
+    animation: none;
+    display: none;
+  }
+}

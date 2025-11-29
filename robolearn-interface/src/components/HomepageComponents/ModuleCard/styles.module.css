@@ -1,0 +1,245 @@
+/* ModuleCard - Course curriculum card with Industrial-Kinetic styling */
+
+.moduleCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--ifk-space-lg);
+  background: var(--ifk-bg-secondary);
+  border: 1px solid var(--ifk-border);
+  border-radius: 8px;
+  transition:
+    transform var(--ifk-transition-base),
+    border-color var(--ifk-transition-base),
+    box-shadow var(--ifk-transition-base);
+
+  /* Reveal animation initial state */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.moduleCard.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.6s var(--ifk-easing-spring),
+    transform 0.6s var(--ifk-easing-spring);
+}
+
+/* Hover effects */
+.moduleCard:hover,
+.moduleCard:focus-visible {
+  transform: translateY(-4px);
+}
+
+/* Cyan glow variant (Modules 1-2) */
+.moduleCard.cyan:hover,
+.moduleCard.cyan:focus-visible {
+  border-color: var(--ifk-cyan);
+  box-shadow: 0 8px 32px var(--ifk-cyan-glow);
+}
+
+/* Amber glow variant (Modules 3-4) */
+.moduleCard.amber:hover,
+.moduleCard.amber:focus-visible {
+  border-color: var(--ifk-amber);
+  box-shadow: 0 8px 32px var(--ifk-amber-glow);
+}
+
+/* Focus visible outline */
+.moduleCard:focus-visible {
+  outline: 2px solid var(--ifk-cyan);
+  outline-offset: 4px;
+}
+
+/* Highlighted state (for advanced modules) */
+.moduleCard.highlighted {
+  border-color: rgba(255, 149, 0, 0.3);
+}
+
+/* Badge */
+.badge {
+  position: absolute;
+  top: -10px;
+  right: var(--ifk-space-md);
+  padding: var(--ifk-space-xs) var(--ifk-space-sm);
+  font-family: var(--ifk-font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ifk-bg-primary);
+  background: var(--ifk-amber);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px var(--ifk-amber-glow);
+}
+
+/* Header section */
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--ifk-space-sm);
+  margin-bottom: var(--ifk-space-sm);
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--ifk-bg-tertiary);
+  border: 1px solid var(--ifk-border);
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.icon {
+  font-size: 1.5rem;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--ifk-font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifk-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.subtitle {
+  font-family: var(--ifk-font-body);
+  font-size: 0.75rem;
+  color: var(--ifk-cyan);
+  font-weight: 500;
+}
+
+.moduleCard.highlighted .subtitle,
+.moduleCard.amber .subtitle {
+  color: var(--ifk-amber);
+}
+
+/* Module title (secondary) */
+.moduleTitle {
+  margin: 0 0 var(--ifk-space-sm);
+  font-family: var(--ifk-font-body);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--ifk-text-primary);
+  line-height: 1.3;
+}
+
+/* Description */
+.description {
+  margin: 0 0 var(--ifk-space-md);
+  font-family: var(--ifk-font-body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ifk-text-secondary);
+  flex-grow: 1;
+}
+
+/* Topics list */
+.topicsList {
+  margin: 0 0 var(--ifk-space-md);
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ifk-space-xs);
+}
+
+.topic {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ifk-space-xs);
+  font-family: var(--ifk-font-body);
+  font-size: 0.85rem;
+  color: var(--ifk-text-secondary);
+}
+
+.topicBullet {
+  color: var(--ifk-cyan);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.moduleCard.amber .topicBullet,
+.moduleCard.highlighted .topicBullet {
+  color: var(--ifk-amber);
+}
+
+/* Week range */
+.weekRange {
+  margin-top: auto;
+  padding-top: var(--ifk-space-sm);
+  border-top: 1px solid var(--ifk-border);
+  font-family: var(--ifk-font-display);
+  font-size: 0.75rem;
+  color: var(--ifk-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Glow effect element (hidden by default) */
+.glowEffect {
+  position: absolute;
+  inset: -1px;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--ifk-transition-base);
+}
+
+.moduleCard.cyan .glowEffect {
+  box-shadow: inset 0 0 30px var(--ifk-cyan-glow);
+}
+
+.moduleCard.amber .glowEffect {
+  box-shadow: inset 0 0 30px var(--ifk-amber-glow);
+}
+
+.moduleCard:hover .glowEffect,
+.moduleCard:focus-visible .glowEffect {
+  opacity: 0.3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .moduleCard {
+    padding: var(--ifk-space-md);
+  }
+
+  .iconWrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .icon {
+    font-size: 1.25rem;
+  }
+
+  .moduleTitle {
+    font-size: 1rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .moduleCard {
+    opacity: 1;
+    transform: none;
+  }
+
+  .moduleCard:hover,
+  .moduleCard:focus-visible {
+    transform: none;
+  }
+}

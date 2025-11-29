@@ -122,21 +122,21 @@ mkdir -p .github/workflows
 
 ### Step 2: Adjust Working Directory (if needed)
 
-If Docusaurus is not in a `book-source/` subdirectory, update workflow:
+If Docusaurus is not in a `robolearn-interface/` subdirectory, update workflow:
 
 ```yaml
 - name: Install dependencies
-  working-directory: ./book-source  # or your actual directory
+  working-directory: ./robolearn-interface  # or your actual directory
   run: npm ci
 
 - name: Build website
-  working-directory: ./book-source
+  working-directory: ./robolearn-interface
   run: npm run build
 
 - name: Upload build artifact
   uses: actions/upload-pages-artifact@v3
   with:
-    path: ./book-source/build/  # Adjust path based on location
+    path: ./robolearn-interface/build/  # Adjust path based on location
 ```
 
 ### Step 3: Commit and Push

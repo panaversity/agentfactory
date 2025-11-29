@@ -355,12 +355,12 @@ Based on change history, predicted likely violations:
 
 1. **Review Changes**:
    ```bash
-   git diff book-source/docs/{{PART_NUMBER}}-Part-{{PART_NUMBER}}/{{CHAPTER_NUMBER}}-{{CHAPTER_SLUG}}/
+   git diff robolearn-interface/docs/{{PART_NUMBER}}-Part-{{PART_NUMBER}}/{{CHAPTER_NUMBER}}-{{CHAPTER_SLUG}}/
    ```
 
 2. **Test Docusaurus Build**:
    ```bash
-   cd book-source && npm run build
+   cd robolearn-interface && npm run build
    ```
 
 3. **Validate Links**:
@@ -411,11 +411,11 @@ I'm here to execute your decision.
 {{FILES_MODIFIED_LIST}}
 
 <!-- Example format:
-- book-source/docs/04-Part-4/14-data-types/01-intro.md
+- robolearn-interface/docs/04-Part-4/14-data-types/01-intro.md
   - Changes: 15 CoLearning insertions, 1 post-section deletion
   - Lines modified: 89, 156, 234, 312, 456, 567, 678-695 (deleted)
 
-- book-source/docs/04-Part-4/14-data-types/02-numeric.md
+- robolearn-interface/docs/04-Part-4/14-data-types/02-numeric.md
   - Changes: Enhanced regeneration (60% preserved, 40% regenerated)
   - Sections regenerated: Type Conversions, Paragraphs 5-8
 -->

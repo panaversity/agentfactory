@@ -2,9 +2,14 @@
 description: Universal platform orchestrator implementing Spec-Driven Development with Reusable Intelligence (SDD-RI). Routes work to appropriate agents based on stakeholder, work type, and hardware tier. Works for content authoring, engineering features, and platform infrastructure.
 ---
 
-# /sp.orchestrate: Platform Reasoning Orchestrator (v4.2)
+# /sp.orchestrate: Platform Reasoning Orchestrator (v4.3)
 
 **Purpose**: Execute the complete SDD-RI workflow (Spec → Plan → Tasks → Implement → Validate) for ANY platform task by **routing to appropriate agents** based on context analysis. This orchestrator serves all three stakeholders (Students, Authors, Institutions).
+
+**v4.3 Updates**:
+- **Rule 9: ADR Location Enforcement** - ADRs must go in `history/adr/`, NOT in `specs/` folders
+- Fixed incorrect ADR examples in Rule 8
+- Added Artifact Locations summary to Quick Reference
 
 **v4.2 Updates**:
 - **Skills usable in ALL phases** (discovery → execution → validation)
@@ -1003,6 +1008,88 @@ Maintain the JSON state object throughout.
 Update after each phase and gate.
 This enables recovery if context window compacts.
 
+### Rule 8: Folder Naming Consistency
+**CRITICAL**: PHR and spec folders MUST use the SAME feature slug (with numeric prefix).
+
+**Before creating ANY artifact:**
+```bash
+# 1. Find existing spec folder (source of truth)
+SPEC_DIR=$(find specs/ -type d -name "*[feature-keyword]*" | head -1)
+echo "Spec folder: $SPEC_DIR"
+
+# 2. Extract the feature slug (e.g., "001-home-page-redesign")
+FEATURE_SLUG=$(basename "$SPEC_DIR")
+
+# 3. PHR folder MUST match: history/prompts/[FEATURE_SLUG]/
+PHR_DIR="history/prompts/$FEATURE_SLUG"
+mkdir -p "$PHR_DIR"
+```
+
+**Folder Structure (CONSISTENT naming):**
+- `specs/001-home-page-redesign/` - spec.md, plan.md, tasks.md (NO ADRs here!)
+- `history/prompts/001-home-page-redesign/` - PHR files (SAME slug!)
+- `history/adr/` - ADRs (project-wide, see Rule 9)
+
+**Common Drift Patterns to Avoid:**
+```bash
+# ❌ WRONG: Different folder names
+specs/001-home-page-redesign/spec.md
+history/prompts/home-page-redesign/0001-phr.md  # Missing "001-" prefix!
+
+# ✅ RIGHT: Identical folder names
+specs/001-home-page-redesign/spec.md
+history/prompts/001-home-page-redesign/0001-phr.md
+```
+
+**When creating ADRs:**
+```bash
+# ⚠️ ADRs go in history/adr/, NOT in specs folder!
+# See Rule 9 for correct ADR location enforcement
+mkdir -p history/adr
+# Use: history/adr/0001-descriptive-title.md
+```
+
+### Rule 9: ADR Location Enforcement
+**CRITICAL**: ADRs MUST be created in `history/adr/`, NOT in `specs/` folders.
+
+**ADR vs Spec Folder Distinction:**
+- `specs/[feature]/` → spec.md, plan.md, tasks.md (SDD artifacts)
+- `history/adr/` → Architecture Decision Records (permanent project decisions)
+
+**Before creating ANY ADR:**
+```bash
+# ✅ CORRECT: ADRs go in history/adr/
+ADR_DIR="history/adr"
+mkdir -p "$ADR_DIR"
+# Create: history/adr/0001-descriptive-title.md
+
+# ❌ WRONG: ADRs in specs folder
+# NEVER: specs/001-home-page-redesign/adr-001-title.md
+```
+
+**Why This Matters:**
+- ADRs document **project-wide decisions** that outlast individual features
+- Specs are **feature-specific** and may be archived after implementation
+- ADRs in `history/adr/` are discoverable across all features
+- ADRs in `specs/` get lost when features are completed
+
+**ADR Numbering:**
+```bash
+# Find next ADR number
+NEXT_ADR=$(ls history/adr/*.md 2>/dev/null | wc -l | xargs -I {} expr {} + 1)
+printf "%04d" $NEXT_ADR
+# Result: 0001, 0002, etc.
+```
+
+**Common Drift Pattern to Avoid:**
+```bash
+# ❌ WRONG: ADR created alongside spec (will get lost)
+specs/001-home-page-redesign/adr-001-industrial-confidence-design.md
+
+# ✅ RIGHT: ADR in permanent location
+history/adr/0001-industrial-confidence-design-system.md
+```
+
 ### Rule 7: PHR Recording (MANDATORY)
 Every significant action MUST have a corresponding PHR:
 
@@ -1065,6 +1152,11 @@ Skills CAN be used now for discovery—but we still need spec approval before im
 
 **Skills enhance ALL phases. Gates block until explicit approval. PHRs are mandatory.**
 
+**Artifact Locations:**
+- `specs/[feature]/` → spec.md, plan.md, tasks.md (feature-specific, temporary)
+- `history/prompts/[feature]/` → PHRs (feature-specific, permanent)
+- `history/adr/` → ADRs (project-wide, permanent) ⚠️ NOT in specs folder!
+
 ---
 
-**Version 4.2: Flexible skill usage across all phases, hard enforcement gates, JSON state tracking, comprehensive PHR recording, agent discovery protocol, and Claude 4 best practices for long-horizon reasoning.**
+**Version 4.3: Added Rule 9 (ADR location enforcement), corrected ADR examples in Rule 8.**

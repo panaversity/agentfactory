@@ -16,10 +16,10 @@ Each chapter is a complete, cohesive learning unit that follows international bo
 
 **Quick Summary**:
 
-Chapters are organized in a **3-level hierarchy** within `book-source/docs/`:
+Chapters are organized in a **3-level hierarchy** within `robolearn-interface/docs/`:
 
 ```
-book-source/docs/
+robolearn-interface/docs/
 ├── NN-Part-Name/                              # Part folders (Title Case with Hyphens)
 │   ├── README.md                              # Part introduction (required, UPPERCASE)
 │   ├── NN-chapter-name/                       # Chapter directories (lowercase-with-hyphens)

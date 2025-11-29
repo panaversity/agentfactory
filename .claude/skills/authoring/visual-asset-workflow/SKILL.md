@@ -31,8 +31,8 @@ This skill provides professional creative brief methodology to activate Gemini 3
 **Prefer:** Strategic planning phase (Q0)
 
 Read FIRST:
-- `book-source/docs/chapter-index.md` → Extract part, proficiency (A2/B1/C2), prerequisites
-- `book-source/docs/[part]/[chapter]/README.md` → Understand lesson structure
+- `robolearn-interface/docs/chapter-index.md` → Extract part, proficiency (A2/B1/C2), prerequisites
+- `robolearn-interface/docs/[part]/[chapter]/README.md` → Understand lesson structure
 
 Detect conflicts BEFORE work:
 - Proficiency-complexity mismatch (complex visual for A2 beginners)

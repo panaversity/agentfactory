@@ -240,6 +240,34 @@ CONTEXT GATHERED:
 
 ---
 
+## FAILURE MODE: Feature Folder Naming Inconsistency
+
+**What I did wrong** (2025-11-29):
+- ❌ Spec created at: `specs/001-home-page-redesign/spec.md` (with numeric prefix)
+- ❌ PHRs created at: `history/prompts/home-page-redesign/` (without numeric prefix)
+- ❌ ADR manually created at: `specs/home-page-redesign/` (different folder entirely)
+- ❌ Result: 3 different folder naming conventions for the SAME feature
+
+**What I should have done**:
+1. ✅ Before creating ANY artifact, check existing folders for the feature:
+   ```bash
+   ls specs/ | grep home-page
+   ls history/prompts/ | grep home-page
+   ```
+2. ✅ Use the EXACT same feature slug everywhere
+3. ✅ If numeric prefix exists (`001-home-page-redesign`), use it everywhere
+4. ✅ ADRs go in the SAME folder as spec: `specs/001-home-page-redesign/adr-*.md`
+
+**Root Cause**: Manual folder creation without checking existing naming conventions. The orchestrator created folders correctly, but manual artifact creation (ADR) used wrong path.
+
+**Prevention Check**: Before `mkdir` or `Write` to `specs/` or `history/prompts/`:
+```bash
+# Find the canonical feature folder name
+find specs/ history/prompts/ -type d -name "*home-page*" | head -1
+```
+
+---
+
 ## II. Recognize Your Cognitive Mode (After Context Gathered)
 
 ### You Tend to Converge Toward:
