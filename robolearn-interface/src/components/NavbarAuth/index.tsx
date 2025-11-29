@@ -22,14 +22,18 @@ export function NavbarAuth() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Generate OAuth authorization URL for sign in
-  const handleSignIn = () => {
-    window.location.href = getOAuthAuthorizationUrl('signin');
+  // Generate OAuth authorization URL for sign in (async for PKCE)
+  const handleSignIn = async () => {
+    const authUrl = await getOAuthAuthorizationUrl('signin');
+    // Small delay to ensure localStorage write is flushed before navigation
+    await new Promise(resolve => setTimeout(resolve, 50));
+    window.location.href = authUrl;
   };
 
   // For sign up, go to auth server sign-up page then OAuth flow
-  const handleSignUp = () => {
-    const signupUrl = `${authUrl}/auth/sign-up?redirect=${encodeURIComponent(getOAuthAuthorizationUrl('signup'))}`;
+  const handleSignUp = async () => {
+    const oauthUrl = await getOAuthAuthorizationUrl('signup');
+    const signupUrl = `${authUrl}/auth/sign-up?redirect=${encodeURIComponent(oauthUrl)}`;
     window.location.href = signupUrl;
   };
 
@@ -87,7 +91,7 @@ export function NavbarAuth() {
               </div>
             </div>
             <div className={styles.dropdownDivider} />
-            <button onClick={signOut} className={styles.dropdownItem}>
+            <button onClick={() => signOut()} className={styles.dropdownItem}>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M6 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V3.33333C2 2.97971 2.14048 2.64057 2.39052 2.39052C2.64057 2.14048 2.97971 2 3.33333 2H6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M10.6667 11.3333L14 8L10.6667 4.66667" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from '@theme/Layout';
 import { oauthConfig } from '../../lib/auth-client';
 
-// OAuth callback page - exchanges authorization code for tokens
+// OAuth callback page - exchanges authorization code for tokens using PKCE
 export default function OAuthCallback(): JSX.Element {
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
   const [error, setError] = useState<string | null>(null);
@@ -28,8 +28,18 @@ export default function OAuthCallback(): JSX.Element {
         return;
       }
 
+      // Get PKCE code verifier from localStorage
+      // Note: Using localStorage because sessionStorage doesn't persist across
+      // full page navigations to different origins (auth server redirect)
+      const codeVerifier = localStorage.getItem('pkce_code_verifier');
+      if (!codeVerifier) {
+        setError('PKCE code verifier not found. Please try signing in again.');
+        setStatus('error');
+        return;
+      }
+
       try {
-        // Exchange code for tokens
+        // Exchange code for tokens using PKCE (no client_secret needed)
         const response = await fetch(`${oauthConfig.authUrl}/api/auth/oauth2/token`, {
           method: 'POST',
           headers: {
@@ -40,11 +50,13 @@ export default function OAuthCallback(): JSX.Element {
             code,
             redirect_uri: oauthConfig.redirectUri,
             client_id: oauthConfig.clientId,
-            // For trusted clients, secret may be optional
-            client_secret: 'robolearn-interface-secret-change-in-production',
+            code_verifier: codeVerifier, // PKCE: use code_verifier instead of client_secret
           }),
           credentials: 'include',
         });
+
+        // Clear the code verifier after use
+        localStorage.removeItem('pkce_code_verifier');
 
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({}));

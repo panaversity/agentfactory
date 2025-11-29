@@ -66,23 +66,32 @@ npm run dev  # Runs on http://localhost:3001
 ### Environment Variables
 
 ```env
-# Database (Neon Postgres)
+# Database (Neon Postgres) - REQUIRED
 DATABASE_URL=postgresql://user:password@host.neon.tech/dbname?sslmode=require
 
-# Better Auth
+# Better Auth - REQUIRED
+# Secret key for signing tokens - minimum 32 characters
+# Generate with: openssl rand -base64 32
 BETTER_AUTH_SECRET=your-secret-key-minimum-32-characters-long
 BETTER_AUTH_URL=http://localhost:3001
 
-# OAuth Client (for robolearn-interface)
-ROBOLEARN_CLIENT_SECRET=your-client-secret-here
-
-# CORS - Allowed origins (comma-separated)
+# CORS - REQUIRED for production
+# Allowed origins (comma-separated list of frontend URLs)
 ALLOWED_ORIGINS=http://localhost:3000,https://robolearn.github.io
 
-# Redirect URLs
+# OAuth Callback URL - REQUIRED for production
+# The callback URL for the robolearn-interface OAuth client
+ROBOLEARN_INTERFACE_CALLBACK_URL=http://localhost:3000/auth/callback
+
+# Client-side URLs
 NEXT_PUBLIC_BETTER_AUTH_URL=http://localhost:3001
 NEXT_PUBLIC_BOOK_URL=http://localhost:3000
+
+# Node Environment
+NODE_ENV=development
 ```
+
+**Note**: No client secret is needed for robolearn-interface - it uses PKCE (Proof Key for Code Exchange) for secure authentication without exposing secrets in the browser.
 
 ---
 
@@ -211,6 +220,8 @@ GET /api/auth/oauth2/authorize
   &response_type=code
   &scope=openid profile email
   &state=random-state-string
+  &code_challenge=SHA256-hash-of-code-verifier
+  &code_challenge_method=S256
 ```
 
 ### Token Endpoint
@@ -223,8 +234,10 @@ grant_type=authorization_code
 &code=authorization-code
 &redirect_uri=http://localhost:3000/auth/callback
 &client_id=robolearn-interface
-&client_secret=your-client-secret
+&code_verifier=your-pkce-code-verifier
 ```
+
+**Note**: Uses PKCE `code_verifier` instead of `client_secret` for public clients (SPAs).
 
 ### UserInfo Endpoint
 
@@ -251,7 +264,8 @@ Authorization: Bearer access-token
    BETTER_AUTH_SECRET=random-32-char-secret
    BETTER_AUTH_URL=https://your-auth-domain.vercel.app
    ALLOWED_ORIGINS=https://robolearn.github.io,https://your-book-domain.com
-   ROBOLEARN_CLIENT_SECRET=your-production-secret
+   ROBOLEARN_INTERFACE_CALLBACK_URL=https://your-book-domain.com/auth/callback
+   NEXT_PUBLIC_BOOK_URL=https://your-book-domain.com
    ```
 
 4. **Deploy**
@@ -262,10 +276,12 @@ Same process - set environment variables and deploy the Next.js app.
 
 ### Production Checklist
 
-- [ ] Set strong `BETTER_AUTH_SECRET` (32+ random chars)
-- [ ] Set unique `ROBOLEARN_CLIENT_SECRET`
-- [ ] Update `ALLOWED_ORIGINS` to production domains
+- [ ] Set strong `BETTER_AUTH_SECRET` (32+ random chars via `openssl rand -base64 32`)
+- [ ] Set `DATABASE_URL` to your Neon connection string
+- [ ] Update `ALLOWED_ORIGINS` to production domains (comma-separated)
 - [ ] Update `BETTER_AUTH_URL` to production URL
+- [ ] Set `ROBOLEARN_INTERFACE_CALLBACK_URL` to production callback URL
+- [ ] Set `NEXT_PUBLIC_BOOK_URL` to production book interface URL
 - [ ] Enable HTTPS (automatic on Vercel/Railway)
 - [ ] Create admin user and set role
 - [ ] Test OAuth flow end-to-end
@@ -315,11 +331,38 @@ POST /api/auth/oauth2/register
 
 ### Security Features
 
-- **PKCE**: Supported for public clients
+- **PKCE (RFC 7636)**: Required for public clients (SPAs, mobile apps)
+- **Public Client Support**: No client secret exposed in browser - uses PKCE instead
+- **Automatic Token Refresh**: Client automatically refreshes expired access tokens
 - **Rate Limiting**: 5 attempts/minute per IP
-- **CORS**: Strict origin checking
+- **CORS**: Strict origin checking via `trustedOrigins`
 - **Secure Cookies**: HTTPOnly, SameSite in production
 - **HTTPS**: Required in production
+
+### PKCE Flow (How It Works)
+
+```
+1. Client generates code_verifier (random 32 bytes, base64url)
+2. Client computes code_challenge = SHA256(code_verifier)
+3. Authorization request includes code_challenge
+4. Token exchange includes code_verifier (not client_secret)
+5. Server verifies SHA256(code_verifier) == stored code_challenge
+```
+
+This prevents authorization code interception attacks without requiring a client secret.
+
+### Custom Claims in UserInfo
+
+The `/api/auth/oauth2/userinfo` endpoint returns standard OIDC claims plus:
+- `software_background` - User's self-reported skill level (beginner/intermediate/advanced)
+- `role` - User's role (user/admin)
+
+### Logout Options
+
+| Type | Behavior |
+|------|----------|
+| Local Logout | Clears tokens from client, user stays logged in at auth server (SSO) |
+| Global Logout | Clears tokens AND ends auth server session (logs out everywhere) |
 
 ### Secrets Management
 
@@ -327,6 +370,8 @@ Never commit secrets. Use:
 - Vercel Environment Variables
 - Railway/Render secrets
 - `.env.local` (gitignored)
+
+**Note**: Public clients (like robolearn-interface) no longer need `ROBOLEARN_CLIENT_SECRET` - they use PKCE instead.
 
 ---
 

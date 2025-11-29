@@ -100,8 +100,14 @@ export function SignUpForm() {
         window.location.href = redirectParam;
       } else {
         // Default: Redirect to the book interface
-        const redirectUrl = process.env.NEXT_PUBLIC_BOOK_URL || "http://localhost:3000";
-        window.location.href = redirectUrl;
+        // NEXT_PUBLIC_BOOK_URL must be set for production
+        const redirectUrl = process.env.NEXT_PUBLIC_BOOK_URL;
+        if (redirectUrl) {
+          window.location.href = redirectUrl;
+        } else {
+          // Development fallback - avoid hardcoding in production
+          window.location.href = "/";
+        }
       }
     } catch (error) {
       setErrors({ general: "An unexpected error occurred. Please try again." });

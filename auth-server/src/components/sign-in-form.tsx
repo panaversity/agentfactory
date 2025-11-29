@@ -22,6 +22,8 @@ export function SignInForm() {
   const responseType = searchParams.get("response_type");
   const scope = searchParams.get("scope");
   const state = searchParams.get("state");
+  const codeChallenge = searchParams.get("code_challenge");
+  const codeChallengeMethod = searchParams.get("code_challenge_method");
   const redirectParam = searchParams.get("redirect");
 
   const [formData, setFormData] = useState({
@@ -68,12 +70,16 @@ export function SignInForm() {
       // Check if this is part of an OAuth flow
       if (clientId && redirectUri && responseType) {
         // Rebuild the OAuth authorization URL and continue the flow
+        // IMPORTANT: Include PKCE parameters (code_challenge, code_challenge_method)
+        // to ensure the authorization code can be verified during token exchange
         const oauthParams = new URLSearchParams({
           client_id: clientId,
           redirect_uri: redirectUri,
           response_type: responseType,
           ...(scope && { scope }),
           ...(state && { state }),
+          ...(codeChallenge && { code_challenge: codeChallenge }),
+          ...(codeChallengeMethod && { code_challenge_method: codeChallengeMethod }),
         });
         window.location.href = `/api/auth/oauth2/authorize?${oauthParams.toString()}`;
         return;
@@ -86,8 +92,14 @@ export function SignInForm() {
       }
 
       // Default: Redirect to the book interface
-      const redirectUrl = process.env.NEXT_PUBLIC_BOOK_URL || "http://localhost:3000";
-      window.location.href = redirectUrl;
+      // NEXT_PUBLIC_BOOK_URL must be set for production
+      const redirectUrl = process.env.NEXT_PUBLIC_BOOK_URL;
+      if (redirectUrl) {
+        window.location.href = redirectUrl;
+      } else {
+        // Development fallback - stay on auth server
+        window.location.href = "/";
+      }
     } catch (error) {
       setErrors({ general: "An unexpected error occurred. Please try again." });
     } finally {

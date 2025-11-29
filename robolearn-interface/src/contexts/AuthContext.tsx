@@ -1,10 +1,12 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { refreshAccessToken } from '../lib/auth-client';
 
 interface User {
   id: string;
   email: string;
   name?: string;
   role?: string;
+  softwareBackground?: string | null;
 }
 
 interface Session {
@@ -15,7 +17,7 @@ interface Session {
 interface AuthContextType {
   session: Session | null;
   isLoading: boolean;
-  signOut: () => Promise<void>;
+  signOut: (global?: boolean) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -29,33 +31,54 @@ export function AuthProvider({ children, authUrl = 'http://localhost:3001' }: Au
   const [session, setSession] = useState<Session | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Fetch user info with a given access token
+  const fetchUserInfo = async (accessToken: string): Promise<User | null> => {
+    try {
+      const response = await fetch(`${authUrl}/api/auth/oauth2/userinfo`, {
+        headers: { 'Authorization': `Bearer ${accessToken}` },
+      });
+
+      if (response.ok) {
+        const userInfo = await response.json();
+        return {
+          id: userInfo.sub,
+          email: userInfo.email,
+          name: userInfo.name,
+          role: userInfo.role,
+          softwareBackground: userInfo.software_background,
+        };
+      }
+    } catch (error) {
+      console.error('Failed to fetch user info:', error);
+    }
+    return null;
+  };
+
   useEffect(() => {
-    // Check session on mount - OAuth tokens only (no cookie fallback)
+    // Check session on mount - OAuth tokens only with automatic refresh
     const checkSession = async () => {
       try {
-        // Check if we have an access token from OAuth flow
-        const accessToken = localStorage.getItem('robolearn_access_token');
+        let accessToken = localStorage.getItem('robolearn_access_token');
 
         if (accessToken) {
-          // Validate token by fetching user info from OIDC userinfo endpoint
-          const userInfoResponse = await fetch(`${authUrl}/api/auth/oauth2/userinfo`, {
-            headers: {
-              'Authorization': `Bearer ${accessToken}`,
-            },
-          });
+          // Try to fetch user info with current token
+          let user = await fetchUserInfo(accessToken);
 
-          if (userInfoResponse.ok) {
-            const userInfo = await userInfoResponse.json();
-            setSession({
-              user: {
-                id: userInfo.sub,
-                email: userInfo.email,
-                name: userInfo.name,
-              },
-              accessToken,
-            });
+          // If token expired (401), try to refresh
+          if (!user) {
+            console.log('Access token expired, attempting refresh...');
+            const newToken = await refreshAccessToken();
+
+            if (newToken) {
+              accessToken = newToken;
+              user = await fetchUserInfo(accessToken);
+            }
+          }
+
+          if (user) {
+            setSession({ user, accessToken });
           } else {
-            // Token invalid, clear it
+            // Both token and refresh failed, clear everything
             localStorage.removeItem('robolearn_access_token');
             localStorage.removeItem('robolearn_refresh_token');
             localStorage.removeItem('robolearn_id_token');
@@ -76,7 +99,7 @@ export function AuthProvider({ children, authUrl = 'http://localhost:3001' }: Au
     checkSession();
   }, [authUrl]);
 
-  const handleSignOut = () => {
+  const handleSignOut = (global: boolean = false) => {
     // Clear OAuth tokens from localStorage
     localStorage.removeItem('robolearn_access_token');
     localStorage.removeItem('robolearn_refresh_token');
@@ -85,9 +108,15 @@ export function AuthProvider({ children, authUrl = 'http://localhost:3001' }: Au
     // Clear session state
     setSession(null);
 
-    // Redirect to home - standard OAuth: client just clears its own tokens
-    // The auth server session is separate (user can still be logged in there for other apps)
-    window.location.href = '/';
+    if (global) {
+      // Global logout: redirect to auth server to end session there too
+      // This logs user out from all apps using this auth server
+      window.location.href = `${authUrl}/api/auth/sign-out?redirectTo=${encodeURIComponent(window.location.origin)}`;
+    } else {
+      // Local logout: just redirect to home
+      // User stays logged in at auth server (SSO pattern)
+      window.location.href = '/';
+    }
   };
 
   return (
