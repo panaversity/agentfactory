@@ -27,14 +27,21 @@ interface AuthProviderProps {
   authUrl?: string;
 }
 
-export function AuthProvider({ children, authUrl = 'http://localhost:3001' }: AuthProviderProps) {
+// Default authUrl uses empty string - callers should provide via Docusaurus config
+// In development, this will be set by Root.tsx via siteConfig.customFields.authUrl
+export function AuthProvider({ children, authUrl }: AuthProviderProps) {
+  // Require authUrl to be provided - no hardcoded fallback
+  if (!authUrl) {
+    console.error('AuthProvider: authUrl is required. Configure it in docusaurus.config.ts customFields.');
+  }
+  const effectiveAuthUrl = authUrl || '';
   const [session, setSession] = useState<Session | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   // Fetch user info with a given access token
   const fetchUserInfo = async (accessToken: string): Promise<User | null> => {
     try {
-      const response = await fetch(`${authUrl}/api/auth/oauth2/userinfo`, {
+      const response = await fetch(`${effectiveAuthUrl}/api/auth/oauth2/userinfo`, {
         headers: { 'Authorization': `Bearer ${accessToken}` },
       });
 
@@ -97,7 +104,7 @@ export function AuthProvider({ children, authUrl = 'http://localhost:3001' }: Au
     };
 
     checkSession();
-  }, [authUrl]);
+  }, [effectiveAuthUrl]);
 
   const handleSignOut = (global: boolean = false) => {
     // Clear OAuth tokens from localStorage
@@ -111,7 +118,7 @@ export function AuthProvider({ children, authUrl = 'http://localhost:3001' }: Au
     if (global) {
       // Global logout: redirect to auth server to end session there too
       // This logs user out from all apps using this auth server
-      window.location.href = `${authUrl}/api/auth/sign-out?redirectTo=${encodeURIComponent(window.location.origin)}`;
+      window.location.href = `${effectiveAuthUrl}/api/auth/sign-out?redirectTo=${encodeURIComponent(window.location.origin)}`;
     } else {
       // Local logout: just redirect to home
       // User stays logged in at auth server (SSO pattern)
