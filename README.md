@@ -174,7 +174,7 @@ Signup → Hardware Survey → Personalized Content
 
 **Exit:** ✅ 47 lessons across 2 modules with complete skill infrastructure
 
-**Extensions** (moved to Phase 4):
+**Extensions** (moved to Phase 5):
 - Create Mermaid/React Flow diagrams
 - Add hardware-filtered sections
 
