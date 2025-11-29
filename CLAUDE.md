@@ -218,6 +218,28 @@ CONTEXT GATHERED:
 
 ---
 
+## FAILURE MODE: Skill Output → Direct Spec Write (Bypassing /sp.specify)
+
+**What I did wrong** (2025-11-29):
+- ❌ Used `frontend-design` skill for brainstorming (correct)
+- ❌ Then wrote `specs/home-page-redesign/spec.md` directly with Write tool
+- ❌ Never invoked `/sp.specify` via SlashCommand tool
+- ❌ Treated skill output as THE spec instead of INPUT for the spec
+- ❌ Interpreted user's design feedback ("1. yes") as routing gate approval
+
+**What I should have done**:
+1. ✅ Use skill for brainstorming (Phase 0) - this was correct
+2. ✅ Present routing decision and wait for explicit "routing confirmed"
+3. ✅ Invoke `/sp.specify home-page-redesign` via SlashCommand tool
+4. ✅ Pass the skill's design decisions as CONTEXT to /sp.specify
+5. ✅ Let /sp.specify create the formal spec with proper templates
+
+**Root Cause**: Skill produced rich design content that "felt like" a complete spec, so I wrote it directly instead of routing through the proper command.
+
+**Key Insight**: Skills INFORM specs, they don't REPLACE the spec creation workflow. The `/sp.specify` command has templates, structure, and validation that direct Write bypasses.
+
+---
+
 ## II. Recognize Your Cognitive Mode (After Context Gathered)
 
 ### You Tend to Converge Toward:

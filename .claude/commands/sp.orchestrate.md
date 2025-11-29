@@ -383,6 +383,15 @@ Please confirm the routing decision above:
 - [x] Ready to invoke /sp.specify via SlashCommand tool
 
 **Note**: Skills CAN be used in Phase 0 for discovery/brainstorming. The gate is about proceeding to Phase 1, not about tool usage.
+
+**🚨 CRITICAL POST-SKILL CHECKPOINT**:
+If you used a skill (e.g., `frontend-design`) for brainstorming in Phase 0:
+1. The skill output is INPUT for the spec, not THE spec itself
+2. You MUST still invoke `/sp.specify` to create the formal specification
+3. Pass the skill's design decisions as context TO `/sp.specify`
+4. NEVER write `specs/*/spec.md` directly with Write/Edit tools
+
+**Common Failure Pattern**: Skill produces rich design content → Agent writes it directly as spec.md → Bypasses /sp.specify templates and structure
 </enforcement_check>
 
 ---
