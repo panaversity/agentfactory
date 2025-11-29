@@ -75,6 +75,23 @@
   --ifk-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
   --ifk-shadow-cyan: 0 0 20px var(--ifk-cyan-glow);
   --ifk-shadow-amber: 0 0 20px var(--ifk-amber-glow);
+
+  /* ===== IFK Sidebar Tokens ===== */
+  --ifk-sidebar-bg: rgba(14, 14, 18, 0.98);
+  --ifk-sidebar-bg-gradient: linear-gradient(180deg, rgba(14, 14, 18, 0.98) 0%, rgba(20, 20, 24, 0.95) 100%);
+  --ifk-sidebar-border: rgba(0, 212, 255, 0.12);
+  --ifk-sidebar-border-glow: rgba(0, 212, 255, 0.25);
+  --ifk-sidebar-item-bg: transparent;
+  --ifk-sidebar-item-hover: rgba(0, 212, 255, 0.08);
+  --ifk-sidebar-item-active: rgba(0, 212, 255, 0.15);
+  --ifk-sidebar-item-active-border: var(--ifk-cyan);
+  --ifk-sidebar-category-bg: rgba(0, 212, 255, 0.04);
+  --ifk-sidebar-progress-complete: var(--ifk-amber);
+  --ifk-sidebar-progress-current: var(--ifk-cyan);
+  --ifk-sidebar-progress-pending: rgba(255, 255, 255, 0.2);
+  --ifk-sidebar-scrollbar-track: rgba(0, 212, 255, 0.05);
+  --ifk-sidebar-scrollbar-thumb: rgba(0, 212, 255, 0.2);
+  --ifk-sidebar-scrollbar-thumb-hover: rgba(0, 212, 255, 0.35);
 }
 
 /* ===== IFK Animation Keyframes ===== */
@@ -231,6 +248,20 @@
   --ifk-border-hover: rgba(0, 0, 0, 0.2);
   --ifk-border-color: rgba(0, 0, 0, 0.1);
   --ifk-blueprint: rgba(0, 119, 204, 0.1);
+
+  /* Sidebar tokens for light mode */
+  --ifk-sidebar-bg: rgba(250, 250, 252, 0.98);
+  --ifk-sidebar-bg-gradient: linear-gradient(180deg, rgba(250, 250, 252, 0.98) 0%, rgba(245, 245, 247, 0.95) 100%);
+  --ifk-sidebar-border: rgba(0, 119, 204, 0.15);
+  --ifk-sidebar-border-glow: rgba(0, 119, 204, 0.3);
+  --ifk-sidebar-item-bg: transparent;
+  --ifk-sidebar-item-hover: rgba(0, 119, 204, 0.06);
+  --ifk-sidebar-item-active: rgba(0, 119, 204, 0.12);
+  --ifk-sidebar-item-active-border: var(--ifk-cyan);
+  --ifk-sidebar-category-bg: rgba(0, 119, 204, 0.04);
+  --ifk-sidebar-scrollbar-track: rgba(0, 119, 204, 0.05);
+  --ifk-sidebar-scrollbar-thumb: rgba(0, 119, 204, 0.2);
+  --ifk-sidebar-scrollbar-thumb-hover: rgba(0, 119, 204, 0.35);
 }
 
 /* ============================================================================
@@ -311,12 +342,13 @@ pre code {
     padding: 0;
 }
 
-/* Enhance navbar */
+/* Enhance navbar - make it sticky */
 .navbar {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(10px);
-    position: relative;
-    z-index: 100;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 200;
 }
 
 [data-theme="dark"] .navbar {
@@ -926,6 +958,122 @@ pre code {
     .navbar--fixed-top.navbar-sidebar--show ~ footer {
         display: none !important;
     }
+
+    /* ===== Mobile Sidebar Header - Close & Theme Toggle ===== */
+
+    /* Container for the header buttons (brand area on mobile sidebar) */
+    .navbar-sidebar__brand {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 0.75rem 1rem !important;
+        background: linear-gradient(180deg, rgba(20, 20, 24, 0.98) 0%, rgba(26, 26, 30, 0.95) 100%) !important;
+        border-bottom: 1px solid rgba(0, 212, 255, 0.15) !important;
+        min-height: 60px !important;
+    }
+
+    /* Close button (X icon) - IFK styled */
+    .navbar-sidebar__close {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 8px !important;
+        background: rgba(0, 212, 255, 0.08) !important;
+        border: 1px solid rgba(0, 212, 255, 0.2) !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        transition: all 0.2s ease !important;
+        cursor: pointer !important;
+    }
+
+    .navbar-sidebar__close:hover,
+    .navbar-sidebar__close:focus {
+        background: rgba(0, 212, 255, 0.15) !important;
+        border-color: rgba(0, 212, 255, 0.4) !important;
+        color: #00d4ff !important;
+        box-shadow: 0 0 12px rgba(0, 212, 255, 0.3) !important;
+    }
+
+    .navbar-sidebar__close svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    /* Theme toggle button in mobile sidebar */
+    .navbar-sidebar__brand [class*='toggle'],
+    .navbar-sidebar__brand [class*='colorModeToggle'] {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 8px !important;
+        background: rgba(255, 149, 0, 0.08) !important;
+        border: 1px solid rgba(255, 149, 0, 0.2) !important;
+        transition: all 0.2s ease !important;
+    }
+
+    .navbar-sidebar__brand [class*='toggle']:hover,
+    .navbar-sidebar__brand [class*='toggle']:focus,
+    .navbar-sidebar__brand [class*='colorModeToggle']:hover,
+    .navbar-sidebar__brand [class*='colorModeToggle']:focus {
+        background: rgba(255, 149, 0, 0.15) !important;
+        border-color: rgba(255, 149, 0, 0.4) !important;
+        box-shadow: 0 0 12px rgba(255, 149, 0, 0.3) !important;
+    }
+
+    /* Theme toggle button styling */
+    .navbar-sidebar__brand [class*='toggleButton'] {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 8px !important;
+        background: transparent !important;
+    }
+
+    .navbar-sidebar__brand [class*='toggleButton']:hover {
+        background: rgba(255, 149, 0, 0.1) !important;
+    }
+
+    /* Theme icons in mobile sidebar */
+    .navbar-sidebar__brand [class*='toggleButton'] svg {
+        width: 20px !important;
+        height: 20px !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        transition: color 0.2s ease !important;
+    }
+
+    .navbar-sidebar__brand [class*='toggleButton']:hover svg {
+        color: #ff9500 !important;
+    }
+
+    /* Clean button base reset for sidebar buttons */
+    .navbar-sidebar__brand .clean-btn {
+        background: rgba(0, 212, 255, 0.08) !important;
+        border: 1px solid rgba(0, 212, 255, 0.2) !important;
+        border-radius: 8px !important;
+        width: 44px !important;
+        height: 44px !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .navbar-sidebar__brand .clean-btn:hover {
+        background: rgba(0, 212, 255, 0.15) !important;
+        border-color: rgba(0, 212, 255, 0.4) !important;
+    }
+
+    .navbar-sidebar__brand .clean-btn svg {
+        width: 20px !important;
+        height: 20px !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+    }
+
+    .navbar-sidebar__brand .clean-btn:hover svg {
+        color: #00d4ff !important;
+    }
 }
 
 /* ============================================================================
@@ -1155,5 +1303,66 @@ pre code {
   .navbar__title {
     font-size: 0.875rem !important;
     letter-spacing: -0.01em !important;
+  }
+}
+
+/* ============================================================================
+   MOBILE SIDEBAR - Light Mode Adjustments
+   ============================================================================ */
+@media (max-width: 996px) {
+  [data-theme='light'] .navbar-sidebar__brand {
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%) !important;
+    border-bottom: 1px solid rgba(0, 168, 204, 0.25) !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__close {
+    background: rgba(0, 168, 204, 0.1) !important;
+    border: 1px solid rgba(0, 168, 204, 0.3) !important;
+    color: #333 !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__close:hover,
+  [data-theme='light'] .navbar-sidebar__close:focus {
+    background: rgba(0, 168, 204, 0.2) !important;
+    border-color: rgba(0, 168, 204, 0.5) !important;
+    color: #00a8cc !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__brand [class*='toggle'],
+  [data-theme='light'] .navbar-sidebar__brand [class*='colorModeToggle'] {
+    background: rgba(204, 119, 0, 0.1) !important;
+    border: 1px solid rgba(204, 119, 0, 0.3) !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__brand [class*='toggle']:hover,
+  [data-theme='light'] .navbar-sidebar__brand [class*='colorModeToggle']:hover {
+    background: rgba(204, 119, 0, 0.2) !important;
+    border-color: rgba(204, 119, 0, 0.5) !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__brand [class*='toggleButton'] svg {
+    color: #333 !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__brand [class*='toggleButton']:hover svg {
+    color: #cc7700 !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__brand .clean-btn {
+    background: rgba(0, 168, 204, 0.1) !important;
+    border: 1px solid rgba(0, 168, 204, 0.3) !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__brand .clean-btn:hover {
+    background: rgba(0, 168, 204, 0.2) !important;
+    border-color: rgba(0, 168, 204, 0.5) !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__brand .clean-btn svg {
+    color: #333 !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__brand .clean-btn:hover svg {
+    color: #00a8cc !important;
   }
 }

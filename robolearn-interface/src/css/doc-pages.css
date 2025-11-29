@@ -1,8 +1,8 @@
 /**
  * ============================================================================
- * DOC PAGES PREMIUM STYLING
- * Enhances chapter/doc pages to match the beautiful main page design
- * Polar Night Theme - Consistent for Light & Dark Modes
+ * DOC PAGES — Industrial-Kinetic Futurism Theme
+ * Matches the homepage Neural Command Center aesthetic
+ * Dark industrial foundation with kinetic cyan/amber accents
  * ============================================================================
  */
 
@@ -61,11 +61,12 @@ article {
 .markdown {
   line-height: 1.8;
   font-size: 1.0625rem;
-  color: #2c3e50;
+  color: var(--ifk-text-secondary);
+  font-family: var(--ifk-font-body);
 }
 
 [data-theme='dark'] .markdown {
-  color: #d0d0d0;
+  color: var(--ifk-text-secondary);
 }
 
 /* Optimal reading width for paragraphs */
@@ -87,17 +88,18 @@ article {
 }
 
 /* ============================================================================
-   2. PREMIUM HEADING STYLES (Matching Homepage Design)
+   2. PREMIUM HEADING STYLES — Industrial-Kinetic Futurism
    ============================================================================ */
 
-/* H1 - Gradient effect like homepage */
+/* H1 - Gradient effect with cyan accent */
 .markdown h1 {
+  font-family: var(--ifk-font-display);
   font-size: 2.75rem;
   font-weight: 700;
   line-height: 1.2;
   margin-top: 0;
   margin-bottom: 2rem;
-  background: linear-gradient(135deg, #001f3f 0%, #003366 100%);
+  background: linear-gradient(135deg, var(--ifk-text-primary) 0%, var(--ifk-cyan) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -105,195 +107,147 @@ article {
   letter-spacing: -0.02em;
 }
 
-[data-theme='dark'] .markdown h1 {
-  background: linear-gradient(135deg, #DDDDDD 0%, #AAAAAA 50%, #FFFFFF 100%);
+[data-theme='light'] .markdown h1 {
+  background: linear-gradient(135deg, var(--ifk-text-primary) 0%, var(--ifk-cyan-dark) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* H1 decorative underline */
+/* H1 decorative underline - cyan gradient */
 .markdown h1::after {
   content: '';
   display: block;
   width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, #001f3f 0%, #003366 100%);
+  height: 3px;
+  background: linear-gradient(90deg, var(--ifk-cyan) 0%, transparent 100%);
   margin-top: 1rem;
   border-radius: 2px;
 }
 
-[data-theme='dark'] .markdown h1::after {
-  background: linear-gradient(90deg, #AAAAAA 0%, #888888 100%);
-}
-
 /* H2 - Accent underline */
 .markdown h2 {
+  font-family: var(--ifk-font-display);
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.3;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
-  color: #001f3f;
+  color: var(--ifk-text-primary);
   position: relative;
   padding-bottom: 0.75rem;
-  border-bottom: 3px solid rgba(0, 31, 63, 0.15);
+  border-bottom: 1px solid var(--ifk-border);
   letter-spacing: -0.01em;
 }
 
-[data-theme='dark'] .markdown h2 {
-  color: #DDDDDD;
-  border-bottom-color: rgba(170, 170, 170, 0.2);
-}
-
-/* H2 decorative element */
+/* H2 decorative element - cyan accent line */
 .markdown h2::before {
   content: '';
   position: absolute;
-  bottom: -3px;
+  bottom: -1px;
   left: 0;
   width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #001f3f 0%, #003366 100%);
+  height: 2px;
+  background: linear-gradient(90deg, var(--ifk-cyan) 0%, var(--ifk-cyan-dark) 100%);
   border-radius: 2px;
 }
 
-[data-theme='dark'] .markdown h2::before {
-  background: linear-gradient(90deg, #AAAAAA 0%, #DDDDDD 100%);
-}
-
-/* H3 - Subtle styling */
+/* H3 - Subtle styling with left border */
 .markdown h3 {
+  font-family: var(--ifk-font-display);
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.4;
   margin-top: 2.5rem;
   margin-bottom: 1.25rem;
-  color: #002952;
+  color: var(--ifk-text-primary);
   position: relative;
   padding-left: 1rem;
 }
 
-[data-theme='dark'] .markdown h3 {
-  color: #CCCCCC;
-}
-
-/* H3 left border accent */
+/* H3 left border accent - cyan gradient */
 .markdown h3::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: linear-gradient(180deg, #001f3f 0%, #003366 100%);
+  top: 0.2em;
+  bottom: 0.2em;
+  width: 3px;
+  background: linear-gradient(180deg, var(--ifk-cyan) 0%, var(--ifk-cyan-dark) 100%);
   border-radius: 2px;
-}
-
-[data-theme='dark'] .markdown h3::before {
-  background: linear-gradient(180deg, #AAAAAA 0%, #888888 100%);
 }
 
 /* H4, H5, H6 - Consistent styling */
 .markdown h4 {
+  font-family: var(--ifk-font-display);
   font-size: 1.25rem;
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  color: #003366;
-}
-
-[data-theme='dark'] .markdown h4 {
-  color: #BBBBBB;
+  color: var(--ifk-text-primary);
 }
 
 .markdown h5 {
+  font-family: var(--ifk-font-display);
   font-size: 1.125rem;
   font-weight: 600;
   margin-top: 1.75rem;
   margin-bottom: 0.875rem;
-  color: #004080;
-}
-
-[data-theme='dark'] .markdown h5 {
-  color: #AAAAAA;
+  color: var(--ifk-text-secondary);
 }
 
 .markdown h6 {
+  font-family: var(--ifk-font-display);
   font-size: 1rem;
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
-  color: #002952;
+  color: var(--ifk-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-[data-theme='dark'] .markdown h6 {
-  color: #999999;
+  letter-spacing: 0.08em;
 }
 
 /* Anchor links hover effect */
-.markdown h1 .header-anchor,
-.markdown h2 .header-anchor,
-.markdown h3 .header-anchor,
-.markdown h4 .header-anchor,
-.markdown h5 .header-anchor,
-.markdown h6 .header-anchor {
+.markdown h1 .hash-link,
+.markdown h2 .hash-link,
+.markdown h3 .hash-link,
+.markdown h4 .hash-link,
+.markdown h5 .hash-link,
+.markdown h6 .hash-link {
   opacity: 0;
   transition: opacity 0.2s ease;
-  color: #001f3f;
+  color: var(--ifk-cyan);
 }
 
-[data-theme='dark'] .markdown h1 .header-anchor,
-[data-theme='dark'] .markdown h2 .header-anchor,
-[data-theme='dark'] .markdown h3 .header-anchor,
-[data-theme='dark'] .markdown h4 .header-anchor,
-[data-theme='dark'] .markdown h5 .header-anchor,
-[data-theme='dark'] .markdown h6 .header-anchor {
-  color: #AAAAAA;
-}
-
-.markdown h1:hover .header-anchor,
-.markdown h2:hover .header-anchor,
-.markdown h3:hover .header-anchor,
-.markdown h4:hover .header-anchor,
-.markdown h5:hover .header-anchor,
-.markdown h6:hover .header-anchor {
+.markdown h1:hover .hash-link,
+.markdown h2:hover .hash-link,
+.markdown h3:hover .hash-link,
+.markdown h4:hover .hash-link,
+.markdown h5:hover .hash-link,
+.markdown h6:hover .hash-link {
   opacity: 1;
 }
 
 /* ============================================================================
-   3. ENHANCED LINKS
+   3. ENHANCED LINKS — Cyan Accent
    ============================================================================ */
 
 .markdown a {
-  color: #001f3f;
+  color: var(--ifk-cyan);
   text-decoration: none;
-  border-bottom: 1px solid rgba(0, 31, 63, 0.3);
+  border-bottom: 1px solid var(--ifk-cyan-subtle);
   transition: all 0.2s ease;
   font-weight: 500;
 }
 
-[data-theme='dark'] .markdown a {
-  color: #AAAAAA;
-  border-bottom-color: rgba(170, 170, 170, 0.4);
-}
-
 .markdown a:hover {
-  color: #003366;
-  border-bottom-color: #001f3f;
-  background: rgba(0, 31, 63, 0.05);
-}
-
-[data-theme='dark'] .markdown a:hover {
-  color: #DDDDDD;
-  border-bottom-color: #AAAAAA;
-  background: rgba(170, 170, 170, 0.1);
+  color: var(--ifk-cyan-light);
+  border-bottom-color: var(--ifk-cyan);
+  background: var(--ifk-cyan-subtle);
 }
 
 /* ============================================================================
-   4. ENHANCED LISTS
+   4. ENHANCED LISTS — Industrial Bullets
    ============================================================================ */
 
 .markdown ul,
@@ -312,23 +266,20 @@ article {
   margin-bottom: 0;
 }
 
-/* Custom bullets for unordered lists */
+/* Custom bullets for unordered lists - cyan chevrons */
 .markdown ul > li {
   list-style: none;
   padding-left: 0.5rem;
 }
 
 .markdown ul > li::before {
-  content: '▸';
+  content: '>';
   position: absolute;
   left: -1.5rem;
-  color: #001f3f;
+  color: var(--ifk-cyan);
+  font-family: var(--ifk-font-display);
   font-weight: 700;
-  font-size: 1.1em;
-}
-
-[data-theme='dark'] .markdown ul > li::before {
-  color: #AAAAAA;
+  font-size: 0.9em;
 }
 
 /* Enhanced ordered lists */
@@ -345,15 +296,12 @@ article {
   content: counter(item) ".";
   position: absolute;
   left: -2rem;
-  color: #001f3f;
-  font-weight: 700;
+  color: var(--ifk-cyan);
+  font-family: var(--ifk-font-display);
+  font-weight: 600;
   font-size: 0.95em;
   width: 1.5rem;
   text-align: right;
-}
-
-[data-theme='dark'] .markdown ol > li::before {
-  color: #AAAAAA;
 }
 
 /* Nested lists */
@@ -364,27 +312,24 @@ article {
 }
 
 /* ============================================================================
-   5. BLOCKQUOTES - PREMIUM STYLING
+   5. BLOCKQUOTES — Neural Interface Style
    ============================================================================ */
 
 .markdown blockquote {
   margin: 2rem 0;
   padding: 1.5rem 2rem;
-  background: linear-gradient(135deg, rgba(0, 31, 63, 0.03) 0%, rgba(0, 31, 63, 0.06) 100%);
-  border-left: 4px solid #001f3f;
+  background: linear-gradient(135deg, var(--ifk-cyan-subtle) 0%, rgba(0, 212, 255, 0.03) 100%);
+  border-left: 3px solid var(--ifk-cyan);
   border-radius: 0 8px 8px 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--ifk-shadow-sm);
   position: relative;
   font-size: 1.0625rem;
   line-height: 1.8;
-  color: #2c3e50;
+  color: var(--ifk-text-secondary);
 }
 
-[data-theme='dark'] .markdown blockquote {
-  background: linear-gradient(135deg, rgba(170, 170, 170, 0.05) 0%, rgba(170, 170, 170, 0.08) 100%);
-  border-left-color: #AAAAAA;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-  color: #d0d0d0;
+[data-theme='light'] .markdown blockquote {
+  background: linear-gradient(135deg, var(--ifk-cyan-subtle) 0%, rgba(0, 119, 204, 0.03) 100%);
 }
 
 .markdown blockquote p {
@@ -395,54 +340,47 @@ article {
   margin-bottom: 0;
 }
 
-/* Blockquote decorative element */
+/* Blockquote decorative element - terminal style */
 .markdown blockquote::before {
-  content: '"';
+  content: '//';
   position: absolute;
-  top: -0.25rem;
+  top: 1rem;
   left: 0.75rem;
-  font-size: 4rem;
-  color: rgba(0, 31, 63, 0.15);
-  font-family: Georgia, serif;
+  font-family: var(--ifk-font-display);
+  font-size: 1.5rem;
+  color: var(--ifk-cyan);
+  opacity: 0.4;
   line-height: 1;
 }
 
-[data-theme='dark'] .markdown blockquote::before {
-  color: rgba(170, 170, 170, 0.2);
-}
-
 /* ============================================================================
-   6. CODE BLOCKS - ENHANCED STYLING
+   6. CODE BLOCKS — Terminal Aesthetic
    ============================================================================ */
 
 /* Inline code */
 .markdown code {
-  background: rgba(0, 31, 63, 0.08);
-  color: #001f3f;
+  background: var(--ifk-cyan-subtle);
+  color: var(--ifk-cyan-light);
   padding: 0.2em 0.5em;
   border-radius: 4px;
   font-size: 0.9em;
-  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
-  border: 1px solid rgba(0, 31, 63, 0.12);
+  font-family: var(--ifk-font-display);
+  border: 1px solid var(--ifk-sidebar-border);
   font-weight: 500;
 }
 
-[data-theme='dark'] .markdown code {
-  background: rgba(170, 170, 170, 0.12);
-  color: #DDDDDD;
-  border-color: rgba(170, 170, 170, 0.2);
+[data-theme='light'] .markdown code {
+  background: var(--ifk-cyan-subtle);
+  color: var(--ifk-cyan-dark);
 }
 
 /* Code blocks */
 .markdown pre {
   margin: 2rem 0;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--ifk-shadow-md);
   overflow: hidden;
-}
-
-[data-theme='dark'] .markdown pre {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--ifk-sidebar-border);
 }
 
 .markdown pre code {
@@ -451,15 +389,17 @@ article {
   padding: 0;
   font-size: 0.9rem;
   line-height: 1.6;
+  color: var(--ifk-text-secondary);
 }
 
 /* Code block wrapper */
 .prism-code {
   padding: 1.5rem !important;
+  background: var(--ifk-bg-secondary) !important;
 }
 
 /* ============================================================================
-   7. TABLES - PROFESSIONAL STYLING
+   7. TABLES — Data Grid Style
    ============================================================================ */
 
 .markdown table {
@@ -468,48 +408,35 @@ article {
   border-collapse: collapse;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--ifk-shadow-sm);
   font-size: 0.95rem;
-}
-
-[data-theme='dark'] .markdown table {
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--ifk-sidebar-border);
 }
 
 .markdown thead {
-  background: linear-gradient(135deg, #001f3f 0%, #002952 100%);
-  color: white;
-}
-
-[data-theme='dark'] .markdown thead {
-  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-  color: #DDDDDD;
+  background: linear-gradient(135deg, var(--ifk-bg-tertiary) 0%, var(--ifk-bg-secondary) 100%);
+  color: var(--ifk-text-primary);
 }
 
 .markdown th {
   padding: 1rem 1.5rem;
   text-align: left;
+  font-family: var(--ifk-font-display);
   font-weight: 600;
   letter-spacing: 0.02em;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 2px solid var(--ifk-cyan);
+  font-size: 0.85rem;
+  text-transform: uppercase;
 }
 
 .markdown td {
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid rgba(0, 31, 63, 0.1);
+  border-bottom: 1px solid var(--ifk-border);
 }
 
-[data-theme='dark'] .markdown td {
-  border-bottom-color: rgba(170, 170, 170, 0.1);
-}
-
-/* Zebra striping */
+/* Zebra striping with subtle cyan */
 .markdown tbody tr:nth-child(even) {
-  background: rgba(0, 31, 63, 0.03);
-}
-
-[data-theme='dark'] .markdown tbody tr:nth-child(even) {
-  background: rgba(170, 170, 170, 0.03);
+  background: var(--ifk-cyan-subtle);
 }
 
 /* Hover effect */
@@ -518,15 +445,11 @@ article {
 }
 
 .markdown tbody tr:hover {
-  background: rgba(0, 31, 63, 0.06);
-}
-
-[data-theme='dark'] .markdown tbody tr:hover {
-  background: rgba(170, 170, 170, 0.08);
+  background: var(--ifk-sidebar-item-hover);
 }
 
 /* ============================================================================
-   8. HORIZONTAL RULES
+   8. HORIZONTAL RULES — Scan Line
    ============================================================================ */
 
 .markdown hr {
@@ -534,90 +457,66 @@ article {
   height: 1px;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(0, 31, 63, 0.3) 10%,
-    rgba(0, 31, 63, 0.5) 50%,
-    rgba(0, 31, 63, 0.3) 90%,
+    var(--ifk-cyan) 20%,
+    var(--ifk-cyan-light) 50%,
+    var(--ifk-cyan) 80%,
     transparent 100%
   );
   margin: 3rem 0;
-}
-
-[data-theme='dark'] .markdown hr {
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(170, 170, 170, 0.2) 10%,
-    rgba(170, 170, 170, 0.3) 50%,
-    rgba(170, 170, 170, 0.2) 90%,
-    transparent 100%
-  );
+  opacity: 0.5;
 }
 
 /* ============================================================================
-   9. ADMONITIONS / CALLOUT BOXES
+   9. ADMONITIONS / CALLOUT BOXES — HUD Panels
    ============================================================================ */
 
 .admonition {
   margin: 2rem 0;
   padding: 1.5rem;
   border-radius: 8px;
-  border-left: 4px solid;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  background: white;
+  border-left: 3px solid;
+  box-shadow: var(--ifk-shadow-sm);
+  background: var(--ifk-bg-secondary);
 }
 
-[data-theme='dark'] .admonition {
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-  background: #1a1a1a;
-}
-
-/* Note - Blue */
+/* Note - Cyan (info) */
 .admonition-note {
-  border-left-color: #2196F3;
-  background: linear-gradient(135deg, rgba(33, 150, 243, 0.05) 0%, rgba(33, 150, 243, 0.08) 100%);
+  border-left-color: var(--ifk-cyan);
+  background: linear-gradient(135deg, var(--ifk-cyan-subtle) 0%, var(--ifk-bg-secondary) 100%);
 }
 
-[data-theme='dark'] .admonition-note {
-  background: linear-gradient(135deg, rgba(33, 150, 243, 0.1) 0%, rgba(33, 150, 243, 0.05) 100%);
-}
-
-/* Tip - Green */
+/* Tip - Green (success) */
 .admonition-tip {
-  border-left-color: #4CAF50;
-  background: linear-gradient(135deg, rgba(76, 175, 80, 0.05) 0%, rgba(76, 175, 80, 0.08) 100%);
+  border-left-color: #22c55e;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, var(--ifk-bg-secondary) 100%);
 }
 
-[data-theme='dark'] .admonition-tip {
-  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.05) 100%);
-}
-
-/* Warning - Orange */
+/* Warning - Amber */
 .admonition-warning {
-  border-left-color: #FF9800;
-  background: linear-gradient(135deg, rgba(255, 152, 0, 0.05) 0%, rgba(255, 152, 0, 0.08) 100%);
-}
-
-[data-theme='dark'] .admonition-warning {
-  background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(255, 152, 0, 0.05) 100%);
+  border-left-color: var(--ifk-amber);
+  background: linear-gradient(135deg, var(--ifk-amber-subtle) 0%, var(--ifk-bg-secondary) 100%);
 }
 
 /* Danger - Red */
 .admonition-danger {
-  border-left-color: #F44336;
-  background: linear-gradient(135deg, rgba(244, 67, 54, 0.05) 0%, rgba(244, 67, 54, 0.08) 100%);
-}
-
-[data-theme='dark'] .admonition-danger {
-  background: linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, rgba(244, 67, 54, 0.05) 100%);
+  border-left-color: #ef4444;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, var(--ifk-bg-secondary) 100%);
 }
 
 /* Info - Cyan */
 .admonition-info {
-  border-left-color: #00BCD4;
-  background: linear-gradient(135deg, rgba(0, 188, 212, 0.05) 0%, rgba(0, 188, 212, 0.08) 100%);
+  border-left-color: var(--ifk-cyan);
+  background: linear-gradient(135deg, var(--ifk-cyan-subtle) 0%, var(--ifk-bg-secondary) 100%);
 }
 
-[data-theme='dark'] .admonition-info {
-  background: linear-gradient(135deg, rgba(0, 188, 212, 0.1) 0%, rgba(0, 188, 212, 0.05) 100%);
+/* Admonition title */
+.admonition-heading {
+  font-family: var(--ifk-font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
 }
 
 /* ============================================================================
@@ -628,22 +527,15 @@ article {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--ifk-shadow-md);
   margin: 2rem 0;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-[data-theme='dark'] .markdown img {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--ifk-sidebar-border);
 }
 
 .markdown img:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-[data-theme='dark'] .markdown img:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--ifk-shadow-lg), 0 0 20px var(--ifk-cyan-subtle);
 }
 
 /* ============================================================================
@@ -652,106 +544,113 @@ article {
 
 .markdown strong {
   font-weight: 700;
-  color: #001f3f;
-}
-
-[data-theme='dark'] .markdown strong {
-  color: #DDDDDD;
+  color: var(--ifk-text-primary);
 }
 
 .markdown em {
   font-style: italic;
-  color: #002952;
-}
-
-[data-theme='dark'] .markdown em {
-  color: #CCCCCC;
+  color: var(--ifk-cyan-light);
 }
 
 /* ============================================================================
-   12. PAGINATION & NAVIGATION
+   12. PAGINATION & NAVIGATION — Control Panel Buttons
    ============================================================================ */
 
 .pagination-nav {
   margin-top: 4rem;
   padding-top: 2rem;
-  border-top: 2px solid rgba(0, 31, 63, 0.1);
-}
-
-[data-theme='dark'] .pagination-nav {
-  border-top-color: rgba(170, 170, 170, 0.15);
+  border-top: 1px solid var(--ifk-border);
 }
 
 .pagination-nav__link {
-  border: 2px solid rgba(0, 31, 63, 0.15);
+  border: 1px solid var(--ifk-sidebar-border);
   border-radius: 8px;
   padding: 1.5rem;
   transition: all 0.3s ease;
-  background: white;
-}
-
-[data-theme='dark'] .pagination-nav__link {
-  border-color: rgba(170, 170, 170, 0.2);
-  background: #1a1a1a;
+  background: var(--ifk-bg-secondary);
 }
 
 .pagination-nav__link:hover {
-  border-color: #001f3f;
-  background: rgba(0, 31, 63, 0.03);
+  border-color: var(--ifk-cyan);
+  background: var(--ifk-sidebar-item-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--ifk-shadow-cyan);
 }
 
-[data-theme='dark'] .pagination-nav__link:hover {
-  border-color: #AAAAAA;
-  background: rgba(170, 170, 170, 0.05);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+.pagination-nav__sublabel {
+  font-family: var(--ifk-font-display);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ifk-text-muted);
 }
 
 .pagination-nav__label {
+  font-family: var(--ifk-font-body);
   font-weight: 600;
-  color: #001f3f;
+  color: var(--ifk-text-primary);
 }
 
-[data-theme='dark'] .pagination-nav__label {
-  color: #DDDDDD;
+.pagination-nav__link:hover .pagination-nav__label {
+  color: var(--ifk-cyan);
 }
 
 /* ============================================================================
-   13. TABLE OF CONTENTS (TOC)
+   13. TABLE OF CONTENTS (TOC) — Mission Objectives
    ============================================================================ */
 
 .table-of-contents {
   font-size: 0.9rem;
+  font-family: var(--ifk-font-body);
 }
 
 .table-of-contents__link {
-  color: #003366;
+  color: var(--ifk-text-muted);
   transition: all 0.2s ease;
   border-left: 2px solid transparent;
   padding-left: 0.75rem;
 }
 
-[data-theme='dark'] .table-of-contents__link {
-  color: #AAAAAA;
-}
-
 .table-of-contents__link:hover,
 .table-of-contents__link--active {
-  color: #001f3f;
-  border-left-color: #001f3f;
-  background: rgba(0, 31, 63, 0.05);
-}
-
-[data-theme='dark'] .table-of-contents__link:hover,
-[data-theme='dark'] .table-of-contents__link--active {
-  color: #DDDDDD;
-  border-left-color: #AAAAAA;
-  background: rgba(170, 170, 170, 0.08);
+  color: var(--ifk-cyan);
+  border-left-color: var(--ifk-cyan);
+  background: var(--ifk-cyan-subtle);
 }
 
 /* ============================================================================
-   14. RESPONSIVE ADJUSTMENTS
+   14. DOC PAGE BACKGROUND — Subtle Grid Pattern
+   ============================================================================ */
+
+.theme-doc-markdown {
+  position: relative;
+}
+
+/* Optional: Add subtle grid pattern to match homepage */
+.docMainContainer_gTbr::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+[data-theme='light'] .docMainContainer_gTbr::before {
+  background-image:
+    linear-gradient(rgba(0, 119, 204, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 119, 204, 0.03) 1px, transparent 1px);
+}
+
+/* ============================================================================
+   15. RESPONSIVE ADJUSTMENTS
    ============================================================================ */
 
 @media screen and (max-width: 996px) {
@@ -820,7 +719,7 @@ article {
 
   .markdown h1::after {
     width: 60px;
-    height: 3px;
+    height: 2px;
     margin-top: 0.75rem;
   }
 
@@ -893,5 +792,25 @@ article {
 
   .admonition {
     padding: 1.25rem;
+  }
+}
+
+/* ============================================================================
+   16. REDUCED MOTION
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .markdown img:hover {
+    transform: none;
+  }
+
+  .pagination-nav__link:hover {
+    transform: none;
+  }
+
+  .markdown a,
+  .table-of-contents__link,
+  .pagination-nav__link {
+    transition: none;
   }
 }

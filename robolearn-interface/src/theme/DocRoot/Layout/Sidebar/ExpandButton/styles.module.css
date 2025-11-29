@@ -1,0 +1,58 @@
+/* IFK Sidebar Expand Button */
+
+@media (min-width: 997px) {
+  .expandButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, rgba(30, 30, 34, 0.95) 0%, rgba(20, 20, 24, 0.98) 100%);
+    border-left: 1px solid rgba(0, 212, 255, 0.15);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .expandButton:hover,
+  .expandButton:focus {
+    background: linear-gradient(90deg, rgba(0, 212, 255, 0.12) 0%, rgba(0, 212, 255, 0.08) 100%);
+    border-left-color: rgba(0, 212, 255, 0.3);
+  }
+
+  .expandButton:hover .expandButtonIcon,
+  .expandButton:focus .expandButtonIcon {
+    color: #00d4ff;
+    filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.5));
+  }
+
+  .expandButtonIcon {
+    width: 22px;
+    height: 22px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+  }
+
+  /* Light theme overrides */
+  [data-theme='light'] .expandButton {
+    background: linear-gradient(90deg, #f8f9fa 0%, #ffffff 100%);
+    border-left: 1px solid rgba(0, 168, 204, 0.25);
+  }
+
+  [data-theme='light'] .expandButton:hover,
+  [data-theme='light'] .expandButton:focus {
+    background: linear-gradient(90deg, rgba(0, 168, 204, 0.1) 0%, rgba(0, 168, 204, 0.05) 100%);
+    border-left-color: rgba(0, 168, 204, 0.4);
+  }
+
+  [data-theme='light'] .expandButtonIcon {
+    color: #555;
+  }
+
+  [data-theme='light'] .expandButton:hover .expandButtonIcon,
+  [data-theme='light'] .expandButton:focus .expandButtonIcon {
+    color: #00a8cc;
+  }
+}

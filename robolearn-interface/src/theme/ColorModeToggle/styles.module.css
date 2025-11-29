@@ -1,0 +1,52 @@
+/* IFK Theme Toggle - Simple Dark/Light Switch */
+
+.toggle {
+  width: 2rem;
+  height: 2rem;
+}
+
+.toggleButton {
+  -webkit-tap-highlight-color: transparent;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  background: transparent;
+}
+
+.toggleButton:hover {
+  background: rgba(255, 149, 0, 0.15);
+}
+
+.toggleIcon {
+  width: 20px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.2s ease;
+}
+
+.toggleButton:hover .toggleIcon {
+  color: #ff9500;
+  filter: drop-shadow(0 0 4px rgba(255, 149, 0, 0.5));
+}
+
+/* Light mode adjustments */
+[data-theme='light'] .toggleIcon {
+  color: #333;
+}
+
+[data-theme='light'] .toggleButton:hover {
+  background: rgba(255, 149, 0, 0.1);
+}
+
+[data-theme='light'] .toggleButton:hover .toggleIcon {
+  color: #cc7700;
+}
+
+.toggleButtonDisabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
