@@ -1,18 +1,12 @@
 import { createAuthClient } from "better-auth/react";
 
-// Auth server URL - defaults to localhost for development
-const AUTH_URL = typeof window !== 'undefined'
-  ? (window as unknown as { __DOCUSAURUS__?: { siteConfig?: { customFields?: { authUrl?: string } } } }).__DOCUSAURUS__?.siteConfig?.customFields?.authUrl || "http://localhost:3001"
-  : "http://localhost:3001";
+// Default fallbacks for development
+const DEFAULT_AUTH_URL = "http://localhost:3001";
+const DEFAULT_CLIENT_ID = "robolearn-interface";
 
-// OAuth client configuration for robolearn-interface (public client with PKCE)
-const OAUTH_CLIENT_ID = "robolearn-interface";
-const OAUTH_REDIRECT_URI = typeof window !== 'undefined'
-  ? `${window.location.origin}/auth/callback`
-  : "http://localhost:3000/auth/callback";
-
+// Create auth client with default URL (will be overridden in components using useDocusaurusContext)
 export const authClient = createAuthClient({
-  baseURL: AUTH_URL,
+  baseURL: DEFAULT_AUTH_URL,
 });
 
 export const { signIn, signUp, signOut, useSession } = authClient;
@@ -45,8 +39,22 @@ function base64UrlEncode(buffer: Uint8Array): string {
     .replace(/=+$/, '');
 }
 
+// OAuth config type for components to pass in
+export interface OAuthConfig {
+  authUrl?: string;
+  clientId?: string;
+  redirectUri?: string;
+}
+
 // OAuth2 Authorization URL builder with PKCE
-export async function getOAuthAuthorizationUrl(state?: string): Promise<string> {
+// Config should be passed from component using useDocusaurusContext
+export async function getOAuthAuthorizationUrl(state?: string, config?: OAuthConfig): Promise<string> {
+  const authUrl = config?.authUrl || DEFAULT_AUTH_URL;
+  const clientId = config?.clientId || DEFAULT_CLIENT_ID;
+  const redirectUri = config?.redirectUri || (typeof window !== 'undefined'
+    ? `${window.location.origin}/auth/callback`
+    : "http://localhost:3000/auth/callback");
+
   // Generate PKCE code verifier and challenge
   const codeVerifier = generateCodeVerifier();
   const codeChallenge = await generateCodeChallenge(codeVerifier);
@@ -59,8 +67,8 @@ export async function getOAuthAuthorizationUrl(state?: string): Promise<string> 
   }
 
   const params = new URLSearchParams({
-    client_id: OAUTH_CLIENT_ID,
-    redirect_uri: OAUTH_REDIRECT_URI,
+    client_id: clientId,
+    redirect_uri: redirectUri,
     response_type: "code",
     scope: "openid profile email",
     state: state || Math.random().toString(36).substring(7),
@@ -68,22 +76,25 @@ export async function getOAuthAuthorizationUrl(state?: string): Promise<string> 
     code_challenge_method: "S256",
   });
 
-  return `${AUTH_URL}/api/auth/oauth2/authorize?${params.toString()}`;
+  return `${authUrl}/api/auth/oauth2/authorize?${params.toString()}`;
 }
 
 // Token refresh function
-export async function refreshAccessToken(): Promise<string | null> {
+export async function refreshAccessToken(config?: OAuthConfig): Promise<string | null> {
   const refreshToken = localStorage.getItem('robolearn_refresh_token');
   if (!refreshToken) return null;
 
+  const authUrl = config?.authUrl || DEFAULT_AUTH_URL;
+  const clientId = config?.clientId || DEFAULT_CLIENT_ID;
+
   try {
-    const response = await fetch(`${AUTH_URL}/api/auth/oauth2/token`, {
+    const response = await fetch(`${authUrl}/api/auth/oauth2/token`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({
         grant_type: 'refresh_token',
         refresh_token: refreshToken,
-        client_id: OAUTH_CLIENT_ID,
+        client_id: clientId,
       }),
     });
 
@@ -100,10 +111,3 @@ export async function refreshAccessToken(): Promise<string | null> {
   }
   return null;
 }
-
-// Export OAuth config for use in components
-export const oauthConfig = {
-  clientId: OAUTH_CLIENT_ID,
-  redirectUri: OAUTH_REDIRECT_URI,
-  authUrl: AUTH_URL,
-};

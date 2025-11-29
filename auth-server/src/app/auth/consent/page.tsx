@@ -35,8 +35,8 @@ function ConsentContent() {
         consent_code: consentCode,
       });
 
-      if (result.data?.redirectTo) {
-        window.location.href = result.data.redirectTo;
+      if (result.data?.redirectURI) {
+        window.location.href = result.data.redirectURI;
       }
     } catch (error) {
       console.error("Consent error:", error);

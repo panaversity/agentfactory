@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.0",
+    "bcryptjs": "^3.0.3",
     "better-auth": "^1.4.4-beta.2",
     "drizzle-orm": "^0.36.0",
     "next": "^15.1.0",
+    "nodemailer": "^7.0.11",
     "playwright": "^1.57.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -23,7 +25,9 @@
     "zod": "^3.23.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^3.0.0",
     "@types/node": "^22.0.0",
+    "@types/nodemailer": "^7.0.4",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.0",

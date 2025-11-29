@@ -6,11 +6,11 @@ import { admin } from "@/lib/auth-client";
 interface User {
   id: string;
   email: string;
-  name: string | null;
-  role: string;
-  banned: boolean;
-  banReason: string | null;
-  createdAt: string;
+  name?: string | null;
+  role?: string;
+  banned?: boolean | null;
+  banReason?: string | null;
+  createdAt: Date;
 }
 
 export default function UsersPage() {
@@ -62,7 +62,7 @@ export default function UsersPage() {
     }
   };
 
-  const handleSetRole = async (userId: string, role: string) => {
+  const handleSetRole = async (userId: string, role: "user" | "admin") => {
     setActionLoading(userId);
     try {
       await admin.setRole({
@@ -148,7 +148,7 @@ export default function UsersPage() {
                 <td className="px-6 py-4 whitespace-nowrap">
                   <select
                     value={user.role || "user"}
-                    onChange={(e) => handleSetRole(user.id, e.target.value)}
+                    onChange={(e) => handleSetRole(user.id, e.target.value as "user" | "admin")}
                     disabled={actionLoading === user.id}
                     className="text-sm border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
@@ -159,22 +159,22 @@ export default function UsersPage() {
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span
                     className={`px-2 py-1 text-xs font-medium rounded ${
-                      user.banned
+                      user.banned === true
                         ? "bg-red-100 text-red-800"
                         : "bg-green-100 text-green-800"
                     }`}
                   >
-                    {user.banned ? "Banned" : "Active"}
+                    {user.banned === true ? "Banned" : "Active"}
                   </span>
                   {user.banReason && (
                     <p className="text-xs text-gray-500 mt-1">{user.banReason}</p>
                   )}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {new Date(user.createdAt).toLocaleDateString()}
+                  {user.createdAt.toLocaleDateString()}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  {user.banned ? (
+                  {user.banned === true ? (
                     <button
                       onClick={() => handleBanUser(user.id, false)}
                       disabled={actionLoading === user.id}

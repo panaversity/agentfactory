@@ -1,11 +1,11 @@
-import { SignUpForm } from "@/components/sign-up-form";
 import { Suspense } from "react";
+import { ResendVerificationForm } from "@/components/resend-verification-form";
 
-export default function SignUpPage() {
+export default function ResendVerificationPage() {
   return (
     <div>
       <h2 className="text-2xl font-semibold text-gray-900 text-center mb-6">
-        Create your account
+        Resend Verification Email
       </h2>
       <Suspense
         fallback={
@@ -14,7 +14,7 @@ export default function SignUpPage() {
           </div>
         }
       >
-        <SignUpForm />
+        <ResendVerificationForm />
       </Suspense>
     </div>
   );

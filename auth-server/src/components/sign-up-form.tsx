@@ -20,7 +20,14 @@ export function SignUpForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
 
-  // Get redirect URL from query params (for OAuth flow)
+  // Check for OAuth parameters or redirect param
+  const clientId = searchParams.get("client_id");
+  const redirectUri = searchParams.get("redirect_uri");
+  const responseType = searchParams.get("response_type");
+  const scope = searchParams.get("scope");
+  const state = searchParams.get("state");
+  const codeChallenge = searchParams.get("code_challenge");
+  const codeChallengeMethod = searchParams.get("code_challenge_method");
   const redirectParam = searchParams.get("redirect");
 
   const [formData, setFormData] = useState({
@@ -67,11 +74,28 @@ export function SignUpForm() {
     setErrors({});
 
     try {
+      // If OAuth flow is active, store params for post-verification redirect
+      // This handles the case where email verification is required
+      const isOAuthFlow = clientId && redirectUri && responseType;
+      if (isOAuthFlow) {
+        localStorage.setItem("oauth_pending_params", JSON.stringify({
+          client_id: clientId,
+          redirect_uri: redirectUri,
+          response_type: responseType,
+          scope: scope || undefined,
+          state: state || undefined,
+          code_challenge: codeChallenge || undefined,
+          code_challenge_method: codeChallengeMethod || undefined,
+        }));
+      }
+
       const result = await signUp.email({
         email: formData.email,
         password: formData.password,
         name: formData.name || "",
-        callbackURL: "/",
+        // Use verify-callback for OAuth flow (handles post-verification redirect)
+        // Use "/" for direct signup
+        callbackURL: isOAuthFlow ? "/auth/verify-callback" : "/",
       });
 
       if (result.error) {
@@ -94,13 +118,31 @@ export function SignUpForm() {
         });
       }
 
-      // Check if we have an OAuth redirect URL
+      // Check if this is part of an OAuth flow
+      if (clientId && redirectUri && responseType) {
+        // Rebuild the OAuth authorization URL and continue the flow
+        // IMPORTANT: Include PKCE parameters (code_challenge, code_challenge_method)
+        const oauthParams = new URLSearchParams({
+          client_id: clientId,
+          redirect_uri: redirectUri,
+          response_type: responseType,
+          ...(scope && { scope }),
+          ...(state && { state }),
+          ...(codeChallenge && { code_challenge: codeChallenge }),
+          ...(codeChallengeMethod && { code_challenge_method: codeChallengeMethod }),
+        });
+        window.location.href = `/api/auth/oauth2/authorize?${oauthParams.toString()}`;
+        return;
+      }
+
+      // Check if we have a redirect param (e.g., from protected page)
       if (redirectParam) {
         window.location.href = redirectParam;
-      } else {
-        // Stay on auth server after direct signup
-        window.location.href = "/";
+        return;
       }
+
+      // Stay on auth server after direct signup
+      window.location.href = "/";
     } catch (error) {
       setErrors({ general: "An unexpected error occurred. Please try again." });
     } finally {
@@ -202,7 +244,10 @@ export function SignUpForm() {
 
       <p className="text-center text-sm text-gray-600">
         Already have an account?{" "}
-        <a href="/auth/sign-in" className="text-blue-600 hover:text-blue-500 font-medium">
+        <a
+          href={`/auth/sign-in${searchParams.toString() ? `?${searchParams.toString()}` : ""}`}
+          className="text-blue-600 hover:text-blue-500 font-medium"
+        >
           Sign in
         </a>
       </p>

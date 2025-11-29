@@ -8,6 +8,7 @@ interface FormErrors {
   email?: string;
   password?: string;
   general?: string;
+  needsVerification?: boolean;
 }
 
 export function SignInForm() {
@@ -62,8 +63,16 @@ export function SignInForm() {
       });
 
       if (result.error) {
-        // Generic error message for security (don't reveal which field is wrong)
-        setErrors({ general: "Invalid credentials. Please check your email and password." });
+        // Check if email needs verification (403 status)
+        if (result.error.status === 403 || result.error.message?.includes("verify")) {
+          setErrors({
+            general: "Please verify your email address before signing in.",
+            needsVerification: true,
+          });
+        } else {
+          // Generic error message for security (don't reveal which field is wrong)
+          setErrors({ general: "Invalid credentials. Please check your email and password." });
+        }
         return;
       }
 
@@ -103,8 +112,18 @@ export function SignInForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {errors.general && (
-        <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
-          <p className="text-sm text-red-600">{errors.general}</p>
+        <div className={`p-3 border rounded-lg ${errors.needsVerification ? "bg-yellow-50 border-yellow-200" : "bg-red-50 border-red-200"}`}>
+          <p className={`text-sm ${errors.needsVerification ? "text-yellow-700" : "text-red-600"}`}>
+            {errors.general}
+          </p>
+          {errors.needsVerification && (
+            <a
+              href={`/auth/resend-verification?email=${encodeURIComponent(formData.email)}${searchParams.toString() ? `&${searchParams.toString()}` : ""}`}
+              className="mt-2 inline-block text-sm text-blue-600 hover:text-blue-500 font-medium"
+            >
+              Resend verification email
+            </a>
+          )}
         </div>
       )}
 
@@ -152,12 +171,20 @@ export function SignInForm() {
         {isLoading ? "Signing in..." : "Sign in"}
       </button>
 
-      <p className="text-center text-sm text-gray-600">
-        Don't have an account?{" "}
-        <a href="/auth/sign-up" className="text-blue-600 hover:text-blue-500 font-medium">
-          Create one
+      <div className="flex items-center justify-between text-sm">
+        <a href="/auth/forgot-password" className="text-blue-600 hover:text-blue-500 font-medium">
+          Forgot password?
         </a>
-      </p>
+        <span className="text-gray-600">
+          No account?{" "}
+          <a
+            href={`/auth/sign-up${searchParams.toString() ? `?${searchParams.toString()}` : ""}`}
+            className="text-blue-600 hover:text-blue-500 font-medium"
+          >
+            Sign up
+          </a>
+        </span>
+      </div>
     </form>
   );
 }

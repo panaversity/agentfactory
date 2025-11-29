@@ -16,6 +16,11 @@ export const {
   signOut,
   useSession,
   getSession,
+  // Password reset methods
+  requestPasswordReset,
+  resetPassword,
+  // Email verification
+  sendVerificationEmail,
   // OIDC methods
   oauth2,
   // Admin methods

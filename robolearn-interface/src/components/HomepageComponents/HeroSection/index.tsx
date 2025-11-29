@@ -15,11 +15,19 @@ import styles from './styles.module.css';
 export function HeroSection(): React.ReactElement {
   const { siteConfig } = useDocusaurusContext();
   const authUrl = (siteConfig.customFields?.authUrl as string) || 'http://localhost:3001';
+  const oauthClientId = (siteConfig.customFields?.oauthClientId as string) || 'robolearn-interface';
+
+  // OAuth config from Docusaurus context
+  const oauthConfig = {
+    authUrl,
+    clientId: oauthClientId,
+  };
 
   // Handle OAuth sign up flow
-  const handleGetStarted = () => {
+  const handleGetStarted = async () => {
     // Go to sign-up page, then redirect to OAuth flow
-    const signupUrl = `${authUrl}/auth/sign-up?redirect=${encodeURIComponent(getOAuthAuthorizationUrl('signup'))}`;
+    const oauthUrl = await getOAuthAuthorizationUrl('signup', oauthConfig);
+    const signupUrl = `${authUrl}/auth/sign-up?redirect=${encodeURIComponent(oauthUrl)}`;
     window.location.href = signupUrl;
   };
 

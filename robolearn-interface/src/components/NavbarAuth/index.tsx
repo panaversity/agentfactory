@@ -8,8 +8,15 @@ export function NavbarAuth() {
   const { session, isLoading, signOut } = useAuth();
   const { siteConfig } = useDocusaurusContext();
   const authUrl = (siteConfig.customFields?.authUrl as string) || 'http://localhost:3001';
+  const oauthClientId = (siteConfig.customFields?.oauthClientId as string) || 'robolearn-interface';
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // OAuth config from Docusaurus context
+  const oauthConfig = {
+    authUrl,
+    clientId: oauthClientId,
+  };
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -24,15 +31,15 @@ export function NavbarAuth() {
 
   // Generate OAuth authorization URL for sign in (async for PKCE)
   const handleSignIn = async () => {
-    const authUrl = await getOAuthAuthorizationUrl('signin');
+    const authorizationUrl = await getOAuthAuthorizationUrl('signin', oauthConfig);
     // Small delay to ensure localStorage write is flushed before navigation
     await new Promise(resolve => setTimeout(resolve, 50));
-    window.location.href = authUrl;
+    window.location.href = authorizationUrl;
   };
 
   // For sign up, go to auth server sign-up page then OAuth flow
   const handleSignUp = async () => {
-    const oauthUrl = await getOAuthAuthorizationUrl('signup');
+    const oauthUrl = await getOAuthAuthorizationUrl('signup', oauthConfig);
     const signupUrl = `${authUrl}/auth/sign-up?redirect=${encodeURIComponent(oauthUrl)}`;
     window.location.href = signupUrl;
   };

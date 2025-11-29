@@ -7,12 +7,86 @@ import * as schema from "./db/schema";
 import { userProfile } from "./db/schema";
 import { eq } from "drizzle-orm";
 import { Resend } from "resend";
+import * as nodemailer from "nodemailer";
 
 // Client ID for robolearn-interface (public client - no secret needed with PKCE)
-const ROBOLEARN_INTERFACE_CLIENT_ID = "robolearn-interface";
+const ROBOLEARN_INTERFACE_CLIENT_ID = "robolearn-public-client";
 
-// Initialize Resend for email sending (optional - email verification only works if RESEND_API_KEY is set)
+// Email configuration - supports multiple providers
+// Priority: SMTP (Google/custom) > Resend
+// Required: EMAIL_FROM or provider-specific from address
+
+const EMAIL_FROM = process.env.EMAIL_FROM || process.env.RESEND_FROM_EMAIL || process.env.SMTP_FROM;
+
+// Provider 1: SMTP (Google Gmail, custom SMTP, etc.)
+// For Gmail: SMTP_HOST=smtp.gmail.com, SMTP_PORT=587, SMTP_USER=your@gmail.com, SMTP_PASS=app-password
+const smtpConfigured = !!(
+  process.env.SMTP_HOST &&
+  process.env.SMTP_USER &&
+  process.env.SMTP_PASS
+);
+
+const smtpTransport = smtpConfigured
+  ? nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT || "587"),
+      secure: process.env.SMTP_SECURE === "true", // true for 465, false for other ports
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    })
+  : null;
+
+// Provider 2: Resend
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+
+// Email is enabled if we have any provider AND a from address
+const emailEnabled = !!(EMAIL_FROM && (smtpTransport || resend));
+
+// Log which provider is active on startup
+if (emailEnabled) {
+  console.log("[Auth] Email enabled via:", smtpTransport ? "SMTP" : "Resend", "from:", EMAIL_FROM);
+} else {
+  console.log("[Auth] Email disabled - missing provider or EMAIL_FROM");
+}
+
+// Generic email sender - tries SMTP first, then Resend
+async function sendEmail({ to, subject, html }: { to: string; subject: string; html: string }) {
+  if (!emailEnabled || !EMAIL_FROM) {
+    console.warn("[Auth] Email not configured - skipping email to:", to);
+    return;
+  }
+
+  try {
+    // Priority 1: SMTP (Google, custom)
+    if (smtpTransport) {
+      const result = await smtpTransport.sendMail({
+        from: EMAIL_FROM,
+        to,
+        subject,
+        html,
+      });
+      console.log("[Auth] Email sent via SMTP to:", to, "messageId:", result.messageId);
+      return;
+    }
+
+    // Priority 2: Resend
+    if (resend) {
+      const result = await resend.emails.send({
+        from: EMAIL_FROM,
+        to,
+        subject,
+        html,
+      });
+      console.log("[Auth] Email sent via Resend to:", to, "id:", result.data?.id);
+      return;
+    }
+  } catch (error) {
+    console.error("[Auth] Failed to send email to:", to, "error:", error);
+    throw error; // Re-throw so Better Auth knows it failed
+  }
+}
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
@@ -24,33 +98,46 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     minPasswordLength: 8,
-    // Require email verification before login (only when RESEND_API_KEY is set)
-    requireEmailVerification: !!process.env.RESEND_API_KEY,
-  },
-
-  // Email verification configuration (only active when RESEND_API_KEY is set)
-  ...(resend && {
-    emailVerification: {
-      sendOnSignUp: true,
-      autoSignInAfterVerification: true,
-      expiresIn: 3600, // 1 hour
-      sendVerificationEmail: async ({ user, url }) => {
-        const fromEmail = process.env.RESEND_FROM_EMAIL || "noreply@robolearn.com";
-        await resend.emails.send({
-          from: fromEmail,
+    // Always require email verification for security
+    requireEmailVerification: true,
+    // Password reset (only when email is configured)
+    ...(emailEnabled && {
+      sendResetPassword: async ({ user, url }) => {
+        await sendEmail({
           to: user.email,
-          subject: "Verify your RoboLearn account",
+          subject: "Reset your RoboLearn password",
           html: `
-            <h2>Welcome to RoboLearn!</h2>
-            <p>Please verify your email address by clicking the link below:</p>
-            <p><a href="${url}" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">Verify Email</a></p>
+            <h2>Password Reset Request</h2>
+            <p>You requested to reset your password. Click the button below to set a new password:</p>
+            <p><a href="${url}" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">Reset Password</a></p>
             <p>Or copy and paste this link: ${url}</p>
             <p>This link expires in 1 hour.</p>
+            <p>If you didn't request this, you can safely ignore this email.</p>
           `,
         });
       },
+    }),
+  },
+
+  // Email verification configuration - always required for security
+  emailVerification: {
+    sendOnSignUp: true,
+    autoSignInAfterVerification: true,
+    expiresIn: 3600, // 1 hour
+    sendVerificationEmail: async ({ user, url }) => {
+      await sendEmail({
+        to: user.email,
+        subject: "Verify your RoboLearn account",
+        html: `
+          <h2>Welcome to RoboLearn!</h2>
+          <p>Please verify your email address by clicking the link below:</p>
+          <p><a href="${url}" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">Verify Email</a></p>
+          <p>Or copy and paste this link: ${url}</p>
+          <p>This link expires in 1 hour.</p>
+        `,
+      });
     },
-  }),
+  },
 
   // Session configuration
   session: {

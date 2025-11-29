@@ -1,11 +1,11 @@
-import { SignUpForm } from "@/components/sign-up-form";
+import { ResetPasswordForm } from "@/components/reset-password-form";
 import { Suspense } from "react";
 
-export default function SignUpPage() {
+export default function ResetPasswordPage() {
   return (
     <div>
       <h2 className="text-2xl font-semibold text-gray-900 text-center mb-6">
-        Create your account
+        Create new password
       </h2>
       <Suspense
         fallback={
@@ -14,7 +14,7 @@ export default function SignUpPage() {
           </div>
         }
       >
-        <SignUpForm />
+        <ResetPasswordForm />
       </Suspense>
     </div>
   );

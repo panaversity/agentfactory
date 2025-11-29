@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '@theme/Layout';
-import { oauthConfig } from '../../lib/auth-client';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 // OAuth callback page - exchanges authorization code for tokens using PKCE
 export default function OAuthCallback(): JSX.Element {
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
   const [error, setError] = useState<string | null>(null);
+  const { siteConfig } = useDocusaurusContext();
+
+  // Get OAuth config from Docusaurus context
+  const authUrl = (siteConfig.customFields?.authUrl as string) || 'http://localhost:3001';
+  const oauthClientId = (siteConfig.customFields?.oauthClientId as string) || 'robolearn-interface';
+  const redirectUri = typeof window !== 'undefined'
+    ? `${window.location.origin}/auth/callback`
+    : 'http://localhost:3000/auth/callback';
 
   useEffect(() => {
     const handleCallback = async () => {
@@ -40,7 +48,7 @@ export default function OAuthCallback(): JSX.Element {
 
       try {
         // Exchange code for tokens using PKCE (no client_secret needed)
-        const response = await fetch(`${oauthConfig.authUrl}/api/auth/oauth2/token`, {
+        const response = await fetch(`${authUrl}/api/auth/oauth2/token`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -48,8 +56,8 @@ export default function OAuthCallback(): JSX.Element {
           body: new URLSearchParams({
             grant_type: 'authorization_code',
             code,
-            redirect_uri: oauthConfig.redirectUri,
-            client_id: oauthConfig.clientId,
+            redirect_uri: redirectUri,
+            client_id: oauthClientId,
             code_verifier: codeVerifier, // PKCE: use code_verifier instead of client_secret
           }),
           credentials: 'include',

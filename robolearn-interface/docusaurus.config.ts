@@ -10,6 +10,9 @@ dotenv.config();
 // Auth server URL for login/signup redirects
 const AUTH_URL = process.env.AUTH_URL || "http://localhost:3001";
 
+// OAuth client ID (from dynamic registration)
+const OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || "robolearn-interface";
+
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
@@ -21,6 +24,7 @@ const config: Config = {
   // Custom fields accessible via useDocusaurusContext().siteConfig.customFields
   customFields: {
     authUrl: AUTH_URL,
+    oauthClientId: OAUTH_CLIENT_ID,
   },
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
