@@ -105,25 +105,25 @@ Signup → Hardware Survey → Personalized Content
 │   │   ├── summary-generator/        # Create lesson summaries
 │   │   ├── notebooklm-slides/        # Generate slide decks
 │   │   └── concept-scaffolding/      # Scaffold complex concepts
+│   │   └── visual-asset-workflow/    # Create educational visuals
 │   └── engineering/                  # Platform development skills
-│       ├── hardware-filter/          # Filter by hardware tier (1-4)
-│       ├── ros2-code/                # Generate ROS 2 examples
 │       ├── pyodide-exercise/         # Browser-based Python exercises
 │       ├── docusaurus-deployer/      # Deploy to GitHub Pages
 │       ├── frontend-design/          # UI component design
+│       ├── image-generator/          # Generate images with Gemini
 │       ├── mcp-builder/              # Create MCP servers
 │       ├── skill-creator/            # Create new skills
 │       └── session-intelligence-harvester/  # Capture learnings
 │
 ├── agents/                           # WHO (autonomous workers)
+│   ├── super-orchestra.md            # General workflow orchestration
 │   ├── authoring/                    # Content creation agents
 │   │   ├── content-implementer.md    # Implement lessons from specs
 │   │   ├── chapter-planner.md        # Plan chapter structure
-│   │   └── educational-validator.md  # Validate constitutional compliance
+│   │   ├── educational-validator.md  # Validate constitutional compliance
+│   │   └── validation-auditor.md     # Quality validation before publish
 │   └── engineering/                  # Platform development agents
-│       ├── spec-architect.md         # Design specifications
-│       ├── validation-auditor.md     # Quality validation
-│       └── super-orchestra.md        # Workflow orchestration
+│       └── spec-architect.md         # Design specifications
 │
 ├── commands/                         # Slash commands (/sp.*)
 └── .mcp.json                         # MCP server configuration
@@ -282,13 +282,29 @@ Signup → Hardware Survey → Personalized Content
 
 ## Revenue Model
 
-### Student Tiers
+### Individual Learners
 
 | Tier | Price | Features |
 |------|-------|----------|
 | Free | $0 | Read content, basic exercises |
-| Pro | $9/month | RAG chat, personalization, Urdu |
-| Team | $29/month | 5 seats, progress tracking |
+| Professional | $49/month | RAG chat, personalization, multilingual, certificates |
+| Annual | $399/year | Professional features + 30% savings |
+
+### Corporate Training
+
+| Tier | Price | Features |
+|------|-------|----------|
+| Team | $199/month | 10 seats, progress tracking, admin dashboard |
+| Department | $799/month | 50 seats, custom learning paths, analytics |
+| Enterprise | Custom | Unlimited seats, SSO, dedicated support, SLA |
+
+### Institutional (Universities, Bootcamps)
+
+| Tier | Price | Features |
+|------|-------|----------|
+| Academic | $2,500/year | 200 students, LMS integration, grade passback |
+| Campus | $10,000/year | 1,000 students, white-label option, curriculum control |
+| Enterprise | $50,000+/year | Unlimited, custom development, dedicated success manager |
 
 ### Author Revenue
 
@@ -296,14 +312,7 @@ Signup → Hardware Survey → Personalized Content
 |-------|-------|
 | Free Books | 0% platform fee |
 | Paid Books | 70% author / 30% platform |
-
-### Institutional
-
-| Tier | Price |
-|------|-------|
-| Starter | $500/year (100 students) |
-| Growth | $2,000/year (500 students) |
-| Enterprise | Custom |
+| Enterprise Licensing | 60% author / 40% platform (includes support overhead) |
 
 ---
 
