@@ -7,6 +7,9 @@ import * as dotenv from "dotenv";
 // Production uses actual environment variables set in CI/CD
 dotenv.config();
 
+// Auth server URL for login/signup redirects
+const AUTH_URL = process.env.AUTH_URL || "http://localhost:3001";
+
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
@@ -14,6 +17,11 @@ const config: Config = {
   tagline:
     "Physical AI & Humanoid Robotics – Bridging the Digital Brain and the Physical Body",
   favicon: "img/favicon.ico",
+
+  // Custom fields accessible via useDocusaurusContext().siteConfig.customFields
+  customFields: {
+    authUrl: AUTH_URL,
+  },
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -287,9 +295,8 @@ const config: Config = {
           position: "right",
         },
         {
-          type: "html",
+          type: "custom-navbarAuth",
           position: "right",
-          value: '<a href="/docs/preface-agent-native" class="navbar__cta-button">Start Free</a>',
         },
       ],
     },
