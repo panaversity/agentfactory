@@ -2,6 +2,7 @@ import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { oidcProvider } from "better-auth/plugins/oidc-provider";
 import { admin } from "better-auth/plugins/admin";
+import { jwt } from "better-auth/plugins";
 import { db } from "./db";
 import * as schema from "./db/schema";
 import { userProfile } from "./db/schema";
@@ -94,6 +95,10 @@ export const auth = betterAuth({
     schema,
   }),
 
+  // Disable /token endpoint when using OIDC Provider (OAuth equivalent is /oauth2/token)
+  disabledPaths: ["/token"],
+
+
   // Email/password authentication
   emailAndPassword: {
     enabled: true,
@@ -169,22 +174,34 @@ export const auth = betterAuth({
 
   // Plugins
   plugins: [
+    // JWT Plugin - Enables JWKS endpoint for asymmetric key signing (RS256)
+    // This allows client-side token verification, reducing server load
+    jwt({
+      jwks: {
+        keyPairConfig: {
+          alg: "RS256", // RSA with SHA-256 - standard for OIDC/JWKS
+        },
+        disablePrivateKeyEncryption: true, // Disable encryption for simplicity
+      },
+    }),
+
     // OIDC Provider - Makes auth-server an OAuth2/OIDC provider
     oidcProvider({
       loginPage: "/auth/sign-in",
       consentPage: "/auth/consent",
+      // Enable JWT plugin integration for asymmetric key signing
+      // ID tokens will be signed with RS256 using JWKS keys instead of HS256 with secret
+      useJWTPlugin: true,
+      // OAuth token expiration configuration
+      accessTokenExpiresIn: 60 * 60 * 6, // 6 hours (21600 seconds)
+      refreshTokenExpiresIn: 60 * 60 * 24 * 7, // 7 days (604800 seconds)
+      codeExpiresIn: 600, // 10 minutes (authorization code expiry)
       // Pre-register robolearn-interface as a public client (uses PKCE, no secret)
       trustedClients: [
         {
           clientId: ROBOLEARN_INTERFACE_CLIENT_ID,
-          // clientSecret is needed for signing ID tokens (HS256), even for public clients
-          // Authentication still uses PKCE (no secret transmitted), but ID token needs a signing key
-          // Production: Set BETTER_AUTH_SECRET env var (minimum 32 characters)
-          // Development: Uses a placeholder key for local testing only
-          clientSecret: process.env.BETTER_AUTH_SECRET ||
-            (process.env.NODE_ENV === "development"
-              ? "dev-only-client-signing-key-min32chars"
-              : (() => { throw new Error("BETTER_AUTH_SECRET must be set in production"); })()),
+          // No clientSecret needed for public clients with PKCE + JWKS
+          // ID tokens are signed with asymmetric keys (RS256) from JWKS
           name: "RoboLearn Book Interface",
           type: "public", // Public client for SPA/browser apps - uses PKCE for auth
           // Redirect URLs for OAuth callback

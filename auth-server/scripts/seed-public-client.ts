@@ -1,16 +1,20 @@
+import * as dotenv from "dotenv";
 import { db } from "../src/lib/db";
 import { oauthApplication } from "../src/lib/db/schema";
 import { eq } from "drizzle-orm";
+
+// Load environment variables from .env.local
+dotenv.config({ path: ".env.local" });
 
 const PUBLIC_CLIENT = {
   id: "robolearn-public-client-id",
   clientId: "robolearn-public-client",
   clientSecret: null, // No secret for public client
   name: "RoboLearn Public Client",
-  redirectUrls: JSON.stringify([
+  redirectURLs: [ // Better Auth expects redirectURLs (capital URLs)
     "http://localhost:3000/auth/callback",
     // Add production URL here
-  ]),
+  ].join(","),
   type: "public",
   disabled: false,
   metadata: JSON.stringify({

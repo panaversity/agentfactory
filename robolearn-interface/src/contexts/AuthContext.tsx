@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { refreshAccessToken } from '../lib/auth-client';
+import { verifyIDToken, extractUserFromToken } from '../lib/jwt-verifier';
 
 interface User {
   id: string;
@@ -25,16 +26,18 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 interface AuthProviderProps {
   children: ReactNode;
   authUrl?: string;
+  oauthClientId?: string;
 }
 
 // Default authUrl uses empty string - callers should provide via Docusaurus config
 // In development, this will be set by Root.tsx via siteConfig.customFields.authUrl
-export function AuthProvider({ children, authUrl }: AuthProviderProps) {
+export function AuthProvider({ children, authUrl, oauthClientId }: AuthProviderProps) {
   // Require authUrl to be provided - no hardcoded fallback
   if (!authUrl) {
     console.error('AuthProvider: authUrl is required. Configure it in docusaurus.config.ts customFields.');
   }
   const effectiveAuthUrl = authUrl || '';
+  const effectiveClientId = oauthClientId || 'robolearn-interface';
   const [session, setSession] = useState<Session | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -62,11 +65,30 @@ export function AuthProvider({ children, authUrl }: AuthProviderProps) {
   };
 
   useEffect(() => {
-    // Check session on mount - OAuth tokens only with automatic refresh
+    // Check session on mount - Use JWKS verification first (client-side, no server call)
     const checkSession = async () => {
       try {
-        let accessToken = localStorage.getItem('robolearn_access_token');
+        const idToken = localStorage.getItem('robolearn_id_token');
+        const accessToken = localStorage.getItem('robolearn_access_token');
 
+        // Strategy 1: Verify ID token using JWKS (client-side, reduces server load)
+        if (idToken && effectiveAuthUrl) {
+          try {
+            const payload = await verifyIDToken(idToken, effectiveAuthUrl, effectiveClientId);
+            if (payload) {
+              // Token is valid, extract user info from token (no server call needed!)
+              const user = extractUserFromToken(payload);
+              setSession({ user, accessToken: accessToken || undefined });
+              setIsLoading(false);
+              return;
+            }
+          } catch (error) {
+            console.log('ID token verification failed, falling back to userinfo endpoint:', error);
+            // Fall through to userinfo endpoint fallback
+          }
+        }
+
+        // Strategy 2: Fallback to userinfo endpoint (if ID token missing/invalid)
         if (accessToken) {
           // Try to fetch user info with current token
           let user = await fetchUserInfo(accessToken);
@@ -77,8 +99,24 @@ export function AuthProvider({ children, authUrl }: AuthProviderProps) {
             const newToken = await refreshAccessToken();
 
             if (newToken) {
-              accessToken = newToken;
-              user = await fetchUserInfo(accessToken);
+              // After refresh, try to verify new ID token if available
+              const newIdToken = localStorage.getItem('robolearn_id_token');
+              if (newIdToken && effectiveAuthUrl) {
+                try {
+                  const payload = await verifyIDToken(newIdToken, effectiveAuthUrl, effectiveClientId);
+                  if (payload) {
+                    const verifiedUser = extractUserFromToken(payload);
+                    setSession({ user: verifiedUser, accessToken: newToken });
+                    setIsLoading(false);
+                    return;
+                  }
+                } catch (error) {
+                  // Fall through to userinfo
+                }
+              }
+              
+              // Fallback to userinfo endpoint
+              user = await fetchUserInfo(newToken);
             }
           }
 

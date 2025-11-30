@@ -10,8 +10,9 @@ dotenv.config();
 // Auth server URL for login/signup redirects
 const AUTH_URL = process.env.AUTH_URL || "http://localhost:3001";
 
-// OAuth client ID (from dynamic registration)
-const OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || "robolearn-interface";
+// OAuth client ID - use the pre-configured trusted client (PKCE + JWKS)
+// This matches the trustedClients[0].clientId in auth-server
+const OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || "robolearn-public-client";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 

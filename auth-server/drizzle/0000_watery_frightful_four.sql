@@ -14,6 +14,14 @@ CREATE TABLE IF NOT EXISTS "account" (
 	"updated_at" timestamp NOT NULL
 );
 --> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "jwks" (
+	"id" text PRIMARY KEY NOT NULL,
+	"public_key" text NOT NULL,
+	"private_key" text NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"expires_at" timestamp
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "oauth_access_token" (
 	"id" text PRIMARY KEY NOT NULL,
 	"access_token" text,

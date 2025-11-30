@@ -42,14 +42,16 @@ export async function POST(request: NextRequest) {
 
     const isPublic = clientType === "public";
     const clientId = generateClientId();
-    const clientSecret = isPublic ? "" : generateClientSecret();
+    // For public clients, clientSecret should be null (not empty string)
+    // Better Auth uses this to determine if PKCE is required
+    const clientSecret = isPublic ? null : generateClientSecret();
 
     const newClient = {
       id: crypto.randomUUID(),
       clientId,
-      clientSecret,
+      clientSecret: clientSecret || null, // Ensure null instead of empty string
       name,
-      redirectUrls: JSON.stringify(redirectUrls),
+      redirectURLs: redirectUrls.join(","), // Database field is redirectURLs (capital URLs) - Better Auth documented field name
       type: isPublic ? "public" : "confidential",
       disabled: false,
       metadata: JSON.stringify({

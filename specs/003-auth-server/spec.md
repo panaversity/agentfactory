@@ -116,6 +116,12 @@ A user wants to update their software background level as they progress in their
 - **FR-010**: System MUST support CORS for requests from robolearn-interface domain.
 - **FR-011**: System MUST provide clear, user-friendly error messages without exposing system details.
 - **FR-012**: System MUST prevent duplicate email registrations.
+- **FR-013**: System MUST act as OAuth 2.1 / OIDC Provider with PKCE support for public clients.
+- **FR-014**: System MUST provide JWKS endpoint for asymmetric token verification (RS256).
+- **FR-015**: System MUST support dynamic client registration via admin-only endpoint.
+- **FR-016**: System MUST send email verification on signup (Resend or SMTP).
+- **FR-017**: System MUST support password reset via email.
+- **FR-018**: System MUST distinguish between public clients (PKCE, no secret) and confidential clients (with secret).
 
 ### Non-Functional Requirements
 
@@ -126,11 +132,17 @@ A user wants to update their software background level as they progress in their
 
 ### Key Entities
 
-- **User**: Core identity record containing id, email (unique), name (optional), emailVerified status, createdAt, updatedAt. Managed by Better Auth.
+- **User**: Core identity record containing id, email (unique), name (optional), emailVerified status, createdAt, updatedAt, role (user/admin). Managed by Better Auth.
 
 - **Session**: Active login session containing id, userId, token, expiresAt, ipAddress, userAgent. Managed by Better Auth.
 
 - **UserProfile**: Extended user data containing userId (FK), softwareBackground (enum: beginner/intermediate/advanced), createdAt, updatedAt. Custom extension for RoboLearn personalization.
+
+- **OAuth Application**: Registered OAuth clients containing clientId, clientSecret (null for public clients), redirectURLs, type (public/confidential), metadata. Used for OIDC Provider functionality.
+
+- **OAuth Access Token**: Issued tokens for OAuth clients containing accessToken, refreshToken, expiresAt, clientId, userId, scopes.
+
+- **JWKS**: JSON Web Key Set storing RSA key pairs for asymmetric token signing (RS256).
 
 ## Constraints
 
@@ -145,11 +157,13 @@ A user wants to update their software background level as they progress in their
 
 - **NG-001**: Social login (Google, GitHub) - deferred to future iteration.
 - **NG-002**: Full hardware survey - simplified to single question for hackathon.
-- **NG-003**: Password reset/forgot password flow - can be added post-hackathon.
-- **NG-004**: Email verification - accounts work immediately without verification.
+- **NG-003**: ~~Password reset/forgot password flow~~ - ✅ COMPLETED (FR-017)
+- **NG-004**: ~~Email verification~~ - ✅ COMPLETED (FR-016)
 - **NG-005**: Two-factor authentication - future enhancement.
 - **NG-006**: Admin dashboard for user management - future enhancement.
-- **NG-007**: Acting as full SSO provider - architecture prepared but not implemented.
+- **NG-007**: ~~Acting as full SSO provider~~ - ✅ COMPLETED (FR-013, FR-014)
+- **NG-008**: ~~JWKS support for offline token verification~~ - ✅ COMPLETED (FR-014)
+- **NG-009**: ~~Scalable architecture for multiple apps~~ - ✅ COMPLETED (FR-013, FR-014, FR-015)
 
 ## Assumptions
 
@@ -171,6 +185,14 @@ A user wants to update their software background level as they progress in their
 - **SC-005**: Zero plaintext passwords stored in database (verified by security audit).
 - **SC-006**: robolearn-interface can successfully authenticate users and fetch profile data.
 - **SC-007**: Auth server handles 100 concurrent users without performance degradation.
+- **SC-008**: OAuth authorization flow completes with PKCE in under 5 seconds.
+- **SC-009**: JWKS endpoint returns valid RSA public keys for token verification.
+- **SC-010**: Email verification emails delivered within 30 seconds of signup.
+- **SC-011**: Admin can register new OAuth clients via custom endpoint.
+- **SC-012**: JWKS endpoint returns valid RSA public keys (RS256) for token verification.
+- **SC-013**: Client-side token verification works offline (no server calls per request).
+- **SC-014**: Access tokens expire after 6 hours, refresh tokens after 7 days.
+- **SC-015**: System supports 10+ apps with 10,000+ users each via SSO architecture.
 
 ## Dependencies
 

@@ -42,28 +42,28 @@ export async function GET() {
       id: oauthApplication.id,
       clientId: oauthApplication.clientId,
       name: oauthApplication.name,
-      redirectUrls: oauthApplication.redirectUrls,
+      redirectURLs: oauthApplication.redirectURLs, // Better Auth expects redirectURLs (capital URLs)
       type: oauthApplication.type,
       disabled: oauthApplication.disabled,
       metadata: oauthApplication.metadata,
       createdAt: oauthApplication.createdAt,
     }).from(oauthApplication);
 
-    // Parse redirectUrls and metadata - handle both JSON strings and plain strings
+    // Parse redirectURLs and metadata - handle both JSON strings and plain strings
     const parsedClients = clients.map(client => {
       let redirectUrls: string[] = [];
       let metadata: Record<string, unknown> = {};
 
-      // Handle redirectUrls - could be JSON array or plain string
-      if (client.redirectUrls) {
+      // Handle redirectURLs - could be JSON array or plain string
+      if (client.redirectURLs) {
         try {
-          const parsed = JSON.parse(client.redirectUrls);
-          redirectUrls = Array.isArray(parsed) ? parsed : [client.redirectUrls];
+          const parsed = JSON.parse(client.redirectURLs);
+          redirectUrls = Array.isArray(parsed) ? parsed : [client.redirectURLs];
         } catch {
           // Not JSON, treat as single URL or comma-separated
-          redirectUrls = client.redirectUrls.includes(',')
-            ? client.redirectUrls.split(',').map(u => u.trim())
-            : [client.redirectUrls];
+          redirectUrls = client.redirectURLs.includes(',')
+            ? client.redirectURLs.split(',').map(u => u.trim())
+            : [client.redirectURLs];
         }
       }
 

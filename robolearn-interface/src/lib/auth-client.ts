@@ -2,7 +2,7 @@ import { createAuthClient } from "better-auth/react";
 
 // Default fallbacks for development
 const DEFAULT_AUTH_URL = "http://localhost:3001";
-const DEFAULT_CLIENT_ID = "robolearn-interface";
+const DEFAULT_CLIENT_ID = "robolearn-public-client"; // Matches trustedClients[0].clientId in auth-server
 
 // Create auth client with default URL (will be overridden in components using useDocusaurusContext)
 export const authClient = createAuthClient({
@@ -103,6 +103,10 @@ export async function refreshAccessToken(config?: OAuthConfig): Promise<string |
       localStorage.setItem('robolearn_access_token', tokens.access_token);
       if (tokens.refresh_token) {
         localStorage.setItem('robolearn_refresh_token', tokens.refresh_token);
+      }
+      // Store new ID token if provided (for JWKS verification)
+      if (tokens.id_token) {
+        localStorage.setItem('robolearn_id_token', tokens.id_token);
       }
       return tokens.access_token;
     }

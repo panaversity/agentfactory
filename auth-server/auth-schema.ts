@@ -87,7 +87,7 @@ export const oauthApplication = pgTable(
     metadata: text("metadata"),
     clientId: text("client_id").unique(),
     clientSecret: text("client_secret"),
-    redirectUrls: text("redirect_urls"),
+    redirectURLs: text("redirect_urls"), // Better Auth expects redirectURLs (capital URLs) - documented field name
     type: text("type"),
     disabled: boolean("disabled").default(false),
     userId: text("user_id").references(() => user.id, { onDelete: "cascade" }),

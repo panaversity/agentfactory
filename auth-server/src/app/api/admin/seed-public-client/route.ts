@@ -8,15 +8,15 @@ import { eq } from "drizzle-orm";
 const PUBLIC_CLIENT = {
   id: "robolearn-public-client-id",
   clientId: "robolearn-public-client",
-  clientSecret: "", // Empty string for public client (PKCE only)
+  clientSecret: null, // NULL for public client (PKCE only) - Better Auth expects null not empty string
   name: "RoboLearn Public Client",
-  redirectUrls: JSON.stringify([
+  redirectURLs: [ // Better Auth expects redirectURLs (capital URLs)
     "http://localhost:3000/auth/callback",
     // Production URLs will be added via env var
     ...(process.env.ROBOLEARN_INTERFACE_CALLBACK_URL
       ? [process.env.ROBOLEARN_INTERFACE_CALLBACK_URL]
       : []),
-  ]),
+  ].join(","),
   type: "public",
   disabled: false,
   metadata: JSON.stringify({

@@ -87,7 +87,7 @@ export const oauthApplication = pgTable(
     metadata: text("metadata"),
     clientId: text("client_id").unique(),
     clientSecret: text("client_secret"),
-    redirectUrls: text("redirect_urls"),
+    redirectURLs: text("redirect_urls"), // Better Auth expects redirectURLs (capital URLs) - documented field name
     type: text("type"),
     disabled: boolean("disabled").default(false),
     userId: text("user_id").references(() => user.id, { onDelete: "cascade" }),
@@ -224,3 +224,12 @@ export const userProfileRelations = relations(userProfile, ({ one }) => ({
     references: [user.id],
   }),
 }));
+
+// JWKS table for JWT plugin - stores public/private key pairs for asymmetric signing
+export const jwks = pgTable("jwks", {
+  id: text("id").primaryKey(),
+  publicKey: text("public_key").notNull(),
+  privateKey: text("private_key").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  expiresAt: timestamp("expires_at"),
+});

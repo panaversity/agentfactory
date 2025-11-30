@@ -16,7 +16,9 @@
 | 6 | US4 - Profile API | 4 | 4 |
 | 7 | US5 - Update Profile | 2 | 2 |
 | 8 | Polish & Integration | 10 | 8 |
-| **Total** | | **41** | **39** |
+| 9 | OAuth/OIDC Provider | 7 | 7 |
+| 10 | Email Verification | 4 | 4 |
+| **Total** | | **52** | **50** |
 
 ---
 
@@ -172,6 +174,43 @@
 
 ---
 
+## Phase 9: OAuth/OIDC Provider (COMPLETED)
+
+**Goal**: Auth server acts as OAuth 2.1 / OIDC Provider with PKCE and JWKS support.
+
+**Exit Criteria**: OAuth authorization flow works with PKCE, JWKS endpoint returns valid keys.
+
+**Dependencies**: Phase 2 must be complete.
+
+### Tasks
+
+- [x] T042 [P] Add JWT plugin with JWKS configuration (RS256 asymmetric signing) in `auth-server/src/lib/auth.ts`
+- [x] T043 [P] Configure OIDC Provider plugin with public client support and useJWTPlugin in `auth-server/src/lib/auth.ts`
+- [x] T044 [P] Define OAuth tables in schema (oauth_application, oauth_access_token, oauth_consent, jwks) in `auth-server/src/lib/db/schema.ts`
+- [x] T045 Create TypeScript seed script for trusted public client in `auth-server/scripts/seed-public-client.ts`
+- [x] T046 Create SQL seed file for direct database seeding in `auth-server/scripts/seed-public-client.sql`
+- [x] T047 [P] Add admin-only client registration endpoint (custom, not built-in) in `auth-server/src/app/api/admin/clients/register/route.ts`
+- [x] T048 Test OAuth flow: authorize → token exchange → userinfo with PKCE
+
+---
+
+## Phase 10: Email Verification & Password Reset (COMPLETED)
+
+**Goal**: Email verification on signup and password reset functionality.
+
+**Exit Criteria**: Verification emails sent on signup, password reset flow works end-to-end.
+
+**Dependencies**: Phase 2 must be complete.
+
+### Tasks
+
+- [x] T049 [P] Configure Resend and SMTP email providers with fallback logic in `auth-server/src/lib/auth.ts`
+- [x] T050 [P] Add email verification config (sendOnSignUp, autoSignInAfterVerification) in `auth-server/src/lib/auth.ts`
+- [x] T051 [P] Add password reset email templates and sendResetPassword callback in `auth-server/src/lib/auth.ts`
+- [x] T052 Update .env.example with email provider variables (RESEND_API_KEY, SMTP_*, EMAIL_FROM) in `auth-server/.env.example`
+
+---
+
 ## Dependencies Graph
 
 ```
@@ -254,14 +293,34 @@ Note: US1, US2, and US4 can be developed in parallel after Phase 2 completes.
 
 After all tasks complete, verify:
 
-- [ ] User can register with email, password, background (<60 seconds)
-- [ ] User can sign in with credentials (<10 seconds)
-- [ ] 100% of users have software background captured
-- [ ] Session persists 7 days
-- [ ] Logout invalidates session
-- [ ] GET /api/profile returns software background (authenticated)
-- [ ] GET /api/profile returns 401 (unauthenticated)
-- [ ] PUT /api/profile updates background level
-- [ ] Rate limiting blocks rapid login attempts
-- [ ] CORS allows robolearn-interface requests
-- [ ] No plaintext passwords in database
+### Email/Password Auth (Basic)
+- [x] User can register with email, password, background (<60 seconds)
+- [x] User can sign in with credentials (<10 seconds)
+- [x] 100% of users have software background captured
+- [x] Session persists 7 days
+- [x] Logout invalidates session
+- [x] GET /api/profile returns software background (authenticated)
+- [x] GET /api/profile returns 401 (unauthenticated)
+- [x] PUT /api/profile updates background level
+- [x] Rate limiting blocks rapid login attempts
+- [x] CORS allows robolearn-interface requests
+- [x] No plaintext passwords in database
+
+### OAuth/OIDC Provider
+- [x] GET /.well-known/openid-configuration returns OIDC discovery document
+- [x] GET /api/auth/jwks returns valid RSA public keys
+- [x] OAuth authorization flow with PKCE succeeds (<5 seconds)
+- [x] Token exchange with code_verifier (no client_secret) succeeds
+- [x] GET /api/auth/oauth2/userinfo returns user data with custom claims
+- [x] Admin can register new OAuth clients via POST /api/admin/clients/register
+- [x] Public clients (type: "public") have clientSecret = null in database
+
+### Email Verification
+- [x] Verification email sent on signup (Resend or SMTP)
+- [x] Email verification link completes and auto-signs in user
+- [x] Password reset email sent when requested
+- [x] Password reset flow completes successfully
+
+### Deployment (Pending)
+- [ ] Deploy auth-server to Vercel (or Cloud Run)
+- [ ] Configure production environment variables in deployment platform

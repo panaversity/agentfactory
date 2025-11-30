@@ -139,6 +139,10 @@ user {
   name: text
   emailVerified: boolean DEFAULT false
   image: text
+  role: text  // "user" or "admin"
+  banned: boolean DEFAULT false
+  banReason: text
+  banExpires: timestamp
   createdAt: timestamp DEFAULT now()
   updatedAt: timestamp DEFAULT now()
 }
@@ -150,6 +154,7 @@ session {
   expiresAt: timestamp NOT NULL
   ipAddress: text
   userAgent: text
+  impersonatedBy: text
   createdAt: timestamp DEFAULT now()
   updatedAt: timestamp DEFAULT now()
 }
@@ -161,12 +166,69 @@ account {
   providerId: text NOT NULL  // "credential" for email/password
   accessToken: text
   refreshToken: text
+  idToken: text
   accessTokenExpiresAt: timestamp
   refreshTokenExpiresAt: timestamp
   scope: text
   password: text  // hashed, only for credential provider
   createdAt: timestamp DEFAULT now()
   updatedAt: timestamp DEFAULT now()
+}
+
+verification {
+  id: text PK
+  identifier: text NOT NULL
+  value: text NOT NULL
+  expiresAt: timestamp NOT NULL
+  createdAt: timestamp DEFAULT now()
+  updatedAt: timestamp DEFAULT now()
+}
+
+// OAuth/OIDC Provider tables
+oauth_application {
+  id: text PK
+  clientId: text UNIQUE
+  clientSecret: text  // NULL for public clients
+  name: text
+  redirectURLs: text  // Comma-separated (note: capital URLs)
+  type: text  // "public" or "confidential"
+  disabled: boolean DEFAULT false
+  userId: text FK -> user.id  // Optional: owner of the client
+  metadata: text  // JSON string
+  createdAt: timestamp
+  updatedAt: timestamp
+}
+
+oauth_access_token {
+  id: text PK
+  accessToken: text UNIQUE
+  refreshToken: text UNIQUE
+  accessTokenExpiresAt: timestamp
+  refreshTokenExpiresAt: timestamp
+  clientId: text FK -> oauth_application.clientId
+  userId: text FK -> user.id
+  scopes: text
+  createdAt: timestamp
+  updatedAt: timestamp
+}
+
+oauth_consent {
+  id: text PK
+  clientId: text FK -> oauth_application.clientId
+  userId: text FK -> user.id
+  scopes: text
+  consentGiven: boolean
+  createdAt: timestamp
+  updatedAt: timestamp
+}
+
+// JWT plugin table
+jwks {
+  id: text PK
+  publicKey: text NOT NULL
+  privateKey: text NOT NULL
+  createdAt: timestamp DEFAULT now()
+  expiresAt: timestamp
 }
 
 // Custom RoboLearn extension
@@ -210,6 +272,33 @@ user_profile {
 | 2.6 | Configure CORS for robolearn-interface | `next.config.ts` |
 
 **Exit Criteria**: POST to `/api/auth/sign-up` creates user, `/api/auth/session` returns session.
+
+### Phase 2.5: OAuth/OIDC Provider Setup
+
+**Goal**: Auth server acts as OAuth 2.1 / OIDC Provider with PKCE and JWKS support.
+
+| Task | Description | Files |
+|------|-------------|-------|
+| 2.5.1 | Add JWT plugin with JWKS configuration (RS256) | `src/lib/auth.ts` |
+| 2.5.2 | Configure OIDC Provider plugin with public client support | `src/lib/auth.ts` |
+| 2.5.3 | Create seed script for trusted public client | `scripts/seed-public-client.ts` |
+| 2.5.4 | Add admin-only client registration endpoint | `src/app/api/admin/clients/register/route.ts` |
+| 2.5.5 | Create SQL seed file for direct database seeding | `scripts/seed-public-client.sql` |
+
+**Exit Criteria**: JWKS endpoint accessible at `/api/auth/jwks`, OAuth authorization flow works with PKCE.
+
+### Phase 2.6: Email Verification & Password Reset
+
+**Goal**: Email verification on signup and password reset functionality.
+
+| Task | Description | Files |
+|------|-------------|-------|
+| 2.6.1 | Configure Resend/SMTP email providers with fallback | `src/lib/auth.ts` |
+| 2.6.2 | Add email verification templates and config | `src/lib/auth.ts` |
+| 2.6.3 | Add password reset templates and config | `src/lib/auth.ts` |
+| 2.6.4 | Update environment variables for email config | `.env.example` |
+
+**Exit Criteria**: Verification emails sent on signup, password reset flow works end-to-end.
 
 ### Phase 3: Auth UI Components
 
@@ -271,15 +360,21 @@ user_profile {
 ## Dependencies Between Phases
 
 ```
-Phase 1 (Setup) ──► Phase 2 (Better Auth) ──► Phase 3 (UI)
-                                          │
-                                          └──► Phase 4 (Profile API)
+Phase 1 (Setup) ──► Phase 2 (Better Auth) ──┬──► Phase 2.5 (OAuth/OIDC)
+                                             │
+                                             └──► Phase 2.6 (Email)
                                                       │
                                                       ▼
-                   Phase 5 (Security) ◄───────────────┘
-                          │
-                          ▼
-                   Phase 6 (Deploy)
+                                             ┌────────┴─────────┐
+                                             ▼                  ▼
+                                        Phase 3 (UI)    Phase 4 (Profile API)
+                                             │                  │
+                                             └────────┬─────────┘
+                                                      ▼
+                                             Phase 5 (Security)
+                                                      │
+                                                      ▼
+                                             Phase 6 (Deploy)
 ```
 
 ## Risk Mitigation
@@ -317,9 +412,25 @@ DATABASE_URL=postgresql://user:pass@host/db?sslmode=require
 # Better Auth
 BETTER_AUTH_SECRET=your-secret-key-min-32-chars
 BETTER_AUTH_URL=http://localhost:3001  # or production URL
+NEXT_PUBLIC_BETTER_AUTH_URL=http://localhost:3001
 
 # CORS
 ALLOWED_ORIGINS=http://localhost:3000,https://robolearn.example.com
+
+# OAuth Client (robolearn-interface)
+ROBOLEARN_INTERFACE_CALLBACK_URL=http://localhost:3000/auth/callback
+
+# Email (Optional - choose one)
+# Option 1: Resend
+RESEND_API_KEY=re_xxxxxxxxx
+RESEND_FROM_EMAIL=onboarding@resend.dev
+
+# Option 2: SMTP (Gmail, custom)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your@gmail.com
+SMTP_PASS=app-password
+EMAIL_FROM=your@gmail.com
 ```
 
 ## Success Validation

@@ -3,7 +3,7 @@ import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 // OAuth callback page - exchanges authorization code for tokens using PKCE
-export default function OAuthCallback(): JSX.Element {
+export default function OAuthCallback(): React.JSX.Element {
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
   const [error, setError] = useState<string | null>(null);
   const { siteConfig } = useDocusaurusContext();
