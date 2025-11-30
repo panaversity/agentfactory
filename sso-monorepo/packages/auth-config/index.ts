@@ -1,7 +1,7 @@
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
-import { jwt } from 'better-auth/plugins';
-import { oidcProvider } from 'better-auth/plugins';
+import { jwt, oidcProvider } from 'better-auth/plugins';
+import { sendVerificationEmail, sendPasswordResetEmail } from './email';
 
 // Lazy load database to avoid build-time errors
 const getDb = () => {
@@ -41,6 +41,41 @@ export const auth = betterAuth({
   
   emailAndPassword: {
     enabled: true,
+    requireEmailVerification: false, // Set to true when you're ready to enforce it
+    autoSignIn: true, // Users can sign in immediately after sign up (even without email verification)
+    minPasswordLength: 8,
+    maxPasswordLength: 128,
+
+    // Password reset configuration
+    sendResetPassword: async ({ user, url, token }, request) => {
+      await sendPasswordResetEmail({
+        to: user.email,
+        name: user.name,
+        resetUrl: url,
+      });
+    },
+
+    resetPasswordTokenExpiresIn: 3600, // 1 hour in seconds
+
+    // Callback after successful password reset
+    onPasswordReset: async ({ user }, request) => {
+      console.log(`Password reset successful for user: ${user.email}`);
+    },
+  },
+
+  // Email verification configuration
+  emailVerification: {
+    sendVerificationEmail: async ({ user, url, token }, request) => {
+      await sendVerificationEmail({
+        to: user.email,
+        name: user.name,
+        verificationUrl: url,
+      });
+    },
+
+    sendOnSignUp: true, // Send verification email automatically on sign up
+    autoSignInAfterVerification: true, // Sign in users after they verify
+    expiresIn: 60 * 60 * 24, // 24 hours in seconds
   },
   
   socialProviders: {
@@ -65,13 +100,13 @@ export const auth = betterAuth({
         },
       },
     }),
-    
+
     oidcProvider({
-      loginPage: '/auth/login',
-      consentPage: '/auth/consent', 
+      loginPage: '/login',
+      consentPage: '/consent',
       useJWTPlugin: true,
       allowDynamicClientRegistration: true,
-      
+
       trustedClients: [
         {
           clientId: process.env.INTERNAL_CLIENT_ID || 'internal-dashboard',

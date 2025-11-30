@@ -1,5 +1,11 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Set turbopack root to monorepo root to avoid lockfile warning
+  turbopack: {
+    root: path.resolve(__dirname, '../../'),
+  },
   async rewrites() {
     return [
       {
