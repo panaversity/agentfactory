@@ -214,6 +214,8 @@ const config: Config = {
         apiKey: process.env.GEMINI_API_KEY,
         cacheDir: ".translation-cache",
         docsPath: "docs",
+      },
+    ],
     // Local Search Plugin - No external service needed, works offline
     // Note: We use a custom search bar component, so we disable the default navbar search
     [
