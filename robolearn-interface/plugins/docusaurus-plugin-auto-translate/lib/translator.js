@@ -1,7 +1,9 @@
 /**
  * Translator Module
  * 
- * Gemini API integration for translation.
+ * Supports multiple translation providers:
+ * - Gemini API (paid/free tier)
+ * - LibreTranslate (free, open-source)
  */
 
 const { GoogleGenerativeAI } = require('@google/generative-ai');
@@ -56,9 +58,112 @@ Translated ${localeNames[targetLocale]} content:`;
 }
 
 /**
+ * Translate content using LibreTranslate (FREE, open-source)
+ * Public instance: https://libretranslate.com (no API key needed)
+ */
+async function translateWithLibreTranslate(content, sourceLocale, targetLocale, apiUrl = 'https://libretranslate.com') {
+  // Map locale codes
+  const localeMap = {
+    en: 'en',
+    ur: 'ur',
+  };
+  
+  const sourceLang = localeMap[sourceLocale] || sourceLocale;
+  const targetLang = localeMap[targetLocale] || targetLocale;
+  
+  try {
+    // LibreTranslate has a 5000 character limit, so we need to chunk
+    const maxLength = 4000; // Leave buffer for API overhead
+    const chunks = [];
+    
+    if (content.length <= maxLength) {
+      chunks.push(content);
+    } else {
+      // Split by paragraphs to preserve structure
+      const paragraphs = content.split(/\n\n+/);
+      let currentChunk = '';
+      
+      for (const para of paragraphs) {
+        if ((currentChunk + para).length > maxLength && currentChunk) {
+          chunks.push(currentChunk);
+          currentChunk = para;
+        } else {
+          currentChunk += (currentChunk ? '\n\n' : '') + para;
+        }
+      }
+      if (currentChunk) chunks.push(currentChunk);
+    }
+    
+    // Translate each chunk with retry logic and rate limiting
+    const translatedChunks = [];
+    for (let i = 0; i < chunks.length; i++) {
+      const chunk = chunks[i];
+      let retries = 3;
+      let lastError = null;
+      
+      while (retries > 0) {
+        try {
+          const response = await fetch(`${apiUrl}/translate`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              q: chunk,
+              source: sourceLang,
+              target: targetLang,
+              format: 'text',
+            }),
+          });
+          
+          if (response.status === 429) {
+            // Rate limited - wait longer and retry
+            const waitTime = Math.pow(2, 4 - retries) * 2000; // Exponential backoff: 2s, 4s, 8s
+            console.warn(`[LibreTranslate] Rate limited, waiting ${waitTime}ms before retry...`);
+            await new Promise(resolve => setTimeout(resolve, waitTime));
+            retries--;
+            continue;
+          }
+          
+          if (!response.ok) {
+            throw new Error(`LibreTranslate API error: ${response.status} ${response.statusText}`);
+          }
+          
+          const data = await response.json();
+          translatedChunks.push(data.translatedText);
+          
+          // Rate limiting: longer delay between requests to avoid 429
+          // Public API limit is ~5 requests/minute, so wait 15 seconds between files
+          if (i < chunks.length - 1) {
+            await new Promise(resolve => setTimeout(resolve, 15000)); // 15 second delay
+          }
+          
+          break; // Success, exit retry loop
+        } catch (error) {
+          lastError = error;
+          retries--;
+          if (retries > 0) {
+            const waitTime = Math.pow(2, 4 - retries) * 1000;
+            await new Promise(resolve => setTimeout(resolve, waitTime));
+          }
+        }
+      }
+      
+      if (retries === 0 && lastError) {
+        throw lastError;
+      }
+    }
+    
+    return translatedChunks.join('\n\n');
+  } catch (error) {
+    throw new Error(`LibreTranslate translation failed: ${error.message}`);
+  }
+}
+
+/**
  * Translate content using Gemini API
  */
-async function translateContent(model, content, sourceLocale, targetLocale) {
+async function translateWithGemini(model, content, sourceLocale, targetLocale) {
   try {
     const prompt = createTranslationPrompt(content, sourceLocale, targetLocale);
     
@@ -68,7 +173,18 @@ async function translateContent(model, content, sourceLocale, targetLocale) {
     
     return translatedText;
   } catch (error) {
-    throw new Error(`Translation failed: ${error.message}`);
+    throw new Error(`Gemini translation failed: ${error.message}`);
+  }
+}
+
+/**
+ * Translate content - routes to appropriate provider
+ */
+async function translateContent(model, content, sourceLocale, targetLocale, apiProvider = 'gemini', libreTranslateUrl) {
+  if (apiProvider === 'libretranslate') {
+    return await translateWithLibreTranslate(content, sourceLocale, targetLocale, libreTranslateUrl);
+  } else {
+    return await translateWithGemini(model, content, sourceLocale, targetLocale);
   }
 }
 

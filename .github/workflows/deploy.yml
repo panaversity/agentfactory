@@ -61,7 +61,9 @@ jobs:
           AUTH_URL: ${{ secrets.AUTH_URL }}
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
           BASE_URL: ${{ secrets.BASE_URL }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          # GEMINI_API_KEY is optional - LibreTranslate (free) is used by default
+          # Only set this if you want to use Gemini instead of LibreTranslate
+          # GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           # Optional: Add other env vars if needed
           # GA4_MEASUREMENT_ID: ${{ secrets.GA4_MEASUREMENT_ID }}
         run: npm run build

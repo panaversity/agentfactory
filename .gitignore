@@ -40,5 +40,6 @@ build/
 htmlcov/
 .mypy_cache/
 .ruff_cache/
-i18n/
+# Translation cache (temporary, regenerated)
 .translation-cache/
+# i18n/ - REMOVED: We commit translated files so CI doesn't need to translate

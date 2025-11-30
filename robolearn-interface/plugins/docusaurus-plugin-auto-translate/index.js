@@ -19,9 +19,10 @@ module.exports = function autoTranslatePlugin(context, options) {
     enabled = true,
     sourceLocale = 'en',
     targetLocales = ['ur'],
-    apiProvider = 'gemini',
+    apiProvider = 'libretranslate', // Default to free LibreTranslate
     model = 'gemini-flash-lite-latest',
     apiKey = process.env.GEMINI_API_KEY,
+    libreTranslateUrl = 'https://libretranslate.com', // Free public instance
     cacheDir = '.translation-cache',
     docsPath = 'docs',
     temperature = 0.1, // Low temperature for deterministic translations (preserves code better)
@@ -36,12 +37,21 @@ module.exports = function autoTranslatePlugin(context, options) {
         return;
       }
 
-      if (!apiKey) {
-        console.warn('[Auto-Translate] GEMINI_API_KEY not set, skipping translation');
-        return;
+      // Check if we need API - only if translating new files
+      // If all translations exist in git, we don't need API at all
+      console.log('[Auto-Translate] Starting translation process...');
+      console.log('[Auto-Translate] Will use existing translations from git if available');
+      
+      // Only require API key if using Gemini provider (for new translations)
+      if (apiProvider === 'gemini' && !apiKey) {
+        console.warn('[Auto-Translate] GEMINI_API_KEY not set. Will only use existing translations from git.');
+        console.warn('[Auto-Translate] New/changed files will not be translated without API key.');
       }
 
-      console.log('[Auto-Translate] Starting translation process...');
+      // LibreTranslate doesn't need API key, so we can proceed
+      if (apiProvider === 'libretranslate' || (apiProvider === 'gemini' && !apiKey)) {
+        console.log('[Auto-Translate] Will use LibreTranslate for new translations (free, no API key needed)');
+      }
 
       const { siteDir } = context;
       const docsDir = path.join(siteDir, docsPath);
@@ -61,15 +71,24 @@ module.exports = function autoTranslatePlugin(context, options) {
 
       console.log(`[Auto-Translate] Found ${mdFiles.length} markdown files`);
 
-      // Initialize Gemini client
+      // Initialize translation provider
       let geminiModel = null;
       if (apiProvider === 'gemini') {
-        try {
-          geminiModel = translator.createGeminiClient(apiKey, model, temperature);
-        } catch (error) {
-          console.error(`[Auto-Translate] Failed to initialize Gemini client: ${error.message}`);
-          return;
+        if (!apiKey) {
+          console.warn('[Auto-Translate] GEMINI_API_KEY not set, but apiProvider is "gemini". Switching to libreTranslate (free).');
+          // Fallback to LibreTranslate if no API key
+        } else {
+          try {
+            geminiModel = translator.createGeminiClient(apiKey, model, temperature);
+          } catch (error) {
+            console.error(`[Auto-Translate] Failed to initialize Gemini client: ${error.message}`);
+            console.warn('[Auto-Translate] Falling back to LibreTranslate (free)');
+          }
         }
+      }
+      
+      if (apiProvider === 'libretranslate' || (apiProvider === 'gemini' && !geminiModel)) {
+        console.log('[Auto-Translate] Using LibreTranslate (free, open-source)');
       }
 
       let translatedCount = 0;
@@ -85,6 +104,25 @@ module.exports = function autoTranslatePlugin(context, options) {
             const relativePath = i18nStructure.getRelativePathFromDocs(sourceFile, docsDir);
             const { frontmatter, content, original } = fileProcessor.readMarkdownFile(sourceFile);
 
+            // Check if translated file already exists (committed to git)
+            const targetPath = path.join(
+              siteDir,
+              i18nStructure.getI18nTargetPath(relativePath, targetLocale)
+            );
+            
+            // If translated file exists and is newer than source, skip translation
+            if (fs.existsSync(targetPath)) {
+              const sourceStats = fs.statSync(sourceFile);
+              const targetStats = fs.statSync(targetPath);
+              
+              // If translated file exists and is up-to-date, use it
+              if (targetStats.mtime >= sourceStats.mtime) {
+                cachedCount++;
+                console.log(`[Auto-Translate] Using existing translation: ${relativePath}`);
+                continue;
+              }
+            }
+            
             // Check cache
             if (cache.isCacheValid(cacheDirPath, relativePath, original, targetLocale)) {
               // Validate cached translation for common corruption patterns
@@ -123,18 +161,25 @@ module.exports = function autoTranslatePlugin(context, options) {
 
             // Translate content
             console.log(`[Auto-Translate] Translating: ${relativePath}`);
+            const effectiveProvider = (apiProvider === 'gemini' && !geminiModel) ? 'libretranslate' : apiProvider;
+            
+            // Add delay between files for LibreTranslate to avoid rate limits
+            // Public API limit is ~5 requests/minute, so wait 15 seconds between files
+            if (effectiveProvider === 'libretranslate' && translatedCount > 0) {
+              console.log(`[Auto-Translate] Rate limiting: waiting 15 seconds before next translation...`);
+              await new Promise(resolve => setTimeout(resolve, 15000));
+            }
+            
             const translatedContent = await translator.translateContent(
               geminiModel,
               content,
               sourceLocale,
-              targetLocale
+              targetLocale,
+              effectiveProvider,
+              options.libreTranslateUrl || 'https://libretranslate.com'
             );
 
-            // Write translated file
-            const targetPath = path.join(
-              siteDir,
-              i18nStructure.getI18nTargetPath(relativePath, targetLocale)
-            );
+            // Write translated file (targetPath already defined above)
             fileProcessor.writeTranslatedFile(targetPath, frontmatter, translatedContent);
 
             // Update cache

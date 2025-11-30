@@ -202,19 +202,22 @@ const config: Config = {
         docsPath: "docs",
       },
     ],
-    // Auto-Translate Plugin - Automatically translates content to Urdu using Gemini API
+    // Auto-Translate Plugin - Uses existing translations from git (committed i18n/ur files)
+    // Strategy: Translate once locally with Gemini, commit i18n/ur files, CI uses them
+    // Only translates if: 1) File doesn't exist, 2) Source file is newer than translation
     [
       "./plugins/docusaurus-plugin-auto-translate",
       {
-        enabled: true,
+        enabled: true, // Enabled - but uses existing committed translations first
         sourceLocale: "en",
         targetLocales: ["ur"],
-        apiProvider: "gemini",
+        apiProvider: "gemini", // Use Gemini for new translations (if needed)
         model: "gemini-flash-lite-latest",
-        apiKey: process.env.GEMINI_API_KEY,
+        apiKey: process.env.GEMINI_API_KEY, // Optional - only needed for new translations
+        libreTranslateUrl: "https://libretranslate.com",
         cacheDir: ".translation-cache",
         docsPath: "docs",
-        temperature: 0.1, // Low temperature for deterministic translations (better code preservation)
+        temperature: 0.1,
       },
     ],
     // Local Search Plugin - No external service needed, works offline
