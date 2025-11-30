@@ -79,7 +79,9 @@ curl -X POST http://localhost:3001/api/admin/seed-public-client \
 DATABASE_URL=postgresql://user:pass@host.neon.tech/db?sslmode=require
 BETTER_AUTH_SECRET=your-32-char-secret  # openssl rand -base64 32
 BETTER_AUTH_URL=http://localhost:3001
-ALLOWED_ORIGINS=http://localhost:3000
+# Comma-separated list of allowed origins for CORS
+# Production: Include your production domain(s)
+ALLOWED_ORIGINS=http://localhost:3000,https://mjunaidca.github.io
 NEXT_PUBLIC_BETTER_AUTH_URL=http://localhost:3001
 
 # Optional: Email verification
