@@ -1,0 +1,1304 @@
+{
+  "book_id": "physical-ai-robotics",
+  "collection_name": "robolearn_platform",
+  "records": {
+    "module-1-ros2/README.md": {
+      "source_file": "module-1-ros2/README.md",
+      "file_hash": "8b0087e91d35b382ceb3466ca67eb589ff23e1d0f33b1dd0351639f721c6c3c7",
+      "chunk_ids": [
+        "75935637-85c2-5975-bc1c-77eff160231d",
+        "ec5809fa-33e4-568c-bb48-2bb8f124ad1e",
+        "79ce2536-5adb-5fc0-93dc-fc0a7a579d7c",
+        "bb5c2d96-4348-52b0-a379-208295899fd4",
+        "5bbcaa93-5f00-515d-918a-309ffb21609c",
+        "add14d08-0675-5348-8896-6b21cbea0ec5",
+        "c2f5f4cf-5211-5fdd-8420-4eed19dd72d7",
+        "541c73c5-2bd4-5b17-977f-c0be13ce68eb",
+        "c0f3de85-f5b9-576d-bb14-97b2710afc3a"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.866891",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 0,
+      "lesson": 0
+    },
+    "module-1-ros2/chapter-1-physical-ai/README.md": {
+      "source_file": "module-1-ros2/chapter-1-physical-ai/README.md",
+      "file_hash": "b94b8573ec0d0b2f66438c70d632c8c2ccfe78f0e46c658adad3222f932aca2f",
+      "chunk_ids": [
+        "2e94a4f5-6572-5c24-a0bf-5d0725cf0a09",
+        "eb4c8735-ae7c-582b-9bcf-80a65076f866",
+        "acedd1cf-0c09-5d1b-9700-13b43f7c98d8",
+        "b5f2fe33-c613-52fe-a869-dc274a185ef1",
+        "a1e71fe2-5c08-5165-ada9-b3dbca8306f7"
+      ],
+      "chunk_count": 5,
+      "ingested_at": "2025-11-30T10:40:08.889867",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 1,
+      "lesson": 0
+    },
+    "module-1-ros2/chapter-1-physical-ai/01-digital-to-physical.md": {
+      "source_file": "module-1-ros2/chapter-1-physical-ai/01-digital-to-physical.md",
+      "file_hash": "8068ae4a6e22665e5c8154067338255a472064cf49a8e3552e3ca61d4eb7410c",
+      "chunk_ids": [
+        "85032e54-514f-5188-8756-6e85a33158de",
+        "aa336a22-4277-533a-a2e9-289fc2798f7a",
+        "819d156c-8c3d-5768-8ef9-11d8995ef1ce",
+        "5c154809-d502-5a67-87e5-fbf8489233fe",
+        "0dbe9bd4-94b9-5ea0-9fea-9864510d506c",
+        "62d6b799-b834-5823-a8ae-b0b52f29f59d",
+        "0ea09d89-ab1c-577f-be0d-bc124629112e",
+        "d73b1d38-7fa2-5493-860f-ca85d15cdc22",
+        "bb5056e2-ccd3-5910-9c9c-c18e790e2f9a"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.889949",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 1,
+      "lesson": 1
+    },
+    "module-1-ros2/chapter-1-physical-ai/02-embodied-intelligence.md": {
+      "source_file": "module-1-ros2/chapter-1-physical-ai/02-embodied-intelligence.md",
+      "file_hash": "9851f34fb994ab330433c34b87647bc4dc2d42f84194d3f4b50118af660c982a",
+      "chunk_ids": [
+        "d86f833e-7c1f-53c3-ba2d-6f951605f7e9",
+        "08b859d4-5647-5c37-9c78-a5e2c8d31453",
+        "f18bfc2a-458d-5793-b046-eb88a51e3029",
+        "ce7f6076-f73c-5946-9ce9-329f9efd8e1b",
+        "7d72c40b-1333-5273-98d3-444f705114c5",
+        "896e2aeb-e068-5fd2-9072-9519c7ac5318",
+        "3c4606f9-2690-5006-8ffd-7535b99000a2",
+        "0bcfc0c2-3622-5752-813b-92c3b07aa8dc",
+        "a0beffc0-38af-5e66-a1bd-9e859e9d3a84"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.889962",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 1,
+      "lesson": 2
+    },
+    "module-1-ros2/chapter-1-physical-ai/03-humanoid-revolution.md": {
+      "source_file": "module-1-ros2/chapter-1-physical-ai/03-humanoid-revolution.md",
+      "file_hash": "29cbf5cb2b39576a21e7154ca6c48882d677901bb45e12d5d108a9db3317b713",
+      "chunk_ids": [
+        "a4072d4f-ef2b-55f6-86f4-1ae9b27bb86c",
+        "92142227-d04a-57c6-865d-98c6f7d10d07",
+        "fa94cd16-46b4-5987-b21b-c8a83fe15548",
+        "27319d85-b9c7-5ab7-ae15-2598a8990c16",
+        "db8a0cd7-b5eb-559e-a90c-f1080513756d",
+        "8b5db8d2-7c3b-5478-a86c-22f9956e9536",
+        "93ca7a58-bad0-5490-8168-97f7f538f2f1",
+        "eefbcbb1-8f75-5b1d-be3b-d6b3dc2343d3",
+        "7076d23a-3b47-5db6-92b7-b5b710ade9c7",
+        "f51b682f-c4b0-5dd2-9e8b-64f71b508de9",
+        "eefb9f1f-4d67-5d98-b419-f4dabb9739f2",
+        "26e9239c-1975-5bd5-b86e-5692d6a34399",
+        "07638500-264e-5f69-82b8-8f7768b4a040",
+        "278b9d58-9648-572c-bf4d-67c80b3375e6"
+      ],
+      "chunk_count": 14,
+      "ingested_at": "2025-11-30T10:40:08.889974",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 1,
+      "lesson": 3
+    },
+    "module-1-ros2/chapter-2-robot-system/README.md": {
+      "source_file": "module-1-ros2/chapter-2-robot-system/README.md",
+      "file_hash": "23a891b5e677cd25695c8ab191791b3623ee32b843a77240c12086bbda26d3a5",
+      "chunk_ids": [
+        "e70269d9-a26a-565a-b007-ea28a657df2d",
+        "f16ece60-34cf-5b4e-8f77-e680a8f65966",
+        "0fa5c316-bb97-5032-834b-d409a4e78f2c",
+        "1f38c61f-3e73-54c4-afa2-d4bbd418cad7",
+        "a6ae679c-728e-50a4-934e-1d9e073d6c42",
+        "b4861e66-5493-5c83-9de4-fc09ccffe3cf"
+      ],
+      "chunk_count": 6,
+      "ingested_at": "2025-11-30T10:40:08.889988",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 2,
+      "lesson": 0
+    },
+    "module-1-ros2/chapter-2-robot-system/01-how-robots-see.md": {
+      "source_file": "module-1-ros2/chapter-2-robot-system/01-how-robots-see.md",
+      "file_hash": "4099161f36936b7db2af5bbcf2b8afdf3a6c9fa5b222b329f40035b156872119",
+      "chunk_ids": [
+        "a50d1ce7-0659-56f6-8784-134cbde798fa",
+        "ae75f0e9-d550-50d1-b119-6ade92fa5282",
+        "a848efc7-a819-5fe2-9d5d-398d0307e0b7",
+        "d1de6669-657b-59a2-bfff-bf24a74b4bdb",
+        "cdcec325-e2c0-5702-a84a-a00c1a139b95",
+        "4e0fec1b-3921-5fac-97fd-746da2497c89",
+        "2c93028a-05c1-5e9e-a67b-4670760199c8",
+        "07a14326-7301-5a87-ab60-18c7c4d4b964"
+      ],
+      "chunk_count": 8,
+      "ingested_at": "2025-11-30T10:40:08.889994",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 2,
+      "lesson": 1
+    },
+    "module-1-ros2/chapter-2-robot-system/02-how-robots-move.md": {
+      "source_file": "module-1-ros2/chapter-2-robot-system/02-how-robots-move.md",
+      "file_hash": "23406ccedde6e070618fd82211b0a2c16192322d6d393fee70caf2beec92e0f5",
+      "chunk_ids": [
+        "6ce3efac-5017-509c-9787-d2f9ba237f07",
+        "618c7fec-b54a-5272-8425-04ffc1f83dcd",
+        "7c962f43-1b6a-540d-a772-97ff817736de",
+        "fa111259-2f29-5e52-980b-cb2ad4ed24b8",
+        "89540588-cd24-50d3-84a6-dc0d4c2ffd65",
+        "9730b094-5a06-5dd0-8bb1-7e8c61c12483",
+        "3a1a0365-1d68-5bd0-9bd9-3850ea747b4c",
+        "4796cd30-3a23-527b-b253-886e3fa8cf8b"
+      ],
+      "chunk_count": 8,
+      "ingested_at": "2025-11-30T10:40:08.893722",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 2,
+      "lesson": 2
+    },
+    "module-1-ros2/chapter-2-robot-system/03-why-middleware.md": {
+      "source_file": "module-1-ros2/chapter-2-robot-system/03-why-middleware.md",
+      "file_hash": "99ec911b36be4f4ea78953d5ef40cbfd5be44ba62d4acd9d72f87f4c944b143e",
+      "chunk_ids": [
+        "2cd4fc2f-104e-5618-b052-3141b747a089",
+        "d8f2fb8f-6c8f-547a-bf90-62eb4e47ebe5",
+        "6a8fed6f-3fc7-5913-80ac-33cac59da4a8",
+        "7ce0be07-d641-52bb-b22a-6410eae83aa5",
+        "57cc7cb7-b04c-5d9a-9f87-674f01faf063",
+        "b20e7042-54c7-5a00-bb0a-dc163d384a19",
+        "c281f5fe-93f1-5375-8fcc-8e7176fc503a"
+      ],
+      "chunk_count": 7,
+      "ingested_at": "2025-11-30T10:40:08.893924",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 2,
+      "lesson": 3
+    },
+    "module-1-ros2/chapter-2-robot-system/04-your-hardware-tier.md": {
+      "source_file": "module-1-ros2/chapter-2-robot-system/04-your-hardware-tier.md",
+      "file_hash": "39cc02b66e414447b214268b8937b95502b4f9904db67e759b992563aca7e5fc",
+      "chunk_ids": [
+        "e32c820d-7672-5ba2-a8d8-8c42720c7fbd",
+        "4e81fbcd-fed2-5c8a-acf2-2d08bdf07a3d",
+        "5df1d5ff-5cfd-5283-b4bd-2c36c90fa0fe",
+        "464b7f8b-a1c4-58a7-8acc-17d598d276b8",
+        "18d21a8c-846f-5c6d-8dd0-1a6e380a3974",
+        "b7edb9ce-db8e-538e-80f1-3577b87627f4",
+        "9ab3f742-76c7-5cfa-b7d5-b0935abc6446",
+        "12095666-1e77-50d4-aacd-2a7004f9e7ef",
+        "e3de44bd-456d-55b5-a01a-43feeaff05cf",
+        "7121fbe6-0921-55b4-ba5c-3b55fe9c3f72"
+      ],
+      "chunk_count": 10,
+      "ingested_at": "2025-11-30T10:40:08.893970",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 2,
+      "lesson": 4
+    },
+    "module-1-ros2/chapter-3-meet-ros2/README.md": {
+      "source_file": "module-1-ros2/chapter-3-meet-ros2/README.md",
+      "file_hash": "c18f632d821bd7bf296c6e311cb4b6b1772e3022a2e762add0a6cf4842d07580",
+      "chunk_ids": [
+        "e6901683-841f-5c84-b89f-0caae4f15d13",
+        "fa8ee61d-a3a4-5ac9-9922-3d5a6af1b68d",
+        "6a659154-99ea-5243-a912-fa243c44d0a0",
+        "c8aedb2d-4d5d-5ce4-999c-e8383f762ee5",
+        "66ae49ee-c249-56c2-a450-eda7f7bc6055"
+      ],
+      "chunk_count": 5,
+      "ingested_at": "2025-11-30T10:40:08.894023",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 3,
+      "lesson": 0
+    },
+    "module-1-ros2/chapter-3-meet-ros2/01-setup-environment.md": {
+      "source_file": "module-1-ros2/chapter-3-meet-ros2/01-setup-environment.md",
+      "file_hash": "6cf01bdc596fd0cf000121b7aa0cabe3be2f60289a38629a4661b257e6520262",
+      "chunk_ids": [
+        "9b39439f-ae34-5ecc-84bc-1ef8f9b0d768",
+        "2c889e2c-2711-5d8a-be06-3aefd9c4fde6",
+        "80351e18-ee51-5b4a-b979-d30501f8d615",
+        "48fcee1d-b703-5ce1-8eab-d8a55345da0a",
+        "d9525602-6cf0-5109-87e5-f5ba3d0cb387",
+        "f0fa5a04-a196-5e25-afd2-3cee7e2de0ce",
+        "a5517620-cc49-52bf-8364-b2c35ac16a13",
+        "fa9d2371-df52-5ec7-992c-df914cbf61e1",
+        "968b8497-1bee-59cd-bf50-be75a233d1b3",
+        "fffab33c-6ab7-5a65-9884-505598416889"
+      ],
+      "chunk_count": 10,
+      "ingested_at": "2025-11-30T10:40:08.894052",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 3,
+      "lesson": 1
+    },
+    "module-1-ros2/chapter-3-meet-ros2/02-turtlesim-action.md": {
+      "source_file": "module-1-ros2/chapter-3-meet-ros2/02-turtlesim-action.md",
+      "file_hash": "7de051cfdd978576657496960cba00cb8791adf01aacc6d8de9a71a51afcf68a",
+      "chunk_ids": [
+        "4eb69063-1fdc-596b-afb1-5a96266fcefa",
+        "ef41c162-0fbe-5488-ac3b-b06f1cbfb3b9",
+        "a39011a9-563e-5fe7-8226-b89785b4f0ee",
+        "1226b21d-c961-5253-b2ae-2dd4e5d9ee86",
+        "8d0e20b3-0bb2-555b-b4ab-ff32549fd0b3",
+        "9536f344-45ef-5827-a06e-132d60da14a2",
+        "c936d7ae-fbed-5f4c-ae9b-1fee76abe76a"
+      ],
+      "chunk_count": 7,
+      "ingested_at": "2025-11-30T10:40:08.894063",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 3,
+      "lesson": 2
+    },
+    "module-1-ros2/chapter-3-meet-ros2/03-nodes-topics.md": {
+      "source_file": "module-1-ros2/chapter-3-meet-ros2/03-nodes-topics.md",
+      "file_hash": "158afa40fc88d984bdff8a3f96e60ec9f89d2e4bf68ce04b26db9b0032782738",
+      "chunk_ids": [
+        "444861f5-41cd-5acc-a7ed-5b5b612c3ca9",
+        "9cfb766e-a6f0-5ac8-ab52-8d94a35e9f92",
+        "64596866-40dd-51c7-8947-ffba1821e7a8",
+        "17f757cb-b7a8-51f0-bdf2-a641d9326608",
+        "a16e38b4-9acc-5baf-848f-9ccf7dedb174",
+        "fee20416-5a01-5d00-ade8-aeb9d643ba9d",
+        "7df87478-74d7-5c76-b2a2-e18cff9a2cb3",
+        "2ae43067-12b3-586b-8a08-8ac8f81e55b8",
+        "349ae2ae-d8c4-59a8-a9d2-b7342c46798c"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.894073",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 3,
+      "lesson": 3
+    },
+    "module-1-ros2/chapter-3-meet-ros2/04-services-parameters.md": {
+      "source_file": "module-1-ros2/chapter-3-meet-ros2/04-services-parameters.md",
+      "file_hash": "3ee9e96fd399c1037fd90bcdbaf24f9d08d0af6ae6923bc3c42dc3d5d0c1e6ea",
+      "chunk_ids": [
+        "3faffe66-51e3-59b0-95df-3c14f9f6636a",
+        "2a15ed3a-b522-5af3-b017-8b500e345876",
+        "83672410-59cd-5ac8-af03-8b55c6d971af",
+        "61a8fb71-382d-5426-96ba-9958eb1412bd",
+        "5bbcaad9-2af2-50a9-8cca-e3cc2b64cc00",
+        "b8ea696f-d90d-55db-83c6-0e202b293ba0",
+        "aa15ad42-b7f8-50e3-9712-29c813ddb51a",
+        "444b3d1d-1122-5255-8339-9633f2852ed8",
+        "5e3048b4-d7c4-5c5d-8e3a-4c330fc2e590",
+        "c39728f1-3665-5821-bc74-8f8dd96c76de"
+      ],
+      "chunk_count": 10,
+      "ingested_at": "2025-11-30T10:40:08.894083",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 3,
+      "lesson": 4
+    },
+    "module-1-ros2/chapter-4-first-code/README.md": {
+      "source_file": "module-1-ros2/chapter-4-first-code/README.md",
+      "file_hash": "81ad4a9946e87b2146b328d4ad45c4385061b1774919b17faef8e714310931f8",
+      "chunk_ids": [
+        "5e3cffc0-9c49-5dcf-9c33-97de1053298f",
+        "f79a2300-3b2b-5c34-8186-9cbbf0d216f7",
+        "f35b7623-1f6a-5d75-af5a-b3414afb78e0",
+        "a5ab99ff-32fe-5f24-bc63-e1edfdba0adf",
+        "a613f273-b75d-5afa-9f83-30c601218284",
+        "c0a9ba8e-ebe0-538f-9966-32b739647f20",
+        "8af75f46-e7cf-53f8-86d0-b79811f9ea56"
+      ],
+      "chunk_count": 7,
+      "ingested_at": "2025-11-30T10:40:08.894097",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 4,
+      "lesson": 0
+    },
+    "module-1-ros2/chapter-4-first-code/01-workspaces-packages.md": {
+      "source_file": "module-1-ros2/chapter-4-first-code/01-workspaces-packages.md",
+      "file_hash": "0130dd62836b4fcee47f063fe04423078288000274d77f33e66fcd609a447ecb",
+      "chunk_ids": [
+        "7340d399-ac40-5c1c-bff6-d11ba8e2c71e",
+        "8140cf3c-a5af-5573-9ad9-d2c467d13657",
+        "05027a60-a481-527d-bac8-51cdc2d60bec",
+        "449b74eb-6e39-5176-b4cb-2739a7867f06",
+        "1d1689c1-825a-5616-9470-71b52131011e",
+        "3d4bf0ef-9b22-585d-9b07-af978b8350d6",
+        "69112395-bd00-5dde-9c69-c5d6b88bbfde",
+        "5f5cb655-896d-55f2-ae01-4feccdd31faf",
+        "816002bb-f62f-56ae-9605-de8ecf18002f"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.894107",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 4,
+      "lesson": 1
+    },
+    "module-1-ros2/chapter-4-first-code/02-writing-publisher.md": {
+      "source_file": "module-1-ros2/chapter-4-first-code/02-writing-publisher.md",
+      "file_hash": "6740c6318e4faad8a4600911e2511d6ec36c209cec896c7803fca18d08a2a7d2",
+      "chunk_ids": [
+        "52efe05a-c099-5cd7-b25b-bda03edf2ab9",
+        "540c525b-4837-52ec-bec5-942ee5b7056e",
+        "f6c90e07-f1dd-50d9-964c-dc32c521e0a6",
+        "8020ae44-9a7f-5d4e-9e61-0efae1a7f166",
+        "0aa547e1-3777-5286-a912-7044c813eacb",
+        "29d1762d-1a79-57e4-b104-0cf177da77b9",
+        "ffbf3fd8-50fc-5b33-80f5-87b61ffffda5",
+        "0f410a05-2bfa-50be-b0fd-dec94bbce2ec",
+        "b1efbd40-7622-57a1-b249-99346b8a1744"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.894187",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 4,
+      "lesson": 2
+    },
+    "module-1-ros2/chapter-4-first-code/03-writing-subscriber.md": {
+      "source_file": "module-1-ros2/chapter-4-first-code/03-writing-subscriber.md",
+      "file_hash": "ec3e59c04b4082ac3f96e2ecce9297d0fa20fd94419af5c5a9cdeddafb7d22ff",
+      "chunk_ids": [
+        "7a589c70-f066-5187-b747-14f909570225",
+        "050c0d25-9d16-5089-8388-f4060b06824e",
+        "0adfc626-87e1-5898-9c8a-312e5b35d1b8",
+        "359e2e58-842a-5c0f-864d-d01829839798",
+        "01fc7713-f6f6-50fc-aaae-f68ce7e5a06b",
+        "42a8ae0b-dc82-55c5-8e34-b7501112d4ff",
+        "5a034596-6ad9-55d0-8707-1fea43c1dc67",
+        "84faac5b-d8e8-5f9d-b94b-4ebbd96cf321",
+        "f309e857-ea6e-5282-bd41-a2e3da9f8822",
+        "ce074bf8-9cd4-51ec-8cc2-c37a2fbcdb78"
+      ],
+      "chunk_count": 10,
+      "ingested_at": "2025-11-30T10:40:08.894245",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 4,
+      "lesson": 3
+    },
+    "module-1-ros2/chapter-4-first-code/04-try-with-ai.md": {
+      "source_file": "module-1-ros2/chapter-4-first-code/04-try-with-ai.md",
+      "file_hash": "318c840ab1a2631a0caa8285f5b954426f7e65ade062bbbe7193fa6bd09fcad2",
+      "chunk_ids": [
+        "b7e8ac51-89bd-5aa2-8e65-dc73515f6e68",
+        "7317cc00-d2f7-5e23-bb96-c9bc15f348c2",
+        "c67d9f32-97bf-5d19-8010-915e954b0336",
+        "5de320aa-2ca6-5674-b798-5814c1413970",
+        "e29affbf-c64f-574b-b246-e7c0f3ba7ba9",
+        "14208151-df8e-5698-a1e3-2bbd5e0b0719",
+        "9e55660d-19e1-518e-9daa-8de18e033ffe",
+        "7ae664f3-231f-5dd0-9d14-843e2b288f82",
+        "3493917b-88de-57ed-a530-326a949963c5",
+        "1d1ab445-9728-5c79-896a-34833b1fa376",
+        "419ed196-5a86-5022-abc7-bee79f935bdc",
+        "9e6f7fe0-d48d-5bfb-9159-0f3b78516687",
+        "ffe93fca-8e97-5ca5-9d1e-356fc368c9d6"
+      ],
+      "chunk_count": 13,
+      "ingested_at": "2025-11-30T10:40:08.894266",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 4,
+      "lesson": 4
+    },
+    "module-1-ros2/chapter-5-communication/README.md": {
+      "source_file": "module-1-ros2/chapter-5-communication/README.md",
+      "file_hash": "b673403f5fb786ef643fd8097868a5ec91cc33c873a0bc3ee4e7ec7ca2b3e776",
+      "chunk_ids": [
+        "e26c7ea7-a885-50d9-abd0-3caa416dcec2",
+        "ef3f489a-a313-58b8-ae9e-cda22bf957f5",
+        "fb4cd191-57b7-579d-81fe-eacc9ff023d7",
+        "90729275-c236-54f9-afb5-669cce3433e3",
+        "a814b8dc-cfe9-5fce-8de5-9f721d399289"
+      ],
+      "chunk_count": 5,
+      "ingested_at": "2025-11-30T10:40:08.894325",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 5,
+      "lesson": 0
+    },
+    "module-1-ros2/chapter-5-communication/01-service-server.md": {
+      "source_file": "module-1-ros2/chapter-5-communication/01-service-server.md",
+      "file_hash": "a1cb64c79072a57e777cb94dad926c6d2ed8f107b44a2e50caf5d31b78893e41",
+      "chunk_ids": [
+        "25ee0d94-e800-58e1-9de6-c604106b31fd",
+        "440c07f7-1a5a-5ce5-b89f-bdc35b499ea4",
+        "98c782c7-9741-5c89-8bc2-0e074e494cf7",
+        "f573bb1c-a30f-5be4-bd9f-b73de958e800",
+        "a8933b2a-8ddf-5cdf-927f-cef462ba3ea2",
+        "93963f45-2003-5d86-b2df-c111de2f16f0",
+        "24362023-bdc1-539a-8c80-054145307e32",
+        "91e04d2a-efa3-584c-a030-13e031caab5a"
+      ],
+      "chunk_count": 8,
+      "ingested_at": "2025-11-30T10:40:08.894343",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 5,
+      "lesson": 1
+    },
+    "module-1-ros2/chapter-5-communication/02-service-client.md": {
+      "source_file": "module-1-ros2/chapter-5-communication/02-service-client.md",
+      "file_hash": "fdcc30a9338051deec846fd6d30fc0e7398f7a297fd558ac17eca790f39fe736",
+      "chunk_ids": [
+        "f0c8507a-a2d4-5b00-aa3c-39db275b8961",
+        "e7e485c4-4f74-5ef5-8f74-547ab86e352c",
+        "6db38164-56b3-5262-94dd-6423c8cb0fb9",
+        "1d1076de-df05-5299-870f-ebb75b7cb255",
+        "32ce9908-e5c4-5bd9-9551-e14a916ac385",
+        "acdd2a01-798c-579c-800b-0bf3da898518",
+        "ddff0bf7-c546-5592-b3d5-c92753d6ff32",
+        "1fe582e7-feaa-51ef-80c9-70101534bef2"
+      ],
+      "chunk_count": 8,
+      "ingested_at": "2025-11-30T10:40:08.894455",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 5,
+      "lesson": 2
+    },
+    "module-1-ros2/chapter-5-communication/03-custom-messages.md": {
+      "source_file": "module-1-ros2/chapter-5-communication/03-custom-messages.md",
+      "file_hash": "d8a0d303ac338f780ebb685a9a1051886c4ad3b739d7b35f8d60399f1a7fd1da",
+      "chunk_ids": [
+        "b823b624-1f42-5c94-a4b8-a5932d910bbf",
+        "39a3a842-7a68-535e-972f-3ff82b0c0657",
+        "968386e4-87f3-5bc2-805b-ee6af8c39296",
+        "89529c61-49cc-523e-b1aa-d1ad0ddd8db2",
+        "a566c5a2-bc5f-56fe-80a5-7591090a50e6",
+        "ac715ecf-2596-5169-8496-adce57fc9cdd",
+        "22f26c52-1cf9-52d5-873b-27c46b954032",
+        "53a390ee-a628-5128-8cbe-ce255d18da2e"
+      ],
+      "chunk_count": 8,
+      "ingested_at": "2025-11-30T10:40:08.894534",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 5,
+      "lesson": 3
+    },
+    "module-1-ros2/chapter-5-communication/04-design-patterns.md": {
+      "source_file": "module-1-ros2/chapter-5-communication/04-design-patterns.md",
+      "file_hash": "768ed1092071624a323f5e239755fa1bfe5e0296b3f263590d5c54e7f07d4a15",
+      "chunk_ids": [
+        "6521db7a-f959-52fe-bba4-d958b8130213",
+        "e4e790e5-f2b6-5a0b-872a-c3d59b42dc55",
+        "3f722161-b0e9-5c83-8bb0-7cd08146fbda",
+        "eee81500-22b0-5c54-8e64-a8b2e9e658d9",
+        "5ad7fcb0-11c0-5dac-931f-64448643fef2",
+        "f01a8eec-39d5-50a8-b838-f35cd012892e",
+        "997b6171-2d7e-5b39-a741-57d4e2ad9901",
+        "7587b4eb-c0d6-5c50-b451-1697cbd531b4",
+        "8767f733-c4dc-5e41-badb-5a99e0f9091e",
+        "fd346297-1dc5-598a-aa65-846f09bc3a69"
+      ],
+      "chunk_count": 10,
+      "ingested_at": "2025-11-30T10:40:08.894554",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 5,
+      "lesson": 4
+    },
+    "module-1-ros2/chapter-6-building-systems/README.md": {
+      "source_file": "module-1-ros2/chapter-6-building-systems/README.md",
+      "file_hash": "3496e2e44597b46bae2a85b93d7ddffc943866d5efafcae0699833ac6d4e3364",
+      "chunk_ids": [
+        "1a9a88bd-7d51-5576-b342-5c5ec48b1816",
+        "1a60ed1d-a3f2-546b-86ac-1fd7bfd5b7f1",
+        "49025d0c-32a6-5595-b96b-df9a27b93588",
+        "c0805813-c756-5e14-96a0-258a9976042c",
+        "cbc4584a-ea07-54e6-ab3b-13244f7def0c",
+        "94fa95c8-2064-5cb5-a819-e1707caca190"
+      ],
+      "chunk_count": 6,
+      "ingested_at": "2025-11-30T10:40:08.894565",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 6,
+      "lesson": 0
+    },
+    "module-1-ros2/chapter-6-building-systems/01-parameters.md": {
+      "source_file": "module-1-ros2/chapter-6-building-systems/01-parameters.md",
+      "file_hash": "78d5ec91cde0a18fd1badfe3bdf56648497bfd58dd40dac2adcebe2c601cbcde",
+      "chunk_ids": [
+        "07abccaf-dde7-50bc-9aee-b1d8fd42a8e2",
+        "eacbb792-b5a5-5649-ba3b-9e8b5ecb4b3e",
+        "0ff8e252-f57e-5b90-b8b4-8128a4d31827",
+        "ba5d8ead-448e-5158-bc35-0c4cdc6c8180",
+        "fdc3171a-bcf2-599d-9e20-5d82d3495c4a",
+        "6e6e2da5-2799-5f1d-beb6-f6a86ca195f6",
+        "c61c5770-41a7-51a1-b7dc-fdc7666e4fd4",
+        "f81af2b2-4c7b-5c9b-9ef1-ae9ee3c507ae",
+        "3ef63add-6807-510e-91c5-724aa7f1b56b"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.894576",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 6,
+      "lesson": 1
+    },
+    "module-1-ros2/chapter-6-building-systems/02-launch-files.md": {
+      "source_file": "module-1-ros2/chapter-6-building-systems/02-launch-files.md",
+      "file_hash": "492868bac157ceb32b81d105ab54fadf82c783cbf1747d5a6aac7a886f4d022e",
+      "chunk_ids": [
+        "bf27fffd-7f67-51c5-a079-00154b5a45d0",
+        "ebfdd99a-cba8-5dda-b938-b754d2a9f4e5",
+        "22ebf516-f565-552e-9f2a-36d0c4063e31",
+        "f85f5b52-578e-5646-b62d-92bc1522e003",
+        "0928fd66-1b72-5148-96a7-e4778c194fdb",
+        "33397c76-64c2-5d32-bcc4-56cc98972c00",
+        "c63e5239-a688-59d6-bce1-a72f89ef92f2",
+        "93770c3a-0b01-5729-b49c-8e0fa6ab7786",
+        "3cccb7d8-8ebf-574c-b3f4-1790ef05293c"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.894676",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 6,
+      "lesson": 2
+    },
+    "module-1-ros2/chapter-6-building-systems/03-debugging-systems.md": {
+      "source_file": "module-1-ros2/chapter-6-building-systems/03-debugging-systems.md",
+      "file_hash": "0a79bb0e4471326f8e5a43d1b20e42f5cf8d086c18e3493744f22c28bc9398c7",
+      "chunk_ids": [
+        "51dac686-5685-5ee9-b936-f4756a7ee392",
+        "9397b658-4980-51c9-8bdf-13d497655654",
+        "8e510d70-2b21-5d03-bb19-44bbcda5f3c2",
+        "b8ae7bcb-88dc-5a9c-8d95-1294f263e38b",
+        "74d05f4d-4b78-5fcc-9637-4816038f0876",
+        "13a82170-316a-5717-b53e-ba3145e5be02",
+        "102284b5-df77-5003-9f91-f5ebda6cc657",
+        "50649cbf-fb17-59d1-b4f7-8f1336c1815a",
+        "32fa4e41-d335-51af-925d-03d7df24a139",
+        "af6cdcb7-613e-513b-baea-67dc76ffa4dc",
+        "8b233bac-e3e9-5de7-8eec-1ef0b1f868b7"
+      ],
+      "chunk_count": 11,
+      "ingested_at": "2025-11-30T10:40:08.894688",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 6,
+      "lesson": 3
+    },
+    "module-1-ros2/chapter-7-capstone/README.md": {
+      "source_file": "module-1-ros2/chapter-7-capstone/README.md",
+      "file_hash": "a5e32561f64d4efb7cbd70a91096bc12bf7d43e64e20bac10adf8425969083cc",
+      "chunk_ids": [
+        "26e5831d-8a43-5ccf-9620-1863bc5e093d",
+        "a0fc1ebc-0f1f-5b45-8445-af6b4f4cbfd0",
+        "524b49fb-8aab-5490-acbf-54c0a39474dd",
+        "e05af072-e288-51e7-9b1b-4a71ea939628",
+        "f76d33ff-6c1c-5823-a671-908303de6723",
+        "d908064e-f159-564f-aa6b-2cc9ec4ddd5f",
+        "641fe540-4782-5a3c-9695-282fc84b9ea3",
+        "cd2a096b-0aac-5a65-8199-8b7fe6d3dee1"
+      ],
+      "chunk_count": 8,
+      "ingested_at": "2025-11-30T10:40:08.894800",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 7,
+      "lesson": 0
+    },
+    "module-1-ros2/chapter-7-capstone/01-capstone-spec.md": {
+      "source_file": "module-1-ros2/chapter-7-capstone/01-capstone-spec.md",
+      "file_hash": "3a158157397e1dd1af4e18072566e7bce3d1998aeef6cf33084fcaa42c971640",
+      "chunk_ids": [
+        "1a0594b2-d065-5f75-a96f-b1a822ae652c",
+        "8543dae0-24e4-5ed5-86cb-63e3667f0e6e",
+        "036ca6db-fbb5-51b2-963f-715cda0abdb5",
+        "51c92375-7fd4-58a6-87c9-4a0fa48968b3",
+        "39c8e4f3-59cf-5a60-8f00-367fb307114a",
+        "09b59859-566e-592d-b9e4-772008dd6763",
+        "0faba765-28af-53f0-a309-49900fad5506",
+        "c4c158dc-d5f6-5700-bfe1-3fa016b49798",
+        "2fcf4733-f78a-5de6-b2cd-b8a9a96608a5",
+        "db6a0e25-7fd8-58ba-896e-4acd7017e6d3",
+        "124770e9-1a42-5105-a241-136047784670"
+      ],
+      "chunk_count": 11,
+      "ingested_at": "2025-11-30T10:40:08.894812",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 7,
+      "lesson": 1
+    },
+    "module-1-ros2/chapter-7-capstone/02-building-controller.md": {
+      "source_file": "module-1-ros2/chapter-7-capstone/02-building-controller.md",
+      "file_hash": "ef2967073f00127bc8ef1ecb86fc95aab0f142c38fb8b8a0fc1607a3a8bac3b3",
+      "chunk_ids": [
+        "2011585b-30ee-5eaf-b60f-d5a0a56eaeba",
+        "9062f701-2e02-55d3-bf46-4b45bcb4440c",
+        "1c467287-b4c4-5959-83e0-c4d6d7eea13b",
+        "d420c4b1-1810-56a1-890e-48f5dad725f6",
+        "1d19dcd9-2edb-5b6c-aeeb-0d536976b082",
+        "15d54de6-60c0-5058-8d61-28581b1fc7be",
+        "dd4f9713-0ecf-5b04-badd-eb41c72631d7",
+        "37c8c0d9-74c8-5a8b-83f4-cd8807276673",
+        "8b7f21bc-d7ca-5a3e-8e80-41a066ed1a6a"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.894823",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 7,
+      "lesson": 2
+    },
+    "module-1-ros2/chapter-7-capstone/03-testing-validation.md": {
+      "source_file": "module-1-ros2/chapter-7-capstone/03-testing-validation.md",
+      "file_hash": "9d50483b4cb40bd9a81c2e922f694043a3a4bd04fe2d5dee5e392704c2145cbc",
+      "chunk_ids": [
+        "226f44d2-0082-52ec-8b03-78e5d00cc7b1",
+        "beed7a2f-ebd1-5353-8000-97e3d4675eac",
+        "48676ad6-70f5-5c0c-a981-f3615aba137d",
+        "616352b0-4765-52a3-8781-05d07cb8838a",
+        "be16337d-d74d-56bb-b83b-508cd1ddb7be",
+        "6859e105-65be-515a-8c75-df1fbbbd7ebb",
+        "a331e5db-6bbf-5a5a-b4db-8ca361f051cf",
+        "e47c42ee-9065-5672-841e-014d91815273",
+        "e756391b-b6a2-5abf-a0d5-7b5f8cae26d7",
+        "4c7786a9-55a7-5059-8211-4ceb498183ff",
+        "93624454-81e1-5f04-a950-604b6b670122",
+        "e6229bee-af2f-5f7c-8a83-5b419245f040",
+        "26bd2049-104b-51f1-b41f-51edeef407a3",
+        "3818758b-63d9-50f7-93c1-f57a1844df86",
+        "6beae305-979d-5ed1-9825-d9126133c08b"
+      ],
+      "chunk_count": 15,
+      "ingested_at": "2025-11-30T10:40:08.894910",
+      "book_id": "physical-ai-robotics",
+      "module": "ros2",
+      "chapter": 7,
+      "lesson": 3
+    },
+    "module-2-simulation/README.md": {
+      "source_file": "module-2-simulation/README.md",
+      "file_hash": "bc8270cfe375e7b0aad9d8659f0e35c1cca25f0078b334a18ef4be2874500440",
+      "chunk_ids": [
+        "bbd92490-cd8f-5518-b432-9b4cd77f7d41"
+      ],
+      "chunk_count": 1,
+      "ingested_at": "2025-11-30T10:40:08.895118",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 0,
+      "lesson": 0
+    },
+    "module-2-simulation/chapter-10-simulation-worlds/README.md": {
+      "source_file": "module-2-simulation/chapter-10-simulation-worlds/README.md",
+      "file_hash": "213490222d3b82e9fc721391d37ed5aabb25a8282a7dea87ef1bcd49535f5f31",
+      "chunk_ids": [
+        "7405075e-a4af-5f3c-b33f-8ac03ec857da",
+        "052860c3-dfa1-5384-960e-349341cc2bac",
+        "14d30e28-07d8-53cf-9504-e2ee3f4e5e7c",
+        "4317c16e-817d-5d16-8bfe-4d07f5e416dc",
+        "67bc1509-6c43-5b31-be91-a2bb60442053"
+      ],
+      "chunk_count": 5,
+      "ingested_at": "2025-11-30T10:40:08.895139",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 10,
+      "lesson": 0
+    },
+    "module-2-simulation/chapter-10-simulation-worlds/01-sdf-world-basics.md": {
+      "source_file": "module-2-simulation/chapter-10-simulation-worlds/01-sdf-world-basics.md",
+      "file_hash": "1263e19fab1a7c08056fe3ee0d233bd5558f03a58e4f059f8e48c35a6bebaa82",
+      "chunk_ids": [
+        "db7762ee-6807-55dd-afa2-f6de568664e8",
+        "0ee95494-dab1-5cea-9d87-ab6099df66c3",
+        "18eace2b-99fb-52d3-ad7f-96b8e5b3a58c",
+        "56bd040b-9a9f-59af-b9f8-94a34bc0b096",
+        "fe2b8861-2800-56dc-8340-8d1d26d28c2c",
+        "d98b1390-7ef6-5526-9316-6c774ba9c2d4",
+        "32f5968a-c3a4-52e0-841e-4f93126a3ac3",
+        "d037269c-5cbb-5f66-8d0a-09724c2c7750",
+        "95232558-8787-5ddc-8f8c-d2e1d29dffce"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.895148",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 10,
+      "lesson": 1
+    },
+    "module-2-simulation/chapter-10-simulation-worlds/02-adding-models-from-fuel.md": {
+      "source_file": "module-2-simulation/chapter-10-simulation-worlds/02-adding-models-from-fuel.md",
+      "file_hash": "15646b84a54aa05ce15ad97b6189ef78d8acb3e3edc60ef36cea30c5dc2a0b69",
+      "chunk_ids": [
+        "0a6624d2-5aa6-50f3-b49f-1afe2344371d",
+        "4d432e3b-466f-561b-9df2-2716f528db7f",
+        "5503785a-b2ab-50d2-90a3-a4089e9c4803",
+        "e241b985-3aa7-571e-ae35-4c9a1360a864",
+        "3e8fe153-14d7-5c92-94a7-c979124f006e",
+        "b0648a0e-af48-51cc-86d6-b83ba72edc8c",
+        "0f782dff-a59b-5d17-a072-410bc9d80d2e",
+        "00bfea6a-5fd5-563e-9393-afad95a17fc4",
+        "3fd66a60-57ef-5e7b-9080-9d340e7b2ac8"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.895155",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 10,
+      "lesson": 2
+    },
+    "module-2-simulation/chapter-10-simulation-worlds/03-physics-configuration.md": {
+      "source_file": "module-2-simulation/chapter-10-simulation-worlds/03-physics-configuration.md",
+      "file_hash": "308a6ec20d8f44d241b79e8fb5aa5802a0f0d432f19cfa2f0bfbb341b331ce9a",
+      "chunk_ids": [
+        "7a98055d-dd54-54b6-9258-a420c644c963",
+        "d136d695-40e6-53c2-9eeb-4c8c42217222",
+        "e3de2781-0a0d-561d-a940-2fc80d9d04fe",
+        "a8394b3c-8720-5c72-8bfc-f69baea72396",
+        "7a59e207-1c4f-5a9c-a463-8e8d9995afe3",
+        "467f52c1-aa96-52af-a448-19ad22a7226e",
+        "2901a913-6a02-5921-b75e-3ba68b3899b7",
+        "e9a4ea28-7da5-583a-a193-54db6b52aab2",
+        "8f8267c8-e189-5457-a5d5-e8ed4bca109c",
+        "6155471b-d007-5773-885d-1175574a40c4"
+      ],
+      "chunk_count": 10,
+      "ingested_at": "2025-11-30T10:40:08.895161",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 10,
+      "lesson": 3
+    },
+    "module-2-simulation/chapter-10-simulation-worlds/04-world-building-with-ai.md": {
+      "source_file": "module-2-simulation/chapter-10-simulation-worlds/04-world-building-with-ai.md",
+      "file_hash": "f25861841afb9e5673db937af398e4bdf6991a2010613c2ac575c30d0e0454a9",
+      "chunk_ids": [
+        "3a4dcfde-02eb-50e8-8ae4-9a7495e268b0",
+        "cd64d365-3f91-51e7-b2bc-6b1dbd004de7",
+        "2a7a6e54-72da-54d5-904d-97c6a1d2e62b",
+        "b9b89222-f713-53b6-be04-2e98f7323cec",
+        "08bc8e84-104e-5c4a-afae-69fe33f24b74",
+        "65184d11-4c51-5bef-9709-3ebf406a1af0",
+        "3a2dc72e-a732-5c19-bc23-31740de92df8",
+        "5e10f132-a0b0-568f-9001-1f0217ec7c0c",
+        "c1a424ef-4b9b-53e9-8592-f509dfdc7995",
+        "c0e8bdbe-0ee7-570a-8797-316d14e26434",
+        "4bba3ade-ddcd-5cb5-948a-50f9ff2d29ab"
+      ],
+      "chunk_count": 11,
+      "ingested_at": "2025-11-30T10:40:08.895271",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 10,
+      "lesson": 4
+    },
+    "module-2-simulation/chapter-11-sensors-simulation/README.md": {
+      "source_file": "module-2-simulation/chapter-11-sensors-simulation/README.md",
+      "file_hash": "2056cc2ceb9108af3c984ba20688c610b25876d1c738306c26bce96270d0280d",
+      "chunk_ids": [
+        "29b91765-41d3-53bf-9344-edf1746d19ae",
+        "bb32eb0d-c940-5f0a-8e0b-176afd3a0419",
+        "72c1c253-0c72-555f-8f08-b17c593cd0ac",
+        "c8a026ad-02c5-5fd8-ad8e-906649f8aa0c",
+        "9831d885-70ae-53fb-b9de-381163822a15",
+        "a17b4959-5fb4-5356-9ade-64b829f9b689",
+        "f6a66a19-2969-537f-b751-7458287fd278"
+      ],
+      "chunk_count": 7,
+      "ingested_at": "2025-11-30T10:40:08.895381",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 11,
+      "lesson": 0
+    },
+    "module-2-simulation/chapter-11-sensors-simulation/01-camera-simulation.md": {
+      "source_file": "module-2-simulation/chapter-11-sensors-simulation/01-camera-simulation.md",
+      "file_hash": "b673c3930be8b0f143316c72aef32af79edf2edfa0780f1470a665422458e71d",
+      "chunk_ids": [
+        "92b7eb79-5fc4-5558-bc44-338a0ecb0871",
+        "6654aeb8-0e53-5c89-9a69-2b849645ae3b",
+        "9cdbdf7b-8aed-5e0d-871a-9fa9b0168292",
+        "729bb71c-a6ab-5201-8d5c-fdbe26934f54",
+        "1d40d187-a029-51a3-9e7d-97298e0039b4",
+        "34b36127-4b34-5b81-bb74-4554fc3546dc",
+        "cc2e483f-f13c-5c40-946f-a11b50c7ff9b",
+        "87334a9e-3a95-5ca0-a523-cb95ba908121",
+        "b48e14ec-5a2b-5eed-8406-ed08bbf099df"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.895436",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 11,
+      "lesson": 1
+    },
+    "module-2-simulation/chapter-11-sensors-simulation/02-lidar-simulation.md": {
+      "source_file": "module-2-simulation/chapter-11-sensors-simulation/02-lidar-simulation.md",
+      "file_hash": "8733539c4e7e5e2bccdf2b80cda5b684ccb1f09b6a7ee82fbb46f21c940da854",
+      "chunk_ids": [
+        "0e49d11d-66ad-5515-b555-1532351422c5",
+        "bf4018a7-3636-58dc-95c6-7f589d227726",
+        "d83d5e67-2489-53cb-b1cf-630ba8165060",
+        "ff7b03c9-6a46-58d1-98b5-e9a2b88520df",
+        "abfbba33-6166-5e68-9445-ef01b0345d2d",
+        "0fafb951-12b0-57c6-842f-144670df24a7",
+        "baa8a0b5-4f8d-5cdc-bfb6-a220c6655574",
+        "c5598f63-f43d-5b41-9caf-bb2dcf28039b",
+        "2853b337-0c05-5ba8-b99f-5613254c90c7",
+        "310803ec-30bf-531f-82c4-ed49ad81b0e3"
+      ],
+      "chunk_count": 10,
+      "ingested_at": "2025-11-30T10:40:08.895496",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 11,
+      "lesson": 2
+    },
+    "module-2-simulation/chapter-11-sensors-simulation/03-imu-contact-sensors.md": {
+      "source_file": "module-2-simulation/chapter-11-sensors-simulation/03-imu-contact-sensors.md",
+      "file_hash": "24a60d2cd2f5dbf900cb25b4ee4b3e39f99773a8af2f3127e790e1519b92cd09",
+      "chunk_ids": [
+        "ac7d3c23-23f8-5895-8799-14a75da6e5a2",
+        "dafc99cb-37a6-5925-99ca-a8b15ea1f922",
+        "ad490da5-5860-59b4-b84b-8e9e5aadc59d",
+        "7a44a380-9687-5689-a1b9-9c4a65fed715",
+        "d2281b42-0ad7-5253-a788-ff7a80c71862",
+        "b7bbeb14-68fc-531e-9e6f-94aaa01afba1",
+        "cd8ac415-ec9f-5122-9285-62e65607d90e",
+        "ae976076-2cd0-5e91-9913-8c688ec05842",
+        "d5924569-be3a-5409-ac3a-8de5a8c1fe75"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.895508",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 11,
+      "lesson": 3
+    },
+    "module-2-simulation/chapter-11-sensors-simulation/04-sensor-debugging-visualization.md": {
+      "source_file": "module-2-simulation/chapter-11-sensors-simulation/04-sensor-debugging-visualization.md",
+      "file_hash": "c4bd31a7c502c50f271366fef811044db98f6511710adb9c2f7752a55fc1d92a",
+      "chunk_ids": [
+        "e53ead00-0e4b-5121-ace4-b4c056d8a2d2",
+        "6ddae2d3-e5e4-5e44-ad70-b1b75a4995f2",
+        "d6febac8-160f-5647-b563-268006cc24e3",
+        "495e2558-d9c6-512b-989a-1abd5cbdffc5",
+        "3de08229-20fd-5b73-892b-307701e28a27",
+        "fe7c230d-8208-520c-b187-1ac8b5782592",
+        "cfa1727a-8485-5950-88fa-66927bd1d2b0",
+        "46408122-2d43-58c6-b8cd-69d14c2378e7",
+        "eb30568b-2942-56e5-bd08-4ca89c506731",
+        "4bdc68cf-5a00-5b6a-9071-176bb79a9e87"
+      ],
+      "chunk_count": 10,
+      "ingested_at": "2025-11-30T10:40:08.895547",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 11,
+      "lesson": 4
+    },
+    "module-2-simulation/chapter-12-ros2-gazebo-integration/README.md": {
+      "source_file": "module-2-simulation/chapter-12-ros2-gazebo-integration/README.md",
+      "file_hash": "e917aa86a1dbf73a4c64c12fbda4d4178997c5bff520695081a7703c80a94315",
+      "chunk_ids": [
+        "d89f90fd-3ae2-5670-8872-f16a6ca6b844",
+        "73180509-7dab-5332-884f-688defffa52d",
+        "91bfc1c4-6e2a-578a-822a-d5b72bc6c820",
+        "2dd4c98e-043e-5860-be0c-71635d11b9a0",
+        "e1984cd0-c004-55c1-a3a5-a963db3c8303",
+        "2b09c8f8-224d-5f79-a69f-78f0127d9d67"
+      ],
+      "chunk_count": 6,
+      "ingested_at": "2025-11-30T10:40:08.895571",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 12,
+      "lesson": 0
+    },
+    "module-2-simulation/chapter-12-ros2-gazebo-integration/01-ros-gz-bridge.md": {
+      "source_file": "module-2-simulation/chapter-12-ros2-gazebo-integration/01-ros-gz-bridge.md",
+      "file_hash": "17fb6a41790139854127a30a7457455ca99529ea288fc7601d23f04b48e0a5c7",
+      "chunk_ids": [
+        "8299bc96-c6e7-59f7-8659-ba2029c8d531",
+        "c4c34983-6bfd-521a-ac78-911082926307",
+        "4ad1ed03-5244-5c7b-b8a0-b63381efa3ad",
+        "a9486026-e09f-5b46-bb83-9bfa5cea91ac",
+        "03ea3bf9-f6e0-5ad8-b8f9-f4b045f7d114",
+        "e05a8df0-133d-59f1-a455-b82f42326cdb",
+        "1845bbc6-5cf0-588b-bdde-504408deeeb9",
+        "a48c14cf-40b0-57ba-b491-3c5c9c30bd2c",
+        "b2a1eb5f-247b-5787-89a7-bae22d847b25",
+        "3271ef84-b997-5a19-8555-b554596552e4"
+      ],
+      "chunk_count": 10,
+      "ingested_at": "2025-11-30T10:40:08.895581",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 12,
+      "lesson": 1
+    },
+    "module-2-simulation/chapter-12-ros2-gazebo-integration/02-spawning-robots.md": {
+      "source_file": "module-2-simulation/chapter-12-ros2-gazebo-integration/02-spawning-robots.md",
+      "file_hash": "73bafdcc12ab95eb3412178581a4a5e529fa11db80c0c477cdab7ef9e972cb1b",
+      "chunk_ids": [
+        "334bb34e-fc05-5eda-84ff-6ef967cf89b8",
+        "1e1acf2e-4658-5ee6-a3dc-c7b4a8ed89d1",
+        "0414c7ec-cd3f-51c5-a9d8-f979336df0eb",
+        "9769e33c-5ae5-5ada-9104-ee99b64c4c1c",
+        "fe990fb5-bf6c-5214-a8fb-fea88b3fb141",
+        "6294ff29-1aed-5d77-b377-ca27a597f15f",
+        "045580ca-6b8f-53b4-ac0e-f1a2ab7e1c63",
+        "c6844cd0-c0c9-5af7-9ef2-0f1e629a4edf",
+        "2b8808fe-c197-51f8-95fd-0f59a468d1f1"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.895596",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 12,
+      "lesson": 2
+    },
+    "module-2-simulation/chapter-12-ros2-gazebo-integration/03-closed-loop-control.md": {
+      "source_file": "module-2-simulation/chapter-12-ros2-gazebo-integration/03-closed-loop-control.md",
+      "file_hash": "facc0dfefd0548524ca14b3130280a472a2228b9cf618787aeab878011475a76",
+      "chunk_ids": [
+        "445d4097-3cae-53c9-bd6a-3e8a7ed6949f",
+        "f90bd198-5d95-5b7a-8b87-138f1a44c58a",
+        "9791d7ae-eb5f-5ac6-bd8d-1567f7b6d905",
+        "f67d8f6d-99a5-58fe-b5b5-1005416d720f",
+        "c1ed456d-ac30-52d9-a140-24521ae2b36d",
+        "d3d0c3d0-ce28-5305-b02b-71fb1a4806dc",
+        "98af5d6c-3855-5559-9fe1-88066af9f111",
+        "c5f90809-a0e8-58dc-a56b-2b04d690acac"
+      ],
+      "chunk_count": 8,
+      "ingested_at": "2025-11-30T10:40:08.895607",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 12,
+      "lesson": 3
+    },
+    "module-2-simulation/chapter-12-ros2-gazebo-integration/04-creating-ros-gz-skills.md": {
+      "source_file": "module-2-simulation/chapter-12-ros2-gazebo-integration/04-creating-ros-gz-skills.md",
+      "file_hash": "f510c65ec410b618452e29f8b1be41997b30d310f645d95fc41fb05526c9b216",
+      "chunk_ids": [
+        "4b76e13d-dfdf-5db7-8781-d81825a96e73",
+        "d0345578-3436-5e5a-8f92-f3153606a82e",
+        "8b55c8e6-35e3-56cd-b33e-268418f0efe0",
+        "eb6408be-89e5-5986-ad21-f00598aa8e02",
+        "0e48aac1-7825-5fa1-9d85-c370350043d4",
+        "778dc0eb-ac22-5275-a038-788cdb7444c7",
+        "e770d44a-b06a-544e-9e42-1a82bfca7af4",
+        "98172d17-3f61-5ea9-822c-5b6fddb725dc",
+        "0bfe0a1a-ba21-530a-8722-3176cc2cb350",
+        "6e8a1396-38ba-598c-8268-3e548ec762eb",
+        "f0d4695a-af01-5f81-a6dc-09f63e2faa04"
+      ],
+      "chunk_count": 11,
+      "ingested_at": "2025-11-30T10:40:08.895636",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 12,
+      "lesson": 4
+    },
+    "module-2-simulation/chapter-13-capstone/README.md": {
+      "source_file": "module-2-simulation/chapter-13-capstone/README.md",
+      "file_hash": "3249d88c1ac1c7e839c3e3aa32c420e67447549f62f4fbd4e31732ba47e584a3",
+      "chunk_ids": [
+        "27bc6335-e739-59c3-906f-173303eaeadd",
+        "4ddb9774-39a7-5bfa-9f7f-877c08ce5769",
+        "7f2d9a41-4981-5737-a1ee-46ae1b51388e",
+        "1cfa1a4c-27e4-51f2-a72c-87cae653272b",
+        "d2ec0802-5aa9-5968-9386-710ff3b0d538",
+        "284f21b2-cb39-5566-bbf9-373d7d1f024f",
+        "a4aea32f-241d-5195-89a8-d66b048a173e",
+        "bd8c52b1-ab29-59a2-aa3d-28e0313fda62"
+      ],
+      "chunk_count": 8,
+      "ingested_at": "2025-11-30T10:40:08.895660",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 13,
+      "lesson": 0
+    },
+    "module-2-simulation/chapter-13-capstone/01-capstone-specification.md": {
+      "source_file": "module-2-simulation/chapter-13-capstone/01-capstone-specification.md",
+      "file_hash": "a3ef5f7e2fd3523226ff619ff98a48dd80175239c1e4ce063880f9292c62307b",
+      "chunk_ids": [
+        "67381981-5d7d-56f8-b603-60f51efa250e",
+        "9f492ce9-2312-567a-851c-fa5612390804",
+        "e3649f3a-f731-5132-81f1-3cc3fb95e60d",
+        "6b7c77c4-d05a-54cb-8444-7e1b29df3d31",
+        "700af023-419e-5633-be43-2820d3d71a71",
+        "3c6d89bc-69c3-558a-9537-346f8dbfb4e2",
+        "c6cb073d-b147-55cf-bf8f-9662dc01f4c8",
+        "c9d01f20-6a46-5881-8e85-f7a73e0fa508",
+        "2c4aad44-7973-5a0b-9e49-9e913e1579d1"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.895679",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 13,
+      "lesson": 1
+    },
+    "module-2-simulation/chapter-13-capstone/02-building-simulation.md": {
+      "source_file": "module-2-simulation/chapter-13-capstone/02-building-simulation.md",
+      "file_hash": "cd7c382cd14e2b8a4b433cf9dc3a7fb44517989b09ed3216062d2a67c5240618",
+      "chunk_ids": [
+        "0bfcf9c9-83fe-594d-8a78-d7201d8bee95",
+        "b7136c64-3654-5fd6-9a25-19053dc7d619",
+        "b336b5bf-ce7d-5d69-aa9d-9d8728e8cfd5",
+        "43ad76a1-eb2d-5344-8c0e-bdfe010ff2c0",
+        "eefd7ca9-48e0-5096-b771-034626ed3fd6",
+        "10d05941-4f04-5064-b84a-6e8283ca95d8",
+        "30f95dda-7baf-5a15-b7db-c72a6edcb4f7",
+        "f5e371ac-01cd-587d-b891-7f9765ae24e8",
+        "002ab31b-c6a7-549f-bc8e-b22a37e909c0"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.895716",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 13,
+      "lesson": 2
+    },
+    "module-2-simulation/chapter-13-capstone/03-testing-validation-preview.md": {
+      "source_file": "module-2-simulation/chapter-13-capstone/03-testing-validation-preview.md",
+      "file_hash": "d4bab043607e7cba69f2b9670e9a12e76d6f23b309bdf04059906702e1f7b82e",
+      "chunk_ids": [
+        "362a5569-cb52-5875-ad68-050a050a2728",
+        "b7aa6986-cfef-5931-b3ef-84ca9c6c2fc4",
+        "38a9b287-e0ef-50c9-acda-d8b55b9bac32",
+        "5b78297f-e698-54ee-921d-90729627965e",
+        "f505cbc4-feaa-503b-b3a7-f1d1d1e5fe66",
+        "2998e398-ca5c-5df7-b75f-0edd32864c5b",
+        "a21fae25-6931-5a0e-8387-74fdb1383683",
+        "50244760-7e04-5c9f-b3d3-7bd3202c9767",
+        "8c570581-3ef0-5100-98c5-fd8ef7642b9b",
+        "ad19019c-4826-5173-81ed-072d4902e5cb"
+      ],
+      "chunk_count": 10,
+      "ingested_at": "2025-11-30T10:40:08.895735",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 13,
+      "lesson": 3
+    },
+    "module-2-simulation/chapter-8-why-simulate/README.md": {
+      "source_file": "module-2-simulation/chapter-8-why-simulate/README.md",
+      "file_hash": "d30320834777ad0e4bc0c46d71091b9be56bc8354c173add44c12bea5c76d044",
+      "chunk_ids": [
+        "c1ecd798-fb88-53a7-a136-1f54b6d1e690",
+        "519f8288-0d11-5abd-ac9f-4416eee16c8d"
+      ],
+      "chunk_count": 2,
+      "ingested_at": "2025-11-30T10:40:08.895757",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 8,
+      "lesson": 0
+    },
+    "module-2-simulation/chapter-8-why-simulate/01-digital-twin-concept.md": {
+      "source_file": "module-2-simulation/chapter-8-why-simulate/01-digital-twin-concept.md",
+      "file_hash": "9c651f4e935635fc15eb3a7d9dd6dd16497186bad3c1c1c4fef7c183ae097468",
+      "chunk_ids": [
+        "7d1ce201-9617-5c4b-b6ec-4362389d7316",
+        "5c3a84c5-e12f-523d-8be7-1f0593c99172",
+        "99329637-7892-5c5c-bb4d-4c1f47748f3d",
+        "b577b813-6c91-55fe-837d-89ddec881b28",
+        "546068d4-7eba-50c6-a4ce-8fd889ea04c7",
+        "f09b3c13-78a5-5e3b-b9cb-9ba00c3b1dc9",
+        "3e167062-6484-5c8a-addf-2381613566cd",
+        "449dbc8d-e4db-58eb-962c-4305354d534f"
+      ],
+      "chunk_count": 8,
+      "ingested_at": "2025-11-30T10:40:08.895764",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 8,
+      "lesson": 1
+    },
+    "module-2-simulation/chapter-8-why-simulate/02-simulation-first.md": {
+      "source_file": "module-2-simulation/chapter-8-why-simulate/02-simulation-first.md",
+      "file_hash": "51c16c9c0f23e47cfbceb467d133a8cd3159483ad5a252d7ba6550a33613c800",
+      "chunk_ids": [
+        "ed7c8775-098a-52ee-b0fc-ff16584579fc",
+        "0ab7cf24-ecfc-5914-8aad-933d9c5be3ec",
+        "d4ab77fb-1d6e-5327-bed1-6b1fde926ff0",
+        "41a6e403-d425-5e4a-befc-84c9527ce0d4",
+        "498cb084-4b8d-56ab-bbbc-1e2453b35bed",
+        "3d03f317-30e4-5b09-acaa-7539562c816c"
+      ],
+      "chunk_count": 6,
+      "ingested_at": "2025-11-30T10:40:08.895769",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 8,
+      "lesson": 2
+    },
+    "module-2-simulation/chapter-8-why-simulate/03-meet-gazebo.md": {
+      "source_file": "module-2-simulation/chapter-8-why-simulate/03-meet-gazebo.md",
+      "file_hash": "bed22a2682838319624e544bbb30c4848b3a23e1e80bbdca01194013a3d7eb48",
+      "chunk_ids": [
+        "255f79b8-4e23-57fc-8f44-8b49f86496b6",
+        "5e04f18a-2eed-56b1-8c32-9235e68a0c97",
+        "3c02ce7d-31df-5bbe-af63-5ebbdfc1c659",
+        "106bd290-e45c-549b-b607-6e121b406f04",
+        "3bd8fb2e-68d4-521d-aa8c-7d2520cfe8c6",
+        "45c74f77-e237-55b1-a73a-045de828fb66",
+        "34f7fd60-2509-5e23-8167-6297ccb78233",
+        "ec3b0c25-6880-5402-94f2-925d685ef64e",
+        "7ad44493-c94a-5a80-9715-94eacbb50b3e"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.895775",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 8,
+      "lesson": 3
+    },
+    "module-2-simulation/chapter-9-robot-description/README.md": {
+      "source_file": "module-2-simulation/chapter-9-robot-description/README.md",
+      "file_hash": "b4af8effb3345dc7c1527a251fbf3e991edb7ce348625fe660878948133fd9fb",
+      "chunk_ids": [
+        "f9003af7-47a0-5f8e-8498-9f0ec9bcbcc8",
+        "68dcf15a-659e-57b9-9541-70f422e6943b"
+      ],
+      "chunk_count": 2,
+      "ingested_at": "2025-11-30T10:40:08.895780",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 9,
+      "lesson": 0
+    },
+    "module-2-simulation/chapter-9-robot-description/01-understanding-urdf.md": {
+      "source_file": "module-2-simulation/chapter-9-robot-description/01-understanding-urdf.md",
+      "file_hash": "a6cb7a70c41d9a27f84d7406aeb219ec354f2d45b4a352b13fce07c622b5b082",
+      "chunk_ids": [
+        "104bff36-850a-5309-8783-b2f1f8d736e6",
+        "063eb44b-7185-520f-8ff2-e04d421121b2",
+        "5968e3d5-fec7-5356-a486-ce756373e0f6",
+        "8a6532c6-f022-5e4e-8246-65c8dbfe735f",
+        "35be9dd8-29fa-5878-bfb3-15325fb75c50",
+        "a620830e-ce44-503a-a586-687b4d1f2767",
+        "242ced7b-aa6b-5d7c-bc14-a2c64a6f8c9b",
+        "0324dd50-aebf-5f34-8916-27f46ff3188d"
+      ],
+      "chunk_count": 8,
+      "ingested_at": "2025-11-30T10:40:08.895786",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 9,
+      "lesson": 1
+    },
+    "module-2-simulation/chapter-9-robot-description/02-building-first-robot.md": {
+      "source_file": "module-2-simulation/chapter-9-robot-description/02-building-first-robot.md",
+      "file_hash": "a5bafd939a5016344c28ae225dfec2e3a18ddab618548e36c38e3a24ce4b424b",
+      "chunk_ids": [
+        "01eb9e3c-7b2a-54da-9430-2d957331eea0",
+        "12dff9bc-a7c5-599c-957a-3ac39efc99e1",
+        "515478bc-21e6-55ed-afd2-815127c589f8",
+        "bc5949e5-2780-566f-8d30-9736da610624",
+        "08c27248-d84b-586a-9af5-aecc6ce5c433",
+        "f3b3cb2c-bdac-5ef7-b5eb-5bbf1c9ade17",
+        "f38aa648-6835-54d9-8473-fb07d3e86659",
+        "4b64913d-d4a1-516b-8f79-4ce411fcb79a",
+        "a5d4e9fe-06b8-5bf7-8157-f72161fce23d"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.895791",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 9,
+      "lesson": 2
+    },
+    "module-2-simulation/chapter-9-robot-description/03-adding-physical-properties.md": {
+      "source_file": "module-2-simulation/chapter-9-robot-description/03-adding-physical-properties.md",
+      "file_hash": "3b89d34a187fae77fc5f15a6303246f46c1d635dfe246760d711577cf80fc4ca",
+      "chunk_ids": [
+        "6381909a-7d58-5d21-a763-cf7cb31c19c8",
+        "66b8ef7c-43ee-555c-b537-74066b4d60db",
+        "66c6c6a2-1eda-5d6b-b95d-7e06800f044a",
+        "c7272805-7a34-5b27-b226-21a32b8a3933",
+        "1b002f85-d395-5a36-b5e8-458bb74775f7",
+        "e7e0d520-535c-521f-a972-af26b1f6e53d",
+        "cf3c4401-3088-5d3f-a298-3b8ef6f21ae1",
+        "ec20b28a-5482-5d80-995e-3c889ce5dc8c",
+        "3fde5b51-54bd-5248-9c40-c31556accb28"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.895796",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 9,
+      "lesson": 3
+    },
+    "module-2-simulation/chapter-9-robot-description/04-urdf-with-ai.md": {
+      "source_file": "module-2-simulation/chapter-9-robot-description/04-urdf-with-ai.md",
+      "file_hash": "585a5a4320684cd9f85aeebf0aabbceafaf4ff7298d0d0973539995afa548e78",
+      "chunk_ids": [
+        "3994e13d-f299-5e55-bf5e-6afdd89cb1ae",
+        "77806735-c4fc-5986-b41c-4086c80b2ba9",
+        "0e3e88a9-4c00-5163-8932-dc226325fbc6",
+        "da117fa7-eadb-5d89-94a1-2008632ea43c",
+        "abd01252-0621-5c56-81a1-427f8eb281ae",
+        "78e04368-d72a-52bc-97cd-1237495875d4",
+        "4031b621-d690-5b14-b6ec-e26d9ce3f667",
+        "0b49ece0-dd96-5768-a601-5c152a992d88",
+        "413af66f-85da-5ad6-8fbd-1e0349688794"
+      ],
+      "chunk_count": 9,
+      "ingested_at": "2025-11-30T10:40:08.895802",
+      "book_id": "physical-ai-robotics",
+      "module": "gazebo",
+      "chapter": 9,
+      "lesson": 4
+    },
+    "module-3-isaac/README.md": {
+      "source_file": "module-3-isaac/README.md",
+      "file_hash": "7e069927ee8f03cd2fcd253661a968a8fa33b6f4d23b23b3092b9c05e0e6cee0",
+      "chunk_ids": [
+        "b67f98c1-db38-5c04-afb2-3a10b1d410a0",
+        "16cff8ec-3ac2-59a9-95b9-d3e251b1657e"
+      ],
+      "chunk_count": 2,
+      "ingested_at": "2025-11-30T10:40:08.895806",
+      "book_id": "physical-ai-robotics",
+      "module": "isaac",
+      "chapter": 0,
+      "lesson": 0
+    },
+    "module-4-vla/README.md": {
+      "source_file": "module-4-vla/README.md",
+      "file_hash": "236aa83ce37ce2b5867510fb55f45d962185fc90d9bc43cb71ddb7c0edf70682",
+      "chunk_ids": [
+        "b8c07f78-587a-5a4c-8b89-863fdcae13fd",
+        "80e11adb-530b-598f-aa4b-8dee95c5a922"
+      ],
+      "chunk_count": 2,
+      "ingested_at": "2025-11-30T10:40:08.895811",
+      "book_id": "physical-ai-robotics",
+      "module": "vla",
+      "chapter": 0,
+      "lesson": 0
+    }
+  },
+  "last_full_ingest": null,
+  "last_incremental_update": "2025-11-30T10:40:08.912981",
+  "total_chunks": 527
+}
