@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useScrollReveal } from '../../../hooks/useScrollReveal';
 import styles from './styles.module.css';
 
@@ -40,9 +41,13 @@ export function CTABlock({
   ctaIcon = '🤖',
   ctaTitle = 'Start Your Physical AI Journey',
   ctaDescription = 'From ROS 2 basics to autonomous humanoids with voice control',
-  buttonText = 'Begin Learning',
-  buttonLink = '/docs/preface-agent-native',
+  buttonText = 'Get Started Free',
+  buttonLink,
 }: CTABlockProps): React.ReactElement {
+  const { siteConfig } = useDocusaurusContext();
+  const authUrl = (siteConfig.customFields?.authUrl as string) || 'http://localhost:3001';
+  const finalButtonLink = buttonLink || `${authUrl}/auth/sign-up`;
+
   const { ref, isVisible } = useScrollReveal<HTMLElement>();
 
   return (
@@ -77,10 +82,10 @@ export function CTABlock({
               <h3 className={styles.ctaTitle}>{ctaTitle}</h3>
               <p className={styles.ctaDescription}>{ctaDescription}</p>
             </div>
-            <Link to={buttonLink} className={styles.ctaButton}>
+            <a href={finalButtonLink} className={styles.ctaButton}>
               <span className={styles.buttonText}>{buttonText}</span>
               <span className={styles.buttonShine} aria-hidden="true" />
-            </Link>
+            </a>
           </div>
         </div>
       </div>

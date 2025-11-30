@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { getOAuthAuthorizationUrl } from '@/lib/auth-client';
 import styles from './styles.module.css';
 
 /**
@@ -11,6 +13,24 @@ import styles from './styles.module.css';
  * - Free but not cheap - confident value proposition
  */
 export function HeroSection(): React.ReactElement {
+  const { siteConfig } = useDocusaurusContext();
+  const authUrl = (siteConfig.customFields?.authUrl as string) || 'http://localhost:3001';
+  const oauthClientId = (siteConfig.customFields?.oauthClientId as string) || 'robolearn-interface';
+
+  // OAuth config from Docusaurus context
+  const oauthConfig = {
+    authUrl,
+    clientId: oauthClientId,
+  };
+
+  // Handle OAuth sign up flow
+  const handleGetStarted = async () => {
+    // Go to sign-up page, then redirect to OAuth flow
+    const oauthUrl = await getOAuthAuthorizationUrl('signup', oauthConfig);
+    const signupUrl = `${authUrl}/auth/sign-up?redirect=${encodeURIComponent(oauthUrl)}`;
+    window.location.href = signupUrl;
+  };
+
   const [isVisible, setIsVisible] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLElement>(null);
@@ -77,15 +97,15 @@ export function HeroSection(): React.ReactElement {
 
           {/* CTAs */}
           <div className={styles.ctaGroup}>
-            <Link to="/docs/preface-agent-native" className={styles.primaryCta}>
-              <span>Begin Building</span>
+            <button onClick={handleGetStarted} className={styles.primaryCta}>
+              <span>Get Started</span>
               <svg className={styles.ctaIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
+            </button>
+            <Link to="/docs/preface-agent-native" className={styles.secondaryCta}>
+              <span>Browse Content</span>
             </Link>
-            <a href="#hardware-heading" className={styles.secondaryCta}>
-              <span>Explore the Stack</span>
-            </a>
           </div>
 
           {/* Tech stack pills */}
