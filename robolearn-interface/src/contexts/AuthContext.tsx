@@ -9,6 +9,7 @@ interface User {
   name?: string;
   role?: string;
   softwareBackground?: string | null;
+  hardwareTier?: string | null;
 }
 
 interface Session {
@@ -57,6 +58,7 @@ export function AuthProvider({ children, authUrl, oauthClientId }: AuthProviderP
           name: userInfo.name,
           role: userInfo.role,
           softwareBackground: userInfo.software_background,
+          hardwareTier: userInfo.hardware_tier,
         };
       }
     } catch (error) {

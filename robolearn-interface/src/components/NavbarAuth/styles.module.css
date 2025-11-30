@@ -165,6 +165,38 @@
   );
 }
 
+/* Profile info section */
+.profileInfo {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.profileItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.profileLabel {
+  font-size: 0.75rem;
+  color: rgba(148, 163, 184, 0.7);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'JetBrains Mono', 'SF Mono', monospace;
+}
+
+.profileValue {
+  font-size: 0.8rem;
+  color: rgba(248, 250, 252, 0.9);
+  font-weight: 600;
+  text-align: right;
+  flex-shrink: 0;
+}
+
 /* Dropdown menu item */
 .dropdownItem {
   display: flex;

@@ -97,6 +97,36 @@ export function NavbarAuth() {
                 <span className={styles.dropdownEmail}>{session.user.email}</span>
               </div>
             </div>
+            
+            {/* Profile data section */}
+            {(session.user.softwareBackground || session.user.hardwareTier) && (
+              <>
+                <div className={styles.dropdownDivider} />
+                <div className={styles.profileInfo}>
+                  {session.user.softwareBackground && (
+                    <div className={styles.profileItem}>
+                      <span className={styles.profileLabel}>Software:</span>
+                      <span className={styles.profileValue}>
+                        {session.user.softwareBackground.charAt(0).toUpperCase() + session.user.softwareBackground.slice(1)}
+                      </span>
+                    </div>
+                  )}
+                  {session.user.hardwareTier && (
+                    <div className={styles.profileItem}>
+                      <span className={styles.profileLabel}>Hardware:</span>
+                      <span className={styles.profileValue}>
+                        {session.user.hardwareTier === 'tier1' ? 'Tier 1: Laptop/Cloud' :
+                         session.user.hardwareTier === 'tier2' ? 'Tier 2: RTX GPU' :
+                         session.user.hardwareTier === 'tier3' ? 'Tier 3: Jetson Edge' :
+                         session.user.hardwareTier === 'tier4' ? 'Tier 4: Physical Robot' :
+                         session.user.hardwareTier}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </>
+            )}
+            
             <div className={styles.dropdownDivider} />
             <button onClick={() => signOut()} className={styles.dropdownItem}>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">

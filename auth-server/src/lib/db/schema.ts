@@ -200,6 +200,7 @@ export const oauthConsentRelations = relations(oauthConsent, ({ one }) => ({
 
 // User profile table for RoboLearn-specific user preferences
 export type SoftwareBackground = "beginner" | "intermediate" | "advanced";
+export type HardwareTier = "tier1" | "tier2" | "tier3" | "tier4";
 
 export const userProfile = pgTable(
   "user_profile",
@@ -209,6 +210,7 @@ export const userProfile = pgTable(
       .notNull()
       .references(() => user.id, { onDelete: "cascade" }),
     softwareBackground: text("software_background").$type<SoftwareBackground>(),
+    hardwareTier: text("hardware_tier").$type<HardwareTier>(),
     createdAt: timestamp("created_at").defaultNow().notNull(),
     updatedAt: timestamp("updated_at")
       .defaultNow()

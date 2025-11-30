@@ -221,13 +221,14 @@ export const auth = betterAuth({
       allowDynamicClientRegistration: true,
       // Add custom claims to userinfo endpoint
       async getAdditionalUserInfoClaim(user) {
-        // Fetch user profile with software_background
+        // Fetch user profile with software_background and hardware_tier
         const profile = await db.query.userProfile.findFirst({
           where: eq(userProfile.userId, user.id),
         });
 
         return {
           software_background: profile?.softwareBackground || null,
+          hardware_tier: profile?.hardwareTier || null,
           role: user.role || "user",
         };
       },

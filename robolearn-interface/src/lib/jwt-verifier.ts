@@ -27,6 +27,7 @@ interface JWTPayload {
   name?: string;
   role?: string;
   software_background?: string;
+  hardware_tier?: string;
   exp: number;
   iat: number;
   iss: string;
@@ -252,6 +253,7 @@ export function extractUserFromToken(payload: JWTPayload) {
     name: payload.name,
     role: payload.role,
     softwareBackground: payload.software_background,
+    hardwareTier: payload.hardware_tier,
   };
 }
 
