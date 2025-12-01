@@ -218,8 +218,9 @@ export const auth = betterAuth({
           metadata: {},
         },
       ],
-      // Allow dynamic client registration for future apps
-      allowDynamicClientRegistration: true,
+      // SECURITY: Disable open dynamic client registration
+      // Use /api/admin/clients/register (admin auth) or /api/clients/register (API key) instead
+      allowDynamicClientRegistration: false,
       // Add custom claims to userinfo endpoint and ID token
       async getAdditionalUserInfoClaim(user) {
         // Fetch user profile with software_background and hardware_tier

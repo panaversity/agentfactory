@@ -16,7 +16,8 @@
     "test-tenant": "node tests/test-tenant-claims.js",
     "test-edge": "node tests/test-edge-cases.js",
     "test-tenant-edge": "node tests/test-tenant-edge-cases.js",
-    "test-all": "node tests/test-oauth-flows.js && node tests/test-tenant-claims.js && node tests/test-edge-cases.js && node tests/test-tenant-edge-cases.js"
+    "test-confidential": "node tests/test-confidential-client.js",
+    "test-all": "node tests/test-oauth-flows.js && node tests/test-tenant-claims.js && node tests/test-edge-cases.js && node tests/test-tenant-edge-cases.js && node tests/test-confidential-client.js"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.0",

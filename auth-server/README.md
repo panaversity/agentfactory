@@ -114,7 +114,7 @@ NEXT_PUBLIC_BETTER_AUTH_URL=http://localhost:3001
 
 - OAuth 2.1 with PKCE (no client secrets in browser)
 - JWKS (JSON Web Key Set) for client-side token verification (RS256)
-- Dynamic client registration (`POST /api/auth/oauth2/register`)
+- Secure client registration (admin-only)
 - Multi-tenancy with organizations (tenant_id in tokens)
 - Role-based access control (admin/user + organization roles)
 - Custom claims: software_background, hardware_tier, tenant_id
@@ -139,28 +139,39 @@ pnpm test-tenant
 
 ## Endpoints
 
-| Endpoint | Description |
-|----------|-------------|
-| `/.well-known/openid-configuration` | OIDC discovery document |
-| `/api/auth/jwks` | JWKS public keys for token verification |
-| `/api/auth/oauth2/authorize` | Start OAuth flow |
-| `/api/auth/oauth2/token` | Exchange code for tokens |
-| `/api/auth/oauth2/userinfo` | Get user info |
-| `/api/auth/oauth2/register` | Register new OAuth client |
+| Endpoint                            | Description                             |
+| ----------------------------------- | --------------------------------------- |
+| `/.well-known/openid-configuration` | OIDC discovery document                 |
+| `/api/auth/jwks`                    | JWKS public keys for token verification |
+| `/api/auth/oauth2/authorize`        | Start OAuth flow                        |
+| `/api/auth/oauth2/token`            | Exchange code for tokens                |
+| `/api/auth/oauth2/userinfo`         | Get user info                           |
+| `/api/admin/clients/register`       | Register OAuth client (admin only)      |
 
 ## Register New OAuth Client
 
+**SECURITY**: Open client registration is disabled. Use one of these secure methods:
+
+### Option 1: Admin Dashboard (Recommended for UI)
+
+1. Sign in as admin at `http://localhost:3001/auth/sign-in`
+2. Navigate to `/admin/clients`
+3. Create client via UI
+
+### Option 2: Admin API Endpoint
+
 ```bash
-curl -X POST http://localhost:3001/api/auth/oauth2/register \
+curl -X POST http://localhost:3001/api/admin/clients/register \
   -H "Content-Type: application/json" \
+  -H "Cookie: your-admin-session-cookie" \
   -d '{
-    "client_name": "My App",
-    "redirect_uris": ["http://localhost:4000/callback"],
-    "token_endpoint_auth_method": "none"
+    "name": "My App",
+    "redirectUrls": ["http://localhost:4000/callback"],
+    "clientType": "public"
   }'
 ```
 
-Returns `client_id` to use in your OAuth flow.
+Returns `client_id` and `client_secret` (if confidential) to use in your OAuth flow.
 
 ## Create Admin User
 
