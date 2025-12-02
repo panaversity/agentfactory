@@ -11,7 +11,6 @@ export default function ProfileForm({ user }: { user: any }) {
     name: user.name || "",
     givenName: user.givenName || "",
     familyName: user.familyName || "",
-    picture: user.picture || "",
 
     // Custom Fields (editable)
     softwareBackground: user.softwareBackground || "beginner",
@@ -34,8 +33,8 @@ export default function ProfileForm({ user }: { user: any }) {
       });
 
       if (response.ok) {
-        router.refresh();
-        alert("Profile updated successfully!");
+        // Refresh the page to get updated session data
+        window.location.reload();
       } else {
         const error = await response.json();
         alert(`Error: ${error.message}`);
@@ -107,26 +106,6 @@ export default function ProfileForm({ user }: { user: any }) {
         </div>
       </div>
 
-      {/* Editable: Profile Picture */}
-      <div>
-        <label className="block text-sm font-medium mb-2">
-          Profile Picture URL
-        </label>
-        <input
-          type="url"
-          value={formData.picture}
-          onChange={(e) => setFormData({...formData, picture: e.target.value})}
-          placeholder="https://example.com/avatar.jpg"
-          className="w-full px-3 py-2 border rounded-md"
-        />
-        {formData.picture && (
-          <img
-            src={formData.picture}
-            alt="Preview"
-            className="mt-2 w-16 h-16 rounded-full"
-          />
-        )}
-      </div>
 
       {/* Editable: Software Background */}
       <div>
@@ -210,33 +189,6 @@ export default function ProfileForm({ user }: { user: any }) {
       >
         {loading ? "Saving..." : "Save Changes"}
       </button>
-
-      {/* Additional Actions */}
-      <div className="pt-4 border-t">
-        <h3 className="text-sm font-medium mb-2">Account Actions</h3>
-        <div className="space-y-2">
-          <a
-            href="/account/change-password"
-            className="block text-sm text-blue-600 hover:underline"
-          >
-            Change Password
-          </a>
-          <a
-            href="/account/sessions"
-            className="block text-sm text-blue-600 hover:underline"
-          >
-            Manage Sessions
-          </a>
-          {/* Email change requires verification, so separate flow */}
-          <button
-            type="button"
-            onClick={() => alert("Email change requires verification. Feature coming soon!")}
-            className="block text-sm text-blue-600 hover:underline text-left"
-          >
-            Change Email (requires verification)
-          </button>
-        </div>
-      </div>
     </form>
   );
 }
