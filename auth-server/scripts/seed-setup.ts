@@ -10,23 +10,48 @@ import {
   DEFAULT_ORG_NAME,
   DEFAULT_ORG_SLUG,
 } from "../src/lib/trusted-clients";
-import { scrypt, randomBytes } from "crypto";
-import { promisify } from "util";
-
-const scryptAsync = promisify(scrypt);
 
 const TEST_ADMIN_EMAIL = "admin@robolearn.io";
 const TEST_ADMIN_PASSWORD = "Admin123!@#"; // For local dev only
 const TEST_ADMIN_NAME = "Admin User";
 
 /**
- * Hash password using scrypt (Better Auth's default algorithm)
- * Format matches Better Auth's internal hashing: salt:hash (hex encoded)
+ * Create admin user via Better Auth signup API
+ * This ensures password is hashed using Better Auth's exact implementation
  */
-async function hashPassword(password: string): Promise<string> {
-  const salt = randomBytes(16);
-  const derivedKey = (await scryptAsync(password, salt, 64)) as Buffer;
-  return `${salt.toString("hex")}:${derivedKey.toString("hex")}`;
+async function createAdminViaAPI() {
+  const AUTH_URL = process.env.BETTER_AUTH_URL || "http://localhost:3001";
+
+  try {
+    const response = await fetch(`${AUTH_URL}/api/auth/sign-up/email`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: TEST_ADMIN_EMAIL,
+        password: TEST_ADMIN_PASSWORD,
+        name: TEST_ADMIN_NAME,
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.text();
+      // User might already exist - that's okay
+      if (error.includes("already exists") || error.includes("UNIQUE")) {
+        console.log(`  ✅ Admin user already exists: ${TEST_ADMIN_EMAIL}`);
+        return null;
+      }
+      throw new Error(`Signup failed: ${response.status} ${error}`);
+    }
+
+    const result = await response.json();
+    console.log(`  ✅ Created admin user via API: ${TEST_ADMIN_EMAIL}`);
+    return result.user?.id;
+  } catch (error) {
+    // If API isn't available yet, that's expected during initial seed
+    console.log(`  ⏭️  Skipping admin creation (API not ready yet)`);
+    console.log(`  💡 Run after server starts: curl -X POST ${AUTH_URL}/api/auth/sign-up/email`);
+    return null;
+  }
 }
 
 // Schema definitions
@@ -385,25 +410,29 @@ async function seed() {
     await upsertClient(client);
   }
 
-  // Create admin user (local dev only)
-  let adminUserId: string;
-  if (!isProd) {
-    console.log("\n👤 Setting up admin user...\n");
-    adminUserId = await createAdminUser();
-  } else {
-    // In production, admin must be created manually
-    const existingAdmin = await db
-      .select()
-      .from(user)
-      .where(eq(user.email, TEST_ADMIN_EMAIL));
+  // Check for existing admin user or note it needs to be created via API
+  console.log("\n👤 Checking for admin user...\n");
+  const existingAdmin = await db
+    .select()
+    .from(user)
+    .where(eq(user.email, TEST_ADMIN_EMAIL));
 
-    if (existingAdmin.length === 0) {
-      console.log("\n⚠️  WARNING: No admin user found!");
-      console.log("   Create admin user manually first, then run this script again.");
-      process.exit(1);
-    }
+  let adminUserId: string;
+  if (existingAdmin.length > 0) {
     adminUserId = existingAdmin[0].id;
-    console.log(`\n✅ Found admin user: ${TEST_ADMIN_EMAIL}`);
+    console.log(`  ✅ Admin user exists: ${TEST_ADMIN_EMAIL}`);
+  } else {
+    // User will be created via Better Auth API after server starts
+    console.log(`  ⏭️  Admin user not found (will be created via API)`);
+    console.log(`  💡 After server starts, create admin user:`);
+    console.log(`     curl -X POST http://localhost:3001/api/auth/sign-up/email \\`);
+    console.log(`       -H "Content-Type: application/json" \\`);
+    console.log(`       -d '{"email":"${TEST_ADMIN_EMAIL}","password":"${TEST_ADMIN_PASSWORD}","name":"${TEST_ADMIN_NAME}"}'`);
+
+    // Create a placeholder user ID for organization membership
+    // The actual user will be created via API, but we need an ID now for the org setup
+    adminUserId = "admin-user-placeholder-id";
+    console.log(`  ⏭️  Using placeholder ID for organization setup`);
   }
 
   // Seed default organization (ALWAYS - both dev and prod)

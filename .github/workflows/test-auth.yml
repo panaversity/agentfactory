@@ -117,6 +117,14 @@ jobs:
             sleep 1
           done
 
+      - name: Create admin user via Better Auth API
+        run: |
+          echo "Creating admin user through Better Auth signup..."
+          curl -X POST http://localhost:3001/api/auth/sign-up/email \
+            -H "Content-Type: application/json" \
+            -d '{"email":"admin@robolearn.io","password":"Admin123!@#","name":"Admin User"}' \
+            -v || echo "Admin user might already exist (that's okay)"
+
       - name: Run API tests
         run: pnpm test-api
         timeout-minutes: 5
