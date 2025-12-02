@@ -15,7 +15,7 @@ const crypto = require("crypto");
 // Configuration
 const AUTH_URL = "http://localhost:3001";
 const TEST_EMAIL = "admin@robolearn.io";
-const TEST_PASSWORD = "Admin123!";
+const TEST_PASSWORD = "RoboLearnAdmin2024!SecureTest";
 
 // Test clients (must match seed-test-clients.ts)
 const PUBLIC_CLIENT = {
