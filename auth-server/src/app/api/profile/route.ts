@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { db } from "@/lib/db";
-import { user } from "@/auth-schema";
+import { user, member } from "@/auth-schema";
 import { eq } from "drizzle-orm";
 import type { SoftwareBackground, HardwareTier } from "@/types/profile";
 
@@ -37,17 +37,23 @@ export async function GET() {
       );
     }
 
+    // Get user's organization memberships
+    const memberships = await db
+      .select()
+      .from(member)
+      .where(eq(member.userId, session.user.id));
+
+    const organizationIds = memberships.map((m) => m.organizationId);
+
+    // Return flattened structure with organizationIds (expected by tests)
     return NextResponse.json({
-      user: {
-        id: userRecord.id,
-        email: userRecord.email,
-        name: userRecord.name,
-        image: userRecord.image,
-      },
-      profile: {
-        softwareBackground: userRecord.softwareBackground,
-        hardwareTier: userRecord.hardwareTier,
-      },
+      id: userRecord.id,
+      email: userRecord.email,
+      name: userRecord.name,
+      image: userRecord.image,
+      softwareBackground: userRecord.softwareBackground,
+      hardwareTier: userRecord.hardwareTier,
+      organizationIds,
     });
   } catch (error) {
     console.error("Error fetching profile:", error);
