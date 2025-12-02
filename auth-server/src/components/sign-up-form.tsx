@@ -394,10 +394,11 @@ export function SignUpForm() {
             <p className="text-sm text-slate-600">Get started in seconds</p>
           </div>
 
-          <div className="space-y-1.5">
-            <label htmlFor="name" className="block text-sm font-semibold text-slate-700">
-              Name <span className="text-red-500">*</span>
-            </label>
+          <div className="space-y-5">
+            <div className="space-y-1.5">
+              <label htmlFor="name" className="block text-sm font-semibold text-slate-700">
+                Name <span className="text-red-500">*</span>
+              </label>
             <div className="relative">
               <input
                 id="name"
@@ -421,15 +422,15 @@ export function SignUpForm() {
                 <div className="absolute inset-0 rounded-xl border-2 border-indigo-500 pointer-events-none animate-in scale-in opacity-50" />
               )}
             </div>
-            {errors.name && (
-              <p className="text-sm text-red-600 animate-in slide-in-from-top">{errors.name}</p>
-            )}
-          </div>
+              {errors.name && (
+                <p className="text-sm text-red-600 animate-in slide-in-from-top">{errors.name}</p>
+              )}
+            </div>
 
-          <div className="space-y-1.5">
-            <label htmlFor="email" className="block text-sm font-semibold text-slate-700">
-              Email address <span className="text-red-500">*</span>
-            </label>
+            <div className="space-y-1.5">
+              <label htmlFor="email" className="block text-sm font-semibold text-slate-700">
+                Email address <span className="text-red-500">*</span>
+              </label>
             <div className="relative">
               <input
                 id="email"
@@ -453,15 +454,15 @@ export function SignUpForm() {
                 <div className="absolute inset-0 rounded-xl border-2 border-indigo-500 pointer-events-none animate-in scale-in opacity-50" />
               )}
             </div>
-            {errors.email && (
-              <p className="text-sm text-red-600 animate-in slide-in-from-top">{errors.email}</p>
-            )}
-          </div>
+              {errors.email && (
+                <p className="text-sm text-red-600 animate-in slide-in-from-top">{errors.email}</p>
+              )}
+            </div>
 
-          <div className="space-y-1.5">
-            <label htmlFor="password" className="block text-sm font-semibold text-slate-700">
-              Password <span className="text-red-500">*</span>
-            </label>
+            <div className="space-y-1.5">
+              <label htmlFor="password" className="block text-sm font-semibold text-slate-700">
+                Password <span className="text-red-500">*</span>
+              </label>
             <div className="relative">
               <input
                 id="password"
@@ -494,15 +495,15 @@ export function SignUpForm() {
                 <div className="absolute inset-0 rounded-xl border-2 border-indigo-500 pointer-events-none animate-in scale-in opacity-50" />
               )}
             </div>
-            {errors.password && (
-              <p className="text-sm text-red-600 animate-in slide-in-from-top">{errors.password}</p>
-            )}
-          </div>
+              {errors.password && (
+                <p className="text-sm text-red-600 animate-in slide-in-from-top">{errors.password}</p>
+              )}
+            </div>
 
-          <div className="space-y-1.5">
-            <label htmlFor="confirmPassword" className="block text-sm font-semibold text-slate-700">
-              Confirm Password <span className="text-red-500">*</span>
-            </label>
+            <div className="space-y-1.5">
+              <label htmlFor="confirmPassword" className="block text-sm font-semibold text-slate-700">
+                Confirm Password <span className="text-red-500">*</span>
+              </label>
             <div className="relative">
               <input
                 id="confirmPassword"
@@ -535,9 +536,10 @@ export function SignUpForm() {
                 <div className="absolute inset-0 rounded-xl border-2 border-indigo-500 pointer-events-none animate-in scale-in opacity-50" />
               )}
             </div>
-            {errors.confirmPassword && (
-              <p className="text-sm text-red-600 animate-in slide-in-from-top">{errors.confirmPassword}</p>
-            )}
+              {errors.confirmPassword && (
+                <p className="text-sm text-red-600 animate-in slide-in-from-top">{errors.confirmPassword}</p>
+              )}
+            </div>
           </div>
 
           <button
