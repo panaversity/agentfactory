@@ -4,11 +4,17 @@ OAuth 2.1 / OIDC authentication server using Better Auth with PKCE, JWKS, and mu
 
 ## Documentation
 
+### Getting Started
+- [Integration Guide](docs/integration-guide.md) - **Complete guide for backend services (FastAPI, MCP, etc.)**
 - [Environment Variables](docs/environment-variables.md) - Complete reference for all config options
+
+### Authentication & Authorization
 - [PKCE OAuth Flow](docs/pkce-flow.md) - Public client authentication
 - [JWT & JWKS](docs/jwt-jwks.md) - Token signing and verification
 - [RBAC & Scopes](docs/rbac-and-scopes.md) - Roles and permissions
-- [FastAPI Integration](docs/fastapi-integration.md) - Backend integration guide
+- [FastAPI Integration](docs/fastapi-integration.md) - Backend integration examples
+
+### Additional Resources
 - [Flow Diagrams](docs/flow-diagrams.md) - Visual authentication flows
 - [Troubleshooting](docs/troubleshooting.md) - Common issues and solutions
 
