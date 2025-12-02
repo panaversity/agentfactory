@@ -394,7 +394,7 @@ export function SignUpForm() {
             <p className="text-sm text-slate-600">Get started in seconds</p>
           </div>
 
-          <div className="space-y-1.5">
+          <div className="space-y-3">
             <label htmlFor="name" className="block text-sm font-semibold text-slate-700">
               Name <span className="text-red-500">*</span>
             </label>
@@ -424,10 +424,9 @@ export function SignUpForm() {
             {errors.name && (
               <p className="text-sm text-red-600 animate-in slide-in-from-top">{errors.name}</p>
             )}
-            <p className="text-xs text-slate-500">Your username will be auto-generated from your name</p>
           </div>
 
-          <div className="space-y-1.5">
+          <div className="space-y-3">
             <label htmlFor="email" className="block text-sm font-semibold text-slate-700">
               Email address <span className="text-red-500">*</span>
             </label>
@@ -459,7 +458,7 @@ export function SignUpForm() {
             )}
           </div>
 
-          <div className="space-y-1.5">
+          <div className="space-y-3">
             <label htmlFor="password" className="block text-sm font-semibold text-slate-700">
               Password <span className="text-red-500">*</span>
             </label>
@@ -500,7 +499,7 @@ export function SignUpForm() {
             )}
           </div>
 
-          <div className="space-y-1.5">
+          <div className="space-y-3">
             <label htmlFor="confirmPassword" className="block text-sm font-semibold text-slate-700">
               Confirm Password <span className="text-red-500">*</span>
             </label>

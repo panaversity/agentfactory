@@ -154,7 +154,7 @@ export function SignInForm() {
           </div>
         )}
 
-        <div className="space-y-1.5">
+        <div className="space-y-3">
           <label htmlFor="email" className="block text-sm font-semibold text-slate-700">
             Email address
           </label>
@@ -186,7 +186,7 @@ export function SignInForm() {
           )}
         </div>
 
-        <div className="space-y-1.5">
+        <div className="space-y-3">
           <label htmlFor="password" className="block text-sm font-semibold text-slate-700">
             Password
           </label>

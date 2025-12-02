@@ -20,7 +20,7 @@ export default function AuthLayout({
         }}
       />
 
-      <div className="max-w-sm lg:max-w-md w-full relative z-10">
+      <div className="max-w-md lg:max-w-lg w-full relative z-10">
         {/* Logo/Brand */}
         <div className="text-center mb-10 animate-in slide-in-from-top">
           <h1 className="text-4xl font-bold mb-2">
