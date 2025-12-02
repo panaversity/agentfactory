@@ -1,0 +1,816 @@
+/**
+ * ============================================================================
+ * DOC PAGES — Industrial-Kinetic Futurism Theme
+ * Matches the homepage Neural Command Center aesthetic
+ * Dark industrial foundation with kinetic cyan/amber accents
+ * ============================================================================
+ */
+
+/* ============================================================================
+   1. TYPOGRAPHY & READING EXPERIENCE
+   ============================================================================ */
+
+/* Main article container - optimal reading width */
+article {
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 2rem;
+  position: relative;
+  z-index: 5;
+}
+
+/* Mobile: Ensure article has clear spacing from navbar */
+@media screen and (max-width: 996px) {
+  article {
+    padding-top: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  article {
+    padding-top: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  article {
+    padding-top: 1rem;
+  }
+}
+
+/* Hide "On this page" sidebar button on mobile - prevents overlap with content */
+@media screen and (max-width: 996px) {
+  .theme-doc-toc-desktop {
+    display: none !important;
+  }
+
+  /* Hide mobile TOC button that overlaps with content */
+  .tocMobile_ITEo,
+  .tocCollapsible_ETCw.tocMobile_ITEo {
+    display: none !important;
+  }
+
+  /* Ensure article stays on top of sidebar when it opens */
+  article {
+    position: relative;
+    z-index: 1001;
+  }
+}
+
+/* Enhanced body text */
+.markdown {
+  line-height: 1.8;
+  font-size: 1.0625rem;
+  color: var(--ifk-text-secondary);
+  font-family: var(--ifk-font-body);
+}
+
+[data-theme='dark'] .markdown {
+  color: var(--ifk-text-secondary);
+}
+
+/* Optimal reading width for paragraphs */
+.markdown > p,
+.markdown > ul,
+.markdown > ol,
+.markdown > blockquote {
+  max-width: 75ch;
+}
+
+/* Better paragraph spacing */
+.markdown p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.markdown p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================================
+   2. PREMIUM HEADING STYLES — Industrial-Kinetic Futurism
+   ============================================================================ */
+
+/* H1 - Gradient effect with cyan accent */
+.markdown h1 {
+  font-family: var(--ifk-font-display);
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--ifk-text-primary) 0%, var(--ifk-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  letter-spacing: -0.02em;
+}
+
+[data-theme='light'] .markdown h1 {
+  background: linear-gradient(135deg, var(--ifk-text-primary) 0%, var(--ifk-cyan-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* H1 decorative underline - cyan gradient */
+.markdown h1::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ifk-cyan) 0%, transparent 100%);
+  margin-top: 1rem;
+  border-radius: 2px;
+}
+
+/* H2 - Accent underline */
+.markdown h2 {
+  font-family: var(--ifk-font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--ifk-text-primary);
+  position: relative;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--ifk-border);
+  letter-spacing: -0.01em;
+}
+
+/* H2 decorative element - cyan accent line */
+.markdown h2::before {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ifk-cyan) 0%, var(--ifk-cyan-dark) 100%);
+  border-radius: 2px;
+}
+
+/* H3 - Subtle styling with left border */
+.markdown h3 {
+  font-family: var(--ifk-font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  color: var(--ifk-text-primary);
+  position: relative;
+  padding-left: 1rem;
+}
+
+/* H3 left border accent - cyan gradient */
+.markdown h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  bottom: 0.2em;
+  width: 3px;
+  background: linear-gradient(180deg, var(--ifk-cyan) 0%, var(--ifk-cyan-dark) 100%);
+  border-radius: 2px;
+}
+
+/* H4, H5, H6 - Consistent styling */
+.markdown h4 {
+  font-family: var(--ifk-font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--ifk-text-primary);
+}
+
+.markdown h5 {
+  font-family: var(--ifk-font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 1.75rem;
+  margin-bottom: 0.875rem;
+  color: var(--ifk-text-secondary);
+}
+
+.markdown h6 {
+  font-family: var(--ifk-font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--ifk-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Anchor links hover effect */
+.markdown h1 .hash-link,
+.markdown h2 .hash-link,
+.markdown h3 .hash-link,
+.markdown h4 .hash-link,
+.markdown h5 .hash-link,
+.markdown h6 .hash-link {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  color: var(--ifk-cyan);
+}
+
+.markdown h1:hover .hash-link,
+.markdown h2:hover .hash-link,
+.markdown h3:hover .hash-link,
+.markdown h4:hover .hash-link,
+.markdown h5:hover .hash-link,
+.markdown h6:hover .hash-link {
+  opacity: 1;
+}
+
+/* ============================================================================
+   3. ENHANCED LINKS — Cyan Accent
+   ============================================================================ */
+
+.markdown a {
+  color: var(--ifk-cyan);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ifk-cyan-subtle);
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.markdown a:hover {
+  color: var(--ifk-cyan-light);
+  border-bottom-color: var(--ifk-cyan);
+  background: var(--ifk-cyan-subtle);
+}
+
+/* ============================================================================
+   4. ENHANCED LISTS — Industrial Bullets
+   ============================================================================ */
+
+.markdown ul,
+.markdown ol {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+  line-height: 1.8;
+}
+
+.markdown li {
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.markdown li:last-child {
+  margin-bottom: 0;
+}
+
+/* Custom bullets for unordered lists - cyan chevrons */
+.markdown ul > li {
+  list-style: none;
+  padding-left: 0.5rem;
+}
+
+.markdown ul > li::before {
+  content: '>';
+  position: absolute;
+  left: -1.5rem;
+  color: var(--ifk-cyan);
+  font-family: var(--ifk-font-display);
+  font-weight: 700;
+  font-size: 0.9em;
+}
+
+/* Enhanced ordered lists */
+.markdown ol {
+  counter-reset: item;
+}
+
+.markdown ol > li {
+  list-style: none;
+  counter-increment: item;
+}
+
+.markdown ol > li::before {
+  content: counter(item) ".";
+  position: absolute;
+  left: -2rem;
+  color: var(--ifk-cyan);
+  font-family: var(--ifk-font-display);
+  font-weight: 600;
+  font-size: 0.95em;
+  width: 1.5rem;
+  text-align: right;
+}
+
+/* Nested lists */
+.markdown li > ul,
+.markdown li > ol {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ============================================================================
+   5. BLOCKQUOTES — Neural Interface Style
+   ============================================================================ */
+
+.markdown blockquote {
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, var(--ifk-cyan-subtle) 0%, rgba(0, 212, 255, 0.03) 100%);
+  border-left: 3px solid var(--ifk-cyan);
+  border-radius: 0 8px 8px 0;
+  box-shadow: var(--ifk-shadow-sm);
+  position: relative;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--ifk-text-secondary);
+}
+
+[data-theme='light'] .markdown blockquote {
+  background: linear-gradient(135deg, var(--ifk-cyan-subtle) 0%, rgba(0, 119, 204, 0.03) 100%);
+}
+
+.markdown blockquote p {
+  margin-bottom: 1rem;
+}
+
+.markdown blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Blockquote decorative element - terminal style */
+.markdown blockquote::before {
+  content: '//';
+  position: absolute;
+  top: 1rem;
+  left: 0.75rem;
+  font-family: var(--ifk-font-display);
+  font-size: 1.5rem;
+  color: var(--ifk-cyan);
+  opacity: 0.4;
+  line-height: 1;
+}
+
+/* ============================================================================
+   6. CODE BLOCKS — Terminal Aesthetic
+   ============================================================================ */
+
+/* Inline code */
+.markdown code {
+  background: var(--ifk-cyan-subtle);
+  color: var(--ifk-cyan-light);
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: var(--ifk-font-display);
+  border: 1px solid var(--ifk-sidebar-border);
+  font-weight: 500;
+}
+
+[data-theme='light'] .markdown code {
+  background: var(--ifk-cyan-subtle);
+  color: var(--ifk-cyan-dark);
+}
+
+/* Code blocks */
+.markdown pre {
+  margin: 2rem 0;
+  border-radius: 8px;
+  box-shadow: var(--ifk-shadow-md);
+  overflow: hidden;
+  border: 1px solid var(--ifk-sidebar-border);
+}
+
+.markdown pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ifk-text-secondary);
+}
+
+/* Code block wrapper */
+.prism-code {
+  padding: 1.5rem !important;
+  background: var(--ifk-bg-secondary) !important;
+}
+
+/* ============================================================================
+   7. TABLES — Data Grid Style
+   ============================================================================ */
+
+.markdown table {
+  width: 100%;
+  margin: 2rem 0;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--ifk-shadow-sm);
+  font-size: 0.95rem;
+  border: 1px solid var(--ifk-sidebar-border);
+}
+
+.markdown thead {
+  background: linear-gradient(135deg, var(--ifk-bg-tertiary) 0%, var(--ifk-bg-secondary) 100%);
+  color: var(--ifk-text-primary);
+}
+
+.markdown th {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-family: var(--ifk-font-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-bottom: 2px solid var(--ifk-cyan);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.markdown td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--ifk-border);
+}
+
+/* Zebra striping with subtle cyan */
+.markdown tbody tr:nth-child(even) {
+  background: var(--ifk-cyan-subtle);
+}
+
+/* Hover effect */
+.markdown tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.markdown tbody tr:hover {
+  background: var(--ifk-sidebar-item-hover);
+}
+
+/* ============================================================================
+   8. HORIZONTAL RULES — Scan Line
+   ============================================================================ */
+
+.markdown hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--ifk-cyan) 20%,
+    var(--ifk-cyan-light) 50%,
+    var(--ifk-cyan) 80%,
+    transparent 100%
+  );
+  margin: 3rem 0;
+  opacity: 0.5;
+}
+
+/* ============================================================================
+   9. ADMONITIONS / CALLOUT BOXES — HUD Panels
+   ============================================================================ */
+
+.admonition {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 3px solid;
+  box-shadow: var(--ifk-shadow-sm);
+  background: var(--ifk-bg-secondary);
+}
+
+/* Note - Cyan (info) */
+.admonition-note {
+  border-left-color: var(--ifk-cyan);
+  background: linear-gradient(135deg, var(--ifk-cyan-subtle) 0%, var(--ifk-bg-secondary) 100%);
+}
+
+/* Tip - Green (success) */
+.admonition-tip {
+  border-left-color: #22c55e;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, var(--ifk-bg-secondary) 100%);
+}
+
+/* Warning - Amber */
+.admonition-warning {
+  border-left-color: var(--ifk-amber);
+  background: linear-gradient(135deg, var(--ifk-amber-subtle) 0%, var(--ifk-bg-secondary) 100%);
+}
+
+/* Danger - Red */
+.admonition-danger {
+  border-left-color: #ef4444;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, var(--ifk-bg-secondary) 100%);
+}
+
+/* Info - Cyan */
+.admonition-info {
+  border-left-color: var(--ifk-cyan);
+  background: linear-gradient(135deg, var(--ifk-cyan-subtle) 0%, var(--ifk-bg-secondary) 100%);
+}
+
+/* Admonition title */
+.admonition-heading {
+  font-family: var(--ifk-font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ============================================================================
+   10. IMAGES & MEDIA
+   ============================================================================ */
+
+.markdown img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: var(--ifk-shadow-md);
+  margin: 2rem 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--ifk-sidebar-border);
+}
+
+.markdown img:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ifk-shadow-lg), 0 0 20px var(--ifk-cyan-subtle);
+}
+
+/* ============================================================================
+   11. STRONG & EMPHASIS
+   ============================================================================ */
+
+.markdown strong {
+  font-weight: 700;
+  color: var(--ifk-text-primary);
+}
+
+.markdown em {
+  font-style: italic;
+  color: var(--ifk-cyan-light);
+}
+
+/* ============================================================================
+   12. PAGINATION & NAVIGATION — Control Panel Buttons
+   ============================================================================ */
+
+.pagination-nav {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ifk-border);
+}
+
+.pagination-nav__link {
+  border: 1px solid var(--ifk-sidebar-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  background: var(--ifk-bg-secondary);
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifk-cyan);
+  background: var(--ifk-sidebar-item-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--ifk-shadow-cyan);
+}
+
+.pagination-nav__sublabel {
+  font-family: var(--ifk-font-display);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ifk-text-muted);
+}
+
+.pagination-nav__label {
+  font-family: var(--ifk-font-body);
+  font-weight: 600;
+  color: var(--ifk-text-primary);
+}
+
+.pagination-nav__link:hover .pagination-nav__label {
+  color: var(--ifk-cyan);
+}
+
+/* ============================================================================
+   13. TABLE OF CONTENTS (TOC) — Mission Objectives
+   ============================================================================ */
+
+.table-of-contents {
+  font-size: 0.9rem;
+  font-family: var(--ifk-font-body);
+}
+
+.table-of-contents__link {
+  color: var(--ifk-text-muted);
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+  padding-left: 0.75rem;
+}
+
+.table-of-contents__link:hover,
+.table-of-contents__link--active {
+  color: var(--ifk-cyan);
+  border-left-color: var(--ifk-cyan);
+  background: var(--ifk-cyan-subtle);
+}
+
+/* ============================================================================
+   14. DOC PAGE BACKGROUND — Subtle Grid Pattern
+   ============================================================================ */
+
+.theme-doc-markdown {
+  position: relative;
+}
+
+/* Optional: Add subtle grid pattern to match homepage */
+.docMainContainer_gTbr::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+[data-theme='light'] .docMainContainer_gTbr::before {
+  background-image:
+    linear-gradient(rgba(0, 119, 204, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 119, 204, 0.03) 1px, transparent 1px);
+}
+
+/* ============================================================================
+   15. RESPONSIVE ADJUSTMENTS
+   ============================================================================ */
+
+@media screen and (max-width: 996px) {
+  .markdown {
+    font-size: 1rem;
+  }
+
+  .markdown h1 {
+    font-size: 2.25rem;
+  }
+
+  .markdown h2 {
+    font-size: 1.75rem;
+    margin-top: 2.5rem;
+  }
+
+  .markdown h3 {
+    font-size: 1.35rem;
+  }
+
+  .markdown blockquote {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .markdown {
+    font-size: 0.9375rem;
+  }
+
+  .markdown h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .markdown h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .markdown h3 {
+    font-size: 1.25rem;
+  }
+
+  .markdown blockquote {
+    padding: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .markdown table {
+    font-size: 0.85rem;
+  }
+
+  .markdown th,
+  .markdown td {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Mobile optimizations for 375px (iPhone SE) viewports */
+@media screen and (max-width: 375px) {
+  .markdown h1 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .markdown h1::after {
+    width: 60px;
+    height: 2px;
+    margin-top: 0.75rem;
+  }
+
+  .markdown h2 {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .markdown h3 {
+    font-size: 1.25rem;
+  }
+
+  /* Ensure code blocks and tables fit without horizontal scroll */
+  .markdown pre {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .markdown table {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    display: block;
+  }
+
+  /* Improve readability on smaller screens */
+  .markdown {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+
+  .markdown ul,
+  .markdown ol {
+    padding-left: 1.5rem;
+  }
+
+  .markdown blockquote {
+    padding: 0.875rem;
+    margin: 1.5rem 0;
+  }
+
+  .admonition {
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .markdown h1 {
+    font-size: 1.75rem;
+  }
+
+  .markdown h2 {
+    font-size: 1.35rem;
+  }
+
+  .markdown h3 {
+    font-size: 1.15rem;
+  }
+
+  .markdown ul,
+  .markdown ol {
+    padding-left: 1.5rem;
+  }
+
+  .markdown blockquote {
+    padding: 0.875rem;
+  }
+
+  .admonition {
+    padding: 1.25rem;
+  }
+}
+
+/* ============================================================================
+   16. REDUCED MOTION
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .markdown img:hover {
+    transform: none;
+  }
+
+  .pagination-nav__link:hover {
+    transform: none;
+  }
+
+  .markdown a,
+  .table-of-contents__link,
+  .pagination-nav__link {
+    transition: none;
+  }
+}

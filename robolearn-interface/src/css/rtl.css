@@ -1,0 +1,65 @@
+/**
+ * RTL (Right-to-Left) Support for Urdu
+ * 
+ * Provides right-to-left layout and typography for Urdu content.
+ */
+
+/* RTL direction for Urdu locale */
+[dir='rtl'] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Code blocks remain LTR even in RTL context */
+[dir='rtl'] pre,
+[dir='rtl'] code {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Lists in RTL */
+[dir='rtl'] ul,
+[dir='rtl'] ol {
+  padding-right: 2rem;
+  padding-left: 0;
+}
+
+/* Tables in RTL */
+[dir='rtl'] table {
+  direction: rtl;
+}
+
+[dir='rtl'] th,
+[dir='rtl'] td {
+  text-align: right;
+}
+
+/* Navigation and UI elements */
+[dir='rtl'] .navbar__items {
+  flex-direction: row-reverse;
+}
+
+[dir='rtl'] .breadcrumbs__item {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+/* Typography adjustments for Urdu */
+[dir='rtl'] {
+  font-family: 'Noto Nastaliq Urdu', 'Noto Sans Arabic', 'Arial', sans-serif;
+}
+
+/* Ensure proper spacing in RTL */
+[dir='rtl'] .markdown > * {
+  text-align: right;
+}
+
+[dir='rtl'] .markdown > h1,
+[dir='rtl'] .markdown > h2,
+[dir='rtl'] .markdown > h3,
+[dir='rtl'] .markdown > h4,
+[dir='rtl'] .markdown > h5,
+[dir='rtl'] .markdown > h6 {
+  text-align: right;
+}
+

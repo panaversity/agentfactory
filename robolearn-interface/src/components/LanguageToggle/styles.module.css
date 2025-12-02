@@ -1,0 +1,291 @@
+/**
+ * LanguageToggle Component Styles
+ * 
+ * Globe icon dropdown for language selection.
+ * Industrial Confidence design system with enhanced micro-interactions.
+ */
+
+.languageToggle {
+  position: relative;
+  display: inline-block;
+}
+
+.toggleButton {
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toggleButton:hover {
+  background: rgba(255, 149, 0, 0.15);
+  transform: scale(1.05);
+}
+
+.toggleButton:hover .globeIcon {
+  color: #ff9500;
+  filter: drop-shadow(0 0 6px rgba(255, 149, 0, 0.6));
+  transform: rotate(5deg) scale(1.1);
+}
+
+.toggleButton.isOpen {
+  background: rgba(0, 212, 255, 0.2);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.3);
+}
+
+.toggleButton.isOpen .globeIcon {
+  color: #00d4ff;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.6));
+  animation: globeRotate 2s ease-in-out infinite;
+}
+
+.toggleButton.isTransitioning {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.toggleButton:focus-visible {
+  outline: 2px solid var(--ifk-cyan, #00d4ff);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.2);
+}
+
+.globeIcon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+@keyframes globeRotate {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+.loadingIndicator {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  border-top-color: #00d4ff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Light mode adjustments */
+[data-theme='light'] .toggleButton {
+  color: #333;
+}
+
+[data-theme='light'] .toggleButton:hover {
+  background: rgba(255, 149, 0, 0.1);
+}
+
+[data-theme='light'] .toggleButton:hover .globeIcon {
+  color: #cc7700;
+}
+
+[data-theme='light'] .toggleButton.isOpen {
+  background: rgba(0, 212, 255, 0.15);
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.25);
+}
+
+[data-theme='light'] .toggleButton.isOpen .globeIcon {
+  color: #00a8cc;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 160px;
+  background: var(--ifk-bg-secondary, var(--ifm-background-surface-color));
+  border: 1px solid var(--ifk-border, rgba(255, 255, 255, 0.1));
+  border-radius: 0.5rem;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 212, 255, 0.1) inset,
+    0 0 20px rgba(0, 212, 255, 0.1);
+  z-index: 1000;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  animation: dropdownEnter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dropdownEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-0.75rem) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dropdownItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.875rem 1.125rem;
+  border: none;
+  background: transparent;
+  color: var(--ifk-text-primary, var(--ifm-font-color-base));
+  cursor: pointer;
+  font-size: 0.875rem;
+  text-align: left;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  animation: itemSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateX(-0.5rem);
+}
+
+@keyframes itemSlideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.dropdownItem:hover {
+  background: var(--ifk-cyan-subtle, rgba(0, 212, 255, 0.1));
+  transform: translateX(0.25rem);
+  color: var(--ifk-cyan, #00d4ff);
+}
+
+.dropdownItem:hover .localeCode {
+  color: var(--ifk-cyan, #00d4ff);
+  transform: scale(1.1);
+}
+
+.dropdownItem.active {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 212, 255, 0.15) 0%,
+    rgba(0, 212, 255, 0.05) 100%
+  );
+  font-weight: 600;
+  color: var(--ifk-cyan, #00d4ff);
+  border-left: 2px solid var(--ifk-cyan, #00d4ff);
+}
+
+.dropdownItem.active .localeCode {
+  color: var(--ifk-cyan, #00d4ff);
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+.dropdownItem:not(:last-child) {
+  border-bottom: 1px solid var(--ifk-border, rgba(255, 255, 255, 0.08));
+}
+
+.dropdownItem:focus-visible {
+  outline: 2px solid var(--ifk-cyan, #00d4ff);
+  outline-offset: -2px;
+  background: var(--ifk-cyan-subtle, rgba(0, 212, 255, 0.15));
+}
+
+.localeCode {
+  font-weight: 600;
+  font-family: var(--ifk-font-display, 'JetBrains Mono', 'Courier New', monospace);
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  min-width: 2.5rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--ifk-text-secondary, var(--ifm-color-emphasis-600));
+}
+
+.localeName {
+  flex: 1;
+  margin-left: 0.875rem;
+  color: var(--ifk-text-secondary, var(--ifm-color-emphasis-700));
+  font-size: 0.8125rem;
+  transition: color 0.2s ease;
+}
+
+.dropdownItem.active .localeName {
+  color: var(--ifk-cyan-light, rgba(0, 212, 255, 0.9));
+}
+
+.checkmark {
+  position: absolute;
+  right: 1rem;
+  color: var(--ifk-cyan, #00d4ff);
+  font-size: 1rem;
+  font-weight: 700;
+  animation: checkmarkPop 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes checkmarkPop {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Dark mode enhancements */
+[data-theme='dark'] .dropdown {
+  background: var(--ifk-bg-secondary, rgba(20, 20, 24, 0.98));
+  border-color: var(--ifk-border, rgba(255, 255, 255, 0.1));
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 212, 255, 0.15) inset,
+    0 0 24px rgba(0, 212, 255, 0.15);
+}
+
+[data-theme='dark'] .dropdownItem:hover {
+  background: rgba(0, 212, 255, 0.12);
+}
+
+[data-theme='dark'] .dropdownItem.active {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 212, 255, 0.2) 0%,
+    rgba(0, 212, 255, 0.08) 100%
+  );
+  box-shadow: inset 0 0 12px rgba(0, 212, 255, 0.1);
+}
+
+/* RTL support */
+[dir='rtl'] .dropdown {
+  right: auto;
+  left: 0;
+}
+
+[dir='rtl'] .dropdownItem {
+  text-align: right;
+}
+
+[dir='rtl'] .localeName {
+  margin-left: 0;
+  margin-right: 0.75rem;
+}
+

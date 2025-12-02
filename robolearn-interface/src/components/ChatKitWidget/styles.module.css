@@ -1,0 +1,482 @@
+/* ChatKit Floating Widget Styles */
+
+.chatButtonContainer {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    z-index: 1000;
+}
+
+.chatButton {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    box-shadow:
+        0 4px 12px rgba(0, 212, 255, 0.3),
+        0 0 20px rgba(0, 212, 255, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.settingsButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(0, 212, 255, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 212, 255, 0.9);
+    transition: all 0.2s ease;
+    backdrop-filter: blur(8px);
+}
+
+.settingsButton:hover {
+    background: rgba(0, 212, 255, 0.2);
+    border-color: rgba(0, 212, 255, 0.5);
+    transform: scale(1.1);
+    color: rgba(0, 212, 255, 1);
+}
+
+.settingsButton:active {
+    transform: scale(0.95);
+}
+
+.chatButton svg {
+    stroke: #ffffff;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+}
+
+.chatButton:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.chatButton:active {
+    transform: scale(0.95);
+}
+
+/* ChatKit Container - Fixed position, bottom-right (like standard chat widgets) */
+.chatKitContainer {
+    position: fixed;
+    bottom: 90px;
+    /* Above the floating button */
+    right: 24px;
+    width: 400px;
+    height: 600px;
+    max-width: calc(100vw - 48px);
+    max-height: calc(100vh - 120px);
+    z-index: 2000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--ifm-background-color);
+    animation: slideUp 0.3s ease-out;
+    /* Hide all scrollbars */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.chatKitContainer::-webkit-scrollbar {
+    display: none;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chatKit {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    /* Hide scrollbars */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+}
+
+.chatKit::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
+
+/* Hide any scroll indicators in ChatKit */
+.chatKitContainer :global(*) {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.chatKitContainer :global(*)::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide ChatKit scroll indicators and progress indicators - AGGRESSIVE */
+.chatKitContainer :global([class*="scroll" i]),
+.chatKitContainer :global([class*="Scroll"]),
+.chatKitContainer :global([id*="scroll" i]),
+.chatKitContainer :global([id*="Scroll"]),
+.chatKitContainer :global([data-scroll]),
+.chatKitContainer :global([aria-label*="scroll" i]),
+.chatKitContainer :global([aria-label*="Scroll" i]),
+.chatKitContainer :global([title*="scroll" i]),
+.chatKitContainer :global([title*="Scroll" i]) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+    pointer-events: none !important;
+}
+
+/* Hide any percentage or progress indicators */
+.chatKitContainer :global([class*="progress" i]),
+.chatKitContainer :global([class*="Progress"]),
+.chatKitContainer :global([class*="percentage" i]),
+.chatKitContainer :global([class*="Percentage"]),
+.chatKitContainer :global([class*="indicator" i]),
+.chatKitContainer :global([class*="Indicator"]),
+.chatKitContainer :global([id*="progress" i]),
+.chatKitContainer :global([id*="indicator" i]) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+}
+
+/* Hide elements containing percentage symbols */
+.chatKitContainer :global([class*="%"]) {
+    display: none !important;
+}
+
+/* Target ChatKit shadow DOM or web component internals */
+.chatKitContainer :global(openai-chatkit),
+.chatKitContainer :global(openai-chatkit *) {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.chatKitContainer :global(openai-chatkit)::-webkit-scrollbar,
+.chatKitContainer :global(openai-chatkit *)::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* Hide any element with role="progressbar" or similar */
+.chatKitContainer :global([role="progressbar"]),
+.chatKitContainer :global([role="status"][aria-live]),
+.chatKitContainer :global([role="status"]) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Hide all text nodes containing "Scroll" and "%" */
+.chatKitContainer :global(*) {
+    position: relative;
+}
+
+/* Hide pseudo-elements */
+.chatKitContainer :global(*)::before,
+.chatKitContainer :global(*)::after {
+    content: none !important;
+}
+
+/* "Ask" Button for Selected Text */
+/* "Ask" Button for Selected Text - Subtle and clean design */
+.askButton {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(0, 212, 255, 0.95);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(0, 212, 255, 0.1);
+    z-index: 1999;
+    transition: all 0.2s ease;
+    pointer-events: auto;
+    animation: slideDown 0.2s ease-out;
+    backdrop-filter: blur(8px);
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.askButton:hover {
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow:
+        0 4px 12px rgba(0, 212, 255, 0.3),
+        0 0 0 1px rgba(0, 212, 255, 0.2);
+    background: rgba(0, 212, 255, 1);
+}
+
+.askButton:active {
+    transform: translateX(-50%) translateY(0);
+}
+
+.askButton svg {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    opacity: 0.9;
+}
+
+/* Login Prompt Overlay */
+.loginPrompt {
+    position: fixed;
+    bottom: 90px;
+    right: 24px;
+    width: 400px;
+    max-width: calc(100vw - 48px);
+    z-index: 2000;
+    background: var(--ifm-background-color);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 16px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(0, 212, 255, 0.2);
+    animation: slideUp 0.3s ease-out;
+}
+
+.loginPromptContent {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.loginPromptContent h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ifm-color-content);
+}
+
+.loginPromptContent p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--ifm-color-content-secondary);
+    line-height: 1.6;
+}
+
+.loginButton {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+}
+
+.loginButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 212, 255, 0.4);
+}
+
+.loginButton:active {
+    transform: translateY(0);
+}
+
+.closeButton {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    color: var(--ifm-color-content-secondary);
+    border: 1px solid var(--ifm-color-content-secondary);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+    background: var(--ifm-color-content-secondary);
+    color: var(--ifm-background-color);
+}
+
+/* Personalize Menu */
+.personalizeMenu {
+    position: fixed;
+    bottom: 90px;
+    right: 24px;
+    width: 280px;
+    max-width: calc(100vw - 48px);
+    z-index: 2001;
+    background: var(--ifm-background-color);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 12px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(0, 212, 255, 0.2);
+    animation: slideUp 0.2s ease-out;
+    overflow: hidden;
+}
+
+.personalizeMenuHeader {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.personalizeMenuHeader h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ifm-color-content);
+}
+
+.closeMenuButton {
+    background: transparent;
+    border: none;
+    color: var(--ifm-color-content-secondary);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.closeMenuButton:hover {
+    background: var(--ifm-color-emphasis-100);
+    color: var(--ifm-color-content);
+}
+
+.personalizeMenuContent {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.personalizeMenuContent p {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.875rem;
+    color: var(--ifm-color-content-secondary);
+}
+
+.personalizeButton {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--ifm-color-emphasis-100);
+    color: var(--ifm-color-content);
+    border: 1px solid var(--ifm-color-emphasis-200);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.personalizeButton:hover {
+    background: var(--ifm-color-emphasis-200);
+    border-color: rgba(0, 212, 255, 0.3);
+    transform: translateX(2px);
+}
+
+.personalizeButton svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .chatButtonContainer {
+        bottom: 16px;
+        right: 16px;
+        gap: 10px;
+    }
+
+    .chatButton {
+        width: 48px;
+        height: 48px;
+    }
+
+    .settingsButton {
+        width: 36px;
+        height: 36px;
+    }
+
+    .chatKitContainer {
+        bottom: 80px;
+        right: 16px;
+        left: 16px;
+        width: auto;
+        height: calc(100vh - 100px);
+        max-width: none;
+        max-height: none;
+    }
+
+    .askButton {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .loginPrompt {
+        bottom: 80px;
+        right: 16px;
+        left: 16px;
+        width: auto;
+    }
+
+    .personalizeMenu {
+        bottom: 80px;
+        right: 16px;
+        left: 16px;
+        width: auto;
+    }
+}

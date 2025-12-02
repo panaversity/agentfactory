@@ -1,0 +1,95 @@
+/* ============================================================================
+   SEARCH BAR CUSTOMIZATION
+   Industrial-Kinetic styling for @easyops-cn/docusaurus-search-local plugin
+   ============================================================================ */
+
+/* Hide the plugin's default search bar (we use custom component) */
+.navbar__search {
+  display: none !important;
+}
+
+/* Custom search bar container (our component) */
+.searchContainer {
+  margin-left: 1rem;
+  position: relative;
+}
+
+/* Search input button/trigger */
+.navbar__search-input {
+  background: rgba(0, 212, 255, 0.08) !important;
+  border: 1px solid rgba(0, 212, 255, 0.2) !important;
+  border-radius: 6px !important;
+  color: var(--ifk-text-secondary) !important;
+  font-family: var(--ifk-font-display) !important;
+  font-size: 0.875rem !important;
+  padding: 0.5rem 1rem !important;
+  transition: all var(--ifk-transition-base) !important;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+.navbar__search-input:hover {
+  background: rgba(0, 212, 255, 0.12) !important;
+  border-color: var(--ifk-cyan) !important;
+  box-shadow: 0 0 12px var(--ifk-cyan-glow) !important;
+  color: var(--ifk-cyan) !important;
+  transform: translateY(-1px);
+}
+
+.navbar__search-input:focus {
+  background: rgba(0, 212, 255, 0.15) !important;
+  border-color: var(--ifk-cyan) !important;
+  box-shadow: 0 0 16px var(--ifk-cyan-glow) !important;
+  outline: none !important;
+}
+
+/* Search icon */
+.navbar__search-icon {
+  color: var(--ifk-cyan) !important;
+  opacity: 0.8;
+  transition: opacity var(--ifk-transition-fast);
+}
+
+.navbar__search-input:hover .navbar__search-icon,
+.navbar__search-input:focus .navbar__search-icon {
+  opacity: 1;
+}
+
+/* Search modal/dropdown */
+.search-icon {
+  color: var(--ifk-cyan) !important;
+}
+
+/* Search results container */
+.search-result {
+  border-left: 3px solid transparent;
+  transition: all var(--ifk-transition-fast);
+}
+
+.search-result:hover {
+  background: rgba(0, 212, 255, 0.08) !important;
+  border-left-color: var(--ifk-cyan) !important;
+}
+
+/* Search modal overlay styling */
+.search-modal {
+  background: var(--ifk-bg-primary) !important;
+  border: 1px solid rgba(0, 212, 255, 0.3) !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(0, 212, 255, 0.1) !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 996px) {
+  .navbar__search {
+    margin-left: 0.5rem;
+  }
+
+  .navbar__search-input {
+    min-width: 150px;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.8rem !important;
+  }
+}
+

@@ -1,0 +1,64 @@
+/* IFK Sidebar Collapse Button */
+
+@media (min-width: 997px) {
+  .collapseSidebarButton {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(30, 30, 34, 0.95) 0%, rgba(20, 20, 24, 0.98) 100%);
+    border: none;
+    border-top: 1px solid rgba(0, 212, 255, 0.15);
+    border-radius: 0;
+    height: 48px;
+    position: sticky;
+    bottom: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .collapseSidebarButton:hover,
+  .collapseSidebarButton:focus {
+    background: linear-gradient(180deg, rgba(0, 212, 255, 0.12) 0%, rgba(0, 212, 255, 0.08) 100%);
+    border-top-color: rgba(0, 212, 255, 0.3);
+  }
+
+  .collapseSidebarButton:hover .collapseSidebarButtonIcon,
+  .collapseSidebarButton:focus .collapseSidebarButtonIcon {
+    color: #00d4ff;
+    filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.5));
+  }
+
+  .collapseSidebarButtonIcon {
+    width: 22px;
+    height: 22px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+  }
+
+  /* Light theme overrides */
+  [data-theme='light'] .collapseSidebarButton {
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+    border-top: 1px solid rgba(0, 168, 204, 0.25);
+  }
+
+  [data-theme='light'] .collapseSidebarButton:hover,
+  [data-theme='light'] .collapseSidebarButton:focus {
+    background: linear-gradient(180deg, rgba(0, 168, 204, 0.1) 0%, rgba(0, 168, 204, 0.05) 100%);
+    border-top-color: rgba(0, 168, 204, 0.4);
+  }
+
+  [data-theme='light'] .collapseSidebarButtonIcon {
+    color: #555;
+  }
+
+  [data-theme='light'] .collapseSidebarButton:hover .collapseSidebarButtonIcon,
+  [data-theme='light'] .collapseSidebarButton:focus .collapseSidebarButtonIcon {
+    color: #00a8cc;
+  }
+}
+
+/* Hide on mobile */
+.collapseSidebarButton {
+  display: none;
+  margin: 0;
+}

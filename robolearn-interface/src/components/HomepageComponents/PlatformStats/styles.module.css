@@ -1,0 +1,56 @@
+/* PlatformStats - Animated counter grid */
+
+.statsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  border-radius: 8px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.statValue {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #00d4ff;
+  line-height: 1;
+}
+
+.statSuffix {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(0, 212, 255, 0.6);
+}
+
+.statLabel {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .statsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statValue {
+    font-size: 1.5rem;
+  }
+}

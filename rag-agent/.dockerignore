@@ -1,0 +1,56 @@
+# Python virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Environment files (use secrets management instead)
+.env
+.env.local
+.env.*.local
+
+# Testing
+tests/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+test_once.py
+TESTING.md
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation (keep README.md for reference)
+*.md
+!README.md
+docs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Logs
+*.log
+logs/

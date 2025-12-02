@@ -1,0 +1,229 @@
+/* HardwareTier - Hardware setup option card */
+
+.hardwareTier {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--ifk-space-lg);
+  padding-top: calc(var(--ifk-space-lg) + 20px);
+  background: var(--ifk-bg-secondary);
+  border: 1px solid var(--ifk-border);
+  border-radius: 8px;
+  transition:
+    transform var(--ifk-transition-base),
+    border-color var(--ifk-transition-base),
+    box-shadow var(--ifk-transition-base);
+
+  /* Reveal animation initial state */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hardwareTier.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.6s var(--ifk-easing-spring),
+    transform 0.6s var(--ifk-easing-spring);
+}
+
+/* Recommended tier styling */
+.hardwareTier.recommended {
+  border-color: var(--ifk-amber);
+  padding-top: calc(var(--ifk-space-lg) + 30px);
+}
+
+/* Hover effects */
+.hardwareTier:hover,
+.hardwareTier:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--ifk-cyan);
+  box-shadow: 0 8px 32px var(--ifk-cyan-glow);
+}
+
+.hardwareTier.recommended:hover,
+.hardwareTier.recommended:focus-visible {
+  border-color: var(--ifk-amber);
+  box-shadow: 0 8px 32px var(--ifk-amber-glow);
+}
+
+/* Focus visible outline */
+.hardwareTier:focus-visible {
+  outline: 2px solid var(--ifk-cyan);
+  outline-offset: 4px;
+}
+
+.hardwareTier.recommended:focus-visible {
+  outline-color: var(--ifk-amber);
+}
+
+/* RECOMMENDED badge */
+.recommendedBadge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--ifk-space-xs) var(--ifk-space-md);
+  font-family: var(--ifk-font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--ifk-bg-primary);
+  background: var(--ifk-amber);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px var(--ifk-amber-glow);
+  white-space: nowrap;
+}
+
+/* Tier number badge */
+.tierNumber {
+  position: absolute;
+  top: var(--ifk-space-md);
+  left: var(--ifk-space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  font-family: var(--ifk-font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ifk-cyan);
+  background: var(--ifk-bg-tertiary);
+  border: 2px solid var(--ifk-cyan);
+  border-radius: 50%;
+}
+
+.tierNumber.tierNumberHighlight {
+  color: var(--ifk-amber);
+  border-color: var(--ifk-amber);
+}
+
+/* Header section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--ifk-space-sm);
+  margin-bottom: var(--ifk-space-md);
+  padding-left: 60px; /* Space for tier number */
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--ifk-font-body);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ifk-text-primary);
+}
+
+.subtitle {
+  font-family: var(--ifk-font-body);
+  font-size: 0.85rem;
+  color: var(--ifk-text-muted);
+}
+
+/* Impact label pill */
+.impactLabel {
+  flex-shrink: 0;
+  padding: var(--ifk-space-xs) var(--ifk-space-sm);
+  font-family: var(--ifk-font-display);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ifk-cyan);
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 4px;
+}
+
+.hardwareTier.recommended .impactLabel {
+  color: var(--ifk-amber);
+  background: rgba(255, 149, 0, 0.1);
+  border-color: rgba(255, 149, 0, 0.3);
+}
+
+/* Description */
+.description {
+  margin: 0 0 var(--ifk-space-md);
+  font-family: var(--ifk-font-body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ifk-text-secondary);
+  flex-grow: 1;
+}
+
+/* Cost estimate */
+.costEstimate {
+  margin-top: auto;
+  padding-top: var(--ifk-space-sm);
+  border-top: 1px solid var(--ifk-border);
+  font-family: var(--ifk-font-body);
+  font-size: 0.85rem;
+  color: var(--ifk-text-secondary);
+}
+
+.costLabel {
+  font-weight: 600;
+  color: var(--ifk-text-primary);
+}
+
+/* Glow effect for recommended tier */
+.glowEffect {
+  position: absolute;
+  inset: -1px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 40px var(--ifk-amber-glow);
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hardwareTier {
+    padding: var(--ifk-space-md);
+    padding-top: calc(var(--ifk-space-md) + 20px);
+  }
+
+  .hardwareTier.recommended {
+    padding-top: calc(var(--ifk-space-md) + 30px);
+  }
+
+  .header {
+    flex-direction: column;
+    gap: var(--ifk-space-sm);
+    padding-left: 0;
+    padding-top: 40px;
+  }
+
+  .tierNumber {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .title {
+    font-size: 1.125rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hardwareTier {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hardwareTier:hover,
+  .hardwareTier:focus-visible {
+    transform: none;
+  }
+}

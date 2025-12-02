@@ -1,0 +1,16 @@
+{
+  "name": "remark-interactive-python",
+  "version": "1.0.0",
+  "description": "Remark plugin to transform Python code blocks into interactive components",
+  "main": "index.js",
+  "keywords": [
+    "remark",
+    "remark-plugin",
+    "python",
+    "interactive",
+    "pyodide"
+  ],
+  "peerDependencies": {
+    "unist-util-visit": "^4.0.0"
+  }
+}

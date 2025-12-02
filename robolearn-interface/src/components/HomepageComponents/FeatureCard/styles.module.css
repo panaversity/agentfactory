@@ -1,0 +1,167 @@
+/* FeatureCard - Feature highlight card */
+
+.featureCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--ifk-space-lg);
+  background: var(--ifk-bg-secondary);
+  border: 1px solid var(--ifk-border);
+  border-radius: 8px;
+  transition:
+    transform var(--ifk-transition-base),
+    border-color var(--ifk-transition-base),
+    box-shadow var(--ifk-transition-base);
+
+  /* Reveal animation initial state */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.featureCard.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.6s var(--ifk-easing-spring),
+    transform 0.6s var(--ifk-easing-spring);
+}
+
+/* Hover effects */
+.featureCard:hover,
+.featureCard:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--ifk-cyan);
+  box-shadow: 0 8px 32px var(--ifk-cyan-glow);
+}
+
+/* Focus visible outline */
+.featureCard:focus-visible {
+  outline: 2px solid var(--ifk-cyan);
+  outline-offset: 4px;
+}
+
+/* Featured card styling */
+.featureCard.featured {
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+/* Core badge */
+.coreBadge {
+  position: absolute;
+  top: -10px;
+  right: var(--ifk-space-md);
+  padding: var(--ifk-space-xs) var(--ifk-space-sm);
+  font-family: var(--ifk-font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ifk-bg-primary);
+  background: var(--ifk-cyan);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px var(--ifk-cyan-glow);
+}
+
+/* Icon wrapper */
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin-bottom: var(--ifk-space-md);
+  background: var(--ifk-bg-tertiary);
+  border: 2px solid var(--ifk-cyan);
+  border-radius: 50%;
+  transition:
+    transform var(--ifk-transition-base),
+    border-color var(--ifk-transition-base),
+    box-shadow var(--ifk-transition-base);
+}
+
+.featureCard:hover .iconWrapper,
+.featureCard:focus-visible .iconWrapper {
+  transform: rotate(8deg) scale(1.05);
+  box-shadow: 0 0 20px var(--ifk-cyan-glow);
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+/* Title */
+.title {
+  margin: 0 0 var(--ifk-space-sm);
+  font-family: var(--ifk-font-body);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--ifk-text-primary);
+}
+
+/* Description */
+.description {
+  margin: 0;
+  font-family: var(--ifk-font-body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ifk-text-secondary);
+  flex-grow: 1;
+}
+
+/* Bottom accent line */
+.accentLine {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ifk-cyan), var(--ifk-amber));
+  border-radius: 2px;
+  transition: width var(--ifk-transition-base);
+}
+
+.featureCard:hover .accentLine,
+.featureCard:focus-visible .accentLine {
+  width: 60%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .featureCard {
+    padding: var(--ifk-space-md);
+  }
+
+  .iconWrapper {
+    width: 64px;
+    height: 64px;
+  }
+
+  .icon {
+    font-size: 1.5rem;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .featureCard {
+    opacity: 1;
+    transform: none;
+  }
+
+  .featureCard:hover,
+  .featureCard:focus-visible {
+    transform: none;
+  }
+
+  .featureCard:hover .iconWrapper,
+  .featureCard:focus-visible .iconWrapper {
+    transform: none;
+  }
+}

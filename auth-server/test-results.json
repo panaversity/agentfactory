@@ -1,0 +1,70 @@
+{
+  "timestamp": "2025-12-02T05:26:36.996Z",
+  "environment": "http://localhost:3001",
+  "summary": {
+    "passed": 9,
+    "failed": 2,
+    "skipped": 1,
+    "total": 12
+  },
+  "results": [
+    {
+      "test": "Discovery: issuer matches BETTER_AUTH_URL",
+      "status": "PASS",
+      "notes": "issuer: http://localhost:3001"
+    },
+    {
+      "test": "Discovery: authorization_endpoint uses correct base URL",
+      "status": "PASS",
+      "notes": "http://localhost:3001/api/auth/oauth2/authorize"
+    },
+    {
+      "test": "Discovery: token_endpoint uses correct base URL",
+      "status": "PASS",
+      "notes": "http://localhost:3001/api/auth/oauth2/token"
+    },
+    {
+      "test": "Discovery: userinfo_endpoint uses correct base URL",
+      "status": "PASS",
+      "notes": "http://localhost:3001/api/auth/oauth2/userinfo"
+    },
+    {
+      "test": "Discovery: jwks_uri uses correct base URL",
+      "status": "PASS",
+      "notes": "http://localhost:3001/api/auth/jwks"
+    },
+    {
+      "test": "Discovery: authorization_code grant supported",
+      "status": "PASS"
+    },
+    {
+      "test": "Discovery: PKCE S256 supported",
+      "status": "PASS"
+    },
+    {
+      "test": "JWKS: valid structure with keys array",
+      "status": "PASS",
+      "notes": "1 keys found"
+    },
+    {
+      "test": "JWKS: key[0] has required fields",
+      "status": "FAIL",
+      "error": "Missing fields in key 0"
+    },
+    {
+      "test": "JWKS: CORS headers present",
+      "status": "FAIL",
+      "error": "No CORS headers - may fail from browser"
+    },
+    {
+      "test": "Token Claims: Manual verification required",
+      "status": "SKIP",
+      "notes": "Complete OAuth flow and verify tokens manually using instructions below"
+    },
+    {
+      "test": "Dynamic Client Registration: Disabled for security",
+      "status": "PASS",
+      "notes": "Using admin-only registration at /api/admin/clients/register instead"
+    }
+  ]
+}

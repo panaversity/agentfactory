@@ -1,0 +1,325 @@
+/* AnimatedRobot - Interactive robot with boot-up and cursor tracking */
+
+.robotContainer {
+  position: relative;
+  width: 300px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.robot {
+  width: 100%;
+  height: 100%;
+  transition: filter 0.5s ease, opacity 0.5s ease;
+}
+
+/* Boot sequence states */
+.robot.off {
+  opacity: 0.3;
+  filter: grayscale(1) brightness(0.3);
+}
+
+.robot.booting {
+  opacity: 0.7;
+  filter: grayscale(0.5) brightness(0.6);
+  animation: bootPulse 0.3s ease-in-out 3;
+}
+
+.robot.ready {
+  opacity: 1;
+  filter: drop-shadow(0 20px 40px rgba(0, 240, 255, 0.25));
+}
+
+@keyframes bootPulse {
+  0%, 100% {
+    filter: grayscale(0.5) brightness(0.6);
+  }
+  50% {
+    filter: grayscale(0.2) brightness(0.9);
+  }
+}
+
+/* Circuit lines animation */
+.circuitLines {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.robot.booting .circuitLines,
+.robot.ready .circuitLines {
+  opacity: 1;
+}
+
+.robot.booting .circuitLines line {
+  animation: circuitFlow 0.5s ease-in-out infinite alternate;
+}
+
+.robot.ready .circuitLines line {
+  animation: circuitPulse 3s ease-in-out infinite;
+}
+
+@keyframes circuitFlow {
+  0% {
+    opacity: 0.1;
+    stroke-width: 1;
+  }
+  100% {
+    opacity: 0.8;
+    stroke-width: 2;
+  }
+}
+
+@keyframes circuitPulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Speech bubble */
+.speechBubble {
+  position: absolute;
+  top: -10px;
+  right: -30px;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #00f0ff 0%, #00b8cc 100%);
+  color: #0a0e14;
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 12px;
+  white-space: nowrap;
+  animation: popIn 0.3s ease-out;
+  z-index: 10;
+  box-shadow: 0 4px 20px rgba(0, 240, 255, 0.4);
+}
+
+.speechBubble::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 24px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #00f0ff;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Antenna pulse */
+.antennaBall {
+  animation: antennaPulse 2s ease-in-out infinite;
+}
+
+@keyframes antennaPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Chest light breathing */
+.chestLight {
+  animation: chestBreathe 3s ease-in-out infinite;
+}
+
+@keyframes chestBreathe {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Head subtle bob */
+.head {
+  animation: headBob 4s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+@keyframes headBob {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-2px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-1px) rotate(1deg);
+  }
+}
+
+/* Eyes - transition for cursor tracking */
+.eyes {
+  transition: transform 0.1s ease-out;
+}
+
+.eyes ellipse {
+  transition: ry 0.15s ease;
+}
+
+/* Right arm waving */
+.rightArm {
+  transform-origin: 150px 115px;
+  transition: transform 0.3s ease;
+}
+
+.rightArm.waving {
+  animation: wave 0.6s ease-in-out 3;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-30deg);
+  }
+  75% {
+    transform: rotate(-45deg);
+  }
+}
+
+/* Left arm idle sway */
+.leftArm {
+  transform-origin: 50px 115px;
+  animation: idleSway 5s ease-in-out infinite;
+}
+
+@keyframes idleSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+/* Torso subtle breathing */
+.torso {
+  animation: torsoBreath 4s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+@keyframes torsoBreath {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.01);
+  }
+}
+
+/* Floating particles */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #00f0ff;
+  border-radius: 50%;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  animation: float 4s ease-in-out infinite;
+  animation-delay: var(--delay);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+}
+
+@keyframes float {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0);
+  }
+  20% {
+    opacity: 0.8;
+    transform: translate(calc(var(--x) * 0.3), calc(var(--y) * 0.3)) scale(1);
+  }
+  80% {
+    opacity: 0.4;
+    transform: translate(var(--x), var(--y)) scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(var(--x) * 1.2), calc(var(--y) * 1.2)) scale(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .robotContainer {
+    width: 240px;
+    height: 300px;
+  }
+
+  .speechBubble {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    top: 0;
+    right: -20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .robotContainer {
+    width: 180px;
+    height: 240px;
+  }
+
+  .speechBubble {
+    display: none;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .robot {
+    transition: none;
+  }
+
+  .robot.booting {
+    animation: none;
+  }
+
+  .antennaBall,
+  .chestLight,
+  .head,
+  .rightArm,
+  .leftArm,
+  .torso,
+  .particle,
+  .circuitLines line {
+    animation: none;
+  }
+
+  .rightArm.waving {
+    animation: none;
+    transform: rotate(-30deg);
+  }
+
+  .speechBubble {
+    animation: none;
+  }
+}

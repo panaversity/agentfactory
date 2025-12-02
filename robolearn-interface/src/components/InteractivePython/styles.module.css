@@ -1,0 +1,688 @@
+/* InteractivePython Component Styles */
+
+.container {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: white;
+  margin-bottom: 24px;
+}
+
+/* Header Section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 0 14px;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  border-left: none;
+  position: relative;
+}
+
+/* macOS Window Controls */
+.windowControls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.windowControl {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.windowControl:hover {
+  transform: scale(1.15);
+}
+
+.windowControlRed {
+  background: #ff5f56;
+  border: 1px solid #e0443e;
+}
+
+.windowControlRed:hover {
+  background: #ff6b63;
+  box-shadow: 0 2px 8px rgba(255, 95, 86, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.windowControlYellow {
+  background: #ffbd2e;
+  border: 1px solid #d39c0c;
+}
+
+.windowControlYellow:hover {
+  background: #ffcc44;
+  box-shadow: 0 2px 8px rgba(255, 189, 46, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.windowControlGreen {
+  background: #27c93f;
+  border: 1px solid #1f9b2d;
+}
+
+.windowControlGreen:hover {
+  background: #38d952;
+  box-shadow: 0 2px 8px rgba(39, 201, 63, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 1;
+  min-width: 0;
+  cursor: help;
+}
+
+.languageBadge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  padding: 4px 8px;
+  background: linear-gradient(135deg, rgba(0, 31, 63, 0.08), rgba(0, 51, 102, 0.04));
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  cursor: help;
+}
+
+.languageBadge:hover {
+  background: linear-gradient(135deg, rgba(0, 31, 63, 0.12), rgba(0, 51, 102, 0.08));
+  border-color: #93c5fd;
+  box-shadow: 0 2px 8px rgba(0, 31, 63, 0.1);
+}
+
+.badgeIcon {
+  flex-shrink: 0;
+  color: #001f3f;
+  width: 14px;
+  height: 14px;
+}
+
+.badgeLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #001f3f;
+  letter-spacing: 0.02em;
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  color: #111827;
+  text-transform: uppercase;
+  flex-shrink: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.iconButton {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.iconButton:hover:not(:disabled) {
+  background: #f3f4f6;
+  color: #111827;
+  border-color: #d1d5db;
+}
+
+.iconButton:active:not(:disabled) {
+  background: #e5e7eb;
+  transform: scale(0.95);
+}
+
+.iconButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Copy button success state with kinetic feedback - brand blue theme */
+.iconButton.copied {
+  background: #0066cc !important;
+  border-color: #004d99 !important;
+  color: white !important;
+  animation: copySuccess 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes copySuccess {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15) rotate(5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.runButton {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  background: #0066cc;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  transition: all 0.2s ease;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.runButton:hover:not(:disabled) {
+  background: #0052a3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
+
+.runButton:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 102, 204, 0.2);
+}
+
+.runButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Editor Wrapper */
+.editorWrapper {
+  position: relative;
+  background: #2d2d2d;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  border-left: none !important;
+  border-right: none;
+  overflow: hidden;
+  min-height: 51px;
+}
+
+/* Target Monaco Editor's internal div */
+.editorWrapper > div {
+  border: none !important;
+  border-left: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(45, 45, 45, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  border-radius: 0 0 0 0;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #6b7280;
+  border-top-color: #0066cc;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Package loading overlay (shown when loading packages on-demand) */
+.packageLoadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 15;
+  border-radius: 0 0 0 0;
+  backdrop-filter: blur(4px);
+}
+
+.packageLoadingContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border: 2px solid #0066cc;
+}
+
+.packageSpinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #0066cc;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+.packageLoadingText {
+  margin: 0;
+  font-size: 14px;
+  color: #111827;
+  font-weight: 500;
+}
+
+.packageLoadingText strong {
+  color: #0066cc;
+  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+.packageLoadingProgress {
+  margin: 0;
+  font-size: 12px;
+  color: #6b7280;
+  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+.loadingOverlay p {
+  margin: 0;
+  font-size: 13px;
+  color: #e0e0e0;
+}
+
+/* Output Section */
+.outputSection {
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.outputSection.hasError {
+  background: #fef2f2;
+  border-top-color: #fca5a5;
+}
+
+.outputHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 36px;
+  padding: 0 14px;
+  border-bottom: 1px solid #e5e7eb;
+  background: inherit;
+  flex-shrink: 0;
+}
+
+.outputSection.hasError .outputHeader {
+  border-bottom-color: #fca5a5;
+}
+
+.outputLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.outputSection.hasError .outputLabel {
+  color: #dc2626;
+}
+
+.outputActions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.outputActionBtn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.outputActionBtn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #111827;
+}
+
+.outputSection.hasError .outputActionBtn {
+  color: #dc2626;
+}
+
+.outputSection.hasError .outputActionBtn:hover {
+  background: rgba(220, 38, 38, 0.1);
+}
+
+/* Output copy button success state - brand blue theme */
+.outputActionBtn.copied {
+  background: #0066cc !important;
+  color: white !important;
+  animation: copySuccess 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.outputContent {
+  flex: 1;
+  padding: 12px 14px;
+  overflow-y: auto;
+  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.outputText {
+  margin: 0;
+  color: #374151;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.errorText {
+  margin: 0;
+  color: #dc2626;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-weight: 500;
+}
+
+/* Dark Mode Support */
+[data-theme="dark"] .container {
+  background: #1e1e1e;
+}
+
+[data-theme="dark"] .header {
+  background: #1e1e1e;
+  border-bottom-color: #444;
+}
+
+[data-theme="dark"] .title {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .languageBadge {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(96, 165, 250, 0.06));
+  border-color: #1e3a8a;
+}
+
+[data-theme="dark"] .languageBadge:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.16), rgba(96, 165, 250, 0.10));
+  border-color: #1e40af;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
+}
+
+[data-theme="dark"] .badgeIcon {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .badgeLabel {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .windowControlRed {
+  background: #ff5f56;
+  border-color: #e0443e;
+}
+
+[data-theme="dark"] .windowControlRed:hover {
+  background: #ff6b63;
+  box-shadow: 0 2px 8px rgba(255, 95, 86, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .windowControlYellow {
+  background: #ffbd2e;
+  border-color: #d39c0c;
+}
+
+[data-theme="dark"] .windowControlYellow:hover {
+  background: #ffcc44;
+  box-shadow: 0 2px 8px rgba(255, 189, 46, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .windowControlGreen {
+  background: #27c93f;
+  border-color: #1f9b2d;
+}
+
+[data-theme="dark"] .windowControlGreen:hover {
+  background: #38d952;
+  box-shadow: 0 2px 8px rgba(39, 201, 63, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .iconButton {
+  background: #2d2d2d;
+  border-color: #444;
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .iconButton:hover:not(:disabled) {
+  background: #3d3d3d;
+  color: #f3f4f6;
+  border-color: #555;
+}
+
+[data-theme="dark"] .iconButton:active:not(:disabled) {
+  background: #444;
+}
+
+[data-theme="dark"] .runButton {
+  background: #003366;
+}
+
+[data-theme="dark"] .runButton:hover:not(:disabled) {
+  background: #004080;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.3);
+}
+
+[data-theme="dark"] .editorWrapper {
+  background: #2d2d2d;
+  border-top-color: #444;
+  border-bottom-color: #444;
+}
+
+[data-theme="dark"] .outputSection {
+  background: #1f2937;
+  border-top-color: #444;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .outputSection.hasError {
+  background: #7f1d1d;
+  border-top-color: #dc2626;
+}
+
+[data-theme="dark"] .outputHeader {
+  border-bottom-color: #444;
+}
+
+[data-theme="dark"] .outputSection.hasError .outputHeader {
+  border-bottom-color: #dc2626;
+}
+
+[data-theme="dark"] .outputLabel {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .outputSection.hasError .outputLabel {
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .outputActionBtn {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .outputActionBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f3f4f6;
+}
+
+[data-theme="dark"] .outputSection.hasError .outputActionBtn {
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .outputSection.hasError .outputActionBtn:hover {
+  background: rgba(252, 165, 165, 0.1);
+}
+
+[data-theme="dark"] .outputText {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .errorText {
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .packageLoadingOverlay {
+  background: rgba(0, 0, 0, 0.95);
+}
+
+[data-theme="dark"] .packageLoadingContent {
+  background: #1f1f1f;
+  border-color: #60a5fa;
+}
+
+[data-theme="dark"] .packageLoadingText {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .packageLoadingText strong {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .packageLoadingProgress {
+  color: #9ca3af;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    height: 40px;
+    padding: 0 12px;
+    gap: 6px;
+  }
+
+  .windowControls {
+    gap: 6px;
+    margin-right: 8px;
+  }
+
+  .windowControl {
+    width: 10px;
+    height: 10px;
+  }
+
+  .titleContainer {
+    gap: 5px;
+  }
+
+  .languageBadge {
+    padding: 3px 6px;
+    gap: 4px;
+  }
+
+  .badgeIcon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .badgeLabel {
+    font-size: 11px;
+  }
+
+  .title {
+    font-size: 11px;
+  }
+
+  .buttonGroup {
+    gap: 6px;
+  }
+
+  .iconButton {
+    width: 30px;
+    height: 30px;
+  }
+
+  .runButton {
+    height: 30px;
+    padding: 0 10px;
+    font-size: 12px;
+    gap: 4px;
+  }
+
+  .outputHeader {
+    height: 34px;
+    padding: 0 12px;
+  }
+
+  .outputLabel {
+    font-size: 10px;
+  }
+
+  .outputContent {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .outputActionBtn {
+    width: 26px;
+    height: 26px;
+  }
+}

@@ -1,0 +1,18 @@
+/**
+ * Profile Types - Single Source of Truth
+ *
+ * TODO: Migrate to member.metadata in Proposal 001 (tenant-specific fields)
+ * For now, these are stored in user.additionalFields for single-tenant use
+ */
+
+export type SoftwareBackground = "beginner" | "intermediate" | "advanced";
+
+export type HardwareTier = "tier1" | "tier2" | "tier3" | "tier4";
+
+/**
+ * Profile data structure used in signup and profile management
+ */
+export interface ProfileData {
+  softwareBackground: SoftwareBackground;
+  hardwareTier: HardwareTier;
+}

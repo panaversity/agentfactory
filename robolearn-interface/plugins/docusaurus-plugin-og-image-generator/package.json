@@ -1,0 +1,9 @@
+{
+  "name": "docusaurus-plugin-og-image-generator",
+  "version": "1.0.0",
+  "description": "Automatically generate Open Graph images for Docusaurus pages",
+  "main": "index.js",
+  "keywords": ["docusaurus", "plugin", "og-image", "open-graph"],
+  "author": "Panaversity",
+  "license": "MIT"
+}

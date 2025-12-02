@@ -1,0 +1,634 @@
+/**
+ * LessonContent Styles
+ *
+ * "Scholarly Precision" — A refined reading experience that feels like
+ * a premium technical publication. Clean tabs with bold typography
+ * and subtle visual hierarchy.
+ *
+ * Polar Night Theme Integration (monochromatic):
+ * - Deep navy (#001f3f), charcoal (#111111)
+ * - Sophisticated grays (#aaaaaa, #dddddd, #ffffff)
+ * - NO additional accent colors - uses theme primary
+ */
+
+/* ============================================
+   CSS Custom Properties — Local Scope
+   ============================================ */
+.lessonContent {
+  /* Polar Night Colors */
+  --lc-navy-deep: #001f3f;
+  --lc-navy-mid: #002952;
+  --lc-navy-light: #003366;
+  --lc-charcoal: #111111;
+  --lc-charcoal-light: #1a1a1a;
+  --lc-gray-dark: #666666;
+  --lc-gray-mid: #888888;
+  --lc-gray-light: #aaaaaa;
+  --lc-gray-pale: #dddddd;
+  --lc-white: #ffffff;
+
+  /* Accent — Uses navy from theme for consistency */
+  --lc-accent: #001f3f;
+  --lc-accent-light: #003366;
+  --lc-accent-pale: rgba(0, 31, 63, 0.08);
+  --lc-accent-glow: rgba(0, 31, 63, 0.15);
+
+  /* Spacing rhythm */
+  --lc-space-xs: 0.25rem;
+  --lc-space-sm: 0.5rem;
+  --lc-space-md: 1rem;
+  --lc-space-lg: 1.5rem;
+  --lc-space-xl: 2rem;
+  --lc-space-2xl: 3rem;
+
+  /* Transitions */
+  --lc-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --lc-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --lc-duration-fast: 150ms;
+  --lc-duration-normal: 250ms;
+  --lc-duration-slow: 400ms;
+}
+
+/* ============================================
+   Container — Floating Card
+   ============================================ */
+.lessonContent {
+  position: relative;
+  width: 100%;
+  scroll-margin-top: 80px;
+  padding-top: var(--lc-space-md);
+}
+
+/* ============================================
+   Tab Navigation — Asymmetric with Sliding Indicator
+   ============================================ */
+.tabNav {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin-bottom: var(--lc-space-xl);
+  padding: 0;
+  position: relative;
+  background: transparent;
+}
+
+/* The sliding indicator track */
+.tabNav::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 1px;
+}
+
+/* ============================================
+   Tab Button — Bold Typography
+   ============================================ */
+.tab {
+  display: flex;
+  align-items: center;
+  gap: var(--lc-space-sm);
+  padding: var(--lc-space-md) var(--lc-space-lg);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--lc-gray-mid);
+  transition:
+    color var(--lc-duration-normal) var(--lc-ease-out),
+    border-color var(--lc-duration-normal) var(--lc-ease-out),
+    transform var(--lc-duration-fast) var(--lc-ease-out);
+  position: relative;
+  margin-bottom: -2px;
+  z-index: 1;
+}
+
+/* Hover state */
+.tab:hover:not(.tabActive) {
+  color: var(--ifm-font-color-base);
+}
+
+/* Focus state */
+.tab:focus-visible {
+  outline: 2px solid var(--lc-navy-deep);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+[data-theme='dark'] .tab:focus-visible {
+  outline-color: var(--lc-gray-light);
+}
+
+/* Active Tab — Bold indicator */
+.tabActive {
+  color: var(--lc-navy-deep);
+  border-bottom-color: var(--lc-navy-deep);
+}
+
+[data-theme='dark'] .tabActive {
+  color: var(--lc-white);
+  border-bottom-color: var(--lc-gray-pale);
+}
+
+/* Subtle lift on active */
+.tabActive:hover {
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   Tab Icon — Refined Scale
+   ============================================ */
+.tabIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition:
+    opacity var(--lc-duration-fast) var(--lc-ease-out),
+    transform var(--lc-duration-normal) var(--lc-ease-spring);
+}
+
+.tabIcon svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+}
+
+.tab:hover .tabIcon {
+  opacity: 0.85;
+}
+
+.tabActive .tabIcon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ============================================
+   Tab Label
+   ============================================ */
+.tabLabel {
+  white-space: nowrap;
+}
+
+/* ============================================
+   Tab Badge (unused but kept for future)
+   ============================================ */
+.tabBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--lc-accent);
+  color: var(--lc-white);
+  border-radius: 3px;
+  margin-left: var(--lc-space-sm);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(13, 148, 136, 0.2);
+  transition:
+    transform var(--lc-duration-normal) var(--lc-ease-spring),
+    box-shadow var(--lc-duration-normal) var(--lc-ease-out);
+}
+
+.tab:hover .tabBadge {
+  transform: scale(1.05);
+}
+
+.tabActive .tabBadge {
+  box-shadow:
+    0 2px 8px var(--lc-accent-glow),
+    0 0 0 1px var(--lc-accent);
+}
+
+[data-theme='dark'] .tabBadge {
+  background: var(--lc-accent-light);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(20, 184, 166, 0.3);
+}
+
+/* ============================================
+   Panel Container
+   ============================================ */
+.panelContainer {
+  position: relative;
+  min-height: 200px;
+}
+
+.panel {
+  animation: panelReveal var(--lc-duration-slow) var(--lc-ease-out) forwards;
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+.panelActive {
+  display: block;
+}
+
+@keyframes panelReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   Summary Content — Inset Scholarly Panel
+   ============================================ */
+.summaryContent {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    var(--lc-accent-pale) 0%,
+    rgba(0, 31, 63, 0.03) 100%
+  );
+  border-radius: 8px;
+  padding: var(--lc-space-xl);
+  border: 1px solid rgba(0, 31, 63, 0.12);
+
+  /* Distinctive left accent bar */
+  border-left: 4px solid var(--lc-accent);
+}
+
+[data-theme='dark'] .summaryContent {
+  background: linear-gradient(
+    135deg,
+    rgba(170, 170, 170, 0.06) 0%,
+    rgba(170, 170, 170, 0.02) 100%
+  );
+  border-color: rgba(170, 170, 170, 0.15);
+  border-left-color: var(--lc-gray-light);
+}
+
+/* ============================================
+   Summary Header
+   ============================================ */
+.summaryHeader {
+  margin-bottom: var(--lc-space-xl);
+  padding-bottom: var(--lc-space-lg);
+  border-bottom: 1px solid rgba(0, 31, 63, 0.15);
+}
+
+[data-theme='dark'] .summaryHeader {
+  border-bottom-color: rgba(170, 170, 170, 0.12);
+}
+
+/* Summary Badge in header */
+.summaryBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lc-space-sm);
+  padding: var(--lc-space-sm) var(--lc-space-md);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--lc-accent);
+  color: var(--lc-white);
+  border-radius: 4px;
+  margin-bottom: var(--lc-space-md);
+  box-shadow: 0 2px 6px var(--lc-accent-glow);
+}
+
+.summaryBadge svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.5;
+}
+
+[data-theme='dark'] .summaryBadge {
+  background: var(--lc-gray-light);
+}
+
+/* Disclaimer text */
+.summaryDisclaimer {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--lc-gray-dark);
+  font-style: normal;
+  line-height: 1.6;
+  max-width: 60ch;
+}
+
+[data-theme='dark'] .summaryDisclaimer {
+  color: var(--lc-gray-light);
+}
+
+/* ============================================
+   Summary Body — Premium Typography
+   ============================================ */
+.summaryBody {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--ifm-font-color-base);
+}
+
+/* Headings */
+.summaryBody h1,
+.summaryBody h2,
+.summaryBody h3,
+.summaryBody h4 {
+  margin-top: var(--lc-space-xl);
+  margin-bottom: var(--lc-space-md);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--lc-navy-deep);
+}
+
+[data-theme='dark'] .summaryBody h1,
+[data-theme='dark'] .summaryBody h2,
+[data-theme='dark'] .summaryBody h3,
+[data-theme='dark'] .summaryBody h4 {
+  color: var(--lc-white);
+}
+
+.summaryBody h2 {
+  font-size: 1.25rem;
+  padding-bottom: var(--lc-space-sm);
+  border-bottom: 1px solid rgba(0, 31, 63, 0.15);
+}
+
+[data-theme='dark'] .summaryBody h2 {
+  border-bottom-color: rgba(170, 170, 170, 0.12);
+}
+
+.summaryBody h3 {
+  font-size: 1.1rem;
+}
+
+.summaryBody h4 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--lc-accent);
+}
+
+[data-theme='dark'] .summaryBody h4 {
+  color: var(--lc-accent-light);
+}
+
+/* Paragraphs */
+.summaryBody p {
+  margin-bottom: var(--lc-space-lg);
+}
+
+.summaryBody p:last-child {
+  margin-bottom: 0;
+}
+
+/* Lists */
+.summaryBody ul,
+.summaryBody ol {
+  margin-bottom: var(--lc-space-lg);
+  padding-left: var(--lc-space-lg);
+}
+
+.summaryBody li {
+  margin-bottom: var(--lc-space-sm);
+  line-height: 1.7;
+}
+
+.summaryBody li::marker {
+  color: var(--lc-accent);
+}
+
+/* Strong/Bold — Accent color */
+.summaryBody strong {
+  font-weight: 700;
+  color: var(--lc-navy-deep);
+}
+
+[data-theme='dark'] .summaryBody strong {
+  color: var(--lc-white);
+}
+
+/* Inline code */
+.summaryBody code {
+  font-size: 0.875em;
+  padding: 0.15rem 0.4rem;
+  background: rgba(0, 31, 63, 0.08);
+  color: var(--lc-navy-deep);
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+[data-theme='dark'] .summaryBody code {
+  background: rgba(170, 170, 170, 0.12);
+  color: var(--lc-gray-pale);
+}
+
+/* Blockquotes */
+.summaryBody blockquote {
+  margin: var(--lc-space-lg) 0;
+  padding: var(--lc-space-md) var(--lc-space-lg);
+  border-left: 3px solid var(--lc-navy-deep);
+  background: rgba(0, 31, 63, 0.04);
+  border-radius: 0 4px 4px 0;
+  font-style: italic;
+  color: var(--lc-gray-dark);
+}
+
+[data-theme='dark'] .summaryBody blockquote {
+  border-left-color: var(--lc-gray-light);
+  background: rgba(170, 170, 170, 0.06);
+  color: var(--lc-gray-light);
+}
+
+/* ============================================
+   Loading State
+   ============================================ */
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--lc-space-2xl) var(--lc-space-xl);
+  color: var(--lc-gray-mid);
+}
+
+.loadingSpinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--ifm-color-emphasis-200);
+  border-top-color: var(--lc-accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: var(--lc-space-md);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingState p {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* ============================================
+   Error State
+   ============================================ */
+.errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--lc-space-2xl) var(--lc-space-xl);
+  text-align: center;
+}
+
+.errorState p {
+  color: var(--lc-gray-mid);
+  margin-bottom: var(--lc-space-md);
+  font-size: 0.9rem;
+}
+
+.retryButton {
+  padding: var(--lc-space-sm) var(--lc-space-lg);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--lc-accent);
+  background: transparent;
+  border: 2px solid var(--lc-accent);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--lc-duration-normal) var(--lc-ease-out);
+}
+
+.retryButton:hover {
+  background: var(--lc-accent);
+  color: var(--lc-white);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media screen and (max-width: 768px) {
+  .lessonContent {
+    padding-top: var(--lc-space-sm);
+  }
+
+  .tabNav {
+    margin-bottom: var(--lc-space-lg);
+  }
+
+  .tab {
+    flex: 1;
+    justify-content: center;
+    padding: var(--lc-space-md) var(--lc-space-sm);
+    font-size: 0.75rem;
+    min-height: 48px; /* Touch target */
+  }
+
+  .tabLabel {
+    display: none;
+  }
+
+  /* Show label on active tab only */
+  .tabActive .tabLabel {
+    display: inline;
+  }
+
+  .tabIcon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .tabBadge {
+    font-size: 0.55rem;
+    padding: 0.15rem 0.35rem;
+  }
+
+  .summaryContent {
+    padding: var(--lc-space-lg);
+    border-radius: 6px;
+    border-left-width: 3px;
+  }
+
+  .summaryBody {
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .summaryBody h2 {
+    font-size: 1.15rem;
+  }
+
+  .summaryBody h3 {
+    font-size: 1.05rem;
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+  .tabNav {
+    display: none;
+  }
+
+  .panel[hidden] {
+    display: block !important;
+  }
+
+  .summaryContent {
+    background: none;
+    border: 1px solid #ccc;
+    border-left: 4px solid #001f3f;
+    page-break-before: always;
+    margin-top: 2rem;
+  }
+
+  .summaryHeader::before {
+    content: 'Quick Summary';
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #001f3f;
+  }
+}
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .tab,
+  .tabIcon,
+  .tabBadge,
+  .panel,
+  .loadingSpinner,
+  .retryButton {
+    transition: none;
+    animation: none;
+  }
+
+  .panel {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,98 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "robolearn-interface/**"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build Docusaurus
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: robolearn-interface/package-lock.json
+
+      - name: Install system dependencies for OG image generation
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            fonts-dejavu-core \
+            fonts-liberation \
+            libvips-dev
+
+      - name: Install dependencies
+        working-directory: robolearn-interface
+        run: npm ci
+
+      - name: Restore translation cache
+        uses: actions/cache@v4
+        with:
+          path: robolearn-interface/.translation-cache
+          key: translation-cache-${{ runner.os }}-${{ hashFiles('robolearn-interface/docs/**/*.md') }}
+          restore-keys: |
+            translation-cache-${{ runner.os }}-
+
+      - name: Build site
+        working-directory: robolearn-interface
+        env:
+          # Pass repository secrets as environment variables to build
+          # These are read by docusaurus.config.ts via process.env
+          AUTH_URL: ${{ secrets.AUTH_URL }}
+          OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
+          BASE_URL: ${{ secrets.BASE_URL }}
+          BACKEND_URL: ${{ secrets.BACKEND_URL }}
+          # ChatKit domain key - REQUIRED for whitelabeled domains
+          # Get this from your OpenAI ChatKit whitelabeled domain configuration
+          # If not set, defaults to "domain_pk_local_dev" (dummy value for custom backends)
+          CHATKIT_DOMAIN_KEY: ${{ secrets.CHATKIT_DOMAIN_KEY }}
+          # GEMINI_API_KEY is optional - LibreTranslate (free) is used by default
+          # Only set this if you want to use Gemini instead of LibreTranslate
+          # GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          # Optional: Add other env vars if needed
+          # GA4_MEASUREMENT_ID: ${{ secrets.GA4_MEASUREMENT_ID }}
+        run: npm run build
+
+      - name: Save translation cache
+        uses: actions/cache@v4
+        with:
+          path: robolearn-interface/.translation-cache
+          key: translation-cache-${{ runner.os }}-${{ hashFiles('robolearn-interface/docs/**/*.md') }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: robolearn-interface/build
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    if: needs.build.result == 'success'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

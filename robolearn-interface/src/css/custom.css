@@ -1,0 +1,1385 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* Google Fonts Import - MUST be first (before @tailwind) */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@400;500;600;700&display=swap');
+
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+
+/* ============================================================================
+   INDUSTRIAL-KINETIC FUTURISM DESIGN SYSTEM
+   Theme: Dark industrial foundation with kinetic cyan/amber accents
+   Typography: JetBrains Mono (display) + Syne (body)
+   ============================================================================ */
+
+/* Industrial-Kinetic Futurism Design Tokens */
+:root {
+  /* ===== IFK Color Palette ===== */
+  /* Dark Industrial Backgrounds */
+  --ifk-bg-primary: #141418;
+  --ifk-bg-secondary: #1a1a1e;
+  --ifk-bg-tertiary: #222226;
+
+  /* Kinetic Cyan - Primary Accent (sensor/HUD feel) */
+  --ifk-cyan: #00d4ff;
+  --ifk-cyan-light: #33ddff;
+  --ifk-cyan-dark: #00a8cc;
+  --ifk-cyan-glow: rgba(0, 212, 255, 0.4);
+  --ifk-cyan-subtle: rgba(0, 212, 255, 0.15);
+
+  /* Humanoid Amber - Secondary Accent (warmth, action) */
+  --ifk-amber: #ff9500;
+  --ifk-amber-light: #ffab33;
+  --ifk-amber-dark: #cc7700;
+  --ifk-amber-glow: rgba(255, 149, 0, 0.3);
+  --ifk-amber-subtle: rgba(255, 149, 0, 0.15);
+
+  /* Text Colors */
+  --ifk-text-primary: #ffffff;
+  --ifk-text-secondary: #b8b8b8;
+  --ifk-text-muted: #888888;
+
+  /* Borders & Surfaces */
+  --ifk-border: rgba(255, 255, 255, 0.1);
+  --ifk-border-hover: rgba(255, 255, 255, 0.2);
+  --ifk-blueprint: rgba(0, 212, 255, 0.15);
+  --ifk-grid-line: rgba(0, 212, 255, 0.08);
+
+  /* ===== IFK Typography ===== */
+  --ifk-font-display: 'JetBrains Mono', 'Courier New', monospace;
+  --ifk-font-body: 'Syne', system-ui, -apple-system, sans-serif;
+
+  /* ===== IFK Spacing Scale ===== */
+  --ifk-space-xs: 0.5rem;   /* 8px */
+  --ifk-space-sm: 1rem;     /* 16px */
+  --ifk-space-md: 1.5rem;   /* 24px */
+  --ifk-space-lg: 2rem;     /* 32px */
+  --ifk-space-xl: 3rem;     /* 48px */
+  --ifk-space-2xl: 4rem;    /* 64px */
+
+  /* ===== IFK Animation Presets ===== */
+  --ifk-transition-fast: 150ms ease-out;
+  --ifk-transition-base: 250ms ease-out;
+  --ifk-transition-slow: 400ms ease-out;
+  --ifk-easing-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ifk-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* ===== IFK Shadows ===== */
+  --ifk-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --ifk-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --ifk-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --ifk-shadow-cyan: 0 0 20px var(--ifk-cyan-glow);
+  --ifk-shadow-amber: 0 0 20px var(--ifk-amber-glow);
+
+  /* ===== IFK Sidebar Tokens ===== */
+  --ifk-sidebar-bg: rgba(14, 14, 18, 0.98);
+  --ifk-sidebar-bg-gradient: linear-gradient(180deg, rgba(14, 14, 18, 0.98) 0%, rgba(20, 20, 24, 0.95) 100%);
+  --ifk-sidebar-border: rgba(0, 212, 255, 0.12);
+  --ifk-sidebar-border-glow: rgba(0, 212, 255, 0.25);
+  --ifk-sidebar-item-bg: transparent;
+  --ifk-sidebar-item-hover: rgba(0, 212, 255, 0.08);
+  --ifk-sidebar-item-active: rgba(0, 212, 255, 0.15);
+  --ifk-sidebar-item-active-border: var(--ifk-cyan);
+  --ifk-sidebar-category-bg: rgba(0, 212, 255, 0.04);
+  --ifk-sidebar-progress-complete: var(--ifk-amber);
+  --ifk-sidebar-progress-current: var(--ifk-cyan);
+  --ifk-sidebar-progress-pending: rgba(255, 255, 255, 0.2);
+  --ifk-sidebar-scrollbar-track: rgba(0, 212, 255, 0.05);
+  --ifk-sidebar-scrollbar-thumb: rgba(0, 212, 255, 0.2);
+  --ifk-sidebar-scrollbar-thumb-hover: rgba(0, 212, 255, 0.35);
+}
+
+/* ===== IFK Animation Keyframes ===== */
+
+/* Fade in from bottom */
+@keyframes ifkFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in from left */
+@keyframes ifkFadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade in from right */
+@keyframes ifkFadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Shine effect for buttons */
+@keyframes ifkShine {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* Scan line for animated grid */
+@keyframes ifkScanLine {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Subtle pulse for glows */
+@keyframes ifkPulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Float animation for hero elements */
+@keyframes ifkFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ===== IFK Scroll Reveal Classes ===== */
+.ifk-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ifk-easing-spring),
+              transform 0.8s var(--ifk-easing-spring);
+}
+
+.ifk-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for reveal animations */
+.ifk-reveal-delay-1 { transition-delay: 0.1s; }
+.ifk-reveal-delay-2 { transition-delay: 0.2s; }
+.ifk-reveal-delay-3 { transition-delay: 0.3s; }
+.ifk-reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ===== Reduced Motion Support ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .ifk-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ===== IFK Light Theme Overrides ===== */
+/* Maintains brand identity while adapting to light backgrounds */
+[data-theme='light'] {
+  /* Light Industrial Backgrounds */
+  --ifk-bg-primary: #ffffff;
+  --ifk-bg-secondary: #f5f5f7;
+  --ifk-bg-tertiary: #e8e8ed;
+
+  /* Adjusted accents for light backgrounds */
+  --ifk-cyan: #0077cc;
+  --ifk-cyan-light: #0088ee;
+  --ifk-cyan-dark: #005599;
+  --ifk-cyan-glow: rgba(0, 119, 204, 0.25);
+  --ifk-cyan-subtle: rgba(0, 119, 204, 0.08);
+
+  --ifk-amber: #cc6600;
+  --ifk-amber-light: #dd7700;
+  --ifk-amber-dark: #aa5500;
+  --ifk-amber-glow: rgba(204, 102, 0, 0.2);
+  --ifk-amber-subtle: rgba(204, 102, 0, 0.08);
+
+  /* Text Colors for light mode */
+  --ifk-text-primary: #1d1d1f;
+  --ifk-text-secondary: #515154;
+  --ifk-text-muted: #86868b;
+
+  /* Borders for light mode */
+  --ifk-border: rgba(0, 0, 0, 0.1);
+  --ifk-border-hover: rgba(0, 0, 0, 0.2);
+  --ifk-border-color: rgba(0, 0, 0, 0.1);
+  --ifk-blueprint: rgba(0, 119, 204, 0.1);
+
+  /* Sidebar tokens for light mode */
+  --ifk-sidebar-bg: rgba(250, 250, 252, 0.98);
+  --ifk-sidebar-bg-gradient: linear-gradient(180deg, rgba(250, 250, 252, 0.98) 0%, rgba(245, 245, 247, 0.95) 100%);
+  --ifk-sidebar-border: rgba(0, 119, 204, 0.15);
+  --ifk-sidebar-border-glow: rgba(0, 119, 204, 0.3);
+  --ifk-sidebar-item-bg: transparent;
+  --ifk-sidebar-item-hover: rgba(0, 119, 204, 0.06);
+  --ifk-sidebar-item-active: rgba(0, 119, 204, 0.12);
+  --ifk-sidebar-item-active-border: var(--ifk-cyan);
+  --ifk-sidebar-category-bg: rgba(0, 119, 204, 0.04);
+  --ifk-sidebar-scrollbar-track: rgba(0, 119, 204, 0.05);
+  --ifk-sidebar-scrollbar-thumb: rgba(0, 119, 204, 0.2);
+  --ifk-sidebar-scrollbar-thumb-hover: rgba(0, 119, 204, 0.35);
+}
+
+/* ============================================================================
+   END INDUSTRIAL-KINETIC FUTURISM DESIGN SYSTEM
+   ============================================================================ */
+
+/* You can override the default Infima variables here. */
+/* Polar Night Palette: Deep Navy with Sophisticated Grays - Bold & Elegant */
+:root {
+    /* Polar Night Primary Colors */
+    --polar-night-deep: #001f3f; /* Deep Navy */
+    --polar-night-charcoal: #111111; /* Dark Charcoal */
+    --polar-night-gray: #aaaaaa; /* Medium Gray */
+    --polar-night-light: #dddddd; /* Light Gray */
+    --polar-night-white: #ffffff; /* Pure White */
+
+    /* Infima Color Mapping */
+    --ifm-color-primary: #001f3f;
+    --ifm-color-primary-dark: #001830;
+    --ifm-color-primary-darker: #001528;
+    --ifm-color-primary-darkest: #000f1f;
+    --ifm-color-primary-light: #002952;
+    --ifm-color-primary-lighter: #003366;
+    --ifm-color-primary-lightest: #004080;
+
+    --ifm-code-font-size: 95%;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+    --ifm-heading-font-weight: 600;
+    --ifm-font-family-base:
+        -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+        system-ui, sans-serif;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+    /* Dark Mode - Lighter variants for contrast */
+    --ifm-color-primary: #aaaaaa;
+    --ifm-color-primary-dark: #999999;
+    --ifm-color-primary-darker: #888888;
+    --ifm-color-primary-darkest: #666666;
+    --ifm-color-primary-light: #bbbbbb;
+    --ifm-color-primary-lighter: #cccccc;
+    --ifm-color-primary-lightest: #dddddd;
+
+    --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.05);
+    --ifm-background-color: #111111;
+    --ifm-background-surface-color: #1a1a1a;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Enhanced link styles */
+a {
+    transition: color 0.2s ease;
+}
+
+/* Better code block styling */
+code {
+    border-radius: 4px;
+    padding: 0.15rem 0.4rem;
+    background: var(--ifm-color-emphasis-100);
+    border: 1px solid var(--ifm-color-emphasis-200);
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0, "clig" 0, "calt" 0;
+}
+
+[data-theme="dark"] code {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Pre code blocks */
+pre code {
+    border: none;
+    padding: 0;
+}
+
+/* Enhance navbar - make it sticky */
+.navbar {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 200;
+}
+
+[data-theme="dark"] .navbar {
+    /* Polar Night header - dark charcoal with subtle transparency */
+    background: linear-gradient(
+        180deg,
+        rgba(17, 17, 17, 0.98) 0%,
+        rgba(26, 26, 26, 0.95) 100%
+    );
+    box-shadow:
+        0 2px 12px rgba(0, 0, 0, 0.4),
+        0 1px 3px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(170, 170, 170, 0.08);
+}
+
+/* Navbar brand title styling */
+.navbar__title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, #001f3f 0%, #003366 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+        system-ui, sans-serif;
+}
+
+/* Enhanced navbar title for dark mode - Polar Night branding */
+[data-theme="dark"] .navbar__title {
+    background: linear-gradient(135deg, #dddddd 0%, #aaaaaa 50%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(221, 221, 221, 0.2);
+}
+
+/* Navbar logo (book cover) styling */
+.navbar__logo {
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar CTA button */
+.navbar-cta-button {
+    background: linear-gradient(
+        135deg,
+        var(--ifm-color-primary) 0%,
+        var(--ifm-color-primary-dark) 100%
+    ) !important;
+    color: white !important;
+    padding: 0.75rem 1.25rem !important;
+    border-radius: 50px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    margin-left: 0.5rem;
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Ensure touch targets meet WCAG 2.1 AA minimum (44x44px) */
+@media screen and (max-width: 768px) {
+    .navbar-cta-button {
+        padding: 0.75rem 1.5rem !important;
+        min-height: 48px !important;
+    }
+}
+
+.navbar-cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    color: white !important;
+}
+
+[data-theme="dark"] .navbar-cta-button:hover {
+    box-shadow: 0 4px 12px rgba(119, 148, 237, 0.4);
+}
+
+/* Navbar links */
+.navbar__item {
+    font-weight: 500;
+}
+
+/* Card backgrounds */
+.card {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   FOOTER - PREMIUM POLAR NIGHT DESIGN
+   ============================================ */
+
+/* Footer Container - LIGHT MODE: Much darker navy for clear separation */
+.footer {
+    background: linear-gradient(
+        180deg,
+        #001428 0%,
+        #000f1f 50%,
+        #000a15 100%
+    ) !important;
+    border-top: 1px solid rgba(170, 170, 170, 0.2) !important;
+    padding: 4rem 2rem 2rem !important;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+    position: relative !important;
+    overflow: hidden;
+}
+
+/* Subtle background pattern for light mode - navy tinted */
+.footer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(170, 170, 170, 0.03) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(221, 221, 221, 0.02) 0%,
+            transparent 50%
+        );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.footer > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Footer Accent Line - Light mode: Subtle gray gradient */
+.footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(170, 170, 170, 0.3) 10%,
+        rgba(221, 221, 221, 0.4) 50%,
+        rgba(170, 170, 170, 0.3) 90%,
+        transparent 100%
+    );
+    opacity: 1;
+    z-index: 1;
+}
+
+/* DARK MODE: Charcoal footer for contrast */
+[data-theme="dark"] .footer {
+    background: linear-gradient(
+        180deg,
+        #1a1a1a 0%,
+        #111111 50%,
+        #0a0a0a 100%
+    ) !important;
+    border-top: 1px solid rgba(170, 170, 170, 0.12) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .footer::after {
+    background-image:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(170, 170, 170, 0.02) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(221, 221, 221, 0.015) 0%,
+            transparent 50%
+        );
+}
+
+[data-theme="dark"] .footer::before {
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(170, 170, 170, 0.2) 10%,
+        rgba(170, 170, 170, 0.3) 50%,
+        rgba(170, 170, 170, 0.2) 90%,
+        transparent 100%
+    );
+}
+
+/* Footer Links Container */
+.footer__links {
+    margin-bottom: 3rem !important;
+}
+
+/* Horizontal 4-column layout for footer columns */
+.footer__links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2.5rem;
+}
+
+.footer__col {
+    flex: 1 1 0;
+    min-width: 160px;
+    max-width: 240px;
+}
+
+@media screen and (max-width: 996px) {
+    .footer__links {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .footer__col {
+        max-width: unset;
+        min-width: 0;
+    }
+}
+
+/* Footer Column Title */
+.footer__title {
+    color: #ffffff !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1.5rem !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    position: relative !important;
+    padding-bottom: 0.75rem !important;
+}
+
+.footer__title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #aaaaaa 0%, #dddddd 100%);
+    border-radius: 2px;
+}
+
+[data-theme="dark"] .footer__title {
+    color: #dddddd !important;
+}
+
+[data-theme="dark"] .footer__title::after {
+    background: linear-gradient(90deg, #aaaaaa 0%, #888888 100%);
+}
+
+/* Footer Link Items */
+.footer__item {
+    margin-bottom: 0.85rem !important;
+}
+
+.footer__link-item {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    position: relative !important;
+    padding-left: 0 !important;
+    line-height: 1.6 !important;
+}
+
+/* Hide external link icon for social media links */
+.footer__link-item[href*="youtube.com"]::after,
+.footer__link-item[href*="linkedin.com"]::after,
+.footer__link-item[href*="instagram.com"]::after,
+.footer__link-item[href*="facebook.com"]::after,
+.footer__link-item[href*="github.com"]::after {
+    display: none !important;
+}
+
+/* Remove old emoji before-icon rules for social links */
+.footer__link-item[href*="youtube.com"]::before,
+.footer__link-item[href*="linkedin.com"]::before,
+.footer__link-item[href*="instagram.com"]::before,
+.footer__link-item[href*="facebook.com"]::before,
+.footer__link-item[href*="github.com"]::before {
+    content: none !important;
+}
+
+.footer__link-item:hover {
+    color: #ffffff !important;
+    text-decoration: none !important;
+    transform: translateY(-2px) !important;
+}
+
+.footer__link-item[href*="youtube.com"]:hover::before {
+    transform: scale(1.2);
+}
+
+.footer__link-item[href*="linkedin.com"]:hover::before {
+    transform: scale(1.2);
+}
+
+.footer__link-item[href*="instagram.com"]:hover::before {
+    transform: scale(1.2);
+}
+
+.footer__link-item[href*="facebook.com"]:hover::before {
+    transform: scale(1.2);
+}
+
+.footer__link-item[href*="github.com"]:hover::before {
+    transform: scale(1.2);
+}
+
+[data-theme="dark"] .footer__link-item {
+    color: #888888 !important;
+}
+
+[data-theme="dark"] .footer__link-item:hover {
+    color: #dddddd !important;
+}
+
+/* Footer Bottom Section */
+.footer__bottom {
+    border-top: 2px solid rgba(170, 170, 170, 0.15) !important;
+    padding-top: 2rem !important;
+    margin-top: 2rem !important;
+}
+
+/* Footer Copyright */
+.footer__copyright {
+    color: rgba(255, 255, 255, 0.65) !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    letter-spacing: 0.3px !important;
+    line-height: 1.6 !important;
+}
+
+[data-theme="dark"] .footer__copyright {
+    color: #888888 !important;
+}
+
+/* Enhanced Copyright with Brand Highlight */
+.footer__copyright strong {
+    background: linear-gradient(135deg, #dddddd 0%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+[data-theme="dark"] .footer__copyright strong {
+    background: linear-gradient(135deg, #aaaaaa 0%, #dddddd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Footer Logo/Brand */
+.footer__logo {
+    filter: brightness(0.9);
+    transition: filter 0.3s ease;
+}
+
+.footer__logo:hover {
+    filter: brightness(1.1);
+}
+
+[data-theme="dark"] .footer__logo {
+    filter: brightness(1.2);
+}
+
+[data-theme="dark"] .footer__logo:hover {
+    filter: brightness(1.4);
+}
+
+/* Enhanced Footer Columns */
+.footer__col {
+    margin-bottom: 2rem !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer__col:hover {
+    transform: translateY(-4px);
+}
+
+.footer__col:hover .footer__title::after {
+    width: 50px;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Footer Social Icons - removed arrows, using Font Awesome icons instead */
+
+/* Font Awesome Social Icon Overrides */
+.footer-social-icon {
+    margin-right: 0.5em;
+    font-size: 1.1em;
+    vertical-align: middle;
+    transition: color 0.3s;
+}
+.footer__link-social .footer-social-icon.youtube {
+    color: #ff0000;
+}
+.footer__link-social .footer-social-icon.linkedin {
+    color: #0077b5;
+}
+.footer__link-social .footer-social-icon.instagram {
+    color: #e1306c;
+}
+.footer__link-social .footer-social-icon.facebook {
+    color: #1877f3;
+}
+.footer__link-social .footer-social-icon.github {
+    color: #181717;
+}
+/* Vibrant color even on dark mode */
+[data-theme="dark"] .footer__link-social .footer-social-icon.youtube {
+    color: #ff3c3c;
+}
+[data-theme="dark"] .footer__link-social .footer-social-icon.linkedin {
+    color: #2997f7;
+}
+[data-theme="dark"] .footer__link-social .footer-social-icon.instagram {
+    color: #ff68a3;
+}
+[data-theme="dark"] .footer__link-social .footer-social-icon.facebook {
+    color: #3b93f7;
+}
+[data-theme="dark"] .footer__link-social .footer-social-icon.github {
+    color: #f3f3f3;
+}
+/* Add some hover flair */
+.footer__link-social:hover .footer-social-icon {
+    filter: brightness(1.1) drop-shadow(0 0 6px rgba(0, 0, 0, 0.12));
+    transform: scale(1.15);
+}
+
+/* Footer Responsive Design */
+@media screen and (max-width: 996px) {
+    .footer {
+        padding: 3rem 1.5rem 1.5rem !important;
+    }
+
+    .footer__title {
+        font-size: 1rem !important;
+        margin-bottom: 1.25rem !important;
+    }
+
+    .footer__link-item {
+        font-size: 0.9rem !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 2.5rem 1rem 1.5rem !important;
+    }
+
+    .footer__col {
+        margin-bottom: 2.5rem !important;
+    }
+
+    .footer__title::after {
+        width: 30px;
+        height: 2px;
+    }
+}
+
+/* ----------- Social row for Community column --------------- */
+.footer__items--social-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.footer__items--social-row .footer__item {
+    margin-bottom: 0 !important;
+}
+
+@media screen and (max-width: 768px) {
+    .footer__items--social-row {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+}
+
+/* Remove bullets from footer lists for a clean look */
+.footer__items {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+/* ============================================================================
+   TOUCH TARGET SIZING - WCAG 2.1 Level AA Compliance (44x44px minimum)
+   ============================================================================ */
+
+/* Global touch target enforcement for mobile */
+@media screen and (max-width: 768px) {
+    /* All buttons and links */
+    button,
+    a[role="button"],
+    input[type="button"],
+    input[type="submit"],
+    input[type="reset"] {
+        min-height: 44px !important;
+        min-width: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0.625rem 1rem !important;
+    }
+
+    /* Navbar and menu links - left-aligned, not centered */
+    .navbar__link,
+    .menu__link,
+    a.card {
+        min-height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+        padding: 0.625rem 1rem !important;
+        /* Do NOT center text - allow left alignment */
+    }
+
+    /* Navbar items - ensure proper spacing */
+    .navbar__item {
+        min-height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    /* Interactive elements spacing - only for specific button types, not all links */
+    button,
+    [role="button"],
+    input[type="checkbox"],
+    input[type="radio"],
+    .navbar__link,
+    .menu__link {
+        margin: 0.25rem !important;
+    }
+
+    /* Ensure table cells are tappable */
+    .markdown td,
+    .markdown th {
+        padding: 1rem 1.5rem !important;
+        min-height: 44px !important;
+    }
+
+    /* Admonition titles if interactive */
+    .admonition {
+        padding: 1.5rem !important;
+    }
+}
+
+/* ============================================================================
+   MOBILE NAVBAR FIX - Ensure hamburger menu works properly
+   ============================================================================ */
+
+/* Ensure mobile sidebar appears above all content */
+@media (max-width: 996px) {
+    /* Docusaurus navbar sidebar for mobile */
+    .navbar-sidebar {
+        z-index: 1000 !important;
+        height: 100vh !important;  /* Expand to full viewport height */
+        max-height: 100vh !important;  /* Ensure it doesn't exceed viewport */
+        width: 100% !important;  /* Full viewport width */
+        right: 0 !important;  /* Flush to the right edge */
+        background-color: var(--ifm-navbar-background-color) !important;  /* Match navbar bg */
+        background: linear-gradient(180deg, var(--ifm-navbar-background-color) 0%, var(--ifm-background-color) 100%) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;  /* Smooth scrolling on iOS */
+    }
+
+    /* Backdrop behind the mobile menu */
+    .navbar-sidebar__backdrop {
+        z-index: 999 !important;
+        background-color: rgba(0, 0, 0, 0.5) !important;  /* Semi-transparent dark overlay */
+    }
+
+    /* Light mode: Darker backdrop for better visibility and contrast */
+    [data-theme='light'] .navbar-sidebar__backdrop {
+        background-color: rgba(0, 0, 0, 0.7) !important;
+    }
+
+    /* When sidebar is open (navbar--show class present), hide main content */
+    .navbar--fixed-top.navbar-sidebar--show ~ .main-wrapper {
+        display: none !important;
+    }
+
+    /* Also hide footer when sidebar is open to prevent content overlap */
+    .navbar--fixed-top.navbar-sidebar--show ~ footer {
+        display: none !important;
+    }
+
+    /* ===== Mobile Sidebar Header - Close & Theme Toggle ===== */
+
+    /* Container for the header buttons (brand area on mobile sidebar) */
+    .navbar-sidebar__brand {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 0.75rem 1rem !important;
+        background: linear-gradient(180deg, rgba(20, 20, 24, 0.98) 0%, rgba(26, 26, 30, 0.95) 100%) !important;
+        border-bottom: 1px solid rgba(0, 212, 255, 0.15) !important;
+        min-height: 60px !important;
+    }
+
+    /* Close button (X icon) - IFK styled */
+    .navbar-sidebar__close {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 8px !important;
+        background: rgba(0, 212, 255, 0.08) !important;
+        border: 1px solid rgba(0, 212, 255, 0.2) !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        transition: all 0.2s ease !important;
+        cursor: pointer !important;
+    }
+
+    .navbar-sidebar__close:hover,
+    .navbar-sidebar__close:focus {
+        background: rgba(0, 212, 255, 0.15) !important;
+        border-color: rgba(0, 212, 255, 0.4) !important;
+        color: #00d4ff !important;
+        box-shadow: 0 0 12px rgba(0, 212, 255, 0.3) !important;
+    }
+
+    .navbar-sidebar__close svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    /* Theme toggle button in mobile sidebar */
+    .navbar-sidebar__brand [class*='toggle'],
+    .navbar-sidebar__brand [class*='colorModeToggle'] {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 8px !important;
+        background: rgba(255, 149, 0, 0.08) !important;
+        border: 1px solid rgba(255, 149, 0, 0.2) !important;
+        transition: all 0.2s ease !important;
+    }
+
+    .navbar-sidebar__brand [class*='toggle']:hover,
+    .navbar-sidebar__brand [class*='toggle']:focus,
+    .navbar-sidebar__brand [class*='colorModeToggle']:hover,
+    .navbar-sidebar__brand [class*='colorModeToggle']:focus {
+        background: rgba(255, 149, 0, 0.15) !important;
+        border-color: rgba(255, 149, 0, 0.4) !important;
+        box-shadow: 0 0 12px rgba(255, 149, 0, 0.3) !important;
+    }
+
+    /* Theme toggle button styling */
+    .navbar-sidebar__brand [class*='toggleButton'] {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 8px !important;
+        background: transparent !important;
+    }
+
+    .navbar-sidebar__brand [class*='toggleButton']:hover {
+        background: rgba(255, 149, 0, 0.1) !important;
+    }
+
+    /* Theme icons in mobile sidebar */
+    .navbar-sidebar__brand [class*='toggleButton'] svg {
+        width: 20px !important;
+        height: 20px !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        transition: color 0.2s ease !important;
+    }
+
+    .navbar-sidebar__brand [class*='toggleButton']:hover svg {
+        color: #ff9500 !important;
+    }
+
+    /* Clean button base reset for sidebar buttons */
+    .navbar-sidebar__brand .clean-btn {
+        background: rgba(0, 212, 255, 0.08) !important;
+        border: 1px solid rgba(0, 212, 255, 0.2) !important;
+        border-radius: 8px !important;
+        width: 44px !important;
+        height: 44px !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .navbar-sidebar__brand .clean-btn:hover {
+        background: rgba(0, 212, 255, 0.15) !important;
+        border-color: rgba(0, 212, 255, 0.4) !important;
+    }
+
+    .navbar-sidebar__brand .clean-btn svg {
+        width: 20px !important;
+        height: 20px !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+    }
+
+    .navbar-sidebar__brand .clean-btn:hover svg {
+        color: #00d4ff !important;
+    }
+}
+
+/* ============================================================================
+   SIDEBAR STYLING - Premium enhancements for left navigation
+   ============================================================================ */
+@import "./sidebar.css";
+@import "./rtl.css";
+
+/* ============================================================================
+   DOC PAGES STYLING - Premium enhancements for chapter pages
+   ============================================================================ */
+@import "./doc-pages.css";
+
+/* ============================================================================
+   SEARCH BAR CUSTOMIZATION - Industrial-Kinetic styling
+   ============================================================================ */
+@import "./search-customization.css";
+
+/* ============================================================================
+   NEURAL COMMAND CENTER - Platform Navbar Styling
+   ============================================================================ */
+
+/* Update fonts to IBM Plex family for Neural Command Center theme */
+:root {
+  --ncc-font-mono: 'IBM Plex Mono', 'JetBrains Mono', 'Courier New', monospace;
+  --ncc-font-sans: 'IBM Plex Sans', 'Syne', system-ui, -apple-system, sans-serif;
+
+  /* Neural Command Center Colors */
+  --ncc-bg-deep: #0a0a0f;
+  --ncc-bg-surface: #12121a;
+  --ncc-cyan: #00d4ff;
+  --ncc-amber: #ff9500;
+  --ncc-green: #00ff88;
+  --ncc-text: #e8e8e8;
+  --ncc-text-muted: #888899;
+}
+
+/* Navbar brand styling */
+.navbar__title {
+  font-family: var(--ncc-font-mono) !important;
+  font-weight: 600 !important;
+  font-size: 1.15rem !important;
+  letter-spacing: -0.02em !important;
+}
+
+[data-theme="dark"] .navbar__title {
+  background: linear-gradient(135deg, var(--ncc-cyan) 0%, #ffffff 50%, var(--ncc-amber) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Navbar link styling */
+.navbar__link {
+  font-family: var(--ncc-font-sans) !important;
+  font-weight: 500 !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.02em !important;
+  text-transform: uppercase !important;
+  transition: color 0.2s ease, transform 0.2s ease !important;
+}
+
+[data-theme="dark"] .navbar__link:hover {
+  color: var(--ncc-cyan) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Platform CTA Button in Navbar */
+.navbar__cta-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.5rem 1.25rem !important;
+  font-family: var(--ncc-font-mono) !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: var(--ncc-bg-deep) !important;
+  background: linear-gradient(135deg, var(--ncc-cyan) 0%, #00a8cc 100%) !important;
+  border: none !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.navbar__cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.navbar__cta-button:hover {
+  background: linear-gradient(135deg, var(--ncc-amber) 0%, #cc7700 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 20px rgba(255, 149, 0, 0.4) !important;
+  color: var(--ncc-bg-deep) !important;
+  text-decoration: none !important;
+}
+
+.navbar__cta-button:hover::before {
+  left: 100%;
+}
+
+/* Hardware Selector removed - simplified navbar for visitor-first design */
+
+/* Dark mode navbar enhancements */
+[data-theme="dark"] .navbar {
+  background: linear-gradient(180deg, rgba(10, 10, 15, 0.98) 0%, rgba(18, 18, 26, 0.95) 100%) !important;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1) !important;
+}
+
+/* Navbar items spacing */
+.navbar__items--right {
+  gap: 0.75rem !important;
+}
+
+/* Hide "Labs" and "Personalize" links until those pages exist */
+/* Match both /labs and /robolearn/labs (works with any baseUrl) */
+.navbar__link[href="/labs"],
+.navbar__link[href="/chat"],
+.navbar__link[href$="/labs"],
+.navbar__link[href$="/chat"] {
+  opacity: 0.5;
+  pointer-events: none;
+  position: relative;
+}
+
+.navbar__link[href="/labs"]::after,
+.navbar__link[href="/chat"]::after,
+.navbar__link[href$="/labs"]::after,
+.navbar__link[href$="/chat"]::after {
+  content: 'SOON';
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  font-size: 0.55rem;
+  padding: 1px 4px;
+  background: var(--ncc-amber);
+  color: var(--ncc-bg-deep);
+  border-radius: 2px;
+  font-weight: 700;
+}
+
+/* ============================================================================
+   MOBILE NAVBAR OPTIMIZATIONS
+   ============================================================================ */
+
+/* Mobile-specific navbar styles */
+@media (max-width: 996px) {
+  /* Navbar container - compact for mobile */
+  .navbar {
+    padding: 0.5rem 0.75rem !important;
+  }
+
+  /* CRITICAL: Hide all nav items except brand and toggle on mobile */
+  /* These links should ONLY appear in the hamburger sidebar menu */
+  .navbar > .navbar__inner > .navbar__items:first-child > .navbar__item:not(:first-child) {
+    display: none !important;
+  }
+
+  /* Alternative selector - hide links by href on mobile navbar (not sidebar) */
+  /* Match both root paths and paths with baseUrl */
+  .navbar__inner > .navbar__items > a.navbar__link[href="/docs/preface-agent-native"],
+  .navbar__inner > .navbar__items > a.navbar__link[href$="/docs/preface-agent-native"],
+  .navbar__inner > .navbar__items > a.navbar__link[href="/labs"],
+  .navbar__inner > .navbar__items > a.navbar__link[href$="/labs"],
+  .navbar__inner > .navbar__items > a.navbar__link[href="/chat"],
+  .navbar__inner > .navbar__items > a.navbar__link[href$="/chat"] {
+    display: none !important;
+  }
+
+  /* Keep the brand visible */
+  .navbar__brand {
+    display: flex !important;
+  }
+
+  /* Hide CTA button on mobile navbar - use hamburger menu instead */
+  .navbar__inner .navbar__cta-button {
+    display: none !important;
+  }
+
+  /* Compact brand title on mobile */
+  .navbar__title {
+    font-size: 1rem !important;
+  }
+
+  /* Mobile sidebar menu styling */
+  .navbar-sidebar__items {
+    padding: 1rem !important;
+  }
+
+  /* Show links in mobile sidebar (override the hiding above) */
+  .navbar-sidebar .navbar__link {
+    display: flex !important;
+    padding: 1rem 0.75rem !important;
+    font-size: 1rem !important;
+    min-height: 48px !important;
+    align-items: center !important;
+  }
+
+  /* Show CTA in mobile sidebar */
+  .navbar-sidebar .navbar__cta-button {
+    display: flex !important;
+    width: 100% !important;
+    margin: 1rem 0 !important;
+    min-height: 48px !important;
+  }
+
+  /* Hamburger menu button touch target */
+  .navbar__toggle {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 0.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.375rem 0.5rem !important;
+  }
+
+  .navbar__title {
+    font-size: 0.95rem !important;
+  }
+
+  /* Hide "SOON" badges on mobile - too cluttered */
+  .navbar__link[href="/labs"]::after,
+  .navbar__link[href="/chat"]::after,
+  .navbar__link[href$="/labs"]::after,
+  .navbar__link[href$="/chat"]::after {
+    display: none !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .navbar__title {
+    font-size: 0.875rem !important;
+    letter-spacing: -0.01em !important;
+  }
+}
+
+/* ============================================================================
+   MOBILE SIDEBAR - Light Mode Adjustments
+   ============================================================================ */
+@media (max-width: 996px) {
+  [data-theme='light'] .navbar-sidebar__brand {
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%) !important;
+    border-bottom: 1px solid rgba(0, 168, 204, 0.25) !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__close {
+    background: rgba(0, 168, 204, 0.1) !important;
+    border: 1px solid rgba(0, 168, 204, 0.3) !important;
+    color: #333 !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__close:hover,
+  [data-theme='light'] .navbar-sidebar__close:focus {
+    background: rgba(0, 168, 204, 0.2) !important;
+    border-color: rgba(0, 168, 204, 0.5) !important;
+    color: #00a8cc !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__brand [class*='toggle'],
+  [data-theme='light'] .navbar-sidebar__brand [class*='colorModeToggle'] {
+    background: rgba(204, 119, 0, 0.1) !important;
+    border: 1px solid rgba(204, 119, 0, 0.3) !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__brand [class*='toggle']:hover,
+  [data-theme='light'] .navbar-sidebar__brand [class*='colorModeToggle']:hover {
+    background: rgba(204, 119, 0, 0.2) !important;
+    border-color: rgba(204, 119, 0, 0.5) !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__brand [class*='toggleButton'] svg {
+    color: #333 !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__brand [class*='toggleButton']:hover svg {
+    color: #cc7700 !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__brand .clean-btn {
+    background: rgba(0, 168, 204, 0.1) !important;
+    border: 1px solid rgba(0, 168, 204, 0.3) !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__brand .clean-btn:hover {
+    background: rgba(0, 168, 204, 0.2) !important;
+    border-color: rgba(0, 168, 204, 0.5) !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__brand .clean-btn svg {
+    color: #333 !important;
+  }
+
+  [data-theme='light'] .navbar-sidebar__brand .clean-btn:hover svg {
+    color: #00a8cc !important;
+  }
+}

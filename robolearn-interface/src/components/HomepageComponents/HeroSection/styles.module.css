@@ -1,0 +1,658 @@
+/* HeroSection - Industrial Confidence Design */
+
+/* Import premium fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes dataFlow1 {
+  0% { transform: translateY(0); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(50px); opacity: 0; }
+}
+
+@keyframes dataFlow2 {
+  0% { transform: translateX(0); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(-40px); opacity: 0; }
+}
+
+@keyframes dataFlow3 {
+  0% { transform: translateX(0); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(40px); opacity: 0; }
+}
+
+@keyframes assembleIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero container */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 4rem;
+  background: #08090d;
+  overflow: hidden;
+}
+
+/* Gradient orb - subtle mouse-following effect */
+.gradientOrb {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(34, 211, 238, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  transition: transform 0.3s ease-out;
+  z-index: 0;
+}
+
+/* Grid pattern background */
+.gridPattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  z-index: 0;
+}
+
+/* Content grid */
+.heroContent {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+}
+
+/* Text block */
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Brand mark */
+.brandMark {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+}
+
+.hero.visible .brandMark {
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.1s;
+}
+
+.brandLogo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #f0f0f0;
+}
+
+.brandTag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #22d3ee;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  border-radius: 2px;
+}
+
+/* Headline */
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  margin: 0;
+  opacity: 0;
+}
+
+.hero.visible .headline {
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.2s;
+}
+
+.headlineLine {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: #f0f0f0;
+}
+
+.headlineAccent {
+  color: #22d3ee;
+  position: relative;
+}
+
+.headlineAccent::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #22d3ee, transparent);
+}
+
+/* Subheadline */
+.subheadline {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #8b8b8b;
+  max-width: 480px;
+  margin: 0;
+  opacity: 0;
+}
+
+.hero.visible .subheadline {
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.freeTag {
+  display: inline;
+  color: #22c55e;
+  font-weight: 500;
+}
+
+/* CTA Group */
+.ctaGroup {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  opacity: 0;
+}
+
+.hero.visible .ctaGroup {
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.4s;
+}
+
+/* Primary CTA */
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: #08090d;
+  background: #22d3ee;
+  border: none;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.primaryCta:hover {
+  background: #67e8f9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(34, 211, 238, 0.3);
+  color: #08090d;
+  text-decoration: none;
+}
+
+.primaryCta:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 3px;
+}
+
+.ctaIcon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+.primaryCta:hover .ctaIcon {
+  transform: translateX(3px);
+}
+
+/* Secondary CTA */
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 1.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: #8b8b8b;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.secondaryCta:hover {
+  color: #f0f0f0;
+  border-color: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+}
+
+/* Tech stack pills */
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  opacity: 0;
+}
+
+.hero.visible .techStack {
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.stackItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #8b8b8b;
+}
+
+.stackDot {
+  width: 6px;
+  height: 6px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Visual block */
+.visualBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+}
+
+.hero.visible .visualBlock {
+  animation: fadeIn 0.8s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* Assembly container */
+.assemblyContainer {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+}
+
+/* Robot assembly SVG */
+.robotAssembly {
+  width: 100%;
+  height: auto;
+}
+
+/* Part animations */
+.part {
+  opacity: 0;
+}
+
+.hero.visible .partHead {
+  animation: assembleIn 0.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.hero.visible .partTorso {
+  animation: assembleIn 0.5s ease forwards;
+  animation-delay: 0.7s;
+}
+
+.hero.visible .partLeftArm {
+  animation: assembleIn 0.5s ease forwards;
+  animation-delay: 0.9s;
+}
+
+.hero.visible .partRightArm {
+  animation: assembleIn 0.5s ease forwards;
+  animation-delay: 1.0s;
+}
+
+.hero.visible .partLegs {
+  animation: assembleIn 0.5s ease forwards;
+  animation-delay: 1.1s;
+}
+
+/* Eye glow */
+.eyeLeft, .eyeRight {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.eyeRight {
+  animation-delay: 0.5s;
+}
+
+/* Core pulse */
+.corePulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Connection lines */
+.connectionLines {
+  opacity: 0;
+}
+
+.hero.visible .connectionLines {
+  animation: fadeIn 0.5s ease forwards;
+  animation-delay: 1.3s;
+}
+
+/* Data flow particles */
+.dataFlow {
+  opacity: 0;
+}
+
+.hero.visible .dataFlow {
+  animation: fadeIn 0.3s ease forwards;
+  animation-delay: 1.5s;
+}
+
+.particle1 {
+  animation: dataFlow1 2s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.particle2 {
+  animation: dataFlow2 2s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.particle3 {
+  animation: dataFlow3 2s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.particle4 {
+  animation: dataFlow1 2s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+/* Floating labels */
+.floatingLabel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(15, 17, 21, 0.9);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #8b8b8b;
+  animation: float 4s ease-in-out infinite;
+  opacity: 0;
+}
+
+.hero.visible .floatingLabel {
+  animation: fadeIn 0.5s ease forwards, float 4s ease-in-out infinite;
+  animation-delay: 1.6s, 1.6s;
+}
+
+.labelPulse {
+  width: 6px;
+  height: 6px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Bottom fade */
+.bottomFade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: linear-gradient(to top, #0f1115, transparent);
+  pointer-events: none;
+}
+
+/* Responsive - Mobile First */
+@media (max-width: 1024px) {
+  .heroContent {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .textBlock {
+    align-items: center;
+  }
+
+  .subheadline {
+    max-width: 100%;
+  }
+
+  .ctaGroup {
+    justify-content: center;
+  }
+
+  .techStack {
+    justify-content: center;
+  }
+
+  .visualBlock {
+    order: -1;
+  }
+
+  .assemblyContainer {
+    max-width: 320px;
+  }
+
+  .headlineLine {
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 4.5rem 1rem 2.5rem;
+    min-height: auto;
+  }
+
+  .heroContent {
+    gap: 2rem;
+  }
+
+  .brandMark {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .brandLogo {
+    font-size: 0.75rem;
+  }
+
+  .brandTag {
+    font-size: 0.6rem;
+  }
+
+  .headlineLine {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .subheadline {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .assemblyContainer {
+    max-width: 260px;
+  }
+
+  .techStack {
+    gap: 0.75rem;
+  }
+
+  .stackItem {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 4rem 1rem 2rem;
+  }
+
+  .ctaGroup {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .primaryCta,
+  .secondaryCta {
+    justify-content: center;
+    width: 100%;
+    min-height: 48px; /* WCAG touch target */
+  }
+
+  .floatingLabel {
+    display: none;
+  }
+
+  .assemblyContainer {
+    max-width: 220px;
+  }
+
+  .headlineLine {
+    font-size: clamp(1.4rem, 7vw, 1.8rem);
+  }
+
+  .subheadline {
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra small screens (iPhone SE, etc.) */
+@media (max-width: 375px) {
+  .hero {
+    padding: 3.5rem 0.75rem 1.5rem;
+  }
+
+  .headlineLine {
+    font-size: 1.3rem;
+  }
+
+  .subheadline {
+    font-size: 0.85rem;
+  }
+
+  .assemblyContainer {
+    max-width: 180px;
+  }
+
+  .techStack {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .stackItem {
+    font-size: 0.65rem;
+  }
+
+  .primaryCta,
+  .secondaryCta {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .brandMark,
+  .headline,
+  .subheadline,
+  .ctaGroup,
+  .techStack,
+  .visualBlock,
+  .part,
+  .connectionLines,
+  .dataFlow,
+  .floatingLabel {
+    opacity: 1;
+    animation: none;
+  }
+
+  .eyeLeft,
+  .eyeRight,
+  .corePulse,
+  .stackDot,
+  .labelPulse,
+  .particle1,
+  .particle2,
+  .particle3,
+  .particle4 {
+    animation: none;
+  }
+
+  .primaryCta:hover,
+  .ctaIcon {
+    transform: none;
+  }
+
+  .gradientOrb {
+    display: none;
+  }
+}

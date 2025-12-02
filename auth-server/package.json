@@ -1,0 +1,52 @@
+{
+  "name": "auth-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "lint": "next lint",
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "seed:setup": "npx tsx scripts/seed-setup.ts",
+    "seed:prod": "npx tsx scripts/seed-setup.ts --prod",
+    "test-api": "node tests/test-oauth-flows.js && node tests/test-tenant-claims.js && node tests/test-edge-cases.js && node tests/test-tenant-edge-cases.js && node tests/test-confidential-client.js && node tests/test-default-organization.js && npx tsx tests/oauth-validation.test.ts",
+    "test-e2e": "node tests/test-complete-sso.js && node tests/test-pkce-playwright.mjs",
+    "test-all": "pnpm test-api && pnpm test-e2e",
+    "test-client-admin": "node tests/test-client-edit.js",
+    "test-playwright-spec": "npx playwright test tests/e2e-auth-test.spec.ts",
+    "test-manual-pkce": "npx tsx tests/complete-oauth-flow.ts"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.0",
+    "@upstash/redis": "^1.34.3",
+    "bcryptjs": "^3.0.3",
+    "better-auth": "^1.4.4",
+    "drizzle-orm": "^0.36.0",
+    "next": "^15.1.0",
+    "nodemailer": "^7.0.11",
+    "playwright": "^1.57.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "resend": "^6.5.2",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^3.0.0",
+    "@types/node": "^22.0.0",
+    "@types/nodemailer": "^7.0.4",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.0",
+    "dotenv": "^16.4.0",
+    "drizzle-kit": "^0.28.0",
+    "jose": "^6.1.2",
+    "postcss": "^8.4.0",
+    "postgres": "^3.4.7",
+    "tailwindcss": "^3.4.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.6.0"
+  }
+}

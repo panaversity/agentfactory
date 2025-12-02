@@ -1,0 +1,93 @@
+/* AnimatedGrid - Industrial blueprint-style animated background */
+
+.gridContainer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gridSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Scan line animation - sweeps vertically */
+.scanLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--ifk-cyan-glow) 50%,
+    transparent 100%
+  );
+  opacity: 0.15;
+  animation: scanLine 8s ease-in-out infinite;
+}
+
+@keyframes scanLine {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(calc(100vh + 100%));
+  }
+}
+
+/* Corner glow accents */
+.glowTopLeft {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    var(--ifk-cyan-glow) 0%,
+    transparent 70%
+  );
+  opacity: 0.15;
+  filter: blur(80px);
+}
+
+.glowBottomRight {
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    var(--ifk-amber-glow) 0%,
+    transparent 70%
+  );
+  opacity: 0.1;
+  filter: blur(80px);
+}
+
+/* Vignette for depth */
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    transparent 0%,
+    transparent 50%,
+    rgba(20, 20, 24, 0.6) 100%
+  );
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scanLine {
+    animation: none;
+    display: none;
+  }
+}

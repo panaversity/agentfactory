@@ -1,0 +1,37 @@
+{
+  "mcpServers": {
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "env": {}
+    },
+    "deepwiki": {
+      "type": "http",
+      "url": "https://mcp.deepwiki.com/mcp"
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ],
+      "env": {}
+    },
+    "better-auth": {
+      "type": "http",
+      "url": "https://mcp.chonkie.ai/better-auth/better-auth-builder/mcp"
+    },
+    "next-devtools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "next-devtools-mcp@latest"
+      ],
+      "env": {}
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "remark-content-enhancements",
+  "version": "1.0.0",
+  "description": "Composable remark plugin for metadata-driven content enhancements (slides, interactive code, quizzes)",
+  "main": "index.js",
+  "keywords": [
+    "remark",
+    "remark-plugin",
+    "markdown",
+    "mdx",
+    "docusaurus",
+    "slides",
+    "interactive-code",
+    "metadata-driven"
+  ],
+  "author": "Panaversity",
+  "license": "MIT",
+  "dependencies": {
+    "unist-util-visit": "^5.0.0"
+  },
+  "peerDependencies": {
+    "remark": "^14.0.0 || ^15.0.0"
+  }
+}

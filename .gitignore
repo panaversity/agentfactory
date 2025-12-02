@@ -1,0 +1,50 @@
+# Dependencies
+/node_modules
+node_modules/
+# Production
+/build
+
+# Generated files
+.docusaurus
+.cache-loader
+.playwright-mcp
+
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.prod
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+nul
+.trees/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+dist/
+build/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+# Translation cache (temporary, regenerated)
+.translation-cache/
+# i18n/ - REMOVED: We commit translated files so CI doesn't need to translate
+
+openai-chatkit-starter-app-main/
+business_leads_agent/
+
+car-fixer-platform/
