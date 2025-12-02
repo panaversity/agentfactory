@@ -166,7 +166,7 @@ export const auth = betterAuth({
     enabled: true,
     minPasswordLength: 8,
     // Require email verification (disable in test environment for automated testing)
-    requireEmailVerification: process.env.NODE_ENV !== 'test',
+    requireEmailVerification: process.env.DISABLE_EMAIL_VERIFICATION !== 'true',
     // Use default scrypt hashing (matches seed script)
     // Password reset (only when email is configured)
     ...(emailEnabled && {

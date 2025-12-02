@@ -83,6 +83,9 @@ jobs:
 
           # Node environment
           NODE_ENV=test
+
+          # Disable email verification for automated testing
+          DISABLE_EMAIL_VERIFICATION=true
           EOF
 
       - name: Run database migrations
