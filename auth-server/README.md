@@ -130,33 +130,160 @@ NEXT_PUBLIC_BETTER_AUTH_URL=http://localhost:3001
 
 ## Testing
 
+The test suite is organized into 3 tiers for fast feedback and comprehensive coverage.
+
+### Quick Start
+
 ```bash
-# Seed test clients (public + confidential)
-pnpm seed:clients
+# 1. Start the auth server
+pnpm dev  # http://localhost:3001
 
-# Seed test organization
-pnpm seed:org
+# 2. Seed OAuth clients and default organization
+pnpm run seed:setup
 
-# Run OAuth flow tests
-pnpm test-auth
+# 3. Run tests (in another terminal)
+pnpm test-api   # Fast API tests (~60s)
+pnpm test-e2e   # Playwright visual tests (~30s)
+pnpm test-all   # Everything (~90s)
+```
 
-# Test tenant claims
-pnpm test-tenant
+### Test Suites
 
-# Test client edit functionality (requires admin session cookie)
-export ADMIN_SESSION_COOKIE="better-auth.session_token=xxx; ..."
-pnpm test-client-edit
+#### 🚀 **Suite 1: `test-api`** - Fast API Tests (7 tests, ~60s)
 
-# Run all tests
+**Requirements**: Auth server running
+
+**Tests**:
+- OAuth 2.1 flows (PKCE + Confidential client)
+- JWT tenant claims
+- Edge case handling
+- Default organization auto-join
+- OAuth 2.1/OIDC compliance validation
+
+```bash
+pnpm test-api
+```
+
+**What it covers**:
+- ✅ OIDC Discovery
+- ✅ PKCE Flow (public client)
+- ✅ Confidential Client Flow
+- ✅ Authorization & Token Exchange
+- ✅ Userinfo endpoint
+- ✅ Multi-tenancy (tenant_id, organization_ids)
+- ✅ Security edge cases
+- ✅ Default org auto-join
+
+---
+
+#### 🎭 **Suite 2: `test-e2e`** - Playwright Visual Tests (3 tests, ~30s)
+
+**Requirements**: Auth server + Book Interface (localhost:3000) + Playwright
+
+**Tests**:
+- Complete SSO flow (sign-up → OAuth → callback)
+- PKCE flow with browser automation
+
+```bash
+pnpm test-e2e
+```
+
+**What it covers**:
+- ✅ Book Interface integration
+- ✅ Visual sign-up flow
+- ✅ OAuth authorization UI
+- ✅ Callback handling
+- ✅ Profile access
+- ✅ Screenshots for debugging
+
+**Note**: Playwright tests gracefully fail if Book Interface isn't running.
+
+---
+
+#### ✅ **Suite 3: `test-all`** - Complete Test Suite (10 tests, ~90s)
+
+**Requirements**: Everything
+
+Runs both API and E2E tests sequentially.
+
+```bash
 pnpm test-all
 ```
 
-**Note for `test-client-edit`:**
-1. Sign in as admin at http://localhost:3001/auth/sign-in
-2. Open DevTools > Application > Cookies
-3. Copy all cookies as a single string
-4. Set `ADMIN_SESSION_COOKIE` environment variable
-5. Run `pnpm test-client-edit`
+---
+
+### Special Tests
+
+#### Admin Client Management (`test-client-admin`)
+
+**Tests OAuth client CRUD operations**. Now with auto-login!
+
+```bash
+pnpm test-client-admin
+```
+
+**Auto-login**: No manual cookie required - signs in automatically using `admin@robolearn.io` credentials.
+
+**Override credentials** (optional):
+```bash
+ADMIN_EMAIL=custom@example.com ADMIN_PASSWORD=CustomPass pnpm test-client-admin
+```
+
+#### Playwright Test Spec (`test-playwright-spec`)
+
+**Runs e2e-auth-test.spec.ts using Playwright Test framework**.
+
+```bash
+pnpm test-playwright-spec
+```
+
+#### Manual PKCE Generator (`test-manual-pkce`)
+
+**Utility to generate PKCE pairs for manual testing**.
+
+```bash
+pnpm test-manual-pkce
+```
+
+---
+
+### Test Files
+
+**Kept (11 tests)**:
+- ✅ `test-oauth-flows.js` - OAuth PKCE + Confidential
+- ✅ `test-tenant-claims.js` - JWT tenant_id claims
+- ✅ `test-edge-cases.js` - Security edge cases
+- ✅ `test-tenant-edge-cases.js` - Tenant edge cases
+- ✅ `test-confidential-client.js` - Confidential flow
+- ✅ `test-default-organization.js` - Default org auto-join
+- ✅ `oauth-validation.test.ts` - OAuth 2.1 compliance
+- ✅ `test-complete-sso.js` - Full SSO flow (Playwright)
+- ✅ `test-pkce-playwright.mjs` - PKCE browser test
+- ✅ `test-client-edit.js` - Admin API (with auto-login)
+- ✅ `e2e-auth-test.spec.ts` - Playwright Test spec
+
+**Removed (5 duplicates)**:
+- 🗑️ `test-oauth-api.mjs` - Covered by test-oauth-flows.js
+- 🗑️ `test-pkce-oauth.js` - Covered by test-oauth-flows.js
+- 🗑️ `test-full-oauth.js` - Duplicate of test-complete-sso.js
+- 🗑️ `test-visual-flow.js` - Covered by test-complete-sso.js
+- 🗑️ `test-oauth-flow.js` - Covered by test-complete-sso.js
+
+---
+
+### Troubleshooting
+
+**Tests timing out?**
+- ✅ Ensure auth server is running (`pnpm dev`)
+- ✅ Check http://localhost:3001 returns a page
+
+**Playwright tests failing?**
+- ✅ Playwright may not be installed: `npx playwright install`
+- ✅ Book Interface not running: Tests will gracefully fail (expected)
+
+**Admin tests failing?**
+- ✅ Ensure default admin exists: `pnpm run seed:setup`
+- ✅ Check credentials: `admin@robolearn.io` / `Admin123!@#`
 
 ## Endpoints
 

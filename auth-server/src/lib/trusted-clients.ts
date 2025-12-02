@@ -14,6 +14,32 @@
  * - Only HTTPS URLs allowed in production (except localhost in dev)
  */
 
+/**
+ * ==============================================================================
+ * ORGANIZATION CONFIGURATION
+ * ==============================================================================
+ * Default organization for the hybrid multi-tenant model.
+ *
+ * Architecture:
+ * - Panaversity is the default organization for general users
+ * - All new users auto-join this organization on signup
+ * - Additional organizations can be created for institutions/schools
+ * - This ID is hardcoded for performance (no DB lookup on every signup)
+ *
+ * Setup:
+ * - Run `pnpm run seed:setup` to create this organization in database
+ * - The seed script uses this same ID to ensure consistency
+ */
+export const DEFAULT_ORG_ID = "panaversity-default-org-id";
+export const DEFAULT_ORG_NAME = "Panaversity";
+export const DEFAULT_ORG_SLUG = "panaversity";
+
+/**
+ * ==============================================================================
+ * OAUTH CLIENT CONFIGURATION
+ * ==============================================================================
+ */
+
 const ROBOLEARN_INTERFACE_CLIENT_ID = "robolearn-public-client";
 
 /**

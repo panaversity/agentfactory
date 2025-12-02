@@ -11,24 +11,48 @@
  */
 
 const BASE_URL = process.env.BETTER_AUTH_URL || "http://localhost:3001";
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "admin@robolearn.io";
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "Admin123!@#";
 
-// IMPORTANT: You need to get a valid admin session cookie
-// 1. Sign in to http://localhost:3001/auth/sign-in as admin
-// 2. Open browser DevTools > Application > Cookies
-// 3. Copy the cookie string and paste it here
-const ADMIN_COOKIE = process.env.ADMIN_SESSION_COOKIE || "";
+// Admin session cookie (will be auto-populated via login)
+let ADMIN_COOKIE = process.env.ADMIN_SESSION_COOKIE || "";
 
-if (!ADMIN_COOKIE) {
-  console.error("❌ ERROR: ADMIN_SESSION_COOKIE not set!");
-  console.error("\nHow to get it:");
-  console.error("1. Sign in as admin at http://localhost:3001/auth/sign-in");
-  console.error("2. Open DevTools > Application > Cookies");
-  console.error("3. Copy all cookies as a single string");
-  console.error("4. Set ADMIN_SESSION_COOKIE env variable:");
-  console.error('   export ADMIN_SESSION_COOKIE="better-auth.session_token=xxx; ..."');
-  console.error("\nOr run:");
-  console.error('   ADMIN_SESSION_COOKIE="your-cookie" node tests/test-client-edit.js\n');
-  process.exit(1);
+/**
+ * Auto-login helper - Signs in as admin and gets session cookie
+ */
+async function autoLogin() {
+  console.log("🔐 Auto-login: Signing in as admin...");
+
+  try {
+    const response = await fetch(`${BASE_URL}/api/auth/sign-in/email`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: ADMIN_EMAIL,
+        password: ADMIN_PASSWORD
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.text();
+      throw new Error(`Sign-in failed (${response.status}): ${error}`);
+    }
+
+    const setCookie = response.headers.get("set-cookie");
+    if (!setCookie) {
+      throw new Error("No session cookie received from server");
+    }
+
+    // Extract session token from Set-Cookie header
+    ADMIN_COOKIE = setCookie.split(";")[0]; // Get just the token part
+    console.log("✅ Auto-login successful\n");
+    return true;
+  } catch (error) {
+    console.error("❌ Auto-login failed:", error.message);
+    console.error("\nFallback: Set ADMIN_SESSION_COOKIE manually:");
+    console.error('   export ADMIN_SESSION_COOKIE="better-auth.session_token=xxx"\n');
+    return false;
+  }
 }
 
 console.log("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
@@ -363,7 +387,22 @@ async function runTests() {
   }
 }
 
-runTests().catch((error) => {
+// Main execution with auto-login
+(async () => {
+  // Try auto-login if cookie not provided
+  if (!ADMIN_COOKIE) {
+    const loginSuccess = await autoLogin();
+    if (!loginSuccess) {
+      console.error("❌ Cannot proceed without admin session");
+      process.exit(1);
+    }
+  } else {
+    console.log("✅ Using provided ADMIN_SESSION_COOKIE\n");
+  }
+
+  // Run the tests
+  await runTests();
+})().catch((error) => {
   console.error("\n❌ Test suite failed:");
   console.error(error);
   process.exit(1);

@@ -12,13 +12,12 @@
     "db:studio": "drizzle-kit studio",
     "seed:setup": "npx tsx scripts/seed-setup.ts",
     "seed:prod": "npx tsx scripts/seed-setup.ts --prod",
-    "test-auth": "node tests/test-oauth-flows.js",
-    "test-tenant": "node tests/test-tenant-claims.js",
-    "test-edge": "node tests/test-edge-cases.js",
-    "test-tenant-edge": "node tests/test-tenant-edge-cases.js",
-    "test-confidential": "node tests/test-confidential-client.js",
-    "test-client-edit": "node tests/test-client-edit.js",
-    "test-all": "node tests/test-oauth-flows.js && node tests/test-tenant-claims.js && node tests/test-edge-cases.js && node tests/test-tenant-edge-cases.js && node tests/test-confidential-client.js && node tests/test-client-edit.js"
+    "test-api": "node tests/test-oauth-flows.js && node tests/test-tenant-claims.js && node tests/test-edge-cases.js && node tests/test-tenant-edge-cases.js && node tests/test-confidential-client.js && node tests/test-default-organization.js && npx tsx tests/oauth-validation.test.ts",
+    "test-e2e": "node tests/test-complete-sso.js && node tests/test-pkce-playwright.mjs",
+    "test-all": "pnpm test-api && pnpm test-e2e",
+    "test-client-admin": "node tests/test-client-edit.js",
+    "test-playwright-spec": "npx playwright test tests/e2e-auth-test.spec.ts",
+    "test-manual-pkce": "npx tsx tests/complete-oauth-flow.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.0",

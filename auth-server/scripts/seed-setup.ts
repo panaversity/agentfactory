@@ -5,10 +5,45 @@ dotenv.config({ path: ".env.local" });
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
 import { pgTable, text, boolean, timestamp } from "drizzle-orm/pg-core";
-import { eq } from "drizzle-orm";
-import { TRUSTED_CLIENTS } from "../src/lib/trusted-clients";
+import { eq, and } from "drizzle-orm";
+import {
+  TRUSTED_CLIENTS,
+  DEFAULT_ORG_ID,
+  DEFAULT_ORG_NAME,
+  DEFAULT_ORG_SLUG,
+} from "../src/lib/trusted-clients";
+import bcrypt from "bcryptjs";
+
+const TEST_ADMIN_EMAIL = "admin@robolearn.io";
+const TEST_ADMIN_PASSWORD = "Admin123!@#"; // For local dev only
+const TEST_ADMIN_NAME = "Admin User";
 
 // Schema definitions
+const user = pgTable("user", {
+  id: text("id").primaryKey(),
+  email: text("email").notNull().unique(),
+  emailVerified: boolean("email_verified").default(false),
+  name: text("name"),
+  createdAt: timestamp("created_at"),
+  updatedAt: timestamp("updated_at"),
+});
+
+const account = pgTable("account", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull(),
+  accountId: text("account_id").notNull(),
+  providerId: text("provider_id").notNull(),
+  accessToken: text("access_token"),
+  refreshToken: text("refresh_token"),
+  idToken: text("id_token"),
+  accessTokenExpiresAt: timestamp("access_token_expires_at"),
+  refreshTokenExpiresAt: timestamp("refresh_token_expires_at"),
+  scope: text("scope"),
+  password: text("password"),
+  createdAt: timestamp("created_at"),
+  updatedAt: timestamp("updated_at"),
+});
+
 const oauthApplication = pgTable("oauth_application", {
   id: text("id").primaryKey(),
   name: text("name"),
@@ -41,24 +76,36 @@ const member = pgTable("member", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
-const user = pgTable("user", {
-  id: text("id").primaryKey(),
-  email: text("email").notNull().unique(),
-});
 
 const sql = neon(process.env.DATABASE_URL!);
 const db = drizzle(sql);
 
-// Test organization configuration
+// Default organization configuration (production-ready)
+const DEFAULT_ORG = {
+  id: DEFAULT_ORG_ID,
+  name: DEFAULT_ORG_NAME,
+  slug: DEFAULT_ORG_SLUG,
+  logo: null,
+  metadata: JSON.stringify({
+    type: "default",
+    description: "Default organization for all Panaversity users",
+    plan: "platform",
+    features: ["learning", "projects", "multi-tenant"]
+  }),
+};
+
+// Test organization configuration (dev only)
 const TEST_ORG = {
   id: "test-organization-id",
   name: "RoboLearn Test Organization",
   slug: "robolearn-test",
   logo: null,
-  metadata: JSON.stringify({ plan: "pro", features: ["multi-tenant"] }),
+  metadata: JSON.stringify({
+    type: "test",
+    plan: "pro",
+    features: ["multi-tenant"]
+  }),
 };
-
-const TEST_USER_EMAIL = "admin@robolearn.io";
 
 /**
  * Upsert OAuth client from trusted-clients.ts configuration
@@ -109,12 +156,113 @@ async function upsertClient(client: typeof TRUSTED_CLIENTS[0]) {
 }
 
 /**
- * Seed test organization (optional)
+ * Create or get admin user
  */
-async function seedOrganization() {
+async function createAdminUser() {
+  // Check if admin user exists
+  const existingUser = await db
+    .select()
+    .from(user)
+    .where(eq(user.email, TEST_ADMIN_EMAIL));
+
+  if (existingUser.length > 0) {
+    console.log(`  ✅ Admin user exists: ${TEST_ADMIN_EMAIL}`);
+    return existingUser[0].id;
+  }
+
+  // Create admin user
+  console.log(`  ✅ Creating admin user: ${TEST_ADMIN_EMAIL}`);
+  const userId = crypto.randomUUID();
+  const hashedPassword = await bcrypt.hash(TEST_ADMIN_PASSWORD, 10);
+
+  await db.insert(user).values({
+    id: userId,
+    email: TEST_ADMIN_EMAIL,
+    emailVerified: true, // Skip email verification for local dev
+    name: TEST_ADMIN_NAME,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  });
+
+  // Create account with password
+  await db.insert(account).values({
+    id: crypto.randomUUID(),
+    userId: userId,
+    accountId: userId,
+    providerId: "credential",
+    password: hashedPassword,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  });
+
+  console.log(`  📧 Email: ${TEST_ADMIN_EMAIL}`);
+  console.log(`  🔑 Password: ${TEST_ADMIN_PASSWORD}`);
+
+  return userId;
+}
+
+/**
+ * Seed default organization (production + dev)
+ */
+async function seedDefaultOrganization(adminUserId: string) {
+  console.log("\n📊 Seeding default organization...\n");
+
+  // Create or update default organization
+  const existingOrg = await db
+    .select()
+    .from(organization)
+    .where(eq(organization.id, DEFAULT_ORG_ID));
+
+  if (existingOrg.length > 0) {
+    console.log(`  ✅ ${DEFAULT_ORG_NAME} (updating...)`);
+    await db
+      .update(organization)
+      .set({
+        name: DEFAULT_ORG.name,
+        slug: DEFAULT_ORG.slug,
+        metadata: DEFAULT_ORG.metadata,
+      })
+      .where(eq(organization.id, DEFAULT_ORG_ID));
+  } else {
+    console.log(`  ✅ ${DEFAULT_ORG_NAME} (creating...)`);
+    await db.insert(organization).values({
+      ...DEFAULT_ORG,
+      createdAt: new Date(),
+    });
+  }
+
+  // Add admin user as owner
+  const existingMember = await db
+    .select()
+    .from(member)
+    .where(
+      and(
+        eq(member.userId, adminUserId),
+        eq(member.organizationId, DEFAULT_ORG_ID)
+      )
+    );
+
+  if (existingMember.length > 0) {
+    console.log(`  ✅ Admin already owner of ${DEFAULT_ORG_NAME}`);
+  } else {
+    console.log(`  ✅ Adding admin as owner`);
+    await db.insert(member).values({
+      id: `member-${adminUserId}-${DEFAULT_ORG_ID}`,
+      userId: adminUserId,
+      organizationId: DEFAULT_ORG_ID,
+      role: "owner",
+      createdAt: new Date(),
+    });
+  }
+}
+
+/**
+ * Seed test organization (dev only)
+ */
+async function seedTestOrganization(adminUserId: string) {
   console.log("\n📊 Seeding test organization...\n");
 
-  // Create or update organization
+  // Create or update test organization
   const existingOrg = await db
     .select()
     .from(organization)
@@ -138,38 +286,24 @@ async function seedOrganization() {
     });
   }
 
-  // Find test user
-  const testUser = await db
-    .select()
-    .from(user)
-    .where(eq(user.email, TEST_USER_EMAIL));
-
-  if (testUser.length === 0) {
-    console.log(`  ⚠️  Test user not found (${TEST_USER_EMAIL})`);
-    console.log(`     Sign up first, then run this script again to add organization membership`);
-    return;
-  }
-
-  const userId = testUser[0].id;
-  console.log(`  ✅ Found test user: ${TEST_USER_EMAIL}`);
-
-  // Add user to organization as owner
+  // Add admin user as owner
   const existingMember = await db
     .select()
     .from(member)
-    .where(eq(member.userId, userId));
+    .where(
+      and(
+        eq(member.userId, adminUserId),
+        eq(member.organizationId, TEST_ORG.id)
+      )
+    );
 
   if (existingMember.length > 0) {
-    console.log(`  ✅ User already member (updating role to owner...)`);
-    await db
-      .update(member)
-      .set({ role: "owner" })
-      .where(eq(member.userId, userId));
+    console.log(`  ✅ Admin already member of ${TEST_ORG.name}`);
   } else {
-    console.log(`  ✅ Adding user as organization owner`);
+    console.log(`  ✅ Adding admin as owner`);
     await db.insert(member).values({
-      id: `member-${userId}-${TEST_ORG.id}`,
-      userId,
+      id: `member-${adminUserId}-${TEST_ORG.id}`,
+      userId: adminUserId,
       organizationId: TEST_ORG.id,
       role: "owner",
       createdAt: new Date(),
@@ -210,9 +344,33 @@ async function seed() {
     await upsertClient(client);
   }
 
+  // Create admin user (local dev only)
+  let adminUserId: string;
+  if (!isProd) {
+    console.log("\n👤 Setting up admin user...\n");
+    adminUserId = await createAdminUser();
+  } else {
+    // In production, admin must be created manually
+    const existingAdmin = await db
+      .select()
+      .from(user)
+      .where(eq(user.email, TEST_ADMIN_EMAIL));
+
+    if (existingAdmin.length === 0) {
+      console.log("\n⚠️  WARNING: No admin user found!");
+      console.log("   Create admin user manually first, then run this script again.");
+      process.exit(1);
+    }
+    adminUserId = existingAdmin[0].id;
+    console.log(`\n✅ Found admin user: ${TEST_ADMIN_EMAIL}`);
+  }
+
+  // Seed default organization (ALWAYS - both dev and prod)
+  await seedDefaultOrganization(adminUserId);
+
   // Seed test organization (only in dev mode)
   if (!isProd) {
-    await seedOrganization();
+    await seedTestOrganization(adminUserId);
   }
 
   // Display results
@@ -245,11 +403,19 @@ async function seed() {
   console.log("2. To manage redirect URLs, visit:");
   console.log(`   ${process.env.BETTER_AUTH_URL || "http://localhost:3001"}/admin/clients\n`);
 
+  console.log("🏢 Organizations:\n");
+  console.log(`   - Default Organization: ${DEFAULT_ORG_NAME}`);
+  console.log(`   - ID: ${DEFAULT_ORG_ID} (hardcoded in auth.ts)`);
+  console.log(`   - All new users auto-join this organization\n`);
+
   if (!isProd) {
-    console.log("💡 Multi-Tenancy Enabled:\n");
-    console.log("   - Test organization seeded (optional feature)");
-    console.log("   - Use for testing tenant-scoped data access");
-    console.log(`   - Test user: ${TEST_USER_EMAIL}\n`);
+    console.log("👤 Admin Credentials (Local Dev):\n");
+    console.log(`   - Email: ${TEST_ADMIN_EMAIL}`);
+    console.log(`   - Password: ${TEST_ADMIN_PASSWORD}\n`);
+
+    console.log("💡 Test Organization:\n");
+    console.log("   - Additional test org for multi-tenant testing");
+    console.log(`   - Name: ${TEST_ORG.name}\n`);
   }
 
   console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
