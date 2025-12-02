@@ -144,12 +144,10 @@ export function NavbarAuth() {
                   )}
                   {session.user.hardwareTier && (
                     <div className={styles.profileItem}>
-                      <span className={styles.profileLabel}>Hardware:</span>
-                      <span className={styles.profileValue}>
-                        {session.user.hardwareTier === 'tier1' ? 'Tier 1: Laptop/Cloud' :
-                         session.user.hardwareTier === 'tier2' ? 'Tier 2: RTX GPU' :
-                         session.user.hardwareTier === 'tier3' ? 'Tier 3: Jetson Edge' :
-                         session.user.hardwareTier === 'tier4' ? 'Tier 4: Physical Robot' :
+                        {session.user.hardwareTier === 'tier1' ? 'Windows PC' :
+                         session.user.hardwareTier === 'tier2' ? 'Mac' :
+                         session.user.hardwareTier === 'tier3' ? 'Linux' :
+                         session.user.hardwareTier === 'tier4' ? 'Chromebook/Web' :
                          session.user.hardwareTier}
                       </span>
                     </div>
