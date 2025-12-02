@@ -21,6 +21,7 @@ interface AuthContextType {
   session: Session | null;
   isLoading: boolean;
   signOut: (global?: boolean) => void;
+  refreshUserData: () => Promise<boolean>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -171,8 +172,45 @@ export function AuthProvider({ children, authUrl, oauthClientId }: AuthProviderP
     }
   };
 
+  /**
+   * Refresh user data from the auth server
+   * Call this after profile updates to get the latest user information
+   * @returns true if refresh succeeded, false otherwise
+   */
+  const handleRefreshUserData = async (): Promise<boolean> => {
+    try {
+      const accessToken = localStorage.getItem('robolearn_access_token');
+
+      if (!accessToken) {
+        console.warn('No access token available for refresh');
+        return false;
+      }
+
+      // Fetch fresh user data from /oauth2/userinfo endpoint
+      const user = await fetchUserInfo(accessToken);
+
+      if (user) {
+        // Update session with fresh user data
+        setSession({ user, accessToken });
+        console.log('✅ User data refreshed successfully');
+        return true;
+      } else {
+        console.warn('⚠️ Failed to refresh user data');
+        return false;
+      }
+    } catch (error) {
+      console.error('❌ Error refreshing user data:', error);
+      return false;
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ session, isLoading, signOut: handleSignOut }}>
+    <AuthContext.Provider value={{
+      session,
+      isLoading,
+      signOut: handleSignOut,
+      refreshUserData: handleRefreshUserData
+    }}>
       {children}
     </AuthContext.Provider>
   );

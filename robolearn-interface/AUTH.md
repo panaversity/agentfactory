@@ -160,13 +160,64 @@ function SignOutButton() {
     <div>
       {/* Local sign out - user stays logged in at auth server */}
       <button onClick={() => signOut(false)}>Sign Out (Local)</button>
-      
+
       {/* Global sign out - logs out from all apps */}
       <button onClick={() => signOut(true)}>Sign Out (Global)</button>
     </div>
   );
 }
 ```
+
+#### 6. Refresh User Data (After Profile Update)
+
+```tsx
+import { useAuth } from '@/contexts/AuthContext';
+import { useEffect, useState } from 'react';
+
+function ProfilePage() {
+  const { session, refreshUserData } = useAuth();
+  const [refreshing, setRefreshing] = useState(false);
+
+  // Option A: Auto-refresh on page load
+  useEffect(() => {
+    refreshUserData();
+  }, []);
+
+  // Option B: Manual refresh button
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    const success = await refreshUserData();
+    if (success) {
+      alert('Profile data refreshed!');
+    } else {
+      alert('Failed to refresh profile data');
+    }
+    setRefreshing(false);
+  };
+
+  if (!session) return <div>Please log in</div>;
+
+  return (
+    <div>
+      <h1>Profile</h1>
+      <p><strong>Name:</strong> {session.user.name}</p>
+      <p><strong>Email:</strong> {session.user.email}</p>
+      <p><strong>Software Background:</strong> {session.user.softwareBackground}</p>
+      <p><strong>Hardware Tier:</strong> {session.user.hardwareTier}</p>
+
+      <button onClick={handleRefresh} disabled={refreshing}>
+        {refreshing ? 'Refreshing...' : 'Refresh Profile Data'}
+      </button>
+
+      <a href={`${process.env.NEXT_PUBLIC_AUTH_URL}/account/profile`}>
+        Edit Profile on Auth Server
+      </a>
+    </div>
+  );
+}
+```
+
+**Use Case**: After a user updates their profile on the auth server, call `refreshUserData()` to fetch the latest information without requiring sign out/in.
 
 ### Available Properties
 
@@ -175,6 +226,7 @@ The `useAuth()` hook returns:
 - **`session`**: `Session | null` - Current session object containing user info and access token
 - **`isLoading`**: `boolean` - Whether authentication state is being checked
 - **`signOut`**: `(global?: boolean) => void` - Function to sign out the user
+- **`refreshUserData`**: `() => Promise<boolean>` - Fetches fresh user data from auth server (returns true on success)
 
 ### Notes
 
