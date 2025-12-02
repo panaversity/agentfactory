@@ -1,0 +1,20 @@
+===== DATACLASS DEMONSTRATION =====
+
+1. Creating a Person instance
+   Person: Person(name='John Smith', age=35, email='john@example.com')
+   Accessing attributes - Name: John Smith, Age: 35, Email: john@example.com
+
+2. Creating a Student instance
+   Student: Student(name='Alice Johnson', age=20, student_id='S12345', gpa=3.8, courses=[])
+
+3. Adding courses to student
+   Student after adding courses: Student(name='Alice Johnson', age=20, student_id='S12345', gpa=3.8, courses=['Python Programming', 'Data Structures', 'Algorithms'])
+   Courses: ['Python Programming', 'Data Structures', 'Algorithms']
+
+4. Replacing a mutable field (courses)
+   Student with replaced courses: Student(name='Alice Johnson', age=20, student_id='S12345', gpa=3.8, courses=['Advanced Python', 'Machine Learning', 'AI'])
+
+5. Creating a student with initial courses
+   Student with initial courses: Student(name='Bob Williams', age=22, student_id='S67890', gpa=0.0, courses=['Calculus', 'Physics'])
+
+===== DEMONSTRATION COMPLETED =====
