@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { authClient } from "@/lib/auth-client";
 
 export default function ProfileForm({
   user,
@@ -30,27 +31,39 @@ export default function ProfileForm({
     setLoading(true);
 
     try {
-      const response = await fetch("/api/account/profile", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+      // Use Better Auth's official updateUser method
+      const { data, error } = await authClient.updateUser({
+        name: formData.name,
+        givenName: formData.givenName,
+        familyName: formData.familyName,
+        softwareBackground: formData.softwareBackground,
+        hardwareTier: formData.hardwareTier,
+        locale: formData.locale,
+        zoneinfo: formData.zoneinfo,
       });
 
-      if (response.ok) {
-        if (redirectUrl) {
-          // Redirect back to client app
-          window.location.href = redirectUrl;
-        } else {
-          // No redirect URL, just reload current page
-          window.location.reload();
-        }
+      if (error) {
+        alert(`Error: ${error.message || "Failed to update profile"}`);
+        setLoading(false);
+        return;
+      }
+
+      // Better Auth automatically refreshes the session!
+      // No manual refresh needed
+
+      if (redirectUrl) {
+        // Add cache-busting parameter for client app
+        const redirectWithRefresh = redirectUrl.includes("?")
+          ? `${redirectUrl}&refresh=${Date.now()}`
+          : `${redirectUrl}?refresh=${Date.now()}`;
+
+        window.location.href = redirectWithRefresh;
       } else {
-        const error = await response.json();
-        alert(`Error: ${error.message}`);
+        // Reload to reflect changes in UI
+        window.location.reload();
       }
     } catch (error) {
       alert("Failed to update profile");
-    } finally {
       setLoading(false);
     }
   };
