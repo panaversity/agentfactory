@@ -10,13 +10,32 @@
    1. TYPOGRAPHY & READING EXPERIENCE
    ============================================================================ */
 
+/* Reading time indicator - subtle, non-intrusive */
+.reading-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.reading-time svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0.6;
+}
+
+[data-theme='dark'] .reading-time {
+  color: #777;
+}
+
 /* Main article container - optimal reading width */
 article {
   max-width: 100%;
   margin: 0 auto;
   padding-top: 2rem;
   position: relative;
-  z-index: 5;
 }
 
 /* Mobile: Ensure article has clear spacing from navbar */
@@ -49,41 +68,74 @@ article {
   .tocCollapsible_ETCw.tocMobile_ITEo {
     display: none !important;
   }
-
-  /* Ensure article stays on top of sidebar when it opens */
-  article {
-    position: relative;
-    z-index: 1001;
-  }
 }
 
-/* Enhanced body text */
+/* TOC Active Item Marker */
+.table-of-contents__link--active {
+  border-left: 3px solid var(--ifm-color-primary) !important;
+  padding-left: 0.75rem !important;
+  color: var(--ifm-color-primary) !important;
+  font-weight: 600 !important;
+  background: linear-gradient(90deg, rgba(0, 31, 63, 0.05) 0%, transparent 100%);
+}
+
+.table-of-contents__link {
+  padding-left: 1rem !important;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.table-of-contents__link:hover {
+  color: var(--ifm-color-primary) !important;
+  padding-left: 0.85rem !important;
+}
+
+/* Ensure article stays on top of sidebar when it opens */
+article {
+  position: relative;
+  /* z-index removed to prevent stacking context issues with navbar */
+}
+
+
+/* Enhanced body text - Merriweather for optimal reading */
 .markdown {
-  line-height: 1.8;
+  line-height: 1.75;
   font-size: 1.0625rem;
+  font-family: var(--font-family-serif);
   color: #2c3e50;
+  letter-spacing: -0.01em;
 }
 
 [data-theme='dark'] .markdown {
-  color: #d0d0d0;
+  color: #d4d4d4;
 }
 
 /* Optimal reading width for paragraphs */
-.markdown > p,
-.markdown > ul,
-.markdown > ol,
-.markdown > blockquote {
+.markdown>p,
+.markdown>ul,
+.markdown>ol,
+.markdown>blockquote {
   max-width: 75ch;
 }
 
 /* Better paragraph spacing */
 .markdown p {
-  margin-bottom: 1.5rem;
-  line-height: 1.8;
+  margin-bottom: 1.25rem;
+  line-height: 1.75;
 }
 
 .markdown p:last-child {
   margin-bottom: 0;
+}
+
+/* Headings use Inter for UI feel */
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  font-family: var(--ifm-font-family-base);
 }
 
 /* ============================================================================
@@ -313,12 +365,12 @@ article {
 }
 
 /* Custom bullets for unordered lists */
-.markdown ul > li {
+.markdown ul>li {
   list-style: none;
   padding-left: 0.5rem;
 }
 
-.markdown ul > li::before {
+.markdown ul>li::before {
   content: '▸';
   position: absolute;
   left: -1.5rem;
@@ -327,7 +379,7 @@ article {
   font-size: 1.1em;
 }
 
-[data-theme='dark'] .markdown ul > li::before {
+[data-theme='dark'] .markdown ul>li::before {
   color: #AAAAAA;
 }
 
@@ -336,12 +388,12 @@ article {
   counter-reset: item;
 }
 
-.markdown ol > li {
+.markdown ol>li {
   list-style: none;
   counter-increment: item;
 }
 
-.markdown ol > li::before {
+.markdown ol>li::before {
   content: counter(item) ".";
   position: absolute;
   left: -2rem;
@@ -352,13 +404,13 @@ article {
   text-align: right;
 }
 
-[data-theme='dark'] .markdown ol > li::before {
+[data-theme='dark'] .markdown ol>li::before {
   color: #AAAAAA;
 }
 
 /* Nested lists */
-.markdown li > ul,
-.markdown li > ol {
+.markdown li>ul,
+.markdown li>ol {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
 }
@@ -533,47 +585,57 @@ article {
   border: none;
   height: 1px;
   background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(0, 31, 63, 0.3) 10%,
-    rgba(0, 31, 63, 0.5) 50%,
-    rgba(0, 31, 63, 0.3) 90%,
-    transparent 100%
-  );
+      transparent 0%,
+      rgba(0, 31, 63, 0.3) 10%,
+      rgba(0, 31, 63, 0.5) 50%,
+      rgba(0, 31, 63, 0.3) 90%,
+      transparent 100%);
   margin: 3rem 0;
 }
 
 [data-theme='dark'] .markdown hr {
   background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(170, 170, 170, 0.2) 10%,
-    rgba(170, 170, 170, 0.3) 50%,
-    rgba(170, 170, 170, 0.2) 90%,
-    transparent 100%
-  );
+      transparent 0%,
+      rgba(170, 170, 170, 0.2) 10%,
+      rgba(170, 170, 170, 0.3) 50%,
+      rgba(170, 170, 170, 0.2) 90%,
+      transparent 100%);
 }
 
 /* ============================================================================
-   9. ADMONITIONS / CALLOUT BOXES
+   9. ADMONITIONS / CALLOUT BOXES - GLASSMORPHISM
    ============================================================================ */
 
 .admonition {
   margin: 2rem 0;
   padding: 1.5rem;
-  border-radius: 8px;
+  border-radius: 12px;
   border-left: 4px solid;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  background: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-left-width: 4px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admonition:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 [data-theme='dark'] .admonition {
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-  background: #1a1a1a;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background: rgba(26, 26, 26, 0.6);
+  border-color: rgba(255, 255, 255, 0.05);
+  border-left-width: 4px;
 }
 
 /* Note - Blue */
 .admonition-note {
   border-left-color: #2196F3;
-  background: linear-gradient(135deg, rgba(33, 150, 243, 0.05) 0%, rgba(33, 150, 243, 0.08) 100%);
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.05) 0%, rgba(33, 150, 243, 0.1) 100%);
 }
 
 [data-theme='dark'] .admonition-note {
@@ -583,7 +645,7 @@ article {
 /* Tip - Green */
 .admonition-tip {
   border-left-color: #4CAF50;
-  background: linear-gradient(135deg, rgba(76, 175, 80, 0.05) 0%, rgba(76, 175, 80, 0.08) 100%);
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.05) 0%, rgba(76, 175, 80, 0.1) 100%);
 }
 
 [data-theme='dark'] .admonition-tip {
@@ -593,7 +655,7 @@ article {
 /* Warning - Orange */
 .admonition-warning {
   border-left-color: #FF9800;
-  background: linear-gradient(135deg, rgba(255, 152, 0, 0.05) 0%, rgba(255, 152, 0, 0.08) 100%);
+  background: linear-gradient(135deg, rgba(255, 152, 0, 0.05) 0%, rgba(255, 152, 0, 0.1) 100%);
 }
 
 [data-theme='dark'] .admonition-warning {
@@ -603,7 +665,7 @@ article {
 /* Danger - Red */
 .admonition-danger {
   border-left-color: #F44336;
-  background: linear-gradient(135deg, rgba(244, 67, 54, 0.05) 0%, rgba(244, 67, 54, 0.08) 100%);
+  background: linear-gradient(135deg, rgba(244, 67, 54, 0.05) 0%, rgba(244, 67, 54, 0.1) 100%);
 }
 
 [data-theme='dark'] .admonition-danger {
@@ -613,7 +675,7 @@ article {
 /* Info - Cyan */
 .admonition-info {
   border-left-color: #00BCD4;
-  background: linear-gradient(135deg, rgba(0, 188, 212, 0.05) 0%, rgba(0, 188, 212, 0.08) 100%);
+  background: linear-gradient(135deg, rgba(0, 188, 212, 0.05) 0%, rgba(0, 188, 212, 0.1) 100%);
 }
 
 [data-theme='dark'] .admonition-info {
@@ -630,7 +692,7 @@ article {
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin: 2rem 0;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
 }
 
 [data-theme='dark'] .markdown img {
@@ -638,7 +700,6 @@ article {
 }
 
 .markdown img:hover {
-  transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -721,8 +782,16 @@ article {
    13. TABLE OF CONTENTS (TOC)
    ============================================================================ */
 
+/* Narrower TOC for more content space */
+.theme-doc-toc-desktop {
+  --doc-toc-width: 200px !important;
+  width: var(--doc-toc-width) !important;
+  min-width: var(--doc-toc-width) !important;
+}
+
 .table-of-contents {
-  font-size: 0.9rem;
+  font-size: 0.8125rem;
+  padding-right: 0.5rem;
 }
 
 .table-of-contents__link {

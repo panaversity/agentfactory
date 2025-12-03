@@ -26,7 +26,7 @@ const config: Config = {
   title: "AI Native Software Development",
   tagline:
     "Colearning Agentic AI with Python and TypeScript – Spec Driven Reusable Intelligence",
-  favicon: "img/favicon.ico",
+  favicon: "favicon.png",
 
   // Custom fields accessible via useDocusaurusContext().siteConfig.customFields
   customFields: {
@@ -57,6 +57,33 @@ const config: Config = {
 
   // Add Font Awesome for social media icons
   headTags: [
+    // Favicon and Apple Touch Icon
+    {
+      tagName: "link",
+      attributes: {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: "/favicon.png",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: "/favicon-16.png",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+        href: "/apple-touch-icon.png",
+      },
+    },
     {
       tagName: "link",
       attributes: {
@@ -95,6 +122,29 @@ const config: Config = {
           },
         ]
       : []),
+    // Google Fonts: Inter (UI), Merriweather (Text), JetBrains Mono (Code)
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossorigin: "anonymous",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap",
+      },
+    },
   ],
 
   // Even if you don't use internationalization, you can use this field to set

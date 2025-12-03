@@ -16,6 +16,7 @@
    ============================================================================ */
 
 @media (min-width: 997px) {
+
   /* Override Docusaurus clip-path that breaks sticky positioning */
   [class*='docSidebarContainer'] {
     clip-path: none !important;
@@ -34,7 +35,7 @@
   }
 
   /* Remove default padding since sidebar now starts below navbar */
-  [class*='sidebarViewport'] > [class*='sidebar'] {
+  [class*='sidebarViewport']>[class*='sidebar'] {
     padding-top: 0 !important;
   }
 }
@@ -47,6 +48,9 @@
   background: #fafbfc !important;
   border-right: 1px solid rgba(0, 31, 63, 0.08) !important;
   position: relative;
+  --doc-sidebar-width: 260px !important;
+  width: var(--doc-sidebar-width) !important;
+  min-width: var(--doc-sidebar-width) !important;
 }
 
 [data-theme="dark"] .theme-doc-sidebar-container {
@@ -63,30 +67,29 @@
   right: 0;
   height: 2px;
   background: linear-gradient(90deg,
-    transparent 0%,
-    #001f3f 30%,
-    #003366 50%,
-    #001f3f 70%,
-    transparent 100%
-  );
+      transparent 0%,
+      #001f3f 30%,
+      #003366 50%,
+      #001f3f 70%,
+      transparent 100%);
   opacity: 0.5;
   z-index: 10;
 }
 
 [data-theme="dark"] .theme-doc-sidebar-container::before {
   background: linear-gradient(90deg,
-    transparent 0%,
-    #aaaaaa 30%,
-    #888888 50%,
-    #aaaaaa 70%,
-    transparent 100%
-  );
+      transparent 0%,
+      #aaaaaa 30%,
+      #888888 50%,
+      #aaaaaa 70%,
+      transparent 100%);
   opacity: 0.3;
 }
 
 /* Sidebar inner wrapper */
 .sidebar {
   padding: 1.25rem 0.875rem !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
 /* ============================================================================
@@ -116,6 +119,8 @@
   display: flex !important;
   align-items: center !important;
   padding: 0.75rem 1rem !important;
+  padding-right: 2rem !important;
+  /* Prevent overlap with arrow */
   font-size: 0.8125rem !important;
   font-weight: 600 !important;
   text-transform: uppercase !important;
@@ -171,7 +176,7 @@
   }
 
   /* Collapsed state - arrow points right */
-  .menu__list-item--collapsed > .menu__link--sublist::after {
+  .menu__list-item--collapsed>.menu__link--sublist::after {
     transform: rotate(-90deg);
   }
 }
@@ -207,22 +212,22 @@
 }
 
 /* Active/expanded category */
-.menu__list-item:not(.menu__list-item--collapsed) > .menu__link--sublist {
+.menu__list-item:not(.menu__list-item--collapsed)>.menu__link--sublist {
   background: rgba(0, 31, 63, 0.08) !important;
   border-color: rgba(0, 31, 63, 0.1) !important;
 }
 
-[data-theme="dark"] .menu__list-item:not(.menu__list-item--collapsed) > .menu__link--sublist {
+[data-theme="dark"] .menu__list-item:not(.menu__list-item--collapsed)>.menu__link--sublist {
   background: rgba(170, 170, 170, 0.1) !important;
   border-color: rgba(170, 170, 170, 0.15) !important;
 }
 
-.menu__list-item:not(.menu__list-item--collapsed) > .menu__link--sublist::before {
+.menu__list-item:not(.menu__list-item--collapsed)>.menu__link--sublist::before {
   background: #0066cc;
   box-shadow: 0 0 6px rgba(0, 102, 204, 0.25);
 }
 
-[data-theme="dark"] .menu__list-item:not(.menu__list-item--collapsed) > .menu__link--sublist::before {
+[data-theme="dark"] .menu__list-item:not(.menu__list-item--collapsed)>.menu__link--sublist::before {
   background: #6699cc;
   box-shadow: 0 0 6px rgba(102, 153, 204, 0.25);
 }
@@ -271,12 +276,12 @@
 .menu__link .menu__caret,
 .menu__link svg,
 .menu__link .icon,
-.menu__link--sublist > svg,
+.menu__link--sublist>svg,
 .menu__link--sublist svg,
-.menu__link--sublist > .menu__link--sublist-caret,
+.menu__link--sublist>.menu__link--sublist-caret,
 [class*="collapsibleButton"],
-[class*="menuLinkText"] + svg,
-.menu__list-item-collapsible > .menu__caret,
+[class*="menuLinkText"]+svg,
+.menu__list-item-collapsible>.menu__caret,
 .menu__list-item-collapsible svg {
   display: none !important;
 }

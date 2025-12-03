@@ -4,19 +4,27 @@
  * work well for content-centric websites.
  */
 
- @tailwind base;
- @tailwind components;
- @tailwind utilities;
+@import "./sidebar.css";
+@import "./doc-pages.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* You can override the default Infima variables here. */
 /* Polar Night Palette: Deep Navy with Sophisticated Grays - Bold & Elegant */
 :root {
     /* Polar Night Primary Colors */
-    --polar-night-deep: #001f3f; /* Deep Navy */
-    --polar-night-charcoal: #111111; /* Dark Charcoal */
-    --polar-night-gray: #aaaaaa; /* Medium Gray */
-    --polar-night-light: #dddddd; /* Light Gray */
-    --polar-night-white: #ffffff; /* Pure White */
+    --polar-night-deep: #001f3f;
+    /* Deep Navy */
+    --polar-night-charcoal: #111111;
+    /* Dark Charcoal */
+    --polar-night-gray: #aaaaaa;
+    /* Medium Gray */
+    --polar-night-light: #dddddd;
+    /* Light Gray */
+    --polar-night-white: #ffffff;
+    /* Pure White */
 
     /* Infima Color Mapping */
     --ifm-color-primary: #001f3f;
@@ -35,8 +43,12 @@
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
     --ifm-heading-font-weight: 600;
     --ifm-font-family-base:
-        -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+        'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
         system-ui, sans-serif;
+    --font-family-serif:
+        'Merriweather', Georgia, 'Times New Roman', serif;
+    --ifm-font-family-monospace:
+        'JetBrains Mono', 'SF Mono', Monaco, Consolas, 'Courier New', monospace;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -91,6 +103,333 @@ pre code {
 }
 
 /* ============================================
+   ZEN/FOCUS MODE — Distraction-free reading
+   ============================================ */
+
+/* Hide navigation elements and pagination in focus mode */
+body.zen-mode .navbar,
+body.zen-mode .theme-doc-sidebar-container,
+body.zen-mode .theme-doc-toc-desktop,
+body.zen-mode .pagination-nav,
+body.zen-mode footer {
+    display: none !important;
+}
+
+/* Subtle warm background for reduced eye strain */
+body.zen-mode {
+    background: #faf9f7 !important;
+}
+
+[data-theme="dark"] body.zen-mode {
+    background: #1a1918 !important;
+}
+
+/* Center the content */
+body.zen-mode .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+}
+
+body.zen-mode .row {
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0 !important;
+}
+
+body.zen-mode .col {
+    max-width: 100% !important;
+    flex: unset !important;
+    padding: 0 !important;
+}
+
+/* Main content area — generous padding, optimal width */
+body.zen-mode main.docMainContainer {
+    max-width: 720px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 4rem 2.5rem !important;
+}
+
+/* Enhanced typography for focus mode */
+body.zen-mode .markdown {
+    font-size: 1.125rem !important;
+    line-height: 1.9 !important;
+    letter-spacing: 0.01em !important;
+}
+
+body.zen-mode .markdown p {
+    margin-bottom: 1.5rem !important;
+}
+
+body.zen-mode .markdown h1 {
+    font-size: 2.5rem !important;
+    margin-bottom: 2.5rem !important;
+}
+
+body.zen-mode .markdown h2 {
+    font-size: 1.875rem !important;
+    margin-top: 3.5rem !important;
+    margin-bottom: 1.75rem !important;
+}
+
+body.zen-mode .markdown h3 {
+    font-size: 1.5rem !important;
+    margin-top: 3rem !important;
+}
+
+/* Better code blocks in zen mode */
+body.zen-mode .markdown pre {
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+}
+
+/* Better blockquotes */
+body.zen-mode .markdown blockquote {
+    padding: 1.75rem 2rem !important;
+    margin: 2.5rem 0 !important;
+}
+
+/* Better images */
+body.zen-mode .markdown img {
+    margin: 2.5rem auto !important;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    body.zen-mode main.docMainContainer {
+        padding: 2rem 1.5rem !important;
+        max-width: 100% !important;
+    }
+
+    body.zen-mode .markdown {
+        font-size: 1.0625rem !important;
+        line-height: 1.8 !important;
+    }
+}
+
+/* Hide default Docusaurus back-to-top button (we use custom one) */
+[class*="backToTopButton"] {
+    display: none !important;
+}
+
+/* ============================================
+   FLOATING ACTION BUTTONS
+   ============================================ */
+
+.floating-actions {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 9999;
+}
+
+/* Back to top button */
+.back-to-top-button {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+    animation: fade-in-up 0.2s ease;
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.back-to-top-button:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+[data-theme="dark"] .back-to-top-button {
+    background: rgba(40, 40, 40, 0.95);
+    color: #e0e0e0;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .back-to-top-button:hover {
+    background: rgba(50, 50, 50, 1);
+}
+
+/* Tooltip for back to top */
+.back-to-top-button::before {
+    content: attr(title);
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5rem 0.75rem;
+    background: #1a1a1a;
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    white-space: nowrap;
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top-button::after {
+    content: '';
+    position: absolute;
+    right: calc(100% + 4px);
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: #1a1a1a;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+.back-to-top-button:hover::before,
+.back-to-top-button:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+[data-theme="dark"] .back-to-top-button::before {
+    background: #f0f0f0;
+    color: #1a1a1a;
+}
+
+[data-theme="dark"] .back-to-top-button::after {
+    border-left-color: #f0f0f0;
+}
+
+/* Focus mode toggle button */
+.zen-mode-toggle {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+}
+
+/* Tooltip */
+.zen-mode-toggle::before {
+    content: attr(title);
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5rem 0.75rem;
+    background: #1a1a1a;
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    white-space: nowrap;
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Tooltip arrow */
+.zen-mode-toggle::after {
+    content: '';
+    position: absolute;
+    right: calc(100% + 4px);
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: #1a1a1a;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+.zen-mode-toggle:hover::before,
+.zen-mode-toggle:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.zen-mode-toggle:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+[data-theme="dark"] .zen-mode-toggle {
+    background: rgba(40, 40, 40, 0.95);
+    color: #e0e0e0;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .zen-mode-toggle:hover {
+    background: rgba(50, 50, 50, 1);
+}
+
+[data-theme="dark"] .zen-mode-toggle::before {
+    background: #f0f0f0;
+    color: #1a1a1a;
+}
+
+[data-theme="dark"] .zen-mode-toggle::after {
+    border-left-color: #f0f0f0;
+}
+
+/* Active state when in zen mode */
+body.zen-mode .zen-mode-toggle {
+    background: var(--ifm-color-primary);
+    color: white;
+    border-color: transparent;
+}
+
+body.zen-mode .zen-mode-toggle:hover {
+    background: var(--ifm-color-primary-dark);
+}
+
+/* Main Content Layout Adjustments */
+main.docMainContainer {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+@media (max-width: 996px) {
+    main.docMainContainer {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}
+
+/* ============================================
    NAVBAR - SOLID BACKGROUND, NO TRANSPARENCY
    Using native Docusaurus variables + direct overrides
    ============================================ */
@@ -103,7 +442,8 @@ pre code {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     box-shadow: var(--ifm-navbar-shadow, 0 1px 2px rgba(0, 0, 0, 0.05)) !important;
-    z-index: 200;
+    z-index: 1000 !important;
+    /* High z-index to stay above content */
 }
 
 /* Dark mode navbar - MUST use higher specificity */
@@ -121,6 +461,7 @@ html[data-theme="dark"] .navbar,
 
 /* Mobile navbar - ensure solid background on all screen sizes */
 @media (max-width: 996px) {
+
     /* Light mode mobile */
     .navbar {
         background: #ffffff !important;
@@ -192,11 +533,9 @@ html[data-theme="dark"] .navbar,
 
 /* Navbar CTA button */
 .navbar-cta-button {
-    background: linear-gradient(
-        135deg,
-        var(--ifm-color-primary) 0%,
-        var(--ifm-color-primary-dark) 100%
-    ) !important;
+    background: linear-gradient(135deg,
+            var(--ifm-color-primary) 0%,
+            var(--ifm-color-primary-dark) 100%) !important;
     color: white !important;
     padding: 0.75rem 1.25rem !important;
     border-radius: 50px !important;
@@ -249,12 +588,10 @@ html[data-theme="dark"] .navbar,
 
 /* Footer Container - LIGHT MODE: Much darker navy for clear separation */
 .footer {
-    background: linear-gradient(
-        180deg,
-        #001428 0%,
-        #000f1f 50%,
-        #000a15 100%
-    ) !important;
+    background: linear-gradient(180deg,
+            #001428 0%,
+            #000f1f 50%,
+            #000a15 100%) !important;
     border-top: 1px solid rgba(170, 170, 170, 0.2) !important;
     padding: 4rem 2rem 2rem !important;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
@@ -271,21 +608,17 @@ html[data-theme="dark"] .navbar,
     right: 0;
     bottom: 0;
     background-image:
-        radial-gradient(
-            circle at 20% 50%,
+        radial-gradient(circle at 20% 50%,
             rgba(170, 170, 170, 0.03) 0%,
-            transparent 50%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
+            transparent 50%),
+        radial-gradient(circle at 80% 80%,
             rgba(221, 221, 221, 0.02) 0%,
-            transparent 50%
-        );
+            transparent 50%);
     pointer-events: none;
     z-index: 0;
 }
 
-.footer > * {
+.footer>* {
     position: relative;
     z-index: 1;
 }
@@ -298,53 +631,43 @@ html[data-theme="dark"] .navbar,
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(170, 170, 170, 0.3) 10%,
-        rgba(221, 221, 221, 0.4) 50%,
-        rgba(170, 170, 170, 0.3) 90%,
-        transparent 100%
-    );
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(170, 170, 170, 0.3) 10%,
+            rgba(221, 221, 221, 0.4) 50%,
+            rgba(170, 170, 170, 0.3) 90%,
+            transparent 100%);
     opacity: 1;
     z-index: 1;
 }
 
 /* DARK MODE: Charcoal footer for contrast */
 [data-theme="dark"] .footer {
-    background: linear-gradient(
-        180deg,
-        #1a1a1a 0%,
-        #111111 50%,
-        #0a0a0a 100%
-    ) !important;
+    background: linear-gradient(180deg,
+            #1a1a1a 0%,
+            #111111 50%,
+            #0a0a0a 100%) !important;
     border-top: 1px solid rgba(170, 170, 170, 0.12) !important;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .footer::after {
     background-image:
-        radial-gradient(
-            circle at 20% 50%,
+        radial-gradient(circle at 20% 50%,
             rgba(170, 170, 170, 0.02) 0%,
-            transparent 50%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
+            transparent 50%),
+        radial-gradient(circle at 80% 80%,
             rgba(221, 221, 221, 0.015) 0%,
-            transparent 50%
-        );
+            transparent 50%);
 }
 
 [data-theme="dark"] .footer::before {
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(170, 170, 170, 0.2) 10%,
-        rgba(170, 170, 170, 0.3) 50%,
-        rgba(170, 170, 170, 0.2) 90%,
-        transparent 100%
-    );
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(170, 170, 170, 0.2) 10%,
+            rgba(170, 170, 170, 0.3) 50%,
+            rgba(170, 170, 170, 0.2) 90%,
+            transparent 100%);
 }
 
 /* Footer Links Container */
@@ -371,6 +694,7 @@ html[data-theme="dark"] .navbar,
         flex-direction: column;
         gap: 2rem;
     }
+
     .footer__col {
         max-width: unset;
         min-width: 0;
@@ -557,37 +881,48 @@ html[data-theme="dark"] .navbar,
     vertical-align: middle;
     transition: color 0.3s;
 }
+
 .footer__link-social .footer-social-icon.youtube {
     color: #ff0000;
 }
+
 .footer__link-social .footer-social-icon.linkedin {
     color: #0077b5;
 }
+
 .footer__link-social .footer-social-icon.instagram {
     color: #e1306c;
 }
+
 .footer__link-social .footer-social-icon.facebook {
     color: #1877f3;
 }
+
 .footer__link-social .footer-social-icon.github {
     color: #181717;
 }
+
 /* Vibrant color even on dark mode */
 [data-theme="dark"] .footer__link-social .footer-social-icon.youtube {
     color: #ff3c3c;
 }
+
 [data-theme="dark"] .footer__link-social .footer-social-icon.linkedin {
     color: #2997f7;
 }
+
 [data-theme="dark"] .footer__link-social .footer-social-icon.instagram {
     color: #ff68a3;
 }
+
 [data-theme="dark"] .footer__link-social .footer-social-icon.facebook {
     color: #3b93f7;
 }
+
 [data-theme="dark"] .footer__link-social .footer-social-icon.github {
     color: #f3f3f3;
 }
+
 /* Add some hover flair */
 .footer__link-social:hover .footer-social-icon {
     filter: brightness(1.1) drop-shadow(0 0 6px rgba(0, 0, 0, 0.12));
@@ -659,6 +994,7 @@ html[data-theme="dark"] .navbar,
 
 /* Global touch target enforcement for mobile */
 @media screen and (max-width: 768px) {
+
     /* All buttons and links - EXCEPT navbar custom components */
     button:not([class*="searchTrigger"]):not([class*="signInLink"]):not([class*="getStartedButton"]):not([class*="userButton"]):not([class*="clearButton"]),
     a[role="button"],
@@ -754,6 +1090,7 @@ button[class*="toggleButton"] {
    MOBILE SIDEBAR — Premium navigation drawer styling
    ============================================================================ */
 @media (max-width: 996px) {
+
     /* Docusaurus navbar sidebar for mobile */
     .navbar-sidebar {
         z-index: 1000 !important;
@@ -794,7 +1131,7 @@ button[class*="toggleButton"] {
     }
 
     /* Brand link in mobile sidebar (logo + title wrapper) */
-    .navbar-sidebar__brand > a,
+    .navbar-sidebar__brand>a,
     .navbar-sidebar__brand .navbar__brand {
         display: flex !important;
         align-items: center !important;
@@ -826,8 +1163,8 @@ button[class*="toggleButton"] {
     }
 
     /* Right side buttons container (theme toggle + close) */
-    .navbar-sidebar__brand > div,
-    .navbar-sidebar__brand > button:last-child {
+    .navbar-sidebar__brand>div,
+    .navbar-sidebar__brand>button:last-child {
         flex-shrink: 0 !important;
     }
 
@@ -940,7 +1277,7 @@ button[class*="toggleButton"] {
     .navbar-sidebar [class*="collapsibleButton"],
     .navbar-sidebar .menu__list-item-collapsible svg,
     .navbar-sidebar .menu__link--sublist svg,
-    .navbar-sidebar .menu__link--sublist > svg,
+    .navbar-sidebar .menu__link--sublist>svg,
     .navbar-sidebar [class*="expandButton"],
     .navbar-sidebar [class*="menuCaret"] {
         display: none !important;
@@ -949,7 +1286,7 @@ button[class*="toggleButton"] {
     /* Keep only ONE theme toggle in mobile sidebar header - hide duplicates */
     .navbar-sidebar__brand [class*="colorMode"]:not(:first-of-type),
     .navbar-sidebar__brand [class*="toggle"]:not(:last-of-type):not(.navbar-sidebar__close),
-    .navbar-sidebar__brand > div > [class*="toggle"]:not(:first-child) {
+    .navbar-sidebar__brand>div>[class*="toggle"]:not(:first-child) {
         display: none !important;
     }
 
@@ -970,12 +1307,12 @@ button[class*="toggleButton"] {
     }
 
     /* When sidebar is open, hide main content */
-    .navbar--fixed-top.navbar-sidebar--show ~ .main-wrapper {
+    .navbar--fixed-top.navbar-sidebar--show~.main-wrapper {
         display: none !important;
     }
 
     /* Also hide footer when sidebar is open */
-    .navbar--fixed-top.navbar-sidebar--show ~ footer {
+    .navbar--fixed-top.navbar-sidebar--show~footer {
         display: none !important;
     }
 }
