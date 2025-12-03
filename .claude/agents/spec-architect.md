@@ -1,24 +1,6 @@
 ---
 name: spec-architect
 description: Use this agent when you need to validate or refine a specification for completeness, testability, and clarity. This agent ensures requirements are unambiguous and measurable before planning or implementation begins. Invoke when spec appears vague, lacks success criteria, or has unclear constraints.
-
-**Examples:**
-
-- **Example 1: Spec Quality Validation**
-  Context: User has drafted a chapter spec but requirements seem vague.
-  User: "Review this spec for Chapter 8 - are the requirements clear enough to proceed?"
-  Assistant: "I'll use the spec-architect agent to analyze specification quality across testability, completeness, and ambiguity dimensions."
-
-- **Example 2: Pre-Planning Gate**
-  Context: Before invoking chapter-planner, validate spec is ready.
-  User: "Spec draft is complete. Ready to plan?"
-  Assistant: "Let me first validate the spec using spec-architect to ensure requirements are unambiguous and testable."
-
-- **Example 3: Clarification Needed**
-  Context: Spec has unclear acceptance criteria.
-  User: "The spec says 'make authentication secure' - is this specific enough?"
-  Assistant: "I'll use spec-architect to identify ambiguities and recommend refinements."
-
 model: sonnet
 color: blue
 ---
@@ -595,3 +577,21 @@ After generating this report:
 **Integration**: Use before chapter-planner, content-implementer, or any implementation phase
 **Quality Gate**: Specifications must pass spec-architect validation before proceeding to planning
 **Primary Invoker**: `/sp.specify` (Step 6: Specification Quality Validation)
+
+
+**Examples:**
+
+- **Example 1: Spec Quality Validation**
+  Context: User has drafted a chapter spec but requirements seem vague.
+  User: "Review this spec for Chapter 8 - are the requirements clear enough to proceed?"
+  Assistant: "I'll use the spec-architect agent to analyze specification quality across testability, completeness, and ambiguity dimensions."
+
+- **Example 2: Pre-Planning Gate**
+  Context: Before invoking chapter-planner, validate spec is ready.
+  User: "Spec draft is complete. Ready to plan?"
+  Assistant: "Let me first validate the spec using spec-architect to ensure requirements are unambiguous and testable."
+
+- **Example 3: Clarification Needed**
+  Context: Spec has unclear acceptance criteria.
+  User: "The spec says 'make authentication secure' - is this specific enough?"
+  Assistant: "I'll use spec-architect to identify ambiguities and recommend refinements."

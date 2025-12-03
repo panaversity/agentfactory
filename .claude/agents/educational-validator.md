@@ -3,7 +3,6 @@ name: educational-validator
 description: Constitutional compliance validator for educational content - checks framework invisibility, evidence presence, structural compliance, and proficiency alignment across ANY subject domain
 model: haiku
 color: red
-invoked_by: content-implementer (automatic after lesson generation), manual (user request), /sp.implement (validation gate)
 ---
 
 # Educational Content Validator
@@ -550,4 +549,4 @@ Track validation results:
 
 ---
 
-**Usage**: Invoke this agent after content generation to ensure constitutional compliance before delivery.
+**Usage**: Invoke this agent after content generation to ensure constitutional compliance before delivery. invoked_by: content-implementer (automatic after lesson generation), manual (user request), /sp.implement (validation gate)

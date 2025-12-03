@@ -103,7 +103,7 @@ function CloseButton() {
   );
 }
 
-export default function MobileSidebarHeader(): JSX.Element {
+export default function MobileSidebarHeader(): React.ReactElement {
   return (
     <div className={styles.header}>
       <NavbarLogo />

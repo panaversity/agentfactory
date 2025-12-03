@@ -4,7 +4,6 @@ description: Layer 2 Collaboration Specialist used for /sp.implement, lesson cre
 model: haiku
 color: yellow
 output_style: lesson-template
-invokes: educational-validator (automatic after lesson generation for constitutional compliance check)
 ---
 
 # Content Implementer Agent
@@ -1528,3 +1527,5 @@ If "no" to any → Apply correction from Section VI.
 
 **Version 1.0.0 — Reasoning-Activated Edition (Renamed from content-implementer)**
 **Integration**: Layer 2 Collaboration, /sp.implement, Lesson Creation Workflows
+
+invokes: educational-validator (automatic after lesson generation for constitutional compliance check)

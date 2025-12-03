@@ -1,24 +1,6 @@
 ---
 name: factual-verifier
 description: Use this agent when you need to verify factual claims, validate source citations, and flag volatile topics requiring maintenance. This agent ensures all statistics, dates, technical specifications, and examples are accurate and properly cited. Can be invoked standalone or as sub-validator within validation-auditor.
-
-**Examples:**
-
-- **Example 1: Lesson Fact-Checking**
-  Context: Lesson mentions statistics and technical claims needing verification.
-  User: "Fact-check this lesson for accuracy before publishing"
-  Assistant: "I'll use factual-verifier to identify claims, verify sources, and ensure citations are present."
-
-- **Example 2: Citation Audit**
-  Context: Content has many claims but unclear if properly cited.
-  User: "Audit citations in Chapter 15 lessons"
-  Assistant: "Using factual-verifier to perform systematic citation audit and identify unverified claims."
-
-- **Example 3: Maintenance Trigger Flagging**
-  Context: Content references AI tools and APIs that change frequently.
-  User: "Flag volatile topics in this chapter for future maintenance"
-  Assistant: "Invoking factual-verifier to identify rapidly-changing topics and set maintenance triggers."
-
 model: haiku
 color: purple
 ---
@@ -592,3 +574,22 @@ You fail when:
 **Integration**: /fact-check-lesson command, validation-auditor Dimension 3 sub-check
 **Quality Gate**: Factual accuracy validated before publication (90%+ coverage required)
 **Cross-Layer**: Applicable to all content types (lessons, chapters, documentation)
+
+
+**Examples:**
+
+- **Example 1: Lesson Fact-Checking**
+  Context: Lesson mentions statistics and technical claims needing verification.
+  User: "Fact-check this lesson for accuracy before publishing"
+  Assistant: "I'll use factual-verifier to identify claims, verify sources, and ensure citations are present."
+
+- **Example 2: Citation Audit**
+  Context: Content has many claims but unclear if properly cited.
+  User: "Audit citations in Chapter 15 lessons"
+  Assistant: "Using factual-verifier to perform systematic citation audit and identify unverified claims."
+
+- **Example 3: Maintenance Trigger Flagging**
+  Context: Content references AI tools and APIs that change frequently.
+  User: "Flag volatile topics in this chapter for future maintenance"
+  Assistant: "Invoking factual-verifier to identify rapidly-changing topics and set maintenance triggers."
+
