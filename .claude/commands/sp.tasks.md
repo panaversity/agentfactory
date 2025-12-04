@@ -68,6 +68,54 @@ The tasks.md should be immediately executable - each task must be specific enoug
 
 **Tests are OPTIONAL**: Only generate test tasks if explicitly requested in the feature specification or if user requests TDD approach.
 
+### CLI-First Principle (REQUIRED)
+
+**ALWAYS prefer CLI commands over manual file creation** when tools exist for scaffolding:
+
+| Tool | CLI Command | NOT Manual Creation |
+|------|-------------|---------------------|
+| **Alembic** | `alembic init <dir>` | ❌ Don't manually create env.py, script.py.mako |
+| **Alembic** | `alembic revision --autogenerate -m "msg"` | ❌ Don't manually create migration files |
+| **uv** | `uv add <package>` | ❌ Don't manually edit pyproject.toml dependencies |
+| **pytest** | `pytest --collect-only` | ❌ Don't guess test discovery |
+| **pnpm/npm** | `pnpm add <package>` | ❌ Don't manually edit package.json |
+
+**Task Format for CLI Operations**:
+```text
+- [ ] T00X Use `<cli command>` to <action>. Verify output with `<verification command>`.
+```
+
+**Example**:
+```text
+- [ ] T002 Use `alembic init src/app/migrations` to scaffold migrations directory. Verify with `ls src/app/migrations/`.
+- [ ] T009 Use `alembic revision --autogenerate -m "initial schema"` to generate migration. Review generated file for CHECK constraints.
+```
+
+### Documentation Lookup Principle (REQUIRED)
+
+**ALWAYS reference documentation tools** when tasks involve unfamiliar libraries or complex patterns:
+
+| Library | Task Must Include |
+|---------|-------------------|
+| SQLAlchemy 2.0 async | `**Doc**: Fetch SQLAlchemy docs via Context7 for async patterns` |
+| Alembic async | `**Doc**: Fetch Alembic docs via Context7 for async migration setup` |
+| prometheus-client | `**Doc**: Fetch prometheus-client docs via Context7 for metric types` |
+| hypothesis | `**Doc**: Fetch hypothesis docs via Context7 for property strategies` |
+| FastAPI | `**Doc**: Fetch FastAPI docs via Context7 for dependency injection` |
+| Pydantic v2 | `**Doc**: Fetch Pydantic docs via Context7 for model_validator patterns` |
+| Any new library | `**Doc**: Fetch <library> docs via Context7 before implementation` |
+
+**Task Format for Doc Lookup**:
+```text
+- [ ] T00X Create <file> with <functionality>. **Doc**: Fetch <library> docs via Context7 for <specific pattern>.
+```
+
+**Example**:
+```text
+- [ ] T005 Create `src/database/models.py` with FileJournal SQLAlchemy model. **Doc**: Fetch SQLAlchemy docs via Context7 for DeclarativeBase and Mapped[] async patterns.
+- [ ] T034 Create `tests/property/test_invariants.py` with hypothesis property tests. **Doc**: Fetch hypothesis docs via Context7 for composite strategies.
+```
+
 ### Checklist Format (REQUIRED)
 
 Every task MUST strictly follow this format:
