@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 interface ToastProps {
   message: string;
@@ -12,6 +13,12 @@ interface ToastProps {
 export function Toast({ message, type = "success", duration = 5000, onClose }: ToastProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [isExiting, setIsExiting] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Wait for client-side mount to use portal
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -25,7 +32,7 @@ export function Toast({ message, type = "success", duration = 5000, onClose }: T
     return () => clearTimeout(timer);
   }, [duration, onClose]);
 
-  if (!isVisible) return null;
+  if (!isVisible || !mounted) return null;
 
   const styles = {
     success: {
@@ -62,12 +69,12 @@ export function Toast({ message, type = "success", duration = 5000, onClose }: T
 
   const style = styles[type];
 
-  return (
+  const toastContent = (
     <div
-      className={`fixed top-6 right-6 z-50 transition-all duration-400 ${
+      className={`fixed bottom-6 right-6 z-[9999] transition-all duration-400 ${
         isExiting
-          ? "opacity-0 translate-y-[-20px] scale-95"
-          : "opacity-100 translate-y-0 scale-100 animate-in slide-in-from-top-4"
+          ? "opacity-0 translate-y-[20px] scale-95"
+          : "opacity-100 translate-y-0 scale-100 animate-in slide-in-from-bottom-4"
       }`}
     >
       {/* Glow effect */}
@@ -219,6 +226,9 @@ export function Toast({ message, type = "success", duration = 5000, onClose }: T
       `}</style>
     </div>
   );
+
+  // Render to document.body via portal to escape any parent containers
+  return createPortal(toastContent, document.body);
 }
 
 interface ToastContainerProps {
@@ -228,7 +238,7 @@ interface ToastContainerProps {
 
 export function ToastContainer({ toasts, onRemove }: ToastContainerProps) {
   return (
-    <div className="fixed top-6 right-6 z-50 flex flex-col gap-4">
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col-reverse gap-4">
       {toasts.map((toast, index) => (
         <div
           key={toast.id}

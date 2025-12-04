@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function AuthLayout({
   children,
 }: {
@@ -7,9 +9,9 @@ export default function AuthLayout({
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Animated background mesh */}
       <div className="absolute inset-0 gradient-mesh opacity-60" />
-      
+
       {/* Subtle grid pattern */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `
@@ -23,11 +25,16 @@ export default function AuthLayout({
       <div className="max-w-md lg:max-w-lg w-full relative z-10">
         {/* Logo/Brand */}
         <div className="text-center mb-10 animate-in slide-in-from-top">
-          <h1 className="text-4xl font-bold mb-2">
-            <span className="text-gradient">
-              {process.env.NEXT_PUBLIC_APP_NAME || "Panaversity SSO"}
-            </span>
-          </h1>
+          <div className="flex justify-center mb-4">
+            <Image
+              src="/logo.webp"
+              alt="Panaversity"
+              width={280}
+              height={70}
+              className="h-16 w-auto"
+              priority
+            />
+          </div>
           <p className="text-sm text-slate-600 font-medium tracking-wide">
             {process.env.NEXT_PUBLIC_APP_DESCRIPTION || "Secure Single Sign-On"}
           </p>

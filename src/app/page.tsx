@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { LogoutButton } from "@/components/logout-button";
 import { HomePageStyles } from "@/components/home-page-styles";
+import Image from "next/image";
 
 export default async function HomePage() {
   const session = await auth.api.getSession({
@@ -42,9 +43,16 @@ export default async function HomePage() {
         <div className="max-w-lg w-full relative z-10">
           {/* Logo/Brand - matches auth pages */}
           <div className="text-center mb-10 animate-in slide-in-from-top">
-            <h1 className="text-4xl font-bold mb-2">
-              <span className="text-gradient">{appName}</span>
-            </h1>
+            <div className="flex justify-center mb-4">
+              <Image
+                src="/logo.webp"
+                alt="Panaversity"
+                width={280}
+                height={70}
+                className="h-16 w-auto"
+                priority
+              />
+            </div>
             <p className="text-sm text-slate-600 font-medium tracking-wide">
               {appDescription}
             </p>

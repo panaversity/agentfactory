@@ -159,6 +159,11 @@ export const auth = betterAuth({
       // TODO: Migrate to member.metadata in Proposal 001 (tenant-specific fields)
       softwareBackground: { type: "string", required: false },
       hardwareTier: { type: "string", required: false },
+      // Additional profile fields (003-user-profile-fields)
+      gender: { type: "string", required: false },
+      fatherName: { type: "string", required: false },
+      city: { type: "string", required: false },
+      country: { type: "string", required: false },
     },
   },
 
@@ -520,6 +525,11 @@ export const auth = betterAuth({
           // Temporary: RoboLearn-specific fields (TODO: move to member.metadata in Proposal 001)
           software_background: user.softwareBackground || null,
           hardware_tier: user.hardwareTier || null,
+          // Additional profile fields (003-user-profile-fields)
+          gender: user.gender || null,
+          father_name: user.fatherName || null,
+          city: user.city || null,
+          country: user.country || null,
         };
       },
     }),
