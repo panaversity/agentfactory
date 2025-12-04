@@ -9,6 +9,7 @@ class MCPHttpClient {
   constructor(config = {}) {
     this.serverUrl = config.serverUrl || 'http://localhost:8000/mcp';
     this.bookId = config.bookId || 'ai-native-dev';
+    this.apiKey = config.apiKey || null; // API key for authenticated requests
     this.messageId = 0;
   }
 
@@ -33,12 +34,19 @@ class MCPHttpClient {
 
     console.log(`[MCP HTTP] Calling ${toolName}...`);
 
+    const headers = {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    };
+
+    // Add Authorization header if API key is configured
+    if (this.apiKey) {
+      headers['Authorization'] = `Bearer ${this.apiKey}`;
+    }
+
     const response = await fetch(this.serverUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
+      headers,
       body: JSON.stringify(request),
     });
 
@@ -135,12 +143,18 @@ class MCPHttpClient {
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
+        const pingHeaders = {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        };
+
+        if (this.apiKey) {
+          pingHeaders['Authorization'] = `Bearer ${this.apiKey}`;
+        }
+
         const response = await fetch(this.serverUrl, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
+          headers: pingHeaders,
           body: JSON.stringify({
             jsonrpc: '2.0',
             id: 0,
