@@ -40,6 +40,27 @@ export const user = pgTable("user", {
   country: text("country"),
 });
 
+export const session = pgTable(
+  "session",
+  {
+    id: text("id").primaryKey(),
+    expiresAt: timestamp("expires_at").notNull(),
+    token: text("token").notNull().unique(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at")
+      .$onUpdate(() => /* @__PURE__ */ new Date())
+      .notNull(),
+    ipAddress: text("ip_address"),
+    userAgent: text("user_agent"),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    impersonatedBy: text("impersonated_by"),
+    activeOrganizationId: text("active_organization_id"),
+  },
+  (table) => [index("session_userId_idx").on(table.userId)]
+);
+
 export const account = pgTable(
   "account",
   {
@@ -61,7 +82,7 @@ export const account = pgTable(
       .$onUpdate(() => /* @__PURE__ */ new Date())
       .notNull(),
   },
-  (table) => [index("account_userId_idx").on(table.userId)],
+  (table) => [index("account_userId_idx").on(table.userId)]
 );
 
 export const verification = pgTable(
@@ -77,7 +98,7 @@ export const verification = pgTable(
       .$onUpdate(() => /* @__PURE__ */ new Date())
       .notNull(),
   },
-  (table) => [index("verification_identifier_idx").on(table.identifier)],
+  (table) => [index("verification_identifier_idx").on(table.identifier)]
 );
 
 export const jwks = pgTable("jwks", {
@@ -104,7 +125,7 @@ export const oauthApplication = pgTable(
     createdAt: timestamp("created_at"),
     updatedAt: timestamp("updated_at"),
   },
-  (table) => [index("oauthApplication_userId_idx").on(table.userId)],
+  (table) => [index("oauthApplication_userId_idx").on(table.userId)]
 );
 
 export const oauthAccessToken = pgTable(
@@ -126,7 +147,7 @@ export const oauthAccessToken = pgTable(
   (table) => [
     index("oauthAccessToken_clientId_idx").on(table.clientId),
     index("oauthAccessToken_userId_idx").on(table.userId),
-  ],
+  ]
 );
 
 export const oauthConsent = pgTable(
@@ -145,7 +166,7 @@ export const oauthConsent = pgTable(
   (table) => [
     index("oauthConsent_clientId_idx").on(table.clientId),
     index("oauthConsent_userId_idx").on(table.userId),
-  ],
+  ]
 );
 
 export const organization = pgTable("organization", {
@@ -173,7 +194,7 @@ export const member = pgTable(
   (table) => [
     index("member_organizationId_idx").on(table.organizationId),
     index("member_userId_idx").on(table.userId),
-  ],
+  ]
 );
 
 export const invitation = pgTable(
@@ -195,7 +216,7 @@ export const invitation = pgTable(
   (table) => [
     index("invitation_organizationId_idx").on(table.organizationId),
     index("invitation_email_idx").on(table.email),
-  ],
+  ]
 );
 
 export const apikey = pgTable(
@@ -228,10 +249,11 @@ export const apikey = pgTable(
   (table) => [
     index("apikey_key_idx").on(table.key),
     index("apikey_userId_idx").on(table.userId),
-  ],
+  ]
 );
 
 export const userRelations = relations(user, ({ many }) => ({
+  sessions: many(session),
   accounts: many(account),
   oauthApplications: many(oauthApplication),
   oauthAccessTokens: many(oauthAccessToken),
@@ -239,6 +261,13 @@ export const userRelations = relations(user, ({ many }) => ({
   members: many(member),
   invitations: many(invitation),
   apikeys: many(apikey),
+}));
+
+export const sessionRelations = relations(session, ({ one }) => ({
+  user: one(user, {
+    fields: [session.userId],
+    references: [user.id],
+  }),
 }));
 
 export const accountRelations = relations(account, ({ one }) => ({
@@ -257,7 +286,7 @@ export const oauthApplicationRelations = relations(
     }),
     oauthAccessTokens: many(oauthAccessToken),
     oauthConsents: many(oauthConsent),
-  }),
+  })
 );
 
 export const oauthAccessTokenRelations = relations(
@@ -271,7 +300,7 @@ export const oauthAccessTokenRelations = relations(
       fields: [oauthAccessToken.userId],
       references: [user.id],
     }),
-  }),
+  })
 );
 
 export const oauthConsentRelations = relations(oauthConsent, ({ one }) => ({
