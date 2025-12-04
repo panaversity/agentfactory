@@ -91,7 +91,14 @@ async function testTenantClaims() {
   console.log('software_background:', userinfo.software_background);
   console.log('hardware_tier:', userinfo.hardware_tier);
 
-  // Verify claims exist
+  console.log('\n--- Additional Profile Claims (003-user-profile-fields) ---');
+  console.log('gender:', userinfo.gender);
+  console.log('father_name:', userinfo.father_name);
+  console.log('city:', userinfo.city);
+  console.log('country:', userinfo.country);
+  console.log('phone_number:', userinfo.phone_number);
+
+  // Verify tenant claims exist
   const hasTenantClaims =
     userinfo.hasOwnProperty('tenant_id') &&
     userinfo.hasOwnProperty('organization_ids') &&
@@ -102,7 +109,23 @@ async function testTenantClaims() {
     process.exit(1);
   }
 
+  // Verify additional profile claims are exposed (003-user-profile-fields)
+  // These claims should exist in the response (even if null for users who haven't set them)
+  const hasProfileClaims =
+    userinfo.hasOwnProperty('gender') &&
+    userinfo.hasOwnProperty('father_name') &&
+    userinfo.hasOwnProperty('city') &&
+    userinfo.hasOwnProperty('country') &&
+    userinfo.hasOwnProperty('phone_number');
+
+  if (!hasProfileClaims) {
+    console.error('\nFAIL: Missing additional profile claims in userinfo');
+    console.error('Expected: gender, father_name, city, country, phone_number');
+    process.exit(1);
+  }
+
   console.log('\nPASS: All tenant claims present');
+  console.log('PASS: All additional profile claims present');
 }
 
 testTenantClaims().catch((err) => {

@@ -28,6 +28,11 @@ export const user = pgTable("user", {
   // TODO: Migrate to member.metadata in Proposal 001 (tenant-specific fields)
   softwareBackground: text("software_background"),
   hardwareTier: text("hardware_tier"),
+  // Additional profile fields (003-user-profile-fields)
+  gender: text("gender"),
+  fatherName: text("father_name"),
+  city: text("city"),
+  country: text("country"),
 });
 
 export const session = pgTable(

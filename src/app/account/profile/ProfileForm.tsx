@@ -2,6 +2,11 @@
 
 import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
+import { Toast } from "@/components/toast";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import { CountrySelect } from "react-country-state-city";
+import "react-country-state-city/dist/react-country-state-city.css";
 
 export default function ProfileForm({
   user,
@@ -11,6 +16,12 @@ export default function ProfileForm({
   redirectUrl: string | null;
 }) {
   const [loading, setLoading] = useState(false);
+  const [phoneError, setPhoneError] = useState("");
+  const [toast, setToast] = useState<{ show: boolean; message: string; type: "success" | "error" | "info" }>({
+    show: false,
+    message: "",
+    type: "success"
+  });
   const [formData, setFormData] = useState({
     // OIDC Standard Claims (editable)
     name: user.name || "",
@@ -24,10 +35,25 @@ export default function ProfileForm({
     // Optional: Preferences
     locale: user.locale || "en-US",
     zoneinfo: user.zoneinfo || "America/New_York",
+
+    // Additional Information (003-user-profile-fields)
+    phoneNumber: user.phoneNumber || "",
+    gender: user.gender || "",
+    fatherName: user.fatherName || "",
+    city: user.city || "",
+    country: user.country || "",
   });
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate phone number if provided
+    if (formData.phoneNumber && !isValidPhoneNumber(formData.phoneNumber)) {
+      setPhoneError("Please enter a valid phone number");
+      return;
+    }
+    setPhoneError("");
     setLoading(true);
 
     try {
@@ -40,36 +66,75 @@ export default function ProfileForm({
         hardwareTier: formData.hardwareTier,
         locale: formData.locale,
         zoneinfo: formData.zoneinfo,
+        // Additional fields (003-user-profile-fields)
+        phoneNumber: formData.phoneNumber,
+        gender: formData.gender,
+        fatherName: formData.fatherName,
+        city: formData.city,
+        country: formData.country,
       });
 
       if (error) {
-        alert(`Error: ${error.message || "Failed to update profile"}`);
+        setToast({ show: true, message: error.message || "Failed to update profile", type: "error" });
         setLoading(false);
         return;
       }
 
+      // Show success toast
+      setToast({ show: true, message: "Profile updated successfully!", type: "success" });
+      setLoading(false);
+
       // Better Auth automatically refreshes the session!
-      // No manual refresh needed
+      // Delay redirect/reload to let user see the toast
+      setTimeout(() => {
+        if (redirectUrl) {
+          // Validate redirect URL to prevent open redirect vulnerability
+          const isValidRedirect = (url: string): boolean => {
+            try {
+              const parsed = new URL(url, window.location.origin);
+              return parsed.origin === window.location.origin;
+            } catch {
+              return url.startsWith('/'); // Allow relative URLs
+            }
+          };
 
-      if (redirectUrl) {
-        // Add cache-busting parameter for client app
-        const redirectWithRefresh = redirectUrl.includes("?")
-          ? `${redirectUrl}&refresh=${Date.now()}`
-          : `${redirectUrl}?refresh=${Date.now()}`;
-
-        window.location.href = redirectWithRefresh;
-      } else {
-        // Reload to reflect changes in UI
-        window.location.reload();
-      }
+          if (isValidRedirect(redirectUrl)) {
+            // Add cache-busting parameter for client app
+            const redirectWithRefresh = redirectUrl.includes("?")
+              ? `${redirectUrl}&refresh=${Date.now()}`
+              : `${redirectUrl}?refresh=${Date.now()}`;
+            window.location.href = redirectWithRefresh;
+          } else {
+            // Invalid redirect URL, just reload
+            window.location.reload();
+          }
+        } else {
+          // Reload to reflect changes in UI
+          window.location.reload();
+        }
+      }, 1500);
     } catch (error) {
-      alert("Failed to update profile");
+      setToast({ show: true, message: "Failed to update profile. Please try again.", type: "error" });
       setLoading(false);
     }
   };
 
+  // Common input class for consistency
+  const inputClass = "w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl focus:border-pana-500 focus:ring-4 focus:ring-pana-500/10 transition-all duration-200 bg-white hover:border-slate-300";
+  const selectClass = `${inputClass} cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e')] bg-[length:1.25rem] bg-[right_0.75rem_center] bg-no-repeat`;
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <>
+      {/* Toast Notification */}
+      {toast.show && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast({ ...toast, show: false })}
+        />
+      )}
+
+      <form onSubmit={handleSubmit} className="space-y-8">
       {/* Account Information Section */}
       <section className="space-y-5">
         <div className="border-b-2 border-slate-200 pb-3">
@@ -90,7 +155,7 @@ export default function ProfileForm({
               className="w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl bg-gradient-to-br from-slate-50 to-slate-100/50 text-slate-600 font-medium cursor-not-allowed shadow-inner"
             />
             <div className="absolute right-4 top-1/2 -translate-y-1/2">
-              <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-pana-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
               </svg>
             </div>
@@ -121,7 +186,7 @@ export default function ProfileForm({
             value={formData.name}
             onChange={(e) => setFormData({...formData, name: e.target.value})}
             placeholder="John Doe"
-            className="w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl focus:border-pana-500 focus:ring-4 focus:ring-pana-500/10 transition-all duration-200 bg-white hover:border-slate-300"
+            className={inputClass}
           />
         </div>
 
@@ -136,7 +201,7 @@ export default function ProfileForm({
               value={formData.givenName}
               onChange={(e) => setFormData({...formData, givenName: e.target.value})}
               placeholder="John"
-              className="w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl focus:border-pana-500 focus:ring-4 focus:ring-pana-500/10 transition-all duration-200 bg-white hover:border-slate-300"
+              className={inputClass}
             />
           </div>
           <div className="space-y-3">
@@ -148,10 +213,141 @@ export default function ProfileForm({
               value={formData.familyName}
               onChange={(e) => setFormData({...formData, familyName: e.target.value})}
               placeholder="Doe"
-              className="w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl focus:border-pana-500 focus:ring-4 focus:ring-pana-500/10 transition-all duration-200 bg-white hover:border-slate-300"
+              className={inputClass}
             />
           </div>
         </div>
+      </section>
+
+      {/* Demographics & Contact Section (003-user-profile-fields) */}
+      <section className="space-y-5">
+        <div className="border-b-2 border-slate-200 pb-3">
+          <h3 className="text-lg font-bold text-slate-900 tracking-tight">Demographics & Contact</h3>
+          <p className="text-sm text-slate-600 mt-1">Optional information to personalize your experience</p>
+        </div>
+
+        {/* Contact Subsection */}
+        <div className="pt-2">
+          <p className="text-xs font-semibold text-pana-600 uppercase tracking-wider mb-4">Contact</p>
+        </div>
+        <div className="space-y-3">
+          <label htmlFor="phone-number" className="block text-sm font-semibold text-slate-700">
+            Phone Number
+          </label>
+          <div className="phone-input-wrapper">
+            <PhoneInput
+              id="phone-number"
+              international
+              defaultCountry="PK"
+              value={formData.phoneNumber}
+              onChange={(value) => {
+                const newValue = value || "";
+                setFormData({...formData, phoneNumber: newValue});
+                // Clear error when user enters a valid phone number
+                if (phoneError && newValue && isValidPhoneNumber(newValue)) {
+                  setPhoneError("");
+                }
+              }}
+              className="w-full"
+              inputClassName={inputClass}
+              aria-describedby="phone-help"
+            />
+          </div>
+          {phoneError ? (
+            <p id="phone-help" className="text-xs text-red-600 leading-relaxed flex items-center gap-1.5">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {phoneError}
+            </p>
+          ) : (
+            <p id="phone-help" className="text-xs text-slate-500 leading-relaxed flex items-center gap-1.5">
+              <svg className="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Select your country code and enter phone number
+            </p>
+          )}
+        </div>
+
+        {/* Identity Subsection */}
+        <div className="pt-2">
+          <p className="text-xs font-semibold text-pana-600 uppercase tracking-wider mb-4">Identity</p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="space-y-3">
+            <label htmlFor="gender" className="block text-sm font-semibold text-slate-700">
+              Gender
+            </label>
+            <select
+              id="gender"
+              value={formData.gender}
+              onChange={(e) => setFormData({...formData, gender: e.target.value})}
+              className={selectClass}
+            >
+              <option value="">Select gender...</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+              <option value="prefer_not_to_say">Prefer not to say</option>
+            </select>
+          </div>
+          <div className="space-y-3">
+            <label htmlFor="father-name" className="block text-sm font-semibold text-slate-700">
+              Father's Name
+            </label>
+            <input
+              id="father-name"
+              type="text"
+              value={formData.fatherName}
+              onChange={(e) => setFormData({...formData, fatherName: e.target.value})}
+              placeholder="Enter father's name"
+              maxLength={100}
+              className={inputClass}
+            />
+          </div>
+        </div>
+
+        {/* Location Subsection */}
+        <div className="pt-2">
+          <p className="text-xs font-semibold text-pana-600 uppercase tracking-wider mb-4">Location</p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="space-y-3">
+            <label className="block text-sm font-semibold text-slate-700">
+              Country
+            </label>
+            <CountrySelect
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              onChange={(e: any) => {
+                setFormData({...formData, country: e?.name || ""});
+              }}
+              placeHolder={formData.country || "Select country..."}
+              containerClassName="country-select-container"
+            />
+          </div>
+          <div className="space-y-3">
+            <label htmlFor="city" className="block text-sm font-semibold text-slate-700">
+              City
+            </label>
+            <input
+              id="city"
+              type="text"
+              value={formData.city}
+              onChange={(e) => setFormData({...formData, city: e.target.value})}
+              placeholder="Enter your city..."
+              maxLength={100}
+              className={inputClass}
+            />
+          </div>
+        </div>
+
+        <p className="text-xs text-slate-500 leading-relaxed flex items-center gap-1.5 bg-pana-50/50 p-3 rounded-lg border border-pana-100">
+          <svg className="w-4 h-4 text-pana-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>All additional information fields are optional and help personalize your experience across Panaversity platforms.</span>
+        </p>
       </section>
 
       {/* Learning Profile Section */}
@@ -169,7 +365,7 @@ export default function ProfileForm({
           <select
             value={formData.softwareBackground}
             onChange={(e) => setFormData({...formData, softwareBackground: e.target.value})}
-            className="w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl focus:border-pana-500 focus:ring-4 focus:ring-pana-500/10 transition-all duration-200 bg-white hover:border-slate-300 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e')] bg-[length:1.25rem] bg-[right_0.75rem_center] bg-no-repeat"
+            className={selectClass}
           >
             <option value="beginner">Beginner — Just starting out</option>
             <option value="intermediate">Intermediate — Some experience</option>
@@ -185,7 +381,7 @@ export default function ProfileForm({
           <select
             value={formData.hardwareTier}
             onChange={(e) => setFormData({...formData, hardwareTier: e.target.value})}
-            className="w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl focus:border-pana-500 focus:ring-4 focus:ring-pana-500/10 transition-all duration-200 bg-white hover:border-slate-300 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e')] bg-[length:1.25rem] bg-[right_0.75rem_center] bg-no-repeat"
+            className={selectClass}
           >
             <option value="tier1">Windows PC — Desktop or laptop</option>
             <option value="tier2">Mac — MacBook or iMac</option>
@@ -217,7 +413,7 @@ export default function ProfileForm({
             <select
               value={formData.locale}
               onChange={(e) => setFormData({...formData, locale: e.target.value})}
-              className="w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl focus:border-pana-500 focus:ring-4 focus:ring-pana-500/10 transition-all duration-200 bg-white hover:border-slate-300 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e')] bg-[length:1.25rem] bg-[right_0.75rem_center] bg-no-repeat"
+              className={selectClass}
             >
               <option value="en-US">English (US)</option>
               <option value="en-GB">English (UK)</option>
@@ -234,7 +430,7 @@ export default function ProfileForm({
             <select
               value={formData.zoneinfo}
               onChange={(e) => setFormData({...formData, zoneinfo: e.target.value})}
-              className="w-full px-4 py-3.5 border-2 border-slate-200 rounded-xl focus:border-pana-500 focus:ring-4 focus:ring-pana-500/10 transition-all duration-200 bg-white hover:border-slate-300 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e')] bg-[length:1.25rem] bg-[right_0.75rem_center] bg-no-repeat"
+              className={selectClass}
             >
               <option value="America/New_York">Eastern Time (US)</option>
               <option value="America/Chicago">Central Time (US)</option>
@@ -276,6 +472,91 @@ export default function ProfileForm({
           )}
         </button>
       </div>
-    </form>
+
+      {/* Custom styles for third-party components */}
+      <style jsx global>{`
+        /* Phone Input Styling */
+        .PhoneInput {
+          display: flex;
+          align-items: center;
+        }
+        .PhoneInputCountry {
+          margin-right: 0.75rem;
+        }
+        .PhoneInputCountrySelect {
+          padding: 0.875rem;
+          border: 2px solid #e2e8f0;
+          border-radius: 0.75rem;
+          background: white;
+          cursor: pointer;
+        }
+        .PhoneInputCountrySelect:focus {
+          border-color: #1cd98e;
+          outline: none;
+          box-shadow: 0 0 0 4px rgba(28, 217, 142, 0.1);
+        }
+        .PhoneInputInput {
+          flex: 1;
+          padding: 0.875rem 1rem;
+          border: 2px solid #e2e8f0;
+          border-radius: 0.75rem;
+          background: white;
+          transition: all 0.2s;
+        }
+        .PhoneInputInput:hover {
+          border-color: #cbd5e1;
+        }
+        .PhoneInputInput:focus {
+          border-color: #1cd98e;
+          outline: none;
+          box-shadow: 0 0 0 4px rgba(28, 217, 142, 0.1);
+        }
+
+        /* Country Select Styling */
+        .country-select-container {
+          position: relative;
+        }
+        .country-select-container input {
+          width: 100%;
+          padding: 0.875rem 1rem;
+          border: 2px solid #e2e8f0;
+          border-radius: 0.75rem;
+          background: white;
+          transition: all 0.2s;
+          cursor: pointer;
+        }
+        .country-select-container input:hover {
+          border-color: #cbd5e1;
+        }
+        .country-select-container input:focus {
+          border-color: #1cd98e;
+          outline: none;
+          box-shadow: 0 0 0 4px rgba(28, 217, 142, 0.1);
+        }
+        .country-select-container ul {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          max-height: 200px;
+          overflow-y: auto;
+          background: white;
+          border: 2px solid #e2e8f0;
+          border-radius: 0.75rem;
+          margin-top: 0.25rem;
+          z-index: 50;
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .country-select-container li {
+          padding: 0.75rem 1rem;
+          cursor: pointer;
+          transition: background 0.15s;
+        }
+        .country-select-container li:hover {
+          background: #f0fdf4;
+        }
+      `}</style>
+      </form>
+    </>
   );
 }

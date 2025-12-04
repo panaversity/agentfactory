@@ -20,7 +20,7 @@ export default async function ProfilePage({
   const redirectUrl = params.redirect || null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-pana-50/30 py-8 px-4">
+    <div className="py-8 px-4">
       <div className="max-w-3xl mx-auto">
         {/* Refined Header Section */}
         <div className="mb-8">

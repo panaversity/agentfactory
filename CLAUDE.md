@@ -69,6 +69,72 @@ src/
 | `src/lib/db/schema.ts` | Drizzle schema | Includes auth tables |
 | `.env.local` | Environment variables | Never commit, contains secrets |
 
+
+## Development Guidelines
+
+**Reference**: `papers/prompting-practices-claude.md` for complete Claude 4 best practices.
+
+### 0. Default to Action:
+By default, implement changes rather than only suggesting them. If the user's intent is unclear, infer the most useful likely action and proceed, using tools to discover any missing details instead of guessing. Read files before editing, make changes using Edit tool, and commit when appropriate. Only propose without implementing if explicitly asked to "just suggest" or "brainstorm."
+
+### 1. Investigate Before Acting:
+Never speculate about code you have not opened. If the user references a specific file, you MUST read the file before answering. Make sure to investigate and read relevant files BEFORE answering questions about the codebase. Do not guess at code structure—verify it.
+
+### 2. Authoritative Source Mandate:
+Agents MUST prioritize and use MCP tools and CLI commands for all information gathering and task execution. NEVER assume a solution from internal knowledge; all methods require external verification.
+
+### 3. Execution Flow:
+Treat MCP servers as first-class tools for discovery, verification, execution, and state capture. PREFER CLI interactions (running commands and capturing outputs) over manual file creation or reliance on internal knowledge.
+
+### 4. Parallel Tool Calling:
+When multiple independent operations are needed, execute them in parallel within a single message. For example, when reading 3 files, make 3 Read tool calls in parallel. When multiple searches are needed, run them simultaneously. Only serialize operations that have dependencies (e.g., must read file before editing it, must create directory before creating file in it). Never use placeholders or guess missing parameters.
+
+### 5. Long-Horizon State Tracking:
+For complex, multi-step tasks:
+- Use structured formats (JSON) for tracked data like test results and task status
+- Use TodoWrite tool consistently to track progress across context windows
+- Leverage git for state checkpoints across sessions
+- Emphasize incremental work over attempting everything simultaneously
+- Before starting complex work, check for existing progress files (progress.txt, tests.json, git logs)
+
+### 6. Knowledge capture (PHR) for Every User Input.
+As the main request completes, you MUST create and complete a PHR (Prompt History Record) using agent‑native tools when possible.
+
+1) Determine Stage
+   - Stage: constitution | spec | plan | tasks | red | green | refactor | explainer | misc | general
+
+2) Generate Title and Determine Routing:
+   - Generate Title: 3–7 words (slug for filename)
+   - Route is automatically determined by stage:
+     - `constitution` → `history/prompts/constitution/`
+     - Feature stages → `history/prompts/<feature-name>/` (spec, plan, tasks, red, green, refactor, explainer, misc)
+     - `general` → `history/prompts/general/`
+
+3) Create and Fill PHR (Shell first; fallback agent‑native)
+   - Run: `.specify/scripts/bash/create-phr.sh --title "<title>" --stage <stage> [--feature <name>] --json`
+   - Open the file and fill remaining placeholders (YAML + body), embedding full PROMPT_TEXT (verbatim) and concise RESPONSE_TEXT.
+   - If the script fails:
+     - Read `.specify/templates/phr-template.prompt.md` (or `templates/…`)
+     - Allocate an ID; compute the output path based on stage from step 2; write the file
+     - Fill placeholders and embed full PROMPT_TEXT and concise RESPONSE_TEXT
+
+4) Validate + report
+   - No unresolved placeholders; path under `history/prompts/` and matches stage; stage/title/date coherent; print ID + path + stage + title.
+   - On failure: warn, don't block. Skip only for `/sp.phr`.
+   
+---
+
+## VIII. Execution Contract (Every Request)
+
+1. **Gather Context** (Section I: Read chapter-index.md, README, determine layer)
+2. **State Understanding** (Output context summary, get user confirmation)
+3. **Activate Cognitive Mode** (Teacher, Collaborator, Designer, Validator)
+4. **Apply Tier Complexity** (A2/B1/C2 from chapter-index.md)
+5. **Produce Output** (Aligned with layer + tier)
+6. **Self-Monitor** (Run anti-convergence checklist)
+7. **Document** (PHR for interaction, ADR for significant decisions)
+
+---
 ## Security Guidelines
 
 ### MUST Follow
