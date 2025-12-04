@@ -51,7 +51,8 @@ const createdKeyIds = [];
 // === Test 1: Create API Key - Success ===
 async function testCreateKeySuccess(cookie) {
   try {
-    const response = await fetch(`${AUTH_URL}/api/auth/api-key/create`, {
+    // Use admin-only endpoint (Better Auth's /api-key/create is disabled)
+    const response = await fetch(`${AUTH_URL}/api/admin/api-keys/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +82,8 @@ async function testCreateKeySuccess(cookie) {
 // === Test 2: Create API Key - Fail Without Auth ===
 async function testCreateKeyNoAuth() {
   try {
-    const response = await fetch(`${AUTH_URL}/api/auth/api-key/create`, {
+    // Use admin-only endpoint
+    const response = await fetch(`${AUTH_URL}/api/admin/api-keys/create`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Origin: ORIGIN_HEADER },
       body: JSON.stringify({ name: "unauthorized-key" }),
@@ -97,7 +99,8 @@ async function testCreateKeyNoAuth() {
 // === Test 3: Create API Key - Fail With Empty Name ===
 async function testCreateKeyEmptyName(cookie) {
   try {
-    const response = await fetch(`${AUTH_URL}/api/auth/api-key/create`, {
+    // Use admin-only endpoint
+    const response = await fetch(`${AUTH_URL}/api/admin/api-keys/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -192,7 +195,8 @@ async function testVerifyMissingKeyEndpoint() {
 async function testVerifyKeyInvalid(cookie) {
   try {
     // This test just verifies we can list keys (should have at least 1 from previous test)
-    const response = await fetch(`${AUTH_URL}/api/auth/api-key/list`, {
+    // Use admin-only endpoint
+    const response = await fetch(`${AUTH_URL}/api/admin/api-keys/list`, {
       method: "GET",
       headers: { Cookie: cookie, Origin: ORIGIN_HEADER },
     });
@@ -208,7 +212,8 @@ async function testVerifyKeyInvalid(cookie) {
 // === Test 6: List API Keys ===
 async function testListKeys(cookie) {
   try {
-    const response = await fetch(`${AUTH_URL}/api/auth/api-key/list`, {
+    // Use admin-only endpoint
+    const response = await fetch(`${AUTH_URL}/api/admin/api-keys/list`, {
       method: "GET",
       headers: { Cookie: cookie, Origin: ORIGIN_HEADER },
     });
@@ -231,7 +236,8 @@ async function testRevokeKey(cookie, keyId) {
   }
 
   try {
-    const response = await fetch(`${AUTH_URL}/api/auth/api-key/update`, {
+    // Use admin-only endpoint
+    const response = await fetch(`${AUTH_URL}/api/admin/api-keys/update`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -260,7 +266,8 @@ async function testVerifyRevokedKey(cookie, keyId) {
 
   try {
     // List keys and verify the revoked key shows as disabled
-    const response = await fetch(`${AUTH_URL}/api/auth/api-key/list`, {
+    // Use admin-only endpoint
+    const response = await fetch(`${AUTH_URL}/api/admin/api-keys/list`, {
       method: "GET",
       headers: { Cookie: cookie, Origin: ORIGIN_HEADER },
     });
@@ -282,7 +289,8 @@ async function testDeleteKey(cookie, keyId) {
   }
 
   try {
-    const response = await fetch(`${AUTH_URL}/api/auth/api-key/delete`, {
+    // Use admin-only endpoint
+    const response = await fetch(`${AUTH_URL}/api/admin/api-keys/delete`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -302,7 +310,8 @@ async function testDeleteKey(cookie, keyId) {
 // === Test 10: Create Key With Expiration ===
 async function testCreateKeyWithExpiration(cookie) {
   try {
-    const response = await fetch(`${AUTH_URL}/api/auth/api-key/create`, {
+    // Use admin-only endpoint
+    const response = await fetch(`${AUTH_URL}/api/admin/api-keys/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -335,7 +344,8 @@ async function cleanup(cookie) {
   console.log("\n--- Cleanup ---");
   for (const keyId of createdKeyIds) {
     try {
-      await fetch(`${AUTH_URL}/api/auth/api-key/delete`, {
+      // Use admin-only endpoint
+      await fetch(`${AUTH_URL}/api/admin/api-keys/delete`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,5 +1,5 @@
 import { betterAuth } from "better-auth";
-import { createAuthMiddleware, APIError, getSessionFromCtx } from "better-auth/api";
+// Note: createAuthMiddleware, APIError, getSessionFromCtx removed - using custom endpoints for admin auth
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { oidcProvider } from "better-auth/plugins/oidc-provider";
 import { admin } from "better-auth/plugins/admin";
@@ -145,7 +145,16 @@ export const auth = betterAuth({
 
   // Disable /token endpoint when using OIDC Provider (OAuth equivalent is /oauth2/token)
   // Disable /sign-in/username - users sign in with email only, username is for profiles
-  disabledPaths: ["/token", "/sign-in/username"],
+  // Disable API key management endpoints - use custom admin-only endpoints instead
+  // Note: /api-key/verify is NOT disabled - it's needed for M2M services (handled by custom route)
+  disabledPaths: [
+    "/token",
+    "/sign-in/username",
+    "/api-key/create",  // Use /api/admin/api-keys/create instead
+    "/api-key/delete",  // Use /api/admin/api-keys/delete instead
+    "/api-key/update",  // Use /api/admin/api-keys/update instead
+    "/api-key/list",    // Use /api/admin/api-keys/list instead
+  ],
 
   // OIDC Standard Claims - extends user table with standard profile fields
   user: {
@@ -671,32 +680,8 @@ export const auth = betterAuth({
   // Falls back to memory storage if Redis is not configured
   ...(redisStorage && { secondaryStorage: redisStorage }),
 
-  // Authorization hooks - Restrict sensitive operations to admins only
-  hooks: {
-    before: createAuthMiddleware(async (ctx) => {
-      // Only check admin authorization for API key management endpoints
-      const adminOnlyPaths = ["/api-key/create", "/api-key/update", "/api-key/delete"];
-
-      if (adminOnlyPaths.includes(ctx.path)) {
-        // Use getSessionFromCtx to properly retrieve session from request
-        const session = await getSessionFromCtx(ctx);
-
-        if (!session) {
-          throw new APIError("UNAUTHORIZED", {
-            message: "Authentication required to manage API keys",
-          });
-        }
-
-        // Check if user has admin role
-        const userRole = (session.user as { role?: string })?.role;
-        if (userRole !== "admin") {
-          throw new APIError("FORBIDDEN", {
-            message: "Only administrators can manage API keys",
-          });
-        }
-      }
-    }),
-  },
+  // Note: API key authorization is handled via custom admin endpoints at /api/admin/api-keys/*
+  // Better Auth's /api-key/* endpoints are disabled via disabledPaths above
 });
 
 // Validate default organization at startup

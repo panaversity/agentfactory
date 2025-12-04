@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { authClient } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ApiKeyList } from "./components/api-key-list";
@@ -44,13 +43,18 @@ export default function ServiceKeysPage() {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await authClient.apiKey.list();
-      if (response.error) {
-        setError(response.error.message || "Failed to fetch API keys");
-        setApiKeys([]);
-      } else {
-        setApiKeys((response.data as ApiKey[]) || []);
+      // Use admin-only endpoint instead of Better Auth client
+      const response = await fetch("/api/admin/api-keys/list", {
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || `HTTP ${response.status}`);
       }
+
+      const data = await response.json();
+      setApiKeys((data as ApiKey[]) || []);
     } catch (err: any) {
       setError(err.message || "Failed to fetch API keys");
       setApiKeys([]);
@@ -64,65 +68,72 @@ export default function ServiceKeysPage() {
   }, [fetchApiKeys]);
 
   const handleCreateKey = async (name: string, expiresInDays: number | null) => {
-    try {
-      // Convert days to seconds (Better Auth expects seconds)
-      const expiresInSeconds = expiresInDays ? expiresInDays * 24 * 60 * 60 : undefined;
-      const response = await authClient.apiKey.create({
+    // Convert days to seconds (Better Auth expects seconds)
+    const expiresInSeconds = expiresInDays ? expiresInDays * 24 * 60 * 60 : undefined;
+
+    // Use admin-only endpoint
+    const response = await fetch("/api/admin/api-keys/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({
         name,
         expiresIn: expiresInSeconds,
-      });
+      }),
+    });
 
-      if (response.error) {
-        throw new Error(response.error.message || "Failed to create API key");
-      }
-
-      // Store the key value to display
-      setNewKeyValue(response.data?.key || "");
-      setCreateDialogOpen(false);
-      setDisplayDialogOpen(true);
-
-      // Refresh the list
-      await fetchApiKeys();
-    } catch (err: any) {
-      throw err;
+    if (!response.ok) {
+      const data = await response.json();
+      throw new Error(data.error || "Failed to create API key");
     }
+
+    const data = await response.json();
+
+    // Store the key value to display
+    setNewKeyValue(data?.key || "");
+    setCreateDialogOpen(false);
+    setDisplayDialogOpen(true);
+
+    // Refresh the list
+    await fetchApiKeys();
   };
 
   const handleRevokeKey = async (keyId: string) => {
-    try {
-      const response = await authClient.apiKey.update({
-        keyId,
-        enabled: false,
-      });
+    // Use admin-only endpoint
+    const response = await fetch("/api/admin/api-keys/update", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ keyId, enabled: false }),
+    });
 
-      if (response.error) {
-        throw new Error(response.error.message || "Failed to revoke API key");
-      }
-
-      setRevokeDialogOpen(false);
-      setSelectedKey(null);
-      await fetchApiKeys();
-    } catch (err: any) {
-      throw err;
+    if (!response.ok) {
+      const data = await response.json();
+      throw new Error(data.error || "Failed to revoke API key");
     }
+
+    setRevokeDialogOpen(false);
+    setSelectedKey(null);
+    await fetchApiKeys();
   };
 
   const handleDeleteKey = async (keyId: string) => {
-    try {
-      const response = await authClient.apiKey.delete({
-        keyId,
-      });
+    // Use admin-only endpoint
+    const response = await fetch("/api/admin/api-keys/delete", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ keyId }),
+    });
 
-      if (response.error) {
-        throw new Error(response.error.message || "Failed to delete API key");
-      }
-
-      setDeleteDialogOpen(false);
-      setSelectedKey(null);
-      await fetchApiKeys();
-    } catch (err: any) {
-      throw err;
+    if (!response.ok) {
+      const data = await response.json();
+      throw new Error(data.error || "Failed to delete API key");
     }
+
+    setDeleteDialogOpen(false);
+    setSelectedKey(null);
+    await fetchApiKeys();
   };
 
   const openRevokeDialog = (key: ApiKey) => {
