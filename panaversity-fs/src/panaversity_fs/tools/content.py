@@ -13,6 +13,8 @@ Overlay structure (FR-015):
 - User overlays: books/{book}/users/{user_id}/content/...
 """
 
+from mcp.server.fastmcp.server import Context
+
 from panaversity_fs.app import mcp
 from panaversity_fs.models import ReadContentInput, WriteContentInput, DeleteContentInput, ContentMetadata, ContentScope
 from panaversity_fs.storage import get_operator
@@ -76,7 +78,7 @@ def get_journal_user_id(user_id: str | None) -> str:
         "openWorldHint": False
     }
 )
-async def read_content(params: ReadContentInput) -> str:
+async def read_content(params: ReadContentInput, ctx: Context) -> str:
     """Read markdown content with metadata (FR-009, FR-016 overlay support).
 
     Supports four scopes:
@@ -156,7 +158,6 @@ async def read_content(params: ReadContentInput) -> str:
                 await log_operation(
                     operation=OperationType.READ_CONTENT,
                     path=f"books/{params.book_id}/{params.path}",
-                    agent_id="content-reader",
                     status=OperationStatus.ERROR,
                     error_message=error_msg,
                     book_id=params.book_id,
@@ -211,7 +212,6 @@ async def read_content(params: ReadContentInput) -> str:
             await log_operation(
                 operation=OperationType.READ_CONTENT,
                 path=full_path,
-                agent_id="content-reader",  # TODO: Extract from MCP context
                 status=OperationStatus.SUCCESS,
                 execution_time_ms=execution_time,
                 new_hash=file_hash,  # Include hash for provenance
@@ -302,7 +302,6 @@ async def read_content(params: ReadContentInput) -> str:
             await log_operation(
                 operation=OperationType.READ_CONTENT,
                 path=base_path,
-                agent_id="content-reader",  # TODO: Extract from MCP context
                 status=OperationStatus.SUCCESS,
                 execution_time_ms=execution_time,
                 book_id=params.book_id
@@ -315,7 +314,6 @@ async def read_content(params: ReadContentInput) -> str:
         await log_operation(
             operation=OperationType.READ_CONTENT,
             path=f"books/{params.book_id}/{params.path}",
-            agent_id="content-reader",  # TODO: Extract from MCP context
             status=OperationStatus.ERROR,
             error_message="Content not found",
             book_id=params.book_id,
@@ -333,7 +331,6 @@ async def read_content(params: ReadContentInput) -> str:
         await log_operation(
             operation=OperationType.READ_CONTENT,
             path=f"books/{params.book_id}/{params.path}",
-            agent_id="content-reader",  # TODO: Extract from MCP context
             status=OperationStatus.ERROR,
             error_message=str(e),
             book_id=params.book_id,
@@ -354,7 +351,7 @@ async def read_content(params: ReadContentInput) -> str:
     }
 )
 @instrument_write
-async def write_content(params: WriteContentInput) -> str:
+async def write_content(params: WriteContentInput, ctx: Context) -> str:
     """Write content with journal-backed conflict detection (FR-002, FR-003, FR-004, FR-005, FR-017).
 
     Works for lessons and summaries (ADR-0018).
@@ -433,7 +430,6 @@ async def write_content(params: WriteContentInput) -> str:
             await log_operation(
                 operation=OperationType.WRITE_CONTENT,
                 path=f"books/{params.book_id}/{params.path}",
-                agent_id="content-writer",
                 status=OperationStatus.ERROR,
                 error_message=error_msg,
                 book_id=params.book_id,
@@ -477,7 +473,6 @@ async def write_content(params: WriteContentInput) -> str:
                     await log_operation(
                         operation=OperationType.WRITE_CONTENT,
                         path=full_path,
-                        agent_id="content-writer",  # TODO: Extract from MCP context
                         status=OperationStatus.ERROR,
                         error_message=f"HASH_REQUIRED: Cannot update existing file without expected_hash",
                         book_id=params.book_id,
@@ -490,7 +485,6 @@ async def write_content(params: WriteContentInput) -> str:
                     await log_operation(
                         operation=OperationType.WRITE_CONTENT,
                         path=full_path,
-                        agent_id="content-writer",  # TODO: Extract from MCP context
                         status=OperationStatus.CONFLICT,
                         error_message=f"Hash mismatch: expected {params.expected_hash}, journal has {existing_entry.sha256}",
                         book_id=params.book_id,
@@ -512,7 +506,6 @@ async def write_content(params: WriteContentInput) -> str:
                     await log_operation(
                         operation=OperationType.WRITE_CONTENT,
                         path=full_path,
-                        agent_id="content-writer",  # TODO: Extract from MCP context
                         status=OperationStatus.ERROR,
                         error_message=f"NOT_FOUND: Cannot update non-existent file with expected_hash",
                         book_id=params.book_id,
@@ -539,7 +532,6 @@ async def write_content(params: WriteContentInput) -> str:
                 await log_operation(
                     operation=OperationType.WRITE_CONTENT,
                     path=full_path,
-                    agent_id="content-writer",  # TODO: Extract from MCP context
                     status=OperationStatus.ERROR,
                     error_message=f"Storage write failed: {str(storage_error)}",
                     book_id=params.book_id,
@@ -557,7 +549,6 @@ async def write_content(params: WriteContentInput) -> str:
         await log_operation(
             operation=OperationType.WRITE_CONTENT,
             path=full_path,
-            agent_id="content-writer",  # TODO: Extract from MCP context
             status=OperationStatus.SUCCESS,
             execution_time_ms=execution_time,
             new_hash=new_hash,  # Hash chain: new_hash for this operation
@@ -588,7 +579,6 @@ async def write_content(params: WriteContentInput) -> str:
         await log_operation(
             operation=OperationType.WRITE_CONTENT,
             path=f"books/{params.book_id}/{params.path}",
-            agent_id="content-writer",  # TODO: Extract from MCP context
             status=OperationStatus.ERROR,
             error_message=str(e),
             book_id=params.book_id,
@@ -608,7 +598,7 @@ async def write_content(params: WriteContentInput) -> str:
         "openWorldHint": False
     }
 )
-async def delete_content(params: DeleteContentInput) -> str:
+async def delete_content(params: DeleteContentInput, ctx: Context) -> str:
     """Delete content file (lesson or summary) with overlay support (FR-018).
 
     Idempotent: Deleting non-existent file returns success (R3 invariant).
@@ -657,7 +647,6 @@ async def delete_content(params: DeleteContentInput) -> str:
             await log_operation(
                 operation=OperationType.DELETE_CONTENT,
                 path=f"books/{params.book_id}/{params.path}",
-                agent_id="content-deleter",
                 status=OperationStatus.ERROR,
                 error_message=error_msg,
                 book_id=params.book_id,
@@ -712,7 +701,6 @@ async def delete_content(params: DeleteContentInput) -> str:
         await log_operation(
             operation=OperationType.DELETE_CONTENT,
             path=full_path,
-            agent_id="content-deleter",  # TODO: Extract from MCP context
             status=OperationStatus.SUCCESS,
             execution_time_ms=execution_time,
             new_hash=None,  # Deleted files have no hash
@@ -739,7 +727,6 @@ async def delete_content(params: DeleteContentInput) -> str:
         await log_operation(
             operation=OperationType.DELETE_CONTENT,
             path=f"books/{params.book_id}/{params.path}",
-            agent_id="content-deleter",  # TODO: Extract from MCP context
             status=OperationStatus.ERROR,
             error_message=str(e),
             book_id=params.book_id,

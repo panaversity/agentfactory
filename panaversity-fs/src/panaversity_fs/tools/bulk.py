@@ -5,6 +5,8 @@ Implements MCP tools for bulk operations:
 - plan_build: Compute delta build for CI/CD (FR-025, FR-026)
 """
 
+from mcp.server.fastmcp.server import Context
+
 from panaversity_fs.app import mcp
 from panaversity_fs.models import GetBookArchiveInput, OperationType, OperationStatus, ArchiveScope
 from panaversity_fs.storage import get_operator
@@ -195,7 +197,7 @@ class StreamingArchiveBuffer:
     }
 )
 @instrument_archive(scope="all")
-async def get_book_archive(params: GetBookArchiveInput) -> str:
+async def get_book_archive(params: GetBookArchiveInput, ctx: Context) -> str:
     """Generate streaming ZIP archive with memory cap (FR-011, FR-012, SC-001/R4).
 
     Creates a SINGLE ZIP archive of book content using disk-based streaming.
@@ -345,7 +347,6 @@ async def get_book_archive(params: GetBookArchiveInput) -> str:
         await log_operation(
             operation=OperationType.GET_BOOK_ARCHIVE,
             path=book_path,
-            agent_id="archive-generator",  # TODO: Extract from MCP context (FR-021)
             status=OperationStatus.SUCCESS if status == "success" else OperationStatus.ERROR,
             execution_time_ms=execution_time,
             book_id=params.book_id
@@ -358,7 +359,6 @@ async def get_book_archive(params: GetBookArchiveInput) -> str:
         await log_operation(
             operation=OperationType.GET_BOOK_ARCHIVE,
             path=f"books/{params.book_id}/",
-            agent_id="archive-generator",  # TODO: Extract from MCP context
             status=OperationStatus.ERROR,
             error_message=str(e),
             book_id=params.book_id

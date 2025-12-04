@@ -14,23 +14,55 @@ from sqlalchemy.exc import SQLAlchemyError
 from panaversity_fs.database.connection import get_session
 from panaversity_fs.database.models import AuditLog
 from panaversity_fs.models import OperationType, OperationStatus
+from panaversity_fs.config import get_config
 
 
-def extract_agent_id_from_context() -> str | None:
+# Default agent ID for unauthenticated dev mode
+DEV_MODE_AGENT_ID = "dev-mode-agent"
+
+
+def get_agent_id_from_context() -> str:
     """Extract agent_id from MCP request context (FR-021).
 
-    Currently returns None as we need to integrate with FastMCP's
-    request context. The calling code should provide agent_id explicitly.
+    Uses MCP SDK's auth_context_var to retrieve the authenticated user from the
+    current request. The auth middleware populates this contextvar when a valid
+    Bearer token is provided.
 
-    Future: Hook into FastMCP's context to extract authenticated agent ID
-    from the MCP request headers or auth token.
+    Behavior:
+    - If authenticated: Returns client_id from the verified AccessToken
+    - If not authenticated AND auth is enabled: Raises RuntimeError (FR-021 enforcement)
+    - If not authenticated AND auth is disabled (dev mode): Returns DEV_MODE_AGENT_ID
 
     Returns:
-        Agent ID from context, or None if not available
+        Agent ID from authenticated token, or dev-mode fallback
+
+    Raises:
+        RuntimeError: If auth is enabled but no authenticated user found
     """
-    # TODO: Integrate with FastMCP context when available
-    # For now, callers must provide agent_id explicitly
-    return None
+    # Import here to avoid circular imports and allow graceful fallback
+    try:
+        from mcp.server.auth.middleware.auth_context import get_access_token
+        access_token = get_access_token()
+    except ImportError:
+        # MCP SDK not available (shouldn't happen in normal operation)
+        access_token = None
+
+    if access_token is not None:
+        # Authenticated request - use client_id from verified token
+        return access_token.client_id
+
+    # No authenticated token - check if auth is required
+    config = get_config()
+    if config.auth_enabled:
+        # FR-021: Reject unauthenticated requests in production
+        raise RuntimeError(
+            "FR-021 VIOLATION: Unauthenticated request in production mode. "
+            "All operations require authenticated agent identity. "
+            "Ensure request includes valid Authorization: Bearer <token> header."
+        )
+
+    # Dev mode - return placeholder
+    return DEV_MODE_AGENT_ID
 
 
 def _parse_path_components(full_path: str) -> tuple[str, str, str]:
@@ -67,8 +99,8 @@ def _parse_path_components(full_path: str) -> tuple[str, str, str]:
 async def log_operation(
     operation: OperationType,
     path: str,
-    agent_id: str,
     status: OperationStatus,
+    agent_id: str | None = None,
     error_message: str | None = None,
     execution_time_ms: int | None = None,
     new_hash: str | None = None,
@@ -80,11 +112,16 @@ async def log_operation(
     Append-only INSERT (FR-023) with hash chain linking consecutive operations
     on the same (book_id, path, user_id) tuple (FR-022).
 
+    FR-021 Compliance:
+    - Automatically extracts agent_id from MCP auth context (via contextvar)
+    - In production (auth enabled), rejects if no authenticated identity
+    - In dev mode (auth disabled), uses "dev-mode-agent" placeholder
+
     Args:
         operation: Operation type performed
         path: File path affected (full path or relative)
-        agent_id: Agent/user ID performing operation (FR-021 - must not be 'system' or empty)
         status: Operation result status
+        agent_id: Agent/user ID performing operation (optional - auto-extracted if not provided)
         error_message: Error details if status=error
         execution_time_ms: Operation execution time in milliseconds
         new_hash: SHA256 hash of content after operation (null for delete/read)
@@ -93,16 +130,19 @@ async def log_operation(
 
     Example:
         ```python
+        # Agent ID is auto-extracted from authenticated request context
         await log_operation(
             operation=OperationType.WRITE_CONTENT,
             path="books/ai-native-python/content/01-Part/01-Chapter/01-lesson.md",
-            agent_id="claude-lesson-writer-7",
             status=OperationStatus.SUCCESS,
             execution_time_ms=45,
             new_hash="abc123..."
         )
         ```
     """
+    # FR-021: Use agent_id if provided, otherwise extract from auth context
+    if agent_id is None:
+        agent_id = get_agent_id_from_context()
     try:
         # ALWAYS parse path to get relative path for consistent storage
         # This ensures verify_hash_chain can find entries regardless of how path was passed

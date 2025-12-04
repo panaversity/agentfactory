@@ -1,6 +1,7 @@
 """Pytest configuration and fixtures for PanaversityFS tests.
 
 Updated for FR-002: Journal-backed content operations.
+Updated for FR-021: MCP Context with client_id for audit logging.
 """
 
 import pytest
@@ -10,6 +11,7 @@ import shutil
 import os
 from pathlib import Path
 from datetime import datetime, timezone
+from unittest.mock import MagicMock
 
 # Add src to path
 import sys
@@ -212,3 +214,15 @@ def sample_summary_content():
 
 Key concepts covered in this chapter.
 """
+
+
+@pytest.fixture
+def mock_context():
+    """Create a mock MCP Context object for tool testing.
+
+    FR-021: Tools require Context object for client_id extraction.
+    This fixture provides a mock Context that simulates an authenticated client.
+    """
+    ctx = MagicMock()
+    ctx.client_id = "test-client-id"
+    return ctx

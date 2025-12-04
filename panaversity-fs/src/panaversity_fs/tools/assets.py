@@ -9,6 +9,8 @@ Storage path (ADR-0018 Docusaurus-aligned):
     books/{book_id}/static/{asset_type}/{filename}
 """
 
+from mcp.server.fastmcp.server import Context
+
 from panaversity_fs.app import mcp
 from panaversity_fs.models import (
     UploadAssetInput, GetAssetInput, ListAssetsInput,
@@ -37,7 +39,7 @@ import base64
         "openWorldHint": False
     }
 )
-async def upload_asset(params: UploadAssetInput) -> str:
+async def upload_asset(params: UploadAssetInput, ctx: Context) -> str:
     """Upload binary asset with hybrid pattern (FR-010).
 
     Supports two upload methods:
@@ -137,7 +139,6 @@ async def upload_asset(params: UploadAssetInput) -> str:
             await log_operation(
                 operation=OperationType.UPLOAD_ASSET,
                 path=asset_path,
-                agent_id="asset-uploader",  # TODO: Extract from MCP context
                 status=OperationStatus.SUCCESS,
                 execution_time_ms=execution_time,
                 book_id=params.book_id
@@ -180,7 +181,6 @@ async def upload_asset(params: UploadAssetInput) -> str:
                 await log_operation(
                     operation=OperationType.UPLOAD_ASSET,
                     path=asset_path,
-                    agent_id="asset-uploader",
                     status=OperationStatus.ERROR,
                     error_message="Backend does not support presigned URLs",
                     book_id=params.book_id
@@ -204,7 +204,6 @@ async def upload_asset(params: UploadAssetInput) -> str:
                 await log_operation(
                     operation=OperationType.UPLOAD_ASSET,
                     path=asset_path,
-                    agent_id="asset-uploader",
                     status=OperationStatus.ERROR,
                     error_message="Failed to generate presigned URL",
                     book_id=params.book_id
@@ -222,7 +221,6 @@ async def upload_asset(params: UploadAssetInput) -> str:
             await log_operation(
                 operation=OperationType.UPLOAD_ASSET,
                 path=asset_path,
-                agent_id="asset-uploader",
                 status=OperationStatus.SUCCESS,
                 execution_time_ms=execution_time,
                 book_id=params.book_id
@@ -253,7 +251,6 @@ async def upload_asset(params: UploadAssetInput) -> str:
         await log_operation(
             operation=OperationType.UPLOAD_ASSET,
             path=f"books/{params.book_id}/static/{params.asset_type.value}/{params.filename}",
-            agent_id="asset-uploader",  # TODO: Extract from MCP context
             status=OperationStatus.ERROR,
             error_message=str(e),
             book_id=params.book_id
@@ -272,7 +269,7 @@ async def upload_asset(params: UploadAssetInput) -> str:
         "openWorldHint": False
     }
 )
-async def get_asset(params: GetAssetInput) -> str:
+async def get_asset(params: GetAssetInput, ctx: Context) -> str:
     """Get asset metadata including CDN URL (FR-012).
 
     Optionally include base64-encoded binary data for direct download.
@@ -366,7 +363,6 @@ async def get_asset(params: GetAssetInput) -> str:
         await log_operation(
             operation=OperationType.GET_ASSET,
             path=asset_path,
-            agent_id="asset-reader",  # TODO: Extract from MCP context
             status=OperationStatus.SUCCESS,
             execution_time_ms=execution_time,
             book_id=params.book_id
@@ -379,7 +375,6 @@ async def get_asset(params: GetAssetInput) -> str:
         await log_operation(
             operation=OperationType.GET_ASSET,
             path=f"books/{params.book_id}/static/{params.asset_type.value}/{params.filename}",
-            agent_id="asset-reader",  # TODO: Extract from MCP context
             status=OperationStatus.ERROR,
             error_message="Asset not found",
             book_id=params.book_id
@@ -392,7 +387,6 @@ async def get_asset(params: GetAssetInput) -> str:
         await log_operation(
             operation=OperationType.GET_ASSET,
             path=f"books/{params.book_id}/static/{params.asset_type.value}/{params.filename}",
-            agent_id="asset-reader",  # TODO: Extract from MCP context
             status=OperationStatus.ERROR,
             error_message=str(e),
             book_id=params.book_id
@@ -411,7 +405,7 @@ async def get_asset(params: GetAssetInput) -> str:
         "openWorldHint": False
     }
 )
-async def list_assets(params: ListAssetsInput) -> str:
+async def list_assets(params: ListAssetsInput, ctx: Context) -> str:
     """List assets for a book with optional type filtering (FR-014).
 
     Args:
@@ -526,7 +520,6 @@ async def list_assets(params: ListAssetsInput) -> str:
         await log_operation(
             operation=OperationType.LIST_ASSETS,
             path=f"books/{params.book_id}/static/",
-            agent_id="asset-lister",  # TODO: Extract from MCP context
             status=OperationStatus.SUCCESS,
             execution_time_ms=execution_time,
             book_id=params.book_id
@@ -539,7 +532,6 @@ async def list_assets(params: ListAssetsInput) -> str:
         await log_operation(
             operation=OperationType.LIST_ASSETS,
             path=f"books/{params.book_id}/static/",
-            agent_id="asset-lister",  # TODO: Extract from MCP context
             status=OperationStatus.ERROR,
             error_message=str(e),
             book_id=params.book_id

@@ -7,6 +7,8 @@ Implements two delta detection tools:
 Both support incremental Docusaurus builds.
 """
 
+from mcp.server.fastmcp.server import Context
+
 from panaversity_fs.app import mcp
 from panaversity_fs.models import DeltaBuildInput, PlanBuildInput, OperationType, OperationStatus
 from panaversity_fs.storage import get_operator
@@ -31,7 +33,7 @@ from typing import Optional
         "openWorldHint": False
     }
 )
-async def delta_build(params: DeltaBuildInput) -> str:
+async def delta_build(params: DeltaBuildInput, ctx: Context) -> str:
     """Detect files changed since a given timestamp for incremental builds (FR-025).
 
     Queries the FileJournal to find all content files modified after the specified
@@ -181,7 +183,6 @@ async def delta_build(params: DeltaBuildInput) -> str:
         await log_operation(
             operation=OperationType.DELTA_BUILD,
             path=f"books/{params.book_id}/",
-            agent_id="delta-builder",
             status=OperationStatus.SUCCESS,
             execution_time_ms=execution_time,
             book_id=params.book_id,
@@ -208,7 +209,6 @@ async def delta_build(params: DeltaBuildInput) -> str:
         await log_operation(
             operation=OperationType.DELTA_BUILD,
             path=f"books/{params.book_id}/",
-            agent_id="delta-builder",
             status=OperationStatus.ERROR,
             error_message=f"Invalid timestamp format: {str(e)}",
             book_id=params.book_id
@@ -223,7 +223,6 @@ async def delta_build(params: DeltaBuildInput) -> str:
         await log_operation(
             operation=OperationType.DELTA_BUILD,
             path=f"books/{params.book_id}/",
-            agent_id="delta-builder",
             status=OperationStatus.ERROR,
             error_message=str(e),
             book_id=params.book_id
@@ -325,7 +324,7 @@ async def get_manifest_state(session, manifest_hash: str) -> Optional[dict[str, 
         "openWorldHint": False
     }
 )
-async def plan_build(params: PlanBuildInput) -> str:
+async def plan_build(params: PlanBuildInput, ctx: Context) -> str:
     """Plan incremental build using manifest hash comparison (FR-025, FR-026, FR-027).
 
     Computes current manifest hash and compares to target to determine what changed.
@@ -498,7 +497,6 @@ async def plan_build(params: PlanBuildInput) -> str:
         await log_operation(
             operation=OperationType.PLAN_BUILD,
             path=f"books/{params.book_id}/",
-            agent_id="plan-builder",
             status=OperationStatus.SUCCESS,
             execution_time_ms=execution_time,
             book_id=params.book_id
@@ -532,7 +530,6 @@ async def plan_build(params: PlanBuildInput) -> str:
         await log_operation(
             operation=OperationType.PLAN_BUILD,
             path=f"books/{params.book_id}/",
-            agent_id="plan-builder",
             status=OperationStatus.ERROR,
             error_message=str(e),
             book_id=params.book_id

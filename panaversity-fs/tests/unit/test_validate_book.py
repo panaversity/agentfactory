@@ -14,20 +14,20 @@ class TestValidateBookBasic:
     """Basic tests for validate_book tool."""
 
     @pytest.mark.asyncio
-    async def test_validate_nonexistent_book(self, setup_fs_backend):
+    async def test_validate_nonexistent_book(self, setup_fs_backend, mock_context):
         """Validates that nonexistent book returns error."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
 
         params = ValidateBookInput(book_id=f"nonexistent-{unique_id}")
-        result = await validate_book(params)
+        result = await validate_book(params, mock_context)
         data = json.loads(result)
 
         assert data["valid"] is False
         assert "not found" in data["error"].lower()
 
     @pytest.mark.asyncio
-    async def test_validate_empty_book(self, setup_fs_backend):
+    async def test_validate_empty_book(self, setup_fs_backend, mock_context):
         """Empty book should be valid (vacuously)."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -39,7 +39,7 @@ class TestValidateBookBasic:
         await op.write(f"books/{book_id}/.keep", b"")
 
         params = ValidateBookInput(book_id=book_id)
-        result = await validate_book(params)
+        result = await validate_book(params, mock_context)
         data = json.loads(result)
 
         assert data["valid"] is True
@@ -51,7 +51,7 @@ class TestValidateContentPaths:
     """Tests for content path validation (FR-007)."""
 
     @pytest.mark.asyncio
-    async def test_valid_content_path(self, setup_fs_backend):
+    async def test_valid_content_path(self, setup_fs_backend, mock_context):
         """Valid content paths pass validation."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -66,7 +66,7 @@ class TestValidateContentPaths:
         )
 
         params = ValidateBookInput(book_id=book_id)
-        result = await validate_book(params)
+        result = await validate_book(params, mock_context)
         data = json.loads(result)
 
         assert data["valid"] is True
@@ -74,7 +74,7 @@ class TestValidateContentPaths:
         assert data["summary"]["error_count"] == 0
 
     @pytest.mark.asyncio
-    async def test_valid_summary_path(self, setup_fs_backend):
+    async def test_valid_summary_path(self, setup_fs_backend, mock_context):
         """Valid summary paths pass validation."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -89,7 +89,7 @@ class TestValidateContentPaths:
         )
 
         params = ValidateBookInput(book_id=book_id)
-        result = await validate_book(params)
+        result = await validate_book(params, mock_context)
         data = json.loads(result)
 
         assert data["valid"] is True
@@ -97,7 +97,7 @@ class TestValidateContentPaths:
         assert data["summary"]["error_count"] == 0
 
     @pytest.mark.asyncio
-    async def test_invalid_single_digit_part(self, setup_fs_backend):
+    async def test_invalid_single_digit_part(self, setup_fs_backend, mock_context):
         """Single-digit part number fails validation."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -112,7 +112,7 @@ class TestValidateContentPaths:
         )
 
         params = ValidateBookInput(book_id=book_id)
-        result = await validate_book(params)
+        result = await validate_book(params, mock_context)
         data = json.loads(result)
 
         assert data["valid"] is False
@@ -120,7 +120,7 @@ class TestValidateContentPaths:
         assert "1-Part" in data["errors"][0]["path"] or "content/1" in data["errors"][0]["path"]
 
     @pytest.mark.asyncio
-    async def test_invalid_wrong_prefix(self, setup_fs_backend):
+    async def test_invalid_wrong_prefix(self, setup_fs_backend, mock_context):
         """Wrong prefix (not content/) fails validation."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -135,14 +135,14 @@ class TestValidateContentPaths:
         )
 
         params = ValidateBookInput(book_id=book_id, include_warnings=True)
-        result = await validate_book(params)
+        result = await validate_book(params, mock_context)
         data = json.loads(result)
 
         # File outside content/ or static/ should be a warning
         assert len(data["warnings"]) >= 1
 
     @pytest.mark.asyncio
-    async def test_non_md_file_in_content_warning(self, setup_fs_backend):
+    async def test_non_md_file_in_content_warning(self, setup_fs_backend, mock_context):
         """Non-.md file in content directory generates warning."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -157,7 +157,7 @@ class TestValidateContentPaths:
         )
 
         params = ValidateBookInput(book_id=book_id, include_warnings=True)
-        result = await validate_book(params)
+        result = await validate_book(params, mock_context)
         data = json.loads(result)
 
         # Should have warning about non-markdown file
@@ -169,7 +169,7 @@ class TestValidateAssetPaths:
     """Tests for asset path validation (FR-008)."""
 
     @pytest.mark.asyncio
-    async def test_valid_img_path(self, setup_fs_backend):
+    async def test_valid_img_path(self, setup_fs_backend, mock_context):
         """Valid image path passes validation."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -183,14 +183,14 @@ class TestValidateAssetPaths:
         )
 
         params = ValidateBookInput(book_id=book_id)
-        result = await validate_book(params)
+        result = await validate_book(params, mock_context)
         data = json.loads(result)
 
         assert data["valid"] is True
         assert data["summary"]["asset_files"] == 1
 
     @pytest.mark.asyncio
-    async def test_valid_slides_path(self, setup_fs_backend):
+    async def test_valid_slides_path(self, setup_fs_backend, mock_context):
         """Valid slides path passes validation."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -204,14 +204,14 @@ class TestValidateAssetPaths:
         )
 
         params = ValidateBookInput(book_id=book_id)
-        result = await validate_book(params)
+        result = await validate_book(params, mock_context)
         data = json.loads(result)
 
         assert data["valid"] is True
         assert data["summary"]["asset_files"] == 1
 
     @pytest.mark.asyncio
-    async def test_invalid_asset_type(self, setup_fs_backend):
+    async def test_invalid_asset_type(self, setup_fs_backend, mock_context):
         """Invalid asset type fails validation."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -226,7 +226,7 @@ class TestValidateAssetPaths:
         )
 
         params = ValidateBookInput(book_id=book_id)
-        result = await validate_book(params)
+        result = await validate_book(params, mock_context)
         data = json.loads(result)
 
         assert data["valid"] is False
@@ -238,7 +238,7 @@ class TestValidateStrictMode:
     """Tests for strict mode validation."""
 
     @pytest.mark.asyncio
-    async def test_strict_mode_fails_fast(self, setup_fs_backend):
+    async def test_strict_mode_fails_fast(self, setup_fs_backend, mock_context):
         """Strict mode stops on first error."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -251,7 +251,7 @@ class TestValidateStrictMode:
         await op.write(f"books/{book_id}/content/2-Part/01-Chapter/01-lesson.md", b"Second error")
 
         params = ValidateBookInput(book_id=book_id, strict=True)
-        result = await validate_book(params)
+        result = await validate_book(params, mock_context)
         data = json.loads(result)
 
         assert data["valid"] is False
@@ -261,7 +261,7 @@ class TestValidateStrictMode:
         assert "errors" not in data or len(data.get("errors", [])) <= 1
 
     @pytest.mark.asyncio
-    async def test_non_strict_collects_all_errors(self, setup_fs_backend):
+    async def test_non_strict_collects_all_errors(self, setup_fs_backend, mock_context):
         """Non-strict mode collects all errors."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -274,7 +274,7 @@ class TestValidateStrictMode:
         await op.write(f"books/{book_id}/content/2-Part/01-Chapter/01-lesson.md", b"Second")
 
         params = ValidateBookInput(book_id=book_id, strict=False)
-        result = await validate_book(params)
+        result = await validate_book(params, mock_context)
         data = json.loads(result)
 
         assert data["valid"] is False
@@ -286,7 +286,7 @@ class TestValidateIncludeWarnings:
     """Tests for include_warnings parameter."""
 
     @pytest.mark.asyncio
-    async def test_include_warnings_true(self, setup_fs_backend):
+    async def test_include_warnings_true(self, setup_fs_backend, mock_context):
         """Warnings included when include_warnings=True."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -298,13 +298,13 @@ class TestValidateIncludeWarnings:
         await op.write(f"books/{book_id}/content/01-Part/01-Chapter/notes.txt", b"Warning file")
 
         params = ValidateBookInput(book_id=book_id, include_warnings=True)
-        result = await validate_book(params)
+        result = await validate_book(params, mock_context)
         data = json.loads(result)
 
         assert len(data["warnings"]) >= 1
 
     @pytest.mark.asyncio
-    async def test_include_warnings_false(self, setup_fs_backend):
+    async def test_include_warnings_false(self, setup_fs_backend, mock_context):
         """Warnings excluded when include_warnings=False."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -316,7 +316,7 @@ class TestValidateIncludeWarnings:
         await op.write(f"books/{book_id}/content/01-Part/01-Chapter/notes.txt", b"Warning file")
 
         params = ValidateBookInput(book_id=book_id, include_warnings=False)
-        result = await validate_book(params)
+        result = await validate_book(params, mock_context)
         data = json.loads(result)
 
         assert data["warnings"] == []
@@ -326,7 +326,7 @@ class TestValidateMixedContent:
     """Tests for books with mixed valid/invalid content."""
 
     @pytest.mark.asyncio
-    async def test_mixed_content_reports_all_issues(self, setup_fs_backend):
+    async def test_mixed_content_reports_all_issues(self, setup_fs_backend, mock_context):
         """Mixed valid/invalid content reports accurately."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -342,7 +342,7 @@ class TestValidateMixedContent:
         await op.write(f"books/{book_id}/content/1-Invalid/01-Chapter/01-lesson.md", b"Invalid part")
 
         params = ValidateBookInput(book_id=book_id)
-        result = await validate_book(params)
+        result = await validate_book(params, mock_context)
         data = json.loads(result)
 
         assert data["valid"] is False

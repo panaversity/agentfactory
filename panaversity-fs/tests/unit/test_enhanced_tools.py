@@ -99,14 +99,14 @@ class TestReadContentScope:
     """Tests for read_content scope parameter."""
 
     @pytest.mark.asyncio
-    async def test_scope_file_default(self, book_with_chapters):
+    async def test_scope_file_default(self, book_with_chapters, mock_context):
         """Test scope=file (default) reads single file."""
         params = ReadContentInput(
             book_id="test-book",
             path="content/01-Introduction/01-Getting-Started/01-lesson.md"
         )
 
-        result = await read_content(params)
+        result = await read_content(params, mock_context)
         data = json.loads(result)
 
         assert "content" in data
@@ -117,7 +117,7 @@ class TestReadContentScope:
         assert "path" not in data  # Single file doesn't include path
 
     @pytest.mark.asyncio
-    async def test_scope_file_explicit(self, book_with_chapters):
+    async def test_scope_file_explicit(self, book_with_chapters, mock_context):
         """Test scope=file explicitly set."""
         params = ReadContentInput(
             book_id="test-book",
@@ -125,14 +125,14 @@ class TestReadContentScope:
             scope=ContentScope.FILE
         )
 
-        result = await read_content(params)
+        result = await read_content(params, mock_context)
         data = json.loads(result)
 
         assert "content" in data
         assert "# Lesson 1" in data["content"]
 
     @pytest.mark.asyncio
-    async def test_scope_chapter_reads_all_md_in_chapter(self, book_with_chapters):
+    async def test_scope_chapter_reads_all_md_in_chapter(self, book_with_chapters, mock_context):
         """Test scope=chapter reads all .md files in chapter directory."""
         params = ReadContentInput(
             book_id="test-book",
@@ -140,7 +140,7 @@ class TestReadContentScope:
             scope=ContentScope.CHAPTER
         )
 
-        result = await read_content(params)
+        result = await read_content(params, mock_context)
         data = json.loads(result)
 
         # Should return array
@@ -162,7 +162,7 @@ class TestReadContentScope:
             assert "file_hash_sha256" in item
 
     @pytest.mark.asyncio
-    async def test_scope_chapter_excludes_subdirectories(self, book_with_chapters):
+    async def test_scope_chapter_excludes_subdirectories(self, book_with_chapters, mock_context):
         """Test scope=chapter does NOT include files from subdirectories."""
         # Chapter scope should only include files directly in the chapter,
         # not files in nested subdirectories
@@ -172,7 +172,7 @@ class TestReadContentScope:
             scope=ContentScope.CHAPTER
         )
 
-        result = await read_content(params)
+        result = await read_content(params, mock_context)
         data = json.loads(result)
 
         # All paths should be directly in the chapter directory
@@ -181,7 +181,7 @@ class TestReadContentScope:
             assert "/" not in rel_path, f"Found nested file: {item['path']}"
 
     @pytest.mark.asyncio
-    async def test_scope_part_reads_all_md_in_part(self, book_with_chapters):
+    async def test_scope_part_reads_all_md_in_part(self, book_with_chapters, mock_context):
         """Test scope=part reads all .md files in part directory (recursive)."""
         params = ReadContentInput(
             book_id="test-book",
@@ -189,7 +189,7 @@ class TestReadContentScope:
             scope=ContentScope.PART
         )
 
-        result = await read_content(params)
+        result = await read_content(params, mock_context)
         data = json.loads(result)
 
         # Should return array
@@ -204,7 +204,7 @@ class TestReadContentScope:
         assert "content/01-Introduction/02-Core-Concepts/01-basics.md" in paths
 
     @pytest.mark.asyncio
-    async def test_scope_chapter_sorted_by_path(self, book_with_chapters):
+    async def test_scope_chapter_sorted_by_path(self, book_with_chapters, mock_context):
         """Test scope=chapter results are sorted by path."""
         params = ReadContentInput(
             book_id="test-book",
@@ -212,14 +212,14 @@ class TestReadContentScope:
             scope=ContentScope.CHAPTER
         )
 
-        result = await read_content(params)
+        result = await read_content(params, mock_context)
         data = json.loads(result)
 
         paths = [item["path"] for item in data]
         assert paths == sorted(paths)
 
     @pytest.mark.asyncio
-    async def test_scope_chapter_empty_directory(self, temp_storage):
+    async def test_scope_chapter_empty_directory(self, temp_storage, mock_context):
         """Test scope=chapter on empty directory returns empty array."""
         # Create empty chapter
         empty_chapter = temp_storage / "books" / "empty-book" / "content" / "01-Part" / "01-Chapter"
@@ -232,7 +232,7 @@ class TestReadContentScope:
             scope=ContentScope.CHAPTER
         )
 
-        result = await read_content(params)
+        result = await read_content(params, mock_context)
         data = json.loads(result)
 
         assert isinstance(data, list)
@@ -247,7 +247,7 @@ class TestGetAssetIncludeBinary:
     """Tests for get_asset include_binary parameter."""
 
     @pytest.mark.asyncio
-    async def test_include_binary_false_default(self, book_with_assets):
+    async def test_include_binary_false_default(self, book_with_assets, mock_context):
         """Test include_binary=false (default) returns metadata only."""
         params = GetAssetInput(
             book_id="asset-book",
@@ -255,7 +255,7 @@ class TestGetAssetIncludeBinary:
             filename="test-image.png"
         )
 
-        result = await get_asset(params)
+        result = await get_asset(params, mock_context)
         data = json.loads(result)
 
         assert "cdn_url" in data
@@ -266,7 +266,7 @@ class TestGetAssetIncludeBinary:
         assert data.get("binary_data") is None
 
     @pytest.mark.asyncio
-    async def test_include_binary_true_returns_base64(self, book_with_assets):
+    async def test_include_binary_true_returns_base64(self, book_with_assets, mock_context):
         """Test include_binary=true returns base64-encoded binary data."""
         params = GetAssetInput(
             book_id="asset-book",
@@ -275,7 +275,7 @@ class TestGetAssetIncludeBinary:
             include_binary=True
         )
 
-        result = await get_asset(params)
+        result = await get_asset(params, mock_context)
         data = json.loads(result)
 
         assert "cdn_url" in data
@@ -287,7 +287,7 @@ class TestGetAssetIncludeBinary:
         assert binary_content.startswith(b'\x89PNG')  # PNG magic bytes
 
     @pytest.mark.asyncio
-    async def test_include_binary_pdf_asset(self, book_with_assets):
+    async def test_include_binary_pdf_asset(self, book_with_assets, mock_context):
         """Test include_binary works for non-image assets (PDF)."""
         params = GetAssetInput(
             book_id="asset-book",
@@ -296,7 +296,7 @@ class TestGetAssetIncludeBinary:
             include_binary=True
         )
 
-        result = await get_asset(params)
+        result = await get_asset(params, mock_context)
         data = json.loads(result)
 
         assert data["mime_type"] == "application/pdf"
@@ -315,14 +315,14 @@ class TestListAssetsStaticPath:
     """Tests for list_assets using static/ path (ADR-0018)."""
 
     @pytest.mark.asyncio
-    async def test_list_assets_finds_images(self, book_with_assets):
+    async def test_list_assets_finds_images(self, book_with_assets, mock_context):
         """Test list_assets finds images in static/images/."""
         params = ListAssetsInput(
             book_id="asset-book",
             asset_type=AssetType.IMAGES
         )
 
-        result = await list_assets(params)
+        result = await list_assets(params, mock_context)
         data = json.loads(result)
 
         assert isinstance(data, list)
@@ -333,14 +333,14 @@ class TestListAssetsStaticPath:
         assert "diagram.png" in filenames
 
     @pytest.mark.asyncio
-    async def test_list_assets_finds_slides(self, book_with_assets):
+    async def test_list_assets_finds_slides(self, book_with_assets, mock_context):
         """Test list_assets finds slides in static/slides/."""
         params = ListAssetsInput(
             book_id="asset-book",
             asset_type=AssetType.SLIDES
         )
 
-        result = await list_assets(params)
+        result = await list_assets(params, mock_context)
         data = json.loads(result)
 
         assert isinstance(data, list)
@@ -350,13 +350,13 @@ class TestListAssetsStaticPath:
         assert data[0]["mime_type"] == "application/pdf"
 
     @pytest.mark.asyncio
-    async def test_list_assets_all_types(self, book_with_assets):
+    async def test_list_assets_all_types(self, book_with_assets, mock_context):
         """Test list_assets without filter returns all asset types."""
         params = ListAssetsInput(
             book_id="asset-book"
         )
 
-        result = await list_assets(params)
+        result = await list_assets(params, mock_context)
         data = json.loads(result)
 
         assert isinstance(data, list)
@@ -364,14 +364,14 @@ class TestListAssetsStaticPath:
         assert len(data) == 3
 
     @pytest.mark.asyncio
-    async def test_list_assets_empty_type(self, book_with_assets):
+    async def test_list_assets_empty_type(self, book_with_assets, mock_context):
         """Test list_assets for asset type with no files."""
         params = ListAssetsInput(
             book_id="asset-book",
             asset_type=AssetType.VIDEOS  # No videos uploaded
         )
 
-        result = await list_assets(params)
+        result = await list_assets(params, mock_context)
         data = json.loads(result)
 
         assert isinstance(data, list)
@@ -386,7 +386,7 @@ class TestUploadAssetStaticPath:
     """Tests for upload_asset using static/ path (ADR-0018)."""
 
     @pytest.mark.asyncio
-    async def test_upload_asset_to_static_path(self, temp_storage):
+    async def test_upload_asset_to_static_path(self, temp_storage, mock_context):
         """Test upload_asset writes to static/ (not assets/)."""
         # Create book directory
         (temp_storage / "books" / "upload-test").mkdir(parents=True, exist_ok=True)
@@ -403,7 +403,7 @@ class TestUploadAssetStaticPath:
             binary_data=base64.b64encode(png_data).decode('ascii')
         )
 
-        result = await upload_asset(params)
+        result = await upload_asset(params, mock_context)
         data = json.loads(result)
 
         assert data["status"] == "success"

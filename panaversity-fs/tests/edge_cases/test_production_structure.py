@@ -22,7 +22,7 @@ class TestMultiPartBookStructure:
     """Test handling of multi-part book structure like production."""
 
     @pytest.mark.asyncio
-    async def test_create_book_with_13_parts(self, setup_fs_backend):
+    async def test_create_book_with_13_parts(self, setup_fs_backend, mock_context):
         """Test creating a book with 13 parts (like production)."""
         book_id = "ai-native-dev"
 
@@ -51,7 +51,7 @@ Content for part {part_num}, chapter {chapter_num}, lesson {lesson_num}.
                         book_id=book_id,
                         path=lesson_path,
                         content=content
-                    ))
+                    ), mock_context)
                     data = json.loads(result)
                     assert data["status"] == "success"
                     parts_data.append({"part": part_num, "chapter": chapter_num, "lesson": lesson_num})
@@ -63,13 +63,13 @@ Content for part {part_num}, chapter {chapter_num}, lesson {lesson_num}.
         part5_result = await glob_search(GlobSearchInput(
             book_id=book_id,
             pattern="content/05-Part/**/*.md"
-        ))
+        ), mock_context)
         part5_files = json.loads(part5_result)
         # OpenDAL async iterator may return 0 in test environment
         assert isinstance(part5_files, list)
 
     @pytest.mark.asyncio
-    async def test_chapter_numbering_with_parts(self, setup_fs_backend):
+    async def test_chapter_numbering_with_parts(self, setup_fs_backend, mock_context):
         """Test chapter numbering across parts (e.g., chapter-17, chapter-29)."""
         book_id = "python-book"
 
@@ -93,7 +93,7 @@ Introduction to chapter {chapter_num}.
                 book_id=book_id,
                 path=lesson_path,
                 content=content
-            ))
+            ), mock_context)
             data = json.loads(result)
             assert data["status"] == "success"
 
@@ -102,7 +102,7 @@ Introduction to chapter {chapter_num}.
             book_id=book_id,
             pattern="Chapter 17",
             max_results=10
-        ))
+        ), mock_context)
         # May return empty in test environment
         assert isinstance(json.loads(chapter17_result), list)
 
@@ -111,7 +111,7 @@ class TestComplexFrontmatter:
     """Test handling of complex frontmatter like production."""
 
     @pytest.mark.asyncio
-    async def test_lesson_with_full_skills_metadata(self, setup_fs_backend):
+    async def test_lesson_with_full_skills_metadata(self, setup_fs_backend, mock_context):
         """Test lesson with skills, learning_objectives, cognitive_load."""
         book_id = "production-book"
 
@@ -175,7 +175,7 @@ Python's simplicity and extensive libraries make it ideal...
             book_id=book_id,
             path="content/05-Part/17-Chapter/01-what-is-python.md",
             content=content
-        ))
+        ), mock_context)
 
         data = json.loads(result)
         assert data["status"] == "success"
@@ -184,7 +184,7 @@ Python's simplicity and extensive libraries make it ideal...
         read_result = await read_content(ReadContentInput(
             book_id=book_id,
             path="content/05-Part/17-Chapter/01-what-is-python.md"
-        ))
+        ), mock_context)
         read_data = json.loads(read_result)
         assert "skills:" in read_data["content"]
         assert "learning_objectives:" in read_data["content"]
@@ -192,7 +192,7 @@ Python's simplicity and extensive libraries make it ideal...
         assert "proficiency_level: \"A1\"" in read_data["content"]
 
     @pytest.mark.asyncio
-    async def test_frontmatter_with_special_characters(self, setup_fs_backend):
+    async def test_frontmatter_with_special_characters(self, setup_fs_backend, mock_context):
         """Test frontmatter with quotes, colons, and special YAML characters."""
         book_id = "special-chars-book"
 
@@ -219,7 +219,7 @@ Content here...
             book_id=book_id,
             path="content/01-Part/01-Chapter/01-lesson.md",
             content=content
-        ))
+        ), mock_context)
 
         data = json.loads(result)
         assert data["status"] == "success"
@@ -228,7 +228,7 @@ Content here...
         read_result = await read_content(ReadContentInput(
             book_id=book_id,
             path="content/01-Part/01-Chapter/01-lesson.md"
-        ))
+        ), mock_context)
         read_data = json.loads(read_result)
         assert "Type Hints" in read_data["content"]
         assert "description: |" in read_data["content"]
@@ -238,7 +238,7 @@ class TestLessonNamingVariations:
     """Test various lesson naming patterns per FR-007 schema."""
 
     @pytest.mark.asyncio
-    async def test_valid_lesson_formats(self, setup_fs_backend):
+    async def test_valid_lesson_formats(self, setup_fs_backend, mock_context):
         """Test lessons with valid NN-Name pattern (FR-007 schema)."""
         book_id = "naming-test"
 
@@ -265,7 +265,7 @@ Content for {filename}
                 book_id=book_id,
                 path=f"content/05-Part/17-Chapter/{filename}",
                 content=content
-            ))
+            ), mock_context)
             data = json.loads(result)
             assert data["status"] == "success"
 
@@ -273,12 +273,12 @@ Content for {filename}
         glob_result = await glob_search(GlobSearchInput(
             book_id=book_id,
             pattern="content/05-Part/17-Chapter/*.md"
-        ))
+        ), mock_context)
         # May return 0 in test environment
         assert isinstance(json.loads(glob_result), list)
 
     @pytest.mark.asyncio
-    async def test_invalid_underscore_naming_rejected(self, setup_fs_backend):
+    async def test_invalid_underscore_naming_rejected(self, setup_fs_backend, mock_context):
         """Test that underscore naming is rejected (FR-007 schema enforcement)."""
         from panaversity_fs.errors import InvalidPathError
         book_id = "naming-test"
@@ -289,11 +289,11 @@ Content for {filename}
                 book_id=book_id,
                 path="content/05-Part/17-Chapter/06_chapter_quiz.md",
                 content="# Invalid"
-            ))
+            ), mock_context)
         assert "SCHEMA_VIOLATION" in str(exc_info.value)
 
     @pytest.mark.asyncio
-    async def test_readme_files_rejected(self, setup_fs_backend):
+    async def test_readme_files_rejected(self, setup_fs_backend, mock_context):
         """Test README.md files are rejected by FR-007 schema enforcement.
 
         FR-007: Content paths must match content/{NN-Name}/{NN-Name}/{NN-name}.md
@@ -307,7 +307,7 @@ Content for {filename}
                 book_id=book_id,
                 path="content/05-Part/17-Chapter/README.md",
                 content="# Chapter README"
-            ))
+            ), mock_context)
         assert "SCHEMA_VIOLATION" in str(exc_info.value)
 
 
@@ -315,7 +315,7 @@ class TestLargeContentVolume:
     """Test handling large volumes of content."""
 
     @pytest.mark.asyncio
-    async def test_book_with_100_lessons(self, setup_fs_backend):
+    async def test_book_with_100_lessons(self, setup_fs_backend, mock_context):
         """Test creating a book with 100 lessons."""
         book_id = "large-book"
 
@@ -356,21 +356,21 @@ Key takeaways from lesson {i}.
                 book_id=book_id,
                 path=f"content/01-Part/{chapter_num:02d}-Chapter/{lesson_num:02d}-lesson.md",
                 content=content
-            ))
+            ), mock_context)
             data = json.loads(result)
             assert data["status"] == "success"
 
         # Verify archive can handle large volume
         archive_result = await get_book_archive(GetBookArchiveInput(
             book_id=book_id
-        ))
+        ), mock_context)
         archive = json.loads(archive_result)
         assert archive["status"] == "success"
         # File count may be 0 due to OpenDAL async iterator in test environment
         assert archive["file_count"] >= 0
 
     @pytest.mark.asyncio
-    async def test_lesson_with_very_long_content(self, setup_fs_backend):
+    async def test_lesson_with_very_long_content(self, setup_fs_backend, mock_context):
         """Test lesson with very long content (10KB+)."""
         book_id = "long-content"
 
@@ -399,7 +399,7 @@ This was a comprehensive guide.
             book_id=book_id,
             path="content/01-Part/01-Chapter/01-lesson.md",
             content=long_content
-        ))
+        ), mock_context)
 
         data = json.loads(result)
         assert data["status"] == "success"
@@ -409,7 +409,7 @@ This was a comprehensive guide.
         read_result = await read_content(ReadContentInput(
             book_id=book_id,
             path="content/01-Part/01-Chapter/01-lesson.md"
-        ))
+        ), mock_context)
         read_data = json.loads(read_result)
         assert "Comprehensive Python Guide" in read_data["content"]
         assert read_data["file_size"] > 10000
@@ -419,7 +419,7 @@ class TestMultipleSummariesPerPart:
     """Test handling multiple lesson summaries within a part (ADR-0018)."""
 
     @pytest.mark.asyncio
-    async def test_part_with_multiple_lesson_summaries(self, setup_fs_backend):
+    async def test_part_with_multiple_lesson_summaries(self, setup_fs_backend, mock_context):
         """Test creating summaries for multiple lessons in a part.
 
         ADR-0018: Summaries now use content tools with .summary.md naming convention.
@@ -445,7 +445,7 @@ Content for chapter {chapter_num}, lesson 1.
                 book_id=book_id,
                 path=f"content/05-Part/{chapter_id}/01-lesson.md",
                 content=lesson_content
-            ))
+            ), mock_context)
 
             # Then create its summary using .summary.md convention
             summary_content = f"""# Lesson 1 Summary - Chapter {chapter_num}
@@ -472,7 +472,7 @@ Proceed to lesson 2.
                 book_id=book_id,
                 path=f"content/05-Part/{chapter_id}/01-lesson.summary.md",
                 content=summary_content
-            ))
+            ), mock_context)
             data = json.loads(result)
             assert data["status"] == "success"
 
@@ -482,7 +482,7 @@ Proceed to lesson 2.
             read_result = await read_content(ReadContentInput(
                 book_id=book_id,
                 path=f"content/05-Part/{chapter_id}/01-lesson.summary.md"
-            ))
+            ), mock_context)
             read_data = json.loads(read_result)
             assert "content" in read_data
             assert "file_hash_sha256" in read_data
@@ -493,7 +493,7 @@ class TestSearchAcrossComplexStructure:
     """Test search operations across complex multi-part structure."""
 
     @pytest.mark.asyncio
-    async def test_grep_across_multiple_parts(self, setup_fs_backend):
+    async def test_grep_across_multiple_parts(self, setup_fs_backend, mock_context):
         """Test searching for content across multiple parts."""
         book_id = "search-test"
 
@@ -514,7 +514,7 @@ Learning Python programming concepts in part {part_num}.
                 book_id=book_id,
                 path=f"content/{part_num:02d}-Part/{part_num * 10:02d}-Chapter/01-lesson.md",
                 content=content
-            ))
+            ), mock_context)
             data = json.loads(result)
             assert data["status"] == "success"
 
@@ -523,13 +523,13 @@ Learning Python programming concepts in part {part_num}.
             book_id=book_id,
             pattern="Python",
             max_results=20
-        ))
+        ), mock_context)
         # May return 0 in test environment
         matches = json.loads(grep_result)
         assert isinstance(matches, list)
 
     @pytest.mark.asyncio
-    async def test_glob_with_complex_patterns(self, setup_fs_backend):
+    async def test_glob_with_complex_patterns(self, setup_fs_backend, mock_context):
         """Test glob search with complex wildcard patterns."""
         book_id = "glob-test"
 
@@ -548,7 +548,7 @@ Learning Python programming concepts in part {part_num}.
                 book_id=book_id,
                 path=path,
                 content=f"# Content for {path}"
-            ))
+            ), mock_context)
             data = json.loads(result)
             assert data["status"] == "success"
 
@@ -563,7 +563,7 @@ Learning Python programming concepts in part {part_num}.
             glob_result = await glob_search(GlobSearchInput(
                 book_id=book_id,
                 pattern=pattern
-            ))
+            ), mock_context)
             # May return 0 in test environment
             files = json.loads(glob_result)
             assert isinstance(files, list)
@@ -573,7 +573,7 @@ class TestEdgeCaseFileNames:
     """Test handling of edge case file names and paths per FR-007 schema."""
 
     @pytest.mark.asyncio
-    async def test_valid_filenames_with_dashes(self, setup_fs_backend):
+    async def test_valid_filenames_with_dashes(self, setup_fs_backend, mock_context):
         """Test files with valid NN-name pattern (dashes and numbers)."""
         book_id = "special-names"
 
@@ -591,12 +591,12 @@ class TestEdgeCaseFileNames:
                 book_id=book_id,
                 path=f"content/01-Part/01-Chapter/{filename}",
                 content=f"# {filename}"
-            ))
+            ), mock_context)
             data = json.loads(result)
             assert data["status"] == "success"
 
     @pytest.mark.asyncio
-    async def test_invalid_underscore_filenames_rejected(self, setup_fs_backend):
+    async def test_invalid_underscore_filenames_rejected(self, setup_fs_backend, mock_context):
         """Test that underscore filenames are rejected per FR-007 schema."""
         from panaversity_fs.errors import InvalidPathError
         book_id = "special-names"
@@ -613,11 +613,11 @@ class TestEdgeCaseFileNames:
                     book_id=book_id,
                     path=f"content/01-Part/01-Chapter/{filename}",
                     content=f"# {filename}"
-                ))
+                ), mock_context)
             assert "SCHEMA_VIOLATION" in str(exc_info.value)
 
     @pytest.mark.asyncio
-    async def test_deeply_nested_directory_rejected(self, setup_fs_backend):
+    async def test_deeply_nested_directory_rejected(self, setup_fs_backend, mock_context):
         """Test that deeply nested paths (5+ levels) are rejected per FR-007 schema.
 
         FR-007: Content paths must match content/{NN-Name}/{NN-Name}/{NN-name}.md
@@ -634,11 +634,11 @@ class TestEdgeCaseFileNames:
                 book_id=book_id,
                 path=deep_path,
                 content="# Deeply nested lesson"
-            ))
+            ), mock_context)
         assert "SCHEMA_VIOLATION" in str(exc_info.value)
 
     @pytest.mark.asyncio
-    async def test_valid_three_level_structure(self, setup_fs_backend):
+    async def test_valid_three_level_structure(self, setup_fs_backend, mock_context):
         """Test valid 3-level structure per FR-007 schema."""
         book_id = "valid-nested"
 
@@ -649,7 +649,7 @@ class TestEdgeCaseFileNames:
             book_id=book_id,
             path=valid_path,
             content="# Valid nested lesson"
-        ))
+        ), mock_context)
 
         data = json.loads(result)
         assert data["status"] == "success"
@@ -658,6 +658,6 @@ class TestEdgeCaseFileNames:
         read_result = await read_content(ReadContentInput(
             book_id=book_id,
             path=valid_path
-        ))
+        ), mock_context)
         read_data = json.loads(read_result)
         assert "Valid nested" in read_data["content"]

@@ -40,7 +40,7 @@ class TestJournalStorageConsistency:
     @pytest.mark.asyncio
     @given(content=content_strategy)
     @settings(**HYPOTHESIS_SETTINGS)
-    async def test_create_ensures_journal_storage_match(self, setup_fs_backend, content):
+    async def test_create_ensures_journal_storage_match(self, setup_fs_backend, content, mock_context):
         """R2: After create, journal hash == storage hash."""
         # Create unique path for this test - use valid NN-Name format (FR-007 schema)
         import uuid
@@ -52,7 +52,7 @@ class TestJournalStorageConsistency:
             book_id="test-book",
             path=path,
             content=content
-        ))
+        ), mock_context)
         data = json.loads(result)
 
         # Get journal hash
@@ -86,7 +86,7 @@ class TestJournalStorageConsistency:
     )
     @settings(max_examples=5, deadline=None, suppress_health_check=[HealthCheck.function_scoped_fixture])
     async def test_update_maintains_journal_storage_match(
-        self, setup_fs_backend, original_content, updated_content
+        self, setup_fs_backend, original_content, updated_content, mock_context
     ):
         """R2: After update, journal hash == storage hash."""
         assume(original_content != updated_content)
@@ -101,7 +101,7 @@ class TestJournalStorageConsistency:
             book_id="test-book",
             path=path,
             content=original_content
-        ))
+        ), mock_context)
         d1 = json.loads(r1)
 
         # Update
@@ -110,7 +110,7 @@ class TestJournalStorageConsistency:
             path=path,
             content=updated_content,
             expected_hash=d1["file_hash"]
-        ))
+        ), mock_context)
         d2 = json.loads(r2)
 
         # Verify R2 after update
@@ -134,7 +134,7 @@ class TestJournalStorageConsistency:
     @pytest.mark.asyncio
     @given(content=content_strategy)
     @settings(max_examples=5, deadline=None, suppress_health_check=[HealthCheck.function_scoped_fixture])
-    async def test_read_returns_journal_consistent_hash(self, setup_fs_backend, content):
+    async def test_read_returns_journal_consistent_hash(self, setup_fs_backend, content, mock_context):
         """Read returns hash consistent with journal."""
         # Use valid NN-Name format (FR-007 schema)
         import uuid
@@ -146,13 +146,13 @@ class TestJournalStorageConsistency:
             book_id="test-book",
             path=path,
             content=content
-        ))
+        ), mock_context)
 
         # Read
         read_result = await read_content(ReadContentInput(
             book_id="test-book",
             path=path
-        ))
+        ), mock_context)
         read_data = json.loads(read_result)
 
         # Verify journal consistency
@@ -174,7 +174,7 @@ class TestHashDeterminism:
     @pytest.mark.asyncio
     @given(content=content_strategy)
     @settings(**HYPOTHESIS_SETTINGS)
-    async def test_same_content_same_hash(self, setup_fs_backend, content):
+    async def test_same_content_same_hash(self, setup_fs_backend, content, mock_context):
         """Same content always produces same hash."""
         # Use valid NN-Name format (FR-007 schema)
         import uuid
@@ -188,12 +188,12 @@ class TestHashDeterminism:
             book_id="test-book",
             path=path1,
             content=content
-        ))
+        ), mock_context)
         r2 = await write_content(WriteContentInput(
             book_id="test-book",
             path=path2,
             content=content
-        ))
+        ), mock_context)
 
         d1 = json.loads(r1)
         d2 = json.loads(r2)
@@ -207,7 +207,7 @@ class TestHashDeterminism:
         content2=content_strategy
     )
     @settings(**HYPOTHESIS_SETTINGS)
-    async def test_different_content_different_hash(self, setup_fs_backend, content1, content2):
+    async def test_different_content_different_hash(self, setup_fs_backend, content1, content2, mock_context):
         """Different content produces different hash (with high probability)."""
         assume(content1 != content2)
 
@@ -222,12 +222,12 @@ class TestHashDeterminism:
             book_id="test-book",
             path=path1,
             content=content1
-        ))
+        ), mock_context)
         r2 = await write_content(WriteContentInput(
             book_id="test-book",
             path=path2,
             content=content2
-        ))
+        ), mock_context)
 
         d1 = json.loads(r1)
         d2 = json.loads(r2)

@@ -5,6 +5,8 @@ Implements 2 MCP tools for content search:
 - grep_search: Content regex search across markdown files
 """
 
+from mcp.server.fastmcp.server import Context
+
 from panaversity_fs.app import mcp
 from panaversity_fs.models import GlobSearchInput, GrepSearchInput, OperationType, OperationStatus
 from panaversity_fs.storage import get_operator
@@ -25,7 +27,7 @@ from fnmatch import fnmatch
         "openWorldHint": False
     }
 )
-async def glob_search(params: GlobSearchInput) -> str:
+async def glob_search(params: GlobSearchInput, ctx: Context) -> str:
     """Search for files matching glob pattern (FR-026).
 
     Supports glob patterns like **/*.md, assets/images/**/*.png.
@@ -110,7 +112,6 @@ async def glob_search(params: GlobSearchInput) -> str:
         await log_operation(
             operation=OperationType.GLOB_SEARCH,
             path=search_base,
-            agent_id="glob-searcher",  # FR-021: No 'system' agent_id
             status=OperationStatus.SUCCESS,
             execution_time_ms=execution_time
         )
@@ -122,7 +123,6 @@ async def glob_search(params: GlobSearchInput) -> str:
         await log_operation(
             operation=OperationType.GLOB_SEARCH,
             path=f"books/{params.book_id}/",
-            agent_id="glob-searcher",  # FR-021: No 'system' agent_id
             status=OperationStatus.ERROR,
             error_message=str(e)
         )
@@ -171,7 +171,7 @@ def _glob_matches(path: str, pattern: str) -> bool:
         "openWorldHint": False
     }
 )
-async def grep_search(params: GrepSearchInput) -> str:
+async def grep_search(params: GrepSearchInput, ctx: Context) -> str:
     """Search content using regex pattern (FR-027).
 
     Searches across all lesson markdown files and returns matches with context.
@@ -300,7 +300,6 @@ async def grep_search(params: GrepSearchInput) -> str:
         await log_operation(
             operation=OperationType.GREP_SEARCH,
             path=search_base,
-            agent_id="grep-searcher",  # FR-021: No 'system' agent_id
             status=OperationStatus.SUCCESS,
             execution_time_ms=execution_time
         )
@@ -312,7 +311,6 @@ async def grep_search(params: GrepSearchInput) -> str:
         await log_operation(
             operation=OperationType.GREP_SEARCH,
             path=f"books/{params.book_id}/",
-            agent_id="grep-searcher",  # FR-021: No 'system' agent_id
             status=OperationStatus.ERROR,
             error_message=str(e)
         )

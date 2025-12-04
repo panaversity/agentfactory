@@ -20,7 +20,7 @@ class TestOverlayLatency:
     """
 
     @pytest.fixture
-    async def setup_base_and_overlay(self, setup_fs_backend):
+    async def setup_base_and_overlay(self, setup_fs_backend, mock_context):
         """Create base content and overlay for latency testing."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -42,7 +42,7 @@ class TestOverlayLatency:
             content=overlay_content,
             user_id=user_id
         )
-        await write_content(write_params)
+        await write_content(write_params, mock_context)
 
         return {
             "book_id": book_id,
@@ -51,7 +51,7 @@ class TestOverlayLatency:
         }
 
     @pytest.mark.asyncio
-    async def test_overlay_read_latency_acceptable(self, setup_base_and_overlay):
+    async def test_overlay_read_latency_acceptable(self, setup_base_and_overlay, mock_context):
         """SC-006: Overlay read latency should be under 10ms compared to base.
 
         This test measures the latency difference between:
@@ -68,12 +68,12 @@ class TestOverlayLatency:
         await read_content(ReadContentInput(
             book_id=config["book_id"],
             path=config["path"]
-        ))
+        ), mock_context)
         await read_content(ReadContentInput(
             book_id=config["book_id"],
             path=config["path"],
             user_id=config["user_id"]
-        ))
+        ), mock_context)
 
         # Measure base read latency
         for _ in range(iterations):
@@ -81,7 +81,7 @@ class TestOverlayLatency:
             result = await read_content(ReadContentInput(
                 book_id=config["book_id"],
                 path=config["path"]
-            ))
+            ), mock_context)
             end = time.perf_counter()
             assert "content" in result or "error" not in result.lower()
             base_times.append((end - start) * 1000)  # Convert to ms
@@ -93,7 +93,7 @@ class TestOverlayLatency:
                 book_id=config["book_id"],
                 path=config["path"],
                 user_id=config["user_id"]
-            ))
+            ), mock_context)
             end = time.perf_counter()
             data = json.loads(result)
             assert data["source"] == "overlay"
@@ -114,7 +114,7 @@ class TestOverlayLatency:
         assert latency_diff < 10, f"Overlay adds {latency_diff:.2f}ms latency (>10ms limit)"
 
     @pytest.mark.asyncio
-    async def test_overlay_fallback_latency_acceptable(self, setup_fs_backend):
+    async def test_overlay_fallback_latency_acceptable(self, setup_fs_backend, mock_context):
         """SC-006: Fallback to base (no overlay exists) should be under 10ms compared to direct base read."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -133,13 +133,13 @@ class TestOverlayLatency:
         fallback_times = []
 
         # Warm up
-        await read_content(ReadContentInput(book_id=book_id, path=path))
-        await read_content(ReadContentInput(book_id=book_id, path=path, user_id=user_id))
+        await read_content(ReadContentInput(book_id=book_id, path=path), mock_context)
+        await read_content(ReadContentInput(book_id=book_id, path=path, user_id=user_id), mock_context)
 
         # Measure direct base read
         for _ in range(iterations):
             start = time.perf_counter()
-            await read_content(ReadContentInput(book_id=book_id, path=path))
+            await read_content(ReadContentInput(book_id=book_id, path=path), mock_context)
             end = time.perf_counter()
             base_times.append((end - start) * 1000)
 
@@ -150,7 +150,7 @@ class TestOverlayLatency:
                 book_id=book_id,
                 path=path,
                 user_id=user_id
-            ))
+            ), mock_context)
             end = time.perf_counter()
             data = json.loads(result)
             assert data["source"] == "base"  # Fallback to base
@@ -169,7 +169,7 @@ class TestOverlayLatency:
         assert latency_diff < 10, f"Fallback adds {latency_diff:.2f}ms latency (>10ms limit)"
 
     @pytest.mark.asyncio
-    async def test_many_users_overlay_isolation(self, setup_fs_backend):
+    async def test_many_users_overlay_isolation(self, setup_fs_backend, mock_context):
         """Verify that overlay operations remain fast even with many users."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -190,7 +190,7 @@ class TestOverlayLatency:
                 content=f"# {user}'s content",
                 user_id=user
             )
-            await write_content(write_params)
+            await write_content(write_params, mock_context)
 
         # Measure read time for each user
         read_times = []
@@ -200,7 +200,7 @@ class TestOverlayLatency:
                 book_id=book_id,
                 path=path,
                 user_id=user
-            ))
+            ), mock_context)
             end = time.perf_counter()
             data = json.loads(result)
             assert data["source"] == "overlay"
@@ -218,7 +218,7 @@ class TestOverlayLatency:
         assert avg_time < 20, f"Average read was {avg_time:.2f}ms (>20ms limit)"
 
     @pytest.mark.asyncio
-    async def test_write_overlay_latency(self, setup_fs_backend):
+    async def test_write_overlay_latency(self, setup_fs_backend, mock_context):
         """Verify overlay write latency is acceptable."""
         import uuid
         unique_id = str(uuid.uuid4())[:8]
@@ -244,7 +244,7 @@ class TestOverlayLatency:
                 path=path,
                 content=content,
                 user_id=user_id
-            ))
+            ), mock_context)
             end = time.perf_counter()
 
             assert "success" in result

@@ -11,6 +11,7 @@ Follows MCP SDK best practices:
 import contextlib
 
 from starlette.applications import Starlette
+from starlette.middleware.cors import CORSMiddleware
 from starlette.routing import Mount
 
 from panaversity_fs.app import mcp  # Import from app.py to avoid double-import issue
@@ -45,11 +46,22 @@ async def starlette_lifespan(app: Starlette):
 
 # Create the Starlette app for ASGI servers (uvicorn)
 # Using proper lifespan management for session cleanup
-streamable_http_app = Starlette(
+_starlette_app = Starlette(
     routes=[
         Mount("/", app=mcp.streamable_http_app()),
     ],
     lifespan=starlette_lifespan,
+)
+
+# Wrap with CORS middleware to allow MCP Inspector and other browser-based clients
+# CORS middleware must be applied to allow OPTIONS preflight requests without auth
+# Per MCP SDK docs: https://modelcontextprotocol.io/docs/tools/mcp-python-sdk
+streamable_http_app = CORSMiddleware(
+    _starlette_app,
+    allow_origins=["*"],  # Allow all origins for MCP clients
+    allow_methods=["GET", "POST", "DELETE", "OPTIONS"],
+    allow_headers=["*"],  # Allow Authorization header
+    expose_headers=["Mcp-Session-Id"],
 )
 
 if __name__ == "__main__":

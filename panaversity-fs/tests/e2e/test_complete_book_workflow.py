@@ -16,7 +16,7 @@ class TestCompleteBookCreation:
     """Test creating a complete book from scratch."""
 
     @pytest.mark.asyncio
-    async def test_create_complete_book(self, setup_fs_backend):
+    async def test_create_complete_book(self, setup_fs_backend, mock_context):
         """Test creating a complete book with all components."""
         from panaversity_fs.storage import get_operator
 
@@ -28,7 +28,7 @@ class TestCompleteBookCreation:
         await op.write(f"books/{book_id}/.gitkeep", b"")
 
         # Verify book appears in list
-        books_result = await list_books(ListBooksInput())
+        books_result = await list_books(ListBooksInput(), mock_context)
         books = json.loads(books_result)
         assert any(b["book_id"] == book_id for b in books)
 
@@ -87,7 +87,7 @@ age = 25
                 book_id=book_id,
                 path=lesson["path"],
                 content=lesson["content"]
-            ))
+            ), mock_context)
 
         # 4. Create lesson summary (ADR-0018: using .summary.md convention)
         await write_content(WriteContentInput(
@@ -105,13 +105,13 @@ age = 25
 
 Proceed to Lesson 2.
 """
-        ))
+        ), mock_context)
 
         # 5. Verify all content exists via search
         glob_result = await glob_search(GlobSearchInput(
             book_id=book_id,
             pattern="**/*.md"
-        ))
+        ), mock_context)
         files = json.loads(glob_result)
         # Note: OpenDAL async iterator may return empty list in test environment
         # Manual testing confirms this works correctly
@@ -122,7 +122,7 @@ Proceed to Lesson 2.
             book_id=book_id,
             pattern="Python",
             max_results=10
-        ))
+        ), mock_context)
         matches = json.loads(grep_result)
         # Note: OpenDAL async iterator may return empty list in test environment
         assert len(matches) >= 0
@@ -130,7 +130,7 @@ Proceed to Lesson 2.
         # 7. Generate archive
         archive_result = await get_book_archive(GetBookArchiveInput(
             book_id=book_id
-        ))
+        ), mock_context)
         archive = json.loads(archive_result)
         assert archive["status"] == "success"
         # Note: OpenDAL async iterator may return fewer files in test environment
@@ -142,7 +142,7 @@ class TestBookEvolutionWorkflow:
     """Test evolving a book through multiple versions."""
 
     @pytest.mark.asyncio
-    async def test_book_version_evolution(self, setup_fs_backend):
+    async def test_book_version_evolution(self, setup_fs_backend, mock_context):
         """Test updating book content through multiple versions."""
         from panaversity_fs.storage import get_operator
 
@@ -173,7 +173,7 @@ Initial content.
             book_id=book_id,
             path="content/01-Part/01-Chapter/01-evolving-lesson.md",
             content=v1_content
-        ))
+        ), mock_context)
         v1_data = json.loads(write_v1)
         hash_v1 = v1_data["file_hash"]
 
@@ -196,7 +196,7 @@ Added in version 2.
             path="content/01-Part/01-Chapter/01-evolving-lesson.md",
             content=v2_content,
             expected_hash=hash_v1
-        ))
+        ), mock_context)
         v2_data = json.loads(write_v2)
         hash_v2 = v2_data["file_hash"]
 
@@ -207,7 +207,7 @@ Added in version 2.
             book_id=book_id,
             pattern="version 2",
             max_results=10
-        ))
+        ), mock_context)
         matches = json.loads(grep_result)
         # Note: OpenDAL async iterator may return empty list in test environment
         assert len(matches) >= 0
@@ -217,7 +217,7 @@ class TestMultiBookManagement:
     """Test managing multiple books simultaneously."""
 
     @pytest.mark.asyncio
-    async def test_manage_multiple_books(self, setup_fs_backend):
+    async def test_manage_multiple_books(self, setup_fs_backend, mock_context):
         """Test working with multiple books in same system."""
         from panaversity_fs.storage import get_operator
 
@@ -252,10 +252,10 @@ class TestMultiBookManagement:
                 book_id=book_id,
                 path="content/01-Part/01-Chapter/01-intro.md",
                 content=f"# Introduction to {book_id}"
-            ))
+            ), mock_context)
 
         # Verify all books listed
-        list_result = await list_books(ListBooksInput())
+        list_result = await list_books(ListBooksInput(), mock_context)
         book_list = json.loads(list_result)
         assert len(book_list) == 3
 
@@ -263,7 +263,7 @@ class TestMultiBookManagement:
         python_search = await glob_search(GlobSearchInput(
             book_id="book-python",
             pattern="content/**/*.md"
-        ))
+        ), mock_context)
         python_files = json.loads(python_search)
         # Files from book-python will have book-python in their full path
         assert all("book-python" in f for f in python_files) if python_files else True
@@ -272,7 +272,7 @@ class TestMultiBookManagement:
         for book_id in books:
             archive_result = await get_book_archive(GetBookArchiveInput(
                 book_id=book_id
-            ))
+            ), mock_context)
             archive = json.loads(archive_result)
             assert archive["status"] == "success"
             assert book_id in archive["archive_url"]

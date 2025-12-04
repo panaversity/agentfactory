@@ -11,9 +11,9 @@ class TestListBooks:
     """Test list_books tool (dynamic directory discovery)."""
 
     @pytest.mark.asyncio
-    async def test_list_books_with_books_directory(self, sample_book_data):
+    async def test_list_books_with_books_directory(self, sample_book_data, mock_context):
         """Test listing books by scanning books/ directory."""
-        result = await list_books(ListBooksInput())
+        result = await list_books(ListBooksInput(), mock_context)
 
         data = json.loads(result)
         assert isinstance(data, list)
@@ -25,14 +25,14 @@ class TestListBooks:
         assert book["book_id"] == "test-book"
 
     @pytest.mark.asyncio
-    async def test_list_books_no_books_directory(self, setup_fs_backend):
+    async def test_list_books_no_books_directory(self, setup_fs_backend, mock_context):
         """Test listing books when books/ directory doesn't exist returns empty array."""
-        result = await list_books(ListBooksInput())
+        result = await list_books(ListBooksInput(), mock_context)
         data = json.loads(result)
         assert data == []
 
     @pytest.mark.asyncio
-    async def test_list_books_multiple_books(self, setup_fs_backend):
+    async def test_list_books_multiple_books(self, setup_fs_backend, mock_context):
         """Test listing multiple books from directory."""
         from panaversity_fs.storage import get_operator
 
@@ -44,7 +44,7 @@ class TestListBooks:
         await op.write("books/book-beta/.gitkeep", b"")
         await op.write("books/book-gamma/.gitkeep", b"")
 
-        result = await list_books(ListBooksInput())
+        result = await list_books(ListBooksInput(), mock_context)
         data = json.loads(result)
 
         # Should find all three books
@@ -58,11 +58,11 @@ class TestGetBookArchive:
     """Test get_book_archive tool."""
 
     @pytest.mark.asyncio
-    async def test_generate_archive_with_content(self, sample_book_data):
+    async def test_generate_archive_with_content(self, sample_book_data, mock_context):
         """Test generating archive for book with content."""
         result = await get_book_archive(GetBookArchiveInput(
             book_id=sample_book_data["book_id"]
-        ))
+        ), mock_context)
 
         data = json.loads(result)
         assert data["status"] == "success"
@@ -76,11 +76,11 @@ class TestGetBookArchive:
         assert data["file_count"] >= 0
 
     @pytest.mark.asyncio
-    async def test_archive_includes_metadata(self, sample_book_data):
+    async def test_archive_includes_metadata(self, sample_book_data, mock_context):
         """Test that archive response includes all metadata."""
         result = await get_book_archive(GetBookArchiveInput(
             book_id=sample_book_data["book_id"]
-        ))
+        ), mock_context)
 
         data = json.loads(result)
         required_fields = ["status", "archive_url", "expires_at",
@@ -90,11 +90,11 @@ class TestGetBookArchive:
             assert field in data, f"Missing field: {field}"
 
     @pytest.mark.asyncio
-    async def test_archive_empty_book(self, setup_fs_backend):
+    async def test_archive_empty_book(self, setup_fs_backend, mock_context):
         """Test generating archive for empty book."""
         result = await get_book_archive(GetBookArchiveInput(
             book_id="empty-book"
-        ))
+        ), mock_context)
 
         data = json.loads(result)
         assert data["status"] == "success"

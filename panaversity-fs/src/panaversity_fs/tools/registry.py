@@ -4,6 +4,8 @@ Implements 1 MCP tool for book registry operations:
 - list_books: List all books by scanning books/ directory (dynamic discovery)
 """
 
+from mcp.server.fastmcp.server import Context
+
 from panaversity_fs.app import mcp
 from panaversity_fs.models import ListBooksInput, OperationType, OperationStatus
 from panaversity_fs.storage import get_operator
@@ -110,7 +112,7 @@ async def _get_assets_structure(op, book_id: str) -> dict:
         "openWorldHint": False
     }
 )
-async def list_books(params: ListBooksInput) -> str:
+async def list_books(params: ListBooksInput, ctx: Context) -> str:
     """List all books by scanning books/ directory (FR-024).
 
     Dynamically discovers books by scanning subdirectories under books/.
@@ -195,7 +197,6 @@ async def list_books(params: ListBooksInput) -> str:
         await log_operation(
             operation=OperationType.LIST_BOOKS,
             path=books_path,
-            agent_id="registry-reader",  # FR-021: No 'system' agent_id
             status=OperationStatus.SUCCESS,
             execution_time_ms=execution_time
         )
@@ -207,7 +208,6 @@ async def list_books(params: ListBooksInput) -> str:
         await log_operation(
             operation=OperationType.LIST_BOOKS,
             path="books/",
-            agent_id="registry-reader",  # FR-021: No 'system' agent_id
             status=OperationStatus.ERROR,
             error_message=str(e)
         )

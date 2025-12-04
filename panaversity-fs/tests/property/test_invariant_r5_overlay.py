@@ -76,7 +76,7 @@ class TestOverlayExclusivityR5:
         content_b=content_strategy
     )
     @settings(**HYPOTHESIS_SETTINGS)
-    async def test_user_overlays_are_isolated(self, setup_fs_backend, users, content_a, content_b):
+    async def test_user_overlays_are_isolated(self, setup_fs_backend, users, content_a, content_b, mock_context):
         """R5: User A's overlay is isolated from User B's overlay."""
         # Use valid NN-Name format (FR-007 schema)
         import uuid
@@ -98,7 +98,7 @@ class TestOverlayExclusivityR5:
             content=content_a,
             user_id=user_a
         )
-        result_a = await write_content(write_a)
+        result_a = await write_content(write_a, mock_context)
         assert "success" in result_a
 
         # User B writes to their overlay
@@ -108,12 +108,12 @@ class TestOverlayExclusivityR5:
             content=content_b,
             user_id=user_b
         )
-        result_b = await write_content(write_b)
+        result_b = await write_content(write_b, mock_context)
         assert "success" in result_b
 
         # INVARIANT: User A reads their own overlay content
         read_a = ReadContentInput(book_id=book_id, path=path, user_id=user_a)
-        result_read_a = await read_content(read_a)
+        result_read_a = await read_content(read_a, mock_context)
         data_a = json.loads(result_read_a)
         assert data_a["source"] == "overlay"
         # Compare stripped content to handle whitespace differences
@@ -121,7 +121,7 @@ class TestOverlayExclusivityR5:
 
         # INVARIANT: User B reads their own overlay content (different from A)
         read_b = ReadContentInput(book_id=book_id, path=path, user_id=user_b)
-        result_read_b = await read_content(read_b)
+        result_read_b = await read_content(read_b, mock_context)
         data_b = json.loads(result_read_b)
         assert data_b["source"] == "overlay"
         # Compare stripped content to handle whitespace differences
@@ -129,7 +129,7 @@ class TestOverlayExclusivityR5:
 
         # INVARIANT: Base content is unchanged
         read_base = ReadContentInput(book_id=book_id, path=path)
-        result_base = await read_content(read_base)
+        result_base = await read_content(read_base, mock_context)
         data_base = json.loads(result_base)
         assert "Base Content" in data_base["content"]
 
@@ -139,7 +139,7 @@ class TestOverlayExclusivityR5:
         overlay_content=content_strategy
     )
     @settings(**HYPOTHESIS_SETTINGS)
-    async def test_overlay_never_modifies_base(self, setup_fs_backend, user, overlay_content):
+    async def test_overlay_never_modifies_base(self, setup_fs_backend, user, overlay_content, mock_context):
         """R5: Overlay writes never modify base content."""
         # Use valid NN-Name format (FR-007 schema)
         import uuid
@@ -156,7 +156,7 @@ class TestOverlayExclusivityR5:
 
         # Get base hash before overlay write
         read_before = ReadContentInput(book_id=book_id, path=path)
-        result_before = await read_content(read_before)
+        result_before = await read_content(read_before, mock_context)
         data_before = json.loads(result_before)
         hash_before = data_before["file_hash_sha256"]
 
@@ -167,11 +167,11 @@ class TestOverlayExclusivityR5:
             content=overlay_content,
             user_id=user
         )
-        await write_content(write_params)
+        await write_content(write_params, mock_context)
 
         # INVARIANT: Base content unchanged (same hash)
         read_after = ReadContentInput(book_id=book_id, path=path)
-        result_after = await read_content(read_after)
+        result_after = await read_content(read_after, mock_context)
         data_after = json.loads(result_after)
         hash_after = data_after["file_hash_sha256"]
 
@@ -184,7 +184,7 @@ class TestOverlayExclusivityR5:
         lessons=two_distinct_lessons()
     )
     @settings(**HYPOTHESIS_SETTINGS)
-    async def test_overlay_delete_isolation(self, setup_fs_backend, users, lessons):
+    async def test_overlay_delete_isolation(self, setup_fs_backend, users, lessons, mock_context):
         """R5: Deleting User A's overlay doesn't affect User B's overlay."""
         # Use valid NN-Name format (FR-007 schema) - note: lesson already has 01- prefix
         import uuid
@@ -207,7 +207,7 @@ class TestOverlayExclusivityR5:
                 content=content,
                 user_id=user
             )
-            await write_content(write_params)
+            await write_content(write_params, mock_context)
 
         # User A deletes their overlay
         delete_params = DeleteContentInput(
@@ -215,19 +215,19 @@ class TestOverlayExclusivityR5:
             path=path,
             user_id=user_a
         )
-        result = await delete_content(delete_params)
+        result = await delete_content(delete_params, mock_context)
         assert "success" in result
 
         # INVARIANT: User B's overlay is unaffected
         read_b = ReadContentInput(book_id=book_id, path=path, user_id=user_b)
-        result_b = await read_content(read_b)
+        result_b = await read_content(read_b, mock_context)
         data_b = json.loads(result_b)
         assert data_b["source"] == "overlay"
         assert "B Content" in data_b["content"]
 
         # INVARIANT: User A now falls back to base
         read_a = ReadContentInput(book_id=book_id, path=path, user_id=user_a)
-        result_a = await read_content(read_a)
+        result_a = await read_content(read_a, mock_context)
         data_a = json.loads(result_a)
         assert data_a["source"] == "base"
         assert "Base Content" in data_a["content"]
@@ -238,7 +238,7 @@ class TestOverlayExclusivityR5:
         content=content_strategy
     )
     @settings(**HYPOTHESIS_SETTINGS)
-    async def test_overlay_fallback_to_base(self, setup_fs_backend, user, content):
+    async def test_overlay_fallback_to_base(self, setup_fs_backend, user, content, mock_context):
         """R5: Reading with user_id falls back to base when no overlay exists."""
         # Use valid NN-Name format (FR-007 schema)
         import uuid
@@ -254,7 +254,7 @@ class TestOverlayExclusivityR5:
 
         # INVARIANT: Reading with user_id returns base content
         read_params = ReadContentInput(book_id=book_id, path=path, user_id=user)
-        result = await read_content(read_params)
+        result = await read_content(read_params, mock_context)
         data = json.loads(result)
 
         assert data["source"] == "base"
@@ -268,7 +268,7 @@ class TestOverlayExclusivityR5:
         overlay_content=content_strategy
     )
     @settings(**HYPOTHESIS_SETTINGS)
-    async def test_overlay_takes_precedence(self, setup_fs_backend, user, base_content, overlay_content):
+    async def test_overlay_takes_precedence(self, setup_fs_backend, user, base_content, overlay_content, mock_context):
         """R5: When overlay exists, it takes precedence over base."""
         # Use valid NN-Name format (FR-007 schema)
         import uuid
@@ -288,11 +288,11 @@ class TestOverlayExclusivityR5:
             content=overlay_content,
             user_id=user
         )
-        await write_content(write_params)
+        await write_content(write_params, mock_context)
 
         # INVARIANT: Overlay takes precedence
         read_params = ReadContentInput(book_id=book_id, path=path, user_id=user)
-        result = await read_content(read_params)
+        result = await read_content(read_params, mock_context)
         data = json.loads(result)
 
         assert data["source"] == "overlay"

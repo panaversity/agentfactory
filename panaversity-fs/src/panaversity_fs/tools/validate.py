@@ -5,6 +5,8 @@ Implements validate_book tool for book structure validation (FR-007, FR-008):
 - Asset paths: static/(images|slides|videos|audio)/{path}
 """
 
+from mcp.server.fastmcp.server import Context
+
 from panaversity_fs.app import mcp
 from panaversity_fs.models import ValidateBookInput, OperationType, OperationStatus
 from panaversity_fs.storage import get_operator
@@ -81,7 +83,7 @@ class ValidationResult:
         "openWorldHint": False
     }
 )
-async def validate_book(params: ValidateBookInput) -> str:
+async def validate_book(params: ValidateBookInput, ctx: Context) -> str:
     """Validate book structure against schema (FR-007, FR-008).
 
     Scans entire book and validates:
@@ -151,7 +153,6 @@ async def validate_book(params: ValidateBookInput) -> str:
             await log_operation(
                 operation=OperationType.VALIDATE_BOOK,
                 path=book_path,
-                agent_id="schema-validator",
                 status=OperationStatus.ERROR,
                 error_message=f"Book not found: {params.book_id}",
                 book_id=params.book_id
@@ -210,7 +211,6 @@ async def validate_book(params: ValidateBookInput) -> str:
                         await log_operation(
                             operation=OperationType.VALIDATE_BOOK,
                             path=book_path,
-                            agent_id="schema-validator",
                             status=OperationStatus.ERROR,
                             error_message=f"Strict validation failed at: {rel_path}",
                             book_id=params.book_id
@@ -242,7 +242,6 @@ async def validate_book(params: ValidateBookInput) -> str:
                         await log_operation(
                             operation=OperationType.VALIDATE_BOOK,
                             path=book_path,
-                            agent_id="schema-validator",
                             status=OperationStatus.ERROR,
                             error_message=f"Strict validation failed at: {rel_path}",
                             book_id=params.book_id
@@ -280,7 +279,6 @@ async def validate_book(params: ValidateBookInput) -> str:
         await log_operation(
             operation=OperationType.VALIDATE_BOOK,
             path=book_path,
-            agent_id="schema-validator",
             status=OperationStatus.SUCCESS if result.valid else OperationStatus.ERROR,
             execution_time_ms=execution_time,
             book_id=params.book_id
@@ -298,7 +296,6 @@ async def validate_book(params: ValidateBookInput) -> str:
         await log_operation(
             operation=OperationType.VALIDATE_BOOK,
             path=f"books/{params.book_id}/",
-            agent_id="schema-validator",
             status=OperationStatus.ERROR,
             error_message=str(e),
             book_id=params.book_id

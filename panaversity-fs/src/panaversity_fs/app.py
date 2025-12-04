@@ -50,9 +50,7 @@ def _create_mcp() -> FastMCP:
             kwargs["auth"] = auth_settings
 
         print(f"[PanaversityFS] JWT authentication enabled")
-        if config.auth_issuer:
-            print(f"[PanaversityFS] Issuer: {config.auth_issuer}")
-        print(f"[PanaversityFS] Required scopes: {config.required_scopes}")
+        print(f"[PanaversityFS] Auth server: {config.auth_server_url}")
     else:
         print("[PanaversityFS] Running in dev mode (no authentication)")
 

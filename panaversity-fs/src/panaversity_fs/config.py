@@ -4,8 +4,7 @@ Uses pydantic-settings for environment variable loading with validation.
 """
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import field_validator
-from typing import Literal, List
+from typing import Literal
 
 
 class Config(BaseSettings):
@@ -23,7 +22,9 @@ class Config(BaseSettings):
         case_sensitive=False
     )
 
+    # =========================================================================
     # Storage Configuration
+    # =========================================================================
     storage_backend: Literal["fs", "s3", "supabase"] = "fs"
     storage_root: str = "/tmp/panaversity-fs-data"
 
@@ -39,54 +40,89 @@ class Config(BaseSettings):
     supabase_url: str | None = None
     supabase_service_role_key: str | None = None
 
-    # Authentication (Legacy API Key - DEPRECATED and non-functional, use JWT instead)
-    # This field exists only for backwards compatibility and does nothing
-    api_key: str | None = None
+    # =========================================================================
+    # Authentication
+    # =========================================================================
+    #
+    # PanaversityFS acts as an OAuth 2.1 Resource Server, validating:
+    # 1. Bearer tokens (JWT) - for user sessions via OIDC
+    # 2. API keys - for M2M (GitHub Actions, agents, services)
+    #
+    # Both use the Authorization header:
+    # - Authorization: Bearer <jwt-token>
+    # - Authorization: ApiKey <api-key>
+    #
+    # Auth is DISABLED by default. Set auth_server_url to enable.
+    # =========================================================================
 
-    # JWT Authentication (OAuth 2.1 compliant)
-    # If jwt_secret is set, JWT auth is enabled; otherwise server runs in dev mode
-    jwt_secret: str | None = None  # Secret key for HS256 JWT verification
-    jwt_algorithm: str = "HS256"  # JWT algorithm (HS256, HS384, HS512)
-    auth_issuer: str | None = None  # JWT issuer URL (iss claim validation)
-    auth_audience: str | None = None  # JWT audience (aud claim validation)
-    required_scopes_str: str = "read,write"  # Scopes as comma-separated string
-    resource_server_url: str | None = None  # This server's public URL (RFC 9728)
+    # SSO server URL (issuer for JWTs, validator for API keys)
+    auth_server_url: str | None = None
 
-    @property
-    def required_scopes(self) -> List[str]:
-        """Get required scopes as a list."""
-        return [s.strip() for s in self.required_scopes_str.split(",") if s.strip()]
+    # JWKS endpoint path for JWT verification
+    auth_jwks_path: str = "/api/auth/jwks"
+
+    # API key verification endpoint path
+    auth_api_key_path: str = "/api/api-key/verify"
+
+    # JWKS cache TTL in seconds (keys rotate every 90 days)
+    jwks_cache_ttl: int = 3600  # 1 hour
+
+    # Token validation cache TTL in seconds
+    token_cache_ttl: int = 300  # 5 minutes
+
+    # This server's public URL for RFC 9728 Protected Resource Metadata
+    resource_server_url: str | None = None
 
     @property
     def auth_enabled(self) -> bool:
-        """Check if authentication is enabled.
+        """Check if authentication is enabled."""
+        return bool(self.auth_server_url)
 
-        Auth is enabled only if jwt_secret is set to a non-empty value.
-        Empty string is treated as disabled (for easier test isolation).
-        """
-        return bool(self.jwt_secret)
+    @property
+    def jwks_url(self) -> str | None:
+        """Get full JWKS endpoint URL."""
+        if not self.auth_server_url:
+            return None
+        return f"{self.auth_server_url.rstrip('/')}{self.auth_jwks_path}"
 
+    @property
+    def api_key_verify_url(self) -> str | None:
+        """Get full API key verification endpoint URL."""
+        if not self.auth_server_url:
+            return None
+        return f"{self.auth_server_url.rstrip('/')}{self.auth_api_key_path}"
+
+    # =========================================================================
     # Server Configuration
+    # =========================================================================
     server_host: str = "0.0.0.0"
     server_port: int = 8000
 
+    # =========================================================================
     # Observability
+    # =========================================================================
     sentry_dsn: str | None = None
     log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR"] = "INFO"
 
+    # =========================================================================
     # Asset Upload Configuration
-    cdn_base_url: str = "https://cdn.panaversity.com"  # CDN base URL for asset access (FR-013)
-    max_direct_upload_mb: int = 10  # Assets <10MB use direct upload, ≥10MB use presigned URLs
-    max_asset_size_mb: int = 100  # Maximum asset size (FR-010)
+    # =========================================================================
+    cdn_base_url: str = "https://cdn.panaversity.com"
+    max_direct_upload_mb: int = 10  # <10MB direct, >=10MB presigned
+    max_asset_size_mb: int = 100
 
+    # =========================================================================
     # Archive Generation Configuration
-    archive_timeout_seconds: int = 60  # FR-030: <60s for 500 files / 200MB
-    presign_expiry_seconds: int = 3600  # Presigned URL validity (1 hour default)
+    # =========================================================================
+    archive_timeout_seconds: int = 60  # 500 files / 200MB within 60s
+    presign_expiry_seconds: int = 3600  # 1 hour
 
+    # =========================================================================
     # Database Configuration
+    # =========================================================================
     # PostgreSQL: postgresql+asyncpg://user:pass@host/db
     # SQLite: sqlite+aiosqlite:///./panaversity_fs.db
-    database_url: str | None = None  # Falls back to SQLite if not set
+    database_url: str | None = None
 
     @property
     def effective_database_url(self) -> str:
