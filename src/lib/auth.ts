@@ -526,6 +526,7 @@ export const auth = betterAuth({
 
         return {
           // OIDC Standard Claims (from additionalFields)
+          preferred_username: user.username || null,
           given_name: user.givenName || null,
           family_name: user.familyName || null,
           picture: user.picture || null,
