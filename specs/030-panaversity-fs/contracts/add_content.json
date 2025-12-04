@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "add_content",
+  "description": "Create new lesson markdown file at specified path with content and metadata",
+  "type": "object",
+  "properties": {
+    "book_id": {
+      "type": "string",
+      "description": "Unique book identifier (kebab-case)",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "examples": ["ai-native-software-development"]
+    },
+    "path": {
+      "type": "string",
+      "description": "Relative path within book lessons directory: lessons/{part}/{chapter}/{lesson}.md",
+      "pattern": "^lessons/part-\\d+/chapter-\\d+/lesson-\\d+\\.md$",
+      "examples": ["lessons/part-1/chapter-01/lesson-01.md"]
+    },
+    "content": {
+      "type": "string",
+      "description": "Complete markdown content including YAML frontmatter",
+      "minLength": 1
+    }
+  },
+  "required": ["book_id", "path", "content"],
+  "additionalProperties": false,
+  "response": {
+    "type": "object",
+    "properties": {
+      "success": {
+        "type": "boolean",
+        "const": true
+      },
+      "path": {
+        "type": "string",
+        "description": "Full storage path where lesson was created"
+      },
+      "file_hash_sha256": {
+        "type": "string",
+        "description": "SHA256 hash for future conflict detection"
+      },
+      "audit_entry_id": {
+        "type": "string",
+        "description": "Timestamp-based ID of audit log entry"
+      }
+    },
+    "required": ["success", "path", "file_hash_sha256", "audit_entry_id"]
+  },
+  "errors": [
+    {
+      "code": "BOOK_NOT_FOUND",
+      "message": "Book '{book_id}' not found in registry"
+    },
+    {
+      "code": "FILE_ALREADY_EXISTS",
+      "message": "Lesson already exists at '{path}'. Use update_content to modify."
+    },
+    {
+      "code": "INVALID_PATH",
+      "message": "Path must match pattern: lessons/part-N/chapter-N/lesson-N.md"
+    }
+  ]
+}

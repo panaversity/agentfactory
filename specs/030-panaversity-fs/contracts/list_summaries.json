@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "list_summaries",
+  "description": "List all summary files for specified book or chapter",
+  "type": "object",
+  "properties": {
+    "book_id": {
+      "type": "string",
+      "description": "Unique book identifier",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "chapter_path": {
+      "type": "string",
+      "description": "Optional filter by specific chapter",
+      "pattern": "^chapter-\\d+$"
+    }
+  },
+  "required": ["book_id"],
+  "additionalProperties": false,
+  "response": {
+    "type": "object",
+    "properties": {
+      "summaries": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "chapter_id": { "type": "string" },
+            "path": { "type": "string" },
+            "file_size": { "type": "integer" },
+            "last_modified": { "type": "string", "format": "date-time" },
+            "generated_by": { "type": "string" }
+          },
+          "required": ["chapter_id", "path", "file_size", "last_modified"]
+        }
+      },
+      "total_count": {
+        "type": "integer"
+      }
+    },
+    "required": ["summaries", "total_count"]
+  },
+  "errors": [
+    {
+      "code": "BOOK_NOT_FOUND",
+      "message": "Book '{book_id}' not found in registry"
+    }
+  ]
+}

@@ -1,6 +1,10 @@
 # Dependencies
 /node_modules
 
+# PanaversityFS: docsfs/ is fetched from server at build time (always generated)
+# docs/ contains local sample content for development without server
+/docsfs
+
 # Production
 /build
 
@@ -28,3 +32,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .vercel
+
+.env
+.env.local

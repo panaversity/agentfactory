@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "delete_content",
+  "description": "Remove lesson file from storage and log operation",
+  "type": "object",
+  "properties": {
+    "book_id": {
+      "type": "string",
+      "description": "Unique book identifier",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "path": {
+      "type": "string",
+      "description": "Relative path to lesson file",
+      "pattern": "^lessons/part-\\d+/chapter-\\d+/lesson-\\d+\\.md$"
+    }
+  },
+  "required": ["book_id", "path"],
+  "additionalProperties": false,
+  "response": {
+    "type": "object",
+    "properties": {
+      "success": {
+        "type": "boolean",
+        "const": true
+      },
+      "deleted_path": {
+        "type": "string"
+      },
+      "audit_entry_id": {
+        "type": "string"
+      }
+    },
+    "required": ["success", "deleted_path", "audit_entry_id"]
+  },
+  "errors": [
+    {
+      "code": "FILE_NOT_FOUND",
+      "message": "Lesson not found at '{path}'. Nothing to delete."
+    },
+    {
+      "code": "STORAGE_ERROR",
+      "message": "Failed to delete from storage backend: {error_details}"
+    }
+  ]
+}

@@ -50,7 +50,7 @@ Imagine hiring a contractor to renovate your house. Before they swing a hammer, 
 
 ## What is the Terminal? (Start Here If New to Command Line)
 
-**Already comfortable with Terminal/CLI?** [Skip to "Your AI Has a Location"](#your-ai-has-a-location-and-you-need-to-know-it)
+**Already comfortable with Terminal/CLI?** [Skip to "Your AI Has a Location"](#your-ai-has-a-locationand-you-need-to-know-it)
 
 ### The Terminal: Your Text-Based Remote Control
 

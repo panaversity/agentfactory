@@ -9,7 +9,7 @@ In Parts 1-4, you discovered the AI development revolution, mastered AI collabor
 
 Python is the lingua franca of artificial intelligence. When you build agentic systems, train models, or integrate AI APIs, you'll almost certainly be working in Python. But this isn't a traditional programming tutorial where you memorize syntax and copy code from textbooks. You'll learn Python the AI-native way: by understanding concepts deeply and expressing your intent to AI collaborators who handle the mechanical details.
 
-This part transforms you from someone who reads Python code to someone who architects Python systems with AI assistance. Across 18 chapters (Chapters 16-33), you'll master everything from package management to asynchronous programming, from object-oriented design to production-ready documentation—all while maintaining the AI-first development approach you've internalized.
+This part transforms you from someone who reads Python code to someone who architects Python systems with AI assistance. Across 18 chapters (Chapters 15-32), you'll master everything from package management to asynchronous programming, from object-oriented design to production-ready documentation—all while maintaining the AI-first development approach you've internalized.
 
 The journey begins with tooling (UV package manager) before diving into language fundamentals. This isn't accidental: modern Python development requires professional-grade project management from day one. You'll set up production-quality environments before writing your first `print()` statement.
 

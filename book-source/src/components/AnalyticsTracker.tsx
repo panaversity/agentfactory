@@ -22,6 +22,7 @@ import {
   trackTimeOnPage,
   trackChapterView,
 } from "@/utils/analytics";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface AnalyticsTrackerProps {
   children: React.ReactNode;
@@ -37,11 +38,34 @@ export const AnalyticsTracker: React.FC<AnalyticsTrackerProps> = ({
   chapterNumber,
 }) => {
   const location = useLocation();
+  const { session } = useAuth();
   const startTimeRef = useRef<number>(Date.now());
   const [lastScrollDepth, setLastScrollDepth] = useState<number>(0);
   const [trackedScrollMilestones, setTrackedScrollMilestones] = useState<
     Set<number>
   >(new Set());
+
+  // Set GA4 user_id when user is logged in
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.gtag) {
+      if (session?.user?.id) {
+        // Set user_id for cross-device tracking
+        window.gtag("set", { user_id: session.user.id });
+        // Also set as user property for segmentation
+        window.gtag("set", "user_properties", {
+          user_logged_in: true,
+          user_role: session.user.role || "user",
+        });
+      } else {
+        // Clear user_id when logged out
+        window.gtag("set", { user_id: null });
+        window.gtag("set", "user_properties", {
+          user_logged_in: false,
+          user_role: null,
+        });
+      }
+    }
+  }, [session]);
 
   // Track page view and chapter view on mount/navigation
   useEffect(() => {
@@ -164,25 +188,7 @@ export const AnalyticsTracker: React.FC<AnalyticsTrackerProps> = ({
   return (
     <>
       {children}
-      {isDevelopment && (
-        <div
-          style={{
-            position: "fixed",
-            bottom: "20px",
-            right: "20px",
-            backgroundColor: "rgba(0, 0, 0, 0.7)",
-            color: "#fff",
-            padding: "10px 15px",
-            borderRadius: "5px",
-            fontSize: "12px",
-            zIndex: 9999,
-            fontFamily: "monospace",
-            pointerEvents: "none",
-          }}
-        >
-          📊 Scroll: {Math.round(lastScrollDepth)}%
-        </div>
-      )}
+
     </>
   );
 };

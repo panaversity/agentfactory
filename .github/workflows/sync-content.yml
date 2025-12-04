@@ -1,0 +1,138 @@
+# Sync Content to PanaversityFS (R2 Storage)
+#
+# CONTENT-ONLY sync. Assets are managed separately by authors/agents.
+#
+# Design (Composable):
+# - Content (markdown) = synced via this workflow
+# - Assets (images, slides) = uploaded by authors to CDN, referenced by full URL
+# - PR validation rejects local asset references (/img/, /slides/)
+#
+# Workflow:
+# 1. Author uploads assets to CDN (via agent or manually)
+# 2. Author uses full CDN URLs in markdown
+# 3. PR merged → this workflow syncs markdown to R2
+# 4. deploy.yml builds site (fetches content from R2)
+
+name: Sync Content to R2
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "book-source/docs/**"
+  workflow_dispatch:
+    inputs:
+      full_sync:
+        description: "Force full sync (all files, not just changed)"
+        type: boolean
+        default: false
+
+jobs:
+  sync:
+    name: Upload Content to PanaversityFS
+    runs-on: ubuntu-latest
+    # Only run if PanaversityFS is configured
+    if: ${{ vars.PANAVERSITY_PLUGIN_ENABLED == 'true' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # Need previous commit to detect changes
+
+      - name: Get changed files
+        id: changed
+        if: ${{ github.event.inputs.full_sync != 'true' }}
+        run: |
+          # Get list of changed markdown files in docs/
+          CHANGED=$(git diff --name-only HEAD~1 HEAD -- 'book-source/docs/**/*.md' | tr '\n' ' ')
+          echo "files=$CHANGED" >> $GITHUB_OUTPUT
+          echo "Changed files: $CHANGED"
+
+      - name: Sync content to R2
+        env:
+          PANAVERSITY_SERVER_URL: ${{ secrets.PANAVERSITY_SERVER_URL }}
+        run: |
+          # Upload changed markdown files to PanaversityFS MCP server
+          # Uses write_content tool via JSON-RPC
+
+          BOOK_ID="ai-native-dev"
+          SERVER_URL="${PANAVERSITY_SERVER_URL:-http://localhost:8000/mcp}"
+
+          # Determine files to sync
+          if [ "${{ github.event.inputs.full_sync }}" = "true" ]; then
+            echo "Full sync requested - uploading all files"
+            FILES=$(find book-source/docs -name "*.md" -type f)
+          else
+            FILES="${{ steps.changed.outputs.files }}"
+          fi
+
+          if [ -z "$FILES" ]; then
+            echo "No markdown files to sync"
+            exit 0
+          fi
+
+          echo "Syncing files to $SERVER_URL"
+          SUCCESS=0
+          FAILED=0
+
+          # Process each file
+          for FILE in $FILES; do
+            if [ ! -f "$FILE" ]; then
+              echo "Skipping (not found): $FILE"
+              continue
+            fi
+
+            # Convert path: book-source/docs/Part/Chapter/file.md -> content/Part/Chapter/file.md
+            CONTENT_PATH=$(echo "$FILE" | sed 's|^book-source/docs/|content/|')
+
+            echo "Uploading: $FILE -> $CONTENT_PATH"
+
+            # Read file content and escape for JSON
+            CONTENT=$(cat "$FILE" | jq -Rs .)
+
+            # Create JSON-RPC request for write_content tool
+            REQUEST=$(jq -n \
+              --arg book_id "$BOOK_ID" \
+              --arg path "$CONTENT_PATH" \
+              --argjson content "$CONTENT" \
+              '{
+                jsonrpc: "2.0",
+                id: 1,
+                method: "tools/call",
+                params: {
+                  name: "write_content",
+                  arguments: {
+                    book_id: $book_id,
+                    path: $path,
+                    content: $content
+                  }
+                }
+              }')
+
+            # Send to MCP server
+            RESPONSE=$(curl -s -X POST "$SERVER_URL" \
+              -H "Content-Type: application/json" \
+              -H "Accept: application/json" \
+              -d "$REQUEST")
+
+            # Check for errors
+            if echo "$RESPONSE" | jq -e '.error' > /dev/null 2>&1; then
+              echo "✗ Error uploading $FILE:"
+              echo "$RESPONSE" | jq '.error'
+              FAILED=$((FAILED + 1))
+            else
+              echo "✓ Uploaded: $CONTENT_PATH"
+              SUCCESS=$((SUCCESS + 1))
+            fi
+          done
+
+          echo ""
+          echo "=== Sync Complete ==="
+          echo "Success: $SUCCESS"
+          echo "Failed: $FAILED"
+
+          if [ $FAILED -gt 0 ]; then
+            exit 1
+          fi

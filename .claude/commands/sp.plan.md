@@ -1,5 +1,5 @@
 ---
-description: Execute the implementation planning workflow using the plan template to generate design artifacts.
+description: Execute the implementation planning workflow with context-aware agent routing. Routes to chapter-planner for content work, general-purpose for engineering/platform work.
 ---
 
 ## User Input
@@ -8,102 +8,166 @@ description: Execute the implementation planning workflow using the plan templat
 $ARGUMENTS
 ```
 
-You **MUST** consider the user input before proceeding (if not empty) and use the chapter-planner subagent to generate the plan. 
+You **MUST** consider the user input before proceeding (if not empty).
+
+## Core Directive
+
+**Context-Aware Routing**: This command analyzes the specification to determine work type and routes to the appropriate planning agent:
+- **Content Work** (lessons, modules, chapters) → `chapter-planner` subagent
+- **Engineering Work** (features, APIs, components) → `general-purpose` subagent
+- **Platform Work** (auth, RAG, infrastructure) → `general-purpose` subagent
+
+**WHY**: Different work types require different planning expertise. Educational content needs pedagogical arc planning. Engineering needs architectural decomposition. Platform needs infrastructure sequencing.
+
+**Agent Discovery**: Before routing, check `.claude/agents/` for current agent inventory. Agent names below are examples—always verify what's actually available.
 
 ## Outline
 
-1. **Setup**: Run `.specify/scripts/bash/setup-plan.sh --json` from repo root and parse JSON for FEATURE_SPEC, IMPL_PLAN, SPECS_DIR, BRANCH. For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
+1. **Setup**: Run `.specify/scripts/bash/setup-plan.sh --json` from repo root and parse JSON for FEATURE_SPEC, IMPL_PLAN, SPECS_DIR, BRANCH.
 
-2. **Load context**: Read FEATURE_SPEC and `.specify/memory/constitution.md`. Load IMPL_PLAN template (already copied).
+2. **Load context**: Read FEATURE_SPEC and `.specify/memory/constitution.md`. Load IMPL_PLAN template.
 
-3. **Execute plan workflow**: Follow the structure in IMPL_PLAN template to:
+3. **Classify Work Type**: Analyze spec to determine routing:
+
+   ```
+   CLASSIFICATION SIGNALS:
+
+   CONTENT (→ chapter-planner):
+   - spec mentions: lesson, module, chapter, exercise, learning objectives
+   - spec references: pedagogical, teaching, students, proficiency
+   - spec includes: 4-layer framework, hardware tiers for content
+
+   ENGINEERING (→ general-purpose):
+   - spec mentions: feature, endpoint, API, component, service
+   - spec references: architecture, database, frontend, backend
+   - spec includes: technical requirements, integrations
+
+   PLATFORM (→ general-purpose):
+   - spec mentions: auth, RAG, deployment, CI/CD, infrastructure
+   - spec references: Better-Auth, Qdrant, Cloud Run, Neon
+   - spec includes: system architecture, scaling, security
+   ```
+
+4. **Route to Appropriate Planner**:
+
+   ### For CONTENT Work (chapter-planner)
+
+   ```
+   Use Task tool with:
+   - subagent_type: "chapter-planner"
+   - prompt: Include spec path, constitution reference, and:
+     - Pedagogical arc requirement (Foundation → Mastery)
+     - Layer progression mapping (L1 → L2 → L3 → L4)
+     - Hardware tier requirements per lesson
+     - Teaching modality variation from previous content
+     - Cognitive load limits by proficiency tier
+   ```
+
+   **chapter-planner Output**:
+   - Lesson structure with learning objectives
+   - Stage identification per lesson (1/2/3/4)
+   - Teaching modality selection with rationale
+   - Hardware tier requirements and fallbacks
+   - Intelligence creation opportunities (skills/subagents)
+   - Capstone composition strategy
+
+   ### For ENGINEERING/PLATFORM Work (general-purpose)
+
+   ```
+   Use Task tool with:
+   - subagent_type: "general-purpose"
+   - prompt: Include spec path, constitution reference, and:
+     - Technical architecture requirements
+     - Component decomposition
+     - Dependency ordering
+     - Test strategy
+     - Integration points
+   ```
+
+   **general-purpose Output**:
+   - Technical architecture decisions
+   - Component breakdown with dependencies
+   - Implementation sequence
+   - Test coverage plan
+   - Integration strategy
+
+5. **Execute plan workflow**: Follow the structure in IMPL_PLAN template to:
    - Fill Technical Context (mark unknowns as "NEEDS CLARIFICATION")
    - Fill Constitution Check section from constitution
    - Evaluate gates (ERROR if violations unjustified)
    - Phase 0: Generate research.md (resolve all NEEDS CLARIFICATION)
-   - Phase 1: Generate data-model.md, contracts/, quickstart.md
-   - Phase 1: Update agent context by running the agent script
+   - Phase 1: Generate appropriate artifacts based on work type
    - Re-evaluate Constitution Check post-design
 
-4. **Stop and report**: Command ends after Phase 2 planning. Report branch, IMPL_PLAN path, and generated artifacts.
+6. **Stop and report**: Command ends after planning. Report branch, IMPL_PLAN path, and generated artifacts.
 
-Note: This command intentionally does not generate `tasks.md`. After planning completes, run `/sp.tasks` to produce the actionable `tasks.md` from the spec and plan.
+## Work-Type-Specific Artifacts
 
-## Phases
+### CONTENT Work Artifacts
 
-### Phase 0: Outline & Research
+| Artifact | Purpose |
+|----------|---------|
+| `plan.md` | Lesson structure, pedagogical progression |
+| `research.md` | Technical accuracy verification |
+| Optional: `data-model.md` | If content includes data structures |
 
-1. **Extract unknowns from Technical Context** above:
-   - For each NEEDS CLARIFICATION → research task
-   - For each dependency → best practices task
-   - For each integration → patterns task
+**Content Plan Requirements**:
+- Lesson count justified by concept density
+- Pedagogical arc: Foundation → Application → Integration → Validation → Mastery
+- Hardware tiers marked per lesson (Tier 1 always supported)
+- Teaching modality varied from previous content
+- Stage progression explicit (L1/L2/L3/L4)
+- Intelligence creation identified (skills/subagents)
 
-2. **Generate and dispatch research agents**:
+### ENGINEERING/PLATFORM Work Artifacts
 
-   ```text
-   For each unknown in Technical Context:
-     Task: "Research {unknown} for {feature context}"
-   For each technology choice:
-     Task: "Find best practices for {tech} in {domain}"
-   ```
+| Artifact | Purpose |
+|----------|---------|
+| `plan.md` | Architecture, components, sequence |
+| `research.md` | Technology decisions |
+| `data-model.md` | Entities and relationships |
+| `contracts/` | API specifications |
+| `quickstart.md` | Integration scenarios |
 
-3. **Consolidate findings** in `research.md` using format:
-   - Decision: [what was chosen]
-   - Rationale: [why chosen]
-   - Alternatives considered: [what else evaluated]
+**Engineering Plan Requirements**:
+- Component decomposition with clear boundaries
+- Dependency graph for build order
+- Test strategy (unit, integration, e2e)
+- Integration points identified
+- Error handling approach
 
-**Output**: research.md with all NEEDS CLARIFICATION resolved
+## Cross-Book Intelligence Check
 
-### Phase 1: Design & Contracts
+Before finalizing plan, assess:
 
-**Prerequisites:** `research.md` complete
+```
+INTELLIGENCE ACCUMULATION:
+- Patterns that apply to future books: [list]
+- Patterns specific to THIS book only: [list]
+- Skills to create (platform-level): [list]
+- Skills to create (domain-level): [list]
+- Knowledge files needed: [list]
+```
 
-1. **Extract entities from feature spec** → `data-model.md`:
-   - Entity name, fields, relationships
-   - Validation rules from requirements
-   - State transitions if applicable
-
-2. **Generate API contracts** from functional requirements:
-   - For each user action → endpoint
-   - Use standard REST/GraphQL patterns
-   - Output OpenAPI/GraphQL schema to `/contracts/`
-
-3. **Agent context update**:
-   - Run `.specify/scripts/bash/update-agent-context.sh claude`
-   - These scripts detect which AI agent is in use
-   - Update the appropriate agent-specific context file
-   - Add only new technology from current plan
-   - Preserve manual additions between markers
-
-**Output**: data-model.md, /contracts/*, quickstart.md, agent-specific file
-
-## Key rules
+## Key Rules
 
 - Use absolute paths
 - ERROR on gate failures or unresolved clarifications
+- Route to chapter-planner for ANY educational content
+- Route to general-purpose for engineering/platform work
+- Always check hardware tier requirements for content
 
 ---
 
-As the main request completes, you MUST create and complete a PHR (Prompt History Record) using agent‑native tools when possible.
+As the main request completes, you MUST create and complete a PHR (Prompt History Record).
 
-1) Determine Stage
-   - Stage: constitution | spec | plan | tasks | red | green | refactor | explainer | misc | general
+1) Determine Stage: `plan`
 
 2) Generate Title and Determine Routing:
-   - Generate Title: 3–7 words (slug for filename)
-   - Route is automatically determined by stage:
-     - `constitution` → `history/prompts/constitution/`
-     - Feature stages → `history/prompts/<feature-name>/` (spec, plan, tasks, red, green, refactor, explainer, misc)
-     - `general` → `history/prompts/general/`
+   - Route: `history/prompts/<feature-name>/`
 
-3) Create and Fill PHR (Shell first; fallback agent‑native)
-   - Run: `.specify/scripts/bash/create-phr.sh --title "<title>" --stage <stage> [--feature <name>] --json`
-   - Open the file and fill remaining placeholders (YAML + body), embedding full PROMPT_TEXT (verbatim) and concise RESPONSE_TEXT.
-   - If the script fails:
-     - Read `.specify/templates/phr-template.prompt.md` (or `templates/…`)
-     - Allocate an ID; compute the output path based on stage from step 2; write the file
-     - Fill placeholders and embed full PROMPT_TEXT and concise RESPONSE_TEXT
+3) Create and Fill PHR:
+   - Run: `.specify/scripts/bash/create-phr.sh --title "<title>" --stage plan --feature <name> --json`
+   - Fill placeholders with plan summary
 
 4) Validate + report
-   - No unresolved placeholders; path under `history/prompts/` and matches stage; stage/title/date coherent; print ID + path + stage + title.
-   - On failure: warn, don't block. Skip only for `/sp.phr`.

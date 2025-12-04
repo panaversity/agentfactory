@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "read_content",
+  "description": "Fetch lesson markdown content with metadata and storage information",
+  "type": "object",
+  "properties": {
+    "book_id": {
+      "type": "string",
+      "description": "Unique book identifier",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "path": {
+      "type": "string",
+      "description": "Relative path to lesson file",
+      "pattern": "^lessons/part-\\d+/chapter-\\d+/lesson-\\d+\\.md$"
+    }
+  },
+  "required": ["book_id", "path"],
+  "additionalProperties": false,
+  "response": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "Complete markdown content including frontmatter"
+      },
+      "metadata": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "lesson_id": { "type": "string" },
+          "chapter_id": { "type": "string" },
+          "part_id": { "type": "string" },
+          "learning_objectives": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "proficiency_level": {
+            "type": "string",
+            "enum": ["A1", "A2", "B1", "B2", "C1", "C2"]
+          },
+          "estimated_time_minutes": { "type": "integer" },
+          "last_updated": { "type": "string", "format": "date-time" },
+          "author": { "type": "string" }
+        }
+      },
+      "storage_info": {
+        "type": "object",
+        "properties": {
+          "file_size": {
+            "type": "integer",
+            "description": "Size in bytes"
+          },
+          "last_modified": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp from storage backend"
+          },
+          "storage_backend": {
+            "type": "string",
+            "enum": ["local", "r2", "supabase", "s3"]
+          },
+          "file_hash_sha256": {
+            "type": "string",
+            "description": "For conflict detection in update_content"
+          }
+        },
+        "required": ["file_size", "last_modified", "storage_backend", "file_hash_sha256"]
+      }
+    },
+    "required": ["content", "metadata", "storage_info"]
+  },
+  "errors": [
+    {
+      "code": "FILE_NOT_FOUND",
+      "message": "Lesson not found at '{path}'. Available lessons in chapter: [list]"
+    },
+    {
+      "code": "STORAGE_ERROR",
+      "message": "Failed to read from storage backend: {error_details}"
+    }
+  ]
+}

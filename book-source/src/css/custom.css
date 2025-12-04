@@ -4,19 +4,27 @@
  * work well for content-centric websites.
  */
 
- @tailwind base;
- @tailwind components;
- @tailwind utilities;
+@import "./sidebar.css";
+@import "./doc-pages.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* You can override the default Infima variables here. */
 /* Polar Night Palette: Deep Navy with Sophisticated Grays - Bold & Elegant */
 :root {
     /* Polar Night Primary Colors */
-    --polar-night-deep: #001f3f; /* Deep Navy */
-    --polar-night-charcoal: #111111; /* Dark Charcoal */
-    --polar-night-gray: #aaaaaa; /* Medium Gray */
-    --polar-night-light: #dddddd; /* Light Gray */
-    --polar-night-white: #ffffff; /* Pure White */
+    --polar-night-deep: #001f3f;
+    /* Deep Navy */
+    --polar-night-charcoal: #111111;
+    /* Dark Charcoal */
+    --polar-night-gray: #aaaaaa;
+    /* Medium Gray */
+    --polar-night-light: #dddddd;
+    /* Light Gray */
+    --polar-night-white: #ffffff;
+    /* Pure White */
 
     /* Infima Color Mapping */
     --ifm-color-primary: #001f3f;
@@ -27,28 +35,62 @@
     --ifm-color-primary-lighter: #003366;
     --ifm-color-primary-lightest: #004080;
 
+    /* NAVBAR - SOLID backgrounds, no transparency */
+    --ifm-navbar-background-color: #ffffff;
+    --ifm-navbar-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+
     --ifm-code-font-size: 95%;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
     --ifm-heading-font-weight: 600;
     --ifm-font-family-base:
-        -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+        'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
         system-ui, sans-serif;
+    --font-family-serif:
+        'Merriweather', Georgia, 'Times New Roman', serif;
+    --ifm-font-family-monospace:
+        'JetBrains Mono', 'SF Mono', Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* ============================================================================
+   DARK MODE - "Midnight Scholar" Theme
+   Optimized for extended reading with warm undertones and soft blue accents
+   ============================================================================ */
 [data-theme="dark"] {
-    /* Dark Mode - Lighter variants for contrast */
-    --ifm-color-primary: #aaaaaa;
-    --ifm-color-primary-dark: #999999;
-    --ifm-color-primary-darker: #888888;
-    --ifm-color-primary-darkest: #666666;
-    --ifm-color-primary-light: #bbbbbb;
-    --ifm-color-primary-lighter: #cccccc;
-    --ifm-color-primary-lightest: #dddddd;
+    /* Primary colors - Soft blue for links and accents (maintains brand connection) */
+    --ifm-color-primary: #60a5fa;
+    --ifm-color-primary-dark: #3b82f6;
+    --ifm-color-primary-darker: #2563eb;
+    --ifm-color-primary-darkest: #1d4ed8;
+    --ifm-color-primary-light: #93c5fd;
+    --ifm-color-primary-lighter: #bfdbfe;
+    --ifm-color-primary-lightest: #dbeafe;
 
-    --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.05);
-    --ifm-background-color: #111111;
-    --ifm-background-surface-color: #1a1a1a;
+    /* NAVBAR - Obsidian Glass: near-black with zinc undertone */
+    --ifm-navbar-background-color: #18181b;
+    --ifm-navbar-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 20px rgba(0, 0, 0, 0.4);
+
+    /* Backgrounds - Warm off-blacks for reduced eye strain */
+    --ifm-background-color: #0f0f12;
+    --ifm-background-surface-color: #1a1a1f;
+    --docusaurus-highlighted-code-line-bg: rgba(96, 165, 250, 0.1);
+
+    /* Text colors - Softer whites for comfortable reading */
+    --ifm-font-color-base: #e2e8f0;
+    --ifm-font-color-secondary: #94a3b8;
+    --ifm-heading-color: #f1f5f9;
+
+    /* Accent colors for CTAs and highlights */
+    --midnight-accent-amber: #f59e0b;
+    --midnight-accent-amber-hover: #d97706;
+    --midnight-accent-glow: rgba(245, 158, 11, 0.15);
+
+    /* Borders and dividers */
+    --ifm-color-emphasis-200: rgba(148, 163, 184, 0.15);
+    --ifm-color-emphasis-300: rgba(148, 163, 184, 0.25);
+
+    /* Card/surface shadows */
+    --midnight-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    --midnight-card-shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 /* Smooth scrolling */
@@ -56,9 +98,173 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Enhanced link styles */
+/* ============================================================================
+   LIGHT MODE - Micro-interactions & Polish
+   Subtle hover states, click feedback, and refined transitions
+   ============================================================================ */
+
+/* Enhanced link styles with underline animation */
 a {
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+/* Content links - subtle underline on hover */
+.markdown a:not(.hash-link):not([class*="button"]):not([class*="card"]) {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.markdown a:not(.hash-link):not([class*="button"]):not([class*="card"]):hover {
+    text-decoration-color: currentColor;
+}
+
+/* Button base - enhanced feedback */
+button,
+[role="button"],
+.button {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Primary buttons - light mode polish */
+.button--primary,
+.button.button--primary {
+    position: relative;
+    overflow: hidden;
+}
+
+.button--primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.button--primary:hover::after {
+    opacity: 1;
+}
+
+.button--primary:active {
+    transform: scale(0.98);
+}
+
+/* Card hover effects */
+.card,
+[class*="card"] {
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+article.card:hover,
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 31, 63, 0.12);
+}
+
+[data-theme="dark"] article.card:hover,
+[data-theme="dark"] .card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Sidebar link interactions */
+.menu__link {
+    transition: background-color 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+}
+
+.menu__link:hover:not(.menu__link--active) {
+    padding-left: calc(var(--ifm-menu-link-padding-horizontal) + 4px);
+}
+
+/* Table of contents - smooth highlight */
+.table-of-contents__link {
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+/* Code blocks - copy button polish */
+.prism-code button {
+    transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+/* Input focus states */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 31, 63, 0.15);
+    border-color: var(--ifm-color-primary);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus {
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+}
+
+/* Navbar link hover - subtle lift */
+.navbar__link {
+    position: relative;
     transition: color 0.2s ease;
+}
+
+.navbar__link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--ifm-color-primary);
+    transition: width 0.2s ease, left 0.2s ease;
+    border-radius: 1px;
+}
+
+.navbar__link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Active click/press state - global */
+button:active:not(:disabled),
+[role="button"]:active:not(:disabled),
+.button:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+/* Image hover - subtle zoom */
+.markdown img:not([class*="icon"]):not([class*="logo"]) {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: zoom-in;
+}
+
+.markdown img:not([class*="icon"]):not([class*="logo"]):hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .markdown img:not([class*="icon"]):not([class*="logo"]):hover {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Blockquote - left border animation */
+blockquote {
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+blockquote:hover {
+    border-left-color: var(--ifm-color-primary);
+}
+
+/* Admonition hover - subtle glow */
+.admonition {
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.admonition:hover {
+    transform: translateX(2px);
 }
 
 /* Better code block styling */
@@ -82,27 +288,479 @@ pre code {
     padding: 0;
 }
 
-/* Enhance navbar */
-.navbar {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(10px);
-    position: relative;
-    z-index: 100;
+/* ============================================
+   ZEN/FOCUS MODE — Distraction-free reading
+   ============================================ */
+
+/* Hide navigation elements and pagination in focus mode */
+body.zen-mode .navbar,
+body.zen-mode .theme-doc-sidebar-container,
+body.zen-mode .theme-doc-toc-desktop,
+body.zen-mode .pagination-nav,
+body.zen-mode footer {
+    display: none !important;
 }
 
+/* Subtle warm background for reduced eye strain */
+body.zen-mode {
+    background: #faf9f7 !important;
+}
+
+[data-theme="dark"] body.zen-mode {
+    background: #1a1918 !important;
+}
+
+/* Center the content */
+body.zen-mode .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+}
+
+body.zen-mode .row {
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0 !important;
+}
+
+body.zen-mode .col {
+    max-width: 100% !important;
+    flex: unset !important;
+    padding: 0 !important;
+}
+
+/* Main content area — wider for comfortable reading, centered */
+body.zen-mode main.docMainContainer,
+body.zen-mode .docMainContainer {
+    max-width: 820px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 3rem 2rem !important;
+}
+
+/* Ensure the main wrapper takes full width when sidebar hidden */
+body.zen-mode .main-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Doc page content should be centered */
+body.zen-mode [class*='docPage'],
+body.zen-mode [class*='docRoot'] {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+/* Doc item container - constrain and center ALL content */
+body.zen-mode [class*='docItemContainer'],
+body.zen-mode .docItemContainer {
+    max-width: 760px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+}
+
+/* Article content - full width within container */
+body.zen-mode article {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Breadcrumb, reading time, and header - align with content */
+body.zen-mode [class*='breadcrumbs'],
+body.zen-mode .theme-doc-breadcrumbs,
+body.zen-mode .reading-time,
+body.zen-mode [class*='docItemMetadata'] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Enhanced typography for focus mode */
+body.zen-mode .markdown {
+    max-width: 100% !important;
+    font-size: 1.125rem !important;
+    line-height: 1.9 !important;
+    letter-spacing: 0.01em !important;
+}
+
+body.zen-mode .markdown p {
+    margin-bottom: 1.5rem !important;
+}
+
+body.zen-mode .markdown h1 {
+    font-size: 2.5rem !important;
+    margin-bottom: 2.5rem !important;
+}
+
+body.zen-mode .markdown h2 {
+    font-size: 1.875rem !important;
+    margin-top: 3.5rem !important;
+    margin-bottom: 1.75rem !important;
+}
+
+body.zen-mode .markdown h3 {
+    font-size: 1.5rem !important;
+    margin-top: 3rem !important;
+}
+
+/* Better code blocks in zen mode */
+body.zen-mode .markdown pre {
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+}
+
+/* Better blockquotes */
+body.zen-mode .markdown blockquote {
+    padding: 1.75rem 2rem !important;
+    margin: 2.5rem 0 !important;
+}
+
+/* Better images */
+body.zen-mode .markdown img {
+    margin: 2.5rem auto !important;
+    display: block;
+}
+
+/* Mobile Zen Mode - proper margins and padding */
+@media (max-width: 996px) {
+    body.zen-mode main.docMainContainer,
+    body.zen-mode .docMainContainer {
+        padding: 2rem 1.25rem !important;
+        max-width: 100% !important;
+    }
+
+    body.zen-mode [class*='docItemContainer'],
+    body.zen-mode .docItemContainer {
+        max-width: 100% !important;
+        padding: 0 0.75rem !important;
+    }
+
+    body.zen-mode article {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    body.zen-mode main.docMainContainer,
+    body.zen-mode .docMainContainer {
+        padding: 1.5rem 1rem !important;
+    }
+
+    body.zen-mode [class*='docItemContainer'],
+    body.zen-mode .docItemContainer {
+        padding: 0 0.5rem !important;
+    }
+
+    body.zen-mode .markdown {
+        font-size: 1.0625rem !important;
+        line-height: 1.8 !important;
+    }
+
+    body.zen-mode .markdown h1 {
+        font-size: 1.75rem !important;
+    }
+
+    body.zen-mode .markdown h2 {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* Hide default Docusaurus back-to-top button (we use custom one) */
+[class*="backToTopButton"] {
+    display: none !important;
+}
+
+/* ============================================
+   FLOATING ACTION BUTTONS
+   ============================================ */
+
+.floating-actions {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 9999;
+}
+
+/* Back to top button */
+.back-to-top-button {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+    animation: fade-in-up 0.2s ease;
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.back-to-top-button:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+[data-theme="dark"] .back-to-top-button {
+    background: rgba(40, 40, 40, 0.95);
+    color: #e0e0e0;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .back-to-top-button:hover {
+    background: rgba(50, 50, 50, 1);
+}
+
+/* Tooltip for back to top */
+.back-to-top-button::before {
+    content: attr(title);
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5rem 0.75rem;
+    background: #1a1a1a;
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    white-space: nowrap;
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top-button::after {
+    content: '';
+    position: absolute;
+    right: calc(100% + 4px);
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: #1a1a1a;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+.back-to-top-button:hover::before,
+.back-to-top-button:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+[data-theme="dark"] .back-to-top-button::before {
+    background: #f0f0f0;
+    color: #1a1a1a;
+}
+
+[data-theme="dark"] .back-to-top-button::after {
+    border-left-color: #f0f0f0;
+}
+
+/* Focus mode toggle button */
+.zen-mode-toggle {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+}
+
+/* Tooltip */
+.zen-mode-toggle::before {
+    content: attr(title);
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5rem 0.75rem;
+    background: #1a1a1a;
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    white-space: nowrap;
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Tooltip arrow */
+.zen-mode-toggle::after {
+    content: '';
+    position: absolute;
+    right: calc(100% + 4px);
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: #1a1a1a;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+.zen-mode-toggle:hover::before,
+.zen-mode-toggle:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.zen-mode-toggle:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+[data-theme="dark"] .zen-mode-toggle {
+    background: rgba(40, 40, 40, 0.95);
+    color: #e0e0e0;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .zen-mode-toggle:hover {
+    background: rgba(50, 50, 50, 1);
+}
+
+[data-theme="dark"] .zen-mode-toggle::before {
+    background: #f0f0f0;
+    color: #1a1a1a;
+}
+
+[data-theme="dark"] .zen-mode-toggle::after {
+    border-left-color: #f0f0f0;
+}
+
+/* Active state when in zen mode */
+body.zen-mode .zen-mode-toggle {
+    background: var(--ifm-color-primary);
+    color: white;
+    border-color: transparent;
+}
+
+body.zen-mode .zen-mode-toggle:hover {
+    background: var(--ifm-color-primary-dark);
+}
+
+/* Main Content Layout Adjustments */
+main.docMainContainer {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+@media (max-width: 996px) {
+    main.docMainContainer {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}
+
+/* ============================================
+   NAVBAR - SOLID BACKGROUND, NO TRANSPARENCY
+   Using native Docusaurus variables + direct overrides
+   ============================================ */
+
+/* Light mode navbar */
+.navbar {
+    background: var(--ifm-navbar-background-color, #ffffff) !important;
+    background-color: var(--ifm-navbar-background-color, #ffffff) !important;
+    background-image: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: var(--ifm-navbar-shadow, 0 1px 2px rgba(0, 0, 0, 0.05)) !important;
+    z-index: 1000 !important;
+    /* High z-index to stay above content */
+}
+
+/* Dark mode navbar - MUST use higher specificity */
+/* Obsidian Glass: near-black with zinc undertone */
+html[data-theme="dark"] .navbar,
 [data-theme="dark"] .navbar {
-    /* Polar Night header - dark charcoal with subtle transparency */
-    background: linear-gradient(
-        180deg,
-        rgba(17, 17, 17, 0.98) 0%,
-        rgba(26, 26, 26, 0.95) 100%
-    );
-    box-shadow:
-        0 2px 12px rgba(0, 0, 0, 0.4),
-        0 1px 3px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border-bottom: 1px solid rgba(170, 170, 170, 0.08);
+    background: #18181b !important;
+    background-color: #18181b !important;
+    background-image: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Mobile navbar - ensure solid background on all screen sizes */
+@media (max-width: 996px) {
+
+    /* Light mode mobile */
+    .navbar {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        padding: 0 0.5rem !important;
+    }
+
+    /* Dark mode mobile - explicit overrides */
+    html[data-theme="dark"] .navbar,
+    [data-theme="dark"] .navbar {
+        background: #18181b !important;
+        background-color: #18181b !important;
+    }
+
+    /* Reduce gap between hamburger and Book link */
+    .navbar__toggle {
+        margin-right: 0.25rem !important;
+        padding: 0.5rem !important;
+    }
+
+    .navbar__items {
+        gap: 0 !important;
+    }
+
+    /* Tighten left navbar items spacing */
+    .navbar__items--left {
+        gap: 0.25rem !important;
+        margin-left: 0 !important;
+    }
+
+    /* Hide the brand/title on mobile */
+    .navbar__brand {
+        display: none !important;
+    }
+
+    /* Reduce inner wrapper padding */
+    .navbar__inner {
+        gap: 0.5rem !important;
+        padding: 0 0.5rem !important;
+    }
 }
 
 /* Navbar brand title styling */
@@ -135,11 +793,9 @@ pre code {
 
 /* Navbar CTA button */
 .navbar-cta-button {
-    background: linear-gradient(
-        135deg,
-        var(--ifm-color-primary) 0%,
-        var(--ifm-color-primary-dark) 100%
-    ) !important;
+    background: linear-gradient(135deg,
+            var(--ifm-color-primary) 0%,
+            var(--ifm-color-primary-dark) 100%) !important;
     color: white !important;
     padding: 0.75rem 1.25rem !important;
     border-radius: 50px !important;
@@ -192,12 +848,10 @@ pre code {
 
 /* Footer Container - LIGHT MODE: Much darker navy for clear separation */
 .footer {
-    background: linear-gradient(
-        180deg,
-        #001428 0%,
-        #000f1f 50%,
-        #000a15 100%
-    ) !important;
+    background: linear-gradient(180deg,
+            #001428 0%,
+            #000f1f 50%,
+            #000a15 100%) !important;
     border-top: 1px solid rgba(170, 170, 170, 0.2) !important;
     padding: 4rem 2rem 2rem !important;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
@@ -214,21 +868,17 @@ pre code {
     right: 0;
     bottom: 0;
     background-image:
-        radial-gradient(
-            circle at 20% 50%,
+        radial-gradient(circle at 20% 50%,
             rgba(170, 170, 170, 0.03) 0%,
-            transparent 50%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
+            transparent 50%),
+        radial-gradient(circle at 80% 80%,
             rgba(221, 221, 221, 0.02) 0%,
-            transparent 50%
-        );
+            transparent 50%);
     pointer-events: none;
     z-index: 0;
 }
 
-.footer > * {
+.footer>* {
     position: relative;
     z-index: 1;
 }
@@ -241,53 +891,43 @@ pre code {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(170, 170, 170, 0.3) 10%,
-        rgba(221, 221, 221, 0.4) 50%,
-        rgba(170, 170, 170, 0.3) 90%,
-        transparent 100%
-    );
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(170, 170, 170, 0.3) 10%,
+            rgba(221, 221, 221, 0.4) 50%,
+            rgba(170, 170, 170, 0.3) 90%,
+            transparent 100%);
     opacity: 1;
     z-index: 1;
 }
 
 /* DARK MODE: Charcoal footer for contrast */
 [data-theme="dark"] .footer {
-    background: linear-gradient(
-        180deg,
-        #1a1a1a 0%,
-        #111111 50%,
-        #0a0a0a 100%
-    ) !important;
+    background: linear-gradient(180deg,
+            #1a1a1a 0%,
+            #111111 50%,
+            #0a0a0a 100%) !important;
     border-top: 1px solid rgba(170, 170, 170, 0.12) !important;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .footer::after {
     background-image:
-        radial-gradient(
-            circle at 20% 50%,
+        radial-gradient(circle at 20% 50%,
             rgba(170, 170, 170, 0.02) 0%,
-            transparent 50%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
+            transparent 50%),
+        radial-gradient(circle at 80% 80%,
             rgba(221, 221, 221, 0.015) 0%,
-            transparent 50%
-        );
+            transparent 50%);
 }
 
 [data-theme="dark"] .footer::before {
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(170, 170, 170, 0.2) 10%,
-        rgba(170, 170, 170, 0.3) 50%,
-        rgba(170, 170, 170, 0.2) 90%,
-        transparent 100%
-    );
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(170, 170, 170, 0.2) 10%,
+            rgba(170, 170, 170, 0.3) 50%,
+            rgba(170, 170, 170, 0.2) 90%,
+            transparent 100%);
 }
 
 /* Footer Links Container */
@@ -314,6 +954,7 @@ pre code {
         flex-direction: column;
         gap: 2rem;
     }
+
     .footer__col {
         max-width: unset;
         min-width: 0;
@@ -500,37 +1141,48 @@ pre code {
     vertical-align: middle;
     transition: color 0.3s;
 }
+
 .footer__link-social .footer-social-icon.youtube {
     color: #ff0000;
 }
+
 .footer__link-social .footer-social-icon.linkedin {
     color: #0077b5;
 }
+
 .footer__link-social .footer-social-icon.instagram {
     color: #e1306c;
 }
+
 .footer__link-social .footer-social-icon.facebook {
     color: #1877f3;
 }
+
 .footer__link-social .footer-social-icon.github {
     color: #181717;
 }
+
 /* Vibrant color even on dark mode */
 [data-theme="dark"] .footer__link-social .footer-social-icon.youtube {
     color: #ff3c3c;
 }
+
 [data-theme="dark"] .footer__link-social .footer-social-icon.linkedin {
     color: #2997f7;
 }
+
 [data-theme="dark"] .footer__link-social .footer-social-icon.instagram {
     color: #ff68a3;
 }
+
 [data-theme="dark"] .footer__link-social .footer-social-icon.facebook {
     color: #3b93f7;
 }
+
 [data-theme="dark"] .footer__link-social .footer-social-icon.github {
     color: #f3f3f3;
 }
+
 /* Add some hover flair */
 .footer__link-social:hover .footer-social-icon {
     filter: brightness(1.1) drop-shadow(0 0 6px rgba(0, 0, 0, 0.12));
@@ -602,8 +1254,9 @@ pre code {
 
 /* Global touch target enforcement for mobile */
 @media screen and (max-width: 768px) {
-    /* All buttons and links */
-    button,
+
+    /* All buttons and links - EXCEPT navbar custom components */
+    button:not([class*="searchTrigger"]):not([class*="signInLink"]):not([class*="getStartedButton"]):not([class*="userButton"]):not([class*="clearButton"]),
     a[role="button"],
     input[type="button"],
     input[type="submit"],
@@ -635,7 +1288,8 @@ pre code {
     }
 
     /* Interactive elements spacing - only for specific button types, not all links */
-    button,
+    /* EXCEPT navbar custom components */
+    button:not([class*="searchTrigger"]):not([class*="signInLink"]):not([class*="getStartedButton"]):not([class*="userButton"]):not([class*="clearButton"]),
     [role="button"],
     input[type="checkbox"],
     input[type="radio"],
@@ -661,40 +1315,142 @@ pre code {
    MOBILE NAVBAR FIX - Ensure hamburger menu works properly
    ============================================================================ */
 
-/* Ensure mobile sidebar appears above all content */
+/* Hide navbar title when hamburger menu appears */
 @media (max-width: 996px) {
+    .navbar__title {
+        display: none !important;
+    }
+}
+
+/* Hide the plugin's auto-injected search bar - we use custom-searchBar instead */
+/* Target specifically the plugin's generated classes */
+.navbar .DocSearch,
+.navbar .DocSearch-Button,
+.navbar__search,
+.navbar__search-input,
+button.DocSearch.DocSearch-Button {
+    display: none !important;
+}
+
+/* Add space between theme toggle and auth buttons */
+/* The color mode toggle button needs margin-left to separate from Get Started */
+.navbar__items--right .colorModeToggle_node_modules-\@docusaurus-theme-classic-lib-theme-Navbar-ColorModeToggle-styles-module,
+.navbar__items--right [class*="colorModeToggle"],
+.navbar__items--right [class*="toggle_node"],
+button[class*="toggleButton"] {
+    margin-left: 1rem !important;
+}
+
+/* Ensure proper gap in navbar right items */
+.navbar__items--right {
+    gap: 0.5rem;
+}
+
+/* ============================================================================
+   MOBILE SIDEBAR — Premium navigation drawer styling
+   ============================================================================ */
+@media (max-width: 996px) {
+
     /* Docusaurus navbar sidebar for mobile */
     .navbar-sidebar {
         z-index: 1000 !important;
-        height: 100vh !important;  /* Expand to full viewport height */
-        max-height: 100vh !important;  /* Ensure it doesn't exceed viewport */
-        width: 100% !important;  /* Full viewport width */
-        right: 0 !important;  /* Flush to the right edge */
-        background-color: var(--ifm-navbar-background-color) !important;  /* Match navbar bg */
-        background: linear-gradient(180deg, var(--ifm-navbar-background-color) 0%, var(--ifm-background-color) 100%) !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        width: 85% !important;
+        max-width: 340px !important;
+        right: auto !important;
+        left: 0 !important;
+        background: #ffffff !important;
         overflow-y: auto !important;
         overflow-x: hidden !important;
-        -webkit-overflow-scrolling: touch !important;  /* Smooth scrolling on iOS */
+        -webkit-overflow-scrolling: touch !important;
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    [data-theme="dark"] .navbar-sidebar {
+        background: #1a1a1a !important;
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    /* Mobile sidebar header - Custom component in src/theme/Navbar/MobileSidebar/Header */
+    /* Styles are in the component's styles.module.css */
+
+    /* Mobile sidebar items container */
+    .navbar-sidebar__items {
+        padding: 0.5rem 0 !important;
+    }
+
+    /* HIDE search bar, auth buttons, and duplicate items from mobile sidebar */
+    /* Target CSS module classes which will have format like styles_className__hash */
+    .navbar-sidebar [class*="searchBar"],
+    .navbar-sidebar [class*="SearchBar"],
+    .navbar-sidebar [class*="searchContainer"],
+    .navbar-sidebar [class*="searchTrigger"],
+    .navbar-sidebar [class*="authContainer"],
+    .navbar-sidebar [class*="signInLink"],
+    .navbar-sidebar [class*="getStartedButton"],
+    .navbar-sidebar [class*="userButton"],
+    .navbar-sidebar .navbar-auth-buttons,
+    .navbar-sidebar [class*="navbarAuth"],
+    .navbar-sidebar .navbar__item--auth,
+    .navbar-sidebar__items [class*="colorModeToggle"],
+    .navbar-sidebar__items [class*="toggle_"],
+    .navbar-sidebar__item [class*="colorModeToggle"],
+    /* Also hide any navbar item that contains these components */
+    .navbar-sidebar__items .navbar__item:has([class*="searchContainer"]),
+    .navbar-sidebar__items .navbar__item:has([class*="authContainer"]) {
+        display: none !important;
+    }
+
+    /* Primary sidebar content */
+    .navbar-sidebar__item {
+        padding: 0 0.5rem !important;
+    }
+
+    /* Hide default "Back to Main Menu" - replaced by custom header Back button */
+    .navbar-sidebar__back,
+    .navbar-sidebar button[class*="back"],
+    .navbar-sidebar [class*="backButton"],
+    .navbar-sidebar a[class*="back"] {
+        display: none !important;
+    }
+
+    /* Also hide any "← Back to main menu" text links */
+    .navbar-sidebar .menu__link[href="#"] {
+        display: none !important;
+    }
+
+    /* Hide duplicate icons in mobile sidebar menu items */
+    .navbar-sidebar .menu__caret,
+    .navbar-sidebar .menu__link--sublist-caret,
+    .navbar-sidebar .menu__link svg,
+    .navbar-sidebar [class*="collapsibleButton"],
+    .navbar-sidebar .menu__list-item-collapsible svg,
+    .navbar-sidebar .menu__link--sublist svg,
+    .navbar-sidebar .menu__link--sublist>svg,
+    .navbar-sidebar [class*="expandButton"],
+    .navbar-sidebar [class*="menuCaret"] {
+        display: none !important;
     }
 
     /* Backdrop behind the mobile menu */
     .navbar-sidebar__backdrop {
         z-index: 999 !important;
-        background-color: rgba(0, 0, 0, 0.5) !important;  /* Semi-transparent dark overlay */
+        background-color: rgba(0, 0, 0, 0.5) !important;
     }
 
-    /* Light mode: Darker backdrop for better visibility and contrast */
+    /* Light mode: Darker backdrop for better visibility */
     [data-theme='light'] .navbar-sidebar__backdrop {
-        background-color: rgba(0, 0, 0, 0.7) !important;
+        background-color: rgba(0, 0, 0, 0.6) !important;
     }
 
-    /* When sidebar is open (navbar--show class present), hide main content */
-    .navbar--fixed-top.navbar-sidebar--show ~ .main-wrapper {
+    /* When sidebar is open, hide main content */
+    .navbar--fixed-top.navbar-sidebar--show~.main-wrapper {
         display: none !important;
     }
 
-    /* Also hide footer when sidebar is open to prevent content overlap */
-    .navbar--fixed-top.navbar-sidebar--show ~ footer {
+    /* Also hide footer when sidebar is open */
+    .navbar--fixed-top.navbar-sidebar--show~footer {
         display: none !important;
     }
 }
@@ -708,3 +1464,25 @@ pre code {
    DOC PAGES STYLING - Premium enhancements for chapter pages
    ============================================================================ */
 @import "./doc-pages.css";
+
+/* ============================================================================
+   MOBILE NAVBAR OVERRIDES - Final overrides with highest specificity
+   ============================================================================ */
+@media (max-width: 996px) {
+    /* Force hide "Book" link on mobile - placed at end for highest precedence */
+    /* Target all possible navbar link variations */
+    .navbar__items--left .navbar__item,
+    .navbar__items--left .navbar__link,
+    .navbar__items--left > a,
+    .navbar__items--left > div:not(:first-child),
+    a[class*="navbar__link"][href*="/docs"],
+    .navbar__inner .navbar__items--left > *:not(button):not(.navbar__toggle) {
+        display: none !important;
+        visibility: hidden !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+}

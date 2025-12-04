@@ -1,5 +1,5 @@
 ---
-title: "Preface: Welcome to the AI-Native Era"
+title: "PREFACE: Welcome to the AI-Native Era"
 description: "Introduction to AI-native software development and specification-driven methodology."
 authors: ["Panaversity Team"]
 date: "2025-01-11"
@@ -9,7 +9,7 @@ next: "/docs/part-1/chapter-1"
 sidebar_position: 0
 ---
 
-# Preface: Welcome to the AI-Native Era
+# PREFACE: Welcome to the AI-Native Era
 
 For the first time in human history, you can ship production AI-native software by writing specifications, not code—turning your domain expertise into intelligent systems that execute at machine speed.
 

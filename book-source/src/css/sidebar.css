@@ -1,587 +1,649 @@
 /**
  * ============================================================================
- * SIDEBAR PREMIUM STYLING
- * Enhances left sidebar navigation to match the beautiful homepage design
- * Polar Night Theme - Consistent for Light & Dark Modes
+ * POLAR NIGHT SIDEBAR — Refined Educational Navigation
+ * ============================================================================
+ * A polished, professional documentation sidebar featuring:
+ * - Clear visual hierarchy for book parts and chapters
+ * - Progress indicator dots for learning status
+ * - Subtle navy blue accents matching the Polar Night theme
+ * - Smooth micro-interactions for engaged learning
+ * - Full accessibility support (WCAG 2.1 AA)
  * ============================================================================
  */
+
+/* ============================================================================
+   0. SIDEBAR LAYOUT — Custom width with native collapse support
+   ============================================================================ */
+
+/* Set sidebar width via CSS variables - Docusaurus respects these */
+:root {
+  --doc-sidebar-width: 260px;
+  --doc-sidebar-hidden-width: 30px;
+}
+
+@media (min-width: 997px) {
+  /* The sidebar viewport - sticky below the navbar */
+  .theme-doc-sidebar-container [class*='sidebarViewport'] {
+    position: sticky !important;
+    top: var(--ifm-navbar-height) !important;
+    height: calc(100vh - var(--ifm-navbar-height)) !important;
+    max-height: calc(100vh - var(--ifm-navbar-height)) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Remove default padding since sidebar now starts below navbar */
+  .theme-doc-sidebar-container [class*='sidebarViewport'] > [class*='sidebar'] {
+    padding-top: 0 !important;
+  }
+}
 
 /* ============================================================================
    1. SIDEBAR CONTAINER
    ============================================================================ */
 
-/* Main sidebar container */
 .theme-doc-sidebar-container {
-    background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.98) 0%,
-        rgba(249, 249, 249, 0.95) 100%
-    ) !important;
-    border-right: 1px solid rgba(0, 31, 63, 0.08) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+  background: #fafbfc !important;
+  border-right: 1px solid rgba(0, 31, 63, 0.08) !important;
+  position: relative;
+  /* DO NOT set width here - Docusaurus handles collapse/expand transitions */
 }
 
 [data-theme="dark"] .theme-doc-sidebar-container {
-    background: linear-gradient(
-        180deg,
-        rgba(17, 17, 17, 0.98) 0%,
-        rgba(26, 26, 26, 0.95) 100%
-    ) !important;
-    border-right: 1px solid rgba(170, 170, 170, 0.12) !important;
+  background: #141414 !important;
+  border-right-color: rgba(170, 170, 170, 0.1) !important;
+}
+
+/* Subtle top accent line */
+.theme-doc-sidebar-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      #001f3f 30%,
+      #003366 50%,
+      #001f3f 70%,
+      transparent 100%);
+  opacity: 0.5;
+  z-index: 10;
+}
+
+[data-theme="dark"] .theme-doc-sidebar-container::before {
+  background: linear-gradient(90deg,
+      transparent 0%,
+      #aaaaaa 30%,
+      #888888 50%,
+      #aaaaaa 70%,
+      transparent 100%);
+  opacity: 0.3;
 }
 
 /* Sidebar inner wrapper */
 .sidebar {
-    padding: 1.5rem 1rem !important;
+  padding: 1.25rem 0.875rem !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
 /* ============================================================================
-   2. SIDEBAR MENU
+   2. MENU STRUCTURE
    ============================================================================ */
 
-/* Menu container */
 .menu {
-    padding: 0.5rem 0;
+  padding: 0;
 }
 
-/* Menu list */
 .menu__list {
-    padding-left: 0;
-    margin: 0;
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
 }
 
 /* ============================================================================
-   3. MENU ITEMS - PREMIUM STYLING
+   3. CATEGORY HEADERS — Part/Chapter Headers
    ============================================================================ */
 
-/* Base menu item */
 .menu__list-item {
-    margin-bottom: 0.25rem;
+  margin-bottom: 0.125rem;
 }
 
-/* Menu link base styles */
-.menu__link {
-    display: flex !important;
-    align-items: center !important;
-    padding: 0.625rem 1rem !important;
-    border-radius: 6px !important;
-    font-size: 0.9375rem !important;
-    font-weight: 400 !important;
-    line-height: 1.5 !important;
-    color: #2c3e50 !important;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    position: relative !important;
-    border-left: 3px solid transparent !important;
-    margin-left: 0 !important;
-}
-
-[data-theme="dark"] .menu__link {
-    color: #b0b0b0 !important;
-}
-
-/* Menu link hover state */
-.menu__link:hover {
-    background: linear-gradient(
-        135deg,
-        rgba(0, 31, 63, 0.06) 0%,
-        rgba(0, 31, 63, 0.03) 100%
-    ) !important;
-    color: #001f3f !important;
-    border-left-color: rgba(0, 31, 63, 0.3) !important;
-    transform: translateX(2px) !important;
-    text-decoration: none !important;
-}
-
-[data-theme="dark"] .menu__link:hover {
-    background: linear-gradient(
-        135deg,
-        rgba(170, 170, 170, 0.08) 0%,
-        rgba(170, 170, 170, 0.04) 100%
-    ) !important;
-    color: #dddddd !important;
-    border-left-color: rgba(170, 170, 170, 0.4) !important;
-}
-
-/* Active menu item */
-.menu__link--active {
-    background: linear-gradient(
-        135deg,
-        rgba(0, 31, 63, 0.12) 0%,
-        rgba(0, 31, 63, 0.08) 100%
-    ) !important;
-    color: #001f3f !important;
-    font-weight: 500 !important;
-    border-left-color: #001f3f !important;
-    box-shadow: 0 2px 4px rgba(0, 31, 63, 0.08) !important;
-}
-
-[data-theme="dark"] .menu__link--active {
-    background: linear-gradient(
-        135deg,
-        rgba(170, 170, 170, 0.15) 0%,
-        rgba(170, 170, 170, 0.08) 100%
-    ) !important;
-    color: #dddddd !important;
-    border-left-color: #aaaaaa !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) !important;
-}
-
-/* Active menu item hover (maintain active state) */
-.menu__link--active:hover {
-    transform: translateX(2px) !important;
-    box-shadow: 0 3px 8px rgba(0, 31, 63, 0.12) !important;
-}
-
-[data-theme="dark"] .menu__link--active:hover {
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4) !important;
-}
-
-/* ============================================================================
-   4. CATEGORY / COLLAPSIBLE SECTIONS
-   ============================================================================ */
-
-/* Category container */
-.menu__list-item--collapsed .menu__list,
-.menu__list-item:not(.menu__list-item--collapsed) .menu__list {
-    padding-left: 0.75rem;
-    margin-top: 0.25rem;
-    margin-bottom: 0.5rem;
-    border-left: 2px solid rgba(0, 31, 63, 0.08);
-    margin-left: 0.75rem;
-}
-
-[data-theme="dark"] .menu__list-item--collapsed .menu__list,
-[data-theme="dark"]
-    .menu__list-item:not(.menu__list-item--collapsed)
-    .menu__list {
-    border-left-color: rgba(170, 170, 170, 0.12);
-}
-
-/* Category label (clickable header) */
+/* Category/Module header (Parts, Chapters) */
 .menu__link--sublist {
-    font-weight: 500 !important;
-    color: #001f3f !important;
-    text-transform: none !important;
-    font-size: 0.9375rem !important;
-    letter-spacing: 0 !important;
-    padding: 0.75rem 1rem !important;
-    padding-right: 1rem !important;
-    position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0.75rem 1rem !important;
+  padding-right: 2rem !important;
+  /* Prevent overlap with arrow */
+  font-size: 0.8125rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  color: #1a1a2e !important;
+  background: rgba(0, 31, 63, 0.03) !important;
+  border-radius: 8px !important;
+  border: 1px solid transparent !important;
+  position: relative !important;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease !important;
 }
 
 [data-theme="dark"] .menu__link--sublist {
-    color: #cccccc !important;
+  color: #e0e0e0 !important;
+  background: rgba(170, 170, 170, 0.04) !important;
 }
 
-/* Category label hover */
+/* Category indicator dot */
+.menu__link--sublist::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #001f3f;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+[data-theme="dark"] .menu__link--sublist::before {
+  background: #aaaaaa;
+}
+
+/* Expand/collapse arrow - ONLY show on desktop, hide on mobile */
+@media (min-width: 997px) {
+  .menu__link--sublist::after {
+    content: '';
+    position: absolute;
+    right: 1rem;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid #8a8a9a;
+    transition: transform 0.15s ease;
+  }
+
+  [data-theme="dark"] .menu__link--sublist::after {
+    border-top-color: #707070;
+  }
+
+  /* Collapsed state - arrow points right */
+  .menu__list-item--collapsed>.menu__link--sublist::after {
+    transform: rotate(-90deg);
+  }
+}
+
+/* Hide arrow on mobile - rely only on indicator dot */
+@media (max-width: 996px) {
+  .menu__link--sublist::after {
+    display: none !important;
+    content: none !important;
+  }
+}
+
+/* Category hover */
 .menu__link--sublist:hover {
-    background: linear-gradient(
-        135deg,
-        rgba(0, 31, 63, 0.08) 0%,
-        rgba(0, 31, 63, 0.04) 100%
-    ) !important;
+  background: rgba(0, 31, 63, 0.06) !important;
+  border-color: rgba(0, 31, 63, 0.1) !important;
+  text-decoration: none !important;
 }
 
 [data-theme="dark"] .menu__link--sublist:hover {
-    background: linear-gradient(
-        135deg,
-        rgba(170, 170, 170, 0.1) 0%,
-        rgba(170, 170, 170, 0.05) 100%
-    ) !important;
+  background: rgba(170, 170, 170, 0.08) !important;
+  border-color: rgba(170, 170, 170, 0.15) !important;
 }
 
-/* Category expand/collapse arrow - REMOVED for cleaner look */
-.menu__link--sublist::after {
-    content: none !important;
+.menu__link--sublist:hover::before {
+  background: #0066cc;
+  box-shadow: 0 0 8px rgba(0, 102, 204, 0.3);
 }
 
-/* Category label when active child exists */
-.menu__list-item:not(.menu__list-item--collapsed) > .menu__link--sublist {
-    color: #001f3f !important;
-    background: rgba(0, 31, 63, 0.04) !important;
+[data-theme="dark"] .menu__link--sublist:hover::before {
+  background: #6699cc;
+  box-shadow: 0 0 8px rgba(102, 153, 204, 0.3);
 }
 
-[data-theme="dark"]
-    .menu__list-item:not(.menu__list-item--collapsed)
-    > .menu__link--sublist {
-    color: #dddddd !important;
-    background: rgba(170, 170, 170, 0.06) !important;
+/* Active/expanded category */
+.menu__list-item:not(.menu__list-item--collapsed)>.menu__link--sublist {
+  background: rgba(0, 31, 63, 0.08) !important;
+  border-color: rgba(0, 31, 63, 0.1) !important;
+}
+
+[data-theme="dark"] .menu__list-item:not(.menu__list-item--collapsed)>.menu__link--sublist {
+  background: rgba(170, 170, 170, 0.1) !important;
+  border-color: rgba(170, 170, 170, 0.15) !important;
+}
+
+.menu__list-item:not(.menu__list-item--collapsed)>.menu__link--sublist::before {
+  background: #0066cc;
+  box-shadow: 0 0 6px rgba(0, 102, 204, 0.25);
+}
+
+[data-theme="dark"] .menu__list-item:not(.menu__list-item--collapsed)>.menu__link--sublist::before {
+  background: #6699cc;
+  box-shadow: 0 0 6px rgba(102, 153, 204, 0.25);
 }
 
 /* ============================================================================
-   5. NESTED MENU ITEMS
+   4. NESTED CONTENT — Lesson/Chapter List
    ============================================================================ */
 
-/* Second level items */
+.menu__list .menu__list {
+  padding-left: 0;
+  margin: 0.375rem 0 0.5rem 0;
+  border-left: 2px solid rgba(0, 31, 63, 0.1);
+  margin-left: 0.875rem;
+  padding-left: 0.5rem;
+  position: relative;
+}
+
+[data-theme="dark"] .menu__list .menu__list {
+  border-left-color: rgba(170, 170, 170, 0.12);
+}
+
+/* Subtle gradient on nested border */
+.menu__list .menu__list::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -2px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(0, 31, 63, 0.15) 0%, transparent 100%);
+  opacity: 0.6;
+}
+
+[data-theme="dark"] .menu__list .menu__list::before {
+  background: linear-gradient(180deg, rgba(170, 170, 170, 0.15) 0%, transparent 100%);
+}
+
+/* ============================================================================
+   5. MENU ITEMS — Lesson Links
+   ============================================================================ */
+
+/* Hide ALL default Docusaurus caret/arrow icons - we use custom ::after arrow */
+.menu__caret,
+.menu__link--sublist-caret,
+.menu__link--sublist-caret::after,
+.menu__link .menu__caret,
+.menu__link svg,
+.menu__link .icon,
+.menu__link--sublist>svg,
+.menu__link--sublist svg,
+.menu__link--sublist>.menu__link--sublist-caret,
+[class*="collapsibleButton"],
+[class*="menuLinkText"]+svg,
+.menu__list-item-collapsible>.menu__caret,
+.menu__list-item-collapsible svg {
+  display: none !important;
+}
+
+/* But keep external link icons if needed */
+.menu__link[target="_blank"] svg {
+  display: inline-block !important;
+  width: 12px !important;
+  height: 12px !important;
+  margin-left: 4px !important;
+}
+
+/* Base menu link */
+.menu__link {
+  display: flex !important;
+  align-items: center !important;
+  padding: 0.625rem 0.875rem !important;
+  padding-left: 1.5rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  color: #4a4a5a !important;
+  border-radius: 6px !important;
+  border-left: 2px solid transparent !important;
+  margin-left: 0 !important;
+  position: relative !important;
+  transition:
+    all 0.15s ease,
+    transform 0.15s ease !important;
+}
+
+[data-theme="dark"] .menu__link {
+  color: #a0a0a0 !important;
+}
+
+/* Progress indicator dot */
+.menu__link::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  border: 1.5px solid #8a8a9a;
+  background: transparent;
+  transition: all 0.15s ease;
+}
+
+[data-theme="dark"] .menu__link::before {
+  border-color: #606060;
+}
+
+/* Hover state */
+.menu__link:hover {
+  background: rgba(0, 31, 63, 0.05) !important;
+  color: #1a1a2e !important;
+  border-left-color: #001f3f !important;
+  transform: translateX(2px) !important;
+  text-decoration: none !important;
+}
+
+[data-theme="dark"] .menu__link:hover {
+  background: rgba(170, 170, 170, 0.06) !important;
+  color: #e0e0e0 !important;
+  border-left-color: #aaaaaa !important;
+}
+
+.menu__link:hover::before {
+  border-color: #0066cc;
+}
+
+[data-theme="dark"] .menu__link:hover::before {
+  border-color: #6699cc;
+}
+
+/* Active state - current page */
+.menu__link--active {
+  background: rgba(0, 31, 63, 0.08) !important;
+  color: #1a1a2e !important;
+  font-weight: 500 !important;
+  border-left-color: #0066cc !important;
+}
+
+[data-theme="dark"] .menu__link--active {
+  background: rgba(170, 170, 170, 0.1) !important;
+  color: #f0f0f0 !important;
+  border-left-color: #6699cc !important;
+}
+
+.menu__link--active::before {
+  background: #0066cc !important;
+  border-color: #0066cc !important;
+  box-shadow: 0 0 6px rgba(0, 102, 204, 0.3);
+}
+
+[data-theme="dark"] .menu__link--active::before {
+  background: #6699cc !important;
+  border-color: #6699cc !important;
+  box-shadow: 0 0 6px rgba(102, 153, 204, 0.3);
+}
+
+/* Active hover */
+.menu__link--active:hover {
+  transform: translateX(2px) !important;
+}
+
+/* ============================================================================
+   6. DEEPLY NESTED ITEMS
+   ============================================================================ */
+
 .menu__list .menu__list .menu__link {
-    font-size: 0.875rem !important;
-    font-weight: 400 !important;
-    padding: 0.5rem 0.875rem !important;
-    padding-left: 1.25rem !important;
+  font-size: 0.8125rem !important;
+  padding: 0.5rem 0.75rem !important;
+  padding-left: 1.25rem !important;
+  color: #6a6a7a !important;
 }
 
-/* Third level items */
+[data-theme="dark"] .menu__list .menu__list .menu__link {
+  color: #888888 !important;
+}
+
+.menu__list .menu__list .menu__link::before {
+  left: 0.375rem;
+  width: 4px;
+  height: 4px;
+}
+
+.menu__list .menu__list .menu__link:hover,
+.menu__list .menu__list .menu__link--active {
+  color: #4a4a5a !important;
+}
+
+[data-theme="dark"] .menu__list .menu__list .menu__link:hover,
+[data-theme="dark"] .menu__list .menu__list .menu__link--active {
+  color: #b0b0b0 !important;
+}
+
+/* Third level */
 .menu__list .menu__list .menu__list .menu__link {
-    font-size: 0.8125rem !important;
-    font-weight: 400 !important;
-    padding-left: 1.75rem !important;
-    opacity: 0.9;
-}
-
-/* ============================================================================
-   6. SIDEBAR HEADER / BRANDING
-   ============================================================================ */
-
-/* Custom sidebar header (if added) */
-.sidebar-header {
-    padding: 1rem 1rem 1.5rem;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid rgba(0, 31, 63, 0.1);
-}
-
-[data-theme="dark"] .sidebar-header {
-    border-bottom-color: rgba(170, 170, 170, 0.15);
-}
-
-.sidebar-header-title {
-    font-size: 1.125rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #001f3f 0%, #003366 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.25rem;
-}
-
-[data-theme="dark"] .sidebar-header-title {
-    background: linear-gradient(135deg, #dddddd 0%, #aaaaaa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.sidebar-header-subtitle {
-    font-size: 0.8125rem;
-    color: #666;
-    font-weight: 500;
-}
-
-[data-theme="dark"] .sidebar-header-subtitle {
-    color: #999;
+  font-size: 0.75rem !important;
+  padding-left: 1rem !important;
+  opacity: 0.9;
 }
 
 /* ============================================================================
    7. SCROLLBAR STYLING
    ============================================================================ */
 
-/* Custom scrollbar for sidebar */
 .theme-doc-sidebar-container::-webkit-scrollbar {
-    width: 8px;
+  width: 6px;
 }
 
 .theme-doc-sidebar-container::-webkit-scrollbar-track {
-    background: rgba(0, 31, 63, 0.03);
-    border-radius: 4px;
+  background: rgba(0, 31, 63, 0.03);
+  border-radius: 3px;
 }
 
 [data-theme="dark"] .theme-doc-sidebar-container::-webkit-scrollbar-track {
-    background: rgba(170, 170, 170, 0.05);
+  background: rgba(170, 170, 170, 0.05);
 }
 
 .theme-doc-sidebar-container::-webkit-scrollbar-thumb {
-    background: rgba(0, 31, 63, 0.2);
-    border-radius: 4px;
-    transition: background 0.2s ease;
+  background: rgba(0, 31, 63, 0.15);
+  border-radius: 3px;
+  transition: background 0.2s ease;
 }
 
 [data-theme="dark"] .theme-doc-sidebar-container::-webkit-scrollbar-thumb {
-    background: rgba(170, 170, 170, 0.3);
+  background: rgba(170, 170, 170, 0.2);
 }
 
 .theme-doc-sidebar-container::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 31, 63, 0.35);
+  background: rgba(0, 31, 63, 0.25);
 }
 
-[data-theme="dark"]
-    .theme-doc-sidebar-container::-webkit-scrollbar-thumb:hover {
-    background: rgba(170, 170, 170, 0.5);
+[data-theme="dark"] .theme-doc-sidebar-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(170, 170, 170, 0.3);
 }
 
-/* ============================================================================
-   8. SIDEBAR TOGGLE BUTTON
-   ============================================================================ */
-
-/* Toggle button styling */
-.theme-doc-sidebar-toggle {
-    background: linear-gradient(
-        135deg,
-        rgba(0, 31, 63, 0.05) 0%,
-        rgba(0, 31, 63, 0.02) 100%
-    ) !important;
-    border: 1px solid rgba(0, 31, 63, 0.12) !important;
-    border-radius: 6px !important;
-    padding: 0.5rem !important;
-    transition: all 0.2s ease !important;
+/* Firefox scrollbar */
+.theme-doc-sidebar-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 31, 63, 0.15) rgba(0, 31, 63, 0.03);
 }
 
-[data-theme="dark"] .theme-doc-sidebar-toggle {
-    background: linear-gradient(
-        135deg,
-        rgba(170, 170, 170, 0.08) 0%,
-        rgba(170, 170, 170, 0.04) 100%
-    ) !important;
-    border-color: rgba(170, 170, 170, 0.2) !important;
-}
-
-.theme-doc-sidebar-toggle:hover {
-    background: linear-gradient(
-        135deg,
-        rgba(0, 31, 63, 0.1) 0%,
-        rgba(0, 31, 63, 0.05) 100%
-    ) !important;
-    border-color: rgba(0, 31, 63, 0.2) !important;
-    transform: scale(1.05) !important;
-}
-
-[data-theme="dark"] .theme-doc-sidebar-toggle:hover {
-    background: linear-gradient(
-        135deg,
-        rgba(170, 170, 170, 0.15) 0%,
-        rgba(170, 170, 170, 0.08) 100%
-    ) !important;
-    border-color: rgba(170, 170, 170, 0.3) !important;
+[data-theme="dark"] .theme-doc-sidebar-container {
+  scrollbar-color: rgba(170, 170, 170, 0.2) rgba(170, 170, 170, 0.05);
 }
 
 /* ============================================================================
-   9. DIVIDERS / SEPARATORS
+   8. COLLAPSE/EXPAND BUTTON
    ============================================================================ */
 
-/* Menu divider (if using custom dividers) */
-.menu__divider {
-    height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(0, 31, 63, 0.2) 10%,
-        rgba(0, 31, 63, 0.3) 50%,
-        rgba(0, 31, 63, 0.2) 90%,
-        transparent 100%
-    );
-    margin: 1rem 0.5rem;
-    border: none;
+.theme-doc-sidebar-toggle,
+[class*='collapseSidebarButton'] {
+  background: #fafbfc !important;
+  border: 1px solid rgba(0, 31, 63, 0.1) !important;
+  border-radius: 6px !important;
+  color: #6a6a7a !important;
+  transition: all 0.15s ease !important;
 }
 
-[data-theme="dark"] .menu__divider {
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(170, 170, 170, 0.15) 10%,
-        rgba(170, 170, 170, 0.2) 50%,
-        rgba(170, 170, 170, 0.15) 90%,
-        transparent 100%
-    );
+[data-theme="dark"] .theme-doc-sidebar-toggle,
+[data-theme="dark"] [class*='collapseSidebarButton'] {
+  background: #1a1a1a !important;
+  border-color: rgba(170, 170, 170, 0.15) !important;
+  color: #888888 !important;
+}
+
+.theme-doc-sidebar-toggle:hover,
+[class*='collapseSidebarButton']:hover {
+  background: rgba(0, 31, 63, 0.05) !important;
+  border-color: #001f3f !important;
+  color: #1a1a2e !important;
+}
+
+[data-theme="dark"] .theme-doc-sidebar-toggle:hover,
+[data-theme="dark"] [class*='collapseSidebarButton']:hover {
+  background: rgba(170, 170, 170, 0.08) !important;
+  border-color: #aaaaaa !important;
+  color: #e0e0e0 !important;
 }
 
 /* ============================================================================
-   10. BADGES / LABELS (Optional enhancements)
+   9. ACCESSIBILITY — Focus States
    ============================================================================ */
 
-/* New/Beta/Updated badges in sidebar */
-.menu-item-badge {
-    display: inline-block;
-    padding: 0.125rem 0.5rem;
-    margin-left: 0.5rem;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-radius: 3px;
-    background: linear-gradient(135deg, #001f3f 0%, #003366 100%);
-    color: white;
+.menu__link:focus-visible,
+.menu__link--sublist:focus-visible {
+  outline: 2px solid #0066cc !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.15) !important;
 }
 
-[data-theme="dark"] .menu-item-badge {
-    background: linear-gradient(135deg, #aaaaaa 0%, #888888 100%);
-    color: #111;
+[data-theme="dark"] .menu__link:focus-visible,
+[data-theme="dark"] .menu__link--sublist:focus-visible {
+  outline-color: #6699cc !important;
+  box-shadow: 0 0 0 4px rgba(102, 153, 204, 0.15) !important;
 }
 
-/* Badge variants */
-.menu-item-badge--new {
-    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
-}
+/* High contrast mode */
+@media (forced-colors: active) {
+  .menu__link--active {
+    border-left: 3px solid CanvasText !important;
+  }
 
-.menu-item-badge--beta {
-    background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
-}
-
-.menu-item-badge--updated {
-    background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  .menu__link:focus-visible {
+    outline: 2px solid Highlight !important;
+  }
 }
 
 /* ============================================================================
-   11. SEARCH BOX IN SIDEBAR (If enabled)
+   10. REDUCED MOTION
    ============================================================================ */
 
-/* Sidebar search */
-.sidebar-search {
-    padding: 0 1rem 1rem;
-    margin-bottom: 1rem;
-}
+@media (prefers-reduced-motion: reduce) {
+  .theme-doc-sidebar-container::before {
+    animation: none !important;
+  }
 
-.sidebar-search input {
-    width: 100%;
-    padding: 0.625rem 0.875rem;
-    border: 1px solid rgba(0, 31, 63, 0.15);
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.8);
-    font-size: 0.875rem;
-    transition: all 0.2s ease;
-}
+  .menu__link,
+  .menu__link--sublist,
+  .menu__link--sublist::after {
+    transition: none !important;
+  }
 
-[data-theme="dark"] .sidebar-search input {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(170, 170, 170, 0.2);
-    color: #d0d0d0;
-}
-
-.sidebar-search input:focus {
-    outline: none;
-    border-color: #001f3f;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(0, 31, 63, 0.1);
-}
-
-[data-theme="dark"] .sidebar-search input:focus {
-    border-color: #aaaaaa;
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 0 3px rgba(170, 170, 170, 0.15);
+  .menu__link:hover {
+    transform: none !important;
+  }
 }
 
 /* ============================================================================
-   12. SIDEBAR FOOTER (Optional)
+   11. RESPONSIVE — Mobile & Tablet
    ============================================================================ */
 
-/* Sidebar footer section */
-.sidebar-footer {
-    padding: 1rem;
-    margin-top: auto;
-    border-top: 2px solid rgba(0, 31, 63, 0.1);
-    font-size: 0.8125rem;
-    color: #666;
-}
-
-[data-theme="dark"] .sidebar-footer {
-    border-top-color: rgba(170, 170, 170, 0.15);
-    color: #999;
-}
-
-/* ============================================================================
-   13. RESPONSIVE BEHAVIOR
-   ============================================================================ */
-
-/* Tablet and below */
 @media screen and (max-width: 996px) {
-    .sidebar {
-        padding: 1rem 0.75rem !important;
-    }
+  .sidebar {
+    padding: 1rem 0.5rem !important;
+  }
 
-    .menu__link {
-        padding: 0.5rem 0.875rem !important;
-        font-size: 0.875rem !important;
-    }
+  .menu__link--sublist {
+    padding: 0.75rem 0.875rem !important;
+    font-size: 0.75rem !important;
+  }
 
-    .menu__link--sublist {
-        padding: 0.625rem 0.875rem !important;
-        font-size: 0.875rem !important;
-    }
+  .menu__link {
+    padding: 0.5rem 0.75rem !important;
+    padding-left: 1.25rem !important;
+    font-size: 0.8125rem !important;
+    min-height: 44px !important;
+  }
+
+  /* MOBILE: Hide ALL arrows, carets, and expand icons */
+  .menu__link--sublist::after,
+  .menu__caret,
+  .menu__link--sublist-caret,
+  .menu__link svg,
+  .menu__link--sublist svg,
+  [class*="caret"],
+  [class*="Caret"],
+  [class*="menuCaret"],
+  [class*="collapsibleButton"],
+  [class*="expandButton"] {
+    display: none !important;
+    content: none !important;
+  }
 }
 
-/* Mobile */
 @media screen and (max-width: 768px) {
-    /* Sidebar takes full width when open */
-    .theme-doc-sidebar-container {
-        border-right: none !important;
-    }
+  .theme-doc-sidebar-container {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(0, 31, 63, 0.08) !important;
+  }
 
-    .menu__link {
-        padding: 0.5rem 0.75rem !important;
-    }
+  [data-theme="dark"] .theme-doc-sidebar-container {
+    border-bottom-color: rgba(170, 170, 170, 0.1) !important;
+  }
+
+  .sidebar {
+    padding: 0.75rem 0.5rem !important;
+  }
+
+  .menu__link {
+    padding: 0.625rem 0.75rem !important;
+    padding-left: 1.125rem !important;
+    min-height: 48px !important;
+  }
+
+  .menu__link--sublist {
+    padding: 0.75rem !important;
+    min-height: 48px !important;
+  }
+
+  .menu__link::before {
+    left: 0.25rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .menu__link--sublist {
+    font-size: 0.6875rem !important;
+    letter-spacing: 0.03em !important;
+  }
+
+  .menu__link {
+    font-size: 0.8125rem !important;
+  }
 }
 
 /* ============================================================================
-   14. ADDITIONAL POLISH
+   12. PERFORMANCE
    ============================================================================ */
 
-/* Smooth expand/collapse animation */
-.menu__list {
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Focus states for accessibility */
-.menu__link:focus-visible {
-    outline: 2px solid #001f3f;
-    outline-offset: 2px;
-}
-
-[data-theme="dark"] .menu__link:focus-visible {
-    outline-color: #aaaaaa;
-}
-
-/* Prevent text selection on category headers */
-.menu__link--sublist {
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-}
-
-/* Icon alignment in menu items (if using icons) */
-.menu__link svg,
-.menu__link img {
-    margin-right: 0.5rem;
-    flex-shrink: 0;
-}
-
-/* ============================================================================
-   15. PART/CHAPTER NUMBERING STYLE
-   ============================================================================ */
-
-/* Enhanced styling for numbered chapters */
-.menu__link[href*="01-"],
-.menu__link[href*="02-"],
-.menu__link[href*="03-"],
-.menu__link[href*="04-"] {
-    position: relative;
-}
-
-/* Add subtle emphasis to part sections */
-.menu__link--sublist[href*="Part"],
-.menu__link--sublist[href*="Introducing"],
-.menu__link--sublist[href*="AI-Tool"] {
-    font-weight: 500 !important;
-    color: #001f3f !important;
-}
-
-[data-theme="dark"] .menu__link--sublist[href*="Part"],
-[data-theme="dark"] .menu__link--sublist[href*="Introducing"],
-[data-theme="dark"] .menu__link--sublist[href*="AI-Tool"] {
-    color: #dddddd !important;
-}
-
-/* ============================================================================
-   16. PERFORMANCE OPTIMIZATIONS
-   ============================================================================ */
-
-/* Hardware acceleration for transforms */
 .menu__link,
 .menu__link--sublist,
 .theme-doc-sidebar-toggle {
-    will-change: transform;
+  will-change: transform, opacity;
 }
 
-/* Optimize repaints */
-.menu__link::before,
-.menu__link::after {
-    content: none;
+.menu__link--sublist {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Smooth expand/collapse animation */
+.menu__list {
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }

@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "grep_search",
+  "description": "Search content using regex pattern across lesson markdown files",
+  "type": "object",
+  "properties": {
+    "book_id": {
+      "type": "string",
+      "description": "Unique book identifier (required if all_books=false)",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "pattern": {
+      "type": "string",
+      "description": "Regex pattern to search for",
+      "examples": ["OpenDAL", "FR-\\d+", "TODO:.*"]
+    },
+    "all_books": {
+      "type": "boolean",
+      "description": "Search across all books",
+      "default": false
+    }
+  },
+  "required": ["pattern"],
+  "additionalProperties": false,
+  "response": {
+    "type": "object",
+    "properties": {
+      "matches": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "file_path": {
+              "type": "string",
+              "description": "Path to file containing match"
+            },
+            "book_id": {
+              "type": "string"
+            },
+            "line_number": {
+              "type": "integer",
+              "description": "Line where match occurs"
+            },
+            "matched_line_content": {
+              "type": "string",
+              "description": "Full line containing match"
+            }
+          },
+          "required": ["file_path", "book_id", "line_number", "matched_line_content"]
+        }
+      },
+      "total_matches": {
+        "type": "integer",
+        "description": "Total matches found"
+      },
+      "files_searched": {
+        "type": "integer"
+      },
+      "truncated": {
+        "type": "boolean",
+        "description": "True if results exceed 100 matches"
+      }
+    },
+    "required": ["matches", "total_matches", "files_searched", "truncated"]
+  },
+  "errors": [
+    {
+      "code": "INVALID_REGEX",
+      "message": "Pattern '{pattern}' is not valid regex: {error_details}"
+    },
+    {
+      "code": "TOO_MANY_RESULTS",
+      "message": "Pattern matched >1000 instances. Results truncated to first 100. Refine pattern."
+    }
+  ]
+}

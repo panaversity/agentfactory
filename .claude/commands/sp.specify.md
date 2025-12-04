@@ -10,6 +10,12 @@ $ARGUMENTS
 
 You **MUST** consider the user input before proceeding (if not empty).
 
+## Core Directive
+
+**Default to Action**: Create the specification immediately rather than asking preliminary questions. Make informed guesses for unspecified details using industry standards and document assumptions. Only use `[NEEDS CLARIFICATION]` markers (max 3) for decisions that genuinely require user input.
+
+**WHY**: Specification quality improves through iteration, not upfront questioning. A concrete draft with assumptions stated is more valuable than waiting for perfect requirements.
+
 ## Outline
 
 The text the user typed after `/sp.specify` in the triggering message **is** the feature description. Assume you always have it available in this conversation even if `$ARGUMENTS` appears literally below. Do not ask the user to repeat it unless they provided an empty command.

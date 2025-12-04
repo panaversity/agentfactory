@@ -1,0 +1,17 @@
+{
+  "name": "docusaurus-panaversityfs-plugin",
+  "version": "0.1.0",
+  "description": "Docusaurus plugin to fetch content from PanaversityFS MCP server",
+  "main": "index.js",
+  "keywords": [
+    "docusaurus",
+    "plugin",
+    "panaversityfs",
+    "mcp"
+  ],
+  "author": "Panaversity",
+  "license": "MIT",
+  "peerDependencies": {
+    "@docusaurus/core": "^3.0.0"
+  }
+}

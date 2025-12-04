@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "get_audit_log",
+  "description": "Query operation history with filters and pagination",
+  "type": "object",
+  "properties": {
+    "date_range": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "date",
+        "description": "YYYY-MM-DD format"
+      },
+      "minItems": 1,
+      "description": "Array of dates to query (e.g., ['2025-11-24', '2025-11-25'])"
+    },
+    "agent_id": {
+      "type": "string",
+      "description": "Optional filter by specific agent"
+    },
+    "operation_type": {
+      "type": "string",
+      "enum": [
+        "add_content",
+        "update_content",
+        "read_content",
+        "delete_content",
+        "add_asset",
+        "get_asset",
+        "list_assets",
+        "add_summary",
+        "update_summary",
+        "get_summary",
+        "list_summaries",
+        "get_book_archive",
+        "list_books",
+        "add_book_to_registry",
+        "glob_search",
+        "grep_search"
+      ],
+      "description": "Optional filter by operation"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["success", "error", "conflict"],
+      "description": "Optional filter by status"
+    },
+    "continuation_token": {
+      "type": "string",
+      "description": "Token from previous response for pagination"
+    }
+  },
+  "required": ["date_range"],
+  "additionalProperties": false,
+  "response": {
+    "type": "object",
+    "properties": {
+      "entries": {
+        "type": "array",
+        "maxItems": 100,
+        "items": {
+          "type": "object",
+          "properties": {
+            "timestamp": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "agent_id": {
+              "type": "string"
+            },
+            "operation": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string",
+              "enum": ["success", "error", "conflict"]
+            },
+            "execution_time_ms": {
+              "type": "number"
+            },
+            "file_hash_before": {
+              "type": "string",
+              "description": "Optional for update operations"
+            },
+            "file_hash_after": {
+              "type": "string",
+              "description": "Optional for create/update operations"
+            },
+            "error_message": {
+              "type": "string",
+              "description": "Present if status === 'error'"
+            }
+          },
+          "required": ["timestamp", "agent_id", "operation", "path", "status", "execution_time_ms"]
+        }
+      },
+      "total_entries_in_range": {
+        "type": "integer",
+        "description": "Total entries matching filters (before pagination)"
+      },
+      "continuation_token": {
+        "type": "string",
+        "description": "Token for next page (null if no more results)"
+      },
+      "has_more": {
+        "type": "boolean"
+      }
+    },
+    "required": ["entries", "total_entries_in_range", "has_more"]
+  },
+  "errors": [
+    {
+      "code": "INVALID_DATE_RANGE",
+      "message": "Dates must be in YYYY-MM-DD format"
+    },
+    {
+      "code": "AUDIT_LOG_NOT_FOUND",
+      "message": "No audit log exists for date '{date}'"
+    }
+  ]
+}

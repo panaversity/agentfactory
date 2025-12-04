@@ -1,0 +1,106 @@
+# Validate Content PRs
+#
+# Ensures content follows the composable design:
+# - Assets must use full CDN URLs (uploaded by author/agent)
+# - Local asset references (/img/, /slides/) are rejected
+#
+# This enforces clean separation between content (managed in git)
+# and assets (managed in CDN by authors/agents).
+#
+# IMPORTANT: Only checks files CHANGED in the PR, not the entire folder.
+# This allows gradual migration of existing content.
+
+name: Validate Content
+
+on:
+  pull_request:
+    paths:
+      - "book-source/docs/**"
+
+jobs:
+  validate:
+    name: Check Asset References
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for diff
+
+      - name: Get changed files
+        id: changed
+        run: |
+          # Get list of changed markdown files in docs/
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD -- 'book-source/docs/**/*.md' 2>/dev/null || echo "")
+
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No markdown files changed in book-source/docs/"
+            echo "files=" >> $GITHUB_OUTPUT
+          else
+            echo "Changed files:"
+            echo "$CHANGED_FILES"
+            # Store as space-separated for grep
+            echo "files<<EOF" >> $GITHUB_OUTPUT
+            echo "$CHANGED_FILES" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check for local asset references
+        if: steps.changed.outputs.files != ''
+        run: |
+          echo "Checking for local asset references in CHANGED markdown files..."
+          echo "Assets should use full CDN URLs, not local paths."
+          echo ""
+
+          # Find markdown files with local asset references
+          # Patterns to reject:
+          # - ![...](/img/...)
+          # - ![...](/slides/...)
+          # - src="/img/..." or src='/img/...'
+          # - source: "slides/..." in frontmatter
+
+          ERRORS=0
+          CHANGED_FILES="${{ steps.changed.outputs.files }}"
+
+          # Check for /img/ references in markdown images
+          if echo "$CHANGED_FILES" | xargs grep -Hn '!\[.*\](/img/' 2>/dev/null; then
+            echo ""
+            echo "ERROR: Found local /img/ references. Use CDN URLs instead."
+            echo "  Example: ![alt](https://cdn.example.com/images/file.png)"
+            ERRORS=$((ERRORS + 1))
+          fi
+
+          # Check for /slides/ references in markdown images
+          if echo "$CHANGED_FILES" | xargs grep -Hn '!\[.*\](/slides/' 2>/dev/null; then
+            echo ""
+            echo "ERROR: Found local /slides/ references. Use CDN URLs instead."
+            ERRORS=$((ERRORS + 1))
+          fi
+
+          # Check for src="/img/ or src='/img/ in HTML
+          if echo "$CHANGED_FILES" | xargs grep -Hn 'src=["\x27]/img/' 2>/dev/null; then
+            echo ""
+            echo "ERROR: Found local /img/ in HTML src attributes. Use CDN URLs."
+            ERRORS=$((ERRORS + 1))
+          fi
+
+          # Summary
+          echo ""
+          if [ $ERRORS -eq 0 ]; then
+            echo "✓ All asset references in changed files are valid (no local paths found)"
+          else
+            echo "✗ Found $ERRORS type(s) of local asset references in changed files"
+            echo ""
+            echo "How to fix:"
+            echo "1. Upload your assets to CDN (ask your agent to help)"
+            echo "2. Replace local paths with full CDN URLs"
+            echo "   Before: ![diagram](/img/chapter-5/diagram.png)"
+            echo "   After:  ![diagram](https://cdn.panaversity.org/images/chapter-5/diagram.png)"
+            exit 1
+          fi
+
+      - name: Skip check (no changed files)
+        if: steps.changed.outputs.files == ''
+        run: |
+          echo "✓ No markdown files changed in book-source/docs/ - skipping validation"

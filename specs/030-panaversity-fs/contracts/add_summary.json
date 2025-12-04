@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "add_summary",
+  "description": "Create new chapter summary markdown file (.summary.md)",
+  "type": "object",
+  "properties": {
+    "book_id": {
+      "type": "string",
+      "description": "Unique book identifier",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "chapter_path": {
+      "type": "string",
+      "description": "Chapter identifier (e.g., 'chapter-01')",
+      "pattern": "^chapter-\\d+$"
+    },
+    "summary_content": {
+      "type": "string",
+      "description": "Complete markdown content including YAML frontmatter",
+      "minLength": 1
+    }
+  },
+  "required": ["book_id", "chapter_path", "summary_content"],
+  "additionalProperties": false,
+  "response": {
+    "type": "object",
+    "properties": {
+      "success": {
+        "type": "boolean",
+        "const": true
+      },
+      "path": {
+        "type": "string",
+        "description": "Full storage path: books/{book_id}/chapters/{chapter_path}/.summary.md"
+      },
+      "file_hash_sha256": {
+        "type": "string"
+      },
+      "audit_entry_id": {
+        "type": "string"
+      }
+    },
+    "required": ["success", "path", "file_hash_sha256", "audit_entry_id"]
+  },
+  "errors": [
+    {
+      "code": "SUMMARY_ALREADY_EXISTS",
+      "message": "Summary already exists for '{chapter_path}'. Use update_summary to modify."
+    },
+    {
+      "code": "CHAPTER_NOT_FOUND",
+      "message": "Chapter '{chapter_path}' not found in book.yaml content_structure"
+    }
+  ]
+}

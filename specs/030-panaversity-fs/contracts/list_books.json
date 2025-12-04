@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "list_books",
+  "description": "Get all books from registry with metadata",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false,
+  "response": {
+    "type": "object",
+    "properties": {
+      "books": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "book_id": {
+              "type": "string",
+              "description": "Unique identifier"
+            },
+            "title": {
+              "type": "string",
+              "description": "Display name"
+            },
+            "storage_backend": {
+              "type": "string",
+              "enum": ["local", "r2", "supabase", "s3"]
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "status": {
+              "type": "string",
+              "enum": ["active", "archived", "migrating"]
+            },
+            "lesson_count": {
+              "type": "integer",
+              "description": "Total lessons in book"
+            },
+            "asset_count": {
+              "type": "integer",
+              "description": "Total assets in book"
+            }
+          },
+          "required": ["book_id", "title", "storage_backend", "created_at", "status"]
+        }
+      },
+      "total_count": {
+        "type": "integer"
+      }
+    },
+    "required": ["books", "total_count"]
+  },
+  "errors": [
+    {
+      "code": "REGISTRY_NOT_FOUND",
+      "message": "registry.yaml not found. Initialize PanaversityFS first."
+    }
+  ]
+}

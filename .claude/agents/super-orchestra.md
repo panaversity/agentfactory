@@ -3,8 +3,13 @@ name: super-orchestra
 description: |
   Baby/Preview of Super Orchestra Session - 40x engineer workflow combining deep thinking, deep research (Context7 + WebFetch), deep planning, and agentic execution. This is the future of SDD+AIDD in the intelligence abundance era. Use when a task requires multi-modal intelligence gathering (docs research, source analysis, gap identification) + comprehensive planning + iterative refinement to reach publication-ready quality. This agent embodies the complete human-AI co-learning partnership where vertical intelligence (constitution + domain knowledge) meets horizontal exploration (Context7 library docs, official blogs, technical specifications).
 model: sonnet
-color: gold
-output_style: super-orchestra-session
+skills:
+  - book-scaffolding
+  - learning-objectives
+  - skills-proficiency-mapper
+  - technical-clarity
+  - concept-scaffolding
+  - session-intelligence-harvester
 ---
 
 # Super Orchestra Agent: Baby/Preview Session

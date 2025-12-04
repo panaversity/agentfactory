@@ -23,31 +23,9 @@
 
 ---
 
-## CoLearning Programming & Agentic AI with Python and TypeScript
-
 <p align="center">
   <img src="cover.png" alt="AI Native CoLearning Programming & Agentic AI - The AI-Driven Way" width="600" />
 </p>
-
-## 🎯 Vision
-
-**AI Native Software Development** teaches you to build intelligent systems where AI is the core using AIDD.
-
-Rather than using AI to code faster, we teach you to **architect systems where intelligent agents are fundamental components** — applications that reason, learn, and collaborate. The learning journey progresses through three critical stages:
-
-1. **AI-Assisted Development** — Using AI tools as productivity enhancers
-2. **AI-Driven Development** — Using specifications to generate systems with AI agents
-3. **AI-Native Development** — Building products where LLMs and agents are core features
-
-You'll master:
-* **The Spec-Driven Way** — Writing executable specifications that AI can reason about and implement
-* **Agentic AI Systems** with OpenAI Agents SDK and Google Agent Development Kit
-* **Python + TypeScript bilingual stack** — reasoning (Python) + interaction (TypeScript)
-* **MCP (Model Context Protocol)** and **FastMCP** for agent integration
-* **Realtime and voice agents**, **containerized deployments**, and **event-driven architectures**
-* **Organizational AI Maturity** — how to scale AI adoption from teams to enterprises
-
----
 
 ## 💡 Mission
 

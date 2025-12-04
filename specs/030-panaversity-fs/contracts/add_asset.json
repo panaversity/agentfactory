@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "add_asset",
+  "description": "Upload binary asset via direct upload (<10MB) or presigned URL (≥10MB)",
+  "type": "object",
+  "properties": {
+    "book_id": {
+      "type": "string",
+      "description": "Unique book identifier",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "asset_type": {
+      "type": "string",
+      "enum": ["slides", "images", "videos", "audio"],
+      "description": "Category for storage organization"
+    },
+    "filename": {
+      "type": "string",
+      "description": "URL-safe filename (alphanumeric, hyphens, underscores, dots)",
+      "pattern": "^[a-zA-Z0-9._-]+$"
+    },
+    "binary_data": {
+      "type": "string",
+      "description": "Base64-encoded binary data (for files <10MB). Mutually exclusive with file_size.",
+      "contentEncoding": "base64"
+    },
+    "file_size": {
+      "type": "integer",
+      "description": "File size in bytes (for presigned URL pattern, ≥10MB). Mutually exclusive with binary_data.",
+      "minimum": 10485760,
+      "maximum": 104857600
+    },
+    "mime_type": {
+      "type": "string",
+      "description": "MIME type for validation",
+      "examples": ["application/pdf", "image/png", "video/mp4"]
+    }
+  },
+  "required": ["book_id", "asset_type", "filename", "mime_type"],
+  "oneOf": [
+    { "required": ["binary_data"] },
+    { "required": ["file_size"] }
+  ],
+  "additionalProperties": false,
+  "response": {
+    "oneOf": [
+      {
+        "description": "Direct upload response (<10MB)",
+        "type": "object",
+        "properties": {
+          "success": { "type": "boolean", "const": true },
+          "cdn_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Public CDN URL for embedding"
+          },
+          "upload_method": {
+            "type": "string",
+            "const": "direct"
+          },
+          "file_size": { "type": "integer" },
+          "file_hash_sha256": { "type": "string" },
+          "audit_entry_id": { "type": "string" }
+        },
+        "required": ["success", "cdn_url", "upload_method", "file_size", "file_hash_sha256", "audit_entry_id"]
+      },
+      {
+        "description": "Presigned URL response (≥10MB)",
+        "type": "object",
+        "properties": {
+          "upload_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Presigned URL for client to PUT binary data (valid 1 hour)"
+          },
+          "cdn_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Public CDN URL (available after upload completes)"
+          },
+          "upload_method": {
+            "type": "string",
+            "const": "presigned"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Presigned URL expiration time"
+          },
+          "instructions": {
+            "type": "string",
+            "const": "PUT binary data to upload_url with Content-Type header, then verify at cdn_url"
+          }
+        },
+        "required": ["upload_url", "cdn_url", "upload_method", "expires_at", "instructions"]
+      }
+    ]
+  },
+  "errors": [
+    {
+      "code": "FILE_TOO_LARGE",
+      "message": "Asset exceeds 100MB limit. Chunked uploads not supported in MVP."
+    },
+    {
+      "code": "INVALID_MIME_TYPE",
+      "message": "MIME type '{mime_type}' not allowed for asset_type '{asset_type}'. Expected: {allowed_types}"
+    },
+    {
+      "code": "FILENAME_CONFLICT",
+      "message": "Asset already exists at '{path}'. Assets are immutable; use different filename."
+    }
+  ]
+}

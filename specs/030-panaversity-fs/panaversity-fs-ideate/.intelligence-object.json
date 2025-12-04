@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "orchestrator_version": "2.0",
+    "reasoning_mode": "constitutional_derivation",
+    "timestamp": "2025-11-24T19:30:00Z",
+    "feature_slug": "panaversity-fs"
+  },
+  "task_characterization": {
+    "task_type": "production_infrastructure",
+    "expertise_domains": ["distributed_systems", "storage_architecture", "mcp_protocol", "agent_native_design"],
+    "decision_points": [
+      {
+        "decision": "Component selection from OpenDAL/AgentFS/Cloudflare MCP",
+        "owner": "human",
+        "info_needed": ["Feature requirements", "Trade-offs"],
+        "resolution": "Combine all three: OpenDAL (storage), AgentFS (audit), Cloudflare (MCP patterns)"
+      },
+      {
+        "decision": "Integration architecture",
+        "owner": "AI",
+        "info_needed": ["System constraints", "Patterns from research"]
+      },
+      {
+        "decision": "Specification organization",
+        "owner": "AI",
+        "info_needed": ["Existing spec patterns", "Target audience (implementers)"]
+      }
+    ],
+    "complexity": {
+      "deterministic": "low",
+      "strategic": "moderate",
+      "novel": "low"
+    },
+    "audience_tier": "professional",
+    "stakes": "production_infrastructure"
+  },
+  "constitutional_frameworks": {
+    "specification_primacy": {
+      "applies": true,
+      "interpretation": "Spec defines system INTENT before implementation HOW",
+      "validation": "Can developer execute from spec alone without architectural assumptions?"
+    },
+    "factual_accuracy": {
+      "applies": true,
+      "interpretation": "All technical claims verified against authoritative sources",
+      "verification_strategy": "Cite official OpenDAL, AgentFS, Cloudflare repos and docs"
+    },
+    "coherent_structure": {
+      "applies": true,
+      "interpretation": "Organization follows implementation workflow",
+      "structure": "Architecture → Data Models → MCP Tools → Implementation → Operations"
+    },
+    "minimal_content": {
+      "applies": true,
+      "interpretation": "Every section maps to implementation decision or requirement",
+      "test": "If section doesn't answer 'what to build' or 'how to validate', remove it"
+    }
+  },
+  "research_strategy": {
+    "research_needed": "minimal",
+    "budget_hours": 1,
+    "triggers": ["Production stakes require verification"],
+    "strategy": "Use existing research (OpenDAL docs, AgentFS spec, Cloudflare MCP patterns already gathered)",
+    "verification_targets": ["Confirmed during spec review"],
+    "timing": "post_spec",
+    "artifacts_available": [
+      "specs/panaversity-fs/SPECIFICATION.md (9000+ words, Part 1 complete)",
+      "specs/directory-mcp-server/* (previous research iterations)",
+      "/tmp/cloudflare-mcp-research (Cloudflare official patterns)"
+    ]
+  },
+  "workflow_strategy": {
+    "phases": {
+      "specification": {"needed": true, "depth": "comprehensive"},
+      "planning": {"needed": false, "reason": "Infrastructure spec IS the plan"},
+      "tasks": {"needed": true, "structure": "implementation_checklist"},
+      "implementation": {"needed": false, "reason": "Human team implements"},
+      "validation": {"needed": true, "rigor": "technical_review"}
+    },
+    "gates": {
+      "spec_approval": {
+        "required": true,
+        "criteria": ["Implementable without ambiguity", "All architectural decisions documented", "Integration points explicit", "Success criteria measurable"]
+      }
+    }
+  },
+  "existing_artifacts": {
+    "partial_spec": "specs/panaversity-fs/SPECIFICATION.md",
+    "status": "Part 1 complete (9000 words): Architecture, Storage, Audit, MCP, Intelligence, Registry, Book Schema",
+    "remaining": "Parts 2-7: MCP Tools (13), Implementation, Operations, Integration, Roadmap"
+  },
+  "anti_convergence_strategies": [
+    "Avoid architectural essays - keep concrete specifications",
+    "Don't repeat research - consolidate into actionable spec",
+    "Remove redundant explanations - focus on 'what to build'"
+  ]
+}

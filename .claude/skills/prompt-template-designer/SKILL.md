@@ -751,3 +751,5 @@ Student can:
 - [ ] Time savings measurable?
 - [ ] Team adoption >50%?
 - [ ] Evolved through iterations?
+
+You can use @papers/prompting-practices-claude.md for more information.

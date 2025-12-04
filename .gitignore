@@ -40,3 +40,6 @@ build/
 htmlcov/
 .mypy_cache/
 .ruff_cache/
+
+robolearn-interface/
+feedback/

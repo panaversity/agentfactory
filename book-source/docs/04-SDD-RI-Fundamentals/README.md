@@ -35,7 +35,7 @@ That's what this part teaches you.
 
 ## What You'll Learn in Part 4
 
-This part consists of three chapters (13-15) that transform you from code-first to specification-first thinking:
+This part consists of two chapters (13-14) that transform you from code-first to specification-first thinking:
 
 ### Chapter 13: Understanding Specification-Driven Development with Reusable Intelligence
 
@@ -43,13 +43,7 @@ You'll discover why specifications matter through experience, not lectures. Star
 
 ### Chapter 14: SDD-RI Hands-On: YouTube Content Workflow with Gemini
 
-Here you'll practice specification-first development with your AI companion building a real-world YouTube content workflow using Gemini. You'll learn the SpecifyPlus opinionated workflow and how to apply it to practical projects.
-
-### Chapter 15: AI Product & Business Intelligence + Capstone
-
-This chapter culminates in building your own AI product with business thinking. You'll apply everything learned about SDD-RI to create a capstone project that demonstrates strategic thinking and specification-driven development mastery.
-
-**Planned content**: This chapter will take you beyond specification workflows to explore Tessl's approach to making specifications the true source of truth and how to use it with SpecifyPlus. You'll understand how Tessl's Framework and Registry address the reliability crisis in AI-assisted development—preventing API hallucinations with 10,000+ versioned usage specs, eliminating regressions through test-enforced guardrails, and providing long-term memory through specifications stored in your codebase. 
+Here you'll practice specification-first development with your AI companion building a real-world YouTube content workflow using Gemini. You'll learn the SpecifyPlus opinionated workflow and how to apply it to practical projects. 
 
 ## What You Won't Learn (Yet)
 

@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "get_book_archive",
+  "description": "Generate streaming ZIP archive of entire book and return presigned download URL",
+  "type": "object",
+  "properties": {
+    "book_id": {
+      "type": "string",
+      "description": "Unique book identifier",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "format": {
+      "type": "string",
+      "enum": ["zip"],
+      "description": "Archive format (only ZIP supported in MVP)",
+      "default": "zip"
+    }
+  },
+  "required": ["book_id"],
+  "additionalProperties": false,
+  "response": {
+    "type": "object",
+    "properties": {
+      "download_url": {
+        "type": "string",
+        "format": "uri",
+        "description": "Presigned URL valid for 1 hour, single download"
+      },
+      "format": {
+        "type": "string",
+        "const": "zip"
+      },
+      "expires_at": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Presigned URL expiration time"
+      },
+      "estimated_size_mb": {
+        "type": "integer",
+        "description": "Approximate compressed archive size"
+      },
+      "generation_time_seconds": {
+        "type": "number",
+        "description": "Time taken to generate archive"
+      }
+    },
+    "required": ["download_url", "format", "expires_at", "estimated_size_mb", "generation_time_seconds"]
+  },
+  "errors": [
+    {
+      "code": "GENERATION_TIMEOUT",
+      "message": "Archive generation exceeded 60 second limit. Use individual file download tools (read_content, get_asset)."
+    },
+    {
+      "code": "BOOK_TOO_LARGE",
+      "message": "Book exceeds 500 files or 200MB uncompressed. Use individual file downloads."
+    },
+    {
+      "code": "STORAGE_ERROR",
+      "message": "Failed to read files from storage backend: {error_details}"
+    }
+  ]
+}

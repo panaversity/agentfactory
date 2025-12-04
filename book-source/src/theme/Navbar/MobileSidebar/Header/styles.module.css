@@ -1,0 +1,164 @@
+/* Mobile Sidebar Header - Premium Design */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(0, 31, 63, 0.1);
+  background: #fafbfc;
+  min-height: 56px;
+}
+
+[data-theme='dark'] .header {
+  background: #242424;
+  border-bottom-color: rgba(170, 170, 170, 0.12);
+}
+
+/* Actions container - back + theme toggle + close button */
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Ensure vertical centering of all action items */
+.actions > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Base icon button styling */
+.themeToggle,
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: #f5f5f7;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='dark'] .themeToggle,
+[data-theme='dark'] .closeButton {
+  background: #333333;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Back button - text style with icon */
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: 1px solid rgba(0, 31, 63, 0.15);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #4a4a5a;
+  transition: all 0.2s ease;
+}
+
+[data-theme='dark'] .backButton {
+  border-color: rgba(170, 170, 170, 0.2);
+  color: #a0a0a0;
+}
+
+.backButton:hover {
+  background: rgba(0, 31, 63, 0.05);
+  border-color: rgba(0, 31, 63, 0.25);
+  color: #1a1a2e;
+}
+
+[data-theme='dark'] .backButton:hover {
+  background: rgba(170, 170, 170, 0.1);
+  border-color: rgba(170, 170, 170, 0.3);
+  color: #e0e0e0;
+}
+
+.backButton svg {
+  color: inherit;
+}
+
+/* Icons */
+.themeToggle svg,
+.closeButton svg {
+  color: #3a3a4a;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+[data-theme='dark'] .themeToggle svg,
+[data-theme='dark'] .closeButton svg {
+  color: #c0c0c0;
+}
+
+/* Theme toggle hover - amber/gold accent */
+.themeToggle:hover {
+  background: #fef3c7;
+  transform: scale(1.05);
+}
+
+.themeToggle:hover svg {
+  color: #d97706;
+}
+
+[data-theme='dark'] .themeToggle:hover {
+  background: #3d3520;
+}
+
+[data-theme='dark'] .themeToggle:hover svg {
+  color: #fbbf24;
+}
+
+/* Close button hover - red accent */
+.closeButton:hover {
+  background: #fee2e2;
+  transform: scale(1.05);
+}
+
+.closeButton:hover svg {
+  color: #dc2626;
+}
+
+[data-theme='dark'] .closeButton:hover {
+  background: #4a2020;
+}
+
+[data-theme='dark'] .closeButton:hover svg {
+  color: #f87171;
+}
+
+/* Active/pressed state */
+.themeToggle:active,
+.closeButton:active {
+  transform: scale(0.95);
+}
+
+.backButton:active {
+  transform: scale(0.98);
+}
+
+/* Smooth icon transition when theme changes */
+.themeToggle svg {
+  animation: iconPop 0.2s ease;
+}
+
+@keyframes iconPop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

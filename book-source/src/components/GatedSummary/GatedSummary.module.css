@@ -1,0 +1,133 @@
+/* GatedSummary - Refined summary card styling */
+
+.summaryContainer {
+  --summary-bg: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  --summary-border: rgba(0, 77, 153, 0.12);
+  --summary-accent: var(--ifm-color-primary);
+  --summary-text: var(--ifm-font-color-base);
+
+  padding: 1.5rem;
+  background: var(--summary-bg);
+  border: 1px solid var(--summary-border);
+  border-radius: 16px;
+  border-left: 4px solid var(--summary-accent);
+}
+
+[data-theme='dark'] .summaryContainer {
+  --summary-bg: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.5) 100%);
+  --summary-border: rgba(148, 163, 184, 0.15);
+}
+
+.summaryHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--summary-border);
+}
+
+.summaryIcon {
+  width: 24px;
+  height: 24px;
+  color: var(--summary-accent);
+  flex-shrink: 0;
+}
+
+.summaryTitle {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--summary-text);
+  letter-spacing: -0.01em;
+}
+
+.summaryContent {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--summary-text);
+}
+
+/* Style child elements */
+.summaryContent ul,
+.summaryContent ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.summaryContent li {
+  margin-bottom: 0.5rem;
+}
+
+.summaryContent li:last-child {
+  margin-bottom: 0;
+}
+
+.summaryContent p {
+  margin: 0 0 0.75rem;
+}
+
+.summaryContent p:last-child {
+  margin-bottom: 0;
+}
+
+.summaryContent code {
+  background: rgba(0, 77, 153, 0.08);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+[data-theme='dark'] .summaryContent code {
+  background: rgba(148, 163, 184, 0.15);
+}
+
+.summaryContent strong {
+  font-weight: 600;
+  color: var(--summary-accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .summaryContainer {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .summaryHeader {
+    gap: 0.625rem;
+  }
+
+  .summaryIcon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .summaryTitle {
+    font-size: 1rem;
+  }
+
+  .summaryContent {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .summaryContainer {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .summaryIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .summaryTitle {
+    font-size: 0.95rem;
+  }
+
+  .summaryContent {
+    font-size: 0.85rem;
+  }
+}

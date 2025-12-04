@@ -55,18 +55,6 @@ function HomepageHeader() {
             <div className={styles.heroButtons}>
               <Link
                 className={clsx(
-                  "button button--primary button--md",
-                  styles.ctaButton
-                )}
-                to="/docs/preface-agent-native"
-              >
-                <span className={styles.buttonContent}>
-                  <span className={styles.buttonText}>Start Reading</span>
-                  <span className={styles.buttonIcon}>→</span>
-                </span>
-              </Link>
-              <Link
-                className={clsx(
                   "button button--outline button--md",
                   styles.secondaryButton
                 )}
@@ -77,6 +65,18 @@ function HomepageHeader() {
                 <span className={styles.buttonContent}>
                   <span className={styles.buttonText}>Explore Panaversity</span>
                   <span className={styles.buttonIcon}>🎓</span>
+                </span>
+              </Link>
+              <Link
+                className={clsx(
+                  "button button--primary button--md",
+                  styles.ctaButton
+                )}
+                to="/docs/preface-agent-native"
+              >
+                <span className={styles.buttonContent}>
+                  <span className={styles.buttonText}>Start Reading</span>
+                  <span className={styles.buttonIcon}>→</span>
                 </span>
               </Link>
             </div>
@@ -612,7 +612,7 @@ function ParadigmShift() {
                 )}
                 to="/docs/preface-agent-native"
               >
-                Begin Your Journey
+                Start Reading
               </Link>
             </div>
           </div>

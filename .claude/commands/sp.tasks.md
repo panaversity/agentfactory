@@ -10,6 +10,12 @@ $ARGUMENTS
 
 You **MUST** consider the user input before proceeding (if not empty).
 
+## Core Directive
+
+**Default to Action**: Generate the complete tasks.md immediately from available design artifacts. Extract tasks systematically from spec user stories, plan structure, and data model. Only flag issues that genuinely block task generation.
+
+**WHY**: Task generation is mechanical extraction from spec/plan. The artifacts contain all necessary information. Generate the task list and let implementation surface any gaps—don't over-analyze before producing output.
+
 ## Outline
 
 1. **Setup**: Run `.specify/scripts/bash/check-prerequisites.sh --json` from repo root and parse FEATURE_DIR and AVAILABLE_DOCS list. All paths must be absolute. For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
@@ -105,16 +111,26 @@ Every task MUST strictly follow this format:
      - If tests requested: Tests specific to that story
    - Mark story dependencies (most stories should be independent)
 
-2. **From Contracts**:
+2. **Cross-Reference Verification Tasks** (For educational content):
+   - If lessons teach patterns (skills, subagents, ADRs, PHRs), add verification task
+   - Example: `- [ ] T0XX [P] [US1] Verify skill format matches Chapter N Lesson 7 canonical source`
+   - Canonical source lookup:
+     - **Skills**: `.claude/skills/authoring/<name>/SKILL.md` (content) or `.claude/skills/engineering/<name>/SKILL.md` (platform) or `.claude/skills/<name>/SKILL.md` (general)
+     - **Agents**: `.claude/agents/authoring/<name>.md` (content) or `.claude/agents/engineering/<name>.md` (platform) or `.claude/agents/<name>.md` (general)
+     - **ADRs**: `specs/<feature>/adrs/`
+     - **PHRs**: `history/prompts/<feature>/`
+   - Purpose: Prevent format drift across book content
+
+3. **From Contracts**:
    - Map each contract/endpoint → to the user story it serves
    - If tests requested: Each contract → contract test task [P] before implementation in that story's phase
 
-3. **From Data Model**:
+4. **From Data Model**:
    - Map each entity to the user story(ies) that need it
    - If entity serves multiple stories: Put in earliest story or Setup phase
    - Relationships → service layer tasks in appropriate story phase
 
-4. **From Setup/Infrastructure**:
+5. **From Setup/Infrastructure**:
    - Shared infrastructure → Setup phase (Phase 1)
    - Foundational/blocking tasks → Foundational phase (Phase 2)
    - Story-specific setup → within that story's phase

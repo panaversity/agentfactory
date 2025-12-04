@@ -29,4 +29,5 @@ By the end of this chapter, you'll understand:
 - **Custom automation**: Creating reusable slash commands with TOML files and injection patterns (`{{args}}`, `!{shell}`, `@{file}`) to automate repetitive workflows
 - **MCP integration**: Connecting external capabilities (databases, APIs, browsers) through the Model Context Protocol using `gemini mcp add/list/remove` commands and OAuth authentication
 - **Extensions and security**: Building extension bundles, filtering tools with allowlists/blocklists, and integrating with VS Code for diff-based editing
-\![Feature comparison matrix showing Gemini 2.5 Pro capabilities (2M token context, native code execution, multimodal input, speed benchmarks) compared to previous versions and competitors](/img/part-2/chapter-06/gemini-2-5-pro-feature-matrix.png)
+
+{/* TODO: Create feature comparison matrix image for Gemini 2.5 Pro capabilities */}

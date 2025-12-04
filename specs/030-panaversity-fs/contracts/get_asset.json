@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "get_asset",
+  "description": "Retrieve asset metadata and CDN URL (does NOT return binary data)",
+  "type": "object",
+  "properties": {
+    "book_id": {
+      "type": "string",
+      "description": "Unique book identifier",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "asset_type": {
+      "type": "string",
+      "enum": ["slides", "images", "videos", "audio"]
+    },
+    "filename": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9._-]+$"
+    }
+  },
+  "required": ["book_id", "asset_type", "filename"],
+  "additionalProperties": false,
+  "response": {
+    "type": "object",
+    "properties": {
+      "cdn_url": {
+        "type": "string",
+        "format": "uri",
+        "description": "Public URL for downloading/embedding"
+      },
+      "file_size": {
+        "type": "integer",
+        "description": "Size in bytes"
+      },
+      "mime_type": {
+        "type": "string"
+      },
+      "upload_timestamp": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "uploaded_by_agent_id": {
+        "type": "string"
+      },
+      "storage_backend": {
+        "type": "string",
+        "enum": ["local", "r2", "supabase", "s3"]
+      },
+      "storage_path": {
+        "type": "string",
+        "description": "Full path in storage backend"
+      },
+      "file_hash_sha256": {
+        "type": "string"
+      }
+    },
+    "required": ["cdn_url", "file_size", "mime_type", "upload_timestamp", "uploaded_by_agent_id", "storage_backend", "storage_path", "file_hash_sha256"]
+  },
+  "errors": [
+    {
+      "code": "ASSET_NOT_FOUND",
+      "message": "Asset not found: {asset_type}/{filename}. Available assets in this type: [list]"
+    }
+  ]
+}

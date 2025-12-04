@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "update_content",
+  "description": "Modify existing lesson with conflict detection via file hash comparison",
+  "type": "object",
+  "properties": {
+    "book_id": {
+      "type": "string",
+      "description": "Unique book identifier",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "path": {
+      "type": "string",
+      "description": "Relative path to lesson file",
+      "pattern": "^lessons/part-\\d+/chapter-\\d+/lesson-\\d+\\.md$"
+    },
+    "content": {
+      "type": "string",
+      "description": "Updated markdown content",
+      "minLength": 1
+    },
+    "file_hash": {
+      "type": "string",
+      "description": "SHA256 hash from previous read_content call (for conflict detection)",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "required": ["book_id", "path", "content", "file_hash"],
+  "additionalProperties": false,
+  "response": {
+    "type": "object",
+    "properties": {
+      "success": {
+        "type": "boolean",
+        "const": true
+      },
+      "path": {
+        "type": "string"
+      },
+      "file_hash_sha256": {
+        "type": "string",
+        "description": "New hash after update"
+      },
+      "audit_entry_id": {
+        "type": "string"
+      }
+    },
+    "required": ["success", "path", "file_hash_sha256", "audit_entry_id"]
+  },
+  "errors": [
+    {
+      "code": "FILE_NOT_FOUND",
+      "message": "Lesson not found at '{path}'. Use add_content to create."
+    },
+    {
+      "code": "CONFLICT",
+      "message": "File was modified by another agent. Current hash: {current_hash}, provided: {file_hash}. Re-read content and merge changes."
+    },
+    {
+      "code": "INVALID_HASH",
+      "message": "file_hash must be 64-character hex string (SHA256)"
+    }
+  ]
+}

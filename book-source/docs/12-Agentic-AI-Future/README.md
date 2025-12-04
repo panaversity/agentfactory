@@ -5,7 +5,7 @@ title: "Part 12: Agentic AI is the Future"
 
 # Part 12: Agentic AI is the Future
 
-You've mastered the full stack of AI-native development: Python backends (Part 5), agentic architectures (Part 7), cloud deployment (Part 8), proprietary intelligence (Part 9), TypeScript frontends (Part 10), and realtime interfaces (Part 11). Now you'll explore the **emerging patterns reshaping how society, organizations, and commerce operate** in the age of agentic AI.
+You've mastered the full stack of AI-native development: Python backends (Part 5), agentic architectures (Part 6), cloud deployment (Part 7), proprietary intelligence (Part 8), TypeScript frontends (Part 9), agentic frontends (Part 10), and realtime/voice interfaces (Part 11). Now you'll explore the **emerging patterns reshaping how society, organizations, and commerce operate** in the age of agentic AI.
 
 This part is your window into the future—understanding where this technology is heading and how to position yourself at the forefront of transformation.
 
@@ -106,8 +106,8 @@ You'll explore how markets evolve when agents are economic actors:
 
 This part synthesizes knowledge from the entire book:
 - **Parts 1-3**: Understanding the AI revolution and strategic frameworks
-- **Parts 4-8**: Technical mastery of building and deploying agents
-- **Parts 9-11**: Production systems across the full stack
+- **Parts 4-7**: Technical mastery of building and deploying agents
+- **Parts 8-11**: Production systems across the full stack
 
 **This is a capstone part**—less about building systems, more about **strategic thinking**.
 
@@ -181,6 +181,21 @@ This part uses **Layer 4 (Spec-Driven Integration)** thinking applied to strateg
 - Designing business models for agentic systems
 
 **This is a synthesis part**—connecting technical capabilities (Parts 5-11) to strategic opportunities.
+
+---
+
+## Chapter Progression
+
+This part's chapters explore the agentic future:
+
+### Agentic Web
+Understanding open protocols (Nanda, A2A) vs. closed ecosystems (OpenAI Apps). Strategic implications for builders choosing platforms.
+
+### Agentic Organizations
+How companies restructure around AI agents. Organizational design patterns, AI maturity levels, and leadership in the AI era.
+
+### Agentic Commerce
+Economic implications of agents as market participants. Business model innovation and regulatory landscape.
 
 ---
 

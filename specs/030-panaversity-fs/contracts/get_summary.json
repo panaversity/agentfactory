@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "get_summary",
+  "description": "Fetch chapter summary markdown content with metadata",
+  "type": "object",
+  "properties": {
+    "book_id": {
+      "type": "string",
+      "description": "Unique book identifier",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "chapter_path": {
+      "type": "string",
+      "description": "Chapter identifier",
+      "pattern": "^chapter-\\d+$"
+    }
+  },
+  "required": ["book_id", "chapter_path"],
+  "additionalProperties": false,
+  "response": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "Complete markdown content"
+      },
+      "metadata": {
+        "type": "object",
+        "properties": {
+          "chapter_id": { "type": "string" },
+          "generated_at": { "type": "string", "format": "date-time" },
+          "generated_by": { "type": "string" },
+          "lesson_count": { "type": "integer" },
+          "token_count": { "type": "integer" }
+        }
+      },
+      "storage_info": {
+        "type": "object",
+        "properties": {
+          "file_size": { "type": "integer" },
+          "last_modified": { "type": "string", "format": "date-time" },
+          "storage_backend": {
+            "type": "string",
+            "enum": ["local", "r2", "supabase", "s3"]
+          },
+          "file_hash_sha256": { "type": "string" },
+          "path": {
+            "type": "string",
+            "description": "Full storage path"
+          }
+        },
+        "required": ["file_size", "last_modified", "storage_backend", "file_hash_sha256", "path"]
+      }
+    },
+    "required": ["content", "metadata", "storage_info"]
+  },
+  "errors": [
+    {
+      "code": "SUMMARY_NOT_FOUND",
+      "message": "Summary not found for '{chapter_path}'. Use add_summary to create it."
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "update_summary",
+  "description": "Overwrite existing chapter summary file (idempotent)",
+  "type": "object",
+  "properties": {
+    "book_id": {
+      "type": "string",
+      "description": "Unique book identifier",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "chapter_path": {
+      "type": "string",
+      "description": "Chapter identifier",
+      "pattern": "^chapter-\\d+$"
+    },
+    "summary_content": {
+      "type": "string",
+      "description": "Updated markdown content",
+      "minLength": 1
+    }
+  },
+  "required": ["book_id", "chapter_path", "summary_content"],
+  "additionalProperties": false,
+  "response": {
+    "type": "object",
+    "properties": {
+      "success": {
+        "type": "boolean",
+        "const": true
+      },
+      "path": {
+        "type": "string"
+      },
+      "file_hash_sha256": {
+        "type": "string",
+        "description": "New hash after update"
+      },
+      "audit_entry_id": {
+        "type": "string"
+      }
+    },
+    "required": ["success", "path", "file_hash_sha256", "audit_entry_id"]
+  },
+  "errors": [
+    {
+      "code": "SUMMARY_NOT_FOUND",
+      "message": "Summary not found for '{chapter_path}'. Use add_summary to create."
+    },
+    {
+      "code": "STORAGE_ERROR",
+      "message": "Failed to update summary: {error_details}"
+    }
+  ]
+}

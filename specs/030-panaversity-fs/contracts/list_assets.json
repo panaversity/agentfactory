@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "list_assets",
+  "description": "List all assets in book, optionally filtered by asset_type",
+  "type": "object",
+  "properties": {
+    "book_id": {
+      "type": "string",
+      "description": "Unique book identifier",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "asset_type": {
+      "type": "string",
+      "enum": ["slides", "images", "videos", "audio"],
+      "description": "Optional filter by category"
+    }
+  },
+  "required": ["book_id"],
+  "additionalProperties": false,
+  "response": {
+    "type": "object",
+    "properties": {
+      "assets": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "filename": { "type": "string" },
+            "asset_type": {
+              "type": "string",
+              "enum": ["slides", "images", "videos", "audio"]
+            },
+            "cdn_url": { "type": "string", "format": "uri" },
+            "file_size": { "type": "integer" },
+            "mime_type": { "type": "string" },
+            "upload_timestamp": { "type": "string", "format": "date-time" }
+          },
+          "required": ["filename", "asset_type", "cdn_url", "file_size", "mime_type", "upload_timestamp"]
+        }
+      },
+      "total_count": {
+        "type": "integer",
+        "description": "Total assets matching filter"
+      }
+    },
+    "required": ["assets", "total_count"]
+  },
+  "errors": [
+    {
+      "code": "BOOK_NOT_FOUND",
+      "message": "Book '{book_id}' not found in registry"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "glob_search",
+  "description": "Find files matching glob pattern within book scope",
+  "type": "object",
+  "properties": {
+    "book_id": {
+      "type": "string",
+      "description": "Unique book identifier (required if all_books=false)",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "pattern": {
+      "type": "string",
+      "description": "Glob pattern (e.g., '**/*.md', 'assets/images/**/*.png')",
+      "examples": ["lessons/**/*.md", "assets/slides/*.pdf"]
+    },
+    "all_books": {
+      "type": "boolean",
+      "description": "Search across all books (requires elevated permissions)",
+      "default": false
+    }
+  },
+  "required": ["pattern"],
+  "additionalProperties": false,
+  "response": {
+    "type": "object",
+    "properties": {
+      "matches": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "file_path": {
+              "type": "string",
+              "description": "Relative path from book root"
+            },
+            "book_id": {
+              "type": "string",
+              "description": "Book containing this file"
+            },
+            "file_size": {
+              "type": "integer"
+            },
+            "last_modified": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": ["file_path", "book_id", "file_size", "last_modified"]
+        }
+      },
+      "total_count": {
+        "type": "integer"
+      },
+      "truncated": {
+        "type": "boolean",
+        "description": "True if results exceed 1000 matches"
+      }
+    },
+    "required": ["matches", "total_count", "truncated"]
+  },
+  "errors": [
+    {
+      "code": "INVALID_PATTERN",
+      "message": "Glob pattern '{pattern}' is invalid. Use ** for recursive matching."
+    },
+    {
+      "code": "TOO_MANY_RESULTS",
+      "message": "Pattern matched >1000 files. Refine pattern for more specific results."
+    }
+  ]
+}

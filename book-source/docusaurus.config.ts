@@ -1,14 +1,38 @@
 import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
+import * as dotenv from "dotenv";
+
+// Load environment variables from .env file (for local development)
+// Production uses actual environment variables set in CI/CD
+dotenv.config();
+
+// Auth server URL for login/signup redirects
+const AUTH_URL = process.env.AUTH_URL || "http://localhost:3001";
+
+// OAuth client ID - use the pre-configured trusted client (PKCE + JWKS)
+// This matches the trustedClients configuration in auth-server
+const OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || "ai-native-public-client";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+
+// PanaversityFS: Determine docs path based on plugin mode
+// - When plugin enabled: Read from docsfs/ (fetched from MCP server)
+// - When plugin disabled: Read from docs/ (local sample content)
+const panaversityEnabled = process.env.PANAVERSITY_PLUGIN_ENABLED === "true";
+const docsPath = panaversityEnabled ? "docsfs" : "docs";
 
 const config: Config = {
   title: "AI Native Software Development",
   tagline:
     "Colearning Agentic AI with Python and TypeScript – Spec Driven Reusable Intelligence",
-  favicon: "img/favicon.ico",
+  favicon: "favicon.png",
+
+  // Custom fields accessible via useDocusaurusContext().siteConfig.customFields
+  customFields: {
+    authUrl: AUTH_URL,
+    oauthClientId: OAUTH_CLIENT_ID,
+  },
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -33,6 +57,33 @@ const config: Config = {
 
   // Add Font Awesome for social media icons
   headTags: [
+    // Favicon and Apple Touch Icon
+    {
+      tagName: "link",
+      attributes: {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: "/favicon.png",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: "/favicon-16.png",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+        href: "/apple-touch-icon.png",
+      },
+    },
     {
       tagName: "link",
       attributes: {
@@ -71,6 +122,29 @@ const config: Config = {
           },
         ]
       : []),
+    // Google Fonts: Inter (UI), Merriweather (Text), JetBrains Mono (Code)
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossorigin: "anonymous",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap",
+      },
+    },
   ],
 
   // Even if you don't use internationalization, you can use this field to set
@@ -86,9 +160,18 @@ const config: Config = {
       "classic",
       {
         docs: {
+          path: docsPath, // 'docs' (local) or 'docsfs' (from MCP server)
           sidebarPath: "./sidebars.ts",
+          // Exclude .summary.md files from being rendered as pages
+          // They are injected into lesson frontmatter by the summary injector plugin
+          exclude: ["**/*.summary.md"],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
+          // beforeDefaultRemarkPlugins run BEFORE Docusaurus's internal plugins
+          // This is critical for modifying frontmatter via file.data.frontMatter
+          beforeDefaultRemarkPlugins: [
+            // Summary injection handled by docusaurus-summaries-plugin (global data approach)
+          ],
           remarkPlugins: [
             // Auto-transform Python code blocks into interactive components
             [require('./plugins/remark-interactive-python'), {
@@ -119,9 +202,52 @@ const config: Config = {
     ],
   ],
 
+  themes: [
+    // Local search plugin - generates search index at build time
+    // We use our custom SearchBar UI, so disable the plugin's auto-injected search bar
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        language: ["en"],
+        indexDocs: true,
+        indexBlog: false,
+        indexPages: false,
+        docsRouteBasePath: "/docs",
+        highlightSearchTermsOnTargetPage: true,
+        searchResultLimits: 8,
+        searchResultContextMaxLength: 50,
+        explicitSearchResultPath: true,
+        // Disable the plugin's auto-injected search bar - we use custom-searchBar instead
+        searchBarShortcutHint: false,
+      },
+    ],
+  ],
   plugins: [
     "./plugins/docusaurus-plugin-og-image-generator",
     "./plugins/docusaurus-plugin-structured-data",
+    // Summaries Plugin - Makes .summary.md content available via useGlobalData()
+    [
+      "./plugins/docusaurus-summaries-plugin",
+      {
+        docsPath: docsPath, // Use same docs path as content-docs
+      },
+    ],
+    // PanaversityFS Plugin - Fetch content from MCP server and write to docsfs/
+    // Enable via: PANAVERSITY_PLUGIN_ENABLED=true
+    // Server URL: PANAVERSITY_SERVER_URL or http://localhost:8000/mcp
+    // When enabled: Writes to docsfs/, Docusaurus reads from docsfs/
+    // When disabled: Docusaurus reads from docs/ (local sample content)
+    [
+      "./plugins/docusaurus-panaversityfs-plugin",
+      {
+        bookId: "ai-native-dev",
+        enabled: panaversityEnabled,
+        serverUrl: process.env.PANAVERSITY_SERVER_URL || "http://localhost:8000/mcp",
+        docsDir: "docsfs",  // Separate from docs/ to keep local sample content intact
+        cleanDocsDir: true, // Clean docsfs/ before writing fresh content
+      },
+    ],
     function (context, options) {
       return {
         name: "custom-webpack-config",
@@ -217,8 +343,11 @@ const config: Config = {
           label: "Book",
         },
         {
-          href: "https://github.com/panaversity/ai-native-software-development",
-          label: "GitHub",
+          type: "custom-searchBar",
+          position: "right",
+        },
+        {
+          type: "custom-navbarAuth",
           position: "right",
         },
       ],

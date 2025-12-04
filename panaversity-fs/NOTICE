@@ -1,0 +1,50 @@
+PanaversityFS
+Copyright 2025 Panaversity
+
+This product includes software developed at Panaversity
+(https://panaversity.org/).
+
+=========================================================================
+
+This product includes software from the following third-party projects:
+
+-------------------------------------------------------------------------
+Apache OpenDAL
+-------------------------------------------------------------------------
+Copyright 2023-2025 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+Licensed under the Apache License, Version 2.0
+https://github.com/apache/opendal
+
+-------------------------------------------------------------------------
+Model Context Protocol (MCP) SDK
+-------------------------------------------------------------------------
+Copyright 2024-2025 Anthropic, PBC
+
+Licensed under the MIT License
+https://github.com/modelcontextprotocol/python-sdk
+
+-------------------------------------------------------------------------
+FastMCP
+-------------------------------------------------------------------------
+Part of the MCP SDK, provides the FastMCP server framework.
+https://github.com/modelcontextprotocol/python-sdk
+
+-------------------------------------------------------------------------
+Pydantic
+-------------------------------------------------------------------------
+Copyright 2017-2024 Pydantic Services Inc. and individual contributors
+
+Licensed under the MIT License
+https://github.com/pydantic/pydantic
+
+-------------------------------------------------------------------------
+Supabase Python Client
+-------------------------------------------------------------------------
+Copyright 2020-2024 Supabase Inc.
+
+Licensed under the MIT License
+https://github.com/supabase/supabase-py

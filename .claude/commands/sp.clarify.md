@@ -10,6 +10,12 @@ $ARGUMENTS
 
 You **MUST** consider the user input before proceeding (if not empty).
 
+## Core Directive
+
+**Default to Action with Recommendations**: For each question, provide your recommended answer based on best practices. Users can accept recommendations by saying "yes" or provide alternatives. This speeds up clarification while preserving user control.
+
+**WHY**: Most clarifications have "right answers" based on industry patterns. Providing recommendations reduces user cognitive load and accelerates the workflow. Sequential questioning is intentional here—each answer informs subsequent questions.
+
 ## Outline
 
 Goal: Detect and reduce ambiguity or missing decision points in the active feature specification and record the clarifications directly in the spec file.

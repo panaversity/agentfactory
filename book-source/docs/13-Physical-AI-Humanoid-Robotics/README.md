@@ -5,7 +5,7 @@ title: "Part 13: Physical AI & Humanoid Robotics"
 
 # Part 13: Physical AI & Humanoid Robotics
 
-You've mastered the complete stack of AI-native software development across Parts 1-12: from AI-driven development methodologies to specification engineering, Python programming, agentic architectures, cloud deployment, custom model training, TypeScript frontends, and strategic positioning in the agentic future. Now you'll extend AI beyond digital systems into the **physical world**—building robots that see, move, speak, and interact naturally with humans.
+You've mastered the complete stack of AI-native software development across Parts 1-12: from AI-driven development methodologies to specification engineering, Python programming, agentic architectures, cloud deployment, custom model training, TypeScript frontends, realtime/voice interfaces, and strategic positioning in the agentic future. Now you'll extend AI beyond digital systems into the **physical world**—building robots that see, move, speak, and interact naturally with humans.
 
 This part bridges software intelligence to embodied systems. You'll learn to give your AI agents physical form, creating machines that operate in reality, understand physical laws, and interact naturally in human-centered environments.
 
@@ -94,10 +94,10 @@ You'll implement robot vision and sensing:
 
 This part requires the complete foundation from Parts 1-12:
 - **Part 5 (Python)**: All robot control code is Python—you need mastery of async, OOP, and APIs
-- **Part 7 (AI Native)**: Agents you build here use the same architectures as software agents
-- **Part 8 (Cloud Native)**: Robots are distributed systems—concepts like pub/sub, service meshes apply
-- **Part 10 (TypeScript)**: Robot control interfaces are built with web technologies
-- **Part 11 (Realtime)**: Robots stream sensor data and require real-time communication patterns
+- **Part 6 (AI Native)**: Agents you build here use the same architectures as software agents
+- **Part 7 (Cloud Native)**: Robots are distributed systems—concepts like pub/sub, service meshes apply
+- **Part 9 (TypeScript)**: Robot control interfaces are built with web technologies
+- **Part 11 (Realtime/Voice)**: Robots stream sensor data and require real-time communication patterns
 
 **This is the capstone**—integrating everything you've learned into physical systems.
 

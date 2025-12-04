@@ -1,42 +1,45 @@
 ---
 sidebar_position: 14
-title: "Chapter 14: Spec-Kit Plus Hands-On"
+title: "Chapter 14: Master Spec-Kit Plus"
 slides:
   source: "slides/chapter-14-slides.pdf"
-  title: "Chapter 14: Spec-Kit Plus Hands-On"
+  title: "Chapter 14: Master Spec-Kit Plus"
   height: 700
 ---
 
-# Chapter 14: Spec-Kit Plus Hands-On — Building AI-Generated Videos
+# Chapter 14: Master Spec-Kit Plus
 
-Welcome to hands-on specification-driven development. This chapter transforms understanding (from Chapter 13) into practice. You won't read about specifications—you'll write them. You won't learn about AI collaboration—you'll build a **real product**: AI-generated product demo videos uploaded to YouTube.
+Welcome to hands-on specification-driven development. This chapter transforms understanding (from Chapter 13) into practice. You won't read about Spec-Kit Plus—you'll **use every command**. You won't learn workflow in isolation—you'll execute it end-to-end on a real project.
 
-**Your Project**: Create product demo videos using Gemini.google.com + Playwright MCP, then upload them to YouTube—all orchestrated through Spec-Kit Plus workflow.
+**Your Project**: Write a research paper using Spec-Kit Plus workflow. Simple, yes. But it forces you to master `/sp.constitution`, `/sp.specify`, `/sp.clarify`, `/sp.plan`, `/sp.tasks`, `/sp.implement`—the exact commands you'll use on every project forward.
 
-**Why Product Demo Videos?** SaaS companies spend thousands on product demo videos for marketing. You'll build a system that generates them with AI—a valuable, portfolio-worthy skill that demonstrates SDD-RI mastery.
+**Why a Research Paper?** Because a research paper has clear structure, measurable success criteria, and iteration loops—everything that makes Spec-Kit Plus powerful. 
 
 ## Prerequisites
 
 Before starting this chapter, ensure you have:
 
 - **Chapter 13 Complete**: You understand SDD-RI theory (specification primacy, intelligence accumulation)
-- **Python 3.12+ Installed**: Spec-Kit Plus requires Python. If not installed, complete [Installing Python](https://ai-native.panaversity.org/docs/Python-Fundamentals/introduction-to-python/installing-python) first
 - **AI Companion Ready**: Claude Code or Gemini CLI installed and configured
-- **Google Account**: For Gemini.google.com and YouTube access (free tier sufficient)
-- **Node.js Installed**: Required for Playwright MCP browser automation
+- **Markdown Basics**: From Chapter 10 (how to write markdown)
+- **Terminal Comfort**: From Chapter 7 (basic bash commands)
+- **Text Editor**: Any editor (VS Code, Cursor, terminal-based)
+
+## 🎯 Before You Begin
 
 ## What You'll Learn
 
-1. **Spec-Kit Plus Foundation** — Understand WHAT Spec-Kit Plus is, WHY this book uses it, and HOW it implements SDD-RI concepts (Horizontal + Vertical Intelligence)
-2. **Installation & Configuration** — Install Spec-Kit Plus + Playwright MCP, configure your AI tool, set up browser automation with session persistence
-3. **Constitution Creation** — Setting project-wide quality standards for video generation (Gemini constraints, output quality, testing requirements)
-4. **Specification Writing** — Creating clear, testable requirements for product demo videos using SMART criteria
-5. **Iterative Refinement** — Using `/sp.clarify` to identify video-specific edge cases (Gemini availability, session timeout, quality validation)
-6. **Architecture Planning** — Generating implementation plans using Playwright MCP + Gemini.google.com approach
-7. **Task Decomposition** — Breaking video generation into atomic work units with checkpoint-driven execution
-8. **AI-Driven Implementation** — Executing `/sp.implement` to generate and download your video
-9. **Reusable Intelligence Design** — Creating `generate-video` and `upload-youtube` skills using P+Q+P framework
+1. **Spec-Kit Plus Foundation** — What Spec-Kit Plus is, Why this book uses it, How it orchestrates SDD-RI phases
+2. **Installation & Setup** — Configure your AI companion, understand project structure, prepare your workspace
+3. **Constitution Phase** — Using `/sp.constitution` to define project-wide quality standards for research papers
+4. **Specify Phase** — Using `/sp.specify` to write clear, testable requirements from vague project ideas
+5. **Clarify Phase** — Using `/sp.clarify` to identify missing constraints and edge cases iteratively
+6. **Plan Phase** — Using `/sp.plan` to generate architecture and design decisions
+7. **Tasks Phase** — Using `/sp.tasks` to decompose work into atomic, checkpoint-driven units
+8. **Implement Phase** — Using `/sp.implement` to execute tasks with AI collaboration
+9. **Designing Reusable Intelligence** — Creating reusable components (skills, subagents, tools) using P+Q+P pattern
 10. **Brownfield Adoption** — Adding Spec-Kit Plus to existing projects safely
-11. **Capstone Execution** — Applying skills to YouTube upload, demonstrating intelligence acceleration
+11. **Capstone Execution** — Applying the full workflow end-to-end, demonstrating mastery through skill reuse
+12. **Quiz** — Validate your understanding of each command and when to use it
 
-Let's build something real—and create intelligence that compounds.
+By the end, you'll have shipped a research paper **entirely through Spec-Kit Plus workflow**—and you'll understand how to apply this to any project.
