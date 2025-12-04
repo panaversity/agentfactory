@@ -195,7 +195,7 @@ Added in version 2.
             book_id=book_id,
             path="content/01-Part/01-Chapter/01-evolving-lesson.md",
             content=v2_content,
-            file_hash=hash_v1
+            expected_hash=hash_v1
         ))
         v2_data = json.loads(write_v2)
         hash_v2 = v2_data["file_hash"]

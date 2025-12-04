@@ -19,6 +19,10 @@ ENV/
 .coverage
 htmlcov/
 .tox/
+.hypothesis/
+
+# Database
+*.db
 
 # IDE
 .idea/

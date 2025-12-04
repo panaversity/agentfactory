@@ -160,16 +160,17 @@ class ReadContentInput(BaseModel):
 class WriteContentInput(BaseModel):
     """Input model for write_content tool (upsert semantics).
 
-    Supports both create and update operations:
-    - If file_hash provided: Update with conflict detection
-    - If file_hash omitted: Create or overwrite
+    Supports both create and update operations (FR-003, FR-004, FR-005):
+    - If expected_hash provided: Update with conflict detection (FR-003)
+    - If expected_hash omitted AND file exists: REJECTED with HASH_REQUIRED (FR-004)
+    - If expected_hash omitted AND file doesn't exist: Create operation (FR-005)
     """
     model_config = ConfigDict(str_strip_whitespace=True, extra='forbid')
 
     book_id: str = Field(..., description="Book identifier", pattern=r'^[a-z0-9-]+$', min_length=3, max_length=50)
     path: str = Field(..., description="Lesson path relative to book root", min_length=1, max_length=255)
     content: str = Field(..., description="Markdown content with YAML frontmatter", min_length=1, max_length=500_000)
-    file_hash: str | None = Field(default=None, description="SHA256 hash for conflict detection (if updating)", min_length=64, max_length=64)
+    expected_hash: str | None = Field(default=None, description="SHA256 hash for conflict detection. REQUIRED when updating existing files (FR-004)", min_length=64, max_length=64)
 
 
 class DeleteContentInput(BaseModel):

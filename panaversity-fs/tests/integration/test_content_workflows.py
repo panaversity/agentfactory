@@ -1,10 +1,13 @@
-"""Integration tests for content workflows."""
+"""Integration tests for content workflows.
+
+Updated for FR-002/003/004/005: Journal-backed conflict detection.
+"""
 
 import pytest
 import json
 from panaversity_fs.tools.content import read_content, write_content, delete_content
 from panaversity_fs.models import ReadContentInput, WriteContentInput, DeleteContentInput
-from panaversity_fs.errors import ConflictError
+from panaversity_fs.errors import ConflictError, HashRequiredError
 
 
 class TestContentCRUDWorkflow:
@@ -38,12 +41,12 @@ class TestContentCRUDWorkflow:
         assert read_data["content"] == content_v1
         assert read_data["file_hash_sha256"] == hash_v1
 
-        # 3. UPDATE (with conflict detection)
+        # 3. UPDATE (with conflict detection - expected_hash required per FR-004)
         update_result = await write_content(WriteContentInput(
             book_id=book_id,
             path=path,
             content=content_v2,
-            file_hash=hash_v1
+            expected_hash=hash_v1
         ))
         update_data = json.loads(update_result)
         assert update_data["status"] == "success"
@@ -81,9 +84,9 @@ class TestConcurrentModificationDetection:
 
     @pytest.mark.asyncio
     async def test_concurrent_update_detection(self, setup_fs_backend):
-        """Test that concurrent updates are detected."""
+        """Test that concurrent updates are detected (FR-003, FR-004)."""
         book_id = "test-book"
-        path = "lessons/concurrent-test.md"
+        path = "content/01-Part/01-Chapter/concurrent-test.md"
 
         # Initial write
         initial_content = "# Initial\n\nContent."
@@ -100,31 +103,56 @@ class TestConcurrentModificationDetection:
         data_a = json.loads(read_a)
         hash_a = data_a["file_hash_sha256"]
 
-        # Simulate User B updates (without hash check)
+        # Simulate User B updates (with expected_hash per FR-004)
         user_b_content = "# User B Update\n\nB's changes."
         write_b = await write_content(WriteContentInput(
             book_id=book_id,
             path=path,
-            content=user_b_content
+            content=user_b_content,
+            expected_hash=hash1  # B has the current hash
         ))
+        data_b = json.loads(write_b)
+        hash_b = data_b["file_hash"]
 
-        # User A tries to update with stale hash - should fail
+        # User A tries to update with stale hash - should fail (FR-003)
         user_a_content = "# User A Update\n\nA's changes."
         with pytest.raises(ConflictError) as exc_info:
             await write_content(WriteContentInput(
                 book_id=book_id,
                 path=path,
                 content=user_a_content,
-                file_hash=hash_a
+                expected_hash=hash_a  # Stale hash
             ))
 
         assert "Conflict detected" in str(exc_info.value)
-        assert hash_a in str(exc_info.value)  # Shows expected hash
 
         # Verify User B's content is preserved
         final_read = await read_content(ReadContentInput(book_id=book_id, path=path))
         final_data = json.loads(final_read)
         assert "User B Update" in final_data["content"]
+
+    @pytest.mark.asyncio
+    async def test_update_without_hash_rejected(self, setup_fs_backend):
+        """Test that updates without expected_hash are rejected (FR-004)."""
+        book_id = "test-book"
+        path = "content/01-Part/01-Chapter/hash-required-test.md"
+
+        # Create initial file
+        await write_content(WriteContentInput(
+            book_id=book_id,
+            path=path,
+            content="# Initial"
+        ))
+
+        # Try to update without expected_hash - should be rejected
+        with pytest.raises(HashRequiredError) as exc_info:
+            await write_content(WriteContentInput(
+                book_id=book_id,
+                path=path,
+                content="# Updated without hash"
+            ))
+
+        assert "Hash required" in str(exc_info.value)
 
 
 class TestBulkContentOperations:

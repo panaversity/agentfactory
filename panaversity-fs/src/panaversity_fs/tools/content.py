@@ -2,7 +2,7 @@
 
 Implements 3 MCP tools for content management (lessons and summaries per ADR-0018):
 - read_content: Read markdown content with metadata
-- write_content: Upsert with conflict detection (file_hash)
+- write_content: Upsert with conflict detection via FileJournal (FR-002, FR-003, FR-004, FR-005)
 - delete_content: Delete content file
 
 Path structure (Docusaurus-aligned):
@@ -14,10 +14,14 @@ from panaversity_fs.app import mcp
 from panaversity_fs.models import ReadContentInput, WriteContentInput, DeleteContentInput, ContentMetadata, ContentScope
 from panaversity_fs.storage import get_operator
 from panaversity_fs.storage_utils import compute_sha256, validate_path
-from panaversity_fs.errors import ContentNotFoundError, ConflictError, InvalidPathError
+from panaversity_fs.errors import ContentNotFoundError, ConflictError, InvalidPathError, HashRequiredError
 from panaversity_fs.audit import log_operation
 from panaversity_fs.models import OperationType, OperationStatus
 from panaversity_fs.config import get_config
+from panaversity_fs.database.connection import get_session
+from panaversity_fs.database.models import FileJournal
+from panaversity_fs.metrics import instrument_write
+from sqlalchemy import select
 from datetime import datetime, timezone
 import json
 import fnmatch
@@ -253,51 +257,55 @@ async def read_content(params: ReadContentInput) -> str:
         "openWorldHint": False
     }
 )
+@instrument_write
 async def write_content(params: WriteContentInput) -> str:
-    """Write content with upsert semantics and conflict detection (FR-007, FR-008).
+    """Write content with journal-backed conflict detection (FR-002, FR-003, FR-004, FR-005).
 
     Works for lessons and summaries (ADR-0018).
 
-    Supports two modes:
-    - Update mode (file_hash provided): Verify hash matches before write, detect conflicts
-    - Create mode (file_hash omitted): Create new file or overwrite existing
+    Conflict detection protocol:
+    - FR-003: If expected_hash provided, verify it matches journal hash before write
+    - FR-004: If expected_hash omitted AND file exists in journal, reject with HASH_REQUIRED
+    - FR-005: If expected_hash omitted AND file doesn't exist, create operation succeeds
+    - FR-002: Journal entry recorded BEFORE returning success; atomic rollback on failure
 
     Args:
         params (WriteContentInput): Validated input containing:
             - book_id (str): Book identifier
             - path (str): Content path relative to book root
             - content (str): Markdown content
-            - file_hash (str | None): SHA256 hash for conflict detection (optional)
+            - expected_hash (str | None): SHA256 hash for conflict detection (REQUIRED for updates)
 
     Returns:
-        str: Success message with file metadata
+        str: JSON response with status, path, file_size, file_hash, mode ("created"|"updated")
 
     Example:
         ```
-        # Create lesson
+        # Create lesson (no expected_hash needed for new files)
         Input: {
           "book_id": "my-book",
           "path": "content/01-Part/01-Chapter/01-lesson.md",
           "content": "# Lesson 1\\n\\nContent..."
         }
+        Output: {"status": "success", "mode": "created", ...}
 
-        # Create summary for that lesson
-        Input: {
-          "book_id": "my-book",
-          "path": "content/01-Part/01-Chapter/01-lesson.summary.md",
-          "content": "# Summary\\n\\nKey points..."
-        }
-
-        # Update with conflict detection
+        # Update with conflict detection (expected_hash REQUIRED)
         Input: {
           "book_id": "my-book",
           "path": "content/01-Part/01-Chapter/01-lesson.md",
           "content": "# Lesson 1 (Updated)\\n\\nNew content...",
-          "file_hash": "a591a6d40bf420404a011733cfb7b190..."
+          "expected_hash": "a591a6d40bf420404a011733cfb7b190..."
         }
+        Output: {"status": "success", "mode": "updated", ...}
         ```
+
+    Raises:
+        ConflictError: expected_hash doesn't match current journal hash (FR-003)
+        HashRequiredError: Updating existing file without expected_hash (FR-004)
+        InvalidPathError: Path contains traversal or invalid characters
     """
     start_time = datetime.now(timezone.utc)
+    config = get_config()
 
     try:
         # Validate path
@@ -310,35 +318,95 @@ async def write_content(params: WriteContentInput) -> str:
         # Get operator
         op = get_operator()
 
-        # If file_hash provided, verify it matches (conflict detection)
-        if params.file_hash:
-            try:
-                existing_content = await op.read(full_path)
-                existing_hash = compute_sha256(existing_content)
+        # Compute new content hash before any DB operations
+        content_bytes = params.content.encode('utf-8')
+        new_hash = compute_sha256(content_bytes)
 
-                if existing_hash != params.file_hash:
-                    # Conflict detected
+        # Use atomic transaction for journal + storage (FR-002)
+        async with get_session() as session:
+            # Query FileJournal for existing entry (FR-002)
+            stmt = select(FileJournal).where(
+                FileJournal.book_id == params.book_id,
+                FileJournal.path == params.path,
+                FileJournal.user_id == "__base__"  # Base content, not overlay
+            )
+            result = await session.execute(stmt)
+            existing_entry = result.scalar_one_or_none()
+
+            # Determine mode and validate hash requirements
+            if existing_entry:
+                # File exists in journal
+                if params.expected_hash is None:
+                    # FR-004: Reject update without expected_hash
+                    await log_operation(
+                        operation=OperationType.WRITE_CONTENT,
+                        path=full_path,
+                        agent_id="system",
+                        status=OperationStatus.ERROR,
+                        error_message=f"HASH_REQUIRED: Cannot update existing file without expected_hash"
+                    )
+                    raise HashRequiredError(full_path, existing_entry.sha256)
+
+                if params.expected_hash != existing_entry.sha256:
+                    # FR-003: Conflict detected - hash mismatch
                     await log_operation(
                         operation=OperationType.WRITE_CONTENT,
                         path=full_path,
                         agent_id="system",
                         status=OperationStatus.CONFLICT,
-                        error_message=f"Hash mismatch: expected {params.file_hash}, got {existing_hash}"
+                        error_message=f"Hash mismatch: expected {params.expected_hash}, journal has {existing_entry.sha256}"
                     )
+                    raise ConflictError(full_path, params.expected_hash, existing_entry.sha256)
 
-                    raise ConflictError(full_path, params.file_hash, existing_hash)
+                # Valid update: hash matches
+                mode = "updated"
+                existing_entry.sha256 = new_hash
+                existing_entry.last_written_at = datetime.now(timezone.utc)
+                existing_entry.storage_backend = config.storage_backend
 
-            except FileNotFoundError:
-                # File doesn't exist, can't verify hash - treat as create
-                pass
+            else:
+                # FR-005: File doesn't exist - create operation
+                if params.expected_hash is not None:
+                    # User provided expected_hash for non-existent file
+                    # This could indicate they thought file existed - warn them
+                    await log_operation(
+                        operation=OperationType.WRITE_CONTENT,
+                        path=full_path,
+                        agent_id="system",
+                        status=OperationStatus.ERROR,
+                        error_message=f"NOT_FOUND: Cannot update non-existent file with expected_hash"
+                    )
+                    raise ContentNotFoundError(full_path)
 
-        # Write content
-        content_bytes = params.content.encode('utf-8')
-        await op.write(full_path, content_bytes)
+                mode = "created"
+                new_entry = FileJournal(
+                    book_id=params.book_id,
+                    path=params.path,
+                    user_id="__base__",
+                    sha256=new_hash,
+                    last_written_at=datetime.now(timezone.utc),
+                    storage_backend=config.storage_backend
+                )
+                session.add(new_entry)
 
-        # Get metadata of written file
+            # Write to storage (within transaction scope for rollback)
+            try:
+                await op.write(full_path, content_bytes)
+            except Exception as storage_error:
+                # Storage write failed - transaction will rollback
+                await log_operation(
+                    operation=OperationType.WRITE_CONTENT,
+                    path=full_path,
+                    agent_id="system",
+                    status=OperationStatus.ERROR,
+                    error_message=f"Storage write failed: {str(storage_error)}"
+                )
+                raise
+
+            # Session commits on context exit if no exception
+
+        # Get metadata of written file (outside transaction)
         metadata = await op.stat(full_path)
-        new_hash = compute_sha256(content_bytes)
 
         # Log success
         execution_time = int((datetime.now(timezone.utc) - start_time).total_seconds() * 1000)
@@ -350,19 +418,19 @@ async def write_content(params: WriteContentInput) -> str:
             execution_time_ms=execution_time
         )
 
-        # Build response
+        # Build response (FR-005: mode indicates created vs updated)
         response = {
             "status": "success",
             "path": full_path,
             "file_size": metadata.content_length,
             "file_hash": new_hash,
-            "mode": "updated" if params.file_hash else "created"
+            "mode": mode
         }
 
         return json.dumps(response, indent=2)
 
-    except ConflictError:
-        raise  # Re-raise ConflictError as-is
+    except (ConflictError, HashRequiredError, ContentNotFoundError, InvalidPathError):
+        raise  # Re-raise known errors as-is
 
     except Exception as e:
         # Log error

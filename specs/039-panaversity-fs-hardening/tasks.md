@@ -67,12 +67,12 @@
 
 ### Implementation for User Story 1
 
-- [ ] T018 [US1] Refactor `src/panaversity_fs/tools/bulk.py` `get_book_archive()` to use chunked streaming with io.BytesIO buffer capped at 64MB (SC-001/R4). **Doc**: Fetch Python zipfile docs for streaming write patterns.
-- [ ] T019 [US1] Add timeout detection (60s) to `get_book_archive()` returning partial result with error manifest per FR-014 (SC-001/R4).
-- [ ] T020 [US1] Add `archive_memory` gauge tracking throughout archive generation in `src/panaversity_fs/tools/bulk.py` (SC-001/R4).
-- [ ] T021 [US1] Apply `@instrument_archive` decorator to `get_book_archive()` in `src/panaversity_fs/tools/bulk.py` (SC-001/R4).
-- [ ] T022 [P] [US1] Create `tests/integration/test_streaming_archive.py` with real ZIP generation tests (SC-001/R4).
-- [ ] T023 [P] [US1] Create `tests/performance/test_archive_throughput.py` with SC-001/R4 validation (500 files/200MB <60s <64MB).
+- [X] T018 [US1] Refactor `src/panaversity_fs/tools/bulk.py` `get_book_archive()` to use chunked streaming with io.BytesIO buffer capped at 64MB (SC-001/R4). **Doc**: Fetch Python zipfile docs for streaming write patterns.
+- [X] T019 [US1] Add timeout detection (60s) to `get_book_archive()` returning partial result with error manifest per FR-014 (SC-001/R4).
+- [X] T020 [US1] Add `archive_memory` gauge tracking throughout archive generation in `src/panaversity_fs/tools/bulk.py` (SC-001/R4).
+- [X] T021 [US1] Apply `@instrument_archive` decorator to `get_book_archive()` in `src/panaversity_fs/tools/bulk.py` (SC-001/R4).
+- [X] T022 [P] [US1] Create `tests/integration/test_streaming_archive.py` with real ZIP generation tests (SC-001/R4).
+- [X] T023 [P] [US1] Create `tests/performance/test_archive_throughput.py` with SC-001/R4 validation (500 files/200MB <60s <64MB).
 
 **Checkpoint**: User Story 1 complete - archive downloads reliable for CI/CD
 
@@ -86,16 +86,16 @@
 
 ### Implementation for User Story 2
 
-- [ ] T024 [US2] Update `src/panaversity_fs/models.py` to add `expected_hash: str | None` field to WriteContentInput. **Doc**: Fetch Pydantic docs via Context7 for Optional field patterns.
-- [ ] T025 [US2] Refactor `src/panaversity_fs/tools/content.py` `write_content()` to query FileJournal before write per FR-002.
-- [ ] T026 [US2] Add conflict detection logic to `write_content()`: reject if expected_hash mismatches with ConflictError containing current hash per FR-003.
-- [ ] T027 [US2] Add hash-required enforcement to `write_content()`: reject existing file updates without expected_hash with HashRequiredError per FR-004.
-- [ ] T028 [US2] Add atomic journal+storage transaction wrapper to `write_content()` per FR-002 (rollback both on failure). **Doc**: Fetch SQLAlchemy docs via Context7 for async transaction commit/rollback patterns.
-- [ ] T029 [US2] Update `write_content()` response to include `mode: "created"|"updated"` per FR-005.
-- [ ] T030 [US2] Apply `@instrument_write` decorator to `write_content()` in `src/panaversity_fs/tools/content.py`.
-- [ ] T031 [P] [US2] Create `tests/integration/test_journal_storage_atomic.py` with transaction rollback and fault injection tests for SC-002.
-- [ ] T032 [P] [US2] Create `tests/integration/test_conflict_detection.py` with concurrent write conflict tests for SC-003.
-- [ ] T033 [P] [US2] Create `tests/property/test_invariant_r2_journal.py` with hypothesis journal-storage consistency tests. **Doc**: Fetch hypothesis docs via Context7 for async test strategies.
+- [X] T024 [US2] Update `src/panaversity_fs/models.py` to add `expected_hash: str | None` field to WriteContentInput. **Doc**: Fetch Pydantic docs via Context7 for Optional field patterns.
+- [X] T025 [US2] Refactor `src/panaversity_fs/tools/content.py` `write_content()` to query FileJournal before write per FR-002.
+- [X] T026 [US2] Add conflict detection logic to `write_content()`: reject if expected_hash mismatches with ConflictError containing current hash per FR-003.
+- [X] T027 [US2] Add hash-required enforcement to `write_content()`: reject existing file updates without expected_hash with HashRequiredError per FR-004.
+- [X] T028 [US2] Add atomic journal+storage transaction wrapper to `write_content()` per FR-002 (rollback both on failure). **Doc**: Fetch SQLAlchemy docs via Context7 for async transaction commit/rollback patterns.
+- [X] T029 [US2] Update `write_content()` response to include `mode: "created"|"updated"` per FR-005.
+- [X] T030 [US2] Apply `@instrument_write` decorator to `write_content()` in `src/panaversity_fs/tools/content.py`.
+- [X] T031 [P] [US2] Create `tests/integration/test_journal_storage_atomic.py` with transaction rollback and fault injection tests for SC-002.
+- [X] T032 [P] [US2] Create `tests/integration/test_conflict_detection.py` with concurrent write conflict tests for SC-003.
+- [X] T033 [P] [US2] Create `tests/property/test_invariant_r2_journal.py` with hypothesis journal-storage consistency tests. **Doc**: Fetch hypothesis docs via Context7 for async test strategies.
 
 **Checkpoint**: User Story 2 complete - agents have reliable conflict detection
 
