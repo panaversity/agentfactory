@@ -14,6 +14,7 @@ import { Resend } from "resend";
 import * as nodemailer from "nodemailer";
 import { TRUSTED_CLIENTS, DEFAULT_ORG_ID } from "./trusted-clients";
 import { redis, redisStorage } from "./redis";
+import bcrypt from "bcryptjs";
 
 // Cached default organization ID (validated at startup)
 let cachedDefaultOrgId: string | null = null;
@@ -173,7 +174,22 @@ export const auth = betterAuth({
     minPasswordLength: 8,
     // Require email verification (disable in test environment for automated testing)
     requireEmailVerification: process.env.DISABLE_EMAIL_VERIFICATION !== 'true',
-    // Use default scrypt hashing (matches seed script)
+    // Custom password verification to support migrated bcrypt hashes from NextAuth
+    // New passwords use scrypt (Better Auth default), migrated users have bcrypt ($2b$...)
+    password: {
+      verify: async ({ password, hash }) => {
+        // Check if this is a bcrypt hash (migrated from NextAuth)
+        if (hash.startsWith('$2a$') || hash.startsWith('$2b$') || hash.startsWith('$2y$')) {
+          // Use bcryptjs to verify bcrypt hashes
+          return bcrypt.compare(password, hash);
+        }
+        // Default: Use Better Auth's scrypt verification for new passwords
+        const { verifyPassword } = await import('better-auth/crypto');
+        return verifyPassword({ password, hash });
+      },
+      // Keep using scrypt for new passwords (don't change hash function)
+      // Progressive migration: When users change password, they get scrypt hash
+    },
     // Password reset (only when email is configured)
     ...(emailEnabled && {
       sendResetPassword: async ({ user, url }) => {
