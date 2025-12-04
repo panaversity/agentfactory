@@ -5,7 +5,7 @@
  * Prerequisites:
  * 1. Auth server running on port 3001: pnpm dev
  * 2. Test clients seeded: npx tsx scripts/seed-test-clients.ts
- * 3. Test user exists and is verified: admin@robolearn.io / Admin123!@#
+ * 3. Test user exists and is verified: admin@robolearn.io / admin@robolearn.io
  *
  * Run: node tests/test-oauth-flows.js
  */
@@ -15,7 +15,7 @@ const crypto = require("crypto");
 // Configuration
 const AUTH_URL = "http://localhost:3001";
 const TEST_EMAIL = "admin@robolearn.io";
-const TEST_PASSWORD = "Admin123!@#";
+const TEST_PASSWORD = "admin@robolearn.io";
 
 // Test clients (must match seed-test-clients.ts)
 const PUBLIC_CLIENT = {

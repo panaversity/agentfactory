@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 
 const TEST_EMAIL = 'admin@robolearn.io';
-const TEST_PASSWORD = 'Admin123!@#';
+const TEST_PASSWORD = 'admin@robolearn.io';
 
 async function testPKCEOAuthFlow() {
   console.log('=== PKCE OAuth Flow Test with Playwright ===\n');

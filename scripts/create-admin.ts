@@ -4,7 +4,7 @@ import { eq } from "drizzle-orm";
 
 // Admin credentials - must match seed-setup.ts and test files
 const ADMIN_EMAIL = "admin@robolearn.io";
-const ADMIN_PASSWORD = "Admin123!@#"; // Strong password (matches seed-setup.ts)
+const ADMIN_PASSWORD = "admin@robolearn.io"; // Strong password (matches seed-setup.ts)
 const ADMIN_NAME = "Test Admin";
 const SSO_URL = process.env.BETTER_AUTH_URL || "http://localhost:3001";
 

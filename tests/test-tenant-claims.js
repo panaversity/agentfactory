@@ -14,7 +14,7 @@ const crypto = require('crypto');
 
 const AUTH_URL = 'http://localhost:3001';
 const TEST_EMAIL = 'admin@robolearn.io';
-const TEST_PASSWORD = "Admin123!@#";
+const TEST_PASSWORD = "admin@robolearn.io";
 
 function generateCodeVerifier() {
   return crypto.randomBytes(32).toString('base64url');

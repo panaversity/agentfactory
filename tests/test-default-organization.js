@@ -18,7 +18,7 @@ const DEFAULT_ORG_ID = 'panaversity-default-org-id';
 
 // Generate unique test user email for each test run
 const TEST_EMAIL = `test-${Date.now()}-${crypto.randomBytes(4).toString('hex')}@test.com`;
-const TEST_PASSWORD = 'Admin123!@#';
+const TEST_PASSWORD = 'admin@robolearn.io';
 const TEST_NAME = 'Test User';
 
 function generateCodeVerifier() {

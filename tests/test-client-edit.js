@@ -12,7 +12,7 @@
 
 const BASE_URL = process.env.BETTER_AUTH_URL || "http://localhost:3001";
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "admin@robolearn.io";
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "Admin123!@#";
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin@robolearn.io";
 
 // Admin session cookie (will be auto-populated via login)
 let ADMIN_COOKIE = process.env.ADMIN_SESSION_COOKIE || "";

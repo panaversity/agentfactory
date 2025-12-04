@@ -4,7 +4,7 @@ import { eq } from "drizzle-orm";
 
 // Admin credentials - must match test files
 const ADMIN_EMAIL = "admin@robolearn.io";
-const ADMIN_PASSWORD = "Admin123!@#";
+const ADMIN_PASSWORD = "admin@robolearn.io";
 const ADMIN_NAME = "Test Admin";
 const SSO_URL = process.env.BETTER_AUTH_URL || "http://localhost:3001";
 

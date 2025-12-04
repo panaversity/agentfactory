@@ -12,7 +12,7 @@ import {
 } from "../src/lib/trusted-clients";
 
 const TEST_ADMIN_EMAIL = "admin@robolearn.io";
-const TEST_ADMIN_PASSWORD = "Admin123!@#"; // Strong password not in breach databases
+const TEST_ADMIN_PASSWORD = "admin@robolearn.io"; // Strong password not in breach databases
 const TEST_ADMIN_NAME = "Admin User";
 
 /**

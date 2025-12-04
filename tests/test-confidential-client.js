@@ -17,7 +17,7 @@ const REDIRECT_URI = "http://localhost:8000/auth/callback"; // Must match truste
 // Test user credentials
 const TEST_USER = {
   email: "admin@robolearn.io",
-  password: "Admin123!@#"
+  password: "admin@robolearn.io"
 };
 
 async function testConfidentialClient() {

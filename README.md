@@ -291,7 +291,7 @@ pnpm test-manual-pkce
 
 **Admin tests failing?**
 - ✅ Ensure default admin exists: `pnpm run seed:setup`
-- ✅ Check credentials: `admin@robolearn.io` / `Admin123!@#`
+- ✅ Check credentials: `admin@robolearn.io` / `admin@robolearn.io`
 
 ## Endpoints
 

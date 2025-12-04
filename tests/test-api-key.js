@@ -4,7 +4,7 @@
  *
  * Prerequisites:
  * 1. Auth server running on port 3001: pnpm dev
- * 2. Test user exists and is admin: admin@robolearn.io / Admin123!@#
+ * 2. Test user exists and is admin: admin@robolearn.io / admin@robolearn.io
  *
  * Run: node tests/test-api-key.js
  */
@@ -12,7 +12,7 @@
 // Configuration
 const AUTH_URL = "http://localhost:3001";
 const TEST_EMAIL = "admin@robolearn.io";
-const TEST_PASSWORD = "Admin123!@#";
+const TEST_PASSWORD = "admin@robolearn.io";
 const ORIGIN_HEADER = AUTH_URL; // Required for CSRF protection
 
 // Test results tracking

@@ -129,7 +129,7 @@ jobs:
           echo "Creating admin user through Better Auth signup..."
           curl -X POST http://localhost:3001/api/auth/sign-up/email \
             -H "Content-Type: application/json" \
-            -d '{"email":"admin@robolearn.io","password":"Admin123!@#","name":"Admin User"}' \
+            -d '{"email":"admin@robolearn.io","password":"admin@robolearn.io","name":"Admin User"}' \
             -v || echo "Admin user might already exist (that's okay)"
 
       - name: Set admin role and verify email

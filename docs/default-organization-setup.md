@@ -61,7 +61,7 @@ databaseHooks: {
 
 **Local Mode** (`pnpm run seed:setup`):
 ```bash
-✅ Creates admin user (admin@robolearn.io / Admin123!@#)
+✅ Creates admin user (admin@robolearn.io / admin@robolearn.io)
 ✅ Creates default "Panaversity" organization
 ✅ Adds admin as owner
 ✅ Creates test organization (for dev testing)
@@ -140,7 +140,7 @@ pnpm run dev
 
 # 5. Sign in with admin credentials
 Email: admin@robolearn.io
-Password: Admin123!@#
+Password: admin@robolearn.io
 ```
 
 ### Production Deployment
