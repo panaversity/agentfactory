@@ -10,6 +10,7 @@ class MCPHttpClient {
     this.serverUrl = config.serverUrl || 'http://localhost:8000/mcp';
     this.bookId = config.bookId || 'ai-native-dev';
     this.apiKey = config.apiKey || null; // API key for authenticated requests
+    this.timeoutMs = config.timeoutMs || 120000; // 2 minutes default (book fetch can be slow)
     this.messageId = 0;
   }
 
@@ -17,10 +18,12 @@ class MCPHttpClient {
    * Call an MCP tool via HTTP POST
    * @param {string} toolName - Name of the tool to call
    * @param {Object} params - Tool parameters (wrapped in params object)
+   * @param {number} timeoutMs - Optional timeout override in milliseconds
    * @returns {Promise<Object>} Tool result
    */
-  async callTool(toolName, params = {}) {
+  async callTool(toolName, params = {}, timeoutMs = null) {
     const messageId = ++this.messageId;
+    const timeout = timeoutMs || this.timeoutMs;
 
     const request = {
       jsonrpc: '2.0',
@@ -32,7 +35,7 @@ class MCPHttpClient {
       },
     };
 
-    console.log(`[MCP HTTP] Calling ${toolName}...`);
+    console.log(`[MCP HTTP] Calling ${toolName} (timeout: ${timeout}ms)...`);
 
     const headers = {
       'Content-Type': 'application/json',
@@ -44,28 +47,43 @@ class MCPHttpClient {
       headers['Authorization'] = `Bearer ${this.apiKey}`;
     }
 
-    const response = await fetch(this.serverUrl, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(request),
-    });
+    // Create AbortController for timeout
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
 
-    if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status} ${response.statusText}`);
+    try {
+      const response = await fetch(this.serverUrl, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(request),
+        signal: controller.signal,
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status} ${response.statusText}`);
+      }
+
+      const result = await response.json();
+
+      if (result.error) {
+        throw new Error(result.error.message || JSON.stringify(result.error));
+      }
+
+      // Extract content from MCP response format
+      if (result.result?.content?.[0]?.text) {
+        return JSON.parse(result.result.content[0].text);
+      }
+
+      return result.result;
+    } catch (error) {
+      clearTimeout(timeoutId);
+      if (error.name === 'AbortError') {
+        throw new Error(`Tool call '${toolName}' timed out after ${timeout}ms`);
+      }
+      throw error;
     }
-
-    const result = await response.json();
-
-    if (result.error) {
-      throw new Error(result.error.message || 'Tool call failed');
-    }
-
-    // Extract content from MCP response format
-    if (result.result?.content?.[0]?.text) {
-      return JSON.parse(result.result.content[0].text);
-    }
-
-    return result.result;
   }
 
   /**

@@ -25,6 +25,7 @@ module.exports = function panaversityFSPlugin(context, options) {
     enabled = false, // Disabled by default
     serverUrl = process.env.PANAVERSITY_SERVER_URL || 'http://localhost:8000/mcp',
     apiKey = process.env.PANAVERSITY_API_KEY || null, // API key for authenticated requests
+    timeoutMs = 120000, // 2 minutes default (book fetch can be slow with large content)
     docsDir = 'docsfs', // Output directory relative to siteDir (separate from docs/)
     cleanDocsDir = true, // Clean docsfs/ before writing
     // Files matching these patterns are stored in R2 but NOT written to docsfs/
@@ -72,7 +73,7 @@ module.exports = function panaversityFSPlugin(context, options) {
 
       // Connect to PanaversityFS MCP server via HTTP
       try {
-        const client = new MCPHttpClient({ serverUrl, bookId, apiKey });
+        const client = new MCPHttpClient({ serverUrl, bookId, apiKey, timeoutMs });
 
         // Check server availability
         console.log('[PanaversityFS] Checking server availability...');
