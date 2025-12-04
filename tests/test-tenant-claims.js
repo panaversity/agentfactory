@@ -115,11 +115,12 @@ async function testTenantClaims() {
     userinfo.hasOwnProperty('gender') &&
     userinfo.hasOwnProperty('father_name') &&
     userinfo.hasOwnProperty('city') &&
-    userinfo.hasOwnProperty('country');
+    userinfo.hasOwnProperty('country') &&
+    userinfo.hasOwnProperty('phone_number');
 
   if (!hasProfileClaims) {
     console.error('\nFAIL: Missing additional profile claims in userinfo');
-    console.error('Expected: gender, father_name, city, country');
+    console.error('Expected: gender, father_name, city, country, phone_number');
     process.exit(1);
   }
 

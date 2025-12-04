@@ -266,7 +266,7 @@ export function SignUpForm() {
       {/* Toast Notification */}
       {showToast && (
         <Toast
-          message="Account created! Check your email to verify account."
+          message="Account created! Please check your email to verify your account."
           type="success"
           duration={2000}
           onClose={() => setShowToast(false)}

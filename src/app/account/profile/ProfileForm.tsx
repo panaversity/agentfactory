@@ -88,11 +88,26 @@ export default function ProfileForm({
       // Delay redirect/reload to let user see the toast
       setTimeout(() => {
         if (redirectUrl) {
-          // Add cache-busting parameter for client app
-          const redirectWithRefresh = redirectUrl.includes("?")
-            ? `${redirectUrl}&refresh=${Date.now()}`
-            : `${redirectUrl}?refresh=${Date.now()}`;
-          window.location.href = redirectWithRefresh;
+          // Validate redirect URL to prevent open redirect vulnerability
+          const isValidRedirect = (url: string): boolean => {
+            try {
+              const parsed = new URL(url, window.location.origin);
+              return parsed.origin === window.location.origin;
+            } catch {
+              return url.startsWith('/'); // Allow relative URLs
+            }
+          };
+
+          if (isValidRedirect(redirectUrl)) {
+            // Add cache-busting parameter for client app
+            const redirectWithRefresh = redirectUrl.includes("?")
+              ? `${redirectUrl}&refresh=${Date.now()}`
+              : `${redirectUrl}?refresh=${Date.now()}`;
+            window.location.href = redirectWithRefresh;
+          } else {
+            // Invalid redirect URL, just reload
+            window.location.reload();
+          }
         } else {
           // Reload to reflect changes in UI
           window.location.reload();
@@ -216,28 +231,37 @@ export default function ProfileForm({
           <p className="text-xs font-semibold text-pana-600 uppercase tracking-wider mb-4">Contact</p>
         </div>
         <div className="space-y-3">
-          <label className="block text-sm font-semibold text-slate-700">
+          <label htmlFor="phone-number" className="block text-sm font-semibold text-slate-700">
             Phone Number
           </label>
           <div className="phone-input-wrapper">
             <PhoneInput
+              id="phone-number"
               international
               defaultCountry="PK"
               value={formData.phoneNumber}
-              onChange={(value) => setFormData({...formData, phoneNumber: value || ""})}
+              onChange={(value) => {
+                const newValue = value || "";
+                setFormData({...formData, phoneNumber: newValue});
+                // Clear error when user enters a valid phone number
+                if (phoneError && newValue && isValidPhoneNumber(newValue)) {
+                  setPhoneError("");
+                }
+              }}
               className="w-full"
               inputClassName={inputClass}
+              aria-describedby="phone-help"
             />
           </div>
           {phoneError ? (
-            <p className="text-xs text-red-600 leading-relaxed flex items-center gap-1.5">
+            <p id="phone-help" className="text-xs text-red-600 leading-relaxed flex items-center gap-1.5">
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               {phoneError}
             </p>
           ) : (
-            <p className="text-xs text-slate-500 leading-relaxed flex items-center gap-1.5">
+            <p id="phone-help" className="text-xs text-slate-500 leading-relaxed flex items-center gap-1.5">
               <svg className="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
@@ -252,10 +276,11 @@ export default function ProfileForm({
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div className="space-y-3">
-            <label className="block text-sm font-semibold text-slate-700">
+            <label htmlFor="gender" className="block text-sm font-semibold text-slate-700">
               Gender
             </label>
             <select
+              id="gender"
               value={formData.gender}
               onChange={(e) => setFormData({...formData, gender: e.target.value})}
               className={selectClass}
@@ -268,14 +293,16 @@ export default function ProfileForm({
             </select>
           </div>
           <div className="space-y-3">
-            <label className="block text-sm font-semibold text-slate-700">
+            <label htmlFor="father-name" className="block text-sm font-semibold text-slate-700">
               Father's Name
             </label>
             <input
+              id="father-name"
               type="text"
               value={formData.fatherName}
               onChange={(e) => setFormData({...formData, fatherName: e.target.value})}
               placeholder="Enter father's name"
+              maxLength={100}
               className={inputClass}
             />
           </div>
@@ -291,23 +318,25 @@ export default function ProfileForm({
               Country
             </label>
             <CountrySelect
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               onChange={(e: any) => {
-                setFormData({...formData, country: e.name});
+                setFormData({...formData, country: e?.name || ""});
               }}
               placeHolder={formData.country || "Select country..."}
               containerClassName="country-select-container"
-              inputClassName=""
             />
           </div>
           <div className="space-y-3">
-            <label className="block text-sm font-semibold text-slate-700">
+            <label htmlFor="city" className="block text-sm font-semibold text-slate-700">
               City
             </label>
             <input
+              id="city"
               type="text"
               value={formData.city}
               onChange={(e) => setFormData({...formData, city: e.target.value})}
               placeholder="Enter your city..."
+              maxLength={100}
               className={inputClass}
             />
           </div>
@@ -483,13 +512,11 @@ export default function ProfileForm({
           box-shadow: 0 0 0 4px rgba(28, 217, 142, 0.1);
         }
 
-        /* Country/City Select Styling */
-        .country-select-container,
-        .city-select-container {
+        /* Country Select Styling */
+        .country-select-container {
           position: relative;
         }
-        .country-select-container input,
-        .city-select-container input {
+        .country-select-container input {
           width: 100%;
           padding: 0.875rem 1rem;
           border: 2px solid #e2e8f0;
@@ -498,18 +525,15 @@ export default function ProfileForm({
           transition: all 0.2s;
           cursor: pointer;
         }
-        .country-select-container input:hover,
-        .city-select-container input:hover {
+        .country-select-container input:hover {
           border-color: #cbd5e1;
         }
-        .country-select-container input:focus,
-        .city-select-container input:focus {
+        .country-select-container input:focus {
           border-color: #1cd98e;
           outline: none;
           box-shadow: 0 0 0 4px rgba(28, 217, 142, 0.1);
         }
-        .country-select-container ul,
-        .city-select-container ul {
+        .country-select-container ul {
           position: absolute;
           top: 100%;
           left: 0;
@@ -523,14 +547,12 @@ export default function ProfileForm({
           z-index: 50;
           box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
-        .country-select-container li,
-        .city-select-container li {
+        .country-select-container li {
           padding: 0.75rem 1rem;
           cursor: pointer;
           transition: background 0.15s;
         }
-        .country-select-container li:hover,
-        .city-select-container li:hover {
+        .country-select-container li:hover {
           background: #f0fdf4;
         }
       `}</style>
