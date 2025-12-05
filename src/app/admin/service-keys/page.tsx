@@ -22,6 +22,7 @@ interface ApiKey {
   createdAt: Date;
   lastRequest: Date | null;
   metadata: Record<string, unknown> | null;
+  permissions: Record<string, string[]> | null;
 }
 
 export default function ServiceKeysPage() {
@@ -67,7 +68,11 @@ export default function ServiceKeysPage() {
     fetchApiKeys();
   }, [fetchApiKeys]);
 
-  const handleCreateKey = async (name: string, expiresInDays: number | null) => {
+  const handleCreateKey = async (
+    name: string,
+    expiresInDays: number | null,
+    permissions: Record<string, string[]> | null
+  ) => {
     // Convert days to seconds (Better Auth expects seconds)
     const expiresInSeconds = expiresInDays ? expiresInDays * 24 * 60 * 60 : undefined;
 
@@ -79,6 +84,7 @@ export default function ServiceKeysPage() {
       body: JSON.stringify({
         name,
         expiresIn: expiresInSeconds,
+        ...(permissions && { permissions }),
       }),
     });
 

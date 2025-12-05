@@ -11,6 +11,8 @@ import { headers } from "next/headers";
  * - enabled: boolean (optional) - Enable/disable the key
  * - name: string (optional) - Update the key name
  * - metadata: object (optional) - Update metadata
+ * - permissions: Record<string, string[]> (optional) - Update scopes/permissions
+ *   Example: { "users": ["read"], "projects": ["read", "write"] }
  */
 export async function POST(request: NextRequest) {
   try {
@@ -28,13 +30,32 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { keyId, enabled, name, metadata } = body;
+    const { keyId, enabled, name, metadata, permissions } = body;
 
     if (!keyId || typeof keyId !== "string") {
       return NextResponse.json(
         { error: "Key ID is required" },
         { status: 400 }
       );
+    }
+
+    // Validate permissions format if provided
+    if (permissions !== undefined) {
+      if (typeof permissions !== "object" || permissions === null || Array.isArray(permissions)) {
+        return NextResponse.json(
+          { error: "Permissions must be an object with string keys and string[] values" },
+          { status: 400 }
+        );
+      }
+      // Validate each permission entry
+      for (const [resource, actions] of Object.entries(permissions)) {
+        if (!Array.isArray(actions) || !actions.every((a) => typeof a === "string")) {
+          return NextResponse.json(
+            { error: `Invalid permissions for resource "${resource}": must be an array of strings` },
+            { status: 400 }
+          );
+        }
+      }
     }
 
     // Use Better Auth's internal API to update the key
@@ -45,6 +66,7 @@ export async function POST(request: NextRequest) {
         ...(typeof enabled === "boolean" && { enabled }),
         ...(name && { name: name.trim() }),
         ...(metadata && { metadata }),
+        ...(permissions && { permissions }),
       },
     });
 

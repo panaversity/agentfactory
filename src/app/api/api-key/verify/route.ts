@@ -10,7 +10,8 @@ import { auth } from "@/lib/auth";
  *
  * Request body:
  * {
- *   "key": "pana_xxx..." // The full API key to verify
+ *   "key": "pana_xxx...", // The full API key to verify
+ *   "permissions": { "users": ["read"] } // Optional: required permissions to check
  * }
  *
  * Response (success):
@@ -22,7 +23,8 @@ import { auth } from "@/lib/auth";
  *     "userId": "...",
  *     "enabled": true,
  *     "expiresAt": "..." | null,
- *     "metadata": {...} | null
+ *     "metadata": {...} | null,
+ *     "permissions": {...} | null
  *   }
  * }
  *
@@ -30,7 +32,7 @@ import { auth } from "@/lib/auth";
  * {
  *   "valid": false,
  *   "error": {
- *     "code": "INVALID_API_KEY" | "EXPIRED_API_KEY" | "DISABLED_API_KEY",
+ *     "code": "INVALID_API_KEY" | "EXPIRED_API_KEY" | "DISABLED_API_KEY" | "INSUFFICIENT_PERMISSIONS",
  *     "message": "..."
  *   }
  * }
@@ -38,7 +40,7 @@ import { auth } from "@/lib/auth";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { key } = body;
+    const { key, permissions } = body;
 
     if (!key || typeof key !== "string") {
       return NextResponse.json(
@@ -53,9 +55,28 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Use Better Auth's server-side verification
+    // Validate permissions format if provided
+    if (permissions !== undefined) {
+      if (typeof permissions !== "object" || permissions === null || Array.isArray(permissions)) {
+        return NextResponse.json(
+          {
+            valid: false,
+            error: {
+              code: "INVALID_PERMISSIONS_FORMAT",
+              message: "Permissions must be an object with string keys and string[] values",
+            },
+          },
+          { status: 400 }
+        );
+      }
+    }
+
+    // Use Better Auth's server-side verification with optional permissions check
     const result = await auth.api.verifyApiKey({
-      body: { key },
+      body: {
+        key,
+        ...(permissions && { permissions }),
+      },
     });
 
     if (result.valid) {
@@ -68,6 +89,7 @@ export async function POST(request: NextRequest) {
           enabled: result.key?.enabled,
           expiresAt: result.key?.expiresAt,
           metadata: result.key?.metadata,
+          permissions: result.key?.permissions,
         },
       });
     } else {
