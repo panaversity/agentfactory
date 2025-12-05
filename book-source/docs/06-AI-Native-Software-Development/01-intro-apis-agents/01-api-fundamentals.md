@@ -15,6 +15,7 @@ keywords: [API, OpenAI, authentication, request-response, JSON]
 By the end of this lesson, you will:
 - Understand what APIs are and why they matter
 - Know how your code communicates with AI services
+- Understand the difference between stateless and stateful APIs
 - Successfully verify that your OpenAI API key works
 
 ---
@@ -28,22 +29,30 @@ When you ask ChatGPT a question, something happens behind the scenes. Your messa
 1. **APIs are bridges**: They let different software talk to each other
 2. **Requests go out**: Your code sends a message asking for something
 3. **Responses come back**: The service sends an answer
-4. **API keys identify you**: Like showing ID to enter a building
+4. **API keys identify you**: Like showing ID to enter a building (for paid/private APIs)
 
 :::info Key Concept
 An API is like a waiter in a restaurant — it takes your order to the kitchen and brings back your food. You don't need to know how the kitchen works; you just need to communicate your request.
 :::
 
+### Types of APIs You'll Use
+
+In this course, you'll work with two types:
+
+1. **Public APIs** (no key needed): Weather data, random facts, public information
+2. **Authenticated APIs** (key required): OpenAI, Gemini, and other AI services
+
 ---
 
 ## Key Points
 
-Before we continue, let's establish four foundational ideas:
+Before we continue, let's establish five foundational ideas:
 
 - **APIs are everywhere**: Every time an app loads weather data, shows tweets, or processes payments, it's using APIs
 - **Request/Response is the pattern**: You send a request, you get a response — it's a two-way conversation
 - **Authentication matters**: API keys prove you're allowed to use the service (and track your usage)
 - **JSON is the language**: Data travels back and forth in JSON format — a simple way to structure information
+- **Stateless vs Stateful**: Chat Completions (stateless) gives you full control; Responses API (stateful) manages context for you
 
 ---
 
@@ -67,6 +76,98 @@ Your code works exactly the same way with OpenAI:
 - OpenAI processes it with an AI model (the kitchen works)
 - OpenAI sends back a completion (your meal arrives)
 :::
+
+---
+
+## Real-World API Example
+
+Before we jump to AI APIs, let's see a simple public API in action. This weather API requires no key:
+
+```python
+import requests
+
+# Get current weather for London
+url = "https://api.open-meteo.com/v1/forecast?latitude=51.5&longitude=-0.12&current_weather=true"
+response = requests.get(url, timeout=10)
+weather = response.json()
+
+print(f"Temperature: {weather['current_weather']['temperature']}°C")
+print(f"Wind Speed: {weather['current_weather']['windspeed']} km/h")
+```
+
+**What's happening:**
+1. We import the `requests` library (for making HTTP calls)
+2. We define the API URL with parameters (latitude, longitude)
+3. We send a GET request and wait for response
+4. We parse the JSON response and extract data
+
+This pattern — **request → response → parse** — is the same for ALL APIs, including OpenAI.
+
+---
+
+## OpenAI APIs: Stateless vs Stateful
+
+OpenAI offers two main ways to interact with their models:
+
+### Chat Completions API (Stateless)
+
+Each request is independent — the AI has no memory of previous messages:
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+# First message
+response1 = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[{"role": "user", "content": "My name is Alex"}]
+)
+
+# Second message - AI doesn't remember the first!
+response2 = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[{"role": "user", "content": "What's my name?"}]
+)
+# AI will say: "I don't know your name"
+```
+
+**Why stateless?** You control the context. You must send conversation history each time.
+
+### Responses API (Stateful)
+
+OpenAI maintains conversation state for you using `previous_response_id`:
+
+```python
+from openai import OpenAI
+client = OpenAI()
+
+# First message
+response1 = client.responses.create(
+    model="gpt-4.1",
+    store=True,
+    input=[{"role": "user", "content": [{"type": "input_text", "text": "My name is Alex"}]}]
+)
+
+# Second message - uses previous_response_id to maintain context
+response2 = client.responses.create(
+    model="gpt-4.1",
+    store=True,
+    previous_response_id=response1.id,
+    input=[{"role": "user", "content": [{"type": "input_text", "text": "What's my name?"}]}]
+)
+# AI will say: "Your name is Alex"
+```
+
+### Which Should You Use?
+
+| Feature | Chat Completions | Responses API |
+|---------|-----------------|---------------|
+| Memory | You manage it | OpenAI manages it |
+| Control | Full control | Less control |
+| Use Case | Agents, custom apps | Simple chatbots |
+| DocuBot | ✅ We'll use this | Not for agents |
+
+**For DocuBot**: We'll use Chat Completions because agents need full control over context and memory.
 
 ---
 
