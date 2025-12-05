@@ -21,6 +21,9 @@ Thumbs.db
 # Debug
 npm-debug.log*
 
+# Migration logs
+logs/
+
 # TypeScript
 *.tsbuildinfo
 
