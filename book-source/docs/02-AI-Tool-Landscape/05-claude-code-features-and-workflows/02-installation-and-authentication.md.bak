@@ -23,14 +23,14 @@ skills:
     measurable_at_this_level: "Student can evaluate multiple installation methods (Homebrew, npm, pipx, direct download), select appropriate method for their OS, execute installation commands, authenticate with Claude.ai or Console API, and verify working installation"
 
 learning_objectives:
-  - objective: "Install Claude Code using the primary method for your operating system"
+  - objective: "Choose appropriate Claude Code installation method for your operating system"
+    proficiency_level: "B1"
+    bloom_level: "Evaluate"
+    assessment_method: "Selection of installation method with justification based on OS and existing tools"
+  - objective: "Install Claude Code successfully using one of four installation methods"
     proficiency_level: "B1"
     bloom_level: "Apply"
-    assessment_method: "Successful execution of primary installation command with verification"
-  - objective: "Install Claude Code successfully using the simplified installation approach"
-    proficiency_level: "B1"
-    bloom_level: "Apply"
-    assessment_method: "Successful execution of installation commands with immediate verification"
+    assessment_method: "Successful execution of installation commands with troubleshooting if needed"
   - objective: "Authenticate with either Claude.ai subscription or Console API account"
     proficiency_level: "B1"
     bloom_level: "Apply"
@@ -46,8 +46,8 @@ learning_objectives:
 
 # Cognitive load tracking
 cognitive_load:
-  new_concepts: 5
-  assessment: "5 concepts (1 primary installation method, OS identification, immediate verification, authentication types, security/sandboxing) - within B1 limit of 10 ✓ (Simplified from 8 concepts for reduced cognitive load)"
+  new_concepts: 8
+  assessment: "8 concepts (4 installation methods, authentication types, API keys, terminal commands, security/sandboxing, verification) - within B1 limit of 10 ✓ (Re-staged from A2 to B1 due to concept count and intermediate complexity)"
 
 # Differentiation guidance
 differentiation:
@@ -125,33 +125,43 @@ Before we begin, verify you have the following:
 
 ![Installation flowchart showing Node.js check, npx/npm install options, authentication with API key or web login, and verification steps with decision points and success/error paths](/img/part-2/chapter-05/claude-code-installation-authentication-flow.png)
 
-### Step 1: Identify Your Operating System
+### Step 1: Install Claude Code Globally
 
-Before installing, determine which operating system you're using:
+Claude Code offers **four installation methods**. Choose the one that matches your operating system:
 
-- **macOS**: Apple menu → About This Mac, or Terminal command: `sw_vers`
-- **Windows**: Settings → System → About, or PowerShell command: `Get-ComputerInfo`
-- **Linux**: Terminal command: `cat /etc/os-release` or `uname -a`
-
-### Step 2: Install Claude Code
-
-We provide **one primary installation method for each operating system** to keep setup simple:
-
-#### For macOS and Linux Users
+#### Method 1: macOS/Linux (Recommended)
 
 ```bash
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-**What this does**: Downloads and runs the official installer script, automatically detecting your system and installing Claude Code to the appropriate location.
+**What this does**: Downloads and runs the official installer script, automatically detecting your system and installing Claude Code.
 
-#### For Windows Users
+#### Method 2: Homebrew (macOS)
+
+```bash
+brew install --cask claude-code
+```
+
+**What this does**: Installs Claude Code using Homebrew package manager (if you already use Homebrew).
+
+#### Method 3: Windows
 
 ```powershell
 irm https://claude.ai/install.ps1 | iex
 ```
 
-**What this does**: Downloads and runs the PowerShell installer script, which installs Claude Code on Windows systems and adds it to your PATH.
+**What this does**: Downloads and runs the PowerShell installer script for Windows systems.
+
+#### Method 4: npm (Cross-Platform)
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+**What this does**: Installs Claude Code via npm package manager (requires Node.js 18+).
+
+**Which method?** macOS/Linux: Method 1 (curl) or 2 (Homebrew); Windows: Method 3 (PowerShell); Node.js users: Method 4 (npm, cross-platform)
 
 #### 💬 AI Colearning Prompt
 > "Explain why package managers like Homebrew and npm are used for installing developer tools instead of manual downloads. What problem do they solve?"
@@ -159,9 +169,9 @@ irm https://claude.ai/install.ps1 | iex
 #### 🎓 Expert Insight
 > In AI-native development, terminal comfort is a skill multiplier. The 5 minutes you invest learning basic terminal commands unlocks 10x productivity with AI tools. You're not becoming a "terminal expert"—you're removing the friction between intent and execution.
 
-### Step 3: Verify Your Installation
+### Step 2: Verify Installation
 
-Immediately after installation, verify that Claude Code is working:
+Check that Claude Code is installed correctly:
 
 ```bash
 claude --version
@@ -171,44 +181,6 @@ claude --version
 ```
 2.0.37 (Claude Code)
 ```
-
-🎉 **Success!** If you see the version number, Claude Code is installed correctly.
-
-**Troubleshooting**:
-- If you get "command not found", try restarting your terminal
-- On Windows, ensure PowerShell is being used (not Command Prompt)
-- On macOS/Linux, the installer may have added Claude to your PATH - a terminal restart often helps
-
----
-
-<details>
-<summary>🔧 Alternative Installation Methods (Advanced)</summary>
-
-These methods are useful if you have specific preferences or existing tool setups:
-
-#### Homebrew (macOS)
-
-If you already use Homebrew and prefer package manager installation:
-
-```bash
-brew install --cask claude-code
-```
-
-**When to use**: You're comfortable with Homebrew and want easy updates through `brew upgrade`.
-
-#### npm (Cross-Platform)
-
-If you have Node.js 18+ installed and prefer npm:
-
-```bash
-npm install -g @anthropic-ai/claude-code
-```
-
-**When to use**: You're a Node.js developer or need to install Claude Code in an environment where npm is already available.
-
-</details>
-
----
 
 ## Authentication: Connecting Claude Code to Your Account
 
