@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "RoboLearn - Authentication",
-  description: "Sign in or create an account for RoboLearn",
+  title: "Panaversity Org SSO",
+  description: "Sign in or create an account for Panaversity Org",
 };
 
 export default function RootLayout({

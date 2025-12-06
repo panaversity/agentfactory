@@ -6,10 +6,14 @@ import { NextRequest, NextResponse } from "next/server";
 /**
  * Better Auth session cookie names
  * Derived from AUTH_COOKIE_PREFIX for consistency with auth config
+ *
+ * Note: Better Auth uses chunked cookies for large session data, so we need to
+ * clear both the base cookie and any chunked variants (e.g., .session_data.0, .session_data.1)
  */
 const SESSION_COOKIE_NAMES = [
   `${AUTH_COOKIE_PREFIX}.session_token`,
   `${AUTH_COOKIE_PREFIX}.session_data`,
+  `${AUTH_COOKIE_PREFIX}.dont_remember`,
 ];
 
 /**
@@ -108,115 +112,69 @@ async function handleEndSession(request: NextRequest) {
     );
   }
 
-  try {
-    // Clear session using Better Auth's sign-out
-    // This removes the session from the database and clears cookies
-    const cookieStore = await cookies();
+  // Get the cookie store first - we'll need it for both success and error paths
+  const cookieStore = await cookies();
+  const allCookies = cookieStore.getAll();
 
-    // Get all cookies to forward to Better Auth
-    const cookieHeader = cookieStore.getAll()
+  // Cookie clearing options - must match how Better Auth sets cookies
+  const cookieClearOptions = {
+    expires: new Date(0),
+    maxAge: 0,
+    path: "/",
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax" as const,
+  };
+
+  try {
+    // Get all cookies to forward to Better Auth for session lookup
+    const cookieHeader = allCookies
       .map(c => `${c.name}=${c.value}`)
       .join("; ");
 
-    // Call Better Auth's sign-out endpoint internally
-    const signOutResponse = await auth.api.signOut({
+    // Call Better Auth's sign-out API to invalidate session in database
+    // This deletes the session from the database
+    await auth.api.signOut({
       headers: {
         cookie: cookieHeader,
       },
     });
+  } catch (error) {
+    // Log but continue - we still need to clear cookies even if DB deletion fails
+    console.error("[EndSession] Error calling signOut:", error);
+  }
 
-    // Check for signOut errors (Better Auth returns success: true on success)
-    if (!signOutResponse?.success) {
-      console.warn("[EndSession] SignOut returned non-success:", signOutResponse);
-      // Continue anyway - we'll still clear cookies explicitly
+  // Build response - redirect or JSON based on whether post_logout_redirect_uri was provided
+  let response: NextResponse;
+
+  if (postLogoutRedirectUri) {
+    const redirectUrl = new URL(postLogoutRedirectUri);
+    if (state) {
+      redirectUrl.searchParams.set("state", state);
     }
-
-    // Build redirect response (URI already validated above)
-    if (postLogoutRedirectUri) {
-      const redirectUrl = new URL(postLogoutRedirectUri);
-      if (state) {
-        redirectUrl.searchParams.set("state", state);
-      }
-
-      const response = NextResponse.redirect(redirectUrl.toString(), 302);
-
-      // Clear auth cookies explicitly using dynamic prefix
-      for (const name of SESSION_COOKIE_NAMES) {
-        response.cookies.set(name, "", {
-          expires: new Date(0),
-          path: "/",
-          httpOnly: true,
-          secure: process.env.NODE_ENV === "production",
-          sameSite: "lax",
-        });
-      }
-
-      return response;
-    }
-
-    // No redirect URI - return success JSON with cookies cleared
-    const response = NextResponse.json(
+    response = NextResponse.redirect(redirectUrl.toString(), 302);
+  } else {
+    response = NextResponse.json(
       { success: true, message: "Session terminated" },
       { status: 200 }
     );
-
-    // Clear auth cookies explicitly for consistency with redirect case
-    for (const name of SESSION_COOKIE_NAMES) {
-      response.cookies.set(name, "", {
-        expires: new Date(0),
-        path: "/",
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-      });
-    }
-
-    return response;
-  } catch (error) {
-    console.error("[EndSession] Error:", error);
-
-    // Design decision: Redirect even on error for better UX
-    // The user initiated logout, so redirect them to a sensible destination
-    // rather than showing an error page. The URI was already validated above.
-    if (postLogoutRedirectUri) {
-      const redirectUrl = new URL(postLogoutRedirectUri);
-      if (state) {
-        redirectUrl.searchParams.set("state", state);
-      }
-      const response = NextResponse.redirect(redirectUrl.toString(), 302);
-
-      // Clear cookies even on error to ensure logout completes
-      for (const name of SESSION_COOKIE_NAMES) {
-        response.cookies.set(name, "", {
-          expires: new Date(0),
-          path: "/",
-          httpOnly: true,
-          secure: process.env.NODE_ENV === "production",
-          sameSite: "lax",
-        });
-      }
-
-      return response;
-    }
-
-    const response = NextResponse.json(
-      { success: false, error: "Failed to end session" },
-      { status: 500 }
-    );
-
-    // Clear cookies even on error to ensure logout completes
-    for (const name of SESSION_COOKIE_NAMES) {
-      response.cookies.set(name, "", {
-        expires: new Date(0),
-        path: "/",
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-      });
-    }
-
-    return response;
   }
+
+  // Clear all known session cookies
+  // This is the critical part - we MUST clear cookies regardless of signOut API success
+  for (const name of SESSION_COOKIE_NAMES) {
+    response.cookies.set(name, "", cookieClearOptions);
+  }
+
+  // Also clear any chunked cookies that Better Auth may have created
+  // Better Auth uses chunking for large session data: cookie.0, cookie.1, etc.
+  for (const cookie of allCookies) {
+    if (cookie.name.startsWith(`${AUTH_COOKIE_PREFIX}.`)) {
+      response.cookies.set(cookie.name, "", cookieClearOptions);
+    }
+  }
+
+  return response;
 }
 
 export async function GET(request: NextRequest) {
