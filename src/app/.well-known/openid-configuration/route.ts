@@ -19,6 +19,10 @@ export async function GET(request: Request) {
   );
 
   if (!response.ok) {
+    console.error("[OIDC Discovery] Failed to fetch from Better Auth:", {
+      status: response.status,
+      statusText: response.statusText,
+    });
     return Response.json(
       { error: "Failed to fetch OIDC configuration" },
       { status: 500 }
