@@ -33,3 +33,5 @@ drizzle/meta/
 
 /.vercel
 .env.production
+
+migration-prod.log

@@ -18,6 +18,12 @@ import { TRUSTED_CLIENTS, DEFAULT_ORG_ID } from "./trusted-clients";
 import { redis, redisStorage } from "./redis";
 import bcrypt from "bcryptjs";
 
+/**
+ * Cookie prefix for Better Auth session cookies
+ * Used in auth config and endsession endpoint for consistent cookie handling
+ */
+export const AUTH_COOKIE_PREFIX = "robolearn";
+
 // Cached default organization ID (validated at startup)
 let cachedDefaultOrgId: string | null = null;
 
@@ -408,7 +414,7 @@ export const auth = betterAuth({
 
   // Cookie settings
   advanced: {
-    cookiePrefix: "robolearn",
+    cookiePrefix: AUTH_COOKIE_PREFIX,
     useSecureCookies: process.env.NODE_ENV === "production",
   },
 
