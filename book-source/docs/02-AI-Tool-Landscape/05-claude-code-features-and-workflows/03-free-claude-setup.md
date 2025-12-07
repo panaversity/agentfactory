@@ -187,7 +187,7 @@ source ~/.bashrc
 ```bash
 claude --version     # Should show: Claude Code v2.x.x
 ccr version          # it will show version number (without hyphen)
-echo $GOOGLE_API_KEY # Should show your key (not empty!)
+echo $env:GOOGLE_API_KEY  # Should show your key (not empty!)
 
 # If any fail, see Troubleshooting section
 ```
@@ -352,3 +352,4 @@ echo $DEEPSEEK_API_KEY  # Should show your key (not empty!)
 ---
 
 That's it. Proceed to **Lesson 3** to learn persistent project context.
+
