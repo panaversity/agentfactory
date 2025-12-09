@@ -19,6 +19,11 @@ on:
       # Exclude docs/ since those trigger via sync-content workflow
       - "!book-source/docs/**"
   workflow_dispatch:
+    inputs:
+      full_rebuild:
+        description: "Force full content download (ignore manifest cache)"
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -44,6 +49,103 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup Python
+        if: ${{ vars.PANAVERSITY_PLUGIN_ENABLED == 'true' }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        if: ${{ vars.PANAVERSITY_PLUGIN_ENABLED == 'true' }}
+        working-directory: panaversity-fs
+        run: |
+          pip install click httpx pydantic python-dotenv
+
+      - name: Restore manifest cache
+        if: ${{ vars.PANAVERSITY_PLUGIN_ENABLED == 'true' }}
+        id: manifest-cache
+        uses: actions/cache@v4
+        with:
+          path: .panaversity/manifest.json
+          key: panaversity-manifest-${{ github.sha }}
+          restore-keys: |
+            panaversity-manifest-
+
+      - name: Hydrate content from PanaversityFS
+        if: ${{ vars.PANAVERSITY_PLUGIN_ENABLED == 'true' }}
+        continue-on-error: true
+        env:
+          PANAVERSITY_MCP_URL: ${{ secrets.PANAVERSITY_SERVER_URL }}
+          PANAVERSITY_API_KEY: ${{ secrets.PANAVERSITY_API_KEY }}
+        run: |
+          cd panaversity-fs
+
+          BOOK_ID="ai-native-dev"
+          OUTPUT_DIR="../build-source"
+          MANIFEST_FILE="../.panaversity/manifest.json"
+
+          # Create directories
+          mkdir -p ../.panaversity
+          mkdir -p "$OUTPUT_DIR"
+
+          echo "=== Hydrating content from PanaversityFS ==="
+
+          if [ "${{ github.event.inputs.full_rebuild }}" = "true" ]; then
+            echo "Full rebuild requested - ignoring manifest"
+            python scripts/hydrate-book.py \
+              --book-id "$BOOK_ID" \
+              --output-dir "$OUTPUT_DIR" \
+              --manifest-file "$MANIFEST_FILE" \
+              --full-rebuild \
+              --verbose
+          elif [ "${{ steps.manifest-cache.outputs.cache-hit }}" = "true" ]; then
+            echo "Manifest cache hit - incremental download"
+            python scripts/hydrate-book.py \
+              --book-id "$BOOK_ID" \
+              --output-dir "$OUTPUT_DIR" \
+              --manifest-file "$MANIFEST_FILE" \
+              --verbose
+          else
+            echo "No manifest cache - full download"
+            python scripts/hydrate-book.py \
+              --book-id "$BOOK_ID" \
+              --output-dir "$OUTPUT_DIR" \
+              --manifest-file "$MANIFEST_FILE" \
+              --verbose
+          fi
+
+      - name: Fallback to local docs
+        if: ${{ vars.PANAVERSITY_PLUGIN_ENABLED == 'true' && failure() }}
+        run: |
+          echo "⚠️ Hydration failed, using local docs/ as fallback"
+
+          # Validate that local docs/ exists and has content
+          if [ ! -d "book-source/docs" ]; then
+            echo "❌ FATAL: Hydration failed AND book-source/docs/ does not exist"
+            echo "Cannot proceed without content directory"
+            exit 1
+          fi
+
+          # Check if docs/ has any content files
+          if [ -z "$(find book-source/docs -type f -name '*.md' 2>/dev/null)" ]; then
+            echo "❌ FATAL: Hydration failed AND book-source/docs/ is empty (no .md files)"
+            echo "Cannot proceed with empty content directory"
+            exit 1
+          fi
+
+          # Clear any partial hydration from build-source/
+          rm -rf build-source/*
+
+          # Copy from local docs/
+          mkdir -p build-source
+          cp -r book-source/docs/* build-source/
+
+          # Add warning to build summary
+          echo "## ⚠️ Warning: Build Used Local Content" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Hydration from PanaversityFS failed. Build deployed using local \`docs/\` directory." >> $GITHUB_STEP_SUMMARY
+          echo "This may result in slightly stale content if recent changes were not synced." >> $GITHUB_STEP_SUMMARY
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -72,20 +174,35 @@ jobs:
         working-directory: book-source
         env:
           GA4_MEASUREMENT_ID: ${{ secrets.GA4_MEASUREMENT_ID }}
-          # PanaversityFS: Fetch content from MCP server at build time
+          # Use hydrated docsfs/ when PanaversityFS is enabled
+          # The plugin will see docsfs/ already populated and skip fetching
           PANAVERSITY_PLUGIN_ENABLED: ${{ vars.PANAVERSITY_PLUGIN_ENABLED || 'false' }}
           PANAVERSITY_SERVER_URL: ${{ secrets.PANAVERSITY_SERVER_URL }}
           AUTH_URL: ${{ secrets.AUTH_URL }}
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
           BASE_URL: ${{ secrets.BASE_URL }}
           PANAVERSITY_API_KEY: ${{ secrets.PANAVERSITY_API_KEY }}
-
         run: npm run build
 
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
         with:
           path: book-source/build
+
+      - name: Build summary
+        run: |
+          echo "## Build Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ vars.PANAVERSITY_PLUGIN_ENABLED }}" = "true" ]; then
+            echo "**Content Source:** PanaversityFS (hydrated)" >> $GITHUB_STEP_SUMMARY
+            if [ "${{ steps.manifest-cache.outputs.cache-hit }}" = "true" ]; then
+              echo "**Mode:** Incremental (manifest cache hit)" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "**Mode:** Full download (no manifest cache)" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "**Content Source:** Local docs/" >> $GITHUB_STEP_SUMMARY
+          fi
 
   deploy:
     name: Deploy to GitHub Pages

@@ -8,6 +8,8 @@
 .docusaurus
 .cache-loader
 .playwright-mcp
+build-source/
+.panaversity/
 
 # Misc
 .DS_Store

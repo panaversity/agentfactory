@@ -24,9 +24,13 @@ from panaversity_fs.storage_utils import (
 from panaversity_fs.errors import ContentNotFoundError, InvalidPathError
 from panaversity_fs.audit import log_operation
 from panaversity_fs.config import get_config
+from panaversity_fs.database.connection import get_session
+from panaversity_fs.database.models import FileJournal
+from sqlalchemy import select
 from datetime import datetime, timezone
 import json
 import base64
+import hashlib
 
 
 @mcp.tool(
@@ -120,11 +124,87 @@ async def upload_asset(params: UploadAssetInput, ctx: Context) -> str:
                     "Use presigned URL method instead (provide file_size, omit binary_data)."
                 )
 
+            # Compute hash for FileJournal
+            content_hash = hashlib.sha256(binary_content).hexdigest()
+
+            # Check FileJournal BEFORE uploading (incremental build optimization)
+            # Build relative storage path (without books/ prefix)
+            # asset_path is "books/{book_id}/static/..."
+            # FileJournal expects "static/..."
+            journal_path = '/'.join(asset_path.split('/')[2:])  # Remove "books/{book_id}/"
+
+            # Query FileJournal for existing hash
+            async with get_session() as session:
+                stmt = select(FileJournal).where(
+                    FileJournal.book_id == params.book_id,
+                    FileJournal.path == journal_path,
+                    FileJournal.user_id == "__base__"
+                )
+                result = await session.execute(stmt)
+                existing = result.scalar_one_or_none()
+
+                # If hash matches, skip upload (incremental build)
+                if existing and existing.sha256 == content_hash:
+                    # Asset unchanged - return success without uploading
+                    cdn_url = build_cdn_url(
+                        config.cdn_base_url,
+                        params.book_id,
+                        params.asset_type.value,
+                        safe_filename
+                    )
+
+                    response = {
+                        "status": "skipped",  # Indicate no upload happened
+                        "method": "direct",
+                        "cdn_url": cdn_url,
+                        "file_size": file_size,
+                        "mime_type": get_mime_type(safe_filename),
+                        "path": asset_path,
+                        "file_hash_sha256": content_hash,
+                        "message": "Asset unchanged, skipped upload"
+                    }
+
+                    return json.dumps(response, indent=2)
+
+            # Hash different or asset doesn't exist - proceed with upload
             # Write to storage
             await op.write(asset_path, binary_content)
 
             # Get metadata
             metadata = await op.stat(asset_path)
+
+            # Write to FileJournal (THE FIX! - track assets like markdown)
+            async with get_session() as session:
+                # Build relative storage path (without books/ prefix)
+                # asset_path is "books/{book_id}/static/..."
+                # FileJournal expects "static/..."
+                journal_path = '/'.join(asset_path.split('/')[2:])  # Remove "books/{book_id}/"
+
+                # Upsert FileJournal entry
+                stmt = select(FileJournal).where(
+                    FileJournal.book_id == params.book_id,
+                    FileJournal.path == journal_path,
+                    FileJournal.user_id == "__base__"
+                )
+                result = await session.execute(stmt)
+                existing = result.scalar_one_or_none()
+
+                if existing:
+                    existing.sha256 = content_hash
+                    existing.last_written_at = datetime.now(timezone.utc)
+                    existing.storage_backend = config.storage_backend
+                else:
+                    new_entry = FileJournal(
+                        book_id=params.book_id,
+                        path=journal_path,
+                        user_id="__base__",
+                        sha256=content_hash,
+                        last_written_at=datetime.now(timezone.utc),
+                        storage_backend=config.storage_backend
+                    )
+                    session.add(new_entry)
+
+                await session.commit()
 
             # Build CDN URL
             cdn_url = build_cdn_url(
@@ -151,7 +231,8 @@ async def upload_asset(params: UploadAssetInput, ctx: Context) -> str:
                 "cdn_url": cdn_url,
                 "file_size": file_size,
                 "mime_type": get_mime_type(safe_filename),
-                "path": asset_path
+                "path": asset_path,
+                "file_hash_sha256": content_hash  # NEW: Return hash for client verification
             }
 
             return json.dumps(response, indent=2)

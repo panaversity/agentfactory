@@ -17,10 +17,10 @@ const OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || "ai-native-public-client"
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 // PanaversityFS: Determine docs path based on plugin mode
-// - When plugin enabled: Read from docsfs/ (fetched from MCP server)
-// - When plugin disabled: Read from docs/ (local sample content)
+// - When plugin enabled: Read from build-source/ (hydrated by CI workflow)
+// - When plugin disabled: Read from docs/ (local sample content where authors write)
 const panaversityEnabled = process.env.PANAVERSITY_PLUGIN_ENABLED === "true";
-const docsPath = panaversityEnabled ? "docsfs" : "docs";
+const docsPath = panaversityEnabled ? "../build-source" : "docs";
 
 const config: Config = {
   title: "AI Native Software Development",
@@ -233,19 +233,19 @@ const config: Config = {
         docsPath: docsPath, // Use same docs path as content-docs
       },
     ],
-    // PanaversityFS Plugin - Fetch content from MCP server and write to docsfs/
+    // PanaversityFS Plugin - Fetch content from MCP server and write to build-source/
     // Enable via: PANAVERSITY_PLUGIN_ENABLED=true
     // Server URL: PANAVERSITY_SERVER_URL or http://localhost:8000/mcp
-    // When enabled: Writes to docsfs/, Docusaurus reads from docsfs/
-    // When disabled: Docusaurus reads from docs/ (local sample content)
+    // When enabled: Uses build-source/ (hydrated by CI workflow before Docusaurus build)
+    // When disabled: Docusaurus reads from docs/ (local sample content where authors write)
     [
       "./plugins/docusaurus-panaversityfs-plugin",
       {
         bookId: "ai-native-dev",
         enabled: panaversityEnabled,
         serverUrl: process.env.PANAVERSITY_SERVER_URL || "http://localhost:8000/mcp",
-        docsDir: "docsfs",  // Separate from docs/ to keep local sample content intact
-        cleanDocsDir: true, // Clean docsfs/ before writing fresh content
+        docsDir: "../build-source",  // Hydrated content from CI workflow (separate from docs/ where authors write)
+        cleanDocsDir: false, // Don't clean - workflow manages this directory
       },
     ],
     function (context, options) {

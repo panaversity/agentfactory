@@ -87,6 +87,13 @@ async def read_content(params: ReadContentInput, ctx: Context) -> str:
     - part: Read all .md files in a part directory (all chapters)
     - book: Read all .md files in the entire book's content/ directory
 
+    Asset Hash Queries (v1 Incremental Build):
+    When path starts with "static/", returns ONLY the file_hash_sha256 from FileJournal
+    (no content or metadata). This enables client-side incremental build for assets.
+    - Input: {"book_id": "my-book", "path": "static/images/diagram.png"}
+    - Output: {"file_hash_sha256": "abc123...", "exists": true}
+    - If not in FileJournal: {"exists": false}
+
     Overlay Support (FR-016):
     When user_id is provided, reads from overlay first, falls back to base if not found.
     - Overlay path: books/{book_id}/users/{user_id}/content/...
@@ -104,12 +111,17 @@ async def read_content(params: ReadContentInput, ctx: Context) -> str:
         str: JSON-formatted response
             - scope=file: Single ContentMetadata object (with source field if user_id)
             - scope=chapter/part/book: Array of ContentMetadata objects with path field
+            - static/ paths: {"file_hash_sha256": "...", "exists": true/false}
 
     Example:
         ```
         # Read single file (default)
         Input: {"book_id": "my-book", "path": "content/01-Part/01-Chapter/01-lesson.md"}
         Output: {"content": "...", "file_size": 1234, ...}
+
+        # Read asset hash (v1 incremental build)
+        Input: {"book_id": "my-book", "path": "static/images/diagram.png"}
+        Output: {"file_hash_sha256": "ebf4f635a17d10d6eb46ba680b70142419aa3220...", "exists": true}
 
         # Read with overlay support (FR-016)
         Input: {"book_id": "my-book", "path": "content/01-Part/01-Chapter/01-lesson.md", "user_id": "user123"}
@@ -148,6 +160,46 @@ async def read_content(params: ReadContentInput, ctx: Context) -> str:
         # Security validation (traversal, null bytes, etc.)
         if not validate_path(params.path):
             raise InvalidPathError(params.path, "Path contains invalid characters or traversal attempts")
+
+        # ASSET HASH QUERY PATH (v1 Incremental Build)
+        # If path starts with "static/", return hash from FileJournal (no content/metadata)
+        if params.path.startswith("static/"):
+            # Extract journal path (remove "static/" prefix to match FileJournal.path format)
+            journal_path = '/'.join(params.path.split('/')[2:])  # e.g., "static/images/diagram.png" → "diagram.png"
+
+            # Query FileJournal for hash
+            async with get_session() as session:
+                stmt = select(FileJournal).where(
+                    FileJournal.book_id == params.book_id,
+                    FileJournal.path == params.path,  # Full path including "static/images/"
+                    FileJournal.user_id == "__base__"  # Assets are always base content
+                )
+                result = await session.execute(stmt)
+                existing = result.scalar_one_or_none()
+
+                if existing:
+                    # Hash found in FileJournal
+                    response = {
+                        "file_hash_sha256": existing.sha256,
+                        "exists": True
+                    }
+                else:
+                    # Not in FileJournal
+                    response = {
+                        "exists": False
+                    }
+
+                # Log success
+                execution_time = int((datetime.now(timezone.utc) - start_time).total_seconds() * 1000)
+                await log_operation(
+                    operation=OperationType.READ_CONTENT,
+                    path=params.path,
+                    status=OperationStatus.SUCCESS,
+                    execution_time_ms=execution_time,
+                    book_id=params.book_id
+                )
+
+                return json.dumps(response, indent=2)
 
         # FR-007: Schema validation for file scope (single file reads)
         # For chapter/part/book scopes, validation happens per-file during iteration

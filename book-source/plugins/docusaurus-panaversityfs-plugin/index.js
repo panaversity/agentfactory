@@ -71,6 +71,28 @@ module.exports = function panaversityFSPlugin(context, options) {
         return null;
       }
 
+      // Check if docsfs/ was already hydrated by hydrate-book.py script
+      // This happens in CI when the deploy workflow runs hydration before build
+      const hasHydratedContent = fs.existsSync(docsPath) &&
+        fs.readdirSync(docsPath).some(entry => {
+          const entryPath = path.join(docsPath, entry);
+          return fs.statSync(entryPath).isFile() ||
+            (fs.statSync(entryPath).isDirectory() && fs.readdirSync(entryPath).length > 0);
+        });
+
+      if (hasHydratedContent && !cleanDocsDir) {
+        console.log('[PanaversityFS] docsfs/ already populated (hydrated by CI), skipping fetch');
+        const fileCount = fs.readdirSync(docsPath, { recursive: true })
+          .filter(f => f.endsWith('.md')).length;
+        return {
+          totalFiles: fileCount,
+          writtenFiles: fileCount,
+          excludedFiles: 0,
+          source: 'pre-hydrated',
+          timestamp: new Date().toISOString(),
+        };
+      }
+
       // Connect to PanaversityFS MCP server via HTTP
       try {
         const client = new MCPHttpClient({ serverUrl, bookId, apiKey, timeoutMs });

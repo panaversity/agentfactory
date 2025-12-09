@@ -118,6 +118,43 @@ export PANAVERSITY_SUPABASE_BUCKET=panaversity-books
 
 See **[Setup Guide](docs/SETUP.md)** for detailed instructions.
 
+## Build Pipeline Scripts
+
+PanaversityFS includes CLI scripts for incremental builds:
+
+### Hydrate (Download from PanaversityFS)
+
+```bash
+# Download content for Docusaurus build (incremental)
+python scripts/hydrate-book.py --book-id ai-native-python
+
+# Force full download
+python scripts/hydrate-book.py --book-id ai-native-python --full-rebuild
+
+# Or use Make
+make hydrate BOOK_ID=ai-native-python
+```
+
+### Ingest (Upload to PanaversityFS)
+
+```bash
+# Upload source content (incremental)
+python scripts/ingest-book.py --book-id ai-native-python --source-dir ./book-source/docs
+
+# Preview what would be synced
+python scripts/ingest-book.py --book-id ai-native-python --source-dir ./book-source/docs --dry-run
+
+# Or use Make
+make ingest BOOK_ID=ai-native-python SOURCE_DIR=./book-source/docs
+```
+
+### Full Build Pipeline
+
+```bash
+# Ingest + hydrate in one command
+make build BOOK_ID=ai-native-python SOURCE_DIR=./book-source/docs
+```
+
 ## Running Tests
 
 ```bash
@@ -129,6 +166,7 @@ uv run pytest tests/unit/ -v           # ~170 component tests
 uv run pytest tests/integration/ -v    # 24 workflow tests
 uv run pytest tests/property/ -v       # 33 invariant tests
 uv run pytest tests/performance/ -v    # 9 benchmark tests
+uv run pytest tests/scripts/ -v        # 54 build script tests
 ```
 
 ## Documentation
