@@ -1,4 +1,3 @@
-https://github.com/DanielHashmi/Q4_learning/blob/main/spec-driven-development/tutorials/How%20to%20Use%20Claude%20Code%20with%20Qwen%20models%20for%20Free%20on%20Linux%20and%20macOS%20(sh%20and%20bash).md
 
 > **Source:** Adapted from Daniel Hashmi — [Q4_learning repo](https://github.com/DanielHashmi/Q4_learning). Used with permission / adapted with attribution.
 
