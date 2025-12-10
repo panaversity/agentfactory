@@ -77,6 +77,10 @@ prerequisites:
 
 ---
 
+🎥 Video TutorialFull step-by-step video (with voice) : 👉 https://www.youtube.com/watch?v=HQ6dqd7QY38
+
+---
+
 ## Reality Check: It's Just Copy-Paste
 
 **Setup Complexity**: Copy 3 text blocks, type 3 commands. That's it.
@@ -95,7 +99,7 @@ If missing, install from [nodejs.org](https://nodejs.org/)
 
 ---
 
-## Step 1: Get Your Free Google API Key
+## 🔥 STEP 1 — Get Your Free Google API Key
 
 1. Go to: [Google AI Studio](https://aistudio.google.com/api-keys)
 2. Click **"Get API Key"**
@@ -105,19 +109,77 @@ If missing, install from [nodejs.org](https://nodejs.org/)
 
 ---
 
-## Step 2: Copy-Paste Setup
-
-**Just copy commands from this block and paste into terminal:**
-
-```bash
-# Install tools
+## 🔥 STEP 2 — INSTALL CLAUDE TOOLS
+### Windows (PowerShell or CMD):
+```powershell
 npm install -g @anthropic-ai/claude-code @musistudio/claude-code-router
+```
+### macOS / Linux:
+```bash
+sudo npm install -g @anthropic-ai/claude-code @musistudio/claude-code-router
+```
 
-# Create config directories
+## 🔥 STEP 3 — CREATE REQUIRED FOLDERS
+### Windows PowerShell:
+```powershell
+New-Item -ItemType Directory -Force -Path $HOME\.claude-code-router
+New-Item -ItemType Directory -Force -Path $HOME\.claude
+```
+### Windows CMD:
+```cmd
+mkdir %USERPROFILE%\.claude-code-router
+mkdir %USERPROFILE%\.claude
+```
+### macOS / Linux:
+```bash
 mkdir -p ~/.claude-code-router ~/.claude
+```
+*`-Force` / `-p` = no error if folder already exists*
 
-# Create router config
-# Create new config with native Gemini endpoint
+## 🔥 STEP 4 — CREATE `config.json` (Correct For Each OS)
+### 🟦 Windows (PowerShell + CMD) — Use Notepad
+```powershell
+notepad $HOME\.claude-code-router\config.json
+```
+Or in CMD:
+```cmd
+notepad %USERPROFILE%\.claude-code-router\config.json
+```
+Paste this exact JSON:
+```json
+{
+  "LOG": true,
+  "LOG_LEVEL": "info",
+  "HOST": "127.0.0.1",
+  "PORT": 3456,
+  "API_TIMEOUT_MS": 600000,
+  "Providers": [
+    {
+      "name": "gemini",
+      "api_base_url": "https://generativelanguage.googleapis.com/v1beta/models/",
+      "api_key": "$GOOGLE_API_KEY",
+      "models": [
+        "gemini-1.5-flash",
+        "gemini-1.5-flash-exp-0827"
+      ],
+      "transformer": {
+        "use": ["gemini"]
+      }
+    }
+  ],
+  "Router": {
+    "default": "gemini,gemini-1.5-flash",
+    "background": "gemini,gemini-1.5-flash",
+    "think": "gemini,gemini-1.5-flash",
+    "longContext": "gemini,gemini-1.5-flash",
+    "longContextThreshold": 60000
+  }
+}
+```
+Save & close.
+
+### 🟩 macOS / Linux
+```bash
 cat > ~/.claude-code-router/config.json << 'EOF'
 {
   "LOG": true,
@@ -131,8 +193,8 @@ cat > ~/.claude-code-router/config.json << 'EOF'
       "api_base_url": "https://generativelanguage.googleapis.com/v1beta/models/",
       "api_key": "$GOOGLE_API_KEY",
       "models": [
-        "gemini-2.5-flash",
-        "gemini-2.0-flash"
+        "gemini-1.5-flash",
+        "gemini-1.5-flash-exp-0827"
       ],
       "transformer": {
         "use": ["gemini"]
@@ -140,106 +202,120 @@ cat > ~/.claude-code-router/config.json << 'EOF'
     }
   ],
   "Router": {
-    "default": "gemini,gemini-2.5-flash",
-    "background": "gemini,gemini-2.5-flash",
-    "think": "gemini,gemini-2.5-flash",
-    "longContext": "gemini,gemini-2.5-flash",
+    "default": "gemini,gemini-1.5-flash",
+    "background": "gemini,gemini-1.5-flash",
+    "think": "gemini,gemini-1.5-flash",
+    "longContext": "gemini,gemini-1.5-flash",
     "longContextThreshold": 60000
   }
 }
 EOF
+```
 
-# Verify file was created
-cat ~/.claude-code-router/config.json
+## 🔥 STEP 5 — SET GOOGLE API KEY
+### Windows PowerShell (Permanent):
+```powershell
+[System.Environment]::SetEnvironmentVariable('GOOGLE_API_KEY', 'YOUR_KEY_HERE', 'User')
+```
+→ Restart PowerShell, then check:
+```powershell
+echo $env:GOOGLE_API_KEY
+```
 
-# Set your API key (REPLACE "YOUR_KEY_HERE" with actual key!)
+### macOS / Linux
+#### Bash:
+```bash
+echo 'export GOOGLE_API_KEY="YOUR_KEY_HERE"' >> ~/.bashrc
+source ~/.bashrc
+```
+#### Zsh (default on macOS):
+```bash
 echo 'export GOOGLE_API_KEY="YOUR_KEY_HERE"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
-**Windows users**: Replace last 2 lines with:
+## 🔥 STEP 6 — VERIFY INSTALLATION
+```bash
+claude --version
+ccr version
+```
+For macOS/Linux:
+```bash
+echo $GOOGLE_API_KEY
+```
+For Windows:
 ```powershell
-# Windows PowerShell (Run as Administrator)
-[System.Environment]::SetEnvironmentVariable('GOOGLE_API_KEY', 'YOUR_KEY_HERE', 'User')
-
-# Then CLOSE and REOPEN PowerShell completely
-# Verify it worked:
 echo $env:GOOGLE_API_KEY
 ```
+All should show output → Ready!
 
-**Bash users** (older macOS/Linux):
-```bash
-# Check your shell first:
-echo $SHELL
-
-# If shows /bin/zsh → use ~/.zshrc (already done above)
-# If shows /bin/bash → Change last 2 lines to:
-echo 'export GOOGLE_API_KEY="YOUR_KEY_HERE"' >> ~/.bashrc
-source ~/.bashrc
-```
-
----
-
-### ✅ Verify Setup Worked
-
-**After pasting setup commands, verify immediately:**
-
-```bash
-claude --version     # Should show: Claude Code v2.x.x
-ccr version          # it will show version number (without hyphen)
-echo $GOOGLE_API_KEY # Should show your key (not empty!)
-
-# If any fail, see Troubleshooting section
-```
-
-✅ **Done!** That's the entire setup.
-
----
-
-## Step 3: Daily Workflow
-
-**Every time you want to code:**
-
-### Terminal 1 - Start router FIRST
+## 🔥 STEP 7 — DAILY USAGE
+### Terminal 1 — Start the router:
 ```bash
 ccr start
-# Wait for: ✅ Service started successfully
+```
+Wait for:
+```
+✔ Service started successfully
+or
+⚠️ API key is not set. HOST is forced to 127.0.0.1.
+Loaded JSON config from: C:\Users\User\.claude-code-router\config.json
 ```
 
-### Terminal 2 - THEN use Claude (after router is ready)
-
-```
-cd ~/your-project
-
-# Use
+### Terminal 2 — Start Coding (Cross-Platform)
+#### macOS / Linux Option 1:
+```bash
 ccr code
-
-# OR
+```
+#### macOS / Linux Option 2 (Recommended):
+```bash
+# Activate Claude environment
 eval "$(ccr activate)"
+
+# Start Claude CLI
 claude
 ```
 
-That's it. One command in Terminal 1, three lines in Terminal 2. Just copy-paste!
+#### Windows CMD:
+```cmd
+set ANTHROPIC_AUTH_TOKEN=test
+set ANTHROPIC_API_KEY=
+set ANTHROPIC_BASE_URL=http://127.0.0.1:3456
+set NO_PROXY=127.0.0.1
+set DISABLE_TELEMETRY=true
+set DISABLE_COST_WARNINGS=true
+set API_TIMEOUT_MS=600000
+```
+```cmd
+claude
+```
+
+#### Windows PowerShell:
+```powershell
+$env:ANTHROPIC_AUTH_TOKEN = "test"
+$env:ANTHROPIC_API_KEY = ""
+$env:ANTHROPIC_BASE_URL = "http://127.0.0.1:3456"
+$env:NO_PROXY = "127.0.0.1"
+$env:DISABLE_TELEMETRY = "true"
+$env:DISABLE_COST_WARNINGS = "true"
+$env:API_TIMEOUT_MS = "600000"
+```
+```powershell
+claude
+```
+**Test it:**  
+Type `hi` → Claude should reply → 🎉 Success!
 
 ---
 
-## Verification
+## ⚠️ Troubleshooting
+| Problem | Solution |
+| :-------------------- | :---------------------------------------------------------------------- |
+| `mkdir` error | Use `-Force` (Windows) or `-p` (macOS/Linux) with `New-Item` / `mkdir` |
+| "API key not found" | Restart terminal after setting environment variable |
+| `ccr: command not found` | Close & reopen terminal, or restart computer |
+| Port 3456 already in use | Kill process: `taskkill //F //PID <pid>` (Win) or `kill -9 <pid>` (Unix) |
 
-**Start a Claude session:**
-
-```bash
-ccr code
-# OR
-claude
-```
-
-**Say hi:**
-
-```
-hi
-```
-
-**Expected**: Claude responds with a greeting confirming it's working! ✅ Success!
 
 That's it. If Claude responds, your free setup is working perfectly.
 
@@ -352,3 +428,4 @@ echo $DEEPSEEK_API_KEY  # Should show your key (not empty!)
 ---
 
 That's it. Proceed to **Lesson 3** to learn persistent project context.
+
