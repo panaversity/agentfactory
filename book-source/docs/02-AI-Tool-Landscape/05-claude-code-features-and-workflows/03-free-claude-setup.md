@@ -69,15 +69,24 @@ prerequisites:
   - "Terminal access"
 ---
 
-# Extension: Free Claude Code Setup with Google Gemini
+# Extension: Free Claude Code Setup with Alternative Backends
 
-**This lesson provides a free alternative to use Claude Code** using Google's free Gemini API as the backend. You'll learn the same Claude Code CLI interface and features covered in Lesson 2.
+**This lesson provides free alternatives to use Claude Code** using Google's free Gemini API or DeepSeek API as the backend. You'll learn the same Claude Code CLI interface and features covered in Lesson 2.
 
-**All features work identically**: Subagents, skills, MCP servers, hooks, and all other capabilities covered in Lessons 3-9 function the same way with this free setup. The only difference is the backend AI model (Gemini instead of Claude) and the setup process (router configuration instead of direct authentication).
+**All features work identically**: Subagents, skills, MCP servers, hooks, and all other capabilities covered in Lessons 3-9 function the same way with this free setup. The only difference is the backend AI model (Gemini or Deepseek instead of Claude) and the setup process (router configuration instead of direct authentication).
+
+## Choose Your Backend
+
+This guide covers two free alternatives:
+- **Google Gemini** - Google's AI with a generous free tier
+- **DeepSeek** - Competitive pricing with strong coding capabilities
+
+You can just pick one to start (please feel free to switch later). Both provide identical Claude Code functionality.
 
 ---
+## Prerequisites & Reality Check
 
-## Reality Check: It's Just Copy-Paste
+**Reality Check:** It's Just Copy-Paste
 
 **Setup Complexity**: Copy 3 text blocks, type 3 commands. That's it.
 
@@ -95,7 +104,9 @@ If missing, install from [nodejs.org](https://nodejs.org/)
 
 ---
 
-## Step 1: Get Your Free Google API Key
+## Option A: Google Gemini Setup
+
+### Step 1: Get Your Free Google API Key
 
 1. Go to: [Google AI Studio](https://aistudio.google.com/api-keys)
 2. Click **"Get API Key"**
@@ -105,7 +116,7 @@ If missing, install from [nodejs.org](https://nodejs.org/)
 
 ---
 
-## Step 2: Copy-Paste Setup
+### Step 2: Copy-Paste Setup
 
 **Just copy commands from this block and paste into terminal:**
 
@@ -180,7 +191,7 @@ source ~/.bashrc
 
 ---
 
-### ✅ Verify Setup Worked
+#### ✅ Verify Setup Worked
 
 **After pasting setup commands, verify immediately:**
 
@@ -196,17 +207,17 @@ echo $GOOGLE_API_KEY # Should show your key (not empty!)
 
 ---
 
-## Step 3: Daily Workflow
+### Step 3: Daily Workflow
 
 **Every time you want to code:**
 
-### Terminal 1 - Start router FIRST
+#### Terminal 1 - Start router FIRST
 ```bash
 ccr start
 # Wait for: ✅ Service started successfully
 ```
 
-### Terminal 2 - THEN use Claude (after router is ready)
+#### Terminal 2 - THEN use Claude (after router is ready)
 
 ```
 cd ~/your-project
@@ -223,7 +234,7 @@ That's it. One command in Terminal 1, three lines in Terminal 2. Just copy-paste
 
 ---
 
-## Verification
+### Verification
 
 **Start a Claude session:**
 
@@ -245,7 +256,7 @@ That's it. If Claude responds, your free setup is working perfectly.
 
 ---
 
-## Alternative: DeepSeek Setup
+## Option B: DeepSeek Setup
 
 **DeepSeek offers another free alternative** with competitive pricing and strong coding capabilities. Follow these steps to configure DeepSeek as your backend.
 
@@ -352,3 +363,4 @@ echo $DEEPSEEK_API_KEY  # Should show your key (not empty!)
 ---
 
 That's it. Proceed to **Lesson 3** to learn persistent project context.
+
