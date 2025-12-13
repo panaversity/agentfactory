@@ -1,18 +1,6 @@
 # CodeSandbox VM Demo
 
-Below is an embedded CodeSandbox VM:  
-
-<!-- 
-
-    style={{
-      width: "100%",
-      height: "600px",
-      border: "0",
-      borderRadius: "4px",
-      overflow: "hidden"
-    }}
-
--->
+Below is an embedded CodeSandbox VM (Cloud Virtual Machine):
 
 :::info How to Edit
 The embedded view below is **read-only**. To edit the code or run your own agents:
@@ -37,4 +25,35 @@ The embedded view below is **read-only**. To edit the code or run your own agent
 
 <a href="https://codesandbox.io/p/devbox/fvy37r?embed=1">
   <img alt="Edit Hackathon I" src="https://codesandbox.io/static/img/play-codesandbox.svg"/>
+</a>
+
+---
+
+# StackBlitz WebContainer Demo
+
+Below is an embedded StackBlitz WebContainer (Browser-based Node.js):
+
+:::info How to Edit
+The embedded view below runs the documentation server completely in your browser. To edit:
+1. Click **"Open in StackBlitz"** button in the **bottom left corner**.
+2. Use the **Fork** button to save changes to your own dashboard.
+:::
+
+<iframe 
+  src="https://stackblitz.com/edit/stackblitz-starters-5jqeylyz?embed=1&file=CLAUDE.md&theme=dark"
+  style={{
+    width: "100%",
+    height: "500px",
+    border: "0",
+    borderRadius: "4px",
+    overflow: "hidden",
+    marginBottom: "10px"
+  }}
+  title="Physical AI Robotics Project"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+
+<a href="https://stackblitz.com/edit/stackblitz-starters-5jqeylyz">
+  <img alt="Open in StackBlitz" src="https://developer.stackblitz.com/img/open_in_stackblitz.svg"/>
 </a>
