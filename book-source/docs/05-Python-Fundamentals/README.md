@@ -13,6 +13,32 @@ This part transforms you from someone who reads Python code to someone who archi
 
 The journey begins with tooling (UV package manager) before diving into language fundamentals. This isn't accidental: modern Python development requires professional-grade project management from day one. You'll set up production-quality environments before writing your first `print()` statement.
 
+---  
+
+## Hands-on Lab
+Want to explore the code without installing anything? You can interact with the full project directly below. 
+
+:::info How to Edit
+The embedded view below is **read-only**. To edit the code or run your own agents:
+1. Click **"Open Editor"** in the top right corner of the embed.
+2. Click the **Fork** button to save a copy to your own account.
+:::
+
+<div style={{ width: '100%', height: '500px', borderRadius: '4px', overflow: 'hidden', border: '0', marginBottom: '-20px' }}>
+  <iframe
+    src="https://codesandbox.io/p/devbox/vigilant-river-rqmszh?embed=1&showConsole=true&file=%2FREADME.md"
+    title="Hackathon II Phase I"
+    allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+    sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+    style={{ width: '100%', height: '100%', border: '0' }}
+  />
+</div>  
+
+<a href="https://codesandbox.io/p/devbox/festive-brown-rqmszh?embed=1">
+  <img alt="Edit Hackathon II Phase I" src="https://codesandbox.io/static/img/play-codesandbox.svg" />
+</a>
+
+
 ## What You'll Learn
 
 By the end of Part 5, you'll understand:
