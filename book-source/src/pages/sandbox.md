@@ -23,7 +23,7 @@ The embedded view below is **read-only**. To edit the code or run your own agent
   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 />
 
-<a href="https://codesandbox.io/p/devbox/fvy37r?embed=1">
+<a href="https://codesandbox.io/p/devbox/fvy37r?embed=1" target="_blank" rel="noopener noreferrer">
   <img alt="Edit Hackathon I" src="https://codesandbox.io/static/img/play-codesandbox.svg"/>
 </a>
 
@@ -40,7 +40,7 @@ The embedded view below runs the documentation server completely in your browser
 :::
 
 <iframe 
-  src="https://stackblitz.com/edit/stackblitz-starters-5jqeylyz?embed=1&file=CLAUDE.md&theme=dark"
+  src="https://stackblitz.com/edit/physical-ai-book?embed=1&file=CLAUDE.md&theme=dark"
   style={{
     width: "100%",
     height: "500px",
@@ -54,6 +54,6 @@ The embedded view below runs the documentation server completely in your browser
   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
 
-<a href="https://stackblitz.com/edit/stackblitz-starters-5jqeylyz">
+<a href="https://stackblitz.com/edit/physical-ai-book" target="_blank" rel="noopener noreferrer">
   <img alt="Open in StackBlitz" src="https://developer.stackblitz.com/img/open_in_stackblitz.svg"/>
 </a>
