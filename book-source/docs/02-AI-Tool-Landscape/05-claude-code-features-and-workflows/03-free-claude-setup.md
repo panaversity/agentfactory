@@ -77,6 +77,10 @@ prerequisites:
 
 ---
 
+🎥 Video TutorialFull step-by-step video (with voice) : 👉 https://www.youtube.com/watch?v=HQ6dqd7QY38
+
+---
+
 ## Reality Check: It's Just Copy-Paste
 
 **Setup Complexity**: Copy 3 text blocks, type 3 commands. That's it.
@@ -105,19 +109,61 @@ If missing, install from [nodejs.org](https://nodejs.org/)
 
 ---
 
-## Step 2: Copy-Paste Setup
-
-**Just copy commands from this block and paste into terminal:**
-
-```bash
-# Install tools
+## Step 2: INSTALL CLAUDE TOOLS
+Windows (PowerShell or CMD):
 npm install -g @anthropic-ai/claude-code @musistudio/claude-code-router
-
-# Create config directories
+macOS / Linux:
+sudo npm install -g @anthropic-ai/claude-code @musistudio/claude-code-router
+## Step 3: CREATE REQUIRED FOLDERS
+Windows PowerShell:
+New-Item -ItemType Directory -Force -Path $HOME\.claude-code-router
+New-Item -ItemType Directory -Force -Path $HOME\.claude
+Windows CMD:
+mkdir %USERPROFILE%\.claude-code-router
+mkdir %USERPROFILE%\.claude
+macOS / Linux:
 mkdir -p ~/.claude-code-router ~/.claude
+-Force / -p = no error if folder already exists
 
-# Create router config
-# Create new config with native Gemini endpoint
+## Step 4: CREATE config.json (Correct For Each OS)
+🟦 Windows (PowerShell + CMD) — Use Notepad
+notepad $HOME\.claude-code-router\config.json
+Or in CMD:
+
+notepad %USERPROFILE%\.claude-code-router\config.json
+Paste this exact JSON:
+
+{
+  "LOG": true,
+  "LOG_LEVEL": "info",
+  "HOST": "127.0.0.1",
+  "PORT": 3456,
+  "API_TIMEOUT_MS": 600000,
+  "Providers": [
+    {
+      "name": "gemini",
+      "api_base_url": "https://generativelanguage.googleapis.com/v1beta/models/",
+      "api_key": "$GOOGLE_API_KEY",
+      "models": [
+        "gemini-1.5-flash",
+        "gemini-1.5-flash-exp-0827"
+      ],
+      "transformer": {
+        "use": ["gemini"]
+      }
+    }
+  ],
+  "Router": {
+    "default": "gemini,gemini-1.5-flash",
+    "background": "gemini,gemini-1.5-flash",
+    "think": "gemini,gemini-1.5-flash",
+    "longContext": "gemini,gemini-1.5-flash",
+    "longContextThreshold": 60000
+  }
+}
+Save & close.
+
+🟩 macOS / Linux
 cat > ~/.claude-code-router/config.json << 'EOF'
 {
   "LOG": true,
@@ -131,8 +177,8 @@ cat > ~/.claude-code-router/config.json << 'EOF'
       "api_base_url": "https://generativelanguage.googleapis.com/v1beta/models/",
       "api_key": "$GOOGLE_API_KEY",
       "models": [
-        "gemini-2.5-flash",
-        "gemini-2.0-flash"
+        "gemini-1.5-flash",
+        "gemini-1.5-flash-exp-0827"
       ],
       "transformer": {
         "use": ["gemini"]
@@ -140,104 +186,55 @@ cat > ~/.claude-code-router/config.json << 'EOF'
     }
   ],
   "Router": {
-    "default": "gemini,gemini-2.5-flash",
-    "background": "gemini,gemini-2.5-flash",
-    "think": "gemini,gemini-2.5-flash",
-    "longContext": "gemini,gemini-2.5-flash",
+    "default": "gemini,gemini-1.5-flash",
+    "background": "gemini,gemini-1.5-flash",
+    "think": "gemini,gemini-1.5-flash",
+    "longContext": "gemini,gemini-1.5-flash",
     "longContextThreshold": 60000
   }
 }
 EOF
-
-# Verify file was created
-cat ~/.claude-code-router/config.json
-
-# Set your API key (REPLACE "YOUR_KEY_HERE" with actual key!)
-echo 'export GOOGLE_API_KEY="YOUR_KEY_HERE"' >> ~/.zshrc
-source ~/.zshrc
-```
-
-**Windows users**: Replace last 2 lines with:
-```powershell
-# Windows PowerShell (Run as Administrator)
+## Step 5: SET GOOGLE API KEY
+Windows PowerShell (Permanent):
 [System.Environment]::SetEnvironmentVariable('GOOGLE_API_KEY', 'YOUR_KEY_HERE', 'User')
+→ Restart PowerShell, then check:
 
-# Then CLOSE and REOPEN PowerShell completely
-# Verify it worked:
 echo $env:GOOGLE_API_KEY
-```
-
-**Bash users** (older macOS/Linux):
-```bash
-# Check your shell first:
-echo $SHELL
-
-# If shows /bin/zsh → use ~/.zshrc (already done above)
-# If shows /bin/bash → Change last 2 lines to:
+macOS / Linux
+Bash:
 echo 'export GOOGLE_API_KEY="YOUR_KEY_HERE"' >> ~/.bashrc
 source ~/.bashrc
-```
+Zsh (default on macOS):
+echo 'export GOOGLE_API_KEY="YOUR_KEY_HERE"' >> ~/.zshrc
+source ~/.zshrc
+## Step 6: VERIFY INSTALLATION
+claude --version
+ccr version
+For macOS/Linux:
 
----
+echo $GOOGLE_API_KEY
+For Windows:
 
-### ✅ Verify Setup Worked
+echo $env:GOOGLE_API_KEY
+All should show output → Ready!
 
-**After pasting setup commands, verify immediately:**
-
-```bash
-claude --version     # Should show: Claude Code v2.x.x
-ccr version          # it will show version number (without hyphen)
-echo $GOOGLE_API_KEY # Should show your key (not empty!)
-
-# If any fail, see Troubleshooting section
-```
-
-✅ **Done!** That's the entire setup.
-
----
-
-## Step 3: Daily Workflow
-
-**Every time you want to code:**
-
-### Terminal 1 - Start router FIRST
-```bash
+## Step 7: DAILY USAGE
+Terminal 1 — Start the router:
 ccr start
-# Wait for: ✅ Service started successfully
-```
+Wait for:
 
-### Terminal 2 - THEN use Claude (after router is ready)
+✔ Service started successfully
+Terminal 2 — Start coding!
+Option 1:
 
-```
-cd ~/your-project
-
-# Use
 ccr code
+Option 2 (recommended):
 
-# OR
 eval "$(ccr activate)"
 claude
-```
+Test it:
+Type hi → Claude should reply → 🎉 Success!
 
-That's it. One command in Terminal 1, three lines in Terminal 2. Just copy-paste!
-
----
-
-## Verification
-
-**Start a Claude session:**
-
-```bash
-ccr code
-# OR
-claude
-```
-
-**Say hi:**
-
-```
-hi
-```
 
 **Expected**: Claude responds with a greeting confirming it's working! ✅ Success!
 
@@ -352,3 +349,4 @@ echo $DEEPSEEK_API_KEY  # Should show your key (not empty!)
 ---
 
 That's it. Proceed to **Lesson 3** to learn persistent project context.
+
