@@ -5,5 +5,8 @@
   "main": "index.js",
   "keywords": ["docusaurus", "plugin", "og-image", "open-graph"],
   "author": "Panaversity",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "satori": "^0.18.3"
+  }
 }

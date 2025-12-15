@@ -118,7 +118,11 @@ importers:
         specifier: ^3.0.0
         version: 3.9.2(@mdx-js/react@3.1.1(@types/react@19.2.7)(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.6.3)
 
-  libs/docusaurus/plugin-og-image: {}
+  libs/docusaurus/plugin-og-image:
+    dependencies:
+      satori:
+        specifier: ^0.18.3
+        version: 0.18.3
 
   libs/docusaurus/remark-content-enhancements:
     dependencies:
