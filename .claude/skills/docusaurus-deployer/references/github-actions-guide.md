@@ -122,21 +122,21 @@ mkdir -p .github/workflows
 
 ### Step 2: Adjust Working Directory (if needed)
 
-If Docusaurus is not in a `book-source/` subdirectory, update workflow:
+If Docusaurus is not in a `apps/learn-app/` subdirectory, update workflow:
 
 ```yaml
 - name: Install dependencies
-  working-directory: ./book-source  # or your actual directory
+  working-directory: ./apps/learn-app  # or your actual directory
   run: npm ci
 
 - name: Build website
-  working-directory: ./book-source
+  working-directory: ./apps/learn-app
   run: npm run build
 
 - name: Upload build artifact
   uses: actions/upload-pages-artifact@v3
   with:
-    path: ./book-source/build/  # Adjust path based on location
+    path: ./apps/learn-app/build/  # Adjust path based on location
 ```
 
 ### Step 3: Commit and Push

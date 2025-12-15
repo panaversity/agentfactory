@@ -416,6 +416,30 @@
       "apps/learn-app/project.json",
       "nx/core/project-json"
     ],
+    "targets.lint": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.cwd": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.command": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
     "targets.build.parallelism": [
       "nx.json",
       "nx/target-defaults"
@@ -425,6 +449,14 @@
       "nx/target-defaults"
     ],
     "targets.typecheck.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
       "nx.json",
       "nx/target-defaults"
     ]

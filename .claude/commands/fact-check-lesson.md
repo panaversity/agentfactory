@@ -9,7 +9,7 @@ argument-hint: <lesson-file.md>
 Verify factual accuracy of lesson content by identifying and correcting fabricated examples, unverifiable statistics, outdated data, and misleading claims. Ensures all numbers, dates, names, and sources are verifiable against authoritative sources.
 
 ## Contract
-**Inputs:** `$1` — Path to lesson markdown file (e.g., `book-source/docs/.../01-lesson.md`)
+**Inputs:** `$1` — Path to lesson markdown file (e.g., `apps/learn-app/docs/.../01-lesson.md`)
 **Outputs:** `STATUS=<VERIFIED|CORRECTED|FAIL> ISSUES=<count> CRITICAL=<count>`
 
 ## Instructions

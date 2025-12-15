@@ -275,7 +275,7 @@ specs/part-N-chapter-M/plan.md
 **Find lesson files**:
 ```bash
 # Typical pattern
-book-source/docs/NN-Part-N/MM-chapter-title/*.md
+apps/learn-app/docs/NN-Part-N/MM-chapter-title/*.md
 ```
 
 **Note**: Not all chapters have specs/plans (especially Part 1 conceptual). Assess lessons directly if artifacts missing.
@@ -1013,7 +1013,7 @@ Invoke validation-auditor:
 2. **Test build**: Ensure Docusaurus builds without errors
 3. **Commit changes**:
    ```bash
-   git add book-source/docs/[chapter-path]/*.md
+   git add apps/learn-app/docs/[chapter-path]/*.md
    git commit -m "Constitution sync: Chapter [N] aligned with v3.1.3
 
    - Integrated Three-Role AI Partnership throughout

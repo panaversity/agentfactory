@@ -148,7 +148,7 @@ Placeholder for unified interactive code transformation (currently handled by `r
 ### File Structure
 
 ```
-book-source/plugins/remark-content-enhancements/
+apps/learn-app/plugins/remark-content-enhancements/
 ├── index.js                 # Main orchestrator plugin
 ├── transformers/
 │   ├── slides.js            # Slides transformer
@@ -302,7 +302,7 @@ slides:
    ```
 
 2. **Verify file path**:
-   - Local: File must exist in `book-source/static/slides/`
+   - Local: File must exist in `apps/learn-app/static/slides/`
    - URL: Must start with `http://` or `https://`
 
 3. **Check injection point**:

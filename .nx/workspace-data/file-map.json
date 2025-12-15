@@ -22,20 +22,24 @@
         "hash": "2784308613237667207"
       },
       {
+        "file": ".github/workflows/ci.yml",
+        "hash": "2032193909929778918"
+      },
+      {
         "file": ".github/workflows/deploy.yml",
-        "hash": "10138742486667483010"
+        "hash": "10937897192768618098"
       },
       {
         "file": ".github/workflows/pr-check.yml",
-        "hash": "12156853230622594756"
+        "hash": "6991475264090107113"
       },
       {
         "file": ".github/workflows/sync-content.yml",
-        "hash": "12838340739085195113"
+        "hash": "6627336056262639824"
       },
       {
         "file": ".github/workflows/validate-content.yml",
-        "hash": "2784308613237667207"
+        "hash": "16722034744466874925"
       },
       {
         "file": ".gitignore",
@@ -71,31 +75,6 @@
       }
     ],
     "projectFileMap": {
-      "panaversityfs-plugin": [
-        {
-          "file": "libs/docusaurus/panaversityfs-plugin/index.js",
-          "hash": "15182335414882091012"
-        },
-        {
-          "file": "libs/docusaurus/panaversityfs-plugin/mcp-client.js",
-          "hash": "5218366822993594787"
-        },
-        {
-          "file": "libs/docusaurus/panaversityfs-plugin/mcp-http-client.js",
-          "hash": "146946626735221406"
-        },
-        {
-          "file": "libs/docusaurus/panaversityfs-plugin/package.json",
-          "hash": "7769342336381323143",
-          "deps": [
-            "npm:@docusaurus/core"
-          ]
-        },
-        {
-          "file": "libs/docusaurus/panaversityfs-plugin/project.json",
-          "hash": "8339024887621996337"
-        }
-      ],
       "panaversity-fs-py": [
         {
           "file": "apps/panaversity-fs-py/.env.example",
@@ -462,84 +441,6 @@
           "hash": "10978898596670629291"
         }
       ],
-      "plugin-structured-data": [
-        {
-          "file": "libs/docusaurus/plugin-structured-data/index.js",
-          "hash": "10943727081996657737",
-          "deps": [
-            "npm:cheerio@1.1.2"
-          ]
-        },
-        {
-          "file": "libs/docusaurus/plugin-structured-data/project.json",
-          "hash": "12892477741058381951"
-        }
-      ],
-      "summaries-plugin": [
-        {
-          "file": "libs/docusaurus/summaries-plugin/index.js",
-          "hash": "4037982981576980566",
-          "deps": [
-            "npm:glob"
-          ]
-        },
-        {
-          "file": "libs/docusaurus/summaries-plugin/project.json",
-          "hash": "5636639190242818980"
-        }
-      ],
-      "remark-content-enhancements": [
-        {
-          "file": "libs/docusaurus/remark-content-enhancements/index.js",
-          "hash": "2642426192537218056"
-        },
-        {
-          "file": "libs/docusaurus/remark-content-enhancements/package.json",
-          "hash": "1006937061416810498",
-          "deps": [
-            "npm:remark",
-            "npm:unist-util-visit@5.0.0"
-          ]
-        },
-        {
-          "file": "libs/docusaurus/remark-content-enhancements/project.json",
-          "hash": "2123589756961342624"
-        },
-        {
-          "file": "libs/docusaurus/remark-content-enhancements/transformers/slides.js",
-          "hash": "5262355770801465557",
-          "deps": [
-            "npm:unist-util-visit@5.0.0"
-          ]
-        }
-      ],
-      "scripts": [
-        {
-          "file": "tools/scripts/project.json",
-          "hash": "17998490501469149046"
-        }
-      ],
-      "plugin-og-image": [
-        {
-          "file": "libs/docusaurus/plugin-og-image/index.js",
-          "hash": "16623384347491649616",
-          "deps": [
-            "npm:sharp",
-            [
-              "npm:satori@0.18.3",
-              "dynamic"
-            ]
-          ]
-        },
-        {
-          "file": "libs/docusaurus/plugin-og-image/package.json",
-          "hash": "12525759808112617022"
-        },
-        {
-          "file": "libs/docusaurus/plugin-og-image/project.json",
-          "hash": "13183088947058826863"
-        }
-      ],
       "learn-app": [
         {
           "file": "apps/learn-app/.env.example",
@@ -612,7 +513,7 @@
         },
         {
           "file": "apps/learn-app/project.json",
-          "hash": "9209114643438686512"
+          "hash": "888853822119981584"
         },
         {
           "file": "apps/learn-app/scripts/add-og-images-properly.js",
@@ -1106,6 +1007,44 @@
           "hash": "11777648533179765634"
         }
       ],
+      "summaries-plugin": [
+        {
+          "file": "libs/docusaurus/summaries-plugin/index.js",
+          "hash": "4037982981576980566",
+          "deps": [
+            "npm:glob"
+          ]
+        },
+        {
+          "file": "libs/docusaurus/summaries-plugin/project.json",
+          "hash": "5636639190242818980"
+        }
+      ],
+      "panaversityfs-plugin": [
+        {
+          "file": "libs/docusaurus/panaversityfs-plugin/index.js",
+          "hash": "15182335414882091012"
+        },
+        {
+          "file": "libs/docusaurus/panaversityfs-plugin/mcp-client.js",
+          "hash": "5218366822993594787"
+        },
+        {
+          "file": "libs/docusaurus/panaversityfs-plugin/mcp-http-client.js",
+          "hash": "146946626735221406"
+        },
+        {
+          "file": "libs/docusaurus/panaversityfs-plugin/package.json",
+          "hash": "7769342336381323143",
+          "deps": [
+            "npm:@docusaurus/core"
+          ]
+        },
+        {
+          "file": "libs/docusaurus/panaversityfs-plugin/project.json",
+          "hash": "8339024887621996337"
+        }
+      ],
       "remark-interactive-python": [
         {
           "file": "libs/docusaurus/remark-interactive-python/index.js",
@@ -1124,6 +1063,71 @@
         {
           "file": "libs/docusaurus/remark-interactive-python/project.json",
           "hash": "13781028463573944963"
+        }
+      ],
+      "plugin-structured-data": [
+        {
+          "file": "libs/docusaurus/plugin-structured-data/index.js",
+          "hash": "10943727081996657737",
+          "deps": [
+            "npm:cheerio@1.1.2"
+          ]
+        },
+        {
+          "file": "libs/docusaurus/plugin-structured-data/project.json",
+          "hash": "12892477741058381951"
+        }
+      ],
+      "remark-content-enhancements": [
+        {
+          "file": "libs/docusaurus/remark-content-enhancements/index.js",
+          "hash": "2642426192537218056"
+        },
+        {
+          "file": "libs/docusaurus/remark-content-enhancements/package.json",
+          "hash": "1006937061416810498",
+          "deps": [
+            "npm:remark",
+            "npm:unist-util-visit@5.0.0"
+          ]
+        },
+        {
+          "file": "libs/docusaurus/remark-content-enhancements/project.json",
+          "hash": "2123589756961342624"
+        },
+        {
+          "file": "libs/docusaurus/remark-content-enhancements/transformers/slides.js",
+          "hash": "5262355770801465557",
+          "deps": [
+            "npm:unist-util-visit@5.0.0"
+          ]
+        }
+      ],
+      "plugin-og-image": [
+        {
+          "file": "libs/docusaurus/plugin-og-image/index.js",
+          "hash": "16623384347491649616",
+          "deps": [
+            "npm:sharp",
+            [
+              "npm:satori@0.18.3",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "libs/docusaurus/plugin-og-image/package.json",
+          "hash": "12525759808112617022"
+        },
+        {
+          "file": "libs/docusaurus/plugin-og-image/project.json",
+          "hash": "13183088947058826863"
+        }
+      ],
+      "scripts": [
+        {
+          "file": "tools/scripts/project.json",
+          "hash": "17998490501469149046"
         }
       ]
     }

@@ -72,7 +72,7 @@ Smallest: Context
 5. **Wait 3-5 seconds** for download completion
 6. **Verify quality IMMEDIATELY** (6 gates below)
 7. **If gates fail**: Continue in same chat with principle-based feedback (max 3 iterations)
-8. **If gates pass**: Copy from `.playwright-mcp/Gemini-Generated-Image-*.png` to `book-source/static/img/part-{N}/chapter-{NN}/{filename}.png`
+8. **If gates pass**: Copy from `.playwright-mcp/Gemini-Generated-Image-*.png` to `apps/learn-app/static/img/part-{N}/chapter-{NN}/{filename}.png`
 9. **Embed in lesson** (Step 8.5 below)
 10. **Start NEW CHAT** for next visual (prevents context contamination)
 
@@ -168,7 +168,7 @@ Role: 'Strategic oversight, contract validation', Gold (#fbbf24), Large hexagon.
 
 1. **Determine lesson file:**
    - Read creative brief's `Chapter` and `Lesson` metadata
-   - Target: `book-source/docs/[part]/[chapter]/[lesson-file].md`
+   - Target: `apps/learn-app/docs/[part]/[chapter]/[lesson-file].md`
 
 2. **Find insertion point:**
    - Search for concept explanation section related to this visual
@@ -261,7 +261,7 @@ Total: 18 visuals
 ✅ Generated: 16 (2K, avg 2-3 iterations)
 ⚠️ Deferred: 2 (quality issues after 3 tries)
 Time: ~45 min
-Location: book-source/static/img/part-{N}/chapter-{NN}/
+Location: apps/learn-app/static/img/part-{N}/chapter-{NN}/
 ```
 
 **Principle:** Autonomous execution without interruption = efficient batch processing

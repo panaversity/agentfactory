@@ -10,7 +10,7 @@ Open Graph (OG) images were not appearing when sharing the website on social med
 
 ### What Was Working ✅
 1. **OG Image Generation**: The plugin was successfully generating 175+ OG images locally
-2. **Image Location**: Images were correctly saved to `book-source/static/img/og/`
+2. **Image Location**: Images were correctly saved to `apps/learn-app/static/img/og/`
 3. **Build Process**: Images were being copied to `build/img/og/` during local builds
 4. **HTML Meta Tags**: The HTML files had correct OG meta tags injected:
    ```html
@@ -40,13 +40,13 @@ Open Graph (OG) images were not appearing when sharing the website on social med
    - **Installs**: DejaVu and Liberation fonts needed by the OG image generator
    - **Ensures**: Plugin can generate images during CI/CD build
 
-2. **Kept `.gitignore`** (`book-source/.gitignore`)
+2. **Kept `.gitignore`** (`apps/learn-app/.gitignore`)
    - **Kept**: `/static/img/og` in the ignore list
    - **Reason**: Images are auto-generated during build, no need to commit them
 
 ### Files Changed
 - `.github/workflows/deploy.yml` - Added font installation step for OG image generation
-- `book-source/.gitignore` - Kept OG image directory in ignore list (images generated during CI)
+- `apps/learn-app/.gitignore` - Kept OG image directory in ignore list (images generated during CI)
 
 ## Verification Steps
 
@@ -55,7 +55,7 @@ After committing and pushing these changes, verify the fix by:
 1. **Check Git Status**:
    ```bash
    git status
-   # Should show ~175 new files in book-source/static/img/og/
+   # Should show ~175 new files in apps/learn-app/static/img/og/
    ```
 
 2. **Commit Changes**:
@@ -122,7 +122,7 @@ We're using the **CI/CD generation approach** (not committing images):
 
 ## Plugin Details
 
-The OG image generator plugin (`book-source/plugins/docusaurus-plugin-og-image-generator/`):
+The OG image generator plugin (`apps/learn-app/plugins/docusaurus-plugin-og-image-generator/`):
 - Uses **Satori** for SVG to PNG conversion
 - Uses **Sharp** for image processing
 - Runs during Docusaurus `postBuild` lifecycle

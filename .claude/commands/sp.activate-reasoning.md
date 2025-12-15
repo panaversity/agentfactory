@@ -1401,7 +1401,7 @@ Based on this session, you might want to extract reusable patterns:
   - Section 5.2: Specification Triad (WHAT + HOW + CONTEXT)
 
 **Book Context**:
-- `book-source/docs/preface-agent-native.md`
+- `apps/learn-app/docs/preface-agent-native.md`
   - CoLearning philosophy (bidirectional learning)
   - Three Roles framework (AI as Teacher + Student + Co-Worker)
 

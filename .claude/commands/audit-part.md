@@ -9,7 +9,7 @@ You are executing a comprehensive Part audit using the framework defined in `.cl
 **READ FIRST** (mandatory context gathering):
 1. `.specify/experiment-prompts/part-audit-prompt.md` - Full audit framework
 2. `.specify/memory/constitution.md` - Constitutional governance
-3. `book-source/docs/chapter-index.md` - Part structure and tiers
+3. `apps/learn-app/docs/chapter-index.md` - Part structure and tiers
 4. Relevant teaching papers from `papers/` directory
 
 **TARGET PART**: The user will specify which part to audit (e.g., "Part 4" or path to part directory)

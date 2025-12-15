@@ -34,7 +34,7 @@ plugins: [
 
 ```bash
 # Build with plugin
-cd book-source
+cd apps/learn-app
 npm run build 2>&1 | grep PanaversityFS
 
 # Expected output (mock mode)

@@ -75,11 +75,11 @@ $ARGUMENTS
     "plan": "specs/part-4-chapter-14/plan.md",
     "tasks": "specs/part-4-chapter-14/tasks.md",
     "lessons": [
-      "book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/01-introduction.md",
-      "book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/02-numeric-types.md",
-      "book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/03-strings.md",
-      "book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/04-booleans.md",
-      "book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/05-none-type.md"
+      "apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/01-introduction.md",
+      "apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/02-numeric-types.md",
+      "apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/03-strings.md",
+      "apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/04-booleans.md",
+      "apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/05-none-type.md"
     ],
     "validation_report": "VALIDATION_REPORT_CHAPTER_14.md"
   },

@@ -59,7 +59,7 @@ $ARGUMENTS
    - 10x-99x multiplier mindset
 
 2. **Detect Content Source** (from user input):
-   - **Pattern 1**: "parts X-Y" → Book content (Glob chapters in `book-source/docs/`)
+   - **Pattern 1**: "parts X-Y" → Book content (Glob chapters in `apps/learn-app/docs/`)
    - **Pattern 2**: Multi-line description → Raw ideas (parse topics/tools)
    - **Pattern 3**: "@context/path" → Context files (read specified directory)
 

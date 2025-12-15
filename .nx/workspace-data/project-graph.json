@@ -433,6 +433,19 @@
               "default",
               "^production"
             ]
+          },
+          "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+              "cwd": "apps/learn-app",
+              "command": "pnpm typecheck"
+            },
+            "cache": true,
+            "configurations": {},
+            "parallelism": true,
+            "inputs": [
+              "default"
+            ]
           }
         },
         "$schema": "../../node_modules/nx/schemas/project-schema.json",
@@ -32000,5 +32013,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1765827355510
+  "computedAt": 1765828399786
 }

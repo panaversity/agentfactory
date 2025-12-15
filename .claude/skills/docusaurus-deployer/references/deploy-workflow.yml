@@ -26,24 +26,24 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: './book-source/package-lock.json'
+          cache-dependency-path: './apps/learn-app/package-lock.json'
 
       - name: Install dependencies
-        working-directory: ./book-source
+        working-directory: ./apps/learn-app
         run: npm ci
 
       - name: Run TypeScript type check
-        working-directory: ./book-source
+        working-directory: ./apps/learn-app
         run: npm run typecheck
 
       - name: Build website
-        working-directory: ./book-source
+        working-directory: ./apps/learn-app
         run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: './book-source/build'
+          path: './apps/learn-app/build'
 
   deploy:
     environment:

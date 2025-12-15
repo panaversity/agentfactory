@@ -311,16 +311,16 @@ mdls -name kMDItemNumberOfPages "chapter-XX-slides.pdf"
 **Renaming & Moving**:
 ```bash
 # Example for Chapter 1:
-mv ~/Downloads/"The-AI-Coding-Revolution.pdf" "book-source/static/slides/chapter-01-slides.pdf"
+mv ~/Downloads/"The-AI-Coding-Revolution.pdf" "apps/learn-app/static/slides/chapter-01-slides.pdf"
 
 # Example for Chapter 31:
-mv ~/Downloads/"Designing-Reusable-Intelligence.pdf" "book-source/static/slides/chapter-31-slides.pdf"
+mv ~/Downloads/"Designing-Reusable-Intelligence.pdf" "apps/learn-app/static/slides/chapter-31-slides.pdf"
 ```
 
-- **Integration Path**: All slides must be in `book-source/static/slides/` directory
+- **Integration Path**: All slides must be in `apps/learn-app/static/slides/` directory
 
 **6. Integrate into Documentation** (2 min)
-- Open chapter README: `book-source/docs/[part]/[chapter]/README.md`
+- Open chapter README: `apps/learn-app/docs/[part]/[chapter]/README.md`
 - Add slides metadata to frontmatter (YAML at top of file):
 
 ```markdown
@@ -477,7 +477,7 @@ For processing 3+ chapters in one session (recommended for Parts with multiple c
 9. Rename/move Chapter N PDF while N+1 generates (parallel work)
 
 ### Integration Phase (bulk, 10-15 min)
-10. Move all PDFs to `book-source/static/slides/` at once
+10. Move all PDFs to `apps/learn-app/static/slides/` at once
 11. Add slides metadata to frontmatter in all chapter READMEs sequentially
 12. Verify all slides load correctly in local Docusaurus build (`npm run build`)
 
@@ -512,7 +512,7 @@ For batch processing multiple chapters with browser automation:
 7. Click "Generate" and monitor (5-30 min wait)
 8. Detect completion (download button appears)
 9. Download PDF to `.playwright-mcp/` directory
-10. Move PDF to `book-source/static/slides/` with standardized naming
+10. Move PDF to `apps/learn-app/static/slides/` with standardized naming
 11. Update chapter README frontmatter with slides metadata (automated text manipulation)
 
 ### Benefits
