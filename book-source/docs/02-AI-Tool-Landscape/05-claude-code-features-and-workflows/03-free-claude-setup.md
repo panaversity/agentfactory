@@ -1,9 +1,10 @@
 ---
-title: "Free Claude Code Setup with Google Gemini"
+title: "Free Claude Code Setup: Gemini & DeepSeek Backends"
 sidebar_position: 3
 chapter: 5
 lesson: 3
-duration_minutes: 15
+duration_minutes: 20
+description: "Configure Claude Code with free AI backends (Google Gemini or DeepSeek) as alternatives to official Anthropic subscription"
 
 # PEDAGOGICAL LAYER METADATA
 primary_layer: "Layer 1"
@@ -20,7 +21,14 @@ skills:
     category: "Technical"
     bloom_level: "Apply"
     digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can configure Claude Code to use alternative AI backends via API routing, understand the architecture of backend abstraction, and evaluate trade-offs between official and alternative setups"
+    measurable_at_this_level: "Student can configure Claude Code to use alternative AI backends (Gemini or DeepSeek) via API routing, understand the architecture of backend abstraction, and evaluate trade-offs between providers."
+
+  - name: "Multi-Provider API Configuration"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Technical Competence"
+    measurable_at_this_level: "Student can configure and switch between multiple AI API providers while maintaining a consistent tooling interface."
 
 learning_objectives:
   - objective: "Understand API-based architecture where frontend (Claude Code CLI) separates from backend (AI model)"
@@ -43,30 +51,70 @@ learning_objectives:
     proficiency_level: "B1"
     bloom_level: "Evaluate"
     assessment_method: "Articulation of when each approach is appropriate"
+  - objective: "Configure provider-specific API endpoints and authentication"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Successful configuration of at least one alternative provider"
 
 # Cognitive load tracking
 cognitive_load:
-  new_concepts: 9
-  assessment: "9 concepts (API routing, backend abstraction, format translation, environment variables, free tier limits, router configuration, daily workflow, architecture layers, trade-off evaluation) - within B1 limit of 10 ✓"
+  new_concepts: 11
+  assessment: "11 concepts (API routing, backend abstraction, format translation, environment variables, free tier limits, router configuration, daily workflow, architecture layers, trade-off evaluation, provider selection, multi-provider configuration) - at B1 limit of 10-12 ⚠️ Consider chunking"
+  remediation: "Present as choose-one-path initially, introduce second provider as extension activity"
 
 # Differentiation guidance
 differentiation:
   extension_for_advanced: "Configure multiple backends (Gemini + local Ollama), implement custom routing logic, monitor API usage patterns"
   remedial_for_struggling: "Focus on copy-paste setup first, understand architecture later; verify it works before understanding why"
+  pathway_guidance: "Recommended: Start with Gemini (Step 1-3), verify working, then optionally explore DeepSeek. Advanced students can configure both simultaneously."
 
 # Generation metadata
 generated_by: "AI-Native Software Development Curriculum Team"
 source_spec: "Educational accessibility initiative"
 created: "2025-11-20"
-last_modified: "2025-11-20"
-version: "1.0.0"
+last_modified: "2025-12-10"
+version: "1.1.0"
 
 # Legacy compatibility
 prerequisites:
   - "Lesson 1: Understanding Claude Code paradigm"
   - "Node.js 18+ installed"
-  - "Free Google Account"
+  - "Free Google Account OR DeepSeek Account (choose one)"
   - "Terminal access"
+  - "Understanding of environment variables (remedial support provided)"
+
+# Related Resources
+related_resources:
+  - title: "Google AI Studio Documentation"
+    url: "https://ai.google.dev/gemini-api/docs"
+    type: "official_docs"
+  
+  - title: "DeepSeek API Documentation"
+    url: "https://platform.deepseek.com/api-docs"
+    type: "official_docs"
+  
+  - title: "Claude Code Router Configuration"
+    url: "https://github.com/musistudio/claude-code-router"
+    type: "tool_docs"
+
+comparison_table:
+  title: "Provider Comparison"
+  note: "See lesson content for detailed comparison of Gemini vs DeepSeek"
+
+# Tags for Discoverability
+tags:
+  - "free-tier"
+  - "google-gemini"
+  - "deepseek"
+  - "api-configuration"
+  - "alternative-backends"
+  - "cost-optimization"
+
+keywords:
+  - "free Claude Code"
+  - "Gemini API setup"
+  - "DeepSeek integration"
+  - "AI backend switching"
 ---
 
 # Extension: Free Claude Code Setup with Google Gemini
@@ -352,3 +400,4 @@ echo $DEEPSEEK_API_KEY  # Should show your key (not empty!)
 ---
 
 That's it. Proceed to **Lesson 3** to learn persistent project context.
+
