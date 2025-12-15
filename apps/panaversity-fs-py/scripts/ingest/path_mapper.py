@@ -81,7 +81,7 @@ def map_source_to_storage(source_path: str) -> MappedPath:
     Mapping Rules:
         - Part-NN/Chapter-NN/NN-name.md → content/NN-Part/NN-Chapter/NN-name.md
         - Part-NN/Chapter-NN/NN-name.summary.md → content/NN-Part/NN-Chapter/NN-name.summary.md
-        - Part-NN/Chapter-NN/img/*.png → static/img/*.png
+        - Part-NN/Chapter-NN/img/*.png → static/images/*.png (img normalizes to images)
         - README.md files → ignored (not synced)
     """
     # Normalize path separators

@@ -97,7 +97,7 @@ def sample_paths() -> list[dict]:
         },
         {
             "source": "Part-01/Chapter-01/img/diagram.png",
-            "expected": "static/img/diagram.png",
+            "expected": "static/images/diagram.png",  # img normalizes to images
             "valid": True,
             "content_type": "asset"
         },

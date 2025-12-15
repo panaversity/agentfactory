@@ -102,11 +102,11 @@ class TestMapSourceToStorage:
         assert result.content_type == ContentType.SUMMARY
 
     def test_valid_asset_path(self):
-        """Test mapping a valid asset path."""
+        """Test mapping a valid asset path (img normalizes to images)."""
         result = map_source_to_storage("Part-01/Chapter-01/img/diagram.png")
 
         assert result.valid is True
-        assert result.storage_path == "static/img/diagram.png"
+        assert result.storage_path == "static/images/diagram.png"
         assert result.content_type == ContentType.ASSET
 
     def test_readme_path_skipped(self):
@@ -238,7 +238,7 @@ class TestParametrized:
         ("Part-01/Chapter-01/01-intro.md", "content/01-Part/01-Chapter/01-intro.md", True),
         ("Part-02/Chapter-03/05-advanced.md", "content/02-Part/03-Chapter/05-advanced.md", True),
         ("Part-01/Chapter-01/01-intro.summary.md", "content/01-Part/01-Chapter/01-intro.summary.md", True),
-        ("Part-01/Chapter-01/img/test.png", "static/img/test.png", True),
+        ("Part-01/Chapter-01/img/test.png", "static/images/test.png", True),  # img normalizes to images
         ("Part-01/Chapter-01/README.md", None, False),
         ("invalid.md", None, False),
     ])
