@@ -1,0 +1,48 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*"],
+    "production": [
+      "default",
+      "!{projectRoot}/**/*.spec.*",
+      "!{projectRoot}/test/**/*",
+      "!{projectRoot}/**/*.md"
+    ],
+    "pythonInputs": [
+      "{projectRoot}/**/*.py",
+      "{projectRoot}/pyproject.toml",
+      "{projectRoot}/uv.lock"
+    ],
+    "docusaurusInputs": [
+      "{projectRoot}/**/*.ts",
+      "{projectRoot}/**/*.tsx",
+      "{projectRoot}/**/*.js",
+      "{projectRoot}/**/*.jsx",
+      "{projectRoot}/**/*.css",
+      "{projectRoot}/docs/**/*",
+      "{projectRoot}/static/**/*",
+      "{projectRoot}/package.json",
+      "{projectRoot}/docusaurus.config.ts"
+    ]
+  },
+  "targetDefaults": {
+    "build": {
+      "cache": true,
+      "inputs": ["production", "^production"],
+      "outputs": ["{projectRoot}/build", "{projectRoot}/dist"]
+    },
+    "test": {
+      "cache": true,
+      "inputs": ["default", "^production"]
+    },
+    "lint": {
+      "cache": true,
+      "inputs": ["default"]
+    },
+    "typecheck": {
+      "cache": true,
+      "inputs": ["default", "^production"]
+    }
+  },
+  "defaultBase": "main"
+}

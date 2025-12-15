@@ -1,0 +1,3212 @@
+[
+  {
+    "source": "npm:@babel/code-frame",
+    "target": "npm:@babel/helper-validator-identifier",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/code-frame",
+    "target": "npm:js-tokens",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/code-frame",
+    "target": "npm:picocolors",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/core",
+    "target": "npm:@babel/code-frame",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/core",
+    "target": "npm:@babel/generator",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/core",
+    "target": "npm:@babel/helper-compilation-targets",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/core",
+    "target": "npm:@babel/helper-module-transforms",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/core",
+    "target": "npm:@babel/helpers",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/core",
+    "target": "npm:@babel/parser",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/core",
+    "target": "npm:@babel/template",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/core",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/core",
+    "target": "npm:@babel/types",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/core",
+    "target": "npm:@jridgewell/remapping",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/core",
+    "target": "npm:convert-source-map",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/core",
+    "target": "npm:debug",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/core",
+    "target": "npm:gensync",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/core",
+    "target": "npm:json5",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/core",
+    "target": "npm:semver@6.3.1",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/generator",
+    "target": "npm:@babel/parser",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/generator",
+    "target": "npm:@babel/types",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/generator",
+    "target": "npm:@jridgewell/gen-mapping",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/generator",
+    "target": "npm:@jridgewell/trace-mapping",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/generator",
+    "target": "npm:jsesc",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-annotate-as-pure",
+    "target": "npm:@babel/types",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-compilation-targets",
+    "target": "npm:@babel/compat-data",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-compilation-targets",
+    "target": "npm:@babel/helper-validator-option",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-compilation-targets",
+    "target": "npm:browserslist",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-compilation-targets",
+    "target": "npm:lru-cache",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-compilation-targets",
+    "target": "npm:semver@6.3.1",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-create-class-features-plugin",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-create-class-features-plugin",
+    "target": "npm:@babel/helper-annotate-as-pure",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-create-class-features-plugin",
+    "target": "npm:@babel/helper-member-expression-to-functions",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-create-class-features-plugin",
+    "target": "npm:@babel/helper-optimise-call-expression",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-create-class-features-plugin",
+    "target": "npm:@babel/helper-replace-supers",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-create-class-features-plugin",
+    "target": "npm:@babel/helper-skip-transparent-expression-wrappers",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-create-class-features-plugin",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-create-class-features-plugin",
+    "target": "npm:semver@6.3.1",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-create-regexp-features-plugin",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-create-regexp-features-plugin",
+    "target": "npm:@babel/helper-annotate-as-pure",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-create-regexp-features-plugin",
+    "target": "npm:regexpu-core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-create-regexp-features-plugin",
+    "target": "npm:semver@6.3.1",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-define-polyfill-provider",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-define-polyfill-provider",
+    "target": "npm:@babel/helper-compilation-targets",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-define-polyfill-provider",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-define-polyfill-provider",
+    "target": "npm:debug",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-define-polyfill-provider",
+    "target": "npm:lodash.debounce",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-define-polyfill-provider",
+    "target": "npm:resolve",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-member-expression-to-functions",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-member-expression-to-functions",
+    "target": "npm:@babel/types",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-module-imports",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-module-imports",
+    "target": "npm:@babel/types",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-module-transforms",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-module-transforms",
+    "target": "npm:@babel/helper-module-imports",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-module-transforms",
+    "target": "npm:@babel/helper-validator-identifier",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-module-transforms",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-optimise-call-expression",
+    "target": "npm:@babel/types",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-remap-async-to-generator",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-remap-async-to-generator",
+    "target": "npm:@babel/helper-annotate-as-pure",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-remap-async-to-generator",
+    "target": "npm:@babel/helper-wrap-function",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-remap-async-to-generator",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-replace-supers",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-replace-supers",
+    "target": "npm:@babel/helper-member-expression-to-functions",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-replace-supers",
+    "target": "npm:@babel/helper-optimise-call-expression",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-replace-supers",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-skip-transparent-expression-wrappers",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-skip-transparent-expression-wrappers",
+    "target": "npm:@babel/types",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-wrap-function",
+    "target": "npm:@babel/template",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-wrap-function",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helper-wrap-function",
+    "target": "npm:@babel/types",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helpers",
+    "target": "npm:@babel/template",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/helpers",
+    "target": "npm:@babel/types",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/parser",
+    "target": "npm:@babel/types",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-bugfix-firefox-class-in-computed-class-key",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-bugfix-firefox-class-in-computed-class-key",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-bugfix-firefox-class-in-computed-class-key",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-bugfix-safari-class-field-initializer-scope",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-bugfix-safari-class-field-initializer-scope",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining",
+    "target": "npm:@babel/helper-skip-transparent-expression-wrappers",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining",
+    "target": "npm:@babel/plugin-transform-optional-chaining",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-proposal-decorators",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-proposal-decorators",
+    "target": "npm:@babel/helper-create-class-features-plugin",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-proposal-decorators",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-proposal-decorators",
+    "target": "npm:@babel/plugin-syntax-decorators",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-proposal-private-property-in-object",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-syntax-decorators",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-syntax-decorators",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-syntax-import-assertions",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-syntax-import-assertions",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-syntax-import-attributes",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-syntax-import-attributes",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-syntax-jsx",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-syntax-jsx",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-syntax-typescript",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-syntax-typescript",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-syntax-unicode-sets-regex",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-syntax-unicode-sets-regex",
+    "target": "npm:@babel/helper-create-regexp-features-plugin",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-syntax-unicode-sets-regex",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-arrow-functions",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-arrow-functions",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-async-generator-functions",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-async-generator-functions",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-async-generator-functions",
+    "target": "npm:@babel/helper-remap-async-to-generator",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-async-generator-functions",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-async-to-generator",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-async-to-generator",
+    "target": "npm:@babel/helper-module-imports",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-async-to-generator",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-async-to-generator",
+    "target": "npm:@babel/helper-remap-async-to-generator",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-block-scoped-functions",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-block-scoped-functions",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-block-scoping",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-block-scoping",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-class-properties",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-class-properties",
+    "target": "npm:@babel/helper-create-class-features-plugin",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-class-properties",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-class-static-block",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-class-static-block",
+    "target": "npm:@babel/helper-create-class-features-plugin",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-class-static-block",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-classes",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-classes",
+    "target": "npm:@babel/helper-annotate-as-pure",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-classes",
+    "target": "npm:@babel/helper-compilation-targets",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-classes",
+    "target": "npm:@babel/helper-globals",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-classes",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-classes",
+    "target": "npm:@babel/helper-replace-supers",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-classes",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-computed-properties",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-computed-properties",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-computed-properties",
+    "target": "npm:@babel/template",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-destructuring",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-destructuring",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-destructuring",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-dotall-regex",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-dotall-regex",
+    "target": "npm:@babel/helper-create-regexp-features-plugin",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-dotall-regex",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-duplicate-keys",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-duplicate-keys",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-duplicate-named-capturing-groups-regex",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-duplicate-named-capturing-groups-regex",
+    "target": "npm:@babel/helper-create-regexp-features-plugin",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-duplicate-named-capturing-groups-regex",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-dynamic-import",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-dynamic-import",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-explicit-resource-management",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-explicit-resource-management",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-explicit-resource-management",
+    "target": "npm:@babel/plugin-transform-destructuring",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-exponentiation-operator",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-exponentiation-operator",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-export-namespace-from",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-export-namespace-from",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-for-of",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-for-of",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-for-of",
+    "target": "npm:@babel/helper-skip-transparent-expression-wrappers",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-function-name",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-function-name",
+    "target": "npm:@babel/helper-compilation-targets",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-function-name",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-function-name",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-json-strings",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-json-strings",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-literals",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-literals",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-logical-assignment-operators",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-logical-assignment-operators",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-member-expression-literals",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-member-expression-literals",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-modules-amd",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-modules-amd",
+    "target": "npm:@babel/helper-module-transforms",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-modules-amd",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-modules-commonjs",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-modules-commonjs",
+    "target": "npm:@babel/helper-module-transforms",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-modules-commonjs",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-modules-systemjs",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-modules-systemjs",
+    "target": "npm:@babel/helper-module-transforms",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-modules-systemjs",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-modules-systemjs",
+    "target": "npm:@babel/helper-validator-identifier",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-modules-systemjs",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-modules-umd",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-modules-umd",
+    "target": "npm:@babel/helper-module-transforms",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-modules-umd",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-named-capturing-groups-regex",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-named-capturing-groups-regex",
+    "target": "npm:@babel/helper-create-regexp-features-plugin",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-named-capturing-groups-regex",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-new-target",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-new-target",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-nullish-coalescing-operator",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-nullish-coalescing-operator",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-numeric-separator",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-numeric-separator",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-object-rest-spread",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-object-rest-spread",
+    "target": "npm:@babel/helper-compilation-targets",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-object-rest-spread",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-object-rest-spread",
+    "target": "npm:@babel/plugin-transform-destructuring",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-object-rest-spread",
+    "target": "npm:@babel/plugin-transform-parameters",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-object-rest-spread",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-object-super",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-object-super",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-object-super",
+    "target": "npm:@babel/helper-replace-supers",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-optional-catch-binding",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-optional-catch-binding",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-optional-chaining",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-optional-chaining",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-optional-chaining",
+    "target": "npm:@babel/helper-skip-transparent-expression-wrappers",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-parameters",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-parameters",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-private-methods",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-private-methods",
+    "target": "npm:@babel/helper-create-class-features-plugin",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-private-methods",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-private-property-in-object",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-private-property-in-object",
+    "target": "npm:@babel/helper-annotate-as-pure",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-private-property-in-object",
+    "target": "npm:@babel/helper-create-class-features-plugin",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-private-property-in-object",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-property-literals",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-property-literals",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-regenerator",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-regenerator",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-regexp-modifiers",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-regexp-modifiers",
+    "target": "npm:@babel/helper-create-regexp-features-plugin",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-regexp-modifiers",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-reserved-words",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-reserved-words",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-runtime",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-runtime",
+    "target": "npm:@babel/helper-module-imports",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-runtime",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-runtime",
+    "target": "npm:babel-plugin-polyfill-corejs2",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-runtime",
+    "target": "npm:babel-plugin-polyfill-corejs3",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-runtime",
+    "target": "npm:babel-plugin-polyfill-regenerator",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-runtime",
+    "target": "npm:semver@6.3.1",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-shorthand-properties",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-shorthand-properties",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-spread",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-spread",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-spread",
+    "target": "npm:@babel/helper-skip-transparent-expression-wrappers",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-sticky-regex",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-sticky-regex",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-template-literals",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-template-literals",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-typeof-symbol",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-typeof-symbol",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-typescript",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-typescript",
+    "target": "npm:@babel/helper-annotate-as-pure",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-typescript",
+    "target": "npm:@babel/helper-create-class-features-plugin",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-typescript",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-typescript",
+    "target": "npm:@babel/helper-skip-transparent-expression-wrappers",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-typescript",
+    "target": "npm:@babel/plugin-syntax-typescript",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-unicode-escapes",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-unicode-escapes",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-unicode-property-regex",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-unicode-property-regex",
+    "target": "npm:@babel/helper-create-regexp-features-plugin",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-unicode-property-regex",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-unicode-regex",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-unicode-regex",
+    "target": "npm:@babel/helper-create-regexp-features-plugin",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-unicode-regex",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-unicode-sets-regex",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-unicode-sets-regex",
+    "target": "npm:@babel/helper-create-regexp-features-plugin",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/plugin-transform-unicode-sets-regex",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/compat-data",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/helper-compilation-targets",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/helper-validator-option",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-bugfix-firefox-class-in-computed-class-key",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-bugfix-safari-class-field-initializer-scope",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-proposal-private-property-in-object",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-syntax-import-assertions",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-syntax-import-attributes",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-syntax-unicode-sets-regex",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-arrow-functions",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-async-generator-functions",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-async-to-generator",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-block-scoped-functions",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-block-scoping",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-class-properties",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-class-static-block",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-classes",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-computed-properties",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-destructuring",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-dotall-regex",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-duplicate-keys",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-duplicate-named-capturing-groups-regex",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-dynamic-import",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-explicit-resource-management",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-exponentiation-operator",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-export-namespace-from",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-for-of",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-function-name",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-json-strings",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-literals",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-logical-assignment-operators",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-member-expression-literals",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-modules-amd",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-modules-commonjs",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-modules-systemjs",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-modules-umd",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-named-capturing-groups-regex",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-new-target",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-nullish-coalescing-operator",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-numeric-separator",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-object-rest-spread",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-object-super",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-optional-catch-binding",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-optional-chaining",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-parameters",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-private-methods",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-private-property-in-object",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-property-literals",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-regenerator",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-regexp-modifiers",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-reserved-words",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-shorthand-properties",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-spread",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-sticky-regex",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-template-literals",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-typeof-symbol",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-unicode-escapes",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-unicode-property-regex",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-unicode-regex",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/plugin-transform-unicode-sets-regex",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:@babel/preset-modules",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:babel-plugin-polyfill-corejs2",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:babel-plugin-polyfill-corejs3",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:babel-plugin-polyfill-regenerator",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:core-js-compat",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-env",
+    "target": "npm:semver@6.3.1",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-modules",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-modules",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-modules",
+    "target": "npm:@babel/types",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-modules",
+    "target": "npm:esutils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-typescript",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-typescript",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-typescript",
+    "target": "npm:@babel/helper-validator-option",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-typescript",
+    "target": "npm:@babel/plugin-syntax-jsx",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-typescript",
+    "target": "npm:@babel/plugin-transform-modules-commonjs",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/preset-typescript",
+    "target": "npm:@babel/plugin-transform-typescript",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/template",
+    "target": "npm:@babel/code-frame",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/template",
+    "target": "npm:@babel/parser",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/template",
+    "target": "npm:@babel/types",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/traverse",
+    "target": "npm:@babel/code-frame",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/traverse",
+    "target": "npm:@babel/generator",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/traverse",
+    "target": "npm:@babel/helper-globals",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/traverse",
+    "target": "npm:@babel/parser",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/traverse",
+    "target": "npm:@babel/template",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/traverse",
+    "target": "npm:@babel/types",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/traverse",
+    "target": "npm:debug",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/types",
+    "target": "npm:@babel/helper-string-parser",
+    "type": "static"
+  },
+  {
+    "source": "npm:@babel/types",
+    "target": "npm:@babel/helper-validator-identifier",
+    "type": "static"
+  },
+  {
+    "source": "npm:@emnapi/core",
+    "target": "npm:@emnapi/wasi-threads",
+    "type": "static"
+  },
+  {
+    "source": "npm:@emnapi/core",
+    "target": "npm:tslib",
+    "type": "static"
+  },
+  {
+    "source": "npm:@emnapi/runtime",
+    "target": "npm:tslib",
+    "type": "static"
+  },
+  {
+    "source": "npm:@emnapi/wasi-threads",
+    "target": "npm:tslib",
+    "type": "static"
+  },
+  {
+    "source": "npm:@jest/schemas",
+    "target": "npm:@sinclair/typebox",
+    "type": "static"
+  },
+  {
+    "source": "npm:@jridgewell/gen-mapping",
+    "target": "npm:@jridgewell/sourcemap-codec",
+    "type": "static"
+  },
+  {
+    "source": "npm:@jridgewell/gen-mapping",
+    "target": "npm:@jridgewell/trace-mapping",
+    "type": "static"
+  },
+  {
+    "source": "npm:@jridgewell/remapping",
+    "target": "npm:@jridgewell/gen-mapping",
+    "type": "static"
+  },
+  {
+    "source": "npm:@jridgewell/remapping",
+    "target": "npm:@jridgewell/trace-mapping",
+    "type": "static"
+  },
+  {
+    "source": "npm:@jridgewell/trace-mapping",
+    "target": "npm:@jridgewell/resolve-uri",
+    "type": "static"
+  },
+  {
+    "source": "npm:@jridgewell/trace-mapping",
+    "target": "npm:@jridgewell/sourcemap-codec",
+    "type": "static"
+  },
+  {
+    "source": "npm:@napi-rs/wasm-runtime",
+    "target": "npm:@emnapi/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@napi-rs/wasm-runtime",
+    "target": "npm:@emnapi/runtime",
+    "type": "static"
+  },
+  {
+    "source": "npm:@napi-rs/wasm-runtime",
+    "target": "npm:@tybys/wasm-util",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/devkit",
+    "target": "npm:@zkochan/js-yaml",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/devkit",
+    "target": "npm:ejs",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/devkit",
+    "target": "npm:enquirer",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/devkit",
+    "target": "npm:minimatch@9.0.3",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/devkit",
+    "target": "npm:nx",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/devkit",
+    "target": "npm:semver@7.7.3",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/devkit",
+    "target": "npm:tslib",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/devkit",
+    "target": "npm:yargs-parser",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:@babel/plugin-proposal-decorators",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:@babel/plugin-transform-class-properties",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:@babel/plugin-transform-runtime",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:@babel/preset-env",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:@babel/preset-typescript",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:@babel/runtime",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:@nx/devkit",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:@nx/workspace",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:@zkochan/js-yaml",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:babel-plugin-const-enum",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:babel-plugin-macros",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:babel-plugin-transform-typescript-metadata",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:chalk",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:columnify",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:detect-port",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:ignore@5.3.2",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:js-tokens",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:jsonc-parser",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:npm-run-path",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:picocolors",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:picomatch@4.0.2",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:semver@7.7.3",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:source-map-support",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:tinyglobby",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/js",
+    "target": "npm:tslib",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/workspace",
+    "target": "npm:@nx/devkit",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/workspace",
+    "target": "npm:@zkochan/js-yaml",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/workspace",
+    "target": "npm:chalk",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/workspace",
+    "target": "npm:enquirer",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/workspace",
+    "target": "npm:nx",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/workspace",
+    "target": "npm:picomatch@4.0.2",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/workspace",
+    "target": "npm:semver@7.7.3",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/workspace",
+    "target": "npm:tslib",
+    "type": "static"
+  },
+  {
+    "source": "npm:@nx/workspace",
+    "target": "npm:yargs-parser",
+    "type": "static"
+  },
+  {
+    "source": "npm:@tybys/wasm-util",
+    "target": "npm:tslib",
+    "type": "static"
+  },
+  {
+    "source": "npm:@yarnpkg/parsers",
+    "target": "npm:js-yaml",
+    "type": "static"
+  },
+  {
+    "source": "npm:@yarnpkg/parsers",
+    "target": "npm:tslib",
+    "type": "static"
+  },
+  {
+    "source": "npm:@zkochan/js-yaml",
+    "target": "npm:argparse@2.0.1",
+    "type": "static"
+  },
+  {
+    "source": "npm:ansi-styles@4.3.0",
+    "target": "npm:color-convert",
+    "type": "static"
+  },
+  {
+    "source": "npm:argparse@1.0.10",
+    "target": "npm:sprintf-js",
+    "type": "static"
+  },
+  {
+    "source": "npm:axios",
+    "target": "npm:follow-redirects",
+    "type": "static"
+  },
+  {
+    "source": "npm:axios",
+    "target": "npm:form-data",
+    "type": "static"
+  },
+  {
+    "source": "npm:axios",
+    "target": "npm:proxy-from-env",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-const-enum",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-const-enum",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-const-enum",
+    "target": "npm:@babel/plugin-syntax-typescript",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-const-enum",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-macros",
+    "target": "npm:@babel/runtime",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-macros",
+    "target": "npm:cosmiconfig",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-macros",
+    "target": "npm:resolve",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-polyfill-corejs2",
+    "target": "npm:@babel/compat-data",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-polyfill-corejs2",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-polyfill-corejs2",
+    "target": "npm:@babel/helper-define-polyfill-provider",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-polyfill-corejs2",
+    "target": "npm:semver@6.3.1",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-polyfill-corejs3",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-polyfill-corejs3",
+    "target": "npm:@babel/helper-define-polyfill-provider",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-polyfill-corejs3",
+    "target": "npm:core-js-compat",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-polyfill-regenerator",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-polyfill-regenerator",
+    "target": "npm:@babel/helper-define-polyfill-provider",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-transform-typescript-metadata",
+    "target": "npm:@babel/core",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-transform-typescript-metadata",
+    "target": "npm:@babel/helper-plugin-utils",
+    "type": "static"
+  },
+  {
+    "source": "npm:babel-plugin-transform-typescript-metadata",
+    "target": "npm:@babel/traverse",
+    "type": "static"
+  },
+  {
+    "source": "npm:bl",
+    "target": "npm:buffer",
+    "type": "static"
+  },
+  {
+    "source": "npm:bl",
+    "target": "npm:inherits",
+    "type": "static"
+  },
+  {
+    "source": "npm:bl",
+    "target": "npm:readable-stream",
+    "type": "static"
+  },
+  {
+    "source": "npm:brace-expansion",
+    "target": "npm:balanced-match",
+    "type": "static"
+  },
+  {
+    "source": "npm:browserslist",
+    "target": "npm:baseline-browser-mapping",
+    "type": "static"
+  },
+  {
+    "source": "npm:browserslist",
+    "target": "npm:caniuse-lite",
+    "type": "static"
+  },
+  {
+    "source": "npm:browserslist",
+    "target": "npm:electron-to-chromium",
+    "type": "static"
+  },
+  {
+    "source": "npm:browserslist",
+    "target": "npm:node-releases",
+    "type": "static"
+  },
+  {
+    "source": "npm:browserslist",
+    "target": "npm:update-browserslist-db",
+    "type": "static"
+  },
+  {
+    "source": "npm:buffer",
+    "target": "npm:base64-js",
+    "type": "static"
+  },
+  {
+    "source": "npm:buffer",
+    "target": "npm:ieee754",
+    "type": "static"
+  },
+  {
+    "source": "npm:call-bind-apply-helpers",
+    "target": "npm:es-errors",
+    "type": "static"
+  },
+  {
+    "source": "npm:call-bind-apply-helpers",
+    "target": "npm:function-bind",
+    "type": "static"
+  },
+  {
+    "source": "npm:chalk",
+    "target": "npm:ansi-styles@4.3.0",
+    "type": "static"
+  },
+  {
+    "source": "npm:chalk",
+    "target": "npm:supports-color",
+    "type": "static"
+  },
+  {
+    "source": "npm:cli-cursor",
+    "target": "npm:restore-cursor",
+    "type": "static"
+  },
+  {
+    "source": "npm:cliui",
+    "target": "npm:string-width",
+    "type": "static"
+  },
+  {
+    "source": "npm:cliui",
+    "target": "npm:strip-ansi",
+    "type": "static"
+  },
+  {
+    "source": "npm:cliui",
+    "target": "npm:wrap-ansi",
+    "type": "static"
+  },
+  {
+    "source": "npm:color-convert",
+    "target": "npm:color-name",
+    "type": "static"
+  },
+  {
+    "source": "npm:columnify",
+    "target": "npm:strip-ansi",
+    "type": "static"
+  },
+  {
+    "source": "npm:columnify",
+    "target": "npm:wcwidth",
+    "type": "static"
+  },
+  {
+    "source": "npm:combined-stream",
+    "target": "npm:delayed-stream",
+    "type": "static"
+  },
+  {
+    "source": "npm:core-js-compat",
+    "target": "npm:browserslist",
+    "type": "static"
+  },
+  {
+    "source": "npm:cosmiconfig",
+    "target": "npm:@types/parse-json",
+    "type": "static"
+  },
+  {
+    "source": "npm:cosmiconfig",
+    "target": "npm:import-fresh",
+    "type": "static"
+  },
+  {
+    "source": "npm:cosmiconfig",
+    "target": "npm:parse-json",
+    "type": "static"
+  },
+  {
+    "source": "npm:cosmiconfig",
+    "target": "npm:path-type",
+    "type": "static"
+  },
+  {
+    "source": "npm:cosmiconfig",
+    "target": "npm:yaml@1.10.2",
+    "type": "static"
+  },
+  {
+    "source": "npm:debug",
+    "target": "npm:ms",
+    "type": "static"
+  },
+  {
+    "source": "npm:defaults",
+    "target": "npm:clone",
+    "type": "static"
+  },
+  {
+    "source": "npm:detect-port",
+    "target": "npm:address",
+    "type": "static"
+  },
+  {
+    "source": "npm:detect-port",
+    "target": "npm:debug",
+    "type": "static"
+  },
+  {
+    "source": "npm:dotenv-expand",
+    "target": "npm:dotenv",
+    "type": "static"
+  },
+  {
+    "source": "npm:dunder-proto",
+    "target": "npm:call-bind-apply-helpers",
+    "type": "static"
+  },
+  {
+    "source": "npm:dunder-proto",
+    "target": "npm:es-errors",
+    "type": "static"
+  },
+  {
+    "source": "npm:dunder-proto",
+    "target": "npm:gopd",
+    "type": "static"
+  },
+  {
+    "source": "npm:ejs",
+    "target": "npm:jake",
+    "type": "static"
+  },
+  {
+    "source": "npm:end-of-stream",
+    "target": "npm:once",
+    "type": "static"
+  },
+  {
+    "source": "npm:enquirer",
+    "target": "npm:ansi-colors",
+    "type": "static"
+  },
+  {
+    "source": "npm:error-ex",
+    "target": "npm:is-arrayish",
+    "type": "static"
+  },
+  {
+    "source": "npm:es-object-atoms",
+    "target": "npm:es-errors",
+    "type": "static"
+  },
+  {
+    "source": "npm:es-set-tostringtag",
+    "target": "npm:es-errors",
+    "type": "static"
+  },
+  {
+    "source": "npm:es-set-tostringtag",
+    "target": "npm:get-intrinsic",
+    "type": "static"
+  },
+  {
+    "source": "npm:es-set-tostringtag",
+    "target": "npm:has-tostringtag",
+    "type": "static"
+  },
+  {
+    "source": "npm:es-set-tostringtag",
+    "target": "npm:hasown",
+    "type": "static"
+  },
+  {
+    "source": "npm:fdir",
+    "target": "npm:picomatch@4.0.3",
+    "type": "static"
+  },
+  {
+    "source": "npm:figures",
+    "target": "npm:escape-string-regexp",
+    "type": "static"
+  },
+  {
+    "source": "npm:filelist",
+    "target": "npm:minimatch@5.1.6",
+    "type": "static"
+  },
+  {
+    "source": "npm:form-data",
+    "target": "npm:asynckit",
+    "type": "static"
+  },
+  {
+    "source": "npm:form-data",
+    "target": "npm:combined-stream",
+    "type": "static"
+  },
+  {
+    "source": "npm:form-data",
+    "target": "npm:es-set-tostringtag",
+    "type": "static"
+  },
+  {
+    "source": "npm:form-data",
+    "target": "npm:hasown",
+    "type": "static"
+  },
+  {
+    "source": "npm:form-data",
+    "target": "npm:mime-types",
+    "type": "static"
+  },
+  {
+    "source": "npm:front-matter",
+    "target": "npm:js-yaml",
+    "type": "static"
+  },
+  {
+    "source": "npm:get-intrinsic",
+    "target": "npm:call-bind-apply-helpers",
+    "type": "static"
+  },
+  {
+    "source": "npm:get-intrinsic",
+    "target": "npm:es-define-property",
+    "type": "static"
+  },
+  {
+    "source": "npm:get-intrinsic",
+    "target": "npm:es-errors",
+    "type": "static"
+  },
+  {
+    "source": "npm:get-intrinsic",
+    "target": "npm:es-object-atoms",
+    "type": "static"
+  },
+  {
+    "source": "npm:get-intrinsic",
+    "target": "npm:function-bind",
+    "type": "static"
+  },
+  {
+    "source": "npm:get-intrinsic",
+    "target": "npm:get-proto",
+    "type": "static"
+  },
+  {
+    "source": "npm:get-intrinsic",
+    "target": "npm:gopd",
+    "type": "static"
+  },
+  {
+    "source": "npm:get-intrinsic",
+    "target": "npm:has-symbols",
+    "type": "static"
+  },
+  {
+    "source": "npm:get-intrinsic",
+    "target": "npm:hasown",
+    "type": "static"
+  },
+  {
+    "source": "npm:get-intrinsic",
+    "target": "npm:math-intrinsics",
+    "type": "static"
+  },
+  {
+    "source": "npm:get-proto",
+    "target": "npm:dunder-proto",
+    "type": "static"
+  },
+  {
+    "source": "npm:get-proto",
+    "target": "npm:es-object-atoms",
+    "type": "static"
+  },
+  {
+    "source": "npm:has-tostringtag",
+    "target": "npm:has-symbols",
+    "type": "static"
+  },
+  {
+    "source": "npm:hasown",
+    "target": "npm:function-bind",
+    "type": "static"
+  },
+  {
+    "source": "npm:import-fresh",
+    "target": "npm:parent-module",
+    "type": "static"
+  },
+  {
+    "source": "npm:import-fresh",
+    "target": "npm:resolve-from",
+    "type": "static"
+  },
+  {
+    "source": "npm:is-core-module",
+    "target": "npm:hasown",
+    "type": "static"
+  },
+  {
+    "source": "npm:is-wsl",
+    "target": "npm:is-docker",
+    "type": "static"
+  },
+  {
+    "source": "npm:jake",
+    "target": "npm:async",
+    "type": "static"
+  },
+  {
+    "source": "npm:jake",
+    "target": "npm:filelist",
+    "type": "static"
+  },
+  {
+    "source": "npm:jake",
+    "target": "npm:picocolors",
+    "type": "static"
+  },
+  {
+    "source": "npm:jest-diff",
+    "target": "npm:@jest/diff-sequences",
+    "type": "static"
+  },
+  {
+    "source": "npm:jest-diff",
+    "target": "npm:@jest/get-type",
+    "type": "static"
+  },
+  {
+    "source": "npm:jest-diff",
+    "target": "npm:chalk",
+    "type": "static"
+  },
+  {
+    "source": "npm:jest-diff",
+    "target": "npm:pretty-format",
+    "type": "static"
+  },
+  {
+    "source": "npm:js-yaml",
+    "target": "npm:argparse@1.0.10",
+    "type": "static"
+  },
+  {
+    "source": "npm:js-yaml",
+    "target": "npm:esprima",
+    "type": "static"
+  },
+  {
+    "source": "npm:log-symbols",
+    "target": "npm:chalk",
+    "type": "static"
+  },
+  {
+    "source": "npm:log-symbols",
+    "target": "npm:is-unicode-supported",
+    "type": "static"
+  },
+  {
+    "source": "npm:lru-cache",
+    "target": "npm:yallist",
+    "type": "static"
+  },
+  {
+    "source": "npm:mime-types",
+    "target": "npm:mime-db",
+    "type": "static"
+  },
+  {
+    "source": "npm:minimatch@5.1.6",
+    "target": "npm:brace-expansion",
+    "type": "static"
+  },
+  {
+    "source": "npm:minimatch@9.0.3",
+    "target": "npm:brace-expansion",
+    "type": "static"
+  },
+  {
+    "source": "npm:npm-run-path",
+    "target": "npm:path-key",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:@napi-rs/wasm-runtime",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:@yarnpkg/lockfile",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:@yarnpkg/parsers",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:@zkochan/js-yaml",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:axios",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:chalk",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:cli-cursor",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:cli-spinners",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:cliui",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:dotenv",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:dotenv-expand",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:enquirer",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:figures",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:flat",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:front-matter",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:ignore@7.0.5",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:jest-diff",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:jsonc-parser",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:lines-and-columns@2.0.3",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:minimatch@9.0.3",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:node-machine-id",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:npm-run-path",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:open",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:ora",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:resolve.exports",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:semver@7.7.3",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:string-width",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:tar-stream",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:tmp",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:tree-kill",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:tsconfig-paths",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:tslib",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:yaml@2.8.2",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:yargs",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:yargs-parser",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:@nx/nx-darwin-arm64",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:@nx/nx-darwin-x64",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:@nx/nx-freebsd-x64",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:@nx/nx-linux-arm-gnueabihf",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:@nx/nx-linux-arm64-gnu",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:@nx/nx-linux-arm64-musl",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:@nx/nx-linux-x64-gnu",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:@nx/nx-linux-x64-musl",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:@nx/nx-win32-arm64-msvc",
+    "type": "static"
+  },
+  {
+    "source": "npm:nx",
+    "target": "npm:@nx/nx-win32-x64-msvc",
+    "type": "static"
+  },
+  {
+    "source": "npm:once",
+    "target": "npm:wrappy",
+    "type": "static"
+  },
+  {
+    "source": "npm:onetime",
+    "target": "npm:mimic-fn",
+    "type": "static"
+  },
+  {
+    "source": "npm:open",
+    "target": "npm:define-lazy-prop",
+    "type": "static"
+  },
+  {
+    "source": "npm:open",
+    "target": "npm:is-docker",
+    "type": "static"
+  },
+  {
+    "source": "npm:open",
+    "target": "npm:is-wsl",
+    "type": "static"
+  },
+  {
+    "source": "npm:ora",
+    "target": "npm:bl",
+    "type": "static"
+  },
+  {
+    "source": "npm:ora",
+    "target": "npm:chalk",
+    "type": "static"
+  },
+  {
+    "source": "npm:ora",
+    "target": "npm:cli-cursor",
+    "type": "static"
+  },
+  {
+    "source": "npm:ora",
+    "target": "npm:cli-spinners",
+    "type": "static"
+  },
+  {
+    "source": "npm:ora",
+    "target": "npm:is-interactive",
+    "type": "static"
+  },
+  {
+    "source": "npm:ora",
+    "target": "npm:log-symbols",
+    "type": "static"
+  },
+  {
+    "source": "npm:ora",
+    "target": "npm:strip-ansi",
+    "type": "static"
+  },
+  {
+    "source": "npm:ora",
+    "target": "npm:wcwidth",
+    "type": "static"
+  },
+  {
+    "source": "npm:parent-module",
+    "target": "npm:callsites",
+    "type": "static"
+  },
+  {
+    "source": "npm:parse-json",
+    "target": "npm:@babel/code-frame",
+    "type": "static"
+  },
+  {
+    "source": "npm:parse-json",
+    "target": "npm:error-ex",
+    "type": "static"
+  },
+  {
+    "source": "npm:parse-json",
+    "target": "npm:json-parse-even-better-errors",
+    "type": "static"
+  },
+  {
+    "source": "npm:parse-json",
+    "target": "npm:lines-and-columns@1.2.4",
+    "type": "static"
+  },
+  {
+    "source": "npm:pretty-format",
+    "target": "npm:@jest/schemas",
+    "type": "static"
+  },
+  {
+    "source": "npm:pretty-format",
+    "target": "npm:ansi-styles@5.2.0",
+    "type": "static"
+  },
+  {
+    "source": "npm:pretty-format",
+    "target": "npm:react-is",
+    "type": "static"
+  },
+  {
+    "source": "npm:readable-stream",
+    "target": "npm:inherits",
+    "type": "static"
+  },
+  {
+    "source": "npm:readable-stream",
+    "target": "npm:string_decoder",
+    "type": "static"
+  },
+  {
+    "source": "npm:readable-stream",
+    "target": "npm:util-deprecate",
+    "type": "static"
+  },
+  {
+    "source": "npm:regenerate-unicode-properties",
+    "target": "npm:regenerate",
+    "type": "static"
+  },
+  {
+    "source": "npm:regexpu-core",
+    "target": "npm:regenerate",
+    "type": "static"
+  },
+  {
+    "source": "npm:regexpu-core",
+    "target": "npm:regenerate-unicode-properties",
+    "type": "static"
+  },
+  {
+    "source": "npm:regexpu-core",
+    "target": "npm:regjsgen",
+    "type": "static"
+  },
+  {
+    "source": "npm:regexpu-core",
+    "target": "npm:regjsparser",
+    "type": "static"
+  },
+  {
+    "source": "npm:regexpu-core",
+    "target": "npm:unicode-match-property-ecmascript",
+    "type": "static"
+  },
+  {
+    "source": "npm:regexpu-core",
+    "target": "npm:unicode-match-property-value-ecmascript",
+    "type": "static"
+  },
+  {
+    "source": "npm:regjsparser",
+    "target": "npm:jsesc",
+    "type": "static"
+  },
+  {
+    "source": "npm:resolve",
+    "target": "npm:is-core-module",
+    "type": "static"
+  },
+  {
+    "source": "npm:resolve",
+    "target": "npm:path-parse",
+    "type": "static"
+  },
+  {
+    "source": "npm:resolve",
+    "target": "npm:supports-preserve-symlinks-flag",
+    "type": "static"
+  },
+  {
+    "source": "npm:restore-cursor",
+    "target": "npm:onetime",
+    "type": "static"
+  },
+  {
+    "source": "npm:restore-cursor",
+    "target": "npm:signal-exit",
+    "type": "static"
+  },
+  {
+    "source": "npm:source-map-support",
+    "target": "npm:buffer-from",
+    "type": "static"
+  },
+  {
+    "source": "npm:source-map-support",
+    "target": "npm:source-map",
+    "type": "static"
+  },
+  {
+    "source": "npm:string-width",
+    "target": "npm:emoji-regex",
+    "type": "static"
+  },
+  {
+    "source": "npm:string-width",
+    "target": "npm:is-fullwidth-code-point",
+    "type": "static"
+  },
+  {
+    "source": "npm:string-width",
+    "target": "npm:strip-ansi",
+    "type": "static"
+  },
+  {
+    "source": "npm:string_decoder",
+    "target": "npm:safe-buffer",
+    "type": "static"
+  },
+  {
+    "source": "npm:strip-ansi",
+    "target": "npm:ansi-regex",
+    "type": "static"
+  },
+  {
+    "source": "npm:supports-color",
+    "target": "npm:has-flag",
+    "type": "static"
+  },
+  {
+    "source": "npm:tar-stream",
+    "target": "npm:bl",
+    "type": "static"
+  },
+  {
+    "source": "npm:tar-stream",
+    "target": "npm:end-of-stream",
+    "type": "static"
+  },
+  {
+    "source": "npm:tar-stream",
+    "target": "npm:fs-constants",
+    "type": "static"
+  },
+  {
+    "source": "npm:tar-stream",
+    "target": "npm:inherits",
+    "type": "static"
+  },
+  {
+    "source": "npm:tar-stream",
+    "target": "npm:readable-stream",
+    "type": "static"
+  },
+  {
+    "source": "npm:tinyglobby",
+    "target": "npm:fdir",
+    "type": "static"
+  },
+  {
+    "source": "npm:tinyglobby",
+    "target": "npm:picomatch@4.0.3",
+    "type": "static"
+  },
+  {
+    "source": "npm:tsconfig-paths",
+    "target": "npm:json5",
+    "type": "static"
+  },
+  {
+    "source": "npm:tsconfig-paths",
+    "target": "npm:minimist",
+    "type": "static"
+  },
+  {
+    "source": "npm:tsconfig-paths",
+    "target": "npm:strip-bom",
+    "type": "static"
+  },
+  {
+    "source": "npm:unicode-match-property-ecmascript",
+    "target": "npm:unicode-canonical-property-names-ecmascript",
+    "type": "static"
+  },
+  {
+    "source": "npm:unicode-match-property-ecmascript",
+    "target": "npm:unicode-property-aliases-ecmascript",
+    "type": "static"
+  },
+  {
+    "source": "npm:update-browserslist-db",
+    "target": "npm:browserslist",
+    "type": "static"
+  },
+  {
+    "source": "npm:update-browserslist-db",
+    "target": "npm:escalade",
+    "type": "static"
+  },
+  {
+    "source": "npm:update-browserslist-db",
+    "target": "npm:picocolors",
+    "type": "static"
+  },
+  {
+    "source": "npm:wcwidth",
+    "target": "npm:defaults",
+    "type": "static"
+  },
+  {
+    "source": "npm:wrap-ansi",
+    "target": "npm:ansi-styles@4.3.0",
+    "type": "static"
+  },
+  {
+    "source": "npm:wrap-ansi",
+    "target": "npm:string-width",
+    "type": "static"
+  },
+  {
+    "source": "npm:wrap-ansi",
+    "target": "npm:strip-ansi",
+    "type": "static"
+  },
+  {
+    "source": "npm:yargs",
+    "target": "npm:cliui",
+    "type": "static"
+  },
+  {
+    "source": "npm:yargs",
+    "target": "npm:escalade",
+    "type": "static"
+  },
+  {
+    "source": "npm:yargs",
+    "target": "npm:get-caller-file",
+    "type": "static"
+  },
+  {
+    "source": "npm:yargs",
+    "target": "npm:require-directory",
+    "type": "static"
+  },
+  {
+    "source": "npm:yargs",
+    "target": "npm:string-width",
+    "type": "static"
+  },
+  {
+    "source": "npm:yargs",
+    "target": "npm:y18n",
+    "type": "static"
+  },
+  {
+    "source": "npm:yargs",
+    "target": "npm:yargs-parser",
+    "type": "static"
+  }
+]

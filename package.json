@@ -1,0 +1,19 @@
+{
+  "name": "@panaversity/monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "nx": "nx",
+    "graph": "nx graph",
+    "affected": "nx affected"
+  },
+  "devDependencies": {
+    "@nx/js": "^22.2.3",
+    "@nx/workspace": "^22.2.3",
+    "nx": "^22.2.3"
+  },
+  "engines": {
+    "node": ">=20.0"
+  }
+}

@@ -1,0 +1,967 @@
+{
+  "version": "6.0",
+  "nxVersion": "22.2.3",
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": "book-source/plugins/docusaurus-summaries-plugin/index.js",
+        "hash": "4037982981576980566"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/tools/registry.py",
+        "hash": "2910631167591434755"
+      },
+      {
+        "file": "book-source/static/slides/chapter-14-slides.pdf",
+        "hash": "12827691564507965410"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/tools/search.py",
+        "hash": "2986472335490540365"
+      },
+      {
+        "file": "static/styles.css",
+        "hash": "8419273103758193685"
+      },
+      {
+        "file": "book-source/src/components/GatedQuiz/index.tsx",
+        "hash": "14945689300766771749"
+      },
+      {
+        "file": "panaversity-fs/alembic.ini",
+        "hash": "4512777490471067987"
+      },
+      {
+        "file": "panaversity-fs/tests/unit/test_new_features.py",
+        "hash": "15105937835813940157"
+      },
+      {
+        "file": "panaversity-fs/scripts/common/log_sanitizer.py",
+        "hash": "26886844466075110"
+      },
+      {
+        "file": "book-source/src/components/quiz/Quiz.tsx",
+        "hash": "12609158388184904504"
+      },
+      {
+        "file": "panaversity-fs/tests/performance/test_overlay_latency.py",
+        "hash": "9176136777973439297"
+      },
+      {
+        "file": "book-source/static/slides/chapter-03-slides.pdf",
+        "hash": "7512001235619384545"
+      },
+      {
+        "file": "book-source/.gitignore",
+        "hash": "225979235970073261"
+      },
+      {
+        "file": "book-source/src/components/AnalyticsTracker.tsx",
+        "hash": "16309855129285400176"
+      },
+      {
+        "file": "panaversity-fs/tests/scripts/conftest.py",
+        "hash": "2775762164432589375"
+      },
+      {
+        "file": "book-source/src/theme/Root.tsx",
+        "hash": "4110665936411004399"
+      },
+      {
+        "file": "book-source/postcss.config.js",
+        "hash": "13712062800680829021"
+      },
+      {
+        "file": "book-source/src/components/SearchBar/styles.module.css",
+        "hash": "13546241650168856187"
+      },
+      {
+        "file": "book-source/static/img/undraw_docusaurus_tree.svg",
+        "hash": "12684630426846910715"
+      },
+      {
+        "file": "book-source/static/img/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/l2-gemini-cli-interface.svg",
+        "hash": "15974418683575274202"
+      },
+      {
+        "file": "book-source/src/components/InteractivePython/ErrorDisplay.tsx",
+        "hash": "17508138586348949882"
+      },
+      {
+        "file": "panaversity-fs/.python-version",
+        "hash": "11649148331255907086"
+      },
+      {
+        "file": "panaversity-fs/tests/property/test_invariant_r2_journal.py",
+        "hash": "18383221607654398103"
+      },
+      {
+        "file": ".mcp.json",
+        "hash": "17394863407693121761"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "9510401387985386796"
+      },
+      {
+        "file": "panaversity-fs/scripts/hydrate-book.py",
+        "hash": "11428275371554827909"
+      },
+      {
+        "file": "book-source/static/img/undraw_docusaurus_react.svg",
+        "hash": "17162343818337932230"
+      },
+      {
+        "file": "book-source/src/pages/index.tsx",
+        "hash": "6137073913039839428"
+      },
+      {
+        "file": "book-source/src/utils/analytics.ts",
+        "hash": "1716380449064006787"
+      },
+      {
+        "file": "book-source/package.json",
+        "hash": "4324018802574980073"
+      },
+      {
+        "file": "book-source/static/img/docusaurus-social-card.jpg",
+        "hash": "11663222046504176426"
+      },
+      {
+        "file": "panaversity-fs/scripts/common/__init__.py",
+        "hash": "13646462732283605485"
+      },
+      {
+        "file": "book-source/plugins/docusaurus-panaversityfs-plugin/package.json",
+        "hash": "7769342336381323143"
+      },
+      {
+        "file": "panaversity-fs/tests/property/test_invariant_r1_schema.py",
+        "hash": "18184434395176401220"
+      },
+      {
+        "file": "book-source/src/components/SearchBar/index.tsx",
+        "hash": "14165448553832533567"
+      },
+      {
+        "file": "panaversity-fs/tests/scripts/test_source_scanner.py",
+        "hash": "7664336427662456341"
+      },
+      {
+        "file": "book-source/src/components/quiz/Quiz.module.css",
+        "hash": "8052132417599692135"
+      },
+      {
+        "file": "panaversity-fs/tests/unit/test_audit_chain.py",
+        "hash": "10596775571214221894"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "2680050494551287374"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/errors.py",
+        "hash": "12623782476168624532"
+      },
+      {
+        "file": "book-source/src/lib/auth-client.ts",
+        "hash": "3346627568188920961"
+      },
+      {
+        "file": "book-source/static/slides/chapter-06-slides.pdf",
+        "hash": "1867547348970454968"
+      },
+      {
+        "file": "book-source/src/theme/Navbar/MobileSidebar/Header/index.tsx",
+        "hash": "15416653693233442440"
+      },
+      {
+        "file": ".github/workflows/deploy.yml",
+        "hash": "10138742486667483010"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/app.py",
+        "hash": "18316387772969437944"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/tools/validate.py",
+        "hash": "15210359033793739665"
+      },
+      {
+        "file": "panaversity-fs/pyproject.toml",
+        "hash": "5339401325773295361"
+      },
+      {
+        "file": "book-source/src/components/GatedSummary/GatedSummary.module.css",
+        "hash": "11330140585832577893"
+      },
+      {
+        "file": "book-source/src/components/TailwindTestComponent.tsx",
+        "hash": "12881744962074789838"
+      },
+      {
+        "file": "panaversity-fs/uv.lock",
+        "hash": "10978898596670629291"
+      },
+      {
+        "file": "book-source/plugins/remark-interactive-python/package.json",
+        "hash": "11510889451212552539"
+      },
+      {
+        "file": "panaversity-fs/tests/integration/test_content_workflows.py",
+        "hash": "8918672069607393694"
+      },
+      {
+        "file": "panaversity-fs/tests/unit/test_enhanced_tools.py",
+        "hash": "7532476327006137753"
+      },
+      {
+        "file": "book-source/static/.nojekyll",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/auth.py",
+        "hash": "12208684636986118488"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/database/__init__.py",
+        "hash": "1646236907442096211"
+      },
+      {
+        "file": "panaversity-fs/tests/unit/test_overlay_content.py",
+        "hash": "9906504348406811806"
+      },
+      {
+        "file": "book-source/static/slides/chapter-25-slides.pdf",
+        "hash": "13995509499315597170"
+      },
+      {
+        "file": "panaversity-fs/tests/unit/test_content_tools.py",
+        "hash": "11640912668764655709"
+      },
+      {
+        "file": "panaversity-fs/scripts/ingest/__init__.py",
+        "hash": "574543392294841863"
+      },
+      {
+        "file": "book-source/plugins/docusaurus-panaversityfs-plugin/mcp-client.js",
+        "hash": "5218366822993594787"
+      },
+      {
+        "file": "panaversity-fs/tests/__init__.py",
+        "hash": "9115179882376892159"
+      },
+      {
+        "file": "book-source/src/theme/NavbarItem/SearchBar/index.tsx",
+        "hash": "10851156619919525130"
+      },
+      {
+        "file": "book-source/plugins/docusaurus-panaversityfs-plugin/index.js",
+        "hash": "15182335414882091012"
+      },
+      {
+        "file": "book-source/static/robots.txt",
+        "hash": "8509301939822565414"
+      },
+      {
+        "file": "panaversity-fs/scripts/ingest/path_mapper.py",
+        "hash": "4216976521924189966"
+      },
+      {
+        "file": "panaversity-fs/tests/scripts/test_path_mapper.py",
+        "hash": "14912556072949455571"
+      },
+      {
+        "file": "book-source/src/theme/NavbarItem/ComponentTypes.tsx",
+        "hash": "9376728286130471140"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/storage_utils.py",
+        "hash": "11189996470775761460"
+      },
+      {
+        "file": "book-source/scripts/build.sh",
+        "hash": "3490483421022109938"
+      },
+      {
+        "file": "book-source/static/slides/chapter-09-slides.pdf",
+        "hash": "12404370919574012685"
+      },
+      {
+        "file": ".github/workflows/sync-content.yml",
+        "hash": "12838340739085195113"
+      },
+      {
+        "file": ".github/workflows/pr-check.yml",
+        "hash": "12156853230622594756"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "16945267787237918108"
+      },
+      {
+        "file": "book-source/plugins/docusaurus-plugin-structured-data/index.js",
+        "hash": "10943727081996657737"
+      },
+      {
+        "file": "panaversity-fs/scripts/ingest/sync_engine.py",
+        "hash": "5995483544762707598"
+      },
+      {
+        "file": "book-source/src/components/quiz/index.ts",
+        "hash": "5244561091814216933"
+      },
+      {
+        "file": "book-source/static/slides/chapter-24-slides.pdf",
+        "hash": "17130862942114177139"
+      },
+      {
+        "file": "book-source/plugins/remark-content-enhancements/index.js",
+        "hash": "2642426192537218056"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/server.py",
+        "hash": "973056860585420825"
+      },
+      {
+        "file": "panaversity-fs/pytest.ini",
+        "hash": "13042352761045401102"
+      },
+      {
+        "file": "book-source/scripts/check-jsonld-ssr.mjs",
+        "hash": "16885750159413424577"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/storage.py",
+        "hash": "5312991337087578481"
+      },
+      {
+        "file": "book-source/static/slides/chapter-32-slides.pdf",
+        "hash": "17811811300777495943"
+      },
+      {
+        "file": "book-source/docusaurus.config.ts",
+        "hash": "5927409890708730743"
+      },
+      {
+        "file": "book-source/src/components/PDFViewer.tsx",
+        "hash": "13658552967481860448"
+      },
+      {
+        "file": "panaversity-fs/tests/unit/test_path_utils.py",
+        "hash": "9568809342558203687"
+      },
+      {
+        "file": "panaversity-fs/scripts/hydrate/downloader.py",
+        "hash": "16563116262070159149"
+      },
+      {
+        "file": "book-source/static/img/logo.svg",
+        "hash": "15756779054106865036"
+      },
+      {
+        "file": "package.json",
+        "hash": "3093929772680097399"
+      },
+      {
+        "file": "book-source/src/components/InteractivePython/styles.module.css",
+        "hash": "14014709300756870745"
+      },
+      {
+        "file": "book-source/static/slides/chapter-08-slides.pdf",
+        "hash": "10674821002518742541"
+      },
+      {
+        "file": "book-source/scripts/add-og-images-to-frontmatter.js",
+        "hash": "17237551727608712784"
+      },
+      {
+        "file": "book-source/src/contexts/AuthContext.tsx",
+        "hash": "15791831082417082849"
+      },
+      {
+        "file": "book-source/static/CNAME",
+        "hash": "411526636206820265"
+      },
+      {
+        "file": "panaversity-fs/scripts/ingest/source_scanner.py",
+        "hash": "8388570224631427998"
+      },
+      {
+        "file": "panaversity-fs/scripts/hydrate/cli.py",
+        "hash": "2570081554622754897"
+      },
+      {
+        "file": "panaversity-fs/Makefile",
+        "hash": "14831055407116410130"
+      },
+      {
+        "file": "book-source/static/slides/chapter-17-slides.pdf",
+        "hash": "2052926001524492694"
+      },
+      {
+        "file": "book-source/src/contexts/PyodideContext.tsx",
+        "hash": "10104138509033060073"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/database/connection.py",
+        "hash": "12165719714707495690"
+      },
+      {
+        "file": "book-source/static/img/undraw_docusaurus_mountain.svg",
+        "hash": "14081778507541877421"
+      },
+      {
+        "file": "book-source/static/slides/chapter-07-slides.pdf",
+        "hash": "15903713212176761393"
+      },
+      {
+        "file": "book-source/scripts/add-og-images-properly.js",
+        "hash": "6890425041928521211"
+      },
+      {
+        "file": "book-source/static/slides/chapter-04-slides.pdf",
+        "hash": "8552257507888879428"
+      },
+      {
+        "file": "book-source/static/slides/.gitkeep",
+        "hash": "15936441641083032149"
+      },
+      {
+        "file": "book-source/static/slides/chapter-35-slides.pdf",
+        "hash": "13549737673366651075"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/database/migrations/versions/853c7e2d6e2a_use_timezone_aware_timestamps.py",
+        "hash": "15903749344509333087"
+      },
+      {
+        "file": "panaversity-fs/tests/performance/__init__.py",
+        "hash": "9188041904936616729"
+      },
+      {
+        "file": "panaversity-fs/scripts/ingest/cli.py",
+        "hash": "13628481214941551610"
+      },
+      {
+        "file": "panaversity-fs/scripts/common/mcp_client.py",
+        "hash": "14007853928016026087"
+      },
+      {
+        "file": "book-source/package-lock.json",
+        "hash": "8282250326598153879"
+      },
+      {
+        "file": "panaversity-fs/tests/integration/__init__.py",
+        "hash": "427546353958219823"
+      },
+      {
+        "file": "book-source/src/theme/DocItem/Content/index.tsx",
+        "hash": "13918275402210768804"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/path_utils.py",
+        "hash": "3414985442881874321"
+      },
+      {
+        "file": "book-source/src/analytics/dashboard-config.ts",
+        "hash": "2810786899018579057"
+      },
+      {
+        "file": "book-source/src/components/NavbarAuth/index.tsx",
+        "hash": "6409652810708381987"
+      },
+      {
+        "file": "panaversity-fs/tests/integration/test_streaming_archive.py",
+        "hash": "1439078951073738251"
+      },
+      {
+        "file": "book-source/sidebars.ts",
+        "hash": "11039473932810979101"
+      },
+      {
+        "file": "book-source/static/slides/chapter-05-slides.pdf",
+        "hash": "1754237907521083945"
+      },
+      {
+        "file": "book-source/src/theme/Navbar/MobileSidebar/Header/styles.module.css",
+        "hash": "6329741549184922118"
+      },
+      {
+        "file": "panaversity-fs/tests/integration/test_conflict_detection.py",
+        "hash": "11938265902534104099"
+      },
+      {
+        "file": "book-source/static/slides/chapter-13-slides.pdf",
+        "hash": "7328260397944234455"
+      },
+      {
+        "file": "panaversity-fs/tests/property/test_invariant_r6_audit.py",
+        "hash": "10621829044055673506"
+      },
+      {
+        "file": "book-source/static/slides/chapter-16-slides.pdf",
+        "hash": "16154948143310804950"
+      },
+      {
+        "file": "book-source/src/components/GatedSummary/index.tsx",
+        "hash": "7805930833988916405"
+      },
+      {
+        "file": "panaversity-fs/tests/edge_cases/__init__.py",
+        "hash": "2487512153906825481"
+      },
+      {
+        "file": ".nxignore",
+        "hash": "8015556429804029886"
+      },
+      {
+        "file": "panaversity-fs/scripts/migrate_book_source.py",
+        "hash": "4280866308451931292"
+      },
+      {
+        "file": "book-source/src/components/LessonContent/index.tsx",
+        "hash": "14445761255528880084"
+      },
+      {
+        "file": "panaversity-fs/tests/unit/test_journal.py",
+        "hash": "12989904075861073255"
+      },
+      {
+        "file": "book-source/src/components/ReadingProgress/index.tsx",
+        "hash": "17785982920375895509"
+      },
+      {
+        "file": "book-source/static/slides/chapter-21-slides.pdf",
+        "hash": "8627960430184640523"
+      },
+      {
+        "file": "book-source/static/slides/chapter-01-slides.pdf",
+        "hash": "11240417004900834570"
+      },
+      {
+        "file": "book-source/src/css/sidebar.css",
+        "hash": "11410573261672803352"
+      },
+      {
+        "file": "book-source/static/slides/chapter-12-slides.pdf",
+        "hash": "9180018588077591334"
+      },
+      {
+        "file": "book-source/plugins/docusaurus-plugin-og-image-generator/package.json",
+        "hash": "12525759808112617022"
+      },
+      {
+        "file": "panaversity-fs/tests/conftest.py",
+        "hash": "7937986121505264608"
+      },
+      {
+        "file": "book-source/src/components/ContentGate/index.tsx",
+        "hash": "12199933084633077601"
+      },
+      {
+        "file": "panaversity-fs/NOTICE",
+        "hash": "8696760968361639350"
+      },
+      {
+        "file": "panaversity-fs/tests/unit/test_search_tools.py",
+        "hash": "13287292722445151402"
+      },
+      {
+        "file": "book-source/src/pages/index.module.css",
+        "hash": "1527012339537888721"
+      },
+      {
+        "file": "panaversity-fs/Dockerfile.prod",
+        "hash": "12706908443956054405"
+      },
+      {
+        "file": "book-source/src/css/custom.css",
+        "hash": "14326137606148573858"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/tools/__init__.py",
+        "hash": "11117624189128106675"
+      },
+      {
+        "file": "book-source/src/components/InteractivePython/index.ts",
+        "hash": "232993803953627857"
+      },
+      {
+        "file": "book-source/plugins/remark-content-enhancements/package.json",
+        "hash": "1006937061416810498"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/audit.py",
+        "hash": "4037584487785577481"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/metrics.py",
+        "hash": "15961175648535594719"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/models.py",
+        "hash": "16622569503273930524"
+      },
+      {
+        "file": "panaversity-fs/.env.example",
+        "hash": "4135367910693433278"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/database/models.py",
+        "hash": "2759124560627348399"
+      },
+      {
+        "file": "panaversity-fs/tests/edge_cases/test_production_structure.py",
+        "hash": "16448582854759087649"
+      },
+      {
+        "file": "book-source/static/slides/chapter-26-slides.pdf",
+        "hash": "4021289045774441040"
+      },
+      {
+        "file": ".github/workflows/validate-content.yml",
+        "hash": "2784308613237667207"
+      },
+      {
+        "file": "book-source/src/lib/pyodide-singleton.ts",
+        "hash": "16247714403108305994"
+      },
+      {
+        "file": "static/runtime.js",
+        "hash": "14980783667260047515"
+      },
+      {
+        "file": "book-source/src/lib/search-utils.ts",
+        "hash": "13244271007279028743"
+      },
+      {
+        "file": "book-source/plugins/remark-content-enhancements/transformers/slides.js",
+        "hash": "5262355770801465557"
+      },
+      {
+        "file": "book-source/static/slides/chapter-28-slides.pdf",
+        "hash": "6811368155197822341"
+      },
+      {
+        "file": "book-source/tsconfig.json",
+        "hash": "11777648533179765634"
+      },
+      {
+        "file": "book-source/src/css/doc-pages.css",
+        "hash": "14687576477807121618"
+      },
+      {
+        "file": "panaversity-fs/tests/unit/test_registry_bulk_tools.py",
+        "hash": "530835021835859106"
+      },
+      {
+        "file": "book-source/static/slides/chapter-29-slides.pdf",
+        "hash": "8308037851647723885"
+      },
+      {
+        "file": "book-source/static/slides/chapter-30-slides.pdf",
+        "hash": "2112114475250986306"
+      },
+      {
+        "file": "book-source/src/theme/MDXComponents.tsx",
+        "hash": "13405670509102459043"
+      },
+      {
+        "file": "book-source/src/lib/url-utils.ts",
+        "hash": "10682560999974655279"
+      },
+      {
+        "file": "book-source/static/slides/chapter-02-slides.pdf",
+        "hash": "3926188034193460823"
+      },
+      {
+        "file": "book-source/static/slides/chapter-27-slides.pdf",
+        "hash": "4046632060340978119"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/config.py",
+        "hash": "8123315521089665472"
+      },
+      {
+        "file": "book-source/static/slides/chapter-23-slides.pdf",
+        "hash": "6645997065126794415"
+      },
+      {
+        "file": "book-source/src/pages/auth/callback.tsx",
+        "hash": "2180930189886895102"
+      },
+      {
+        "file": "book-source/static/slides/chapter-22-slides.pdf",
+        "hash": "9000895574777775139"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/tools/delta.py",
+        "hash": "639343856490086317"
+      },
+      {
+        "file": "book-source/src/components/InteractivePython/InteractivePython.tsx",
+        "hash": "9499353463420454646"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/tools/bulk.py",
+        "hash": "3465254501264275147"
+      },
+      {
+        "file": "book-source/static/slides/chapter-10-slides.pdf",
+        "hash": "17862195193760963958"
+      },
+      {
+        "file": "book-source/src/components/InteractivePython/ErrorDisplay.module.css",
+        "hash": "6992282770939223"
+      },
+      {
+        "file": "panaversity-fs/tests/performance/test_archive_throughput.py",
+        "hash": "6394003295802292210"
+      },
+      {
+        "file": "panaversity-fs/tests/unit/test_metrics.py",
+        "hash": "2097373833724381751"
+      },
+      {
+        "file": "book-source/test-results/.last-run.json",
+        "hash": "14694065644177241415"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/tools/assets.py",
+        "hash": "8872037227214129901"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/tools/content.py",
+        "hash": "11925972036564416112"
+      },
+      {
+        "file": "panaversity-fs/tests/unit/test_delta_build.py",
+        "hash": "2083402610278359760"
+      },
+      {
+        "file": "book-source/static/slides/chapter-18-slides.pdf",
+        "hash": "2294321974937680760"
+      },
+      {
+        "file": "nx.json",
+        "hash": "17536381325892175873"
+      },
+      {
+        "file": "static/main.js",
+        "hash": "4631222964270541376"
+      },
+      {
+        "file": "book-source/tailwind.config.js",
+        "hash": "11526749859412538334"
+      },
+      {
+        "file": "panaversity-fs/tests/property/test_invariant_r7_agent.py",
+        "hash": "2419336025788566240"
+      },
+      {
+        "file": "panaversity-fs/tests/scripts/__init__.py",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "panaversity-fs/scripts/hydrate/manifest.py",
+        "hash": "16299785596594035402"
+      },
+      {
+        "file": "panaversity-fs/tests/e2e/test_complete_book_workflow.py",
+        "hash": "5597137238283214437"
+      },
+      {
+        "file": "static/favicon.ico",
+        "hash": "9303420814833116677"
+      },
+      {
+        "file": "panaversity-fs/tests/property/__init__.py",
+        "hash": "11402312717004087496"
+      },
+      {
+        "file": "book-source/static/slides/chapter-15-slides.pdf",
+        "hash": "2625884192962748623"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/__init__.py",
+        "hash": "5964016838919185740"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/database/migrations/env.py",
+        "hash": "1081300117008119126"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/database/migrations/README",
+        "hash": "542617494982568418"
+      },
+      {
+        "file": "panaversity-fs/scripts/test_auth_integration.py",
+        "hash": "16736770295861151584"
+      },
+      {
+        "file": "book-source/.env.example",
+        "hash": "9931347437910597696"
+      },
+      {
+        "file": "book-source/plugins/docusaurus-plugin-og-image-generator/index.js",
+        "hash": "16623384347491649616"
+      },
+      {
+        "file": "book-source/static/slides/chapter-20-slides.pdf",
+        "hash": "9544203759566151613"
+      },
+      {
+        "file": "book-source/src/components/NavbarAuth/styles.module.css",
+        "hash": "12476503384737705759"
+      },
+      {
+        "file": "panaversity-fs/.gitignore",
+        "hash": "56491055536592635"
+      },
+      {
+        "file": "panaversity-fs/LICENSE",
+        "hash": "17094332766553592671"
+      },
+      {
+        "file": "book-source/plugins/docusaurus-panaversityfs-plugin/mcp-http-client.js",
+        "hash": "146946626735221406"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/database/migrations/versions/147ff406b539_initial_filejournal_and_auditlog_schema.py",
+        "hash": "14015053504904017671"
+      },
+      {
+        "file": "book-source/src/components/ContentGate/ContentGate.module.css",
+        "hash": "11695726090728052046"
+      },
+      {
+        "file": "panaversity-fs/scripts/hydrate/__init__.py",
+        "hash": "2799017042555677028"
+      },
+      {
+        "file": "panaversity-fs/tests/unit/test_validate_book.py",
+        "hash": "3907572866565289055"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "1336937280332394816"
+      },
+      {
+        "file": "book-source/static/img/snakes_ladders.jpg",
+        "hash": "16606007368213791459"
+      },
+      {
+        "file": "book-source/src/components/LessonContent/styles.module.css",
+        "hash": "12280304122371218381"
+      },
+      {
+        "file": "book-source/static/slides/chapter-19-slides.pdf",
+        "hash": "9523690011830916197"
+      },
+      {
+        "file": "panaversity-fs/tests/property/test_invariant_r5_overlay.py",
+        "hash": "8292270665602262093"
+      },
+      {
+        "file": "book-source/src/theme/Navbar/MobileSidebar/SecondaryMenu/index.tsx",
+        "hash": "16375539107602185301"
+      },
+      {
+        "file": "panaversity-fs/tests/unit/test_auth.py",
+        "hash": "11462235371707242603"
+      },
+      {
+        "file": "book-source/plugins/remark-interactive-python/index.js",
+        "hash": "4100725373322993060"
+      },
+      {
+        "file": "panaversity-fs/scripts/ingest-book.py",
+        "hash": "7604459687372560155"
+      },
+      {
+        "file": "book-source/static/slides/chapter-11-slides.pdf",
+        "hash": "11095839583564094704"
+      },
+      {
+        "file": "book-source/src/pages/tailwind-test.tsx",
+        "hash": "13846939467512771659"
+      },
+      {
+        "file": "book-source/static/slides/chapter-31-slides.pdf",
+        "hash": "14444570012208461173"
+      },
+      {
+        "file": "book-source/src/components/ReadingProgress/styles.module.css",
+        "hash": "7319583504777677542"
+      },
+      {
+        "file": "panaversity-fs/src/panaversity_fs/database/migrations/script.py.mako",
+        "hash": "3360943558379116972"
+      },
+      {
+        "file": "book-source/src/lib/jwt-verifier.ts",
+        "hash": "3935724260707319745"
+      }
+    ],
+    "projectFileMap": {
+      "remark-interactive-python": [
+        {
+          "file": "libs/docusaurus/remark-interactive-python/project.json",
+          "hash": "13781028463573944963"
+        }
+      ],
+      "summaries-plugin": [
+        {
+          "file": "libs/docusaurus/summaries-plugin/project.json",
+          "hash": "5636639190242818980"
+        }
+      ],
+      "remark-content-enhancements": [
+        {
+          "file": "libs/docusaurus/remark-content-enhancements/project.json",
+          "hash": "2123589756961342624"
+        }
+      ],
+      "panaversityfs-plugin": [
+        {
+          "file": "libs/docusaurus/panaversityfs-plugin/project.json",
+          "hash": "8339024887621996337"
+        }
+      ],
+      "learn-app": [
+        {
+          "file": "apps/learn-app/project.json",
+          "hash": "9209114643438686512"
+        }
+      ],
+      "panaversity-fs-py": [
+        {
+          "file": "apps/panaversity-fs-py/project.json",
+          "hash": "6201617280196239675"
+        }
+      ],
+      "plugin-structured-data": [
+        {
+          "file": "libs/docusaurus/plugin-structured-data/project.json",
+          "hash": "12892477741058381951"
+        }
+      ],
+      "scripts": [
+        {
+          "file": "tools/scripts/project.json",
+          "hash": "17998490501469149046"
+        }
+      ],
+      "plugin-og-image": [
+        {
+          "file": "libs/docusaurus/plugin-og-image/project.json",
+          "hash": "13183088947058826863"
+        }
+      ]
+    }
+  },
+  "externalNodesHash": "7749217366688335548"
+}

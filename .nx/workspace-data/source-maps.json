@@ -1,0 +1,464 @@
+{
+  "apps/learn-app": {
+    "root": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies.remark-interactive-python": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies.remark-content-enhancements": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies.plugin-og-image": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies.plugin-structured-data": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies.summaries-plugin": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies.panaversityfs-plugin": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.executor": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.inputs": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.cwd": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.command": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.executor": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.options": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.cache": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.options.cwd": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.options.command": [
+      "apps/learn-app/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.typecheck.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.typecheck.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "apps/panaversity-fs-py": {
+    "root": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.cache": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.inputs": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.cwd": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.command": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.cwd": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.command": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.format": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.format.executor": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.format.options": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.format.options.cwd": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.format.options.command": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.cwd": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.command": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.executor": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.inputs": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.cwd": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "apps/panaversity-fs-py/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.outputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "libs/docusaurus/panaversityfs-plugin": {
+    "root": [
+      "libs/docusaurus/panaversityfs-plugin/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "libs/docusaurus/panaversityfs-plugin/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "libs/docusaurus/panaversityfs-plugin/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/docusaurus/panaversityfs-plugin/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/docusaurus/panaversityfs-plugin/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "libs/docusaurus/plugin-og-image": {
+    "root": [
+      "libs/docusaurus/plugin-og-image/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "libs/docusaurus/plugin-og-image/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "libs/docusaurus/plugin-og-image/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/docusaurus/plugin-og-image/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/docusaurus/plugin-og-image/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "libs/docusaurus/plugin-structured-data": {
+    "root": [
+      "libs/docusaurus/plugin-structured-data/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "libs/docusaurus/plugin-structured-data/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "libs/docusaurus/plugin-structured-data/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/docusaurus/plugin-structured-data/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/docusaurus/plugin-structured-data/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "libs/docusaurus/remark-content-enhancements": {
+    "root": [
+      "libs/docusaurus/remark-content-enhancements/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "libs/docusaurus/remark-content-enhancements/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "libs/docusaurus/remark-content-enhancements/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/docusaurus/remark-content-enhancements/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/docusaurus/remark-content-enhancements/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "libs/docusaurus/remark-interactive-python": {
+    "root": [
+      "libs/docusaurus/remark-interactive-python/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "libs/docusaurus/remark-interactive-python/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "libs/docusaurus/remark-interactive-python/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/docusaurus/remark-interactive-python/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/docusaurus/remark-interactive-python/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "libs/docusaurus/summaries-plugin": {
+    "root": [
+      "libs/docusaurus/summaries-plugin/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "libs/docusaurus/summaries-plugin/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "libs/docusaurus/summaries-plugin/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/docusaurus/summaries-plugin/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/docusaurus/summaries-plugin/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "tools/scripts": {
+    "root": [
+      "tools/scripts/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "tools/scripts/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "tools/scripts/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "tools/scripts/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "tools/scripts/project.json",
+      "nx/core/project-json"
+    ]
+  }
+}
