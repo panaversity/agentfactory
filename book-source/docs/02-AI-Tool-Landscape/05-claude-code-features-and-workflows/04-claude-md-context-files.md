@@ -46,8 +46,8 @@ learning_objectives:
 
 # Cognitive load tracking
 cognitive_load:
-  new_concepts: 6
-  assessment: "6 concepts (persistent context, CLAUDE.md file format, 6 standard sections, auto-loading, context appropriateness, Three Roles collaboration) - within B1 limit of 10 ✓"
+  new_concepts: 8
+  assessment: "8 concepts (persistent context, CLAUDE.md file format, 6 standard sections, auto-loading, context appropriateness, Three Roles collaboration, AGENTS.md universal standard, AAIF ecosystem) - within B1 limit of 10 ✓"
 
 # Differentiation guidance
 differentiation:
@@ -58,10 +58,10 @@ differentiation:
 generated_by: "content-implementer v1.0.0 (029-chapter-5-refinement)"
 source_spec: "specs/029-chapter-5-refinement/spec.md"
 created: "2025-01-17"
-last_modified: "2025-01-17"
+last_modified: "2025-12-15"
 git_author: "Claude Code"
 workflow: "/sp.implement"
-version: "2.0.0"
+version: "2.1.0"
 
 # Legacy compatibility (Docusaurus)
 prerequisites:
@@ -372,6 +372,97 @@ alembic/             # Database migrations
 ### Concerns About File Size?
 
 A typical CLAUDE.md is 1-3 KB. Context is cheap; clarity is expensive. A well-organized CLAUDE.md saves repeated explanations every session and improves Claude's suggestions.
+
+---
+
+## The Universal Standard: AGENTS.md
+
+You've learned how CLAUDE.md provides project context for Claude Code. But what about other AI coding agents—Cursor, GitHub Copilot, Gemini CLI, Devin, and dozens more?
+
+**Enter AGENTS.md**—a universal standard that works across ALL AI coding tools.
+
+### What is AGENTS.md?
+
+AGENTS.md is a simple markdown file (similar to CLAUDE.md) that provides project-specific guidance to **any** AI coding agent. Created by OpenAI and now adopted by 60,000+ open source projects, it's become the industry standard for agent instructions.
+
+**Key difference**:
+- **CLAUDE.md** → Claude Code specific (rich features, detailed context)
+- **AGENTS.md** → Universal standard (works everywhere)
+
+### Why This Matters: The Agentic AI Foundation
+
+On December 9, 2025, something significant happened. OpenAI, Anthropic, and Block donated their open standards to the Linux Foundation, creating the **Agentic AI Foundation (AAIF)**:
+
+| Project | Donated By | Purpose |
+|---------|------------|---------|
+| **MCP** | Anthropic | Protocol for connecting AI to tools/data |
+| **AGENTS.md** | OpenAI | Universal project instructions for agents |
+| **Goose** | Block | Open-source agent framework |
+
+This means AGENTS.md is now a **neutral, vendor-independent standard**—like how Kubernetes standardized containers or how HTTP standardized the web.
+
+### The Best of Both Worlds
+
+Here's the practical approach: **use both**.
+
+```
+your-project/
+├── CLAUDE.md      # Rich context for Claude Code (your primary tool)
+├── AGENTS.md      # Universal context for any AI agent
+├── src/
+└── ...
+```
+
+**In your CLAUDE.md**, simply reference AGENTS.md:
+
+```markdown
+# Project Context
+
+See @AGENTS.md for universal project guidelines that apply to all AI agents.
+
+## Claude-Specific Instructions
+
+[Additional Claude Code specific context, skills, hooks, etc.]
+```
+
+This approach gives you:
+- ✅ **Portability**: Any AI agent understands your project via AGENTS.md
+- ✅ **Depth**: Claude Code gets rich context via CLAUDE.md
+- ✅ **No duplication**: Common info in AGENTS.md, Claude-specific in CLAUDE.md
+
+### What Goes in AGENTS.md vs CLAUDE.md?
+
+| Content | AGENTS.md | CLAUDE.md |
+|---------|-----------|-----------|
+| Project overview | ✅ | Reference @AGENTS.md |
+| Tech stack | ✅ | Reference @AGENTS.md |
+| Directory structure | ✅ | Reference @AGENTS.md |
+| Coding conventions | ✅ | Reference @AGENTS.md |
+| Key commands | ✅ | Reference @AGENTS.md |
+| Claude-specific skills | ❌ | ✅ |
+| MCP server configs | ❌ | ✅ |
+| Subagent definitions | ❌ | ✅ |
+| Hooks configuration | ❌ | ✅ |
+
+**Simple rule**: Universal project context → AGENTS.md. Claude Code features → CLAUDE.md.
+
+### Creating Your AGENTS.md
+
+Ask Claude Code to generate both files:
+
+```
+"Create an AGENTS.md file with universal project context that any AI coding agent
+can understand. Then update my CLAUDE.md to reference @AGENTS.md for common context
+and add Claude-specific instructions separately."
+```
+
+#### 🎓 Expert Insight
+
+> The AAIF announcement signals a maturing industry. Instead of every AI tool having its own context format, we're converging on standards. This is good for developers—write your project context once in AGENTS.md, and it works everywhere. Add Claude-specific power features in CLAUDE.md. One universal standard + one specialized configuration = maximum productivity.
+
+#### 💬 AI Colearning Prompt
+
+> "Explain why having a universal standard like AGENTS.md benefits the AI development ecosystem. How does this compare to other standardization efforts like HTTP, Kubernetes, or USB?"
 
 ---
 
