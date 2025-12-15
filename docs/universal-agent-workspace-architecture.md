@@ -52,7 +52,7 @@ fs.writeFile('specs/chapter-5/plan.md', ...)   // Write plan
 
 # Agent 3 (content-implementer) — ALSO SAME TIME
 fs.readFile('specs/chapter-5/plan.md')         // Read plan (might be incomplete!)
-fs.writeFile('book-source/docs/.../lesson.md') // Write lesson
+fs.writeFile('apps/learn-app/docs/.../lesson.md') // Write lesson
 ```
 
 **Race Conditions**:
@@ -170,7 +170,7 @@ tutorsgpt/md/
 ├── .claude/            # ← All agents read/write here
 ├── .specify/           # ← All agents read/write here
 ├── specs/              # ← All agents read/write here
-└── book-source/        # ← All agents read/write here
+└── apps/learn-app/        # ← All agents read/write here
 ```
 
 **Future RI** (workspace isolation, no conflicts):
@@ -191,7 +191,7 @@ tutorsgpt/md/
 │
 └── content-implementer-lesson-1/
     ├── specs/chapter-5/plan.md     # Read-only (from chapter-planner)
-    ├── book-source/docs/.../lesson.md  # Agent writes here (isolated)
+    ├── apps/learn-app/docs/.../lesson.md  # Agent writes here (isolated)
     └── .ri/event-log.jsonl         # Agent's operation history
 ```
 
@@ -371,7 +371,7 @@ ri workspace create chapter-5-spec --agent super-orchestra --base main
 const constitution = await ri.read('.specify/memory/constitution.md');
 
 // Agent reads chapter-index (from workspace)
-const chapterIndex = await ri.read('book-source/docs/chapter-index.md');
+const chapterIndex = await ri.read('apps/learn-app/docs/chapter-index.md');
 
 // Agent writes spec (to workspace, isolated)
 await ri.write('specs/chapter-5/spec.md', specContent);
@@ -745,7 +745,7 @@ CALL query_audit {
     └── lesson-1-impl/             # content-implementer workspace
         ├── specs/chapter-5/
         │   └── plan.md            # Read-only
-        ├── book-source/docs/.../
+        ├── apps/learn-app/docs/.../
         │   └── lesson.md          # Modified by agent
         └── .ri/event-log.jsonl
 ```

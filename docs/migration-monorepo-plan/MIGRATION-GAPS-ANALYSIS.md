@@ -102,7 +102,7 @@ npm run dev?  # or nx serve website?
 
 **Impact**: Every developer blocked on day 1 of migration
 **Affected**: All team members
-**Example**: New contributor clones repo, tries to run `npm install` in `book-source/` → fails (directory moved to `apps/website/`)
+**Example**: New contributor clones repo, tries to run `npm install` in `apps/learn-app/` → fails (directory moved to `apps/website/`)
 
 **Recommendation**:
 - Create `DEVELOPER-SETUP.md` with:
@@ -129,7 +129,7 @@ npm run dev?  # or nx serve website?
 
 **Impact**: Developers experience IDE issues, unclear workarounds
 **Affected**: All developers using VSCode/WebStorm
-**Example**: IntelliSense breaks for imports after `book-source/` → `apps/website/` move
+**Example**: IntelliSense breaks for imports after `apps/learn-app/` → `apps/website/` move
 
 **Recommendation**:
 - Create `IDE-SETUP.md` with:
@@ -203,7 +203,7 @@ npm run dev?  # or nx serve website?
 #### 23. README.md Updates (CRITICAL)
 
 **What's Missing**:
-- Root README currently references `book-source/` (outdated post-migration)
+- Root README currently references `apps/learn-app/` (outdated post-migration)
 - Build instructions need to use `nx` commands
 - Project structure diagram outdated
 - Quick start guide needs rewrite
@@ -232,7 +232,7 @@ npm run dev?  # or nx serve website?
 #### 24. Contributing Guide (HIGH)
 
 **What's Missing**:
-- Contributing guide probably references old paths (book-source/, panaversity-fs/)
+- Contributing guide probably references old paths (apps/learn-app/, panaversity-fs/)
 - Code review process might need updates for monorepo
 - Branch naming conventions (still `feat/nx-migration`?)
 - PR checklist (still relevant?)
@@ -376,7 +376,7 @@ npm run dev?  # or nx serve website?
 - Database connections fail
 
 **Affected**: Production deployment, authentication flow
-**Example**: Better-Auth redirect URL is `http://localhost:3000/book-source/api/auth/callback` → changes to `http://localhost:3000/api/auth/callback` → OAuth breaks
+**Example**: Better-Auth redirect URL is `http://localhost:3000/apps/learn-app/api/auth/callback` → changes to `http://localhost:3000/api/auth/callback` → OAuth breaks
 
 **Recommendation**:
 - Create `INTEGRATION-CHECKLIST.md` with:

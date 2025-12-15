@@ -42,7 +42,7 @@ The RI architecture (`docs/ri-architecture.md`) currently assumes **local filesy
 specs/                            # Feature specifications (50+ features)
 history/                          # Organizational memory (ADRs, PHRs, audits)
 papers/                           # Research foundation
-book-source/docs/                 # Generated outputs
+apps/learn-app/docs/                 # Generated outputs
 ```
 
 **Limitations**:

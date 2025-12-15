@@ -30,7 +30,7 @@ This monorepo has **2 major projects** with **4 GitHub Actions workflows** curre
 
 | Property | Value |
 |----------|-------|
-| **Trigger** | Pull requests to main (paths: `book-source/**`) |
+| **Trigger** | Pull requests to main (paths: `apps/learn-app/**`) |
 | **Jobs** | 1 job: `build` |
 | **Steps** | 3 steps |
 | **Caching** | npm cache (by `package-lock.json`) |
@@ -40,8 +40,8 @@ This monorepo has **2 major projects** with **4 GitHub Actions workflows** curre
 ```
 1. Checkout repository
 2. Setup Node.js 20 (cache: npm)
-3. npm install in book-source/
-4. npm run build in book-source/
+3. npm install in apps/learn-app/
+4. npm run build in apps/learn-app/
 ```
 
 **Environment Variables Used**: None (no secrets)
@@ -55,7 +55,7 @@ This monorepo has **2 major projects** with **4 GitHub Actions workflows** curre
 
 | Property | Value |
 |----------|-------|
-| **Trigger** | 1. `workflow_run` from `sync-content.yml` (success/skipped) 2. Push to main (paths: `book-source/**` except `docs/**`) 3. Manual (`workflow_dispatch`) |
+| **Trigger** | 1. `workflow_run` from `sync-content.yml` (success/skipped) 2. Push to main (paths: `apps/learn-app/**` except `docs/**`) 3. Manual (`workflow_dispatch`) |
 | **Jobs** | 2 jobs: `build`, `deploy` |
 | **Steps** | 15 steps in build, 1 in deploy |
 | **Caching** | npm cache + custom manifest cache |
@@ -71,9 +71,9 @@ This monorepo has **2 major projects** with **4 GitHub Actions workflows** curre
 6. Fallback to local docs (if hydration fails)
 7. Setup Node.js 20 (cache: npm)
 8. Install system deps for Sharp/OG image generation
-9. npm ci in book-source/
-10. npm run typecheck in book-source/
-11. npm run build in book-source/ (with env vars)
+9. npm ci in apps/learn-app/
+10. npm run typecheck in apps/learn-app/
+11. npm run build in apps/learn-app/ (with env vars)
 12. Upload build artifacts to GitHub Pages
 13. Build summary
 ```
@@ -103,7 +103,7 @@ This monorepo has **2 major projects** with **4 GitHub Actions workflows** curre
 
 | Property | Value |
 |----------|-------|
-| **Trigger** | Pull requests to main (paths: `book-source/docs/**`) |
+| **Trigger** | Pull requests to main (paths: `apps/learn-app/docs/**`) |
 | **Jobs** | 1 job: `validate` |
 | **Steps** | 3 steps |
 | **Caching** | None |
@@ -112,7 +112,7 @@ This monorepo has **2 major projects** with **4 GitHub Actions workflows** curre
 **Workflow Steps**:
 ```
 1. Checkout repository (fetch-depth: 0)
-2. Get changed files in book-source/docs/
+2. Get changed files in apps/learn-app/docs/
 3. Check for local asset references (must use CDN URLs)
    - Rejects: ![...]( /img/...), ![...](/slides/...), src="/img/..."
    - Requires: Full CDN URLs
@@ -130,7 +130,7 @@ This monorepo has **2 major projects** with **4 GitHub Actions workflows** curre
 
 | Property | Value |
 |----------|-------|
-| **Trigger** | 1. Push to main (paths: `book-source/docs/**`) 2. Manual (`workflow_dispatch`) |
+| **Trigger** | 1. Push to main (paths: `apps/learn-app/docs/**`) 2. Manual (`workflow_dispatch`) |
 | **Jobs** | 1 job: `sync` |
 | **Steps** | 5 steps |
 | **Caching** | None (git diff used for change detection) |
@@ -143,10 +143,10 @@ This monorepo has **2 major projects** with **4 GitHub Actions workflows** curre
 2. Setup Python 3.12
 3. Install Python deps (click, httpx, pydantic, python-dotenv)
 4. Get changed files (git diff HEAD~1 HEAD):
-   - Watches: *.md, *.png, *.jpg, *.svg in book-source/docs/
+   - Watches: *.md, *.png, *.jpg, *.svg in apps/learn-app/docs/
 5. Sync content via python scripts/ingest-book.py
    - Arg: --book-id "ai-native-dev"
-   - Arg: --source-dir ../book-source/docs
+   - Arg: --source-dir ../apps/learn-app/docs
    - Optional: --full-sync flag for full sync
 6. Summary report
 ```
@@ -169,13 +169,13 @@ This monorepo has **2 major projects** with **4 GitHub Actions workflows** curre
 | **PanaversityFS** (optional) | `sync-content.yml` | Production (internal API) | Content API | Disabled feature flag |
 
 **GitHub Pages Deployment**:
-- Build artifact: `book-source/build/`
+- Build artifact: `apps/learn-app/build/`
 - Environment: `github-pages`
 - Concurrency: Single (prevents simultaneous deploys)
 
 **PanaversityFS Deployment**:
 - Status: Conditional feature (PANAVERSITY_PLUGIN_ENABLED)
-- Fallback: If sync fails, deploy.yml falls back to `book-source/docs/`
+- Fallback: If sync fails, deploy.yml falls back to `apps/learn-app/docs/`
 - Incremental: Only uploads changed files (not full sync)
 
 ---
@@ -189,7 +189,7 @@ This monorepo has **2 major projects** with **4 GitHub Actions workflows** curre
 | **System packages** | None | None | N/A | N/A |
 
 **npm Cache**:
-- Dependency path: `book-source/package-lock.json`
+- Dependency path: `apps/learn-app/package-lock.json`
 - Used in: `pr-check.yml`, `deploy.yml`
 - **Issue**: Mixing npm + pnpm (package-lock.json + pnpm-lock.yaml)
 
@@ -225,7 +225,7 @@ This monorepo has **2 major projects** with **4 GitHub Actions workflows** curre
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ Author/Agent pushes book-source/docs/ to main               │
+│ Author/Agent pushes apps/learn-app/docs/ to main               │
 └────────────┬────────────────────────────────────────────────┘
              │
              ├─────────────────────────────────────────────────┐
@@ -294,7 +294,7 @@ This monorepo has **2 major projects** with **4 GitHub Actions workflows** curre
 1. **`book-source`** (Docusaurus website)
    - Type: Node.js / JavaScript
    - Package manager: npm
-   - Outputs: `book-source/build/`
+   - Outputs: `apps/learn-app/build/`
    - Targets needed: `build`, `typecheck`, `lint` (if eslint added)
 
 2. **`panaversity-fs`** (Python MCP server)
@@ -352,7 +352,7 @@ packages:
   - 'history'
 ```
 
-#### `book-source/project.json` (Project-level config)
+#### `apps/learn-app/project.json` (Project-level config)
 
 ```json
 {
@@ -363,8 +363,8 @@ packages:
     "build": {
       "executor": "@nx/js:tsc",
       "options": {
-        "outputPath": "book-source/build",
-        "main": "book-source/src/index.ts"
+        "outputPath": "apps/learn-app/build",
+        "main": "apps/learn-app/src/index.ts"
       },
       "configurations": {
         "production": {}
@@ -379,7 +379,7 @@ packages:
     "serve": {
       "executor": "@nx/docusaurus:serve",
       "options": {
-        "docusaurusConfig": "book-source/docusaurus.config.js"
+        "docusaurusConfig": "apps/learn-app/docusaurus.config.js"
       }
     }
   }
@@ -572,7 +572,7 @@ on:
     branches:
       - main
     paths:
-      - "book-source/**"
+      - "apps/learn-app/**"
   workflow_dispatch:
     inputs:
       full_rebuild:
@@ -648,10 +648,10 @@ jobs:
         if: github.event.inputs.full_rebuild != 'true'
         run: |
           CHANGED=$(git diff --name-only HEAD~1 HEAD -- \
-            'book-source/docs/**/*.md' \
-            'book-source/docs/**/*.png' \
-            'book-source/docs/**/*.jpg' \
-            'book-source/docs/**/*.svg' | tr '\n' ' ')
+            'apps/learn-app/docs/**/*.md' \
+            'apps/learn-app/docs/**/*.png' \
+            'apps/learn-app/docs/**/*.jpg' \
+            'apps/learn-app/docs/**/*.svg' | tr '\n' ' ')
           echo "files=$CHANGED" >> $GITHUB_OUTPUT
           echo "count=$(echo "$CHANGED" | wc -w | tr -d ' ')" >> $GITHUB_OUTPUT
 
@@ -664,12 +664,12 @@ jobs:
           if [ "${{ github.event.inputs.full_rebuild }}" = "true" ]; then
             python scripts/ingest-book.py \
               --book-id "ai-native-dev" \
-              --source-dir "../book-source/docs" \
+              --source-dir "../apps/learn-app/docs" \
               --verbose
           elif [ "${{ steps.changed.outputs.count }}" -gt 0 ]; then
             python scripts/ingest-book.py \
               --book-id "ai-native-dev" \
-              --source-dir "../book-source/docs" \
+              --source-dir "../apps/learn-app/docs" \
               --verbose
           else
             echo "No content changes detected, skipping sync"
@@ -736,12 +736,12 @@ jobs:
       - name: Fallback to local docs
         if: vars.PANAVERSITY_PLUGIN_ENABLED == 'true' && failure()
         run: |
-          if [ ! -d "book-source/docs" ]; then
+          if [ ! -d "apps/learn-app/docs" ]; then
             echo "ERROR: No fallback content available"
             exit 1
           fi
           mkdir -p build-source
-          cp -r book-source/docs/* build-source/
+          cp -r apps/learn-app/docs/* build-source/
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -760,7 +760,7 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: book-source/build
+          path: apps/learn-app/build
 
       - name: Deploy to GitHub Pages
         id: deployment
@@ -775,7 +775,7 @@ name: Validate - Content & Assets
 on:
   pull_request:
     paths:
-      - "book-source/docs/**"
+      - "apps/learn-app/docs/**"
 
 jobs:
   content:
@@ -790,7 +790,7 @@ jobs:
         id: changed
         run: |
           CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD -- \
-            'book-source/docs/**/*.md' 2>/dev/null || echo "")
+            'apps/learn-app/docs/**/*.md' 2>/dev/null || echo "")
           echo "files<<EOF" >> $GITHUB_OUTPUT
           echo "$CHANGED" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
@@ -843,7 +843,7 @@ jobs:
    - Run `pnpm install` (creates/updates `pnpm-lock.yaml`)
 
 3. **Day 5**: Create project configurations
-   - Add `project.json` to `book-source/`
+   - Add `project.json` to `apps/learn-app/`
    - Add `project.json` to `panaversity-fs/`
    - Register read-only projects (docs, specs, etc.)
    - Run `nx show projects` to verify
@@ -996,7 +996,7 @@ git checkout -b feat/nx-migration
 3. **`.github/workflows/ci.yml`** - New Nx-based CI (linting, testing, building)
 4. **`.github/workflows/deploy.yml`** (updated) - Nx-based deployment
 5. **`.github/workflows/validate.yml`** - Content validation (kept from original)
-6. **`book-source/project.json`** - Book project configuration
+6. **`apps/learn-app/project.json`** - Book project configuration
 7. **`panaversity-fs/project.json`** - Python project configuration
 8. **`docs/project.json`** - Read-only project
 9. **`specs/project.json`** - Read-only project

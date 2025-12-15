@@ -25,7 +25,7 @@ The Panaversity repository has been analyzed and a complete Nx monorepo structur
 
 ```
 storage/
-├── book-source/              # Docusaurus + 4 plugins (887M)
+├── apps/learn-app/              # Docusaurus + 4 plugins (887M)
 ├── panaversity-fs/          # Python MCP server (150M)
 ├── docs/                     # Architecture documentation
 ├── context/                  # Context files
@@ -116,7 +116,7 @@ storage/
 ### Key Design Decisions
 
 **Decision 1: Plugins as First-Class Projects**
-- Plugins moved from `book-source/plugins/` to `libs/*/`
+- Plugins moved from `apps/learn-app/plugins/` to `libs/*/`
 - Each has its own `package.json` and `project.json`
 - Enables independent versioning and caching
 

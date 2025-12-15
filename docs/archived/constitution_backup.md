@@ -874,7 +874,7 @@ Instead of rigid rules ("always use X"), provide conceptual vocabulary for agent
 
 ### Book Vision (Preface)
 
-**Location:** `book-source/docs/preface-agent-native.md`
+**Location:** `apps/learn-app/docs/preface-agent-native.md`
 - Target audience (aspiring, professional, founders, educators)
 - Book progression (Parts 1-13)
 - Nine Pillars of AI-Native Development

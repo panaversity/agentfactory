@@ -472,7 +472,7 @@ For CI environments (GitHub Actions, etc.):
 ### 5.1 book-source ↔ panaversity-fs Integration
 
 ```
-book-source/ (TypeScript, Docusaurus 3.9.2)
+apps/learn-app/ (TypeScript, Docusaurus 3.9.2)
 ├── package.json
 ├── scripts/build.sh           ← Invokes Python scripts
 └── ...
@@ -480,7 +480,7 @@ book-source/ (TypeScript, Docusaurus 3.9.2)
 panaversity-fs/ (Python 3.13, FastAPI)
 ├── pyproject.toml
 ├── scripts/
-│   ├── hydrate-book.py        ← Called by book-source/build.sh
+│   ├── hydrate-book.py        ← Called by apps/learn-app/build.sh
 │   ├── ingest-book.py
 │   └── common/                ← Shared utilities
 └── Makefile
@@ -513,7 +513,7 @@ Storage + Database + Audit Trail
 workspace root/
 ├── nx.json (workspace config with python settings)
 ├── pnpm-workspace.yaml (or package.json, pnpm-lock.yaml)
-├── book-source/ (Nx project: website)
+├── apps/learn-app/ (Nx project: website)
 │   └── project.json
 ├── panaversity-fs/ (Nx project: panaversity-fs) ← NEW
 │   ├── project.json ← NEW
@@ -534,7 +534,7 @@ nx affected -t test
 # Runs: panaversity-fs:test + any projects that depend on it
 
 # Change only Docusaurus
-git diff main -- book-source/docs/...
+git diff main -- apps/learn-app/docs/...
 nx affected -t test
 # Runs: website:build (no Python tests)
 

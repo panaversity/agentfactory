@@ -14,7 +14,7 @@
 
 ### Root CLAUDE.md Overview
 - **Size**: 758 lines
-- **Scope**: Highly specialized for book-source/content authoring
+- **Scope**: Highly specialized for apps/learn-app/content authoring
 - **Sections**:
   1. Core Identity: Platform Architect
   2. Context-Gathering Protocol (mandatory for CONTENT work)
@@ -108,13 +108,13 @@ Claude Code does NOT support:
 ### Option B: Root CLAUDE.md (Platform) + Per-App CLAUDE.md (Manual)
 **Approach**: 
 - Keep root with universal + book content
-- Create `book-source/CLAUDE.md` and `panaversity-fs/CLAUDE.md`
+- Create `apps/learn-app/CLAUDE.md` and `panaversity-fs/CLAUDE.md`
 - Reference in projects' README with invocation pattern
 
 **Structure**:
 ```
 /CLAUDE.md                          # Root: platform + book content
-/book-source/CLAUDE.md              # Book app: pedagogy + book-specific
+/apps/learn-app/CLAUDE.md              # Book app: pedagogy + book-specific
 /panaversity-fs/CLAUDE.md           # Python API: engineering-focused
 ```
 
@@ -137,14 +137,14 @@ Claude Code does NOT support:
 ### Option C: Split Root CLAUDE.md (Recommended)
 **Approach**:
 - Root CLAUDE.md: Platform-level only (sections 0, V, VI, IX, XII, tech stack)
-- `book-source/CLAUDE.md`: Content-authoring only (sections I-IV, VII-XI for content)
+- `apps/learn-app/CLAUDE.md`: Content-authoring only (sections I-IV, VII-XI for content)
 - `panaversity-fs/CLAUDE.md`: Engineering only (sections VII-IX, XII adapted)
 - Root README: Links to app-specific guides
 
 **Structure**:
 ```
 /CLAUDE.md                          # Platform-level (~150 lines)
-/book-source/CLAUDE.md              # Content-authoring (~600 lines)
+/apps/learn-app/CLAUDE.md              # Content-authoring (~600 lines)
 /panaversity-fs/CLAUDE.md           # Engineering (~250 lines)
 ```
 
@@ -210,7 +210,7 @@ XII. Claude 4 Best Practices Integration
 ```
 
 **New additions to root**:
-- Navigation guide: "For content work, see book-source/CLAUDE.md"
+- Navigation guide: "For content work, see apps/learn-app/CLAUDE.md"
 - Link to engineering guide (panaversity-fs/CLAUDE.md)
 - High-level cognitive framework
 
@@ -220,9 +220,9 @@ XII. Claude 4 Best Practices Integration
 - Sections X-XI (teaching matrices)
 - Constitution references (point to book guide instead)
 
-### Phase 2: Create book-source/CLAUDE.md
+### Phase 2: Create apps/learn-app/CLAUDE.md
 
-**Move into `/book-source/CLAUDE.md`** (~600 lines):
+**Move into `/apps/learn-app/CLAUDE.md`** (~600 lines):
 ```
 All current content from root CLAUDE.md (sections I-XI)
 Update references to constitution.md to relative paths
@@ -276,7 +276,7 @@ XII. Claude 4 Best Practices (Python-specific)
 ## Developer Guides
 
 ### For Content Authoring
-See [`book-source/CLAUDE.md`](./book-source/CLAUDE.md)
+See [`apps/learn-app/CLAUDE.md`](./apps/learn-app/CLAUDE.md)
 - Pedagogical framework (4-Layer Teaching Method)
 - Context-gathering protocol for lessons
 - Constitutional compliance guidelines
@@ -294,7 +294,7 @@ See [`CLAUDE.md`](./CLAUDE.md)
 - Intelligence harvesting and PHRs
 ```
 
-**Update book-source/README**:
+**Update apps/learn-app/README**:
 ```markdown
 ## Developer Guide
 
@@ -332,7 +332,7 @@ applies_to:
 
 ## 7. Template: Per-App CLAUDE.md Structure
 
-### book-source/CLAUDE.md Header
+### apps/learn-app/CLAUDE.md Header
 ```markdown
 # Claude Code Rules — Content Authoring Edition
 
@@ -382,7 +382,7 @@ This guide covers backend engineering workflows. For monorepo and platform patte
 
 ### Week 1: Refactoring
 - [ ] Create root CLAUDE.md (platform-level)
-- [ ] Create book-source/CLAUDE.md
+- [ ] Create apps/learn-app/CLAUDE.md
 - [ ] Create panaversity-fs/CLAUDE.md
 - [ ] Update all READMEs
 - [ ] Test with both apps (manual verification)
@@ -456,19 +456,19 @@ This guide covers backend engineering workflows. For monorepo and platform patte
 
 ### Refactoring
 - [ ] Extract root CLAUDE.md (platform)
-- [ ] Create book-source/CLAUDE.md
+- [ ] Create apps/learn-app/CLAUDE.md
 - [ ] Create panaversity-fs/CLAUDE.md
 - [ ] Update .gitignore (no per-app overrides)
 - [ ] Add version headers to each file
 
 ### Documentation
 - [ ] Update root README.md (navigation)
-- [ ] Update book-source/README.md (CLAUDE link)
+- [ ] Update apps/learn-app/README.md (CLAUDE link)
 - [ ] Update panaversity-fs/README.md (CLAUDE link)
 - [ ] Create CLAUDE-md-migration-summary.md
 
 ### Testing
-- [ ] Book authoring session: read book-source/CLAUDE.md
+- [ ] Book authoring session: read apps/learn-app/CLAUDE.md
 - [ ] Backend session: read panaversity-fs/CLAUDE.md
 - [ ] Platform session: read root CLAUDE.md
 - [ ] Verify no critical sections missing
@@ -494,7 +494,7 @@ This guide covers backend engineering workflows. For monorepo and platform patte
 **Sections**: 0, V, VI, IX, XII, Platform Tech
 **Lines**: ~150
 
-### book-source/CLAUDE.md (Content Authoring)
+### apps/learn-app/CLAUDE.md (Content Authoring)
 - All current sections (I-XI)
 - Pedagogical framework
 - Constitutional reasoning

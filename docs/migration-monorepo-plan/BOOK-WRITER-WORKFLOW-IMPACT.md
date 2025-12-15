@@ -8,7 +8,7 @@
 
 ## Executive Summary
 
-The Nx monorepo migration **does NOT require book writers to change their workflows**. The key insight: current structure already uses **relative paths** (`book-source/docs/`, `book-source/static/`) that will continue working if `book-source/` is moved to `apps/book-source/` **ONLY IF** writers reference files from the **workspace root**.
+The Nx monorepo migration **does NOT require book writers to change their workflows**. The key insight: current structure already uses **relative paths** (`apps/learn-app/docs/`, `apps/learn-app/static/`) that will continue working if `apps/learn-app/` is moved to `apps/apps/learn-app/` **ONLY IF** writers reference files from the **workspace root**.
 
 **Risk Level**: **LOW** (assuming proper symlink/alias strategy)
 
@@ -38,11 +38,11 @@ The Nx monorepo migration **does NOT require book writers to change their workfl
 
 | Path Pattern | Type | Locations | Usage Context | Migration Impact |
 |---|---|---|---|---|
-| `book-source/docs/chapter-index.md` | Metadata | CLAUDE.md, 8 skills, 2 commands | Context gathering, tier lookup | **HIGH** - Referenced by core context-gathering protocol |
-| `book-source/docs/[part]/[chapter]/README.md` | Chapter Context | CLAUDE.md, 5 skills | Chapter prerequisites, structure | **HIGH** - Essential for pedagogical layer determination |
-| `book-source/docs/[part-folder]/[chapter-folder]/[lesson-file].md` | Lesson Content | content-implementer, lesson-template | Reading/editing lessons | **MEDIUM** - Pattern-based, self-adjusts with migration |
-| `book-source/docs/NN-Part-N/MM-chapter-title/*.md` | Lesson Pattern | sp.constitution-sync | Syncing constitution compliance | **MEDIUM** - Pattern-based |
-| `book-source/docs/[part]/[chapter]/[lesson-file].md` | Generic | 4 skills (eval, validation, sandbox) | Reading content | **MEDIUM** - Pattern-based |
+| `apps/learn-app/docs/chapter-index.md` | Metadata | CLAUDE.md, 8 skills, 2 commands | Context gathering, tier lookup | **HIGH** - Referenced by core context-gathering protocol |
+| `apps/learn-app/docs/[part]/[chapter]/README.md` | Chapter Context | CLAUDE.md, 5 skills | Chapter prerequisites, structure | **HIGH** - Essential for pedagogical layer determination |
+| `apps/learn-app/docs/[part-folder]/[chapter-folder]/[lesson-file].md` | Lesson Content | content-implementer, lesson-template | Reading/editing lessons | **MEDIUM** - Pattern-based, self-adjusts with migration |
+| `apps/learn-app/docs/NN-Part-N/MM-chapter-title/*.md` | Lesson Pattern | sp.constitution-sync | Syncing constitution compliance | **MEDIUM** - Pattern-based |
+| `apps/learn-app/docs/[part]/[chapter]/[lesson-file].md` | Generic | 4 skills (eval, validation, sandbox) | Reading content | **MEDIUM** - Pattern-based |
 | `specs/book/chapter-index.md` | Metadata | 3 output-styles, 2 skills | Reference to current state | **LOW** - Already in specs/ (no move needed) |
 | `specs/chapter-N/spec.md` | Chapter Spec | content-implementer, chapter-planner | Reading chapter specifications | **LOW** - Already in specs/ (no move needed) |
 
@@ -50,20 +50,20 @@ The Nx monorepo migration **does NOT require book writers to change their workfl
 
 | Path Pattern | Type | Locations | Usage Context | Migration Impact |
 |---|---|---|---|---|
-| `book-source/static/slides/` | Asset Directory | notebooklm-slides (4x) | Storing generated PDF slides | **MEDIUM** - Path needs update |
-| `book-source/static/img/part-{N}/chapter-{NN}/` | Asset Directory | image-generator (2x) | Storing generated images | **MEDIUM** - Path needs update |
-| `book-source/src/components/Quiz.tsx` | Component | quiz-generator (3x) | Global quiz component reference | **HIGH** - Must remain findable by Docusaurus build |
-| `book-source/src/components/QUIZ_USAGE.md` | Component Doc | quiz-generator | Quiz usage patterns | **HIGH** - Must remain findable |
-| `book-source/src/components/references/example-quiz.md` | Component Example | quiz-generator | Example quiz implementation | **HIGH** - Must remain findable |
-| `book-source/templates/[template-name].md` | Template | content-implementer (2x) | Template references for lesson authoring | **MEDIUM** - If templates exist |
+| `apps/learn-app/static/slides/` | Asset Directory | notebooklm-slides (4x) | Storing generated PDF slides | **MEDIUM** - Path needs update |
+| `apps/learn-app/static/img/part-{N}/chapter-{NN}/` | Asset Directory | image-generator (2x) | Storing generated images | **MEDIUM** - Path needs update |
+| `apps/learn-app/src/components/Quiz.tsx` | Component | quiz-generator (3x) | Global quiz component reference | **HIGH** - Must remain findable by Docusaurus build |
+| `apps/learn-app/src/components/QUIZ_USAGE.md` | Component Doc | quiz-generator | Quiz usage patterns | **HIGH** - Must remain findable |
+| `apps/learn-app/src/components/references/example-quiz.md` | Component Example | quiz-generator | Example quiz implementation | **HIGH** - Must remain findable |
+| `apps/learn-app/templates/[template-name].md` | Template | content-implementer (2x) | Template references for lesson authoring | **MEDIUM** - If templates exist |
 
 ### Category 3: Build & Deployment (10 references)
 
 | Path Pattern | Type | Locations | Usage Context | Migration Impact |
 |---|---|---|---|---|
-| `./book-source/package-lock.json` | Build Config | docusaurus-deployer (GitHub Actions) | Dependency caching in CI | **MEDIUM** - Must update CI/CD paths |
-| `./book-source/` (working directory) | Build Context | docusaurus-deployer (3x) | npm/Docusaurus build paths | **MEDIUM** - CI/CD relative paths |
-| `./book-source/build/` | Build Output | docusaurus-deployer | GitHub Pages deployment path | **MEDIUM** - CI/CD relative paths |
+| `./apps/learn-app/package-lock.json` | Build Config | docusaurus-deployer (GitHub Actions) | Dependency caching in CI | **MEDIUM** - Must update CI/CD paths |
+| `./apps/learn-app/` (working directory) | Build Context | docusaurus-deployer (3x) | npm/Docusaurus build paths | **MEDIUM** - CI/CD relative paths |
+| `./apps/learn-app/build/` | Build Output | docusaurus-deployer | GitHub Pages deployment path | **MEDIUM** - CI/CD relative paths |
 
 ---
 
@@ -75,8 +75,8 @@ The Nx monorepo migration **does NOT require book writers to change their workfl
 
 **Current References** (Lines 54-60):
 ```markdown
-1. **`book-source/docs/chapter-index.md`** - Locate the chapter number...
-2. **Chapter README** (`book-source/docs/[part]/[chapter]/README.md`) - Extract:
+1. **`apps/learn-app/docs/chapter-index.md`** - Locate the chapter number...
+2. **Chapter README** (`apps/learn-app/docs/[part]/[chapter]/README.md`) - Extract:
 ```
 
 **Why Critical**: This is the **FIRST STEP** in the context-gathering protocol. Every book writer interaction starts here. If this path breaks, the entire workflow breaks.
@@ -87,7 +87,7 @@ The Nx monorepo migration **does NOT require book writers to change their workfl
 - If path is wrong, writers manually search for files instead of using AI context
 
 **Migration Strategy**:
-- Update lines 54, 60 in CLAUDE.md from `book-source/docs/` to `apps/book-source/docs/`
+- Update lines 54, 60 in CLAUDE.md from `apps/learn-app/docs/` to `apps/apps/learn-app/docs/`
 - OR: Create symlink `book-source → apps/book-source` at workspace root (preferred)
 
 ---
@@ -96,7 +96,7 @@ The Nx monorepo migration **does NOT require book writers to change their workfl
 
 **File**: `lesson-template.md` (Line 19)
 ```markdown
-- Location: `book-source/docs/NN-Part-Name/NN-chapter-name/NN-descriptive-lesson-name.md`
+- Location: `apps/learn-app/docs/NN-Part-Name/NN-chapter-name/NN-descriptive-lesson-name.md`
 ```
 
 **Impact**: This template is used when writers create new lessons. If the path is outdated:
@@ -118,12 +118,12 @@ The Nx monorepo migration **does NOT require book writers to change their workfl
 
 | Skill | References | Usage |
 |---|---|---|
-| `content-evaluation-framework` | `book-source/docs/chapter-3/lesson-2.md` | Example evaluation target |
-| `quiz-generator` | `book-source/src/components/Quiz.tsx` | Component location |
-| `code-validation-sandbox` | `book-source/docs/04-Python-Fundamentals/14-data-types` | Example code validation |
-| `image-generator` | `book-source/static/img/part-{N}/chapter-{NN}/` | Generated image output |
-| `notebooklm-slides` | `book-source/static/slides/` | Generated slide output |
-| `summary-generator` | `book-source/docs/05-Python/17-intro/` | Lesson summary generation |
+| `content-evaluation-framework` | `apps/learn-app/docs/chapter-3/lesson-2.md` | Example evaluation target |
+| `quiz-generator` | `apps/learn-app/src/components/Quiz.tsx` | Component location |
+| `code-validation-sandbox` | `apps/learn-app/docs/04-Python-Fundamentals/14-data-types` | Example code validation |
+| `image-generator` | `apps/learn-app/static/img/part-{N}/chapter-{NN}/` | Generated image output |
+| `notebooklm-slides` | `apps/learn-app/static/slides/` | Generated slide output |
+| `summary-generator` | `apps/learn-app/docs/05-Python/17-intro/` | Lesson summary generation |
 
 **Impact**: These skills have **example paths in documentation**. If paths are wrong:
 - Writers copy wrong paths into their prompts
@@ -138,9 +138,9 @@ The Nx monorepo migration **does NOT require book writers to change their workfl
 
 **References**:
 ```yaml
-cache-dependency-path: './book-source/package-lock.json'
+cache-dependency-path: './apps/learn-app/package-lock.json'
 working-directory: ./book-source
-path: './book-source/build'
+path: './apps/learn-app/build'
 ```
 
 **Impact**: If these paths are wrong:
@@ -156,9 +156,9 @@ path: './book-source/build'
 ### Primary Book Writer Workflows
 
 **Workflow 1: Write a New Lesson**
-1. Reader: Check chapter prerequisites via CLAUDE.md → `book-source/docs/chapter-index.md`
-2. Read: Chapter README → `book-source/docs/[part]/[chapter]/README.md`
-3. Create: New lesson file at `book-source/docs/[part]/[chapter]/[lesson-name].md`
+1. Reader: Check chapter prerequisites via CLAUDE.md → `apps/learn-app/docs/chapter-index.md`
+2. Read: Chapter README → `apps/learn-app/docs/[part]/[chapter]/README.md`
+3. Create: New lesson file at `apps/learn-app/docs/[part]/[chapter]/[lesson-name].md`
 4. Invoke: Skills (content-evaluation, quiz-generator, image-generator)
 5. Commit: Add lesson to git
 
@@ -168,23 +168,23 @@ path: './book-source/build'
 - content-implementer.md
 
 **Workflow 2: Add Quizzes to Lesson**
-1. Read: Quiz component location → `book-source/src/components/Quiz.tsx`
+1. Read: Quiz component location → `apps/learn-app/src/components/Quiz.tsx`
 2. Create: Quiz data in lesson markdown
 3. Invoke: quiz-generator skill
-4. Output: Writes to `book-source/docs/[path]/quiz.md`
+4. Output: Writes to `apps/learn-app/docs/[path]/quiz.md`
 
 **Path Dependencies**: 4 references in quiz-generator skill
 
 **Workflow 3: Add Images to Lesson**
 1. Invoke: image-generator skill
-2. Output path: `book-source/static/img/part-{N}/chapter-{NN}/`
+2. Output path: `apps/learn-app/static/img/part-{N}/chapter-{NN}/`
 3. Reference: In lesson markdown
 
 **Path Dependencies**: 2 references in image-generator skill
 
 **Workflow 4: Generate Slides from Content**
 1. Invoke: notebooklm-slides skill
-2. Output path: `book-source/static/slides/`
+2. Output path: `apps/learn-app/static/slides/`
 3. Reference: In chapter README or lesson
 
 **Path Dependencies**: 4 references in notebooklm-slides skill
@@ -202,9 +202,9 @@ path: './book-source/build'
 ln -s apps/book-source book-source
 
 # Writers reference paths as before:
-# book-source/docs/...
-# book-source/static/...
-# book-source/src/...
+# apps/learn-app/docs/...
+# apps/learn-app/static/...
+# apps/learn-app/src/...
 
 # All Claude Code tools work unchanged
 # All CI/CD paths work unchanged
@@ -231,11 +231,11 @@ ln -s apps/book-source book-source
 
 #### 1. CLAUDE.md (Main Config) - 10 references
 ```diff
-- 1. **`book-source/docs/chapter-index.md`**
-+ 1. **`apps/book-source/docs/chapter-index.md`**
+- 1. **`apps/learn-app/docs/chapter-index.md`**
++ 1. **`apps/apps/learn-app/docs/chapter-index.md`**
 
-- 2. **Chapter README** (`book-source/docs/[part]/[chapter]/README.md`)
-+ 2. **Chapter README** (`apps/book-source/docs/[part]/[chapter]/README.md`)
+- 2. **Chapter README** (`apps/learn-app/docs/[part]/[chapter]/README.md`)
++ 2. **Chapter README** (`apps/apps/learn-app/docs/[part]/[chapter]/README.md`)
 ```
 
 #### 2. Output Styles (4 files) - 12 references
@@ -289,10 +289,10 @@ Priority order:
 ```bash
 # Script to update paths
 find .claude/ -type f -name "*.md" -o -name "*.json" \
-  -exec sed -i '' 's|book-source/docs/|apps/book-source/docs/|g' {} \; \
-  -exec sed -i '' 's|book-source/static/|apps/book-source/static/|g' {} \; \
-  -exec sed -i '' 's|book-source/src/|apps/book-source/src/|g' {} \; \
-  -exec sed -i '' 's|book-source/templates/|apps/book-source/templates/|g' {} \;
+  -exec sed -i '' 's|apps/learn-app/docs/|apps/apps/learn-app/docs/|g' {} \; \
+  -exec sed -i '' 's|apps/learn-app/static/|apps/apps/learn-app/static/|g' {} \; \
+  -exec sed -i '' 's|apps/learn-app/src/|apps/apps/learn-app/src/|g' {} \; \
+  -exec sed -i '' 's|apps/learn-app/templates/|apps/apps/learn-app/templates/|g' {} \;
 ```
 
 **Manual verification after script**:
@@ -339,24 +339,24 @@ find .claude/ -type f -name "*.md" -o -name "*.json" \
 
 ```bash
 # Test 1: Context gathering works
-ls -la apps/book-source/docs/chapter-index.md
+ls -la apps/apps/learn-app/docs/chapter-index.md
 
 # Test 2: Lesson creation would work
 # (Simulate creating file at new path)
-touch apps/book-source/docs/test-part/test-chapter/test-lesson.md
+touch apps/apps/learn-app/docs/test-part/test-chapter/test-lesson.md
 
 # Test 3: Quiz component accessible
-ls -la apps/book-source/src/components/Quiz.tsx
+ls -la apps/apps/learn-app/src/components/Quiz.tsx
 
 # Test 4: Asset directories exist
-mkdir -p apps/book-source/static/img
-mkdir -p apps/book-source/static/slides
+mkdir -p apps/apps/learn-app/static/img
+mkdir -p apps/apps/learn-app/static/slides
 
 # Test 5: Build Docusaurus
 cd apps/book-source && npm run build
 
 # Test 6: Verify deploy output
-ls -la apps/book-source/build/
+ls -la apps/apps/learn-app/build/
 ```
 
 ---
@@ -387,7 +387,7 @@ ls -la apps/book-source/build/
 **Subject**: Book Source Migration to Nx Monorepo - No Action Required
 
 ```markdown
-We're migrating `book-source/` to `apps/book-source/` as part of an Nx monorepo setup.
+We're migrating `apps/learn-app/` to `apps/apps/learn-app/` as part of an Nx monorepo setup.
 
 **WHAT YOU NEED TO KNOW**: Nothing. Your workflows don't change.
 
@@ -399,7 +399,7 @@ We're migrating `book-source/` to `apps/book-source/` as part of an Nx monorepo 
 
 **IF SOMETHING BREAKS**:
 - Check the migration troubleshooting guide (link)
-- Verify you're reading from `apps/book-source/docs/` in file operations
+- Verify you're reading from `apps/apps/learn-app/docs/` in file operations
 - Contact [name] if paths don't resolve
 
 **UPCOMING**: We're consolidating tooling into a single Nx workspace. Future updates will streamline how you create and manage content.

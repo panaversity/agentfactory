@@ -227,7 +227,7 @@ GOOGLE SEARCH GROUNDING: No (conceptual architecture)
 ## Generation Output
 
 **Filename**: `docker-container-lifecycle-states.png`
-**Location**: `book-source/static/img/visuals/docker-container-lifecycle-states.png`
+**Location**: `apps/learn-app/static/img/visuals/docker-container-lifecycle-states.png`
 **Resolution**: 2048x1152px (2K)
 **File Size**: 287 KB
 **Alt Text**: "Docker container lifecycle diagram showing build, run, and stop states with command transitions between states"
@@ -327,7 +327,7 @@ Students scan and immediately identify states as primary learning target.
 
 **Final Output**: `docker-container-lifecycle-states.png` (renamed from v2)
 
-**Saved to**: `book-source/static/img/visuals/docker-container-lifecycle-states.png`
+**Saved to**: `apps/learn-app/static/img/visuals/docker-container-lifecycle-states.png`
 
 ---
 
@@ -377,7 +377,7 @@ Students scan and immediately identify states as primary learning target.
       "generation_log": "history/visual-assets/generation-logs/chapter-07/visual-01.log.md",
       "audit_report": "history/visual-assets/audits/chapters/chapter-07-visual-audit.md",
       "markdown_references": [
-        "book-source/docs/part-02/chapter-07/lesson-01-docker-basics.md"
+        "apps/learn-app/docs/part-02/chapter-07/lesson-01-docker-basics.md"
       ],
       "reused_in": [],
       "status": "production",
@@ -407,10 +407,10 @@ Students scan and immediately identify states as primary learning target.
       "generation_log": "history/visual-assets/generation-logs/chapter-08/visual-02.log.md",
       "audit_report": "history/visual-assets/audits/chapters/chapter-08-visual-audit.md",
       "markdown_references": [
-        "book-source/docs/part-03/chapter-08/lesson-03-kubernetes-intro.md"
+        "apps/learn-app/docs/part-03/chapter-08/lesson-03-kubernetes-intro.md"
       ],
       "reused_in": [
-        "book-source/docs/part-03/chapter-09/lesson-02-orchestration.md"
+        "apps/learn-app/docs/part-03/chapter-09/lesson-02-orchestration.md"
       ],
       "status": "production",
       "tags": ["kubernetes", "architecture", "interactive", "B1", "tier-system"]
@@ -445,7 +445,7 @@ Students scan and immediately identify states as primary learning target.
 
 **Outputs**:
 1. **Generation log** → `history/visual-assets/generation-logs/chapter-{NN}/visual-{NN}.log.md`
-2. **Final images** → `book-source/static/img/visuals/{filename}.png`
+2. **Final images** → `apps/learn-app/static/img/visuals/{filename}.png`
 3. **Updated markdown** → Image references added to lesson files
 
 **Actions**:
@@ -569,7 +569,7 @@ mkdir -p history/visual-assets/archive
 
 ```bash
 # Create initial asset-registry.json with existing assets
-# Scan book-source/static/img/visuals/ and create entries
+# Scan apps/learn-app/static/img/visuals/ and create entries
 ```
 
 ---

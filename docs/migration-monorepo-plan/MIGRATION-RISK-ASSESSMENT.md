@@ -162,7 +162,7 @@ COPY panaversity-fs /app
 
 **Current Setup**:
 ```
-book-source/
+apps/learn-app/
 ├── package.json (main: @docusaurus/core, etc.)
 ├── plugins/
 │   ├── remark-interactive-python/
@@ -177,7 +177,7 @@ book-source/
 
 **Example Issue**:
 ```json
-// book-source/tsconfig.json
+// apps/learn-app/tsconfig.json
 {
   "compilerOptions": {
     "paths": {
@@ -191,7 +191,7 @@ book-source/
 **Mitigation**:
 - Keep existing `tsconfig.json` paths (don't change)
 - Use pnpm workspaces (already have `pnpm-lock.yaml`)
-- Test plugin resolution after Phase 1: `npm run build` in `book-source/`
+- Test plugin resolution after Phase 1: `npm run build` in `apps/learn-app/`
 
 ---
 
@@ -207,7 +207,7 @@ book-source/
 
 **Current Imports** (estimated from file structure):
 - `deploy.yml` → `panaversity-fs/scripts/hydrate-book.py` (shell, not JS)
-- `book-source/` → `plugins/` (pnpm workspaces handle this)
+- `apps/learn-app/` → `plugins/` (pnpm workspaces handle this)
 - No circular dependencies detected
 
 **Mitigation**:
@@ -289,7 +289,7 @@ pnpm install   # Uses pnpm-lock.yaml
 **Risk Score**: 6/10
 
 **Current Build Outputs**:
-- `book-source/build/` (Docusaurus output)
+- `apps/learn-app/build/` (Docusaurus output)
 - `.panaversity/manifest.json` (PanaversityFS hydration cache)
 - `.nx/cache/` (Nx cache, doesn't exist yet)
 
@@ -585,7 +585,7 @@ git diff main | grep -c "^+" # Should be reasonable (~50 lines)
    ```yaml
    packages:
      - 'book-source'
-     - 'book-source/plugins/*'  # 4 plugins as separate packages
+     - 'apps/learn-app/plugins/*'  # 4 plugins as separate packages
      - 'panaversity-fs'
    ```
    - **Recommendation**: Use above structure
@@ -614,7 +614,7 @@ rm nx.json pnpm-workspace.yaml
 
 | # | Task | Owner | Duration | Complexity |
 |:-:|------|-------|:--------:|:----------:|
-| 2.1 | Create `book-source/project.json` | Lead | 1h | Medium |
+| 2.1 | Create `apps/learn-app/project.json` | Lead | 1h | Medium |
 | 2.2 | Create `panaversity-fs/project.json` | Lead | 1h | Medium |
 | 2.3 | Create project.json for 4 plugins | Reviewer | 1h | Low |
 | 2.4 | Test `nx build book-source` | Lead | 30m | Medium |
@@ -627,13 +627,13 @@ rm nx.json pnpm-workspace.yaml
 
 #### Phase 2 Configuration Details
 
-##### 2.1: book-source/project.json
+##### 2.1: apps/learn-app/project.json
 
 ```json
 {
   "name": "book-source",
   "projectType": "application",
-  "sourceRoot": "book-source/src",
+  "sourceRoot": "apps/learn-app/src",
   "targets": {
     "build": {
       "executor": "nx:run-commands",
@@ -720,13 +720,13 @@ rm nx.json pnpm-workspace.yaml
 {
   "name": "@book-plugins/remark-interactive-python",
   "projectType": "library",
-  "sourceRoot": "book-source/plugins/remark-interactive-python",
+  "sourceRoot": "apps/learn-app/plugins/remark-interactive-python",
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
       "options": {
         "lintFilePatterns": [
-          "book-source/plugins/remark-interactive-python/**/*.js"
+          "apps/learn-app/plugins/remark-interactive-python/**/*.js"
         ]
       }
     }
@@ -747,7 +747,7 @@ time nx build book-source  # Should take ~5 min
 time nx build book-source  # Should take ~30 sec
 
 # Change a file
-touch book-source/src/index.js
+touch apps/learn-app/src/index.js
 
 # Rebuild: should be slow again
 time nx build book-source  # Should take ~5 min again
@@ -762,10 +762,10 @@ ls -la .nx/cache/ | wc -l  # Should be > 100
 nx build book-source
 
 # Check build output exists
-ls -la book-source/build/ | head -5
+ls -la apps/learn-app/build/ | head -5
 
 # Verify plugin imports work
-grep -r "@remark" book-source/build/  # Should have no errors
+grep -r "@remark" apps/learn-app/build/  # Should have no errors
 ```
 
 #### Phase 2 Success Criteria
@@ -776,7 +776,7 @@ nx build book-source
 nx test panaversity-fs
 nx run-many -t lint
 npm run build  # Original script still works
-ls -la book-source/build/ | wc -l  # Should have build output
+ls -la apps/learn-app/build/ | wc -l  # Should have build output
 git diff main | wc -l  # Phase 2 additions
 ```
 
@@ -784,7 +784,7 @@ git diff main | wc -l  # Phase 2 additions
 
 ```bash
 # Remove project.json files
-find . -name "project.json" -path "*/book-source/*" -o -path "*/panaversity-fs/*" | xargs rm
+find . -name "project.json" -path "*/apps/learn-app/*" -o -path "*/panaversity-fs/*" | xargs rm
 git checkout main -- .
 ```
 
@@ -840,8 +840,8 @@ on:
   push:
     branches: [main]
     paths:
-      - "book-source/**"
-      - "!book-source/docs/**"
+      - "apps/learn-app/**"
+      - "!apps/learn-app/docs/**"
 
 jobs:
   build:
@@ -871,10 +871,10 @@ on:
   push:
     branches: [main]
     paths:
-      - "book-source/**"
+      - "apps/learn-app/**"
       - ".github/workflows/deploy.yml"
       - "nx.json"
-      - "!book-source/docs/**"
+      - "!apps/learn-app/docs/**"
   workflow_dispatch:
     inputs:
       full_rebuild:
@@ -986,7 +986,7 @@ git merge --no-ff origin/feat/nx-migration  # Create merge commit locally
 npx nx affected -t build --base=main
 
 # Check outputs
-ls -la book-source/build/  # Should exist
+ls -la apps/learn-app/build/  # Should exist
 ```
 
 **Step 4: Merge with Caution**
@@ -1545,7 +1545,7 @@ npx create-nx-workspace@latest --preset=empty
 cat > pnpm-workspace.yaml << 'EOF'
 packages:
   - 'book-source'
-  - 'book-source/plugins/*'
+  - 'apps/learn-app/plugins/*'
   - 'panaversity-fs'
 EOF
 

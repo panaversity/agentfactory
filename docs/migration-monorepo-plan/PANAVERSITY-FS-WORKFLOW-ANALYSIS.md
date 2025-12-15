@@ -24,23 +24,23 @@ The panaversity-fs Python project is integrated into the Nx monorepo but workflo
 
 | Workflow | File | Touches panaversity-fs | When | Impact |
 |----------|------|------------------------|------|--------|
-| **PR Build Check** | `pr-check.yml` | NO (direct) | PR on `book-source/**` | Book-source only, doesn't invoke Python |
-| **Sync Content** | `sync-content.yml` | YES | Push on `book-source/docs/**` | Calls `scripts/ingest-book.py` |
+| **PR Build Check** | `pr-check.yml` | NO (direct) | PR on `apps/learn-app/**` | Book-source only, doesn't invoke Python |
+| **Sync Content** | `sync-content.yml` | YES | Push on `apps/learn-app/docs/**` | Calls `scripts/ingest-book.py` |
 | **Deploy** | `deploy.yml` | YES | workflow_run + push | Calls `scripts/hydrate-book.py` |
-| **Validate Content** | `validate-content.yml` | NO (direct) | PR on `book-source/docs/**` | Asset reference validation only |
+| **Validate Content** | `validate-content.yml` | NO (direct) | PR on `apps/learn-app/docs/**` | Asset reference validation only |
 
 ### 1.2 Detailed Workflow Breakdown
 
 #### Workflow 1: PR Build Check (`pr-check.yml`)
 
-**Triggers**: PR on `book-source/**` branches
+**Triggers**: PR on `apps/learn-app/**` branches
 **Current Execution**: Only builds book-source npm package
 **panaversity-fs Connection**: None (indirect via deployment, not triggered on PR)
 
 ```yaml
 trigger: pull_request
   paths:
-    - "book-source/**"
+    - "apps/learn-app/**"
 jobs:
   - Setup Node.js
   - Install book-source deps
@@ -56,7 +56,7 @@ jobs:
 
 #### Workflow 2: Sync Content (`sync-content.yml`)
 
-**Triggers**: Push on `book-source/docs/**` or manual workflow_dispatch
+**Triggers**: Push on `apps/learn-app/docs/**` or manual workflow_dispatch
 **Current Execution**:
 1. Checkout repo
 2. Setup Python 3.12
@@ -72,7 +72,7 @@ jobs:
 cd panaversity-fs
 python scripts/ingest-book.py \
   --book-id "ai-native-dev" \
-  --source-dir "../book-source/docs"   # RELATIVE path
+  --source-dir "../apps/learn-app/docs"   # RELATIVE path
   --verbose
 ```
 
@@ -80,7 +80,7 @@ python scripts/ingest-book.py \
 **Execution Directory**: `panaversity-fs/`
 
 **Nx Migration Impact**: MEDIUM
-- Uses relative paths (`../book-source/docs`) that will remain valid
+- Uses relative paths (`../apps/learn-app/docs`) that will remain valid
 - Script relies on `scripts/ingest/cli.py` which uses `sys.path.insert(0, str(scripts_dir.parent))`
 - Can keep current path structure as-is
 - Consider adding `--project panaversity-fs` for Nx awareness
@@ -91,7 +91,7 @@ python scripts/ingest-book.py \
 
 **Triggers**:
 - workflow_run (after sync-content success/skip)
-- Direct push on `book-source/**` (excluding docs/ which go via sync)
+- Direct push on `apps/learn-app/**` (excluding docs/ which go via sync)
 - Manual workflow_dispatch with optional full_rebuild
 
 **Current Execution** (Python portion):
@@ -117,8 +117,8 @@ Relative to monorepo root:
   panaversity-fs/scripts/hydrate-book.py
   .panaversity/manifest.json           (cache key)
   build-source/                         (output)
-  book-source/docs/                     (fallback)
-  book-source/build/                    (final artifact)
+  apps/learn-app/docs/                     (fallback)
+  apps/learn-app/build/                    (final artifact)
 ```
 
 **Secrets Used**:
@@ -147,7 +147,7 @@ PANAVERSITY_API_KEY
 
 #### Workflow 4: Validate Content (`validate-content.yml`)
 
-**Triggers**: PR on `book-source/docs/**`
+**Triggers**: PR on `apps/learn-app/docs/**`
 **Current Execution**:
 1. Get changed markdown files via git diff
 2. Grep for local asset references (`/img/`, `/slides/`)
@@ -167,7 +167,7 @@ PANAVERSITY_API_KEY
 
 **panaversity-fs → book-source**:
 - Scripts/hydrate outputs to `../build-source/` (monorepo-relative)
-- Scripts/ingest reads from `../book-source/docs/` (monorepo-relative)
+- Scripts/ingest reads from `../apps/learn-app/docs/` (monorepo-relative)
 
 **No direct npm/Python dependencies** between projects
 
@@ -288,10 +288,10 @@ Or using uv:
 | **Tests** | `panaversity-fs/tests/` | `panaversity-fs/tests/` | UNCHANGED | Already relative |
 | **Scripts** | `panaversity-fs/scripts/` | `panaversity-fs/scripts/` | UNCHANGED | Already relative |
 | **Pyproject** | `panaversity-fs/pyproject.toml` | `panaversity-fs/pyproject.toml` | UNCHANGED | Path-independent |
-| **Workflow input** | `book-source/docs/**` | `book-source/docs/**` | UNCHANGED | Path filter works in Nx |
+| **Workflow input** | `apps/learn-app/docs/**` | `apps/learn-app/docs/**` | UNCHANGED | Path filter works in Nx |
 | **Hydrate output** | `build-source/` | `build-source/` | UNCHANGED | Relative to monorepo root |
 | **Manifest cache** | `.panaversity/manifest.json` | `.panaversity/manifest.json` | UNCHANGED | Root-level dotfile |
-| **Fallback docs** | `book-source/docs/` | `book-source/docs/` | UNCHANGED | Relative path works |
+| **Fallback docs** | `apps/learn-app/docs/` | `apps/learn-app/docs/` | UNCHANGED | Relative path works |
 
 ### Workflow Working Directory Changes
 
@@ -381,7 +381,7 @@ fi
 - uses: actions/cache@v4
   with:
     path: .panaversity/manifest.json
-    key: panaversity-fs-manifest-${{ hashFiles('book-source/docs/**/*') }}
+    key: panaversity-fs-manifest-${{ hashFiles('apps/learn-app/docs/**/*') }}
     restore-keys: |
       panaversity-fs-manifest-
 ```
@@ -508,7 +508,7 @@ if __name__ == "__main__":
 
 2. **Add manifest cache hashing**
    ```yaml
-   key: panaversity-fs-manifest-${{ hashFiles('book-source/docs/**/*') }}
+   key: panaversity-fs-manifest-${{ hashFiles('apps/learn-app/docs/**/*') }}
    ```
 
 3. **Document path conventions** in README
@@ -623,7 +623,7 @@ docs/                            # Create new guide for workflows
 - `panaversity-fs/scripts/hydrate-book.py` (relative paths work fine)
 - `panaversity-fs/scripts/ingest-book.py` (relative paths work fine)
 - `panaversity-fs/pyproject.toml` (no path dependencies)
-- `book-source/**` (independent of panaversity-fs paths)
+- `apps/learn-app/**` (independent of panaversity-fs paths)
 
 ---
 

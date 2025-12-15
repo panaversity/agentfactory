@@ -107,7 +107,7 @@ storage/
 ├── specs/                               # Feature specifications
 │
 └── [Removed during migration]
-    ├── book-source/                     # MOVE → apps/website/
+    ├── apps/learn-app/                     # MOVE → apps/website/
     ├── panaversity-fs/                  # MOVE → apps/panaversity-fs-py/
 ```
 
@@ -967,7 +967,7 @@ Add to `.eslintrc.json`:
 
 - [ ] **Step 1.1**: Create directory structure
   - [ ] Create `apps/`, `libs/`, `tools/` directories
-  - [ ] Move `book-source/` → `apps/website/` (keep internal structure)
+  - [ ] Move `apps/learn-app/` → `apps/website/` (keep internal structure)
   - [ ] Move `panaversity-fs/` → `apps/panaversity-fs-py/` (keep internal structure)
   - [ ] Move plugins from `apps/website/plugins/` → `libs/*/` (6 projects)
   - [ ] Create `tools/executors/python-executor/`
@@ -980,7 +980,7 @@ Add to `.eslintrc.json`:
   - [ ] Update root `package.json` (as specified in Section 4)
 
 - [ ] **Step 1.3**: Update build references
-  - [ ] Update `book-source/package.json` paths (if any relative imports)
+  - [ ] Update `apps/learn-app/package.json` paths (if any relative imports)
   - [ ] Update `panaversity-fs/pyproject.toml` package name
   - [ ] Update CI script references from `panaversity-fs/scripts/` to `tools/scripts/`
 
