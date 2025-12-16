@@ -308,7 +308,7 @@ class TestAPIKeyVerifier:
     @pytest.mark.asyncio
     async def test_caching_reduces_auth_calls(self):
         """Test that successful verifications are cached to reduce auth server calls."""
-        from panaversity_fs.auth import APIKeyVerifier, AuthContext
+        from panaversity_fs.auth import APIKeyVerifier
 
         verifier = APIKeyVerifier(
             verify_url="https://auth.example.com/api/auth/api-key/verify"

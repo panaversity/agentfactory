@@ -296,7 +296,6 @@ def scan_specific_files(
         # Clean up the path (remove leading source dir if present)
         # Handle both "apps/learn-app/docs/03-Part/..." and "03-Part/..." formats
         clean_path = relative_path
-        source_root_str = str(source_root)
 
         # Strip common prefixes that might be in the git diff output
         prefixes_to_strip = [
