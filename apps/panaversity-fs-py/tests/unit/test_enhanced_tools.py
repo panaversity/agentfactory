@@ -386,8 +386,14 @@ class TestUploadAssetStaticPath:
     """Tests for upload_asset using static/ path (ADR-0018)."""
 
     @pytest.mark.asyncio
-    async def test_upload_asset_to_static_path(self, temp_storage, mock_context):
-        """Test upload_asset writes to static/ (not assets/)."""
+    async def test_upload_asset_to_static_path(self, setup_fs_backend, mock_context):
+        """Test upload_asset writes to static/ (not assets/).
+
+        Note: Uses setup_fs_backend (not temp_storage) because upload_asset
+        requires database access for FileJournal tracking.
+        """
+        from pathlib import Path
+        temp_storage = Path(setup_fs_backend)
         # Create book directory
         (temp_storage / "books" / "upload-test").mkdir(parents=True, exist_ok=True)
 
