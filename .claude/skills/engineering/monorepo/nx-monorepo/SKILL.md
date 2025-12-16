@@ -207,9 +207,9 @@ pnpm nx build dashboard
 pnpm nx serve dashboard
 ```
 
-### Adding a Python App (Manual Setup)
+### Adding a Python App (uv Workspace)
 
-Nx doesn't have native Python generators, so Python projects use manual setup with `project.json`:
+Python projects use **uv workspaces** (similar to pnpm workspaces for JS) with manual `project.json` for Nx:
 
 ```bash
 # 1. Create directory and initialize
@@ -217,11 +217,26 @@ mkdir -p apps/my-python-app
 cd apps/my-python-app
 uv init
 uv add --group dev pytest ruff mypy
+cd ../..
 
-# 2. Create project.json for Nx integration
+# 2. Add to uv workspace (root pyproject.toml)
 ```
 
-**apps/my-python-app/project.json:**
+Edit root `pyproject.toml`:
+```toml
+[tool.uv.workspace]
+members = [
+    "apps/panaversity-fs-py",
+    "apps/my-python-app",  # Add new project here
+]
+```
+
+```bash
+# 3. Sync all Python deps from root
+uv sync --extra dev
+```
+
+**apps/my-python-app/project.json** (for Nx):
 ```json
 {
   "name": "my-python-app",
@@ -238,26 +253,43 @@ uv add --group dev pytest ruff mypy
     "lint": {
       "command": "uv run --extra dev ruff check .",
       "options": { "cwd": "apps/my-python-app" }
-    },
-    "format": {
-      "command": "uv run --extra dev ruff format .",
-      "options": { "cwd": "apps/my-python-app" }
     }
   }
 }
 ```
 
 ```bash
-# 3. Verify Nx recognizes it
+# 4. Verify Nx recognizes it
 pnpm nx show projects
 pnpm nx graph --focus=my-python-app
 
-# 4. Run tasks via Nx
+# 5. Run tasks via Nx
 pnpm nx test my-python-app
-pnpm nx lint my-python-app
 ```
 
-**Key Insight**: Python dependencies are managed by `uv` per-project. Nx only orchestrates tasks—it doesn't manage Python deps.
+### Shared Python Libraries
+
+Create libraries that multiple Python apps can import:
+
+```bash
+mkdir -p libs/auth-common-py
+cd libs/auth-common-py
+uv init --lib
+cd ../..
+# Add to workspace members, then uv sync
+```
+
+Reference in dependent projects:
+```toml
+# apps/my-python-app/pyproject.toml
+[project]
+dependencies = ["auth-common-py"]
+
+[tool.uv.sources]
+auth-common-py = { workspace = true }
+```
+
+**Key Insight**: uv manages Python deps via workspace, Nx orchestrates tasks. Single `uv.lock` at root.
 
 ### Creating Shared Libraries
 

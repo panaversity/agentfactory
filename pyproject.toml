@@ -1,0 +1,37 @@
+# Root pyproject.toml - Enables uv workspace for shared Python libraries
+# See: https://docs.astral.sh/uv/concepts/workspaces/
+
+[project]
+name = "panaversity-monorepo"
+version = "0.0.0"
+description = "AI Native Software Development - Python workspace root"
+requires-python = ">=3.12"
+
+# No dependencies at root - each project manages its own
+dependencies = []
+
+[tool.uv.workspace]
+# Explicitly list Python projects (apps/* would catch JS projects too)
+members = [
+    "apps/panaversity-fs-py",
+    # Add new Python projects here:
+    # "apps/sso-py",
+    # "libs/auth-common-py",
+]
+
+# Shared tool configuration for all Python projects
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = ["E501"]  # Line length handled by formatter
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"

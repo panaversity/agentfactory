@@ -21,10 +21,8 @@ cd ai-native-software-development
 # Install JS/TS dependencies (from root)
 pnpm install
 
-# Install Python dependencies (per project)
-cd apps/panaversity-fs-py
+# Install Python dependencies (from root - uv workspace handles all Python projects)
 uv sync --extra dev
-cd ../..
 ```
 
 ## Project Structure
@@ -38,8 +36,21 @@ cd ../..
 │   └── docusaurus/          # Shared Docusaurus plugins (JS)
 ├── nx.json                  # Nx workspace config
 ├── package.json             # Root JS dependencies
-└── pnpm-workspace.yaml      # pnpm workspace config
+├── pnpm-workspace.yaml      # pnpm workspace config (JS/TS)
+├── pyproject.toml           # uv workspace config (Python)
+└── uv.lock                  # Python lockfile (all projects)
 ```
+
+### Workspace Architecture
+
+This monorepo uses **two workspace systems** running in parallel:
+
+| Stack | Package Manager | Workspace Config | Lockfile |
+|-------|-----------------|------------------|----------|
+| JS/TS | pnpm | `pnpm-workspace.yaml` | `pnpm-lock.yaml` |
+| Python | uv | `pyproject.toml` ([tool.uv.workspace]) | `uv.lock` |
+
+**Nx** orchestrates tasks across both stacks but doesn't manage dependencies.
 
 ## Running Commands
 
@@ -179,18 +190,33 @@ Create `apps/my-new-app/project.json`:
 
 ### Option 3: Python Project (Manual Setup)
 
-Nx doesn't have native Python generators, so Python projects use manual setup:
+Python projects use uv workspaces for dependency management and manual `project.json` for Nx:
 
 ```bash
-# Create directory
+# 1. Create directory and initialize
 mkdir -p apps/my-python-app
 cd apps/my-python-app
-
-# Initialize with uv
 uv init
 
-# Add dev dependencies
+# 2. Add dev dependencies
 uv add --group dev pytest ruff mypy
+cd ../..
+
+# 3. Add to uv workspace (edit root pyproject.toml)
+```
+
+Edit `pyproject.toml` at root to include the new project:
+```toml
+[tool.uv.workspace]
+members = [
+    "apps/panaversity-fs-py",
+    "apps/my-python-app",  # <-- Add this line
+]
+```
+
+```bash
+# 4. Sync all Python dependencies from root
+uv sync --extra dev
 ```
 
 Create `apps/my-python-app/project.json` for Nx integration:
@@ -217,6 +243,27 @@ Create `apps/my-python-app/project.json` for Nx integration:
     }
   }
 }
+```
+
+#### Shared Python Libraries
+
+To create a shared Python library that other Python apps can import:
+
+```bash
+mkdir -p libs/auth-common-py
+cd libs/auth-common-py
+uv init --lib
+cd ../..
+```
+
+Add to workspace and then reference in dependent projects:
+```toml
+# apps/my-python-app/pyproject.toml
+[project]
+dependencies = ["auth-common-py"]
+
+[tool.uv.sources]
+auth-common-py = { workspace = true }
 ```
 
 ### Option 4: Shared Library
