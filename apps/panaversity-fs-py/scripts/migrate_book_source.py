@@ -65,9 +65,11 @@ Usage:
 
 import argparse
 import asyncio
+import hashlib
 import re
 import sys
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from pathlib import Path
 
 # Add src to path for imports
@@ -90,6 +92,7 @@ class MigrationStats:
     assets_failed: int = 0
     urls_rewritten: int = 0
     bytes_uploaded: int = 0
+    journal_synced: int = 0
     errors: list = field(default_factory=list)
 
     def summary(self) -> str:
@@ -108,6 +111,7 @@ Assets:
   Failed:   {self.assets_failed}
 
 URLs Rewritten: {self.urls_rewritten}
+Journal Synced: {self.journal_synced}
 Total Size: {mb:.2f} MB
 Errors: {len(self.errors)}
 """
@@ -122,6 +126,7 @@ class MigrationConfig:
     content_only: bool = False
     assets_only: bool = False
     rewrite_urls: bool = False
+    write_local: bool = False  # Also update local files with rewritten URLs
     verbose: bool = False
     resume_from: str | None = None
 
@@ -198,10 +203,64 @@ class Migrator:
                 print(f"ERROR: Failed to connect to storage: {e}")
                 sys.exit(1)
 
+    async def sync_to_journal(self, storage_path: str, content_hash: str) -> bool:
+        """Write file hash to FileJournal for MCP compatibility.
+
+        This ensures that after migration, the MCP server can:
+        - Detect the file exists (for read_content)
+        - Allow updates with proper hash verification (for write_content)
+
+        Args:
+            storage_path: Full storage path (e.g., books/ai-native-dev/content/01-Part/...)
+            content_hash: SHA-256 hash of the file content
+
+        Returns:
+            True if sync succeeded, False otherwise
+        """
+        if self.config.dry_run:
+            return True
+
+        try:
+            from panaversity_fs.database.connection import get_session
+            from panaversity_fs.database.models import FileJournal
+
+            # Parse path: books/{book_id}/content/... → content/...
+            # or books/{book_id}/static/... → static/...
+            prefix = f"books/{self.config.book_id}/"
+            if storage_path.startswith(prefix):
+                rel_path = storage_path[len(prefix):]
+            else:
+                rel_path = storage_path
+
+            async with get_session() as session:
+                entry = FileJournal(
+                    book_id=self.config.book_id,
+                    path=rel_path,
+                    user_id="__base__",
+                    sha256=content_hash,
+                    last_written_at=datetime.now(timezone.utc),
+                    storage_backend=self.storage_config.storage_backend if self.storage_config else "s3"
+                )
+                await session.merge(entry)  # upsert - insert or update
+
+            self.stats.journal_synced += 1
+            return True
+
+        except Exception as e:
+            self.stats.errors.append(f"Journal sync failed for {storage_path}: {e}")
+            if self.config.verbose:
+                print(f"    ⚠ Journal sync failed: {e}")
+            return False
+
     def should_skip(self, path: Path) -> bool:
         """Check if file should be skipped."""
-        if any(part.startswith('.') for part in path.parts):
-            return True
+        # Resolve path to remove .. and check for hidden files/dirs
+        # Skip '.' and '..' which are navigation, only check actual hidden items
+        for part in path.parts:
+            if part in ('.', '..'):
+                continue  # Skip navigation components
+            if part.startswith('.'):
+                return True  # Hidden file/directory
         if 'node_modules' in path.parts:
             return True
         return False
@@ -365,7 +424,7 @@ class Migrator:
         return mime_types.get(suffix, 'application/octet-stream')
 
     async def upload_file(self, local_path: Path, storage_path: str, is_text: bool = False) -> bool:
-        """Upload a single file to storage.
+        """Upload a single file to storage and sync to FileJournal.
 
         Args:
             local_path: Local file path
@@ -378,6 +437,7 @@ class Migrator:
         try:
             if is_text:
                 content = local_path.read_text(encoding='utf-8')
+                original_content = content  # Keep original for comparison
 
                 if self.config.rewrite_urls:
                     content, url_count = self.rewrite_asset_urls(content)
@@ -386,8 +446,18 @@ class Migrator:
                         print(f"    Rewrote {url_count} URLs in {local_path.name}")
 
                 file_bytes = content.encode('utf-8')
+
+                # Write back to local file if URLs were rewritten and --write-local is set
+                if self.config.write_local and self.config.rewrite_urls and content != original_content:
+                    if not self.config.dry_run:
+                        local_path.write_text(content, encoding='utf-8')
+                        if self.config.verbose:
+                            print(f"    📝 Updated local file: {local_path.name}")
             else:
                 file_bytes = local_path.read_bytes()
+
+            # Compute hash for journal sync
+            content_hash = hashlib.sha256(file_bytes).hexdigest()
 
             size = len(file_bytes)
             size_str = f"{size / 1024:.1f} KB" if size < 1024 * 1024 else f"{size / (1024*1024):.2f} MB"
@@ -414,6 +484,9 @@ class Migrator:
                 await self.operator.write(storage_path, file_bytes)
 
             self.stats.bytes_uploaded += size
+
+            # Sync to FileJournal for MCP compatibility
+            await self.sync_to_journal(storage_path, content_hash)
 
             if self.config.verbose:
                 print(f"  ✓ {storage_path} ({size_str})")
@@ -540,11 +613,13 @@ Resume:       {self.config.resume_from or 'From beginning'}
 {'='*60}
 """)
 
-        if not self.config.assets_only:
-            await self.migrate_content()
-
+        # Assets FIRST - so CDN URLs are valid when content is uploaded
         if not self.config.content_only:
             await self.migrate_assets()
+
+        # Content SECOND - URLs now point to existing assets
+        if not self.config.assets_only:
+            await self.migrate_content()
 
         print(self.stats.summary())
 
@@ -618,6 +693,12 @@ def main():
     )
 
     parser.add_argument(
+        "--write-local",
+        action="store_true",
+        help="Also update local markdown files with rewritten URLs (use with --rewrite-urls)"
+    )
+
+    parser.add_argument(
         "--verbose", "-v",
         action="store_true",
         help="Show detailed output"
@@ -635,6 +716,10 @@ def main():
         print(f"ERROR: Source directory not found: {args.source}")
         sys.exit(1)
 
+    # Warn if --write-local is used without --rewrite-urls
+    if args.write_local and not args.rewrite_urls:
+        print("WARNING: --write-local has no effect without --rewrite-urls")
+
     config = MigrationConfig(
         source_dir=args.source,
         book_id=args.book_id,
@@ -642,6 +727,7 @@ def main():
         content_only=args.content_only,
         assets_only=args.assets_only,
         rewrite_urls=args.rewrite_urls,
+        write_local=args.write_local,
         verbose=args.verbose,
         resume_from=args.resume_from,
     )

@@ -13,6 +13,20 @@ cd panaversity-fs
 uv sync
 ```
 
+## Preview
+
+```bash
+mjs@Muhammads-MacBook-Pro-3 panaversity-fs-py % uv run alembic upgrade head
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 147ff406b539, initial FileJournal and AuditLog schema
+INFO  [alembic.runtime.migration] Running upgrade 147ff406b539 -> 853c7e2d6e2a, use timezone aware timestamps
+mjs@Muhammads-MacBook-Pro-3 panaversity-fs-py %   PANAVERSITY_LOG_LEVEL=WARNING uv run python scripts/migrate_book_source.py \
+    --source ../learn-app \
+    --rewrite-urls \
+    --write-local
+```
+
 ### Usage
 
 ```bash

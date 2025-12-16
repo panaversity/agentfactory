@@ -1,7 +1,7 @@
 """Path mapping from book-source to PanaversityFS schema.
 
 Maps source directory structure to the PanaversityFS content schema:
-- Source: Part-01/Chapter-02/03-lesson.md
+- Source: 01-PartName/02-ChapterName/03-lesson.md
 - Target: content/01-Part/02-Chapter/03-lesson.md
 
 The mapper validates paths against FR-007 (content) and FR-008 (assets) patterns.
@@ -42,10 +42,11 @@ class MappedPath:
 
 
 # Patterns for source path parsing
-# Source format: Part-NN/Chapter-NN/NN-name.md
-PART_PATTERN = re.compile(r"Part-(\d+)")
-CHAPTER_PATTERN = re.compile(r"Chapter-(\d+)")
-LESSON_PATTERN = re.compile(r"(\d+)-([a-zA-Z0-9-]+)(\.summary)?\.md$")
+# Source format: NN-PartName/NN-ChapterName/NN-name.md (actual book structure)
+# Example: 01-Introducing-AI-Driven-Development/02-ai-turning-point/01-lesson.md
+PART_PATTERN = re.compile(r"(\d+)-")  # Matches "01-" at start
+CHAPTER_PATTERN = re.compile(r"(\d+)-")  # Matches "02-" at start
+LESSON_PATTERN = re.compile(r"(\d+)[-_]([a-zA-Z0-9_-]+)(\.summary)?\.md$")
 
 # Asset patterns
 ASSET_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".mp4", ".mp3", ".pdf"}
@@ -73,15 +74,15 @@ def map_source_to_storage(source_path: str) -> MappedPath:
     """Map a source path to PanaversityFS storage path.
 
     Args:
-        source_path: Path relative to apps/learn-app/docs/ (e.g., "Part-01/Chapter-02/03-lesson.md")
+        source_path: Path relative to apps/learn-app/docs/ (e.g., "01-PartName/02-ChapterName/03-lesson.md")
 
     Returns:
         MappedPath with storage_path and validity information
 
     Mapping Rules:
-        - Part-NN/Chapter-NN/NN-name.md → content/NN-Part/NN-Chapter/NN-name.md
-        - Part-NN/Chapter-NN/NN-name.summary.md → content/NN-Part/NN-Chapter/NN-name.summary.md
-        - Part-NN/Chapter-NN/img/*.png → static/images/*.png (img normalizes to images)
+        - NN-PartName/NN-ChapterName/NN-name.md → content/NN-Part/NN-Chapter/NN-name.md
+        - NN-PartName/NN-ChapterName/NN-name.summary.md → content/NN-Part/NN-Chapter/NN-name.summary.md
+        - NN-PartName/NN-ChapterName/img/*.png → static/images/*.png (img normalizes to images)
         - README.md files → ignored (not synced)
     """
     # Normalize path separators
@@ -139,7 +140,7 @@ def _map_content_path(source_path: str) -> MappedPath:
             storage_path=None,
             content_type=ContentType.MARKDOWN,
             valid=False,
-            error=f"Invalid Part format, expected 'Part-NN': {parts[0]}"
+            error=f"Invalid Part format, expected 'NN-PartName': {parts[0]}"
         )
     part_num = part_match.group(1).zfill(2)
 
@@ -151,7 +152,7 @@ def _map_content_path(source_path: str) -> MappedPath:
             storage_path=None,
             content_type=ContentType.MARKDOWN,
             valid=False,
-            error=f"Invalid Chapter format, expected 'Chapter-NN': {parts[1]}"
+            error=f"Invalid Chapter format, expected 'NN-ChapterName': {parts[1]}"
         )
     chapter_num = chapter_match.group(1).zfill(2)
 
