@@ -17,7 +17,7 @@
 
 - Project type: Docusaurus plugin (build-time MDX transformation)
 - Plugin path: `book-source/plugins/remark-slides-metadata/`
-- Test chapters: `book-source/docs/01-Introducing-AI-Driven-Development/`
+- Test chapters: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/`
 - Static files: `book-source/static/slides/`
 
 ---
@@ -64,7 +64,7 @@
 - [ ] T014 [US1] Implement AST node injection logic in transformer to insert import, heading, and JSX nodes after target heading
 - [ ] T015 [US1] Add import deduplication check in transformer to avoid duplicate PDFViewer imports
 - [ ] T016 [US1] Wire transformer to plugin export in book-source/plugins/remark-slides-metadata/index.ts
-- [ ] T017 [US1] Test with Chapter 2: Update book-source/docs/01-Introducing-AI-Driven-Development/02-ai-turning-point/README.md frontmatter to add `slides: "slides/chapter-02-slides.pdf"`
+- [ ] T017 [US1] Test with Chapter 2: Update apps/learn-app/docs/01-Introducing-AI-Driven-Development/02-ai-turning-point/README.md frontmatter to add `slides: "slides/chapter-02-slides.pdf"`
 - [ ] T018 [US1] Remove manual PDFViewer import and JSX from Chapter 2 README to validate metadata approach
 - [ ] T019 [US1] Start dev server (`npm start` in book-source/) and verify slides render correctly in Chapter 2
 
@@ -82,7 +82,7 @@
 
 - [ ] T020 [US2] Update transformer in book-source/plugins/remark-slides-metadata/transformer.ts to use detectPathType utility before normalization
 - [ ] T021 [US2] Update JSX generation in transformer to pass normalized path (with or without leading slash) based on path type
-- [ ] T022 [US2] Test with Chapter 3: Update book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/README.md frontmatter to add `slides: "https://example.com/test.pdf"` (test URL)
+- [ ] T022 [US2] Test with Chapter 3: Update apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/README.md frontmatter to add `slides: "https://example.com/test.pdf"` (test URL)
 - [ ] T023 [US2] Verify in dev server that URL is passed directly to PDFViewer without modification
 - [ ] T024 [US2] Test mixed scenario: Verify Chapter 2 (local) and Chapter 3 (URL) both work simultaneously during full site build
 
@@ -134,7 +134,7 @@
 
 - [ ] T037 [P] Update specs/035-metadata-driven-slides/quickstart.md with real examples from Chapters 2-4
 - [ ] T038 [P] Add TypeScript type definitions in book-source/plugins/remark-slides-metadata/index.ts for plugin options (even if empty interface)
-- [ ] T039 Test Chapter 4: Update book-source/docs/01-Introducing-AI-Driven-Development/04-nine-pillars/README.md frontmatter with slides metadata
+- [ ] T039 Test Chapter 4: Update apps/learn-app/docs/01-Introducing-AI-Driven-Development/04-nine-pillars/README.md frontmatter with slides metadata
 - [ ] T040 Validate backward compatibility: Ensure existing chapters with manual PDFViewer JSX still work alongside metadata approach
 - [ ] T041 Run full build performance test: Compare build time before and after plugin (<5% increase acceptable per research.md)
 - [ ] T042 [P] Add plugin README at book-source/plugins/remark-slides-metadata/README.md with architecture overview

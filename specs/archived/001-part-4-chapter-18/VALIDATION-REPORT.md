@@ -20,20 +20,20 @@ Chapter 18 has successfully completed all implementation phases and passed compr
 
 ## Validation Results Summary
 
-| Category | Target | Actual | Status |
-|----------|--------|--------|--------|
-| **Lessons Completed** | 11 | 11 | ✅ PASS |
-| **Code Examples Validated** | 15 (EX-001 to EX-015) | 15 | ✅ PASS |
-| **Python Version Compatibility** | 3.14+ | 3.14.0 tested | ✅ PASS |
-| **"Try With AI" Closures** | 11 lessons | 11 lessons | ✅ PASS |
-| **CoLearning Elements** | 2-7 per lesson | 2-7 per lesson | ✅ PASS |
-| **Cognitive Load** | ≤7 concepts/lesson | 5-7 concepts | ✅ PASS |
-| **CEFR Proficiency** | A1→A2→B1 progression | A1→A2→B1 validated | ✅ PASS |
-| **Reading Level** | Grade 7-8 | Grade 9.0 avg | ⚠️ ACCEPTABLE* |
-| **Constitutional Violations** | 0 critical | 1 documented exception | ✅ DOCUMENTED** |
+| Category                         | Target                | Actual                 | Status            |
+| -------------------------------- | --------------------- | ---------------------- | ----------------- |
+| **Lessons Completed**            | 11                    | 11                     | ✅ PASS           |
+| **Code Examples Validated**      | 15 (EX-001 to EX-015) | 15                     | ✅ PASS           |
+| **Python Version Compatibility** | 3.14+                 | 3.14.0 tested          | ✅ PASS           |
+| **"Try With AI" Closures**       | 11 lessons            | 11 lessons             | ✅ PASS           |
+| **CoLearning Elements**          | 2-7 per lesson        | 2-7 per lesson         | ✅ PASS           |
+| **Cognitive Load**               | ≤7 concepts/lesson    | 5-7 concepts           | ✅ PASS           |
+| **CEFR Proficiency**             | A1→A2→B1 progression  | A1→A2→B1 validated     | ✅ PASS           |
+| **Reading Level**                | Grade 7-8             | Grade 9.0 avg          | ⚠️ ACCEPTABLE\*   |
+| **Constitutional Violations**    | 0 critical            | 1 documented exception | ✅ DOCUMENTED\*\* |
 
 \* Reading level slightly above target (9.0 vs 7-8) is acceptable for intermediate A2-B1 learners with technical content
-\** Forward reference to functions (Ch 20) documented in ADR-0010 as pedagogically justified exception
+\*\* Forward reference to functions (Ch 20) documented in ADR-0010 as pedagogically justified exception
 
 ---
 
@@ -46,6 +46,7 @@ Chapter 18 has successfully completed all implementation phases and passed compr
 **Result**: ✅ **ALL EXAMPLES PASSED**
 
 **Examples Tested**:
+
 - ✅ Lesson 1: Collections introduction (lists, tuples, dicts)
 - ✅ Lesson 2: List indexing, slicing, type hints
 - ✅ Lesson 3: List mutation (append, extend, pop, remove)
@@ -59,12 +60,14 @@ Chapter 18 has successfully completed all implementation phases and passed compr
 - ✅ Lesson 11: Complete data processing pipeline
 
 **Key Findings**:
+
 - Modern type hints (`list[T]`, `dict[K,V]`, `tuple[T,...]`, `X | None`) all execute correctly
 - No deprecated `typing.List`, `typing.Dict`, `typing.Union` syntax found
 - All union types with `|` operator work as expected
 - Complex nested types (`list[dict[str, str | float]]`) validated
 
 **Code Quality**:
+
 - All examples are runnable without modification
 - Type hints enforce intent (validated with mypy-compatible syntax)
 - Error handling appropriate for CEFR level
@@ -79,16 +82,19 @@ Chapter 18 has successfully completed all implementation phases and passed compr
 #### ✅ Compliant Principles:
 
 1. **Principle 12 (Cognitive Load Management)**: Max 7 concepts per lesson enforced
+
    - Lesson 1: 5 concepts (A1 limit)
    - Lessons 2-10: 6-7 concepts (A2-B1 limit)
    - Lesson 11: 0 new concepts (integration only)
 
 2. **Principle 13 (Graduated Teaching Pattern)**: Book teaches → AI companion explores → AI orchestration
+
    - Foundations taught directly (Lessons 1-6)
    - AI companion explores complex scenarios (Lessons 7-10)
    - AI orchestration in capstone (Lesson 11)
 
 3. **Principle 14 (Planning-First)**: Complete Spec → Plan → Tasks → Implement workflow followed
+
    - Spec: `specs/001-part-4-chapter-18/spec.md` (657 lines)
    - Plan: `specs/001-part-4-chapter-18/plan.md` (1,406 lines)
    - Tasks: `specs/001-part-4-chapter-18/tasks.md` (350+ lines)
@@ -102,6 +108,7 @@ Chapter 18 has successfully completed all implementation phases and passed compr
 #### ⚠️ Documented Exception:
 
 **Forward Reference to Functions (Ch 20)**:
+
 - **Constraint**: FR-007, SC-014 forbid forward references to functions
 - **Reality**: Lesson 11 Capstone uses `def` syntax in integration examples
 - **Justification**: Documented in **ADR-0010** (Capstone Forward Reference Exception)
@@ -120,27 +127,29 @@ Chapter 18 has successfully completed all implementation phases and passed compr
 
 **Detailed Results**:
 
-| Lesson | Grade Level | Words | Sentences | Status |
-|--------|-------------|-------|-----------|--------|
-| 01 | 9.4 | 1,632 | 108 | ⚠️ Slightly high |
-| 02 | 8.7 | 1,343 | 88 | ✅ In range |
-| 03 | 7.2 | 1,165 | 96 | ✅ In range |
-| 04 | 8.4 | 1,496 | 114 | ✅ In range |
-| 05 | 8.6 | 1,189 | 101 | ✅ In range |
-| 06 | 8.9 | 1,420 | 111 | ✅ In range |
-| 07 | 8.0 | 1,546 | 119 | ✅ In range |
-| 08 | 9.5 | 1,405 | 97 | ⚠️ Slightly high |
-| 09 | 10.9 | 1,216 | 79 | ⚠️ Slightly high |
-| 10 | 10.1 | 1,588 | 101 | ⚠️ Slightly high |
-| 11 | 9.7 | 2,009 | 139 | ⚠️ Slightly high |
+| Lesson | Grade Level | Words | Sentences | Status           |
+| ------ | ----------- | ----- | --------- | ---------------- |
+| 01     | 9.4         | 1,632 | 108       | ⚠️ Slightly high |
+| 02     | 8.7         | 1,343 | 88        | ✅ In range      |
+| 03     | 7.2         | 1,165 | 96        | ✅ In range      |
+| 04     | 8.4         | 1,496 | 114       | ✅ In range      |
+| 05     | 8.6         | 1,189 | 101       | ✅ In range      |
+| 06     | 8.9         | 1,420 | 111       | ✅ In range      |
+| 07     | 8.0         | 1,546 | 119       | ✅ In range      |
+| 08     | 9.5         | 1,405 | 97        | ⚠️ Slightly high |
+| 09     | 10.9        | 1,216 | 79        | ⚠️ Slightly high |
+| 10     | 10.1        | 1,588 | 101       | ⚠️ Slightly high |
+| 11     | 9.7         | 2,009 | 139       | ⚠️ Slightly high |
 
 **Summary**:
+
 - **6 of 11 lessons** in target range (7.0-8.5)
 - **5 of 11 lessons** slightly above target (9.0-10.9)
 - **Average grade level**: 9.0
 - **Acceptable**: ✅ YES (intermediate A2-B1 learners + technical vocabulary)
 
 **Rationale for Acceptance**:
+
 1. **Target audience is intermediate** (A2-B1), not beginner (A1)
 2. **Technical content** naturally scores higher due to domain terms (mutable, immutable, hashable, comprehension)
 3. **Average 9.0** is only 0.5-1.5 grades above target upper bound (8.5)
@@ -155,21 +164,22 @@ Chapter 18 has successfully completed all implementation phases and passed compr
 
 #### CEFR Proficiency Progression: ✅ VALIDATED
 
-| Lesson | CEFR Level | Bloom's Level | Concepts | Assessment |
-|--------|------------|---------------|----------|------------|
-| 1 | A1 (Foundation) | Understand | 5 | Recognition/explanation |
-| 2 | A2 (Basic) | Apply | 6 | Guided practice |
-| 3 | A2-B1 (Transitional) | Apply | 7 | Application with scaffolding |
-| 4 | B1 (Intermediate) | Apply/Analyze | 7 | Independent analysis |
-| 5 | B1 (Intermediate) | Apply/Create | 6 | Transformation tasks |
-| 6 | A2-B1 (Transitional) | Apply | 7 | Multi-context application |
-| 7 | A2 (Basic) | Apply | 6 | Structured practice |
-| 8 | A2-B1 (Transitional) | Apply | 7 | CRUD operations |
-| 9 | B1 (Intermediate) | Apply/Analyze | 7 | Pattern recognition |
-| 10 | B1 (Intermediate synthesis) | Analyze/Evaluate | 7 | Architectural decisions |
-| 11 | B1 (Integration) | Create | 0 | Complete project |
+| Lesson | CEFR Level                  | Bloom's Level    | Concepts | Assessment                   |
+| ------ | --------------------------- | ---------------- | -------- | ---------------------------- |
+| 1      | A1 (Foundation)             | Understand       | 5        | Recognition/explanation      |
+| 2      | A2 (Basic)                  | Apply            | 6        | Guided practice              |
+| 3      | A2-B1 (Transitional)        | Apply            | 7        | Application with scaffolding |
+| 4      | B1 (Intermediate)           | Apply/Analyze    | 7        | Independent analysis         |
+| 5      | B1 (Intermediate)           | Apply/Create     | 6        | Transformation tasks         |
+| 6      | A2-B1 (Transitional)        | Apply            | 7        | Multi-context application    |
+| 7      | A2 (Basic)                  | Apply            | 6        | Structured practice          |
+| 8      | A2-B1 (Transitional)        | Apply            | 7        | CRUD operations              |
+| 9      | B1 (Intermediate)           | Apply/Analyze    | 7        | Pattern recognition          |
+| 10     | B1 (Intermediate synthesis) | Analyze/Evaluate | 7        | Architectural decisions      |
+| 11     | B1 (Integration)            | Create           | 0        | Complete project             |
 
 **Progression Validation**:
+
 - ✅ Gradual increase from A1 → A2 → B1
 - ✅ Bloom's progression from Understand → Apply → Analyze → Create
 - ✅ Concept count matches CEFR level (A1: max 5, A2: max 7, B1: max 10)
@@ -179,6 +189,7 @@ Chapter 18 has successfully completed all implementation phases and passed compr
 
 **Total Unique Skills**: 40 documented across 11 lessons
 **Coherence Validation**: 5 tests passed
+
 1. ✅ Uniqueness (no duplicate skill definitions)
 2. ✅ Naming convention (consistent verb semantics)
 3. ✅ Proficiency progression (non-regressing)
@@ -186,12 +197,14 @@ Chapter 18 has successfully completed all implementation phases and passed compr
 5. ✅ Connectivity (vertical deepening + horizontal integration)
 
 **Sample Skills**:
+
 - "List Indexing & Slicing" — A2 — Technical — Student can access list[0], list[-1], list[1:3]
 - "List Comprehension Syntax" — B1 — Technical — Student can write [expr for item in iterable if condition]
 - "Immutability Understanding" — A2-B1 — Conceptual — Student can explain why immutable guarantees matter
 - "Hashable Types Recognition" — B1 — Conceptual — Student understands tuples as dict keys but not lists
 
 **Institutional Integration Ready**: ✅ YES
+
 - YAML frontmatter in all lessons with skills metadata
 - CEFR + Bloom's + DigComp alignment
 - Portable credentials enabled
@@ -234,21 +247,25 @@ Chapter 18 has successfully completed all implementation phases and passed compr
 ## Known Issues and Resolutions
 
 ### Issue 1: "Try With AI" Closure Compliance
+
 - **Initial Finding**: Technical reviewer flagged potential missing closures
 - **Resolution**: ✅ **VERIFIED** - All 11 lessons have complete "Try With AI" sections with 4 prompts
 - **Status**: CLOSED
 
 ### Issue 2: Code Example Execution Validation
+
 - **Initial Finding**: No evidence examples tested on Python 3.14+
 - **Resolution**: ✅ **TESTED** - Created `test_chapter_18_examples.py`, all examples pass
 - **Status**: CLOSED
 
 ### Issue 3: Forward Reference to Functions
+
 - **Initial Finding**: Lesson 11 uses `def` syntax (forward reference to Ch 20)
 - **Resolution**: ✅ **DOCUMENTED** - ADR-0010 justifies exception for capstone pedagogical completeness
 - **Status**: ACCEPTED (documented trade-off)
 
 ### Issue 4: Reading Level Slightly High
+
 - **Initial Finding**: 5 of 11 lessons above Grade 8.5 target
 - **Resolution**: ⚠️ **ACCEPTABLE** - Average 9.0 appropriate for intermediate A2-B1 technical content
 - **Status**: MONITORED (feedback from actual learners recommended)
@@ -258,14 +275,16 @@ Chapter 18 has successfully completed all implementation phases and passed compr
 ## Artifacts Created
 
 ### Implementation Artifacts:
+
 1. **Specification**: `specs/001-part-4-chapter-18/spec.md` (657 lines)
 2. **Plan**: `specs/001-part-4-chapter-18/plan.md` (1,406 lines)
 3. **Tasks**: `specs/001-part-4-chapter-18/tasks.md` (350+ lines)
-4. **11 Lesson Files**: `book-source/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/`
+4. **11 Lesson Files**: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/`
    - 01-lesson-1.md through 11-lesson-11.md
    - Total: ~16,000 lines of content
 
 ### Validation Artifacts:
+
 5. **ADR-0008**: 11-Lesson Collections Structure for Intermediate A2-B1 Learners
 6. **ADR-0009**: CEFR Proficiency-Based Skills Metadata for Institutional Integration
 7. **ADR-0010**: Capstone Forward Reference Exception for Pedagogical Completeness
@@ -274,6 +293,7 @@ Chapter 18 has successfully completed all implementation phases and passed compr
 10. **This Report**: `specs/001-part-4-chapter-18/VALIDATION-REPORT.md`
 
 ### Prompt History Records:
+
 11. **0001-chapter-18-spec-creation.spec.prompt.md**
 12. **0002-chapter-18-adr-documentation.plan.prompt.md**
 13. **0003-chapter-18-task-generation.tasks.prompt.md**
@@ -308,28 +328,30 @@ Chapter 18 has successfully completed all implementation phases and passed compr
 
 ## Quality Metrics Achieved
 
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| **Spec → Plan → Tasks Coverage** | 100% | 100% | ✅ |
-| **Requirements Coverage** | >90% | 95% (19/20 full, 1 partial) | ✅ |
-| **User Story Mapping** | 100% | 100% (4/4 stories) | ✅ |
-| **Constitution Compliance** | 100% | 100% (1 documented exception) | ✅ |
-| **Code Example Execution** | 100% | 100% (15/15 pass) | ✅ |
-| **Cognitive Load Compliance** | 100% | 100% (all lessons ≤7 concepts) | ✅ |
-| **CEFR Proficiency Progression** | A1→B1 | A1→A2→B1 | ✅ |
-| **Parallel Implementation Tasks** | >40% | 60% (15/25 tasks) | ✅ |
-| **Reading Level** | 7.0-8.5 | 9.0 avg | ⚠️ ACCEPTABLE |
+| Metric                            | Target  | Actual                         | Status        |
+| --------------------------------- | ------- | ------------------------------ | ------------- |
+| **Spec → Plan → Tasks Coverage**  | 100%    | 100%                           | ✅            |
+| **Requirements Coverage**         | >90%    | 95% (19/20 full, 1 partial)    | ✅            |
+| **User Story Mapping**            | 100%    | 100% (4/4 stories)             | ✅            |
+| **Constitution Compliance**       | 100%    | 100% (1 documented exception)  | ✅            |
+| **Code Example Execution**        | 100%    | 100% (15/15 pass)              | ✅            |
+| **Cognitive Load Compliance**     | 100%    | 100% (all lessons ≤7 concepts) | ✅            |
+| **CEFR Proficiency Progression**  | A1→B1   | A1→A2→B1                       | ✅            |
+| **Parallel Implementation Tasks** | >40%    | 60% (15/25 tasks)              | ✅            |
+| **Reading Level**                 | 7.0-8.5 | 9.0 avg                        | ⚠️ ACCEPTABLE |
 
 ---
 
 ## Recommendations
 
 ### For Immediate Publication:
+
 1. ✅ **APPROVE** - Chapter 18 is production-ready
 2. ✅ **MONITOR** - Track learner feedback on reading level (5 lessons at 9.0-10.9)
 3. ✅ **DOCUMENT** - Ensure ADR-0010 (forward reference exception) is referenced in Chapter 20 planning
 
 ### For Future Chapters (17, 19-29):
+
 1. **Apply ADR-0008 Pattern**: Use 11-lesson structure for intermediate chapters
 2. **Apply ADR-0009 Metadata**: Include CEFR + Bloom's + DigComp skills proficiency in all lessons
 3. **Consider ADR-0010 Exception**: Capstone lessons may use forward references when pedagogically justified (document via ADR)
@@ -342,6 +364,7 @@ Chapter 18 has successfully completed all implementation phases and passed compr
 **Chapter 18 Status**: ✅ **READY FOR PUBLICATION**
 
 **Validated By**:
+
 - Main Orchestrator (Claude Code)
 - validation-auditor subagent
 - Code execution tests (Python 3.14.0)
@@ -350,6 +373,7 @@ Chapter 18 has successfully completed all implementation phases and passed compr
 **Date**: 2025-11-09
 
 **Next Steps**:
+
 1. ✅ **COMPLETE**: Update `chapter-index.md` status to "✅ Implemented & Validated"
 2. ⏳ **OPTIONAL**: Docusaurus build test before merging to main
 3. ⏳ **RECOMMENDED**: User acceptance testing with pilot learners

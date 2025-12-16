@@ -19,7 +19,7 @@ This guide shows you how to create high-quality educational content using **AI-n
 - **Vertical intelligence** - Constitution → output-styles → subagents → content (all synchronized)
 
 **Reference Material**:
-- **Chapter 31**: Complete SpecKit Plus hands-on workflow (book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/)
+- **Chapter 31**: Complete SpecKit Plus hands-on workflow (apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/)
 - **Constitution v3.0.1**: Project principles and evals-first philosophy (.specify/memory/constitution.md)
 - **Chapter Index**: Current book structure (specs/book/chapter-index.md)
 
@@ -121,7 +121,7 @@ AI will ask questions to fill gaps you might have missed.
 **Ready to Move Forward?**
 When spec has all 6 sections complete (Overview, Scope, Requirements, Acceptance Criteria, Constraints, Success Criteria), proceed to planning.
 
-**Reference**: See Chapter 31, Lesson 3 (book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/03-building-specs-with-sp-specify.md) for complete examples.
+**Reference**: See Chapter 31, Lesson 3 (apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/03-building-specs-with-sp-specify.md) for complete examples.
 
 ---
 
@@ -173,7 +173,7 @@ Technical details:
 - "Can lessons be parallelized or must they be sequential?"
 - "How does [requirement from spec] appear in the plan?"
 
-**Reference**: See Chapter 31, Lesson 4 (book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/04-planning-sp-plan.md).
+**Reference**: See Chapter 31, Lesson 4 (apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/04-planning-sp-plan.md).
 
 ---
 
@@ -227,7 +227,7 @@ Update @specs/part-X-chapter-Y/tasks.md so that:
 - Group related tasks for better flow
 ```
 
-**Reference**: See Chapter 31, Lesson 5 (book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/05-decomposing-tasks-sp-tasks.md).
+**Reference**: See Chapter 31, Lesson 5 (apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/05-decomposing-tasks-sp-tasks.md).
 
 ---
 
@@ -292,7 +292,7 @@ Run validation-auditor on Lesson 1 to validate:
 - Pedagogical effectiveness
 ```
 
-**Reference**: See Chapter 31, Lesson 6 (book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/06-implementation-sp-implement.md).
+**Reference**: See Chapter 31, Lesson 6 (apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/06-implementation-sp-implement.md).
 
 ---
 
@@ -329,7 +329,7 @@ git checkout -b chapter-X-topic
 
 # Step 2: Create directories manually
 mkdir -p specs/part-X-chapter-Y
-mkdir -p book-source/docs/part-X-chapter-Y
+mkdir -p apps/learn-app/docs/part-X-chapter-Y
 
 # Step 3: Create files manually
 touch specs/part-X-chapter-Y/spec.md
@@ -412,7 +412,7 @@ A synchronized 4-layer architecture where every layer references the same author
               ↓ Generates
 ┌─────────────────────────────────────┐
 │ Layer 4: Content                    │ ← Book chapters, lessons
-│ (book-source/docs/)                 │   (MDX files with YAML metadata)
+│ (apps/learn-app/docs/)                 │   (MDX files with YAML metadata)
 └─────────────────────────────────────┘
 ```
 
@@ -516,7 +516,7 @@ A synchronized 4-layer architecture where every layer references the same author
 7. Final integration when all lessons complete
 
 **Outputs**:
-- Lesson files: `book-source/docs/part-X-chapter-Y/lesson-N.md`
+- Lesson files: `apps/learn-app/docs/part-X-chapter-Y/lesson-N.md`
 - YAML metadata: 7 generation fields + skills proficiency
 - Code examples: Specification → AI prompt → generated code → validation steps
 - Exercises: "Try With AI" interactive exercises
@@ -892,7 +892,7 @@ Use this checklist for every chapter:
 **Send**:
 - This guide (docs/COWRITER-GUIDE.md)
 - Constitution v3.0.1 (.specify/memory/constitution.md)
-- Chapter 31 (book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/)
+- Chapter 31 (apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/)
 
 **Ask them to read**:
 1. Constitution Core Principles (especially #1: Evals-First)
@@ -1276,14 +1276,14 @@ Ensure:
 **Fix**:
 ```
 Write the generated content to file:
-- Path: book-source/docs/part-X-chapter-Y/lesson-N.md
+- Path: apps/learn-app/docs/part-X-chapter-Y/lesson-N.md
 - Ensure all YAML metadata included
 - Verify file created successfully
 ```
 
 **Prevention**: After subagent execution, verify files exist:
 ```bash
-ls -la book-source/docs/part-X-chapter-Y/
+ls -la apps/learn-app/docs/part-X-chapter-Y/
 ```
 
 ---
@@ -1427,7 +1427,7 @@ Skills are located in `.claude/skills/` and dynamically discovered:
 | `specs/book/chapter-index.md` | Book structure, chapter status | chapter-planner |
 | `.claude/output-styles/chapters.md` | Chapter formatting standards | content-implementer |
 | `.claude/output-styles/lesson.md` | Lesson formatting standards | content-implementer |
-| `book-source/` | Source material to reference | content-implementer |
+| `apps/learn-app/` | Source material to reference | content-implementer |
 
 ---
 
@@ -1444,7 +1444,7 @@ Skills are located in `.claude/skills/` and dynamically discovered:
 **You are now ready** to create high-quality educational content using the SpecKit Plus methodology!
 
 **Questions?** Reference:
-- Chapter 31: Complete hands-on workflow (book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/)
+- Chapter 31: Complete hands-on workflow (apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/)
 - Constitution v3.0.1: Project principles (.specify/memory/constitution.md)
 - This guide: AI-native patterns and troubleshooting
 

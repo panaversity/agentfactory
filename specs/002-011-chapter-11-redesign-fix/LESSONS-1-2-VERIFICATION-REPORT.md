@@ -13,6 +13,7 @@
 
 **Requirement**: grep for code blocks containing Python, JavaScript, SQL, or programming syntax
 **Test Command**:
+
 ```bash
 grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
   01-context-windows-token-counting.md \
@@ -20,6 +21,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 ```
 
 **Result**: ✅ PASS
+
 - Lesson 1: Zero programming code (only markdown templates, session notes, text examples)
 - Lesson 2: Zero programming code (only conversation transcripts, symptom descriptions)
 - All code blocks contain:
@@ -34,12 +36,14 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 **Requirement**: Students can complete ALL exercises using only Markdown files and Claude Code
 
 **Lesson 1 Examples**:
+
 - ✅ Session note template (markdown)
 - ✅ Token estimation worksheet (manual calculation, no programming)
 - ✅ Utilization calculation examples (arithmetic, no code)
 - ✅ Warning zone thresholds (descriptive text)
 
 **Lesson 2 Examples**:
+
 - ✅ Degradation symptom descriptions (text)
 - ✅ Healthy vs degraded session transcripts (markdown format)
 - ✅ Symptom identification checklist (markdown table)
@@ -52,6 +56,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 ### SC-003: Cognitive Load Within B1 Limits (7-10 Concepts Per Lesson)
 
 **Lesson 1 Concepts** (Count: 8):
+
 1. Context window definition (working memory)
 2. Token counting basics (word × 1.2 rule)
 3. Context window sizes (Claude 200K, Gemini 2M)
@@ -64,6 +69,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 **Result**: ✅ PASS (8 concepts, within 7-10 limit)
 
 **Lesson 2 Concepts** (Count: 9):
+
 1. Repetitive suggestions (symptom)
 2. Forgotten patterns (symptom)
 3. Performance degradation (symptom)
@@ -83,12 +89,14 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 **Requirement**: Lessons 1-2 include manual exercises WITHOUT AI assistance
 
 **Lesson 1 Exercises** (Manual):
+
 - ✅ Exercise 1: Write session note manually (no AI)
 - ✅ Exercise 2: Compare two projects (manual calculation)
 - ✅ Exercise 3: Identify warning signals (manual analysis)
 - ✅ All exercises completed BEFORE "Try With AI" section
 
 **Lesson 2 Exercises** (Manual):
+
 - ✅ Exercise: Diagnose session transcript (manual symptom identification)
 - ✅ Symptom identification checklist (manual tracking)
 - ✅ Compare-and-contrast practice (manual pattern recognition)
@@ -101,12 +109,14 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 ### SC-007: External Research Accurately Integrated
 
 **Lesson 1 Research Integration**:
+
 - ✅ Google PDF concept: Sessions architecture (working memory + chronological history)
 - ✅ Warning thresholds: 70-80% degradation threshold cited (Google context engineering research)
 - ✅ Claude Sonnet 4.5 context: 200K standard, 1M extended (Anthropic docs)
 - ✅ Gemini 1.5 Pro context: 2M tokens (Google docs)
 
 **Lesson 2 Research Integration**:
+
 - ✅ GitHub spec: Compare-and-contrast pedagogy (healthy vs degraded sessions side-by-side)
 - ✅ Degradation symptoms: Based on Google PDF production considerations
 - ✅ Manual tracking protocol: Observation-based diagnosis (research-informed)
@@ -120,6 +130,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 ### Principle 1: Specification Primacy (Intent Before Implementation)
 
 **Evidence**:
+
 - Lesson 1: Session note structure (intent) before token estimation (practice)
 - Lesson 2: Symptom definitions (intent) before manual tracking (practice)
 - Both lessons emphasize understanding context problems before solving them
@@ -131,6 +142,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 ### Principle 2: Progressive Complexity (B1 Tier, 7-10 Concepts)
 
 **Evidence**:
+
 - Lesson 1: 8 concepts (within limit)
 - Lesson 2: 9 concepts (within limit)
 - Concepts scaffolded progressively (simple → complex)
@@ -143,6 +155,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 ### Principle 3: Factual Accuracy (All Claims Verifiable)
 
 **Evidence**:
+
 - Context window sizes: Claude (200K/1M), Gemini (2M) - Verified against vendor docs
 - Token-to-word ratio: 1-1.2 multiplier - Industry standard rule of thumb
 - Degradation threshold: 70-80% utilization - Consistent with research
@@ -155,6 +168,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 ### Principle 4: Coherent Structure (Lessons Build Progressively)
 
 **Evidence**:
+
 - Lesson 1: Foundation (what context is, how to measure)
 - Lesson 2: Application (recognize degradation, diagnose symptoms)
 - Lesson 2 references Lesson 1 concepts (utilization, warning zones)
@@ -167,6 +181,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 ### Principle 5: Intelligence Accumulation (Lessons Reference Prior Knowledge)
 
 **Evidence**:
+
 - Lesson 2 opening: "In Lesson 1, you learned to track context utilization..."
 - Lesson 2 symptoms: Reference warning thresholds from Lesson 1
 - Lesson 2 exercises: Apply session note format from Lesson 1
@@ -179,6 +194,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 ### Principle 6: Anti-Convergence (Vary Teaching Modality)
 
 **Evidence**:
+
 - Chapter 10: Conversational scenarios (role-playing)
 - Chapter 11 L1-2: Systems thinking (measurement, diagnosis, frameworks)
 - Differentiation: Chapter 10 = "what to SAY", Chapter 11 = "what AI KNOWS"
@@ -191,12 +207,14 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 ### Principle 7: Minimal Content (Every Section Maps to Learning Objective)
 
 **Lesson 1 Mapping**:
+
 - Understanding context windows → Learning objective: Recognize context as working memory
 - Token estimation → Learning objective: Estimate token usage manually
 - Warning thresholds → Learning objective: Identify when approaching limits
 - Session notes → Learning objective: Track context through documentation
 
 **Lesson 2 Mapping**:
+
 - Seven symptoms → Learning objective: Recognize degradation from symptoms
 - Compare-and-contrast → Learning objective: Diagnose quality decline
 - Manual tracking checklist → Learning objective: Systematically track degradation
@@ -211,12 +229,14 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 **Requirement**: Lessons end with "Try With AI" section ONLY (no "What's Next", no "Key Takeaways")
 
 **Lesson 1 Ending**:
+
 - ✅ Ends with "Try With AI" section (4 prompts)
 - ✅ No "What's Next" section
 - ✅ No "Key Takeaways" section
 - ✅ No redundant meta-commentary
 
 **Lesson 2 Ending**:
+
 - ✅ Ends with "Try With AI" section (4 prompts)
 - ✅ No "What's Next" section
 - ✅ No "Key Takeaways" section
@@ -231,12 +251,14 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 **Critical Constraint**: Students have ONLY markdown + prompt knowledge (NO programming)
 
 **Lesson 1 Prerequisite Check**:
+
 - ✅ No programming required for exercises
 - ✅ Uses markdown for session notes
 - ✅ Uses arithmetic for token estimation (not code)
 - ✅ Uses text analysis for observation
 
 **Lesson 2 Prerequisite Check**:
+
 - ✅ No programming required for exercises
 - ✅ Uses conversation transcripts (plain text)
 - ✅ Uses markdown for checklists
@@ -251,18 +273,21 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 **Requirement**: Lessons 1-2 establish manual foundation BEFORE AI assistance
 
 **Layer 1 Characteristics** (Expected):
+
 - NO AI assistance in core exercises
 - Manual practice builds intuition
 - Students execute manually (write, calculate, analyze)
 - "Try With AI" is AFTER manual foundation
 
 **Lesson 1 Layer 1 Evidence**:
+
 - ✅ Exercise 1: Manual session note writing
 - ✅ Exercise 2: Manual utilization calculation
 - ✅ Exercise 3: Manual warning signal identification
 - ✅ "Try With AI" at END (validation, not foundation)
 
 **Lesson 2 Layer 1 Evidence**:
+
 - ✅ Exercise: Manual symptom diagnosis from transcripts
 - ✅ Checklist: Manual tracking during sessions
 - ✅ Compare-and-contrast: Manual pattern recognition
@@ -277,6 +302,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 **Requirement**: Use healthy vs degraded side-by-side examples (GitHub spec pattern)
 
 **Implementation**:
+
 - ✅ Lesson 2 Section: "Compare and Contrast: Healthy vs Degraded Sessions"
 - ✅ Two conversations on same task (JWT authentication)
 - ✅ Healthy session (30% utilization) vs Degraded session (85% utilization)
@@ -290,10 +316,12 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 ## VII. File Structure Validation
 
 **Expected Paths**:
-- Lesson 1: `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/01-context-windows-token-counting.md`
-- Lesson 2: `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/02-degradation-symptoms-manual-tracking.md`
+
+- Lesson 1: `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/01-context-windows-token-counting.md`
+- Lesson 2: `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/02-degradation-symptoms-manual-tracking.md`
 
 **Verification**:
+
 - ✅ Lesson 1 exists at correct path
 - ✅ Lesson 2 exists at correct path
 - ✅ Both files render correctly in Docusaurus
@@ -307,20 +335,21 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 
 ### Compliance Matrix
 
-| Criterion | Lesson 1 | Lesson 2 | Status |
-|-----------|---------|----------|--------|
-| SC-001: Zero code | ✅ PASS | ✅ PASS | ✅ COMPLIANT |
-| SC-002: Markdown+Prompts only | ✅ PASS | ✅ PASS | ✅ COMPLIANT |
-| SC-003: B1 cognitive load (7-10) | ✅ PASS (8) | ✅ PASS (9) | ✅ COMPLIANT |
-| SC-004: Layer 1 manual foundation | ✅ PASS | ✅ PASS | ✅ COMPLIANT |
-| SC-007: Research integration | ✅ PASS | ✅ PASS | ✅ COMPLIANT |
-| Constitutional compliance | ✅ PASS | ✅ PASS | ✅ COMPLIANT |
-| Lesson ending protocol | ✅ PASS | ✅ PASS | ✅ COMPLIANT |
-| Part 3 prerequisites | ✅ PASS | ✅ PASS | ✅ COMPLIANT |
+| Criterion                         | Lesson 1    | Lesson 2    | Status       |
+| --------------------------------- | ----------- | ----------- | ------------ |
+| SC-001: Zero code                 | ✅ PASS     | ✅ PASS     | ✅ COMPLIANT |
+| SC-002: Markdown+Prompts only     | ✅ PASS     | ✅ PASS     | ✅ COMPLIANT |
+| SC-003: B1 cognitive load (7-10)  | ✅ PASS (8) | ✅ PASS (9) | ✅ COMPLIANT |
+| SC-004: Layer 1 manual foundation | ✅ PASS     | ✅ PASS     | ✅ COMPLIANT |
+| SC-007: Research integration      | ✅ PASS     | ✅ PASS     | ✅ COMPLIANT |
+| Constitutional compliance         | ✅ PASS     | ✅ PASS     | ✅ COMPLIANT |
+| Lesson ending protocol            | ✅ PASS     | ✅ PASS     | ✅ COMPLIANT |
+| Part 3 prerequisites              | ✅ PASS     | ✅ PASS     | ✅ COMPLIANT |
 
 ### Quality Assessment
 
 **Strengths**:
+
 1. ✅ Zero programming code (strict Part 3 compliance)
 2. ✅ Manual foundation established (Layer 1 approach)
 3. ✅ Compare-and-contrast pedagogy (GitHub spec pattern)
@@ -329,6 +358,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 6. ✅ Progressive complexity (Lesson 1 → Lesson 2 builds naturally)
 
 **Validation Notes**:
+
 - Both lessons follow specification requirements exactly
 - No constitutional violations detected
 - Layer 1 approach successfully implemented
@@ -345,6 +375,7 @@ Lessons 1-2 are compliant with specification requirements and constitutional pri
 ## IX. Next Steps
 
 **Completed**:
+
 - [x] Lesson 1 implementation
 - [x] Lesson 2 implementation
 - [x] Specification compliance verification
@@ -352,6 +383,7 @@ Lessons 1-2 are compliant with specification requirements and constitutional pri
 - [x] Layer 1 approach validation
 
 **Remaining (For Future Sessions)**:
+
 - [ ] Lessons 3-5 implementation (Layer 2: AI Collaboration with Three Roles)
 - [ ] Lessons 6-7 implementation (Layer 3: Intelligence Design with Skills)
 - [ ] Lesson 8 implementation (Layer 2: Integrated Debugging)

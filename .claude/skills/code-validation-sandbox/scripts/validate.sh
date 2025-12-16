@@ -27,13 +27,13 @@ Options:
 
 Examples:
   # Auto-detect everything
-  $0 book-source/docs/04-Python-Fundamentals/14-data-types
+  $0 apps/learn-app/docs/04-Python-Fundamentals/14-data-types
 
   # Force Layer 1 validation
-  $0 book-source/docs/04-Python-Fundamentals/14-data-types --layer 1
+  $0 apps/learn-app/docs/04-Python-Fundamentals/14-data-types --layer 1
 
   # Verbose output
-  $0 book-source/docs/04-Python-Fundamentals/14-data-types --verbose
+  $0 apps/learn-app/docs/04-Python-Fundamentals/14-data-types --verbose
 
 Exit codes:
   0 - All validations passed

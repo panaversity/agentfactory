@@ -9,14 +9,22 @@ feature: 001-part-4-chapter-18
 branch: main
 user: system
 command: "content-implementer subagent with plan context"
-labels: ["chapter-18", "lesson-5", "comprehensions", "python", "technical", "b1-intermediate"]
+labels:
+  [
+    "chapter-18",
+    "lesson-5",
+    "comprehensions",
+    "python",
+    "technical",
+    "b1-intermediate",
+  ]
 links:
   spec: "specs/001-part-4-chapter-18/spec.md"
   ticket: null
   adr: null
   pr: null
 files:
-  - "book-source/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/05-lesson-5.md"
+  - "apps/learn-app/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/05-lesson-5.md"
 tests:
   - "Cognitive load validation: 6 concepts (within B1 limit of 10)"
   - "CEFR proficiency alignment: Content matches B1 (Apply/Analyze level)"
@@ -30,11 +38,13 @@ tests:
 Write Lesson 5: "List Comprehensions - Transforming Data" for Chapter 18 (Lists, Tuples, and Dictionary).
 
 **Context**:
+
 - **Specification**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ai-native-software-development/specs/001-part-4-chapter-18/spec.md`
 - **Plan**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ai-native-software-development/specs/001-part-4-chapter-18/plan.md` (Lesson 5 section, lines 295-366)
-- **Output Path**: `book-source/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/05-lesson-5.md`
+- **Output Path**: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/05-lesson-5.md`
 
 **Task Details** (from tasks.md T011):
+
 - **Content**: 6 concepts (comprehension syntax, expression evaluation, iteration variable, if filtering, readability considerations, nested comprehensions brief intro)
 - **CEFR Level**: B1 (Intermediate)
 - **Prerequisites**: Chapter 17 (for loops) - CRITICAL prerequisite
@@ -42,6 +52,7 @@ Write Lesson 5: "List Comprehensions - Transforming Data" for Chapter 18 (Lists,
 - **Try With AI**: 4 prompts with Bloom's progression
 
 **Requirements**:
+
 1. Read spec.md and plan.md Lesson 5 section
 2. Follow `.claude/output-styles/lesson.md` format
 3. 6 concepts (within B1 limit), show loop-to-comprehension transformation
@@ -52,9 +63,10 @@ Write Lesson 5: "List Comprehensions - Transforming Data" for Chapter 18 (Lists,
 
 **Lesson 5 Written and Committed**
 
-Lesson file created at: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ai-native-software-development/book-source/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/05-lesson-5.md`
+Lesson file created at: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ai-native-software-development/apps/learn-app/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/05-lesson-5.md`
 
 **Content Summary**:
+
 - Opening hook: contrasts elegant Python with necessity of clarity
 - Section 1: Loop-to-comprehension transformation (side-by-side comparison)
 - Section 2: Syntax breakdown (three essential parts: expression, for, item, in, iterable)
@@ -65,18 +77,21 @@ Lesson file created at: `/Users/mjs/Documents/code/panaversity-official/tutorgpt
 - Try With AI: 4 prompts (Remember → Understand → Apply → Analyze) with expected outcomes
 
 **Code Examples**:
+
 - EX-010: Loop vs comprehension (side-by-side: `squares_loop` vs `squares_comp`)
 - EX-011: Filtering with `if` (`evens` from `range(1,11)`)
 - EX-012: Transform+filter combined (`evens_doubled`)
 - 3 exercise sets (simple transforms, filtering, combined) with solutions
 
 **CoLearning Elements**:
+
 - 💬 AI Colearning Prompts: 2 (loop transformation, readability judgment)
 - 🎓 Instructor Commentary: 1 (syntax vs intent)
 - 🚀 CoLearning Challenge: 1 (vowel-starting words)
 - ✨ Teaching Tips: 1 (use Claude Code for refactoring)
 
 **YAML Frontmatter**:
+
 - Skills metadata: 4 skills (comprehension syntax, filtering, loop translation, readability judgment)
 - Proficiency levels: All B1 with appropriate Bloom's levels (Apply, Analyze, Evaluate)
 - Cognitive load: 6 concepts documented (within B1 limit of 10)
@@ -88,6 +103,7 @@ Lesson file created at: `/Users/mjs/Documents/code/panaversity-official/tutorgpt
 - ✅ **Impact**: Lesson 5 complete and ready for chapter publication. Fills critical gap between list methods (Lesson 4) and tuple introduction (Lesson 6).
 
 - 🧪 **Tests**:
+
   - Cognitive load validation: 6 concepts (within B1 limit) ✓
   - CEFR proficiency: B1 Apply/Analyze levels ✓
   - Code examples: All runnable (loop transforms, filtering, combined) ✓
@@ -96,10 +112,12 @@ Lesson file created at: `/Users/mjs/Documents/code/panaversity-official/tutorgpt
   - Readability emphasis: "clarity trumps cleverness" core theme ✓
 
 - 📁 **Files**:
-  - Created: `/book-source/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/05-lesson-5.md` (632 lines, ~11.5 KB)
+
+  - Created: `/apps/learn-app/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/05-lesson-5.md` (632 lines, ~11.5 KB)
   - No edits needed to other files
 
 - 🔁 **Next prompts**:
+
   - Validate with validation-auditor for accuracy and best practices
   - If time: Write Lesson 6 (Tuples - Immutable Sequences)
 
@@ -115,6 +133,7 @@ Lesson file created at: `/Users/mjs/Documents/code/panaversity-official/tutorgpt
 - **Failure modes observed**: None. Lesson written from spec without blockers.
 
 - **Graders run and results**:
+
   - Cognitive load check: 6 new concepts (syntax, expression, iteration variable, if filtering, readability, nested brief) = within B1 limit ✓
   - Bloom's alignment: Apply (writing) → Analyze (converting) → Evaluate (readability) matches progression ✓
   - Constitutional compliance: AI-native framing, CoLearning elements, Try With AI closure ✓
@@ -122,4 +141,3 @@ Lesson file created at: `/Users/mjs/Documents/code/panaversity-official/tutorgpt
 - **Prompt variant**: N/A (single-pass generation successful)
 
 - **Next experiment**: Ready for content-implementer to move to Lesson 6 or technical reviewer to validate Lesson 5.
-

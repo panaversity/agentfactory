@@ -1,6 +1,6 @@
 # Lesson 4 Reviewer Checklist: Quick Reference for Validation
 
-**File**: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/04-subagents.md`
+**File**: `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/04-subagents.md`
 
 **For**: Technical Reviewer, Proof Validator, Publication Gate
 
@@ -13,6 +13,7 @@
 **Overall Status**: ✅ COMPLETE AND READY FOR VALIDATION
 
 **Key Metrics**:
+
 - Preservation rate: 94.6% (228/291 lines original)
 - Quality gates passed: 24/24
 - CoLearning elements: 5 (1 prompt + 2 insights + 2 exercises)
@@ -20,6 +21,7 @@
 - Concept count: 14 (max 35 for A1-A2)
 
 **Constitutional Alignment**:
+
 - ✅ Principle 18 (Three-Role AI Partnership): Explicitly demonstrated
 - ✅ Principle 13 (Graduated Teaching): Spec-first thinking modeled
 - ✅ Core Philosophy: "Specs Are the New Syntax" emphasized
@@ -34,6 +36,7 @@
 **Principle 18 Check** (Three-Role AI Partnership):
 
 - [ ] Insertion 1 (Lines 24-26): AI as Teacher/Student/Co-Worker explicit?
+
   - "suggesting standards" ✅
   - "learning preferences" ✅
   - "executing reviews" ✅
@@ -44,7 +47,7 @@
   - Automatic delegation: "role flexibility" ✅
   - Neither passive ✅
 
-**Status**: Three-Role framework _______ [PASS/FAIL]
+**Status**: Three-Role framework **\_\_\_** [PASS/FAIL]
 
 ---
 
@@ -56,7 +59,7 @@
   - Example specification provided ✅
   - Leads to creation walkthrough ✅
 
-**Status**: Graduated teaching _______ [PASS/FAIL]
+**Status**: Graduated teaching **\_\_\_** [PASS/FAIL]
 
 ---
 
@@ -67,7 +70,7 @@
 - [ ] Example spec format provided?
 - [ ] Students write spec BEFORE implementation?
 
-**Status**: Spec-first emphasis _______ [PASS/FAIL]
+**Status**: Spec-first emphasis **\_\_\_** [PASS/FAIL]
 
 ---
 
@@ -82,7 +85,7 @@
 
 **If any mismatch**: Document version/date of Claude Code docs used
 
-**Status**: Technical accuracy _______ [PASS/FAIL]
+**Status**: Technical accuracy **\_\_\_** [PASS/FAIL]
 
 ---
 
@@ -91,6 +94,7 @@
 **Insertion 2 (AI Colearning Prompt)**:
 
 Test prompt across domains. Students should be able to customize:
+
 - [ ] Web app developer: "web app, API design vs. bug fixes" ✅
 - [ ] Data engineer: "data pipeline, ETL logic vs. validation" ✅
 - [ ] DevOps engineer: "infrastructure, deploy scripts vs. config" ✅
@@ -98,7 +102,7 @@ Test prompt across domains. Students should be able to customize:
 
 **Test**: Does prompt work when you substitute [describe your domain]?
 
-**Status**: Domain-agnostic functionality _______ [PASS/FAIL]
+**Status**: Domain-agnostic functionality **\_\_\_** [PASS/FAIL]
 
 ---
 
@@ -108,7 +112,7 @@ Test prompt across domains. Students should be able to customize:
 - [ ] Three-Role AI Partnership framework correctly represented?
 - [ ] No contradictions with Lesson 1 concepts?
 
-**Status**: Lesson 1 integration _______ [PASS/FAIL]
+**Status**: Lesson 1 integration **\_\_\_** [PASS/FAIL]
 
 ---
 
@@ -127,7 +131,7 @@ Read through insertions for voice consistency:
 
 **Test**: Do insertions feel like same author as original content?
 
-**Status**: Tone consistency _______ [PASS/FAIL]
+**Status**: Tone consistency **\_\_\_** [PASS/FAIL]
 
 ---
 
@@ -136,22 +140,26 @@ Read through insertions for voice consistency:
 Sample sentences from insertions (estimate Flesch-Kincaid):
 
 **Insertion 1** (Line 26):
+
 ```
 "When you delegate a code review explicitly to a specialized subagent,
 you're practicing the co-learning partnership at its best: you set the
 intention, AI brings focused expertise, and together you achieve better
 results than either could alone."
 ```
-Expected level: 7-8 _______ Actual: _______
+
+Expected level: 7-8 **\_\_\_** Actual: **\_\_\_**
 
 **Insertion 5** (Line 134):
+
 ```
 "Before jumping to creation, let's practice specification thinking—
 planning your subagent's purpose before you build it."
 ```
-Expected level: 6-7 _______ Actual: _______
 
-**Overall Assessment**: Target 7.2 (Grade 7) _______ [PASS/FAIL]
+Expected level: 6-7 **\_\_\_** Actual: **\_\_\_**
+
+**Overall Assessment**: Target 7.2 (Grade 7) **\_\_\_** [PASS/FAIL]
 
 ---
 
@@ -168,7 +176,7 @@ Read each insertion in context (5 lines before + insertion + 5 lines after):
 
 **Test**: Do you notice insertions feel "bolted on" or like they were always there?
 
-**Status**: Natural flow _______ [PASS/FAIL]
+**Status**: Natural flow **\_\_\_** [PASS/FAIL]
 
 ---
 
@@ -181,7 +189,7 @@ Check for content duplication:
 - [ ] No redundant delegation mode explanation?
 - [ ] No over-explanation of Three-Role framework?
 
-**Status**: No unwanted repetition _______ [PASS/FAIL]
+**Status**: No unwanted repetition **\_\_\_** [PASS/FAIL]
 
 ---
 
@@ -191,7 +199,7 @@ Check for content duplication:
 - [ ] No post-sections added ("Key Takeaways", "Summary", "What's Next")?
 - [ ] Section ends lesson appropriately?
 
-**Status**: Closure pattern maintained _______ [PASS/FAIL]
+**Status**: Closure pattern maintained **\_\_\_** [PASS/FAIL]
 
 ---
 
@@ -200,9 +208,10 @@ Check for content duplication:
 ### 1. File Integrity
 
 - [ ] File written to correct path?
+
   ```
   /Users/mjs/Documents/code/panaversity-official/tutorsgpt/part-2/
-  book-source/docs/02-AI-Tool-Landscape/
+  apps/learn-app/docs/02-AI-Tool-Landscape/
   05-claude-code-features-and-workflows/
   04-subagents.md
   ```
@@ -212,7 +221,7 @@ Check for content duplication:
 - [ ] All headings properly leveled (no H5 or skip levels)?
 - [ ] No accidental characters or encoding issues?
 
-**Status**: File integrity _______ [PASS/FAIL]
+**Status**: File integrity **\_\_\_** [PASS/FAIL]
 
 ---
 
@@ -224,12 +233,13 @@ npm run build
 ```
 
 Check for:
+
 - [ ] No build errors related to 04-subagents.md?
 - [ ] Markdown rendering correct (tables, lists, blockquotes)?
 - [ ] Links working (if any added)?
 - [ ] Sidebar navigation correct?
 
-**Status**: Build success _______ [PASS/FAIL]
+**Status**: Build success **\_\_\_** [PASS/FAIL]
 
 ---
 
@@ -242,19 +252,20 @@ Check links to adjacent lessons:
 - [ ] Chapter 5 overview still valid?
 - [ ] Part 2 context not broken?
 
-**Status**: Cross-references valid _______ [PASS/FAIL]
+**Status**: Cross-references valid **\_\_\_** [PASS/FAIL]
 
 ---
 
 ### 4. Adjacent Lesson Context
 
 Compare with:
+
 - [ ] Lesson 3 (Claude Code Basics): Consistent terminology?
 - [ ] Lesson 5 (next): No duplication, proper progression?
 
 Does this lesson serve as natural bridge from Lesson 3 to Lesson 5?
 
-**Status**: Chapter flow intact _______ [PASS/FAIL]
+**Status**: Chapter flow intact **\_\_\_** [PASS/FAIL]
 
 ---
 
@@ -263,12 +274,14 @@ Does this lesson serve as natural bridge from Lesson 3 to Lesson 5?
 ### Pre-Validation Gate (Minimum 18 items)
 
 **Technical Reviewer**:
+
 - [ ] Constitutional Alignment (Principles 13 & 18)
 - [ ] Subagent mechanics (Claude Code docs current)
 - [ ] Domain-agnostic prompts (tested across contexts)
 - [ ] Lesson 1 integration (no contradictions)
 
 **Proof Validator**:
+
 - [ ] Tone consistency (all insertions match voice)
 - [ ] Reading level (target 7-8, actual ~7.2)
 - [ ] Natural integration (no "bolted on" feeling)
@@ -277,6 +290,7 @@ Does this lesson serve as natural bridge from Lesson 3 to Lesson 5?
 - [ ] Closure pattern maintained
 
 **Publication Gate**:
+
 - [ ] File integrity (correct path, YAML intact, markdown valid)
 - [ ] Docusaurus build success
 - [ ] Cross-references valid
@@ -302,18 +316,23 @@ If short on time, check only:
 ## Issues Found? Escalation Path
 
 **Minor Issues** (typos, small rephrasing):
+
 - Fix directly or note for author
 
 **Pedagogical Concerns** (unclear, wrong grade level):
+
 - Return to author with specific line numbers and suggested approach
 
 **Constitutional Misalignment** (Principles 13/18 not clear):
+
 - Request insertion revision before publication
 
 **Technical Issues** (subagent steps wrong):
+
 - Verify against latest Claude Code docs, request revision if needed
 
 **Build Failures**:
+
 - Check markdown validity, check cross-references, retry build
 
 ---
@@ -321,6 +340,7 @@ If short on time, check only:
 ## Success Criteria: Final Gate
 
 **Minimum for Publication**:
+
 - [ ] Technical Reviewer: Principles 13 & 18 verified
 - [ ] Technical Reviewer: Subagent mechanics current
 - [ ] Proof Validator: No tone/flow issues
@@ -336,18 +356,21 @@ If short on time, check only:
 ## Documents Available for Review
 
 1. **Lesson 4 Surgical Edit Report**
+
    - Comprehensive validation report
    - All quality gates details (24 items)
    - Constitutional alignment evidence
    - Detailed metrics
 
 2. **Lesson 4 Detailed Changelog**
+
    - Line-by-line record of changes
    - Before/after context for each insertion
    - Exact line numbers in final file
    - Insertion rationale
 
 3. **Lesson 4 Execution Summary**
+
    - High-level overview
    - Key achievements
    - Metrics summary

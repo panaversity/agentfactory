@@ -5,7 +5,7 @@
 **Status**: Draft  
 **Input**: User description: "Expand book structure from 7 parts (32 chapters) to 13 parts (46 chapters). Book: 'Colearning Programming & Agentic AI with Python and TypeScript: The AI-Driven Way'"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Update Constitution and Core Documentation (Priority: P1)
 
@@ -59,7 +59,7 @@ Eight new parts (Parts 6-13) covering TypeScript, Agentic AI, MCP, Realtime Agen
 
 ### User Story 4 - Update Docusaurus Directory Structure (Priority: P2)
 
-The physical directory structure under `book-source/docs/` must be reorganized to match the new 13-part, 46-chapter structure while maintaining Docusaurus compatibility.
+The physical directory structure under `apps/learn-app/docs/` must be reorganized to match the new 13-part, 46-chapter structure while maintaining Docusaurus compatibility.
 
 **Why this priority**: Content creation requires correct physical file organization. Must be aligned with spec restructuring.
 
@@ -94,17 +94,14 @@ Project documentation (README.md, CLAUDE.md) must reference the new 13-part stru
 
 - What happens when existing chapter content doesn't fit cleanly into the new structure (e.g., Part 1: 5→3 chapters)?
   - **Answer**: Content must be consolidated intelligently, preserving essential material. A mapping document should track where old content moved.
-  
 - How does the system handle chapter renumbering cascades (e.g., what was Chapter 6 might become Chapter 4)?
   - **Answer**: The chapter-index.md serves as the authoritative mapping. Old chapter files should be moved/renamed to match new numbering with clear commit messages tracking the changes.
-  
 - What happens if Docusaurus sidebar generation breaks due to structure changes?
   - **Answer**: The `_category_.json` files in each folder must be updated to reflect correct sidebar positions and labels.
-  
 - How do we handle cross-references between chapters when chapter numbers change?
   - **Answer**: All internal links must be updated as part of the restructuring. A validation script should check for broken internal references.
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -114,7 +111,7 @@ Project documentation (README.md, CLAUDE.md) must reference the new 13-part stru
 - **FR-004**: Part specs MUST be created for all 8 new parts (Parts 6-13) following the existing part-spec template
 - **FR-005**: Each new part MUST have chapter specs for all chapters within that part (ranging from 2-12 chapters per part)
 - **FR-006**: Existing part specs (Parts 1-5) MUST be updated to reflect new chapter counts and content organization
-- **FR-007**: Physical directory structure under `book-source/docs/` MUST be reorganized to match the new 13-part structure
+- **FR-007**: Physical directory structure under `apps/learn-app/docs/` MUST be reorganized to match the new 13-part structure
 - **FR-008**: All part folders MUST follow naming convention: `NN-Title-Case-With-Hyphens/` (e.g., `06-Agentic-AI-Fundamentals/`)
 - **FR-009**: Each part folder MUST contain an `intro.md` file describing the part's purpose and learning outcomes
 - **FR-010**: Chapter folders MUST follow naming convention: `NN-lowercase-with-hyphens/` within their part folder
@@ -134,9 +131,9 @@ Project documentation (README.md, CLAUDE.md) must reference the new 13-part stru
 
 - **Part Spec**: A detailed specification document for a part that defines the part's purpose, learning outcomes, chapter breakdown, and pedagogical approach.
 
-- **Directory Structure**: The physical organization of markdown files under `book-source/docs/` following Docusaurus conventions and the naming rules defined in `specs/book/directory-structure.md`.
+- **Directory Structure**: The physical organization of markdown files under `apps/learn-app/docs/` following Docusaurus conventions and the naming rules defined in `specs/book/directory-structure.md`.
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

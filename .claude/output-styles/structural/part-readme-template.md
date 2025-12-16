@@ -11,7 +11,7 @@ Use this template when creating or updating **Part-level README.md files** (one 
 ## File Location
 
 ```
-book-source/docs/
+apps/learn-app/docs/
 └── NN-Part-Name/
     ├── README.md        ← This file (MUST be uppercase)
     ├── NN-chapter-name/

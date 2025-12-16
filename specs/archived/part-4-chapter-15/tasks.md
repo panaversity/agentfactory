@@ -16,6 +16,7 @@
 This chapter requires creating 5 lessons teaching four operator categories (arithmetic, comparison, logical, assignment) plus keyword awareness. Each lesson follows the pattern: **What It Is → Code Examples → Try With AI**. No additional closure sections (summaries, key takeaways, checklists) appear after "Try With AI".
 
 **Definition of Done** (for entire chapter):
+
 - [ ] All 5 lessons created with consistent structure
 - [ ] Each lesson has exactly 4 "Try With AI" prompts (20 total) with expected outcomes documented
 - [ ] All code examples (12+) run on Python 3.14+ without errors
@@ -35,32 +36,38 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 ### Lesson 1: Arithmetic Operators — Doing Math with Python
 
 - [ ] **MUST**: Create lesson outline and learning objectives
+
   - Acceptance: Outline includes 5 clear learning objectives aligned with Bloom's (Understand + Apply)
   - Reference: `plan.md`, Lesson 1 section; `.claude/output-styles/lesson.md` for lesson structure
   - Effort: 1–2h
 
 - [ ] **MUST**: Write "What It Is" introduction (5 min content)
+
   - Acceptance: 2–3 sentences explaining operators as actions on data; sets context
   - Reference: Lesson 1 outline; Chapter 14 prerequisite context
   - Effort: 0.5–1h
 
 - [ ] **MUST**: Create Code Example 1 — Basic Arithmetic Operators (all 7)
-  - Acceptance: All 7 operators (+, -, *, /, //, %, **) shown in single example; type hints on all variables; runs without error on Python 3.14+
+
+  - Acceptance: All 7 operators (+, -, \*, /, //, %, \*\*) shown in single example; type hints on all variables; runs without error on Python 3.14+
   - Code: `x: int = 10; y: int = 3; result: int = x + y`, etc. (see plan.md for full code)
   - Effort: 1–2h
 
 - [ ] **MUST**: Create Code Example 2 — Type Behavior with Division
+
   - Acceptance: Shows int/int → float; int//int → int; float operations return float; type() verification included
   - Code: Demonstrates division behavior, validates with type() (see plan.md)
   - Testing: Verify on Python 3.14+ (Windows, macOS, Linux)
   - Effort: 2–3h
 
 - [ ] **MUST**: Create Code Example 3 — Operator Precedence
+
   - Acceptance: Shows PEMDAS order (multiplication before addition); demonstrates parentheses overriding; type hints throughout
   - Code: `result: int = 2 + 3 * 4` vs. `result: int = (2 + 3) * 4` (see plan.md)
   - Effort: 1–2h
 
 - [ ] **MUST**: Design "Try With AI" Prompts for Lesson 1 (4 total)
+
   - Acceptance: 4 prompts (concept exploration, application, edge case, synthesis) with expected outcomes documented
   - Prompts:
     1. **Prompt 1 (Concept)**: "What makes / and // different?"
@@ -72,6 +79,7 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
   - Effort: 2–3h
 
 - [ ] **SHOULD**: Add validation exercise with expected output
+
   - Acceptance: Exercise asks students to predict result, then verify with code/AI
   - Example: "Predict: 10 / 3, then verify with Python. What type is the result?"
   - Effort: 1–2h
@@ -87,30 +95,36 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 ### Lesson 2: Comparison Operators — Making Decisions
 
 - [ ] **MUST**: Create lesson outline and learning objectives
+
   - Acceptance: 5 clear learning objectives (explain operators, predict True/False, understand value equality, etc.)
   - Reference: Plan.md, Lesson 2
   - Effort: 1–2h
 
 - [ ] **MUST**: Write "What It Is" introduction (5 min content)
+
   - Acceptance: Explains comparisons as "questions returning True/False"; sets stage for Chapter 17 preview
   - Effort: 0.5–1h
 
 - [ ] **MUST**: Create Code Example 1 — All Six Comparison Operators
+
   - Acceptance: Shows ==, !=, >, <, >=, <= with simple examples; all with type hints; verifies each returns bool type
   - Code: `equal: bool = x == y`, etc., with type() verification (see plan.md)
   - Effort: 1–2h
 
 - [ ] **MUST**: Create Code Example 2 — Type Equality vs. Value Equality
+
   - Acceptance: Shows 5 == 5.0 is True (value equality), "5" == 5 is False (type matters), demonstrates type checking
   - Code: Demonstrates int/float equality and int/str inequality (see plan.md)
   - Effort: 2–3h
 
 - [ ] **MUST**: Create Code Example 3 — Comparisons with Real Data
+
   - Acceptance: Realistic scenario (age eligibility, password length); shows comparisons in context; all type hints
   - Code: Uses len() with comparisons; age checking scenario (see plan.md)
   - Effort: 1–2h
 
 - [ ] **MUST**: Design "Try With AI" Prompts for Lesson 2 (4 total)
+
   - Acceptance: 4 prompts (concept, application, edge case, synthesis) with expected outcomes
   - Prompts:
     1. **Prompt 1 (Concept)**: "What are comparisons? Why True/False? How is == different from =?"
@@ -121,6 +135,7 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
   - Effort: 2–3h
 
 - [ ] **SHOULD**: Add validation exercise predicting True/False
+
   - Acceptance: Exercise with 5+ comparisons; students predict, then verify
   - Effort: 1–2h
 
@@ -135,31 +150,37 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 ### Lesson 3: Logical Operators — Combining Conditions
 
 - [ ] **MUST**: Create lesson outline and learning objectives
+
   - Acceptance: Learning objectives for and/or/not; emphasize combining conditions; B1-level proficiency element
   - Reference: Plan.md, Lesson 3
   - Effort: 1–2h
 
 - [ ] **MUST**: Write "What It Is" introduction (5 min content)
+
   - Acceptance: Explains logical operators combine True/False values; enables complex reasoning
   - Effort: 0.5–1h
 
 - [ ] **MUST**: Create Code Example 1 — Three Logical Operators
+
   - Acceptance: and, or, not with truth table values; shows all type hints; type() verification for bool results
   - Code: Truth tables (True and True = True, etc.); see plan.md (see plan.md)
   - Effort: 1–2h
 
 - [ ] **MUST**: Create Code Example 2 — Combining Comparisons with Logical Operators
+
   - Acceptance: Complex conditions like `(x > 5) and (x < 10)`; password strength check pattern; realistic context
   - Code: Range check, out-of-range check, password validity pattern (see plan.md)
   - Testing: Verify on Python 3.14+
   - Effort: 2–3h
 
 - [ ] **MUST**: Create Code Example 3 — Evaluation Order with Parentheses
+
   - Acceptance: Shows parentheses control order; demonstrates complex boolean evaluation; type hints throughout
   - Code: Age + license + insurance example (see plan.md)
   - Effort: 1–2h
 
 - [ ] **MUST**: Design "Try With AI" Prompts for Lesson 3 (4 total)
+
   - Acceptance: 4 prompts (concept, application, edge case, synthesis) with expected outcomes
   - Prompts:
     1. **Prompt 1 (Concept)**: "What's the difference between and and or? Why do we need not?"
@@ -170,6 +191,7 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
   - Effort: 2–3h
 
 - [ ] **SHOULD**: Add truth table for all combinations of two boolean values
+
   - Acceptance: Clear table showing and/or results for T+T, T+F, F+T, F+F
   - Effort: 1h
 
@@ -184,31 +206,37 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 ### Lesson 4: Assignment Operators — Updating Variables Efficiently
 
 - [ ] **MUST**: Create lesson outline and learning objectives
-  - Acceptance: Learning objectives for =, +=, -=, *=, /=; emphasize shorthand for readability
+
+  - Acceptance: Learning objectives for =, +=, -=, \*=, /=; emphasize shorthand for readability
   - Reference: Plan.md, Lesson 4
   - Effort: 1–2h
 
 - [ ] **MUST**: Write "What It Is" introduction (5 min content)
+
   - Acceptance: Explains assignment operators update variables efficiently; combine operation with assignment
   - Effort: 0.5–1h
 
 - [ ] **MUST**: Create Code Example 1 — Assignment Operators Comparison
+
   - Acceptance: Shows expanded form (count = count + 5) vs. shorthand (count += 5); demonstrates all 5 operators; all type hints
   - Code: Direct comparison of expanded vs. shorthand; all operators (see plan.md)
   - Testing: Verify on Python 3.14+
   - Effort: 1–2h
 
 - [ ] **MUST**: Create Code Example 2 — Counter Pattern (Common Use)
+
   - Acceptance: Realistic counting scenario (items in loop); accumulation pattern (total += price); type hints
   - Code: Loop preparation (before Chapter 17); counting items; accumulating total (see plan.md)
   - Effort: 2–3h
 
 - [ ] **MUST**: Create Code Example 3 — Type Behavior with Shorthand Assignment
-  - Acceptance: Shows //= operator; *= with decimals; mixed type += behavior; validates all with type()
+
+  - Acceptance: Shows //= operator; \*= with decimals; mixed type += behavior; validates all with type()
   - Code: Floor division assignment; float multiplication; type changes (see plan.md)
   - Effort: 1–2h
 
 - [ ] **MUST**: Design "Try With AI" Prompts for Lesson 4 (4 total)
+
   - Acceptance: 4 prompts (concept, application, edge case, synthesis) with expected outcomes
   - Prompts:
     1. **Prompt 1 (Concept)**: "Why do I need += if I have =?"
@@ -219,6 +247,7 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
   - Effort: 2–3h
 
 - [ ] **SHOULD**: Add validation exercise comparing expanded vs. shorthand
+
   - Acceptance: Exercise showing two equivalent ways to write code; students verify they produce same result
   - Effort: 1–2h
 
@@ -233,33 +262,38 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 ### Lesson 5: Python Keywords and Capstone Project
 
 - [ ] **MUST**: Create lesson outline and learning objectives
+
   - Acceptance: Learning objectives for keyword recognition, understanding why reserved, capstone integration
   - Reference: Plan.md, Lesson 5
   - Effort: 1–2h
 
 - [ ] **MUST**: Write "What It Is" introduction (5 min content)
+
   - Acceptance: Explains keywords are reserved words; prevents common errors; introduces capstone integration
   - Effort: 0.5–1h
 
 - [ ] **MUST**: Create Code Example 1 — Discovering Python Keywords
+
   - Acceptance: Shows `import keyword; keyword.kwlist` and `keyword.iskeyword()` usage; counts keywords; type hints
   - Code: Keyword list exploration; checking if word is keyword (see plan.md)
   - Testing: Verify on Python 3.14+
   - Effort: 1–2h
 
 - [ ] **MUST**: Create Code Example 2 — Why Keywords are Reserved
+
   - Acceptance: Shows consequences of attempting keyword as variable; explains why each keyword is reserved; defensive checking pattern
   - Code: Error demonstration (commented out for safety); reserved word explanation (see plan.md)
   - Effort: 1–2h
 
 - [ ] **MUST**: Create Capstone Project — "Calculator with Type Safety"
+
   - Acceptance: Complete, runnable calculator demonstrating all 4 operator types
   - Requirements:
     - [ ] Gets user input for two numbers (x2)
-    - [ ] Performs all 7 arithmetic operations (+, -, *, /, //, %, **)
+    - [ ] Performs all 7 arithmetic operations (+, -, \*, /, //, %, \*\*)
     - [ ] Uses comparison operators (at least one: ==, >, <)
     - [ ] Uses logical operators (at least one: and, or, not) for safety check (e.g., num2 != 0)
-    - [ ] Uses assignment operators (at least one: +=, -=, *=, /=) for running total or calculation
+    - [ ] Uses assignment operators (at least one: +=, -=, \*=, /=) for running total or calculation
     - [ ] Validates result types with type()
     - [ ] Includes keyword checking (import keyword)
     - [ ] All code has type hints
@@ -271,11 +305,13 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
   - Effort: 4–6h
 
 - [ ] **MUST**: Create Simplified Calculator Version (for pre-function students)
+
   - Acceptance: Version without function definitions (since Chapter 20 hasn't taught functions yet)
   - Code: Linear script with input validation; all 4 operator types (see plan.md)
   - Effort: 2–3h
 
 - [ ] **MUST**: Design "Try With AI" Prompts for Lesson 5 (4 total)
+
   - Acceptance: 4 prompts (concept, application, edge case, synthesis) with expected outcomes
   - Prompts:
     1. **Prompt 1 (Concept)**: "What are keywords and why do I care?"
@@ -286,6 +322,7 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
   - Effort: 2–3h
 
 - [ ] **SHOULD**: Create sample output from running capstone
+
   - Acceptance: Show before/after running calculator; demonstrate all operators being used
   - Effort: 1h
 
@@ -302,22 +339,25 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 ### Cross-Lesson Quality Assurance
 
 - [ ] **MUST**: Validate all code examples run on Python 3.14+
+
   - Acceptance: Each of 12+ code examples tested on at least 2 of 3 platforms (Windows, macOS, Linux)
   - Process: Run each example in fresh Python REPL; capture output; document any warnings
   - Platforms tested: macOS (primary), Windows (optional), Linux (optional)
   - Effort: 3–4h
 
 - [ ] **MUST**: Verify all code includes type hints
+
   - Acceptance: 100% of variables and functions use type hints; search grep for lines without `: type` or `-> type`
   - Reference: `.specify/memory/constitution.md` Code Standards (Python 3.14+, type hints mandatory)
   - Effort: 1h (automated check)
 
 - [ ] **MUST**: Validate cognitive load per lesson
+
   - Acceptance: Confirm each lesson ≤ 5 new concepts (A1-A2 limit)
     - L1: 5 (arithmetic operators as family)
     - L2: 5 (comparison operators + bool results)
     - L3: 3 (and, or, not)
-    - L4: 5 (=, +=, -=, *=, /=)
+    - L4: 5 (=, +=, -=, \*=, /=)
     - L5: 2 (keywords) + integration (no new operators)
   - Reference: Plan.md, "Key Concepts" section per lesson
   - Effort: 0.5h (verification against plan)
@@ -339,12 +379,14 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 ### Lesson Closure Pattern Validation
 
 - [ ] **MUST**: Verify each lesson ends with "Try With AI" ONLY
+
   - Acceptance: Zero content after "Try With AI" section in all 5 lessons; no "Key Takeaways", "What's Next", "Summary"
   - Reference: Constitutional mandate (FR-014 in spec: "All lessons MUST end with Try With AI section ONLY")
   - Check: grep for any content following "Try With AI" heading
   - Effort: 0.5h
 
 - [ ] **MUST**: Verify exactly 4 prompts per lesson
+
   - Acceptance: Each lesson has exactly 4 "Try With AI" prompts (20 total across chapter)
   - Format:
     - Prompt 1: Concept exploration
@@ -354,6 +396,7 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
   - Effort: 0.5h
 
 - [ ] **MUST**: Document expected outcomes for all 20 prompts
+
   - Acceptance: Each prompt has explicit "Expected outcome" text (see plan.md examples)
   - Reference: Plan.md, all "Try With AI" sections
   - Effort: 1h (copy from plan, adapt to final lesson text)
@@ -368,6 +411,7 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 ### Technical Review Preparation
 
 - [ ] **MUST**: Create test cases for capstone project
+
   - Acceptance: At least 5 test scenarios with expected outputs
   - Scenarios:
     1. Positive numbers (10, 3)
@@ -379,16 +423,19 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
   - Effort: 2–3h
 
 - [ ] **MUST**: Validate chapter integration with prerequisites (Chapter 14)
+
   - Acceptance: All references to type hints, type(), isinstance() explained or prereq-noted
   - Check: Verify Chapter 14 learning objectives are assumed (not re-taught)
   - Effort: 1h
 
 - [ ] **MUST**: Validate chapter preparation for Chapter 17
+
   - Acceptance: Comparison and logical operators clearly framed as "needed for if statements"
   - Check: Ensure Prompts 4 in Lessons 2-3 explicitly mention Chapter 17
   - Effort: 0.5h
 
 - [ ] **SHOULD**: Accessibility check
+
   - Acceptance: Reading level Grade 7-8 (automated Flesch-Kincaid check before publication)
   - Process: Copy all lesson text to automated checker (e.g., hemingwayapp.com or readability tool)
   - Passing criteria: Average sentence length < 15 words; average word length < 5 characters (rough Guide)
@@ -404,6 +451,7 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 ## Phase 3: Review & Integration
 
 - [ ] **MUST**: Peer review for pedagogical clarity
+
   - Acceptance: Reviewer confirms:
     - Learning objectives are clear and measurable
     - Code examples teach the intended concept
@@ -413,6 +461,7 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
   - Effort: 2–3h (for reviewer) + 1–2h (for revisions)
 
 - [ ] **MUST**: Peer review for technical accuracy
+
   - Acceptance: Reviewer confirms:
     - All code examples run without errors
     - Type hints are correct (can be validated by mypy)
@@ -422,6 +471,7 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
   - Effort: 2–3h (for reviewer) + 1h (for fixes)
 
 - [ ] **MUST**: Style guide compliance check
+
   - Acceptance: All lessons follow output style from `.claude/output-styles/lesson.md`
   - Checks:
     - [ ] YAML frontmatter present with skills metadata
@@ -432,6 +482,7 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
   - Effort: 1h (automated check for formatting)
 
 - [ ] **SHOULD**: Cross-reference validation
+
   - Acceptance: All links to Chapter 14 (prerequisite) are correct file paths
   - Check: Verify path references in lesson files
   - Effort: 0.5h
@@ -446,6 +497,7 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 ## Phase 4: Final Technical Review & Publication Readiness
 
 - [ ] **MUST**: Technical review by subject-matter expert
+
   - Acceptance: Validator confirms:
     - All code examples correct (Python 3.14+ syntax)
     - Type hints are modern (`list[int]` not `List[int]`, `X | None` not `Optional[X]`)
@@ -456,17 +508,19 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
   - Effort: 3–4h (for technical reviewer)
 
 - [ ] **MUST**: Learning outcome validation
+
   - Acceptance: Technical reviewer confirms each lesson achieves stated learning objectives
   - Check: Can students complete capstone using content taught in Lessons 1-5?
   - Effort: 2h
 
 - [ ] **MUST**: Specification alignment check
+
   - Acceptance: Confirm chapter delivers all FR (Functional Requirements) from spec
   - Checklist:
-    - [ ] FR-001: Arithmetic operators taught (+, -, *, /, //, %, **)
+    - [ ] FR-001: Arithmetic operators taught (+, -, \*, /, //, %, \*\*)
     - [ ] FR-002: Comparison operators taught (==, !=, >, <, >=, <=)
     - [ ] FR-003: Logical operators taught (and, or, not)
-    - [ ] FR-004: Assignment operators taught (=, +=, -=, *=, /=)
+    - [ ] FR-004: Assignment operators taught (=, +=, -=, \*=, /=)
     - [ ] FR-005: Type hints in all examples
     - [ ] FR-006: Keywords explained (what they are)
     - [ ] FR-007: Keyword list retrieval shown (import keyword)
@@ -481,6 +535,7 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
   - Effort: 2–3h
 
 - [ ] **MUST**: Success criteria (evals) alignment
+
   - Acceptance: Content delivery addresses all 7 success criteria (SC-001 through SC-007)
   - Verification:
     - [ ] SC-001: Operators explained in plain language (Lesson objectives + Prompt 1 each lesson)
@@ -505,11 +560,13 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 ## Phase 5: Content Validation & Integration
 
 - [ ] **MUST**: Docusaurus build test
+
   - Acceptance: Chapter builds successfully in Docusaurus without warnings/errors
-  - Process: Add chapter files to `book-source/docs/` directory; run `npm run build`
+  - Process: Add chapter files to `apps/learn-app/docs/` directory; run `npm run build`
   - Effort: 1–2h (troubleshooting any build issues)
 
 - [ ] **MUST**: Visual inspection of rendered content
+
   - Acceptance: Content renders correctly in Docusaurus:
     - [ ] Code blocks display properly (syntax highlighting works)
     - [ ] Links to other chapters work
@@ -518,6 +575,7 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
   - Effort: 1h
 
 - [ ] **MUST**: Final editorial polish
+
   - Acceptance: Professional tone, grammar check, consistent voice throughout chapter
   - Process: Read all 5 lessons end-to-end; catch typos, inconsistencies
   - Tools: Spell checker, grammar checker (Grammarly or similar)
@@ -533,6 +591,7 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 ## Acceptance Criteria (Definition of Done)
 
 **All MUST Tasks Completed**:
+
 - [ ] All 5 lessons created with "What It Is → Code Examples → Try With AI" structure
 - [ ] Each lesson has exactly 4 "Try With AI" prompts with expected outcomes
 - [ ] All lessons end with "Try With AI" ONLY (no summaries/checklists after)
@@ -548,12 +607,14 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 - [ ] Final editorial polish complete
 
 **Optional (SHOULD/NICE-TO-HAVE)**:
+
 - [ ] Accessibility check complete (Grade 7-8 reading level validated)
 - [ ] Cross-reference validation done
 - [ ] Instructor guide created
 - [ ] Student feedback incorporated
 
 **Quality Gates** (before marking "Ready for Publication"):
+
 1. ✅ All MUST tasks complete
 2. ✅ Zero post-"Try With AI" content (lesson closure compliance)
 3. ✅ All 20 prompts have expected outcomes documented
@@ -568,17 +629,18 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 
 **Key Risks**:
 
-| Risk | Mitigation | Owner |
-|------|-----------|-------|
-| R1: Code examples don't run on Python 3.14+ | Test all examples on Python 3.14 before finalizing | Lesson writer |
-| R2: Type hints missing from examples | Automated grep check for `: type` and `-> type` | QA/reviewer |
-| R3: "Try With AI" prompts are vague | Use examples from plan.md; ensure expected outcomes clear | Lesson writer |
-| R4: Lesson exceeds 5 concept cognitive limit | Count concepts against plan.md; split if necessary | Lesson writer |
-| R5: Reading level too high for target audience | Automated Flesch-Kincaid check; rewrite complex sentences | Editor |
-| R6: Capstone project too complex for A1-A2 students | Test with beginner; simplify if needed; provide function-free version | Lesson writer |
-| R7: Chapter doesn't prepare for Chapter 17 | Ensure Lessons 2-3 mention if/while/for coming; cross-ref in Prompts 4 | Lesson writer |
+| Risk                                                | Mitigation                                                             | Owner         |
+| --------------------------------------------------- | ---------------------------------------------------------------------- | ------------- |
+| R1: Code examples don't run on Python 3.14+         | Test all examples on Python 3.14 before finalizing                     | Lesson writer |
+| R2: Type hints missing from examples                | Automated grep check for `: type` and `-> type`                        | QA/reviewer   |
+| R3: "Try With AI" prompts are vague                 | Use examples from plan.md; ensure expected outcomes clear              | Lesson writer |
+| R4: Lesson exceeds 5 concept cognitive limit        | Count concepts against plan.md; split if necessary                     | Lesson writer |
+| R5: Reading level too high for target audience      | Automated Flesch-Kincaid check; rewrite complex sentences              | Editor        |
+| R6: Capstone project too complex for A1-A2 students | Test with beginner; simplify if needed; provide function-free version  | Lesson writer |
+| R7: Chapter doesn't prepare for Chapter 17          | Ensure Lessons 2-3 mention if/while/for coming; cross-ref in Prompts 4 | Lesson writer |
 
 **Dependencies**:
+
 - [ ] Chapter 14 (Data Types) must be complete and stable (✅ already validated as of Nov 8, 2025)
 - [ ] Constitution v3.0.2 requirements understood (AI-Native Learning pattern, graduated complexity)
 - [ ] Output style guide (`.claude/output-styles/lesson.md`) available for reference
@@ -590,8 +652,10 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 **Total Estimated Effort**: 45–55 story points (approximately 36–44 hours)
 
 **Phase Breakdown**:
+
 1. **Phase 1 (Content Structure)**: 57–93h per lesson ≈ 14–23h per lesson × 5 = 70–115h
-   - *Adjusted: 48–56h* (consolidated estimates, some tasks overlap)
+
+   - _Adjusted: 48–56h_ (consolidated estimates, some tasks overlap)
 
 2. **Phase 2 (Practice & Validation)**: 10–14h
 
@@ -604,6 +668,7 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 **Total**: 82–106h (approximately 2–2.5 weeks at 40 hours/week)
 
 **Recommended Pacing**:
+
 - Week 1: Lessons 1-2 (Phase 1 content creation)
 - Week 2: Lessons 3-4 (Phase 1 content creation)
 - Week 3: Lesson 5 + capstone (Phase 1), Phase 2-3 reviews
@@ -616,17 +681,20 @@ This chapter requires creating 5 lessons teaching four operator categories (arit
 **Upon Completion of This Chapter**:
 
 1. **Chapter 16 Planning** (Strings and Type Casting)
+
    - Builds on Chapter 15's operators (string concatenation with +)
    - Uses str() type conversion (casting)
    - Reference: Assume Chapter 15 operators are foundational
 
 2. **Chapter 17 Planning** (Control Flow and Loops)
+
    - Uses comparison operators (if, while conditions)
    - Uses logical operators (complex conditions)
-   - Uses assignment operators (+=  in loop counters)
+   - Uses assignment operators (+= in loop counters)
    - Reference: Chapter 15 as prerequisite vocabulary
 
 3. **Quality Assurance Feedback Loop**
+
    - Technical reviewer flags any issues (code, accessibility, structure)
    - Lesson writer addresses feedback within 2 business days
    - Iterate until review passes
@@ -666,7 +734,7 @@ specs/part-4-chapter-15/
 ├── tasks.md         [this task checklist]
 └── (lesson files created during implementation)
 
-book-source/docs/04-Python-Fundamentals/15-operators-keywords-variables/
+apps/learn-app/docs/04-Python-Fundamentals/15-operators-keywords-variables/
 ├── readme.md        [chapter overview]
 ├── 01-arithmetic-operators.md
 ├── 02-comparison-operators.md
@@ -681,4 +749,3 @@ book-source/docs/04-Python-Fundamentals/15-operators-keywords-variables/
 **Next Action**: Assign to content-implementer subagent; proceed with Phase 1 (Lesson 1 content creation)
 **Quality Gate**: All acceptance criteria must be met before marking chapter complete
 **Estimated Completion**: 2–3 weeks (depending on revision cycles)
-

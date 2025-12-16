@@ -9,7 +9,8 @@
 ## Files Updated
 
 ### Primary Deliverable
-**File**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/09-designing-reusable-intelligence.md`
+
+**File**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/09-designing-reusable-intelligence.md`
 
 - **Lines**: 764 (expanded from original)
 - **Word Count**: 5,847 words
@@ -17,6 +18,7 @@
 - **Git Status**: Modified (M)
 
 ### Support Documentation
+
 1. **LESSON-09-UPDATE-SUMMARY.md** — Transformation details and verification
 2. **LESSON-09-CONSTITUTIONAL-VALIDATION.md** — Detailed compliance report
 3. **IMPLEMENTATION-COMPLETE.md** — This file
@@ -28,6 +30,7 @@
 ### Content Strategy: KEEP STRUCTURE, NEW EXAMPLES
 
 **Maintained**:
+
 - Persona + Questions + Principles (P+Q+P) framework structure
 - Skill vs subagent distinction (guidance vs autonomous)
 - Step-by-step skill creation process
@@ -35,13 +38,16 @@
 - Reusability assessment framework
 
 **Replaced**:
+
 - Calculator pattern examples → Video generation patterns
 - Calculator-specific math operations → Video generation with Gemini/Playwright MCP
 - Generic skill examples → Domain-specific video production skill
 
 **Added**:
+
 - Pattern recognition from Lessons 04-08 workflow (specification writing, quality validation, Playwright automation)
 - Complete `generate-video` skill template with:
+
   - Metadata (name, category, complexity, reuse context)
   - Persona (video production director with film director analogy)
   - Analytical Questions (5 categories: narrative, pacing, technical, alignment, engagement)
@@ -50,6 +56,7 @@
   - 8 self-check validation points
 
 - Preview of `upload-youtube` skill showing:
+
   - How P+Q+P pattern adapts to upload context
   - Persona shift from "director" to "editor"
   - Connection to Lesson 11 capstone
@@ -66,6 +73,7 @@
 ### Three Roles Framework: INVISIBLE
 
 **Verified**:
+
 ```bash
 grep -c "AI as\|What you learned:\|What AI learned:\|Role 1:\|Stage [0-9]" lesson.md
 Result: 0 (zero matches)
@@ -80,6 +88,7 @@ Result: 0 (zero matches)
 ### Structure: Activity Ending Only
 
 **Verified**:
+
 ```bash
 Last ## heading: ## Try With AI
 No sections after activity
@@ -102,6 +111,7 @@ File ends cleanly with prompts
 ### Cognitive Load: B1 Tier
 
 **8 new concepts** (within B1 7-10 range):
+
 1. Pattern recognition framework
 2. Skill vs subagent distinction
 3. P+Q+P structure
@@ -112,6 +122,7 @@ File ends cleanly with prompts
 8. Intelligence composition
 
 **Scaffolding provided**:
+
 - Complete skill templates reduce cognitive load
 - Step-by-step process (Persona → Questions → Principles)
 - Good vs bad examples throughout
@@ -122,6 +133,7 @@ File ends cleanly with prompts
 ### Domain Authenticity: VIDEO GENERATION
 
 **Video-Specific Content**:
+
 - Persona: Video production director (not generic "expert")
 - Analogy: Film director thinking about cinematography
 - Questions: Narrative clarity, pacing, technical gates, content alignment, engagement
@@ -129,6 +141,7 @@ File ends cleanly with prompts
 - Usage Example: Python data analysis tool product demo with complete spec and prompt
 
 **Tools Mentioned**:
+
 - Gemini.google.com (video generation)
 - Playwright MCP (browser automation)
 - Quality validation gates (5 objective checks)
@@ -139,9 +152,11 @@ File ends cleanly with prompts
 ## Learning Objectives Achievement
 
 ### Objective 1: Identify Patterns from Lessons 04-08
+
 **Status**: ✅ ACHIEVED
 
 Students learn to analyze:
+
 - Video specification writing (6+ decisions)
 - Quality validation gates (5+ decisions)
 - Playwright MCP automation (7+ decisions)
@@ -151,9 +166,11 @@ Students learn to analyze:
 Pattern analysis table shows which patterns justify encoding intelligence.
 
 ### Objective 2: Design Generate-Video Skill
+
 **Status**: ✅ ACHIEVED
 
 Students create skill with:
+
 - Specific persona (video production director)
 - 5 analytical question categories
 - 5 decision principle frameworks
@@ -161,17 +178,21 @@ Students create skill with:
 - 8 validation checkpoints
 
 ### Objective 3: Design Upload-YouTube Skill
+
 **Status**: ✅ ACHIEVED
 
 Students see preview of skill showing:
+
 - How P+Q+P adapts to different context
 - Persona shift (director → editor)
 - Connection to Lesson 11
 
 ### Objective 4: Apply Reuse vs Create Framework
+
 **Status**: ✅ ACHIEVED
 
 Students understand:
+
 - When to create skills (frequency, complexity, org value)
 - When skills are reusable (3+ projects)
 - How intelligence compounds (10x faster with 1 skill, more with composition)
@@ -190,11 +211,14 @@ Complexity: High (7+ decision points)
 Reusable Across: Any product demo video, marketing video, tutorial
 
 ## Persona
+
 Video production director who thinks about video generation
 the way a film director thinks about cinematography
 
 ## Analytical Questions
+
 5 categories:
+
 1. Narrative Clarity
 2. Visual & Pacing Validation
 3. Technical Quality Gates
@@ -202,6 +226,7 @@ the way a film director thinks about cinematography
 5. Engagement & Marketing Value
 
 ## Decision Principles
+
 1. Prompt Structure (opening, demo, CTA with timing)
 2. Quality Gate Standards (5 specific video checks)
 3. Iteration & Decision Framework (max 3 attempts)
@@ -209,9 +234,11 @@ the way a film director thinks about cinematography
 5. Playwright MCP Automation (session, timeout, recovery)
 
 ## Usage Example
+
 Python data analysis tool demo video with complete spec and prompt
 
 ## Self-Check Validation
+
 8 checkpoints for skill completeness
 ```
 
@@ -225,10 +252,12 @@ Complexity: Medium-High (5+ decision points)
 First Use: Lesson 11 (YouTube capstone)
 
 ## Persona
+
 YouTube channel manager who ensures consistent presentation
 the way a book editor ensures consistent style
 
 ## Analytical Questions
+
 1. Metadata Completeness
 2. Consistency
 3. Discoverability
@@ -236,6 +265,7 @@ the way a book editor ensures consistent style
 5. Accessibility
 
 ## Decision Principles
+
 1. Metadata Standards
 2. Upload Gates (5 checks)
 
@@ -247,25 +277,32 @@ the way a book editor ensures consistent style
 ## Intelligence Accumulation Demonstrated
 
 ### Project 1: Calculator Demo (Lesson 08)
+
 **Time**: 10 hours
+
 - Lesson 04: Write specification
 - Lesson 05-07: Plan and tasks
 - Lesson 08: Generate video
 - Lesson 09: Extract skill
 
 ### Project 2: SaaS Product Demo (Month 2)
+
 **Time**: 1 hour (10x faster)
+
 - Write specification (30 min)
 - Invoke generate-video skill (select templates)
 - Generate video (30 min)
 
 **Skill provides**:
+
 - Prompt templates
 - Quality gates framework
 - Iteration guidance
 
 ### Project 3: Multi-Video Campaign (Month 3)
+
 **Time**: 4 hours
+
 - Use generate-video skill (5 videos, 3 hours)
 - Use upload-youtube skill (consistent metadata, 1 hour)
 
@@ -276,6 +313,7 @@ the way a book editor ensures consistent style
 ## Try With AI: Four Copyable Prompts
 
 ### Prompt 1: Explore P+Q+P Pattern
+
 ```
 Explain the Persona + Questions + Principles pattern for skill design.
 For video generation, show me: (1) What Persona activates the right thinking?
@@ -284,6 +322,7 @@ For video generation, show me: (1) What Persona activates the right thinking?
 ```
 
 ### Prompt 2: Design the Persona
+
 ```
 Help me create a Persona for video generation skill. I want it to establish
 cognitive stance specific to video production. Guide me through:
@@ -294,6 +333,7 @@ cognitive stance specific to video production. Guide me through:
 ```
 
 ### Prompt 3: Create Analytical Questions
+
 ```
 Generate 5-7 Analytical Questions for my video generation skill.
 Cover: narrative clarity, pacing, technical quality, content alignment,
@@ -301,6 +341,7 @@ engagement. For each question, explain why it's open-ended vs yes/no.
 ```
 
 ### Prompt 4: Build Complete Skill File
+
 ```
 Help me create a complete generate-video skill file. Include:
 (1) Metadata; (2) Persona; (3) Analytical Questions (5-7);
@@ -323,6 +364,7 @@ Help me create a complete generate-video skill file. Include:
 ## Validation Checklist: COMPLETE
 
 ### Constitutional Compliance
+
 - ✅ Framework invisibility: 0 forbidden labels detected
 - ✅ Structure compliance: Ends with "Try With AI" only
 - ✅ Evidence present: All claims demonstrated
@@ -333,6 +375,7 @@ Help me create a complete generate-video skill file. Include:
 - ✅ Working memory: Progressive disclosure strategy
 
 ### Content Quality
+
 - ✅ Lesson overview clear: Intelligence extraction from workflows
 - ✅ Examples relevant: Video generation (not toy apps)
 - ✅ Progression logical: Lessons 04-08 → Intelligence design → Lesson 11
@@ -340,6 +383,7 @@ Help me create a complete generate-video skill file. Include:
 - ✅ Practice opportunities: 3 projects showing reuse acceleration
 
 ### Student Experience
+
 - ✅ Achievable: P+Q+P framework is step-by-step
 - ✅ Reusable: Skills work across projects
 - ✅ Practical: Real examples (calculator → SaaS → multi-video)
@@ -350,11 +394,13 @@ Help me create a complete generate-video skill file. Include:
 ## Files Ready for Commit
 
 **Modified Files** (1):
+
 ```
-M book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/09-designing-reusable-intelligence.md
+M apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/09-designing-reusable-intelligence.md
 ```
 
 **Support Files** (2):
+
 ```
 A specs/chapter-14-spec-kit-plus-hands-on/LESSON-09-UPDATE-SUMMARY.md
 A specs/chapter-14-spec-kit-plus-hands-on/LESSON-09-CONSTITUTIONAL-VALIDATION.md
@@ -366,7 +412,7 @@ A specs/chapter-14-spec-kit-plus-hands-on/IMPLEMENTATION-COMPLETE.md (this file)
 ## Deployment Steps
 
 1. **Review**: Read updated lesson 09-designing-reusable-intelligence.md
-2. **Validate**: Check validation reports (LESSON-09-*.md)
+2. **Validate**: Check validation reports (LESSON-09-\*.md)
 3. **Test**: Have pedagogical-designer verify learning progression
 4. **Commit**: Create git commit with updated files
 5. **Integrate**: Link from Chapter 14 navigation
@@ -385,6 +431,7 @@ A specs/chapter-14-spec-kit-plus-hands-on/IMPLEMENTATION-COMPLETE.md (this file)
 ## Success Indicators
 
 By completing Lesson 09, students will:
+
 - ✅ Understand intelligence accumulation concept
 - ✅ Design skills using P+Q+P framework
 - ✅ Create reusable video generation skill

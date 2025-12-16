@@ -5,7 +5,7 @@ LESSON 02 ENHANCEMENT: FEATURE 1 - LEAD PROFILER
 TASK COMPLETED: YES
 
 File Path:
-  /Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/02-feature-1-lead-profiler.md
+  /Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/02-feature-1-lead-profiler.md
 
 ================================================================================
 CONTEXT ESTABLISHED
@@ -217,7 +217,7 @@ ARTIFACTS PRODUCED
 
 Primary Artifact:
   File: /Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/
-        book-source/docs/04-SDD-RI-Fundamentals/15-ai-product-business-
+        apps/learn-app/docs/04-SDD-RI-Fundamentals/15-ai-product-business-
         intelligence-capstone/02-feature-1-lead-profiler.md
   Lines: 369
   Format: Markdown with YAML frontmatter

@@ -9,7 +9,15 @@ feature: 018-chapter-5-claude-code-rework
 branch: 018-chapter-5-claude-code-rework
 user: orchestrator
 command: /sp.tasks
-labels: [tasks, chapter-rework, claude-code, part-2, task-decomposition, lesson-writing]
+labels:
+  [
+    tasks,
+    chapter-rework,
+    claude-code,
+    part-2,
+    task-decomposition,
+    lesson-writing,
+  ]
 links:
   spec: specs/018-chapter-5-claude-code-rework/spec.md
   plan: specs/018-chapter-5-claude-code-rework/plan.md
@@ -32,11 +40,13 @@ tests:
 User triggered `/sp.tasks` command after completing Phase 2 (Planning).
 
 **Context provided**:
+
 - Feature directory: `/specs/018-chapter-5-claude-code-rework/`
 - Available docs: spec.md (481 lines, 9 user stories), plan.md (1,688 lines, 9 lesson outlines)
 - Templates: tasks-template.md (task generation rules)
 
 **Intelligence Object derived**:
+
 ```json
 {
   "task_type": "educational_content_creation",
@@ -44,26 +54,35 @@ User triggered `/sp.tasks` command after completing Phase 2 (Planning).
   "part_number": 2,
   "lesson_count": 9,
   "user_stories": [
-    {"id": "US1", "priority": "P1", "lesson": "Origin story and paradigm shift"},
-    {"id": "US2", "priority": "P1", "lesson": "Installation and authentication"},
-    {"id": "US3", "priority": "P2", "lesson": "Subagents and orchestration"},
-    {"id": "US4", "priority": "P3", "lesson": "Skills and MCP"},
-    {"id": "US5", "priority": "P2", "lesson": "Hello World practice"},
-    {"id": "US6", "priority": "P1", "lesson": "CLAUDE.md context files"},
-    {"id": "US7", "priority": "P2", "lesson": "Permission management"},
-    {"id": "US8", "priority": "P3", "lesson": "Hooks and extensibility"},
-    {"id": "US9", "priority": "P3", "lesson": "Settings hierarchy"}
+    {
+      "id": "US1",
+      "priority": "P1",
+      "lesson": "Origin story and paradigm shift"
+    },
+    {
+      "id": "US2",
+      "priority": "P1",
+      "lesson": "Installation and authentication"
+    },
+    { "id": "US3", "priority": "P2", "lesson": "Subagents and orchestration" },
+    { "id": "US4", "priority": "P3", "lesson": "Skills and MCP" },
+    { "id": "US5", "priority": "P2", "lesson": "Hello World practice" },
+    { "id": "US6", "priority": "P1", "lesson": "CLAUDE.md context files" },
+    { "id": "US7", "priority": "P2", "lesson": "Permission management" },
+    { "id": "US8", "priority": "P3", "lesson": "Hooks and extensibility" },
+    { "id": "US9", "priority": "P3", "lesson": "Settings hierarchy" }
   ],
   "success_criteria_count": 20,
   "evals_count": 8,
   "functional_requirements": 42,
-  "content_location": "book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/"
+  "content_location": "apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/"
 }
 ```
 
 ## Response snapshot
 
 **Phase 0: Load Design Documents** ✅ COMPLETED
+
 - Ran `.specify/scripts/bash/check-prerequisites.sh --json` → Got FEATURE_DIR
 - Read plan.md (1,688 lines) - Complete lesson-by-lesson breakdown with teaching tiers
 - Read spec.md (481 lines) - 9 user stories with priorities, 20 success criteria, 8 evals
@@ -74,12 +93,15 @@ User triggered `/sp.tasks` command after completing Phase 2 (Planning).
 Generated 79 tasks organized in 14 phases:
 
 **Phase 1: Setup & Preparation (4 tasks)**
+
 - T001-T004: Create structure, review existing content, verify Context7 access, review constitution
 
 **Phase 2: Foundational Content (2 tasks)**
+
 - T005-T006: Write chapter README with bridges from Part 1, add constitutional alignment note
 
 **Phase 3-11: User Story Implementation (9 lesson phases, 43 tasks)**
+
 - Each phase maps to one user story (US1-US9)
 - Each lesson phase includes: write lesson content, add "Try with AI" section, add frontmatter, address edge cases
 - Lessons structured as: Introduction → Core concepts (Tier 1) → AI collaboration (Tier 2) → Practice → Edge cases
@@ -90,15 +112,19 @@ Generated 79 tasks organized in 14 phases:
   - **Phase 8 (US6)**: T027-T031 - CLAUDE.md creation (example structure, AI-assisted creation, auto-loading)
 
 **Phase 12: Polish & Validation (11 tasks)**
+
 - T048-T058: Format validation, constitutional alignment, cognitive load checks, duration verification, success criteria mapping
 
 **Phase 13: Technical Validation (10 tasks)**
+
 - T059-T068: Sandbox testing on all platforms (Windows/macOS/Linux), authentication flow, Hello World workflow, CLAUDE.md creation, commands verification, duration measurement
 
 **Phase 14: Agent-Based Review (11 tasks)**
+
 - T069-T079: Technical-reviewer agent invocation, factual-verifier agent invocation, issue resolution (CRITICAL/MAJOR/MINOR), final constitutional check, Docusaurus build test
 
 **Key Task Generation Principles Applied**:
+
 1. **Organized by User Story**: Each lesson (US1-US9) is independently completable
 2. **Strict Checklist Format**: All tasks follow `- [ ] [ID] [P?] [Story] Description with file path`
 3. **Parallel Opportunities**: Marked with [P] tag - conceptual lessons can run in parallel, technical lessons can run in parallel
@@ -110,6 +136,7 @@ Generated 79 tasks organized in 14 phases:
 **Phase 2: Generate tasks.md** ✅ COMPLETED
 
 Created `specs/018-chapter-5-claude-code-rework/tasks.md` (680 lines) with:
+
 - 79 tasks in 14 phases
 - All tasks follow strict format: `- [ ] [ID] [P?] [Story] Description`
 - Dependencies section showing phase and lesson completion order

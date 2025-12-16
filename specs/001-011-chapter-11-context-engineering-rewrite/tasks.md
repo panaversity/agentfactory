@@ -15,7 +15,7 @@
 
 ## Path Conventions
 
-- Chapter directory: `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/`
+- Chapter directory: `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/`
 - Lesson files: `01-lesson-1.md`, `02-lesson-2.md`, etc. (9 total)
 - README: `README.md` (chapter overview, auto-generated from learning objectives)
 
@@ -25,7 +25,7 @@
 
 **Purpose**: Initialize chapter directory structure and prepare for lesson implementation
 
-- [ ] T001 Create chapter directory at `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/`
+- [ ] T001 Create chapter directory at `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/`
 - [ ] T002 Create README.md with chapter overview, learning objectives (LO-001 through LO-006 from spec.md), and lesson navigation
 - [ ] T003 [P] Set up directory for lesson files (01-lesson-1.md through 09-lesson-9.md placeholders)
 - [ ] T004 [P] Verify YAML frontmatter template for lessons (sidebar_position, title fields)
@@ -57,8 +57,8 @@
 
 ### Implementation for User Story 1
 
-- [ ] T011 [P] [US1] Create Lesson 1 file at `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/01-context-windows-token-counting.md`
-- [ ] T012 [P] [US1] Create Lesson 2 file at `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/02-degradation-symptoms-manual-tracking.md`
+- [ ] T011 [P] [US1] Create Lesson 1 file at `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/01-context-windows-token-counting.md`
+- [ ] T012 [P] [US1] Create Lesson 2 file at `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/02-degradation-symptoms-manual-tracking.md`
 - [ ] T013 [US1] Write Lesson 1 content: Context windows, token mechanics, manual observation exercises (7 concepts, Stage 1 manual-only, experiment→observe→learn discovery sequence per plan.md lines 54-96)
 - [ ] T014 [US1] Write Lesson 2 content: Degradation symptoms (5 types), manual tracking methodology, compression/isolation/restart decision framework (8 concepts, Stage 1 manual-only per plan.md lines 98-143)
 - [ ] T015 [US1] Create manual token estimation exercise with sample codebase transcript for Lesson 1
@@ -80,7 +80,7 @@
 
 ### Implementation for User Story 2
 
-- [ ] T021 [US2] Create Lesson 3 file at `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/03-progressive-loading-strategy.md`
+- [ ] T021 [US2] Create Lesson 3 file at `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/03-progressive-loading-strategy.md`
 - [ ] T022 [US2] Write Lesson 3 content: Progressive loading phases (Foundation/Current/On-Demand), Three Roles framework integration (9 concepts, Stage 2 AI collaboration per plan.md lines 146-216)
 - [ ] T023 [US2] Create session transcript demonstrating Three Roles: AI as Teacher (suggests loading pattern), AI as Student (learns project constraints), Co-Worker (3+ iteration rounds) per plan.md lines 159-182
 - [ ] T024 [US2] Design hands-on progressive loading exercise with 50-file FastAPI sample project
@@ -103,8 +103,8 @@
 
 ### Implementation for User Story 3
 
-- [ ] T031 [P] [US3] Create Lesson 4 file at `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/04-context-compression-session-restart.md`
-- [ ] T032 [P] [US3] Create Lesson 5 file at `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/05-context-isolation-parallel-tasks.md`
+- [ ] T031 [P] [US3] Create Lesson 4 file at `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/04-context-compression-session-restart.md`
+- [ ] T032 [P] [US3] Create Lesson 5 file at `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/05-context-isolation-parallel-tasks.md`
 - [ ] T033 [US3] Write Lesson 4 content: Checkpoint structure (decisions+progress+next steps), compression ratio, session restart pattern, Three Roles in compression workflow (8 concepts, Stage 2 per plan.md lines 219-287)
 - [ ] T034 [US3] Write Lesson 5 content: Task similarity scoring, context pollution risk, isolation decision framework, Three Roles in isolation decisions (8 concepts, Stage 2 per plan.md lines 290-357)
 - [ ] T035 [US3] Create session transcript for Lesson 4: Three Roles in checkpoint creation (AI teaches structure, student refines with specifics, iterate on token budget 50→1000→500) per plan.md lines 232-254
@@ -128,7 +128,7 @@
 
 ### Implementation for User Story 4
 
-- [ ] T043 [US4] Create Lesson 6 file at `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/06-memory-files-persistent-intelligence.md`
+- [ ] T043 [US4] Create Lesson 6 file at `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/06-memory-files-persistent-intelligence.md`
 - [ ] T044 [US4] Write Lesson 6 content: Memory file types (CLAUDE.md structure, architecture.md templates, decisions.md ADR format), persistence strategy, skill encapsulation pattern (9 concepts, Stage 3 per plan.md lines 360-399)
 - [ ] T045 [US4] Create CLAUDE.md template: Project conventions section, coding patterns section, anti-patterns section (500-1000 token structure)
 - [ ] T046 [US4] Create architecture.md template: Component relationships section, design patterns section, system properties section
@@ -151,7 +151,7 @@
 
 ### Implementation for User Story 5
 
-- [ ] T053 [US5] Create Lesson 7 file at `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/07-tool-selection-framework.md`
+- [ ] T053 [US5] Create Lesson 7 file at `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/07-tool-selection-framework.md`
 - [ ] T054 [US5] Write Lesson 7 content: Claude Code vs Gemini CLI comparison, decision tree (task scope→context requirement→tool selection), 5+ scenario analysis (7 concepts, Stage 2-3 hybrid per plan.md)
 - [ ] T055 [US5] Integrate verified comparison table from T010: Claude Sonnet 4.5 (200K/1M specs), Gemini 1.5 Pro (2M specs) with 2025 citations
 - [ ] T056 [US5] Create decision tree diagram: Focused feature (5-10 files) → Claude Code, Large refactoring (50+ files) → evaluate tradeoffs, Legacy exploration (100K+ lines) → Gemini CLI
@@ -173,7 +173,7 @@
 
 ### Implementation for Validation Phase
 
-- [ ] T062 [US-VAL] Create Lesson 8 file at `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/08-hands-on-debugging-optimization.md`
+- [ ] T062 [US-VAL] Create Lesson 8 file at `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/08-hands-on-debugging-optimization.md`
 - [ ] T063 [US-VAL] Write Lesson 8 content: Session diagnosis framework, remediation strategies, validation patterns (6 concepts, Stage 2 validation per plan.md)
 - [ ] T064 [US-VAL] Create debugging scenario 1: Session with degradation symptoms (repetitive suggestions, forgotten patterns) → student diagnoses → prescribes compression checkpoint
 - [ ] T065 [US-VAL] Create debugging scenario 2: Mixed-task session with context pollution (auth patterns in payment code) → student diagnoses → prescribes isolation
@@ -195,7 +195,7 @@
 
 ### Implementation for User Story 6
 
-- [ ] T071 [US6] Create Lesson 9 file at `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/09-capstone-spec-driven-orchestration.md`
+- [ ] T071 [US6] Create Lesson 9 file at `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/09-capstone-spec-driven-orchestration.md`
 - [ ] T072 [US6] Write Lesson 9 content: Specification quality framework, accumulated intelligence orchestration, peer review rubric (Integration-level complexity, Stage 4 spec-driven per plan.md)
 - [ ] T073 [US6] Document specification structure: Intent section (WHAT tool does), Success Criteria section (measurable outcomes), Functional Requirements section (context management capabilities)
 - [ ] T074 [US6] Document memory file architecture integration: How tool uses CLAUDE.md/architecture.md/decisions.md from Lesson 6
@@ -268,6 +268,7 @@ Phase 10 (Polish) ←───────────────────�
 - **Validation tasks** (T083-T091 in Phase 10): All parallelizable after lessons complete
 
 **Sequential dependencies**:
+
 - Lesson 3 → Lessons 4-5 (progressive loading knowledge required for compression/isolation)
 - Lessons 1-5 → Lesson 8 (validation applies all patterns)
 - Lessons 1-8 → Lesson 9 (capstone orchestrates all intelligence)
@@ -275,12 +276,14 @@ Phase 10 (Polish) ←───────────────────�
 ### Implementation Strategy
 
 **MVP Scope (User Story 1 - Lessons 1-2)**:
+
 - Delivers foundation: Context window mechanics + degradation symptoms
 - Enables manual diagnosis without AI (Stage 1 complete)
 - Students can identify context issues and understand mitigation options
 - Subsequent lessons build on this foundation incrementally
 
 **Incremental Delivery**:
+
 1. **Increment 1** (MVP): Lessons 1-2 (US1) - Manual foundation
 2. **Increment 2**: Lesson 3 (US2) - Progressive loading with AI (first Three Roles demonstration)
 3. **Increment 3**: Lessons 4-5 (US3) - Compression & isolation (complete Three Roles coverage)
@@ -289,6 +292,7 @@ Phase 10 (Polish) ←───────────────────�
 6. **Increment 6**: Lesson 9 (US6) - Capstone spec-driven orchestration
 
 **Quality Gates**:
+
 - After US1: Validate Stage 1 manual foundation complete
 - After US2-3: Validate Three Roles demonstrated in 3+ lessons (Test-003)
 - After US4: Validate reusable intelligence created (memory-file-architecture skill)
@@ -300,6 +304,7 @@ Phase 10 (Polish) ←───────────────────�
 ## Summary
 
 **Total Tasks**: 94
+
 - Phase 1 (Setup): 4 tasks
 - Phase 2 (Foundational): 6 tasks
 - Phase 3 (US1): 10 tasks
@@ -312,6 +317,7 @@ Phase 10 (Polish) ←───────────────────�
 - Phase 10 (Polish): 12 tasks
 
 **Tasks Per User Story**:
+
 - US1 (Lessons 1-2, P1): 10 tasks
 - US2 (Lesson 3, P1): 10 tasks
 - US3 (Lessons 4-5, P2): 12 tasks
@@ -321,12 +327,14 @@ Phase 10 (Polish) ←───────────────────�
 - Validation (Lesson 8, P2): 9 tasks
 
 **Parallel Opportunities**:
+
 - Phase 1: 3 tasks parallelizable (T002-T004)
 - Phase 2: 5 tasks parallelizable (T006-T010)
 - Phase 5: 2 file creation tasks parallel (T031-T032)
 - Phase 10: 9 validation tasks parallel (T084-T091, T093)
 
 **Independent Test Criteria**:
+
 - US1: Manual degradation diagnosis without AI
 - US2: Progressive loading maintaining context <70%
 - US3: Compression vs isolation decision with reasoning
@@ -345,6 +353,7 @@ Phase 10 (Polish) ←───────────────────�
 **Lesson Ending Convention**: Within this chapter, each lesson must end with a single final section titled **"Try With AI"** (no "Key Takeaways" or "What's Next").
 
 **AI Tool Usage**:
+
 - Before AI tools are taught (Part 1 chapters), use ChatGPT web interface in "Try With AI" sections
 - After tool onboarding (Part 2+), instruct learners to use their preferred AI companion tool (e.g., Gemini CLI, Claude CLI)
 - Optionally provide both CLI and web variants of exercises for accessibility

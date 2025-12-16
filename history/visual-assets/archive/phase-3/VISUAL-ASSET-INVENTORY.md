@@ -18,6 +18,7 @@ This document provides a complete inventory of all visual assets generated for P
 **Total Visuals**: 5
 
 ### V1: Traditional Chat vs Agentic Claude Code
+
 - **Filename**: `traditional-chat-vs-claude-code-workflow.png`
 - **Type**: Workflow Comparison
 - **Embedded In**: `01-origin-story.md`
@@ -26,6 +27,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V2: Claude Code Context Architecture
+
 - **Filename**: `claude-code-context-architecture-four-layers.png`
 - **Type**: Architecture Diagram
 - **Embedded In**: `04-claude-md-context-files.md`
@@ -34,6 +36,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V3: Installation & Authentication Flowchart
+
 - **Filename**: `claude-code-installation-authentication-flow.png`
 - **Type**: Decision Flowchart
 - **Embedded In**: `02-installation-and-authentication.md`
@@ -42,6 +45,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V4: Skills & Subagents Hierarchy Tree
+
 - **Filename**: `skills-subagents-hierarchy-tree.png`
 - **Type**: Hierarchy Diagram
 - **Embedded In**: `06-subagents-and-orchestration.md`
@@ -50,6 +54,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V5: Settings Hierarchy
+
 - **Filename**: `settings-hierarchy-global-project-file.png`
 - **Type**: Precedence Pyramid
 - **Embedded In**: `09-settings-hierarchy.md`
@@ -65,6 +70,7 @@ This document provides a complete inventory of all visual assets generated for P
 **Total Visuals**: 4
 
 ### V6: Gemini 2.5 Pro Feature Comparison Matrix
+
 - **Filename**: `gemini-2-5-pro-feature-matrix.png`
 - **Type**: Comparison Matrix
 - **Embedded In**: `README.md`
@@ -73,6 +79,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V7: CLI vs Web Interface Workflow
+
 - **Filename**: `cli-vs-web-workflow-comparison.png`
 - **Type**: Workflow Comparison
 - **Embedded In**: `01-why-gemini-cli-matters.md`
@@ -81,6 +88,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V8: Gemini CLI Installation & Setup Flowchart
+
 - **Filename**: `gemini-cli-installation-setup-flow.png`
 - **Type**: Installation Flowchart
 - **Embedded In**: `02-installation-authentication-first-steps.md`
@@ -89,6 +97,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V9: Tool Comparison Matrix
+
 - **Filename**: `tool-comparison-matrix-four-tools.png`
 - **Type**: Comparison Matrix
 - **Embedded In**: `08-extensions-security-and-ide-integration.md`
@@ -104,6 +113,7 @@ This document provides a complete inventory of all visual assets generated for P
 **Total Visuals**: 5
 
 ### V10: Terminal Anatomy
+
 - **Filename**: `terminal-anatomy-prompt-command-output.png`
 - **Type**: Annotated Interface
 - **Embedded In**: `01-introducing-ai-workspace.md`
@@ -112,6 +122,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V11: File System Navigation Tree
+
 - **Filename**: `file-system-navigation-tree.png`
 - **Type**: Hierarchy Tree
 - **Embedded In**: `03-understanding-navigation.md`
@@ -120,6 +131,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V12: Common Bash Commands Reference Card
+
 - **Filename**: `common-bash-commands-reference.png`
 - **Type**: Reference Card
 - **Embedded In**: `04-understanding-file-operations.md`
@@ -128,6 +140,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V13: Environment Variables Flow
+
 - **Filename**: `environment-variables-flow.png`
 - **Type**: Flow Diagram
 - **Embedded In**: `05-configuration-secrets.md`
@@ -136,6 +149,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V14: Bash Script Execution Workflow
+
 - **Filename**: `bash-script-execution-workflow.png`
 - **Type**: Process Workflow
 - **Embedded In**: `07-pipes-complex-commands.md`
@@ -151,6 +165,7 @@ This document provides a complete inventory of all visual assets generated for P
 **Total Visuals**: 3
 
 ### V15: IDE Comparison Matrix
+
 - **Filename**: `ide-comparison-matrix-three-ides.png`
 - **Type**: Comparison Matrix
 - **Embedded In**: `README.md`
@@ -159,6 +174,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V16: AI Integration Architecture
+
 - **Filename**: `ai-integration-architecture-ide-models.png`
 - **Type**: Architecture Diagram
 - **Embedded In**: `01-ai-native-concepts.md`
@@ -167,6 +183,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V17: IDE Selection Decision Tree
+
 - **Filename**: `ide-selection-decision-tree.png`
 - **Type**: Decision Tree
 - **Embedded In**: `08-comparative-capstone.md`
@@ -182,6 +199,7 @@ This document provides a complete inventory of all visual assets generated for P
 **Total Visuals**: 5
 
 ### V18: Git Three-Stage Workflow
+
 - **Filename**: `git-three-stage-workflow.png`
 - **Type**: Workflow Diagram
 - **Embedded In**: `01-your-first-git-repository.md`
@@ -190,6 +208,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V19: Git Branching Strategy
+
 - **Filename**: `git-branching-strategy-feature-main.png`
 - **Type**: Branch Diagram
 - **Embedded In**: `03-testing-ai-safely-with-branches.md`
@@ -198,6 +217,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V20: Pull Request Lifecycle
+
 - **Filename**: `pull-request-lifecycle.png`
 - **Type**: Lifecycle Flowchart
 - **Embedded In**: `05-code-review-pull-requests.md`
@@ -206,6 +226,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V21: Merge Conflict Resolution Anatomy
+
 - **Filename**: `merge-conflict-resolution-anatomy.png`
 - **Type**: Annotated Code
 - **Embedded In**: `03-testing-ai-safely-with-branches.md`
@@ -214,6 +235,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V22: AI-Assisted Git Workflow
+
 - **Filename**: `ai-assisted-git-workflow.png`
 - **Type**: Workflow Diagram
 - **Embedded In**: `README.md`
@@ -229,6 +251,7 @@ This document provides a complete inventory of all visual assets generated for P
 **Total Visuals**: 4
 
 ### V23: Markdown Syntax Anatomy
+
 - **Filename**: `markdown-syntax-anatomy-four-elements.png`
 - **Type**: Side-by-Side Comparison
 - **Embedded In**: `01-introduction.md`
@@ -237,6 +260,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V24: Plain Text vs Rendered Markdown
+
 - **Filename**: `plain-text-vs-rendered-markdown.png`
 - **Type**: Split Comparison
 - **Embedded In**: `01-introduction.md`
@@ -245,6 +269,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V25: Code Block Examples
+
 - **Filename**: `code-block-syntax-highlighting.png`
 - **Type**: Syntax Examples
 - **Embedded In**: `04-code-blocks.md`
@@ -253,6 +278,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V26: Markdown as Intent Layer
+
 - **Filename**: `markdown-intent-layer.png`
 - **Type**: Two-Layer Diagram
 - **Embedded In**: `01-introduction.md`
@@ -268,6 +294,7 @@ This document provides a complete inventory of all visual assets generated for P
 **Total Visuals**: 3
 
 ### V27: Vague vs Clear Specification Comparison
+
 - **Filename**: `vague-vs-clear-specification-comparison.png`
 - **Type**: Side-by-Side Comparison
 - **Embedded In**: `01-prompts-as-specifications.md`
@@ -276,6 +303,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V28: Prompt Pattern Templates
+
 - **Filename**: `prompt-pattern-template-four-components.png`
 - **Type**: Template Structure
 - **Embedded In**: `06-reusable-prompt-templates.md`
@@ -284,6 +312,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V29: Iteration Loop
+
 - **Filename**: `prompt-iteration-refinement-loop.png`
 - **Type**: Circular Workflow
 - **Embedded In**: `03-iterative-prompt-refinement.md`
@@ -299,6 +328,7 @@ This document provides a complete inventory of all visual assets generated for P
 **Total Visuals**: 3
 
 ### V30: Context Hierarchy
+
 - **Filename**: `context-hierarchy-pyramid-three-tiers.png`
 - **Type**: Pyramid Hierarchy
 - **Embedded In**: `01-understanding-context-engineering.md`
@@ -307,6 +337,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V31: File Importance Matrix
+
 - **Filename**: `file-importance-matrix-impact-frequency.png`
 - **Type**: 2×2 Matrix
 - **Embedded In**: `02-context-selection-strategies.md`
@@ -315,6 +346,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V32: Decision Preservation
+
 - **Filename**: `decision-preservation-timeline-why-documentation.png`
 - **Type**: Timeline Comparison
 - **Embedded In**: `03-documentation-as-context.md`
@@ -330,6 +362,7 @@ This document provides a complete inventory of all visual assets generated for P
 **Total Visuals**: 2
 
 ### V33: UV Workflow
+
 - **Filename**: `uv-workflow-four-step-setup.png`
 - **Type**: 4-Step Workflow
 - **Embedded In**: `01-why-uv-understanding-modern-package-management.md`
@@ -338,6 +371,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V34: Virtual Environment Isolation Concept
+
 - **Filename**: `virtual-environment-isolation-concept.png`
 - **Type**: Three-Tier Diagram
 - **Embedded In**: `03-creating-first-uv-project-with-ai.md`
@@ -353,6 +387,7 @@ This document provides a complete inventory of all visual assets generated for P
 **Total Visuals**: 2
 
 ### V35: Python REPL Anatomy
+
 - **Filename**: `python-repl-anatomy-interactive-loop.png`
 - **Type**: Annotated Interface
 - **Embedded In**: `01-your-first-python-session.md`
@@ -361,6 +396,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V36: Variable Memory Model
+
 - **Filename**: `variable-memory-model-name-value-pointers.png`
 - **Type**: Memory Diagram
 - **Embedded In**: `02-variables-and-basic-operations.md`
@@ -376,6 +412,7 @@ This document provides a complete inventory of all visual assets generated for P
 **Total Visuals**: 2
 
 ### V37: Python Data Types Hierarchy
+
 - **Filename**: `python-data-types-hierarchy-three-tiers.png`
 - **Type**: Pyramid Hierarchy
 - **Embedded In**: `01-understanding-data-types.md`
@@ -384,6 +421,7 @@ This document provides a complete inventory of all visual assets generated for P
 - **Status**: ✅ Embedded
 
 ### V38: Type Casting Flow
+
 - **Filename**: `type-casting-flow-valid-invalid-conversions.png`
 - **Type**: Network Diagram
 - **Embedded In**: `03-working-with-numbers.md`
@@ -398,24 +436,31 @@ This document provides a complete inventory of all visual assets generated for P
 ### By Category
 
 **Workflow Diagrams**: 9 visuals
+
 - V1, V7, V14, V18, V20, V22, V29, V33
 
 **Comparison Matrices**: 5 visuals
+
 - V6, V9, V15, V24, V27
 
 **Architecture Diagrams**: 3 visuals
+
 - V2, V16, V30
 
 **Decision Trees/Flowcharts**: 4 visuals
+
 - V3, V8, V17, V20
 
 **Hierarchy Diagrams**: 6 visuals
+
 - V4, V5, V11, V30, V37
 
 **Annotated Interfaces**: 3 visuals
+
 - V10, V21, V35
 
 **Process/Technical Diagrams**: 8 visuals
+
 - V12, V13, V14, V19, V26, V31, V34, V36, V38
 
 ### By Proficiency Level
@@ -429,13 +474,17 @@ This document provides a complete inventory of all visual assets generated for P
 ## File Locations
 
 ### Visual Assets (PNG Files)
+
 All PNG files stored in: `book-source/static/img/`
+
 - Part 2: `part-2/chapter-05/` through `part-2/chapter-09/`
 - Part 3: `part-3/chapter-10/` through `part-3/chapter-12/`
 - Part 4: `part-4/chapter-13/` through `part-4/chapter-15/`
 
 ### Markdown Embeddings (Lesson Files)
-All embeddings in: `book-source/docs/`
+
+All embeddings in: `apps/learn-app/docs/`
+
 - Part 2: `02-AI-Tool-Landscape/`
 - Part 3: `03-Markdown-Prompt-Context-Engineering/`
 - Part 4: `04-Python-Fundamentals/`
@@ -445,6 +494,7 @@ All embeddings in: `book-source/docs/`
 ## Maintenance Notes
 
 ### To Add New Visual
+
 1. Generate PNG using Gemini 2.0 Flash Experimental
 2. Save to appropriate `/img/part-N/chapter-NN/` directory
 3. Create embedding entry in placement map
@@ -452,13 +502,17 @@ All embeddings in: `book-source/docs/`
 5. Update this inventory
 
 ### To Verify Embeddings
+
 Run verification script:
+
 ```bash
-grep -r "!\[.*\](/img/part-[234]/" book-source/docs/ | wc -l
+grep -r "!\[.*\](/img/part-[234]/" apps/learn-app/docs/ | wc -l
 ```
+
 Expected output: 38
 
 ### To Update Visual
+
 1. Regenerate PNG with same filename
 2. Verify markdown reference still valid
 3. Check alt text still accurate

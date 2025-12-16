@@ -9,16 +9,24 @@ feature: 016-part-4-chapter-13
 branch: claude/review-python-fundamentals-011CUwCiQk5cXpe5M5dTNAay
 user: panaversity
 command: Review Chapter 13 intro and fix complexity tier issues
-labels: ["chapter-review", "complexity-tier", "graduated-complexity", "part-4", "refactor", "constitution-alignment"]
+labels:
+  [
+    "chapter-review",
+    "complexity-tier",
+    "graduated-complexity",
+    "part-4",
+    "refactor",
+    "constitution-alignment",
+  ]
 links:
   spec: specs/016-part-4-chapter-13/spec.md
   ticket: null
   adr: null
   pr: https://github.com/panaversity/ai-native-software-development/pull/new/claude/review-python-fundamentals-011CUwCiQk5cXpe5M5dTNAay
 files:
-  - book-source/docs/04-Part-4-Python-Fundamentals/13-introduction-to-python/lesson-1-what-is-python.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/13-introduction-to-python/lesson-2-installing-python.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/13-introduction-to-python/readme.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/13-introduction-to-python/lesson-1-what-is-python.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/13-introduction-to-python/lesson-2-installing-python.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/13-introduction-to-python/readme.md
 tests:
   - Manual review of content against graduated complexity guidelines
   - Constitution Principle 5 compliance check (progressive complexity)
@@ -28,6 +36,7 @@ tests:
 ## Prompt
 
 User request:
+
 ```
 Review these 2 chapters
 
@@ -50,11 +59,13 @@ Please use your skills and fix intro to python carefully
 **Critical Issues Identified:**
 
 1. **TIER MISMATCH (Blocking):**
+
    - Part 4 = Intermediate tier (A2, 7 concepts/section, 3-4 options)
    - Lessons 1-2 marked as A1 (5 concepts/section, 2 options)
    - Violated graduated complexity guidelines
 
 2. **Advanced Concepts in Lesson 1 (High Priority):**
+
    - Type hints as "intent description" and SDD preview BEFORE teaching type hints (Lesson 3)
    - B1/B2 conceptual thinking in A1-marked lesson
    - Explicit Part 5 (Specification-Driven Development) forward reference
@@ -67,12 +78,14 @@ Please use your skills and fix intro to python carefully
 **Fixes Applied:**
 
 **Metadata Updates:**
+
 - Lesson 1: A1 → A2 proficiency level
 - Lesson 2: A1-A2 → A2 proficiency level
 - Chapter readme: Updated complexity tier to "Intermediate (A2)"
 - Cognitive load assessments updated to reference A2 limit (7 concepts)
 
 **Content Revisions (Lesson 1):**
+
 - ✅ Removed C++ comparison; simplified to single Python example
 - ✅ Removed advanced type hints as "intent description" philosophy
 - ✅ Removed explicit Part 5 (SDD) preview

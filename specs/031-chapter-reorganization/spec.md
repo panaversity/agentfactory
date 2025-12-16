@@ -12,6 +12,7 @@ This feature reorganizes the book's file structure to match the updated chapter-
 ### Current State Analysis
 
 **Physical Directory Structure (filesystem):**
+
 - Part 4 (04-SDD-RI-Fundamentals): Contains chapters 13, 14, 15
 - Part 5 (05-Python-Fundamentals): Contains chapters 16-33 (18 chapters)
 - Static slides: chapter-01 through chapter-33 PDFs exist (no chapter-15)
@@ -19,6 +20,7 @@ This feature reorganizes the book's file structure to match the updated chapter-
 - Image references: Lesson content contains paths like `/img/part-5/chapter-16/filename.png`
 
 **Target State (per chapter-index.md - already updated):**
+
 - Part 4: Only chapters 13-14 (Chapter 15 deleted)
 - Part 5: Chapters 15-32 (renumbered from 16-33, now 18 chapters numbered 15-32)
 - All slide PDFs renumbered accordingly
@@ -27,21 +29,21 @@ This feature reorganizes the book's file structure to match the updated chapter-
 
 ### Change Summary
 
-| Change Type | From | To | Count |
-|-------------|------|-----|-------|
-| Delete directory | 15-ai-product-business-intelligence-capstone | (deleted) | 1 |
-| Rename directory | 16-python-uv-package-manager | 15-python-uv-package-manager | 1 |
-| Rename directory | 17-introduction-to-python | 16-introduction-to-python | 1 |
-| ... | ... | ... | ... |
-| Rename directory | 33-cpython-gil | 32-cpython-gil | 1 |
-| Rename slides | chapter-16-slides.pdf | chapter-15-slides.pdf | 18 |
-| Rename image dirs | img/part-5/chapter-16 | img/part-5/chapter-15 | 15 dirs |
-| Update image refs | /img/part-5/chapter-16/ | /img/part-5/chapter-15/ | ~30 refs |
-| Update frontmatter | sidebar_position: 16 | sidebar_position: 15 | 18 chapters |
+| Change Type        | From                                         | To                           | Count       |
+| ------------------ | -------------------------------------------- | ---------------------------- | ----------- |
+| Delete directory   | 15-ai-product-business-intelligence-capstone | (deleted)                    | 1           |
+| Rename directory   | 16-python-uv-package-manager                 | 15-python-uv-package-manager | 1           |
+| Rename directory   | 17-introduction-to-python                    | 16-introduction-to-python    | 1           |
+| ...                | ...                                          | ...                          | ...         |
+| Rename directory   | 33-cpython-gil                               | 32-cpython-gil               | 1           |
+| Rename slides      | chapter-16-slides.pdf                        | chapter-15-slides.pdf        | 18          |
+| Rename image dirs  | img/part-5/chapter-16                        | img/part-5/chapter-15        | 15 dirs     |
+| Update image refs  | /img/part-5/chapter-16/                      | /img/part-5/chapter-15/      | ~30 refs    |
+| Update frontmatter | sidebar_position: 16                         | sidebar_position: 15         | 18 chapters |
 
 ---
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Book Reader Navigation (Priority: P1)
 
@@ -65,7 +67,7 @@ A developer working in the codebase can find chapters by their correct number. D
 
 **Why this priority**: Developer experience directly affects content maintenance and future contributions.
 
-**Independent Test**: Run `ls book-source/docs/05-Python-Fundamentals/` and verify directories are numbered 15-32 with no 16-33 directories remaining.
+**Independent Test**: Run `ls apps/learn-app/docs/05-Python-Fundamentals/` and verify directories are numbered 15-32 with no 16-33 directories remaining.
 
 **Acceptance Scenarios**:
 
@@ -118,7 +120,7 @@ All image directories in `book-source/static/img/part-5/` are renamed to match n
 
 ---
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -168,7 +170,7 @@ All image directories in `book-source/static/img/part-5/` are renamed to match n
 
 ---
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

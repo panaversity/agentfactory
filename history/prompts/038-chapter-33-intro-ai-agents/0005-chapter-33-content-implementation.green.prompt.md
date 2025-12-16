@@ -18,15 +18,15 @@ links:
   adr: null
   pr: null
 files:
-  - book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/README.md (rewritten)
-  - book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/01-what-is-an-ai-agent.md (rewritten)
-  - book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/02-core-agent-architecture.md (created)
-  - book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/03-agentic-problem-solving-process.md (created)
-  - book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/04-multi-agent-design-patterns.md (created)
-  - book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/05-agent-ops.md (created)
-  - book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/06-agent-interoperability-security.md (created)
-  - book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/07-agent-sdk-landscape.md (created)
-  - book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/08-your-first-agent-concept.md (created)
+  - apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/README.md (rewritten)
+  - apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/01-what-is-an-ai-agent.md (rewritten)
+  - apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/02-core-agent-architecture.md (created)
+  - apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/03-agentic-problem-solving-process.md (created)
+  - apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/04-multi-agent-design-patterns.md (created)
+  - apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/05-agent-ops.md (created)
+  - apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/06-agent-interoperability-security.md (created)
+  - apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/07-agent-sdk-landscape.md (created)
+  - apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/08-your-first-agent-concept.md (created)
 tests:
   - Paper alignment validation (pending Phase 5)
   - Anti-convergence validation (pending Phase 5)
@@ -45,17 +45,17 @@ Successfully implemented all 8 lessons for Chapter 33 using content-implementer 
 
 **Files Created/Rewritten**:
 
-| File | Words | Paper Frameworks Covered |
-|------|-------|-------------------------|
-| README.md | ~1,000 | All 7 frameworks overview, 8-lesson structure |
-| 01-what-is-an-ai-agent.md | ~3,000 | 5-Level Taxonomy (Level 0-4), Director vs Bricklayer |
-| 02-core-agent-architecture.md | ~3,500 | 3+1 Architecture (Model/Tools/Orchestration/Deployment) |
-| 03-agentic-problem-solving-process.md | ~2,800 | 5-Step Loop (Get Mission → Scan → Think → Act → Observe) |
-| 04-multi-agent-design-patterns.md | ~3,000 | 4 Patterns (Coordinator, Sequential, Iterative Refinement, HITL) |
-| 05-agent-ops.md | ~2,850 | LM-as-Judge, Golden Datasets, Traces, Feedback Loop |
-| 06-agent-interoperability-security.md | ~3,800 | A2A Protocol, Agent Cards, Agent Identity, Defense in Depth |
-| 07-agent-sdk-landscape.md | ~3,300 | 4 SDKs (OpenAI, Google ADK, Anthropic, LangChain), Transferability |
-| 08-your-first-agent-concept.md | ~3,200 | All frameworks synthesized into specification template |
+| File                                  | Words  | Paper Frameworks Covered                                           |
+| ------------------------------------- | ------ | ------------------------------------------------------------------ |
+| README.md                             | ~1,000 | All 7 frameworks overview, 8-lesson structure                      |
+| 01-what-is-an-ai-agent.md             | ~3,000 | 5-Level Taxonomy (Level 0-4), Director vs Bricklayer               |
+| 02-core-agent-architecture.md         | ~3,500 | 3+1 Architecture (Model/Tools/Orchestration/Deployment)            |
+| 03-agentic-problem-solving-process.md | ~2,800 | 5-Step Loop (Get Mission → Scan → Think → Act → Observe)           |
+| 04-multi-agent-design-patterns.md     | ~3,000 | 4 Patterns (Coordinator, Sequential, Iterative Refinement, HITL)   |
+| 05-agent-ops.md                       | ~2,850 | LM-as-Judge, Golden Datasets, Traces, Feedback Loop                |
+| 06-agent-interoperability-security.md | ~3,800 | A2A Protocol, Agent Cards, Agent Identity, Defense in Depth        |
+| 07-agent-sdk-landscape.md             | ~3,300 | 4 SDKs (OpenAI, Google ADK, Anthropic, LangChain), Transferability |
+| 08-your-first-agent-concept.md        | ~3,200 | All frameworks synthesized into specification template             |
 
 **Total Content**: ~26,450 words across 9 files
 
@@ -66,6 +66,7 @@ Successfully implemented all 8 lessons for Chapter 33 using content-implementer 
 2. **Pedagogical progression maintained**: L1 (Lessons 1-3) → L2 (Lessons 4-7) → L3 (Lesson 8)
 
 3. **Paper alignment verified**: All 7 key frameworks from whitepaper properly taught:
+
    - 5-Level Taxonomy (Level 0-4)
    - 3+1 Architecture with Body Part analogies
    - 5-Step Operational Loop

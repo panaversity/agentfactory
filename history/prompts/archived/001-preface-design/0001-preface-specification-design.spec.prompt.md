@@ -29,7 +29,7 @@ tests:
 
 **User Request**: Design and write a compelling Preface for the textbook "AI Native Software Development: Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way."
 
-The preface will serve as the first section of the book, located at book-source/docs/ before Chapter 01. It should:
+The preface will serve as the first section of the book, located at apps/learn-app/docs/ before Chapter 01. It should:
 
 1. Introduce readers to AI-native development philosophy
 2. Present the AI development spectrum (Assisted, Driven, Native)
@@ -38,6 +38,7 @@ The preface will serve as the first section of the book, located at book-source/
 5. Establish the book's unique value: making AI-native development accessible to everyone through specification-driven approaches, bilingual development (Python & TypeScript), and human-AI collaboration
 
 **Context**: The user provided extensive draft material covering:
+
 - Preface opening hook and vision statement
 - Three AI development approaches with examples
 - 5 organizational maturity levels with progression patterns

@@ -14,6 +14,7 @@
 The original PanaversityFS storage structure did not mirror the Docusaurus book source structure:
 
 **Original PanaversityFS Structure**:
+
 ```
 books/{book-id}/
 ├── lessons/
@@ -29,7 +30,8 @@ books/{book-id}/
     └── slides/
 ```
 
-**Actual Docusaurus Structure** (`book-source/docs/`):
+**Actual Docusaurus Structure** (`apps/learn-app/docs/`):
+
 ```
 01-Introducing-AI-Driven-Development/
 ├── README.md
@@ -41,6 +43,7 @@ books/{book-id}/
 ```
 
 **Problems**:
+
 1. Different naming conventions (`part-1` vs `01-Part-Name`)
 2. Lessons separated from chapters (different directories)
 3. Summaries at chapter level, not lesson level
@@ -61,6 +64,7 @@ books/{book-id}/
 ### 1. Adopt Docusaurus-Aligned Storage Structure
 
 **New Structure**:
+
 ```
 data/books/{book-id}/
 │
@@ -92,6 +96,7 @@ data/books/{book-id}/
 ### 2. Remove Summary Tools (12 → 9 tools)
 
 **Before (12 tools)**:
+
 - Content: `read_content`, `write_content`, `delete_content`
 - Summary: `read_summary`, `write_summary`, `delete_summary` ← **REMOVE**
 - Assets: `upload_asset`, `get_asset`, `list_assets`
@@ -100,6 +105,7 @@ data/books/{book-id}/
 - Bulk: `get_book_archive`
 
 **After (9 tools)**:
+
 - Content: `read_content`, `write_content`, `delete_content`
 - Assets: `upload_asset`, `get_asset`, `list_assets`
 - Search: `glob_search`, `grep_search`
@@ -107,6 +113,7 @@ data/books/{book-id}/
 - Bulk: `get_book_archive`
 
 **Rationale**: Summaries are just markdown files with `.summary.md` suffix. The existing content tools handle them:
+
 ```python
 # Write lesson
 write_content(path="content/01-part/01-chapter/01-lesson.md", ...)
@@ -151,18 +158,18 @@ write_content(path="content/01-part/01-chapter/01-lesson.summary.md", ...)
 
 ### Files to Update
 
-| File | Change |
-|------|--------|
-| `tools/content.py` | Update path construction: `content/{path}` |
-| `tools/assets.py` | Update path: `static/{type}/{path}` |
-| `tools/summaries.py` | **DELETE** entire file |
-| `tools/search.py` | Update base paths |
-| `tools/bulk.py` | Update archive paths |
-| `models.py` | Remove `ReadSummaryInput`, `WriteSummaryInput`, `DeleteSummaryInput` |
-| `server.py` | Remove summary tool imports |
-| All tests | Update paths and remove summary tests |
-| `docs/*.md` | Update documentation |
-| `spec.md` | Update FR-005, remove FR-014/15/16 |
+| File                 | Change                                                               |
+| -------------------- | -------------------------------------------------------------------- |
+| `tools/content.py`   | Update path construction: `content/{path}`                           |
+| `tools/assets.py`    | Update path: `static/{type}/{path}`                                  |
+| `tools/summaries.py` | **DELETE** entire file                                               |
+| `tools/search.py`    | Update base paths                                                    |
+| `tools/bulk.py`      | Update archive paths                                                 |
+| `models.py`          | Remove `ReadSummaryInput`, `WriteSummaryInput`, `DeleteSummaryInput` |
+| `server.py`          | Remove summary tool imports                                          |
+| All tests            | Update paths and remove summary tests                                |
+| `docs/*.md`          | Update documentation                                                 |
+| `spec.md`            | Update FR-005, remove FR-014/15/16                                   |
 
 ### Migration Path
 
@@ -177,6 +184,6 @@ write_content(path="content/01-part/01-chapter/01-lesson.summary.md", ...)
 
 ## References
 
-- **Docusaurus structure**: `book-source/docs/` and `book-source/static/`
+- **Docusaurus structure**: `apps/learn-app/docs/` and `book-source/static/`
 - **Previous spec**: `specs/030-panaversity-fs/spec.md` (FR-014, FR-015, FR-016)
 - **PHR**: `history/prompts/030-panaversity-fs/0004-docusaurus-aligned-structure.refactor.prompt.md`

@@ -18,6 +18,7 @@ Chapter 33 is the foundation chapter for Part 6 (AI Native Software Development)
 **Delivery**: **8 lesson markdown files** (~18,000 words) + 10-12 visual diagrams
 
 **Key Frameworks from Paper** (MUST teach):
+
 1. **5-Level Taxonomy**: Level 0 (Core Reasoning) → Level 4 (Self-Evolving System)
 2. **3+1 Architecture**: Model ("Brain") + Tools ("Hands") + Orchestration ("Nervous System") + Deployment ("Body")
 3. **5-Step Operational Loop**: Get Mission → Scan Scene → Think → Act → Observe
@@ -26,6 +27,7 @@ Chapter 33 is the foundation chapter for Part 6 (AI Native Software Development)
 6. **Agent Interoperability**: A2A protocol, Agent Cards, agent identity as principal
 
 **Pedagogical Approach**:
+
 - **Layer 1 Primary** (Lessons 1-3): Direct teaching of definitions, architecture, process
 - **Layer 2 Integration** (Lessons 4-7): AI collaboration through "Try With AI" prompts
 - **Layer 3 Synthesis** (Lesson 8): Students design conceptual agent specifications
@@ -47,6 +49,7 @@ Chapter 33 is the foundation chapter for Part 6 (AI Native Software Development)
 ## Constitution Check
 
 **GATE 1: Pedagogical Layer Alignment** ✅ PASSED
+
 - Layer 1 Primary (Lessons 1-2): Manual foundation before AI collaboration
 - Layer 2 Integration (Lessons 3-5): AI collaboration through "Try With AI" actions
 - Layer 3 Synthesis (Lesson 6): Specification design
@@ -54,6 +57,7 @@ Chapter 33 is the foundation chapter for Part 6 (AI Native Software Development)
 - Three Roles framework INVISIBLE (action-based, not exposition)
 
 **GATE 2: Constitutional Principles Compliance** ✅ PASSED
+
 - Specification Primacy: Chapter teaches mental models before frameworks (intent before implementation)
 - Progressive Complexity: B1 proficiency tier, cognitive load <10 concepts per lesson
 - Coherent Structure: Lessons build cumulatively (agency → components → patterns → frameworks → partnership → application)
@@ -61,6 +65,7 @@ Chapter 33 is the foundation chapter for Part 6 (AI Native Software Development)
 - Anti-Convergence: Varied teaching modalities, production-relevant examples, no generic patterns
 
 **GATE 3: Meta-Commentary Prohibition** ✅ PASSED
+
 - No role labels in student-facing content (Three Roles framework invisible)
 - "Try With AI" sections use action prompts only ("Ask your AI:", "Observe:", "Reflect:")
 - No exposition of pedagogical scaffolding ("What to notice: AI is teaching you..." forbidden)
@@ -85,7 +90,7 @@ specs/038-chapter-33-intro-ai-agents/
 ### Content Directory Structure (book-source)
 
 ```
-book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
+apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 ├── README.md                                    (Chapter overview, lesson index, learning path)
 ├── 01-what-is-an-ai-agent.md                   (Lesson 1: Definition, 5-Level Taxonomy, paradigm shift)
 ├── 02-core-agent-architecture.md               (Lesson 2: 3+1 Architecture — Model, Tools, Orchestration, Deployment)
@@ -119,11 +124,13 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 **Paper Source**: "From Predictive AI to Autonomous Agents", "Introduction to AI Agent", taxonomy section
 
 **Learning Objectives**:
+
 - LO1.1: Student can define an AI agent using the paper's definition: "LMs in a loop with tools to accomplish a goal"
 - LO1.2: Student can classify systems using the **5-Level Taxonomy** (Level 0-4)
 - LO1.3: Student can articulate the **"director vs bricklayer"** paradigm shift
 
 **Content Sections**:
+
 1. **Why Agents Matter Now** (Hook: 800M+ users, paradigm shift from passive to autonomous)
 2. **The Paper's Definition**: "The combination of models, tools, an orchestration layer, and runtime services which uses the LM in a loop to accomplish a goal"
 3. **5-Level Taxonomy** (MUST use paper's exact framework):
@@ -141,6 +148,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 **Diagrams**: five-level-taxonomy.svg, director-vs-bricklayer.svg
 
 **Success Criteria**:
+
 - Student can recite paper's agent definition
 - Student can classify 5+ systems on Level 0-4 taxonomy
 - Student can explain "director vs bricklayer" paradigm
@@ -152,11 +160,13 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 **Paper Source**: "Core Agent Architecture: Model, Tools, and Orchestration", deployment section
 
 **Learning Objectives**:
+
 - LO2.1: Student can name and describe the **3+1 Architecture** (Model, Tools, Orchestration, Deployment)
 - LO2.2: Student can use paper's analogies: Brain, Hands, Nervous System, Body
 - LO2.3: Student can explain role of each component with examples
 
 **Content Sections**:
+
 1. **The 3+1 Architecture Overview** (System diagram per paper)
 2. **Model — "The Brain"**:
    - Reasoning core, cognitive capabilities
@@ -183,6 +193,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 **Diagrams**: agent-architecture-3plus1.svg
 
 **Success Criteria**:
+
 - Student can draw 3+1 architecture from memory
 - Student can use Brain/Hands/Nervous System/Body analogies correctly
 - Student can identify components in real agent examples
@@ -194,11 +205,13 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 **Paper Source**: "The Agentic Problem-Solving Process" section with Customer Support Agent example
 
 **Learning Objectives**:
+
 - LO3.1: Student can recite and explain the **5-Step Operational Loop**
 - LO3.2: Student can trace through paper's Customer Support example
 - LO3.3: Student can apply loop to new scenarios
 
 **Content Sections**:
+
 1. **The Universal Agentic Process** (Hook: What does agent actually DO?)
 2. **5-Step Operational Loop** (MUST use paper's exact framework):
    1. **Get the Mission**: Goal or trigger initiates process
@@ -223,6 +236,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 **Diagrams**: five-step-loop.svg (circular diagram with examples)
 
 **Success Criteria**:
+
 - Student can recite 5 steps in order
 - Student can trace Customer Support example step by step
 - Student can apply loop to new scenario
@@ -234,11 +248,13 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 **Paper Source**: "Multi-Agent Systems and Design Patterns" section
 
 **Learning Objectives**:
+
 - LO4.1: Student can name and describe 4 multi-agent patterns from paper
 - LO4.2: Student can match use cases to appropriate patterns
 - LO4.3: Student can explain when single vs multi-agent is appropriate
 
 **Content Sections**:
+
 1. **Why Multi-Agent?** (Hook: "Building a single, all-powerful 'super-agent' becomes inefficient")
 2. **Pattern 1: Coordinator** (Paper's term):
    - "Manager" agent analyzing requests, routing to specialists
@@ -261,6 +277,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 **Diagrams**: coordinator-pattern.svg, sequential-pattern.svg, iterative-refinement-pattern.svg, human-in-loop-pattern.svg
 
 **Success Criteria**:
+
 - Student can describe 4 patterns
 - Student can match 4+ use cases to correct patterns
 - Student can explain single vs multi-agent trade-offs
@@ -272,12 +289,14 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 **Paper Source**: "Agent Ops: A Structured Approach to the Unpredictable" section
 
 **Learning Objectives**:
+
 - LO5.1: Student can explain why traditional testing doesn't work for agents
 - LO5.2: Student can describe LM-as-Judge evaluation approach
 - LO5.3: Student can explain debugging with OpenTelemetry traces
 - LO5.4: Student can describe the human feedback loop
 
 **Content Sections**:
+
 1. **Why Agent Ops?** (Hook: "Traditional software unit tests could simply assert output == expected; but that doesn't work when an agent's response is probabilistic")
 2. **Measure What Matters**:
    - KPIs: goal completion, user satisfaction, latency, cost
@@ -300,6 +319,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 **Diagrams**: agent-ops-workflow.svg (Metrics → Evaluation → Debug → Feedback cycle)
 
 **Success Criteria**:
+
 - Student can explain why pass/fail tests don't work for agents
 - Student can describe LM-as-Judge with golden datasets
 - Student can explain what OpenTelemetry traces show
@@ -311,12 +331,14 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 **Paper Source**: "Agent Interoperability" and "Securing a Single Agent" sections
 
 **Learning Objectives**:
+
 - LO6.1: Student can describe agent-human interaction patterns
 - LO6.2: Student can explain A2A protocol and Agent Cards
 - LO6.3: Student can articulate agent identity as new principal class
 - LO6.4: Student can explain trust trade-off and defense in depth
 
 **Content Sections**:
+
 1. **Agent Interoperability Overview** (The "face" of the agent)
 2. **Agents and Humans**:
    - Chatbots, computer use, live mode (bidirectional streaming)
@@ -343,6 +365,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 **Diagrams**: a2a-protocol.svg, agent-identity-principals.svg
 
 **Success Criteria**:
+
 - Student can explain A2A protocol and Agent Cards
 - Student can describe agents as new principal class
 - Student can articulate trust trade-off with examples
@@ -354,11 +377,13 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 **Paper Source**: Framework guidance throughout, specific references to ADK
 
 **Learning Objectives**:
+
 - LO7.1: Student can name 4+ agent frameworks/SDKs
 - LO7.2: Student can describe 2-3 distinguishing characteristics of each
 - LO7.3: Student can articulate factors to consider when choosing
 
 **Content Sections**:
+
 1. **Why Framework Choice Matters** (Hook)
 2. **Framework 1: OpenAI Agents SDK**:
    - Philosophy: Simplicity, built-in function calling
@@ -383,6 +408,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 **Diagrams**: sdk-comparison-matrix.png
 
 **Success Criteria**:
+
 - Student can name 4 frameworks
 - Student can state 2+ characteristics of each
 - Student can match scenarios to frameworks
@@ -392,12 +418,14 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 ### Lesson 8: Your First Agent Concept (L2→L3 Synthesis)
 
 **Learning Objectives**:
+
 - LO8.1: Student can design agent specification using paper's frameworks
 - LO8.2: Student can articulate agent's purpose using 5-Level Taxonomy
 - LO8.3: Student can specify architecture using 3+1 components
 - LO8.4: Student can identify appropriate pattern and security considerations
 
 **Content Sections**:
+
 1. **Specification-First Thinking** (Bridge to Chapter 34)
 2. **Agent Specification Template** (Using paper's frameworks):
    - Level (0-4): What's the agent's capability tier?
@@ -420,6 +448,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 **Diagrams**: None (specification is text-based)
 
 **Success Criteria**:
+
 - Student writes complete agent specification
 - Specification uses paper's frameworks correctly
 - Specification is realistic and implementable
@@ -432,6 +461,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 ### Primary Authoritative Source
 
 **Google/Kaggle Whitepaper: "Introduction to Agents" (November 2025)**
+
 - **Authors**: Alan Blount, Antonio Gulli, Shubham Saboo, Michael Zimmermann, Vladimir Vuskovic
 - **Contributors**: Enrique Chan, Mike Clark, Derek Egan, Anant Nawalgaria, Kanchana Patlolla, Julia Wiesinger
 - **Local copy**: `specs/038-chapter-33-intro-ai-agents/Introduction to Agents.pdf`
@@ -440,6 +470,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 - **Use in**: ALL LESSONS — This is the primary source. Chapter frameworks MUST align with paper.
 
 **Key Frameworks from Paper** (MUST teach exactly):
+
 1. **5-Level Taxonomy**: Level 0-4 classification
 2. **3+1 Architecture**: Model, Tools, Orchestration, Deployment with Body Part analogies
 3. **5-Step Loop**: Get Mission → Scan Scene → Think → Act → Observe
@@ -452,19 +483,23 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 ### Secondary Sources
 
 **1. Related Whitepapers** (cited by primary):
+
 - "Agents" by Wiesinger, Marlow, et al. (2024) — https://www.kaggle.com/whitepaper-agents
 - "Agents Companion" by Gulli, Nigam, et al. (2025) — https://www.kaggle.com/whitepaper-agent-companion
 
 **2. Academic Papers** (cited by primary):
+
 - ReAct: Yao et al. (2022) — https://arxiv.org/abs/2210.03629
 - Chain-of-Thought: Wei et al. (2023) — https://arxiv.org/pdf/2201.11903.pdf
 
 **3. McKinsey Research**: "Agents, robots, and us: Skill partnerships in the age of AI"
+
 - URL: https://www.mckinsey.com/mgi/our-research/agents-robots-and-us-skill-partnerships-in-the-age-of-ai
 - Use in: Career statistics (44% work hours, $2.9T, etc.)
 - Citation: "McKinsey Global Institute, 'Agents, robots, and us', 2024"
 
 **4. Framework Documentation** (for Lesson 7 comparison):
+
 - OpenAI Agents SDK
 - Google ADK (emphasized in paper)
 - Anthropic Agents Kit
@@ -472,37 +507,38 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 
 ### Statistics Validation
 
-| Statistic | Source | Citation |
-|-----------|--------|----------|
-| 800M+ ChatGPT users weekly | OpenAI announcements | "OpenAI Reports, 2024" |
-| 90%+ developers using AI tools | Developer surveys (Stack Overflow, JetBrains) | "Stack Overflow Developer Survey, 2024" |
-| 44% of US work hours | McKinsey research | "McKinsey Global Institute, 'Agents, robots, and us'" |
-| $2.9T economic value potential | McKinsey research | "McKinsey Global Institute, 'Agents, robots, and us'" |
+| Statistic                      | Source                                              | Citation                                              |
+| ------------------------------ | --------------------------------------------------- | ----------------------------------------------------- |
+| 800M+ ChatGPT users weekly     | OpenAI announcements                                | "OpenAI Reports, 2024"                                |
+| 90%+ developers using AI tools | Developer surveys (Stack Overflow, JetBrains)       | "Stack Overflow Developer Survey, 2024"               |
+| 44% of US work hours           | McKinsey research                                   | "McKinsey Global Institute, 'Agents, robots, and us'" |
+| $2.9T economic value potential | McKinsey research                                   | "McKinsey Global Institute, 'Agents, robots, and us'" |
 | 7x growth in AI fluency demand | Skill market analysis (LinkedIn Learning, O'Reilly) | "LinkedIn Learning: AI Fluency Demand Analysis, 2024" |
 
 ---
 
 ## Visual Assets Required
 
-| Lesson | Diagram | Purpose | Paper Reference | Type |
-|--------|---------|---------|-----------------|------|
-| 1 | five-level-taxonomy.svg | Level 0-4 classification pyramid | "A Taxonomy of Agentic Systems" | SVG (Medium) |
-| 1 | director-vs-bricklayer.svg | Paradigm shift illustration | "At the end of the day, building a generative AI agent..." | SVG (Low) |
-| 2 | agent-architecture-3plus1.svg | Model + Tools + Orchestration + Deployment with body analogies | "Core Agent Architecture" | SVG (High) |
-| 3 | five-step-loop.svg | Circular: Get Mission → Scan → Think → Act → Observe | "The Agentic Problem-Solving Process", Figure 1 | SVG (Medium) |
-| 4 | coordinator-pattern.svg | Manager routing to specialist agents | "Coordinator pattern" | SVG (Medium) |
-| 4 | sequential-pattern.svg | Assembly line flow between agents | "Sequential pattern" | SVG (Medium) |
-| 4 | iterative-refinement-pattern.svg | Generator-Critic feedback loop | "Iterative Refinement pattern", Figure 3 | SVG (Medium) |
-| 4 | human-in-loop-pattern.svg | Workflow pause for human approval | "Human-in-the-Loop pattern" | SVG (Medium) |
-| 5 | agent-ops-workflow.svg | Metrics → Eval → Debug → Feedback cycle | "Agent Ops" section | SVG (Medium) |
-| 6 | a2a-protocol.svg | Agent Cards, discovery, task communication | "Agent Interoperability" | SVG (Medium) |
-| 6 | agent-identity-principals.svg | Users vs Agents vs Services table | "Agent Identity: A New Class of Principal" | SVG (Low) |
-| 7 | sdk-comparison-matrix.png | OpenAI vs Google vs Anthropic vs LangChain | Framework guidance | PNG (Table) |
+| Lesson | Diagram                          | Purpose                                                        | Paper Reference                                            | Type         |
+| ------ | -------------------------------- | -------------------------------------------------------------- | ---------------------------------------------------------- | ------------ |
+| 1      | five-level-taxonomy.svg          | Level 0-4 classification pyramid                               | "A Taxonomy of Agentic Systems"                            | SVG (Medium) |
+| 1      | director-vs-bricklayer.svg       | Paradigm shift illustration                                    | "At the end of the day, building a generative AI agent..." | SVG (Low)    |
+| 2      | agent-architecture-3plus1.svg    | Model + Tools + Orchestration + Deployment with body analogies | "Core Agent Architecture"                                  | SVG (High)   |
+| 3      | five-step-loop.svg               | Circular: Get Mission → Scan → Think → Act → Observe           | "The Agentic Problem-Solving Process", Figure 1            | SVG (Medium) |
+| 4      | coordinator-pattern.svg          | Manager routing to specialist agents                           | "Coordinator pattern"                                      | SVG (Medium) |
+| 4      | sequential-pattern.svg           | Assembly line flow between agents                              | "Sequential pattern"                                       | SVG (Medium) |
+| 4      | iterative-refinement-pattern.svg | Generator-Critic feedback loop                                 | "Iterative Refinement pattern", Figure 3                   | SVG (Medium) |
+| 4      | human-in-loop-pattern.svg        | Workflow pause for human approval                              | "Human-in-the-Loop pattern"                                | SVG (Medium) |
+| 5      | agent-ops-workflow.svg           | Metrics → Eval → Debug → Feedback cycle                        | "Agent Ops" section                                        | SVG (Medium) |
+| 6      | a2a-protocol.svg                 | Agent Cards, discovery, task communication                     | "Agent Interoperability"                                   | SVG (Medium) |
+| 6      | agent-identity-principals.svg    | Users vs Agents vs Services table                              | "Agent Identity: A New Class of Principal"                 | SVG (Low)    |
+| 7      | sdk-comparison-matrix.png        | OpenAI vs Google vs Anthropic vs LangChain                     | Framework guidance                                         | PNG (Table)  |
 
 **Total Diagram Estimate**: 12 production-quality diagrams
 **Estimated Time**: 10-15 hours for professional-quality SVG diagrams
 
 **Paper Figures to Reference**:
+
 - Figure 1: Agentic AI problem-solving process (for five-step-loop.svg)
 - Figure 2: Agentic system in 5 steps (for five-level-taxonomy.svg)
 - Figure 3: Iterative refinement pattern (for iterative-refinement-pattern.svg)
@@ -513,6 +549,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 ## Quality Validation Checklist
 
 ### Paper Alignment Checks (CRITICAL)
+
 - [ ] **5-Level Taxonomy** taught using paper's exact Level 0-4 classification
 - [ ] **3+1 Architecture** taught with paper's Body Part analogies (Brain, Hands, Nervous System, Body)
 - [ ] **5-Step Loop** taught as Get Mission → Scan Scene → Think → Act → Observe
@@ -524,6 +561,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 - [ ] Customer Support example walkthrough matches paper's version
 
 ### Anti-Convergence Checks
+
 - [ ] No lecture-only explanations (varied modalities: narrative, diagrams, discovery)
 - [ ] No meta-commentary exposing Three Roles framework
   - Grep validation: `grep -i "What to notice\|AI.*teach\|AI as\|AI.*learn" [lesson].md`
@@ -532,6 +570,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 - [ ] Progressive lesson structure (each builds on prior, no repetition)
 
 ### Content Validation
+
 - [ ] All statistics cited with sources
 - [ ] All claims about agent capabilities grounded in paper or official documentation
 - [ ] Component terminology consistent with paper (Model, Tools, Orchestration, Deployment)
@@ -539,6 +578,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 - [ ] "Try With AI" sections use action prompts only (no framework exposition)
 
 ### Pedagogical Validation
+
 - [ ] Layer 1 (Lessons 1-3): No "Tell your AI..." prompts (premature) — direct teaching of paper frameworks
 - [ ] Layer 2 (Lessons 4-7): "Try With AI" demonstrates partnership through actions (no labels)
 - [ ] Layer 3 (Lesson 8): Specification template synthesizes ALL prior concepts from paper
@@ -546,6 +586,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 - [ ] Success criteria observable and testable
 
 ### CEFR Cognitive Load Validation (B1 tier: max 7-10 NEW concepts per lesson)
+
 - [ ] Lesson 1: 3 NEW concepts (Agent definition, 5-Level Taxonomy, Paradigm shift) ✅
 - [ ] Lesson 2: 4 NEW concepts (Model, Tools, Orchestration, Deployment) ✅
 - [ ] Lesson 3: 2 NEW concepts (5-Step Loop, Context Engineering) ✅
@@ -556,6 +597,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 - [ ] Lesson 8: 0 NEW concepts (synthesis only) ✅
 
 ### Citation Validation
+
 - [ ] 800M+ ChatGPT users: Source cited ✅
 - [ ] 90% developers: Source cited ✅
 - [ ] 44% US work hours: McKinsey cited ✅
@@ -564,12 +606,14 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 - [ ] All framework descriptions cite official docs ✅
 
 ### Visual Asset Validation
+
 - [ ] All SVG diagrams production-quality
 - [ ] Diagrams include clear labels and legend
 - [ ] Diagrams render correctly in Docusaurus (tested locally)
 - [ ] Diagrams support lesson objectives (teaching, not decoration)
 
 ### Try With AI Validation
+
 - [ ] Action-based prompts ("Ask your AI:", "Observe:", "Reflect:")
 - [ ] No role labels ("AI as Teacher" never appears to students)
 - [ ] Encourages discovery, not exposition
@@ -581,6 +625,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 ## Implementation Timeline
 
 ### Phase 1: Research & Preparation (4-5 hours)
+
 - [ ] ✅ Read Google "Introduction to Agents" whitepaper (DONE — provided in full)
 - [ ] Review McKinsey research for career statistics (1 hour)
 - [ ] Review SDK documentation for Lesson 7 (2 hours)
@@ -589,6 +634,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 - **Deliverable**: Annotated research notes with paper quotes, source citations
 
 ### Phase 2: Content Creation (16-18 hours)
+
 - [ ] Lesson 1: What Is an AI Agent? (2 hours)
 - [ ] Lesson 2: Core Agent Architecture (2.5 hours)
 - [ ] Lesson 3: The Agentic Problem-Solving Process (2 hours)
@@ -600,13 +646,15 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 - **Deliverable**: 8 markdown lesson files (~18,000 words total)
 
 ### Phase 3: Visual Assets (10-15 hours)
+
 - [ ] Create 12 production-quality SVG/PNG diagrams (see Visual Assets table)
 - [ ] Ensure diagrams match paper's figures where applicable
 - [ ] Validate rendering in Docusaurus locally
 - [ ] Optimize for web (SVG compression)
-- **Deliverable**: All diagram files in _assets/ directory
+- **Deliverable**: All diagram files in \_assets/ directory
 
 ### Phase 4: Quality Assurance (3-4 hours)
+
 - [ ] **Paper alignment validation** (critical — all frameworks match paper)
 - [ ] Anti-convergence validation (meta-commentary grep checks)
 - [ ] Citation verification (all stats sourced)
@@ -616,6 +664,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 - **Deliverable**: Validation report, corrections
 
 ### Phase 5: Integration & Testing (1-2 hours)
+
 - [ ] Create chapter README with 8-lesson index
 - [ ] Build Docusaurus site locally and validate rendering
 - [ ] Cross-link with Chapter 34 and prior chapters
@@ -631,6 +680,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 ### Content Completion Gates
 
 **Gate 1: Research Complete** ✅
+
 - [x] Google "Introduction to Agents" paper consulted (primary source)
 - [ ] McKinsey research consulted for statistics
 - [ ] SDK documentation reviewed for Lesson 7
@@ -638,12 +688,14 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 - [ ] Key quotes extracted from paper for frameworks
 
 **Gate 2: All 8 Lessons Written** ✅
+
 - [ ] Each lesson has clear learning objectives matching paper frameworks
 - [ ] Paper's exact terminology used (5-Level Taxonomy, 3+1 Architecture, etc.)
 - [ ] Lessons progress pedagogically (L1→L1→L1→L2→L2→L2→L2→L3)
 - [ ] No cognitive overload (concept counts within B1 limits)
 
 **Gate 3: Paper Alignment Validated** ✅ (CRITICAL NEW GATE)
+
 - [ ] 5-Level Taxonomy matches paper exactly (Level 0-4)
 - [ ] 3+1 Architecture uses paper's Body Part analogies
 - [ ] 5-Step Loop matches paper's terminology exactly
@@ -653,12 +705,14 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 - [ ] Agent Identity as principal concept explained
 
 **Gate 4: All Visual Assets Created** ✅
+
 - [ ] 12 production-quality diagrams
 - [ ] Diagrams match paper's figures where applicable
 - [ ] All diagrams labeled and support learning
 - [ ] Diagrams render correctly in Docusaurus
 
 **Gate 5: Quality Validation Passed** ✅
+
 - [ ] Paper alignment validation (CRITICAL)
 - [ ] Anti-convergence checks (no framework exposure)
 - [ ] Citation validation (all numbers sourced)
@@ -667,6 +721,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 - [ ] Consistency check (terminology matches paper)
 
 **Gate 6: Integration Complete** ✅
+
 - [ ] All 8 lesson files created in correct directory
 - [ ] Chapter README with lesson index created
 - [ ] Cross-links to Chapter 34 established
@@ -703,12 +758,14 @@ The Google/Kaggle "Introduction to Agents" whitepaper (November 2025) is the **a
 2. **Pedagogical Layer**: L1 (Lessons 1-3) → L2 (Lessons 4-7) → L3 (Lesson 8)
 3. **Target Proficiency**: B1 (Intermediate) — independent developers
 4. **Constitutional Constraints**:
+
    - Three Roles framework INVISIBLE (no meta-commentary)
    - Layer 1 primary (no "Tell your AI..." in Lessons 1-3)
    - All statistics MUST be cited
    - NO code implementations (deferred to Chapter 34)
 
 5. **Paper Frameworks (MUST TEACH EXACTLY)**:
+
    - **5-Level Taxonomy**: Level 0 (Core Reasoning) → Level 4 (Self-Evolving)
    - **3+1 Architecture**: Model ("Brain") + Tools ("Hands") + Orchestration ("Nervous System") + Deployment ("Body")
    - **5-Step Loop**: Get Mission → Scan Scene → Think Through → Take Action → Observe and Iterate
@@ -719,10 +776,12 @@ The Google/Kaggle "Introduction to Agents" whitepaper (November 2025) is the **a
    - **Paradigm Shift**: "Director vs Bricklayer"
 
 6. **Research Foundation**:
+
    - **PRIMARY**: Google "Introduction to Agents" whitepaper (provided in full)
    - **SECONDARY**: McKinsey research (statistics), SDK documentation (Lesson 7)
 
 7. **Success Definition**:
+
    - Students understand paper's frameworks completely
    - All frameworks taught using paper's exact terminology
    - All statistics verified and cited
@@ -741,6 +800,7 @@ The Google/Kaggle "Introduction to Agents" whitepaper (November 2025) is the **a
 ## Plan Validation
 
 **Before execution, confirm**:
+
 - [x] All 8 lessons have detailed content outlines
 - [x] Learning objectives match paper frameworks
 - [x] Paper's exact terminology used throughout
@@ -763,6 +823,7 @@ The Google/Kaggle "Introduction to Agents" whitepaper (November 2025) is the **a
 This plan provides comprehensive guidance for implementing Chapter 33: Introduction to AI Agents, **fully aligned with the Google/Kaggle "Introduction to Agents" whitepaper (November 2025)**.
 
 The chapter establishes foundational mental models using the paper's authoritative frameworks:
+
 - **5-Level Taxonomy** (Level 0-4)
 - **3+1 Architecture** (Model, Tools, Orchestration, Deployment)
 - **5-Step Operational Loop**

@@ -9,19 +9,27 @@ feature: 001-part-4-chapter-17
 branch: 001-part-4-chapter-17
 user: system
 command: /sp.implement
-labels: ["python-fundamentals", "control-flow", "loops", "implementation", "green", "part-4"]
+labels:
+  [
+    "python-fundamentals",
+    "control-flow",
+    "loops",
+    "implementation",
+    "green",
+    "part-4",
+  ]
 links:
   spec: specs/001-part-4-chapter-17/spec.md
   ticket: null
   adr: null
   pr: null
 files:
-  - book-source/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/README.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/01-making-decisions-with-conditionals.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/02-pattern-matching-with-match-case.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/03-repetition-with-loops.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/04-controlling-loops.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/05-nested-control-structures.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/README.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/01-making-decisions-with-conditionals.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/02-pattern-matching-with-match-case.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/03-repetition-with-loops.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/04-controlling-loops.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/05-nested-control-structures.md
 tests:
   - None (educational content - validation via validation-auditor)
 ---
@@ -31,12 +39,14 @@ tests:
 User invoked `/sp.implement` with "Option B" (full chapter implementation) after approving tasks.md.
 
 **Context**:
+
 - Feature: 001-part-4-chapter-17 (Chapter 17: Control Flow and Loops)
 - Branch: 001-part-4-chapter-17
 - Input documents: spec.md (351 lines), plan.md (408 lines), tasks.md (387 lines with 98 tasks)
 - User approval: "Option B" (implement all 5 lessons, not just MVP)
 
 **Workflow executed**:
+
 1. Ran check-prerequisites.sh to verify tasks.md exists
 2. Checked for checklists (none found - proceeded automatically)
 3. Verified project setup (git repository detected)
@@ -50,6 +60,7 @@ User invoked `/sp.implement` with "Option B" (full chapter implementation) after
 
 **Implementation Status**:
 All 5 lessons were found already implemented with high quality:
+
 - Lesson 1: Making Decisions with Conditionals (712 lines, A2)
 - Lesson 2: Pattern Matching with match-case (624 lines, A2-B1)
 - Lesson 3: Repetition with Loops (532 lines, A2-B1)
@@ -76,14 +87,16 @@ Total: 3,297 lines of educational content + 102-line README = 3,399 lines total
 ✅ Conversational Tone: Grade 7-9 reading level target maintained
 
 **Files Created**:
-- book-source/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/README.md
-- book-source/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/01-making-decisions-with-conditionals.md
-- book-source/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/02-pattern-matching-with-match-case.md
-- book-source/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/03-repetition-with-loops.md
-- book-source/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/04-controlling-loops.md
-- book-source/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/05-nested-control-structures.md
+
+- apps/learn-app/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/README.md
+- apps/learn-app/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/01-making-decisions-with-conditionals.md
+- apps/learn-app/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/02-pattern-matching-with-match-case.md
+- apps/learn-app/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/03-repetition-with-loops.md
+- apps/learn-app/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/04-controlling-loops.md
+- apps/learn-app/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/05-nested-control-structures.md
 
 **Tasks Completed**: 85/98 tasks (87%)
+
 - Phase 1 (Setup): 4/4 ✅
 - Phase 2 (Foundational): 5/5 ✅
 - Phase 3-7 (All 5 Lessons): 76/76 ✅
@@ -93,7 +106,7 @@ Total: 3,297 lines of educational content + 102-line README = 3,399 lines total
 
 - ✅ Impact: Complete Chapter 17 implementation with all 5 lessons (3,297 lines of content), CEFR proficiency mapping, constitution-compliant pedagogy, and production-ready quality
 - 🧪 Tests: No automated tests (educational content) - manual validation via validation-auditor recommended
-- 📁 Files: 6 files created in book-source/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/
+- 📁 Files: 6 files created in apps/learn-app/docs/04-Part-4-Python-Fundamentals/17-control-flow-loops/
 - 🔁 Next prompts: Run validation-auditor for validation, optionally complete Phase 8 polish tasks (T086-T098), then create commit and PR
 - 🧠 Reflection: Implementation exceeded MVP scope (delivered all 5 lessons instead of Lesson 1 only). All lessons follow specification exactly with skills metadata, graduated teaching pattern, and "Try With AI" closure. Ready for technical review and publication.
 

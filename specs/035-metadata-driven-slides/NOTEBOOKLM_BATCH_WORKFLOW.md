@@ -3,6 +3,7 @@
 ## Current Status
 
 ### ✅ Generating Now (Ready for Download):
+
 - **Part 3 (Chapters 10-12)**: All 3 chapters have sources uploaded and slides are generating
   - Chapter 10: Markdown - The Language of AI Communication (6 sources)
   - Chapter 11: Prompt Engineering for AI-Driven Development (9 sources)
@@ -32,6 +33,7 @@
 4. Integrate into READMEs (see Step 5 below)
 
 **NotebookLM URLs for Part 3:**
+
 - Chapter 10: Check your browser tab "Chapter 10: Markdown - The Language of AI Communication 📝"
 - Chapter 11: Check your browser tab "Chapter 11: Prompt Engineering for AI-Driven Development 💬"
 - Chapter 12: Check your browser tab "Chapter 12: Context Engineering for AI-Driven Development 🧠"
@@ -43,12 +45,14 @@
 Open NotebookLM (https://notebooklm.google.com) and create notebooks in batches:
 
 **Batch 1 - Part 1 (Chapters 1-4):**
+
 1. Chapter 1: AI Development Revolution
 2. Chapter 2: The AI Turning Point
 3. Chapter 3: Billion-Dollar AI Strategies
 4. Chapter 4: The Nine Pillars of AIDD
 
 **Batch 2 - Part 2 (Chapters 5-9):**
+
 1. Chapter 5: Claude Code Features
 2. Chapter 6: Gemini CLI Installation
 3. Chapter 7: Bash Essentials
@@ -70,29 +74,34 @@ For each chapter, upload ALL lesson markdown files + README.md:
 ### File Locations by Chapter:
 
 **Part 1:**
-- Ch 1: `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/*.md`
-- Ch 2: `book-source/docs/01-Introducing-AI-Driven-Development/02-ai-turning-point/*.md`
-- Ch 3: `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/*.md`
-- Ch 4: `book-source/docs/01-Introducing-AI-Driven-Development/04-nine-pillars/*.md`
+
+- Ch 1: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/*.md`
+- Ch 2: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/02-ai-turning-point/*.md`
+- Ch 3: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/*.md`
+- Ch 4: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/04-nine-pillars/*.md`
 
 **Part 2:**
-- Ch 5: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/*.md`
-- Ch 6: `book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/*.md`
-- Ch 7: `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/*.md`
-- Ch 8: `book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/*.md`
-- Ch 9: `book-source/docs/02-AI-Tool-Landscape/09-git-and-github/*.md`
+
+- Ch 5: `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/*.md`
+- Ch 6: `apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/*.md`
+- Ch 7: `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/*.md`
+- Ch 8: `apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/*.md`
+- Ch 9: `apps/learn-app/docs/02-AI-Tool-Landscape/09-git-and-github/*.md`
 
 **Part 3 (✅ Already Uploaded):**
-- Ch 10: `book-source/docs/03-Markdown-Prompt-Context-Engineering/10-markdown-language-of-ai/*.md`
-- Ch 11: `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-prompt-engineering-for-aidd/*.md`
-- Ch 12: `book-source/docs/03-Markdown-Prompt-Context-Engineering/12-context-engineering-for-ai-driven-development/*.md`
+
+- Ch 10: `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/10-markdown-language-of-ai/*.md`
+- Ch 11: `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-prompt-engineering-for-aidd/*.md`
+- Ch 12: `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/12-context-engineering-for-ai-driven-development/*.md`
 
 **Part 4:**
-- Ch 13: `book-source/docs/04-Python-Fundamentals/13-python-uv-package-manager/*.md`
+
+- Ch 13: `apps/learn-app/docs/04-Python-Fundamentals/13-python-uv-package-manager/*.md`
 - Ch 14-30: (similar pattern)
 
 **Part 5:**
-- Ch 31: `book-source/docs/05-Spec-Driven-Development/31-specification-driven-development-fundamentals/*.md`
+
+- Ch 31: `apps/learn-app/docs/05-Spec-Driven-Development/31-specification-driven-development-fundamentals/*.md`
 - Ch 32-34: (similar pattern)
 
 ---
@@ -100,6 +109,7 @@ For each chapter, upload ALL lesson markdown files + README.md:
 ## Step 3: Generate Slides (Use Default Settings)
 
 For each notebook:
+
 1. Click **"Slide Deck"** in Studio panel
 2. **Skip custom prompts** - use default generation (NotebookLM will auto-generate based on sources)
 3. Click **"Generate"**
@@ -115,6 +125,7 @@ Once slides are generated:
 
 1. **Download PDF** from each notebook
 2. **Rename** following this pattern:
+
    - `chapter-01-slides.pdf`
    - `chapter-02-slides.pdf`
    - etc.
@@ -146,18 +157,21 @@ import PDFViewer from '@site/src/components/PDFViewer';
 ## Quick Reference Commands
 
 ### Find all lesson files for a chapter:
+
 ```bash
 # Example for Chapter 1
-find book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution -name "*.md" -type f ! -name "*quiz*" | sort
+find apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution -name "*.md" -type f ! -name "*quiz*" | sort
 ```
 
 ### Count lessons per chapter:
+
 ```bash
 # Example for Chapter 1
-find book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution -name "*.md" -type f ! -name "*quiz*" | wc -l
+find apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution -name "*.md" -type f ! -name "*quiz*" | wc -l
 ```
 
 ### Verify slides directory:
+
 ```bash
 ls -la book-source/static/slides/
 ```
@@ -187,7 +201,7 @@ You could automate file collection with a script like this:
 #!/bin/bash
 
 # Example: Collect all lesson files for Chapter 1
-CHAPTER_DIR="book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution"
+CHAPTER_DIR="apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution"
 OUTPUT_DIR="temp_chapter_sources"
 
 mkdir -p "$OUTPUT_DIR"
@@ -201,6 +215,7 @@ echo "Files ready for upload in: $OUTPUT_DIR"
 ## Success Criteria
 
 ✅ Each chapter should have:
+
 - Notebook created with descriptive title
 - All lesson files + README uploaded
 - Slide deck generated (12-20 slides typical)

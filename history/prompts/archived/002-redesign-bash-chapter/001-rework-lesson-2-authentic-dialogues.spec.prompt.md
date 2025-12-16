@@ -9,14 +9,21 @@ feature: 002-redesign-bash-chapter
 branch: main
 user: mjs
 command: rework lesson 2 safety-first-pattern with real Gemini examples
-labels: ["dialogue-authenticity", "bash-chapter", "spec-compliance", "real-examples", "gemini-testing"]
+labels:
+  [
+    "dialogue-authenticity",
+    "bash-chapter",
+    "spec-compliance",
+    "real-examples",
+    "gemini-testing",
+  ]
 links:
   spec: /specs/002-redesign-bash-chapter/spec.md
   ticket: null
   adr: null
   pr: null
 files:
-  - /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/02-safety-first-pattern.md
+  - /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/02-safety-first-pattern.md
 tests:
   - Real Gemini CLI dialogue: delete old test files (clarifying questions)
   - Real Gemini CLI dialogue: backup project before major changes
@@ -25,7 +32,7 @@ tests:
 
 ## Prompt
 
-Rework on this lesson @book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/02-safety-first-pattern.md. It have some examples I think AI in real won't do like this - for testing in shell you can run gemini and test with it. For reference the spec for this book was @specs/002-redesign-bash-chapter/
+Rework on this lesson @apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/02-safety-first-pattern.md. It have some examples I think AI in real won't do like this - for testing in shell you can run gemini and test with it. For reference the spec for this book was @specs/002-redesign-bash-chapter/
 
 ## Response snapshot
 
@@ -38,11 +45,13 @@ Identified critical issues with unrealistic examples:
 5. **Polarized good/bad questions** - Real questions are valid; it's about depth and safety focus
 
 Created and executed real Gemini CLI tests:
+
 - ✅ Test 1: "I want to delete old test files. Before you do anything, explain your approach step by step."
 - ✅ Test 2: "I want to back up my project before making major changes. What's the best way?"
 - ✅ Test 3: "I want to organize my Python files into a folder called my-scripts. Walk me through what you'd do, step by step."
 
 Updated lesson with three authentic sections:
+
 1. **Real Dialogue section (lines 109-165)**: Replaced hypothetical with real Gemini exchange showing agent asking clarifying questions, learner changing request, agent discovering limitations transparently
 2. **Exercise 1 (lines 219-272)**: Real Gemini interaction where Step 4 is missing and agent hits practical limitation
 3. **Try With AI section (lines 401-491)**: 3 real Gemini examples showing authentic AI behavior with actual outputs and interpretation guidance

@@ -12,30 +12,37 @@
 ### All 14 Visuals Successfully Embedded
 
 #### Chapter 16: Operators, Keywords, and Variables (2 visuals)
+
 - ✓ **V39**: Python Operator Categories → `README.md`
 - ✓ **V40**: Variable Naming Rules & Conventions → `05-keywords-capstone.md`
 
 #### Chapter 17: Strings and Type Casting (2 visuals)
+
 - ✓ **V41**: String Methods Reference Card → `02-essential-string-methods.md`
 - ✓ **V42**: String Formatting Evolution → `03-f-string-formatting.md`
 
 #### Chapter 18: Control Flow and Loops (2 visuals)
+
 - ✓ **V43**: Control Flow Decision Tree → `01-making-decisions-with-conditionals.md`
 - ✓ **V44**: Loop Types Comparison → `03-repetition-with-loops.md`
 
 #### Chapter 19: Lists, Tuples, Dictionary (2 visuals)
+
 - ✓ **V45**: Collection Types Comparison Matrix → `01-introduction-to-collections.md`
 - ✓ **V46**: Dictionary Structure → `07-dicts-key-value-basics.md`
 
 #### Chapter 20: Set, Frozenset, GC (2 visuals)
+
 - ✓ **V47**: Set Operations Venn Diagrams → `02-set-operations.md`
 - ✓ **V48**: Mutability Spectrum → `03-set-internals-hashing.md`
 
 #### Chapter 21: Module Functions (2 visuals)
+
 - ✓ **V49**: Function Signature Anatomy → `02-writing-functions-intent.md`
 - ✓ **V50**: Module Import Patterns → `01-understanding-modules-imports.md`
 
 #### Chapter 22: Exception Handling (2 visuals)
+
 - ✓ **V51**: Try-Except-Finally Flow → `02-except-else-finally.md`
 - ✓ **V52**: Exception Hierarchy → `01-exception-fundamentals.md`
 
@@ -44,12 +51,14 @@
 ## Quality Verification
 
 ### Image Files
+
 - ✓ All 14 PNG files present in `book-source/static/img/part-4/chapter-{16..22}/`
 - ✓ Correct naming conventions followed
 - ✓ File sizes appropriate (3-5MB each)
 - ✓ All generated with Gemini 2.0 Flash Experimental
 
 ### Markdown Embeddings
+
 - ✓ All 14 visual references embedded in lesson files
 - ✓ Alt text matches placement map specifications (50-100 words each)
 - ✓ Correct image paths: `/img/part-4/chapter-NN/filename.png`
@@ -57,9 +66,11 @@
 - ✓ Pedagogically appropriate placement (after relevant section headers)
 
 ### Verification Command
+
 ```bash
-grep -l "python-operator-categories\|python-variable-naming\|python-string-methods\|python-string-formatting\|control-flow-decision\|loop-types-comparison\|python-collection-types\|python-dictionary-structure\|python-set-operations\|python-mutability-spectrum\|python-function-signature\|python-module-import\|python-try-except\|python-exception-hierarchy" book-source/docs/04-Python-Fundamentals/*/*.md | wc -l
+grep -l "python-operator-categories\|python-variable-naming\|python-string-methods\|python-string-formatting\|control-flow-decision\|loop-types-comparison\|python-collection-types\|python-dictionary-structure\|python-set-operations\|python-mutability-spectrum\|python-function-signature\|python-module-import\|python-try-except\|python-exception-hierarchy" apps/learn-app/docs/04-Python-Fundamentals/*/*.md | wc -l
 ```
+
 **Expected**: 14 files
 **Actual**: 14 files ✓
 
@@ -68,6 +79,7 @@ grep -l "python-operator-categories\|python-variable-naming\|python-string-metho
 ## Session Workflow
 
 ### Session 1 (Context Overflow Recovery)
+
 1. Downloaded 12 generated images from Gemini browser tabs
 2. Generated 2 missing visuals (V40, V52) using Gemini
 3. Organized all 14 files into correct directories
@@ -76,6 +88,7 @@ grep -l "python-operator-categories\|python-variable-naming\|python-string-metho
 6. Documented remaining work
 
 ### Session 2 (Completion)
+
 1. Embedded remaining 7 visuals (V46-V52)
    - V46: Dictionary Structure
    - V47: Set Operations
@@ -92,6 +105,7 @@ grep -l "python-operator-categories\|python-variable-naming\|python-string-metho
 ## Overall Project Status
 
 ### Visual Assets Progress
+
 - **Phase 1** (Chapters 5-15): 38/67 visuals ✓ COMPLETE
 - **Phase 2** (Chapters 16-22): 14/67 visuals ✓ **COMPLETE**
 - **Phase 3** (Chapters 23-30): 15/67 visuals (planned)
@@ -99,7 +113,9 @@ grep -l "python-operator-categories\|python-variable-naming\|python-string-metho
 **Total Progress**: 52/67 visuals (77.6%)
 
 ### Next Steps
+
 To continue the visual assets project:
+
 1. Begin Phase 3 planning (Chapters 23-30)
 2. Create creative briefs for 15 remaining visuals
 3. Generate images using Gemini
@@ -124,32 +140,39 @@ To continue the visual assets project:
 ### Lesson Files with Embedded Visuals (14 files)
 
 **Chapter 16**:
-- `book-source/docs/04-Python-Fundamentals/16-operators-keywords-variables/README.md`
-- `book-source/docs/04-Python-Fundamentals/16-operators-keywords-variables/05-keywords-capstone.md`
+
+- `apps/learn-app/docs/04-Python-Fundamentals/16-operators-keywords-variables/README.md`
+- `apps/learn-app/docs/04-Python-Fundamentals/16-operators-keywords-variables/05-keywords-capstone.md`
 
 **Chapter 17**:
-- `book-source/docs/04-Python-Fundamentals/17-strings-type-casting/02-essential-string-methods.md`
-- `book-source/docs/04-Python-Fundamentals/17-strings-type-casting/03-f-string-formatting.md`
+
+- `apps/learn-app/docs/04-Python-Fundamentals/17-strings-type-casting/02-essential-string-methods.md`
+- `apps/learn-app/docs/04-Python-Fundamentals/17-strings-type-casting/03-f-string-formatting.md`
 
 **Chapter 18**:
-- `book-source/docs/04-Python-Fundamentals/18-control-flow-loops/01-making-decisions-with-conditionals.md`
-- `book-source/docs/04-Python-Fundamentals/18-control-flow-loops/03-repetition-with-loops.md`
+
+- `apps/learn-app/docs/04-Python-Fundamentals/18-control-flow-loops/01-making-decisions-with-conditionals.md`
+- `apps/learn-app/docs/04-Python-Fundamentals/18-control-flow-loops/03-repetition-with-loops.md`
 
 **Chapter 19**:
-- `book-source/docs/04-Python-Fundamentals/19-lists-tuples-dictionary/01-introduction-to-collections.md`
-- `book-source/docs/04-Python-Fundamentals/19-lists-tuples-dictionary/07-dicts-key-value-basics.md`
+
+- `apps/learn-app/docs/04-Python-Fundamentals/19-lists-tuples-dictionary/01-introduction-to-collections.md`
+- `apps/learn-app/docs/04-Python-Fundamentals/19-lists-tuples-dictionary/07-dicts-key-value-basics.md`
 
 **Chapter 20**:
-- `book-source/docs/04-Python-Fundamentals/20-set-frozenset-gc/02-set-operations.md`
-- `book-source/docs/04-Python-Fundamentals/20-set-frozenset-gc/03-set-internals-hashing.md`
+
+- `apps/learn-app/docs/04-Python-Fundamentals/20-set-frozenset-gc/02-set-operations.md`
+- `apps/learn-app/docs/04-Python-Fundamentals/20-set-frozenset-gc/03-set-internals-hashing.md`
 
 **Chapter 21**:
-- `book-source/docs/04-Python-Fundamentals/21-module-functions/01-understanding-modules-imports.md`
-- `book-source/docs/04-Python-Fundamentals/21-module-functions/02-writing-functions-intent.md`
+
+- `apps/learn-app/docs/04-Python-Fundamentals/21-module-functions/01-understanding-modules-imports.md`
+- `apps/learn-app/docs/04-Python-Fundamentals/21-module-functions/02-writing-functions-intent.md`
 
 **Chapter 22**:
-- `book-source/docs/04-Python-Fundamentals/22-exception-handling/01-exception-fundamentals.md`
-- `book-source/docs/04-Python-Fundamentals/22-exception-handling/02-except-else-finally.md`
+
+- `apps/learn-app/docs/04-Python-Fundamentals/22-exception-handling/01-exception-fundamentals.md`
+- `apps/learn-app/docs/04-Python-Fundamentals/22-exception-handling/02-except-else-finally.md`
 
 ---
 
@@ -166,6 +189,7 @@ To continue the visual assets project:
 ## Conclusion
 
 Phase 2 of the visual assets integration project is **complete**. All 14 visuals for Python Fundamentals Chapters 16-22 have been successfully:
+
 - Generated with high-quality creative briefs
 - Organized in the correct directory structure
 - Embedded in pedagogically appropriate locations

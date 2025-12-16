@@ -22,7 +22,7 @@ The vertical intelligence system (constitution → output styles → subagents �
 
 Phase 1 synchronizes all four layers to describe current reality; Phase 2 builds adaptive intelligence infrastructure ensuring the system measures and maintains its own quality over time.
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Author Creates New Chapter Using Aligned System (Priority: P1)
 
@@ -129,7 +129,7 @@ Phase 1 synchronizes all four layers to describe current reality; Phase 2 builds
 - How do we handle partial v3.0 migration (Parts 4, 6-13 missing)? (Answer: Constitution clearly separates "Current Reality" from "Future State" sections)
 - What about existing content quality issues discovered via GitHub issues? (Answer: Phase 2 validation will catch: missing content references via completeness checks, terminology errors via consistency scans, workflow confusion via clarity validation. Recent issues #46, #44, #33 validate that our proposed FR-017, FR-020, FR-022 address real reader pain points)
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -243,29 +243,33 @@ Phase 1 synchronizes all four layers to describe current reality; Phase 2 builds
   - Integration with `/sp.tasks` to auto-generate evaluation tasks during implementation planning
   - Evaluation results stored in `specs/[feature]/evaluation/` for traceability
 
-### Key Entities *(infrastructure components)*
+### Key Entities _(infrastructure components)_
 
 - **Constitution**: Source of truth document defining principles, architecture, and standards (`.specify/memory/constitution.md`)
+
   - Contains: Current Reality sections (what exists) + Future State sections (what's planned) + linking between them
   - Relationships: Referenced by all other components as ultimate authority
 
 - **Output Styles**: Format templates for content structure (`.claude/output-styles/`)
+
   - Contains: chapters.md (chapter/section structure), lesson.md (YAML frontmatter + content format)
   - Relationships: Used by subagents to generate correctly-formatted content
 
 - **Subagent Instructions**: Execution guidelines for workflow phases (`.claude/agents/`)
+
   - Contains: chapter-planner.md, content-implementer.md, validation-auditor.md
   - Relationships: Read constitution + output styles, generate content matching both
 
 - **PROJECT-STRUCTURE-REALITY**: Living documentation of actual implementation (`.claude/PROJECT-STRUCTURE-REALITY.md`)
+
   - Contains: Directory structure, terminology definitions, canonical examples, migration status
   - Relationships: Referenced by all components as implementation ground truth
 
-- **Actual Content**: Existing book chapters (book-source/docs/)
+- **Actual Content**: Existing book chapters (apps/learn-app/docs/)
   - Contains: 14 chapters across Parts 1/2/3/5 following actual structure
   - Relationships: Validated against templates, serves as canonical examples for templates
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Phase 1: Immediate Misalignment Fix (2 weeks)
 
@@ -362,11 +366,13 @@ The fix will be validated using a **hybrid AI-orchestrator model with data-drive
 After fixing each layer (constitution, output styles, subagents, PROJECT-STRUCTURE-REALITY.md):
 
 1. **AI Analysis**: AI orchestrator runs validation checks for that layer:
+
    - Terminology consistency scan (sections vs lessons, readme case, part counts)
    - Cross-references with actual content samples
    - Generates evidence report with specific file locations and quotes
 
 2. **Human Checkpoint**: Domain expert (author) reviews validation report:
+
    - Confirms terminology changes are correct
    - Approves evidence that layer now describes actual implementation
    - Provides go/no-go decision before proceeding to next layer
@@ -378,10 +384,12 @@ After fixing each layer (constitution, output styles, subagents, PROJECT-STRUCTU
 After all layers synchronized:
 
 1. **Generate Test Chapter**: Use corrected chapter-planner → content-implementer workflow to create test chapter
+
    - AI orchestrator invokes workflow with test chapter spec
    - Captures all outputs (plan.md, tasks.md, readme.md, section files)
 
 2. **Automated Analysis**: AI compares generated test chapter against PROJECT-STRUCTURE-REALITY.md specification:
+
    - File naming matches (descriptive names, lowercase readme.md)
    - YAML frontmatter structure matches actual examples
    - Terminology consistent (sections not lessons)
@@ -392,6 +400,7 @@ After all layers synchronized:
      - Git author (e.g., `<!-- Author: AI-Orchestrator via Claude Code -->`)
 
 3. **Human Review**: Author examines test chapter output:
+
    - Validates content quality and structure
    - Confirms no manual corrections needed
    - Approves or requests iteration
@@ -404,21 +413,22 @@ After all layers synchronized:
 
 ### Success Validation Matrix
 
-| Success Criterion | AI Validation Method | Human Confirmation | Data Metric |
-|-------------------|---------------------|-------------------|-------------|
-| SC-001: No contradictory instructions | Invoke workflow, capture logs, scan for conflict errors | Author reviews workflow execution | Error count = 0 |
-| SC-002: Content matches structure | Compare generated files vs spec, list discrepancies | Author spot-checks 3 sample files | Match rate = 100% |
-| SC-003: Zero misalignments | Run validation script, report inconsistencies by file:line | Author reviews top 5 findings | Misalignment count = 0 |
-| SC-004: Accurate information | Query AI about project state, compare answers to reality | Author validates 5 key facts | Accuracy rate = 100% |
-| SC-005: Consistent terminology | Scan all 4 layers for term usage, flag mixing | Author confirms term choices | Consistency score = 100% |
-| SC-006: Two-level structure documented | Check docs mention both levels with examples | Author validates examples match reality | Documentation completeness = 100% |
-| SC-007: Minimal migration effort | Analyze existing 14 chapters, estimate changes needed | Author reviews migration plan | Estimated time < 2 hours |
+| Success Criterion                      | AI Validation Method                                       | Human Confirmation                      | Data Metric                       |
+| -------------------------------------- | ---------------------------------------------------------- | --------------------------------------- | --------------------------------- |
+| SC-001: No contradictory instructions  | Invoke workflow, capture logs, scan for conflict errors    | Author reviews workflow execution       | Error count = 0                   |
+| SC-002: Content matches structure      | Compare generated files vs spec, list discrepancies        | Author spot-checks 3 sample files       | Match rate = 100%                 |
+| SC-003: Zero misalignments             | Run validation script, report inconsistencies by file:line | Author reviews top 5 findings           | Misalignment count = 0            |
+| SC-004: Accurate information           | Query AI about project state, compare answers to reality   | Author validates 5 key facts            | Accuracy rate = 100%              |
+| SC-005: Consistent terminology         | Scan all 4 layers for term usage, flag mixing              | Author confirms term choices            | Consistency score = 100%          |
+| SC-006: Two-level structure documented | Check docs mention both levels with examples               | Author validates examples match reality | Documentation completeness = 100% |
+| SC-007: Minimal migration effort       | Analyze existing 14 chapters, estimate changes needed      | Author reviews migration plan           | Estimated time < 2 hours          |
 
 ## Content Generation Metadata Requirements
 
 All generated content (chapters, sections, plans, tasks) MUST include metadata comments for traceability:
 
 **Required metadata format** (in markdown comments at file top):
+
 ```markdown
 <!--
 Generated by: {subagent-name} v{version}
@@ -430,6 +440,7 @@ Workflow: {command-used}
 ```
 
 **Example for content-implementer generated section**:
+
 ```markdown
 <!--
 Generated by: content-implementer v3.0
@@ -445,6 +456,7 @@ Workflow: /sp.plan → content-implementer
 ```
 
 **Purpose**:
+
 - **Traceability**: Know which spec produced which content
 - **Auditability**: Understand which AI tool generated content
 - **Debugging**: When content is wrong, trace back to source spec and tool version
@@ -463,6 +475,7 @@ This specification addresses the root cause identified in diagnostic analysis: e
 **Two-Phase Approach**:
 
 **Phase 1 (2 weeks)**: Emergency fix to unblock authors
+
 - Synchronize constitution, output styles, subagents, content layers
 - Establish PROJECT-STRUCTURE-REALITY.md as ground truth
 - Implement incremental validation with AI-human checkpoints
@@ -470,6 +483,7 @@ This specification addresses the root cause identified in diagnostic analysis: e
 - Add metadata tracking to all generated content
 
 **Phase 2 (4 weeks)**: Build adaptive intelligence infrastructure
+
 - Sub-agent evaluation framework (FR-019 to FR-022): Measure what "good" looks like
 - User feedback integration (FR-023 to FR-025): Learn from actual readers
 - Adaptive intelligence system (FR-026 to FR-028): Prevent future drift automatically
@@ -480,22 +494,26 @@ This specification addresses the root cause identified in diagnostic analysis: e
 The external analysis correctly identified we were **solving the wrong problem** by focusing purely on static synchronization. The enhanced spec now addresses:
 
 1. **"You can't measure effectiveness without knowing what good looks like"**:
+
    - Added FR-019/FR-020 defining measurable quality thresholds (>95% accuracy, >98% consistency, >90% completeness)
    - Added SC-008 requiring benchmark suite with 50 test prompts per agent
    - Added cost metrics (tokens, time, API costs) to evaluate efficiency
 
 2. **"No evaluation of sub-agent quality"**:
+
    - FR-022: Failure pattern analysis, retry strategies
    - Benchmark suite tests: normal cases, edge cases, incomplete specs, ambiguous requirements
    - Data-driven metrics replace "vibes-based" quality assessment
 
 3. **"No user feedback loop"**:
+
    - FR-023: "Try With AI" completion tracking
    - FR-024: Community input channels (GitHub, surveys, analytics)
    - FR-025: A/B testing framework for pedagogical variations
    - SC-009: Requires 50+ user responses/month to validate approach
 
 4. **"No dynamic adaptation mechanism"**:
+
    - FR-026: Weekly drift-detection agent (catches misalignments within 7 days)
    - FR-027: Auto-migration for version transitions (v3→v4)
    - FR-028: AI tool evolution monitoring (Claude, Gemini, Codex updates)
@@ -518,6 +536,7 @@ Benchmark suite creation → Sub-agent evaluation → User feedback instrumentat
 **Key Insight**: "If we don't know what good looks like, we can't measure effectiveness at all." Phase 2 defines "good" with quantitative metrics, then builds systems to measure and maintain that quality over time.
 
 **Key additions from clarification session**:
+
 - Iterative AI-orchestrator collaboration model for all phases
 - Incremental validation after each layer fix (AI presents evidence, human confirms)
 - Test-driven end-to-end validation with generated test chapter

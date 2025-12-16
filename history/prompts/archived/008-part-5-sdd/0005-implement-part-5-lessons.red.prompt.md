@@ -9,7 +9,8 @@ feature: 008-part-5-sdd
 branch: 008-part-5-sdd
 user: mjs
 command: /sp.implement
-labels: [part5, implementation, lesson-writing, all-chapters, production-complete]
+labels:
+  [part5, implementation, lesson-writing, all-chapters, production-complete]
 links:
   spec: specs/008-part-5-sdd/spec.md
   plan: specs/008-part-5-sdd/plan.md
@@ -18,10 +19,10 @@ links:
   adr: null
   pr: null
 files:
-  - book-source/docs/05-Spec-Kit-Plus-Methodology/README.md (written, 1,100 words)
-  - book-source/docs/05-Spec-Kit-Plus-Methodology/25-sdd-fundamentals/ (5 lessons, 16,153 words)
-  - book-source/docs/05-Spec-Kit-Plus-Methodology/26-specifyplus-hands-on/ (9 files, 147 KB)
-  - book-source/docs/05-Spec-Kit-Plus-Methodology/27-real-world-workflows/ (7 files, 136 KB)
+  - apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/README.md (written, 1,100 words)
+  - apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/25-sdd-fundamentals/ (5 lessons, 16,153 words)
+  - apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/26-specifyplus-hands-on/ (9 files, 147 KB)
+  - apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/27-real-world-workflows/ (7 files, 136 KB)
 tests:
   - All 18 lessons written to correct paths ✓
   - All files follow output style templates ✓
@@ -42,16 +43,18 @@ Now let's implement this part and use you can use context7 mcp tool to get lates
 
 ## Response Summary
 
-**Part 5 Implementation Complete**: All 18 lessons + 3 projects written and deployed to `book-source/docs/05-Spec-Kit-Plus-Methodology/`.
+**Part 5 Implementation Complete**: All 18 lessons + 3 projects written and deployed to `apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/`.
 
 ### Deliverables
 
 #### Phase 1: Part 5 Foundation (3 tasks, 1.5 hours)
+
 - ✅ **SETUP-001**: Created Part 5 directory structure with chapter subdirectories
 - ✅ **SETUP-002**: Wrote Part 5 README.md (1,100 words) — Pedagogical purpose, 3-chapter overview, learning path, prerequisites, forward connections
 - ✅ **SETUP-003**: Verified chapter subdirectories: 25-sdd-fundamentals, 26-specifyplus-hands-on, 27-real-world-workflows
 
 #### Phase 2: Chapter 25 — SDD Fundamentals (6 tasks, 8-10 hours)
+
 - ✅ **CH25-L1-001**: Lesson 1 "What Is SDD?" (2,876 words) — Crisis case study, why SDD matters, history, AI connection
 - ✅ **CH25-L2-001**: Lesson 2 "Cost Analysis" (3,022 words) — ROI, rework rates (35-50% vs 15-20%), team lead perspective
 - ✅ **CH25-L3-001**: Lesson 3 "Spec vs Code Discovery" (2,995 words) — Experiential Spec-First Discovery with ChatGPT web prompts
@@ -62,6 +65,7 @@ Now let's implement this part and use you can use context7 mcp tool to get lates
 **Total Chapter 25**: 16,153 words across 5 lessons
 
 #### Phase 3: Chapter 26 — SpecifyPlus Hands-On (14 tasks, 12-15 hours)
+
 - ✅ **CH26-L1-001**: Lesson 1 "Spec Structure" (2,000 words) — 6 core components with 3 complexity examples
 - ✅ **CH26-L2-001**: Lesson 2 "SpecifyPlus Setup" (2,000 words) — Installation, directories, templates, verification
 - ✅ **CH26-L3-001**: Lesson 3 "Acceptance Criteria" (2,000 words) — SMART framework with 4 patterns and 5 examples
@@ -76,6 +80,7 @@ Now let's implement this part and use you can use context7 mcp tool to get lates
 **Total Chapter 26**: 147 KB across 9 files (7 lessons + 2 mini-projects)
 
 #### Phase 4: Chapter 27 — Real-World Workflows & Capstone (14 tasks, 12-15 hours)
+
 - ✅ **CH27-L1-001**: Lesson 1 "SDD at Scale" (2,830 words) — 1-person to 100-person scaling with Amazon, Stripe examples
 - ✅ **CH27-L2-001**: Lesson 2 "Feature Decomposition" (2,715 words) — Interface-based, ownership-based, risk-based patterns
 - ✅ **CH27-L3-001**: Lesson 3 "Team Workflows" (2,793 words) — Spec review gates, versioning, code review workflows, templates
@@ -92,24 +97,28 @@ Now let's implement this part and use you can use context7 mcp tool to get lates
 All 18 lessons + 3 projects meet:
 
 ✅ **Content Quality**:
+
 - Advanced complexity tier (10+ concepts per major section)
 - Spec-first pedagogy (specifications before code)
 - Real-world examples (Amazon, Stripe, AWS, YC companies)
 - Production-quality standards
 
 ✅ **Pedagogical Design**:
+
 - Bloom's taxonomy learning objectives (understand → analyze → apply → synthesize → evaluate)
 - Concept scaffolding (progressive from simple to complex)
 - "Try With AI" exercises in every lesson (29+ concrete prompts)
 - Reflection prompts and synthesis exercises
 
 ✅ **Technical Accuracy**:
+
 - SpecifyPlus commands with actual syntax (verified through specification)
 - Cost data with citations (35-50% vs 15-20% rework rates)
 - Real company examples (documented patterns from Amazon, Stripe, AWS)
 - Architecture patterns from production systems
 
 ✅ **Book Standards**:
+
 - Follows `.claude/output-styles/chapters.md` format
 - All 9 domain skills applied contextually
 - Constitution principles 12-13 (advanced complexity) enforced
@@ -136,6 +145,7 @@ All 18 lessons + 3 projects meet:
 **Chapter 27 (Real-World)**: Solo scaling → Feature decomposition → Team workflows → Governance → Production integration → Philosophy + Capstone (parallel AI agents)
 
 **Capstone Pedagogy**: The parallel AI agent approach (Claude Code + Gemini CLI on separate features) uniquely teaches team coordination through specifications without requiring actual teams. This demonstrates:
+
 - How clear specs enable async parallelization
 - How specifications prevent miscommunication
 - How AI agents work better with clear requirements
@@ -144,7 +154,7 @@ All 18 lessons + 3 projects meet:
 ### File Structure
 
 ```
-book-source/docs/05-Spec-Kit-Plus-Methodology/
+apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/
 ├── README.md (1,100 words)
 ├── 25-sdd-fundamentals/
 │   ├── 01-what-is-sdd.md (2,876 words)
@@ -188,6 +198,7 @@ book-source/docs/05-Spec-Kit-Plus-Methodology/
 ### Next Steps
 
 **Ready for**:
+
 1. ✅ **Technical Review** — Verify SpecifyPlus methodology accuracy, command syntax, cost data citations
 2. ✅ **Pedagogical Review** — Confirm learning objectives met, complexity tier appropriate
 3. ✅ **Constitutional Review** — Validate all 9 domain skills applied correctly, principles 12-13 enforced
@@ -209,36 +220,42 @@ book-source/docs/05-Spec-Kit-Plus-Methodology/
 ## Essential Learnings for Vertical Intelligence System
 
 **Learning 31: Lesson-Writer Subagent Effectiveness**
+
 - Lesson-writer subagent successfully generated 18 complete lessons + 3 projects (30 files, ~400 KB)
 - Per-chapter invocation (3 separate Task calls) enabled focused context and clear deliverables
 - Subagent reliably produced Docusaurus-compatible markdown with proper structure
 - Recommendation: This parallel execution model (Ch25 → Ch26 → Ch27) scales well for multi-chapter projects
 
 **Learning 32: Advanced Complexity Tier Enforcement**
+
 - Enforcing 10+ concepts per major section consistently produced richer content
 - Synthesis and critical thinking (vs. step-by-step scaffolding) appropriate for Parts 6-8 readers
 - Real-world examples and production patterns made content more valuable than toy examples
 - Recommendation: "Advanced complexity" results in 30-40% more content density than intermediate tier
 
 **Learning 33: Spec-First Pedagogy Implementation**
+
 - Showing specifications BEFORE code (not after) fundamentally changes how students think
-- Cost-benefit analysis (Ch 25 L2) makes spec-first *tangible*, not just theoretical
+- Cost-benefit analysis (Ch 25 L2) makes spec-first _tangible_, not just theoretical
 - Spec-First Discovery exercise (Ch 25 L3) proves value through experience
 - Recommendation: Cost analysis + experiential exercise combo is highly effective for methodology adoption
 
 **Learning 34: Multi-Agent Simulation as Pedagogy**
+
 - Capstone design (2 parallel AI agents on separate features) uniquely teaches parallelization
 - Students experience: spec clarity → independent agent work → clean integration
 - This approach teaches team concepts without team overhead
 - Recommendation: Generalize this pattern: use multiple agents to simulate team dynamics in other advanced courses
 
 **Learning 35: Forward Connections Drive Coherence**
-- Explicit bridges to Parts 6-13 (agents, deployment, databases) make Part 5 *essential*, not optional
+
+- Explicit bridges to Parts 6-13 (agents, deployment, databases) make Part 5 _essential_, not optional
 - Every lesson ends with "this enables Part X" makes progression clear
 - Capstone reflection prompts forward connections explicitly
 - Recommendation: Always include forward/backward bridges in multi-part curriculum
 
 **Learning 36: Mini-Projects as Progressive Scaffolding**
+
 - Ch26 MP1 (calculator) = safe learning space
 - Ch26 MP2 (grading spec) = real-world domain
 - Ch27 Capstone = implementation of MP2 with teams
@@ -246,18 +263,21 @@ book-source/docs/05-Spec-Kit-Plus-Methodology/
 - Recommendation: Use this pattern for all hands-on methodology courses
 
 **Learning 37: "Try With AI" as Engagement Mechanism**
+
 - 29 concrete, copyable prompts with expected outcomes
 - ChatGPT web (Ch25) vs Claude Code (Ch26) vs Gemini CLI (Ch27) — tool selection matches chapter
 - Concrete prompts with "here's what to do" reduce friction
 - Recommendation: Every educational lesson should end with 1-2 "Try With AI" exercises with exact commands
 
 **Learning 38: Specification-Driven Lesson Design**
-- Every lesson is *itself* a specification: learning objectives → key concepts → main content → exercise
+
+- Every lesson is _itself_ a specification: learning objectives → key concepts → main content → exercise
 - This recursive application of SDD methodology proves its value
 - Students see specification pattern in the lessons themselves
 - Recommendation: All educational content should follow specification-like structure (objectives → concepts → content → validation)
 
 **Learning 39: Real-World Examples Prevent Abstraction Debt**
+
 - Using Stripe, Amazon, AWS instead of toy examples
 - Citing actual YC companies (Gradewiz, Edexia, Frizzle, Mimir) for grading system
 - Naming cost data (35-50% vs 15-20%) with context
@@ -265,6 +285,7 @@ book-source/docs/05-Spec-Kit-Plus-Methodology/
 - Recommendation: Educational content for advanced learners requires real-world examples; toy examples undermine credibility
 
 **Learning 40: Lesson-Writer Delegation + Human Orchestration**
+
 - Main Claude orchestrates: SETUP → invoke content-implementer (Ch25) → invoke content-implementer (Ch26) → invoke content-implementer (Ch27)
 - Lesson-writers write to file system (not chat), enabling parallel execution
 - Human reviews chapter summaries, approves progress
@@ -278,21 +299,25 @@ book-source/docs/05-Spec-Kit-Plus-Methodology/
 ### For Future Educational Content
 
 1. **Use 3-Phase Lesson Structure** (Ch25 WHY → Ch26 HOW → Ch27 SCALE)
+
    - First phase: conceptual understanding
    - Second phase: hands-on practice
    - Third phase: scaling/real-world application
 
 2. **Enforce Advanced Complexity for Professional Content**
+
    - 10+ concepts per section minimum
    - Real-world examples, not toy examples
    - Assume synthesis and critical thinking
 
 3. **Include "Try With AI" in Every Lesson**
+
    - Concrete, copyable prompts
    - Expected outcomes ("you should see…")
    - Multiple tool options (ChatGPT, Claude Code, Gemini)
 
 4. **Use Mini-Projects as Scaffolding**
+
    - Safe/bounded project (familiar scope)
    - Real-world project (production domain)
    - Capstone that integrates both
@@ -315,4 +340,3 @@ book-source/docs/05-Spec-Kit-Plus-Methodology/
 ---
 
 **Version**: 1.0 | **Date**: 2025-11-01 | **Status**: IMPLEMENTATION COMPLETE, READY FOR REVIEW
-

@@ -19,16 +19,19 @@ This document refines the **Directory MCP Server** concept by incorporating prov
 ### Pattern 1: Content Modeling (Schema-First)
 
 **From Headless CMS Research**:
+
 > "In a headless CMS, the content model creates a schema that structures and validates the content. A content model consists of content types and fields."
 
 **Applied to Directory MCP**:
 
 Instead of:
+
 ```
 ❌ tutorsgpt/chapters/05/lesson-01.md  (just a markdown file)
 ```
 
 We have:
+
 ```
 ✅ Content Type: Lesson
    Fields:
@@ -47,11 +50,13 @@ We have:
 ### Pattern 2: Separation of Content and Presentation
 
 **From Headless CMS Research**:
+
 > "Fundamental principles of headless content management emphasize reusability and scalability through clean separation between content and visual representation."
 
 **Applied to Directory MCP**:
 
 **Content Layer** (Storage):
+
 ```json
 {
   "id": "chapter-05-lesson-01",
@@ -64,15 +69,13 @@ We have:
   },
   "relationships": {
     "chapter": { "id": "chapter-05" },
-    "skills": [
-      { "id": "learning-objectives" },
-      { "id": "concept-scaffolding" }
-    ]
+    "skills": [{ "id": "learning-objectives" }, { "id": "concept-scaffolding" }]
   }
 }
 ```
 
 **Presentation Layer** (Consumers):
+
 - **AI Agents**: Query via MCP, use for reference/generation
 - **Website**: Render as HTML with styling
 - **Mobile App**: Display in native UI
@@ -86,11 +89,13 @@ We have:
 ### Pattern 3: API-First Architecture
 
 **From Headless CMS Research**:
+
 > "Contentful is an enterprise-grade headless CMS built for performance at scale, with structured content modeling and API-first architecture."
 
 **Applied to Directory MCP**:
 
 **Content API** (MCP Resources):
+
 ```typescript
 // Query content by type
 GET /api/content?type=lesson&chapter=05
@@ -126,6 +131,7 @@ GET /api/content?type=lesson&proficiency=A2
 ### Pattern 4: Content Types & Fields
 
 **From Headless CMS Research**:
+
 > "A content model consists of chunks we call content types, and is a collection of content types. A content type consists of fields."
 
 **Applied to Directory MCP**:
@@ -133,6 +139,7 @@ GET /api/content?type=lesson&proficiency=A2
 #### Content Types for "Book" Directory
 
 **1. Book (Root)**
+
 ```typescript
 {
   type: "book",
@@ -150,6 +157,7 @@ GET /api/content?type=lesson&proficiency=A2
 ```
 
 **2. Part**
+
 ```typescript
 {
   type: "part",
@@ -165,6 +173,7 @@ GET /api/content?type=lesson&proficiency=A2
 ```
 
 **3. Chapter**
+
 ```typescript
 {
   type: "chapter",
@@ -185,6 +194,7 @@ GET /api/content?type=lesson&proficiency=A2
 ```
 
 **4. Lesson**
+
 ```typescript
 {
   type: "lesson",
@@ -206,6 +216,7 @@ GET /api/content?type=lesson&proficiency=A2
 ```
 
 **5. Skill**
+
 ```typescript
 {
   type: "skill",
@@ -222,6 +233,7 @@ GET /api/content?type=lesson&proficiency=A2
 ```
 
 **6. Exercise**
+
 ```typescript
 {
   type: "exercise",
@@ -307,6 +319,7 @@ type FieldType =
 ### Option 1: JSON Files (Structured)
 
 **Directory structure**:
+
 ```
 tutorsgpt/
 ├── content/
@@ -333,6 +346,7 @@ tutorsgpt/
 ```
 
 **Example lesson file** (`lessons/lesson-05-01.json`):
+
 ```json
 {
   "id": "lesson-05-01",
@@ -382,6 +396,7 @@ tutorsgpt/
 ```
 
 **Benefits**:
+
 - ✅ **Queryable**: Can search/filter by any field
 - ✅ **Structured**: Schema validation ensures consistency
 - ✅ **Flexible**: Add new fields without breaking existing content
@@ -395,6 +410,7 @@ tutorsgpt/
 **Keep markdown for content, but add structured frontmatter**:
 
 **File**: `lessons/lesson-05-01.md`
+
 ```yaml
 ---
 id: lesson-05-01
@@ -431,6 +447,7 @@ In this lesson, you'll discover...
 ```
 
 **Plus JSON index** (`index.json`):
+
 ```json
 {
   "version": "1.0",
@@ -452,6 +469,7 @@ In this lesson, you'll discover...
 ```
 
 **Benefits**:
+
 - ✅ **Human-readable**: Markdown content is easy to edit
 - ✅ **Queryable**: Index provides structured access
 - ✅ **Flexible**: Frontmatter for metadata, markdown for content
@@ -464,6 +482,7 @@ In this lesson, you'll discover...
 ### REST-like API (via MCP Tools)
 
 **1. List Content**
+
 ```typescript
 // List all lessons
 GET /content?type=lesson
@@ -502,6 +521,7 @@ GET /content?proficiency=A2
 ```
 
 **2. Get Single Content**
+
 ```typescript
 // Get lesson with relationships
 GET /content/lesson-05-01?include=chapter,skills
@@ -530,6 +550,7 @@ GET /content/lesson-05-01?include=chapter,skills
 ```
 
 **3. Search Content**
+
 ```typescript
 // Full-text search
 GET /content/search?q=python+fundamentals
@@ -554,6 +575,7 @@ GET /content/search?q=loops&type=lesson&proficiency=A2
 ```
 
 **4. GraphQL-Style Queries** (Advanced)
+
 ```graphql
 query {
   chapter(id: "chapter-05") {
@@ -640,6 +662,7 @@ tools/call: content_query {
 ### In-Memory Index (Fast Queries)
 
 **On server startup**:
+
 1. Load all content files (JSON or Markdown + frontmatter)
 2. Build in-memory index:
    ```typescript
@@ -661,6 +684,7 @@ tools/call: content_query {
    ```
 
 **Query performance**:
+
 - **Type listing**: O(1) lookup in Map
 - **Filtering**: O(n) scan with index optimization
 - **Full-text search**: O(log n) with search index
@@ -671,9 +695,10 @@ tools/call: content_query {
 ### File Watching (Keep Index Fresh)
 
 **Watch for changes**:
+
 ```typescript
 // Watch content directory
-chokidar.watch('content/**/*.{json,md}').on('change', (path) => {
+chokidar.watch("content/**/*.{json,md}").on("change", (path) => {
   // Re-index changed file
   const content = loadContent(path);
   updateIndex(content);
@@ -684,6 +709,7 @@ chokidar.watch('content/**/*.{json,md}').on('change', (path) => {
 ```
 
 **Benefits**:
+
 - ✅ Hot reload during development
 - ✅ Real-time updates to AI agents
 - ✅ No server restart needed
@@ -694,9 +720,10 @@ chokidar.watch('content/**/*.{json,md}').on('change', (path) => {
 
 ### Phase 1: Extract Structured Data from Existing Content
 
-**Current**: Markdown files in `book-source/docs/`
+**Current**: Markdown files in `apps/learn-app/docs/`
 
 **Step 1**: Parse existing markdown + frontmatter
+
 ```bash
 # Script to extract structured data
 node scripts/extract-content-model.js \
@@ -706,13 +733,15 @@ node scripts/extract-content-model.js \
 ```
 
 **Step 2**: Generate content JSON files
+
 ```
-book-source/docs/05-Claude-Code/01-introduction.md
+apps/learn-app/docs/05-Claude-Code/01-introduction.md
   ↓
 content/lessons/lesson-05-01.json
 ```
 
 **Step 3**: Build content index
+
 ```bash
 node scripts/build-index.js --content content/ --output index.json
 ```
@@ -722,6 +751,7 @@ node scripts/build-index.js --content content/ --output index.json
 ### Phase 2: Serve via Directory MCP Server
 
 **Start server**:
+
 ```bash
 ri-directory serve \
   --directory tutorsgpt \
@@ -730,12 +760,13 @@ ri-directory serve \
 ```
 
 **Agents can now query**:
+
 ```typescript
 // Get all Chapter 5 lessons
-const lessons = await mcp.callTool('content_list', {
-  directory: 'tutorsgpt',
-  type: 'lesson',
-  filters: { chapter: 'chapter-05' }
+const lessons = await mcp.callTool("content_list", {
+  directory: "tutorsgpt",
+  type: "lesson",
+  filters: { chapter: "chapter-05" },
 });
 ```
 
@@ -744,6 +775,7 @@ const lessons = await mcp.callTool('content_list', {
 ### Phase 3: Deploy to R2 (Cloud Storage)
 
 **Upload structured content to R2**:
+
 ```bash
 ri-directory deploy tutorsgpt \
   --source ./content \
@@ -753,6 +785,7 @@ ri-directory deploy tutorsgpt \
 ```
 
 **Server configuration**:
+
 ```json
 {
   "id": "tutorsgpt",
@@ -774,8 +807,8 @@ ri-directory deploy tutorsgpt \
 
 ```typescript
 // Agent needs to know filesystem structure
-const lessonPath = 'book-source/docs/05-Claude-Code/01-introduction.md';
-const content = await fs.readFile(lessonPath, 'utf-8');
+const lessonPath = "apps/learn-app/docs/05-Claude-Code/01-introduction.md";
+const content = await fs.readFile(lessonPath, "utf-8");
 
 // Manual parsing
 const frontmatter = extractFrontmatter(content);
@@ -789,20 +822,20 @@ const markdown = extractMarkdown(content);
 
 ```typescript
 // Agent queries via MCP
-const lessons = await mcp.callTool('content_list', {
-  directory: 'tutorsgpt',
-  type: 'lesson',
+const lessons = await mcp.callTool("content_list", {
+  directory: "tutorsgpt",
+  type: "lesson",
   filters: {
-    chapter: 'chapter-05',
-    proficiency: 'A2'
+    chapter: "chapter-05",
+    proficiency: "A2",
   },
-  include: ['chapter', 'skills']
+  include: ["chapter", "skills"],
 });
 
 // Structured response
-lessons.forEach(lesson => {
+lessons.forEach((lesson) => {
   console.log(lesson.title);
-  console.log(lesson.skills.map(s => s.name));
+  console.log(lesson.skills.map((s) => s.name));
 });
 
 // Storage backend is transparent (local or R2)
@@ -813,22 +846,26 @@ lessons.forEach(lesson => {
 ## Success Criteria for Refined Design
 
 **Content Modeling**:
+
 - ✅ All content types defined (Book, Part, Chapter, Lesson, Skill, Exercise)
 - ✅ Field schemas validated (required, types, references)
 - ✅ Relationships modeled (chapter → lessons, lesson → skills)
 
 **API Quality**:
+
 - ✅ Queryable by any field (type, proficiency, chapter, etc.)
 - ✅ Full-text search across content
 - ✅ Reference resolution (include related content)
 - ✅ Pagination for large result sets
 
 **Performance**:
+
 - ✅ <50ms for indexed queries (type listing, filters)
 - ✅ <200ms for full-text search
 - ✅ <100ms for single content retrieval with references
 
 **Flexibility**:
+
 - ✅ Supports JSON or Markdown + frontmatter
 - ✅ Schema extensible (add new content types, fields)
 - ✅ Storage-agnostic (local, R2, S3)
@@ -838,26 +875,30 @@ lessons.forEach(lesson => {
 ## Next Steps
 
 **1. Approve Refined Design**
-   - Content model (types, fields, relationships)
-   - Query API (REST-like via MCP tools)
-   - Storage format (JSON vs Markdown + frontmatter)
+
+- Content model (types, fields, relationships)
+- Query API (REST-like via MCP tools)
+- Storage format (JSON vs Markdown + frontmatter)
 
 **2. Create Implementation Plan**
-   - Content model schema definitions
-   - Index builder
-   - Query engine
-   - MCP server with content tools
+
+- Content model schema definitions
+- Index builder
+- Query engine
+- MCP server with content tools
 
 **3. Migration Script**
-   - Extract structured data from existing markdown
-   - Generate JSON content files
-   - Build initial index
+
+- Extract structured data from existing markdown
+- Generate JSON content files
+- Build initial index
 
 **4. Prototype**
-   - Implement content model
-   - Build in-memory index
-   - Expose via MCP tools
-   - Test with tutorsgpt
+
+- Implement content model
+- Build in-memory index
+- Expose via MCP tools
+- Test with tutorsgpt
 
 ---
 

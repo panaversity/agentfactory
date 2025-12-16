@@ -9,9 +9,11 @@
 ## Files Delivered
 
 ### 1. Main Lesson Content
-**File**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/reason-fm/book-source/docs/02-AI-Tool-Landscape/08-git-and-github/05-code-review-pull-requests.md`
+
+**File**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/reason-fm/apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/05-code-review-pull-requests.md`
 
 **Content**:
+
 - 4,800+ words of production-grade educational content
 - 4 learning objectives aligned with Bloom's taxonomy (Apply, Analyze, Apply, Apply)
 - 4 concepts within A2 cognitive tier (PR creation, diff review, AI transparency, merge)
@@ -23,9 +25,11 @@
 - Troubleshooting section for common PR issues
 
 ### 2. Implementation Report
+
 **File**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/reason-fm/LESSON_5_IMPLEMENTATION_REPORT.md`
 
 **Content**:
+
 - ✅ Constitutional compliance checklist (all 7 principles)
 - ✅ Stage 2 Three Roles validation
 - ✅ Learning objectives alignment (4/4 addressed)
@@ -35,9 +39,11 @@
 - ✅ Quality indicators (clarity, engagement, rigor, professionalism)
 
 ### 3. Reusable PR Template
+
 **File**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/reason-fm/PR_TEMPLATE_FOR_STUDENTS.md`
 
 **Content**:
+
 - Copy-paste ready PR template with AI transparency section
 - 3 complete example PRs (simple, AI-generated, bug fix)
 - 10 tips for great PR descriptions
@@ -51,6 +57,7 @@
 ### Lesson 5 Content Highlights
 
 #### Opening Hook
+
 ```markdown
 In this lesson, you'll master the professional GitHub workflow where code is
 reviewed BEFORE merging to main. You'll also learn the critical practice of
@@ -64,28 +71,35 @@ In your case, they're also how you document and validate AI-generated code.
 #### Core Concepts (4 Total, Within A2 Limit)
 
 **Concept 1: Pull Request Creation**
+
 - What PRs do and why they matter
 - PR anatomy (base branch, compare branch, diff)
 - How PRs provide safety check for AI code
 
 **Concept 2: PR Description with AI Transparency** ⭐ CRITICAL
+
 ```markdown
 ## AI Assistance
+
 **AI Tool Used**: [ChatGPT / Claude / Gemini]
 
 **What AI Generated**:
+
 - [Specific list of AI contributions]
 
 **What I Modified**:
+
 - [List of student modifications with reasons]
 ```
 
 **Concept 3: Reviewing PR Diff**
+
 - Diff visualization (red/green)
 - 4-point safety checklist
 - Example diff with annotations
 
 **Concept 4: Merge Workflow**
+
 - GitHub merge button
 - Conflict resolution awareness
 - Verification after merge
@@ -93,6 +107,7 @@ In your case, they're also how you document and validate AI-generated code.
 #### Three Roles Framework (Stage 2 Mandatory)
 
 **Role 1: AI as Teacher** ✅
+
 ```markdown
 You create basic PR description (minimal)
 ↓
@@ -102,6 +117,7 @@ What You Learned: Transparency includes specifics, not just "used AI"
 ```
 
 **Role 2: AI as Student** ✅
+
 ```markdown
 AI writes technical description (jargon-heavy)
 ↓
@@ -111,6 +127,7 @@ What AI Learned: PR reviewed by non-technical stakeholders needs clarity
 ```
 
 **Role 3: AI as Co-Worker (Convergence)** ✅
+
 ```markdown
 Iteration 1: Basic PR structure
 Iteration 2: Student adds testing feedback
@@ -121,6 +138,7 @@ Iteration 4: Neither alone would reach this quality—convergence achieved
 #### Hands-On Activities (4 Total)
 
 **Activity 1: Create Feature Branch**
+
 ```bash
 git checkout main
 git checkout -b feature/add-multiplication
@@ -131,17 +149,20 @@ git push -u origin feature/add-multiplication
 ```
 
 **Activity 2: Create Pull Request on GitHub**
+
 - Click "Compare & pull request" button
 - Fill PR form with title, description, AI assistance section
 - Create PR
 
 **Activity 3: Review PR Diff**
+
 - Click "Files Changed" tab
 - Verify changes match intent
 - Look for bugs or missing edge cases
 - Review description completeness
 
 **Activity 4: Merge Pull Request**
+
 - Click "Merge pull request" button
 - Confirm merge
 - Verify main branch updated: `git checkout main && git pull`
@@ -149,25 +170,31 @@ git push -u origin feature/add-multiplication
 #### Realistic AI Transparency Example
 
 Complete PR with AI-generated code:
+
 ```markdown
 ## Summary
+
 Added error handling to calculator to prevent crashes on invalid input.
 
 ## AI Assistance
+
 **AI Tool Used**: ChatGPT
 
 **What AI Generated**:
+
 - Try/except blocks for all arithmetic functions
 - validate_input() function with regex
 - Error message templates
 
 **What I Modified & Why**:
+
 1. Error Messages: Made simpler (users need plain language, not technical jargon)
 2. Edge Cases: Found bug where AI didn't handle empty input—fixed manually
 3. Logging: Added debug output for visibility
 
 ## Testing Done
-- Valid inputs: 5+3, 10-2, 4*3, 20/4 ✓ All work
+
+- Valid inputs: 5+3, 10-2, 4\*3, 20/4 ✓ All work
 - Edge cases:
   - Empty input: Shows "Input required" ✓
   - Text input: Shows "Please enter a number" ✓
@@ -182,15 +209,15 @@ Added error handling to calculator to prevent crashes on invalid input.
 
 ### All 7 Principles ✅
 
-| Principle | Compliance | Evidence |
-|-----------|-----------|----------|
-| **Specification Primacy** | ✅ PASS | PR description is specification before merge |
-| **Progressive Complexity** | ✅ PASS | 4 concepts, A2 tier, cognitive load within limits |
-| **Factual Accuracy** | ✅ PASS | All GitHub features verified, no hallucinations |
-| **Coherent Structure** | ✅ PASS | Clear arc: Understand → Create → Review → Merge |
-| **Intelligence Accumulation** | ✅ PASS | Builds on L1-L4, applies in L7 capstone |
-| **Anti-Convergence** | ✅ PASS | Three Roles differs from prior Stage 1 hands-on |
-| **Minimal Content** | ✅ PASS | Every section maps to learning objective |
+| Principle                     | Compliance | Evidence                                          |
+| ----------------------------- | ---------- | ------------------------------------------------- |
+| **Specification Primacy**     | ✅ PASS    | PR description is specification before merge      |
+| **Progressive Complexity**    | ✅ PASS    | 4 concepts, A2 tier, cognitive load within limits |
+| **Factual Accuracy**          | ✅ PASS    | All GitHub features verified, no hallucinations   |
+| **Coherent Structure**        | ✅ PASS    | Clear arc: Understand → Create → Review → Merge   |
+| **Intelligence Accumulation** | ✅ PASS    | Builds on L1-L4, applies in L7 capstone           |
+| **Anti-Convergence**          | ✅ PASS    | Three Roles differs from prior Stage 1 hands-on   |
+| **Minimal Content**           | ✅ PASS    | Every section maps to learning objective          |
 
 ---
 
@@ -216,18 +243,19 @@ Added error handling to calculator to prevent crashes on invalid input.
 
 ### Learning Objectives: 4/4 ✅
 
-| Objective | Bloom's Level | Implementation | Status |
-|-----------|--------------|-----------------|--------|
-| Create PR from feature branch | Apply | Activities 1-2 | ✅ |
-| Review PR diff | Analyze | Concept 3, Activity 3 | ✅ |
-| Document AI assistance | Apply | Concept 2, Three Roles, Example | ✅ |
-| Merge PR into main | Apply | Activity 4 | ✅ |
+| Objective                     | Bloom's Level | Implementation                  | Status |
+| ----------------------------- | ------------- | ------------------------------- | ------ |
+| Create PR from feature branch | Apply         | Activities 1-2                  | ✅     |
+| Review PR diff                | Analyze       | Concept 3, Activity 3           | ✅     |
+| Document AI assistance        | Apply         | Concept 2, Three Roles, Example | ✅     |
+| Merge PR into main            | Apply         | Activity 4                      | ✅     |
 
 ### Success Criteria: SC-008 Preparation ✅
 
 **Requirement**: 100% of capstone PRs include AI attribution
 
 **This Lesson Establishes**:
+
 - ✅ Mandatory PR template with AI section
 - ✅ Three Roles iteration showing transparency importance
 - ✅ Realistic example with detailed AI attribution
@@ -241,24 +269,28 @@ Added error handling to calculator to prevent crashes on invalid input.
 ## Content Quality Metrics
 
 ### Clarity ✅
+
 - Step-by-step GitHub interface navigation
 - Real-world examples with full context
 - Explicit callouts for important concepts
 - Clear distinction between PR template sections
 
 ### Engagement ✅
+
 - Three Roles scenarios show collaboration, not lecture
 - Hands-on activities invite active practice
 - "Try With AI" prompts encourage exploration
 - Realistic examples with student-relatable bugs
 
 ### Rigor ✅
+
 - PR transparency requirement is non-negotiable
 - Diff review checklist ensures critical thinking
 - Example shows realistic bugs (edge cases) found by student, not hidden
 - PR best practices (testing, security awareness) included
 
 ### Professionalism ✅
+
 - PR template matches industry standards
 - Transparency framed as ethical responsibility
 - Troubleshooting addresses real-world issues
@@ -268,12 +300,12 @@ Added error handling to calculator to prevent crashes on invalid input.
 
 ## Cognitive Load Assessment: 4 Concepts (A2 Tier)
 
-| Concept | Complexity | Time | Status |
-|---------|-----------|------|--------|
-| Pull Request | Moderate | ~10 min | ✅ |
-| PR Description + AI Transparency | Moderate | ~15 min | ✅ |
-| Diff Review | Moderate | ~10 min | ✅ |
-| Merge Workflow | Simple | ~5 min | ✅ |
+| Concept                          | Complexity | Time    | Status |
+| -------------------------------- | ---------- | ------- | ------ |
+| Pull Request                     | Moderate   | ~10 min | ✅     |
+| PR Description + AI Transparency | Moderate   | ~15 min | ✅     |
+| Diff Review                      | Moderate   | ~10 min | ✅     |
+| Merge Workflow                   | Simple     | ~5 min  | ✅     |
 
 **Total**: 4 concepts × ~10 min avg = 40 minutes (lesson estimates 50 minutes with buffer for exploration)
 
@@ -284,7 +316,8 @@ Added error handling to calculator to prevent crashes on invalid input.
 ## File Statistics
 
 ### Lesson Content File
-- **Path**: `/book-source/docs/02-AI-Tool-Landscape/08-git-and-github/05-code-review-pull-requests.md`
+
+- **Path**: `/apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/05-code-review-pull-requests.md`
 - **Size**: ~4,800 words
 - **Sections**: 12 major sections + YAML frontmatter
 - **Code Examples**: 5 (bash commands + PR examples)
@@ -292,6 +325,7 @@ Added error handling to calculator to prevent crashes on invalid input.
 - **Try With AI**: 3 prompts with expected outcomes
 
 ### Implementation Report
+
 - **Path**: `/LESSON_5_IMPLEMENTATION_REPORT.md`
 - **Size**: ~2,400 words
 - **Checkpoints**: 7 major compliance areas
@@ -299,6 +333,7 @@ Added error handling to calculator to prevent crashes on invalid input.
 - **Status**: ✅ 100% compliance
 
 ### PR Template
+
 - **Path**: `/PR_TEMPLATE_FOR_STUDENTS.md`
 - **Size**: ~1,600 words
 - **Examples**: 3 complete PRs (simple, AI, bug fix)
@@ -314,16 +349,19 @@ Added error handling to calculator to prevent crashes on invalid input.
 **Lesson 5 (Code Review)** → **Lesson 7 (Capstone)**
 
 1. **PR Template** (L5)
+
    - ↓ Students learn template
    - ↓ Apply in capstone project
    - ✅ Lesson 7 requires mandatory AI transparency in PR
 
 2. **Three Roles Iteration** (L5)
+
    - ↓ Experience collaborative PR improvement
    - ↓ Refine capstone PR based on feedback
    - ✅ Lesson 7 students converge on professional PR
 
 3. **AI Transparency Habit** (L5)
+
    - ↓ Establish pattern: "Every PR documents AI"
    - ↓ Reinforce in capstone project
    - ✅ SC-008: 100% of capstone PRs include attribution
@@ -363,6 +401,7 @@ L7: Capstone Task Manager (Stage 4 - Spec-Driven + Agent HQ Awareness)
 ## Quality Assurance Checklist
 
 ### Content Quality ✅
+
 - [x] Lesson follows Stage 2 (AI Collaboration) framework
 - [x] Three Roles demonstrated with explicit callouts
 - [x] AI transparency mandatory (supports SC-008)
@@ -372,6 +411,7 @@ L7: Capstone Task Manager (Stage 4 - Spec-Driven + Agent HQ Awareness)
 - [x] "Try With AI" prompts provide reinforcement
 
 ### Constitutional Compliance ✅
+
 - [x] Specification Primacy: PR is specification before merge
 - [x] Progressive Complexity: 4 concepts within A2 limit
 - [x] Factual Accuracy: All GitHub features verified
@@ -381,6 +421,7 @@ L7: Capstone Task Manager (Stage 4 - Spec-Driven + Agent HQ Awareness)
 - [x] Minimal Content: Every section maps to LO
 
 ### Stage 2 Requirements ✅
+
 - [x] All three roles demonstrated
 - [x] Bidirectional learning visible
 - [x] Convergence loop clear
@@ -388,6 +429,7 @@ L7: Capstone Task Manager (Stage 4 - Spec-Driven + Agent HQ Awareness)
 - [x] AI and student collaborate actively
 
 ### Success Criteria ✅
+
 - [x] SC-008 preparation: PR template with mandatory AI transparency
 - [x] SC-001 addressed: Git's value (safety + transparency)
 - [x] Learning objectives: 4/4 addressed
@@ -395,6 +437,7 @@ L7: Capstone Task Manager (Stage 4 - Spec-Driven + Agent HQ Awareness)
 - [x] Prerequisites satisfied: L1-L4 content
 
 ### File Integrity ✅
+
 - [x] YAML frontmatter complete
 - [x] Markdown formatting valid
 - [x] No broken internal links
@@ -421,6 +464,7 @@ L7: Capstone Task Manager (Stage 4 - Spec-Driven + Agent HQ Awareness)
 ### Convergence Point
 
 By the end of this lesson, students will:
+
 - ✅ Create PR from feature branch
 - ✅ Review diff before merging
 - ✅ Document AI assistance transparently
@@ -432,6 +476,7 @@ By the end of this lesson, students will:
 ## Recommendations for Use
 
 ### For Instructors
+
 1. **Emphasize Transparency**: Frame AI attribution as strength (not weakness or requirement to hide)
 2. **Show Real Examples**: If possible, share your own GitHub PRs with AI attribution
 3. **Demo the Workflow**: Walk through PR creation during lesson preparation
@@ -439,6 +484,7 @@ By the end of this lesson, students will:
 5. **Celebrate Bugs Found**: When students find bugs in AI code, celebrate it—that's expertise
 
 ### For Students
+
 1. **Create Your PR**: Don't just read—practice with your own feature branch
 2. **Use the Template**: Copy-paste PR template into GitHub, fill out each section
 3. **Be Specific**: Don't just say "used ChatGPT"—say WHAT and WHY
@@ -462,18 +508,21 @@ By the end of this lesson, students will:
 ## Next Steps
 
 ### For Publication
+
 1. Review lesson content for any final refinements
-2. Verify file path: `/book-source/docs/02-AI-Tool-Landscape/08-git-and-github/05-code-review-pull-requests.md`
+2. Verify file path: `/apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/05-code-review-pull-requests.md`
 3. Run Docusaurus build to verify integration
 4. Deploy to GitPages or publishing platform
 
 ### For Chapter Completion
+
 1. Implement Lesson 6 (Reusable Git Patterns)
 2. Implement Lesson 7 (Capstone: Task Manager + Agent HQ)
 3. Run validation-auditor on all 7 lessons
 4. Confirm SC-008: 100% of capstone PRs include AI attribution
 
 ### For Student Success
+
 1. Direct students to use PR_TEMPLATE_FOR_STUDENTS.md for all PRs
 2. Reference this lesson in Lesson 7 capstone as reminder
 3. Collect capstone PRs to verify SC-008 compliance
@@ -486,6 +535,7 @@ By the end of this lesson, students will:
 **This lesson is certified to meet Constitution v6.0.0 compliance.**
 
 Signed:
+
 - **Content-Implementer**: Claude Code v1.0.0
 - **Date**: 2025-01-17
 - **Compliance Level**: 100% (all 7 principles + Stage 2 requirements)
@@ -505,6 +555,7 @@ Signed:
 **Success Metrics**: SC-008 preparation, all 4 LOs addressed, 4-concept cognitive load
 
 **Students will be able to**:
+
 - Create pull requests from feature branches
 - Review PR diffs before merging
 - Document AI assistance transparently (critical for SC-008)
@@ -516,4 +567,3 @@ Signed:
 **Implementation Complete**
 **Ready for Publication**
 **Lesson 5 Delivered**
-

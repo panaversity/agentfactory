@@ -26,7 +26,7 @@ description: "Task list for Chapter 11: Python UV - The Fastest Python Package M
 
 **Purpose**: Initialize chapter structure and shared assets
 
-- [X] T001 Create chapter directory structure: `book-source/docs/04-Part-4-Python-Fundamentals/11-python-uv/`
+- [x] T001 Create chapter directory structure: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/11-python-uv/`
 - [ ] T002 [P] Create placeholder lesson files (lesson-1.md through lesson-6.md) with YAML frontmatter
 - [ ] T003 [P] Create `book-source/static/img/part-4/chapter-11/` directory for diagrams and screenshots
 - [ ] T004 [P] Update `book-source/sidebars.ts` with Chapter 11 entry and 6 lesson sub-entries
@@ -46,7 +46,7 @@ description: "Task list for Chapter 11: Python UV - The Fastest Python Package M
 - [ ] T009 [P] Create UV vs pip/poetry/conda comparison table (SVG diagram) in `book-source/static/img/part-4/chapter-11/tool-comparison.svg`
 - [ ] T010 [P] Create "Project Structure Diagram" (pyproject.toml, uv.lock, .python-version, src/) in `book-source/static/img/part-4/chapter-11/project-structure.svg`
 - [ ] T011 [P] Create "Dependency Resolution Visual" showing transitive dependencies in `book-source/static/img/part-4/chapter-11/dependency-tree.svg`
-- [ ] T012 Create chapter index page at `book-source/docs/04-Part-4-Python-Fundamentals/11-python-uv/index.md` with chapter overview
+- [ ] T012 Create chapter index page at `apps/learn-app/docs/04-Part-4-Python-Fundamentals/11-python-uv/index.md` with chapter overview
 
 **Checkpoint**: All commands verified, diagrams created, ready for lesson writing
 
@@ -62,16 +62,16 @@ description: "Task list for Chapter 11: Python UV - The Fastest Python Package M
 
 ### Implementation for Lesson 1
 
-- [X] T013 [L1] Write opening hook: "The 30-Second Setup" timing comparison (UV vs pip) in `lesson-1.md` lines 1-50
-- [X] T014 [L1] Write "What is a package manager?" section (beginner-friendly, analogy-based) in `lesson-1.md` lines 51-150
-- [X] T015 [L1] Write "The Problem: Python's Fragmented Tooling" section with ecosystem diagram in `lesson-1.md` lines 151-250
-- [X] T016 [L1] Write "The Solution: UV's Unified Approach" section (speed, simplicity, industry backing) in `lesson-1.md` lines 251-350
-- [X] T017 [L1] Create decision framework table: "When to Use UV vs pip vs poetry vs conda" with scenarios in `lesson-1.md` lines 351-450
-- [X] T018 [L1] Write "What is a Dependency?" explainer (plain language, examples) in `lesson-1.md` lines 451-500
-- [X] T019 [L1] Write "Our Learning Approach: AI-Driven Development" section explaining intent → AI → understanding pattern in `lesson-1.md` lines 501-600
-- [X] T020 [L1] Write "Try With AI" section with 3 exploration prompts (no UV installation yet, conceptual only) in `lesson-1.md` lines 601-700
-- [X] T021 [L1] Add YAML frontmatter with skills metadata: "Evaluate Python Package Managers (A2)", "Recognize Speed Benefits (A1)" in `lesson-1.md` lines 1-20
-- [X] T022 [L1] Proofread Lesson 1 for complexity tier compliance (max 7 concepts, beginner-friendly language, A2-B1 level)
+- [x] T013 [L1] Write opening hook: "The 30-Second Setup" timing comparison (UV vs pip) in `lesson-1.md` lines 1-50
+- [x] T014 [L1] Write "What is a package manager?" section (beginner-friendly, analogy-based) in `lesson-1.md` lines 51-150
+- [x] T015 [L1] Write "The Problem: Python's Fragmented Tooling" section with ecosystem diagram in `lesson-1.md` lines 151-250
+- [x] T016 [L1] Write "The Solution: UV's Unified Approach" section (speed, simplicity, industry backing) in `lesson-1.md` lines 251-350
+- [x] T017 [L1] Create decision framework table: "When to Use UV vs pip vs poetry vs conda" with scenarios in `lesson-1.md` lines 351-450
+- [x] T018 [L1] Write "What is a Dependency?" explainer (plain language, examples) in `lesson-1.md` lines 451-500
+- [x] T019 [L1] Write "Our Learning Approach: AI-Driven Development" section explaining intent → AI → understanding pattern in `lesson-1.md` lines 501-600
+- [x] T020 [L1] Write "Try With AI" section with 3 exploration prompts (no UV installation yet, conceptual only) in `lesson-1.md` lines 601-700
+- [x] T021 [L1] Add YAML frontmatter with skills metadata: "Evaluate Python Package Managers (A2)", "Recognize Speed Benefits (A1)" in `lesson-1.md` lines 1-20
+- [x] T022 [L1] Proofread Lesson 1 for complexity tier compliance (max 7 concepts, beginner-friendly language, A2-B1 level)
 
 **Checkpoint**: Lesson 1 complete - readers motivated and understand UV's purpose
 
@@ -87,17 +87,17 @@ description: "Task list for Chapter 11: Python UV - The Fastest Python Package M
 
 ### Implementation for Lesson 2
 
-- [X] T023 [L2] Write "Pre-Installation: What We're About to Do" section in `lesson-2.md` lines 1-100
-- [X] T024 [L2] Write "AI-Driven Installation" section with complete prompt-response example (Windows PowerShell) in `lesson-2.md` lines 101-250
-- [X] T025 [P] [L2] Write macOS installation variant (Homebrew/curl) prompt-response in `lesson-2.md` lines 251-350
-- [X] T026 [P] [L2] Write Linux installation variant (curl) prompt-response in `lesson-2.md` lines 351-450
-- [X] T027 [L2] Write "Platform Detection: How AI Determines Your OS" explainer in `lesson-2.md` lines 451-550
-- [X] T028 [L2] Write "Verification: Running uv --version" section with AI-guided verification in `lesson-2.md` lines 551-650
-- [X] T029 [L2] Write "Troubleshooting: Command Not Found" section with PATH explanation (beginner-friendly) in `lesson-2.md` lines 651-800
-- [X] T030 [L2] Include complete "PATH Configuration" explainer (computer's command directory analogy) in `lesson-2.md` lines 801-900
-- [X] T031 [L2] Write "Try With AI" section with 4 installation/verification prompts in `lesson-2.md` lines 901-1000
-- [X] T032 [L2] Add YAML frontmatter with skills metadata: "Execute Installation with AI (A2)", "Understand PATH Configuration (A2)" in `lesson-2.md` lines 1-20
-- [X] T033 [L2] Proofread Lesson 2 for hands-on clarity and error scenario coverage (max 7 concepts, A2-B1 level)
+- [x] T023 [L2] Write "Pre-Installation: What We're About to Do" section in `lesson-2.md` lines 1-100
+- [x] T024 [L2] Write "AI-Driven Installation" section with complete prompt-response example (Windows PowerShell) in `lesson-2.md` lines 101-250
+- [x] T025 [P] [L2] Write macOS installation variant (Homebrew/curl) prompt-response in `lesson-2.md` lines 251-350
+- [x] T026 [P] [L2] Write Linux installation variant (curl) prompt-response in `lesson-2.md` lines 351-450
+- [x] T027 [L2] Write "Platform Detection: How AI Determines Your OS" explainer in `lesson-2.md` lines 451-550
+- [x] T028 [L2] Write "Verification: Running uv --version" section with AI-guided verification in `lesson-2.md` lines 551-650
+- [x] T029 [L2] Write "Troubleshooting: Command Not Found" section with PATH explanation (beginner-friendly) in `lesson-2.md` lines 651-800
+- [x] T030 [L2] Include complete "PATH Configuration" explainer (computer's command directory analogy) in `lesson-2.md` lines 801-900
+- [x] T031 [L2] Write "Try With AI" section with 4 installation/verification prompts in `lesson-2.md` lines 901-1000
+- [x] T032 [L2] Add YAML frontmatter with skills metadata: "Execute Installation with AI (A2)", "Understand PATH Configuration (A2)" in `lesson-2.md` lines 1-20
+- [x] T033 [L2] Proofread Lesson 2 for hands-on clarity and error scenario coverage (max 7 concepts, A2-B1 level)
 
 **Checkpoint**: Lesson 2 complete - readers have UV installed and verified
 
@@ -113,18 +113,18 @@ description: "Task list for Chapter 11: Python UV - The Fastest Python Package M
 
 ### Implementation for Lesson 3
 
-- [X] T034 [L3] Write "What is a Python Project?" section (structure, dependencies, configuration analogy) in `lesson-3.md` lines 1-150
-- [X] T035 [L3] Write "The AI-Driven Creation Flow" section (intent → AI generates structure → explore) in `lesson-3.md` lines 151-250
-- [X] T036 [L3] Write complete walkthrough: "Create a simple web-client project with UV and AI" (prompt-response-output-teaching) in `lesson-3.md` lines 251-500
-- [X] T037 [L3] Include "uv init" command explanation (what AI does behind the scenes) in `lesson-3.md` lines 501-600
-- [X] T038 [L3] Write "Anatomy of a UV Project" section with annotated directory tree (pyproject.toml, .python-version, src/, .venv) in `lesson-3.md` lines 601-750
-- [X] T039 [L3] Write "Important Parts of pyproject.toml" section (brief, plain language, no deep TOML syntax) in `lesson-3.md` lines 751-900
-- [X] T040 [L3] Write "Virtual Environments Explained" section (isolation analogy: separate toolboxes) in `lesson-3.md` lines 901-1000
-- [X] T041 [L3] Write "Adding Your First Dependency" subsection (uv add requests) with complete prompt-response-output-teaching in `lesson-3.md` lines 1001-1150
-- [X] T042 [L3] Write "Legacy vs Modern: pyproject.toml vs requirements.txt" comparison section in `lesson-3.md` lines 1151-1250
-- [X] T043 [L3] Write "Try With AI" section with 4 project creation/exploration prompts in `lesson-3.md` lines 1251-1350
-- [X] T044 [L3] Add YAML frontmatter with skills metadata: "Initialize UV Project (B1)", "Understand Project Configuration (A2)" in `lesson-3.md` lines 1-20
-- [X] T045 [L3] Proofread Lesson 3 for conceptual clarity and hands-on completeness (max 7 concepts, B1 level)
+- [x] T034 [L3] Write "What is a Python Project?" section (structure, dependencies, configuration analogy) in `lesson-3.md` lines 1-150
+- [x] T035 [L3] Write "The AI-Driven Creation Flow" section (intent → AI generates structure → explore) in `lesson-3.md` lines 151-250
+- [x] T036 [L3] Write complete walkthrough: "Create a simple web-client project with UV and AI" (prompt-response-output-teaching) in `lesson-3.md` lines 251-500
+- [x] T037 [L3] Include "uv init" command explanation (what AI does behind the scenes) in `lesson-3.md` lines 501-600
+- [x] T038 [L3] Write "Anatomy of a UV Project" section with annotated directory tree (pyproject.toml, .python-version, src/, .venv) in `lesson-3.md` lines 601-750
+- [x] T039 [L3] Write "Important Parts of pyproject.toml" section (brief, plain language, no deep TOML syntax) in `lesson-3.md` lines 751-900
+- [x] T040 [L3] Write "Virtual Environments Explained" section (isolation analogy: separate toolboxes) in `lesson-3.md` lines 901-1000
+- [x] T041 [L3] Write "Adding Your First Dependency" subsection (uv add requests) with complete prompt-response-output-teaching in `lesson-3.md` lines 1001-1150
+- [x] T042 [L3] Write "Legacy vs Modern: pyproject.toml vs requirements.txt" comparison section in `lesson-3.md` lines 1151-1250
+- [x] T043 [L3] Write "Try With AI" section with 4 project creation/exploration prompts in `lesson-3.md` lines 1251-1350
+- [x] T044 [L3] Add YAML frontmatter with skills metadata: "Initialize UV Project (B1)", "Understand Project Configuration (A2)" in `lesson-3.md` lines 1-20
+- [x] T045 [L3] Proofread Lesson 3 for conceptual clarity and hands-on completeness (max 7 concepts, B1 level)
 
 **Checkpoint**: Lesson 3 complete - readers have working UV project with dependencies
 
@@ -140,20 +140,20 @@ description: "Task list for Chapter 11: Python UV - The Fastest Python Package M
 
 ### Implementation for Lesson 4
 
-- [X] T046 [L4] Write "What Are Dependencies?" section (libraries your project needs, recipe ingredients analogy) in `lesson-4.md` lines 1-150
-- [X] T047 [L4] Write "Adding Dependencies with AI" section with prompt-response example (uv add requests) in `lesson-4.md` lines 151-300
-- [X] T048 [L4] Write "Development vs Production Dependencies" section (why separate them, lean deployments) in `lesson-4.md` lines 301-450
-- [X] T049 [L4] Write complete prompt-response example: "Add pytest and pytest-cov as dev dependencies" (uv add --dev) in `lesson-4.md` lines 451-650
-- [X] T050 [L4] Write "Dependency Resolution Magic" section (how UV finds compatible versions, transitive dependencies) in `lesson-4.md` lines 651-800
-- [X] T051 [L4] Include dependency tree visual diagram reference in `lesson-4.md` lines 801-850
-- [X] T052 [L4] Write "Updating Dependencies" section with prompt-response example (uv add package@latest) in `lesson-4.md` lines 851-1000
-- [X] T053 [L4] Write "Listing Outdated Dependencies" prompt-response example (uv pip list --outdated) in `lesson-4.md` lines 1001-1100
-- [X] T054 [L4] Write "Removing Dependencies" section with prompt-response example (uv remove package) in `lesson-4.md` lines 1101-1200
-- [X] T055 [L4] Write "Conflict Resolution: When Dependencies Clash" section with error scenario and AI diagnosis in `lesson-4.md` lines 1201-1400
-- [X] T056 [L4] Write "The Lockfile Concept" explainer (pinning exact versions for reproducibility) in `lesson-4.md` lines 1401-1500
-- [X] T057 [L4] Write "Try With AI" section with 5 dependency management prompts in `lesson-4.md` lines 1501-1650
-- [X] T058 [L4] Add YAML frontmatter with skills metadata: "Manage Project Dependencies (B1)", "Understand Dependency Resolution (B1)" in `lesson-4.md` lines 1-20
-- [X] T059 [L4] Proofread Lesson 4 for scenario coverage and error handling clarity (max 7 concepts, B1 level)
+- [x] T046 [L4] Write "What Are Dependencies?" section (libraries your project needs, recipe ingredients analogy) in `lesson-4.md` lines 1-150
+- [x] T047 [L4] Write "Adding Dependencies with AI" section with prompt-response example (uv add requests) in `lesson-4.md` lines 151-300
+- [x] T048 [L4] Write "Development vs Production Dependencies" section (why separate them, lean deployments) in `lesson-4.md` lines 301-450
+- [x] T049 [L4] Write complete prompt-response example: "Add pytest and pytest-cov as dev dependencies" (uv add --dev) in `lesson-4.md` lines 451-650
+- [x] T050 [L4] Write "Dependency Resolution Magic" section (how UV finds compatible versions, transitive dependencies) in `lesson-4.md` lines 651-800
+- [x] T051 [L4] Include dependency tree visual diagram reference in `lesson-4.md` lines 801-850
+- [x] T052 [L4] Write "Updating Dependencies" section with prompt-response example (uv add package@latest) in `lesson-4.md` lines 851-1000
+- [x] T053 [L4] Write "Listing Outdated Dependencies" prompt-response example (uv pip list --outdated) in `lesson-4.md` lines 1001-1100
+- [x] T054 [L4] Write "Removing Dependencies" section with prompt-response example (uv remove package) in `lesson-4.md` lines 1101-1200
+- [x] T055 [L4] Write "Conflict Resolution: When Dependencies Clash" section with error scenario and AI diagnosis in `lesson-4.md` lines 1201-1400
+- [x] T056 [L4] Write "The Lockfile Concept" explainer (pinning exact versions for reproducibility) in `lesson-4.md` lines 1401-1500
+- [x] T057 [L4] Write "Try With AI" section with 5 dependency management prompts in `lesson-4.md` lines 1501-1650
+- [x] T058 [L4] Add YAML frontmatter with skills metadata: "Manage Project Dependencies (B1)", "Understand Dependency Resolution (B1)" in `lesson-4.md` lines 1-20
+- [x] T059 [L4] Proofread Lesson 4 for scenario coverage and error handling clarity (max 7 concepts, B1 level)
 
 **Checkpoint**: Lesson 4 complete - readers can manage dependencies confidently with AI
 
@@ -169,17 +169,17 @@ description: "Task list for Chapter 11: Python UV - The Fastest Python Package M
 
 ### Implementation for Lesson 5
 
-- [X] T060 [L5] Write "Why Environment Isolation?" section (preventing conflicts between projects, separate workspaces analogy) in `lesson-5.md` lines 1-150
-- [X] T061 [L5] Write "UV's Automatic Activation" section (no manual venv activation needed) in `lesson-5.md` lines 151-250
-- [X] T062 [L5] Write "Running Scripts with AI" section with prompt-response example (uv run python main.py) in `lesson-5.md` lines 251-400
-- [X] T063 [L5] Write prompt-response example: "Run a sample client script that fetches data from public API using requests" in `lesson-5.md` lines 401-600
-- [X] T064 [L5] Write "Running Tests" section with prompt-response example (uv run pytest) in `lesson-5.md` lines 601-750
-- [X] T065 [L5] Write "One-Off Commands in Project Environment" section with example (uv run pip list) in `lesson-5.md` lines 751-850
-- [X] T066 [L5] Write "Comparison: uv run vs regular python" section demonstrating the difference in `lesson-5.md` lines 851-1000
-- [X] T067 [L5] Write "Troubleshooting: Module Not Found" section with error scenario and AI diagnosis in `lesson-5.md` lines 1001-1150
-- [X] T068 [L5] Write "Try With AI" section with 5 execution and debugging prompts in `lesson-5.md` lines 1151-1300
-- [X] T069 [L5] Add YAML frontmatter with skills metadata: "Execute Python in Project Environment (B1)", "Understand Environment Isolation (B1)" in `lesson-5.md` lines 1-20
-- [X] T070 [L5] Proofread Lesson 5 for execution clarity and debugging scenario coverage (max 7 concepts, B1 level)
+- [x] T060 [L5] Write "Why Environment Isolation?" section (preventing conflicts between projects, separate workspaces analogy) in `lesson-5.md` lines 1-150
+- [x] T061 [L5] Write "UV's Automatic Activation" section (no manual venv activation needed) in `lesson-5.md` lines 151-250
+- [x] T062 [L5] Write "Running Scripts with AI" section with prompt-response example (uv run python main.py) in `lesson-5.md` lines 251-400
+- [x] T063 [L5] Write prompt-response example: "Run a sample client script that fetches data from public API using requests" in `lesson-5.md` lines 401-600
+- [x] T064 [L5] Write "Running Tests" section with prompt-response example (uv run pytest) in `lesson-5.md` lines 601-750
+- [x] T065 [L5] Write "One-Off Commands in Project Environment" section with example (uv run pip list) in `lesson-5.md` lines 751-850
+- [x] T066 [L5] Write "Comparison: uv run vs regular python" section demonstrating the difference in `lesson-5.md` lines 851-1000
+- [x] T067 [L5] Write "Troubleshooting: Module Not Found" section with error scenario and AI diagnosis in `lesson-5.md` lines 1001-1150
+- [x] T068 [L5] Write "Try With AI" section with 5 execution and debugging prompts in `lesson-5.md` lines 1151-1300
+- [x] T069 [L5] Add YAML frontmatter with skills metadata: "Execute Python in Project Environment (B1)", "Understand Environment Isolation (B1)" in `lesson-5.md` lines 1-20
+- [x] T070 [L5] Proofread Lesson 5 for execution clarity and debugging scenario coverage (max 7 concepts, B1 level)
 
 **Checkpoint**: Lesson 5 complete - readers can execute code in isolated environments with AI
 
@@ -195,18 +195,18 @@ description: "Task list for Chapter 11: Python UV - The Fastest Python Package M
 
 ### Implementation for Lesson 6
 
-- [X] T071 [L6] Write "The Collaboration Problem: 'Works on My Machine'" section in `lesson-6.md` lines 1-150
-- [X] T072 [L6] Write "Lockfiles to the Rescue" section (how pinned versions solve reproducibility) in `lesson-6.md` lines 151-300
-- [X] T073 [L6] Write "Preparing Projects for Sharing" section with prompt-response example (ensure lockfile exists) in `lesson-6.md` lines 301-450
-- [X] T074 [L6] Write "Teammate Setup Flow: Cloning and Syncing" section with prompt-response example (uv sync) in `lesson-6.md` lines 451-650
-- [X] T075 [L6] Write "Production Deployments: Installing Without Dev Dependencies" section with prompt-response (uv sync --no-dev) in `lesson-6.md` lines 651-800
-- [X] T076 [L6] Write "pyproject.toml vs uv.lock" comparison section (constraints vs pinned versions) in `lesson-6.md` lines 801-950
-- [X] T077 [L6] Write "Lockfile Maintenance: When to Update" section (after dependency changes) in `lesson-6.md` lines 951-1050
-- [X] T078 [L6] Write "Git Integration: Committing the Right Files" section (pyproject.toml, uv.lock, NOT .venv) in `lesson-6.md` lines 1051-1150
+- [x] T071 [L6] Write "The Collaboration Problem: 'Works on My Machine'" section in `lesson-6.md` lines 1-150
+- [x] T072 [L6] Write "Lockfiles to the Rescue" section (how pinned versions solve reproducibility) in `lesson-6.md` lines 151-300
+- [x] T073 [L6] Write "Preparing Projects for Sharing" section with prompt-response example (ensure lockfile exists) in `lesson-6.md` lines 301-450
+- [x] T074 [L6] Write "Teammate Setup Flow: Cloning and Syncing" section with prompt-response example (uv sync) in `lesson-6.md` lines 451-650
+- [x] T075 [L6] Write "Production Deployments: Installing Without Dev Dependencies" section with prompt-response (uv sync --no-dev) in `lesson-6.md` lines 651-800
+- [x] T076 [L6] Write "pyproject.toml vs uv.lock" comparison section (constraints vs pinned versions) in `lesson-6.md` lines 801-950
+- [x] T077 [L6] Write "Lockfile Maintenance: When to Update" section (after dependency changes) in `lesson-6.md` lines 951-1050
+- [x] T078 [L6] Write "Git Integration: Committing the Right Files" section (pyproject.toml, uv.lock, NOT .venv) in `lesson-6.md` lines 1051-1150
 - [ ] T079 [L6] Create visual workflow diagram: Developer A → git → Developer B (with lockfile sync) in `book-source/static/img/part-4/chapter-11/collaboration-workflow.svg`
-- [X] T080 [L6] Write "Try With AI" section with 5 collaboration/deployment prompts in `lesson-6.md` lines 1151-1300
-- [X] T081 [L6] Add YAML frontmatter with skills metadata: "Share Projects Reproducibly (B1)", "Understand Lockfile Purpose (B1)" in `lesson-6.md` lines 1-20
-- [X] T082 [L6] Proofread Lesson 6 for collaboration workflow clarity and production deployment coverage (max 7 concepts, B1 level)
+- [x] T080 [L6] Write "Try With AI" section with 5 collaboration/deployment prompts in `lesson-6.md` lines 1151-1300
+- [x] T081 [L6] Add YAML frontmatter with skills metadata: "Share Projects Reproducibly (B1)", "Understand Lockfile Purpose (B1)" in `lesson-6.md` lines 1-20
+- [x] T082 [L6] Proofread Lesson 6 for collaboration workflow clarity and production deployment coverage (max 7 concepts, B1 level)
 
 **Checkpoint**: Lesson 6 complete - readers can collaborate on UV projects with reproducible environments
 
@@ -224,8 +224,8 @@ description: "Task list for Chapter 11: Python UV - The Fastest Python Package M
 - [ ] T088 [P] Test all UV commands in lessons on Linux, document results in `specs/011-python-uv/checklists/linux-verification.md`
 - [ ] T089 Verify all diagrams render correctly in Docusaurus build
 - [ ] T090 Verify chapter navigation (previous/next links) works correctly in `book-source/sidebars.ts`
-- [ ] T091 Create end-of-chapter quiz (15 questions, 75%+ passing) in `book-source/docs/04-Part-4-Python-Fundamentals/11-python-uv/quiz.md`
-- [ ] T092 Create hands-on exercise: "Create a requests-based project with UV and AI" in `book-source/docs/04-Part-4-Python-Fundamentals/11-python-uv/exercise.md`
+- [ ] T091 Create end-of-chapter quiz (15 questions, 75%+ passing) in `apps/learn-app/docs/04-Part-4-Python-Fundamentals/11-python-uv/quiz.md`
+- [ ] T092 Create hands-on exercise: "Create a requests-based project with UV and AI" in `apps/learn-app/docs/04-Part-4-Python-Fundamentals/11-python-uv/exercise.md`
 - [ ] T093 Proofread entire chapter for voice consistency, tone, and beginner-friendliness (Grade 7+ reading level)
 
 **Checkpoint**: Chapter 11 complete and ready for validation-auditor validation
@@ -308,23 +308,27 @@ git checkout -b lesson-4-examples
 ## Implementation Strategy
 
 **MVP Scope (Must Have)**:
+
 - Lessons 1-3: Motivation → Installation → First Project (complete UV workflow foundation)
 - At least 10 complete AI prompt-response examples (4-part pattern)
 - All diagrams created and integrated
 - All commands tested on at least 2 platforms (Windows + macOS or Linux)
 
 **Post-MVP (Should Have)**:
+
 - Lessons 4-6: Dependencies → Execution → Collaboration (professional workflows)
 - All 20+ prompt-response examples complete
 - All commands tested on all 3 platforms
 - End-of-chapter quiz and hands-on exercise
 
 **Nice to Have**:
+
 - Advanced UV features appendix (Python version management, standalone scripts, tool installation)
 - Video walkthrough demonstrating AI-Driven UV workflow
 - Interactive quiz with immediate feedback
 
 **Out of Scope**:
+
 - Building and publishing Python packages to PyPI (future chapter)
 - UV internals or Rust implementation details
 - Private package index configuration
@@ -334,18 +338,18 @@ git checkout -b lesson-4-examples
 
 ## Success Criteria Mapping
 
-| Success Criterion | Validated By Task(s) |
-|-------------------|---------------------|
-| SC-001: Explain UV's value in own words | T013-T022 (Lesson 1) |
-| SC-002: Create UV project via AI | T034-T045 (Lesson 3) |
-| SC-003: Manage dependencies via AI | T046-T059 (Lesson 4) |
-| SC-004: Run code with environment isolation | T060-T070 (Lesson 5) |
-| SC-005: Share project with teammates | T071-T082 (Lesson 6) |
-| SC-006: Troubleshoot UV errors with AI | T029, T055, T067 (error scenarios in lessons 2, 4, 5) |
-| SC-007: 15+ prompt-response examples | T083, T084 (verification in Phase 9) |
-| SC-008: Understand when to use UV vs alternatives | T017 (decision framework in Lesson 1) |
-| SC-010: 90% don't need direct UV docs | T094-T096 (validation-auditor validates AI-sufficiency) |
-| SC-011: Can teach teammate about UV | T091, T092 (quiz and exercise test teaching ability) |
+| Success Criterion                                 | Validated By Task(s)                                    |
+| ------------------------------------------------- | ------------------------------------------------------- |
+| SC-001: Explain UV's value in own words           | T013-T022 (Lesson 1)                                    |
+| SC-002: Create UV project via AI                  | T034-T045 (Lesson 3)                                    |
+| SC-003: Manage dependencies via AI                | T046-T059 (Lesson 4)                                    |
+| SC-004: Run code with environment isolation       | T060-T070 (Lesson 5)                                    |
+| SC-005: Share project with teammates              | T071-T082 (Lesson 6)                                    |
+| SC-006: Troubleshoot UV errors with AI            | T029, T055, T067 (error scenarios in lessons 2, 4, 5)   |
+| SC-007: 15+ prompt-response examples              | T083, T084 (verification in Phase 9)                    |
+| SC-008: Understand when to use UV vs alternatives | T017 (decision framework in Lesson 1)                   |
+| SC-010: 90% don't need direct UV docs             | T094-T096 (validation-auditor validates AI-sufficiency) |
+| SC-011: Can teach teammate about UV               | T091, T092 (quiz and exercise test teaching ability)    |
 
 ---
 
@@ -353,30 +357,35 @@ git checkout -b lesson-4-examples
 
 **AI-Driven Development Pattern**:
 Every UV task MUST follow the 4-part pattern:
+
 1. **Prompt**: Reader's natural language intent to Claude Code/Gemini CLI
 2. **Response**: AI's command with explanation
 3. **Output**: Expected terminal output
 4. **Teaching**: AI's follow-up explanation (concepts, not syntax)
 
 **Complexity Tier Compliance**:
+
 - Max 7 new concepts per lesson section
 - AI as primary command executor (students focus on understanding, not memorization)
 - Beginner-friendly language (Grade 7+ reading level)
 - Real-world scenarios (team collaboration, production deployment)
 
 **Testing Requirements**:
+
 - All commands MUST be tested on Windows PowerShell, macOS, Linux
 - Document platform-specific variations
 - Verify all error scenarios are reproducible
 - Test with latest UV version (as of writing date)
 
 **Cross-References**:
+
 - Chapter 5 (Claude Code) and Chapter 6 (Gemini CLI) - AI CLI tools
 - Chapter 7 (Bash Essentials) - terminal competency
 - Chapter 8 (Git & GitHub) - collaboration workflow (Lesson 6)
 - Chapter 12 (Introduction to Python) - next chapter uses UV projects
 
 **Validation Checklist**:
+
 - [ ] All lessons have YAML frontmatter with skills metadata
 - [ ] All prompt-response examples complete and tested
 - [ ] All diagrams created and render correctly

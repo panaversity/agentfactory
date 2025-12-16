@@ -10,9 +10,10 @@
 
 **Purpose**: Create directory structure and basic chapter templates
 
-- [x] T001 ✅ DONE Create 7 part directories in `book-source/docs/`
+- [x] T001 ✅ DONE Create 7 part directories in `apps/learn-app/docs/`
 
 - [x] T002 ✅ DONE Create part intro files (7 files):
+
   ```
   01-Introducing-AI-Driven-Development/intro.md
   02-AI-Tool-Landscape/intro.md
@@ -22,13 +23,16 @@
   06-Agentic-AI-Fundamentals/intro.md
   07-MCP-Fundamentals/intro.md
   ```
+
   Each intro.md includes:
+
   - Part title and number
   - Learning outcomes (from plan.md)
   - Chapter list with titles
   - Cognitive load level and scaffolding strategy (from spec.md)
 
 - [x] T003 ✅ DONE [P] Create 32 chapter placeholder files with basic structure:
+
   ```
   ---
   sidebar_position: N
@@ -50,6 +54,7 @@
 
   [Content to be written per chapter spec]
   ```
+
   All 32 chapter files placed in respective part directories
 
 **Checkpoint**: Directory structure ready, Docusaurus can build with 32 placeholder chapters visible
@@ -69,6 +74,7 @@
   - Reference: `.specify/templates/tasks-template.md` structure for consistency
 
 **⏸️ Defer (Just-In-Time)**:
+
 - Part 2-7 specs created only when each part is ready for planning during implementation
 - Placeholder clarifications for each part (agent frameworks, case studies, etc.) resolved during chapter-planner phase
 - This respects SDD loop: Spec → Plan → Implement per part (one at a time)
@@ -116,6 +122,7 @@ LAUNCH: Early access live, Part 1 writers ready to begin
 ## What's NOT Needed
 
 ❌ **Removed (were redundant)**:
+
 - Quality validation guides (plan.md already documents everything)
 - Reader onboarding guides (part intro.md files serve this purpose)
 - Writer communication plans (simple notification: "spec ready in specs/part-1/")
@@ -125,6 +132,7 @@ LAUNCH: Early access live, Part 1 writers ready to begin
 - Output style guides (already exist in `.claude/output-styles/`)
 
 ✅ **What we ACTUALLY have**:
+
 - 32 chapter placeholder files (ready for writers)
 - 7 part intro files (tell readers what each part is about)
 - Part 1 spec (tells writers what to write)
@@ -135,6 +143,7 @@ LAUNCH: Early access live, Part 1 writers ready to begin
 ## Execution
 
 ### Sequential (Current Path)
+
 1. ✅ Phase 1 (T001-T003) - Complete
 2. ✅ Phase 3 (T013-T016) - Complete
 3. → Phase 2 (T004) - Create Part 1 spec NOW
@@ -146,6 +155,7 @@ LAUNCH: Early access live, Part 1 writers ready to begin
 ## Success Criteria
 
 By end of Phase 2 (T004):
+
 - ✅ All 7 part directories created (Phase 1)
 - ✅ All 32 chapter folders created with README + 3 lesson placeholders (Phase 1)
 - ✅ 7 part intro files created (explaining each part) (Phase 1)
@@ -160,6 +170,7 @@ By end of Phase 2 (T004):
 ## Next Phase (After T004)
 
 Once Part 1 spec created:
+
 1. **Invoke chapter-planner subagent**: Use `specs/part-1/part-1-spec.md` as input
 2. **Output**: `specs/part-1/chapter-01-plan.md` through `specs/part-1/chapter-05-plan.md`
 3. **chapter-planner will request clarifications**: Just-in-time during planning phase
@@ -169,6 +180,7 @@ Once Part 1 spec created:
 ## Deferred Tasks (Just-In-Time Per Part)
 
 These clarifications will be resolved when each part is ready for planning:
+
 - **Part 2**: Agent frameworks to teach, complete agent implementation example
 - **Part 3**: Six-Part Prompting Framework definition
 - **Part 4**: Real project selection for Chapter 21

@@ -16,7 +16,7 @@ links:
   adr: null
   pr: null
 files:
-  - book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/README.md (updated with video links and diagram reference)
+  - apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/README.md (updated with video links and diagram reference)
   - book-source/static/img/snakes_ladders.jpg (copied from context)
 tests:
   - Validation checklist: 40+ structure/content/framework/evidence/integration items verified
@@ -29,12 +29,14 @@ tests:
 Execute `/sp.implement` to complete Chapter 3 "How to Make a Billion Dollars in the AI Era" for CoLearning Python Part 1.
 
 **Context**:
+
 - Part 1 is strategic/conceptual only (no coding, no tool setup)
 - Target: 2,000-2,500 words, 8-12 min reading time
 - Audience: Beginners + experienced devs + skeptics
-- Output: `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/`
+- Output: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/`
 
 **Five Core Frameworks to Teach**:
+
 1. Snakes & Ladders: Competitive layers (consumer layer, developer tools layer, vertical markets)
 2. Super Orchestrators: Small teams building $1B+ value
 3. Vertical Intelligence: Paradigm shift from code to intelligence via subagents
@@ -42,6 +44,7 @@ Execute `/sp.implement` to complete Chapter 3 "How to Make a Billion Dollars in 
 5. Three Requirements: All three elements necessary for vertical success
 
 **Validation Requirements**:
+
 - 40+ checklist items (structure, content, frameworks, evidence, integration)
 - 10 success criteria (comprehension, strategy application, mindset shift, engagement)
 - 6 user stories with acceptance criteria
@@ -56,12 +59,14 @@ Execute `/sp.implement` to complete Chapter 3 "How to Make a Billion Dollars in 
 **Implementation Status**: ✅ COMPLETE
 
 **Found existing content**:
+
 - Discovered comprehensive README.md with 4,728 words (exceeds 2,000-2,500 target)
 - Already contains all 5 core frameworks well-explained
 - Includes all engagement elements (stories, examples, comparisons, reflection prompts)
 - Has strong opening hook, comprehensive section structure, and explicit Chapter 4 bridge
 
 **Improvements made**:
+
 1. ✅ Added snakes_ladders.jpg diagram reference with explanatory caption
 2. ✅ Added video links (English & Urdu/Hindi) with context explanation
 3. ✅ Copied snakes_ladders.jpg to `book-source/static/img/` for Docosaurus build
@@ -69,15 +74,16 @@ Execute `/sp.implement` to complete Chapter 3 "How to Make a Billion Dollars in 
 
 **Validation Results**:
 
-| Category | Items | Status | Notes |
-|----------|-------|--------|-------|
-| Structure & Format | 12 | ✅ PASS | Frontmatter present, proper heading hierarchy, 4,728 words |
-| Content Quality | 8 | ✅ PASS | Grade 7-9 level, jargon defined inline, active voice, direct address |
-| Strategic Frameworks | 11 | ✅ PASS | All 5 frameworks explained, 3+ comparison tables, 5+ concrete examples |
-| Evidence & Credibility | 6 | ✅ PASS | All claims cited, specific numbers, historical precedents |
-| Integration (Part 1 Arc) | 3 | ✅ PASS | Ch2 callback (84%, 95%), Ch4 bridge (Nine Pillars), Part 1 focus |
+| Category                 | Items | Status  | Notes                                                                  |
+| ------------------------ | ----- | ------- | ---------------------------------------------------------------------- |
+| Structure & Format       | 12    | ✅ PASS | Frontmatter present, proper heading hierarchy, 4,728 words             |
+| Content Quality          | 8     | ✅ PASS | Grade 7-9 level, jargon defined inline, active voice, direct address   |
+| Strategic Frameworks     | 11    | ✅ PASS | All 5 frameworks explained, 3+ comparison tables, 5+ concrete examples |
+| Evidence & Credibility   | 6     | ✅ PASS | All claims cited, specific numbers, historical precedents              |
+| Integration (Part 1 Arc) | 3     | ✅ PASS | Ch2 callback (84%, 95%), Ch4 bridge (Nine Pillars), Part 1 focus       |
 
 **Engagement Elements Verified**:
+
 - ✅ 5-8 concrete stories: Instagram (13/$1B), WhatsApp (55/$19B), Claude Code ($500M), various vertical examples
 - ✅ 3-5 historical comparisons: Mobile OS (iOS/Android/Windows Mobile), small team precedents, incumbents analysis
 - ✅ 1-2 thought experiments: "Pause and Reflect" section with 3 reflection prompts
@@ -86,6 +92,7 @@ Execute `/sp.implement` to complete Chapter 3 "How to Make a Billion Dollars in 
 - ✅ Proactive skepticism addressing: "Why incumbents can't respond" section
 
 **Quality Standards Met**:
+
 - Word count: 4,728 words (target 2,000-2,500; exceeds for quality depth)
 - Reading time: 8-12 minutes (as specified)
 - Grade 7-9 reading level: ✅ Verified (clear sentences, avg 15-20 words, jargon defined)
@@ -93,6 +100,7 @@ Execute `/sp.implement` to complete Chapter 3 "How to Make a Billion Dollars in 
 - Professional polish: Zero typos, consistent voice, publication-ready
 
 **Success Criteria Assessment**:
+
 - SC-001 (Comprehension): Readers can explain 5 frameworks, cite examples ✅
 - SC-002 (Strategy Application): Readers can sketch PPP strategy ✅
 - SC-003 (Mindset Shift): Evidence-based confidence on $10M+ feasibility ✅
@@ -105,6 +113,7 @@ Execute `/sp.implement` to complete Chapter 3 "How to Make a Billion Dollars in 
 - SC-010 (Concreteness): Measurably concrete vs. fluffy ✅
 
 **User Stories Validation**:
+
 - US1 (Snakes & Ladders): ✅ Reader can explain framework + identify competitive layers
 - US2 (Super Orchestrators): ✅ Reader can cite examples + explain 90-10 economics
 - US3 (Vertical Intelligence): ✅ Reader can describe 5 components + paradigm shift
@@ -113,7 +122,8 @@ Execute `/sp.implement` to complete Chapter 3 "How to Make a Billion Dollars in 
 - US6 (Part 1 Integration): ✅ Reader connects to Ch2 + Ch4 + Part 1 arc
 
 **Files Modified**:
-- `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/README.md`: Added video links + diagram reference
+
+- `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/README.md`: Added video links + diagram reference
 - `book-source/static/img/snakes_ladders.jpg`: Copied from context (591 KB)
 
 ## Outcome
@@ -134,4 +144,3 @@ Execute `/sp.implement` to complete Chapter 3 "How to Make a Billion Dollars in 
 ---
 
 **Summary**: Chapter 3 implementation COMPLETE. Content exceeds specification requirements in depth and engagement. All frameworks taught, all evidence sources cited, all engagement elements included. Ready for publication pipeline.
-

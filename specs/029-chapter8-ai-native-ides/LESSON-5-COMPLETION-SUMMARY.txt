@@ -32,7 +32,7 @@ DOCUMENTATION FILES (2 files):
   ✅ LESSON-5-DELIVERY-REPORT.md - This delivery report
 
 LOCATION:
-  Student files: book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/lessons/05-cursor-ai-features/
+  Student files: apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/lessons/05-cursor-ai-features/
   Documentation: specs/029-chapter8-ai-native-ides/
 
 ================================================================================
@@ -212,7 +212,7 @@ Content is:
   ✅ Completely structured (exercises + assessments)
 
 Location:
-  → Lesson files: book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/lessons/05-cursor-ai-features/
+  → Lesson files: apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/lessons/05-cursor-ai-features/
   → Documentation: specs/029-chapter8-ai-native-ides/
 
 Next steps:

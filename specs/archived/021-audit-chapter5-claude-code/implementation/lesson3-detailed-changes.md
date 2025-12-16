@@ -1,6 +1,6 @@
 # Lesson 3 Detailed Changelog
 
-**File**: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/03-core-commands-custom-commands-workflows.md`
+**File**: `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/03-core-commands-custom-commands-workflows.md`
 
 **Lesson**: Core Commands, Custom Commands & Workflows (Lesson 3, Chapter 5)
 
@@ -35,11 +35,13 @@ duration: "40 min"
 **Status**: MODIFIED
 
 **Original**:
+
 ```
 # Core Commands, Custom Commands & Workflows
 ```
 
 **Regenerated**:
+
 ```
 # Core Commands, Custom Commands & Workflows
 ```
@@ -47,6 +49,7 @@ duration: "40 min"
 **Change**: None to title itself
 
 **New Heading Added** (Line 9):
+
 ```
 ## Specification Verbs: Your Language for Intent
 ```
@@ -60,6 +63,7 @@ duration: "40 min"
 **Status**: COMPLETELY REGENERATED
 
 **Original**:
+
 ```
 In Lesson 2, you installed Claude Code and saw it work for the first time. Now comes the crucial step: **learning the commands you'll use every day** to work efficiently with your AI pair programmer.
 
@@ -67,6 +71,7 @@ This isn't just about memorizing syntax. It's about understanding *when* to use 
 ```
 
 **Regenerated** (Lines 10-20):
+
 ```
 You've learned what Claude Code is (Lesson 1: an agentic AI partner) and how to establish a working partnership (Lesson 2: checkpoints, files, memory). Now comes the crucial step: **learning to articulate what you want with precision**.
 
@@ -80,6 +85,7 @@ Think of commands not as "features to memorize," but as **verbs in a specificati
 ```
 
 **Change Rationale**:
+
 - Original framing: features to memorize, syntax understanding
 - New framing: specification language, intent expression
 - Added concrete examples of command intent mapping
@@ -109,6 +115,7 @@ Think of commands not as "features to memorize," but as **verbs in a specificati
 In Lesson 1, you learned about agentic execution. In Lesson 2, you discovered checkpoints structure conversations. Now in Lesson 3, you'll learn to **combine commands into workflows**—specifications for how work gets done.
 
 By the end of this lesson, you'll:
+
 - Recognize commands as "specification verbs" (not just features)
 - Use checkpoints as "specification milestones" (not just pauses)
 - Build decision trees that match task complexity to the right approach
@@ -117,6 +124,7 @@ By the end of this lesson, you'll:
 ```
 
 **Rationale**:
+
 - Scaffolds learning by connecting to previous lessons
 - Lists specific outcomes (specification verbs, milestones, decision trees)
 - Previews upcoming lessons (4-8)
@@ -131,16 +139,19 @@ By the end of this lesson, you'll:
 **Status**: MODIFIED
 
 **Original**:
+
 ```
 These are the commands you'll use most often. Don't try to memorize them all at once—use this table as a reference, then practice in the hands-on section.
 ```
 
 **Regenerated** (Line 36):
+
 ```
 Each command expresses a distinct specification intent. Use this table as a reference—don't memorize. The real skill is knowing **when to use which intent**, not memorizing syntax.
 ```
 
 **Change Rationale**:
+
 - Shift from feature memorization to specification literacy
 - Emphasize WHEN (decision-making) over HOW (syntax)
 - Removed assumption that students should practice "in hands-on section" (no such section in lesson)
@@ -152,11 +163,13 @@ Each command expresses a distinct specification intent. Use this table as a refe
 **Status**: SUBSTANTIALLY MODIFIED
 
 **Original Structure**:
+
 ```
 | Command | Purpose | When to Use | Example |
 ```
 
 **Regenerated Structure** (Line 38):
+
 ```
 | Command | Purpose | Specification Intent | Example |
 ```
@@ -166,16 +179,19 @@ Each command expresses a distinct specification intent. Use this table as a refe
 **Table Examples**:
 
 **Original Row** (example):
+
 ```
 | **`claude`** | Start a session | Begin a new task or ask a question | `claude` |
 ```
 
 **Regenerated Row** (Lines 40):
+
 ```
 | **`claude`** | Start a session | "I need help with this task" | `claude` or `claude "your prompt"` |
 ```
 
 **Change Rationale**:
+
 - Specification intent shows the underlying message
 - Example includes both interactive and one-off usage
 - All 11 rows similarly enhanced
@@ -187,12 +203,14 @@ Each command expresses a distinct specification intent. Use this table as a refe
 **Status**: ENTIRELY NEW SECTION
 
 **Content Added**:
+
 ```markdown
 ## 💬 AI Colearning Prompt: Map Your Work to Commands
 
 Now that you've seen the specification vocabulary, let's make it personal.
 
 ### Your Task
+
 Open Claude Code (or ChatGPT) and run this prompt:
 
 > **"I typically work on [describe your domain: web features, data pipelines, API integrations, mobile apps, system administration, etc.]. Looking at the command reference table above, which 3-4 commands would I use MOST OFTEN in MY workflow? For each one, give me a realistic example from my domain showing WHAT I'd specify (not HOW I'd code it). Then tell me: which commands might I barely use? Why?**
@@ -203,6 +221,7 @@ Open Claude Code (or ChatGPT) and run this prompt:
 **Lines**: 54-74 (21 lines)
 
 **Purpose**:
+
 - Make command vocabulary domain-specific and personal
 - Teach specification thinking in context
 - First CoLearning element (#1)
@@ -216,22 +235,24 @@ Open Claude Code (or ChatGPT) and run this prompt:
 **Status**: ENTIRELY NEW SECTION
 
 **Content Added**:
+
 ```markdown
 ## When to Use Which Approach: Decision Tree for Command Selection
 
 As you encounter tasks, you'll face a question: "Which approach should I use?" Here's how to decide:
-
 ```
+
 Task arrives
-    ↓
+↓
 Single-step task? (e.g., "Read this file" or "Explain this error")
-    ├─ YES → Use basic command: claude "..."
-    │
-    └─ NO
-        ↓
+├─ YES → Use basic command: claude "..."
+│
+└─ NO
+↓
 Multi-step task with clear phases? (e.g., "Design → Implement → Test")
-        ├─ YES → Use checkpoints (#)
-        ...
+├─ YES → Use checkpoints (#)
+...
+
 ```
 
 Decision Rule: Start simple. If you find yourself specifying the same multi-step intent repeatedly, that's a signal to create a custom command.
@@ -240,12 +261,14 @@ Decision Rule: Start simple. If you find yourself specifying the same multi-step
 **Lines**: 78-120 (43 lines)
 
 **Purpose**:
+
 - Teach specification-first decision making
 - Guide students toward appropriate tool selection
 - Prevent over-engineering simple tasks
 - Encourage custom command creation when justified
 
 **Structure**:
+
 1. Single-step → basic command
 2. Multi-step → checkpoints
 3. Multi-file → @filename
@@ -264,16 +287,19 @@ Decision Rule: Start simple. If you find yourself specifying the same multi-step
 ### Command 1: `claude` (Lines 126-148)
 
 **Original Structure** (Lines 39-60 in original):
+
 ```
 Purpose, Syntax, When to use, Example, What happens
 ```
 
 **Regenerated Structure** (Lines 126-148):
+
 ```
 Purpose, Syntax, When to use, Example, What happens, NEW SECTION: Specification Mindset
 ```
 
 **New Addition** (Lines 145-148):
+
 ```markdown
 **Specification Mindset**: When you start a conversation, you're not "using a tool"—you're briefing a co-worker. Think: "What outcome do I want?" not "What commands should I type?" Claude Code's agentic architecture (from Lesson 1) means you specify intent, and AI determines execution.
 ```
@@ -285,6 +311,7 @@ Purpose, Syntax, When to use, Example, What happens, NEW SECTION: Specification 
 **Status**: PRESERVED (100% technical content)
 
 **Changes**:
+
 - Line numbers updated due to insertions
 - All syntax examples unchanged
 - All examples unchanged
@@ -300,6 +327,7 @@ Purpose, Syntax, When to use, Example, What happens, NEW SECTION: Specification 
 **Status**: ENTIRELY NEW SECTION
 
 **Content Added** (37 lines):
+
 ```markdown
 ## 🎓 Expert Insight: Checkpoints as Specification Markers
 
@@ -308,6 +336,7 @@ In Lesson 1, you learned that Claude Code is agentic—it automatically breaks d
 **Checkpoints aren't just pauses. They're specification boundaries.**
 
 Think about software specifications. A professional spec has:
+
 - **Goals** (what we're building)
 - **Constraints** (what we can't do)
 - **Acceptance criteria** (how we verify success)
@@ -315,9 +344,13 @@ Think about software specifications. A professional spec has:
 
 When you write:
 ```
+
 # Read user data from database
+
 # Validate schema against requirements
+
 # Generate performance report
+
 ```
 
 You're not writing prose. You're writing **verifiable milestones**. Each checkpoint is a specification stating: "When we reach this point, this outcome should be verified."
@@ -332,6 +365,7 @@ When you think of checkpoints as specification milestones, you naturally ask: "W
 ```
 
 **Purpose**:
+
 - Elevate checkpoints from tactical to strategic
 - Connect practical tool to professional software specification
 - Introduce acceptance criteria thinking
@@ -348,6 +382,7 @@ When you think of checkpoints as specification milestones, you naturally ask: "W
 **Original Content**: No dedicated practice exercise section existed
 
 **Regenerated Content** (32 lines):
+
 ```markdown
 ## 🤝 Practice Exercise: Write Specifications, Not Commands
 
@@ -358,25 +393,30 @@ Here's the core skill we're building: **Writing clear specifications that let AI
 1. **Choose a task you do regularly** (bug fix, code review, feature addition, API integration, database query, etc.)
 
 2. **Write 3 sentences describing WHAT you want** (outcome), not HOW to do it (steps)
+
    - Bad: "Use grep to find all error logs, then count them, then sort by date"
    - Good: "I need a summary of errors from yesterday—count by type, sorted newest first"
 
 3. **If your task has multiple phases**, use checkpoints to structure it:
-   ```
-   # Phase 1: Gather data
-   # Phase 2: Validate and clean
-   # Phase 3: Generate insights
-   ```
+```
+
+# Phase 1: Gather data
+
+# Phase 2: Validate and clean
+
+# Phase 3: Generate insights
+
+```
 
 4. **Give this specification to Claude Code** and observe what it proposes
-   - Does Claude's approach match your initial mental "how"?
-   - Did Claude suggest something you hadn't thought of?
-   - Did Claude ask clarifying questions?
+- Does Claude's approach match your initial mental "how"?
+- Did Claude suggest something you hadn't thought of?
+- Did Claude ask clarifying questions?
 
 5. **Reflect**:
-   - What did you learn from Claude's approach?
-   - Did your specification lack detail? (What was unclear?)
-   - How would you refine the specification for next time?
+- What did you learn from Claude's approach?
+- Did your specification lack detail? (What was unclear?)
+- How would you refine the specification for next time?
 
 ### Expected Outcome
 
@@ -384,12 +424,14 @@ You'll practice the PRIMARY skill of AI-native development: articulating intent 
 ```
 
 **Purpose**:
+
 - Core skill practice (WHAT vs. HOW)
 - Active specification writing
 - Observation and reflection
 - Practice Exercise #1 (of 2)
 
 **Key Teaching Points**:
+
 - WHAT (outcome) vs. HOW (steps) distinction
 - Checkpoints structure multi-phase work
 - Iteration and refinement through feedback
@@ -403,6 +445,7 @@ You'll practice the PRIMARY skill of AI-native development: articulating intent 
 **Status**: SUBSTANTIALLY ENHANCED
 
 **Original Introduction** (lines 317-320 in original):
+
 ```
 Custom slash commands are **reusable prompt templates** you create for tasks you do repeatedly.
 
@@ -410,6 +453,7 @@ Custom slash commands are **reusable prompt templates** you create for tasks you
 ```
 
 **Regenerated Introduction** (lines 481-487):
+
 ```
 Custom slash commands are **reusable prompt templates** you create for tasks you do repeatedly. They encode your workflows as specifications—once you describe the workflow, you invoke it by name.
 
@@ -417,6 +461,7 @@ Custom slash commands are **reusable prompt templates** you create for tasks you
 ```
 
 **Enhancement Rationale**:
+
 - Explicit framing as "specifications made executable"
 - Emphasizes that command NAME is still a specification
 
@@ -425,10 +470,12 @@ Custom slash commands are **reusable prompt templates** you create for tasks you
 **Status**: ENTIRELY NEW SUBSECTION
 
 **Content Added**:
+
 ```markdown
 When you find yourself specifying the same multi-step workflow repeatedly, you've discovered a **specification pattern**. Custom commands let you encode that pattern once.
 
 **Strategic Value**:
+
 - **Efficiency**: `/deploy` vs. typing 12-step specification each time
 - **Consistency**: Team uses same specification (no variation in deployment steps)
 - **Organizational Knowledge**: YOUR workflows become executable specifications
@@ -438,6 +485,7 @@ When you find yourself specifying the same multi-step workflow repeatedly, you'v
 ```
 
 **Purpose**:
+
 - Explicit Principle 13 reference
 - Strategic (not just tactical) framing
 - Pattern recognition teaching
@@ -451,6 +499,7 @@ When you find yourself specifying the same multi-step workflow repeatedly, you'v
 **Status**: PRESERVED (100% technical content)
 
 **Changes**:
+
 - Line numbers updated due to additions
 - All syntax unchanged
 - All examples unchanged
@@ -463,6 +512,7 @@ When you find yourself specifying the same multi-step workflow repeatedly, you'v
 **Status**: ENTIRELY NEW SECTION
 
 **Content Added** (15 lines):
+
 ```markdown
 ## 🎓 Expert Insight: From Commands to Ecosystem
 
@@ -482,6 +532,7 @@ You're learning the vocabulary now (Tier 1); upcoming lessons show how to compos
 ```
 
 **Purpose**:
+
 - Architectural context for lesson
 - Preview of upcoming lessons (4, 5, 7, 8)
 - Tier 1/2/3 progression framing
@@ -496,7 +547,8 @@ You're learning the vocabulary now (Tier 1); upcoming lessons show how to compos
 **Status**: ENTIRELY NEW SECTION
 
 **Content Added** (38 lines):
-```markdown
+
+````markdown
 ## 🤝 Practice Exercise: Create Your First Custom Command
 
 Now let's build a reusable workflow specification.
@@ -504,6 +556,7 @@ Now let's build a reusable workflow specification.
 ### Your Task
 
 1. **Identify a 3-5 step workflow you repeat often**
+
    - Examples: git commit flow, test+build, documentation generation, API integration setup, database backup procedure
 
 2. **Write the specification in plain language first**:
@@ -511,18 +564,25 @@ Now let's build a reusable workflow specification.
    What: [One-line description of workflow]
    Outcome: [What success looks like]
    Steps:
+
    # Check [initial state]
+
    # Review [decision point]
+
    # Suggest [collaborative point]
+
    # Execute [final action]
    ```
+````
 
 3. **Convert to custom command** following the lesson walkthrough above
+
    - Create `.claude/commands/your-command-name.md`
    - Include 3-5 clear instructions
    - Use `$ARGUMENTS` for variable input
 
 4. **Test it**: Does `/your-command` execute your specification correctly?
+
    - Run the command
    - Verify output matches your intention
    - Note what Claude understood vs. misunderstood
@@ -535,6 +595,7 @@ Now let's build a reusable workflow specification.
 ### Expected Outcome
 
 You'll have a working custom command that encodes YOUR workflow as a reusable specification.
+
 ```
 
 **Purpose**:
@@ -555,35 +616,43 @@ You'll have a working custom command that encodes YOUR workflow as a reusable sp
 
 **Original**:
 ```
+
 Prompt 1: Command Selection
 Prompt 2: Custom Command Creation
 Prompt 3: Workflow Debugging
 Prompt 4: Usage Optimization
+
 ```
 
 **Regenerated Structure** (Lines 605-665):
 ```
+
 Prompt 1: AI as Teacher (Suggests Patterns)
 Prompt 2: AI as Student (Learns Your Style)
 Prompt 3: AI as Co-Worker (Collaborative Refinement)
 Reflection Prompt (After All Three)
+
 ```
 
 ### Prompt 1: AI as Teacher (New, Lines 609-619)
 
 **Original**: "Command Selection" prompt
 ```
+
 I'm working on [describe your task]. Which Claude Code commands should I use,
 and in what order? Give me a step-by-step workflow with specific commands...
+
 ```
 
 **Regenerated**:
 ```
+
 I work on [your domain]. Teach me 3 specification patterns I should master
 for common tasks in this domain. For each pattern, show me:
 (1) the specification structure using checkpoints,
 (2) an example prompt,
 (3) why this pattern is reusable and when to use it.
+
 ```
 
 **Rationale**:
@@ -598,16 +667,20 @@ for common tasks in this domain. For each pattern, show me:
 
 **Original**: "Custom Command Creation" prompt
 ```
+
 I do this task repeatedly: [describe repetitive task]. Help me create a custom
 slash command for it...
+
 ```
 
 **Regenerated**:
 ```
+
 Here's how I typically specify work: [paste 2-3 examples of how you
 describe tasks to Claude]. Analyze my specification style. What's clear?
 What could be more specific? What detail do I always forget? Suggest 2-3
 improvements to make MY specifications more effective.
+
 ```
 
 **Rationale**:
@@ -624,14 +697,19 @@ improvements to make MY specifications more effective.
 
 **Content Added**:
 ```
+
 # Read the authentication code in /src/auth
+
 # Identify error handling gaps and security issues
+
 # Propose 3 improvements with code examples
+
 # Explain tradeoffs of each approach
 
 Execute this specification step-by-step. Pause at each checkpoint for my
 feedback before proceeding to the next step. This helps me verify each
 phase.
+
 ```
 
 **Rationale**:
@@ -648,14 +726,17 @@ phase.
 
 **Content Added**:
 ```
+
 Thinking about these three interactions:
+
 - Prompt 1: Where did you learn something from Claude?
 - Prompt 2: Where did Claude learn something about you?
 - Prompt 3: Where did you and Claude refine each other's thinking?
 
 This is the convergence pattern: bidirectional learning. How did this
 experience differ from just asking Claude to "write code"?
-```
+
+````
 
 **Rationale**:
 - Surfaces meta-learning
@@ -678,9 +759,10 @@ Commands are your **specification vocabulary**. Checkpoints are your **specifica
 Your value in AI-native development isn't memorizing command syntax. Your value is articulating intent so clearly that AI executes it precisely, and then knowing how to refine through iteration. Every lesson from here forward teaches you deeper ways to compose specifications—from custom commands, to subagents, to orchestration.
 
 You're building the "new syntax" now.
-```
+````
 
 **Purpose**:
+
 - Lesson closure (as required by AI-first closure pattern)
 - Reinforces core principle
 - Previews future learning
@@ -697,6 +779,7 @@ You're building the "new syntax" now.
 **Status**: REMOVED (per AI-first closure pattern)
 
 **Original Content** (lines ~420-429):
+
 ```
 [Had separate Key Takeaways and What's Next sections]
 ```
@@ -709,36 +792,36 @@ You're building the "new syntax" now.
 
 ### Quantitative Summary
 
-| Category | Count |
-|----------|-------|
-| Sections Entirely New | 6 |
-| Sections Substantially Enhanced | 4 |
-| Sections Preserved 100% | 8 |
-| Total Lines (Original) | ~429 |
-| Total Lines (Regenerated) | ~675 |
-| New Content Added | ~910 words |
-| Content Preserved | ~565 words |
-| Content Modified | ~200 words |
-| **Preservation Ratio** | **52%** |
-| **Regeneration Ratio** | **48%** |
+| Category                        | Count      |
+| ------------------------------- | ---------- |
+| Sections Entirely New           | 6          |
+| Sections Substantially Enhanced | 4          |
+| Sections Preserved 100%         | 8          |
+| Total Lines (Original)          | ~429       |
+| Total Lines (Regenerated)       | ~675       |
+| New Content Added               | ~910 words |
+| Content Preserved               | ~565 words |
+| Content Modified                | ~200 words |
+| **Preservation Ratio**          | **52%**    |
+| **Regeneration Ratio**          | **48%**    |
 
 ### Quality Metrics
 
-| Metric | Status |
-|--------|--------|
-| Command table 100% preserved | ✅ |
-| Command syntax 100% preserved | ✅ |
-| Custom command mechanics 100% preserved | ✅ |
-| Constitutional Principle 3 references | 8+ |
-| Constitutional Principle 13 references | 3 |
-| Constitutional Principle 18 references | 3 |
-| CoLearning elements | 6 (exceeds 3+ requirement) |
-| Three Roles Framework instances | 3 |
-| Practice exercises | 2 |
-| Expert insights | 2 |
-| New concepts (A1-A2 level) | 6 |
-| Decision tree clarity | ✅ |
-| Readability (Grade 7-8 target) | ✅ |
+| Metric                                  | Status                     |
+| --------------------------------------- | -------------------------- |
+| Command table 100% preserved            | ✅                         |
+| Command syntax 100% preserved           | ✅                         |
+| Custom command mechanics 100% preserved | ✅                         |
+| Constitutional Principle 3 references   | 8+                         |
+| Constitutional Principle 13 references  | 3                          |
+| Constitutional Principle 18 references  | 3                          |
+| CoLearning elements                     | 6 (exceeds 3+ requirement) |
+| Three Roles Framework instances         | 3                          |
+| Practice exercises                      | 2                          |
+| Expert insights                         | 2                          |
+| New concepts (A1-A2 level)              | 6                          |
+| Decision tree clarity                   | ✅                         |
+| Readability (Grade 7-8 target)          | ✅                         |
 
 ---
 
@@ -838,7 +921,7 @@ You're building the "new syntax" now.
 ### Files Modified
 
 ```
-/Users/mjs/Documents/code/panaversity-official/tutorsgpt/part-2/book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/03-core-commands-custom-commands-workflows.md
+/Users/mjs/Documents/code/panaversity-official/tutorsgpt/part-2/apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/03-core-commands-custom-commands-workflows.md
 ```
 
 ### Related Documentation

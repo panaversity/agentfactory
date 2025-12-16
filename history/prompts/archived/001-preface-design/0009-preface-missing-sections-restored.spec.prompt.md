@@ -9,14 +9,22 @@ feature: 001-preface-design
 branch: 001-preface-design
 user: user
 command: Restore missing learning outcomes and sections from context specification
-labels: ["preface", "learning-outcomes", "examples", "organizational-guidance", "new-era", "practice"]
+labels:
+  [
+    "preface",
+    "learning-outcomes",
+    "examples",
+    "organizational-guidance",
+    "new-era",
+    "practice",
+  ]
 links:
   spec: null
   ticket: null
   adr: null
   pr: null
 files:
-  - book-source/docs/preface-agent-native.mdx
+  - apps/learn-app/docs/preface-agent-native.mdx
 tests:
   - Comprehensive section alignment check
   - Content completeness validation
@@ -40,37 +48,44 @@ User identified that critical sections and learning outcomes from the original s
 **Additions Made:**
 
 1. **Examples in Spectrum Descriptions** (lines 175, 191, 209)
+
    - AI Assisted: e-commerce website example
    - AI Driven: REST API generation example
    - AI Native: customer support agent example
 
 2. **Spectrum in Practice** section (lines 213-226)
+
    - Visual diagram showing three-level progression
    - Plain-language descriptions of each level
 
 3. **Where Should Your Organization Be?** section (lines 327-334)
+
    - Startup guidance (Level 3-4)
    - Enterprise guidance (Levels 2-3)
    - Developer guidance (Level 3-4 focus)
 
 4. **Why This Book Focuses** section (lines 337-346)
+
    - Dual emphasis on AIDD and AI-Native
    - "Sweet spot" positioning
    - Future preparedness promise
 
 5. **Enhanced Learning Outcomes** (lines 352-361)
+
    - Checkmark format for clarity
    - Specific tools mentioned (Docker, Kubernetes, Dapr, Ray)
    - Agentic system orchestration
    - Removed generic phrasing
 
 6. **Who This Book Is For** section (lines 455-463)
+
    - Students/self-learners
    - Developers
    - Educators
    - Entrepreneurs/innovators
 
 7. **The New Era of Software** section (lines 389-460)
+
    - Paradigm shift narrative
    - AIDD 4-phase workflow explanation
    - Specification as living contract
@@ -86,7 +101,7 @@ User identified that critical sections and learning outcomes from the original s
 
 - ✅ Impact: All missing sections from original specification now integrated; preface is comprehensive and complete
 - 🧪 Tests: Section completeness check against context/01_preface/readme.md — PASS
-- 📁 Files: Single file modified: `book-source/docs/preface-agent-native.mdx` (428 → 568 lines, +140 lines)
+- 📁 Files: Single file modified: `apps/learn-app/docs/preface-agent-native.mdx` (428 → 568 lines, +140 lines)
 - 🔁 Next prompts: Visual review of complete preface; Docusaurus build testing; Technical review against constitution
 - 🧠 Reflection: Preface now includes all essential sections: vision, philosophy, spectrum with examples, maturity guidance, learning outcomes, audience, era explanation, and practice. Balanced depth with accessibility across all reader personas.
 

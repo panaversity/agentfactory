@@ -9,41 +9,48 @@ feature: 001-011-chapter-11-context-engineering-rewrite
 branch: 001-011-chapter-11-context-engineering-rewrite
 user: mjs
 command: continue (Phase 4 implementation)
-labels: [implementation, loopflow-v2, content-implementer, validation-auditor, orchestration]
+labels:
+  [
+    implementation,
+    loopflow-v2,
+    content-implementer,
+    validation-auditor,
+    orchestration,
+  ]
 links:
   spec: specs/001-011-chapter-11-context-engineering-rewrite/spec.md
   ticket:
   adr: history/adr/0013-nine-lesson-structure-for-context-engineering-chapter.md, history/adr/0014-three-roles-framework-integration-lessons-3-5.md, history/adr/0015-hands-on-discovery-pedagogy-anti-convergence-from-chapter-10.md
   pr:
 files:
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/README.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/README.md
     operation: write
     lines_changed: 196
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/01-context-windows-token-counting.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/01-context-windows-token-counting.md
     operation: write
     lines_changed: 428
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/02-degradation-symptoms-manual-tracking.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/02-degradation-symptoms-manual-tracking.md
     operation: write
     lines_changed: 907
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/03-progressive-loading-strategy.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/03-progressive-loading-strategy.md
     operation: write
     lines_changed: 621
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/04-context-compression-session-restart.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/04-context-compression-session-restart.md
     operation: write
     lines_changed: 685
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/05-context-isolation-parallel-tasks.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/05-context-isolation-parallel-tasks.md
     operation: write
     lines_changed: 639
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/06-memory-files-persistent-intelligence.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/06-memory-files-persistent-intelligence.md
     operation: write
     lines_changed: 475
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/07-tool-selection-framework.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/07-tool-selection-framework.md
     operation: write
     lines_changed: 392
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/08-hands-on-debugging-optimization.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/08-hands-on-debugging-optimization.md
     operation: write
     lines_changed: 754
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/09-capstone-spec-driven-orchestration.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/09-capstone-spec-driven-orchestration.md
     operation: write
     lines_changed: 524
 tests:
@@ -68,6 +75,7 @@ Continue with Phase 4 implementation after completing Phases 0-3 (specification,
 **Context**: All planning artifacts complete (spec.md 512 lines, plan.md 927 lines, tasks.md 427 lines with 94 tasks, 3 ADRs). Cross-artifact consistency analysis PASSED with 100% coverage, zero constitutional violations.
 
 **Implementation Workflow**:
+
 - Phase 4 (T001-T010): Setup tasks (chapter directory, README, research verification)
 - Phase 4 (T011-T094): Invoke content-implementer subagents for 9 lessons sequentially
 - Phase 4 (Phase 10 polish): Cross-cutting validation
@@ -81,6 +89,7 @@ Continue with Phase 4 implementation after completing Phases 0-3 (specification,
 **PHASE 4 IMPLEMENTATION EXECUTED SUCCESSFULLY**
 
 ### Setup Tasks (T001-T010)
+
 ✅ Created chapter directory structure
 ✅ Created README.md with complete learning objectives, lesson navigation, research foundation, success criteria (196 lines)
 ✅ Research verification already completed during specification phase (Claude Sonnet 4.5, Gemini 1.5 Pro, Karpathy principle, Anthropic degradation research)
@@ -90,12 +99,14 @@ Continue with Phase 4 implementation after completing Phases 0-3 (specification,
 **Subagent Invocations** (4 total, covering 9 lessons):
 
 1. **content-implementer: Lessons 1-2** (US1 Manual Foundation)
+
    - Created Lesson 1: Context Windows and Token Counting (435 lines, 7 concepts, Stage 1)
    - Created Lesson 2: Degradation Symptoms and Manual Tracking (907 lines, 8 concepts, Stage 1)
    - Validation: Manual-only exercises, no AI collaboration, discovery sequences present
    - Deliverable: LESSON-1-2-VALIDATION-REPORT.md confirming quality
 
 2. **content-implementer: Lesson 3** (US2 Progressive Loading with Three Roles)
+
    - Created Lesson 3: Progressive Loading Strategy (621 lines, 9 concepts, Stage 2)
    - **Three Roles Demonstration** (CRITICAL for Test-003):
      - AI as Teacher: Suggests Foundation→Current→On-Demand pattern
@@ -104,6 +115,7 @@ Continue with Phase 4 implementation after completing Phases 0-3 (specification,
    - Deliverable: LESSON-3-VERIFICATION-REPORT.md with evidence mapping
 
 3. **content-implementer: Lessons 4-5** (US3 Compression & Isolation with Three Roles)
+
    - Created Lesson 4: Context Compression (27KB, 8 concepts, Stage 2, Three Roles in checkpoint creation)
    - Created Lesson 5: Context Isolation (25KB, 8 concepts, Stage 2, Three Roles in isolation decision)
    - Both lessons demonstrate complete Three Roles cycles with 3+ iterations
@@ -121,6 +133,7 @@ Continue with Phase 4 implementation after completing Phases 0-3 (specification,
 ### Phase 10 Polish (Cross-Cutting Validation)
 
 Executed cross-cutting validation tasks:
+
 - ✅ Lesson ending protocol check (identified 2 violations)
 - ✅ Stage label check (no forbidden labels in student text)
 - ✅ Three Roles demonstration validation (Lessons 3, 4, 5 all complete)
@@ -131,11 +144,13 @@ Executed cross-cutting validation tasks:
 **Comprehensive technical validation across 4 dimensions**:
 
 1. **Technical Correctness**: PASS
+
    - All context window specs verified (Claude 200K/1M, Gemini 2M)
    - All research citations accurate (Karpathy, Anthropic, Google Cloud)
    - Zero hallucinations detected
 
 2. **Pedagogical Effectiveness**: ISSUES FOUND
+
    - ✅ Layer progression (Stage 1→2→3→4) validated
    - ✅ Three Roles demonstrations complete in Lessons 3, 4, 5
    - ✅ Cognitive load within B1 limits (6-10 concepts per lesson)
@@ -143,6 +158,7 @@ Executed cross-cutting validation tasks:
    - ❌ **MAJOR: Lesson 9 ending violation** (forbidden "Success" section after "Try With AI")
 
 3. **Factual Accuracy**: PASS
+
    - All statistics cited from authoritative sources
    - Tool specifications current as of 2025-01-18
    - Examples realistic and production-relevant
@@ -159,6 +175,7 @@ Executed cross-cutting validation tasks:
 **Fixed Both MAJOR Issues**:
 
 1. ✅ **Lesson 1**: Deleted lines 431-436 ("What's Next in Lesson 2" section)
+
    - Lesson now ends with "Try With AI" section only (Test-006 compliant)
 
 2. ✅ **Lesson 9**: Deleted lines 525-542 ("Success: What Does Your Capstone Demonstrate?" section)
@@ -169,6 +186,7 @@ Executed cross-cutting validation tasks:
 ### Phase 5 Meta-Learning Capture
 
 **Created this PHR** (0006-full-implementation-orchestration.general.prompt.md) documenting:
+
 - Complete implementation workflow
 - Subagent orchestration pattern
 - Validation findings and remediation

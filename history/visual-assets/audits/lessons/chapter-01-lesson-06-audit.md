@@ -11,6 +11,7 @@
 ## Identified Visual Opportunities
 
 ### VISUAL ASSET 1: AI Coding Tools Evolution Timeline
+
 - **Type**: Vertical Timeline with Generation Cards
 - **Location**: Line 63 (after "Let's trace the progression over the past few years:")
 - **Content**: Four-generation evolution (Gen 1: Autocomplete 2021-22, Gen 2: Function Generation 2022-23, Gen 3: Feature Implementation 2023-24, Gen 4: Autonomous Agents 2024-25) with capability descriptions, examples, limitations, paradigms, and autonomy meter showing 20%-40%-70%-90% progression
@@ -39,5 +40,5 @@
 
 ---
 
-**Prompts embedded in**: `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/06-autonomous-agent-era.md`
+**Prompts embedded in**: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/06-autonomous-agent-era.md`
 **Ready for image generation**: ✅ Yes

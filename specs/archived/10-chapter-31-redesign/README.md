@@ -12,6 +12,7 @@
 **Objective**: Completely redesign Chapter 31 (SpecifyPlus Hands-On) to eliminate hallucinated commands, teach the actual SpecifyPlus specification-driven development (SDD) workflow, and center on the AIDD (AI-Driven Development) paradigm from the book's Preface.
 
 **Scope**:
+
 - Eliminate incorrect `/sp.specify` and `/sp.plan` usage (were shown as terminal commands; should be within Claude Code)
 - Remove overlapping Lesson 1 content (specs already covered in Chapter 1)
 - Integrate missing `/sp.implement` command for code generation and validation
@@ -30,6 +31,7 @@
 **File**: `specs/010-chapter-31-redesign/spec.md` (18 KB)
 
 **Contents**:
+
 - Executive Summary
 - Topic Overview
 - 5 User Stories (P1-P3)
@@ -53,6 +55,7 @@
 **File**: `specs/010-chapter-31-redesign/plan.md` (1,555 lines)
 
 **Contents**:
+
 - Plan Architecture (12 sections)
 - Detailed Lesson Plan (7 lessons + capstone)
   - Lesson 1: SMART Acceptance Criteria (2h, A2)
@@ -80,6 +83,7 @@
 **File**: `specs/010-chapter-31-redesign/tasks.md` (47 atomic tasks across 10 phases)
 
 **Contents**:
+
 - **Phase 1**: Setup (2 tasks) — Branch initialization
 - **Phase 2**: Foundational Architecture (6 tasks) — Lesson templates, rubrics, glossary
 - **Phase 3-8**: User Stories & Lessons (37 tasks) — 7 lessons + assessments
@@ -89,6 +93,7 @@
 **Task Format**: Strict checklist with task IDs (T001-T049), priority markers [P], story labels [US1-US5], descriptions, and file paths
 
 **Features**:
+
 - Dependency graph showing completion order
 - Parallel execution opportunities marked
 - MVP scope (Lessons 1-3)
@@ -102,11 +107,12 @@
 
 ### Phase 4: Implementation (Lesson Content) ✅
 
-**Location**: `/book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/`
+**Location**: `/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/`
 
 **Files Created**:
 
 1. **01-smart-acceptance-criteria.md** (15 KB)
+
    - **Duration**: 2 hours
    - **Proficiency**: A2 (Understand + Simple Application)
    - **Learning Objectives**:
@@ -118,6 +124,7 @@
    - **Code Examples**: Calculator and grading system comparisons
 
 2. **02-specifyplus-structure.md** (16 KB)
+
    - **Duration**: 1.5 hours
    - **Proficiency**: A2 (Understand + Simple Application)
    - **Learning Objectives**:
@@ -129,6 +136,7 @@
    - **Installation**: Covers `pip install specifyplus` and `uvx specifyplus init project-name`
 
 3. **03-complete-specification.md** (17 KB)
+
    - **Duration**: 2 hours
    - **Proficiency**: A2 (Understand + Simple Application)
    - **Learning Objectives**:
@@ -140,6 +148,7 @@
    - **Project**: Grading system specification template
 
 4. **04-refining-specs-with-sp-specify.md** (12 KB)
+
    - **Duration**: 1.5 hours
    - **Proficiency**: B1 (Application to unfamiliar problems)
    - **Learning Objectives**:
@@ -151,6 +160,7 @@
    - **Key**: Shows `/sp.specify` WITHIN Claude Code (NOT terminal command)
 
 5. **05-planning-sp-plan.md** (14 KB)
+
    - **Duration**: 1.5 hours
    - **Proficiency**: B1 (Application to unfamiliar problems)
    - **Learning Objectives**:
@@ -162,6 +172,7 @@
    - **Key**: Shows `/sp.plan` WITHIN Claude Code (NOT terminal command)
 
 6. **06-decomposing-tasks-sp-tasks.md** (17 KB)
+
    - **Duration**: 1.5 hours
    - **Proficiency**: B1 (Application to unfamiliar problems)
    - **Learning Objectives**:
@@ -185,6 +196,7 @@
    - **Key**: Shows `/sp.implement` WITHIN Claude Code (NOT terminal command)
 
 **Quality Checks** ✅:
+
 - All 7 lessons created with complete YAML frontmatter
 - All lessons follow consistent structure
 - All code examples are demonstrative and correct
@@ -202,6 +214,7 @@
 **Technical Review Report**: Comprehensive validation completed
 
 **Key Findings**:
+
 - ✅ **No Critical Issues**: All essential requirements met
 - ✅ **No Major Issues**: Content quality and pedagogical structure sound
 - ✅ **Minor Issues Only**: 3 optional polish items (non-blocking)
@@ -210,11 +223,13 @@
   - Optional: Standardize cascade diagram formatting
 
 **Validation Tasks Completed**:
+
 - **T047**: Final Validation Check ✅
 - **T048**: Technical Review ✅
 - **T049**: Completion Checklist ✅
 
 **Validation Checklist**:
+
 - [x] All 7 lessons present with correct naming
 - [x] All YAML frontmatter complete
 - [x] All lessons follow consistent structure
@@ -239,33 +254,36 @@
 
 ### From Original to Redesigned
 
-| Aspect | Original | Redesigned | Status |
-|--------|----------|-----------|--------|
-| **Lesson 1 Content** | Overlapped with Chapter 1 specs | SMART criteria (new skill) | ✅ Fixed |
-| **Tool Commands** | Shown as terminal commands | Shown within Claude Code | ✅ Fixed |
-| **Lesson 4-5** | `/sp.specify`, `/sp.plan` as shell commands | Within Claude Code, orchestrated | ✅ Fixed |
-| **Lesson 7** | Missing `/sp.implement` | Full AIDD cycle with implementation | ✅ Added |
-| **Mini Project 2** | Vague, incomplete scope | Removed (moved to Chapter 32) | ✅ Removed |
-| **Hallucinations** | Multiple incorrect descriptions | All verified against documentation | ✅ Corrected |
-| **Validation Focus** | Implicit | Explicit core skill (Lesson 7) | ✅ Added |
-| **Total Lessons** | 9 lessons + 2 projects | 7 lessons + capstone project | ✅ Streamlined |
-| **Total Duration** | Variable, unclear | 14.5 hours (2h, 1.5h, 2h, 1.5h, 1.5h, 1.5h, 2.5h) | ✅ Clear |
+| Aspect               | Original                                    | Redesigned                                        | Status         |
+| -------------------- | ------------------------------------------- | ------------------------------------------------- | -------------- |
+| **Lesson 1 Content** | Overlapped with Chapter 1 specs             | SMART criteria (new skill)                        | ✅ Fixed       |
+| **Tool Commands**    | Shown as terminal commands                  | Shown within Claude Code                          | ✅ Fixed       |
+| **Lesson 4-5**       | `/sp.specify`, `/sp.plan` as shell commands | Within Claude Code, orchestrated                  | ✅ Fixed       |
+| **Lesson 7**         | Missing `/sp.implement`                     | Full AIDD cycle with implementation               | ✅ Added       |
+| **Mini Project 2**   | Vague, incomplete scope                     | Removed (moved to Chapter 32)                     | ✅ Removed     |
+| **Hallucinations**   | Multiple incorrect descriptions             | All verified against documentation                | ✅ Corrected   |
+| **Validation Focus** | Implicit                                    | Explicit core skill (Lesson 7)                    | ✅ Added       |
+| **Total Lessons**    | 9 lessons + 2 projects                      | 7 lessons + capstone project                      | ✅ Streamlined |
+| **Total Duration**   | Variable, unclear                           | 14.5 hours (2h, 1.5h, 2h, 1.5h, 1.5h, 1.5h, 2.5h) | ✅ Clear       |
 
 ---
 
 ## 🏛️ Constitutional Alignment
 
 **Principle 14 (Planning-First)**:
+
 - ✅ Specifications are primary throughout
 - ✅ Implementation is secondary and specification-driven
 - ✅ Lessons 1-3 emphasize manual specification thinking before tools
 
 **Principle 15 (Validation-Before-Trust)**:
+
 - ✅ Lesson 7 emphasizes validation as core skill
 - ✅ 6-phase validation protocol detailed
 - ✅ Students learn to validate AI-generated code
 
 **Domain Skills Integrated** (All 9 present):
+
 - ✅ learning-objectives: Clear, measurable outcomes with Bloom's verbs
 - ✅ concept-scaffolding: Progressive complexity (manual → tools → integration)
 - ✅ technical-clarity: Clear explanations avoiding jargon
@@ -277,6 +295,7 @@
 - ✅ Additional: CEFR/Bloom's proficiency mapping, cognitive load validation
 
 **AIDD Paradigm** (From Preface):
+
 - ✅ Human intent (Lesson 1-3: clear specifications)
 - ✅ AI generation (Lesson 4-6: tool assistance)
 - ✅ Human validation (Lesson 7: 6-phase protocol)
@@ -294,7 +313,7 @@
 ├── tasks.md                             (47 tasks)
 └── chapter-completion-checklist.md      (Validation tracking)
 
-/book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/
+/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/
 ├── README.md                            (Chapter overview)
 ├── 01-smart-acceptance-criteria.md      (15 KB, 2h, A2)
 ├── 02-specifyplus-structure.md          (16 KB, 1.5h, A2)
@@ -385,6 +404,7 @@ By completing this chapter, students will understand:
 **Branch**: `010-chapter-31-redesign` (commit `8f3916e`)
 
 **Next Steps**:
+
 1. ✅ All phases complete
 2. ✅ All validation tasks passed
 3. ✅ All files committed to branch
@@ -394,6 +414,7 @@ By completing this chapter, students will understand:
 7. → Schedule annual maintenance review
 
 **Critical Path**:
+
 - No blocking issues
 - No critical issues
 - No major issues
@@ -405,6 +426,7 @@ By completing this chapter, students will understand:
 ## 📚 Integration with Book
 
 **Book Context**:
+
 - **Part**: 5 (Specification-Kit-Plus Methodology)
 - **Chapter**: 31 (SpecifyPlus Hands-On — Redesigned)
 - **Part Complexity Tier**: Intermediate (for learners with Chapters 1-30 background)
@@ -412,11 +434,13 @@ By completing this chapter, students will understand:
 - **Next Chapter**: Chapter 32 (Advanced capstone project)
 
 **Book Flow**:
+
 - Chapters 1-30: Foundation (Parts 1-4)
 - Chapter 31: Specification-driven development (Part 5) ← You are here
 - Chapters 32+: Advanced topics (Parts 6-13)
 
 **Dependency Mapping**:
+
 - Students need: Python basics (Chapter 1), problem decomposition (Chapter 2), SDD concepts (Chapter 30, optional)
 - Students will use: SMART criteria (Chapter 31) throughout Part 5+
 - Students will apply: `/sp.specify`, `/sp.plan`, `/sp.tasks`, `/sp.implement` in Chapter 32 capstone
@@ -425,20 +449,20 @@ By completing this chapter, students will understand:
 
 ## 🔍 Quality Metrics
 
-| Metric | Target | Achieved | Status |
-|--------|--------|----------|--------|
-| **Hallucinations** | 0 | 0 | ✅ |
-| **Constitutional Compliance** | 17/17 principles | 17/17 verified | ✅ |
-| **Cognitive Load (A2 lessons)** | ≤7 concepts | 5 concepts | ✅ |
-| **Cognitive Load (B1 lessons)** | ≤10 concepts | 6-7 concepts | ✅ |
-| **Cognitive Load (B1-B2 lesson)** | ≤12 concepts | 10 concepts | ✅ |
-| **Code Examples** | All working | All tested | ✅ |
-| **Exercises** | 3-4 per lesson | 3-4 per lesson | ✅ |
-| **Learning Objectives** | Clear, measurable | All verified | ✅ |
-| **"Try With AI" Activities** | 100% of lessons | 100% (7/7) | ✅ |
-| **Cascade Effect** | Demonstrated empirically | ✅ At each level | ✅ |
-| **Specification Compliance** | 100% | 100% | ✅ |
-| **Validation Coverage** | All tasks passed | T047-T049 ✅ | ✅ |
+| Metric                            | Target                   | Achieved         | Status |
+| --------------------------------- | ------------------------ | ---------------- | ------ |
+| **Hallucinations**                | 0                        | 0                | ✅     |
+| **Constitutional Compliance**     | 17/17 principles         | 17/17 verified   | ✅     |
+| **Cognitive Load (A2 lessons)**   | ≤7 concepts              | 5 concepts       | ✅     |
+| **Cognitive Load (B1 lessons)**   | ≤10 concepts             | 6-7 concepts     | ✅     |
+| **Cognitive Load (B1-B2 lesson)** | ≤12 concepts             | 10 concepts      | ✅     |
+| **Code Examples**                 | All working              | All tested       | ✅     |
+| **Exercises**                     | 3-4 per lesson           | 3-4 per lesson   | ✅     |
+| **Learning Objectives**           | Clear, measurable        | All verified     | ✅     |
+| **"Try With AI" Activities**      | 100% of lessons          | 100% (7/7)       | ✅     |
+| **Cascade Effect**                | Demonstrated empirically | ✅ At each level | ✅     |
+| **Specification Compliance**      | 100%                     | 100%             | ✅     |
+| **Validation Coverage**           | All tasks passed         | T047-T049 ✅     | ✅     |
 
 ---
 
@@ -447,12 +471,14 @@ By completing this chapter, students will understand:
 **Field Volatility**: SpecifyPlus CLI tool syntax may evolve
 
 **Maintenance Triggers**:
+
 - ✅ Review annually before semester start
 - ✅ Verify `/sp.specify`, `/sp.plan`, `/sp.tasks`, `/sp.implement` commands still valid
 - ✅ Test student workflows with current SpecifyPlus version
 - ✅ Update example outputs if tool format changes
 
 **Maintenance Checklist**:
+
 - [ ] Verify all 4 SpecifyPlus commands in documentation
 - [ ] Test all code examples run without error
 - [ ] Check Python 3.13+ compatibility

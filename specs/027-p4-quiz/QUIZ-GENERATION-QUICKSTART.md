@@ -28,11 +28,12 @@ prompts/quiz-generation-python-chapters.md
 
 ```bash
 python .claude/skills/quiz-generator/scripts/redistribute_answers_v2.py \
-  book-source/docs/04-Python-Fundamentals/[chapter-folder]/[NN]_chapter_[NN]_quiz.md \
+  apps/learn-app/docs/04-Python-Fundamentals/[chapter-folder]/[NN]_chapter_[NN]_quiz.md \
   [A-H]
 ```
 
 **Sequence rotation** (to vary answer patterns):
+
 - Chapter 13 → A
 - Chapter 14 → B
 - Chapter 15 → C
@@ -60,23 +61,23 @@ python .claude/skills/quiz-generator/scripts/redistribute_answers_v2.py \
 
 ## Question Distribution (50 questions)
 
-| Category | Count | Purpose |
-|----------|-------|---------|
-| **By Type** | | |
-| Scenario-based | 20 | Real development situations |
-| Code review | 15 | Evaluating AI-generated code |
-| Concept understanding | 10 | Deep Python semantics |
-| AI workflow | 5 | Collaboration competence |
-| **By Bloom Level** | | |
-| Remember | 10 | Basic recall/recognition |
-| Understand | 12 | Explanation/interpretation |
-| Apply | 15 | Scenario-based usage |
-| Analyze | 8 | Code review/comparison |
-| Evaluate | 5 | Quality assessment |
-| **By Difficulty** | | |
-| Easy | 10 | Foundational concepts |
-| Medium | 30 | Core chapter content |
-| Hard | 10 | Advanced applications |
+| Category              | Count | Purpose                      |
+| --------------------- | ----- | ---------------------------- |
+| **By Type**           |       |                              |
+| Scenario-based        | 20    | Real development situations  |
+| Code review           | 15    | Evaluating AI-generated code |
+| Concept understanding | 10    | Deep Python semantics        |
+| AI workflow           | 5     | Collaboration competence     |
+| **By Bloom Level**    |       |                              |
+| Remember              | 10    | Basic recall/recognition     |
+| Understand            | 12    | Explanation/interpretation   |
+| Apply                 | 15    | Scenario-based usage         |
+| Analyze               | 8     | Code review/comparison       |
+| Evaluate              | 5     | Quality assessment           |
+| **By Difficulty**     |       |                              |
+| Easy                  | 10    | Foundational concepts        |
+| Medium                | 30    | Core chapter content         |
+| Hard                  | 10    | Advanced applications        |
 
 ---
 
@@ -108,7 +109,7 @@ Follow guidance from: prompts/quiz-generation-python-chapters.md"
 
 # 3. After generation, run redistribution
 python .claude/skills/quiz-generator/scripts/redistribute_answers_v2.py \
-  book-source/docs/04-Python-Fundamentals/18-control-flow-loops/06_chapter_18_quiz.md \
+  apps/learn-app/docs/04-Python-Fundamentals/18-control-flow-loops/06_chapter_18_quiz.md \
   F
 
 # 4. Verify output
@@ -123,6 +124,7 @@ python .claude/skills/quiz-generator/scripts/redistribute_answers_v2.py \
 ## Files & References
 
 ### Main Prompt
+
 - **prompts/quiz-generation-python-chapters.md** (v2.0)
   - Reasoning activation framework
   - Python-specific guidance
@@ -130,6 +132,7 @@ python .claude/skills/quiz-generator/scripts/redistribute_answers_v2.py \
   - Chapter-specific strategies
 
 ### Skill
+
 - **.claude/skills/quiz-generator/SKILL.md** (v5.0.0)
   - Quiz component requirements
   - 50-question format
@@ -137,7 +140,8 @@ python .claude/skills/quiz-generator/scripts/redistribute_answers_v2.py \
   - Option length validation
 
 ### Example Quizzes
-- **Part 1**: `book-source/docs/01-Introducing-AI-Driven-Development/*/09_chapter_*_quiz.md`
+
+- **Part 1**: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/*/09_chapter_*_quiz.md`
   - Shows quality standard
   - Question structure examples
   - Explanation format
@@ -147,18 +151,23 @@ python .claude/skills/quiz-generator/scripts/redistribute_answers_v2.py \
 ## Troubleshooting
 
 ### Issue: Generated quiz has only 10-15 questions
+
 **Fix**: Make sure you invoked `quiz-generator` skill first (not just referencing the prompt directly)
 
 ### Issue: Quiz is static markdown, not Quiz component
+
 **Fix**: The quiz-generator skill automatically uses Quiz component - ensure skill was invoked
 
 ### Issue: Options have wildly different lengths
+
 **Fix**: Before running redistribution, manually check and fix option lengths (all within ±3 words)
 
 ### Issue: Answer distribution is uneven
+
 **Fix**: This is normal before redistribution - the script fixes it automatically
 
 ### Issue: Redistribution script fails
+
 **Fix**: Check file path is correct and file uses proper Quiz component format
 
 ---
@@ -180,6 +189,7 @@ To generate quizzes for all Python chapters (13-30):
 ## Quality Standards
 
 Questions should:
+
 - ✅ Test understanding, not memorization
 - ✅ Use production-relevant scenarios (not toy examples)
 - ✅ Have plausible distractors (represent real misconceptions)
@@ -189,6 +199,7 @@ Questions should:
 - ✅ Activate reasoning mode (not just pattern matching)
 
 Questions should NOT:
+
 - ❌ Test pure syntax recall
 - ❌ Use trick questions or gotchas
 - ❌ Have obviously wrong options

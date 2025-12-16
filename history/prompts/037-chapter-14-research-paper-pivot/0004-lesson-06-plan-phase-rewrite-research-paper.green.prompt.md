@@ -16,7 +16,7 @@ links:
   adr: "n/a"
   pr: "pending"
 files:
-  - path: "book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/06-plan-phase.md"
+  - path: "apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/06-plan-phase.md"
     status: "rewritten"
     lines: 504
 tests:
@@ -42,29 +42,33 @@ You are rewriting Lesson 06: Plan Phase for Chapter 14.
 
 **Task**: Rewrite 06-plan-phase.md
 
-**File Path**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/06-plan-phase.md`
+**File Path**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/06-plan-phase.md`
 
 **Learning Objective**: Use `/sp.plan` to create implementation strategy.
 
 **Concepts to Teach** (max 4):
+
 1. What is a plan (HOW to build WHAT - connects spec to implementation)
 2. `/sp.plan` command syntax and usage
 3. Plan sections: approach, components, dependencies, milestones
 4. How plan connects specification to tasks
 
 **Key Teaching Points**:
+
 - Plan = HOW you'll build what the spec defines
 - Breaks the work into logical components
 - Identifies dependencies between parts
 - Creates the bridge to atomic tasks
 
 **REMOVE ALL**:
+
 - Playwright MCP architecture
 - Video generation approach
 - Gemini.google.com references
 - MCP references
 
 **Practice Vehicle**: Create plan for research paper
+
 - Break paper into sections (intro, lit review, methodology, etc.)
 - Identify dependencies (lit review before methodology)
 - Define component relationships
@@ -72,6 +76,7 @@ You are rewriting Lesson 06: Plan Phase for Chapter 14.
 **END WITH**: "Try With AI" section running `/sp.plan`
 
 **Frontmatter**:
+
 - title: "Plan Phase"
 - chapter: 14, lesson: 6
 - duration_minutes: 45
@@ -83,6 +88,7 @@ You are rewriting Lesson 06: Plan Phase for Chapter 14.
 **Complete lesson rewritten** (504 lines):
 
 **Structure**:
+
 1. Opening: Hook on plan as bridge between spec and execution
 2. The Role of a Plan: Distinguishes spec/plan/tasks progression
 3. Cascade Effect: Clear specs → clear plans principle
@@ -95,6 +101,7 @@ You are rewriting Lesson 06: Plan Phase for Chapter 14.
 10. Try With AI: Four progressive prompts (generate plan, analyze quality, trace requirements, identify decisions)
 
 **Content Highlights**:
+
 - `/sp.plan` command is PRIMARY focus (taught as core skill)
 - Research paper used as CONCRETE PRACTICE VEHICLE (not teaching paper writing)
 - No prohibited content (zero Playwright, Gemini, MCP, video references)

@@ -13,12 +13,14 @@
 Successfully implemented Lessons 6-7 (Layer 3: Intelligence Design) with two reusable skills (memory-file-architecture, tool-selection-framework) using Persona + Questions + Principles pattern. Both lessons transition from Layer 2 (AI Collaboration) techniques to Layer 3 (creating reusable intelligence components).
 
 **Deliverables**:
+
 1. ✅ **Lesson 6**: Memory Files and Persistent Intelligence (06-memory-files-persistent-intelligence.md)
 2. ✅ **Lesson 7**: Tool Selection Framework (07-tool-selection-framework.md)
 3. ✅ **Skill 1**: memory-file-architecture (.claude/skills/memory-file-architecture/SKILL.md)
 4. ✅ **Skill 2**: tool-selection-framework (.claude/skills/tool-selection-framework/SKILL.md)
 
 **Key Achievements**:
+
 - ✅ Zero programming code (Part 3 constraint maintained)
 - ✅ Both skills use Persona + Questions + Principles structure
 - ✅ Concept counts within B1 limits (7-10 concepts per lesson)
@@ -32,7 +34,7 @@ Successfully implemented Lessons 6-7 (Layer 3: Intelligence Design) with two reu
 
 ### Deliverable 1: Lesson 6 (Memory Files and Persistent Intelligence)
 
-**File**: `/book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/06-memory-files-persistent-intelligence.md`
+**File**: `/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/06-memory-files-persistent-intelligence.md`
 
 **File Size**: 16,346 bytes
 
@@ -41,6 +43,7 @@ Successfully implemented Lessons 6-7 (Layer 3: Intelligence Design) with two reu
 **Content Validation**:
 
 #### A. Lesson Structure ✅
+
 - **Introduction**: "The Problem: Session Amnesia" (motivates memory persistence)
 - **Core Concepts**: Three memory files (CLAUDE.md, architecture.md, decisions.md)
 - **Memory Generation Pipeline**: Extraction → Consolidation → Storage → Retrieval (Anthropic research)
@@ -50,7 +53,9 @@ Successfully implemented Lessons 6-7 (Layer 3: Intelligence Design) with two reu
 - **Try With AI**: 4 prompts invoking memory-file-architecture skill
 
 #### B. Concept Count (B1 Validation) ✅
+
 **Concepts Introduced** (Count: 8 — within B1 limit of 7-10):
+
 1. Memory files (CLAUDE.md, architecture.md, decisions.md)
 2. Extraction (pull key facts from session)
 3. Consolidation (compress into persistent memory)
@@ -63,15 +68,18 @@ Successfully implemented Lessons 6-7 (Layer 3: Intelligence Design) with two reu
 **✅ PASS**: 8 concepts (within B1 limit of 7-10)
 
 #### C. Zero Code Constraint ✅
+
 **Validation Command**:
+
 ```bash
 grep -E "^(from |import |def |class |function |const |let |var )" \
-  /book-source/docs/.../06-memory-files-persistent-intelligence.md
+  /apps/learn-app/docs/.../06-memory-files-persistent-intelligence.md
 ```
 
 **Result**: ✅ NO MATCHES (Zero programming code)
 
 **Examples Used**:
+
 - ✅ Markdown memory file templates (CLAUDE.md, architecture.md, decisions.md)
 - ✅ Plain text decision records (ADR format)
 - ✅ Session note examples (text-based workflows)
@@ -80,10 +88,13 @@ grep -E "^(from |import |def |class |function |const |let |var )" \
 **✅ PASS**: Part 3 constraint maintained (no programming code)
 
 #### D. Research Integration ✅
+
 **Source**: Google PDF (Context Engineering: Sessions & Memory)
 
 **Concepts Integrated**:
+
 1. **Memory Generation Pipeline** (Section: "The Memory Generation Pipeline"):
+
    - Extraction: Pull key facts from session
    - Consolidation: Compress into persistent memory
    - Storage: Write to appropriate memory file
@@ -98,7 +109,9 @@ grep -E "^(from |import |def |class |function |const |let |var )" \
 **✅ PASS**: Research accurately integrated and attributed
 
 #### E. Layer 3 Intelligence Design ✅
+
 **Evidence of Layer 3 Transition**:
+
 1. **Reusable Component Created**: memory-file-architecture skill
 2. **Persona + Questions + Principles Pattern Used**:
    - Persona: "Think like knowledge management architect..."
@@ -112,7 +125,9 @@ grep -E "^(from |import |def |class |function |const |let |var )" \
 **✅ PASS**: Layer 3 approach confirmed (reusable intelligence created)
 
 #### F. Try With AI Section ✅
+
 **Prompts Provided** (Count: 4):
+
 1. "Create CLAUDE.md" → Invokes memory-file-architecture skill
 2. "Create architecture.md" → Invokes memory-file-architecture skill
 3. "Create decisions.md" → Invokes memory-file-architecture skill
@@ -123,9 +138,11 @@ grep -E "^(from |import |def |class |function |const |let |var )" \
 **✅ PASS**: Try With AI section complete, skill-integrated prompts
 
 #### G. Lesson Ending Compliance ✅
+
 **Check**: No "What's Next", no "Key Takeaways", no meta-commentary
 
 **Validation**:
+
 - ✅ Lesson ends with "Try With AI" section
 - ✅ NO "What's Next" section
 - ✅ NO "Key Takeaways" section
@@ -138,7 +155,7 @@ grep -E "^(from |import |def |class |function |const |let |var )" \
 
 ### Deliverable 2: Lesson 7 (Tool Selection Framework)
 
-**File**: `/book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/07-tool-selection-framework.md`
+**File**: `/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/07-tool-selection-framework.md`
 
 **File Size**: 16,xxx bytes (exists from previous implementation)
 
@@ -147,6 +164,7 @@ grep -E "^(from |import |def |class |function |const |let |var )" \
 **Content Validation**:
 
 #### A. Lesson Structure ✅
+
 - **Introduction**: Choosing right tool for context requirements
 - **Core Concepts**: Claude Code (200K, deep reasoning) vs Gemini CLI (2M, exploration)
 - **Tool Selection Decision Logic**: Codebase size, complexity, reasoning depth
@@ -156,7 +174,9 @@ grep -E "^(from |import |def |class |function |const |let |var )" \
 - **Try With AI**: 4 prompts invoking tool-selection-framework skill
 
 #### B. Concept Count (B1 Validation) ✅
+
 **Concepts Introduced** (Count: 9 — within B1 limit of 7-10):
+
 1. Tool capabilities comparison (context window, reasoning depth, cost)
 2. Codebase size assessment (<50K, 50-500K, >500K thresholds)
 3. Task complexity evaluation (exploration vs focused)
@@ -170,11 +190,13 @@ grep -E "^(from |import |def |class |function |const |let |var )" \
 **✅ PASS**: 9 concepts (within B1 limit of 7-10)
 
 #### C. Zero Code Constraint ✅
+
 **Validation**: Same grep command as Lesson 6
 
 **Result**: ✅ NO MATCHES (Zero programming code)
 
 **Examples Used**:
+
 - ✅ Decision matrix (codebase size × complexity)
 - ✅ Multi-phase workflow scenarios (text-based descriptions)
 - ✅ Tool capability comparison table (markdown table)
@@ -183,10 +205,13 @@ grep -E "^(from |import |def |class |function |const |let |var )" \
 **✅ PASS**: Part 3 constraint maintained (no programming code)
 
 #### D. Research Integration ✅
+
 **Source**: GitHub Spec (CoLearning Agentic AI - Guardrails and Decision Criteria)
 
 **Concepts Integrated**:
+
 1. **Explicit Decision Rules** (Section: "Tool Selection Decision Logic"):
+
    - Codebase size thresholds (<50K, 50-500K, >500K)
    - Complexity assessment (exploration vs focused)
    - Reasoning depth criteria (architectural vs pattern matching)
@@ -200,7 +225,9 @@ grep -E "^(from |import |def |class |function |const |let |var )" \
 **✅ PASS**: Research accurately integrated and attributed
 
 #### E. Layer 3 Intelligence Design ✅
+
 **Evidence of Layer 3 Transition**:
+
 1. **Reusable Component Created**: tool-selection-framework skill
 2. **Persona + Questions + Principles Pattern Used**:
    - Persona: "Think like resource optimization engineer..."
@@ -214,7 +241,9 @@ grep -E "^(from |import |def |class |function |const |let |var )" \
 **✅ PASS**: Layer 3 approach confirmed (reusable intelligence created)
 
 #### F. Try With AI Section ✅
+
 **Prompts Provided** (Count: 4):
+
 1. "Evaluate Your Tool Choices" → Invokes tool-selection-framework skill
 2. "Decision Framework Evaluation" → Applies skill to scenario
 3. "Multi-Phase Design" → Plans Gemini → Claude workflow
@@ -225,9 +254,11 @@ grep -E "^(from |import |def |class |function |const |let |var )" \
 **✅ PASS**: Try With AI section complete, skill-integrated prompts
 
 #### G. Lesson Ending Compliance ✅
+
 **Check**: No "What's Next", no "Key Takeaways", no meta-commentary
 
 **Validation**:
+
 - ✅ Lesson ends with "Try With AI" section
 - ✅ NO "What's Next" section
 - ✅ NO "Key Takeaways" section
@@ -249,6 +280,7 @@ grep -E "^(from |import |def |class |function |const |let |var )" \
 **Skill Validation**:
 
 #### A. Skill Metadata ✅
+
 ```yaml
 ---
 name: memory-file-architecture
@@ -265,6 +297,7 @@ dependencies: ["constitution:v6.0.1"]
 **✅ PASS**: Metadata complete with category, version, dependencies
 
 #### B. Persona Section ✅
+
 **Content**: "Think like a knowledge management architect optimizing for persistence, retrieval, and accumulation across multiple AI development sessions..."
 
 **Length**: 2 sentences
@@ -274,13 +307,16 @@ dependencies: ["constitution:v6.0.1"]
 **✅ PASS**: Persona section complete
 
 #### C. Questions Section ✅
+
 **Questions Provided** (Count: 4):
+
 1. **Persistence Value**: "Will this information be useful in future sessions?"
 2. **Retrieval Frequency**: "How often will this be accessed?"
 3. **Mutation Rate**: "How often does this change?"
 4. **Discoverability**: "Can I find what I need quickly?"
 
 **For Each Question**:
+
 - ✅ Clear decision criteria
 - ✅ IF/THEN logic provided
 - ✅ Examples included
@@ -289,13 +325,16 @@ dependencies: ["constitution:v6.0.1"]
 **✅ PASS**: Questions section complete with decision frameworks
 
 #### D. Principles Section ✅
+
 **Principles Provided** (Count: 4):
+
 1. **Persistence First**: "If it's valuable once, it's valuable forever"
 2. **Append-Only for Decisions**: "Never delete decisions; add new context if reversed"
 3. **Injection Strategy**: "All three files loaded at every session start"
 4. **Minimal Overhead**: "Updates take <5 minutes; not a documentation burden"
 
 **For Each Principle**:
+
 - ✅ Clear decision framework
 - ✅ Application guidance provided
 - ✅ Examples included
@@ -304,7 +343,9 @@ dependencies: ["constitution:v6.0.1"]
 **✅ PASS**: Principles section complete with frameworks
 
 #### E. Examples Section ✅
+
 **Examples Provided** (Count: 3):
+
 1. New Project Setup (creating initial memory files)
 2. Mid-Project Memory Update (updating after session)
 3. Onboarding New Team Member (loading memory files)
@@ -312,7 +353,9 @@ dependencies: ["constitution:v6.0.1"]
 **✅ PASS**: Examples demonstrate skill application in realistic scenarios
 
 #### F. Reusability ✅
+
 **Evidence**:
+
 - ✅ Skill applies to any project type (not technology-specific)
 - ✅ Decision frameworks (Persona + Questions + Principles) are project-agnostic
 - ✅ Memory file structure adaptable (templates provided, customizable)
@@ -333,6 +376,7 @@ dependencies: ["constitution:v6.0.1"]
 **Skill Validation**:
 
 #### A. Skill Metadata ✅
+
 ```yaml
 ---
 name: tool-selection-framework
@@ -349,6 +393,7 @@ dependencies: ["constitution:v6.0.1"]
 **✅ PASS**: Metadata complete with category, version, dependencies
 
 #### B. Persona Section ✅
+
 **Content**: "Think like a resource optimization engineer allocating specialized tools to tasks where each tool excels..."
 
 **Length**: 2 sentences
@@ -358,7 +403,9 @@ dependencies: ["constitution:v6.0.1"]
 **✅ PASS**: Persona section complete
 
 #### C. Questions Section ✅
+
 **Questions Provided** (Count: 6):
+
 1. **Codebase Size Assessment**: "How many lines of code?"
 2. **Task Type Evaluation**: "Exploration or focused implementation?"
 3. **Reasoning Depth Requirements**: "Deep reasoning or pattern matching?"
@@ -367,6 +414,7 @@ dependencies: ["constitution:v6.0.1"]
 6. **Expertise Level**: "Do you already understand this codebase?"
 
 **For Each Question**:
+
 - ✅ Clear decision criteria
 - ✅ IF/THEN logic provided
 - ✅ Tool recommendations (Claude Code / Gemini CLI)
@@ -375,7 +423,9 @@ dependencies: ["constitution:v6.0.1"]
 **✅ PASS**: Questions section complete with decision frameworks
 
 #### D. Principles Section ✅
+
 **Principles Provided** (Count: 5):
+
 1. **Right Tool for the Job**: "Don't use Gemini when Claude Code suffices"
 2. **Specialization Value**: "Each tool has optimal context window"
 3. **Multi-Phase Approach**: "Exploration + Implementation as sequential workflow"
@@ -383,6 +433,7 @@ dependencies: ["constitution:v6.0.1"]
 5. **Future Extensibility**: "Framework applies to current tools; adapts to new tools"
 
 **For Each Principle**:
+
 - ✅ Clear decision framework
 - ✅ Application guidance provided
 - ✅ Examples included
@@ -391,11 +442,14 @@ dependencies: ["constitution:v6.0.1"]
 **✅ PASS**: Principles section complete with frameworks
 
 #### E. Decision Algorithm Section ✅
+
 **Algorithms Provided** (Count: 2):
+
 1. **Tool Selection Decision Tree**: IF/ELSE logic for codebase size → tool choice
 2. **Multi-Phase Workflow**: Phase 1 (Gemini) → Phase 2 (Claude) workflow
 
 **For Each Algorithm**:
+
 - ✅ Plain English (no code)
 - ✅ Clear decision branches
 - ✅ Input/Output specified
@@ -404,7 +458,9 @@ dependencies: ["constitution:v6.0.1"]
 **✅ PASS**: Algorithms section complete
 
 #### F. Examples Section ✅
+
 **Examples Provided** (Count: 5):
+
 1. Small Project (30K lines) → Claude Code
 2. Medium Project Exploration (200K lines) → Multi-phase
 3. Large Legacy System (800K lines) → Multi-phase
@@ -414,7 +470,9 @@ dependencies: ["constitution:v6.0.1"]
 **✅ PASS**: Examples cover diverse scenarios
 
 #### G. Reusability ✅
+
 **Evidence**:
+
 - ✅ Framework applies to any codebase size
 - ✅ Decision logic is task-agnostic
 - ✅ Extensible to new tools (future-proof)
@@ -427,20 +485,25 @@ dependencies: ["constitution:v6.0.1"]
 ## II. Cross-Cutting Validation
 
 ### A. Lessons Reference Skills ✅
+
 **Lesson 6 References memory-file-architecture Skill**:
+
 - Section: "Creating the Memory-File-Architecture Skill"
 - Skill structure explained (Persona + Questions + Principles)
 - Reference: "See `.claude/skills/memory-file-architecture/SKILL.md`"
 - ✅ PASS
 
 **Lesson 7 References tool-selection-framework Skill**:
+
 - Section: "Creating the Tool-Selection-Framework Skill"
 - Skill structure explained (Persona + Questions + Principles)
 - Reference: Skill integrated in exercises
 - ✅ PASS
 
 ### B. Skills Integrated in "Try With AI" ✅
+
 **Lesson 6 "Try With AI"**:
+
 - Prompt 1: "Create CLAUDE.md" → Uses memory-file-architecture questions
 - Prompt 2: "Create architecture.md" → Uses memory-file-architecture questions
 - Prompt 3: "Create decisions.md" → Uses memory-file-architecture principles
@@ -448,6 +511,7 @@ dependencies: ["constitution:v6.0.1"]
 - ✅ PASS
 
 **Lesson 7 "Try With AI"**:
+
 - Prompt 1: "Evaluate Tool Choices" → Uses tool-selection-framework questions
 - Prompt 2: "Decision Framework" → Applies skill to scenario
 - Prompt 3: "Multi-Phase Design" → Uses multi-phase principles
@@ -455,22 +519,28 @@ dependencies: ["constitution:v6.0.1"]
 - ✅ PASS
 
 ### C. Research Integration Accuracy ✅
+
 **Lesson 6 Research** (Google PDF):
+
 - Memory generation pipeline: Extraction → Consolidation → Retrieval
 - ✅ Correctly explained
 - ✅ Attributed to Google research
 
 **Lesson 7 Research** (GitHub Spec):
+
 - Decision guardrails: Explicit criteria, decision trees
 - ✅ Correctly explained
 - ✅ Attributed to GitHub spec
 
 ### D. Layer 3 Transition Evidence ✅
+
 **Layer 1-2 Recap** (Lessons 1-5):
+
 - Manual foundation (Lessons 1-2): Context tracking, degradation symptoms
 - AI Collaboration (Lessons 3-5): Progressive loading, compression, isolation
 
 **Layer 3 Transition** (Lessons 6-7):
+
 - ✅ Creates reusable skills (not one-time techniques)
 - ✅ Uses Persona + Questions + Principles pattern
 - ✅ Encapsulates prior lessons' knowledge
@@ -483,41 +553,48 @@ dependencies: ["constitution:v6.0.1"]
 ## III. Constitutional Compliance
 
 ### Principle 1: Specification Primacy ✅
+
 - Lessons teach memory file "specification" before implementation
 - Lesson 6: Memory file structure defined before examples
 - Lesson 7: Tool selection criteria defined before application
 - ✅ PASS
 
 ### Principle 2: Progressive Complexity ✅
+
 - Lesson 6: 8 concepts (within B1 limit of 7-10)
 - Lesson 7: 9 concepts (within B1 limit of 7-10)
 - Concepts build on Lessons 1-5 (cumulative intelligence)
 - ✅ PASS
 
 ### Principle 3: Factual Accuracy ✅
+
 - Context window sizes verified: Claude Sonnet 4.5 (200K, 1M extended), Gemini (2M)
 - Research citations accurate: Google PDF (memory generation), GitHub spec (guardrails)
 - Tool capabilities correctly described
 - ✅ PASS
 
 ### Principle 4: Coherent Structure ✅
+
 - Lessons 6-7 follow Layer 3 progression
 - Lessons build on Lessons 1-5 knowledge
 - Skill creation encapsulates prior learning
 - ✅ PASS
 
 ### Principle 5: Intelligence Accumulation ✅
+
 - Lesson 6 references Lessons 3-5 (what to persist in memory files)
 - Lesson 7 references Lessons 3-4 (multi-phase workflow uses compression)
 - Skills encapsulate cumulative knowledge
 - ✅ PASS
 
 ### Principle 6: Anti-Convergence ✅
+
 - Teaching modality: Systems thinking (Layer 3 intelligence design)
 - Differentiation from Chapter 10: Chapter 10 teaches "what to SAY", Chapter 11 teaches "what AI KNOWS"
 - ✅ PASS
 
 ### Principle 7: Minimal Content ✅
+
 - Every section maps to learning objectives
 - No "What's Next" sections
 - No "Key Takeaways" sections
@@ -529,17 +606,21 @@ dependencies: ["constitution:v6.0.1"]
 ## IV. Success Criteria Validation
 
 ### Success Criterion 1: Zero Code in Lessons 1-8 ✅
+
 **Test**: `grep` for programming code in Lessons 6-7
 **Result**: ✅ NO MATCHES
 **Status**: ✅ PASS
 
 ### Success Criterion 2: All Examples Use Markdown + Prompts ✅
+
 **Lesson 6 Examples**:
+
 - ✅ Markdown memory file templates (CLAUDE.md, architecture.md, decisions.md)
 - ✅ ADR format (plain text)
 - ✅ Session note examples (text-based)
 
 **Lesson 7 Examples**:
+
 - ✅ Decision matrix (markdown table)
 - ✅ Multi-phase workflow (text-based scenarios)
 - ✅ Tool capability comparison (markdown table)
@@ -547,16 +628,19 @@ dependencies: ["constitution:v6.0.1"]
 **Status**: ✅ PASS
 
 ### Success Criterion 3: Cognitive Load Within B1 Limits ✅
+
 **Lesson 6**: 8 concepts (7-10 limit)
 **Lesson 7**: 9 concepts (7-10 limit)
 **Status**: ✅ PASS
 
 ### Success Criterion 4: Research Accurately Integrated ✅
+
 **Lesson 6**: Google PDF (memory generation) ✅
 **Lesson 7**: GitHub spec (decision guardrails) ✅
 **Status**: ✅ PASS
 
 ### Success Criterion 5: Layer 3 Approach ✅
+
 **Both lessons create reusable skills**: ✅
 **Skills use P+Q+P pattern**: ✅
 **Skills encapsulate prior knowledge**: ✅
@@ -567,14 +651,17 @@ dependencies: ["constitution:v6.0.1"]
 ## V. File Locations Summary
 
 **Lessons**:
-1. `/book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/06-memory-files-persistent-intelligence.md` (16,346 bytes, ✅ EXISTS)
-2. `/book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/07-tool-selection-framework.md` (16,xxx bytes, ✅ EXISTS)
+
+1. `/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/06-memory-files-persistent-intelligence.md` (16,346 bytes, ✅ EXISTS)
+2. `/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/07-tool-selection-framework.md` (16,xxx bytes, ✅ EXISTS)
 
 **Skills**:
+
 1. `/.claude/skills/memory-file-architecture/SKILL.md` (~25K, ✅ CREATED)
 2. `/.claude/skills/tool-selection-framework/SKILL.md` (~28K, ✅ CREATED)
 
 **Verification Report** (This Document):
+
 - `/specs/002-011-chapter-11-redesign-fix/LESSONS-6-7-VERIFICATION-REPORT.md` (✅ COMPLETE)
 
 ---
@@ -582,6 +669,7 @@ dependencies: ["constitution:v6.0.1"]
 ## VI. Next Steps
 
 **Remaining Implementation**:
+
 - ✅ Lessons 1-5 complete (Manual Foundation + AI Collaboration)
 - ✅ Lessons 6-7 complete (Intelligence Design with skills)
 - ⬜ Lesson 8: Hands-On Debugging and Optimization (Layer 2 validation)
@@ -590,6 +678,7 @@ dependencies: ["constitution:v6.0.1"]
 - ⬜ Final validation (validation-auditor, factual-verifier)
 
 **Recommended Next Session**:
+
 1. Implement Lesson 8 (debugging practice integrating Lessons 1-7)
 2. Implement Lesson 9 (capstone specification-only)
 3. Update Chapter README
@@ -603,6 +692,7 @@ dependencies: ["constitution:v6.0.1"]
 **Overall Quality**: ✅ EXCELLENT
 
 **Strengths**:
+
 - ✅ Both skills use Persona + Questions + Principles pattern consistently
 - ✅ Zero code constraint maintained throughout
 - ✅ Research integration accurate and attributed
@@ -611,6 +701,7 @@ dependencies: ["constitution:v6.0.1"]
 - ✅ Lessons end compliantly (no meta-commentary)
 
 **Areas for Improvement** (Future Iteration):
+
 - Consider adding visual diagrams (memory file relationship diagram)
 - Could expand examples section with more edge cases
 - Potential for interactive exercises (beyond Try With AI prompts)

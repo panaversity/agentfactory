@@ -16,7 +16,7 @@
 
 #### Task 1.1: CREATE Chapter README.md (Chapter-Level Overview)
 
-- [ ] **MUST**: Create `docs/book-source/docs/part-4-python-fundamentals/chapter-16-strings-and-type-casting/README.md`
+- [ ] **MUST**: Create `docs/apps/learn-app/docs/part-4-python-fundamentals/chapter-16-strings-and-type-casting/README.md`
   - Acceptance: README.md exists at correct path (uppercase), follows `.claude/output-styles/chapter-readme.md` template
   - Sections: Chapter Overview, Learning Objectives, What You'll Build, Prerequisites, How to Navigate This Chapter
   - Include chapter-level success evals (EVAL-001 through EVAL-010 from spec)
@@ -26,7 +26,7 @@
 
 #### Task 1.2: CREATE Lesson 1 Outline and Code Examples
 
-- [ ] **MUST**: Create `docs/book-source/docs/part-4-python-fundamentals/chapter-16-strings-and-type-casting/lesson-1-string-fundamentals.md`
+- [ ] **MUST**: Create `docs/apps/learn-app/docs/part-4-python-fundamentals/chapter-16-strings-and-type-casting/lesson-1-string-fundamentals.md`
   - Acceptance: File exists, follows `.claude/output-styles/lesson.md` template
   - Content structure: (from plan.md, Lesson 1 section)
     - Opening hook: "Why strings matter" (2-3 min)
@@ -75,7 +75,7 @@
 
 #### Task 2.1: CREATE Lesson 2 (Essential String Methods)
 
-- [ ] **MUST**: Create `docs/book-source/docs/part-4-python-fundamentals/chapter-16-strings-and-type-casting/lesson-2-essential-string-methods.md`
+- [ ] **MUST**: Create `docs/apps/learn-app/docs/part-4-python-fundamentals/chapter-16-strings-and-type-casting/lesson-2-essential-string-methods.md`
   - Acceptance: File exists, follows lesson.md template
   - Content: (from plan.md, Lesson 2)
     - Opening hook: "Transforming text with methods"
@@ -109,7 +109,7 @@
 
 #### Task 2.4: CREATE Lesson 3 (F-String Formatting)
 
-- [ ] **MUST**: Create `docs/book-source/docs/part-4-python-fundamentals/chapter-16-strings-and-type-casting/lesson-3-string-formatting-with-f-strings.md`
+- [ ] **MUST**: Create `docs/apps/learn-app/docs/part-4-python-fundamentals/chapter-16-strings-and-type-casting/lesson-3-string-formatting-with-f-strings.md`
   - Acceptance: File exists, follows lesson.md template
   - Content: (from plan.md, Lesson 3)
     - Opening: "Creating dynamic output with intent"
@@ -148,7 +148,7 @@
 
 #### Task 3.1: CREATE Lesson 4 (Type Casting)
 
-- [ ] **MUST**: Create `docs/book-source/docs/part-4-python-fundamentals/chapter-16-strings-and-type-casting/lesson-4-type-casting-fundamentals.md`
+- [ ] **MUST**: Create `docs/apps/learn-app/docs/part-4-python-fundamentals/chapter-16-strings-and-type-casting/lesson-4-type-casting-fundamentals.md`
   - Acceptance: File exists, follows lesson.md template
   - Content: (from plan.md, Lesson 4)
     - Opening: "Converting between types safely"
@@ -186,7 +186,7 @@
 
 #### Task 3.4: CREATE Lesson 5 (Capstone: Interactive String Explorer)
 
-- [ ] **MUST**: Create `docs/book-source/docs/part-4-python-fundamentals/chapter-16-strings-and-type-casting/lesson-5-capstone-interactive-string-explorer.md`
+- [ ] **MUST**: Create `docs/apps/learn-app/docs/part-4-python-fundamentals/chapter-16-strings-and-type-casting/lesson-5-capstone-interactive-string-explorer.md`
   - Acceptance: File exists, follows lesson.md template
   - Content: (from plan.md, Lesson 5)
     - Opening: "Building a real tool with all Chapter 16 skills"
@@ -364,12 +364,14 @@
 **For Chapter 16 to be COMPLETE, ALL of the following must be true**:
 
 ### Content Completeness
+
 - [ ] All 5 lessons created and published (Lessons 1–5)
 - [ ] Chapter README.md created and linked
 - [ ] All lessons follow `.claude/output-styles/lesson.md` template
-- [ ] All lessons in correct directory: `docs/book-source/docs/part-4-python-fundamentals/chapter-16-strings-and-type-casting/`
+- [ ] All lessons in correct directory: `docs/apps/learn-app/docs/part-4-python-fundamentals/chapter-16-strings-and-type-casting/`
 
 ### Code Quality
+
 - [ ] All 18+ code examples run without errors on Python 3.14+
 - [ ] All code examples include type hints on every variable
 - [ ] All code examples use f-strings only (no %, no .format())
@@ -378,6 +380,7 @@
 - [ ] Code assets created: `assets/ch16/` with all examples
 
 ### Pedagogical Quality
+
 - [ ] Each lesson has single, measurable learning objective
 - [ ] Each lesson introduces exactly 5 new concepts (or fewer)
 - [ ] Concepts clearly defined and scaffolded (A1 → A2 → B1)
@@ -388,6 +391,7 @@
 - [ ] Capstone (Lesson 5) integrates Lessons 1–4 without new concepts
 
 ### Specification Alignment
+
 - [ ] All spec evals (EVAL-001 through EVAL-010) are addressed
 - [ ] No forward references to Chapters 17+
 - [ ] Only 5-7 string methods taught (upper, lower, split, join, replace, find, strip)
@@ -397,6 +401,7 @@
 - [ ] Part 4 language used (describe intent, not write specifications)
 
 ### Accessibility & Inclusivity
+
 - [ ] Reading level Grade 7-8 (Flesch-Kincaid check)
 - [ ] Examples use diverse, inclusive names
 - [ ] Jargon defined when introduced
@@ -404,6 +409,7 @@
 - [ ] Examples reflect real-world use cases
 
 ### Reviews Completed
+
 - [ ] Technical review: Passed (all code valid)
 - [ ] Pedagogical review: Passed (objectives clear, scaffolding sound)
 - [ ] Spec alignment: Verified (all evals addressed)
@@ -413,17 +419,17 @@
 
 ## Risk Management & Mitigation
 
-| Risk | Impact | Mitigation |
-|------|--------|-----------|
-| **Code examples fail on Python 3.14+** | High - Blocks publication | Test all examples on 3.14+; cross-platform (Mac/Linux/Windows); use mypy for type checking |
-| **Cognitive load exceeds 5 concepts per lesson** | High - Violates spec | Count concepts explicitly; group related items; defer advanced to future chapters |
-| **"Try With AI" prompts are vague** | Medium - Students confused | Make prompts concrete; include expected outcomes; reference specific concepts |
-| **Forward references to Chapter 17+** | High - Violates scope | Audit all examples; search for: loops, functions, classes, collections, try/except |
-| **CoLearning elements missing or weak** | Medium - Misses pedagogy | Include 💬🎓🚀✨ markers; test that students can engage with each element |
-| **Reading level exceeds Grade 8** | Medium - Accessibility issue | Use Flesch-Kincaid checker; keep sentences short; define jargon |
-| **Capstone introduces new concepts** | High - Violates design | Capstone uses ONLY Lessons 1–4 skills; verify no new methods, types, or patterns |
-| **Lessons too long** | Medium - Cognitive overload | Target 48–54 min per lesson; review pacing; break long sections |
-| **Integration between lessons unclear** | Low-Medium | Show how each lesson builds on prior; use explicit prerequisites |
+| Risk                                             | Impact                       | Mitigation                                                                                 |
+| ------------------------------------------------ | ---------------------------- | ------------------------------------------------------------------------------------------ |
+| **Code examples fail on Python 3.14+**           | High - Blocks publication    | Test all examples on 3.14+; cross-platform (Mac/Linux/Windows); use mypy for type checking |
+| **Cognitive load exceeds 5 concepts per lesson** | High - Violates spec         | Count concepts explicitly; group related items; defer advanced to future chapters          |
+| **"Try With AI" prompts are vague**              | Medium - Students confused   | Make prompts concrete; include expected outcomes; reference specific concepts              |
+| **Forward references to Chapter 17+**            | High - Violates scope        | Audit all examples; search for: loops, functions, classes, collections, try/except         |
+| **CoLearning elements missing or weak**          | Medium - Misses pedagogy     | Include 💬🎓🚀✨ markers; test that students can engage with each element                  |
+| **Reading level exceeds Grade 8**                | Medium - Accessibility issue | Use Flesch-Kincaid checker; keep sentences short; define jargon                            |
+| **Capstone introduces new concepts**             | High - Violates design       | Capstone uses ONLY Lessons 1–4 skills; verify no new methods, types, or patterns           |
+| **Lessons too long**                             | Medium - Cognitive overload  | Target 48–54 min per lesson; review pacing; break long sections                            |
+| **Integration between lessons unclear**          | Low-Medium                   | Show how each lesson builds on prior; use explicit prerequisites                           |
 
 ---
 
@@ -448,6 +454,7 @@
 ## Effort Estimation Summary
 
 **By Phase**:
+
 - **Phase 1** (Ch Intro + Lesson 1): 9–12 hours
 - **Phase 2** (Lessons 2–3): 12–15 hours
 - **Phase 3** (Lesson 4 + Capstone): 15–18 hours
@@ -457,6 +464,7 @@
 **Total**: 46–61 hours (6–8 days, 1 developer + reviewers)
 
 **Breakdown by Activity**:
+
 - Content writing: 20–25 hours
 - Code example writing & testing: 12–15 hours
 - "Try With AI" prompt design: 5–8 hours
@@ -464,6 +472,7 @@
 - Build/deployment: 1–2 hours
 
 **Resource Requirements**:
+
 - 1 Lesson-Writer (implementing all lessons)
 - 1 Technical Reviewer (code quality, cross-platform testing)
 - 1 Pedagogical Reviewer (learning effectiveness, scaffolding)

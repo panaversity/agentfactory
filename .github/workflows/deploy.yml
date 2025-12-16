@@ -14,10 +14,11 @@ on:
     branches:
       - main
     paths:
-      - "book-source/**"
+      - "apps/learn-app/**"
+      - "libs/docusaurus/**"
       - ".github/workflows/deploy.yml"
       # Exclude docs/ since those trigger via sync-content workflow
-      - "!book-source/docs/**"
+      - "!apps/learn-app/docs/**"
   workflow_dispatch:
     inputs:
       full_rebuild:
@@ -58,7 +59,7 @@ jobs:
 
       - name: Install Python dependencies
         if: ${{ vars.PANAVERSITY_PLUGIN_ENABLED == 'true' }}
-        working-directory: panaversity-fs
+        working-directory: apps/panaversity-fs-py
         run: |
           pip install click httpx pydantic python-dotenv
 
@@ -79,14 +80,14 @@ jobs:
           PANAVERSITY_MCP_URL: ${{ secrets.PANAVERSITY_SERVER_URL }}
           PANAVERSITY_API_KEY: ${{ secrets.PANAVERSITY_API_KEY }}
         run: |
-          cd panaversity-fs
+          cd apps/panaversity-fs-py
 
           BOOK_ID="ai-native-dev"
-          OUTPUT_DIR="../build-source"
-          MANIFEST_FILE="../.panaversity/manifest.json"
+          OUTPUT_DIR="../../build-source"
+          MANIFEST_FILE="../../.panaversity/manifest.json"
 
           # Create directories
-          mkdir -p ../.panaversity
+          mkdir -p ../../.panaversity
           mkdir -p "$OUTPUT_DIR"
 
           echo "=== Hydrating content from PanaversityFS ==="
@@ -121,15 +122,15 @@ jobs:
           echo "⚠️ Hydration failed, using local docs/ as fallback"
 
           # Validate that local docs/ exists and has content
-          if [ ! -d "book-source/docs" ]; then
-            echo "❌ FATAL: Hydration failed AND book-source/docs/ does not exist"
+          if [ ! -d "apps/learn-app/docs" ]; then
+            echo "❌ FATAL: Hydration failed AND apps/learn-app/docs/ does not exist"
             echo "Cannot proceed without content directory"
             exit 1
           fi
 
           # Check if docs/ has any content files
-          if [ -z "$(find book-source/docs -type f -name '*.md' 2>/dev/null)" ]; then
-            echo "❌ FATAL: Hydration failed AND book-source/docs/ is empty (no .md files)"
+          if [ -z "$(find apps/learn-app/docs -type f -name '*.md' 2>/dev/null)" ]; then
+            echo "❌ FATAL: Hydration failed AND apps/learn-app/docs/ is empty (no .md files)"
             echo "Cannot proceed with empty content directory"
             exit 1
           fi
@@ -139,7 +140,7 @@ jobs:
 
           # Copy from local docs/
           mkdir -p build-source
-          cp -r book-source/docs/* build-source/
+          cp -r apps/learn-app/docs/* build-source/
 
           # Add warning to build summary
           echo "## ⚠️ Warning: Build Used Local Content" >> $GITHUB_STEP_SUMMARY
@@ -147,12 +148,16 @@ jobs:
           echo "Hydration from PanaversityFS failed. Build deployed using local \`docs/\` directory." >> $GITHUB_STEP_SUMMARY
           echo "This may result in slightly stale content if recent changes were not synced." >> $GITHUB_STEP_SUMMARY
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: npm
-          cache-dependency-path: book-source/package-lock.json
+          cache: pnpm
 
       - name: Install system dependencies for Sharp and OG image generation
         run: |
@@ -163,15 +168,14 @@ jobs:
             libvips-dev
 
       - name: Install dependencies
-        working-directory: book-source
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Run type checking
-        working-directory: book-source
-        run: npm run typecheck
+        working-directory: apps/learn-app
+        run: pnpm typecheck
 
       - name: Build site
-        working-directory: book-source
+        working-directory: apps/learn-app
         env:
           GA4_MEASUREMENT_ID: ${{ secrets.GA4_MEASUREMENT_ID }}
           # Use hydrated docsfs/ when PanaversityFS is enabled
@@ -182,12 +186,12 @@ jobs:
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
           BASE_URL: ${{ secrets.BASE_URL }}
           PANAVERSITY_API_KEY: ${{ secrets.PANAVERSITY_API_KEY }}
-        run: npm run build
+        run: pnpm build
 
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: book-source/build
+          path: apps/learn-app/build
 
       - name: Build summary
         run: |

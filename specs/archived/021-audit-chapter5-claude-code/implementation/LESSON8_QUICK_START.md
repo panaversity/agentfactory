@@ -2,7 +2,7 @@
 
 **Lesson**: 08-plugins-composition.md (Plugins: Composing Commands, Agents, Skills & Hooks)
 **Status**: ✅ COMPLETE
-**File Location**: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/08-plugins-composition.md`
+**File Location**: `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/08-plugins-composition.md`
 
 ---
 
@@ -15,36 +15,42 @@ Executed surgical edit of Lesson 8 with precision. Added 6 strategic insertions 
 ## The 6 Insertions (In Order)
 
 ### 1️⃣ Extension Hierarchy Visualization (36 lines)
+
 **Where**: After plugin definition, before "Plugins vs. Individual Extensions"
 **What**: ASCII tree showing Commands → Subagents → Skills → Hooks → Plugins progression
 **Why**: Scaffolds concept progression (Principle 13: Tiers 1-5)
 **Key Concept**: "Tier 3 orchestration: AI manages complexity, you specify intent"
 
 ### 2️⃣ AI Colearning Prompt (5 lines)
+
 **Where**: Within hierarchy subsection
 **What**: Interactive prompt to explore orchestration benefits with your AI
 **Why**: Practice specification thinking (Principle 2)
 **Prompt**: "I work on [workflow]. Looking at the hierarchy, give me one example where PLUGIN would save time. Show before/after."
 
 ### 3️⃣ Three-Role Framework Expert Insight (27 lines)
+
 **Where**: After all 4 built-in plugin descriptions
 **What**: Complete breakdown of plugins demonstrating Three-Role AI Partnership
 **Why**: Connects to Lesson 1 (Principle 18); shows plugins at peak efficiency
 **Key Insight**: "Ambient intelligence—your AI partnership anticipates needs, coordinates specialists, delivers results"
 
 ### 4️⃣ Organizational Plugins Expert Insight (32 lines)
+
 **Where**: After advanced hooks, before real workflow example
 **What**: Positions custom plugins as strategic competitive organizational assets
 **Why**: Shows business value of composition (Principle 13: Tier 3 organizational)
 **Key Message**: "Your plugins = organizational knowledge captured as executable code"
 
 ### 5️⃣ Map Your Workflow Exercise (21 lines)
+
 **Where**: Before "Creating Your Own Plugin" section
 **What**: Specification-first practice (decompose workflow using extension hierarchy)
 **Why**: Prepares students to think like plugin architect (Principle 2: Spec-First)
 **Task**: Choose workflow → map to hierarchy → write orchestration logic
 
 ### 6️⃣ Test Built-In Plugin Exercise (24 lines)
+
 **Where**: Before "Try With AI" section
 **What**: Hands-on activity (enable, run, observe what triggers, reflect on manual vs. automated)
 **Why**: Experience Tier 3 orchestration in action (Principle 13, Principle 8)
@@ -55,6 +61,7 @@ Executed surgical edit of Lesson 8 with precision. Added 6 strategic insertions 
 ## Deletion
 
 ### ❌ "What's Next" Section (18 lines)
+
 **Why**: Violates AI-first closure policy (lesson must end with "Try With AI", no post-sections)
 **Preservation**: Message about practicing tools reinforced in Try With AI Exercise 2
 
@@ -62,12 +69,12 @@ Executed surgical edit of Lesson 8 with precision. Added 6 strategic insertions 
 
 ## By The Numbers
 
-| Metric | Original | Modified | Change |
-|--------|----------|----------|--------|
-| Lines | 519 | 650 | +131 (+25%) |
-| CoLearning Elements | 0 | 5 | +5 |
-| Constitutional Refs | 0 | 4 | +4 |
-| Preservation Rate | — | 87.3% | ✅ Exceeds 85% |
+| Metric              | Original | Modified | Change         |
+| ------------------- | -------- | -------- | -------------- |
+| Lines               | 519      | 650      | +131 (+25%)    |
+| CoLearning Elements | 0        | 5        | +5             |
+| Constitutional Refs | 0        | 4        | +4             |
+| Preservation Rate   | —        | 87.3%    | ✅ Exceeds 85% |
 
 ---
 
@@ -86,12 +93,14 @@ Executed surgical edit of Lesson 8 with precision. Added 6 strategic insertions 
 ## Files Created
 
 ### Modified Lesson File
+
 ```
-📄 book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/08-plugins-composition.md
+📄 apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/08-plugins-composition.md
    650 lines (original: 519)
 ```
 
 ### Documentation
+
 ```
 📄 specs/021-audit-chapter5-claude-code/implementation/lesson8-surgical-edit-report.md
    19KB - Executive summary, metrics, quality gates, preservation analysis
@@ -132,20 +141,26 @@ Executed surgical edit of Lesson 8 with precision. Added 6 strategic insertions 
 ## Constitutional Alignment
 
 ### Principle 2: Specification-First Development
+
 **Integration**: ✅ STRONG
+
 - Insertions 1, 5 emphasize "specify intent, AI manages complexity"
 - Practice exercises reinforce specification decomposition
 - Hierarchy shows progression of composition complexity
 
 ### Principle 13: Graduated Teaching Pattern (Tier 1→3)
+
 **Integration**: ✅ STRONG
+
 - 4 explicit Tier 3 references
 - Shows foundational → complex → orchestration progression
 - Exercises model Tier 3 thinking and practice
 - "Plugins as Tier 3 orchestration" is primary learning outcome
 
 ### Principle 18: Three-Role AI Partnership
+
 **Integration**: ✅ STRONG
+
 - Insertion 3 maps all three roles to plugin architecture
 - Shows Teacher/Student/Co-Worker operating simultaneously
 - Colearning prompt demonstrates bidirectional learning
@@ -155,21 +170,25 @@ Executed surgical edit of Lesson 8 with precision. Added 6 strategic insertions 
 ## Next Steps: Validation Phase
 
 ### Content Review (30 min)
+
 - [ ] Read insertions for tone and flow
 - [ ] Verify examples are accurate and helpful
 - [ ] Check colearning prompt works cross-domain
 
 ### Technical Validation (20 min)
+
 - [ ] Verify plugin references against Claude Code docs (2025-01 version)
 - [ ] Test that ASCII hierarchy tree renders correctly in Docusaurus
 - [ ] Confirm all markdown syntax is valid
 
 ### Integration Testing (20 min)
+
 - [ ] Verify cross-lesson references (L1: Three-Role, L3-L7: extensions, Part 9: marketplace)
 - [ ] Check Try With AI prompts for accessibility
 - [ ] Build Docusaurus locally to verify rendering
 
 ### Approval (10 min)
+
 - [ ] Sign off that lesson meets quality standards
 - [ ] Approve for publication
 - [ ] Queue for Docusaurus build/deployment
@@ -239,4 +258,4 @@ Preservation rate (87%) reflects surgical precision—minimal disruption, maximu
 **Reports Available**: 3 comprehensive documentation files
 **Approval Gate**: Validation phase sign-off required before publication
 
-*Questions? See the detailed changelog or surgical edit report for line-by-line changes.*
+_Questions? See the detailed changelog or surgical edit report for line-by-line changes._

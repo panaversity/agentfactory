@@ -1,0 +1,20 @@
+# Documentation and specs
+docs/
+specs/
+history/
+papers/
+context/
+
+# Claude Code configuration (not buildable)
+.claude/
+
+# Specify framework
+.specify/
+
+# Templates
+templates/
+
+# Root-level non-project files
+*.md
+*.png
+cover.png

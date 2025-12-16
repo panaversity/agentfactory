@@ -16,8 +16,10 @@ Enhanced Lesson 06 from a moderate-engagement lesson (~178 lines) to a highly in
 ## Major Changes
 
 ### 1. Identify Recurring Patterns Section (Lines 23-61)
+
 **Before**: Simple list of common patterns for students to review
 **After**:
+
 - Active discovery exercise: Students must review their actual Features 1-4
 - Specific prompts for each feature (what questions to ask about implementation)
 - Examples explicitly tied to what students built
@@ -29,36 +31,44 @@ Enhanced Lesson 06 from a moderate-engagement lesson (~178 lines) to a highly in
 ---
 
 ### 2. Create Your First Skill File Section (Lines 63-212)
+
 **Before**: Single example of JSON Data Transformer, students asked to create skill independently
 **After**: Six detailed steps with templates and concrete examples for each step:
 
 #### Step 1: Create the File (scaffolded file path)
+
 #### Step 2: Write Persona (template + detailed example)
+
 - Teaches what makes a good persona (role + values + priorities)
 - Shows template structure
 - Provides concrete example with specific language
 
 #### Step 3: Write 5 Key Questions (template + detailed example)
+
 - Teaches what makes questions good (force thinking, address edge cases, clarify inputs/outputs)
 - Shows template structure
 - Provides 5 specific questions about JSON Data Transformer
 - Examples for Questions 1-5 with detailed answers about Feature 2
 
 #### Step 4: Write 5 Principles (template + detailed example)
+
 - Teaches what makes principles good (guide implementation, explain why, be testable)
 - Shows template with "why this matters" in parentheses
 - Provides 5 principles with rationale for each
 
 #### Step 5: Write Example Application (template + very detailed example)
+
 - Teaches what makes examples valuable (specific feature, concrete data, proof of application)
 - Shows Input JSON, Output JSON, how you answered each Question, how you applied each Principle
 - 45+ lines of concrete example code and reasoning
 
 #### Step 6: Checklist (validation gates)
+
 - 6-point checklist to verify skill quality before proceeding
 - Ensures persona is specific, questions are testable, principles explain why, example is real
 
 **Change impact**:
+
 - Scaffolding reduces cognitive load (B1 appropriate)
 - Detailed examples model excellence (students see what "good" looks like)
 - Checklist ensures quality before proceeding
@@ -67,27 +77,33 @@ Enhanced Lesson 06 from a moderate-engagement lesson (~178 lines) to a highly in
 ---
 
 ### 3. Create Your Second Skill File Section (Lines 214-285)
+
 **Before**: Minimal guidance ("choose a different pattern, write it")
 **After**: Four detailed steps:
 
 #### Step 1: Choose Your Second Pattern
+
 - Introduces 4 concrete pattern candidates with indicators
 - Shows where each pattern appeared in Features 1-4
 - Makes decision explicit (forces students to analyze their code)
 
 #### Step 2: Use Template Structure
+
 - References first skill as model (consistency)
 - Lists five sections to complete
 
 #### Step 3: Be Specific and Concrete
+
 - Shows "Too generic (bad)" vs "Specific and testable (good)" contrast
 - Teaches quality gate: principles must be testable, not theoretical
 
 #### Step 4: Create File
+
 - Scaffolded command
 - Checklist (6 items) ensuring second skill differs from first, is specific, has evidence
 
 **Change impact**:
+
 - Decision-forcing step (patterns must come from their features)
 - Quality gates prevent duplicate skills
 - Concrete/specific focus teaches reusability principle
@@ -96,25 +112,30 @@ Enhanced Lesson 06 from a moderate-engagement lesson (~178 lines) to a highly in
 ---
 
 ### 4. Test Skills Against Feature 5 Section (Lines 287-451)
+
 **Before**: Brief text asking students to apply skills, minimal scaffolding
 **After**: Five detailed parts with templates and examples:
 
 #### Part 1: Apply First Skill - Answer the Questions (Lines 297-352)
+
 - Fillable template for all 5 questions
 - Detailed example showing how to answer Q1-Q5 for Feature 5 (Lead Nurture Sequencer)
 - Shows concrete JSON input/output schemas
 - Shows error handling decisions, validation logic, design trade-offs
 
 #### Part 2: Apply First Skill - Review the Principles (Lines 354-376)
+
 - Fillable template for each principle → how it applies to Feature 5
 - Detailed example of how "Schema First" principle would guide Feature 5 design
 - Makes principle application concrete and testable
 
 #### Part 3: Apply Second Skill (Lines 378-409)
+
 - Same template structure as Part 1-2 but for second skill
 - Ensures both skills are actually applied
 
 #### Part 4: Validate Your Design Decisions (Lines 411-433)
+
 - 4-category checklist:
   - Input Completeness (3 checkpoints)
   - Output Completeness (3 checkpoints)
@@ -123,11 +144,13 @@ Enhanced Lesson 06 from a moderate-engagement lesson (~178 lines) to a highly in
 - Gives students concrete validation gates
 
 #### Part 5: Identify Skill Gaps (Lines 435-451)
+
 - Explicit reflection: what did skills NOT answer?
 - Decision tree for whether to refine skills (1-2 gaps vs 3+ gaps)
 - Teaches that iteration is normal
 
 **Change impact**:
+
 - Transforms vague "apply your skills" into granular, step-by-step work
 - Detailed Feature 5 example makes expectations crystal clear
 - 12 validation checkpoints ensure students complete work properly
@@ -137,8 +160,10 @@ Enhanced Lesson 06 from a moderate-engagement lesson (~178 lines) to a highly in
 ---
 
 ### 5. Create Your Third Skill (Optional) Section (Lines 453-472)
+
 **Before**: Brief bullet list of candidates
 **After**: Decision framework with 3 yes/no questions
+
 - Did pattern appear in 2+ features?
 - Does it have 5+ decision points?
 - Would future projects benefit?
@@ -150,20 +175,24 @@ Enhanced Lesson 06 from a moderate-engagement lesson (~178 lines) to a highly in
 ---
 
 ### 6. Try With AI Section (Lines 476-525)
+
 **Before**: Two generic prompts with minimal guidance
 **After**: Two detailed prompts with expected responses and "How to use feedback" guidance:
 
 #### Prompt 1: Get Feedback on Your First Skill (Lines 480-504)
+
 - Detailed prompt asking 4 specific questions
 - Expected response: what should AI identify (vague questions, missing principles, redundancy, example convincingness)
 - How to use feedback: add questions, consolidate principles, remove specificity, improve examples
 
 #### Prompt 2: Test Transferability (Lines 506-525)
+
 - Scenario-based prompt: hiring pipeline (different domain than sales)
 - Expected response: identify what transfers, what needs adaptation, what new pattern to create
 - How to use feedback: validate reusability, identify adaptation needs, assess third skill necessity
 
 **Change impact**:
+
 - Students know what to expect from AI
 - Feedback guidance helps students improve skills
 - Transferability test validates the value of reusable skills
@@ -173,27 +202,29 @@ Enhanced Lesson 06 from a moderate-engagement lesson (~178 lines) to a highly in
 
 ## Overall Statistics
 
-| Metric | Before | After | Change |
-|--------|--------|-------|--------|
-| **Total Lines** | 178 | 525 | +295% |
-| **Major Sections** | 3 | 6 | +100% |
-| **Subsections** | 2 | 20+ | +900% |
-| **Concrete Examples** | 1 | 6+ | +500% |
-| **Fillable Templates** | 1 | 15+ | +1400% |
-| **Validation Checklists** | 0 | 4 | New |
-| **Hands-on Ratio** | ~60% | ~90% | +50% |
-| **Estimated Time** | 60 min | 90 min | +30% |
+| Metric                    | Before | After  | Change |
+| ------------------------- | ------ | ------ | ------ |
+| **Total Lines**           | 178    | 525    | +295%  |
+| **Major Sections**        | 3      | 6      | +100%  |
+| **Subsections**           | 2      | 20+    | +900%  |
+| **Concrete Examples**     | 1      | 6+     | +500%  |
+| **Fillable Templates**    | 1      | 15+    | +1400% |
+| **Validation Checklists** | 0      | 4      | New    |
+| **Hands-on Ratio**        | ~60%   | ~90%   | +50%   |
+| **Estimated Time**        | 60 min | 90 min | +30%   |
 
 ---
 
 ## Pedagogical Improvements
 
 ### 1. **Scaffolding**: Heavy scaffolding for B1 proficiency
+
 - Step-by-step templates (5-6 steps per skill)
 - Template + example + checklist pattern
 - Fills cognitive load to ~8 concepts (within B1 limit of 7-10)
 
 ### 2. **Active Learning**: ~90% hands-on ratio
+
 - Students analyze their actual code (Pattern Identification)
 - Students write two complete skill files (Skill Creation)
 - Students apply skills to new problem (Feature 5 testing)
@@ -201,6 +232,7 @@ Enhanced Lesson 06 from a moderate-engagement lesson (~178 lines) to a highly in
 - Students seek and interpret feedback (Try With AI)
 
 ### 3. **Concrete Examples**: Every abstract concept has concrete example
+
 - Pattern Identification: specific Feature 1-4 analysis prompts
 - Persona: example with role + values + priorities
 - Questions: 5 questions + 5 answers about JSON Data Transformer → Feature 5
@@ -208,12 +240,14 @@ Enhanced Lesson 06 from a moderate-engagement lesson (~178 lines) to a highly in
 - Feature 5 testing: complete input/output JSON schemas, error handling decisions
 
 ### 4. **Validation Gates**: Students know when they're done
+
 - Step 6 Checklist (6 items for first skill)
 - Second Skill Checklist (6 items)
 - Part 4 Validation (12 checkpoints)
 - Part 5 Gap Analysis (decides if refinement needed)
 
 ### 5. **No Meta-Commentary**: Framework stays invisible
+
 - Only one reference to "P+Q+P Framework" (necessary terminology)
 - No pedagogical labels (Layer, Three Roles, etc.)
 - Students EXPERIENCE skill creation, don't STUDY about it
@@ -223,22 +257,26 @@ Enhanced Lesson 06 from a moderate-engagement lesson (~178 lines) to a highly in
 ## Design Decisions
 
 ### 1. Why Feature 5 testing is so detailed
+
 - Feature 5 is the highest-leverage validation
 - If skills aren't reusable, they fail here
 - Detailed template prevents confusion about what to do
 - Concrete example shows exactly what "applying a skill" means
 
 ### 2. Why two prompts in "Try With AI"
+
 - Prompt 1: validates skill quality and completeness
 - Prompt 2: tests transferability to different domain (hiring)
 - Together they prove skills are reusable, not domain-specific
 
 ### 3. Why 5 questions + 5 principles per skill
+
 - Cognitive load: 5-7 concepts for A2, but students are B1 (7-10)
 - Pattern minimum: established in intro ("5+ decision points")
 - Matching question-to-principle count ensures completeness
 
 ### 4. Why step-by-step scaffolding instead of "just do it"
+
 - Lesson is Layer 3 (Intelligence Design)
 - Students are creating reusable patterns (high complexity)
 - B1 proficiency requires moderate scaffolding
@@ -249,6 +287,7 @@ Enhanced Lesson 06 from a moderate-engagement lesson (~178 lines) to a highly in
 ## Validation
 
 **Metadata added**:
+
 ```yaml
 proficiency_level: "B1"
 estimated_time: "90 minutes"
@@ -264,6 +303,7 @@ learning_objectives:
 **Hands-on ratio**: Estimated 90%+ of student time is active work (writing, analyzing, deciding, validating)
 
 **B1 complexity**:
+
 - Concepts per section: 6-9 (within 7-10 limit)
 - Scaffolding: Moderate (templates + examples, not step-by-step walkthrough)
 - Bloom's level: Create (students create reusable skills) ✓
@@ -272,7 +312,7 @@ learning_objectives:
 
 ## Files Modified
 
-- `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/06-skill-creation-polish.md`
+- `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/06-skill-creation-polish.md`
   - Lines: 178 → 525 (+347 lines)
   - All enhancements integrated
 

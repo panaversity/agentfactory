@@ -1,6 +1,6 @@
 # Lesson 4: Detailed Changelog - Understanding and Using Subagents
 
-**File**: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/04-subagents.md`
+**File**: `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/04-subagents.md`
 
 **Edit Type**: Surgical insertions with 94.6% preservation
 
@@ -22,6 +22,7 @@
 ### Context (5 lines before + 5 lines after)
 
 **BEFORE (Lines 16-25 in original)**:
+
 ```markdown
 **What if you could have specialized AI assistants for different tasks—a code reviewer, a documentation writer, a debugging expert—each with clear focus and isolated context?**
 
@@ -35,6 +36,7 @@ In this lesson, you'll learn what subagents are, when to use them, and how to cr
 ```
 
 **INSERTED CONTENT**:
+
 ```markdown
 ---
 
@@ -48,6 +50,7 @@ Remember from Lesson 1 the Three-Role AI Partnership? Subagents are where that p
 ```
 
 **Rationale**:
+
 - **Placement**: Immediately after introduction (context fresh) but before technical definition (conceptual first)
 - **Purpose**: Frame Three-Role AI Partnership BEFORE students learn subagent mechanics
 - **Connection**: "Remember from Lesson 1" links backward; "specialization" previews structure
@@ -55,6 +58,7 @@ Remember from Lesson 1 the Three-Role AI Partnership? Subagents are where that p
 - **Pedagogical Intent**: Constitution Principle 13 (Graduated Teaching) and 18 (Three-Role Framework)
 
 **Quality Indicators**:
+
 - ✅ Natural transition from "introduction" to "what are subagents"
 - ✅ Connects to Lesson 1 explicitly
 - ✅ No jargon without explanation (explains "role clarity")
@@ -74,6 +78,7 @@ Remember from Lesson 1 the Three-Role AI Partnership? Subagents are where that p
 ### Context (5 lines before + 5 lines after)
 
 **BEFORE (Lines 48-56 in original)**:
+
 ```markdown
 | **Examples** | Debugging, learning concepts, exploring codebases | Code reviews, test generation, refactoring, documentation |
 
@@ -85,6 +90,7 @@ Remember from Lesson 1 the Three-Role AI Partnership? Subagents are where that p
 ```
 
 **INSERTED CONTENT**:
+
 ```markdown
 **Key Insight**: Use subagents when you have **repeatable tasks with clear instructions**. Use the main conversation when you need flexibility and exploration.
 
@@ -104,12 +110,14 @@ This prompt helps you recognize context pollution in your own workflow—not as 
 ```
 
 **Rationale**:
+
 - **Placement**: After key insight (when problem is framed) but before benefits explanation (personalization before theory)
 - **Purpose**: Make abstract "context pollution" concrete in learner's domain
 - **Domain-Agnostic**: Template allows student to specify web app, data pipeline, DevOps, etc.
 - **Pedagogical Intent**: Co-Learning Principle (personalization, bidirectional discovery)
 
 **Quality Indicators**:
+
 - ✅ Copyable prompt in blockquote format
 - ✅ Bracketed placeholders for customization ([describe your project], [MY domain])
 - ✅ Clear expected output ("2-3 examples from MY domain")
@@ -117,6 +125,7 @@ This prompt helps you recognize context pollution in your own workflow—not as 
 - ✅ Bridges abstract concept (context pollution) to student reality
 
 **Validation**: Prompt tested across domains:
+
 - ✅ Web app development: "mixing API design with bug fixes"
 - ✅ Data pipeline: "mixing ETL logic with data validation"
 - ✅ DevOps: "mixing infrastructure code with deployment scripts"
@@ -135,6 +144,7 @@ This prompt helps you recognize context pollution in your own workflow—not as 
 ### Context (5 lines before + 5 lines after)
 
 **BEFORE (Lines 146-154 in original)**:
+
 ```markdown
 Subagents can be used in two ways:
 
@@ -149,6 +159,7 @@ Use explicit invocation for predictability. Rely on automatic delegation as a co
 ```
 
 **INSERTED CONTENT**:
+
 ```markdown
 Subagents can be used in two ways:
 
@@ -169,6 +180,7 @@ The distinction between explicit and automatic delegation isn't just organizatio
 ```
 
 **Rationale**:
+
 - **Placement**: Immediately after delegation explanation (concept fresh) before verification (deepen before validating)
 - **Purpose**: Reframe delegation modes through Three-Role AI Partnership lens
 - **Connection**: Links back to Insertion 1 (role clarity) and Lesson 1 (Three-Role framework)
@@ -176,6 +188,7 @@ The distinction between explicit and automatic delegation isn't just organizatio
 - **Pedagogical Intent**: Multiple perspectives on same concept deepen understanding
 
 **Quality Indicators**:
+
 - ✅ Explicitly connects to Three-Role AI Partnership
 - ✅ Addresses both delegation modes (neither passive)
 - ✅ Clarifies key difference (who decides role shift)
@@ -195,8 +208,10 @@ The distinction between explicit and automatic delegation isn't just organizatio
 ### Context (5 lines before + 5 lines after)
 
 **BEFORE (Lines 176-190 in original)**:
+
 ```markdown
 **4. Iterate and Improve**
+
 - After using a subagent, refine its system prompt
 - Add examples of good/bad outputs to guide behavior
 - Collect feedback from team members
@@ -207,8 +222,10 @@ The distinction between explicit and automatic delegation isn't just organizatio
 ```
 
 **INSERTED CONTENT**:
+
 ```markdown
 **4. Iterate and Improve**
+
 - After using a subagent, refine its system prompt
 - Add examples of good/bad outputs to guide behavior
 - Collect feedback from team members
@@ -225,6 +242,7 @@ Here's a strategic insight that elevates subagents beyond "better organization":
 ```
 
 **Rationale**:
+
 - **Placement**: End of best practices (after explaining HOW) before reflection (strategic WHY)
 - **Purpose**: Elevate thinking from mechanics to organizational value
 - **Strategic Message**: Subagents as competitive asset, not just tool
@@ -232,6 +250,7 @@ Here's a strategic insight that elevates subagents beyond "better organization":
 - **Pedagogical Intent**: Motivation and forward-looking perspective
 
 **Quality Indicators**:
+
 - ✅ Concrete examples (python-code-reviewer, pytest-test-generator, etc.)
 - ✅ Strategic framing (competitive moat, organizational asset)
 - ✅ Concept of "ambient autonomous expertise" (memorable phrase)
@@ -251,6 +270,7 @@ Here's a strategic insight that elevates subagents beyond "better organization":
 ### Context (5 lines before + 5 lines after)
 
 **BEFORE (Lines 111-121 in original)**:
+
 ```markdown
 ---
 
@@ -260,6 +280,7 @@ Let's create a **"latest-news" subagent**—a focused researcher that surfaces c
 ```
 
 **INSERTED CONTENT**:
+
 ```markdown
 ---
 
@@ -286,6 +307,7 @@ This exercise teaches you to think like a subagent designer: What's the clear, r
 ```
 
 **Rationale**:
+
 - **Placement**: Before technical creation walkthrough (plan before implement)
 - **Purpose**: Practice spec-first thinking ("clarity first, implementation second")
 - **Exercise Structure**: Clear numbered steps with example and reflection
@@ -293,6 +315,7 @@ This exercise teaches you to think like a subagent designer: What's the clear, r
 - **Alignment**: Reinforces "Specs Are the New Syntax" principle
 
 **Quality Indicators**:
+
 - ✅ Concrete numbered task steps (3 steps + example)
 - ✅ Personalization ("YOUR workflow", "YOUR task")
 - ✅ Example specification provided (linting subagent)
@@ -301,6 +324,7 @@ This exercise teaches you to think like a subagent designer: What's the clear, r
 - ✅ Specification structure models what students should write
 
 **Validation Checklist**:
+
 - ✅ Spec-first thinking emphasized ("clarity first, implementation second")
 - ✅ Planning questions guide comprehensive thinking
 - ✅ Example shows complete specification format
@@ -319,6 +343,7 @@ This exercise teaches you to think like a subagent designer: What's the clear, r
 ### Context (5 lines before + 5 lines after)
 
 **BEFORE (Lines 134-150 in original)**:
+
 ```markdown
 **If you see targeted, phase‑specific feedback**: ✅ It works. You get clean execution and clear results with minimal prompting.
 
@@ -330,6 +355,7 @@ Subagents can be used in two ways:
 ```
 
 **INSERTED CONTENT**:
+
 ```markdown
 **If you see targeted, phase‑specific feedback**: ✅ It works. You get clean execution and clear results with minimal prompting.
 
@@ -340,6 +366,7 @@ Subagents can be used in two ways:
 Now that you've created a subagent (or used the example), let's compare the two delegation modes in practice:
 
 **Your task:**
+
 1. **Test explicit delegation**: Ask Claude Code explicitly: "Use the latest-news subagent to find [topic]." Notice the control you have—you're directing the role shift.
 2. **Test automatic delegation** (if enabled): Make a request that would naturally match the subagent (e.g., "Find the latest news on [topic]" without mentioning the subagent name). Does Claude Code automatically use the subagent, or does it stay in main conversation?
 3. **Compare your experience**:
@@ -355,6 +382,7 @@ Now that you've created a subagent (or used the example), let's compare the two 
 ```
 
 **Rationale**:
+
 - **Placement**: After creation example (students have working subagent) before formal explanation (experiential before conceptual)
 - **Purpose**: Experiential learning through testing and comparison
 - **Exercise Structure**: Do-then-reflect pattern (test → compare → reflect)
@@ -362,6 +390,7 @@ Now that you've created a subagent (or used the example), let's compare the two 
 - **Alignment**: Connects to Insertion 3 (role clarity in delegation modes)
 
 **Quality Indicators**:
+
 - ✅ Three-step task (test explicit, test automatic, compare)
 - ✅ Concrete prompts students can copy ("Use the latest-news subagent to find...")
 - ✅ Reflection questions have no "right answer" (supports autonomy)
@@ -370,6 +399,7 @@ Now that you've created a subagent (or used the example), let's compare the two 
 - ✅ Validates both approaches as legitimate
 
 **Validation Checklist**:
+
 - ✅ Experiential learning (testing, not just reading)
 - ✅ Comparison builds deeper understanding
 - ✅ Reflection questions foster critical thinking
@@ -379,14 +409,14 @@ Now that you've created a subagent (or used the example), let's compare the two 
 
 ## Summary of Changes
 
-| # | Insertion Type | Location | Lines Added | Purpose |
-|---|---|---|---|---|
-| 1 | Conceptual paragraph | After intro | 4 | Three-Role AI Partnership framing |
-| 2 | 💬 AI Prompt | After "Key Insight" | 7 | Personalize context pollution concept |
-| 3 | 🎓 Expert Insight | After delegation explanation | 6 | Role clarity in explicit/automatic modes |
-| 4 | 🎓 Expert Insight | After best practices | 8 | Organizational knowledge competitive advantage |
-| 5 | 🤝 Practice Exercise | Before creation walkthrough | 16 | Plan before building (spec-first) |
-| 6 | 🤝 Practice Exercise | After walkthrough | 13 | Test delegation modes in practice |
+| #   | Insertion Type       | Location                     | Lines Added | Purpose                                        |
+| --- | -------------------- | ---------------------------- | ----------- | ---------------------------------------------- |
+| 1   | Conceptual paragraph | After intro                  | 4           | Three-Role AI Partnership framing              |
+| 2   | 💬 AI Prompt         | After "Key Insight"          | 7           | Personalize context pollution concept          |
+| 3   | 🎓 Expert Insight    | After delegation explanation | 6           | Role clarity in explicit/automatic modes       |
+| 4   | 🎓 Expert Insight    | After best practices         | 8           | Organizational knowledge competitive advantage |
+| 5   | 🤝 Practice Exercise | Before creation walkthrough  | 16          | Plan before building (spec-first)              |
+| 6   | 🤝 Practice Exercise | After walkthrough            | 13          | Test delegation modes in practice              |
 
 **Total new lines**: 54 (out of 291 final = 18.6% addition)
 **Preservation rate**: 228 / 291 = 78.4% original content remaining
@@ -396,11 +426,12 @@ Now that you've created a subagent (or used the example), let's compare the two 
 
 ## File Path Verification
 
-**Original Path**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/part-2/book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/04-subagents.md`
+**Original Path**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/part-2/apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/04-subagents.md`
 
 **Confirmed Written**: ✅ YES (edit tool verified file written)
 
 **YAML Frontmatter** (Lines 1-4, unchanged):
+
 ```yaml
 ---
 sidebar_position: 4
@@ -409,6 +440,7 @@ title: "Understanding and Using Subagents"
 ```
 
 **Final Structure**:
+
 1. Frontmatter (lines 1-4)
 2. Title (line 6)
 3. Problem statement (lines 8-20)
@@ -434,17 +466,20 @@ title: "Understanding and Using Subagents"
 All insertions follow markdown standards:
 
 **Heading Levels**:
+
 - `##` for major sections (insertions 1, 5, 6 use `####` as subsections)
 - Consistent with original document hierarchy
 - No skipped levels
 
 **Formatting**:
+
 - Blockquotes for prompts (proper `>` syntax)
 - Bold for emphasis (`**text**`)
 - Code inline backticks and fence blocks where needed
 - Lists properly numbered and bulleted
 
 **Cross-References**:
+
 - Insertion 1: "Remember from Lesson 1" ✅
 - Insertion 3: "Three-Role AI Partnership" concept ✅
 - Insertion 4: "Iterate and Improve" from best practices ✅
@@ -452,6 +487,7 @@ All insertions follow markdown standards:
 - Insertion 6: Connects to "Delegation Modes" formal section ✅
 
 **No Broken Elements**:
+
 - All code blocks closed
 - All blockquotes closed
 - All lists properly terminated
@@ -462,6 +498,7 @@ All insertions follow markdown standards:
 ## Pedagogical Flow Verification
 
 **Original Flow**:
+
 1. Problem (context pollution)
 2. Definition (what are subagents)
 3. Benefits (why they matter)
@@ -474,6 +511,7 @@ All insertions follow markdown standards:
 10. Try With AI
 
 **Enhanced Flow with Insertions**:
+
 1. Problem (context pollution)
 2. **[INSERT 1: Conceptual frame via Three-Role Partnership]**
 3. Definition (what are subagents)

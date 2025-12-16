@@ -9,14 +9,15 @@ feature: 001-preface-design
 branch: 001-preface-design
 user: architect
 command: (continued context integration phase)
-labels: ["preface", "integration", "lean-writing", "missing-components", "refinement"]
+labels:
+  ["preface", "integration", "lean-writing", "missing-components", "refinement"]
 links:
   spec: /specs/001-preface-design/spec.md
   ticket: null
   adr: null
   pr: null
 files:
-  - book-source/docs/preface-agent-native.mdx
+  - apps/learn-app/docs/preface-agent-native.mdx
   - history/prompts/001-preface-design/0007-preface-integration-missing-components.red.prompt.md
 tests:
   - Book title and subtitle integrated (PASS)
@@ -39,9 +40,10 @@ tests:
 - Philosophy of co-learning was underexplained
 - Dual language approach (Python + TypeScript) was mentioned but not explained
 
-**User Request**: "review again @book-source/docs/preface-agent-native.mdx" — indicating preface needs enrichment with essential components from context while maintaining lean, agent-native demonstration approach.
+**User Request**: "review again @apps/learn-app/docs/preface-agent-native.mdx" — indicating preface needs enrichment with essential components from context while maintaining lean, agent-native demonstration approach.
 
 **Execution Strategy**: Rather than returning to verbose explanations, integrate missing components using:
+
 1. Table format (for AI Development Spectrum) - Docusaurus-native, scannable
 2. Concise narrative (for Co-Learning philosophy) - 100-150 words, focused
 3. Bullet-based architecture (for Python/TypeScript separation) - clear, scannable
@@ -56,15 +58,18 @@ tests:
 **Integrated Components**:
 
 1. **Book Title & URLs** (header section):
+
    - Full title: "AI Native Software Development: Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way"
    - Website URL + Direct Link to book
 
 2. **AI Development Spectrum Section** (new H2 after Paradigm Shift):
+
    - Table showing: Assisted → Driven → Native spectrum
    - Positioning statement: "This book teaches Levels 2-3"
    - Concise 4-column table (Approach, What AI Does, Your Role, Focus)
 
 3. **Why Co-Learning Section** (new H2 before Three-Part System):
+
    - Reframed traditional AI as "tool" vs. co-learning as "partners in thought"
    - Detailed 5-step feedback loop (clarify → generate → review → refine → regenerate)
    - Philosophy: "Teaching each other iteratively until intent and output align"
@@ -78,6 +83,7 @@ tests:
 **Word Count Result**: 1,643 total (including frontmatter/markdown syntax), approximately 1,450-1,500 prose words
 
 **Structure Flow**:
+
 1. Header (Title + URLs)
 2. The Paradigm Shift (before/after table) — 250w
 3. Where This Book Fits (spectrum table) — 200w [NEW]
@@ -97,6 +103,7 @@ tests:
 ## Why This Works
 
 1. **Completes the picture**: Readers now understand:
+
    - What spectrum the book operates in (Levels 2-3)
    - Why "co-learning" is the core philosophy
    - How Python and TypeScript serve different purposes
@@ -104,17 +111,20 @@ tests:
    - How to read based on their background
 
 2. **Maintains leanness**: Despite adding 4 new sections (~600 words), total remains in target range through:
+
    - Table format for data (compact, scannable)
    - Bullet lists for architecture (clear, structured)
    - Focused narrative (no philosophical tangents)
 
 3. **Docusaurus-optimized**:
+
    - Multiple tables render beautifully in web format
    - Heading hierarchy is clean (no "Section N:" prefixes)
    - Bullet points are scannable
    - Code examples show spec format
 
 4. **Agent-native demonstration**: Preface doesn't just explain spec-driven development; it shows:
+
    - Spec example (email validation API)
    - Three concrete projects readers will build
    - Co-learning feedback loop with actual steps
@@ -150,10 +160,12 @@ tests:
 - 🧪 **Tests**: All 8 test criteria PASS. Word count target maintained (1,450-1,500 prose). Docusaurus formatting preserved. No fluffy prose regression. Strategic integration complete.
 
 - 📁 **Files**:
-  - `/book-source/docs/preface-agent-native.mdx` — Final published preface (1,643 total words, ~1,500 prose)
+
+  - `/apps/learn-app/docs/preface-agent-native.mdx` — Final published preface (1,643 total words, ~1,500 prose)
   - `/history/prompts/001-preface-design/0007-preface-integration-missing-components.red.prompt.md` — PHR documenting integration
 
 - 🔁 **Next prompts**:
+
   1. Final editorial review of preface for voice/tone consistency
   2. Verify navigation links to Part 1, Chapter 1 work correctly
   3. Begin Part 1, Chapter 1 implementation ("The $3 Trillion Opportunity")
@@ -168,6 +180,7 @@ tests:
 - **Failure modes observed**: None. Strategic approach to integration prevented regression to "fluffy" while capturing missing content.
 
 - **Graders run and results**:
+
   - Spec compliance: PASS (all foundational elements included)
   - Word count: PASS (1,500w target maintained)
   - Docusaurus formatting: PASS (tables, clean hierarchy)

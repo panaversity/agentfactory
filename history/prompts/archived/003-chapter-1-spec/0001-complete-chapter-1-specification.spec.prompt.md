@@ -19,7 +19,7 @@ files:
   - specs/003-chapter-1-spec/spec.md
   - specs/003-chapter-1-spec/checklists/requirements.md
   - specs/part-1/part-1-spec.md (updated)
-  - book-source/docs/01-Introducing-AI-Driven-Development/intro.md (updated)
+  - apps/learn-app/docs/01-Introducing-AI-Driven-Development/intro.md (updated)
 tests:
   - Quality checklist: PASS (all 16 items checked)
   - Requirements validation: PASS (10 functional requirements met)
@@ -43,7 +43,9 @@ Complete Chapter 1 @specs/part-1/part-1-spec.md from our part 1. This chapter wi
 Created comprehensive Chapter 1 specification for agent-native education model:
 
 **Core Deliverables**:
+
 1. **Chapter 1 Specification** (specs/003-chapter-1-spec/spec.md)
+
    - 4 user stories with P1/P2 priorities covering reader journeys
    - 10 functional requirements (FR-001 through FR-010)
    - 8 success criteria with specific measurable percentages
@@ -51,15 +53,17 @@ Created comprehensive Chapter 1 specification for agent-native education model:
    - Detailed pedagogical approach aligned with Constitution
 
 2. **Quality Checklist** (specs/003-chapter-1-spec/checklists/requirements.md)
+
    - 16-point validation checklist (all items passing)
    - Readiness assessment: ✅ READY FOR PLANNING
 
 3. **Updated Part 1 Specification** (specs/part-1/part-1-spec.md)
+
    - Revised Chapter 1 section with agent-native education focus
    - Updated with AI Coding Revolution Paper as primary source
    - Clarified learning outcomes and content sources
 
-4. **Updated Part 1 Introduction** (book-source/docs/01-Introducing-AI-Driven-Development/intro.md)
+4. **Updated Part 1 Introduction** (apps/learn-app/docs/01-Introducing-AI-Driven-Development/intro.md)
    - Reader-focused (removed instructor guidance)
    - Emphasizes agent-native education model
    - Connects to economic opportunity and vertical markets

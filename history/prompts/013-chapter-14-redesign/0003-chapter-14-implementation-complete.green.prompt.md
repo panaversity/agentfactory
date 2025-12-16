@@ -9,24 +9,30 @@ feature: 013-chapter-14-redesign
 branch: 013-chapter-14-redesign
 user: developer
 command: /sp.implement
-labels: [implementation, lesson-creation, beginner-friendly-redesign, concept-before-syntax]
+labels:
+  [
+    implementation,
+    lesson-creation,
+    beginner-friendly-redesign,
+    concept-before-syntax,
+  ]
 links:
   spec: specs/013-chapter-14-redesign/spec.md
   ticket: N/A
   adr: N/A
   pr: N/A
 files:
-  - path: book-source/docs/04-Python-Fundamentals/14-data-types/readme.md
+  - path: apps/learn-app/docs/04-Python-Fundamentals/14-data-types/readme.md
     purpose: Chapter overview and learning path (13.6 KB)
-  - path: book-source/docs/04-Python-Fundamentals/14-data-types/01-understanding-data-types.md
+  - path: apps/learn-app/docs/04-Python-Fundamentals/14-data-types/01-understanding-data-types.md
     purpose: Lesson 1 - Foundation concepts (18.1 KB)
-  - path: book-source/docs/04-Python-Fundamentals/14-data-types/02-numeric-types.md
+  - path: apps/learn-app/docs/04-Python-Fundamentals/14-data-types/02-numeric-types.md
     purpose: Lesson 2 - int/float/complex deep dive (16.4 KB)
-  - path: book-source/docs/04-Python-Fundamentals/14-data-types/03-text-boolean-none.md
+  - path: apps/learn-app/docs/04-Python-Fundamentals/14-data-types/03-text-boolean-none.md
     purpose: Lesson 3 - str/bool/None + truthy/falsy (23.3 KB)
-  - path: book-source/docs/04-Python-Fundamentals/14-data-types/04-collections-and-binary-types.md
+  - path: apps/learn-app/docs/04-Python-Fundamentals/14-data-types/04-collections-and-binary-types.md
     purpose: Lesson 4 - Collections awareness (21.4 KB)
-  - path: book-source/docs/04-Python-Fundamentals/14-data-types/05-type-utilities-and-capstone.md
+  - path: apps/learn-app/docs/04-Python-Fundamentals/14-data-types/05-type-utilities-and-capstone.md
     purpose: Lesson 5 - Type utilities + capstone project (35.1 KB)
   - path: specs/013-chapter-14-redesign/tasks.md
     purpose: Task tracking with T001-T095 marked complete
@@ -42,12 +48,14 @@ tests:
 User requested implementation of Chapter 14 redesign after reviewing tasks.md. Command: `/sp.implement review task and then start implementation`
 
 **Context**:
+
 - Specification V2 approved (data types focus, no Chapter 13 overlap)
 - Plan.md complete with 5-lesson detailed breakdown
 - Tasks.md generated with 98 tasks across 7 phases
 - User requirement: "make sure that there should be coherence in the chapter and should be interesting for the readers"
 
 **Implementation approach**:
+
 1. Phase 1: Chapter Setup (README + directory structure)
 2. Phases 2-6: Create 5 lessons using lesson-writer subagent (parallel invocation for efficiency)
 3. Phase 7: Comprehensive validation across all lessons
@@ -57,13 +65,15 @@ User requested implementation of Chapter 14 redesign after reviewing tasks.md. C
 Successfully completed full implementation of Chapter 14 (Data Types) redesign with beginner-friendly, concept-before-syntax pedagogy.
 
 **Phase 1: Chapter Setup (T001-T002)**
-- Created directory: book-source/docs/04-Python-Fundamentals/14-data-types/
+
+- Created directory: apps/learn-app/docs/04-Python-Fundamentals/14-data-types/
 - Created README.md with engaging chapter overview, 5-lesson learning path, prerequisites checklist, success criteria
 
 **Phase 2-6: All 5 Lessons Created (T003-T079)**
 Invoked lesson-writer subagent 5 times in parallel for efficiency:
 
 **Lesson 1: Understanding Data Types** (40 min, CEFR A2, 6 concepts)
+
 - Hook: Kitchen analogy (jars labeled flour/sugar/salt)
 - WHAT is a Data Type: Python's classification system (NO CODE until 35 min in)
 - WHY Types Matter: Operations, validation, efficiency
@@ -75,6 +85,7 @@ Invoked lesson-writer subagent 5 times in parallel for efficiency:
 - Success: SC-001, SC-010, SC-002 validated
 
 **Lesson 2: Numeric Types** (50 min, CEFR A2-B1, 6 concepts)
+
 - Hook: Price tag problem (age 25 vs price $25.99)
 - WHAT is int: Whole numbers, unlimited range. WHY: Exact whole numbers. WHEN: Ages, counts. THEN code.
 - WHAT is float: Decimals, precision. WHY: Decimal matters. WHEN: Prices, measurements. THEN code.
@@ -86,6 +97,7 @@ Invoked lesson-writer subagent 5 times in parallel for efficiency:
 - Success: SC-003 (90%+ int/float), SC-005, SC-002
 
 **Lesson 3: Text, Boolean, and None** (50 min, CEFR B1, 5 concepts)
+
 - Hook: Name tag analogy (text everywhere)
 - WHAT is str: Sequence of characters, immutable, quote variations (single/double/triple). WHY/WHEN explained before code.
 - WHAT is bool: True/False only, capitalization. WHY: Decisions. WHEN: Flags. Then code.
@@ -96,6 +108,7 @@ Invoked lesson-writer subagent 5 times in parallel for efficiency:
 - Success: SC-004 (75%+ truthy/falsy), SC-002
 
 **Lesson 4: Collections & Binary Types** (50 min, CEFR B1, 7 concepts)
+
 - Hook: Storage containers analogy
 - AWARENESS LEVEL ONLY (syntax, not methods):
   - list: Ordered, mutable. Square brackets. Shopping lists, scores.
@@ -111,6 +124,7 @@ Invoked lesson-writer subagent 5 times in parallel for efficiency:
 - Success: SC-007 (70%+ recognize, know Chapter 18)
 
 **Lesson 5: Type Utilities & Capstone** (65 min, CEFR B1, 7 concepts)
+
 - Review: All types from Lessons 1-4
 - type() Reinforcement: Returns type objects, examples
 - id(): Object identity, memory addresses, None singleton
@@ -129,6 +143,7 @@ Invoked lesson-writer subagent 5 times in parallel for efficiency:
 
 **Phase 7: Final Validation (T080-T095)**
 Comprehensive quality validation across all lessons:
+
 - ✅ Coherent narrative flow: Foundation → Deep dive → Expansion → Application → Mastery
 - ✅ Concept-before-syntax pattern: 100% compliance (WHAT→WHY→WHEN→Code)
 - ✅ Type hints usage: 100% (all code examples include type hints)

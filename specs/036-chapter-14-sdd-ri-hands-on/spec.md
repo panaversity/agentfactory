@@ -14,19 +14,19 @@
 
 This specification applies these constitutional frameworks:
 
-| Framework | Application |
-|-----------|-------------|
-| **Section IIa: 4-Layer Progression** | Full L1→L2→L3→L4 through lessons |
-| **Principle 2: Progressive Complexity** | A2-B1 = max 7 concepts/section, moderate scaffolding |
-| **Principle 3: Factual Accuracy** | Playwright MCP + Gemini patterns verified |
-| **Principle 6: Anti-Convergence** | Ch 13 = problem-discovery → Ch 14 = **hands-on project execution** |
-| **Principle 7: Minimal Content** | Focus on workflow, not comprehensive tool tutorials |
+| Framework                               | Application                                                        |
+| --------------------------------------- | ------------------------------------------------------------------ |
+| **Section IIa: 4-Layer Progression**    | Full L1→L2→L3→L4 through lessons                                   |
+| **Principle 2: Progressive Complexity** | A2-B1 = max 7 concepts/section, moderate scaffolding               |
+| **Principle 3: Factual Accuracy**       | Playwright MCP + Gemini patterns verified                          |
+| **Principle 6: Anti-Convergence**       | Ch 13 = problem-discovery → Ch 14 = **hands-on project execution** |
+| **Principle 7: Minimal Content**        | Focus on workflow, not comprehensive tool tutorials                |
 
 **Teaching Modality Variation**: Chapter 13 used problem-discovery through "vague code" failure analysis. Chapter 14 MUST use **project-based hands-on learning** where students execute the complete SDD-RI workflow by building a real product.
 
 ---
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Execute Complete SDD-RI Workflow (Priority: P1)
 
@@ -79,57 +79,67 @@ As a student, I need to apply all Part 4 learning to an end-to-end project (vide
 ### Edge Cases
 
 **Playwright MCP Availability**:
+
 - What if Playwright MCP isn't installed? (Solution: Lesson 2 covers installation verification)
 - What if Gemini UI changes? (Solution: Document selectors in maintainable way, note volatility)
 
 **Authentication**:
+
 - What if session expires mid-workflow? (Solution: Session persistence guidance + recovery steps)
 - What if student uses different Google account? (Solution: Generic selectors, not account-specific)
 
 **Video Quality**:
+
 - What if Gemini doesn't produce desired video quality? (Solution: Emphasize iteration loop—SDD handles this through refinement)
 - What if video download fails? (Solution: Error handling in spec, retry patterns)
 
 **Skills Creation**:
+
 - What if student creates over-engineered skills? (Solution: Complexity checklist: 2-4 decisions = skill, 5+ = subagent)
 - What if skills don't generalize? (Solution: P+Q+P framework guides abstraction)
 
 ---
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
 **Chapter Structure**:
+
 - **FR-001**: Chapter MUST have 7-9 lessons following pedagogical arc (Foundation → Application → Integration → Validation → Mastery)
 - **FR-002**: Each lesson MUST have clear learning objectives mapped to Bloom's taxonomy levels
 - **FR-003**: Chapter MUST end with capstone project (Layer 4: Spec-Driven Integration)
 
 **SDD-RI Workflow Coverage**:
+
 - **FR-004**: Chapter MUST demonstrate complete `/sp.specify` → `/sp.plan` → `/sp.tasks` → `/sp.implement` workflow
 - **FR-005**: Students MUST write at least one specification from scratch (not copy-paste)
 - **FR-006**: Students MUST execute at least one planning phase with AI collaboration
 - **FR-007**: Students MUST experience task execution with checkpoint validation
 
 **Reusable Intelligence Creation**:
+
 - **FR-008**: Chapter MUST teach skill identification (recognizing 2+ recurring patterns)
 - **FR-009**: Chapter MUST teach P+Q+P framework application for skill design
 - **FR-010**: Students MUST create at least 2 skills: `generate-video` and `upload-youtube`
 - **FR-011**: Skills MUST follow Spec-Kit Plus structure (SKILL.md format)
 
 **Technical Implementation**:
+
 - **FR-012**: Project MUST use Playwright MCP for browser automation
 - **FR-013**: Project MUST target Gemini.google.com for video generation (free tier)
 - **FR-014**: Project MUST include YouTube upload automation
 - **FR-015**: Authentication MUST use session persistence (student logs in once, Playwright persists)
 
 **Pedagogical Requirements**:
+
 - **FR-016**: Chapter MUST vary teaching modality from Chapter 13 (use hands-on project, not problem-discovery)
 - **FR-017**: Chapter MUST demonstrate Three Roles (AI as Teacher, Student, Co-Worker) INVISIBLY (no framework labels)
 - **FR-018**: Lessons MUST follow cognitive load limits (max 7 concepts per section for A2-B1)
 - **FR-019**: Each lesson MUST end with "Try With AI" section (no "What's Next" or "Key Takeaways")
 
 **Business Context**:
+
 - **FR-020**: Project MUST have clear business framing (product demo videos for a SaaS)
 - **FR-021**: Specification MUST include business success metrics (not just technical completion)
 
@@ -143,27 +153,31 @@ As a student, I need to apply all Part 4 learning to an end-to-end project (vide
 
 ---
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 
 **Workflow Mastery**:
+
 - **SC-001**: 100% of students can execute `/sp.specify` command and produce valid specification
 - **SC-002**: 100% of students can execute `/sp.plan` and produce implementation plan
 - **SC-003**: 100% of students can execute `/sp.tasks` → `/sp.implement` cycle
 - **SC-004**: 90% of students successfully generate a video using the workflow
 
 **Reusable Intelligence**:
+
 - **SC-005**: 100% of students can identify at least 2 reusable patterns from their workflow
 - **SC-006**: 90% of students create valid skill definitions following P+Q+P
 - **SC-007**: 80% of students successfully reuse skills in capstone (YouTube upload)
 
 **Capstone Completion**:
+
 - **SC-008**: 80% of students complete full capstone (video generation + YouTube upload)
 - **SC-009**: 90% of students can explain SDD-RI workflow and skill value proposition
 - **SC-010**: All capstone projects demonstrate Layer 4 (spec-driven orchestration)
 
 **Quality Standards**:
+
 - **SC-011**: All code examples in lessons execute successfully (verified in sandbox)
 - **SC-012**: All technical claims cite authoritative sources (Playwright docs, Gemini docs)
 - **SC-013**: All lessons pass constitutional compliance (no framework labels, proper endings)
@@ -171,7 +185,7 @@ As a student, I need to apply all Part 4 learning to an end-to-end project (vide
 
 ---
 
-## Constraints *(if applicable)*
+## Constraints _(if applicable)_
 
 ### Technical Constraints
 
@@ -197,7 +211,7 @@ As a student, I need to apply all Part 4 learning to an end-to-end project (vide
 
 ---
 
-## Assumptions *(if applicable)*
+## Assumptions _(if applicable)_
 
 - Students have completed Chapter 13 and understand SDD-RI theory
 - Students have Claude Code or similar AI companion installed and configured
@@ -216,7 +230,7 @@ As a student, I need to apply all Part 4 learning to an end-to-end project (vide
 
 ---
 
-## Dependencies *(if applicable)*
+## Dependencies _(if applicable)_
 
 ### Prerequisites
 
@@ -233,9 +247,10 @@ As a student, I need to apply all Part 4 learning to an end-to-end project (vide
 
 ---
 
-## Non-Goals *(important)*
+## Non-Goals _(important)_
 
 **This chapter does NOT teach**:
+
 - ❌ Comprehensive Playwright tutorial (only what's needed for project)
 - ❌ Gemini API usage (uses browser UI, not API)
 - ❌ YouTube API (uses browser automation)
@@ -244,6 +259,7 @@ As a student, I need to apply all Part 4 learning to an end-to-end project (vide
 - ❌ Multiple project types (focuses on product demo videos only)
 
 **Why these are excluded**:
+
 - Playwright depth belongs in dedicated tooling chapters
 - API usage adds complexity without pedagogical value for SDD-RI
 - Advanced editing is tangential to specification-driven workflow
@@ -251,32 +267,35 @@ As a student, I need to apply all Part 4 learning to an end-to-end project (vide
 
 ---
 
-## References *(if applicable)*
+## References _(if applicable)_
 
 - **Constitution**: `.specify/memory/constitution.md` (v6.0.1)
-- **Chapter 13**: `book-source/docs/04-SDD-RI-Fundamentals/13-specification-driven-development-fundamentals/`
+- **Chapter 13**: `apps/learn-app/docs/04-SDD-RI-Fundamentals/13-specification-driven-development-fundamentals/`
 - **Spec-Kit Plus Commands**: `/sp.specify`, `/sp.plan`, `/sp.tasks`, `/sp.implement`
 - **Skill Template**: `.claude/skills/skill-creator/SKILL.md`
 - **Playwright MCP**: Official documentation (research during planning)
 
 ---
 
-## Additional Context *(if helpful)*
+## Additional Context _(if helpful)_
 
 ### Pedagogical Arc for Chapter 14
 
 **Lessons Structure** (preliminary):
 
 1. **Foundation** (L1-2): Setup + First Spec
+
    - L1: Project introduction + business context (product demo videos)
    - L2: Write your first specification with AI collaboration
 
 2. **Application** (L3-5): Execute SDD-RI Workflow
+
    - L3: Planning phase with Playwright MCP approach
    - L4: Task breakdown and implementation start
    - L5: Complete video generation + download
 
 3. **Integration** (L6-7): Intelligence Creation
+
    - L6: Identify reusable patterns in your workflow
    - L7: Create skills using P+Q+P framework
 
@@ -287,6 +306,7 @@ As a student, I need to apply all Part 4 learning to an end-to-end project (vide
 ### Three Roles Integration (Invisible)
 
 **In each lesson, students experience**:
+
 - **AI as Teacher**: AI suggests patterns student didn't consider (e.g., better spec structure)
 - **AI as Student**: Student teaches AI their constraints (e.g., "must use free tools")
 - **AI as Co-Worker**: Iterative refinement toward production-ready output
@@ -296,11 +316,13 @@ As a student, I need to apply all Part 4 learning to an end-to-end project (vide
 ### Skills to Create
 
 **`generate-video` skill**:
+
 - Persona: Video content producer
 - Questions: What's the product? What's the key message? Target audience?
 - Principles: Visual clarity, concise messaging, brand consistency
 
 **`upload-youtube` skill**:
+
 - Persona: Content publisher
 - Questions: Video title? Description? Tags? Visibility?
 - Principles: SEO optimization, thumbnail selection, scheduling considerations
@@ -320,13 +342,13 @@ As a student, I need to apply all Part 4 learning to an end-to-end project (vide
 
 ### How Do We Measure Learning?
 
-| Learning Objective | Assessment Method | Success Threshold |
-|-------------------|-------------------|-------------------|
-| Execute SDD workflow | Project completion | Video downloaded |
-| Write production-ready specs | Spec review checklist | 4/4 sections present |
-| Create reusable skills | Skill validation | P+Q+P pattern visible |
-| Apply skills in new context | Capstone completion | YouTube upload works |
-| Explain SDD-RI value | Reflection prompt | Articulates acceleration benefit |
+| Learning Objective           | Assessment Method     | Success Threshold                |
+| ---------------------------- | --------------------- | -------------------------------- |
+| Execute SDD workflow         | Project completion    | Video downloaded                 |
+| Write production-ready specs | Spec review checklist | 4/4 sections present             |
+| Create reusable skills       | Skill validation      | P+Q+P pattern visible            |
+| Apply skills in new context  | Capstone completion   | YouTube upload works             |
+| Explain SDD-RI value         | Reflection prompt     | Articulates acceleration benefit |
 
 ### What Tests Validate These Criteria?
 

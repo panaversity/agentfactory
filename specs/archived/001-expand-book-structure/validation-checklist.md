@@ -9,6 +9,7 @@
 ## Files That Reference Chapter Numbers
 
 ### Core Documentation
+
 - [ ] `.specify/memory/constitution.md` — References to parts, chapters, scaffolding ranges
 - [ ] `specs/book/chapter-index.md` — All chapter titles and numbers
 - [ ] `specs/book/directory-structure.md` — Example paths and folder names
@@ -16,6 +17,7 @@
 - [ ] `CLAUDE.md` — Should defer to constitution (verify no hardcoded numbers)
 
 ### Part Specifications
+
 - [ ] `specs/part-1/part-1-spec.md` — Chapter breakdown and references
 - [ ] `specs/part-2/` (if exists) — Check all chapter references
 - [ ] `specs/part-3/` (if exists) — Check all chapter references
@@ -31,13 +33,14 @@
 - [ ] `specs/part-13/part-13-spec.md` (after creation) — Check references
 
 ### Docusaurus Content
-- [ ] `book-source/docs/01-Introducing-AI-Driven-Development/intro.md` — Part intro references
-- [ ] `book-source/docs/02-AI-Tool-Landscape/intro.md` — Part intro references
-- [ ] `book-source/docs/03-Prompt-and-Context-Engineering/intro.md` — Part intro references
-- [ ] `book-source/docs/04-Python-The-Language-of-AI-Agents/intro.md` — Part intro references
-- [ ] `book-source/docs/05-Spec-Kit-Plus-Methodology/intro.md` — Part intro references
-- [ ] `book-source/docs/06-Agentic-AI-with-OpenAI-Agents-SDK/intro.md` — Part intro references
-- [ ] `book-source/docs/07-MCP-with-FastMCP/intro.md` — Part intro references
+
+- [ ] `apps/learn-app/docs/01-Introducing-AI-Driven-Development/intro.md` — Part intro references
+- [ ] `apps/learn-app/docs/02-AI-Tool-Landscape/intro.md` — Part intro references
+- [ ] `apps/learn-app/docs/03-Prompt-and-Context-Engineering/intro.md` — Part intro references
+- [ ] `apps/learn-app/docs/04-Python-The-Language-of-AI-Agents/intro.md` — Part intro references
+- [ ] `apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/intro.md` — Part intro references
+- [ ] `apps/learn-app/docs/06-Agentic-AI-with-OpenAI-Agents-SDK/intro.md` — Part intro references
+- [ ] `apps/learn-app/docs/07-MCP-with-FastMCP/intro.md` — Part intro references
 - [ ] All chapter README.md files — Cross-references to other chapters
 
 ---
@@ -50,12 +53,12 @@ Run these searches in your IDE or command line:
 
 ```bash
 # Search for references to old chapter numbers that may need updating
-grep -r "Chapter [1-9]" book-source/docs/ specs/part-*/
-grep -r "Ch [1-9]" book-source/docs/ specs/part-*/
-grep -r "chapter [1-9]" book-source/docs/ specs/part-*/
+grep -r "Chapter [1-9]" apps/learn-app/docs/ specs/part-*/
+grep -r "Ch [1-9]" apps/learn-app/docs/ specs/part-*/
+grep -r "chapter [1-9]" apps/learn-app/docs/ specs/part-*/
 
 # Search for old part references
-grep -r "Part [1-7]" book-source/docs/ specs/
+grep -r "Part [1-7]" apps/learn-app/docs/ specs/
 grep -r "7 parts" .
 grep -r "32 chapters" .
 ```
@@ -64,20 +67,20 @@ grep -r "32 chapters" .
 
 ```bash
 # Find all markdown links to chapters
-grep -r "\[.*\](.*chapter.*)" book-source/docs/
+grep -r "\[.*\](.*chapter.*)" apps/learn-app/docs/
 
 # Find all markdown links to parts
-grep -r "\[.*\](.*part.*)" book-source/docs/
+grep -r "\[.*\](.*part.*)" apps/learn-app/docs/
 ```
 
 ### Step 3: Check for Hardcoded Paths
 
 ```bash
 # Find absolute paths that may be outdated
-grep -r "book-source/docs/[0-9]" .
+grep -r "apps/learn-app/docs/[0-9]" .
 
 # Find references to specific chapter folders
-grep -r "/[0-9][0-9]-.*/" book-source/docs/
+grep -r "/[0-9][0-9]-.*/" apps/learn-app/docs/
 ```
 
 ---
@@ -155,6 +158,7 @@ npm run build
 Create these scripts to automate validation:
 
 ### `validate-chapter-refs.sh`
+
 ```bash
 #!/bin/bash
 # Check all markdown files for outdated chapter references
@@ -162,12 +166,14 @@ Create these scripts to automate validation:
 ```
 
 ### `validate-links.sh`
+
 ```bash
 #!/bin/bash
 # Use markdown-link-check or similar to verify all internal links
 ```
 
 ### `validate-structure.sh`
+
 ```bash
 #!/bin/bash
 # Verify directory structure matches directory-structure.md spec
@@ -188,11 +194,10 @@ When all items are checked:
 - [ ] No orphaned content
 - [ ] Git history clean and tagged
 
-**Validated By**: ________________  
-**Date**: ________________  
+**Validated By**: ******\_\_\_\_******  
+**Date**: ******\_\_\_\_******  
 **Ready for**: Merge to main / Production deployment
 
 ---
 
 **Status**: Template checklist, ready for use after Phase 8 completion
-

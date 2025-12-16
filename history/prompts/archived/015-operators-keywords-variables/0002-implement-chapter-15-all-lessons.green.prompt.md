@@ -9,18 +9,25 @@ feature: 015-operators-keywords-variables
 branch: 015-operators-keywords-variables
 user: mjs
 command: /sp.implement
-labels: ["implementation", "lesson-creation", "phase-4", "chapter-15", "python-fundamentals"]
+labels:
+  [
+    "implementation",
+    "lesson-creation",
+    "phase-4",
+    "chapter-15",
+    "python-fundamentals",
+  ]
 links:
   spec: specs/part-4-chapter-15/spec.md
   ticket: null
   adr: history/adr/0006-5-lesson-operator-separation-cognitive-load-pattern.md
   pr: null
 files:
-  - book-source/docs/04-Part-4-Python-Fundamentals/15-operators-keywords-variables/01-arithmetic-operators.md (created, 17KB)
-  - book-source/docs/04-Part-4-Python-Fundamentals/15-operators-keywords-variables/02-comparison-operators.md (created, 21KB)
-  - book-source/docs/04-Part-4-Python-Fundamentals/15-operators-keywords-variables/03-logical-operators.mdx (created, 19KB)
-  - book-source/docs/04-Part-4-Python-Fundamentals/15-operators-keywords-variables/04-assignment-operators.md (created, 16KB)
-  - book-source/docs/04-Part-4-Python-Fundamentals/15-operators-keywords-variables/05-keywords-capstone.mdx (created, 18KB)
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/15-operators-keywords-variables/01-arithmetic-operators.md (created, 17KB)
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/15-operators-keywords-variables/02-comparison-operators.md (created, 21KB)
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/15-operators-keywords-variables/03-logical-operators.mdx (created, 19KB)
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/15-operators-keywords-variables/04-assignment-operators.md (created, 16KB)
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/15-operators-keywords-variables/05-keywords-capstone.mdx (created, 18KB)
 tests:
   - All code examples tested on Python 3.14+
   - Lesson 1: 6 code examples validated (arithmetic operators, type behavior, precedence)
@@ -39,15 +46,17 @@ tests:
 Successfully implemented all 5 lessons for Chapter 15: Operators, Keywords, and Variables using content-implementer subagent for each lesson.
 
 **Lessons Created**:
-1. **Lesson 1: Arithmetic Operators** (17KB) - All 7 operators (+, -, *, /, //, %, **), type behavior, PEMDAS
+
+1. **Lesson 1: Arithmetic Operators** (17KB) - All 7 operators (+, -, \*, /, //, %, \*\*), type behavior, PEMDAS
 2. **Lesson 2: Comparison Operators** (21KB) - All 6 operators (==, !=, >, <, >=, <=), True/False results, value vs type equality
 3. **Lesson 3: Logical Operators** (19KB) - and/or/not, truth tables, complex conditions
-4. **Lesson 4: Assignment Operators** (16KB) - Shorthand operators (+=, -=, *=, /=), equivalence to expanded form
+4. **Lesson 4: Assignment Operators** (16KB) - Shorthand operators (+=, -=, \*=, /=), equivalence to expanded form
 5. **Lesson 5: Keywords + Capstone** (18KB) - 35 Python keywords, calculator integration project
 
 **Total Chapter Size**: 91KB, approximately 4.25 hours of instruction
 
 **Implementation Approach**:
+
 - Used content-implementer subagent sequentially for each lesson (quality control between lessons)
 - All lessons follow `.claude/output-styles/lesson.md` structure
 - Every lesson ends with "Try With AI" section ONLY (FR-014 compliance)
@@ -56,6 +65,7 @@ Successfully implemented all 5 lessons for Chapter 15: Operators, Keywords, and 
 - Reading level validated at Grade 7-8 (Flesch-Kincaid)
 
 **Specification Alignment**:
+
 - All 36 functional requirements (FR-001 to FR-036) met
 - All 7 success criteria (SC-001 to SC-007) implemented
 - All 5 user stories (P1-P5) covered in lessons
@@ -63,6 +73,7 @@ Successfully implemented all 5 lessons for Chapter 15: Operators, Keywords, and 
 - ADR-0006 5-lesson structure implemented as designed
 
 **Quality Validation**:
+
 - 100% code examples executable and tested
 - All "Try With AI" prompts include expected outcomes
 - Cross-references to Chapter 14 (prerequisites) and Chapter 17 (future) included
@@ -73,7 +84,7 @@ Successfully implemented all 5 lessons for Chapter 15: Operators, Keywords, and 
 
 - ✅ Impact: Complete Chapter 15 implementation (5 lessons, 91KB) ready for publication; all specification requirements met; zero critical issues
 - 🧪 Tests: All code examples tested on Python 3.14+ (30+ code examples across 5 lessons); capstone calculator fully functional
-- 📁 Files: 5 lesson files created in book-source/docs/04-Part-4-Python-Fundamentals/15-operators-keywords-variables/
+- 📁 Files: 5 lesson files created in apps/learn-app/docs/04-Part-4-Python-Fundamentals/15-operators-keywords-variables/
 - 🔁 Next prompts: "Run validation-auditor validation" → "Update chapter-index.md" → "Commit and create PR"
 - 🧠 Reflection: Sequential content-implementer invocation ensured quality control and consistency; all 9 domain skills applied contextually; evals-first approach evident throughout; CEFR proficiency mapping thorough and appropriate for Part 4 beginner tier
 

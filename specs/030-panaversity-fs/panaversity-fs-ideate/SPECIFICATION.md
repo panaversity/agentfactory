@@ -18,7 +18,8 @@
 ### What Problem Does This Solve?
 
 **Current State (Git-based)**:
-- ✅ 84 chapters in `book-source/docs/`
+
+- ✅ 84 chapters in `apps/learn-app/docs/`
 - ✅ Assets in `book-source/static/`
 - ❌ Single book only (not extensible)
 - ❌ No agent-native operations (agents must clone entire repo)
@@ -28,6 +29,7 @@
 - ❌ Tightly coupled to filesystem
 
 **Future State (PanaversityFS)**:
+
 - ✅ Multi-book registry (unlimited books)
 - ✅ Agent-native MCP interface (13 specialized tools)
 - ✅ Complete audit trail (every operation logged)
@@ -80,6 +82,7 @@
 ## Table of Contents
 
 **Part 1: Architecture**
+
 - [1. System Architecture](#1-system-architecture)
 - [2. Storage Layer (OpenDAL)](#2-storage-layer-opendal)
 - [3. Audit Layer (AgentFS Patterns)](#3-audit-layer-agentfs-patterns)
@@ -87,35 +90,41 @@
 - [5. Intelligence Layer (LanceDB)](#5-intelligence-layer-lancedb)
 
 **Part 2: Data Models**
+
 - [6. Multi-Book Registry](#6-multi-book-registry)
 - [7. Book Schema](#7-book-schema)
 - [8. Content Structure](#8-content-structure)
 - [9. Audit Log Format](#9-audit-log-format)
 
 **Part 3: MCP Tools (Agent Interface)**
+
 - [10. Content Operations (4 tools)](#10-content-operations)
 - [11. Asset Operations (3 tools)](#11-asset-operations)
 - [12. Summary Operations (3 tools)](#12-summary-operations)
 - [13. Discovery & Search (3 tools)](#13-discovery-search)
 
 **Part 4: Implementation**
+
 - [14. Technology Stack](#14-technology-stack)
 - [15. File Structure](#15-file-structure)
 - [16. Core Components](#16-core-components)
 - [17. Migration Strategy](#17-migration-strategy)
 
 **Part 5: Operations**
+
 - [18. Deployment](#18-deployment)
 - [19. Monitoring & Alerts](#19-monitoring-alerts)
 - [20. Testing Strategy](#20-testing-strategy)
 - [21. Security](#21-security)
 
 **Part 6: Integration**
+
 - [22. Docusaurus Integration](#22-docusaurus-integration)
 - [23. Claude Code Integration](#23-claude-code-integration)
 - [24. CI/CD Pipeline](#24-cicd-pipeline)
 
 **Part 7: Roadmap**
+
 - [25. Phase 1: Foundation (Week 1)](#25-phase-1-foundation)
 - [26. Phase 2: Intelligence (Week 2)](#26-phase-2-intelligence)
 - [27. Phase 3: Production (Week 3)](#27-phase-3-production)
@@ -186,31 +195,37 @@
 ### 1.2 Design Principles
 
 **1. Storage Agnostic**
+
 - Use OpenDAL for universal storage interface
 - Single codebase works across Local/R2/Supabase/S3
 - Switch backends via configuration only
 
 **2. Agent-Native**
+
 - MCP as primary interface (not REST/GraphQL)
 - Tools designed for LLM function calling
 - Rich JSON schemas for type safety
 
 **3. Audit Everything**
+
 - Every operation logged (AgentFS pattern)
 - Agent tracking (who did what)
 - Queryable audit trail (JSONL format)
 
 **4. Observable by Default**
+
 - Metrics via Cloudflare Analytics Engine
 - Error tracking ready (Sentry hooks)
 - Performance monitoring built-in
 
 **5. Intelligence Embedded**
+
 - Auto-summary generation
 - Vector search for RAG
 - Content validation agents
 
 **6. Multi-Book Ready**
+
 - Central registry
 - Per-book configuration
 - Cross-book operations
@@ -224,6 +239,7 @@
 **Apache OpenDAL** provides "One Layer, All Storage" - a unified API across 60+ storage services.
 
 **Key Benefits**:
+
 - ✅ Battle-tested (Apache project, 4.6k stars)
 - ✅ Language bindings (Rust, Python, Node.js, Java)
 - ✅ Comprehensive backends (S3, R2, Azure, GCS, Local, etc.)
@@ -471,6 +487,7 @@ storage = StorageBackend(backend_type, **config)
 **AgentFS** (by Turso) pioneered agent-native filesystem patterns with complete audit trails.
 
 **Key Insights**:
+
 - Track every operation (who, what, when)
 - Enable debugging (what changed?)
 - Support compliance (audit history)
@@ -481,6 +498,7 @@ storage = StorageBackend(backend_type, **config)
 **Storage**: JSONL (JSON Lines) - one JSON object per line, append-only
 
 **Benefits**:
+
 - Streaming-friendly (process line-by-line)
 - Append-only (no corruption risk)
 - Human-readable (JSON)
@@ -788,6 +806,7 @@ print(f"By operation: {stats['by_operation']}")
 The **Cloudflare Workers Bindings MCP Server** demonstrates production-grade patterns:
 
 **Key Patterns**:
+
 - ✅ OAuth authentication (built-in)
 - ✅ Metrics tracking (Analytics Engine)
 - ✅ Error handling (Sentry-ready)
@@ -983,6 +1002,7 @@ class MetricsTracker:
 **LanceDB** is a serverless, embedded vector database that runs directly on object storage.
 
 **Key Benefits**:
+
 - ✅ Serverless (no managed instance needed)
 - ✅ Runs on R2/S3 (collocated with content)
 - ✅ Incremental indexing (delta updates)
@@ -1152,7 +1172,7 @@ version: "1.0"
 
 # Storage configuration
 storage:
-  backend: "r2"  # Active backend
+  backend: "r2" # Active backend
 
   backends:
     local:
@@ -1179,7 +1199,7 @@ books:
   - id: "ai-native-software-development"
     slug: "ai-native-dev"
     title: "AI-Native Software Development"
-    status: "active"  # active, archived, draft
+    status: "active" # active, archived, draft
     vertical: "technical_education"
     created_at: "2025-01-15T00:00:00Z"
     updated_at: "2025-11-24T10:00:00Z"
@@ -1220,7 +1240,7 @@ books:
 
     features:
       auto_summary: true
-      vector_search: false  # Not enabled yet
+      vector_search: false # Not enabled yet
       asset_optimization: true
       audit_logging: true
 
@@ -1253,7 +1273,7 @@ rate_limits:
 # Backup configuration
 backups:
   enabled: true
-  schedule: "0 2 * * *"  # Daily at 2am UTC
+  schedule: "0 2 * * *" # Daily at 2am UTC
   retention_days: 30
   destinations:
     - "s3://panaversity-backups/books/"
@@ -1399,7 +1419,7 @@ metadata:
 
   # Target audience
   audience:
-    level: "intermediate"  # beginner, intermediate, advanced
+    level: "intermediate" # beginner, intermediate, advanced
     prerequisites:
       - "Basic programming knowledge"
       - "Familiarity with command line"
@@ -1464,7 +1484,7 @@ structure:
               # Vertical intelligence
               vertical:
                 summary_enabled: true
-                summary_hash: "abc123..."  # Content hash
+                summary_hash: "abc123..." # Content hash
                 vector_indexed: true
                 vector_id: "v_abc123..."
                 last_validated: "2025-11-24T08:00:00Z"
@@ -1491,14 +1511,14 @@ assets:
 
   images:
     formats: ["png", "jpg", "webp"]
-    optimization: "webp"  # Convert to WebP
+    optimization: "webp" # Convert to WebP
     max_width: 1920
     max_height: 1080
     cdn_enabled: true
 
   videos:
     formats: ["mp4", "webm"]
-    optimization: "h264"  # Transcode to H.264
+    optimization: "h264" # Transcode to H.264
     max_resolution: "1080p"
     max_size_mb: 100
     cdn_enabled: true
@@ -1534,7 +1554,7 @@ intelligence:
       - "missing_assets"
       - "proficiency_alignment"
       - "content_consistency"
-    schedule: "0 3 * * *"  # Daily at 3am UTC
+    schedule: "0 3 * * *" # Daily at 3am UTC
 
 # Publishing settings
 publishing:
@@ -1560,11 +1580,12 @@ publishing:
 
 ---
 
-*[Continued in next part due to length...]*
+_[Continued in next part due to length...]_
 
 **Status**: Part 1 of specification created (9,000+ words so far)
 
 **Next sections to write**:
+
 - Part 3: MCP Tools (13 detailed tool implementations)
 - Part 4: Implementation (code structure, components)
 - Part 5: Operations (deployment, monitoring)

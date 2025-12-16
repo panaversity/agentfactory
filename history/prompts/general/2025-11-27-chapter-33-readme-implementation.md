@@ -13,18 +13,21 @@ learning_objective: "Create pedagogically-aligned README.md that serves as gatew
 ## Prompt History Record (PHR)
 
 ### Task Context
+
 - **Objective**: Write Chapter 33 README.md for Part 6: AI Native Software Development
 - **Chapter Position**: 33 of 91 chapters; first chapter of Part 6 (Agent development)
 - **Chapter Type**: Conceptual (establishes mental models for agent development)
 - **Proficiency Level**: B1+ (Intermediate/Advanced)
 
 ### Pre-Generation Context Gathering
+
 1. Read chapter-index.md to confirm Chapter 33 position and prerequisites
 2. Analyzed Chapter 33 pedagogical layer: Layer 1 (manual foundation) transitioning to Layer 2
 3. Confirmed conceptual chapter approach: no code implementations, preparation for Chapters 34-36
 4. Verified part structure and prerequisite alignment with Parts 1-5
 
 ### Content Requirements (Delivered)
+
 1. **Frontmatter**: sidebar_position, title, description (YAML)
 2. **Chapter Overview** (~200 words): Context, mental models, connection to hands-on work
 3. **What You'll Learn**: 6 learning objectives with Bloom's verbs
@@ -35,6 +38,7 @@ learning_objective: "Create pedagogically-aligned README.md that serves as gatew
 8. **What's Next**: Bridge to Chapter 34 OpenAI Agents SDK implementation
 
 ### Pedagogical Decisions
+
 - **No code examples**: Appropriate for conceptual chapter; code comes in Chapter 34
 - **No Key Takeaways section**: Only appropriate for individual lessons, not chapter README
 - **Production-relevant framing**: Statistics on agent adoption, career implications, $2.9T opportunity
@@ -42,6 +46,7 @@ learning_objective: "Create pedagogically-aligned README.md that serves as gatew
 - **Mental model focus**: Agents vs chatbots, architectures (ReAct, Plan-Execute, Multi-Agent, Human-in-Loop), SDKs, partnerships
 
 ### Quality Validation
+
 - All 10 sections complete and aligned
 - Statistics with inline attribution (OpenAI, McKinsey, GitHub)
 - Learning objectives span Bloom's levels (Distinguish through Design)
@@ -50,12 +55,14 @@ learning_objective: "Create pedagogically-aligned README.md that serves as gatew
 - Chapter structure matches book pedagogy (conceptual → practical progression)
 
 ### Commit Details
-- **File**: book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/README.md
+
+- **File**: apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/README.md
 - **Line count**: 121 lines
 - **Status**: Merged to feature branch 038-chapter-33-intro-ai-agents
 - **Commit hash**: 005d013
 
 ### Learning Applied
+
 - Constitutional compliance (Section IIa on meta-commentary, Section 0 on persona)
 - Chapter type adaptation (conceptual vs technical approaches)
 - Layer recognition (L1 foundation before L2 collaboration)
@@ -63,9 +70,11 @@ learning_objective: "Create pedagogically-aligned README.md that serves as gatew
 - Statistics attribution practices (inline citations for credibility)
 
 ### Artifacts Generated
-- `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/README.md` (121 lines)
+
+- `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/README.md` (121 lines)
 
 ### Task Completion
+
 ✓ All requirements met
 ✓ Constitutional compliance verified
 ✓ Pedagogical alignment confirmed

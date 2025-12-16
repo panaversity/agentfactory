@@ -2,7 +2,7 @@
 
 **Date:** 2025-11-25
 **Status:** COMPLETE
-**File Enhanced:** `/book-source/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/08_chapter_15_quiz.md`
+**File Enhanced:** `/apps/learn-app/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/08_chapter_15_quiz.md`
 
 ---
 
@@ -38,11 +38,11 @@ The Chapter 15 quiz has been enhanced from a baseline assessment (11 MC + 1 SA) 
 
 **5. Optimized Answer Distribution**
 
-| Answer | Count | % | Distribution |
-|--------|-------|---|--------------|
-| B | 5 | 42% | Q1, Q2, Q4, Q9, Q10 |
-| C | 5 | 42% | Q5, Q6, Q7, Q11, Q12 |
-| T/F | 2 | 16% | Q3 (True), Q8 (False) |
+| Answer | Count | %   | Distribution          |
+| ------ | ----- | --- | --------------------- |
+| B      | 5     | 42% | Q1, Q2, Q4, Q9, Q10   |
+| C      | 5     | 42% | Q5, Q6, Q7, Q11, Q12  |
+| T/F    | 2     | 16% | Q3 (True), Q8 (False) |
 
 **Status:** Balanced distribution with no problematic clustering (no >2 consecutive identical answers)
 
@@ -55,11 +55,13 @@ The Chapter 15 quiz has been enhanced from a baseline assessment (11 MC + 1 SA) 
 **Questions:** Q2, Q7, Q14
 
 **Why Enhanced:**
+
 - Original quiz tested "what happens" (features accelerate)
 - Enhanced quiz tests "why it happens" (patterns compound, rework reduces)
 - New Q14 provides **real decision scenario:** Student must apply 2+/5+ criteria to a pattern with 7 decision points
 
 **Enhanced Language:**
+
 - Q7 now emphasizes: "You're not re-solving similar problems from scratch; instead, you inherit proven approaches"
 - Added retrospective honesty connection: "This honesty is how intelligence accumulates—you capture friction points that future projects should anticipate"
 
@@ -68,11 +70,13 @@ The Chapter 15 quiz has been enhanced from a baseline assessment (11 MC + 1 SA) 
 **Questions:** Q3, Q11
 
 **Why Enhanced:**
+
 - Original Q3 was definitional ("constitution defines standards")
 - New Q11 is application-level: "Which practice demonstrates constitution principle working across features?"
 - Tests understanding that constitution **prevents quality drift** through uniform standards
 
 **New Q11 Strategy:**
+
 - Distractors show failures of constitution principle:
   - "Different error handling per feature" → Quality drift ✗
   - "Different output formats (text/JSON/CSV)" → Breaks pipeline ✗
@@ -86,10 +90,12 @@ The Chapter 15 quiz has been enhanced from a baseline assessment (11 MC + 1 SA) 
 **Original Coverage:** Q5 (definition), Q8 (reusability)
 
 **Enhanced Coverage:**
+
 - Q10 clarifies when to formalize (2+ features AND 5+ decision points, not just "complicated")
 - Q14 **applies criteria to real pattern** with explicit decision points listed (input schema, output schema, error cases, field mapping, type coercion, null handling, custom transformations)
 
 **Enhanced Q14 Strategy:**
+
 - Student must decide: Is this pattern worth formalizing?
 - Must apply BOTH criteria: (2+ features) AND (5+ decision points)
 - Shows that decision points matter—a simple pattern appearing 2+ times isn't enough
@@ -99,6 +105,7 @@ The Chapter 15 quiz has been enhanced from a baseline assessment (11 MC + 1 SA) 
 **Questions:** Q1, Q13
 
 **Why Kept Stable:**
+
 - Q1 (workflow sequence) remains clear baseline
 - Q13 (short answer) tests deeper understanding: "Why prioritize spec before code?"
 - Combination validates both knowledge and reasoning
@@ -108,6 +115,7 @@ The Chapter 15 quiz has been enhanced from a baseline assessment (11 MC + 1 SA) 
 **Questions:** Q6, Q13
 
 **Why Effective:**
+
 - Q6 tests ability to identify **measurable** success criteria
 - Shows why vague criteria ("work well", "user-friendly") fail
 - Q13 connects specs to workflow (spec-first prevents rework)
@@ -117,6 +125,7 @@ The Chapter 15 quiz has been enhanced from a baseline assessment (11 MC + 1 SA) 
 **Questions:** Q4, Q9
 
 **Why Effective:**
+
 - Q4: "Why does Feature N consume Feature N-1's output?"
 - Q9: "What purpose does Dashboard serve?"
 - Together: Validate understanding that features **compose** (not isolated)
@@ -126,6 +135,7 @@ The Chapter 15 quiz has been enhanced from a baseline assessment (11 MC + 1 SA) 
 **Question:** Q12
 
 **Why Important:**
+
 - Deepened explanation connects retrospectives to intelligence accumulation
 - Emphasizes **balancing wins with friction points**
 - Teaches that "capturing friction" is how organizational knowledge grows
@@ -137,12 +147,14 @@ The Chapter 15 quiz has been enhanced from a baseline assessment (11 MC + 1 SA) 
 ### Proficiency & Complexity Alignment (B1 - Intermediate)
 
 **CEFR B1 Characteristics Met:**
+
 - ✓ 7-10 core concepts tested (SDD-RI, accumulation, constitution, architecture, P+Q+P, specs, retrospectives)
 - ✓ Moderate scaffolding in answer choices (clear distractors, plausible alternatives)
 - ✓ Application-level thinking required (not just recall)
 - ✓ Production-relevant scenarios (patterns from actual capstone)
 
 **Cognitive Load Validation:**
+
 - Remember/Understand: 40% (baseline comprehension)
 - Apply/Analyze: 60% (synthesis and decision-making)
 - Bloom's balance appropriate for B1 assessment
@@ -150,12 +162,14 @@ The Chapter 15 quiz has been enhanced from a baseline assessment (11 MC + 1 SA) 
 ### Validity & Coverage
 
 **Constitutional Alignment:**
+
 - ✓ All questions map to Chapter 15 learning objectives
 - ✓ All answers factually correct per constitution.md v6.0.1
 - ✓ No meta-commentary or pedagogical scaffolding exposed
 - ✓ Questions assess genuine understanding, not trick wording
 
 **Concept Coverage:**
+
 - 7 core concepts tested
 - 15 question-instances across 14 questions
 - Intelligence accumulation: 21% (highest weight, emphasizes key paradigm shift)
@@ -168,11 +182,13 @@ The Chapter 15 quiz has been enhanced from a baseline assessment (11 MC + 1 SA) 
 ### Distribution Analysis
 
 **Raw Distribution:**
+
 - B answers: 5/12 (42%)
 - C answers: 5/12 (42%)
 - T/F answers: 2/12 (16%)
 
 **Clustering Check:**
+
 - Max consecutive identical answers: 3 (Q5-Q7, all C, testing different concepts)
 - No >25% violations
 - B-C balance prevents answer-checking patterns
@@ -182,15 +198,18 @@ The Chapter 15 quiz has been enhanced from a baseline assessment (11 MC + 1 SA) 
 **Strong Distractors Examples:**
 
 Q7 (Intelligence Accumulation):
+
 - "Team has more experience" (A) - Plausible but misses KEY point (patterns/skills do the work, not just experience)
 - "Feature 4 has simpler logic" (D) - Plausible but misses intelligence accumulation mechanism
 
 Q11 (Constitution Application):
+
 - "Different error handling per feature" (A) - Sounds flexible but violates constitution
 - "Different output formats" (B) - Sounds practical but breaks pipeline architecture
 - Correct: "All structured JSON" (C) - Shows constitution prevents drift
 
 Q14 (P+Q+P Formalization):
+
 - Requires student to count features AND decision points
 - Not just "was it hard to implement" (overuse heuristic)
 - Not just "AI suggested it" (misunderstands skill creation)
@@ -202,11 +221,13 @@ Q14 (P+Q+P Formalization):
 **Passing Score:** 10/14 (71%)
 
 **Rationale:**
+
 - 71% threshold validates that student can distinguish core concepts
 - Allows minor gaps while requiring overall mastery
 - Consistent with B1 proficiency expectations
 
 **Grade Distribution:**
+
 - Mastery (93-100%): 13-14 points
 - Proficient (79-86%): 11-12 points
 - Developing (71-79%): 10-11 points
@@ -239,9 +260,10 @@ Q14 (P+Q+P Formalization):
 
 ## Files Modified
 
-**File Path:** `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/08_chapter_15_quiz.md`
+**File Path:** `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/08_chapter_15_quiz.md`
 
 **Changes:**
+
 - Added 2 new questions (Q11, Q14) → Total 14 questions
 - Enhanced answer explanations with conceptual depth
 - Added scoring guide with proficiency mapping
@@ -259,4 +281,3 @@ Q14 (P+Q+P Formalization):
 2. **Monitor Q14 Performance:** New scenario-based question; track student reasoning in responses
 3. **Collect Retrospective Data:** Q12 answers will provide valuable insight into student understanding of intelligence accumulation mechanics
 4. **Periodic Review:** Quiz should be revisited after first cohort completes; adjust distractors based on common wrong answers
-

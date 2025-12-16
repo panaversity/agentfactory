@@ -19,7 +19,7 @@ links:
   pr: null
 files:
   - specs/038-chapter-33-intro-ai-agents/tasks.md (status updated)
-  - book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/README.md (minor fix)
+  - apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/README.md (minor fix)
 tests:
   - TASK-016: Paper alignment validation (PASS)
   - TASK-017: Anti-convergence validation (PASS)
@@ -37,16 +37,17 @@ Continue from prior session - execute QA validation phase for Chapter 33 (TASK-0
 
 **QA Validation Results**:
 
-| Task | Check | Result |
-|------|-------|--------|
-| TASK-016 | Paper alignment | ✅ PASS - All 7 frameworks present, 0 old frameworks found |
-| TASK-017 | Anti-convergence | ✅ PASS - No meta-commentary violations |
-| TASK-018 | Citation verification | ✅ PASS - All 5 statistics properly cited |
-| TASK-019 | CEFR cognitive load | ✅ PASS - All lessons B1, concepts 0-9 per lesson |
-| TASK-020 | Docusaurus build | ✅ PASS - Build succeeded |
-| TASK-021 | Final readability | ✅ PASS - Structure verified |
+| Task     | Check                 | Result                                                     |
+| -------- | --------------------- | ---------------------------------------------------------- |
+| TASK-016 | Paper alignment       | ✅ PASS - All 7 frameworks present, 0 old frameworks found |
+| TASK-017 | Anti-convergence      | ✅ PASS - No meta-commentary violations                    |
+| TASK-018 | Citation verification | ✅ PASS - All 5 statistics properly cited                  |
+| TASK-019 | CEFR cognitive load   | ✅ PASS - All lessons B1, concepts 0-9 per lesson          |
+| TASK-020 | Docusaurus build      | ✅ PASS - Build succeeded                                  |
+| TASK-021 | Final readability     | ✅ PASS - Structure verified                               |
 
 **Paper Framework Counts** (must have >0):
+
 - 5-Level Taxonomy: 49 occurrences ✅
 - 3+1 Architecture: 31 occurrences ✅
 - 5-Step Loop: 45 occurrences ✅
@@ -56,14 +57,17 @@ Continue from prior session - execute QA validation phase for Chapter 33 (TASK-0
 - Director/Bricklayer: 11 occurrences ✅
 
 **Old Framework Counts** (must be 0):
+
 - "Agency Spectrum": 0 ✅
 - "5 Components" (as framework): 0 ✅ (1 mention was "3+1 Architecture components")
 - "ReAct pattern" / "Plan-Execute pattern": 0 ✅
 
 **Minor Fix Applied**:
+
 - README.md line 111: Changed "five components" → "3+1 Architecture components" for consistency
 
 **Observation**:
+
 - Lessons 02, 04, 06, 07, 08 lack explicit "## Summary" sections (minor structural inconsistency, content concludes appropriately)
 
 ## Outcome

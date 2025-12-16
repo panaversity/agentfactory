@@ -1,6 +1,6 @@
 # Sandbox Audit Report: Chapter 5, Lesson 6
 
-**File:** `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/06-skills-plugins-mcp.md`
+**File:** `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/06-skills-plugins-mcp.md`
 
 **Audit Date:** 2025-11-13
 
@@ -25,16 +25,19 @@ While the lesson's pedagogical design and conceptual content are excellent, **ha
 **Location:** Line 346
 
 **Current (WRONG):**
+
 ```bash
 claude /plugin
 ```
 
 **Actual Command:**
+
 ```bash
 claude plugin
 ```
 
 **Evidence from `claude plugin --help`:**
+
 ```
 Usage: claude plugin [options] [command]
 
@@ -58,16 +61,19 @@ Commands:
 **Location:** Line 375
 
 **Current (WRONG):**
+
 ```bash
 claude /plugin marketplace add anthropics/claude-code
 ```
 
 **Actual Command:**
+
 ```bash
 claude plugin marketplace add anthropics/claude-code
 ```
 
 **Evidence from `claude plugin marketplace --help`:**
+
 ```
 Commands:
   add <source>      Add a marketplace from a URL, path, or GitHub repo
@@ -84,11 +90,13 @@ Commands:
 **Location:** Line 383
 
 **Current (WRONG):**
+
 ```bash
 claude /plugin install feature-dev
 ```
 
 **Actual Command:**
+
 ```bash
 claude plugin install feature-dev
 ```
@@ -104,17 +112,20 @@ claude plugin install feature-dev
 **Location:** Line 391
 
 **Current (WRONG):**
+
 ```bash
 claude /help
 # Should now show: /feature-dev command available
 ```
 
 **Actual Command:**
+
 ```bash
 claude --help
 ```
 
 **Evidence from `claude --help` output:**
+
 - Slash commands (like `/commit`) are session commands WITHIN Claude Code, not CLI arguments
 - Plugin verification should use `claude plugin list` or check session commands
 
@@ -127,6 +138,7 @@ claude --help
 **Location:** Line 392
 
 **Current (MISLEADING):**
+
 ```bash
 # Should now show: /feature-dev command available
 ```
@@ -134,6 +146,7 @@ claude --help
 **Issue:** This assumes all plugins create slash commands with the plugin name. This may not be true for all plugins.
 
 **Better Verification:**
+
 ```bash
 # Verify plugin is installed
 claude plugin list
@@ -158,10 +171,12 @@ claude
 **The lesson conflates these two different command contexts.**
 
 **Example of confusion:**
+
 - Line 346: `claude /plugin` ← CLI command with slash (WRONG)
 - Line 209: `/code-review` ← Session slash command (CORRECT context, but used in wrong place)
 
 **Correct Pattern:**
+
 - **CLI**: `claude plugin [subcommand]` (manage plugins from terminal)
 - **Session**: `/command-name` (invoke commands within Claude Code session)
 
@@ -182,6 +197,7 @@ claude
 ### Issue 8: MCP @-Mention Activation May Be Incorrect
 
 **Claims (Lines 440-442, 456-457):**
+
 ```bash
 @github search issues
 @github create-pull-request
@@ -238,6 +254,7 @@ Commands:
 Examined real skill: `.claude/skills/python-sandbox/SKILL.md`
 
 **Actual Structure:**
+
 ```yaml
 ---
 name: python-sandbox
@@ -248,7 +265,6 @@ metadata:
   category: "validation"
   version: "1.0.0"
 ---
-
 # Skill Title
 
 ## Overview
@@ -258,7 +274,6 @@ metadata:
 ## Bundled Scripts
 ## Instructions
 ## Common Scenarios
-...
 ```
 
 **Lesson's Example (Lines 144-161):** ✅ ACCURATE structure, but simplified
@@ -305,15 +320,18 @@ metadata:
 ### Fix Block 1: Plugin Browsing (Lines 343-354)
 
 **Current:**
-```markdown
+
+````markdown
 ### Step 1: Browse the Marketplace
 
 ```bash
 claude /plugin
 ```
+````
 
 This shows available plugins from three sources:
-```
+
+````
 
 **Fixed:**
 ```markdown
@@ -323,23 +341,26 @@ This shows available plugins from three sources:
 
 ```bash
 claude plugin marketplace list
-```
+````
 
 This shows available marketplaces you've configured. To explore plugins, you can:
 
 **Option A:** Browse GitHub marketplace directly:
+
 ```bash
 # First, add a marketplace source
 claude plugin marketplace add anthropics/claude-code
 ```
 
 **Option B:** List installed plugins:
+
 ```bash
 claude plugin list
 ```
 
 **Available from official Anthropic marketplace:**
-```
+
+````
 
 ---
 
@@ -351,10 +372,11 @@ claude plugin list
 
 ```bash
 claude /plugin marketplace add anthropics/claude-code
-```
+````
 
 This registers the Anthropic marketplace as a source Claude Code can search.
-```
+
+````
 
 **Fixed:**
 ```markdown
@@ -364,7 +386,7 @@ This registers the Anthropic marketplace as a source Claude Code can search.
 
 ```bash
 claude plugin marketplace add anthropics/claude-code
-```
+````
 
 This registers the Anthropic marketplace as a source. You can verify it was added:
 
@@ -373,7 +395,8 @@ claude plugin marketplace list
 ```
 
 You should see `anthropics/claude-code` in the list.
-```
+
+````
 
 ---
 
@@ -394,8 +417,9 @@ claude
 # Verify activation
 claude /help
 # Should now show: /feature-dev command available
-```
-```
+````
+
+````
 
 **Fixed:**
 ```markdown
@@ -410,7 +434,7 @@ claude plugin install feature-dev
 # Verify it's installed
 claude plugin list
 # Should show "feature-dev" with status "enabled"
-```
+````
 
 **CRITICAL:** Plugins are loaded when Claude Code starts. If you had an active session, restart it:
 
@@ -430,7 +454,8 @@ claude
 ```
 
 **Note:** Different plugins add different capabilities. Some add slash commands, some add skills (autonomous), some add agents. Check the plugin's documentation to know what to expect.
-```
+
+````
 
 ---
 
@@ -467,7 +492,7 @@ claude plugin marketplace add anthropics/claude-code
 claude plugin install <example-plugin>
 claude plugin list | grep <example-plugin>
 # Exit code 0 = pass
-```
+````
 
 **Fix:** Define executable validation for all hands-on learning objectives
 
@@ -478,11 +503,13 @@ claude plugin list | grep <example-plugin>
 1. **IMMEDIATE (15 min):** Fix all 5 critical command syntax errors (Lines 346, 375, 383, 391, 392)
 
 2. **HIGH PRIORITY (30 min):**
+
    - Add clear distinction between CLI commands and session slash commands
    - Update verification workflow to match actual Claude Code behavior
    - Test complete plugin installation workflow in sandbox
 
 3. **MEDIUM PRIORITY (1 hour):**
+
    - Verify MCP @-mention activation syntax
    - Confirm "feature-dev" plugin exists or replace with verified example
    - Add "How to verify what a plugin adds" section
@@ -522,6 +549,7 @@ The lesson's **conceptual content is excellent** (progressive disclosure explana
 ---
 
 **Audit performed using Vertical Intelligence Pattern:**
+
 - Layer 1 (Constitution): Validated against Principle 5 (Validation-First), Principle 13 (Graduated Teaching)
 - Layer 2 (Domain Knowledge): Referenced actual SKILL.md structure from `.claude/skills/`
 - Layer 3 (Context Discovery): Executed `claude plugin --help` and `claude plugin marketplace --help`

@@ -10,33 +10,36 @@
 
 ## Metadata
 
-| Field | Value |
-|-------|-------|
-| **Title** | Implement Lesson 6: Complex Markdown with AI Companion (Tier 2 Teaching Pattern) |
-| **Stage** | implement |
-| **Feature** | 001-chapter-9-markdown |
-| **Branch** | 001-chapter-9-markdown |
-| **Model** | claude-haiku-4-5-20251001 |
-| **Command** | `/sp.implement` (orchestrator context) |
-| **Labels** | ["tier-2-teaching", "markdown", "validation-first", "ai-companion", "lesson-implementation"] |
-| **Workflow** | Spec-Driven Development: Specification → Plan → Implementation → Validation |
+| Field        | Value                                                                                        |
+| ------------ | -------------------------------------------------------------------------------------------- |
+| **Title**    | Implement Lesson 6: Complex Markdown with AI Companion (Tier 2 Teaching Pattern)             |
+| **Stage**    | implement                                                                                    |
+| **Feature**  | 001-chapter-9-markdown                                                                       |
+| **Branch**   | 001-chapter-9-markdown                                                                       |
+| **Model**    | claude-haiku-4-5-20251001                                                                    |
+| **Command**  | `/sp.implement` (orchestrator context)                                                       |
+| **Labels**   | ["tier-2-teaching", "markdown", "validation-first", "ai-companion", "lesson-implementation"] |
+| **Workflow** | Spec-Driven Development: Specification → Plan → Implementation → Validation                  |
 
 ---
 
 ## Context
 
 ### Input Documents
+
 - **Spec**: `specs/001-chapter-9-markdown/spec.md` (approved)
 - **Plan**: `specs/001-chapter-9-markdown/plan.md` (approved)
 - **Tasks**: `specs/001-chapter-9-markdown/tasks.md` (Tasks T023-T027 for Lesson 6)
 
 ### Chapter Position
+
 - **Part**: 3 - Markdown, Prompt & Context Engineering
 - **Chapter**: 9 - Markdown: The Language of AI Communication
 - **Lesson**: 6 of 8
 - **Prerequisite**: Lessons 1-5 (Tier 1 foundational markdown)
 
 ### Lesson Context
+
 - **Complexity Tier**: Beginner (Parts 1-3)
 - **Proficiency Level**: B1 (Independent Application)
 - **Duration**: 50 minutes
@@ -48,9 +51,11 @@
 ## User Input Summary
 
 **Implementation Request**:
+
 > "Implement Lesson 6: Complex Markdown with AI Companion (Tier 2 Teaching Pattern) — Students have completed Lessons 1-5 (Tier 1) and can write basic markdown. This lesson introduces Tier 2: AI Companion handles complex syntax students shouldn't memorize. Requirements: Teach Tier 2 pattern explicitly, show 3 code examples (tables, nested lists, YAML), create 3 exercises with validation checklists, write 10-question quiz (SC-002), include supporting materials (validation checklist, AI response samples), end with 'Try With AI' section only (no key takeaways). Enforce all Constitutional principles (Graduated Teaching, Validation-First, Cognitive Load). Apply all 9 domain skills contextually. Output: Complete lesson markdown file + supporting materials files."
 
 ### Key Requirements Extracted
+
 1. **Primary Content**: Lesson markdown file (06-complex-markdown-ai-companion.md)
 2. **Teaching Pattern**: Tier 2 (Specify → Generate → Validate)
 3. **Explicit Instruction**: Must teach WHY Tier 2 exists and WHEN to use it
@@ -78,18 +83,23 @@
 ### Design Decisions
 
 1. **Concept Ordering**: Tier 2 pattern → complex types → validation principle
+
    - Rationale: Mirrors the workflow students will follow; establishes mindset first
 
 2. **Examples as Specifications**: Not runnable code, but request → output workflows
+
    - Rationale: Students aren't coding; they're requesting complex syntax. Follows Constitution Principle 9 (Show-Spec-Validate)
 
 3. **Separate Checklist File**: Not inline with lesson
+
    - Rationale: Lesson focuses on concepts; checklist is a reference tool for repeated use
 
 4. **5 Samples with Reading Practice**: Not minimal
+
    - Rationale: Reading AI responses is a new B1 skill; multiple patterns build confidence
 
 5. **B1 Proficiency (Not A2)**:
+
    - Rationale: Students independently direct AI (Create level) and validate (Evaluate level); both B1
 
 6. **ChatGPT Web for Try With AI**:
@@ -113,11 +123,12 @@
 
 ### Primary Lesson File
 
-**File**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/06-complex-markdown-ai-companion.md`
+**File**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/06-complex-markdown-ai-companion.md`
 
 **Size**: 596 lines
 
 **Structure**:
+
 - YAML frontmatter (74 lines): All metadata fields, skills proficiency data, learning objectives, cognitive load, differentiation, generation metadata
 - Title and opening hook (3 lines)
 - "The Problem with Complex Syntax" section (15 lines)
@@ -131,6 +142,7 @@
 - Try With AI (40 lines): 3 progressive prompts, expected outcomes, safety note
 
 **Content Validation**:
+
 - ✓ Tier 2 pattern taught explicitly with clear workflow
 - ✓ WHY Tier 2 exists explained (3 reasons: platforms differ, not your job, saves time)
 - ✓ WHEN to use Tier 2 (complex syntax, platform-specific, not worth memorizing)
@@ -143,11 +155,12 @@
 
 ### Supporting Material 1: Quiz
 
-**File**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/examples/lesson-6-quiz.md`
+**File**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/examples/lesson-6-quiz.md`
 
 **Size**: 246 lines
 
 **Structure**:
+
 - Header (purpose, success criteria, instructions)
 - 10 questions covering:
   - Questions 1-4: Understanding Tier 2 pattern and when to use it
@@ -165,11 +178,12 @@
 
 ### Supporting Material 2: Validation Checklist
 
-**File**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/examples/lesson-6-validation-checklist.md`
+**File**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/examples/lesson-6-validation-checklist.md`
 
 **Size**: 233 lines
 
 **Structure**:
+
 - Checklist 1: Validating Markdown Tables (6-part structure: spec match, rendering, syntax, data quality, example flow, verdict)
 - Checklist 2: Validating Nested Lists (4-part structure: spec match, indentation, rendering, content quality)
 - Checklist 3: Validating YAML Front Matter (5-part structure: spec match, YAML syntax, field format, rendering, example flow)
@@ -181,11 +195,12 @@
 
 ### Supporting Material 3: AI Response Samples
 
-**File**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/examples/lesson-6-ai-response-samples.md`
+**File**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/examples/lesson-6-ai-response-samples.md`
 
 **Size**: 360 lines
 
 **Structure**:
+
 - Sample 1: Table generation (Python libraries comparison)
   - Request, AI response, validation practice, verdict
 - Sample 2: Nested list (project structure with 3 levels)
@@ -208,27 +223,32 @@
 All 17 principles reviewed; relevant principles enforced:
 
 ### Principle 1: AI-First Teaching
+
 - ✓ Every lesson includes "Try With AI" section
 - ✓ Closure strategy: Single "Try With AI" only (no "Key Takeaways" or "What's Next")
 - ✓ Frames AI as learning partner (specification directing, validation understanding)
 
 ### Principle 5: Progressive Complexity
+
 - ✓ B1 proficiency level appropriate for Lesson 6 (after Lessons 1-5 A1/A2 foundation)
 - ✓ Content assumes Tier 1 markdown knowledge
 - ✓ Introduces Tier 2 pattern as natural progression
 
 ### Principle 9: Show-Spec-Validate (Specification-First)
+
 - ✓ All 3 examples follow: Show specification → Show AI output → Show validation
 - ✓ Teaches specification writing (core AIDD skill)
 - ✓ Emphasizes clarity over syntax memorization
 
 ### Principle 12: Cognitive Load Management
+
 - ✓ 3 new concepts (Tier 2 pattern, complex types, validation)
 - ✓ Within B1 limit (max 10 concepts)
 - ✓ Explicit tracking in YAML: `cognitive_load.new_concepts: 3`
 - ✓ No gatekeeping language ("easy", "simple", "obvious")
 
 ### Principle 13: Graduated Teaching Pattern
+
 - ✓ Tier 1 (Lessons 1-5): Book teaches markdown directly (students type manually)
 - ✓ Tier 2 (Lesson 6): AI Companion for complex syntax
   - Students specify intent → AI generates syntax → Students validate
@@ -237,6 +257,7 @@ All 17 principles reviewed; relevant principles enforced:
 - ✓ Explicit teaching: "Why Tier 2 Exists" and "When to Use Tier 2" sections
 
 ### Principle 15: Validation-Before-Trust (Validation-First Safety)
+
 - ✓ Every example includes validation steps
 - ✓ Every exercise includes validation checklist
 - ✓ Entire "Validation Principle" concept dedicated to this
@@ -248,18 +269,21 @@ All 17 principles reviewed; relevant principles enforced:
 ## Skills Proficiency Metadata (CEFR/Bloom's)
 
 ### Skill 1: Specifying Complex Markdown
+
 - **CEFR Level**: B1 (Independent Application)
 - **Bloom's Level**: Create
 - **DigComp Area**: Content Creation
 - **Measurable Outcome**: Student can describe complex markdown needs and direct AI to generate syntax
 
 ### Skill 2: Understanding AI's Role in Tier 2
+
 - **CEFR Level**: A2 (Simple Application with Scaffolding)
 - **Bloom's Level**: Understand
 - **DigComp Area**: Problem-Solving
 - **Measurable Outcome**: Student can identify when to delegate to AI vs. learn directly
 
 ### Skill 3: Validating AI-Generated Markdown
+
 - **CEFR Level**: A2 (Simple Application with Scaffolding)
 - **Bloom's Level**: Evaluate
 - **DigComp Area**: Information Literacy
@@ -270,24 +294,29 @@ All 17 principles reviewed; relevant principles enforced:
 ## Success Criteria Mapping
 
 ### SC-002: 85%+ students score 75%+ on code identification quiz
+
 - **Addressed by**: lesson-6-quiz.md (10-question quiz with 75%+ passing threshold)
 - **Teaching support**: "How to Read AI-Generated Markdown" section, Exercise 3, Sample AI responses
 - **Quiz questions**: 5-7 specifically test reading/identification skills
 
 ### SC-004: 75%+ students successfully request complex markdown
+
 - **Addressed by**: All 3 exercises (table, nested list, parsing)
 - **Teaching support**: Clear specifications for each request, validation checklists
 - **Try With AI**: 3 progressive prompts to practice requests
 
 ### FR-010/FR-011/FR-012: Complex markdown via AI Companion
+
 - **Addressed by**: Examples 1-3, Exercises 1-3, All supporting samples
 - **Teaching approach**: Tier 2 pattern (specify → generate → validate, not memorize syntax)
 
 ### FR-017: Reading and understanding AI-generated markdown
+
 - **Addressed by**: "How to Read AI-Generated Markdown" section, Exercise 3, All 5 samples with practice questions
 - **Assessment**: Quiz questions 5-7, inline assessment questions
 
 ### FR-021: Tier 2 teaching pattern
+
 - **Addressed by**: Entire lesson; explicit "Concept 1: The Tier 2 Teaching Pattern" section
 - **Teaching**: Why it exists (3 reasons), when to use it (complex syntax), workflow (3 steps)
 
@@ -296,6 +325,7 @@ All 17 principles reviewed; relevant principles enforced:
 ## Testing & Validation
 
 ### Content Validation
+
 - ✓ All markdown syntax in examples is correct
 - ✓ All YAML examples are syntactically valid
 - ✓ Table examples render correctly in markdown preview
@@ -304,6 +334,7 @@ All 17 principles reviewed; relevant principles enforced:
 - ✓ Code block identification practice answers correct
 
 ### Pedagogical Validation
+
 - ✓ Learning objectives are measurable and use Bloom's verbs
 - ✓ Proficiency level (B1) appropriate for lesson position
 - ✓ Prerequisites from Lessons 1-5 assumed and not re-taught
@@ -312,6 +343,7 @@ All 17 principles reviewed; relevant principles enforced:
 - ✓ Examples are concrete and relatable
 
 ### Structural Validation
+
 - ✓ YAML frontmatter complete with all required fields
 - ✓ Files written to correct directory paths
 - ✓ All supporting files reference lesson content
@@ -322,13 +354,13 @@ All 17 principles reviewed; relevant principles enforced:
 
 ## Output Summary
 
-| Artifact | Lines | Location | Status |
-|----------|-------|----------|--------|
-| Primary Lesson | 596 | `06-complex-markdown-ai-companion.md` | Complete |
-| Quiz | 246 | `examples/lesson-6-quiz.md` | Complete |
-| Validation Checklist | 233 | `examples/lesson-6-validation-checklist.md` | Complete |
-| AI Response Samples | 360 | `examples/lesson-6-ai-response-samples.md` | Complete |
-| **TOTAL** | **1435** | **Chapter 9 Lesson 6** | **Ready** |
+| Artifact             | Lines    | Location                                    | Status    |
+| -------------------- | -------- | ------------------------------------------- | --------- |
+| Primary Lesson       | 596      | `06-complex-markdown-ai-companion.md`       | Complete  |
+| Quiz                 | 246      | `examples/lesson-6-quiz.md`                 | Complete  |
+| Validation Checklist | 233      | `examples/lesson-6-validation-checklist.md` | Complete  |
+| AI Response Samples  | 360      | `examples/lesson-6-ai-response-samples.md`  | Complete  |
+| **TOTAL**            | **1435** | **Chapter 9 Lesson 6**                      | **Ready** |
 
 ---
 

@@ -9,20 +9,30 @@ feature: part-4-chapter-29
 branch: part-4-chapter-29
 user: human
 command: /sp.implement
-labels: ["chapter-29", "cpython", "gil", "free-threading", "python-3.14", "implementation", "multi-agent", "capstone"]
+labels:
+  [
+    "chapter-29",
+    "cpython",
+    "gil",
+    "free-threading",
+    "python-3.14",
+    "implementation",
+    "multi-agent",
+    "capstone",
+  ]
 links:
   spec: specs/part-4-chapter-29/spec.md
   ticket: null
   adr: null
   pr: null
 files:
-  - book-source/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/readme.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/01-what-is-cpython.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/02-cpython-performance-evolution.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/03-traditional-gil.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/04-free-threaded-python.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/05-choosing-concurrency.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/06-capstone-multi-agent.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/readme.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/01-what-is-cpython.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/02-cpython-performance-evolution.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/03-traditional-gil.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/04-free-threaded-python.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/05-choosing-concurrency.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/06-capstone-multi-agent.md
 tests:
   - CoLearning element count: 61 total (exceeds 50+ target)
   - Lesson closure compliance: All 6 lessons end with "Try With AI" only
@@ -37,6 +47,7 @@ tests:
 User said "Yes proceed" to continue with PHASE 4 (Implementation) after PHASE 0-3 (Spec, Plan, Tasks) were completed and approved.
 
 Context from previous session:
+
 - Spec.md created (18,500+ words, 11 evals, 5 LOs, 6 lessons, 28 criteria)
 - Plan.md created (16,000+ words, lesson-by-lesson breakdown, 47+ skills mapped)
 - Tasks.md created (86 tasks across 8 phases)
@@ -49,10 +60,12 @@ User's request: "Yes proceed" (to implement Lessons 1-6 sequentially using conte
 **Implementation Workflow Executed:**
 
 1. **Setup Phase** (completed first):
-   - Created directory structure: `book-source/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/`
+
+   - Created directory structure: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/`
    - Generated readme.md (219 lines, 8.6KB) with chapter overview, learning objectives, lesson navigation
 
 2. **Lesson 1: What is CPython?** (B1, 60 min):
+
    - Invoked content-implementer subagent with comprehensive instructions
    - Generated 508 lines (24KB)
    - 7 concepts (CPython definition, reference implementation, bytecode, reference counting, GC, alternatives, C API)
@@ -60,12 +73,14 @@ User's request: "Yes proceed" (to implement Lessons 1-6 sequentially using conte
    - Ends with "Try With AI" (4 prompts: Remember → Understand → Apply → Analyze)
 
 3. **Lesson 2: CPython Performance Evolution** (B1, 60 min):
+
    - Generated 436 lines (23KB)
    - 6 concepts (tail-call interpreter, incremental GC, deferred annotations, pyperformance, AI workloads, GIL bridge)
    - 7 CoLearning elements
    - Python 3.14 focus (3-5% faster, incremental GC, deferred annotations)
 
 4. **Lesson 3: The Traditional GIL** (B1-B2, 90 min) - THE CRITICAL LESSON:
+
    - Generated 810 lines (36KB) - longest content lesson
    - 8 concepts (GIL definition, reference counting thread safety, CPU vs I/O distinction [CRITICAL], threading limitations, multiprocessing, C extensions, 30-year tradeoff)
    - 11 CoLearning elements (4💬 + 3🎓 + 2🚀 + 2✨)
@@ -73,6 +88,7 @@ User's request: "Yes proceed" (to implement Lessons 1-6 sequentially using conte
    - Code examples demonstrating threading failure for CPU-bound, success for I/O-bound
 
 5. **Lesson 4: Free-Threaded Python** (B1-B2, 120 min) - PRIMARY LESSON:
+
    - Generated 931 lines (38KB) - largest file, most comprehensive
    - 10 concepts (B1-B2 MAXIMUM - justified as PRIMARY revolutionary lesson)
    - 13 CoLearning elements (5💬 + 3🎓 + 3🚀 + 2✨) - most critical lesson
@@ -83,6 +99,7 @@ User's request: "Yes proceed" (to implement Lessons 1-6 sequentially using conte
    - Thread safety remains programmer responsibility
 
 6. **Lesson 5: Choosing Your Concurrency Approach** (B1-B2, 90 min):
+
    - Generated 754 lines (31KB)
    - 9 concepts (workload classification, decision framework, single-threaded baseline, free-threaded suitability, multiprocessing isolation, asyncio I/O, benchmarking, Python 3.14 tools, hybrid patterns)
    - 11 CoLearning elements (+ 4 Try With AI = 15 total)
@@ -103,6 +120,7 @@ User's request: "Yes proceed" (to implement Lessons 1-6 sequentially using conte
 **Post-Implementation Validation:**
 
 All validation checks PASSED:
+
 - ✅ CoLearning element count: 61 total (exceeds 50+ target)
 - ✅ Lesson closure compliance: All 6 lessons end with "Try With AI" ONLY
 - ✅ Proficiency progression: Smooth B1 → B1-B2 → B2 (no zigzag)
@@ -115,6 +133,7 @@ All validation checks PASSED:
 - ✅ Impact: Complete implementation of Chapter 29 (CPython and GIL) - the MOST CRITICAL Python fundamentals chapter covering the biggest change in Python's 30-year history. All 6 lessons (4,526 lines) demonstrate true parallel AI reasoning with free-threading, directly supporting the book's AI-native vision for Parts 10-13 deployment.
 
 - 🧪 Tests:
+
   - CoLearning pedagogy validation: 61 elements across 6 lessons (exceeds 50+ target)
   - Lesson closure validation: All 6 lessons end with "Try With AI" ONLY (no summaries after)
   - Proficiency progression: B1 → B1-B2 → B2 (smooth escalation validated)
@@ -123,6 +142,7 @@ All validation checks PASSED:
   - Constitutional compliance: AI-Native Learning pattern applied throughout
 
 - 📁 Files:
+
   - readme.md: 219 lines (8.6KB) - chapter overview with navigation
   - Lesson 1 (What is CPython?): 508 lines (24KB)
   - Lesson 2 (Performance Evolution): 436 lines (23KB)
@@ -133,6 +153,7 @@ All validation checks PASSED:
   - **TOTAL**: 4,526 lines of production-ready content
 
 - 🔁 Next prompts:
+
   - Optional: Run validation-auditor subagent for final validation
   - Optional: Test all code examples on Python 3.14.0+
   - Next chapter: Chapter 30 (Spec-Driven Development) builds on this foundation
@@ -153,6 +174,7 @@ All validation checks PASSED:
 - Failure modes observed: None. All 6 content-implementer subagent invocations completed successfully without errors. Files written to correct paths. No syntax errors, validation failures, or PHR creation issues.
 
 - Graders run and results (PASS/FAIL):
+
   - CoLearning element count: PASS (61 total, exceeds 50+ target)
   - Lesson closure compliance: PASS (all 6 lessons end with "Try With AI" ONLY)
   - Proficiency progression: PASS (smooth B1 → B1-B2 → B2, no zigzag)

@@ -24,11 +24,13 @@ Chapter 2 presents foundational concepts about the AI development inflection poi
 ### Lesson 1: The Inflection Point — Why 2025 Is Different
 
 **Lesson Stats**:
+
 - Word count: ~2,400 words
 - Visuals generated: 2
 - Visual density: 1 per 1,200 words ✓
 
 #### VISUAL ASSET 1: The Evidence Compared - 2024 vs 2025
+
 - **Type**: Comparison Grid
 - **Location**: After comparison table (line 148)
 - **Content**: Five-dimension comparison showing transformation across Capability, Adoption, Enterprise Confidence, Professional Workflow, and Developer Role
@@ -44,6 +46,7 @@ Chapter 2 presents foundational concepts about the AI development inflection poi
 - **Filename**: `evidence-compared-2024-vs-2025.png`
 
 #### VISUAL ASSET 2: AI Capability Breakthrough Statistics
+
 - **Type**: Statistics Dashboard
 - **Location**: After GDPval Benchmark paragraph (line 85)
 - **Content**: 4 metrics: ICPC 12/12 perfect score, Gemini 10/12 gold medal, Claude 49% win rate, GPT-5 40.6% win rate
@@ -63,11 +66,13 @@ Chapter 2 presents foundational concepts about the AI development inflection poi
 ### Lesson 2: From User Interface to User Intent
 
 **Lesson Stats**:
+
 - Word count: ~2,200 words
 - Visuals generated: 2
 - Visual density: 1 per 1,100 words ✓
 
 #### VISUAL ASSET 1: The Paradigm Shift - Interface vs Intent
+
 - **Type**: Comparison (Process Flow Diagram)
 - **Location**: After "User Intent thinking" conclusion (line 135)
 - **Content**: Old Paradigm (User→Interface→Action) vs New Paradigm (User Intent→Agent→Orchestrated Actions)
@@ -83,6 +88,7 @@ Chapter 2 presents foundational concepts about the AI development inflection poi
 - **Filename**: `paradigm-shift-interface-to-intent.png`
 
 #### VISUAL ASSET 2: The Five Powers of AI Agents
+
 - **Type**: Icon Grid Dashboard (Pentagon/Flower Pattern)
 - **Location**: After Five Powers section conclusion (line 307)
 - **Content**: See, Hear, Reason, Act, Remember with icons, descriptions, and examples
@@ -103,11 +109,13 @@ Chapter 2 presents foundational concepts about the AI development inflection poi
 ### Lesson 3: Development Patterns — Vibe Coding vs. Spec-Driven
 
 **Lesson Stats**:
+
 - Word count: ~2,600 words
 - Visuals generated: 1
 - Visual density: 1 per 2,600 words ✓
 
 #### VISUAL ASSET 1: Team A vs Team B Development Timeline Comparison
+
 - **Type**: Timeline Comparison (Dual Horizontal Gantt)
 - **Location**: After Team B completion summary (line 182)
 - **Content**: Week-by-week breakdown showing Team A (vibe coding: 10h → crashes → 24h rework = 34h total) vs Team B (spec-driven: 2h spec + 3h tests + 4h implementation + 1h review + 2h extension = 12h total)
@@ -125,6 +133,7 @@ Chapter 2 presents foundational concepts about the AI development inflection poi
 - **Filename**: `team-comparison-vibe-vs-spec-timeline.png`
 
 **SKIPPED OPPORTUNITY**: "When Each Approach Fits" context table
+
 - **Rationale**: Table is already clear with 6 rows × 3 columns. Text is scannable. Visual would be redundant rather than clarifying. Cognitive load already low.
 
 ---
@@ -132,11 +141,13 @@ Chapter 2 presents foundational concepts about the AI development inflection poi
 ### Lesson 4: The DORA Perspective — AI as Amplifier
 
 **Lesson Stats**:
+
 - Word count: ~2,000 words
 - Visuals generated: 1
 - Visual density: 1 per 2,000 words ✓
 
 #### VISUAL ASSET 1: The Seven DORA Capabilities for AI Success
+
 - **Type**: Capability Grid Dashboard
 - **Location**: After all seven capabilities explained (line 139)
 - **Content**: Seven capabilities with icons, descriptions, and "Why it matters" statements: Clear AI Stance, Healthy Data Ecosystem, AI-Accessible Internal Data, Strong Version Control, Working in Small Batches, User-Centric Focus, Quality Internal Platform
@@ -158,11 +169,13 @@ Chapter 2 presents foundational concepts about the AI development inflection poi
 ### Lesson 5: The Modern AI Development Stack
 
 **Lesson Stats**:
+
 - Word count: ~2,500 words
 - Visuals generated: 2
 - Visual density: 1 per 1,250 words ✓
 
 #### VISUAL ASSET 1: The Three-Layer AI Development Stack
+
 - **Type**: Layered Architecture Diagram
 - **Location**: After workflow example (line 112)
 - **Content**: Three stacked layers with examples and bi-directional communication arrows: Layer 1 (Frontier Models: GPT-5, Claude Opus 4, Gemini 2.5 Pro, Qwen Code), Layer 2 (AI-First IDEs: VS Code, Cursor, Windsurf, JetBrains), Layer 3 (Development Agents: Claude Code CLI, Aider, Copilot Workspace, Devin)
@@ -181,6 +194,7 @@ Chapter 2 presents foundational concepts about the AI development inflection poi
 - **Filename**: `three-layer-ai-development-stack.png`
 
 #### VISUAL ASSET 2: 2024 vs 2025 Stack Evolution
+
 - **Type**: Before/After Comparison (Evolution Diagram)
 - **Location**: After comparison table (line 246)
 - **Content**: 2024 monolithic silos (GitHub Copilot, Claude Chat, Cursor as locked ecosystems) → 2025 modular layers (composable stack with swap capabilities)
@@ -202,6 +216,7 @@ Chapter 2 presents foundational concepts about the AI development inflection poi
 ## Audit Summary
 
 ### By Visual Type:
+
 - **Statistics Dashboard**: 2 (Lesson 1: Capability Breakthroughs, Lesson 4: DORA Capabilities)
 - **Comparison Grid**: 3 (Lesson 1: 2024 vs 2025 Evidence, Lesson 2: Paradigm Shift, Lesson 5: Stack Evolution)
 - **Timeline**: 1 (Lesson 3: Team A vs B)
@@ -209,14 +224,17 @@ Chapter 2 presents foundational concepts about the AI development inflection poi
 - **Architecture Diagram**: 1 (Lesson 5: Three-Layer Stack)
 
 ### By Priority:
+
 - **HIGH Priority**: 7 (all reduce cognitive load significantly)
 - **MEDIUM Priority**: 1 (Lesson 5: Stack Evolution - enhances memorability)
 
 ### Skipped Opportunities:
+
 1. **Lesson 3: "When Each Approach Fits" table** - Table is already scannable, visual would be redundant
-2. *(No other opportunities skipped)*
+2. _(No other opportunities skipped)_
 
 ### Design System Compliance:
+
 - ✅ All prompts specify hex codes for colors (no vague "blue" → "#0066FF")
 - ✅ All typography includes exact sizes and weights (e.g., "48pt Roboto Bold")
 - ✅ All layouts include precise dimensions and spacing (e.g., "1792x1024px, 56px margins")
@@ -234,6 +252,7 @@ Chapter 2 presents foundational concepts about the AI development inflection poi
 ## Chapter 1 Learnings Applied
 
 ### ✅ Successes Carried Forward:
+
 1. **Maximum 3-4 items per visual**: All dashboards use 2×2 grids or similar constraints
 2. **Hyphenated compound words**: "AI-First", "Spec-Driven", "User-Centric" consistently hyphenated
 3. **Arrow-only indicators**: Trend arrows (↗) used without text labels
@@ -241,6 +260,7 @@ Chapter 2 presents foundational concepts about the AI development inflection poi
 5. **Design system consistency**: Roboto font family, Orange/Blue/Teal color palette, subtle shadows
 
 ### 🎯 New Patterns Introduced in Chapter 2:
+
 1. **Pentagon/flower layout**: Used for Five Powers to show interconnection (new pattern)
 2. **Timeline comparisons**: Gantt-style dual timelines for process comparison (new pattern)
 3. **Evolution diagrams**: Before/after with transformation arrow (new pattern)
@@ -251,6 +271,7 @@ Chapter 2 presents foundational concepts about the AI development inflection poi
 ## Next Steps
 
 ### Phase 2: Image Generation
+
 1. ✅ All prompts embedded in lesson markdown files as HTML comments
 2. ⏭️ Invoke `image-generator` skill to generate 8 images
 3. ⏭️ For each image:
@@ -263,11 +284,12 @@ Chapter 2 presents foundational concepts about the AI development inflection poi
 5. ⏭️ Create completion report in `history/visual-assets/chapter-2-visual-assets-report.md`
 
 ### Files Modified:
-- `/book-source/docs/01-Introducing-AI-Driven-Development/02-ai-turning-point/01-the-inflection-point.md` (2 prompts)
-- `/book-source/docs/01-Introducing-AI-Driven-Development/02-ai-turning-point/02-user-interface-intent.md` (2 prompts)
-- `/book-source/docs/01-Introducing-AI-Driven-Development/02-ai-turning-point/03-development-patterns.md` (1 prompt)
-- `/book-source/docs/01-Introducing-AI-Driven-Development/02-ai-turning-point/04-dora-perspective.md` (1 prompt)
-- `/book-source/docs/01-Introducing-AI-Driven-Development/02-ai-turning-point/05-ai-coding-agents.md` (2 prompts)
+
+- `/apps/learn-app/docs/01-Introducing-AI-Driven-Development/02-ai-turning-point/01-the-inflection-point.md` (2 prompts)
+- `/apps/learn-app/docs/01-Introducing-AI-Driven-Development/02-ai-turning-point/02-user-interface-intent.md` (2 prompts)
+- `/apps/learn-app/docs/01-Introducing-AI-Driven-Development/02-ai-turning-point/03-development-patterns.md` (1 prompt)
+- `/apps/learn-app/docs/01-Introducing-AI-Driven-Development/02-ai-turning-point/04-dora-perspective.md` (1 prompt)
+- `/apps/learn-app/docs/01-Introducing-AI-Driven-Development/02-ai-turning-point/05-ai-coding-agents.md` (2 prompts)
 
 ### Ready for Image Generation: ✅ Yes
 

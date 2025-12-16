@@ -11,11 +11,13 @@
 Add a **new lesson to Chapter 32** (Lesson 6) that teaches how to architect AI agents to stay current with evolving APIs and libraries. This addresses the gap between agent knowledge cutoffs and real-world API changes.
 
 **Problem Solved**:
+
 - Developers write specs saying "use latest API" but agents have knowledge cutoffs
 - APIs evolve faster than agent knowledge
 - Generated code can be stale on day 1
 
 **Solution**:
+
 - Teach context architecture as a SPECIFICATION DECISION
 - Present three major strategies: Context7, Tessel Registry, Hybrid approaches
 - Provide decision framework for choosing the right approach
@@ -26,6 +28,7 @@ Add a **new lesson to Chapter 32** (Lesson 6) that teaches how to architect AI a
 ## Scope
 
 ### In Scope
+
 ✅ Context7 (MCP-based live documentation)
 ✅ Tessel Registry (spec-driven library discovery)
 ✅ Hybrid approaches (RAG, embedded, memory, version pinning)
@@ -34,6 +37,7 @@ Add a **new lesson to Chapter 32** (Lesson 6) that teaches how to architect AI a
 ✅ Integration into capstone project
 
 ### Out of Scope
+
 ❌ Implementation details of Context7 or Tessel (reference only)
 ❌ Building custom RAG systems (overview only)
 ❌ Comparing other context providers not mentioned
@@ -44,16 +48,19 @@ Add a **new lesson to Chapter 32** (Lesson 6) that teaches how to architect AI a
 ## Key Concepts
 
 1. **Knowledge Cutoff Problem**
+
    - Agent knowledge is frozen at training date
    - APIs evolve continuously after that date
    - Specs say "latest" but agents can't deliver "latest"
 
 2. **Context Architecture**
+
    - Strategic decision about how agents access current knowledge
    - Part of specification, not implementation detail
    - Affects code quality, maintenance, and correctness
 
 3. **Three Strategies**
+
    - Context7: Live documentation via MCP
    - Tessel: Spec-driven machine-readable specs
    - Hybrid: RAG, embedded, memory, versioning
@@ -82,11 +89,13 @@ By completing this lesson, students will:
 ## Content Structure
 
 ### Part 1: The Problem (15 minutes)
+
 - Real scenario: Stripe integration failing because API changed
 - Why this is a specification problem
 - How context architecture is part of SDD
 
 ### Part 2: Strategy 1 - Context7 (45 minutes)
+
 - What is Context7 (MCP-based live docs)
 - How it works with Claude Code
 - Real spec example with Context7 reference
@@ -94,6 +103,7 @@ By completing this lesson, students will:
 - Hands-on: Write Stripe spec using Context7
 
 ### Part 3: Strategy 2 - Tessel Registry (45 minutes)
+
 - What is Tessel (from Chapter 30 recap)
 - Machine-readable library specs
 - How code generators use Tessel specs
@@ -101,6 +111,7 @@ By completing this lesson, students will:
 - Reflection: Tessel future promise
 
 ### Part 4: Strategy 3 - Hybrid Approaches (45 minutes)
+
 - Option A: Embedded documentation
 - Option B: RAG (vector search)
 - Option C: Agent memory
@@ -108,6 +119,7 @@ By completing this lesson, students will:
 - Trade-offs for each approach
 
 ### Part 5: Decision Framework (30 minutes)
+
 - Matrix: Which strategy for which scenario
 - Questions to ask your context
 - Exercise: Assess your capstone's needs
@@ -118,13 +130,17 @@ By completing this lesson, students will:
 ## Connection to Constitution
 
 **Principles this teaches**:
+
 1. **Principle 1: Specifications Precede Implementation**
+
    - Context architecture IS a specification decision
 
 2. **Principle 3: Validation-First Safety**
+
    - Validating that agents have current knowledge
 
 3. **Principle 6: AI as Co-Reasoning Partner**
+
    - Designing the agent's knowledge environment
 
 4. **Principle 14: Planning-First Development**
@@ -135,15 +151,18 @@ By completing this lesson, students will:
 ## Integration Points
 
 **Prerequisites**:
+
 - Chapter 30: Understanding SDD (spec-as-source concept)
 - Chapter 31: Hands-on spec writing
 - Chapter 32, Lessons 1-5: Team scaling (context for production systems)
 - Part 2, Lesson 5: MCP servers (context for understanding Context7)
 
 **Follows**:
+
 - Lesson 5: SDD In the Wild (real companies use specs)
 
 **Precedes**:
+
 - Lesson 7: Write Professional Commitment (incorporate context strategy)
 - Capstone Part 1: Decompose Spec (with context architecture included)
 
@@ -161,6 +180,7 @@ By completing this lesson, students will:
 ## Teaching Method
 
 **AI-Native Pedagogy**:
+
 - Problem-centered (knowledge cutoff failing specs)
 - Discovery through dialogue (ask your companion questions)
 - Real examples (Stripe, FastAPI)
@@ -185,13 +205,16 @@ By completing this lesson, students will:
 **Status**: ✅ COMPLETE
 
 **Files Created**:
-- `/book-source/docs/05-Spec-Kit-Plus-Methodology/32-real-world-spec-kit-workflows/06-how-agents-stay-current-context-architecture-for-living-specs.md`
+
+- `/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/32-real-world-spec-kit-workflows/06-how-agents-stay-current-context-architecture-for-living-specs.md`
 
 **Files Updated**:
-- `/book-source/docs/05-Spec-Kit-Plus-Methodology/32-real-world-spec-kit-workflows/README.md`
-- `/book-source/docs/05-Spec-Kit-Plus-Methodology/README.md`
+
+- `/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/32-real-world-spec-kit-workflows/README.md`
+- `/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/README.md`
 
 **Chapter 32 Structure After Update**:
+
 1. Lesson 1: Watch Your Companions Coordinate
 2. Lesson 2: Design Team Workflows
 3. Lesson 3: Trace SDD Through Your Company
@@ -199,7 +222,7 @@ By completing this lesson, students will:
 5. Lesson 5: SDD In the Wild
 6. **[NEW] Lesson 6: How Agents Stay Current** ← You are here
 7. Lesson 7: Write Your Professional Commitment
-8-10. Capstone Parts 1-3
+   8-10. Capstone Parts 1-3
 
 ---
 

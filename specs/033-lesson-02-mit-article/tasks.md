@@ -15,8 +15,8 @@
 
 ## Path Conventions
 
-- **Lesson file**: `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/02-three-trillion-developer-economy.md`
-- **Summary file**: `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/02-three-trillion-developer-economy.summary.md`
+- **Lesson file**: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/02-three-trillion-developer-economy.md`
+- **Summary file**: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/02-three-trillion-developer-economy.summary.md`
 - **Visual assets**: `book-source/static/img/part-1/chapter-1/`
 
 ---
@@ -25,8 +25,8 @@
 
 **Purpose**: Prepare MIT TR article content and verify existing lesson structure
 
-- [ ] T001 Read current lesson file `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/02-three-trillion-developer-economy.md` to understand existing structure (259 lines, 4 concepts)
-- [ ] T002 [P] Read current summary file `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/02-three-trillion-developer-economy.summary.md` to understand current mental models (23 lines)
+- [ ] T001 Read current lesson file `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/02-three-trillion-developer-economy.md` to understand existing structure (259 lines, 4 concepts)
+- [ ] T002 [P] Read current summary file `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/02-three-trillion-developer-economy.summary.md` to understand current mental models (23 lines)
 - [ ] T003 [P] Verify MIT TR article content from Phase 0 browser retrieval (David Rotman, March 25, 2023) is available for fact-checking
 
 **Checkpoint**: Current lesson structure understood, ready for content integration
@@ -120,7 +120,7 @@
 
 ### Summary Enhancement (Eval-8)
 
-- [ ] T022 [P] Update summary file `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/02-three-trillion-developer-economy.summary.md` to add 3 new mental models. **Mental Model 4**: "Two Economic Futures: AI outcomes depend on policy choices and societal decisions, not technological determinism. Optimistic path: broad access, upskilling, shared prosperity. Pessimistic path: restricted access, replacement, concentrated wealth." **Mental Model 5**: "Turing Trap: Building AI that mimics humans leads to replacement. Building AI that amplifies humans leads to augmentation. Your positioning choice determines career trajectory." **Mental Model 6**: "Power & Progress: Historical precedent shows technology impact depends on institutional choices (post-WWII shared prosperity vs. recent concentrated wealth)." Estimated +8-12 lines.
+- [ ] T022 [P] Update summary file `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/02-three-trillion-developer-economy.summary.md` to add 3 new mental models. **Mental Model 4**: "Two Economic Futures: AI outcomes depend on policy choices and societal decisions, not technological determinism. Optimistic path: broad access, upskilling, shared prosperity. Pessimistic path: restricted access, replacement, concentrated wealth." **Mental Model 5**: "Turing Trap: Building AI that mimics humans leads to replacement. Building AI that amplifies humans leads to augmentation. Your positioning choice determines career trajectory." **Mental Model 6**: "Power & Progress: Historical precedent shows technology impact depends on institutional choices (post-WWII shared prosperity vs. recent concentrated wealth)." Estimated +8-12 lines.
 
 ### Frontmatter Update
 

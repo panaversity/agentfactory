@@ -13,30 +13,35 @@ Inserted new **Chapter 8: AI-Native IDEs** into Part 2 (AI Tool Landscape), requ
 
 ### New Content
 
-- **Chapter 8: AI-Native IDEs** created at `book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/`
+- **Chapter 8: AI-Native IDEs** created at `apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/`
   - Comprehensive coverage of Zed, Cursor, and AI-native IDE concepts
   - Status: 📋 Planned (stub created, full content pending)
 
 ### Renumbered Chapters
 
 **Part 2: AI Tool Landscape**
+
 - Chapter 8 (Git) → Chapter 9
 
 **Part 3: Markdown, Prompt & Context Engineering**
+
 - Chapter 9 (Markdown) → Chapter 10
 - Chapter 10 (Prompt Engineering) → Chapter 11
 - Chapter 11 (Context Engineering) → Chapter 12
 
 **Part 4: Python Fundamentals**
+
 - Chapters 12-29 → Chapters 13-30
 - Chapter 12 (UV/Lightning Python Stack) → Chapter 13 (UV Package Manager - refocused)
 
 **Part 5: Spec-Driven Development**
+
 - Chapters 30-33 → Chapters 31-34
 
 ### Metadata Updates
 
 All affected chapter READMEs updated:
+
 - `sidebar_position` values corrected to match directory numbers
 - `title` chapter numbers updated
 - `sidebar_label` chapter numbers updated
@@ -49,6 +54,7 @@ Updated 279 "Chapter N" references across 175 markdown files to reflect new numb
 ### Index Updates
 
 - **`specs/book/chapter-index.md`**: Updated with new chapter ranges
+
   - Part 2: Chapters 5-9 (was 5-8)
   - Part 3: Chapters 10-12 (was 9-11)
   - Part 4: Chapters 13-30 (was 12-29)
@@ -62,6 +68,7 @@ Updated 279 "Chapter N" references across 175 markdown files to reflect new numb
 ### Content Refocusing
 
 **Chapter 13 (formerly 12): Python UV Package Manager**
+
 - Title changed from "Lightning Python Stack" to "Python UV — The Fastest Python Package Manager"
 - Added note deferring Zed IDE setup to Chapter 8
 - Focus narrowed to UV, Ruff, and Pyright exclusively
@@ -76,28 +83,35 @@ Used **reverse order** (34→35, 33→34, ..., 8→9) to prevent directory overw
 ### Phased Commits
 
 **Commit 1: Pre-Migration Backup**
+
 - Saved backup of original structure
 
 **Commit 2: Directory Renaming**
+
 - Renamed 26 chapter directories using reverse order script
 
 **Commit 3: Cross-Reference Updates**
+
 - Updated 279 chapter references across 175 files
 - Used Python script with reverse order substitution pattern
 
 **Commit 4: New Chapter 8 + Chapter 13 Refocus**
+
 - Created Chapter 8 stub with comprehensive outline
 - Refocused Chapter 13 to exclude Zed content
 
 **Commit 5: Index & Part README Updates**
+
 - Updated chapter-index.md with new ranges
 - Updated Part 2 and Part 4 READMEs
 
 **Commit 6: Metadata Fixes**
+
 - Fixed sidebar_position values (25 files)
 - Fixed chapter numbers in titles, labels, headings
 
 **Commit 7: Part 4 README Prose Fix**
+
 - Corrected chapter range in prose description
 
 ## Technical Details
@@ -105,6 +119,7 @@ Used **reverse order** (34→35, 33→34, ..., 8→9) to prevent directory overw
 ### Tools Used
 
 **Directory Operations**:
+
 ```bash
 # Reverse order renaming script
 for i in {34..8}; do
@@ -115,6 +130,7 @@ done
 ```
 
 **Cross-Reference Updates**:
+
 ```python
 # Python script with reverse order substitution
 for i in range(34, 7, -1):  # 34 down to 8
@@ -126,6 +142,7 @@ for i in range(34, 7, -1):  # 34 down to 8
 ```
 
 **Metadata Fixes**:
+
 ```python
 # Python script to fix frontmatter and headings
 content = re.sub(r'^sidebar_position: \d+', f'sidebar_position: {chapter_num}', content, flags=re.MULTILINE)
@@ -137,16 +154,19 @@ content = re.sub(r'^# Chapter \d+:', f'# Chapter {chapter_num}:', content, flags
 ### Issues Encountered
 
 **Issue 1: sed Compatibility**
+
 - Initial Phase 3 script used `sed -i ''` which failed silently on macOS
 - **Resolution**: Created Python script using explicit `file.write()`
 
 **Issue 2: Double Updates**
+
 - Risk of updating "Chapter 8" → "Chapter 9" → "Chapter 10" in single pass
 - **Resolution**: Reverse order processing (34→33→...→8)
 
 ## Validation
 
 ### Build Validation
+
 ```bash
 cd book-source
 npm run build
@@ -154,7 +174,9 @@ npm run build
 ```
 
 ### Structural Audit
+
 Comprehensive audit of Parts 2-7 confirmed:
+
 - ✅ Directory numbers match sidebar_position values
 - ✅ Chapter titles match directory numbers
 - ✅ Cross-references updated correctly
@@ -162,20 +184,24 @@ Comprehensive audit of Parts 2-7 confirmed:
 - ✅ chapter-index.md aligned with directory structure
 
 ### Final Score
+
 **Post-Migration Quality**: 100% (Excellent - Publication Ready)
 
 ## Impact Assessment
 
 ### Users/Students
+
 - **Navigation**: Sidebar navigation reflects correct chapter sequence
 - **References**: All internal chapter references remain accurate
 - **Bookmarks**: Old bookmarks to chapters 8+ will redirect (Docusaurus handles via slug)
 
 ### Content Authors
+
 - **New Contributions**: Follow updated chapter numbers (8+ shifted by 1)
 - **Cross-References**: Use new chapter numbers when referencing 8+
 
 ### Build System
+
 - No changes required - Docusaurus processes directory structure automatically
 
 ## Rollback Plan
@@ -196,6 +222,7 @@ git reset --hard <commit-before-migration>
 ### Avoiding Future Renumbering
 
 Consider using **semantic directory names** instead of numeric prefixes for new chapters:
+
 - Current: `08-ai-native-ides/`
 - Alternative: `ai-native-ides/` with `sidebar_position` in frontmatter
 
@@ -204,6 +231,7 @@ This would allow insertions without mass renumbering.
 ### Automated Validation
 
 Created audit scripts in `/tmp/`:
+
 - `restructuring-audit.sh` - Full structural validation
 - `final-validation.sh` - Quick sanity checks
 

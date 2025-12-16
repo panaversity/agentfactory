@@ -179,7 +179,7 @@ def audit_source_fields(questions):
     return issues
 
 def main():
-    quiz_file = "book-source/docs/04-Python-Fundamentals/16-operators-keywords-variables/06_chapter_16_quiz.md"
+    quiz_file = "apps/learn-app/docs/04-Python-Fundamentals/16-operators-keywords-variables/06_chapter_16_quiz.md"
 
     print("=" * 70)
     print("CHAPTER 16 QUIZ - FINAL AUDIT REPORT")

@@ -11,6 +11,7 @@
 This document specifies the **exact directory structure** for the CoLearning Python & Agentic AI book. All content creators (human authors, AI agents, and subagents) MUST follow this structure when creating or organizing book content.
 
 **Relationship to Other Documents**:
+
 - **`chapter-index.md`**: Lists chapter titles, numbers, and topics (WHAT to write)
 - **`directory-structure.md`**: Defines file paths and organization (WHERE to put it)
 - **`.claude/output-styles/chapters.md`**: Defines content format (HOW to format it)
@@ -22,7 +23,7 @@ This document specifies the **exact directory structure** for the CoLearning Pyt
 All book content follows a strict 3-level hierarchy:
 
 ```
-book-source/docs/
+apps/learn-app/docs/
 ├── [Part Level]          → Part folders (01-13)
 │   ├── [Chapter Level]   → Chapter folders (directories, not files)
 │   │   └── [Lesson Level] → Lesson files (.md files)
@@ -35,7 +36,7 @@ book-source/docs/
 ### Structure
 
 ```
-book-source/docs/
+apps/learn-app/docs/
 ├── 01-Introducing-AI-Driven-Development/
 ├── 02-AI-Tool-Landscape/
 ├── 03-Prompt-and-Context-Engineering/
@@ -60,6 +61,7 @@ book-source/docs/
 - **Must be a directory** (not a file)
 
 **Examples**:
+
 - ✅ `01-Introducing-AI-Driven-Development/`
 - ✅ `06-Agentic-AI-Fundamentals/`
 - ✅ `08-TypeScript-Fundamentals/`
@@ -75,6 +77,7 @@ Each part folder MUST contain:
 1. **`README.md`** — Part introduction (overview, learning outcomes, connection to other parts)
 
 **Example**:
+
 ```
 01-Introducing-AI-Driven-Development/
 ├── README.md              ← Required part introduction
@@ -110,6 +113,7 @@ Each part folder MUST contain:
 **Key Rule**: Chapter folders use **lowercase**, NOT capitalized like part folders.
 
 **Examples**:
+
 - ✅ `01-welcome-to-ai-driven-development/`
 - ✅ `05-debugging-and-iterating-with-ai/`
 - ❌ `01-Welcome-to-AI-Driven-Development/` (capitalized)
@@ -124,6 +128,7 @@ Each chapter folder MUST contain:
 2. **At least one lesson file** (01-lesson-1.md minimum)
 
 **Example**:
+
 ```
 01-welcome-to-ai-driven-development/
 ├── README.md             ← Required chapter overview
@@ -157,6 +162,7 @@ Each chapter folder MUST contain:
 - **Must be a .md file** (Markdown)
 
 **Examples**:
+
 - ✅ `01-lesson-1.md`
 - ✅ `02-lesson-2.md`
 - ✅ `03-core-concepts.md` (more descriptive)
@@ -172,6 +178,7 @@ Each lesson file MUST include:
 2. **Main content** (following `.claude/output-styles/lesson.md`)
 
 **Example frontmatter**:
+
 ```yaml
 ---
 title: "Introduction to AI-Driven Development"
@@ -185,7 +192,7 @@ description: "Learn the fundamentals of working with AI as a development partner
 ## Complete Directory Tree Example
 
 ```
-book-source/docs/
+apps/learn-app/docs/
 │
 ├── 01-Introducing-AI-Driven-Development/
 │   ├── README.md                                    [Part intro]
@@ -262,26 +269,28 @@ Use **`chapter-index.md`** to find chapter titles and numbers, then apply this s
 ### Conversion Formula
 
 **From chapter-index.md**:
+
 - Chapter Number: `27`
 - Chapter Title: `Introduction to Agentic AI`
 - Part: `Part 6: Agentic AI Fundamentals`
 
 **To directory path**:
+
 1. Part number: `06` → `06-Agentic-AI-Fundamentals/`
 2. Chapter number within part: `01` (first chapter of Part 6) → `01-introduction-to-agentic-ai/`
-3. Full path: `book-source/docs/06-Agentic-AI-Fundamentals/01-introduction-to-agentic-ai/`
+3. Full path: `apps/learn-app/docs/06-Agentic-AI-Fundamentals/01-introduction-to-agentic-ai/`
 
 ### Chapter Numbering Within Parts
 
 Chapters are numbered **globally (1-32)** in chapter-index.md, but folders use **local numbering within each part**:
 
-| Global Chapter # | Part | Local Chapter # | Folder Name |
-|-----------------|------|-----------------|-------------|
-| 1 | Part 1 | 01 | `01-welcome-to-ai-driven-development/` |
-| 5 | Part 1 | 05 | `05-debugging-and-iterating-with-ai/` |
-| 6 | Part 2 | 01 | `01-claude-code--features-and-workflows/` |
-| 10 | Part 3 | 01 | `01-writing-effective-prompts/` |
-| 27 | Part 6 | 01 | `01-introduction-to-agentic-ai/` |
+| Global Chapter # | Part   | Local Chapter # | Folder Name                               |
+| ---------------- | ------ | --------------- | ----------------------------------------- |
+| 1                | Part 1 | 01              | `01-welcome-to-ai-driven-development/`    |
+| 5                | Part 1 | 05              | `05-debugging-and-iterating-with-ai/`     |
+| 6                | Part 2 | 01              | `01-claude-code--features-and-workflows/` |
+| 10               | Part 3 | 01              | `01-writing-effective-prompts/`           |
+| 27               | Part 6 | 01              | `01-introduction-to-agentic-ai/`          |
 
 **Note**: Use chapter-index.md for global context, but folder names use local part numbering.
 
@@ -289,13 +298,13 @@ Chapters are numbered **globally (1-32)** in chapter-index.md, but folders use *
 
 ## File Naming Rules (Summary)
 
-| Level | Format | Case | Example |
-|-------|--------|------|---------|
-| **Part folder** | `NN-Part-Name/` | Title Case (Capitalized) | `01-Introducing-AI-Driven-Development/` |
-| **Part intro** | `README.md` | UPPERCASE | `README.md` |
-| **Chapter folder** | `NN-chapter-name/` | lowercase-with-hyphens | `01-welcome-to-ai-driven-development/` |
-| **Chapter overview** | `README.md` | UPPERCASE | `README.md` |
-| **Lesson file** | `NN-lesson-name.md` | lowercase-with-hyphens | `01-lesson-1.md` |
+| Level                | Format              | Case                     | Example                                 |
+| -------------------- | ------------------- | ------------------------ | --------------------------------------- |
+| **Part folder**      | `NN-Part-Name/`     | Title Case (Capitalized) | `01-Introducing-AI-Driven-Development/` |
+| **Part intro**       | `README.md`         | UPPERCASE                | `README.md`                             |
+| **Chapter folder**   | `NN-chapter-name/`  | lowercase-with-hyphens   | `01-welcome-to-ai-driven-development/`  |
+| **Chapter overview** | `README.md`         | UPPERCASE                | `README.md`                             |
+| **Lesson file**      | `NN-lesson-name.md` | lowercase-with-hyphens   | `01-lesson-1.md`                        |
 
 ---
 
@@ -349,7 +358,7 @@ When creating content:
 4. **Convert title to lowercase-with-hyphens** for folder name
 5. **Create directory structure**:
    ```
-   book-source/docs/
+   apps/learn-app/docs/
    └── NN-Part-Name/
        └── NN-chapter-name/
            ├── README.md
@@ -367,7 +376,7 @@ When creating content:
 4. **Convert title**: "Functions, Types, and Type Hints" → `functions-types-and-type-hints`
 5. **Create path**:
    ```
-   book-source/docs/
+   apps/learn-app/docs/
    └── 04-Modern-Python-with-Type-Hints/
        └── 01-functions-types-and-type-hints/
            ├── README.md
@@ -405,13 +414,13 @@ Before committing content, verify:
 
 ```bash
 # List all parts
-ls -d book-source/docs/*/
+ls -d apps/learn-app/docs/*/
 
 # List all chapters in Part 1
-ls -d book-source/docs/01-Introducing-AI-Driven-Development/*/
+ls -d apps/learn-app/docs/01-Introducing-AI-Driven-Development/*/
 
 # Count lesson files in a chapter
-ls book-source/docs/01-Introducing-AI-Driven-Development/01-welcome-to-ai-driven-development/*.md | wc -l
+ls apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-welcome-to-ai-driven-development/*.md | wc -l
 ```
 
 ---
@@ -427,7 +436,8 @@ ls book-source/docs/01-Introducing-AI-Driven-Development/01-welcome-to-ai-driven
 
 ## Version History
 
-**v1.0** (2025-10-29): Initial specification based on actual book-source/docs/ structure
+**v1.0** (2025-10-29): Initial specification based on actual apps/learn-app/docs/ structure
+
 - Documented 3-level hierarchy (Part → Chapter → Lesson)
 - Defined naming conventions (capitalized parts, lowercase chapters)
 - Specified required files (README.md, README.md)
@@ -436,4 +446,3 @@ ls book-source/docs/01-Introducing-AI-Driven-Development/01-welcome-to-ai-driven
 ---
 
 **This document is THE authoritative source for file organization. When in doubt about "where does this file go?", consult this specification.**
-

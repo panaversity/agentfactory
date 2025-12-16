@@ -27,6 +27,7 @@
 ### Week 1: Documentation Layer Fixes (T001-T028) ✅
 
 #### Day 1-2: Constitution Update (T001-T010)
+
 - ✅ Added "Current Reality vs Future State" distinction
 - ✅ Documented 14 implemented chapters (not 55 aspirational)
 - ✅ Added Evals-First Development as Core Philosophy #1 (constitution v3.0.1)
@@ -36,6 +37,7 @@
 - ✅ Validation report: `layer-constitution-validation.md`
 
 #### Day 3-4: Output Styles Rewrite (T011-T019)
+
 - ✅ Corrected structure: Part (Title-Case) → Chapter (lowercase) → readme.md (lowercase)
 - ✅ Added actual Chapter 1 example with 8 lesson files
 - ✅ Updated YAML frontmatter with 7 generation metadata fields
@@ -44,6 +46,7 @@
 - ✅ Validation report: `layer-output-styles-validation.md`
 
 #### Day 5: Chapter Index Verification (T020-T028)
+
 - ✅ Verified chapter-index.md reflects actual implementation (14 chapters, not 5)
 - ✅ Corrected 19 discrepancies (filenames, status markers, counts)
 - ✅ Spot-checked 3 sample chapters (6, 9, 30) to verify content exists
@@ -55,7 +58,9 @@
 ### Week 2: Execution Layer Fixes (T029-T042) ✅
 
 #### Day 6-7: Subagent Instruction Alignment (T029-T042)
+
 - ✅ **chapter-planner.md** (5 updates):
+
   - Removed hardcoded skill counts → dynamic discovery from `.claude/skills/`
   - Added evals-first validation (constitution v3.0.1)
   - Added chapter-index.md verification (14 chapters)
@@ -63,11 +68,13 @@
   - Added `lesson.md` reference for lesson structure
 
 - ✅ **content-implementer.md** (3 updates):
+
   - Added 7 generation metadata fields in YAML frontmatter specification
-  - Added book-source/docs/ verification step
+  - Added apps/learn-app/docs/ verification step
   - Already had chapter-index.md and output-styles references
 
 - ✅ **validation-auditor.md** (3 updates):
+
   - Removed hardcoded skill counts → dynamic discovery
   - Added evals-first validation
   - Added chapter-index.md and output-styles validation steps
@@ -84,10 +91,12 @@
 **Method**: Run validation-auditor on 2 sample chapters from Part 5
 
 **Chapters Tested**:
+
 - Chapter 31: SpecifyPlus Hands-On (technical/hybrid)
 - Chapter 32: Real-World Spec-Kit Workflows (capstone/practice)
 
 **Results**:
+
 - ✅ Subagents functional and correctly validate against constitution v3.0.1
 - ✅ Subagents correctly reference output-styles templates
 - ✅ Subagents correctly reference chapter-index.md
@@ -95,6 +104,7 @@
 - ✅ 95% compliance with constitution v3.0.1 and output-styles
 
 **Findings**:
+
 - Chapters 31 & 32 have minor structural issues (expected - created with old subagents)
 - Issues match exactly what Week 1-2 fixes were designed to prevent
 - Updated subagents **correctly identified** all issues
@@ -107,16 +117,20 @@
 ## Files Modified Summary
 
 ### Constitution & Documentation (4 files)
+
 1. `.specify/memory/constitution.md` (v3.0.0 → v3.0.1)
+
    - Version bump for Evals-First Development philosophy
    - ~120 lines modified
    - Key: Added Core Philosophy #1, user story vs evals clarification
 
 2. `CLAUDE.md`
+
    - ~80 lines modified
    - Key: Phase 0.5 Evals Definition, evals-first workflow
 
 3. `specs/book/chapter-index.md`
+
    - ~30 lines modified
    - Key: 19 corrections (filenames, status markers, 5 → 14 chapters)
 
@@ -124,7 +138,9 @@
    - No changes (already accurate)
 
 ### Output Styles (2 files)
+
 5. `.claude/output-styles/chapters.md`
+
    - ~60 lines modified
    - Key: Correct structure examples, 13 parts aspirational
 
@@ -133,11 +149,14 @@
    - Key: Real YAML example with 7 metadata fields
 
 ### Subagents (3 files)
+
 7. `.claude/agents/chapter-planner.md`
+
    - 5 targeted updates
    - Key: Dynamic skill discovery, evals-first, chapter-index.md refs
 
 8. `.claude/agents/content-implementer.md`
+
    - 3 updates
    - Key: 7 YAML metadata fields, book-source verification
 
@@ -146,6 +165,7 @@
    - Key: Dynamic skills, evals-first, output-styles validation
 
 ### Validation Reports (7 files created)
+
 10. `specs/001-fix-vertical-intelligence/validation/layer-constitution-validation.md`
 11. `specs/001-fix-vertical-intelligence/validation/layer-output-styles-validation.md`
 12. `specs/001-fix-vertical-intelligence/validation/layer-chapter-index-validation.md`
@@ -155,6 +175,7 @@
 16. `specs/001-fix-vertical-intelligence/VALIDATION-REPORT-CHAPTER-32.md` (25KB)
 
 ### Task Tracking & Summaries (3 files)
+
 17. `specs/001-fix-vertical-intelligence/tasks.md` (marked T001-T042 complete)
 18. `specs/001-fix-vertical-intelligence/week-1-completion-summary.md` (342 lines)
 19. `specs/001-fix-vertical-intelligence/ESSENTIAL-TASKS-FOR-OLD-CHAPTERS.md` (guide for writers)
@@ -167,15 +188,15 @@
 
 ### Phase 1 Success Criteria (SC-001 to SC-007)
 
-| ID | Success Criterion | Target | Actual | Status |
-|----|-------------------|--------|--------|--------|
-| SC-001 | Constitution updated with Current Reality vs Future State | Yes | Yes (v3.0.1) | ✅ Pass |
-| SC-002 | Output styles match actual implementation | 100% | 100% | ✅ Pass |
-| SC-003 | Chapter index reflects actual structure | 100% | 100% (14 ch) | ✅ Pass |
-| SC-004 | Terminology consistent across layers | 100% | 100% | ✅ Pass |
-| SC-005 | Cross-references valid | All | All valid | ✅ Pass |
-| SC-006 | Validation reports created | 3+ | 7 created | ✅ Pass |
-| SC-007 | Zero hardcoded volatile data | Yes | Yes | ✅ Pass |
+| ID     | Success Criterion                                         | Target | Actual       | Status  |
+| ------ | --------------------------------------------------------- | ------ | ------------ | ------- |
+| SC-001 | Constitution updated with Current Reality vs Future State | Yes    | Yes (v3.0.1) | ✅ Pass |
+| SC-002 | Output styles match actual implementation                 | 100%   | 100%         | ✅ Pass |
+| SC-003 | Chapter index reflects actual structure                   | 100%   | 100% (14 ch) | ✅ Pass |
+| SC-004 | Terminology consistent across layers                      | 100%   | 100%         | ✅ Pass |
+| SC-005 | Cross-references valid                                    | All    | All valid    | ✅ Pass |
+| SC-006 | Validation reports created                                | 3+     | 7 created    | ✅ Pass |
+| SC-007 | Zero hardcoded volatile data                              | Yes    | Yes          | ✅ Pass |
 
 **Result**: **7/7 success criteria passed (100%)**
 
@@ -184,11 +205,13 @@
 ## Key Decisions & Rationale
 
 ### Decision 1: Add Evals-First Development (Constitution v3.0.1)
+
 **Context**: User feedback during T028 review: "For AI native Evals is first"
 
 **Decision**: Add Evals-First Development as Core Philosophy #1
 
 **Rationale**:
+
 - Professional AI-native pattern (Anthropic/OpenAI/DeepMind standard)
 - Evals must connect to **business goals**, not arbitrary technical metrics
 - Context-specific: book chapters ≠ code ≠ features ≠ AI products
@@ -199,6 +222,7 @@
 ---
 
 ### Decision 2: Keep "lessons" Terminology
+
 **Context**: Tasks initially suggested changing to "sections"
 
 **User Feedback**: "lessons is better"
@@ -210,6 +234,7 @@
 ---
 
 ### Decision 3: Reference chapter-index.md (Not Hardcode Counts)
+
 **Context**: Constitution initially hardcoded "16 chapters"
 
 **User Feedback**: "we shall not mention current reality or we will have to update it continuously"
@@ -221,6 +246,7 @@
 ---
 
 ### Decision 4: Use Existing chapter-index.md (Not Create New File)
+
 **Context**: Tasks planned to create PROJECT-STRUCTURE-REALITY.md
 
 **User Feedback**: "do we really need another file when we have chapter index"
@@ -232,6 +258,7 @@
 ---
 
 ### Decision 5: Metadata in YAML Frontmatter (Not HTML Comments)
+
 **Context**: T016 initially specified HTML comments at end of files
 
 **User Feedback**: "Well we already have yaml at top so why not take same approach"
@@ -243,11 +270,13 @@
 ---
 
 ### Decision 6: Skip Optional Tasks for Merge
+
 **Context**: T043-T068 (validation script, test chapter) still pending
 
 **Decision**: Merge Phase 1 without optional validation tasks
 
 **Rationale**:
+
 - Core synchronization complete (4 layers aligned)
 - Quick validation proves subagents work (95% compliance)
 - Writers can start immediately with redesign work
@@ -260,15 +289,18 @@
 ## Commits Summary
 
 ### Week 1 Commits
+
 1. **Constitution v3.0.0 → v3.0.1** (evals-first philosophy, Week 1 Day 1-2)
 2. **Output-styles rewrite** (correct structure, YAML metadata, Week 1 Day 3-4)
 3. **Chapter-index verification** (19 corrections, Week 1 Day 5)
 4. **Week 1 completion** (summary document, Week 1 Day 5)
 
 ### Week 2 Commits
+
 5. **Subagent alignment** (chapter-planner, content-implementer, validation-auditor, Week 2 Day 6-7)
 
 ### Pre-Merge Commits
+
 6. **Quick validation** (Chapters 31 & 32 validation reports)
 7. **Phase 1 completion** (this summary, tasks.md updates, spec.md status)
 
@@ -292,11 +324,13 @@
 ### Immediate Actions (Before Redesigning Chapters)
 
 1. **Create Chapter Redesign Spec** (2-3 hours)
+
    - Define success evals for "fixed" chapters
    - Define scope (what changes, what stays)
    - Prioritize chapters by issue severity
 
 2. **Run Chapter Audit** (4-6 hours)
+
    - Use validation-auditor on all 14 existing chapters
    - Document critical/major/minor issues per chapter
    - Create `chapter-audit-report.md`
@@ -315,6 +349,7 @@
 4. Commit when validation passes
 
 **Estimated Effort**:
+
 - 3-5 hours per chapter redesign
 - 42-70 hours total for 14 chapters
 - Parallelizable across 3 writers (~14-25 hours per writer)
@@ -382,6 +417,7 @@
 **Rationale**: Phase 1 goal was **emergency synchronization**, not **continuous monitoring**
 
 **Core synchronization complete**:
+
 - 4 layers aligned (constitution, output-styles, chapter-index, subagents)
 - Quick validation proves subagents work (95% compliance)
 - Writers can start redesign immediately
@@ -430,6 +466,7 @@
 **Branch**: `001-fix-vertical-intelligence`
 
 **Modified Files**:
+
 ```
 M  .specify/memory/constitution.md (v3.0.1)
 M  CLAUDE.md
@@ -443,6 +480,7 @@ M  specs/001-fix-vertical-intelligence/tasks.md
 ```
 
 **New Files**:
+
 ```
 A  specs/001-fix-vertical-intelligence/validation/layer-constitution-validation.md
 A  specs/001-fix-vertical-intelligence/validation/layer-output-styles-validation.md
@@ -510,7 +548,7 @@ A  CHAPTER-32-VALIDATION-EXECUTIVE-SUMMARY.md
 │           ├── layer-subagents-validation.md
 │           ├── quick-subagent-check.md
 │           └── chapter-31-spec-kit-plus-hands-on.md
-├── book-source/docs/
+├── apps/learn-app/docs/
 │   └── [14 existing chapters - need redesign]
 └── CLAUDE.md (Phase 0.5: Evals Definition added)
 ```

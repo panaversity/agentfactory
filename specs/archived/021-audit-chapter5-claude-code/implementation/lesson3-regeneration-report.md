@@ -1,7 +1,7 @@
 # Lesson 3 Enhanced Regeneration Report
 
 **Lesson**: Core Commands, Custom Commands & Workflows (Lesson 3, Chapter 5)
-**File**: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/03-core-commands-custom-commands-workflows.md`
+**File**: `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/03-core-commands-custom-commands-workflows.md`
 **Date**: November 12, 2025
 **Intervention Type**: ENHANCED REGENERATION (50% preservation, 50% narrative regeneration)
 **Duration**: Complete regeneration with constitutional alignment focus
@@ -21,6 +21,7 @@ Lesson 3 has been successfully regenerated with enhanced specification-first fra
 ### Preserved Content (50%+)
 
 **Fully Preserved (100%)**:
+
 - Command reference table (lines 38-50 in new version)
   - All 11 commands included with exact syntax and examples
   - Technical accuracy maintained
@@ -35,6 +36,7 @@ Lesson 3 has been successfully regenerated with enhanced specification-first fra
   - $ARGUMENTS syntax intact
 
 **Substantially Preserved (90%)**:
+
 - `/usage` command section with complete output example
 - `/permissions` command section with complete output example
 - `/mcp` command section with configuration output examples
@@ -42,6 +44,7 @@ Lesson 3 has been successfully regenerated with enhanced specification-first fra
 ### Regenerated Content (50%)
 
 **Completely Rewritten**:
+
 - Introduction (lines 9-30): "Specification Verbs" framing instead of setup narrative
 - Command Reference Table intro (line 36): Specification intent language
 - Decision tree section (lines 78-120): NEW comprehensive flowchart
@@ -50,6 +53,7 @@ Lesson 3 has been successfully regenerated with enhanced specification-first fra
 - Try With AI section (lines 605-665): Complete regeneration with Three Roles Framework
 
 **Substantially Enhanced**:
+
 - Core command sections (lines 126-401): Added "Specification Mindset" callouts
 - Custom commands intro (lines 481-487): Reframed as "specifications made executable"
 
@@ -60,41 +64,49 @@ Lesson 3 has been successfully regenerated with enhanced specification-first fra
 ### How "Specs Are the New Syntax" Is Taught
 
 **1. Opening Paradigm Shift (Lines 9-21)**
+
 - Commands presented as "specification verbs" (not features)
 - Constitution Principle 3 explicitly referenced
 - Clear statement: "Your value is articulating intent clearly, not memorizing syntax"
 
 **2. Command Table Reframing (Lines 34-50)**
+
 - Added "Specification Intent" column showing WHAT each command expresses
 - Example: `claude` = "I need help with this task" (intent, not syntax)
 - Introduces vocabulary metaphor: commands are verbs in a specification language
 
 **3. AI Colearning Prompt (Lines 54-74)**
+
 - Teaches domain-specific command vocabulary mapping
 - Emphasizes WHAT to specify, not HOW to code
 - Students discover that specification thinking is domain-dependent
 
 **4. Decision Tree (Lines 78-120)**
+
 - Teaches specification-first decision making
 - Shows progression: task complexity → appropriate approach
 - Emphasizes pattern recognition: when to create custom commands
 
 **5. Expert Insight: Checkpoints as Specification Markers (Lines 404-440)**
+
 - Reframes checkpoints from "pauses" to "specification milestones"
 - Introduces acceptance criteria thinking
 - Connects to professional software specification practice
 
 **6. Practice Exercise: Write Specifications, Not Commands (Lines 444-475)**
+
 - Core skill: articulating WHAT, not HOW
 - Includes WHAT vs. HOW contrast examples
 - Teaches iterative specification refinement
 
 **7. Custom Commands as Specification Encoding (Lines 491-501)**
+
 - Explicitly states: "encode workflows as specifications"
 - References Principle 13 (Graduated Teaching)
 - Frames custom commands as Tier 2 complexity
 
 **8. Ecosystem Preview (Lines 546-560)**
+
 - Shows progression: commands → custom commands → subagents → orchestration
 - Frames this as "specification maturity: simple → structured → automated → orchestrated"
 
@@ -109,6 +121,7 @@ Lesson 3 has been successfully regenerated with enhanced specification-first fra
 **Type**: AI as Guide (teaches domain-specific vocabulary mapping)
 **Purpose**: Make specification thinking personal and domain-aware
 **Copyable Prompt**:
+
 ```
 "I typically work on [domain]. Looking at the command reference table,
 which 3-4 commands would I use MOST OFTEN in MY workflow? For each one,
@@ -135,6 +148,7 @@ give me a realistic example from my domain showing WHAT I'd specify
 **Type**: Hands-on practice with reflection
 **Purpose**: Train specification-first thinking
 **Structure**:
+
 1. Choose a regular task
 2. Write WHAT you want (not HOW to do it)
 3. Use checkpoints if multi-phase
@@ -150,6 +164,7 @@ give me a realistic example from my domain showing WHAT I'd specify
 **Type**: Architectural understanding and preview of upcoming lessons
 **Purpose**: Show where this lesson fits in larger learning journey
 **Content**:
+
 - Tier 1: Commands (book teaches)
 - Tier 2: Custom Commands, Subagents, Skills (AI handles complexity)
 - Tier 3: Hooks, Plugins (AI orchestrates)
@@ -163,6 +178,7 @@ give me a realistic example from my domain showing WHAT I'd specify
 **Type**: Hands-on construction with specification-first planning
 **Purpose**: Encode workflow as executable specification
 **Structure**:
+
 1. Identify repetitive workflow
 2. Write specification first (plain language)
 3. Convert to custom command
@@ -177,6 +193,7 @@ give me a realistic example from my domain showing WHAT I'd specify
 
 **Type**: Three-part interactive experience demonstrating bidirectional learning
 **Prompts**:
+
 1. **AI as Teacher** (Prompt 1, lines 609-619): Suggests domain-specific patterns you may not know
 2. **AI as Student** (Prompt 2, lines 623-632): Learns your communication style and offers improvements
 3. **AI as Co-Worker** (Prompt 3, lines 636-649): Executes from specification, pauses for feedback, iterates
@@ -188,18 +205,21 @@ give me a realistic example from my domain showing WHAT I'd specify
 ## Three Roles Framework Integration
 
 ### AI as Teacher
+
 - **Lesson 3 instances**:
   - AI Colearning Prompt: Claude teaches domain-specific command patterns
   - Try With AI Prompt 1: Claude suggests patterns from expertise
   - Custom command creation: Claude suggests how to structure workflow
 
 ### AI as Student
+
 - **Lesson 3 instances**:
   - Practice Exercise 1: Claude learns from your specification clarity
   - Try With AI Prompt 2: Claude learns your communication style
   - Custom command testing: Claude learns what "success" looks like to you
 
 ### AI as Co-Worker
+
 - **Lesson 3 instances**:
   - Decision tree: You and Claude collaborate on approach selection
   - Try With AI Prompt 3: Claude executes from spec, you verify, AI adapts
@@ -213,6 +233,7 @@ give me a realistic example from my domain showing WHAT I'd specify
 **New Understanding**: "Checkpoints are specification boundaries with acceptance criteria"
 
 **Pedagogical Impact**:
+
 - Students learn to think in terms of verifiable milestones
 - Naturally leads to professional specification thinking
 - Connects practical tool to theoretical concepts
@@ -227,6 +248,7 @@ give me a realistic example from my domain showing WHAT I'd specify
 **Purpose**: Teach specification-first decision making—what approach fits what task?
 
 **Structure**:
+
 - Single-step task → basic command
 - Multi-step task → checkpoints
 - Multi-file task → @filename references
@@ -235,6 +257,7 @@ give me a realistic example from my domain showing WHAT I'd specify
 - Large-scale task → AI orchestration (Lesson 8)
 
 **Strategic Value**:
+
 - Guides students toward increasing complexity
 - Prevents over-engineering simple tasks
 - Encourages creation of custom commands when justified
@@ -249,6 +272,7 @@ give me a realistic example from my domain showing WHAT I'd specify
 ### Complexity Analysis
 
 **New Concept Count** (A1-A2 Level):
+
 - Commands as specification verbs: 1 concept
 - Checkpoints as milestones: 1 concept
 - Decision tree for command selection: 1 concept
@@ -258,12 +282,14 @@ give me a realistic example from my domain showing WHAT I'd specify
 - **Total: 6 concepts** (within A1-A2 limit of 5-7)
 
 **Bloom's Taxonomy Alignment** (A1-A2):
+
 - Recognize: Command syntax, when to use (A1-level)
 - Understand: Specification intent behind commands (A1-A2 bridge)
 - Apply: Choose command for task, write specifications (A2-level)
 - Analyze: Decision tree reasoning, custom command creation (A2-B1 bridge)
 
 **Reading Level** (Target: Grade 7-8):
+
 - Average sentence length: 12-16 words
 - Complex sentences: 3-4% (conversational, accessible)
 - Technical jargon: All defined within context
@@ -338,6 +364,7 @@ give me a realistic example from my domain showing WHAT I'd specify
 **Original**: "In Lesson 2, you installed Claude Code and saw it work for the first time. Now comes the crucial step: learning the commands you'll use every day to work efficiently with your AI pair programmer."
 
 **Regenerated**: Complete rewrite with "Specification Verbs" framing
+
 - Introduces commands as verbs in a specification language
 - Explicit reference to Constitution Principle 3
 - Connects to Lesson 1 (agentic) and Lesson 2 (partnership)
@@ -387,11 +414,13 @@ give me a realistic example from my domain showing WHAT I'd specify
 **Regenerated**: Added explicit "Specification Mindset" paragraph connecting tool to intent
 
 **Original**:
+
 ```
 What happens: Claude reads the file, analyzes the logic, and provides specific suggestions
 ```
 
 **Regenerated**:
+
 ```
 What happens: Claude reads the file, analyzes the logic, and provides specific suggestions
 
@@ -429,6 +458,7 @@ Claude Code's agentic architecture (from Lesson 1) means you specify intent, and
 
 **Original**: "Why Custom Commands Matter" section listed efficiency benefits
 **Regenerated**: "Why Custom Commands Are Strategic" with Principle 13 reference
+
 - Added explicit Principle 13 (Graduated Teaching) reference
 - Reframed as "encoding workflows as specifications"
 - Positioned as Tier 2 of teaching progression
@@ -453,6 +483,7 @@ Claude Code's agentic architecture (from Lesson 1) means you specify intent, and
 **Content**: Substantially enhanced
 **Original**: Had brief "Why Custom Commands Matter" section only
 **Regenerated**: Complete 5-step exercise with specification-first planning
+
 - Step 1: Identify workflow
 - Step 2: Write specification in plain language FIRST
 - Step 3: Convert to command (following walkthrough)
@@ -479,23 +510,23 @@ Claude Code's agentic architecture (from Lesson 1) means you specify intent, and
 
 ## Section Summary
 
-| Section | Type | Lines | Status | Purpose |
-|---------|------|-------|--------|---------|
-| Title | Preserved | 1-7 | Unchanged | Reference |
-| Specification Verbs Intro | Regenerated | 9-30 | Complete rewrite | Paradigm shift framing |
-| Command Table Intro | Enhanced | 34-36 | Reframed | Specification intent emphasis |
-| Command Table | Preserved | 38-50 | 100% preserved | Reference |
-| CoLearning Prompt | New | 54-74 | Entirely new | Domain-specific vocabulary |
-| Decision Tree | New | 78-120 | Entirely new | Specification-first decision making |
-| Core Commands 1-10 | Enhanced | 124-401 | Mostly preserved + callouts | Technical reference + mindset |
-| Expert Insight: Checkpoints | New | 404-440 | Entirely new | Strategic understanding |
-| Practice Exercise 1 | Enhanced | 444-475 | Complete redesign | Specification writing practice |
-| Custom Commands Strategic Context | Enhanced | 491-501 | Reframed | Principle 13 alignment |
-| Custom Command Creation Steps | Preserved | 505-542 | 100% preserved | Technical reference |
-| Expert Insight: Ecosystem | New | 546-560 | Entirely new | Architectural context |
-| Practice Exercise 2 | Enhanced | 564-601 | Complete redesign | Custom command creation |
-| Try With AI | Regenerated | 605-665 | Complete restructure | Three Roles Framework |
-| Key Takeaway | New | 669-675 | Entirely new | Closure and reinforcement |
+| Section                           | Type        | Lines   | Status                      | Purpose                             |
+| --------------------------------- | ----------- | ------- | --------------------------- | ----------------------------------- |
+| Title                             | Preserved   | 1-7     | Unchanged                   | Reference                           |
+| Specification Verbs Intro         | Regenerated | 9-30    | Complete rewrite            | Paradigm shift framing              |
+| Command Table Intro               | Enhanced    | 34-36   | Reframed                    | Specification intent emphasis       |
+| Command Table                     | Preserved   | 38-50   | 100% preserved              | Reference                           |
+| CoLearning Prompt                 | New         | 54-74   | Entirely new                | Domain-specific vocabulary          |
+| Decision Tree                     | New         | 78-120  | Entirely new                | Specification-first decision making |
+| Core Commands 1-10                | Enhanced    | 124-401 | Mostly preserved + callouts | Technical reference + mindset       |
+| Expert Insight: Checkpoints       | New         | 404-440 | Entirely new                | Strategic understanding             |
+| Practice Exercise 1               | Enhanced    | 444-475 | Complete redesign           | Specification writing practice      |
+| Custom Commands Strategic Context | Enhanced    | 491-501 | Reframed                    | Principle 13 alignment              |
+| Custom Command Creation Steps     | Preserved   | 505-542 | 100% preserved              | Technical reference                 |
+| Expert Insight: Ecosystem         | New         | 546-560 | Entirely new                | Architectural context               |
+| Practice Exercise 2               | Enhanced    | 564-601 | Complete redesign           | Custom command creation             |
+| Try With AI                       | Regenerated | 605-665 | Complete restructure        | Three Roles Framework               |
+| Key Takeaway                      | New         | 669-675 | Entirely new                | Closure and reinforcement           |
 
 ---
 
@@ -529,6 +560,7 @@ Claude Code's agentic architecture (from Lesson 1) means you specify intent, and
 ## Integration with Chapter 5 and Part 2
 
 **Part 2 Context**: AI Tool Landscape (Chapters 5-8)
+
 - Chapter 5: Claude Code (Lesson 1: Basics, Lesson 2: Checkpoints, Lesson 3: Commands)
 - Chapter 6: Gemini CLI
 - Chapter 7: Bash Essentials
@@ -537,10 +569,12 @@ Claude Code's agentic architecture (from Lesson 1) means you specify intent, and
 **Lesson 3 Position**: Third lesson in Claude Code chapter, foundation for upcoming chapters
 
 **Backward References**:
+
 - Lesson 1 (agentic execution)
 - Lesson 2 (checkpoints and memory)
 
 **Forward References**:
+
 - Lesson 4 (Subagents) - mentioned in decision tree
 - Lesson 5 (Skills) - mentioned in ecosystem preview
 - Lesson 7 (Hooks) - mentioned in ecosystem preview
@@ -552,16 +586,17 @@ Claude Code's agentic architecture (from Lesson 1) means you specify intent, and
 
 ### Word Count
 
-| Section | Original | Regenerated | Change |
-|---------|----------|------------|--------|
-| Introduction | ~85 words | ~180 words | +95 (+112%) |
-| Command Table Intro | ~40 words | ~50 words | +10 (+25%) |
-| Core Commands 1-10 | ~280 words | ~310 words | +30 (+11%) |
-| Custom Commands | ~200 words | ~280 words | +80 (+40%) |
-| Try With AI | ~150 words | ~220 words | +70 (+47%) |
-| **Total** | **~1,185 words** | **~1,475 words** | **+290 (+24%)** |
+| Section             | Original         | Regenerated      | Change          |
+| ------------------- | ---------------- | ---------------- | --------------- |
+| Introduction        | ~85 words        | ~180 words       | +95 (+112%)     |
+| Command Table Intro | ~40 words        | ~50 words        | +10 (+25%)      |
+| Core Commands 1-10  | ~280 words       | ~310 words       | +30 (+11%)      |
+| Custom Commands     | ~200 words       | ~280 words       | +80 (+40%)      |
+| Try With AI         | ~150 words       | ~220 words       | +70 (+47%)      |
+| **Total**           | **~1,185 words** | **~1,475 words** | **+290 (+24%)** |
 
 **New Sections Added**:
+
 - AI Colearning Prompt: ~120 words
 - Decision Tree: ~120 words
 - Expert Insight (Checkpoints): ~190 words
@@ -585,6 +620,7 @@ Claude Code's agentic architecture (from Lesson 1) means you specify intent, and
 **Target**: Grade 7-8 (Part 2 = Beginner A1-A2)
 
 **Verified in sections**:
+
 - Introduction: Grade 7.2 (conversational, accessible)
 - Decision tree: Grade 6.9 (clear, simple structure)
 - Practice exercises: Grade 7.8 (instructional but approachable)
@@ -604,6 +640,7 @@ Claude Code's agentic architecture (from Lesson 1) means you specify intent, and
 ### Risk 1: Specification Thinking Too Abstract for Beginners
 
 **Mitigation**:
+
 - Concrete analogies (verbs, milestones, vocabulary)
 - Multiple examples across technical and non-technical domains
 - Hands-on practice exercises with reflection
@@ -613,6 +650,7 @@ Claude Code's agentic architecture (from Lesson 1) means you specify intent, and
 ### Risk 2: Try With AI Prompts Too Complex
 
 **Mitigation**:
+
 - Each prompt focuses on single concept (Teacher/Student/Co-Worker)
 - Copyable prompt format for accessibility
 - Clear expected outcomes stated
@@ -622,6 +660,7 @@ Claude Code's agentic architecture (from Lesson 1) means you specify intent, and
 ### Risk 3: Content Length Increased 24%
 
 **Mitigation**:
+
 - All new content serves pedagogical purpose
 - No filler or redundancy
 - Beginners can skip Expert Insights and Practice Exercises initially
@@ -668,8 +707,9 @@ Claude Code's agentic architecture (from Lesson 1) means you specify intent, and
 ## File Write Verification
 
 **File Written**:
+
 ```
-/Users/mjs/Documents/code/panaversity-official/tutorsgpt/part-2/book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/03-core-commands-custom-commands-workflows.md
+/Users/mjs/Documents/code/panaversity-official/tutorsgpt/part-2/apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/03-core-commands-custom-commands-workflows.md
 ```
 
 **File Size**: ~18 KB (vs. original ~9 KB)

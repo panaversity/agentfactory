@@ -22,7 +22,7 @@ links:
   adr: null
   pr: null
 files_created:
-  - "book-source/docs/03-Prompt-and-Context-Engineering/09-the-architect-toolkit-prompting-foundations/lesson-03-providing-context.mdx"
+  - "apps/learn-app/docs/03-Prompt-and-Context-Engineering/09-the-architect-toolkit-prompting-foundations/lesson-03-providing-context.mdx"
 tests_run:
   - "cognitive-load-validation"
   - "cefr-proficiency-alignment"
@@ -40,12 +40,15 @@ Successfully generated complete lesson content for **Lesson 3: Providing Technic
 All lesson content applies the required domain skills from the constitution contextually:
 
 ### 1. **Learning Objectives Skill**
+
 - Defined 3 measurable learning objectives aligned to CEFR A2 and Bloom's Apply level
 - Objectives focus on practical application: "Provide context," "Transform generic code," "Use code as examples"
 - Each objective has clear success criteria tied to exercises
 
 ### 2. **Concept Scaffolding Skill**
+
 - **Content-First Pattern** applied throughout:
+
   1. **WHAT** (Section): "The AIDD Context Stack" — explains 4 layers with examples
   2. **WHY** (Section): "How Context Eliminates Back-and-Forth" — shows business value
   3. **HOW** (Section): "Building Your 4-Layer Context" — concrete examples with templates
@@ -56,7 +59,9 @@ All lesson content applies the required domain skills from the constitution cont
 - Clear prerequisite knowledge (assumes strong commands from Lesson 2)
 
 ### 3. **Code Example Generator Skill**
+
 - **5 complete code examples** included (all tested and production-ready):
+
   1. **Generic vs. Contextual comparison** (motivation)
   2. **Four-layer context breakdown** (teaching)
   3. **Complete e-commerce example** (real-world scenario)
@@ -68,7 +73,9 @@ All lesson content applies the required domain skills from the constitution cont
 - Examples progress from simple validation → complex authentication
 
 ### 4. **Exercise Designer Skill**
+
 - **3 hands-on exercises** (20 minutes total practice):
+
   1. **Exercise 1** (5 min): Identify missing context layers — recognition task (CEFR A2 appropriate)
   2. **Exercise 2** (10 min): Build 4-layer context prompt from scratch — application task
   3. **Exercise 3** (5 min): Use code example for style matching — implementation task
@@ -78,7 +85,9 @@ All lesson content applies the required domain skills from the constitution cont
 - Aligned to A2 proficiency (basic application with scaffolding)
 
 ### 5. **Assessment Builder Skill**
+
 - **Embedded validation throughout**:
+
   - Exercise 1 includes "Solution" section with detailed explanations
   - Exercise 2 specifies success criteria (all 4 layers present, concrete details)
   - Exercise 3 success criteria (matches style, no reformatting needed)
@@ -88,7 +97,9 @@ All lesson content applies the required domain skills from the constitution cont
 - Multiple cognitive levels: recognition (Exercise 1) → application (Exercise 2) → synthesis (Exercise 3)
 
 ### 6. **Technical Clarity Skill**
+
 - **Zero jargon without definition**:
+
   - "Boilerplate code" — explained as "generic template code"
   - "Type hints" — explained with examples throughout
   - "PEP 8" — explained as "Python style guidelines"
@@ -96,6 +107,7 @@ All lesson content applies the required domain skills from the constitution cont
   - "SQLAlchemy" — introduced with context
 
 - **Accessibility prioritized**:
+
   - Active voice throughout ("You create" vs. "Code is created")
   - Direct address to learner ("You'll learn," "Your task")
   - Grade 7 reading level vocabulary
@@ -109,12 +121,15 @@ All lesson content applies the required domain skills from the constitution cont
   - Error conditions treated with respect, not as failures
 
 ### 7. **Book Scaffolding Skill**
+
 - **Connections to adjacent lessons**:
+
   - Explicitly references Lesson 2 strong commands ("Now we're going to unlock something even more powerful")
   - Preview of Lesson 4: "Coming next: Implementation logic — Tell AI HOW to build it"
   - Situates context in the larger AIDD framework (Commands, Context, Logic progression)
 
 - **Internal coherence**:
+
   - E-commerce example used throughout all sections (project context → code context → constraints → complete prompt)
   - Same example appears in Exercise 2 as template (seamless transition)
   - "Try With AI" references exercises and builds on earlier learning
@@ -125,12 +140,15 @@ All lesson content applies the required domain skills from the constitution cont
   - Positioned before validation (Lesson 5) because students generate code here
 
 ### 8. **AI Collaboration Learning Skill**
+
 - **Frames AI as collaborative partner**:
+
   - "AI agents work the same way [as contractors]"
   - "It will generate code that fits your project, not some generic template"
   - Emphasis on human intelligence (providing context) enabling AI excellence
 
 - **Teaches thinking WITH AI, not just coding WITH AI**:
+
   - "You are the architect; AI is the builder" (metaphor throughout)
   - Shows how context enables AI to make better decisions
   - Frames validation as human responsibility, not AI failure
@@ -147,17 +165,21 @@ All lesson content applies the required domain skills from the constitution cont
 ### CEFR A2 Alignment ✓
 
 **Proficiency Level**: A2 (Basic Application)
+
 - **Bloom's Level**: Apply (generating 4-layer prompts)
 - **Category**: Technical (applying context techniques)
 - **Measurable Outcome**: Student adds 4-layer context to basic prompt; AI generates project-specific code
 
 **A2 Characteristics Demonstrated**:
+
 - Recognition + simple application with scaffolding ✓
+
   - Students recognize missing context layers (Exercise 1)
   - Apply context structure with templates (Exercise 2)
   - Match existing code patterns (Exercise 3)
 
 - Dependent on explicit instruction (not independent problem-solving) ✓
+
   - Templates and examples provided
   - Step-by-step instructions in "Building Your 4-Layer Context"
   - Success criteria explicitly stated for each exercise
@@ -178,11 +200,13 @@ All lesson content applies the required domain skills from the constitution cont
 5. **Developer context** — Who's building and what do they need
 
 **Concept Progression**:
+
 - Layer 1-4 introduced separately (distinct sections)
 - Combined into complete prompt (integration)
 - Applied in exercises (reinforcement)
 
 **Cognitive Load Assessment**:
+
 - No new programming language concepts (applies Lesson 2 knowledge)
 - No new tools introduced (same AI agents from Lessons 1-2)
 - No theoretical computer science concepts
@@ -195,12 +219,14 @@ All lesson content applies the required domain skills from the constitution cont
 **Expected Level for A2**: Apply (building context) + Understand (why each layer matters)
 
 **Lesson Verbs Used**:
+
 - **Understand**: "Why context matters," "How context eliminates iteration"
 - **Apply**: "Building context layers," "Add context to prompt," "Use existing code as example"
 - **Analyze**: Implicit in Exercise 1 (analyzing which layers are missing)
 - **Evaluate**: Implicit in "Try With AI" (comparing generic vs. contextual outputs)
 
 **Assessment Alignment**:
+
 - Exercise 1: Understand + Analyze (identify what's missing)
 - Exercise 2: Apply (build context)
 - Exercise 3: Apply + Analyze (apply pattern, analyze style match)
@@ -213,6 +239,7 @@ All lesson content applies the required domain skills from the constitution cont
 ## Content Quality Standards Met
 
 ### Writing & Readability ✓
+
 - **Grade 7 baseline**: Vocabulary, sentence length, paragraph structure appropriate
 - **Publication quality**: Amazon book standards
 - **Active voice**: Used throughout ("You create," "AI generates," "You provide")
@@ -220,6 +247,7 @@ All lesson content applies the required domain skills from the constitution cont
 - **Engaging tone**: Professional yet approachable
 
 ### Pedagogical Approach ✓
+
 - **Scaffolding**: Builds on Lesson 2 (strong commands); foundation for Lesson 4 (logic)
 - **Concrete before abstract**: E-commerce example shown before generalizing 4 layers
 - **Error prevention**: Anticipates common mistakes (vague prompts, guessing requirements)
@@ -227,6 +255,7 @@ All lesson content applies the required domain skills from the constitution cont
 - **Learning WITH AI principles**: Emphasized in Try With AI section (read code, verify safety, trust but verify)
 
 ### AI-First Closure ✓
+
 - **Single "Try With AI" section** (not multiple closing sections)
 - **3 progressive prompts**: Generic → Minimal → Full context
 - **Expected outcomes**: Clear specificity and integration time differences
@@ -234,6 +263,7 @@ All lesson content applies the required domain skills from the constitution cont
 - **No "Key Takeaways" or "What's Next"** sections after Try With AI
 
 ### Formatting & Structure ✓
+
 - **YAML frontmatter**: Complete with skills metadata (hidden from students)
 - **Clear headings**: WHAT → WHY → HOW → PRACTICE → Try With AI
 - **Visual breaks**: Bold terms, code blocks, lists, tables
@@ -242,6 +272,7 @@ All lesson content applies the required domain skills from the constitution cont
 - **Lists**: Numbered for steps, bulleted for options
 
 ### Inclusive & Accessible ✓
+
 - **No gatekeeping language**: No "easy," "simple," "obvious," "just"
 - **Gender-neutral**: Uses "they," avoids gendered pronouns
 - **Diverse contexts**: E-commerce example; user authentication; data processing all represented
@@ -249,6 +280,7 @@ All lesson content applies the required domain skills from the constitution cont
 - **No color-only differentiation**: All important info in text, not color-dependent
 
 ### Accuracy & Citations ✓
+
 - **No false claims**: All statements about AI capabilities and limitations are accurate
 - **Realistic examples**: E-commerce project is realistic; code examples follow real patterns
 - **Proficiency levels**: A2 designation is accurate (basic application, not independent)
@@ -260,7 +292,9 @@ All lesson content applies the required domain skills from the constitution cont
 ## Pedagogical Decisions & Design Rationale
 
 ### 1. **The "Contractor Blueprint" Analogy**
+
 **Why used**: Most effective metaphor for complete beginners (no programming background assumed)
+
 - Contractor hiring is universally understood
 - Parallels are direct (blueprints = context, guesses = vague prompts, project fit = specificity)
 - Motivating (shows why context matters before diving into technical details)
@@ -268,7 +302,9 @@ All lesson content applies the required domain skills from the constitution cont
 **Application**: Used in opening hook, reinforced in "Why Context Matters," referenced in conclusion
 
 ### 2. **Progressive Complexity: Generic → Minimal → Full**
+
 **Why this order**:
+
 - Generic prompt shows the problem (why we need context)
 - Minimal context shows partial improvement (context helps, but not enough)
 - Full context shows the solution (complete picture = production-ready code)
@@ -277,7 +313,9 @@ All lesson content applies the required domain skills from the constitution cont
 **Application**: Structured throughout "Why Context Matters" section and "Try With AI"
 
 ### 3. **E-Commerce Example Throughout**
+
 **Why consistent example**:
+
 - Real, concrete project (not toy/academic)
 - Complex enough to justify all 4 layers (not trivial)
 - Relatable (students interact with e-commerce daily)
@@ -287,7 +325,9 @@ All lesson content applies the required domain skills from the constitution cont
 **Application**: Introduced early, reused in all sections, provided as template for Exercise 2
 
 ### 4. **Exercise 1: Identify Before Create**
+
 **Why recognition before application**:
+
 - CEFR A2 students need scaffolding before independent creation
 - Builds confidence (success on simpler task)
 - Teaches what's important before requiring construction
@@ -296,7 +336,9 @@ All lesson content applies the required domain skills from the constitution cont
 **Application**: First exercise establishes patterns; Exercise 2 asks students to build
 
 ### 5. **Exercise 3: Code Style Matching**
+
 **Why include style matching**:
+
 - Practical, real-world need (all projects have style guides)
 - Powerful AI feature (providing examples trains AI effectively)
 - Concrete success criterion (generated code should match example)
@@ -305,7 +347,9 @@ All lesson content applies the required domain skills from the constitution cont
 **Application**: Separate from Exercise 2 to show different application of context
 
 ### 6. **No New Programming Concepts**
+
 **Why avoid introducing code**:
+
 - Lesson is about communication (prompting), not programming
 - Prevents cognitive overload (5 new concepts is limit)
 - Builds confidence (students can focus on context, not syntax)
@@ -314,7 +358,9 @@ All lesson content applies the required domain skills from the constitution cont
 **Application**: All code examples are provided, never "students write code"
 
 ### 7. **Safety Notes in Try With AI, Not Earlier**
+
 **Why positioned here**:
+
 - Students have now practiced enough to generate real code
 - Safety checks are A2-appropriate (verification, not advanced security)
 - Avoids introducing anxiety early in lesson
@@ -327,7 +373,9 @@ All lesson content applies the required domain skills from the constitution cont
 ## Validation Checklist (All Items Verified)
 
 ### All Chapters ✓
+
 - [x] **Skills Proficiency Validation**: Content matches A2 proficiency level
+
   - A2 lessons: Recognition + simple application with scaffolding ✓
   - All exercises use templates, examples, or scaffolding ✓
   - No independent problem-solving required ✓
@@ -335,72 +383,86 @@ All lesson content applies the required domain skills from the constitution cont
 - [x] **Cognitive Load Validation**: 5 new concepts within A2 limit of 7 ✓
 
 - [x] **Bloom's Taxonomy Alignment**:
+
   - Expected: Understand/Apply for A2
   - Content: Understand (why) + Apply (how) + Analyze (implicit) ✓
 
 - [x] **Learning objectives**: Measurable and use appropriate Bloom's verbs ✓
+
   - "Provide context" (Apply)
   - "Transform generic code" (Apply)
   - "Use code as examples" (Apply)
 
 - [x] **Concept scaffolding**: Clear progression with prerequisites ✓
+
   - Assumes: Lesson 2 (strong commands)
   - Teaches: 4-layer context stack
   - Enables: Lesson 4 (implementation logic)
 
 - [x] **Language clarity**: Jargon defined, accessible
+
   - "Boilerplate" → "generic template"
   - "Type hints" → examples with explanation
   - "PEP 8" → "Python style guidelines"
 
 - [x] **Necessary connections** to adjacent lessons within body ✓
+
   - References Lesson 2 opening ("Now we're going to unlock...")
   - Preview Lesson 4 ending ("Coming next: Implementation logic")
   - No separate "What's Next" section
 
 - [x] **AI's role framed appropriately**: Partner/collaborator, not magic ✓
+
   - "AI agent is like hiring a contractor"
   - "You are the architect; AI is the builder"
   - Emphasis on human intelligence providing context
 
 - [x] **Markdown structure**: Follows lesson.md template ✓
+
   - YAML frontmatter with skills metadata
   - Descriptive file name (lesson-03-providing-context.mdx)
   - Clear headings and sections
   - Embedded code examples with language identifiers
 
 - [x] **Opening hook**: Present and engaging within 2-3 paragraphs ✓
+
   - "Imagine hiring a contractor..." analogy
   - Contrasts full blueprints vs. room-only instructions
   - Motivating ("AI agents work the same way")
 
 - [x] **Factual claims**: All include context or citations ✓
+
   - "Studies show 55% productivity increase" — framed as reasonable estimate
   - "30 minutes of iteration vs. 5 minutes total" — realistic scenario
   - "Generic prompts produce generic code" — demonstrated with examples
 
 - [x] **Pacing**: Appropriate for 45 minutes ✓
+
   - 25 min reading (4 major sections + 3 exercises with solutions)
   - 20 min hands-on (3 exercises: 5 + 10 + 5 minutes)
   - Try With AI can extend to 20-30 min with full testing
 
 - [x] **No gatekeeping language**: "Easy," "simple," "obvious" ✓
+
   - Replaced with "practical," "concrete," "straightforward"
   - All students addressed respectfully
 
 - [x] **Diverse examples and inclusive contexts** ✓
+
   - E-commerce project (relatable)
   - User authentication (common task)
   - Multiple developer experience levels mentioned (intermediate Python, learning FastAPI)
   - Gender-neutral language throughout
 
 - [x] **Visual breaks**: Lists, bold, code blocks ✓
+
   - Bullet points for context layers
   - Numbered steps for building context
   - Code blocks with formatting
   - Tables comparing generic vs. contextual
 
 - [x] **Ends with single "Try With AI" section** ✓
+
   - No "Key Takeaways" section
   - No "What's Next" section
   - Single Try With AI with setup, 3 prompts, expected outcomes, safety notes
@@ -412,7 +474,9 @@ All lesson content applies the required domain skills from the constitution cont
   - Provides "already set up" variant instruction
 
 ### Technical Chapters Only ✓
+
 - [x] **All code examples include type hints and docstrings** ✓
+
   - ProductService example: Type hints + docstrings
   - All code blocks use proper Python syntax
   - Docstring format: Google style (shown in example)
@@ -422,6 +486,7 @@ All lesson content applies the required domain skills from the constitution cont
 - [x] **At least 3 coding exercises**: Not required (lesson teaches prompting, not coding) ✓
 
 - [x] **Assessments validate understanding at multiple cognitive levels** ✓
+
   - Exercise 1 (Understand/Analyze): Identify layers
   - Exercise 2 (Apply): Create prompt
   - Exercise 3 (Apply): Apply style example
@@ -430,6 +495,7 @@ All lesson content applies the required domain skills from the constitution cont
 - [x] **Technical accuracy verified**: All examples follow real patterns ✓
 
 - [x] **Security implications addressed**: Included in Try With AI ✓
+
   - "Check for secrets"
   - "Trust but verify"
   - Note: "No hardcoded passwords or API keys"
@@ -437,15 +503,19 @@ All lesson content applies the required domain skills from the constitution cont
 - [x] **Ethical AI use framed**: Validation teaches responsible use ✓
 
 ### Beginner Content (CEFR A2) ✓
+
 - [x] **Concept explained BEFORE commands/syntax** (WHAT → WHY → HOW) ✓
+
   - Opens with analogy and motivation
   - Explains why before showing how
 
 - [x] **Max 2 tool options**: Claude Code, Gemini CLI, ChatGPT ✓
+
   - Not 5+ tools
   - Simple choice: "whichever you have access to"
 
 - [x] **Max 5 new concepts per section**: 5 total ✓
+
   - 4-layer context stack
   - Project context
   - Code context
@@ -453,38 +523,46 @@ All lesson content applies the required domain skills from the constitution cont
   - Developer context
 
 - [x] **Simplified version first, advanced variations secondary** ✓
+
   - Generic prompt first (simplest form)
   - Minimal context next (incremental)
   - Full 4-layer prompt (complete form)
   - Not vice-versa
 
 - [x] **Non-programmer examples and analogies** ✓
+
   - "Contractor hiring blueprint" (universally understood)
   - No assumption of programming background needed to follow
 
 - [x] **Real-world scenario focuses on next 2 chapters** ✓
+
   - E-commerce user authentication (used in Lesson 4 logic example)
   - Fits into AIDD framework taught across Lessons 1-7
 
 - [x] **"Red Flags to Watch" section**: Not required (Exercise 1 solution shows this) ✓
+
   - Exercise 1 solution explains consequences of missing context layers
   - Try With AI includes verification checklist
 
 - [x] **AI-as-partner framing** ✓
+
   - "You are the architect; AI is the builder"
   - "AI can't read your mind - provide the project picture"
   - Emphasizes human intelligence enabling AI quality
 
 - [x] **Business/product context highlighted** ✓
+
   - "Generic: 30 minutes of modification to make it fit"
   - "Contextual: Copy-paste ready, maybe 2 minutes to integrate"
   - Shows productivity value
 
 - [x] **No assumptions about technical background** ✓
+
   - Explains frameworks, databases, languages as needed
   - Contractor analogy requires zero programming knowledge
 
 - [x] **Cognitive load balanced across sections** ✓
+
   - 4 major sections (WHAT, WHY, HOW, PRACTICE)
   - WHAT section: 4 layers explained separately
   - HOW section: builds toward integration gradually
@@ -499,13 +577,15 @@ All lesson content applies the required domain skills from the constitution cont
 ## Files Delivered
 
 ### Created
-- **`book-source/docs/03-Prompt-and-Context-Engineering/09-the-architect-toolkit-prompting-foundations/lesson-03-providing-context.mdx`**
+
+- **`apps/learn-app/docs/03-Prompt-and-Context-Engineering/09-the-architect-toolkit-prompting-foundations/lesson-03-providing-context.mdx`**
   - Word count: ~4,500 words
   - Estimated reading time: 25 minutes
   - Estimated exercise time: 20 minutes
   - Total: 45 minutes (as specified)
 
 ### Content Structure
+
 1. **YAML Frontmatter** (hidden skills metadata)
 2. **Opening Hook** (contractor analogy)
 3. **WHAT Section** (4-layer context stack explained)
@@ -539,15 +619,18 @@ All lesson content applies the required domain skills from the constitution cont
 ## Notes for Next Phases
 
 ### For Lesson 4 Implementation (Logic Specification)
+
 - Lesson 3 establishes that context prevents guessing
 - Lesson 4 will show that logic specification prevents architectural guessing
 - Reuse e-commerce authentication example across both lessons
 
 ### For Lesson 5 Implementation (Validation)
+
 - Exercise 3 of Lesson 3 produces code for Lesson 5 to validate
 - Try With AI section of Lesson 3 generates code that Lesson 5 validates
 
 ### For Lesson 8 Implementation (Capstone)
+
 - Lesson 3 establishes 4-layer context as foundational skill
 - Lesson 8 will ask students to create prompt templates (including context layer)
 
@@ -562,6 +645,7 @@ All lesson content applies the required domain skills from the constitution cont
 ✅ **Validation-First Safety**: Try With AI includes verification checklist; validates before trusting
 
 ✅ **Graduated Complexity (Tier 1 Beginner)**:
+
 - Max 5 concepts ✓
 - Max 2 tool options ✓
 - Concept-First pattern ✓
@@ -580,6 +664,7 @@ All lesson content applies the required domain skills from the constitution cont
 **Status**: IMPLEMENTATION COMPLETE
 
 **Acceptance Criteria Met**:
+
 - [x] Follows lesson.md output style template
 - [x] CEFR A2 proficiency level validated
 - [x] All 5 cognitive load concepts within limit
@@ -596,6 +681,7 @@ All lesson content applies the required domain skills from the constitution cont
 - [x] 45 minutes total time (25 read + 20 practice)
 
 **Recommended Review Focus**:
+
 1. Reading level appropriateness (test with 7-8 graders if possible)
 2. Time estimate validation (45 min realistic?)
 3. AI tool instructions clarity (will students know what to do in Try With AI?)

@@ -1,6 +1,6 @@
 # Lesson 7 Detailed Changes & Changelog
 
-**File**: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/07-hooks-and-automation-triggers.md`
+**File**: `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/07-hooks-and-automation-triggers.md`
 **Date**: 2025-01-12
 **Type**: Enhanced Regeneration
 **Preservation**: 65% technical, 35% regenerated narrative
@@ -49,16 +49,18 @@ generation_metadata:
 ### 2. Opening Introduction (REGENERATED)
 
 **Original (Lines 9-26, Original File)**:
+
 ```markdown
 ## The Problem: Repetitive Manual Checks
 
 Claude Code finishes editing your code. You manually check:
-
 ```
+
 Claude edits: app.py
 ↓ (manual) Run linter
 ↓ (manual) Check types
 ↓ (manual) Run tests
+
 ```
 
 **Repetitive. Every time.**
@@ -69,15 +71,16 @@ That's what **hooks** do. Hooks intercept actions and run automation **before** 
 ```
 
 **Regenerated (Lines 28-43, New File)**:
+
 ```markdown
 ## Your Tedious Tasks: The Automation Starting Point
 
 Think about your typical development workflow. What do you check manually **every single time**?
 
-- Before you commit code: *"Did I run the linter? Did I run tests? Are there console warnings?"*
-- After you edit a file: *"This needs formatting. I need to check types."*
-- When you start a project session: *"Let me check the git branch, verify dependencies are installed."*
-- Before Claude makes changes: *"I should verify this is safe—no deleting important files."*
+- Before you commit code: _"Did I run the linter? Did I run tests? Are there console warnings?"_
+- After you edit a file: _"This needs formatting. I need to check types."_
+- When you start a project session: _"Let me check the git branch, verify dependencies are installed."_
+- Before Claude makes changes: _"I should verify this is safe—no deleting important files."_
 
 **These repetitive checks are tedious.** You know what to check. You know the order. You do it dozens of times a day. But every time, you do it manually.
 
@@ -89,6 +92,7 @@ That's exactly what **hooks** do. In this lesson, you'll learn to specify automa
 ```
 
 **Changes**:
+
 - Title: "The Problem" → "Your Tedious Tasks: The Automation Starting Point" (personalization)
 - Approach: Generic problem → Personal pain point ("YOUR checks", "YOUR workflow")
 - Added: Strategic value framing (delegation, AI Co-Worker, Tier 2)
@@ -97,6 +101,7 @@ That's exactly what **hooks** do. In this lesson, you'll learn to specify automa
 - Tone: Empathetic, personal, strategic (vs. problem-centric)
 
 **Rationale**:
+
 - Personalizes content ("Your tedious tasks" > "The problem")
 - Establishes hooks as specifications (Principle 3)
 - Introduces Tier 2 delegation concept early (Principle 13)
@@ -116,23 +121,28 @@ That's exactly what **hooks** do. In this lesson, you'll learn to specify automa
 Before diving into hook types, let's learn to think in **automation patterns**. This four-step framework transforms any tedious task into a hook specification.
 
 ### Step 1: Identify Tedious
+
 [8 examples of tedious tasks]
 **Key insight:** Anything you do repeatedly without thinking = candidate for automation.
 
 ### Step 2: Choose Hook Type (WHEN)
+
 [Table: 4 hook types with when/best for]
 **Examples matching task to hook type**
 
 ### Step 3: Define Matcher (WHAT triggers specifically)
+
 [Matcher options: single, multiple, wildcard, subcommands]
 **Examples of matcher logic**
 
 ### Step 4: Specify Action (DO WHAT)
+
 [4 action types: command, block, warn, enrich]
 **Examples for each action type**
 ```
 
 **Rationale**:
+
 - Teaches HOW to think in automation patterns (Automation Thinking Pattern)
 - Frames hooks as specifications (4-step: Intent → Type → Trigger → Action)
 - Domain-agnostic (applies to any hook task)
@@ -159,6 +169,7 @@ You've learned the pattern. Now let AI help YOU identify opportunities in YOUR w
 ```
 
 **Rationale**:
+
 - CoLearning element (AI as Teacher suggesting domain-specific patterns)
 - Personalizes content ("YOUR domain", "YOUR workflow")
 - Demonstrates Three-Role AI Partnership (Principle 18)
@@ -169,6 +180,7 @@ You've learned the pattern. Now let AI help YOU identify opportunities in YOUR w
 ### 5. Hook Types Section (ENHANCED)
 
 **Original (Lines 28-46, Original File)**:
+
 ```markdown
 ## What Are Hooks?
 
@@ -179,6 +191,7 @@ You've learned the pattern. Now let AI help YOU identify opportunities in YOUR w
 **Regenerated (Lines 125-193, New File)**:
 
 **New Structure**:
+
 - Removed old "What Are Hooks?" section
 - Replaced with detailed hook type breakdown
 - Added "Strategic Use Case" subheading to each hook type
@@ -188,17 +201,20 @@ You've learned the pattern. Now let AI help YOU identify opportunities in YOUR w
 **Example Change (SessionStart)**:
 
 Original (implied):
+
 ```
 SessionStart: Runs when Claude Code starts
 ```
 
 Regenerated:
+
 ```markdown
 ### SessionStart — Environment Health Checks
 
 **Fires:** When Claude Code starts
 
 **Strategic Use Case:** Use SessionStart for environment validation. Examples:
+
 - Verify you're on the correct git branch (prevents working in wrong context)
 - Check that required tools are installed
 - Confirm environment variables are set
@@ -209,12 +225,14 @@ Regenerated:
 ```
 
 **Changes for Each Hook Type**:
+
 - PreToolUse: Added "Safety & Prevention" framing, "Why this matters" (damage prevention value)
 - PostToolUse: Added "Validation & Follow-Up" framing, "Why this matters" (consistency and standards)
 - UserPromptSubmit: Added "Context Enrichment & Logging" framing, "Why this matters" (response quality)
 - Advanced Events: Added note that these are Tier 3 (optional)
 
 **Rationale**:
+
 - Explains not just WHAT each hook does, but WHEN/WHY it matters
 - Emphasizes strategic value (prevents mistakes, ensures quality)
 - Makes hook type selection intuitive (student can match their task to hook type)
@@ -247,6 +265,7 @@ Hooks demonstrate the **Three-Role AI Partnership** in action:
 ```
 
 **Rationale**:
+
 - Demonstrates Three-Role AI Partnership (Principle 18)
 - Explains Tier 2 in context (student understands where they are in learning progression)
 - Emphasizes organizational value (hooks as team standards, competitive advantage)
@@ -262,15 +281,18 @@ Hooks demonstrate the **Three-Role AI Partnership** in action:
 **Content Changes**:
 
 Original (at end):
+
 ```markdown
 ### Exercise 1: Write Your First Hook (Foundation)
 
 **Steps**:
+
 1. Create `.claude/settings.json` in your project...
-[immediate implementation instructions]
+   [immediate implementation instructions]
 ```
 
 Regenerated (before implementation):
+
 ```markdown
 ## 🤝 Practice Exercise 1: Design Your First Hook (Specification-First)
 
@@ -293,6 +315,7 @@ Before building, specify. This is the Graduated Teaching Pattern: you'll plan yo
 ```
 
 **Changes**:
+
 - Moved from "Try With AI" exercises to main lesson flow
 - Added "Specification-First" emphasis (plan before code)
 - Restructured as explicit specification writing exercise
@@ -301,6 +324,7 @@ Before building, specify. This is the Graduated Teaching Pattern: you'll plan yo
 - Added example specification (shows intent before code)
 
 **Rationale**:
+
 - Teaches Specification-First Development (Principle 3)
 - Implements Graduated Teaching Pattern (plan Tier 2 before executing Tier 2)
 - Reduces cognitive load (plan separately from implementation)
@@ -314,11 +338,13 @@ Before building, specify. This is the Graduated Teaching Pattern: you'll plan yo
 **Status**: PRESERVED (technical content unchanged, added context)
 
 **What Was Preserved**:
+
 - Step 1: Create `.claude/settings.json` (lines 274-357) — 100% unchanged
 - Step 2: Use `/hooks` command (lines 360-381) — 100% unchanged
 - Step 3: AI-native configuration (lines 385-406) — 100% unchanged
 
 **What Was Enhanced**:
+
 - Added context before Step 1: "You'll write JSON directly so you understand exactly how hooks work."
 - Added explanation after testing: "Why write it manually?" and "What you learned: Hooks are specifications..."
 - Added context after Step 3: "Why this works: Claude reads the official docs in real-time... This is how AI serves Tier 2"
@@ -350,6 +376,7 @@ Before building, specify. This is the Graduated Teaching Pattern: you'll plan yo
 **Status**: PRESERVED (100% unchanged)
 **Changes**: None
 **Content**:
+
 - Option 1: Single tool
 - Option 2: Multiple tools (pipe notation)
 - Option 3: Wildcard
@@ -367,22 +394,27 @@ Before building, specify. This is the Graduated Teaching Pattern: you'll plan yo
 ### 13. Strategic Hook Management (ENHANCED)
 
 **Original (Lines 405-472, Original File)**:
+
 ```markdown
 ## Common Hook Patterns
 
 ### Pattern 1: Friendly Greeting
+
 [JSON example]
 
 ### Pattern 2: Action Confirmations
+
 [JSON examples]
 
 ### Pattern 3: Pre-Action Warnings
+
 [JSON examples]
 ```
 
 **Regenerated (Lines 628-758, New File)**:
 
 **Section Expansion**:
+
 - Renamed: "Common Hook Patterns" → "Strategic Hook Management (Best Practices)"
 - Added opening frame: "Hooks are organizational assets—treat them like code"
 - Added 5 subsections with "Why this matters" explanations:
@@ -396,8 +428,10 @@ Before building, specify. This is the Graduated Teaching Pattern: you'll plan yo
 **New Subsections Added**:
 
 **"Start With Simple Hooks"**:
+
 ```markdown
 Create basic hooks first (single matcher, single action). Examples:
+
 - SessionStart hook checking git branch
 - PostToolUse + Edit hook running linter
 - PreToolUse + Bash hook warning before deletes
@@ -406,6 +440,7 @@ Create basic hooks first (single matcher, single action). Examples:
 ```
 
 **"Document Why Each Hook Exists"**:
+
 ```markdown
 Add comments to `.claude/settings.json`:
 [JSON example with WHY comments]
@@ -414,8 +449,10 @@ Add comments to `.claude/settings.json`:
 ```
 
 **"Test Hooks Individually"**:
+
 ```markdown
 When creating a hook:
+
 1. Create it
 2. Trigger the event...
 3. Verify the hook executed
@@ -425,6 +462,7 @@ When creating a hook:
 ```
 
 **"Version Control Your Hooks"**:
+
 ```markdown
 `.claude/settings.json` belongs in git:
 [git commands]
@@ -433,8 +471,10 @@ When creating a hook:
 ```
 
 **"Gradual Rollout for Team Hooks"**:
+
 ```markdown
 Don't add 10 hooks at once. Instead:
+
 1. Add 1-2 hooks per week
 2. Gather feedback...
 3. Refine based on usage
@@ -444,6 +484,7 @@ Don't add 10 hooks at once. Instead:
 ```
 
 **Rationale**:
+
 - Elevates "patterns" to "strategic management" (organizational perspective)
 - Adds practical wisdom (documentation, testing, version control, team adoption)
 - "Why this matters" explanations build understanding (not just mechanics)
@@ -456,6 +497,7 @@ Don't add 10 hooks at once. Instead:
 **Lines**: 694-758
 **Status**: PRESERVED (100% unchanged)
 **Content**:
+
 - Pattern 1: Friendly Greeting
 - Pattern 2: Action Confirmations
 - Pattern 3: Pre-Action Warnings
@@ -467,6 +509,7 @@ Don't add 10 hooks at once. Instead:
 **Lines**: 762-825
 **Status**: PRESERVED (100% unchanged)
 **Content**:
+
 - Hook Not Executing? (Check 1-4)
 - Hook Causing Issues?
 - Permission Denied Errors?
@@ -486,6 +529,7 @@ Don't add 10 hooks at once. Instead:
 Now implement the hook you designed in Practice Exercise 1.
 
 **Steps:**
+
 1. Open/Create `.claude/settings.json`...
 2. Add your hook to appropriate section...
 3. Ensure tool is in `permissions.allow`...
@@ -499,6 +543,7 @@ Now implement the hook you designed in Practice Exercise 1.
 ```
 
 **Rationale**:
+
 - Separates Exercise 1 (specification) from Exercise 2 (implementation)
 - Implements Graduated Teaching: plan → implement → test → reflect
 - Adds reflection prompts (what did you learn?)
@@ -521,6 +566,7 @@ Now think beyond individual hooks. AI can help you design a complete hook librar
 > "My team's common pain points are [list 3-5 tedious or error-prone tasks...]. Design a hook library (5-7 hooks) that would address these pain points. For each hook in the library: (1) Hook name and type, (2) What manual task it replaces, (3) Matcher criteria (which tool), (4) Exact action/command, (5) Estimated time/frustration saved per week. Also suggest rollout order (which hooks first, which later)."
 
 **What you'll learn:**
+
 - AI will help you see patterns (most teams have similar pain points)
 - You'll discover hooks you hadn't thought of...
 - You'll learn prioritization...
@@ -528,6 +574,7 @@ Now think beyond individual hooks. AI can help you design a complete hook librar
 ```
 
 **Rationale**:
+
 - Team-focused (library design, organizational standards)
 - Strategic planning (prioritization, rollout order)
 - Demonstrates Two-Role partnership (Teacher + Co-Worker)
@@ -538,19 +585,23 @@ Now think beyond individual hooks. AI can help you design a complete hook librar
 ### 18. Try With AI Section (REGENERATED)
 
 **Original (Lines 474-526, Original File)**:
+
 ```markdown
 ## Try With AI
 
 Practice all three approaches: manual, interactive, and AI-native.
 
 ### Exercise 1: Write Your First Hook (Foundation)
+
 ### Exercise 2: Use the Interactive Way
+
 ### Exercise 3: AI-Native Configuration
 ```
 
 **Regenerated (Lines 888-994, New File)**:
 
 **New Structure**:
+
 - Renamed from generic "Try With AI" to focused "Try With AI" (role-based)
 - 3 exercises, each demonstrating ONE role:
   1. **Claude as Teacher** — Hook Opportunities (AI Suggests)
@@ -560,22 +611,26 @@ Practice all three approaches: manual, interactive, and AI-native.
 **Exercise 1: Claude as Teacher**
 
 Original approach:
+
 ```
 Write your first hook manually following these steps...
 ```
 
 Regenerated approach:
+
 ```markdown
 ### Exercise 1: Claude as Teacher — Hook Opportunities (AI Suggests)
 
 **Prompt to Claude:**
 ```
+
 Analyze my development workflow. I primarily work on [Python/JavaScript/other],
 my projects are [type: web apps/data pipelines/CLI tools/etc], and I'm concerned about
 [performance/security/reliability/consistency/testing]. Using that context, identify
 3-4 automation opportunities where hooks would improve my workflow. For each:
 (1) What problem it solves, (2) Recommended hook type and matcher,
 (3) Exact command/action to implement, (4) How to test it works.
+
 ```
 
 **What Claude generates:**
@@ -587,6 +642,7 @@ my projects are [type: web apps/data pipelines/CLI tools/etc], and I'm concerned
 ```
 
 **Changes**:
+
 - Explicit role demonstration (Claude as Teacher, not just "AI suggests")
 - Domain-specific context in prompt ("your domain", "your concerns")
 - Clear output expectations ("What Claude generates")
@@ -599,6 +655,7 @@ my projects are [type: web apps/data pipelines/CLI tools/etc], and I'm concerned
 
 **Prompt to Claude:**
 ```
+
 Interview me about my development workflow so you can recommend custom hooks.
 Ask me: (1) What do I check manually most often before/after actions?
 (2) What errors have I made repeatedly that automation could prevent?
@@ -606,6 +663,7 @@ Ask me: (1) What do I check manually most often before/after actions?
 (4) What tools/languages do I use most?
 
 Based on my answers, design 2-3 custom hooks specifically for my workflow.
+
 ```
 
 **What Claude does:**
@@ -617,6 +675,7 @@ Based on my answers, design 2-3 custom hooks specifically for my workflow.
 ```
 
 **Rationale**:
+
 - Demonstrates "AI as Student" role (asks questions, listens, adapts)
 - Emphasizes personalization (custom hooks for YOUR workflow)
 - Shows bidirectional learning (you teach AI about your domain)
@@ -629,6 +688,7 @@ Based on my answers, design 2-3 custom hooks specifically for my workflow.
 
 **Prompt to Claude:**
 ```
+
 I want to create a hook that [describe your automation goal: runs tests before commits,
 checks for hardcoded secrets, formats code after edits, validates branch before pushes,
 verifies deployment readiness, etc.]. Help me:
@@ -637,6 +697,7 @@ verifies deployment readiness, etc.]. Help me:
 (3) Specify the correct permissions needed in .claude/settings.json
 (4) Create a testing plan to verify it works
 (5) Troubleshoot if something doesn't work as expected
+
 ```
 
 **What Claude does:**
@@ -648,6 +709,7 @@ verifies deployment readiness, etc.]. Help me:
 ```
 
 **Rationale**:
+
 - Demonstrates "AI as Co-Worker" role (collaborates, handles complexity)
 - Shows task division (you: intent/strategy, AI: syntax/complexity)
 - Implements Principle 18 (Three Roles Framework)
@@ -658,10 +720,12 @@ verifies deployment readiness, etc.]. Help me:
 ### 19. Closing Section (REGENERATED)
 
 **Original (Lines 529-540, Original File)**:
+
 ```markdown
 ## What's Next
 
 You now understand **the automation foundation**:
+
 - ✅ SessionStart — When Claude Code starts
 - ✅ PreToolUse — Before actions execute
 - ✅ PostToolUse — After actions complete
@@ -679,6 +743,7 @@ You now understand **the automation foundation**:
 You've learned hooks—specifications that trigger automation.
 
 **Key takeaways:**
+
 - **Hooks = Specifications**: You specify (once) when/what/how to automate. Claude enforces (forever).
 - **Automation Thinking Pattern**: Tedious → Hook Type → Matcher → Action. Apply this to any repetitive task.
 - **Tier 2 Delegation**: Hooks represent Graduated Teaching Pattern (Tier 2): you specify quality gates, AI enforces them.
@@ -686,6 +751,7 @@ You've learned hooks—specifications that trigger automation.
 - **Compounding Effect**: Individual hooks seem small, but together they encode organizational standards.
 
 **What hooks represent in Constitution Principle 13 (Graduated Teaching):**
+
 - **Tier 1** (Book teaches): Understanding hook types, automation patterns
 - **Tier 2** (AI Companion): Creating and configuring hooks ← **You did this**
 - **Tier 3** (AI Orchestration): Complex multi-hook systems managing entire workflows (optional, advanced)
@@ -699,15 +765,19 @@ You've mastered Tier 2. Tier 3 (orchestrating 20+ hooks across team) is optional
 Pick one exercise and start now:
 
 **Option 1: Discovery** (Easy start)
+
 - Run Exercise 1: Ask Claude to identify 3 automation opportunities in YOUR workflow
 
 **Option 2: Custom Design** (Deeper learning)
+
 - Run Exercise 2: Have Claude interview you, then design custom hooks
 
 **Option 3: Implementation** (Hands-on)
+
 - Run Exercise 3: Build your first hook with Claude's help, then test it
 
 **Expected outcomes:**
+
 - Exercise 1: 3 concrete hook ideas you can implement (or not—it's your choice)
 - Exercise 2: Deep understanding of YOUR automation opportunities
 - Exercise 3: One working hook + confidence to build more
@@ -716,6 +786,7 @@ Pick whichever sounds most valuable to you right now. Start with what interests 
 ```
 
 **Changes**:
+
 - Renamed: "What's Next" → "Closing: Automation as Strategic Asset" (thematic closure)
 - Added: Key takeaways (reinforces learning)
 - Added: Tier 1/2/3 context (student understands learning progression)
@@ -725,6 +796,7 @@ Pick whichever sounds most valuable to you right now. Start with what interests 
 - NOTE: **No "What's Next" section after Try With AI** (adheres to project policy)
 
 **Rationale**:
+
 - Thematic closure (automation as strategic asset) instead of navigation
 - Reinforces key concepts without separate "Key Takeaways" section
 - Contextualizes learning (shows where student is in Tier progression)
@@ -737,7 +809,9 @@ Pick whichever sounds most valuable to you right now. Start with what interests 
 ## Summary of Additions by Category
 
 ### 💬 AI Colearning Prompts (2 NEW)
+
 1. **"Identify YOUR Automation Opportunities"** (lines 114-121)
+
    - Location: After Automation Thinking Pattern
    - Purpose: Discovery (AI as Teacher suggesting domain-specific patterns)
    - Domain-agnostic: Yes
@@ -748,7 +822,9 @@ Pick whichever sounds most valuable to you right now. Start with what interests 
    - Focus: Prioritization, rollout order
 
 ### 🎓 Expert Insights (2 NEW)
+
 1. **"Strategic Delegation to Your AI Co-Worker"** (lines 197-224)
+
    - Location: After Hook Types
    - Focus: Three-Role partnership, Tier 2 delegation, organizational value
 
@@ -757,7 +833,9 @@ Pick whichever sounds most valuable to you right now. Start with what interests 
    - Focus: Best practices, team adoption, version control
 
 ### 🤝 Practice Exercises (2 NEW)
+
 1. **"Design Your First Hook (Specification-First)"** (lines 228-266)
+
    - Location: Before implementation steps
    - Focus: Planning, specification writing, ROI thinking
 
@@ -766,11 +844,14 @@ Pick whichever sounds most valuable to you right now. Start with what interests 
    - Focus: Implementation, testing, iteration, reflection
 
 ### Try With AI Exercises (3 REGENERATED)
+
 1. **Claude as Teacher** (lines 890-907)
+
    - Prompt: Identify automation opportunities
    - Focus: Domain-specific analysis
 
 2. **Claude as Student** (lines 911-929)
+
    - Prompt: Interview and custom design
    - Focus: Learning your workflow, adaptation
 
@@ -812,42 +893,42 @@ Pick whichever sounds most valuable to you right now. Start with what interests 
 
 ### Section Order (Before → After)
 
-| Original Order | Regenerated Order | Change |
-|---|---|---|
-| Problem statement | Your Tedious Tasks | Reframed (personal → strategic) |
-| What Are Hooks? | Automation Thinking Pattern | NEW section inserted |
-| [missing] | 💬 Colearning Prompt 1 | NEW |
-| Understanding Hook Events | Hook Types (with Strategic Use Cases) | Enhanced with context |
-| [missing] | 🎓 Expert Insight 1 | NEW |
-| Hook Anatomy | [same] | PRESERVED |
-| [missing] | 🤝 Practice Exercise 1 (Design) | Moved earlier + emphasis on spec |
-| Step 1, 2, 3 | [same] | PRESERVED |
-| Permissions | [same] | PRESERVED |
-| Hook Events | [same] | PRESERVED |
-| Matchers | [same] | PRESERVED |
-| Scope | [same] | PRESERVED |
-| Common Patterns | Strategic Hook Management | Enhanced + PRESERVED |
-| Troubleshooting | [same] | PRESERVED |
-| Try With AI Exercises | 🤝 Practice Exercise 2 + 💬 Prompt 2 | NEW + reorganized |
-| [missing] | Try With AI (3 role-based exercises) | REGENERATED |
-| What's Next | Closing + Try With AI | Thematic closure |
+| Original Order            | Regenerated Order                     | Change                           |
+| ------------------------- | ------------------------------------- | -------------------------------- |
+| Problem statement         | Your Tedious Tasks                    | Reframed (personal → strategic)  |
+| What Are Hooks?           | Automation Thinking Pattern           | NEW section inserted             |
+| [missing]                 | 💬 Colearning Prompt 1                | NEW                              |
+| Understanding Hook Events | Hook Types (with Strategic Use Cases) | Enhanced with context            |
+| [missing]                 | 🎓 Expert Insight 1                   | NEW                              |
+| Hook Anatomy              | [same]                                | PRESERVED                        |
+| [missing]                 | 🤝 Practice Exercise 1 (Design)       | Moved earlier + emphasis on spec |
+| Step 1, 2, 3              | [same]                                | PRESERVED                        |
+| Permissions               | [same]                                | PRESERVED                        |
+| Hook Events               | [same]                                | PRESERVED                        |
+| Matchers                  | [same]                                | PRESERVED                        |
+| Scope                     | [same]                                | PRESERVED                        |
+| Common Patterns           | Strategic Hook Management             | Enhanced + PRESERVED             |
+| Troubleshooting           | [same]                                | PRESERVED                        |
+| Try With AI Exercises     | 🤝 Practice Exercise 2 + 💬 Prompt 2  | NEW + reorganized                |
+| [missing]                 | Try With AI (3 role-based exercises)  | REGENERATED                      |
+| What's Next               | Closing + Try With AI                 | Thematic closure                 |
 
 ---
 
 ## Line Count Analysis
 
-| Section | Original Lines | Regenerated Lines | Change | Type |
-|---------|---|---|---|---|
-| Frontmatter | 5 | 23 | +18 | NEW (metadata) |
-| Opening intro | 20 | 43 | +23 | Regenerated |
-| Hook definitions | 120 | 193 | +73 | Enhanced |
-| Automation Pattern | 0 | 65 | +65 | NEW |
-| CoLearning prompts | 0 | 49 | +49 | NEW (2 prompts) |
-| Expert insights | 0 | 63 | +63 | NEW (2 sections) |
-| Practice exercises | 52 | 112 | +60 | NEW/Reorganized (2 explicit) |
-| Try With AI | 52 | 106 | +54 | Regenerated |
-| Closing | 10 | 40 | +30 | Regenerated |
-| **TOTAL** | **540** | **995** | **+455** | **+84%** |
+| Section            | Original Lines | Regenerated Lines | Change   | Type                         |
+| ------------------ | -------------- | ----------------- | -------- | ---------------------------- |
+| Frontmatter        | 5              | 23                | +18      | NEW (metadata)               |
+| Opening intro      | 20             | 43                | +23      | Regenerated                  |
+| Hook definitions   | 120            | 193               | +73      | Enhanced                     |
+| Automation Pattern | 0              | 65                | +65      | NEW                          |
+| CoLearning prompts | 0              | 49                | +49      | NEW (2 prompts)              |
+| Expert insights    | 0              | 63                | +63      | NEW (2 sections)             |
+| Practice exercises | 52             | 112               | +60      | NEW/Reorganized (2 explicit) |
+| Try With AI        | 52             | 106               | +54      | Regenerated                  |
+| Closing            | 10             | 40                | +30      | Regenerated                  |
+| **TOTAL**          | **540**        | **995**           | **+455** | **+84%**                     |
 
 ---
 

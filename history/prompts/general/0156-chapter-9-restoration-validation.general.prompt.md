@@ -16,19 +16,19 @@ links:
   adr: none
   pr: none
 files:
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/01-introduction.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/01-introduction.md
     status: restored
     lines: 398
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/02-headings.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/02-headings.md
     status: restored
     lines: 398
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/03-lists.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/03-lists.md
     status: restored
     lines: 451
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/04-code-blocks.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/04-code-blocks.md
     status: restored
     lines: 475
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/05-links-images-integration.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/05-links-images-integration.md
     status: restored
     lines: 611
   - path: specs/034-chapter-9-markdown-redesign/FINAL-VALIDATION-REPORT.md
@@ -36,10 +36,10 @@ files:
     lines: 220
 tests:
   - name: Meta-commentary check
-    command: grep -rn "What to notice|What to expect|AI.*teaching you|AI.*learning from you" book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/*.md
+    command: grep -rn "What to notice|What to expect|AI.*teaching you|AI.*learning from you" apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/*.md
     result: PASS (zero violations found)
   - name: Scaffolding exposure check
-    command: grep -rn "Stage [0-9]|Layer [0-9]|Three Roles Framework" book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/*.md
+    command: grep -rn "Stage [0-9]|Layer [0-9]|Three Roles Framework" apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/*.md
     result: PASS (only metadata comments)
 ---
 
@@ -48,10 +48,11 @@ tests:
 **Context**: Continuation from summary after Chapter 9 restoration (commit 41ddbc3). User requested:
 
 > "yes del and Fix only:
->   - Remove meta-commentary violations in 'Try With AI' sections
->   - Keep Python/Bash examples (they're teaching code block syntax, not programming)
->   - Stage 1 focus: Manual markdown practice first
->   - Stage 2 optional: 'Try With AI' at end for validation/practice"
+>
+> - Remove meta-commentary violations in 'Try With AI' sections
+> - Keep Python/Bash examples (they're teaching code block syntax, not programming)
+> - Stage 1 focus: Manual markdown practice first
+> - Stage 2 optional: 'Try With AI' at end for validation/practice"
 
 **Current Task**: Verify restoration is complete and pedagogically sound.
 
@@ -62,6 +63,7 @@ tests:
 Completed final validation of Chapter 9 restoration:
 
 1. **Verified File Restoration** (5 lessons):
+
    - 01-introduction.md (15,552 bytes) - Stage 1 conceptual foundation
    - 02-headings.md (12,337 bytes) - Manual heading hierarchy practice
    - 03-lists.md (13,423 bytes) - Manual list creation practice
@@ -69,18 +71,21 @@ Completed final validation of Chapter 9 restoration:
    - 05-links-images-integration.md (22,834 bytes) - Complete markdown integration
 
 2. **Constitutional Compliance Validation**:
+
    - ✅ Zero meta-commentary violations found
    - ✅ No scaffolding exposure (only internal metadata)
    - ✅ "AI Colearning Prompt" sections appropriate
    - ✅ "Try With AI" sections for validation (Stage 2 optional)
 
 3. **Code Examples Validation**:
+
    - ✅ Python/Bash examples in Lesson 4 are pedagogically appropriate
    - ✅ Teaching "how to format code in markdown" not "how to write Python"
    - ✅ Students learn syntax: ` ```python ` creates code block
    - ✅ No programming knowledge required
 
 4. **Pedagogical Structure Confirmed**:
+
    - ✅ Stage 1 focus: Manual practice of markdown syntax
    - ✅ Stage 2 optional: AI validation at end of lessons
    - ✅ Proficiency levels A1-A2 (appropriate for Part 3)

@@ -11,6 +11,7 @@
 Successfully completed full visual assets workflow for Chapter 4, generating 5 high-quality educational images with 100% first-attempt success rate. All images integrated into lesson files and production-ready.
 
 **Key Metrics**:
+
 - **Total Images Created**: 5
 - **First-Attempt Success Rate**: 100% (5/5)
 - **Visual Density**: 0.83 images/lesson (optimal range: 0.7-1.2)
@@ -20,6 +21,7 @@ Successfully completed full visual assets workflow for Chapter 4, generating 5 h
 ## Phase Execution Summary
 
 ### Phase 1: Audit & Planning (Completed)
+
 - ✅ Read all 6 Chapter 4 lesson files
 - ✅ Identified 8 visual opportunities
 - ✅ Applied pedagogical value assessment (PASS/CONDITIONAL/REJECT)
@@ -28,12 +30,14 @@ Successfully completed full visual assets workflow for Chapter 4, generating 5 h
 - ✅ Generated comprehensive audit report
 
 ### Phase 2: Prompt Generation (Completed)
+
 - ✅ Created 5 structured prompts following template
 - ✅ Applied Polar Night design system consistently
 - ✅ Embedded prompts as HTML comments in lesson markdown files
 - ✅ Applied all Chapter 1 learnings proactively
 
 ### Phase 3: Image Generation (Completed)
+
 - ✅ Used Playwright MCP to navigate gemini.google.com
 - ✅ Generated each image with fresh session
 - ✅ Verified spelling/layout with screenshots before downloading
@@ -41,12 +45,14 @@ Successfully completed full visual assets workflow for Chapter 4, generating 5 h
 - ✅ Achieved 100% first-attempt success (no regenerations needed)
 
 ### Phase 4: Integration (Completed)
+
 - ✅ Moved/renamed all 5 images to `book-source/static/img/part-1/chapter-4/`
 - ✅ Replaced HTML comment blocks with image references in markdown
 - ✅ Verified all image paths correct
 - ✅ Added descriptive alt text for accessibility
 
 ### Phase 5: Validation (Completed)
+
 - ✅ Ran `npm run build` in book-source directory
 - ✅ Build completed successfully (exit code 0)
 - ✅ All Chapter 4 pages built without errors
@@ -57,6 +63,7 @@ Successfully completed full visual assets workflow for Chapter 4, generating 5 h
 ## Visual Assets Created
 
 ### Image 1: Nine Pillars Grid
+
 - **Filename**: `nine-pillars-grid.png`
 - **Location**: Lesson 3, Section "The Nine Pillars"
 - **Format**: 3x3 grid showing all nine enabling technologies
@@ -70,6 +77,7 @@ Successfully completed full visual assets workflow for Chapter 4, generating 5 h
   - ✅ Grid provides visual structure without overwhelming
 
 ### Image 2: M-Shaped Developer Profile Comparison
+
 - **Filename**: `m-shaped-developer-profile.png`
 - **Location**: Lesson 5, Section "Beyond T-Shaped: Understanding M-Shaped"
 - **Format**: Three side-by-side bar charts (Specialist, T-Shaped, M-Shaped)
@@ -83,6 +91,7 @@ Successfully completed full visual assets workflow for Chapter 4, generating 5 h
   - ✅ Simple, scannable comparison
 
 ### Image 3: M-Shaped Profiles Examples
+
 - **Filename**: `m-shaped-profiles-examples.png`
 - **Location**: Lesson 5, Section "Real M-Shaped Profiles in Action"
 - **Format**: Three horizontal profile diagrams showing domain combinations
@@ -96,6 +105,7 @@ Successfully completed full visual assets workflow for Chapter 4, generating 5 h
   - ✅ Minimal text (domain names only)
 
 ### Image 4: Technology Adoption Timeline
+
 - **Filename**: `technology-adoption-timeline.png`
 - **Location**: Lesson 6, Section "Lessons from Technology Shifts"
 - **Format**: Horizontal timeline showing three technology shifts with color-coded adoption zones
@@ -109,6 +119,7 @@ Successfully completed full visual assets workflow for Chapter 4, generating 5 h
   - ✅ Color coding universally understood (green=success, yellow=struggle, red=failure)
 
 ### Image 5: Learning Pathway Timeline
+
 - **Filename**: `learning-pathway-timeline.png`
 - **Location**: Lesson 6, Section "Addressing the Skeptic: 'Can One Person Really Do This?'"
 - **Format**: Horizontal timeline showing 18-month learning pathway with three progressive phases
@@ -126,27 +137,30 @@ Successfully completed full visual assets workflow for Chapter 4, generating 5 h
 
 All approved visuals passed the 4-criteria framework:
 
-| Image | Teaching Value | Constitutional Alignment | Message Clarity | Non-Redundancy |
-|-------|---------------|-------------------------|-----------------|----------------|
-| Nine Pillars Grid | ✅ TEACH (shows structure of enabling technologies) | ✅ Pillar 1 (Nine Pillars) is constitutional core | ✅ "Students understand nine enabling technologies" | ✅ Unique visualization |
-| M-Shaped Profile Comparison | ✅ TEACH (visualizes skill depth patterns) | ✅ Supports Three-Role AI Partnership (Principle 18) | ✅ "Students distinguish M-shaped from T-shaped" | ✅ Unique visualization |
-| M-Shaped Profiles Examples | ✅ TEACH (shows concrete domain combinations) | ✅ Demonstrates Graduated Teaching (Principle 13) | ✅ "Students see concrete M-shaped combinations" | ✅ Unique visualization |
-| Technology Adoption Timeline | ✅ TEACH (reveals historical pattern for urgency) | ✅ Supports Progressive AI Integration (Principle 1) | ✅ "Students recognize early-adoption wins" | ✅ Unique visualization |
-| Learning Pathway Timeline | ✅ TEACH (breaks complex learning into phases) | ✅ Supports Graduated Teaching (Principle 13) | ✅ "Students see realistic 18-month pathway" | ✅ Unique visualization |
+| Image                        | Teaching Value                                      | Constitutional Alignment                             | Message Clarity                                     | Non-Redundancy          |
+| ---------------------------- | --------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------- | ----------------------- |
+| Nine Pillars Grid            | ✅ TEACH (shows structure of enabling technologies) | ✅ Pillar 1 (Nine Pillars) is constitutional core    | ✅ "Students understand nine enabling technologies" | ✅ Unique visualization |
+| M-Shaped Profile Comparison  | ✅ TEACH (visualizes skill depth patterns)          | ✅ Supports Three-Role AI Partnership (Principle 18) | ✅ "Students distinguish M-shaped from T-shaped"    | ✅ Unique visualization |
+| M-Shaped Profiles Examples   | ✅ TEACH (shows concrete domain combinations)       | ✅ Demonstrates Graduated Teaching (Principle 13)    | ✅ "Students see concrete M-shaped combinations"    | ✅ Unique visualization |
+| Technology Adoption Timeline | ✅ TEACH (reveals historical pattern for urgency)   | ✅ Supports Progressive AI Integration (Principle 1) | ✅ "Students recognize early-adoption wins"         | ✅ Unique visualization |
+| Learning Pathway Timeline    | ✅ TEACH (breaks complex learning into phases)      | ✅ Supports Graduated Teaching (Principle 13)        | ✅ "Students see realistic 18-month pathway"        | ✅ Unique visualization |
 
 ## Rejected Opportunities (With Rationale)
 
 ### Rejected 1: Nine Revolutions Grid (Lesson 1)
+
 - **Reasoning**: Would create confusion between "nine revolutions" (historical context) and "nine pillars" (foundational technologies)
 - **Pedagogical Assessment**: REJECT
 - **Alternative**: Text list already clear and scannable
 
 ### Rejected 2: Nine AIDD Characteristics Grid (Lesson 2)
+
 - **Reasoning**: These are DEFINING PRINCIPLES (abstract qualities) not ENABLING TECHNOLOGIES (concrete pillars); visual would amplify confusion by creating parallel "nine things" visuals
 - **Pedagogical Assessment**: REJECT
 - **Alternative**: Keep characteristics as text, reserve visual focus for pillars
 
 ### Rejected 3: Individual Pillar Deep Dive Diagrams (Lesson 4)
+
 - **Reasoning**: Would create 9 fragmented visuals; one comprehensive grid (from Lesson 3) serves the entire chapter better; visual density of 9 images in one lesson would overwhelm
 - **Pedagogical Assessment**: REJECT
 - **Alternative**: One comprehensive diagram (nine-pillars-grid.png) represents all pillars
@@ -154,6 +168,7 @@ All approved visuals passed the 4-criteria framework:
 ## Chapter 1 Learnings Application Summary
 
 ### Applied Proactively (100% Compliance):
+
 1. ✅ **3 bars maximum** for charts (m-shaped profile shows 3 profile types)
 2. ✅ **Hyphenate compound words** ("AI-First IDEs", "Full-Stack", "Mobile-First", "Test-Driven Development", "Specification-Driven Development")
 3. ✅ **Arrow-only indicators** (no text on arrows in timelines)
@@ -164,6 +179,7 @@ All approved visuals passed the 4-criteria framework:
 8. ✅ **Redundancy check** (no visuals for tables already optimally formatted)
 
 ### Design System Consistency:
+
 - ✅ **Color Palette**: Polar Night (Nord theme) applied consistently
   - Background: `#2E3440` (dark navy)
   - Primary: `#88C0D0` (teal)
@@ -177,11 +193,13 @@ All approved visuals passed the 4-criteria framework:
 ## Files Modified
 
 ### Lesson Files (Image Integration):
-1. `/book-source/docs/01-Introducing-AI-Driven-Development/04-nine-pillars/03-pillars-overview.md`
-2. `/book-source/docs/01-Introducing-AI-Driven-Development/04-nine-pillars/05-m-shaped-developer.md`
-3. `/book-source/docs/01-Introducing-AI-Driven-Development/04-nine-pillars/06-why-all-nine-matter.md`
+
+1. `/apps/learn-app/docs/01-Introducing-AI-Driven-Development/04-nine-pillars/03-pillars-overview.md`
+2. `/apps/learn-app/docs/01-Introducing-AI-Driven-Development/04-nine-pillars/05-m-shaped-developer.md`
+3. `/apps/learn-app/docs/01-Introducing-AI-Driven-Development/04-nine-pillars/06-why-all-nine-matter.md`
 
 ### Image Files Created:
+
 1. `/book-source/static/img/part-1/chapter-4/nine-pillars-grid.png` (849 KB)
 2. `/book-source/static/img/part-1/chapter-4/m-shaped-developer-profile.png` (710 KB)
 3. `/book-source/static/img/part-1/chapter-4/m-shaped-profiles-examples.png` (783 KB)
@@ -193,18 +211,21 @@ All approved visuals passed the 4-criteria framework:
 ## Quality Metrics
 
 ### Success Rate:
+
 - **First-Attempt Success**: 100% (5/5 images)
 - **Regenerations Required**: 0
 - **Spelling Errors**: 0
 - **Layout Issues**: 0
 
 ### Visual Density:
+
 - **Total Lessons**: 6
 - **Total Images**: 5
 - **Density**: 0.83 images/lesson
 - **Assessment**: ✅ Optimal (not too dense, not too sparse)
 
 ### Pedagogical Value:
+
 - **HIGH VALUE** (teaches concepts): 5/5 (100%)
 - **MEDIUM VALUE** (shows data): 0/5 (0%)
 - **LOW VALUE** (decorative): 0/5 (0%)
@@ -213,6 +234,7 @@ All approved visuals passed the 4-criteria framework:
 ## Autonomous Workflow Performance
 
 ### Execution Time:
+
 - **Phase 1 (Audit)**: ~15 minutes
 - **Phase 2 (Prompts)**: ~10 minutes
 - **Phase 3 (Generation)**: ~50 minutes (5 images × ~10 min each)
@@ -221,6 +243,7 @@ All approved visuals passed the 4-criteria framework:
 - **Total**: ~80 minutes (autonomous execution)
 
 ### Workflow Efficiency:
+
 - ✅ Zero user intervention during generation
 - ✅ All images correct on first attempt
 - ✅ Systematic prompt embedding in markdown
@@ -229,14 +252,14 @@ All approved visuals passed the 4-criteria framework:
 
 ## Comparison to Chapter 3
 
-| Metric | Chapter 3 | Chapter 4 | Change |
-|--------|-----------|-----------|--------|
-| Total Images | 7 | 5 | -2 (more selective) |
-| First-Attempt Success | 100% | 100% | = |
-| Rejected Opportunities | 2 | 3 | +1 (higher standards) |
-| Visual Density | 1.0/lesson | 0.83/lesson | Optimal reduction |
-| Pedagogical Value (HIGH) | 100% | 100% | = |
-| Chapter 1 Learnings Applied | 100% | 100% | = |
+| Metric                      | Chapter 3  | Chapter 4   | Change                |
+| --------------------------- | ---------- | ----------- | --------------------- |
+| Total Images                | 7          | 5           | -2 (more selective)   |
+| First-Attempt Success       | 100%       | 100%        | =                     |
+| Rejected Opportunities      | 2          | 3           | +1 (higher standards) |
+| Visual Density              | 1.0/lesson | 0.83/lesson | Optimal reduction     |
+| Pedagogical Value (HIGH)    | 100%       | 100%        | =                     |
+| Chapter 1 Learnings Applied | 100%       | 100%        | =                     |
 
 **Assessment**: Chapter 4 maintained Chapter 3's quality standards while increasing selectivity (higher rejection rate ensures only essential visuals approved).
 
@@ -247,6 +270,7 @@ All approved visuals passed the 4-criteria framework:
 ## Production Readiness Status
 
 ### Completed:
+
 - ✅ All images generated and verified
 - ✅ All images moved to production directory
 - ✅ All images integrated into lesson markdown
@@ -254,9 +278,11 @@ All approved visuals passed the 4-criteria framework:
 - ✅ All alt text added for accessibility
 
 ### Validation Complete:
+
 - ✅ `npm run build` completed successfully (exit code 0)
 
 ### Final Validation Completed:
+
 - ✅ Verified zero broken links in Chapter 4 content
 - ✅ Verified metadata/frontmatter intact (all 3 modified files)
 - ✅ Verified lesson flow and coherence (all 5 image placements optimal)

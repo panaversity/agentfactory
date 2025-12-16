@@ -6,6 +6,7 @@
 ## Summary
 
 Reorganize book filesystem to match updated chapter-index.md:
+
 - Delete Chapter 15 (Capstone) from Part 4
 - Renumber Part 5 Python chapters 16-33 → 15-32
 - Update all assets (slides, images) and references (frontmatter, image paths)
@@ -25,17 +26,17 @@ Reorganize book filesystem to match updated chapter-index.md:
 
 ## Constitution Check
 
-*GATE: This is an infrastructure task, not educational content. Constitution principles apply minimally.*
+_GATE: This is an infrastructure task, not educational content. Constitution principles apply minimally._
 
-| Principle | Applies | Status |
-|-----------|---------|--------|
-| Specification Primacy | No | N/A - file reorganization |
-| Progressive Complexity | No | N/A - not teaching content |
-| Factual Accuracy | No | N/A - structural changes only |
-| Coherent Structure | Yes | PASS - reorganization improves structure |
-| Intelligence Accumulation | No | N/A - not creating reusable intelligence |
-| Anti-Convergence | No | N/A - not educational content |
-| Minimal Content | Yes | PASS - minimal changes, only what's needed |
+| Principle                 | Applies | Status                                     |
+| ------------------------- | ------- | ------------------------------------------ |
+| Specification Primacy     | No      | N/A - file reorganization                  |
+| Progressive Complexity    | No      | N/A - not teaching content                 |
+| Factual Accuracy          | No      | N/A - structural changes only              |
+| Coherent Structure        | Yes     | PASS - reorganization improves structure   |
+| Intelligence Accumulation | No      | N/A - not creating reusable intelligence   |
+| Anti-Convergence          | No      | N/A - not educational content              |
+| Minimal Content           | Yes     | PASS - minimal changes, only what's needed |
 
 **Gate Status**: PASS - Infrastructure task with minimal constitution overlap
 
@@ -73,32 +74,40 @@ book-source/
 Operations must be performed in this order to avoid conflicts:
 
 1. **Phase 1: Delete Chapter 15** (Part 4)
+
    - Remove `04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/`
 
 2. **Phase 2: Rename Part 5 Directories** (reverse order to avoid conflicts)
+
    - Rename from highest to lowest: 33→32, 32→31, ..., 16→15
    - Must go in reverse to prevent `16→15` blocking `17→16`
 
 3. **Phase 3: Update README Frontmatter**
+
    - Update `sidebar_position` in each renamed chapter
    - Update `title` with new chapter numbers
    - Update `slides.source` and `slides.title` references
 
 4. **Phase 4: Rename Slide PDFs** (reverse order)
+
    - Rename from highest to lowest: chapter-33→32, ..., chapter-16→15
 
 5. **Phase 5: Rename Image Directories** (reverse order)
+
    - Rename existing directories only (sparse - 15 of 18 chapters)
 
 6. **Phase 6: Update Image References in Content**
+
    - Find-replace `/img/part-5/chapter-N/` → `/img/part-5/chapter-(N-1)/`
    - For each N from 16-33
 
 7. **Phase 7: Update Part READMEs**
+
    - Part 4 README: Remove Chapter 15 references
    - Part 5 README: Update chapter range if mentioned
 
 8. **Phase 8: Validation**
+
    - Grep for orphaned references
    - Verify file counts
    - Run Docusaurus build
@@ -112,31 +121,31 @@ Operations must be performed in this order to avoid conflicts:
 
 ### Chapter Directory Renames (18 operations)
 
-| Old Path | New Path | Old # | New # |
-|----------|----------|-------|-------|
-| `05-Python-Fundamentals/16-python-uv-package-manager/` | `05-Python-Fundamentals/15-python-uv-package-manager/` | 16 | 15 |
-| `05-Python-Fundamentals/17-introduction-to-python/` | `05-Python-Fundamentals/16-introduction-to-python/` | 17 | 16 |
-| `05-Python-Fundamentals/18-data-types/` | `05-Python-Fundamentals/17-data-types/` | 18 | 17 |
-| `05-Python-Fundamentals/19-operators-keywords-variables/` | `05-Python-Fundamentals/18-operators-keywords-variables/` | 19 | 18 |
-| `05-Python-Fundamentals/20-strings-type-casting/` | `05-Python-Fundamentals/19-strings-type-casting/` | 20 | 19 |
-| `05-Python-Fundamentals/21-control-flow-loops/` | `05-Python-Fundamentals/20-control-flow-loops/` | 21 | 20 |
-| `05-Python-Fundamentals/22-lists-tuples-dictionary/` | `05-Python-Fundamentals/21-lists-tuples-dictionary/` | 22 | 21 |
-| `05-Python-Fundamentals/23-set-frozenset-gc/` | `05-Python-Fundamentals/22-set-frozenset-gc/` | 23 | 22 |
-| `05-Python-Fundamentals/24-module-functions/` | `05-Python-Fundamentals/23-module-functions/` | 24 | 23 |
-| `05-Python-Fundamentals/25-exception-handling/` | `05-Python-Fundamentals/24-exception-handling/` | 25 | 24 |
-| `05-Python-Fundamentals/26-io-file-handling/` | `05-Python-Fundamentals/25-io-file-handling/` | 26 | 25 |
-| `05-Python-Fundamentals/27-math-datetime-calendar/` | `05-Python-Fundamentals/26-math-datetime-calendar/` | 27 | 26 |
-| `05-Python-Fundamentals/28-oop-part-1/` | `05-Python-Fundamentals/27-oop-part-1/` | 28 | 27 |
-| `05-Python-Fundamentals/29-oop-part-2/` | `05-Python-Fundamentals/28-oop-part-2/` | 29 | 28 |
-| `05-Python-Fundamentals/30-metaclasses-dataclasses/` | `05-Python-Fundamentals/29-metaclasses-dataclasses/` | 30 | 29 |
-| `05-Python-Fundamentals/31-pydantic-generics/` | `05-Python-Fundamentals/30-pydantic-generics/` | 31 | 30 |
-| `05-Python-Fundamentals/32-asyncio/` | `05-Python-Fundamentals/31-asyncio/` | 32 | 31 |
-| `05-Python-Fundamentals/33-cpython-gil/` | `05-Python-Fundamentals/32-cpython-gil/` | 33 | 32 |
+| Old Path                                                  | New Path                                                  | Old # | New # |
+| --------------------------------------------------------- | --------------------------------------------------------- | ----- | ----- |
+| `05-Python-Fundamentals/16-python-uv-package-manager/`    | `05-Python-Fundamentals/15-python-uv-package-manager/`    | 16    | 15    |
+| `05-Python-Fundamentals/17-introduction-to-python/`       | `05-Python-Fundamentals/16-introduction-to-python/`       | 17    | 16    |
+| `05-Python-Fundamentals/18-data-types/`                   | `05-Python-Fundamentals/17-data-types/`                   | 18    | 17    |
+| `05-Python-Fundamentals/19-operators-keywords-variables/` | `05-Python-Fundamentals/18-operators-keywords-variables/` | 19    | 18    |
+| `05-Python-Fundamentals/20-strings-type-casting/`         | `05-Python-Fundamentals/19-strings-type-casting/`         | 20    | 19    |
+| `05-Python-Fundamentals/21-control-flow-loops/`           | `05-Python-Fundamentals/20-control-flow-loops/`           | 21    | 20    |
+| `05-Python-Fundamentals/22-lists-tuples-dictionary/`      | `05-Python-Fundamentals/21-lists-tuples-dictionary/`      | 22    | 21    |
+| `05-Python-Fundamentals/23-set-frozenset-gc/`             | `05-Python-Fundamentals/22-set-frozenset-gc/`             | 23    | 22    |
+| `05-Python-Fundamentals/24-module-functions/`             | `05-Python-Fundamentals/23-module-functions/`             | 24    | 23    |
+| `05-Python-Fundamentals/25-exception-handling/`           | `05-Python-Fundamentals/24-exception-handling/`           | 25    | 24    |
+| `05-Python-Fundamentals/26-io-file-handling/`             | `05-Python-Fundamentals/25-io-file-handling/`             | 26    | 25    |
+| `05-Python-Fundamentals/27-math-datetime-calendar/`       | `05-Python-Fundamentals/26-math-datetime-calendar/`       | 27    | 26    |
+| `05-Python-Fundamentals/28-oop-part-1/`                   | `05-Python-Fundamentals/27-oop-part-1/`                   | 28    | 27    |
+| `05-Python-Fundamentals/29-oop-part-2/`                   | `05-Python-Fundamentals/28-oop-part-2/`                   | 29    | 28    |
+| `05-Python-Fundamentals/30-metaclasses-dataclasses/`      | `05-Python-Fundamentals/29-metaclasses-dataclasses/`      | 30    | 29    |
+| `05-Python-Fundamentals/31-pydantic-generics/`            | `05-Python-Fundamentals/30-pydantic-generics/`            | 31    | 30    |
+| `05-Python-Fundamentals/32-asyncio/`                      | `05-Python-Fundamentals/31-asyncio/`                      | 32    | 31    |
+| `05-Python-Fundamentals/33-cpython-gil/`                  | `05-Python-Fundamentals/32-cpython-gil/`                  | 33    | 32    |
 
 ### Slide PDF Renames (18 operations)
 
-| Old Filename | New Filename |
-|--------------|--------------|
+| Old Filename            | New Filename            |
+| ----------------------- | ----------------------- |
 | `chapter-16-slides.pdf` | `chapter-15-slides.pdf` |
 | `chapter-17-slides.pdf` | `chapter-16-slides.pdf` |
 | `chapter-18-slides.pdf` | `chapter-17-slides.pdf` |
@@ -158,26 +167,26 @@ Operations must be performed in this order to avoid conflicts:
 
 ### Image Directory Renames (15 operations - sparse)
 
-| Old Path | New Path | Exists |
-|----------|----------|--------|
-| `img/part-5/chapter-16/` | `img/part-5/chapter-15/` | ✓ |
-| `img/part-5/chapter-17/` | `img/part-5/chapter-16/` | ✗ |
-| `img/part-5/chapter-18/` | `img/part-5/chapter-17/` | ✓ |
-| `img/part-5/chapter-19/` | `img/part-5/chapter-18/` | ✓ |
-| `img/part-5/chapter-20/` | `img/part-5/chapter-19/` | ✗ |
-| `img/part-5/chapter-21/` | `img/part-5/chapter-20/` | ✓ |
-| `img/part-5/chapter-22/` | `img/part-5/chapter-21/` | ✓ |
-| `img/part-5/chapter-23/` | `img/part-5/chapter-22/` | ✓ |
-| `img/part-5/chapter-24/` | `img/part-5/chapter-23/` | ✓ |
-| `img/part-5/chapter-25/` | `img/part-5/chapter-24/` | ✗ |
-| `img/part-5/chapter-26/` | `img/part-5/chapter-25/` | ✓ |
-| `img/part-5/chapter-27/` | `img/part-5/chapter-26/` | ✓ |
-| `img/part-5/chapter-28/` | `img/part-5/chapter-27/` | ✓ |
-| `img/part-5/chapter-29/` | `img/part-5/chapter-28/` | ✓ |
-| `img/part-5/chapter-30/` | `img/part-5/chapter-29/` | ✓ |
-| `img/part-5/chapter-31/` | `img/part-5/chapter-30/` | ✓ |
-| `img/part-5/chapter-32/` | `img/part-5/chapter-31/` | ✓ |
-| `img/part-5/chapter-33/` | `img/part-5/chapter-32/` | ✓ |
+| Old Path                 | New Path                 | Exists |
+| ------------------------ | ------------------------ | ------ |
+| `img/part-5/chapter-16/` | `img/part-5/chapter-15/` | ✓      |
+| `img/part-5/chapter-17/` | `img/part-5/chapter-16/` | ✗      |
+| `img/part-5/chapter-18/` | `img/part-5/chapter-17/` | ✓      |
+| `img/part-5/chapter-19/` | `img/part-5/chapter-18/` | ✓      |
+| `img/part-5/chapter-20/` | `img/part-5/chapter-19/` | ✗      |
+| `img/part-5/chapter-21/` | `img/part-5/chapter-20/` | ✓      |
+| `img/part-5/chapter-22/` | `img/part-5/chapter-21/` | ✓      |
+| `img/part-5/chapter-23/` | `img/part-5/chapter-22/` | ✓      |
+| `img/part-5/chapter-24/` | `img/part-5/chapter-23/` | ✓      |
+| `img/part-5/chapter-25/` | `img/part-5/chapter-24/` | ✗      |
+| `img/part-5/chapter-26/` | `img/part-5/chapter-25/` | ✓      |
+| `img/part-5/chapter-27/` | `img/part-5/chapter-26/` | ✓      |
+| `img/part-5/chapter-28/` | `img/part-5/chapter-27/` | ✓      |
+| `img/part-5/chapter-29/` | `img/part-5/chapter-28/` | ✓      |
+| `img/part-5/chapter-30/` | `img/part-5/chapter-29/` | ✓      |
+| `img/part-5/chapter-31/` | `img/part-5/chapter-30/` | ✓      |
+| `img/part-5/chapter-32/` | `img/part-5/chapter-31/` | ✓      |
+| `img/part-5/chapter-33/` | `img/part-5/chapter-32/` | ✓      |
 
 ### README Frontmatter Updates (18 files)
 
@@ -192,7 +201,6 @@ slides:
   source: "slides/chapter-16-slides.pdf"
   title: "Chapter 16: Python UV — The Fastest Python Package Manager"
 ---
-
 # After
 ---
 sidebar_position: 15
@@ -207,12 +215,12 @@ slides:
 
 Pattern replacement in all Part 5 lesson files:
 
-| Find Pattern | Replace With |
-|--------------|--------------|
+| Find Pattern              | Replace With              |
+| ------------------------- | ------------------------- |
 | `/img/part-5/chapter-16/` | `/img/part-5/chapter-15/` |
 | `/img/part-5/chapter-17/` | `/img/part-5/chapter-16/` |
 | `/img/part-5/chapter-18/` | `/img/part-5/chapter-17/` |
-| ... | ... |
+| ...                       | ...                       |
 | `/img/part-5/chapter-33/` | `/img/part-5/chapter-32/` |
 
 ---
@@ -223,10 +231,10 @@ Pattern replacement in all Part 5 lesson files:
 
 ```bash
 # Verify current state matches expectations
-ls book-source/docs/04-SDD-RI-Fundamentals/ | grep "^1[345]-"
+ls apps/learn-app/docs/04-SDD-RI-Fundamentals/ | grep "^1[345]-"
 # Expected: 13-, 14-, 15-
 
-ls book-source/docs/05-Python-Fundamentals/ | grep "^[0-9]" | wc -l
+ls apps/learn-app/docs/05-Python-Fundamentals/ | grep "^[0-9]" | wc -l
 # Expected: 18
 
 ls book-source/static/slides/ | grep "chapter-" | wc -l
@@ -237,7 +245,7 @@ ls book-source/static/slides/ | grep "chapter-" | wc -l
 
 ```bash
 # SC-003: Part 5 directories numbered 15-32
-ls book-source/docs/05-Python-Fundamentals/ | grep "^1[5-9]-\|^2[0-9]-\|^3[0-2]-" | wc -l
+ls apps/learn-app/docs/05-Python-Fundamentals/ | grep "^1[5-9]-\|^2[0-9]-\|^3[0-2]-" | wc -l
 # Expected: 18
 
 # SC-004: Slide PDFs exist
@@ -246,15 +254,15 @@ for i in $(seq 15 32); do
 done
 
 # SC-005: No old chapter numbers in Part 5 READMEs
-grep -r "Chapter 1[6-9]\|Chapter 2[0-9]\|Chapter 3[0-3]" book-source/docs/05-Python-Fundamentals/*/README.md
+grep -r "Chapter 1[6-9]\|Chapter 2[0-9]\|Chapter 3[0-3]" apps/learn-app/docs/05-Python-Fundamentals/*/README.md
 # Expected: 0 matches
 
 # SC-006: No old slide references
-grep -r "chapter-1[6-9]-slides\|chapter-2[0-9]-slides\|chapter-3[0-3]-slides" book-source/docs/05-Python-Fundamentals/
+grep -r "chapter-1[6-9]-slides\|chapter-2[0-9]-slides\|chapter-3[0-3]-slides" apps/learn-app/docs/05-Python-Fundamentals/
 # Expected: 0 matches
 
 # SC-007: Part 4 has exactly 2 chapters
-ls book-source/docs/04-SDD-RI-Fundamentals/ | grep "^1[34]-" | wc -l
+ls apps/learn-app/docs/04-SDD-RI-Fundamentals/ | grep "^1[34]-" | wc -l
 # Expected: 2
 
 # SC-010: Image directories exist
@@ -262,7 +270,7 @@ ls book-source/static/img/part-5/ | grep "chapter-" | wc -l
 # Expected: 15 (same count, different numbers)
 
 # SC-011: No old image references
-grep -r "/img/part-5/chapter-1[6-9]\|/img/part-5/chapter-2[0-9]\|/img/part-5/chapter-3[0-3]" book-source/docs/05-Python-Fundamentals/
+grep -r "/img/part-5/chapter-1[6-9]\|/img/part-5/chapter-2[0-9]\|/img/part-5/chapter-3[0-3]" apps/learn-app/docs/05-Python-Fundamentals/
 # Expected: 0 matches
 
 # SC-001: Docusaurus build
@@ -276,12 +284,12 @@ cd book-source && npm run build
 
 No complexity violations - this is a straightforward file reorganization task.
 
-| Aspect | Assessment |
-|--------|------------|
+| Aspect          | Assessment                                     |
+| --------------- | ---------------------------------------------- |
 | Operation Count | ~200 operations (acceptable for one-time task) |
-| Risk Level | Medium (many files, but pattern-based) |
-| Rollback | Easy (single commit can be reverted) |
-| Testing | Comprehensive (grep + build validation) |
+| Risk Level      | Medium (many files, but pattern-based)         |
+| Rollback        | Easy (single commit can be reverted)           |
+| Testing         | Comprehensive (grep + build validation)        |
 
 ---
 

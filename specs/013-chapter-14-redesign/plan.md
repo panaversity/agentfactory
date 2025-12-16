@@ -24,27 +24,31 @@ Redesign Chapter 14 (Data Types) to apply beginner-friendly pedagogy: explain WH
 **Source Material**: `context/13_chap12_to_29_specs/Lesson_02_Data_Types.md`
 **Project Type**: Educational content (book chapter with 5 lessons)
 **Constraints**:
-  - Beginner-friendly language (avoid jargon without explanation)
-  - Real-world examples (not abstract x/y/z)
-  - Type hints in ALL examples (normalize practice)
-  - No overlap with Chapter 13 content
-**Scale/Scope**: 5 lessons, ~3-4 hours total learning time, 13 Python types covered
+
+- Beginner-friendly language (avoid jargon without explanation)
+- Real-world examples (not abstract x/y/z)
+- Type hints in ALL examples (normalize practice)
+- No overlap with Chapter 13 content
+  **Scale/Scope**: 5 lessons, ~3-4 hours total learning time, 13 Python types covered
 
 ## Constitution Check
 
-*GATE: Must pass before lesson design.*
+_GATE: Must pass before lesson design._
 
 ✅ **Principle 13 (Graduated Teaching Pattern)**: PASS
+
 - Tier 1 (Book teaches foundational): ✓ Concepts (WHAT int is, WHY types matter)
 - Tier 2 (AI handles complex): ✓ "Try With AI" exercises for practice
 - Tier 3 (AI orchestration): N/A (no multi-step workflows in this chapter)
 
 ✅ **Principle 2 (Spec-Driven Development)**: PASS
+
 - Type hints taught as specifications from day one
 - Every example uses type hints to normalize practice
 - Connects to "specs as new syntax" philosophy
 
 ✅ **Cognitive Load (Target Audience - Beginners)**: PASS
+
 - Max 7 concepts per lesson (A2 proficiency limit)
 - Lesson 1: 6 concepts (data types, why matter, 7 categories, decision framework, type(), print review)
 - Lesson 2: 6 concepts (int, float, complex, when to use, type(), common mistakes)
@@ -53,16 +57,19 @@ Redesign Chapter 14 (Data Types) to apply beginner-friendly pedagogy: explain WH
 - Lesson 5: 7 concepts (isinstance, id, type casting, implicit/explicit, interning, number systems, capstone)
 
 ✅ **Progressive Complexity**: PASS
+
 - Core 5 types (int/float/str/bool/None) deep dive
 - Collections at awareness level (Chapter 18 deep dive)
 - Advanced topics marked clearly (interning, number systems)
 
 ✅ **Co-Learning Partnership (Principle 18)**: PASS
+
 - "Try With AI" sections in every lesson
 - Learners explain concepts to AI (Feynman technique)
 - AI helps validate understanding
 
 ✅ **No Bloat**: PASS
+
 - Chapter 14 scoped to data types only
 - No overlap with Chapter 13 (print/variables)
 - No deep collection methods (Chapter 18's job)
@@ -85,7 +92,7 @@ specs/013-chapter-14-redesign/
 ### Content Files (book-source directory)
 
 ```text
-book-source/docs/04-Python-Fundamentals/14-data-types/
+apps/learn-app/docs/04-Python-Fundamentals/14-data-types/
 ├── readme.md            # Chapter overview/landing page
 ├── 01-understanding-data-types.md       # Lesson 1 (concepts)
 ├── 02-numeric-types.md                   # Lesson 2 (int/float/complex)
@@ -99,6 +106,7 @@ book-source/docs/04-Python-Fundamentals/14-data-types/
 ## Complexity Tracking
 
 No complexity violations. Educational content aligns with constitutional principles:
+
 - Beginner-friendly (A2-B1 proficiency)
 - Concept-before-syntax (WHAT→WHY→WHEN→Code)
 - Progressive disclosure (core→awareness→advanced)
@@ -109,12 +117,13 @@ No complexity violations. Educational content aligns with constitutional princip
 
 ### Lesson 1: Understanding Data Types (Concepts First)
 
-**File**: `book-source/docs/04-Python-Fundamentals/14-data-types/01-understanding-data-types.md`
+**File**: `apps/learn-app/docs/04-Python-Fundamentals/14-data-types/01-understanding-data-types.md`
 **Duration**: 40-45 minutes
 **Proficiency**: CEFR A2 (Beginner)
 **New Concepts**: 6 (data types, why matter, 7 categories, decision framework, type(), print review)
 
 **Learning Objectives** (maps to User Story 1):
+
 - LO-1.1: Explain what a data type is in own words (SC-001)
 - LO-1.2: Explain why types matter with examples (SC-010)
 - LO-1.3: Identify the 7 type categories Python uses
@@ -123,22 +132,26 @@ No complexity violations. Educational content aligns with constitutional princip
 **Content Structure**:
 
 1. **Hook** (5 min): Kitchen analogy
+
    - "Imagine your kitchen: jars labeled 'flour', 'sugar', 'salt'. Python does the same with data!"
    - Real-world problem: Why can't you add "5" + 5? Types explain this.
 
 2. **WHAT is a Data Type?** (10 min) - Concept before syntax
+
    - Definition: Python's classification system for different kinds of data
    - Analogy: Like organizing library books by genre (fiction, non-fiction, reference)
    - Why Python needs classification: Different data needs different operations
    - **NO CODE YET** - pure concepts
 
 3. **WHY Types Matter** (10 min)
+
    - Operations depend on type: numbers can add, text can concatenate
    - Type mismatches cause errors: `5 + "hello"` fails
    - Memory efficiency: int vs float storage differences
    - Data validation: Ensuring age is a number, not text
 
 4. **The 7 Type Categories** (10 min) - Overview only
+
    - Numeric Types: int, float, complex (for numbers)
    - Text Type: str (for words, sentences)
    - Boolean Type: bool (for True/False)
@@ -149,6 +162,7 @@ No complexity violations. Educational content aligns with constitutional princip
    - **Message**: "We'll explore each in detail soon!"
 
 5. **Type Decision Framework** (5 min)
+
    - Question pattern: "What kind of data am I storing?"
      - Whole number (age, count) → int
      - Decimal number (price, measurement) → float
@@ -169,15 +183,18 @@ No complexity violations. Educational content aligns with constitutional princip
    - **Pattern**: Code appears AFTER explaining what type() does
 
 **Practice Exercises**:
+
 - Exercise 1: Match 10 data examples to type categories (age→int, price→float, name→str)
 - Exercise 2: Explain in own words "why types matter"
 - Exercise 3: Use type() to inspect 5 different values
 
 **Try With AI**:
+
 - "Explain to your AI assistant what a data type is using the kitchen analogy. Ask it to give you 3 new analogies."
 - "Ask AI to create 10 data scenarios (like 'student grade', 'email address') and classify them together."
 
 **Success Criteria Check**:
+
 - ✅ SC-001: Can explain data type in own words
 - ✅ SC-010: Can explain why types matter
 - ✅ SC-002: Can classify 10 scenarios correctly
@@ -186,12 +203,13 @@ No complexity violations. Educational content aligns with constitutional princip
 
 ### Lesson 2: Numeric Types (int, float, complex)
 
-**File**: `book-source/docs/04-Python-Fundamentals/14-data-types/02-numeric-types.md`
+**File**: `apps/learn-app/docs/04-Python-Fundamentals/14-data-types/02-numeric-types.md`
 **Duration**: 45-50 minutes
 **Proficiency**: CEFR A2-B1
 **New Concepts**: 6 (int, float, complex, when to use, type(), common mistakes)
 
 **Learning Objectives** (maps to User Story 2):
+
 - LO-2.1: Distinguish int, float, complex with reasoning (SC-003)
 - LO-2.2: Choose appropriate numeric type for scenarios (SC-002)
 - LO-2.3: Use type() to verify numeric types (SC-005)
@@ -200,10 +218,12 @@ No complexity violations. Educational content aligns with constitutional princip
 **Content Structure**:
 
 1. **Hook** (5 min): Price tag problem
+
    - "Why is age 25, but price $25.99? Different number types!"
    - Preview: 3 numeric types in Python, when to use each
 
 2. **WHAT is int?** (10 min) - Deep dive
+
    - Definition: Whole numbers without decimal points
    - Characteristics: Positive, negative, or zero. No fractions.
    - Range: Unlimited (Python 3 advantage)
@@ -212,6 +232,7 @@ No complexity violations. Educational content aligns with constitutional princip
    - **WHEN to choose**: Ages, counts, indices, quantities of discrete items
 
 3. **NOW Show int Code** (5 min)
+
    ```python
    age: int = 25
    student_count: int = 100
@@ -220,9 +241,11 @@ No complexity violations. Educational content aligns with constitutional princip
 
    print(type(age))  # <class 'int'>
    ```
+
    - Note type hints normalize practice
 
 4. **WHAT is float?** (10 min) - Deep dive
+
    - Definition: Numbers with decimal points
    - Characteristics: Can represent fractions, scientific notation
    - IEEE 754 standard (brief mention, marked Advanced)
@@ -231,6 +254,7 @@ No complexity violations. Educational content aligns with constitutional princip
    - **WHEN to choose**: Prices, measurements, percentages, scientific data
 
 5. **NOW Show float Code** (5 min)
+
    ```python
    price: float = 19.99
    pi: float = 3.14159
@@ -241,6 +265,7 @@ No complexity violations. Educational content aligns with constitutional princip
    ```
 
 6. **Decision Guide: int vs float** (5 min)
+
    - Table format:
      | Scenario | Type | Why |
      |----------|------|-----|
@@ -250,6 +275,7 @@ No complexity violations. Educational content aligns with constitutional princip
      | Distance (km) | float | Can be 3.7 km |
 
 7. **WHAT is complex?** (5 min) - Brief exposure (marked Advanced)
+
    - Definition: Numbers with real + imaginary parts (a+bj format)
    - Real-world use: Scientific computing, engineering, signal processing
    - **WHY rare for beginners**: Specialized applications
@@ -269,15 +295,18 @@ No complexity violations. Educational content aligns with constitutional princip
    - Using float for money (better: Decimal module, covered later)
 
 **Practice Exercises**:
+
 - Exercise 1: Classify 15 numbers into int/float/complex with reasoning (SC-003)
 - Exercise 2: Fix code where wrong numeric types are used
 - Exercise 3: Use type() to verify 10 numeric values
 
 **Try With AI**:
+
 - "Generate 20 scenarios and practice choosing int vs float. Ask AI to explain when you're wrong."
 - "Ask AI to create 5 complex number examples from real science applications."
 
 **Success Criteria Check**:
+
 - ✅ SC-003: 90%+ correct int vs float distinction
 - ✅ SC-005: Can use type() correctly
 - ✅ SC-002: Correct type classification with reasoning
@@ -286,12 +315,13 @@ No complexity violations. Educational content aligns with constitutional princip
 
 ### Lesson 3: Text, Boolean, and None
 
-**File**: `book-source/docs/04-Python-Fundamentals/14-data-types/03-text-boolean-none.md`
+**File**: `apps/learn-app/docs/04-Python-Fundamentals/14-data-types/03-text-boolean-none.md`
 **Duration**: 45-50 minutes
 **Proficiency**: CEFR B1
 **New Concepts**: 5 (str, bool, None, truthy/falsy, immutability)
 
 **Learning Objectives**:
+
 - LO-3.1: Explain str characteristics and quote variations
 - LO-3.2: Use bool for True/False decisions
 - LO-3.3: Explain None as absence of value
@@ -300,9 +330,11 @@ No complexity violations. Educational content aligns with constitutional princip
 **Content Structure**:
 
 1. **Hook** (5 min): Name tag analogy
+
    - "Text is everywhere: names, emails, messages. Python uses str (string) type."
 
 2. **WHAT is str?** (12 min)
+
    - Definition: Sequence of characters (letters, numbers, symbols)
    - Immutability: Can't change individual characters (create new string instead)
    - Quote variations:
@@ -312,6 +344,7 @@ No complexity violations. Educational content aligns with constitutional princip
    - **WHY use str**: Store text data (names, emails, messages, file paths)
    - **WHEN to choose**: Any text representation
    - Code examples:
+
      ```python
      name: str = "Alice"
      email: str = 'alice@example.com'
@@ -322,11 +355,13 @@ No complexity violations. Educational content aligns with constitutional princip
      ```
 
 3. **WHAT is bool?** (10 min)
+
    - Definition: True or False values (only two possible values!)
    - Capitalization matters: `True`, `False` (not `true`, `false`)
    - **WHY use bool**: Decision-making, conditions, flags
    - **WHEN to choose**: Yes/No questions, status flags, validation results
    - Code examples:
+
      ```python
      is_student: bool = True
      has_passed: bool = False
@@ -336,6 +371,7 @@ No complexity violations. Educational content aligns with constitutional princip
      ```
 
 4. **Truthy and Falsy Values** (10 min) - Important concept
+
    - Falsy values (evaluate to False in conditions):
      - `False` (obviously!)
      - `0` (zero)
@@ -358,12 +394,14 @@ No complexity violations. Educational content aligns with constitutional princip
    - **Why this matters**: Understanding conditions in if statements (Chapter 17)
 
 5. **WHAT is None?** (8 min)
+
    - Definition: Special type representing absence of value
    - Not zero, not empty string - it's "nothing"
    - Singleton: Only ONE None object in entire Python program
    - **WHY use None**: Represent missing data, default values, no result
    - **WHEN to choose**: Optional parameters, function returns nothing, missing data
    - Code examples:
+
      ```python
      result: None = None
      optional_value: int | None = None  # Python 3.10+ syntax
@@ -372,15 +410,18 @@ No complexity violations. Educational content aligns with constitutional princip
      ```
 
 **Practice Exercises**:
+
 - Exercise 1: Identify truthy/falsy for 15 values (SC-004)
 - Exercise 2: Choose str/bool/None for 10 scenarios
 - Exercise 3: Fix code using wrong quote types or None misuse
 
 **Try With AI**:
+
 - "Ask AI to create 20 truthy/falsy examples and explain each."
 - "Discuss with AI: When would you use None vs 0 vs empty string?"
 
 **Success Criteria Check**:
+
 - ✅ SC-004: 75%+ correct truthy/falsy identification
 - ✅ SC-002: Correct type classification
 
@@ -388,12 +429,13 @@ No complexity violations. Educational content aligns with constitutional princip
 
 ### Lesson 4: Collections Awareness + Binary Types
 
-**File**: `book-source/docs/04-Python-Fundamentals/14-data-types/04-collections-and-binary-types.md`
+**File**: `apps/learn-app/docs/04-Python-Fundamentals/14-data-types/04-collections-and-binary-types.md`
 **Duration**: 50-55 minutes
 **Proficiency**: CEFR B1
 **New Concepts**: 7 (list, tuple, dict, set, range, bytes awareness, binary intro)
 
 **Learning Objectives** (maps to User Story 3):
+
 - LO-4.1: Recognize collection types and basic syntax (SC-007)
 - LO-4.2: Know when to use each collection type
 - LO-4.3: Understand "deep dive in Chapter 18" messaging
@@ -402,15 +444,18 @@ No complexity violations. Educational content aligns with constitutional princip
 **Content Structure**:
 
 1. **Hook** (5 min): Storage containers analogy
+
    - "Single data types store one thing. Collections store many things!"
    - Preview: 5 collection types, brief binary types
 
 2. **WHAT is list?** (8 min) - Awareness level
+
    - Definition: Ordered, mutable collection of items
    - Syntax: Square brackets `[item1, item2, item3]`
    - **WHY use list**: Store multiple related items that can change
    - **WHEN to choose**: Shopping list, student names, scores
    - Code example:
+
      ```python
      scores: list[int] = [95, 87, 92, 88]
      names: list[str] = ["Alice", "Bob", "Charlie"]
@@ -418,14 +463,17 @@ No complexity violations. Educational content aligns with constitutional princip
 
      print(type(scores))  # <class 'list'>
      ```
+
    - **Message**: "Syntax only here. Methods like append(), remove() in Chapter 18!"
 
 3. **WHAT is tuple?** (7 min)
+
    - Definition: Ordered, immutable collection
    - Syntax: Parentheses `(item1, item2, item3)`
    - **WHY use tuple**: Store data that shouldn't change
    - **WHEN to choose**: Coordinates (x, y), RGB colors (255, 0, 0), fixed configurations
    - Code example:
+
      ```python
      coordinates: tuple[int, int] = (10, 20)
      rgb: tuple[int, int, int] = (255, 0, 0)
@@ -434,11 +482,13 @@ No complexity violations. Educational content aligns with constitutional princip
      ```
 
 4. **WHAT is dict?** (8 min)
+
    - Definition: Key-value pairs (mapping type)
    - Syntax: Curly braces `{key1: value1, key2: value2}`
    - **WHY use dict**: Look up values by meaningful keys
    - **WHEN to choose**: Student records, configuration settings, JSON-like data
    - Code example:
+
      ```python
      student: dict[str, int] = {"name": "Alice", "age": 20, "grade": 95}
      config: dict[str, str] = {"host": "localhost", "port": "8080"}
@@ -447,25 +497,30 @@ No complexity violations. Educational content aligns with constitutional princip
      ```
 
 5. **WHAT is set?** (7 min)
+
    - Definition: Unordered, unique values, mutable
    - Syntax: Curly braces `{item1, item2}` (no duplicates!)
    - **WHY use set**: Ensure uniqueness, fast membership testing
    - **WHEN to choose**: Unique tags, removing duplicates, mathematical sets
    - Code example:
+
      ```python
      tags: set[str] = {"python", "AI", "coding"}
      unique_ids: set[int] = {1, 2, 3, 2, 1}  # Becomes {1, 2, 3}
 
      print(type(tags))  # <class 'set'>
      ```
+
    - Brief mention: frozenset (immutable version)
 
 6. **WHAT is range?** (5 min)
+
    - Definition: Immutable sequence of numbers
    - Syntax: `range(start, stop, step)`
    - **WHY use range**: Generate number sequences efficiently
    - **WHEN to choose**: Loops (Chapter 17), number sequences
    - Code example:
+
      ```python
      numbers = range(0, 10)    # 0 to 9
      evens = range(0, 10, 2)   # 0, 2, 4, 6, 8
@@ -474,18 +529,21 @@ No complexity violations. Educational content aligns with constitutional princip
      ```
 
 7. **Binary Types** (8 min) - Brief exposure (marked Advanced)
+
    - **bytes**: Immutable binary data
    - **bytearray**: Mutable binary data
    - **memoryview**: Efficient binary access without copying
    - **WHY exist**: File I/O, network protocols, image data, low-level operations
    - **WHEN to use**: Reading binary files, network communication, image processing
    - Code example:
+
      ```python
      data: bytes = b"Hello"
      mutable_data: bytearray = bytearray(b"World")
 
      print(type(data))  # <class 'bytes'>
      ```
+
    - Message: "Advanced topic. You'll use these when working with files (Chapter 22) or networks."
 
 8. **Collection Decision Guide** (2 min)
@@ -499,15 +557,18 @@ No complexity violations. Educational content aligns with constitutional princip
      | Number sequence | range | Memory efficient |
 
 **Practice Exercises**:
+
 - Exercise 1: Match 10 scenarios to collection types (SC-007)
 - Exercise 2: Identify syntax errors in collection definitions
 - Exercise 3: Know which chapter covers deep dive for each type
 
 **Try With AI**:
+
 - "Ask AI to create 15 real-world scenarios requiring different collections."
 - "Discuss: Why would you choose tuple over list for coordinates?"
 
 **Success Criteria Check**:
+
 - ✅ SC-007: 70%+ recognize collections but know Chapter 18 for details
 - ✅ SC-002: Correct classification
 
@@ -515,12 +576,13 @@ No complexity violations. Educational content aligns with constitutional princip
 
 ### Lesson 5: Type Utilities and Capstone Project
 
-**File**: `book-source/docs/04-Python-Fundamentals/14-data-types/05-type-utilities-and-capstone.md`
+**File**: `apps/learn-app/docs/04-Python-Fundamentals/14-data-types/05-type-utilities-and-capstone.md`
 **Duration**: 60-70 minutes
 **Proficiency**: CEFR B1
 **New Concepts**: 7 (isinstance, id, type casting, implicit/explicit, interning, number systems, capstone)
 
 **Learning Objectives**:
+
 - LO-5.1: Use type(), id(), isinstance() correctly (SC-005)
 - LO-5.2: Perform type casting between types (SC-006)
 - LO-5.3: Distinguish implicit vs explicit casting
@@ -532,6 +594,7 @@ No complexity violations. Educational content aligns with constitutional princip
 1. **Review** (5 min): Quick recap of all types learned
 
 2. **type() Function** (5 min) - Already introduced, now reinforce
+
    - Purpose: Inspect type classification
    - Returns type object
    - Example:
@@ -543,10 +606,12 @@ No complexity violations. Educational content aligns with constitutional princip
      ```
 
 3. **id() Function** (8 min)
+
    - Purpose: Get object's unique identifier (memory address)
    - Every object has unique id
    - None is singleton (same id everywhere)
    - Example:
+
      ```python
      x: int = 42
      y: int = 42
@@ -557,10 +622,12 @@ No complexity violations. Educational content aligns with constitutional princip
      ```
 
 4. **isinstance() Function** (10 min)
+
    - Purpose: Check if object is instance of type
    - Better than `type(x) == int` for inheritance
    - Syntax: `isinstance(object, type)`
    - Example:
+
      ```python
      age: int = 25
      price: float = 19.99
@@ -574,10 +641,12 @@ No complexity violations. Educational content aligns with constitutional princip
      ```
 
 5. **Type Casting** (15 min) - Core skill
+
    - Definition: Converting from one type to another
    - Functions: int(), float(), str(), bool()
 
    **Explicit Casting**:
+
    ```python
    # String to int
    age_str: str = "25"
@@ -603,6 +672,7 @@ No complexity violations. Educational content aligns with constitutional princip
    ```
 
    **Implicit Casting** (Python does automatically):
+
    ```python
    result = 5 + 3.14  # int + float → float automatically
    print(result)      # 8.14 (float)
@@ -610,9 +680,11 @@ No complexity violations. Educational content aligns with constitutional princip
    ```
 
 6. **Integer Interning** (7 min) - Advanced (marked "For Curious Learners")
+
    - Python caches integers -5 to 256
    - These share same memory location
    - Example:
+
      ```python
      a: int = 42
      b: int = 42
@@ -623,14 +695,17 @@ No complexity violations. Educational content aligns with constitutional princip
      y: int = 1000
      print(x is y)    # False (not cached)
      ```
+
    - Why this matters: Memory efficiency, understanding object identity
 
 7. **Number Systems** (8 min) - Advanced (marked "For Curious Learners")
+
    - Binary (base 2): `0b1010` = 10
    - Hexadecimal (base 16): `0x1A` = 26
    - Octal (base 8): `0o12` = 10
    - ASCII codes: `ord('A')` = 65, `chr(65)` = 'A'
    - Example:
+
      ```python
      binary: int = 0b1010       # 10 in decimal
      hex_val: int = 0x1A        # 26 in decimal
@@ -652,16 +727,19 @@ No complexity violations. Educational content aligns with constitutional princip
    - "Try With AI" encouraged for extensions
 
 **Practice Exercises**:
+
 - Exercise 1: Type casting challenges (SC-006)
 - Exercise 2: Fix casting errors in provided code
 - Exercise 3: Identify when implicit vs explicit casting occurs
 - Exercise 4: Complete Type Explorer capstone
 
 **Try With AI**:
+
 - "Ask AI to create 20 type casting scenarios with edge cases."
 - "Extend Type Explorer with AI: add error handling, support more types, create user-friendly interface."
 
 **Success Criteria Check**:
+
 - ✅ SC-005: 85%+ can use type() correctly
 - ✅ SC-006: 80%+ perform type casting correctly
 - ✅ SC-009: 90%+ complete exercises without asking "Why int vs float?" (concept explained first)
@@ -671,6 +749,7 @@ No complexity violations. Educational content aligns with constitutional princip
 ## Implementation Sequence
 
 **Recommended Order**:
+
 1. Create chapter readme.md (overview, prerequisites, learning objectives)
 2. Implement Lesson 1 (foundational concepts)
 3. Validate Lesson 1 before proceeding
@@ -685,6 +764,7 @@ No complexity violations. Educational content aligns with constitutional princip
 12. Final chapter validation
 
 **Validation Gates** (after each lesson):
+
 - [ ] Concepts explained BEFORE code examples
 - [ ] WHAT→WHY→WHEN→Code pattern followed
 - [ ] Type hints used in ALL examples
@@ -699,6 +779,7 @@ No complexity violations. Educational content aligns with constitutional princip
 ## Cross-References
 
 **From Chapter 14 to Other Chapters**:
+
 - Chapter 13: "As you learned in Chapter 13, variables store data..."
 - Chapter 15: "In the next chapter, you'll learn operators to manipulate these types"
 - Chapter 16: "Strings have many methods - see Chapter 16 for deep dive"
@@ -706,6 +787,7 @@ No complexity violations. Educational content aligns with constitutional princip
 - Chapter 18: "Collections get detailed coverage in Chapter 18"
 
 **From Other Chapters to Chapter 14**:
+
 - Chapter 15 will reference: "Remember from Chapter 14: int + float = float"
 - Chapter 16 will reference: "Chapter 14 introduced str. Now we explore string methods"
 - Chapter 17 will reference: "Chapter 14 taught bool and truthy/falsy values"
@@ -714,6 +796,7 @@ No complexity violations. Educational content aligns with constitutional princip
 ## Quality Assurance Checklist
 
 Before marking implementation complete:
+
 - [ ] All 5 lessons follow WHAT→WHY→WHEN→Code pattern consistently
 - [ ] No code shown before conceptual explanation
 - [ ] Type hints present in every code example

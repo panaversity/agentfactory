@@ -15,7 +15,7 @@ DELIVERABLES CREATED
 ================================================================================
 
 1. LESSON FILE (Main Deliverable)
-   ✅ CREATED: book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/05-cursor-ai-features-and-workflows.md
+   ✅ CREATED: apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/05-cursor-ai-features-and-workflows.md
 
    File Metrics:
    - Size: 37KB on disk
@@ -387,7 +387,7 @@ DELIVERY STATUS
 ================================================================================
 
 File Created: ✅ YES
-- Path: book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/05-cursor-ai-features-and-workflows.md
+- Path: apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/05-cursor-ai-features-and-workflows.md
 - Size: 37KB
 - Format: Markdown with YAML frontmatter
 - Status: Ready for student access

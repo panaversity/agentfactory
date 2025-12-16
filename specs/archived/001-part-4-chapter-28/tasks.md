@@ -21,9 +21,10 @@ created: "2025-11-09"
 
 ## Path Conventions
 
-**Chapter content location**: `book-source/docs/04-Part-4-Python-Fundamentals/28-asyncio/`
+**Chapter content location**: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/28-asyncio/`
 
 **Lessons**:
+
 - Lesson 1: `01-asyncio-foundations.md`
 - Lesson 2: `02-concurrent-tasks.md`
 - Lesson 3: `03-advanced-patterns.md`
@@ -37,12 +38,12 @@ created: "2025-11-09"
 
 **Purpose**: Prepare chapter directory structure and validate prerequisites
 
-- [ ] T001 Create chapter directory: `book-source/docs/04-Part-4-Python-Fundamentals/28-asyncio/`
+- [ ] T001 Create chapter directory: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/28-asyncio/`
 - [ ] T002 [P] Validate Python 3.14+ installed and accessible via `python3 --version`
 - [ ] T003 [P] Install required dependencies: `uv pip install httpx asyncio-types`
 - [ ] T004 [P] Validate prerequisite chapters completed (Ch 20, 21, 24-27)
 - [ ] T005 Create chapter intro.md with navigation and prerequisites
-- [ ] T006 [P] Prepare code examples directory: `book-source/docs/04-Part-4-Python-Fundamentals/28-asyncio/code-examples/`
+- [ ] T006 [P] Prepare code examples directory: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/28-asyncio/code-examples/`
 
 **Checkpoint**: Chapter structure ready, all prerequisites validated
 
@@ -72,7 +73,7 @@ created: "2025-11-09"
 
 ### Implementation for User Story 1 (Lesson 1)
 
-- [ ] T012 [P] [US1] Create lesson file: `book-source/docs/04-Part-4-Python-Fundamentals/28-asyncio/01-asyncio-foundations.md`
+- [ ] T012 [P] [US1] Create lesson file: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/28-asyncio/01-asyncio-foundations.md`
 - [ ] T013 [US1] Write lesson YAML frontmatter (title, sidebar_position: 1, proficiency: B1, skills metadata)
 - [ ] T014 [US1] Write Hook section (3-5 min): Real-world problem - 10 sequential API calls vs concurrent
 - [ ] T015 [US1] Write Core 1: Event Loop Basics (20 min) - conceptual explanation, `asyncio.run()` abstraction, task switching diagram
@@ -102,7 +103,7 @@ created: "2025-11-09"
 
 ### Implementation for User Story 2 (Lesson 2)
 
-- [ ] T029 [P] [US2] Create lesson file: `book-source/docs/04-Part-4-Python-Fundamentals/28-asyncio/02-concurrent-tasks.md`
+- [ ] T029 [P] [US2] Create lesson file: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/28-asyncio/02-concurrent-tasks.md`
 - [ ] T030 [US2] Write lesson YAML frontmatter (title, sidebar_position: 2, proficiency: B1, skills metadata)
 - [ ] T031 [US2] Write Hook section (3-5 min): Problem - running 10 tasks concurrently without nested callbacks
 - [ ] T032 [US2] Write Core 1: create_task() Scheduling (20 min) - creating tasks, pending state, concurrent execution
@@ -134,7 +135,7 @@ created: "2025-11-09"
 
 ### Implementation for User Story 3 (Lesson 3)
 
-- [ ] T048 [P] [US3] Create lesson file: `book-source/docs/04-Part-4-Python-Fundamentals/28-asyncio/03-advanced-patterns.md`
+- [ ] T048 [P] [US3] Create lesson file: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/28-asyncio/03-advanced-patterns.md`
 - [ ] T049 [US3] Write lesson YAML frontmatter (title, sidebar_position: 3, proficiency: B1-B2, skills metadata)
 - [ ] T050 [US3] Write Hook section (3-5 min): Production async requires timeouts and error recovery
 - [ ] T051 [US3] Write Core 1: asyncio.timeout() Pattern (20 min) - context manager, TimeoutError handling
@@ -166,7 +167,7 @@ created: "2025-11-09"
 
 ### Implementation for User Story 4 (Lesson 4)
 
-- [ ] T067 [P] [US4] Create lesson file: `book-source/docs/04-Part-4-Python-Fundamentals/28-asyncio/04-cpu-bound-work-gil.md`
+- [ ] T067 [P] [US4] Create lesson file: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/28-asyncio/04-cpu-bound-work-gil.md`
 - [ ] T068 [US4] Write lesson YAML frontmatter (title, sidebar_position: 4, proficiency: B1-B2, skills metadata)
 - [ ] T069 [US4] Write Hook section (3-5 min): Asyncio doesn't help CPU-bound work - why?
 - [ ] T070 [US4] Write Core 1: Brief GIL Explanation (5 min, 2-3 sentences) - Python threads share one GIL, no true CPU parallelism
@@ -198,7 +199,7 @@ created: "2025-11-09"
 
 ### Implementation for User Story 5 (Lesson 5)
 
-- [ ] T086 [P] [US5] Create lesson file: `book-source/docs/04-Part-4-Python-Fundamentals/28-asyncio/05-hybrid-workloads.md`
+- [ ] T086 [P] [US5] Create lesson file: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/28-asyncio/05-hybrid-workloads.md`
 - [ ] T087 [US5] Write lesson YAML frontmatter (title, sidebar_position: 5, proficiency: B2, skills metadata)
 - [ ] T088 [US5] Write Hook section (3-5 min): AI apps need both I/O concurrency and CPU parallelism
 - [ ] T089 [US5] Write Core 1: Hybrid Pattern Overview (15 min) - TaskGroup for I/O + InterpreterPoolExecutor for CPU
@@ -230,7 +231,7 @@ created: "2025-11-09"
 
 ### Implementation for User Story 6 (Lesson 6 - Capstone)
 
-- [ ] T105 [P] [US6] Create lesson file: `book-source/docs/04-Part-4-Python-Fundamentals/28-asyncio/06-capstone-ai-agent.md`
+- [ ] T105 [P] [US6] Create lesson file: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/28-asyncio/06-capstone-ai-agent.md`
 - [ ] T106 [US6] Write lesson YAML frontmatter (title, sidebar_position: 6, proficiency: B2, skills metadata)
 - [ ] T107 [US6] Write Hook section (5 min): Real AI systems combine all asyncio patterns
 - [ ] T108 [US6] Write Project Overview (10 min): Multi-service AI agent architecture (Weather + News + Knowledge Base → concurrent fetch → parallel inference → aggregation)
@@ -281,11 +282,13 @@ created: "2025-11-09"
 ### User Story Completion Order
 
 **Can be parallelized** (after foundational phase):
+
 - US1 (Lesson 1) ⚡ Independent
 - US2 (Lesson 2) ⚡ Independent (but better after Lesson 1 for learning progression)
 - US3 (Lesson 3) ⚡ Independent (but better after Lessons 1-2)
 
 **Sequential dependencies**:
+
 - US4 (Lesson 4) → Requires US1 (I/O vs CPU understanding)
 - US5 (Lesson 5) → Requires US2 (TaskGroup) + US4 (InterpreterPoolExecutor)
 - US6 (Lesson 6) → Requires US1-5 (capstone integrates everything)
@@ -293,6 +296,7 @@ created: "2025-11-09"
 ### Parallel Execution Examples
 
 **Within a single lesson** (example: Lesson 2):
+
 ```bash
 # Code examples can be created in parallel (different files)
 T033, T035, T037, T038, T039, T040 [all marked with [P]]
@@ -302,10 +306,11 @@ T032 (Core 1), T034 (Core 2), T036 (Core 3) [with coordination]
 ```
 
 **Across lessons** (after Foundation complete):
+
 ```bash
 # These lessons can be written in parallel by different implementers:
 Lesson 1 (T012-T028)
-Lesson 2 (T029-T047)  
+Lesson 2 (T029-T047)
 Lesson 3 (T048-T066)
 
 # But Lesson 4-6 have sequential dependencies (see above)
@@ -320,12 +325,14 @@ Lesson 3 (T048-T066)
 **Recommended MVP**: User Story 1 + User Story 2 (Lessons 1-2)
 
 **Rationale**:
+
 - Lesson 1 teaches foundation (event loop, coroutines, asyncio.run())
 - Lesson 2 teaches practical patterns (TaskGroup, gather)
 - Together they deliver 80% of practical asyncio value
 - Students can build real concurrent I/O systems after Lesson 2
 
 **Incremental Delivery**:
+
 1. **Week 1**: Lessons 1-2 (MVP - foundational + concurrent tasks)
 2. **Week 2**: Lessons 3-4 (advanced patterns + CPU-bound solutions)
 3. **Week 3**: Lessons 5-6 (hybrid workloads + capstone)
@@ -358,12 +365,14 @@ Within Chapter 28, each lesson MUST end with a single final section titled **"Tr
 4. **Create/Evaluate Level**: "Given [scenario], ask your AI: [design/assess solution]"
 
 **DO NOT include**:
+
 - ❌ "Key Takeaways" section
 - ❌ "What's Next" section
 - ❌ "Summary" section
 - ❌ Separate "Exercises" section
 
 **AI Tool Usage**:
+
 - Part 4 students have completed AI tool onboarding (Chapters 5-6: Claude Code, Gemini CLI)
 - Instructions should say: "Use your preferred AI companion (Claude Code, Gemini CLI, or ChatGPT)"
 - Provide CLI examples where appropriate: `claude "generate async code for X"`

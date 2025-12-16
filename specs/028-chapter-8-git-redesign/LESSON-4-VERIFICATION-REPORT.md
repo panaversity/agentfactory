@@ -1,6 +1,6 @@
 # Lesson 4: Cloud Backup & Portfolio — Implementation Verification Report
 
-**Lesson File**: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/04-cloud-backup-portfolio.md`
+**Lesson File**: `apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/04-cloud-backup-portfolio.md`
 
 **Status**: COMPLETE — All requirements met
 
@@ -13,6 +13,7 @@
 ## I. Constitutional Compliance Checklist
 
 ### Principle 1: Specification Primacy ✓
+
 - **Requirement**: Lesson aligned to specification (spec.md) and plan (plan.md)
 - **Verification**:
   - Source spec: US2 (GitHub Backup & Portfolio) from spec.md, lines 94-115
@@ -22,6 +23,7 @@
 - **Status**: ✅ COMPLIANT
 
 ### Principle 2: Progressive Complexity ✓
+
 - **Requirement**: Cognitive load = 4 concepts (within A1 limit of 5-7)
 - **Verification**:
   - Concept 1: GitHub accounts (cloud platform)
@@ -34,6 +36,7 @@
 - **Status**: ✅ COMPLIANT
 
 ### Principle 3: Factual Accuracy ✓
+
 - **Requirement**: All Git commands tested and accurate
 - **Verification**:
   - Terminal execution logs included (6 complete logs with actual command outputs)
@@ -44,6 +47,7 @@
 - **Status**: ✅ COMPLIANT
 
 ### Principle 4: Coherent Structure ✓
+
 - **Requirement**: Lesson progresses logically (Foundation → AI Collaboration → Hands-On → Verification)
 - **Verification**:
   - Part 1 (Manual Foundation): Create GitHub account, create repository manually
@@ -56,6 +60,7 @@
 - **Status**: ✅ COMPLIANT
 
 ### Principle 5: Intelligence Accumulation ✓
+
 - **Requirement**: Lesson builds on Lessons 1-3 (Git foundation, undo operations, branching)
 - **Verification**:
   - Lesson 1-3 prerequisites explicitly stated
@@ -65,6 +70,7 @@
 - **Status**: ✅ COMPLIANT
 
 ### Principle 6: Anti-Convergence ✓
+
 - **Requirement**: Teaching modality varies from Lessons 1-3 and Chapter 7
 - **Verification**:
   - Lessons 1-2: Hands-on discovery (Execute → Observe → Understand)
@@ -75,6 +81,7 @@
 - **Status**: ✅ COMPLIANT
 
 ### Principle 7: Minimal Content ✓
+
 - **Requirement**: Every section maps to success criteria
 - **Verification**:
   - Opening: SC-011 (portfolio showcase framing)
@@ -94,6 +101,7 @@
 ### CRITICAL REQUIREMENT: All Three Roles Must Be Demonstrated ✓
 
 #### Role 1: AI as Teacher ✓
+
 - **Requirement**: AI suggests pattern student didn't explicitly ask about
 - **Location**: "Role 1: AI as Teacher — Learning Dual Backup+Portfolio Value" (Part 2)
 - **Implementation**:
@@ -105,6 +113,7 @@
 - **Status**: ✅ PRESENT
 
 #### Role 2: AI as Student (Student as Teacher) ✓
+
 - **Requirement**: AI adapts to student's feedback/constraints
 - **Location**: "Role 2: AI as Student — You Teach AI Your Constraints" (Part 2)
 - **Implementation**:
@@ -117,6 +126,7 @@
 - **Status**: ✅ PRESENT
 
 #### Role 3: AI as Co-Worker (Convergence) ✓
+
 - **Requirement**: Iteration toward better solution; neither alone would achieve it
 - **Location**: "Role 3: AI as Co-Worker — Convergence Through Recovery Testing" (Scenario section)
 - **Implementation**:
@@ -129,12 +139,14 @@
   - **Validation**: ✅ Convergence through iteration visible
 
 #### Explicit "What You Learned / What AI Learned" Callouts ✓
+
 - **Role 1**: "What You Learned: AI taught you that backup and portfolio are dual values"
 - **Role 2**: "What AI Learned: Your security constraint (secrets must stay local)"
 - **Role 3**: "Your Convergence: Together you've designed safe recovery verification"
 - **Status**: ✅ ALL CALLOUTS PRESENT
 
 #### Three Roles Validation Tag ✓
+
 - **YAML Frontmatter**:
   ```
   three_roles_validation: "✓ AI teaches backup+portfolio dual value (Role 1), Student teaches
@@ -143,6 +155,7 @@
 - **Status**: ✅ DOCUMENTED
 
 #### Detection of One-Way Instruction (Fail Condition) ✓
+
 - **Lesson does NOT present**: "Human → AI → Code → Done" (one-way instruction)
 - **Lesson DOES present**: Bidirectional learning with iteration
 - **Status**: ✅ APPROVED (not one-way)
@@ -154,6 +167,7 @@
 ### Modality Requirement: Hands-On Discovery (vs Lecture-Style)
 
 **Hands-On Activities**:
+
 - ✅ Activity 1.1: Manual GitHub account creation (execute step-by-step)
 - ✅ Activity 1.2: Manual repository creation (navigate web interface)
 - ✅ Activity 3.1: Create .gitignore (execute command, observe result)
@@ -163,6 +177,7 @@
 - ✅ Activity 3.5: Test recovery (optional but demonstrates hands-on testing)
 
 **Observation Points**:
+
 - "You should see:" statements after each command
 - Discovery questions: "What This Means:", "Why:", "Discovery:"
 - Terminal log screenshots showing actual outputs
@@ -174,15 +189,16 @@
 
 ## IV. Cognitive Load Validation
 
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| New Concepts | ≤7 (A1 limit) | 4 | ✅ WITHIN LIMIT |
-| Scaffolding Level | Heavy (A1 tier) | Heavy | ✅ APPROPRIATE |
-| Options per Concept | ≤2 (A1 max) | 2 (PAT vs SSH) | ✅ WITHIN LIMIT |
-| Bloom's Level | Remember/Understand/Apply | Apply + Understand | ✅ APPROPRIATE |
-| Duration | 40 minutes | 40 minutes | ✅ APPROPRIATE |
+| Metric              | Target                    | Actual             | Status          |
+| ------------------- | ------------------------- | ------------------ | --------------- |
+| New Concepts        | ≤7 (A1 limit)             | 4                  | ✅ WITHIN LIMIT |
+| Scaffolding Level   | Heavy (A1 tier)           | Heavy              | ✅ APPROPRIATE  |
+| Options per Concept | ≤2 (A1 max)               | 2 (PAT vs SSH)     | ✅ WITHIN LIMIT |
+| Bloom's Level       | Remember/Understand/Apply | Apply + Understand | ✅ APPROPRIATE  |
+| Duration            | 40 minutes                | 40 minutes         | ✅ APPROPRIATE  |
 
 **Concepts List** (verified in YAML):
+
 1. GitHub accounts (cloud platform)
 2. Remote repositories (cloud-hosted copy)
 3. Push (uploading to cloud)
@@ -196,21 +212,21 @@
 
 ### All Required Sections Present ✓
 
-| Task | Section | Status |
-|------|---------|--------|
-| T045 | Intro: "catastrophe prevention + career advancement" | ✅ PRESENT (Opening section) |
-| T046 | Activity: Create GitHub account | ✅ PRESENT (Activity 1.1) |
-| T047 | Activity: Create repo via web interface | ✅ PRESENT (Activity 1.2) |
-| T048 | Three Roles scenario (Student as Teacher) | ✅ PRESENT (Role 2 section) |
-| T049 | Activity: `git remote add origin` | ✅ PRESENT (Activity 3.2) |
-| T050 | Activity: `git push -u origin main` with PAT | ✅ PRESENT (Activity 3.3) |
-| T051 | Activity: Observe code on GitHub | ✅ PRESENT (Activity 3.4) |
-| T052 | Activity: `git clone` from different directory | ✅ PRESENT (Activity 3.5) |
-| T053 | Troubleshooting: auth, branch name, large files | ✅ PRESENT (Troubleshooting section) |
-| T054 | Terminal logs for remote, push, clone | ✅ PRESENT (4 detailed logs) |
-| T055 | "Try With AI" final section | ✅ PRESENT (3 prompts with expected outcomes) |
-| T056 | YAML frontmatter with metadata | ✅ PRESENT (complete with stage, three roles) |
-| T057 | Success criteria mapping (SC-006, SC-011) | ✅ PRESENT (success checklist) |
+| Task | Section                                              | Status                                        |
+| ---- | ---------------------------------------------------- | --------------------------------------------- |
+| T045 | Intro: "catastrophe prevention + career advancement" | ✅ PRESENT (Opening section)                  |
+| T046 | Activity: Create GitHub account                      | ✅ PRESENT (Activity 1.1)                     |
+| T047 | Activity: Create repo via web interface              | ✅ PRESENT (Activity 1.2)                     |
+| T048 | Three Roles scenario (Student as Teacher)            | ✅ PRESENT (Role 2 section)                   |
+| T049 | Activity: `git remote add origin`                    | ✅ PRESENT (Activity 3.2)                     |
+| T050 | Activity: `git push -u origin main` with PAT         | ✅ PRESENT (Activity 3.3)                     |
+| T051 | Activity: Observe code on GitHub                     | ✅ PRESENT (Activity 3.4)                     |
+| T052 | Activity: `git clone` from different directory       | ✅ PRESENT (Activity 3.5)                     |
+| T053 | Troubleshooting: auth, branch name, large files      | ✅ PRESENT (Troubleshooting section)          |
+| T054 | Terminal logs for remote, push, clone                | ✅ PRESENT (4 detailed logs)                  |
+| T055 | "Try With AI" final section                          | ✅ PRESENT (3 prompts with expected outcomes) |
+| T056 | YAML frontmatter with metadata                       | ✅ PRESENT (complete with stage, three roles) |
+| T057 | Success criteria mapping (SC-006, SC-011)            | ✅ PRESENT (success checklist)                |
 
 **Status**: ✅ ALL 13 REQUIRED SECTIONS PRESENT
 
@@ -220,21 +236,21 @@
 
 ### Success Criteria Mapping (from spec.md)
 
-| SC | Requirement | Lesson Address | Status |
-|------|-------------|-----------------|--------|
-| SC-006 | GitHub repo + push within 10 minutes | Activities 1-3 + "Try With AI" setup | ✅ |
-| SC-011 | 70%+ create portfolio with 3+ projects | Opening + Activity 3.4 + Portfolio section | ✅ |
+| SC     | Requirement                            | Lesson Address                             | Status |
+| ------ | -------------------------------------- | ------------------------------------------ | ------ |
+| SC-006 | GitHub repo + push within 10 minutes   | Activities 1-3 + "Try With AI" setup       | ✅     |
+| SC-011 | 70%+ create portfolio with 3+ projects | Opening + Activity 3.4 + Portfolio section | ✅     |
 
 ### Functional Requirements Mapping (FR-015 to FR-020)
 
-| FR | Requirement | Lesson Address | Status |
-|------|-------------|-----------------|--------|
-| FR-015 | Create GitHub account (free tier) | Activity 1.1 | ✅ |
-| FR-016 | Create remote repository via web | Activity 1.2 | ✅ |
-| FR-017 | Connect with `git remote add origin` | Activity 3.2 | ✅ |
-| FR-018 | Push with `git push -u origin main` | Activity 3.3 | ✅ |
-| FR-019 | Clone with `git clone` | Activity 3.5 | ✅ |
-| FR-020 | Pull with `git pull` (mentioned in context) | Next lesson (L5 focus) | ⏳ |
+| FR     | Requirement                                 | Lesson Address         | Status |
+| ------ | ------------------------------------------- | ---------------------- | ------ |
+| FR-015 | Create GitHub account (free tier)           | Activity 1.1           | ✅     |
+| FR-016 | Create remote repository via web            | Activity 1.2           | ✅     |
+| FR-017 | Connect with `git remote add origin`        | Activity 3.2           | ✅     |
+| FR-018 | Push with `git push -u origin main`         | Activity 3.3           | ✅     |
+| FR-019 | Clone with `git clone`                      | Activity 3.5           | ✅     |
+| FR-020 | Pull with `git pull` (mentioned in context) | Next lesson (L5 focus) | ⏳     |
 
 **Status**: ✅ FR-015 to FR-019 FULLY ADDRESSED; FR-020 deferred to Lesson 5 (Pull Requests)
 
@@ -242,14 +258,14 @@
 
 From spec.md, lines 94-115:
 
-| Journey Step | Lesson Address | Status |
-|------|-------------|--------|
-| 1. Create GitHub account (free) | Activity 1.1 | ✅ |
-| 2. Create repository on GitHub | Activity 1.2 | ✅ |
-| 3. Ask AI "Connect to GitHub" | Role 2 (Student teaches constraint) | ✅ |
-| 4. AI configures remote and pushes | Activities 3.2-3.3 + Role 2 adaptation | ✅ |
-| 5. Access project from any computer | Activity 3.5 (recovery test via clone) | ✅ |
-| 6. Share GitHub profile on resume | Success section + "Portfolio is Live" | ✅ |
+| Journey Step                        | Lesson Address                         | Status |
+| ----------------------------------- | -------------------------------------- | ------ |
+| 1. Create GitHub account (free)     | Activity 1.1                           | ✅     |
+| 2. Create repository on GitHub      | Activity 1.2                           | ✅     |
+| 3. Ask AI "Connect to GitHub"       | Role 2 (Student teaches constraint)    | ✅     |
+| 4. AI configures remote and pushes  | Activities 3.2-3.3 + Role 2 adaptation | ✅     |
+| 5. Access project from any computer | Activity 3.5 (recovery test via clone) | ✅     |
+| 6. Share GitHub profile on resume   | Success section + "Portfolio is Live"  | ✅     |
 
 **Status**: ✅ COMPLETE USER STORY JOURNEY COVERED
 
@@ -262,16 +278,19 @@ From spec.md, lines 94-115:
 ### Logs Included ✓
 
 1. **Log 1: Create .gitignore**
+
    - Commands: `echo "config.json"`, `git add`, `git commit`
    - Output verified (shows commit hash, file changes)
    - Status: ✅
 
 2. **Log 2: Add Remote Repository**
+
    - Commands: `git remote add origin`, `git remote -v`
    - Output verified (shows fetch and push URLs)
    - Status: ✅
 
 3. **Log 3: Push to GitHub**
+
    - Command: `git push -u origin main`
    - Output verified (shows object enumeration, compression, branch tracking)
    - Status: ✅
@@ -289,16 +308,17 @@ From spec.md, lines 94-115:
 
 **Requirement**: All Git commands tested and accurate
 
-| Command | Tested | Log | Accuracy | Status |
-|---------|--------|-----|----------|--------|
-| `git remote add origin <URL>` | ✅ | Log 2 | ✅ | ✅ |
-| `git remote -v` | ✅ | Log 2 | ✅ | ✅ |
-| `git push -u origin main` | ✅ | Log 3 | ✅ | ✅ |
-| `git clone <URL>` | ✅ | Log 4 | ✅ | ✅ |
-| `.gitignore` creation | ✅ | Log 1 | ✅ | ✅ |
-| `git add .gitignore` | ✅ | Log 1 | ✅ | ✅ |
+| Command                       | Tested | Log   | Accuracy | Status |
+| ----------------------------- | ------ | ----- | -------- | ------ |
+| `git remote add origin <URL>` | ✅     | Log 2 | ✅       | ✅     |
+| `git remote -v`               | ✅     | Log 2 | ✅       | ✅     |
+| `git push -u origin main`     | ✅     | Log 3 | ✅       | ✅     |
+| `git clone <URL>`             | ✅     | Log 4 | ✅       | ✅     |
+| `.gitignore` creation         | ✅     | Log 1 | ✅       | ✅     |
+| `git add .gitignore`          | ✅     | Log 1 | ✅       | ✅     |
 
 **Authentication Guidance**:
+
 - Personal Access Token (PAT) method: ✅ Provided
 - SSH alternative: ✅ Mentioned as option
 - Modern GitHub requirement: ✅ Addressed (password → PAT)
@@ -314,6 +334,7 @@ From spec.md, lines 94-115:
 **Potential Convergence Pattern**: "Tell AI to connect GitHub, AI executes, done" (one-way)
 
 **Actual Implementation**:
+
 - Role 1 explicitly shows AI teaching something new (dual backup+portfolio value)
 - Role 2 explicitly shows student correcting AI's approach (security constraint)
 - Role 3 explicitly shows iteration and convergence (safe isolation testing)
@@ -322,6 +343,7 @@ From spec.md, lines 94-115:
 **Detection**: ✅ NOT one-way instruction; bidirectional learning visible
 
 **Validation**:
+
 - Explicit "What You Learned" callouts: ✅ Present
 - Explicit "What AI Learned" callouts: ✅ Present
 - Convergence iteration demonstrated: ✅ Present
@@ -335,11 +357,13 @@ From spec.md, lines 94-115:
 ## X. Supporting Material Quality
 
 ### Key Concepts Summary Table ✓
+
 - Defines GitHub, Remote, Origin, Push, Clone
 - Explains why each matters
 - Status: ✅ PRESENT
 
 ### Troubleshooting Section ✓
+
 - Error 1: Authentication failures (PAT setup guidance)
 - Error 2: Remote already exists (remove and re-add solution)
 - Error 3: Branch name mismatch (main vs master rename)
@@ -347,11 +371,13 @@ From spec.md, lines 94-115:
 - Status: ✅ COMPLETE (4 common errors covered)
 
 ### Success Checklist ✓
+
 - 9-item verification checklist
 - Maps to activities and stage requirements
 - Status: ✅ PRESENT
 
 ### Try With AI Section ✓
+
 - Prompt 1: GitHub profile enhancement
 - Prompt 2: Portfolio building
 - Prompt 3: GitHub best practices
@@ -365,21 +391,21 @@ From spec.md, lines 94-115:
 
 ### Metadata Complete ✓
 
-| Field | Content | Status |
-|-------|---------|--------|
-| sidebar_position | 4 | ✅ |
-| title | "Cloud Backup & Portfolio" | ✅ |
-| description | "Connect GitHub with AI collaboration" | ✅ |
-| duration_minutes | 40 | ✅ |
-| skills (4) | GitHub account, Remote repos, Push, Clone | ✅ |
-| learning_objectives (4) | Remote connect, Push, Clone, Explain portfolio | ✅ |
-| cognitive_load | 4 concepts (A1 compliant) | ✅ |
-| teaching_approach | Three Roles + hands-on | ✅ |
-| stage | 2 (AI Collaboration) | ✅ |
-| three_roles_validation | All three roles documented | ✅ |
-| source references | spec, plan, tasks locations | ✅ |
-| generated_by | content-implementer v1.0.0 | ✅ |
-| constitution_version | 6.0.0 | ✅ |
+| Field                   | Content                                        | Status |
+| ----------------------- | ---------------------------------------------- | ------ |
+| sidebar_position        | 4                                              | ✅     |
+| title                   | "Cloud Backup & Portfolio"                     | ✅     |
+| description             | "Connect GitHub with AI collaboration"         | ✅     |
+| duration_minutes        | 40                                             | ✅     |
+| skills (4)              | GitHub account, Remote repos, Push, Clone      | ✅     |
+| learning_objectives (4) | Remote connect, Push, Clone, Explain portfolio | ✅     |
+| cognitive_load          | 4 concepts (A1 compliant)                      | ✅     |
+| teaching_approach       | Three Roles + hands-on                         | ✅     |
+| stage                   | 2 (AI Collaboration)                           | ✅     |
+| three_roles_validation  | All three roles documented                     | ✅     |
+| source references       | spec, plan, tasks locations                    | ✅     |
+| generated_by            | content-implementer v1.0.0                     | ✅     |
+| constitution_version    | 6.0.0                                          | ✅     |
 
 **Status**: ✅ COMPLETE METADATA DOCUMENTATION
 
@@ -387,11 +413,12 @@ From spec.md, lines 94-115:
 
 ## XII. File Path Verification
 
-**File Created**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/reason-fm/book-source/docs/02-AI-Tool-Landscape/08-git-and-github/04-cloud-backup-portfolio.md`
+**File Created**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/reason-fm/apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/04-cloud-backup-portfolio.md`
 
 **Directory Structure**:
+
 ```
-book-source/docs/02-AI-Tool-Landscape/08-git-and-github/
+apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/
 ├── 01-your-first-git-repository.md (Lesson 1 - Stage 1)
 ├── 02-viewing-changes-safe-undo.md (Lesson 2 - Stage 1)
 ├── 03-testing-ai-safely-with-branches.md (Lesson 3 - Stage 2)
@@ -408,6 +435,7 @@ book-source/docs/02-AI-Tool-Landscape/08-git-and-github/
 **Question**: Did content-implementer reason through frameworks, or sample generic tutorial patterns?
 
 **Evidence of Reasoning**:
+
 1. ✅ Identified Stage 2 (AI Collaboration) and applied Three Roles framework explicitly
 2. ✅ Counted cognitive load (4 concepts) against CEFR tier limits (A1: 5-7)
 3. ✅ Verified anti-convergence: teaching modality varies from L1-3 and Chapter 7
@@ -420,6 +448,7 @@ book-source/docs/02-AI-Tool-Landscape/08-git-and-github/
 10. ✅ Created optional recovery testing (Activity 3.5) to validate backup strategy
 
 **Generic Pattern Avoidance**:
+
 - ❌ NOT lecture-style explanation
 - ❌ NOT one-way tool instruction
 - ❌ NOT perfect-first-try solution
@@ -433,22 +462,26 @@ book-source/docs/02-AI-Tool-Landscape/08-git-and-github/
 ## XIV. Success Criteria Alignment (from spec.md)
 
 ### SC-001 (Git Value Proposition)
+
 - **Requirement**: 90%+ explain Git's value (safety for AI experimentation)
 - **Lesson Address**: Opening frames GitHub as "catastrophe prevention", Activities show safe workflow
 - **Status**: ✅ ADDRESSES
 
 ### SC-006 (GitHub Deployment Speed)
+
 - **Requirement**: GitHub repo + push within 10 minutes
 - **Lesson Address**: Activities 1-3 designed for efficiency; "Try With AI" helps troubleshoot
 - **Estimate**: 5-7 minutes for experienced user, 10 minutes with first-time troubleshooting
 - **Status**: ✅ ENABLES SC-006
 
 ### SC-011 (Portfolio Building)
+
 - **Requirement**: 70%+ create GitHub portfolio with 3+ projects
 - **Lesson Address**: "Your Portfolio is Live" section explains portfolio value; multiple projects implied
 - **Status**: ✅ ENABLES SC-011
 
 ### SC-014 (Agent HQ Awareness)
+
 - **Requirement**: 90%+ understand Agent HQ without anxiety
 - **Lesson Address**: Not explicitly in L4 (deferred to L7 capstone per plan.md)
 - **Status**: ⏳ DEFERRED (appropriate per Stage 4 plan)
@@ -458,18 +491,21 @@ book-source/docs/02-AI-Tool-Landscape/08-git-and-github/
 ## XV. Integration with Lesson 3 and Prerequisite Assumptions
 
 ### Prerequisites (from plan.md, line 312)
+
 - ✅ Lessons 1-2 (manual Git foundation)
 - ✅ Students understand commits and staging
 - ✅ Chapter 7 (terminal skills)
 - ✅ Chapter 5 (AI collaboration basics)
 
 ### Dependency on Lesson 3
+
 - Lesson 3 teaches branching concepts
 - Lesson 4 applies branching understanding in recovery testing (Activity 3.5)
 - Cognitive load doesn't repeat L3 concepts (branching not required for L4)
 - Status: ✅ SEQUENCING APPROPRIATE
 
 ### Foundation for Lesson 5
+
 - Lesson 4 establishes GitHub as platform (L5 adds Pull Requests on same platform)
 - Lesson 4 teaches push/clone; L5 builds on this with PR workflow
 - Status: ✅ SEQUENCING APPROPRIATE
@@ -483,6 +519,7 @@ book-source/docs/02-AI-Tool-Landscape/08-git-and-github/
 **Test**: Student creates GitHub repo, pushes local project, clones from different machine, shares URL
 
 **Verification Steps**:
+
 1. GitHub account created: ✅ Covered (Activity 1.1)
 2. Repository created on GitHub: ✅ Covered (Activity 1.2)
 3. Local connected to remote: ✅ Covered (Activity 3.2 + Log 2)
@@ -497,22 +534,22 @@ book-source/docs/02-AI-Tool-Landscape/08-git-and-github/
 
 ## XVII. Quality Indicators Summary
 
-| Indicator | Status | Evidence |
-|-----------|--------|----------|
-| **Constitutional Compliance** | ✅ | All 7 principles verified above |
-| **Stage 2 Framework** | ✅ | Three Roles explicitly demonstrated |
-| **Cognitive Load** | ✅ | 4 concepts (within A1: 5-7 limit) |
-| **Hands-On Modality** | ✅ | 7 hands-on activities + discovery questions |
-| **Git Commands Tested** | ✅ | 4 detailed terminal logs with actual outputs |
-| **Bidirectional Learning** | ✅ | Role 1 (teach), Role 2 (learn), Role 3 (converge) |
-| **Success Criteria Mapping** | ✅ | SC-006, SC-011 explicitly addressed |
-| **Functional Requirements** | ✅ | FR-015 to FR-019 all covered |
-| **Terminal Logs** | ✅ | 4 logs (remote, push, clone, recovery test) |
-| **Troubleshooting** | ✅ | 4 common errors + solutions |
-| **Try With AI Section** | ✅ | 3 prompts with expected outcomes |
-| **YAML Metadata** | ✅ | Complete documentation |
-| **Prerequisite Alignment** | ✅ | Builds on L1-3; foundation for L5 |
-| **Three Roles Callouts** | ✅ | Explicit "What You Learned / What AI Learned" present |
+| Indicator                     | Status | Evidence                                              |
+| ----------------------------- | ------ | ----------------------------------------------------- |
+| **Constitutional Compliance** | ✅     | All 7 principles verified above                       |
+| **Stage 2 Framework**         | ✅     | Three Roles explicitly demonstrated                   |
+| **Cognitive Load**            | ✅     | 4 concepts (within A1: 5-7 limit)                     |
+| **Hands-On Modality**         | ✅     | 7 hands-on activities + discovery questions           |
+| **Git Commands Tested**       | ✅     | 4 detailed terminal logs with actual outputs          |
+| **Bidirectional Learning**    | ✅     | Role 1 (teach), Role 2 (learn), Role 3 (converge)     |
+| **Success Criteria Mapping**  | ✅     | SC-006, SC-011 explicitly addressed                   |
+| **Functional Requirements**   | ✅     | FR-015 to FR-019 all covered                          |
+| **Terminal Logs**             | ✅     | 4 logs (remote, push, clone, recovery test)           |
+| **Troubleshooting**           | ✅     | 4 common errors + solutions                           |
+| **Try With AI Section**       | ✅     | 3 prompts with expected outcomes                      |
+| **YAML Metadata**             | ✅     | Complete documentation                                |
+| **Prerequisite Alignment**    | ✅     | Builds on L1-3; foundation for L5                     |
+| **Three Roles Callouts**      | ✅     | Explicit "What You Learned / What AI Learned" present |
 
 **Overall Quality Assessment**: ✅ PRODUCTION-READY
 
@@ -523,6 +560,7 @@ book-source/docs/02-AI-Tool-Landscape/08-git-and-github/
 ### Anti-Convergence Validation
 
 **Generic GitHub Tutorial Pattern** (what we AVOIDED):
+
 ```
 "Here's how to use GitHub:
 1. Create account
@@ -532,6 +570,7 @@ book-source/docs/02-AI-Tool-Landscape/08-git-and-github/
 ```
 
 **Our Implementation** (what we CREATED):
+
 ```
 1. Manual foundation (understand GitHub first)
 2. AI teaching moment (backup + portfolio dual value)
@@ -542,6 +581,7 @@ book-source/docs/02-AI-Tool-Landscape/08-git-and-github/
 ```
 
 **Differentiators**:
+
 - ✅ Three Roles explicitly demonstrated (not assumed)
 - ✅ Security teaching (secrets + .gitignore)
 - ✅ Recovery testing (validates backup actually works)
@@ -557,6 +597,7 @@ book-source/docs/02-AI-Tool-Landscape/08-git-and-github/
 ### Lesson 5 (Code Review with Pull Requests) Prerequisites
 
 This lesson provides:
+
 - ✅ GitHub account established
 - ✅ Repository on GitHub
 - ✅ Commits pushed to cloud
@@ -564,6 +605,7 @@ This lesson provides:
 - ✅ Experience with AI collaboration (Three Roles)
 
 Lesson 5 will build:
+
 - Pull request creation
 - PR review (diff visualization)
 - AI transparency documentation
@@ -577,9 +619,10 @@ Lesson 5 will build:
 
 **Implementation Status**: ✅ COMPLETE
 
-**File Location**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/reason-fm/book-source/docs/02-AI-Tool-Landscape/08-git-and-github/04-cloud-backup-portfolio.md`
+**File Location**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/reason-fm/apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/04-cloud-backup-portfolio.md`
 
 **Quality Gates Passed**:
+
 - ✅ Constitutional compliance (all 7 principles)
 - ✅ Stage 2 Three Roles framework (all 3 roles demonstrated)
 - ✅ Cognitive load (4 concepts, A1 compliant)

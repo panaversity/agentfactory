@@ -5,7 +5,7 @@
 **Status**: Draft
 **Input**: User description: "Plan part-1 for our book. It will replace book-source\docs\01-Introducing-AI-Driven-Development\README.md. This part will consist of 4 chapters and shall be grounded with first four chapters from context folder."
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Foundation Reader Journey (Priority: P1)
 
@@ -14,6 +14,7 @@
 **Why this priority**: This is the foundational narrative that motivates the entire learning journey. Without understanding the "why" and the opportunity, learners may not commit to the significant effort required in subsequent parts. This part must answer: "Why should I learn this? What's possible? What's changing?"
 
 **Independent Test**: Can be fully tested by having beta readers (with no programming background) read Part 1 and answer:
+
 - Do they understand why AI-driven development is revolutionary?
 - Can they articulate the economic opportunity?
 - Do they understand what role they'll play (orchestrator vs typist)?
@@ -35,6 +36,7 @@
 **Why this priority**: Professional developers represent a significant secondary audience who need to transition their skills. They bring valuable domain knowledge but may be resistant to change. This part must meet them where they are and show the path forward.
 
 **Independent Test**: Can be tested by having professional developers (5+ years experience) read Part 1 and answer:
+
 - Do they see this as threat or opportunity?
 - Can they identify which of their skills remain valuable?
 - Do they understand the new skills they need?
@@ -55,6 +57,7 @@
 **Why this priority**: Educators are key multipliers who can bring this methodology to hundreds of students. They need to see the pedagogical rationale and understand why traditional CS curriculum is becoming obsolete.
 
 **Independent Test**: Can be tested by having CS educators read Part 1 and answer:
+
 - Do they agree traditional CS education is outdated for 2025+?
 - Can they see how to integrate this into existing curriculum?
 - Do they understand the agent-native learning model?
@@ -75,6 +78,7 @@
 **Why this priority**: Decision-makers control budgets and team direction. While not the primary learner audience, their buy-in enables organizational adoption. Part 1 must provide the strategic context they need.
 
 **Independent Test**: Can be tested by having engineering leaders read Part 1 and answer:
+
 - Do they see this as credible business transformation?
 - Can they estimate ROI for their team?
 - Do they understand what processes need to change?
@@ -97,7 +101,7 @@
 - **Non-English speaker reads translated version**: Does Part 1 rely on cultural references or idioms that don't translate well?
 - **Reader has misconceptions about AI**: Does Part 1 address common misconceptions (AI will replace all programmers, AI generates perfect code, AI makes thinking unnecessary)?
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -105,8 +109,8 @@
 
 - **FR-001**: Part 1 MUST consist of exactly 4 chapters covering: (1) AI Development Revolution, (2) AI Turning Point & New Wave of Agents, (3) Billion-Dollar Opportunities, (4) Nine Pillars of AIDD
 - **FR-002**: Part 1 MUST be narrative and conceptual (no code examples, no hands-on exercises, no technical implementation)
-- **FR-003**: Part 1 MUST replace the existing file `book-source/docs/01-Introducing-AI-Driven-Development/README.md` with new content
-- **FR-004**: Each chapter MUST be implemented as a separate MDX file in the Docusaurus structure under `book-source/docs/01-Introducing-AI-Driven-Development/`
+- **FR-003**: Part 1 MUST replace the existing file `apps/learn-app/docs/01-Introducing-AI-Driven-Development/README.md` with new content
+- **FR-004**: Each chapter MUST be implemented as a separate MDX file in the Docusaurus structure under `apps/learn-app/docs/01-Introducing-AI-Driven-Development/`
 - **FR-005**: Part 1 MUST include a cohesive part-level README/introduction that connects all 4 chapters and previews Part 2
 
 **Content Requirements:**
@@ -147,6 +151,7 @@
 ### Key Entities
 
 **Part 1 Structure Entity:**
+
 - **Title**: "Part 1: Introducing AI-Driven Development"
 - **Number of Chapters**: 4
 - **Content Type**: Conceptual/Narrative (no code)
@@ -157,16 +162,19 @@
 **Chapter Entities:**
 
 - **Chapter 1**: "The AI Development Revolution: Disrupting the $3 Trillion Software Economy"
+
   - **Topics**: $3T economy, software disrupting itself, lifecycle transformation, autonomous agents
   - **Source Material**: context/02_chap1_spec/readme.md
   - **Estimated Reading Time**: 25-35 minutes
 
 - **Chapter 2**: "AI Turning Point: The New Wave of AI Coding Agents Has Changed Everything for Developers"
+
   - **Topics**: 2025 inflection point, evidence and adoption, Claude Code/Gemini CLI/Codex/Qwen Code overview
   - **Source Material**: context/03_chap2_spec/readme.md (Parts I and II)
   - **Estimated Reading Time**: 35-45 minutes (longest chapter with two distinct sections)
 
 - **Chapter 3**: "How to Make a Billion Dollars in the AI Era?"
+
   - **Topics**: Snakes and Ladders framework, vertical opportunities, Piggyback Protocol Pivot, super-orchestrators
   - **Source Material**: context/04_chap3_spec/readme.md
   - **Estimated Reading Time**: 20-30 minutes
@@ -177,11 +185,12 @@
   - **Estimated Reading Time**: 25-35 minutes
 
 **Content Artifacts:**
+
 - **README.md**: Part-level introduction connecting all chapters
 - **Chapter MDX files**: 4 individual chapter files with Docusaurus frontmatter
 - **Specs**: This specification, plan, tasks (SDD artifacts in specs/006-part-1/)
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 
@@ -223,6 +232,7 @@
 ### In Scope
 
 **Content Development:**
+
 - Writing/editing 4 complete narrative chapters based on provided context material
 - Creating part-level README introduction connecting chapters
 - Including all video links and references from source material
@@ -231,6 +241,7 @@
 - Addressing skepticism with evidence-based responses
 
 **Constitutional Alignment:**
+
 - Ensuring accessibility (grade 7 reading level, no jargon gatekeeping)
 - Including diverse, gender-neutral examples
 - Providing factual accuracy with citations
@@ -238,12 +249,14 @@
 - Implementing Book Gaps Checklist for conceptual/narrative content
 
 **Docusaurus Integration:**
+
 - Creating proper MDX file structure and frontmatter
 - Ensuring proper chapter numbering and organization
 - Embedding video links correctly
 - Creating internal cross-references and navigation
 
 **Quality Assurance:**
+
 - Beta reader testing with comprehension questions
 - Technical reviewer validation for constitution compliance
 - Reading level analysis
@@ -253,6 +266,7 @@
 ### Out of Scope
 
 **Technical Content:**
+
 - Code examples (Part 4+ introduces Python)
 - Hands-on exercises (Part 2 begins tool introduction)
 - Technical setup instructions (covered in Part 2)
@@ -260,18 +274,21 @@
 - Debugging or troubleshooting guides
 
 **Detailed Tool Coverage:**
+
 - Step-by-step tool installation (Part 2)
 - Detailed feature comparisons between tools (Part 2)
 - Tool configuration and customization (Part 2)
 - Advanced tool usage patterns (later parts)
 
 **Implementation Details:**
+
 - Actual specification-driven development (Part 5)
 - Code generation techniques (taught with Python in Part 4+)
 - Testing methodologies beyond conceptual understanding (Part 5+)
 - Deployment and infrastructure (Parts 10-11)
 
 **Auxiliary Materials:**
+
 - Instructor guides (separate deliverable)
 - Student workbooks (may be created later)
 - Video course production (separate from embedded links)
@@ -292,12 +309,14 @@
 ### Constraints
 
 **Technical Constraints:**
+
 - Must work within Docusaurus MDX format limitations
 - Must maintain compatibility with existing book navigation structure
-- File paths must follow the pattern: `book-source/docs/01-Introducing-AI-Driven-Development/[chapter-file].mdx`
+- File paths must follow the pattern: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/[chapter-file].mdx`
 - Must be viewable on all devices (desktop, tablet, mobile) via responsive Docusaurus themes
 
 **Content Constraints:**
+
 - Maximum chapter length: 2,500-3,500 words per chapter (for 25-35 min reading time at ~100-120 words/min)
 - Minimum 5, maximum 8 concrete examples per chapter
 - Must include at least 3-5 historical comparisons per chapter
@@ -305,6 +324,7 @@
 - No code blocks (reserved for technical chapters in later parts)
 
 **Quality Constraints:**
+
 - Zero gatekeeping language violations
 - 100% citation of statistics and factual claims
 - All video links must be functional at publication
@@ -312,6 +332,7 @@
 - Minimum 80% beta reader comprehension scores
 
 **Timeline Constraints:**
+
 - Part 1 must be completed before Part 2 development begins (prerequisite chain)
 - Each chapter follows Spec → Plan → Implement → Validate workflow
 - Chapter-planner subagent used for detailed lesson planning
@@ -319,6 +340,7 @@
 - Technical-reviewer subagent used for validation
 
 **Resource Constraints:**
+
 - Limited to provided context material plus general knowledge (no extensive primary research)
 - Must rely on existing constitutional skills and output styles (no custom skill development for Part 1)
 - Beta readers volunteer time (must be efficient with their testing)
@@ -338,6 +360,7 @@
 ### Internal Dependencies
 
 **Project Assets:**
+
 - Constitution (`.specify/memory/constitution.md`) - version 2.2.0 must be referenced for all principles and requirements
 - Lesson output style (`.claude/output-styles/lesson.md`) - structure for narrative/conceptual content
 - Domain skills (`.claude/skills/`) - particularly `learning-objectives`, `concept-scaffolding`, `technical-clarity`, `book-scaffolding`, `ai-augmented-teaching`, `content-evaluation-framework`
@@ -346,17 +369,20 @@
 - Technical-reviewer subagent (`.claude/agents/validation-auditor.md`) - for validation
 
 **Source Material:**
+
 - `context/02_chap1_spec/readme.md` - Chapter 1 content foundation
 - `context/03_chap2_spec/readme.md` (including readme1.md, readme2.md) - Chapter 2 content foundation
 - `context/04_chap3_spec/readme.md` - Chapter 3 content foundation
 - `context/05_chap4_spec/readme.md` - Chapter 4 content foundation
 
 **Book Structure:**
+
 - `specs/book/chapter-index.md` - authoritative source for chapter structure and organization
 - `specs/book/directory-structure.md` - file paths and naming conventions
 - Existing Docusaurus configuration in `book-source/`
 
 **Workflow Dependencies:**
+
 - This spec (006-part-1/spec.md) must be completed and approved
 - Plan (006-part-1/plan.md) must be generated by chapter-planner subagent
 - Tasks (006-part-1/tasks.md) must be generated by chapter-planner subagent
@@ -366,6 +392,7 @@
 ### External Dependencies
 
 **Video Links:**
+
 - YouTube videos must remain accessible:
   - Chapter 1: "The $3 Trillion AI Coding Opportunity" video
   - Chapter 1: Overview videos in Urdu/Hindi and English
@@ -374,23 +401,27 @@
 - Assumption: YouTube platform remains stable and links don't break
 
 **Research and Evidence:**
+
 - Stack Overflow 2025 Developer Survey (cited in Chapter 2)
 - DORA 2025 State of AI-assisted Software Development Report (cited in Chapter 2)
 - OpenAI and Google announcements about ICPC and GDPval benchmarks (cited in Chapter 2)
 - Enterprise adoption case studies (Workday, Microsoft, Google) (cited in Chapter 2)
 
 **Referenced Documents (if included):**
+
 - "The Piggyback Protocol Pivot (PPP) Strategy" PDF (Chapter 3)
 - "The Complete Guide to Building Agentic AI Startups" PDF (Chapter 3)
 
 ### Prerequisites (for Readers)
 
 **Required:**
+
 - Basic computer literacy (file management, web browsing)
 - Ability to read English at grade 7+ level
 - Curiosity about AI and programming
 
 **NOT Required:**
+
 - Any programming experience (Part 1 assumes zero coding knowledge)
 - Prior AI tool usage
 - Computer science education
@@ -399,11 +430,13 @@
 ### Sequence Dependencies
 
 **Within Part 1:**
+
 - Chapters should be read in order (1 → 2 → 3 → 4) for optimal narrative flow
 - However, each chapter is relatively self-contained and can be understood independently
 - Part-level README provides overview and connects chapters
 
 **Across Parts:**
+
 - Part 1 must be completed before Part 2 (AI Tool Landscape)
 - Part 1 provides the "why" and motivation; Part 2+ provide the "how"
 - Readers must understand foundational concepts from Part 1 before diving into hands-on tool usage in Part 2
@@ -417,6 +450,7 @@
 **Impact**: Readers may question credibility if statistics are clearly outdated. Content may need frequent updates.
 
 **Mitigation**:
+
 - Include "as of [date]" qualifiers with all statistics
 - Focus on trends and patterns rather than specific point-in-time numbers
 - Add update triggers in chapter front matter or footnotes: "This chapter reflects data as of October 2025. For latest statistics, see [link to continuously updated resource]"
@@ -434,6 +468,7 @@
 **Impact**: Broken links frustrate readers and reduce trust. Content that contradicts text creates confusion.
 
 **Mitigation**:
+
 - Verify all video links during implementation and validation
 - Record video titles, creators, and publication dates to enable finding replacements
 - Consider embedding video descriptions or key takeaways in text so content is valuable even if video unavailable
@@ -452,6 +487,7 @@
 **Impact**: Dropout rate increases. Negative reviews focused on "too much theory, not enough practice."
 
 **Mitigation**:
+
 - Set explicit expectations in Part-level README: "Part 1 is narrative and conceptual. Hands-on tool usage begins in Part 2. Coding in Python starts in Part 4."
 - Include "What You'll Learn" and "What You Won't Learn (Yet)" sections prominently
 - Create strong forward momentum and preview Part 2 content to maintain engagement
@@ -469,6 +505,7 @@
 **Impact**: Beginners feel overwhelmed and give up. Content fails to serve primary audience.
 
 **Mitigation**:
+
 - Use analogies extensively: "Think of an AI coding agent like a sous chef who can prepare entire dishes while you, the head chef, oversee the menu"
 - Define all technical terms on first use with simple language
 - Use reading level analysis tools (Flesch-Kincaid) to verify grade 7 baseline
@@ -487,6 +524,7 @@
 **Impact**: Published content includes inaccurate information, damaging credibility.
 
 **Mitigation**:
+
 - Validate all statistics and factual claims against original sources during implementation
 - Use web search tool to verify claims when source is unclear
 - Flag any unverifiable claims for user clarification before including
@@ -505,6 +543,7 @@
 **Impact**: Reading experience becomes uneven. Long chapters cause fatigue; short chapters feel insubstantial.
 
 **Mitigation**:
+
 - Monitor word count during implementation
 - If chapter grows too long, consider breaking into subsections with clear breaks
 - If chapter is too short, ensure it still covers all required topics comprehensively rather than padding
@@ -522,6 +561,7 @@
 **Impact**: Fails validation-auditor validation. Requires rework. Delays publication.
 
 **Mitigation**:
+
 - Lesson-writer subagent is instructed to apply constitution principles
 - Use Book Gaps Checklist during implementation as real-time validation
 - Technical-reviewer subagent performs comprehensive constitutional validation

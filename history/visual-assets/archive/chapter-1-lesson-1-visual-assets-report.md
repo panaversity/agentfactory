@@ -8,6 +8,7 @@
 ## Generated Images
 
 ### VISUAL ASSET 1: YC Winter 2025 AI-Generated Code Infographic
+
 - **Filename**: yc-w25-ai-generated-code-stats.png
 - **Dimensions**: 1024x1024px (1:1 aspect ratio)
 - **Iterations**: 3
@@ -19,6 +20,7 @@
 - **Notes**: The core message (25% of startups, 95% AI-generated code) is clear and visually impactful. The grid visualization effectively communicates the proportion.
 
 ### VISUAL ASSET 2: AI Adoption Statistics Dashboard (2025)
+
 - **Filename**: ai-adoption-statistics-dashboard-2025.png
 - **Dimensions**: 1792x1024px (16:9 aspect ratio)
 - **Iterations**: 2 (1 refusal + 1 success)
@@ -29,6 +31,7 @@
 - **Notes**: Clean 2x2 dashboard with all metrics correctly displayed (84%, $500M, 75%, 7.5%). Professional design matching modern tech aesthetic. Generated perfectly on first acceptable attempt.
 
 ### VISUAL ASSET 3: Technology Adoption Speed Comparison Timeline
+
 - **Filename**: technology-adoption-speed-comparison.png
 - **Dimensions**: 1792x1024px (16:9 aspect ratio)
 - **Iterations**: 3 (2 refusals + 1 success)
@@ -49,17 +52,21 @@
 ## Technical Observations
 
 ### Content Policy Challenges
+
 Gemini's image generation has restrictions on:
+
 - Detailed infographics with specific company/product metrics
 - Charts comparing specific technologies with quantitative data
 - Workaround: Use simplified, more abstract prompts focusing on visual design rather than specific data points
 
 ### Quality Patterns
+
 - **Best results**: Simple, abstract prompts with clear visual structure
 - **Refinement needed**: Highly detailed prompts with precise pixel specifications
 - **Icon complexity**: AI tends to add detail (windows, doors) even when requesting "minimal geometric shapes"
 
 ### Workflow Efficiency
+
 - Average time per image: ~2-3 minutes (including generation + download)
 - Prompt refinement adds ~1-2 minutes per iteration
 - Total workflow time: ~15 minutes for 3 images (5 iterations total)
@@ -67,9 +74,11 @@ Gemini's image generation has restrictions on:
 ## Markdown Integration
 
 All three visual assets successfully integrated into lesson markdown:
-- `/book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/01-moment_that_changed_everything.md`
+
+- `/apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/01-moment_that_changed_everything.md`
 
 HTML comment blocks replaced with standard markdown image syntax:
+
 ```markdown
 ![alt text](/img/part-1/chapter-1/filename.png)
 ```
@@ -77,11 +86,13 @@ HTML comment blocks replaced with standard markdown image syntax:
 ## Files Created
 
 ### Images (in `book-source/static/img/part-1/chapter-1/`)
+
 1. `yc-w25-ai-generated-code-stats.png`
 2. `ai-adoption-statistics-dashboard-2025.png`
 3. `technology-adoption-speed-comparison.png`
 
 ### This Report
+
 - `history/visual-assets/chapter-1-lesson-1-visual-assets-report.md`
 
 ## Recommendations for Future Lessons

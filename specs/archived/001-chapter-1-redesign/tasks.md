@@ -4,7 +4,7 @@
 **Status**: Ready for Development
 **Feature Branch**: `001-chapter-1-redesign`
 **Estimated Effort**: 40-50 hours total
-**Output Location**: `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/`
+**Output Location**: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/`
 
 ---
 
@@ -13,25 +13,27 @@
 ### Phase 1: Content Structure & Core Elements
 
 #### Task 1.1: Create Chapter README.md
+
 - **Priority**: MUST-HAVE
 - **Duration**: 1-2 hours
 - **Description**: Create chapter-level overview with learning outcomes, structure, prerequisites, and bridge to Chapter 2
 - **Acceptance Criteria**:
-  - [X] File located at: `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/README.md`
-  - [X] Follows `.claude/output-styles/chapter-readme.md` template
-  - [X] Uses descriptive section titles (no "Lesson N" terminology)
-  - [X] Learning objectives use appropriate Bloom's verbs for conceptual chapter
-  - [X] Prerequisites clearly stated
-  - [X] Time investment section filled (reading vs. reading + reflection)
-  - [X] Success indicators defined (measurable)
-  - [X] Bridge to Chapter 2 compelling and specific
-  - [X] No typos or grammatical errors
-  - [X] Professional tone and formatting
+  - [x] File located at: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/README.md`
+  - [x] Follows `.claude/output-styles/chapter-readme.md` template
+  - [x] Uses descriptive section titles (no "Lesson N" terminology)
+  - [x] Learning objectives use appropriate Bloom's verbs for conceptual chapter
+  - [x] Prerequisites clearly stated
+  - [x] Time investment section filled (reading vs. reading + reflection)
+  - [x] Success indicators defined (measurable)
+  - [x] Bridge to Chapter 2 compelling and specific
+  - [x] No typos or grammatical errors
+  - [x] Professional tone and formatting
 - **Dependencies**: Plan.md (completed)
 - **Reference**: `specs/001-chapter-1-redesign/plan.md`, `.claude/output-styles/chapter-readme.md`
 - **Status**: ✅ COMPLETED
 
 #### Task 1.2: Section 1 — The Hook Content
+
 - **Priority**: MUST-HAVE
 - **Duration**: 3-4 hours
 - **Description**: Write Section 1 opening story that captures attention and establishes relevance (~250 words)
@@ -49,6 +51,7 @@
 - **Reference**: `specs/001-chapter-1-redesign/plan.md` (Section 1 details)
 
 #### Task 1.3: Section 2 — The $3 Trillion Developer Economy
+
 - **Priority**: MUST-HAVE
 - **Duration**: 4-5 hours
 - **Description**: Write Section 2 explaining the $3T figure with transparent calculation and economic context (~450 words)
@@ -68,6 +71,7 @@
 - **Reference**: `specs/001-chapter-1-redesign/spec.md` (FR-002, FR-011, FR-012)
 
 #### Task 1.4: Section 3 — Software Disrupting Itself
+
 - **Priority**: MUST-HAVE
 - **Duration**: 3-4 hours
 - **Description**: Write Section 3 explaining why this disruption is fundamentally different from previous tech revolutions (~350 words)
@@ -86,6 +90,7 @@
 - **Reference**: `specs/001-chapter-1-redesign/plan.md` (Section 3), `specs/001-chapter-1-redesign/spec.md` (FR-003)
 
 #### Task 1.5: Section 4 — The Development Lifecycle in Transition
+
 - **Priority**: MUST-HAVE
 - **Duration**: 3-4 hours
 - **Description**: Write Section 4 showing systemic transformation across all development phases (~350 words)
@@ -106,6 +111,7 @@
 - **Reference**: `specs/001-chapter-1-redesign/spec.md` (FR-007)
 
 #### Task 1.6: Section 5 — Beyond Code: Changing Developer Roles
+
 - **Priority**: MUST-HAVE
 - **Duration**: 3-4 hours
 - **Description**: Write Section 5 addressing the reader's personal stake—role evolution from typist to orchestrator (~350 words)
@@ -128,6 +134,7 @@
 - **Reference**: `specs/001-chapter-1-redesign/spec.md` (FR-008), plan.md Section 5
 
 #### Task 1.7: Section 6 — The Autonomous Agent Era
+
 - **Priority**: MUST-HAVE
 - **Duration**: 3-4 hours
 - **Description**: Write Section 6 previewing the autonomous agent trajectory (~350 words)
@@ -149,6 +156,7 @@
 - **Reference**: `specs/001-chapter-1-redesign/spec.md` (FR-009)
 
 #### Task 1.8: Section 7 — The Opportunity Window
+
 - **Priority**: MUST-HAVE
 - **Duration**: 3-4 hours
 - **Description**: Write Section 7 motivating readers by showing unprecedented opportunity (~350 words)
@@ -172,6 +180,7 @@
 - **Reference**: `specs/001-chapter-1-redesign/spec.md` (FR-006, FR-010)
 
 #### Task 1.9: Section 8 — Why Traditional CS Education Falls Short
+
 - **Priority**: MUST-HAVE
 - **Duration**: 3-4 hours
 - **Description**: Write Section 8 explaining curricula gaps and positioning book as solution (~300 words)
@@ -194,6 +203,7 @@
 - **Reference**: `specs/001-chapter-1-redesign/spec.md` (FR-005)
 
 #### Task 1.10: Section 9 — Bridge to Chapter 2
+
 - **Priority**: MUST-HAVE
 - **Duration**: 2-3 hours
 - **Description**: Write Section 9 creating momentum and curiosity for Chapter 2 (~250 words)
@@ -217,96 +227,100 @@
 ### Phase 2: Engagement & Evidence Elements
 
 #### Task 2.1: Research and Source Verification
+
 - **Priority**: MUST-HAVE (runs parallel with writing)
 - **Duration**: 8-10 hours
 - **Description**: Verify all factual claims, gather sources, ensure 100% of quantitative claims are cited
 - **Acceptance Criteria**:
-  - [X] All major claims cross-referenced with reliable sources
-  - [X] Stack Overflow survey data verified (76% using or planning, 62% currently using - corrected from 84%)
-  - [X] Google DORA research cited correctly (2024 report, 39,000+ professionals)
-  - [X] ICPC World Finals results verified (Gemini gold-medal level performance)
-  - [X] Claude Code $500M run rate verified (Anthropic announcements)
-  - [X] GitHub Copilot metrics verified (20M users, $400M revenue)
-  - [X] 70% more merged PRs statistic sourced (Google DORA)
-  - [X] World Bank GDP data confirmed (France $3.16T in 2024)
-  - [X] Job market employment trends cited (McKinsey, GMAC, IBM surveys)
-  - [X] Startup funding trends documented (GitHub, Anthropic, Cursor metrics)
-  - [X] Developer adoption curve data gathered (Stack Overflow 2024)
-  - [X] All sources recorded in research document (sources-and-citations.md)
-  - [X] Direct quotes attributed with proper citation
-  - [X] Fact-checking spreadsheet completed (claim → source → verified)
+  - [x] All major claims cross-referenced with reliable sources
+  - [x] Stack Overflow survey data verified (76% using or planning, 62% currently using - corrected from 84%)
+  - [x] Google DORA research cited correctly (2024 report, 39,000+ professionals)
+  - [x] ICPC World Finals results verified (Gemini gold-medal level performance)
+  - [x] Claude Code $500M run rate verified (Anthropic announcements)
+  - [x] GitHub Copilot metrics verified (20M users, $400M revenue)
+  - [x] 70% more merged PRs statistic sourced (Google DORA)
+  - [x] World Bank GDP data confirmed (France $3.16T in 2024)
+  - [x] Job market employment trends cited (McKinsey, GMAC, IBM surveys)
+  - [x] Startup funding trends documented (GitHub, Anthropic, Cursor metrics)
+  - [x] Developer adoption curve data gathered (Stack Overflow 2024)
+  - [x] All sources recorded in research document (sources-and-citations.md)
+  - [x] Direct quotes attributed with proper citation
+  - [x] Fact-checking spreadsheet completed (claim → source → verified)
 - **Output**: Research document listing all sources ✅ CREATED: sources-and-citations.md, corrections-completed.md
 - **Dependencies**: Content sections (Tasks 1.2-1.10)
 - **Reference**: `specs/001-chapter-1-redesign/spec.md` (FR-011, FR-012, FR-013)
 - **Status**: ✅ COMPLETED - All sources verified, 4 corrections implemented
 
 #### Task 2.2: Create "Pause and Reflect" Sections (3 total)
+
 - **Priority**: SHOULD-HAVE
 - **Duration**: 2 hours
 - **Description**: Design 3 reflection prompts for critical thinking (placed strategically in content)
 - **Acceptance Criteria**:
-  - [X] After Section 1 (The Hook): Reflection on personal relevance ✅ INCLUDED
+  - [x] After Section 1 (The Hook): Reflection on personal relevance ✅ INCLUDED
     - Prompt encourages reader to consider: "What aspect of this story resonates most with you?"
-  - [X] After Section 5 (Changing Roles): Reflection on personal stake ✅ INCLUDED
+  - [x] After Section 5 (Changing Roles): Reflection on personal stake ✅ INCLUDED
     - Prompt encourages: "How is your current role changing? Are you keeping pace?"
-  - [X] After Section 8 (Education Gap): Reflection on skill needs ✅ INCLUDED
+  - [x] After Section 8 (Education Gap): Reflection on skill needs ✅ INCLUDED
     - Prompt encourages: "What's one skill you're not learning in traditional education?"
-  - [X] Each prompt is thought-provoking, not leading
-  - [X] Prompts connect to reader's personal experience
-  - [X] Each has 2-3 follow-up questions for deeper reflection
-  - [X] Inclusion instructions documented (markdown formatting, placement in content)
+  - [x] Each prompt is thought-provoking, not leading
+  - [x] Prompts connect to reader's personal experience
+  - [x] Each has 2-3 follow-up questions for deeper reflection
+  - [x] Inclusion instructions documented (markdown formatting, placement in content)
 - **Dependencies**: Content sections (Tasks 1.2-1.10)
 - **Reference**: plan.md Integration Elements, lesson.md style guide
 - **Status**: ✅ COMPLETED - 3 reflection prompts embedded in sections
 
 #### Task 2.3: Embed Three Strategic Videos
+
 - **Priority**: MUST-HAVE
 - **Duration**: 1 hour
 - **Description**: Embed YouTube videos at strategic points with context and descriptions
 - **Acceptance Criteria**:
-  - [X] Video 1: Main "The $3 Trillion AI Coding Opportunity" (VlOAWvvjThU) ✅ EMBEDDED
+  - [x] Video 1: Main "The $3 Trillion AI Coding Opportunity" (VlOAWvvjThU) ✅ EMBEDDED
     - Placement: After Section 2 (to reinforce scale and disruption narrative)
     - Includes: Brief intro explaining why this video reinforces the section
     - Format: HTML iframe (Docusaurus compatible)
-  - [X] Video 2: Urdu/Hindi overview (dnk5nP9hzHg) ✅ EMBEDDED
+  - [x] Video 2: Urdu/Hindi overview (dnk5nP9hzHg) ✅ EMBEDDED
     - Placement: Section 6 as alternative format
     - Includes: Note explaining language and accessibility
-  - [X] Video 3: English overview (3ZPIerZkZn4) ✅ EMBEDDED
+  - [x] Video 3: English overview (3ZPIerZkZn4) ✅ EMBEDDED
     - Placement: Section 6 as recap/alternative format
     - Includes: Brief intro connecting to Section 6 content
-  - [X] All videos tested for live links before publication
-  - [X] Docusaurus embedding properly formatted
-  - [X] No broken embeds in final output
-  - [X] Total video count exactly 3
+  - [x] All videos tested for live links before publication
+  - [x] Docusaurus embedding properly formatted
+  - [x] No broken embeds in final output
+  - [x] Total video count exactly 3
 - **Dependencies**: All content sections (Tasks 1.2-1.10)
 - **Reference**: `specs/001-chapter-1-redesign/spec.md` (FR-004, SC-009)
 - **Status**: ✅ COMPLETED - All 3 videos embedded with context
 
 #### Task 2.4: Develop 5-8 Concrete Examples with Economic Details
+
 - **Priority**: SHOULD-HAVE
 - **Duration**: 3-4 hours
 - **Description**: Create and integrate compelling examples throughout the chapter
 - **Acceptance Criteria**:
-  - [X] Example 1: Solo founder building SaaS product with AI ✅ Sarah Chen (Section 1)
+  - [x] Example 1: Solo founder building SaaS product with AI ✅ Sarah Chen (Section 1)
     - Include: Team size comparison, timeline saved, specific tools used, revenue/traction
-  - [X] Example 2: CS student reframing education gap as opportunity ✅ Implied throughout
+  - [x] Example 2: CS student reframing education gap as opportunity ✅ Implied throughout
     - Include: Program attended, skills gap identified, how book addresses it
-  - [X] Example 3: Experienced developer transitioning to "orchestrator" role ✅ Section 5
+  - [x] Example 3: Experienced developer transitioning to "orchestrator" role ✅ Section 5
     - Include: Former role, transition challenges, current productivity metrics
-  - [X] Example 4: Career-changer combining domain expertise with AI tools ✅ Dr. Patel, Lisa, James (Section 7)
+  - [x] Example 4: Career-changer combining domain expertise with AI tools ✅ Dr. Patel, Lisa, James (Section 7)
     - Include: Prior career, new skills learned, competitive advantage gained
-  - [X] Example 5: Startup disrupting established market using AI development ✅ Marcus (Section 7)
+  - [x] Example 5: Startup disrupting established market using AI development ✅ Marcus (Section 7)
     - Include: Problem solved, competitive advantage, funding/success metrics
-  - [X] Example 6: Autonomous agent in production (if available) or plausible near-term example ✅ Section 6
+  - [x] Example 6: Autonomous agent in production (if available) or plausible near-term example ✅ Section 6
     - Include: What the agent does, time saved, quality improvements
-  - [X] Example 7: Entrepreneur starting dev tools company ✅ Section 7 entrepreneurial window
+  - [x] Example 7: Entrepreneur starting dev tools company ✅ Section 7 entrepreneurial window
     - Include: Market opportunity, why "best time in 3-4 decades", funding/traction
-  - [X] Example 8 (optional): Enterprise-scale AI development example ✅ Multiple (Sections 4, 7)
+  - [x] Example 8 (optional): Enterprise-scale AI development example ✅ Multiple (Sections 4, 7)
     - Include: Company, scale of deployment, business impact
-  - [X] All examples include specific numbers (time, money, productivity)
-  - [X] Examples distributed across chapter (not clustered)
-  - [X] Examples diverse in audience representation
-  - [X] Each example answers: "Why is this relevant to me?"
+  - [x] All examples include specific numbers (time, money, productivity)
+  - [x] Examples distributed across chapter (not clustered)
+  - [x] Examples diverse in audience representation
+  - [x] Each example answers: "Why is this relevant to me?"
 - **Dependencies**: Content sections and source verification (Tasks 1.2-1.10, 2.1)
 - **Reference**: plan.md Integration Elements, `specs/001-chapter-1-redesign/spec.md` (FR-017)
 - **Status**: ✅ COMPLETED - 8+ concrete examples with economic details embedded throughout chapter
@@ -316,6 +330,7 @@
 ### Phase 3: Review & Quality Assurance
 
 #### Task 3.1: Accessibility and Inclusivity Check
+
 - **Priority**: MUST-HAVE
 - **Duration**: 2-3 hours
 - **Description**: Verify chapter meets accessibility and inclusivity standards
@@ -343,6 +358,7 @@
 - **Reference**: Constitution Principle 8, Book Gaps Checklist
 
 #### Task 3.2: Factual Accuracy and Source Review
+
 - **Priority**: MUST-HAVE
 - **Duration**: 3-4 hours
 - **Description**: Comprehensive fact-check of all claims and source verification
@@ -362,6 +378,7 @@
 - **Reference**: Book Gaps Checklist (For ALL Chapters), `specs/001-chapter-1-redesign/spec.md` (SC-008)
 
 #### Task 3.3: Pedagogical Effectiveness Review
+
 - **Priority**: MUST-HAVE
 - **Duration**: 2-3 hours
 - **Description**: Verify chapter meets learning and engagement objectives
@@ -385,6 +402,7 @@
 - **Reference**: Constitution Principle 9 (Show-Then-Explain), plan.md
 
 #### Task 3.4: Constitutional Alignment Verification
+
 - **Priority**: MUST-HAVE
 - **Duration**: 2 hours
 - **Description**: Verify chapter aligns with project constitution and book gaps checklist
@@ -412,6 +430,7 @@
 - **Reference**: Constitution (Principles 1, 8, II.C), plan.md
 
 #### Task 3.5: Final Copy Editing and Polish
+
 - **Priority**: MUST-HAVE
 - **Duration**: 2-3 hours
 - **Description**: Final grammar, style, and formatting review
@@ -433,6 +452,7 @@
 - **Reference**: Output styles, publication standards
 
 #### Task 3.6: Integration Test with Chapter 2
+
 - **Priority**: SHOULD-HAVE
 - **Duration**: 1-2 hours
 - **Description**: Verify Chapter 1 properly sets up Chapter 2 content and concepts
@@ -452,6 +472,7 @@
 ## Acceptance Criteria (Definition of Done)
 
 **All Chapters MUST**:
+
 - [ ] All 9 content sections completed and reviewed
 - [ ] All MUST-HAVE tasks completed
 - [ ] Learning objectives are measurable and use appropriate Bloom's taxonomy
@@ -461,6 +482,7 @@
 - [ ] All success criteria testable and documented
 
 **Conceptual Chapters (Chapter 1) MUST**:
+
 - [ ] Narrative flows naturally and maintains engagement
 - [ ] Real-world examples are specific, concrete, and compelling
 - [ ] Reflection prompts encourage critical thinking
@@ -469,6 +491,7 @@
 - [ ] Professional Polish (no hype, realistic assessment, balanced tone)
 
 **Chapter 1 Specific**:
+
 - [ ] Exactly 2,000-2,500 words (8-12 minutes reading time)
 - [ ] 5-8 concrete examples with economic details
 - [ ] 3 embedded videos at strategic points
@@ -488,6 +511,7 @@
 Before marking complete, verify:
 
 - [ ] **Content Quality**:
+
   - [ ] Each section has clear purpose and contributes to chapter objective
   - [ ] Evidence is specific and verifiable
   - [ ] Examples are diverse and inclusive
@@ -495,12 +519,14 @@ Before marking complete, verify:
   - [ ] No unsupported claims
 
 - [ ] **Structure**:
+
   - [ ] Logical progression (each section builds on prior)
   - [ ] Clear transitions between sections
   - [ ] Appropriate section lengths (proportional word counts)
   - [ ] README.md properly organized
 
 - [ ] **Engagement**:
+
   - [ ] Opening hook is compelling
   - [ ] Closing bridge motivates continuation
   - [ ] Examples are relatable and specific
@@ -508,6 +534,7 @@ Before marking complete, verify:
   - [ ] Personal relevance evident throughout
 
 - [ ] **Technical**:
+
   - [ ] Markdown formatting correct
   - [ ] Docusaurus frontmatter present
   - [ ] Videos properly embedded
@@ -515,6 +542,7 @@ Before marking complete, verify:
   - [ ] No placeholder text remaining
 
 - [ ] **Constitutional**:
+
   - [ ] Aligns with Principles 1, 8
   - [ ] Book Gaps Checklist items addressed
   - [ ] 9 domain skills referenced/applied contextually
@@ -534,18 +562,23 @@ Before marking complete, verify:
 ## Follow-Ups & Risks
 
 **Risk 1: Chapter overwhelms beginners with evidence/data**
+
 - **Mitigation**: Use storytelling and concrete examples; relegate detailed statistics to citations readers can optionally explore
 
 **Risk 2: Experienced developers dismiss chapter as "too basic"**
+
 - **Mitigation**: Include deeper insights and strategic analysis; cite authoritative sources for credibility
 
 **Risk 3: Skeptical readers reject premise and abandon book**
+
 - **Mitigation**: Address skepticism proactively with verifiable evidence; acknowledge reasonable doubts; provide evidence-based responses
 
 **Risk 4: Field Volatility (AI tools, APIs, capabilities advancing rapidly)**
+
 - **Mitigation**: Flag date-sensitive claims for annual review; mark maintenance trigger points in source doc
 
 **Risk 5: Chapter feels like "hype" rather than serious analysis**
+
 - **Mitigation**: Ground every claim in cited sources; acknowledge limitations; avoid superlatives without evidence
 
 ---
@@ -553,6 +586,7 @@ Before marking complete, verify:
 ## Next Steps
 
 **After Phase 3 Complete**:
+
 1. Obtain final approval from project stakeholder
 2. Address any outstanding feedback from review
 3. Prepare content for content-implementer agent implementation (if applicable)

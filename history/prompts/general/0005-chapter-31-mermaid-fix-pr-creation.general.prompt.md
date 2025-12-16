@@ -16,8 +16,8 @@ links:
   adr: null
   pr: "https://github.com/panaversity/ai-native-software-development/pull/new/claude/fix-chapter-31-mermaid-011CUrpEQNee69dLkvxLYeY8"
 files:
-  - book-source/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/01-installation-and-setup.md
-  - book-source/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/06-tasks-phase.md
+  - apps/learn-app/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/01-installation-and-setup.md
+  - apps/learn-app/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/06-tasks-phase.md
 tests:
   - Verified commit d3f22a3 exists in git history
   - Cherry-picked commit to new branch from updated main
@@ -33,6 +33,7 @@ Create a new PR as last was merged
 **Context**: PR #74 was merged but only included the first two commits (Python version check, project structure correction). The third commit (d3f22a3 - Mermaid diagram replacement) was not included because it was created after PR #74 was opened.
 
 **Action Taken**:
+
 1. Checked main branch status - confirmed PR #74 merged (commits 05e927e and dfd291a present)
 2. Confirmed Mermaid replacement commit (d3f22a3) NOT on main - still needed
 3. Created new branch `claude/fix-chapter-31-mermaid-011CUrpEQNee69dLkvxLYeY8` from updated main

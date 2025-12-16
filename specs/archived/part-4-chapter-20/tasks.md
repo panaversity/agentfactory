@@ -18,29 +18,35 @@ This document breaks down the creation of Chapter 20 into atomic, independently 
 ## Task Organization
 
 **Phase 1: Setup & Infrastructure** (5 tasks)
+
 - Create chapter directory structure
 - Initialize lesson skeleton files
 - Set up code examples directories
 - Validate directory structure
 
 **Phase 2: Foundational Content** (4 tasks)
+
 - Create chapter readme.md with overview
 - Create chapter intro section (shared across lessons)
 - Establish code example style guide (Python 3.14+, type hints)
 - Set up testing framework for code examples
 
 **Phase 3: User Story 1 - Module Imports (P1)** (8 tasks)
+
 - Lesson 1: Understanding Modules and Imports (full lesson with CoLearning elements and Try With AI)
 
 **Phase 4: User Story 2 - Functions with Intent (P1)** (10 tasks)
+
 - Lesson 2: Writing Functions with Intent (full lesson with type hints, docstrings)
 - Lesson 3: Function Parameters and Returns (full lesson with advanced parameter patterns)
 
 **Phase 5: User Story 3 & 4 - Scope & Capstone (P2)** (20 tasks)
+
 - Lesson 4: Scope and Nested Functions (full lesson with scope exploration)
 - Lesson 5: Calculator Utility Capstone (full capstone project with multi-module structure)
 
 **Phase 6: Polish & Validation** (5 tasks)
+
 - Cross-lesson consistency check
 - Technical review preparation
 - Final validation against specification
@@ -53,9 +59,9 @@ This document breaks down the creation of Chapter 20 into atomic, independently 
 
 ### Phase 1: Setup & Infrastructure
 
-- [ ] T001 Create chapter directory `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/book-source/docs/04-Part-4-Python-Fundamentals/20-module-functions/`
+- [ ] T001 Create chapter directory `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/apps/learn-app/docs/04-Part-4-Python-Fundamentals/20-module-functions/`
 - [ ] T002 Create lesson skeleton files (01-understanding-modules-imports.md, 02-writing-functions-intent.md, 03-function-parameters-returns.md, 04-scope-nested-functions.md, 05-calculator-utility-capstone.md)
-- [ ] T003 Create code examples directory `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/book-source/docs/04-Part-4-Python-Fundamentals/20-module-functions/examples/` with subdirectories: `lesson-1/`, `lesson-2/`, `lesson-3/`, `lesson-4/`, `lesson-5-capstone/`
+- [ ] T003 Create code examples directory `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/apps/learn-app/docs/04-Part-4-Python-Fundamentals/20-module-functions/examples/` with subdirectories: `lesson-1/`, `lesson-2/`, `lesson-3/`, `lesson-4/`, `lesson-5-capstone/`
 - [ ] T004 Create chapter README.md with overview, prerequisites, learning objectives, and navigation
 - [ ] T005 Validate directory structure against book conventions (naming, nesting, file permissions)
 
@@ -71,11 +77,12 @@ This document breaks down the creation of Chapter 20 into atomic, independently 
 **Story Goal**: Students understand module organization and can import + use built-in modules (math, random, os) with confidence.
 
 **Independent Test Criteria**:
+
 - Student can execute `import math` and use `math.sqrt()` correctly
 - Student can explain difference between `import math`, `from math import sqrt`, `from math import sqrt as square_root`
 - Student can import and use 3+ built-in modules without errors
 
-- [ ] T010 [US1] Write Lesson 1 introduction: "What is a Module and Why Organize Code?" (5 min) in `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/book-source/docs/04-Part-4-Python-Fundamentals/20-module-functions/01-understanding-modules-imports.md`
+- [ ] T010 [US1] Write Lesson 1 introduction: "What is a Module and Why Organize Code?" (5 min) in `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/apps/learn-app/docs/04-Part-4-Python-Fundamentals/20-module-functions/01-understanding-modules-imports.md`
 - [ ] T011 [US1] Write Lesson 1 foundational concept section: "Module Concept" explaining .py files, standard library, code reusability (8 min) with 2-3 sentence explanation + why it matters
 - [ ] T012 [P] [US1] Create Code Example 1: Understanding Module Access (`import math` → namespace access) in `examples/lesson-1/example-1-module-access.py` with explanation
 - [ ] T013 [P] [US1] Create Code Example 2: Direct Import (`from math import sqrt`) in `examples/lesson-1/example-2-direct-import.py` with explanation
@@ -90,6 +97,7 @@ This document breaks down the creation of Chapter 20 into atomic, independently 
 **Story Goal**: Students write functions with clear intent through type hints, docstrings, and can apply functions to real problems (calculations, data processing).
 
 **Independent Test Criteria**:
+
 - Student can write `def add(a: int, b: int) -> int:` with docstring
 - Student can apply functions to 3+ real problems (calculate, process data, organize code)
 - Student understands function parameters vs returns
@@ -117,11 +125,13 @@ This document breaks down the creation of Chapter 20 into atomic, independently 
 **Story Goal (US4)**: Students build integrated multi-module Calculator Utility applying all Chapter 20 concepts in cohesive, testable project.
 
 **Independent Test Criteria (US3)**:
+
 - Student can predict output of local/global variable code in 80%+ of scenarios
 - Student understands when to use `global` keyword
 - Student recognizes nested functions as foundation for decorators
 
 **Independent Test Criteria (US4)**:
+
 - Student builds Calculator Utility with 3 modules (math_operations.py, utils.py, main.py)
 - All functions have type hints and docstrings
 - Project runs without errors and produces expected output
@@ -188,6 +198,7 @@ Phase 6 (Polish): T050, T051, T052, T053, T054 (parallel except ordering) ✓
 5. **Phase 6 Parallel** (validation tasks independent)
 
 **Recommended Team Split** (if using multiple content-implementer subagents):
+
 - **Agent A**: Lesson 1 (T010-T018)
 - **Agent B**: Lesson 2 (T019-T026)
 - **Agent C**: Lesson 3 (T027-T033)
@@ -200,6 +211,7 @@ Phase 6 (Polish): T050, T051, T052, T053, T054 (parallel except ordering) ✓
 ## Success Criteria per Task Phase
 
 **Phase 3 (US1) Success**:
+
 - [ ] Lesson 1 teaches all 5 concepts without forward references
 - [ ] 6 code examples all use Python 3.14+ type hints
 - [ ] Try With AI section has exactly 4 prompts (Bloom's progression)
@@ -207,14 +219,16 @@ Phase 6 (Polish): T050, T051, T052, T053, T054 (parallel except ordering) ✓
 - [ ] Students can independently import and use 3+ built-in modules
 
 **Phase 4 (US2) Success**:
+
 - [ ] Lesson 2 teaches 6 concepts (function def, parameters, returns, type hints, docstrings, calling)
-- [ ] Lesson 3 teaches 5 concepts (positional params, defaults, returns, unpacking, *args awareness)
+- [ ] Lesson 3 teaches 5 concepts (positional params, defaults, returns, unpacking, \*args awareness)
 - [ ] All functions use mandatory type hints and docstrings
 - [ ] 8+ code examples across both lessons
 - [ ] Try With AI sections properly formatted (4 prompts each, Bloom's progression)
 - [ ] Students can write functions with clear intent on first attempt
 
 **Phase 5 (US3/US4) Success**:
+
 - [ ] Lesson 4 teaches scope (local, global, enclosing, nested) with CEFR B1-B2 complexity
 - [ ] Lesson 5 Capstone integrates all previous concepts
 - [ ] Calculator Utility has 3 modules, 8-10 functions total, full test coverage
@@ -222,6 +236,7 @@ Phase 6 (Polish): T050, T051, T052, T053, T054 (parallel except ordering) ✓
 - [ ] Students build integrated project without errors
 
 **Phase 6 Success**:
+
 - [ ] All lessons follow consistency checklist
 - [ ] All 30+ code examples validated for correctness
 - [ ] No forward references within chapter
@@ -233,12 +248,14 @@ Phase 6 (Polish): T050, T051, T052, T053, T054 (parallel except ordering) ✓
 ## Notes for Implementation
 
 **Pedagogical Ordering Rules** (CRITICAL - enforce in every task):
+
 1. Each lesson uses ONLY concepts from current + prior lessons (NO forward references)
 2. Every function/keyword introduced with explanation before first use
 3. Built-ins (len, type, isinstance) vs methods (.upper, .split) clearly distinguished
 4. Lesson boundaries strictly enforced (L1 concepts not used until L1 is complete)
 
 **AI-Native Learning** (CRITICAL - embed in all lessons):
+
 - Every lesson demonstrates AI as intellectual partner, not code generator
 - 💬 Conceptual prompts encourage exploration
 - 🎓 Commentary emphasizes reasoning ("syntax cheap, semantics gold")
@@ -246,6 +263,7 @@ Phase 6 (Polish): T050, T051, T052, T053, T054 (parallel except ordering) ✓
 - ✨ Tips build AI collaboration patterns
 
 **Try With AI Format** (CRITICAL - exact compliance required):
+
 - Exactly 4 prompts per lesson
 - Progressive Bloom's levels: Remember → Understand → Apply → Analyze/Synthesize
 - Each prompt with explicit "Expected outcome"
@@ -253,6 +271,7 @@ Phase 6 (Polish): T050, T051, T052, T053, T054 (parallel except ordering) ✓
 - Try With AI is the ONLY closure point for each lesson
 
 **Type Hints** (MANDATORY - all code examples):
+
 - Every function: `def func(param: Type) -> ReturnType:`
 - No ambiguous untyped functions
 - Python 3.14+ modern syntax (list[int], dict[str, float], X | None)

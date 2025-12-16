@@ -8,10 +8,12 @@
 **Problem**: The vertical intelligence system (constitution → output styles → subagents → content) has critical misalignment. Every layer describes a different version of the project, causing contradictory instructions and degraded content quality.
 
 **Solution**: Two-phase approach:
+
 - **Phase 1** (2 weeks): Emergency synchronization of all 4 layers to describe same current reality
 - **Phase 2** (4 weeks): Build adaptive intelligence infrastructure with evaluation, feedback loops, and drift detection
 
 **Technical Approach**:
+
 - Data-driven validation with quantitative metrics (>95% accuracy, >98% consistency, >90% completeness)
 - Hybrid AI-human validation (AI analyzes and presents evidence, human confirms)
 - Incremental layer-by-layer fixes with checkpoints
@@ -21,12 +23,14 @@
 
 **Language/Version**: Markdown (documentation), Python 3.13+ (validation scripts), Bash (automation)
 **Primary Dependencies**:
+
 - Claude Code (AI orchestrator)
 - Existing subagents: chapter-planner, content-implementer, validation-auditor, factual-verifier
 - Existing skills: skills-proficiency-mapper, content-evaluation-framework, book-scaffolding
 
 **Storage**: File-based (markdown, YAML frontmatter)
 **Testing**:
+
 - Validation scripts for terminology consistency
 - Test chapter generation for end-to-end workflow validation
 - Benchmark suite (50 prompts per subagent) for Phase 2
@@ -34,16 +38,19 @@
 **Target Platform**: macOS/Linux development environment with git
 **Project Type**: Infrastructure/Documentation (book authoring system fix)
 **Performance Goals**:
+
 - Phase 1: Zero manual corrections needed for generated content
 - Phase 2: >95% sub-agent accuracy, 50+ user responses/month, zero drift over 3 months
 
 **Constraints**:
+
 - Backward compatibility with existing 14 chapters
 - Minimal disruption to active authors
 - 2-week timeline for Phase 1 (urgent)
 - Budget <$500 for Phase 2 instrumentation
 
 **Scale/Scope**:
+
 - 4 layers to synchronize (constitution, output styles, subagents, content)
 - 14 existing chapters to validate
 - 31 functional requirements to implement
@@ -51,7 +58,7 @@
 
 ## Constitution Check
 
-*GATE: Infrastructure fixes must preserve constitution quality standards*
+_GATE: Infrastructure fixes must preserve constitution quality standards_
 
 ✅ **Preserves Core Principles**: Specification-first workflow, validation-first safety, graduated complexity
 ✅ **Maintains Quality Standards**: Python 3.13+, type hints, docstrings, PEP 8/257 compliance unchanged
@@ -70,6 +77,7 @@
 **Week 1: Documentation Layer Fixes**
 
 **Day 1-2: Constitution Update** (FR-001 to FR-004)
+
 - Add header explaining "Current Reality" vs "Future State" sections
 - Update Current Reality: 14 chapters, 4 parts (1/2/3/5), semantic skills activation
 - Move aspirational content to clearly-marked Future State section
@@ -80,6 +88,7 @@
 **Validation**: AI scans updated constitution, generates evidence report comparing old vs new terminology. Human reviews and approves.
 
 **Day 3-4: Output Styles Rewrite** (FR-005 to FR-008)
+
 - Rewrite `.claude/output-styles/chapters.md`:
   - Correct structure: Part (Title-Case) → Chapter (lowercase) → readme.md (lowercase)
   - Use actual example from Chapter 1 (readme.md + 8 section files with descriptive names)
@@ -92,9 +101,10 @@
 **Validation**: AI compares output styles against actual Chapter 1 structure, reports discrepancies. Human spot-checks 3 sample files.
 
 **Day 5: PROJECT-STRUCTURE-REALITY.md Creation** (FR-013 to FR-015)
+
 - Create `.claude/PROJECT-STRUCTURE-REALITY.md` as single source of truth
 - Include sections:
-  - Actual directory tree from book-source/docs/
+  - Actual directory tree from apps/learn-app/docs/
   - Terminology definitions (Part → Chapter → Section, not "lessons")
   - Canonical example: Chapter 1 structure (readme.md + 8 sections)
   - Link to constitution sections describing Future State
@@ -105,6 +115,7 @@
 **Week 2: Execution Layer Fixes + End-to-End Validation**
 
 **Day 6-7: Subagent Instruction Alignment** (FR-009 to FR-012)
+
 - Update `chapter-planner.md`:
   - Remove hardcoded skill counts ("8 skills", "9 skills")
   - Reference PROJECT-STRUCTURE-REALITY.md for structure
@@ -123,6 +134,7 @@
 **Validation**: AI scans each subagent file, flags remaining contradictions. Human reviews and confirms alignment.
 
 **Day 8-9: Cross-Layer Validation Script** (FR-016 to FR-018)
+
 - Create `scripts/validation/validate-vertical-intelligence.py`:
   - Scan constitution for terminology (sections, readme case, part counts)
   - Scan output styles for same terms
@@ -134,6 +146,7 @@
 **Validation**: Run script, verify it catches intentionally-introduced misalignments. Human reviews report format.
 
 **Day 10: Test Chapter Generation + Metadata Tracking** (End-to-End Validation)
+
 - Create test chapter spec (`specs/test-chapter/spec.md`)
 - Invoke corrected chapter-planner → content-implementer workflow
 - Capture all outputs: plan.md, tasks.md, readme.md, section files
@@ -156,6 +169,7 @@
 **Validation**: Human reviews test chapter output, confirms no manual corrections needed. Approves metrics as baseline.
 
 **Phase 1 Deliverables**:
+
 - ✅ Updated constitution with Current/Future State separation
 - ✅ Rewritten output styles matching actual implementation
 - ✅ Aligned subagent instructions with consistent terminology
@@ -172,6 +186,7 @@
 **Week 3: Sub-Agent Evaluation Framework** (FR-019 to FR-022)
 
 **Day 11-12: Benchmark Suite Creation**
+
 - Create 50 test prompts per subagent (chapter-planner, content-implementer, validation-auditor):
   - 20 normal cases (standard chapter specs, typical content)
   - 15 edge cases (single-section chapters, heavy code examples, conceptual-only)
@@ -181,6 +196,7 @@
 - Create expected outputs for each prompt (gold standard)
 
 **Day 13-14: Evaluation Infrastructure**
+
 - Create `scripts/evaluation/evaluate-subagent.py`:
   - Run subagent against all 50 prompts
   - Compare output vs expected (structure, completeness, terminology)
@@ -193,6 +209,7 @@
 - Generate evaluation report with pass/fail per success criterion
 
 **Day 15: Cost & Failure Analysis**
+
 - Create `scripts/evaluation/analyze-failures.py`:
   - Catalogue common error patterns from benchmark failures
   - Identify which prompt types cause failures
@@ -208,6 +225,7 @@
 **Week 4: User Feedback Integration** (FR-023 to FR-025)
 
 **Day 16-17: Analytics Instrumentation**
+
 - Modify "Try With AI" sections to include tracking:
   - Add hidden script logging: exercise started timestamp, completed timestamp, time spent
   - Add success indicator form: "Did this work? [Yes/No/Partial]" (optional submission)
@@ -218,6 +236,7 @@
   - Store in simple CSV/JSON format (no PII, aggregate only)
 
 **Day 18: Community Input Channels**
+
 - Create GitHub issue templates:
   - `chapter-feedback.yml`: Structured feedback form per chapter
   - `exercise-problem.yml`: Report issues with "Try With AI" exercises
@@ -230,6 +249,7 @@
   - Generate weekly summary report
 
 **Day 19: A/B Testing Framework**
+
 - Create `scripts/ab-testing/setup-test.py`:
   - Define test: 2 pedagogical variations for same concept
   - Randomly assign readers to variant A or B
@@ -238,6 +258,7 @@
 - Example test: "Explain decorators with restaurant metaphor (A) vs factory metaphor (B)"
 
 **Day 19.5: Beta Test (Risk Mitigation)**
+
 - **Purpose**: Validate user feedback instrumentation works in production before full deployment
 - **Scope**: Apply instrumentation to 2 test chapters (select from Parts 1-2, completed chapters)
 - **Beta Test Activities**:
@@ -255,6 +276,7 @@
 **Week 5: Adaptive Intelligence System** (FR-026 to FR-028)
 
 **Day 20-21: Drift-Detection Agent**
+
 - Create `scripts/drift-detection/detect-drift.py`:
   - Run weekly (cron job or GitHub Actions)
   - Compare constitution descriptions vs actual content structure:
@@ -265,6 +287,7 @@
   - Send to designated reviewer (email or GitHub issue)
 
 **Day 22: Auto-Migration System**
+
 - Create `scripts/migration/generate-migration.py`:
   - Input: current version (v3.0), target version (v4.0)
   - Analyze constitution changes between versions
@@ -276,6 +299,7 @@
   - Include dry-run validation mode (preview changes without applying)
 
 **Day 23: AI Tool Evolution Monitoring**
+
 - Create `scripts/monitoring/track-tool-updates.py`:
   - Monitor release notes for: Claude Code, Gemini CLI, OpenAI Codex
   - Test new versions against benchmark suite (from Week 3)
@@ -289,6 +313,7 @@
 **Week 6: Scalability Infrastructure** (FR-029 to FR-031)
 
 **Day 24-25: Multi-Model Orchestration**
+
 - Create `scripts/orchestration/model-selector.py`:
   - Define task types: planning, code generation, validation, content writing
   - Map optimal model per task (e.g., Claude for planning, Gemini for code)
@@ -298,6 +323,7 @@
 - Update subagent invocation to use model selector
 
 **Day 26: Load Simulation**
+
 - Create `scripts/scalability/load-test.py`:
   - Generate 10 test chapters simultaneously (parallel workflow invocations)
   - Measure: tokens consumed, time elapsed, API costs, errors encountered
@@ -307,6 +333,7 @@
 - Generate scalability report with recommendations
 
 **Day 27: Cost Control Mechanisms**
+
 - Create `scripts/cost-control/budget-monitor.py`:
   - Set budget thresholds per operation type
   - Alert when token usage exceeds thresholds (email or Slack)
@@ -320,6 +347,7 @@
 **Validation**: Run load simulation, verify 10 chapters generate successfully in parallel. Human reviews cost controls, sets appropriate thresholds.
 
 **Phase 2 Deliverables**:
+
 - ✅ Benchmark suite (50 prompts × 3 subagents = 150 tests)
 - ✅ Evaluation infrastructure with >95% accuracy target
 - ✅ Cost tracking and failure analysis operational
@@ -341,12 +369,14 @@
 After each layer fixed (constitution, output styles, subagents):
 
 1. **AI Analysis**:
+
    - Runs validation checks for that layer
    - Scans for terminology consistency
    - Cross-references with actual content samples
    - Generates evidence report with specific file:line quotes
 
 2. **Human Checkpoint**:
+
    - Reviews validation report
    - Confirms terminology changes correct
    - Approves evidence that layer describes actual implementation
@@ -359,10 +389,12 @@ After each layer fixed (constitution, output styles, subagents):
 ### Test-Driven End-to-End Validation (Phase 1 completion)
 
 1. **Generate Test Chapter**:
+
    - Use corrected workflow with test spec
    - Capture all outputs (plan, tasks, readme, sections)
 
 2. **Automated Analysis** (AI):
+
    - Compare generated vs PROJECT-STRUCTURE-REALITY.md
    - Check: file naming, YAML structure, terminology, two-level architecture, metadata comments
    - Calculate data-driven metrics (consistency score, structure match, zero-correction rate, workflow success)
@@ -375,34 +407,37 @@ After each layer fixed (constitution, output styles, subagents):
 
 ### Success Validation Matrix
 
-| Success Criterion | AI Validation Method | Human Confirmation | Data Metric |
-|-------------------|---------------------|-------------------|-------------|
-| SC-001: No contradictory instructions | Invoke workflow, capture logs, scan for errors | Author reviews workflow execution | Error count = 0 |
-| SC-002: Content matches structure | Compare files vs spec, list discrepancies | Author spot-checks 3 files | Match rate = 100% |
-| SC-003: Zero misalignments | Run validation script, report inconsistencies | Author reviews top 5 findings | Misalignment count = 0 |
-| SC-004: Accurate information | Query AI about project state, compare to reality | Author validates 5 key facts | Accuracy rate = 100% |
-| SC-005: Consistent terminology | Scan 4 layers for terms, flag mixing | Author confirms term choices | Consistency score = 100% |
-| SC-006: Two-level structure documented | Check docs mention both levels with examples | Author validates examples match | Documentation completeness = 100% |
-| SC-007: Minimal migration effort | Analyze 14 chapters, estimate changes | Author reviews migration plan | Estimated time < 2 hours |
-| SC-008: Sub-agents pass benchmarks | Run 150 benchmark tests, calculate metrics | Author reviews failure patterns | Accuracy >95%, Consistency >98%, Completeness >90% |
-| SC-009: User feedback operational | Check instrumentation in sections, test submission | Author validates dashboard shows data | 50+ responses/month |
-| SC-010: Adaptive intelligence prevents drift | Run detection on 30-day history, verify catches known issues | Author reviews alert reports | Zero undetected drift over 3 months |
-| SC-011: Scalability demonstrated | Run 10-chapter parallel test, measure resources | Author reviews load test results | Success without degradation |
+| Success Criterion                            | AI Validation Method                                         | Human Confirmation                    | Data Metric                                        |
+| -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------- | -------------------------------------------------- |
+| SC-001: No contradictory instructions        | Invoke workflow, capture logs, scan for errors               | Author reviews workflow execution     | Error count = 0                                    |
+| SC-002: Content matches structure            | Compare files vs spec, list discrepancies                    | Author spot-checks 3 files            | Match rate = 100%                                  |
+| SC-003: Zero misalignments                   | Run validation script, report inconsistencies                | Author reviews top 5 findings         | Misalignment count = 0                             |
+| SC-004: Accurate information                 | Query AI about project state, compare to reality             | Author validates 5 key facts          | Accuracy rate = 100%                               |
+| SC-005: Consistent terminology               | Scan 4 layers for terms, flag mixing                         | Author confirms term choices          | Consistency score = 100%                           |
+| SC-006: Two-level structure documented       | Check docs mention both levels with examples                 | Author validates examples match       | Documentation completeness = 100%                  |
+| SC-007: Minimal migration effort             | Analyze 14 chapters, estimate changes                        | Author reviews migration plan         | Estimated time < 2 hours                           |
+| SC-008: Sub-agents pass benchmarks           | Run 150 benchmark tests, calculate metrics                   | Author reviews failure patterns       | Accuracy >95%, Consistency >98%, Completeness >90% |
+| SC-009: User feedback operational            | Check instrumentation in sections, test submission           | Author validates dashboard shows data | 50+ responses/month                                |
+| SC-010: Adaptive intelligence prevents drift | Run detection on 30-day history, verify catches known issues | Author reviews alert reports          | Zero undetected drift over 3 months                |
+| SC-011: Scalability demonstrated             | Run 10-chapter parallel test, measure resources              | Author reviews load test results      | Success without degradation                        |
 
 ## Rollout Strategy
 
 **Phase 1 Rollout** (minimize disruption):
 
 1. **Feature Branch Work** (Days 1-9):
+
    - All changes on `001-fix-vertical-intelligence` branch
    - No impact to main branch or active authors
 
 2. **Validation Period** (Day 10):
+
    - Generate test chapter, collect metrics
    - If any SC-001 to SC-007 fails: fix and re-test
    - Do not proceed to rollout until all Phase 1 SC pass
 
 3. **Staged Merge** (Day 11-12):
+
    - Merge constitution changes first (lowest risk)
    - Merge output styles (medium risk, templates only)
    - Merge subagent instructions (higher risk, test immediately after)
@@ -410,6 +445,7 @@ After each layer fixed (constitution, output styles, subagents):
    - Merge PROJECT-STRUCTURE-REALITY.md (no risk, new file)
 
 4. **Author Communication**:
+
    - Announce changes in project Slack/Discord/email
    - Provide migration guide for any in-progress work
    - Offer support channel for questions
@@ -431,6 +467,7 @@ After each layer fixed (constitution, output styles, subagents):
 ### Phase 1 Risks
 
 **Risk 1: Existing authors have in-progress chapters on main branch**
+
 - **Likelihood**: Medium
 - **Impact**: High (merge conflicts, wasted work)
 - **Mitigation**:
@@ -439,6 +476,7 @@ After each layer fixed (constitution, output styles, subagents):
   - Offer 1:1 support for migrating in-progress chapters
 
 **Risk 2: Test chapter validation fails, revealing deeper issues**
+
 - **Likelihood**: Medium
 - **Impact**: High (Phase 1 timeline extends)
 - **Mitigation**:
@@ -446,6 +484,7 @@ After each layer fixed (constitution, output styles, subagents):
   - Have fallback: if critical issues found, pause rollout, fix, re-validate
 
 **Risk 3: Subagent updates break existing functionality**
+
 - **Likelihood**: Low
 - **Impact**: Critical (authors blocked)
 - **Mitigation**:
@@ -456,6 +495,7 @@ After each layer fixed (constitution, output styles, subagents):
 ### Phase 2 Risks
 
 **Risk 4: Benchmark suite doesn't cover real-world edge cases**
+
 - **Likelihood**: Medium
 - **Impact**: Medium (false confidence in sub-agent quality)
 - **Mitigation**:
@@ -464,6 +504,7 @@ After each layer fixed (constitution, output styles, subagents):
   - Review benchmark quarterly, update as book evolves
 
 **Risk 5: User feedback collection has low adoption**
+
 - **Likelihood**: Medium
 - **Impact**: Low (Phase 2 success but less data-driven iteration)
 - **Mitigation**:
@@ -472,6 +513,7 @@ After each layer fixed (constitution, output styles, subagents):
   - Incentivize participation (e.g., contributor credit)
 
 **Risk 6: Drift detection generates false positives**
+
 - **Likelihood**: Medium
 - **Impact**: Low (reviewer fatigue, ignored alerts)
 - **Mitigation**:
@@ -482,23 +524,27 @@ After each layer fixed (constitution, output styles, subagents):
 ## Dependencies
 
 **External Dependencies**:
+
 - Claude Code API access (required for all phases)
 - GitHub repository with Actions enabled (required for drift detection cron)
 - Python 3.13+ runtime (required for validation/evaluation scripts)
 
 **Internal Dependencies** (must complete before phase starts):
+
 - Phase 1 Day 6 requires Days 1-5 complete (subagents reference updated constitution/styles)
 - Phase 1 Day 10 requires Days 1-9 complete (test chapter uses all corrected layers)
 - Phase 2 Week 3 requires Phase 1 complete (benchmarks test corrected subagents)
 - Phase 2 Week 5 requires Week 3 complete (drift detection validates against benchmark baseline)
 
 **Human Resource Dependencies**:
+
 - Domain expert (author) available for human validation checkpoints (estimated 2-3 hours/week Phase 1, 1 hour/week Phase 2)
 - Technical reviewer to approve script implementations (estimated 1 hour/week both phases)
 
 ## Resource Breakdown by Role
 
 **Phase 1 (80 hours total, 2 weeks)**:
+
 - **Domain Expert/Author**: 20 hours
   - Constitution review and approval: 2 hours
   - Output styles validation: 2 hours
@@ -517,6 +563,7 @@ After each layer fixed (constitution, output styles, subagents):
   - Migration coordination: 2 hours
 
 **Phase 2 (160 hours total, 4 weeks)**:
+
 - **Domain Expert/Author**: 30 hours
   - Benchmark suite review: 5 hours
   - Gold standard validation: 8 hours
@@ -541,6 +588,7 @@ After each layer fixed (constitution, output styles, subagents):
 ## Tools Appendix
 
 **Required Development Tools**:
+
 - **Python 3.13+**: For validation scripts, evaluation framework, analytics
   - Setup: `python --version` to verify, install from python.org if needed
   - Virtual environment: `python -m venv .venv && source .venv/bin/activate`
@@ -554,6 +602,7 @@ After each layer fixed (constitution, output styles, subagents):
   - Auth: `gh auth login`
 
 **Required Infrastructure**:
+
 - **GitHub Actions**: For automated drift detection cron jobs, weekly monitoring
   - Setup: Create `.github/workflows/drift-detection.yml` during Phase 2 Week 5
   - Free tier sufficient for weekly runs
@@ -564,6 +613,7 @@ After each layer fixed (constitution, output styles, subagents):
   - No external database required
 
 **Optional Tools** (recommended for Phase 2):
+
 - **Slack/Discord Webhooks**: For drift detection alerts, cost threshold notifications
   - Setup: Configure webhook URLs in environment variables
   - Fallback: Email notifications or GitHub Issues if webhooks unavailable
@@ -572,6 +622,7 @@ After each layer fixed (constitution, output styles, subagents):
   - Optional: Can use simple terminal output instead
 
 **Environment Configuration**:
+
 ```bash
 # .env file (create during implementation, add to .gitignore)
 DRIFT_DETECTION_SLACK_WEBHOOK=https://hooks.slack.com/...
@@ -581,6 +632,7 @@ BENCHMARK_SUITE_PATH=./specs/benchmarks
 ```
 
 **Pre-Implementation Checklist**:
+
 - [ ] Python 3.13+ installed and verified
 - [ ] Git configured with user name and email
 - [ ] GitHub CLI installed and authenticated
@@ -591,12 +643,14 @@ BENCHMARK_SUITE_PATH=./specs/benchmarks
 ## Success Definition
 
 **Phase 1 Success** (all must pass to proceed to Phase 2):
+
 - ✅ SC-001 to SC-007 all achieve 100% targets
 - ✅ Test chapter generated without manual corrections
 - ✅ Existing 14 chapters validated against new standards (migration complete)
 - ✅ No author complaints about increased difficulty or confusion
 
 **Phase 2 Success** (measured over 3-month validation period):
+
 - ✅ SC-008: All subagents pass >95% of benchmark tests
 - ✅ SC-009: Collect 50+ user feedback responses per month
 - ✅ SC-010: Zero undetected drift incidents over 3 months
@@ -604,6 +658,7 @@ BENCHMARK_SUITE_PATH=./specs/benchmarks
 - ✅ Cost per chapter tracked and optimized (downward trend)
 
 **Long-Term Success Indicators**:
+
 - Authors report faster chapter creation (measured via analytics)
 - Fewer GitHub issues related to structure/terminology confusion
 - Increased reader engagement (measured via feedback and completion tracking)
@@ -624,6 +679,7 @@ After plan approval:
 
 **Plan Status**: Ready for review and `/sp.tasks` generation
 **Estimated Total Effort**:
+
 - Phase 1: 80 hours (2 weeks × 40 hours)
 - Phase 2: 160 hours (4 weeks × 40 hours)
 - Total: 240 hours over 6 weeks

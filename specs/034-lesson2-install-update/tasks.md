@@ -15,8 +15,8 @@
 
 ## Path Conventions
 
-- **Main lesson**: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md`
-- **Summary**: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md.summary.md`
+- **Main lesson**: `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md`
+- **Summary**: `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md.summary.md`
 
 ---
 
@@ -44,7 +44,7 @@
 
 **⚠️ CRITICAL**: These sections must be preserved/updated before installation section restructure
 
-- [ ] T010 Read current lesson file `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md` to understand existing structure
+- [ ] T010 Read current lesson file `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md` to understand existing structure
 - [ ] T011 Verify frontmatter YAML metadata (title, sidebar_position: 2, chapter: 5, lesson: 2, duration_minutes: 18, pedagogical layers, skills, learning_objectives, cognitive_load)
 - [ ] T012 [P] Update Prerequisites section: Add "Location: Anthropic supported countries" note, clarify "Node.js 18+ (only required for npm installation)"
 - [ ] T013 [P] Preserve "Why This Matters: Terminal Integration for AI Workflows" section (no changes needed per spec)
@@ -149,7 +149,7 @@
 
 **Tasks**:
 
-- [ ] T047 [US6] Read current summary file `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md.summary.md`
+- [ ] T047 [US6] Read current summary file `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md.summary.md`
 - [ ] T048 [US6] Rewrite summary Introduction: Platform-specific installation methods (Windows/macOS/Linux), authentication paths (3)
 - [ ] T049 [US6] Update Key Concepts section: Platform identification, recommended method per platform, 3 authentication types
 - [ ] T050 [US6] Update Critical Patterns section: Decision trees (platform selection, auth method selection), verification commands
@@ -167,7 +167,7 @@
 - [ ] T055 [P] Validate "Try With AI" section against Constitution v6.0.1 meta-commentary prohibition: No "What to notice", no "AI is teaching you", no role labels
 - [ ] T056 [P] Add "Auto-Update Documentation" to Security & Best Practices section: Auto-update mechanism, `DISABLE_AUTOUPDATER=1`, settings.json
 - [ ] T057 [P] Update duration metadata if content grew significantly (target: 18-22 minutes acceptable per plan)
-- [ ] T058 [P] Verify all installation commands use code syntax highlighting (```bash or ```powershell)
+- [ ] T058 [P] Verify all installation commands use code syntax highlighting (`bash or `powershell)
 - [ ] T059 [P] Verify all "What this does" explanations use B1-appropriate vocabulary (no jargon like "package manager" without explanation)
 
 ---
@@ -230,6 +230,7 @@ Phase 1 (Setup) ──┬──> Phase 2 (Foundational)
 ### Parallel Execution Opportunities
 
 **After Phase 2 completes, these can run in parallel**:
+
 - Phase 3 (Windows section) + Phase 4 (macOS section) + Phase 5 (Linux section) + Phase 7 (Auth section)
 - Phase 6 (npm verification) starts after Phase 3/4/5
 - Phase 8 (Summary) starts after all content phases complete
@@ -245,6 +246,7 @@ Phase 1 (Setup) ──┬──> Phase 2 (Foundational)
 **MVP = User Stories 1, 2, 3, 5** (Windows, macOS, Linux, Auth)
 
 **Rationale**:
+
 - US1/US2/US3 (P1): Core installation for all platforms
 - US5 (P1): Authentication required for working setup
 - US4 (P2): npm alternative can be added after MVP
@@ -253,6 +255,7 @@ Phase 1 (Setup) ──┬──> Phase 2 (Foundational)
 ### Incremental Delivery
 
 **Sprint 1** (MVP - 6 hours):
+
 - Phase 1: Setup & Research (1-2 hrs)
 - Phase 2: Foundational (0.5 hrs)
 - Phase 3-5: Windows, macOS, Linux sections (3 hrs)
@@ -260,6 +263,7 @@ Phase 1 (Setup) ──┬──> Phase 2 (Foundational)
 - Phase 10: Critical validation (factual accuracy, constitutional) (1 hr)
 
 **Sprint 2** (Polish - 2-3 hours):
+
 - Phase 6: npm alternative (0.5 hrs)
 - Phase 8: Summary update (1 hr)
 - Phase 9: Cross-cutting (0.5 hrs)
@@ -273,6 +277,7 @@ Phase 1 (Setup) ──┬──> Phase 2 (Foundational)
 **Parallelizable**: 45 tasks (61%) marked with [P]
 
 **Tasks per User Story**:
+
 - Setup & Research (Phase 1): 9 tasks
 - Foundational (Phase 2): 5 tasks
 - US1 (Windows): 8 tasks
@@ -286,6 +291,7 @@ Phase 1 (Setup) ──┬──> Phase 2 (Foundational)
 - Polish (Phase 11): 5 tasks
 
 **Independent Test Criteria**:
+
 - US1: Windows student installs via PowerShell, verifies with `claude --version`
 - US2: macOS student installs via Homebrew, verifies with `claude --version`
 - US3: Linux student installs via curl/bash, verifies with `claude doctor`
@@ -294,6 +300,7 @@ Phase 1 (Setup) ──┬──> Phase 2 (Foundational)
 - US6: External reviewer uses summary standalone, knows when to check main lesson
 
 **Parallel Opportunities**:
+
 - Platform sections (Windows/macOS/Linux) can be written simultaneously
 - Validation tasks (factual accuracy, constitutional, cross-reference) can run in parallel
 - Cross-cutting updates (Try With AI, auto-update docs) can be done independently

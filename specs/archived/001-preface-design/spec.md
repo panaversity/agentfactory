@@ -6,13 +6,13 @@
 **Book**: AI Native Software Development: Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way
 **Input**: Create a compelling, multi-section Preface that introduces the book's vision, philosophical foundations, and learning approach while grounding readers in the AI development spectrum and co-learning principles.
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
   Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
   you should still have a viable MVP (Minimum Viable Product) that delivers value.
-  
+
   Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
   Think of each story as a standalone slice of functionality that can be:
   - Developed independently
@@ -24,6 +24,7 @@
 ### User Story 1 - Student/Beginner Discovers the Book's Purpose (Priority: P1)
 
 A student with no coding experience picks up the book and reads the Preface. They need to understand:
+
 - Why this book exists and what makes it different from traditional programming books
 - That AI-native development is accessible to them (despite having no prior coding experience)
 - How learning will be different in the AI-native era (human-AI collaboration, not solo coding)
@@ -44,6 +45,7 @@ A student with no coding experience picks up the book and reads the Preface. The
 ### User Story 2 - Experienced Developer Understands Book's Scope and Approach (Priority: P1)
 
 An experienced software developer or architect reads the Preface to understand:
+
 - Where AI-Driven Development fits in the broader landscape of AI adoption
 - The clear distinction between AI Assisted, AI Driven, and AI Native (not a continuum but distinct paradigms)
 - Why organizational maturity levels (1-5) matter and how to map their org to a level
@@ -65,6 +67,7 @@ An experienced software developer or architect reads the Preface to understand:
 ### User Story 3 - Educator Grasps Pedagogical Philosophy (Priority: P2)
 
 An educator (professor, bootcamp instructor, corporate trainer) reads the Preface to understand:
+
 - How the co-learning philosophy differs from traditional CS education
 - Why specification-first methodology is pedagogically superior for AI-native development
 - That this book teaches validation and critical thinking alongside generation
@@ -84,6 +87,7 @@ An educator (professor, bootcamp instructor, corporate trainer) reads the Prefac
 ### User Story 4 - Founder/CTO Sees Competitive Advantage (Priority: P3)
 
 A technical founder or CTO reads the Preface to understand:
+
 - Why AI-Driven and AI-Native are the competitive edge in product development
 - How specification-first methodology accelerates MVP development
 - That this book bridges concept to execution
@@ -108,7 +112,7 @@ A technical founder or CTO reads the Preface to understand:
 - **Readers overwhelmed by the 5 maturity levels**: Framework must be digestible—clear progression from simple to complex, not a taxonomy to memorize.
 - **Print vs. digital rendering**: Language and formatting must work equally well in hardcover book and PDF/web formats; no embedded videos or interactive elements in Preface.
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 <!--
   ACTION REQUIRED: The content in this section represents placeholders.
@@ -119,7 +123,7 @@ A technical founder or CTO reads the Preface to understand:
 
 **Content Structure & Sections**
 
-- **FR-001**: Preface MUST open with a compelling hook that establishes the fundamental shift in software development—from humans teaching machines *what* to do to teaching machines *how to learn with us*.
+- **FR-001**: Preface MUST open with a compelling hook that establishes the fundamental shift in software development—from humans teaching machines _what_ to do to teaching machines _how to learn with us_.
 - **FR-002**: Preface MUST include a "Why We Wrote This Book" section that explains the book's motivation and explicitly removes the barrier: "You don't need years of prior experience to begin."
 - **FR-003**: Preface MUST present the AI Development Spectrum (AI Assisted, AI Driven, AI Native) with clear definitions, key characteristics, and real-world examples for each approach.
 - **FR-004**: Preface MUST map the spectrum to Organizational AI Maturity Levels (5 levels: Awareness, Adoption, Integration, AI-Native Products, AI-First Enterprise) with characteristics, challenges, progression patterns, and guidance on realistic expectations.
@@ -147,16 +151,16 @@ A technical founder or CTO reads the Preface to understand:
 
 - **FR-018**: Preface MUST establish that learning AI-native development is fundamentally different from learning traditional programming—it's about co-reasoning with machines, not memorizing syntax.
 - **FR-019**: Preface MUST reinforce that validation, critical thinking, and evaluation are core skills taught throughout the book (not just code generation and acceptance of AI output).
-- **FR-020**: Preface MUST set clear expectations: this book teaches how to *think* like an AI-native developer, not just how to *code* like one.
+- **FR-020**: Preface MUST set clear expectations: this book teaches how to _think_ like an AI-native developer, not just how to _code_ like one.
 - **FR-021**: Preface MUST clearly state that specification-first development is non-negotiable to the book's approach and will be taught before any code writing.
 
-### Key Entities *(content concepts, not data entities)*
+### Key Entities _(content concepts, not data entities)_
 
 - **Audience Personas**: Student (no prior coding), Developer (experienced, wants depth), Educator (pedagogical rigor), Founder (ROI and competitive advantage)
 - **Core Concepts**: AI Assisted Development, AI Driven Development, AI Native Software Development, Organizational Maturity Levels (1-5), Co-Learning Philosophy, Specification-First Methodology, Bilingual Development (Python + TypeScript), Three Laws of Co-Learning, Intent/Reasoning/Interaction Layers
 - **Book Promise**: Accessibility (no prior experience required) + Intellectual Rigor (depth for experts) + Practicality (real patterns, tested approaches) + Pedagogical Soundness (learning objectives, scaffolding, validation)
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 <!--
   ACTION REQUIRED: Define measurable success criteria.
@@ -179,7 +183,7 @@ A technical founder or CTO reads the Preface to understand:
 ## Assumptions
 
 1. **Accessibility is paramount**: The book is intentionally designed for beginners without excluding experts. The Preface must walk this tightrope carefully—welcoming non-programmers while satisfying technical depth for experienced developers.
-2. **Specification-First is non-negotiable**: The book's unique value comes from teaching specification-driven methodology *before* any coding. The Preface establishes this as foundational, not optional.
+2. **Specification-First is non-negotiable**: The book's unique value comes from teaching specification-driven methodology _before_ any coding. The Preface establishes this as foundational, not optional.
 3. **Python + TypeScript are co-equal**: Not "Python first, then TypeScript" but "both languages, bilingual thinking from day one." The Preface sets this expectation upfront.
 4. **Co-learning is a real, teachable phenomenon**: The Preface assumes that humans and AI can genuinely improve each other (not just AI helping humans). This is both philosophical and practical.
 5. **Readers are intelligent and want intellectual depth**: Even beginners appreciate rigor and honesty. The Preface never talks down to readers; it elevates them.
@@ -219,7 +223,7 @@ Once this specification is approved, the planning phase will:
 4. **Writing**: Implement each section following the outline and applying all pedagogical principles.
 5. **Validation**: Verify that all Functional Requirements (FR-001 through FR-021) are met.
 6. **Testing**: Beta readers from each audience (student, developer, educator, founder) provide feedback.
-7. **Integration**: Place Preface in book-source/docs/ before Chapter 01, properly linked in book navigation.
+7. **Integration**: Place Preface in apps/learn-app/docs/ before Chapter 01, properly linked in book navigation.
 
 ---
 
@@ -228,7 +232,7 @@ Once this specification is approved, the planning phase will:
 This Preface will leverage the following domain skills from the book's constitution:
 
 1. **Learning Objectives** (via Skill): Define clear, measurable outcomes for what readers should understand after the Preface.
-2. **Concept Scaffolding** (via Skill): Build understanding progressively from concrete (AI helped me code) to abstract (AI *is* my system).
+2. **Concept Scaffolding** (via Skill): Build understanding progressively from concrete (AI helped me code) to abstract (AI _is_ my system).
 3. **Book Scaffolding** (via Skill): Position the Preface as the intellectual spine of the entire book, setting expectations for all chapters.
 4. **Technical Clarity** (via Skill): Explain complex concepts (maturity levels, co-learning loops) in plain language without losing rigor.
 5. **AI-Collaborate Teaching** (via Skill): Model co-learning principle—the Preface itself demonstrates human-AI thinking together.

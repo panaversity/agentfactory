@@ -20,11 +20,13 @@ This document provides actionable implementation tasks for creating Chapters 24 
 ### MVP Approach (Minimum Viable Chapter)
 
 **Chapter 24 MVP**: Learning Journey 1 + 2 (Lessons 1-3)
+
 - Delivers: OOP fundamentals, classes/objects, constructors/attributes
 - Student can: Explain OOP pillars, create basic classes, understand attributes
 - Independent test: Create a class with constructor and attributes
 
 **Chapter 25 MVP**: Learning Journey 1 + 2 (Lessons 1-2)
+
 - Prerequisite: Chapter 24 complete
 - Delivers: Inheritance/MRO, polymorphism/duck typing
 - Student can: Create inheritance hierarchies, implement polymorphic code
@@ -54,8 +56,8 @@ This document provides actionable implementation tasks for creating Chapters 24 
 
 ### Tasks
 
-- [ ] T001 Create Chapter 24 directory: `book-source/docs/04-Part-4-Python-Fundamentals/24-oop-part-1/`
-- [ ] T002 Create Chapter 25 directory: `book-source/docs/04-Part-4-Python-Fundamentals/25-oop-part-2/`
+- [ ] T001 Create Chapter 24 directory: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/24-oop-part-1/`
+- [ ] T002 Create Chapter 25 directory: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/25-oop-part-2/`
 - [ ] T003 [P] Create Chapter 24 readme.md with chapter overview, navigation, and learning objectives
 - [ ] T004 [P] Create Chapter 25 readme.md with chapter overview, navigation, and prerequisites note
 - [ ] T005 Verify Python 3.14+ environment for code testing
@@ -106,7 +108,7 @@ This document provides actionable implementation tasks for creating Chapters 24 
 - [ ] T021 [LJ1-CH24] Write Lesson 2 introduction: "Classes and Objects Basics" in `24-oop-part-1/02-classes-and-objects.md`
 - [ ] T022 [LJ1-CH24] Write "Defining a Class" section (10min): `class` keyword, naming conventions, empty class
 - [ ] T023 [LJ1-CH24] Add Code Example 1: Empty Dog class with `pass`
-- [ ] T024 [LJ1-CH24] Write "The __init__ Constructor" section (15min): special method, self parameter, type hints
+- [ ] T024 [LJ1-CH24] Write "The **init** Constructor" section (15min): special method, self parameter, type hints
 - [ ] T025 [LJ1-CH24] Add Code Example 2: Dog class with parameterized constructor
 - [ ] T026 [LJ1-CH24] Add 💬 AI Colearning Prompt: "What happens in memory when we call Dog('Max', 'Labrador')?"
 - [ ] T027 [LJ1-CH24] Write "Creating Objects (Instantiation)" section (10min): creating instances, accessing attributes
@@ -140,12 +142,12 @@ This document provides actionable implementation tasks for creating Chapters 24 
 - [ ] T042 [LJ2-CH24] Add Code Example 5: BankAccount with class attribute interest_rate
 - [ ] T043 [LJ2-CH24] Add 🎓 Instructor Commentary: "Class vs instance critical for AI agents - config vs conversation history"
 - [ ] T044 [LJ2-CH24] Add 💬 AI Colearning Prompt: "Why does modifying class attribute through instance create instance attribute?"
-- [ ] T045 [LJ2-CH24] Write "The __dict__ Attribute (Inspection)" section (10min): debugging with __dict__
-- [ ] T046 [LJ2-CH24] Add Code Example 6: Person class showing __dict__ inspection
-- [ ] T047 [LJ2-CH24] Add ✨ Teaching Tip: "Use __dict__ to debug attribute issues with Claude"
-- [ ] T048 [LJ2-CH24] Write "Destructors (__del__)" section (10min): cleanup pattern, when reliable/unreliable
-- [ ] T049 [LJ2-CH24] Add Code Example 7: FileHandler with __del__ for file closing
-- [ ] T050 [LJ2-CH24] Add 🚀 CoLearning Challenge: "Create DatabaseConnection class, explain __del__ unreliability"
+- [ ] T045 [LJ2-CH24] Write "The **dict** Attribute (Inspection)" section (10min): debugging with **dict**
+- [ ] T046 [LJ2-CH24] Add Code Example 6: Person class showing **dict** inspection
+- [ ] T047 [LJ2-CH24] Add ✨ Teaching Tip: "Use **dict** to debug attribute issues with Claude"
+- [ ] T048 [LJ2-CH24] Write "Destructors (**del**)" section (10min): cleanup pattern, when reliable/unreliable
+- [ ] T049 [LJ2-CH24] Add Code Example 7: FileHandler with **del** for file closing
+- [ ] T050 [LJ2-CH24] Add 🚀 CoLearning Challenge: "Create DatabaseConnection class, explain **del** unreliability"
 - [ ] T051 [LJ2-CH24] Write "Try With AI" section with 4 prompts
 - [ ] T052 [LJ2-CH24] Test all code examples in Lesson 3 on Python 3.14+
 - [ ] T053 [LJ2-CH24] Validate Lesson 3: Uses only L1-L3 concepts, no forward references to methods/encapsulation
@@ -164,7 +166,7 @@ This document provides actionable implementation tasks for creating Chapters 24 
 
 - [ ] T054 [LJ3-CH24] Write Lesson 4 introduction: "Encapsulation and Method Types" in `24-oop-part-1/04-encapsulation-methods.md`
 - [ ] T055 [LJ3-CH24] Write "Encapsulation - Public, Protected, Private" section (20min): naming conventions, philosophy
-- [ ] T056 [LJ3-CH24] Add Code Example 8: Person class with public name, protected _age, private __ssn
+- [ ] T056 [LJ3-CH24] Add Code Example 8: Person class with public name, protected \_age, private \_\_ssn
 - [ ] T057 [LJ3-CH24] Add 🎓 Instructor Commentary: "Python's encapsulation is convention, not enforcement - 'we're all consenting adults'"
 - [ ] T058 [LJ3-CH24] Add 💬 AI Colearning Prompt: "Why naming conventions vs true private keywords? Tradeoffs?"
 - [ ] T059 [LJ3-CH24] Write "Instance Methods" section (10min): operates on self
@@ -237,7 +239,7 @@ This document provides actionable implementation tasks for creating Chapters 24 
 - [ ] T099 [LJ1-CH25] Write "Single Inheritance" section (15min): parent-child relationships
 - [ ] T100 [LJ1-CH25] Add Code Example 19: Animal parent, Dog child with speak() override
 - [ ] T101 [LJ1-CH25] Write "The super() Function" section (10min): calling parent methods, why super() vs direct call
-- [ ] T102 [LJ1-CH25] Add 💬 AI Colearning Prompt: "Explain super().__init__(name). What if I forget it? Memory state?"
+- [ ] T102 [LJ1-CH25] Add 💬 AI Colearning Prompt: "Explain super().**init**(name). What if I forget it? Memory state?"
 - [ ] T103 [LJ1-CH25] Write "Multiple Inheritance" section (15min): inheriting from 2+ parents
 - [ ] T104 [LJ1-CH25] Add Code Example 20: Duck(Flyer, Swimmer) with fly(), swim(), quack()
 - [ ] T105 [LJ1-CH25] Write "Diamond Inheritance Problem" section (10min): diamond hierarchy challenge
@@ -301,7 +303,7 @@ This document provides actionable implementation tasks for creating Chapters 24 
 - [ ] T137 [LJ3-CH25] Add Code Example 29: Bad inheritance (Car IS-AN Engine) vs Good composition (Car HAS-AN Engine)
 - [ ] T138 [LJ3-CH25] Add 💬 AI Colearning Prompt: "Why 'composition over inheritance'? 5 reasons with code examples"
 - [ ] T139 [LJ3-CH25] Add 🚀 CoLearning Challenge: "Refactor Bird inheritance (Penguin can't fly) to composition"
-- [ ] T140 [LJ3-CH25] Write "Organizing Classes into Modules" section (15min): directory structure, __init__.py
+- [ ] T140 [LJ3-CH25] Write "Organizing Classes into Modules" section (15min): directory structure, **init**.py
 - [ ] T141 [LJ3-CH25] Add Code Example 30: Package structure (animals/, vehicles/) with proper imports
 - [ ] T142 [LJ3-CH25] Add ✨ Teaching Tip: "Explore Django package organization with Claude"
 - [ ] T143 [LJ3-CH25] Write "Try With AI" section with 4 prompts (includes Zoo design, refactoring, e-commerce structure)
@@ -321,21 +323,21 @@ This document provides actionable implementation tasks for creating Chapters 24 
 ### Tasks
 
 - [ ] T146 [LJ4-CH25] Write Lesson 4 introduction: "Special Methods (Magic/Dunder Methods)" in `25-oop-part-2/04-special-methods.md`
-- [ ] T147 [LJ4-CH25] Write "__str__ and __repr__" section (10min): user-friendly vs debug strings
-- [ ] T148 [LJ4-CH25] Add Code Example 31: Person class with __str__ and __repr__
-- [ ] T149 [LJ4-CH25] Write "Operator Overloading" section (15min): __add__, __sub__, __mul__
+- [ ] T147 [LJ4-CH25] Write "**str** and **repr**" section (10min): user-friendly vs debug strings
+- [ ] T148 [LJ4-CH25] Add Code Example 31: Person class with **str** and **repr**
+- [ ] T149 [LJ4-CH25] Write "Operator Overloading" section (15min): **add**, **sub**, **mul**
 - [ ] T150 [LJ4-CH25] Add Code Example 32: Vector class with operator overloading
-- [ ] T151 [LJ4-CH25] Add 💬 AI Colearning Prompt: "Show all operator overload methods. When __radd__ vs __add__?"
-- [ ] T152 [LJ4-CH25] Write "Container Protocol" section (12min): __len__, __getitem__, __setitem__
+- [ ] T151 [LJ4-CH25] Add 💬 AI Colearning Prompt: "Show all operator overload methods. When **radd** vs **add**?"
+- [ ] T152 [LJ4-CH25] Write "Container Protocol" section (12min): **len**, **getitem**, **setitem**
 - [ ] T153 [LJ4-CH25] Add Code Example 33: Playlist class with container protocol
-- [ ] T154 [LJ4-CH25] Write "Iteration Protocol" section (12min): __iter__, __next__
+- [ ] T154 [LJ4-CH25] Write "Iteration Protocol" section (12min): **iter**, **next**
 - [ ] T155 [LJ4-CH25] Add Code Example 34: Countdown class with iteration protocol
 - [ ] T156 [LJ4-CH25] Add 🚀 CoLearning Challenge: "Create Range class mimicking built-in range()"
-- [ ] T157 [LJ4-CH25] Write "Comparison and Hashing" section (10min): __eq__, __lt__, __hash__, @total_ordering
+- [ ] T157 [LJ4-CH25] Write "Comparison and Hashing" section (10min): **eq**, **lt**, **hash**, @total_ordering
 - [ ] T158 [LJ4-CH25] Add Code Example 35: Person class with comparison and hashing for set/dict usage
-- [ ] T159 [LJ4-CH25] Add 🎓 Instructor Commentary: "__eq__ without __hash__ breaks sets/dicts - equal objects MUST have equal hashes"
-- [ ] T160 [LJ4-CH25] Write "Callable Objects (__call__)" section (6min): making instances callable
-- [ ] T161 [LJ4-CH25] Add Code Example 36: Multiplier class with __call__
+- [ ] T159 [LJ4-CH25] Add 🎓 Instructor Commentary: "**eq** without **hash** breaks sets/dicts - equal objects MUST have equal hashes"
+- [ ] T160 [LJ4-CH25] Write "Callable Objects (**call**)" section (6min): making instances callable
+- [ ] T161 [LJ4-CH25] Add Code Example 36: Multiplier class with **call**
 - [ ] T162 [LJ4-CH25] Add 💬 AI Colearning Prompt: "How does Python's list use special methods? len(), indexing, iteration?"
 - [ ] T163 [LJ4-CH25] Write "Try With AI" section with 4 prompts (includes custom collection synthesis)
 - [ ] T164 [LJ4-CH25] Test all code examples in Lesson 4 on Python 3.14+
@@ -356,7 +358,7 @@ This document provides actionable implementation tasks for creating Chapters 24 
 - [ ] T166 [LJ5-CH25] Write Lesson 5 introduction: "Design Patterns (Capstone)" in `25-oop-part-2/05-design-patterns-capstone.md`
 - [ ] T167 [LJ5-CH25] Write "Project Overview" section: AI Agent System combining all 4 patterns
 - [ ] T168 [LJ5-CH25] Write "Part 1: Singleton Pattern" (15min): AgentManager ensuring single instance
-- [ ] T169 [LJ5-CH25] Add Code Example 37: Singleton AgentManager with __new__ implementation
+- [ ] T169 [LJ5-CH25] Add Code Example 37: Singleton AgentManager with **new** implementation
 - [ ] T170 [LJ5-CH25] Add 🎓 Instructor Commentary: "Singletons controversial - use for config, logging, not testable state"
 - [ ] T171 [LJ5-CH25] Write "Part 2: Factory Pattern" (20min): AgentFactory creating different agent types
 - [ ] T172 [LJ5-CH25] Add Code Example 38: Agent ABC, ChatAgent/CodeAgent/DataAgent, AgentFactory.create_agent()
@@ -429,14 +431,17 @@ Chapter 24 Lesson 5 Complete ──→ Chapter 25 can begin
 ## Parallel Execution Opportunities
 
 ### Phase 3 (Ch24 LJ1):
+
 - T010-T020 (Lesson 1) and T021-T034 (Lesson 2) can be written in parallel by different authors
 - T035-T036 (testing & validation) must be sequential after both lessons complete
 
 ### Phase 6 (Ch24 Capstone):
+
 - T082-T084 (Character class), T085-T087 (Player class), T088-T089 (Enemy class), T090-T091 (Combat class) can be written in parallel
 - T092-T097 (integration & validation) must be sequential
 
 ### Phase 12 (Polish):
+
 - T185-T192 (all validation tasks marked [P]) can run in parallel
 - T193-T195 (cross-chapter tasks) must be sequential
 
@@ -449,6 +454,7 @@ Chapter 24 Lesson 5 Complete ──→ Chapter 25 can begin
 **Sequential Tasks**: 172
 
 ### Tasks by Phase:
+
 - Phase 1 (Setup): 5 tasks
 - Phase 2 (Foundational): 4 tasks
 - Phase 3 (Ch24 LJ1): 27 tasks
@@ -463,6 +469,7 @@ Chapter 24 Lesson 5 Complete ──→ Chapter 25 can begin
 - Phase 12 (Polish): 11 tasks
 
 ### Tasks by Learning Journey:
+
 - Ch24 LJ1 (P1): 27 tasks → **MVP Core**
 - Ch24 LJ2 (P2): 17 tasks → **MVP Core**
 - Ch24 LJ3 (P3): 24 tasks
@@ -500,12 +507,14 @@ After implementation, verify:
 Within this chapter, each lesson MUST end with a single final section titled **"Try With AI"** containing 4 prompts with progressive Bloom's levels (Recall → Understand → Apply → Analyze/Synthesize).
 
 **DO NOT include after "Try With AI"**:
+
 - ❌ "Key Takeaways" or "Summary"
 - ❌ "What's Next"
 - ❌ "Completion Checklist"
 - ❌ Any other closure content
 
 **AI Tool Guidance**:
+
 - In Part 4 (these chapters), students use their preferred AI companion tool (Claude Code, Gemini CLI, or ChatGPT web)
 - Phrase prompts generically: "Ask your AI companion..." or "Use your AI tool..."
 - Optionally provide CLI and web variants for complex prompts

@@ -8,13 +8,13 @@
 
 ## Task Overview
 
-| Phase | Tasks | Priority | Status |
-|-------|-------|----------|--------|
-| Phase 1 | T-001 to T-005 | P0 | Pending |
-| Phase 2 | T-101 to T-105 | P1 | Pending |
-| Phase 3 | T-201 to T-203 | P2 | Pending |
-| Phase 4 | T-301 to T-304 | P2 | Pending |
-| Phase 5 | T-401 to T-403 | P3 | Pending |
+| Phase   | Tasks          | Priority | Status  |
+| ------- | -------------- | -------- | ------- |
+| Phase 1 | T-001 to T-005 | P0       | Pending |
+| Phase 2 | T-101 to T-105 | P1       | Pending |
+| Phase 3 | T-201 to T-203 | P2       | Pending |
+| Phase 4 | T-301 to T-304 | P2       | Pending |
+| Phase 5 | T-401 to T-403 | P3       | Pending |
 
 ---
 
@@ -25,6 +25,7 @@
 **File**: `panaversity-fs/scripts/common/mcp_client.py`
 
 **Requirements**:
+
 - [ ] Async HTTP client using httpx
 - [ ] `MCPClient` class with `call_tool(tool_name: str, params: dict) -> dict`
 - [ ] Support for `plan_build`, `read_content` tool calls
@@ -33,6 +34,7 @@
 - [ ] Proper error handling with custom exceptions
 
 **Acceptance**:
+
 ```python
 client = MCPClient()
 result = await client.call_tool("plan_build", {"book_id": "test-book"})
@@ -46,6 +48,7 @@ assert "manifest_hash" in result
 **File**: `panaversity-fs/scripts/hydrate/manifest.py`
 
 **Requirements**:
+
 - [ ] Pydantic model `ManifestFile`: `{book_id: str, manifest_hash: str, timestamp: str, file_count: int}`
 - [ ] `load_manifest(path: Path) -> ManifestFile | None`
 - [ ] `save_manifest(path: Path, data: ManifestFile) -> None`
@@ -53,6 +56,7 @@ assert "manifest_hash" in result
 - [ ] Return None on missing/corrupt file (don't raise)
 
 **Acceptance**:
+
 ```python
 manifest = load_manifest(Path(".panaversity/manifest.json"))
 assert manifest is None  # First run
@@ -69,6 +73,7 @@ assert manifest.manifest_hash == "abc"
 **File**: `panaversity-fs/scripts/hydrate/downloader.py`
 
 **Requirements**:
+
 - [ ] `download_changed_files(client: MCPClient, files: list[dict], output_dir: Path) -> DownloadResult`
 - [ ] Stream each file to disk (don't load all into memory)
 - [ ] Create subdirectories as needed
@@ -76,6 +81,7 @@ assert manifest.manifest_hash == "abc"
 - [ ] Support verbose logging option
 
 **Acceptance**:
+
 ```python
 files = [{"path": "content/01-Part/01-Chapter/01-lesson.md", "current_hash": "abc"}]
 result = await download_changed_files(client, files, Path("output"))
@@ -90,6 +96,7 @@ assert Path("output/content/01-Part/01-Chapter/01-lesson.md").exists()
 **File**: `panaversity-fs/scripts/hydrate/cli.py`
 
 **Requirements**:
+
 - [ ] Click command `hydrate`
 - [ ] Options: `--book-id` (required), `--output-dir` (default: `.docusaurus/content`), `--manifest-file` (default: `.panaversity/manifest.json`), `--full-rebuild` (flag), `--verbose` (flag)
 - [ ] Logic flow:
@@ -101,6 +108,7 @@ assert Path("output/content/01-Part/01-Chapter/01-lesson.md").exists()
 - [ ] Exit code 0 on success, non-zero on failure
 
 **Acceptance**:
+
 ```bash
 # First run - downloads all
 python scripts/hydrate-book.py --book-id test-book
@@ -118,11 +126,13 @@ python scripts/hydrate-book.py --book-id test-book
 **File**: `panaversity-fs/scripts/hydrate-book.py`
 
 **Requirements**:
+
 - [ ] Shebang for direct execution: `#!/usr/bin/env python`
 - [ ] Import and invoke CLI from `scripts/hydrate/cli.py`
 - [ ] Handle KeyboardInterrupt gracefully
 
 **Acceptance**:
+
 ```bash
 python panaversity-fs/scripts/hydrate-book.py --help
 # Shows help with all options
@@ -137,6 +147,7 @@ python panaversity-fs/scripts/hydrate-book.py --help
 **File**: `panaversity-fs/scripts/ingest/source_scanner.py`
 
 **Requirements**:
+
 - [ ] `scan_source_directory(source_dir: Path) -> list[SourceFile]`
 - [ ] `SourceFile` dataclass: `{path: Path, relative_path: str, sha256: str, content_type: str}`
 - [ ] Identify markdown files (`.md`)
@@ -145,6 +156,7 @@ python panaversity-fs/scripts/hydrate-book.py --help
 - [ ] Compute SHA256 hash for each file
 
 **Acceptance**:
+
 ```python
 files = scan_source_directory(Path("book-source/docs"))
 assert any(f.relative_path == "Part-01/Chapter-01/01-intro.md" for f in files)
@@ -158,6 +170,7 @@ assert all(len(f.sha256) == 64 for f in files)
 **File**: `panaversity-fs/scripts/ingest/path_mapper.py`
 
 **Requirements**:
+
 - [ ] `map_source_to_storage(source_path: str) -> str | None`
 - [ ] Mapping rules:
   - `Part-NN/Chapter-NN/NN-name.md` → `content/NN-Part/NN-Chapter/NN-name.md`
@@ -167,6 +180,7 @@ assert all(len(f.sha256) == 64 for f in files)
 - [ ] Validate output paths against FR-007/FR-008 patterns
 
 **Acceptance**:
+
 ```python
 assert map_source_to_storage("Part-01/Chapter-02/03-lesson.md") == "content/01-Part/02-Chapter/03-lesson.md"
 assert map_source_to_storage("Part-01/Chapter-02/img/diagram.png") == "static/img/diagram.png"
@@ -180,6 +194,7 @@ assert map_source_to_storage("invalid/path.txt") is None
 **File**: `panaversity-fs/scripts/ingest/sync_engine.py`
 
 **Requirements**:
+
 - [ ] `sync_to_storage(client: MCPClient, book_id: str, source_files: list[SourceFile], dry_run: bool) -> SyncResult`
 - [ ] Query current storage state via `glob_search` + `read_content`
 - [ ] Categorize files: `added`, `modified`, `deleted`, `unchanged`
@@ -190,6 +205,7 @@ assert map_source_to_storage("invalid/path.txt") is None
 - [ ] Respect `dry_run` flag (log but don't write)
 
 **Acceptance**:
+
 ```python
 result = await sync_to_storage(client, "test-book", source_files, dry_run=False)
 assert result.added + result.modified + result.deleted + result.unchanged == len(source_files)
@@ -202,8 +218,9 @@ assert result.added + result.modified + result.deleted + result.unchanged == len
 **File**: `panaversity-fs/scripts/ingest/cli.py`
 
 **Requirements**:
+
 - [ ] Click command `ingest`
-- [ ] Options: `--book-id` (required), `--source-dir` (default: `book-source/docs/`), `--dry-run` (flag), `--verbose` (flag)
+- [ ] Options: `--book-id` (required), `--source-dir` (default: `apps/learn-app/docs/`), `--dry-run` (flag), `--verbose` (flag)
 - [ ] Logic flow:
   1. Scan source directory
   2. Map paths to storage format
@@ -213,6 +230,7 @@ assert result.added + result.modified + result.deleted + result.unchanged == len
 - [ ] Exit code 0 on success, non-zero on failure
 
 **Acceptance**:
+
 ```bash
 python scripts/ingest-book.py --book-id test-book --dry-run
 # Output: Would sync 50 files: 5 added, 3 modified, 2 deleted, 40 unchanged
@@ -225,11 +243,13 @@ python scripts/ingest-book.py --book-id test-book --dry-run
 **File**: `panaversity-fs/scripts/ingest-book.py`
 
 **Requirements**:
+
 - [ ] Shebang for direct execution: `#!/usr/bin/env python`
 - [ ] Import and invoke CLI from `scripts/ingest/cli.py`
 - [ ] Handle KeyboardInterrupt gracefully
 
 **Acceptance**:
+
 ```bash
 python panaversity-fs/scripts/ingest-book.py --help
 # Shows help with all options
@@ -244,6 +264,7 @@ python panaversity-fs/scripts/ingest-book.py --help
 **File**: `panaversity-fs/Makefile` (update existing or create)
 
 **Requirements**:
+
 - [ ] Target `ingest`: Run ingest-book.py with env vars
 - [ ] Target `hydrate`: Run hydrate-book.py with env vars
 - [ ] Target `local-build`: hydrate + npm run build
@@ -252,6 +273,7 @@ python panaversity-fs/scripts/ingest-book.py --help
 - [ ] Use `$(BOOK_ID)` variable with default from env
 
 **Acceptance**:
+
 ```bash
 make hydrate BOOK_ID=test-book
 # Runs hydration script
@@ -264,11 +286,13 @@ make hydrate BOOK_ID=test-book
 **File**: `panaversity-fs/.env.example`
 
 **Requirements**:
+
 - [ ] Document all required environment variables
 - [ ] Provide sensible defaults for local development
 - [ ] Include comments explaining each variable
 
 **Acceptance**:
+
 ```bash
 cat panaversity-fs/.env.example
 # PANAVERSITY_MCP_URL=http://localhost:8000/mcp
@@ -283,6 +307,7 @@ cat panaversity-fs/.env.example
 **File**: `panaversity-fs/pyproject.toml` (update)
 
 **Requirements**:
+
 - [ ] Add `click` to dependencies
 - [ ] Add `httpx` to dependencies (if not present)
 - [ ] Add script entry points:
@@ -293,6 +318,7 @@ cat panaversity-fs/.env.example
   ```
 
 **Acceptance**:
+
 ```bash
 uv run hydrate-book --help
 # Shows CLI help
@@ -307,6 +333,7 @@ uv run hydrate-book --help
 **Directory**: `panaversity-fs/tests/fixtures/book-source-sample/`
 
 **Requirements**:
+
 - [ ] Create mini book structure:
   ```
   Part-01/
@@ -321,6 +348,7 @@ uv run hydrate-book --help
 - [ ] Include sample image (small PNG)
 
 **Acceptance**:
+
 ```bash
 ls panaversity-fs/tests/fixtures/book-source-sample/Part-01/Chapter-01/
 # 01-intro.md  02-concepts.md  img/
@@ -333,6 +361,7 @@ ls panaversity-fs/tests/fixtures/book-source-sample/Part-01/Chapter-01/
 **File**: `panaversity-fs/tests/integration/test_hydrate_incremental.py`
 
 **Requirements**:
+
 - [ ] Test first build (no manifest) downloads all files
 - [ ] Test incremental build downloads only changed files
 - [ ] Test `--full-rebuild` bypasses manifest
@@ -341,6 +370,7 @@ ls panaversity-fs/tests/fixtures/book-source-sample/Part-01/Chapter-01/
 - [ ] Mock MCP client or use local server
 
 **Acceptance**:
+
 ```bash
 uv run pytest tests/integration/test_hydrate_incremental.py -v
 # All tests pass
@@ -353,6 +383,7 @@ uv run pytest tests/integration/test_hydrate_incremental.py -v
 **File**: `panaversity-fs/tests/integration/test_ingest_sync.py`
 
 **Requirements**:
+
 - [ ] Test new files are created in storage
 - [ ] Test modified files are updated with correct hash
 - [ ] Test deleted files are removed from storage
@@ -361,6 +392,7 @@ uv run pytest tests/integration/test_hydrate_incremental.py -v
 - [ ] Use pytest-asyncio for async tests
 
 **Acceptance**:
+
 ```bash
 uv run pytest tests/integration/test_ingest_sync.py -v
 # All tests pass
@@ -373,6 +405,7 @@ uv run pytest tests/integration/test_ingest_sync.py -v
 **File**: `panaversity-fs/tests/unit/test_path_mapper.py`
 
 **Requirements**:
+
 - [ ] Test valid content path mappings
 - [ ] Test valid asset path mappings
 - [ ] Test summary file mappings
@@ -380,6 +413,7 @@ uv run pytest tests/integration/test_ingest_sync.py -v
 - [ ] Test edge cases (special characters, long paths)
 
 **Acceptance**:
+
 ```bash
 uv run pytest tests/unit/test_path_mapper.py -v
 # All tests pass
@@ -394,6 +428,7 @@ uv run pytest tests/unit/test_path_mapper.py -v
 **File**: `.github/workflows/build-book.yml`
 
 **Requirements**:
+
 - [ ] Trigger on push to main (book-source paths)
 - [ ] Trigger on workflow_dispatch with full_rebuild input
 - [ ] Job 1: Ingest content to PanaversityFS
@@ -402,6 +437,7 @@ uv run pytest tests/unit/test_path_mapper.py -v
 - [ ] Deploy to GitHub Pages
 
 **Acceptance**:
+
 ```bash
 # Push change to book-source/
 # GitHub Action runs successfully
@@ -413,10 +449,12 @@ uv run pytest tests/unit/test_path_mapper.py -v
 ### T-402: Configure GitHub Secrets
 
 **Secrets** (document, not implement):
+
 - [ ] `MCP_URL`: Production PanaversityFS MCP endpoint
 - [ ] `BOOK_ID`: Book identifier for this repository
 
 **Acceptance**:
+
 ```markdown
 # Documentation in README explaining required secrets
 ```
@@ -428,6 +466,7 @@ uv run pytest tests/unit/test_path_mapper.py -v
 **File**: `panaversity-fs/docs/LOCAL-DEVELOPMENT.md`
 
 **Requirements**:
+
 - [ ] Step-by-step setup for local development
 - [ ] How to run MCP server locally
 - [ ] How to ingest test content
@@ -435,6 +474,7 @@ uv run pytest tests/unit/test_path_mapper.py -v
 - [ ] Troubleshooting common issues
 
 **Acceptance**:
+
 ```bash
 # New developer can follow guide and run local build within 15 minutes
 ```

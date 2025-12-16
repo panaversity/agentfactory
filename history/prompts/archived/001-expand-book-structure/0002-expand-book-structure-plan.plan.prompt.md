@@ -33,17 +33,18 @@ For this update we have to carefully plan what to update:
 1. @book (specs/book/)
 2. @part-1 (specs/part-1/)
 3. @README.md
-4. Rework on this @docs (book-source/docs/)
+4. Rework on this @docs (apps/learn-app/docs/)
 5. Maybe but not sure about @constitution.md
 ```
 
 **Context**: The user is requesting a detailed implementation plan for the book structure expansion from 7 parts/32 chapters to 13 parts/46 chapters. They've identified 5 key areas that need updating and want careful, systematic planning.
 
 **Attached Files**:
+
 - `specs/book/chapter-index.md` — Current 32-chapter index
 - `specs/book/directory-structure.md` — File organization spec
 - `specs/part-1/part-1-spec.md` — Example part specification
-- `book-source/docs/` directory — Current Docusaurus structure
+- `apps/learn-app/docs/` directory — Current Docusaurus structure
 - `README.md` — Project overview
 - `.specify/memory/constitution.md` — Project constitution v2.1.0
 
@@ -54,28 +55,33 @@ For this update we have to carefully plan what to update:
 **Key Planning Decisions**:
 
 1. **Three-Phase Structure**:
+
    - **Phase 0: Research & Analysis** — Resolve open questions (naming, consolidation strategy, expansion topics, scaffolding ranges)
    - **Phase 1: Design & Structural Planning** — Create chapter mapping, part templates, update authoritative docs
    - **Phase 2: Task Decomposition** — Detailed task breakdown (via separate `/sp.tasks` command)
 
 2. **Priority Alignment** (from spec):
+
    - **P1**: Update constitution + core docs (chapter-index, directory-structure) — Foundation
    - **P2**: Restructure existing content + Update Docusaurus directories — Preservation
    - **P3**: Create new part scaffolding (Parts 6-13) — Expansion
 
 3. **Content Restructuring Strategy**:
+
    - **Consolidation**: Part 1 (5→3), Part 3 (4→2), Part 5 (5→3)
    - **Preservation**: Part 2 (4→4)
    - **Expansion**: Part 4 (8→12)
    - **New**: Parts 6-13 (8 new parts, 14 new chapters total)
 
 4. **Chapter Mapping Approach**:
+
    - Create bidirectional mapping document (old ↔ new)
    - Track all content moves, merges, splits
    - Preserve all content in git history
    - Systematic cross-reference update plan
 
 5. **Research Questions Identified** (6 total):
+
    - Part naming conventions (include tech specifics?)
    - Chapter consolidation strategy (how to merge without losing content?)
    - Chapter expansion topics (4 new Python chapters)
@@ -84,11 +90,13 @@ For this update we have to carefully plan what to update:
    - Docusaurus validation (any limits for 13-part structure?)
 
 6. **Phase 1 Deliverables Defined**:
+
    - `chapter-mapping.md` — Complete old→new mapping table
    - `part-templates/part-N-outline.md` — 8 outline templates for new parts
    - Updated `chapter-index.md`, `directory-structure.md`, `constitution.md`, `README.md`, `CLAUDE.md`
 
 7. **Risk Management**:
+
    - 6 risks identified with mitigation strategies
    - Overall risk: MEDIUM (manageable with phased approach)
    - Key mitigation: Git branch isolation, validation gates, human review
@@ -100,6 +108,7 @@ For this update we have to carefully plan what to update:
    - ✅ No violations, just updates needed
 
 **Plan Structure**:
+
 - Summary with technical approach
 - Technical context (project type: documentation, format: Markdown/Docusaurus)
 - Constitution check (✅ PASS with updates needed)
@@ -112,6 +121,7 @@ For this update we have to carefully plan what to update:
 - Success criteria
 
 **Key Insight**: This is NOT a traditional code project — it's a documentation restructuring project. The plan was adapted to focus on:
+
 - Content preservation (no data loss)
 - Structural reorganization (chapter mapping)
 - Scaffolding creation (specs/outlines, not full content)
@@ -122,7 +132,7 @@ For this update we have to carefully plan what to update:
 - ✅ Impact: Comprehensive 427-line implementation plan created, ready for research phase execution
 - 🧪 Tests: N/A (documentation project)
 - 📁 Files: 1 file created (plan.md)
-- 🔁 Next prompts: 
+- 🔁 Next prompts:
   - Execute Phase 0 research (answer 6 research questions, create research.md)
   - After research approved: Execute Phase 1 design (create chapter-mapping.md, part templates, update docs)
   - After design approved: Run `/sp.tasks` for detailed task breakdown

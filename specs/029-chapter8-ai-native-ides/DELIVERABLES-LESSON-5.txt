@@ -12,7 +12,7 @@ STATUS: ✅ COMPLETE
 ================================================================================
 
 LESSON DIRECTORY:
-  book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/lessons/05-cursor-ai-features/
+  apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/lessons/05-cursor-ai-features/
 
 CORE SECTIONS (6 files):
   ✅ README.md (2.4K) - Lesson overview and navigation
@@ -282,7 +282,7 @@ PRE-DELIVERY:
 
 DELIVERY:
   → Copy lesson files to:
-    book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/lessons/05-cursor-ai-features/
+    apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/lessons/05-cursor-ai-features/
   → Copy documentation to:
     specs/029-chapter8-ai-native-ides/
   → Create pull request from branch: 029-chapter8-ai-native-ides

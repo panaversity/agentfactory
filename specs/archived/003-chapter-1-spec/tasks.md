@@ -1,6 +1,7 @@
 # Tasks: Chapter 1 — The AI Development Revolution
 
 **Input**: Design documents from `specs/003-chapter-1-spec/`
+
 - **spec.md**: Chapter requirements, user stories, success criteria
 - **plan.md**: 5-lesson architecture with content outlines
 - **context source**: `@context/02_chap1_spec/readme.md`
@@ -13,9 +14,9 @@
 
 ## Phase 1: Setup (Directory & Structure)
 
-- [X] T001 Create chapter directory: `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/`
-- [X] T002 Create lessons subdirectory structure
-- [X] T003 Create assets directory for examples and analogies
+- [x] T001 Create chapter directory: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/`
+- [x] T002 Create lessons subdirectory structure
+- [x] T003 Create assets directory for examples and analogies
 
 ---
 
@@ -23,10 +24,10 @@
 
 **These support all 5 lessons**:
 
-- [X] T004 Compile vibe coding example: "I built my email filter in one afternoon"
-- [X] T005 Compile enterprise example: Legacy code migration 2x speedup, hiring acceleration
-- [X] T006 Compile startup example: Cursor beating GitHub Copilot
-- [X] T007 Create analogies file: Conductor, coach, architect (with brief explanations)
+- [x] T004 Compile vibe coding example: "I built my email filter in one afternoon"
+- [x] T005 Compile enterprise example: Legacy code migration 2x speedup, hiring acceleration
+- [x] T006 Compile startup example: Cursor beating GitHub Copilot
+- [x] T007 Create analogies file: Conductor, coach, architect (with brief explanations)
 
 ---
 
@@ -34,14 +35,14 @@
 
 **Goal**: Hook readers with urgent, compelling statement of disruption
 
-- [X] T008 Write Lesson 1: "Software has disrupted every industry. Now software itself is being disrupted."
+- [x] T008 Write Lesson 1: "Software has disrupted every industry. Now software itself is being disrupted."
   - Hook: Provocative opening (50-100 words)
   - Proof: Fastest-growing startup sector in history (100-150 words)
   - Stakes: You're entering profession at pivotal moment (75-100 words)
   - Transition: "But here's what most people get wrong..." (50-75 words)
   - Total: 300-400 words
-- [X] T009 Add reflection prompt: "Does this feel real to you?"
-- [X] T010 Add learning outcome summary
+- [x] T009 Add reflection prompt: "Does this feel real to you?"
+- [x] T010 Add learning outcome summary
 
 **Checkpoint: Lesson 1 complete & ready for human review**
 
@@ -51,16 +52,16 @@
 
 **Goal**: Ground disruption in economic reality
 
-- [X] T011 Write Lesson 2: "The $3 trillion software development economy is being disrupted"
+- [x] T011 Write Lesson 2: "The $3 trillion software development economy is being disrupted"
   - The number: $3 trillion annual value (50-75 words)
   - The calculation: 30M × $100k = $3T (75-100 words)
   - Scale perspective: France's GDP comparison (75-100 words)
   - Speed: Trillion-dollar markets shift structurally, not slowly (75-100 words)
   - Why it matters: This is real disruption, not hype (75-100 words)
   - Total: 400-500 words
-- [X] T012 Embed text-based $3T scale explanation (with calculation)
-- [X] T013 Add comprehension check: "Can you explain why $3T matters?"
-- [X] T014 Add learning outcome summary
+- [x] T012 Embed text-based $3T scale explanation (with calculation)
+- [x] T013 Add comprehension check: "Can you explain why $3T matters?"
+- [x] T014 Add learning outcome summary
 
 **Checkpoint: Lesson 2 complete & ready for human review**
 
@@ -70,7 +71,7 @@
 
 **Goal**: Clarity on who readers are becoming + why it makes them MORE valuable
 
-- [X] T015 Write Lesson 3: "Your role is shifting from code writer to agent orchestrator"
+- [x] T015 Write Lesson 3: "Your role is shifting from code writer to agent orchestrator"
   - The paradigm shift: Code writer → Orchestrator (75-100 words)
   - Dimension 1 - Specification Writer: Clear requirements (75-100 words)
   - Dimension 2 - System Architect: Design system topology (75-100 words)
@@ -78,9 +79,9 @@
   - Dimension 4 - Quality Arbiter: Evaluate and decide (75-100 words)
   - Why it matters: Judgment is irreplaceable (50-75 words)
   - Total: 400-500 words
-- [X] T016 Embed table: Four dimensions with one-line descriptions
-- [X] T017 Add reflection prompt: "Which dimension resonates with you?"
-- [X] T018 Add learning outcome summary
+- [x] T016 Embed table: Four dimensions with one-line descriptions
+- [x] T017 Add reflection prompt: "Which dimension resonates with you?"
+- [x] T018 Add learning outcome summary
 
 **Checkpoint: Lesson 3 complete & ready for human review**
 
@@ -90,16 +91,16 @@
 
 **Goal**: Opportunity framing + psychological reframing of anxiety
 
-- [X] T019 Write Lesson 4: "This is the best time in history to build with AI"
+- [x] T019 Write Lesson 4: "This is the best time in history to build with AI"
   - Market expansion: Software production accelerating (75-100 words, use vibe coding + hiring examples)
   - Incumbent vulnerability: Even Microsoft faces startup competition (75-100 words, use Cursor example)
   - Barriers lowering: Easiest to build in 3-4 decades (50-75 words)
   - Your advantage: Understanding AI = seeing problems others miss (50-75 words)
   - Closing: "This is your moment" (50-75 words)
   - Total: 300-400 words
-- [X] T020 Weave in enterprise and startup examples naturally
-- [X] T021 Add sentiment check prompt: "Do you see this as opportunity or threat?"
-- [X] T022 Add learning outcome summary
+- [x] T020 Weave in enterprise and startup examples naturally
+- [x] T021 Add sentiment check prompt: "Do you see this as opportunity or threat?"
+- [x] T022 Add learning outcome summary
 
 **Checkpoint: Lesson 4 complete & ready for human review**
 
@@ -109,17 +110,17 @@
 
 **Goal**: Set expectations for pedagogical model throughout book
 
-- [X] T023 Write Lesson 5: "You'll work WITH agents, not FROM them"
+- [x] T023 Write Lesson 5: "You'll work WITH agents, not FROM them"
   - The distinction: WITH vs. FROM (75-100 words)
   - What WITH means: You direct, evaluate, decide (75-100 words)
   - Your responsibility: Write specs, guide agents, make decisions (50-75 words)
   - How this book works: Next chapters teach tools and first program (50-75 words)
   - Closing: "You're about to become an agent orchestrator. Let's start." (50-75 words)
   - Total: 300-400 words
-- [X] T024 Embed text-based WITH vs. FROM comparison (markdown table)
-- [X] T025 Add understanding prompt: "What does 'working WITH agents' mean?"
-- [X] T026 Add self-assessment: "Am I ready for Chapter 2?"
-- [X] T027 Add learning outcome summary
+- [x] T024 Embed text-based WITH vs. FROM comparison (markdown table)
+- [x] T025 Add understanding prompt: "What does 'working WITH agents' mean?"
+- [x] T026 Add self-assessment: "Am I ready for Chapter 2?"
+- [x] T027 Add learning outcome summary
 
 **Checkpoint: Lesson 5 complete & ready for human review**
 
@@ -129,20 +130,20 @@
 
 **Purpose**: Connect all 5 lessons and create chapter-level assessments
 
-- [X] T028 Add chapter-level navigation: Links between lessons in intro/conclusion
-- [X] T029 Create chapter README with:
+- [x] T028 Add chapter-level navigation: Links between lessons in intro/conclusion
+- [x] T029 Create chapter README with:
   - Main learning outcomes (consolidate from 5 lessons)
   - How each lesson contributes to chapter goal
   - Connection to Chapter 2
   - Domain skills used
   - Success metrics summary
-- [X] T030 Create chapter-level glossary: All terms defined
-- [X] T031 Create chapter comprehension check (3 questions):
+- [x] T030 Create chapter-level glossary: All terms defined
+- [x] T031 Create chapter comprehension check (3 questions):
   1. "Why is the $3 trillion figure important?" (Bloom's: Understand)
   2. "What are the four dimensions of an agent orchestrator?" (Bloom's: Remember/Understand)
   3. "What does 'agent-native education' mean to you?" (Bloom's: Understand)
-- [X] T032 Create chapter reflection exercise: "Identify one thing you currently do that's 'orchestration' work"
-- [X] T033 Add accessibility review: Clear language, no jargon, analogies accessible
+- [x] T032 Create chapter reflection exercise: "Identify one thing you currently do that's 'orchestration' work"
+- [x] T033 Add accessibility review: Clear language, no jargon, analogies accessible
 
 **Checkpoint: Chapter integration complete**
 
@@ -166,6 +167,7 @@
 **Total Tasks**: 39
 **Phases**: 3 (Setup + Lessons + Integration + Review)
 **Recommended Workflow**:
+
 1. Run Setup (T001-T003) + Foundational Assets (T004-T007) first
 2. Invoke chapter-writer subagent for Lessons 1-5 (T008-T027)
 3. Human review after each lesson before proceeding to next
@@ -188,6 +190,7 @@
 **Word Budget**: 300-400 words | **Time**: 3-4 minutes
 
 **Guidelines for content-implementer**:
+
 - Hook readers immediately with provocative statement
 - Show proof first (fastest-growing startup sector exists NOW)
 - Make stakes personal ("You're entering profession at pivotal moment")
@@ -209,6 +212,7 @@
 **Word Budget**: 400-500 words | **Time**: 4-5 minutes
 
 **Guidelines for content-implementer**:
+
 - Present $3T number, let it land
 - Make concrete: 30M developers × $100k = $3T (show calculation)
 - Use France's GDP comparison for scale perspective (relatable)
@@ -230,6 +234,7 @@
 **Word Budget**: 400-500 words | **Time**: 3-4 minutes
 
 **Guidelines for content-implementer**:
+
 - Frame as shift FROM code writer (execution) TO orchestrator (direction + judgment)
 - Explain each dimension clearly:
   - Specification Writer: Clear requirements
@@ -254,6 +259,7 @@
 **Word Budget**: 300-400 words | **Time**: 3-4 minutes
 
 **Guidelines for content-implementer**:
+
 - Counter displacement anxiety with evidence (not just reassurance)
 - Show market expansion: vibe coding boom + enterprise hiring surge
 - Include real examples naturally (vibe coding, Cursor vs. GitHub Copilot, hiring data)
@@ -276,6 +282,7 @@
 **Word Budget**: 300-400 words | **Time**: 2-3 minutes
 
 **Guidelines for content-implementer**:
+
 - Clarify distinction: Learning WITH agents (you direct) vs. FROM agents (you consume)
 - Explain what WITH means: You write specs, direct agents, evaluate, decide
 - Emphasize reader's ACTIVE role (empower, don't diminish)
@@ -294,6 +301,7 @@
 ## Implementation Notes
 
 **For content-implementer subagent**:
+
 - Follow lesson outlines exactly (word counts, time budgets)
 - Ground ALL claims in context document (no speculation, cite sources)
 - Use Show-Then-Explain: examples first → then concepts
@@ -305,6 +313,7 @@
 - Include YAML frontmatter with lesson metadata
 
 **YAML Frontmatter Template**:
+
 ```yaml
 ---
 sidebar_position: [lesson_number]
@@ -315,10 +324,10 @@ learning_objective: "[Bloom's aligned objective]"
 ```
 
 **For human reviewer**:
+
 - After each lesson completes: Review for clarity, accuracy, engagement, pedagogy, grounding
 - Ask: "Does this hook readers and make them want the next lesson?"
 - Check: All claims grounded in context document
 - Verify: Word count, reading time realistic
 - Assess: Domain skills visibly applied
 - Approve or request revisions before proceeding to next lesson
-

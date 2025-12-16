@@ -7,9 +7,10 @@
 
 ## Context
 
-**Current State**: Chapter 5 Lesson 2 (`book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md`) contains outdated Claude Code installation instructions that primarily focus on npm installation and present 4 methods without platform-specific guidance.
+**Current State**: Chapter 5 Lesson 2 (`apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md`) contains outdated Claude Code installation instructions that primarily focus on npm installation and present 4 methods without platform-specific guidance.
 
 **Problem**:
+
 - Installation methods are outdated (npm-centric approach no longer primary)
 - No platform-specific recommendations (students see all 4 methods regardless of OS)
 - Cognitive load violation for B1 learners (6+ installation options presented simultaneously)
@@ -17,7 +18,7 @@
 
 **Source of Truth**: Official Claude Code documentation at https://code.claude.com/docs/en/setup
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Windows Student Installation (Priority: P1)
 
@@ -124,7 +125,7 @@ A student uses the lesson summary file to quickly review installation steps with
 - **What if student's country isn't in Anthropic supported countries list?** Prerequisites section mentions "Location: Anthropic supported countries" with link to check eligibility
 - **What happens when auto-updates download but student wants to disable them?** Lesson documents `export DISABLE_AUTOUPDATER=1` and settings.json configuration
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -155,14 +156,14 @@ A student uses the lesson summary file to quickly review installation steps with
 - **CQR-004**: "What this does" explanations MUST avoid jargon and use B1-appropriate vocabulary
 - **CQR-005**: Authentication decision criteria MUST be unambiguous (no student should wonder which auth method applies to them)
 
-### Key Entities *(lesson content structure)*
+### Key Entities _(lesson content structure)_
 
 - **Installation Method Block**: Consists of platform name (heading), recommended badge, command block, "What this does" explanation, expected output (if applicable)
 - **Authentication Path**: Consists of auth method name, decision criteria ("Use this if..."), command/flow steps, verification command, expected output
 - **Platform Decision Tree**: Visual hierarchy showing: Platform identification → Recommended method → Alternative methods → Troubleshooting
 - **Verification Step**: Standard pattern of command + expected output + troubleshooting if output doesn't match
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 
@@ -205,8 +206,8 @@ A student uses the lesson summary file to quickly review installation steps with
 ### Technical Constraints
 
 - Lesson file format: MDX-compatible markdown (Docusaurus 3.x)
-- File path: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md`
-- Summary file path: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md.summary.md`
+- File path: `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md`
+- Summary file path: `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md.summary.md`
 - Image references: If installation flow diagram exists (`/img/part-2/chapter-05/claude-code-installation-authentication-flow.png`), update or note for future update
 - Cross-references: Maintain links to Lesson 1 and Lesson 3
 
@@ -234,7 +235,7 @@ A student uses the lesson summary file to quickly review installation steps with
 
 ## Open Questions
 
-*None - all critical decisions have reasonable defaults based on official documentation and B1 pedagogical requirements. Implementation will validate assumptions against factual-verifier.*
+_None - all critical decisions have reasonable defaults based on official documentation and B1 pedagogical requirements. Implementation will validate assumptions against factual-verifier._
 
 ## Acceptance Tests
 
@@ -243,12 +244,14 @@ A student uses the lesson summary file to quickly review installation steps with
 **Setup**: Three test students, each on different OS (Windows 10+, macOS 10.15+, Ubuntu 20.04+)
 
 **Execution**:
+
 1. Student reads installation section
 2. Student identifies their platform section
 3. Student follows recommended installation method
 4. Student runs `claude --version` to verify
 
 **Pass Criteria**:
+
 - Each student completes installation in under 10 minutes
 - Each student correctly identifies their platform's recommended method
 - `claude --version` returns version number on all platforms
@@ -259,12 +262,14 @@ A student uses the lesson summary file to quickly review installation steps with
 **Setup**: Three test students with different account types (Console API, Claude.ai Pro, no account yet)
 
 **Execution**:
+
 1. Student reads authentication section
 2. Student identifies which auth method applies to them
 3. Student follows authentication steps
 4. Student runs test command: `claude "Hello! Can you confirm Claude Code is working?"`
 
 **Pass Criteria**:
+
 - Each student chooses correct auth method based on decision criteria
 - Authentication completes without errors
 - Test command returns Claude response confirming working setup
@@ -275,12 +280,14 @@ A student uses the lesson summary file to quickly review installation steps with
 **Setup**: Student who hasn't read main lesson, only summary file
 
 **Execution**:
+
 1. Student opens summary file
 2. Student follows installation steps from summary only
 3. Student completes authentication from summary only
 4. Student verifies working setup
 
 **Pass Criteria**:
+
 - Student successfully installs Claude Code using summary-only instructions
 - Student knows when to reference main lesson (e.g., for troubleshooting)
 - Summary content matches main lesson (no contradictions)
@@ -290,12 +297,14 @@ A student uses the lesson summary file to quickly review installation steps with
 **Setup**: Automated verification against official documentation
 
 **Execution**:
+
 1. Run factual-verifier agent against updated lesson
 2. Compare all installation commands to https://code.claude.com/docs/en/setup
 3. Verify authentication paths match official documentation
 4. Check system requirements accuracy
 
 **Pass Criteria**:
+
 - Zero factual inaccuracies detected
 - All installation commands execute successfully on target platforms
 - Authentication paths match official documentation
@@ -306,11 +315,13 @@ A student uses the lesson summary file to quickly review installation steps with
 **Setup**: Review updated lesson against B1 cognitive load limits
 
 **Execution**:
+
 1. Count new concepts introduced in each section
 2. Verify total concepts per section ≤ 10 (B1 limit per constitution)
 3. Check that platform-specific structure reduces decision points (3 options per platform vs 4 global)
 
 **Pass Criteria**:
+
 - No section exceeds 10 new concepts
 - Platform-specific organization measurably reduces cognitive load vs original
 - Lesson metadata updated if concept count changes significantly
@@ -318,12 +329,14 @@ A student uses the lesson summary file to quickly review installation steps with
 ## Success Metrics
 
 **Quantitative**:
+
 - Installation success rate: 90%+ on first attempt
 - Time to working setup: ≤10 minutes (down from 15+)
 - Support requests: 60% reduction
 - Factual accuracy: 100% (zero inaccuracies)
 
 **Qualitative**:
+
 - Student confidence: "I know which method is for me" (survey feedback)
 - Pedagogical consistency: Validates as Layer 1 foundation content
 - Content cohesion: No "patchwork" feel, seamless integration

@@ -17,7 +17,7 @@ The PanaversityFS MCP server has production-ready delta detection tools (`delta_
 
 ---
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Docusaurus Incremental Build (Priority: P0 - CRITICAL)
 
@@ -38,18 +38,18 @@ A CI/CD pipeline needs to build a 1000+ lesson book without downloading all cont
 
 ### User Story 2 - Book Source Ingestion (Priority: P1)
 
-Authors write content in `book-source/docs/` which needs to be synced to PanaversityFS before builds.
+Authors write content in `apps/learn-app/docs/` which needs to be synced to PanaversityFS before builds.
 
 **Why this priority**: Without ingestion, there's no content in PanaversityFS to build from. The pipeline is: Author writes → Ingest → Build.
 
-**Independent Test**: Add a lesson to `book-source/docs/`, run ingestion, verify it appears in PanaversityFS.
+**Independent Test**: Add a lesson to `apps/learn-app/docs/`, run ingestion, verify it appears in PanaversityFS.
 
 **Acceptance Scenarios**:
 
-1. **Given** new lesson at `book-source/docs/Part-01/Chapter-01/01-intro.md`, **When** ingestion runs, **Then** file exists at `content/01-Part/01-Chapter/01-intro.md` in PanaversityFS
+1. **Given** new lesson at `apps/learn-app/docs/Part-01/Chapter-01/01-intro.md`, **When** ingestion runs, **Then** file exists at `content/01-Part/01-Chapter/01-intro.md` in PanaversityFS
 2. **Given** lesson modified in source, **When** ingestion runs, **Then** PanaversityFS file updated with new hash
 3. **Given** lesson deleted from source, **When** ingestion runs, **Then** PanaversityFS file deleted (sync, not append-only)
-4. **Given** image at `book-source/docs/Part-01/Chapter-01/img/diagram.png`, **When** ingestion runs, **Then** asset uploaded via `upload_asset`
+4. **Given** image at `apps/learn-app/docs/Part-01/Chapter-01/img/diagram.png`, **When** ingestion runs, **Then** asset uploaded via `upload_asset`
 
 ---
 
@@ -95,7 +95,7 @@ Developer needs to test the pipeline locally before committing.
 
 ---
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -111,7 +111,7 @@ Developer needs to test the pipeline locally before committing.
 
 **Ingestion Pipeline (Book Source → PanaversityFS)**
 
-- **FR-201**: Provide `scripts/ingest-book.py` that syncs `book-source/docs/` to PanaversityFS
+- **FR-201**: Provide `scripts/ingest-book.py` that syncs `apps/learn-app/docs/` to PanaversityFS
 - **FR-202**: Ingestion MUST map source paths to PanaversityFS schema (e.g., `Part-01/Chapter-01/` → `content/01-Part/01-Chapter/`)
 - **FR-203**: Ingestion MUST use `write_content` with proper hash-based conflict detection
 - **FR-204**: Ingestion MUST handle asset files via `upload_asset` tool
@@ -148,7 +148,7 @@ Developer needs to test the pipeline locally before committing.
 ┌─────────────────────────────────────────────────────────────────────┐
 │                      Author Workflow                                 │
 │                                                                      │
-│  book-source/docs/     ──ingest-book.py──►    PanaversityFS MCP     │
+│  apps/learn-app/docs/     ──ingest-book.py──►    PanaversityFS MCP     │
 │  (markdown + assets)         (write_content,      (storage)         │
 │                               upload_asset)                          │
 └─────────────────────────────────────────────────────────────────────┘
@@ -186,7 +186,7 @@ Build N:                           Build N+1:
 
 ---
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 
@@ -198,16 +198,16 @@ Build N:                           Build N+1:
 
 ### Instrumentation
 
-| Metric | Location | Purpose |
-|--------|----------|---------|
-| `hydrate_files_downloaded` | hydrate-book.py | Track incremental vs full |
+| Metric                      | Location        | Purpose                   |
+| --------------------------- | --------------- | ------------------------- |
+| `hydrate_files_downloaded`  | hydrate-book.py | Track incremental vs full |
 | `hydrate_bytes_transferred` | hydrate-book.py | Measure bandwidth savings |
-| `ingest_files_changed` | ingest-book.py | Track sync operations |
-| `build_total_seconds` | CI/CD | End-to-end build time |
+| `ingest_files_changed`      | ingest-book.py  | Track sync operations     |
+| `build_total_seconds`       | CI/CD           | End-to-end build time     |
 
 ---
 
-## Non-Goals *(explicit scope boundaries)*
+## Non-Goals _(explicit scope boundaries)_
 
 - **Real-time sync**: No live watching of book-source. Ingestion is triggered, not continuous.
 - **Multi-book builds**: One book per build. Cross-book builds are separate pipelines.
@@ -230,16 +230,19 @@ Build N:                           Build N+1:
 ## Risks & Mitigations
 
 **Risk 1: Manifest corruption**
+
 - **Likelihood**: Low (simple JSON file)
 - **Impact**: High (forces full rebuild)
 - **Mitigation**: Validate manifest format before use; fallback to full rebuild on parse error
 
 **Risk 2: Ingestion conflicts with concurrent edits**
+
 - **Likelihood**: Medium (multiple authors)
 - **Impact**: Medium (ingestion fails, requires retry)
 - **Mitigation**: Ingestion uses hash-based conflict detection; clear error messages guide retry
 
 **Risk 3: Large book exceeds download timeout**
+
 - **Likelihood**: Low (incremental is small by design)
 - **Impact**: High (build fails)
 - **Mitigation**: Full rebuild has 10-minute timeout; incremental should never hit this
@@ -301,16 +304,19 @@ check IngestIdempotent for 5
 ## Dependencies
 
 **Runtime Dependencies**:
+
 - PanaversityFS MCP server (existing)
 - httpx (async HTTP client for MCP calls)
 - click (CLI framework for scripts)
 - pydantic (configuration validation)
 
 **CI/CD Integration**:
+
 - GitHub Actions (build pipeline)
 - Actions cache (manifest persistence)
 
 **Development Tools**:
+
 - pytest (testing)
 - pytest-asyncio (async tests)
 - make (build orchestration)

@@ -45,13 +45,14 @@ tests:
 
 User requested storage structure alignment with Docusaurus and removal of summary tools:
 
-> "Should this be like [Docusaurus-aligned structure]... This makes the structure more reliable in itself like here @book-source/docs/"
+> "Should this be like [Docusaurus-aligned structure]... This makes the structure more reliable in itself like here @apps/learn-app/docs/"
 
 After clarifying that summaries should be at lesson level (not chapter level), user confirmed:
 
 > "1. yes 2. yes 3. yes 4. yes 5. reflect in specs and record a new adr as well so we can track back source and see phr as well."
 
 The user wanted:
+
 1. Storage structure to mirror Docusaurus `docs/` convention (`content/` instead of `lessons/`)
 2. Static assets to mirror Docusaurus `static/` convention
 3. Summary tools removed (use content tools with `.summary.md` naming)
@@ -64,6 +65,7 @@ Created ADR-0018 and refactored PanaversityFS from 12 tools to 9 tools:
 **Storage Structure Changes (ADR-0018):**
 
 Before:
+
 ```
 books/{book-id}/
 ├── lessons/
@@ -78,6 +80,7 @@ books/{book-id}/
 ```
 
 After (Docusaurus-aligned):
+
 ```
 books/{book-id}/
 ├── content/                   # Maps to Docusaurus docs/
@@ -90,11 +93,13 @@ books/{book-id}/
 ```
 
 **Tool Changes:**
+
 - Removed: `read_summary`, `write_summary`, `delete_summary`
 - Content tools now handle summaries via `.summary.md` naming convention
 - Total tools: 12 → 9
 
 **Key design decisions:**
+
 1. Summaries are sibling files to lessons (`.summary.md` suffix)
 2. Mirrored Docusaurus directory structure for seamless integration
 3. Single tool interface for all markdown content (lessons + summaries)

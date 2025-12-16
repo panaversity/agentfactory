@@ -11,6 +11,7 @@
 ## Identified Visual Opportunities
 
 ### VISUAL ASSET 1: Development Lifecycle Transformation Diagram
+
 - **Type**: Dual-Track Process Flow Diagram
 - **Location**: Line 65 (after "Let's establish a baseline.")
 - **Content**: Six-phase development lifecycle (Planning, Design, Implementation, Testing, Deployment, Operations) shown in traditional specialist-role format (top track) versus AI-augmented individual+AI format (bottom track) with transformation arrows
@@ -39,5 +40,5 @@
 
 ---
 
-**Prompts embedded in**: `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/04-development-lifecycle-transition.md`
+**Prompts embedded in**: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/04-development-lifecycle-transition.md`
 **Ready for image generation**: ✅ Yes

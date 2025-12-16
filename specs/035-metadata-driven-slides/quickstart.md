@@ -24,18 +24,19 @@ Add PDF slides to any chapter by editing only the frontmatter (YAML metadata at 
 **Option A: Local Path** (slides stored in repository)
 
 1. Place PDF in `book-source/static/slides/`:
+
    ```bash
    book-source/static/slides/chapter-02-slides.pdf
    ```
 
-2. Open chapter README (`book-source/docs/[part]/[chapter]/README.md`)
+2. Open chapter README (`apps/learn-app/docs/[part]/[chapter]/README.md`)
 
 3. Add `slides` field to frontmatter:
    ```yaml
    ---
    sidebar_position: 2
    title: "Chapter 2: The AI Turning Point"
-   slides: "slides/chapter-02-slides.pdf"  # ← Add this line
+   slides: "slides/chapter-02-slides.pdf" # ← Add this line
    ---
    ```
 
@@ -48,7 +49,7 @@ Add PDF slides to any chapter by editing only the frontmatter (YAML metadata at 
    ---
    sidebar_position: 2
    title: "Chapter 2: The AI Turning Point"
-   slides: "https://r2.cloudflare.com/slides/chapter-02-slides.pdf"  # ← Cloud URL
+   slides: "https://r2.cloudflare.com/slides/chapter-02-slides.pdf" # ← Cloud URL
    ---
    ```
 
@@ -57,12 +58,14 @@ Add PDF slides to any chapter by editing only the frontmatter (YAML metadata at 
 ### Step 3: Verify
 
 1. **Start dev server**:
+
    ```bash
    cd book-source
    npm start
    ```
 
 2. **Navigate to chapter** in browser
+
    - Slides should appear after "What You'll Learn" section
    - Should display as embedded PDF with fullscreen button
 
@@ -75,7 +78,7 @@ Add PDF slides to any chapter by editing only the frontmatter (YAML metadata at 
 
 ### Example 1: Simple Local Path
 
-**File**: `book-source/docs/01-Introducing-AI-Driven-Development/02-ai-turning-point/README.md`
+**File**: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/02-ai-turning-point/README.md`
 
 ```yaml
 ---
@@ -96,6 +99,7 @@ slides: "slides/chapter-02-slides.pdf"
 ```
 
 **Result**:
+
 - Import statement added automatically at top
 - Slides section with PDF viewer appears after "What You'll Learn"
 - No manual edits to markdown content needed
@@ -104,7 +108,7 @@ slides: "slides/chapter-02-slides.pdf"
 
 ### Example 2: Cloud URL
 
-**File**: `book-source/docs/01-Introducing-AI-Driven-Development/04-nine-pillars/README.md`
+**File**: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/04-nine-pillars/README.md`
 
 ```yaml
 ---
@@ -125,6 +129,7 @@ slides: "https://cdn.panaversity.org/slides/chapter-04-slides.pdf"
 ```
 
 **Result**:
+
 - Cloud URL used directly in PDFViewer src
 - No local file needed in repository
 - Works identically to local path approach
@@ -133,7 +138,7 @@ slides: "https://cdn.panaversity.org/slides/chapter-04-slides.pdf"
 
 ### Example 3: Chapter Without Slides
 
-**File**: `book-source/docs/02-Foundations/05-markdown-basics/README.md`
+**File**: `apps/learn-app/docs/02-Foundations/05-markdown-basics/README.md`
 
 ```yaml
 ---
@@ -154,6 +159,7 @@ title: "Lesson 5: Markdown Basics"
 ```
 
 **Result**:
+
 - No slides section appears
 - No warnings or errors
 - Chapter renders normally
@@ -167,14 +173,17 @@ title: "Lesson 5: Markdown Basics"
 **Possible causes**:
 
 1. **Missing "What You'll Learn" heading**
+
    - Solution: Add `## What You'll Learn` section to chapter
    - Plugin uses this as injection point
 
 2. **Incorrect path format**
+
    - Local path: `slides/chapter-02.pdf` (relative to static directory)
    - Cloud URL: Must start with `http://` or `https://`
 
 3. **Typo in frontmatter field**
+
    - Must be exactly `slides:` (lowercase, singular)
    - Check YAML syntax (colon + space + value)
 
@@ -187,10 +196,12 @@ title: "Lesson 5: Markdown Basics"
 ### Problem: Build warnings appear
 
 **Warning**: `"Failed to inject slides for [file]: No target heading found"`
+
 - **Cause**: Chapter lacks "What You'll Learn" heading
 - **Solution**: Add `## What You'll Learn` section OR remove `slides` field
 
 **Warning**: `"Failed to inject slides for [file]: Invalid slides format"`
+
 - **Cause**: `slides` field is not a string (e.g., number, object)
 - **Solution**: Use string format: `slides: "path/to.pdf"`
 
@@ -199,11 +210,13 @@ title: "Lesson 5: Markdown Basics"
 ### Problem: PDF doesn't load in browser
 
 **Local path** (`/slides/chapter-02.pdf`):
+
 - Check file exists: `ls book-source/static/slides/chapter-02.pdf`
 - Check file size (<100MB recommended for browser)
 - Check browser console for 404 errors
 
 **Cloud URL** (`https://...`):
+
 - Verify URL is publicly accessible (test in browser)
 - Check CORS headers if cross-origin
 - Verify CDN authentication (if applicable)
@@ -215,6 +228,7 @@ title: "Lesson 5: Markdown Basics"
 ### Migrating from Manual JSX to Metadata
 
 **Before** (manual approach):
+
 ```markdown
 ---
 sidebar_position: 2
@@ -237,11 +251,12 @@ import PDFViewer from '@site/src/components/PDFViewer';
 ```
 
 **After** (metadata approach):
+
 ```markdown
 ---
 sidebar_position: 2
 title: "Chapter 2: The AI Turning Point"
-slides: "slides/chapter-02-slides.pdf"  # ← Add this
+slides: "slides/chapter-02-slides.pdf" # ← Add this
 ---
 
 # Chapter 2: The AI Turning Point
@@ -256,6 +271,7 @@ slides: "slides/chapter-02-slides.pdf"  # ← Add this
 ```
 
 **Steps**:
+
 1. Add `slides` field to frontmatter
 2. Remove manual `import PDFViewer` statement
 3. Remove manual `<PDFViewer>` JSX
@@ -287,6 +303,7 @@ book-source/static/slides/
 ### 3. Cloud Storage
 
 When using cloud URLs:
+
 - **Use CDN**: Ensure fast global delivery (Cloudflare R2, AWS CloudFront)
 - **Set cache headers**: Long-lived cache (slides rarely change)
 - **Public access**: No authentication required for reading
@@ -324,6 +341,7 @@ A: Use `slides/chapter.pdf` (no leading `./`). Plugin normalizes to `/slides/cha
 ## Summary
 
 **Add slides in 3 steps**:
+
 1. Place PDF in `static/slides/` OR upload to cloud
 2. Add `slides: "path"` to frontmatter
 3. Verify in dev server
@@ -331,6 +349,7 @@ A: Use `slides/chapter.pdf` (no leading `./`). Plugin normalizes to `/slides/cha
 **Zero manual edits** to markdown content. Plugin handles imports and JSX injection automatically.
 
 For advanced usage or troubleshooting, see:
+
 - Technical architecture: [`plan.md`](./plan.md)
 - Data model: [`data-model.md`](./data-model.md)
 - Implementation: [`tasks.md`](./tasks.md) (after Phase 2)

@@ -2,7 +2,7 @@
 
 **Date**: 2025-01-24  
 **Task**: Align all 9 Chapter 10 lessons with Chapter 1 Lesson 1 template structure  
-**Reference Template**: `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/01-moment_that_changed_everything.md`
+**Reference Template**: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/01-moment_that_changed_everything.md`
 
 ---
 
@@ -49,20 +49,26 @@ differentiation:
 
 1. **Title** (`# Lesson Title`)
 2. **Learning Objectives Section** (visible, after title)
+
    ```markdown
    ## Learning Objectives
-   
+
    By the end of this lesson, you will be able to:
+
    - **Action Verb** description (Proficiency Level - Bloom Level)
    - **Action Verb** description (Proficiency Level - Bloom Level)
    ```
+
 3. **Main Content Sections** (lesson-specific)
 4. **Try With AI Section** (MUST be last section)
+
    ```markdown
    ## Try With AI
-   
+
    ### Prompt 1: ...
+
    ### Prompt 2: ...
+
    ### Prompt 3: ...
    ```
 
@@ -73,6 +79,7 @@ differentiation:
 ### Lesson 1: `01-what-is-context-engineering.md`
 
 **Current Frontmatter**:
+
 ```yaml
 ---
 title: "Lesson 1: What is Context Engineering?"
@@ -83,6 +90,7 @@ keywords: [...]
 ```
 
 **Missing**:
+
 - ❌ `chapter: 10`
 - ❌ `lesson: 1`
 - ❌ `duration_minutes: 15`
@@ -92,10 +100,12 @@ keywords: [...]
 - ❌ `differentiation` object
 
 **Has**:
+
 - ✅ Visible "Learning Objectives" section (lines 14-18)
 - ❌ "Try With AI" section exists but mentions ChatGPT (should be Claude Code/Gemini CLI)
 
 **Action Required**:
+
 1. Add all missing frontmatter metadata
 2. Convert visible learning objectives to frontmatter format
 3. Define 3 skills taught
@@ -114,6 +124,7 @@ keywords: [...]
 ### Lesson 3: `03-six-components-aidd-context.md`
 
 **Current Frontmatter** (partial):
+
 ```yaml
 ---
 title: "Lesson 3: The Six Components of AIDD Context"
@@ -124,6 +135,7 @@ keywords: [...]
 ```
 
 **Has**:
+
 - ✅ Visible "Learning Objectives" section (lines 15-18)
 
 **Missing**: Same as Lesson 1 (all metadata except title)
@@ -137,6 +149,7 @@ keywords: [...]
 **Status**: Need to read and analyze each
 
 **Expected Pattern**: All lessons likely missing:
+
 - `chapter`, `lesson`, `duration_minutes` fields
 - `skills` array
 - `learning_objectives` array (has visible but not metadata)
@@ -149,16 +162,17 @@ keywords: [...]
 
 **Chapter 10 Complexity Tier**: Beginner → Intermediate (A1 → B1)
 
-| Lessons | Tier | Proficiency | New Concepts Limit | Bloom Levels |
-|---------|------|-------------|-------------------|--------------|
-| 1-2 | Beginner | A1-A2 | Max 5-7 | Remember, Understand |
-| 3-9 | Intermediate | A2-B1 | Max 7-10 | Understand, Apply, Analyze |
+| Lessons | Tier         | Proficiency | New Concepts Limit | Bloom Levels               |
+| ------- | ------------ | ----------- | ------------------ | -------------------------- |
+| 1-2     | Beginner     | A1-A2       | Max 5-7            | Remember, Understand       |
+| 3-9     | Intermediate | A2-B1       | Max 7-10           | Understand, Apply, Analyze |
 
 ---
 
 ## Skills Categories (DigComp 2.1 Framework)
 
 **Available Areas**:
+
 1. **Information Literacy**: Finding, evaluating, organizing information
 2. **Communication & Collaboration**: Interacting with AI agents
 3. **Content Creation**: Building specifications, code, documentation
@@ -166,6 +180,7 @@ keywords: [...]
 5. **Problem-Solving**: Debugging, architectural decisions
 
 **Chapter 10 Primary Areas**:
+
 - Information Literacy (understanding context)
 - Communication & Collaboration (working with AI)
 - Problem-Solving (debugging context issues)
@@ -175,34 +190,29 @@ keywords: [...]
 
 ## Bloom's Taxonomy Alignment
 
-| Bloom Level | Action Verbs | Chapter 10 Use |
-|-------------|--------------|----------------|
-| **Remember** (A1) | Define, Identify, List, Recognize | Lessons 1-2: Basic concepts |
-| **Understand** (A1-A2) | Explain, Compare, Classify, Summarize | All lessons: Core understanding |
-| **Apply** (B1) | Use, Demonstrate, Apply, Execute | Lessons 3-9: Practical application |
-| **Analyze** (B1+) | Analyze, Differentiate, Examine | Lessons 7-9: Advanced topics |
-| **Evaluate** (B2+) | Evaluate, Justify, Critique | Not in Chapter 10 (beginner) |
-| **Create** (C1+) | Design, Construct, Develop | Not in Chapter 10 (beginner) |
+| Bloom Level            | Action Verbs                          | Chapter 10 Use                     |
+| ---------------------- | ------------------------------------- | ---------------------------------- |
+| **Remember** (A1)      | Define, Identify, List, Recognize     | Lessons 1-2: Basic concepts        |
+| **Understand** (A1-A2) | Explain, Compare, Classify, Summarize | All lessons: Core understanding    |
+| **Apply** (B1)         | Use, Demonstrate, Apply, Execute      | Lessons 3-9: Practical application |
+| **Analyze** (B1+)      | Analyze, Differentiate, Examine       | Lessons 7-9: Advanced topics       |
+| **Evaluate** (B2+)     | Evaluate, Justify, Critique           | Not in Chapter 10 (beginner)       |
+| **Create** (C1+)       | Design, Construct, Develop            | Not in Chapter 10 (beginner)       |
 
 ---
 
 ## Update Priority
 
 **Phase 1: Critical Metadata** (All Lessons)
+
 1. Add `chapter`, `lesson`, `duration_minutes`
 2. Add `cognitive_load` (count concepts, assess against limit)
 
-**Phase 2: Skills & Learning Objectives** (All Lessons)
-3. Extract visible learning objectives
-4. Convert to frontmatter `learning_objectives` array
-5. Define `skills` array (2-3 skills per lesson)
+**Phase 2: Skills & Learning Objectives** (All Lessons) 3. Extract visible learning objectives 4. Convert to frontmatter `learning_objectives` array 5. Define `skills` array (2-3 skills per lesson)
 
-**Phase 3: Differentiation** (All Lessons)
-6. Add `extension_for_advanced`
-7. Add `remedial_for_struggling`
+**Phase 3: Differentiation** (All Lessons) 6. Add `extension_for_advanced` 7. Add `remedial_for_struggling`
 
-**Phase 4: Tool Updates** (Lessons 1-2, possibly others)
-8. Replace ChatGPT examples with Claude Code/Gemini CLI
+**Phase 4: Tool Updates** (Lessons 1-2, possibly others) 8. Replace ChatGPT examples with Claude Code/Gemini CLI
 
 ---
 

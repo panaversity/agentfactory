@@ -1,6 +1,6 @@
 # Lesson 5: Code Review with Pull Requests — Implementation Report
 
-**File**: `/book-source/docs/02-AI-Tool-Landscape/08-git-and-github/05-code-review-pull-requests.md`
+**File**: `/apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/05-code-review-pull-requests.md`
 
 **Date**: 2025-01-17
 **Stage**: 2 (AI Collaboration with Three Roles)
@@ -19,12 +19,14 @@ Lesson 5 has been successfully implemented following **Stage 2 (AI Collaboration
 ## Constitutional Compliance Checklist
 
 ### Principle 1: Specification Primacy ✅
+
 - **Requirement**: PR description is specification of changes BEFORE merging
 - **Implementation**: Lesson emphasizes "Summary → What Changed → Why → Testing" pattern
 - **Validation**: PR template (Concept 2) shows spec elements
 - **Status**: ✅ PASS
 
 ### Principle 2: Progressive Complexity ✅
+
 - **Target Tier**: A2 (Aspiring intermediate)
 - **Concept Count**: 4 concepts (within A2 limit of 5-7)
   1. Pull request creation
@@ -35,12 +37,14 @@ Lesson 5 has been successfully implemented following **Stage 2 (AI Collaboration
 - **Cognitive Load**: ✅ PASS (4 ≤ 7)
 
 ### Principle 3: Factual Accuracy ✅
+
 - **Git Commands**: Not applicable (PR is GitHub feature, not Git command)
 - **GitHub Features**: All features described (PR creation, diff view, merge button) are standard GitHub functionality
 - **PR Best Practices**: Aligned with GitHub documentation standards
 - **Status**: ✅ PASS (no hallucinated features)
 
 ### Principle 4: Coherent Structure ✅
+
 - **Arc**: Understand PR → Create PR → Review Diff → Merge PR
 - **Progression**: Linear, each section builds on previous
   - Opening: Framing PRs as safety + professional practice
@@ -52,6 +56,7 @@ Lesson 5 has been successfully implemented following **Stage 2 (AI Collaboration
 - **Status**: ✅ PASS
 
 ### Principle 5: Intelligence Accumulation ✅
+
 - **Prerequisites**: Lessons 1-4 (Git init, undo, branches, GitHub basics)
 - **This Lesson Builds On**: Branch knowledge (feature branches), GitHub knowledge (repositories)
 - **Future Application**: Lesson 7 capstone uses PR workflow with full project
@@ -59,12 +64,14 @@ Lesson 5 has been successfully implemented following **Stage 2 (AI Collaboration
 - **Status**: ✅ PASS
 
 ### Principle 6: Anti-Convergence ✅
+
 - **Previous Chapters**: Chapter 7 (Bash) used direct teaching with analogies
 - **This Chapter**: Hands-on discovery (execute → observe → understand)
 - **Within Chapter**: Lesson 5 uses Three Roles (vs Lessons 1-2 hands-on discovery)
 - **Teaching Modality Variation**: ✅ PASS (no identical consecutive modalities)
 
 ### Principle 7: Minimal Content ✅
+
 - **Scope**: Every section maps to learning objective
   - "Understanding PRs" → LO1 (create PR)
   - "Concept 1" → LO1 (PR creation)
@@ -87,29 +94,35 @@ Lesson 5 has been successfully implemented following **Stage 2 (AI Collaboration
 **Implementation**:
 
 #### Role 1: AI as Teacher ✅
+
 **Location**: "Three Roles in Action" section, subsection "Role 1: AI as Teacher"
 
 **Scenario**:
+
 ```markdown
 You create basic PR description (minimal)
 ↓
 AI suggests (via prompt): "Your PR is good start, but missing:
+
 - Which functions did AI generate?
 - What edge cases tested?
 - Did you find bugs?"
-↓
-What You Learned: Transparency includes specifics, not just "used AI"
+  ↓
+  What You Learned: Transparency includes specifics, not just "used AI"
 ```
 
 **Validation**:
+
 - ✅ AI suggests pattern student didn't know (PR transparency best practices)
 - ✅ Explicit callout: "What You Learned"
 - ✅ Clear teaching moment (professionalizing AI attribution)
 
 #### Role 2: AI as Student ✅
+
 **Location**: "Three Roles in Action" section, subsection "Role 2: AI as Student"
 
 **Scenario**:
+
 ```markdown
 AI writes technical description (jargon-heavy)
 ↓
@@ -121,15 +134,18 @@ What AI Learned: PR reviewed by non-technical stakeholders needs clarity
 ```
 
 **Validation**:
+
 - ✅ Student teaches AI (provides corrective feedback)
 - ✅ AI learns and adapts (revises description)
 - ✅ Explicit callout: "What AI Learned"
 - ✅ Demonstrates student as domain expert
 
 #### Role 3: AI as Co-Worker (Convergence) ✅
+
 **Location**: "Three Roles in Action" section, subsection "Role 3: AI as Co-Worker"
 
 **Scenario**:
+
 ```markdown
 Iteration 1: Basic PR + AI suggestions
 Iteration 2: Student adds testing feedback
@@ -138,6 +154,7 @@ Iteration 4: Convergence - neither alone would create this quality
 ```
 
 **Validation**:
+
 - ✅ Iteration shows neither had perfect solution initially
 - ✅ Convergence through feedback loop
 - ✅ Final PR is better than either alone would create
@@ -153,55 +170,68 @@ Iteration 4: Convergence - neither alone would create this quality
 **Implementation**:
 
 #### PR Template Includes AI Transparency Section ✅
+
 **Location**: "Concept 2: PR Description with AI Transparency"
 
 ```markdown
 ## AI Assistance
+
 **AI Tool Used**: ChatGPT / Claude / Gemini / [your choice]
 
 **What AI Generated**:
+
 - [List of AI contributions]
 
 **What I Modified**:
+
 - [List of student modifications]
 ```
 
 **Validation**:
+
 - ✅ Template is mandatory in every PR
 - ✅ Three subsections (Tool, Generated, Modified) force transparency
 - ✅ Applies to both simple and complex PRs
 
 #### Realistic Example with AI Transparency ✅
+
 **Location**: "The PR Transparency Pattern: AI-Generated Code Example"
 
 **Complete PR Example**:
+
 ```markdown
 ## AI Assistance
+
 **AI Tool Used**: ChatGPT
 
 **What AI Generated**:
+
 - Try/except blocks for all arithmetic functions
 - validate_input() function
 - Error message templates
 
 **What I Modified & Why**:
+
 1. Error Messages: Simplified to user-friendly language
 2. Edge Cases: Found bugs AI missed (empty input)
 3. Logging: Added debugging support
 ```
 
 **Validation**:
+
 - ✅ Shows specific AI contributions
 - ✅ Shows student improvements/bug fixes
 - ✅ Explains WHY student modified (transparency of reasoning)
 - ✅ Demonstrates collaborative pattern
 
 #### Transparency Emphasized Throughout ✅
+
 - **PR Best Practices Section**: "Don't hide or omit AI usage (transparency is strength)"
 - **Three Roles Iteration**: "neither you would write alone" → AI helps, student validates
 - **Professional Pattern**: "Let AI generate... Review and test... Document what AI did vs. what you did"
 
 **Validation**:
+
 - ✅ Transparency framed as ethical + professional strength
 - ✅ Not hiding AI, but integrating it transparently
 - ✅ Supports SC-008 (100% PRs include attribution)
@@ -211,6 +241,7 @@ Iteration 4: Convergence - neither alone would create this quality
 ## Learning Objectives Alignment
 
 ### LO1: Create Pull Request from Feature Branch ✅
+
 - **Bloom's Level**: Apply
 - **Implementation**:
   - Concept 1: Understanding what PRs do
@@ -221,6 +252,7 @@ Iteration 4: Convergence - neither alone would create this quality
 - **Status**: ✅ FULLY ADDRESSED
 
 ### LO2: Review PR Diff to Evaluate Changes ✅
+
 - **Bloom's Level**: Analyze
 - **Implementation**:
   - Concept 3: "Reviewing PR Diff" section with detailed guidance
@@ -231,6 +263,7 @@ Iteration 4: Convergence - neither alone would create this quality
 - **Status**: ✅ FULLY ADDRESSED
 
 ### LO3: Document AI Assistance in PR Description ✅
+
 - **Bloom's Level**: Apply
 - **Implementation**:
   - Concept 2: Complete PR template with AI section
@@ -242,6 +275,7 @@ Iteration 4: Convergence - neither alone would create this quality
 - **Status**: ✅ FULLY ADDRESSED (CRITICAL FOR SC-008)
 
 ### LO4: Merge Approved PR into Main Branch ✅
+
 - **Bloom's Level**: Apply
 - **Implementation**:
   - Concept 1: Understanding merge as part of PR workflow
@@ -259,12 +293,14 @@ Iteration 4: Convergence - neither alone would create this quality
 **Implementation**:
 
 - **Hands-On Activities 1-4**: Execute → Observe → Understand pattern
+
   - Activity 1: Execute `git checkout -b`, make changes, `git add`, `git commit`, `git push`
   - Activity 2: Create PR on GitHub web interface, observe form fields
   - Activity 3: Review diff, observe color-coded changes, verify correctness
   - Activity 4: Click merge button, observe success message, verify main branch update
 
 - **Three Roles Scenarios**: Learn through collaboration iteration
+
   - Not lecture-style instruction
   - Student experiences what happens when AI provides suggestions
   - Student experiences correcting AI
@@ -284,23 +320,29 @@ Iteration 4: Convergence - neither alone would create this quality
 **Success Indicator**: PR template can be copied and used for all future PRs
 
 **Template Provided**:
+
 ```markdown
 ## Summary
+
 [Plain-language explanation]
 
 ## Changes
+
 - [What changed and why]
 
 ## AI Assistance
+
 **AI Tool Used**: [Which AI]
 **What AI Generated**: [List]
 **What I Modified**: [List with explanations]
 
 ## Testing Done
+
 - [How you tested]
 ```
 
 **Validation**:
+
 - ✅ Generic enough for any type of PR
 - ✅ Specific enough to ensure AI transparency
 - ✅ Can be copy-pasted into GitHub PR form
@@ -311,6 +353,7 @@ Iteration 4: Convergence - neither alone would create this quality
 ## Success Criteria Mapping
 
 ### SC-008: Document AI Assistance in 100% of Capstone PRs ✅
+
 - **Requirement**: All capstone (Lesson 7) student PRs must include AI attribution
 - **This Lesson Establishes**:
   - Mandatory PR template with AI section
@@ -321,6 +364,7 @@ Iteration 4: Convergence - neither alone would create this quality
 - **Status**: ✅ FULLY PREPARES FOR SC-008
 
 ### SC-001: Explain Git's Value (Safety + Transparency) ✅
+
 - **Requirement**: Students explain Git's value for AI development
 - **Implementation**:
   - Opening: "Why This Matters" framing PRs as safety + professional practice
@@ -333,12 +377,14 @@ Iteration 4: Convergence - neither alone would create this quality
 ## Content Quality Checks
 
 ### Terminal Logs / Screenshots ✅
+
 - **Note**: PR creation is GitHub web interface, not terminal
 - **Alternative**: Lesson includes step-by-step GitHub navigation
 - **Terminal Element**: Git push command shown with expected output
 - **Status**: ✅ ACCEPTABLE (PR is web feature, not CLI command)
 
 ### Git Commands Tested ✅
+
 - **Commands Used**:
   - `git checkout -b` (feature branch creation) - tested ✅
   - `git add .` (staging) - already covered in Lesson 1
@@ -349,11 +395,13 @@ Iteration 4: Convergence - neither alone would create this quality
 - **Status**: ✅ VALID (commands are established from earlier lessons)
 
 ### No Hallucinated GitHub Features ✅
+
 - All described features (PR creation, diff view, merge button) are real GitHub functionality
 - No invented features or fictional workflows
 - **Status**: ✅ PASS
 
 ### Code Examples Accuracy ✅
+
 - Simple function (multiplication) shown in example
 - Error handling example with try/except
 - Both are syntactically correct Python
@@ -368,16 +416,19 @@ Iteration 4: Convergence - neither alone would create this quality
 ### Concept Count: 4 (Within A2 Limit) ✅
 
 1. **Pull Request Concept** (Concept 1)
+
    - What is PR and what problem it solves
    - Comparison to commits
    - Basic PR anatomy (base branch, compare branch)
 
 2. **PR Description Specification** (Concept 2)
+
    - PR template structure (Summary, Changes, AI Assistance, Testing)
    - Why each section matters
    - Example of good vs. minimal description
 
 3. **Diff Review** (Concept 3)
+
    - Understanding diff visualization (red/green)
    - Checklist of what to look for
    - Example diff with annotation
@@ -398,21 +449,25 @@ Iteration 4: Convergence - neither alone would create this quality
 ## Teaching Quality Indicators
 
 ### Clarity ✅
+
 - Clear step-by-step instructions
 - Real-world example with full PR context
 - Explicit callouts for important concepts
 
 ### Engagement ✅
+
 - Three Roles scenarios show collaboration, not lecture
 - Hands-on activities encourage active practice
 - "Try With AI" prompts invite exploration
 
 ### Rigor ✅
+
 - PR transparency requirement is non-negotiable
 - Diff review checklist ensures critical thinking
 - Example shows realistic bugs found (edge cases) by student
 
 ### Professionalism ✅
+
 - PR template matches industry best practices
 - Transparency framed as ethical responsibility
 - Security considerations mentioned (avoid hardcoded secrets)
@@ -424,18 +479,23 @@ Iteration 4: Convergence - neither alone would create this quality
 ### Specification (spec.md) Alignment ✅
 
 **FR-021**: Student MUST create pull request
+
 - Implementation: Hands-On Activities 1-2 ✅
 
 **FR-022**: Student MUST document AI assistance
+
 - Implementation: Concept 2 template + Three Roles + Example ✅
 
 **FR-023**: Student MUST review PR diff
+
 - Implementation: Concept 3 + Hands-On Activity 3 ✅
 
 **FR-024**: Student MUST merge PR
+
 - Implementation: Hands-On Activity 4 ✅
 
 **FR-025-028**: AI Collaboration Patterns (Three Roles)
+
 - Implementation: "Three Roles in Action" section with all three roles ✅
 
 ### Plan (plan.md) Alignment ✅
@@ -445,16 +505,19 @@ Iteration 4: Convergence - neither alone would create this quality
 **Cognitive Load**: 4 concepts (within A2 limit) ✅
 
 **Learning Objectives Match**:
+
 - LO1: Create PR ✅
 - LO2: Review diff ✅
 - LO3: Document AI assistance ✅
 - LO4: Merge PR ✅
 
 **Teaching Approach**:
+
 - Three Roles Demonstration ✅
-- + Transparency (specific to Stage 2 PRs) ✅
+- - Transparency (specific to Stage 2 PRs) ✅
 
 **Deliverables**:
+
 - PR with clear description including AI attribution ✅
 - Merged PR visible on GitHub ✅
 - Collaboration pattern demonstrated ✅
@@ -464,6 +527,7 @@ Iteration 4: Convergence - neither alone would create this quality
 ## Lesson File Structure
 
 ### Frontmatter ✅
+
 ```yaml
 sidebar_position: 5
 title: "Code Review with Pull Requests"
@@ -476,6 +540,7 @@ estimated_time: "50 minutes"
 ```
 
 ### Content Sections ✅
+
 1. Opening framing (safety + professional practice)
 2. Understanding PRs (mental model)
 3. Concept 1: PR Creation
@@ -493,7 +558,7 @@ estimated_time: "50 minutes"
 
 ## File Validation
 
-✅ **File Created**: `/book-source/docs/02-AI-Tool-Landscape/08-git-and-github/05-code-review-pull-requests.md`
+✅ **File Created**: `/apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/05-code-review-pull-requests.md`
 
 ✅ **File Size**: Appropriate (not too brief, not bloated)
 
@@ -517,6 +582,7 @@ estimated_time: "50 minutes"
 - ✅ PR description includes mandatory AI attribution section → Template + Example
 
 **SC-008 Preparation**:
+
 - ✅ Lesson 5 establishes PR template with AI transparency
 - ✅ Lesson 5 demonstrates Three Roles iteration on PR quality
 - ✅ Lesson 5 provides realistic example with detailed AI attribution
@@ -526,15 +592,15 @@ estimated_time: "50 minutes"
 
 ## Constitutional Compliance Summary
 
-| Principle | Status | Evidence |
-|-----------|--------|----------|
-| 1. Specification Primacy | ✅ PASS | PR description is specification before merge |
-| 2. Progressive Complexity | ✅ PASS | 4 concepts, A2 tier, heavy scaffolding |
-| 3. Factual Accuracy | ✅ PASS | All GitHub features verified, no hallucinations |
-| 4. Coherent Structure | ✅ PASS | Clear pedagogical arc: Understand → Create → Review → Merge |
-| 5. Intelligence Accumulation | ✅ PASS | Builds on Lessons 1-4, applies in Lesson 7 |
-| 6. Anti-Convergence | ✅ PASS | Stage 2 Three Roles differs from Stage 1 hands-on |
-| 7. Minimal Content | ✅ PASS | Every section maps to learning objective |
+| Principle                    | Status  | Evidence                                                    |
+| ---------------------------- | ------- | ----------------------------------------------------------- |
+| 1. Specification Primacy     | ✅ PASS | PR description is specification before merge                |
+| 2. Progressive Complexity    | ✅ PASS | 4 concepts, A2 tier, heavy scaffolding                      |
+| 3. Factual Accuracy          | ✅ PASS | All GitHub features verified, no hallucinations             |
+| 4. Coherent Structure        | ✅ PASS | Clear pedagogical arc: Understand → Create → Review → Merge |
+| 5. Intelligence Accumulation | ✅ PASS | Builds on Lessons 1-4, applies in Lesson 7                  |
+| 6. Anti-Convergence          | ✅ PASS | Stage 2 Three Roles differs from Stage 1 hands-on           |
+| 7. Minimal Content           | ✅ PASS | Every section maps to learning objective                    |
 
 **Overall Constitutional Compliance**: ✅ 100% (All 7 Principles)
 
@@ -542,13 +608,13 @@ estimated_time: "50 minutes"
 
 ## Stage 2 Compliance Summary
 
-| Requirement | Status | Evidence |
-|-----------|--------|----------|
-| Three Roles Demonstrated | ✅ PASS | AI as Teacher, Student, Co-Worker, all with callouts |
-| Bidirectional Learning | ✅ PASS | AI teaches best practices, student refines, convergence iteration |
+| Requirement               | Status  | Evidence                                                                                     |
+| ------------------------- | ------- | -------------------------------------------------------------------------------------------- |
+| Three Roles Demonstrated  | ✅ PASS | AI as Teacher, Student, Co-Worker, all with callouts                                         |
+| Bidirectional Learning    | ✅ PASS | AI teaches best practices, student refines, convergence iteration                            |
 | AI Transparency Mandatory | ✅ PASS | PR template requires AI attribution, example shows detail, Three Roles emphasizes importance |
-| No Passive Tool Paradigm | ✅ PASS | AI and student actively collaborate, not one-way instruction |
-| Convergence Loop Clear | ✅ PASS | Role 3 shows iteration from basic PR to professional PR |
+| No Passive Tool Paradigm  | ✅ PASS | AI and student actively collaborate, not one-way instruction                                 |
+| Convergence Loop Clear    | ✅ PASS | Role 3 shows iteration from basic PR to professional PR                                      |
 
 **Overall Stage 2 Compliance**: ✅ 100%
 
@@ -561,17 +627,20 @@ estimated_time: "50 minutes"
 **This Lesson Establishes Foundation**:
 
 1. **Template** (mandatory in all PRs):
+
    - AI Tool Used: [explicit naming]
    - What AI Generated: [specific list]
    - What I Modified: [specific list with reasons]
 
 2. **Example** (realistic pattern):
+
    - Shows AI generating try/except blocks
    - Shows student finding edge case bugs
    - Shows student simplifying error messages
    - Transparency: "AI generated X, I modified Y because Z"
 
 3. **Three Roles Iteration** (quality improvement process):
+
    - Basic PR → "missing what AI generated and what you tested"
    - Student adds testing feedback
    - Convergence → detailed, transparent final PR
@@ -581,6 +650,7 @@ estimated_time: "50 minutes"
    - Learn what transparency looks like
 
 **When Students Reach Lesson 7**:
+
 - They have template (use it)
 - They have example (follow pattern)
 - They have experienced Three Roles (do it again)

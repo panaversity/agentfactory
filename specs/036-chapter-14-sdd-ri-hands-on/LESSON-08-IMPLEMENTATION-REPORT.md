@@ -1,14 +1,17 @@
 # Lesson 08: Implement Phase - Implementation Report
 
 ## Overview
+
 Successfully recreated Lesson 08: Implement Phase for Chapter 14 with focus on `/sp.implement` execution, checkpoint pattern, and tangible video artifact outcome.
 
 ## File Path
-`book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/08-implement-phase.md`
+
+`apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/08-implement-phase.md`
 
 ## Lesson Content Structure
 
 ### Header Metadata (Constitutional Requirements)
+
 ```yaml
 title: "Implement Phase - Execute Video Generation with AI"
 chapter: 14
@@ -43,23 +46,27 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 ## Content Sections (10 Total)
 
 ### 1. Opening Paragraph (Lines 81-85)
+
 **Purpose**: Frame the lesson as moving from theory to execution
 **Content**: Sets expectation for control + validation focus
 **Layer**: Layer 2 (AI Collaboration) context established
 
 ### 2. What Happens During Implementation (Lines 89-119)
+
 **Purpose**: Overview of 4 phases with 12 tasks
 **Structure**: Tree diagram showing all phases and checkpoints
 **Alignment**: Maps directly to L07 task breakdown
 **Key**: Shows where human checkpoints occur (4 total)
 
 ### 3. Running /sp.implement (Lines 123-142)
+
 **Purpose**: How to actually invoke the command
 **Content**: Exact command structure with file paths
 **Specification**: References specs/013-chapter-14-redesign/
 **Agent behavior**: Lists 4 steps agent takes (read → execute → show → wait)
 
 ### 4. Checkpoint Review Pattern (Lines 146-172)
+
 **Purpose**: Demonstrate checkpoint 1 with practical checklist
 **Example output**: What agent reports after Phase 1
 **Your checklist**: 4 concrete review items (file check, directory, network access, errors)
@@ -67,6 +74,7 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 **Control emphasis**: "You direct the next phase" (not autonomous)
 
 ### 5. The Iteration Loop: When Things Fail (Lines 176-200)
+
 **Purpose**: Show three roles invisibly (Teaching/Learning/Co-working)
 **Contrast**: Side-by-side comparison without vs with checkpoints
 **Scenario**: Real failure (Gemini timeout) with recovery
@@ -74,6 +82,7 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 **AI role**: Agent adapts to human feedback (AI as Student)
 
 ### 6. Phase 3 Details (Lines 204-232)
+
 **Purpose**: Show Playwright MCP browser automation in action
 **Content**: What agent does (session reuse, input, wait, download)
 **Terminal output**: Realistic log showing actual commands + confirmations
@@ -81,6 +90,7 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 **Three Roles hidden**: Agent is Teacher (shows how session persistence works)
 
 ### 7. Validation Phase (Lines 236-273)
+
 **Purpose**: Prove video meets specification through validation
 **ffprobe command**: Exact bash command for verification
 **Expected output**: Codec, resolution, duration values
@@ -88,6 +98,7 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 **Playback validation**: 7-item checklist (dashboard, button, form, animation, confetti, text, audio)
 
 ### 8. What You Get After Completion (Lines 277-301)
+
 **Purpose**: Show visible + invisible artifacts
 **Visible**: `./output/demo-video.mp4` with properties
 **Invisible**: PHR files auto-captured during implementation
@@ -95,12 +106,14 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 **Knowledge capture**: Explains why PHRs matter for intelligence accumulation
 
 ### 9. Common Implementation Mistakes (Lines 305-335)
+
 **Mistake 1**: Skipping checkpoint review (hidden issues surface late)
 **Mistake 2**: Accepting video without validation (could be truncated/wrong codec)
 **Mistake 3**: Not iterating when first attempt fails (timeouts are often transient)
 **Each**: Error → Why it's wrong → The fix (3 parts per mistake)
 
 ### 10. Try With AI (Lines 339-354)
+
 **Format**: 4 exploration prompts (no summary, key takeaways, or what's next)
 **Prompt 1**: Checkpoint review practice (specific checklist per phase)
 **Prompt 2**: Validation command practice (ffprobe + interpretation)
@@ -113,6 +126,7 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 ### Three Roles Framework (Layer 2 Invisible Implementation)
 
 **AI as Teacher** ✓
+
 - **Where shown**: Checkpoint dialogue (lines 150-156) shows agent explaining outputs
 - **Example**: "Playwright MCP verified...", "Session storage directory created..."
 - **Student learns**: How Playwright MCP configuration works, session persistence behavior
@@ -120,6 +134,7 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 - **Natural presentation**: Agent is simply reporting what it accomplished
 
 **AI as Student** ✓
+
 - **Where shown**: Iteration loop (lines 188-197) shows agent adapting to human feedback
 - **Example**: "Gemini timed out. Let me check manually... Network issue on our end. Let's retry Task 3.3."
 - **Student learns**: How AI responds to human constraints and feedback
@@ -127,6 +142,7 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 - **Natural presentation**: Collaborative problem-solving with visible back-and-forth
 
 **AI as Co-Worker** ✓
+
 - **Where shown**: Phase 3 terminal output (lines 214-229) shows partnership in action
 - **Example**: Sequential task execution with human oversight at checkpoints
 - **Student learns**: How to work with AI on complex projects (not micromanaging, not hands-off)
@@ -134,6 +150,7 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 - **Natural presentation**: Just showing how the workflow progresses together
 
 **Framework INVISIBLE** ✓
+
 - No explicit role labels (e.g., "Role 1: AI as Teacher")
 - No meta-commentary (e.g., "Notice how AI is teaching you...")
 - No pedagogical exposure (e.g., "Layer 2 Focus:")
@@ -143,6 +160,7 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 ### Structure Compliance
 
 **Ending** ✓
+
 - Last section: "## Try With AI" (lines 339-354)
 - No "## Summary" or "## Key Takeaways" after
 - No "## What's Next" or navigation meta-commentary
@@ -150,6 +168,7 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 - Proper EOF (line 355-356 shows file end)
 
 **Section Headings** ✓
+
 - All action-oriented, no pedagogical exposure
 - "The Iteration Loop: When Things Fail" (not "Role 2: AI as Student")
 - "Phase 3 Details: The Video Generation Happens Here" (not "Layer 2 Collaboration")
@@ -157,6 +176,7 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 - Natural language describing what students will experience
 
 **Meta-Commentary** ✓
+
 - Zero instances of "This demonstrates...", "Notice how...", "What you're learning..."
 - Zero instances of role labels in student-facing text
 - Zero instances of framework exposition
@@ -165,6 +185,7 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 ### Content Alignment
 
 **L07 Task Integration** ✓
+
 - Phase 1: Tasks 1.1-1.3 (Setup verification) - 3 tasks
 - Phase 2: Tasks 2.1-2.2 (Session establishment) - 2 tasks
 - Phase 3: Tasks 3.1-3.4 (Video generation) - 4 tasks
@@ -172,12 +193,14 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 - **Total**: 12 tasks (matches L07)
 
 **Specification-First Emphasis** ✓
+
 - Validation phase explicitly references specification compliance (lines 236-273)
 - ffprobe command verifies codec, resolution, duration against spec
 - Playback checklist validates content matches "4 scenes" from spec prompt
 - Checkpoint pattern ensures spec intent is maintained throughout
 
 **Checkpoint Pattern (from L07)** ✓
+
 - Detailed in section 4 (lines 146-172)
 - Real scenario with actual outputs
 - Human review checklist provided
@@ -185,6 +208,7 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 - Emphasis on human control maintained
 
 **Playwright MCP in Action** ✓
+
 - Terminal output section (lines 214-229) shows actual browser automation
 - Session cookie loading demonstrated
 - Chat input and submission shown
@@ -192,12 +216,14 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 - Output is realistic (file sizes, timestamps, actual commands)
 
 **Video Validation** ✓
+
 - ffprobe command with flags (lines 244-247)
 - Expected output with specific values (lines 251-255)
 - Playback validation checklist (7 items, lines 266-272)
 - Quality gates emphasized (codec, resolution, duration, size)
 
 **Iteration Loop (Error Handling)** ✓
+
 - Real failure scenario (Gemini timeout, lines 178-200)
 - Shows diagnostic thinking ("check manually", "network issue")
 - Shows recovery path ("retry with extended timeout")
@@ -207,6 +233,7 @@ cognitive_load: 8 concepts (within B1 limit of 10)
 ### Proficiency Alignment (B1)
 
 **Cognitive Load Analysis** ✓
+
 ```
 Concepts counted:
 1. /sp.implement orchestration (how command works)
@@ -222,12 +249,14 @@ Total: 8 concepts (within B1 limit of 10) ✓
 ```
 
 **Scaffolding Level** ✓
+
 - **Type**: Moderate (high-level guidance, student finds approach)
 - **Example**: "Review this checklist, then decide approve/reject" (not step-by-step)
 - **Example**: "Work with AI to diagnose" timeout (not detailed recovery steps)
 - **Appropriate for B1**: Independent developers who can problem-solve with guidance
 
 **Bloom's Cognitive Level** ✓
+
 - **Apply**: Execute /sp.implement, run ffprobe, apply checkpoint pattern
 - **Evaluate**: Review outputs, validate against spec, judge quality gates
 - **NOT Analyze/Create**: Those are for C2, not B1
@@ -236,6 +265,7 @@ Total: 8 concepts (within B1 limit of 10) ✓
 ### Evals-First Alignment
 
 **Learning Objectives Mapped to Content** ✓
+
 ```
 Objective 1: Execute /sp.implement to orchestrate 12 atomic tasks
   → Sections: "Running /sp.implement" + "What Happens During Implementation"
@@ -255,6 +285,7 @@ Objective 4: Debug failures and iterate
 ```
 
 **No Tangential Content** ✓
+
 - Every section maps to at least one learning objective
 - No "interesting but irrelevant" historical content
 - No extended examples unrelated to core learning
@@ -263,12 +294,14 @@ Objective 4: Debug failures and iterate
 ### Differentiation Provisions
 
 **For Advanced Learners** ✓
+
 - Analyze PHRs captured during implementation
 - Understand intelligence accumulation (PHRs → future skills)
 - Modify video prompt for different product types
 - Extend validation with additional video analysis tools
 
 **For Struggling Learners** ✓
+
 - Focus on Phase 1-2 (Setup/Session) before video generation
 - Validate with simplified criteria (file exists, basic ffprobe)
 - Complete Phase 3-4 only after Phase 1-2 proven
@@ -293,17 +326,20 @@ Objective 4: Debug failures and iterate
 ## Integration Path
 
 **Previous**: L07 Tasks Phase
+
 - Creates 12 atomic tasks with dependencies
 - Establishes checkpoint pattern concept
 - Provides video generation prompt
 
 **This lesson**: Executes those tasks
+
 - Uses `/sp.implement` to orchestrate execution
 - Shows checkpoint review pattern in practice
 - Demonstrates Playwright MCP browser automation
 - Validates video against specification
 
 **Next**: L09 Designing Reusable Intelligence
+
 - Takes captured PHRs from this implementation
 - Creates `generate-video` skill using Persona + Questions + Principles
 - Creates `upload-youtube` skill
@@ -332,9 +368,11 @@ Objective 4: Debug failures and iterate
 - [x] Tangible outcome emphasized (video file proof)
 
 ## Status
+
 **READY FOR DELIVERY** - All constitutional requirements met, content fully aligned to specification and learning objectives.
 
 ---
+
 **Created**: 2025-11-25
 **Author**: Claude Code (content-implementer v1.0.0)
 **Workflow**: /sp.implement

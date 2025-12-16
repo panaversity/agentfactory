@@ -12,12 +12,14 @@
 This document provides actionable, dependency-ordered tasks for implementing Chapter 29. Tasks are organized by lesson to enable sequential implementation with validation gates between lessons.
 
 **Chapter Structure**:
+
 - 6 lessons (B1 → B1-B2 → B2 proficiency progression)
 - 8 code examples (tested and working)
 - 50+ CoLearning prompts integrated throughout
 - Capstone project: Multi-Agent Concurrency System + Benchmarking Dashboard
 
 **Implementation Strategy**:
+
 - **Sequential lesson implementation** (Lesson 1 → 6)
 - Validation gate after each lesson (reading level, code testing, CoLearning compliance)
 - **Parallel opportunities**: Code examples within a lesson can be written concurrently
@@ -30,17 +32,17 @@ This document provides actionable, dependency-ordered tasks for implementing Cha
 
 ## Task Summary
 
-| Phase | Tasks Count | Estimated Effort | Parallelizable |
-|-------|-------------|------------------|----------------|
-| Setup | 3 | 2 hours | 0 |
-| Lesson 1 | 8 | 6 hours | 3 |
-| Lesson 2 | 8 | 6 hours | 3 |
-| Lesson 3 | 9 | 7 hours | 4 |
-| Lesson 4 | 11 | 9 hours | 5 |
-| Lesson 5 | 10 | 8 hours | 5 |
-| Lesson 6 | 9 | 8 hours | 3 |
-| Validation | 6 | 4 hours | 3 |
-| **Total** | **64** | **50 hours** | **26** |
+| Phase      | Tasks Count | Estimated Effort | Parallelizable |
+| ---------- | ----------- | ---------------- | -------------- |
+| Setup      | 3           | 2 hours          | 0              |
+| Lesson 1   | 8           | 6 hours          | 3              |
+| Lesson 2   | 8           | 6 hours          | 3              |
+| Lesson 3   | 9           | 7 hours          | 4              |
+| Lesson 4   | 11          | 9 hours          | 5              |
+| Lesson 5   | 10          | 8 hours          | 5              |
+| Lesson 6   | 9           | 8 hours          | 3              |
+| Validation | 6           | 4 hours          | 3              |
+| **Total**  | **64**      | **50 hours**     | **26**         |
 
 ---
 
@@ -72,17 +74,19 @@ Final Validation (Phase 8)
 ## Phase 1: Setup & Prerequisites
 
 ### Objectives
+
 - Create directory structure for Chapter 29
 - Set up validation tools (reading level, code testing)
 - Prepare CoLearning element templates
 
 ### Tasks
 
-- [ ] T001 Create chapter directory structure at `book-source/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/`
+- [ ] T001 Create chapter directory structure at `apps/learn-app/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/`
 - [ ] T002 Create readme.md file with chapter overview, navigation, and 6 lesson links
 - [ ] T003 Set up Python 3.14+ code testing environment (verify free-threading build availability for examples)
 
 **Acceptance Criteria**:
+
 - ✅ Directory exists with correct path
 - ✅ readme.md includes chapter title, description, lesson list (1-6)
 - ✅ Python 3.14.0+ installed and accessible for code testing
@@ -107,7 +111,7 @@ Final Validation (Phase 8)
 
 ### Code Example Tasks
 
-- [ ] T010 [P] Implement Example 1: CPython detection code in `book-source/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/01-what-is-cpython.md`
+- [ ] T010 [P] Implement Example 1: CPython detection code in `apps/learn-app/docs/04-Part-4-Python-Fundamentals/29-cpython-gil/01-what-is-cpython.md`
   - Code: `platform.python_implementation()` with type hints
   - Test: Verify returns "CPython" on standard Python
   - AI Prompt: "Explain what platform.python_implementation() does. What would this output on PyPy or Jython?"
@@ -115,15 +119,18 @@ Final Validation (Phase 8)
 ### CoLearning Element Tasks
 
 - [ ] T011 Integrate 3 💬 AI Colearning Prompts throughout Lesson 1:
+
   - Prompt 1: After CPython definition ("Explain what makes CPython the 'reference' implementation")
   - Prompt 2: After execution pipeline ("Walk me through what happens when I type `python script.py`")
   - Prompt 3: After alternatives ("When would you choose PyPy over CPython?")
 
 - [ ] T012 [P] Integrate 2 🎓 Instructor Commentaries:
+
   - Commentary 1: After code example ("In AI-native development, you don't memorize interpreter internals—you understand WHEN they matter")
   - Commentary 2: After memory management ("Syntax is cheap; understanding garbage collection's impact on performance is gold")
 
 - [ ] T013 [P] Integrate 2 🚀 CoLearning Challenges:
+
   - Challenge 1: After alternatives ("Generate a comparison table of CPython vs PyPy vs Jython")
   - Challenge 2: Before Try With AI ("Ask AI to explain how bytecode compilation enables Python's portability")
 
@@ -139,6 +146,7 @@ Final Validation (Phase 8)
   - Prompt 4 (Analyze/Synthesize): "Ask your AI: 'How does CPython's design enable the free-threading improvements in Python 3.14? Connect this to multi-agent AI systems (preview of Lesson 4).'"
 
 **Acceptance Criteria (Lesson 1)**:
+
 - ✅ 7 concepts covered (no more than 10 for B1 tier)
 - ✅ Reading level: B1-B2 (Flesch-Kincaid Grade 9-11)
 - ✅ All CoLearning elements present (💬🎓🚀✨)
@@ -173,15 +181,18 @@ Final Validation (Phase 8)
 ### CoLearning Element Tasks
 
 - [ ] T023 Integrate 3 💬 AI Colearning Prompts:
+
   - Prompt 1: After tail-call interpreter ("How does tail-call optimization make Python faster?")
   - Prompt 2: After incremental GC ("Why does incremental GC reduce pause times? What's the tradeoff?")
   - Prompt 3: After AI workload section ("How do these improvements help multi-agent AI systems specifically?")
 
 - [ ] T024 [P] Integrate 2 🎓 Instructor Commentaries:
+
   - Commentary 1: After performance improvements ("You don't need to understand tail-call mechanics—you need to know WHEN performance matters for your AI workloads")
   - Commentary 2: Before conclusion ("Python 3.14 isn't just faster—it's AI-native ready")
 
 - [ ] T025 [P] Integrate 1 🚀 CoLearning Challenge:
+
   - Challenge 1: After Python 3.14 improvements ("Ask AI to explain PEP 659 specializing adaptive interpreter and how it works with free-threading")
 
 - [ ] T026 [P] Integrate 1 ✨ Teaching Tip:
@@ -196,6 +207,7 @@ Final Validation (Phase 8)
   - Prompt 4 (Analyze/Synthesize): "Ask your AI: 'Connect tail-call interpreter improvements to the free-threading work in Lesson 4. How do they complement each other?'"
 
 **Acceptance Criteria (Lesson 2)**:
+
 - ✅ 6 concepts covered (within B1 limit)
 - ✅ Reading level: B1-B2
 - ✅ All CoLearning elements present
@@ -235,17 +247,20 @@ Final Validation (Phase 8)
 ### CoLearning Element Tasks
 
 - [ ] T035 Integrate 4 💬 AI Colearning Prompts:
+
   - Prompt 1: After GIL definition ("What does 'mutex' mean in the context of the GIL?")
   - Prompt 2: After why GIL exists ("Ask AI: 'Could Python have been designed without a GIL? What would be different?'")
   - Prompt 3: After CPU vs I/O (CRITICAL) ("Give me 5 real-world examples of CPU-bound and 5 of I/O-bound tasks in AI applications")
   - Prompt 4: After workarounds ("Explain how multiprocessing avoids the GIL. What's the cost?")
 
 - [ ] T036 [P] Integrate 3 🎓 Instructor Commentaries:
+
   - Commentary 1: After GIL prevents parallelism ("Understanding WHY the GIL exists is more valuable than memorizing what it prevents")
   - Commentary 2: After CPU vs I/O distinction ("This distinction is CRITICAL for Lesson 5's decision framework—master it now")
   - Commentary 3: Before workarounds ("Multiprocessing was Python's answer for 30 years. Lesson 4 changes everything.")
 
 - [ ] T037 [P] Integrate 2 🚀 CoLearning Challenges:
+
   - Challenge 1: After CPU vs I/O ("Ask AI to analyze your recent project: classify each function as CPU-bound or I/O-bound")
   - Challenge 2: Before Try With AI ("Generate a flowchart: How does CPython decide when to release the GIL during execution?")
 
@@ -262,6 +277,7 @@ Final Validation (Phase 8)
   - Prompt 4 (Analyze/Synthesize): "Ask your AI: 'How does the traditional GIL limit multi-agent AI systems? Preview what Lesson 4's free-threading solves.'"
 
 **Acceptance Criteria (Lesson 3)**:
+
 - ✅ 8 concepts covered (B1-B2 tier allows more depth)
 - ✅ Reading level: B1-B2
 - ✅ CPU vs I/O distinction emphasized (CRITICAL for Lesson 5)
@@ -314,6 +330,7 @@ Final Validation (Phase 8)
 ### Code Example Tasks
 
 - [ ] T048 [P] Implement Example 2: Free-threading detection code in `04-free-threaded-python.md`
+
   - Code: `check_free_threading()` function with type hints, dict return
   - Test: Verify detects build support correctly
   - AI Prompt: "Walk me through this code line by line. Why does `gil_enabled is not None` check if the build supports free-threading?"
@@ -326,6 +343,7 @@ Final Validation (Phase 8)
 ### CoLearning Element Tasks
 
 - [ ] T050 Integrate 5 💬 AI Colearning Prompts (most critical lesson):
+
   - Prompt 1: After paradigm shift ("Why did it take 30 years to make the GIL optional? What technical challenges existed?")
   - Prompt 2: After how it works ("Explain per-thread state vs global interpreter state. Draw a diagram.")
   - Prompt 3: After installation ("Which installation method should I use for development vs production? Why?")
@@ -333,11 +351,13 @@ Final Validation (Phase 8)
   - Prompt 5: After thread safety ("If built-ins have internal locks, why do I still need threading.Lock sometimes?")
 
 - [ ] T051 [P] Integrate 3 🎓 Instructor Commentaries:
+
   - Commentary 1: After paradigm shift ("Free-threading isn't just a feature—it's a fundamental shift in how Python executes")
   - Commentary 2: After performance ("Benchmarks show 2-10x gains, but YOUR workload may differ. Always measure.")
   - Commentary 3: After AI-native context ("This is why Chapter 29 matters: true parallel AI reasoning is now possible in Python")
 
 - [ ] T052 [P] Integrate 3 🚀 CoLearning Challenges:
+
   - Challenge 1: After installation ("Set up a free-threaded Python environment with your AI's help. Document each step.")
   - Challenge 2: After detection ("Write a script that checks 5 different Python environments and reports their free-threading status")
   - Challenge 3: Before Try With AI ("Design a multi-agent system architecture that leverages free-threading. Ask AI to critique your design.")
@@ -355,6 +375,7 @@ Final Validation (Phase 8)
   - Prompt 4 (Analyze/Synthesize): "Ask your AI: 'Design a 3-agent AI system where each agent processes data in parallel. How does free-threading make this practical? Connect to Kubernetes deployment (Part 11 preview).'"
 
 **Acceptance Criteria (Lesson 4)**:
+
 - ✅ 10 concepts covered (max for B1-B2 tier - justified as PRIMARY LESSON)
 - ✅ Reading level: B1-B2
 - ✅ All CoLearning elements present (5 prompts justified for depth)
@@ -376,12 +397,12 @@ Final Validation (Phase 8)
 
 - [ ] T055 Write Lesson 5 introduction (hook: "Four concurrency approaches - when to use each")
 - [ ] T056 Write Section 1: Decision Framework (CORE TABLE):
-  | Use Case | Best Approach | Why |
-  | I/O-bound | Asyncio or threading | GIL releases during I/O |
-  | CPU-bound (single task) | Single thread | No overhead |
-  | CPU-bound (parallel tasks) | Free-threaded Python | True parallelism + shared memory |
-  | CPU-bound (isolation needed) | Multiprocessing | Separate memory spaces |
-  | Mixed workload | Free-threaded + asyncio | Best of both |
+      | Use Case | Best Approach | Why |
+      | I/O-bound | Asyncio or threading | GIL releases during I/O |
+      | CPU-bound (single task) | Single thread | No overhead |
+      | CPU-bound (parallel tasks) | Free-threaded Python | True parallelism + shared memory |
+      | CPU-bound (isolation needed) | Multiprocessing | Separate memory spaces |
+      | Mixed workload | Free-threaded + asyncio | Best of both |
 - [ ] T057 Write Section 2: Benchmarking Methodology:
   - Design CPU-bound task (prime number calculation)
   - Test 1: Single-threaded baseline
@@ -407,11 +428,13 @@ Final Validation (Phase 8)
 ### Code Example Tasks
 
 - [ ] T061 [P] Implement Example 4: Benchmark - traditional threading in `05-choosing-concurrency.md`
+
   - Code: `benchmark_threading()` with CPU task
   - Test: Verify shows ~same time as single-threaded (GIL prevents speedup)
   - AI Prompt: "Why don't we see a 4x speedup with 4 threads here? Explain what the GIL is doing during this benchmark."
 
 - [ ] T062 [P] Implement Example 5: Benchmark - multiprocessing in `05-choosing-concurrency.md`
+
   - Code: `benchmark_multiprocessing()` with same CPU task
   - Test: Verify shows 2-4x speedup (true parallelism)
   - AI Prompt: "Compare this to the threading example. Why is multiprocessing faster for CPU-bound tasks? What are the tradeoffs (memory, startup time, communication)?"
@@ -425,17 +448,20 @@ Final Validation (Phase 8)
 ### CoLearning Element Tasks
 
 - [ ] T064 Integrate 4 💬 AI Colearning Prompts:
+
   - Prompt 1: After decision framework ("Walk me through 10 real-world scenarios. For each, which concurrency approach should I use and why?")
   - Prompt 2: After benchmarking ("What factors besides execution time matter when choosing a concurrency approach? (memory, complexity, debugging)")
   - Prompt 3: After asyncio improvements ("How do asyncio and free-threading complement each other? When would you use both?")
   - Prompt 4: After multiprocessing changes ("Why is `forkserver` safer than `fork`? What can go wrong with `fork`?")
 
 - [ ] T065 [P] Integrate 3 🎓 Instructor Commentaries:
+
   - Commentary 1: After decision framework ("Memorizing this table won't help. Understanding the WHY behind each choice makes you production-ready.")
   - Commentary 2: After benchmarking ("Benchmarks lie. Your workload is unique. Always measure on YOUR data.")
   - Commentary 3: After asyncio CLI ("Python 3.14 gives you production-grade debugging tools. Use them.")
 
 - [ ] T066 [P] Integrate 3 🚀 CoLearning Challenges:
+
   - Challenge 1: After benchmarking methodology ("Implement all 5 benchmarks for a different CPU task (matrix multiplication). Compare results.")
   - Challenge 2: After interpreting results ("Ask AI to generate a decision tree: input use case → output recommended approach")
   - Challenge 3: Before Try With AI ("Design a hybrid system: free-threaded for CPU work + asyncio for I/O. Ask AI to implement scaffolding.")
@@ -453,6 +479,7 @@ Final Validation (Phase 8)
   - Prompt 4 (Analyze/Synthesize): "Ask your AI: 'Design a production AI system with 10 agents: 5 do NLP (CPU-bound), 5 fetch data (I/O-bound). Which concurrency approaches for each group? Why? Connect to Kubernetes horizontal scaling (Part 11 preview).'"
 
 **Acceptance Criteria (Lesson 5)**:
+
 - ✅ 9 concepts covered (within B1-B2 limit)
 - ✅ Reading level: B1-B2
 - ✅ Decision framework table is CLEAR and actionable
@@ -506,15 +533,18 @@ Final Validation (Phase 8)
 ### CoLearning Element Tasks
 
 - [ ] T076 Integrate 3 💬 AI Colearning Prompts:
+
   - Prompt 1: When introducing project ("Help me design the architecture for a multi-agent system. What classes do I need? What methods? How should agents communicate?")
   - Prompt 2: During implementation ("I want to add 2 more agent types: sentiment analysis + keyword extraction. Generate code and explain integration.")
   - Prompt 3: After testing ("My agents aren't running in parallel. Here's the code [paste]. What's wrong? How do I verify free-threading is active?")
 
 - [ ] T077 [P] Integrate 2 🎓 Instructor Commentaries:
+
   - Commentary 1: After foundation code ("Professional AI developers describe architecture, AI generates scaffolding, then they validate and extend. This is AI-native workflow.")
   - Commentary 2: After production context ("Free-threading isn't just academic—it's how you'll build production systems in Parts 11-14")
 
 - [ ] T078 [P] Integrate 2 🚀 CoLearning Challenges:
+
   - Challenge 1: During implementation ("Add benchmarking: compare threading vs multiprocessing vs free-threaded for your agent workload")
   - Challenge 2: Before Try With AI ("Ask AI to suggest 3 real-world AI applications where this multi-agent pattern would excel")
 
@@ -530,6 +560,7 @@ Final Validation (Phase 8)
   - Prompt 4 (Analyze/Synthesize): "Ask your AI: 'How would I deploy this multi-agent system in Kubernetes (Part 11)? What changes for production? How does free-threading help with resource utilization?'"
 
 **Acceptance Criteria (Lesson 6)**:
+
 - ✅ 8 concepts covered (B2 synthesis allows integration of prior knowledge)
 - ✅ Reading level: B1-B2
 - ✅ All CoLearning elements present
@@ -552,6 +583,7 @@ Final Validation (Phase 8)
 - [ ] T086 Validate no forward references (Lesson N only uses concepts from Lessons 1 to N-1)
 
 **Acceptance Criteria (Final Validation)**:
+
 - ✅ All code examples run on Python 3.14.0+
 - ✅ Reading level: B1-B2 (all lessons)
 - ✅ 50+ CoLearning prompts present
@@ -567,11 +599,13 @@ Final Validation (Phase 8)
 ### Parallel Execution Opportunities
 
 **Within Each Lesson**:
+
 - Code examples can be written concurrently (marked with [P])
 - CoLearning element integration can be parallelized (💬🎓🚀✨ tasks)
 - Content sections are sequential (dependencies exist)
 
 **Example** (Lesson 4):
+
 - T048 (Example 2) + T049 (Example 6) can be written in parallel
 - T050-T053 (CoLearning elements) can be written in parallel
 - T040-T047 (content sections) must be sequential
@@ -579,6 +613,7 @@ Final Validation (Phase 8)
 ### MVP Scope Recommendation
 
 **Minimum Viable Chapter** (Lessons 1-4):
+
 - Lesson 1: CPython fundamentals
 - Lesson 2: Python 3.14 improvements
 - Lesson 3: Traditional GIL understanding
@@ -587,6 +622,7 @@ Final Validation (Phase 8)
 **Rationale**: Lessons 1-4 provide complete understanding of CPython + GIL evolution + free-threading. Students can stop here and still have foundational knowledge. Lessons 5-6 add practical application but aren't required for conceptual understanding.
 
 **Full Chapter** (Lessons 1-6):
+
 - Add Lesson 5: Concurrency decision-making (practical)
 - Add Lesson 6: Capstone project (integration)
 
@@ -595,6 +631,7 @@ Final Validation (Phase 8)
 ### Policy Note for Lesson Authors
 
 **"Try With AI" Section Context**:
+
 - **Before Part 1 (AI tools not yet taught)**: Use ChatGPT web interface in "Try With AI" prompts
 - **After Part 1 (Claude Code/Gemini CLI taught)**: Instruct students to "Use your AI companion (Claude Code or Gemini CLI)" with optional web alternative
 - **Chapter 29 (Part 4, after tools taught)**: ALL prompts assume students have Claude Code or Gemini CLI available
@@ -603,6 +640,7 @@ Final Validation (Phase 8)
 ### Constitutional Compliance
 
 **All tasks respect**:
+
 - ✅ AI-Native Learning pattern (describe intent → explore → validate → learn from errors)
 - ✅ Graduated Teaching Pattern (Book teaches foundational, AI handles complex, AI orchestrates scale)
 - ✅ Cognitive Load Limits (B1: max 10 concepts)

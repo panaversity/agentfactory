@@ -20,6 +20,7 @@
 **Pattern**: Experiment → Observe → Learn (students discover patterns through practice BEFORE receiving explanatory frameworks)
 
 **Implementation Examples**:
+
 - **Lesson 1**: Manual token estimation exercise → Observe actual vs estimated counts → Learn token counting frameworks
 - **Lesson 2**: Transcript analysis marking degradation symptoms → Overlay degradation metrics → Name symptoms and introduce mitigation frameworks
 - **Lessons 3-5**: Progressive loading practice → Track context utilization and AI quality → Formalize as Foundation→Current→On-Demand pattern
@@ -49,24 +50,28 @@
 ## Alternatives Considered
 
 **Alternative A: Direct Teaching (Same as Chapter 10)**
+
 - Explain concepts upfront → Demonstrate with examples → Practice with exercises
 - **Pros**: Faster content delivery, predictable structure, easier to create
 - **Cons**: Violates Constitution Principle 6 (Anti-Convergence), creates monotonous lecture-style experience, Test-014 failure
 - **Why rejected**: Explicit spec requirement for anti-convergence from Chapter 10's modality
 
 **Alternative B: Case-Study-Based Learning**
+
 - Present real-world context engineering failures → Analyze what went wrong → Extract principles
 - **Pros**: Authentic scenarios, problem-solving focus, different from Chapter 10
 - **Cons**: Passive analysis (not hands-on), students observe rather than experience, less engagement than discovery
 - **Why rejected**: Less active learning than hands-on discovery, students need to FEEL degradation symptoms not just read about them
 
 **Alternative C: Project-Based Learning (Build Context-Aware Tool)**
+
 - Students implement full context management system throughout chapter
 - **Pros**: Maximum hands-on engagement, integrated capstone, authentic product
 - **Cons**: Violates spec constraint (capstone is spec-only, NO implementation per user requirement), B1 tier students lack implementation skills for production tool
 - **Why rejected**: Spec explicitly prohibits implementation ("no programming" in capstone), project-based would require coding throughout
 
 **Alternative D: Hybrid (Discovery + Direct Teaching)**
+
 - Alternate between discovery lessons (1, 3, 5, 8) and direct teaching lessons (2, 4, 6, 7, 9)
 - **Pros**: Balances depth (discovery) with efficiency (direct teaching), varied pace
 - **Cons**: Inconsistent student experience, doesn't fully commit to anti-convergence principle, students confused by modality switching mid-chapter
@@ -78,4 +83,4 @@
 - Implementation Plan: `specs/001-011-chapter-11-context-engineering-rewrite/plan.md` (Discovery Sequence sections in each lesson)
 - Constitution: `.specify/memory/constitution.md` Principle 6 (Anti-Convergence Variation)
 - User Clarification: Teaching modality selected as "Hands-on discovery" during Phase 1 clarification questions
-- Chapter 10 Reference: `book-source/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/` (Direct Teaching modality)
+- Chapter 10 Reference: `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/` (Direct Teaching modality)

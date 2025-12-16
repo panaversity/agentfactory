@@ -10,6 +10,7 @@
 This feature expands the book "CoLearning Programming & Agentic AI with Python and TypeScript: The AI-Driven Way" from 7 parts/32 chapters to 13 parts/46 chapters. The expansion adds advanced topics including TypeScript, Realtime/Voice Agents, Docker/Kubernetes, Databases, Kafka/Dapr, and Stateful Agents while restructuring existing parts for better coherence.
 
 **Technical Approach**:
+
 1. Update constitution and authoritative documentation (chapter-index, directory-structure) to reflect new structure
 2. Create detailed chapter mapping document to track all restructuring changes
 3. Reorganize existing content (Parts 1-5) to match new chapter counts
@@ -26,19 +27,22 @@ This feature expands the book "CoLearning Programming & Agentic AI with Python a
 **Primary Tools**: Docusaurus 3.9.2, Markdown, Git  
 **Target Platform**: Web (Docusaurus static site), PDF, Kindle/Leanpub  
 **Version Control**: Git with branch-per-feature workflow  
-**Quality Standards**: Constitution v2.1.0, 8 CoLearning Skills, Output Styles  
+**Quality Standards**: Constitution v2.1.0, 8 CoLearning Skills, Output Styles
 
 **Current Structure**:
+
 - 7 parts, 32 chapters
 - Parts 1-5 with existing content (some partially complete)
 - Parts 6-7 with scaffolding only
 
 **Target Structure**:
+
 - 13 parts, 46 chapters
 - Parts 1-5 restructured with different chapter counts
 - Parts 6-13 fully scaffolded with comprehensive specs
 
 **Content Standards**:
+
 - Python 3.13+ with type hints (for code examples)
 - TypeScript (for Parts 8-9)
 - AI-first pedagogy
@@ -46,13 +50,15 @@ This feature expands the book "CoLearning Programming & Agentic AI with Python a
 - Docusaurus-compatible structure
 
 **Performance Goals**: N/A (documentation project)  
-**Constraints**: 
+**Constraints**:
+
 - Must maintain Docusaurus compatibility
 - Zero broken links after restructuring
 - All existing content preserved (no data loss)
 - Sequential chapter numbering (1-46 globally)
 
-**Scale/Scope**: 
+**Scale/Scope**:
+
 - 13 parts, 46 chapters total
 - 8 new part specs required
 - ~14 new chapter specs required
@@ -60,11 +66,12 @@ This feature expands the book "CoLearning Programming & Agentic AI with Python a
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 ### Alignment with Project Constitution v2.1.0
 
 ✅ **Aligned**:
+
 - Progressive complexity maintained (new advanced topics in later parts)
 - Consistent structure across all parts (using book-scaffolding skill)
 - Clear prerequisite chains (foundational → intermediate → advanced)
@@ -73,12 +80,14 @@ This feature expands the book "CoLearning Programming & Agentic AI with Python a
 - Real-world project integration (new deployment parts: Docker, Kubernetes, Kafka)
 
 ✅ **Enhanced**:
+
 - Tool diversity improved (Part 2: AI Tool Landscape expanded from 4 to 4 chapters, maintaining coverage)
 - Real-world deployment skills added (Parts 10-13)
 - TypeScript added for full-stack AI development (Parts 8-9)
 - Advanced agentic patterns emphasized (Parts 6-7 remain, new stateful agents in Part 13)
 
 ⚠️ **Requires Update**:
+
 - Constitution references "7 parts" and "32 chapters" — must be updated to "13 parts" and "46 chapters"
 - Scaffolding ranges need adjustment (currently 1-10, 11-20, 21-32 → should be 1-10, 11-25, 26-46)
 - Section III (Book Structure) must reference new part count
@@ -111,7 +120,8 @@ specs/001-expand-book-structure/
 
 ### Content Structure (repository root)
 
-**Current State** (`book-source/docs/`):
+**Current State** (`apps/learn-app/docs/`):
+
 ```text
 docs/
 ├── 01-Introducing-AI-Driven-Development/     (5 chapters → needs consolidation to 3)
@@ -123,7 +133,8 @@ docs/
 └── 07-MCP-Fundamentals/                      (3 chapters → stays 3, may need renaming)
 ```
 
-**Target State** (`book-source/docs/`):
+**Target State** (`apps/learn-app/docs/`):
+
 ```text
 docs/
 ├── 01-Introducing-AI-Driven-Development/     (3 chapters)
@@ -142,6 +153,7 @@ docs/
 ```
 
 **Spec Structure** (`specs/`):
+
 ```text
 specs/
 ├── book/
@@ -164,21 +176,22 @@ specs/
 ```
 
 **Structure Decision**: This is a **documentation restructuring project**, not a traditional software project. The "source code" is the book content itself (Markdown files). We use a dual structure:
+
 1. **Specs** (`specs/`) — Authoritative planning documents
-2. **Published Content** (`book-source/docs/`) — Docusaurus-compatible Markdown
+2. **Published Content** (`apps/learn-app/docs/`) — Docusaurus-compatible Markdown
 
 ## Complexity Tracking
 
 > This feature has no Constitution violations. This section documents the inherent complexity of restructuring 32 → 46 chapters.
 
-| Complexity Factor | Description | Mitigation Strategy |
-|-------------------|-------------|---------------------|
-| **Scope of Change** | 46 total chapters (14 new, 32 existing with potential remapping) | Phased approach: P1 (docs) → P2 (restructure) → P3 (new scaffolding) |
-| **Content Consolidation** | Part 1 (5→3), Part 3 (4→2), Part 5 (5→3) require merging existing content | Create detailed chapter mapping document; preserve all content in git history |
-| **Content Expansion** | Part 4 (8→12) requires identifying 4 new chapters | Use book-scaffolding skill to identify natural topic splits |
-| **Naming Consistency** | Parts 6-7 may need renaming for clarity (e.g., "with OpenAI Agents SDK", "with FastMCP") | Research best naming conventions; align with industry standards |
-| **Cross-Reference Updates** | All internal links and chapter references must be validated | Create automated validation script; manual review as fallback |
-| **Docusaurus Compatibility** | Structure changes must not break Docusaurus build | Test build after each phase; use `_category_.json` where needed |
+| Complexity Factor            | Description                                                                              | Mitigation Strategy                                                           |
+| ---------------------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| **Scope of Change**          | 46 total chapters (14 new, 32 existing with potential remapping)                         | Phased approach: P1 (docs) → P2 (restructure) → P3 (new scaffolding)          |
+| **Content Consolidation**    | Part 1 (5→3), Part 3 (4→2), Part 5 (5→3) require merging existing content                | Create detailed chapter mapping document; preserve all content in git history |
+| **Content Expansion**        | Part 4 (8→12) requires identifying 4 new chapters                                        | Use book-scaffolding skill to identify natural topic splits                   |
+| **Naming Consistency**       | Parts 6-7 may need renaming for clarity (e.g., "with OpenAI Agents SDK", "with FastMCP") | Research best naming conventions; align with industry standards               |
+| **Cross-Reference Updates**  | All internal links and chapter references must be validated                              | Create automated validation script; manual review as fallback                 |
+| **Docusaurus Compatibility** | Structure changes must not break Docusaurus build                                        | Test build after each phase; use `_category_.json` where needed               |
 
 **Risk Mitigation**: Git branch isolation (`001-expand-book-structure`) allows rollback if issues arise. Each phase has clear acceptance criteria.
 
@@ -191,26 +204,31 @@ specs/
 ### Research Tasks
 
 1. **Part Naming Conventions** (Priority: HIGH)
+
    - **Question**: Should Parts 6-7 be renamed to include technology specifics (e.g., "Agentic AI Fundamentals with OpenAI Agents SDK in Python", "MCP Fundamentals with FastMCP")?
    - **Research**: Review industry naming standards for educational content; check Docusaurus sidebar length limits
    - **Deliverable**: Naming decision with rationale
 
 2. **Chapter Consolidation Strategy** (Priority: HIGH)
+
    - **Question**: How should existing chapters be merged for Part 1 (5→3), Part 3 (4→2), Part 5 (5→3)?
    - **Research**: Analyze existing chapter content; identify natural groupings; ensure no critical content loss
    - **Deliverable**: Chapter consolidation mapping with content preservation plan
 
 3. **Chapter Expansion Strategy** (Priority: HIGH)
+
    - **Question**: What 4 new chapters should be added to Part 4 (Python) to expand from 8→12 chapters?
    - **Research**: Review Python curriculum best practices; identify gaps in current coverage; align with AI-driven development focus
    - **Deliverable**: List of 4 new Python chapters with topics and rationale
 
 4. **New Part Topics** (Priority: MEDIUM)
+
    - **Question**: What specific topics should each of the 8 new parts cover?
    - **Research**: Industry standards for TypeScript, Realtime AI, Docker/Kubernetes, Databases (SQL/Graph/Vector), Kafka/Dapr, Stateful Agents
    - **Deliverable**: Topic outline for each new part (high-level)
 
 5. **Scaffolding Range Adjustment** (Priority: MEDIUM)
+
    - **Question**: How should scaffolding ranges be adjusted for 46 chapters (currently 1-10 heavy, 11-20 moderate, 21-32 minimal)?
    - **Research**: Apply cognitive load principles; consider natural breakpoints in content progression
    - **Deliverable**: New scaffolding ranges with pedagogical rationale
@@ -223,6 +241,7 @@ specs/
 ### Research Output
 
 **Deliverable**: `research.md` containing:
+
 - All research findings with decisions and rationale
 - Chapter consolidation mapping (old → new)
 - Chapter expansion topics (new chapters for Part 4)
@@ -231,6 +250,7 @@ specs/
 - Docusaurus validation results
 
 **Acceptance Criteria**:
+
 - All NEEDS CLARIFICATION items from spec resolved
 - Every decision has documented rationale and alternatives considered
 - Chapter mapping is complete and reversible (can trace any old chapter to new location)
@@ -246,6 +266,7 @@ specs/
 ### Deliverables
 
 1. **Chapter Mapping Document** (`chapter-mapping.md`)
+
    - **Purpose**: Definitive old → new chapter mapping
    - **Contents**:
      - Full 32→46 chapter mapping table
@@ -256,6 +277,7 @@ specs/
    - **Format**: Markdown table with columns: Old Part, Old Ch#, Old Title, New Part, New Ch#, New Title, Action (Keep/Merge/Split/New), Notes
 
 2. **Part Templates** (`part-templates/part-N-outline.md` for N=6 to 13)
+
    - **Purpose**: High-level outlines for 8 new parts
    - **Contents** (per part):
      - Part title and subtitle
@@ -267,6 +289,7 @@ specs/
    - **Format**: Simplified version of part-spec template (outline only, not full spec)
 
 3. **Updated Authoritative Documents**:
+
    - `specs/book/chapter-index.md` — Updated to 46 chapters across 13 parts
    - `specs/book/directory-structure.md` — Add examples for new part naming (Parts 8-13)
    - `.specify/memory/constitution.md` — Update all references from "7 parts, 32 chapters" to "13 parts, 46 chapters"; adjust scaffolding ranges
@@ -278,6 +301,7 @@ specs/
 ### Design Decisions
 
 **Part Naming** (from research.md):
+
 - Part 6: "Agentic AI Fundamentals with OpenAI Agents SDK in Python"
 - Part 7: "MCP Fundamentals with FastMCP"
 - Part 8: "TypeScript: The Language of Realtime and Interaction"
@@ -288,16 +312,19 @@ specs/
 - Part 13: "Stateful Agents using Dapr Actors and Dapr Workflows"
 
 **Scaffolding Ranges** (from research.md):
+
 - Chapters 1-10: Heavy scaffolding (foundational)
 - Chapters 11-25: Moderate scaffolding (skill building)
 - Chapters 26-46: Minimal scaffolding (advanced, assumes independence)
 
 **Chapter Consolidation** (from research.md):
+
 - Part 1: 5→3 (merge Chapters 1-2, 4-5; keep Chapter 3)
 - Part 3: 4→2 (merge Chapters 10-11, 12-13)
 - Part 5: 5→3 (merge Chapters 22-23, 25-26; keep Chapter 24)
 
 **Chapter Expansion** (from research.md):
+
 - Part 4: 8→12 (add 4 new chapters on advanced Python topics: decorators/generators, async/await, metaprogramming, package management)
 
 ### Phase 1 Output Structure
@@ -319,6 +346,7 @@ specs/001-expand-book-structure/
 ```
 
 **Acceptance Criteria**:
+
 - Chapter mapping complete and bidirectional (can go old→new and new→old)
 - All 8 part templates follow consistent structure
 - Constitution, chapter-index, directory-structure updated and internally consistent
@@ -334,6 +362,7 @@ specs/001-expand-book-structure/
 **Objective**: Break down Phase 1 design into actionable tasks with clear acceptance criteria.
 
 **Output**: `tasks.md` with prioritized task list:
+
 - P1: Update core documentation (constitution, chapter-index, directory-structure, README, CLAUDE.md)
 - P2: Restructure existing parts (1, 3, 4, 5)
 - P2: Update Docusaurus physical directories
@@ -341,6 +370,7 @@ specs/001-expand-book-structure/
 - P3: Create chapter specs for all new chapters
 
 Each task will have:
+
 - Clear description
 - Acceptance criteria
 - Files to create/modify
@@ -356,22 +386,26 @@ Each task will have:
 After this plan is complete, execute in order:
 
 1. **Research Phase** (immediate):
+
    - Answer all research questions
    - Create `research.md`
    - Review with stakeholders
 
 2. **Design Phase** (after research approved):
+
    - Create `chapter-mapping.md`
    - Create 8 part outline templates
    - Update all authoritative documents
    - Test Docusaurus build
 
 3. **Task Breakdown** (after design approved):
+
    - Run `/sp.tasks` to generate detailed task list
    - Review and prioritize tasks
    - Begin implementation
 
 4. **Implementation** (iterative):
+
    - Execute P1 tasks first (documentation updates)
    - Execute P2 tasks second (restructuring)
    - Execute P3 tasks third (new scaffolding)
@@ -387,14 +421,14 @@ After this plan is complete, execute in order:
 
 ## Risks & Mitigation
 
-| Risk | Impact | Likelihood | Mitigation |
-|------|--------|------------|------------|
-| **Content loss during consolidation** | HIGH | MEDIUM | Git history preservation; detailed chapter mapping; human review of all merges |
-| **Broken internal links** | MEDIUM | HIGH | Automated link validation script; manual review; systematic cross-reference update |
-| **Docusaurus build failure** | MEDIUM | LOW | Test build after each phase; use `_category_.json` fallbacks; Docusaurus 3.9.2 docs review |
-| **Scope creep** (writing new content vs. scaffolding)** | MEDIUM | MEDIUM | Strict adherence to "scaffolding only" for new parts; defer content writing to future features |
-| **Inconsistent naming** | LOW | MEDIUM | Follow research.md naming conventions; use templates; peer review |
-| **Cognitive load miscalculation** | LOW | LOW | Leverage book-scaffolding skill; follow constitution principles; iterative feedback |
+| Risk                                                      | Impact | Likelihood | Mitigation                                                                                     |
+| --------------------------------------------------------- | ------ | ---------- | ---------------------------------------------------------------------------------------------- |
+| **Content loss during consolidation**                     | HIGH   | MEDIUM     | Git history preservation; detailed chapter mapping; human review of all merges                 |
+| **Broken internal links**                                 | MEDIUM | HIGH       | Automated link validation script; manual review; systematic cross-reference update             |
+| **Docusaurus build failure**                              | MEDIUM | LOW        | Test build after each phase; use `_category_.json` fallbacks; Docusaurus 3.9.2 docs review     |
+| **Scope creep** (writing new content vs. scaffolding)\*\* | MEDIUM | MEDIUM     | Strict adherence to "scaffolding only" for new parts; defer content writing to future features |
+| **Inconsistent naming**                                   | LOW    | MEDIUM     | Follow research.md naming conventions; use templates; peer review                              |
+| **Cognitive load miscalculation**                         | LOW    | LOW        | Leverage book-scaffolding skill; follow constitution principles; iterative feedback            |
 
 **Overall Risk Level**: **MEDIUM** — Manageable with phased approach and clear validation gates.
 
@@ -420,6 +454,7 @@ This implementation plan is complete when:
 ---
 
 **Notes**:
+
 - This plan is intentionally high-level; `/sp.tasks` will create granular task breakdown
 - Focus is on structural planning, not content writing
 - All new parts start as "scaffolding" (specs/outlines only, not full lessons)

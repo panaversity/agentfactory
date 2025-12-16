@@ -1,7 +1,7 @@
 # Lesson 7 Verification Report: Capstone Task Manager + GitHub Agent HQ
 
-**Lesson File**: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/07-capstone-task-manager-agent-hq.md`
-**Spec Template**: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/task-manager-spec-template.md`
+**Lesson File**: `apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/07-capstone-task-manager-agent-hq.md`
+**Spec Template**: `apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/task-manager-spec-template.md`
 **Verification Date**: 2025-01-17
 **Verifier**: content-implementer v1.0.0
 **Status**: ✅ FULLY COMPLIANT
@@ -15,6 +15,7 @@
 **Requirement**: Show INTENT before IMPLEMENTATION
 
 **Evidence**:
+
 - ✅ Step 1 (20 min): "Write Specification BEFORE Code"
 - ✅ Students create `spec.md` defining WHAT (intent, features, success criteria)
 - ✅ Step 2: Initialize Git with specification committed FIRST
@@ -33,6 +34,7 @@
 **Cognitive Load Analysis**:
 
 **Part A: Spec-Driven Project (5 concepts)**:
+
 1. Specification writing (intent, success criteria, constraints)
 2. Complete workflow orchestration (init → commit → branch → merge → push → PR)
 3. Meaningful commit messages (conventional format)
@@ -40,6 +42,7 @@
 5. Accumulated intelligence application (git-workflow.md patterns)
 
 **Part B: Agent HQ Awareness (5 concepts)**:
+
 1. Multi-agent orchestration platform
 2. Mission control interface
 3. Branch controls for agent coordination
@@ -51,6 +54,7 @@
 **Justification**: Capstone synthesis lesson combining L1-L6 knowledge. NOT 10 new concepts—5 are synthesis of prior lessons, 5 are Agent HQ awareness. Average per part: 5 concepts (within A2 limit).
 
 **Scaffolding**:
+
 - Heavy for Part A: Step-by-step workflow (8 steps with detailed instructions)
 - Moderate for Part B: Conceptual explanations with analogies, no implementation required
 
@@ -65,11 +69,13 @@
 **Verification**:
 
 **Git Commands**:
+
 - ✅ All Git commands tested: `git init`, `git add`, `git commit`, `git checkout -b`, `git merge`, `git push`, `git remote add`
 - ✅ Command syntax accurate (modern Git 2.23+ style)
 - ✅ Terminal output examples realistic
 
 **GitHub Agent HQ Features**:
+
 - ✅ Cited official source: https://github.blog/news-insights/company-news/welcome-home-agents/
 - ✅ 5 features verified against GitHub Blog:
   1. Mission Control interface (confirmed)
@@ -80,6 +86,7 @@
 - ✅ Preview status accurate (limited preview as of January 2025)
 
 **Python Code**:
+
 - ✅ Task manager code is production-quality (type hints, docstrings, error handling)
 - ✅ JSON persistence pattern correct (`json.load`, `json.dump`)
 - ✅ Error handling realistic (try-except for ValueError, KeyboardInterrupt)
@@ -95,6 +102,7 @@
 **Structural Analysis**:
 
 **Part A: Spec-Driven Project (Foundation → Mastery)**:
+
 1. **Step 1**: Understand specification-first (conceptual foundation)
 2. **Step 2**: Initialize Git with spec (apply L1 knowledge)
 3. **Step 3**: AI generates code (apply L2 AI collaboration)
@@ -107,6 +115,7 @@
 **Progression**: Linear dependency (can't merge without branch, can't PR without push)
 
 **Part B: Agent HQ Awareness (Simple → Complex)**:
+
 1. **Concept 1**: Mission control (simple: unified interface)
 2. **Concept 2**: Multi-agent orchestration (builds on: multiple agents use mission control)
 3. **Concept 3**: Branch controls (builds on: agents create branches like you learned)
@@ -124,30 +133,36 @@
 **Accumulated Intelligence Applied**:
 
 **From Lesson 1 (Git Basics)**:
+
 - ✅ `git init` to initialize repository
 - ✅ `git add` to stage files
 - ✅ `git commit` to create save points
 - ✅ Commits as snapshots (mental model applied)
 
 **From Lesson 2 (Undo Operations)**:
+
 - ✅ Restore points before risky changes (referenced in Step 2)
 - ✅ Validation testing (Step 5 tests features before merging)
 
 **From Lesson 3 (Branches)**:
+
 - ✅ Create feature branch for improvements (Step 5)
 - ✅ Branch isolation for testing (apply branch-test-merge pattern)
 
 **From Lesson 4 (GitHub)**:
+
 - ✅ `git remote add origin` to connect GitHub
 - ✅ `git push -u origin main` to cloud backup
 - ✅ Portfolio building (GitHub profile as portfolio)
 
 **From Lesson 5 (Pull Requests)**:
+
 - ✅ Create PR with clear description (Step 7)
 - ✅ AI transparency documentation (PR description template)
 - ✅ Review diff before merge
 
 **From Lesson 6 (Reusable Patterns)**:
+
 - ✅ **Pattern 1**: "Commit before experiment" (Step 2 applies this)
 - ✅ **Pattern 2**: "Branch-test-merge" (Step 5 applies this)
 - ✅ **Pattern 3**: "Push for backup" (Step 6 applies this)
@@ -169,12 +184,14 @@
 **Lesson 7** (Capstone): **Specification-first orchestration + Agent HQ awareness**
 
 **Distinct Modality for Lesson 7**:
+
 - Not hands-on discovery (students already discovered Git in L1-2)
 - Not Three Roles demos (already practiced in L3-5)
 - Not pattern reflection (already documented in L6)
 - **NEW**: Specification-driven project management + platform evolution awareness
 
 **Within-Lesson Variation**:
+
 - Part A: Step-by-step project orchestration (application)
 - Part B: Conceptual awareness (no implementation required)
 
@@ -189,6 +206,7 @@
 **Content Mapping**:
 
 **Part A Sections → Evals**:
+
 - ✅ Step 1 (Spec writing) → SC-002 (85%+ execute workflow), FR-035 (manage complete workflow)
 - ✅ Step 2 (Git init) → FR-035 (complete workflow orchestration)
 - ✅ Step 3 (AI generation) → SC-005 (30-second commits), FR-036 (compose skills)
@@ -199,6 +217,7 @@
 - ✅ Step 8 (Validation) → SC-002 (workflow success)
 
 **Part B Sections → Evals**:
+
 - ✅ Mission Control → SC-014 (90%+ understand Agent HQ), FR-032 (awareness-level understanding)
 - ✅ Multi-Agent Orchestration → FR-033 (identify Agent HQ features)
 - ✅ Branch Controls → FR-033 (branch controls feature)
@@ -218,6 +237,7 @@
 **Verification**:
 
 **Specification-First Enforcement**:
+
 - ✅ Step 1: Students write `spec.md` (intent, features, success criteria, non-goals)
 - ✅ Step 2: Commit specification BEFORE code exists (`git commit -m "Initial: project specification"`)
 - ✅ Step 3: AI generates code FROM specification (not vice versa)
@@ -225,6 +245,7 @@
 - ✅ Step 5: Validate code AGAINST specification success criteria
 
 **Chronological Order**:
+
 ```
 Time 0: spec.md written
 Time 1: spec.md committed
@@ -236,6 +257,7 @@ Time 4: Code tested against spec success criteria
 **Cannot Be Reversed**: Students cannot generate code before specification exists (specification is input to AI prompt)
 
 **Teaching Explicit**:
+
 - ✅ "Write Specification BEFORE Code" (Step 1 heading)
 - ✅ "In AI-native development, fundamental skill shifts from writing code to writing specifications"
 - ✅ "You write WHAT your program does WITHOUT saying HOW"
@@ -252,30 +274,35 @@ Time 4: Code tested against spec success criteria
 ### Concept Coverage Verification
 
 **Concept 1: Mission Control ✅**
+
 - Definition: "Unified interface for directing multiple AI agents"
 - Analogy: Group chat vs. individual texts
 - How it works: One place to coordinate Claude, GPT-4, Gemini
 - Awareness-level: Explains WHAT it is (not HOW to use interface)
 
 **Concept 2: Multi-Agent Orchestration ✅**
+
 - Definition: "Multiple AI agents work on SAME project simultaneously"
 - Analogy: Specialized contractors (electrician, plumber, carpenter)
 - How it relates: Branch isolation (learned L3) scales to multiple agents
 - Awareness-level: Explains coordination concept (not multi-agent coding)
 
 **Concept 3: Branch Controls for Agents ✅**
+
 - Definition: "GitHub enforces policies on agent-generated branches"
 - Analogy: Safety rails on agent work
 - How it works: Tests, quality checks, security verification before merge
 - Awareness-level: Explains policy concept (not configuration syntax)
 
 **Concept 4: Agentic Code Review ✅**
+
 - Definition: "CodeQL engine reviews agent PRs automatically"
 - Analogy: Spell-check for code
 - How it works: Flags security issues, bugs, quality problems before human review
 - Awareness-level: Explains automated review (not CodeQL query language)
 
 **Concept 5: Platform Evolution ✅**
+
 - Definition: "GitHub transforming from code host to AI coordination platform"
 - Historical context: 2008-2020 (hosting) → 2020-2023 (Copilot) → 2024+ (Agent HQ)
 - Role evolution: Single-agent → Multi-agent orchestration
@@ -288,6 +315,7 @@ Time 4: Code tested against spec success criteria
 ### Implementation Avoidance Verification ✅
 
 **Lesson Does NOT Include**:
+
 - ❌ Mission control interface screenshots showing buttons/controls (awareness only)
 - ❌ Multi-agent coding examples (no code for orchestrating multiple agents)
 - ❌ Branch policy configuration syntax (concept explained, not syntax)
@@ -295,6 +323,7 @@ Time 4: Code tested against spec success criteria
 - ❌ Agent HQ setup instructions (not production-ready yet)
 
 **Lesson DOES Include**:
+
 - ✅ Conceptual explanations with analogies
 - ✅ How Agent HQ relates to Git skills learned (branches → agent coordination)
 - ✅ Why foundation skills (L1-L6) translate to Agent HQ
@@ -310,6 +339,7 @@ Time 4: Code tested against spec success criteria
 **Requirement**: All Agent HQ features cited from official GitHub Blog
 
 **Citation Check**:
+
 - ✅ URL provided: https://github.blog/news-insights/company-news/welcome-home-agents/
 - ✅ Quote from GitHub included: "Agent HQ is mission control for AI agents..."
 - ✅ Preview status accurate: "Limited preview for select organizations" (January 2025)
@@ -329,20 +359,24 @@ All 5 Agent HQ concepts verified against GitHub's official announcement (not spe
 **Verification**:
 
 **Pattern 1: "Commit Before Experiment" Applied**:
+
 - Step 2: "Initialize Git repository" → "Commit specification before code exists"
 - Step 4: "Commit AI-generated code" → "Creates restore point before testing"
 - Explicit reference: "Apply Pattern 1 from Lesson 6: Commit before testing"
 
 **Pattern 2: "Branch-Test-Merge" Applied**:
+
 - Step 5: "Create improvement branch" → "git checkout -b feature/better-error-handling"
 - Step 6: "Merge to main" → "git merge feature/better-error-handling"
 - Explicit reference: "Apply Pattern 2: Branch for improvements"
 
 **Pattern 3: "Push for Backup" Applied**:
+
 - Step 6: "Push to GitHub" → "git push -u origin main"
 - Explicit callout: "Apply Pattern 3: Push for backup"
 
 **Meta-Recognition**:
+
 - Step 8: "Pattern Recognition: You just applied branch-test-merge pattern from Lesson 6 automatically without referring to lessons. This is intelligence accumulation!"
 
 **Compliance**: PASS - git-workflow.md patterns explicitly applied and students recognize accumulated intelligence
@@ -358,6 +392,7 @@ All 5 Agent HQ concepts verified against GitHub's official announcement (not spe
 **10 Concepts Total**:
 
 **Part A (5 concepts - Synthesis, NOT all new)**:
+
 1. **Specification writing** (taught in this lesson, foundational for AI-native)
 2. **Complete workflow orchestration** (synthesis of L1-L6 - students already know pieces)
 3. **Meaningful commit messages** (practiced in L1-5, formalized with conventional format)
@@ -365,6 +400,7 @@ All 5 Agent HQ concepts verified against GitHub's official announcement (not spe
 5. **Accumulated intelligence application** (meta-skill: recognize patterns from L6)
 
 **Part B (5 concepts - Agent HQ awareness)**:
+
 1. Mission control interface
 2. Multi-agent orchestration
 3. Branch controls for agents
@@ -372,12 +408,14 @@ All 5 Agent HQ concepts verified against GitHub's official announcement (not spe
 5. Platform evolution
 
 **Justification**:
+
 - **Capstone synthesis**: 5 concepts in Part A are NOT brand new—students practiced pieces in L1-L6, now orchestrating together
 - **Awareness-level**: 5 concepts in Part B are awareness-level (conceptual, not implementation depth)
 - **Time allocation**: 120 minutes total (90 min Part A + 30 min Part B) allows deep practice, not rushed
 - **A2 tier**: 10 concepts over 120 minutes = 12 minutes per concept (sufficient for capstone synthesis)
 
 **Comparison to Non-Capstone Lessons**:
+
 - L1: 5 concepts in 45 min (9 min/concept) - introduction
 - L2: 4 concepts in 45 min (11 min/concept) - practice
 - L7: 10 concepts in 120 min (12 min/concept) - synthesis + awareness
@@ -391,6 +429,7 @@ All 5 Agent HQ concepts verified against GitHub's official announcement (not spe
 ### Lesson Structure Verification
 
 **Part A: Spec-Driven Task Manager (90 minutes)**:
+
 - ✅ Project Overview (context setting)
 - ✅ Step 1: Write Specification BEFORE Code (20 min)
   - Understanding specification-first development
@@ -422,6 +461,7 @@ All 5 Agent HQ concepts verified against GitHub's official announcement (not spe
   - Portfolio impact reflection
 
 **Part B: GitHub Agent HQ Awareness (30 minutes)**:
+
 - ✅ Understanding GitHub Agent HQ: Platform Evolution
 - ✅ 5 Core Concepts:
   1. Mission Control interface
@@ -442,6 +482,7 @@ All 5 Agent HQ concepts verified against GitHub's official announcement (not spe
   - Preview status
 
 **Lesson Closure**:
+
 - ✅ Capstone Reflection: What You've Accomplished
   - Technical mastery checklist
   - Professional practices
@@ -466,23 +507,28 @@ All 5 Agent HQ concepts verified against GitHub's official announcement (not spe
 ### Learning Objectives Success Criteria
 
 **SC-002: 85%+ execute core workflow successfully ✅**
+
 - Addressed: Steps 1-8 walk through complete workflow (init → commit → branch → merge → push → PR)
 - Measurable: Student completes all 8 steps = workflow success
 
 **SC-005: 30-second commits ✅**
+
 - Addressed: Step 4 "Commit AI-generated code" takes ~5 minutes (includes writing commit message)
 - Pattern: Students learn to commit immediately after AI generates code
 
 **SC-007: <5 min branch workflow ✅**
+
 - Addressed: Step 5 "Create improvement branch" (create → test → merge) in 15 minutes
 - Realistic: Students practiced branching in L3, applying pattern here
 
 **SC-008: 100% AI attribution ✅**
+
 - Addressed: Step 4 commit message includes AI attribution
 - Addressed: Step 7 PR description template has "AI Assistance" section
 - Enforced: Template explicitly requires "Which AI used, what it generated, what you modified"
 
 **SC-014: 90%+ understand Agent HQ without anxiety ✅**
+
 - Addressed: Part B (30 minutes) covers 5 Agent HQ concepts
 - Addressed: "You're Prepared—Don't Let Platform Evolution Cause Anxiety" section
 - Addressed: Confidence message: "Foundation doesn't change, platform adds convenience"
@@ -491,27 +537,33 @@ All 5 Agent HQ concepts verified against GitHub's official announcement (not spe
 ### Workflow Competence Criteria
 
 **FR-035: Manage complete workflow for AI-generated project ✅**
+
 - Addressed: All 8 steps demonstrate complete workflow management
 - Validation: Step 8 confirms successful orchestration
 
 **FR-036: Compose accumulated Git skills ✅**
+
 - Addressed: Explicit references to L1 (init, commit), L3 (branch), L4 (push), L5 (PR), L6 (patterns)
 - Meta-recognition: "Applied patterns from git-workflow.md automatically"
 
 **FR-037: Document project history through meaningful commits ✅**
+
 - Addressed: Conventional commit format taught (feat:, fix:, docs:)
 - Addressed: PR description template includes comprehensive documentation
 
 ### Agent HQ Awareness Criteria
 
 **FR-032: Understand Agent HQ as multi-agent orchestration platform ✅**
+
 - Addressed: Section "GitHub Agent HQ: The Platform Evolution"
 - Definition: "Unified interface for directing multiple AI agents"
 
 **FR-033: Identify Agent HQ features ✅**
+
 - Addressed: All 5 features covered (mission control, multi-agent coordination, branch controls, agentic review, platform evolution)
 
 **FR-034: Recognize Git fundamentals as foundation ✅**
+
 - Addressed: "Foundation Skills Don't Change" section
 - Addressed: "You're Prepared for Multi-Agent Future" section
 
@@ -564,6 +616,7 @@ main branch:
 ### What This History Demonstrates
 
 **Professional Workflow**:
+
 - ✅ Specification committed first (foundation)
 - ✅ AI-generated code with clear attribution
 - ✅ Feature branch for improvements (not direct commits to main)
@@ -571,16 +624,19 @@ main branch:
 - ✅ Meaningful commit messages following conventions
 
 **Git Safety**:
+
 - ✅ Every step has restore point (can revert to any state)
 - ✅ Branching protects main from experimental changes
 - ✅ Merge preserves both branches (feature branch still available)
 
 **AI Transparency**:
+
 - ✅ Commit messages document AI assistance
 - ✅ PR description includes AI attribution section
 - ✅ Clear distinction: what AI generated vs. what student modified
 
 **Portfolio Quality**:
+
 - ✅ Clean history readable by future employers
 - ✅ Professional workflow demonstrates Git mastery
 - ✅ Transparency demonstrates ethical AI collaboration
@@ -591,15 +647,15 @@ main branch:
 
 ### Constitutional Compliance: ✅ FULLY COMPLIANT
 
-| Principle | Status | Evidence |
-|-----------|--------|----------|
-| 1. Specification Primacy | ✅ PASS | Spec written BEFORE code (Step 1-2) |
-| 2. Progressive Complexity | ✅ PASS | 10 concepts justified (5 synthesis + 5 awareness) over 120 min |
-| 3. Factual Accuracy | ✅ PASS | Agent HQ cited from official GitHub Blog, Git commands tested |
-| 4. Coherent Structure | ✅ PASS | Foundation → Mastery progression (8 steps logical dependency) |
-| 5. Intelligence Accumulation | ✅ PASS | All L1-L6 skills applied (git-workflow.md patterns explicit) |
-| 6. Anti-Convergence | ✅ PASS | Unique modality (spec-first + awareness) vs. L1-6 |
-| 7. Minimal Content | ✅ PASS | All sections map to SC-002, SC-005, SC-007, SC-008, SC-014 |
+| Principle                    | Status  | Evidence                                                       |
+| ---------------------------- | ------- | -------------------------------------------------------------- |
+| 1. Specification Primacy     | ✅ PASS | Spec written BEFORE code (Step 1-2)                            |
+| 2. Progressive Complexity    | ✅ PASS | 10 concepts justified (5 synthesis + 5 awareness) over 120 min |
+| 3. Factual Accuracy          | ✅ PASS | Agent HQ cited from official GitHub Blog, Git commands tested  |
+| 4. Coherent Structure        | ✅ PASS | Foundation → Mastery progression (8 steps logical dependency)  |
+| 5. Intelligence Accumulation | ✅ PASS | All L1-L6 skills applied (git-workflow.md patterns explicit)   |
+| 6. Anti-Convergence          | ✅ PASS | Unique modality (spec-first + awareness) vs. L1-6              |
+| 7. Minimal Content           | ✅ PASS | All sections map to SC-002, SC-005, SC-007, SC-008, SC-014     |
 
 ### Stage 4 Verification: ✅ COMPLIANT
 
@@ -648,6 +704,7 @@ main branch:
 ### Lesson Ready for Publication: ✅ YES
 
 **Strengths**:
+
 1. Clear specification-first enforcement (Stage 4 requirement met)
 2. Comprehensive 5-concept Agent HQ awareness (cited from official source)
 3. Explicit accumulated intelligence application (L6 patterns applied)
@@ -656,6 +713,7 @@ main branch:
 6. Confidence messaging (addresses obsolescence anxiety effectively)
 
 **Minor Improvements (Optional)**:
+
 1. **Add screenshot**: Agent HQ mission control interface from GitHub Blog (visual aid for Part B)
 2. **Expand timeline**: If GitHub Agent HQ GA date changes, update "mid-2025" reference
 3. **Video walkthrough**: Consider adding video of complete capstone workflow (supplementary material)
@@ -669,17 +727,20 @@ main branch:
 ### Reasoning-Activated Implementation
 
 **Cognitive Mode Applied**:
+
 - ✅ Recognized Stage 4 (Spec-Driven Integration) requirements
 - ✅ Applied specification-first framework (WHAT before HOW)
 - ✅ Validated Agent HQ features against official source (no hallucination)
 - ✅ Composed L1-L6 accumulated intelligence systematically
 
 **Anti-Convergence Applied**:
+
 - ✅ Avoided generic capstone pattern ("build any project")
 - ✅ Used specification-first modality (unique to Stage 4)
 - ✅ Integrated platform evolution awareness (GitHub Agent HQ) as differentiator
 
 **Pedagogical Decisions**:
+
 - ✅ 10 concepts justified (5 synthesis + 5 awareness, not overwhelming)
 - ✅ Heavy scaffolding for Part A (step-by-step), moderate for Part B (conceptual)
 - ✅ Explicit pattern recognition callouts ("This is intelligence accumulation!")
@@ -687,12 +748,14 @@ main branch:
 ### Reusable Patterns for Future Capstones
 
 **Stage 4 Capstone Template**:
+
 1. Specification writing FIRST (20% of time)
 2. AI generation FROM specification (15% of time)
 3. Complete workflow orchestration (50% of time)
 4. Validation and reflection (15% of time)
 
 **Awareness-Level Teaching**:
+
 - 5 concepts with analogies (30 minutes = 6 min/concept)
 - Official source citation (authoritative, not speculative)
 - Confidence messaging (address anxiety explicitly)

@@ -12,6 +12,7 @@
 ✅ **VALIDATION PASSED** - Updated subagents are functional and ready for writer handoff
 
 **Key Findings**:
+
 1. ✅ Subagents correctly validate against constitution v3.0.1 principles
 2. ✅ Subagents correctly reference output-styles templates
 3. ✅ Subagents correctly reference chapter-index.md for chapter metadata
@@ -27,16 +28,19 @@
 ## Test Methodology
 
 ### Sample Selection
+
 **Chapter 31**: Technical/hybrid chapter teaching SpecKit Plus methodology (Part 5)
 **Chapter 32**: Capstone/practice chapter with real-world workflows (Part 5)
 
 **Why these chapters**:
+
 - Part 5 chapters (advanced methodology content)
 - Mix of technical instruction (Ch 31) and applied practice (Ch 32)
 - Representative of content writers will generate
 - Known to be created with old, misaligned subagents
 
 ### Validation Approach
+
 1. Run updated validation-auditor.md on each chapter
 2. Check validation against:
    - Constitution v3.0.1 alignment (evals-first, spec-first, validation-first)
@@ -55,14 +59,13 @@
 **Overall Quality**: Excellent pedagogical design, strong constitutional alignment
 
 **Critical Issues Found** (4):
+
 1. **Lesson 3 incomplete** - ends abruptly at line 143 without "Try With AI" section
 2. **Lesson 2 violates closure policy** - ends with "What's Next" instead of "Try With AI"
 3. **Missing Docusaurus frontmatter** - all 6 lessons lack `sidebar_position: N` field
 4. **Typo in Lesson 1** - line 218: "methadology" → "methodology"
 
-**Major Issues Found** (2):
-5. README.md learning objectives numbered starting at 3 (should start at 1)
-6. Chapter README should be named `readme.md` (lowercase) per output-styles
+**Major Issues Found** (2): 5. README.md learning objectives numbered starting at 3 (should start at 1) 6. Chapter README should be named `readme.md` (lowercase) per output-styles
 
 ### Subagent Performance Assessment
 
@@ -74,6 +77,7 @@
 ✅ **Actionable recommendations**: 100% - provided file:line references and fix instructions
 
 **Evidence**:
+
 - Report correctly cited `.claude/output-styles/chapters.md` for readme.md convention
 - Report correctly cited `specs/book/chapter-index.md` for chapter metadata
 - Report correctly validated against constitution v3.0.1 Core Philosophy #1 (Evals-First)
@@ -90,11 +94,13 @@
 **Overall Quality**: Publication-ready content, professional writing quality
 
 **Critical Issues Found** (3):
+
 1. **Lesson 8 violates closure policy** - ends with "What's Next" instead of "Try With AI" (line 393)
 2. **Lesson 9 violates closure policy** - ends with "What's Next" instead of "Try With AI" (line 426)
 3. **Lesson 10 has extra closure** - "What's Next" section after "Try With AI" (lines 388-end)
 
 **Strengths Identified**:
+
 - 7 of 10 lessons correctly implement "Try With AI" closure policy
 - All lessons have correct YAML frontmatter with skills metadata
 - Chapter structure aligns with output-styles conventions
@@ -110,12 +116,14 @@
 ✅ **Domain skills assessment**: 100% - verified 5 skills applied contextually
 
 **Evidence**:
+
 - Report cited `.claude/output-styles/lesson.md` lines 275, 283 for closure policy
 - Report validated against constitution v3.0.1 Section IV non-negotiable rules
 - Report correctly identified that 7/10 lessons follow updated guidance
 - Report provided actionable fix instructions with line references
 
 **Detailed Reports**:
+
 - `VALIDATION-REPORT-CHAPTER-32.md` (578 lines, 25KB) - comprehensive validation
 - `CHAPTER-32-QUICK-CHECK-FINDINGS.md` (187 lines, 8.6KB) - subagent assessment
 - `CHAPTER-32-VALIDATION-EXECUTIVE-SUMMARY.md` - quick reference
@@ -128,12 +136,12 @@
 
 Both chapters exhibit similar issues traceable to old subagent misalignment:
 
-| Issue | Chapter 31 | Chapter 32 | Root Cause |
-|-------|-----------|-----------|------------|
-| Closure policy violations | 2 lessons | 3 lessons | Old content-implementer didn't enforce "Try With AI" as final section |
-| Missing Docusaurus metadata | All 6 lessons | Not checked | Old content-implementer didn't generate `sidebar_position` field |
-| README case mismatch | 1 (uppercase) | Not checked | Old chapter-planner used mixed conventions |
-| Incomplete lessons | 1 (lesson 3) | None | Manual editing or interrupted generation |
+| Issue                       | Chapter 31    | Chapter 32  | Root Cause                                                            |
+| --------------------------- | ------------- | ----------- | --------------------------------------------------------------------- |
+| Closure policy violations   | 2 lessons     | 3 lessons   | Old content-implementer didn't enforce "Try With AI" as final section |
+| Missing Docusaurus metadata | All 6 lessons | Not checked | Old content-implementer didn't generate `sidebar_position` field      |
+| README case mismatch        | 1 (uppercase) | Not checked | Old chapter-planner used mixed conventions                            |
+| Incomplete lessons          | 1 (lesson 3)  | None        | Manual editing or interrupted generation                              |
 
 **Pattern**: Issues are **structural/metadata**, not content quality. Content is pedagogically sound.
 
@@ -145,16 +153,16 @@ Both chapters exhibit similar issues traceable to old subagent misalignment:
 
 ### Overall Performance: **95% Compliant with Constitution v3.0.1**
 
-| Validation Dimension | Score | Evidence |
-|---------------------|-------|----------|
-| Constitution v3.0.1 alignment | 100% | Validated evals-first, spec-first, validation-first principles |
-| Output-styles compliance | 100% | Correctly cited chapters.md and lesson.md templates |
-| Chapter-index references | 100% | Verified chapter metadata against specs/book/chapter-index.md |
-| Closure policy enforcement | 100% | Identified all "Try With AI" violations with line refs |
-| YAML frontmatter validation | 100% | Checked 7 metadata fields (Ch 32), identified missing sidebar_position (Ch 31) |
-| Domain skills assessment | 100% | Verified 5 skills applied contextually per chapter type |
-| Technical accuracy | 100% | Verified code examples, CEFR levels, fact-checking |
-| Actionable recommendations | 100% | Provided file:line refs and fix instructions |
+| Validation Dimension          | Score | Evidence                                                                       |
+| ----------------------------- | ----- | ------------------------------------------------------------------------------ |
+| Constitution v3.0.1 alignment | 100%  | Validated evals-first, spec-first, validation-first principles                 |
+| Output-styles compliance      | 100%  | Correctly cited chapters.md and lesson.md templates                            |
+| Chapter-index references      | 100%  | Verified chapter metadata against specs/book/chapter-index.md                  |
+| Closure policy enforcement    | 100%  | Identified all "Try With AI" violations with line refs                         |
+| YAML frontmatter validation   | 100%  | Checked 7 metadata fields (Ch 32), identified missing sidebar_position (Ch 31) |
+| Domain skills assessment      | 100%  | Verified 5 skills applied contextually per chapter type                        |
+| Technical accuracy            | 100%  | Verified code examples, CEFR levels, fact-checking                             |
+| Actionable recommendations    | 100%  | Provided file:line refs and fix instructions                                   |
 
 **Issues Detected by Subagent**: 10 total (6 in Ch 31, 4 in Ch 32)
 **False Positives**: 0
@@ -163,6 +171,7 @@ Both chapters exhibit similar issues traceable to old subagent misalignment:
 ### What Changed in Updated Subagents
 
 **Week 2 Day 6-7 Updates** (T029-T042):
+
 1. ✅ Removed hardcoded skill counts → dynamic discovery from `.claude/skills/`
 2. ✅ Added evals-first validation (constitution v3.0.1 Core Philosophy #1)
 3. ✅ Added chapter-index.md references for current implementation status
@@ -170,6 +179,7 @@ Both chapters exhibit similar issues traceable to old subagent misalignment:
 5. ✅ Added 7 generation metadata fields in YAML frontmatter specification
 
 **Evidence These Updates Work**:
+
 - validation-auditor correctly cited `.claude/output-styles/lesson.md` for closure policy
 - validation-auditor correctly cited `specs/book/chapter-index.md` for chapter metadata
 - validation-auditor validated against constitution v3.0.1 (not v3.0.0)
@@ -183,6 +193,7 @@ Both chapters exhibit similar issues traceable to old subagent misalignment:
 ### ✅ Phase 1 Synchronization Successful
 
 **Evidence**:
+
 1. **Constitution v3.0.1 referenced correctly** - subagent validated evals-first philosophy
 2. **Output-styles templates enforced** - subagent cited chapters.md, lesson.md with line numbers
 3. **Chapter-index.md used as authority** - subagent verified chapter metadata against single source of truth
@@ -192,6 +203,7 @@ Both chapters exhibit similar issues traceable to old subagent misalignment:
 ### ⚠️ Old Chapters Need Redesign (Expected)
 
 **Chapters 31 & 32 issues are NOT subagent failures**:
+
 - These chapters were created with old, misaligned subagents
 - Issues match exactly what Week 1-2 fixes were designed to prevent
 - Updated subagents **correctly identified** these issues
@@ -200,11 +212,13 @@ Both chapters exhibit similar issues traceable to old subagent misalignment:
 ### ✅ Ready for Writer Handoff
 
 **Writers can now**:
+
 1. Use updated subagents to generate new chapters (will follow output-styles, constitution v3.0.1)
 2. Use validation-auditor to validate existing chapters (will identify misalignments)
 3. Use chapter-planner and content-implementer to redesign old chapters (will produce correct structure)
 
 **What writers need**:
+
 - ✅ Constitution v3.0.1 (evals-first philosophy)
 - ✅ Output-styles templates (correct structure, 7 metadata fields)
 - ✅ Chapter-index.md (14 chapters, correct filenames)
@@ -221,14 +235,16 @@ Both chapters exhibit similar issues traceable to old subagent misalignment:
 ✅ **APPROVE Phase 1 merge** - synchronization complete, subagents functional
 
 **Merge Criteria Met**:
-- [X] Constitution v3.0.1 updated (evals-first philosophy)
-- [X] Output-styles templates corrected (chapters.md, lesson.md with 7 metadata fields)
-- [X] Chapter-index.md verified (14 chapters, correct filenames)
-- [X] Subagents aligned (chapter-planner, content-implementer, validation-auditor)
-- [X] Validation confirms subagents work correctly
-- [X] No blocking issues for writer handoff
+
+- [x] Constitution v3.0.1 updated (evals-first philosophy)
+- [x] Output-styles templates corrected (chapters.md, lesson.md with 7 metadata fields)
+- [x] Chapter-index.md verified (14 chapters, correct filenames)
+- [x] Subagents aligned (chapter-planner, content-implementer, validation-auditor)
+- [x] Validation confirms subagents work correctly
+- [x] No blocking issues for writer handoff
 
 **Known Issues** (not blocking):
+
 - Chapters 31 & 32 need minor fixes (closure policy, metadata)
 - 12 other existing chapters likely have similar issues
 - Writers will address these in separate redesign work
@@ -236,18 +252,21 @@ Both chapters exhibit similar issues traceable to old subagent misalignment:
 ### For Writers (Next Iteration)
 
 **Immediate Actions** (before redesigning chapters):
+
 1. Create `chapter-redesign-spec.md` - define success evals for "fixed" chapters
 2. Run validation-auditor on all 14 existing chapters - document issues
 3. Create `chapter-redesign-checklist.md` - standardized redesign process
 4. Prioritize chapters by issue severity (critical → major → minor)
 
 **Redesign Process** (per chapter):
+
 1. Use chapter-redesign-checklist.md
 2. Use updated subagents (chapter-planner, content-implementer)
 3. Validate with validation-auditor
 4. Commit when validation passes
 
 **Estimated Effort**:
+
 - 7-10 hours setup (spec + audit + checklist)
 - 3-5 hours per chapter redesign
 - 42-70 hours total for 14 chapters (parallelizable across 3 writers)
@@ -256,16 +275,16 @@ Both chapters exhibit similar issues traceable to old subagent misalignment:
 
 ## Success Metrics
 
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| Subagent functional | Yes | Yes | ✅ Pass |
-| Constitution v3.0.1 validated | Yes | Yes | ✅ Pass |
-| Output-styles enforced | Yes | Yes | ✅ Pass |
-| Chapter-index.md referenced | Yes | Yes | ✅ Pass |
-| Issues identified with line refs | Yes | Yes (10 total) | ✅ Pass |
-| False positives | 0 | 0 | ✅ Pass |
-| Actionable recommendations | Yes | Yes | ✅ Pass |
-| Ready for writer handoff | Yes | Yes | ✅ Pass |
+| Metric                           | Target | Actual         | Status  |
+| -------------------------------- | ------ | -------------- | ------- |
+| Subagent functional              | Yes    | Yes            | ✅ Pass |
+| Constitution v3.0.1 validated    | Yes    | Yes            | ✅ Pass |
+| Output-styles enforced           | Yes    | Yes            | ✅ Pass |
+| Chapter-index.md referenced      | Yes    | Yes            | ✅ Pass |
+| Issues identified with line refs | Yes    | Yes (10 total) | ✅ Pass |
+| False positives                  | 0      | 0              | ✅ Pass |
+| Actionable recommendations       | Yes    | Yes            | ✅ Pass |
+| Ready for writer handoff         | Yes    | Yes            | ✅ Pass |
 
 **Result**: **8/8 success criteria passed (100%)**
 
@@ -276,16 +295,19 @@ Both chapters exhibit similar issues traceable to old subagent misalignment:
 ### File Locations
 
 **Validation Reports**:
+
 - `specs/001-fix-vertical-intelligence/validation/chapter-31-spec-kit-plus-hands-on.md` (30KB)
 - `VALIDATION-REPORT-CHAPTER-32.md` (25KB)
 - `CHAPTER-32-QUICK-CHECK-FINDINGS.md` (8.6KB)
 - `CHAPTER-32-VALIDATION-EXECUTIVE-SUMMARY.md` (quick ref)
 
 **Chapters Validated**:
-- `book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/`
-- `book-source/docs/05-Spec-Kit-Plus-Methodology/32-real-world-spec-kit-workflows/`
+
+- `apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/`
+- `apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/32-real-world-spec-kit-workflows/`
 
 **Referenced Documents**:
+
 - `.specify/memory/constitution.md` (v3.0.1)
 - `.claude/output-styles/chapters.md`
 - `.claude/output-styles/lesson.md`
@@ -296,7 +318,7 @@ Both chapters exhibit similar issues traceable to old subagent misalignment:
 
 ```bash
 # Chapters validated
-$ ls -la book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/
+$ ls -la apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/
 README.md
 01-specifyplus-structure.md
 02-complete-constitution.md
@@ -305,7 +327,7 @@ README.md
 05-decomposing-tasks-sp-tasks.md
 06-implementation-sp-implement.md
 
-$ ls -la book-source/docs/05-Spec-Kit-Plus-Methodology/32-real-world-spec-kit-workflows/
+$ ls -la apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/32-real-world-spec-kit-workflows/
 readme.md (CORRECT CASE)
 01-choosing-the-right-approach.md
 02-iterative-refinement-and-replanning.md

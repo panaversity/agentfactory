@@ -3,7 +3,7 @@
 **Feature Branch**: `033-lesson-02-mit-article`
 **Plan Version**: 1.0.0
 **Created**: 2025-12-05
-**Target Lesson**: `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/02-three-trillion-developer-economy.md`
+**Target Lesson**: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/02-three-trillion-developer-economy.md`
 **Summary File**: `02-three-trillion-developer-economy.summary.md`
 
 **Plan Status**: Ready for Implementation
@@ -27,6 +27,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 **File Location**: `D:\Panaversity\book_development\colearn-ai-devway\book-source\docs\01-Introducing-AI-Driven-Development\01-ai-development-revolution\02-three-trillion-developer-economy.md`
 
 **Current Sections** (259 lines):
+
 1. **Frontmatter (YAML)**: Skills metadata, learning objectives (lines 1-53)
 2. **Introduction**: Hook about economic scale (lines 55-61)
 3. **The Calculation**: 30M developers × $100K = $3T, breakdown (lines 63-107)
@@ -45,16 +46,19 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 ## Constitution Check
 
 **Principle 2 (Progressive Complexity)**: PASS
+
 - New content maintains A1-A2 proficiency level (5-7 concept limit)
 - Complex frameworks (Two Futures, Turing Trap, Power & Progress) explained with concrete examples
 - No unexplained jargon; concepts connected to existing mental models
 
 **Principle 3 (Factual Accuracy)**: PASS (with Phase 5 validation)
+
 - All MIT TR article claims must be verified against original source
 - Proper attribution: David Rotman, MIT Technology Review, March 25, 2023
 - Research citations (OpenAI, MIT Noy/Zhang, Acemoglu/Johnson) traceable to source
 
 **Principle 7 (Minimal Content)**: PASS
+
 - Each new paragraph serves specific learning objective
 - No tangential content; all additions map to success evals (FR-001 through FR-012)
 - Concept consolidation strategy prevents bloat despite +120 lines
@@ -68,6 +72,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 ### 0.1 Current Lesson Analysis
 
 **Cognitive Load Validation** (Current):
+
 - **New Concepts Introduced**: 4 total
   1. Developer population scale (30M developers)
   2. Economic value per developer ($100K generated value)
@@ -79,6 +84,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 **Source**: David Rotman, "Will AI Become a Tool of Oppression?", MIT Technology Review, March 25, 2023
 
 **Key Research Referenced**:
+
 - OpenAI research: 80% of workforce has job exposure to AI, 19% of workers in heavily impacted jobs
 - MIT productivity study (Noy/Zhang): ChatGPT helped least-skilled workers most
 - Brynjolfsson's "Turing Trap": Human-mimicking AI leads to replacement, not augmentation
@@ -87,14 +93,14 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 
 ### 0.3 Lesson Structure Integration Opportunities
 
-| Section | Current Focus | Enhancement Opportunity | Est. Lines |
-|---------|---|---|---|
-| The Calculation | Developer population, value generation, $3T | Add job-specific impact (FR-001) | +20-25 |
-| Why This Matters | GDP scale, acceleration | Introduce Two Futures framework (FR-002) | +30-40 |
-| Acceleration Paradox | SaaS→Craft, developer growth | Add MIT study evidence, Turing Trap (FR-003, FR-004) | +30-35 |
-| Historical Precedent | Printing analogy | Deepen with Power & Progress (FR-005) | +12-18 |
-| What This Means For You | Takeaways | Strengthen positioning guidance | +5-10 |
-| Try With AI | 4 prompts | Add 3 new prompts (FR-007) | +25-30 |
+| Section                 | Current Focus                               | Enhancement Opportunity                              | Est. Lines |
+| ----------------------- | ------------------------------------------- | ---------------------------------------------------- | ---------- |
+| The Calculation         | Developer population, value generation, $3T | Add job-specific impact (FR-001)                     | +20-25     |
+| Why This Matters        | GDP scale, acceleration                     | Introduce Two Futures framework (FR-002)             | +30-40     |
+| Acceleration Paradox    | SaaS→Craft, developer growth                | Add MIT study evidence, Turing Trap (FR-003, FR-004) | +30-35     |
+| Historical Precedent    | Printing analogy                            | Deepen with Power & Progress (FR-005)                | +12-18     |
+| What This Means For You | Takeaways                                   | Strengthen positioning guidance                      | +5-10      |
+| Try With AI             | 4 prompts                                   | Add 3 new prompts (FR-007)                           | +25-30     |
 
 **Total Estimated Additions**: 120-160 lines
 
@@ -109,6 +115,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 **Content**: "Which Jobs Face Disruption? And Why?"
 
 **Key Elements**:
+
 - OpenAI research: 80% workforce exposure (clarify: not elimination)
 - 19% heavily impacted jobs (specific distinction)
 - Vulnerability categories: writers, designers, financial analysts, blockchain engineers
@@ -126,6 +133,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 **Recommended Approach**: Option A (restructure existing section to introduce choice framework)
 
 **Content Structure**:
+
 - **Part 1**: Keep existing acceleration data
 - **Part 2 (NEW)**: Two futures framework
   - Optimistic: upskilling, expansion (example: MIT study showing least-skilled gain most)
@@ -157,6 +165,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 **Title**: "The Turing Trap: Replacement vs. Augmentation"
 
 **Content**:
+
 - Definition: AI designed to mimic human = replacement
 - Alternative: AI designed to amplify human = augmentation
 - Positioning choice: compete vs. partner with AI
@@ -176,6 +185,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 **Title**: "Why History Suggests Two Futures Are Possible"
 
 **Content**:
+
 - Post-WWII era: automation + shared institutional choices = widely shared prosperity
 - Recent decades: automation + different institutional choices = concentrated wealth
 - Implication: AI outcomes depend on policy/choices, not tech alone
@@ -188,6 +198,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 ### 1.6 Integration Point 6: Proper Citations (FR-006)
 
 **Citation Standard**:
+
 - **First Full Citation**: "David Rotman, Editor at Large for MIT Technology Review, 'Will AI Become a Tool of Oppression?' (published March 25, 2023)"
 - **Short Citations**: "MIT Technology Review (March 25, 2023)"
 - **Nested Citations**: "OpenAI researchers... (cited in Rotman, MIT Technology Review, March 25, 2023)"
@@ -201,6 +212,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 **NEW CONCEPTS (Consolidated Strategy)**: +3 total
 
 **Consolidation Strategy**:
+
 1. **Two Futures Framework**: Single concept model (not 2)
 2. **Augmentation vs. Replacement**: Links to existing positioning (not separate)
 3. **Job Vulnerability Categories**: Distinct addition (1 concept)
@@ -220,6 +232,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 **Title**: "Two Economic Futures: Policy Choices Determine Outcomes"
 
 **Visual Structure**:
+
 ```
 [PRESENT: AI Tools Emerge (2023-2025)]
         ↓
@@ -231,6 +244,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 ```
 
 **Design Notes**:
+
 - Left branch: green, upward arrows, expansion imagery
 - Right branch: red, downward arrows, concentration imagery
 - Decision point: highlighted yellow to emphasize choice
@@ -252,6 +266,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 ### 3.2 Enhancement Strategy
 
 **ADD NEW MENTAL MODELS**:
+
 1. **Two Economic Futures**: Outcomes depend on policy choices, not predetermined
 2. **Turing Trap**: Replacement vs. augmentation positioning distinction
 3. **Power & Progress**: Policy/institutional choices determine technology impact
@@ -262,6 +277,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 ### 3.3 Updated Section: Common Mistakes
 
 **ADD NEW MISTAKE**:
+
 - Assuming AI's future is predetermined by technology (ignoring societal choice)
 
 ---
@@ -271,6 +287,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 ### 4.1 Current Prompts Analysis
 
 **Current Prompts** (4 total):
+
 1. Understand economic scale
 2. Personal impact assessment
 3. Clarify productivity paradox
@@ -297,15 +314,15 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 
 **Verification Checklist**:
 
-| Claim | Source | Status |
-|-------|--------|--------|
-| 80% workforce exposure, 19% heavily impacted | OpenAI research (via MIT TR) | ⬜ |
-| Job categories: writers, designers, analysts, blockchain engineers | MIT TR article | ⬜ |
-| MIT Noy/Zhang study findings | MIT TR citation | ⬜ |
-| Brynjolfsson Turing Trap concept | MIT TR reference | ⬜ |
-| Acemoglu/Johnson Power & Progress framework | MIT TR reference | ⬜ |
-| David Rotman author attribution | MIT TR article | ⬜ |
-| Publication date: March 25, 2023 | MIT TR article | ⬜ |
+| Claim                                                              | Source                       | Status |
+| ------------------------------------------------------------------ | ---------------------------- | ------ |
+| 80% workforce exposure, 19% heavily impacted                       | OpenAI research (via MIT TR) | ⬜     |
+| Job categories: writers, designers, analysts, blockchain engineers | MIT TR article               | ⬜     |
+| MIT Noy/Zhang study findings                                       | MIT TR citation              | ⬜     |
+| Brynjolfsson Turing Trap concept                                   | MIT TR reference             | ⬜     |
+| Acemoglu/Johnson Power & Progress framework                        | MIT TR reference             | ⬜     |
+| David Rotman author attribution                                    | MIT TR article               | ⬜     |
+| Publication date: March 25, 2023                                   | MIT TR article               | ⬜     |
 
 **PASS CRITERIA**: 100% of claims verified against original source
 
@@ -313,13 +330,13 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 
 **Section-by-Section Concept Count**:
 
-| Section | Current | New (Consolidated) | Total | Limit | Status |
-|---------|---------|---|---|---|---|
-| The Calculation | 2 | 1 (job categories) | 3 | 7 | ✓ |
-| Why This Matters | 1 | 1 (two futures) | 2 | 7 | ✓ |
-| Acceleration Paradox | 1 | 1 (turing trap) | 2 | 7 | ✓ |
-| Historical Precedent | 0 | 0 (reinforces) | 0 | 7 | ✓ |
-| What This Means For You | 0 | 0 (reinforces) | 0 | 7 | ✓ |
+| Section                 | Current | New (Consolidated) | Total | Limit | Status |
+| ----------------------- | ------- | ------------------ | ----- | ----- | ------ |
+| The Calculation         | 2       | 1 (job categories) | 3     | 7     | ✓      |
+| Why This Matters        | 1       | 1 (two futures)    | 2     | 7     | ✓      |
+| Acceleration Paradox    | 1       | 1 (turing trap)    | 2     | 7     | ✓      |
+| Historical Precedent    | 0       | 0 (reinforces)     | 0     | 7     | ✓      |
+| What This Means For You | 0       | 0 (reinforces)     | 0     | 7     | ✓      |
 
 **Total Lesson Concepts**: 7 (within A1-A2 limit) ✓
 
@@ -330,6 +347,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 ### 5.3 Narrative Flow Testing
 
 **Transition Quality**:
+
 - Calculation → Job Impact: Smooth pivot from value to categories
 - Job Impact → Two Futures: Natural progression (impact feeds futures)
 - Two Futures → Paradox: "Futures depend on choices" connects to "developers growing"
@@ -341,6 +359,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 ### 5.4 Citation Completeness Check
 
 **Checklist**:
+
 - [ ] Full citation on first mention (author, publication, date, URL)
 - [ ] Secondary citations properly formatted
 - [ ] All article-sourced claims attributed
@@ -354,27 +373,29 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 
 **This plan addresses all 8 success evals**:
 
-| Eval | Integration Point | How Addressed |
-|------|-------------------|---|
-| Eval-1: Job Impact Specificity | FR-001 (Phase 1.1) | 3+ job categories with OpenAI research |
-| Eval-2: Two Futures Articulation | FR-002 (Phase 1.2) | Both scenarios with concrete examples |
-| Eval-3: Evidence-Based Confidence | FR-003 (Phase 1.3) | MIT study showing expansion |
-| Eval-4: Turing Trap Recognition | FR-004 (Phase 1.4) | New subsection explaining concept |
-| Eval-5: Historical Context | FR-005 (Phase 1.5) | Power & Progress framework enhanced |
-| Eval-6: Factual Accuracy | FR-006 + Phase 5.1 | 100% fact-checking verification |
-| Eval-7: Complexity Compliance | All phases | 7 concepts total, A1-A2 compliant |
-| Eval-8: Reflection Integration | FR-007 (Phase 4) | 3 new Try With AI prompts |
+| Eval                              | Integration Point  | How Addressed                          |
+| --------------------------------- | ------------------ | -------------------------------------- |
+| Eval-1: Job Impact Specificity    | FR-001 (Phase 1.1) | 3+ job categories with OpenAI research |
+| Eval-2: Two Futures Articulation  | FR-002 (Phase 1.2) | Both scenarios with concrete examples  |
+| Eval-3: Evidence-Based Confidence | FR-003 (Phase 1.3) | MIT study showing expansion            |
+| Eval-4: Turing Trap Recognition   | FR-004 (Phase 1.4) | New subsection explaining concept      |
+| Eval-5: Historical Context        | FR-005 (Phase 1.5) | Power & Progress framework enhanced    |
+| Eval-6: Factual Accuracy          | FR-006 + Phase 5.1 | 100% fact-checking verification        |
+| Eval-7: Complexity Compliance     | All phases         | 7 concepts total, A1-A2 compliant      |
+| Eval-8: Reflection Integration    | FR-007 (Phase 4)   | 3 new Try With AI prompts              |
 
 ---
 
 ## Implementation Checklist
 
 **Before Implementation**:
+
 - [ ] Specification approved
 - [ ] MIT TR article content verified
 - [ ] All integration points mapped
 
 **During Implementation**:
+
 - [ ] Follow Phase 1 integration points in order
 - [ ] Apply concept consolidation strategy (Phase 1.7)
 - [ ] Create SVG diagram (Phase 2)
@@ -383,6 +404,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 - [ ] Maintain organic integration (no bolted-on sections)
 
 **After Implementation**:
+
 - [ ] Complete Phase 5 fact-checking
 - [ ] Run complexity audit
 - [ ] Test narrative flow
@@ -404,6 +426,7 @@ Integrate MIT Technology Review article insights (David Rotman, March 25, 2023) 
 ## Success Criteria (Final Checkpoint)
 
 **PUBLICATION READY when**:
+
 - ✓ All 8 success evals addressed
 - ✓ Fact-checking complete (100% verification)
 - ✓ Complexity compliance (7 concepts, within A1-A2)

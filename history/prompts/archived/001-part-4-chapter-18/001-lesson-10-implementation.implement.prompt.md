@@ -9,14 +9,21 @@ feature: "001-part-4-chapter-18"
 branch: "main"
 user: "system"
 command: "/content-implementer lesson-10"
-labels: ["chapter-18", "lesson-10", "b1-intermediate", "synthesis", "architectural-thinking"]
+labels:
+  [
+    "chapter-18",
+    "lesson-10",
+    "b1-intermediate",
+    "synthesis",
+    "architectural-thinking",
+  ]
 links:
   spec: "specs/001-part-4-chapter-18/spec.md"
   plan: "specs/001-part-4-chapter-18/plan.md (lines 693-802)"
   adr: "null"
   pr: "null"
 files:
-  - "book-source/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/10-lesson-10.md"
+  - "apps/learn-app/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/10-lesson-10.md"
 tests: []
 ---
 
@@ -36,18 +43,21 @@ Implemented Lesson 10: "Choosing the Right Structure" for Chapter 18 (Lists, Tup
 **New Concepts**: 0 (synthesis-focused)
 
 **Learning Objectives**:
+
 - LO-003b (B1 - Analyze): Choose correct structure based on mutability, ordering, lookup requirements
 - LO-003c (B1 - Evaluate): Justify architectural decisions in data structure selection
 - LO-001f (B1 - Evaluate): Assess tradeoffs between structures (memory, performance, semantics)
 - LO-007a (B1 - Analyze): Recognize and explain common anti-patterns
 
 **Skills Taught** (4 B1-level skills):
+
 1. Structure Decision Matrix — Student can reference decision criteria to choose structure
 2. Performance Awareness — Student understands O(1) vs O(n) lookup conceptually
 3. Architectural Thinking — Student can justify choices in code review
 4. Anti-Pattern Recognition — Student identifies "wrong structure for job" patterns
 
 **Key Concepts** (7 concepts, all synthesis of Lessons 1-9):
+
 1. Mutability requirement
 2. Ordering requirement
 3. Lookup pattern
@@ -59,6 +69,7 @@ Implemented Lesson 10: "Choosing the Right Structure" for Chapter 18 (Lists, Tup
 ## Content Structure
 
 ### Major Sections
+
 1. **Opening**: Architectural thinking context (4 paragraphs)
 2. **Decision Framework**: Four core questions (mutability, ordering, lookup, semantics)
 3. **Decision Matrix**: Quick reference table
@@ -70,6 +81,7 @@ Implemented Lesson 10: "Choosing the Right Structure" for Chapter 18 (Lists, Tup
 9. **Try With AI**: 4 prompts (Remember → Understand → Apply → Analyze/Evaluate)
 
 ### Code Examples (13+ total)
+
 - Decision framework illustrations
 - Real-world scenario implementations
 - Anti-pattern examples with corrections
@@ -77,17 +89,20 @@ Implemented Lesson 10: "Choosing the Right Structure" for Chapter 18 (Lists, Tup
 - All use type hints, Python 3.14+ syntax
 
 ### CoLearning Elements (6 total)
+
 - 2 💬 AI Colearning Prompts
 - 1 🎓 Instructor Commentary
 - 1 🚀 CoLearning Challenge
 - 2 ✨ Teaching Tips
 
 ### Exercises (3 total)
+
 1. Decision Analysis: 4 scenarios requiring choice + justification
 2. Anti-Pattern Recognition: Code review task
 3. Real-World Design: Music playlist data structure design
 
 ### Try With AI (4 prompts)
+
 1. Prompt 1 (Remember): Recall decision criteria
 2. Prompt 2 (Understand): Analyze real scenario (social media app)
 3. Prompt 3 (Apply): Evaluate architectural decision with 1M users
@@ -96,21 +111,25 @@ Implemented Lesson 10: "Choosing the Right Structure" for Chapter 18 (Lists, Tup
 ## Constitutional Alignment
 
 **Principle 12 (Cognitive Load Management)**:
+
 - Max concepts for B1: 10 per lesson
 - This lesson: 0 new concepts (synthesis focus)
 - ✓ Well within limits
 
 **Principle 13 (Graduated Teaching Pattern)**:
+
 - Tier 1 (Book Teaches): Decision framework, real scenarios, semantics
 - Tier 2 (AI Companion): Exploration of concepts, performance implications
 - ✓ Proper tier application
 
 **AI-Native CoLearning**:
+
 - AI positioned as co-reasoning partner ✓
 - Students practice with AI as intellectual partner ✓
 - Validation mindset emphasized ✓
 
 **Specification-First Workflow**:
+
 - Content aligns with approved spec.md ✓
 - Code examples match specifications ✓
 - All 7 concepts from plan integrated ✓
@@ -118,18 +137,21 @@ Implemented Lesson 10: "Choosing the Right Structure" for Chapter 18 (Lists, Tup
 ## Technical Validation
 
 **Code Quality**:
+
 - All type hints use Python 3.14+ modern syntax ✓
 - No hardcoded secrets or security violations ✓
 - Examples are realistic and runnable ✓
 - Variable names follow conventions ✓
 
 **Pedagogical Quality**:
+
 - Grade 7-8 reading level ✓
 - Active voice, direct address ("you", "your") ✓
 - Clear headings, visual breaks ✓
 - Conversational yet professional tone ✓
 
 **Lesson Structure**:
+
 - Opening hook: 4 paragraphs establishing architecture theme ✓
 - Progressive difficulty: framework → scenarios → anti-patterns → exercises ✓
 - Ends with Try With AI only (no "Key Takeaways" or "What's Next") ✓
@@ -148,6 +170,7 @@ Implemented Lesson 10: "Choosing the Right Structure" for Chapter 18 (Lists, Tup
 ## Validation Results
 
 **All checks passed**:
+
 - CEFR/Bloom's alignment: B1 (Analyze/Evaluate) ✓
 - Cognitive load: 0 new concepts within B1 synthesis limit ✓
 - Specification alignment: 7 concepts, 3 exercises, 4 Try With AI prompts ✓
@@ -158,9 +181,10 @@ Implemented Lesson 10: "Choosing the Right Structure" for Chapter 18 (Lists, Tup
 
 ## Output Location
 
-**File**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ai-native-software-development/book-source/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/10-lesson-10.md`
+**File**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ai-native-software-development/apps/learn-app/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/10-lesson-10.md`
 
 **Statistics**:
+
 - Lines: 612
 - Code examples: 13+
 - CoLearning elements: 6

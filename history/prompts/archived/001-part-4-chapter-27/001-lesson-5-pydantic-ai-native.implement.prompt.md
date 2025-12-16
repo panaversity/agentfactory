@@ -16,7 +16,7 @@ links:
   adr: null
   pr: null
 files_created:
-  - "book-source/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/05-pydantic-for-ai-native-development.md"
+  - "apps/learn-app/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/05-pydantic-for-ai-native-development.md"
 tests_run:
   - "Verified lesson file creation"
   - "Validated YAML frontmatter structure"
@@ -33,6 +33,7 @@ tests_run:
 Implement **Lesson 5: Pydantic for AI-Native Development** for Chapter 27 of the CoLearning Python & Agentic AI book.
 
 ### Context
+
 - **Chapter**: 27 - Pydantic and Generics (Part 4: Python Fundamentals)
 - **Lesson**: 5 of 6
 - **CEFR Proficiency**: B1-B2 → B2 (Transition to Advanced Analysis)
@@ -40,7 +41,9 @@ Implement **Lesson 5: Pydantic for AI-Native Development** for Chapter 27 of the
 - **Estimated Time**: 40-45 minutes
 
 ### Learning Objectives
+
 Students can:
+
 1. **APPLY** Pydantic to validate LLM-generated JSON outputs from Claude Code
 2. **IMPLEMENT** iterative refinement: validation fails → improve prompt → regenerate
 3. **ANALYZE** validation error patterns to improve AI prompts
@@ -48,6 +51,7 @@ Students can:
 5. **INTEGRATE** Pydantic with FastAPI for automatic API validation (overview only)
 
 ### Content Structure (from lesson plan)
+
 - **Introduction** (5 min): The AI trust problem, why validation is critical
 - **Section 1: Validating LLM Outputs** (12 min): Recipe model, validation workflow, error handling
 - **Section 2: Iterative Refinement Pattern** (10 min): First attempt fails, improved prompt, success
@@ -58,6 +62,7 @@ Students can:
 - **Try With AI** (4 prompts): Understanding loop, building validation, analyzing failures, production strategy
 
 ### Constitutional Requirements (CRITICAL)
+
 1. **Lesson Closure Pattern**: ONLY "Try With AI" section at end; NO "Key Takeaways" or "What's Next"
 2. **CoLearning Elements**: 2-4 elements (💬🎓🚀✨) THROUGHOUT lesson (from plan: 2 💬 AI Colearning Prompts, 2 🎓 Instructor Commentary, 1 🚀 CoLearning Challenge, 2 ✨ Teaching Tips)
 3. **No Forward References**: NO references to Chapters 30+ or SDD terminology
@@ -65,9 +70,10 @@ Students can:
 5. **Python Standards**: 100% type hints on all code, Python 3.14+ syntax, Pydantic V2 only
 
 ### Output Format
+
 - Complete markdown lesson ready for Docusaurus
 - YAML frontmatter with skills metadata, learning objectives, cognitive load
-- File: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/book-source/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/05-pydantic-for-ai-native-development.md`
+- File: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/apps/learn-app/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/05-pydantic-for-ai-native-development.md`
 
 ---
 
@@ -75,9 +81,10 @@ Students can:
 
 ### Lesson Completed Successfully
 
-**File Created**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/book-source/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/05-pydantic-for-ai-native-development.md`
+**File Created**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/apps/learn-app/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/05-pydantic-for-ai-native-development.md`
 
 **Statistics**:
+
 - 686 lines of markdown content
 - All 5 sections completed with examples
 - 100% type hints on all code
@@ -105,6 +112,7 @@ Students can:
 ### Validation Checklist (PASS)
 
 **All Chapters:**
+
 - [x] Skills Proficiency Validation: Content matches B2 proficiency level
   - Apply: Validate LLM outputs, implement iterative refinement
   - Analyze: Error pattern analysis, evaluating validation value
@@ -127,6 +135,7 @@ Students can:
 - [x] Try With AI tool selection follows policy (Part 4 post-tools onboarding → learner's AI companion)
 
 **Technical Chapters Only:**
+
 - [x] All code examples include type hints and docstrings
   - Recipe model with Field constraints
   - validate_llm_output() with type parameters
@@ -143,6 +152,7 @@ Students can:
 - [x] "Common Pitfalls" section addressing real-world issues
 
 **CoLearning Integration:**
+
 - [x] 2 💬 AI Colearning Prompts (Section 1 & 3: exploring validation, analyzing error patterns)
 - [x] 2 🎓 Instructor Commentary (Sections 2 & 4: iteration as learning, FastAPI automation)
 - [x] 1 🚀 CoLearning Challenge (Section 2: full iterative refinement cycle)
@@ -151,6 +161,7 @@ Students can:
 - [x] Each element is actionable and specific to chapter content
 
 **Lesson Closure Pattern:**
+
 - [x] Try With AI section is final section
 - [x] No "Key Takeaways" or "Summary" sections
 - [x] No "What's Next" forward references
@@ -161,45 +172,53 @@ Students can:
 ### Content Highlights
 
 **Introduction** establishes the AI trust problem clearly:
+
 - "AI is probabilistic, not deterministic"
 - "Never trust AI output without validation"
 - Sets up the iterative loop as core AI-native pattern
 
 **Section 1** teaches validation workflow with working examples:
+
 - Recipe model → JSON generation → validation → error handling
 - model_validate_json() demonstrated with best practices
 - Error introspection (examining ValidationError.errors())
 
 **Section 2** shows the iterative pattern in action:
+
 - First attempt (vague prompt) fails
 - Analysis of failure ("prep_time_minutes validation fails")
 - Second attempt (explicit prompt) succeeds
 - Demonstrates that iteration is expected, not exceptional
 
 **Section 3** teaches error pattern analysis:
+
 - Common mistakes (wrong types, missing fields, extra fields)
 - Using Field(examples=[...]) to guide LLMs
 - Why AI generates strings instead of integers (lacks explicit guidance)
 
 **Section 4** provides FastAPI overview without deep dive:
+
 - Automatic validation in FastAPI
 - Request/response models
 - Clarifies that FastAPI validation is built on Pydantic
 - Sets up for later agent framework chapters
 
 **Section 5** addresses production reality:
+
 - Try-except with logging (monitoring failures)
 - Retry with prompt improvement (iterative recovery)
 - Fallback to human intervention (escalation)
 - Error-driven design philosophy
 
 **Common Mistakes** section corrects misconceptions:
+
 - Don't skip validation (dangerous)
 - Do provide examples (format guidance)
 - Do iterate (AI succeeds on second/third try)
 - Don't overcomplicate (start simple)
 
 **Try With AI** section provides 4 progressive prompts:
+
 1. **Understand**: Explain the validation loop (conceptual)
 2. **Apply**: Build BlogPost model and validate (hands-on)
 3. **Analyze**: Debug prep_time_minutes error (problem-solving)
@@ -208,32 +227,38 @@ Students can:
 ### Code Examples Quality (7 examples)
 
 1. **Basic Recipe Validation** (Section 1)
+
    - Type hints: model_validate_json() with type annotation
    - Error handling: ValidationError with detailed introspection
    - Output shows actual error messages
 
 2. **Validation Error Introspection** (Section 1)
+
    - Shows how to read ValidationError.errors() list
    - Demonstrates error structure (location, message)
    - Practical for debugging
 
 3. **First Attempt (Failed)** (Section 2)
+
    - Shows generate_recipe_attempt_1() function
    - Type hint on return: Recipe | None
    - Demonstrates expected failure pattern
 
 4. **Second Attempt (Success)** (Section 2)
+
    - Improved prompt with explicit format requirements
    - Shows difference in generated JSON
    - Validation succeeds
    - Type annotations on variables
 
 5. **Field with Examples** (Section 3)
+
    - Pydantic Field() with description and examples
    - Model config with json_schema_extra
    - Shows how to guide LLMs through schema
 
 6. **Logging and Error Handling** (Section 5)
+
    - Generic function with TypeVar bound to BaseModel
    - Proper logging with error details
    - Type-safe error handling
@@ -245,6 +270,7 @@ Students can:
    - Generic type parameter for flexibility
 
 All examples:
+
 - Use Python 3.14+ syntax (TypeVar, | for unions)
 - Include docstrings
 - Have complete type hints
@@ -254,6 +280,7 @@ All examples:
 ### Proficiency and Cognitive Load
 
 **CEFR B2 Proficiency Alignment:**
+
 - Lessons 1-4: B1-B2 (introduce/practice)
 - Lesson 5: B2 (analyze, evaluate, apply independently)
 - Content targets: Apply (validate), Analyze (error patterns), Evaluate (when validation adds value)
@@ -261,12 +288,14 @@ All examples:
 - Requires synthesis of earlier Pydantic knowledge with new AI-native patterns
 
 **Cognitive Load Assessment:**
+
 - 10 new concepts (at B1-B2 maximum limit)
 - Concepts: structured output, validation-first, iterative refinement, error patterns, graceful degradation, FastAPI integration, Pydantic as spec, AI-native workflow, production safety, retry patterns
 - Each concept introduced with concrete example
 - Progression from foundational (what is validation) to advanced (production patterns)
 
 **Bloom's Progression:**
+
 - Remember: What is ValidationError? (foundation from Lessons 1-2)
 - Understand: How does the validation loop work? (Section 1-2)
 - Apply: Validate LLM outputs, implement retry logic (Sections 1-2, Try With AI Prompt 2)
@@ -277,6 +306,7 @@ All examples:
 ### Hidden Skills Metadata (YAML Frontmatter)
 
 Included for institutional integration:
+
 - 5 skills with CEFR levels (B2, B1-B2)
 - 5 learning objectives with proficiency levels and assessment methods
 - Cognitive load tracking (10 concepts at limit)
@@ -321,18 +351,23 @@ Included for institutional integration:
 ## Risks and Mitigations
 
 ### Risk 1: Students Skip Validation (Dangerous)
+
 **Mitigation**: Lesson emphasizes "Never trust AI output" throughout. Common Mistakes section explicitly flags this. Try With AI Prompt 4 focuses on production safety.
 
 ### Risk 2: Prompt Engineering Feels Vague
+
 **Mitigation**: Section 2 shows concrete before/after (vague → specific). Section 3 explains pattern (why LLMs fail) → solution (add examples). Try With AI Prompt 3 focuses on error analysis → improvement.
 
 ### Risk 3: Students Confuse Validation and Type Hints
+
 **Mitigation**: Lessons 1-2 already covered this (type hints are documentation, Pydantic is runtime). Lesson 5 assumes that knowledge and applies it to AI outputs.
 
 ### Risk 4: FastAPI Section Too Deep or Shallow
+
 **Mitigation**: Labeled as "Overview" throughout. Shows the pattern (automatic validation) without requiring FastAPI installation or deep knowledge. Sets up for later chapters.
 
 ### Risk 5: Cognitive Load Too High
+
 **Mitigation**: Lesson stays at exactly 10 concepts (the B1-B2 maximum). Each concept gets concrete example. Section 5 (production patterns) is optional deepening for interested students.
 
 ---
@@ -340,9 +375,11 @@ Included for institutional integration:
 ## Files Generated
 
 **Primary Deliverable**:
-- `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/book-source/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/05-pydantic-for-ai-native-development.md` (686 lines, complete lesson)
+
+- `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/apps/learn-app/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/05-pydantic-for-ai-native-development.md` (686 lines, complete lesson)
 
 **Integration Points**:
+
 - Lesson 5 of 6 in Chapter 27
 - Fits between Lesson 4 (Generics) and Lesson 6 (Capstone Config Manager)
 - References previous lessons (Lessons 1-4 Pydantic/Generics foundation)
@@ -350,6 +387,7 @@ Included for institutional integration:
 - Springboard for Parts 5+ (agent frameworks use Pydantic validation throughout)
 
 **Docusaurus Integration**:
+
 - sidebar_position: 5 (correct ordering)
 - Chapter directory: 27-pydantic-generics
 - Part directory: 04-Part-4-Python-Fundamentals

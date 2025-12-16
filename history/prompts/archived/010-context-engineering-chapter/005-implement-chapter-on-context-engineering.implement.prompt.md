@@ -16,14 +16,14 @@ links:
   adr: null
   pr: null
 files:
-- book-source/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/index.md
-- book-source/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/01-core-concepts.md
-- book-source/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/02-practical-techniques.md
-- book-source/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/03-aidd-context-components.md
-- book-source/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/04-polish-and-concerns.md
-- specs/010-context-engineering-chapter/tasks.md
+  - apps/learn-app/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/index.md
+  - apps/learn-app/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/01-core-concepts.md
+  - apps/learn-app/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/02-practical-techniques.md
+  - apps/learn-app/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/03-aidd-context-components.md
+  - apps/learn-app/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/04-polish-and-concerns.md
+  - specs/010-context-engineering-chapter/tasks.md
 tests:
-- none
+  - none
 ---
 
 ## Prompt
@@ -34,11 +34,11 @@ System: Please continue.
 
 I have restructured the chapter into lessons and completed the content for all the lessons. The new structure is as follows:
 
-- `book-source/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/index.md` (Main chapter file)
-- `book-source/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/01-core-concepts.md`
-- `book-source/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/02-practical-techniques.md`
-- `book-source/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/03-aidd-context-components.md`
-- `book-source/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/04-polish-and-concerns.md`
+- `apps/learn-app/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/index.md` (Main chapter file)
+- `apps/learn-app/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/01-core-concepts.md`
+- `apps/learn-app/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/02-practical-techniques.md`
+- `apps/learn-app/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/03-aidd-context-components.md`
+- `apps/learn-app/docs/03-prompt-and-context-engineering/10-context-engineering-for-ai-driven-development/04-polish-and-concerns.md`
 
 All tasks in `specs/010-context-engineering-chapter/tasks.md` have been marked as complete.
 

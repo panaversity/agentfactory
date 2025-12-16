@@ -9,21 +9,28 @@ feature: 002-book-structure
 branch: 002-book-structure
 user: unknown
 command: /sp.implement
-labels: ["green-phase", "infrastructure", "book-structure", "docusaurus", "implementation-complete"]
+labels:
+  [
+    "green-phase",
+    "infrastructure",
+    "book-structure",
+    "docusaurus",
+    "implementation-complete",
+  ]
 links:
   spec: /specs/002-book-structure/spec.md
   ticket: null
   adr: null
   pr: null
 files:
-  - /book-source/docs/01-Introducing-AI-Driven-Development/intro.md
-  - /book-source/docs/02-AI-Tool-Landscape/intro.md
-  - /book-source/docs/03-Prompt-and-Context-Engineering/intro.md
-  - /book-source/docs/04-Modern-Python-with-Type-Hints/intro.md
-  - /book-source/docs/05-Spec-Kit-Methodology/intro.md
-  - /book-source/docs/06-Agentic-AI-Fundamentals/intro.md
-  - /book-source/docs/07-MCP-Fundamentals/intro.md
-  - /book-source/docs/01-07/[01-32]*.md (32 chapter placeholders)
+  - /apps/learn-app/docs/01-Introducing-AI-Driven-Development/intro.md
+  - /apps/learn-app/docs/02-AI-Tool-Landscape/intro.md
+  - /apps/learn-app/docs/03-Prompt-and-Context-Engineering/intro.md
+  - /apps/learn-app/docs/04-Modern-Python-with-Type-Hints/intro.md
+  - /apps/learn-app/docs/05-Spec-Kit-Methodology/intro.md
+  - /apps/learn-app/docs/06-Agentic-AI-Fundamentals/intro.md
+  - /apps/learn-app/docs/07-MCP-Fundamentals/intro.md
+  - /apps/learn-app/docs/01-07/[01-32]*.md (32 chapter placeholders)
   - /specs/002-book-structure/validation-report.md
 tests:
   - T001: Created 7 part directories ✅
@@ -44,11 +51,13 @@ User invoked `/sp.implement` to execute Phase 1 and Phase 4 of minimal MVP task 
 Successfully executed implementation:
 
 **Phase 1: Infrastructure (T001-T003)**
-- Created 7 part directories in `book-source/docs/`
+
+- Created 7 part directories in `apps/learn-app/docs/`
 - Created 7 part intro files explaining each part
 - Created 32 chapter placeholder files with YAML frontmatter
 
 **Phase 4: Validation (T013-T016)**
+
 - Docusaurus build succeeded (zero errors)
 - Verified 7 parts + 32 chapters + 40 total files
 - Verified sidebar auto-generation with all chapters visible
@@ -73,6 +82,7 @@ Successfully executed implementation:
 - Failure modes observed: None. All tasks succeeded without errors.
 
 - Graders run and results (PASS/FAIL):
+
   - ✅ PASS: 7/7 part directories created
   - ✅ PASS: 7/7 part intro files created with pedagogical context
   - ✅ PASS: 32/32 chapter files created with proper structure

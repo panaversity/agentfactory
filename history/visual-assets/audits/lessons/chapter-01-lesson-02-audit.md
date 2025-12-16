@@ -11,6 +11,7 @@
 ## Identified Visual Opportunities
 
 ### VISUAL ASSET 1: Developer Economy Calculation Dashboard
+
 - **Type**: Calculation Flow Diagram
 - **Location**: Line 63 (after "Here's the math, laid out transparently:")
 - **Content**: 30M developers × $100K value/year = $3T economy calculation
@@ -19,6 +20,7 @@
 - **Cognitive Load Impact**: REDUCES - Transforms abstract multiplication into concrete visual flow with three connected cards showing inputs and output
 
 ### VISUAL ASSET 2: Global Developer Economy GDP Comparison
+
 - **Type**: Bar Chart Comparison
 - **Location**: Line 180 (after "To put this in perspective:")
 - **Content**: $3T developer economy compared to France GDP, India GDP, 40% of China GDP, and Canada GDP (doubled)
@@ -27,6 +29,7 @@
 - **Cognitive Load Impact**: REDUCES - Dense text comparisons (France, India, China, Canada) become instantly scannable visual hierarchy showing relative scale
 
 ### VISUAL ASSET 3: Technology Adoption Speed Comparison Timeline
+
 - **Type**: Horizontal Timeline with Descending Bars
 - **Location**: Line 307 (after "And they're doing it **fast**.")
 - **Content**: PC (12 years), Internet (10 years), Cloud (15 years), Mobile (8 years), AI Coding (3 years)
@@ -55,5 +58,5 @@
 
 ---
 
-**Prompts embedded in**: `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/02-three-trillion-developer-economy.md`
+**Prompts embedded in**: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/02-three-trillion-developer-economy.md`
 **Ready for image generation**: ✅ Yes

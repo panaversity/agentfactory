@@ -12,6 +12,7 @@
 ## Task Summary
 
 Implement Lesson 2 ("Viewing Changes & Safe Undo") for Chapter 8 (Git & GitHub for AI-Driven Development) following:
+
 - **Stage 1 (Manual Foundation)**: NO AI assistance in Git operations
 - **Cognitive Load**: 4 concepts (within A1 limit of 5-7)
 - **Modality**: Hands-on discovery through deliberate error recovery
@@ -22,42 +23,52 @@ Implement Lesson 2 ("Viewing Changes & Safe Undo") for Chapter 8 (Git & GitHub f
 ## Key Design Decisions
 
 ### 1. Deliberate Error Modality
+
 **Decision**: Teach error recovery through intentional mistakes (syntax errors) rather than just showing commands.
 
 **Reasoning**:
+
 - Students learn manual recovery before AI helps with undo later
 - Mistakes feel real (not contrived)
 - Builds confidence: "I can recover from ANY error"
 - Aligns with Stage 1 hands-on discovery pedagogy
 
 ### 2. Non-Destructive Focus
+
 **Decision**: Emphasize git diff, git restore, and git reset HEAD (all non-destructive) before introducing destructive git reset --hard.
 
 **Reasoning**:
+
 - AI-era safety: students should work fearlessly
 - Non-destructive commands remove risk entirely
 - Aligns with spec's "fearless AI experimentation" value proposition
 
 ### 3. Decision Tree as Consolidation
+
 **Decision**: Create decision tree that shows WHEN to use each command, preventing confusion between similar commands.
 
 **Reasoning**:
+
 - Students often confuse git restore vs git reset HEAD
 - Decision tree provides reference for confusion moments
 - Maps scenarios to correct commands
 
 ### 4. Reducing Cognitive Load from 5 to 4 Concepts
+
 **Decision**: Consolidate "Undo Strategy" into single concept instead of teaching all reset variants.
 
 **Reasoning**:
+
 - A1 proficiency limit: 5-7 concepts (tight for stage 1)
 - Consolidation: teach diff, restore, reset, strategy = 4 concepts
 - Strategy awareness sufficient; variants deferred to later lessons
 
 ### 5. "Try With AI" Validation Pattern
+
 **Decision**: Use "Try With AI" section to validate student understanding by comparing manual learning to AI explanations.
 
 **Reasoning**:
+
 - Honors Stage 1 constraint: all Git execution manual
 - Introduces ChatGPT for validation, not execution
 - Prepares for Stage 2 where AI becomes collaborative partner
@@ -80,11 +91,13 @@ Implement Lesson 2 ("Viewing Changes & Safe Undo") for Chapter 8 (Git & GitHub f
 ## Files Generated
 
 ### Lesson Content
-**Path**: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/02-viewing-changes-safe-undo.md`
+
+**Path**: `apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/02-viewing-changes-safe-undo.md`
 **Size**: ~8.5 KB
 **Sections**: YAML frontmatter, 8 activities, decision tree, terminal examples, "Try With AI"
 
 ### Verification Report
+
 **Path**: `specs/028-chapter-8-git-redesign/LESSON-2-VERIFICATION.md`
 **Verification Score**: 14 categories, all PASS
 
@@ -123,18 +136,19 @@ Implement Lesson 2 ("Viewing Changes & Safe Undo") for Chapter 8 (Git & GitHub f
 
 ## Learning Objectives Coverage (4/4)
 
-| Objective | Activity | Assessment |
-|-----------|----------|-----------|
-| View changes with git diff | Activities 1-2 | Student modifies file, executes diff, explains + and - lines |
-| Discard changes with git restore | Activity 5 | Student makes error, uses restore, verifies recovery |
-| Unstage with git reset HEAD | Activities 6-7 | Student stages wrong file, resets, confirms file exists |
-| Distinguish undo strategies | Decision Tree + Activity 8 | Student identifies correct command for scenario |
+| Objective                        | Activity                   | Assessment                                                   |
+| -------------------------------- | -------------------------- | ------------------------------------------------------------ |
+| View changes with git diff       | Activities 1-2             | Student modifies file, executes diff, explains + and - lines |
+| Discard changes with git restore | Activity 5                 | Student makes error, uses restore, verifies recovery         |
+| Unstage with git reset HEAD      | Activities 6-7             | Student stages wrong file, resets, confirms file exists      |
+| Distinguish undo strategies      | Decision Tree + Activity 8 | Student identifies correct command for scenario              |
 
 ---
 
 ## Cognitive Load Validation
 
 **Concepts**: 4 (within A1 limit of 5-7)
+
 1. Diff (change visualization)
 2. Restore (non-destructive undo)
 3. Reset (unstage files)
@@ -147,12 +161,14 @@ Implement Lesson 2 ("Viewing Changes & Safe Undo") for Chapter 8 (Git & GitHub f
 ## Success Criteria Mapping
 
 ### SC-003: Recover from AI Errors (80%+ within 3 attempts)
+
 - Activities 3-4: Identify error (git diff)
 - Activity 5: Execute recovery (git restore)
 - Activity 7: Verify success (git status)
 - **Expected**: 80%+ success rate on error recovery scenarios
 
 ### SC-012: Identify Correct Undo Command (75%+ select correct)
+
 - Decision Tree: 4 scenarios with command recommendations
 - Activity 8: 3 practice scenarios with validated answers
 - **Expected**: 82%+ success rate on command selection
@@ -179,15 +195,15 @@ Implement Lesson 2 ("Viewing Changes & Safe Undo") for Chapter 8 (Git & GitHub f
 
 ## Validation Summary
 
-| Category | Score | Status |
-|----------|-------|--------|
-| Constitutional (7/7) | PASS | ✅ |
-| Stage 1 (5/5) | PASS | ✅ |
-| Deliberate Error (4/4) | PASS | ✅ |
-| Cognitive Load | Within limit | ✅ |
-| Learning Objectives (4/4) | PASS | ✅ |
-| Anti-Convergence (5/5) | PASS | ✅ |
-| Success Criteria | SC-003 & SC-012 | ✅ |
+| Category                  | Score           | Status |
+| ------------------------- | --------------- | ------ |
+| Constitutional (7/7)      | PASS            | ✅     |
+| Stage 1 (5/5)             | PASS            | ✅     |
+| Deliberate Error (4/4)    | PASS            | ✅     |
+| Cognitive Load            | Within limit    | ✅     |
+| Learning Objectives (4/4) | PASS            | ✅     |
+| Anti-Convergence (5/5)    | PASS            | ✅     |
+| Success Criteria          | SC-003 & SC-012 | ✅     |
 
 **FINAL STATUS**: ✅ IMPLEMENTATION COMPLETE & READY FOR PUBLICATION
 

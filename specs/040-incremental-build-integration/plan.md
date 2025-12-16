@@ -8,13 +8,13 @@
 
 ## Phase Overview
 
-| Phase | Focus | Deliverables | Dependencies |
-|-------|-------|--------------|--------------|
-| 1 | Hydration Script | `hydrate-book.py` CLI | MCP tools (existing) |
-| 2 | Ingestion Pipeline | `ingest-book.py` CLI | hydrate-book.py |
-| 3 | Makefile Integration | `make ingest`, `make hydrate` | Both scripts |
-| 4 | Local Testing | Test suite + fixtures | All scripts |
-| 5 | CI/CD Integration | GitHub Actions workflow | Tested scripts |
+| Phase | Focus                | Deliverables                  | Dependencies         |
+| ----- | -------------------- | ----------------------------- | -------------------- |
+| 1     | Hydration Script     | `hydrate-book.py` CLI         | MCP tools (existing) |
+| 2     | Ingestion Pipeline   | `ingest-book.py` CLI          | hydrate-book.py      |
+| 3     | Makefile Integration | `make ingest`, `make hydrate` | Both scripts         |
+| 4     | Local Testing        | Test suite + fixtures         | All scripts          |
+| 5     | CI/CD Integration    | GitHub Actions workflow       | Tested scripts       |
 
 ---
 
@@ -35,24 +35,28 @@ hydrate-book.py
 ### Implementation Sequence
 
 1. **MCP Client Module** (`panaversity-fs/scripts/hydrate/mcp_client.py`)
+
    - Connect to MCP server via HTTP/SSE
    - Implement `call_tool(tool_name, params)` wrapper
    - Implement `plan_build()` wrapper returning structured response
    - Implement `read_content()` for individual file downloads
 
 2. **Manifest Module** (`panaversity-fs/scripts/hydrate/manifest.py`)
+
    - Define `ManifestFile` Pydantic model: `{book_id, manifest_hash, timestamp, file_count}`
    - Implement `load_manifest(path)` → `ManifestFile | None`
    - Implement `save_manifest(path, manifest)`
    - Handle missing/corrupt manifest gracefully
 
 3. **Downloader Module** (`panaversity-fs/scripts/hydrate/downloader.py`)
+
    - Implement `download_changed_files(files: list, output_dir: Path)`
    - Stream downloads (don't load all into memory)
    - Handle subdirectory creation
    - Report progress (files downloaded, bytes transferred)
 
 4. **CLI Module** (`panaversity-fs/scripts/hydrate/cli.py`)
+
    - Click command with options:
      - `--book-id` (required)
      - `--output-dir` (default: `.docusaurus/content`)
@@ -90,12 +94,14 @@ ingest-book.py
 ### Implementation Sequence
 
 1. **Source Scanner** (`panaversity-fs/scripts/ingest/source_scanner.py`)
-   - Walk `book-source/docs/` recursively
+
+   - Walk `apps/learn-app/docs/` recursively
    - Identify markdown files and assets
    - Compute SHA256 for each file
    - Return `list[SourceFile]` with path, hash, content type
 
 2. **Path Mapper** (`panaversity-fs/scripts/ingest/path_mapper.py`)
+
    - Convert source paths to PanaversityFS schema:
      - `Part-01/Chapter-02/03-lesson.md` → `content/01-Part/02-Chapter/03-lesson.md`
      - `Part-01/Chapter-02/img/diagram.png` → `static/img/diagram.png`
@@ -103,6 +109,7 @@ ingest-book.py
    - Reject and log non-conforming paths
 
 3. **Sync Engine** (`panaversity-fs/scripts/ingest/sync_engine.py`)
+
    - Query current PanaversityFS state (glob_search + read_content for hashes)
    - Compare source files to storage files
    - Categorize: `added`, `modified`, `deleted`, `unchanged`
@@ -111,9 +118,10 @@ ingest-book.py
    - For deletes: `delete_content`
 
 4. **CLI Module** (`panaversity-fs/scripts/ingest/cli.py`)
+
    - Click command with options:
      - `--book-id` (required)
-     - `--source-dir` (default: `book-source/docs/`)
+     - `--source-dir` (default: `apps/learn-app/docs/`)
      - `--dry-run` (flag)
      - `--verbose` (flag)
    - Orchestrate: scan source → map paths → sync to storage → report summary
@@ -197,29 +205,35 @@ panaversity-fs/tests/
 ### Test Scenarios
 
 1. **Hydrate - First Build**
+
    - No manifest exists
    - All files downloaded
    - Manifest created with current hash
 
 2. **Hydrate - Incremental Build**
+
    - Manifest exists from previous build
    - Only changed files downloaded
    - Manifest updated with new hash
 
 3. **Hydrate - Full Rebuild Flag**
+
    - Manifest exists but `--full-rebuild` passed
    - All files downloaded (bypasses manifest)
    - Manifest updated
 
 4. **Ingest - New Files**
+
    - Source has files, storage empty
    - All files created in storage
 
 5. **Ingest - Modified Files**
+
    - Source file changed (different hash)
    - Storage file updated with new content
 
 6. **Ingest - Deleted Files**
+
    - Source file removed
    - Storage file deleted
 
@@ -243,11 +257,11 @@ on:
   push:
     branches: [main]
     paths:
-      - 'book-source/**'
+      - "book-source/**"
   workflow_dispatch:
     inputs:
       full_rebuild:
-        description: 'Force full rebuild'
+        description: "Force full rebuild"
         type: boolean
         default: false
 
@@ -260,7 +274,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
+          python-version: "3.13"
 
       - name: Install dependencies
         run: pip install -e ./panaversity-fs[dev]
@@ -317,12 +331,12 @@ jobs:
 
 ## Risk Mitigations
 
-| Risk | Mitigation in Plan |
-|------|-------------------|
+| Risk                   | Mitigation in Plan                                     |
+| ---------------------- | ------------------------------------------------------ |
 | MCP server unavailable | Scripts fail fast with clear error; no silent fallback |
-| Large book timeout | Streaming downloads; 10-minute timeout for full builds |
-| Manifest corruption | Validate JSON before use; fallback to full rebuild |
-| Path mapping errors | Strict validation; reject and log non-conforming paths |
+| Large book timeout     | Streaming downloads; 10-minute timeout for full builds |
+| Manifest corruption    | Validate JSON before use; fallback to full rebuild     |
+| Path mapping errors    | Strict validation; reject and log non-conforming paths |
 
 ---
 
@@ -362,17 +376,17 @@ panaversity-fs/
 
 ## Estimated Complexity
 
-| Component | Files | Complexity | Notes |
-|-----------|-------|------------|-------|
-| MCP Client | 1 | Low | HTTP POST wrapper |
-| Manifest Module | 1 | Low | JSON read/write |
-| Downloader | 1 | Medium | Streaming, progress |
-| Hydrate CLI | 1 | Medium | Orchestration |
-| Source Scanner | 1 | Low | Directory walk |
-| Path Mapper | 1 | Medium | Regex validation |
-| Sync Engine | 1 | Medium | Diff logic |
-| Ingest CLI | 1 | Medium | Orchestration |
-| Tests | 4+ | Medium | Integration tests |
-| CI/CD | 1 | Low | YAML workflow |
+| Component       | Files | Complexity | Notes               |
+| --------------- | ----- | ---------- | ------------------- |
+| MCP Client      | 1     | Low        | HTTP POST wrapper   |
+| Manifest Module | 1     | Low        | JSON read/write     |
+| Downloader      | 1     | Medium     | Streaming, progress |
+| Hydrate CLI     | 1     | Medium     | Orchestration       |
+| Source Scanner  | 1     | Low        | Directory walk      |
+| Path Mapper     | 1     | Medium     | Regex validation    |
+| Sync Engine     | 1     | Medium     | Diff logic          |
+| Ingest CLI      | 1     | Medium     | Orchestration       |
+| Tests           | 4+    | Medium     | Integration tests   |
+| CI/CD           | 1     | Low        | YAML workflow       |
 
 **Total**: ~12 files, ~1000-1500 lines of code

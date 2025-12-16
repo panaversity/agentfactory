@@ -3,7 +3,7 @@
 **Input**: Design documents from `/specs/036-chapter-14-sdd-ri-hands-on/`
 **Prerequisites**: spec.md (user stories), plan.md (lesson structure with content strategy)
 **Project Type**: Educational Content (Docusaurus lessons)
-**Target Directory**: `book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/`
+**Target Directory**: `apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/`
 
 **Policy**: Within this chapter, each lesson must end with a single final section titled "Try With AI" (no "Key Takeaways" or "What's Next"). Students use their preferred AI companion tool (Claude Code, Gemini CLI).
 
@@ -16,6 +16,7 @@
 ## Content Strategy Key
 
 From plan.md alignment decision:
+
 - **KEEP & IMPROVE**: Same structure, better examples (video domain)
 - **KEEP & EXTEND**: Add new content (e.g., Playwright MCP setup)
 - **KEEP & PIVOT**: Same pattern, new domain examples
@@ -29,9 +30,9 @@ From plan.md alignment decision:
 **Purpose**: Prepare chapter structure and validate existing content
 
 - [x] T001 Create feature branch `036-chapter-14-sdd-ri-hands-on` and verify checkout
-- [x] T002 [P] Audit existing lessons in `book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/` — document current state
+- [x] T002 [P] Audit existing lessons in `apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/` — document current state
 - [x] T003 [P] Review Chapter 13 lessons for anti-convergence verification — ensure Chapter 14 modality differs
-- [x] T004 Update `book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/README.md` with new chapter overview (video/YouTube project framing)
+- [x] T004 Update `apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/README.md` with new chapter overview (video/YouTube project framing)
 
 **Checkpoint**: Chapter structure ready, content strategy validated
 
@@ -246,7 +247,7 @@ From plan.md alignment decision:
 ### Cross-Cutting Validation
 
 - [x] T047 Run constitutional compliance check:
-  - `grep -i "What to notice\|AI.*teach\|AI.*learn\|AI as\|AI now knows" book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/*.md`
+  - `grep -i "What to notice\|AI.*teach\|AI.*learn\|AI as\|AI now knows" apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/*.md`
   - Expected: Zero matches (Three Roles framework invisible)
 - [x] T048 Verify all lessons end with "Try With AI" (no "Summary", "What's Next", "Key Takeaways")
 - [x] T049 Validate cognitive load per lesson (max 7 concepts for A2-B1 tier)
@@ -304,16 +305,20 @@ L10 (Brownfield): Standalone after L03
 ### Parallel Opportunities
 
 **Within Phase 2** (after T004):
+
 - T005-T007 (L01) can run parallel with T008-T010 (L02)
 
 **Within Phase 3**:
+
 - T014 (L04 content) can run parallel with T021 (L06 content) — different files
 - T025 (L07 content) can run parallel with T029 (L08 content) — different files
 
 **Phase 5 + Phase 6**:
+
 - L10 (Brownfield) can run parallel with L11 (Capstone) — independent content
 
 **Within Phase 7**:
+
 - T045-T046 (Quiz) can run parallel with T047-T050 (Validation)
 
 ---
@@ -358,17 +363,17 @@ Task: T029 "Create new content for 08-implement-phase.md"
 
 ## Summary
 
-| Phase | Tasks | Parallelizable | User Story |
-|-------|-------|----------------|------------|
-| Setup | T001-T004 | 2 | — |
-| Foundation | T005-T013 | 3 | US1 |
-| US1 Workflow | T014-T032 | 4 | US1 |
-| US2 Intelligence | T033-T037 | 1 | US2 |
-| Brownfield | T038-T040 | 1 | — |
-| US3 Capstone | T041-T044 | 1 | US3 |
-| Quiz & Validation | T045-T050 | 2 | — |
-| Polish | T051-T055 | 2 | — |
-| **Total** | **55 tasks** | **16 parallel** | |
+| Phase             | Tasks        | Parallelizable  | User Story |
+| ----------------- | ------------ | --------------- | ---------- |
+| Setup             | T001-T004    | 2               | —          |
+| Foundation        | T005-T013    | 3               | US1        |
+| US1 Workflow      | T014-T032    | 4               | US1        |
+| US2 Intelligence  | T033-T037    | 1               | US2        |
+| Brownfield        | T038-T040    | 1               | —          |
+| US3 Capstone      | T041-T044    | 1               | US3        |
+| Quiz & Validation | T045-T050    | 2               | —          |
+| Polish            | T051-T055    | 2               | —          |
+| **Total**         | **55 tasks** | **16 parallel** |            |
 
 ### Task Count by User Story
 
@@ -380,6 +385,7 @@ Task: T029 "Create new content for 08-implement-phase.md"
 ### Suggested MVP Scope
 
 **MVP = Phase 1 + Phase 2 + Phase 3 (US1)**
+
 - 41 tasks covering Setup → Foundation → Complete SDD-RI Workflow
 - Student outcome: Video file generated using Spec-Kit Plus workflow
 - Validates: Core chapter value proposition before skills/capstone layers

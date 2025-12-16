@@ -9,14 +9,15 @@ feature: "001-part-4-chapter-18"
 branch: "main"
 user: "system"
 command: "/sp.implement for Chapter 18, Lesson 7"
-labels: ["dictionaries", "python", "intermediate", "A2-proficiency", "technical"]
+labels:
+  ["dictionaries", "python", "intermediate", "A2-proficiency", "technical"]
 links:
   spec: "specs/001-part-4-chapter-18/spec.md"
   plan: "specs/001-part-4-chapter-18/plan.md"
   pr: "null"
   adr: "null"
 files_created:
-  - "book-source/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/07-lesson-7.md"
+  - "apps/learn-app/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/07-lesson-7.md"
 ---
 
 ## Summary
@@ -28,11 +29,13 @@ Implemented Lesson 7 ("Dictionaries Part 1 - Key-Value Mappings") for Chapter 18
 Write Lesson 7: "Dictionaries Part 1 - Key-Value Mappings" for Chapter 18.
 
 **Context**:
+
 - **Specification**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ai-native-software-development/specs/001-part-4-chapter-18/spec.md`
 - **Plan**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ai-native-software-development/specs/001-part-4-chapter-18/plan.md` (Lesson 7 section, lines 451-499)
-- **Output Path**: `book-source/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/07-lesson-7.md`
+- **Output Path**: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/07-lesson-7.md`
 
 **Task Details** (from tasks.md T009):
+
 - **Content**: 6 concepts (dict literals, type hints dict[K,V], bracket notation, KeyError, .get() with defaults, unique keys)
 - **CEFR Level**: A2 (Basic)
 - **Learning Objectives**: LO-002j, LO-002k, LO-001e, LO-004g
@@ -40,6 +43,7 @@ Write Lesson 7: "Dictionaries Part 1 - Key-Value Mappings" for Chapter 18.
 - **Try With AI**: 4 prompts with Bloom's progression
 
 **Requirements**:
+
 1. Read spec.md and plan.md Lesson 7 section
 2. Follow `.claude/output-styles/lesson.md` format
 3. 6 concepts (within A2 limit of 7), CoLearning elements throughout
@@ -51,7 +55,7 @@ Write Lesson 7: "Dictionaries Part 1 - Key-Value Mappings" for Chapter 18.
 
 ### Content Delivered
 
-**File Written**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ai-native-software-development/book-source/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/07-lesson-7.md`
+**File Written**: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ai-native-software-development/apps/learn-app/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/07-lesson-7.md`
 
 ### Structural Compliance
 
@@ -67,12 +71,14 @@ Write Lesson 7: "Dictionaries Part 1 - Key-Value Mappings" for Chapter 18.
 ### Pedagogical Features Applied
 
 1. **Learning Objectives Alignment**:
+
    - LO-002j: Create dictionaries with type hints (Exercise 1, Practical Example)
    - LO-002k: Access values using bracket notation and .get() (Exercise 2, Bracket vs .get() table)
    - LO-001e: Explain key-value mapping vs lists (AI Colearning Prompt 1)
    - LO-004g: Understand KeyError and .get() with defaults (KeyError section, AI Teaching Tip)
 
 2. **Concept Scaffolding (6 concepts within A2 limit of 7)**:
+
    - Dictionary literals: `{"key": value, ...}` syntax ✓
    - Type hints: `dict[str, int]`, `dict[str, str | int]` ✓
    - Accessing values: bracket notation `dict[key]` ✓
@@ -81,6 +87,7 @@ Write Lesson 7: "Dictionaries Part 1 - Key-Value Mappings" for Chapter 18.
    - Unique keys: duplicate keys overwrite earlier values ✓
 
 3. **Code Examples Quality**:
+
    - All examples use Python 3.14+ type hints
    - Complete working examples (not pseudocode)
    - Demonstrated output shown for clarity
@@ -89,6 +96,7 @@ Write Lesson 7: "Dictionaries Part 1 - Key-Value Mappings" for Chapter 18.
    - Practical contexts: student records, config settings, grades, user profiles, contact systems
 
 4. **CoLearning Elements** (4 total, appropriate for intermediate A2 level):
+
    - **💬 AI Colearning Prompt 1** (Dictionary concept): "Why would you use a dictionary instead of a list?"
    - **🎓 Instructor Commentary**: "Type hints are communication—they're not just syntax"
    - **🚀 CoLearning Challenge**: Create user profile with type hints, explain union types
@@ -97,6 +105,7 @@ Write Lesson 7: "Dictionaries Part 1 - Key-Value Mappings" for Chapter 18.
    - **🎓 Instructor Commentary**: "Code reads like English; dictionaries are self-documenting"
 
 5. **CEFR A2 Proficiency Alignment**:
+
    - **Cognitive Level**: Content targets Understand and Apply (appropriate for A2)
    - **Complexity**: Foundational concepts, simple applications
    - **Scaffolding**: Literal syntax before union types; bracket notation before .get(); simple examples before real-world contexts
@@ -104,6 +113,7 @@ Write Lesson 7: "Dictionaries Part 1 - Key-Value Mappings" for Chapter 18.
    - **Accessibility**: Grade 7-8 reading level, conversational tone, no gatekeeping language
 
 6. **Try With AI Closure**:
+
    - Prompt 1 (Understand/Remember): Explain dictionary vs list concept
    - Prompt 2 (Understand): Explore bracket vs .get() trade-offs
    - Prompt 3 (Apply): Code user profile with all concepts
@@ -123,6 +133,7 @@ Write Lesson 7: "Dictionaries Part 1 - Key-Value Mappings" for Chapter 18.
 ### Validation Checklist
 
 **All Chapters**:
+
 - ✓ Skills Proficiency Validation: Content matches A2 CEFR level (recognition + simple application with scaffolding)
 - ✓ Cognitive Load Validation: 6 new concepts ≤ A2 limit of 7
 - ✓ Bloom's Taxonomy Alignment: Apply/Understand level matches A2 proficiency
@@ -141,6 +152,7 @@ Write Lesson 7: "Dictionaries Part 1 - Key-Value Mappings" for Chapter 18.
 - ✓ Ends with "Try With AI" section only; no "Key Takeaways" or "What's Next"
 
 **Technical Chapters**:
+
 - ✓ All code examples include type hints and docstrings (where appropriate)
 - ✓ Code tested conceptually on Python 3.14+ syntax (dict literals, union types, type hints, .get() method)
 - ✓ 4 practice exercises with increasing difficulty (create dict → safe access → union types → real-world)
@@ -150,6 +162,7 @@ Write Lesson 7: "Dictionaries Part 1 - Key-Value Mappings" for Chapter 18.
 - ✓ "Common Pitfalls" implicitly addressed (KeyError handling, unique keys overwriting)
 
 **Beginner Content** (Chapter 18 is Intermediate A2-B1):
+
 - ✓ Concepts explained before syntax (WHAT dicts are → WHY they're useful → HOW to use them)
 - ✓ Max 2-3 access patterns shown (bracket notation, .get(), preview of methods)
 - ✓ Max 6 new concepts per section ✓

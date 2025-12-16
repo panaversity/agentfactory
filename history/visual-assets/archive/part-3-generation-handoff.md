@@ -10,12 +10,14 @@
 ## Executive Summary
 
 **Completed Work:**
+
 - ✅ Audit: 8 visuals approved across Chapters 10-11
 - ✅ Prompts: All 8 detailed prompts generated and embedded in lesson markdown
 - ✅ Browser Setup: 8 Gemini tabs opened at https://gemini.google.com/app
 - ✅ Generation Started: Tabs 0-1 submitted and generating
 
 **Ready for Continuation:**
+
 - 🔄 Tabs 2-7: Need prompts pasted (all prompts extracted and ready below)
 - 🔄 All 8 tabs: Need quality validation at 99% threshold
 - 🔄 Integration: Download → Update markdown → Create sidecars → Final QA
@@ -25,6 +27,7 @@
 ## Current Browser State
 
 ### Active Tabs (8 total)
+
 ```
 - Tab 0: https://gemini.google.com/app/e0d5cf58275b6878 [GENERATING] Visual 1
 - Tab 1: https://gemini.google.com/app/ecfd56a253d4a1d2 [GENERATING] Visual 2
@@ -43,6 +46,7 @@
 ### Chapter 10: Prompt Engineering (5 visuals)
 
 #### Visual 1: Context Window Mental Model
+
 - **Status**: Tab 0 GENERATING
 - **File**: `10-prompt-engineering-for-aidd/01-understanding-ai-agents.md:144`
 - **Destination**: `book-source/static/img/part-3/chapter-10/context-window-mental-model.png`
@@ -51,6 +55,7 @@
 - **Spelling Safeguards**: C-O-N-V-E-R-S-A-T-I-O-N, H-I-S-T-O-R-Y
 
 #### Visual 2: Command Structure Formula
+
 - **Status**: Tab 1 GENERATING
 - **File**: `10-prompt-engineering-for-aidd/02-writing-clear-commands.md:250`
 - **Destination**: `book-source/static/img/part-3/chapter-10/command-structure-formula.png`
@@ -59,6 +64,7 @@
 - **Spelling Safeguards**: V-A-L-I-D-A-T-E-S
 
 #### Visual 3: 4-Layer Context Stack
+
 - **Status**: Tab 2 READY (prompt below)
 - **File**: `10-prompt-engineering-for-aidd/03-providing-context.md:127`
 - **Destination**: `book-source/static/img/part-3/chapter-10/four-layer-context-stack.png`
@@ -67,6 +73,7 @@
 - **Spelling Safeguards**: C-O-N-S-T-R-A-I-N-T, D-E-V-E-L-O-P-E-R
 
 #### Visual 4: Requirements vs Logic Split-Screen
+
 - **Status**: Tab 3 READY (prompt below)
 - **File**: `10-prompt-engineering-for-aidd/04-specifying-logic.md:65`
 - **Destination**: `book-source/static/img/part-3/chapter-10/requirements-vs-logic-split-screen.png`
@@ -75,6 +82,7 @@
 - **Spelling Safeguards**: R-E-G-I-S-T-R-A-T-I-O-N, V-A-L-I-D-A-T-E
 
 #### Visual 5: 5-Step Validation Checklist
+
 - **Status**: Tab 4 READY (prompt below)
 - **File**: `10-prompt-engineering-for-aidd/05-validating-code.md:69`
 - **Destination**: `book-source/static/img/part-3/chapter-10/five-step-validation-checklist.png`
@@ -87,6 +95,7 @@
 ### Chapter 11: Context Engineering (3 visuals)
 
 #### Visual 6: Context Engineering vs Prompt Engineering
+
 - **Status**: Tab 5 READY (prompt below)
 - **File**: `11-context-engineering-for-ai-driven-development/01-what-is-context-engineering.md:214`
 - **Destination**: `book-source/static/img/part-3/chapter-11/context-vs-prompt-engineering.png`
@@ -95,6 +104,7 @@
 - **Spelling Safeguards**: E-N-G-I-N-E-E-R-I-N-G (appears twice), I-N-S-T-R-U-C-T-I-O-N-S
 
 #### Visual 7: Context Window Fill States
+
 - **Status**: Tab 6 READY (prompt below)
 - **File**: `11-context-engineering-for-ai-driven-development/02-understanding-context-windows.md:187`
 - **Destination**: `book-source/static/img/part-3/chapter-11/context-window-fill-states.png`
@@ -103,6 +113,7 @@
 - **Spelling Safeguards**: D-E-G-R-A-D-I-N-G, I-N-C-O-N-S-I-S-T-E-N-C-I-E-S
 
 #### Visual 8: Six Components of AIDD Context
+
 - **Status**: Tab 7 READY (prompt below)
 - **File**: `11-context-engineering-for-ai-driven-development/03-six-components-aidd-context.md:70`
 - **Destination**: `book-source/static/img/part-3/chapter-11/six-components-aidd-context.png`
@@ -691,11 +702,13 @@ Dimensions: 16:9 aspect ratio (1792x1024px)
 ### Phase 1: Complete Prompt Submission (10 minutes)
 
 1. **Check Tabs 0-1 Status**
+
    - Switch to Tab 0: Verify Visual 1 generation complete or still processing
    - Switch to Tab 1: Verify Visual 2 generation complete or still processing
    - If still generating, proceed to Tabs 2-7 while waiting
 
 2. **Paste Prompts to Tabs 2-7**
+
    - Tab 2: Click textbox → Paste Visual 3 prompt (above) → Press Enter
    - Tab 3: Click textbox → Paste Visual 4 prompt (above) → Press Enter
    - Tab 4: Click textbox → Paste Visual 5 prompt (above) → Press Enter
@@ -717,11 +730,13 @@ Dimensions: 16:9 aspect ratio (1792x1024px)
 For each of the 8 images:
 
 1. **Take Screenshot**
+
    ```javascript
-   mcp__playwright__browser_take_screenshot
+   mcp__playwright__browser_take_screenshot;
    ```
 
 2. **Visual Inspection Checklist**
+
    - ✅ **Spelling**: Letter-by-letter verification against safeguards list above
    - ✅ **Layout**: Matches prompt specifications (dimensions, spacing, alignment)
    - ✅ **Colors**: Polar Night theme colors correct (Deep Navy #001f3f, Medium Gray #aaaaaa, etc.)
@@ -732,9 +747,11 @@ For each of the 8 images:
 3. **Quality Decision Tree**
 
    **If PERFECT (99% quality):**
+
    - ✅ Accept → Proceed to download
 
    **If spelling error or layout issue:**
+
    - Apply Chapter 1-2 learnings:
      - **First attempt**: Add hyphenation to compound words (e.g., "work-flow" instead of "workflow")
      - **Second attempt**: Start fresh session in new tab (Gemini sometimes "remembers" errors)
@@ -752,7 +769,9 @@ For each approved image:
 
 1. **Right-click Image in Gemini** → Save As
 2. **Save Location & Naming**:
+
    - **Chapter 10 (5 images)**:
+
      - `/book-source/static/img/part-3/chapter-10/context-window-mental-model.png`
      - `/book-source/static/img/part-3/chapter-10/command-structure-formula.png`
      - `/book-source/static/img/part-3/chapter-10/four-layer-context-stack.png`
@@ -776,9 +795,10 @@ For each of the 8 lessons, replace HTML comment with image markdown:
 
 #### Example: Visual 1 (Context Window Mental Model)
 
-**File**: `book-source/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/01-understanding-ai-agents.md`
+**File**: `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/01-understanding-ai-agents.md`
 
 **Find** (line ~144):
+
 ```markdown
 <!-- VISUAL ASSET 1: Context Window Mental Model
 
@@ -788,6 +808,7 @@ IMAGE GENERATION PROMPT:
 ```
 
 **Replace with**:
+
 ```markdown
 ![Context Window Mental Model - AI context window shown as limited memory container with two sections: top half shows Conversation History with chat bubbles, bottom half shows Loaded Files (README.md, auth.py, config.py), and overflow indicator arrow pointing to "Forgotten" box below container](/img/part-3/chapter-10/context-window-mental-model.png)
 ```
@@ -801,6 +822,7 @@ IMAGE GENERATION PROMPT:
 For each image, create regeneration sidecar:
 
 **Template** (`context-window-mental-model.prompt.md`):
+
 ```markdown
 # Image Generation Prompt: Context Window Mental Model
 
@@ -830,6 +852,7 @@ For each image, create regeneration sidecar:
 ## Regeneration Instructions
 
 If regeneration needed:
+
 1. Use this exact prompt in Gemini
 2. Apply 99% quality threshold
 3. If spelling errors: try hyphenation (conver-sation, his-tory)
@@ -844,23 +867,27 @@ If regeneration needed:
 ### Phase 6: Final Quality Check (5 minutes)
 
 1. **Local Docusaurus Preview**
+
    ```bash
    cd book-source
    npm run start
    ```
 
 2. **Visual Verification in Browser**
+
    - Navigate to each of the 8 lessons
    - Verify images render correctly
    - Check alt text displays properly
    - Confirm no broken image links
 
 3. **Markdown Validation**
+
    - Verify no leftover HTML comments in lesson files
    - Check image paths are correct (`/img/part-3/...`)
    - Confirm alt text is descriptive and accessible
 
 4. **File Inventory**
+
    ```bash
    # Should show 8 images
    ls -la book-source/static/img/part-3/chapter-10/
@@ -877,6 +904,7 @@ If regeneration needed:
 **File**: `history/visual-assets/part-3-visual-assets-report.md`
 
 **Template**:
+
 ```markdown
 # Part 3 Visual Assets - Completion Report
 
@@ -889,6 +917,7 @@ If regeneration needed:
 ## Generation Summary
 
 ### First-Attempt Success Rate
+
 - Visual 1: ✅ (1 attempt)
 - Visual 2: ✅ (1 attempt)
 - Visual 3: ✅ (1 attempt)
@@ -906,6 +935,7 @@ If regeneration needed:
 ## Quality Assessment
 
 All 8 visuals met 99% quality threshold:
+
 - ✅ Spelling: Perfect (all safeguarded words correct)
 - ✅ Layout: Clean and professional
 - ✅ Colors: Polar Night theme consistent
@@ -917,6 +947,7 @@ All 8 visuals met 99% quality threshold:
 ## Files Modified
 
 ### Lesson Markdown Files (8)
+
 1. `10-prompt-engineering-for-aidd/01-understanding-ai-agents.md`
 2. `10-prompt-engineering-for-aidd/02-writing-clear-commands.md`
 3. `10-prompt-engineering-for-aidd/03-providing-context.md`
@@ -927,10 +958,12 @@ All 8 visuals met 99% quality threshold:
 8. `11-context-engineering-for-ai-driven-development/03-six-components-aidd-context.md`
 
 ### Image Files Created (8)
+
 - `book-source/static/img/part-3/chapter-10/` (5 images)
 - `book-source/static/img/part-3/chapter-11/` (3 images)
 
 ### Sidecar Files Created (8)
+
 - Regeneration prompts stored alongside each image
 
 ---
@@ -938,15 +971,18 @@ All 8 visuals met 99% quality threshold:
 ## Lessons Learned
 
 ### What Worked
+
 - Letter-by-letter spelling safeguards prevented errors
 - Negative instructions kept visuals clean
 - Text-free arrows eliminated label issues
 - Prompt minimalism (<300 words) maintained quality
 
 ### Challenges
+
 [Document any regeneration issues encountered]
 
 ### Recommendations
+
 - Continue using letter-by-letter spelling for complex words
 - Maintain 99% quality threshold
 - Keep prompts under 300 words
@@ -975,8 +1011,9 @@ All 8 visuals met 99% quality threshold:
 ## Quick Reference: File Paths
 
 ### Source Lesson Files
+
 ```
-book-source/docs/03-Markdown-Prompt-Context-Engineering/
+apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/
 ├── 10-prompt-engineering-for-aidd/
 │   ├── 01-understanding-ai-agents.md (Visual 1, line 144)
 │   ├── 02-writing-clear-commands.md (Visual 2, line 250)
@@ -990,6 +1027,7 @@ book-source/docs/03-Markdown-Prompt-Context-Engineering/
 ```
 
 ### Image Destination Directories
+
 ```
 book-source/static/img/part-3/
 ├── chapter-10/  (5 images + 5 .prompt.md sidecars)
@@ -997,6 +1035,7 @@ book-source/static/img/part-3/
 ```
 
 ### History Documentation
+
 ```
 history/visual-assets/
 ├── part-3-complete-audit-report.md (✅ complete)
@@ -1011,6 +1050,7 @@ history/visual-assets/
 ## Design System Reference
 
 ### Polar Night Color Palette
+
 - **Deep Navy**: `#001f3f` - Primary accent (borders, titles, important elements)
 - **Dark Charcoal**: `#111111` - Main text
 - **Medium Gray**: `#aaaaaa` - Secondary text, icons, arrows
@@ -1018,6 +1058,7 @@ history/visual-assets/
 - **White**: `#FFFFFF` - Backgrounds
 
 ### Typography Standards
+
 - **Font Family**: Roboto (Sans-serif)
 - **Weights**: Bold (titles), Medium (labels), Regular (body text)
 - **Sizes**:
@@ -1027,6 +1068,7 @@ history/visual-assets/
   - Labels: 14-16pt
 
 ### Visual Standards
+
 - **Aspect Ratio**: 16:9 (1792x1024px)
 - **Shadows**: `0px 2px 8px rgba(0,0,0,0.08)` (subtle only)
 - **Border Radius**: 8px (rounded rectangles)
@@ -1059,18 +1101,21 @@ history/visual-assets/
 ## Emergency Procedures
 
 ### If Gemini Session Expires
+
 1. Open new Gemini tab
 2. Paste prompt from this document
 3. Generate fresh image
 4. Continue validation workflow
 
 ### If Quality Threshold Not Met After 3 Attempts
+
 1. Document issue in `part-3-regeneration-log.md`
 2. Simplify visual (reduce elements by 30%)
 3. Regenerate with simplified prompt
 4. Accept 95% quality if pedagogical value maintained
 
 ### If Token Budget Exhausted Mid-Workflow
+
 1. Save current progress state
 2. Document completed phases
 3. Create continuation handoff for next session
@@ -1081,11 +1126,13 @@ history/visual-assets/
 ## Contact & Escalation
 
 **If Issues Arise**:
+
 - Review constitution: `.specify/memory/constitution.md`
 - Check Chapter 1-2 learnings: `history/visual-assets/part-1-complete-report.md`, `history/visual-assets/part-2-complete-report.md`
 - Consult pedagogy: `.claude/skills/visual-asset-workflow.md`
 
 **Escalation Path**:
+
 1. Apply decision tree (hyphenate → fresh session → simplify)
 2. Document in regeneration log
 3. If 3+ failures on same visual, flag for architectural review

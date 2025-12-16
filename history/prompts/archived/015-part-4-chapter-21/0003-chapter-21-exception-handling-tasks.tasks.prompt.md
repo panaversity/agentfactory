@@ -9,7 +9,14 @@ feature: 015-part-4-chapter-21
 branch: 015-part-4-chapter-21
 user: mjs
 command: /sp.tasks 015-part-4-chapter-21
-labels: ["python-chapter", "exception-handling", "task-generation", "lesson-implementation", "intermediate"]
+labels:
+  [
+    "python-chapter",
+    "exception-handling",
+    "task-generation",
+    "lesson-implementation",
+    "intermediate",
+  ]
 links:
   spec: /specs/015-part-4-chapter-21/spec.md
   plan: /specs/015-part-4-chapter-21/plan.md
@@ -32,10 +39,12 @@ tests:
 Generate comprehensive task checklist (tasks.md) from approved spec.md and plan.md for Chapter 21: Exception Handling.
 
 Input documents:
+
 - spec.md: 3 user stories (P1: Fundamentals, P2: Raising Exceptions, P3: Capstone)
 - plan.md: 5 lessons with CEFR levels, cognitive load validation, concept distribution
 
 Requirements:
+
 1. Organize tasks by lesson (map user stories → lessons)
 2. All tasks follow format: `- [ ] [ID] [P?] [Lesson] Description with file path`
 3. Sequential dependencies enforced (Lesson N builds on Lessons 1-N-1)
@@ -66,16 +75,19 @@ Output: Immediately executable tasks.md with 119 atomic, testable tasks across 7
 | **TOTAL** | **119** | **74 (62%)** | **45** | **5 lessons + polish** |
 
 **Lesson Mapping** (User Stories → Lessons):
+
 - User Story 1 (P1 - Fundamentals) → Lessons 1-2 (A2 → A2-B1)
 - User Story 2 (P2 - Raising Exceptions) → Lessons 3-4 (B1)
 - User Story 3 (P3 - Capstone) → Lesson 5 (B1 integration)
 
 **Dependencies Validated**:
+
 - Strict sequential: Phase 1 → 2 → 3 → 4 → 5 → 6 → 7
 - Within-lesson parallelization: Code examples, exercises, CoLearning elements
 - Lesson boundaries enforced: Lesson N uses only concepts 1-N (no forward references)
 
 **Independent Test Criteria** (Each Lesson):
+
 - Lesson 1: Student writes try/except catching 2+ exception types
 - Lesson 2: Student writes code with try/except/else/finally, predicts control flow
 - Lesson 3: Student writes function raising custom exception + caller catching it
@@ -83,6 +95,7 @@ Output: Immediately executable tasks.md with 119 atomic, testable tasks across 7
 - Lesson 5: Parser handles 4+ error types, provides helpful feedback, reports summary
 
 **Policy Notes Included**:
+
 - Lesson closure pattern: "Try With AI" ONLY (no summaries/checklists after)
 - No SDD terminology in Part 4 (use "describe intent" not "write specification")
 - AI tool references: ChatGPT (Part 1) → Claude Code/Gemini CLI (Part 2+)
@@ -90,7 +103,7 @@ Output: Immediately executable tasks.md with 119 atomic, testable tasks across 7
 
 **Format Validation**:
 ✅ All 119 tasks follow strict checklist format: `- [ ] [ID] [P?] [Lesson] Description`
-✅ All tasks include file paths (book-source/docs/04-Part-4-Python-Fundamentals/21-exception-handling/)
+✅ All tasks include file paths (apps/learn-app/docs/04-Part-4-Python-Fundamentals/21-exception-handling/)
 ✅ All parallelizable tasks marked with [P]
 ✅ All lesson tasks marked with [L1], [L2], [L3], [L4], or [L5]
 ✅ Setup and Polish tasks have no lesson label (correct)

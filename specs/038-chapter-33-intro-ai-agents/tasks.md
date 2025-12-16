@@ -14,6 +14,7 @@
 **ALL content must align with Google's "Introduction to Agents" whitepaper (November 2025).**
 
 **Key Frameworks (MUST teach exactly)**:
+
 1. **5-Level Taxonomy**: Level 0 (Core Reasoning) → Level 4 (Self-Evolving System)
 2. **3+1 Architecture**: Model ("Brain") + Tools ("Hands") + Orchestration ("Nervous System") + Deployment ("Body")
 3. **5-Step Operational Loop**: Get Mission → Scan Scene → Think → Act → Observe
@@ -70,13 +71,15 @@
 ## Path Conventions
 
 **Content Directory**:
+
 ```
-book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
+apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 ```
 
 **Assets Directory**:
+
 ```
-book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/_assets/
+apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/_assets/
 ```
 
 ---
@@ -84,6 +87,7 @@ book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/
 ## Phase 0: Research & Preparation
 
 ### TASK-001: Validate Statistics with Sources
+
 **Priority**: P1 (Critical)
 **Estimated Time**: 1 hour
 **Dependencies**: None
@@ -102,6 +106,7 @@ Verify all statistics cited in the spec and plan with authoritative sources. Cre
 | 7x growth in AI fluency demand | LinkedIn/O'Reilly analysis |
 
 **Acceptance Criteria**:
+
 - [x] All 5 statistics verified with URLs
 - [x] Access dates recorded
 - [x] citations.md created at `specs/038-chapter-33-intro-ai-agents/citations.md`
@@ -112,6 +117,7 @@ Verify all statistics cited in the spec and plan with authoritative sources. Cre
 ---
 
 ### TASK-002: Research SDK Documentation for Lesson 7
+
 **Priority**: P2 (High)
 **Estimated Time**: 2 hours
 **Dependencies**: None
@@ -122,12 +128,14 @@ Verify all statistics cited in the spec and plan with authoritative sources. Cre
 Research official documentation for the 4 SDK frameworks to create accurate comparison in Lesson 7.
 
 **Frameworks to Research**:
+
 1. **OpenAI Agents SDK**: Philosophy, key features, strengths, when to use
 2. **Google ADK**: Agent Engine, MCP support, callbacks, plugins (paper emphasizes this)
 3. **Anthropic Agents Kit**: Safety-first approach, extended thinking
 4. **LangChain**: Model-agnostic, composability, tool ecosystem
 
 **Acceptance Criteria**:
+
 - [x] Each framework: 3-4 distinguishing characteristics documented
 - [x] Comparison matrix drafted
 - [x] Official documentation URLs recorded
@@ -139,14 +147,16 @@ Research official documentation for the 4 SDK frameworks to create accurate comp
 ## Phase 1: Foundation Content (Layer 1)
 
 ### TASK-003: Create Chapter README.md
+
 **Priority**: P1 (Critical)
 **Estimated Time**: 30 minutes
 **Dependencies**: None
 **Assignee**: Content Implementer
 
-**File Path**: `book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/README.md`
+**File Path**: `apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/README.md`
 
 **Content Requirements**:
+
 - Chapter title: "Introduction to AI Agents"
 - Chapter overview (bridge from Part 5 Python to Part 6 AI Native)
 - **8 lessons** listed with titles and brief descriptions
@@ -156,6 +166,7 @@ Research official documentation for the 4 SDK frameworks to create accurate comp
 - What's next: Chapter 34 (OpenAI Agents SDK)
 
 **Frontmatter**:
+
 ```yaml
 ---
 sidebar_position: 33
@@ -165,6 +176,7 @@ description: "Foundational concepts for AI agent development using Google's auth
 ```
 
 **Acceptance Criteria**:
+
 - [ ] All 8 lessons listed with descriptions
 - [ ] Paper frameworks mentioned in objectives
 - [ ] Prerequisites clearly stated
@@ -175,21 +187,24 @@ description: "Foundational concepts for AI agent development using Google's auth
 ---
 
 ### TASK-004: Write Lesson 1 — What Is an AI Agent?
+
 **Priority**: P1 (Critical)
 **Estimated Time**: 2 hours
 **Dependencies**: TASK-003
 **Assignee**: Content Implementer
 
-**File Path**: `book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/01-what-is-an-ai-agent.md`
+**File Path**: `apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/01-what-is-an-ai-agent.md`
 
 **Paper Source**: "From Predictive AI to Autonomous Agents", "Introduction to AI Agent", taxonomy section
 
 **Learning Objectives**:
+
 - LO1.1: Define AI agent using paper's definition
 - LO1.2: Classify systems using **5-Level Taxonomy** (Level 0-4)
 - LO1.3: Articulate "director vs bricklayer" paradigm shift
 
 **Content Sections** (from plan.md):
+
 1. **Why Agents Matter Now** (hook with 800M+ users, paradigm shift)
 2. **The Paper's Definition**: "The combination of models, tools, an orchestration layer, and runtime services which uses the LM in a loop to accomplish a goal"
 3. **5-Level Taxonomy** (MUST match paper exactly):
@@ -203,12 +218,14 @@ description: "Foundational concepts for AI agent development using Google's auth
 6. **Try With AI — Classify Systems** (action prompts to classify Claude Code, ChatGPT, etc.)
 
 **Constraints**:
+
 - Layer 1 only (no "Tell your AI..." in main content)
 - 3 NEW concepts maximum
 - All statistics must have inline citations
 - Paper's exact terminology for taxonomy
 
 **Acceptance Criteria**:
+
 - [ ] Paper's agent definition quoted accurately
 - [ ] 5-Level Taxonomy uses paper's exact Level 0-4 classification
 - [ ] "Director vs bricklayer" quote from paper included
@@ -222,21 +239,24 @@ description: "Foundational concepts for AI agent development using Google's auth
 ---
 
 ### TASK-005: Write Lesson 2 — Core Agent Architecture
+
 **Priority**: P1 (Critical)
 **Estimated Time**: 2.5 hours
 **Dependencies**: TASK-004
 **Assignee**: Content Implementer
 
-**File Path**: `book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/02-core-agent-architecture.md`
+**File Path**: `apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/02-core-agent-architecture.md`
 
 **Paper Source**: "Core Agent Architecture: Model, Tools, and Orchestration", deployment section
 
 **Learning Objectives**:
+
 - LO2.1: Name and describe **3+1 Architecture** (Model, Tools, Orchestration, Deployment)
 - LO2.2: Use paper's Body Part analogies correctly
 - LO2.3: Explain role of each component with examples
 
 **Content Sections** (from plan.md):
+
 1. **The 3+1 Architecture Overview** (system diagram)
 2. **Model — "The Brain"**:
    - Reasoning core, cognitive capabilities
@@ -259,11 +279,13 @@ description: "Foundational concepts for AI agent development using Google's auth
 6. **Try With AI — Identify Architecture** (identify components in Claude Code)
 
 **Constraints**:
+
 - Layer 1 only
 - 4 NEW concepts (Model, Tools, Orchestration, Deployment)
 - MUST use Brain/Hands/Nervous System/Body analogies from paper
 
 **Acceptance Criteria**:
+
 - [ ] 3+1 Architecture taught with paper's Body Part analogies
 - [ ] All subcomponents from paper included
 - [ ] Example of each component's role included
@@ -275,21 +297,24 @@ description: "Foundational concepts for AI agent development using Google's auth
 ---
 
 ### TASK-006: Write Lesson 3 — The Agentic Problem-Solving Process
+
 **Priority**: P1 (Critical)
 **Estimated Time**: 2 hours
 **Dependencies**: TASK-005
 **Assignee**: Content Implementer
 
-**File Path**: `book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/03-agentic-problem-solving-process.md`
+**File Path**: `apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/03-agentic-problem-solving-process.md`
 
 **Paper Source**: "The Agentic Problem-Solving Process" section with Customer Support Agent example
 
 **Learning Objectives**:
+
 - LO3.1: Recite and explain **5-Step Operational Loop**
 - LO3.2: Trace through paper's Customer Support example
 - LO3.3: Apply loop to new scenarios
 
 **Content Sections** (from plan.md):
+
 1. **The Universal Agentic Process** (hook: What does agent actually DO?)
 2. **5-Step Operational Loop** (MUST match paper exactly):
    1. **Get the Mission**: Goal or trigger initiates process
@@ -310,11 +335,13 @@ description: "Foundational concepts for AI agent development using Google's auth
 5. **Try With AI — Walk Through Loop** (trace through Coffee Shop example)
 
 **Constraints**:
+
 - Transition from Layer 1 to Layer 2
 - 2 NEW concepts (5-Step Loop, Context Engineering)
 - Customer Support example MUST match paper's version exactly
 
 **Acceptance Criteria**:
+
 - [ ] 5-Step Loop uses paper's exact step names
 - [ ] Customer Support example matches paper (order #12345, tracking ZYX987)
 - [ ] Context engineering explained as "curating model's limited attention"
@@ -328,21 +355,24 @@ description: "Foundational concepts for AI agent development using Google's auth
 ## Phase 2: Operations Content (Layer 2)
 
 ### TASK-007: Write Lesson 4 — Multi-Agent Design Patterns
+
 **Priority**: P1 (Critical)
 **Estimated Time**: 2.5 hours
 **Dependencies**: TASK-006
 **Assignee**: Content Implementer
 
-**File Path**: `book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/04-multi-agent-design-patterns.md`
+**File Path**: `apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/04-multi-agent-design-patterns.md`
 
 **Paper Source**: "Multi-Agent Systems and Design Patterns" section
 
 **Learning Objectives**:
+
 - LO4.1: Name and describe 4 multi-agent patterns from paper
 - LO4.2: Match use cases to appropriate patterns
 - LO4.3: Explain single vs multi-agent trade-offs
 
 **Content Sections** (from plan.md):
+
 1. **Why Multi-Agent?** (hook: "Building a single, all-powerful 'super-agent' becomes inefficient")
 2. **Pattern 1: Coordinator**:
    - "Manager" agent analyzing requests, routing to specialists
@@ -361,12 +391,14 @@ description: "Foundational concepts for AI agent development using Google's auth
 7. **Try With AI — Match Patterns** (match scenarios to patterns with AI discussion)
 
 **Constraints**:
+
 - Layer 2 (AI collaboration through Try With AI)
 - 4 NEW concepts (one per pattern)
 - **MUST use paper's pattern names** (Coordinator, Sequential, Iterative Refinement, HITL)
 - **DO NOT use**: ReAct, Plan-Execute (these are reasoning strategies, not multi-agent patterns)
 
 **Acceptance Criteria**:
+
 - [ ] All 4 patterns use paper's exact names
 - [ ] Each pattern has clear use case from paper
 - [ ] Generator-Critic loop explained for Iterative Refinement
@@ -378,22 +410,25 @@ description: "Foundational concepts for AI agent development using Google's auth
 ---
 
 ### TASK-008: Write Lesson 5 — Agent Ops
+
 **Priority**: P1 (Critical)
 **Estimated Time**: 2 hours
 **Dependencies**: TASK-007
 **Assignee**: Content Implementer
 
-**File Path**: `book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/05-agent-ops.md`
+**File Path**: `apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/05-agent-ops.md`
 
 **Paper Source**: "Agent Ops: A Structured Approach to the Unpredictable" section
 
 **Learning Objectives**:
+
 - LO5.1: Explain why traditional testing doesn't work for agents
 - LO5.2: Describe LM-as-Judge evaluation approach
 - LO5.3: Explain debugging with OpenTelemetry traces
 - LO5.4: Describe human feedback loop
 
 **Content Sections** (from plan.md):
+
 1. **Why Agent Ops?** (hook: "Traditional unit tests assert output == expected; but that doesn't work when response is probabilistic")
 2. **Measure What Matters**:
    - KPIs: goal completion, user satisfaction, latency, cost
@@ -414,11 +449,13 @@ description: "Foundational concepts for AI agent development using Google's auth
 7. **Try With AI — Design Evaluation** (design evaluation rubric for agent use case)
 
 **Constraints**:
+
 - Layer 2
 - 4 NEW concepts (LM-as-Judge, Golden datasets, Traces, Feedback loop)
 - Paper's Agent Ops framework exactly
 
 **Acceptance Criteria**:
+
 - [ ] "Traditional unit tests don't work" rationale explained
 - [ ] LM-as-Judge with rubrics explained
 - [ ] Golden datasets concept from paper included
@@ -432,22 +469,25 @@ description: "Foundational concepts for AI agent development using Google's auth
 ---
 
 ### TASK-009: Write Lesson 6 — Agent Interoperability & Security
+
 **Priority**: P1 (Critical)
 **Estimated Time**: 2.5 hours
 **Dependencies**: TASK-008
 **Assignee**: Content Implementer
 
-**File Path**: `book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/06-agent-interoperability-security.md`
+**File Path**: `apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/06-agent-interoperability-security.md`
 
 **Paper Source**: "Agent Interoperability" and "Securing a Single Agent" sections
 
 **Learning Objectives**:
+
 - LO6.1: Describe agent-human interaction patterns
 - LO6.2: Explain A2A protocol and Agent Cards
 - LO6.3: Articulate agent identity as new principal class
 - LO6.4: Explain trust trade-off and defense in depth
 
 **Content Sections** (from plan.md):
+
 1. **Agent Interoperability Overview** (the "face" of the agent)
 2. **Agents and Humans**:
    - Chatbots, computer use, live mode (bidirectional streaming)
@@ -470,11 +510,13 @@ description: "Foundational concepts for AI agent development using Google's auth
 7. **Try With AI — Security Design** (identify security requirements for agent scenario)
 
 **Constraints**:
+
 - Layer 2
 - 4 NEW concepts (A2A/Agent Cards, Agent Identity, Trust trade-off, Defense in depth)
 - Paper's security framework exactly
 
 **Acceptance Criteria**:
+
 - [ ] A2A Protocol and Agent Cards from paper explained
 - [ ] Agent identity as NEW principal class (distinct from users/services)
 - [ ] Trust trade-off concept from paper included
@@ -487,21 +529,24 @@ description: "Foundational concepts for AI agent development using Google's auth
 ---
 
 ### TASK-010: Write Lesson 7 — The Agent SDK Landscape
+
 **Priority**: P2 (High)
 **Estimated Time**: 2 hours
 **Dependencies**: TASK-002, TASK-009
 **Assignee**: Content Implementer
 
-**File Path**: `book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/07-agent-sdk-landscape.md`
+**File Path**: `apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/07-agent-sdk-landscape.md`
 
 **Paper Source**: Framework guidance throughout, ADK emphasis
 
 **Learning Objectives**:
+
 - LO7.1: Name 4+ agent frameworks/SDKs
 - LO7.2: Describe 2-3 distinguishing characteristics of each
 - LO7.3: Articulate framework selection factors
 
 **Content Sections** (from plan.md):
+
 1. **Why Framework Choice Matters** (hook)
 2. **Framework 1: OpenAI Agents SDK**:
    - Philosophy: Simplicity, built-in function calling
@@ -522,11 +567,13 @@ description: "Foundational concepts for AI agent development using Google's auth
 8. **Try With AI — Framework Comparison** (compare frameworks for specific use case)
 
 **Constraints**:
+
 - Layer 2
 - Relies on TASK-002 research
 - Emphasize transferability per paper
 
 **Acceptance Criteria**:
+
 - [ ] All 4 frameworks described accurately (from TASK-002)
 - [ ] 2-3 distinguishing characteristics each
 - [ ] Comparison matrix included
@@ -541,20 +588,23 @@ description: "Foundational concepts for AI agent development using Google's auth
 ## Phase 3: Synthesis (Layer 3)
 
 ### TASK-011: Write Lesson 8 — Your First Agent Concept
+
 **Priority**: P1 (Critical)
 **Estimated Time**: 2.5 hours
 **Dependencies**: TASK-010
 **Assignee**: Content Implementer
 
-**File Path**: `book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/08-your-first-agent-concept.md`
+**File Path**: `apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/08-your-first-agent-concept.md`
 
 **Learning Objectives**:
+
 - LO8.1: Design agent specification using paper's frameworks
 - LO8.2: Articulate agent's purpose using 5-Level Taxonomy
 - LO8.3: Specify architecture using 3+1 components
 - LO8.4: Identify appropriate pattern and security considerations
 
 **Content Sections** (from plan.md):
+
 1. **Specification-First Thinking** (bridge to Chapter 34, SDD-RI connection)
 2. **Agent Specification Template** (using ALL paper frameworks):
    - **Level** (0-4): What's the agent's capability tier?
@@ -573,11 +623,13 @@ description: "Foundational concepts for AI agent development using Google's auth
 6. **Transition to Chapter 34** (preview: Building with OpenAI SDK)
 
 **Constraints**:
+
 - Layer 3 synthesis
 - 0 NEW concepts (synthesis only)
 - MUST reference ALL paper frameworks from Lessons 1-7
 
 **Acceptance Criteria**:
+
 - [ ] Specification template uses all paper frameworks
 - [ ] 3 example specifications fully completed
 - [ ] Each example uses different pattern appropriately
@@ -592,28 +644,32 @@ description: "Foundational concepts for AI agent development using Google's auth
 ## Phase 4: Visual Assets
 
 ### TASK-012: Create Foundation Diagrams
+
 **Priority**: P2 (High)
 **Estimated Time**: 4 hours
 **Dependencies**: TASK-004, TASK-005, TASK-006
 **Assignee**: Visual Designer / Content Implementer
 
-**Output Path**: `book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/_assets/`
+**Output Path**: `apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/_assets/`
 
 **Diagrams**:
 
 1. **five-level-taxonomy.svg** (Lesson 1):
+
    - Pyramid/tier diagram showing Level 0-4
    - Reference: Paper's "A Taxonomy of Agentic Systems" section
    - Labels: Level names + brief descriptions
    - Visual: Progressive capability from bottom (L0) to top (L4)
 
 2. **director-vs-bricklayer.svg** (Lesson 1):
+
    - Split illustration showing paradigm shift
    - Left: Traditional "bricklayer" (step-by-step code)
    - Right: Agent "director" (guiding autonomous actors)
    - Reference: Paper's quote about director vs bricklayer
 
 3. **agent-architecture-3plus1.svg** (Lesson 2):
+
    - System diagram showing Model + Tools + Orchestration + Deployment
    - Include Body Part labels (Brain, Hands, Nervous System, Body)
    - Reference: Paper's "Core Agent Architecture" section
@@ -625,6 +681,7 @@ description: "Foundational concepts for AI agent development using Google's auth
    - Include example actions at each step
 
 **Acceptance Criteria**:
+
 - [ ] All 4 diagrams production-quality SVG
 - [ ] Labels clear and readable
 - [ ] Match paper's visual language where applicable
@@ -633,26 +690,30 @@ description: "Foundational concepts for AI agent development using Google's auth
 ---
 
 ### TASK-013: Create Pattern Diagrams
+
 **Priority**: P2 (High)
 **Estimated Time**: 4 hours
 **Dependencies**: TASK-007
 **Assignee**: Visual Designer / Content Implementer
 
-**Output Path**: `book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/_assets/`
+**Output Path**: `apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/_assets/`
 
 **Diagrams**:
 
 1. **coordinator-pattern.svg** (Lesson 4):
+
    - Manager agent at center routing to specialist agents
    - Aggregation arrows back to manager
    - Reference: Paper's "Coordinator pattern" description
 
 2. **sequential-pattern.svg** (Lesson 4):
+
    - Linear flow: Agent A → Agent B → Agent C
    - "Assembly line" visual metaphor
    - Reference: Paper's "Sequential pattern" description
 
 3. **iterative-refinement-pattern.svg** (Lesson 4):
+
    - Generator-Critic feedback loop
    - Circular arrows showing iteration
    - Reference: Paper's Figure 3
@@ -663,6 +724,7 @@ description: "Foundational concepts for AI agent development using Google's auth
    - Reference: Paper's "Human-in-the-Loop pattern" description
 
 **Acceptance Criteria**:
+
 - [ ] All 4 pattern diagrams match paper's descriptions
 - [ ] Clear flow arrows and labels
 - [ ] Iterative Refinement shows feedback loop clearly
@@ -671,21 +733,24 @@ description: "Foundational concepts for AI agent development using Google's auth
 ---
 
 ### TASK-014: Create Operations Diagrams
+
 **Priority**: P2 (High)
 **Estimated Time**: 3 hours
 **Dependencies**: TASK-008, TASK-009
 **Assignee**: Visual Designer / Content Implementer
 
-**Output Path**: `book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/_assets/`
+**Output Path**: `apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/_assets/`
 
 **Diagrams**:
 
 1. **agent-ops-workflow.svg** (Lesson 5):
+
    - Cycle: Metrics → Evaluation → Debug → Feedback → (loop)
    - Include LM-as-Judge, Golden Datasets, Traces elements
    - Reference: Paper's "Agent Ops" section
 
 2. **a2a-protocol.svg** (Lesson 6):
+
    - Agent Cards discovery + task-oriented communication
    - Show: Agent A → Agent Card → Agent B → Task Request/Response
    - Reference: Paper's "Agent Interoperability" section
@@ -696,6 +761,7 @@ description: "Foundational concepts for AI agent development using Google's auth
    - Visual distinction between the three types
 
 **Acceptance Criteria**:
+
 - [ ] Agent Ops workflow shows complete cycle
 - [ ] A2A shows discovery + communication flow
 - [ ] Identity diagram distinguishes 3 principal classes clearly
@@ -703,22 +769,25 @@ description: "Foundational concepts for AI agent development using Google's auth
 ---
 
 ### TASK-015: Create SDK Comparison Matrix
+
 **Priority**: P2 (High)
 **Estimated Time**: 2 hours
 **Dependencies**: TASK-010
 **Assignee**: Visual Designer / Content Implementer
 
-**Output Path**: `book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/_assets/`
+**Output Path**: `apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/_assets/`
 
 **Diagram**:
 
 **sdk-comparison-matrix.png** (Lesson 7):
+
 - Table comparing: OpenAI Agents SDK, Google ADK, Anthropic Agents Kit, LangChain
 - Rows: Philosophy, Key Features, Best For, Ecosystem
 - Clean, scannable format
 - Based on TASK-002 research
 
 **Acceptance Criteria**:
+
 - [ ] All 4 frameworks compared
 - [ ] 3-4 comparison dimensions
 - [ ] Accurate based on TASK-002 research
@@ -729,6 +798,7 @@ description: "Foundational concepts for AI agent development using Google's auth
 ## Phase 5: Quality Assurance
 
 ### TASK-016: Paper Alignment Validation
+
 **Priority**: P1 (Critical)
 **Estimated Time**: 2 hours
 **Dependencies**: TASK-004 through TASK-011 (all content tasks)
@@ -738,6 +808,7 @@ description: "Foundational concepts for AI agent development using Google's auth
 Validate ALL lessons against Google "Introduction to Agents" paper to ensure frameworks are taught exactly as specified.
 
 **Validation Checklist**:
+
 - [ ] **5-Level Taxonomy** uses paper's exact Level 0-4 classification
 - [ ] **3+1 Architecture** uses Body Part analogies (Brain, Hands, Nervous System, Body)
 - [ ] **5-Step Loop** matches: Get Mission → Scan Scene → Think → Act → Observe
@@ -749,6 +820,7 @@ Validate ALL lessons against Google "Introduction to Agents" paper to ensure fra
 - [ ] **Customer Support example** matches paper's version exactly (order #12345, tracking ZYX987)
 
 **Anti-Pattern Check**:
+
 - [ ] NO "Agency Spectrum" (old framework)
 - [ ] NO "5 Components" (old framework)
 - [ ] NO "ReAct pattern" as multi-agent pattern (it's a reasoning strategy)
@@ -759,6 +831,7 @@ Validate ALL lessons against Google "Introduction to Agents" paper to ensure fra
 ---
 
 ### TASK-017: Anti-Convergence Validation
+
 **Priority**: P1 (Critical)
 **Estimated Time**: 1 hour
 **Dependencies**: TASK-004 through TASK-011 (all content tasks)
@@ -768,14 +841,16 @@ Validate ALL lessons against Google "Introduction to Agents" paper to ensure fra
 Run anti-convergence checks to ensure Three Roles framework is invisible and no meta-commentary exists.
 
 **Validation Commands**:
+
 ```bash
 # Check for meta-commentary violations
-grep -i "What to notice\|AI.*teach\|AI as\|AI.*learn\|AI now knows" book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/*.md
+grep -i "What to notice\|AI.*teach\|AI as\|AI.*learn\|AI now knows" apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/*.md
 
 # Expected: Zero matches (except legitimate usage like "teacher" in context)
 ```
 
 **Checklist**:
+
 - [ ] No "AI as Teacher/Student/Co-Worker" labels
 - [ ] No "What to notice: AI is teaching you..." meta-commentary
 - [ ] "Try With AI" sections use action prompts only
@@ -787,6 +862,7 @@ grep -i "What to notice\|AI.*teach\|AI as\|AI.*learn\|AI now knows" book-source/
 ---
 
 ### TASK-018: Citation Verification
+
 **Priority**: P1 (Critical)
 **Estimated Time**: 1 hour
 **Dependencies**: TASK-001, TASK-004 through TASK-011
@@ -796,6 +872,7 @@ grep -i "What to notice\|AI.*teach\|AI as\|AI.*learn\|AI now knows" book-source/
 Verify all statistics have proper citations matching citations.md.
 
 **Statistics to Verify**:
+
 - [ ] 800M+ ChatGPT users → citation present in Lesson 1
 - [ ] 90%+ developers using AI tools → citation present
 - [ ] 44% of US work hours → McKinsey cited in Lessons 1, 5
@@ -807,6 +884,7 @@ Verify all statistics have proper citations matching citations.md.
 ---
 
 ### TASK-019: CEFR Cognitive Load Validation
+
 **Priority**: P2 (High)
 **Estimated Time**: 30 minutes
 **Dependencies**: TASK-004 through TASK-011 (all content tasks)
@@ -816,6 +894,7 @@ Verify all statistics have proper citations matching citations.md.
 Validate concept counts per lesson against B1 tier limits (max 7-10 NEW concepts).
 
 **Expected Concept Counts** (from plan.md):
+
 - [ ] Lesson 1: 3 NEW (Agent definition, 5-Level Taxonomy, Paradigm shift) ✅
 - [ ] Lesson 2: 4 NEW (Model, Tools, Orchestration, Deployment) ✅
 - [ ] Lesson 3: 2 NEW (5-Step Loop, Context Engineering) ✅
@@ -832,6 +911,7 @@ Validate concept counts per lesson against B1 tier limits (max 7-10 NEW concepts
 ## Phase 6: Integration
 
 ### TASK-020: Docusaurus Build Test
+
 **Priority**: P1 (Critical)
 **Estimated Time**: 30 minutes
 **Dependencies**: All content and visual tasks
@@ -839,12 +919,14 @@ Validate concept counts per lesson against B1 tier limits (max 7-10 NEW concepts
 
 **Description**:
 Build Docusaurus site locally and validate:
+
 - All 8 lessons render correctly
 - All diagrams display properly
 - Navigation works (sidebar, next/previous)
 - No build errors or warnings
 
 **Commands**:
+
 ```bash
 cd book-source
 npm run build
@@ -852,6 +934,7 @@ npm run serve
 ```
 
 **Acceptance Criteria**:
+
 - [ ] Build completes without errors
 - [ ] All 8 lessons accessible via navigation
 - [ ] All SVG/PNG diagrams render
@@ -863,6 +946,7 @@ npm run serve
 ---
 
 ### TASK-021: Final Readability Pass
+
 **Priority**: P2 (High)
 **Estimated Time**: 1 hour
 **Dependencies**: TASK-020
@@ -870,12 +954,14 @@ npm run serve
 
 **Description**:
 Final pass through all content for:
+
 - Typos and grammar
 - Consistent terminology (paper's terms)
 - Smooth transitions between lessons
 - Coherent narrative arc from Lesson 1 → Lesson 8
 
 **Checklist**:
+
 - [ ] All lessons read smoothly
 - [ ] Terminology consistent throughout (paper's frameworks)
 - [ ] Transitions guide student through progression
@@ -888,15 +974,15 @@ Final pass through all content for:
 
 ## Summary
 
-| Phase | Tasks | Est. Time | Priority |
-|-------|-------|-----------|----------|
-| Phase 0: Research | TASK-001, TASK-002 | 3 hours | P1/P2 |
-| Phase 1: Foundation (L1) | TASK-003 to TASK-006 | 7 hours | P1 |
-| Phase 2: Operations (L2) | TASK-007 to TASK-010 | 9 hours | P1/P2 |
-| Phase 3: Synthesis (L3) | TASK-011 | 2.5 hours | P1 |
-| Phase 4: Visual Assets | TASK-012 to TASK-015 | 13 hours | P2 |
-| Phase 5: QA | TASK-016 to TASK-019 | 4.5 hours | P1/P2 |
-| Phase 6: Integration | TASK-020, TASK-021 | 1.5 hours | P1/P2 |
+| Phase                    | Tasks                | Est. Time | Priority |
+| ------------------------ | -------------------- | --------- | -------- |
+| Phase 0: Research        | TASK-001, TASK-002   | 3 hours   | P1/P2    |
+| Phase 1: Foundation (L1) | TASK-003 to TASK-006 | 7 hours   | P1       |
+| Phase 2: Operations (L2) | TASK-007 to TASK-010 | 9 hours   | P1/P2    |
+| Phase 3: Synthesis (L3)  | TASK-011             | 2.5 hours | P1       |
+| Phase 4: Visual Assets   | TASK-012 to TASK-015 | 13 hours  | P2       |
+| Phase 5: QA              | TASK-016 to TASK-019 | 4.5 hours | P1/P2    |
+| Phase 6: Integration     | TASK-020, TASK-021   | 1.5 hours | P1/P2    |
 
 **Total Estimated Time**: ~40.5 hours
 
@@ -905,17 +991,21 @@ Final pass through all content for:
 ## Parallel Execution Opportunities
 
 ### Research Phase (Phase 0)
+
 - TASK-001 and TASK-002 can run in parallel
 
 ### Content Phases (Phases 1-3)
+
 - Content tasks are sequential (each lesson builds on prior)
 - However, diagrams (Phase 4) can be created in parallel with content
 
 ### Visual Assets (Phase 4)
+
 - TASK-012, TASK-013, TASK-014, TASK-015 can all run in parallel
 - Each can start as soon as dependent content task is complete
 
 ### QA Phase (Phase 5)
+
 - TASK-016, TASK-017, TASK-018, TASK-019 can run in parallel after all content complete
 
 ---
@@ -934,16 +1024,19 @@ Final pass through all content for:
 ## Implementation Notes
 
 **Content Author Policy**:
+
 - Each lesson ends with "Try With AI" section (no "Key Takeaways", no "What's Next")
 - Students have completed Parts 1-5 — instruct to use preferred AI companion (Gemini CLI, Claude Code, ChatGPT)
 - Action prompts only in "Try With AI" — no meta-commentary exposing Three Roles framework
 
 **Layer Progression**:
+
 - Lessons 1-3: Layer 1 (Manual Foundation) — No "Tell your AI..." in main content
 - Lessons 4-7: Layer 2 (AI Collaboration) — "Try With AI" demonstrates partnership
 - Lesson 8: Layer 3 (Synthesis) — Apply all frameworks to create agent specification
 
 **Primary Source Priority**:
+
 1. Google/Kaggle "Introduction to Agents" whitepaper (November 2025) — AUTHORITATIVE
 2. McKinsey "Agents, robots, and us" — Statistics only
 3. SDK official documentation — Lesson 7 only

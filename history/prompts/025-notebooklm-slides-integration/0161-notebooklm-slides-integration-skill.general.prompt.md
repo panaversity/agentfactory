@@ -9,7 +9,8 @@ feature: notebooklm-slides-integration
 branch: feature/notebooklm-slides-integration
 user: mjs
 command: none
-labels: [skill-creation, notebooklm, slides, pedagogical-design, dimensional-guidance]
+labels:
+  [skill-creation, notebooklm, slides, pedagogical-design, dimensional-guidance]
 links:
   spec: .specify/specs/notebooklm-slides-integration.spec.md
   ticket: none
@@ -25,7 +26,7 @@ files:
   - path: book-source/static/slides/chapter-01-slides.pdf
     status: created
     size: 10MB
-  - path: book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/readme.md
+  - path: apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/readme.md
     status: modified
   - path: book-source/package-lock.json
     status: modified
@@ -45,6 +46,7 @@ tests:
 **Context**: User discovered NotebookLM's Slide Deck feature and wanted to enhance 84 book chapters with visual presentation materials embedded directly in Docusaurus.
 
 **Key Requirements (emerged through iteration)**:
+
 1. Create PDFViewer React component for Docusaurus
 2. Generate Chapter 1 slides using NotebookLM aligned with book philosophy
 3. Dark mode compatible, minimal UI, fullscreen option
@@ -52,6 +54,7 @@ tests:
 5. Scalable workflow (target: 20-30 min per chapter)
 
 **Critical User Feedback During Session**:
+
 - "I don't like slides try again and give a better prompt aligned with our book philosophy"
 - "Not optimized for dark screen and component looks too lengthy"
 - "Remove download button it is already present within iframe"
@@ -63,11 +66,13 @@ tests:
 **Delivered Solution**: NotebookLM Slides Integration with dimensional guidance skill
 
 **1. PDFViewer Component** (4 iterations based on feedback)
+
 - Final: Dark mode CSS variables, compact design, fullscreen only
 - Native browser PDF viewer (no CORS issues)
 - TypeScript React component for Docusaurus
 
 **2. NotebookLM Slides Skill** (`.claude/skills/notebooklm-slides/SKILL.md`)
+
 - Follows Skills Thinking Framework
 - Identifies distributional convergence (generic, text-heavy slides)
 - 5 dimensional guidance vectors (Audience, Framework, Theme, Tone, Format)
@@ -77,6 +82,7 @@ tests:
 - Single file (11KB) - removed redundant README and references
 
 **3. Chapter 1 Pilot** ("The AI Coding Revolution")
+
 - 13 slides generated using A2 template
 - All 5 themes covered with specific data ($3T economy, 4 generations, etc.)
 - Encouraging tone, visual presentation (3-5 bullets per slide)
@@ -84,11 +90,13 @@ tests:
 - Actionable next steps for learners
 
 **4. Workflow Optimization**
+
 - 5-step process: Upload → Configure → Prompt → Generate → Deploy
 - Time: 20-30 minutes per chapter (validated)
 - NotebookLM prompt engineering using dimensional framework
 
 **5. Documentation**
+
 - Specification: `.specify/specs/notebooklm-slides-integration.spec.md`
 - All files cleaned up (removed workflow docs, deprecated files)
 - Branch: `feature/notebooklm-slides-integration`

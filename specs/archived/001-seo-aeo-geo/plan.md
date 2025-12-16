@@ -32,7 +32,7 @@ Technical approach (high level):
 **Target Platform**: Static website; bots/assistants consuming HTML/feeds  
 **Project Type**: Web documentation site  
 **Performance Goals**: 95% of feed fetches in <1s; pages pass Core Web Vitals; structured data valid  
-**Constraints**: No vendor lock; avoid framework‑specific code in spec/plan; provenance minimal at first; no direct edits to `book-source/docs/` content unless supported by evaluator/lint evidence (evidence‑first content policy)  
+**Constraints**: No vendor lock; avoid framework‑specific code in spec/plan; provenance minimal at first; no direct edits to `apps/learn-app/docs/` content unless supported by evaluator/lint evidence (evidence‑first content policy)  
 **Scale/Scope**: ≥500 KnowledgeUnits; top 50 pages fully optimized
 
 Robots and Sitemaps (channel exposure):

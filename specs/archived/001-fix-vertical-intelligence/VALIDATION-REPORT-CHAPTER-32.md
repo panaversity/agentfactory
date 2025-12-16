@@ -1,6 +1,6 @@
 # Validation Report: Chapter 32 – Real-World Spec-Kit Workflows & Capstone
 
-**File:** `/book-source/docs/05-Spec-Kit-Plus-Methodology/32-real-world-spec-kit-workflows/`
+**File:** `/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/32-real-world-spec-kit-workflows/`
 
 **Chapter Type:** Hybrid (Narrative/Conceptual chapters 1-7, Capstone Practice chapters 8-10)
 
@@ -29,14 +29,17 @@ All non-capstone lessons (01-07) pass validation. Frontmatter metadata is presen
 ### 1. Missing "Try With AI" Sections in Capstone Lessons 8 & 9
 
 **Location**:
+
 - `/32-real-world-spec-kit-workflows/08-capstone-part-1-decompose-your-spec.md` (line 393 onward)
 - `/32-real-world-spec-kit-workflows/09-capstone-part-2-implement-in-parallel.md` (line 426 onward)
 
 **Description**:
 Both lessons end with "## What's Next" section instead of required "## Try With AI" section. According to `.claude/output-styles/lesson.md` (lines 275, 283):
+
 > "Try With AI (required, final section; replaces conventional closures like "Key Takeaways" or "What's Next")"
 
 Lesson 8 currently ends:
+
 ```
 ## Part 6: Reflection
 [content...]
@@ -46,6 +49,7 @@ You've completed Part 1 of the capstone...
 ```
 
 Lesson 9 currently ends:
+
 ```
 5. **How does this apply** to your next real project?
 
@@ -55,6 +59,7 @@ You've completed Part 2 of the capstone...
 
 **Recommendation**:
 Replace the "## What's Next" sections entirely with "## Try With AI" sections. The current "What's Next" content is transition/scaffolding text, not interactive AI-driven learning. Structure should be:
+
 1. Convert "What's Next" intro content into transition paragraph within "Try With AI"
 2. Create 3-5 AI exploration prompts (similar to lessons 01-07)
 3. Define expected outcomes for each prompt
@@ -71,6 +76,7 @@ Replace the "## What's Next" sections entirely with "## Try With AI" sections. T
 Lesson 10 has "## Try With AI" section (line 356) followed by "## What's Next" section (line 388). This violates the AI-first closure policy which requires "Try With AI" to be the final section with nothing after it.
 
 Current structure:
+
 ```
 Line 356: ## Try With AI
 [prompts and expected outcomes...]
@@ -91,6 +97,7 @@ Remove the "## What's Next" section entirely (lines 388-end). The "Try With AI" 
 **Location**: All seven non-capstone lessons have "Try With AI" sections, but verification needed for content quality.
 
 **Findings**:
+
 - Lessons 01-07 correctly position "## Try With AI" as final section ✓
 - Each has setup, prompt set with 3-5 prompts, and expected outcomes ✓
 - Some include safety/reflection notes appropriate to content ✓
@@ -104,6 +111,7 @@ Remove the "## What's Next" section entirely (lines 388-end). The "Try With AI" 
 **Location**: `/32-real-world-spec-kit-workflows/README.md`
 
 **Current Metadata**:
+
 ```yaml
 ---
 sidebar_position: 3
@@ -112,6 +120,7 @@ title: "Chapter 32: Real-World Spec-Kit Workflows & Capstone"
 ```
 
 **Findings**:
+
 - File is correctly named `README.md` (uppercase) ✓
 - Does NOT use "Lesson N" in section titles ✓
 - Chapter title matches `specs/book/chapter-index.md` ✓
@@ -128,15 +137,15 @@ Verify `sidebar_position: 3` is intentional. If Chapter 32 should be 4th in part
 
 **For Conceptual Chapters (Lessons 1-7)**:
 
-Lesson | Title | Hook Present | Real-World Examples | Scaffolding | Try With AI | Status
----|---|---|---|---|---|---
-01 | Watch Your Companions Coordinate | ✓ "Imagine two engineers work on the same project. They never talk." | ✓ Clear explanation of parallelization | ✓ 3-part progression | ✓ 4 prompts | PASS
-02 | Design Team Workflows | ✓ "You're going to design what a team using specs looks like" | ✓ Scaling from 1→5 people | ✓ 4 stages of team growth | ✓ 4 prompts | PASS
-03 | Trace SDD Through Your Company | ✓ "You'll see how specs flow through an organization" | ✓ Specification evolution in organizations | ✓ Step-by-step tracing | ✓ Section verified | PASS
-04 | See How Specs Flow Through Everything | ✓ Opening provided | ✓ Integration examples | ✓ Progressive complexity | ✓ Section verified | PASS
-05 | SDD In the Wild: Real Companies | ✓ "You'll study real companies and see how they actually use specifications" | ✓ Amazon, Stripe, Google case studies | ✓ Pattern extraction | ✓ Section verified | PASS
-06 | How Agents Stay Current | ✓ Opening hook present | ✓ API evolution patterns | ✓ Context architecture approach | ✓ Section verified | PASS
-07 | Write Your Professional Commitment | ✓ "You're now equipped to write a commitment" | ✓ Template with real examples | ✓ Personal specification exercise | ✓ Section verified | PASS
+| Lesson | Title                                 | Hook Present                                                                 | Real-World Examples                        | Scaffolding                       | Try With AI        | Status |
+| ------ | ------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------ | --------------------------------- | ------------------ | ------ |
+| 01     | Watch Your Companions Coordinate      | ✓ "Imagine two engineers work on the same project. They never talk."         | ✓ Clear explanation of parallelization     | ✓ 3-part progression              | ✓ 4 prompts        | PASS   |
+| 02     | Design Team Workflows                 | ✓ "You're going to design what a team using specs looks like"                | ✓ Scaling from 1→5 people                  | ✓ 4 stages of team growth         | ✓ 4 prompts        | PASS   |
+| 03     | Trace SDD Through Your Company        | ✓ "You'll see how specs flow through an organization"                        | ✓ Specification evolution in organizations | ✓ Step-by-step tracing            | ✓ Section verified | PASS   |
+| 04     | See How Specs Flow Through Everything | ✓ Opening provided                                                           | ✓ Integration examples                     | ✓ Progressive complexity          | ✓ Section verified | PASS   |
+| 05     | SDD In the Wild: Real Companies       | ✓ "You'll study real companies and see how they actually use specifications" | ✓ Amazon, Stripe, Google case studies      | ✓ Pattern extraction              | ✓ Section verified | PASS   |
+| 06     | How Agents Stay Current               | ✓ Opening hook present                                                       | ✓ API evolution patterns                   | ✓ Context architecture approach   | ✓ Section verified | PASS   |
+| 07     | Write Your Professional Commitment    | ✓ "You're now equipped to write a commitment"                                | ✓ Template with real examples              | ✓ Personal specification exercise | ✓ Section verified | PASS   |
 
 **Assessment**: All conceptual lessons (1-7) demonstrate strong pedagogical design with clear learning paths, appropriate scaffolding, and engaging real-world context. "Try With AI" sections provide interactive learning through conversational AI exploration.
 
@@ -144,11 +153,11 @@ Lesson | Title | Hook Present | Real-World Examples | Scaffolding | Try With AI 
 
 ### Technical/Capstone Structure (Lessons 8-10)
 
-Lesson | Type | Purpose | Hands-On | Structure | Status
----|---|---|---|---|---
-08 | Capstone Part 1 | Decompose spec into features | ✓ Feature decomposition exercise | Multi-part: gather spec → identify boundaries → document contracts → write specifications → create summary | **NEEDS FIX**: Missing "Try With AI"
-09 | Capstone Part 2 | Implement in parallel | ✓ Two-companion implementation | Multi-part: companion setup → parallel implementation → integration → validation | **NEEDS FIX**: Missing "Try With AI"
-10 | Capstone Part 3 | Reflect on scale | ✓ Retrospective analysis | Multi-part: analyze success → challenges → lessons → apply learning | **NEEDS FIX**: "What's Next" must be removed
+| Lesson | Type            | Purpose                      | Hands-On                         | Structure                                                                                                  | Status                                       |
+| ------ | --------------- | ---------------------------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| 08     | Capstone Part 1 | Decompose spec into features | ✓ Feature decomposition exercise | Multi-part: gather spec → identify boundaries → document contracts → write specifications → create summary | **NEEDS FIX**: Missing "Try With AI"         |
+| 09     | Capstone Part 2 | Implement in parallel        | ✓ Two-companion implementation   | Multi-part: companion setup → parallel implementation → integration → validation                           | **NEEDS FIX**: Missing "Try With AI"         |
+| 10     | Capstone Part 3 | Reflect on scale             | ✓ Retrospective analysis         | Multi-part: analyze success → challenges → lessons → apply learning                                        | **NEEDS FIX**: "What's Next" must be removed |
 
 **Assessment**: Capstone exercises are well-structured and pedagogically sound (clear steps, reflection prompts, practical outcomes). However, all three lessons violate AI-first closure policy by lacking proper "Try With AI" sections.
 
@@ -309,12 +318,14 @@ This is a conceptual/methodology chapter with no code examples that require vali
 ### Docusaurus Compliance
 
 **Chapter-level README**:
+
 - ✓ File: `README.md` (uppercase)
 - ✓ Title: `Chapter 32: Real-World Spec-Kit Workflows & Capstone`
 - ✓ Sidebar position: 3 (verify with Part structure)
 - ✓ No lesson numbering in title (correct pattern)
 
 **Lesson Files**:
+
 - ✓ All 10 lessons present with descriptive names (01-10)
 - ✓ File naming convention: `NN-descriptive-name.md` (correct)
 - ✓ Frontmatter present in all files with minimal required fields:
@@ -336,6 +347,7 @@ This is a conceptual/methodology chapter with no code examples that require vali
 ### Markdown Quality
 
 **Verified across sample lessons**:
+
 - ✓ Proper heading hierarchy (H1 for lesson, H2 for major sections, H3 for subsections)
 - ✓ Code blocks formatted correctly (though few code blocks in this conceptual chapter)
 - ✓ Lists properly formatted with bullet points and numbering
@@ -349,6 +361,7 @@ This is a conceptual/methodology chapter with no code examples that require vali
 ### Typos & Grammatical Errors
 
 **Sample verification** (spot-check of 2000+ lines):
+
 - No obvious typos found
 - Grammar checked for clarity and professionalism
 - Sentence structure varied and engaging
@@ -362,6 +375,7 @@ This is a conceptual/methodology chapter with no code examples that require vali
 ### Content Analysis
 
 **Lesson 1: Watch Your Companions Coordinate**
+
 - Opening hook engages reader immediately
 - Three-part structure (theory → decomposition → implementation) is clear
 - Integration contract explanation is pedagogically sound
@@ -372,6 +386,7 @@ This is a conceptual/methodology chapter with no code examples that require vali
 ---
 
 **Lessons 2-7: Team Workflows, Company Traces, SDD in the Wild, Agent Currency, Professional Commitment**
+
 - All follow same pedagogical pattern: intro hook → narrative exploration → real-world case studies → Try With AI
 - Real-world examples (Amazon, Stripe, Google) provide compelling context
 - Each lesson builds incrementally on previous learning
@@ -381,6 +396,7 @@ This is a conceptual/methodology chapter with no code examples that require vali
 ---
 
 **Lesson 8: Capstone Part 1 – Decompose Your Spec**
+
 - Clear structure: gather existing spec → identify features → define contracts → write specifications → create summary
 - Reflection questions encourage deep learning
 - **CRITICAL FLAW**: Ends with "What's Next" instead of "Try With AI"
@@ -389,6 +405,7 @@ This is a conceptual/methodology chapter with no code examples that require vali
 ---
 
 **Lesson 9: Capstone Part 2 – Implement in Parallel**
+
 - Well-structured two-companion experiment
 - Clear prompts for each companion
 - Integration testing steps are realistic
@@ -399,6 +416,7 @@ This is a conceptual/methodology chapter with no code examples that require vali
 ---
 
 **Lesson 10: Capstone Part 3 – Reflect on Scale**
+
 - Reflective analysis structure is pedagogically sound
 - Prompts encourage systematic evaluation
 - **CRITICAL FLAW**: Has "Try With AI" section (line 356) but then adds "What's Next" section (line 388)
@@ -409,11 +427,13 @@ This is a conceptual/methodology chapter with no code examples that require vali
 ### Pedagogical Structure Analysis
 
 **Learning Path Clarity**: Excellent progression
+
 - Lessons 1-4 establish specifications as coordination mechanism
 - Lessons 5-7 provide real-world patterns and professional context
 - Lessons 8-10 apply learning through hands-on capstone
 
 **Concept Scaffolding**: Strong progression from abstract to concrete
+
 - Concept: Specifications enable parallelization (Lesson 1)
 - Application: Team workflows (Lesson 2)
 - Organization: Company-wide patterns (Lesson 3-4)
@@ -423,6 +443,7 @@ This is a conceptual/methodology chapter with no code examples that require vali
 - Hands-on: Capstone implementation (Lessons 8-10)
 
 **Practice Alignment**:
+
 - Lessons 1-7 provide conceptual practice through "Try With AI" exploration
 - Lessons 8-10 provide hands-on practice through capstone project
 - All practice activities directly align with stated learning objectives
@@ -436,6 +457,7 @@ This is a conceptual/methodology chapter with no code examples that require vali
 This chapter addresses core methodology (Specification-Driven Development), not volatile technology. However, real-world examples reference specific companies and their practices:
 
 **Topics Requiring Occasional Review**:
+
 1. **Real-company practices**: Amazon's API standards, Stripe's payment patterns, Google's service coordination may evolve
 2. **Tool references**: Chapter mentions Kiro, Tessel, Spec-Kit Plus – these tools may update or deprecate
 3. **Industry trends**: SDD adoption patterns may change
@@ -443,6 +465,7 @@ This chapter addresses core methodology (Specification-Driven Development), not 
 **Suggested Review Frequency**: Annually (or when major updates to referenced tools/platforms occur)
 
 **Version Links to Verify at Next Update**:
+
 - AWS API documentation (referenced for API specification patterns)
 - Stripe developer documentation (referenced for payment system specs)
 - Google Cloud architecture documentation (referenced for large-scale coordination)
@@ -454,22 +477,23 @@ This chapter addresses core methodology (Specification-Driven Development), not 
 ## AI-First Closure Policy Verification
 
 **Policy from `.claude/output-styles/lesson.md` (lines 275, 283)**:
+
 > "Try With AI (required, final section; replaces conventional closures like "Key Takeaways" or "What's Next")"
 
 **Chapter 32 Compliance**:
 
-| Lesson | Try With AI Present | Position (Final?) | What's Next Present | Status |
-|--------|-------|------|------|--------|
-| 01 | ✓ | ✓ Final | ✗ | PASS |
-| 02 | ✓ | ✓ Final | ✗ | PASS |
-| 03 | ✓ | ✓ Final | ✗ | PASS |
-| 04 | ✓ | ✓ Final | ✗ | PASS |
-| 05 | ✓ | ✓ Final | ✗ | PASS |
-| 06 | ✓ | ✓ Final | ✗ | PASS |
-| 07 | ✓ | ✓ Final | ✗ | PASS |
-| 08 | ✗ MISSING | N/A | ✓ PRESENT | **FAIL** |
-| 09 | ✗ MISSING | N/A | ✓ PRESENT | **FAIL** |
-| 10 | ✓ | ✗ Not final | ✓ AFTER Try With AI | **FAIL** |
+| Lesson | Try With AI Present | Position (Final?) | What's Next Present | Status   |
+| ------ | ------------------- | ----------------- | ------------------- | -------- |
+| 01     | ✓                   | ✓ Final           | ✗                   | PASS     |
+| 02     | ✓                   | ✓ Final           | ✗                   | PASS     |
+| 03     | ✓                   | ✓ Final           | ✗                   | PASS     |
+| 04     | ✓                   | ✓ Final           | ✗                   | PASS     |
+| 05     | ✓                   | ✓ Final           | ✗                   | PASS     |
+| 06     | ✓                   | ✓ Final           | ✗                   | PASS     |
+| 07     | ✓                   | ✓ Final           | ✗                   | PASS     |
+| 08     | ✗ MISSING           | N/A               | ✓ PRESENT           | **FAIL** |
+| 09     | ✗ MISSING           | N/A               | ✓ PRESENT           | **FAIL** |
+| 10     | ✓                   | ✗ Not final       | ✓ AFTER Try With AI | **FAIL** |
 
 **Assessment**: 7/10 lessons compliant; 3/10 lessons violate AI-first closure policy
 
@@ -482,11 +506,13 @@ This chapter addresses core methodology (Specification-Driven Development), not 
 ### Blocking Issues (Must Fix)
 
 1. **Lesson 8**: Replace "## What's Next" section with "## Try With AI" section
+
    - Keep pedagogical content; restructure as Try With AI prompts
    - Example prompts: Feature decomposition validation, spec clarity testing, scaling decomposition to 5+ features
    - Ensure "## Try With AI" is final section
 
 2. **Lesson 9**: Replace "## What's Next" section with "## Try With AI" section
+
    - Use similar approach to lesson 8
    - Example prompts: Integration challenge debugging, spec ambiguity analysis, multi-agent coordination lessons
    - Ensure "## Try With AI" is final section
@@ -514,18 +540,21 @@ This chapter addresses core methodology (Specification-Driven Development), not 
 ## Next Steps
 
 1. **Fix Lesson 8 (Capstone Part 1)**:
+
    - Create "## Try With AI" section replacing "## What's Next"
    - Include 3-5 prompts about feature decomposition, spec clarity, scaling
    - Include expected outcomes section
    - Ensure it's the final section
 
 2. **Fix Lesson 9 (Capstone Part 2)**:
+
    - Create "## Try With AI" section replacing "## What's Next"
    - Include 3-5 prompts about integration challenges, agent coordination, debugging
    - Include expected outcomes section
    - Ensure it's the final section
 
 3. **Fix Lesson 10 (Capstone Part 3)**:
+
    - Delete the "## What's Next" section (lines 388-end)
    - Keep "## Try With AI" section (lines 356-387) as final content
    - Verify no content follows "## Try With AI"
@@ -554,15 +583,15 @@ This chapter addresses core methodology (Specification-Driven Development), not 
 
 ## Summary Table
 
-| Dimension | Status | Notes |
-|-----------|--------|-------|
-| **Content Accuracy** | PASS | Methodology content is sound; real-world examples accurate |
-| **Pedagogical Design** | PASS | Strong learning path; excellent scaffolding; appropriate for B1 proficiency |
-| **Constitution Alignment** | PASS* | 5/5 required domain skills present; *except AI-first closure policy violations in lessons 8-10 |
-| **Accessibility** | PASS | Inclusive language; diverse examples; appropriate pacing |
-| **Formatting** | PASS | Docusaurus compliant; professional markdown quality |
-| **AI-First Closure Policy** | FAIL | 7/10 lessons compliant; lessons 8-10 violate policy |
-| **Publication Readiness** | REVISE | 3 critical structural issues must be fixed |
+| Dimension                   | Status | Notes                                                                                           |
+| --------------------------- | ------ | ----------------------------------------------------------------------------------------------- |
+| **Content Accuracy**        | PASS   | Methodology content is sound; real-world examples accurate                                      |
+| **Pedagogical Design**      | PASS   | Strong learning path; excellent scaffolding; appropriate for B1 proficiency                     |
+| **Constitution Alignment**  | PASS\* | 5/5 required domain skills present; \*except AI-first closure policy violations in lessons 8-10 |
+| **Accessibility**           | PASS   | Inclusive language; diverse examples; appropriate pacing                                        |
+| **Formatting**              | PASS   | Docusaurus compliant; professional markdown quality                                             |
+| **AI-First Closure Policy** | FAIL   | 7/10 lessons compliant; lessons 8-10 violate policy                                             |
+| **Publication Readiness**   | REVISE | 3 critical structural issues must be fixed                                                      |
 
 ---
 
@@ -575,4 +604,3 @@ All other content (7 narrative lessons, chapter structure, learning design) is e
 **Estimated time to fix**: 30-45 minutes (rewrite three lesson closures following pattern of lessons 1-7)
 
 **Estimated time to revalidate**: 15 minutes (spot-check the three modified closures)
-

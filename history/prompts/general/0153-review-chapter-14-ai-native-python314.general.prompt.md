@@ -9,18 +9,26 @@ feature: none
 branch: claude/review-ai-native-python-docs-011CUwDtrwKNnJDtmSqx8Dib
 user: AI-Native Development Team
 command: Review chapter content for AI-native patterns and Python 3.14 best practices
-labels: ["review", "ai-native", "python-3.14", "chapter-14", "validation", "constitution-compliance"]
+labels:
+  [
+    "review",
+    "ai-native",
+    "python-3.14",
+    "chapter-14",
+    "validation",
+    "constitution-compliance",
+  ]
 links:
   spec: null
   ticket: null
   adr: null
   pr: null
 files:
-  - book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/01-variables-and-type-hints.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/02-integers-and-floats.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/03-strings-and-booleans.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/04-collections-awareness.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/05-type-explorer-capstone.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/01-variables-and-type-hints.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/02-integers-and-floats.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/03-strings-and-booleans.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/04-collections-awareness.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/05-type-explorer-capstone.md
   - history/prompts/general/0153-review-chapter-14-ai-native-python314.general.prompt.md
 tests:
   - Manual review of all 5 lessons for AI-native patterns
@@ -41,6 +49,7 @@ Conducted comprehensive review of Chapter 14 (Data Types) across all 5 lessons:
 **Overall Assessment**: 65% AI-Native | 35% Needs Revision
 
 **Strengths Found**:
+
 1. ✅ "Try With AI" sections in every lesson (4 prompts each) - EXCELLENT
 2. ✅ Type hints used consistently (Python 3.9+ syntax: `list[str]`, `dict[str, float]`)
 3. ✅ Specification-first code examples with AI prompts and validation
@@ -50,29 +59,34 @@ Conducted comprehensive review of Chapter 14 (Data Types) across all 5 lessons:
 **Critical Issues Found**:
 
 1. 🚨 **MISSING: Python 3.14 Lazy Annotations (PEP 649)**
+
    - Location: Lesson 1
    - Severity: CRITICAL
    - Fix: Add section explaining lazy annotations (deferred evaluation, forward references)
 
 2. 🚨 **F-strings taught directly (Constitution Principle 13 violation)**
+
    - Location: Lesson 1:232-256
    - Severity: HIGH
    - Problem: F-strings are Tier 2 (AI Companion handles complex syntax), not Tier 1 (book teaches)
    - Fix: Reframe as "Tell your AI: 'Create an f-string...'" instead of teaching syntax
 
 3. 🚨 **Practice exercises encourage manual coding (not specification-first)**
+
    - Location: Lessons 1, 3 (Practice Exercises 1-3)
    - Severity: MEDIUM-HIGH
    - Problem: "Your turn! Fill in the values" instead of "Write specification → Tell AI → Validate"
    - Fix: Convert to specification-first workflow
 
 4. 🚨 **"Common Pitfalls" teaches syntax memorization (not AI debugging)**
+
    - Location: Lessons 1, 2, 3
    - Severity: MEDIUM
    - Problem: Teaches "WRONG vs RIGHT" syntax instead of "Ask AI to debug"
    - Fix: Replace with "Learning from Errors with AI" sections
 
 5. 🚨 **Lesson 5 capstone provides complete code (not specification-first workflow)**
+
    - Location: Lesson 5:70-200
    - Severity: CRITICAL (capstone should demonstrate core workflow)
    - Problem: Students copy/paste 70 lines instead of: Specify → AI builds → Validate → Iterate
@@ -84,11 +98,13 @@ Conducted comprehensive review of Chapter 14 (Data Types) across all 5 lessons:
    - Fix: Add "Evals (Success Criteria)" before Specification
 
 **Python 3.14 Findings**:
+
 - ✅ Type hint syntax is correct (`list[str]` not `List[str]`)
 - ❌ No mention of PEP 649 lazy annotations (major change to how type hints work)
 - ✅ No deprecated patterns found
 
 **Constitution Compliance**:
+
 - ✅ Principle 12 (Cognitive Load): Max 6-7 concepts per lesson (within A2 limit)
 - ❌ Principle 13 (Graduated Teaching): F-strings violate Tier 2 pattern
 - ✅ Principle 14 (Type-Explicit Code): Type hints used throughout
@@ -96,6 +112,7 @@ Conducted comprehensive review of Chapter 14 (Data Types) across all 5 lessons:
 - ❌ Specification-first workflow: Partially implemented (examples yes, exercises no)
 
 **Detailed Scoring by Lesson**:
+
 - Lesson 1: 4/7 (57% AI-native) - Missing Python 3.14, f-strings, exercises
 - Lesson 2: 5/7 (71% AI-native) - Strong but "Common Mistakes" section issues
 - Lesson 3: 5/7 (71% AI-native) - Strong but exercises and pitfalls issues
@@ -103,6 +120,7 @@ Conducted comprehensive review of Chapter 14 (Data Types) across all 5 lessons:
 - Lesson 5: 4/7 (57% AI-native) - Capstone needs specification-first restructure
 
 **Priority Fixes**:
+
 1. CRITICAL: Add Python 3.14 lazy annotations (Lesson 1)
 2. CRITICAL: Reframe f-strings as Tier 2: AI Companion (Lesson 1)
 3. CRITICAL: Convert Lesson 5 to specification-first capstone workflow
@@ -126,6 +144,7 @@ Conducted comprehensive review of Chapter 14 (Data Types) across all 5 lessons:
 ## Evaluation notes (flywheel)
 
 - Failure modes observed:
+
   1. Teaching complex syntax directly instead of delegating to AI (Tier 2 violation)
   2. Practice exercises encourage manual coding instead of specification-first workflow
   3. "Common Pitfalls" teach syntax rules to memorize instead of AI debugging patterns
@@ -133,6 +152,7 @@ Conducted comprehensive review of Chapter 14 (Data Types) across all 5 lessons:
   5. Missing major Python version changes (PEP 649 lazy annotations)
 
 - Graders run and results (PASS/FAIL):
+
   - Constitution Principle 13 (Graduated Teaching): FAIL (f-strings taught as Tier 1, should be Tier 2)
   - Constitution Principle 16 (AI as Reasoning Partner): PARTIAL (present in "Try With AI" sections, absent in practice exercises)
   - Python 3.14 Compliance: PARTIAL (syntax correct, missing PEP 649 context)

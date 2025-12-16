@@ -10,28 +10,29 @@
 
 ## Metadata
 
-| Field | Value |
-|-------|-------|
-| **Feature ID** | 028-chapter-8-ai-native-ides |
-| **Lesson** | Lesson 5: Cursor AI Features and Workflows |
-| **File** | `book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/05-cursor-ai-features-and-workflows.md` |
-| **Output** | 40KB, 969 lines, ~14,200 words |
-| **Status** | DELIVERY READY |
-| **Constitutional** | COMPLIANT (v6.0.1) |
-| **Layer** | Layer 2 (AI Collaboration) |
-| **Proficiency** | B1 (Intermediate) |
-| **Time Spent** | Single response |
-| **Validations Passed** | 7/7 core checks + 5/5 Three Roles checks |
+| Field                  | Value                                                                                               |
+| ---------------------- | --------------------------------------------------------------------------------------------------- |
+| **Feature ID**         | 028-chapter-8-ai-native-ides                                                                        |
+| **Lesson**             | Lesson 5: Cursor AI Features and Workflows                                                          |
+| **File**               | `apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/05-cursor-ai-features-and-workflows.md` |
+| **Output**             | 40KB, 969 lines, ~14,200 words                                                                      |
+| **Status**             | DELIVERY READY                                                                                      |
+| **Constitutional**     | COMPLIANT (v6.0.1)                                                                                  |
+| **Layer**              | Layer 2 (AI Collaboration)                                                                          |
+| **Proficiency**        | B1 (Intermediate)                                                                                   |
+| **Time Spent**         | Single response                                                                                     |
+| **Validations Passed** | 7/7 core checks + 5/5 Three Roles checks                                                            |
 
 ---
 
 ## PROMPT_TEXT (Original Request)
 
 **User Request**:
+
 ```
 CONFIRMED - PROCEED WITH IMPLEMENTATION
 
-Write Lesson 5 file now: `D:/Panaversity/book_development/colearn-ai-devway/book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/05-cursor-ai-features-and-workflows.md`
+Write Lesson 5 file now: `D:/Panaversity/book_development/colearn-ai-devway/apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/05-cursor-ai-features-and-workflows.md`
 
 All requirements confirmed:
 - Layer 2 (AI Collaboration)
@@ -52,6 +53,7 @@ Execute file write and report: SUCCESS/FAIL, file size, lines, validation status
 ✅ **SUCCESS**: Lesson 5 file created at specified path
 
 **Output Metrics**:
+
 - File Size: 40KB
 - Total Lines: 969
 - Estimated Words: ~14,200 (within 14-16K target)
@@ -61,6 +63,7 @@ Execute file write and report: SUCCESS/FAIL, file size, lines, validation status
 ### Validation Status
 
 **Constitutional Compliance**: PASS (7/7 checks)
+
 1. ✅ Framework invisibility (Three Roles hidden)
 2. ✅ Evidence requirement (code + context)
 3. ✅ Structural compliance (ends with activity)
@@ -70,6 +73,7 @@ Execute file write and report: SUCCESS/FAIL, file size, lines, validation status
 7. ✅ Evals-first alignment (all spec evals covered)
 
 **Three Roles Deep Verification**: PASS (5/5)
+
 - ✅ AI as Teacher (pattern introduction)
 - ✅ AI as Student (feedback adaptation)
 - ✅ AI as Co-Worker (convergence loops)
@@ -77,6 +81,7 @@ Execute file write and report: SUCCESS/FAIL, file size, lines, validation status
 - ✅ Natural collaborative narrative
 
 **Anti-Convergence**: PASS (8/8)
+
 - ✅ Layer 2 identification correct
 - ✅ Three Roles visible in examples
 - ✅ No pedagogical labels exposed
@@ -87,6 +92,7 @@ Execute file write and report: SUCCESS/FAIL, file size, lines, validation status
 - ✅ Varied teaching modality from Chapter 8 Lesson 4
 
 **Content Quality**: PASS (5/5)
+
 - ✅ 9 concepts (within B1 7-10 limit)
 - ✅ Progressive difficulty (Beginner → Advanced → Capstone)
 - ✅ All exercises map to learning objectives
@@ -95,7 +101,8 @@ Execute file write and report: SUCCESS/FAIL, file size, lines, validation status
 
 ### Deliverables
 
-1. **Lesson File**: `book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/05-cursor-ai-features-and-workflows.md`
+1. **Lesson File**: `apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/05-cursor-ai-features-and-workflows.md`
+
    - Ready for student consumption
    - No corrections needed
 
@@ -114,6 +121,7 @@ Execute file write and report: SUCCESS/FAIL, file size, lines, validation status
 **Decision**: Implement lesson as Layer 2 (AI Collaboration) with invisible Three Roles framework.
 
 **Reasoning**:
+
 - Students in Chapter 8 Lesson 5 have already learned Cursor basics (Lesson 4)
 - Ready for advanced features (multi-turn, diff editing, context management)
 - Perfect fit for Three Roles demonstration (teacher via suggestions, student via refinement, co-worker via iteration)
@@ -126,6 +134,7 @@ Execute file write and report: SUCCESS/FAIL, file size, lines, validation status
 **Decision**: Demonstrate all three roles through real multi-turn conversation examples, zero explicit role labels.
 
 **Reasoning**:
+
 - Constitution Section IIa prohibits pedagogical labels in student-facing content
 - Students should EXPERIENCE Three Roles through action, not STUDY the framework
 - "Building an Authentication Service Through Conversation" section shows all three roles through 4-message flow
@@ -139,6 +148,7 @@ Execute file write and report: SUCCESS/FAIL, file size, lines, validation status
 **Decision**: Organize lesson into 12 distinct sections covering multi-turn, diff, prompts, context, orchestration.
 
 **Reasoning**:
+
 ```
 1. Understanding Multi-Turn Conversations
 2. Mastering the Diff Editor
@@ -160,6 +170,7 @@ Sections flow naturally: learn feature → practice → orchestrate → troubles
 **Decision**: Design 9 exercises + 1 mini-project capstone with clear difficulty progression.
 
 **Structure**:
+
 - **Beginner** (1): Multi-Turn Authentication - First experience with conversation-driven development
 - **Intermediate** (5): Diff review, constraint refinement, Claude Rules, prompt types - Building skills independently
 - **Advanced** (3): Context optimization, error detection, mini-project flow - Complex scenarios
@@ -172,6 +183,7 @@ Sections flow naturally: learn feature → practice → orchestrate → troubles
 **Decision**: All code examples use real patterns (bcrypt 12 rounds, JWT tokens, Flask, SQLite).
 
 **Reasoning**:
+
 - Teaching AI-native development requires realistic tools/patterns
 - Students will apply these patterns immediately in real projects
 - Toy examples (todo apps) don't prepare for production constraints
@@ -191,6 +203,7 @@ Sections flow naturally: learn feature → practice → orchestrate → troubles
 **Application**: Lesson demonstrates Spec→Prompt→Code→Validation pattern.
 
 **Evidence**:
+
 - "Designing Effective Prompts" section explicitly teaches "Specification-First Prompts"
 - "Building an Authentication Service" example shows: specification → constraint refinement → implementation
 - Exercise 3: "Constraint-Based Refinement" teaches how constraints guide AI output
@@ -201,6 +214,7 @@ Sections flow naturally: learn feature → practice → orchestrate → troubles
 **Application**: Every section maps to a learning objective; no tangential content.
 
 **Evidence**:
+
 - 5 learning objectives clearly stated
 - 12 sections each address specific objectives
 - 9 exercises each practice specific skills
@@ -212,6 +226,7 @@ Sections flow naturally: learn feature → practice → orchestrate → troubles
 **Application**: Three Roles framework stays invisible throughout.
 
 **Evidence**:
+
 - Grep verified: 0 instances of "What you learned:", "AI as Teacher", etc.
 - All examples use natural action headings: "Exploring Options", "Refining", "Emerging Solutions"
 - Students experience collaboration through dialogue, not explanation of collaboration
@@ -223,6 +238,7 @@ Sections flow naturally: learn feature → practice → orchestrate → troubles
 ### Cognitive Load Assessment
 
 **New Concepts** (should be 7-10 for B1):
+
 1. Multi-turn conversation management (conversational context)
 2. Explicit context (@filename references)
 3. Implicit context (auto-included files)
@@ -240,6 +256,7 @@ Sections flow naturally: learn feature → practice → orchestrate → troubles
 **Expected for B1**: Moderate scaffolding (high-level guidance, student finds approach)
 
 **Actual**:
+
 - **Exercises 1-3**: Heavy scaffolding (step-by-step instructions)
 - **Exercises 4-7**: Moderate scaffolding (setup provided, task to explore)
 - **Exercises 8-9**: Light scaffolding (goal + rubric, design your approach)
@@ -251,6 +268,7 @@ Sections flow naturally: learn feature → practice → orchestrate → troubles
 **Expected for B1**: Apply, Analyze
 
 **Objectives**:
+
 - "Apply multi-turn conversations" - Apply level ✅
 - "Evaluate Cursor's diff editor" - Analyze/Evaluate level ✅
 - "Compose Claude Rules" - Create level (slight stretch, appropriate for advanced B1)
@@ -286,6 +304,7 @@ Sections flow naturally: learn feature → practice → orchestrate → troubles
 ### User Acceptance Criteria
 
 From original request:
+
 - ✅ Layer 2 (AI Collaboration) - CONFIRMED
 - ✅ Three Roles INVISIBLE - CONFIRMED (grep verified)
 - ✅ 12 sections - CONFIRMED (counted: 12)
@@ -306,16 +325,16 @@ From original request:
 
 ## Success Metrics
 
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| Concepts (B1 range) | 7-10 | 9 | ✅ PASS |
-| Exercises | 9+ | 10 | ✅ PASS |
-| File Size | 14-16K | ~14.2K | ✅ PASS |
-| Sections | 12 | 12 | ✅ PASS |
-| Constitutional Checks | 7/7 | 7/7 | ✅ PASS |
-| Three Roles Checks | 5/5 | 5/5 | ✅ PASS |
+| Metric                 | Target   | Actual     | Status  |
+| ---------------------- | -------- | ---------- | ------- |
+| Concepts (B1 range)    | 7-10     | 9          | ✅ PASS |
+| Exercises              | 9+       | 10         | ✅ PASS |
+| File Size              | 14-16K   | ~14.2K     | ✅ PASS |
+| Sections               | 12       | 12         | ✅ PASS |
+| Constitutional Checks  | 7/7      | 7/7        | ✅ PASS |
+| Three Roles Checks     | 5/5      | 5/5        | ✅ PASS |
 | Framework Invisibility | 0 labels | 0 detected | ✅ PASS |
-| Spec Evals Covered | 100% | 100% | ✅ PASS |
+| Spec Evals Covered     | 100%     | 100%       | ✅ PASS |
 
 ---
 

@@ -10,9 +10,10 @@
 
 A complete, specification-compliant README.md file for Chapter 33: Introduction to AI Agents, aligned with the Google/Kaggle whitepaper frameworks.
 
-**File Path**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/README.md`
+**File Path**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/README.md`
 
 **Metrics**:
+
 - 171 lines
 - ~1,150 words
 - 0 code blocks
@@ -25,7 +26,9 @@ A complete, specification-compliant README.md file for Chapter 33: Introduction 
 ## Key Frameworks Embedded
 
 ### 1. 5-Level Taxonomy
+
 **Lines**: 39, 76, 110
+
 ```
 Level 0: Core Reasoning System (LLM alone)
 Level 1: Connected Problem-Solver (LLM + tools)
@@ -35,7 +38,9 @@ Level 4: Self-Evolving System (can create new tools/agents)
 ```
 
 ### 2. 3+1 Core Architecture
+
 **Lines**: 40, 77, 111
+
 ```
 Model ("Brain"): Reasoning engine
 Tools ("Hands"): RAG, APIs, code execution, MCP
@@ -44,7 +49,9 @@ Deployment ("Body"): Runtime services, APIs, hosting
 ```
 
 ### 3. 5-Step Operational Loop
+
 **Lines**: 41, 78, 112
+
 ```
 1. Get Mission (goal or trigger)
 2. Scan Scene (perceive environment)
@@ -54,7 +61,9 @@ Deployment ("Body"): Runtime services, APIs, hosting
 ```
 
 ### 4. Multi-Agent Design Patterns
+
 **Lines**: 42, 79, 113
+
 ```
 Coordinator: Manager agent routing to specialists
 Sequential: Assembly line flow between agents
@@ -63,7 +72,9 @@ Human-in-the-Loop: Deliberate pauses for human approval
 ```
 
 ### 5. Agent Ops Discipline
+
 **Lines**: 43, 80, 114
+
 ```
 Evaluation: LM-as-Judge scoring against rubrics
 Debugging: OpenTelemetry traces for reasoning inspection
@@ -71,7 +82,9 @@ Feedback: Human feedback loops for continuous improvement
 ```
 
 ### 6. Agent Interoperability
+
 **Lines**: 44, 81, 115
+
 ```
 A2A Protocol: Agent-to-Agent universal handshake
 Agent Cards: JSON files advertising capabilities
@@ -92,16 +105,16 @@ Agent Identity: Agents as principal (distinct from users/services)
 
 ## 8-Lesson Structure
 
-| # | Title | Framework | Focus | Hours |
-|---|-------|-----------|-------|-------|
-| 1 | What Is an AI Agent? | 5-Level Taxonomy | Mental models | 0.5-1 |
-| 2 | Core Agent Architecture | 3+1 Architecture | Components | 0.5 |
-| 3 | The Agentic Problem-Solving Process | 5-Step Loop | Process | 0.5 |
-| 4 | Multi-Agent Design Patterns | Coordinator/Sequential/Iterative/HITL | Patterns | 0.5 |
-| 5 | Agent Ops: Operating in Production | LM-Judge/Traces/Feedback | Operations | 0.5 |
-| 6 | Agent Interoperability & Security | A2A/Agent Cards/Identity | Integration | 0.5 |
-| 7 | The Agent SDK Landscape | OpenAI/Google/Anthropic/LangChain | Frameworks | 0.25 |
-| 8 | Your First Agent Concept | Specification Design | Capstone | 0.5-1 |
+| #   | Title                               | Framework                             | Focus         | Hours |
+| --- | ----------------------------------- | ------------------------------------- | ------------- | ----- |
+| 1   | What Is an AI Agent?                | 5-Level Taxonomy                      | Mental models | 0.5-1 |
+| 2   | Core Agent Architecture             | 3+1 Architecture                      | Components    | 0.5   |
+| 3   | The Agentic Problem-Solving Process | 5-Step Loop                           | Process       | 0.5   |
+| 4   | Multi-Agent Design Patterns         | Coordinator/Sequential/Iterative/HITL | Patterns      | 0.5   |
+| 5   | Agent Ops: Operating in Production  | LM-Judge/Traces/Feedback              | Operations    | 0.5   |
+| 6   | Agent Interoperability & Security   | A2A/Agent Cards/Identity              | Integration   | 0.5   |
+| 7   | The Agent SDK Landscape             | OpenAI/Google/Anthropic/LangChain     | Frameworks    | 0.25  |
+| 8   | Your First Agent Concept            | Specification Design                  | Capstone      | 0.5-1 |
 
 **Total**: 2-3 hours
 
@@ -110,28 +123,33 @@ Agent Identity: Agents as principal (distinct from users/services)
 ## Pedagogical Compliance
 
 ### ✅ No Meta-Commentary
+
 - Zero mentions of "Layer 1", "Layer 2", pedagogical framework
 - Zero mentions of "AI as Teacher/Student/Co-Worker" roles
 - Framework architecture is INVISIBLE to reader
 - Student experiences content as natural narrative
 
 ### ✅ No Code Implementations
+
 - Zero code blocks in README
 - Code deferred to Chapters 34+
 - Explicitly stated: "you won't be building agents yet"
 
 ### ✅ SDD-RI Connection
+
 - Prerequisites reference "specification-first thinking" (Part 4)
 - Lesson 8 is specification design capstone
 - Learning path states: "understand the architecture before you code"
 
 ### ✅ Professional Tone
+
 - Career relevance emphasized throughout
 - "Director vs bricklayer" paradigm explained
 - Statistics on skill demand and economic value included
 - "Opportunity" framing for agent development careers
 
 ### ✅ Bridge from Part 5 to Part 6
+
 - Opening explicitly mentions: "You've completed Parts 1-5"
 - Prerequisites section connects to earlier chapters
 - Chapter 33 fills "conceptual gap" between Python and agents
@@ -143,28 +161,29 @@ Agent Identity: Agents as principal (distinct from users/services)
 
 **All 14 Functional/Pedagogical Requirements Met** ✅
 
-| Requirement | Status | Evidence |
-|---|---|---|
-| **FR-001**: 5-Level Taxonomy | ✅ PASS | Lines 39, 76, 110 |
-| **FR-002**: 3+1 Architecture | ✅ PASS | Lines 40, 77, 111 |
-| **FR-003**: 5-Step Loop | ✅ PASS | Lines 41, 78, 112 |
-| **FR-004**: Multi-Agent Patterns | ✅ PASS | Lines 42, 79, 113 |
-| **FR-005**: Agent Ops | ✅ PASS | Lines 43, 80, 114 |
-| **FR-006**: Agent Interoperability | ✅ PASS | Lines 44, 81, 115 |
-| **FR-007**: SDK Landscape | ✅ PASS | Lines 45, 82 |
-| **FR-008**: Director vs Bricklayer | ✅ PASS | Line 126 |
-| **FR-009**: Statistics with Attribution | ✅ PASS | Lines 23-27, 147-151 |
-| **FR-010**: Layer Progression | ✅ PASS | Lesson table structure |
-| **FR-011**: Try With AI Sections | ✅ PASS | Line 98 (delegates to lessons) |
-| **FR-012**: No Code Implementations | ✅ PASS | Zero code blocks |
-| **FR-013**: SDD-RI Connection | ✅ PASS | Lines 139, 56 |
-| **FR-014**: Google Whitepaper Primary | ✅ PASS | Lines 62-66, 162-165 |
+| Requirement                             | Status  | Evidence                       |
+| --------------------------------------- | ------- | ------------------------------ |
+| **FR-001**: 5-Level Taxonomy            | ✅ PASS | Lines 39, 76, 110              |
+| **FR-002**: 3+1 Architecture            | ✅ PASS | Lines 40, 77, 111              |
+| **FR-003**: 5-Step Loop                 | ✅ PASS | Lines 41, 78, 112              |
+| **FR-004**: Multi-Agent Patterns        | ✅ PASS | Lines 42, 79, 113              |
+| **FR-005**: Agent Ops                   | ✅ PASS | Lines 43, 80, 114              |
+| **FR-006**: Agent Interoperability      | ✅ PASS | Lines 44, 81, 115              |
+| **FR-007**: SDK Landscape               | ✅ PASS | Lines 45, 82                   |
+| **FR-008**: Director vs Bricklayer      | ✅ PASS | Line 126                       |
+| **FR-009**: Statistics with Attribution | ✅ PASS | Lines 23-27, 147-151           |
+| **FR-010**: Layer Progression           | ✅ PASS | Lesson table structure         |
+| **FR-011**: Try With AI Sections        | ✅ PASS | Line 98 (delegates to lessons) |
+| **FR-012**: No Code Implementations     | ✅ PASS | Zero code blocks               |
+| **FR-013**: SDD-RI Connection           | ✅ PASS | Lines 139, 56                  |
+| **FR-014**: Google Whitepaper Primary   | ✅ PASS | Lines 62-66, 162-165           |
 
 ---
 
 ## How to Use This README
 
 ### For Students
+
 1. **Opening** (paragraphs 1-3): Establish relevance and context
 2. **Why Agents Matter** (statistics): Understand industry moment
 3. **Learning Objectives** (section): Know what they'll achieve
@@ -173,12 +192,14 @@ Agent Identity: Agents as principal (distinct from users/services)
 6. **What You'll Know** (outcomes): See three dimensions of learning
 
 ### For Instructors
+
 1. **Framework Integration**: All 8 lessons teach mapped frameworks
 2. **Time Estimates**: 2-3 hours total allows scheduling flexibility
 3. **Prerequisites**: Clear dependencies from earlier parts
 4. **Next Chapter**: Explicit bridge to implementation (Chapter 34)
 
 ### For Curriculum Designers
+
 1. **Lesson Progression**: Foundation (1-3) → Operations (4-6) → Context (7) → Application (8)
 2. **Framework Coverage**: All major frameworks from whitepaper covered
 3. **Learning Taxonomy**: Foundation → Application → Evaluation (Bloom's)
@@ -189,6 +210,7 @@ Agent Identity: Agents as principal (distinct from users/services)
 ## Quality Assurance Results
 
 ### Verification Commands Executed
+
 ```bash
 # Line count
 wc -l README.md
@@ -208,6 +230,7 @@ wc -w README.md
 ```
 
 ### Automated Validation Results
+
 - ✅ Frontmatter complete (sidebar_position, title, description)
 - ✅ No broken links
 - ✅ All markdown syntax valid
@@ -219,10 +242,12 @@ wc -w README.md
 ## Attribution
 
 **Primary Source**: "Introduction to Agents," Google/Kaggle Whitepaper, November 2025
+
 - Authors: Alan Blount, Antonio Gulli, Shubham Saboo, Michael Zimmermann, Vladimir Vuskovic
 - URL: https://www.kaggle.com/whitepaper-introduction-to-agents
 
 **Supporting Sources**:
+
 - McKinsey: "Agents, robots, and us: Skill partnerships in the age of AI"
 - OpenAI, GitHub Copilot, Stack Overflow: Developer survey statistics
 - LinkedIn Skills Index: Demand trends
@@ -232,6 +257,7 @@ wc -w README.md
 ## Integration Points
 
 ### ✅ Connects To
+
 - **Specification**: `specs/038-chapter-33-intro-ai-agents/spec.md`
 - **Lesson 1**: `01-what-is-an-ai-agent.md` (already aligned)
 - **Lesson 2-8**: To be created following this README structure
@@ -239,6 +265,7 @@ wc -w README.md
 - **Chapter 35-36**: Alternative SDKs (reference these frameworks)
 
 ### ✅ Complements
+
 - **Part 6 README**: Provides chapter-level detail for Part 6 overview
 - **Part 5 Content**: Students bring Python + SDD-RI mindset
 - **CLAUDE.md**: Follows pedagogical principles from instructions
@@ -265,6 +292,7 @@ wc -w README.md
 ## Next Steps
 
 1. **Lesson 2-8 Creation**: Create remaining lessons following structure from lesson table
+
    - Each lesson should reference appropriate framework from whitepaper
    - Each lesson should include "Try With AI" section (action prompts)
    - Layer 1 (Manual foundation) for lessons 1-3, Layer 2 for lessons 4-8

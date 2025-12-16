@@ -18,9 +18,9 @@ replaces: quiz-answer-redistributor (v3.0.0)
 
 **Version:** 5.0.0 | **Consolidates:** quiz-answer-redistributor v3.0.0 | **Alignment:** Constitution v3.1.2, Co-Learning Partnership, "Specs Are the New Syntax" | **KEY FEATURES:** 50 total questions, automated answer redistribution with intelligent explanation regeneration, 15-20 displayed per batch, immediate feedback per question, randomized batching on retake, no pass/fail threshold, evals-aligned questions
 
-**Quiz Component Location:** `book-source/src/components/Quiz.tsx` (globally registered—no imports needed)
-**Usage Reference:** `book-source/src/components/QUIZ_USAGE.md` (example structure + best practices)
-**Example Quiz:** `book-source/src/components/references/example-quiz.md` (full working example with all patterns)
+**Quiz Component Location:** `apps/learn-app/src/components/Quiz.tsx` (globally registered—no imports needed)
+**Usage Reference:** `apps/learn-app/src/components/QUIZ_USAGE.md` (example structure + best practices)
+**Example Quiz:** `apps/learn-app/src/components/references/example-quiz.md` (full working example with all patterns)
 
 ---
 
@@ -266,7 +266,7 @@ python .claude/skills/quiz-generator/scripts/redistribute_answers_v2.py <quiz_fi
 **Example:**
 ```bash
 python .claude/skills/quiz-generator/scripts/redistribute_answers_v2.py \
-  book-source/docs/04-Python-Fundamentals/14-data-types/quiz.md A
+  apps/learn-app/docs/04-Python-Fundamentals/14-data-types/quiz.md A
 ```
 
 **Available Sequences (A-H):**

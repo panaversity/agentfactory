@@ -18,7 +18,8 @@
 ## Path Conventions
 
 **Educational Content Paths** (Docusaurus MDX):
-- **Lessons**: `book-source/docs/03-prompt-and-context-engineering/01-prompt-engineering/lesson-X-title.mdx`
+
+- **Lessons**: `apps/learn-app/docs/03-prompt-and-context-engineering/01-prompt-engineering/lesson-X-title.mdx`
 - **Exercises**: Embedded in lesson files (not separate)
 - **Code Examples**: Embedded in lesson files with proper syntax highlighting
 
@@ -28,10 +29,10 @@
 
 **Purpose**: Initialize chapter structure and supporting materials
 
-- [ ] T001 Create chapter directory structure at book-source/docs/03-prompt-and-context-engineering/01-prompt-engineering/
-- [ ] T002 Create chapter intro file at book-source/docs/03-prompt-and-context-engineering/01-prompt-engineering/intro.md with chapter overview and learning objectives
-- [ ] T003 [P] Create assets directory for diagrams and images at book-source/docs/03-prompt-and-context-engineering/01-prompt-engineering/assets/
-- [ ] T004 [P] Configure Docusaurus sidebar for Chapter 9 in book-source/docs/03-prompt-and-context-engineering/sidebars.js
+- [ ] T001 Create chapter directory structure at apps/learn-app/docs/03-prompt-and-context-engineering/01-prompt-engineering/
+- [ ] T002 Create chapter intro file at apps/learn-app/docs/03-prompt-and-context-engineering/01-prompt-engineering/intro.md with chapter overview and learning objectives
+- [ ] T003 [P] Create assets directory for diagrams and images at apps/learn-app/docs/03-prompt-and-context-engineering/01-prompt-engineering/assets/
+- [ ] T004 [P] Configure Docusaurus sidebar for Chapter 9 in apps/learn-app/docs/03-prompt-and-context-engineering/sidebars.js
 
 ---
 
@@ -62,22 +63,27 @@
 ### Content for Lesson 1
 
 - [ ] T010 [L1] Write "What: AI Agents Explained" section in lesson-01-understanding-ai-agents.mdx using contractor/blueprint analogy (15 min reading)
+
   - Content: Define AI agents, contrast with autocomplete, explain collaborative partnership
   - No jargon, use analogies
 
 - [ ] T011 [L1] Write "Why: Clarity Matters" section in lesson-01-understanding-ai-agents.mdx (5 min reading)
+
   - Content: "Clear prompts = working code first try" with productivity statistics (55% increase)
   - Business value framing
 
 - [ ] T012 [L1] Write "How: Context Windows" section in lesson-01-understanding-ai-agents.mdx (5 min reading)
+
   - Content: Explain context windows with visual diagram, what fits/doesn't fit
   - Include token-by-token generation concept
 
 - [ ] T013 [L1] Create "Hands-On Exercise: Identify Good vs. Bad Prompts" in lesson-01-understanding-ai-agents.mdx (10 min activity)
+
   - Content: 5 prompts (good/bad pairs), student identifies better one with explanation
   - Success: 4/5 correct
 
 - [ ] T014 [L1] Write "Try With AI" section in lesson-01-understanding-ai-agents.mdx
+
   - Content: Test vague vs. specific prompt with ChatGPT web (before tools taught)
   - Observe difference in AI responses
 
@@ -99,30 +105,37 @@
 ### Content for Lesson 2
 
 - [ ] T016 [P] [L2] Write "What: Technical Action Verbs" section in lesson-02-writing-clear-commands.mdx (10 min reading)
+
   - Content: List 8 verbs (Create, Debug, Refactor, etc.) with developer-focused definitions
   - Before/After examples (weak vs. strong)
 
 - [ ] T017 [P] [L2] Write "Why: Strong Commands Guide AI" section in lesson-02-writing-clear-commands.mdx (5 min reading)
+
   - Content: Weak = confusion, Strong = specific solutions
   - Business metric: "70% success rate on first try"
 
 - [ ] T018 [L2] Write "How: Command Structure" section in lesson-02-writing-clear-commands.mdx (5 min reading)
+
   - Content: Pattern: [Verb] + [Target] + [Desired Outcome]
   - 3 examples with full prompts
 
 - [ ] T019 [L2] Create Exercise 1 "Identify Strong Commands" in lesson-02-writing-clear-commands.mdx (5 min activity)
+
   - Content: 5 prompts, identify strongest verb
   - Success: 4/5 correct
 
 - [ ] T020 [L2] Create Exercise 2 "Rewrite Vague to Specific" in lesson-02-writing-clear-commands.mdx (10 min activity)
+
   - Content: Transform 3 vague prompts using technical verbs
   - Success: All 3 rewritten with strong verbs
 
 - [ ] T021 [L2] Create Exercise 3 "Write Your Own + Test" in lesson-02-writing-clear-commands.mdx (5 min activity)
+
   - Content: Student writes 1 prompt, tests with AI
   - Success: AI generates relevant code
 
 - [ ] T022 [L2] Write "Try With AI" section in lesson-02-writing-clear-commands.mdx
+
   - Content: Test vague vs. strong command with preferred AI tool
   - Example: "Create a Python function that takes two numbers and returns their sum"
   - Observe clarity difference
@@ -145,31 +158,38 @@
 ### Content for Lesson 3
 
 - [ ] T024 [P] [L3] Write "What: The AIDD Context Stack" section in lesson-03-providing-context.mdx (12 min reading)
+
   - Content: Four layers explained (project, code, constraints, developer)
   - Contractor/blueprints analogy
 
 - [ ] T025 [P] [L3] Write "Why: Project-Specific Code" section in lesson-03-providing-context.mdx (5 min reading)
+
   - Content: Generic vs. contextual prompts comparison
   - "AI can't read your mind"
 
 - [ ] T026 [L3] Write "How: Building Context Layers" section in lesson-03-providing-context.mdx (8 min reading)
+
   - Content: Example for each layer (FastAPI, Python 3.11, PEP 8, etc.)
   - Complete 4-layer prompt example
 
 - [ ] T027 [L3] Create Exercise 1 "Identify Missing Context" in lesson-03-providing-context.mdx (5 min activity)
+
   - Content: Given prompt, identify which of 4 layers missing
   - Success: Correctly identify all missing layers
 
 - [ ] T028 [L3] Create Exercise 2 "Add Context to Basic Prompt" in lesson-03-providing-context.mdx (10 min activity)
+
   - Content: Start with "Create user auth function", add all 4 layers
   - Test with AI, observe specificity improvement
   - Success: AI includes project-specific details
 
 - [ ] T029 [L3] Create Exercise 3 "Use Existing Code as Context" in lesson-03-providing-context.mdx (5 min activity)
+
   - Content: Include code snippet, prompt AI to match style
   - Success: AI matches example pattern
 
 - [ ] T030 [L3] Write "Try With AI" section in lesson-03-providing-context.mdx
+
   - Content: Compare generic vs. contextual prompt
   - Example: Email validation with FastAPI context
   - Execute student's contextual prompt from Exercise 2
@@ -192,31 +212,38 @@
 ### Content for Lesson 4
 
 - [ ] T032 [P] [L4] Write "What: Logic Specification for AIDD" section in lesson-04-specifying-logic.mdx (12 min reading)
+
   - Content: Explicit step-by-step instructions (not vague requirements)
   - Examples: user registration, caching, payment processing
 
 - [ ] T033 [P] [L4] Write "Why: Prevent AI Guessing" section in lesson-04-specifying-logic.mdx (5 min reading)
+
   - Content: Without logic = assumptions, With logic = your exact approach
   - "You architect, AI builds"
 
 - [ ] T034 [L4] Write "How: Writing Implementation Steps" section in lesson-04-specifying-logic.mdx (8 min reading)
+
   - Content: Basic logic (5-8 steps), Advanced logic (design patterns, algorithms)
   - 2 complete examples with numbered steps
 
 - [ ] T035 [L4] Create Exercise 1 "Recognize Logic vs. Requirements" in lesson-04-specifying-logic.mdx (5 min activity)
+
   - Content: 3 prompts, identify which specifies logic
   - Success: 3/3 correct
 
 - [ ] T036 [L4] Create Exercise 2 "Write Implementation Steps" in lesson-04-specifying-logic.mdx (15 min activity)
+
   - Content: "Build to-do list API", write 8 steps for "create task" endpoint
   - Test with AI, verify AI follows steps
   - Success: Generated code matches logic flow
 
 - [ ] T037 [L4] Create Exercise 3 "Add Logic to Existing Prompt" in lesson-04-specifying-logic.mdx (5 min activity)
+
   - Content: Take Lesson 3 contextual prompt, add 5-step logic
   - Observe improvement
 
 - [ ] T038 [L4] Write "Try With AI" section in lesson-04-specifying-logic.mdx
+
   - Content: Compare vague vs. logic-specified payment processing
   - Execute student's 8-step logic from Exercise 2
 
@@ -238,33 +265,40 @@
 ### Content for Lesson 5
 
 - [ ] T040 [P] [L5] Write "What: Validation-First Safety Culture" section in lesson-05-validating-code.mdx (10 min reading)
+
   - Content: Why this lesson NOW (after students generate code L2-L4)
   - "AI generates fast; YOU ensure correct and safe"
   - Professional responsibility
 
 - [ ] T041 [P] [L5] Write "Why: Validation Matters" section in lesson-05-validating-code.mdx (5 min reading)
+
   - Content: AI makes mistakes (hallucinations, security issues)
   - Real-world consequences of blind trust
   - "Trust but verify" standard
 
 - [ ] T042 [L5] Write "How: The 5-Step Validation Checklist" section in lesson-05-validating-code.mdx (5 min reading)
+
   - Content: 1) Read First, 2) Check Secrets, 3) Check Issues, 4) Test It, 5) Compare to Spec
   - Red flags list (hardcoded passwords, missing error handling, etc.)
 
 - [ ] T043 [L5] Create Exercise 1 "Apply Validation Checklist" in lesson-05-validating-code.mdx (10 min activity)
+
   - Content: Flawed code sample (3 deliberate issues: hardcoded password, no error handling, no type hints)
   - Apply checklist, identify all 3
   - Success: All 3 issues found
 
 - [ ] T044 [L5] Create Exercise 2 "Red Flag Recognition" in lesson-05-validating-code.mdx (5 min activity)
+
   - Content: 5 code snippets, identify red flags
   - Success: 4/5 correct
 
 - [ ] T045 [L5] Create Exercise 3 "Validate and Fix" in lesson-05-validating-code.mdx (10 min activity)
+
   - Content: Generate code with AI, apply checklist, prompt AI to fix issues
   - Success: Final code passes all 5 steps
 
 - [ ] T046 [L5] Write "Try With AI" section in lesson-05-validating-code.mdx
+
   - Content: Generate database connection code, validate, iterate to fix
   - Demonstrate fix prompt: "Fix to avoid hardcoded credentials and add error handling"
 
@@ -286,34 +320,41 @@
 ### Content for Lesson 6
 
 - [ ] T048 [P] [L6] Write "What: Technical Constraints in AIDD" section in lesson-06-constraints-examples.mdx (10 min reading)
+
   - Content: Specific requirements AI must follow
   - Categories: Dependency, Performance, Security, Code Quality, Integration
 
 - [ ] T049 [P] [L6] Write "Why: Constraints Ensure Project Fit" section in lesson-06-constraints-examples.mdx (5 min reading)
+
   - Content: Without = latest features (may not match), With = exact needs
   - "Constraints are guardrails"
 
 - [ ] T050 [L6] Write "How: Specifying Constraints and Examples" section in lesson-06-constraints-examples.mdx (5 min reading)
+
   - Content: Dependency constraints (Python 3.11, FastAPI 0.104)
   - Security constraints (bcrypt, rate limiting)
   - Code quality constraints (type hints, 80% coverage)
   - Code example showing existing service pattern
 
 - [ ] T051 [L6] Create Exercise 1 "Add Constraints to Prompt" in lesson-06-constraints-examples.mdx (10 min activity)
+
   - Content: Basic prompt + 3 constraints (version, security, quality)
   - Test with AI
   - Success: AI output meets constraints
 
 - [ ] T052 [L6] Create Exercise 2 "Provide Style Example" in lesson-06-constraints-examples.mdx (5 min activity)
+
   - Content: Include code snippet, prompt AI to match
   - Success: AI follows pattern
 
 - [ ] T053 [L6] Create Exercise 3 "Combine Constraints + Examples" in lesson-06-constraints-examples.mdx (5 min activity)
+
   - Content: Command + Context + Logic + Constraints + Example
   - Test with AI
   - Success: Production-ready code
 
 - [ ] T054 [L6] Write "Try With AI" section in lesson-06-constraints-examples.mdx
+
   - Content: Compare unconstrained vs. constrained database connection
   - Observe production-readiness difference
 
@@ -335,15 +376,18 @@
 ### Content for Lesson 7
 
 - [ ] T056 [P] [L7] Write "What: Question-Driven Development" section in lesson-07-qdd-roleplay.mdx (10 min reading)
+
   - Content: Most powerful AIDD technique
   - Process: Prompt → AI asks 10 questions → You answer → Tailored solution
   - Why: Prevents generic solutions
 
 - [ ] T057 [P] [L7] Write "Why: QDD Produces Better Code" section in lesson-07-qdd-roleplay.mdx (5 min reading)
+
   - Content: Without QDD = generic, With QDD = tailored
   - "10 min answering questions saves hours debugging"
 
 - [ ] T058 [L7] Write "How: The QDD Process" section in lesson-07-qdd-roleplay.mdx (5 min reading)
+
   - Content: 4 steps with authentication system example
   - Step 1: Initial prompt with question request
   - Step 2: AI asks 10 questions
@@ -351,11 +395,13 @@
   - Step 4: AI generates tailored code
 
 - [ ] T059 [L7] Write "Roleplay: Specialized Technical Expertise" section in lesson-07-qdd-roleplay.mdx (5 min reading)
+
   - Content: Generic vs. specialized roles
   - Backend engineer, frontend developer, DevOps examples
   - Style modifiers (pragmatic, defensive coding)
 
 - [ ] T060 [L7] Create Exercise 1 "Practice QDD Workflow" in lesson-07-qdd-roleplay.mdx (20 min activity)
+
   - Content: Choose complex feature (payment processing)
   - Prompt AI for 10 questions
   - Provide answers
@@ -363,12 +409,14 @@
   - Success: AI asks relevant questions, final code reflects answers
 
 - [ ] T061 [L7] Create Exercise 2 "Adopt Specialized Role" in lesson-07-qdd-roleplay.mdx (10 min activity)
+
   - Content: Create backend engineer roleplay prompt
   - Test with same feature
   - Compare generic vs. specialized
   - Success: Specialized produces expert responses
 
 - [ ] T062 [L7] Write "Try With AI" section in lesson-07-qdd-roleplay.mdx
+
   - Content: QDD workflow for task management REST API
   - Prompt: "Before implementing, ask me 10 technical questions"
   - Compare QDD vs. direct implementation
@@ -391,34 +439,42 @@
 ### Content for Lesson 8
 
 - [ ] T064 [P] [L8] Write "What: Systematizing Prompt Engineering" section in lesson-08-mastery-capstone.mdx (8 min reading)
+
   - Content: Reusable templates accelerate recurring tasks
   - Common tasks: New feature, Bug fix, Refactoring, Optimization, Testing
 
 - [ ] T065 [P] [L8] Write "Why: Templates Save Time" section in lesson-08-mastery-capstone.mdx (3 min reading)
+
   - Content: Don't rewrite from scratch, ensure no forgotten elements
   - "Systematize what works"
 
 - [ ] T066 [L8] Write "How: Building Prompt Templates" section in lesson-08-mastery-capstone.mdx (4 min reading)
+
   - Content: Template 1 (New API Endpoint), Template 2 (Bug Fix), Template 3 (Refactoring)
   - Show all 8 elements structure
 
 - [ ] T067 [L8] Write "Capstone Project: Portfolio-Worthy Application" section in lesson-08-mastery-capstone.mdx (5 min reading)
+
   - Content: 3 project options (REST API, Data Processor, CLI Tool)
   - Requirements: All 8 elements, QDD workflow, validation checklist, 2+ templates, working code + tests + docs
 
 - [ ] T068 [L8] Create Capstone Phase 1 "Planning" instructions in lesson-08-mastery-capstone.mdx (10 min activity)
+
   - Content: Choose project, use QDD (AI asks 10 questions), answer questions
   - Success: Clear project requirements from QDD
 
 - [ ] T069 [L8] Create Capstone Phase 2 "Implementation" instructions in lesson-08-mastery-capstone.mdx (25 min activity)
+
   - Content: Use all 8 AIDD elements, generate code with AI, validate all code (5-step checklist), iterate
   - Success: Working code meeting requirements
 
 - [ ] T070 [L8] Create Capstone Phase 3 "Documentation" instructions in lesson-08-mastery-capstone.mdx (10 min activity)
+
   - Content: Create README, document prompts used, include "built with AI" note, portfolio-ready
   - Success: Complete project with documentation
 
 - [ ] T071 [L8] Write "Try With AI" section in lesson-08-mastery-capstone.mdx
+
   - Content: Execute capstone project with preferred AI tool
   - Students complete 45-minute portfolio project
 
@@ -564,6 +620,7 @@ With multiple content creators:
 ## Task Summary
 
 **Total Tasks**: 83
+
 - Phase 1 (Setup): 4 tasks
 - Phase 2 (Foundational): 5 tasks
 - Phase 3 (Lesson 1): 6 tasks
@@ -579,6 +636,7 @@ With multiple content creators:
 **Parallel Opportunities**: 28 tasks marked [P] can run in parallel when dependencies met
 
 **Independent Test Criteria**:
+
 - Lesson 1: Explain context windows, identify good vs. bad prompts (5-question quiz)
 - Lesson 2: Write 3 prompts generating usable AI responses
 - Lesson 3: Add 4-layer context producing project-specific code
@@ -589,6 +647,7 @@ With multiple content creators:
 - Lesson 8: Complete capstone project (portfolio-worthy application)
 
 **Suggested MVP Scope**: Lessons 1-2 (25 + 40 = 65 min)
+
 - Students understand AI agents AND generate working code
 - Provides complete value for beginners getting started
 - Can validate with users before investing in L3-L8

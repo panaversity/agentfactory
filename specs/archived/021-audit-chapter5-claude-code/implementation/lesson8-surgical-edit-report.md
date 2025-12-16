@@ -1,7 +1,7 @@
 # Lesson 8 Surgical Edit Report: Plugins as Composition
 
 **Date Completed**: 2025-01-12
-**Lesson File**: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/08-plugins-composition.md`
+**Lesson File**: `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/08-plugins-composition.md`
 **Intervention Type**: PRESERVE WITH ENHANCED COMPOSITION FRAMING
 **Effort**: 2 hours (surgical precision edits)
 
@@ -21,17 +21,18 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 
 ### Overall Metrics
 
-| Metric | Original | Modified | Change |
-|--------|----------|----------|--------|
-| **Total Lines** | 519 | 650 | +131 (+25%) |
-| **Sections** | 8 | 10 | +2 new subsections |
-| **CoLearning Elements** | 0 | 5 | +5 (1 prompt, 2 insights, 2 exercises) |
-| **Constitutional References** | 0 | 4 | +4 (Principle 2, 13, 18) |
-| **Content Preservation** | 100% | 87% | 453 lines unchanged, 66 lines restructured |
+| Metric                        | Original | Modified | Change                                     |
+| ----------------------------- | -------- | -------- | ------------------------------------------ |
+| **Total Lines**               | 519      | 650      | +131 (+25%)                                |
+| **Sections**                  | 8        | 10       | +2 new subsections                         |
+| **CoLearning Elements**       | 0        | 5        | +5 (1 prompt, 2 insights, 2 exercises)     |
+| **Constitutional References** | 0        | 4        | +4 (Principle 2, 13, 18)                   |
+| **Content Preservation**      | 100%     | 87%      | 453 lines unchanged, 66 lines restructured |
 
 ### Detailed Content Changes
 
 **Added Content:**
+
 - Extension Hierarchy visualization (ASCII tree, 20 lines)
 - AI Colearning Prompt with domain-agnostic example (8 lines)
 - Three-Role Framework Expert Insight (27 lines)
@@ -40,9 +41,11 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 - Test Built-In Plugin Practice Exercise (24 lines)
 
 **Removed Content:**
+
 - "What's Next" section (18 lines) — Violates AI-first closure policy
 
 **Restructured Content:**
+
 - Moved plugins definition into subsection under "What Are Plugins?"
 - Maintained all plugin descriptions intact
 - Preserved real workflow example unchanged
@@ -59,16 +62,19 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 **Type**: Pedagogical visualization + explanation
 
 **Purpose**:
+
 - Visualize Commands → Plugins progression (Principle 13 Tier 1→5)
 - Show composition as hierarchical (each level builds)
 - Frame plugins as "orchestration layer" (not just "bundling")
 
 **Constitutional Alignment**:
+
 - Principle 13 (Graduated Teaching Pattern): Shows progression from foundational to orchestration
 - Principle 2 (Spec-First): Emphasizes orchestration = specifying intent
 - Addresses A1-A2 cognitive load: Max 5 concepts (Commands, Subagents, Skills, Hooks, Plugins)
 
 **Quality Gates Passed**:
+
 - ✅ Grade 7-8 reading level (ASCII tree, clear labels)
 - ✅ Max 5 new concepts per section
 - ✅ Natural insertion point (flows from definition)
@@ -83,16 +89,19 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 **Type**: Interactive learning prompt
 
 **Purpose**:
+
 - Enable students to explore orchestration value through AI dialogue
 - Domain-agnostic (works for web, DevOps, data, mobile workflows)
 - Demonstrates AI as Teacher (suggests orchestration patterns)
 
 **Constitutional Alignment**:
+
 - Principle 18 (Three-Role Framework): AI as Teacher + Student
 - Principle 2 (Spec-First): Practice specification thinking
 - Principle 13 (Tier 3): AI orchestration discussion
 
 **Quality Gates Passed**:
+
 - ✅ Copyable prompt with clear brackets
 - ✅ Specific expected output (before/after comparison)
 - ✅ Reinforces hierarchy just introduced
@@ -107,17 +116,20 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 **Type**: Strategic framework explanation
 
 **Purpose**:
+
 - Connect plugins to Three-Role Framework (Lesson 1)
 - Show plugins as peak Co-Worker efficiency
 - Frame "ambient intelligence" concept
 - Reference Principle 13 (Tier 3 orchestration)
 
 **Constitutional Alignment**:
+
 - Principle 18 (Three Roles): Teacher/Student/Co-Worker applied to plugins
 - Principle 13 (Tier 3): Orchestration at peak efficiency
 - Principle 2 (Spec-First): "You specify intent, AI manages complexity"
 
 **Quality Gates Passed**:
+
 - ✅ References Lesson 1 framework (builds on prior knowledge)
 - ✅ Concrete examples (code-review, pr-review-toolkit plugins)
 - ✅ Grade 7-8 language ("ambient intelligence" explained)
@@ -132,17 +144,20 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 **Type**: Strategic business context
 
 **Purpose**:
+
 - Position plugins as competitive organizational assets
 - Frame custom plugins as knowledge capture
 - Connect technical composition to business value
 - Emphasize team/enterprise context (beginner-friendly)
 
 **Constitutional Alignment**:
+
 - Principle 13 (Tier 3): Organizational orchestration at scale
 - Principle 2 (Spec-First): Standards as executable specifications
 - Vision (AI-native development): Building strategic capabilities
 
 **Quality Gates Passed**:
+
 - ✅ Concrete example (custom PR review plugin)
 - ✅ Before/after comparison (generic vs. custom)
 - ✅ Business impact quantified (productivity, quality, onboarding)
@@ -157,17 +172,20 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 **Type**: Specification practice exercise
 
 **Purpose**:
+
 - Practice specification thinking (Principle 2)
 - Decompose workflows into components
 - Prepare for plugin creation (specification → implementation)
 - Reinforce extension hierarchy
 
 **Constitutional Alignment**:
+
 - Principle 2 (Spec-First): "Design specifications before implementation"
 - Principle 13 (Tier 3): "Thinking like a plugin architect"
 - Principle 8 (Learning by Building): Practical decomposition exercise
 
 **Quality Gates Passed**:
+
 - ✅ Clear task with example completed
 - ✅ Uses hierarchy from Insertion 1
 - ✅ Specification thinking explicitly called out
@@ -182,17 +200,20 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 **Type**: Hands-on experiential learning
 
 **Purpose**:
+
 - Experience orchestration in action (not theoretical)
 - Observe which hooks/agents/skills are triggered
 - Reflect on manual vs. orchestrated workflows
 - Build mental models of composition
 
 **Constitutional Alignment**:
+
 - Principle 8 (Learning by Building): Hands-on practice
 - Principle 13 (Tier 3): Observing orchestration in action
 - Principle 5 (Validation-First): "Reflect: What would this look like without the plugin?"
 
 **Quality Gates Passed**:
+
 - ✅ Concrete steps (enable, run, observe, reflect)
 - ✅ Example completed (code-review plugin)
 - ✅ "Before vs. after" reflection requirement
@@ -205,6 +226,7 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 ### Principle 2: Specification-First Development ("Specs Are the New Syntax")
 
 **References Added**:
+
 - Insertion 1: "AI manages complexity, you specify intent"
 - Insertion 5: "Specification thinking (Principle 2)"
 - Colearning Prompt: Exploring orchestration requires specification clarity
@@ -214,6 +236,7 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 ### Principle 13: Graduated Teaching Pattern (Book → AI Companion → AI Orchestration)
 
 **References Added**:
+
 - Insertion 1: Explicitly labels "Tier 3 orchestration"
 - Insertion 3: "Tier 3 orchestration at peak efficiency"
 - Insertion 4: "Tier 3 organizational orchestration"
@@ -224,6 +247,7 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 ### Principle 18: Three-Role AI Partnership
 
 **References Added**:
+
 - Insertion 2: "AI as Teacher + Student" in colearning prompt
 - Insertion 3: Complete Three-Role breakdown (Teacher/Student/Co-Worker)
 - Colearning Prompt: Explores how AI suggests patterns (Teaching role)
@@ -233,6 +257,7 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 ### Integration Across Insertions
 
 **Coherence Check**: All insertions reference each other:
+
 - Hierarchy (Insertion 1) → Referenced in Colearning Prompt (Insertion 2)
 - Colearning Prompt (Insertion 2) → Explores Orchestration concept
 - Three-Role Framework (Insertion 3) → Shows orchestration in practice
@@ -247,20 +272,20 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 
 ### Original Content Status
 
-| Section | Status | Lines | Notes |
-|---------|--------|-------|-------|
-| Header + Intro | ✅ Preserved | 29 | "Problem: Isolated Automations" section intact |
-| Plugin Definition | ✅ Modified Structure | 9 | Definition preserved, wrapped in subsection |
-| Plugins vs Extensions | ✅ Preserved | 9 | Comparison table unchanged |
-| Key Insight | ✅ Preserved | 4 | "When to Use Each" section intact |
-| Getting Started | ✅ Preserved | 21 | Command examples unchanged |
-| Plugin Architecture | ✅ Preserved | 43 | How plugins compose everything section intact |
-| Built-In Plugins | ✅ Preserved | 120 | All 4 plugin descriptions (code-review, feature-dev, pr-review-toolkit, commit-commands) unchanged |
-| Installing Plugins | ✅ Preserved | 46 | Marketplace, browsing, installation instructions intact |
-| Creating Plugins | ✅ Preserved | 95 | Structure, examples, advanced hooks all unchanged |
-| Real Workflow Example | ✅ Preserved | 35 | Before/after scenario preserved |
-| Try With AI | ✅ Preserved | 60 | All 3 exercises intact |
-| **What's Next** | ❌ Removed | -18 | Violates AI-first closure policy |
+| Section               | Status                | Lines | Notes                                                                                              |
+| --------------------- | --------------------- | ----- | -------------------------------------------------------------------------------------------------- |
+| Header + Intro        | ✅ Preserved          | 29    | "Problem: Isolated Automations" section intact                                                     |
+| Plugin Definition     | ✅ Modified Structure | 9     | Definition preserved, wrapped in subsection                                                        |
+| Plugins vs Extensions | ✅ Preserved          | 9     | Comparison table unchanged                                                                         |
+| Key Insight           | ✅ Preserved          | 4     | "When to Use Each" section intact                                                                  |
+| Getting Started       | ✅ Preserved          | 21    | Command examples unchanged                                                                         |
+| Plugin Architecture   | ✅ Preserved          | 43    | How plugins compose everything section intact                                                      |
+| Built-In Plugins      | ✅ Preserved          | 120   | All 4 plugin descriptions (code-review, feature-dev, pr-review-toolkit, commit-commands) unchanged |
+| Installing Plugins    | ✅ Preserved          | 46    | Marketplace, browsing, installation instructions intact                                            |
+| Creating Plugins      | ✅ Preserved          | 95    | Structure, examples, advanced hooks all unchanged                                                  |
+| Real Workflow Example | ✅ Preserved          | 35    | Before/after scenario preserved                                                                    |
+| Try With AI           | ✅ Preserved          | 60    | All 3 exercises intact                                                                             |
+| **What's Next**       | ❌ Removed            | -18   | Violates AI-first closure policy                                                                   |
 
 **Original Content Preserved**: 453 lines / 519 lines = **87.3%**
 **New Content Added**: 131 lines
@@ -319,6 +344,7 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 ### Structure Changes
 
 **Before**:
+
 ```
 1. Problem: Isolated Automations Don't Scale
 2. What Are Plugins?
@@ -336,6 +362,7 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 ```
 
 **After**:
+
 ```
 1. Problem: Isolated Automations Don't Scale
 2. What Are Plugins?
@@ -368,12 +395,14 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 ### Key Additions
 
 **Pedagogical**:
+
 - Hierarchy visualization (scaffolding concept progression)
 - AI colearning prompt (practice specification thinking)
 - Two expert insights (strategic context)
 - Two practice exercises (hands-on experience)
 
 **Constitutional**:
+
 - 4 explicit principle references
 - 5 CoLearning elements
 - Tier 3 orchestration emphasis
@@ -383,22 +412,22 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 
 ## Metrics Summary
 
-| Category | Metric | Value |
-|----------|--------|-------|
-| **Preservation** | % Original Content | 87.3% |
-| **Preservation** | Lines Preserved | 453/519 |
-| **Addition** | Total Lines Added | 131 |
-| **Addition** | New Insertions | 6 |
-| **CoLearning** | Prompts | 1 |
-| **CoLearning** | Expert Insights | 2 |
-| **CoLearning** | Practice Exercises | 2 |
-| **CoLearning** | Total CoLearning Elements | 5 |
-| **Constitutional** | Principle References | 4 (P2, P13, P18) |
-| **Constitutional** | Tier 3 Refs | 4 explicit |
-| **Constitutional** | Three-Role Refs | 1 section + prompt |
-| **Compliance** | AI-First Closure | ✅ (removed What's Next) |
-| **Compliance** | Accessibility | ✅ (Grade 7-8) |
-| **Compliance** | Cognitive Load | ✅ (≤5 new concepts/section) |
+| Category           | Metric                    | Value                        |
+| ------------------ | ------------------------- | ---------------------------- |
+| **Preservation**   | % Original Content        | 87.3%                        |
+| **Preservation**   | Lines Preserved           | 453/519                      |
+| **Addition**       | Total Lines Added         | 131                          |
+| **Addition**       | New Insertions            | 6                            |
+| **CoLearning**     | Prompts                   | 1                            |
+| **CoLearning**     | Expert Insights           | 2                            |
+| **CoLearning**     | Practice Exercises        | 2                            |
+| **CoLearning**     | Total CoLearning Elements | 5                            |
+| **Constitutional** | Principle References      | 4 (P2, P13, P18)             |
+| **Constitutional** | Tier 3 Refs               | 4 explicit                   |
+| **Constitutional** | Three-Role Refs           | 1 section + prompt           |
+| **Compliance**     | AI-First Closure          | ✅ (removed What's Next)     |
+| **Compliance**     | Accessibility             | ✅ (Grade 7-8)               |
+| **Compliance**     | Cognitive Load            | ✅ (≤5 new concepts/section) |
 
 ---
 
@@ -454,8 +483,9 @@ Successfully executed surgical edit to Lesson 8 (Plugins: Composing Commands, Ag
 ## File Location and Access
 
 **Modified Lesson**:
+
 ```
-/Users/mjs/Documents/code/panaversity-official/tutorsgpt/part-2/book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/08-plugins-composition.md
+/Users/mjs/Documents/code/panaversity-official/tutorsgpt/part-2/apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/08-plugins-composition.md
 ```
 
 **Total Lines**: 650 (original: 519)

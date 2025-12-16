@@ -19,7 +19,7 @@ def fix_explanation(text):
     return text
 
 def main():
-    quiz_file = "book-source/docs/04-Python-Fundamentals/16-operators-keywords-variables/06_chapter_16_quiz.md"
+    quiz_file = "apps/learn-app/docs/04-Python-Fundamentals/16-operators-keywords-variables/06_chapter_16_quiz.md"
 
     with open(quiz_file, 'r') as f:
         content = f.read()

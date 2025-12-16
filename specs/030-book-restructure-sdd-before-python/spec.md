@@ -5,7 +5,7 @@
 **Status**: Draft
 **Input**: User description: "Restructure book to introduce SDD-RI BEFORE Python (Part 4: 3 chapters on SDD-RI fundamentals + business thinking, Part 6: 3 chapters on AI Product Leadership). Move current chapters 31-33 to new positions, create placeholders for new chapters, update chapter-index.md. This is Phase 1: Structure & Placeholders only - no content creation yet."
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Update Book Structure Metadata (Priority: P1)
 
@@ -29,13 +29,13 @@ As a book maintainer, I need existing chapter directories (31-33) moved to their
 
 **Why this priority**: Ensures file system consistency with metadata before creating new content.
 
-**Independent Test**: Can verify by listing directories under book-source/docs/ and confirming old chapter numbers no longer exist and new numbers contain the moved content.
+**Independent Test**: Can verify by listing directories under apps/learn-app/docs/ and confirming old chapter numbers no longer exist and new numbers contain the moved content.
 
 **Acceptance Scenarios**:
 
-1. **Given** current chapter 31 directory at `book-source/docs/05-Spec-Driven-Development/31-specification-driven-development-fundamentals/`, **When** I move it to position 13, **Then** it exists at `book-source/docs/04-SDD-RI-Fundamentals/13-specification-driven-development-fundamentals/` with all lesson files intact
+1. **Given** current chapter 31 directory at `apps/learn-app/docs/05-Spec-Driven-Development/31-specification-driven-development-fundamentals/`, **When** I move it to position 13, **Then** it exists at `apps/learn-app/docs/04-SDD-RI-Fundamentals/13-specification-driven-development-fundamentals/` with all lesson files intact
 2. **Given** current chapter 32 directory, **When** I move it to position 14, **Then** it exists in new location with README.md updated to reflect position 14
-3. **Given** current chapter 33 directory (AI Orchestra), **When** I move it to position 35, **Then** it exists in Part 6 directory structure at `book-source/docs/06-AI-Product-Leadership/35-ai-orchestra-agent-teams-manager/`
+3. **Given** current chapter 33 directory (AI Orchestra), **When** I move it to position 35, **Then** it exists in Part 6 directory structure at `apps/learn-app/docs/06-AI-Product-Leadership/35-ai-orchestra-agent-teams-manager/`
 
 ---
 
@@ -49,7 +49,7 @@ As a book maintainer, I need placeholder README.md files for chapters 15, 34, an
 
 **Acceptance Scenarios**:
 
-1. **Given** Chapter 15 needs to be created (AI Product & Business Intelligence + Capstone), **When** I create the placeholder, **Then** `book-source/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/README.md` exists with correct YAML frontmatter (sidebar_position: 15, title, slides metadata)
+1. **Given** Chapter 15 needs to be created (AI Product & Business Intelligence + Capstone), **When** I create the placeholder, **Then** `apps/learn-app/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/README.md` exists with correct YAML frontmatter (sidebar_position: 15, title, slides metadata)
 2. **Given** Chapter 34 needs to be created (AI Product Development & Evaluation-First), **When** I create the placeholder, **Then** it exists in Part 6 directory with proper frontmatter and placeholder content explaining the chapter's purpose
 3. **Given** Chapter 36 needs to be created (Product & Engineering Leadership), **When** I create the placeholder, **Then** it follows the same pattern as other placeholders with descriptive overview content
 
@@ -79,7 +79,7 @@ As a book maintainer, I need part folder names updated to reflect the new struct
 
 **Why this priority**: Ensures directory structure semantic clarity and prevents confusion.
 
-**Independent Test**: Can verify by listing book-source/docs/ directories and confirming folder names match part descriptions.
+**Independent Test**: Can verify by listing apps/learn-app/docs/ directories and confirming folder names match part descriptions.
 
 **Acceptance Scenarios**:
 
@@ -92,37 +92,41 @@ As a book maintainer, I need part folder names updated to reflect the new struct
 ### Edge Cases
 
 **Directory & Git Operations:**
+
 - What happens if chapter directory moves fail mid-operation? (Solution: Document rollback procedure in tasks.md, use git operations which are atomic)
 - How do we handle existing git history for moved directories? (Solution: Use `git mv` to preserve history)
 - What if part folder renumbering conflicts with existing content? (Solution: Perform moves in correct sequence - rename parts first, then move chapters)
 - What if Docusaurus build fails after restructuring? (Solution: Test build after each major change; rollback if necessary)
 
 **Plugin & Build System:**
+
 - **CRITICAL**: What happens to `remark-interactive-python` plugin with hardcoded path `/04-Python-Fundamentals/`? (Solution: Must update docusaurus.config.ts and plugin index.js to `/05-Python-Fundamentals/`)
 - What if custom plugins extract chapter numbers from directory names? (Solution: Verify og-image-generator and structured-data plugins don't parse directory numbers)
 
 **Content References:**
+
 - What happens to 315+ cross-references in lesson files mentioning "Chapter 13-33"? (Solution: **MOVED TO PHASE 1** - automated grep-and-replace updates all narrative chapter mentions)
 - What happens to internal markdown links like `[link](/docs/04-Python/.../)`? (Solution: Docusaurus uses relative links and `sidebar_position`, so YAML updates sufficient)
 
 **Asset Hosting:**
+
 - ~~What if slides are hosted on CDN/S3?~~ **RESOLVED**: All slides are local-only (confirmed by user)
 - What happens to generated sitemaps and SEO metadata after URL changes? (Solution: Docusaurus regenerates automatically during build based on new structure)
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
 - **FR-001**: System MUST update specs/book/chapter-index.md with new 86-chapter structure (was 84 chapters, +2 from Part 4 expansion)
-- **FR-002**: System MUST move `book-source/docs/05-Spec-Driven-Development/31-specification-driven-development-fundamentals/` to `book-source/docs/04-SDD-RI-Fundamentals/13-specification-driven-development-fundamentals/` using `git mv`
-- **FR-003**: System MUST move `book-source/docs/05-Spec-Driven-Development/32-spec-kit-plus-hands-on/` to `book-source/docs/04-SDD-RI-Fundamentals/14-youtube-content-workflow-gemini/` using `git mv` (note: directory rename reflects future content pivot)
-- **FR-004**: System MUST move `book-source/docs/05-Spec-Driven-Development/33-ai-orchestra-agent-teams-manager/` to `book-source/docs/06-AI-Product-Leadership/35-ai-orchestra-agent-teams-manager/` using `git mv`
-- **FR-005**: System MUST rename `book-source/docs/04-Python-Fundamentals/` to `book-source/docs/05-Python-Fundamentals/` using `git mv`
-- **FR-006**: System MUST rename `book-source/docs/05-Spec-Driven-Development/` to `book-source/docs/04-SDD-RI-Fundamentals/` using `git mv`
-- **FR-007**: System MUST create `book-source/docs/06-AI-Product-Leadership/` directory structure
-- **FR-008**: System MUST create placeholder README.md for Chapter 15 at `book-source/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/README.md`
-- **FR-009**: System MUST create placeholder README.md for Chapter 34 at `book-source/docs/06-AI-Product-Leadership/34-ai-product-development-evaluation-first/README.md`
-- **FR-010**: System MUST create placeholder README.md for Chapter 36 at `book-source/docs/06-AI-Product-Leadership/36-product-engineering-leadership-ai/README.md`
+- **FR-002**: System MUST move `apps/learn-app/docs/05-Spec-Driven-Development/31-specification-driven-development-fundamentals/` to `apps/learn-app/docs/04-SDD-RI-Fundamentals/13-specification-driven-development-fundamentals/` using `git mv`
+- **FR-003**: System MUST move `apps/learn-app/docs/05-Spec-Driven-Development/32-spec-kit-plus-hands-on/` to `apps/learn-app/docs/04-SDD-RI-Fundamentals/14-youtube-content-workflow-gemini/` using `git mv` (note: directory rename reflects future content pivot)
+- **FR-004**: System MUST move `apps/learn-app/docs/05-Spec-Driven-Development/33-ai-orchestra-agent-teams-manager/` to `apps/learn-app/docs/06-AI-Product-Leadership/35-ai-orchestra-agent-teams-manager/` using `git mv`
+- **FR-005**: System MUST rename `apps/learn-app/docs/04-Python-Fundamentals/` to `apps/learn-app/docs/05-Python-Fundamentals/` using `git mv`
+- **FR-006**: System MUST rename `apps/learn-app/docs/05-Spec-Driven-Development/` to `apps/learn-app/docs/04-SDD-RI-Fundamentals/` using `git mv`
+- **FR-007**: System MUST create `apps/learn-app/docs/06-AI-Product-Leadership/` directory structure
+- **FR-008**: System MUST create placeholder README.md for Chapter 15 at `apps/learn-app/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/README.md`
+- **FR-009**: System MUST create placeholder README.md for Chapter 34 at `apps/learn-app/docs/06-AI-Product-Leadership/34-ai-product-development-evaluation-first/README.md`
+- **FR-010**: System MUST create placeholder README.md for Chapter 36 at `apps/learn-app/docs/06-AI-Product-Leadership/36-product-engineering-leadership-ai/README.md`
 - **FR-011**: System MUST update YAML frontmatter in moved chapter README.md files to reflect new sidebar_position numbers (13, 14, 35)
 - **FR-012**: System MUST preserve all existing lesson content files within moved chapter directories unchanged
 - **FR-013**: System MUST use `git mv` command for all directory moves to preserve git history
@@ -156,26 +160,26 @@ As a book maintainer, I need part folder names updated to reflect the new struct
 - **Placeholder README**: Template-based README for chapters not yet implemented, following pattern from current Chapter 34
 - **Slide PDF**: NotebookLM-generated presentation file stored in `book-source/static/slides/` with naming pattern `chapter-[number]-slides.pdf`
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 
 - **SC-001**: All 3 existing chapter directories (31, 32, 33) successfully moved to new positions (13, 14, 35) with git history preserved
 - **SC-002**: All 3 new placeholder READMEs created (15, 34, 36) with valid YAML frontmatter and descriptive content
 - **SC-003**: Chapter-index.md accurately reflects new 86-chapter structure with correct part assignments and renumbering
-- **SC-004**: Directory structure validation passes: `book-source/docs/04-SDD-RI-Fundamentals/` contains 3 chapters (13-15), `book-source/docs/05-Python-Fundamentals/` contains 18 chapters (16-33), `book-source/docs/06-AI-Product-Leadership/` contains 3 chapters (34-36)
-- **SC-005**: Zero content files lost during migration (verify count of *.md files before and after matches)
+- **SC-004**: Directory structure validation passes: `apps/learn-app/docs/04-SDD-RI-Fundamentals/` contains 3 chapters (13-15), `apps/learn-app/docs/05-Python-Fundamentals/` contains 18 chapters (16-33), `apps/learn-app/docs/06-AI-Product-Leadership/` contains 3 chapters (34-36)
+- **SC-005**: Zero content files lost during migration (verify count of \*.md files before and after matches)
 - **SC-006**: Docusaurus build system successfully generates site with new structure without errors
 - **SC-007**: All moved chapter READMEs have correct sidebar_position values matching their new chapter numbers
 - **SC-008**: All 21 affected slide PDF files renamed to match new chapter numbers with git history preserved (verify via `git log --follow book-source/static/slides/chapter-*.pdf`)
 - **SC-009**: All ~18 affected image directories moved to new part/chapter paths with git history preserved
 - **SC-010**: All YAML frontmatter `slides.source` references in 21 chapter READMEs updated to point to correct renamed slide files
-- **SC-011**: All image markdown references in lesson content updated to point to new part/chapter paths (verify via `grep -r "img/part-" book-source/docs/` showing no references to old paths)
+- **SC-011**: All image markdown references in lesson content updated to point to new part/chapter paths (verify via `grep -r "img/part-" apps/learn-app/docs/` showing no references to old paths)
 - **SC-012**: Interactive Python plugin updated to use `/05-Python-Fundamentals/` path (verify via `grep "includePaths.*04-Python" book-source` returns zero matches)
 - **SC-013**: Docusaurus build succeeds AND interactive Python code blocks render correctly in new Part 5 chapters (manual test: open Chapter 16 in browser, verify code is interactive)
 - **SC-014**: All narrative chapter references updated in lesson content (verify via `grep -r "Chapter (13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33)" book-source/docs` and manually check affected chapters point to correct new numbers)
 
-## Constraints *(if applicable)*
+## Constraints _(if applicable)_
 
 ### Technical Constraints
 
@@ -192,7 +196,7 @@ As a book maintainer, I need part folder names updated to reflect the new struct
 - MUST validate Docusaurus build after changes (early error detection)
 - MUST document rollback procedure in tasks.md (recovery plan)
 
-## Assumptions *(if applicable)*
+## Assumptions _(if applicable)_
 
 - Docusaurus build configuration automatically picks up new sidebar_position values from YAML frontmatter
 - Current Chapter 34 (Tessl) placeholder README represents the desired template format
@@ -206,7 +210,7 @@ As a book maintainer, I need part folder names updated to reflect the new struct
 
 None at specification phase. User explicitly scoped Phase 1 to "Structure & Placeholders only - no content creation yet."
 
-## Dependencies *(if applicable)*
+## Dependencies _(if applicable)_
 
 ### Prerequisites
 
@@ -222,17 +226,19 @@ None at specification phase. User explicitly scoped Phase 1 to "Structure & Plac
 - Phase 2 will handle cross-reference updates in existing lessons
 - Chapters 35+ in other parts may need updated references if they mention specific chapter numbers
 
-## Non-Goals *(important)*
+## Non-Goals _(important)_
 
 **Phase 1 does NOT include**:
+
 - Writing lesson content for new chapters 15, 34, 36 (only placeholder READMEs)
 - Pivoting Chapter 14 content from Python to YouTube/Gemini (structure + assets only, content pivot deferred)
 - Generating new slide PDFs for placeholder chapters (15, 34, 36)
 - Creating lesson files for placeholder chapters (only README.md)
-- Updating any documentation outside of specs/book/ and book-source/docs/
+- Updating any documentation outside of specs/book/ and apps/learn-app/docs/
 - Updating GitHub issues, external documentation, or other repositories that reference chapter numbers
 
 **Phase 1 DOES include** (clarification):
+
 - ✅ Renumbering ALL Python chapter directories 13-30 → 16-33 (changed from original scope)
 - ✅ Renaming ALL 21 affected slide PDFs to match new chapter numbers
 - ✅ Moving ALL ~18 image directories to new part/chapter paths
@@ -241,20 +247,21 @@ None at specification phase. User explicitly scoped Phase 1 to "Structure & Plac
 - ✅ Updating plugin configuration files (docusaurus.config.ts, remark-interactive-python)
 - ✅ Updating chapter-index.md to show complete 86-chapter structure (including Part 7-12 shift by +2)
 
-## References *(if applicable)*
+## References _(if applicable)_
 
 - Current structure: specs/book/chapter-index.md (84 chapters, 12 parts)
 - New structure: specs/book/chapter-index-NEW.md (86 chapters, 12 parts, already created in previous work)
-- Placeholder template: book-source/docs/05-Spec-Driven-Development/34-tessl-framework-and-integration/README.md
+- Placeholder template: apps/learn-app/docs/05-Spec-Driven-Development/34-tessl-framework-and-integration/README.md
 - Constitution: .specify/memory/constitution.md (v6.0.1 - governs content quality, not structure)
 
-## Additional Context *(if helpful)*
+## Additional Context _(if helpful)_
 
 ### Part 7-12 Numbering Strategy (Metadata vs Directories)
 
 **Decision**: Phase 1 updates chapter-index.md to show chapters 37-86 (was 35-84), but does NOT move directory structures for these chapters.
 
 **Rationale**:
+
 - **Option chosen**: Update metadata only (Option C from spec-architect validation)
 - **Why**: Clean separation of concerns - Phase 1 handles Parts 1-6 file operations + complete metadata, Phase 2+ handles remaining directory moves if needed
 - **Impact**: chapter-index.md will be accurate (86 chapters correctly numbered 1-86), but Part 7-12 directories will temporarily use old numbering (this is acceptable as Docusaurus relies on `sidebar_position` in YAML frontmatter, not directory names)
@@ -275,17 +282,20 @@ This allows students to learn "specification-first thinking" as a foundation bef
 **To avoid conflicts, perform operations in this order**:
 
 ### Phase A: Directory Structure Preparation
+
 1. Rename Part 4 (Python) to Part 5: `04-Python-Fundamentals` → `05-Python-Fundamentals`
 2. Rename old Part 5 to Part 4: `05-Spec-Driven-Development` → `04-SDD-RI-Fundamentals`
 3. Create new Part 6 directory: `06-AI-Product-Leadership/`
 
 ### Phase B: Chapter Directory Moves (reverse order to avoid conflicts)
+
 4. Move chapter 33 → 35: `04-SDD-RI-Fundamentals/33-*` → `06-AI-Product-Leadership/35-*` (temp location)
 5. Move Python chapters 13-30 → 16-33 (**REVERSE ORDER 30→33 first, then 29→32, ..., 13→16 last**)
 6. Move SDD chapters: 31→13, 32→14 to Part 4
 7. Move chapter 35 from temp to final Part 6 location
 
 ### Phase C: Asset Migration (slides + images)
+
 8. Rename Python slide PDFs (**REVERSE ORDER 30→33 first, then 29→32, ..., 13→16 last**)
 9. Rename SDD slide PDFs: 31→13, 32→14
 10. Rename AI Orchestra slide: 33→35
@@ -294,6 +304,7 @@ This allows students to learn "specification-first thinking" as a foundation bef
 13. Move AI Orchestra images: part-5/chapter-33 → part-6/chapter-35
 
 ### Phase D: Metadata & Content Updates
+
 14. Update YAML frontmatter in all 21 affected chapter READMEs (sidebar_position + slides.source)
 15. Update image markdown references in lesson content files (grep-and-replace `/img/part-4/chapter-X` → `/img/part-5/chapter-Y`)
 16. Update plugin configuration files:
@@ -308,6 +319,7 @@ This allows students to learn "specification-first thinking" as a foundation bef
 19. Update chapter-index.md with new 86-chapter structure
 
 ### Phase E: Validation
+
 20. Run Docusaurus build to verify no broken links
 21. Validate git history preservation for all `git mv` operations
 22. Verify asset counts: 33 slide PDFs exist, ~30 image directories exist, no orphaned files
@@ -316,15 +328,18 @@ This allows students to learn "specification-first thinking" as a foundation bef
 
 **Why Reverse Order?**
 When renaming files with numeric sequences where source and target ranges overlap (e.g., 13-30 → 16-33), forward order causes conflicts:
+
 - Forward: `chapter-13 → chapter-16` works, but then `chapter-16 → chapter-19` would overwrite the file we just created!
 - Reverse: `chapter-30 → chapter-33` (safe, 33 doesn't exist), `chapter-29 → chapter-32` (safe), ..., `chapter-13 → chapter-16` (safe, 13 no longer needed)
 
 This applies to:
+
 - Chapter directories: 30→33, 29→32, ..., 13→16
 - Slide PDFs: chapter-30-slides.pdf → chapter-33-slides.pdf, ..., chapter-13-slides.pdf → chapter-16-slides.pdf
 - Image directories: part-4/chapter-30 → part-5/chapter-33, ..., part-4/chapter-13 → part-5/chapter-16
 
 **Rollback plan** (if needed):
+
 - All operations via `git mv` means `git reset --hard` restores original state
 - Document original structure in tasks.md for reference
 - Maintain backup of chapter-index.md before updates

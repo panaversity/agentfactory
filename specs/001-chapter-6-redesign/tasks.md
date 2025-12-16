@@ -60,14 +60,14 @@ description: "Implementation tasks for Chapter 6 Redesign - Gemini CLI"
 
 **Independent Test**: Student can list 6 evaluation dimensions and identify 3 Gemini differentiators
 
-- [X] T014 [US1] Read existing lesson at book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/01-why-gemini-cli-matters.md
-- [X] T015 [US1] Add CEFR level metadata (A2 Beginner) to lesson frontmatter
-- [X] T016 [US1] Add 5 learning objectives with Bloom's taxonomy levels to frontmatter
-- [X] T017 [US1] Map all learning objectives to DigComp 2.2 competency areas in frontmatter
-- [X] T018 [US1] Add Stage 1 (Manual Foundation) tag to lesson metadata
-- [X] T019 [US1] Verify content adheres to A2 cognitive load (5-7 concepts max)
-- [X] T020 [US1] Ensure "Try With AI" section uses preferred tool instruction (not ChatGPT-specific)
-- [X] T021 [US1] Cite all Gemini features from Context7/official docs with inline citations
+- [x] T014 [US1] Read existing lesson at apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/01-why-gemini-cli-matters.md
+- [x] T015 [US1] Add CEFR level metadata (A2 Beginner) to lesson frontmatter
+- [x] T016 [US1] Add 5 learning objectives with Bloom's taxonomy levels to frontmatter
+- [x] T017 [US1] Map all learning objectives to DigComp 2.2 competency areas in frontmatter
+- [x] T018 [US1] Add Stage 1 (Manual Foundation) tag to lesson metadata
+- [x] T019 [US1] Verify content adheres to A2 cognitive load (5-7 concepts max)
+- [x] T020 [US1] Ensure "Try With AI" section uses preferred tool instruction (not ChatGPT-specific)
+- [x] T021 [US1] Cite all Gemini features from Context7/official docs with inline citations
 
 **Checkpoint**: Lesson 1 has complete metadata, passes A2 cognitive load validation
 
@@ -77,17 +77,17 @@ description: "Implementation tasks for Chapter 6 Redesign - Gemini CLI"
 
 **Independent Test**: Student successfully runs gemini command and executes !ls command
 
-- [X] T022 [US1] Read existing lesson at book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/02-installation-authentication-first-steps.md
-- [X] T023 [US1] Add CEFR level metadata (A2 Beginner) to lesson frontmatter
-- [X] T024 [US1] Add 6 learning objectives with Bloom's taxonomy levels to frontmatter
-- [X] T025 [US1] Map all learning objectives to DigComp 2.2 competency areas in frontmatter
-- [X] T026 [US1] Add Stage 1 (Manual Foundation) tag to lesson metadata
-- [X] T027 [US1] Add shell mode (!command) example with terminal execution log (FR-005)
-- [X] T028 [US1] Include platform-specific installation instructions (Windows, macOS, Linux)
-- [X] T029 [US1] Add OAuth authentication walkthrough with screenshots (if available) or detailed steps
-- [X] T030 [US1] Document free tier limits (60 req/min, 1000 req/day) with citation
-- [X] T031 [US1] Ensure "Try With AI" section uses preferred tool instruction
-- [X] T032 [US1] Attach terminal logs from T005 for all basic commands shown
+- [x] T022 [US1] Read existing lesson at apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/02-installation-authentication-first-steps.md
+- [x] T023 [US1] Add CEFR level metadata (A2 Beginner) to lesson frontmatter
+- [x] T024 [US1] Add 6 learning objectives with Bloom's taxonomy levels to frontmatter
+- [x] T025 [US1] Map all learning objectives to DigComp 2.2 competency areas in frontmatter
+- [x] T026 [US1] Add Stage 1 (Manual Foundation) tag to lesson metadata
+- [x] T027 [US1] Add shell mode (!command) example with terminal execution log (FR-005)
+- [x] T028 [US1] Include platform-specific installation instructions (Windows, macOS, Linux)
+- [x] T029 [US1] Add OAuth authentication walkthrough with screenshots (if available) or detailed steps
+- [x] T030 [US1] Document free tier limits (60 req/min, 1000 req/day) with citation
+- [x] T031 [US1] Ensure "Try With AI" section uses preferred tool instruction
+- [x] T032 [US1] Attach terminal logs from T005 for all basic commands shown
 
 **Checkpoint**: Lesson 2 has complete metadata, shell mode example included, all commands verified
 
@@ -97,15 +97,15 @@ description: "Implementation tasks for Chapter 6 Redesign - Gemini CLI"
 
 **Independent Test**: Student correctly chooses context command for 3 different scenarios
 
-- [X] T033 [US1] Read existing lesson at book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/04-memory-and-context-management.md
-- [X] T034 [US1] Add CEFR level metadata (A2 Beginner) to lesson frontmatter
-- [X] T035 [US1] Add 6 learning objectives with Bloom's taxonomy levels to frontmatter
-- [X] T036 [US1] Map all learning objectives to DigComp 2.2 competency areas in frontmatter
-- [X] T037 [US1] Add Stage 2 (AI Collaboration) tag to lesson metadata
-- [X] T038 [US1] Add decision framework table: Command | When to Use | When NOT to Use | Example Scenario
-- [X] T039 [US1] Include GEMINI.md file example with project context template (FR-023)
-- [X] T040 [US1] Ensure "Try With AI" section uses preferred tool instruction
-- [X] T041 [US1] Attach terminal logs from T010 for /clear, /compress, /save examples (SKIPPED - not applicable to context lesson)
+- [x] T033 [US1] Read existing lesson at apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/04-memory-and-context-management.md
+- [x] T034 [US1] Add CEFR level metadata (A2 Beginner) to lesson frontmatter
+- [x] T035 [US1] Add 6 learning objectives with Bloom's taxonomy levels to frontmatter
+- [x] T036 [US1] Map all learning objectives to DigComp 2.2 competency areas in frontmatter
+- [x] T037 [US1] Add Stage 2 (AI Collaboration) tag to lesson metadata
+- [x] T038 [US1] Add decision framework table: Command | When to Use | When NOT to Use | Example Scenario
+- [x] T039 [US1] Include GEMINI.md file example with project context template (FR-023)
+- [x] T040 [US1] Ensure "Try With AI" section uses preferred tool instruction
+- [x] T041 [US1] Attach terminal logs from T010 for /clear, /compress, /save examples (SKIPPED - not applicable to context lesson)
 
 **Checkpoint**: Lesson 4 has complete metadata, decision framework added, context commands verified
 
@@ -115,15 +115,15 @@ description: "Implementation tasks for Chapter 6 Redesign - Gemini CLI"
 
 **Independent Test**: Student creates project .env file and explains config precedence order
 
-- [X] T042 [US1] Read existing lesson at book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/05-configuration.md
-- [X] T043 [US1] Add CEFR level metadata (A2 Beginner) to lesson frontmatter
-- [X] T044 [US1] Add 5 learning objectives with Bloom's taxonomy levels to frontmatter
-- [X] T045 [US1] Map all learning objectives to DigComp 2.2 competency areas in frontmatter
-- [X] T046 [US1] Add Stage 2 (AI Collaboration) tag to lesson metadata
-- [X] T047 [US1] Strengthen security best practices section: API keys in env vars, .gitignore examples (FR-026)
-- [X] T048 [US1] Add visual diagram of 7-level hierarchy: CLI flags → project settings → global → defaults
-- [X] T049 [US1] Include complete .env file example with comments explaining each variable
-- [X] T050 [US1] Ensure "Try With AI" section uses preferred tool instruction
+- [x] T042 [US1] Read existing lesson at apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/05-configuration.md
+- [x] T043 [US1] Add CEFR level metadata (A2 Beginner) to lesson frontmatter
+- [x] T044 [US1] Add 5 learning objectives with Bloom's taxonomy levels to frontmatter
+- [x] T045 [US1] Map all learning objectives to DigComp 2.2 competency areas in frontmatter
+- [x] T046 [US1] Add Stage 2 (AI Collaboration) tag to lesson metadata
+- [x] T047 [US1] Strengthen security best practices section: API keys in env vars, .gitignore examples (FR-026)
+- [x] T048 [US1] Add visual diagram of 7-level hierarchy: CLI flags → project settings → global → defaults
+- [x] T049 [US1] Include complete .env file example with comments explaining each variable
+- [x] T050 [US1] Ensure "Try With AI" section uses preferred tool instruction
 
 **Checkpoint**: Lesson 5 has complete metadata, security guidance strengthened, config hierarchy clear
 
@@ -145,20 +145,20 @@ description: "Implementation tasks for Chapter 6 Redesign - Gemini CLI"
 
 **Independent Test**: Student completes error analysis exercise, documents tool selection pattern (US1)
 
-- [X] T051 [US1] Read existing lesson at book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/03-built-in-tools.md
-- [X] T052 [US1] Restructure lesson for demonstration + guided practice approach (REVISED from error analysis)
-- [X] T053 [US1] Add tool demonstrations showing automatic activation
-- [X] T054 [US1] Document Google Search tool with realistic examples
-- [X] T055 [US1] Document File Operations tool with configuration file examples
-- [X] T056 [US1] Document Shell Integration tool with git and version check examples
-- [X] T057 [US1] Document Web Fetch tool with API documentation examples
-- [X] T058 [US1] Add tool decision logic table showing when each tool activates
-- [X] T059 [US1] Create 5 real-world developer scenarios combining tools
-- [X] T060 [US1] Add visual indicator recognition section (🔍 📁 ⚡ 🌐)
-- [X] T061 [US1] Add CEFR/Bloom's/DigComp metadata (7 concepts, A2 tier)
-- [X] T062 [US1] Add Stage 2 (AI Collaboration) tag to lesson metadata
-- [X] T063 [US1] Include realistic terminal output examples for all tools
-- [X] T064 [US1] Ensure "Try With AI" section uses preferred tool instruction
+- [x] T051 [US1] Read existing lesson at apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/03-built-in-tools.md
+- [x] T052 [US1] Restructure lesson for demonstration + guided practice approach (REVISED from error analysis)
+- [x] T053 [US1] Add tool demonstrations showing automatic activation
+- [x] T054 [US1] Document Google Search tool with realistic examples
+- [x] T055 [US1] Document File Operations tool with configuration file examples
+- [x] T056 [US1] Document Shell Integration tool with git and version check examples
+- [x] T057 [US1] Document Web Fetch tool with API documentation examples
+- [x] T058 [US1] Add tool decision logic table showing when each tool activates
+- [x] T059 [US1] Create 5 real-world developer scenarios combining tools
+- [x] T060 [US1] Add visual indicator recognition section (🔍 📁 ⚡ 🌐)
+- [x] T061 [US1] Add CEFR/Bloom's/DigComp metadata (7 concepts, A2 tier)
+- [x] T062 [US1] Add Stage 2 (AI Collaboration) tag to lesson metadata
+- [x] T063 [US1] Include realistic terminal output examples for all tools
+- [x] T064 [US1] Ensure "Try With AI" section uses preferred tool instruction
 
 **Checkpoint**: Lesson 3 demonstrates error analysis modality, students discover tools through productive failure
 
@@ -170,21 +170,21 @@ description: "Implementation tasks for Chapter 6 Redesign - Gemini CLI"
 
 **Independent Test**: Student creates 2-3 personal learning commands and successfully uses them
 
-- [X] T065 [US3] Read existing lesson at book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/07-custom-slash-commands.md
-- [X] T066 [US3] SIMPLIFIED: Restructure for A2 beginners - personalization not intelligence design
-- [X] T067 [US3] Add opening: The repetition problem (typing same learning prompts)
-- [X] T068 [US3] Document simple TOML syntax (description + prompt only)
-- [X] T069 [US3] Show {{args}} placeholder for flexible commands
-- [X] T070 [US3] Provide 5 ready-to-use learning command examples (/learn, /explain, /summarize, /quiz, /progress)
-- [X] T071 [US3] Add folder organization with namespace notation (study:plan, research:topic)
-- [X] T072 [US3] Include step-by-step command creation walkthrough
-- [X] T073 [US3] Add common issues and troubleshooting section
-- [X] T074 [US3] Replace all programming examples with learning task examples
-- [X] T075 [US3] Remove advanced patterns (shell injection !{}, file injection @{})
-- [X] T076 [US3] Add CEFR/Bloom's/DigComp metadata (6 concepts, A2 tier maintained)
-- [X] T077 [US3] Add Stage 2 (AI Collaboration) tag to lesson metadata
-- [X] T078 [US3] Ensure all examples appropriate for pre-programming learners
-- [X] T079 [US3] Ensure "Try With AI" section uses preferred tool instruction
+- [x] T065 [US3] Read existing lesson at apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/07-custom-slash-commands.md
+- [x] T066 [US3] SIMPLIFIED: Restructure for A2 beginners - personalization not intelligence design
+- [x] T067 [US3] Add opening: The repetition problem (typing same learning prompts)
+- [x] T068 [US3] Document simple TOML syntax (description + prompt only)
+- [x] T069 [US3] Show {{args}} placeholder for flexible commands
+- [x] T070 [US3] Provide 5 ready-to-use learning command examples (/learn, /explain, /summarize, /quiz, /progress)
+- [x] T071 [US3] Add folder organization with namespace notation (study:plan, research:topic)
+- [x] T072 [US3] Include step-by-step command creation walkthrough
+- [x] T073 [US3] Add common issues and troubleshooting section
+- [x] T074 [US3] Replace all programming examples with learning task examples
+- [x] T075 [US3] Remove advanced patterns (shell injection !{}, file injection @{})
+- [x] T076 [US3] Add CEFR/Bloom's/DigComp metadata (6 concepts, A2 tier maintained)
+- [x] T077 [US3] Add Stage 2 (AI Collaboration) tag to lesson metadata
+- [x] T078 [US3] Ensure all examples appropriate for pre-programming learners
+- [x] T079 [US3] Ensure "Try With AI" section uses preferred tool instruction
 
 **Checkpoint**: Lesson 7 teaches simple personalization appropriate for A2 beginners learning with AI
 
@@ -206,18 +206,18 @@ description: "Implementation tasks for Chapter 6 Redesign - Gemini CLI"
 
 **Independent Test**: Student installs MCP server and explains when to use MCP vs built-in tools
 
-- [X] T080 [US2] Read existing lesson at book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/06-mcp-servers-and-integration.md
-- [X] T081 [US2] Redesign with beginner-appropriate examples (no React, APIs, programming)
-- [X] T082 [US2] Add complete A2 metadata (CEFR, Bloom's, DigComp)
-- [X] T083 [US2] Replace TypeScript interface with phone directory specialist analogy
-- [X] T084 [US2] Add examples: Student laptop research, photography courses, digital skills
-- [X] T085 [US2] Document MCP installation with step-by-step guide
-- [X] T086 [US2] Include Playwright and Filesystem server examples
-- [X] T087 [US2] Add decision framework: When to use MCP vs built-in tools
-- [X] T088 [US2] Verify cognitive load ≤7 concepts (6 concepts total)
-- [X] T089 [US2] Add Stage 2 (AI Collaboration) tag to lesson metadata
-- [X] T090 [US2] Ensure "Try With AI" section uses preferred tool instruction
-- [X] T091 [US2] Remove all programming references (Python, JavaScript, React, HTML, CSS, Node.js)
+- [x] T080 [US2] Read existing lesson at apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/06-mcp-servers-and-integration.md
+- [x] T081 [US2] Redesign with beginner-appropriate examples (no React, APIs, programming)
+- [x] T082 [US2] Add complete A2 metadata (CEFR, Bloom's, DigComp)
+- [x] T083 [US2] Replace TypeScript interface with phone directory specialist analogy
+- [x] T084 [US2] Add examples: Student laptop research, photography courses, digital skills
+- [x] T085 [US2] Document MCP installation with step-by-step guide
+- [x] T086 [US2] Include Playwright and Filesystem server examples
+- [x] T087 [US2] Add decision framework: When to use MCP vs built-in tools
+- [x] T088 [US2] Verify cognitive load ≤7 concepts (6 concepts total)
+- [x] T089 [US2] Add Stage 2 (AI Collaboration) tag to lesson metadata
+- [x] T090 [US2] Ensure "Try With AI" section uses preferred tool instruction
+- [x] T091 [US2] Remove all programming references (Python, JavaScript, React, HTML, CSS, Node.js)
 
 **Checkpoint**: Lesson 6 teaches MCP integration with beginner-appropriate examples
 
@@ -227,17 +227,17 @@ description: "Implementation tasks for Chapter 6 Redesign - Gemini CLI"
 
 **Independent Test**: Student installs extension, explains when extensions simplify workflow
 
-- [X] T092 [US2] Read existing lesson at book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/08-extensions-security-and-ide-integration.md
-- [X] T093 [US2] Add complete A2 metadata (CEFR, Bloom's, DigComp)
-- [X] T094 [US2] Reduce cognitive load from 12+ concepts to 7 concepts
-- [X] T095 [US2] Replace team development examples with study group scenarios
-- [X] T096 [US2] Remove IDE Integration section (too advanced for A2)
-- [X] T097 [US2] Simplify JSON configuration explanations
-- [X] T098 [US2] Rewrite "Try With AI" section for beginner prompts
-- [X] T099 [US2] Add "When to Use Extensions" section
-- [X] T100 [US2] Replace all programming references with learning scenarios
-- [X] T101 [US2] Add Stage 2 (AI Collaboration) tag to lesson metadata
-- [X] T102 [US2] Ensure "Try With AI" section uses preferred tool instruction
+- [x] T092 [US2] Read existing lesson at apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/08-extensions-security-and-ide-integration.md
+- [x] T093 [US2] Add complete A2 metadata (CEFR, Bloom's, DigComp)
+- [x] T094 [US2] Reduce cognitive load from 12+ concepts to 7 concepts
+- [x] T095 [US2] Replace team development examples with study group scenarios
+- [x] T096 [US2] Remove IDE Integration section (too advanced for A2)
+- [x] T097 [US2] Simplify JSON configuration explanations
+- [x] T098 [US2] Rewrite "Try With AI" section for beginner prompts
+- [x] T099 [US2] Add "When to Use Extensions" section
+- [x] T100 [US2] Replace all programming references with learning scenarios
+- [x] T101 [US2] Add Stage 2 (AI Collaboration) tag to lesson metadata
+- [x] T102 [US2] Ensure "Try With AI" section uses preferred tool instruction
 
 **Checkpoint**: Lesson 8 teaches extensions with beginner-appropriate scenarios
 
@@ -247,7 +247,7 @@ description: "Implementation tasks for Chapter 6 Redesign - Gemini CLI"
 
 **Independent Test**: Student creates functioning workflow meeting capstone scope criteria (US4)
 
-- [ ] T103 [US4] Create new lesson file at book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/09-capstone-project.md
+- [ ] T103 [US4] Create new lesson file at apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/09-capstone-project.md
 - [ ] T104 [US4] Add opening section: Stage 4 Explained - Spec-Driven Integration principle
 - [ ] T105 [US4] Emphasize specification primacy: Write WHAT before HOW (constitutional Principle 1)
 - [ ] T106 [US4] Add capstone scope calibration section (A2 tier complexity guardrails for pre-programming students)
@@ -357,6 +357,7 @@ description: "Implementation tasks for Chapter 6 Redesign - Gemini CLI"
 ### Parallel Opportunities
 
 **Phase 1 (Setup)**:
+
 ```bash
 # Launch research tasks in parallel:
 Task T001: Context7 @google/gemini-cli research
@@ -371,6 +372,7 @@ Task T009: Test web fetch tool
 ```
 
 **Phase 2 (Foundational)**:
+
 ```bash
 # Launch all 4 lesson enhancements in parallel:
 Task T014-T021: Lesson 1 metadata addition
@@ -380,6 +382,7 @@ Task T042-T050: Lesson 5 metadata + security
 ```
 
 **Phase 3 (Refactor)**:
+
 ```bash
 # Launch both refactors in parallel:
 Task T051-T064: Lesson 3 error analysis restructure
@@ -387,6 +390,7 @@ Task T065-T079: Lesson 7 intelligence design restructure
 ```
 
 **Phase 5 (Validation)**:
+
 ```bash
 # Launch validation agents in parallel:
 Task T122: validation-auditor (pedagogical review)
@@ -424,6 +428,7 @@ Task T123: factual-verifier (citation accuracy)
 **Timeline**: 52-65 hours (1.5-2 weeks at 8h/day per plan.md estimate)
 
 **Sequence**:
+
 1. Phase 1: Setup (5-10 hours) - Research + command testing ✅ COMPLETE
 2. Phase 2: Foundational (12-15 hours) - L1, L2, L4, L5 metadata ✅ COMPLETE
 3. Phase 3: Refactor (14-18 hours) - L3, L7 new modalities ✅ COMPLETE
@@ -451,6 +456,7 @@ Task T123: factual-verifier (citation accuracy)
 - **Constitutional compliance** validated in Phase 5 before considering complete
 
 **Avoid**:
+
 - Vague tasks without file paths
 - Hallucinated Gemini CLI commands (verify everything against research)
 - Skipping metadata fields (100% completeness required)

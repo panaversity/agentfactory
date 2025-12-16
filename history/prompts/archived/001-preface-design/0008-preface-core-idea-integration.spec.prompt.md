@@ -16,7 +16,7 @@ links:
   adr: null
   pr: null
 files:
-  - book-source/docs/preface-agent-native.mdx
+  - apps/learn-app/docs/preface-agent-native.mdx
 tests:
   - Manual review of alignment
   - Structural validation
@@ -30,12 +30,14 @@ The user provided core foundational content for the preface based on:
 **Subtitle:** "Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way"
 
 **Core Concepts to Integrate:**
+
 1. **Why We Wrote This Book** — vision and human motivation
 2. **The Philosophy of Co-Learning Agents** — deep philosophical exploration (5 subsections)
 3. **Organizational AI Maturity Levels** — 5-level framework (Awareness → Adoption → Integration → AI-Native Products → AI-First Enterprise)
 4. **Thinking Like an AI-Native Developer** — bridging philosophy to practice
 
 **Request:** Rework the current preface to have this core content while maintaining existing strengths:
+
 - Keep the paradigm shift opening
 - Expand co-learning from brief to philosophical depth
 - Replace simple spectrum with 5-level maturity framework
@@ -47,6 +49,7 @@ The user provided core foundational content for the preface based on:
 **Deliverable:** Comprehensive reworked preface integrating all core ideas
 
 **Structure:**
+
 1. Paradigm Shift (enhanced) — lines 14-33
 2. Why We Wrote This Book (new) — lines 36-58
 3. The Philosophy of Co-Learning Agents (new, expanded) — lines 62-153
@@ -58,6 +61,7 @@ The user provided core foundational content for the preface based on:
 9. A Final Thought (new, enhanced) — lines 407-424
 
 **Key Integrations:**
+
 - Vision statement weaves through "Why We Wrote This Book" section
 - Co-learning philosophy expanded to 7 subsections with deep exploration
 - 5-level maturity framework replaces simple 3-level spectrum
@@ -71,7 +75,7 @@ The user provided core foundational content for the preface based on:
 
 - ✅ Impact: Core idea fully integrated; preface now has vision spine, philosophical depth, and organizational context
 - 🧪 Tests: Manual structural alignment with core document; no breaking changes to existing sections
-- 📁 Files: Single file modified: `book-source/docs/preface-agent-native.mdx`
+- 📁 Files: Single file modified: `apps/learn-app/docs/preface-agent-native.mdx`
 - 🔁 Next prompts: Technical review of chapter structure alignment; validation of accessibility for different reader personas
 - 🧠 Reflection: Integration successful. Preface now establishes both vision (why) and methodology (how) clearly. Maturity levels provide context for organizational readers while co-learning philosophy provides intellectual foundation for technical readers.
 

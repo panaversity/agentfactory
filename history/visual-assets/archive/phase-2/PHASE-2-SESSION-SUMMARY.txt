@@ -24,25 +24,25 @@ WORK COMPLETED
 3. EMBEDDED 7/14 VISUALS IN LESSONS ✓
 
    ✓ V39: Python Operator Categories
-      → book-source/docs/04-Python-Fundamentals/16-operators-keywords-variables/README.md
+      → apps/learn-app/docs/04-Python-Fundamentals/16-operators-keywords-variables/README.md
       
    ✓ V40: Variable Naming Rules & Conventions
-      → book-source/docs/04-Python-Fundamentals/16-operators-keywords-variables/05-keywords-capstone.md
+      → apps/learn-app/docs/04-Python-Fundamentals/16-operators-keywords-variables/05-keywords-capstone.md
       
    ✓ V41: String Methods Reference Card
-      → book-source/docs/04-Python-Fundamentals/17-strings-type-casting/02-essential-string-methods.md
+      → apps/learn-app/docs/04-Python-Fundamentals/17-strings-type-casting/02-essential-string-methods.md
       
    ✓ V42: String Formatting Evolution
-      → book-source/docs/04-Python-Fundamentals/17-strings-type-casting/03-f-string-formatting.md
+      → apps/learn-app/docs/04-Python-Fundamentals/17-strings-type-casting/03-f-string-formatting.md
       
    ✓ V43: Control Flow Decision Tree
-      → book-source/docs/04-Python-Fundamentals/18-control-flow-loops/01-making-decisions-with-conditionals.md
+      → apps/learn-app/docs/04-Python-Fundamentals/18-control-flow-loops/01-making-decisions-with-conditionals.md
       
    ✓ V44: Loop Types Comparison
-      → book-source/docs/04-Python-Fundamentals/18-control-flow-loops/03-repetition-with-loops.md
+      → apps/learn-app/docs/04-Python-Fundamentals/18-control-flow-loops/03-repetition-with-loops.md
       
    ✓ V45: Collection Types Comparison Matrix
-      → book-source/docs/04-Python-Fundamentals/19-lists-tuples-dictionary/01-introduction-to-collections.md
+      → apps/learn-app/docs/04-Python-Fundamentals/19-lists-tuples-dictionary/01-introduction-to-collections.md
 
 ================================================================================
 REMAINING WORK (7/14 visuals)
@@ -85,13 +85,13 @@ Created:
 - All 14 image files organized in book-source/static/img/part-4/chapter-{16..22}/
 
 Modified (7 lessons with embedded visuals):
-- book-source/docs/04-Python-Fundamentals/16-operators-keywords-variables/README.md
-- book-source/docs/04-Python-Fundamentals/16-operators-keywords-variables/05-keywords-capstone.md
-- book-source/docs/04-Python-Fundamentals/17-strings-type-casting/02-essential-string-methods.md
-- book-source/docs/04-Python-Fundamentals/17-strings-type-casting/03-f-string-formatting.md
-- book-source/docs/04-Python-Fundamentals/18-control-flow-loops/01-making-decisions-with-conditionals.md
-- book-source/docs/04-Python-Fundamentals/18-control-flow-loops/03-repetition-with-loops.md
-- book-source/docs/04-Python-Fundamentals/19-lists-tuples-dictionary/01-introduction-to-collections.md
+- apps/learn-app/docs/04-Python-Fundamentals/16-operators-keywords-variables/README.md
+- apps/learn-app/docs/04-Python-Fundamentals/16-operators-keywords-variables/05-keywords-capstone.md
+- apps/learn-app/docs/04-Python-Fundamentals/17-strings-type-casting/02-essential-string-methods.md
+- apps/learn-app/docs/04-Python-Fundamentals/17-strings-type-casting/03-f-string-formatting.md
+- apps/learn-app/docs/04-Python-Fundamentals/18-control-flow-loops/01-making-decisions-with-conditionals.md
+- apps/learn-app/docs/04-Python-Fundamentals/18-control-flow-loops/03-repetition-with-loops.md
+- apps/learn-app/docs/04-Python-Fundamentals/19-lists-tuples-dictionary/01-introduction-to-collections.md
 
 ================================================================================
 VERIFICATION

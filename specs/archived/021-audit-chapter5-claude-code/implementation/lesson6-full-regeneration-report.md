@@ -10,7 +10,7 @@
 
 ## Executive Summary
 
-This report documents the full regeneration of Lesson 6 (MCP Servers and Workflows) from the preservation audit. The original lesson lacked foundational security evaluation framework, trust decision-making guidance, and security-conscious configuration practices. Because security must be *foundational* rather than *added on*, full regeneration was required rather than targeted edits.
+This report documents the full regeneration of Lesson 6 (MCP Servers and Workflows) from the preservation audit. The original lesson lacked foundational security evaluation framework, trust decision-making guidance, and security-conscious configuration practices. Because security must be _foundational_ rather than _added on_, full regeneration was required rather than targeted edits.
 
 **Key Achievement**: Transformed the lesson from "How to configure MCPs" to "How to securely evaluate and configure MCPs while thinking like a security engineer."
 
@@ -20,15 +20,15 @@ This report documents the full regeneration of Lesson 6 (MCP Servers and Workflo
 
 ### Critical Gaps in Original Lesson
 
-| Gap | Impact | Solution |
-|-----|--------|----------|
-| **No security evaluation framework** | Students installed MCPs without assessing trustworthiness | Created 3-question framework (Data? Provider? Compliance?) as foundational |
-| **Security section was brief afterthought** | "Stay safe" with 3 sentences | Elevated to full section with detailed Green/Red flags, compliance requirements |
-| **No trust decision-making guidance** | Students lacked language/framework to assess MCPs | Added decision matrix, expert insights on security as specification |
-| **Tier 2/3 distinction missing** | No clarity that Part 2 teaches configuration, not custom MCP building | Added explicit Tier 2 framing (configure trusted, don't build custom) |
-| **Weak Co-Learning integration** | 4 prompts in "Try With AI" but no Three-Role framing | Restructured entire lesson around Three-Role AI Partnership + added 6 co-learning elements |
-| **No strategic thinking** | Students might add 10 MCPs unnecessarily | Added 80/20 principle section, ROI evaluation, professional context |
-| **Configuration lacked security checkpoints** | Students might miss namespace verification, permission review | Added 4 security checkpoints throughout configuration process |
+| Gap                                           | Impact                                                                | Solution                                                                                   |
+| --------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| **No security evaluation framework**          | Students installed MCPs without assessing trustworthiness             | Created 3-question framework (Data? Provider? Compliance?) as foundational                 |
+| **Security section was brief afterthought**   | "Stay safe" with 3 sentences                                          | Elevated to full section with detailed Green/Red flags, compliance requirements            |
+| **No trust decision-making guidance**         | Students lacked language/framework to assess MCPs                     | Added decision matrix, expert insights on security as specification                        |
+| **Tier 2/3 distinction missing**              | No clarity that Part 2 teaches configuration, not custom MCP building | Added explicit Tier 2 framing (configure trusted, don't build custom)                      |
+| **Weak Co-Learning integration**              | 4 prompts in "Try With AI" but no Three-Role framing                  | Restructured entire lesson around Three-Role AI Partnership + added 6 co-learning elements |
+| **No strategic thinking**                     | Students might add 10 MCPs unnecessarily                              | Added 80/20 principle section, ROI evaluation, professional context                        |
+| **Configuration lacked security checkpoints** | Students might miss namespace verification, permission review         | Added 4 security checkpoints throughout configuration process                              |
 
 ### Pedagogical Reason for Full Regeneration
 
@@ -50,14 +50,17 @@ Targeted edits cannot achieve this holistic reframing. Full regeneration was nec
 ### Preserved Elements
 
 1. **Playwright MCP Configuration Example**
+
    - **Original**: Installation command + basic config
    - **Enhanced**: Added comprehensive security assessment, verification tests, real-world workflow, troubleshooting
 
 2. **Context7 MCP Configuration Example**
+
    - **Original**: Brief workflow example
    - **Enhanced**: Added security assessment (LOW risk), installation/configuration with explicit namespace verification, real-world examples, comparison to manual search
 
 3. **MCP vs. Skills vs. Subagents Comparison Table**
+
    - **Original**: Feature comparison highlighting security concern
    - **Enhanced**: Integrated into "What Are MCPs?" section with explicit risk level explanation
 
@@ -94,16 +97,19 @@ The regenerated lesson is built around "Never trust, always verify" from the con
 ### The Three-Question Security Framework (NEW)
 
 **Question 1: What Data Does This MCP Access?**
+
 - Risk profiling table (LOW/MEDIUM/HIGH)
 - Specific data access patterns
 - Compliance implications
 
 **Question 2: Is the Provider Trustworthy?**
+
 - Green flags (Anthropic official, open-source, corporate backing, security audits)
 - Red flags (closed-source, abandoned, anonymous maintainers, excessive permissions)
 - Research actions (GitHub verification, security documentation)
 
 **Question 3: Does This Meet Compliance Requirements?**
+
 - Common compliance frameworks (GDPR, HIPAA, PCI-DSS, SOC2, FedRAMP, CCPA)
 - Data handling review process
 - Documentation requirements
@@ -112,20 +118,24 @@ The regenerated lesson is built around "Never trust, always verify" from the con
 ### Configuration Process Restructured with Security Checkpoints
 
 **Step 1 (Install)**: Namespace verification checkpoint
+
 - ✅ Verify @anthropic-ai/ or @organization/ prefix
 - ✅ Avoid unofficial single-word packages
 
 **Step 2 (Configure)**: Secrets security checkpoint
+
 - ✅ Never hardcode secrets
 - ✅ Use environment variables
 - ✅ Examples for low-risk (Playwright) and high-risk (Postgres) MCPs
 
 **Step 3 (Permissions)**: Permission review checkpoint
+
 - ✅ Read permission request carefully
 - ✅ Verify scope matches use case
 - ✅ DENY if excessive permissions
 
 **Step 4 (Verify)**: Behavior verification checkpoint
+
 - ✅ Test with low-risk task
 - ✅ Verify no unexpected access
 - ✅ Confirm no credential leakage
@@ -137,13 +147,16 @@ The regenerated lesson is built around "Never trust, always verify" from the con
 ### Principle 3 (Specification-First Development)
 
 **How Integrated**:
+
 - Security evaluation IS specification: specifying what access is acceptable
 - Configuration demonstrates spec-first flow: "Specify the MCP's scope, then configure to that spec"
 - Expert insight section explicitly connects security evaluation to specification thinking
 
 **Evidence**:
+
 ```markdown
 "When you evaluate an MCP, you're specifying:
+
 - What access is acceptable
 - What providers are trustworthy
 - What validation is required"
@@ -152,12 +165,14 @@ The regenerated lesson is built around "Never trust, always verify" from the con
 ### Principle 5 (Validation-First Safety)
 
 **How Integrated**:
+
 - Entire lesson is built around "Never trust, always verify"
 - Four configuration checkpoints all implement validation
 - Verification test section teaches trust-but-verify mindset
 - Repeated throughout: "verify namespace," "verify behavior," "verify no credential leakage"
 
 **Evidence**:
+
 ```markdown
 "This is Validation-First Safety (Principle 5): Trust your configuration, but verify actual behavior."
 ```
@@ -165,12 +180,14 @@ The regenerated lesson is built around "Never trust, always verify" from the con
 ### Principle 13 (Graduated Teaching Pattern)
 
 **How Integrated**:
+
 - **Tier 1**: Book teaches security evaluation, trust frameworks, configuration process
 - **Tier 2**: AI companion handles installation, configuration assistance
 - **Tier 3**: Explicit note that custom MCP building is advanced (not Part 2 scope)
 - Lesson title change reflects this: "Configure, Don't Build Custom"
 
 **Evidence**:
+
 ```markdown
 "Tier 1 (Book teaches): What MCPs are, security evaluation
 Tier 2 (AI Companion): Configuring trusted MCPs
@@ -180,6 +197,7 @@ Tier 3 (AI Orchestration): Building custom MCPs (advanced, not Part 2)"
 ### Principle 18 (Three-Role AI Partnership)
 
 **How Integrated**:
+
 - **Section 2**: "Three Roles in MCP Integration" (Claude as Co-Worker, MCP as Domain Specialist, You as Orchestrator)
 - **Section 4**: Expert Insight on security judgment as human decision
 - **Try With AI (3 prompts)**:
@@ -189,6 +207,7 @@ Tier 3 (AI Orchestration): Building custom MCPs (advanced, not Part 2)"
 - Each prompt explicitly demonstrates co-learning patterns
 
 **Evidence**:
+
 ```markdown
 "Claude as Co-Worker: Uses MCPs as specialized tools
 MCP as Domain Specialist: Provides capabilities Claude doesn't have natively
@@ -221,6 +240,7 @@ All use measurable Bloom's taxonomy verbs appropriate to A2-B1 proficiency level
 ### Complexity Analysis
 
 **New Concepts Introduced** (estimated 8-9 total across ~7,000 words):
+
 - MCP (Model Context Protocol)
 - Three-question security framework
 - Data access risk assessment
@@ -232,6 +252,7 @@ All use measurable Bloom's taxonomy verbs appropriate to A2-B1 proficiency level
 - Professional MCP governance
 
 **Cognitive Load**: A2-B1 appropriate
+
 - Concepts spread across 9 major sections
 - Each concept explained with concrete examples
 - Real-world workflows provide context
@@ -243,6 +264,7 @@ All use measurable Bloom's taxonomy verbs appropriate to A2-B1 proficiency level
 **Estimated Flesch-Kincaid Score**: 7.0-8.5
 
 **Accessibility Features**:
+
 - Short sections (max 500 words per concept)
 - Explicit vocabulary introduction
 - Concrete examples (not theoretical)
@@ -266,6 +288,7 @@ All use measurable Bloom's taxonomy verbs appropriate to A2-B1 proficiency level
 ### MCP Configuration Examples
 
 **Playwright MCP**:
+
 - ✅ Correct npm namespace: `@anthropic-ai/playwright-mcp`
 - ✅ Correct settings.json structure
 - ✅ Environment variable pattern correct (PLAYWRIGHT_HEADLESS)
@@ -273,17 +296,20 @@ All use measurable Bloom's taxonomy verbs appropriate to A2-B1 proficiency level
 - ✅ Verification test appropriate (low-risk: open example.com)
 
 **Context7 MCP**:
+
 - ✅ Correct npm namespace: `@context7/context7-mcp`
 - ✅ Settings.json configuration accurate
 - ✅ Use case examples appropriate (documentation search)
 - ✅ Verification test appropriate (fetch React hooks docs)
 
 **Postgres MCP**:
+
 - ✅ Correct namespace: `@anthropic-ai/postgres-mcp`
 - ✅ Environment variable pattern correct (DATABASE_URL via .env.local)
 - ✅ Security pattern accurate (credentials in env, not hardcoded)
 
 **Security Evaluation Criteria**:
+
 - ✅ Green/Red flags accurate (based on professional security practices)
 - ✅ Compliance frameworks current (GDPR 2018, HIPAA ongoing, PCI-DSS 3.2.1, SOC2 Type II, FedRAMP current, CCPA 2020)
 - ✅ Risk assessment methodology sound (data access + provider trust + compliance)
@@ -353,25 +379,26 @@ All use measurable Bloom's taxonomy verbs appropriate to A2-B1 proficiency level
 
 ### Section-by-Section Transformation
 
-| Section | Original | Regenerated | Change Type |
-|---------|----------|-------------|-------------|
-| **Frontmatter** | Basic YAML | Full generation metadata + CEFR levels | Enhancement |
-| **Introduction** | Generic "team metaphor" | Security as central tension | Complete rewrite |
-| **MCP Definition** | Brief definition | Three-Role AI Partnership framing | Complete rewrite |
-| **Distinctions** | Native vs MCP capabilities (brief) | Expanded with value/complexity analysis | Enhancement |
-| **When to Use** | 5 use cases | 5 use cases + when NOT to use MCPs + ROI analysis | Enhancement |
-| **Security Section** | 3-sentence note | Full evaluation framework (3 questions + Green/Red flags + compliance) | Complete rewrite |
-| **Configuration** | 2 simple commands | 4-step process with 4 security checkpoints | Complete rewrite |
-| **Examples** | Playwright + Context7 (basic) | Playwright + Context7 (security assessments, verification, troubleshooting) | Enhancement |
-| **Strategic Thinking** | Not present | 80/20 principle + ROI + professional governance | New section |
-| **Expert Insights** | 0 | 2 explicit insights (Security as Specification, Your Value) | New elements |
-| **Practice Exercises** | 0 | 2 explicit exercises (Security Framework, Configure First MCP) | New elements |
-| **CoLearning Prompts** | 4 in Try-With-AI | 5 integrated throughout + 3 in Try-With-AI | Enhancement |
-| **Try With AI** | 4 generic prompts | 3 prompts demonstrating Three-Role AI Partnership | Complete rewrite |
+| Section                | Original                           | Regenerated                                                                 | Change Type      |
+| ---------------------- | ---------------------------------- | --------------------------------------------------------------------------- | ---------------- |
+| **Frontmatter**        | Basic YAML                         | Full generation metadata + CEFR levels                                      | Enhancement      |
+| **Introduction**       | Generic "team metaphor"            | Security as central tension                                                 | Complete rewrite |
+| **MCP Definition**     | Brief definition                   | Three-Role AI Partnership framing                                           | Complete rewrite |
+| **Distinctions**       | Native vs MCP capabilities (brief) | Expanded with value/complexity analysis                                     | Enhancement      |
+| **When to Use**        | 5 use cases                        | 5 use cases + when NOT to use MCPs + ROI analysis                           | Enhancement      |
+| **Security Section**   | 3-sentence note                    | Full evaluation framework (3 questions + Green/Red flags + compliance)      | Complete rewrite |
+| **Configuration**      | 2 simple commands                  | 4-step process with 4 security checkpoints                                  | Complete rewrite |
+| **Examples**           | Playwright + Context7 (basic)      | Playwright + Context7 (security assessments, verification, troubleshooting) | Enhancement      |
+| **Strategic Thinking** | Not present                        | 80/20 principle + ROI + professional governance                             | New section      |
+| **Expert Insights**    | 0                                  | 2 explicit insights (Security as Specification, Your Value)                 | New elements     |
+| **Practice Exercises** | 0                                  | 2 explicit exercises (Security Framework, Configure First MCP)              | New elements     |
+| **CoLearning Prompts** | 4 in Try-With-AI                   | 5 integrated throughout + 3 in Try-With-AI                                  | Enhancement      |
+| **Try With AI**        | 4 generic prompts                  | 3 prompts demonstrating Three-Role AI Partnership                           | Complete rewrite |
 
 ### Content Additions
 
 **New Subsections** (5):
+
 1. "Three Roles in MCP Integration" (framework)
 2. "Security Considerations First: Evaluating MCP Trust" (foundational)
 3. "Security Evaluation Framework: Three Questions" (decision-making tool)
@@ -379,14 +406,17 @@ All use measurable Bloom's taxonomy verbs appropriate to A2-B1 proficiency level
 5. "Strategic MCP Adoption: The 80/20 Principle" (professional context)
 
 **New Expert Insights** (2):
+
 1. "Security as Specification" (connects to Principle 3)
 2. "Your Value in the MCP Era" (connects to Principle 18, career relevance)
 
 **New Practice Elements** (2):
+
 1. "Apply the Security Framework" exercise
 2. "Configure Your First MCP Securely" hands-on exercise
 
 **New Reference Materials** (3):
+
 1. MCP data access risk table (LOW/MEDIUM/HIGH)
 2. Provider trustworthiness Green/Red flags (10 criteria)
 3. Compliance frameworks reference (6 frameworks)
@@ -399,11 +429,13 @@ All use measurable Bloom's taxonomy verbs appropriate to A2-B1 proficiency level
 ### Preserved: Playwright MCP Example
 
 **Original Content Kept**:
+
 ```bash
 npm install -g @anthropic-ai/playwright-mcp
 ```
 
 **Enhancements Added**:
+
 - Full security assessment (MEDIUM risk, why)
 - Provider trustworthiness validation (Anthropic official)
 - Installation with namespace verification checkpoint
@@ -419,10 +451,12 @@ npm install -g @anthropic-ai/playwright-mcp
 ### Preserved: Context7 MCP Example
 
 **Original Content Kept**:
+
 - Use case (documentation search)
 - Basic workflow
 
 **Enhancements Added**:
+
 - Full security assessment (LOW risk, why)
 - Provider trustworthiness validation
 - Installation with namespace verification
@@ -449,6 +483,7 @@ npm install -g @anthropic-ai/playwright-mcp
 ### Enterprise Security Framing
 
 Added explicit sections on:
+
 - **Enterprise MCP registries**: Typically 5-10 approved MCPs
 - **Security review processes**: Formal approval required for new MCPs
 - **Audit logging**: All MCP access logged and reviewed
@@ -460,6 +495,7 @@ Added explicit sections on:
 ### Security Engineer Mindset
 
 Added explicit framing on:
+
 - **Three-question decision framework**: As a professional security evaluation pattern
 - **Trust boundaries specification**: As equivalent to security specification
 - **ROI evaluation**: As business/security decision (not just technical)
@@ -474,6 +510,7 @@ Added explicit framing on:
 **Original**: "Try With AI" + 4 prompts
 
 **Regenerated**:
+
 - Single "Try With AI" section (maintains AI-first closure policy)
 - 3 prompts demonstrating Three-Role AI Partnership:
   1. Claude as Teacher (security education)
@@ -489,9 +526,10 @@ Added explicit framing on:
 
 ## Version Control Metadata
 
-**File**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/part-2/book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/06-mcp-servers-and-workflows.md`
+**File**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/part-2/apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/06-mcp-servers-and-workflows.md`
 
 **Generation Metadata** (in YAML frontmatter):
+
 ```yaml
 generation_metadata:
   generated_by: "content-implementer-agent"
@@ -535,11 +573,13 @@ generation_metadata:
 The lesson teaches students to evaluate MCPs using three foundational questions:
 
 1. **What Data Does This MCP Access?**
+
    - Establishes data awareness
    - Identifies risk level
    - Frames compliance considerations
 
 2. **Is the Provider Trustworthy?**
+
    - Teaches independent research
    - Defines "trustworthy" criteria
    - Models professional due diligence
@@ -550,6 +590,7 @@ The lesson teaches students to evaluate MCPs using three foundational questions:
    - Establishes formal approval patterns
 
 **This framework is reusable**:
+
 - For evaluating any new MCP
 - For teaching security evaluation to others
 - For enterprise MCP governance discussions

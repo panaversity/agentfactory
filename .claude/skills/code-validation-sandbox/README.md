@@ -51,7 +51,7 @@ bash .claude/skills/code-validation-sandbox/scripts/setup-sandbox.sh
 ```bash
 # Auto-detect layer, language, validation strategy
 bash .claude/skills/code-validation-sandbox/scripts/validate.sh \
-  book-source/docs/04-Python-Fundamentals/14-data-types
+  apps/learn-app/docs/04-Python-Fundamentals/14-data-types
 ```
 
 **What Happens**:
@@ -230,34 +230,34 @@ Validation: python3 -m ast fixed.py && python3 fixed.py
 ### Basic Validation
 ```bash
 bash .claude/skills/code-validation-sandbox/scripts/validate.sh \
-  book-source/docs/04-Python-Fundamentals/14-data-types
+  apps/learn-app/docs/04-Python-Fundamentals/14-data-types
 ```
 
 ### Force Layer
 ```bash
 # Override auto-detection
 bash .claude/skills/code-validation-sandbox/scripts/validate.sh \
-  book-source/docs/04-Python-Fundamentals/14-data-types \
+  apps/learn-app/docs/04-Python-Fundamentals/14-data-types \
   --layer 1
 ```
 
 ### Verbose Output
 ```bash
 bash .claude/skills/code-validation-sandbox/scripts/validate.sh \
-  book-source/docs/04-Python-Fundamentals/14-data-types \
+  apps/learn-app/docs/04-Python-Fundamentals/14-data-types \
   --verbose
 ```
 
 ### Custom Output Directory
 ```bash
 bash .claude/skills/code-validation-sandbox/scripts/validate.sh \
-  book-source/docs/04-Python-Fundamentals/14-data-types \
+  apps/learn-app/docs/04-Python-Fundamentals/14-data-types \
   --output audit-results
 ```
 
 ### Validate Multiple Chapters
 ```bash
-for chapter in book-source/docs/04-Python-Fundamentals/*/; do
+for chapter in apps/learn-app/docs/04-Python-Fundamentals/*/; do
   bash .claude/skills/code-validation-sandbox/scripts/validate.sh "$chapter"
 done
 ```
@@ -350,13 +350,13 @@ Self-monitoring prevents generic validation:
 **Old**:
 ```bash
 bash .claude/skills/python-sandbox/scripts/validate-in-sandbox.sh \
-  book-source/docs/04-Python-Fundamentals/14-data-types
+  apps/learn-app/docs/04-Python-Fundamentals/14-data-types
 ```
 
 **New**:
 ```bash
 bash .claude/skills/code-validation-sandbox/scripts/validate.sh \
-  book-source/docs/04-Python-Fundamentals/14-data-types
+  apps/learn-app/docs/04-Python-Fundamentals/14-data-types
 ```
 
 **Improvements**:
@@ -380,7 +380,7 @@ bash .claude/skills/general-sandbox/scripts/validate-in-sandbox.sh ...
 ```bash
 # Just run - it figures out Node.js automatically
 bash .claude/skills/code-validation-sandbox/scripts/validate.sh \
-  book-source/docs/02-Part-2-Tools/05-npm-chapter
+  apps/learn-app/docs/02-Part-2-Tools/05-npm-chapter
 ```
 
 **Improvements**:

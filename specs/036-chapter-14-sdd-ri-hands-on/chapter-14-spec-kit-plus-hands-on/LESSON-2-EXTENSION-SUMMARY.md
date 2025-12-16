@@ -3,7 +3,7 @@
 **Date**: 2025-11-25
 **Status**: COMPLETE
 **Content Implementer**: Claude Code v1.0.0
-**File Path**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/02-installation-and-setup.md`
+**File Path**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/02-installation-and-setup.md`
 
 ---
 
@@ -16,11 +16,13 @@ Successfully extended Lesson 02 to include Playwright MCP installation and confi
 ## Changes Made
 
 ### 1. Title Update
+
 - **Old**: "Installation & Setup - Getting Spec-Kit Plus Running"
 - **New**: "Installation & Setup - Getting Spec-Kit Plus and Playwright MCP Running"
 - **Rationale**: Accurately reflects expanded scope
 
 ### 2. Frontmatter Updates
+
 - **duration_minutes**: Increased from 60 to 90 (accounts for Playwright setup)
 - **skills**: Added 2 new skills:
   - "MCP Installation and Configuration" (B1, Apply)
@@ -34,6 +36,7 @@ Successfully extended Lesson 02 to include Playwright MCP installation and confi
 ### 3. New Content Sections
 
 #### "Install Playwright MCP" (Lines 238-378)
+
 - Explanation of what Playwright MCP is (browser automation + Model Context Protocol)
 - 5 use cases for Chapter 14 video generation
 - Platform-specific installation steps:
@@ -44,6 +47,7 @@ Successfully extended Lesson 02 to include Playwright MCP installation and confi
   - MCP server JSON format with exact configuration
 
 #### "Configure Browser Session Persistence" (Lines 382-429)
+
 - Explanation of what session persistence means
 - Why it's needed (avoid re-authentication on every run)
 - How Playwright implements session persistence
@@ -57,6 +61,7 @@ Successfully extended Lesson 02 to include Playwright MCP installation and confi
 **Test 1** (unchanged): Access Spec-Kit Plus Commands
 
 **Test 2** (new): Verify Playwright MCP is Available
+
 - Asks AI to list available MCP servers
 - Expected response includes Playwright tools (navigate, click, fill, screenshot, extract_text)
 - Troubleshooting guide if Playwright MCP is NOT listed
@@ -65,6 +70,7 @@ Successfully extended Lesson 02 to include Playwright MCP installation and confi
 ### 5. Common Mistakes Section Expansion
 
 **New Mistakes Added**:
+
 - Mistake 3: Installing Playwright locally instead of globally
 - Mistake 4: Incorrect MCP configuration path
 - Mistake 5: Forgetting to restart Claude Desktop
@@ -75,6 +81,7 @@ Each includes: The Error, Why It's Wrong, The Fix
 ### 6. "Try With AI" Prompts Update
 
 **4 copypaste-ready prompts** for students:
+
 1. **Verify Complete Setup** - Check both frameworks are installed
 2. **Understand Session Persistence** - Deep dive on authentication flow
 3. **Troubleshoot Configuration** - JSON validation and debugging
@@ -119,19 +126,20 @@ grep -c "Playwright MCP\|@anthropic-ai/mcp-playwright\|session persistence" [fil
 
 ## Cognitive Load Assessment
 
-| Element | Count | CEFR B1 Limit |
-|---------|-------|---------------|
-| New Concepts | 8 | ≤10 ✓ |
-| Installation Steps | 4 major (Spec-Kit + Playwright) | Appropriate |
-| Platform-Specific Paths | 3 (macOS, Linux, Windows) | Clear |
-| Common Mistakes | 6 (including 3 new) | Good coverage |
-| Configuration Files | 1 main (claude_desktop_config.json) | Clear location |
+| Element                 | Count                               | CEFR B1 Limit  |
+| ----------------------- | ----------------------------------- | -------------- |
+| New Concepts            | 8                                   | ≤10 ✓          |
+| Installation Steps      | 4 major (Spec-Kit + Playwright)     | Appropriate    |
+| Platform-Specific Paths | 3 (macOS, Linux, Windows)           | Clear          |
+| Common Mistakes         | 6 (including 3 new)                 | Good coverage  |
+| Configuration Files     | 1 main (claude_desktop_config.json) | Clear location |
 
 ---
 
 ## Scope Compliance
 
 ### Maintained (Original Content)
+
 ✓ Spec-Kit Plus installation steps
 ✓ Python 3.12+ verification
 ✓ Project initialization and structure
@@ -140,6 +148,7 @@ grep -c "Playwright MCP\|@anthropic-ai/mcp-playwright\|session persistence" [fil
 ✓ Try With AI structure (extended with new prompts)
 
 ### Added (Extension Requirements)
+
 ✓ Playwright MCP installation section
 ✓ Claude Desktop configuration (JSON format)
 ✓ Session persistence explanation and setup
@@ -150,6 +159,7 @@ grep -c "Playwright MCP\|@anthropic-ai/mcp-playwright\|session persistence" [fil
 ✓ Updated skill metadata
 
 ### NOT Added (Out of Scope)
+
 ✗ Actual code generation examples (Lesson 8)
 ✗ Reusable intelligence/skills (Lesson 9)
 ✗ YouTube upload (Lesson 11)
@@ -160,24 +170,28 @@ grep -c "Playwright MCP\|@anthropic-ai/mcp-playwright\|session persistence" [fil
 ## Key Features
 
 ### 1. Cross-Platform Support
+
 - **macOS**: `touch` + file editor approach
 - **Linux**: `nano` editor instructions
 - **Windows**: PowerShell with administrative context
 - **Consistency**: Same JSON configuration across all platforms
 
 ### 2. Practical Workflow
+
 - Session persistence integrated with video generation use case
 - Manual first-run login → automated subsequent runs pattern
 - Clear connection to Gemini.google.com automation
 - Troubleshooting path provided for common issues
 
 ### 3. Student-Centric Language
+
 - "You'll use Playwright MCP to:" (action-oriented)
 - "When you write your specification:" (future-focused)
 - No technical jargon without explanation
 - Expected outputs provided for self-verification
 
 ### 4. Comprehensive Troubleshooting
+
 - 6 Common Mistakes (doubled from original 2)
 - All mistakes + fixes directly applicable to Playwright MCP setup
 - JSON validation command provided
@@ -187,14 +201,14 @@ grep -c "Playwright MCP\|@anthropic-ai/mcp-playwright\|session persistence" [fil
 
 ## Integration with Chapter 14 Progression
 
-| Lesson | Focus | Prerequisite | Dependency |
-|--------|-------|--------------|-----------|
-| Lesson 01 | Spec-Kit Plus theory | None | Foundation |
+| Lesson        | Focus                                    | Prerequisite           | Dependency             |
+| ------------- | ---------------------------------------- | ---------------------- | ---------------------- |
+| Lesson 01     | Spec-Kit Plus theory                     | None                   | Foundation             |
 | **Lesson 02** | **Installation (Spec-Kit + Playwright)** | **Lesson 01 complete** | **Enables Lesson 03+** |
-| Lesson 03 | Constitution phase | Lesson 02 complete | Spec-Kit + Playwright |
-| Lesson 04 | Specification writing | Lesson 03 complete | Spec-Kit + Playwright |
-| ... | ... | ... | ... |
-| Lesson 08 | Implementation | Lesson 07 complete | Spec-Kit + Playwright |
+| Lesson 03     | Constitution phase                       | Lesson 02 complete     | Spec-Kit + Playwright  |
+| Lesson 04     | Specification writing                    | Lesson 03 complete     | Spec-Kit + Playwright  |
+| ...           | ...                                      | ...                    | ...                    |
+| Lesson 08     | Implementation                           | Lesson 07 complete     | Spec-Kit + Playwright  |
 
 ---
 
@@ -247,9 +261,10 @@ grep -c "Playwright MCP\|@anthropic-ai/mcp-playwright\|session persistence" [fil
 
 ## File Information
 
-**Full Path**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/02-installation-and-setup.md`
+**Full Path**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/02-installation-and-setup.md`
 
 **Metadata**:
+
 ```yaml
 title: "Installation & Setup - Getting Spec-Kit Plus and Playwright MCP Running"
 chapter: 14

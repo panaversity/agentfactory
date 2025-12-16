@@ -9,7 +9,13 @@ feature: 002-book-structure
 branch: 002-book-structure
 user: unknown
 command: session-continuation
-labels: ["spec-phase", "part-1-planning", "orchestrator-narrative", "just-in-time-approach"]
+labels:
+  [
+    "spec-phase",
+    "part-1-planning",
+    "orchestrator-narrative",
+    "just-in-time-approach",
+  ]
 links:
   spec: /specs/part-1/part-1-spec.md
   ticket: null
@@ -18,7 +24,7 @@ links:
 files:
   - /specs/002-book-structure/tasks.md (updated - removed T004-T011)
   - /specs/002-book-structure/spec.md (updated - added Part 1 narrative section)
-  - /book-source/docs/01-Introducing-AI-Driven-Development/intro.md (updated - comprehensive orchestrator narrative)
+  - /apps/learn-app/docs/01-Introducing-AI-Driven-Development/intro.md (updated - comprehensive orchestrator narrative)
   - /specs/part-1/part-1-spec.md (created - detailed 5-chapter specification)
 tests:
   - T001 ✅ Removed T004-T011 from tasks.md (deferred to just-in-time)
@@ -32,6 +38,7 @@ tests:
 ## Prompt
 
 **Context**: User provided comprehensive Part 1 narrative about "The Billion-Dollar Opportunity: From Coder to Super Orchestrator" and asked to:
+
 1. Remove T004-T011 placeholder clarifications from tasks.md (move to just-in-time resolution per part)
 2. Update spec.md with Part 1 vision
 3. Create Part 1 intro.md with orchestrator narrative
@@ -46,6 +53,7 @@ This triggered a paradigm shift: Instead of blocking on 8 clarifications upfront
 Successfully refactored book structure for just-in-time specification approach:
 
 **Tasks Simplified**:
+
 - Removed T004-T011 (8 placeholder clarifications)
 - Kept only T001-T003 (Phase 1: Infrastructure - DONE)
 - Kept only T004 (Phase 2: Create Part 1 spec - IN PROGRESS)
@@ -53,12 +61,14 @@ Successfully refactored book structure for just-in-time specification approach:
 - Total: 8 tasks (down from 16, all others deferred to just-in-time)
 
 **Spec Enhanced**:
+
 - Added "Part 1 Narrative" section to 002-book-structure/spec.md
 - Documented the Orchestrator mindset shift
 - Outlined 5-chapter arc and learning outcomes
 - Specified cognitive load (LIGHT) and scaffolding (HEAVY)
 
 **Part 1 Intro Created**:
+
 - Comprehensive 140-line user-facing introduction
 - Opens with "The Billion-Dollar Opportunity" hook
 - Explains each 5 chapters in detail
@@ -66,6 +76,7 @@ Successfully refactored book structure for just-in-time specification approach:
 - Motivates readers with real ARR numbers and startup examples
 
 **Part 1 Spec Created** (CRITICAL FOR NEXT PHASE):
+
 - Complete specification for chapter-planner subagent
 - 5 chapters fully detailed:
   - Chapter 1: Welcome to AI-Driven Development (mindset shift)
@@ -88,6 +99,7 @@ Successfully refactored book structure for just-in-time specification approach:
 - ✅ Impact: Book structure now follows just-in-time specification (SDD loop per part). Tasks simplified from 16 to 8. Clarifications deferred to when each part is ready for planning. Part 1 spec is comprehensive and ready for chapter-planner subagent invocation. This unblocks the entire Part 1 writing pipeline.
 
 - 🧪 Tests:
+
   - ✅ PASS: T004-T011 removed from tasks.md (8 items deleted)
   - ✅ PASS: tasks.md now shows 8 total tasks (was 16)
   - ✅ PASS: Phase 2 simplified to single task (T004: Create Part 1 spec)
@@ -100,12 +112,14 @@ Successfully refactored book structure for just-in-time specification approach:
   - ✅ PASS: Connection map shows Part 1 → Parts 2-7 dependencies
 
 - 📁 Files:
+
   - Updated: `/specs/002-book-structure/tasks.md` (simplified to 8 tasks)
   - Updated: `/specs/002-book-structure/spec.md` (added Part 1 narrative section)
-  - Updated: `/book-source/docs/01-Introducing-AI-Driven-Development/intro.md` (140 lines)
+  - Updated: `/apps/learn-app/docs/01-Introducing-AI-Driven-Development/intro.md` (140 lines)
   - Created: `/specs/part-1/part-1-spec.md` (800+ lines, ready for chapter-planner)
 
 - 🔁 Next prompts:
+
   1. Invoke chapter-planner subagent with `/specs/part-1/part-1-spec.md`
   2. Output: `specs/part-1/chapter-01-plan.md` through `specs/part-1/chapter-05-plan.md`
   3. Invoke content-implementer subagent for each chapter (iterative, one lesson at a time)
@@ -118,6 +132,7 @@ Successfully refactored book structure for just-in-time specification approach:
 - Failure modes observed: None. Just-in-time approach elegantly solves the "8 blocking clarifications" problem.
 
 - Graders run and results (PASS/FAIL):
+
   - ✅ PASS: tasks.md has only 8 actionable tasks (T001-T004, T013-T016)
   - ✅ PASS: Phase 2 reduced to single task (T004)
   - ✅ PASS: spec.md updated with Part 1 narrative (matches user-provided content)

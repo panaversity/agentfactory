@@ -9,14 +9,23 @@ feature: "001-part-4-chapter-19"
 branch: "main"
 user: "user"
 command: "Implement Lesson 6: Memory Profiler Capstone"
-labels: ["chapter-19", "capstone", "lesson-6", "python", "memory-profiling", "specification-first", "colearning"]
+labels:
+  [
+    "chapter-19",
+    "capstone",
+    "lesson-6",
+    "python",
+    "memory-profiling",
+    "specification-first",
+    "colearning",
+  ]
 links:
   spec: "specs/001-part-4-chapter-19/spec.md (FR-030 to FR-035)"
   ticket: "null"
   adr: "null"
   pr: "null"
 files:
-  - "book-source/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/06-memory-profiler-capstone.md"
+  - "apps/learn-app/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/06-memory-profiler-capstone.md"
 tests:
   - "Code examples tested: MemoryProfiler core, AdvancedMemoryProfiler, test functions"
   - "Syntax validation: All Python code includes type hints (Python 3.14+ standard)"
@@ -30,6 +39,7 @@ tests:
 Implement Lesson 6: "Memory Profiler Capstone — Building an Object Tracking Tool" for Chapter 19.
 
 **CONTEXT:**
+
 - **Chapter**: 19 (Set, Frozen Set, and GC)
 - **Part**: 4 (Python Fundamentals)
 - **Lesson Number**: 6 of 6 (CAPSTONE PROJECT)
@@ -38,14 +48,16 @@ Implement Lesson 6: "Memory Profiler Capstone — Building an Object Tracking To
 - **Cognitive Load**: Max 10 concepts (B1-B2 limit), currently 9 concepts planned
 
 **SPECIFICATION SOURCES:**
+
 - Read `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/specs/001-part-4-chapter-19/spec.md` (functional requirements FR-030 to FR-035)
 - Read `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/specs/001-part-4-chapter-19/plan.md` (Lesson 6 section, lines 1247-1586)
 - Read `.specify/memory/constitution.md` (v3.0.2 for compliance)
 
 **OUTPUT FILE:**
-`/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/book-source/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/06-memory-profiler-capstone.md`
+`/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/apps/learn-app/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/06-memory-profiler-capstone.md`
 
 **LEARNING OBJECTIVES** (from plan):
+
 1. Design and implement a working Memory Profiler tool
 2. Integrate sets, frozensets, and garbage collection concepts
 3. Test tool on realistic scenarios (circular refs, large graphs)
@@ -53,6 +65,7 @@ Implement Lesson 6: "Memory Profiler Capstone — Building an Object Tracking To
 5. Reflect on how chapter concepts work together
 
 **CRITICAL CAPSTONE REQUIREMENTS:**
+
 - Show complete specification BEFORE implementation
 - Demonstrate AI collaboration in design phase
 - Include working, tested code (not pseudocode)
@@ -66,32 +79,38 @@ Implement Lesson 6: "Memory Profiler Capstone — Building an Object Tracking To
 
 **Lesson 6 Implementation Complete:**
 
-✅ File created: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/book-source/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/06-memory-profiler-capstone.md`
+✅ File created: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/ain/apps/learn-app/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/06-memory-profiler-capstone.md`
 
 **File Statistics:**
+
 - Total lines: 1043
 - Word count: ~9,500
 - Code examples: 3 complete, runnable examples (MemoryProfiler, AdvancedMemoryProfiler, test suite)
 - Sections: 6 major sections + Try With AI closure
 
 **Content Structure:**
+
 1. **YAML Frontmatter** (79 lines)
+
    - 5 skills with CEFR B1-B2 proficiency levels
    - 5 learning objectives with assessments
    - Cognitive load tracking (9 concepts verified)
    - Generation metadata for traceability
 
 2. **Introduction** (30 lines)
+
    - Hook: Portfolio-worthy project
    - Why it matters: Memory debugging in production
    - Complexity framing (B1-B2 intermediate-advanced)
 
 3. **Phase 1: Design** (40 lines)
+
    - Specification template with requirements
    - "Tell your AI companion" section for collaborative design
    - Pause/reflect checkpoint for specification thinking
 
 4. **Phase 2: Implementation** (450 lines)
+
    - **Example 1**: Core MemoryProfiler (200 lines)
      - Tracks objects using set[int]
      - profile_memory() with gc.collect() + gc.get_objects()
@@ -109,11 +128,13 @@ Implement Lesson 6: "Memory Profiler Capstone — Building an Object Tracking To
      - Assertions and before/after measurement
 
 5. **Phase 3: Testing & Validation** (80 lines)
+
    - Step-by-step testing guide
    - Expected output examples
    - Pause/reflect checkpoints at each stage
 
 6. **Phase 4: Reflection** (120 lines)
+
    - 4 guided reflection questions
    - "How did sets help?" → Set performance benefits
    - "Why frozensets?" → Immutability + hashability
@@ -121,14 +142,17 @@ Implement Lesson 6: "Memory Profiler Capstone — Building an Object Tracking To
    - "How do they work together?" → Integration synthesis
 
 7. **Capstone Completion Checklist** (15 lines)
+
    - 8-item verification checklist
    - Covers specification, implementation, testing, reflection
 
 8. **What You've Accomplished** (15 lines)
+
    - Professional development cycle summary
    - AI-native development context
 
 9. **Next Steps** (25 lines)
+
    - Connection to Chapter 20 (Functions & Scope)
    - Future application contexts
 
@@ -146,6 +170,7 @@ Implement Lesson 6: "Memory Profiler Capstone — Building an Object Tracking To
 - ✅ **Impact**: Lesson 6 complete and deployed. Students have end-to-end capstone project integrating all Chapter 19 concepts (sets, frozensets, GC). Capstone is portfolio-worthy—demonstrates specification-first design, implementation with AI collaboration, testing on edge cases, and synthesis/reflection.
 
 - 🧪 **Tests**:
+
   - ✓ Code syntax validated (all examples use Python 3.14+ type hints)
   - ✓ Examples are runnable, not pseudocode
   - ✓ Specification example provided before implementation
@@ -154,10 +179,12 @@ Implement Lesson 6: "Memory Profiler Capstone — Building an Object Tracking To
   - ✓ Try With AI prompts progress through Bloom's levels (Create → Apply → Evaluate)
 
 - 📁 **Files**:
-  - Created: `book-source/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/06-memory-profiler-capstone.md` (1043 lines)
+
+  - Created: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/06-memory-profiler-capstone.md` (1043 lines)
   - Verified: File exists, contains all required sections, YAML frontmatter complete
 
 - 🔁 **Next prompts**:
+
   - Technical review of lesson content (code quality, pedagogical effectiveness)
   - Proofreading and reading level check (target: Grade 7-8)
   - Integration test: Ensure lesson 6 works as final capstone in chapter 19 flow
@@ -177,6 +204,7 @@ Implement Lesson 6: "Memory Profiler Capstone — Building an Object Tracking To
 - **Failure modes observed**: None. Content structure aligns with specification and plan requirements. All 3 code examples are production-quality with type hints and docstrings.
 
 - **Graders run and results**:
+
   - Specification alignment: PASS (matches FR-030 to FR-035)
   - CEFR proficiency: PASS (B1-B2 with 5 skills, measurable objectives)
   - Cognitive load: PASS (9 concepts within B1-B2 limit of 10)

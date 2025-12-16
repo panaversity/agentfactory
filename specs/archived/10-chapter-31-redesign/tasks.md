@@ -17,11 +17,13 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 ## Phase 1: Setup & Foundation (2-3 hours)
 
 ### Milestone 1.1: Environment Ready
-- [ ] Create chapter directory: `book-source/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/`
+
+- [ ] Create chapter directory: `apps/learn-app/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/`
 - [ ] Verify branch: `claude/what-skill-011CUpWbAZvCt9xZdMJj3MEu`
 - [ ] Create chapter README with overview + 8-lesson structure
 
 **Acceptance Criteria**:
+
 - ✓ Directory exists with correct path
 - ✓ Branch is active
 - ✓ README references Constitution v3.0.1 principles
@@ -35,12 +37,14 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 **Invoke**: content-implementer subagent with simplified plan context
 
 **Deliverables**:
+
 - `01-installation-and-setup.md` complete
 - Installation verification steps
 - Tool configuration guide (Claude Code OR Gemini CLI)
 - "Try With AI" activity
 
 **Acceptance Criteria**:
+
 - ✓ Clear installation instructions for both AI tools
 - ✓ Horizontal + Vertical Intelligence explained (5 concepts max, A2 level)
 - ✓ Working project structure verification
@@ -53,12 +57,14 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 **Invoke**: content-implementer subagent
 
 **Deliverables**:
+
 - `02-constitution-phase.md` complete
 - Constitution template for calculator
 - Best practice workflow (Constitution → Commit → Features)
 - "Try With AI" activity
 
 **Acceptance Criteria**:
+
 - ✓ Constitution vs Specs distinction clear
 - ✓ One-time creation explained
 - ✓ Example Constitution with 7 standards (quality, testing, error-handling, etc.)
@@ -71,12 +77,14 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 **Invoke**: content-implementer subagent
 
 **Deliverables**:
+
 - `03-specify-phase.md` complete
 - **Evals as Collaboration** section (critical!)
 - Complete calculator specification example
 - "Try With AI" activity
 
 **Acceptance Criteria**:
+
 - ✓ **Evals taught as pre-spec human-AI discussion** (NOT formal phase)
 - ✓ Example: "I want calculator" → AI asks clarifying questions → discussion → THEN `/sp.specify`
 - ✓ SMART criteria framework applied
@@ -93,12 +101,14 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 **Invoke**: content-implementer subagent
 
 **Deliverables**:
+
 - `04-clarify-phase.md` complete
 - `/sp.clarify` workflow demonstration
 - Iteration examples (spec v1 → v2 → v3)
 - "Try With AI" activity
 
 **Acceptance Criteria**:
+
 - ✓ `/sp.clarify` command usage clear
 - ✓ Gap analysis demonstrated (ambiguous terms, missing assumptions, untestable criteria)
 - ✓ Iterative refinement cycle shown
@@ -112,6 +122,7 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 **Invoke**: content-implementer subagent
 
 **Deliverables**:
+
 - `05-plan-phase.md` complete
 - `/sp.plan` workflow demonstration
 - ADR creation with `/sp.adr <title>`
@@ -119,6 +130,7 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 - "Try With AI" activity
 
 **Acceptance Criteria**:
+
 - ✓ `/sp.plan` generates architecture from spec
 - ✓ Plan structure explained (phases, dependencies, milestones)
 - ✓ ADR creation taught (when/why to document decisions)
@@ -132,6 +144,7 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 **Invoke**: content-implementer subagent
 
 **Deliverables**:
+
 - `06-tasks-phase.md` complete
 - `/sp.tasks` workflow demonstration
 - **Checkpoint pattern teaching** (critical!)
@@ -139,6 +152,7 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 - "Try With AI" activity
 
 **Acceptance Criteria**:
+
 - ✓ `/sp.tasks` decomposes plan into atomic tasks
 - ✓ **Checkpoint pattern explained**: Agent completes Phase 1 → Human reviews/commits → Agent continues
 - ✓ **Human control emphasized**: YOU decide when to proceed; AI doesn't run autonomously
@@ -156,6 +170,7 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 **Invoke**: content-implementer subagent
 
 **Deliverables**:
+
 - `07-implement-validate-phase.md` complete
 - `/sp.implement` workflow demonstration
 - **PHR auto-creation explanation** (critical!)
@@ -163,6 +178,7 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 - "Try With AI" activity
 
 **Acceptance Criteria**:
+
 - ✓ `/sp.implement` orchestrates code generation
 - ✓ **Checkpoint-driven implementation**: Implement Phase 1 → pause → review → continue
 - ✓ **PHR auto-creation explained**: System creates PHR for each `/sp.implement` session (8-10 typical)
@@ -182,6 +198,7 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 **Invoke**: content-implementer subagent
 
 **Deliverables**:
+
 - `08-capstone-project.md` complete
 - Two project options (temperature converter, unit converter)
 - Complete workflow checklist
@@ -189,6 +206,7 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 - Assessment rubric
 
 **Acceptance Criteria**:
+
 - ✓ Project options clearly specified
 - ✓ Complete workflow requirements (Constitution → Spec → Plan → Tasks → Code)
 - ✓ Deliverables list (all artifacts required)
@@ -202,17 +220,20 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 ### Milestone 3.1: Fix Chapter References in Part 5
 
 **Files to Update** (user provided list):
+
 1. `32-real-world-spec-kit-workflows/10-capstone-part-3-reflect-on-scale.md` (lines 342, 391-393)
 2. `32-real-world-spec-kit-workflows/08-capstone-part-1-decompose-your-spec.md` (lines 27, 35, 43)
 3. `32-real-world-spec-kit-workflows/07-write-your-professional-commitment.md` (line 227)
 4. `32-real-world-spec-kit-workflows/04-see-how-specs-flow-through-everything.md` (lines 95, 297)
 
 **Changes**:
+
 - Replace "Chapter 25" → "Chapter 30"
 - Replace "Chapter 26" → "Chapter 31"
 - Replace "Chapter 27" → "Chapter 32"
 
 **Acceptance Criteria**:
+
 - ✓ All 5 files updated
 - ✓ Cross-references accurate
 - ✓ No broken links
@@ -226,6 +247,7 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 **Invoke**: validation-auditor subagent
 
 **Checks**:
+
 - ✓ All `/sp.*` commands accurate (no hallucinations)
 - ✓ Code examples work (tested with Python 3.13+)
 - ✓ Installation instructions valid
@@ -236,6 +258,7 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 ### Milestone 4.2: Constitutional Alignment Review
 
 **Manual Check** (use content-evaluation-framework skill):
+
 - ✓ Evals-first philosophy (#1) applied
 - ✓ Specification-first methodology (#2) centered
 - ✓ Validation-before-trust (#15) emphasized
@@ -248,6 +271,7 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 ### Milestone 4.3: Cross-Chapter Coherence
 
 **Checks**:
+
 - ✓ Chapter 30 handoff clear (4 tools → Spec-Kit Plus choice)
 - ✓ Chapter 32 preparation (multi-component foundation)
 - ✓ No forward references without explanation
@@ -264,6 +288,7 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 - [ ] "Try With AI" activities in all 8 lessons
 
 **Acceptance Criteria**:
+
 - ✓ `npm run build` succeeds
 - ✓ All links resolve
 - ✓ Chapter accessible on local preview
@@ -310,17 +335,20 @@ Chapter 31 implementation organized into **8 major milestones** (one per lesson)
 ## Key Differences from Old Tasks
 
 **What's Simplified**:
+
 - ❌ 52 micro-tasks → 15 major milestones
 - ❌ Detailed file-by-file breakdown → high-level deliverables
 - ❌ Granular acceptance criteria per task → milestone-level validation
 
 **What's Retained**:
+
 - ✓ Phase structure (Setup → Lessons → Validation → Deployment)
 - ✓ Critical teaching points flagged
 - ✓ Constitutional alignment checkpoints
 - ✓ Clear acceptance criteria
 
 **What's Added**:
+
 - ✓ Evals clarification (pre-spec collaboration)
 - ✓ Checkpoint pattern emphasis
 - ✓ PHR auto-creation teaching

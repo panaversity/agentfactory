@@ -248,11 +248,11 @@ Load these references as needed during evaluation to ensure consistency and thor
 
 ## Example Evaluation Flow
 
-**User Request:** "Please evaluate this lesson draft: `book-source/docs/chapter-3/lesson-2.md`"
+**User Request:** "Please evaluate this lesson draft: `apps/learn-app/docs/chapter-3/lesson-2.md`"
 
 **Evaluation Process:**
 
-1. **Read content:** `book-source/docs/chapter-3/lesson-2.md`
+1. **Read content:** `apps/learn-app/docs/chapter-3/lesson-2.md`
 2. **Load context:** spec, plan, constitution, learning objectives
 3. **Check constitution compliance:** `references/constitution-checklist.md`
    - Result: **Pass** (all non-negotiables met)

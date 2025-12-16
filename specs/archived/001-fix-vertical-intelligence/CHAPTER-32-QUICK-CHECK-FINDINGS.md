@@ -21,17 +21,20 @@
 ### What Works Well
 
 1. **Output-Styles Compliance (`.claude/output-styles/lesson.md`)**
+
    - All 10 lessons include complete YAML frontmatter with skills metadata
    - Lesson structure follows adaptive content type pattern
    - Markdown formatting is publication-quality
    - Heading hierarchy is correct (H1 for lesson, H2 for sections, H3 for subsections)
 
 2. **Chapter-Index Alignment (`specs/book/chapter-index.md`)**
+
    - Chapter metadata matches specification: Part 5, Chapter 32, status ✅ Implemented
    - Chapter title matches: "Real-World Spec-Kit Workflows & Capstone"
    - File location correct: `32-real-world-spec-kit-workflows/`
 
 3. **Constitution v3.0.1 Alignment**
+
    - All 5 required domain skills present and contextually applied:
      - learning-objectives: ✓ Chapter README states 8 clear outcomes
      - concept-scaffolding: ✓ Progressive from solo → team → enterprise → hands-on
@@ -52,14 +55,15 @@
 ### What Needs Fixing
 
 1. **AI-First Closure Policy Violation** (`.claude/output-styles/lesson.md`, lines 275, 283)
+
    - **Expected**: All lessons end with "## Try With AI" section (no "Key Takeaways" or "What's Next")
    - **Found**: 3 lessons violate this requirement
 
-   | Lesson | Issue | Fix |
-   |--------|-------|-----|
-   | 08 | Missing "Try With AI"; ends with "What's Next" | Replace "What's Next" with "Try With AI" section |
-   | 09 | Missing "Try With AI"; ends with "What's Next" | Replace "What's Next" with "Try With AI" section |
-   | 10 | Has "Try With AI" but followed by "What's Next" | Delete "What's Next" section; ensure "Try With AI" is final |
+   | Lesson | Issue                                           | Fix                                                         |
+   | ------ | ----------------------------------------------- | ----------------------------------------------------------- |
+   | 08     | Missing "Try With AI"; ends with "What's Next"  | Replace "What's Next" with "Try With AI" section            |
+   | 09     | Missing "Try With AI"; ends with "What's Next"  | Replace "What's Next" with "Try With AI" section            |
+   | 10     | Has "Try With AI" but followed by "What's Next" | Delete "What's Next" section; ensure "Try With AI" is final |
 
 2. **No Other Critical Issues Found**
    - All lessons have frontmatter ✓
@@ -75,6 +79,7 @@
 ### Lesson Closure Pattern Verification
 
 **Lessons 1-7 (Correct Pattern)**:
+
 ```
 Lesson 01: "Watch Your Companions Coordinate"
   Line 306: ## Try With AI
@@ -84,6 +89,7 @@ Lesson 01: "Watch Your Companions Coordinate"
 ```
 
 **Lesson 8 (Incorrect Pattern)**:
+
 ```
 Lesson 08: "Capstone Part 1: Decompose Your Spec"
   Line 393: ## What's Next  ← SHOULD BE "## Try With AI"
@@ -92,6 +98,7 @@ Lesson 08: "Capstone Part 1: Decompose Your Spec"
 ```
 
 **Lesson 9 (Incorrect Pattern)**:
+
 ```
 Lesson 09: "Capstone Part 2: Implement in Parallel"
   Line 426: ## What's Next  ← SHOULD BE "## Try With AI"
@@ -100,6 +107,7 @@ Lesson 09: "Capstone Part 2: Implement in Parallel"
 ```
 
 **Lesson 10 (Incorrect Pattern)**:
+
 ```
 Lesson 10: "Capstone Part 3: Reflect on Scale"
   Line 356: ## Try With AI  ✓ Correct section title
@@ -123,6 +131,7 @@ Lesson 10: "Capstone Part 3: Reflect on Scale"
 ### Issues Indicating Subagent Misalignment
 
 1. **Closure Pattern Not Applied to Capstone Lessons**
+
    - Subagent (content-implementer or chapter-writer) correctly applied "Try With AI" closure to lessons 1-7
    - For lessons 8-10 (capstone), subagent reverted to "What's Next" pattern
    - Indicates: Subagent may not have applied closure policy uniformly across all lesson types, or capstone lessons were generated with different context/instructions
@@ -142,6 +151,7 @@ Lesson 10: "Capstone Part 3: Reflect on Scale"
 2. **Test Capstone Lessons Separately**: Capstone/practice lessons may need explicit instruction about closure policy in generation prompt
 
 3. **Validation Script**: Add to subagent pipeline:
+
    ```bash
    # Verify no lesson ends with "Key Takeaway", "What's Next", or "Summary"
    grep -l "^## (Key Takeaway|What's Next|Summary)$" *.md && echo "FAIL: Prohibited closure pattern found" || echo "PASS"
@@ -157,9 +167,10 @@ Lesson 10: "Capstone Part 3: Reflect on Scale"
 ## Files for Review
 
 **Main Validation Report**: `/VALIDATION-REPORT-CHAPTER-32.md`
-**Chapter Location**: `/book-source/docs/05-Spec-Kit-Plus-Methodology/32-real-world-spec-kit-workflows/`
+**Chapter Location**: `/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/32-real-world-spec-kit-workflows/`
 
 **Lesson Files Requiring Fix**:
+
 1. `/32-real-world-spec-kit-workflows/08-capstone-part-1-decompose-your-spec.md` (line 393: replace "What's Next")
 2. `/32-real-world-spec-kit-workflows/09-capstone-part-2-implement-in-parallel.md` (line 426: replace "What's Next")
 3. `/32-real-world-spec-kit-workflows/10-capstone-part-3-reflect-on-scale.md` (line 388: delete "What's Next")

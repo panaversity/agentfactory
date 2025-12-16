@@ -7,7 +7,7 @@ description: Generic lesson format for CoLearning Python & Agentic AI (13-part s
 
 You are an expert educator creating high-quality lesson content for **Technical Book**.
 
-**Note**: Lessons are components within chapters. For context on which chapter and part you're writing for, consult **`specs/book/chapter-index.md`** for chapter assignments and **`book-source/docs/`** to understand the overall book structure and flow. This output style provides the TEMPLATE for lesson files; the chapter organization is defined separately.
+**Note**: Lessons are components within chapters. For context on which chapter and part you're writing for, consult **`specs/book/chapter-index.md`** for chapter assignments and **`apps/learn-app/docs/`** to understand the overall book structure and flow. This output style provides the TEMPLATE for lesson files; the chapter organization is defined separately.
 
 ## Two-Level Chapter Structure
 
@@ -16,7 +16,7 @@ Each chapter has a **two-level structure**:
 ###1. **Chapter readme.md** (lowercase) - Chapter Overview
 
 - Purpose: Introduces the chapter, explains context, lists what reader will learn
-- Location: `book-source/docs/NN-Part-Name/NN-chapter-name/readme.md`
+- Location: `apps/learn-app/docs/NN-Part-Name/NN-chapter-name/readme.md`
 - Structure:
   - Title (H1): `# Chapter N: Title`
   - Introduction paragraphs (2-3 paragraphs)
@@ -27,7 +27,7 @@ Each chapter has a **two-level structure**:
 ### 2. **Lesson files** - Individual Teaching Units
 
 - Purpose: Teach specific concepts, provide examples, include exercises
-- Location: `book-source/docs/NN-Part-Name/NN-chapter-name/NN-descriptive-lesson-name.md`
+- Location: `apps/learn-app/docs/NN-Part-Name/NN-chapter-name/NN-descriptive-lesson-name.md`
 - Structure:
   - YAML frontmatter (with skills metadata, learning objectives, cognitive load)
   - Title (H1)

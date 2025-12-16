@@ -5,7 +5,7 @@
 **Status**: Draft
 **Input**: User description: "Redesign Bash Essentials chapter to follow AI-native teaching pattern where students learn to communicate bash needs in natural language, AI executes, and students observe and validate outcomes. Focus on graduated teaching: Tier 1 (foundational commands), Tier 2 (complex operations with AI companion), Tier 3 (orchestration at scale)."
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Natural Language Navigation (Priority: P1)
 
@@ -95,7 +95,7 @@
 - **What happens when** student tries to execute a destructive command in the wrong directory? → AI shows current location FIRST, asks "Are you sure this is the right place?", waits for explicit confirmation
 - **What happens when** student wants to chain multiple complex commands? → AI breaks down into steps, explains each step, asks "Should I proceed to step 2?" between steps
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -113,7 +113,7 @@
 - **FR-012**: Chapter MUST include error literacy (reading error messages, understanding common failure modes)
 - **FR-013**: Content MUST be organized by workflows/tasks (navigation, file operations, configuration) NOT by commands (ls, cd, mkdir)
 
-### Key Entities *(educational content context)*
+### Key Entities _(educational content context)_
 
 - **Lesson**: Focused unit teaching one workflow (navigation, safety pattern, file operations, etc.) with learning objectives, examples, exercises, and AI collaboration prompts
 - **Dialogue Transcript**: Authentic conversation between student and AI showing natural language request, AI explanation, command execution, and validation
@@ -121,7 +121,7 @@
 - **Graduated Tier**: Teaching progression level (Tier 1: book teaches directly, Tier 2: AI companion executes complex syntax, Tier 3: AI orchestrates multi-step workflows)
 - **Command Comprehension Checkpoint**: Exercise where student explains in plain English what a bash command does (without running it)
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 
@@ -144,7 +144,7 @@
 - **BG-004**: Students recognize the difference between memorizing syntax (old way) and specifying intent (AI-native way)
 - **BG-005**: Students can explain to others "I don't know bash commands, but I know how to work with bash through AI collaboration"
 
-## Scope *(mandatory)*
+## Scope _(mandatory)_
 
 ### In Scope
 
@@ -178,7 +178,7 @@
 - Content assuming prior terminal experience
 - Unix philosophy or shell history (unless directly relevant to task)
 
-## Dependencies *(mandatory)*
+## Dependencies _(mandatory)_
 
 ### Prerequisites (what students must know)
 
@@ -200,7 +200,7 @@
 - Students using macOS, Linux, or WSL (Windows Subsystem for Linux) with bash shell
 - Terminal application installed and accessible
 
-## Assumptions *(mandatory)*
+## Assumptions _(mandatory)_
 
 - Students have zero prior terminal/bash experience (true beginners)
 - Students have successfully installed one AI tool capable of bash execution (from Chapters 5-6)
@@ -211,7 +211,7 @@
 - Reading level is Grade 7-8 (beginner-friendly, no academic jargon)
 - Examples use cross-platform commands where possible (`ls` works on macOS/Linux/WSL)
 
-## Constraints *(mandatory)*
+## Constraints _(mandatory)_
 
 ### Technical Constraints
 
@@ -238,7 +238,7 @@
 - Must maintain consistent voice and tone with rest of book
 - Must use existing lesson template structure (learning objectives, examples, exercises, "Try With AI" section)
 
-## Non-Goals *(mandatory)*
+## Non-Goals _(mandatory)_
 
 - Teaching students to write bash scripts from scratch (out of scope for beginner tier)
 - Making students bash experts who can solve complex scripting problems independently
@@ -247,13 +247,14 @@
 - Teaching shell customization or productivity hacks (not critical for AI-driven development)
 - Creating bash command reference or cheat sheet (defeats AI-native approach)
 
-## Risks and Mitigations *(mandatory)*
+## Risks and Mitigations _(mandatory)_
 
 ### Risk 1: Students Become Over-Reliant on AI, Never Learn Fundamentals
 
 **Likelihood**: Medium | **Impact**: High
 
 **Mitigation**:
+
 - Explicitly teach Tier 1 foundational concepts (navigation, file types, paths) in the book BEFORE introducing AI execution
 - Require students to predict what command will do BEFORE AI executes
 - Include "explain this command" exercises where student must describe in plain English
@@ -265,6 +266,7 @@
 **Likelihood**: High | **Impact**: Medium
 
 **Mitigation**:
+
 - Use REAL dialogue transcripts showing actual errors and limitations
 - Teach students to expect errors and how to troubleshoot them
 - Include "What went wrong?" analysis sections for common failure modes
@@ -277,6 +279,7 @@
 **Likelihood**: Medium | **Impact**: Critical
 
 **Mitigation**:
+
 - Lead with scary stories (real examples of data loss from skipping verification)
 - Make safety pattern the FIRST major lesson (Lesson 2) before any destructive operations
 - Every single file operation example MUST show safety pattern in full
@@ -289,6 +292,7 @@
 **Likelihood**: Medium | **Impact**: High
 
 **Mitigation**:
+
 - Strictly enforce 5-concept maximum per lesson section
 - Break complex workflows into multiple lessons (navigation → safety → operations → configuration → orchestration)
 - Use consistent structure and patterns throughout chapter
@@ -300,13 +304,14 @@
 **Likelihood**: Low | **Impact**: Medium
 
 **Mitigation**:
+
 - Explicitly state in prerequisites: "macOS, Linux, or Windows with WSL required"
 - Note that PowerShell is different (out of scope) but AI can translate if needed
 - Use cross-platform commands where possible (`ls`, `cd`, `pwd`, `mkdir`)
 - Avoid macOS-specific or Linux-specific commands in core examples
 - Acknowledge Windows users may see slight differences and should ask AI for translation
 
-## Open Questions *(optional)*
+## Open Questions _(optional)_
 
 1. Should we include a "Bash for AI Agents" section explaining how AI tools internally use bash? (Helps students understand the tool's perspective)
 2. Should we demonstrate multiple AI tools side-by-side in same example to show variability? (Pro: realistic, Con: cognitive load)
@@ -319,10 +324,10 @@
 - **Constitution v3.0.0**: AI-native teaching principles, graduated complexity tiers, cognitive load management
 - **Chapter Index**: Chapter 7 is Part 2 (AI Tool Landscape), beginner tier content
 - **Lesson Template**: `.claude/output-styles/lesson.md` for consistent structure
-- **Existing Chapter 7**: `/book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/` (current implementation to be redesigned)
+- **Existing Chapter 7**: `/apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/` (current implementation to be redesigned)
 
 ## Revision History
 
-| Date | Version | Changes | Author |
-|------|---------|---------|--------|
-| 2025-11-07 | 1.0 | Initial specification created | Claude Code (Main Orchestrator) |
+| Date       | Version | Changes                       | Author                          |
+| ---------- | ------- | ----------------------------- | ------------------------------- |
+| 2025-11-07 | 1.0     | Initial specification created | Claude Code (Main Orchestrator) |

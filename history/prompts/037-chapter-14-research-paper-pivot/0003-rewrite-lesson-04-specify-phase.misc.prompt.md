@@ -11,7 +11,7 @@ labels: [lesson-implementation, spec-kit-plus, chapter-14]
 links:
   spec: "specs/037-chapter-14-research-paper-pivot/spec.md"
 files:
-  - path: "book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/04-specify-phase.md"
+  - path: "apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/04-specify-phase.md"
     status: "rewritten"
 ---
 
@@ -24,12 +24,14 @@ files:
 **Learning Objective**: Use `/sp.specify` to write clear specifications with success criteria.
 
 **Concepts to Teach** (max 4):
+
 1. What is a specification (WHAT not HOW)
 2. `/sp.specify` command syntax and usage
 3. Required sections: Intent, Constraints, Success Evals, Non-Goals
 4. SMART criteria for success evals
 
 **Remove ALL**:
+
 - Video specification examples
 - Gemini prompts
 - MCP references
@@ -40,6 +42,7 @@ files:
 **END WITH**: "Try With AI" section running `/sp.specify` command
 
 **Frontmatter**:
+
 - title: "Specify Phase"
 - chapter: 14, lesson: 4
 - duration_minutes: 45

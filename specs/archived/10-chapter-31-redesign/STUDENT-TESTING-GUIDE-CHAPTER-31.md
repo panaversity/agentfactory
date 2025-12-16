@@ -9,6 +9,7 @@
 ## Overview
 
 This guide helps you run a pilot test of Chapter 31 with real students to validate:
+
 - Instructions clarity
 - Time estimates accuracy
 - Exercise difficulty appropriateness
@@ -22,6 +23,7 @@ This guide helps you run a pilot test of Chapter 31 with real students to valida
 ### **Student Profile** (Ideal Test Participants)
 
 **Prerequisites They Should Have**:
+
 - ✅ Completed Chapter 30 (Spec-Driven Development Fundamentals)
 - ✅ Python 3.13+ installed
 - ✅ Basic terminal/command-line familiarity
@@ -29,6 +31,7 @@ This guide helps you run a pilot test of Chapter 31 with real students to valida
 - ✅ 13-15 hours available over 2-3 weeks
 
 **Experience Level**: Intermediate (B1 proficiency)
+
 - Can write Python code independently
 - Understands basic programming concepts (functions, variables, data types)
 - Has worked with AI tools before (ChatGPT, GitHub Copilot, Claude, etc.)
@@ -40,6 +43,7 @@ This guide helps you run a pilot test of Chapter 31 with real students to valida
 ### **Phase 1: Pre-Test Briefing** (30 minutes)
 
 **Explain to Student**:
+
 1. **Purpose**: "You're helping us validate a new chapter on specification-driven development with AI tools"
 2. **Your Role**: "Complete the chapter as a normal student would. Take notes on anything confusing, unclear, or incorrect"
 3. **Feedback Method**: "Use the feedback form after each lesson (provided below)"
@@ -47,7 +51,8 @@ This guide helps you run a pilot test of Chapter 31 with real students to valida
 5. **Think-Aloud**: "If possible, narrate your thoughts as you work through exercises"
 
 **Provide to Student**:
-- Link to Chapter 31: `book-source/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/`
+
+- Link to Chapter 31: `apps/learn-app/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/`
 - Feedback form (see template below)
 - Your contact info for questions
 
@@ -57,18 +62,19 @@ This guide helps you run a pilot test of Chapter 31 with real students to valida
 
 **Student completes lessons in sequence**:
 
-| Lesson | Estimated Time | Actual Time | Feedback Due |
-|--------|----------------|-------------|--------------|
-| 1: Installation & Setup | 1.5 hrs | _____ hrs | After completion |
-| 2: Constitution Phase | 1.5 hrs | _____ hrs | After completion |
-| 3: Specify Phase (Evals) | 2 hrs | _____ hrs | After completion |
-| 4: Clarify Phase | 1.5 hrs | _____ hrs | After completion |
-| 5: Plan Phase + ADRs | 2 hrs | _____ hrs | After completion |
-| 6: Tasks Phase | 1.5 hrs | _____ hrs | After completion |
-| 7: Implement + Validate | 2.5 hrs | _____ hrs | After completion |
-| 8: Capstone Integration | 3-4 hrs | _____ hrs | After completion |
+| Lesson                   | Estimated Time | Actual Time | Feedback Due     |
+| ------------------------ | -------------- | ----------- | ---------------- |
+| 1: Installation & Setup  | 1.5 hrs        | **\_** hrs  | After completion |
+| 2: Constitution Phase    | 1.5 hrs        | **\_** hrs  | After completion |
+| 3: Specify Phase (Evals) | 2 hrs          | **\_** hrs  | After completion |
+| 4: Clarify Phase         | 1.5 hrs        | **\_** hrs  | After completion |
+| 5: Plan Phase + ADRs     | 2 hrs          | **\_** hrs  | After completion |
+| 6: Tasks Phase           | 1.5 hrs        | **\_** hrs  | After completion |
+| 7: Implement + Validate  | 2.5 hrs        | **\_** hrs  | After completion |
+| 8: Capstone Integration  | 3-4 hrs        | **\_** hrs  | After completion |
 
 **Observer Notes** (if doing live observation):
+
 - Where does student pause or re-read?
 - Which commands cause confusion?
 - Where does student need to look up external resources?
@@ -81,26 +87,31 @@ This guide helps you run a pilot test of Chapter 31 with real students to valida
 **Questions to Ask Student**:
 
 1. **Overall Experience**:
+
    - On a scale of 1-10, how would you rate this chapter?
    - What was the most valuable thing you learned?
    - What was the most frustrating part?
 
 2. **Clarity**:
+
    - Which instructions were unclear or ambiguous?
    - Which concepts were confusing?
    - Where did you need to re-read multiple times?
 
 3. **Pacing**:
+
    - Which lessons felt too fast? Too slow? Just right?
    - Did the difficulty progression feel natural?
    - Were time estimates accurate?
 
 4. **Exercises**:
+
    - Which "Try With AI" activities were most helpful?
    - Which exercises felt too easy? Too hard?
    - Did you complete all exercises or skip any?
 
 5. **Technical Accuracy**:
+
    - Did all commands work as described?
    - Did you encounter any errors not mentioned in the chapter?
    - Were any examples outdated or incorrect?
@@ -116,49 +127,60 @@ This guide helps you run a pilot test of Chapter 31 with real students to valida
 
 ### **Student Feedback Form: Chapter 31, Lesson [X]**
 
-**Your Name**: ___________________________
-**Date**: ___________________________
-**Lesson**: ___________________________ (e.g., "Lesson 3: Specify Phase")
+**Your Name**: ************\_\_\_************
+**Date**: ************\_\_\_************
+**Lesson**: ************\_\_\_************ (e.g., "Lesson 3: Specify Phase")
 
 #### **1. Time & Pacing**
-- Estimated time: _____ hours
-- Actual time: _____ hours
-- Pacing felt: ☐ Too fast  ☐ Just right  ☐ Too slow
+
+- Estimated time: **\_** hours
+- Actual time: **\_** hours
+- Pacing felt: ☐ Too fast ☐ Just right ☐ Too slow
 
 #### **2. Clarity (Rate 1-5, 5=very clear)**
+
 - Instructions: ☐ 1 ☐ 2 ☐ 3 ☐ 4 ☐ 5
 - Concepts: ☐ 1 ☐ 2 ☐ 3 ☐ 4 ☐ 5
 - Examples: ☐ 1 ☐ 2 ☐ 3 ☐ 4 ☐ 5
 - Exercises: ☐ 1 ☐ 2 ☐ 3 ☐ 4 ☐ 5
 
 #### **3. Difficulty (Rate 1-5, 5=very difficult)**
+
 - Overall difficulty: ☐ 1 ☐ 2 ☐ 3 ☐ 4 ☐ 5
 - Appropriate for stated proficiency level? ☐ Yes ☐ No
 
 #### **4. Technical Issues**
+
 Did you encounter any errors or problems?
+
 - ☐ No issues
-- ☐ Yes (describe): _________________________________________________
+- ☐ Yes (describe): ************************\_************************
 
 Commands that didn't work:
-_________________________________________________________________
+
+---
 
 #### **5. Content Quality**
-- Most helpful part: _________________________________________________
-- Most confusing part: _________________________________________________
-- Suggestions for improvement: _________________________________________________
+
+- Most helpful part: ************************\_************************
+- Most confusing part: ************************\_************************
+- Suggestions for improvement: ************************\_************************
 
 #### **6. Engagement**
+
 - Did you complete the "Try With AI" activity? ☐ Yes ☐ No ☐ Partially
 - Was it helpful? ☐ Very ☐ Somewhat ☐ Not really
 - Would you continue to next lesson? ☐ Yes ☐ Maybe ☐ No
 
 #### **7. Open Comments**
+
 Any other feedback, suggestions, or observations:
 
-_________________________________________________________________
-_________________________________________________________________
-_________________________________________________________________
+---
+
+---
+
+---
 
 ---
 
@@ -185,6 +207,7 @@ _________________________________________________________________
 ## Common Issues to Watch For
 
 ### **Installation Problems** (Lesson 1):
+
 - API key configuration errors
 - Python version mismatches
 - Directory permission issues
@@ -193,6 +216,7 @@ _________________________________________________________________
 **Mitigation**: Have troubleshooting section ready with common fixes
 
 ### **Conceptual Confusion** (Lessons 2-4):
+
 - "What's the difference between Constitution and Spec?"
 - "When do I use /sp.clarify vs just editing the spec?"
 - "What are evals exactly?"
@@ -200,6 +224,7 @@ _________________________________________________________________
 **Mitigation**: Ensure definitions are clear and examples concrete
 
 ### **Command Errors** (Lessons 5-7):
+
 - Commands not recognized by AI tool
 - Unexpected command outputs
 - PHRs not auto-created as described
@@ -207,6 +232,7 @@ _________________________________________________________________
 **Mitigation**: Verify all commands against actual Spec-Kit Plus implementation
 
 ### **Time Pressure** (Lesson 8):
+
 - Capstone takes longer than 3-4 hours
 - Student feels overwhelmed by independent work
 - Student skips optional complexity
@@ -218,6 +244,7 @@ _________________________________________________________________
 ## Data Collection Checklist
 
 **For Each Test Session, Collect**:
+
 - ☐ Completed feedback forms (8 total, one per lesson)
 - ☐ Actual time tracking data
 - ☐ Screenshots of any errors encountered
@@ -232,21 +259,25 @@ _________________________________________________________________
 **After Testing, Review**:
 
 1. **Aggregate Time Data**:
+
    - Calculate average actual time per lesson
    - Identify lessons that consistently run over
    - Update time estimates if >30% variance
 
 2. **Identify Clarity Issues**:
+
    - List all sections rated <4.0 for clarity
    - Prioritize fixes for critical path content
    - Rewrite ambiguous instructions
 
 3. **Fix Technical Errors**:
+
    - Document any command failures
    - Verify against Spec-Kit Plus source
    - Update lesson content or command references
 
 4. **Assess Difficulty Progression**:
+
    - Check if A2→B1→B2 progression feels natural
    - Verify cognitive load (5/7/10 concepts) is appropriate
    - Adjust complexity if students struggle or get bored
@@ -262,37 +293,41 @@ _________________________________________________________________
 
 ### **Chapter 31 Student Test Report**
 
-**Test Date**: ___________________________
-**Student ID**: ___________________________ (use pseudonym)
-**Observer**: ___________________________
+**Test Date**: ************\_\_\_************
+**Student ID**: ************\_\_\_************ (use pseudonym)
+**Observer**: ************\_\_\_************
 
 #### **Summary Statistics**
 
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| Completion rate | 100% (8/8 lessons) | ___ / 8 | ☐ Pass ☐ Fail |
-| Average clarity rating | ≥4.0/5.0 | _____ | ☐ Pass ☐ Fail |
-| Time estimate accuracy | Within ±30% | _____ % variance | ☐ Pass ☐ Fail |
-| Technical errors | 0 critical | _____ critical | ☐ Pass ☐ Fail |
-| Would recommend | Yes | ☐ Yes ☐ No | ☐ Pass ☐ Fail |
+| Metric                 | Target             | Actual            | Status        |
+| ---------------------- | ------------------ | ----------------- | ------------- |
+| Completion rate        | 100% (8/8 lessons) | \_\_\_ / 8        | ☐ Pass ☐ Fail |
+| Average clarity rating | ≥4.0/5.0           | **\_**            | ☐ Pass ☐ Fail |
+| Time estimate accuracy | Within ±30%        | **\_** % variance | ☐ Pass ☐ Fail |
+| Technical errors       | 0 critical         | **\_** critical   | ☐ Pass ☐ Fail |
+| Would recommend        | Yes                | ☐ Yes ☐ No        | ☐ Pass ☐ Fail |
 
 #### **Key Findings**
 
 **What Worked Well**:
-1. _________________________________________________________________
-2. _________________________________________________________________
-3. _________________________________________________________________
+
+1. ***
+2. ***
+3. ***
 
 **What Needs Improvement**:
-1. _________________________________________________________________
-2. _________________________________________________________________
-3. _________________________________________________________________
+
+1. ***
+2. ***
+3. ***
 
 **Critical Issues** (block publication):
-- _________________________________________________________________
+
+- ***
 
 **Minor Issues** (fix post-publication):
-- _________________________________________________________________
+
+- ***
 
 #### **Recommendations**
 
@@ -301,20 +336,23 @@ _________________________________________________________________
 ☐ **Needs Re-Test** (after fixes, test again)
 
 **Next Steps**:
-1. _________________________________________________________________
-2. _________________________________________________________________
-3. _________________________________________________________________
+
+1. ***
+2. ***
+3. ***
 
 ---
 
 ## Contact & Support
 
 **For Questions During Test**:
+
 - Instructor/Observer: [Your contact info]
 - Technical Issues: [Support channel]
 - Urgent Problems: [Emergency contact]
 
 **For Feedback Submission**:
+
 - Email: [Your email]
 - Form: [Google Form / Typeform link]
 - Slack: [Slack channel]

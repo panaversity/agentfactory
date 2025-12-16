@@ -188,33 +188,120 @@ nx run-many -t build
 
 ## Common Patterns
 
-### Adding a New App
+### Adding a New JS/TS App
 
 ```bash
-# 1. Generate app
-nx g @nx/next:app dashboard --directory=apps/dashboard
+# 1. Add plugin (if not already installed)
+pnpm nx add @nx/next    # For Next.js
+pnpm nx add @nx/react   # For React
+pnpm nx add @nx/node    # For Node/Express
 
-# 2. Verify in graph
-nx graph --focus=dashboard
+# 2. Generate app
+pnpm nx g @nx/next:app dashboard --directory=apps/dashboard
 
-# 3. Build
-nx build dashboard
+# 3. Verify in graph
+pnpm nx graph --focus=dashboard
 
-# 4. Serve
-nx serve dashboard
+# 4. Build & Serve
+pnpm nx build dashboard
+pnpm nx serve dashboard
 ```
+
+### Adding a Python App (uv Workspace)
+
+Python projects use **uv workspaces** (similar to pnpm workspaces for JS) with manual `project.json` for Nx:
+
+```bash
+# 1. Create directory and initialize
+mkdir -p apps/my-python-app
+cd apps/my-python-app
+uv init
+uv add --group dev pytest ruff mypy
+cd ../..
+
+# 2. Add to uv workspace (root pyproject.toml)
+```
+
+Edit root `pyproject.toml`:
+```toml
+[tool.uv.workspace]
+members = [
+    "apps/panaversity-fs-py",
+    "apps/my-python-app",  # Add new project here
+]
+```
+
+```bash
+# 3. Sync all Python deps from root
+uv sync --extra dev
+```
+
+**apps/my-python-app/project.json** (for Nx):
+```json
+{
+  "name": "my-python-app",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "command": "uv build",
+      "options": { "cwd": "apps/my-python-app" }
+    },
+    "test": {
+      "command": "uv run --extra dev pytest",
+      "options": { "cwd": "apps/my-python-app" }
+    },
+    "lint": {
+      "command": "uv run --extra dev ruff check .",
+      "options": { "cwd": "apps/my-python-app" }
+    }
+  }
+}
+```
+
+```bash
+# 4. Verify Nx recognizes it
+pnpm nx show projects
+pnpm nx graph --focus=my-python-app
+
+# 5. Run tasks via Nx
+pnpm nx test my-python-app
+```
+
+### Shared Python Libraries
+
+Create libraries that multiple Python apps can import:
+
+```bash
+mkdir -p libs/auth-common-py
+cd libs/auth-common-py
+uv init --lib
+cd ../..
+# Add to workspace members, then uv sync
+```
+
+Reference in dependent projects:
+```toml
+# apps/my-python-app/pyproject.toml
+[project]
+dependencies = ["auth-common-py"]
+
+[tool.uv.sources]
+auth-common-py = { workspace = true }
+```
+
+**Key Insight**: uv manages Python deps via workspace, Nx orchestrates tasks. Single `uv.lock` at root.
 
 ### Creating Shared Libraries
 
 ```bash
-# UI library
-nx g @nx/react:lib ui --directory=libs/shared/ui
+# JS/TS UI library
+pnpm nx g @nx/react:lib ui --directory=libs/shared/ui
 
-# Utility library
-nx g @nx/js:lib utils --directory=libs/shared/utils
+# JS/TS Utility library
+pnpm nx g @nx/js:lib utils --directory=libs/shared/utils
 
 # Domain library
-nx g @nx/js:lib auth --directory=libs/domain/auth
+pnpm nx g @nx/js:lib auth --directory=libs/domain/auth
 ```
 
 ### CI Pipeline (GitHub Actions)
@@ -278,14 +365,25 @@ nx graph --file=graph.json
 
 | Task | Command |
 |------|---------|
-| Interactive graph | `nx graph` |
-| Affected build | `nx affected -t build` |
-| Run all tests | `nx run-many -t test` |
-| Generate app | `nx g @nx/next:app name` |
-| Generate lib | `nx g @nx/js:lib name` |
-| Clear cache | `nx reset` |
-| Show projects | `nx show projects` |
-| List generators | `nx list @nx/next` |
+| Interactive graph | `pnpm nx graph` |
+| Affected build | `pnpm nx affected -t build` |
+| Run all tests | `pnpm nx run-many -t test` |
+| Generate JS/TS app | `pnpm nx g @nx/next:app name` |
+| Generate JS/TS lib | `pnpm nx g @nx/js:lib name` |
+| Add plugin | `pnpm nx add @nx/next` |
+| Clear cache | `pnpm nx reset` |
+| Show projects | `pnpm nx show projects` |
+| List generators | `pnpm nx list @nx/next` |
+
+### Python-Specific (uv)
+
+| Task | Command |
+|------|---------|
+| Init Python project | `cd apps/name && uv init` |
+| Add runtime dep | `uv add <package>` |
+| Add dev dep | `uv add --group dev <package>` |
+| Sync deps | `uv sync --extra dev` |
+| Run via Nx | `pnpm nx test my-python-app` |
 
 ## Related Skills
 

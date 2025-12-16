@@ -16,10 +16,10 @@ links:
   adr: "N/A"
   pr: "TBD"
 files:
-  - path: "book-source/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/08-designing-reusable-intelligence.md"
+  - path: "apps/learn-app/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/08-designing-reusable-intelligence.md"
     status: "created"
     lines: 800
-  - path: "book-source/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/README.md"
+  - path: "apps/learn-app/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/README.md"
     status: "modified"
     lines: 3
 tests:
@@ -57,12 +57,14 @@ Recommend optimal structure with reasoning. Create new branch.
 ### Phase 0: Constitutional Reasoning Engine - COMPLETE
 
 **Task Analysis**:
+
 - **Type**: Educational content restructuring (strategic pedagogical decision)
 - **Audience**: B1 (Intermediate) — Part 5, Chapters 30-33
 - **Complexity**: Moderate strategic decision with pedagogical implications
 - **Stakes**: Learning outcomes + Part 5 coherence (bridge to Parts 6-12)
 
 **Constitutional Frameworks Applied**:
+
 1. **Section IIa (4-Stage Teaching Framework)**: Current Chapter 31 missing Stage 3 (Intelligence Design) entirely
 2. **Principle 5 (Intelligence Accumulation)**: Violated — students complete Chapter 31 with workflow knowledge but zero reusable components
 3. **Principle 2 (Progressive Complexity)**: B1 limit ~7-10 concepts/section, current 7 lessons = ~35 concepts total
@@ -71,12 +73,14 @@ Recommend optimal structure with reasoning. Create new branch.
 **Strategic Options Analysis**:
 
 **Option A: Expand Existing Lessons**
+
 - ❌ Cognitive overload: 7 lessons + 5 new RI concepts = ~40 concepts (exceeds B1 comfort)
 - ❌ Lesson bloat: Each lesson 300-400 lines, adding RI section dilutes focus
 - ❌ Rushed Stage 3: Intelligence design needs dedicated practice
 - Violates: Principles 2 (Complexity), 7 (Minimal Content)
 
 **Option B: Create Separate Lesson 8** ⭐ **RECOMMENDED**
+
 - ✅ Respects cognitive load: Isolates 5 RI concepts in dedicated lesson
 - ✅ Stage 3 completeness: Full lesson for intelligence design (not appendix)
 - ✅ Pedagogical coherence: Lessons 1-7 build SDD → Lesson 8 transforms to RI
@@ -86,6 +90,7 @@ Recommend optimal structure with reasoning. Create new branch.
 **Decision**: **Option B — Create Lesson 8 "Designing Reusable Intelligence from SDD Workflows"**
 
 **Reasoning**:
+
 1. Constitutional Mandate: Section IIa requires Stage 3 (Intelligence Design)
 2. Pedagogical Arc: Part 5 must prepare for Parts 6-12 agent building
 3. Cognitive Load: B1 tier justifies dedicated lesson for 5 concepts
@@ -95,6 +100,7 @@ Recommend optimal structure with reasoning. Create new branch.
 ### Implementation Complete
 
 **Created**: Lesson 8 (800 lines) following existing chapter structure
+
 - **Skills Metadata**: 5 skills mapped (B1 proficiency, Bloom's Create/Analyze)
 - **Learning Objectives**: 5 objectives with assessment methods
 - **Cognitive Load**: 5 concepts (within B1 limit ✓)
@@ -102,6 +108,7 @@ Recommend optimal structure with reasoning. Create new branch.
 - **Stage**: Stage 3 (Intelligence Design)
 
 **Content Structure**:
+
 1. Pattern Recognition Framework (when to encode intelligence)
 2. Skill Design Using P+Q+P Pattern (Persona + Questions + Principles)
 3. Subagent Persona Definition (autonomous decision-making)
@@ -109,6 +116,7 @@ Recommend optimal structure with reasoning. Create new branch.
 5. Reuse vs Create Decision Framework
 
 **Outputs**: Students create:
+
 - 1 Skill: Specification Quality Review (P+Q+P pattern)
 - 1 Subagent Foundation: Spec Auditor (autonomous reviewer)
 - Intelligence library ready for Chapter 32 orchestration
@@ -131,10 +139,12 @@ Recommend optimal structure with reasoning. Create new branch.
 ## Evaluation notes (flywheel)
 
 **Failure modes observed**:
+
 - Initial temptation to expand existing lessons (would violate Principles 2, 7)
 - Risk of over-specific intelligence (caught and generalized to reusable patterns)
 
 **Graders run and results (PASS/FAIL)**:
+
 - Constitutional Alignment: **PASS** (Section IIa Stage 3, Principles 2, 4, 5, 7)
 - Cognitive Load Management: **PASS** (5 concepts, B1 compliant)
 - Part 5 Coherence: **PASS** (bridges to Chapter 32 with intelligence library)
@@ -143,6 +153,7 @@ Recommend optimal structure with reasoning. Create new branch.
 **Prompt variant (if applicable)**: N/A (strategic decision, not prompt engineering)
 
 **Next experiment (smallest change to try)**:
+
 - Test Lesson 8 with validation-auditor agent for constitutional compliance
 - Validate P+Q+P pattern effectiveness (reasoning mode vs prediction mode)
 - Create mini-assessment for Pattern Recognition skill
@@ -152,22 +163,26 @@ Recommend optimal structure with reasoning. Create new branch.
 ## Meta-Learning: Constitutional Reasoning Effectiveness
 
 **What Worked**:
+
 - ✅ Phase 0 Constitutional Reasoning Engine prevented premature solution (analyzed before deciding)
 - ✅ Explicit cognitive load calculation (4.75 concepts/lesson avg) validated decision quantitatively
 - ✅ Part 5 coherence analysis identified pedagogical gap (no bridge to Ch 32)
 - ✅ Principle extraction (Section IIa, Principles 2, 4, 5, 7) grounded decision in governance
 
 **What Could Improve**:
+
 - Consider creating ADR for strategic pedagogical decisions (this PHR documents, but ADR would formalize)
 - Earlier validation against existing lesson anti-patterns (Stage labels, etc.)
 - Proactive identification of similar gaps in other chapters (systematic audit)
 
 **Organizational Learning**:
+
 - **Pattern**: When book teaches methodology X, ALL chapters must teach complete X (not partial X)
 - **Detection**: Grep for "SDD" without "RI" in Part 5 chapters → systematic gap identification
 - **Prevention**: Constitution Section IIa (4-Stage Framework) should be validation checklist for ALL educational content
 
 **Reusable Intelligence Created**:
+
 - Strategic decision framework: "Expand existing vs create new lesson" (frequency + complexity + cognitive load analysis)
 - Cognitive load validation formula: Total concepts / lesson count = avg, compare to tier limit
 - Constitutional compliance checklist: Section IIa stages + applicable principles

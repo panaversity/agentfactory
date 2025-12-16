@@ -4,7 +4,7 @@
 # Only uploads files that have changed since last sync.
 #
 # Workflow:
-# 1. Author/Agent pushes content to book-source/docs/
+# 1. Author/Agent pushes content to apps/learn-app/docs/
 # 2. This workflow detects changed files via git diff
 # 3. ingest-book.py uploads ONLY changed files to PanaversityFS
 # 4. deploy.yml is triggered to rebuild site
@@ -16,7 +16,7 @@ on:
     branches:
       - main
     paths:
-      - "book-source/docs/**"
+      - "apps/learn-app/docs/**"
   workflow_dispatch:
     inputs:
       full_sync:
@@ -48,7 +48,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        working-directory: panaversity-fs
+        working-directory: apps/panaversity-fs-py
         run: |
           pip install click httpx pydantic python-dotenv
 
@@ -57,7 +57,7 @@ jobs:
         if: ${{ github.event.inputs.full_sync != 'true' }}
         run: |
           # Get list of changed markdown files
-          CHANGED=$(git diff --name-only HEAD~1 HEAD -- 'book-source/docs/**/*.md' 'book-source/docs/**/*.png' 'book-source/docs/**/*.jpg' 'book-source/docs/**/*.svg' | tr '\n' ' ')
+          CHANGED=$(git diff --name-only HEAD~1 HEAD -- 'apps/learn-app/docs/**/*.md' 'apps/learn-app/docs/**/*.png' 'apps/learn-app/docs/**/*.jpg' 'apps/learn-app/docs/**/*.svg' | tr '\n' ' ')
           echo "files=$CHANGED" >> $GITHUB_OUTPUT
           echo "Changed files: $CHANGED"
 
@@ -70,10 +70,10 @@ jobs:
           PANAVERSITY_MCP_URL: ${{ secrets.PANAVERSITY_SERVER_URL }}
           PANAVERSITY_API_KEY: ${{ secrets.PANAVERSITY_API_KEY }}
         run: |
-          cd panaversity-fs
+          cd apps/panaversity-fs-py
 
           BOOK_ID="ai-native-dev"
-          SOURCE_DIR="../book-source/docs"
+          SOURCE_DIR="../../apps/learn-app/docs"
 
           if [ "${{ github.event.inputs.full_sync }}" = "true" ]; then
             echo "=== Full sync requested ==="

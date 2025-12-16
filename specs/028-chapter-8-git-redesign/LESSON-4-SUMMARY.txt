@@ -2,7 +2,7 @@
 LESSON 4: Cloud Backup & Portfolio — Implementation Complete
 ================================================================================
 
-File: book-source/docs/02-AI-Tool-Landscape/08-git-and-github/04-cloud-backup-portfolio.md
+File: apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/04-cloud-backup-portfolio.md
 
 ================================================================================
 EXECUTIVE SUMMARY
@@ -254,7 +254,7 @@ FILE LOCATION & STATUS
 ================================================================================
 
 File: /Users/mjs/Documents/code/panaversity-official/tutorsgpt/reason-fm/
-      book-source/docs/02-AI-Tool-Landscape/08-git-and-github/
+      apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/
       04-cloud-backup-portfolio.md
 
 Status: CREATED AND VERIFIED ✓

@@ -11,6 +11,7 @@
 Successfully completed full autonomous visual assets workflow for Part 3 (Chapters 9-11) of the AI-native software development book. From 22 lessons audited, **8 high-value visuals were approved, generated, validated, integrated, and documented** following rigorous pedagogical and quality standards.
 
 **Key Metrics**:
+
 - **Total Lessons Audited**: 22 (Chapters 9, 10, 11)
 - **Visuals Approved**: 8 (0 from Ch. 9, 5 from Ch. 10, 3 from Ch. 11)
 - **Visual Density**: 0.36 visuals/lesson (within healthy guidelines)
@@ -29,12 +30,14 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 **Approach**: Applied visual-asset-workflow skill to systematically audit all 22 lessons in Part 3 for visual asset opportunities.
 
 **Assessment Framework**:
+
 - PASS/CONDITIONAL/REJECT pedagogical value framework
 - Redundancy detection across lessons
 - Constitutional alignment (Principle 13, Philosophy #2, Philosophy #5)
 - Learnings from Chapters 1-2 applied (3-bar max, hyphenated compounds, minimal labels)
 
 **Results**:
+
 - **Chapter 9 (Markdown Fundamentals)**: 0 visuals approved - Code blocks ARE the teaching tool; graphics would increase cognitive load without pedagogical value
 - **Chapter 10 (Prompt Engineering)**: 5 visuals approved (all HIGH pedagogical value)
 - **Chapter 11 (Context Engineering)**: 3 visuals approved (2 HIGH, 1 MEDIUM pedagogical value)
@@ -50,6 +53,7 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 **Approach**: Generated 8 detailed, spec-compliant prompts with comprehensive design system specifications.
 
 **Prompt Quality Standards Applied**:
+
 - **Letter-by-letter spelling safeguards**: "IMPORTANT: Spell 'X' correctly: L-E-T-T-E-R-S" format for 3+ syllable words
 - **Negative instructions**: Explicit "DO NOT" statements to prevent unwanted elements
 - **Prompt minimalism**: <300 words per prompt (focused, actionable)
@@ -61,6 +65,7 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 - **Subtle shadows**: 0px 2px 8px rgba(0,0,0,0.08) specification
 
 **Spelling Safeguards Implemented** (14 total):
+
 1. C-O-N-V-E-R-S-A-T-I-O-N (Visual 1)
 2. H-I-S-T-O-R-Y (Visual 1)
 3. V-A-L-I-D-A-T-E-S (Visual 2)
@@ -79,6 +84,7 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 **Embedding Method**: HTML comments embedded directly in lesson markdown files at pedagogically optimal locations (invisible in rendered content).
 
 **Deliverables**:
+
 - 8 lesson markdown files updated with embedded prompts
 - `history/visual-assets/part-3-prompts-summary.md` (quick reference)
 
@@ -89,6 +95,7 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 **Approach**: Parallel generation using 8 simultaneous Gemini.google.com browser tabs.
 
 **Parallel Processing Strategy**:
+
 - Opened 8 tabs simultaneously in single browser session
 - Pasted all 8 prompts concurrently to maximize efficiency
 - Monitored all tabs in parallel for completion
@@ -96,16 +103,16 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 
 **Generation Results**:
 
-| Visual | Status | Attempts | Issue (if any) |
-|--------|--------|----------|----------------|
-| Visual 1: Context Window Mental Model | ✅ | 1 | None - First attempt success |
-| Visual 2: Command Structure Formula | ✅ | 1 | None - First attempt success |
-| Visual 3: 4-Layer Context Stack | ✅ | 1 | None - First attempt success |
-| Visual 4: Requirements vs Logic Split-Screen | ✅ | 2 | **v1 FAILED**: Spelling safeguards misinterpreted - showed "R-EGISTRATION" and "V-ALIDATE" with hyphens in words. **v2 PASS**: Used Redo button, correct spelling |
-| Visual 5: 5-Step Validation Checklist | ✅ | 2 | **v1 FAILED**: Missing Step 3 entirely (only 4 boxes shown instead of 5). **v2 PASS**: Used Redo button, all 5 steps present |
-| Visual 6: Context vs Prompt Engineering | ✅ | 1 | None - First attempt success |
-| Visual 7: Context Window Fill States | ✅ | 1 | None - First attempt success |
-| Visual 8: Six Components Grid | ✅ | 1 | None - First attempt success (most complex visual) |
+| Visual                                       | Status | Attempts | Issue (if any)                                                                                                                                                    |
+| -------------------------------------------- | ------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Visual 1: Context Window Mental Model        | ✅     | 1        | None - First attempt success                                                                                                                                      |
+| Visual 2: Command Structure Formula          | ✅     | 1        | None - First attempt success                                                                                                                                      |
+| Visual 3: 4-Layer Context Stack              | ✅     | 1        | None - First attempt success                                                                                                                                      |
+| Visual 4: Requirements vs Logic Split-Screen | ✅     | 2        | **v1 FAILED**: Spelling safeguards misinterpreted - showed "R-EGISTRATION" and "V-ALIDATE" with hyphens in words. **v2 PASS**: Used Redo button, correct spelling |
+| Visual 5: 5-Step Validation Checklist        | ✅     | 2        | **v1 FAILED**: Missing Step 3 entirely (only 4 boxes shown instead of 5). **v2 PASS**: Used Redo button, all 5 steps present                                      |
+| Visual 6: Context vs Prompt Engineering      | ✅     | 1        | None - First attempt success                                                                                                                                      |
+| Visual 7: Context Window Fill States         | ✅     | 1        | None - First attempt success                                                                                                                                      |
+| Visual 8: Six Components Grid                | ✅     | 1        | None - First attempt success (most complex visual)                                                                                                                |
 
 **First-Attempt Success Rate**: 6/8 (75%)
 **Regeneration Strategy**: Redo button (same prompt, fresh generation) - faster than full regeneration
@@ -117,27 +124,32 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 **Validation Checklist** (99% quality threshold):
 
 **Spelling Verification**:
+
 - ✅ All 14 spelling-safeguarded words rendered correctly (after v2 fixes)
 - ✅ No hyphenation issues in final approved versions
 - ✅ No typos or misspellings detected
 
 **Layout Conformance**:
+
 - ✅ All visuals: 16:9 aspect ratio (1792x1024px)
 - ✅ Specified dimensions and spacing adhered to
 - ✅ Element alignment consistent with prompts
 - ✅ No missing elements (after v2 fix for Visual 5)
 
 **Color Accuracy**:
+
 - ✅ Polar Night Theme colors used consistently
 - ✅ Hex codes match specifications: Deep Navy #001f3f, Medium Gray #aaaaaa, Dark Charcoal #111111
 - ✅ Color contrast ratios appropriate for accessibility
 
 **Typography Verification**:
+
 - ✅ Roboto font family used throughout
 - ✅ Weight variations (Bold, Medium, Regular) correctly applied
 - ✅ Point sizes match specifications
 
 **Design Quality**:
+
 - ✅ Clean, minimalist aesthetic maintained
 - ✅ No unwanted decorative elements
 - ✅ Arrows text-free as specified
@@ -152,19 +164,21 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 **Modification Type**: Replaced HTML comment prompts with standard markdown image syntax
 
 **Image Syntax Format**:
+
 ```markdown
 ![Alt text describing visual](/img/part-3/chapter-N/filename.png)
 ```
 
 **Modified Lesson Files**:
-1. `book-source/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/01-understanding-ai-agents.md` (line ~144)
-2. `book-source/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/02-writing-clear-commands.md` (line ~250)
-3. `book-source/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/03-providing-context.md` (line ~127)
-4. `book-source/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/04-specifying-logic.md` (line ~65)
-5. `book-source/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/05-validating-code.md` (line ~69)
-6. `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/01-what-is-context-engineering.md` (line ~214)
-7. `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/02-understanding-context-windows.md` (line ~187)
-8. `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/03-six-components-aidd-context.md` (line ~70)
+
+1. `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/01-understanding-ai-agents.md` (line ~144)
+2. `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/02-writing-clear-commands.md` (line ~250)
+3. `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/03-providing-context.md` (line ~127)
+4. `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/04-specifying-logic.md` (line ~65)
+5. `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/05-validating-code.md` (line ~69)
+6. `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/01-what-is-context-engineering.md` (line ~214)
+7. `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/02-understanding-context-windows.md` (line ~187)
+8. `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/03-six-components-aidd-context.md` (line ~70)
 
 **Integration Verification**: All 8 images successfully referenced in lesson markdown with correct paths and complete alt text.
 
@@ -175,6 +189,7 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 **Sidecar Files Created**: 8 `.prompt.md` files for regeneration purposes
 
 **Sidecar File Contents**:
+
 - Complete original generation prompt
 - Image metadata (filename, date, generator, attempt count)
 - Quality status and validation notes
@@ -183,6 +198,7 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 - Success factors analysis
 
 **Sidecar File Locations**:
+
 - `book-source/static/img/part-3/chapter-10/*.prompt.md` (5 files)
 - `book-source/static/img/part-3/chapter-11/*.prompt.md` (3 files)
 
@@ -195,6 +211,7 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 ### Images (8 files, 5.8 MB total)
 
 **Chapter 10** (5 images, 3.4 MB):
+
 - `context-window-mental-model.png` (682K)
 - `command-structure-formula.png` (628K)
 - `four-layer-context-stack.png` (851K)
@@ -202,6 +219,7 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 - `five-step-validation-checklist.png` (609K)
 
 **Chapter 11** (3 images, 2.3 MB):
+
 - `context-vs-prompt-engineering.png` (745K)
 - `context-window-fill-states.png` (781K)
 - `six-components-aidd-context.png` (823K)
@@ -209,6 +227,7 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 ### Sidecar Files (8 files)
 
 **Chapter 10**:
+
 - `context-window-mental-model.prompt.md`
 - `command-structure-formula.prompt.md`
 - `four-layer-context-stack.prompt.md`
@@ -216,6 +235,7 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 - `five-step-validation-checklist.prompt.md`
 
 **Chapter 11**:
+
 - `context-vs-prompt-engineering.prompt.md`
 - `context-window-fill-states.prompt.md`
 - `six-components-aidd-context.prompt.md`
@@ -223,6 +243,7 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 ### Documentation Files (3 files)
 
 **Process Documentation**:
+
 - `history/visual-assets/part-3-complete-audit-report.md` (audit phase)
 - `history/visual-assets/part-3-prompts-summary.md` (prompt generation phase)
 - `history/visual-assets/part-3-generation-handoff.md` (handoff document for session continuation)
@@ -249,12 +270,14 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 ### Issues Encountered and Resolutions
 
 **Issue 1: Visual 4 - Hyphenated Spelling in Words**
+
 - **Problem**: "R-EGISTRATION" and "V-ALIDATE" rendered with actual hyphens in the words
 - **Root Cause**: Spelling safeguards (R-E-G-I-S-T-R-A-T-I-O-N format) misinterpreted by image generator
 - **Resolution**: Clicked Redo button; v2 rendered correctly
 - **Takeaway**: Spelling safeguards are effective but not foolproof; monitor first few words in generated image
 
 **Issue 2: Visual 5 - Missing Step in 5-Step Process**
+
 - **Problem**: Only 4 boxes shown instead of 5 (Step 3 "Check Issues" completely missing)
 - **Root Cause**: Image generator omitted Step 3 from horizontal flow
 - **Resolution**: Clicked Redo button; v2 included all 5 steps correctly
@@ -275,6 +298,7 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 ## Quality Assurance Checklist
 
 **Image Files**:
+
 - ✅ All 8 images exist in correct directories
 - ✅ All filenames follow kebab-case convention
 - ✅ All images meet 99% quality threshold
@@ -284,12 +308,14 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 - ✅ All images have descriptive, accessible alt text
 
 **Lesson Integration**:
+
 - ✅ All 8 lessons updated with image markdown syntax
 - ✅ All image paths correct and relative (`/img/part-3/chapter-N/...`)
 - ✅ All alt text complete and descriptive
 - ✅ HTML comment prompts replaced with image syntax
 
 **Documentation**:
+
 - ✅ All 8 sidecar files created with complete prompts
 - ✅ All sidecar files document regeneration instructions
 - ✅ All issues documented with resolution steps
@@ -298,6 +324,7 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 - ✅ Completion report created (this document)
 
 **Constitutional Alignment**:
+
 - ✅ Principle 13 (Graduated Teaching Pattern) - Visuals teach foundational concepts, not just show data
 - ✅ Philosophy #2 (Co-Learning) - Visuals support bidirectional learning pattern
 - ✅ Philosophy #5 (Validation-First) - 99% quality threshold enforced before approval
@@ -309,37 +336,47 @@ Successfully completed full autonomous visual assets workflow for Part 3 (Chapte
 Before git push, user should:
 
 1. **Local Docusaurus Preview**:
+
    ```bash
    cd book-source
    npm start
    # OR
    yarn start
    ```
+
    Navigate to Part 3 chapters and verify:
+
    - All 8 images render correctly in browser
    - No broken image links
    - Alt text displays properly on hover
    - Images are pedagogically positioned (not disruptive to reading flow)
 
 2. **Git Status Check**:
+
    ```bash
    git status
    ```
+
    Verify 24 files modified/created:
+
    - 8 images (`.png`)
    - 8 sidecar files (`.prompt.md`)
    - 8 lesson files (`.md`)
 
 3. **Git Diff Review** (spot-check 2-3 lessons):
+
    ```bash
-   git diff book-source/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/01-understanding-ai-agents.md
+   git diff apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/01-understanding-ai-agents.md
    ```
+
    Confirm HTML comment replaced with image markdown syntax.
 
 4. **File Size Check**:
+
    ```bash
    du -sh book-source/static/img/part-3/
    ```
+
    Should show ~5.8 MB total (reasonable for 8 high-quality images).
 
 5. **Accessibility Audit** (optional but recommended):
@@ -352,12 +389,14 @@ Before git push, user should:
 ## Next Steps
 
 **Ready for Git Commit**:
+
 - All 8 visuals approved, integrated, and documented
 - All quality checks passed
 - All files in correct locations
 - All documentation complete
 
 **Suggested Commit Message**:
+
 ```
 feat(part-3): Add 8 visual assets for Chapters 10-11
 
@@ -385,6 +424,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
 **Future Workflow Improvements**:
+
 1. Apply learnings from this workflow to Part 1 and Part 2 visual assets
 2. Consider creating reusable prompt templates for common visual types (stacks, grids, split-screens, progressions)
 3. Document spelling safeguard best practices to prevent hyphenation issues
@@ -409,6 +449,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 **Workflow Status**: ✅ **COMPLETE AND READY FOR USER REVIEW**
 
 **Total Files Created/Modified**: 24 files
+
 - 8 PNG images
 - 8 .prompt.md sidecar files
 - 8 lesson .md files (modified)

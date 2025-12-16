@@ -25,6 +25,7 @@
 **"Book" is just one type of organized directory.**
 
 Any structured content can be a "directory":
+
 - **📚 Book**: Parts → Chapters → Lessons
 - **📖 Documentation**: Sections → Pages
 - **🧠 Knowledge Base**: Topics → Articles
@@ -42,7 +43,7 @@ Any structured content can be a "directory":
 ```
 84 chapters locked in Git filesystem
   ↓
-book-source/docs/01-Part/01-chapter/01-lesson.md
+apps/learn-app/docs/01-Part/01-chapter/01-lesson.md
   ❌ Local filesystem only
   ❌ Agents clone entire repo to access
   ❌ Cannot deploy to R2/S3
@@ -116,6 +117,7 @@ book-source/docs/01-Part/01-chapter/01-lesson.md
 **Purpose**: Read file content from any storage backend
 
 **Signature**:
+
 ```python
 @mcp.tool()
 async def read_content(path: str) -> str:
@@ -131,12 +133,14 @@ async def read_content(path: str) -> str:
 ```
 
 **Example**:
+
 ```python
 content = await read_content(path="01-Part/05-chapter/02-lesson.md")
 # Returns: "# Lesson 2\n\nContent here..."
 ```
 
 **Acceptance Criteria**:
+
 - [ ] Reads from configured storage backend (local or R2)
 - [ ] Returns UTF-8 decoded content
 - [ ] Throws error if file doesn't exist
@@ -151,6 +155,7 @@ content = await read_content(path="01-Part/05-chapter/02-lesson.md")
 **Purpose**: Write file content to storage with audit trail
 
 **Signature**:
+
 ```python
 @mcp.tool()
 async def write_content(path: str, content: str, agent_id: str) -> str:
@@ -168,6 +173,7 @@ async def write_content(path: str, content: str, agent_id: str) -> str:
 ```
 
 **Example**:
+
 ```python
 result = await write_content(
     path="01-Part/05-chapter/02-lesson.md",
@@ -178,6 +184,7 @@ result = await write_content(
 ```
 
 **Acceptance Criteria**:
+
 - [ ] Writes to configured storage backend
 - [ ] Creates parent directories if needed
 - [ ] Logs write operation with agent_id to audit log
@@ -192,6 +199,7 @@ result = await write_content(
 **Purpose**: List all files under a directory prefix
 
 **Signature**:
+
 ```python
 @mcp.tool()
 async def list_contents(prefix: str = "") -> list[str]:
@@ -207,6 +215,7 @@ async def list_contents(prefix: str = "") -> list[str]:
 ```
 
 **Example**:
+
 ```python
 files = await list_contents(prefix="01-Part/05-chapter/")
 # Returns: [
@@ -217,6 +226,7 @@ files = await list_contents(prefix="01-Part/05-chapter/")
 ```
 
 **Acceptance Criteria**:
+
 - [ ] Lists files recursively under prefix
 - [ ] Returns sorted file paths
 - [ ] Empty prefix lists all files
@@ -231,6 +241,7 @@ files = await list_contents(prefix="01-Part/05-chapter/")
 **Purpose**: Delete file from storage
 
 **Signature**:
+
 ```python
 @mcp.tool()
 async def delete_content(path: str, agent_id: str) -> str:
@@ -247,6 +258,7 @@ async def delete_content(path: str, agent_id: str) -> str:
 ```
 
 **Example**:
+
 ```python
 result = await delete_content(
     path="01-Part/05-chapter/old-lesson.md",
@@ -256,6 +268,7 @@ result = await delete_content(
 ```
 
 **Acceptance Criteria**:
+
 - [ ] Deletes file from storage
 - [ ] Throws error if file doesn't exist
 - [ ] Logs delete operation with agent_id
@@ -270,6 +283,7 @@ result = await delete_content(
 **Purpose**: Find files matching glob patterns (LangChain-inspired)
 
 **Signature**:
+
 ```python
 @mcp.tool()
 async def glob_search(pattern: str) -> list[str]:
@@ -285,6 +299,7 @@ async def glob_search(pattern: str) -> list[str]:
 ```
 
 **Examples**:
+
 ```python
 # Find all markdown files
 files = await glob_search(pattern="**/*.md")
@@ -297,7 +312,8 @@ files = await glob_search(pattern="**/lesson-*.md")
 ```
 
 **Acceptance Criteria**:
-- [ ] Supports glob patterns (*, **, ?, [])
+
+- [ ] Supports glob patterns (\*, \*\*, ?, [])
 - [ ] Returns sorted matching files
 - [ ] Empty result if no matches
 - [ ] Logs search operation
@@ -311,6 +327,7 @@ files = await glob_search(pattern="**/lesson-*.md")
 **Purpose**: Search file contents for text/regex with context
 
 **Signature**:
+
 ```python
 @mcp.tool()
 async def grep_search(
@@ -334,6 +351,7 @@ async def grep_search(
 ```
 
 **Example**:
+
 ```python
 matches = await grep_search(
     pattern="async/await",
@@ -352,6 +370,7 @@ matches = await grep_search(
 ```
 
 **Acceptance Criteria**:
+
 - [ ] Searches file contents (text and regex)
 - [ ] Returns matches with context lines
 - [ ] Searches all .md files by default
@@ -366,6 +385,7 @@ matches = await grep_search(
 **Purpose**: Query operation history for tracking and debugging
 
 **Signature**:
+
 ```python
 @mcp.tool()
 async def get_audit_log(
@@ -389,6 +409,7 @@ async def get_audit_log(
 ```
 
 **Example**:
+
 ```python
 # Get all writes by claude-code
 log = await get_audit_log(operation="write", agent_id="claude-code-123")
@@ -398,6 +419,7 @@ log = await get_audit_log(since="2025-11-21T00:00:00Z", limit=50)
 ```
 
 **Acceptance Criteria**:
+
 - [ ] Queries audit log with filters
 - [ ] Returns sorted by timestamp (newest first)
 - [ ] Supports pagination via limit
@@ -410,6 +432,7 @@ log = await get_audit_log(since="2025-11-21T00:00:00Z", limit=50)
 **Requirement**: Transparent switching between local and cloud storage
 
 **Implementation**:
+
 ```python
 from opendal import Operator
 
@@ -430,6 +453,7 @@ elif config["storage"]["backend"] == "r2":
 ```
 
 **Configuration**:
+
 ```json
 // Development (local)
 {
@@ -452,6 +476,7 @@ elif config["storage"]["backend"] == "r2":
 ```
 
 **Acceptance Criteria**:
+
 - [ ] Switch backend via config (no code changes)
 - [ ] All 7 tools work identically on both backends
 - [ ] Environment variable substitution for credentials
@@ -500,12 +525,14 @@ elif config["storage"]["backend"] == "r2":
 **So that** I can reference examples or build new content
 
 **Acceptance Criteria**:
+
 - [ ] Agent calls `read_content(path="01-Part/05-chapter/02-lesson.md")`
 - [ ] Returns lesson markdown content
 - [ ] Works on both local and R2 storage
 - [ ] Completes in < 500ms
 
 **Example**:
+
 ```python
 # Agent workflow
 content = await mcp.call_tool("read_content", {
@@ -523,12 +550,14 @@ content = await mcp.call_tool("read_content", {
 **So that** I can find related content quickly
 
 **Acceptance Criteria**:
+
 - [ ] Agent calls `grep_search(pattern="async/await")`
 - [ ] Returns all matches with context
 - [ ] Searches only .md files
 - [ ] Completes in < 2s for 84 chapters
 
 **Example**:
+
 ```python
 # Find all mentions of "async/await"
 matches = await mcp.call_tool("grep_search", {
@@ -548,6 +577,7 @@ matches = await mcp.call_tool("grep_search", {
 **So that** production agents access from cloud storage
 
 **Acceptance Criteria**:
+
 - [ ] Run migration script to upload 84 chapters to R2
 - [ ] Update config.json to use R2 backend
 - [ ] Restart MCP server
@@ -555,6 +585,7 @@ matches = await mcp.call_tool("grep_search", {
 - [ ] No code changes required
 
 **Workflow**:
+
 ```bash
 # 1. Migrate content
 python scripts/migrate.py --source ./book-source/docs --target r2://panaversity-book/
@@ -598,12 +629,12 @@ python-dotenv==1.0  # Environment variables
 
 ### Why This Stack?
 
-| Reason | Benefit |
-|--------|---------|
-| **Python** | 60% less code than TypeScript (280 vs 700 LOC) |
-| **FastMCP** | Decorator-based API (simpler than raw MCP SDK) |
+| Reason      | Benefit                                           |
+| ----------- | ------------------------------------------------- |
+| **Python**  | 60% less code than TypeScript (280 vs 700 LOC)    |
+| **FastMCP** | Decorator-based API (simpler than raw MCP SDK)    |
 | **OpenDAL** | Unified storage interface (local + R2 + S3 + ...) |
-| **stdlib** | fnmatch + re included (no extra deps) |
+| **stdlib**  | fnmatch + re included (no extra deps)             |
 
 ---
 
@@ -682,6 +713,7 @@ directory-mcp-server/
 ## Out of Scope (Phase 2)
 
 **Deferred features**:
+
 - ❌ Multi-directory support (register multiple books)
 - ❌ Directory schemas (book vs docs vs knowledge)
 - ❌ Vector search (LanceDB integration)
@@ -695,12 +727,12 @@ directory-mcp-server/
 
 ## Risk Analysis
 
-| Risk | Impact | Probability | Mitigation |
-|------|--------|-------------|------------|
-| OpenDAL breaking changes (pre-1.0) | MEDIUM | MEDIUM | Pin version, can swap to boto3 in 2 hours |
-| R2 downtime | HIGH | LOW | Local fallback config |
-| Performance issues | MEDIUM | LOW | Implement caching in Phase 2 |
-| Python async complexity | LOW | LOW | FastMCP abstracts complexity |
+| Risk                               | Impact | Probability | Mitigation                                |
+| ---------------------------------- | ------ | ----------- | ----------------------------------------- |
+| OpenDAL breaking changes (pre-1.0) | MEDIUM | MEDIUM      | Pin version, can swap to boto3 in 2 hours |
+| R2 downtime                        | HIGH   | LOW         | Local fallback config                     |
+| Performance issues                 | MEDIUM | LOW         | Implement caching in Phase 2              |
+| Python async complexity            | LOW    | LOW         | FastMCP abstracts complexity              |
 
 **Overall Risk**: LOW ✅
 
@@ -710,14 +742,14 @@ directory-mcp-server/
 
 ### 8-Hour Implementation Plan
 
-| Hours | Phase | Deliverable |
-|-------|-------|-------------|
-| 0-1.5 | Setup | Project initialized, dependencies installed |
-| 1.5-2.5 | Storage | OpenDAL wrapper implemented, tested |
-| 2.5-3.5 | Audit | Audit logger implemented, tested |
-| 3.5-5 | Search | Glob + grep implemented, tested |
-| 5-6 | MCP Server | 7 tools implemented, tested |
-| 6-8 | Scripts | Migration + hydration scripts, deployed |
+| Hours   | Phase      | Deliverable                                 |
+| ------- | ---------- | ------------------------------------------- |
+| 0-1.5   | Setup      | Project initialized, dependencies installed |
+| 1.5-2.5 | Storage    | OpenDAL wrapper implemented, tested         |
+| 2.5-3.5 | Audit      | Audit logger implemented, tested            |
+| 3.5-5   | Search     | Glob + grep implemented, tested             |
+| 5-6     | MCP Server | 7 tools implemented, tested                 |
+| 6-8     | Scripts    | Migration + hydration scripts, deployed     |
 
 **End of Hour 8**: ✅ **LIVE IN PRODUCTION**
 
@@ -788,6 +820,7 @@ CMD ["python", "src/server.py"]
 ## Approval Checklist
 
 Before implementation, confirm:
+
 - [ ] Python stack approved (vs TypeScript)
 - [ ] 8-hour timeline acceptable
 - [ ] 7 MCP tools meet requirements

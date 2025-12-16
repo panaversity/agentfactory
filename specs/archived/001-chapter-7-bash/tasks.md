@@ -16,7 +16,8 @@
 ## Path Conventions
 
 Educational content will be created in:
-- `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/` (final lesson files)
+
+- `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/` (final lesson files)
 - Lesson files: `01-terminal-interface.md`, `02-navigation-files.md`, etc.
 - Chapter README: `README.md` (chapter introduction and navigation)
 
@@ -26,9 +27,9 @@ Educational content will be created in:
 
 **Purpose**: Initialize chapter structure and prepare content scaffolding
 
-- [ ] T001 Create chapter directory structure at book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/
-- [ ] T002 [P] Create placeholder lesson files (01-08) with YAML frontmatter in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/
-- [ ] T003 [P] Create chapter README.md with navigation and introduction in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/README.md
+- [ ] T001 Create chapter directory structure at apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/
+- [ ] T002 [P] Create placeholder lesson files (01-08) with YAML frontmatter in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/
+- [ ] T003 [P] Create chapter README.md with navigation and introduction in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/README.md
 
 ---
 
@@ -58,56 +59,56 @@ Educational content will be created in:
 
 #### Lesson 1: The Terminal Interface
 
-- [ ] T009 [P] [US1] Write Lesson 1 opening hook (GUI vs CLI, why terminal matters) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/01-terminal-interface.md
-- [ ] T010 [P] [US1] Create terminal anatomy section (prompt, command structure, output) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/01-terminal-interface.md
-- [ ] T011 [P] [US1] Explain file system hierarchy (absolute vs relative paths) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/01-terminal-interface.md
-- [ ] T012 [US1] Add platform differences section (macOS/Linux/Windows) with specific notes in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/01-terminal-interface.md
-- [ ] T013 [US1] Create practice exercises for pwd and cd commands in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/01-terminal-interface.md
-- [ ] T014 [US1] Write reflection prompt and forward bridge to Lesson 2 in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/01-terminal-interface.md
+- [ ] T009 [P] [US1] Write Lesson 1 opening hook (GUI vs CLI, why terminal matters) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/01-terminal-interface.md
+- [ ] T010 [P] [US1] Create terminal anatomy section (prompt, command structure, output) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/01-terminal-interface.md
+- [ ] T011 [P] [US1] Explain file system hierarchy (absolute vs relative paths) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/01-terminal-interface.md
+- [ ] T012 [US1] Add platform differences section (macOS/Linux/Windows) with specific notes in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/01-terminal-interface.md
+- [ ] T013 [US1] Create practice exercises for pwd and cd commands in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/01-terminal-interface.md
+- [ ] T014 [US1] Write reflection prompt and forward bridge to Lesson 2 in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/01-terminal-interface.md
 
 #### Lesson 2: Navigation and File Management
 
-- [ ] T015 [P] [US1] Write Lesson 2 opening hook (building on terminal basics) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md
-- [ ] T016 [P] [US1] Document cd, pwd, ls commands with flags and examples in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md
-- [ ] T017 [P] [US1] Document mkdir, touch commands with practical scenarios in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md
-- [ ] T018 [US1] Document cp, mv, rm commands with safety patterns and warnings in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md
-- [ ] T019 [US1] Create real-world project setup scenario (create structure, files, navigation) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md
-- [ ] T020 [US1] Add 5 practice exercises progressing from simple to complex file operations in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md
-- [ ] T021 [US1] Write reflection prompt and forward bridge to Lesson 3 in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md
+- [ ] T015 [P] [US1] Write Lesson 2 opening hook (building on terminal basics) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md
+- [ ] T016 [P] [US1] Document cd, pwd, ls commands with flags and examples in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md
+- [ ] T017 [P] [US1] Document mkdir, touch commands with practical scenarios in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md
+- [ ] T018 [US1] Document cp, mv, rm commands with safety patterns and warnings in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md
+- [ ] T019 [US1] Create real-world project setup scenario (create structure, files, navigation) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md
+- [ ] T020 [US1] Add 5 practice exercises progressing from simple to complex file operations in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md
+- [ ] T021 [US1] Write reflection prompt and forward bridge to Lesson 3 in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md
 
 #### Lesson 3: Viewing and Searching File Content
 
-- [ ] T022 [P] [US1] Write Lesson 3 opening hook (working with file contents) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/03-viewing-searching.md
-- [ ] T023 [P] [US1] Document cat, head, tail, less commands with use cases in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/03-viewing-searching.md
-- [ ] T024 [P] [US1] Document grep command with pattern examples and common flags in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/03-viewing-searching.md
-- [ ] T025 [US1] Explain pipes (|) and redirection (>, >>, 2>) with multi-command workflows in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/03-viewing-searching.md
-- [ ] T026 [US1] Document find command with practical search scenarios in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/03-viewing-searching.md
-- [ ] T027 [US1] Create realistic log file searching example with grep and pipes in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/03-viewing-searching.md
-- [ ] T028 [US1] Add 4 practice exercises for searching and filtering content in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/03-viewing-searching.md
-- [ ] T029 [US1] Write reflection prompt and forward bridge to Lesson 4 in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/03-viewing-searching.md
+- [ ] T022 [P] [US1] Write Lesson 3 opening hook (working with file contents) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/03-viewing-searching.md
+- [ ] T023 [P] [US1] Document cat, head, tail, less commands with use cases in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/03-viewing-searching.md
+- [ ] T024 [P] [US1] Document grep command with pattern examples and common flags in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/03-viewing-searching.md
+- [ ] T025 [US1] Explain pipes (|) and redirection (>, >>, 2>) with multi-command workflows in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/03-viewing-searching.md
+- [ ] T026 [US1] Document find command with practical search scenarios in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/03-viewing-searching.md
+- [ ] T027 [US1] Create realistic log file searching example with grep and pipes in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/03-viewing-searching.md
+- [ ] T028 [US1] Add 4 practice exercises for searching and filtering content in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/03-viewing-searching.md
+- [ ] T029 [US1] Write reflection prompt and forward bridge to Lesson 4 in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/03-viewing-searching.md
 
 #### Lesson 4: Environment Variables and Package Management
 
-- [ ] T030 [P] [US1] Write Lesson 4 opening hook (configuring your system) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
-- [ ] T031 [P] [US1] Document export command for temporary environment variables in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
-- [ ] T032 [P] [US1] Explain .bashrc/.zshrc for permanent environment variables with step-by-step editing guide in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
-- [ ] T033 [US1] Create detailed API key setup walkthrough (export, .bashrc edit, source) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
-- [ ] T034 [US1] Document pip (Python packages) with examples and virtual environments in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
-- [ ] T035 [US1] Document npm (Node packages) with package.json example in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
-- [ ] T036 [US1] Document Homebrew (macOS) and apt (Linux) with platform-specific instructions in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
-- [ ] T037 [US1] Add 3 practice exercises for setting variables and installing packages in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
-- [ ] T038 [US1] Write reflection prompt and forward bridge to Lesson 5 in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
+- [ ] T030 [P] [US1] Write Lesson 4 opening hook (configuring your system) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
+- [ ] T031 [P] [US1] Document export command for temporary environment variables in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
+- [ ] T032 [P] [US1] Explain .bashrc/.zshrc for permanent environment variables with step-by-step editing guide in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
+- [ ] T033 [US1] Create detailed API key setup walkthrough (export, .bashrc edit, source) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
+- [ ] T034 [US1] Document pip (Python packages) with examples and virtual environments in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
+- [ ] T035 [US1] Document npm (Node packages) with package.json example in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
+- [ ] T036 [US1] Document Homebrew (macOS) and apt (Linux) with platform-specific instructions in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
+- [ ] T037 [US1] Add 3 practice exercises for setting variables and installing packages in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
+- [ ] T038 [US1] Write reflection prompt and forward bridge to Lesson 5 in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/04-environment-packages.md
 
 #### Lesson 5: Process Management and Troubleshooting
 
-- [ ] T039 [P] [US1] Write Lesson 5 opening hook (monitoring and troubleshooting) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/05-processes-troubleshooting.md
-- [ ] T040 [P] [US1] Document ps, top, kill commands with process ID explanation in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/05-processes-troubleshooting.md
-- [ ] T041 [P] [US1] Create troubleshooting decision tree for common errors in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/05-processes-troubleshooting.md
-- [ ] T042 [US1] Document "command not found" error with diagnosis steps (which, PATH, installation) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/05-processes-troubleshooting.md
-- [ ] T043 [US1] Document "permission denied" error with chmod and sudo solutions in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/05-processes-troubleshooting.md
-- [ ] T044 [US1] Document API key not persisting error with .bashrc troubleshooting in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/05-processes-troubleshooting.md
-- [ ] T045 [US1] Add 3 practice exercises for finding/stopping processes and troubleshooting errors in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/05-processes-troubleshooting.md
-- [ ] T046 [US1] Write reflection prompt and forward bridge to Part II (Lesson 6) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/05-processes-troubleshooting.md
+- [ ] T039 [P] [US1] Write Lesson 5 opening hook (monitoring and troubleshooting) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/05-processes-troubleshooting.md
+- [ ] T040 [P] [US1] Document ps, top, kill commands with process ID explanation in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/05-processes-troubleshooting.md
+- [ ] T041 [P] [US1] Create troubleshooting decision tree for common errors in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/05-processes-troubleshooting.md
+- [ ] T042 [US1] Document "command not found" error with diagnosis steps (which, PATH, installation) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/05-processes-troubleshooting.md
+- [ ] T043 [US1] Document "permission denied" error with chmod and sudo solutions in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/05-processes-troubleshooting.md
+- [ ] T044 [US1] Document API key not persisting error with .bashrc troubleshooting in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/05-processes-troubleshooting.md
+- [ ] T045 [US1] Add 3 practice exercises for finding/stopping processes and troubleshooting errors in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/05-processes-troubleshooting.md
+- [ ] T046 [US1] Write reflection prompt and forward bridge to Part II (Lesson 6) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/05-processes-troubleshooting.md
 
 **Checkpoint**: At this point, User Story 1 (P1 - Beginner learns essential commands) should be fully functional. Reader can navigate filesystem, manage files, set environment variables, install packages, and troubleshoot common errors without assistance.
 
@@ -123,29 +124,29 @@ Educational content will be created in:
 
 #### Lesson 6: Natural Language Prompts for Bash Tasks
 
-- [ ] T047 [P] [US2] Write Lesson 6 opening hook (paradigm shift from memorization to AI collaboration) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
-- [ ] T048 [P] [US2] Explain AI-augmented workflow concept (describe → AI generates → validate → execute) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
-- [ ] T049 [P] [US2] Document 4 prompting patterns: clear request, problem description, constraints, multi-step in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
-- [ ] T050 [US2] Create natural language prompt templates for navigation commands (cd, ls, pwd) with 2-3 phrasings each in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
-- [ ] T051 [US2] Create natural language prompt templates for file operations (cp, mv, rm, mkdir) with 2-3 phrasings each in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
-- [ ] T052 [US2] Create natural language prompt templates for content operations (cat, grep, find) with 2-3 phrasings each in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
-- [ ] T053 [US2] Create natural language prompt templates for environment/packages (export, pip, npm) with 2-3 phrasings each in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
-- [ ] T054 [US2] Create natural language prompt templates for process management (ps, kill) with 2-3 phrasings each in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
-- [ ] T055 [US2] Add validation before execution section (always understand AI suggestion first) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
-- [ ] T056 [US2] Create iterative refinement example (task → prompt → AI response → refine → correct command) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
-- [ ] T057 [US2] Add 4 practice exercises for describing tasks and evaluating AI-generated commands in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
-- [ ] T058 [US2] Write reflection prompt and forward bridge to Lesson 7 in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
+- [ ] T047 [P] [US2] Write Lesson 6 opening hook (paradigm shift from memorization to AI collaboration) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
+- [ ] T048 [P] [US2] Explain AI-augmented workflow concept (describe → AI generates → validate → execute) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
+- [ ] T049 [P] [US2] Document 4 prompting patterns: clear request, problem description, constraints, multi-step in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
+- [ ] T050 [US2] Create natural language prompt templates for navigation commands (cd, ls, pwd) with 2-3 phrasings each in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
+- [ ] T051 [US2] Create natural language prompt templates for file operations (cp, mv, rm, mkdir) with 2-3 phrasings each in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
+- [ ] T052 [US2] Create natural language prompt templates for content operations (cat, grep, find) with 2-3 phrasings each in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
+- [ ] T053 [US2] Create natural language prompt templates for environment/packages (export, pip, npm) with 2-3 phrasings each in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
+- [ ] T054 [US2] Create natural language prompt templates for process management (ps, kill) with 2-3 phrasings each in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
+- [ ] T055 [US2] Add validation before execution section (always understand AI suggestion first) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
+- [ ] T056 [US2] Create iterative refinement example (task → prompt → AI response → refine → correct command) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
+- [ ] T057 [US2] Add 4 practice exercises for describing tasks and evaluating AI-generated commands in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
+- [ ] T058 [US2] Write reflection prompt and forward bridge to Lesson 7 in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/06-natural-language-prompts.md
 
 #### Lesson 8: Real-World AI-Assisted Workflows (US2 Integration)
 
-- [ ] T059 [P] [US2] Write Lesson 8 opening hook (integrating all concepts into realistic workflows) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-world-workflows.md
-- [ ] T060 [P] [US2] Create Workflow 1: Project Setup via AI (directory structure, files, git init, API keys) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-world-workflows.md
-- [ ] T061 [P] [US2] Create Workflow 2: Troubleshooting with AI assistance (error → describe to AI → diagnosis → solution) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-world-workflows.md
-- [ ] T062 [US2] Create Workflow 3: File migration with AI (find files → copy/move → verify) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-world-workflows.md
-- [ ] T063 [US2] Create decision matrix: when to memorize command vs. ask AI (frequency, complexity, safety) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-world-workflows.md
-- [ ] T064 [US2] Document safety patterns for AI-generated commands (verify before execution, understand risks) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-world-workflows.md
-- [ ] T065 [US2] Add 3 integrated practice exercises combining commands and AI assistance in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-world-workflows.md
-- [ ] T066 [US2] Write reflection prompt and transition to Chapter 8 (Git & GitHub) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-world-workflows.md
+- [ ] T059 [P] [US2] Write Lesson 8 opening hook (integrating all concepts into realistic workflows) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-world-workflows.md
+- [ ] T060 [P] [US2] Create Workflow 1: Project Setup via AI (directory structure, files, git init, API keys) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-world-workflows.md
+- [ ] T061 [P] [US2] Create Workflow 2: Troubleshooting with AI assistance (error → describe to AI → diagnosis → solution) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-world-workflows.md
+- [ ] T062 [US2] Create Workflow 3: File migration with AI (find files → copy/move → verify) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-world-workflows.md
+- [ ] T063 [US2] Create decision matrix: when to memorize command vs. ask AI (frequency, complexity, safety) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-world-workflows.md
+- [ ] T064 [US2] Document safety patterns for AI-generated commands (verify before execution, understand risks) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-world-workflows.md
+- [ ] T065 [US2] Add 3 integrated practice exercises combining commands and AI assistance in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-world-workflows.md
+- [ ] T066 [US2] Write reflection prompt and transition to Chapter 8 (Git & GitHub) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-world-workflows.md
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently. Reader has foundational command knowledge (US1) and can use AI to extend capabilities through natural language prompts (US2).
 
@@ -161,18 +162,18 @@ Educational content will be created in:
 
 #### Lesson 7: Professional Bash Habits and Command Patterns
 
-- [ ] T067 [P] [US3] Write Lesson 7 opening hook (efficiency and professionalism) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
-- [ ] T068 [P] [US3] Document keyboard shortcut reference table (Ctrl+R, Tab, Ctrl+A/E/U/C/L/D) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
-- [ ] T069 [P] [US3] Create keyboard shortcut practice exercises with scenarios in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
-- [ ] T070 [US3] Explain command history and Ctrl+R for history search with examples in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
-- [ ] T071 [US3] Document Tab completion with filesystem navigation examples in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
-- [ ] T072 [US3] Create alias examples (ll='ls -la', gs='git status') with .bashrc setup in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
-- [ ] T073 [US3] Document common command patterns table (find & act, search & filter, monitoring loops) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
-- [ ] T074 [US3] Create pattern recognition exercises (identify command patterns in scenarios) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
-- [ ] T075 [US3] Document when to memorize vs. ask AI framework (frequency, safety, complexity dimensions) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
-- [ ] T076 [US3] Add safety awareness section (dangerous commands, always verify, understand before executing) in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
-- [ ] T077 [US3] Add 4 practice exercises for shortcuts, aliases, and pattern recognition in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
-- [ ] T078 [US3] Write reflection prompt and forward bridge to Lesson 8 in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
+- [ ] T067 [P] [US3] Write Lesson 7 opening hook (efficiency and professionalism) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
+- [ ] T068 [P] [US3] Document keyboard shortcut reference table (Ctrl+R, Tab, Ctrl+A/E/U/C/L/D) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
+- [ ] T069 [P] [US3] Create keyboard shortcut practice exercises with scenarios in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
+- [ ] T070 [US3] Explain command history and Ctrl+R for history search with examples in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
+- [ ] T071 [US3] Document Tab completion with filesystem navigation examples in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
+- [ ] T072 [US3] Create alias examples (ll='ls -la', gs='git status') with .bashrc setup in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
+- [ ] T073 [US3] Document common command patterns table (find & act, search & filter, monitoring loops) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
+- [ ] T074 [US3] Create pattern recognition exercises (identify command patterns in scenarios) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
+- [ ] T075 [US3] Document when to memorize vs. ask AI framework (frequency, safety, complexity dimensions) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
+- [ ] T076 [US3] Add safety awareness section (dangerous commands, always verify, understand before executing) in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
+- [ ] T077 [US3] Add 4 practice exercises for shortcuts, aliases, and pattern recognition in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
+- [ ] T078 [US3] Write reflection prompt and forward bridge to Lesson 8 in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/07-professional-habits.md
 
 **Checkpoint**: All user stories (P1, P2, P3) should now be independently functional. Reader has command knowledge (US1), AI augmentation skills (US2), and professional habits (US3).
 
@@ -213,7 +214,7 @@ Educational content will be created in:
 - **User Story 2 (P2)**: Can start after Foundational (Phase 2) - Lessons 6, 8 build on Part I content but US2 tasks are independently implementable
 - **User Story 3 (P3)**: Can start after Foundational (Phase 2) - Lesson 7 is independent and can be written anytime after foundational research
 
-**Note**: While the *reading experience* for learners is sequential (Lessons 1→8), the *content creation* can happen in parallel once foundational research is complete. Each lesson file is independent.
+**Note**: While the _reading experience_ for learners is sequential (Lessons 1→8), the _content creation_ can happen in parallel once foundational research is complete. Each lesson file is independent.
 
 ### Within Each User Story
 
@@ -237,9 +238,9 @@ Educational content will be created in:
 
 ```bash
 # Launch all parallel tasks for Lesson 2 together:
-Task: "Write Lesson 2 opening hook in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md"
-Task: "Document cd, pwd, ls commands in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md"
-Task: "Document mkdir, touch commands in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md"
+Task: "Write Lesson 2 opening hook in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md"
+Task: "Document cd, pwd, ls commands in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md"
+Task: "Document mkdir, touch commands in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/02-navigation-files.md"
 
 # Then sequentially:
 Task: "Document cp, mv, rm commands with safety patterns" (depends on understanding mkdir/touch context)

@@ -12,6 +12,7 @@
 Enhanced Lesson 03 (Feature 2: ICP Scorer) to emphasize **intelligence acceleration in action**—the core hypothesis of Chapter 15. The lesson now explicitly demonstrates how SDD-RI patterns transfer from Feature 1 to Feature 2, with measurable time tracking and pipeline validation.
 
 **Key Improvements**:
+
 - Added 5 explicit decision points during implementation (reuse patterns from F1)
 - Added 3-tier testing framework (standalone → pipeline → edge cases)
 - Added TIME_TRACKER.md template for acceleration measurement
@@ -24,7 +25,9 @@ Enhanced Lesson 03 (Feature 2: ICP Scorer) to emphasize **intelligence accelerat
 ## Changes Made
 
 ### 1. Metadata & Context (Lines 1-12)
+
 **ADDED**:
+
 - `proficiency_level: "B1"` - Explicit CEFR alignment
 - `estimated_time: "30-45 minutes"` - Time budget for lesson
 - `cognitive_load`: Tracks 4 new concepts + 6 reused concepts
@@ -35,7 +38,9 @@ Enhanced Lesson 03 (Feature 2: ICP Scorer) to emphasize **intelligence accelerat
 ---
 
 ### 2. Opening (Lines 14-22)
+
 **BEFORE**:
+
 ```
 This is where you'll first experience acceleration: You're reusing the spec→plan→tasks→implement workflow from F1. This feature should build faster.
 
@@ -43,6 +48,7 @@ Start your timer now. Check your F1 duration: _____ minutes. Your goal: complete
 ```
 
 **AFTER**:
+
 ```
 This is where you experience **intelligence acceleration in action**: The specification→plan→tasks→implement workflow you executed for F1 directly transfers to F2. You're applying the same decision-making process, reusing the same SDD-RI rhythm, and leveraging patterns you've already proven work.
 
@@ -52,6 +58,7 @@ This is where you experience **intelligence acceleration in action**: The specif
 ```
 
 **Why**:
+
 - Changes vague goal ("faster") to measurable metric (60-70%)
 - Emphasizes the TRANSFER of patterns (key learning objective)
 - Makes acceleration hypothesis concrete and testable
@@ -59,7 +66,9 @@ This is where you experience **intelligence acceleration in action**: The specif
 ---
 
 ### 3. Step 1: Define ICP Criteria (Lines 24-89)
+
 **ADDED**:
+
 - Section title now includes time estimate "(5-10 minutes)"
 - Context: "define what makes a customer ideal FOR YOUR BUSINESS"
 - Emphasis on business decision ("This is YOUR decision")
@@ -71,18 +80,22 @@ This is where you experience **intelligence acceleration in action**: The specif
 ---
 
 ### 4. Step 2: Pipeline Architecture (Lines 91-129)
+
 **RENAMED** from "Data Flow: F1 → F2" to emphasize architecture
 **RESTRUCTURED** with clearer narrative:
+
 - **F1 Output** (label + JSON example + context)
 - **What F2 Does** (5 action bullets showing transformation)
 - **F2 Output** (label + JSON example + context)
 - **Connection** (explicit contract between features)
 
 **ADDED**:
+
 - Inline explanation of each transformation step
 - Clear statement: "F1's output JSON structure MUST match F2's input expectations"
 
 **Why**:
+
 - Students understand data flow direction and transformation
 - Explicit input/output contract prevents specification errors
 - Prepares them for real-time piping (`lead_profiler | icp_scorer`)
@@ -90,7 +103,9 @@ This is where you experience **intelligence acceleration in action**: The specif
 ---
 
 ### 5. Step 3: Specification (Lines 131-183)
+
 **ADDED**:
+
 - "What you're reusing from F1" callout (3 items)
 - Time estimate "(10-15 minutes)"
 - **Input Contract** section with source, schema, example
@@ -99,6 +114,7 @@ This is where you experience **intelligence acceleration in action**: The specif
 - Business constraint callout: "Reasoning should be business-focused"
 
 **Why**:
+
 - Makes explicit what transfers from F1 (command, structure, validation approach)
 - Distinguishes between input/output contracts (students apply this to F3)
 - Prevents specification bloat by defining exact output format
@@ -107,8 +123,10 @@ This is where you experience **intelligence acceleration in action**: The specif
 ---
 
 ### 6. Step 4: Plan, Tasks, Implement (Lines 185-229)
+
 **RESTRUCTURED** from generic section to decision-focused
 **ADDED**:
+
 - Time estimate "(15-20 minutes)"
 - Explicit decision point: "How much of F1's pattern will you reuse?"
 - 3 reuse examples (environment variables, helper functions, error handling)
@@ -117,6 +135,7 @@ This is where you experience **intelligence acceleration in action**: The specif
 - "Record decisions" checklist for retrospective
 
 **Why**:
+
 - Makes pattern transfer the active focus (not reading about it)
 - Students explicitly decide what to reuse vs. what's new
 - Questions guide productive AI collaboration
@@ -125,15 +144,18 @@ This is where you experience **intelligence acceleration in action**: The specif
 ---
 
 ### 7. Step 5: Testing (Lines 231-314)
+
 **MAJOR ENHANCEMENT** from 1 generic test to 3-tier framework:
 
 **Test 1: F2 Standalone** (validate contract)
+
 - Create sample input
 - Run F2 independently
 - 5-point verification checklist
 - Purpose: Does F2 meet output contract?
 
 **Test 2: Full Pipeline** (validate integration)
+
 - Option A: Using saved F1 output
 - Option B: Real-time piping (no intermediate files)
 - Test multiple companies to validate business logic
@@ -141,11 +163,13 @@ This is where you experience **intelligence acceleration in action**: The specif
 - Purpose: Does F2 actually consume F1 output?
 
 **Test 3: Edge Cases** (robustness)
+
 - Missing fields scenario
 - Null values handling
 - Purpose: Does F2 handle real-world data?
 
 **Why**:
+
 - Hierarchical validation: contract → integration → robustness
 - Students experience both file-based and pipe-based architectures
 - Edge case testing teaches production thinking
@@ -154,8 +178,10 @@ This is where you experience **intelligence acceleration in action**: The specif
 ---
 
 ### 8. Acceleration Recording (Lines 316-351)
+
 **ADDED** complete TIME_TRACKER.md template
 **INCLUDES**:
+
 - Start/end time slots for both F1 and F2
 - Percentage calculation (F2 as % of F1)
 - Pattern reuse checklist (6 items)
@@ -163,6 +189,7 @@ This is where you experience **intelligence acceleration in action**: The specif
 - Analysis framework (60-70% interpretation)
 
 **Why**:
+
 - Turns acceleration hypothesis into measurable data
 - Checklist ensures students consciously evaluate pattern reuse
 - Reflection captures learning (what transferred, what didn't)
@@ -171,19 +198,23 @@ This is where you experience **intelligence acceleration in action**: The specif
 ---
 
 ### 9. Try With AI (Lines 353-386)
+
 **RESTRUCTURED** from generic prompts to structured reasoning prompts
 
 **Prompt 1: Analyze Your Acceleration**
+
 - Requires time data (forces measurement discipline)
 - 4 analysis questions (code transfer → new logic → speed → preparation)
 - Expected outcome specified (AI identifies patterns, student captures for F3)
 
 **Prompt 2: Debug Your Scoring Logic**
+
 - Requires student paste ICP criteria + F1 output
 - 4-step walkthrough (score → breakdown → total → validation)
 - Expected outcome: Students validate criteria align with business intent
 
 **Why**:
+
 - Both prompts require concrete data (measured times, actual outputs)
 - Forces reflection on pattern transfer and scoring decisions
 - Bidirectional: AI explains logic, student evaluates correctness
@@ -194,6 +225,7 @@ This is where you experience **intelligence acceleration in action**: The specif
 ## Hands-On Ratio Analysis
 
 ### BEFORE Enhancement
+
 - **Reading/Observing**: 60%
   - Spec explanation
   - Data flow description
@@ -204,6 +236,7 @@ This is where you experience **intelligence acceleration in action**: The specif
   - Testing
 
 ### AFTER Enhancement
+
 - **Reading/Observing**: 10%
   - Core concepts only
 - **Doing/Executing**: 90%
@@ -216,6 +249,7 @@ This is where you experience **intelligence acceleration in action**: The specif
   - Try With AI (reasoning about patterns)
 
 **Concrete Actions per Section**:
+
 - Step 1: Create icp_criteria.json (artifact)
 - Step 2: Analyze data contracts (mental modeling)
 - Step 3: Execute /sp.specify (SDD-RI workflow)
@@ -229,28 +263,33 @@ This is where you experience **intelligence acceleration in action**: The specif
 ## Alignment to Principles
 
 ### Principle 1: Stage Recognition (L4: Spec-Driven Integration)
+
 ✅ **Students execute complete SDD-RI workflow** (/sp.specify → /sp.plan → /sp.tasks → /sp.implement)
 ✅ **Specification-first approach** (Step 3 before Step 4)
 ✅ **Composition of specifications** (F2 spec references F1 output format)
 
 ### Principle 2: Intelligence Acceleration
+
 ✅ **Pattern reuse callouts** throughout lesson (Step 1, 3, 4)
 ✅ **Measurable hypothesis** (60-70% of F1 time)
 ✅ **Explicit decision points** (What patterns transfer? What's new?)
 ✅ **TIME_TRACKER.md** (captures acceleration data)
 
 ### Principle 3: Pipeline Architecture
+
 ✅ **F1 → F2 data flow explicit** (Step 2 section)
 ✅ **Input/output contracts defined** (Step 3 specification)
 ✅ **Both file-based and pipe-based testing** (Test 2 Options A & B)
 ✅ **Contract validation** (Test 1 checklist)
 
 ### Principle 4: Three Roles Invisible
+
 ✅ **No pedagogical framework exposed** (no "Layer 4", "SDD-RI framework", etc.)
 ✅ **Action prompts only** (Try With AI prompts guide reasoning, not exposition)
 ✅ **Students EXPERIENCE pattern transfer** (through decision points, not meta-commentary)
 
 ### Principle 5: B1 Proficiency Alignment
+
 ✅ **Cognitive load: 4 new + 6 reused = 10 concepts** (within B1 limit)
 ✅ **Moderate scaffolding** (high-level guidance, student finds approach)
 ✅ **Bloom's Apply/Analyze** (execute workflow, evaluate acceleration)
@@ -261,18 +300,21 @@ This is where you experience **intelligence acceleration in action**: The specif
 ## Integration Points
 
 ### With Feature 1 (Lesson 02)
+
 - F1 produces lead_profile.json → F2 consumes it
 - SDD-RI workflow transfers directly (same commands)
 - Pattern reuse callouts reference F1 decisions
 - Acceleration measurement compares F2 time to F1 baseline
 
 ### With Feature 3 (Lesson 04)
+
 - TIME_TRACKER.md continues tracking acceleration
 - Patterns identified in F2 → preparation for F3 reuse
 - "What patterns should I prepare for Feature 3?" (Prompt 1)
 - Same 3-tier testing framework applies to F3
 
 ### With Chapter 15 Retrospective (Lesson 07)
+
 - TIME_TRACKER.md feeds into chapter-wide analysis
 - Pattern reuse patterns (F1→F2→F3→F4) tell story of acceleration
 - Decisions documented enable retrospective on what worked
@@ -281,15 +323,15 @@ This is where you experience **intelligence acceleration in action**: The specif
 
 ## Key Enhancements Summary
 
-| Element | Before | After | Impact |
-|---------|--------|-------|--------|
-| **Structure** | Reading-focused | Step-by-step execution | +50% hands-on ratio |
-| **Time Estimates** | None | Per section (5-20 min) | Accountability + pacing |
-| **Pattern Reuse** | Mentioned | Explicit callouts + checklist | Forces conscious evaluation |
-| **Testing** | Generic 1-test | 3-tier hierarchy | Validates contract → integration → robustness |
-| **Acceleration** | Vague goal | Measurable 60-70% + template | Captures learning data |
-| **Decision Points** | 0 | 5 explicit questions | Students own pattern choices |
-| **Try With AI** | Generic prompts | Structured reasoning + expected outcomes | Deepens reflection |
+| Element             | Before          | After                                    | Impact                                        |
+| ------------------- | --------------- | ---------------------------------------- | --------------------------------------------- |
+| **Structure**       | Reading-focused | Step-by-step execution                   | +50% hands-on ratio                           |
+| **Time Estimates**  | None            | Per section (5-20 min)                   | Accountability + pacing                       |
+| **Pattern Reuse**   | Mentioned       | Explicit callouts + checklist            | Forces conscious evaluation                   |
+| **Testing**         | Generic 1-test  | 3-tier hierarchy                         | Validates contract → integration → robustness |
+| **Acceleration**    | Vague goal      | Measurable 60-70% + template             | Captures learning data                        |
+| **Decision Points** | 0               | 5 explicit questions                     | Students own pattern choices                  |
+| **Try With AI**     | Generic prompts | Structured reasoning + expected outcomes | Deepens reflection                            |
 
 ---
 
@@ -309,7 +351,8 @@ This is where you experience **intelligence acceleration in action**: The specif
 ---
 
 ## File Path
-`/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/03-feature-2-icp-scorer.md`
+
+`/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/03-feature-2-icp-scorer.md`
 
 **Total Lines**: 387 (from 224 original)
 **Hands-On Ratio**: 90% (up from 40%)

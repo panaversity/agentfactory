@@ -17,14 +17,14 @@ labels:
   - "gemini-md"
   - "conversation-persistence"
 links:
-  spec: "book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/README.md"
+  spec: "apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/README.md"
   pr: "null"
   adr: "null"
 files_modified:
-  - "book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/README.md"
-  - "book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/03-core-commands-slash-commands.md"
-  - "book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/04-gemini-md-context-files.md"
-  - "book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/05-persistent-memory-sessions.md"
+  - "apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/README.md"
+  - "apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/03-core-commands-slash-commands.md"
+  - "apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/04-gemini-md-context-files.md"
+  - "apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/05-persistent-memory-sessions.md"
 tests_run: []
 ---
 
@@ -42,12 +42,14 @@ Completed restructuring and validation of Chapter 6 (Google Gemini CLI) from ini
 ## Work Completed
 
 ### 1. README Restructure
+
 - **Before**: 162 lines of technical specification with FR codes
 - **After**: 81 lines of narrative-driven content
 - **Change**: Restructured from 5 lessons to 7 lessons with clear learning progression
 - **Outcome**: Aligns with book's pedagogical pattern and complexity graduation
 
 ### 2. Lesson 3: Core Commands & Slash Commands (REWRITTEN)
+
 - **Length**: 556 lines
 - **Content**: 29+ validated slash commands from official Gemini CLI documentation
 - **Key Commands Documented**:
@@ -60,6 +62,7 @@ Completed restructuring and validation of Chapter 6 (Google Gemini CLI) from ini
 - **Status**: ✅ Complete and validated
 
 ### 3. Lesson 4: GEMINI.md Context Files (REWRITTEN)
+
 - **Length**: 504 lines
 - **Content**: Two-level GEMINI.md hierarchy with `/init` command prominence
 - **Key Sections**:
@@ -72,6 +75,7 @@ Completed restructuring and validation of Chapter 6 (Google Gemini CLI) from ini
 - **Status**: ✅ Complete and validated
 
 ### 4. Lesson 5: Saving & Resuming Conversations (COMPLETELY NEW)
+
 - **Length**: 468 lines
 - **Previous Error**: Original Lesson 5 taught non-existent `/memory save/load` commands
 - **Current Content**: Correct `/chat save|resume|list|delete|share` command family
@@ -86,6 +90,7 @@ Completed restructuring and validation of Chapter 6 (Google Gemini CLI) from ini
 ## Errors Discovered and Fixed
 
 ### Error 1: Fabricated `/memory save` and `/memory load` Commands
+
 - **Root Cause**: Speculated command syntax without validating against official Gemini CLI documentation
 - **Impact**: Lessons 3 and 5 were teaching non-existent functionality
 - **Detection**: User asked "Is the content grounded from gemini cli docs and aligned with our guidelines?"
@@ -93,12 +98,14 @@ Completed restructuring and validation of Chapter 6 (Google Gemini CLI) from ini
 - **Validation**: Confirmed against official Gemini CLI command reference
 
 ### Error 2: Incomplete GEMINI.md Documentation
+
 - **Root Cause**: Didn't document the `/init` command for guided GEMINI.md creation
 - **Impact**: Users wouldn't know the easiest way to create GEMINI.md
 - **Fix**: Rewritten to prominently feature `/init` command in both guided and manual approaches
 - **Validation**: Verified against official documentation
 
 ### Error 3: No Distinction Between Memory Systems
+
 - **Root Cause**: Confounded GEMINI.md (context files) with `/memory` (temporary context) with `/chat` (conversation persistence)
 - **Impact**: Lesson structure was pedagogically unclear
 - **Fix**: Separated into distinct lessons with clear conceptual boundaries:
@@ -112,6 +119,7 @@ Completed restructuring and validation of Chapter 6 (Google Gemini CLI) from ini
 **Source of Truth**: https://gemini-cli.xyz/docs/en/cli/commands (Official Gemini CLI Documentation)
 
 **All commands validated against official documentation**:
+
 - ✅ `/chat save <tag>` — Save current conversation
 - ✅ `/chat resume <tag>` — Restore saved conversation
 - ✅ `/chat list` — List saved conversations
@@ -133,6 +141,7 @@ Completed restructuring and validation of Chapter 6 (Google Gemini CLI) from ini
 1. **Clear Command Taxonomy**: Organized 29+ commands into logical families (conversation management, context management, system, optimization, tools)
 
 2. **Real Workflow Examples**: Multi-day project examples showing realistic usage patterns:
+
    - Day 1: Auth endpoints design → save
    - Day 2: Resume and implement → save
    - Day 3: Testing and refinement → save
@@ -140,6 +149,7 @@ Completed restructuring and validation of Chapter 6 (Google Gemini CLI) from ini
 3. **Production Example**: Complete GEMINI.md for "User Profile Microservice" showing professional-grade context setup
 
 4. **Advanced Patterns**:
+
    - Experimentation with safety (save before trying risky refactoring)
    - Parallel exploration (compare two approaches simultaneously)
    - Pair programming handoff (Developer A saves → Developer B resumes)
@@ -159,10 +169,10 @@ Completed restructuring and validation of Chapter 6 (Google Gemini CLI) from ini
 
 ## Files Written
 
-1. `book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/README.md` — Simplified structure, narrative focus
-2. `book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/03-core-commands-slash-commands.md` — 556 lines, 29+ commands
-3. `book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/04-gemini-md-context-files.md` — 504 lines, context hierarchy
-4. `book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/05-persistent-memory-sessions.md` — 468 lines, `/chat` command family
+1. `apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/README.md` — Simplified structure, narrative focus
+2. `apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/03-core-commands-slash-commands.md` — 556 lines, 29+ commands
+3. `apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/04-gemini-md-context-files.md` — 504 lines, context hierarchy
+4. `apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/05-persistent-memory-sessions.md` — 468 lines, `/chat` command family
 
 **Total New Content**: 2,528 lines (across 4 files, includes all exercises, examples, and best practices)
 
@@ -185,6 +195,7 @@ This single question revealed that initial content was speculative and required 
 ## Response Summary
 
 Completed full restructure and validation of Chapter 6 (Gemini CLI). Discovered and fixed three major errors in initial content:
+
 1. Fabricated `/memory save/load` commands → replaced with actual `/chat save/resume`
 2. Incomplete GEMINI.md documentation → added `/init` command prominence
 3. Confused memory systems → separated into distinct conceptual lessons

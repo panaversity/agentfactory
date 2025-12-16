@@ -17,7 +17,7 @@ Surgical constitutional compliance refinement of Chapter 7 (Bash Essentials) add
 
 **Content Type**: Educational chapter refinement (8 markdown lesson files)
 **Primary Tool**: Docusaurus + Markdown
-**Storage**: book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/
+**Storage**: apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/
 **Testing**: Grep-based constitutional validation + manual review
 **Target Audience**: A2-tier learners (beginner, Parts 1-3)
 **Project Type**: Educational content (distributed across 8 lesson files)
@@ -55,6 +55,7 @@ Phase 3 (Enhancement - 4-6 hours):
 ## Constitutional Alignment
 
 **Applicable Principles**:
+
 - **Principle 7 (Minimal Content)**: Single closure section ("Try With AI" only), no forbidden sections
 - **Section IIa (Stage 2 - Three Roles)**: AI as Teacher/Student/Co-Worker demonstrated through narrative
 - **Principle 2 (Progressive Complexity)**: A2 tier (5-7 concepts, heavy scaffolding, max 2 options)
@@ -62,16 +63,16 @@ Phase 3 (Enhancement - 4-6 hours):
 
 **Violations to Fix**:
 
-| Lesson | Violation Type | Constitutional Principle | Severity |
-|--------|---|---|---|
-| 1 | None | N/A | ✅ Pass |
-| 2 | Content after "Try With AI" section | Principle 7 (Minimal Content) | P1 Critical |
-| 3 | Excessive trailing whitespace | Principle 7 (Minimal Content) | P2 Minor |
-| 4 | Excessive trailing whitespace | Principle 7 (Minimal Content) | P2 Minor |
-| 5 | Excessive trailing whitespace | Principle 7 (Minimal Content) | P2 Minor |
-| 6 | Excessive trailing whitespace | Principle 7 (Minimal Content) | P2 Minor |
-| 7 | Excessive trailing whitespace | Principle 7 (Minimal Content) | P2 Minor |
-| 8 | Content after "Try With AI" section | Principle 7 (Minimal Content) | P1 Critical |
+| Lesson | Violation Type                      | Constitutional Principle      | Severity    |
+| ------ | ----------------------------------- | ----------------------------- | ----------- |
+| 1      | None                                | N/A                           | ✅ Pass     |
+| 2      | Content after "Try With AI" section | Principle 7 (Minimal Content) | P1 Critical |
+| 3      | Excessive trailing whitespace       | Principle 7 (Minimal Content) | P2 Minor    |
+| 4      | Excessive trailing whitespace       | Principle 7 (Minimal Content) | P2 Minor    |
+| 5      | Excessive trailing whitespace       | Principle 7 (Minimal Content) | P2 Minor    |
+| 6      | Excessive trailing whitespace       | Principle 7 (Minimal Content) | P2 Minor    |
+| 7      | Excessive trailing whitespace       | Principle 7 (Minimal Content) | P2 Minor    |
+| 8      | Content after "Try With AI" section | Principle 7 (Minimal Content) | P1 Critical |
 
 ---
 
@@ -96,6 +97,7 @@ Phase 3 (Enhancement - 4-6 hours):
 **Compliance Status**: ❌ CRITICAL VIOLATION
 
 **Violation Details**:
+
 - **Lines 413-419**: "## Try With AI: Real Examples from Gemini" section header + intro
 - **Lines 420-503**: REAL EXAMPLES 1-3, "Your Task," "Key Insight" (content OUTSIDE section)
 - **Lines 504-505**: Blank lines + EOF
@@ -110,12 +112,14 @@ Phase 3 (Enhancement - 4-6 hours):
 5. **Finalize**: Single final "---" marks lesson end
 
 **Three Roles Enhancement** (Stage 2):
+
 - **Real Example 1 (Backup)**: Gemini teaches git approach, you validate—add "Notice how Gemini taught you about git snapshots..."
 - **Real Example 2 (Delete)**: You teach Gemini definition of "old"—add "Here you taught Gemini..."
 - **Real Example 3 (File org)**: Convergence on real solution—add "This shows real co-learning..."
 - **Pattern**: 1-2 sentences max per marker, observational tone ("Notice how...", "Here you...", "Through...")
 
 **Validation**:
+
 ```bash
 # Check final section
 tail -50 02-safety-first-pattern.md | grep -E "^## " | tail -1
@@ -137,6 +141,7 @@ awk '/^## Try With AI/,0' 02-safety-first-pattern.md | grep -E "^## (What's Next
 **Compliance Status**: ⚠️ MINOR VIOLATION (All lessons)
 
 **Violation Details** (identical pattern across all 5 lessons):
+
 - Final section correct ("## Try With AI: [topic]")
 - Structure compliant (no forbidden sections)
 - **Issue**: Extra blank lines after final "---" section marker
@@ -150,12 +155,14 @@ awk '/^## Try With AI/,0' 02-safety-first-pattern.md | grep -E "^## (What's Next
    - Ensure pattern: `---\n\n[EOF]` (exactly 1 blank line after "---")
 
 **Three Roles Enhancement** (Stage 2, for each lesson):
+
 - **Identify**: Strongest dialogue example in Try With AI section
 - **Add**: 1-2 sentence observational marker showing bidirectional learning
 - **Tone**: "Notice how...", "Here you...", "Together you..."
 - **Frequency**: 2-3 markers per lesson (not every example)
 
 **Per-Lesson Narration Guidance**:
+
 - **Lesson 3 (Navigation)**: Add after navigation dialogue—"Notice how you and AI navigated toward the same goal, demonstrating co-learning..."
 - **Lesson 4 (File Ops)**: Add after file operation example—"Here you verified each step, teaching AI about your risk tolerance..."
 - **Lesson 5 (Configuration)**: Add after secrets example—"Notice how AI suggested security patterns while learning your storage approach..."
@@ -163,6 +170,7 @@ awk '/^## Try With AI/,0' 02-safety-first-pattern.md | grep -E "^## (What's Next
 - **Lesson 7 (Pipes)**: Add after pipeline example—"Here AI suggested the pattern while you validated the output, demonstrating orchestration..."
 
 **Validation**:
+
 ```bash
 # Whitespace check
 for lesson in 03 04 05 06 07; do
@@ -180,6 +188,7 @@ done
 **Compliance Status**: ❌ CRITICAL VIOLATION
 
 **Violation Details**:
+
 - **Lines 564**: "## Try With AI: Orchestration at Scale (Advanced)" section header
 - **Lines 565-602**: Section content (practice exercise, what to expect)
 - **Lines 603-605**: CLOSING PARAGRAPHS (content OUTSIDE section)
@@ -197,12 +206,14 @@ done
 5. **Finalize**: Single final "---" marks lesson end
 
 **Three Roles Enhancement** (Stage 2, Capstone pattern):
+
 - **Where**: In project orchestration section
 - **What**: Add 2-3 markers showing full co-learning cycle
 - **Example**: "Throughout setup, notice how you and AI took turns: You specified intent, AI suggested workflow (teaching), you executed and reported results, AI refined based on feedback (learning). The solution that emerged was better than either could design alone."
 - **Pattern**: Emphasize iteration and convergence as capstone theme
 
 **Validation**:
+
 ```bash
 # Check final section
 tail -50 08-real-project-troubleshooting.md | grep -E "^## " | tail -1
@@ -226,6 +237,7 @@ awk '/^## Try With AI: Orchestration/,0' 08-real-project-troubleshooting.md | gr
 **Timing**: Immediately after completing Lessons 2 and 8 corrections
 
 **Automated Validation Script**:
+
 ```bash
 #!/bin/bash
 echo "=== CHECKPOINT 1: CRITICAL STRUCTURAL COMPLIANCE ==="
@@ -235,7 +247,7 @@ declare -a CRITICAL_LESSONS=("02-safety-first-pattern" "08-real-project-troubles
 for lesson in "${CRITICAL_LESSONS[@]}"; do
   echo ""
   echo "--- Lesson $lesson ---"
-  FILE="/Users/mjs/Documents/code/panaversity-official/tutorsgpt/ai-native-software-development/book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/${lesson}.md"
+  FILE="/Users/mjs/Documents/code/panaversity-official/tutorsgpt/ai-native-software-development/apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/${lesson}.md"
 
   # Check 1: Final section is "Try With AI"
   FINAL=$(tail -50 "$FILE" | grep -E "^## " | tail -1)
@@ -261,6 +273,7 @@ echo "If any check shows ✗, debug structural move before proceeding"
 ```
 
 **Pass Criteria**:
+
 - Lesson 2: Final section "## Try With AI: Real Examples from Gemini" ✓
 - Lesson 2: Zero forbidden sections ✓
 - Lesson 8: Final section "## Try With AI: Orchestration at Scale (Advanced)" ✓
@@ -273,6 +286,7 @@ echo "If any check shows ✗, debug structural move before proceeding"
 **Timing**: After completing whitespace cleanup on all 5 lessons
 
 **Validation Script**:
+
 ```bash
 #!/bin/bash
 echo "=== CHECKPOINT 2: WHITESPACE NORMALIZATION ==="
@@ -282,7 +296,7 @@ LESSONS=("03-understanding-navigation" "04-understanding-file-operations" "05-co
 for lesson in "${LESSONS[@]}"; do
   echo ""
   echo "--- Lesson $lesson ---"
-  FILE="/Users/mjs/Documents/code/panaversity-official/tutorsgpt/ai-native-software-development/book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/${lesson}.md"
+  FILE="/Users/mjs/Documents/code/panaversity-official/tutorsgpt/ai-native-software-development/apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/${lesson}.md"
 
   # Check: Final pattern is ---\n\n[EOF]
   LAST_BYTES=$(tail -c 20 "$FILE" | od -c | head -3)
@@ -301,6 +315,7 @@ echo "All lessons should show ✓ for whitespace normalization"
 ```
 
 **Pass Criteria**:
+
 - All 5 lessons end with: `---\n\n[EOF]`
 - No trailing whitespace on any line
 - No extra blank lines
@@ -312,6 +327,7 @@ echo "All lessons should show ✓ for whitespace normalization"
 **Timing**: After Phase 1-3 complete (all lessons refined)
 
 **Comprehensive Validation Script**:
+
 ```bash
 #!/bin/bash
 echo "=== CHECKPOINT 3: CONSTITUTIONAL COMPLIANCE AUDIT (100% PASSING) ==="
@@ -324,7 +340,7 @@ FAIL_COUNT=0
 for lesson in "${LESSONS[@]}"; do
   echo ""
   echo "==== LESSON: $lesson ===="
-  FILE="/Users/mjs/Documents/code/panaversity-official/tutorsgpt/ai-native-software-development/book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/${lesson}.md"
+  FILE="/Users/mjs/Documents/code/panaversity-official/tutorsgpt/ai-native-software-development/apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/${lesson}.md"
 
   # Check 1: Final section is "Try With AI"
   FINAL=$(tail -50 "$FILE" | grep -E "^## " | tail -1)
@@ -379,12 +395,14 @@ fi
 **Core insight**: Three Roles markers should be visible for learners seeking clarity, invisible for fluent readers. Avoid condescension.
 
 **Forbidden language**:
+
 - ❌ "This is Stage 2 demonstrating Three Roles"
 - ❌ "## Three Roles in Action"
 - ❌ "Layer 2 collaboration pattern"
 - ❌ "You are now experiencing bidirectional learning"
 
 **Encouraged language**:
+
 - ✅ "Notice how [AI action] taught you..."
 - ✅ "Here you taught AI that..."
 - ✅ "Through [N] iterations, you and AI converged on..."
@@ -393,24 +411,28 @@ fi
 ### Narration Templates (by Role Type)
 
 **Template 1: AI as Teacher (Optimization)**
+
 ```
 "Notice how [AI suggested pattern]. This teaches you that [learning value]—
 a real example of how AI collaboration surfaces approaches you might not have considered."
 ```
 
 **Template 2: Student as Teacher (Constraint)**
+
 ```
 "Here, you taught [AI] that [constraint]. This demonstrates active supervision—
 you're not passively accepting AI's answer, you're guiding it toward YOUR actual needs."
 ```
 
 **Template 3: Convergence (Iteration)**
+
 ```
 "Through [description of iteration], you and AI converged on [solution].
 Neither had the perfect answer at the start—co-learning is what produced the result."
 ```
 
 **Template 4: Capstone Pattern (Full Cycle)**
+
 ```
 "Throughout [task], notice how you and AI took turns: You specified intent, AI suggested approach,
 you executed and reported back, AI refined based on feedback. The solution that emerged was better than
@@ -420,26 +442,33 @@ either of you could have designed alone."
 ### Specific Markers by Lesson
 
 **Lesson 2** (After Real Examples):
+
 1. Example 1: "Notice how Gemini taught you about git's snapshot approach..."
 2. Example 2: "Here, you taught Gemini what 'old' means in your context..."
 3. Example 3: "This shows real co-learning: agent identified limitation, you learned..."
 
 **Lesson 3**: Pick 1-2 navigation examples
+
 - "Notice how you and AI navigated toward the same goal..."
 
 **Lesson 4**: Pick 1-2 file operation examples
+
 - "Here you verified each step, teaching AI about risk tolerance..."
 
 **Lesson 5**: Pick 1-2 secrets/configuration examples
+
 - "Notice how AI suggested security patterns while learning your approach..."
 
 **Lesson 6**: Pick 1-2 dependency examples
+
 - "Together you converged on optimal dependency configuration..."
 
 **Lesson 7**: Pick 1-2 pipeline examples
+
 - "Here AI suggested the pattern while you validated output, demonstrating orchestration..."
 
 **Lesson 8**: In orchestration section
+
 - "Throughout setup, notice the iteration: You specified, AI suggested, you executed and reported, AI refined..."
 
 ---
@@ -473,11 +502,13 @@ either of you could have designed alone."
 ### Per-Lesson Diff Expectations
 
 **Lesson 1**: Zero diff (no changes)
+
 ```
 < Same file as original
 ```
 
 **Lesson 2**: Structural moves only + Three Roles narration
+
 ```
 - Lines 420-503 appear outside "Try With AI"
 + Lines 420-503 appear inside "Try With AI"
@@ -488,6 +519,7 @@ either of you could have designed alone."
 ```
 
 **Lessons 3-7**: Whitespace cleanup + Three Roles narration
+
 ```
 - [Extra blank lines after "---"]
 + [Exactly 1 blank line after "---"]
@@ -496,6 +528,7 @@ either of you could have designed alone."
 ```
 
 **Lesson 8**: Structural moves + Three Roles narration
+
 ```
 - Lines 603-605 appear outside "Try With AI"
 + Lines 603-605 appear inside "Try With AI"
@@ -553,17 +586,20 @@ git commit -m "test(chapter-7): Constitutional compliance audit - 100% passing
 **For content-implementer agent**:
 
 1. **Phase 1** (Critical):
+
    - Task 1.1: Execute Lesson 2 structural move (lines 420-503 into Try With AI)
    - Task 1.2: Execute Lesson 8 structural move (lines 603-605 into Try With AI)
    - Validation: Run Checkpoint 1 script, confirm 4/4 checks passing
    - If any check fails, debug before proceeding to Phase 2
 
 2. **Phase 2** (Minor):
+
    - Task 2.1: Normalize whitespace on Lessons 3-7 (exactly 1 blank line after "---")
    - Validation: Run Checkpoint 2 script, confirm all lessons pass
    - If any lesson fails, re-check whitespace pattern before proceeding to Phase 3
 
 3. **Phase 3** (Enhancement):
+
    - Task 3.1: Add Three Roles narration to Lessons 2, 8 (2-3 markers each)
    - Task 3.2: Add Three Roles narration to Lessons 3-7 (1-2 markers each)
    - Validation: Run Checkpoint 3 script, confirm 24/24 checks passing

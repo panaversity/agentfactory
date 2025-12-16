@@ -17,18 +17,20 @@ Restructure the AI Native Software Development book to introduce Spec-Driven Dev
 
 **Language/Version**: Bash 5.x, TypeScript 5.6 (Docusaurus 3.9.2 plugins), Markdown
 **Primary Dependencies**: Docusaurus 3.9.2, git 2.x, remark plugins (interactive-python, content-enhancements)
-**Storage**: Local file system (book-source/docs/, book-source/static/), git repository
+**Storage**: Local file system (apps/learn-app/docs/, book-source/static/), git repository
 **Testing**: Manual validation (Docusaurus build, browser tests for interactive code), automated grep validation
 **Target Platform**: macOS/Linux development environment, GitHub repository
 **Project Type**: Documentation infrastructure (book restructuring)
 **Performance Goals**: No performance constraints—operation completes in minutes, not seconds
 **Constraints**:
+
 - MUST use `git mv` for all operations (preserve history)
 - MUST NOT lose any content files (verified via counts before/after)
 - MUST update content references atomically (no broken chapter mentions)
 - MUST preserve Docusaurus build integrity (no broken links)
 
 **Scale/Scope**:
+
 - 33 existing chapter directories (1-33)
 - 33 slide PDFs
 - ~30 image directories
@@ -38,7 +40,7 @@ Restructure the AI Native Software Development book to introduce Spec-Driven Dev
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 **Task Type**: Infrastructure/Documentation (NOT educational content creation)
 
@@ -47,6 +49,7 @@ Restructure the AI Native Software Development book to introduce Spec-Driven Dev
 **Rationale**: This feature restructures book metadata, directories, and assets. It does NOT create educational content, design lessons, or teach concepts. The constitution (v6.0.1) governs "Educational content governance (book chapters, lessons, exercises)" per its Scope definition.
 
 **Quality Standards Applied Instead**:
+
 - Spec-Driven Development principles (this feature uses SDD workflow itself)
 - Git best practices (history preservation, atomic operations)
 - Documentation integrity (Docusaurus build validation)
@@ -113,11 +116,11 @@ specs/book/
 
 > **No constitution violations** - Infrastructure work is out of scope for educational content constitution.
 
-| Justification Category | Rationale |
-|------------------------|-----------|
-| **Operational Complexity** | 5-phase migration with 24 steps required to avoid filename conflicts during overlapping numeric ranges |
-| **Reverse-Order Execution** | Essential pattern when source range (13-30) overlaps with target range (16-33)—prevents overwriting files mid-migration |
-| **Asset Migration Scope** | 21 slides + ~18 images must stay synchronized with chapter moves to prevent broken references |
+| Justification Category        | Rationale                                                                                                                                                                  |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Operational Complexity**    | 5-phase migration with 24 steps required to avoid filename conflicts during overlapping numeric ranges                                                                     |
+| **Reverse-Order Execution**   | Essential pattern when source range (13-30) overlaps with target range (16-33)—prevents overwriting files mid-migration                                                    |
+| **Asset Migration Scope**     | 21 slides + ~18 images must stay synchronized with chapter moves to prevent broken references                                                                              |
 | **Content Reference Updates** | 315+ chapter mentions require automated search-and-replace with REVERSE ORDER to prevent double-replacement (e.g., "Chapter 33" must become "35" BEFORE "30" becomes "33") |
 
 ## Phase 0: Research & Unknowns
@@ -127,26 +130,31 @@ specs/book/
 ### Research Tasks
 
 1. **Git History Preservation with `git mv`**
+
    - **Question**: Does `git mv` preserve full commit history for renamed directories?
    - **Research**: Test `git log --follow` on renamed directory
    - **Expected Finding**: Yes, `git mv` is equivalent to `git add` + `git rm` with history tracking
 
 2. **Reverse-Order Renaming Pattern**
+
    - **Question**: Why is reverse order essential for overlapping numeric ranges?
    - **Research**: Document conflict scenario (forward order 13→16 succeeds, then 16→19 overwrites)
    - **Expected Finding**: Forward order causes overwrites; reverse order (30→33, 29→32, ..., 13→16) is safe
 
 3. **Docusaurus Sidebar Generation**
+
    - **Question**: How does Docusaurus autogenerate sidebars from YAML `sidebar_position`?
    - **Research**: Read sidebars.ts (uses `{type: 'autogenerated', dirName: '.'}`)
    - **Expected Finding**: Directory names are decorative; YAML `sidebar_position` determines order
 
 4. **Interactive Python Plugin Path Resolution**
+
    - **Question**: Does hardcoded `/04-Python-Fundamentals/` path break interactive code for moved chapters?
    - **Research**: Read `remark-interactive-python/index.js` to understand path matching
    - **Expected Finding**: Path filter is exact match—must be updated to `/05-Python-Fundamentals/`
 
 5. **Custom Plugin Chapter Number Extraction**
+
    - **Question**: Do `og-image-generator` or `structured-data` plugins parse chapter numbers from directory names?
    - **Research**: Read plugin source to check for regex patterns like `/(\d+)-/`
    - **Expected Finding**: Likely safe—modern plugins use frontmatter metadata, not directory parsing
@@ -165,6 +173,7 @@ specs/book/
 ### 1. Data Model: Renumbering Mappings (`data-model.md`)
 
 **Entity: Chapter**
+
 ```yaml
 ChapterRenumbering:
   chapter_old: integer (1-33)
@@ -177,6 +186,7 @@ ChapterRenumbering:
 ```
 
 **Mappings**:
+
 - Chapters 1-12: No change (status=UNCHANGED)
 - Chapter 31 → 13 (Part 5→4, status=MOVED)
 - Chapter 32 → 14 (Part 5→4, status=MOVED)
@@ -187,6 +197,7 @@ ChapterRenumbering:
 - Chapter 36: NEW (Part 6, status=PLACEHOLDER_NEW)
 
 **Entity: Asset**
+
 ```yaml
 AssetRenumbering:
   asset_type: enum (SLIDE_PDF, IMAGE_DIRECTORY, YAML_REFERENCE, MARKDOWN_REFERENCE)
@@ -196,6 +207,7 @@ AssetRenumbering:
 ```
 
 **Asset Inventory**:
+
 - 21 slide PDFs: `chapter-{13-30,31-33}-slides.pdf` → `chapter-{16-33,13-14,35}-slides.pdf`
 - ~18 image directories: `part-4/chapter-{13,15,16,...,30}/` → `part-5/chapter-{16,18,19,...,33}/`
 - ~18 image directories: `part-5/chapter-{31,32,33}/` → `part-4/chapter-{13,14}/ + part-6/chapter-35/`
@@ -264,6 +276,7 @@ AssetRenumbering:
 ### 3. Quickstart: Rollback Procedure (`quickstart.md`)
 
 **Safe Rollback**:
+
 ```bash
 # All operations via git mv means reset restores everything
 git reset --hard HEAD
@@ -272,11 +285,12 @@ git reset --hard HEAD
 git reset --hard HEAD~1
 
 # Verify restoration
-ls -la book-source/docs/04-Python-Fundamentals/  # Should exist
-ls -la book-source/docs/05-Spec-Driven-Development/  # Should exist
+ls -la apps/learn-app/docs/04-Python-Fundamentals/  # Should exist
+ls -la apps/learn-app/docs/05-Spec-Driven-Development/  # Should exist
 ```
 
 **Validation Commands**:
+
 ```bash
 # Count chapters before/after
 find book-source/docs -type d -name "[0-9]*-*" | wc -l
@@ -299,6 +313,7 @@ cd book-source && npm run build
 ```
 
 **Technologies to add**:
+
 - Git mv operations for directory renaming
 - Reverse-order renaming patterns for overlapping numeric ranges
 - Docusaurus autogenerated sidebars with YAML sidebar_position
@@ -309,33 +324,36 @@ cd book-source && npm run build
 **Note**: Detailed tasks generated by `/sp.tasks` command. This is a high-level overview.
 
 ### Phase A: Directory Structure Preparation (3 tasks)
+
 1. Rename Part 4 (Python) → Part 5
 2. Rename Part 5 (SDD) → Part 4
 3. Create Part 6 directory
 
 ### Phase B: Chapter Directory Moves (7 tasks)
+
 4. Move chapter 33 → temp location (avoids conflicts)
-5-22. Move Python chapters 30→33, 29→32, ..., 13→16 (REVERSE ORDER, 18 operations)
-23. Move SDD chapters 31→13, 32→14
-24. Move chapter 33 from temp → 35 (final position)
+   5-22. Move Python chapters 30→33, 29→32, ..., 13→16 (REVERSE ORDER, 18 operations)
+5. Move SDD chapters 31→13, 32→14
+6. Move chapter 33 from temp → 35 (final position)
 
 ### Phase C: Asset Migration (13 tasks)
+
 25-42. Rename Python slides 30→33, ..., 13→16 (REVERSE ORDER, 18 operations)
-43-44. Rename SDD slides 31→13, 32→14
-45. Rename AI Orchestra slide 33→35
+43-44. Rename SDD slides 31→13, 32→14 45. Rename AI Orchestra slide 33→35
 46-63. Move Python images (REVERSE ORDER, ~15 operations)
-64-65. Move SDD images
-66. Move AI Orchestra images
+64-65. Move SDD images 66. Move AI Orchestra images
 
 ### Phase D: Metadata & Content Updates (6 tasks)
+
 67. Update YAML frontmatter (sidebar_position + slides.source) in 21 READMEs
 68. Update image markdown references in lesson files
-69-70. Update plugin configuration files (docusaurus.config.ts, index.js)
-71. Update narrative chapter references (REVERSE ORDER: 33→35, 32→14, 31→13, then Python)
-72. Create placeholder READMEs for chapters 15, 34, 36
-73. Update chapter-index.md
+    69-70. Update plugin configuration files (docusaurus.config.ts, index.js)
+69. Update narrative chapter references (REVERSE ORDER: 33→35, 32→14, 31→13, then Python)
+70. Create placeholder READMEs for chapters 15, 34, 36
+71. Update chapter-index.md
 
 ### Phase E: Validation (5 tasks)
+
 74. Run Docusaurus build
 75. Validate git history preservation
 76. Verify asset counts
@@ -349,15 +367,18 @@ cd book-source && npm run build
 ### Critical Success Factors
 
 1. **Reverse-Order Execution**: Essential for both chapter moves AND content reference updates
+
    - Chapter moves: 30→33 first prevents 16→19 from overwriting the file we just created
    - Content updates: "Chapter 33" → "35" must happen BEFORE "30" → "33" to prevent double-replacement
 
 2. **Atomic Git Operations**: Use `git mv` exclusively
+
    - Preserves history automatically
    - Enables simple rollback via `git reset --hard`
    - No need for complex git filter-branch operations
 
 3. **Plugin Configuration**: Critical path dependency
+
    - Interactive Python code WILL BREAK if plugin path not updated
    - Must update BOTH docusaurus.config.ts AND plugin index.js
    - Validate with grep after changes
@@ -384,12 +405,14 @@ cd book-source && npm run build
 ## Dependencies
 
 **Upstream**:
+
 - Git repository in clean state (no uncommitted changes)
 - Node.js + npm installed (for Docusaurus build validation)
 - All chapter directories 1-33 exist with content
 - chapter-index-NEW.md already created (serves as reference)
 
 **Downstream**:
+
 - Phase 2: Content creation for chapters 15, 34, 36 (placeholder READMEs only in Phase 1)
 - Phase 2: Content pivot for Chapter 14 (Python → YouTube/Gemini)
 - Phase 2: Update narrative cross-references if new chapters mention old numbers
@@ -397,17 +420,19 @@ cd book-source && npm run build
 ## Validation Checklist
 
 **Pre-Migration**:
+
 - [ ] Git status clean (no uncommitted changes)
 - [ ] Backup chapter-index.md
-- [ ] Count *.md files: `find book-source/docs -name '*.md' | wc -l` → Record count
+- [ ] Count _.md files: `find book-source/docs -name '_.md' | wc -l` → Record count
 - [ ] Count slide PDFs: `ls -1 book-source/static/slides/*.pdf | wc -l` → Record count
 
 **Post-Migration** (All 14 Success Criteria from spec.md):
+
 - [ ] SC-001: All 3 chapter directories moved (31→13, 32→14, 33→35) with git history
 - [ ] SC-002: All 3 placeholder READMEs created (15, 34, 36) with valid YAML
 - [ ] SC-003: chapter-index.md shows 86 chapters correctly
 - [ ] SC-004: Directory structure validation passes (Part 4: 3 chapters, Part 5: 18, Part 6: 3)
-- [ ] SC-005: Zero content files lost (*.md count matches pre-migration)
+- [ ] SC-005: Zero content files lost (\*.md count matches pre-migration)
 - [ ] SC-006: Docusaurus build succeeds (exit code 0)
 - [ ] SC-007: All moved READMEs have correct sidebar_position
 - [ ] SC-008: All 21 slide PDFs renamed with git history

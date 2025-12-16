@@ -11,6 +11,7 @@ This document breaks down the implementation of Chapter 8 into actionable, depen
 **Total Estimated Tasks**: 110+ items (includes content creation, visual assets, interactive elements, and validation)
 
 **Constitutional Compliance Requirements**:
+
 - ✅ Meta-commentary prohibition enforced (no "What to notice", "AI is teaching you", "AI learned from")
 - ✅ Three Roles Framework remains INVISIBLE in student-facing content (experienced through action)
 - ✅ Evals-first pattern maintained (assessments before content exposure)
@@ -28,7 +29,7 @@ This document breaks down the implementation of Chapter 8 into actionable, depen
 - **TaskID**: T001-T999 (unique identifier)
 - **P?**: Priority flag (P1-P7 from user stories)
 - **Story?**: User story mapping (US1-US8)
-- **Path**: Relative to `book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/`
+- **Path**: Relative to `apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/`
 
 ---
 
@@ -36,12 +37,12 @@ This document breaks down the implementation of Chapter 8 into actionable, depen
 
 **Dependencies**: None (start here)
 
-- [X] T001 [P1] [Setup] Create chapter directory structure in book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/
-- [X] T002 [P1] [Setup] Create subdirectories: assets/, exercises/, templates/ in chapter root (Note: lessons/ removed - incorrect structure)
-- [X] T003 [P1] [Setup] Initialize README.md with chapter overview, 8-lesson structure, and learning path in 08-ai-native-ides/README.md
-- [X] T004 [P1] [Setup] Create template files for observational exercises in templates/observational-comparison-template.md
-- [X] T005 [P1] [Setup] Create reflection prompt template for capstone in templates/ide-comparison-reflection.md
-- [X] T006 [P1] [Setup] Set up assets/ subdirectories: screenshots/, diagrams/, videos/, code-samples/, research/
+- [x] T001 [P1] [Setup] Create chapter directory structure in apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/
+- [x] T002 [P1] [Setup] Create subdirectories: assets/, exercises/, templates/ in chapter root (Note: lessons/ removed - incorrect structure)
+- [x] T003 [P1] [Setup] Initialize README.md with chapter overview, 8-lesson structure, and learning path in 08-ai-native-ides/README.md
+- [x] T004 [P1] [Setup] Create template files for observational exercises in templates/observational-comparison-template.md
+- [x] T005 [P1] [Setup] Create reflection prompt template for capstone in templates/ide-comparison-reflection.md
+- [x] T006 [P1] [Setup] Set up assets/ subdirectories: screenshots/, diagrams/, videos/, code-samples/, research/
 
 ---
 
@@ -53,7 +54,7 @@ This document breaks down the implementation of Chapter 8 into actionable, depen
 
 - [ ] T007 [P1] [Research] Document latest Zed features from Context7 (/zed-industries/zed: 897 snippets) in assets/research/zed-features.md
 - [ ] T008 [P1] [Research] Document latest Cursor features from Context7 (/llmstxt/cursor_llms_txt: 5261 snippets) in assets/research/cursor-features.md
-- [ ] T009 [P1] [Research] Extract Antigravity architecture from context/16_chapter8__ides/antigravity.md into assets/research/antigravity-architecture.md
+- [ ] T009 [P1] [Research] Extract Antigravity architecture from context/16_chapter8\_\_ides/antigravity.md into assets/research/antigravity-architecture.md
 - [ ] T010 [P1] [Research] Research platform-specific installation edge cases (macOS, Linux, Windows) for all 3 IDEs in assets/research/installation-troubleshooting.md
 - [ ] T011 [P1] [Research] Document free-tier API limits (Anthropic, OpenAI, Google) as of 2025-11-20 in assets/research/api-pricing-2025.md
 - [ ] T012 [P1] [Research] Research Ollama model recommendations for code generation in assets/research/ollama-models.md
@@ -83,12 +84,12 @@ This document breaks down the implementation of Chapter 8 into actionable, depen
 
 ### Content Creation
 
-- [X] T021 [P1] [US1] Write lesson content (all sections in single file per book structure) in 01-ai-native-concepts.md
-- [X] T022 [P1] [US1] Section: "What Makes an IDE AI-Native?" (architectural design vs plugins) - included in 01-ai-native-concepts.md
-- [X] T023 [P1] [US1] Section: "Three Key Characteristics" (context-aware AI, multi-model support, agent capabilities) - included in 01-ai-native-concepts.md
-- [X] T024 [P1] [US1] Section: "AI-Native vs Plugin Architecture" (comparison table) - included in 01-ai-native-concepts.md
-- [X] T025 [P1] [US1] Section: "Why Architecture Matters" (speed, context quality, evolution) - included in 01-ai-native-concepts.md
-- [X] T026 [P1] [US1] Section: "The Landscape in 2025" (Zed, Cursor, Antigravity overview) - included in 01-ai-native-concepts.md
+- [x] T021 [P1] [US1] Write lesson content (all sections in single file per book structure) in 01-ai-native-concepts.md
+- [x] T022 [P1] [US1] Section: "What Makes an IDE AI-Native?" (architectural design vs plugins) - included in 01-ai-native-concepts.md
+- [x] T023 [P1] [US1] Section: "Three Key Characteristics" (context-aware AI, multi-model support, agent capabilities) - included in 01-ai-native-concepts.md
+- [x] T024 [P1] [US1] Section: "AI-Native vs Plugin Architecture" (comparison table) - included in 01-ai-native-concepts.md
+- [x] T025 [P1] [US1] Section: "Why Architecture Matters" (speed, context quality, evolution) - included in 01-ai-native-concepts.md
+- [x] T026 [P1] [US1] Section: "The Landscape in 2025" (Zed, Cursor, Antigravity overview) - included in 01-ai-native-concepts.md
 
 ### Assessment & Exercises
 
@@ -97,7 +98,7 @@ This document breaks down the implementation of Chapter 8 into actionable, depen
 
 ### Validation
 
-- [ ] T029 [P1] [US1] Run meta-commentary grep on all Lesson 1 files (grep -i "What to notice\|AI.*teach\|AI.*learn\|AI as\|AI now knows" lessons/01-ai-native-concepts/*.md)
+- [ ] T029 [P1] [US1] Run meta-commentary grep on all Lesson 1 files (grep -i "What to notice\|AI.*teach\|AI.*learn\|AI as\|AI now knows" lessons/01-ai-native-concepts/\*.md)
 - [ ] T030 [P1] [US1] Validate cognitive load: Count concepts per section (target: 5-7 for A2) in Lesson 1
 
 **Independent Test Criteria for US1**: Student explains 3 architectural differences between AI-native IDEs and traditional editors in writing, provides 1 concrete workflow example.
@@ -123,9 +124,9 @@ This document breaks down the implementation of Chapter 8 into actionable, depen
 
 ### Visual Assets
 
-- [ ] T038 [P2] [US2] Capture screenshots: Zed installation on macOS (download, drag-to-Applications, first launch) in assets/screenshots/zed/macos-install-*.png
-- [ ] T039 [P2] [US2] Capture screenshots: Zed installation on Windows (installer wizard, PATH setup) in assets/screenshots/zed/windows-install-*.png
-- [ ] T040 [P2] [US2] Capture screenshots: Zed installation on Linux (binary download, chmod +x, desktop entry) in assets/screenshots/zed/linux-install-*.png
+- [ ] T038 [P2] [US2] Capture screenshots: Zed installation on macOS (download, drag-to-Applications, first launch) in assets/screenshots/zed/macos-install-\*.png
+- [ ] T039 [P2] [US2] Capture screenshots: Zed installation on Windows (installer wizard, PATH setup) in assets/screenshots/zed/windows-install-\*.png
+- [ ] T040 [P2] [US2] Capture screenshots: Zed installation on Linux (binary download, chmod +x, desktop entry) in assets/screenshots/zed/linux-install-\*.png
 - [ ] T041 [P2] [US2] Capture screenshots: Zed settings UI (agent configuration, API key fields) in assets/screenshots/zed/settings-ai-config.png
 - [ ] T042 [P2] [US2] Create video walkthrough: Zed installation on all 3 platforms (optional, accessibility alternative) in assets/videos/zed-installation-walkthrough.mp4
 
@@ -209,7 +210,7 @@ This document breaks down the implementation of Chapter 8 into actionable, depen
 
 ### Visual Assets
 
-- [ ] T075 [P4] [US4] Capture screenshots: Cursor installation on all 3 platforms in assets/screenshots/cursor/install-*.png
+- [ ] T075 [P4] [US4] Capture screenshots: Cursor installation on all 3 platforms in assets/screenshots/cursor/install-\*.png
 - [ ] T076 [P4] [US4] Capture screenshots: VS Code settings import dialog in assets/screenshots/cursor/vscode-import.png
 - [ ] T077 [P4] [US4] Capture screenshots: Cursor AI settings UI (API keys, model selection) in assets/screenshots/cursor/ai-settings.png
 
@@ -292,7 +293,7 @@ This document breaks down the implementation of Chapter 8 into actionable, depen
 
 ### Visual Assets
 
-- [ ] T109 [P6] [US6] Capture screenshots: Antigravity installation on all 3 platforms in assets/screenshots/antigravity/install-*.png
+- [ ] T109 [P6] [US6] Capture screenshots: Antigravity installation on all 3 platforms in assets/screenshots/antigravity/install-\*.png
 - [ ] T110 [P6] [US6] Capture screenshots: Agent Manager interface (create agent, workspace selection) in assets/screenshots/antigravity/agent-manager.png
 - [ ] T111 [P6] [US6] Capture screenshots: Three surfaces side-by-side (Agent Manager, Editor, Browser) in assets/screenshots/antigravity/three-surfaces.png
 
@@ -385,7 +386,7 @@ This document breaks down the implementation of Chapter 8 into actionable, depen
 
 - [ ] T148 [P5] [US5] Finalize 3-way comparison matrix (performance, features, collaboration, ecosystem, curve) in assets/diagrams/final-comparison-matrix.png
 - [ ] T149 [P5] [US5] Finalize decision flowchart (if speed→Zed, if familiarity→Cursor, if agent-driven→Antigravity) in assets/diagrams/final-decision-flowchart.png
-- [ ] T150 [P7] [US7] Create capstone walkthrough screenshots: Same prompt in all 3 IDEs in assets/screenshots/capstone/temp-converter-*.png
+- [ ] T150 [P7] [US7] Create capstone walkthrough screenshots: Same prompt in all 3 IDEs in assets/screenshots/capstone/temp-converter-\*.png
 
 ### Assessment
 
@@ -470,6 +471,7 @@ This document breaks down the implementation of Chapter 8 into actionable, depen
 ## Dependency Graph (Execution Order)
 
 **Critical Path**:
+
 ```
 Phase 1 (Setup)
   ↓
@@ -487,6 +489,7 @@ Phase 11 (Cross-Cutting & Polish)
 ```
 
 **Parallel Work Opportunities**:
+
 - Visual assets (T038-T042, T075-T077, T109-T111) can be captured concurrently with content writing
 - Accessibility tasks (T163-T165) can proceed once screenshots exist
 - Validation tasks (T174-T178) can run incrementally after each lesson phase
@@ -496,6 +499,7 @@ Phase 11 (Cross-Cutting & Polish)
 ## Success Metrics Tracking
 
 ### Per Lesson:
+
 - [ ] Lesson 1: SC-001 validated (conceptual understanding)
 - [ ] Lesson 2: SC-002 validated (installation success)
 - [ ] Lesson 3: SC-003 validated (AI task completion <10 min)
@@ -504,6 +508,7 @@ Phase 11 (Cross-Cutting & Polish)
 - [ ] Lesson 8: SC-004, SC-005, SC-007, SC-008 validated (capstone + selection + evaluation + confidence)
 
 ### Constitutional Compliance:
+
 - [ ] Zero meta-commentary violations (grep returns no matches)
 - [ ] Three Roles invisible (no role labels, only action prompts)
 - [ ] Observational approach enforced (no manual coding before Part 4)
@@ -511,6 +516,7 @@ Phase 11 (Cross-Cutting & Polish)
 - [ ] Evals-first pattern maintained (assessments before content)
 
 ### Deliverables:
+
 - [ ] 8 complete lessons (README + subsections per lesson)
 - [ ] 110+ tasks completed (content, visuals, exercises, validation)
 - [ ] 50+ screenshots captured and annotated
@@ -527,12 +533,14 @@ Phase 11 (Cross-Cutting & Polish)
 **CRITICAL**: This chapter teaches students to observe and evaluate AI-generated code, NOT to write code manually. Students at Part 2 have ZERO programming experience.
 
 **All exercises must follow observational learning pattern**:
+
 1. Provide clear natural language prompt for students to give AI
 2. Specify what to observe in AI's output
 3. Include reflection questions about AI's choices
 4. Compare outputs across IDEs (not student's manual code vs AI)
 
 **Example CORRECT exercise**:
+
 ```
 **Exercise**: Prompt AI to refactor repetitive code
 1. Open the provided Python file with repeated validation logic
@@ -542,6 +550,7 @@ Phase 11 (Cross-Cutting & Polish)
 ```
 
 **Example INCORRECT exercise** (violates observational approach):
+
 ```
 **Exercise**: Refactor the following code manually, then ask AI for suggestions
 [This requires manual coding skills students don't have yet]
@@ -550,11 +559,12 @@ Phase 11 (Cross-Cutting & Polish)
 ### Context7 Research Integration
 
 All IDE features documented in this task list derive from:
+
 - **Zed**: /zed-industries/zed (897 code snippets, multi-model config, inline assistant, tab autocomplete, git integration)
 - **Cursor**: /llmstxt/cursor_llms_txt (5261 snippets, Chat mode, Agent mode, .cursorrules, diff review)
-- **Antigravity**: context/16_chapter8__ides/antigravity.md (three surfaces, artifact system, agent architecture)
+- **Antigravity**: context/16_chapter8\_\_ides/antigravity.md (three surfaces, artifact system, agent architecture)
 
-Refer to assets/research/*.md for detailed feature documentation.
+Refer to assets/research/\*.md for detailed feature documentation.
 
 ### Version Stability Note
 

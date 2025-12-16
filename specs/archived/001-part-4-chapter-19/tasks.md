@@ -19,7 +19,7 @@ description: "Task list for Chapter 19: Set, Frozen Set, and GC implementation"
 
 ## Path Conventions
 
-- **Chapter directory**: `book-source/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/`
+- **Chapter directory**: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/`
 - **Lesson files**: `01-set-basics.md`, `02-set-operations.md`, etc.
 - **Specification files**: `specs/001-part-4-chapter-19/`
 
@@ -29,9 +29,9 @@ description: "Task list for Chapter 19: Set, Frozen Set, and GC implementation"
 
 **Purpose**: Create chapter directory structure and initial files
 
-- [ ] T001 Create chapter directory `book-source/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/`
-- [ ] T002 Create chapter intro file `book-source/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/intro.md` with YAML frontmatter, overview, prerequisites, learning objectives
-- [ ] T003 Create chapter README `book-source/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/README.md` linking to lessons and capstone
+- [ ] T001 Create chapter directory `apps/learn-app/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/`
+- [ ] T002 Create chapter intro file `apps/learn-app/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/intro.md` with YAML frontmatter, overview, prerequisites, learning objectives
+- [ ] T003 Create chapter README `apps/learn-app/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/README.md` linking to lessons and capstone
 
 ---
 
@@ -57,7 +57,7 @@ description: "Task list for Chapter 19: Set, Frozen Set, and GC implementation"
 
 ### Implementation for Learning Journey 1 (Lesson 1)
 
-- [ ] T007 [LJ1] Write Lesson 1 introduction (5 min) in `book-source/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/01-set-basics.md`
+- [ ] T007 [LJ1] Write Lesson 1 introduction (5 min) in `apps/learn-app/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/01-set-basics.md`
 - [ ] T008 [LJ1] Write "What Makes Sets Different" section (uniqueness, unordered, hash-based storage) in `01-set-basics.md`
 - [ ] T009 [LJ1] Write "Creating Sets" section (literal syntax, constructor, type hints, empty set pitfall) in `01-set-basics.md`
 - [ ] T010 [LJ1] Write "The Hashability Requirement" section (immutable elements needed) in `01-set-basics.md`
@@ -84,7 +84,7 @@ description: "Task list for Chapter 19: Set, Frozen Set, and GC implementation"
 
 ### Implementation for Learning Journey 2 (Lesson 2)
 
-- [ ] T021 [LJ2] Write Lesson 2 introduction (set operations context) in `book-source/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/02-set-operations.md`
+- [ ] T021 [LJ2] Write Lesson 2 introduction (set operations context) in `apps/learn-app/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/02-set-operations.md`
 - [ ] T022 [LJ2] Write "Union — Combining Sets" section (`|` operator and `.union()`) in `02-set-operations.md`
 - [ ] T023 [LJ2] Write "Intersection — Finding Common Elements" section (`&` operator and `.intersection()`) in `02-set-operations.md`
 - [ ] T024 [LJ2] Write "Difference — Excluding Elements" section (`-` operator and `.difference()`) in `02-set-operations.md`
@@ -114,7 +114,7 @@ description: "Task list for Chapter 19: Set, Frozen Set, and GC implementation"
 
 ### Implementation for Learning Journey 3 (Lesson 3)
 
-- [ ] T038 [LJ3] Write Lesson 3 introduction (why internals matter) in `book-source/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/03-set-internals-hashing.md`
+- [ ] T038 [LJ3] Write Lesson 3 introduction (why internals matter) in `apps/learn-app/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/03-set-internals-hashing.md`
 - [ ] T039 [LJ3] Write "What Are Hash Functions?" section (intuitive explanation, `hash()` function) in `03-set-internals-hashing.md`
 - [ ] T040 [LJ3] Write "Why Immutability Matters" section (hash stability, what happens if objects change) in `03-set-internals-hashing.md`
 - [ ] T041 [LJ3] Write "Performance Comparison" section (O(1) vs O(n) lookup, demonstrate with timing) in `03-set-internals-hashing.md`
@@ -143,7 +143,7 @@ description: "Task list for Chapter 19: Set, Frozen Set, and GC implementation"
 
 ### Implementation for Learning Journey 4 (Lesson 4)
 
-- [ ] T054 [LJ4] Write Lesson 4 introduction (why immutable sets matter) in `book-source/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/04-frozensets.md`
+- [ ] T054 [LJ4] Write Lesson 4 introduction (why immutable sets matter) in `apps/learn-app/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/04-frozensets.md`
 - [ ] T055 [LJ4] Write "Frozenset as Immutable Set" section (creation, properties, operations) in `04-frozensets.md`
 - [ ] T056 [LJ4] Write "Frozensets are Hashable" section (can use as dict keys, set members) in `04-frozensets.md`
 - [ ] T057 [LJ4] Add Code Example 1: "Creating and Using Frozensets" (creation, immutability, operations) in `04-frozensets.md`
@@ -169,7 +169,7 @@ description: "Task list for Chapter 19: Set, Frozen Set, and GC implementation"
 
 ### Implementation for Learning Journey 5 (Lesson 5)
 
-- [ ] T067 [LJ5] Write Lesson 5 introduction (why memory management matters) in `book-source/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/05-garbage-collection.md`
+- [ ] T067 [LJ5] Write Lesson 5 introduction (why memory management matters) in `apps/learn-app/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/05-garbage-collection.md`
 - [ ] T068 [LJ5] Write "Reference Counting" section (how Python tracks usage, immediate deletion) in `05-garbage-collection.md`
 - [ ] T069 [LJ5] Write "Circular References" section (when refcount fails, cycle detector solution) in `05-garbage-collection.md`
 - [ ] T070 [LJ5] Write "The `gc` Module" section (manual collection, memory profiling, analysis) in `05-garbage-collection.md`
@@ -197,7 +197,7 @@ description: "Task list for Chapter 19: Set, Frozen Set, and GC implementation"
 
 ### Implementation for Learning Journey 6 (Lesson 6 - Capstone)
 
-- [ ] T082 [LJ6] Write Lesson 6 introduction (capstone goal, integration overview) in `book-source/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/06-memory-profiler-capstone.md`
+- [ ] T082 [LJ6] Write Lesson 6 introduction (capstone goal, integration overview) in `apps/learn-app/docs/04-Part-4-Python-Fundamentals/19-set-frozenset-gc/06-memory-profiler-capstone.md`
 - [ ] T083 [LJ6] Write "Tool Specification" section (requirements, input/output, constraints) in `06-memory-profiler-capstone.md`
 - [ ] T084 [LJ6] Write "Implementation Guide" section (design approach, class structure) in `06-memory-profiler-capstone.md`
 - [ ] T085 [LJ6] Add Code Example 1: "Memory Profiler Implementation" (MemoryProfiler class with sets for tracking) in `06-memory-profiler-capstone.md`
@@ -326,12 +326,14 @@ With multiple content creators:
 ### Content Policy for Lesson Authors
 
 **CRITICAL - Lesson Closure Standard**:
+
 - Within this chapter, each lesson MUST end with a single final section titled "Try With AI"
 - NO "Key Takeaways" sections (violates Constitution Rule 6)
 - NO "What's Next" sections (unless chapter-level in intro.md)
 - NO separate conclusion sections beyond "Try With AI"
 
 **AI Tool Selection**:
+
 - Before AI tools are taught (Part 1): Use ChatGPT web in "Try With AI" section
 - After tool onboarding (Parts 2+): Instruct learners to use their preferred AI companion (Gemini CLI, Claude Code, ChatGPT web)
 - Optionally provide CLI and web variants for prompts
@@ -357,6 +359,7 @@ With multiple content creators:
 ---
 
 **Total Tasks**: 101
+
 - Setup: 3 tasks
 - Foundational: 3 tasks
 - Learning Journey 1 (Lesson 1): 14 tasks

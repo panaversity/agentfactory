@@ -3,13 +3,14 @@
 **Feature Branch**: `001-chapter-1-redesign`
 **Created**: 2025-10-30
 **Status**: Draft
-**Input**: User description: "Redesign chapter 1. The old chapter was fluffy and without any goal to set stage of this book. Check the part 1 goal provided at book-source/docs/01-Introducing-AI-Driven-Development/README.md and the context here context/02_chap1_spec/readme.md"
+**Input**: User description: "Redesign chapter 1. The old chapter was fluffy and without any goal to set stage of this book. Check the part 1 goal provided at apps/learn-app/docs/01-Introducing-AI-Driven-Development/README.md and the context here context/02_chap1_spec/readme.md"
 
 ## Overview
 
 Chapter 1 serves as the foundational chapter of Part 1, establishing the context, urgency, and opportunity of AI-driven development. The current version lacks clear pedagogical goals and fails to effectively motivate learners to engage with the transformation happening in software development.
 
 This redesign will transform Chapter 1 into a focused, evidence-based narrative that:
+
 - Establishes the scale and significance of the AI coding revolution
 - Motivates readers by showing both the threat of being left behind and the opportunity of participating
 - Provides concrete evidence that this transformation is real and happening now
@@ -85,12 +86,15 @@ An experienced developer reads Chapter 1 to understand how their role is evolvin
 ### Edge Cases
 
 - **What happens when a reader arrives with strong AI skepticism or bias?**
+
   - Chapter must address common objections proactively with evidence (e.g., "This is just hype" → show revenue growth and adoption data; "AI can't really code" → cite ICPC results and enterprise deployments)
 
 - **How does the chapter handle readers at different technical levels?**
+
   - Must balance accessibility for beginners with credibility for experienced developers through: (1) plain language explanations, (2) concrete examples anyone can understand, (3) technical depth in cited sources for those who want to verify
 
 - **What if a reader expects hands-on coding in Chapter 1?**
+
   - Must explicitly state that Part 1 is conceptual/strategic and explain why understanding the paradigm shift precedes technical skills (prevents frustration and sets appropriate expectations)
 
 - **How does the chapter avoid overwhelming readers with information?**
@@ -201,7 +205,7 @@ An experienced developer reads Chapter 1 to understand how their role is evolvin
 
 - Access to and rights to embed the three YouTube videos: (1) "The $3 Trillion AI Coding Opportunity" (https://www.youtube.com/watch?v=VlOAWvvjThU), (2) Urdu/Hindi overview (https://youtu.be/dnk5nP9hzHg), (3) English overview (https://youtu.be/3ZPIerZkZn4)
 - Video transcript content from context/02_chap1_spec/readme.md to ensure alignment with source material
-- Part 1 introduction (book-source/docs/01-Introducing-AI-Driven-Development/README.md) to ensure consistent messaging and proper setup for subsequent chapters
+- Part 1 introduction (apps/learn-app/docs/01-Introducing-AI-Driven-Development/README.md) to ensure consistent messaging and proper setup for subsequent chapters
 - Lesson output style template (.claude/output-styles/lesson.md) for content formatting during implementation phase
 - Constitution guidelines for educational content quality standards and pedagogical principles
 
@@ -218,24 +222,30 @@ An experienced developer reads Chapter 1 to understand how their role is evolvin
 ## Risks and Mitigations
 
 **Risk 1: Chapter overwhelms beginners with too much evidence/data**
+
 - Mitigation: Use storytelling and concrete examples to make data accessible; relegate detailed statistics to citations readers can optionally explore
 
 **Risk 2: Experienced developers dismiss chapter as "too basic" and skip ahead**
+
 - Mitigation: Include deeper insights and strategic analysis that even senior developers find valuable; cite authoritative sources that establish credibility
 
 **Risk 3: Skeptical readers reject core premise and abandon book**
+
 - Mitigation: Address skepticism proactively with verifiable evidence before reader can dismiss claims; acknowledge reasonable doubts and provide responses
 
 **Risk 4: Chapter feels like "hype" rather than serious analysis**
+
 - Mitigation: Ground every major claim in cited sources; acknowledge limitations and uncertainties; avoid superlatives without evidence
 
 **Risk 5: Readers unclear on what to do next after Chapter 1**
+
 - Mitigation: Strong transition to Chapter 2 that explicitly previews what's coming; clear roadmap in closing section
 
 ## Notes
 
 This specification draws from:
-1. Part 1 introduction goals and structure (book-source/docs/01-Introducing-AI-Driven-Development/README.md)
+
+1. Part 1 introduction goals and structure (apps/learn-app/docs/01-Introducing-AI-Driven-Development/README.md)
 2. Source video and transcript analysis (context/02_chap1_spec/readme.md)
 3. Lesson output style requirements for narrative/conceptual content
 4. Constitution principles for educational content quality

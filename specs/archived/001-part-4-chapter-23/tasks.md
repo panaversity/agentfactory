@@ -20,9 +20,10 @@
 
 ## Path Conventions
 
-**Chapter Directory**: `book-source/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/`
+**Chapter Directory**: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/`
 
 **Lesson Files**:
+
 - `01-math-module-fundamentals.md` (Lesson 1)
 - `02-time-and-epoch-concepts.md` (Lesson 2)
 - `03-date-time-objects-python-314.md` (Lesson 3)
@@ -36,7 +37,7 @@
 
 **Purpose**: Prepare chapter directory structure and validate prerequisites
 
-- [ ] T001 Create chapter directory structure at `book-source/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/`
+- [ ] T001 Create chapter directory structure at `apps/learn-app/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/`
 - [ ] T002 Verify Python 3.14+ installation for testing code examples
 - [ ] T003 Validate prerequisites available (Ch 14 Data Types, Ch 16 Strings, Ch 21 Exception Handling)
 - [ ] T004 [P] Create `_category_.json` for Docusaurus with sidebar configuration
@@ -280,7 +281,7 @@
 **Purpose**: Final polish and chapter integration
 
 - [ ] T114 [P] Create chapter index file (intro.md or index.md) with chapter overview
-- [ ] T115 [P] Update `book-source/docs/04-Part-4-Python-Fundamentals/_category_.json` to include Chapter 23
+- [ ] T115 [P] Update `apps/learn-app/docs/04-Part-4-Python-Fundamentals/_category_.json` to include Chapter 23
 - [ ] T116 [P] Update `specs/book/chapter-index.md` to change Chapter 23 status from "📋 Planned" to "✅ Implemented & Validated"
 - [ ] T117 [P] Add Chapter 23 completion date and metrics to chapter-index.md
 - [ ] T118 Test Docusaurus build with new chapter (`npm run build` in book-source/)
@@ -421,6 +422,7 @@ With content-implementer subagent or multiple reviewers:
 ## Total Task Count: 120 tasks
 
 **By Phase**:
+
 - Phase 1 (Setup): 5 tasks
 - Phase 2 (Foundational): 5 tasks
 - Phase 3 (Lesson 1): 13 tasks
@@ -434,6 +436,7 @@ With content-implementer subagent or multiple reviewers:
 - Phase 11 (Polish & Documentation): 7 tasks
 
 **By Lesson** (implementation tasks only):
+
 - Lesson 1: 13 tasks
 - Lesson 2: 13 tasks
 - Lesson 3: 15 tasks
@@ -444,6 +447,7 @@ With content-implementer subagent or multiple reviewers:
 **Parallel Opportunities**: 25+ tasks can run in parallel (marked [P])
 
 **Independent Test Criteria**:
+
 - Lesson 1: Function with math operations, type hints, error handling
 - Lesson 2: Get timestamp, convert to tuple, format as string
 - Lesson 3: Parse date string with Python 3.14 method, create timezone-aware datetime
@@ -461,7 +465,8 @@ With content-implementer subagent or multiple reviewers:
 **Generated**: 2025-11-09
 **Feature**: 001-part-4-chapter-23
 **Source Documents**:
+
 - `specs/001-part-4-chapter-23/spec.md` (6 user stories)
 - `specs/001-part-4-chapter-23/plan.md` (6 lessons with skills proficiency mapping)
-**Ready for**: `/sp.implement` command to execute content-implementer subagent
-**Validation**: All tasks follow checklist format, mapped to lessons/user stories, include exact file paths
+  **Ready for**: `/sp.implement` command to execute content-implementer subagent
+  **Validation**: All tasks follow checklist format, mapped to lessons/user stories, include exact file paths

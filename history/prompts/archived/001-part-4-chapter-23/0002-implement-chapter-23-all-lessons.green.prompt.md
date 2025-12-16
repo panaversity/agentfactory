@@ -9,21 +9,31 @@ feature: 001-part-4-chapter-23
 branch: 001-part-4-chapter-23
 user: mjs
 command: /sp.implement 001-part-4-chapter-23
-labels: ["chapter-23", "python-fundamentals", "math-datetime", "implementation", "content-implementer", "6-lessons", "capstone", "python-314"]
+labels:
+  [
+    "chapter-23",
+    "python-fundamentals",
+    "math-datetime",
+    "implementation",
+    "content-implementer",
+    "6-lessons",
+    "capstone",
+    "python-314",
+  ]
 links:
   spec: specs/001-part-4-chapter-23/spec.md
   ticket: null
   adr: null
   pr: null
 files:
-  - book-source/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/_category_.json
-  - book-source/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/index.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/01-math-module-fundamentals.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/02-time-and-epoch-concepts.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/03-date-time-objects-python-314.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/04-datetime-formatting-manipulation.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/05-calendar-advanced-math.md
-  - book-source/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/06-capstone-time-zone-converter.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/_category_.json
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/index.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/01-math-module-fundamentals.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/02-time-and-epoch-concepts.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/03-date-time-objects-python-314.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/04-datetime-formatting-manipulation.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/05-calendar-advanced-math.md
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/23-math-datetime-calendar/06-capstone-time-zone-converter.md
   - specs/book/chapter-index.md (updated status)
 tests:
   - No automated tests (educational content, not software)
@@ -39,6 +49,7 @@ User command: `/sp.implement 001-part-4-chapter-23`
 **Context**: Complete implementation of Chapter 23 (Math, Date Time Calendar) following Spec-Driven Development workflow with content-implementer subagents.
 
 **Implementation Strategy**: Parallel execution where possible:
+
 1. Setup (Phase 1) + Foundational validation (Phase 2)
 2. Lessons 1-2 in parallel (both A2, independent)
 3. Lesson 3 (depends on 1-2)
@@ -46,6 +57,7 @@ User command: `/sp.implement 001-part-4-chapter-23`
 5. Lesson 6 Capstone (depends on all 5 foundational lessons)
 
 **Specifications**:
+
 - 6 user stories (P1: Math, Dates/Times, Capstone; P2: Time concepts, Timezones; P3: Calendar/Advanced)
 - 6 lessons (5 foundational + 1 capstone)
 - CEFR progression: A2 → A2-B1 → B1
@@ -73,11 +85,13 @@ User command: `/sp.implement 001-part-4-chapter-23`
 ### Execution Summary:
 
 **Phase 1 (Setup)**: 5 tasks completed
+
 - Created chapter directory structure
 - Verified Python 3.14.0 installation
 - Created Docusaurus _category_.json
 
 **Phase 2 (Foundational)**: 5 tasks completed
+
 - Verified `date.strptime()` method (Python 3.14 NEW)
 - Verified `time.strptime()` method (Python 3.14 NEW)
 - Verified enhanced math error messages
@@ -85,6 +99,7 @@ User command: `/sp.implement 001-part-4-chapter-23`
 - Confirmed NO deprecated methods used
 
 **Phases 3-8 (Lessons 1-6)**: 85 tasks completed
+
 - Lesson 1: 13 tasks (Math Module Fundamentals)
 - Lesson 2: 13 tasks (Time and Epoch Concepts)
 - Lesson 3: 15 tasks (Date/Time Objects - Python 3.14)
@@ -93,12 +108,14 @@ User command: `/sp.implement 001-part-4-chapter-23`
 - Lesson 6: 16 tasks (Capstone Time Zone Converter)
 
 **Parallel Execution Achieved**:
+
 - Lessons 1-2 generated concurrently (both A2 level, independent)
 - Lessons 4-5 generated concurrently (both B1 level, use datetime objects from L3)
 
 ### Quality Validation:
 
 **All Lessons Comply With**:
+
 - ✅ Python 3.14 native approach (date.strptime, time.strptime as PRIMARY methods)
 - ✅ AI-Native Learning pattern (💬🎓🚀✨ elements throughout, NOT just at end)
 - ✅ Lesson closure: "Try With AI" ONLY (4 progressive prompts, NO summaries after)
@@ -111,6 +128,7 @@ User command: `/sp.implement 001-part-4-chapter-23`
 - ✅ No forward references to future chapters
 
 **Code Quality**:
+
 - All examples tested on Python 3.14.0
 - Modern type hints: `date`, `datetime`, `float`, `int`, `str`, `X | None`
 - Input validation before parsing/operations
@@ -118,6 +136,7 @@ User command: `/sp.implement 001-part-4-chapter-23`
 - No hardcoded secrets or credentials
 
 **Pedagogical Quality**:
+
 - CEFR progression smooth: A2 → A2 → A2-B1 → B1 → B1 → B1 (no regression)
 - Learning objectives measurable with Bloom's taxonomy alignment
 - Real-world applications throughout (logging, scheduling, timezone conversion)
@@ -126,6 +145,7 @@ User command: `/sp.implement 001-part-4-chapter-23`
 ### Capstone Integration:
 
 **Time Zone Converter Application** integrates:
+
 - **Lesson 1**: Input validation, error handling, type hints
 - **Lesson 2**: Timestamp display for debugging
 - **Lesson 3**: Python 3.14's date.strptime() and time.strptime() parsing
@@ -133,6 +153,7 @@ User command: `/sp.implement 001-part-4-chapter-23`
 - **Lesson 5**: Optional calendar display, math validation
 
 **8 Capstone Requirements Met**:
+
 1. Accept user input (date/time, source/target timezones)
 2. Parse with Python 3.14 new methods
 3. Convert to target timezone (12+ timezones supported)

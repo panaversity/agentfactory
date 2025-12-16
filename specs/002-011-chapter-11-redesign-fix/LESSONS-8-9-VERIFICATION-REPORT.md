@@ -24,11 +24,13 @@
 ### Issues Found and Fixed
 
 **CRITICAL VIOLATION DETECTED** (Initial Version):
+
 - ❌ Python code examples present (FastAPI, Stripe, SQLAlchemy, pytest)
 - ❌ Violated spec.md Section 4 FR-002: "Forbidden in Lessons 1-8: Python... or any programming code"
 - ❌ Violated Part 3 constraint: Students have NO programming knowledge
 
 **REMEDIATION APPLIED**:
+
 - ✅ Removed ALL programming code
 - ✅ Replaced with Markdown-only examples:
   - Session notes (showing context tracking)
@@ -58,23 +60,31 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 **Examples Found**:
 
 1. **Session Notes** (Markdown):
+
    ```markdown
    # Development Session — 2025-11-18
+
    ## Task: Implement Payment Processing
+
    ### Context Loaded: [list of files]
+
    ### Token Estimation: 170K / 200K = 85%
    ```
 
 2. **Conversation Transcripts** (Plain Text):
+
    ```
    [You]: "For error handling, use environment-based config."
    [Claude]: "Here's approach: test_mode = True"
    ```
 
 3. **Checkpoint Files** (Markdown):
+
    ```markdown
    # CHECKPOINT.md
+
    ## Architectural Decisions Made
+
    ### Decision 1: Environment-Based Configuration
    ```
 
@@ -135,6 +145,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 **Check**: Lesson 8 ending structure
 
 **Found**:
+
 - Ends with "Try With AI" section (4 prompts)
 - NO "What's Next" section
 - NO "Key Takeaways" section
@@ -149,6 +160,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 **Status**: ✅ PASS (After rewrite to remove code)
 
 **Compliance**:
+
 - ✅ Zero programming code (Part 3 constraint)
 - ✅ Markdown + prompts only
 - ✅ 8 concepts (B1 tier)
@@ -156,7 +168,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 - ✅ Research integrated
 - ✅ Lesson ending protocol compliant
 
-**File Location**: `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/08-hands-on-debugging-optimization.md`
+**File Location**: `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/08-hands-on-debugging-optimization.md`
 
 ---
 
@@ -171,13 +183,16 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 **Test**: Lesson 9 requires writing specification, zero implementation code
 
 **Capstone Exercise** (from Lesson 9):
+
 ```markdown
 ## Capstone Project: Write Your Specification
 
 ### Your Task
+
 Write a complete specification for the context-aware development tool.
 
 **Constraints**:
+
 1. Specification-Only: ZERO implementation code
 2. Intent Before Implementation: Focus on WHAT, not HOW
 3. Completeness: Answer all critical questions
@@ -256,6 +271,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 **Result**: No matches found
 
 **Examples Checked**:
+
 - Anti-pattern spec (vague spec example) — NO code
 - Implementation-ready spec (complete spec example) — NO code
 - Algorithm examples — Plain English only
@@ -269,6 +285,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 **Check**: Lesson 9 ending structure
 
 **Found**:
+
 - Ends with "Try With AI" section (4 prompts)
 - NO "What's Next" section
 - NO "Key Takeaways" section
@@ -282,6 +299,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 **Status**: ✅ PASS (No changes needed)
 
 **Compliance**:
+
 - ✅ Specification-only (SC-006)
 - ✅ Algorithms in plain English (not code)
 - ✅ Orchestrates Lessons 1-8
@@ -289,7 +307,7 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 - ✅ Zero programming code
 - ✅ Lesson ending protocol compliant
 
-**File Location**: `book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/09-capstone-spec-driven-orchestration.md`
+**File Location**: `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/09-capstone-spec-driven-orchestration.md`
 
 ---
 
@@ -425,10 +443,12 @@ grep -E "^from |^import |^def |^class |^function |^const |^let |^var " \
 ## Deliverables Summary
 
 **Files Modified**:
+
 1. `08-hands-on-debugging-optimization.md` — Rewritten (removed code, added Markdown examples)
 2. `09-capstone-spec-driven-orchestration.md` — No changes (already compliant)
 
 **Files Created**:
+
 1. `LESSONS-8-9-VERIFICATION-REPORT.md` — This report
 
 **Validation Status**: ✅ ALL ACCEPTANCE TESTS PASSED

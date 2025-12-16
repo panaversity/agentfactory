@@ -9,17 +9,25 @@ feature: 001-part-4-chapter-26
 branch: 001-part-4-chapter-26
 user: system
 command: manual
-labels: ["python-3.14", "type-hints", "modernization", "dataclasses", "field-doc", "union-syntax"]
+labels:
+  [
+    "python-3.14",
+    "type-hints",
+    "modernization",
+    "dataclasses",
+    "field-doc",
+    "union-syntax",
+  ]
 links:
   spec: specs/001-part-4-chapter-26/spec.md
   ticket: null
   adr: null
   pr: https://github.com/panaversity/ai-native-software-development/pull/126
 files:
-  - book-source/docs/04-Part-4-Python-Fundamentals/26-metaclasses-dataclasses/intro.md (updated: Python 3.14 note added)
-  - book-source/docs/04-Part-4-Python-Fundamentals/26-metaclasses-dataclasses/03-introduction-to-dataclasses.md (updated: Optional → X | None)
-  - book-source/docs/04-Part-4-Python-Fundamentals/26-metaclasses-dataclasses/04-advanced-dataclass-features.mdx (updated: Optional → X | None, added field(doc=...) examples)
-  - book-source/docs/04-Part-4-Python-Fundamentals/26-metaclasses-dataclasses/lesson-5-choosing-the-right-tool.mdx (updated: Optional → X | None, Union → X | Y, Python 3.14 notes)
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/26-metaclasses-dataclasses/intro.md (updated: Python 3.14 note added)
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/26-metaclasses-dataclasses/03-introduction-to-dataclasses.md (updated: Optional → X | None)
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/26-metaclasses-dataclasses/04-advanced-dataclass-features.mdx (updated: Optional → X | None, added field(doc=...) examples)
+  - apps/learn-app/docs/04-Part-4-Python-Fundamentals/26-metaclasses-dataclasses/lesson-5-choosing-the-right-tool.mdx (updated: Optional → X | None, Union → X | Y, Python 3.14 notes)
 tests:
   - Verified all Optional[X] replaced with X | None
   - Verified all Union[X, Y] replaced with X | Y
@@ -33,6 +41,7 @@ tests:
 "Okay update it then push all and create PR to main"
 
 **Context**: After analyzing Python 3.14 documentation, user requested updating Chapter 26 lessons with modern Python 3.14 features:
+
 - Remove `Optional[X]` and replace with `X | None`
 - Remove `Union[X, Y]` and replace with `X | Y`
 - Remove unnecessary `typing` imports
@@ -46,10 +55,12 @@ tests:
 **Files Updated**:
 
 1. **Lesson 3 (Introduction to Dataclasses)**:
+
    - Removed `from typing import Optional`
    - Updated `address: Optional[Address] = None` → `address: Address | None = None`
 
 2. **Lesson 4 (Advanced Dataclass Features)**:
+
    - Removed `from typing import Optional` from 4 code examples
    - Updated all `Optional[X]` → `X | None` syntax
    - **Added Python 3.14 field(doc=...) examples**:
@@ -59,6 +70,7 @@ tests:
    - Updated field customization documentation to list `doc` parameter as **NEW in Python 3.14**
 
 3. **Lesson 5 (Choosing the Right Tool)**:
+
    - Removed `from typing import Optional, Union, Type` across examples
    - Updated `Optional[X]` → `X | None` throughout
    - Updated `Union[X, Y]` → `X | Y` syntax
@@ -73,7 +85,8 @@ tests:
    - Added section explaining Python 3.14 modern features (union syntax, PEP 649)
 
 **Git Operations**:
-- Staged all changes: `git add book-source/docs/04-Part-4-Python-Fundamentals/26-metaclasses-dataclasses/ specs/001-part-4-chapter-26/ history/ validation-report-chapter-26.md`
+
+- Staged all changes: `git add apps/learn-app/docs/04-Part-4-Python-Fundamentals/26-metaclasses-dataclasses/ specs/001-part-4-chapter-26/ history/ validation-report-chapter-26.md`
 - Created detailed commit message covering all changes
 - Pushed to `origin 001-part-4-chapter-26`
 - Created PR #126: "Chapter 26: Metaclasses and Dataclasses (Python 3.14 Modern Features)"

@@ -2,7 +2,7 @@
 
 **Input**: Design documents from `/specs/034-chapter-9-markdown-redesign/`
 **Prerequisites**: plan.md (lesson breakdown), spec.md (user stories and requirements)
-**Target Directory**: `book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/`
+**Target Directory**: `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/`
 
 **Tests**: Not applicable for educational content (quality validation through validation-auditor agent instead)
 
@@ -16,7 +16,7 @@
 
 ## Path Conventions
 
-- **Chapter directory**: `book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/`
+- **Chapter directory**: `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/`
 - **Lesson files**: `01-lesson-title.md`, `02-lesson-title.md`, etc.
 - **Chapter README**: `README.md` in chapter directory
 
@@ -26,7 +26,7 @@
 
 **Purpose**: Initialize chapter directory structure and validate prerequisites
 
-- [ ] T001 Validate chapter directory exists at `book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/`
+- [ ] T001 Validate chapter directory exists at `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/`
 - [ ] T002 Read existing README.md to preserve chapter overview structure
 - [ ] T003 Read existing lesson 04-code-blocks.md to identify content that violates no-code constraint (Python/Bash examples)
 - [ ] T004 [P] Backup existing lessons to `specs/034-chapter-9-markdown-redesign/backup/` directory
@@ -189,7 +189,7 @@
 
 **Purpose**: Validate chapter-wide compliance with constitutional frameworks and requirements
 
-- [ ] T069 [P] Run grep validation across all 5 lessons for forbidden code patterns: `grep -rE "(def |function |import |const |#!/bin/bash)" book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/*.md`
+- [ ] T069 [P] Run grep validation across all 5 lessons for forbidden code patterns: `grep -rE "(def |function |import |const |#!/bin/bash)" apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/*.md`
 - [ ] T070 [P] Validate lesson ending protocol: Each lesson ends with "## Try With AI" as ONLY final section (no "What's Next", "Key Takeaways", "Summary")
 - [ ] T071 [P] Validate NO internal scaffolding labels in student-facing text: `grep -rE "(Stage [0-9]|Layer [0-9]|Three Roles (Framework|in Action))" *.md`
 - [ ] T072 [P] Validate concept counts in frontmatter: L1=6, L2=7, L3=7, L4=5, L5=8 (all ≤ 7 except capstone)

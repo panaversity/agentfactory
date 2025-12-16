@@ -3,9 +3,9 @@
 **Feature Branch**: `feature/chapter-6-google-gemini-cli`
 **Created**: 2025-11-07
 **Status**: Draft
-**Input**: User description: "Now we are not satisfied with current gemini cli coding agent chapter @book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/ it is too thin and we are missing all the core commands like extensions etc. that make it fuel it to north start business developer"
+**Input**: User description: "Now we are not satisfied with current gemini cli coding agent chapter @apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/ it is too thin and we are missing all the core commands like extensions etc. that make it fuel it to north start business developer"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Master Core Gemini CLI Commands and Workflow (Priority: P1)
 
@@ -132,11 +132,12 @@ A business developer needs to discover, evaluate, install, and manage Gemini CLI
 - What happens if a custom slash command TOML file has syntax errors? (Should fail at command invocation with specific syntax error location)
 - How does hierarchical GEMINI.md loading work when files contain contradictory instructions? (Later files in hierarchy override earlier ones; subdirectory > project > global)
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
 **Core Commands & Syntax:**
+
 - **FR-001**: Chapter MUST explain all essential slash commands: `/help`, `/clear`, `/tools`, `/mcp`, `/stats`, `/compress`, `/copy`, `/memory`, `/chat`, `/restore`, `/settings`, `/init`, `/theme`, `/ide`
 - **FR-002**: Chapter MUST explain `@` syntax for file and directory references with examples showing single file (@file.js), directory recursion (@./src/), and media files (images, PDFs)
 - **FR-003**: Chapter MUST explain `!` syntax for shell command execution with examples of single commands (!git status) and shell mode toggle (! alone)
@@ -144,6 +145,7 @@ A business developer needs to discover, evaluate, install, and manage Gemini CLI
 - **FR-005**: Chapter MUST explain command-line invocation modes: interactive (gemini), single prompt (gemini -p), piped input, model selection (-m), sandbox mode (--sandbox), YOLO mode (--yolo), checkpointing (--checkpointing)
 
 **Configuration System:**
+
 - **FR-006**: Chapter MUST explain the 7-level configuration hierarchy and precedence rules: defaults → system defaults → user settings → project settings → system overrides → environment variables → command-line arguments
 - **FR-007**: Chapter MUST document key settings.json options: model configuration, context management, tool restrictions/permissions, MCP server configuration, UI customization, security settings
 - **FR-008**: Chapter MUST explain environment variable interpolation in settings.json using `$VAR_NAME` and `${VAR_NAME}` syntax
@@ -151,6 +153,7 @@ A business developer needs to discover, evaluate, install, and manage Gemini CLI
 - **FR-010**: Chapter MUST document settings file locations for all platforms (Windows, macOS, Linux)
 
 **Context & Memory Management:**
+
 - **FR-011**: Chapter MUST explain three types of memory: ephemeral context (session-only), GEMINI.md hierarchical instructions (persistent, project-specific), save_memory facts (persistent, global)
 - **FR-012**: Chapter MUST document GEMINI.md hierarchical loading: global (~/.gemini/GEMINI.md) → project/ancestor → subdirectory
 - **FR-013**: Chapter MUST explain `/memory` commands: `/memory show`, `/memory add`, `/memory reload`
@@ -158,6 +161,7 @@ A business developer needs to discover, evaluate, install, and manage Gemini CLI
 - **FR-015**: Chapter MUST explain how to use `@file.md` syntax within GEMINI.md to modularize instructions
 
 **MCP Servers:**
+
 - **FR-016**: Chapter MUST explain Model Context Protocol (MCP) purpose: connecting AI to external systems and data sources
 - **FR-017**: Chapter MUST document how to configure MCP servers in settings.json with command, args, allowed tools, and excluded tools
 - **FR-018**: Chapter MUST provide realistic examples of popular MCP servers: Playwright (web browsing), Context7 (live documentation), GitHub (repository operations)
@@ -165,6 +169,7 @@ A business developer needs to discover, evaluate, install, and manage Gemini CLI
 - **FR-020**: Chapter MUST document MCP server security considerations and when to trust external servers
 
 **Custom Slash Commands:**
+
 - **FR-021**: Chapter MUST explain TOML-based custom command creation with description and prompt fields
 - **FR-022**: Chapter MUST document file naming conventions: test.toml → /test, git/commit.toml → /git:commit
 - **FR-023**: Chapter MUST explain user-scoped (~/.gemini/commands/) vs. project-scoped (.gemini/commands/) command locations
@@ -172,6 +177,7 @@ A business developer needs to discover, evaluate, install, and manage Gemini CLI
 - **FR-025**: Chapter MUST explain !{command} syntax for shell command execution within custom commands
 
 **Extensions:**
+
 - **FR-026**: Chapter MUST differentiate between MCP servers (individual tools) and extensions (bundled capabilities)
 - **FR-027**: Chapter MUST explain extension structure: gemini-extension.json manifest, MCP servers, custom commands, context files
 - **FR-028**: Chapter MUST document extension installation, uninstallation, and management commands
@@ -179,13 +185,14 @@ A business developer needs to discover, evaluate, install, and manage Gemini CLI
 - **FR-030**: Chapter MUST explain when to use extensions vs. individual MCP servers
 
 **Advanced Features:**
+
 - **FR-031**: Chapter MUST explain checkpointing system for undoing file modifications with `/restore`
 - **FR-032**: Chapter MUST document conversation branching with `/chat save` and `/chat resume`
 - **FR-033**: Chapter MUST explain token management: `/stats` for usage, `/compress` for context reduction, compression threshold settings
 - **FR-034**: Chapter MUST document IDE integration mode with `/ide install` and `/ide enable`
 - **FR-035**: Chapter MUST explain sandboxing options: true/false, Docker, Podman, custom profiles
 
-### Key Entities *(educational content)*
+### Key Entities _(educational content)_
 
 - **Command Types**: Slash commands (/), file references (@), shell commands (!), keyboard shortcuts (Ctrl+X)
 - **Configuration Layers**: System defaults, user settings, project settings, environment variables, command-line arguments
@@ -194,64 +201,74 @@ A business developer needs to discover, evaluate, install, and manage Gemini CLI
 - **Custom Commands**: TOML definition files, user-scoped commands, project-scoped commands, namespaced commands
 - **Extensions**: Extension manifest (gemini-extension.json), bundled MCP servers, bundled commands, bundled context
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 
 **Skill Acquisition:**
+
 - **SC-001**: 90% of readers can list and explain the purpose of all 10+ essential slash commands from memory after reading the chapter
 - **SC-002**: 85% of readers can correctly configure settings.json with 5+ key settings (model, tools, context, MCP servers) without referring to documentation
 - **SC-003**: 80% of readers can create a hierarchical GEMINI.md setup (global + project + subdirectory) that demonstrably improves AI responses for their specific codebase
 - **SC-004**: 75% of readers can install and configure at least 2 MCP servers (e.g., Playwright, Context7) and use them for realistic business workflows
 
 **Productivity Improvement:**
+
 - **SC-005**: Developers using advanced Gemini CLI features (MCP servers, custom commands, proper configuration) complete competitive research tasks 5-10x faster than using built-in tools only
 - **SC-006**: Teams with shared GEMINI.md files and custom commands report 30-50% reduction in time spent explaining project-specific context and coding standards to AI
 - **SC-007**: Developers using proper context management (compression, hierarchical GEMINI.md) maintain productive sessions 2-3x longer before hitting context limits
 
 **Tool Mastery:**
+
 - **SC-008**: 70% of readers can create at least 1 custom slash command that automates a repeated workflow and saves 10+ minutes per use
 - **SC-009**: 80% of readers can correctly evaluate extension security (creator, data access, maintenance) before installation
 - **SC-010**: 75% of readers can troubleshoot common Gemini CLI issues (MCP server failures, context overload, configuration conflicts) using `/stats`, `/mcp`, and `/memory show`
 
 **Workflow Integration:**
+
 - **SC-011**: 85% of readers can articulate when to use Gemini CLI vs. Claude Code based on context window needs, customization requirements, cost, and workflow preferences
 - **SC-012**: North star business developers report Gemini CLI as their primary AI development tool for at least 3 use cases: codebase analysis, competitive research, documentation management, or workflow automation
 
 **Content Quality:**
+
 - **SC-013**: Chapter reading time is 60-90 minutes with all hands-on exercises completed
 - **SC-014**: Chapter complexity tier matches Part 2 (Intermediate): 3-4 options per decision, 7 concepts per section, tradeoff discussions included
 - **SC-015**: 90% of code examples are directly runnable without modification on all three platforms (Windows, macOS, Linux)
 
-## Assumptions *(documented reasoning)*
+## Assumptions _(documented reasoning)_
 
 ### Technical Assumptions
+
 - Readers have completed Chapter 5 (prior AI tool experience) and understand basic terminal navigation
 - Readers have Node.js installed (prerequisite from earlier chapters)
 - Gemini CLI version 0.4.0 or later is used (2025 stable release with extensions support)
 - Readers have access to a personal Google account for free tier API access
 
 ### Pedagogical Assumptions
+
 - Readers learn best by seeing concrete examples before abstract explanations (show then tell)
 - Complex features are better introduced through realistic business scenarios than academic examples
 - Security considerations should be introduced at point of use, not in a separate section
 - Readers will reference this chapter as a guide, not memorize all commands
 
 ### Scope Assumptions
+
 - Chapter focuses on features that differentiate Gemini CLI from basic AI chat (commands, configuration, MCP, extensions)
 - Installation and basic authentication are covered lightly (assumed from earlier lesson content)
 - Advanced topics like custom MCP server development are mentioned but not taught in depth
 - Comparison to Claude Code is framed as "when to use each" not "which is better"
 
 ### Content Structure Assumptions
+
 - Each major feature (commands, configuration, memory, MCP, custom commands, extensions) deserves dedicated lesson section
 - Hands-on exercises follow each major concept introduction
 - Real-world business scenarios motivate feature learning
 - Troubleshooting guidance is integrated throughout, not isolated
 
-## Out of Scope *(explicit exclusions)*
+## Out of Scope _(explicit exclusions)_
 
 ### Not Covered in This Chapter
+
 - **Custom MCP Server Development**: Creating your own MCP servers from scratch (too advanced; requires protocol knowledge)
 - **Gemini CLI Source Code Deep Dive**: Internal architecture and codebase exploration (out of scope for business developers)
 - **Qwen Code Fork**: Alibaba's fork is mentioned for context but not taught in detail (regional alternative)
@@ -261,19 +278,22 @@ A business developer needs to discover, evaluate, install, and manage Gemini CLI
 - **GitHub Actions Deep Dive**: Gemini CLI GitHub Actions mentioned but full CI/CD workflows are Part 10+ content
 
 ### Deferred to Later Chapters
+
 - **Advanced Prompt Engineering**: Chapter-specific focus is tool features; prompting mastery is Chapter 9
 - **Multi-Agent Workflows**: Orchestrating multiple AI agents is advanced topic for Parts 10-13
 - **Cost Optimization at Scale**: Free tier is sufficient for learning; optimization is professional topic (Parts 10-13)
 
 ### Intentional Limitations
+
 - Chapter does NOT teach every possible MCP server (focuses on 3-5 most valuable for business developers)
 - Chapter does NOT provide exhaustive settings.json reference (focuses on most impactful settings)
 - Chapter does NOT compare all AI coding tools (focuses on Gemini CLI vs. Claude Code decision framework)
 - Chapter does NOT teach general terminal/command-line skills (prerequisite knowledge)
 
-## Dependencies *(what must exist first)*
+## Dependencies _(what must exist first)_
 
 ### Prerequisites from Earlier Chapters
+
 - Chapter 1-3: General AI development concepts, tool landscape understanding
 - Chapter 4: Claude Code familiarity (for comparison framework)
 - Chapter 5: Prior AI coding assistant experience (understands prompting basics)
@@ -281,54 +301,67 @@ A business developer needs to discover, evaluate, install, and manage Gemini CLI
 - Node.js and npm installed (from earlier development environment setup)
 
 ### External Dependencies
+
 - Google account (free tier access to Gemini API)
 - Internet connection (API calls, MCP server package installation)
 - Text editor (for editing settings.json and GEMINI.md files)
 - Git (for examples using version control workflows)
 
 ### Content Dependencies
+
 - Official Gemini CLI documentation (referenced for exhaustive settings)
 - MCP server registry or discovery mechanism (for finding available servers)
 - Extension discovery method (GitHub, official gallery, community resources)
 
-## Risks & Challenges *(what could go wrong)*
+## Risks & Challenges _(what could go wrong)_
 
 ### Pedagogical Risks
+
 - **Risk**: Chapter becomes a reference manual instead of teaching journey (too encyclopedic)
+
   - **Mitigation**: Focus on 20% of features that deliver 80% of value; provide links to full documentation for completeness
 
 - **Risk**: Readers feel overwhelmed by configuration options and advanced features
+
   - **Mitigation**: Clear progression from basic commands → configuration → memory → MCP → extensions; each builds on previous
 
 - **Risk**: Examples fail on specific platforms (Windows, macOS, Linux differences)
   - **Mitigation**: Test all examples on all three platforms; provide platform-specific notes where needed
 
 ### Technical Risks
+
 - **Risk**: Gemini CLI rapid development breaks examples (new versions, deprecated features)
+
   - **Mitigation**: Pin examples to specific version (0.4.0); provide version checking guidance; update chapter quarterly
 
 - **Risk**: Free tier quotas change (Google reduces 1000 requests/day limit)
+
   - **Mitigation**: Teach quota monitoring with `/stats`; explain paid tier upgrade path if quotas are hit
 
 - **Risk**: MCP servers become unavailable or unmaintained (Playwright, Context7, GitHub)
   - **Mitigation**: Choose servers with strong backing (official or widely adopted); teach readers how to evaluate server health
 
 ### Learning Risks
+
 - **Risk**: Readers skip foundational commands and jump to extensions (premature complexity)
+
   - **Mitigation**: Explicit learning path guidance; prerequisites clearly stated; exercises build progressively
 
 - **Risk**: Readers install malicious extensions without security evaluation
+
   - **Mitigation**: Security considerations taught at point of extension introduction; clear evaluation checklist provided
 
 - **Risk**: Readers compare Gemini CLI to Claude Code and dismiss one or the other entirely
   - **Mitigation**: Frame as complementary tools with different strengths; decision framework based on use case, not absolute "better"
 
-## Notes *(additional context)*
+## Notes _(additional context)_
 
 ### Design Philosophy for This Chapter
+
 This chapter transforms Gemini CLI from "another AI tool" into a customizable, extensible platform that adapts to business developer workflows. The goal is not command memorization but understanding the architecture: built-in → configured → extended → automated.
 
 **Progression Logic:**
+
 1. **Commands** (immediate value): Readers get productive quickly with slash commands, @ syntax, ! syntax
 2. **Configuration** (personalization): Readers customize for their workflow and security needs
 3. **Memory** (intelligence): Readers teach Gemini CLI their project and domain context
@@ -337,13 +370,16 @@ This chapter transforms Gemini CLI from "another AI tool" into a customizable, e
 6. **Extensions** (ecosystem): Readers leverage community solutions for advanced needs
 
 ### Content Tone & Voice
+
 - **Empowering, not prescriptive**: "Here's how to customize" not "You must configure this way"
 - **Scenario-driven**: Real business problems motivate feature introduction
 - **Security-conscious**: Trust but verify; explain risks clearly
 - **Tool-agnostic mindset**: Right tool for right job; no Gemini CLI evangelism
 
 ### Key Differentiators to Emphasize
+
 What makes Gemini CLI special for north star business developers:
+
 1. **Open source = inspectable, modifiable, learnable** (not black box)
 2. **Free tier = experimentation without cost anxiety** (1000 requests/day goes far)
 3. **1M token context = entire small-medium projects in one session** (rare capability)
@@ -351,7 +387,9 @@ What makes Gemini CLI special for north star business developers:
 5. **Extensibility = build vertical AI for your domain** (competitive advantage)
 
 ### Success Indicators for This Spec
+
 This spec succeeds if:
+
 - Chapter covers all essential Gemini CLI capabilities (commands, config, memory, MCP, custom commands, extensions)
 - Content is actionable (readers can implement what they read)
 - Complexity tier matches Part 2 (intermediate developers, not beginners or experts)
@@ -359,6 +397,7 @@ This spec succeeds if:
 - Chapter positions Gemini CLI as complementary to Claude Code, not competitive
 
 ### Next Steps After Spec Approval
+
 1. **Planning** (`/sp.plan`): Break chapter into 5-6 lessons with clear learning objectives
 2. **Tasks** (`/sp.tasks`): Create task checklist with acceptance criteria for each lesson
 3. **Implementation** (content-implementer agent): Write lessons following approved plan

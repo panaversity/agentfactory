@@ -3,7 +3,7 @@
 **Input**: Design documents from `/specs/part-4-chapter-14/`
 **Prerequisites**: plan.md (required), spec.md (required)
 **Chapter Type**: Educational Content (5 lessons)
-**Target**: `book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/`
+**Target**: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/`
 
 **Organization**: Tasks are grouped by lesson to enable incremental chapter development. Each lesson maps to user stories from spec.md.
 
@@ -16,8 +16,9 @@
 ## Path Conventions
 
 **Book Content Structure**:
+
 ```
-book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/
+apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/
 ├── readme.md              # Chapter index (auto-generated)
 ├── 01-variables-and-type-hints.md
 ├── 02-integers-and-floats.md
@@ -32,7 +33,7 @@ book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/
 
 **Purpose**: Initialize chapter directory structure and index
 
-- [x] T001 Create chapter directory at `book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/`
+- [x] T001 Create chapter directory at `apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/`
 - [x] T002 Create chapter `readme.md` with frontmatter, title, and lesson links
 - [x] T003 [P] Verify Python 3.14+ code examples environment (for testing code blocks)
 
@@ -45,13 +46,14 @@ book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/
 **Independent Test**: Student creates variables with type hints (int, float, str, bool) and uses print() to display values
 
 **Lesson Mapping**:
+
 - User Story 1: Variables with Type Hints (P1)
 - Duration: 45 minutes
 - Skills: Understanding Variables (A2), Writing Type Hints (A2), Describing Intent (B1)
 
 ### Implementation for Lesson 1
 
-- [x] T004 [L1] Write lesson introduction in `book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/01-variables-and-type-hints.md` (connection to Chapter 13 Hello World, why variables matter)
+- [x] T004 [L1] Write lesson introduction in `apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/01-variables-and-type-hints.md` (connection to Chapter 13 Hello World, why variables matter)
 - [x] T005 [L1] Add "Concept: Variables Without Type Hints" section with Code Example 1 (5 lines: name, age, height, is_student)
 - [x] T006 [L1] Add "Concept: Type Hints as Specifications" section with Code Example 2 (8 lines: same variables with type hints)
 - [x] T007 [L1] Add "Using print() to Display Variables" section with Code Example 3 (6 lines: print variables from Ch 13 knowledge)
@@ -70,13 +72,14 @@ book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/
 **Independent Test**: Student explains "what is a type?" in own words, uses type() function, chooses int vs float appropriately
 
 **Lesson Mapping**:
+
 - User Story 2: Understanding Data Types through Numbers (P1)
 - Duration: 50 minutes
 - Skills: Data Type Concept (A2), Numeric Types (A2), Type Inspection (A2-B1)
 
 ### Implementation for Lesson 2
 
-- [x] T011 [P] [L2] Write lesson introduction in `book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/02-integers-and-floats.md` (what is a data type, why types matter)
+- [x] T011 [P] [L2] Write lesson introduction in `apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/02-integers-and-floats.md` (what is a data type, why types matter)
 - [x] T012 [L2] Add "Understanding the Type Concept" section (types as categories determining operations)
 - [x] T013 [L2] Add "Numeric Types: int and float" section with Code Example 1 (6 lines: type() inspector)
 - [x] T014 [L2] Add "When to Use int vs float" section with Code Example 2 (10 lines: counting vs measuring examples)
@@ -96,13 +99,14 @@ book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/
 **Independent Test**: Student creates strings with type hints, understands truthy/falsy values, converts between types safely
 
 **Lesson Mapping**:
+
 - User Story 3: Strings and Booleans Understanding (P2)
 - Duration: 50 minutes
 - Skills: String Basics (A2), Boolean Logic (A2-B1), Type Conversion (B1)
 
 ### Implementation for Lesson 3
 
-- [x] T019 [P] [L3] Write lesson introduction in `book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/03-strings-and-booleans.md` (text and truth values)
+- [x] T019 [P] [L3] Write lesson introduction in `apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/03-strings-and-booleans.md` (text and truth values)
 - [x] T020 [L3] Add "String Basics" section with Code Example 1 (8 lines: creating strings, simple concatenation - defer methods to Ch 16)
 - [x] T021 [L3] Add "Boolean Logic: True and False" section with Code Example 2 (10 lines: bool values, truthy/falsy evaluation)
 - [x] T022 [L3] Add "Type Conversion" section with Code Example 3 (12 lines: str(), int(), float(), bool() conversion safely)
@@ -122,13 +126,14 @@ book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/
 **Independent Test**: Student creates basic list, tuple, dict, set with type hints and knows where comprehensive coverage is
 
 **Lesson Mapping**:
+
 - User Story 4: Collection Awareness (P3)
 - Duration: 40 minutes
 - Skills: Collection Awareness (A1-A2)
 
 ### Implementation for Lesson 4
 
-- [x] T027 [P] [L4] Write lesson introduction in `book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/04-collections-awareness.md` (why collections exist, defer notice to Ch 18-19)
+- [x] T027 [P] [L4] Write lesson introduction in `apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/04-collections-awareness.md` (why collections exist, defer notice to Ch 18-19)
 - [x] T028 [L4] Add "Why Collections Exist" section (grouping related data - conceptual introduction)
 - [x] T029 [L4] Add "Collection Types Overview" section with Code Example 1 (12 lines: basic list, tuple, dict, set creation)
 - [x] T030 [L4] Add "Type Hints for Collections" section with Code Example 2 (8 lines: list[int], dict[str, int] syntax)
@@ -149,13 +154,14 @@ book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/
 **Independent Test**: Student completes working type explorer with type hints, isinstance() validation, type conversion, AI-guided extensions
 
 **Lesson Mapping**:
+
 - User Story 5: Building Type Explorer with Core Types (P1 - Capstone)
 - Duration: 50 minutes
 - Skills: Integration (B1), Type Validation (B1), AI-Guided Improvement (B1)
 
 ### Implementation for Lesson 5
 
-- [x] T036 [P] [L5] Write lesson introduction in `book-source/docs/04-Part-4-Python-Fundamentals/14-data-types/05-type-explorer-capstone.md` (capstone project integrating all concepts)
+- [x] T036 [P] [L5] Write lesson introduction in `apps/learn-app/docs/04-Part-4-Python-Fundamentals/14-data-types/05-type-explorer-capstone.md` (capstone project integrating all concepts)
 - [x] T037 [L5] Add "Project Overview" section (what type explorer does, core types only - not collections)
 - [x] T038 [L5] Add "Building the Type Explorer" section with complete code example (~70 lines: type explorer program with type hints, isinstance(), type(), user interaction)
 - [x] T039 [L5] Add "Code Walkthrough" subsection (explain key parts: type hints, isinstance() validation, type() inspection, conversion handling)
@@ -322,6 +328,7 @@ With multiple lesson writers:
 **Per constitution and output styles**: Lessons in this chapter MUST end with a single final section titled **"Try With AI"**. No other closure elements permitted.
 
 **AI Tool Selection**:
+
 - Before AI tools taught (Part 1): Use ChatGPT web
 - After tool onboarding (Part 4+): Learner's preferred AI companion (Claude Code, Gemini CLI, ChatGPT)
 - Optionally provide CLI and web variants in prompts
@@ -372,6 +379,7 @@ Before marking chapter complete, verify:
 ## Task Summary
 
 **Total Tasks**: 58
+
 - **Phase 1 (Setup)**: 3 tasks
 - **Phase 2 (Lesson 1)**: 7 tasks
 - **Phase 3 (Lesson 2)**: 8 tasks
@@ -382,6 +390,7 @@ Before marking chapter complete, verify:
 - **Phase 8 (Polish)**: 6 tasks
 
 **Parallel Opportunities**:
+
 - Phase 1: 1 task (T003)
 - Lessons 1-4: Can write in parallel (4 parallel tracks)
 - Phase 7: 5 tasks (T044, T046, T049, T050, T051)
@@ -390,6 +399,7 @@ Before marking chapter complete, verify:
 **MVP Scope**: Lessons 1-2 (Variables + Type Concept) = 15 tasks
 
 **Independent Tests per Lesson**:
+
 - L1: Student creates variables with type hints and uses print()
 - L2: Student explains type concept, uses type() and isinstance()
 - L3: Student creates strings/bools, converts types safely

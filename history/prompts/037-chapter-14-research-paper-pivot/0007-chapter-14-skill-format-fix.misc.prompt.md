@@ -16,11 +16,11 @@ links:
   adr: null
   pr: null
 files:
-  - path: book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/09-designing-reusable-intelligence.md
+  - path: apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/09-designing-reusable-intelligence.md
     action: edit
-  - path: book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/06-plan-phase.md
+  - path: apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/06-plan-phase.md
     action: edit
-  - path: book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/04-specify-phase.md
+  - path: apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/04-specify-phase.md
     action: edit
   - path: specs/book/chapter-index.md
     action: edit
@@ -31,12 +31,14 @@ tests:
 ## Prompt
 
 User identified multiple issues during Chapter 14 review:
+
 1. Lesson 4 (Specify) was documentation-heavy, not action-oriented
 2. Lesson 6 (Plan Phase) missing `/sp.plan` and `/sp.adr` commands
 3. Lesson 9 (Designing RI) used incorrect skill file format
 4. Chapter index showed "Needs Pivot" instead of "Implemented"
 
 User provided reference materials:
+
 - Old calculator examples showing action-oriented approach
 - Anthropic's guide on conversation-based skill creation
 - Chapter 5 Lesson 7 showing correct skill format: `.claude/skills/<skill-name>/SKILL.md`
@@ -50,6 +52,7 @@ User provided reference materials:
 2. **Lesson 6 (Plan)**: Added `/sp.plan` workflow, `/sp.adr` for architectural decisions, ADR significance test (long-term + alternatives + future questioning)
 
 3. **Lesson 9 (Designing RI)**:
+
    - Fixed skill format from `.claude/skills/section-writer.md` to `.claude/skills/section-writer/SKILL.md`
    - Added proper YAML frontmatter (`name`, `description`, `version`)
    - Added conversation-based skill creation workflow
@@ -68,6 +71,7 @@ User provided reference materials:
 ## Evaluation notes (flywheel)
 
 - Failure modes observed:
+
   1. **Format drift**: Teaching a pattern (skill files) without checking canonical source (Chapter 5)
   2. **Documentation-first writing**: Defaulting to explanation over action
   3. **Index staleness**: Forgetting to update chapter-index.md after completing work

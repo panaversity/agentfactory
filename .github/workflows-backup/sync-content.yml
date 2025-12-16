@@ -1,0 +1,103 @@
+# Sync Content to PanaversityFS (R2 Storage)
+#
+# INCREMENTAL sync using ingest-book.py script.
+# Only uploads files that have changed since last sync.
+#
+# Workflow:
+# 1. Author/Agent pushes content to apps/learn-app/docs/
+# 2. This workflow detects changed files via git diff
+# 3. ingest-book.py uploads ONLY changed files to PanaversityFS
+# 4. deploy.yml is triggered to rebuild site
+
+name: Sync Content to R2
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/learn-app/docs/**"
+  workflow_dispatch:
+    inputs:
+      full_sync:
+        description: "Force full sync (all files, not just changed)"
+        type: boolean
+        default: false
+
+# Prevent concurrent syncs to avoid race conditions
+concurrency:
+  group: panaversity-sync
+  cancel-in-progress: false # Queue syncs, don't cancel
+
+jobs:
+  sync:
+    name: Upload Content to PanaversityFS
+    runs-on: ubuntu-latest
+    # Only run if PanaversityFS is configured
+    if: ${{ vars.PANAVERSITY_PLUGIN_ENABLED == 'true' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # Need previous commit to detect changes
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        working-directory: panaversity-fs
+        run: |
+          pip install click httpx pydantic python-dotenv
+
+      - name: Get changed files
+        id: changed
+        if: ${{ github.event.inputs.full_sync != 'true' }}
+        run: |
+          # Get list of changed markdown files
+          CHANGED=$(git diff --name-only HEAD~1 HEAD -- 'apps/learn-app/docs/**/*.md' 'apps/learn-app/docs/**/*.png' 'apps/learn-app/docs/**/*.jpg' 'apps/learn-app/docs/**/*.svg' | tr '\n' ' ')
+          echo "files=$CHANGED" >> $GITHUB_OUTPUT
+          echo "Changed files: $CHANGED"
+
+          # Count changes
+          COUNT=$(echo "$CHANGED" | wc -w | tr -d ' ')
+          echo "count=$COUNT" >> $GITHUB_OUTPUT
+
+      - name: Sync content to PanaversityFS
+        env:
+          PANAVERSITY_MCP_URL: ${{ secrets.PANAVERSITY_SERVER_URL }}
+          PANAVERSITY_API_KEY: ${{ secrets.PANAVERSITY_API_KEY }}
+        run: |
+          cd panaversity-fs
+
+          BOOK_ID="ai-native-dev"
+          SOURCE_DIR="../book-source/docs"
+
+          if [ "${{ github.event.inputs.full_sync }}" = "true" ]; then
+            echo "=== Full sync requested ==="
+            python scripts/ingest-book.py \
+              --book-id "$BOOK_ID" \
+              --source-dir "$SOURCE_DIR" \
+              --verbose
+          elif [ "${{ steps.changed.outputs.count }}" = "0" ]; then
+            echo "No content files changed, skipping sync"
+          else
+            echo "=== Incremental sync: ${{ steps.changed.outputs.count }} files ==="
+            python scripts/ingest-book.py \
+              --book-id "$BOOK_ID" \
+              --source-dir "$SOURCE_DIR" \
+              --verbose
+          fi
+
+      - name: Summary
+        run: |
+          echo "## Sync Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ github.event.inputs.full_sync }}" = "true" ]; then
+            echo "**Mode:** Full sync" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "**Mode:** Incremental" >> $GITHUB_STEP_SUMMARY
+            echo "**Changed files:** ${{ steps.changed.outputs.count }}" >> $GITHUB_STEP_SUMMARY
+          fi

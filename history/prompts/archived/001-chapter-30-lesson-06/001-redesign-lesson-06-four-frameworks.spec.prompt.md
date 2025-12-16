@@ -16,7 +16,7 @@ links:
   adr: null
   pr: null
 files:
-  - book-source/docs/05-Spec-Kit-Plus-Methodology/30-specification-driven-development-fundamentals/06-explore-the-tools-kiro-spec-kit-tessel.md
+  - apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/30-specification-driven-development-fundamentals/06-explore-the-tools-kiro-spec-kit-tessel.md
 tests:
   - Manual validation: Lesson flows logically from context → 4 frameworks → evolution → scenarios
   - Manual validation: Spec-Kit (GitHub) and Spec-Kit Plus (Panaversity) clearly distinguished
@@ -28,9 +28,11 @@ tests:
 ## Prompt
 
 ### Initial Request
-"Redesign lesson 06 @book-source/docs/05-Spec-Kit-Plus-Methodology/30-specification-driven-development-fundamentals/06-explore-the-tools-kiro-spec-kit-tessel.md You can look at other lessons and the source context @context/14_chap30_specs/ and pull specifyplus docs. Let's carefully plan"
+
+"Redesign lesson 06 @apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/30-specification-driven-development-fundamentals/06-explore-the-tools-kiro-spec-kit-tessel.md You can look at other lessons and the source context @context/14_chap30_specs/ and pull specifyplus docs. Let's carefully plan"
 
 ### Clarifications Provided by User
+
 1. "Yes, reduce academic depth. Both are separate tools. 1 is of github and other is of panaversity. Other look okay."
 2. "Tell Tesel is emerging and its framework is invite only and things."
 3. "For Tesel: mention registry and just say in one line about framework"
@@ -38,18 +40,22 @@ tests:
 5. "Create phr"
 
 ### Design Evolution
+
 **Phase 1: Analysis**
+
 - Identified that original lesson 06 treated Spec-Kit as a single tool without showing evolution
 - Recognized readers needed to understand: Spec-Kit (GitHub base) → Spec-Kit Plus (Panaversity evolution)
 - Audience insight: First-time learners who may later join teams
 
 **Phase 2: Initial Plan**
+
 - Four frameworks instead of three: Kiro, Spec-Kit, Spec-Kit Plus, Tesel
 - Add "Understanding the Evolution" section explaining gaps
 - Split framework descriptions to show GitHub vs. Panaversity distinction
 - Add "What that means" paragraphs to scenarios
 
 **Phase 3: Implementation**
+
 - Updated learning objectives to include 4 approaches + Spec-Kit Plus extensions
 - Rewrote opening to mention "Four major approaches" and Spec-Kit Plus as evolution
 - Split Spec-Kit section into 2a (GitHub) and 2b (Panaversity)
@@ -61,6 +67,7 @@ tests:
 ## Response snapshot
 
 ### Key Structural Changes
+
 1. **Learning Objectives**: Now cover 4 approaches + Spec-Kit Plus extensions
 2. **Frameworks Section**: 4 approaches with clear naming (2a GitHub, 2b Panaversity)
 3. **New Section**: "Understanding the SDD Evolution" explains:
@@ -73,6 +80,7 @@ tests:
 ### Content Highlights
 
 **Spec-Kit Plus Definition** (explicit):
+
 ```
 GitHub's Spec-Kit (Base Layer)
     ↓
@@ -84,6 +92,7 @@ Spec-Kit Plus (AI-native SDD for professional teams)
 ```
 
 **Intelligence Templates Explained** (concrete):
+
 - Education Template (this book): CEFR levels, Bloom's taxonomy, code testing requirements
 - Healthcare: HIPAA rules, patient privacy patterns
 - Fintech: PCI-DSS rules, transaction audit patterns
@@ -91,6 +100,7 @@ Spec-Kit Plus (AI-native SDD for professional teams)
 
 **Scenario "What That Means"** (actionable):
 Example for Fintech Startup:
+
 - "You'll use GitHub's Spec-Kit as the base (Constitution + Specify → Plan → Tasks)"
 - "You'll add the **Fintech Intelligence Template** (pre-built PCI-DSS rules, payment patterns)"
 - "You'll use **ADRs** to document architecture decisions"
@@ -113,11 +123,13 @@ Example for Fintech Startup:
 ## Evaluation notes (flywheel)
 
 - **Failure modes observed**:
+
   - Initial version had readers confused about Spec-Kit vs. Spec-Kit Plus distinction
   - Academic tone made Spec-Kit Plus feel alien/abstract
   - Insufficient "what that means" for practical application
 
 - **Graders run and results (PASS/FAIL)**:
+
   - ✅ Learning objectives clarified and expanded
   - ✅ 2a/2b split creates clear GitHub vs. Panaversity distinction
   - ✅ Evolution section explains gaps systematically
@@ -126,6 +138,7 @@ Example for Fintech Startup:
   - ✅ Tesel simplified per user request
 
 - **Prompt variant (if applicable)**:
+
   - User provided three clarification rounds to refine direction
   - Final direction: "both are separate tools, 1 is github and other is panaversity"
   - Executed as: Separate 2a/2b sections with explicit "GitHub's Framework" vs. "Panaversity's Evolution"
@@ -134,4 +147,3 @@ Example for Fintech Startup:
   - Add one-sentence "TL;DR" comparing the two at start of 2b section
   - Consider visual diagram showing evolution path (Spec-Kit → Spec-Kit Plus)
   - Could add sidebar box highlighting "Why This Book Uses Spec-Kit Plus" for emphasis
-

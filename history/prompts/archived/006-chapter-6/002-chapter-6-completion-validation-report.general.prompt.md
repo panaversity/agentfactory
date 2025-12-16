@@ -15,18 +15,18 @@ labels:
   - "final-validation"
   - "docusaurus-build"
 links:
-  spec: "book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/"
+  spec: "apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/"
   pr: "null"
   adr: "null"
 files_verified:
-  - "book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/01-why-gemini-cli-matters.md"
-  - "book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/02-installation-authentication-first-steps.md"
-  - "book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/03-core-commands-slash-commands.md"
-  - "book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/04-gemini-md-context-files.md"
-  - "book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/05-persistent-memory-sessions.md"
-  - "book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/06-mcp-and-extensions-ecosystem.md"
-  - "book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/07-custom-commands-extensions.md"
-  - "book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/README.md"
+  - "apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/01-why-gemini-cli-matters.md"
+  - "apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/02-installation-authentication-first-steps.md"
+  - "apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/03-core-commands-slash-commands.md"
+  - "apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/04-gemini-md-context-files.md"
+  - "apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/05-persistent-memory-sessions.md"
+  - "apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/06-mcp-and-extensions-ecosystem.md"
+  - "apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/07-custom-commands-extensions.md"
+  - "apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/README.md"
 tests_run: []
 ---
 
@@ -43,6 +43,7 @@ Chapter 6 (Google Gemini CLI: Open Source and Everywhere) is now fully complete 
 ### Key Achievements
 
 1. **All 7 Lessons Complete**:
+
    - Lesson 1: Why Gemini CLI Matters (foundation)
    - Lesson 2: Installation, Authentication & First Steps (setup)
    - Lesson 3: Core Commands & Slash Commands (orchestration)
@@ -66,23 +67,24 @@ Chapter 6 (Google Gemini CLI: Open Source and Everywhere) is now fully complete 
 
 ## File Manifest
 
-| Lesson | File | Lines | Content Focus | Validated |
-|--------|------|-------|---------------|-----------|
-| 1 | `01-why-gemini-cli-matters.md` | 312 | Open source, free tier, when to choose Gemini CLI | ✅ |
-| 2 | `02-installation-authentication-first-steps.md` | 287 | Node.js setup, Google authentication, first conversation | ✅ |
-| 3 | `03-core-commands-slash-commands.md` | 556 | 29+ slash commands with practical examples | ✅ |
-| 4 | `04-gemini-md-context-files.md` | 504 | GEMINI.md structure, `/init` command, production examples | ✅ |
-| 5 | `05-persistent-memory-sessions.md` | 468 | `/chat save/resume/list/delete/share` with workflows | ✅ |
-| 6 | `06-mcp-and-extensions-ecosystem.md` | 492 | Playwright MCP, Context7 MCP, business workflows | ✅ |
-| 7 | `07-custom-commands-extensions.md` | 335 | Custom TOML commands, extensions, security evaluation | ✅ |
-| — | `README.md` | 118 | Chapter overview, lesson structure, prerequisites | ✅ |
-| **Total** | **8 files** | **3,554 lines** | **Complete Gemini CLI curriculum** | **✅** |
+| Lesson    | File                                            | Lines           | Content Focus                                             | Validated |
+| --------- | ----------------------------------------------- | --------------- | --------------------------------------------------------- | --------- |
+| 1         | `01-why-gemini-cli-matters.md`                  | 312             | Open source, free tier, when to choose Gemini CLI         | ✅        |
+| 2         | `02-installation-authentication-first-steps.md` | 287             | Node.js setup, Google authentication, first conversation  | ✅        |
+| 3         | `03-core-commands-slash-commands.md`            | 556             | 29+ slash commands with practical examples                | ✅        |
+| 4         | `04-gemini-md-context-files.md`                 | 504             | GEMINI.md structure, `/init` command, production examples | ✅        |
+| 5         | `05-persistent-memory-sessions.md`              | 468             | `/chat save/resume/list/delete/share` with workflows      | ✅        |
+| 6         | `06-mcp-and-extensions-ecosystem.md`            | 492             | Playwright MCP, Context7 MCP, business workflows          | ✅        |
+| 7         | `07-custom-commands-extensions.md`              | 335             | Custom TOML commands, extensions, security evaluation     | ✅        |
+| —         | `README.md`                                     | 118             | Chapter overview, lesson structure, prerequisites         | ✅        |
+| **Total** | **8 files**                                     | **3,554 lines** | **Complete Gemini CLI curriculum**                        | **✅**    |
 
 ---
 
 ## Validation Checklist
 
 ### ✅ Structural Validation
+
 - [x] All 7 lesson files present and named correctly
 - [x] All sidebar_position values correct (1-7, sequential)
 - [x] All frontmatter properly formatted (YAML)
@@ -90,6 +92,7 @@ Chapter 6 (Google Gemini CLI: Open Source and Everywhere) is now fully complete 
 - [x] README updated with correct lesson structure
 
 ### ✅ Content Validation
+
 - [x] All lessons grounded in official Gemini CLI documentation
 - [x] 29+ slash commands documented with syntax
 - [x] `/chat save/resume/list/delete/share` commands correctly explained
@@ -100,12 +103,14 @@ Chapter 6 (Google Gemini CLI: Open Source and Everywhere) is now fully complete 
 - [x] Custom commands and extensions covered comprehensively
 
 ### ✅ Build Validation
+
 - [x] Docusaurus build completed successfully (exit code 0)
 - [x] No compilation errors
 - [x] No missing references
 - [x] All markdown formatted correctly
 
 ### ✅ Pedagogical Validation
+
 - [x] Learning progression clear (foundation → orchestration → context → integration → automation)
 - [x] Graduated complexity appropriate (Tier 1: Beginner)
 - [x] Real-world examples included for each concept
@@ -113,6 +118,7 @@ Chapter 6 (Google Gemini CLI: Open Source and Everywhere) is now fully complete 
 - [x] "Try With AI" prompts aligned with learning objectives
 
 ### ✅ Accuracy Validation
+
 - [x] All commands cross-checked against official documentation
 - [x] No fabricated features
 - [x] Proper distinction between GEMINI.md and `/chat` persistence
@@ -124,6 +130,7 @@ Chapter 6 (Google Gemini CLI: Open Source and Everywhere) is now fully complete 
 ## Command Accuracy Summary
 
 **Slash Commands Documented** (29+ total):
+
 - ✅ `/chat save|resume|list|delete|share` (conversation management)
 - ✅ `/memory add|show|refresh|list` (context management)
 - ✅ `/stats` (token usage)
@@ -135,11 +142,13 @@ Chapter 6 (Google Gemini CLI: Open Source and Everywhere) is now fully complete 
 - ✅ And 20+ additional system commands
 
 **File Inclusion** (@syntax):
+
 - ✅ `@path/to/file.js` (single file)
 - ✅ `@./src/` (directory inclusion)
 - ✅ Automatic filtering of node_modules, .env, .git
 
 **Shell Execution** (!syntax):
+
 - ✅ `!<command>` (single command execution)
 - ✅ `!` (toggle shell mode)
 
@@ -147,21 +156,22 @@ Chapter 6 (Google Gemini CLI: Open Source and Everywhere) is now fully complete 
 
 ## Content Quality Metrics
 
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| Total Lines | 3,000+ | 3,554 | ✅ Exceeds |
-| Lessons | 7 | 7 | ✅ Complete |
-| Code Examples | 15+ | 28 | ✅ Exceeds |
-| Exercises | 5+ | 15 | ✅ Exceeds |
-| Real Workflows | 3+ | 8 | ✅ Exceeds |
-| Official Commands | 20+ | 29+ | ✅ Exceeds |
-| Build Errors | 0 | 0 | ✅ Perfect |
+| Metric            | Target | Actual | Status      |
+| ----------------- | ------ | ------ | ----------- |
+| Total Lines       | 3,000+ | 3,554  | ✅ Exceeds  |
+| Lessons           | 7      | 7      | ✅ Complete |
+| Code Examples     | 15+    | 28     | ✅ Exceeds  |
+| Exercises         | 5+     | 15     | ✅ Exceeds  |
+| Real Workflows    | 3+     | 8      | ✅ Exceeds  |
+| Official Commands | 20+    | 29+    | ✅ Exceeds  |
+| Build Errors      | 0      | 0      | ✅ Perfect  |
 
 ---
 
 ## Errors Discovered and Corrected
 
 ### Critical Error 1: Fabricated `/memory save/load` Commands
+
 - **What**: Initial lessons taught non-existent commands
 - **Root Cause**: Speculated without official documentation validation
 - **Impact**: Would confuse users trying to persist conversations
@@ -169,6 +179,7 @@ Chapter 6 (Google Gemini CLI: Open Source and Everywhere) is now fully complete 
 - **Validation**: Cross-checked against https://gemini-cli.xyz/docs/en/cli/commands
 
 ### Critical Error 2: Incomplete GEMINI.md Documentation
+
 - **What**: Lesson 4 didn't mention `/init` command
 - **Root Cause**: Focused on file structure without setup command
 - **Impact**: Users wouldn't know easiest way to create GEMINI.md
@@ -176,6 +187,7 @@ Chapter 6 (Google Gemini CLI: Open Source and Everywhere) is now fully complete 
 - **Result**: Clear guided and manual creation paths
 
 ### Critical Error 3: Confused Memory Systems
+
 - **What**: Lesson 5 conflated GEMINI.md with `/chat` persistence
 - **Root Cause**: Didn't clearly distinguish two different persistence mechanisms
 - **Impact**: Users would have incorrect mental model
@@ -187,18 +199,21 @@ Chapter 6 (Google Gemini CLI: Open Source and Everywhere) is now fully complete 
 ## Learning Objectives Alignment
 
 ### Lesson 1: Why Gemini CLI Matters
+
 - ✅ Understand open source model advantages
 - ✅ Compare free tier vs. paid models
 - ✅ Identify when to choose Gemini CLI vs. Claude Code
 - ✅ Grasp MCP protocol conceptually
 
 ### Lesson 2: Installation & Authentication
+
 - ✅ Install Node.js 20+ (prerequisite)
 - ✅ Complete Google OAuth authentication
 - ✅ Launch first Gemini CLI conversation
 - ✅ Understand token budgets and context windows
 
 ### Lesson 3: Core Commands & Slash Commands
+
 - ✅ Use 29+ slash commands effectively
 - ✅ Manage conversations with `/chat` family
 - ✅ Monitor token usage with `/stats`
@@ -206,18 +221,21 @@ Chapter 6 (Google Gemini CLI: Open Source and Everywhere) is now fully complete 
 - ✅ Execute shell commands with ! syntax
 
 ### Lesson 4: GEMINI.md Context Files
+
 - ✅ Create global GEMINI.md (`~/.gemini/GEMINI.md`)
 - ✅ Create project GEMINI.md (`./GEMINI.md`)
 - ✅ Use `/init` for guided setup
 - ✅ Manage loaded context with `/memory show/refresh`
 
 ### Lesson 5: Saving & Resuming Conversations
+
 - ✅ Save conversations with `/chat save <tag>`
 - ✅ Resume conversations with `/chat resume <tag>`
 - ✅ Implement multi-day project workflows
 - ✅ Use conversation checkpointing strategically
 
 ### Lesson 6: MCP Servers & Business Workflows
+
 - ✅ Install Playwright MCP for web browsing
 - ✅ Configure Context7 MCP for live documentation
 - ✅ Implement competitive research workflows
@@ -225,6 +243,7 @@ Chapter 6 (Google Gemini CLI: Open Source and Everywhere) is now fully complete 
 - ✅ Assess security implications of MCP servers
 
 ### Lesson 7: Custom Commands & Extensions
+
 - ✅ Create user commands (`~/.gemini/commands/`)
 - ✅ Create project commands (`./gemini/commands/`)
 - ✅ Write TOML command syntax
@@ -242,6 +261,7 @@ Exit code: 0
 ```
 
 **Build Details**:
+
 - No errors or warnings
 - All 50+ OG images generated correctly
 - All Markdown properly compiled
@@ -252,26 +272,26 @@ Exit code: 0
 
 ## Cross-Reference Validation
 
-| Reference Type | Count | Status |
-|---|---|---|
-| Internal lesson links | 15+ | ✅ Tested |
-| Code examples | 28 | ✅ Syntax valid |
-| URLs (official docs) | 8 | ✅ Grounded |
-| Commands documented | 29+ | ✅ Verified |
-| Exercises provided | 15 | ✅ Complete |
+| Reference Type        | Count | Status          |
+| --------------------- | ----- | --------------- |
+| Internal lesson links | 15+   | ✅ Tested       |
+| Code examples         | 28    | ✅ Syntax valid |
+| URLs (official docs)  | 8     | ✅ Grounded     |
+| Commands documented   | 29+   | ✅ Verified     |
+| Exercises provided    | 15    | ✅ Complete     |
 
 ---
 
 ## Comparison to Claude Code Chapter
 
-| Aspect | Claude Code (Ch. 5) | Gemini CLI (Ch. 6) | Notes |
-|--------|-------------------|------------------|-------|
-| Total Lessons | 7 | 7 | ✅ Matched |
-| Total Lines | ~3,200 | 3,554 | ✅ Slightly deeper |
-| Examples | 25+ | 28 | ✅ Comparable |
-| Exercises | 14 | 15 | ✅ Comparable |
-| Business Workflows | 6 | 8 | ✅ More depth |
-| Complexity | Intermediate | Intermediate | ✅ Matched |
+| Aspect             | Claude Code (Ch. 5) | Gemini CLI (Ch. 6) | Notes              |
+| ------------------ | ------------------- | ------------------ | ------------------ |
+| Total Lessons      | 7                   | 7                  | ✅ Matched         |
+| Total Lines        | ~3,200              | 3,554              | ✅ Slightly deeper |
+| Examples           | 25+                 | 28                 | ✅ Comparable      |
+| Exercises          | 14                  | 15                 | ✅ Comparable      |
+| Business Workflows | 6                   | 8                  | ✅ More depth      |
+| Complexity         | Intermediate        | Intermediate       | ✅ Matched         |
 
 **Conclusion**: Chapter 6 now matches Chapter 5's depth and complexity while covering Gemini CLI's unique capabilities (MCP, GEMINI.md, extensions).
 
@@ -313,4 +333,3 @@ Exit code: 0
 **Time Invested**: ~8 hours across discovery, writing, validation, and correction phases
 
 **Quality Gates Met**: ✅ All
-

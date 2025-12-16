@@ -1,6 +1,6 @@
 # Validation Report: Chapter 31: Spec-Kit Plus Hands-On
 
-**File:** `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/`
+**File:** `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/`
 
 **Chapter Type:** Hybrid (Conceptual + Technical Workflow)
 
@@ -33,21 +33,25 @@ None identified.
 ## Minor Issues
 
 1. **Typo in 02-constitution-phase.md, line 202**
+
    - Text: "Remebr the Goal:"
    - Issue: Misspelled "Remember" as "Remebr"
    - Recommendation: Change to "Remember the Goal:" for professional polish
 
 2. **Typo in 02-constitution-phase.md, line 250**
+
    - Text: "Updae @.specify/memory/constitution.md"
    - Issue: Misspelled "Update" as "Updae"
    - Recommendation: Change to "Update @.specify/memory/constitution.md"
 
 3. **Typo in 03-specify-phase.md, line 137**
+
    - Text: "You: 'So wht success looks like?'"
    - Issue: Misspelled "what" as "wht"
    - Recommendation: Change to "You: 'So what success looks like?'"
 
 4. **Formatting Error in 04-clarify-phase.md, line 164**
+
    - Text: "##Clarify Your Calculator Specification (25 minutes)"
    - Issue: Missing space after `##` markdown heading marker
    - Recommendation: Change to `## Clarify Your Calculator Specification (25 minutes)`
@@ -173,6 +177,7 @@ Constitution v3.0.1 §IV.H: "ai-first closure policy followed: each lesson ends 
 ### Non-Negotiable Rules (Constitution §IV)
 
 **ALWAYS DO**:
+
 - [x] Create specifications before implementation (entire chapter teaches this)
 - [x] Include evaluation criteria in lesson planning (skills metadata includes measurable outcomes)
 - [x] Test code examples before publication (N/A - workflow chapter, not code chapter)
@@ -180,6 +185,7 @@ Constitution v3.0.1 §IV.H: "ai-first closure policy followed: each lesson ends 
 - [x] Apply evals-first methodology (Chapter emphasizes success criteria before specs)
 
 **NEVER DO**:
+
 - [x] No hardcoded secrets (none in examples)
 - [x] No forward references without explanation (all references to Chapter 30, prior lessons are explained)
 - [x] No untested workflows (workflows are industry-proven Spec-Kit Plus patterns)
@@ -247,6 +253,7 @@ Constitution v3.0.1 §IV.H: "ai-first closure policy followed: each lesson ends 
 #### Conceptual Sections (Teaching Understanding)
 
 **Lesson 1: Spec-Kit Plus Architecture**
+
 - Clear distinction between Framework, AI Orchestrator, and Vertical Intelligence
 - Visual diagram provided (You → Orchestrator → Subagents)
 - Horizontal Intelligence (ADRs, PHRs) explained with clear examples
@@ -254,6 +261,7 @@ Constitution v3.0.1 §IV.H: "ai-first closure policy followed: each lesson ends 
 - Status: ✓ Excellent
 
 **Lesson 2: Constitution**
+
 - LEGO castle analogy appropriate for foundational concept
 - Constitution vs. Specification distinction clearly explained with example
 - Cascade effect illustrated with visual progression
@@ -261,24 +269,28 @@ Constitution v3.0.1 §IV.H: "ai-first closure policy followed: each lesson ends 
 - Status: ✓ Good (2 typos to fix)
 
 **Lesson 3: Specification Writing**
+
 - Business-first thinking emphasized (human-AI exploration before formal spec)
 - SMART criteria introduced and applied to calculator
 - User stories vs. acceptance criteria clearly distinguished
 - Status: ✓ Good (1 typo to fix)
 
 **Lesson 4: Clarification**
+
 - `/sp.clarify` purpose clearly explained
 - 5 types of gaps identified (ambiguous terms, missing assumptions, incomplete requirements, constraint conflicts, edge cases)
 - Iterative refinement process explained
 - Status: ✓ Good (1 formatting error to fix)
 
 **Lesson 5: Planning**
+
 - `/sp.plan` command explained with input/output
 - ADR criteria clearly defined (when to create, when not to)
 - Cascade effect reinforced (good spec → good plan)
 - Status: ✓ Excellent
 
 **Lesson 6: Tasks**
+
 - Task properties clearly defined (size, criterion, independence)
 - Checkpoint pattern explained with before/after scenarios
 - Human's role at each checkpoint clearly specified
@@ -286,6 +298,7 @@ Constitution v3.0.1 §IV.H: "ai-first closure policy followed: each lesson ends 
 - Status: ✓ Excellent
 
 **Lesson 7: Implementation**
+
 - 5-step validation protocol clearly articulated
 - PHRs explained (what, where, when to request)
 - Code review red flags identified
@@ -294,6 +307,7 @@ Constitution v3.0.1 §IV.H: "ai-first closure policy followed: each lesson ends 
 #### Technical Sections (Teaching Application)
 
 **Installation Section**
+
 - `pip install specifyplus` command provided
 - Project initialization steps clear
 - Directory structure diagram provided
@@ -302,6 +316,7 @@ Constitution v3.0.1 §IV.H: "ai-first closure policy followed: each lesson ends 
 - Status: ✓ Clear and actionable
 
 **Workflow Examples**
+
 - All `/sp.*` commands documented with actual command syntax
 - Example prompts are copy-paste ready
 - Expected outputs clearly described
@@ -321,6 +336,7 @@ All 7 lessons include well-designed "Try With AI" activities:
 7. **Lesson 7**: Prompts for implementation reflection and PHR understanding
 
 Each activity:
+
 - [x] Provides copy-paste-ready prompts
 - [x] Defines expected outcomes
 - [x] Teaches collaborative validation (not code-writing)
@@ -352,26 +368,32 @@ Status: ✓ Dependencies are clear and well-ordered
 #### Practice-to-Objective Alignment
 
 - **Lesson 1 Objectives**: Install, configure, verify setup
+
   - Practice: Step-by-step installation with verification at each stage
   - Alignment: ✓ Perfect
 
 - **Lesson 2 Objectives**: Write Constitution, understand cascade
+
   - Practice: Create Constitution with AI, improve it, validate it
   - Alignment: ✓ Perfect
 
 - **Lesson 3 Objectives**: Write specification, convert vague requirements to SMART criteria
+
   - Practice: Conduct conversation, write spec, verify completeness
   - Alignment: ✓ Perfect
 
 - **Lesson 4 Objectives**: Use `/sp.clarify`, identify gaps, iterate
+
   - Practice: Run command, interpret feedback, revise spec
   - Alignment: ✓ Perfect
 
 - **Lesson 5 Objectives**: Generate plan, identify ADRs, write ADRs
+
   - Practice: Run `/sp.plan`, review output, create ADRs
   - Alignment: ✓ Perfect
 
 - **Lesson 6 Objectives**: Decompose plan to tasks, understand dependencies, checkpoint pattern
+
   - Practice: Generate tasks, analyze dependencies, understand human control role
   - Alignment: ✓ Perfect
 
@@ -439,6 +461,7 @@ All alignments are correct.
 Chapter 31 is **pedagogically excellent, constitutionally aligned, and ready for publication pending correction of 5 minor issues**:
 
 **Strengths**:
+
 1. **Pedagogical Design**: Clear learning objectives, appropriate scaffolding, excellent "Try With AI" activities
 2. **Constitutional Alignment**: All domain skills applied contextually; AI-first closure pattern correctly implemented; evals-first emphasis present
 3. **Complexity Tier**: B1 proficiency levels appropriate for Part 5 intermediate audience
@@ -447,6 +470,7 @@ Chapter 31 is **pedagogically excellent, constitutionally aligned, and ready for
 6. **Skills Metadata**: Comprehensive frontmatter with CEFR proficiency levels, Bloom's taxonomy, and cognitive load assessments
 
 **Issues to Fix** (all minor):
+
 1. Typo: "Remebr" → "Remember" (02-constitution-phase.md:202)
 2. Typo: "Updae" → "Update" (02-constitution-phase.md:250)
 3. Typo: "wht" → "what" (03-specify-phase.md:137)
@@ -458,6 +482,7 @@ Chapter 31 is **pedagogically excellent, constitutionally aligned, and ready for
 **Major Issues**: None
 
 **Next Steps**:
+
 1. Correct 5 minor issues listed above
 2. Run spell-check across all 7 lesson files
 3. Verify all "Try With AI" prompts are copy-paste ready (spot-check 2-3)
@@ -469,13 +494,15 @@ Chapter 31 is **pedagogically excellent, constitutionally aligned, and ready for
 ## Next Steps
 
 1. **Priority 1 — Correct Typos and Formatting** (5 minutes):
-   - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/02-constitution-phase.md:202`: Change "Remebr" to "Remember"
-   - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/02-constitution-phase.md:250`: Change "Updae" to "Update"
-   - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/03-specify-phase.md:137`: Change "wht" to "what"
-   - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/04-clarify-phase.md:164`: Change "##Clarify" to "## Clarify"
-   - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/01-installation-and-setup.md:8`: Change "build project" to "build a project"
+
+   - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/02-constitution-phase.md:202`: Change "Remebr" to "Remember"
+   - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/02-constitution-phase.md:250`: Change "Updae" to "Update"
+   - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/03-specify-phase.md:137`: Change "wht" to "what"
+   - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/04-clarify-phase.md:164`: Change "##Clarify" to "## Clarify"
+   - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/01-installation-and-setup.md:8`: Change "build project" to "build a project"
 
 2. **Priority 2 — Verification** (5 minutes):
+
    - Run spell-check on all 7 lesson files
    - Spot-check 2-3 "Try With AI" sections for copy-paste readiness
 

@@ -74,7 +74,7 @@ Independent test: Lint enhancements flag malformed blocks; CI gate prevents publ
 
 ## Final Phase — Polish & Cross‑Cutting
 
-- [ ] T024 Review canonical conflicts and fragment anchors for determinism (book-source/docs/\*)
+- [ ] T024 Review canonical conflicts and fragment anchors for determinism (apps/learn-app/docs/\*)
 - [ ] T025 Add visible attribution and license footer pattern (book-source/src/theme/Footer/)
 - [ ] T026 [P] Submit sitemaps to major engines and document submission in quickstart (specs/001-seo-aeo-geo/quickstart.md)
 - [ ] T027 [P] Schedule monthly evaluator and analytics review cadence (history/guides/seo-aeo-geo-ops.md)

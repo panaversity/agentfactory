@@ -9,14 +9,15 @@ feature: "015-chapter-15-capstone"
 branch: "main"
 user: "mjs"
 command: "content-implementer enhancement task"
-labels: ["chapter-15", "feature-2", "hands-on-ratio", "acceleration-measurement"]
+labels:
+  ["chapter-15", "feature-2", "hands-on-ratio", "acceleration-measurement"]
 links:
   spec: "/specs/015-chapter-15-capstone/spec.md"
   ticket: null
   adr: null
   pr: null
 files:
-  - path: "book-source/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/03-feature-2-icp-scorer.md"
+  - path: "apps/learn-app/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/03-feature-2-icp-scorer.md"
     status: "modified"
     lines: "387 (from 224)"
   - path: "specs/015-chapter-15-capstone/LESSON-03-ENHANCEMENT-REPORT.md"
@@ -42,6 +43,7 @@ tests:
 Enhance Lesson 03 (Feature 2: ICP Scorer) for Chapter 15, addressing these requirements:
 
 1. Verify it has:
+
    - icp_criteria.json definition with weights
    - Data flow diagram (F1 → F2)
    - Complete SDD-RI workflow execution
@@ -58,6 +60,7 @@ Enhance Lesson 03 (Feature 2: ICP Scorer) for Chapter 15, addressing these requi
 ## Response snapshot
 
 **Changes Made**:
+
 - Added proficiency_level, estimated_time, cognitive_load metadata
 - Restructured into 5-step workflow with time estimates (5-10 min → 30-45 min total)
 - Added "What you're reusing from F1" callouts throughout (6 callouts)

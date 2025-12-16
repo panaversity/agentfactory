@@ -26,7 +26,7 @@ links:
   adr: null
 
 files_yaml:
-  - "book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/03-lists-organizing-ideas.md"
+  - "apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/03-lists-organizing-ideas.md"
   - "history/prompts/001-chapter-9-markdown/001-implement-lesson-3-lists.general.prompt.md"
 
 tests_yaml:
@@ -35,7 +35,6 @@ tests_yaml:
   - "Manual validation: All 3 concepts taught directly (Tier 1)"
   - "Manual validation: Exercise template complete"
   - "Manual validation: Try With AI section with 3 prompts"
-
 ---
 
 ## Context
@@ -43,6 +42,7 @@ tests_yaml:
 **Request**: Implement Lesson 3 (Lists - Organizing Ideas) for Chapter 9 - Markdown: The Language of AI Communication, following the detailed specification, plan, and task requirements.
 
 **Chapter Context**:
+
 - Part: 3 - Markdown, Prompt & Context Engineering
 - Chapter: 9 - Markdown: The Language of AI Communication
 - Lesson Position: 3 of 8 lessons in chapter
@@ -51,15 +51,18 @@ tests_yaml:
 - Cognitive Load: Moderate (3 new concepts)
 
 **Specification Reference**:
+
 - User Story 1 (P1): Write Clear Project Specifications - Students must learn to organize requirements using lists
 - Teaching Tier: TIER 1 - Book Teaches Directly (not delegated to AI)
 
 **Task Reference**:
+
 - T013: Write complete lesson content with 3 concepts, direct teaching, examples, and exercise
 - T014: Add "Try With AI" section with 3 progressive ChatGPT prompts
 - T015: Create exercise template with validation checklist
 
 **Scope**:
+
 - Learn unordered list syntax (`-` or `*` for bullets)
 - Learn ordered list syntax (`1.`, `2.`, `3.` for numbers)
 - Learn decision principle: when to use each type
@@ -76,7 +79,7 @@ Implement Lesson 3: Lists - Organizing Ideas
 Context:
 - Chapter: 9 - Markdown: The Language of AI Communication
 - Part: Part 3 - Markdown, Prompt & Context Engineering
-- Lesson file: `book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/03-lists-organizing-ideas.md`
+- Lesson file: `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/03-lists-organizing-ideas.md`
 - Spec: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/specs/001-chapter-9-markdown/spec.md`
 - Plan: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/specs/001-chapter-9-markdown/plan.md`
 - Tasks: Task T013-T015 from `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/specs/001-chapter-9-markdown/tasks.md`
@@ -131,11 +134,13 @@ Successfully implemented **Lesson 3: Lists - Organizing Ideas** for Chapter 9, f
 ### Deliverables
 
 **File Created**:
-- `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/03-lists-organizing-ideas.md` (568 lines, ~2,850 words)
+
+- `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/03-lists-organizing-ideas.md` (568 lines, ~2,850 words)
 
 ### Content Structure
 
 1. **YAML Frontmatter** (Complete)
+
    - Title, chapter, lesson, duration (40 min), proficiency (A2), concepts (3)
    - 3 Skills Metadata entries (Creating Unordered Lists, Creating Ordered Lists, Choosing List Type)
    - 3 Learning Objectives with Bloom's levels
@@ -144,28 +149,33 @@ Successfully implemented **Lesson 3: Lists - Organizing Ideas** for Chapter 9, f
    - Generation metadata: source_spec, created, last_modified, git_author, workflow, version
 
 2. **Opening Hook** (~150 words)
+
    - Contrasts paragraph vs list format
    - Establishes why lists matter in specifications
    - Previews both unordered and ordered use cases
 
 3. **Concept 1: Unordered Lists** (~400 words)
+
    - Basic syntax with markdown examples
    - Visual rendering examples
    - Real-world example: Task List Application features
    - Key principle: When to use bullets
 
 4. **Concept 2: Ordered Lists** (~450 words)
+
    - Basic syntax with markdown examples
    - Visual rendering examples
    - Real-world examples: Weather Dashboard installation, Troubleshooting steps
    - Key principle: When to use numbers
 
 5. **Concept 3: Choosing Between Types** (~200 words)
+
    - Quick Decision Guide table
    - Example comparisons (Features, Installation, Troubleshooting)
    - Semantic decision-making framework
 
 6. **Common Mistakes** (~300 words)
+
    - Mistake 1: Mixing list markers
    - Mistake 2: Using unordered when order matters
    - Mistake 3: Using ordered when order doesn't matter
@@ -174,15 +184,18 @@ Successfully implemented **Lesson 3: Lists - Organizing Ideas** for Chapter 9, f
    - Each with ❌ WRONG and ✅ CORRECT examples
 
 7. **Real-World Comparison** (~200 words)
+
    - Bad Specification (no structure)
    - Good Specification (clear lists with headings)
 
 8. **Practice Exercise** (~250 words)
+
    - Template with placeholders for student's project
    - Two list types required
    - Validation checklist: 8 checkpoints
 
 9. **Pause and Reflect** (~80 words)
+
    - 3 reflection questions promoting critical thinking
 
 10. **Try With AI** (~350 words)
@@ -207,6 +220,7 @@ Successfully implemented **Lesson 3: Lists - Organizing Ideas** for Chapter 9, f
 ### Constitutional Alignment
 
 - ✅ **Graduated Teaching Pattern (Principle 13)**: TIER 1 - Book teaches directly
+
   - All foundational list syntax explained with clear examples
   - Students practice manually typing `-` and `1.` markers
   - NO "Ask your AI: What are lists?"
@@ -214,6 +228,7 @@ Successfully implemented **Lesson 3: Lists - Organizing Ideas** for Chapter 9, f
 - ✅ **Cognitive Load (Principle 12)**: 3 concepts within A2 limit of 7
 
 - ✅ **AI-First Closure (Principle 1)**:
+
   - Single "Try With AI" section at end
   - No separate "Key Takeaways" or "What's Next" sections
   - ChatGPT web tool (pre-tool onboarding)
@@ -313,7 +328,7 @@ Successfully implemented **Lesson 3: Lists - Organizing Ideas** for Chapter 9, f
 
 ## Files Modified
 
-- **Created**: `/book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/03-lists-organizing-ideas.md`
+- **Created**: `/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/03-lists-organizing-ideas.md`
 - **Metadata**: This PHR document (000-implement-lesson-3-lists.general.prompt.md)
 
 ---
@@ -325,4 +340,4 @@ Successfully implemented **Lesson 3: Lists - Organizing Ideas** for Chapter 9, f
 - Tasks: `specs/001-chapter-9-markdown/tasks.md` (T013-T015)
 - Constitution: `.specify/memory/constitution.md` (Principles 1, 12, 13)
 - Template: `.claude/output-styles/lesson.md`
-- Example: `book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/02-headings-hierarchy.md`
+- Example: `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/02-headings-hierarchy.md`

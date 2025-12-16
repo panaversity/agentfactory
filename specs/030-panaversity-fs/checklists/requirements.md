@@ -85,7 +85,7 @@
 ## Docusaurus Integration
 
 - [ ] **FR-032**: Hydration script (`docusaurus-hydration.ts`) runs during `docusaurus build` phase, authenticates with PanaversityFS MCP server using OAuth token from `PANAVERSITY_OAUTH_TOKEN` environment variable
-- [ ] **FR-033**: Hydration script downloads all lessons to `book-source/docs/[part]/[chapter]/[lesson].md` and all assets to `book-source/static/assets/`, preserving directory structure
+- [ ] **FR-033**: Hydration script downloads all lessons to `apps/learn-app/docs/[part]/[chapter]/[lesson].md` and all assets to `book-source/static/assets/`, preserving directory structure
 - [ ] **FR-034**: If hydration fails (storage unavailable, auth failure), Docusaurus build fails with clear error message indicating which lesson/asset failed to fetch
 
 ---

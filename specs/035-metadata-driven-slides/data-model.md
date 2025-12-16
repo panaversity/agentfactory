@@ -14,14 +14,15 @@ This document defines the data structures for metadata-driven slides architectur
 
 ### Chapter README Metadata
 
-**Location**: `book-source/docs/[part]/[chapter]/README.md`
+**Location**: `apps/learn-app/docs/[part]/[chapter]/README.md`
 
 **Schema**:
+
 ```yaml
 ---
 sidebar_position: 2
 title: "Chapter 2: The AI Turning Point"
-slides: "slides/chapter-02-slides.pdf"  # NEW: Optional string field
+slides: "slides/chapter-02-slides.pdf" # NEW: Optional string field
 ---
 ```
 
@@ -33,24 +34,28 @@ slides: "slides/chapter-02-slides.pdf"  # NEW: Optional string field
 **Examples**:
 
 1. **Local path** (relative to static directory):
+
 ```yaml
 slides: "slides/chapter-02-slides.pdf"
 # Resolves to: /slides/chapter-02-slides.pdf
 ```
 
 2. **Cloud URL** (absolute):
+
 ```yaml
 slides: "https://r2.cloudflare.com/slides/chapter-02-slides.pdf"
 # Used as-is in PDFViewer src prop
 ```
 
 3. **No slides** (omit field):
+
 ```yaml
 # slides field not present
 # Result: No injection, no errors
 ```
 
 **Validation Rules**:
+
 - If `slides` is defined:
   - ✅ MUST be non-empty string
   - ✅ Local paths MAY start with `/` (normalized automatically)
@@ -68,15 +73,17 @@ slides: "https://r2.cloudflare.com/slides/chapter-02-slides.pdf"
 **Type**: `yaml` (from remark-frontmatter)
 
 **Structure**:
+
 ```typescript
 interface YAMLNode {
-  type: 'yaml';
+  type: "yaml";
   value: string; // Raw YAML string
   position: Position;
 }
 ```
 
 **Parsed Data** (accessed via `vfile.data.frontMatter`):
+
 ```typescript
 interface FrontMatter {
   sidebar_position?: number;
@@ -93,9 +100,10 @@ interface FrontMatter {
 **Type**: `heading` (mdast)
 
 **Structure**:
+
 ```typescript
 interface HeadingNode {
-  type: 'heading';
+  type: "heading";
   depth: 1 | 2 | 3 | 4 | 5 | 6; // H2 = depth 2
   children: PhrasingContent[]; // Text content
   position: Position;
@@ -103,6 +111,7 @@ interface HeadingNode {
 ```
 
 **Target Heading**:
+
 - Text content: `"What You'll Learn"`
 - Depth: `2` (H2 heading)
 - Extraction: `mdast-util-to-string(node)` yields heading text
@@ -114,16 +123,18 @@ interface HeadingNode {
 **Type**: `import` (mdx)
 
 **Structure**:
+
 ```typescript
 interface ImportNode {
-  type: 'import';
+  type: "import";
   value: string; // Full import statement
 }
 ```
 
 **Generated Value**:
+
 ```typescript
-"import PDFViewer from '@site/src/components/PDFViewer';"
+"import PDFViewer from '@site/src/components/PDFViewer';";
 ```
 
 ---
@@ -133,14 +144,16 @@ interface ImportNode {
 **Type**: `jsx` (mdx)
 
 **Structure**:
+
 ```typescript
 interface JSXNode {
-  type: 'jsx';
+  type: "jsx";
   value: string; // JSX code as string
 }
 ```
 
 **Generated Value** (local path):
+
 ```jsx
 <PDFViewer
   src="/slides/chapter-02-slides.pdf"
@@ -150,6 +163,7 @@ interface JSXNode {
 ```
 
 **Generated Value** (cloud URL):
+
 ```jsx
 <PDFViewer
   src="https://cdn.example.com/chapter-02.pdf"
@@ -165,15 +179,17 @@ interface JSXNode {
 **Type**: `heading` (mdast)
 
 **Structure**:
+
 ```typescript
 interface HeadingNode {
-  type: 'heading';
+  type: "heading";
   depth: 2; // H2
-  children: [{ type: 'text', value: '📊 Chapter Slides' }];
+  children: [{ type: "text"; value: "📊 Chapter Slides" }];
 }
 ```
 
 **Generated Output**:
+
 ```markdown
 ## 📊 Chapter Slides
 ```
@@ -229,7 +245,7 @@ interface InjectionResult {
   injected: boolean;
 
   /** Reason if injection skipped */
-  reason?: 'no-slides-field' | 'no-target-heading' | 'error';
+  reason?: "no-slides-field" | "no-target-heading" | "error";
 
   /** Error details (if applicable) */
   error?: Error;
@@ -244,7 +260,7 @@ interface InjectionResult {
 /**
  * Detected path type
  */
-type PathType = 'local' | 'url';
+type PathType = "local" | "url";
 
 /**
  * Normalized path information
@@ -262,19 +278,20 @@ interface NormalizedPath {
 ```
 
 **Detection Logic**:
+
 ```typescript
 function detectPathType(path: string): PathType {
-  return path.startsWith('http://') || path.startsWith('https://')
-    ? 'url'
-    : 'local';
+  return path.startsWith("http://") || path.startsWith("https://")
+    ? "url"
+    : "local";
 }
 
 function normalizePath(path: string, type: PathType): string {
-  if (type === 'url') {
+  if (type === "url") {
     return path; // Use as-is
   }
   // Ensure leading slash for local paths
-  return path.startsWith('/') ? path : `/${path}`;
+  return path.startsWith("/") ? path : `/${path}`;
 }
 ```
 
@@ -371,46 +388,49 @@ function normalizePath(path: string, type: PathType): string {
 
 ### Frontmatter Validation
 
-| Rule | Check | Action |
-|------|-------|--------|
-| `slides` is string | `typeof slides === 'string'` | ✅ Proceed |
-| `slides` is non-empty | `slides.trim().length > 0` | ✅ Proceed |
-| `slides` is undefined | `!slides` | ✅ Skip injection (valid) |
-| `slides` is other type | `typeof slides !== 'string'` | ⚠️ Warn, skip injection |
+| Rule                   | Check                        | Action                    |
+| ---------------------- | ---------------------------- | ------------------------- |
+| `slides` is string     | `typeof slides === 'string'` | ✅ Proceed                |
+| `slides` is non-empty  | `slides.trim().length > 0`   | ✅ Proceed                |
+| `slides` is undefined  | `!slides`                    | ✅ Skip injection (valid) |
+| `slides` is other type | `typeof slides !== 'string'` | ⚠️ Warn, skip injection   |
 
 ### Path Validation
 
-| Rule | Check | Action |
-|------|-------|--------|
-| Local path | `!slides.startsWith('http')` | Normalize with leading `/` |
-| URL | `slides.startsWith('http://') \|\| slides.startsWith('https://')` | Use as-is |
-| Malformed URL | URL parse fails | ⚠️ Warn (but still inject - browser handles errors) |
+| Rule          | Check                                                             | Action                                              |
+| ------------- | ----------------------------------------------------------------- | --------------------------------------------------- |
+| Local path    | `!slides.startsWith('http')`                                      | Normalize with leading `/`                          |
+| URL           | `slides.startsWith('http://') \|\| slides.startsWith('https://')` | Use as-is                                           |
+| Malformed URL | URL parse fails                                                   | ⚠️ Warn (but still inject - browser handles errors) |
 
 ### AST Validation
 
-| Rule | Check | Action |
-|------|-------|--------|
-| "What You'll Learn" exists | Heading found with matching text | ✅ Inject after heading |
-| Heading not found | No matching heading | ⚠️ Warn, skip injection |
-| Import already exists | Check for existing import | ✅ Skip import injection (dedupe) |
+| Rule                       | Check                            | Action                            |
+| -------------------------- | -------------------------------- | --------------------------------- |
+| "What You'll Learn" exists | Heading found with matching text | ✅ Inject after heading           |
+| Heading not found          | No matching heading              | ⚠️ Warn, skip injection           |
+| Import already exists      | Check for existing import        | ✅ Skip import injection (dedupe) |
 
 ---
 
 ## Summary
 
 **Key Entities**:
+
 1. **Frontmatter** (`slides: string?`) - Metadata in chapter README
 2. **AST Nodes** (yaml, heading, import, jsx) - Build-time structures
 3. **PDFViewer Component** (React) - Existing renderer
 4. **PDF Files** (local/cloud) - Actual slide content
 
 **Relationships**:
+
 - Frontmatter → Drives injection decision
 - Heading ("What You'll Learn") → Injection landmark
 - Generated JSX → References PDFViewer component
 - PDFViewer → Renders PDF from local/cloud source
 
 **State Flow**:
+
 - Parse → Detect → Find → Inject → Render
 
 **Next Phase**: Proceed to quickstart.md (content creator usage guide)

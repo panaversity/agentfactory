@@ -13,7 +13,7 @@
 
 - **[P]**: Can run in parallel (different files, no dependencies on incomplete tasks)
 - Include exact file paths in descriptions
-- All lesson files are in: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/`
+- All lesson files are in: `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/`
 
 ---
 
@@ -27,23 +27,24 @@
 
 ### Metadata Tasks (All can run in parallel)
 
-- [X] T001 [P] Add metadata (stage: L1, prerequisites, concept_count: 5) to 01-origin-story.md
-- [X] T002 [P] Add metadata (stage: L1, prerequisites, concept_count: 8) to 02-installation-and-authentication.md
-- [X] T003 [P] Add metadata (stage: L2, prerequisites, concept_count: 6) to 03-claude-md-context-files.md
-- [X] T004 [P] Add metadata (stage: L2, prerequisites, concept_count: 6) to 04-mcp-integration.md
-- [X] T005 [P] Add metadata (stage: L2, prerequisites, concept_count: 6) to 05-subagents-and-orchestration.md
-- [X] T006 [P] Add metadata (stage: L2, prerequisites, concept_count: 7) to 06-agent-skills.md
-- [X] T007 [P] Add metadata (stage: L2, prerequisites, concept_count: 5) to 07-hooks-and-extensibility.md
-- [X] T008 [P] Add metadata (stage: L3, prerequisites, concept_count: 5) to 08-settings-hierarchy.md
-- [X] T009 [P] Add metadata (stage: L4, prerequisites, concept_count: 8) to 09-plugins-putting-it-all-together.md
+- [x] T001 [P] Add metadata (stage: L1, prerequisites, concept_count: 5) to 01-origin-story.md
+- [x] T002 [P] Add metadata (stage: L1, prerequisites, concept_count: 8) to 02-installation-and-authentication.md
+- [x] T003 [P] Add metadata (stage: L2, prerequisites, concept_count: 6) to 03-claude-md-context-files.md
+- [x] T004 [P] Add metadata (stage: L2, prerequisites, concept_count: 6) to 04-mcp-integration.md
+- [x] T005 [P] Add metadata (stage: L2, prerequisites, concept_count: 6) to 05-subagents-and-orchestration.md
+- [x] T006 [P] Add metadata (stage: L2, prerequisites, concept_count: 7) to 06-agent-skills.md
+- [x] T007 [P] Add metadata (stage: L2, prerequisites, concept_count: 5) to 07-hooks-and-extensibility.md
+- [x] T008 [P] Add metadata (stage: L3, prerequisites, concept_count: 5) to 08-settings-hierarchy.md
+- [x] T009 [P] Add metadata (stage: L4, prerequisites, concept_count: 8) to 09-plugins-putting-it-all-together.md
 
 ### Validation
 
-- [X] T010 Validate YAML syntax on all 9 lesson files (use YAML parser or Docusaurus build test)
-- [X] T011 Verify stage labels (L1, L2, L3, L4) match plan.md lesson mapping
-- [X] T012 Verify concept_count values within tier limits (≤7 for A2 lessons, ≤10 for B1 lessons)
+- [x] T010 Validate YAML syntax on all 9 lesson files (use YAML parser or Docusaurus build test)
+- [x] T011 Verify stage labels (L1, L2, L3, L4) match plan.md lesson mapping
+- [x] T012 Verify concept_count values within tier limits (≤7 for A2 lessons, ≤10 for B1 lessons)
 
 **Completion Criteria**:
+
 - ✅ All 9 lessons have `stage`, `prerequisites`, `concept_count` fields
 - ✅ YAML parses without errors
 - ✅ Stage labels consistent with plan.md
@@ -61,38 +62,39 @@
 
 ### Lesson 1 (Already complete from Phase 1)
 
-- [X] T013 Verify Lesson 1 needs no additional content changes (metadata-only per plan.md)
+- [x] T013 Verify Lesson 1 needs no additional content changes (metadata-only per plan.md)
 
 ### Lesson 2: Add Methodology Framing
 
-- [X] T014 Add "Why This Matters: Terminal Integration for AI Workflows" section (80-120 words) to 02-installation-and-authentication.md after intro, before Prerequisites
-- [X] T015 Light content pruning in 02-installation-and-authentication.md to reduce from 289 to ~270-280 lines (trim explanatory prose, keep CLI commands intact)
-- [X] T016 Verify line count ≤280 for 02-installation-and-authentication.md
+- [x] T014 Add "Why This Matters: Terminal Integration for AI Workflows" section (80-120 words) to 02-installation-and-authentication.md after intro, before Prerequisites
+- [x] T015 Light content pruning in 02-installation-and-authentication.md to reduce from 289 to ~270-280 lines (trim explanatory prose, keep CLI commands intact)
+- [x] T016 Verify line count ≤280 for 02-installation-and-authentication.md
 
 ### Lesson 3: Preserve Excellence
 
-- [X] T017 Verify Three Roles demonstration in 03-claude-md-context-files.md is preserved exactly (reference-quality example)
-- [X] T018 Optional: Add 1 sentence to "Why This Matters" connecting to Lessons 5+ (subagents/skills inherit CLAUDE.md context) in 03-claude-md-context-files.md
-- [X] T019 Trim any redundancy in 03-claude-md-context-files.md if line count exceeds 350 after metadata
+- [x] T017 Verify Three Roles demonstration in 03-claude-md-context-files.md is preserved exactly (reference-quality example)
+- [x] T018 Optional: Add 1 sentence to "Why This Matters" connecting to Lessons 5+ (subagents/skills inherit CLAUDE.md context) in 03-claude-md-context-files.md
+- [x] T019 Trim any redundancy in 03-claude-md-context-files.md if line count exceeds 350 after metadata
 
 ### Lesson 7: Add Three Roles Step
 
-- [X] T020 Add Step 5 "Co-Design a Hook for Your Workflow" to 07-hooks-and-extensibility.md after Step 4 (explicit AI collaboration prompt showing three roles)
-- [X] T021 Verify line count ≤300 for 07-hooks-and-extensibility.md
+- [x] T020 Add Step 5 "Co-Design a Hook for Your Workflow" to 07-hooks-and-extensibility.md after Step 4 (explicit AI collaboration prompt showing three roles)
+- [x] T021 Verify line count ≤300 for 07-hooks-and-extensibility.md
 
 ### Lesson 8: Strengthen Methodology
 
-- [X] T022 Replace weak Expert Insight with explicit "Why Settings Hierarchy Matters for Team Intelligence" section (120-150 words) in 08-settings-hierarchy.md after "The Three Settings Levels", before "Precedence"
-- [X] T023 Verify line count ≤350 for 08-settings-hierarchy.md
+- [x] T022 Replace weak Expert Insight with explicit "Why Settings Hierarchy Matters for Team Intelligence" section (120-150 words) in 08-settings-hierarchy.md after "The Three Settings Levels", before "Precedence"
+- [x] T023 Verify line count ≤350 for 08-settings-hierarchy.md
 
 ### README: Stage Progression
 
-- [X] T024 Add "Stage Progression: L1→L2→L3→L4" section to README.md after "What You'll Learn" (see plan.md for full content)
-- [X] T025 Add visual ASCII diagram showing L1→L2→L3→L4 progression to README.md
-- [X] T026 Add "How to Use This Chapter" guidance section to README.md
-- [X] T027 Verify README stage mapping matches all 9 lesson metadata `stage` fields
+- [x] T024 Add "Stage Progression: L1→L2→L3→L4" section to README.md after "What You'll Learn" (see plan.md for full content)
+- [x] T025 Add visual ASCII diagram showing L1→L2→L3→L4 progression to README.md
+- [x] T026 Add "How to Use This Chapter" guidance section to README.md
+- [x] T027 Verify README stage mapping matches all 9 lesson metadata `stage` fields
 
 **Completion Criteria**:
+
 - ✅ Lesson 2 has "Why This Matters" section (methodology-focused, not feature sales)
 - ✅ Lesson 3 Three Roles example preserved exactly
 - ✅ Lesson 7 has Three Roles co-design step
@@ -112,18 +114,19 @@
 
 ### Lesson 4: MCP Integration
 
-- [X] T028 Add "Why This Matters: Safe External Integration" section (80-120 words) to 04-mcp-integration.md after "Think of MCP Like This", before "What Is MCP?"
-- [X] T029 Add Three Roles co-learning cycle to "Try With AI" section in 04-mcp-integration.md (explicit prompt showing AI explores, student refines, convergence on answer)
-- [X] T030 Verify line count ≤350 for 04-mcp-integration.md (currently 225, new sections add ~100 lines → ~325 total)
+- [x] T028 Add "Why This Matters: Safe External Integration" section (80-120 words) to 04-mcp-integration.md after "Think of MCP Like This", before "What Is MCP?"
+- [x] T029 Add Three Roles co-learning cycle to "Try With AI" section in 04-mcp-integration.md (explicit prompt showing AI explores, student refines, convergence on answer)
+- [x] T030 Verify line count ≤350 for 04-mcp-integration.md (currently 225, new sections add ~100 lines → ~325 total)
 
 ### Lesson 5: Subagents & Orchestration
 
-- [X] T031 Add "Why This Matters: Specialized Expertise" section (80-120 words) to 05-subagents-and-orchestration.md after "What Are Subagents?", before "The Plan Subagent"
-- [X] T032 Add Step 2.5 "Co-learn Subagent Design" to 05-subagents-and-orchestration.md after Step 2 (Choose location) — explicit Three Roles cycle for subagent design
-- [X] T033 Streamline "More Subagent Ideas" section in 05-subagents-and-orchestration.md from examples-heavy to concept-focused (save 30-40 lines to maintain line count ≤400)
-- [X] T034 Verify line count ≤400 for 05-subagents-and-orchestration.md (target after additions + streamlining)
+- [x] T031 Add "Why This Matters: Specialized Expertise" section (80-120 words) to 05-subagents-and-orchestration.md after "What Are Subagents?", before "The Plan Subagent"
+- [x] T032 Add Step 2.5 "Co-learn Subagent Design" to 05-subagents-and-orchestration.md after Step 2 (Choose location) — explicit Three Roles cycle for subagent design
+- [x] T033 Streamline "More Subagent Ideas" section in 05-subagents-and-orchestration.md from examples-heavy to concept-focused (save 30-40 lines to maintain line count ≤400)
+- [x] T034 Verify line count ≤400 for 05-subagents-and-orchestration.md (target after additions + streamlining)
 
 **Completion Criteria**:
+
 - ✅ Lesson 4 has "Why This Matters" section + Three Roles example
 - ✅ Lesson 5 has "Why This Matters" section + Three Roles co-design step
 - ✅ Lesson 5 "More Subagent Ideas" streamlined
@@ -171,6 +174,7 @@
 - [ ] T056 Cross-check 09-plugins-putting-it-all-together.md against spec learning objectives — verify capstone integrates L1-L8 concepts effectively
 
 **Completion Criteria**:
+
 - ✅ Lesson 6 reduced to 330-340 lines (from 547)
 - ✅ Lesson 9 reduced to 350-400 lines (from 744)
 - ✅ Both lessons have "Why This Matters" sections (methodology-focused)
@@ -216,6 +220,7 @@
 - [ ] T075 Verify Three Roles Framework demonstrated in lessons 3 (preserved), 4, 5, 6, 7 (enhanced)
 
 **Completion Criteria**:
+
 - ✅ SANDBOX-AUDIT-REPORT.md shows 100% code examples passed
 - ✅ All CLI commands verified accurate
 - ✅ All feature claims cited from official docs
@@ -242,24 +247,29 @@
 **Phase 1**: T001-T009 all parallel → T010-T012 validation (sequential after T001-T009)
 
 **Phase 2**:
+
 - T014-T016 (Lesson 2) can run parallel with T017-T019 (Lesson 3)
 - T020-T021 (Lesson 7) can run parallel with T022-T023 (Lesson 8)
 - T024-T027 (README) can run parallel with any lesson tasks
 
 **Phase 3**:
+
 - T028-T030 (Lesson 4) can run parallel with T031-T034 (Lesson 5)
 
 **Phase 4**:
+
 - T035-T044 (Lesson 6) can run parallel with T045-T056 (Lesson 9)
 - CAUTION: Both are HIGH RISK, may be safer to do sequentially to avoid context-switching errors
 
 **Phase 5**:
+
 - T057-T064 (sandbox tests) all parallel
 - T065-T075 (verification) sequential after sandbox tests complete
 
 ### Parallel Opportunities
 
 #### Phase 1: All Metadata Tasks
+
 ```bash
 # Launch all 9 metadata additions together:
 T001: "Add metadata to 01-origin-story.md"
@@ -274,6 +284,7 @@ T009: "Add metadata to 09-plugins-putting-it-all-together.md"
 ```
 
 #### Phase 2: Easy Refinements
+
 ```bash
 # Launch lesson groups in parallel:
 T014-T016: "Lesson 2 enhancements"
@@ -284,6 +295,7 @@ T024-T027: "README Stage Progression"
 ```
 
 #### Phase 5: Sandbox Tests
+
 ```bash
 # Launch all 8 sandbox tests together:
 T057: "Test Lesson 2 installation commands"
@@ -333,16 +345,19 @@ With single implementer (recommended for quality):
 If critical reductions (Phase 4) fail to preserve learning objectives:
 
 **Lesson 6 Rollback**:
+
 - Revert to post-Phase-1 state (metadata-only changes)
 - Alternative strategy: Aim for less aggressive reduction (547 → 400 lines instead of 330)
 - Accept 400-line limit as acceptable (still within constitutional range)
 
 **Lesson 9 Rollback**:
+
 - Revert to post-Phase-1 state (metadata-only changes)
 - Alternative strategy: Preserve marketplace catalog, cut other sections less aggressively
 - Accept 500-line limit if essential (with justification in ADR)
 
 **Validation Failures (Phase 5)**:
+
 - If code examples fail: Fix commands/workflows, re-test
 - If metadata invalid: Fix YAML syntax, re-validate
 - If concept counts wrong: Recount, update metadata
@@ -353,6 +368,7 @@ If critical reductions (Phase 4) fail to preserve learning objectives:
 ## Success Metrics
 
 **Quantitative** (from spec.md):
+
 - ✅ 9/9 lessons have complete metadata (100% coverage)
 - ✅ Lesson 6 ≤340 lines, Lesson 9 ≤400 lines
 - ✅ Average lesson length 250-350 lines
@@ -362,6 +378,7 @@ If critical reductions (Phase 4) fail to preserve learning objectives:
 - ✅ 100% feature claims cited from official docs
 
 **Qualitative** (from spec.md):
+
 - ✅ README stage progression explicit with visual diagram
 - ✅ "Why This Matters" sections methodology-focused (not features)
 - ✅ Three Roles examples demonstrate authentic co-learning
@@ -369,6 +386,7 @@ If critical reductions (Phase 4) fail to preserve learning objectives:
 - ✅ Chapter arc (L1→L2→L3→L4) clear and traceable
 
 **Constitutional Compliance**:
+
 - ✅ Specification Primacy: Methodology before features
 - ✅ Progressive Complexity: A2-B1 tier limits enforced
 - ✅ Factual Accuracy: All code tested, all claims cited
@@ -390,6 +408,7 @@ If critical reductions (Phase 4) fail to preserve learning objectives:
 **TOTAL**: 75 tasks distributed across 5 phases
 
 **Parallel Opportunities**:
+
 - Phase 1: 9 tasks parallel
 - Phase 2: 5 task groups parallel
 - Phase 3: 2 task groups parallel

@@ -3,7 +3,7 @@
 **Specification**: `/specs/002-redesign-bash-chapter/spec.md`
 **Plan**: `/specs/002-redesign-bash-chapter/plan.md`
 **Branch**: `002-redesign-bash-chapter`
-**Chapter Location**: `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/`
+**Chapter Location**: `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/`
 
 **Organization**: Tasks organized by 7 user stories from specification, enabling independent lesson implementation and testing.
 
@@ -17,16 +17,16 @@
 
 ### Completed Lessons Summary
 
-| Lesson | File | Size | Duration | CEFR | Concepts | Status |
-|--------|------|------|----------|------|----------|--------|
-| **1** | `01-introducing-ai-workspace.md` | 13 KB | 45 min | A1 | 3 | ✅ |
-| **2** | `02-safety-first-pattern.md` | 19 KB | 50 min | A1→A2 | 4 | ✅ |
-| **3** | `03-understanding-navigation.md` | 15 KB | 40 min | A2 | 5 | ✅ |
-| **4** | `04-understanding-file-operations.md` | 15 KB | 45 min | A2 | 5 | ✅ |
-| **5** | `05-configuration-secrets.md` | 14 KB | 40 min | A2 | 5 | ✅ |
-| **6** | `06-packages-dependencies.md` | 13 KB | 40 min | A2 | 4 | ✅ |
-| **7** | `07-pipes-complex-commands.md` | 13 KB | 40 min | A2 | 6 | ✅ |
-| **8** | `08-real-project-troubleshooting.md` | 22 KB | 50 min | A2→B1 | 7 | ✅ |
+| Lesson | File                                  | Size  | Duration | CEFR  | Concepts | Status |
+| ------ | ------------------------------------- | ----- | -------- | ----- | -------- | ------ |
+| **1**  | `01-introducing-ai-workspace.md`      | 13 KB | 45 min   | A1    | 3        | ✅     |
+| **2**  | `02-safety-first-pattern.md`          | 19 KB | 50 min   | A1→A2 | 4        | ✅     |
+| **3**  | `03-understanding-navigation.md`      | 15 KB | 40 min   | A2    | 5        | ✅     |
+| **4**  | `04-understanding-file-operations.md` | 15 KB | 45 min   | A2    | 5        | ✅     |
+| **5**  | `05-configuration-secrets.md`         | 14 KB | 40 min   | A2    | 5        | ✅     |
+| **6**  | `06-packages-dependencies.md`         | 13 KB | 40 min   | A2    | 4        | ✅     |
+| **7**  | `07-pipes-complex-commands.md`        | 13 KB | 40 min   | A2    | 6        | ✅     |
+| **8**  | `08-real-project-troubleshooting.md`  | 22 KB | 50 min   | A2→B1 | 7        | ✅     |
 
 **Total Content**: 114 KB | **Total Duration**: 325 minutes | **All tasks implemented**: T016, T017, T020, T021, T024, T027, T032, T042
 
@@ -41,7 +41,7 @@
 - **[Story]**: User story label (US1, US2, US3, etc.)
 - **Description**: Clear action with exact file path
 
-**Example**: `- [ ] T012 [P] [US1] Create Lesson 1 markdown in book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/01-introducing-ai-workspace.md`
+**Example**: `- [ ] T012 [P] [US1] Create Lesson 1 markdown in apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/01-introducing-ai-workspace.md`
 
 ---
 
@@ -49,11 +49,11 @@
 
 **Purpose**: Create foundation for all lessons (README, structure, shared assets)
 
-- [ ] T001 [P] Create chapter directory structure in `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/`
-- [ ] T002 [P] Create `README.md` chapter intro in `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/README.md` explaining dialogue-first approach
-- [ ] T003 [P] Create shared dialogue formatting standards in `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/DIALOGUE_TEMPLATE.md` (You → Agent → Tool → Explanation)
-- [ ] T004 [P] Document real example sources list in `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/SOURCES.md` (which examples from real Claude Code/Gemini CLI)
-- [ ] T005 Create chapter metadata file `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/chapter-metadata.yaml` with proficiency levels, skills mapping
+- [ ] T001 [P] Create chapter directory structure in `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/`
+- [ ] T002 [P] Create `README.md` chapter intro in `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/README.md` explaining dialogue-first approach
+- [ ] T003 [P] Create shared dialogue formatting standards in `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/DIALOGUE_TEMPLATE.md` (You → Agent → Tool → Explanation)
+- [ ] T004 [P] Document real example sources list in `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/SOURCES.md` (which examples from real Claude Code/Gemini CLI)
+- [ ] T005 Create chapter metadata file `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/chapter-metadata.yaml` with proficiency levels, skills mapping
 
 **Checkpoint**: Foundation structure ready for lesson implementation
 
@@ -87,12 +87,14 @@
 **Independent Test**: Learner conducts 3 real conversations with AI about location/files and correctly interprets responses without syntax training
 
 **Lessons to Complete**:
+
 - Lesson 1: Introducing Your AI Companion's Workspace
 - Lesson 3: Understanding File Navigation Through Dialogue
 
 ### Implementation for User Story 1
 
-- [x] T016 [US1] Create Lesson 1 markdown in `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/01-introducing-ai-workspace.md` with:
+- [x] T016 [US1] Create Lesson 1 markdown in `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/01-introducing-ai-workspace.md` with:
+
   - Learning objectives (identify pwd/ls in dialogue, understand workspace)
   - 3 dialogue examples from sourced Claude Code interactions
   - 3 exercises (prediction, interpretation, safety intro)
@@ -101,7 +103,8 @@
   - "Try With AI" section with expected outcomes
   - ✅ COMPLETED: 13 KB (308 lines), CEFR A1, 3 concepts, dialogue-first format
 
-- [x] T017 [US1] Create Lesson 3 markdown in `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/03-understanding-navigation.md` with:
+- [x] T017 [US1] Create Lesson 3 markdown in `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/03-understanding-navigation.md` with:
+
   - Learning objectives (understand absolute/relative paths, draw file structure)
   - 3 dialogue examples (absolute path, relative path, prediction)
   - 3 exercises (path conversion, structure drawing, depth prediction)
@@ -111,6 +114,7 @@
   - ✅ COMPLETED: 15 KB (40 min), CEFR A2, 5 concepts, dialogue-first format
 
 - [ ] T018 [US1] Add "Common Mistakes" section to both lessons highlighting:
+
   - Confusion between syntax and understanding
   - Fixating on command flags vs. purpose
   - Not verifying after navigation
@@ -133,12 +137,14 @@
 **Independent Test**: Learner requests file operation from AI, understands execution plan, identifies safety concerns, decides if safe before execution
 
 **Lessons to Complete**:
+
 - Lesson 2: The Safety-First Dialogue Pattern (foundation for all operations)
 - Lesson 4: Understanding File Operations Safely
 
 ### Implementation for User Story 2
 
-- [x] T020 [US2] Create Lesson 2 markdown in `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/02-safety-first-pattern.md` with:
+- [x] T020 [US2] Create Lesson 2 markdown in `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/02-safety-first-pattern.md` with:
+
   - Learning objectives (identify 5-step pattern, apply pattern to new task)
   - Explicit teaching of Ask → Explain → Understand → Verify → Execute pattern
   - 3 dialogue examples (good safety pattern, bad pattern, verification)
@@ -148,7 +154,8 @@
   - "Try With AI" section practicing pattern with AI
   - ✅ COMPLETED: 19 KB (463 lines), CEFR A1→A2, 4 concepts, 5-step pattern core
 
-- [x] T021 [US2] Create Lesson 4 markdown in `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/04-understanding-file-operations.md` with:
+- [x] T021 [US2] Create Lesson 4 markdown in `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/04-understanding-file-operations.md` with:
+
   - Learning objectives (understand copy/move/delete safely, ask "should we backup?")
   - 3 dialogue examples (full safety dialogue, backup approach, verification snapshot)
   - 3 exercises (trace operation plan, identify risks, design backup strategy)
@@ -158,6 +165,7 @@
   - ✅ COMPLETED: 15 KB (45 min), CEFR A2, 5 concepts, safety-first pattern reinforced
 
 - [ ] T022 [US2] Add backup patterns discussion to Lesson 4:
+
   - When to backup before operations
   - Backup strategies in dialogue
   - Verification after operations
@@ -180,11 +188,13 @@
 **Independent Test**: Learner requests configuration help from AI, understands security implications, verifies configuration worked
 
 **Lessons to Complete**:
+
 - Lesson 5: Understanding Configuration and Secrets
 
 ### Implementation for User Story 3
 
-- [x] T024 [US3] Create Lesson 5 markdown in `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/05-configuration-secrets.md` with:
+- [x] T024 [US3] Create Lesson 5 markdown in `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/05-configuration-secrets.md` with:
+
   - Learning objectives (understand export vs ~/.bashrc, never hardcode secrets, verify configuration)
   - 3 dialogue examples (temporary config, persistent config, security conversation)
   - 3 exercises (distinguish export vs ~/.bashrc, identify secret handling errors, verification method)
@@ -194,6 +204,7 @@
   - ✅ COMPLETED: 14 KB (40 min), CEFR A2, 5 concepts, security-first emphasis
 
 - [ ] T025 [US3] Add security emphasis to Lesson 5:
+
   - Never hardcode API keys
   - Environment variables as safety mechanism
   - Verification without exposing secrets
@@ -217,11 +228,13 @@
 **Independent Test**: Learner requests package installation from AI, understands what will be installed and where, verifies success
 
 **Lessons to Complete**:
+
 - Lesson 6: Understanding Dependencies and Packages
 
 ### Implementation for User Story 4
 
-- [x] T027 [US4] Create Lesson 6 markdown in `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/06-packages-dependencies.md` with:
+- [x] T027 [US4] Create Lesson 6 markdown in `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/06-packages-dependencies.md` with:
+
   - Learning objectives (understand package managers, installation verification, dependency concepts)
   - 3 dialogue examples (package explanation, installation with verification, error troubleshooting)
   - 3 exercises (predict package manager, understand installation location, trace dependencies)
@@ -231,6 +244,7 @@
   - ✅ COMPLETED: 13 KB (40 min), CEFR A2, 4 concepts, dialogue-driven package understanding
 
 - [ ] T028 [US4] Add package manager education to Lesson 6:
+
   - pip (Python), npm (Node), brew (macOS), apt (Linux)
   - When to use which
   - Where packages are installed
@@ -254,11 +268,13 @@
 **Independent Test**: Learner asks AI about running processes, understands what's happening, safely manages processes through dialogue
 
 **Lessons to Complete**:
+
 - Lesson 8: Working with Real AI Tools and Troubleshooting (capstone includes process management)
 
 ### Implementation for User Story 5
 
-- [ ] T030 [US5] Add process management section to Lesson 8 markdown in `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-project-troubleshooting.md` with:
+- [ ] T030 [US5] Add process management section to Lesson 8 markdown in `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-project-troubleshooting.md` with:
+
   - Dialogue examples showing "What's running?" and interpretation of ps output
   - Process stopping dialogue with safety questions
   - Real error messages from stuck processes and troubleshooting dialogue
@@ -280,11 +296,13 @@
 **Independent Test**: Learner asks AI to filter/search data, understands piped commands being executed, can modify request if needed
 
 **Lessons to Complete**:
+
 - Lesson 7: Understanding Pipes and Complex Commands
 
 ### Implementation for User Story 6
 
-- [x] T032 [US6] Create Lesson 7 markdown in `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/07-pipes-complex-commands.md` with:
+- [x] T032 [US6] Create Lesson 7 markdown in `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/07-pipes-complex-commands.md` with:
+
   - Learning objectives (understand data flow, trace pipeline, predict output)
   - 3 dialogue examples (simple pipeline explanation, complex pipeline building, iterative refinement)
   - 3 exercises (trace data flow, predict output, build pipeline step-by-step)
@@ -294,6 +312,7 @@
   - ✅ COMPLETED: 13 KB (40 min), CEFR A2, 6 concepts, data flow emphasis over syntax
 
 - [ ] T033 [US6] Add data flow emphasis to Lesson 7:
+
   - Pipes as data connectors
   - Each command's input and output
   - Filtering and reducing data
@@ -317,42 +336,51 @@
 **Independent Test**: Learner demonstrates safety pattern naturally across all dialogues; asks clarifying questions; verifies before executing
 
 **Lessons to Complete**:
+
 - All lessons (safety reinforced throughout)
 
 ### Implementation for User Story 7
 
 - [ ] T035 [P] [US7] Add safety reinforcement to Lesson 1 in `01-introducing-ai-workspace.md`:
+
   - Introduce concept of verification (confirm location before action)
 
 - [ ] T036 [P] [US7] Add safety reinforcement to Lesson 2 in `02-safety-first-pattern.md`:
+
   - Explicit teaching of 5-step safety pattern
   - Repeated application to different scenarios
 
 - [ ] T037 [P] [US7] Add safety reinforcement to Lesson 3 in `03-understanding-navigation.md`:
+
   - Verify location before operations
   - Check paths before executing
 
 - [ ] T038 [P] [US7] Add safety reinforcement to Lesson 4 in `04-understanding-file-operations.md`:
+
   - Central focus: safety in every dialogue
   - Backup before destructive operations
   - Understanding before executing
 
 - [ ] T039 [P] [US7] Add safety reinforcement to Lesson 5 in `05-configuration-secrets.md`:
+
   - Never hardcode secrets
   - Verification of configuration
   - Security-conscious decisions
 
 - [ ] T040 [P] [US7] Add safety reinforcement to Lesson 6 in `06-packages-dependencies.md`:
+
   - Verify installations
   - Understand dependencies
   - Test after installation
 
 - [ ] T041 [P] [US7] Add safety reinforcement to Lesson 7 in `07-pipes-complex-commands.md`:
+
   - Understand pipeline before executing
   - Test with small data first
   - Verify output correctness
 
 - [x] T042 [US7] Create Lesson 8 capstone in `08-real-project-troubleshooting.md` demonstrating:
+
   - Real project setup with errors
   - Error message interpretation through AI dialogue
   - Troubleshooting as collaboration pattern
@@ -379,8 +407,8 @@
 - [ ] T046 [P] Validate all dialogue examples are from real Claude Code/Gemini CLI interactions or marked "to be sourced"
 - [ ] T047 Create cross-lesson references (Lesson 1 → Lesson 2, etc.) for coherent learning path
 - [ ] T048 Update chapter README with learning path and proficiency progression (A1 → A2 → B1)
-- [ ] T049 Create assessment rubric in `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/ASSESSMENT_RUBRIC.md` for evaluating learner conversations
-- [ ] T050 Create teacher's guide in `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/TEACHERS_GUIDE.md` with:
+- [ ] T049 Create assessment rubric in `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/ASSESSMENT_RUBRIC.md` for evaluating learner conversations
+- [ ] T050 Create teacher's guide in `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/TEACHERS_GUIDE.md` with:
   - Core teaching philosophy
   - How to facilitate dialogue-based learning
   - How to assess conversation quality
@@ -589,7 +617,7 @@ Week 7-8:
 [5-minute interactive activity using Claude Code or learner's AI tool]
 
 **Tool**: ChatGPT web (Part 2, before tool introduction) OR
-         Learner's preferred AI CLI (Claude Code, Gemini CLI, etc.)
+Learner's preferred AI CLI (Claude Code, Gemini CLI, etc.)
 
 **Prompt 1**: [Natural language request demonstrating dialogue pattern]
 **Expected Outcome**: [What learner should understand after this]

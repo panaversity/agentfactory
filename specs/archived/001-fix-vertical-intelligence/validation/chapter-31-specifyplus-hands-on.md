@@ -1,6 +1,6 @@
 # Validation Report: Chapter 31 (Spec-Kit Plus Hands-On)
 
-**File:** `book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/`
+**File:** `apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/`
 **Chapter Type:** Technical/Hybrid (mix of narrative + hands-on workflow lessons)
 **Date:** 2025-11-04
 **Constitution Version:** 3.0.1 (Evals-First, Specification-First, Validation-First)
@@ -14,16 +14,19 @@
 Chapter 31 demonstrates strong pedagogical design and alignment with constitutional principles (Spec-First methodology, AI-as-co-reasoning-partner, evals-first validation). The chapter structure is well-conceived with clear learning progressions from project setup through implementation validation.
 
 **Critical issues require fixing before publication:**
+
 1. **Incomplete lesson**: Lesson 3 ends abruptly without "Try With AI" closure (missing ~50% of content)
 2. **Non-compliant lesson closure**: Lesson 2 ends with "What's Next" instead of "Try With AI" (violates AI-first closure policy)
 3. **Missing YAML frontmatter**: All lesson files lack `sidebar_position` field (required for Docosaurus)
 4. **Typo**: "methadology" in lesson 1 (should be "methodology")
 
 **Major issues** (addressable with localized edits):
+
 1. **README.md formatting**: Learning objectives numbered starting at 3 (should start at 1)
 2. **Incomplete lesson content**: Lessons 2 and 3 appear to have missing "Try With AI" sections per policy
 
 **Minor issues** (polish):
+
 - Lesson-to-lesson progression could be clearer in README overview
 - A few examples could be more concrete
 
@@ -36,6 +39,7 @@ All code examples reference SpecifyPlus commands correctly and align with consti
 **These MUST be fixed before approval:**
 
 1. **CRITICAL - Incomplete Lesson 3**: File `03-building-specs-with-sp-specify.md` ends at line 143 without "Try With AI" section
+
    - **Location**: Lines 1-143 of `03-building-specs-with-sp-specify.md`
    - **Description**: The lesson covers specification anatomy and running `/sp.specify`, but abruptly ends after "What Makes a Spec Ready for Planning" section. Missing approximately 50% of expected content.
    - **Expected**: Lesson should include "Try With AI" section with concrete workflow prompts and expected outcomes (following pattern in lessons 1, 4, 5, 6)
@@ -48,6 +52,7 @@ All code examples reference SpecifyPlus commands correctly and align with consti
    - **Reference**: See lessons 1, 4, 5, 6 for pattern (lines 195-238, 134-152, 155-174, 221-242 respectively)
 
 2. **CRITICAL - Non-Compliant Lesson Closure**: File `02-complete-constitution.md` ends with "What's Next" section instead of "Try With AI"
+
    - **Location**: Lines 160-171 of `02-complete-constitution.md`
    - **Description**: Lesson 2 ends with "## What's Next" section containing narrative about next steps. This violates AI-first closure policy (Constitution Section V: "AI-first closure policy followed: each lesson ends with a single final 'Try With AI' section")
    - **Current content**: "## What's Next\n\nThe constitution is now established..."
@@ -60,6 +65,7 @@ All code examples reference SpecifyPlus commands correctly and align with consti
    - **Severity**: Constitutional non-compliance; affects publication readiness
 
 3. **CRITICAL - Missing `sidebar_position` Frontmatter**: All 6 lesson files lack required YAML field
+
    - **Location**: YAML frontmatter (lines 1-40) of all lesson files:
      - `01-specifyplus-structure.md`
      - `02-complete-constitution.md`
@@ -95,8 +101,10 @@ All code examples reference SpecifyPlus commands correctly and align with consti
 **Significant issues that should be addressed before publication:**
 
 1. **README.md Learning Objectives Numbering**: Chapter overview lists learning objectives starting at #3
+
    - **Location**: `README.md` lines 13-27
    - **Current format**:
+
      ```
      ## What You'll Learn
 
@@ -106,6 +114,7 @@ All code examples reference SpecifyPlus commands correctly and align with consti
      4. Why Spec→Plan→Tasks→Code cascade works empirically
      5. How to use `/sp.specify` within Claude Code...
      ```
+
    - **Issue**: Numbering starts at 3 instead of 1; creates confusion (looks like items 1-2 are missing)
    - **Recommendation**: Renumber to start at 1-11 (or 1-10 depending on total count). Should read:
      ```
@@ -116,7 +125,8 @@ All code examples reference SpecifyPlus commands correctly and align with consti
      ```
 
 2. **README Naming Convention Issue**: Chapter README uses `README.md` (uppercase) but violates naming convention
-   - **Location**: `book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/README.md`
+
+   - **Location**: `apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/README.md`
    - **Context**: Output-Styles specifies:
      - Part-level: `README.md` (UPPERCASE) ✓
      - Chapter-level: `readme.md` (LOWERCASE) ✗ (this file is UPPERCASE)
@@ -138,12 +148,14 @@ All code examples reference SpecifyPlus commands correctly and align with consti
 **Style, clarity, or non-blocking suggestions:**
 
 1. **Learning Objectives Clarity in README**: Chapter-level objectives could be better aligned with lesson-level objectives
+
    - **Location**: `README.md` lines 13-27 (chapter objectives) vs. individual lesson YAML files (lesson objectives)
    - **Observation**: Chapter lists 11 learning objectives (numbered 3-13), but there are 6 lessons. Could benefit from explicit mapping showing which lesson achieves which objective
    - **Recommendation** (Optional): Add subsection like "By Lesson:" showing mapping of objectives to lessons 1-6
    - **Severity**: Minor clarity issue; not blocking
 
 2. **Tool Selection Consistency**: Lessons specify different tools in "Try With AI" sections
+
    - **Locations**:
      - Lesson 1: "ChatGPT web (or your AI companion if already set up)"
      - Lesson 4: "Claude Code with `/sp.plan` command"
@@ -154,6 +166,7 @@ All code examples reference SpecifyPlus commands correctly and align with consti
    - **Severity**: Minor; rationale for selection is sound per constitution
 
 3. **Missing Context for `/sp.specify` vs `/sp.clarify` Relationship**: Lesson 3 mentions `/sp.clarify` but doesn't fully explain when to use it vs. `/sp.specify` alone
+
    - **Location**: `03-building-specs-with-sp-specify.md` line 129
    - **Text**: "You can optionally run `/sp.clarify` and your AI companion will ask a series of questions..."
    - **Gap**: Students don't know when "optionally" becomes "necessary" (e.g., after first spec iteration?)
@@ -226,6 +239,7 @@ All code examples reference SpecifyPlus commands correctly and align with consti
 - [ ] **PARTIAL**: No NEVER DO rules violated (mostly compliant, but closure policy violated in 2 lessons)
 
 **Specific AI-First Closure Policy Check**:
+
 - Constitution Section III.F: "AI-first closure policy followed: each lesson ends with a single final 'Try With AI' section with prompts and expected outcomes; no separate 'Key Takeaways' or 'What's Next' sections"
 - Lesson 1: ✓ Ends with "## Try With AI" (lines 195-238)
 - Lesson 2: ✗ Ends with "## What's Next" (line 160) — VIOLATION
@@ -269,7 +283,7 @@ All code examples reference SpecifyPlus commands correctly and align with consti
   - BUT: File naming doesn't include `sidebar_position` in all files
 - [x] Code blocks properly formatted (if present)
   - Markdown code blocks with language identifiers: ✓
-  - Example: ````yaml` for YAML, ````markdown` for markdown examples
+  - Example: `` yaml` for YAML,  ``markdown` for markdown examples
   - All example prompts clearly formatted
 - [ ] **CRITICAL**: No typos or grammatical errors
   - Typo found: Line 218 of Lesson 1 — "methadology" should be "methodology" ✗
@@ -291,19 +305,23 @@ All code examples reference SpecifyPlus commands correctly and align with consti
 ### Content Analysis
 
 **Narrative Quality**:
+
 - **Lesson 1 (Setup & Structure)**: Excellent pedagogical narrative
+
   - Opens with key insight: "folder structure enforces workflow"
   - Uses concrete "what breaks if you skip" examples (3 scenarios)
   - Progressive complexity: understand structure → recognize cascade → try with AI
   - "Try With AI" section uses reverse-engineering prompt (highest cognitive level) ✓
 
 - **Lesson 2 (Constitution)**: Comprehensive but incomplete ending
+
   - Step-by-step instructions are clear and actionable
   - Constitution creation process is well-explained
   - BUT: Ends with "What's Next" narrative instead of "Try With AI" interactive section ✗
   - Cognitive load: 5 new concepts (Constitution Components, Component Relationships, Template as Tool, Ready for Planning, Revision Cycle) within A2 limit of 7 ✓
 
 - **Lesson 3 (Building Specs)**: Strong start, abrupt incomplete ending
+
   - Specification anatomy diagram is excellent (clearly shows 6-part flow)
   - Running example (calculator spec) is concrete and relatable
   - Content through line 142 is solid and well-paced
@@ -311,12 +329,14 @@ All code examples reference SpecifyPlus commands correctly and align with consti
   - Expected missing content: ~40-50 lines of "Try With AI" workflow
 
 - **Lesson 4 (Planning)**: Well-structured
+
   - Specification vs. Plan comparison table is effective (clarifies relationship)
   - Plan structure sections are logical (Phases → Dependencies → Milestones → Deliverables)
   - "Try With AI" section includes concrete workflow steps (1-5 steps) ✓
   - Cognitive load: 7 concepts within B1 limit of 10 ✓
 
 - **Lesson 5 (Tasks)**: Clear task decomposition guidance
+
   - "What's an Atomic Task?" section defines criteria clearly (5 characteristics)
   - Task anatomy shows components (ID, Description, Acceptance Criteria, Dependencies, Priority, Effort)
   - Running calculator example threads through naturally
@@ -331,11 +351,13 @@ All code examples reference SpecifyPlus commands correctly and align with consti
 ### Skill Metadata Analysis
 
 **Proficiency Levels (CEFR)**:
+
 - Lessons 1-3: A2 level (Understand, Apply) ✓
 - Lessons 4-6: B1-B2 level (Apply, Analyze, Evaluate) ✓
 - Progression is appropriate for chapter position (Part 5 of 13) ✓
 
 **Cognitive Load**:
+
 - Lesson 1: 5 concepts (within A2 limit of 7) ✓
 - Lesson 2: 5 concepts (within A2 limit of 7) ✓
 - Lesson 3: Not specified in frontmatter (should be ~5-7 for A2)
@@ -346,12 +368,14 @@ All code examples reference SpecifyPlus commands correctly and align with consti
 ### Pedagogical Structure Analysis
 
 **Learning Path Clarity**:
+
 - Chapter opens with chapter-level learning objectives (11 outcomes, numbered 3-13 — numbering issue noted)
 - Each lesson has specific learning objectives tied to outcomes
 - Running example (calculator spec → plan → tasks → implementation) threads consistently
 - Clear prerequisite chain: Must understand structure before writing specs; must understand specs before planning
 
 **Concept Dependencies**:
+
 - Lesson 1 ← [prerequisite for all others]
 - Lesson 2 ← Lesson 1 (must know structure before setting up constitution)
 - Lesson 3 ← Lesson 2 (must have constitution to write specs)
@@ -360,6 +384,7 @@ All code examples reference SpecifyPlus commands correctly and align with consti
 - Lesson 6 ← Lesson 5 (must have tasks to implement)
 
 **Practice-to-Objective Alignment**:
+
 - Lesson 1 Objective: "Explain project structure and cascade" → Practice: "Try With AI" traces cascade effects ✓
 - Lesson 2 Objective: "Write constitution" → Practice: Missing "Try With AI"; only has step-by-step walkthrough ✗
 - Lesson 3 Objective: "Use /sp.specify to iterate specs" → Practice: Content incomplete; no "Try With AI" ✗
@@ -368,6 +393,7 @@ All code examples reference SpecifyPlus commands correctly and align with consti
 - Lesson 6 Objective: "Validate code against acceptance criteria" → Practice: "Try With AI" includes systematic validation ✓
 
 **Identified Gaps**:
+
 1. **Lesson 2**: Missing "Try With AI" interactive practice (has walkthrough but no hands-on validation)
 2. **Lesson 3**: Incomplete content; needs "Try With AI" section to complete learning loop
 3. **Chapter-level**: README learning objectives numbering (starts at 3 instead of 1) creates confusion
@@ -377,20 +403,24 @@ All code examples reference SpecifyPlus commands correctly and align with consti
 ## Field Volatility & Maintenance Notes
 
 **Topics Requiring Maintenance:**
+
 - SpecifyPlus CLI commands (`/sp.specify`, `/sp.plan`, `/sp.tasks`, `/sp.implement`) — these may evolve as tool matures
 - Tool versions: Chapter references "Python 3.12+" but should verify no breaking changes as Python 3.13+ becomes standard
 - AI companion references: Chapter mentions "Claude Code", "ChatGPT web", "Gemini CLI" — may need updates as tools evolve
 
 **Suggested Review Frequency:**
+
 - Annually, or after SpecifyPlus major version updates (e.g., v2.0)
 - Before publication: Verify all `/sp.*` commands match actual SpecifyPlus v1.x behavior
 
 **Key Documentation Links to Verify**:
+
 - SpecifyPlus documentation (when published) — verify command syntax and output
 - Python 3.12+ official docs (current as of 2025-11-04)
 - AI tool documentation (ChatGPT, Claude Code, Gemini CLI) — tool APIs stable but interfaces may change
 
 **Version Numbers Verified**:
+
 - Python: References "3.12+" correctly (constitution specifies 3.13+; chapter should update to 3.13+)
 - SpecifyPlus: No version pinning (appropriate for methodology chapter)
 
@@ -420,12 +450,14 @@ These are **localized, fixable issues** — the underlying content quality is hi
 ### Priority 1: Fix Critical Issues (blocking publication)
 
 1. **Complete Lesson 3** (`03-building-specs-with-sp-specify.md`)
+
    - Add "Try With AI" section (lines 144-194 approximately)
    - Model on Lesson 1 pattern (lines 195-238): tool selection, duration, concrete prompts, expected outcomes
    - Focus prompts on: Running `/sp.specify`, interpreting feedback, using `/sp.clarify` for gaps, iteration cycle
    - Estimated effort: 30 minutes
 
 2. **Replace Lesson 2 Closure** (`02-complete-constitution.md`)
+
    - Remove "## What's Next" section (lines 160-171)
    - Replace with "## Try With AI" section (add ~40-50 lines)
    - Include prompts showing: `/sp.constitution` command, customizing constitution, reviewing output
@@ -433,6 +465,7 @@ These are **localized, fixable issues** — the underlying content quality is hi
    - Estimated effort: 30 minutes
 
 3. **Add `sidebar_position` to All Lesson Files**
+
    - Modify YAML frontmatter in all 6 lesson files:
      - `01-specifyplus-structure.md`: add `sidebar_position: 1` after `title:`
      - `02-complete-constitution.md`: add `sidebar_position: 2`
@@ -466,6 +499,7 @@ These are **localized, fixable issues** — the underlying content quality is hi
 ### Resubmission Checkpoint
 
 After completing steps 1-6, resubmit chapter for **spot-check validation** (not full re-review). Validator will:
+
 - Verify critical issues resolved
 - Confirm no regressions introduced
 - Spot-check new "Try With AI" content for quality
@@ -495,11 +529,11 @@ After completing steps 1-6, resubmit chapter for **spot-check validation** (not 
 
 ## Summary of Issues by Severity
 
-| Severity | Count | Issue | Status |
-|----------|-------|-------|--------|
-| **Critical** | 4 | Incomplete lesson 3, non-compliant lesson 2 closure, missing sidebar_position, typo | Blocking publication |
-| **Major** | 2 | README numbering, chapter-readme naming convention | Should fix |
-| **Minor** | 4 | Learning objective mapping clarity, tool selection consistency, /sp.clarify guidance, example quality | Nice to fix |
+| Severity     | Count | Issue                                                                                                 | Status               |
+| ------------ | ----- | ----------------------------------------------------------------------------------------------------- | -------------------- |
+| **Critical** | 4     | Incomplete lesson 3, non-compliant lesson 2 closure, missing sidebar_position, typo                   | Blocking publication |
+| **Major**    | 2     | README numbering, chapter-readme naming convention                                                    | Should fix           |
+| **Minor**    | 4     | Learning objective mapping clarity, tool selection consistency, /sp.clarify guidance, example quality | Nice to fix          |
 
 ---
 

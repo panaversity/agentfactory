@@ -16,7 +16,7 @@ links:
   adr: null
   pr: null
 files:
-  - path: book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/01-what-is-an-ai-agent.md
+  - path: apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/01-what-is-an-ai-agent.md
     status: created
     lines: 200
     words: 2487
@@ -44,6 +44,7 @@ tests:
 **Context**: Implement Lesson 1 for Chapter 33 (Introduction to AI Agents), Part 6. This is a Layer 1 (Manual Foundation) conceptual lesson—no code, no "Try With AI", framework invisible.
 
 **Requirements**:
+
 1. 2,000-2,500 words establishing mental models of what AI agents are
 2. Five required sections with specific content and word counts
 3. Agency spectrum framework (5 levels: Pure LLM → Chatbot → Assistant → Agent → Autonomous)
@@ -55,6 +56,7 @@ tests:
 9. Bridge to upcoming lessons without spoiling content
 
 **User stories addressed**:
+
 - US1: Understand what distinguishes agents from chatbots
 - US2: Classify systems on agency spectrum
 - US3: Recognize why agent development is career-valuable
@@ -64,6 +66,7 @@ tests:
 **Deliverables completed**:
 
 1. **Lesson markdown file** (01-what-is-an-ai-agent.md)
+
    - 2,487 words (within 2,000-2,500 target)
    - 5 required sections with specified content
    - Section 1: Why Agents Matter Now (637 words)
@@ -73,6 +76,7 @@ tests:
    - Section 5: Preview of lessons 2-6 (139 words, bridges without spoiling)
 
 2. **Verification report** (LESSON-1-VERIFICATION-REPORT.md)
+
    - All 6 critical constraints verified PASS
    - All 11 functional requirements addressed
    - All 5 statistics cited with sources
@@ -86,6 +90,7 @@ tests:
    - Tracks implementation decisions and outcomes
 
 **Key implementation decisions**:
+
 - Agency spectrum as organizing framework (more nuanced than binary)
 - Claude Code as concrete student experience hook
 - Real professional contexts (data analyst, customer service, trip planning)

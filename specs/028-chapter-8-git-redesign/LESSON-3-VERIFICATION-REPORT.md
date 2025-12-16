@@ -1,6 +1,6 @@
 # Lesson 3 Verification Report: Testing AI Safely with Branches
 
-**Lesson File**: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/03-testing-ai-safely-with-branches.md`
+**Lesson File**: `apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/03-testing-ai-safely-with-branches.md`
 
 **Status**: ✅ COMPLETE & VERIFIED
 
@@ -13,12 +13,14 @@
 ## I. Constitutional Compliance Checklist
 
 ### Principle 1: Specification Primacy
+
 - ✅ **Branches-as-safety-tool** framing established in introduction (not "version control commands")
 - ✅ **Intent clear**: Lesson teaches isolated experimentation parallel to main code
 - ✅ **Success criteria mapped**: SC-004 (75%+ manage branches without confusion), SC-013 (80%+ recognize branches vs commits)
 - ✅ **Non-goals respected**: No rebase, cherry-pick, or advanced Git workflows (out of scope per spec)
 
 ### Principle 2: Progressive Complexity
+
 - ✅ **5 concepts total** (at A1 cognitive limit):
   1. Branches (isolated timelines)
   2. Branch creation
@@ -30,12 +32,14 @@
 - ✅ **Bloom's level**: Apply (executing commands) + Understand (explaining isolation + trade-offs)
 
 ### Principle 3: Factual Accuracy
+
 - ✅ **All Git commands tested**: `git branch`, `git switch`, `git checkout`, `git merge`, `git branch -d`
 - ✅ **Expected outputs verified**: Standard Git response messages shown accurately
 - ✅ **Platform-agnostic**: Commands work on Windows, macOS, Linux
 - ✅ **Git 2.23+ compatible**: Uses modern commands (git switch) with fallbacks (git checkout)
 
 ### Principle 4: Coherent Structure
+
 - ✅ **Progression**: Observe → Practice → Collaborate → Workflow → Analysis → Reflection
 - ✅ **Learning arc**:
   - Part 1: Hands-on discovery (what are branches?)
@@ -47,17 +51,20 @@
 - ✅ **Transitions smooth**: Each section builds on previous understanding
 
 ### Principle 5: Intelligence Accumulation
+
 - ✅ **References Lessons 1-2**: "You have a committed project on your `main` branch"
 - ✅ **Applies previous concepts**: Uses commits from Lesson 1-2 as foundation
 - ✅ **Sets up Lesson 4**: "Next lesson: Cloud Backup & Portfolio"
 - ✅ **Prepares for Lesson 6**: Identifies "commit-before-experiment" and "branch-test-merge" patterns for later documentation
 
 ### Principle 6: Anti-Convergence
+
 - ✅ **Differs from Chapter 7 (Bash)**: Chapter 7 used direct teaching with analogies; Chapter 8 Lesson 3 uses three Roles + hands-on discovery
 - ✅ **Differs from Chapter 8 Lessons 1-2**: Those used hands-on discovery only; this lesson adds AI collaboration with bidirectional learning
 - ✅ **Varied modality**: 6 distinct sections with different teaching approaches
 
 ### Principle 7: Minimal Content
+
 - ✅ **Every section maps to success criteria**:
   - Part 1 (Hands-on) → SC-004 (manage branches)
   - Part 2 (Three Roles) → FR-025-028 (AI collaboration patterns)
@@ -78,11 +85,13 @@
 **Location**: Part 2, Scenario 1 (heading "Scenario 1: AI as Teacher—Learning Branch Best Practices")
 
 **What student learns from AI:**
+
 - Branch naming conventions (feature/, bugfix/, refactor/, experiment/)
 - Benefits of naming conventions (team communication, automation, clarity)
 - **Key learning**: Student didn't ask explicitly for naming conventions; AI offered this pattern
 
 **Evidence**:
+
 ```
 "What you learned:" section explicitly states:
 "AI taught you a naming convention system you didn't explicitly ask for."
@@ -97,11 +106,13 @@
 **Location**: Part 2, Scenario 2 (heading "Scenario 2: Student as Teacher—Teaching AI Your Constraints")
 
 **What AI learns from student:**
+
 - Previous project constraint (branch clutter was a problem)
 - Safety preference (use -d over -D unless absolutely certain)
 - Documentation needs (metrics matter for decisions)
 
 **Evidence**:
+
 ```
 Student corrects AI: "Good—but I should only force-delete if I'm certain.
 I'll use -d and fix merge conflicts if they exist.
@@ -122,18 +133,21 @@ What AI learns section states:
 **Three-iteration convergence loop:**
 
 **Iteration 1**: AI suggests basic branching strategy
+
 ```
 You ask: "How should I organize this in Git?"
 AI suggests: "Create two branches, test both, merge winner"
 ```
 
 **Iteration 2**: Student adds constraint
+
 ```
 You ask: "How can I remember which is faster after testing?"
 AI suggests: "Add performance note to commit message"
 ```
 
 **Iteration 3**: Full convergence
+
 ```
 Together you arrive at:
 1. Create two branches
@@ -144,6 +158,7 @@ Together you arrive at:
 ```
 
 **Key convergence moment**:
+
 ```
 "What neither of you had individually:
 - You didn't think of documenting performance in the commit message
@@ -158,11 +173,13 @@ Together you arrive at:
 ### Bidirectional Learning Validation
 
 ✅ **Explicit "What X learned" callouts present**:
+
 - "What you learned:" appears 3 times (AI as Teacher sections)
 - "What AI learns:" appears 2 times (AI as Student sections)
 - "What neither of you had individually:" appears 1 time (Convergence section)
 
 ✅ **No one-way instruction**: All three scenarios show reciprocal learning
+
 - Scenario 1: AI → Student (teaching)
 - Scenario 2: Student → AI (teaching)
 - Scenario 3: Student ↔ AI ↔ Student (convergence)
@@ -198,12 +215,14 @@ Together you arrive at:
 ✅ **Execute → Observe → Understand → Apply pattern throughout**:
 
 **Part 1 (Activities 1-3)**:
+
 - Execute: `git branch`, `git switch`, create files
 - Observe: File appears on branch, disappears on main
 - Understand: "Branch isolation in action"
 - Apply: Create second branch with different approach
 
 **Part 3 (Activities 4-6)**:
+
 - Execute: Create second branch, make changes, merge
 - Observe: Fast-forward merge, branch deletion
 - Understand: Merging integrates branches, deletion cleans up
@@ -218,20 +237,24 @@ Together you arrive at:
 ### 5 Concepts (Exactly at A1 Limit)
 
 1. **Branches** (isolated development timelines)
+
    - Multiple mentions: intro, Activity 1, Part 4 trade-offs
    - Explanation: "Think of a branch as a parallel universe"
 
 2. **Branch creation** (`git branch` or `git checkout -b`)
+
    - Activity 1: Create branch
    - Activity 2: Create second branch with different syntax
    - Trade-offs section: Context for when to create
 
 3. **Branch switching** (`git switch` or `git checkout`)
+
    - Activity 2: Switch to new branch
    - Activity 5: Switch back to main
    - Modern vs traditional syntax both shown
 
 4. **Merging** (integrating changes back to main)
+
    - Activity 5: Execute `git merge` and observe fast-forward
    - Part 4: Explained as integration (not just "combining code")
    - Three Roles Part 3: Merge strategy included in convergence
@@ -254,6 +277,7 @@ Together you arrive at:
 ### SC-004: 75%+ manage branches without confusion
 
 **Mapped content**:
+
 - Part 1: Clear activities showing isolation works
 - Part 3: Complete workflow (create → test → merge → delete)
 - Part 4: Decision framework for when to use branches
@@ -262,6 +286,7 @@ Together you arrive at:
 ### SC-007: Branch workflow <5 minutes
 
 **Mapped content**:
+
 - Activities 1-6 are deliberately quick (branch creation, switch, merge are single commands)
 - Part 4 emphasizes "Quick decision: which approach is better?"
 - Try With AI Prompt 1 encourages practice
@@ -269,6 +294,7 @@ Together you arrive at:
 ### SC-013: 80%+ recognize when to use branches vs commits
 
 **Mapped content**:
+
 - Part 4 dedicated section: "Branches Are For" vs "Commits Are Better When"
 - Decision framework: Ask yourself before each AI change
 - Three Roles Scenario 3: Performance metric decision uses branch + merge strategy
@@ -283,6 +309,7 @@ Together you arrive at:
 **All three roles have callouts using exact "What X learned" format:**
 
 1. **Scenario 1 callout**:
+
    ```
    **Key moment:** This is AI as Teacher—suggesting a pattern
    (naming conventions) that improves your workflow.
@@ -291,6 +318,7 @@ Together you arrive at:
    ```
 
 2. **Scenario 2 callout**:
+
    ```
    **What AI learns:** AI adapted to your constraint
    (branch clutter caused previous problems).
@@ -299,6 +327,7 @@ Together you arrive at:
    ```
 
 3. **Scenario 3 callout**:
+
    ```
    **What neither of you had individually:**
    - You didn't think of...
@@ -311,6 +340,7 @@ Together you arrive at:
 ### Iteration & Convergence ✅ VERIFIED
 
 **Scenario 3 shows clear progression**:
+
 - Iteration 1: AI suggests baseline approach
 - Iteration 2: Student adds performance documentation need
 - Iteration 3: Full convergence on performance documentation pattern (commit message + PR description)
@@ -324,6 +354,7 @@ Together you arrive at:
 **Location**: Part 6 (end of lesson, single closing section)
 
 **Structure**:
+
 - Setup: Opens ChatGPT
 - 3 copyable prompts (Prompt 1-3)
 - Expected outcomes for each
@@ -331,6 +362,7 @@ Together you arrive at:
 - Stretch goal: Optional practice
 
 **Prompts cover**:
+
 1. Naming conventions (builds on AI as Teacher from Part 2)
 2. Workflow review (reinforces Three Roles decision-making)
 3. Team collaboration (extends beyond A1 but marked as advanced)
@@ -342,6 +374,7 @@ Together you arrive at:
 ## IX. YAML Frontmatter Validation
 
 ✅ **Complete metadata present**:
+
 ```yaml
 title: Testing AI Safely with Branches
 chapter: 8
@@ -364,25 +397,30 @@ version: 1.0.0
 ## X. Pedagogical Quality Assessment
 
 ### Content Structure
+
 ✅ Clear progression: Observe → Collaborate → Execute → Analyze → Reflect → Practice
 
 ### Engagement
+
 ✅ "Parallel universes" metaphor makes branch concept concrete
 ✅ Three Roles scenarios use realistic conversational AI interactions
 ✅ Real-world trade-offs (simple vs fast) relatable
 
 ### Clarity
+
 ✅ Commands shown with expected output
 ✅ Discovery questions prompt thinking
 ✅ "What you learned" callouts explicit
 ✅ Technical vocabulary explained on first use
 
 ### Motivation
+
 ✅ Opening problem: "How do I test two approaches simultaneously?"
 ✅ Solution framed as "safe" (primary value prop from spec)
 ✅ Practical scenarios (A-C) show when to use this skill
 
 ### Learning Objectives Alignment
+
 1. ✅ Create branches → Activities 1, 2, 4 (executed successfully)
 2. ✅ Switch branches → Activity 2, 5 (practiced multiple times)
 3. ✅ Explain purpose → Parts 1, 4, 5 (multiple explanation contexts)
@@ -400,6 +438,7 @@ version: 1.0.0
 ✅ **IS**: Hands-on discovery with Three Roles bidirectional learning
 
 ✅ **Chapter 7 vs 8 difference**:
+
 - Chapter 7: Direct teaching with analogies ("Git is like...")
 - Chapter 8 Lesson 3: Three Roles collaboration + hands-on discovery (execute → observe → understand)
 
@@ -441,6 +480,7 @@ After completing this lesson, students demonstrate:
 ## XIV. Validation Against Failure Criteria
 
 **WOULD FAIL if**:
+
 - ❌ Only showed "human prompts → AI executes → done" (no bidirectional learning) → **PREVENTED** by 3 explicit Role scenarios
 - ❌ Three Roles were mentioned but not demonstrated → **PREVENTED** by detailed Scenario 1-3 with expected AI responses
 - ❌ No explicit "What X learned" callouts → **PREVENTED** by 6 callouts throughout
@@ -455,11 +495,12 @@ After completing this lesson, students demonstrate:
 
 ## XV. Summary: Lesson 3 Is Complete & Ready
 
-**File**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/reason-fm/book-source/docs/02-AI-Tool-Landscape/08-git-and-github/03-testing-ai-safely-with-branches.md`
+**File**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/reason-fm/apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/03-testing-ai-safely-with-branches.md`
 
 **Status**: ✅ PRODUCTION READY
 
 **Quality**:
+
 - ✅ All 7 constitutional principles satisfied
 - ✅ Stage 2 (AI Collaboration) with all three roles demonstrated
 - ✅ 5 core concepts exactly (at A1 limit)
@@ -471,6 +512,7 @@ After completing this lesson, students demonstrate:
 - ✅ All 12 tasks from Phase 4 (T030-T043) completed
 
 **Pedagogical Effectiveness**:
+
 - Students learn to use branches safely (primary goal)
 - Students experience bidirectional AI collaboration (Stage 2 requirement)
 - Students see AI as teacher, recognize themselves as teacher, converge on better solutions

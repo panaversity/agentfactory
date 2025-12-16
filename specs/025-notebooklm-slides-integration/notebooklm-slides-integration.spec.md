@@ -10,6 +10,7 @@
 ### Problem Statement
 
 Educational book chapters lack visual presentation materials that enhance learning through multiple modalities (text + visual slides). Manual slide creation is time-consuming and often produces slides that:
+
 - Don't align with book's educational philosophy (AI-native development)
 - Use inconsistent proficiency calibration across chapters
 - Lack pedagogical narrative progression
@@ -33,6 +34,7 @@ Integrate NotebookLM's AI-powered slide generation to create pedagogically-align
 ### Components
 
 **1. PDFViewer React Component** (`book-source/src/components/PDFViewer.tsx`)
+
 - TypeScript React component for Docusaurus
 - Props: `src`, `title`, `height`, `showDownload`
 - Dark mode compatible using CSS variables (`--ifm-*`)
@@ -40,11 +42,13 @@ Integrate NotebookLM's AI-powered slide generation to create pedagogically-align
 - Fullscreen button only (minimal UI per user feedback)
 
 **2. Slides Storage** (`book-source/static/slides/`)
+
 - Directory structure: `static/slides/chapter-XX-slides.pdf`
 - PDFs downloaded from NotebookLM
 - Naming convention: `chapter-{number}-slides.pdf`
 
 **3. NotebookLM Slides Skill** (`.claude/skills/notebooklm-slides/`)
+
 - Single file: `SKILL.md` (11KB, ~2000 tokens)
 - Dimensional guidance framework (5 dimensions)
 - Proficiency-calibrated templates (A2/B1/C1)
@@ -70,26 +74,31 @@ import PDFViewer from '@site/src/components/PDFViewer';
 ### 5 Dimensional Guidance
 
 **1. Audience Definition**
+
 - Specific proficiency level (CEFR: A1/A2/B1/B2/C1/C2)
 - Prerequisites stated explicitly
 - Discovery context (what students are learning)
 
 **2. Educational Framework Specification**
+
 - Explicit teaching philosophy (AI-native development)
 - 3-5 core principles with explanations
 - Mental models to develop
 
 **3. Theme Articulation**
+
 - 5-7 numbered themes
 - Specific data/facts/numbers
 - Concrete examples over abstractions
 
 **4. Tone Calibration**
+
 - Multi-faceted tone with contrasts: "X (not Y)"
 - Emotional framing (encouraging, opportunity-driven)
 - Language simplicity appropriate to proficiency
 
 **5. Format Specification**
+
 - Explicit slide count range
 - Bullet points per slide ("3-5 bullets, not paragraphs")
 - Narrative arc structure
@@ -97,11 +106,11 @@ import PDFViewer from '@site/src/components/PDFViewer';
 
 ### Proficiency Templates
 
-| Level | Slides | Bullets/Slide | Tone | Target Audience |
-|-------|--------|---------------|------|-----------------|
-| **A2** | 12-15 | 3-5 | Encouraging, simple | Absolute beginners |
-| **B1** | 15-20 | 4-6 | Professional yet accessible | Intermediate learners |
-| **C1** | 20-25 | 5-7 | Rigorous, analytical | Advanced practitioners |
+| Level  | Slides | Bullets/Slide | Tone                        | Target Audience        |
+| ------ | ------ | ------------- | --------------------------- | ---------------------- |
+| **A2** | 12-15  | 3-5           | Encouraging, simple         | Absolute beginners     |
+| **B1** | 15-20  | 4-6           | Professional yet accessible | Intermediate learners  |
+| **C1** | 20-25  | 5-7           | Rigorous, analytical        | Advanced practitioners |
 
 ### Workflow
 
@@ -118,6 +127,7 @@ import PDFViewer from '@site/src/components/PDFViewer';
 ### 1. Identifies Distributional Convergence ✅
 
 **Problem**: AI-generated slides converge toward:
+
 - Text-heavy lecture notes (not presenter slides)
 - Missing proficiency alignment
 - Generic examples disconnected from philosophy
@@ -129,6 +139,7 @@ import PDFViewer from '@site/src/components/PDFViewer';
 ### 2. Maps Aesthetic to Implementation ✅
 
 **5 Dimensions translate vague desires into actionable guidance:**
+
 - "Better slides" → Audience proficiency + Framework alignment + Theme specificity + Tone calibration + Format constraints
 - Each dimension provides concrete alternatives ("Prefer X over Y")
 - Decision-making principles, not just rules
@@ -136,6 +147,7 @@ import PDFViewer from '@site/src/components/PDFViewer';
 ### 3. Builds Reusable Asset ✅
 
 **Skill Structure**:
+
 - Context & Problem (why skill exists)
 - Core Principles (high-level mental models)
 - Dimensional Guidance (5 vectors of improvement)
@@ -150,6 +162,7 @@ import PDFViewer from '@site/src/components/PDFViewer';
 ### 4. Creates Activation Pattern ✅
 
 **Triggers**:
+
 - Creating visual presentations for chapters
 - Generating study materials for different proficiency levels
 - Converting text content into slide format
@@ -167,6 +180,7 @@ import PDFViewer from '@site/src/components/PDFViewer';
 **Iteration 4**: Remove redundant UI (download button, label) → Final ✅
 
 **Final Design**:
+
 - Dark mode compatible (Docusaurus CSS variables)
 - Compact (minimal padding/margins)
 - Fullscreen button only
@@ -175,12 +189,14 @@ import PDFViewer from '@site/src/components/PDFViewer';
 ### Chapter 1 Pilot Results
 
 **Prompt Used**: A2 proficiency template with:
+
 - Framework: AI-native development (5 principles)
 - Themes: $3T economy, opportunity window, typist→orchestrator, 4 generations, value drivers
 - Tone: Encouraging (not intimidating), future-focused, simple language
 - Format: 12-15 slides, 3-5 bullets, problem→transformation→opportunity→action arc
 
 **Output**: "The AI Coding Revolution"
+
 - 13 slides ✅
 - All 5 themes covered with specific data ✅
 - Encouraging tone throughout ✅
@@ -200,11 +216,13 @@ import PDFViewer from '@site/src/components/PDFViewer';
 ## Dependencies
 
 **Runtime**:
+
 - Docusaurus (React-based static site generator)
 - NotebookLM access (Google account)
 - Browser with PDF support
 
 **Development**:
+
 - Node.js (for Docusaurus)
 - @tailwindcss/postcss (PostCSS plugin, added during implementation)
 
@@ -218,12 +236,14 @@ import PDFViewer from '@site/src/components/PDFViewer';
 ## Future Enhancements
 
 **When NotebookLM API Available**:
+
 - Automated batch processing for multiple chapters
 - Template-based prompt generation from chapter metadata
 - Automated embedding in documentation
 - CI/CD integration for slide regeneration
 
 **Near-Term**:
+
 - Continue pilot with Parts 1 and 4 chapters
 - Validate proficiency templates (B1, C1) with actual chapters
 - Build prompt library for common chapter types
@@ -232,19 +252,22 @@ import PDFViewer from '@site/src/components/PDFViewer';
 ## File Manifest
 
 ### Created Files
+
 ```
 .claude/skills/notebooklm-slides/SKILL.md
 book-source/src/components/PDFViewer.tsx
 book-source/static/slides/chapter-01-slides.pdf
-book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/readme.md (modified)
+apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/readme.md (modified)
 ```
 
 ### Modified Files
+
 ```
 book-source/package-lock.json (added @tailwindcss/postcss)
 ```
 
 ### Deleted Files (Cleanup)
+
 ```
 docs/workflows/chapter-readme-template-with-slides.md
 docs/workflows/notebooklm-slides-workflow.md
@@ -293,6 +316,7 @@ notebooklm-slides.zip (packaged skill, not committed)
 ## Success Metrics
 
 **Pilot (Chapter 1)**: ✅ Complete
+
 - Component working: ✅
 - Slides generated: ✅ (13 slides)
 - Framework aligned: ✅ (all 5 dimensions demonstrated)

@@ -9,11 +9,13 @@
 ## Implementation Summary
 
 ### Phase 1: Setup ✅ COMPLETE
-- [x] T001: Created chapter directory structure at `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/`
+
+- [x] T001: Created chapter directory structure at `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/`
 - [x] T002: Created all 8 lesson files with proper YAML frontmatter
 - [x] T003: Created chapter README.md with navigation and introduction
 
 ### Phase 2: Foundational ✅ COMPLETE
+
 - [x] T004: Researched and verified Bash commands across macOS, Linux, Windows (Git Bash)
 - [x] T005: Created command reference tables (integrated into lessons)
 - [x] T006: Documented platform-specific differences throughout lessons
@@ -21,26 +23,31 @@
 - [x] T008: Created keyboard shortcut reference table (Lesson 7)
 
 ### Phase 3: User Story 1 (P1 - MVP) ✅ COMPLETE
+
 **Lessons 1-5: Bash Commands Fundamentals**
 
 - [x] **Lesson 1**: The Terminal Interface (25-30 min) — `01-terminal-interface.md`
+
   - Terminal anatomy, file system hierarchy, pwd/cd commands
   - Platform differences (macOS/Linux/Windows)
   - Practice exercises for navigation
 
 - [x] **Lesson 2**: Navigation and File Management (40-45 min) — `02-navigation-files.md`
+
   - cd, pwd, ls with flags
   - mkdir, touch, cp, mv, rm (with safety warnings)
   - Real-world project setup scenario
   - 5 progressive exercises
 
 - [x] **Lesson 3**: Viewing and Searching File Content (30-35 min) — `03-viewing-searching.md`
+
   - cat, head, tail, less, grep
   - Pipes (|) and redirection (>, >>, 2>)
   - find command
   - Real log file searching example
 
 - [x] **Lesson 4**: Environment Variables and Package Management (35-40 min) — `04-environment-packages.md`
+
   - Temporary vs. permanent environment variables
   - .bashrc/.zshrc configuration
   - API key setup walkthrough
@@ -52,9 +59,11 @@
   - Common errors: command not found, permission denied, variable persistence
 
 ### Phase 4: User Story 2 (P2) ✅ COMPLETE
+
 **Lessons 6, 8: AI-Augmented Workflows**
 
 - [x] **Lesson 6**: Natural Language Prompts for Bash Tasks (35-40 min) — `06-natural-language-prompts.md`
+
   - AI-augmented workflow paradigm
   - 4 prompting patterns (clear request, problem, constraints, multi-step)
   - Natural language templates for all command categories
@@ -69,6 +78,7 @@
   - Safety patterns for AI-generated commands
 
 ### Phase 5: User Story 3 (P3) ✅ COMPLETE
+
 **Lesson 7: Professional Habits**
 
 - [x] **Lesson 7**: Professional Bash Habits and Command Patterns (30-35 min) — `07-professional-habits.md`
@@ -81,6 +91,7 @@
   - Safety awareness
 
 ### Phase 6: Polish & Documentation ✅ COMPLETE
+
 - [x] T079: Chapter README with introduction, structure, learning objectives
 - [x] T085: Chapter summary in README.md
 - [x] T086: Quick reference card included in README
@@ -109,6 +120,7 @@
 ## Content Quality Verification
 
 ### Pedagogical Standards ✅
+
 - [x] All lessons follow "lesson" output style template
 - [x] Opening hooks engage readers within 2-3 paragraphs
 - [x] Concepts scaffolded from simple to complex
@@ -120,6 +132,7 @@
 - [x] Real-world scenarios and examples
 
 ### Technical Accuracy ✅
+
 - [x] All commands tested on macOS, Linux, Windows (Git Bash)
 - [x] Platform-specific guidance provided
 - [x] Safety warnings for destructive commands (rm -rf, chmod 777)
@@ -128,6 +141,7 @@
 - [x] Command reference cards included
 
 ### AI-Augmented Learning ✅
+
 - [x] AI framed as learning mentor, not code generator
 - [x] Emphasizes understanding over memorization
 - [x] Shows validation before execution

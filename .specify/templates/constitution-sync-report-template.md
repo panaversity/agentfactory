@@ -1,12 +1,12 @@
 ---
-id: {{ID}}
+id: { { ID } }
 title: "Constitution Sync: Chapter {{CHAPTER_NUMBER}}"
-date: {{DATE_ISO}}
-chapter: {{CHAPTER_NUMBER}}
-constitution_version: {{CONSTITUTION_VERSION}}
-sync_operator: {{AI_MODEL}}
+date: { { DATE_ISO } }
+chapter: { { CHAPTER_NUMBER } }
+constitution_version: { { CONSTITUTION_VERSION } }
+sync_operator: { { AI_MODEL } }
 approach: intelligent-hybrid
-status: {{STATUS}}  # complete | partial | failed
+status: { { STATUS } } # complete | partial | failed
 ---
 
 # ✅ Constitution Sync Complete: Chapter {{CHAPTER_NUMBER}}
@@ -83,13 +83,14 @@ Based on change history, predicted likely violations:
 **Location**: {{SPEC_PATH}}
 
 **Compliance Check**:
+
 - ✅ Learning objectives align with constitution: {{SPEC_OBJECTIVES_STATUS}}
 - ✅ Prerequisites explicit: {{SPEC_PREREQUISITES_STATUS}}
 - ✅ Success criteria measurable: {{SPEC_SUCCESS_CRITERIA_STATUS}}
 - ✅ Complexity tier appropriate: {{SPEC_COMPLEXITY_STATUS}}
 - ✅ Evals defined with business-goal connection: {{SPEC_EVALS_STATUS}}
 
-**Verdict**: {{SPEC_VERDICT}}  # ✅ COMPLIANT | ⚠️ NEEDS UPDATE
+**Verdict**: {{SPEC_VERDICT}} # ✅ COMPLIANT | ⚠️ NEEDS UPDATE
 
 **Changes Applied** (if any):
 {{SPEC_CHANGES}}
@@ -101,13 +102,14 @@ Based on change history, predicted likely violations:
 **Location**: {{PLAN_PATH}}
 
 **Compliance Check**:
+
 - ✅ Lesson breakdown matches spec: {{PLAN_BREAKDOWN_STATUS}}
 - ✅ Skills proficiency metadata present: {{PLAN_PROFICIENCY_STATUS}}
 - ✅ CoLearning elements referenced: {{PLAN_COLEARNING_STATUS}}
 - ✅ Graduated Teaching Pattern followed: {{PLAN_GRADUATED_STATUS}}
 - ✅ Cognitive load validated per lesson: {{PLAN_COGNITIVE_STATUS}}
 
-**Verdict**: {{PLAN_VERDICT}}  # ✅ COMPLIANT | ⚠️ NEEDS UPDATE
+**Verdict**: {{PLAN_VERDICT}} # ✅ COMPLIANT | ⚠️ NEEDS UPDATE
 
 **Changes Applied** (if any):
 {{PLAN_CHANGES}}
@@ -119,7 +121,8 @@ Based on change history, predicted likely violations:
 ### Lesson-by-Lesson Breakdown
 
 | Lesson | Compliance | Decision | Time | Changes Summary |
-|--------|-----------|----------|------|-----------------|
+| ------ | ---------- | -------- | ---- | --------------- |
+
 {{LESSON_TABLE_ROWS}}
 
 <!-- Example format:
@@ -144,11 +147,13 @@ Based on change history, predicted likely violations:
 ##### Quantitative Metrics
 
 **Compliance Metrics** (from compliance-metrics.sh):
+
 ```json
 {{LESSON_1_COMPLIANCE_JSON}}
 ```
 
 **Forward References** (from detect-forward-references.sh):
+
 ```json
 {{LESSON_1_FORWARD_REF_JSON}}
 ```
@@ -169,6 +174,7 @@ Based on change history, predicted likely violations:
 **Compliance Score**: {{LESSON_1_COMPLIANCE_SCORE}}%
 
 **Breakdown**:
+
 - CoLearning Elements: {{LESSON_1_COLEARNING_SCORE}}% {{LESSON_1_COLEARNING_ICON}}
 - Lesson Closure: {{LESSON_1_CLOSURE_SCORE}}% {{LESSON_1_CLOSURE_ICON}}
 - Pedagogical Ordering: {{LESSON_1_ORDERING_SCORE}}% {{LESSON_1_ORDERING_ICON}}
@@ -184,7 +190,7 @@ Based on change history, predicted likely violations:
 
 ##### Decision Matrix Application
 
-**Decision**: {{LESSON_1_DECISION}}  # SURGICAL EDIT | ENHANCED REGENERATION | FULL REGENERATION | NO CHANGE
+**Decision**: {{LESSON_1_DECISION}} # SURGICAL EDIT | ENHANCED REGENERATION | FULL REGENERATION | NO CHANGE
 
 **Rationale**:
 {{LESSON_1_DECISION_RATIONALE}}
@@ -261,11 +267,12 @@ Based on change history, predicted likely violations:
 ### Spec/Plan Consistency
 
 **Check Results**:
+
 - ✅ All spec learning objectives covered in lessons: {{SPEC_COVERAGE_STATUS}}
 - ✅ All plan concepts present in lessons: {{PLAN_COVERAGE_STATUS}}
 - ✅ CEFR progression maintained: {{CEFR_PROGRESSION_STATUS}}
 
-**Verdict**: {{SPEC_PLAN_CONSISTENCY_VERDICT}}  # ✅ PASS | ⚠️ ISSUES FOUND
+**Verdict**: {{SPEC_PLAN_CONSISTENCY_VERDICT}} # ✅ PASS | ⚠️ ISSUES FOUND
 
 **Issues Found** (if any):
 {{SPEC_PLAN_ISSUES}}
@@ -275,12 +282,13 @@ Based on change history, predicted likely violations:
 ### Cross-Lesson Consistency
 
 **Check Results**:
+
 - ✅ No forward references across lessons: {{CROSS_LESSON_ORDERING_STATUS}}
 - ✅ Prerequisite chain intact (L1→L2→L3→L4→L5): {{PREREQUISITE_CHAIN_STATUS}}
 - ✅ Terminology consistent across lessons: {{TERMINOLOGY_STATUS}}
 - ✅ CoLearning elements balanced across lessons: {{COLEARNING_BALANCE_STATUS}}
 
-**Verdict**: {{CROSS_LESSON_CONSISTENCY_VERDICT}}  # ✅ PASS | ⚠️ ISSUES FOUND
+**Verdict**: {{CROSS_LESSON_CONSISTENCY_VERDICT}} # ✅ PASS | ⚠️ ISSUES FOUND
 
 **Issues Found** (if any):
 {{CROSS_LESSON_ISSUES}}
@@ -307,7 +315,7 @@ Based on change history, predicted likely violations:
 **Pedagogical Ordering**: {{PEDAGOGICAL_ORDERING_CHAPTER_STATUS}}
 **Three-Role Partnership**: {{THREE_ROLE_CHAPTER_STATUS}}
 
-**Final Verdict**: {{CHAPTER_VERDICT}}  # ✅ PASS | ⚠️ PARTIAL | ❌ FAIL
+**Final Verdict**: {{CHAPTER_VERDICT}} # ✅ PASS | ⚠️ PARTIAL | ❌ FAIL
 
 ---
 
@@ -316,6 +324,7 @@ Based on change history, predicted likely violations:
 ### vs. All Surgical Edit
 
 **Hypothetical Stats**:
+
 - Time: ~{{ALL_SURGICAL_TIME}} minutes
 - Quality Risk: {{ALL_SURGICAL_QUALITY_RISK}}
 
@@ -327,6 +336,7 @@ Based on change history, predicted likely violations:
 ### vs. All Regenerate
 
 **Hypothetical Stats**:
+
 - Time: ~{{ALL_REGEN_TIME}} minutes ({{ALL_REGEN_TIME_HOURS}} hours)
 - Quality Risk: {{ALL_REGEN_QUALITY_RISK}}
 
@@ -338,6 +348,7 @@ Based on change history, predicted likely violations:
 ### Intelligent Hybrid (Chosen)
 
 **Actual Stats**:
+
 - Time: {{TOTAL_TIME_MINUTES}} minutes
 - Quality: {{QUALITY_OUTCOME}}
 
@@ -354,16 +365,19 @@ Based on change history, predicted likely violations:
 ### Immediate Next Steps
 
 1. **Review Changes**:
+
    ```bash
-   git diff book-source/docs/{{PART_NUMBER}}-Part-{{PART_NUMBER}}/{{CHAPTER_NUMBER}}-{{CHAPTER_SLUG}}/
+   git diff apps/learn-app/docs/{{PART_NUMBER}}-Part-{{PART_NUMBER}}/{{CHAPTER_NUMBER}}-{{CHAPTER_SLUG}}/
    ```
 
 2. **Test Docusaurus Build**:
+
    ```bash
    cd book-source && npm run build
    ```
 
 3. **Validate Links**:
+
    - Check no broken internal links
    - Verify code examples still valid
 
@@ -378,11 +392,13 @@ Based on change history, predicted likely violations:
 ### Process Next Chapter
 
 **Continue with**:
+
 ```bash
 /sp.constitution-sync {{NEXT_CHAPTER_NUMBER}}
 ```
 
 **Batch Processing** (if multiple chapters need sync):
+
 ```bash
 # Process chapters {{CHAPTER_NUMBER}}-{{LAST_CHAPTER_NUMBER}}
 for i in {{{CHAPTER_NUMBER}}..{{LAST_CHAPTER_NUMBER}}}; do
@@ -395,6 +411,7 @@ done
 ### Decision Points
 
 **Would you like to**:
+
 1. {{DECISION_OPTION_1}}
 2. {{DECISION_OPTION_2}}
 3. {{DECISION_OPTION_3}}
@@ -411,11 +428,11 @@ I'm here to execute your decision.
 {{FILES_MODIFIED_LIST}}
 
 <!-- Example format:
-- book-source/docs/04-Part-4/14-data-types/01-intro.md
+- apps/learn-app/docs/04-Part-4/14-data-types/01-intro.md
   - Changes: 15 CoLearning insertions, 1 post-section deletion
   - Lines modified: 89, 156, 234, 312, 456, 567, 678-695 (deleted)
 
-- book-source/docs/04-Part-4/14-data-types/02-numeric.md
+- apps/learn-app/docs/04-Part-4/14-data-types/02-numeric.md
   - Changes: Enhanced regeneration (60% preserved, 40% regenerated)
   - Sections regenerated: Type Conversions, Paragraphs 5-8
 -->
@@ -433,29 +450,30 @@ I'm here to execute your decision.
 ### Compliance Scores by Lesson
 
 | Lesson | Compliance | CoLearning | Closure | Ordering | Partnership | Graduated | Tone | Code |
-|--------|-----------|-----------|---------|----------|-------------|-----------|------|------|
+| ------ | ---------- | ---------- | ------- | -------- | ----------- | --------- | ---- | ---- |
+
 {{COMPLIANCE_SCORES_TABLE}}
 
 ### Time Breakdown
 
-| Activity | Time (minutes) | % of Total |
-|----------|---------------|------------|
-| Phase 0: Delta Analysis | {{PHASE_0_TIME}} | {{PHASE_0_PERCENT}}% |
-| Phase 1: Spec/Plan Check | {{PHASE_1_TIME}} | {{PHASE_1_PERCENT}}% |
-| Phase 2: Per-Lesson Intelligence | {{PHASE_2_TIME}} | {{PHASE_2_PERCENT}}% |
-| Phase 3: Chapter Validation | {{PHASE_3_TIME}} | {{PHASE_3_PERCENT}}% |
-| Phase 4: Report Writing | {{PHASE_4_TIME}} | {{PHASE_4_PERCENT}}% |
-| **Total** | **{{TOTAL_TIME_MINUTES}}** | **100%** |
+| Activity                         | Time (minutes)             | % of Total           |
+| -------------------------------- | -------------------------- | -------------------- |
+| Phase 0: Delta Analysis          | {{PHASE_0_TIME}}           | {{PHASE_0_PERCENT}}% |
+| Phase 1: Spec/Plan Check         | {{PHASE_1_TIME}}           | {{PHASE_1_PERCENT}}% |
+| Phase 2: Per-Lesson Intelligence | {{PHASE_2_TIME}}           | {{PHASE_2_PERCENT}}% |
+| Phase 3: Chapter Validation      | {{PHASE_3_TIME}}           | {{PHASE_3_PERCENT}}% |
+| Phase 4: Report Writing          | {{PHASE_4_TIME}}           | {{PHASE_4_PERCENT}}% |
+| **Total**                        | **{{TOTAL_TIME_MINUTES}}** | **100%**             |
 
 ### Intervention Distribution
 
-| Intervention Type | Count | Total Time | Avg Time per Lesson |
-|-------------------|-------|-----------|---------------------|
-| Surgical Edit | {{SURGICAL_COUNT}} | {{SURGICAL_TIME}} min | {{SURGICAL_AVG}} min |
-| Enhanced Regeneration | {{ENHANCED_COUNT}} | {{ENHANCED_TIME}} min | {{ENHANCED_AVG}} min |
-| Full Regeneration | {{FULL_REGEN_COUNT}} | {{FULL_REGEN_TIME}} min | {{FULL_REGEN_AVG}} min |
-| No Change | {{NO_CHANGE_COUNT}} | {{NO_CHANGE_TIME}} min | {{NO_CHANGE_AVG}} min |
-| **Total** | {{LESSON_COUNT}} | **{{TOTAL_TIME_MINUTES}} min** | **{{OVERALL_AVG}} min** |
+| Intervention Type     | Count                | Total Time                     | Avg Time per Lesson     |
+| --------------------- | -------------------- | ------------------------------ | ----------------------- |
+| Surgical Edit         | {{SURGICAL_COUNT}}   | {{SURGICAL_TIME}} min          | {{SURGICAL_AVG}} min    |
+| Enhanced Regeneration | {{ENHANCED_COUNT}}   | {{ENHANCED_TIME}} min          | {{ENHANCED_AVG}} min    |
+| Full Regeneration     | {{FULL_REGEN_COUNT}} | {{FULL_REGEN_TIME}} min        | {{FULL_REGEN_AVG}} min  |
+| No Change             | {{NO_CHANGE_COUNT}}  | {{NO_CHANGE_TIME}} min         | {{NO_CHANGE_AVG}} min   |
+| **Total**             | {{LESSON_COUNT}}     | **{{TOTAL_TIME_MINUTES}} min** | **{{OVERALL_AVG}} min** |
 
 ---
 
@@ -464,21 +482,25 @@ I'm here to execute your decision.
 **This sync embodied the constitution it enforced**:
 
 **AI as Teacher**:
+
 - Diagnosed compliance issues per lesson
 - Explained why each decision was made
 - Suggested optimal intervention strategies
 
 **AI as Student**:
+
 - Learned constitution changes (Phase 0)
 - Read and understood chapter context
 - Adapted approach based on lesson quality
 
 **AI as Co-Worker**:
+
 - Partnered on per-lesson decisions
 - Offered multiple paths forward
 - Executed user's strategic direction
 
 **Co-Learning Convergence**:
+
 - **Iteration 1**: Constitution delta analysis (AI learns)
 - **Iteration 2**: Per-lesson intelligence (AI diagnoses)
 - **Iteration 3**: Interventions applied (AI executes)

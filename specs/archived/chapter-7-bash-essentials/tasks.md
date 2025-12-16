@@ -19,6 +19,7 @@
 ## Overview
 
 Chapter 7 teaches absolute beginners how to navigate and use the terminal through **natural language communication with AI**, rather than memorizing bash commands. The chapter follows graduated teaching pattern:
+
 - **Lessons 1-2 (Tier 1)**: Book teaches foundational concepts directly
 - **Lessons 3-5 (Tier 2)**: AI companion executes complex operations while students specify and supervise
 - **Lessons 6-8 (Tier 3)**: AI orchestrates multi-step workflows while students direct and validate
@@ -38,7 +39,8 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create comprehensive chapter overview that explains the AI-native pedagogical approach, learning outcomes, and how this chapter differs from traditional bash tutorials.
 
 **Acceptance Criteria**:
-- [ ] File exists at `/book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/readme.md` (LOWERCASE)
+
+- [ ] File exists at `/apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/readme.md` (LOWERCASE)
 - [ ] Follows `.claude/output-styles/chapter-readme.md` structure exactly
 - [ ] Section 1: Overview explains "natural language to bash communication" as core learning approach
 - [ ] Section 2: Lists 8 lessons and their learning objectives (referenced from plan.md)
@@ -52,13 +54,15 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 - [ ] Passes readability check (0 errors, 0 warnings)
 
 **Reference Documents**:
+
 - `.claude/output-styles/chapter-readme.md` for structure
 - `plan.md` Section "Lesson Architecture" for learning objectives
 - Existing chapters 5, 6 READMEs for tone and style reference
 
 **Reference Files to Check**:
-- `/book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/readme.md`
-- `/book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/readme.md`
+
+- `/apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/readme.md`
+- `/apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/readme.md`
 
 ---
 
@@ -69,7 +73,8 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create template for all 8 lesson files with correct YAML frontmatter, directory structure, and file naming convention.
 
 **Acceptance Criteria**:
-- [ ] Directory exists: `/book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/`
+
+- [ ] Directory exists: `/apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/`
 - [ ] 8 lesson files created with correct naming: `01-finding-your-way.md` through `08-orchestrating-complex-workflows.md`
 - [ ] Each file has YAML frontmatter with:
   - [ ] `sidebar_position: [N]` (1-8 for lessons 1-8)
@@ -82,6 +87,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 - [ ] File structure is ready for content writers
 
 **Files to Create**:
+
 ```
 01-finding-your-way.md
 02-the-safety-pattern.md
@@ -106,6 +112,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Write Lesson 1 content covering terminal literacy, file system orientation, and location awareness. Focus on foundational concepts (Tier 1 — book teaches directly).
 
 **Acceptance Criteria**:
+
 - [ ] Content fills approximately 1,500-2,000 words
 - [ ] Opening paragraph (200 words) hooks reader and establishes why location awareness matters
 - [ ] Section A: Explains what terminal is, why developers use it (3-4 paragraphs, plain language)
@@ -122,6 +129,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 - [ ] No code boxes yet; all concepts explained through text and dialogue
 
 **Content Requirements**:
+
 - Real dialogue transcripts from actual Claude Code, Gemini CLI, or ChatGPT interactions
 - Analogies that make sense to beginners (no technical jargon in explanations)
 - Visual aids: Simple ASCII diagram or referenced web image showing home directory structure
@@ -138,17 +146,21 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create practice checkpoints for Lesson 1 that guide students to conduct 3 conversations without typing bash commands.
 
 **Acceptance Criteria**:
+
 - [ ] Checkpoint 1: "Conduct conversation about your current location"
+
   - [ ] Clear instructions on what to ask AI
   - [ ] Validation criteria: Can explain what directory they're in
   - [ ] Expected outcome: Screenshot of conversation
 
 - [ ] Checkpoint 2: "List files and identify directories vs. files"
+
   - [ ] Clear instructions on how to ask AI to show files
   - [ ] Validation criteria: Can identify which items are directories
   - [ ] Expected outcome: Screenshot of conversation
 
 - [ ] Checkpoint 3: "Navigate to a specific folder and describe contents"
+
   - [ ] Clear instructions on navigation language
   - [ ] Validation criteria: Can list what's in the folder they navigated to
   - [ ] Expected outcome: Screenshot showing navigation sequence
@@ -168,17 +180,21 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create end-of-lesson "Try With AI" activity for Lesson 1 with 2-3 focused prompts and expected outcomes.
 
 **Acceptance Criteria**:
+
 - [ ] Activity section titled "Try With AI" (not "Key Takeaways" or "What's Next")
 - [ ] Prompt 1: "Show me where I am right now..."
+
   - [ ] Clear, open-ended prompt
   - [ ] Expected outcome documented
   - [ ] AI tool selection: Claude Code or Gemini CLI (mention both as options)
 
 - [ ] Prompt 2: "Navigate to my Documents folder..."
+
   - [ ] Prompts practical exploration
   - [ ] Expected outcome: Student understands directory path
 
 - [ ] Prompt 3: (Optional) Student's own location question
+
   - [ ] Opens possibility for student-directed exploration
   - [ ] Expected outcome: Student feels confident asking own questions
 
@@ -197,13 +213,16 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Write Lesson 2 content covering the critical 5-step safety pattern. This is the longest lesson (intentionally) because safety is paramount.
 
 **Acceptance Criteria**:
+
 - [ ] Content fills approximately 2,500-3,500 words
 - [ ] Opening section (300-400 words): Real story (anonymized) of developer losing 6 months of work
+
   - [ ] Story is emotionally resonant and scary (appropriate for emphasizing importance)
   - [ ] Explains why it happened (didn't understand location, didn't verify)
   - [ ] Frames lesson: "This could save your career"
 
 - [ ] Section B: Detailed explanation of 5-step safety pattern with real dialogue for each step
+
   - [ ] Step 1 (Ask): Dialogue showing student requesting operation
   - [ ] Step 2 (Explain): AI explains what will happen, shows location, lists affected files, explains command
   - [ ] Step 3 (Understand): Student asks clarifying questions ("What does `-rf` mean?" "Can I undo this?")
@@ -212,11 +231,13 @@ This task list breaks the chapter into atomic work units with clear acceptance c
   - [ ] Each step has real dialogue transcript from actual AI tool
 
 - [ ] Section C: Red flags explanation
+
   - [ ] List of dangerous commands: `rm`, `rm -rf`, `sudo`, `chmod 777`
   - [ ] For each red flag: What it does, why it's dangerous, how to respond
   - [ ] Example dialogue: Student sees red flag, asks clarifying questions, AI explains
 
 - [ ] Section D: Common mistakes and how to avoid them
+
   - [ ] Mistake 1-4 as outlined in plan
   - [ ] For each: Real example, how to catch it, correct approach
 
@@ -237,19 +258,23 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create exercises where students identify missing safety steps, recognize red flags, and conduct supervised deletion exercises.
 
 **Acceptance Criteria**:
+
 - [ ] Checkpoint 1: Students identify missing steps in flawed dialogues
+
   - [ ] Provide 2-3 flawed dialogue examples
   - [ ] Each missing a different step (one lacks Step 2: Explain, one lacks Step 4: Verify)
   - [ ] Task: "What step is missing? How would you fix this?"
   - [ ] Validation: Student can identify the gap and suggest correction
 
 - [ ] Checkpoint 2: Students identify red flags
+
   - [ ] Provide 3-4 commands with red flags
   - [ ] Examples: `sudo rm -rf /var/www/`, `chmod 777 config.txt`, `rm -rf ~/projects/`
   - [ ] Task: "What red flags do you see? How would you respond?"
   - [ ] Validation: Student identifies red flags and asks appropriate clarifying questions
 
 - [ ] Checkpoint 3: Supervised deletion exercise
+
   - [ ] Instructions for setting up practice folder with known contents
   - [ ] Step-by-step guidance for conducting conversation following all 5 steps
   - [ ] Validation: Student demonstrates all 5 steps in conversation transcript
@@ -267,20 +292,25 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create comprehensive "Try With AI" activity for Lesson 2 with 2-4 hands-on safety pattern practice prompts.
 
 **Acceptance Criteria**:
+
 - [ ] Activity section: "Try With AI"
 - [ ] Prompt 1: Hands-on safety pattern for deletion
+
   - [ ] "Help me delete a test folder following the 5-step safety pattern"
   - [ ] Expected outcome: Student conducts full 5-step conversation
 
 - [ ] Prompt 2: Move operation safety pattern
+
   - [ ] "Walk me through all 5 steps for moving files to backup location"
   - [ ] Expected outcome: Student understands verification steps
 
 - [ ] Prompt 3: Red flag explanation
+
   - [ ] "Explain what this command does: `find . -type f -name '*.tmp' -delete`"
   - [ ] Expected outcome: Student recognizes destructiveness, asks clarifying questions
 
 - [ ] Prompt 4: (Optional) Complex scenario
+
   - [ ] "Create a scenario where I delete 100 files. Show me how you'd approach this safely."
   - [ ] Expected outcome: Student demonstrates orchestrated safety approach
 
@@ -296,28 +326,33 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Write Lesson 3 content teaching students to read and understand bash command structure without memorizing syntax.
 
 **Acceptance Criteria**:
+
 - [ ] Content fills approximately 1,800-2,200 words
 - [ ] Opening (150 words): Frame "You're not learning syntax; you're learning to read commands like a detective"
 
 - [ ] Section A: Anatomy of bash commands
+
   - [ ] Real command example: `ls -lah ~/Documents`
   - [ ] Breakdown into parts: command, flags, arguments
   - [ ] Plain English translation: "List all files in Documents with sizes in readable format"
   - [ ] Why structure matters: Helps supervise AI
 
 - [ ] Section B: Understanding flags without memorizing
+
   - [ ] Common flag patterns: `-l`, `-a`, `-h`, `-r`, `-f`
   - [ ] Plain language explanations (what each does, why used)
   - [ ] Real dialogue: Student sees `find . -name "*.py" -type f`, asks AI to explain each part
   - [ ] Strategy: "Ask 'What does this flag do?' and understand the explanation"
 
 - [ ] Section C: Pipes and redirects
+
   - [ ] Pipes (`|`) explained with real example: `cat file.txt | grep "error" | wc -l`
   - [ ] Redirects (`>`, `>>`, `<`) explained with use cases
   - [ ] Plain English for each
   - [ ] Real dialogue: AI proposes pipeline, student asks to walk through each step
 
 - [ ] Section D: Asking clarifying questions
+
   - [ ] Good supervision questions: "What does this flag do?", "Why do we need this part?", "Can you show me the result before executing?"
   - [ ] Bad habit: Running without understanding
   - [ ] Good habit: "I understand what you're proposing, proceed"
@@ -338,17 +373,21 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create exercises where students demonstrate command reading comprehension without running commands.
 
 **Acceptance Criteria**:
+
 - [ ] Checkpoint 1: Students read and explain commands in plain English
+
   - [ ] Provide 5-6 real commands (progressively more complex)
   - [ ] Task: "Explain this command in plain English"
   - [ ] Validation method: Compare to AI's explanation
 
 - [ ] Checkpoint 2: Students identify what flags do
+
   - [ ] Provide commands with different flags: `ls -lah`, `find . -type f -name "*.md"`
   - [ ] Task: "What does each flag do and why would we use it?"
   - [ ] Validation: Student can explain flags' purposes
 
 - [ ] Checkpoint 3: Pipe comprehension
+
   - [ ] Given: `cat requirements.txt | grep "django" | wc -l`
   - [ ] Task: "Explain this in plain English, step by step"
   - [ ] Expected: "Read file, filter for django, count lines"
@@ -365,15 +404,19 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create "Try With AI" activity for command comprehension with 2-3 focused prompts.
 
 **Acceptance Criteria**:
+
 - [ ] Prompt 1: "Show me a command that finds all Python files"
+
   - [ ] Expected: AI explains each part
   - [ ] Student understands structure
 
 - [ ] Prompt 2: "I want to search for a specific word in all my text files"
+
   - [ ] AI walks through command, explaining flags and pipes
   - [ ] Student asks clarifying questions
 
 - [ ] Prompt 3: "Create a command that finds files modified in last 7 days"
+
   - [ ] AI explains each part
   - [ ] Student validates understanding
 
@@ -389,10 +432,12 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Write Lesson 4 content teaching students to direct AI for copy and move operations using natural language while applying safety pattern.
 
 **Acceptance Criteria**:
+
 - [ ] Content fills approximately 2,000-2,500 words
 - [ ] Opening (150 words): Frame on low-risk (copy) vs. higher-risk (move) operations
 
 - [ ] Section A: Copy operations
+
   - [ ] Frame: Copy is safe because original stays intact
   - [ ] When to use: Backups, duplicating, organizing copies
   - [ ] Real dialogue: "Create a backup of my project folder"
@@ -400,6 +445,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
   - [ ] Validation: Confirms backup exists
 
 - [ ] Section B: Move operations
+
   - [ ] Frame: Move is higher-risk; requires extra caution
   - [ ] When to use: Reorganizing, archiving
   - [ ] Real dialogue: "Move all my Python files into python-projects folder"
@@ -407,11 +453,13 @@ This task list breaks the chapter into atomic work units with clear acceptance c
   - [ ] Validation: Confirms files in new location and original empty
 
 - [ ] Section C: Creating and organizing directories
+
   - [ ] Natural language: "Create a folder structure for my projects"
   - [ ] Common patterns shown: projects/2025/, archive/, active/
   - [ ] Validation: Lists new directories
 
 - [ ] Section D: The backup question
+
   - [ ] Professional practice: "Should we backup first?"
   - [ ] When backup is critical
   - [ ] Real dialogue showing backup preventing disaster
@@ -431,17 +479,21 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create practice exercises for copy, move, and backup operations with validation.
 
 **Acceptance Criteria**:
+
 - [ ] Checkpoint 1: Students direct AI to copy files
+
   - [ ] Scenario: Back up home directory
   - [ ] Task: Use natural language, apply safety pattern, validate
   - [ ] Validation: Screenshot of conversation showing all 5 steps
 
 - [ ] Checkpoint 2: Students direct AI to move files
+
   - [ ] Scenario: Organize scattered files
   - [ ] Task: Ask about backup first, apply safety pattern, validate
   - [ ] Validation: Confirm files in new location
 
 - [ ] Checkpoint 3: Scenario analysis
+
   - [ ] Given: Various file management needs
   - [ ] Task: "Copy or move? Why? Do we backup?"
   - [ ] Validation: Student explains decision
@@ -458,6 +510,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create "Try With AI" for file operations with 2-3 practical hands-on exercises.
 
 **Acceptance Criteria**:
+
 - [ ] Prompt 1: Backup operation following 5-step pattern
 - [ ] Prompt 2: File organization with safety considerations
 - [ ] Prompt 3: Move operation with verification
@@ -475,13 +528,16 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Write Lesson 5 on environment variables, `.env` files, `.gitignore`, and secure secret management.
 
 **Acceptance Criteria**:
+
 - [ ] Content fills approximately 2,000-2,500 words
 - [ ] Opening section (300 words): Real story of developer's AWS credentials leaked on GitHub
+
   - [ ] Explains what happened and why
   - [ ] Cost and implications
   - [ ] Frame: "This lesson prevents catastrophic breaches"
 
 - [ ] Section B: Environment variables and `.env` files
+
   - [ ] Concept: Code reads from environment, not hardcoded
   - [ ] Python example: `api_key = os.getenv('OPENAI_API_KEY')`
   - [ ] How it works: Code asks system, returns value
@@ -489,6 +545,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
   - [ ] AI creates `.env`, explains how code accesses it
 
 - [ ] Section C: `.gitignore` preventing commits
+
   - [ ] What is `.gitignore`: File telling git what not to commit
   - [ ] Why it exists: Prevents accidental secret commits
   - [ ] Common patterns: `*.env`, `.env`, `*.key`
@@ -496,6 +553,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
   - [ ] Validation: Confirm `.env` won't be committed
 
 - [ ] Section D: Package installation safely
+
   - [ ] Related concept: Installing dependencies requires environment
   - [ ] Real scenario: "Install project dependencies"
   - [ ] Dialogue: AI explains what's being installed, asks confirmation
@@ -514,17 +572,21 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create exercises for secure `.env` setup and `.gitignore` configuration.
 
 **Acceptance Criteria**:
+
 - [ ] Checkpoint 1: Students set up secure `.env` file
+
   - [ ] Scenario: Create `.env` with sample API key
   - [ ] Task: Have AI create file, update `.gitignore`, verify setup
   - [ ] Validation: Check `.env` is git-ignored
 
 - [ ] Checkpoint 2: Students analyze security risks
+
   - [ ] Given: Code with hardcoded password
   - [ ] Task: "What's wrong? How would you fix it?"
   - [ ] Expected: Recognize it's a secret, move to environment
 
 - [ ] Checkpoint 3: Students install dependencies
+
   - [ ] Scenario: Project with `requirements.txt`
   - [ ] Task: Direct AI to install, validate installation
   - [ ] Expected: Dependencies installed successfully
@@ -541,6 +603,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create "Try With AI" for secure configuration with 2-3 hands-on exercises.
 
 **Acceptance Criteria**:
+
 - [ ] Prompt 1: "Store my API key securely and explain how my code accesses it"
 - [ ] Prompt 2: "Set up `.env` and `.gitignore` to prevent accidental commits"
 - [ ] Prompt 3: "Show me Python code that reads API keys from environment variables"
@@ -558,10 +621,12 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Write Lesson 6 on safe file system exploration using `find`, `grep`, and pattern analysis.
 
 **Acceptance Criteria**:
+
 - [ ] Content fills approximately 2,000-2,400 words
 - [ ] Opening (150 words): Frame on using AI to explore without getting lost
 
 - [ ] Section A: Finding files by name and type
+
   - [ ] Use case: "How many Python files do I have?"
   - [ ] Real dialogue: Student asks, AI searches, shows results
   - [ ] Explanation: What search looked for and why useful
@@ -569,18 +634,21 @@ This task list breaks the chapter into atomic work units with clear acceptance c
   - [ ] Safety: Small searches before large operations
 
 - [ ] Section B: Searching inside files
+
   - [ ] Use case: "Where did I use `import os`?"
   - [ ] Real dialogue: AI uses `grep`, shows matching files
   - [ ] Practical examples: TODO comments, deprecated library usage
   - [ ] Safety: Search helps understand impact
 
 - [ ] Section C: Understanding patterns
+
   - [ ] After search, analyze results to identify patterns
   - [ ] Examples: "500 `.tmp` files should be cleaned up", "duplicates exist", "haven't touched old work in 2 years"
   - [ ] Decision making: Based on patterns, what should we do?
   - [ ] Real dialogue: Search → analyze → decide → plan → execute
 
 - [ ] Section D: Validation of search results
+
   - [ ] Before taking action, validate search is correct
   - [ ] Techniques: Review results, sample files, count reasonableness
   - [ ] Scenario: Found 200 files; really want to delete all of them?
@@ -598,16 +666,20 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create exercises for exploratory searching and pattern analysis.
 
 **Acceptance Criteria**:
+
 - [ ] Checkpoint 1: Students conduct exploratory search
+
   - [ ] Scenario: Find all files of certain type
   - [ ] Task: Ask AI to search, review results, explain findings
 
 - [ ] Checkpoint 2: Students analyze search results
+
   - [ ] Given: Search results showing many files
   - [ ] Task: "What patterns do you see? What decisions?"
   - [ ] Expected: Identify cleanup opportunities
 
 - [ ] Checkpoint 3: Students validate before action
+
   - [ ] Scenario: Delete temporary files
   - [ ] Task: Search, review, confirm pattern, proceed
   - [ ] Safety: Sample files first
@@ -623,6 +695,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create "Try With AI" for safe exploration with 2-3 discovery exercises.
 
 **Acceptance Criteria**:
+
 - [ ] Prompt 1: "Find all Python files and show me where they are. What patterns do you notice?"
 - [ ] Prompt 2: "Search for all TODO comments. Where should I focus attention?"
 - [ ] Prompt 3: "Find all backup files. Should I delete them?"
@@ -640,28 +713,33 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Write Lesson 7 on script creation, understanding, testing, and validation. This is Tier 2/3 boundary lesson.
 
 **Acceptance Criteria**:
+
 - [ ] Content fills approximately 2,200-2,800 words
 - [ ] Opening (200 words): Frame "Scripts are just commands in a file. You don't write them; you direct AI to write them."
 
 - [ ] Section A: What is a script and why it matters
+
   - [ ] Script definition: Commands saved in file, executable as `bash script.sh`
   - [ ] Why matter: Reproducibility, version control, automation, error prevention
   - [ ] Real scenario: Backup projects every morning as a script
   - [ ] Frame: "You need to know WHEN to ask for help, not HOW to code"
 
 - [ ] Section B: Describing what you want (specification)
+
   - [ ] Key skill: Tell AI what, not how
   - [ ] Good specification: "Back up my projects to cloud storage every morning"
   - [ ] Bad specification: "Use bash loops and rsync"
   - [ ] Real dialogue: Specification → AI writes script → you understand it
 
 - [ ] Section C: Understanding AI-generated scripts
+
   - [ ] AI writes script; your job is to read and verify
   - [ ] Breaking down script: AI explains what each line does
   - [ ] Common patterns: Loops, conditionals, variables
   - [ ] You verify intent, not memorize syntax
 
 - [ ] Section D: Testing before production
+
   - [ ] Always test on small data first
   - [ ] Real scenario: Test backup script on one small folder
   - [ ] Validation: Did script produce expected results?
@@ -680,17 +758,21 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create exercises for directing AI to write scripts, understanding them, and testing.
 
 **Acceptance Criteria**:
+
 - [ ] Checkpoint 1: Students direct AI to write script
+
   - [ ] Scenario: Multi-step task (find, copy, rename)
   - [ ] Task: Specify what script should do, have AI write it, review
   - [ ] Validation: Can explain what script does
 
 - [ ] Checkpoint 2: Students understand AI-written script
+
   - [ ] Given: AI-generated script
   - [ ] Task: "Explain each section. Does it match what you asked?"
   - [ ] Expected: Explain purpose of main sections
 
 - [ ] Checkpoint 3: Students test script
+
   - [ ] Scenario: File-modifying script
   - [ ] Task: Test on small sample, validate, then use on full data
   - [ ] Expected: Script tested before production use
@@ -707,6 +789,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create "Try With AI" for script creation and validation with 2-3 hands-on exercises.
 
 **Acceptance Criteria**:
+
 - [ ] Prompt 1: "Create a backup script. Test it first with a small folder."
 - [ ] Prompt 2: "Create a script that finds old files and moves them to archive. Explain what it will do before running."
 - [ ] Prompt 3: "I have a morning task I repeat. Let's automate it with a script."
@@ -724,10 +807,12 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Write Lesson 8 (capstone) on decomposing complexity, directing AI through multi-step workflows, and batch orchestration. This is Tier 3 (orchestration) lesson.
 
 **Acceptance Criteria**:
+
 - [ ] Content fills approximately 2,500-3,200 words
 - [ ] Opening (200 words): Frame "Orchestration is about directing strategy, not executing tactics"
 
 - [ ] Section A: When orchestration makes sense
+
   - [ ] Manual: 1-2 commands (too much overhead)
   - [ ] AI companion: Complex single operation
   - [ ] Orchestration: 5+ coordinated steps with decisions
@@ -735,6 +820,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
   - [ ] Frame: "Directing strategy, not executing tactics"
 
 - [ ] Section B: Decomposing complexity into steps
+
   - [ ] Technique: "What would I do myself?"
   - [ ] Example workflow: Clone, create branches, setup environments
     - Step 1, 2, 3, etc. with decision points
@@ -742,6 +828,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
   - [ ] Your role: Define steps, validate, approve
 
 - [ ] Section C: Directing AI through multi-step workflow
+
   - [ ] Technique: Execute one step, validate, move to next
   - [ ] Never: "Do all 5 steps without checking"
   - [ ] Always: "Do step 1, show what happened, then step 2"
@@ -749,6 +836,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
   - [ ] Checkpoints: Confirm before proceeding
 
 - [ ] Section D: Parallel execution and batch operations
+
   - [ ] When you have 10+: Orchestration becomes powerful
   - [ ] Example: Create 10 git worktrees
   - [ ] Rather than: Manual 1 at a time
@@ -770,17 +858,21 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create exercises for decomposing tasks, directing multi-step workflows, and batch operations.
 
 **Acceptance Criteria**:
+
 - [ ] Checkpoint 1: Students decompose complex task
+
   - [ ] Scenario: Multi-step task (backup, organize, archive)
   - [ ] Task: Break into steps, identify validations
   - [ ] Expected: 5-8 clear steps with validation points
 
 - [ ] Checkpoint 2: Students direct workflow step-by-step
+
   - [ ] Scenario: Task requiring step-by-step execution
   - [ ] Task: Don't hand off entire task; direct step-by-step
   - [ ] Expected: Student asks for step-by-step, validates between steps
 
 - [ ] Checkpoint 3: Students orchestrate batch operation
+
   - [ ] Scenario: 10+ similar items
   - [ ] Task: Ask AI to batch-execute, then validate
   - [ ] Expected: AI executes efficiently, student validates all items correct
@@ -797,6 +889,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create comprehensive "Try With AI" capstone activity with 2-4 orchestration exercises.
 
 **Acceptance Criteria**:
+
 - [ ] Prompt 1: "Clone, create 5 branches, setup environments. Execute step-by-step with validation."
 - [ ] Prompt 2: "Batch-process 50 files: find, organize, create summary. Use orchestration efficiently."
 - [ ] Prompt 3: "Deploy application: build, test, backup, deploy, verify. Direct me safely through this."
@@ -817,13 +910,16 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Conduct actual conversations with Claude Code, Gemini CLI, and ChatGPT to create authentic dialogue transcripts for all lessons. These transcripts are essential to demonstrate real AI behavior.
 
 **Acceptance Criteria**:
+
 - [ ] Lesson 1: 2 real dialogues collected
+
   - [ ] Dialogue 1: "Where am I?" → AI executes `pwd`, explains path
   - [ ] Dialogue 2: "What files are here?" → AI executes `ls`, explains files vs. directories
   - [ ] Tool: Claude Code preferred
   - [ ] Format: Clean transcript with student prompts and AI responses
 
 - [ ] Lesson 2: 4 real dialogues (showing all 5 steps)
+
   - [ ] Dialogue 1: Step 1-5 for deletion operation
   - [ ] Dialogue 2: Step 1-5 for move operation
   - [ ] Dialogue 3: Red flag recognition
@@ -831,28 +927,34 @@ This task list breaks the chapter into atomic work units with clear acceptance c
   - [ ] Tools: Mix of Claude Code and Gemini CLI to show variability
 
 - [ ] Lesson 3: 3 real dialogues
+
   - [ ] Dialogue 1: Explaining command structure
   - [ ] Dialogue 2: Asking about flags
   - [ ] Dialogue 3: Understanding pipes
   - [ ] Tool: Claude Code
 
 - [ ] Lesson 4: 3 real dialogues (copy, move, backup)
+
   - [ ] Each demonstrates safety pattern in context
   - [ ] Tools: Mix of Claude Code and Gemini CLI
 
 - [ ] Lesson 5: 3 real dialogues (API key, `.gitignore`, dependencies)
+
   - [ ] Focus on security aspects
   - [ ] Tool: Claude Code
 
 - [ ] Lesson 6: 3 real dialogues (search, pattern analysis, validation)
+
   - [ ] Show actual search results
   - [ ] Tool: Gemini CLI preferred (shows shell output)
 
 - [ ] Lesson 7: 3 real dialogues (script creation, testing, validation)
+
   - [ ] Show actual script execution
   - [ ] Tool: Claude Code
 
 - [ ] Lesson 8: 3 real dialogues (orchestration examples)
+
   - [ ] Show multi-step execution
   - [ ] Tool: Claude Code
 
@@ -862,11 +964,13 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 - [ ] No synthetic examples; all real or clearly marked as "realistic example"
 
 **Tools to Use**:
+
 - Claude Code (Web)
 - Gemini CLI
 - ChatGPT Code Interpreter (if available)
 
 **Documentation Requirements**:
+
 - [ ] Each transcript includes: Tool used, date/time, student intent, AI response
 - [ ] Clear formatting distinguishing user prompts from AI responses
 - [ ] Dialogue is complete (not truncated)
@@ -881,6 +985,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Review collected dialogue transcripts to ensure they demonstrate real AI behavior and support learning objectives.
 
 **Acceptance Criteria**:
+
 - [ ] All 25-27 transcripts validated as authentic (from real AI tools or clearly marked)
 - [ ] Each dialogue directly supports the lesson's learning objective
 - [ ] Transcripts show real AI behavior: errors, clarifications, explanations
@@ -902,34 +1007,41 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create practical, runnable code examples for lessons that require them (primarily Lessons 3-8).
 
 **Acceptance Criteria**:
+
 - [ ] Lesson 1: No code required (navigation concepts)
 - [ ] Lesson 2: No code examples (safety pattern shown through dialogue)
 - [ ] Lesson 3: 5-6 command examples with annotations
+
   - [ ] Examples: `ls -lah`, `find . -name "*.py"`, `grep -r "import"`, pipes, redirects
   - [ ] Each with plain English translation and output example
   - [ ] Format: Bash code block with comments
 
 - [ ] Lesson 4: 3 command examples (copy, move, mkdir)
+
   - [ ] Real commands with context
   - [ ] Output examples
   - [ ] Format: Bash code block
 
 - [ ] Lesson 5: 2 code examples
+
   - [ ] Python code reading from environment variable
   - [ ] `.env` file example structure
   - [ ] `.gitignore` example structure
 
 - [ ] Lesson 6: 5 search examples
+
   - [ ] `find` commands
   - [ ] `grep` commands
   - [ ] Example output shown
 
 - [ ] Lesson 7: 2 script examples
+
   - [ ] Simple backup script (annotated)
   - [ ] Script with parameters
   - [ ] Format: Full bash script with comments
 
 - [ ] Lesson 8: 2 orchestration examples
+
   - [ ] Multi-step workflow outline
   - [ ] Batch operation example
   - [ ] Format: Pseudocode or bash script
@@ -948,6 +1060,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Create diagrams and visual aids to clarify concepts, especially for abstract ideas.
 
 **Acceptance Criteria**:
+
 - [ ] Lesson 1: File system hierarchy diagram (home directory structure)
 - [ ] Lesson 2: 5-step safety pattern flowchart with decision points
 - [ ] Lesson 2: Command breakdown annotation (showing command parts with colors)
@@ -974,6 +1087,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Review chapter for pedagogical coherence, learning objective alignment, and scaffolding appropriateness.
 
 **Acceptance Criteria**:
+
 - [ ] All learning objectives are measurable and Bloom's-level appropriate
 - [ ] Lesson sequence is logical and builds progressively
 - [ ] Prerequisites for each lesson are satisfied by prior lessons
@@ -988,6 +1102,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 - [ ] Peer review comments addressed
 
 **Validation Method**:
+
 - [ ] Pedagogical review checklist completed
 - [ ] Reviewer confirms or requests changes
 - [ ] All changes tracked and approved
@@ -1001,6 +1116,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Review for consistency with project style guides and output standards.
 
 **Acceptance Criteria**:
+
 - [ ] All YAML frontmatter matches `.claude/output-styles/chapters.md` exactly
 - [ ] All lesson files follow naming convention: `NN-descriptive-name.md`
 - [ ] All Markdown formatting is consistent (headings, code blocks, lists, links)
@@ -1013,6 +1129,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 - [ ] Terminology consistent with rest of book
 
 **Tools Used**:
+
 - [ ] Automated: Markdown linter, spell checker
 - [ ] Manual: Line-by-line review for consistency
 
@@ -1025,6 +1142,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Verify all bash commands, concepts, and AI behavior descriptions are technically accurate and current.
 
 **Acceptance Criteria**:
+
 - [ ] All bash commands work on macOS, Linux, and WSL Windows
 - [ ] All command syntax is accurate for bash 4.0+
 - [ ] All file system examples use correct path conventions
@@ -1037,6 +1155,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 - [ ] Cross-platform compatibility notes are correct (Windows WSL, macOS, Linux)
 
 **Validation Method**:
+
 - [ ] Run all commands on actual system (macOS + Linux/WSL)
 - [ ] Verify AI tool behavior with actual tools
 - [ ] Check best practices against official documentation
@@ -1051,6 +1170,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Ensure content is accessible to diverse learners and uses inclusive language.
 
 **Acceptance Criteria**:
+
 - [ ] All images/diagrams have alt text
 - [ ] Text explanations don't rely solely on images
 - [ ] Code examples are readable (font size, contrast)
@@ -1070,8 +1190,9 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Verify chapter is correctly integrated into book structure and chapter index.
 
 **Acceptance Criteria**:
-- [ ] All 8 lesson files exist in correct directory: `/book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/`
-- [ ] Chapter README exists at: `/book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/readme.md`
+
+- [ ] All 8 lesson files exist in correct directory: `/apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/`
+- [ ] Chapter README exists at: `/apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/readme.md`
 - [ ] All lesson YAML frontmatter has correct `sidebar_position` (1-8)
 - [ ] Chapter appears correctly in `specs/book/chapter-index.md`
 - [ ] All internal links are valid (relative paths)
@@ -1089,6 +1210,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Final proofread for grammar, spelling, consistency, and polishing prose.
 
 **Acceptance Criteria**:
+
 - [ ] Zero spelling errors (verified with automated checker)
 - [ ] Zero grammatical errors
 - [ ] Consistent tone and voice throughout
@@ -1101,6 +1223,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 - [ ] Hyperlinks tested and working
 
 **Tools**:
+
 - [ ] Automated: Grammarly or similar
 - [ ] Manual: Line-by-line reading by experienced editor
 
@@ -1113,6 +1236,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Build Docusaurus locally and validate visual appearance of chapter.
 
 **Acceptance Criteria**:
+
 - [ ] Docusaurus build succeeds with no errors
 - [ ] No build warnings specific to this chapter
 - [ ] Chapter renders correctly in web view
@@ -1124,6 +1248,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 - [ ] Page load time is acceptable
 
 **Tools**:
+
 - [ ] Docusaurus local build: `npm run start`
 - [ ] Browser inspection: Chrome DevTools
 - [ ] Mobile testing: Chrome DevTools responsive mode
@@ -1137,6 +1262,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Description**: Final review and approval for publication.
 
 **Acceptance Criteria**:
+
 - [ ] All MUST-HAVE tasks completed
 - [ ] All critical reviews passed (pedagogical, technical, accessibility)
 - [ ] No critical issues remaining
@@ -1149,6 +1275,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 ## Acceptance Criteria (Definition of Done)
 
 **All Chapters**:
+
 - [ ] All MUST-HAVE tasks completed (100% of critical items)
 - [ ] All 8 lesson files written with YAML frontmatter correct
 - [ ] Learning objectives are measurable and Bloom's-aligned
@@ -1160,6 +1287,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 - [ ] "Try With AI" tool selection documented (Claude Code, Gemini CLI, ChatGPT Code Interpreter)
 
 **This Chapter Specifically**:
+
 - [ ] 25-27 real dialogue transcripts included showing authentic AI behavior
 - [ ] Safety pattern (5 steps) integrated into all relevant lessons
 - [ ] Natural language-first pedagogy maintained throughout
@@ -1173,16 +1301,16 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 
 ## Effort Estimation Summary
 
-| Phase | Tasks | Hours | Story Points |
-|-------|-------|-------|--------------|
-| Phase 1: Foundation | 2 tasks | 4-6 | 1 |
-| Phase 2: Content Writing (Lessons) | 14 content tasks | 35-48 | 5-6 |
-| Phase 2: Practice & AI Activities (Lessons) | 8 exercise tasks | 12-16 | 2-3 |
-| Phase 3: Dialogue Collection & Validation | 2 tasks | 6-8 | 1 |
-| Phase 4: Code Examples & Visuals | 2 tasks | 4-5 | 1 |
-| Phase 5: Review & Integration | 5 tasks | 8-11 | 1-2 |
-| Phase 6: Polish & Publication | 3 tasks | 3-5 | 1 |
-| **TOTAL** | **36 tasks** | **72-99 hours** | **12-14 SP** |
+| Phase                                       | Tasks            | Hours           | Story Points |
+| ------------------------------------------- | ---------------- | --------------- | ------------ |
+| Phase 1: Foundation                         | 2 tasks          | 4-6             | 1            |
+| Phase 2: Content Writing (Lessons)          | 14 content tasks | 35-48           | 5-6          |
+| Phase 2: Practice & AI Activities (Lessons) | 8 exercise tasks | 12-16           | 2-3          |
+| Phase 3: Dialogue Collection & Validation   | 2 tasks          | 6-8             | 1            |
+| Phase 4: Code Examples & Visuals            | 2 tasks          | 4-5             | 1            |
+| Phase 5: Review & Integration               | 5 tasks          | 8-11            | 1-2          |
+| Phase 6: Polish & Publication               | 3 tasks          | 3-5             | 1            |
+| **TOTAL**                                   | **36 tasks**     | **72-99 hours** | **12-14 SP** |
 
 **Schedule**: 2-3 weeks (assuming one full-time writer + supporting reviewers)
 
@@ -1195,6 +1323,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Likelihood**: Medium | **Impact**: Medium (delays publication)
 
 **Mitigation**:
+
 - Collect dialogues in parallel with content writing
 - Use multiple AI tools to create variety efficiently
 - If real transcripts delayed, use "realistic example" label temporarily; replace with real transcripts later
@@ -1206,6 +1335,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Likelihood**: Low | **Impact**: High (breaks beginner accessibility)
 
 **Mitigation**:
+
 - Pedagogical reviewer explicitly counts new concepts in each lesson
 - Ruthlessly cut out non-essential content
 - If concept count exceeds limit, move to appendix or split into additional lesson
@@ -1217,6 +1347,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Likelihood**: Medium | **Impact**: Medium (breaks for Windows/macOS users)
 
 **Mitigation**:
+
 - Test all commands on macOS, Linux, and WSL Windows before finalizing
 - Use only bash 4.0+ compatible commands
 - Note any OS-specific differences in content
@@ -1228,6 +1359,7 @@ This task list breaks the chapter into atomic work units with clear acceptance c
 **Likelihood**: High | **Impact**: Low (content shows behavior, not promises)
 
 **Mitigation**:
+
 - Clearly label dialogues as "from [Tool Name] on [Date]"
 - Frame content to acknowledge AI variability ("AI may respond differently")
 - Teach students to expect and handle variation

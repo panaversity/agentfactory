@@ -18,20 +18,20 @@ links:
   adr: null
   pr: null
 files:
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/README.md
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/01-spec-kit-plus-foundation.md
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/02-installation-and-setup.md
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/03-constitution-phase.md
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/04-specify-phase.md
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/05-clarify-phase.md
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/06-plan-phase.md
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/07-tasks-phase.md
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/08-implement-phase.md
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/09-designing-reusable-intelligence.md
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/10-brownfield-adoption.md
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/11-capstone.md
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/12_chapter_14_quiz.md
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/*.summary.md (11 files)
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/README.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/01-spec-kit-plus-foundation.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/02-installation-and-setup.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/03-constitution-phase.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/04-specify-phase.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/05-clarify-phase.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/06-plan-phase.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/07-tasks-phase.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/08-implement-phase.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/09-designing-reusable-intelligence.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/10-brownfield-adoption.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/11-capstone.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/12_chapter_14_quiz.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/*.summary.md (11 files)
 tests:
   - forbidden terms validation: PASS (only README has acceptable "No video APIs" reference)
   - Try With AI sections: PASS (11 lessons have Try With AI)
@@ -45,6 +45,7 @@ tests:
 Context: Chapter 14 previously taught video generation with MCP/Playwright. User requested pivot to teach Spec-Kit Plus workflow using research paper as simple practice vehicle. Each lesson must teach ONE Spec-Kit Plus command, not research paper writing.
 
 User Stories:
+
 - US1 (P1): Master Spec-Kit Plus Workflow (lessons 01-08)
 - US2 (P1): Create Reusable Intelligence (lessons 09-10)
 - US3 (P2): Experience Intelligence Acceleration (lesson 11)
@@ -54,10 +55,12 @@ User Stories:
 **Implementation completed across 35 tasks:**
 
 ### Phase 1: Setup
+
 - Created backup directory at `specs/037-chapter-14-research-paper-pivot/backup/`
 - Backed up all 25 original files for rollback capability
 
 ### Phase 2-6: Lesson Rewrites (12 files)
+
 - README.md: Updated focus to Spec-Kit Plus, removed video/MCP prerequisites
 - Lessons 01-08: Each teaches ONE command (`/sp.constitution`, `/sp.specify`, `/sp.clarify`, `/sp.plan`, `/sp.tasks`, `/sp.implement`)
 - Lesson 09: P+Q+P framework for creating reusable skills
@@ -66,10 +69,12 @@ User Stories:
 - Quiz: Updated to test Spec-Kit Plus knowledge
 
 ### Phase 7: Summary Generation (11 files)
+
 - Generated new .summary.md for each lesson using content-implementer subagents
 - Summaries capture mental models, key patterns, common mistakes, progression context
 
 ### Validation Results
+
 - Forbidden terms: PASS (only README has acceptable "No video APIs" reference)
 - Try With AI sections: PASS (11 lessons)
 - Backup: PASS (25 files preserved)

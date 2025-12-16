@@ -1,6 +1,6 @@
 # Lesson 8 Detailed Changelog: Exact Insertions and Modifications
 
-**File**: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/08-plugins-composition.md`
+**File**: `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/08-plugins-composition.md`
 **Total Changes**: 6 insertions + 1 deletion
 **Net Change**: +131 lines
 
@@ -14,12 +14,14 @@
 **Insertion Point**: Between original plugin definition and "Plugins vs. Individual Extensions"
 
 ### Before (lines 31-41):
+
 ```markdown
 ## What Are Plugins?
 
 **Definition**: A plugin is a **composable package** that bundles commands, agents, skills, and hooks into a single reusable workflow.
 
 Instead of scattered automations, plugins organize everything needed for a workflow in one place:
+
 - **Commands** — New `/command` interface
 - **Agents** — Subagents that execute specialized tasks
 - **Skills** — Ambient expertise applied automatically
@@ -29,12 +31,14 @@ Instead of scattered automations, plugins organize everything needed for a workf
 ```
 
 ### After (lines 31-78):
+
 ```markdown
 ## What Are Plugins?
 
 **Definition**: A plugin is a **composable package** that bundles commands, agents, skills, and hooks into a single reusable workflow.
 
 Instead of scattered automations, plugins organize everything needed for a workflow in one place:
+
 - **Commands** — New `/command` interface
 - **Agents** — Subagents that execute specialized tasks
 - **Skills** — Ambient expertise applied automatically
@@ -43,23 +47,24 @@ Instead of scattered automations, plugins organize everything needed for a workf
 ### The Extension Hierarchy: How Everything Builds to Plugins
 
 Before diving into plugin details, understand how plugins sit at the peak of an extension hierarchy. Each layer builds on the one before, creating increasingly powerful composition:
-
 ```
+
 LEVEL 1: Commands
-  └─ Single operation (e.g., /commit, /help)
-       │
-       └─ LEVEL 2: Subagents
-            └─ Isolated specialized tasks (e.g., code reviewer, test runner)
-                 │
-                 └─ LEVEL 3: Skills
-                      └─ Ambient expertise applied automatically (e.g., docstring checker)
-                           │
-                           └─ LEVEL 4: Hooks
-                                └─ Event-triggered automation (pre-commit, post-push)
-                                     │
-                                     └─ LEVEL 5: Plugins
-                                          └─ Orchestrates all layers together
-                                               (Commands + Subagents + Skills + Hooks)
+└─ Single operation (e.g., /commit, /help)
+│
+└─ LEVEL 2: Subagents
+└─ Isolated specialized tasks (e.g., code reviewer, test runner)
+│
+└─ LEVEL 3: Skills
+└─ Ambient expertise applied automatically (e.g., docstring checker)
+│
+└─ LEVEL 4: Hooks
+└─ Event-triggered automation (pre-commit, post-push)
+│
+└─ LEVEL 5: Plugins
+└─ Orchestrates all layers together
+(Commands + Subagents + Skills + Hooks)
+
 ```
 
 **What This Means:** Each level adds capability:
@@ -75,12 +80,14 @@ LEVEL 1: Commands
 ```
 
 ### Rationale
+
 - **Scaffolding**: Visualizes progression from simple (Commands) to complex (Plugins)
 - **Accessibility**: ASCII tree is grade 7-8 comprehensible; clear labels
 - **Constitutional**: Directly addresses Principle 13 (Graduated Teaching Pattern)
 - **Cognitive Load**: Introduces 5 concepts (Commands, Subagents, Skills, Hooks, Plugins); at A2 limit
 
 ### Constitutional Alignment
+
 - Principle 13 (Tier 3): Shows AI orchestration at peak of extension hierarchy
 - Principle 2 (Spec-First): "AI manages complexity, you specify intent"
 - Principle 18 (implicit): Framing for upcoming Three-Role discussion
@@ -95,6 +102,7 @@ LEVEL 1: Commands
 **Insertion Point**: Immediately after hierarchy, before "Plugins vs. Individual Extensions"
 
 ### Inserted Content (lines 72-76):
+
 ```markdown
 #### 💬 AI Colearning Prompt
 
@@ -104,22 +112,26 @@ LEVEL 1: Commands
 ```
 
 ### Context (surrounding content unchanged):
+
 ```markdown
 **The Composition Power:** A plugin bundles all these together. When you run `/code-review`, you're not running four separate things manually—you're invoking one orchestrated workflow where commands, subagents, skills, and hooks coordinate automatically. This is **Tier 3 orchestration** (from Principle 13): AI manages complexity, you specify intent.
 
 #### 💬 AI Colearning Prompt
+
 [INSERTED HERE]
 
 ### Plugins vs. Individual Extensions
 ```
 
 ### Rationale
+
 - **Interactive Learning**: Enables students to explore orchestration benefits with AI
 - **Domain-Agnostic**: Works across any workflow (web, DevOps, data, mobile)
 - **Specification Practice**: Reinforces the hierarchy just introduced
 - **CoLearning**: Shows AI as Teacher (suggesting patterns student may not know)
 
 ### Constitutional Alignment
+
 - Principle 18 (Three-Role Framework): AI as Teacher + Student
 - Principle 2 (Spec-First): Practice identifying orchestration requirements
 - Principle 13 (Tier 3): Exploring AI orchestration
@@ -134,7 +146,8 @@ LEVEL 1: Commands
 **Insertion Point**: Between built-in plugins section and "Installing Plugins from Marketplace"
 
 ### Before (lines 263-285):
-```markdown
+
+````markdown
 ### Plugin 4: Commit Commands (`commit-commands`)
 
 **What it does**: Git workflow automation. Handles committing, branch management, and cleanup.
@@ -142,16 +155,20 @@ LEVEL 1: Commands
 **When to use**: Streamline git operations
 
 **How to enable**:
+
 ```bash
 /plugin enable commit-commands
 ```
+````
 
 **Available commands**:
+
 - `/commit` - Create a commit with auto-generated message
 - `/clean-gone` - Remove branches marked as [gone] and their worktrees
 - `/branch-status` - Show all branches with status
 
 **Example**:
+
 ```bash
 /commit
 # Claude auto-stages changed files and creates descriptive commit message
@@ -160,7 +177,8 @@ LEVEL 1: Commands
 ---
 
 ## Installing Plugins from Marketplace
-```
+
+````
 
 ### After (lines 263-318):
 ```markdown
@@ -173,14 +191,16 @@ LEVEL 1: Commands
 **How to enable**:
 ```bash
 /plugin enable commit-commands
-```
+````
 
 **Available commands**:
+
 - `/commit` - Create a commit with auto-generated message
 - `/clean-gone` - Remove branches marked as [gone] and their worktrees
 - `/branch-status` - Show all branches with status
 
 **Example**:
+
 ```bash
 /commit
 # Claude auto-stages changed files and creates descriptive commit message
@@ -193,21 +213,25 @@ LEVEL 1: Commands
 Plugins demonstrate all three roles of AI partnership (from Lesson 1: Three-Role Framework) working together simultaneously:
 
 **AI as Teacher** (Skills Provide Domain Expertise)
+
 - Each plugin's embedded skills teach best practices automatically
 - Example: The `code-review` plugin's code-quality skill teaches you secure patterns without you asking
 - You learn through observing what the plugin prioritizes and explains
 
 **AI as Student** (Hooks Learn Your Workflow)
+
 - Hooks observe your development patterns and adapt to your workflow
 - Pre-commit hooks learn what checks matter most to your team
 - The plugin remembers your preferences and applies them consistently
 
 **AI as Co-Worker** (Subagents Execute Complex Tasks)
+
 - Parallel subagents handle specialized work autonomously
 - The `pr-review-toolkit` runs 6 different agents simultaneously—work that would take you hours alone
 - You don't manage each agent; the plugin orchestrates them
 
 **Peak Efficiency:** Single plugin invocation (e.g., `/code-review`) triggers this entire three-role ecosystem:
+
 1. Hook watches for PR context → fires automatically
 2. Command parses your intent → delegates to specialists
 3. Subagents execute parallel reviews → each brings expertise
@@ -219,7 +243,8 @@ This is **ambient intelligence**—your AI partnership anticipates needs, coordi
 ---
 
 ## Installing Plugins from Marketplace
-```
+
+````
 
 ### Rationale
 - **Framework Integration**: Connects plugins to Three-Role Framework taught in Lesson 1
@@ -248,9 +273,10 @@ With this hook, tests run automatically after file edits/writes so you get immed
 ---
 
 ## Real Workflow: PR Review Automation
-```
+````
 
 ### After (lines 370-525):
+
 ```markdown
 With this hook, tests run automatically after file edits/writes so you get immediate feedback.
 
@@ -261,6 +287,7 @@ With this hook, tests run automatically after file edits/writes so you get immed
 Custom plugins encode your team's unique processes. This is a competitive advantage.
 
 **Why This Matters:** Your plugins represent **organizational knowledge captured as executable code**. Unlike generic templates, your custom plugins embody:
+
 - Your team's quality standards and review criteria
 - Your CI/CD checks and performance thresholds
 - Your security protocols and compliance requirements
@@ -270,17 +297,20 @@ Custom plugins encode your team's unique processes. This is a competitive advant
 **Strategic Example: Custom PR Review Plugin**
 
 Generic code review tools give you the same checks as every other team. Your custom `pr-review-toolkit` plugin, tuned for your codebase, catches issues competitors miss:
+
 - Integration with your specific CI pipeline (not generic CI)
 - Reviews against YOUR architectural patterns (not textbook patterns)
 - Checks YOUR security checklist (not generic OWASP top 10)
 - Validates YOUR performance budgets (not generic thresholds)
 
 **Competitive Advantage:** This is **Tier 3 orchestration** (Principle 13) applied organizationally:
+
 - Competitor: Manually coordinates multiple review tools (hours per PR)
 - Your team: Plugin orchestrates reviews automatically (minutes per PR)
 - Scaling: 10 parallel PRs reviewed simultaneously with consistent standards
 
 **Business Impact:**
+
 - **Productivity:** Less time in review cycles, more time building
 - **Quality:** Consistent standards across all team members
 - **Onboarding:** New team members inherit your standards automatically
@@ -295,6 +325,7 @@ Generic code review tools give you the same checks as every other team. Your cus
 ```
 
 ### Rationale
+
 - **Strategic Framing**: Positions plugins as organizational assets (not just tools)
 - **Competitive Context**: Shows business value (vs. competitors without plugins)
 - **Scaling Concept**: Demonstrates Tier 3 orchestration at organizational scale
@@ -302,6 +333,7 @@ Generic code review tools give you the same checks as every other team. Your cus
 - **Beginner-Friendly**: Accessible without deep technical background
 
 ### Constitutional Alignment
+
 - Principle 13 (Tier 3): Organizational orchestration at scale
 - Principle 2 (Spec-First): "Standards as executable specifications"
 - Vision (AI-Native Development): Building strategic organizational capabilities
@@ -316,6 +348,7 @@ Generic code review tools give you the same checks as every other team. Your cus
 **Insertion Point**: Between "How to Manage Plugins" and "Creating Your Own Plugin"
 
 ### Before (lines 358-368):
+
 ```markdown
 If you see "No marketplaces configured," add one first with `/plugin marketplace add ...`. If you see "No plugins installed," install one with `/plugin install name@marketplace` before enabling.
 
@@ -327,6 +360,7 @@ If you want to automate a workflow specific to your team, you can create a custo
 ```
 
 ### After (lines 358-394):
+
 ```markdown
 If you see "No marketplaces configured," add one first with `/plugin marketplace add ...`. If you see "No plugins installed," install one with `/plugin install name@marketplace` before enabling.
 
@@ -337,6 +371,7 @@ If you see "No marketplaces configured," add one first with `/plugin marketplace
 Before creating a plugin, practice the specification-first thinking (Principle 2) by mapping your own workflow to the extension hierarchy.
 
 **Your Task:**
+
 1. Choose a repetitive multi-step workflow you do regularly (examples: PR review, feature deployment, testing pipeline, documentation generation)
 2. Break it down using the hierarchy:
    - Which **commands** would you need? (explicit invocations)
@@ -346,6 +381,7 @@ Before creating a plugin, practice the specification-first thinking (Principle 2
 3. Write 3-5 sentences describing your plugin's orchestration logic
 
 **Example Completed (Feature Development Workflow):**
+
 - **Commands:** `/feature-dev` (main entry point)
 - **Subagents:** Architecture planner, code generator, test writer, security reviewer
 - **Skills:** Type checking, docstring validation, performance profiling
@@ -362,12 +398,14 @@ If you want to automate a workflow specific to your team, you can create a custo
 ```
 
 ### Rationale
+
 - **Specification Practice**: Students decompose workflows before building (Principle 2)
 - **Hierarchical Thinking**: Reinforces extension hierarchy from Change 1
 - **Scaffolding**: Completed example models expected output
 - **Preparation**: Sets up plugin creation lesson with planning mindset
 
 ### Constitutional Alignment
+
 - Principle 2 (Spec-First): "Design specifications before implementation"
 - Principle 13 (Tier 3): "Thinking like a plugin architect"
 - Principle 8 (Learning by Building): Practical decomposition exercise
@@ -382,6 +420,7 @@ If you want to automate a workflow specific to your team, you can create a custo
 **Insertion Point**: Between "Real Workflow: PR Review Automation" and "## Try With AI"
 
 ### Before (lines 540-546):
+
 ```markdown
 **Time: 15 minutes**
 
@@ -393,6 +432,7 @@ Now put plugins into practice.
 ```
 
 ### After (lines 540-591):
+
 ```markdown
 **Time: 15 minutes**
 
@@ -403,6 +443,7 @@ Now put plugins into practice.
 Hands-on experience cements understanding. Let's use a plugin and observe orchestration in action.
 
 **Your Task:**
+
 1. Choose one built-in plugin: `code-review`, `feature-dev`, `pr-review-toolkit`, or `commit-commands`
 2. Use it in your current project on a recent piece of work
 3. Observe what gets triggered:
@@ -412,6 +453,7 @@ Hands-on experience cements understanding. Let's use a plugin and observe orches
 4. Reflect: **What would this workflow look like WITHOUT plugin orchestration?** (Count manual steps)
 
 **Example (Code Review Plugin):**
+
 1. Enable: `/plugin enable code-review`
 2. Run: `/code-review` on your recent PR
 3. Observe:
@@ -431,12 +473,14 @@ Now put plugins into practice.
 ```
 
 ### Rationale
+
 - **Hands-On Experience**: Move from theory to actual plugin usage
 - **Observation Focus**: Students observe hook/agent/skill triggering (not just outputs)
 - **Before/After Reflection**: Reinforces orchestration value vs. manual process
 - **Concrete Example**: Code-review plugin modeled with step-by-step instructions
 
 ### Constitutional Alignment
+
 - Principle 8 (Learning by Building): Hands-on experiential practice
 - Principle 13 (Tier 3): Observing orchestration in action
 - Principle 5 (Validation-First): "Reflect on what you observe"
@@ -451,6 +495,7 @@ Now put plugins into practice.
 **Reason**: AI-first closure policy requires lesson to end with "Try With AI" section; no post-sections allowed
 
 ### Deleted Content:
+
 ```markdown
 ---
 
@@ -466,21 +511,23 @@ You've now mastered **the full Claude Code stack**:
 - ✅ **Plugins** - Automate multi-step workflows
 
 **In Part 5-6** (Advanced Orchestration), you'll learn:
+
 - Git worktrees for parallel feature development
 - Managing 3-10 AI agents simultaneously
 - Coordinating complex decomposition strategies
 - Building AI agent team orchestration
 
 For now, **practice using what you've learned**. The real skill is recognizing when to use each tool (commands, subagents, skills, MCP, plugins) for maximum productivity.
-
 ```
 
 ### Rationale
+
 - **AI-First Closure Policy**: Lesson must end with "Try With AI" for consistent cognitive load management
 - **Content Preservation**: Message about "practice what you've learned" + "recognizing when to use each tool" can be integrated into subsequent chapters or Docusaurus navigation
 - **Policy Compliance**: Constitutional requirement from output-styles/lesson.md
 
 ### Redistribution Notes
+
 - "Practice using what you've learned" → Can be reinforced in Part 3 closure or Chapter 5 conclusion
 - "Recognizing when to use each tool" → Addressed in Try With AI Exercise 2 (plugin scalability)
 - "Advanced Orchestration in Part 5-6" → Natural progression; Docusaurus sidebar handles navigation
@@ -489,15 +536,15 @@ For now, **practice using what you've learned**. The real skill is recognizing w
 
 ## Summary of All Changes
 
-| # | Type | Location | Size | Purpose |
-|---|------|----------|------|---------|
-| 1 | INSERT | After plugin definition | 36 lines | Extension hierarchy visualization |
-| 2 | INSERT | Within hierarchy section | 5 lines | AI colearning prompt |
-| 3 | INSERT | After built-in plugins | 27 lines | Three-Role Framework insight |
-| 4 | INSERT | Before real workflow | 32 lines | Organizational plugins insight |
-| 5 | INSERT | Before plugin creation | 21 lines | Map workflow exercise |
-| 6 | INSERT | Before Try With AI | 24 lines | Test plugin exercise |
-| 7 | DELETE | End of file | -18 lines | Remove non-compliant section |
+| #   | Type   | Location                 | Size      | Purpose                           |
+| --- | ------ | ------------------------ | --------- | --------------------------------- |
+| 1   | INSERT | After plugin definition  | 36 lines  | Extension hierarchy visualization |
+| 2   | INSERT | Within hierarchy section | 5 lines   | AI colearning prompt              |
+| 3   | INSERT | After built-in plugins   | 27 lines  | Three-Role Framework insight      |
+| 4   | INSERT | Before real workflow     | 32 lines  | Organizational plugins insight    |
+| 5   | INSERT | Before plugin creation   | 21 lines  | Map workflow exercise             |
+| 6   | INSERT | Before Try With AI       | 24 lines  | Test plugin exercise              |
+| 7   | DELETE | End of file              | -18 lines | Remove non-compliant section      |
 
 **Net Effect**: +131 lines, 6 insertions, 1 deletion, 87% preservation rate
 
@@ -506,24 +553,28 @@ For now, **practice using what you've learned**. The real skill is recognizing w
 ## Verification Checklist
 
 **File Syntax**:
+
 - [x] Valid markdown (no syntax errors)
 - [x] Headings properly formatted (H2 `##`, H3 `###`, H4 `####`)
 - [x] Code blocks properly delimited (triple backticks with language)
 - [x] Lists properly indented (2-space indent)
 
 **Content Quality**:
+
 - [x] Tone consistent with existing sections
 - [x] Grade 7-8 reading level maintained
 - [x] No redundant content (insertions fill identified gaps)
 - [x] Insertions flow naturally from surrounding content
 
 **Constitutional Alignment**:
+
 - [x] All insertions reference applicable principles
 - [x] CoLearning elements diverse (1 prompt, 2 insights, 2 exercises)
 - [x] Hierarchy visualization shows Tier 1→5 progression
 - [x] Three-Role Framework fully integrated
 
 **Integration**:
+
 - [x] References to Lesson 1 (Three-Role Framework)
 - [x] References to prior lessons (L3, L4, L5, L7)
 - [x] References to future content (Part 9 marketplace)

@@ -17,7 +17,7 @@
 
 ---
 
-## Success Criteria (Evals-First) *(mandatory)*
+## Success Criteria (Evals-First) _(mandatory)_
 
 ### Measurable Outcomes
 
@@ -53,7 +53,7 @@
 
 ---
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Professional Python Setup for First-Time Learners (Priority: P1)
 
@@ -144,28 +144,33 @@
 ### Edge Cases
 
 **Tool Versioning Issues**:
+
 - What happens when Zed, Ruff, or Pyright release breaking changes after chapter publication?
   - **Mitigation**: Include update triggers ("Review when Zed 1.x → 2.x") and version pins in examples (Ruff 0.6.9, Pyright 1.1.389)
 
 **Integration Conflicts**:
+
 - How does system handle conflicting LSP configurations (e.g., Pyright vs. Pylance)?
   - **Mitigation**: Document "Disable Pylance if using Pyright" and show LSP conflict resolution in Zed
 
 **AI Tool Availability**:
+
 - What if reader doesn't have Claude Code or Gemini CLI?
   - **Mitigation**: Show examples with BOTH tools + fallback: "or use any AI assistant with this prompt template"
 
 **Existing Chapter 12 Users**:
+
 - What happens to readers who completed "old" Chapter 12 (uv-only)?
   - **Mitigation**: Update chapter intro: "If you completed Chapter 12 before [date], lessons 7-12 are NEW content—start there"
 
 **Platform-Specific Tool Gaps**:
+
 - What if Zed doesn't support reader's platform (e.g., older Linux distros)?
   - **Mitigation**: Provide VS Code + Ruff/Pyright as alternative IDE integration example
 
 ---
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -223,9 +228,10 @@
 - **FR-026**: All durations MUST be realistic (installation 5-10 min, basic usage 10-15 min, integration 20-30 min)
 - **FR-027**: All code examples MUST use verified facts (no hallucinated config options or commands)
 
-### Key Entities *(content structure)*
+### Key Entities _(content structure)_
 
 **Lesson Structure**:
+
 - Lesson number (7-12 for new content)
 - Title (tool-focused: "Zed IDE for Python Development", "Ruff: Fast Python Linting and Formatting")
 - Learning objectives (knowledge, skills, AI partnership)
@@ -234,6 +240,7 @@
 - Sections: Introduction, Direct Commands, AI Collaboration, Hands-On Exercise, Troubleshooting, Summary
 
 **Tool Documentation**:
+
 - Tool name (Zed, Ruff, Pyright)
 - Purpose (why it exists, what problem it solves)
 - Installation method (platform-specific)
@@ -242,6 +249,7 @@
 - Integration points (how it connects with other tools in stack)
 
 **Configuration Files**:
+
 - pyproject.toml (uv dependencies, Ruff settings, Pyright settings)
 - Zed settings.json (LSP configuration, keybindings, format-on-save)
 - .pre-commit-config.yaml (awareness-level, copy-pasteable)
@@ -254,6 +262,7 @@
 1. **Existing Chapter 12 Quality**: Assume lessons 1-6 (uv content) are pedagogically sound and don't require revision (confirmed by user: EXPAND, not replace)
 
 2. **Tool Stability**: Assume Zed, Ruff, and Pyright APIs are stable enough for educational content (verified versions as of 2025-01-15):
+
    - **uv**: 0.5.18 (stable, weekly releases)
    - **Ruff**: 0.14.5 (stable, monthly releases)
    - **Pyright**: 1.1.407 (very stable, weekly releases)
@@ -316,6 +325,7 @@
 ## Dependencies
 
 **Technical Dependencies**:
+
 - Python 3.13+ (Chapter 13 prerequisite)
 - uv package manager (lessons 1-6 teach installation)
 - Bash/terminal access (Chapter 7 prerequisite)
@@ -323,17 +333,20 @@
 - Internet access (tool downloads, AI API calls)
 
 **Content Dependencies**:
+
 - Chapter 7 (Bash Essentials): Terminal commands, PATH, environment variables
 - Chapter 8 (Git and GitHub): Version control basics, .gitignore
 - Chapter 11 (Context Engineering): AI collaboration patterns, effective prompting
 
 **Tool Dependencies**:
+
 - uv → Zed (Zed opens uv projects)
 - uv → Ruff (installed via `uv add --dev ruff`)
 - uv → Pyright (installed via `uv add --dev pyright`)
 - Zed → Ruff/Pyright (LSP integration in Zed requires tools installed)
 
 **Future Chapter References** (awareness mentions):
+
 - Chapter 42: Test-Driven Agent Development (pytest deep dive)
 - Chapter 54: CI/CD & Infrastructure-as-Code (pre-commit, GitHub Actions)
 - Part 7: Production deployment (Docker, Kubernetes)
@@ -343,6 +356,7 @@
 ## Risks & Mitigation
 
 **Risk 1: Tool Version Volatility**
+
 - **Impact**: Zed/Ruff/Pyright APIs change, breaking chapter examples
 - **Likelihood**: Medium (tools are stable but evolving)
 - **Mitigation**: ✅ RESOLVED via Phase 0.5 verification
@@ -352,11 +366,13 @@
   - Configuration syntax confirmed against official documentation (Context7 MCP)
 
 **Risk 2: Cognitive Load Overflow**
+
 - **Impact**: Adding 6 new tools/concepts overwhelms B1 readers
 - **Likelihood**: Medium (4 tools in one chapter is a lot)
 - **Mitigation**: Tool-by-tool progression (not all-at-once), graduated teaching (direct → AI), clear "why each tool" explanations, realistic durations
 
 **Risk 3: Configuration Complexity**
+
 - **Impact**: Readers get lost in pyproject.toml / Zed settings.json syntax
 - **Likelihood**: High (config files are notoriously confusing)
 - **Mitigation**: ✅ PARTIALLY RESOLVED via Phase 0.5 verification
@@ -366,16 +382,19 @@
   - "Copy-paste this" sections for common configurations
 
 **Risk 4: Platform-Specific Issues**
+
 - **Impact**: Zed/tools don't work on reader's platform, chapter becomes unusable
 - **Likelihood**: Low (Zed supports major platforms)
 - **Mitigation**: Platform-specific installation notes, VS Code alternative for unsupported platforms, community troubleshooting section
 
 **Risk 5: Existing Chapter 12 Integration**
+
 - **Impact**: New lessons 7-12 don't flow smoothly from uv lessons 1-6
 - **Likelihood**: Medium (adding content to finished chapter is tricky)
 - **Mitigation**: Transition section between lesson 6 → 7 ("Now that you have uv, let's add professional IDE..."), chapter intro explains expansion, smooth narrative arc
 
 **Risk 6: Hallucinated Configuration**
+
 - **Impact**: Examples use fake Ruff rules or Pyright options that don't exist
 - **Likelihood**: Medium (AI can hallucinate config syntax)
 - **Mitigation**: ✅ RESOLVED via Phase 0.5 verification
@@ -386,6 +405,7 @@
   - All lesson examples will include source citations (e.g., `# Source: Ruff docs v0.14.5`)
 
 **Risk 7: Scope Creep**
+
 - **Impact**: Chapter tries to cover too much (pytest, Docker, CI/CD), loses focus
 - **Likelihood**: Medium (ChatGPT conversation mentioned many tools)
 - **Mitigation**: Clear scope boundaries (awareness-level only for pytest/pre-commit/MkDocs), user confirmed "awareness + deep dive later" strategy
@@ -395,15 +415,19 @@
 ## Open Questions
 
 1. **Lesson Split for Integration**: Should "integration" be ONE lesson (11) or TWO lessons (11: workflow, 12: complete template)?
+
    - **Recommendation**: TWO lessons. Lesson 11 = step-by-step workflow, Lesson 12 = complete template + troubleshooting. Prevents single lesson from being too long.
 
 2. **Zed vs. VS Code Emphasis**: How much time to spend on "Zed is AI-first" vs. "VS Code works too"?
+
    - **Recommendation**: Zed as primary (2 lessons), VS Code alternative in sidebar note. Aligns with Principle 11 (Tool Diversity) without diluting focus.
 
 3. **ChatGPT Config Snippets**: The ChatGPT conversation provides pyproject.toml, pre-commit, GitHub Actions, Dockerfile. Include all?
+
    - **Recommendation**: Include pyproject.toml (core), pre-commit (awareness), GitHub Actions (awareness), Dockerfile (defer to Chapter 51). Matches scope boundaries.
 
 4. **Quiz Update Scope**: Existing quiz is 80K+ tokens (07_chapter_12_quiz.md). Update now or defer?
+
    - **Recommendation**: Defer to implementation phase. Spec focuses on lesson content; quiz update is mechanical expansion.
 
 5. **Verified Intelligence Trigger**: Do tool-specific claims require Phase 0.5 (Deep Research)?
@@ -417,6 +441,7 @@
 ## Next Steps
 
 **Phase 0.5: Deep Research** — ✅ COMPLETED (2025-01-15)
+
 - Context7 MCP fetched 24,000 tokens of official documentation (Ruff, Pyright, Zed)
 - All configuration examples verified in sandbox
 - Verified intelligence document created: [001-verified-tool-documentation.md](intelligence/001-verified-tool-documentation.md)
@@ -425,25 +450,29 @@
 **After Phase 0.5 Completion**:
 
 1. **Phase 1: /sp.clarify** (OPTIONAL - SKIP IF SPEC SUFFICIENT)
+
    - Review spec for underspecified areas
    - Ask targeted clarifications (max 5 questions) if needed
    - **Current Assessment**: Spec appears complete, clarifications may not be needed
 
 2. **Phase 2: /sp.plan** (NEXT STEP)
+
    - Invoke chapter-planner subagent to create detailed lesson plans
    - Generate `specs/001-chapter-12-lightning-python-stack/plan.md`
    - Map lessons 7-12 with teaching tiers and proficiency levels
 
-4. **Phase 3: /sp.tasks**
+3. **Phase 3: /sp.tasks**
+
    - Generate implementation task checklist
    - Create `specs/001-chapter-12-lightning-python-stack/tasks.md`
 
-5. **Phase 4: /sp.implement**
+4. **Phase 4: /sp.implement**
+
    - Invoke content-implementer subagent to write lessons 7-12
    - Update chapter readme.md and metadata
-   - Verify all files written to `book-source/docs/04-Python-Fundamentals/12-python-uv-package-manager/`
+   - Verify all files written to `apps/learn-app/docs/04-Python-Fundamentals/12-python-uv-package-manager/`
 
-6. **Phase 5: Validation**
+5. **Phase 5: Validation**
    - Invoke validation-auditor for quality gate
    - Run sandbox tests for all commands and configs
    - Verify against Success Criteria (SC-001 through SC-012)

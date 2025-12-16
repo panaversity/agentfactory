@@ -5,7 +5,7 @@
 **Status**: Draft
 **Input**: "Create Part 7 README (AI Cloud Native Development, 12 chapters). Target: developers who completed Parts 1-6. Goals: (1) position Part 7 as transition from building agents to deploying at scale, (2) preview chapter progression, (3) clarify extended layer methodology for infrastructure, (4) set expectations for production operations focus."
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Understanding Part 7's Purpose and Value (Priority: P1)
 
@@ -82,7 +82,7 @@ A developer entering Part 7 needs to understand that this part emphasizes produc
 - What if developer confuses Part 7 (cloud-native deployment) with Part 8 (Turing LLMOps)?
   → Clear boundaries: Part 7 = infrastructure/deployment, Part 8 = custom model training/fine-tuning
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -103,16 +103,17 @@ The README's 7-layer framework explanation (Extended Methodology section) MUST i
 
 2. **Layer comparison table** (4-layer vs 7-layer):
 
-   | 4-Layer Method (Parts 1-6) | 7-Layer Framework (Part 7 Kubernetes) | Rationale |
-   |----------------------------|----------------------------------------|-----------|
-   | Layer 1: Manual Foundation | Layers 1-2: kubectl manual + kubectl-ai | CLI tools need both manual practice and AI-assisted variations |
-   | Layer 2: AI Collaboration  | Layers 3-4: kagent + Claude Code | Agents operate at different abstraction levels (imperative vs declarative) |
-   | Layer 3: Intelligence Design | Layers 5-6: Helm charts + subagents | Infrastructure has two intelligence types: configs (Helm) and autonomous agents |
-   | Layer 4: Spec-Driven Integration | Layer 7: SDD for infrastructure | Spec-driven methodology applies to infrastructure orchestration |
+   | 4-Layer Method (Parts 1-6)       | 7-Layer Framework (Part 7 Kubernetes)   | Rationale                                                                       |
+   | -------------------------------- | --------------------------------------- | ------------------------------------------------------------------------------- |
+   | Layer 1: Manual Foundation       | Layers 1-2: kubectl manual + kubectl-ai | CLI tools need both manual practice and AI-assisted variations                  |
+   | Layer 2: AI Collaboration        | Layers 3-4: kagent + Claude Code        | Agents operate at different abstraction levels (imperative vs declarative)      |
+   | Layer 3: Intelligence Design     | Layers 5-6: Helm charts + subagents     | Infrastructure has two intelligence types: configs (Helm) and autonomous agents |
+   | Layer 4: Spec-Driven Integration | Layer 7: SDD for infrastructure         | Spec-driven methodology applies to infrastructure orchestration                 |
 
 3. **Rationale explanation** (1-2 sentences): "Infrastructure tooling has more abstraction layers (raw CLI → AI-assisted CLI → orchestrating agents → reusable configurations) than application code, requiring finer-grained teaching progression to build competence at each level."
 
 4. **Application guidance**:
+
    - "Kubernetes chapters (53-54) use the full 7-layer framework due to infrastructure complexity"
    - "Dapr chapters (55-58) simplify to 4 layers since Dapr operates at application level, not infrastructure level"
    - "FastAPI and Docker chapters use standard 4-layer method with infrastructure adaptations"
@@ -120,13 +121,14 @@ The README's 7-layer framework explanation (Extended Methodology section) MUST i
 5. **Student self-assessment question**: "When working through Kubernetes chapter, ask yourself: 'Which layer am I on? Manual kubectl (L1), kubectl-ai (L2), kagent (L3), Claude Code (L4), Helm (L5), subagents (L6), or SDD (L7)?'"
 
 **Acceptance Criteria for FR-003**:
+
 - Developer can answer: "Why does Kubernetes infrastructure need 7 layers when FastAPI only needed 4?" (answer: "Infrastructure has more abstraction layers requiring finer-grained progression")
 - Developer can correctly match a tool to its layer (e.g., "Helm is Layer 5: reusable configuration intelligence")
 - Developer recognizes chapter-specific application: "Dapr uses 4 layers, not 7, since it's application-level"
 
 ---
 
-### Key Entities *(documentation structure)*
+### Key Entities _(documentation structure)_
 
 - **Part 7 Overview**: Positioning statement, target audience, value proposition
 - **Goals Section**: Specific capabilities developers gain (understand agent deployment architectures, implement container strategies, apply orchestration patterns, design operational excellence)
@@ -135,7 +137,7 @@ The README's 7-layer framework explanation (Extended Methodology section) MUST i
 - **Capstone Expectations**: Production operations focus (observability, cost, security) in final projects
 - **Prerequisites Section**: Parts 4-5 required, Parts 1-3 recommended, Part 6 strongly recommended
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 
@@ -167,12 +169,13 @@ The README's 7-layer framework explanation (Extended Methodology section) MUST i
 - **CON-001**: README must follow existing Part README structural pattern (6-8 sections: Overview, Goals, Chapter Progression, Methodology, Capstone, Getting Started)
 - **CON-002**: README length should approximate Part 6 README (~75 lines) for consistency, with flexibility (+15 lines) to accommodate Part 7's additional methodology explanation (7-layer framework). Target: 75-90 lines, 6-8 sections.
 - **CON-003**: Markdown formatting must use Docusaurus-compatible syntax (frontmatter, headings, lists)
-- **CON-004**: File location: `book-source/docs/07-AI-Cloud-Native-Development/README.md` (following Part 1-6 convention)
+- **CON-004**: File location: `apps/learn-app/docs/07-AI-Cloud-Native-Development/README.md` (following Part 1-6 convention)
 - **CON-005**: Tone must balance technical accuracy with approachability for developers new to operations
 
 ## Open Questions
 
-*No critical ambiguities requiring clarification. All requirements derivable from:*
+_No critical ambiguities requiring clarification. All requirements derivable from:_
+
 - User request (explicit goals 1-4, tone specification)
 - Chapter-index.md (Part 7 = Chapters 50-61, thematic groups)
 - Existing Part READMEs (structural pattern from Parts 3, 6)

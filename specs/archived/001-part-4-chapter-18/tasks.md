@@ -15,7 +15,7 @@
 
 ## Path Conventions
 
-- Chapter content: `book-source/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/`
+- Chapter content: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/`
 - Lesson files: `01-lesson-1.md`, `02-lesson-2.md`, etc.
 - Supporting files: `README.md`, `_category_.json`
 
@@ -25,7 +25,7 @@
 
 **Purpose**: Initialize chapter structure and metadata
 
-- [ ] T001 Create chapter directory at `book-source/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/`
+- [ ] T001 Create chapter directory at `apps/learn-app/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/`
 - [ ] T002 [P] Create `_category_.json` with chapter metadata (title, position 18, collapsed: false)
 - [ ] T003 [P] Create `README.md` with chapter overview, 11 lessons list, prerequisites (Ch 1-17)
 
@@ -54,6 +54,7 @@
 ### Implementation for User Story 1
 
 - [ ] T004 [P] [US1] Write Lesson 1: Introduction to Collections in `01-lesson-1.md`
+
   - **Content**: 5 concepts (collections, sequences vs mappings, mutability, type hints, use-case matching)
   - **CEFR**: A1 (Foundation)
   - **Elements**: 💬 AI Colearning (Why immutable tuple?), 🎓 Commentary (intent via type hints), 🚀 Challenge (compare structures), Try With AI (4 prompts: Remember → Analyze)
@@ -83,6 +84,7 @@
 ### Implementation for User Story 2
 
 - [ ] T006 [P] [US2] Write Lesson 2: Lists Part 1 - Creation and Basic Operations in `02-lesson-2.md`
+
   - **Content**: 6 concepts (literals, type hints list[T], positive/negative indexing, slicing, len(), homogeneous vs heterogeneous)
   - **CEFR**: A2 (Basic)
   - **Elements**: 💬 AI Colearning (Why 0-based indexing?), 🎓 Commentary (don't memorize, understand), 🚀 Challenge (5 slice notations), Try With AI (4 prompts)
@@ -90,6 +92,7 @@
   - **Validation**: Max 6 concepts (within A2 limit of 7)
 
 - [ ] T007 [P] [US2] Write Lesson 3: Lists Part 2 - Mutability and Modification in `03-lesson-3.md`
+
   - **Content**: 7 concepts (append, extend, insert, remove, pop, clear, method vs function)
   - **CEFR**: A2-B1 (Transitional)
   - **Elements**: 💬 AI Colearning (append vs extend difference), 🎓 Commentary (understand intent, AI handles syntax), 🚀 Challenge (shopping cart simulation), Try With AI (4 prompts)
@@ -97,6 +100,7 @@
   - **Validation**: Max 7 concepts (AT A2-B1 limit)
 
 - [ ] T008 [P] [US2] Write Lesson 4: Lists Part 3 - Sorting, Reversing, Advanced Methods in `04-lesson-4.md`
+
   - **Content**: 7 concepts (sort(), sorted(), reverse(), [::-1], count(), index(), copy())
   - **CEFR**: B1 (Intermediate)
   - **Elements**: 💬 AI Colearning (sort vs sorted), 🎓 Commentary (in-place returns None pattern), 🚀 Challenge (sort/reverse/count sequence), Try With AI (4 prompts)
@@ -104,6 +108,7 @@
   - **Validation**: Max 7 concepts (conservative within B1 limit of 10)
 
 - [ ] T009 [P] [US2] Write Lesson 7: Dictionaries Part 1 - Key-Value Mappings in `07-lesson-7.md`
+
   - **Content**: 6 concepts (dict literals, type hints dict[K,V], bracket notation, KeyError, .get() with defaults, unique keys)
   - **CEFR**: A2 (Basic)
   - **Elements**: 💬 AI Colearning (why .get() over brackets?), 🎓 Commentary (dicts for meaningful lookup), 🚀 Challenge (student record system), Try With AI (4 prompts)
@@ -132,6 +137,7 @@
 ### Implementation for User Story 3
 
 - [ ] T011 [P] [US3] Write Lesson 5: List Comprehensions - Transforming Data in `05-lesson-5.md`
+
   - **Content**: 6 concepts (comprehension syntax, expression evaluation, iteration variable, if filtering, readability considerations, nested comprehensions brief intro)
   - **CEFR**: B1 (Intermediate)
   - **Prerequisites**: Chapter 17 (for loops) - CRITICAL prerequisite
@@ -162,6 +168,7 @@
 ### Implementation for User Story 4
 
 - [ ] T013 [P] [US4] Write Lesson 6: Tuples - Immutable Sequences in `06-lesson-6.md`
+
   - **Content**: 7 concepts (tuple literals, single-element syntax, immutability guarantee, type hints tuple[T,...], indexing/slicing, unpacking, hashable dict keys, tuple methods count/index)
   - **CEFR**: A2-B1 (Transitional)
   - **Elements**: 💬 AI Colearning (why can tuples be dict keys?), 🎓 Commentary (immutability is promise/safety), 🚀 Challenge (game map coordinates), Try With AI (4 prompts)
@@ -292,6 +299,7 @@ With multiple content-implementer agents or team members:
 ## Notes
 
 ### General
+
 - [P] tasks = different files, no dependencies
 - [Story] label maps task to specific user story for traceability
 - Each lesson should be independently writable (different .md file)
@@ -299,6 +307,7 @@ With multiple content-implementer agents or team members:
 - Stop at any checkpoint to validate story independently
 
 ### Chapter-Specific
+
 - **Cognitive Load**: Strict 7-concept limit per lesson (intermediate A2-B1 tier)
 - **Proficiency Progression**: A1 → A2 → A2-B1 → B1 across 11 lessons (non-regressing)
 - **Lesson Closure**: ONLY "Try With AI" section (4 prompts, Bloom's progression) - NO summaries, NO "What's Next", NO checklists
@@ -308,6 +317,7 @@ With multiple content-implementer agents or team members:
 - **Constitutional Alignment**: ADR-0008 (11-lesson structure), ADR-0009 (CEFR proficiency metadata), Principle 12 (cognitive load), Principle 13 (graduated teaching)
 
 ### Avoid
+
 - Vague tasks ("write good content")
 - Same file conflicts (all lessons are separate files)
 - Forward references to Ch 20+ (functions, exceptions, file I/O, OOP)

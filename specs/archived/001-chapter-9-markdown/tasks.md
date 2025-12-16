@@ -19,9 +19,10 @@
 
 ## Path Conventions
 
-**Chapter Location**: `book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/`
+**Chapter Location**: `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/`
 
 **File Structure**:
+
 ```
 09-markdown-language-of-ai/
 ├── 01-why-markdown-matters.md
@@ -40,7 +41,7 @@
 
 **Purpose**: Initialize chapter directory structure and shared assets
 
-- [ ] T001 Create chapter directory at `book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/`
+- [ ] T001 Create chapter directory at `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/`
 - [ ] T002 [P] Create YAML frontmatter template for all 8 lessons with consistent metadata (chapter: 9, part: 3, sidebar_position, skills metadata fields)
 - [ ] T003 [P] Create example markdown files directory at `09-markdown-language-of-ai/examples/` for code samples referenced across lessons
 
@@ -360,16 +361,19 @@ With multiple content creators:
 **This task list implements AI-Native Teaching across three tiers**:
 
 1. **Tier 1 (Lessons 2-5)**: Book teaches foundational markdown syntax directly
+
    - Tasks T010-T022 ensure content demonstrates syntax with clear examples
    - Students practice manually (not "ask your AI what is a heading")
    - Validation: Students can write markdown without AI assistance
 
 2. **Tier 2 (Lesson 6)**: AI Companion handles complex syntax
+
    - Tasks T023-T027 teach specification-driven requests to AI
    - Students specify WHAT they need → AI generates complex syntax → Students validate
    - Focus: Understanding when to delegate complexity to AI
 
 3. **Tier 3 (Lesson 7)**: AI Orchestration for scaling operations
+
    - Tasks T028-T031 teach strategic direction of AI for multi-file work
    - Students define patterns and structure → AI executes repetitive work → Students ensure consistency
    - Focus: Orchestration mindset for large-scale tasks
@@ -418,6 +422,7 @@ Tasks map directly to spec.md success criteria:
 - **US3 Independent Test**: Lesson 8 GitHub submission (T036 checklist)
 
 Each story delivers measurable value independently:
+
 - Complete US1 only → Students can write specifications (foundation skill)
 - Complete US1+US2 → Students can also read/validate AI output (safety skill)
 - Complete US1+US2+US3 → Students can collaborate on GitHub + complete full AIDD cycle (professional workflow)
@@ -438,6 +443,7 @@ Each story delivers measurable value independently:
 **MVP scope** (US1 only): Tasks T001-T022 (25 tasks, ~60% of total effort)
 
 **Estimated timeline**:
+
 - MVP (US1): 2-3 weeks
 - US2 addition: +1 week
 - US3 addition: +1-2 weeks

@@ -26,6 +26,7 @@
 ### Constraint Override:
 
 This ADR creates a **limited exception** to:
+
 - **FR-007**: "Chapter MUST NOT forward reference concepts from Ch 20+ (functions, exceptions, file I/O, OOP)"
 - **SC-014**: "0 forward references to Ch 20+ concepts (architectural validation)"
 
@@ -38,18 +39,21 @@ This ADR creates a **limited exception** to:
 Chapter 18 (Lists, Tuples, and Dictionary) teaches three data structures across 10 lessons. Lesson 11 (Capstone) must integrate all three structures in a realistic data processing pipeline:
 
 **Required Pipeline**:
+
 ```
 Raw CSV data → Parse into list[dict] → Filter with comprehensions →
 Aggregate with dicts → Format output
 ```
 
 **Technical Reality**:
+
 - Pipeline requires 60-80 lines of code
 - Four distinct phases (parse, filter, aggregate, output)
 - Complex type hints: `list[dict[str, str | float]]`
 - Error handling for malformed data
 
 **Constraint Conflict**:
+
 - FR-007 forbids forward references to functions (Ch 20)
 - Inline code for 60-80 line pipeline is unreadable
 - Without functions, students see monolithic code blob (violates pedagogical clarity)
@@ -57,11 +61,13 @@ Aggregate with dicts → Format output
 ### Why This Matters
 
 **Pedagogical Value of Capstone**:
+
 - Demonstrates **real-world data engineering pattern** (ingest → transform → aggregate → output)
 - Shows how lists, tuples, dicts **work together** (not in isolation)
 - Validates student understanding through **integration**, not repetition
 
 **Cost of Strict Constraint**:
+
 - **No capstone**: Skip Lesson 11 → Students never see integration → Knowledge remains fragmented
 - **Inline code only**: 80-line monolith → Unreadable → Students copy/paste without understanding
 - **Pseudo-code**: "Imagine you have a function..." → Not executable → No validation → Violates Principle 15 (Validation-Before-Trust)
@@ -72,11 +78,13 @@ Aggregate with dicts → Format output
 ### Alternative A: No Capstone Lesson (Constraint-Compliant)
 
 **Structure**:
+
 - End chapter at Lesson 10 (Choosing Structure)
 - No integration project
 - Students learn structures in isolation
 
 **Why Rejected**:
+
 - Violates **LO-006**: "Build complete Data Processing Pipeline application"
 - Fails **EVAL-006**: "80%+ can build capstone pipeline" (can't measure if not taught)
 - Misses opportunity for **synthesis learning** (Bloom's Create level)
@@ -85,11 +93,13 @@ Aggregate with dicts → Format output
 ### Alternative B: Inline Code Only (Constraint-Compliant)
 
 **Structure**:
+
 - Write entire pipeline as 80-line inline script
 - No function definitions
 - Sequential phases separated by comments
 
 **Example**:
+
 ```python
 # Phase 1: Parse data
 raw = "name,major,gpa\nAlice,CS,3.8\nBob,Math,3.2"
@@ -126,6 +136,7 @@ for major, data in stats.items():
 ```
 
 **Why Rejected**:
+
 - **Unreadable**: 80 lines without logical boundaries → Cognitive overload
 - **Unmaintainable**: Changes to parsing require scrolling through entire script
 - **Violates professional practice**: Real data engineers use functions to organize phases
@@ -135,11 +146,13 @@ for major, data in stats.items():
 ### Alternative C: Pseudo-Code with Narrative (Constraint-Compliant)
 
 **Structure**:
+
 - Describe pipeline in prose
-- Show pseudo-code with function *calls* (not definitions)
+- Show pseudo-code with function _calls_ (not definitions)
 - No executable code
 
 **Example**:
+
 ```
 Imagine you have a function `parse_csv_data(raw)` that returns a list of dicts.
 Then you filter that list using a comprehension.
@@ -148,6 +161,7 @@ Finally, you format the output.
 ```
 
 **Why Rejected**:
+
 - **Not executable**: Violates **Principle 15 (Validation-Before-Trust)** - students can't run it
 - **No validation**: Can't test understanding with broken code
 - **Violates Constitution**: "All code examples MUST be tested and run successfully on Python 3.14+"
@@ -156,11 +170,13 @@ Finally, you format the output.
 ### Alternative D: Defer Capstone to Chapter 20+ (Constraint-Compliant)
 
 **Structure**:
+
 - Teach collections in Chapters 18-19 (no capstone)
 - Teach functions in Chapter 20
 - Add "Collections Capstone" in Chapter 21 or 22
 
 **Why Rejected**:
+
 - **Context loss**: By Ch 21, students focused on new topics (file I/O, exceptions)
 - **Delayed validation**: No immediate integration practice after learning structures
 - **Violates learning science**: Synthesis should follow learning, not occur 3 chapters later
@@ -170,11 +186,13 @@ Finally, you format the output.
 ### Alternative E: AI Generates Functions for Students (Hybrid)
 
 **Structure**:
+
 - Lesson shows inline code
 - "Tell your AI: 'Refactor this into functions for parse, filter, aggregate'"
 - Students observe AI-generated functions
 
 **Why Partially Rejected**:
+
 - **Inconsistent output**: Different AI models generate different function signatures
 - **No canonical reference**: Lesson can't show "correct" version (every AI different)
 - **Confusing type hints**: AI might generate legacy `typing.List` instead of modern `list[T]`
@@ -186,23 +204,27 @@ Finally, you format the output.
 **Accept forward reference exception for Lesson 11 Capstone** because:
 
 1. **Pedagogical Value > Constraint Purity**:
+
    - Realistic integration project teaches architectural thinking
    - Students see "how professionals organize code" (even if they can't write it yet)
    - Synthesis learning (Bloom's Create) requires complete, working examples
 
 2. **Functions as Observation, Not Production**:
+
    - Students **observe** function pattern (modular code organization)
    - Students **don't write** function definitions (Ch 20 teaches that)
    - Students **understand** pipeline architecture (ingest → transform → aggregate)
    - Students **execute** complete code (validation-before-trust principle)
 
 3. **Minimal Forward Reference**:
+
    - Only `def` syntax and function calls (no decorators, no `*args/**kwargs`, no closures)
    - Type hints already taught (students understand `-> list[dict]`)
    - Return values already understood (tuples covered in Lesson 6)
    - Docstrings optional (not required for understanding)
 
 4. **Explicit Pedagogical Framing**:
+
    - Lesson states: "We're showing you complete working code. You'll learn to write functions in Ch 20."
    - Focus on **data structure choices**, not function design
    - Questions: "Why list[dict] for records?" not "Why use def?"
@@ -292,7 +314,7 @@ Finally, you format the output.
 
 - **Feature Spec**: `specs/001-part-4-chapter-18/spec.md` (FR-007, FR-009, SC-014)
 - **Implementation Plan**: `specs/001-part-4-chapter-18/plan.md` (Lesson 11: Capstone)
-- **Lesson Content**: `book-source/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/11-lesson-11.md`
+- **Lesson Content**: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/18-lists-tuples-dictionary/11-lesson-11.md`
 - **Related ADRs**:
   - ADR-0008: 11-Lesson Collections Structure (defines capstone lesson requirement)
   - ADR-0009: CEFR Proficiency-Based Skills Metadata (B1 Create level requires synthesis)

@@ -18,13 +18,15 @@ Successfully integrated "Why Intelligence Is the New Competitive Asset" subsecti
 
 ### Files Modified
 
-**1. `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/06-three-requirements.md`**
+**1. `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/06-three-requirements.md`**
+
 - **Location**: New subsection inserted after "Path 2: Vertical Reusable Intelligence" (line 126) and before "Choosing Your Path" (line 141)
 - **Heading**: `### Why Intelligence Is the New Competitive Asset`
 - **Word Count**: 382 words (target: 300-500)
 - **Status**: ✓ Integrated and validated
 
-**2. `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/06-three-requirements.summary.md`**
+**2. `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/06-three-requirements.summary.md`**
+
 - **Core Concept**: Updated to include intelligence-as-moat insight and Instagram reference
 - **Key Mental Models**: Added new model "Intelligence as Competitive Asset"
 - **Critical Patterns**: Added pattern about system-level defensibility through complexity
@@ -35,16 +37,19 @@ Successfully integrated "Why Intelligence Is the New Competitive Asset" subsecti
 The new subsection accomplishes the following learning objectives:
 
 1. **Connects Domain Expertise to Economic Value**
+
    - Explains why intelligence (accumulated knowledge) creates defensibility
    - Shows that competitors cannot quickly replicate months of learning
    - Establishes stakes: domain expertise is non-negotiable for defensibility
 
 2. **Validates Both Paths to Domain Expertise**
+
    - Clarifies that fine-tuned models and vertical intelligence are equally defensible
    - Explains WHY both paths create moats (both embody months of accumulated knowledge)
    - Teaches students to choose Path 1 vs Path 2 based on resources/timeline, not defensibility
 
 3. **Explains Why Missing Requirement 1 is Fatal**
+
    - Shows that generic AI without domain expertise creates no moat
    - Demonstrates the difference between copying features (weeks) vs replicating knowledge (months)
    - Establishes that defensibility comes from accumulated knowledge, not packaging
@@ -60,15 +65,15 @@ The new subsection accomplishes the following learning objectives:
 
 ### Specification Compliance
 
-| Requirement | Target | Actual | Status |
-|-----------|--------|--------|--------|
-| **Location** | After Path 2, before Choosing Path | Lines 127-140 | ✓ PASS |
-| **Word Count** | 300-500 words | 382 words | ✓ PASS |
-| **New Concepts** | ≤2 concepts | 2 (intelligence as asset, system complexity) | ✓ PASS |
-| **Language Level** | A1-A2 appropriate | Plain language, concrete examples, active voice | ✓ PASS |
-| **Lesson 3 Cross-Reference** | Explicit mention | "Remember Lesson 3 and the Instagram story" | ✓ PASS |
-| **Layer 1 Compliance** | Manual Foundation (no AI prompts) | Direct explanation, no Try With AI within subsection | ✓ PASS |
-| **Meta-Commentary** | Zero forbidden patterns | Grep validation: 0 matches of forbidden patterns | ✓ PASS |
+| Requirement                  | Target                             | Actual                                               | Status |
+| ---------------------------- | ---------------------------------- | ---------------------------------------------------- | ------ |
+| **Location**                 | After Path 2, before Choosing Path | Lines 127-140                                        | ✓ PASS |
+| **Word Count**               | 300-500 words                      | 382 words                                            | ✓ PASS |
+| **New Concepts**             | ≤2 concepts                        | 2 (intelligence as asset, system complexity)         | ✓ PASS |
+| **Language Level**           | A1-A2 appropriate                  | Plain language, concrete examples, active voice      | ✓ PASS |
+| **Lesson 3 Cross-Reference** | Explicit mention                   | "Remember Lesson 3 and the Instagram story"          | ✓ PASS |
+| **Layer 1 Compliance**       | Manual Foundation (no AI prompts)  | Direct explanation, no Try With AI within subsection | ✓ PASS |
+| **Meta-Commentary**          | Zero forbidden patterns            | Grep validation: 0 matches of forbidden patterns     | ✓ PASS |
 
 ### Constitutional Compliance
 
@@ -101,16 +106,19 @@ The new subsection accomplishes the following learning objectives:
 ### Article Integration
 
 **What Was Extracted**:
+
 - Core thesis: Intelligence (accumulated knowledge) as source of competitive advantage ✓
 - Defensibility concept: System complexity requires months to replicate ✓
 - Early adopter advantage: Implied in path choice and resource optimization ✓
 
 **What Was Filtered**:
+
 - Promotional content about Trading Singularity product (REMOVED) ✓
 - Entrepreneurial wealth-building narrative (REFRAMED to defensibility-understanding) ✓
 - Unverified statistics about millionaires (NOT INCLUDED) ✓
 
 **Tone Transformation**:
+
 - FROM: "Build AI systems and become a millionaire"
 - TO: "Understanding why domain expertise creates non-negotiable defensibility for your business"
 
@@ -121,6 +129,7 @@ The new subsection accomplishes the following learning objectives:
 ### Lesson Flow Verification
 
 **Verified path through lesson**:
+
 ```
 Requirement 1 intro
   ↓
@@ -144,6 +153,7 @@ OpenAI Study Mode analysis
 ### Summary Consistency
 
 All updates to summary file use consistent language with lesson subsection:
+
 - "Intelligence as Competitive Asset" (same terminology)
 - "Accumulated domain knowledge...defensibility" (same framing)
 - "Takes months to rebuild" (same timeline language)
@@ -153,6 +163,7 @@ All updates to summary file use consistent language with lesson subsection:
 ### No Meta-Commentary Detected
 
 Grep validation for forbidden patterns:
+
 ```bash
 "What to notice", "What to expect", "This is AI as", "What you learned",
 "What AI learned", "AI now knows", "AI adapted", "AI teaches"
@@ -169,10 +180,12 @@ Result: 0 matches in new subsection ✓
 From Lesson 6 spec, this subsection reinforces:
 
 1. **Objective 1**: "Identify the three requirements"
+
    - This subsection deepens understanding of Requirement 1 (domain expertise)
    - Shows WHY both paths (fine-tuning + vertical intelligence) achieve the same goal
 
 2. **Objective 2**: "Understand why all three are interdependent and why missing any one causes failure"
+
    - Subsection explains the economic mechanism: without domain expertise, no defensibility
    - Shows the consequence of missing Requirement 1 (generic AI = easily replicated)
 
@@ -183,9 +196,11 @@ From Lesson 6 spec, this subsection reinforces:
 ### Success Eval Alignment
 
 From User Story 1 in spec:
+
 > "Student can explain in 2-3 sentences WHY domain expertise creates defensible advantage"
 
 This subsection teaches students to articulate:
+
 1. Intelligence = accumulated months of learning
 2. Competitors must invest months rebuilding knowledge
 3. Therefore, moat is knowledge, not code/features
@@ -199,12 +214,14 @@ This subsection teaches students to articulate:
 **Source**: "AI Is Quietly Creating Millionaires" (Entrepreneur.com, Simeon Ivanov, 2025)
 
 **Extraction Approach**:
+
 - Generic concepts extracted (intelligence as asset, defensibility, competitive moats)
 - Product-specific claims NOT included (Trading Singularity details)
 - Statistical claims NOT included (specific millionaire numbers)
 - Core economic principle APPLIED: accumulated knowledge creates defensibility
 
 **Educational Transformation**:
+
 - Entrepreneurial framing (wealth-building) → Educational framing (defensibility-understanding)
 - Specific product marketing → General principle about domain expertise
 - Wealth aspiration tone → Learning and strategic understanding tone
@@ -216,13 +233,16 @@ This subsection teaches students to articulate:
 ## Deliverables Summary
 
 ### Files Changed
+
 1. ✓ `06-three-requirements.md` — Subsection added (382 words)
 2. ✓ `06-three-requirements.summary.md` — Core Concept, Key Mental Model, Critical Pattern updated
 
 ### Files Created
+
 1. ✓ `IMPLEMENTATION-REPORT.md` (this file)
 
 ### Artifacts Generated
+
 - New subsection: "Why Intelligence Is the New Competitive Asset"
 - Updated summary entries reflecting article insight
 - Validation checklist (inline in report)
@@ -248,19 +268,25 @@ From spec.md "Acceptance Checklist":
 ## Next Steps
 
 ### Option 1: Ready to Merge
+
 If implementation meets acceptance criteria:
+
 1. User reviews subsection content
 2. User verifies lesson flow and summary updates
 3. Merge feature branch to main
 
 ### Option 2: Refinement Needed
+
 If user has feedback:
+
 1. User provides specific corrections
 2. Update subsection or summary as requested
 3. Re-validate and resubmit
 
 ### Option 3: Validation Gate
+
 Before merge, recommend:
+
 1. Read full lesson end-to-end to verify flow
 2. Compare summary against lesson for consistency
 3. Verify A1-A2 language is accessible to target audience

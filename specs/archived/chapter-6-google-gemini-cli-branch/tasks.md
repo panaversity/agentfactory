@@ -13,6 +13,7 @@
 This task checklist breaks Chapter 6 enhancement into specific, testable development tasks. The plan spans 5 lessons with progressive complexity, covering 35 functional requirements and ~170 minutes of content.
 
 **Success Criteria**:
+
 - All 5 lessons implemented with specified enhancements
 - All 35 functional requirements covered
 - 90%+ command recall (FR knowledge checks)
@@ -33,6 +34,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Review existing 186-line lesson; identify enhancement points; add power user framing
 
 **Acceptance Criteria**:
+
 - [ ] Current lesson content preserved (100%)
 - [ ] "Power User Advantage" section added (~200 words) explaining 10+ commands as decision factor
 - [ ] "For the North Star Developer" section added (~150 words) reframing for sophisticated users
@@ -40,7 +42,8 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] All 5 new concepts listed and explained
 
 **Reference**:
-- Current file: `/book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/01-why-gemini-cli-matters.md`
+
+- Current file: `/apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/01-why-gemini-cli-matters.md`
 - Plan section: LESSON 1 Enhancement
 
 **Effort**: 2-3 hours
@@ -54,6 +57,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Keep existing 4 prompts, add NEW Prompt 4
 
 **Acceptance Criteria**:
+
 - [ ] Prompts 1-3: Unchanged
 - [ ] Prompt 4 NEW: "What Features Would Make Me Choose Gemini?"
   - Personalized for developer role
@@ -75,6 +79,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Create "The 13 Essential Commands" section with reference table, business scenarios, examples
 
 **Acceptance Criteria**:
+
 - [ ] Command reference table created with columns:
   - Command name
   - Purpose (1-2 sentence)
@@ -88,6 +93,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~800 word section matches plan specification
 
 **Reference**:
+
 - Plan section: LESSON 2, "The 13 Essential Commands"
 - FRs: FR-001
 
@@ -102,6 +108,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Create section explaining @ context reference syntax
 
 **Acceptance Criteria**:
+
 - [ ] What @ does explained clearly (references files/folders/URLs without copying)
 - [ ] Format documented: @path/to/file, @folder/, @https://example.com
 - [ ] When to use @ (large files, binary data, external URLs)
@@ -111,6 +118,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] Business workflow impact noted (~600 words)
 
 **Reference**:
+
 - Plan section: LESSON 2, "The @ Syntax"
 - FR: FR-003
 
@@ -125,6 +133,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Expand existing shell mode explanation with advanced usage
 
 **Acceptance Criteria**:
+
 - [ ] Current shell mode explanation kept
 - [ ] Expanded format: Type !, exit with ESC
 - [ ] Real workflows documented: running tests, git status, file operations
@@ -134,6 +143,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~400 word section
 
 **Reference**:
+
 - Plan section: LESSON 2, "The ! Syntax"
 - FR: FR-004
 
@@ -148,6 +158,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Document 4 essential keyboard shortcuts with practice scenarios
 
 **Acceptance Criteria**:
+
 - [ ] All 4 shortcuts documented:
   - Ctrl+L — Clear screen (keeps history)
   - Ctrl+V — Paste multi-line input
@@ -159,6 +170,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] Mnemonics or memory aids provided
 
 **Reference**:
+
 - Plan section: LESSON 2, "Keyboard Shortcuts"
 - FR: FR-005
 
@@ -173,6 +185,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Document all CLI invocation modes with business scenarios
 
 **Acceptance Criteria**:
+
 - [ ] 6 modes documented with examples:
   - Interactive: `gemini` (default)
   - Piped input: `echo "..." | gemini -p`
@@ -186,6 +199,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~500 word section
 
 **Reference**:
+
 - Plan section: LESSON 2, "Command-Line Invocation Modes"
 - FR: FR-008
 
@@ -200,6 +214,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: First introduction to GEMINI.md; 5-level hierarchy concept; project setup
 
 **Acceptance Criteria**:
+
 - [ ] GEMINI.md concept explained (file-based context, not commands)
 - [ ] 5-level hierarchy documented:
   - Global: ~/.gemini/GEMINI.md
@@ -214,6 +229,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~600 word section, bridges to Lesson 4
 
 **Reference**:
+
 - Plan section: LESSON 2, "Hierarchical Memory"
 - FR: FR-012 (first introduction)
 
@@ -228,6 +244,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Preview settings.json; tool control basics (expanded in Lesson 3)
 
 **Acceptance Criteria**:
+
 - [ ] Where settings.json lives: ~/.config/gemini/settings.json
 - [ ] Basic options explained:
   - disabled_tools (which tools to disable)
@@ -239,6 +256,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~400 word preview section
 
 **Reference**:
+
 - Plan section: LESSON 2, "Basic Configuration"
 - FR: FR-006 (preview)
 
@@ -253,22 +271,27 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Create realistic, tested code examples
 
 **Acceptance Criteria**:
+
 - [ ] Example 1: Basic command execution workflow
+
   - Sequence: /tools → /memory list → /stats
   - Shows information gathering in session
   - Runnable in Gemini CLI
 
 - [ ] Example 2: @ syntax reference example
+
   - Prompt: @sales.csv summarize this file
   - Shows @ usage with real data file
   - Expected output documented
 
 - [ ] Example 3: ! shell mode example
+
   - Prompt: ! git status (exit, show output)
   - Shows shell integration
   - How Gemini interprets output
 
 - [ ] Example 4: settings.json modification
+
   - Config: disable web_search
   - Show before/after
   - Verification via /settings
@@ -278,6 +301,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] Code blocks properly formatted
 
 **Reference**:
+
 - Plan section: LESSON 2, Code Examples
 - FRs: FR-001, FR-003, FR-004, FR-006
 
@@ -292,30 +316,36 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Create bite-sized exercises with model solutions
 
 **Acceptance Criteria**:
+
 - [ ] Exercise 1: Command Mastery Drill (10 min)
+
   - Scenario: Research 5 competitors
   - Tasks: Execute /tools, /memory list, /stats
   - Expected outcome documented
   - Model solution provided
 
 - [ ] Exercise 2: @ Syntax Practice (8 min)
+
   - Prompt 1: @./README.md summarize
   - Prompt 2: @https://stripe.com/pricing analyze
   - Expected outcomes documented
   - Model solutions provided
 
 - [ ] Exercise 3: Keyboard Shortcuts Speedrun (7 min)
+
   - Navigate history with Ctrl+Y, +X
   - Clear and continue with Ctrl+L
   - Time tracking
   - Model solution: Expected completion time
 
 - [ ] Exercise 4: Invocation Mode Selection (10 min)
+
   - 3 scenarios, choose correct mode
   - Justify choices
   - Model solutions with explanations
 
 - [ ] Exercise 5: GEMINI.md Setup (10 min)
+
   - Create GEMINI.md in project
   - Add 3 sections
   - Verify /init loads correctly
@@ -327,6 +357,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] Difficulty progression appropriate
 
 **Reference**:
+
 - Plan section: LESSON 2, Exercises
 - Total time: 45 minutes exercises
 
@@ -341,22 +372,27 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Create 4 closing prompts for dialogue-based learning
 
 **Acceptance Criteria**:
+
 - [ ] Prompt 1: Command Reference Builder
+
   - Personalized command priorities
   - Based on workflow type
   - Expected outcome: 5 commands + justification
 
 - [ ] Prompt 2: Keyboard Efficiency Audit
+
   - Personalized shortcut usage
   - Creates cheat sheet
   - Expected outcome: 3 shortcuts + usage patterns
 
 - [ ] Prompt 3: Automation Design
+
   - Pipe input mode blueprint
   - Shell script implementation
   - Expected outcome: Automation code + integration steps
 
 - [ ] Prompt 4: Memory System Introduction
+
   - Hierarchical setup strategy
   - Template creation
   - Expected outcome: Memory architecture blueprint
@@ -366,6 +402,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] Prompts build on lesson content naturally
 
 **Reference**:
+
 - Plan section: LESSON 2, Try With AI
 
 **Effort**: 4-5 hours (including testing)
@@ -379,6 +416,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: One-page cheat sheet for Lesson 2 concepts
 
 **Acceptance Criteria**:
+
 - [ ] All 13+ commands listed with single-line descriptions
 - [ ] @ syntax examples (3 examples)
 - [ ] ! syntax examples (2 examples)
@@ -405,6 +443,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Document 7-level configuration hierarchy
 
 **Acceptance Criteria**:
+
 - [ ] All 7 levels documented with priority order:
   1. Built-in defaults
   2. Global settings: ~/.config/gemini/settings.json
@@ -419,6 +458,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~600 word section
 
 **Reference**:
+
 - Plan section: LESSON 3, "Understanding the Settings Hierarchy"
 - FR: FR-006, FR-007, FR-009, FR-010
 
@@ -433,7 +473,9 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Document key configuration options with examples
 
 **Acceptance Criteria**:
+
 - [ ] Key options documented:
+
   - disabled_tools (array)
   - allowed_files (whitelist)
   - web_fetch_timeout (seconds)
@@ -443,6 +485,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
   - api_key_source (enum)
 
 - [ ] 3 example configurations provided:
+
   - Researcher config (all tools enabled)
   - Implementation config (selective tools)
   - Security-sensitive config (minimal tools)
@@ -453,6 +496,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~700 word section
 
 **Reference**:
+
 - Plan section: LESSON 3, "Configuring settings.json"
 - FR: FR-006
 
@@ -467,7 +511,9 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Business scenarios for tool restriction strategies
 
 **Acceptance Criteria**:
+
 - [ ] 5 business scenarios documented:
+
   - Research phase (enable all)
   - Implementation phase (selective)
   - Testing phase (read-only)
@@ -481,6 +527,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~500 word section
 
 **Reference**:
+
 - Plan section: LESSON 3, "Tool Restrictions for Security"
 - FR: FR-006, FR-007, FR-009, FR-010
 
@@ -495,7 +542,9 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Explain token impact of tools; preview /compress and /memory
 
 **Acceptance Criteria**:
+
 - [ ] Token cost per tool explained:
+
   - File read: Tokens ≈ file size
   - Web fetch: Tokens ≈ page size
   - Web search: Tokens = query + all results
@@ -508,6 +557,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~400 word section, bridges to Lesson 4
 
 **Reference**:
+
 - Plan section: LESSON 3, "Understanding Token Cost"
 - FR: FR-015 (preview)
 
@@ -522,19 +572,23 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Add "Tool disabled" error handling to existing section
 
 **Acceptance Criteria**:
+
 - [ ] Keep existing error handling section
 - [ ] Add: "ERROR: Tool disabled - check settings.json"
+
   - What it means
   - How to fix
   - Prevention strategy
 
 - [ ] Add: "Tool not available in this context"
+
   - Scope explanation
   - How to enable
 
 - [ ] All error messages documented with solutions
 
 **Reference**:
+
 - Plan section: LESSON 3, Enhancement of existing section
 - FR: FR-006, FR-007
 
@@ -549,18 +603,22 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Add settings.json controls to existing privacy guidance
 
 **Acceptance Criteria**:
+
 - [ ] Keep existing privacy best practices
 - [ ] Add: How settings.json enforces privacy
+
   - disabled_tools: Prevent accidental web access
   - allowed_files: Whitelist access to sensitive directories
 
 - [ ] Add: Team policy examples
+
   - "We disable web_search in production"
   - "We only allow reads, not writes"
 
 - [ ] Integration with security workflow
 
 **Reference**:
+
 - Plan section: LESSON 3, Enhancement of existing section
 - FR: FR-009, FR-010
 
@@ -575,12 +633,15 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Create realistic settings configuration examples
 
 **Acceptance Criteria**:
+
 - [ ] Example 1: Researcher settings.json
+
   - All tools enabled
   - Realistic for competitive analysis workflow
   - Documented assumptions
 
 - [ ] Example 2: Security-sensitive settings.json
+
   - Minimal tools enabled
   - File access restricted
   - Write operations disabled
@@ -590,6 +651,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] Expected behavior documented
 
 **Reference**:
+
 - Plan section: LESSON 3, Code Examples
 - FR: FR-006, FR-007
 
@@ -604,13 +666,16 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Configuration exercises with model solutions
 
 **Acceptance Criteria**:
+
 - [ ] Exercise 1: settings.json Configuration (5 min)
+
   - Scenario: Sensitive customer data
   - Create settings with disabled tools
   - Test via /settings
   - Model solution provided
 
 - [ ] Exercise 2: Tool Selection Strategy (5 min)
+
   - Scenario: Competitive pricing analysis (5 competitors)
   - Recommended tools: web_fetch, search, file_ops
   - Create gemini.json
@@ -621,6 +686,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] Time estimates realistic
 
 **Reference**:
+
 - Plan section: LESSON 3, Exercises
 - Total time: 10 minutes exercises
 
@@ -635,13 +701,16 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Create 2 closing prompts for configuration learning
 
 **Acceptance Criteria**:
+
 - [ ] Prompt 1: Security Configuration Design
+
   - Role-specific configuration
   - Tool balance for use case
   - Explanation of enable/disable choices
   - Expected outcome: settings.json + rationale
 
 - [ ] Prompt 2: Token Efficiency Audit
+
   - Workflow analysis
   - Token-heavy tools identified
   - Restructuring recommendations
@@ -651,6 +720,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] Both produce expected outputs
 
 **Reference**:
+
 - Plan section: LESSON 3, Try With AI
 
 **Effort**: 3-4 hours (including testing)
@@ -664,6 +734,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Visual guide for selecting appropriate configuration
 
 **Acceptance Criteria**:
+
 - [ ] Decision tree for tool selection by use case
 - [ ] Decision tree for settings hierarchy level
 - [ ] Format: Flowchart or table-based
@@ -688,7 +759,9 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Foundational explanation of ephemeral, GEMINI.md, and save_memory
 
 **Acceptance Criteria**:
+
 - [ ] Ephemeral memory section:
+
   - What it is: In-RAM conversation history
   - Lifetime: Until /quit or crash
   - Access: Automatic (Ctrl+Y, Ctrl+X)
@@ -697,6 +770,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
   - Cons: Lost on exit, no sharing
 
 - [ ] GEMINI.md hierarchical section:
+
   - What it is: Persistent markdown context files
   - 5-level hierarchy explained
   - Lifetime: Persists across sessions
@@ -707,6 +781,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
   - Cons: Requires management, can become stale
 
 - [ ] save_memory section:
+
   - What it is: Named conversation snapshots
   - Lifetime: Until /memory delete
   - Access: /memory commands
@@ -719,6 +794,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~800 word comprehensive section
 
 **Reference**:
+
 - Plan section: LESSON 4, "Three Types of Memory"
 - FR: FR-011, FR-012, FR-013
 
@@ -733,13 +809,16 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Templates and strategies for hierarchical GEMINI.md
 
 **Acceptance Criteria**:
+
 - [ ] Template 1: Global Context (~/.gemini/GEMINI.md)
+
   - Standard libraries (Python, TypeScript)
   - Coding standards (type hints, testing, formatting)
   - Security standards (no hardcoding secrets, auth, input validation)
   - Full working template provided
 
 - [ ] Template 2: Project Context (./GEMINI.md)
+
   - Tech stack (languages, frameworks, databases)
   - Project goals (deliverables, dates)
   - Critical files (@./docs/api.md references)
@@ -747,6 +826,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
   - Full working template provided
 
 - [ ] Template 3: Feature Branch Context (./.git/gemini/feature-auth.md)
+
   - Feature name
   - Acceptance criteria (checklist)
   - Architecture notes
@@ -759,6 +839,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~900 word section with templates
 
 **Reference**:
+
 - Plan section: LESSON 4, "Organizing GEMINI.md"
 - FR: FR-012
 
@@ -773,30 +854,37 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Document /memory operations (list, save, load, delete, clear)
 
 **Acceptance Criteria**:
+
 - [ ] /memory list documented
+
   - Output format explained
   - Shows: name, created date, size, preview
 
 - [ ] /memory save <name> documented
+
   - Syntax and examples
   - Naming convention recommendation (date-based, task-based)
   - Storage location
   - Typical use case
 
 - [ ] /memory load <name> documented
+
   - Restores full conversation state
   - Use case: Resume previous research
   - Example workflow
 
 - [ ] /memory delete <name> documented
+
   - Cleanup process
   - When to use
 
 - [ ] /memory clear documented
+
   - Immediate session history clear
   - vs. /quit difference
 
 - [ ] Practical workflow example
+
   - Session 1: Research, /memory save
   - Session 2: /memory load, continue
   - Session 3: /memory list
@@ -804,6 +892,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~600 word section
 
 **Reference**:
+
 - Plan section: LESSON 4, "The /memory Command"
 - FR: FR-013, FR-014
 
@@ -818,35 +907,42 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: When and how to use /compress and /copy; token management
 
 **Acceptance Criteria**:
+
 - [ ] Context window usage explained
+
   - Every prompt costs tokens
   - Longer context = more tokens per interaction
   - Status bar shows remaining
 
 - [ ] /compress operation documented
+
   - When to use (at 90% context, or 50+ messages)
   - What it does (summarizes conversation)
   - Trade-offs: nuance lost, core ideas preserved
   - Example before/after
 
 - [ ] /copy operation documented
+
   - Copies last response to clipboard
   - Avoids context pollution
   - Use case: Save data separately
 
 - [ ] Token minimization strategies:
+
   - Use @file instead of pasting
   - Use /mcp for bulk operations
   - Use /memory for archiving
   - Use /compress before hitting limit
 
 - [ ] Advanced: Token remaining indicator
+
   - Status bar reading: "Tokens: 842K/1M"
   - Strategy at 80%+: plan /compress or /memory save
 
 - [ ] ~500 word section
 
 **Reference**:
+
 - Plan section: LESSON 4, "Token Efficiency"
 - FR: FR-015
 
@@ -861,13 +957,16 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Three realistic workflows demonstrating all memory types
 
 **Acceptance Criteria**:
+
 - [ ] Workflow 1: Research Project (Save & Load)
+
   - Day 1: Research, analyze, /memory save
   - Day 8: /memory load, continue, /memory save v2
   - Shows: save_memory for persistence
   - Time span: Multiple sessions
 
 - [ ] Workflow 2: Codebase Learning (GEMINI.md Hierarchy)
+
   - Global GEMINI.md: Developer standards
   - Project GEMINI.md: Tech stack and goals
   - Feature GEMINI.md: Feature-specific guidance
@@ -875,6 +974,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
   - Team context: No repeating explanations
 
 - [ ] Workflow 3: Token Efficiency (Monitor & Compress)
+
   - Session start: 1M tokens
   - After 30 min: 400K remaining
   - At 100K: /compress to summarize
@@ -886,6 +986,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] Total: ~700 word section
 
 **Reference**:
+
 - Plan section: LESSON 4, "Memory in Action"
 - FR: FR-011, FR-012, FR-013, FR-014, FR-015
 
@@ -900,17 +1001,21 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Create example GEMINI.md files and /memory workflows
 
 **Acceptance Criteria**:
+
 - [ ] Example 1: Hierarchical GEMINI.md structure
+
   - 3-level example (global, project, feature)
   - All files complete and valid
   - Shown in context of workflow
 
 - [ ] Example 2: /memory workflow
+
   - Session 1: Commands shown
   - Session 2: Loading and continuing
   - Expected outputs
 
 - [ ] Example 3: Context token tracking
+
   - Session start state
   - After interactions: remaining tokens
   - /compress shown
@@ -919,6 +1024,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] Expected outputs documented
 
 **Reference**:
+
 - Plan section: LESSON 4, Code Examples
 - FR: FR-011, FR-012, FR-014
 
@@ -933,19 +1039,23 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Memory system exercises with model solutions
 
 **Acceptance Criteria**:
+
 - [ ] Exercise 1: Create Hierarchical GEMINI.md (8 min)
+
   - Create 3 GEMINI.md files at different levels
   - Add specified sections to each
   - Verify with /init that they load
   - Model GEMINI.md templates provided
 
 - [ ] Exercise 2: Memory Lifecycle (10 min)
+
   - Session 1: Research and /memory save
   - Session 2: /memory load and continue
   - Session 3: /memory list and view
   - Model solution: Commands and expected outputs
 
 - [ ] Exercise 3: Token Monitoring & Compression (5 min)
+
   - Start session with verbose context
   - Watch token remaining
   - Use /compress at 60%
@@ -953,6 +1063,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
   - Model solution: Before/after comparison
 
 - [ ] Exercise 4: Memory Types Decision (7 min)
+
   - 5 scenarios: choose memory type
   - Justify each choice
   - Model solutions with explanations
@@ -962,6 +1073,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] Time estimates realistic and validated
 
 **Reference**:
+
 - Plan section: LESSON 4, Exercises
 - Total time: 30 minutes exercises
 
@@ -976,19 +1088,23 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Create 3 closing prompts for memory system mastery
 
 **Acceptance Criteria**:
+
 - [ ] Prompt 1: GEMINI.md Design
+
   - Project-specific design based on type
   - Hierarchical structure template
   - Level-specific content
   - Expected outcome: Architecture blueprint
 
 - [ ] Prompt 2: Memory Strategy
+
   - Workflow-to-memory mapping
   - When to use each type
   - /compress and /memory save points
   - Expected outcome: Memory strategy guide
 
 - [ ] Prompt 3: Long-Running Project Management
+
   - Scope: 3-6 month project
   - /memory naming and organization
   - Retrieval strategy
@@ -998,6 +1114,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] All produce expected outputs
 
 **Reference**:
+
 - Plan section: LESSON 4, Try With AI
 
 **Effort**: 4-5 hours (including testing)
@@ -1011,6 +1128,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Visual guide for selecting memory type for given scenario
 
 **Acceptance Criteria**:
+
 - [ ] Decision tree covers common scenarios
 - [ ] Paths lead to: ephemeral, GEMINI.md, or save_memory
 - [ ] Format: Flowchart or decision table
@@ -1034,6 +1152,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Complete partial Playwright content; add installation, configuration, workflow
 
 **Acceptance Criteria**:
+
 - [ ] Installation steps documented (npm command)
 - [ ] Configuration (mcp-servers.json) provided
 - [ ] Workflow example: Competitive analysis (3 competitors)
@@ -1043,6 +1162,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~1000 word complete section
 
 **Reference**:
+
 - Plan section: LESSON 5, "MCP Server 1: Playwright"
 - Current file has partial content (100+ lines)
 - FR: FR-016, FR-017, FR-020
@@ -1058,6 +1178,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Documentation integration via Context7; practical API integration
 
 **Acceptance Criteria**:
+
 - [ ] What Context7 does (access to current docs)
 - [ ] Installation documented
 - [ ] Configuration (documentation sources) shown
@@ -1069,6 +1190,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~700 word section
 
 **Reference**:
+
 - Plan section: LESSON 5, "MCP Server 2: Context7"
 - FR: FR-016, FR-018, FR-020
 
@@ -1083,6 +1205,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Code collaboration via GitHub MCP
 
 **Acceptance Criteria**:
+
 - [ ] What GitHub MCP does (query repos, issues, PRs, search)
 - [ ] Installation documented
 - [ ] Setup: GitHub API token (GITHUB_TOKEN)
@@ -1095,6 +1218,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~600 word section
 
 **Reference**:
+
 - Plan section: LESSON 5, "MCP Server 3: GitHub"
 - FR: FR-016, FR-019, FR-020
 
@@ -1109,6 +1233,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: User-defined command automation via TOML files
 
 **Acceptance Criteria**:
+
 - [ ] What custom commands are (different from MCP servers)
 - [ ] Format: .gemini-commands.toml in project root
 - [ ] Basic syntax documented with examples
@@ -1130,6 +1255,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~1200 word section
 
 **Reference**:
+
 - Plan section: LESSON 5, "Custom Slash Commands"
 - FR: FR-021, FR-022, FR-023, FR-024, FR-025
 
@@ -1144,6 +1270,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Extension installation, evaluation, and security
 
 **Acceptance Criteria**:
+
 - [ ] What extensions are (pre-packaged capabilities)
 - [ ] Difference: vs. MCP servers, vs. custom commands
 - [ ] Installation process documented
@@ -1166,6 +1293,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~800 word section
 
 **Reference**:
+
 - Plan section: LESSON 5, "Extensions"
 - FR: FR-026, FR-027, FR-028, FR-029
 
@@ -1180,6 +1308,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: How systems work together (GEMINI.md + custom commands + MCP + extensions)
 
 **Acceptance Criteria**:
+
 - [ ] System 1: GEMINI.md (context/knowledge)
 - [ ] System 2: Custom commands (automation/workflow)
 - [ ] System 3: MCP servers (capabilities/integration)
@@ -1195,6 +1324,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] ~600 word section
 
 **Reference**:
+
 - Plan section: LESSON 5, "Integration Architecture"
 - FR: FR-020, FR-025, FR-030
 
@@ -1209,21 +1339,26 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Create realistic MCP, custom command, and extension examples
 
 **Acceptance Criteria**:
+
 - [ ] Example 1: Playwright MCP configuration
+
   - mcp-servers.json valid
   - Capabilities specified
 
 - [ ] Example 2: Custom TOML command with {{args}}
+
   - Realistic command definition
   - Multiple variables
   - Expected output documented
 
 - [ ] Example 3: GitHub MCP query
+
   - API token setup
   - Example queries
   - Expected outputs
 
 - [ ] Example 4: Custom command with !{command} execution
+
   - Shell integration
   - Output handling
 
@@ -1231,6 +1366,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] Expected outputs documented
 
 **Reference**:
+
 - Plan section: LESSON 5, Code Examples
 - FR: FR-017, FR-019, FR-021, FR-023
 
@@ -1245,13 +1381,16 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: MCP, custom commands, extensions exercises
 
 **Acceptance Criteria**:
+
 - [ ] Exercise 1: Install Playwright MCP (8 min)
+
   - Installation steps
   - Configuration in mcp-servers.json
   - Test: Browse and extract data
   - Model solution provided
 
 - [ ] Exercise 2: Create Custom Command (12 min)
+
   - Create .gemini-commands.toml
   - Define /research command
   - Define /analyze command
@@ -1259,12 +1398,14 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
   - Model solutions provided
 
 - [ ] Exercise 3: Security Evaluation (5 min)
+
   - Evaluate 2 fictional extensions
   - Apply security framework
   - Make decision: safe/caution/skip
   - Model solutions with rationale
 
 - [ ] Exercise 4: Integration Design (10 min)
+
   - Scenario: Analytics dashboard
   - Design: GEMINI.md, custom commands, MCP, extensions
   - Document architecture
@@ -1275,6 +1416,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] Time estimates realistic
 
 **Reference**:
+
 - Plan section: LESSON 5, Exercises
 - Total time: 35 minutes exercises
 
@@ -1289,7 +1431,9 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Create 4 closing prompts for advanced integration
 
 **Acceptance Criteria**:
+
 - [ ] Prompt 1: MCP Server Selection
+
   - Workflow analysis
   - MCP selection for business impact
   - Configuration design
@@ -1297,6 +1441,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
   - Expected outcome: MCP strategy
 
 - [ ] Prompt 2: Custom Command Library Design
+
   - Team process analysis
   - 3-5 custom commands designed
   - .gemini-commands.toml file generated
@@ -1304,6 +1449,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
   - Expected outcome: Team-ready command set
 
 - [ ] Prompt 3: Extension Security Evaluation
+
   - Real/fictional extension provided
   - Security evaluation applied
   - Risk assessment
@@ -1311,6 +1457,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
   - Expected outcome: Security decision
 
 - [ ] Prompt 4: Full Integration Architecture
+
   - Team context provided
   - Complete architecture designed
   - File structures shown
@@ -1322,6 +1469,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] All produce expected outputs
 
 **Reference**:
+
 - Plan section: LESSON 5, Try With AI
 
 **Effort**: 6-8 hours (including testing)
@@ -1335,6 +1483,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Common MCP connectivity issues and solutions
 
 **Acceptance Criteria**:
+
 - [ ] 5+ common issues documented:
   - "MCP server not connecting"
   - "Command timeout"
@@ -1356,6 +1505,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Advanced MCP usage patterns (error handling, rate limiting, caching)
 
 **Acceptance Criteria**:
+
 - [ ] Error handling in MCP workflows
 - [ ] Rate limiting strategies
 - [ ] Caching for performance
@@ -1380,7 +1530,8 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Create chapter-level README with learning outcomes and structure
 
 **Acceptance Criteria**:
-- [ ] File: `book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/README.md`
+
+- [ ] File: `apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/README.md`
 - [ ] Sections:
   - Overview (what this chapter teaches)
   - Learning outcomes (all 5 lessons)
@@ -1401,6 +1552,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Full chapter review before deployment
 
 **Acceptance Criteria**:
+
 - [ ] All 5 lessons complete
 - [ ] All code examples tested and working
 - [ ] All exercises have model solutions
@@ -1423,6 +1575,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Student self-assessment checklist for chapter
 
 **Acceptance Criteria**:
+
 - [ ] "Can you..." format questions for each major topic
 - [ ] Covers all 35 functional requirements
 - [ ] Organized by lesson
@@ -1439,6 +1592,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Description**: Guidance for instructors using this chapter
 
 **Acceptance Criteria**:
+
 - [ ] Common student misconceptions documented
 - [ ] Time management notes
 - [ ] Pacing recommendations
@@ -1460,6 +1614,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 ## Summary: Task Breakdown by Category
 
 ### MUST Tasks (Critical Path)
+
 - Lesson 1: 2 tasks
 - Lesson 2: 9 tasks
 - Lesson 3: 9 tasks
@@ -1469,6 +1624,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - **Total MUST**: 39 tasks
 
 ### SHOULD Tasks (High Priority)
+
 - Lesson 2: 1 task
 - Lesson 3: 1 task
 - Lesson 4: 1 task
@@ -1482,15 +1638,15 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 
 ## Effort Estimation
 
-| Phase | Min Hours | Max Hours | Story Points |
-|-------|-----------|-----------|--------------|
-| Lesson 1 | 3 | 5 | 1 |
-| Lesson 2 | 35 | 45 | 8-9 |
-| Lesson 3 | 25 | 35 | 6-7 |
-| Lesson 4 | 40 | 50 | 8-10 |
-| Lesson 5 | 65 | 85 | 13-17 |
-| Cross-lesson | 15 | 22 | 3-4 |
-| **TOTAL** | **183** | **242** | **39-52** |
+| Phase        | Min Hours | Max Hours | Story Points |
+| ------------ | --------- | --------- | ------------ |
+| Lesson 1     | 3         | 5         | 1            |
+| Lesson 2     | 35        | 45        | 8-9          |
+| Lesson 3     | 25        | 35        | 6-7          |
+| Lesson 4     | 40        | 50        | 8-10         |
+| Lesson 5     | 65        | 85        | 13-17        |
+| Cross-lesson | 15        | 22        | 3-4          |
+| **TOTAL**    | **183**   | **242**   | **39-52**    |
 
 **Estimated Project Duration**: 6-8 weeks (at 30 hrs/week development)
 
@@ -1501,6 +1657,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **All MUST tasks completed**: ✓ No chapter publication without completing all 39 MUST tasks
 
 **Quality Standards**:
+
 - [ ] No placeholder text remaining
 - [ ] All code examples tested and working (80%+ coverage)
 - [ ] All exercises have clear instructions and model solutions
@@ -1513,11 +1670,13 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] Grammar and spelling checked
 
 **Functional Requirements Coverage**:
+
 - [ ] FR-001 to FR-035 all addressed
 - [ ] Each FR traceable to specific lesson section
 - [ ] No FR left to interpretation
 
 **Success Criteria Achievement**:
+
 - [ ] Command recall: 90%+ (design prompts to test recall)
 - [ ] Configuration proficiency: 85%+ (exercise validation)
 - [ ] Memory system mastery: 80%+ (GEMINI.md creation)
@@ -1526,6 +1685,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 - [ ] Productivity improvement: 5-10x (documented in workflows)
 
 **Chapter Integration**:
+
 - [ ] Backward reference to Chapter 5 working
 - [ ] Forward reference to Chapter 7 smooth
 - [ ] Prerequisites clear
@@ -1541,6 +1701,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Probability**: High | **Impact**: High
 
 **Mitigation**:
+
 - Mark Lesson 5 as "Advanced: Optional for power users"
 - Core mastery in Lessons 1-4 fits 60-90 min target
 - Lesson 5 provides depth for those who want it
@@ -1553,6 +1714,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Probability**: Medium | **Impact**: Medium
 
 **Mitigation**:
+
 - Flag all version numbers with dates
 - Include "Check for latest" instructions
 - Add "Try With AI: Check current Gemini CLI version" prompts
@@ -1565,6 +1727,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Probability**: Medium | **Impact**: Medium
 
 **Mitigation**:
+
 - Provide 3 MCP examples (Playwright, Context7, GitHub)
 - If one breaks, others remain valid
 - Include troubleshooting guide
@@ -1577,6 +1740,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Probability**: Medium | **Impact**: Low
 
 **Mitigation**:
+
 - Progressive complexity: A2 → A2 → A2 → B1 → B1
 - Each lesson standalone
 - Clear prerequisites between lessons
@@ -1590,6 +1754,7 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 **Probability**: Medium | **Impact**: Medium
 
 **Mitigation**:
+
 - Build 30% contingency buffer (183-242 hours)
 - Validate exercise times during implementation
 - Adjust if lessons 2-3 take longer than estimated
@@ -1602,18 +1767,21 @@ This task checklist breaks Chapter 6 enhancement into specific, testable develop
 After this planning phase completes, next actions are:
 
 1. **Phase 2: Implementation** (content-implementer subagent)
+
    - Implement lessons in sequence (1-5)
    - Create content, examples, exercises
    - Submit each lesson for human review
    - Iterate on feedback
 
 2. **Phase 3: Validation** (validation-auditor subagent)
+
    - Verify all 35 FRs covered
    - Code examples tested
    - Exercises validated
    - "Try With AI" prompts working
 
 3. **Phase 4: Integration** (Human final review)
+
    - Narrative flow across lessons
    - Cross-chapter references working
    - Formatting and style consistent
@@ -1628,43 +1796,43 @@ After this planning phase completes, next actions are:
 
 ## Appendix: Functional Requirements Mapping
 
-| FR | Title | Lesson | Section |
-|-----|-------|--------|----------|
-| FR-001 | Slash command reference | 2 | Essential Commands |
-| FR-002 | Why Gemini CLI excels | 1 | Enhancement sections |
-| FR-003 | @ context syntax | 2 | @ Syntax |
-| FR-004 | ! shell syntax | 2 | ! Syntax |
-| FR-005 | Keyboard shortcuts | 2 | Keyboard Shortcuts |
-| FR-006 | settings.json configuration | 2, 3 | Configuration sections |
-| FR-007 | Per-session tool restrictions | 3 | Settings Hierarchy |
-| FR-008 | Command-line invocation modes | 2 | CLI Invocation Modes |
-| FR-009 | allowed_files whitelist | 3 | settings.json Deep Dive |
-| FR-010 | Disable tool categories | 3 | Tool Restrictions |
-| FR-011 | Ephemeral session memory | 4 | Three Memory Types |
-| FR-012 | GEMINI.md hierarchical | 2, 4 | GEMINI.md sections |
-| FR-013 | save_memory persistent | 4 | Three Memory Types |
-| FR-014 | /memory commands | 4 | /memory Command |
-| FR-015 | /compress, token management | 4 | Token Efficiency |
-| FR-016 | MCP server configuration | 5 | Playwright section |
-| FR-017 | Playwright MCP | 5 | Playwright section |
-| FR-018 | Context7 MCP | 5 | Context7 section |
-| FR-019 | GitHub MCP | 5 | GitHub section |
-| FR-020 | Practical MCP workflows | 5 | All MCP sections |
-| FR-021 | Custom slash commands TOML | 5 | Custom Commands |
-| FR-022 | {{args}} injection | 5 | Custom Commands |
-| FR-023 | !{command} execution | 5 | Custom Commands |
-| FR-024 | User vs. project scope | 5 | Custom Commands |
-| FR-025 | Team command sharing | 5 | Custom Commands |
-| FR-026 | Extension installation | 5 | Extensions |
-| FR-027 | Security evaluation | 5 | Extensions |
-| FR-028 | Troubleshooting | 5 | Troubleshooting |
-| FR-029 | Extension management | 5 | Extensions |
-| FR-030 | Advanced MCP patterns | 5 | Integration Architecture |
-| FR-031 | Checkpointing workflows | 2 | CLI Invocation Modes |
-| FR-032 | Conversation branching | 4 | Memory sections |
-| FR-033 | IDE integration | 2 | /ide command |
-| FR-034 | Sandboxing | 2 | --sandbox mode |
-| FR-035 | Token compression strategy | 4 | Token Efficiency |
+| FR     | Title                         | Lesson | Section                  |
+| ------ | ----------------------------- | ------ | ------------------------ |
+| FR-001 | Slash command reference       | 2      | Essential Commands       |
+| FR-002 | Why Gemini CLI excels         | 1      | Enhancement sections     |
+| FR-003 | @ context syntax              | 2      | @ Syntax                 |
+| FR-004 | ! shell syntax                | 2      | ! Syntax                 |
+| FR-005 | Keyboard shortcuts            | 2      | Keyboard Shortcuts       |
+| FR-006 | settings.json configuration   | 2, 3   | Configuration sections   |
+| FR-007 | Per-session tool restrictions | 3      | Settings Hierarchy       |
+| FR-008 | Command-line invocation modes | 2      | CLI Invocation Modes     |
+| FR-009 | allowed_files whitelist       | 3      | settings.json Deep Dive  |
+| FR-010 | Disable tool categories       | 3      | Tool Restrictions        |
+| FR-011 | Ephemeral session memory      | 4      | Three Memory Types       |
+| FR-012 | GEMINI.md hierarchical        | 2, 4   | GEMINI.md sections       |
+| FR-013 | save_memory persistent        | 4      | Three Memory Types       |
+| FR-014 | /memory commands              | 4      | /memory Command          |
+| FR-015 | /compress, token management   | 4      | Token Efficiency         |
+| FR-016 | MCP server configuration      | 5      | Playwright section       |
+| FR-017 | Playwright MCP                | 5      | Playwright section       |
+| FR-018 | Context7 MCP                  | 5      | Context7 section         |
+| FR-019 | GitHub MCP                    | 5      | GitHub section           |
+| FR-020 | Practical MCP workflows       | 5      | All MCP sections         |
+| FR-021 | Custom slash commands TOML    | 5      | Custom Commands          |
+| FR-022 | {{args}} injection            | 5      | Custom Commands          |
+| FR-023 | !{command} execution          | 5      | Custom Commands          |
+| FR-024 | User vs. project scope        | 5      | Custom Commands          |
+| FR-025 | Team command sharing          | 5      | Custom Commands          |
+| FR-026 | Extension installation        | 5      | Extensions               |
+| FR-027 | Security evaluation           | 5      | Extensions               |
+| FR-028 | Troubleshooting               | 5      | Troubleshooting          |
+| FR-029 | Extension management          | 5      | Extensions               |
+| FR-030 | Advanced MCP patterns         | 5      | Integration Architecture |
+| FR-031 | Checkpointing workflows       | 2      | CLI Invocation Modes     |
+| FR-032 | Conversation branching        | 4      | Memory sections          |
+| FR-033 | IDE integration               | 2      | /ide command             |
+| FR-034 | Sandboxing                    | 2      | --sandbox mode           |
+| FR-035 | Token compression strategy    | 4      | Token Efficiency         |
 
 ---
 
@@ -1679,11 +1847,12 @@ After this planning phase completes, next actions are:
 **Approved by**: [Pending user approval]
 
 **References**:
+
 - Specification: `specs/chapter-6-google-gemini-cli/spec.md` (referenced, not yet created)
 - Plan: `specs/chapter-6-google-gemini-cli/plan.md` (this document)
 - Constitution: `.specify/memory/constitution.md` v3.0.2
 - Output Styles: `.claude/output-styles/lesson.md`
-- Current Lessons: `book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/`
+- Current Lessons: `apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/`
 
 ---
 

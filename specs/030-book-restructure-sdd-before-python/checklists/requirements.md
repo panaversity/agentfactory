@@ -9,12 +9,14 @@
 ## Quality Checklist
 
 ### Content Quality
+
 - [x] No implementation details (languages, frameworks, APIs)
 - [x] Focused on user value and business needs
 - [x] Written for non-technical stakeholders
 - [x] All mandatory sections completed
 
 ### Requirement Completeness
+
 - [x] No [NEEDS CLARIFICATION] markers remain
 - [x] Requirements are testable and unambiguous
 - [x] Success criteria are measurable
@@ -25,6 +27,7 @@
 - [x] Dependencies and assumptions identified
 
 ### Feature Readiness
+
 - [x] All functional requirements have clear acceptance criteria
 - [x] User scenarios cover primary flows
 - [x] Evals-first pattern NOT applicable (infrastructure restructuring, not educational content)
@@ -34,11 +37,13 @@
 ## Issues Found
 
 ### CRITICAL (Blocks Planning)
+
 **None** - Specification is complete and unambiguous.
 
 ### MAJOR (Needs Refinement)
 
 1. **Chapter numbering shift for Part 7-12 excluded from scope**
+
    - Location: Lines 175-176 (Non-Goals section)
    - Problem: Non-goal states "Phase 1 does NOT include updating Part 7-12 chapter numbers in chapter-index.md (shift by +3)" but FR-001 requires updating chapter-index.md with "new 86-chapter structure". This creates ambiguity about whether Part 7-12 chapters need renumbering or not.
    - Current understanding: FR-001 implies complete chapter-index.md update (all 86 chapters), but non-goal explicitly excludes Part 7-12 renumbering
@@ -60,13 +65,15 @@
 ### MINOR (Enhancements)
 
 1. **Validation command for Docusaurus build missing**
+
    - Suggestion: Add specific command to SC-006 validation criteria
    - Enhancement: "Docusaurus build system successfully generates site... (validated via `npm run build` exits with code 0)"
 
 2. **File count verification method unspecified**
+
    - Location: SC-005
    - Suggestion: Add specific grep/find command for validation
-   - Enhancement: "Zero content files lost during migration (verified via `find book-source/docs/ -name '*.md' | wc -l` before and after)"
+   - Enhancement: "Zero content files lost during migration (verified via `find apps/learn-app/docs/ -name '*.md' | wc -l` before and after)"
 
 3. **Rollback procedure reference incomplete**
    - Location: Line 211 (Migration Strategy)
@@ -81,6 +88,7 @@
 ### Question 1: Part 7-12 Chapter Numbering Scope
 
 **Context**:
+
 ```
 FR-001: System MUST update specs/book/chapter-index.md with new 86-chapter structure (was 84 chapters, +2 from Part 4 expansion)
 ```
@@ -95,12 +103,12 @@ Non-Goals: Phase 1 does NOT include updating Part 7-12 chapter numbers in chapte
 
 **Suggested Answers**:
 
-| Option | Answer | Implications |
-|--------|--------|--------------|
-| A | **Parts 1-6 only**: Update chapter assignments for Parts 1-6, leave Part 7-12 as chapters 35-84 (creates 2-chapter gap) | Creates discontinuity: Part 6 ends at 36, Part 7 starts at 35. Requires Phase 2 to fix numbering gap. Simpler Phase 1. |
-| B | **All 12 parts**: Update chapter-index.md completely, renumber Part 7-12 from 35-84 to 38-87 | Complete consistency, no gaps, but increases Phase 1 scope by ~50 chapter entry updates in metadata file. |
-| C | **Hybrid**: Update chapter-index.md metadata only (no directory moves for Part 7+) | Metadata reflects final structure (38-87) but directories remain as-is until Phase 2. Separates concerns. |
-| Custom | Provide your own answer | Specify which chapters get updated in chapter-index.md and why |
+| Option | Answer                                                                                                                  | Implications                                                                                                           |
+| ------ | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| A      | **Parts 1-6 only**: Update chapter assignments for Parts 1-6, leave Part 7-12 as chapters 35-84 (creates 2-chapter gap) | Creates discontinuity: Part 6 ends at 36, Part 7 starts at 35. Requires Phase 2 to fix numbering gap. Simpler Phase 1. |
+| B      | **All 12 parts**: Update chapter-index.md completely, renumber Part 7-12 from 35-84 to 38-87                            | Complete consistency, no gaps, but increases Phase 1 scope by ~50 chapter entry updates in metadata file.              |
+| C      | **Hybrid**: Update chapter-index.md metadata only (no directory moves for Part 7+)                                      | Metadata reflects final structure (38-87) but directories remain as-is until Phase 2. Separates concerns.              |
+| Custom | Provide your own answer                                                                                                 | Specify which chapters get updated in chapter-index.md and why                                                         |
 
 **Priority**: HIGH - Determines FR-001 scope and affects chapter-index.md file modifications
 
@@ -111,6 +119,7 @@ Non-Goals: Phase 1 does NOT include updating Part 7-12 chapter numbers in chapte
 **Status**: NEEDS_CLARIFICATION
 
 **Readiness Score**: 8/10
+
 - Testability: 9/10 (excellent acceptance scenarios, measurable success criteria)
 - Completeness: 7/10 (one critical ambiguity about Part 7-12 scope)
 - Ambiguity: 8/10 (mostly precise, one contradiction between FR-001 and non-goals)
@@ -122,6 +131,7 @@ Specification is **exceptionally well-structured** with comprehensive user stori
 Once this single clarification is resolved, specification will be READY for planning.
 
 **Next Steps**:
+
 1. **Resolve Question 1** (Part 7-12 scope) - User must choose Option A, B, C, or provide custom clarification
 2. **Update FR-001 or Non-Goals section** to eliminate contradiction
 3. **Document decision** in Additional Context section explaining the chosen approach
@@ -138,23 +148,27 @@ Once this single clarification is resolved, specification will be READY for plan
 ## Specification Strengths (Exemplary Elements)
 
 ### Excellence in Testability
+
 - **User Story 1-4**: Each has "Independent Test" criteria demonstrating falsifiability
 - **Acceptance Scenarios**: All use Given-When-Then format with concrete file paths
 - **Success Criteria**: SC-001 through SC-007 are 100% measurable (file counts, directory existence, build success)
 
 ### Excellence in Completeness
+
 - **Edge Cases section**: Identifies 5 potential failure modes with solutions
 - **Constraints**: Both technical and process constraints explicitly defined
 - **Non-Goals**: Extensive list (8 items) clearly bounds Phase 1 scope
 - **Migration Strategy**: Sequenced operations prevent conflicts
 
 ### Excellence in Traceability
+
 - **Rationale section**: Explains WHY restructuring aligns with constitutional principle
 - **Priority justification**: Each user story explains priority reasoning
 - **Downstream Impacts**: Phase 2 dependencies clearly documented
 - **References**: Links to existing files (chapter-index.md, placeholder template)
 
 ### Constitutional Alignment
+
 - **Principle 1 (Spec Primacy)**: "Specifications are the new syntax" rationale drives entire restructuring
 - **Principle 4 (Coherent Structure)**: Migration strategy ensures no broken intermediate states
 - **Principle 6 (Anti-Convergence)**: Not applicable (infrastructure work)

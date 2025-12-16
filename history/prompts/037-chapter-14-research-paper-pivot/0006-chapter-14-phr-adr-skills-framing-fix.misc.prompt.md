@@ -9,17 +9,18 @@ feature: 037-chapter-14-research-paper-pivot
 branch: 037-chapter-14-research-paper-pivot
 user: mjs
 command: manual-review
-labels: [chapter-14, phr-framing, adr-framing, skills-framing, reusable-intelligence]
+labels:
+  [chapter-14, phr-framing, adr-framing, skills-framing, reusable-intelligence]
 links:
   spec: specs/037-chapter-14-research-paper-pivot/spec.md
   ticket: null
   adr: null
   pr: https://github.com/panaversity/ai-native-software-development/pull/314
 files:
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/01-spec-kit-plus-foundation.md
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/01-spec-kit-plus-foundation.summary.md
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/11-capstone.summary.md
-  - book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/README.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/01-spec-kit-plus-foundation.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/01-spec-kit-plus-foundation.summary.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/11-capstone.summary.md
+  - apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/README.md
 tests:
   - "grep for cross-project transfer language"
 ---
@@ -27,6 +28,7 @@ tests:
 ## Prompt
 
 User identified incorrect framing in Lesson 1 where PHRs were described as transferring between projects ("Project 2 references Project 1's PHRs"). User clarified:
+
 1. PHRs are auto-created within a project and are project-scoped - they do NOT transfer
 2. ADRs are similarly project-scoped
 3. Skills are USER-created (not auto-created), AGENT-invoked

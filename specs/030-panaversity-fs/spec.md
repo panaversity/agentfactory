@@ -7,7 +7,7 @@
 
 **ARCHITECTURE NOTE**: Originally designed for Node.js/Cloudflare Workers. Revised to Python MCP per user direction (2025-11-24). Deployment: Docker/systemd HTTP service, not edge runtime.
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - AI Agent Updates Lesson Content (Priority: P1)
 
@@ -95,11 +95,11 @@ The Docusaurus static site generator needs to fetch complete book content from P
 
 **Why this priority**: Publishing pipeline integration is essential for the complete workflow. Without it, content management has no public output, breaking the production chain.
 
-**Independent Test**: Can be tested by running `docusaurus build` with hydration script that calls PanaversityFS MCP tools, verifying all lessons/assets download to `book-source/docs/`, and build completes successfully.
+**Independent Test**: Can be tested by running `docusaurus build` with hydration script that calls PanaversityFS MCP tools, verifying all lessons/assets download to `apps/learn-app/docs/`, and build completes successfully.
 
 **Acceptance Scenarios**:
 
-1. **Given** PanaversityFS contains 50 lessons across 10 chapters, **When** `hydration-script.ts` runs during `docusaurus build`, **Then** all lessons download to `book-source/docs/[part]/[chapter]/[lesson].md`, all assets download to `book-source/static/assets/`, and Docusaurus build succeeds
+1. **Given** PanaversityFS contains 50 lessons across 10 chapters, **When** `hydration-script.ts` runs during `docusaurus build`, **Then** all lessons download to `apps/learn-app/docs/[part]/[chapter]/[lesson].md`, all assets download to `book-source/static/assets/`, and Docusaurus build succeeds
 2. **Given** a lesson file is corrupted in storage, **When** hydration script attempts download, **Then** build fails with clear error: "Failed to fetch lesson: part-1/chapter-01/lesson-01.md - storage returned 500"
 3. **Given** build runs in CI/CD environment, **When** hydration script authenticates, **Then** OAuth token retrieves from environment variable `PANAVERSITY_OAUTH_TOKEN` and MCP connection succeeds
 
@@ -117,7 +117,7 @@ The Docusaurus static site generator needs to fetch complete book content from P
 - **OAuth token expiration**: What happens when MCP client's token expires mid-operation? System detects 401 response, attempts token refresh using refresh token, retries operation once, fails with "authentication_expired" if refresh fails
 - **Docusaurus build timeout**: What happens if hydration script takes >10 minutes to download all content? Build system must support configurable timeout via environment variable, default 15 minutes, logs progress every 60 seconds to prevent CI timeout perception
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -188,7 +188,7 @@ The Docusaurus static site generator needs to fetch complete book content from P
 
 - **FR-035**: Hydration script (`docusaurus-hydration.py`) MUST run during `docusaurus build` phase, authenticate with PanaversityFS MCP server using API key from `PANAVERSITY_API_KEY` environment variable (OAuth deferred)
 - **FR-036**: Hydration script SHOULD use `get_book_archive` tool to download entire book in single request for performance. Script MAY fall back to individual file downloads if archive generation fails
-- **FR-037**: Hydration script MUST extract downloaded content to `book-source/docs/[part]/[chapter]/[lesson].md` and assets to `book-source/static/assets/`, preserving directory structure
+- **FR-037**: Hydration script MUST extract downloaded content to `apps/learn-app/docs/[part]/[chapter]/[lesson].md` and assets to `book-source/static/assets/`, preserving directory structure
 - **FR-038**: If hydration fails (storage unavailable, auth failure), Docusaurus build MUST fail with clear error message indicating root cause (archive download failure, extraction error, or individual file fetch failure)
 
 ### Key Entities
@@ -203,7 +203,7 @@ The Docusaurus static site generator needs to fetch complete book content from P
 - **Registry**: Central `registry.yaml` listing all books with metadata (book_id, title, storage_backend, status), single source of truth for book catalog
 - **Storage Backend**: One of [Local filesystem, Cloudflare R2, Supabase Storage, AWS S3], configured per-book, abstracted via OpenDAL
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 
@@ -226,7 +226,7 @@ The Docusaurus static site generator needs to fetch complete book content from P
 - **SC-017**: Analytics Engine logs capture all tool invocations with execution time, enabling 95th percentile latency monitoring
 - **SC-018**: Registry-storage consistency check on startup detects and auto-repairs desync conditions (orphan registry entries or missing directories) within 10 seconds
 
-## Non-Goals *(explicit scope boundaries)*
+## Non-Goals _(explicit scope boundaries)_
 
 - **AI-powered content generation**: PanaversityFS is a storage system, NOT a content intelligence system. Summary generation, content validation, and other AI operations are the responsibility of external agents (Claude Code, custom scripts, CI/CD pipelines). System only stores pre-generated summaries; it does not invoke LLM APIs or trigger automatic content generation.
 - **Vector search**: LanceDB integration for semantic search is explicitly excluded from initial scope. Current grep/glob search provides sufficient keyword-based discovery. Vector embeddings can be added later as Layer 3 intelligence without architectural changes.
@@ -238,7 +238,7 @@ The Docusaurus static site generator needs to fetch complete book content from P
 - **Content transformation**: No built-in markdown-to-HTML rendering, PDF generation, or format conversion. Docusaurus handles static site generation; other formats are out of scope.
 - **Analytics dashboard**: Observability data sent to Cloudflare Analytics Engine and Sentry, but no built-in dashboard UI. Users must use external tools (Grafana, Sentry UI) for visualization.
 
-## Assumptions *(environmental and contextual)*
+## Assumptions _(environmental and contextual)_
 
 - **OpenDAL availability**: Assumes OpenDAL Rust core (v0.45.0+) can be compiled to WASM for Cloudflare Workers OR Node.js bindings are available, supporting R2, S3, and Supabase Storage backends with stable APIs
 - **MCP SDK maturity**: Assumes @modelcontextprotocol/sdk v1.20.2+ provides stable server implementation with OAuth support
@@ -255,36 +255,43 @@ The Docusaurus static site generator needs to fetch complete book content from P
 ## Risks & Mitigations
 
 **Risk 1: Storage backend vendor lock-in**
+
 - **Likelihood**: Medium (OpenDAL abstracts storage, but R2-specific features may creep in)
 - **Impact**: High (difficult to migrate books if R2 becomes cost-prohibitive or unavailable)
 - **Mitigation**: Strictly use OpenDAL's lowest-common-denominator API. Avoid R2-specific features (Workers integration, Cache Reserve). Test with Local and S3 backends regularly to ensure portability. Document storage backend requirements in `book.yaml` schema.
 
 **Risk 2: Summary file desynchronization**
+
 - **Likelihood**: Medium (external agents may fail to update summaries when lessons change)
 - **Impact**: Low (summaries become outdated, but doesn't affect storage operations)
 - **Mitigation**: Document clear conventions for summary file naming (`.summary.md` suffix). Provide audit log queries to detect lessons modified without corresponding summary updates. External agents responsible for maintaining summary consistency.
 
 **Risk 3: Audit log size growth**
+
 - **Likelihood**: High (daily JSONL logs accumulate indefinitely without cleanup)
 - **Impact**: Low (storage cost increases, but functionality not affected)
 - **Mitigation**: Document manual archival process in operations guide. Consider future enhancement to compress logs older than 30 days. Monitor storage usage via health check endpoint.
 
 **Risk 4: OAuth token leakage in CI/CD logs**
+
 - **Likelihood**: Low (if developers follow security best practices)
 - **Impact**: High (unauthorized access to PanaversityFS, data corruption risk)
 - **Mitigation**: Document token handling in security guide: tokens must be stored in CI/CD secrets (GitHub Actions secrets, not environment variable logs). Implement token rotation policy (90-day expiry). Add Sentry alert for unusual API usage patterns.
 
 **Risk 5: Concurrent modification conflicts**
+
 - **Likelihood**: Low (agents typically work on different lessons)
 - **Impact**: Medium (operations fail, require retry with merge)
 - **Mitigation**: File hash-based conflict detection prevents data corruption. Provide clear error messages with merge suggestions. Consider future enhancement for optimistic locking via ETag headers if conflicts become frequent.
 
 **Risk 6: Docusaurus build timeout on large books**
+
 - **Likelihood**: Medium (hydration script may exceed 10-minute CI timeout for 1000+ lessons)
 - **Impact**: High (builds fail, content not published)
 - **Mitigation**: Make timeout configurable via `HYDRATION_TIMEOUT_MS` environment variable (default 15 minutes). Implement progress logging every 60 seconds. Consider future parallel download enhancement using Worker threads for books exceeding 500 lessons.
 
 **Risk 7: Storage backend migration data loss**
+
 - **Likelihood**: Low (if migration script tested thoroughly)
 - **Impact**: Critical (losing educational content is unacceptable)
 - **Mitigation**: Require migration dry-run mode showing file counts before actual transfer. Implement checksum verification after migration. Keep old backend read-only for 7 days post-migration as backup. Document rollback procedure.
@@ -292,12 +299,14 @@ The Docusaurus static site generator needs to fetch complete book content from P
 ## Dependencies
 
 **External Libraries**
+
 - **OpenDAL** (v0.45.0+): Storage abstraction library with Rust core (compiled to WASM for Cloudflare Workers) OR Node.js bindings, providing unified API for Local, R2, S3, Supabase backends
 - **@modelcontextprotocol/sdk** (v1.20.2+): TypeScript SDK for MCP server implementation
 - **@cloudflare/workers-oauth-provider** (v0.0.13+): OAuth 2.0 authentication library for Cloudflare Workers
 - **zod** (v3.24.2+): Schema validation for MCP tool parameters
 
 **Infrastructure Services**
+
 - **Cloudflare Workers**: Runtime environment for MCP server (OAuth, Analytics Engine, R2 integration)
 - **Cloudflare R2**: Primary storage backend (production)
 - **Cloudflare D1**: Optional SQLite database for hot audit log storage (alternative to direct JSONL writes)
@@ -307,11 +316,13 @@ The Docusaurus static site generator needs to fetch complete book content from P
 - **AWS S3**: Backup storage backend (optional)
 
 **Panaversity Internal Systems**
+
 - **Docusaurus build pipeline**: Depends on PanaversityFS MCP server for content hydration during static site generation
 - **AI agent infrastructure**: Agents (Claude Code, custom subagents) depend on MCP tools for content operations
 - **Book authoring workflows**: Current manual Git-based workflows must migrate to MCP tool-based operations
 
 **Development Tools**
+
 - **TypeScript** (v5.5.4+): MCP server and hydration script implementation
 - **Python** (v3.11+): OpenDAL integration, summary generation scripts
 - **Wrangler** (v4.10.0+): Cloudflare Workers deployment CLI
@@ -367,6 +378,7 @@ The Docusaurus static site generator needs to fetch complete book content from P
 ```
 
 **Storage Directory Structure** (Docusaurus-aligned per ADR-0018):
+
 ```
 panaversity-storage/
 ├── registry.yaml                       # Central book catalog
@@ -405,41 +417,47 @@ panaversity-storage/
 
 **MCP Tools Summary** (9 tools per ADR-0018):
 
-| Tool Name | Purpose | Key Parameters |
-|-----------|---------|----------------|
-| `read_content` | Fetch content (lesson or summary) | `book_id`, `path` |
-| `write_content` | Create/update content (upsert) | `book_id`, `path`, `content`, `file_hash?` |
-| `delete_content` | Remove content file | `book_id`, `path` |
-| `upload_asset` | Upload binary asset | `book_id`, `asset_type`, `filename`, `binary_data` |
-| `get_asset` | Retrieve asset metadata | `book_id`, `asset_type`, `filename` |
-| `list_assets` | List all assets | `book_id`, `asset_type?` |
-| `get_book_archive` | Download entire book as ZIP | `book_id` |
-| `list_books` | Get all books in registry | None |
-| `glob_search` | Find files by pattern | `book_id`, `pattern`, `all_books?` |
-| `grep_search` | Search content by regex | `book_id`, `pattern`, `all_books?` |
+| Tool Name          | Purpose                           | Key Parameters                                     |
+| ------------------ | --------------------------------- | -------------------------------------------------- |
+| `read_content`     | Fetch content (lesson or summary) | `book_id`, `path`                                  |
+| `write_content`    | Create/update content (upsert)    | `book_id`, `path`, `content`, `file_hash?`         |
+| `delete_content`   | Remove content file               | `book_id`, `path`                                  |
+| `upload_asset`     | Upload binary asset               | `book_id`, `asset_type`, `filename`, `binary_data` |
+| `get_asset`        | Retrieve asset metadata           | `book_id`, `asset_type`, `filename`                |
+| `list_assets`      | List all assets                   | `book_id`, `asset_type?`                           |
+| `get_book_archive` | Download entire book as ZIP       | `book_id`                                          |
+| `list_books`       | Get all books in registry         | None                                               |
+| `glob_search`      | Find files by pattern             | `book_id`, `pattern`, `all_books?`                 |
+| `grep_search`      | Search content by regex           | `book_id`, `pattern`, `all_books?`                 |
 
 **Note**: Summary files use content tools with `.summary.md` suffix convention. `get_audit_log` is internal/future.
 
-## Implementation Decisions *(resolved)*
+## Implementation Decisions _(resolved)_
 
 The following architectural decisions have been made to unblock development:
 
 1. **OAuth scope granularity**: **DECISION: Full Registry Access**
+
    - Rationale: For internal MVP, per-book authorization adds complexity without security benefit. Trust API token, audit agent operations. Fine-grained scopes can be added post-MVP if multi-tenant requirements emerge.
 
 2. **Audit log retention policy**: **DECISION: Indefinite Retention**
+
    - Rationale: Text logs are cheap on R2 (<$0.01/GB/month). Keep all audit data forever for training future agents and compliance. No auto-deletion policy needed.
 
 3. **Asset versioning**: **DECISION: Immutable (Overwrite Only)**
+
    - Rationale: Educational assets follow "latest is best" pattern. If version tracking needed, use filename conventions (`slides-v2.pdf`). No complex object versioning required for MVP.
 
 4. **Content validation hooks**: **DECISION: Post-Processing Only**
+
    - Rationale: Don't block write operations. Let agents save drafts freely. Run separate "Linter Agent" or CI checks to flag issues asynchronously. Pre-commit hooks kill velocity.
 
 5. **Multi-region replication**: **DECISION: Defer (R2 is Global by Default)**
+
    - Rationale: Cloudflare R2 is automatically globally distributed with no regional constraints. No explicit multi-region setup needed. Evaluate if latency issues arise post-launch.
 
 6. **Migration tooling scope**: **DECISION: CLI Tool Required for MVP**
+
    - Rationale: Cannot manually migrate 50+ lessons via MCP. Build simple CLI (`panaversity-fs migrate ./repo --to r2`) to seed initial content from Git repository.
 
 7. **Docusaurus cache invalidation**: **DECISION: Skip (Use Bulk Download)**

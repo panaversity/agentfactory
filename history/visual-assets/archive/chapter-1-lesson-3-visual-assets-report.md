@@ -11,6 +11,7 @@
 ## Identified Visual Opportunities
 
 ### VISUAL ASSET 1: Technology Adoption Speed Comparison Chart
+
 - **Type**: Grouped Horizontal Bar Chart
 - **Location**: Line 123 (after "The timeline for AI coding adoption is unprecedented:")
 - **Content**: Adoption speed comparison across 4 technology shifts - Internet (8y/15y), Cloud (10y/18y), Mobile (6y/12y), AI Coding (2y/3y projected) showing 50% and 80%+ adoption milestones
@@ -39,5 +40,5 @@
 
 ---
 
-**Prompts embedded in**: `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/03-software-disrupting-itself.md`
+**Prompts embedded in**: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/03-software-disrupting-itself.md`
 **Ready for image generation**: ✅ Yes

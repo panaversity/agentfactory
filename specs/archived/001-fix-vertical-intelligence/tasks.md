@@ -25,61 +25,61 @@ description: "Task list for fixing vertical intelligence core misalignment"
 
 #### Day 1-2: Constitution Update (FR-001 to FR-004)
 
-- [X] T001 Add header section explaining "Current Reality" vs "Future State" distinction in `.specify/memory/constitution.md`
-- [X] T002 Update Current Reality section: document 14 chapters across Parts 1/2/3/5 (not 55 chapters) - delegated to specs/book/chapter-index.md to avoid constant updates
-- [X] T003 Update Current Reality section: document semantic skills activation model (current implementation) - already in v3.0.0, plugin-based architecture
-- [X] T004 Move aspirational content (55 chapters, 13 parts, plugin architecture) to clearly-marked Future State section
-- [X] T005 Update terminology throughout constitution: keep "lessons" terminology as-is (no change needed)
-- [X] T006 Document two-level chapter structure explicitly: delegated to output-styles templates
-- [X] T007 Update book statistics: clarify counts - delegated to specs/book/chapter-index.md for current status
-- [X] T008 Add cross-references linking Current Reality sections to corresponding Future State sections
-- [X] T009 Run AI validation scan comparing old vs new constitution terminology, generate evidence report in `specs/001-fix-vertical-intelligence/validation/layer-constitution-validation.md`
-- [X] T010 Human review: Domain expert approved constitution changes including v3.0.1 evals-first philosophy and authorized Phase 1 merge ✓
+- [x] T001 Add header section explaining "Current Reality" vs "Future State" distinction in `.specify/memory/constitution.md`
+- [x] T002 Update Current Reality section: document 14 chapters across Parts 1/2/3/5 (not 55 chapters) - delegated to specs/book/chapter-index.md to avoid constant updates
+- [x] T003 Update Current Reality section: document semantic skills activation model (current implementation) - already in v3.0.0, plugin-based architecture
+- [x] T004 Move aspirational content (55 chapters, 13 parts, plugin architecture) to clearly-marked Future State section
+- [x] T005 Update terminology throughout constitution: keep "lessons" terminology as-is (no change needed)
+- [x] T006 Document two-level chapter structure explicitly: delegated to output-styles templates
+- [x] T007 Update book statistics: clarify counts - delegated to specs/book/chapter-index.md for current status
+- [x] T008 Add cross-references linking Current Reality sections to corresponding Future State sections
+- [x] T009 Run AI validation scan comparing old vs new constitution terminology, generate evidence report in `specs/001-fix-vertical-intelligence/validation/layer-constitution-validation.md`
+- [x] T010 Human review: Domain expert approved constitution changes including v3.0.1 evals-first philosophy and authorized Phase 1 merge ✓
 
 #### Day 3-4: Output Styles Rewrite (FR-005 to FR-008)
 
-- [X] T011 Rewrite `.claude/output-styles/chapters.md`: correct structure to Part (Title-Case) → Chapter (lowercase) → readme.md (lowercase) ✓
-- [X] T012 Add actual example from Chapter 1 to chapters.md: readme.md + 8 lesson files with descriptive names (01-moment_that_changed_everything.md style) ✓
-- [X] T013 Update all terminology in chapters.md: kept "lessons" terminology (per user feedback), "13 parts aspirational" (not "7 parts") ✓
-- [X] T014 Update `.claude/output-styles/lesson.md`: include actual YAML frontmatter example from Chapter 1, Lesson 1 (01-moment_that_changed_everything.md) ✓
-- [X] T015 Document two-level structure in lesson.md: Chapter readme.md (overview + "What You'll Learn") vs Lesson files (YAML + content + "Try With AI") ✓
-- [X] T016 Add metadata fields in YAML frontmatter: generated_by, source_spec, created, last_modified, git_author, workflow, version (changed from HTML comments to YAML per user feedback) ✓
-- [X] T017 Add policy note for lesson authors: Within chapter, each lesson must end with single "Try With AI" section (no "Key Takeaways" or "What's Next") - already documented ✓
-- [X] T018 Run AI validation comparing output styles against actual Chapter 1 structure, report discrepancies in `specs/001-fix-vertical-intelligence/validation/layer-output-styles-validation.md` ✓
-- [X] T019 Human review: Domain expert approved template corrections with 3 adjustments: (1) descriptive filenames confirmed good, (2) metadata moved to YAML frontmatter instead of HTML comments, (3) added 3 additional metadata fields (last_modified, version) ✓
+- [x] T011 Rewrite `.claude/output-styles/chapters.md`: correct structure to Part (Title-Case) → Chapter (lowercase) → readme.md (lowercase) ✓
+- [x] T012 Add actual example from Chapter 1 to chapters.md: readme.md + 8 lesson files with descriptive names (01-moment_that_changed_everything.md style) ✓
+- [x] T013 Update all terminology in chapters.md: kept "lessons" terminology (per user feedback), "13 parts aspirational" (not "7 parts") ✓
+- [x] T014 Update `.claude/output-styles/lesson.md`: include actual YAML frontmatter example from Chapter 1, Lesson 1 (01-moment_that_changed_everything.md) ✓
+- [x] T015 Document two-level structure in lesson.md: Chapter readme.md (overview + "What You'll Learn") vs Lesson files (YAML + content + "Try With AI") ✓
+- [x] T016 Add metadata fields in YAML frontmatter: generated_by, source_spec, created, last_modified, git_author, workflow, version (changed from HTML comments to YAML per user feedback) ✓
+- [x] T017 Add policy note for lesson authors: Within chapter, each lesson must end with single "Try With AI" section (no "Key Takeaways" or "What's Next") - already documented ✓
+- [x] T018 Run AI validation comparing output styles against actual Chapter 1 structure, report discrepancies in `specs/001-fix-vertical-intelligence/validation/layer-output-styles-validation.md` ✓
+- [x] T019 Human review: Domain expert approved template corrections with 3 adjustments: (1) descriptive filenames confirmed good, (2) metadata moved to YAML frontmatter instead of HTML comments, (3) added 3 additional metadata fields (last_modified, version) ✓
 
 #### Day 5: Chapter Index Verification (FR-013 to FR-015)
 
 **Note**: Originally planned to create PROJECT-STRUCTURE-REALITY.md, but **specs/book/chapter-index.md already exists** and serves this purpose. Tasks refocused on verification and enhancement.
 
-- [X] T020 Verify `specs/book/chapter-index.md` accurately reflects current chapter status - found 14 implemented chapters (not 5) ✓
-- [X] T021 Add completion status markers (✅ = exists, 📋 = planned) - already present, corrected from 5 to 14 implemented ✓
-- [X] T022 Verify directory structure documentation in `specs/book/directory-structure.md` is current - verified accurate ✓
-- [X] T023 Verify output-styles templates reference correct file structure examples - verified chapters.md and lesson.md reference chapter-index.md correctly ✓
-- [X] T024 Update output-styles if needed to match actual content structure - completed in T011-T019 ✓
-- [X] T025 Verify constitution cross-references to chapter-index.md are correct - verified in T001-T009 ✓
-- [X] T026 Verify subagent instructions reference chapter-index.md for current status - deferred to T029-T042 (Week 2) ✓
-- [X] T027 Run AI validation verifying chapter-index.md matches actual book-source/docs/ structure - validation report created with 19 corrections ✓
-- [X] T028 Human review: Domain expert confirmed chapter-index.md accurately represents reality + added constitutional update for evals-first development (v3.0.1) ✓
+- [x] T020 Verify `specs/book/chapter-index.md` accurately reflects current chapter status - found 14 implemented chapters (not 5) ✓
+- [x] T021 Add completion status markers (✅ = exists, 📋 = planned) - already present, corrected from 5 to 14 implemented ✓
+- [x] T022 Verify directory structure documentation in `specs/book/directory-structure.md` is current - verified accurate ✓
+- [x] T023 Verify output-styles templates reference correct file structure examples - verified chapters.md and lesson.md reference chapter-index.md correctly ✓
+- [x] T024 Update output-styles if needed to match actual content structure - completed in T011-T019 ✓
+- [x] T025 Verify constitution cross-references to chapter-index.md are correct - verified in T001-T009 ✓
+- [x] T026 Verify subagent instructions reference chapter-index.md for current status - deferred to T029-T042 (Week 2) ✓
+- [x] T027 Run AI validation verifying chapter-index.md matches actual apps/learn-app/docs/ structure - validation report created with 19 corrections ✓
+- [x] T028 Human review: Domain expert confirmed chapter-index.md accurately represents reality + added constitutional update for evals-first development (v3.0.1) ✓
 
 ### Week 2: Execution Layer Fixes + End-to-End Validation
 
 #### Day 6-7: Subagent Instruction Alignment (FR-009 to FR-012)
 
-- [X] T029 Update `.claude/agents/chapter-planner.md`: remove hardcoded skill counts ("8 skills", "9 skills") - removed hardcoded counts, added dynamic discovery from `.claude/skills/`, added evals-first validation ✓
-- [X] T030 Add reference to specs/book/chapter-index.md in chapter-planner.md for current chapter status - added verification step with current count (14 chapters) ✓
-- [X] T031 Update chapter-planner.md output specification: reference output-styles templates for structure - corrected `chapter-readme.md` → `chapters.md`, added `lesson.md` reference ✓
-- [X] T032 Verify terminology in chapter-planner.md matches actual usage (keep "lessons" terminology) - verified mixed "sections/lessons" is correct per chapter type ✓
-- [X] T033 Add instruction to chapter-planner.md: map skills with CEFR proficiency levels per skills-proficiency-mapper - already comprehensive (lines 107-144), no changes needed ✓
-- [X] T034 Update `.claude/agents/content-implementer.md`: reference output-styles for structure examples - already present (line 83), no additional updates needed ✓
-- [X] T035 Add reference to specs/book/chapter-index.md and book-source/docs/ for structure examples - already present (lines 150, 182), added book-source verification in step 5 ✓
-- [X] T036 Update content-implementer.md to generate metadata comments showing: Generated by (subagent + version), Source spec (path), Created (date), Git author, Workflow (command) - added 7 metadata fields in YAML frontmatter (lines 88, 97, 197-200) ✓
-- [X] T037 Clarify two-level output in content-implementer.md: reference output-styles/chapters.md and lesson.md for structure - references already present throughout ✓
-- [X] T038 Update `.claude/agents/validation-auditor.md`: remove hardcoded skill count references - removed "All 9" and "8 domain skills", added dynamic discovery (lines 44, 501) ✓
-- [X] T039 Add validation checks to validation-auditor.md: verify against output-styles templates and chapter-index.md - added validation steps (lines 89-90) ✓
-- [X] T040 Add reference to specs/book/chapter-index.md in validation-auditor.md as current status reference - added chapter context validation (line 89) ✓
-- [X] T041 Run AI scan of each subagent file, flag remaining contradictions in `specs/001-fix-vertical-intelligence/validation/layer-subagents-validation.md` - comprehensive validation report created with 12/12 updates documented ✓
-- [X] T042 Human review: Domain expert approved subagent alignment for shipping despite old chapters needing redesign ✓
+- [x] T029 Update `.claude/agents/chapter-planner.md`: remove hardcoded skill counts ("8 skills", "9 skills") - removed hardcoded counts, added dynamic discovery from `.claude/skills/`, added evals-first validation ✓
+- [x] T030 Add reference to specs/book/chapter-index.md in chapter-planner.md for current chapter status - added verification step with current count (14 chapters) ✓
+- [x] T031 Update chapter-planner.md output specification: reference output-styles templates for structure - corrected `chapter-readme.md` → `chapters.md`, added `lesson.md` reference ✓
+- [x] T032 Verify terminology in chapter-planner.md matches actual usage (keep "lessons" terminology) - verified mixed "sections/lessons" is correct per chapter type ✓
+- [x] T033 Add instruction to chapter-planner.md: map skills with CEFR proficiency levels per skills-proficiency-mapper - already comprehensive (lines 107-144), no changes needed ✓
+- [x] T034 Update `.claude/agents/content-implementer.md`: reference output-styles for structure examples - already present (line 83), no additional updates needed ✓
+- [x] T035 Add reference to specs/book/chapter-index.md and apps/learn-app/docs/ for structure examples - already present (lines 150, 182), added book-source verification in step 5 ✓
+- [x] T036 Update content-implementer.md to generate metadata comments showing: Generated by (subagent + version), Source spec (path), Created (date), Git author, Workflow (command) - added 7 metadata fields in YAML frontmatter (lines 88, 97, 197-200) ✓
+- [x] T037 Clarify two-level output in content-implementer.md: reference output-styles/chapters.md and lesson.md for structure - references already present throughout ✓
+- [x] T038 Update `.claude/agents/validation-auditor.md`: remove hardcoded skill count references - removed "All 9" and "8 domain skills", added dynamic discovery (lines 44, 501) ✓
+- [x] T039 Add validation checks to validation-auditor.md: verify against output-styles templates and chapter-index.md - added validation steps (lines 89-90) ✓
+- [x] T040 Add reference to specs/book/chapter-index.md in validation-auditor.md as current status reference - added chapter context validation (line 89) ✓
+- [x] T041 Run AI scan of each subagent file, flag remaining contradictions in `specs/001-fix-vertical-intelligence/validation/layer-subagents-validation.md` - comprehensive validation report created with 12/12 updates documented ✓
+- [x] T042 Human review: Domain expert approved subagent alignment for shipping despite old chapters needing redesign ✓
 
 #### Day 8-9: Cross-Layer Validation Script (FR-016 to FR-018)
 
@@ -114,9 +114,10 @@ description: "Task list for fixing vertical intelligence core misalignment"
 - [ ] T068 Human review: Domain expert examines test chapter output, confirms zero manual corrections needed, approves metrics as baseline
 
 **Phase 1 Quick Validation** (completed before merge):
-- [X] Quick validation check: Run validation-auditor on Chapters 31 & 32 to verify updated subagents work correctly
-- [X] Results: 95% compliant with constitution v3.0.1, subagents functional, ready for writer handoff
-- [X] Report: `specs/001-fix-vertical-intelligence/validation/quick-subagent-check.md`
+
+- [x] Quick validation check: Run validation-auditor on Chapters 31 & 32 to verify updated subagents work correctly
+- [x] Results: 95% compliant with constitution v3.0.1, subagents functional, ready for writer handoff
+- [x] Report: `specs/001-fix-vertical-intelligence/validation/quick-subagent-check.md`
 
 **Phase 1 Checkpoint**: T001-T042 complete. SC-001 to SC-004 validated. Ready for merge and writer handoff.
 
@@ -332,19 +333,23 @@ description: "Task list for fixing vertical intelligence core misalignment"
 ### Parallel Opportunities
 
 **Phase 1**:
+
 - T002-T003 (constitution sections) can run in parallel
 - T011-T015 (output styles files) can be updated in parallel
 - T021-T026 (PROJECT-STRUCTURE-REALITY sections) can be written in parallel
 - T029-T040 (subagent files) can be updated in parallel
 
 **Phase 2 Week 3**:
+
 - T069, T070, T071 (benchmark creation for 3 subagents) can run in parallel
 - T072, T073, T074 (gold standard creation for 3 subagents) can run in parallel
 
 **Phase 2 Week 4**:
+
 - T105, T106 (GitHub issue templates) can be created in parallel
 
 **Phase 2 Week 6**:
+
 - T149-T156 (Multi-model orchestration) can overlap with T166-T173 (Cost control) - different systems
 
 ---
@@ -382,6 +387,7 @@ Task: "Update terminology throughout constitution..." (T005)
 ### Staged Rollout (Minimize Disruption)
 
 **Phase 1 Merge** (Days 11-12 after Day 10 validation):
+
 1. Merge constitution changes first (lowest risk)
 2. Merge output styles (medium risk, templates only)
 3. Merge PROJECT-STRUCTURE-REALITY.md (no risk, new file)
@@ -390,6 +396,7 @@ Task: "Update terminology throughout constitution..." (T005)
 6. Monitor for 2 days (Days 13-14), ready to hotfix
 
 **Phase 2 Rollout** (incremental):
+
 1. Week 3: Internal evaluation framework (no user impact)
 2. Week 4: User feedback (optional, non-intrusive)
 3. Week 5: Adaptive intelligence (background processes)

@@ -3,7 +3,7 @@
 **Feature**: Chapter 21: Exception Handling (Part 4, Python Fundamentals)
 **Input**: Design documents from `/specs/015-part-4-chapter-21/`
 **Prerequisites**: spec.md ✓, plan.md ✓
-**Output**: 5 lessons in `book-source/docs/04-Part-4-Python-Fundamentals/21-exception-handling/`
+**Output**: 5 lessons in `apps/learn-app/docs/04-Part-4-Python-Fundamentals/21-exception-handling/`
 
 **Organization**: Tasks are grouped by lesson (mapped to user stories) to enable independent lesson implementation and validation.
 
@@ -15,7 +15,7 @@
 - **[Lesson]**: Which lesson this task belongs to (L1, L2, L3, L4, L5)
 - Include exact file paths in descriptions
 
-**Path Convention**: All lessons under `book-source/docs/04-Part-4-Python-Fundamentals/21-exception-handling/`
+**Path Convention**: All lessons under `apps/learn-app/docs/04-Part-4-Python-Fundamentals/21-exception-handling/`
 
 ---
 
@@ -23,8 +23,8 @@
 
 **Purpose**: Initialize chapter directory structure and shared resources
 
-- [ ] T001 Create chapter directory: `book-source/docs/04-Part-4-Python-Fundamentals/21-exception-handling/`
-- [ ] T002 Create chapter readme: `book-source/docs/04-Part-4-Python-Fundamentals/21-exception-handling/readme.md`
+- [ ] T001 Create chapter directory: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/21-exception-handling/`
+- [ ] T002 Create chapter readme: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/21-exception-handling/readme.md`
 - [ ] T003 [P] Validate Python 3.14+ environment for code examples
 - [ ] T004 [P] Set up code validation workflow (all examples must run)
 
@@ -39,12 +39,14 @@
 **Independent Test**: Student can write try/except catching 2+ different exception types with appropriate handling
 
 **Learning Objectives** (from plan):
+
 - Understand what exceptions are and why they occur
 - Write basic try/except blocks
 - Recognize ValueError, TypeError, ZeroDivisionError by name
 - Read tracebacks to find error location
 
 **Content Requirements** (from plan):
+
 - 4 code examples (all with type hints, Python 3.14+)
 - 3 progressive exercises
 - 4 CoLearning elements (💬🎓🚀✨)
@@ -85,12 +87,14 @@
 **Independent Test**: Student writes code with try/except/else/finally correctly predicting which blocks run
 
 **Learning Objectives** (from plan):
+
 - Write multiple except blocks for different error types
 - Use else block (runs only if no exception)
 - Use finally block (runs regardless, guaranteed execution)
 - Predict control flow through all 4 blocks
 
 **Content Requirements**:
+
 - 4 code examples
 - 3 exercises
 - 4 CoLearning elements
@@ -132,11 +136,13 @@
 **Independent Test**: Student writes function raising custom exception + caller catching it with meaningful error recovery
 
 **Learning Objectives** (from plan):
+
 - Write functions that check preconditions and raise exceptions when violated
 - Create custom exception classes inheriting from Exception
 - Write error messages that explain what went wrong and why
 
 **Content Requirements**:
+
 - 4 code examples
 - 3 exercises
 - 4 CoLearning elements
@@ -177,12 +183,14 @@
 **Independent Test**: Student applies appropriate error handling strategy to given scenario and justifies choice
 
 **Learning Objectives** (from plan):
+
 - Apply retry logic for transient errors
 - Implement fallback values for recoverable errors
 - Use graceful degradation when feature unavailable
 - Log errors for debugging without crashing program
 
 **Content Requirements**:
+
 - 4 code examples
 - 3 exercises
 - 4 CoLearning elements
@@ -224,12 +232,14 @@
 **Independent Test**: Parser handles 4+ error types gracefully, provides helpful feedback, reports summary
 
 **Learning Objectives** (from plan):
+
 - Integrate exception handling from Lessons 1-4 in realistic project
 - Test error handling with intentional edge cases
 - Validate robustness (no crashes, helpful user feedback)
 - Demonstrate specification → validation → implementation cycle
 
 **Content Requirements**:
+
 - Capstone specification from spec.md
 - Validation steps and expected outcomes
 - 4 CoLearning elements (focused on testing and debugging)
@@ -292,6 +302,7 @@
 ## Dependencies & Lesson Completion Order
 
 **Strict Sequential Dependencies**:
+
 ```
 Phase 1 (Setup) → Phase 2 (Lesson 1) → Phase 3 (Lesson 2) → Phase 4 (Lesson 3) → Phase 5 (Lesson 4) → Phase 6 (Lesson 5) → Phase 7 (Polish)
 ```
@@ -321,10 +332,12 @@ Phase 1 (Setup) → Phase 2 (Lesson 1) → Phase 3 (Lesson 2) → Phase 4 (Lesso
 ## Implementation Strategy
 
 **MVP Scope** (Minimum Viable Product):
+
 - **Phase 1-2**: Lesson 1 (Exception Fundamentals) only
 - **Why**: Establishes foundation; independently testable; delivers immediate value
 
 **Incremental Delivery**:
+
 1. **Sprint 1**: Lesson 1 (foundation)
 2. **Sprint 2**: Lesson 2 (multi-block handling)
 3. **Sprint 3**: Lesson 3 (raising/custom exceptions)
@@ -338,16 +351,16 @@ Phase 1 (Setup) → Phase 2 (Lesson 1) → Phase 3 (Lesson 2) → Phase 4 (Lesso
 
 ## Task Summary
 
-| Phase | Tasks | Parallelizable | Sequential | Focus |
-|-------|-------|---------------|-----------|-------|
-| 1: Setup | 4 | 2 | 2 | Chapter infrastructure |
-| 2: Lesson 1 | 21 | 15 | 6 | Exception fundamentals (A2) |
-| 3: Lesson 2 | 20 | 14 | 6 | Multi-block handling (A2-B1) |
-| 4: Lesson 3 | 19 | 13 | 6 | Raising/custom exceptions (B1) |
-| 5: Lesson 4 | 20 | 14 | 6 | Error handling strategies (B1) |
-| 6: Lesson 5 | 22 | 4 | 18 | Capstone integration (B1) |
-| 7: Polish | 13 | 12 | 1 | Validation and publication |
-| **TOTAL** | **119** | **74** | **45** | **5 lessons + polish** |
+| Phase       | Tasks   | Parallelizable | Sequential | Focus                          |
+| ----------- | ------- | -------------- | ---------- | ------------------------------ |
+| 1: Setup    | 4       | 2              | 2          | Chapter infrastructure         |
+| 2: Lesson 1 | 21      | 15             | 6          | Exception fundamentals (A2)    |
+| 3: Lesson 2 | 20      | 14             | 6          | Multi-block handling (A2-B1)   |
+| 4: Lesson 3 | 19      | 13             | 6          | Raising/custom exceptions (B1) |
+| 5: Lesson 4 | 20      | 14             | 6          | Error handling strategies (B1) |
+| 6: Lesson 5 | 22      | 4              | 18         | Capstone integration (B1)      |
+| 7: Polish   | 13      | 12             | 1          | Validation and publication     |
+| **TOTAL**   | **119** | **74**         | **45**     | **5 lessons + polish**         |
 
 **Parallel Opportunities**: 62% of tasks (74/119) can run in parallel within their phase
 **Critical Path**: 45 sequential tasks determine minimum timeline
@@ -357,22 +370,26 @@ Phase 1 (Setup) → Phase 2 (Lesson 1) → Phase 3 (Lesson 2) → Phase 4 (Lesso
 ## Policy Notes for Lesson Authors
 
 **Lesson Closure Pattern** (Constitution Mandate):
+
 - Every lesson MUST end with "Try With AI" section containing exactly 4 prompts
 - NO "Key Takeaways", "Summary", "What's Next", or "Completion Checklist" after "Try With AI"
 - Prompt 4 provides cognitive closure through synthesis/reflection
 
 **AI Tool References**:
+
 - Part 1 (before tool onboarding): Use ChatGPT web in "Try With AI" sections
 - Part 2+ (after Claude Code/Gemini CLI introduction): Instruct learners to use their preferred AI companion tool
 - Optionally provide both CLI and web variants for flexibility
 
 **No SDD Terminology in Part 4**:
+
 - Use "describe intent" (NOT "write specification")
 - Use "type hints and clear code" (NOT "formal specifications")
 - References to AIDD from Part 1 are acceptable for context
 - Formal SDD taught in Part 5 (Chapters 30+)
 
 **Forward References**:
+
 - Zero references to Chapters 22+ content
 - Chapter 21 scope only (exception handling)
 - Non-goals explicitly listed in spec.md (context managers deep dive, async exceptions, logging configuration deferred)

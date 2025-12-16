@@ -1,6 +1,6 @@
 # Lesson 5 Validation Report: Cursor AI Features and Workflows
 
-**File**: `book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/05-cursor-ai-features-and-workflows.md`
+**File**: `apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/05-cursor-ai-features-and-workflows.md`
 **Date**: 2025-11-20
 **Validator**: content-implementer v1.0.0
 
@@ -22,12 +22,14 @@
 **Requirement**: Students EXPERIENCE Three Roles (AI as Teacher/Student/Co-Worker) through natural collaborative narrative. Role labels MUST NOT appear as pedagogical exposition.
 
 **Grep Check**:
+
 ```bash
 grep -i "AI as Teacher\|AI as Student\|AI as Co-Worker\|What you learned:\|What AI learned:" 05-cursor-ai-features-and-workflows.md
 → RESULT: 0 matches ✅
 ```
 
 **Verification**:
+
 - All Three Roles demonstrated through NATURAL dialogue examples
 - Example: "Building an Authentication Service Through Conversation" shows AI teaching, student refining, convergence—without explicit role labels
 - Natural section headings: "Exploring Authentication Options", "Refining Based on Project Reality", "What Emerged from Collaboration"
@@ -38,6 +40,7 @@ grep -i "AI as Teacher\|AI as Student\|AI as Co-Worker\|What you learned:\|What 
 **Requirement**: All executable code blocks have demonstrated output or validation within context.
 
 **Code Blocks Found**:
+
 - Multi-turn conversation example (authentication flow) - Text-based
 - Python password hashing code - Example provided with explanation
 - Diff editor example - Annotated with changes explanation
@@ -45,6 +48,7 @@ grep -i "AI as Teacher\|AI as Student\|AI as Co-Worker\|What you learned:\|What 
 - Flask endpoint pseudocode - Conceptual, not runnable
 
 **Verification**:
+
 - ✅ Code examples show WHAT happens (hashing, verification, diffing)
 - ✅ Conceptual examples (conversation flows) include expected outcomes
 - ✅ All claims about tools verified through description or example
@@ -55,6 +59,7 @@ grep -i "AI as Teacher\|AI as Student\|AI as Co-Worker\|What you learned:\|What 
 **Requirement**: Lesson MUST end with "Try With AI" section (or similar activity), NOT with summary/key takeaways/what's next.
 
 **File Structure Check**:
+
 ```
 ...
 ## Orchestrating Complex Features With Cursor
@@ -66,6 +71,7 @@ grep -i "AI as Teacher\|AI as Student\|AI as Co-Worker\|What you learned:\|What 
 ```
 
 **Verification**:
+
 - ✅ Last heading before EOF: "## Try With AI"
 - ✅ NO "Key Takeaways" section
 - ✅ NO "What's Next" section
@@ -77,6 +83,7 @@ grep -i "AI as Teacher\|AI as Student\|AI as Co-Worker\|What you learned:\|What 
 **Requirement**: Uses "proficiency_level" (not deprecated "cefr_level"), cognitive load matches tier.
 
 **YAML Frontmatter Check**:
+
 ```yaml
 proficiency_level: NOT EXPLICITLY STATED (inherits B1 from skills metadata)
 skills:
@@ -87,6 +94,7 @@ skills:
 ```
 
 **Verification**:
+
 - ✅ Uses "proficiency" field in skills (B1 tier)
 - ✅ Cognitive load ANALYSIS:
   - New concepts: Multi-turn conversation, diff editing, context windows, Claude Rules, prompt design, context management, threading, orchestration, debugging
@@ -106,6 +114,7 @@ skills:
 **1. AI as Teacher (Suggests pattern student didn't know)**
 
 Example from "Building an Authentication Service Through Conversation":
+
 ```
 Message 2: User adds constraint (email verification)
 AI Response: "Updates User model to add verified, email_token,
@@ -118,6 +127,7 @@ email_token_expiry columns"
 **2. AI as Student (Adapts to feedback)**
 
 Example:
+
 ```
 Message 3 (User): "What rounds are you using? Requirement is 12 rounds minimum"
 AI Response: "Reviews code, confirms gensalt() defaults to 12 rounds,
@@ -130,6 +140,7 @@ updates JWT secret to read from environment variable"
 **3. AI as Co-Worker (Convergence through iteration)**
 
 Example:
+
 ```
 Message 1: Basic auth
 Message 2: Add email verification constraint
@@ -153,6 +164,7 @@ Message 4: Integration with Flask routes
 **Requirement (Layer 2)**: Code examples show intent BEFORE implementation.
 
 **Examples Examined**:
+
 - Authentication service example: ✅ Shows requirements specification, THEN explains AI approach
 - Exercise 3: ✅ "Specify requirements, THEN implement"
 - Try With AI: ✅ "Prompt Set 1" shows specification dialogue first
@@ -162,6 +174,7 @@ Message 4: Integration with Flask routes
 ### 2. Learning Objective Alignment
 
 **Stated Objectives**:
+
 1. Apply multi-turn conversations → Taught in "Understanding Multi-Turn Conversations" + Exercises 1, 8
 2. Evaluate Cursor's diff editor → Taught in "Mastering the Diff Editor" + Exercises 2, 7
 3. Compose Claude Rules → Taught in "Using Claude Rules" + Exercise 4
@@ -175,6 +188,7 @@ Message 4: Integration with Flask routes
 **Required**: 9+ exercises with progressive difficulty.
 
 **Exercises Found**:
+
 1. Multi-Turn Authentication (Beginner) ✅
 2. Diff Review and Modification (Intermediate) ✅
 3. Constraint-Based Refinement (Intermediate) ✅
@@ -195,6 +209,7 @@ Message 4: Integration with Flask routes
 **Requirement**: Code examples should be realistic, not toy apps.
 
 **Examples Examined**:
+
 - Password hashing (bcrypt with 12 rounds) ✅ Production standard
 - JWT token generation ✅ Real implementation pattern
 - Flask authentication routes ✅ Standard web development
@@ -208,6 +223,7 @@ Message 4: Integration with Flask routes
 **Requirement**: All content maps to predefined success evals from spec.
 
 **Spec Evals (from spec.md)**:
+
 1. Identify when to use Cursor vs. ChatGPT (single-file vs. multi-file context)
 2. Use multi-turn conversations to iterate on code
 3. Evaluate diff editor for code review
@@ -215,6 +231,7 @@ Message 4: Integration with Flask routes
 5. Compose Claude Rules for team consistency
 
 **Content Mapping**:
+
 - Section: "Understanding Multi-Turn Conversations" → Eval 2 ✅
 - Section: "Mastering the Diff Editor" → Eval 3 ✅
 - Section: "Context Window Management" → Eval 4 ✅
@@ -229,31 +246,31 @@ Message 4: Integration with Flask routes
 
 ## Anti-Convergence Checklist
 
-| Check | Result | Notes |
-|-------|--------|-------|
-| Layer identification (L1/L2/L3/L4) | ✅ L2 | AI Collaboration with Three Roles |
-| Three Roles demonstrated visibly | ✅ YES | Conversation examples show all three roles |
-| Framework labels hidden | ✅ YES | No "AI as Teacher/Student" in text |
-| Reusable intelligence (L3) | N/A | Lesson doesn't create skills (appropriate for L2) |
-| Spec-first thinking | ✅ YES | Examples show intent before code |
-| Production-relevant examples | ✅ YES | Real auth, JWT, bcrypt patterns |
-| Pedagogical scaffolding exposed | ✅ NO | Students learn through doing, not meta-commentary |
-| Varied from previous chapter | ✅ YES | Previous: Interface basics; This: Deep workflows |
-| No meta-commentary | ✅ PASS | Grep verified: 0 instances |
+| Check                              | Result  | Notes                                             |
+| ---------------------------------- | ------- | ------------------------------------------------- |
+| Layer identification (L1/L2/L3/L4) | ✅ L2   | AI Collaboration with Three Roles                 |
+| Three Roles demonstrated visibly   | ✅ YES  | Conversation examples show all three roles        |
+| Framework labels hidden            | ✅ YES  | No "AI as Teacher/Student" in text                |
+| Reusable intelligence (L3)         | N/A     | Lesson doesn't create skills (appropriate for L2) |
+| Spec-first thinking                | ✅ YES  | Examples show intent before code                  |
+| Production-relevant examples       | ✅ YES  | Real auth, JWT, bcrypt patterns                   |
+| Pedagogical scaffolding exposed    | ✅ NO   | Students learn through doing, not meta-commentary |
+| Varied from previous chapter       | ✅ YES  | Previous: Interface basics; This: Deep workflows  |
+| No meta-commentary                 | ✅ PASS | Grep verified: 0 instances                        |
 
 ---
 
 ## Constitutional Validation Summary
 
-| Principle | Status | Evidence |
-|-----------|--------|----------|
-| **1. Specification Primacy** | ✅ PASS | Spec→Prompt→Code→Validation pattern shown |
-| **2. Progressive Complexity** | ✅ PASS | 9 concepts; B1 tier; 5-7 scaffolding level |
-| **3. Factual Accuracy** | ✅ PASS | All bcrypt, JWT, Flask references accurate |
-| **4. Coherent Structure** | ✅ PASS | Multi-turn → diff editing → context → orchestration |
-| **5. Intelligence Accumulation** | ✅ PASS | Builds on Lesson 4 interface fundamentals |
-| **6. Anti-Convergence** | ✅ PASS | Teaching modality (examples + exercises), not generic |
-| **7. Minimal Content** | ✅ PASS | Every section → learning objective → exercise |
+| Principle                        | Status  | Evidence                                              |
+| -------------------------------- | ------- | ----------------------------------------------------- |
+| **1. Specification Primacy**     | ✅ PASS | Spec→Prompt→Code→Validation pattern shown             |
+| **2. Progressive Complexity**    | ✅ PASS | 9 concepts; B1 tier; 5-7 scaffolding level            |
+| **3. Factual Accuracy**          | ✅ PASS | All bcrypt, JWT, Flask references accurate            |
+| **4. Coherent Structure**        | ✅ PASS | Multi-turn → diff editing → context → orchestration   |
+| **5. Intelligence Accumulation** | ✅ PASS | Builds on Lesson 4 interface fundamentals             |
+| **6. Anti-Convergence**          | ✅ PASS | Teaching modality (examples + exercises), not generic |
+| **7. Minimal Content**           | ✅ PASS | Every section → learning objective → exercise         |
 
 ---
 
@@ -264,6 +281,7 @@ Message 4: Integration with Flask routes
 **Location**: "Building an Authentication Service Through Conversation"
 
 **What AI teaches**:
+
 - Database schema implications of email verification
 - Security considerations (JWT secret from environment)
 - Response format consistency
@@ -275,6 +293,7 @@ Message 4: Integration with Flask routes
 **Location**: Same conversation flow, Message 3
 
 **What student teaches AI**:
+
 - Security requirement (12-round bcrypt)
 - Constraint about not hardcoding JWT secret
 
@@ -285,6 +304,7 @@ Message 4: Integration with Flask routes
 **Location**: 4-message flow showing iteration
 
 **Convergence pattern**:
+
 - Iteration 1: Basic auth
 - Iteration 2: Email verification (constraint adds complexity)
 - Iteration 3: Security audit (reveals hardcoding issue)
@@ -299,6 +319,7 @@ Message 4: Integration with Flask routes
 **B1 Target**: 7-10 concepts, moderate scaffolding, can handle 3-4 options independently.
 
 **Concepts Count** (new to this lesson):
+
 1. Multi-turn conversation management
 2. Context state (explicit + implicit)
 3. Conversation history persistence
@@ -312,6 +333,7 @@ Message 4: Integration with Flask routes
 **Count**: 9 concepts (within B1 7-10 limit) ✅
 
 **Scaffolding Level**:
+
 - Heavy guidance in Exercises 1-3 (what to do step-by-step)
 - Moderate guidance in Exercises 4-7 (what to explore, less prescription)
 - Minimal guidance in Exercises 8-9 (here's the goal, you design approach)
@@ -357,6 +379,7 @@ These are enhancements only—lesson meets all requirements as-is.
 **Status**: ✅ **CONSTITUTIONAL COMPLIANCE PASS**
 
 **Rationale**:
+
 - ✅ Framework invisible (Three Roles experienced, not labeled)
 - ✅ Specification-first thinking demonstrated
 - ✅ Progressive complexity (9 concepts, B1 tier)

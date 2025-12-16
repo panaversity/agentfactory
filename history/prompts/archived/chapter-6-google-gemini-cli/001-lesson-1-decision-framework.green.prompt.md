@@ -9,14 +9,20 @@ feature: chapter-6-google-gemini-cli
 branch: feature/chapter-6-google-gemini-cli
 user: architect
 command: Implement Task 1.1 - Add Decision Framework
-labels: ["lesson-enhancement", "decision-framework", "tool-comparison", "intermediate-content"]
+labels:
+  [
+    "lesson-enhancement",
+    "decision-framework",
+    "tool-comparison",
+    "intermediate-content",
+  ]
 links:
   spec: /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/.trees/chapter-6-google-gemini-cli/specs/chapter-6-google-gemini-cli/spec.md
   ticket: null
   adr: null
   pr: null
 files:
-  - /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/01-why-gemini-cli-matters.md
+  - /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/01-why-gemini-cli-matters.md
 tests:
   - Line count verification: 186 → 240 lines (+54 lines)
   - Decision matrix completeness: 4 scenarios with all columns present
@@ -32,6 +38,7 @@ Implement Task 1.1 from specs/chapter-6-google-gemini-cli/tasks.md:
 Add "When to Use Gemini CLI vs. Other AI Tools" decision framework section to Lesson 1.
 
 REQUIREMENTS:
+
 - Decision matrix table: 4 real business scenarios (Research & Documentation, Rapid API Prototyping, Multi-file Refactoring, Production Deployment)
 - 3 columns per scenario: Best Tool, Why (technical reason), Example Workflow
 - Complementary usage guidance: 4 developer personas with NOT either/or framing
@@ -47,6 +54,7 @@ REMOVE: Nothing
 ADD: Decision framework section (~50 lines)
 
 ACCEPTANCE CRITERIA:
+
 - Decision matrix with 4 real business scenarios
 - Clear "when to use" guidance (not marketing fluff)
 - Framed for business productivity (not tool competition)
@@ -57,12 +65,13 @@ ACCEPTANCE CRITERIA:
 ## Response snapshot
 
 File successfully modified with new "When to Use Gemini CLI vs. Other AI Tools" section:
+
 - Added decision matrix (4 scenarios × 4 columns)
 - Added complementary workflows (4 developer personas)
 - Added "North Star" framing (right tool for each task)
 - Added "Preparing for Next Lesson" bridge to Lesson 2
 - Updated "What This Means for Your Learning Journey" with tool selection framing
-- File written to: /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/01-why-gemini-cli-matters.md
+- File written to: /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/02-AI-Tool-Landscape/06-gemini-cli-installation-and-basics/01-why-gemini-cli-matters.md
 - Line count: 240 total lines (+54 from baseline ~186)
 
 ## Outcome
@@ -79,4 +88,3 @@ File successfully modified with new "When to Use Gemini CLI vs. Other AI Tools" 
 - Graders run and results (PASS/FAIL): All acceptance criteria PASS
 - Prompt variant (if applicable): N/A
 - Next experiment: Await human review feedback; refine based on user preferences for depth/breadth trade-offs
-

@@ -1,4 +1,5 @@
 # Visual Asset Generation Summary
+
 ## Chapter 1, Lessons 02-08
 
 **Date**: 2025-01-12
@@ -17,15 +18,18 @@ Applied the visual-asset-workflow skill to Chapter 1, Lessons 02-08, systematica
 ## Visual Assets by Lesson
 
 ### ✅ Lesson 02: The $3 Trillion Developer Economy
+
 **Status**: 3 prompts embedded
 **Visual Density**: 3 visuals per ~2,500 words
 
 1. **Developer Economy Calculation Dashboard** (Line 63)
+
    - Type: Horizontal flow diagram
    - Shows: 30M developers × $100K/year = $3T economy
    - Filename: `developer-economy-calculation-breakdown.png`
 
 2. **Global Developer Economy GDP Comparison** (Line 180)
+
    - Type: Vertical bar chart
    - Shows: $3T compared to France, India, China (40%), Canada (2x)
    - Filename: `developer-economy-gdp-comparison.png`
@@ -36,6 +40,7 @@ Applied the visual-asset-workflow skill to Chapter 1, Lessons 02-08, systematica
    - Filename: `technology-adoption-speed-acceleration.png`
 
 ### ✅ Lesson 03: Software Disrupting Itself
+
 **Status**: 1 prompt embedded
 **Visual Density**: 1 visual per ~2,600 words
 
@@ -45,6 +50,7 @@ Applied the visual-asset-workflow skill to Chapter 1, Lessons 02-08, systematica
    - Filename: `ai-coding-adoption-speed-comparison.png`
 
 ### ✅ Lesson 04: Development Lifecycle Transition
+
 **Status**: 1 prompt embedded
 **Visual Density**: 1 visual per ~2,900 words
 
@@ -54,12 +60,14 @@ Applied the visual-asset-workflow skill to Chapter 1, Lessons 02-08, systematica
    - Filename: `development-lifecycle-transformation-diagram.png`
 
 ### ✅ Lesson 05: Beyond Code - Changing Roles
+
 **Status**: 0 prompts (no visuals needed)
 **Visual Density**: 0 visuals
 
 No high-priority visual opportunities identified. Lesson is narrative-focused on role transformation from "typist" to "orchestrator" - works best as text with code examples.
 
 ### ✅ Lesson 06: Autonomous Agent Era
+
 **Status**: 1 prompt embedded
 **Visual Density**: 1 visual per ~2,400 words
 
@@ -70,12 +78,14 @@ No high-priority visual opportunities identified. Lesson is narrative-focused on
    - Format: 9:16 vertical (1024x1792px)
 
 ### ✅ Lesson 07: Opportunity Window
+
 **Status**: 0 prompts (no visuals needed)
 **Visual Density**: 0 visuals
 
 No high-priority visual opportunities identified. Lesson is motivational and strategic about broken barriers - works best as narrative with specific examples.
 
 ### ✅ Lesson 08: Traditional CS Education Gaps
+
 **Status**: 0 prompts (no visuals needed)
 **Visual Density**: 0 visuals
 
@@ -85,16 +95,16 @@ No high-priority visual opportunities identified. Lesson critiques CS education 
 
 ## Summary Statistics
 
-| Metric | Value |
-|--------|-------|
-| Total lessons processed | 7 |
-| Lessons with visuals | 4 (57%) |
-| Lessons without visuals | 3 (43%) |
-| Total visual prompts embedded | 6 |
-| Average visual density (lessons with visuals) | 1.5 visuals per lesson |
-| High-priority opportunities | 6 |
-| Medium-priority opportunities | 0 |
-| Skipped opportunities | ~12 (narrative/conceptual content better in text) |
+| Metric                                        | Value                                             |
+| --------------------------------------------- | ------------------------------------------------- |
+| Total lessons processed                       | 7                                                 |
+| Lessons with visuals                          | 4 (57%)                                           |
+| Lessons without visuals                       | 3 (43%)                                           |
+| Total visual prompts embedded                 | 6                                                 |
+| Average visual density (lessons with visuals) | 1.5 visuals per lesson                            |
+| High-priority opportunities                   | 6                                                 |
+| Medium-priority opportunities                 | 0                                                 |
+| Skipped opportunities                         | ~12 (narrative/conceptual content better in text) |
 
 ---
 
@@ -103,18 +113,21 @@ No high-priority visual opportunities identified. Lesson critiques CS education 
 All 6 visual prompts follow the book's design system:
 
 **Typography**:
+
 - Font family: Roboto (Bold, Medium, Regular)
 - Headings: 48-56pt Bold
 - Metrics: 72-96pt Bold
 - Labels: 14-24pt Regular/Medium
 
 **Color Palette**:
+
 - Primary accent: Orange (#FF6B35)
 - Secondary accent: Blue (#0066FF), Teal (#00B4D8)
 - Background: White (#FFFFFF), Light Gray (#F8F9FA)
 - Text: Dark Gray (#1A1A1A), Medium Gray (#666666), Light Gray (#999999)
 
 **Visual Style**:
+
 - Modern tech publication aesthetic (TechCrunch, a16z, Stripe)
 - Flat design with subtle shadows (0px 2px-4px 8px-12px rgba(0,0,0,0.06-0.08))
 - Minimal line art icons (2-3px stroke weight)
@@ -122,6 +135,7 @@ All 6 visual prompts follow the book's design system:
 - Clean grid systems
 
 **Dimensions**:
+
 - Standard: 16:9 (1792x1024px)
 - Vertical: 9:16 (1024x1792px) - 1 asset
 
@@ -132,6 +146,7 @@ All 6 visual prompts follow the book's design system:
 Visual assets were selected using strict criteria:
 
 ✅ **Included** (reduces cognitive load):
+
 - Multiple statistics in proximity (3-6 discrete metrics)
 - Temporal progressions and timelines
 - A vs B comparisons
@@ -139,6 +154,7 @@ Visual assets were selected using strict criteria:
 - Dense tabular data
 
 ❌ **Skipped** (text is clearer):
+
 - Single statistics
 - Narrative examples and storytelling
 - Short lists (2-3 items)
@@ -152,11 +168,13 @@ Visual assets were selected using strict criteria:
 ## Next Steps
 
 ### Immediate:
+
 1. Invoke `image-generator` skill to generate actual images from all 6 embedded prompts
 2. Verify images integrate correctly into lesson markdown
 3. Validate image quality and design system compliance
 
 ### Future:
+
 - Apply same visual-asset-workflow to remaining chapters as content is completed
 - Consider interactive versions of timelines and comparisons for web version
 - Gather learner feedback on visual effectiveness during beta testing
@@ -166,12 +184,14 @@ Visual assets were selected using strict criteria:
 ## Files Modified
 
 **Lesson markdown files** (6 prompts embedded as HTML comments):
-- `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/02-three-trillion-developer-economy.md` (3 prompts)
-- `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/03-software-disrupting-itself.md` (1 prompt)
-- `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/04-development-lifecycle-transition.md` (1 prompt)
-- `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/06-autonomous-agent-era.md` (1 prompt)
+
+- `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/02-three-trillion-developer-economy.md` (3 prompts)
+- `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/03-software-disrupting-itself.md` (1 prompt)
+- `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/04-development-lifecycle-transition.md` (1 prompt)
+- `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/06-autonomous-agent-era.md` (1 prompt)
 
 **Audit reports generated**:
+
 - `history/visual-assets/chapter-1-lesson-2-visual-assets-report.md`
 - `history/visual-assets/chapter-1-lesson-3-visual-assets-report.md`
 - `history/visual-assets/chapter-1-lesson-4-visual-assets-report.md`

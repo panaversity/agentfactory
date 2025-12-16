@@ -9,17 +9,17 @@
 
 ## 📋 Quick Navigation
 
-| Document | Purpose | When to Use |
-|----------|---------|-------------|
-| **[COMPLETION-REPORT.md](#completion-report)** | Executive summary of project | Review project outcomes, show stakeholders |
-| **[VISUAL-ASSET-INVENTORY.md](#visual-asset-inventory)** | Complete catalog of all 38 visuals | Find visual details, verify existence |
-| **[FILE-MODIFICATION-LOG.md](#file-modification-log)** | Record of all file changes | Audit changes, rollback if needed |
-| **[QUICK-REFERENCE-GUIDE.md](#quick-reference-guide)** | At-a-glance visual lookup | Find visuals by ID/chapter/type quickly |
-| **[EMBEDDING-WORKFLOW-DOCUMENTATION.md](#embedding-workflow)** | Step-by-step process guide | Plan future visual projects |
-| **[VISUAL-QUALITY-CHECKLIST.md](#quality-checklist)** | 5-gate quality validation | Evaluate visual quality before embedding |
-| **[visual-placement-map.md](#placement-map)** | Detailed placement specifications | Determine exact embedding locations |
-| **[Q8 Reflection](#q8-reflection)** | Generation insights and learnings | Understand what worked/didn't work |
-| **[Creative Briefs](#creative-briefs)** | Original visual generation prompts | Regenerate or create similar visuals |
+| Document                                                       | Purpose                            | When to Use                                |
+| -------------------------------------------------------------- | ---------------------------------- | ------------------------------------------ |
+| **[COMPLETION-REPORT.md](#completion-report)**                 | Executive summary of project       | Review project outcomes, show stakeholders |
+| **[VISUAL-ASSET-INVENTORY.md](#visual-asset-inventory)**       | Complete catalog of all 38 visuals | Find visual details, verify existence      |
+| **[FILE-MODIFICATION-LOG.md](#file-modification-log)**         | Record of all file changes         | Audit changes, rollback if needed          |
+| **[QUICK-REFERENCE-GUIDE.md](#quick-reference-guide)**         | At-a-glance visual lookup          | Find visuals by ID/chapter/type quickly    |
+| **[EMBEDDING-WORKFLOW-DOCUMENTATION.md](#embedding-workflow)** | Step-by-step process guide         | Plan future visual projects                |
+| **[VISUAL-QUALITY-CHECKLIST.md](#quality-checklist)**          | 5-gate quality validation          | Evaluate visual quality before embedding   |
+| **[visual-placement-map.md](#placement-map)**                  | Detailed placement specifications  | Determine exact embedding locations        |
+| **[Q8 Reflection](#q8-reflection)**                            | Generation insights and learnings  | Understand what worked/didn't work         |
+| **[Creative Briefs](#creative-briefs)**                        | Original visual generation prompts | Regenerate or create similar visuals       |
 
 ---
 
@@ -28,17 +28,20 @@
 ### Summary Statistics (3-Phase Project)
 
 **Phase 1 - Complete ✅**:
+
 - **Visuals Created**: 38/67 PNG files (56.7%)
 - **Chapters Covered**: 11/26 chapters (Chapters 5-15)
 - **Lesson Files Modified**: 32 markdown files
 - **Verification Status**: ✅ 100% Phase 1 complete
 
 **Phase 2 - Ready 📋**:
+
 - **Visuals Planned**: 14 (Chapters 16-22)
 - **Creative Briefs**: ✅ Complete and ready
 - **Status**: Pending generation and embedding
 
 **Phase 3 - Planned 📝**:
+
 - **Visuals Planned**: 15 (Chapters 23-30)
 - **Creative Briefs**: Summary outlines exist, need expansion
 - **Status**: Pending brief expansion, then generation
@@ -46,6 +49,7 @@
 ### Distribution by Part
 
 **Part 2: AI Tool Landscape** (22 visuals - ALL COMPLETE ✅)
+
 - Chapter 5 (Claude Code): 5 visuals ✅
 - Chapter 6 (Gemini CLI): 4 visuals ✅
 - Chapter 7 (Bash Essentials): 5 visuals ✅
@@ -53,11 +57,13 @@
 - Chapter 9 (Git & GitHub): 5 visuals ✅
 
 **Part 3: Markdown, Prompt & Context Engineering** (10 visuals - ALL COMPLETE ✅)
+
 - Chapter 10 (Markdown): 4 visuals ✅
 - Chapter 11 (Prompt Engineering): 3 visuals ✅
 - Chapter 12 (Context Engineering): 3 visuals ✅
 
 **Part 4: Python Fundamentals** (35 visuals total - 6 COMPLETE ✅, 29 PENDING 📋)
+
 - Chapter 13 (UV Package Manager): 2 visuals ✅
 - Chapter 14 (Introduction to Python): 2 visuals ✅
 - Chapter 15 (Data Types): 2 visuals ✅
@@ -97,6 +103,7 @@
 **Purpose**: Executive summary documenting successful completion of visual asset integration project
 
 **Key Sections**:
+
 - Executive summary with high-level metrics
 - Completion metrics (38/38 visuals, 32 files modified)
 - Chapter-by-chapter breakdown table
@@ -108,6 +115,7 @@
 - Next steps and optional enhancements
 
 **When to Use**:
+
 - ✅ Presenting project completion to stakeholders
 - ✅ Reviewing overall project outcomes
 - ✅ Understanding project scope and achievements
@@ -124,6 +132,7 @@
 **Purpose**: Complete catalog of all 38 visual assets with detailed metadata
 
 **Key Sections**:
+
 - Inventory overview
 - Per-chapter breakdown (Chapters 5-15) with:
   - Visual ID and filename
@@ -137,6 +146,7 @@
 - Maintenance notes (how to add/update/verify visuals)
 
 **When to Use**:
+
 - ✅ Looking up visual details by ID or chapter
 - ✅ Verifying visual existence
 - ✅ Understanding pedagogical purpose of each visual
@@ -154,6 +164,7 @@
 **Purpose**: Detailed record of all 32 file modifications during embedding
 
 **Key Sections**:
+
 - Modification summary (pattern used, total files changed)
 - Part 2 breakdown (23 files, 22 visuals)
   - Chapter-by-chapter listing with:
@@ -168,6 +179,7 @@
 - Rollback instructions (git commands to revert)
 
 **When to Use**:
+
 - ✅ Auditing changes made to lesson files
 - ✅ Understanding what was modified and where
 - ✅ Rolling back changes if needed
@@ -185,6 +197,7 @@
 **Purpose**: At-a-glance lookup table for all visuals organized multiple ways
 
 **Key Sections**:
+
 - **Quick Lookup by Visual ID**: Master table (V1-V38) with filename, type, chapter, embedded location
 - **Quick Lookup by Chapter**: Grouped lists (Chapter 5-15)
 - **Quick Lookup by Visual Type**: Grouped by category (workflow, comparison, etc.)
@@ -196,6 +209,7 @@
 - **Maintenance Quick Reference**: Update/add/verify procedures
 
 **When to Use**:
+
 - ✅ Finding visual by ID quickly (V18 = Git Three-Stage Workflow)
 - ✅ Looking up all visuals in a chapter
 - ✅ Finding all workflow diagrams or comparison matrices
@@ -214,6 +228,7 @@
 **Purpose**: Comprehensive playbook for executing visual asset embedding projects from start to finish
 
 **Key Sections**:
+
 1. **Prerequisites**: Required files, tools, knowledge
 2. **Phase 1: Strategic Planning**: Q0 assessment, scope definition
 3. **Phase 2: Visual Generation**: Creative brief structure, generation methods, Q8 reflection
@@ -228,6 +243,7 @@
 12. **Appendix**: File structure reference
 
 **When to Use**:
+
 - ✅ Planning a new visual asset integration project
 - ✅ Training someone on the visual embedding workflow
 - ✅ Understanding the complete process end-to-end
@@ -245,6 +261,7 @@
 **Purpose**: Comprehensive quality validation checklist covering all 5 quality gates
 
 **Key Sections**:
+
 1. **Quality Gate 1: Spelling Accuracy** (99%+ correct)
 2. **Quality Gate 2: Layout Precision** (aligned, balanced, whitespace)
 3. **Quality Gate 3: Color Accuracy** (semantic colors match intent)
@@ -255,6 +272,7 @@
 8. **Appendices**: Common issues & fixes, visual type templates
 
 **When to Use**:
+
 - ✅ Evaluating creative brief before generation
 - ✅ Reviewing generated visual for quality
 - ✅ Final validation before embedding
@@ -273,6 +291,7 @@
 **Purpose**: Detailed specifications for exactly where each of the 38 visuals should be placed in lesson files
 
 **For Each Visual**:
+
 - Visual ID and name
 - Filename (PNG)
 - Lesson file location
@@ -282,6 +301,7 @@
 - Placement instructions (after header X, before paragraph Y)
 
 **When to Use**:
+
 - ✅ Determining exactly where to embed each visual
 - ✅ Understanding pedagogical reasoning for placement
 - ✅ Getting complete alt text for visual
@@ -299,12 +319,14 @@
 **Purpose**: Reflective document capturing insights, challenges, and learnings from visual generation process
 
 **Key Sections**:
+
 - What worked well
 - Challenges encountered
 - Patterns and insights
 - Future improvements
 
 **When to Use**:
+
 - ✅ Understanding what worked and what didn't during generation
 - ✅ Planning improvements for future visual projects
 - ✅ Learning from challenges encountered
@@ -321,6 +343,7 @@
 **Structure**: Story + Intent + Metaphor + Visual Elements + Typography + Color Semantics
 
 **When to Use**:
+
 - ✅ Regenerating existing visual with improvements
 - ✅ Creating similar visuals for new chapters
 - ✅ Understanding original intent and design decisions
@@ -336,18 +359,21 @@
 ### "I need to find Visual 18"
 
 **Steps**:
+
 1. Open **QUICK-REFERENCE-GUIDE.md**
 2. Go to "Quick Lookup by Visual ID" table
 3. Find row for V18
 4. Get: Filename (`git-three-stage-workflow.png`), Chapter (9), Embedded in (`01-your-first-git-repository.md`)
 
 **File Paths**:
+
 - PNG: `book-source/static/img/part-2/chapter-09/git-three-stage-workflow.png`
-- Lesson: `book-source/docs/02-AI-Tool-Landscape/09-git-and-github/01-your-first-git-repository.md`
+- Lesson: `apps/learn-app/docs/02-AI-Tool-Landscape/09-git-and-github/01-your-first-git-repository.md`
 
 ### "I need to update a visual"
 
 **Steps**:
+
 1. Open **VISUAL-QUALITY-CHECKLIST.md** → Appendix A for common issues
 2. Open **creative briefs** → Find original V[ID] brief
 3. Identify issue and create correction prompt
@@ -360,6 +386,7 @@
 ### "I need to verify all visuals are embedded"
 
 **Steps**:
+
 1. Run verification script:
    ```bash
    bash /tmp/verify-all-visuals.sh
@@ -372,6 +399,7 @@
 ## 🛠️ File Locations
 
 ### Documentation Files (This directory)
+
 ```
 history/visual-assets/
 ├── PARTS-2-3-4-MASTER-INDEX.md (This file)
@@ -392,12 +420,15 @@ history/visual-assets/
 ## 📖 Documentation Standards
 
 ### Markdown Reference Format
+
 ```markdown
 ![Alt text (50-100 words)](/img/part-N/chapter-NN/filename.png)
 ```
 
 ### Quality Framework
+
 **5 Quality Gates** (all must pass):
+
 1. ✅ Spelling Accuracy (99%+ correct)
 2. ✅ Layout Precision (aligned, balanced, whitespace)
 3. ✅ Color Accuracy (semantic colors match intent)
@@ -409,6 +440,7 @@ history/visual-assets/
 ## 🎯 Success Metrics
 
 ### Quantitative Metrics (Phase 1)
+
 - ✅ **38/67 visuals** created (56.7% of total project)
 - ✅ **38/67 embeddings** completed (Phase 1 100%)
 - ✅ **32/~80 lesson files** modified (Phase 1 files)
@@ -417,6 +449,7 @@ history/visual-assets/
 - ✅ **9 documentation files** created
 
 ### Remaining Work
+
 - 📋 **Phase 2**: 14 visuals (Chapters 16-22) - Briefs ready
 - 📝 **Phase 3**: 15 visuals (Chapters 23-30) - Need brief expansion
 - 📊 **Overall Progress**: 38/67 (56.7%)
@@ -428,17 +461,20 @@ history/visual-assets/
 ### Verification Commands
 
 **Count all visual embeddings**:
+
 ```bash
-grep -r "!\[.*\](/img/part-[234]/" book-source/docs/ | wc -l
+grep -r "!\[.*\](/img/part-[234]/" apps/learn-app/docs/ | wc -l
 # Expected: 38
 ```
 
 **Run comprehensive verification**:
+
 ```bash
 bash /tmp/verify-all-visuals.sh
 ```
 
 **List all PNG files**:
+
 ```bash
 find book-source/static/img/part-{2,3,4}/ -name "*.png" | sort
 # Expected: 38 files

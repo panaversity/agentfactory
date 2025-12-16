@@ -1,4 +1,5 @@
 # Python Chapter Quiz Generation Prompt
+
 ## Reasoning-Activated Assessment Design
 
 **Version**: 2.0
@@ -14,6 +15,7 @@
 **This prompt MUST be used with the `quiz-generator` skill.**
 
 **To generate a quiz for any Python chapter**:
+
 ```
 /quiz-generator [or invoke skill: quiz-generator]
 
@@ -21,6 +23,7 @@ Then reference this prompt: prompts/quiz-generation-python-chapters.md
 ```
 
 **The quiz-generator skill handles**:
+
 - ✅ Interactive Quiz component generation (NOT static markdown)
 - ✅ 50 total questions (comprehensive coverage)
 - ✅ Randomized batching (15-20 questions per session)
@@ -31,6 +34,7 @@ Then reference this prompt: prompts/quiz-generation-python-chapters.md
 - ✅ File naming convention: `##_chapter_##_quiz.md`
 
 **This prompt provides**:
+
 - 🎯 Reasoning activation framework (Persona + Questions + Principles)
 - 🎯 Python-specific question design guidance
 - 🎯 AI-native learning alignment
@@ -44,6 +48,7 @@ Then reference this prompt: prompts/quiz-generation-python-chapters.md
 **Issue**: Python chapters (Part 4, Chapters 13-30) lack end-of-chapter quizzes, unlike Part 1 chapters which have comprehensive assessments.
 
 **Why This Matters**:
+
 - Quizzes validate understanding before students progress
 - Assessments reinforce AI-native learning principles
 - Testing prevents false confidence from passive reading
@@ -58,6 +63,7 @@ Then reference this prompt: prompts/quiz-generation-python-chapters.md
 **You are NOT**: A generic question generator creating surface-level multiple choice tests
 
 **You ARE**: An assessment architect who designs diagnostic instruments that:
+
 - Reveal genuine understanding vs. surface memorization
 - Test application ability, not fact recall
 - Validate AI-native workflow competence
@@ -66,6 +72,7 @@ Then reference this prompt: prompts/quiz-generation-python-chapters.md
 **Activate Reasoning By Asking**:
 
 ### 1. Layer Recognition
+
 - **What layer does this chapter teach?**
   - L1 (Manual Foundation): First exposure to Python concepts (variables, loops, conditionals)
   - L2 (AI Collaboration): Using AI to write/refactor Python code
@@ -73,6 +80,7 @@ Then reference this prompt: prompts/quiz-generation-python-chapters.md
   - L4 (Spec-Driven): Orchestrating Python projects with specifications
 
 ### 2. Proficiency Tier Assessment
+
 - **What's the target complexity for this chapter?**
   - Check chapter number in Part 4 (13-30)
   - Early chapters (13-16): A2-B1 (beginner-intermediate)
@@ -80,6 +88,7 @@ Then reference this prompt: prompts/quiz-generation-python-chapters.md
   - Advanced chapters (24-30): B2-C1 (intermediate-advanced)
 
 ### 3. Concept vs. Workflow Testing
+
 - **What should I test?**
   - **Concept mastery**: Understanding Python semantics (what `for` loops do)
   - **Workflow competence**: Describing intent to AI effectively
@@ -93,6 +102,7 @@ Then reference this prompt: prompts/quiz-generation-python-chapters.md
 ### Principle 1: Test Understanding, Not Memorization
 
 **Generic Convergence** (What to AVOID):
+
 ```
 ❌ "What is the syntax for a for loop?"
 ❌ "Which keyword breaks out of a loop?"
@@ -100,6 +110,7 @@ Then reference this prompt: prompts/quiz-generation-python-chapters.md
 ```
 
 **Reasoning Activation** (What to CREATE):
+
 ```
 ✅ "Why would you use enumerate() instead of range(len(list))?"
    → Tests understanding of Pythonic patterns vs. mechanics
@@ -118,12 +129,14 @@ Then reference this prompt: prompts/quiz-generation-python-chapters.md
 **Remember**: Students learn Python WITH AI collaboration, not BEFORE it.
 
 **Questions Should Validate**:
+
 - Can student describe their intent clearly to AI?
 - Can student evaluate AI-generated Python code for correctness?
 - Does student understand when to use AI vs. manual coding?
 - Can student identify which Python patterns solve specific problems?
 
 **Question Types That Match This Philosophy**:
+
 1. **Scenario-based**: "You need to process 1M records. How would you describe this to AI?"
 2. **Code review**: "AI generated this code [snippet]. What's the issue?"
 3. **Pattern selection**: "Which Python structure best handles [specific use case]?"
@@ -133,15 +146,16 @@ Then reference this prompt: prompts/quiz-generation-python-chapters.md
 
 **Map Questions to Cognitive Levels**:
 
-| Bloom Level | Question Type | Example |
-|-------------|--------------|---------|
-| **Remember** (20%) | Definition/recognition | "What does `break` do in a loop?" |
-| **Understand** (25%) | Explanation/interpretation | "Why does this code produce infinite loop?" |
-| **Apply** (30%) | Scenario-based usage | "Which loop type handles unknown iteration counts?" |
-| **Analyze** (15%) | Code review/comparison | "Compare these two approaches—which is better and why?" |
-| **Evaluate** (10%) | Quality assessment | "Review this AI-generated code. What should change?" |
+| Bloom Level          | Question Type              | Example                                                 |
+| -------------------- | -------------------------- | ------------------------------------------------------- |
+| **Remember** (20%)   | Definition/recognition     | "What does `break` do in a loop?"                       |
+| **Understand** (25%) | Explanation/interpretation | "Why does this code produce infinite loop?"             |
+| **Apply** (30%)      | Scenario-based usage       | "Which loop type handles unknown iteration counts?"     |
+| **Analyze** (15%)    | Code review/comparison     | "Compare these two approaches—which is better and why?" |
+| **Evaluate** (10%)   | Quality assessment         | "Review this AI-generated code. What should change?"    |
 
 **Chapter-Level Distribution**:
+
 - **Early chapters (13-17)**: Heavier on Remember/Understand (60%)
 - **Mid chapters (18-24)**: Balanced Apply/Analyze (50%)
 - **Advanced chapters (25-30)**: Heavier on Analyze/Evaluate (40%)
@@ -149,12 +163,14 @@ Then reference this prompt: prompts/quiz-generation-python-chapters.md
 ### Principle 4: Use Production-Relevant Context
 
 **Avoid**: Toy examples disconnected from real development
+
 ```
 ❌ "Write a program to check if a number is even"
 ❌ "Create a list of your favorite fruits"
 ```
 
 **Prefer**: Scenarios students will encounter in AI-native development
+
 ```
 ✅ "You're processing API responses with variable structure.
    Which Python pattern handles missing keys safely?"
@@ -171,6 +187,7 @@ Then reference this prompt: prompts/quiz-generation-python-chapters.md
 **Each wrong answer should reveal a specific misconception.**
 
 **Structure for Explanations**:
+
 1. **State the correct answer explicitly**
 2. **Explain WHY it's correct (reasoning)**
 3. **Connect to chapter content (source)**
@@ -178,6 +195,7 @@ Then reference this prompt: prompts/quiz-generation-python-chapters.md
 5. **Link to AI-native workflow** (how AI collaboration applies)
 
 **Example**:
+
 ```javascript
 explanation: "The correct answer is option 2 (use enumerate() instead of
 range(len())). This is more Pythonic because enumerate() directly provides
@@ -195,18 +213,21 @@ source: "Lesson 3: Pythonic Iteration Patterns"
 ## Quiz Structure Template
 
 ### File Naming & Location
+
 ```
-book-source/docs/04-Python-Fundamentals/[chapter-number]-[chapter-slug]/
+apps/learn-app/docs/04-Python-Fundamentals/[chapter-number]-[chapter-slug]/
   └── [NN]_chapter_[chapter-number]_quiz.md
 ```
 
 **Example**:
+
 ```
-book-source/docs/04-Python-Fundamentals/18-control-flow-loops/
+apps/learn-app/docs/04-Python-Fundamentals/18-control-flow-loops/
   └── 06_chapter_18_quiz.md
 ```
 
 ### Frontmatter Format
+
 ```yaml
 ---
 sidebar_position: [last lesson number + 1]
@@ -224,26 +245,27 @@ title: "Chapter [N]: [Chapter Title] Quiz"
 Test your understanding of [1-sentence chapter summary focused on learning outcomes].
 
 <Quiz
-  title="Chapter [N]: [Chapter Title] Assessment"
-  questions={[
-    {
-      question: "[Clear, specific question testing understanding]",
-      options: [
-        "[Option A - all within ±3 words]",
-        "[Option B - all within ±3 words]",
-        "[Option C - all within ±3 words]",
-        "[Option D - all within ±3 words]"
-      ],
-      correctOption: [0-3, zero-indexed],
-      explanation: "[Comprehensive explanation following Principle 5]",
-      source: "Lesson [N]: [Lesson Title]"
-    },
-    // ... 50 QUESTIONS TOTAL (required by quiz-generator skill)
-  ]}
+title="Chapter [N]: [Chapter Title] Assessment"
+questions={[
+{
+question: "[Clear, specific question testing understanding]",
+options: [
+"[Option A - all within ±3 words]",
+"[Option B - all within ±3 words]",
+"[Option C - all within ±3 words]",
+"[Option D - all within ±3 words]"
+],
+correctOption: [0-3, zero-indexed],
+explanation: "[Comprehensive explanation following Principle 5]",
+source: "Lesson [N]: [Lesson Title]"
+},
+// ... 50 QUESTIONS TOTAL (required by quiz-generator skill)
+]}
 />
 ```
 
 **Key Requirements from quiz-generator skill**:
+
 1. **Exactly 50 questions** (component displays 15-20 per batch, randomized)
 2. **All options within ±3 words** of each other per question (prevents length-based guessing)
 3. **correctOption** is 0-indexed (0, 1, 2, or 3)
@@ -260,12 +282,14 @@ Test your understanding of [1-sentence chapter summary focused on learning outco
 ### Phase 1: Chapter Analysis (BEFORE writing questions)
 
 **Read and Extract**:
+
 1. **Chapter README.md**: What are the learning objectives?
 2. **All lesson files**: What concepts are taught in what sequence?
 3. **Code examples**: What patterns are demonstrated?
 4. **Exercises**: What skills do students practice?
 
 **Map Concepts to Testable Understanding**:
+
 - **List core concepts**: (e.g., for loops, while loops, break, continue, nested loops)
 - **Identify key decision points**: When would you use X vs. Y?
 - **Note common mistakes**: What errors do students make?
@@ -276,18 +300,22 @@ Test your understanding of [1-sentence chapter summary focused on learning outco
 **For Each Question, Ask**:
 
 1. **What misconception does this test?**
+
    - "Students think X, but actually Y"
    - Design distractors that match the misconception
 
 2. **What cognitive level does this target?**
+
    - Remember/Understand/Apply/Analyze/Evaluate
    - Ensure distribution matches proficiency tier
 
 3. **Does this connect to real development?**
+
    - Would a professional encounter this scenario?
    - Can student use AI to solve it?
 
 4. **Are distractors plausible?**
+
    - Each wrong answer should be tempting
    - Each should represent a specific misunderstanding
    - Avoid obviously wrong options
@@ -301,15 +329,16 @@ Test your understanding of [1-sentence chapter summary focused on learning outco
 
 **Ensure Balance Across 50 Questions**:
 
-| Dimension | Target Distribution (out of 50 questions) |
-|-----------|------------------------------------------|
-| **Bloom Levels** | Remember (10 q), Understand (12 q), Apply (15 q), Analyze (8 q), Evaluate (5 q) |
-| **Content Coverage** | All lessons represented (~8-10 questions per lesson for 5-lesson chapter) |
-| **Question Types** | Scenario (20 q), Code review (15 q), Concept (10 q), Workflow (5 q) |
-| **Difficulty** | Easy (10 q), Medium (30 q), Hard (10 q) |
-| **Option Length** | All options within ±3 words per question (CRITICAL - validates test integrity) |
+| Dimension            | Target Distribution (out of 50 questions)                                       |
+| -------------------- | ------------------------------------------------------------------------------- |
+| **Bloom Levels**     | Remember (10 q), Understand (12 q), Apply (15 q), Analyze (8 q), Evaluate (5 q) |
+| **Content Coverage** | All lessons represented (~8-10 questions per lesson for 5-lesson chapter)       |
+| **Question Types**   | Scenario (20 q), Code review (15 q), Concept (10 q), Workflow (5 q)             |
+| **Difficulty**       | Easy (10 q), Medium (30 q), Hard (10 q)                                         |
+| **Option Length**    | All options within ±3 words per question (CRITICAL - validates test integrity)  |
 
 **Total Questions Per Chapter**: **ALWAYS 50 questions** (required by quiz-generator skill)
+
 - Component displays 15-20 questions per batch (randomized)
 - Students can retake with different question batches
 - Comprehensive chapter coverage across all 50 questions
@@ -359,7 +388,7 @@ Test your understanding of [1-sentence chapter summary focused on learning outco
 
 **Pattern**: Show code snippet (possibly AI-generated), identify issue
 
-```javascript
+````javascript
 {
   question: "You asked AI to 'process all user records.' It generated this code:\n```python\nfor i in range(len(users)):\n    process(users[i])\n```\nWhat improvement should you request?",
   options: [
@@ -372,7 +401,7 @@ Test your understanding of [1-sentence chapter summary focused on learning outco
   explanation: "Option 2 is correct. The AI used C-style iteration (indexing) when Python prefers direct iteration. You should request: 'Iterate directly over users collection without indexing.' While option 4 (error handling) might be needed depending on requirements, the immediate code smell is unpythonic iteration. Option 1 (type hints) is good practice but doesn't address the iteration pattern. Option 3 (while loop) would make code worse—for loops are correct here, just poorly written. This teaches you to recognize when AI produces technically correct but non-idiomatic Python, covered in Lesson 4: Pythonic Patterns.",
   source: "Lesson 4: Pythonic Iteration Patterns"
 }
-```
+````
 
 ### Type 3: Concept Understanding (20% of quiz)
 
@@ -417,6 +446,7 @@ Test your understanding of [1-sentence chapter summary focused on learning outco
 ## Anti-Patterns to Avoid
 
 ### ❌ Memorization Questions
+
 ```javascript
 // DON'T: Pure syntax recall
 {
@@ -430,9 +460,11 @@ Test your understanding of [1-sentence chapter summary focused on learning outco
   correctOption: 1
 }
 ```
+
 **Why wrong**: Tests memory, not understanding. Students can look up syntax.
 
 ### ❌ Trivial Questions
+
 ```javascript
 // DON'T: Overly simple
 {
@@ -441,9 +473,11 @@ Test your understanding of [1-sentence chapter summary focused on learning outco
   correctOption: 0
 }
 ```
+
 **Why wrong**: Too easy, doesn't test meaningful understanding.
 
 ### ❌ Ambiguous Questions
+
 ```javascript
 // DON'T: Multiple valid interpretations
 {
@@ -457,9 +491,11 @@ Test your understanding of [1-sentence chapter summary focused on learning outco
   correctOption: 0
 }
 ```
+
 **Why wrong**: "Best" is context-dependent. Need specific scenario.
 
 ### ❌ Trick Questions
+
 ```javascript
 // DON'T: Gotchas without learning value
 {
@@ -468,6 +504,7 @@ Test your understanding of [1-sentence chapter summary focused on learning outco
   correctOption: 2
 }
 ```
+
 **Why wrong**: Tests knowledge of obscure edge cases, not practical understanding.
 
 ---
@@ -475,41 +512,49 @@ Test your understanding of [1-sentence chapter summary focused on learning outco
 ## Chapter-Specific Guidance
 
 ### For Chapter 13 (UV Package Manager)
+
 - Focus on: Tool selection, dependency management, virtual environments
 - AI workflow: Describing project requirements, reviewing generated configs
 - Scenarios: Multi-developer projects, conflicting dependencies, reproducible builds
 
 ### For Chapters 14-17 (Python Basics)
+
 - Focus on: Data types, operators, variables, type hints
 - AI workflow: Prompting for type-safe code, reviewing generated type annotations
 - Scenarios: API data processing, configuration validation, data transformation
 
 ### For Chapter 18 (Control Flow & Loops)
+
 - Focus on: Conditionals, pattern matching, loop types, control mechanisms
 - AI workflow: Describing iteration intent, evaluating loop efficiency
 - Scenarios: Input validation, batch processing, retry logic, data filtering
 
 ### For Chapters 19-20 (Data Structures)
+
 - Focus on: Lists, tuples, dicts, sets, performance characteristics
 - AI workflow: Choosing correct structure for use case, optimization
 - Scenarios: Caching, deduplication, ordered processing, key-value lookups
 
 ### For Chapters 21-23 (Functions & I/O)
+
 - Focus on: Function design, exception handling, file operations
 - AI workflow: Describing function contracts, error handling strategies
 - Scenarios: API integrations, file processing, error recovery, logging
 
 ### For Chapters 24 (Math & DateTime)
+
 - Focus on: Numeric operations, date handling, timezone awareness
 - AI workflow: Prompting for correct datetime operations, avoiding pitfalls
 - Scenarios: Scheduling, calculations, timestamp handling, date arithmetic
 
 ### For Chapters 25-27 (OOP & Advanced)
+
 - Focus on: Classes, inheritance, metaclasses, dataclasses, Pydantic
 - AI workflow: Describing class relationships, validating generated architectures
 - Scenarios: Domain modeling, validation logic, data serialization, extensibility
 
 ### For Chapters 28-30 (Advanced Python)
+
 - Focus on: Generics, async/await, CPython internals, GIL
 - AI workflow: Articulating concurrency requirements, performance optimization
 - Scenarios: Concurrent I/O, type-safe collections, performance tuning, async APIs
@@ -519,6 +564,7 @@ Test your understanding of [1-sentence chapter summary focused on learning outco
 ## Final Execution Workflow
 
 **Step 1: Invoke quiz-generator Skill**
+
 ```
 /quiz-generator
 [or use Skill tool to invoke quiz-generator]
@@ -528,6 +574,7 @@ Test your understanding of [1-sentence chapter summary focused on learning outco
 Tell the skill to follow guidance from: `prompts/quiz-generation-python-chapters.md`
 
 **Step 3: Chapter Analysis** (show your reasoning):
+
 - What are this chapter's learning objectives?
 - What layer does it teach (L1/L2/L3/L4)?
 - What proficiency tier (A2/B1/B2/C1)?
@@ -536,6 +583,7 @@ Tell the skill to follow guidance from: `prompts/quiz-generation-python-chapters
 - How many lessons in this chapter? (determines question distribution)
 
 **Step 4: Generate 50 Questions** following:
+
 - Quiz component structure (not static markdown)
 - **50 questions total** (not 10-15)
 - Question type distribution: Scenario (20), Code review (15), Concept (10), Workflow (5)
@@ -545,6 +593,7 @@ Tell the skill to follow guidance from: `prompts/quiz-generation-python-chapters
 - All validation criteria met
 
 **Step 5: Validation Checklist**
+
 - [ ] Run through all validation criteria
 - [ ] Manually count option lengths for all 50 questions
 - [ ] Verify all lessons covered
@@ -552,13 +601,15 @@ Tell the skill to follow guidance from: `prompts/quiz-generation-python-chapters
 - [ ] Ensure production-relevant scenarios used
 
 **Step 6: Answer Redistribution** (automated)
+
 ```bash
 python .claude/skills/quiz-generator/scripts/redistribute_answers_v2.py \
-  book-source/docs/04-Python-Fundamentals/[chapter-folder]/[NN]_chapter_[NN]_quiz.md \
+  apps/learn-app/docs/04-Python-Fundamentals/[chapter-folder]/[NN]_chapter_[NN]_quiz.md \
   [A-H sequence letter]
 ```
 
 **Choose sequence letter** to vary across chapters:
+
 - Chapter 13: Sequence A
 - Chapter 14: Sequence B
 - Chapter 15: Sequence C
@@ -569,6 +620,7 @@ python .claude/skills/quiz-generator/scripts/redistribute_answers_v2.py \
 
 **Step 7: Final Verification**
 Script will report:
+
 - Answer distribution (should be ~12-13 per index)
 - Explanation validation (all match correct answers)
 - Any issues requiring manual review
@@ -598,6 +650,7 @@ Script will report:
 ## References
 
 ### Papers & Frameworks
+
 - **SDD-RI Whitepaper**: `papers/SDD-RI Whitepaper.md` - Specification-driven development with reusable intelligence
 - **Reasoning Activation Paper**: `papers/Reasoning_Activation_in_LLMs_arXiv_Complete.md` - Persona + Questions + Principles framework
 - **Skills Thinking Framework**: `papers/skills-thinking-framework.md` - Identifying convergence, mapping to implementation
@@ -605,12 +658,14 @@ Script will report:
 - **4-Layer Teaching Method**: L1 (Manual) → L2 (Collaboration) → L3 (Intelligence) → L4 (Spec-Driven)
 
 ### Skills & Components
+
 - **quiz-generator Skill**: `.claude/skills/quiz-generator/SKILL.md` (v5.0.0)
 - **Quiz Component**: `book-source/src/components/Quiz.tsx` (globally registered)
 - **Quiz Usage Guide**: `book-source/src/components/QUIZ_USAGE.md`
-- **Example Quiz**: `book-source/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/09_chapter_01_quiz.md`
+- **Example Quiz**: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/09_chapter_01_quiz.md`
 
 ### Scripts
+
 - **Answer Redistribution**: `.claude/skills/quiz-generator/scripts/redistribute_answers_v2.py`
 - **Option Length Validation**: `.claude/skills/quiz-generator/references/option-length-validation.md`
 
@@ -627,6 +682,7 @@ Script will report:
 **[After skill activation, following prompts/quiz-generation-python-chapters.md]**
 
 **Chapter Analysis**:
+
 - **Learning Objectives**: Conditionals (if/elif/else), pattern matching (match-case), loops (for/while), control flow (break/continue), nested structures
 - **Layer**: L1 (Manual Foundation) + early L2 (AI Collaboration for code generation)
 - **Proficiency**: B1 (intermediate - Chapter 18 is mid-range in Part 4)
@@ -635,12 +691,14 @@ Script will report:
 - **Common Misconceptions**: Thinking for loops require range(), confusing break/continue/return, unnecessary nesting, using wrong loop type for scenario
 
 **Question Distribution Plan (50 questions)**:
+
 - **By Type**: Scenario (20), Code review (15), Concept (10), Workflow (5)
 - **By Bloom**: Remember (10), Understand (12), Apply (15), Analyze (8), Evaluate (5)
 - **By Lesson**: ~10 questions per lesson (covering all 5 lessons)
 - **By Difficulty**: Easy (10), Medium (30), Hard (10)
 
 **Specific Coverage**:
+
 - Lesson 1 (Conditionals): 10 questions on if/elif/else logic
 - Lesson 2 (Pattern Matching): 10 questions on match-case
 - Lesson 3 (Loops): 10 questions on for/while selection
@@ -648,6 +706,7 @@ Script will report:
 - Lesson 5 (Nested): 10 questions on nested structures
 
 **Now generating 50 questions with:**
+
 - All options within ±3 words per question
 - Quiz component format (not static markdown)
 - Immediate feedback explanations
@@ -657,9 +716,10 @@ Script will report:
 [Then generate the complete 50-question quiz following all templates and principles]
 
 **After generation**:
+
 ```bash
 python .claude/skills/quiz-generator/scripts/redistribute_answers_v2.py \
-  book-source/docs/04-Python-Fundamentals/18-control-flow-loops/06_chapter_18_quiz.md \
+  apps/learn-app/docs/04-Python-Fundamentals/18-control-flow-loops/06_chapter_18_quiz.md \
   F
 ```
 

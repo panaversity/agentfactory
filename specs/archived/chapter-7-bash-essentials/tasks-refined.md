@@ -13,20 +13,20 @@ This refined task list specifically addresses: **What existing lessons to update
 
 ### Content Reuse Strategy Matrix
 
-| Existing Lesson | New Plan Lesson | Action Required | Reuse % | Effort | Rationale |
-|-----------------|-----------------|-----------------|---------|--------|-----------|
-| **01-introducing-ai-workspace.md** | **Lesson 1: Finding Your Way** | **Major Update** | 40% | 6-8h | Keep: foundational navigation concepts, file system basics<br>Add: natural language framing, location awareness, CEFR A1 metadata<br>Rewrite: 60% new content (AI-native approach) |
-| **02-safety-first-pattern.md** | **Lesson 2: The Safety Pattern** | **Minor Update** | 70% | 3-4h | Keep: excellent 5-step pattern structure, most dialogue examples<br>Add: real data loss story opening, red flag section, more checkpoints<br>Update: 30% enhancement (already strong) |
-| **03-understanding-navigation.md** | *(merge into Lesson 1)* | **Archive** | 100% | 1h | Merge navigation content into redesigned Lesson 1<br>Move file to `.archive/` directory |
-| **04-understanding-file-operations.md** | **Lesson 4: File Operations via Natural Language** | **Major Update** | 50% | 5-7h | Keep: file operation fundamentals (copy, move, organize)<br>Add: safety pattern integration throughout, backup thinking, validation techniques<br>Rewrite: 50% new content (safety emphasis) |
-| **05-configuration-secrets.md** | **Lesson 5: Configuration and Secrets** | **Minor Update** | 65% | 4-5h | Keep: `.env` file coverage, secrets management basics<br>Add: `.gitignore` integration, security framing, dependency install (from merged 06)<br>Update: 35% enhancement |
-| **06-packages-dependencies.md** | *(merge into Lesson 5)* | **Archive** | 100% | 1h | Merge dependency installation content into Lesson 5<br>Move file to `.archive/` directory |
-| **07-pipes-complex-commands.md** | **Lesson 3: Reading Bash Commands** | **Complete Rewrite** | 20% | 8-10h | Keep: basic pipe examples<br>Rewrite: EVERYTHING ELSE — reorder before file ops, supervision framing, command anatomy, no memorization<br>80% new content (fundamental reframing) |
-| **08-real-project-troubleshooting.md** | **Lessons 6-8 (split)** | **Complete Rewrite** | 10% | 18-24h | Keep: some troubleshooting examples<br>Rewrite: Split into 3 separate lessons (exploration, scripts, orchestration)<br>90% new content (split + tier 3 orchestration) |
-| *(none)* | **Lesson 6: Exploring File System Safely** | **Create New** | 0% | 8-10h | Completely new lesson: AI-orchestrated file exploration, find command, pattern matching, validation |
-| *(none)* | **Lesson 7: Building and Running Scripts** | **Create New** | 0% | 8-10h | Completely new lesson: directing AI to write scripts, testing safely, debugging |
-| *(none)* | **Lesson 8: Orchestrating Complex Workflows** | **Create New** | 0% | 10-12h | Completely new capstone lesson: decomposing complexity, batch operations, multi-step workflows |
-| **README.md** | **Chapter README** | **Complete Rewrite** | 30% | 2-3h | Keep: basic chapter positioning<br>Rewrite: AI-native philosophy, new lesson titles/descriptions, updated learning outcomes<br>70% new content |
+| Existing Lesson                         | New Plan Lesson                                    | Action Required      | Reuse % | Effort | Rationale                                                                                                                                                                                    |
+| --------------------------------------- | -------------------------------------------------- | -------------------- | ------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **01-introducing-ai-workspace.md**      | **Lesson 1: Finding Your Way**                     | **Major Update**     | 40%     | 6-8h   | Keep: foundational navigation concepts, file system basics<br>Add: natural language framing, location awareness, CEFR A1 metadata<br>Rewrite: 60% new content (AI-native approach)           |
+| **02-safety-first-pattern.md**          | **Lesson 2: The Safety Pattern**                   | **Minor Update**     | 70%     | 3-4h   | Keep: excellent 5-step pattern structure, most dialogue examples<br>Add: real data loss story opening, red flag section, more checkpoints<br>Update: 30% enhancement (already strong)        |
+| **03-understanding-navigation.md**      | _(merge into Lesson 1)_                            | **Archive**          | 100%    | 1h     | Merge navigation content into redesigned Lesson 1<br>Move file to `.archive/` directory                                                                                                      |
+| **04-understanding-file-operations.md** | **Lesson 4: File Operations via Natural Language** | **Major Update**     | 50%     | 5-7h   | Keep: file operation fundamentals (copy, move, organize)<br>Add: safety pattern integration throughout, backup thinking, validation techniques<br>Rewrite: 50% new content (safety emphasis) |
+| **05-configuration-secrets.md**         | **Lesson 5: Configuration and Secrets**            | **Minor Update**     | 65%     | 4-5h   | Keep: `.env` file coverage, secrets management basics<br>Add: `.gitignore` integration, security framing, dependency install (from merged 06)<br>Update: 35% enhancement                     |
+| **06-packages-dependencies.md**         | _(merge into Lesson 5)_                            | **Archive**          | 100%    | 1h     | Merge dependency installation content into Lesson 5<br>Move file to `.archive/` directory                                                                                                    |
+| **07-pipes-complex-commands.md**        | **Lesson 3: Reading Bash Commands**                | **Complete Rewrite** | 20%     | 8-10h  | Keep: basic pipe examples<br>Rewrite: EVERYTHING ELSE — reorder before file ops, supervision framing, command anatomy, no memorization<br>80% new content (fundamental reframing)            |
+| **08-real-project-troubleshooting.md**  | **Lessons 6-8 (split)**                            | **Complete Rewrite** | 10%     | 18-24h | Keep: some troubleshooting examples<br>Rewrite: Split into 3 separate lessons (exploration, scripts, orchestration)<br>90% new content (split + tier 3 orchestration)                        |
+| _(none)_                                | **Lesson 6: Exploring File System Safely**         | **Create New**       | 0%      | 8-10h  | Completely new lesson: AI-orchestrated file exploration, find command, pattern matching, validation                                                                                          |
+| _(none)_                                | **Lesson 7: Building and Running Scripts**         | **Create New**       | 0%      | 8-10h  | Completely new lesson: directing AI to write scripts, testing safely, debugging                                                                                                              |
+| _(none)_                                | **Lesson 8: Orchestrating Complex Workflows**      | **Create New**       | 0%      | 10-12h | Completely new capstone lesson: decomposing complexity, batch operations, multi-step workflows                                                                                               |
+| **README.md**                           | **Chapter README**                                 | **Complete Rewrite** | 30%     | 2-3h   | Keep: basic chapter positioning<br>Rewrite: AI-native philosophy, new lesson titles/descriptions, updated learning outcomes<br>70% new content                                               |
 
 ### Summary Statistics
 
@@ -49,10 +49,11 @@ This refined task list specifically addresses: **What existing lessons to update
 **Goal**: Prepare project structure, analyze existing content, archive outdated files.
 
 - [ ] T001 Create content reuse analysis spreadsheet documenting keep/update/rewrite/create decisions for each lesson
-- [ ] T002 Create archive directory `/book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/.archive/` and move lessons 03 and 06 with timestamp
+- [ ] T002 Create archive directory `/apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/.archive/` and move lessons 03 and 06 with timestamp
 - [ ] T003 Backup existing README.md to `.archive/README-old-2025-11-07.md`
 
 **Acceptance Criteria**:
+
 - [ ] Content reuse matrix exists (spreadsheet or markdown table)
 - [ ] Old lessons 03 and 06 archived with clear timestamp
 - [ ] Original README backed up before rewrite
@@ -78,6 +79,7 @@ This refined task list specifically addresses: **What existing lessons to update
 - [ ] T012 [US1] Update "Try With AI" section with 3 natural language prompts and expected outcomes
 
 **Acceptance Criteria (Lesson 1)**:
+
 - [ ] Natural language first approach demonstrated throughout
 - [ ] Location awareness framed as foundation for all operations
 - [ ] 2 authentic dialogue transcripts included
@@ -99,6 +101,7 @@ This refined task list specifically addresses: **What existing lessons to update
 - [ ] T020 [US2] Update YAML frontmatter with A1 proficiency and safety emphasis
 
 **Acceptance Criteria (Lesson 2)**:
+
 - [ ] Real consequences story hooks reader immediately
 - [ ] Red flag commands explicitly identified with cautionary language
 - [ ] 4 total real dialogue transcripts (existing + new)
@@ -134,6 +137,7 @@ This refined task list specifically addresses: **What existing lessons to update
 - [ ] T030 [US5] Add YAML frontmatter with A2 proficiency and comprehension focus
 
 **Acceptance Criteria (Lesson 3)**:
+
 - [ ] Command structure taught as anatomy, NOT syntax to memorize
 - [ ] Supervision strategy emphasized (ask "What does this do?" before execution)
 - [ ] Pipes presented as connecting commands (output → input)
@@ -168,6 +172,7 @@ This refined task list specifically addresses: **What existing lessons to update
 - [ ] T039 [US2] Update YAML frontmatter with A2 proficiency and operation validation focus
 
 **Acceptance Criteria (Lesson 4)**:
+
 - [ ] Every file operation demonstrates 5-step safety pattern
 - [ ] Backup thinking emphasized (copy before move/delete)
 - [ ] Validation techniques taught (how to confirm success)
@@ -190,6 +195,7 @@ This refined task list specifically addresses: **What existing lessons to update
 - [ ] T048 [US3] Update YAML frontmatter with A2 proficiency and security focus
 
 **Acceptance Criteria (Lesson 5)**:
+
 - [ ] `.env` + `.gitignore` presented as integrated security workflow
 - [ ] Security framing: why secrets must NEVER be committed
 - [ ] Dependency installation included (from merged 06-packages)
@@ -226,6 +232,7 @@ This refined task list specifically addresses: **What existing lessons to update
 - [ ] T057 [US4] Add YAML frontmatter with A2 proficiency and orchestration tier
 
 **Acceptance Criteria (Lesson 6)**:
+
 - [ ] AI orchestrates file searches; student supervises and validates
 - [ ] Pattern matching taught as strategic thinking (not regex memorization)
 - [ ] Preview-then-act workflow emphasized throughout
@@ -247,6 +254,7 @@ This refined task list specifically addresses: **What existing lessons to update
 - [ ] T065 [US4] Add YAML frontmatter with A2/B1 proficiency and script orchestration
 
 **Acceptance Criteria (Lesson 7)**:
+
 - [ ] Students direct AI to write scripts, NOT write scripts themselves
 - [ ] Testing workflow emphasized (dry run → small test → full execution)
 - [ ] Debugging framed as collaboration (student reads error, AI proposes fix)
@@ -268,6 +276,7 @@ This refined task list specifically addresses: **What existing lessons to update
 - [ ] T073 [US4] Add YAML frontmatter with B1 proficiency and capstone emphasis
 
 **Acceptance Criteria (Lesson 8)**:
+
 - [ ] Decomposition taught as strategic skill (not command syntax)
 - [ ] Batch operations demonstrated with real workflows (10+ items)
 - [ ] Validation checkpoints emphasized throughout multi-step processes
@@ -287,7 +296,7 @@ This refined task list specifically addresses: **What existing lessons to update
 
 **Goal**: Complete chapter README rewrite, validate cross-references, final review.
 
-- [ ] T074 **COMPLETELY REWRITE** README.md with AI-native philosophy (salvage 30%, rewrite 70%) in `/book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/README.md`
+- [ ] T074 **COMPLETELY REWRITE** README.md with AI-native philosophy (salvage 30%, rewrite 70%) in `/apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/README.md`
 - [ ] T075 [P] Validate all internal cross-references (Lesson 2 refs 1, Lesson 3 refs 1-2, etc.)
 - [ ] T076 [P] Update all "Try With AI" sections to specify tool choice (Claude Code, Gemini CLI, ChatGPT) consistently
 - [ ] T077 [P] Validate YAML frontmatter consistency (skills proficiency, durations, CEFR levels) across all 8 lessons
@@ -296,6 +305,7 @@ This refined task list specifically addresses: **What existing lessons to update
 - [ ] T080 Accessibility validation (alt text for images, heading hierarchy, screen reader compatibility)
 
 **Acceptance Criteria (Phase 6)**:
+
 - [ ] Chapter README clearly articulates AI-native philosophy vs. traditional bash tutorials
 - [ ] All cross-references validated and working
 - [ ] Docusaurus build succeeds with zero errors
@@ -314,27 +324,27 @@ This refined task list specifically addresses: **What existing lessons to update
 
 ### Total Task Count: 80 tasks
 
-| Phase | Tasks | Est. Hours | Story Points | Week |
-|-------|-------|-----------|--------------|------|
-| Phase 1 (Setup) | 3 | 3-4h | 0.5 | Week 1, Day 1 |
-| Phase 2 (Lessons 1-2) | 17 | 12-17h | 2-3 | Week 1, Days 2-5 |
-| Phase 3 (Lesson 3) | 10 | 8-10h | 1-2 | Week 2, Days 1-3 |
-| Phase 4 (Lessons 4-5) | 18 | 14-19h | 2-3 | Week 2-3 |
-| Phase 5 (Lessons 6-8) | 25 | 30-40h | 4-5 | Week 3-4 |
-| Phase 6 (Integration) | 7 | 8-12h | 1-2 | Week 4-5 |
-| **TOTAL** | **80** | **75-102h** | **11-16 SP** | **4-5 weeks** |
+| Phase                 | Tasks  | Est. Hours  | Story Points | Week             |
+| --------------------- | ------ | ----------- | ------------ | ---------------- |
+| Phase 1 (Setup)       | 3      | 3-4h        | 0.5          | Week 1, Day 1    |
+| Phase 2 (Lessons 1-2) | 17     | 12-17h      | 2-3          | Week 1, Days 2-5 |
+| Phase 3 (Lesson 3)    | 10     | 8-10h       | 1-2          | Week 2, Days 1-3 |
+| Phase 4 (Lessons 4-5) | 18     | 14-19h      | 2-3          | Week 2-3         |
+| Phase 5 (Lessons 6-8) | 25     | 30-40h      | 4-5          | Week 3-4         |
+| Phase 6 (Integration) | 7      | 8-12h       | 1-2          | Week 4-5         |
+| **TOTAL**             | **80** | **75-102h** | **11-16 SP** | **4-5 weeks**    |
 
 ### Effort by Action Type
 
-| Action | Lessons | Tasks | Est. Hours | % of Total |
-|--------|---------|-------|-----------|-----------|
-| Minor Update (30-35% new) | 2 (L2, L5) | 13 | 7-9h | 9% |
-| Major Update (40-60% new) | 2 (L1, L4) | 15 | 11-15h | 15% |
-| Complete Rewrite (70-90% new) | 1 (L3) | 10 | 8-10h | 10% |
-| Create from Scratch | 3 (L6, L7, L8) | 25 | 26-36h | 38% |
-| Integration & Polish | 1 (README + validation) | 10 | 11-16h | 17% |
-| Setup & Archive | 2 files | 3 | 3-4h | 4% |
-| **TOTAL** | **8 lessons + README** | **80** | **75-102h** | **100%** |
+| Action                        | Lessons                 | Tasks  | Est. Hours  | % of Total |
+| ----------------------------- | ----------------------- | ------ | ----------- | ---------- |
+| Minor Update (30-35% new)     | 2 (L2, L5)              | 13     | 7-9h        | 9%         |
+| Major Update (40-60% new)     | 2 (L1, L4)              | 15     | 11-15h      | 15%        |
+| Complete Rewrite (70-90% new) | 1 (L3)                  | 10     | 8-10h       | 10%        |
+| Create from Scratch           | 3 (L6, L7, L8)          | 25     | 26-36h      | 38%        |
+| Integration & Polish          | 1 (README + validation) | 10     | 11-16h      | 17%        |
+| Setup & Archive               | 2 files                 | 3      | 3-4h        | 4%         |
+| **TOTAL**                     | **8 lessons + README**  | **80** | **75-102h** | **100%**   |
 
 ### Independent Test Criteria (by User Story)
 
@@ -355,6 +365,7 @@ This refined task list specifically addresses: **What existing lessons to update
 **Week 5**: Final polish, README rewrite, Docusaurus validation, publication
 
 **Suggested MVP Scope** (if time-constrained):
+
 - **MVP = Lessons 1-5 only** (Navigation, Safety, Comprehension, File Ops, Config)
 - Defer Lessons 6-8 (Orchestration) to Phase 2 release
 - Rationale: First 5 lessons cover P1 and P2 user stories. Orchestration (P3) is advanced and can follow.
@@ -364,6 +375,7 @@ This refined task list specifically addresses: **What existing lessons to update
 ## Definition of Done
 
 **Lesson-Level**:
+
 - [ ] All sections written per plan.md
 - [ ] Real dialogue transcripts collected (2-3 minimum)
 - [ ] Checkpoint exercises created with validation criteria
@@ -376,6 +388,7 @@ This refined task list specifically addresses: **What existing lessons to update
 - [ ] Peer review complete
 
 **Chapter-Level**:
+
 - [ ] All 8 lessons meet lesson-level DoD
 - [ ] README.md rewritten with AI-native philosophy
 - [ ] All cross-references validated
@@ -389,6 +402,6 @@ This refined task list specifically addresses: **What existing lessons to update
 
 ## Revision History
 
-| Date | Version | Changes | Author |
-|------|---------|---------|--------|
-| 2025-11-07 | 1.0 | Refined task breakdown with existing vs. new lesson mapping | Claude Code (Main Orchestrator) |
+| Date       | Version | Changes                                                     | Author                          |
+| ---------- | ------- | ----------------------------------------------------------- | ------------------------------- |
+| 2025-11-07 | 1.0     | Refined task breakdown with existing vs. new lesson mapping | Claude Code (Main Orchestrator) |

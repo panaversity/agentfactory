@@ -9,7 +9,15 @@ feature: "chapter-8-git-and-github"
 branch: "main"
 user: "user"
 command: "/sp.implement lesson-3"
-labels: ["chapter-8", "lesson-3", "git-workflow", "beginner", "technical", "implementation"]
+labels:
+  [
+    "chapter-8",
+    "lesson-3",
+    "git-workflow",
+    "beginner",
+    "technical",
+    "implementation",
+  ]
 links:
   spec: "specs/012-chapter-8-git-github-aidd/spec.md"
   plan: "specs/012-chapter-8-git-github-aidd/plan.md"
@@ -17,7 +25,7 @@ links:
   adr: null
   pr: null
 files_modified:
-  - book-source/docs/02-AI-Tool-Landscape/08-git-and-github/03-the-daily-workflow.md
+  - apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/03-the-daily-workflow.md
 tests_run: []
 ---
 
@@ -29,9 +37,10 @@ Successfully implemented Lesson 3: The Daily Workflow for Chapter 8: Git & GitHu
 
 ### What Was Done
 
-1. **Created lesson file**: `/mnt/c/Users/HP/Documents/colearning-python/book-source/docs/02-AI-Tool-Landscape/08-git-and-github/03-the-daily-workflow.md` (555 lines, 19 KB)
+1. **Created lesson file**: `/mnt/c/Users/HP/Documents/colearning-python/apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/03-the-daily-workflow.md` (555 lines, 19 KB)
 
 2. **Applied all domain skills**:
+
    - **learning-objectives**: 5 measurable learning objectives aligned with A1 proficiency level (CEFR)
    - **concept-scaffolding**: Progressive structure (Intro → Workflow diagram → 5 commands → Real example → Common pitfalls → Reflection)
    - **technical-clarity**: Clear explanations using non-technical metaphors ("checkpoints," "waiting room")
@@ -40,6 +49,7 @@ Successfully implemented Lesson 3: The Daily Workflow for Chapter 8: Git & GitHu
    - **exercise-designer**: Integrated practice throughout (status checks, staging decisions, commit messages)
 
 3. **Met all technical requirements**:
+
    - ✓ YAML frontmatter with skills metadata (CEFR A1, Bloom's Apply/Understand)
    - ✓ Cognitive load validation: Exactly 5 new concepts (init, status, add, commit, push) at A1 limit
    - ✓ Five core Git commands explained (init, status, add, commit, push)
@@ -50,6 +60,7 @@ Successfully implemented Lesson 3: The Daily Workflow for Chapter 8: Git & GitHu
    - ✓ Grade 7 reading level maintained throughout
 
 4. **Content Structure** (555 lines):
+
    - Opening hook (2 paragraphs establishing context)
    - Five-step workflow visual diagram
    - 5 detailed command explanations (150 lines): What → Why → How
@@ -60,6 +71,7 @@ Successfully implemented Lesson 3: The Daily Workflow for Chapter 8: Git & GitHu
    - Try With AI closure (5 prompts with expected outputs and safety note)
 
 5. **Skills Proficiency Alignment** (Verified):
+
    - All 4 skills at A1 proficiency level
    - Content teaches recognition and simple application (appropriate for A1)
    - No B1-level analysis or independent problem-solving (appropriate constraint)
@@ -67,6 +79,7 @@ Successfully implemented Lesson 3: The Daily Workflow for Chapter 8: Git & GitHu
    - Max 5 concepts enforced (init, status, add, commit, push exactly)
 
 6. **Pedagogical Quality Checks**:
+
    - ✓ Opening hook: "Imagine you're working on a Python project with an AI assistant..." (addresses common scenario)
    - ✓ Concept-first pattern: "What It Does" → "Why You Need It" → "How to Use It"
    - ✓ AI-first framing: "You don't need to memorize these commands. Your AI does."
@@ -85,6 +98,7 @@ Successfully implemented Lesson 3: The Daily Workflow for Chapter 8: Git & GitHu
 ### Validation Checklist (Tier 1 / Beginner Content)
 
 **All Chapters**:
+
 - [x] Skills Proficiency Validation: Content matches A1 proficiency level
   - A1 lessons: Only recognition/identification + simple application (no independent problem-solving)
   - Content verified: "Stage files," "Create commits," "Push to GitHub" are all apply-level
@@ -106,6 +120,7 @@ Successfully implemented Lesson 3: The Daily Workflow for Chapter 8: Git & GitHu
 - [x] "Try With AI" tool selection follows policy (pre-tools → ChatGPT web) ✓
 
 **Technical Chapters Only**:
+
 - [x] All code examples include type hints and docstrings (Python examples shown correctly)
 - [x] Code is beginner-appropriate (5-15 lines, simple functions)
 - [x] Common pitfalls section addressing real-world issues ✓
@@ -113,6 +128,7 @@ Successfully implemented Lesson 3: The Daily Workflow for Chapter 8: Git & GitHu
 - [x] Ethical AI use framed (verify before trusting, explain before running)
 
 **Beginner Content (Parts 1-3)**:
+
 - [x] Concept explained BEFORE commands/syntax (What → Why → How → Practice) ✓
 - [x] Max 2 options not applicable (single workflow, not multiple choices)
 - [x] Max 5 new concepts per section: 5 exact ✓
@@ -126,31 +142,37 @@ Successfully implemented Lesson 3: The Daily Workflow for Chapter 8: Git & GitHu
 ### How Each Domain Skill Was Applied
 
 1. **learning-objectives** (Bloom's mapping)
+
    - Five objectives defined with A1 proficiency level
    - Each uses apply-level Bloom's verb (Initialize, Use, Stage, Create, Push)
    - Assessment methods specified (demonstrate, interpret, run, explain)
 
 2. **concept-scaffolding** (Progressive structure)
+
    - Hook → Diagram → Sequential command explanations
    - Each command: What (definition) → Why (motivation) → How (usage) → Mistake (pitfall)
    - Real example integrates all five into working scenario
 
 3. **technical-clarity** (Language and precision)
+
    - Git terminology defined contextually ("staging area = waiting room")
    - Command examples shown with realistic input/output
    - Color coding explained (green = ready, red = attention needed)
 
 4. **book-scaffolding** (Chapter flow)
+
    - Lesson 1 (Why Git?) → Lesson 2 (Setup) → Lesson 3 (Daily Workflow)
    - Lesson 3 → Lesson 4 (Undo) progression natural
    - Forward reference to Lesson 4 and later lessons implicit
 
 5. **ai-collaborate-learning** (AI partnership framing)
+
    - Repeated emphasis: "You don't memorize commands; your AI does"
    - Your responsibility (ask, understand, review, decide) vs AI responsibility (execute, explain, verify)
    - Natural language interface presented as norm
 
 6. **exercise-designer** (Practice activities)
+
    - Inline mini-practices (check status, stage files, create commits)
    - Real example walkthrough (6-step calculator project)
    - Try With AI provides structured practice progression
@@ -225,7 +247,7 @@ Implement Lesson 3 for Chapter 8: Git & GitHub for AI-Driven Development
 - **Real scenario**: Creating a simple Python file with AI, tracking changes
 
 **Tasks to Complete** (T014-T017):
-1. Create file: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/03-the-daily-workflow.md`
+1. Create file: `apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/03-the-daily-workflow.md`
 2. YAML frontmatter: sidebar_position: 3, title: "The Daily Workflow", description: "Master the five core Git commands for everyday work"
 3. Write command explanations for each of the 5 core Git commands
    - Each command: What it does, when to use, example with output, common mistakes
@@ -254,9 +276,10 @@ Write the complete lesson content and output the final markdown file path when d
 
 Successfully created Lesson 3: The Daily Workflow with:
 
-**File**: `/mnt/c/Users/HP/Documents/colearning-python/book-source/docs/02-AI-Tool-Landscape/08-git-and-github/03-the-daily-workflow.md`
+**File**: `/mnt/c/Users/HP/Documents/colearning-python/apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/03-the-daily-workflow.md`
 
 **Content Delivered** (555 lines):
+
 1. Complete YAML frontmatter with skills metadata (4 skills at A1 proficiency)
 2. 5 measurable learning objectives aligned with Bloom's Apply level
 3. Cognitive load tracking (exactly 5 new concepts)
@@ -270,6 +293,7 @@ Successfully created Lesson 3: The Daily Workflow with:
 10. No additional closing sections (AI-first closure policy enforced)
 
 **Quality Assurance**:
+
 - All Tier 1 (Beginner) constraints met
 - Content matches A1 CEFR proficiency level
 - Cognitive load at A1 maximum (5 concepts)

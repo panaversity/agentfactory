@@ -12,6 +12,7 @@
 
 **Constitution Version**: v6.0.0 (Reasoning Activation Redesign)
 **Applicable Principles**:
+
 - **Principle 7 (Minimal Content)**: Single closure section ("Try With AI" only), no forbidden sections, no internal scaffolding
 - **Section IIa (4-Stage Framework)**: Three Roles demonstrated through narrative (not headers)
 - **Principle 2 (Progressive Complexity)**: A2 tier (5-7 concepts, heavy scaffolding, max 2 options)
@@ -28,6 +29,7 @@
 ### Pre-Refinement Baseline
 
 **Current State** (from audit 2025-01-17):
+
 - **Compliance Score**: 87.5% (7/8 lessons substantially compliant)
 - **Critical Violations**: 2 (Lessons 2, 8 - content outside final section)
 - **Minor Violations**: 5 (Lessons 3-7 - excessive trailing whitespace)
@@ -36,8 +38,10 @@
 ### Post-Refinement Success Criteria
 
 **SC-001: 100% Constitutional Compliance**
+
 - **Measure**: All 8 lessons pass constitutional audit with zero violations
 - **Test**: Run grep validation checks from Constitution:1020-1028
+
   ```bash
   # Check 1: Final section is "Try With AI"
   tail -50 lesson.md | grep -E "^## " | tail -1
@@ -51,25 +55,30 @@
   grep -E "Stage [0-9]|Layer [0-9]|Three Roles (Framework|in Action)" lesson.md
   # Expected: Zero matches
   ```
+
 - **Acceptance**: All 8 lessons return expected results
 
 **SC-002: Three Roles Clarity Enhancement (A2-Appropriate)**
+
 - **Measure**: Each Stage 2 lesson includes 2-3 light narrative markers showing Three Roles
 - **Example**: "Notice how AI suggested a pattern you hadn't considered (teaching you), then you refined it with project-specific context (teaching AI), and together you converged on the optimal solution"
 - **Test**: Manual review confirms roles visible but not heavy-handed
 - **Acceptance**: Reviewer identifies all three roles in at least 2 examples per lesson without explicit headers
 
 **SC-003: Content Preservation**
+
 - **Measure**: Existing pedagogical strengths preserved (dialogue-first pattern, real examples, safety integration)
 - **Test**: Compare pre/post word counts - variations <10% except for added Three Roles narration
 - **Acceptance**: Core content unchanged, only structural corrections + light narration additions
 
 **SC-004: Bash Command Accuracy**
+
 - **Measure**: All bash examples execute correctly in test environment
 - **Test**: Extract all code blocks, execute in clean bash shell, verify outputs match lesson descriptions
 - **Acceptance**: 100% executable (or clearly marked as hypothetical where appropriate)
 
 **SC-005: No New Violations Introduced**
+
 - **Measure**: Refinement doesn't introduce new constitutional violations
 - **Test**: Post-refinement audit shows improvement or maintenance of compliance, never regression
 - **Acceptance**: Compliance score ≥ 87.5% (never decreases)
@@ -85,6 +94,7 @@
 ### Why This Matters
 
 **Problem**: Chapter 7 was implemented (Nov 2024) before Constitution v6.0.0 (Jan 2025). Audit reveals 87.5% compliance with structural violations:
+
 1. Content appearing after final "Try With AI" sections (Lessons 2, 8)
 2. Excessive trailing whitespace (Lessons 3-7)
 3. Three Roles present but could be clearer for A2 learners
@@ -111,11 +121,13 @@
 ### Functional Requirements
 
 **FR-001: Structural Violation Corrections (Priority 1)**
+
 - **Lesson 2** (`02-safety-first-pattern.md`): Move lines 420-503 (Real Examples 1-3) INTO final "Try With AI" section
 - **Lesson 8** (`08-real-project-troubleshooting.md`): Move lines 603-605 (closing paragraphs) INTO final "Try With AI" section before "---"
 - **Lessons 3-7**: Remove excessive trailing newlines (keep exactly 1 blank line after final "---")
 
 **FR-002: Three Roles Clarity Enhancement (Priority 2)**
+
 - Add 2-3 light narrative markers per lesson showing AI as Teacher/Student/Co-Worker
 - Markers should be 1-2 sentences maximum, embedded naturally in existing examples
 - **Example pattern**: "Notice how [AI action] (this demonstrates [Role]) and [Student action] (this demonstrates [Role])"
@@ -123,10 +135,12 @@
 - **Tone**: Observational, not didactic ("Notice how..." not "This is Stage 2 showing Three Roles")
 
 **FR-003: Whitespace Normalization**
+
 - All lessons end with: `[final "Try With AI" section content]\n\n---\n\n` (exactly one blank line before and after "---")
 - Remove trailing newlines beyond this pattern
 
 **FR-004: Constitutional Validation**
+
 - All 8 lessons must pass grep validation checks (SC-001 tests)
 - No internal scaffolding language in student-facing text
 - Single closure section per lesson
@@ -134,17 +148,20 @@
 ### Non-Functional Requirements
 
 **NFR-001: Content Preservation**
+
 - Existing dialogue examples unchanged (except for added Three Roles narration)
 - Real AI examples (Gemini CLI, Claude Code) preserved verbatim
 - Safety integration patterns maintained
 - Pedagogical arc intact (Foundation → Application → Integration → Mastery)
 
 **NFR-002: A2-Appropriate Language**
+
 - Three Roles narration uses beginner-friendly language
 - No jargon without explanation
 - Observational tone, not academic
 
 **NFR-003: Verification Standard**
+
 - All bash commands remain executable
 - All file paths relative (no hardcoded absolute paths)
 - Platform differences addressed in examples where present
@@ -156,11 +173,13 @@
 ### Technical Constraints
 
 **TC-001: File Structure**
+
 - 8 lesson files preserved (01-08)
 - Filenames unchanged
-- Directory location unchanged: `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/`
+- Directory location unchanged: `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/`
 
 **TC-002: Markdown Compatibility**
+
 - Docusaurus-compliant markdown (existing YAML frontmatter preserved)
 - Code blocks with language tags maintained
 - Internal links preserved
@@ -168,15 +187,18 @@
 ### Pedagogical Constraints
 
 **PC-001: Cognitive Load**
+
 - A2 tier: max 5-7 concepts per section (existing sections compliant, preserve this)
 - Three Roles narration adds ≤1 concept per lesson (keeps within limits)
 
 **PC-002: Stage Progression**
+
 - Lessons 1-2: Stage 1 (Manual foundation) - preserve
 - Lessons 3-8: Stage 2 (AI collaboration with Three Roles) - enhance clarity
 - No Stage 3 or 4 content (Chapter 7 is foundational)
 
 **PC-003: Teaching Modality**
+
 - Dialogue-first hands-on discovery (already implemented, preserve)
 - Varies from Chapter 6 direct teaching (anti-convergence compliant)
 
@@ -185,22 +207,27 @@
 ## Non-Goals (Explicitly Out of Scope)
 
 **NG-001: Complete Content Rewrite**
+
 - We are NOT rewriting lessons from scratch
 - Existing pedagogy is sound, only structural/clarity fixes needed
 
 **NG-002: Bash Content Expansion**
+
 - We are NOT adding new bash commands or concepts
 - Scope limited to compliance + clarity, not feature expansion
 
 **NG-003: New Example Creation**
+
 - We are NOT creating new dialogue examples
 - Existing examples (Gemini CLI, Claude Code) are sufficient
 
 **NG-004: README.md Redesign**
+
 - Chapter README already compliant (checked in audit)
 - Scope limited to 8 lesson files (01-08)
 
 **NG-005: Validation Framework Changes**
+
 - Constitution v6.0.0 validation checks are fixed
 - We implement compliance, not redefine standards
 
@@ -213,6 +240,7 @@
 **Given**: All 8 refined lesson files
 **When**: Run constitutional validation grep checks
 **Then**:
+
 - Check 1 (final section): All return "## Try With AI"
 - Check 2 (no forbidden sections): All return zero matches
 - Check 3 (no scaffolding): All return zero matches
@@ -226,6 +254,7 @@
 **Given**: Lessons 3-8 (Stage 2 content)
 **When**: Reviewer reads each lesson looking for Three Roles demonstration
 **Then**:
+
 - Reviewer identifies at least 2 examples per lesson where:
   1. AI teaches student (suggests pattern/optimization learner didn't know)
   2. Student teaches AI (corrects context/constraints AI missed)
@@ -240,6 +269,7 @@
 **Given**: All code blocks extracted from refined lessons
 **When**: Execute in clean bash environment (macOS Bash 5.x, Linux Bash 4.0+)
 **Then**:
+
 - Commands execute without errors OR
 - Errors are pedagogically intentional (troubleshooting lessons)
 
@@ -252,11 +282,13 @@
 **Given**: Pre-refinement and post-refinement lesson files
 **When**: Run `diff` or word count comparison
 **Then**:
+
 - Core dialogue examples unchanged (except added narration)
 - Word count variation <10% per lesson (allows for Three Roles additions)
 - No pedagogical content removed
 
 **Pass Criteria**: Diff shows only:
+
 1. Structural moves (content INTO "Try With AI" sections)
 2. Whitespace cleanup
 3. Three Roles narration additions (≤200 words per lesson)
@@ -276,22 +308,27 @@
 ## Assumptions
 
 **A-001: Audit Accuracy**
+
 - Audit report (2025-01-17) accurately identifies all violations
 - No undiscovered violations exist beyond those documented
 
 **A-002: Constitutional Stability**
+
 - Constitution v6.0.0 remains stable during refinement
 - No new principles added mid-refinement
 
 **A-003: A2 Tier Appropriateness**
+
 - Light narration (2-3 sentences per lesson) is appropriate cognitive load for A2 learners
 - More explicit Three Roles guidance benefits beginners
 
 **A-004: Existing Example Quality**
+
 - Real AI dialogue examples (Gemini CLI, Claude Code) are authentic and don't require fact-checking
 - Examples remain current (bash commands haven't changed)
 
 **A-005: Single-Pass Refinement**
+
 - Violations fixable in single refinement pass
 - No iterative debugging needed beyond initial validation
 
@@ -300,18 +337,22 @@
 ## Dependencies
 
 **D-001: Constitutional Validation Tools**
+
 - Grep commands for validation (Constitution:1020-1028)
 - Bash shell for command execution testing
 
 **D-002: Existing Lesson Files**
+
 - 8 lesson files (01-08) in current state
 - README.md for context (already compliant)
 
 **D-003: Audit Report**
+
 - Constitutional audit completed (2025-01-17)
 - Violations documented with line numbers
 
 **D-004: Docusaurus Build Environment**
+
 - For verifying markdown compatibility post-refinement
 
 ---
@@ -324,6 +365,7 @@
 **Probability**: Low
 **Impact**: Medium (confuses learners if examples change)
 **Mitigation**:
+
 - Use surgical text moves (cut/paste exact content)
 - Validate with diff that only structural changes occurred
 - Manual review confirms examples unchanged
@@ -336,6 +378,7 @@
 **Probability**: Low
 **Impact**: Medium (reduces engagement)
 **Mitigation**:
+
 - Limit narration to 1-2 sentences per example
 - Use observational tone ("Notice how...") not instructional ("You must understand...")
 - User decision: "Clear But Natural" option selected to balance visibility with immersion
@@ -348,6 +391,7 @@
 **Probability**: Low (bash commands are standardized)
 **Impact**: Low (existing lessons already address platform differences)
 **Mitigation**:
+
 - Test in multiple environments (macOS Bash 5.x, Linux Bash 4.0+)
 - Preserve existing platform notes in lessons
 
@@ -359,6 +403,7 @@
 **Probability**: Very Low
 **Impact**: Low (manual review catches issues)
 **Mitigation**:
+
 - Manual review supplements automated checks
 - Validation auditor performs final quality gate
 
@@ -369,18 +414,21 @@
 ### Phase 1: Structural Corrections (Priority 1)
 
 **Lesson 2** (`02-safety-first-pattern.md`):
+
 1. Locate final "## Try With AI: Real Examples from Gemini" section (line 413)
 2. Move content from lines 420-503 INTO that section as subsections
 3. Remove trailing "---" separators after move
 4. Add single final "---\n\n" at end
 
 **Lesson 8** (`08-real-project-troubleshooting.md`):
+
 1. Locate final "## Try With AI: Orchestration at Scale (Advanced)" section (line 564)
 2. Move closing paragraphs (lines 603-605) INTO that section before final "---"
 3. Remove redundant "---" separators
 4. Normalize whitespace to single blank line after final "---"
 
 **Lessons 3-7**:
+
 1. Verify final section is "## Try With AI: [title]"
 2. Remove trailing newlines beyond `---\n\n` pattern
 3. Ensure exactly one blank line before and after final "---"
@@ -402,6 +450,7 @@
 4. **Frequency**: 2-3 markers per lesson (not every example)
 
 **Example Addition** (Lesson 3):
+
 ```markdown
 ### Practice: Navigation with Your AI
 
@@ -411,9 +460,9 @@
 
 **What to Compare:**
 
-| Navigation Step | You Do This | Your AI Does This |
-|---|---|---|
-| Navigate down | `cd Documents` | `cd book-source` |
+| Navigation Step | You Do This    | Your AI Does This |
+| --------------- | -------------- | ----------------- |
+| Navigate down   | `cd Documents` | `cd book-source`  |
 
 **Observation**: Notice how you and your AI use identical commands (`cd`, `..`) but in different locations. This is co-learning—you understand AI's navigation because you've practiced the same pattern. When AI suggests a path, you can verify it makes sense.
 ```

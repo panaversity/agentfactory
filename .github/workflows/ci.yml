@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  main:
+    name: Nx Affected
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required for nx affected
+          filter: tree:0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Install JS dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Python dependencies
+        run: uv sync --all-extras
+
+      # Use nrwl/nx-set-shas to automatically determine base/head for affected
+      - name: Derive appropriate SHAs for base and head
+        uses: nrwl/nx-set-shas@v4
+
+      # Run affected lint, test, build
+      # This only runs tasks for projects affected by the PR changes
+      - name: Run affected tasks
+        run: npx nx affected -t lint test build --base=$NX_BASE --head=$NX_HEAD
+
+      - name: Build summary
+        run: |
+          echo "## Nx Affected CI Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Base SHA:** $NX_BASE" >> $GITHUB_STEP_SUMMARY
+          echo "**Head SHA:** $NX_HEAD" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Affected Projects:" >> $GITHUB_STEP_SUMMARY
+          npx nx show projects --affected --base=$NX_BASE --head=$NX_HEAD >> $GITHUB_STEP_SUMMARY || echo "No projects affected" >> $GITHUB_STEP_SUMMARY

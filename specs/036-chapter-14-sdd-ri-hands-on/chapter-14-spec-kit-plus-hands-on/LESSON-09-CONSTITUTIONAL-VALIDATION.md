@@ -2,7 +2,7 @@
 
 **Date**: 2025-11-25
 **Status**: PASSED ALL CHECKS
-**File**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/09-designing-reusable-intelligence.md`
+**File**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/09-designing-reusable-intelligence.md`
 
 ---
 
@@ -13,11 +13,13 @@
 **Requirement**: No exposed pedagogical labels ("AI as Teacher", "What you learned:", etc.)
 
 **Validation Command**:
+
 ```bash
 grep -c "AI as\|What you learned:\|What AI learned:\|Role 1:\|Role 2:\|Stage [0-9]" lesson.md
 ```
 
 **Result**: ✅ PASS (0 matches)
+
 - No "AI as Teacher", "AI as Student", "AI as Co-Worker" labels
 - No "What you learned:" meta-commentary
 - No "What AI learned:" scaffolding exposure
@@ -33,17 +35,20 @@ grep -c "AI as\|What you learned:\|What AI learned:\|Role 1:\|Role 2:\|Stage [0-
 **Requirement**: Lesson must end with activity section only (no Summary, Key Takeaways, meta-commentary)
 
 **Validation**:
+
 ```bash
 tail -50 lesson.md | grep "## Try With AI"
 ```
 
 **Result**: ✅ PASS
+
 - Last ## heading is "## Try With AI"
 - Contains 4 copyable prompts for student action
 - No sections after "Try With AI"
 - File ends cleanly without meta-commentary
 
 **Structure**:
+
 ```
 ## Skill Reuse in Practice
 [3-project scenario showing intelligence compounding]
@@ -58,6 +63,7 @@ tail -50 lesson.md | grep "## Try With AI"
 ```
 
 **Validation of Final Content**:
+
 ```
 > "Help me create a complete generate-video skill file following standard skill structure..."
 
@@ -74,24 +80,28 @@ tail -50 lesson.md | grep "## Try With AI"
 **Validation**:
 
 1. **"P+Q+P pattern activates reasoning mode"**
+
    - ✅ Demonstrated through:
      - Good vs bad persona examples (specific vs vague)
      - Good vs bad question examples (open-ended vs yes/no)
      - Good vs bad principle examples (concrete vs abstract)
 
 2. **"Skills compound value across projects"**
+
    - ✅ Demonstrated through:
      - Project 1: 10 hours (full workflow execution)
      - Project 2: 1 hour (with skill reuse) = 10x faster
      - Project 3: 4 hours (multi-skill composition)
 
 3. **"Video generation pattern justifies intelligence encoding"**
+
    - ✅ Demonstrated through:
      - Frequency: Every product needs marketing
      - Complexity: 5+ decision points (prompt quality, pacing, gates, automation, iteration)
      - Organizational value: Faster video creation across projects
 
 4. **"Quality gates ensure professional output"**
+
    - ✅ Demonstrated through:
      - 5 objective gates (file, codec, duration, playback, content)
      - Measurable criteria (not subjective)
@@ -112,11 +122,13 @@ tail -50 lesson.md | grep "## Try With AI"
 **Validation**:
 
 **Video-Specific Persona**:
+
 - ✅ "Think like a video production director" (not generic "expert")
 - ✅ Analogy to film director and cinematography
 - ✅ Domain-specific behaviors (planning, validating pacing, enforcing quality gates, iterating)
 
 **Video-Specific Questions**:
+
 - ✅ Narrative Clarity: Does script explain product value? Value proposition explicit? Logical steps?
 - ✅ Visual & Pacing: Scenes match narrative? Pacing consistent? Transitions smooth? Complete arc?
 - ✅ Technical Quality: Gates 1-5 for video files (file size, codec, duration, playback, content)
@@ -124,6 +136,7 @@ tail -50 lesson.md | grep "## Try With AI"
 - ✅ Engagement & Marketing: Hook attention? Technical language minimized? CTA present? Convincing?
 
 **Video-Specific Principles**:
+
 - ✅ Prompt Structure: Opening hook (5-10s), demo (30-40s), CTA (5-10s)
 - ✅ Scene Requirements: What shown, why matters, duration specified
 - ✅ Quality Gates: 5 specific video checks (file, codec, duration, playback, content)
@@ -131,6 +144,7 @@ tail -50 lesson.md | grep "## Try With AI"
 - ✅ Playwright MCP Automation: Session persistence, timeout handling, error recovery
 
 **Usage Example**:
+
 - ✅ Real scenario: Python data analysis tool product demo
 - ✅ Specification template: Intent, success criteria, constraints
 - ✅ Prompt structure: Opening, 3 scenes with timing, closing, visual style
@@ -145,6 +159,7 @@ tail -50 lesson.md | grep "## Try With AI"
 **Validation**:
 
 **New Concepts Identified**:
+
 1. Pattern recognition framework (Frequency × Complexity × Org Value)
 2. Skill vs subagent distinction (guidance vs autonomous)
 3. P+Q+P structure (Persona, Questions, Principles)
@@ -157,6 +172,7 @@ tail -50 lesson.md | grep "## Try With AI"
 **Total**: 8 concepts (within B1 range of 7-10) ✅
 
 **Scaffolding Provided**:
+
 - ✅ Complete skill templates (reduces cognitive load)
 - ✅ Step-by-step process (Persona → Questions → Principles)
 - ✅ Good vs bad examples for each component
@@ -176,6 +192,7 @@ tail -50 lesson.md | grep "## Try With AI"
 **How This Works**:
 
 When students see:
+
 ```
 Open your AI companion and collaborate:
 
@@ -185,11 +202,13 @@ Help me finish this persona...
 ```
 
 They are EXPERIENCING:
+
 1. **AI as Teacher**: AI suggests what persona should establish
 2. **AI as Student**: AI adapts its persona recommendation to video production thinking
 3. **AI as Co-Worker**: Together you refine persona until both satisfied
 
 But students NEVER SEE:
+
 - ❌ "This is AI as Teacher"
 - ❌ "**What you learned:** AI taught you how to write personas"
 - ❌ "**Role 1: AI as Teacher** — AI suggests patterns"
@@ -226,6 +245,7 @@ Instead, the framework stays IMPLICIT in the natural collaboration pattern.
 **Validation**:
 
 **Macro Structure** (progressive complexity):
+
 1. **From Workflow Execution** → Paradigm shift introduction
 2. **Identifying Patterns** → Decision framework (Frequency × Complexity × Org Value)
 3. **Skill Design** → P+Q+P pattern explanation
@@ -237,6 +257,7 @@ Instead, the framework stays IMPLICIT in the natural collaboration pattern.
 9. **Try With AI** → Four collaborative prompts
 
 **Micro Structure** (within each section):
+
 - ✅ Introduce concept
 - ✅ Show good vs bad examples
 - ✅ Provide decision framework
@@ -246,6 +267,7 @@ Instead, the framework stays IMPLICIT in the natural collaboration pattern.
 - ✅ Self-check validation
 
 **Chunking Strategy**:
+
 - ✅ Visual breaks (### subsections every 200-300 words)
 - ✅ Code blocks for templates (visual relief)
 - ✅ Tables for decision frameworks
@@ -256,16 +278,16 @@ Instead, the framework stays IMPLICIT in the natural collaboration pattern.
 
 ## Summary: Constitutional Validation
 
-| Requirement | Check | Result | Notes |
-|---|---|---|---|
-| Framework Invisibility | grep for role labels | PASS (0) | No "AI as Teacher" exposed |
-| Structure Compliance | Ends with activity | PASS | Last section is "Try With AI" |
-| Evidence Present | Demonstrability | PASS | Claims shown via examples |
-| Domain Authenticity | Video examples | PASS | Gemini, Playwright, quality gates |
-| Cognitive Load | B1 (7-10) | PASS | 8 concepts with scaffolding |
-| Three Roles Hidden | Natural collaboration | PASS | Framework implicit in prompts |
-| Evals Alignment | Maps to chapter goals | PASS | All success criteria covered |
-| Working Memory | Progressive disclosure | PASS | Macro + micro chunking |
+| Requirement            | Check                  | Result   | Notes                             |
+| ---------------------- | ---------------------- | -------- | --------------------------------- |
+| Framework Invisibility | grep for role labels   | PASS (0) | No "AI as Teacher" exposed        |
+| Structure Compliance   | Ends with activity     | PASS     | Last section is "Try With AI"     |
+| Evidence Present       | Demonstrability        | PASS     | Claims shown via examples         |
+| Domain Authenticity    | Video examples         | PASS     | Gemini, Playwright, quality gates |
+| Cognitive Load         | B1 (7-10)              | PASS     | 8 concepts with scaffolding       |
+| Three Roles Hidden     | Natural collaboration  | PASS     | Framework implicit in prompts     |
+| Evals Alignment        | Maps to chapter goals  | PASS     | All success criteria covered      |
+| Working Memory         | Progressive disclosure | PASS     | Macro + micro chunking            |
 
 ---
 
@@ -274,6 +296,7 @@ Instead, the framework stays IMPLICIT in the natural collaboration pattern.
 **Status**: ✅ READY FOR STUDENT DELIVERY
 
 **Recommended Next Steps**:
+
 1. Deploy to student-facing repository
 2. Update Chapter 14 navigation to link Lesson 09
 3. Prepare Lesson 10 (Brownfield Adoption) for integration

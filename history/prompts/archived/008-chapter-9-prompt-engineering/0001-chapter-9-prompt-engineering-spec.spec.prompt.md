@@ -9,17 +9,24 @@ feature: 008-chapter-9-prompt-engineering
 branch: 008-chapter-9-prompt-engineering
 user: System
 command: /sp.specify
-labels: ["chapter-9", "prompt-engineering", "part-3", "beginner-tier", "specification"]
+labels:
+  [
+    "chapter-9",
+    "prompt-engineering",
+    "part-3",
+    "beginner-tier",
+    "specification",
+  ]
 links:
   spec: specs/008-chapter-9-prompt-engineering/spec.md
   ticket: null
   adr: null
   pr: null
 files:
- - specs/008-chapter-9-prompt-engineering/spec.md
- - specs/008-chapter-9-prompt-engineering/checklists/requirements.md
+  - specs/008-chapter-9-prompt-engineering/spec.md
+  - specs/008-chapter-9-prompt-engineering/checklists/requirements.md
 tests:
- - Specification quality validation checklist (all items PASS)
+  - Specification quality validation checklist (all items PASS)
 ---
 
 ## Prompt
@@ -28,7 +35,8 @@ Design Chapter 9 Prompt Engineering as per the goal specified here @book-source\
 
 **Referenced Context Files:**
 
-1. **Part 3 Goals** (book-source/docs/03-prompt-and-context-engineering/README.md):
+1. **Part 3 Goals** (apps/learn-app/docs/03-prompt-and-context-engineering/README.md):
+
    - Part 3 introduces working with AI coding agents as the paradigm shift from writing code to directing intelligent agents
    - Two foundational skills: prompt engineering (what you SAY) and context engineering (what AI KNOWS)
    - Developers who thrive communicate most clearly with AI partners
@@ -55,6 +63,7 @@ Design Chapter 9 Prompt Engineering as per the goal specified here @book-source\
 **Key Components Generated**:
 
 1. **Comprehensive User Stories (6 total, prioritized P1-P6)**:
+
    - P1: Understanding AI coding agents as collaborative partners (foundational mental model)
    - P2: Constructing basic developer prompts (Command + Context + Logic)
    - P2: Validating AI-generated code (safety-critical, taught alongside generation)
@@ -63,6 +72,7 @@ Design Chapter 9 Prompt Engineering as per the goal specified here @book-source\
    - P5: Building personal prompt library (productivity optimization)
 
 2. **32 Functional Requirements** organized into:
+
    - Content Structure (FR-001 to FR-008): 8-element framework, validation, both tools
    - Pedagogical Approach Tier 1 (FR-009 to FR-015): max 5 concepts, concept-first, AI as decision-maker
    - Interactive Learning (FR-016 to FR-020): 5-8 exercises, templates, checklists
@@ -71,6 +81,7 @@ Design Chapter 9 Prompt Engineering as per the goal specified here @book-source\
    - Content Quality (FR-028 to FR-032): no jargon, visual aids, key takeaways
 
 3. **18 Success Criteria** with specific metrics:
+
    - Learning Effectiveness: 80% success rate, 90% understanding, 20-minute exercises
    - Skill Application: validation checklist use, template creation, question-driven
    - Confidence & Mindset: survey results, collaborative language adoption
@@ -92,6 +103,7 @@ Design Chapter 9 Prompt Engineering as per the goal specified here @book-source\
 **Core Philosophy**: Prompting is WHAT you SAY to your AI agent. Students become AI orchestrators, not code writers.
 
 **Pedagogical Approach**:
+
 - Max 5 concepts per section (cognitive load management)
 - Concept-First pattern: WHAT → WHY → HOW → PRACTICE
 - AI positioned as decision-maker for tool choices
@@ -111,10 +123,12 @@ Design Chapter 9 Prompt Engineering as per the goal specified here @book-source\
 - 🧪 Tests: Specification quality checklist created and validated - all items PASS. Zero clarification markers. Ready for planning phase.
 
 - 📁 Files:
+
   - specs/008-chapter-9-prompt-engineering/spec.md (comprehensive specification)
   - specs/008-chapter-9-prompt-engineering/checklists/requirements.md (quality validation)
 
 - 🔁 Next prompts:
+
   - `/sp.plan` to create detailed lesson breakdown and implementation plan
   - OR `/sp.clarify` if stakeholders want to refine any open questions in Notes section
   - Consider early validation of pedagogical decisions (concept load, tool choice, exercise difficulty) with target users
@@ -126,6 +140,7 @@ Design Chapter 9 Prompt Engineering as per the goal specified here @book-source\
 - Failure modes observed: None. Specification creation followed workflow correctly: short name generation → branch number check → feature creation → spec writing → checklist validation → PHR creation.
 
 - Graders run and results (PASS/FAIL):
+
   - Specification Quality Checklist: **PASS** (12/12 items validated)
   - Content Quality: **PASS**
   - Requirement Completeness: **PASS**

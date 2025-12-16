@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # compliance-metrics.sh - Quantitative compliance metrics per lesson
-# Usage: ./compliance-metrics.sh 14 book-source/docs/04-Part-4/14-data-types/01-intro.md
+# Usage: ./compliance-metrics.sh 14 apps/learn-app/docs/04-Part-4/14-data-types/01-intro.md
 
 set -euo pipefail
 

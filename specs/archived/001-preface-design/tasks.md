@@ -19,7 +19,7 @@ description: "Task list for Preface content creation and validation"
 
 ## Path Conventions
 
-- Content location: `/book-source/docs/preface.md`
+- Content location: `/apps/learn-app/docs/preface.md`
 - Supporting artifacts: `/specs/001-preface-design/`
 - Beta review materials: `/specs/001-preface-design/beta-review/`
 
@@ -85,7 +85,7 @@ description: "Task list for Preface content creation and validation"
 
 - [ ] T010 [P] [S3] [US2] Write Section 3.2 - AI Driven Development: Define AI as co-creator generating implementation from specs, establish developer as architect/director, position as book's sweet spot ("You write specification, AI implements"), provide FastAPI example. Acceptance: AI Driven clear, spec-first connection explicit, book positioning clear. **Time: 2h** **Word Budget: 350w**
 
-- [ ] T011 [P] [S3] [US2] Write Section 3.3 - AI Native Software Development: Define applications architected around LLMs as core functional components (AI *is* the software), provide agentic system examples (customer support agent), connect to Parts 11-13 of book. Acceptance: AI Native distinct, examples compelling, forward reference clear. **Time: 1.5h** **Word Budget: 300w**
+- [ ] T011 [P] [S3] [US2] Write Section 3.3 - AI Native Software Development: Define applications architected around LLMs as core functional components (AI _is_ the software), provide agentic system examples (customer support agent), connect to Parts 11-13 of book. Acceptance: AI Native distinct, examples compelling, forward reference clear. **Time: 1.5h** **Word Budget: 300w**
 
 - [ ] T012 [S3] [US2] Write Section 3.4 - Organizational Maturity Model (5 Levels): Detail all 5 levels (Awareness, Adoption, Integration, AI-Native Products, AI-First Enterprise) with characteristics, challenges, progression patterns, realistic expectations. Include key insights: cannot skip levels, Level 2→3 is biggest cultural shift, timeline varies. Acceptance: All 5 levels clear, progression logical, insights actionable. **Time: 2.5h** **Word Budget: 800-1000w**
 
@@ -245,7 +245,7 @@ description: "Task list for Preface content creation and validation"
 
 ### Publication Preparation
 
-- [ ] T045 Integration into book-source/docs/: Place Preface at correct location in book structure (`book-source/docs/preface.md`), update book navigation to include Preface before Chapter 1, verify all internal references work, test build process. Acceptance: Preface properly placed, navigation to Chapter 1 working, book builds successfully without errors. **Time: 1h**
+- [ ] T045 Integration into apps/learn-app/docs/: Place Preface at correct location in book structure (`apps/learn-app/docs/preface.md`), update book navigation to include Preface before Chapter 1, verify all internal references work, test build process. Acceptance: Preface properly placed, navigation to Chapter 1 working, book builds successfully without errors. **Time: 1h**
 
 - [ ] T046 Final publication validation: Verify Preface renders correctly in web format, check PDF generation if applicable, validate all URLs (book website, Panaversity), confirm formatting consistency with chapter styles. Acceptance: Preface renders correctly in all formats, all links work, formatting matches book standards. **Time: 0.5h**
 
@@ -268,6 +268,7 @@ description: "Task list for Preface content creation and validation"
 ### Section Writing Order
 
 **Recommended sequence**:
+
 1. Section 1 (Hook) → Section 2 (Why) → Section 5 (Spec-Driven Way) [Phase 1]
 2. Section 3 (Spectrum) → Section 4 (Dual Language) [Phase 2]
 3. Section 6 (Co-Learning) → Section 7 (AI-Native Thinking) [Phase 3]
@@ -276,6 +277,7 @@ description: "Task list for Preface content creation and validation"
 ### Parallel Opportunities
 
 **Within Phases**:
+
 - Phase 1: T002 (S1 review) and T003 (S2 writing) can overlap
 - Phase 1: T004 (S2 review) and T005 (S5 writing) can overlap
 - Phase 2: All writing tasks (T008-T011) can be parallelized if multiple writers
@@ -289,6 +291,7 @@ description: "Task list for Preface content creation and validation"
 ### Critical Path
 
 **Sequential (cannot be parallelized)**:
+
 1. T001 → T003 → T005 (foundation sections must be written in order)
 2. T007 (integration requires all Phase 1 sections complete)
 3. T017 (integration requires Phase 2 complete)
@@ -304,6 +307,7 @@ description: "Task list for Preface content creation and validation"
 ### MVP First (Foundation + Context)
 
 **Minimum viable Preface for internal feedback**:
+
 1. Complete Phase 1 (Sections 1, 2, 5) - Foundation established
 2. Complete Phase 2 (Sections 3, 4) - Context provided
 3. **STOP and VALIDATE**: Internal team review of Sections 1-5
@@ -317,6 +321,7 @@ description: "Task list for Preface content creation and validation"
 ### Incremental Delivery
 
 **Staged approach**:
+
 1. Complete Phase 1 → Internal review → Refine
 2. Complete Phase 2 → Internal review → Refine
 3. Complete Phase 3 → Internal review → Refine
@@ -344,13 +349,13 @@ description: "Task list for Preface content creation and validation"
 
 ### By Phase
 
-| Phase | Writing | Review | Integration | Total |
-|-------|---------|--------|-------------|-------|
-| Phase 1: Foundation | 4.5-6h | 1.75h | 1h | 7.25-8.75h |
-| Phase 2: Context | 10.5-12h | 1.75h | 1h | 13.25-14.75h |
-| Phase 3: Philosophy | 8-10h | 1.5h | 1h | 10.5-12.5h |
-| Phase 4: Closure | 7.75-9.5h | 1.5h | 0h | 9.25-11h |
-| Phase 5: Integration & Validation | 0h | 5h | 7.5h | 12.5h |
+| Phase                             | Writing   | Review | Integration | Total        |
+| --------------------------------- | --------- | ------ | ----------- | ------------ |
+| Phase 1: Foundation               | 4.5-6h    | 1.75h  | 1h          | 7.25-8.75h   |
+| Phase 2: Context                  | 10.5-12h  | 1.75h  | 1h          | 13.25-14.75h |
+| Phase 3: Philosophy               | 8-10h     | 1.5h   | 1h          | 10.5-12.5h   |
+| Phase 4: Closure                  | 7.75-9.5h | 1.5h   | 0h          | 9.25-11h     |
+| Phase 5: Integration & Validation | 0h        | 5h     | 7.5h        | 12.5h        |
 
 **Total Estimated Effort**: 52.75-59.5 story points (hours)
 
@@ -374,18 +379,18 @@ description: "Task list for Preface content creation and validation"
 
 ### Target by Section
 
-| Section | Words | Status |
-|---------|-------|--------|
-| 1. Opening Hook | 250-300 | [ ] Draft [ ] Review [ ] Final |
-| 2. Why We Wrote | 400-500 | [ ] Draft [ ] Review [ ] Final |
-| 3. AI Dev Spectrum | 1,150-1,400 | [ ] Draft [ ] Review [ ] Final |
-| 4. Dual Language | 500-600 | [ ] Draft [ ] Review [ ] Final |
-| 5. Spec-Driven Way | 700-800 | [ ] Draft [ ] Review [ ] Final |
-| 6. Co-Learning Philosophy | 800-900 | [ ] Draft [ ] Review [ ] Final |
-| 7. AI-Native Thinking | 1,100-1,200 | [ ] Draft [ ] Review [ ] Final |
-| 8. What You'll Learn | 400-500 | [ ] Draft [ ] Review [ ] Final |
-| 9. Who This Is For | 1,200-1,400 | [ ] Draft [ ] Review [ ] Final |
-| 10. How to Use | 400-500 | [ ] Draft [ ] Review [ ] Final |
+| Section                   | Words       | Status                         |
+| ------------------------- | ----------- | ------------------------------ |
+| 1. Opening Hook           | 250-300     | [ ] Draft [ ] Review [ ] Final |
+| 2. Why We Wrote           | 400-500     | [ ] Draft [ ] Review [ ] Final |
+| 3. AI Dev Spectrum        | 1,150-1,400 | [ ] Draft [ ] Review [ ] Final |
+| 4. Dual Language          | 500-600     | [ ] Draft [ ] Review [ ] Final |
+| 5. Spec-Driven Way        | 700-800     | [ ] Draft [ ] Review [ ] Final |
+| 6. Co-Learning Philosophy | 800-900     | [ ] Draft [ ] Review [ ] Final |
+| 7. AI-Native Thinking     | 1,100-1,200 | [ ] Draft [ ] Review [ ] Final |
+| 8. What You'll Learn      | 400-500     | [ ] Draft [ ] Review [ ] Final |
+| 9. Who This Is For        | 1,200-1,400 | [ ] Draft [ ] Review [ ] Final |
+| 10. How to Use            | 400-500     | [ ] Draft [ ] Review [ ] Final |
 
 **Total Target**: 5,400-6,400 words (within 4,500-6,000 constraint with 10-15% buffer)
 
@@ -396,6 +401,7 @@ description: "Task list for Preface content creation and validation"
 ### Functional Requirements (21 FRs)
 
 **Content Structure** (FR-001 to FR-009):
+
 - [ ] FR-001: Opening hook establishes fundamental shift
 - [ ] FR-002: "Why We Wrote" removes barrier and explains motivation
 - [ ] FR-003: AI Development Spectrum presented with definitions and examples
@@ -407,21 +413,24 @@ description: "Task list for Preface content creation and validation"
 - [ ] FR-009: "Who This Is For" addresses 4 distinct audiences
 
 **Tone & Voice** (FR-010 to FR-013):
+
 - [ ] FR-010: Accessible, conversational language for non-technical + rigorous for experts
 - [ ] FR-011: No unexplained jargon; all necessary terms defined
 - [ ] FR-012: Compelling metaphors and analogies used effectively
 - [ ] FR-013: Optimism balanced with intellectual honesty about limitations
 
 **Alignment & Grounding** (FR-014 to FR-017):
+
 - [ ] FR-014: Grounded in Constitution v3.0.0 (Principles #6, #12, #14, #17)
 - [ ] FR-015: Book URLs referenced (ai-native.panaversity.org, panaversity.com/books/...)
 - [ ] FR-016: No specific tool recommendations (tools saved for chapters)
 - [ ] FR-017: No programming knowledge assumed; experts acknowledged
 
 **Pedagogical Intent** (FR-018 to FR-021):
+
 - [ ] FR-018: Learning AI-native development positioned as fundamentally different
 - [ ] FR-019: Validation, critical thinking, evaluation reinforced as core skills
-- [ ] FR-020: Clear expectation: teaches *thinking* like AI-native dev, not just *coding*
+- [ ] FR-020: Clear expectation: teaches _thinking_ like AI-native dev, not just _coding_
 - [ ] FR-021: Specification-first development clearly non-negotiable
 
 ### Success Criteria (8 SCs)
@@ -447,22 +456,27 @@ description: "Task list for Preface content creation and validation"
 ## Risk Mitigation
 
 ### Risk 1: Beginner Overwhelm (5 Maturity Levels)
+
 **Mitigation Tasks**: T008 (clear outline), T012 (concrete examples), T013 (visual aids)
 **Validation**: SC-001 (non-technical comprehension)
 
 ### Risk 2: Expert Underwhelm (Not Technical Enough)
+
 **Mitigation Tasks**: T009-T011 (AI Spectrum depth), T020-T023 (professional thinking)
 **Validation**: SC-002 (developer framework mastery)
 
 ### Risk 3: Length Overrun (Target 4,500-6,000 words)
+
 **Mitigation**: Strict word budgets per section; Phase 5 editing pass (T044)
 **Current target**: 5,400-6,400 words (within 10-15% buffer)
 
 ### Risk 4: Tone Inconsistency
+
 **Mitigation**: Regular integration tasks (T007, T017, T026, T037); final polish (T044)
 **Validation**: FR-010 review in all review tasks
 
 ### Risk 5: Persona Exclusion
+
 **Mitigation**: Explicit subsections for all 4 personas (T029-T032); shared conclusion (T033)
 **Validation**: SC-003 (85%+ positive sentiment ALL audiences)
 

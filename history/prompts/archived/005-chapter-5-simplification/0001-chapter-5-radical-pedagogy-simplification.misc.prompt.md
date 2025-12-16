@@ -9,18 +9,25 @@ feature: chapter-5-simplification
 branch: main
 user: user
 command: "Simplify Chapter 5 lessons to emphasize AI as collaborative partner, reduce cognitive load, remove incorrect command syntax"
-labels: ["pedagogy", "simplification", "chapter-5", "cognitive-load", "ai-collaboration"]
+labels:
+  [
+    "pedagogy",
+    "simplification",
+    "chapter-5",
+    "cognitive-load",
+    "ai-collaboration",
+  ]
 links:
   spec: "specs/005-chapter-5-spec/chapter-5-spec.md"
   ticket: null
   adr: null
   pr: null
 files:
-  - book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md
-  - book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/03-subagents.md
-  - book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/04-agent-skills.md
-  - book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/05-mcp-servers-and-workflows.md
-  - book-source/docs/02-AI-Tool-Landscape/README.md
+  - apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md
+  - apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/03-subagents.md
+  - apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/04-agent-skills.md
+  - apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/05-mcp-servers-and-workflows.md
+  - apps/learn-app/docs/02-AI-Tool-Landscape/README.md
 tests: []
 ---
 
@@ -29,6 +36,7 @@ tests: []
 **Critical Issue Identified**: Chapter 5 lessons contained command syntax assumed to be correct but actually unverified, plus excessive complexity that contradicted the chapter's pedagogical goal of establishing Claude Code as a collaborative thinking partner.
 
 **User Feedback (verbatim)**:
+
 1. "Assume all commands are incorrect and focus on user cognitive workload"
 2. "like there are a lot of installation options when just 1 or 2 were sufficient even better everyone can easily setup node - so 1 and its easy"
 3. "like claude agent is no command and same goes with others"
@@ -44,12 +52,14 @@ tests: []
 **Systematic Simplification Executed**:
 
 ### Lesson 2: Installation & Authentication
+
 - **Before**: 800+ lines covering Windows .exe, macOS .dmg, Linux curl scripts, WSL, permission issues, Apple Silicon specifics
 - **After**: ~250 lines, npm-only installation, honest minimal troubleshooting
 - **Change**: Reduced 6 platform variants to 1 universal command: `npm install -g @anthropic-ai/claude-code`
 - **Cognitive Load**: Reduced by ~70%
 
 ### Lesson 3: Subagents
+
 - **Before**: "code-reviewer" subagent with PEP 8, type hints, security concerns, performance optimization
 - **After**: "explain-my-code" subagent that explains what code does in plain English
 - **Change**: Reframed from authoritative review to collaborative explanation
@@ -57,6 +67,7 @@ tests: []
 - **Added**: 4-point success checkpoints for verification
 
 ### Lesson 4: Agent Skills
+
 - **Before**: "python-docstring-writer" with extensive YAML, allowed-tools config, multiple domain-specific scenarios (DataScience, WebDev, Backend, DevOps)
 - **After**: "error-explainer" skill that helps learners understand Python error messages
 - **Change**: Removed strategic frameworks, competitive advantage language, complex configuration
@@ -64,6 +75,7 @@ tests: []
 - **Added**: 4-point success checkpoints
 
 ### Lesson 5: MCP Servers & Workflows
+
 - **Before**: 300+ lines of security evaluation framework with trust matrices, code review checklists, red/green flags, when to avoid MCP
 - **After**: 5-line security note: Use official servers, read-only tokens, keychain storage, can revoke anytime
 - **Change**: Removed security theater from a learning chapter
@@ -72,6 +84,7 @@ tests: []
 - **Rationale**: This chapter teaches collaboration, not risk evaluation
 
 ### Part 2 README Update
+
 - **Before**: Chapter 5 estimated at "3-4 hours"
 - **After**: Chapter 5 estimated at "2-2.5 hours"
 - **Accomplishments**: Updated to reflect "install with single npm command," "create simple subagent," "understand agent skills," "connect to GitHub and explore data"
@@ -84,6 +97,7 @@ tests: []
 - 🧪 **Tests**: All 5 lessons remain structurally intact with learning objectives preserved. Verification: Each lesson now has 3-4 point success checkpoints instead of multiple scenarios.
 
 - 📁 **Files**: 5 files modified across Chapter 5 and Part 2 README
+
   - Installation & Authentication: 800→250 lines (70% reduction)
   - Subagents: Reframed 1 example, removed 4 professional scenarios
   - Skills: Simplified example, removed domain-specific variants
@@ -91,6 +105,7 @@ tests: []
   - README: Updated time estimate and accomplishments
 
 - 🔁 **Next prompts**:
+
   1. Phase 2: Verify actual Claude Code command syntax against official documentation
   2. Validate that [Command - phase 2 will confirm syntax] placeholders can be filled with real commands
   3. Consider whether Lesson 5 should be formally split into 5A/5B (currently simplified in-place)
@@ -100,12 +115,14 @@ tests: []
 ## Evaluation notes (flywheel)
 
 - **Failure modes observed**:
+
   1. Over-indexing on command syntax correctness without verification
   2. Teaching production-grade complexity when learning-focused simplicity was needed
   3. Including security evaluation in a chapter focused on establishing collaboration
   4. Creating multiple "professional scenarios" when one simple collaborative example suffices
 
 - **Graders run and results**:
+
   - Pedagogical alignment: NOW STRONG (was misaligned)
   - Cognitive load: NOW REASONABLE (was excessive)
   - Command syntax: HONEST PLACEHOLDERS (deferred to Phase 2)

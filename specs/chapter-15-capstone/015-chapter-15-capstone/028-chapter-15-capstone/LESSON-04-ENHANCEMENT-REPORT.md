@@ -29,12 +29,14 @@ Enhanced Lesson 04 (Feature 3: Outreach Generator) from basic template+pipeline 
 ### 1. Opening Hook (Rewrote for Acceleration Framing)
 
 **Before:**
+
 ```
 By Feature 3, the SDD-RI cycle is muscle memory. You've built Lead Profiler (F1)
 and ICP Scorer (F2). Now build Outreach Generator...
 ```
 
 **After:**
+
 ```
 You've built Lead Profiler (F1, baseline time) and ICP Scorer (F2, likely 30-50% faster).
 By Feature 3, the specification-driven cycle is automatic...
@@ -51,11 +53,13 @@ and personalization logic are simpler than scoring logic.
 ### 2. Template System Design (Enhanced Significantly)
 
 **Before:**
+
 - Simple JSON structure with three templates
 - No explanation of WHY structure matters
 - No guidance on how to verify
 
 **After** (Part 1):
+
 - **Rich template structure** with metadata:
   - `tone` and `approach` fields guide selection logic
   - `urgency` levels (high/medium/low)
@@ -74,14 +78,15 @@ Added decision tree before ANY code:
 
 ```markdown
 ## Selection Algorithm
-
 ```
+
 IF icp_score.total_score >= 80 AND pain_point_confidence > 0.7
-  THEN use "hot" template
+THEN use "hot" template
 ELSE IF icp_score.total_score >= 50
-  THEN use "warm" template
+THEN use "warm" template
 ELSE
-  THEN use "cold" template
+THEN use "cold" template
+
 ```
 
 ## Fallback Rules
@@ -104,19 +109,24 @@ If a required personalization field is missing from lead_profile:
 # Feature 3: Outreach Generator — Specification
 
 ## Intent
+
 Given a Lead Profile (F1 output) and ICP Score (F2 output), generate a personalized
 outreach message by:
+
 1. Selecting the appropriate template (hot/warm/cold) based on ICP score
 2. Extracting personalization fields from lead profile
-[... 6 detailed steps ...]
+   [... 6 detailed steps ...]
 
 ## Inputs
+
 [Complete JSON schema for Lead Profile and ICP Score]
 
 ## Output
+
 [Complete JSON schema with all output fields]
 
 ## Success Criteria
+
 - ✅ Correct template selected based on ICP score range
 - ✅ All {field} placeholders filled with actual lead profile data
 - ✅ No placeholder markers remain in final message
@@ -126,12 +136,14 @@ outreach message by:
 - ✅ Fallback handling: graceful degradation if fields missing
 
 ## Constraints
+
 - Input format: Exactly as defined above (outputs from F1 and F2)
 - Must use only three templates (hot/warm/cold)
 - Personalization: Must use ONLY data from lead_profile (no hallucinations)
 - Confidence: Must explain reasoning for score (not arbitrary)
 
 ## Non-Goals
+
 - Email validation
 - Sending outreach
 - A/B testing variants
@@ -149,15 +161,18 @@ outreach message by:
 ## Main Function: `generate_outreach(lead_profile, icp_score)`
 
 1. **Load Templates**
+
    - Load outreach_templates.json
    - Validate all three templates present
 
 2. **Select Template**
+
    - Read icp_score.total_score
    - Use decision tree to determine hot/warm/cold
    - Return selected template object
 
 3. **Extract Personalization Fields**
+
    - For each field in personalization_fields:
      - Search lead_profile for field value
      - If found: add to extracted_fields
@@ -166,6 +181,7 @@ outreach message by:
 4. **Fill Template** ... [7 total steps]
 
 ## Complexity Indicators
+
 - Simpler than F2 (fewer decision points, less computation)
 - Template selection is rule-based (not ML)
 - Field mapping is deterministic (not probabilistic)
@@ -183,6 +199,7 @@ outreach message by:
 Key components:
 
 **Type-Safe Interfaces** (TypedDict):
+
 ```python
 class PersonalizationField(TypedDict):
     field: str
@@ -201,6 +218,7 @@ class OutreachOutput(TypedDict):
 ```
 
 **Modular Functions** (6 core functions + main orchestration):
+
 1. `select_template()` - Template selection logic
 2. `extract_personalization_fields()` - Field extraction with fallback handling
 3. `fill_template()` - Replace {field} markers
@@ -210,6 +228,7 @@ class OutreachOutput(TypedDict):
 7. CLI handling with stdin/file inputs
 
 **Production Patterns**:
+
 - Type hints throughout
 - Docstrings explain purpose and returns
 - Error handling for missing fields
@@ -217,6 +236,7 @@ class OutreachOutput(TypedDict):
 - Confidence reasoning (transparent scoring)
 
 **Example confidence calculation**:
+
 ```python
 def calculate_confidence(icp_score, missing_fields, filled_count):
     base_score = 100
@@ -246,11 +266,13 @@ def calculate_confidence(icp_score, missing_fields, filled_count):
 **After**: Three concrete test scenarios:
 
 **Test 1: Sequential Execution (Files)**
+
 ```bash
 time python outreach_generator.py profile.json score.json
 ```
 
 **Test 2: Full Three-Feature Pipeline**
+
 ```bash
 time bash -c 'URL="https://stripe.com" && \
 python lead_profiler.py $URL > f1.json && \
@@ -260,6 +282,7 @@ cat f3.json'
 ```
 
 **Test 3: Timing Comparison**
+
 ```bash
 echo "=== Feature 1: Lead Profiler ===" && time python ...
 echo "=== Feature 2: ICP Scorer ===" && time python ...
@@ -267,6 +290,7 @@ echo "=== Feature 3: Outreach Generator ===" && time python ...
 ```
 
 **Expected Pattern** (showing intelligence accumulation):
+
 ```
 F1 time: ~30-45 seconds (baseline)
 F2 time: ~20-30 seconds (60-70% of F1)
@@ -274,6 +298,7 @@ F3 time: ~10-15 seconds (30-40% of F1)
 ```
 
 **Recording template**:
+
 ```
 Feature 1: _____ seconds
 Feature 2: _____ seconds  (% of F1)
@@ -323,6 +348,7 @@ For each generated message:
 ```
 
 **Concrete Example Validation** (Stripe):
+
 ```
 Input:
 - F1 profile: Stripe (fintech, complex payment regulations)
@@ -352,6 +378,7 @@ Validation:
 ### 9. Specific AI Prompts (New Section - Part 7)
 
 **BEFORE**: Generic "Try With AI" prompts
+
 ```
 Prompt 1: "Review the personalization..."
 Prompt 2: "Generate 5 subject line variations..."
@@ -360,6 +387,7 @@ Prompt 2: "Generate 5 subject line variations..."
 **AFTER**: Two highly specific, contextualized prompts
 
 **Prompt 1: Template Evaluation (Full context)**
+
 ```
 I've built an outreach message generator for a sales pipeline.
 Here's a message my system generated:
@@ -395,6 +423,7 @@ Respond with specific feedback, not general advice.
 ```
 
 **Prompt 2: Subject Line Optimization (With psychological hooks)**
+
 ```
 I'm testing subject line effectiveness for outreach messages.
 Here's my message and the subject lines my system generated:
@@ -457,13 +486,14 @@ implementation**.
 
 **Specification → Implementation Time Correlation:**
 
-| Feature | Spec Complexity | Implementation Decisions | Time | % of F1 |
-|---------|-----------------|--------------------------|------|---------|
-| F1 | High (new product) | 15+ decisions | Baseline | 100% |
-| F2 | Medium (reuses F1 outputs) | 8-10 decisions | Lower | 50-70% |
-| F3 | Low (simple template logic) | 3-5 decisions | Lowest | 30-40% |
+| Feature | Spec Complexity             | Implementation Decisions | Time     | % of F1 |
+| ------- | --------------------------- | ------------------------ | -------- | ------- |
+| F1      | High (new product)          | 15+ decisions            | Baseline | 100%    |
+| F2      | Medium (reuses F1 outputs)  | 8-10 decisions           | Lower    | 50-70%  |
+| F3      | Low (simple template logic) | 3-5 decisions            | Lowest   | 30-40%  |
 
 **Why F3 is faster:**
+
 - You don't design the scoring algorithm (done in F2)
 - You don't scrape and extract data (done in F1)
 - You implement template selection (rule-based, not probabilistic)
@@ -479,10 +509,12 @@ builds on previous specifications, reducing cognitive load for the next feature.
 ## Hands-On Ratio Comparison
 
 ### Before Enhancement
+
 - ~40% hands-on (create files, run commands)
 - 60% reading/instruction
 
 ### After Enhancement
+
 - **~90% hands-on**:
   - Part 1: Create + verify JSON template file (hands-on)
   - Part 2: Write decision tree logic in markdown (hands-on)
@@ -503,6 +535,7 @@ builds on previous specifications, reducing cognitive load for the next feature.
 **Scaffolding**: Moderate (high-level guidance, student finds approach)
 
 **Concepts Taught** (count: 9):
+
 1. Template system architecture (tone, approach, patterns)
 2. Selection algorithm (decision tree logic)
 3. Field extraction and mapping
@@ -514,11 +547,13 @@ builds on previous specifications, reducing cognitive load for the next feature.
 9. Time tracking for acceleration measurement
 
 **Scaffolding Level**: Moderate
+
 - High-level guidance: "Build outreach generator" → decomposed into 9 concrete parts
 - Student finds approach: "Review code structure, understand why each function exists"
 - Heavy scaffolding in early parts (Part 1-3), less in later (Part 4-8)
 
 **Bloom's Level**: Apply/Analyze
+
 - Apply: Implement template selection logic, field extraction
 - Analyze: Compare F1/F2/F3 timing, evaluate personalization quality, assess confidence scoring
 
@@ -531,6 +566,7 @@ builds on previous specifications, reducing cognitive load for the next feature.
 **Note**: This is a Layer 4 (Spec-Driven Integration) lesson in a capstone. Three Roles framework (Teacher/Student/Co-Worker) is primarily Layer 2.
 
 **How applied here** (context-appropriate):
+
 - **Co-Worker role**: AI helps evaluate template quality (Part 7: specific prompts)
 - **Student role**: Student validates outputs before trusting AI feedback (Part 6: checklist)
 - **Teacher role**: Implicit in specification → implementation workflow
@@ -541,32 +577,34 @@ builds on previous specifications, reducing cognitive load for the next feature.
 
 ## Content Quality Metrics
 
-| Dimension | Standard | Status |
-|-----------|----------|--------|
-| **Hands-On Ratio** | >80% | 90% - PASS |
-| **CEFR Alignment** | B1: 7-10 concepts | 9 concepts - PASS |
-| **Specification First** | Show spec before code | Yes (Part 3) - PASS |
-| **Production Code Quality** | Type hints, docstrings, error handling | Yes - PASS |
-| **Pipeline Integration** | F1→F2→F3 composition | 3 tests with timing - PASS |
-| **No Hallucinations** | Fallback to verified data | Explicit rule - PASS |
-| **Confidence Scoring** | Formula-based, reasoning provided | Yes, documented - PASS |
-| **Validation Gates** | Quality checklist before AI | 8-point checklist - PASS |
-| **AI Prompts** | Specific context, not generic | 2 detailed prompts - PASS |
-| **Meta-Commentary** | None (framework invisible) | 0 role labels - PASS |
-| **Time Tracking** | Measure acceleration hypothesis | Recording template - PASS |
-| **Learning Summary** | Explicit pattern discovery | Spec→Time correlation table - PASS |
+| Dimension                   | Standard                               | Status                             |
+| --------------------------- | -------------------------------------- | ---------------------------------- |
+| **Hands-On Ratio**          | >80%                                   | 90% - PASS                         |
+| **CEFR Alignment**          | B1: 7-10 concepts                      | 9 concepts - PASS                  |
+| **Specification First**     | Show spec before code                  | Yes (Part 3) - PASS                |
+| **Production Code Quality** | Type hints, docstrings, error handling | Yes - PASS                         |
+| **Pipeline Integration**    | F1→F2→F3 composition                   | 3 tests with timing - PASS         |
+| **No Hallucinations**       | Fallback to verified data              | Explicit rule - PASS               |
+| **Confidence Scoring**      | Formula-based, reasoning provided      | Yes, documented - PASS             |
+| **Validation Gates**        | Quality checklist before AI            | 8-point checklist - PASS           |
+| **AI Prompts**              | Specific context, not generic          | 2 detailed prompts - PASS          |
+| **Meta-Commentary**         | None (framework invisible)             | 0 role labels - PASS               |
+| **Time Tracking**           | Measure acceleration hypothesis        | Recording template - PASS          |
+| **Learning Summary**        | Explicit pattern discovery             | Spec→Time correlation table - PASS |
 
 ---
 
 ## Files Created/Modified
 
 ### Modified
-- **`/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/04-feature-3-outreach-generator.md`**
+
+- **`/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/04-feature-3-outreach-generator.md`**
   - Original: 173 lines (basic template + pipeline instructions)
   - Enhanced: 967 lines (9 parts, 90% hands-on, production code included)
   - Increase: +558% (added 794 lines)
 
 ### Documentation
+
 - **`/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/specs/028-chapter-15-capstone/LESSON-04-ENHANCEMENT-REPORT.md`** (this file)
   - Complete change documentation
   - Quality metrics
@@ -578,12 +616,14 @@ builds on previous specifications, reducing cognitive load for the next feature.
 ## How to Use This Enhanced Lesson
 
 ### For Instructors
+
 1. **Verify code works**: Run `outreach_generator.py` with F1/F2 outputs to confirm timing
 2. **Set expectations**: Emphasize that F3 SHOULD be faster than F2 (tests hypothesis)
 3. **Provide context**: Remind students that simpler specs → faster implementation
 4. **Review outputs**: Use Part 6 checklist to grade student-generated messages
 
 ### For Students
+
 1. **Follow parts in order** (1-9): Each part builds on previous
 2. **Create files you'll reference** (templates.json, decision tree, spec)
 3. **Time yourself** and record for Parts 1-8 analysis
@@ -591,6 +631,7 @@ builds on previous specifications, reducing cognitive load for the next feature.
 5. **Compare to F2**: Is F3 truly faster? Why or why not?
 
 ### For AI-Native Development Instructors
+
 - **Shows SDD-RI in action**: Each feature (F1→F2→F3) reduces spec complexity
 - **Demonstrates reusability**: F3 uses F1/F2 outputs without redesigning them
 - **Proves time acceleration**: Metrics show intelligence accumulation works

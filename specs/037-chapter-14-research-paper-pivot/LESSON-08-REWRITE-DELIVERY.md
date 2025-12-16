@@ -2,7 +2,7 @@
 
 **Lesson**: Implement Phase
 **Chapter**: 14 — Spec-Kit Plus Hands-On
-**File**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/08-implement-phase.md`
+**File**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/08-implement-phase.md`
 **Status**: COMPLETE
 **Version**: 2.0.0 (Complete Rewrite)
 **Date**: 2025-11-26
@@ -12,10 +12,12 @@
 ## What Changed
 
 ### FOCUS REORIENTED
+
 **Before**: Lesson focused on executing video generation with Playwright MCP and Gemini browser automation
 **After**: Lesson focuses on teaching `/sp.implement` command itself, using research paper as the practice vehicle
 
 ### REMOVED (All Forbidden Content)
+
 - Video generation execution details
 - Playwright automation specifics
 - Gemini.google.com references
@@ -25,6 +27,7 @@
 - Playwright selector management
 
 ### ADDED (New /sp.implement Teaching)
+
 - Clear explanation of what implementation means in SDD-RI context
 - `/sp.implement` command syntax and basic usage
 - Checkpoint pattern as core control mechanism
@@ -54,32 +57,34 @@ All 4 objectives mapped to B1 proficiency (Bloom's Apply/Understand/Evaluate):
 
 ## Content Structure
 
-| Section | Purpose | Audience Readiness |
-|---------|---------|-------------------|
-| What Implementation Means | Foundational concept | Sets up command understanding |
-| The /sp.implement Command | Command introduction | Explains basic usage |
-| Checkpoint Pattern | Core mechanism | Teaches control approach |
-| The Four Concepts | Conceptual foundation | Scaffolds understanding |
-| Example Walkthrough | Concrete application | Shows research paper project |
-| What Happens When Tasks Don't Meet Spec | Iteration guidance | Teaches iteration loop |
-| Common Implementation Patterns | Pattern recognition | Addresses different project types |
-| Validation Against Specification | Practical checklist | Enables independent validation |
-| The AI Collaboration Dynamic | Role clarification | Demonstrates Three Roles (invisibly) |
-| Checkpoint Decisions | Decision framework | Scaffolds decision-making |
-| Anti-Patterns | Prevention guidance | Guides away from mistakes |
-| Try With AI | Practice & exploration | Enables hands-on learning |
+| Section                                 | Purpose                | Audience Readiness                   |
+| --------------------------------------- | ---------------------- | ------------------------------------ |
+| What Implementation Means               | Foundational concept   | Sets up command understanding        |
+| The /sp.implement Command               | Command introduction   | Explains basic usage                 |
+| Checkpoint Pattern                      | Core mechanism         | Teaches control approach             |
+| The Four Concepts                       | Conceptual foundation  | Scaffolds understanding              |
+| Example Walkthrough                     | Concrete application   | Shows research paper project         |
+| What Happens When Tasks Don't Meet Spec | Iteration guidance     | Teaches iteration loop               |
+| Common Implementation Patterns          | Pattern recognition    | Addresses different project types    |
+| Validation Against Specification        | Practical checklist    | Enables independent validation       |
+| The AI Collaboration Dynamic            | Role clarification     | Demonstrates Three Roles (invisibly) |
+| Checkpoint Decisions                    | Decision framework     | Scaffolds decision-making            |
+| Anti-Patterns                           | Prevention guidance    | Guides away from mistakes            |
+| Try With AI                             | Practice & exploration | Enables hands-on learning            |
 
 ---
 
 ## Cognitive Load Assessment
 
 **New Concepts**: 4 (within B1 limit of 7-10)
+
 1. Implementation execution (orchestrated, not autonomous)
 2. Checkpoint validation (spec-driven acceptance criteria)
 3. Iterative refinement (failure → iteration → success)
 4. AI collaboration during execution (role dynamic)
 
 **Scaffolding Level**: Moderate (appropriate for B1)
+
 - Clear examples with concrete research paper project
 - Explicit framework for decision-making
 - Anti-patterns explicitly named and contrasted with patterns
@@ -90,6 +95,7 @@ All 4 objectives mapped to B1 proficiency (Bloom's Apply/Understand/Evaluate):
 ## Practice Vehicle: Research Paper Project
 
 **Why Research Paper?**
+
 - Clear structure (intro, lit review, methodology, analysis, conclusion)
 - Measurable success criteria (word counts, source requirements)
 - Iterative nature mirrors implementation workflow
@@ -97,6 +103,7 @@ All 4 objectives mapped to B1 proficiency (Bloom's Apply/Understand/Evaluate):
 - Appropriate for B1 complexity
 
 **How It's Used:**
+
 - Section-by-section example of checkpoint reviews
 - Specific task descriptions with acceptance criteria
 - Concrete iteration scenario (450 words → 500-700 requirement)
@@ -118,32 +125,35 @@ All 4 objectives mapped to B1 proficiency (Bloom's Apply/Understand/Evaluate):
 
 ## Quality Metrics
 
-| Criterion | Status | Evidence |
-|-----------|--------|----------|
-| Forbidden Content Removed | ✓ | No Playwright, Gemini, MCP, video, ffprobe references |
-| Focus on `/sp.implement` | ✓ | Command is central throughout; research paper is vehicle |
-| Research Paper as Practice | ✓ | Concrete example with 3 checkpoints walks through full project |
-| 4 Concepts Max | ✓ | Exactly 4 concepts within B1 limit |
-| Ends with "Try With AI" | ✓ | Last section is "Try With AI" with 5 prompts |
-| No Meta-Commentary | ✓ | No "AI as Teacher/Student/Co-Worker" labels (roles invisible) |
-| No "What's Next" / "Summary" | ✓ | Only section after Try With AI is end-of-file marker |
-| Duration Realistic | ✓ | 60 minutes covers command + 4 concepts + example + practice |
+| Criterion                    | Status | Evidence                                                       |
+| ---------------------------- | ------ | -------------------------------------------------------------- |
+| Forbidden Content Removed    | ✓      | No Playwright, Gemini, MCP, video, ffprobe references          |
+| Focus on `/sp.implement`     | ✓      | Command is central throughout; research paper is vehicle       |
+| Research Paper as Practice   | ✓      | Concrete example with 3 checkpoints walks through full project |
+| 4 Concepts Max               | ✓      | Exactly 4 concepts within B1 limit                             |
+| Ends with "Try With AI"      | ✓      | Last section is "Try With AI" with 5 prompts                   |
+| No Meta-Commentary           | ✓      | No "AI as Teacher/Student/Co-Worker" labels (roles invisible)  |
+| No "What's Next" / "Summary" | ✓      | Only section after Try With AI is end-of-file marker           |
+| Duration Realistic           | ✓      | 60 minutes covers command + 4 concepts + example + practice    |
 
 ---
 
 ## Integration with Chapter Progression
 
 **Prerequisite** (Lesson 7: Tasks Phase)
+
 - Students understand tasks.md structure
 - Familiar with atomic task definition
 - Know checkpoint pattern basics
 
 **This Lesson** (Lesson 8: Implement Phase)
+
 - Master `/sp.implement` execution
 - Learn validation and iteration
 - Understand AI collaboration during execution
 
 **Downstream** (Lesson 9: Designing Reusable Intelligence)
+
 - Students apply `/sp.implement` results to skill creation
 - Patterns from research paper become reusable components
 
@@ -151,7 +161,7 @@ All 4 objectives mapped to B1 proficiency (Bloom's Apply/Understand/Evaluate):
 
 ## Files Modified
 
-- **`/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/08-implement-phase.md`**
+- **`/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/08-implement-phase.md`**
   - Lines changed: Complete rewrite (was 356 lines, now 583 lines)
   - Version: 2.0.0
 

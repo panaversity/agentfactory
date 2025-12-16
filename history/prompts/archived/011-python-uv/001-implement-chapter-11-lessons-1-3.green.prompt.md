@@ -9,24 +9,31 @@ feature: "011-python-uv"
 branch: "011-python-uv"
 user: "user"
 command: "/sp.implement"
-labels: ["chapter-implementation", "lesson-writing", "python-uv", "ai-driven-development", "educational-content"]
+labels:
+  [
+    "chapter-implementation",
+    "lesson-writing",
+    "python-uv",
+    "ai-driven-development",
+    "educational-content",
+  ]
 links:
   spec: "specs/011-python-uv/spec.md"
   ticket: "null"
   adr: "null"
   pr: "null"
 files:
- - "book-source/docs/04-Part-4-Python-Fundamentals/README.md"
- - "book-source/docs/04-Part-4-Python-Fundamentals/11-python-uv/readme.md"
- - "book-source/docs/04-Part-4-Python-Fundamentals/11-python-uv/01-why-uv-understanding-modern-python-package-management.md"
- - "book-source/docs/04-Part-4-Python-Fundamentals/11-python-uv/02-installing-uv-with-ai-collaboration.md"
- - "book-source/docs/04-Part-4-Python-Fundamentals/11-python-uv/03-creating-your-first-uv-project-with-ai.md"
- - "specs/011-python-uv/tasks.md"
+  - "apps/learn-app/docs/04-Part-4-Python-Fundamentals/README.md"
+  - "apps/learn-app/docs/04-Part-4-Python-Fundamentals/11-python-uv/readme.md"
+  - "apps/learn-app/docs/04-Part-4-Python-Fundamentals/11-python-uv/01-why-uv-understanding-modern-python-package-management.md"
+  - "apps/learn-app/docs/04-Part-4-Python-Fundamentals/11-python-uv/02-installing-uv-with-ai-collaboration.md"
+  - "apps/learn-app/docs/04-Part-4-Python-Fundamentals/11-python-uv/03-creating-your-first-uv-project-with-ai.md"
+  - "specs/011-python-uv/tasks.md"
 tests:
- - "Manual validation: All lessons created with proper YAML frontmatter and skills metadata"
- - "Manual validation: Content follows AI-driven development approach (intent → AI → understanding)"
- - "Manual validation: Complexity tier A2-B1 maintained (max 7 concepts per lesson)"
- - "Manual validation: Try With AI sections present in all lessons"
+  - "Manual validation: All lessons created with proper YAML frontmatter and skills metadata"
+  - "Manual validation: Content follows AI-driven development approach (intent → AI → understanding)"
+  - "Manual validation: Complexity tier A2-B1 maintained (max 7 concepts per lesson)"
+  - "Manual validation: Try With AI sections present in all lessons"
 ---
 
 ## Prompt
@@ -41,15 +48,17 @@ Successfully implemented Phase 1-3 of Chapter 11: Python UV - The Fastest Python
 **Completed Work**:
 
 1. **Phase 1: Setup (T001)** ✅
-   - Created Part 4 directory structure: `book-source/docs/04-Part-4-Python-Fundamentals/`
+
+   - Created Part 4 directory structure: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/`
    - Created Chapter 11 directory: `11-python-uv/`
    - Created image directories: `book-source/static/img/part-4/chapter-11/`
    - Created Part 4 README.md with comprehensive overview
    - Created Chapter 11 readme.md with learning objectives and chapter flow
 
 2. **Phase 3: Lesson 1 Implementation (T013-T022)** ✅
+
    - File: `01-why-uv-understanding-modern-python-package-management.md`
-   - Sections: 
+   - Sections:
      - Opening hook: "The 30-Second Setup" comparison (UV vs pip timing)
      - "What is a package manager?" explanation with beginner-friendly analogies
      - "The Problem: Python's Fragmented Tooling" with ecosystem table
@@ -66,6 +75,7 @@ Successfully implemented Phase 1-3 of Chapter 11: Python UV - The Fastest Python
      - Generation metadata (traceability)
 
 3. **Phase 4: Lesson 2 Implementation (T023-T033)** ✅
+
    - File: `02-installing-uv-with-ai-collaboration.md`
    - Sections:
      - "Pre-Installation: What We're About to Do" (download → place → PATH)
@@ -99,6 +109,7 @@ Successfully implemented Phase 1-3 of Chapter 11: Python UV - The Fastest Python
      - Differentiation for advanced (deep TOML research) and struggling (minimal project focus)
 
 **Key Quality Standards Maintained**:
+
 - ✅ AI-first teaching methodology (students use AI as interactive documentation)
 - ✅ Specification → AI Prompt → Generated Code → Validation pattern (where applicable)
 - ✅ Skills proficiency metadata (CEFR levels A1/A2/B1, Bloom's taxonomy, DigComp areas)
@@ -109,6 +120,7 @@ Successfully implemented Phase 1-3 of Chapter 11: Python UV - The Fastest Python
 - ✅ Proper YAML frontmatter with generation metadata for traceability
 
 **Tasks Marked Complete in tasks.md**:
+
 - T001 (directory structure)
 - T013-T022 (Lesson 1 all tasks)
 - T023-T033 (Lesson 2 all tasks)

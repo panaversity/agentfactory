@@ -16,7 +16,7 @@ links:
   adr: null
   pr: null
 files:
-  - path: book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/01-what-is-an-ai-agent.md
+  - path: apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/01-what-is-an-ai-agent.md
     status: created
     size: 3032 words
     checksum: lessons_updated
@@ -42,7 +42,7 @@ tests:
 
 Create the complete Lesson 1 markdown file for Chapter 33: "What Is an AI Agent?"
 
-**File**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/01-what-is-an-ai-agent.md`
+**File**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/01-what-is-an-ai-agent.md`
 
 **Content structure** (2,500-3,000 words):
 
@@ -66,39 +66,45 @@ The lesson now includes:
 
 ✅ **Opening Hook** - Personal connection (Claude Code autonomy) + career relevance
 ✅ **Why Agents Matter Now** - Complete statistics with citations:
-  - 800+ million ChatGPT users (OpenAI, 2025)
-  - 90%+ developer adoption (GitHub/Stack Overflow 2024)
-  - 44% US work hours by 2030 (McKinsey, 2024)
-  - $2.9 trillion value potential (McKinsey, 2024)
-  - 7x growth in AI fluency demand (LinkedIn Skills Index, 2024)
+
+- 800+ million ChatGPT users (OpenAI, 2025)
+- 90%+ developer adoption (GitHub/Stack Overflow 2024)
+- 44% US work hours by 2030 (McKinsey, 2024)
+- $2.9 trillion value potential (McKinsey, 2024)
+- 7x growth in AI fluency demand (LinkedIn Skills Index, 2024)
 
 ✅ **Definition Section** - Paper's authoritative definition with component unpacking
 ✅ **5-Level Taxonomy** - All 5 levels (0-4) with:
-  - What it is / Example / Capability / Level of autonomy
-  - Real-world scenarios for each level
-  - Progressive complexity from isolated interactions to self-evolution
+
+- What it is / Example / Capability / Level of autonomy
+- Real-world scenarios for each level
+- Progressive complexity from isolated interactions to self-evolution
 
 ✅ **Claude Code as Level 2-3 Agent** - Concrete examples showing:
-  - Debug workflow (Level 2 characteristics)
-  - Code audit workflow (Level 3 characteristics)
-  - Why architectural design enables intelligence
+
+- Debug workflow (Level 2 characteristics)
+- Code audit workflow (Level 3 characteristics)
+- Why architectural design enables intelligence
 
 ✅ **Director vs Bricklayer** - Paper's paradigm shift with:
-  - Bricklayer approach (pre-agent era)
-  - Director approach (agent era)
-  - In-practice examples showing the shift
-  - Why director-level thinking is harder but more powerful
+
+- Bricklayer approach (pre-agent era)
+- Director approach (agent era)
+- In-practice examples showing the shift
+- Why director-level thinking is harder but more powerful
 
 ✅ **Career Implications** - Three specific impacts:
-  1. Skill scarcity at the top (agent design capability)
-  2. Specification skills become central (SDD-RI connection)
-  3. Workflow transformation, not replacement (McKinsey alignment)
+
+1. Skill scarcity at the top (agent design capability)
+2. Specification skills become central (SDD-RI connection)
+3. Workflow transformation, not replacement (McKinsey alignment)
 
 ✅ **Try With AI** - Four classification scenarios:
-  1. Bank chatbot (Level 1 analysis)
-  2. Research agent (Level 2 analysis)
-  3. Claude Code refactoring (Level 2-3 analysis)
-  4. Comparative synthesis + stretch challenge
+
+1. Bank chatbot (Level 1 analysis)
+2. Research agent (Level 2 analysis)
+3. Claude Code refactoring (Level 2-3 analysis)
+4. Comparative synthesis + stretch challenge
 
 ✅ **Summary** - Concise recap of taxonomy, Claude Code positioning, and career relevance
 

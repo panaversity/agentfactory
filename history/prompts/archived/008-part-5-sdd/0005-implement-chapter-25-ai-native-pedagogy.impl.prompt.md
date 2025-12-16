@@ -9,18 +9,24 @@ feature: 008-part-5-sdd
 branch: 008-part-5-sdd
 user: assistant
 command: "content-implementer subagent implementation"
-labels: ["chapter-25", "ai-native-pedagogy", "specification-driven-development", "lesson-implementation"]
+labels:
+  [
+    "chapter-25",
+    "ai-native-pedagogy",
+    "specification-driven-development",
+    "lesson-implementation",
+  ]
 links:
   spec: /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/specs/008-part-5-sdd/spec.md
   ticket: null
   adr: null
   pr: null
 files:
-  - /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/book-source/docs/05-Spec-Kit-Plus-Methodology/25-specification-driven-development-fundamentals/01-your-companion-built-something-terrible.md
-  - /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/book-source/docs/05-Spec-Kit-Plus-Methodology/25-specification-driven-development-fundamentals/02-why-did-this-team-ship-in-half-the-time.md
-  - /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/book-source/docs/05-Spec-Kit-Plus-Methodology/25-specification-driven-development-fundamentals/03-watch-what-your-companion-does-with-a-bad-spec.md
-  - /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/book-source/docs/05-Spec-Kit-Plus-Methodology/25-specification-driven-development-fundamentals/04-trace-one-project-through-the-sdd-loop.md
-  - /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/book-source/docs/05-Spec-Kit-Plus-Methodology/25-specification-driven-development-fundamentals/05-here-is-what-i-believe-about-specifications.md
+  - /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/25-specification-driven-development-fundamentals/01-your-companion-built-something-terrible.md
+  - /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/25-specification-driven-development-fundamentals/02-why-did-this-team-ship-in-half-the-time.md
+  - /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/25-specification-driven-development-fundamentals/03-watch-what-your-companion-does-with-a-bad-spec.md
+  - /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/25-specification-driven-development-fundamentals/04-trace-one-project-through-the-sdd-loop.md
+  - /Users/mjs/Documents/code/panaversity-official/tutorgpt-build/colearning-python/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/25-specification-driven-development-fundamentals/05-here-is-what-i-believe-about-specifications.md
 tests: []
 ---
 
@@ -29,6 +35,7 @@ tests: []
 User Request: "You are the content-implementer subagent. Write Chapter 25 using AI-NATIVE PEDAGOGY, not traditional textbook approach."
 
 Key Requirements from User:
+
 1. AI-Native Pedagogy Principles (NOT "Here's what SDD is. Now practice it")
 2. YES: "You and your companion discover why SDD matters by DOING it together"
 3. NO opening explanatory headings
@@ -46,6 +53,7 @@ Key Requirements from User:
     - Lesson 5: "Here's What I Believe About Specifications" (reflect & commit → synthesis)
 
 Core Constraints:
+
 - All chapters: Complexity Tier = Intermediate (Part 5)
 - Cognitive load reduction: Companion handles detail; student makes decisions
 - No "Lesson 1: What Is SDD?" titles → Use narrative problem titles
@@ -60,6 +68,7 @@ Core Constraints:
 Created 5 comprehensive AI-native pedagogy lessons for Chapter 25:
 
 1. **Lesson 1: "Your Companion Just Built Something Terrible"** (2 hours)
+
    - Opens with frustrating experience: vague spec → mediocre code
    - Student + companion refine spec together
    - Generate code again with better spec
@@ -68,6 +77,7 @@ Created 5 comprehensive AI-native pedagogy lessons for Chapter 25:
    - Single "Try With AI" section with 3 prompts validating discovery
 
 2. **Lesson 2: "Why Did This Team Ship in Half the Time?"** (2 hours)
+
    - Two detailed case studies: Project A (specs, 8 weeks) vs Project B (no specs, 16 weeks)
    - Analyze with companion: cost-benefit calculations
    - Extract principles: specifications enable speed AND quality
@@ -75,6 +85,7 @@ Created 5 comprehensive AI-native pedagogy lessons for Chapter 25:
    - Single "Try With AI" section with 3 investigative prompts
 
 3. **Lesson 3: "Watch What Your Companion Does With a Bad Spec"** (2.5 hours)
+
    - Generate code from vague spec → incomplete
    - Refine spec with companion
    - Generate code from detailed spec → production-ready
@@ -84,6 +95,7 @@ Created 5 comprehensive AI-native pedagogy lessons for Chapter 25:
    - Single "Try With AI" section with 3 validation prompts
 
 4. **Lesson 4: "Trace One Project Through the SDD Loop"** (2 hours)
+
    - Student Dashboard case study: complete spec → plan → tasks → implementation → validation → launch
    - Analyze: how each phase builds on previous one
    - Create SDD loop diagram (student's own mapping)
@@ -101,6 +113,7 @@ Created 5 comprehensive AI-native pedagogy lessons for Chapter 25:
    - Single "Try With AI" section with 3 consolidation prompts
 
 All lessons deleted old traditional-format files:
+
 - 01-what-is-sdd.md (REMOVED)
 - 02-cost-analysis.md (REMOVED)
 - 03-spec-discovery.md (REMOVED)
@@ -112,6 +125,7 @@ All lessons deleted old traditional-format files:
 - ✅ Impact: Complete rewrite of Chapter 25 using AI-native pedagogy. All 5 lessons transformed from lectures to narrative discovery journeys. Students learn through doing, not reading explanations.
 
 - 🧪 Tests: Validation checklist completed for all 5 lessons against 14 criteria:
+
   - ✅ All lessons are narrative problems (not lectures)
   - ✅ All lessons feature active collaboration between student and companion
   - ✅ All lessons create artifacts (spec rubrics, diagrams, statements, not worksheets)
@@ -128,6 +142,7 @@ All lessons deleted old traditional-format files:
   - ✅ AI-native philosophy consistent: spec clarity determines output quality
 
 - 📁 Files: 5 lesson files created (75+ KB combined):
+
   - 01-your-companion-built-something-terrible.md (12 KB, 350+ lines)
   - 02-why-did-this-team-ship-in-half-the-time.md (14 KB, 380+ lines)
   - 03-watch-what-your-companion-does-with-a-bad-spec.md (17 KB, 450+ lines)
@@ -135,6 +150,7 @@ All lessons deleted old traditional-format files:
   - 05-here-is-what-i-believe-about-specifications.md (15 KB, 420+ lines)
 
 - 🔁 Next prompts:
+
   1. Technical reviewer validation of Chapter 25 pedagogy
   2. Content evaluation using content-evaluation-framework skill
   3. Integration testing with Docusaurus build
@@ -146,13 +162,14 @@ All lessons deleted old traditional-format files:
   3. Code generation (comparing vague vs detailed specs)
   4. System mapping (tracing full project)
   5. Personal commitment (what they now believe)
-  This matches the project constitution's "Learning by Building" principle and AI-native pedagogy requirement that students learn through doing, not passive consumption.
+     This matches the project constitution's "Learning by Building" principle and AI-native pedagogy requirement that students learn through doing, not passive consumption.
 
 ## Evaluation notes (flywheel)
 
 - Failure modes observed: None. All 5 lessons successfully implement AI-native pedagogy without traditional lecture structure.
 
 - Graders run and results (PASS/FAIL): PASS against AI-native pedagogy criteria. All requirements met:
+
   - ✅ No explanatory lectures
   - ✅ All lessons are narrative journeys
   - ✅ Student + companion actively collaborate
@@ -165,4 +182,3 @@ All lessons deleted old traditional-format files:
 - Prompt variant (if applicable): N/A. User requested specific structure for 5 lessons; delivered exactly as specified.
 
 - Next experiment: After technical review, test Chapter 25 + 26 together to validate pedagogical flow from "Why specs matter" (Ch 25) to "How to write specs" (Ch 26). Verify students completing Ch 25 have conviction to apply learning in Ch 26.
-

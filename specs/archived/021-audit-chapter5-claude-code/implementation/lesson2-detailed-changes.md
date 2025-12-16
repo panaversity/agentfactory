@@ -1,4 +1,5 @@
 # Lesson 2: Detailed Changelog
+
 **Installation and Authenticating Claude Code**
 
 **Format**: Section-by-section change documentation with exact line numbers and rationale
@@ -7,20 +8,20 @@
 
 ## Change Summary
 
-| Section | Status | Lines | Change Type | Rationale |
-|---------|--------|-------|-------------|-----------|
-| Frontmatter | PRESERVED | 1-5 | No changes | Valid frontmatter, appropriate metadata |
-| Opening Narrative | REGENERATED | 7-25 | Major rewrite | Partnership framing, Lesson 1 integration |
-| Prerequisites | ENHANCED | 28-60 | Add "why this matters" | Concept scaffolding |
-| Installation | ENHANCED | 63-100 | Add "what just happened?" | Understanding-focused explanations |
-| CoLearning Prompt (NEW) | NEW | 103-118 | New section | First collaborative interaction |
-| Authentication Intro | REGENERATED | 121-130 | Reframing | Personalization vs. credentials |
-| Auth Steps | ENHANCED | 150-210 | Add "what just happened?" | Explanation of implications |
-| Expert Insight (NEW) | NEW | 214-238 | New section | Strategic value of personalization |
-| Practice Exercise 1 (NEW) | NEW | 242-273 | New section | Agentic AI demonstration |
-| Pause & Reflect | REGENERATED | 277-286 | Reframing | Partnership-focused reflection |
-| CLAUDE.md Section | SIGNIFICANTLY ENHANCED | 288-361 | Major rewrite + new exercise | Partnership memory framing |
-| Try With AI | SIGNIFICANTLY REGENERATED | 365-407 | Prompt set + Three Roles | CoLearning demonstration |
+| Section                   | Status                    | Lines   | Change Type                  | Rationale                                 |
+| ------------------------- | ------------------------- | ------- | ---------------------------- | ----------------------------------------- |
+| Frontmatter               | PRESERVED                 | 1-5     | No changes                   | Valid frontmatter, appropriate metadata   |
+| Opening Narrative         | REGENERATED               | 7-25    | Major rewrite                | Partnership framing, Lesson 1 integration |
+| Prerequisites             | ENHANCED                  | 28-60   | Add "why this matters"       | Concept scaffolding                       |
+| Installation              | ENHANCED                  | 63-100  | Add "what just happened?"    | Understanding-focused explanations        |
+| CoLearning Prompt (NEW)   | NEW                       | 103-118 | New section                  | First collaborative interaction           |
+| Authentication Intro      | REGENERATED               | 121-130 | Reframing                    | Personalization vs. credentials           |
+| Auth Steps                | ENHANCED                  | 150-210 | Add "what just happened?"    | Explanation of implications               |
+| Expert Insight (NEW)      | NEW                       | 214-238 | New section                  | Strategic value of personalization        |
+| Practice Exercise 1 (NEW) | NEW                       | 242-273 | New section                  | Agentic AI demonstration                  |
+| Pause & Reflect           | REGENERATED               | 277-286 | Reframing                    | Partnership-focused reflection            |
+| CLAUDE.md Section         | SIGNIFICANTLY ENHANCED    | 288-361 | Major rewrite + new exercise | Partnership memory framing                |
+| Try With AI               | SIGNIFICANTLY REGENERATED | 365-407 | Prompt set + Three Roles     | CoLearning demonstration                  |
 
 **Total Change**: +166 lines (68% expansion), preserving 100% technical accuracy
 
@@ -29,6 +30,7 @@
 ## Line-by-Line Changes
 
 ### Section 1: Frontmatter (Lines 1-5)
+
 **Status**: PRESERVED ✅
 
 ```yaml
@@ -44,9 +46,11 @@ duration: "25-30 min"
 ---
 
 ### Section 2: Opening Narrative (Lines 9-24)
+
 **Status**: REGENERATED
 
 #### Original (3 paragraphs, 98 words):
+
 ```
 In Lesson 1, you learned why Claude Code is revolutionary. Now comes
 the crucial step: **getting it working on your machine.**
@@ -64,6 +68,7 @@ for common issues.
 ```
 
 #### Regenerated (7 paragraphs, 348 words):
+
 ```
 In Lesson 1, you learned that Claude Code is an **agentic agent**—not
 a passive tool, but an active team member that reads your files,
@@ -102,10 +107,12 @@ Let's establish your partnership.
 ```
 
 **Constitutional Alignment**:
+
 - Principle 18: Three-Role AI Partnership (explicitly referenced)
 - Principle 13: Graduated Teaching (explains foundational partnership concept)
 
 **Pedagogical Purpose**:
+
 - Connects to Lesson 1 (agentic AI, paradigm shift)
 - Reframes installation from "technical task" to "partnership establishment"
 - Motivates students by explaining WHY they're installing
@@ -116,12 +123,15 @@ Let's establish your partnership.
 ---
 
 ### Section 3: Prerequisites (Lines 28-60)
+
 **Status**: ENHANCED
 
 #### Changes Made:
+
 Added "Why this matters" paragraph after each prerequisite
 
 **Original Structure**:
+
 ```
 **1. Terminal Access**
 - [list of options]
@@ -137,6 +147,7 @@ Added "Why this matters" paragraph after each prerequisite
 ```
 
 **Regenerated Structure**:
+
 ```
 **1. Terminal Access**
 - [list of options]
@@ -171,6 +182,7 @@ collaboration happens.
 **Constitutional Principle**: 13 (Graduated Teaching Tier 1—Book teaches foundational concepts)
 
 **Pedagogical Benefit**:
+
 - Concept Scaffolding: Each prerequisite now connected to partnership metaphor
 - Motivation: Students understand WHAT they need and WHY it matters
 - Integration: All prerequisites connect to larger partnership narrative
@@ -178,20 +190,23 @@ collaboration happens.
 ---
 
 ### Section 4: Installation Steps (Lines 63-100)
+
 **Status**: ENHANCED
 
 #### Changes Made:
+
 Added "What just happened?" explanations after major steps
 
 **Original Step 1**:
-```
+
+````
 **Step 1: Install Claude Code Globally**
 
 Open your terminal and run:
 
 ```bash
 npm install -g @anthropic-ai/claude-code
-```
+````
 
 **What this does**: Downloads and installs Claude Code globally, making
 it accessible from any directory.
@@ -199,13 +214,16 @@ it accessible from any directory.
 **Common issue on macOS/Linux**: Permission errors
 
 **If you see `EACCES` permission error**:
+
 ```bash
 sudo npm install -g @anthropic-ai/claude-code
 ```
+
 ```
 
 **Regenerated Step 1**:
 ```
+
 **Step 1: Install Claude Code Globally**
 
 Open your terminal and run:
@@ -222,6 +240,7 @@ gained a new superpower.
 **Common issue on macOS/Linux**: Permission errors
 
 **If you see `EACCES` permission error**:
+
 ```bash
 sudo npm install -g @anthropic-ai/claude-code
 ```
@@ -229,6 +248,7 @@ sudo npm install -g @anthropic-ai/claude-code
 **Why this happens**: Some systems require elevated permissions to
 install software globally. The `sudo` command runs the install with
 administrator privileges.
+
 ```
 
 **Lines Added**:
@@ -237,6 +257,7 @@ administrator privileges.
 
 **Original Step 2 Verification**:
 ```
+
 **Step 2: Verify Installation**
 
 ```bash
@@ -244,13 +265,16 @@ claude --version
 ```
 
 **Expected output** (version number may vary):
+
 ```
 2.0.35 (Claude Code)
 ```
+
 ```
 
 **Regenerated Step 2 Verification**:
 ```
+
 **Step 2: Verify Installation**
 
 ```bash
@@ -258,6 +282,7 @@ claude --version
 ```
 
 **Expected output** (version number may vary):
+
 ```
 2.0.35 (Claude Code)
 ```
@@ -265,7 +290,8 @@ claude --version
 **What just happened?** You've verified that Claude Code installed
 correctly and can be found in your system's command path. You can now
 start conversations with Claude directly from your terminal.
-```
+
+````
 
 **Lines Added**: +3 sentences (line 99)
 
@@ -297,7 +323,7 @@ configurations, and this is your chance to troubleshoot with an AI guide.
 claude "I just installed Claude Code on my system. Walk me through
 verifying that the installation is working correctly. Here's what I see
 when I check: [paste the output from `claude --version` above]"
-```
+````
 
 **What to expect**: Claude will walk you through verification step-by-step,
 help you understand what each component means, and suggest next steps if
@@ -312,6 +338,7 @@ and **Student role** (learning about your specific environment).
 If you hit any issues, Claude will help you troubleshoot. If everything
 works, Claude will explain what successful installation looks like on
 your system.
+
 ```
 
 **Constitutional Alignment**:
@@ -335,13 +362,16 @@ your system.
 
 #### Original (2 paragraphs):
 ```
+
 Once installed, Claude Code needs to authenticate with your Claude
 account. There are **two authentication paths** depending on which
 account type you have.
+
 ```
 
 #### Regenerated (1 introductory + 6 bullets + 1 closing):
 ```
+
 Authentication is where your partnership truly begins. When you
 authenticate Claude Code, you're not just logging in—you're
 **personalizing the AI partnership**. You're telling Claude Code:
@@ -355,6 +385,7 @@ This is radically different from web-based Claude, which starts fresh
 with zero project context in every conversation. Authenticated Claude
 Code becomes YOUR co-worker—one that learns your standards, understands
 your codebase, and adapts to your workflow.
+
 ```
 
 **Constitutional Alignment**:
@@ -373,6 +404,7 @@ your codebase, and adapts to your workflow.
 
 #### Original Step 1:
 ```
+
 **Step 1: Start the Authentication Flow**
 
 In your terminal, run:
@@ -385,10 +417,12 @@ claude
 [output shown]
 
 **What happens**: Your default browser opens to the Claude.ai authentication page.
+
 ```
 
 #### Regenerated Step 1:
 ```
+
 **Step 1: Start the Authentication Flow**
 
 In your terminal, run:
@@ -403,21 +437,25 @@ claude
 **What just happened?** Claude Code detected that you haven't
 authenticated yet and is asking for your login preference. Your default
 browser is about to open.
+
 ```
 
 **Change**: Added line 173 explaining what the output means
 
 #### Original Step 2:
 ```
+
 **Step 2: Log In to Claude.ai**
 
 1. If not already logged in, enter your Claude.ai credentials
 2. Review the permissions Claude Code is requesting
 3. Click "Allow" or "Authorize"
+
 ```
 
 #### Regenerated Step 2:
 ```
+
 **Step 2: Log In to Claude.ai**
 
 1. If not already logged in, enter your Claude.ai credentials
@@ -427,12 +465,14 @@ browser is about to open.
 **What this means**: You're granting Claude Code permission to use YOUR
 Claude account to make API calls. This is how Claude Code connects to
 the Claude AI servers and maintains personalization across sessions.
+
 ```
 
 **Change**: Added lines 181 explaining what the permissions grant means
 
 #### Original Step 3:
 ```
+
 **Step 3: Confirm Authentication**
 
 Return to your terminal. You should see:
@@ -441,10 +481,12 @@ Return to your terminal. You should see:
 Logged in as email@gmail.com
 Login successful. Press Enter to continue…
 ```
+
 ```
 
 #### Regenerated Step 3:
 ```
+
 **Step 3: Confirm Authentication**
 
 Return to your terminal. You should see:
@@ -458,12 +500,14 @@ Login successful. Press Enter to continue…
 Claude Code can now identify itself as YOU when talking to Claude AI's
 servers. From now on, all your conversations with Claude Code will build
 on each other—Claude learns your style, your patterns, your codebase.
+
 ```
 
 **Change**: Added lines 192 explaining what token saving means for partnership
 
 #### Original Step 4:
 ```
+
 **Step 4: Test Your Setup**
 
 Run a simple test command:
@@ -474,10 +518,12 @@ claude "Hello! Can you confirm Claude Code is working?"
 
 **Expected output**: Claude responds with a greeting confirming the
 connection works.
+
 ```
 
 #### Regenerated Step 4:
 ```
+
 **Step 4: Test Your Setup**
 
 Run a simple test command:
@@ -500,7 +546,8 @@ Describe what kind of project this looks like."
 
 Claude should list your actual files—THIS is the agentic AI at work.
 Zero copy-paste. Claude reads your context directly.
-```
+
+````
 
 **Change**: Added lines 204-210 introducing agentic AI demonstration
 
@@ -559,15 +606,17 @@ context better. Your partnership gets stronger.
 **Bottom line**: Authentication isn't just a login step. It's the
 difference between hiring a consultant (generic advice) and onboarding
 a team member (project-specific partnership).
-```
+````
 
 **Constitutional Alignment**:
+
 - Principle 18 (Three Roles): Shows how personalization enables all roles
 - Principle 2 (Co-Learning Partnership): Demonstrates bidirectional learning
 
 **CoLearning Element**: #2 of 4
 
 **Pedagogical Purpose**:
+
 - Strategic motivation: Explains BUSINESS VALUE of personalization
 - Quantification: Concrete timeline shows compounding benefit
 - Connection: References Lesson 1 co-learning concept
@@ -578,12 +627,14 @@ a team member (project-specific partnership).
 ---
 
 ### Section 9: 🤝 Practice Exercise 1 (Lines 242-273)
+
 **Status**: NEW ✅
 
 **Location**: After Expert Insight, before Pause and Reflect
 
 **Full Content**:
-```markdown
+
+````markdown
 ## 🤝 Practice Exercise: Experience Your First Agentic Interaction
 
 Let's make your partnership real. You've authenticated. Now let's see
@@ -595,6 +646,7 @@ a simple one with a few files if you don't have one yet).
 ```bash
 cd /path/to/a/project
 ```
+````
 
 **Try this conversation**:
 
@@ -609,11 +661,13 @@ you."
 ```
 
 **Observe**:
+
 - Claude lists files WITHOUT you copying them
 - Claude reads actual code WITHOUT you pasting snippets
 - Claude understands project purpose WITHOUT you explaining it
 
 **Reflection**:
+
 - This is the paradigm shift from Lesson 1 in action
 - Compare this to web-based Claude: How would you describe your project
   there? (You'd need to copy-paste files)
@@ -621,6 +675,7 @@ you."
   AND a Student (learning your project structure)
 
 **This is agentic AI.** You're experiencing the partnership in real-time.
+
 ```
 
 **Constitutional Alignment**:
@@ -643,11 +698,13 @@ you."
 
 #### Original:
 ```
+
 **If your installation and authentication succeeded**: Take a moment to
 appreciate what you've accomplished. Claude Code is now installed and
 ready to assist you. You've moved from theory to practice.
 
 **Reflection Questions**:
+
 - Which installation method did you choose, and why?
 - Did you encounter any issues? If so, which troubleshooting steps helped?
 - How does it feel to have an AI assistant accessible directly from your
@@ -657,15 +714,18 @@ ready to assist you. You've moved from theory to practice.
 challenges are normal, especially across different platforms and
 environments. Work through it systematically, and don't hesitate to seek
 help from the community resources.
+
 ```
 
 #### Regenerated:
 ```
+
 **If your installation and authentication succeeded**: Celebrate. You've
 moved from "Claude Code installed on my machine" to "I have an active AI
 partnership." Claude now understands YOUR development environment.
 
 **Reflection Questions**:
+
 - How was your first agentic interaction different from asking a question
   on ChatGPT?
 - What could Claude do that web-based AI cannot?
@@ -677,6 +737,7 @@ especially across different platforms. They don't reflect on you or your
 technical ability. Different systems have different configurations. Work
 through it systematically—and remember, this is where Claude Code (once
 working) is YOUR partner in troubleshooting future technical challenges.
+
 ```
 
 **Changes Made**:
@@ -699,12 +760,14 @@ working) is YOUR partner in troubleshooting future technical challenges.
 
 #### Original (123 words):
 ```
+
 ## Setting Up CLAUDE.md (Project Memory)
 
 **What is CLAUDE.md?**
 
 CLAUDE.md is a special file that acts as your project's "memory" for
 Claude Code. It contains:
+
 - Project overview and purpose
 - Coding standards and conventions
 - Common tasks and how to execute them
@@ -737,11 +800,13 @@ claude "Who is Project Manager."
 ### Why CLAUDE.md Matters
 
 **Without CLAUDE.md**: You repeat project context in every conversation
+
 - "This is a Python project using Flask..."
 - "We follow PEP 8..."
 - "Tests are in the /tests folder..."
 
 **With CLAUDE.md**: Claude remembers automatically
+
 - You: "Add tests for the new feature"
 - Claude: [already knows testing framework, where tests go, coding
   standards]
@@ -753,6 +818,7 @@ claude "Who is Project Manager."
 ### When to Update CLAUDE.md
 
 Update it when:
+
 - ✅ You add a new major dependency
 - ✅ Coding standards change
 - ✅ Project structure changes
@@ -760,10 +826,12 @@ Update it when:
 
 **CLAUDE.md is iterative**: Start simple, add details as needed. It
 grows with your project.
+
 ```
 
 #### Regenerated (286 words, 60% expansion):
 ```
+
 ## 🤝 Practice Exercise: Building Your Partnership Memory
 
 Your partnership gets stronger when Claude learns YOUR project's
@@ -773,6 +841,7 @@ conventions. That's where CLAUDE.md comes in.
 
 CLAUDE.md is your partnership's shared memory file. It teaches Claude
 Code about:
+
 - Your project's purpose and architecture
 - Your coding standards and naming conventions
 - Common workflows and how to execute them
@@ -784,17 +853,20 @@ member. Except Claude reads it and remembers everything.
 ### Why This Matters for Your Partnership
 
 **Without CLAUDE.md**: You repeat yourself constantly
+
 - Every conversation you say: "This is a Python Flask project..."
 - You explain: "We follow PEP 8, tests go in /tests, we use pytest..."
 - Context switching: Claude forgets from one conversation to the next
 
 **With CLAUDE.md**: Your partnership grows
+
 - Claude remembers your standards automatically
 - Suggestions get more specific (Claude knows your conventions)
 - Conversations are shorter (Claude already has context)
 - The partnership compounds over time
 
 **Real-world example**:
+
 - Without CLAUDE.md: "Add a new test for the user login feature" →
   Claude asks "Which testing framework? Where do tests go? Follow any
   conventions?"
@@ -842,6 +914,7 @@ that the partnership memory is working.
 ### When to Update CLAUDE.md
 
 Your CLAUDE.md evolves as your project grows:
+
 - ✅ You add a new major framework or dependency
 - ✅ Your team adopts new coding standards
 - ✅ Project structure changes significantly
@@ -850,6 +923,7 @@ Your CLAUDE.md evolves as your project grows:
 
 **CLAUDE.md is collaborative**: You write it once, Claude learns it
 permanently. Your partnership gets stronger with every update.
+
 ```
 
 **Changes Made**:
@@ -880,6 +954,7 @@ permanently. Your partnership gets stronger with every update.
 
 #### Original (7 lines):
 ```
+
 ## Try With AI
 
 **Goal**: Complete a simple task to see immediate value
@@ -897,10 +972,12 @@ beginner-friendly."
 **Expected outcome**: Claude suggests 3 safe, simple tasks you can try
 
 ---
+
 ```
 
 #### Regenerated (42 lines):
 ```
+
 ## Try With AI
 
 Your partnership is set up. Now let's deepen it with a collaborative
@@ -914,6 +991,7 @@ capabilities and limitations.
 ### Prompt Set: Understanding Your Partnership
 
 **Prompt 1 (Opening)**: Ask Claude Code to explain itself
+
 ```bash
 claude "I just installed and authenticated you. From your perspective,
 what can you do for a developer like me? What are your strengths and
@@ -926,6 +1004,7 @@ do. This is the Student role—Claude learns YOUR expectations and adapts.
 ---
 
 **Prompt 2 (Deepen)**: Follow up with context
+
 ```bash
 claude "Based on what you said, which of your capabilities would be most
 valuable for MY workflow? You haven't seen my projects yet, but based on
@@ -939,6 +1018,7 @@ approaches you might not have considered.
 ---
 
 **Prompt 3 (Converge)**: Make it real
+
 ```bash
 claude "Now show me. What's one concrete task you could do RIGHT NOW if
 I asked you to help with my actual project? Describe a specific example
@@ -963,6 +1043,7 @@ following AI suggestions. You're collaborating with a tool that has
 opinions, but YOU make final decisions.
 
 ---
+
 ```
 
 **Changes Made**:
@@ -1060,7 +1141,7 @@ opinions, but YOU make final decisions.
 ## File Verification
 
 **File Path**:
-`/Users/mjs/Documents/code/panaversity-official/tutorsgpt/part-2/book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md`
+`/Users/mjs/Documents/code/panaversity-official/tutorsgpt/part-2/apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/02-installation-and-authentication.md`
 
 **Frontmatter Valid**: ✅
 **Markdown Syntax Valid**: ✅
@@ -1098,3 +1179,4 @@ opinions, but YOU make final decisions.
 3. Student validation (learner testing)
 4. Publication approval
 
+```

@@ -16,11 +16,11 @@ links:
   adr: null
   pr: null
 files:
-  - path: "book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/06-three-requirements.md"
+  - path: "apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/06-three-requirements.md"
     change_type: "modified"
     lines_added: 14
     lines_modified: 1
-  - path: "book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/06-three-requirements.summary.md"
+  - path: "apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/06-three-requirements.summary.md"
     change_type: "modified"
     lines_added: 3
     lines_modified: 0
@@ -50,11 +50,13 @@ Implementation completed successfully with constitutional validation.
 Phase 0: Article verified but flagged as promotional. Extracted only generic concepts.
 
 Phase 1-2: content-implementer created 382-word subsection "Why Intelligence Is the New Competitive Asset"
+
 - Explicit Lesson 3 cross-reference (Instagram)
 - A1-A2 language, Layer 1 approach
 - Zero meta-commentary
 
 Constitutional Validation: educational-validator PASS with APPROVE_FOR_FILESYSTEM
+
 - All 7 principles validated
 - Framework invisibility confirmed
 - Proficiency alignment confirmed

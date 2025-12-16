@@ -12,16 +12,19 @@
 ### Files Created & Published
 
 - [x] **Lesson 1**: `01-context-windows-token-counting.md`
-  - Location: `/book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/`
+
+  - Location: `/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/`
   - Size: 17.4 KB (435 lines)
   - Status: Published ✅
 
 - [x] **Lesson 2**: `02-degradation-symptoms-manual-tracking.md`
-  - Location: `/book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/`
+
+  - Location: `/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/`
   - Size: 31.8 KB (907 lines)
   - Status: Published ✅
 
 - [x] **Validation Report**: `LESSON-1-2-VALIDATION-REPORT.md`
+
   - Location: `/specs/001-011-chapter-11-context-engineering-rewrite/`
   - Status: Complete ✅
 
@@ -31,6 +34,7 @@
 ### YAML Frontmatter Verification
 
 **Lesson 1**:
+
 - [x] title: "Lesson 1 - Context Windows and Token Counting"
 - [x] sidebar_position: 1
 - [x] chapter: 11
@@ -44,6 +48,7 @@
 - [x] version: 1.0.0
 
 **Lesson 2**:
+
 - [x] title: "Lesson 2 - Degradation Symptoms and Manual Tracking"
 - [x] sidebar_position: 2
 - [x] chapter: 11
@@ -67,6 +72,7 @@
 **Independent Test**: Student can observe context window filling during a coding session, identify 3+ degradation symptoms WITHOUT AI assistance, and explain when context needs compression vs isolation.
 
 **Verification**:
+
 - [x] Lesson 1 teaches context window observation (Exercise 1-3)
 - [x] Lesson 2 teaches degradation symptom identification (Exercise 1)
 - [x] Lesson 2 teaches compression vs isolation vs restart decision (Framework + Exercise 2)
@@ -76,6 +82,7 @@
 ### Learning Objectives Alignment
 
 **Lesson 1**:
+
 - [x] LO-101: Manually observe context window filling without relying on automated metrics
   - Evidence: Exercise 1 (token estimation), Exercise 2 (saturation point identification)
 - [x] LO-102: Identify degradation threshold as saturation point
@@ -84,6 +91,7 @@
   - Evidence: "Types of Content in Your Context Window" section with 5-item breakdown
 
 **Lesson 2**:
+
 - [x] LO-201: Recognize 5+ degradation symptoms in failing AI sessions
   - Evidence: 5 symptoms defined (Repetitive, Forgotten, Performance, Contradictory, Reference Loss)
 - [x] LO-202: Manually track context utilization over session lifetime
@@ -97,15 +105,15 @@
 
 ### Lesson 1: Concept Count & Complexity
 
-| Concept | Complexity | Chunking | Status |
-|---------|-----------|----------|--------|
-| Context window definition | Simple | Core concept | ✅ |
-| Token concept | Simple | Core concept | ✅ |
-| Token counting methods | Simple | Core concept | ✅ |
-| Utilization % calculation | Moderate | Measurement | ✅ |
-| Content types in context | Moderate | Measurement | ✅ |
-| Saturation point (80%+) | Simple | Thresholds | ✅ |
-| Degradation threshold | Moderate | Thresholds | ✅ |
+| Concept                   | Complexity | Chunking     | Status |
+| ------------------------- | ---------- | ------------ | ------ |
+| Context window definition | Simple     | Core concept | ✅     |
+| Token concept             | Simple     | Core concept | ✅     |
+| Token counting methods    | Simple     | Core concept | ✅     |
+| Utilization % calculation | Moderate   | Measurement  | ✅     |
+| Content types in context  | Moderate   | Measurement  | ✅     |
+| Saturation point (80%+)   | Simple     | Thresholds   | ✅     |
+| Degradation threshold     | Moderate   | Thresholds   | ✅     |
 
 **Total**: 7 concepts
 **B1 Tier Limit**: 10 concepts
@@ -114,16 +122,16 @@
 
 ### Lesson 2: Concept Count & Complexity
 
-| Concept | Complexity | Chunking | Status |
-|---------|-----------|----------|--------|
-| Repetitive suggestion symptom | Moderate | Symptoms | ✅ |
-| Forgotten context symptom | Moderate | Symptoms | ✅ |
-| Performance degradation symptom | Moderate | Symptoms | ✅ |
-| Contradictory advice symptom | Moderate | Symptoms | ✅ |
-| Context reference loss symptom | Moderate | Symptoms | ✅ |
-| Manual tracking methodology | Simple | Method | ✅ |
-| Compression concept | Moderate | Mitigation | ✅ |
-| Isolation concept | Moderate | Mitigation | ✅ |
+| Concept                         | Complexity | Chunking   | Status |
+| ------------------------------- | ---------- | ---------- | ------ |
+| Repetitive suggestion symptom   | Moderate   | Symptoms   | ✅     |
+| Forgotten context symptom       | Moderate   | Symptoms   | ✅     |
+| Performance degradation symptom | Moderate   | Symptoms   | ✅     |
+| Contradictory advice symptom    | Moderate   | Symptoms   | ✅     |
+| Context reference loss symptom  | Moderate   | Symptoms   | ✅     |
+| Manual tracking methodology     | Simple     | Method     | ✅     |
+| Compression concept             | Moderate   | Mitigation | ✅     |
+| Isolation concept               | Moderate   | Mitigation | ✅     |
 
 **Total**: 8 concepts
 **B1 Tier Limit**: 10 concepts
@@ -147,18 +155,21 @@
 ### Lesson 1: Experiment → Observe → Learn
 
 **Phase 1: Experiment**
+
 - [x] Exercise 1: Manual token estimation with sample transcript
 - [x] Students estimate before learning frameworks
 - [x] Real-world scenario (Claude Code session)
 - [x] Action: Count words, apply ratio (1.3 words per token)
 
 **Phase 2: Observe**
+
 - [x] Exercise 2: Spot saturation point in 2-hour session transcript
 - [x] Students identify degradation signals before definition
 - [x] Evidence: Provided session shows marked degradation point
 - [x] Recognition skill develops through analysis
 
 **Phase 3: Learn**
+
 - [x] Token mechanics explained AFTER exercises
 - [x] Degradation threshold concept introduced
 - [x] Exercise 3: Real-world application (next Claude Code session)
@@ -169,18 +180,21 @@
 ### Lesson 2: Experiment → Observe → Learn
 
 **Phase 1: Experiment**
+
 - [x] Exercise 1: 90-minute session transcript analysis
 - [x] Students manually identify degradation symptoms
 - [x] Mark timestamps, recognize patterns
 - [x] Discovery of symptoms before naming
 
 **Phase 2: Observe**
+
 - [x] Five symptoms defined with clear examples
 - [x] Each symptom illustrated with session transcript evidence
 - [x] Pattern recognition develops through examples
 - [x] Decision framework introduced after symptom discovery
 
 **Phase 3: Learn**
+
 - [x] Compression/Isolation/Restart framework explained
 - [x] Decision flow provided with selection criteria (3 options)
 - [x] Exercise 2: Scenario-based practice (Compress/Isolate/Restart choices)
@@ -260,11 +274,13 @@
 ### No AI Collaboration Required
 
 - [x] Lesson 1 "Try With AI": Self-check exercises (not AI prompts)
+
   - Exercise 1: Estimation accuracy (self-graded)
   - Exercise 2: Content type inventory (personal reflection)
   - Exercise 3: Real session observation (personal tracking)
 
 - [x] Lesson 2 "Try With AI": Self-validation quizzes (not AI collaboration)
+
   - Exercise 1: Symptom recognition (self-checked with answer key)
   - Exercise 2: Real session tracking (self-monitored)
   - Exercise 3: Self-check quiz (self-graded with answers provided)
@@ -289,6 +305,7 @@
 ### Citations Present & Verified
 
 **Karpathy "LLM as CPU"** (Lesson 1)
+
 - [x] Source: Y Combinator AI School session
 - [x] Citation format: "Andrej Karpathy, from the Y Combinator AI School"
 - [x] Quote: Complete and accurate
@@ -296,6 +313,7 @@
 - [x] Status: ✅ PROPERLY CITED
 
 **Claude Sonnet 4.5 Specifications** (Lesson 1)
+
 - [x] Standard context: 200K tokens
 - [x] Extended context: 1M tokens (tier 4+)
 - [x] Output capacity: 64K tokens
@@ -304,6 +322,7 @@
 - [x] Status: ✅ PROPERLY CITED
 
 **Gemini 1.5 Pro Specifications** (Lesson 1)
+
 - [x] Standard context: 128K tokens
 - [x] Extended context: 2M tokens
 - [x] Source: Google Cloud Documentation (verified 2025-01-18)
@@ -311,6 +330,7 @@
 - [x] Status: ✅ PROPERLY CITED
 
 **Anthropic Context Degradation Research** (Lesson 2)
+
 - [x] Phenomenon: Context rot, gradual degradation
 - [x] Mechanisms: n² attention overhead, less training on long sequences
 - [x] Mitigation: Compaction, note-taking, sub-agent architectures
@@ -319,6 +339,7 @@
 - [x] Status: ✅ REFERENCED
 
 **Token Estimation Principle** (Lesson 1)
+
 - [x] Ratio: 1.3 words = 1 token (English text)
 - [x] Status: Established principle (commonly used)
 - [x] Verification: Aligned with OpenAI and Anthropic documentation
@@ -332,23 +353,23 @@
 
 ### Applicable Acceptance Tests
 
-| Test | Requirement | Status | Evidence |
-|------|-------------|--------|----------|
-| **Test-001** | All research verified (2025-01-18) | ✅ PASS | Karpathy, Anthropic, Google specs cited with sources |
-| **Test-002** | Comparison table updated | ✅ PASS | Lesson 1 includes Claude/Gemini comparison with 2025 specs |
-| **Test-003** | Three Roles demonstrated in 3+ lessons | ⏭️ N/A | Stage 1 (no AI collaboration). Three Roles tested in Lesson 3+ |
-| **Test-004** | Stage progression explicit in plan | ✅ PASS | Both lessons tagged "Stage 1 (Manual Foundation)" |
-| **Test-004b** | Stages natural in student text | ✅ PASS | No student-facing "Stage 1 Focus" headers. Natural language only. |
-| **Test-005** | Hands-on discovery modality evidenced | ✅ PASS | Experiments precede frameworks in both lessons |
-| **Test-006** | Lesson endings follow minimal content protocol | ✅ PASS | Only "Try With AI" sections. No forbidden sections. |
-| **Test-007** | Cognitive load managed (B1 tier) | ✅ PASS | Lesson 1: 7 concepts, Lesson 2: 8 concepts (both ≤10) |
-| **Test-008** | Capstone is spec-only (NO implementation) | ⏭️ N/A | Lesson 9 (Stage 4), not Lessons 1-2 |
-| **Test-009** | Non-goals listed in spec | ✅ PASS | Referenced from spec.md Section: Non-Goals |
-| **Test-010** | Success criteria measurable | ✅ PASS | SC-001: Diagnosis skill (quiz with transcripts, 80%+ target) |
-| **Test-011** | CLI commands tested | ✅ PASS | No CLI commands in Lessons 1-2 (observational, not execution) |
-| **Test-012** | Six Components framework preserved | ⏭️ DEFERRED | Preserved in Lesson 3+ (not primary focus of Stage 1) |
-| **Test-013** | Progressive loading demo with Three Roles | ⏭️ N/A | Lesson 3 (User Story 2, Stage 2) |
-| **Test-014** | Anti-convergence validated | ✅ PASS | Hands-on discovery vs Chapter 10's direct teaching |
+| Test          | Requirement                                    | Status      | Evidence                                                          |
+| ------------- | ---------------------------------------------- | ----------- | ----------------------------------------------------------------- |
+| **Test-001**  | All research verified (2025-01-18)             | ✅ PASS     | Karpathy, Anthropic, Google specs cited with sources              |
+| **Test-002**  | Comparison table updated                       | ✅ PASS     | Lesson 1 includes Claude/Gemini comparison with 2025 specs        |
+| **Test-003**  | Three Roles demonstrated in 3+ lessons         | ⏭️ N/A      | Stage 1 (no AI collaboration). Three Roles tested in Lesson 3+    |
+| **Test-004**  | Stage progression explicit in plan             | ✅ PASS     | Both lessons tagged "Stage 1 (Manual Foundation)"                 |
+| **Test-004b** | Stages natural in student text                 | ✅ PASS     | No student-facing "Stage 1 Focus" headers. Natural language only. |
+| **Test-005**  | Hands-on discovery modality evidenced          | ✅ PASS     | Experiments precede frameworks in both lessons                    |
+| **Test-006**  | Lesson endings follow minimal content protocol | ✅ PASS     | Only "Try With AI" sections. No forbidden sections.               |
+| **Test-007**  | Cognitive load managed (B1 tier)               | ✅ PASS     | Lesson 1: 7 concepts, Lesson 2: 8 concepts (both ≤10)             |
+| **Test-008**  | Capstone is spec-only (NO implementation)      | ⏭️ N/A      | Lesson 9 (Stage 4), not Lessons 1-2                               |
+| **Test-009**  | Non-goals listed in spec                       | ✅ PASS     | Referenced from spec.md Section: Non-Goals                        |
+| **Test-010**  | Success criteria measurable                    | ✅ PASS     | SC-001: Diagnosis skill (quiz with transcripts, 80%+ target)      |
+| **Test-011**  | CLI commands tested                            | ✅ PASS     | No CLI commands in Lessons 1-2 (observational, not execution)     |
+| **Test-012**  | Six Components framework preserved             | ⏭️ DEFERRED | Preserved in Lesson 3+ (not primary focus of Stage 1)             |
+| **Test-013**  | Progressive loading demo with Three Roles      | ⏭️ N/A      | Lesson 3 (User Story 2, Stage 2)                                  |
+| **Test-014**  | Anti-convergence validated                     | ✅ PASS     | Hands-on discovery vs Chapter 10's direct teaching                |
 
 **Overall Test Compliance**: ✅ 11/11 APPLICABLE TESTS PASSING
 
@@ -390,15 +411,15 @@
 
 ### Final Quality Assessment
 
-| Dimension | Rating | Notes |
-|-----------|--------|-------|
+| Dimension                     | Rating    | Notes                                                                  |
+| ----------------------------- | --------- | ---------------------------------------------------------------------- |
 | **Pedagogical Effectiveness** | Excellent | Discovery modality, progressive complexity, clear learning progression |
-| **Content Quality** | Excellent | Well-written, accurate, properly cited, relatable examples |
-| **Specification Compliance** | Full | All requirements met, no gaps or violations |
-| **Research Integration** | Excellent | Verified sources, proper attribution, no hallucinations |
-| **Cognitive Load Management** | Excellent | 7-8 concepts within limits, clear chunking, appropriate scaffolding |
-| **Hands-On Discovery** | Excellent | Exercises precede frameworks, students learn through doing |
-| **Stage 1 Alignment** | Full | Manual foundation complete, no AI, mental models established |
+| **Content Quality**           | Excellent | Well-written, accurate, properly cited, relatable examples             |
+| **Specification Compliance**  | Full      | All requirements met, no gaps or violations                            |
+| **Research Integration**      | Excellent | Verified sources, proper attribution, no hallucinations                |
+| **Cognitive Load Management** | Excellent | 7-8 concepts within limits, clear chunking, appropriate scaffolding    |
+| **Hands-On Discovery**        | Excellent | Exercises precede frameworks, students learn through doing             |
+| **Stage 1 Alignment**         | Full      | Manual foundation complete, no AI, mental models established           |
 
 **Overall Quality Rating**: ✅ EXCELLENT (APPROVED FOR PUBLICATION)
 
@@ -411,6 +432,7 @@
 **Status**: COMPLETE & VALIDATED
 
 **Deliverables**:
+
 1. ✅ Lesson 1: Context Windows and Token Counting (435 lines, 17.4 KB)
 2. ✅ Lesson 2: Degradation Symptoms and Manual Tracking (907 lines, 31.8 KB)
 3. ✅ Validation Report: LESSON-1-2-VALIDATION-REPORT.md
@@ -419,7 +441,8 @@
 **Quality Gate**: APPROVED ✅
 
 **Ready for**:
-- ✅ Publication to book-source/docs/
+
+- ✅ Publication to apps/learn-app/docs/
 - ✅ Student use and feedback collection
 - ✅ Integration with Lesson 3 (User Story 2)
 - ✅ Assessment design (SC-001 degradation diagnosis quiz)
@@ -427,17 +450,20 @@
 ### Recommendations for Next Phase
 
 **User Story 2 (Lesson 3): Progressive Loading Strategy**
+
 - Manual foundation is complete
 - Ready for Stage 2 AI collaboration
 - Recommend: Reference Lessons 1-2 concepts throughout Lesson 3
 - Three Roles demonstration required (AI as Teacher/Student/Co-Worker)
 
 **Assessment Design**
+
 - SC-001 (Degradation Diagnosis): Scenario-based quiz using Lesson 2 format
 - Target: 80%+ students identify 5+ symptoms and prescribe mitigation
 - Template: Use Lesson 2 session transcripts as assessment format
 
 **Content Continuity**
+
 - Lessons 3-5: Progressive loading with Three Roles
 - Lessons 6-8: Intelligence design (memory files, tool selection, advanced strategies)
 - Lesson 9: Capstone (spec-driven orchestration, no code implementation)
@@ -445,16 +471,19 @@
 ### Notes for Future Instructors
 
 **Key Lesson 1 Insights**:
+
 - Students often underestimate token density of code
 - Session transcripts should show real degradation (not hypothetical)
 - Token ratio (1.3 words per token) is practical tool, not exact science
 
 **Key Lesson 2 Insights**:
+
 - Five symptoms appear in predictable order (repetition → forgetting → slowdown → contradictions → reference loss)
 - Compression checkpoint template is highly practical for real sessions
 - Decision framework (Compress/Isolate/Restart) resonates with students' actual pain points
 
 **Engagement Observations**:
+
 - Students engage most when exercises precede explanations
 - Realistic session transcripts (with clear errors) are more valuable than perfect examples
 - Manual tracking template normalizes context management as skill, not technical magic
@@ -463,18 +492,18 @@
 
 ## SUMMARY TABLE
 
-| Component | Target | Achieved | Status |
-|-----------|--------|----------|--------|
-| **Files Created** | 2 | 2 | ✅ |
-| **Concepts (L1)** | ≤10 | 7 | ✅ |
-| **Concepts (L2)** | ≤10 | 8 | ✅ |
-| **Learning Objectives** | All mapped | 6/6 mapped | ✅ |
-| **Exercises** | 3+ per lesson | 4 (L1), 4 (L2) | ✅ |
-| **Research Citations** | All verified | 4/4 cited | ✅ |
-| **Discovery Modality** | Exercises first | Exercises first | ✅ |
-| **Forbidden Sections** | 0 | 0 | ✅ |
-| **Constitutional Principles** | 7/7 | 7/7 | ✅ |
-| **Test Compliance** | 11/11 applicable | 11/11 passing | ✅ |
+| Component                     | Target           | Achieved        | Status |
+| ----------------------------- | ---------------- | --------------- | ------ |
+| **Files Created**             | 2                | 2               | ✅     |
+| **Concepts (L1)**             | ≤10              | 7               | ✅     |
+| **Concepts (L2)**             | ≤10              | 8               | ✅     |
+| **Learning Objectives**       | All mapped       | 6/6 mapped      | ✅     |
+| **Exercises**                 | 3+ per lesson    | 4 (L1), 4 (L2)  | ✅     |
+| **Research Citations**        | All verified     | 4/4 cited       | ✅     |
+| **Discovery Modality**        | Exercises first  | Exercises first | ✅     |
+| **Forbidden Sections**        | 0                | 0               | ✅     |
+| **Constitutional Principles** | 7/7              | 7/7             | ✅     |
+| **Test Compliance**           | 11/11 applicable | 11/11 passing   | ✅     |
 
 ---
 

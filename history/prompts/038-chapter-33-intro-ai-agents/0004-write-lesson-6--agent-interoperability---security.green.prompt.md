@@ -9,14 +9,23 @@ feature: 038-chapter-33-intro-ai-agents
 branch: 038-chapter-33-intro-ai-agents
 user: "mjs"
 command: "Direct prompt (Haiku agent)"
-labels: ["chapter-33", "agent-systems", "interoperability", "security", "layer-2", "b1-proficiency", "google-whitepaper"]
+labels:
+  [
+    "chapter-33",
+    "agent-systems",
+    "interoperability",
+    "security",
+    "layer-2",
+    "b1-proficiency",
+    "google-whitepaper",
+  ]
 links:
   spec: "specs/038-chapter-33-intro-ai-agents/spec.md"
   ticket: null
   adr: null
   pr: null
 files:
-  - path: "book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/06-agent-interoperability-security.md"
+  - path: "apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/06-agent-interoperability-security.md"
     status: "created"
     lines: 584
     words: 3847
@@ -27,26 +36,46 @@ files:
 tests:
   - name: "constitutional-compliance"
     status: "PASS"
-    checks: ["framework-invisibility", "layer-recognition", "proficiency-alignment", "no-meta-commentary", "evals-first"]
+    checks:
+      [
+        "framework-invisibility",
+        "layer-recognition",
+        "proficiency-alignment",
+        "no-meta-commentary",
+        "evals-first",
+      ]
   - name: "spec-alignment"
     status: "PASS"
-    checks: ["a2a-protocol-explained", "agent-cards-defined", "agent-identity-covered", "defense-in-depth-explained"]
+    checks:
+      [
+        "a2a-protocol-explained",
+        "agent-cards-defined",
+        "agent-identity-covered",
+        "defense-in-depth-explained",
+      ]
   - name: "pedagogical-quality"
     status: "PASS"
-    checks: ["concrete-examples", "progressive-complexity", "active-learning", "appropriate-scaffolding"]
+    checks:
+      [
+        "concrete-examples",
+        "progressive-complexity",
+        "active-learning",
+        "appropriate-scaffolding",
+      ]
 ---
 
 ## Prompt
 
 Write Lesson 6 for Chapter 33: "Agent Interoperability & Security"
 
-**FILE PATH**: `/book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/06-agent-interoperability-security.md`
+**FILE PATH**: `/apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/06-agent-interoperability-security.md`
 
 **CRITICAL: Align with Google's "Introduction to Agents" whitepaper (November 2025)**
 
 **Paper Source**: "Agent Interoperability" and "Securing a Single Agent" sections
 
 **Frontmatter**:
+
 ```yaml
 title: "Agent Interoperability & Security"
 sidebar_position: 6
@@ -54,12 +83,14 @@ proficiency_level: B1
 ```
 
 **Learning Objectives**:
+
 - LO6.1: Describe agent-human interaction patterns
 - LO6.2: Explain A2A protocol and Agent Cards
 - LO6.3: Articulate agent identity as new principal class
 - LO6.4: Explain trust trade-off and defense in depth
 
 **Content Structure** (3,000-3,500 words):
+
 1. Agent Interoperability Overview
 2. Agents and Humans (4 modalities)
 3. Agents and Agents (A2A, Agent Cards)
@@ -70,6 +101,7 @@ proficiency_level: B1
 8. Try With AI section
 
 **Constraints**:
+
 - Layer 2
 - 4 NEW concepts
 - Paper's security framework exactly
@@ -80,6 +112,7 @@ proficiency_level: B1
 Created Lesson 6 (3,847 words) aligning with Google "Introduction to Agents" whitepaper:
 
 **Sections delivered**:
+
 - Agent Interoperability Overview (context for lesson)
 - Agent-Human Interaction: 4 modalities (chatbot, computer use, live mode, multimodal)
 - Agent-Agent Interaction: A2A Protocol + Agent Cards (with JSON example) + task-oriented architecture
@@ -91,6 +124,7 @@ Created Lesson 6 (3,847 words) aligning with Google "Introduction to Agents" whi
 - What You've Learned summary
 
 **Constitutional compliance**:
+
 - ✅ No framework labels ("AI as Teacher", "Three Roles", etc.)
 - ✅ Natural narrative progression (no meta-commentary)
 - ✅ 4 new concepts (within B1 limit of 7-10)

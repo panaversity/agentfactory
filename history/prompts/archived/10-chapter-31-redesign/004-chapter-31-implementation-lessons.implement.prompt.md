@@ -18,13 +18,13 @@ links:
   adr: "null"
   pr: "null"
 files:
-  - "/book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/01-smart-acceptance-criteria.md"
-  - "/book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/02-specifyplus-structure.md"
-  - "/book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/03-complete-specification.md"
-  - "/book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/04-refining-specs-with-sp-specify.md"
-  - "/book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/05-planning-sp-plan.md"
-  - "/book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/06-decomposing-tasks-sp-tasks.md"
-  - "/book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/07-implementation-sp-implement.md"
+  - "/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/01-smart-acceptance-criteria.md"
+  - "/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/02-specifyplus-structure.md"
+  - "/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/03-complete-specification.md"
+  - "/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/04-refining-specs-with-sp-specify.md"
+  - "/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/05-planning-sp-plan.md"
+  - "/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/06-decomposing-tasks-sp-tasks.md"
+  - "/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/07-implementation-sp-implement.md"
   - "/history/prompts/10-chapter-31-redesign/004-chapter-31-implementation-lessons.implement.prompt.md"
 tests: []
 ---
@@ -38,7 +38,7 @@ Invoke content-implementer subagent to create all 7 redesigned lessons for Chapt
 - Specification: `/specs/10-chapter-31-redesign/spec.md` (complete, approved)
 - Plan: `/specs/10-chapter-31-redesign/plan.md` (complete, approved)
 - Tasks: `/specs/10-chapter-31-redesign/tasks.md` (complete, 47 atomic tasks)
-- Output Directory: `/book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/`
+- Output Directory: `/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/`
 
 **Execution**: Lesson-writer subagent created all 7 lessons following the plan exactly:
 
@@ -137,7 +137,7 @@ All lessons delivered with full content, exercises, code examples, and "Try With
 
 - ✅ **Impact**: All 7 lessons delivered and ready for validation phase
 - 🧪 **Tests**: All lessons independently testable; code examples verified
-- 📁 **Files**: 7 lesson files created in `/book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/`
+- 📁 **Files**: 7 lesson files created in `/apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/`
 - 🔁 **Next prompts**: Technical review (validation-auditor), Proof validation (factual-verifier), Publication merge to main
 - 🧠 **Reflection**: Chapter 31 redesign now complete with correct SpecifyPlus workflow, AIDD paradigm integrated, all hallucinations eliminated, specification-first thinking taught, validation mastery as core skill
 

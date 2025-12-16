@@ -16,7 +16,7 @@
 
 ## Path Conventions
 
-All lessons in: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
+All lessons in: `apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/`
 
 ---
 
@@ -24,7 +24,7 @@ All lessons in: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
 
 **Purpose**: Prepare for 7-lesson restructure and research requirements
 
-- [ ] T001 Read existing 9 lessons in `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/` to identify reusable content
+- [ ] T001 Read existing 9 lessons in `apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/` to identify reusable content
 - [ ] T002 [P] Research GitHub Agent HQ features from official GitHub Blog (https://github.blog/news-insights/company-news/welcome-home-agents/)
 - [ ] T003 [P] Test all Git commands in sandbox environment (init, status, add, commit, diff, restore, reset, branch, checkout, switch, merge, remote, push, pull, clone)
 - [ ] T004 [P] Capture terminal logs for each Git command test (for lesson inclusion per C-014 constraint)
@@ -46,7 +46,7 @@ All lessons in: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
 
 ### Implementation for Lesson 1
 
-- [ ] T007 [L1] [US1] Create `01-your-first-git-repository.md` in `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
+- [ ] T007 [L1] [US1] Create `01-your-first-git-repository.md` in `apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/`
 - [ ] T008 [L1] [US1] Write intro section explaining Git as safety system for AI experimentation (not version control commands)
 - [ ] T009 [L1] [US1] Create hands-on activity: "Execute `git init` in empty folder, observe `.git` directory creation"
 - [ ] T010 [L1] [US1] Create hands-on activity: "Execute `git status`, observe untracked file message"
@@ -74,7 +74,7 @@ All lessons in: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
 
 ### Implementation for Lesson 2
 
-- [ ] T019 [L2] [US1] Create `02-viewing-changes-safe-undo.md` in `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
+- [ ] T019 [L2] [US1] Create `02-viewing-changes-safe-undo.md` in `apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/`
 - [ ] T020 [L2] [US1] Write intro section framing undo as "fearless experimentation enabler"
 - [ ] T021 [L2] [US1] Create hands-on activity: "Modify file, execute `git diff`, observe change visualization"
 - [ ] T022 [L2] [US1] Create hands-on activity: "Execute `git restore <file>`, observe unstaged changes disappear"
@@ -101,7 +101,7 @@ All lessons in: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
 
 ### Implementation for Lesson 3
 
-- [ ] T030 [L3] [US3] Create `03-testing-ai-safely-with-branches.md` in `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
+- [ ] T030 [L3] [US3] Create `03-testing-ai-safely-with-branches.md` in `apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/`
 - [ ] T031 [L3] [US3] Write intro section framing branches as "parallel universes for testing AI suggestions"
 - [ ] T032 [L3] [US3] Create hands-on activity: "Execute `git branch feature-simple`, then `git branch`, observe branch list"
 - [ ] T033 [L3] [US3] Create hands-on activity: "Execute `git checkout feature-simple`, observe branch switch in status"
@@ -131,7 +131,7 @@ All lessons in: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
 
 ### Implementation for Lesson 4
 
-- [ ] T044 [L4] [US2] Create `04-cloud-backup-portfolio.md` in `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
+- [ ] T044 [L4] [US2] Create `04-cloud-backup-portfolio.md` in `apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/`
 - [ ] T045 [L4] [US2] Write intro section framing GitHub as "catastrophe prevention + career advancement"
 - [ ] T046 [L4] [US2] Create hands-on activity: "Create free GitHub account at github.com"
 - [ ] T047 [L4] [US2] Create hands-on activity: "Create new repository via GitHub web interface"
@@ -161,7 +161,7 @@ All lessons in: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
 
 ### Implementation for Lesson 5
 
-- [ ] T058 [L5] [US2] Create `05-code-review-pull-requests.md` in `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
+- [ ] T058 [L5] [US2] Create `05-code-review-pull-requests.md` in `apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/`
 - [ ] T059 [L5] [US2] Write intro section framing PRs as "professional workflow + AI transparency practice"
 - [ ] T060 [L5] [US2] Create hands-on activity: "Create feature branch, make changes, commit, push to GitHub"
 - [ ] T061 [L5] [US2] Create hands-on activity: "On GitHub, click 'Compare & pull request', observe PR creation interface"
@@ -190,7 +190,7 @@ All lessons in: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
 
 ### Implementation for Lesson 6
 
-- [ ] T071 [L6] [US1+US2+US3] Create `06-reusable-git-patterns.md` in `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
+- [ ] T071 [L6] [US1+US2+US3] Create `06-reusable-git-patterns.md` in `apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/`
 - [ ] T072 [L6] Write intro section framing reusable intelligence as "work smarter, not harder—document what works"
 - [ ] T073 [L6] Create reflection activity: "List Git workflows you've used 2+ times across Lessons 1-5"
 - [ ] T074 [L6] **Persona + Questions + Principles Framework**: Provide structured template for documenting workflows
@@ -223,7 +223,7 @@ All lessons in: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
 
 ### Implementation for Lesson 7
 
-- [ ] T082 [L7] [US1+US2+US3+US4] Create `07-capstone-task-manager-agent-hq.md` in `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
+- [ ] T082 [L7] [US1+US2+US3+US4] Create `07-capstone-task-manager-agent-hq.md` in `apps/learn-app/docs/02-AI-Tool-Landscape/08-git-and-github/`
 - [ ] T083 [L7] Write intro section framing capstone as "orchestrating everything you've learned + glimpse of GitHub's future"
 
 #### Part A: Spec-Driven Task Manager Project (90 minutes)
@@ -328,11 +328,13 @@ All lessons in: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
 ### Phase Dependencies
 
 - **Setup (Phase 1)**: No dependencies—starts immediately
+
   - Research GitHub Agent HQ (T002)
   - Test Git commands (T003-T004)
   - Audit existing content (T001, T005)
 
 - **Lessons (Phases 2-8)**: Lessons can be implemented in parallel by different writers AFTER Phase 1
+
   - L1 (T007-T018): Foundation for all other lessons
   - L2 (T019-T029): Depends on L1 concepts
   - L3 (T030-T043): Depends on L1-L2 manual foundation
@@ -342,6 +344,7 @@ All lessons in: `book-source/docs/02-AI-Tool-Landscape/08-git-and-github/`
   - L7 (T082-T105): Depends on L1-L6 (capstone composition)
 
 - **Validation (Phase 9)**: Depends on all 7 lessons complete
+
   - Content quality checks (T106-T113)
   - Constitutional compliance (T114-T120)
   - Coverage validation (T121-T129)
@@ -371,9 +374,11 @@ L7 (Capstone + Agent HQ) — depends on L1-L6 accumulated intelligence
 ### Parallel Opportunities
 
 **Within Phase 1 (Setup)**:
+
 - T002 (Agent HQ research), T003 (Git testing), T004 (terminal logs), T006 (skill template) can all run in parallel
 
 **Across Lessons (with sufficient writers)**:
+
 - After L1 complete: L2 implementation can start
 - After L2 complete: L3 can start
 - After L3 complete: L4 can start
@@ -382,12 +387,14 @@ L7 (Capstone + Agent HQ) — depends on L1-L6 accumulated intelligence
 - After L6 complete: L7 can start
 
 **Within Validation Phase**:
+
 - All T106-T113 (content checks) can run in parallel
 - All T114-T120 (constitutional checks) can run in parallel
 - All T121-T124 (coverage checks) can run in parallel
 - All T125-T129 (success criteria checks) can run in parallel
 
 **Within Polish Phase**:
+
 - All T130-T137 can run in parallel (different files/concerns)
 
 ---
@@ -464,6 +471,7 @@ With multiple content writers:
 ## Summary
 
 **Total Tasks**: 137 tasks
+
 - Phase 1 (Setup): 6 tasks
 - Phase 2 (L1): 12 tasks
 - Phase 3 (L2): 11 tasks
@@ -478,6 +486,7 @@ With multiple content writers:
 **Parallel Opportunities**: 45 tasks marked [P] can run in parallel within their phases
 
 **User Scenario Coverage**:
+
 - US1 (Safe AI Experimentation): L1, L2, L3, L7 (49 tasks)
 - US2 (GitHub Backup & Portfolio): L4, L5, L7 (32 tasks)
 - US3 (Branch Testing): L3, L7 (22 tasks)
@@ -486,6 +495,7 @@ With multiple content writers:
 **Suggested MVP Scope**: Phase 1 + L1 + L2 (29 tasks) = Foundation lessons with manual Git mastery
 
 **Independent Test Criteria**:
+
 - L1: Student creates repo, stages, commits, views history manually ✓
 - L2: Student views diffs, undos changes at all 3 levels ✓
 - L3: Student creates branches, tests parallel implementations, merges ✓

@@ -12,6 +12,7 @@
 ✅ **PASS** - Output styles successfully updated to match actual book structure
 
 **Changes Applied**:
+
 1. Updated chapters.md with correct Part (Title-Case) → Chapter (lowercase) → readme.md (lowercase) structure
 2. Added actual Chapter 1 example showing 8 lesson files with descriptive names
 3. Updated terminology: "13 parts aspirational" (from "7 parts"), kept "lessons" terminology
@@ -27,8 +28,9 @@
 ### File Structure Match
 
 **Output Styles (chapters.md, lines 22-45)** specifies:
+
 ```
-book-source/docs/
+apps/learn-app/docs/
 ├── NN-Part-Name/                              # Part folders (Title Case)
 │   ├── README.md                              # UPPERCASE
 │   ├── NN-chapter-name/                       # lowercase
@@ -39,6 +41,7 @@ book-source/docs/
 ```
 
 **Actual Chapter 1 Structure**:
+
 ```
 01-Introducing-AI-Driven-Development/          # Part 1 (Title Case) ✓
 ├── README.md                                   # UPPERCASE ✓
@@ -64,16 +67,16 @@ book-source/docs/
 
 **Comparison**:
 
-| Field | Output Styles Template | Actual Chapter 1 Lesson 1 | Status |
-|-------|------------------------|---------------------------|--------|
-| `title` | "A Moment That Changed Everything" | "A Moment That Changed Everything" | ✅ Match |
-| `chapter` | 1 | 1 | ✅ Match |
-| `lesson` | 1 | 1 | ✅ Match |
-| `duration_minutes` | 15 | 15 | ✅ Match |
-| `skills` array | 3 skills with CEFR levels | 3 skills with CEFR levels | ✅ Match |
-| `learning_objectives` | 3 objectives with proficiency | 3 objectives with proficiency | ✅ Match |
-| `cognitive_load` | new_concepts + assessment | new_concepts: 3 + assessment | ✅ Match |
-| `differentiation` | extension + remedial | extension + remedial | ✅ Match |
+| Field                 | Output Styles Template             | Actual Chapter 1 Lesson 1          | Status   |
+| --------------------- | ---------------------------------- | ---------------------------------- | -------- |
+| `title`               | "A Moment That Changed Everything" | "A Moment That Changed Everything" | ✅ Match |
+| `chapter`             | 1                                  | 1                                  | ✅ Match |
+| `lesson`              | 1                                  | 1                                  | ✅ Match |
+| `duration_minutes`    | 15                                 | 15                                 | ✅ Match |
+| `skills` array        | 3 skills with CEFR levels          | 3 skills with CEFR levels          | ✅ Match |
+| `learning_objectives` | 3 objectives with proficiency      | 3 objectives with proficiency      | ✅ Match |
+| `cognitive_load`      | new_concepts + assessment          | new_concepts: 3 + assessment       | ✅ Match |
+| `differentiation`     | extension + remedial               | extension + remedial               | ✅ Match |
 
 **Result**: ✅ **YAML structure perfectly matches actual implementation**
 
@@ -83,14 +86,14 @@ book-source/docs/
 
 ### Key Terms Check
 
-| Term | Output Styles | Actual Files | Status |
-|------|---------------|--------------|--------|
-| Part README case | `README.md` (UPPERCASE) | `README.md` (UPPERCASE) | ✅ Match |
-| Chapter readme case | `readme.md` (LOWERCASE) | `readme.md` (LOWERCASE) | ✅ Match |
-| Part count | "13 parts aspirational" | Actual: 4 parts (Phase 1) | ✅ Clear distinction |
-| Lesson terminology | "lessons" (kept) | YAML field: `lesson:` | ✅ Match |
-| File naming | "descriptive names" | `01-moment_that_changed_everything.md` style | ✅ Match |
-| Chapter folders | "lowercase-with-hyphens" | `01-ai-development-revolution` | ✅ Match |
+| Term                | Output Styles            | Actual Files                                 | Status               |
+| ------------------- | ------------------------ | -------------------------------------------- | -------------------- |
+| Part README case    | `README.md` (UPPERCASE)  | `README.md` (UPPERCASE)                      | ✅ Match             |
+| Chapter readme case | `readme.md` (LOWERCASE)  | `readme.md` (LOWERCASE)                      | ✅ Match             |
+| Part count          | "13 parts aspirational"  | Actual: 4 parts (Phase 1)                    | ✅ Clear distinction |
+| Lesson terminology  | "lessons" (kept)         | YAML field: `lesson:`                        | ✅ Match             |
+| File naming         | "descriptive names"      | `01-moment_that_changed_everything.md` style | ✅ Match             |
+| Chapter folders     | "lowercase-with-hyphens" | `01-ai-development-revolution`               | ✅ Match             |
 
 **Result**: ✅ **All terminology consistent**
 
@@ -101,11 +104,13 @@ book-source/docs/
 **Output Styles Documentation** (lesson.md, lines 11-39):
 
 ### Level 1: Chapter readme.md
+
 - Purpose: Chapter overview and learning objectives ✓
 - Location: `NN-chapter-name/readme.md` ✓
 - Structure: Title (H1) + Introduction + "What You'll Learn" ✓
 
 **Actual Chapter 1 readme.md** (lines 1-27):
+
 ```markdown
 ---
 sidebar_position: 1
@@ -125,11 +130,13 @@ By the end of this chapter, you'll understand:
 **Result**: ✅ **readme.md structure perfectly matches specification**
 
 ### Level 2: Lesson files
+
 - Purpose: Teach specific concepts ✓
 - Location: `NN-descriptive-lesson-name.md` ✓
 - Structure: YAML frontmatter + Title + Content + "Try With AI" ✓
 
 **Actual Chapter 1 Lesson 1** (lines 1-160):
+
 ```markdown
 ---
 title: "A Moment That Changed Everything"
@@ -143,6 +150,7 @@ lesson: 1
 [Content sections...]
 
 ## Try With AI
+
 [Final section]
 ```
 
@@ -153,10 +161,12 @@ lesson: 1
 ## Metadata Comments Validation
 
 **Output Styles Requirement** (lesson.md, lines 183-217):
+
 - Format: HTML comment with 5 fields (Generated by, Source spec, Created, Git author, Workflow)
 - Location: End of file after "Try With AI" section
 
 **Actual Chapter 1 Files**:
+
 - ❌ **NOT PRESENT** in current files (as expected - this is a NEW requirement for future generation)
 
 **Status**: ✅ **Requirement documented; will be applied in future subagent-generated files (T036 in Week 2)**
@@ -176,14 +186,17 @@ All output styles now accurately reflect actual book structure with zero discrep
 ### chapters.md Updates
 
 **T011** - Corrected structure (lines 19-54):
+
 - Added Part README (UPPERCASE), Chapter readme (LOWERCASE) distinction
 - Added actual Chapter 1 example with 8 descriptive lesson names
 - Documented underscores or hyphens acceptable in filenames
 
 **T012** - Example from actual book (lines 32-46):
+
 - Actual Chapter 1 structure used as reference example
 
 **T013** - Terminology updates:
+
 - Line 2: Changed "7-part" to "13-part structure aspirational"
 - Lines 48-86: Updated naming conventions with "13 parts aspirational" note
 - Kept "lessons" terminology throughout (not changed to "sections")
@@ -191,19 +204,23 @@ All output styles now accurately reflect actual book structure with zero discrep
 ### lesson.md Updates
 
 **T014** - YAML frontmatter example (lines 112-169):
+
 - Real example from `01-moment_that_changed_everything.md`
 - All fields match actual implementation
 
 **T015** - Two-level structure documentation (lines 11-39):
+
 - Clear distinction between chapter readme.md and lesson files
 - Actual file paths and structure examples
 
 **T016** - Metadata comments (lines 183-217):
+
 - Format specification with 5 required fields
 - Example showing proper HTML comment syntax
 - Purpose and traceability explanation
 
 **T017** - "Try With AI" policy (line 286):
+
 - Already documented: "Every lesson ends with a single final section titled 'Try With AI'"
 - Clear instruction: "Do not include conventional end sections like 'Key Takeaways' or 'What's Next'"
 
@@ -211,14 +228,14 @@ All output styles now accurately reflect actual book structure with zero discrep
 
 ## Success Metrics
 
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| File structure match | 100% | 100% | ✅ Pass |
-| YAML frontmatter match | 100% | 100% | ✅ Pass |
-| Terminology consistency | 100% | 100% | ✅ Pass |
-| Two-level structure documented | Yes | Yes | ✅ Pass |
-| Metadata comments specified | Yes | Yes | ✅ Pass |
-| "Try With AI" policy clear | Yes | Yes | ✅ Pass |
+| Metric                         | Target | Actual | Status  |
+| ------------------------------ | ------ | ------ | ------- |
+| File structure match           | 100%   | 100%   | ✅ Pass |
+| YAML frontmatter match         | 100%   | 100%   | ✅ Pass |
+| Terminology consistency        | 100%   | 100%   | ✅ Pass |
+| Two-level structure documented | Yes    | Yes    | ✅ Pass |
+| Metadata comments specified    | Yes    | Yes    | ✅ Pass |
+| "Try With AI" policy clear     | Yes    | Yes    | ✅ Pass |
 
 ---
 
@@ -229,10 +246,12 @@ All output styles now accurately reflect actual book structure with zero discrep
 Recommend reviewing these 3 sample files to confirm accuracy:
 
 1. **chapters.md** (lines 19-86):
+
    - Verify Part (Title-Case) → Chapter (lowercase) → readme.md (LOWERCASE) structure is correct
    - Confirm Chapter 1 example accurately represents expected output
 
 2. **lesson.md** (lines 11-39):
+
    - Verify two-level structure explanation is clear for content-implementer subagent
    - Confirm Chapter readme.md vs Lesson file distinction is understandable
 
@@ -251,9 +270,11 @@ Recommend reviewing these 3 sample files to confirm accuracy:
 ## Next Steps
 
 **If approved**:
+
 - Proceed to T020-T028: Chapter Index Verification (verify `specs/book/chapter-index.md` accurately reflects current status)
 
 **If changes needed**:
+
 - List specific adjustments required
 - Revise output styles accordingly
 - Re-run validation
@@ -263,6 +284,7 @@ Recommend reviewing these 3 sample files to confirm accuracy:
 ## Appendix: Change Summary
 
 **Files Modified**: 2
+
 - `.claude/output-styles/chapters.md` (255 lines → updated lines 2, 19-86)
 - `.claude/output-styles/lesson.md` (213 lines → updated lines 2, 9-39, 112-217)
 

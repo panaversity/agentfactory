@@ -1216,7 +1216,7 @@ fi
 
 **Step 1: Invoke skill with chapter path**
 ```
-User: "Validate Python code in book-source/docs/04-Python-Fundamentals/14-data-types"
+User: "Validate Python code in apps/learn-app/docs/04-Python-Fundamentals/14-data-types"
 ```
 
 **Step 2: Skill analyzes context**

@@ -15,6 +15,7 @@ This chapter **does NOT teach bash** as a traditional skill. Instead, it teaches
 **Core Learning Goal**: "When your AI companion suggests a bash command, you understand WHAT it's doing, WHY it matters, and whether it's safe to execute."
 
 **Paradigm Shift**:
+
 - **Not**: "Memorize 100 bash commands"
 - **YES**: "Understand the 8-10 bash patterns your AI uses most frequently"
 - **Not**: "Learn to write complex bash"
@@ -35,6 +36,7 @@ This chapter **does NOT teach bash** as a traditional skill. Instead, it teaches
 **Independent Test**: Learner can read an AI-generated bash command involving file navigation, explain what it does and where on disk it operates, and predict the outcome before execution.
 
 **Acceptance Scenarios**:
+
 1. **Given** AI suggests `cd ~/project && ls -la`, **When** learner reads it, **Then** learner can explain: "Move to home/project folder and list files with details"
 2. **Given** AI suggests `mkdir -p src/{tests,models,utils}`, **When** learner reads it, **Then** learner can draw the resulting folder structure
 3. **Given** AI suggests `rm -rf old_project`, **When** learner considers it, **Then** learner can identify this is destructive and asks for confirmation
@@ -50,6 +52,7 @@ This chapter **does NOT teach bash** as a traditional skill. Instead, it teaches
 **Independent Test**: Learner can read AI-generated configuration commands, understand what system variable is being set, explain where it persists, and verify it was applied correctly.
 
 **Acceptance Scenarios**:
+
 1. **Given** AI suggests `export ANTHROPIC_API_KEY="sk-..."`, **When** learner executes it, **Then** learner can verify it's set with `echo $ANTHROPIC_API_KEY`
 2. **Given** AI edits `~/.bashrc` to add a new export, **When** learner views the file, **Then** learner can identify the new line and understand it persists across sessions
 3. **Given** configuration needs to be changed, **When** learner works with AI, **Then** learner can decide between temporary (export) vs. permanent (~/.bashrc) solution
@@ -65,6 +68,7 @@ This chapter **does NOT teach bash** as a traditional skill. Instead, it teaches
 **Independent Test**: Learner can read copy/move/delete commands from AI, trace what data is affected, identify if backups are suggested, and decide if the operation is safe before executing.
 
 **Acceptance Scenarios**:
+
 1. **Given** AI suggests `cp old_file.py backup_file.py`, **When** learner reads it, **Then** learner understands: creates copy, original unchanged
 2. **Given** AI suggests `mv src/ old_src/ && mkdir src/`, **When** learner analyzes it, **Then** learner recognizes this as "rename src to old_src, create new empty src"
 3. **Given** AI suggests destructive operation, **When** learner reviews the plan, **Then** learner asks "Should we backup first?" and AI adjusts the plan
@@ -80,6 +84,7 @@ This chapter **does NOT teach bash** as a traditional skill. Instead, it teaches
 **Independent Test**: Learner can read package installation commands, understand what dependency is being added, where it's installed, and verify success with appropriate check commands.
 
 **Acceptance Scenarios**:
+
 1. **Given** AI suggests `pip install requests`, **When** learner executes it, **Then** learner can verify with `python -m pip list | grep requests`
 2. **Given** AI suggests `npm install --save express`, **When** learner reviews it, **Then** learner understands this adds to package.json and installs to node_modules
 3. **Given** installation fails, **When** learner works with AI, **Then** learner understands the error message and AI's debugging approach
@@ -95,6 +100,7 @@ This chapter **does NOT teach bash** as a traditional skill. Instead, it teaches
 **Independent Test**: Learner can read process management commands from AI, understand what's running or what will change, and decide if it's safe to execute.
 
 **Acceptance Scenarios**:
+
 1. **Given** AI suggests `ps aux | grep python`, **When** learner reviews it, **Then** learner understands: "show running processes, filter for python"
 2. **Given** a server is running, **When** AI suggests `kill -9 <PID>`, **Then** learner understands this force-terminates that process
 3. **Given** background process blocking work, **When** AI helps diagnose, **Then** learner learns the troubleshooting pattern
@@ -110,6 +116,7 @@ This chapter **does NOT teach bash** as a traditional skill. Instead, it teaches
 **Independent Test**: Learner can read piped commands from AI, trace how output flows through each step, and explain the final result.
 
 **Acceptance Scenarios**:
+
 1. **Given** AI suggests `ls -la | grep ".py" | wc -l`, **When** learner reads it, **Then** learner can trace: "list → filter → count" and predict it shows Python file count
 2. **Given** complex pipeline from AI, **When** learner reviews it with AI, **Then** learner asks "What does each part do?" and AI explains step-by-step
 3. **Given** need to filter/search files, **When** learner works with AI, **Then** learner requests explanation of the pattern before executing
@@ -125,6 +132,7 @@ This chapter **does NOT teach bash** as a traditional skill. Instead, it teaches
 **Independent Test**: Learner encounters command error from AI, reads AI's explanation, understands the root cause, and verifies the fix works.
 
 **Acceptance Scenarios**:
+
 1. **Given** "command not found" error, **When** AI suggests checking PATH or installing, **Then** learner understands why command failed
 2. **Given** "permission denied" error, **When** AI suggests chmod, **Then** learner understands file permissions caused the issue
 3. **Given** any bash error, **When** learner reads AI's explanation, **Then** learner can identify the root cause
@@ -178,48 +186,56 @@ This chapter **does NOT teach bash** as a traditional skill. Instead, it teaches
 ## Chapter Structure: 8 Lessons, 4-5 Hours Total
 
 ### **Lesson 1: Why Bash? Your AI Companion's Native Language** (35 min)
+
 - **Learning Outcome**: Understand why AI tools use bash and why you need to understand what they're doing
 - **Key Concept**: Bash is the AI's "interface" to your computer; you're learning to supervise and collaborate, not command
 - **Practice**: Open terminal, ask AI "where am I?" and "what's in this folder?", understand `pwd` and `ls` by watching AI use them
 - **Assessment**: Can explain why bash matters without memorizing any commands
 
 ### **Lesson 2: The AI Collaboration Pattern** (35 min)
+
 - **Learning Outcome**: Learn the repeatable pattern for working with AI on ANY bash task
 - **Key Concept**: Ask → Understand → Verify → Execute → Learn (5-step framework)
 - **Practice**: Work through 3 guided scenarios with AI, applying the pattern each time
 - **Assessment**: Can apply the pattern to a new bash task with AI guidance
 
 ### **Lesson 3: Understanding File Navigation and Paths** (40 min)
+
 - **Learning Outcome**: Understand file system concepts that underlie all bash work
 - **Key Concept**: Absolute vs. relative paths, home directory, current directory, moving safely
 - **Practice**: Ask AI to navigate to different folders, analyze the commands, predict outcomes
 - **Assessment**: Can read AI-generated navigation commands and draw the resulting file structure
 
 ### **Lesson 4: Understanding File Operations (Copy, Move, Delete, Create)** (45 min)
+
 - **Learning Outcome**: Understand what happens to data when AI suggests file operations
 - **Key Concept**: Safety-first approach; understanding destructive operations; backup patterns
 - **Practice**: Review AI-suggested file operations, identify safety concerns, ask questions
 - **Assessment**: Can recognize risky operations and know when to ask "Should we backup first?"
 
 ### **Lesson 5: Understanding Configuration and Environment** (40 min)
+
 - **Learning Outcome**: Understand how AI configures your system (API keys, variables, settings)
 - **Key Concept**: Temporary vs. permanent configuration; security (no hardcoded secrets); verification
 - **Practice**: Set an API key with AI, verify it's working, understand where it's stored
 - **Assessment**: Can configure a new tool with AI and verify the configuration is correct
 
 ### **Lesson 6: Understanding Packages and Dependencies** (40 min)
+
 - **Learning Outcome**: Understand what AI is doing when it installs packages
 - **Key Concept**: Different package managers (pip, npm, brew, apt); dependency trees; verification
 - **Practice**: Ask AI to install a package, watch it happen, verify success
 - **Assessment**: Can read package installation commands and know what was added to their system
 
 ### **Lesson 7: Understanding Pipes and Complex Commands** (40 min)
+
 - **Learning Outcome**: Understand how AI chains commands to accomplish complex tasks
 - **Key Concept**: Pipes, data flow, filtering, reducing (grep, wc, sort)
 - **Practice**: Read AI-suggested pipes, trace the data, understand each step
 - **Assessment**: Can trace a piped command and predict its output before execution
 
 ### **Lesson 8: Try With AI - Real Project Setup and Troubleshooting** (50 min)
+
 - **Learning Outcome**: Synthesize all lessons; work with actual AI companion on real task
 - **Key Concept**: Complete project setup from scratch; handle real errors; learn from troubleshooting
 - **Practice**: Set up a real Python project with Claude Code or Gemini CLI; troubleshoot real errors
@@ -251,6 +267,7 @@ This chapter **does NOT teach bash** as a traditional skill. Instead, it teaches
 ## In-Scope vs. Out-of-Scope
 
 ### In Scope
+
 - Understanding bash through AI collaboration
 - Reading and verifying AI-suggested commands
 - Safety patterns for file operations
@@ -260,6 +277,7 @@ This chapter **does NOT teach bash** as a traditional skill. Instead, it teaches
 - Working with Claude Code / Gemini CLI as concrete examples
 
 ### Out of Scope
+
 - Writing bash scripts from scratch
 - Advanced bash programming (functions, arrays, conditionals)
 - Bash internals or theory
@@ -281,12 +299,14 @@ This chapter **does NOT teach bash** as a traditional skill. Instead, it teaches
 ## Constraints & Non-Goals
 
 ### Constraints
+
 - Must use actual AI CLI tools (Claude Code, Gemini CLI) for all examples, not hypothetical
 - All code examples must be VERIFIED to work with current tool versions
 - Safety emphasis non-negotiable; never suggest risky commands without explanation
 - Platform-specific guidance required (macOS vs. Linux vs. Windows)
 
 ### Non-Goals
+
 - Teaching bash as a standalone programming language
 - Replacing practical hands-on learning with video/passive content
 - Creating a reference manual (learners can Google for that)
@@ -311,7 +331,7 @@ This chapter MUST apply these domain skills from `.claude/skills/`:
 
 ## Definition of Done
 
-- [ ] All 8 lesson files created and written to `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/`
+- [ ] All 8 lesson files created and written to `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/`
 - [ ] Each lesson follows the shared lesson structure from `.claude/output-styles/lesson.md`
 - [ ] All learning objectives defined using learning-objectives skill
 - [ ] All code examples are real outputs from Claude Code or Gemini CLI
@@ -347,4 +367,3 @@ This chapter MUST apply these domain skills from `.claude/skills/`:
 3. **Validate Phase**: Use validation-auditor agent to validate pedagogy and technical accuracy
 4. **Integration**: Update book index and cross-references
 5. **Publish**: Deploy to Docusaurus
-

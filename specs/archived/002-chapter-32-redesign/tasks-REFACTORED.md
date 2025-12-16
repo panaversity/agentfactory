@@ -13,6 +13,7 @@
 This REFACTORED task checklist reflects the improved pedagogical approach discovered through collaborative planning:
 
 **Key Changes from Original:**
+
 1. ✅ **DELETED Lesson 5 (CI/CD)** - Not core to orchestration capability
 2. ✅ **MOVED Sandboxing to Lesson 4** - Foundation for safe multi-session execution
 3. ✅ **KEPT Lesson 5 as FIRST CLIMAX** - Manual 5-agent coordination (was L4)
@@ -21,6 +22,7 @@ This REFACTORED task checklist reflects the improved pedagogical approach discov
 6. ✅ **RENUMBERED Lesson 8: Capstone** - Final proof (was L9)
 
 **Why This is Better:**
+
 - More practical (uses tools students already know)
 - More AI-native (human + AI co-reasoning, not bash scripting)
 - More honest (shows what works NOW vs future tooling)
@@ -35,14 +37,17 @@ This REFACTORED task checklist reflects the improved pedagogical approach discov
 **Two Climaxes Design (REFINED)**:
 
 ### FIRST CLIMAX (Lesson 5): Manual Parallel Coordination
+
 **What:** Student acts as "team lead" coordinating 5 agent teams manually
 **How:** Run SpecKit Plus workflows across 5 worktrees simultaneously
 **Proof:** 2.5-3x measured speedup through decomposition
 **Belief:** "I can manage agent teams like human teams, specs eliminate coordination chaos"
 
 ### SECOND CLIMAX (Lesson 7): SpecKit-Orchestrated Autonomous Execution
+
 **What:** Student uses SpecKit Plus itself as orchestrator for 5-10 agents
 **How:**
+
 1. `/sp.specify` → generates contract.md
 2. `/sp.plan` → multi-feature planning
 3. `/sp.tasks` → parallelizable tasks (human can see)
@@ -54,6 +59,7 @@ This REFACTORED task checklist reflects the improved pedagogical approach discov
 **Belief:** "I have creative independence - SpecKit coordinates execution, I focus on decomposition"
 
 **KEY INNOVATION**:
+
 - ❌ NO bash scripts with headless API (too complex, not practical at 5-10 scale)
 - ✅ YES SpecKit Plus as orchestrator (uses familiar tools, hooks for coordination)
 - ✅ YES contract.md as integration mechanism (clear contracts enable autonomous work)
@@ -104,6 +110,7 @@ PROOF OF MASTERY (Lesson 8):
 **Description**: Update existing README to reflect refined chapter structure with 8 lessons
 
 **Acceptance Criteria**:
+
 - [ ] README shows 8 lessons (not 9)
 - [ ] Lesson 4: Sandboxing (moved earlier)
 - [ ] Lesson 5: FIRST CLIMAX (clearly labeled)
@@ -116,7 +123,8 @@ PROOF OF MASTERY (Lesson 8):
 - [ ] Time commitment: 10-12 hours (8 lessons)
 
 **Technical References**:
-- Current README: `book-source/docs/05-Spec-Driven-Development/32-real-world-spec-kit-workflows/README.md`
+
+- Current README: `apps/learn-app/docs/05-Spec-Driven-Development/32-real-world-spec-kit-workflows/README.md`
 - Refactored tasks: This document
 - Output style: `.claude/output-styles/chapters.md`
 
@@ -125,12 +133,15 @@ PROOF OF MASTERY (Lesson 8):
 ### Phase 2: Foundation Lessons (L1-3, UNCHANGED)
 
 #### Task 2.1: Lesson 1 — Git Worktrees & Parallel Specifications
+
 **Status**: ✅ COMPLETE (no changes needed)
 
 #### Task 2.2: Lesson 2 — Parallel Planning & Tasks
+
 **Status**: ✅ COMPLETE (no changes needed)
 
 #### Task 2.3: Lesson 3 — Parallel Implementation & Integration
+
 **Status**: ✅ COMPLETE (no changes needed)
 
 ---
@@ -146,6 +157,7 @@ PROOF OF MASTERY (Lesson 8):
 **Description**: Adapt existing sandboxing content (currently in 07-sandboxing-safe-session-isolation.md) to become Lesson 4, positioning it as safety foundation BEFORE scaling attempts
 
 **Acceptance Criteria**:
+
 - [ ] File: `04-sandboxing-multi-session-safety.md` (renamed from 07-)
 - [ ] Duration: 90 minutes
 - [ ] Framing updated: "Before coordinating 5+ agents, you need safe isolation"
@@ -157,6 +169,7 @@ PROOF OF MASTERY (Lesson 8):
 - [ ] Forward reference: "In L5 you'll coordinate 5 agents - sandboxing keeps them isolated"
 
 **Implementation Guidance**:
+
 1. Read existing `07-sandboxing-safe-session-isolation.md`
 2. Keep technical content (sandbox setup, isolation tests)
 3. Update framing: Move from "before Super Orchestrator" to "before scaling to 5+ agents"
@@ -164,6 +177,7 @@ PROOF OF MASTERY (Lesson 8):
 5. Simplify: Remove references to "7-9 agent orchestration" (that's L7)
 
 **Validation**:
+
 - [ ] Sandboxing positioned as prerequisite for L5 scaling
 - [ ] No references to bash orchestrator scripts
 - [ ] Clear bridge to L5 manual coordination
@@ -179,6 +193,7 @@ PROOF OF MASTERY (Lesson 8):
 **Description**: Renumber existing Lesson 4 to Lesson 5, update internal references
 
 **Acceptance Criteria**:
+
 - [ ] File renamed: `04-scaling-decomposition-thinking.md` → `05-scaling-decomposition-thinking.md`
 - [ ] YAML frontmatter updated: `lesson: 5`
 - [ ] Introduction references L4: "Now that you understand sandboxing (L4)..."
@@ -187,6 +202,7 @@ PROOF OF MASTERY (Lesson 8):
 - [ ] All content quality maintained
 
 **Implementation**:
+
 1. Rename file 04→05
 2. Update YAML `lesson: 5`
 3. Update intro to reference L4 sandboxing
@@ -208,6 +224,7 @@ PROOF OF MASTERY (Lesson 8):
 **Learning Objective**: Students write integration contracts (contract.md) that enable 5-10 AI agents to work autonomously with clear boundaries, then use completion hooks for async coordination
 
 **Skills Taught** (CEFR Framework):
+
 - **Integration Contract Design** — B1 (Upper-Intermediate) — Technical — Students can write contracts defining feature boundaries and dependencies
 - **Acceptance Criteria Definition** — B1 (Upper-Intermediate) — Technical — Students can define testable acceptance criteria for autonomous work
 - **Async Coordination with Hooks** — B1 (Upper-Intermediate) — Technical — Students configure hooks for completion notification
@@ -216,22 +233,26 @@ PROOF OF MASTERY (Lesson 8):
 **Content Outline** (90 minutes):
 
 1. **Why Contracts Enable Autonomy** (15 min)
+
    - Problem: At L5, you monitored 5 agents constantly (micromanagement)
    - Solution: Clear contracts = agents work autonomously, human reviews checkpoints
    - Key insight: Specifications define WHAT, contracts define HOW they integrate
 
 2. **Writing Integration Contracts** (25 min)
+
    - contract.md structure
    - Defining "Provides" and "Depends on" for each feature
    - Integration points (APIs, data models, shared state)
    - Code Example 1: Complete contract.md for 3-feature system
 
 3. **Defining Acceptance Criteria** (20 min)
+
    - What makes criteria "autonomous-friendly"
    - Testable, unambiguous, independent
    - Code Example 2: Acceptance criteria table
 
 4. **Configuring Completion Hooks** (20 min)
+
    - Hook basics: `after-tool-use`, `on-session-complete`
    - Writing notification scripts
    - Code Example 3: Hook script writing to orchestrator-status.log
@@ -242,28 +263,33 @@ PROOF OF MASTERY (Lesson 8):
    - Analysis: "How do contracts reduce coordination overhead?"
 
 **Code Examples** (4 total):
+
 1. **contract.md template** for e-commerce (auth, products, cart, payments, orders)
 2. **Acceptance criteria table** with testable conditions
 3. **Completion hook script** (.claude/hooks/notify-orchestrator.sh)
 4. **Orchestrator polling script** (monitors orchestrator-status.log)
 
 **Exercises** (4 total):
+
 1. Write contract.md for provided 3-feature system
 2. Define acceptance criteria for each feature
 3. Configure completion hooks in test worktree
 4. Simulate 3-agent completion, verify hooks work
 
 **Try With AI** (3 prompts):
+
 1. "Review my contract.md. Are integration points clear?"
 2. "How would I configure hooks for 10 parallel sessions?"
 3. "What acceptance criteria enable fully autonomous work?"
 
 **Real-World Examples**:
+
 - How Anthropic uses contracts for distributed teams
 - How Vercel coordinates 50+ engineers with clear boundaries
 - How solo founders use contracts to coordinate AI agents
 
 **Validation**:
+
 - [ ] contract.md template is complete and reusable
 - [ ] Hooks actually work (tested with 3 worktrees)
 - [ ] Students understand: "Contracts enable autonomy, not micromanagement"
@@ -282,6 +308,7 @@ PROOF OF MASTERY (Lesson 8):
 **THE NEW PARADIGM**:
 
 **Phase 1: SpecKit Generates Contract**
+
 ```bash
 Human: "Build e-commerce platform"
 Claude: /sp.specify "E-commerce with auth, products, cart, payments, orders. Include integration contracts."
@@ -292,6 +319,7 @@ Output:
 ```
 
 **Phase 2: SpecKit Plans Multiple Features**
+
 ```bash
 Claude: /sp.plan
 
@@ -307,6 +335,7 @@ Output:
 ```
 
 **Phase 3: SpecKit Coordinates Session Spawning**
+
 ```bash
 Claude: "I've analyzed tasks.md. Ready to spawn 5 autonomous sessions:
 
@@ -328,6 +357,7 @@ I'll monitor orchestrator-status.log. Proceed?"
 ```
 
 **Phase 4: Autonomous Execution**
+
 ```
 Human: "Yes, go"
 [Opens 5 terminals, starts 5 Claude sessions]
@@ -341,6 +371,7 @@ Each Claude session:
 ```
 
 **Phase 5: Completion Notification**
+
 ```
 [Hook triggers]
 Claude: "🎉 All 5 features complete!
@@ -362,6 +393,7 @@ Ready to merge?"
 **Learning Objective**: Students use SpecKit Plus as their orchestrator to coordinate 5-10 autonomous AI agent sessions through contracts, experiencing creative independence
 
 **Skills Taught** (CEFR Framework - B2 level):
+
 - **SpecKit-Based Orchestration** — B2 (Upper-Intermediate/Advanced) — Technical — Student uses SpecKit Plus commands to orchestrate multi-feature workflows
 - **Contract Generation with AI** — B2 — Technical — Student co-creates contract.md via /sp.specify
 - **Multi-Session Coordination** — B2 — Technical — Student spawns and monitors 5-10 sessions via hooks
@@ -370,6 +402,7 @@ Ready to merge?"
 **Content Outline** (90 minutes):
 
 1. **The SpecKit Orchestrator Paradigm** (15 min)
+
    - NOT: Bash scripts with headless API (too complex)
    - YES: SpecKit Plus generates contracts, plans, tasks
    - YES: Hooks notify completion
@@ -377,30 +410,35 @@ Ready to merge?"
    - AI handles: Execution (2-3 hours autonomous)
 
 2. **Phase 1: Generate Contract with SpecKit** (20 min)
+
    - Using /sp.specify to create contract.md
    - Code Example 1: /sp.specify prompt that generates contracts
    - Reviewing generated contract.md
    - Human + AI co-refine contracts
 
 3. **Phase 2: Plan Multi-Feature System** (15 min)
+
    - /sp.plan for 5 features
    - /sp.tasks for parallelizable task breakdown
    - Code Example 2: tasks.md showing 15 parallelizable tasks
    - Human reviews: "Are tasks truly parallelizable?"
 
 4. **Phase 3: Spawn Autonomous Sessions** (20 min)
+
    - Manual approach: Open 5 terminals, cd to worktrees, start Claude
    - tmux approach: Use generated script
    - Code Example 3: tmux session spawning script (generated by Claude)
    - Each session reads contract.md and tasks.md
 
 5. **Phase 4: Autonomous Execution + Hooks** (10 min)
+
    - What happens while human is away
    - Hook writes to orchestrator-status.log
    - Main Claude polls for ALL_COMPLETE
    - Code Example 4: Hook notification flow
 
 6. **Phase 5: Strategic Review** (5 min)
+
    - Review completion summary
    - Validate against contracts
    - Merge strategy
@@ -412,6 +450,7 @@ Ready to merge?"
    - "What's the path from 5 to 10 to 50 agents?"
 
 **Code Examples** (5 total):
+
 1. `/sp.specify` prompt that generates contract.md
 2. Generated tasks.md showing 15 parallelizable tasks
 3. tmux session spawning script (generated by SpecKit)
@@ -419,22 +458,26 @@ Ready to merge?"
 5. Integration validation checklist
 
 **Exercises** (4 total):
+
 1. Use /sp.specify to generate contract for provided project
 2. Review tasks.md - identify which are parallelizable
 3. Configure hooks and test with 3 sessions
 4. Run full workflow: specify → plan → tasks → spawn → review
 
 **Try With AI** (3 prompts):
+
 1. "Help me refine this contract.md generated by /sp.specify"
 2. "Review these tasks.md - which can run in parallel?"
 3. "How would I scale this to 10 features? What would change?"
 
 **Real-World Context**:
+
 - Technical AI Product Manager workflow (this is the pattern)
 - How solo founders ship 10-feature MVPs in weeks
 - How Anthropic coordinates internal feature development
 
 **KEY DISTINCTIONS** from old L8:
+
 - ❌ NO bash scripts with `claude -p` (too complex)
 - ❌ NO JSON parsing with jq (unnecessary)
 - ❌ NO session ID management (not needed)
@@ -444,11 +487,13 @@ Ready to merge?"
 - ✅ YES parallel interactive sessions (students already know)
 
 **Honest Scoping**:
+
 - Students WILL: Use SpecKit Plus to generate contracts and coordinate 5-10 sessions
 - Students WON'T: Build production orchestrator (that's infrastructure work)
 - Students WILL understand: Path to 50+ requires tooling, but pattern is the same
 
 **Validation**:
+
 - [ ] /sp.specify generates usable contract.md
 - [ ] tasks.md shows clear parallelizable tasks
 - [ ] Hooks notify completion successfully
@@ -470,6 +515,7 @@ Ready to merge?"
 **Description**: Renumber existing capstone lesson, update to reference new lesson structure
 
 **Acceptance Criteria**:
+
 - [ ] File renamed: `09-capstone-project-measurement.md` → `08-capstone-project-measurement.md`
 - [ ] YAML frontmatter: `lesson: 8`
 - [ ] Student choice updated:
@@ -481,6 +527,7 @@ Ready to merge?"
 - [ ] Portfolio narrative emphasizes decomposition + contracts
 
 **Implementation**:
+
 1. Rename file 09→08
 2. Update YAML
 3. Find/replace references to "L8" with "L7" (Super Orchestrator)
@@ -492,19 +539,23 @@ Ready to merge?"
 ## File Operations Summary
 
 **FILES TO DELETE**:
+
 - `05-ci-cd-validation-hooks.md` (not core to orchestration)
 
 **FILES TO RENAME**:
+
 - `07-sandboxing-safe-session-isolation.md` → `04-sandboxing-multi-session-safety.md`
 - `04-scaling-decomposition-thinking.md` → `05-scaling-decomposition-thinking.md`
 - `08-building-the-super-orchestrator.md` → DELETE (redesigned as L7)
 - `09-capstone-project-measurement.md` → `08-capstone-project-measurement.md`
 
 **FILES TO CREATE**:
+
 - `06-contract-based-autonomous-coordination.md` (NEW)
 - `07-speckit-orchestrated-execution.md` (REDESIGNED)
 
 **FILES UNCHANGED**:
+
 - `README.md` (update content, keep name)
 - `01-git-worktrees-parallel-specifications.md` ✅
 - `02-parallel-planning-and-tasks.md` ✅
@@ -521,6 +572,7 @@ Ready to merge?"
 **Graduate Identity**: "I am a creative orchestrator using SpecKit Plus to coordinate autonomous agents"
 
 **Student Outcomes**:
+
 - ✅ Can coordinate 5 agents manually (L5)
 - ✅ Can write contracts enabling autonomy (L6)
 - ✅ Can use SpecKit Plus as orchestrator for 5-10 agents (L7)
@@ -542,6 +594,7 @@ Ready to merge?"
 7. Final validation against refactored structure
 
 **This refactored approach is:**
+
 - More practical (uses familiar tools)
 - More AI-native (human + AI co-reasoning)
 - More honest (shows what works NOW)

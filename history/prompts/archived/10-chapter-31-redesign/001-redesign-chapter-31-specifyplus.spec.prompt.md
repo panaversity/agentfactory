@@ -23,7 +23,7 @@ tests: []
 
 ## Prompt Text
 
-Redesign Chapter 31 @book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on to eliminate hallucinated commands, teach actual SpecifyPlus workflow, center on AIDD paradigm with 7 hands-on lessons plus /sp.implement capstone
+Redesign Chapter 31 @apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on to eliminate hallucinated commands, teach actual SpecifyPlus workflow, center on AIDD paradigm with 7 hands-on lessons plus /sp.implement capstone
 
 First fetch SpecifyPlus or SpecKit Plus documentation using context7 mcp server tools and carefully understand the opinionated SDD framework/toolkit. Then study current chapter to identify all hallucinated work. Finally rethink the user stories and specification.
 

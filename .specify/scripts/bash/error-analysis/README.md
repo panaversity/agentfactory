@@ -13,11 +13,13 @@
 **Purpose**: Find all artifacts for a chapter (PHR, spec, plan, tasks, lessons, validation report)
 
 **Usage**:
+
 ```bash
 ./artifact-locator.sh 14
 ```
 
 **Output** (JSON):
+
 ```json
 {
   "chapter": 14,
@@ -27,8 +29,8 @@
     "plan": "specs/part-4-chapter-14/plan.md",
     "tasks": "specs/part-4-chapter-14/tasks.md",
     "lessons": [
-      "book-source/docs/04-Part-4/14-data-types/01-intro.md",
-      "book-source/docs/04-Part-4/14-data-types/02-numeric.md"
+      "apps/learn-app/docs/04-Part-4/14-data-types/01-intro.md",
+      "apps/learn-app/docs/04-Part-4/14-data-types/02-numeric.md"
     ],
     "validation_report": "VALIDATION_REPORT_CHAPTER_14.md"
   },
@@ -43,11 +45,13 @@
 **Purpose**: Quick quantitative assessment for 5-minute triage
 
 **Usage**:
+
 ```bash
 ./triage-metrics.sh 14
 ```
 
 **Output** (JSON):
+
 ```json
 {
   "chapter": 14,
@@ -74,6 +78,7 @@
 ```
 
 **What it detects**:
+
 - CoLearning element counts (💬🎓🚀✨)
 - Lesson closure violations (sections after "Try With AI")
 - Potential forward references (common patterns)
@@ -81,6 +86,7 @@
 - Estimated concepts per lesson
 
 **Suggested depth logic**:
+
 - `"full"` if: Forward refs > 2 OR closure violations > 0 OR colearning < 60% expected
 - `"quick"` otherwise
 
@@ -91,11 +97,13 @@
 **Purpose**: Detailed colearning element breakdown per lesson
 
 **Usage**:
+
 ```bash
 ./colearning-metrics.sh 14
 ```
 
 **Output** (JSON):
+
 ```json
 {
   "chapter": 14,
@@ -129,6 +137,7 @@
 ```
 
 **What it provides**:
+
 - Per-lesson element counts
 - Prompt locations (line numbers)
 - First 3 prompt snippets (for AI to read and judge quality)
@@ -141,11 +150,13 @@
 **Purpose**: Flag potential pedagogical ordering violations
 
 **Usage**:
+
 ```bash
 ./detect-forward-references.sh 14
 ```
 
 **Output** (JSON):
+
 ```json
 {
   "chapter": 14,
@@ -165,12 +176,14 @@
 ```
 
 **What it detects** (heuristic patterns):
+
 - String methods: `.upper()`, `.lower()`, `.strip()`, `.split()`, etc.
 - Built-in functions: `isinstance()`, `len()`, `type()`, `range()`
 - Advanced syntax: `def`, `class`, `lambda`, `import`
 - Type constructors: `list()`, `dict()`, `set()`, `tuple()`
 
 **Severity flags** (heuristic):
+
 - `CRITICAL`: `def`, `class`, `isinstance()` (completely blocks beginner)
 - `MAJOR`: `len()`, `type()` (confusing but might infer from context)
 
@@ -190,6 +203,7 @@
 4. **AI Intelligence**: Read flagged content, interpret context, judge severity, recommend fixes
 
 **NOT by AI Agent**:
+
 - Direct violation scoring (scripts flag, AI judges)
 - Automated pass/fail (AI reads and decides)
 - Template fill-in (AI writes narrative analysis)
@@ -199,11 +213,13 @@
 ## Design Philosophy
 
 ### Scripts Provide:
+
 ✅ **Quantitative data** (counts, line numbers, patterns)
 ✅ **Heuristic flags** (potential issues for AI to investigate)
 ✅ **Structured JSON** (easy for AI to parse)
 
 ### AI Provides:
+
 ✅ **Qualitative judgment** (is this actually a problem?)
 ✅ **Context interpretation** (read surrounding text, understand intent)
 ✅ **Severity assessment** (critical vs. minor based on pedagogy)
@@ -213,18 +229,21 @@
 
 **Script says**: "Found `.upper()` at line 234"
 **AI reads context**:
+
 ```python
 # Line 230-240
 name = "alice"
 print(name.upper())  # No introduction of methods
 ```
+
 **AI judges**: "CRITICAL - beginner doesn't know what methods are"
 
 vs.
 
 **Script says**: "Found `.upper()` at line 234"
 **AI reads context**:
-```markdown
+
+````markdown
 ### String Methods (New Concept)
 
 Python strings have built-in methods (actions they can do).
@@ -234,7 +253,9 @@ One useful method is `.upper()` which converts to uppercase:
 name = "alice"
 print(name.upper())  # Prints: ALICE
 ```
-```
+````
+
+````
 **AI judges**: "ACCEPTABLE - concept introduced inline before use"
 
 ---
@@ -248,13 +269,15 @@ interface ScriptOutput {
   chapter: number;
   [key: string]: any;  // Script-specific fields
 }
-```
+````
 
 ### Common Fields:
+
 - `chapter`: Chapter number (integer)
 - `error`: Error message if script fails (string, optional)
 
 ### Script-Specific Fields:
+
 See individual script documentation above.
 
 ---

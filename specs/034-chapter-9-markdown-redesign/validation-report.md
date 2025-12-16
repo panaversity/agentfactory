@@ -22,11 +22,13 @@ All 5 lessons successfully created and validated against constitutional requirem
 **Requirement**: Each lesson MUST end with "## Try With AI" as ONLY final section.
 
 **Validation Method**:
+
 ```bash
 grep "^## Try With AI" 01-*.md 02-*.md 03-*.md 04-*.md 05-*.md
 ```
 
 **Results**:
+
 - Lesson 1: ✅ Ends with "## Try With AI"
 - Lesson 2: ✅ Ends with "## Try With AI"
 - Lesson 3: ✅ Ends with "## Try With AI"
@@ -36,6 +38,7 @@ grep "^## Try With AI" 01-*.md 02-*.md 03-*.md 04-*.md 05-*.md
 **Status**: ✅ PASS (100% compliance)
 
 **Forbidden sections NOT present**:
+
 - ❌ No "What's Next" sections after "Try With AI"
 - ❌ No "Key Takeaways" sections after "Try With AI"
 - ❌ No "Summary" sections after "Try With AI"
@@ -48,6 +51,7 @@ grep "^## Try With AI" 01-*.md 02-*.md 03-*.md 04-*.md 05-*.md
 **Requirement**: ZERO programming code examples (Python, Bash, JavaScript). ALL examples must be specification artifacts.
 
 **Validation Method**:
+
 ```bash
 grep -rE '(def |function |import |const |#!/bin/bash)' 0*.md
 ```
@@ -55,6 +59,7 @@ grep -rE '(def |function |import |const |#!/bin/bash)' 0*.md
 **Results**:
 
 **Lesson 1**: ⚠️ Contains ONE Python example
+
 - Context: Demonstrates specification vs implementation distinction (pedagogically necessary)
 - Example shows: "Specification (Markdown - WHAT)" vs "Implementation (Python Code - HOW)"
 - Purpose: Teaching contrast between specification language (keep) and implementation language (avoid)
@@ -77,11 +82,13 @@ grep -rE '(def |function |import |const |#!/bin/bash)' 0*.md
 **Requirement**: NO internal scaffolding labels ("Stage 1/2/3/4", "Three Roles Framework") in student-facing text.
 
 **Validation Method**:
+
 ```bash
 grep -i "Stage [0-9]|Three Roles Framework|Three Roles in Action" 0*.md
 ```
 
 **Results**:
+
 - Zero matches for "Stage [0-9]" in student text (stage info in frontmatter only)
 - Zero matches for "Three Roles Framework" as section header
 - Zero matches for "Three Roles in Action" as section header
@@ -98,13 +105,13 @@ grep -i "Stage [0-9]|Three Roles Framework|Three Roles in Action" 0*.md
 
 **Frontmatter Documentation**:
 
-| Lesson | Documented Concepts | A2 Limit | Status |
-|--------|---------------------|----------|--------|
-| Lesson 1 | 6 | ≤7 | ✅ PASS |
-| Lesson 2 | 7 | ≤7 | ✅ PASS |
-| Lesson 3 | 7 | ≤7 | ✅ PASS |
-| Lesson 4 | 5 | ≤7 | ✅ PASS |
-| Lesson 5 | 8 (capstone) | ≤8 (exception) | ✅ PASS |
+| Lesson   | Documented Concepts | A2 Limit       | Status  |
+| -------- | ------------------- | -------------- | ------- |
+| Lesson 1 | 6                   | ≤7             | ✅ PASS |
+| Lesson 2 | 7                   | ≤7             | ✅ PASS |
+| Lesson 3 | 7                   | ≤7             | ✅ PASS |
+| Lesson 4 | 5                   | ≤7             | ✅ PASS |
+| Lesson 5 | 8 (capstone)        | ≤8 (exception) | ✅ PASS |
 
 **Average**: 6.6 concepts/lesson (within A2 limits)
 
@@ -117,11 +124,13 @@ grep -i "Stage [0-9]|Three Roles Framework|Three Roles in Action" 0*.md
 ### ✅ Stage 1: Manual Foundation (Lesson 1)
 
 **Requirements**:
+
 - Students write markdown manually (no AI assistance)
 - Manual validation exercises
 - NO AI for content generation
 
 **Evidence**:
+
 - Lesson includes: "Open your text editor, create file, write markdown manually"
 - Practice exercise: Create specification by hand
 - "Try With AI" section: VALIDATION only (student created markdown, AI checks syntax)
@@ -133,18 +142,21 @@ grep -i "Stage [0-9]|Three Roles Framework|Three Roles in Action" 0*.md
 ### ✅ Stage 2: AI Collaboration (Lessons 2-3)
 
 **Requirements**:
+
 - Demonstrate Three Roles through NARRATIVE (not labels)
 - AI as Teacher: Suggests pattern student didn't know
 - AI as Student: Adapts to student's feedback
 - AI as Co-Worker: Convergence loop
 
 **Evidence - Lesson 2**:
+
 - Section: "Working with AI: From Structure to Clarity"
 - AI suggests list structure → Student refines with MVP constraints → Convergence
 - Phrases: "What you learned from AI:", "What AI learned from you:", "Together, you converged on..."
 - THREE ROLES demonstrated without labels
 
 **Evidence - Lesson 3**:
+
 - Section: "Iterating with AI: From Vague to Precise"
 - AI suggests output format → Student refines with domain knowledge → Convergence on edge cases
 - Explicit: "AI as Teacher" / "AI as Student" / "AI as Co-Worker" roles shown through narrative
@@ -156,11 +168,13 @@ grep -i "Stage [0-9]|Three Roles Framework|Three Roles in Action" 0*.md
 ### ✅ Stage 3: Intelligence Design (Lesson 4)
 
 **Requirements**:
+
 - Students create reusable template
 - Template uses Persona + Questions + Principles pattern
 - Template applied to novel feature without lesson reference
 
 **Evidence**:
+
 - "Feature Specification Template" created with:
   - **Persona**: "Think like requirements engineer ensuring unambiguous specification"
   - **Analysis Questions**: 5 questions forcing feature reasoning
@@ -175,12 +189,14 @@ grep -i "Stage [0-9]|Three Roles Framework|Three Roles in Action" 0*.md
 ### ✅ Stage 4: Spec-Driven Integration (Lesson 5)
 
 **Requirements**:
+
 - Specification written FIRST (before implementation)
 - Capstone composes ALL skills (headings, lists, code blocks, links)
 - AI provides feedback on specification clarity
 - Exercise states: "Do NOT ask AI to implement code"
 
 **Evidence**:
+
 - Section: "Specification-First Approach: The Foundation of SDD-RI"
 - Capstone structure uses:
   - Headings (Lesson 1): System organization
@@ -203,21 +219,29 @@ grep -i "Stage [0-9]|Three Roles Framework|Three Roles in Action" 0*.md
 **Spot Check Evidence**:
 
 **Lesson 3**:
+
 ```markdown
 **Expected Output:**
 ```
+
 [output text]
+
 ```
 
 **API Request:**
 ```
+
 [request format]
+
 ```
 
 **Error Message:**
 ```
+
 [error text]
+
 ```
+
 ```
 
 **All code blocks labeled** with context (Expected Output, API Request, Error Message, etc.)
@@ -231,6 +255,7 @@ grep -i "Stage [0-9]|Three Roles Framework|Three Roles in Action" 0*.md
 **Requirement**: Chapter explicitly positions markdown as Intent Layer of SDD-RI methodology.
 
 **Evidence**:
+
 - Lesson 1: "Markdown's Role: Intent Layer of SDD-RI" section
 - Lesson 5: "Specification-First Approach: The Foundation of SDD-RI" section
 - Explains 3 layers: Intent (markdown), Intelligence (skills), Implementation (code)
@@ -286,12 +311,12 @@ grep -i "Stage [0-9]|Three Roles Framework|Three Roles in Action" 0*.md
 
 ### Created Files
 
-1. `/book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/README.md` (updated)
-2. `/book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/01-markdown-as-specification-language.md` (new)
-3. `/book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/02-lists-for-requirements.md` (new)
-4. `/book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/03-code-blocks-for-specifications.md` (new)
-5. `/book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/04-links-images-and-templates.md` (new)
-6. `/book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/05-complete-system-specification.md` (new)
+1. `/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/README.md` (updated)
+2. `/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/01-markdown-as-specification-language.md` (new)
+3. `/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/02-lists-for-requirements.md` (new)
+4. `/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/03-code-blocks-for-specifications.md` (new)
+5. `/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/04-links-images-and-templates.md` (new)
+6. `/apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/05-complete-system-specification.md` (new)
 7. `/specs/034-chapter-9-markdown-redesign/validation-checklist.md` (new)
 8. `/specs/034-chapter-9-markdown-redesign/validation-report.md` (this file)
 
@@ -337,12 +362,12 @@ All original lessons backed up to: `/specs/034-chapter-9-markdown-redesign/backu
 
 ### Lesson Statistics
 
-| Metric | L1 | L2 | L3 | L4 | L5 | Chapter Avg |
-|--------|----|----|----|----|----|----|
-| Duration (min) | 45 | 50 | 55 | 50 | 75 | 55 |
-| Concepts | 6 | 7 | 7 | 5 | 8 | 6.6 |
-| Stage | 1 | 2 | 2 | 3 | 4 | Progressive |
-| Proficiency | A2 | A2 | A2 | A2 | A2 | Consistent |
+| Metric         | L1  | L2  | L3  | L4  | L5  | Chapter Avg |
+| -------------- | --- | --- | --- | --- | --- | ----------- |
+| Duration (min) | 45  | 50  | 55  | 50  | 75  | 55          |
+| Concepts       | 6   | 7   | 7   | 5   | 8   | 6.6         |
+| Stage          | 1   | 2   | 2   | 3   | 4   | Progressive |
+| Proficiency    | A2  | A2  | A2  | A2  | A2  | Consistent  |
 
 ---
 
@@ -375,6 +400,7 @@ All original lessons backed up to: `/specs/034-chapter-9-markdown-redesign/backu
 ### ✅ Ready for Publication
 
 Chapter 9 meets all constitutional requirements:
+
 - Specification-first pedagogy demonstrated
 - Zero programming code (except pedagogically necessary example)
 - 4-stage progression enforced
@@ -385,11 +411,13 @@ Chapter 9 meets all constitutional requirements:
 ### Next Steps
 
 1. ✅ **Phase 9: Polish**
+
    - Update chapter README with final lesson titles
    - Document anti-convergence variation
    - Create learning pathway map
 
 2. **Optional: Peer Review**
+
    - Have another educator review capstone exercise
    - Test template reusability with new scenarios
 
@@ -403,22 +431,26 @@ Chapter 9 meets all constitutional requirements:
 ## Appendix: Grep Validation Commands
 
 ### Zero Code Examples
+
 ```bash
-cd book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/
+cd apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/
 grep -rE '(def |function |import |const |#!/bin/bash)' 0*.md
 ```
 
 ### Lesson Ending Protocol
+
 ```bash
 grep "^## Try With AI" 01-*.md 02-*.md 03-*.md 04-*.md 05-*.md
 ```
 
 ### Internal Label Prohibition
+
 ```bash
 grep -i "Stage [0-9]|Three Roles Framework|Three Roles in Action" 0*.md
 ```
 
 ### Concept Count Validation
+
 ```bash
 grep "^concepts:" 0*.md
 ```

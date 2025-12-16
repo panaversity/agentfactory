@@ -12,7 +12,7 @@
 
 - **[P]**: Can run in parallel (different files, independent work)
 - **[Lesson]**: Which lesson this task belongs to (L1=Lesson 1, L2=Lesson 2, etc.)
-- File paths follow book structure: `book-source/docs/04-Part-4-Python-Fundamentals/22-io-file-handling/`
+- File paths follow book structure: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/22-io-file-handling/`
 
 ---
 
@@ -20,7 +20,7 @@
 
 **Purpose**: Create directory structure and initialize chapter files
 
-- [ ] T001 Create chapter directory at `book-source/docs/04-Part-4-Python-Fundamentals/22-io-file-handling/`
+- [ ] T001 Create chapter directory at `apps/learn-app/docs/04-Part-4-Python-Fundamentals/22-io-file-handling/`
 - [ ] T002 Create README.md with chapter overview, learning objectives, prerequisites, tools needed
 - [ ] T003 [P] Create placeholder files for 5 lessons: `01-lesson-1.md` through `05-lesson-5.md`
 - [ ] T004 [P] Create `_category_.json` with chapter metadata (position: 22, label: "Chapter 22: IO and File Handling")
@@ -320,6 +320,7 @@ Task T037: "Write ✨ Teaching Tip"
 ### MVP First (Minimum Viable Product)
 
 **MVP = Lesson 1 only** (smallest publishable unit):
+
 1. Phase 1: Setup → 4 tasks
 2. Phase 2: Foundational → 3 tasks
 3. Phase 3: Lesson 1 complete → 16 tasks
@@ -340,7 +341,7 @@ Then incrementally add Lessons 2, 3, 4, 5.
 - CoLearning elements MUST be distributed throughout lesson (not just at end)
 - Maximum 7 new concepts per lesson (A2-B1 cognitive load limit)
 - Lesson 5 introduces 0 new concepts (integration only)
-- All tasks reference exact file paths in `book-source/docs/04-Part-4-Python-Fundamentals/22-io-file-handling/`
+- All tasks reference exact file paths in `apps/learn-app/docs/04-Part-4-Python-Fundamentals/22-io-file-handling/`
 - [P] tasks can run in parallel (different content sections, no dependencies)
 - Commit after each lesson completes for checkpoint validation
 

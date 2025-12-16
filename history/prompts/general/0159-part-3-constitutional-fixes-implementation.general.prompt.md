@@ -16,10 +16,10 @@ links:
   adr: none
   pr: pending
 files:
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/02-anatomy-effective-prompts.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/02-anatomy-effective-prompts.md
     status: modified
     change: Removed forbidden Summary section, added Try With AI section
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/03-iterative-prompt-refinement.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/03-iterative-prompt-refinement.md
     status: modified
     change: Complete rewrite removing meta-commentary
   - path: .claude/skills/prompt-template-designer/SKILL.md
@@ -43,6 +43,7 @@ Following Part 3 audit (PHR 0158) identifying 79.4% quality with P0/P1 blockers,
 Successfully implemented all P0 and P1 fixes, improving Part 3 from **79.4% → 83.1%** (approaching EXCELLENT threshold).
 
 **Fixes implemented**:
+
 1. ✅ P0: Rewrote Ch10/L3 removing meta-commentary (714→685 lines)
 2. ✅ P1: Removed forbidden Summary section from Ch10/L2
 3. ✅ P1: Created prompt-template-designer skill (24KB, P+Q+P pattern)

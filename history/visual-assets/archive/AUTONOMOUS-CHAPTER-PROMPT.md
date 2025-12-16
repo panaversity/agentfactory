@@ -12,32 +12,35 @@ Execute the complete visual assets workflow for Chapter 2 autonomously from plan
 
 **Your autonomous tasks:**
 
-1. **Read all Chapter 2 lesson files** (`book-source/docs/01-Introducing-AI-Driven-Development/02-*/`)
+1. **Read all Chapter 2 lesson files** (`apps/learn-app/docs/01-Introducing-AI-Driven-Development/02-*/`)
 
 2. **Plan visual assets** (use `visual-asset-workflow` skill):
+
    - Audit all 6 lessons for visual opportunities
    - Apply pedagogical value assessment (PASS/CONDITIONAL/REJECT)
    - Check redundancy across lessons (skip duplicates)
    - Apply Chapter 1 learnings:
-     * Bar charts: 3 bars maximum
-     * Compound words: Use hyphenated versions ("Auto-Complete")
-     * Indicators: Arrow-only (no text labels)
-     * Labels: Minimal essential text only
+     - Bar charts: 3 bars maximum
+     - Compound words: Use hyphenated versions ("Auto-Complete")
+     - Indicators: Arrow-only (no text labels)
+     - Labels: Minimal essential text only
    - Generate image prompts and embed in lesson markdown
    - Create audit report in `history/visual-assets/chapter-2-audit-report.md`
 
 3. **Generate all images** (use `image-generator` skill):
+
    - Open Gemini.google.com (I'll log in once)
    - For each visual asset:
-     * Start fresh session (click "New chat")
-     * Generate image
-     * Verify immediately with screenshot (check spelling, layout, colors)
-     * If issues: Apply decision tree (hyphenate → fresh session → simplify)
-     * Download when 99% quality achieved
-     * Update lesson markdown (replace HTML comment with image)
+     - Start fresh session (click "New chat")
+     - Generate image
+     - Verify immediately with screenshot (check spelling, layout, colors)
+     - If issues: Apply decision tree (hyphenate → fresh session → simplify)
+     - Download when 99% quality achieved
+     - Update lesson markdown (replace HTML comment with image)
    - Create completion report in `history/visual-assets/chapter-2-visual-assets-report.md`
 
 4. **Final quality check**:
+
    - Read all updated lesson files
    - Verify all images render correctly
    - Check for spelling errors in images
@@ -46,19 +49,21 @@ Execute the complete visual assets workflow for Chapter 2 autonomously from plan
 
 5. **Present for review**:
    - Show me summary of:
-     * Total visuals created (by lesson)
-     * Any issues encountered and how resolved
-     * Quality assessment (first-attempt success rate)
-     * Files modified
+     - Total visuals created (by lesson)
+     - Any issues encountered and how resolved
+     - Quality assessment (first-attempt success rate)
+     - Files modified
    - Ask: "Ready to commit and push? [Y/n]"
 
 **Quality standards:**
+
 - 99% target (only accept perfect spelling, clean layout)
 - Apply fresh session technique if same error persists 2+ times
 - Simplify complexity if 3+ iterations fail with same approach
 - Document all learnings in completion report
 
 **What I'll do:**
+
 - Log into Gemini once at start
 - Final review before git push
 - That's it - you handle everything else autonomously
@@ -79,6 +84,7 @@ Execute the complete visual assets workflow for Chapter 2 autonomously from plan
 ## Customization for Other Chapters
 
 To use for different chapters, change:
+
 - "CHAPTER 2" → "CHAPTER X"
 - Path: `02-*` → `0X-*`
 - Report filenames: `chapter-2-*` → `chapter-X-*`
@@ -92,6 +98,7 @@ To use for different chapters, change:
 ## What Makes This Autonomous
 
 The prompt gives Claude Code:
+
 - ✅ Clear end-to-end workflow
 - ✅ Quality gates with decision authority
 - ✅ Chapter 1 learnings encoded
@@ -100,6 +107,7 @@ The prompt gives Claude Code:
 - ✅ Documentation requirements
 
 You only intervene at:
+
 1. Gemini login (one-time)
 2. Final review and git approval
 

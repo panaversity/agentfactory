@@ -9,7 +9,14 @@ feature: 029-chapter8-ai-native-ides
 branch: 029-chapter8-ai-native-ides
 user: panaversity
 command: /sp.implement
-labels: [implementation, phase1-complete, lesson1-complete, structure-correction, observational-learning]
+labels:
+  [
+    implementation,
+    phase1-complete,
+    lesson1-complete,
+    structure-correction,
+    observational-learning,
+  ]
 links:
   spec: specs/029-chapter8-ai-native-ides/spec.md
   plan: specs/029-chapter8-ai-native-ides/plan.md
@@ -18,16 +25,16 @@ links:
   adr: null
   pr: null
 files:
-  - path: book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/README.md
+  - path: apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/README.md
     status: created
     description: Chapter overview with 8-lesson structure
-  - path: book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/01-ai-native-concepts.md
+  - path: apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/01-ai-native-concepts.md
     status: created
     description: Lesson 1 complete content (1548 lines, A2 proficiency)
-  - path: book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/templates/observational-comparison-template.md
+  - path: apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/templates/observational-comparison-template.md
     status: created
     description: Template for observational IDE comparisons
-  - path: book-source/docs/02-AI-Tool-Landscape/08-ai-native-ides/templates/ide-comparison-reflection.md
+  - path: apps/learn-app/docs/02-AI-Tool-Landscape/08-ai-native-ides/templates/ide-comparison-reflection.md
     status: created
     description: Reflection template for capstone (1500-2000 words)
   - path: specs/029-chapter8-ai-native-ides/tasks.md
@@ -41,7 +48,7 @@ tests: []
 
 ## Prompt
 
-Use MCP server context7 for updated information and also use additional @context\16_chapter8__ides\antigravity.md antigravity.md file for more context to ground antigravity ide lessons.
+Use MCP server context7 for updated information and also use additional @context\16_chapter8\_\_ides\antigravity.md antigravity.md file for more context to ground antigravity ide lessons.
 
 ## Response snapshot
 
@@ -50,6 +57,7 @@ Use MCP server context7 for updated information and also use additional @context
 **Key Achievements**:
 
 1. **Structure Correction** (Critical Discovery):
+
    - **Initial Error**: Created nested `lessons/01-ai-native-concepts/` subdirectory structure
    - **User Correction**: Pointed out book uses flat structure (numbered files directly in chapter directory)
    - **Fixed Structure**: Adopted correct pattern from Chapter 5 (05-claude-code-features-and-workflows/)
@@ -57,6 +65,7 @@ Use MCP server context7 for updated information and also use additional @context
    - **Decision Source**: Examined existing Chapter 5 structure, confirmed flat file pattern
 
 2. **Phase 1: Setup & Infrastructure** (Tasks T001-T006):
+
    - ✅ Chapter directory created
    - ✅ Subdirectories: assets/, exercises/, templates/ (removed incorrect lessons/)
    - ✅ Chapter README.md with 8-lesson overview
@@ -65,6 +74,7 @@ Use MCP server context7 for updated information and also use additional @context
    - ✅ Assets subdirectories: screenshots/, diagrams/, videos/, code-samples/, research/
 
 3. **Lesson 1: AI-Native Concepts** (Tasks T021-T026):
+
    - ✅ Complete content (1,548 lines) in single file: `01-ai-native-concepts.md`
    - ✅ Sections included:
      - What Makes an IDE AI-Native? (architectural design vs plugins)
@@ -75,6 +85,7 @@ Use MCP server context7 for updated information and also use additional @context
      - Practice reflection questions
 
 4. **Constitutional Compliance Validation**:
+
    - ✅ NO meta-commentary ("What to notice", "AI teaches you")
    - ✅ NO Three Roles labels (Layer 1 conceptual, before collaboration)
    - ✅ proficiency_level: A2
@@ -83,6 +94,7 @@ Use MCP server context7 for updated information and also use additional @context
    - ✅ Observational learning approach emphasized
 
 5. **Parallel Subagent Strategy** (Lessons 2-8):
+
    - Launched 8 content-implementer subagents for parallel lesson creation
    - Subagents provided summaries, not deliverable file content
    - Realized scope too large for single session (191 tasks, 80+ files)
@@ -96,11 +108,13 @@ Use MCP server context7 for updated information and also use additional @context
    - Remaining: Lessons 2-8, visual assets, polish
 
 **Structure Learning**:
+
 - Book structure: Flat numbered files per chapter (`01-name.md`, `02-name.md`)
 - NOT nested subdirectories (`lessons/01-name/README.md`)
 - Confirmed by examining Chapter 5: `05-claude-code-features-and-workflows/01-origin-story.md`, etc.
 
 **Recommended Next Steps**:
+
 1. Complete Lesson 2 (Installing Zed) with Context7 /zed-industries/zed research
 2. Complete Lesson 3 (Zed AI Features) with Three Roles INVISIBLE
 3. Continue Lessons 4-8 sequentially

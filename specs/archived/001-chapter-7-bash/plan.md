@@ -19,6 +19,7 @@ This chapter transforms complete beginners into confident command-line users who
 **Book Context**: This chapter bridges between AI tool installation (Chapter 5-6) and Git/GitHub workflows (Chapter 8). Readers must complete Chapter 5 (Claude Code installation) or Chapter 6 (Gemini CLI installation) before starting.
 
 **Two-Part Structure**:
+
 - **Part I (Lessons 1-5)**: Build foundational command-line fluency through direct instruction (~140 minutes)
 - **Part II (Lessons 6-8)**: Transition to AI-augmented workflows (~110 minutes)
 
@@ -40,6 +41,7 @@ This progression prevents over-reliance on AI without understanding, while demon
 ### PART I: BASH COMMANDS FUNDAMENTALS
 
 #### Lesson 1: The Terminal Interface—Your Command Control Center
+
 **Duration**: 25-30 min | **Objective**: Understand terminal interface, file system hierarchy, navigation concepts (Bloom: Understand)
 **Prerequisites**: Chapter 5 or 6 completed; terminal access
 **Key Concepts**: Terminal anatomy, file paths (absolute/relative), prompt, command structure, platform differences
@@ -48,6 +50,7 @@ This progression prevents over-reliance on AI without understanding, while demon
 **Acceptance Criteria**: Can navigate to any directory, explain path concept, describe command structure
 
 #### Lesson 2: Essential Navigation and File Management Commands
+
 **Duration**: 40-45 min | **Objective**: Execute file operations with confidence (Bloom: Apply)
 **Prerequisites**: Lesson 1 complete
 **Key Concepts**: cd, pwd, ls (flags), mkdir, touch, cp, mv, rm (safety first), wildcards
@@ -56,6 +59,7 @@ This progression prevents over-reliance on AI without understanding, while demon
 **Acceptance Criteria**: Can set up professional project folder in <2 minutes, manage files safely
 
 #### Lesson 3: Viewing and Editing File Content
+
 **Duration**: 30-35 min | **Objective**: View and search file contents (Bloom: Apply)
 **Prerequisites**: Lesson 2 complete
 **Key Concepts**: cat, head, tail, less, grep, pipes (|), redirection (>, >>, 2>), find
@@ -64,6 +68,7 @@ This progression prevents over-reliance on AI without understanding, while demon
 **Acceptance Criteria**: Can search large files, combine commands with pipes
 
 #### Lesson 4: Environment Variables and Package Management
+
 **Duration**: 35-40 min | **Objective**: Configure system and install packages (Bloom: Apply)
 **Prerequisites**: Lesson 3 complete
 **Key Concepts**: Environment variables (temporary/permanent), .bashrc/.zshrc, pip, npm, Homebrew/apt, venv
@@ -72,6 +77,7 @@ This progression prevents over-reliance on AI without understanding, while demon
 **Acceptance Criteria**: Can set API key persisting across sessions, create and use venv
 
 #### Lesson 5: Process Management and Troubleshooting
+
 **Duration**: 30-35 min | **Objective**: Monitor processes and troubleshoot errors (Bloom: Apply)
 **Prerequisites**: Lessons 1-4 complete
 **Key Concepts**: ps, top, kill, process IDs, common errors, diagnosis workflows, logs
@@ -82,6 +88,7 @@ This progression prevents over-reliance on AI without understanding, while demon
 ### PART II: AI-AUGMENTED BASH WORKFLOWS
 
 #### Lesson 6: Natural Language Prompts for Bash Tasks
+
 **Duration**: 35-40 min | **Objective**: Write effective prompts to translate intent into commands (Bloom: Create)
 **Prerequisites**: Lessons 1-5 complete (Part I foundation)
 **Key Concepts**: AI-augmented workflow, prompting patterns, validation before execution, iterative refinement
@@ -90,6 +97,7 @@ This progression prevents over-reliance on AI without understanding, while demon
 **Acceptance Criteria**: Can describe tasks clearly, understand AI suggestions, iterate until correct
 
 #### Lesson 7: Professional Bash Habits and Command Patterns
+
 **Duration**: 30-35 min | **Objective**: Develop efficient terminal habits and recognize patterns (Bloom: Apply)
 **Prerequisites**: Lesson 6 complete
 **Key Concepts**: Keyboard shortcuts (Ctrl+R, Tab, Ctrl+A/E/U/C), aliases, history, pattern recognition
@@ -98,6 +106,7 @@ This progression prevents over-reliance on AI without understanding, while demon
 **Acceptance Criteria**: Uses shortcuts naturally, creates aliases, knows common patterns
 
 #### Lesson 8: Putting It All Together—Real-World AI-Assisted Workflows
+
 **Duration**: 35-40 min | **Objective**: Integrate all concepts into realistic workflows (Bloom: Analyze)
 **Prerequisites**: Lessons 1-7 complete
 **Key Concepts**: Realistic scenarios (setup, troubleshooting, migration), decision making, risk management, workflow orchestration
@@ -110,6 +119,7 @@ This progression prevents over-reliance on AI without understanding, while demon
 ## Requirements Mapping
 
 **Functional Requirements (FR-001 to FR-015)**:
+
 - FR-001 (Essential commands) → Lessons 1, 2, 3
 - FR-002 (Environment variables) → Lesson 4
 - FR-003 (Process management) → Lesson 5
@@ -127,6 +137,7 @@ This progression prevents over-reliance on AI without understanding, while demon
 - FR-015 (Progressive scaffolding) → Lesson sequence
 
 **User Story Coverage**:
+
 - P1 (Beginner learns commands) → Lessons 1-5; validation: <2 min project setup
 - P2 (AI workflows) → Lessons 6-8; validation: describe task → AI generates → execute
 - P3 (Professional habits) → Lesson 7 + integration in Lesson 8; validation: uses shortcuts, knows when to memorize
@@ -136,6 +147,7 @@ This progression prevents over-reliance on AI without understanding, while demon
 ## Content Flow & Dependencies
 
 **Lesson Sequence**:
+
 ```
 Lesson 1: Terminal Basics (25-30 min)
     ↓
@@ -156,6 +168,7 @@ Lesson 8: Integration (35-40 min) [brings together 1-7]
 ```
 
 **Cognitive Load Management**:
+
 - Lesson 1: Lowest hands-on complexity; establishes comfort
 - Lessons 2-5: Gradually increasing complexity; heavy practice at each level
 - Lesson 6: Paradigm shift (not harder, just different approach)
@@ -169,10 +182,12 @@ Lesson 8: Integration (35-40 min) [brings together 1-7]
 **Prerequisites**: Chapter 5 (Claude Code) or Chapter 6 (Gemini CLI) — terminal access and AI tool installation required
 
 **Feeds Into**:
+
 - Chapter 8 (Git & GitHub) — assumes comfortable navigation, project structure, environment variables, process management
 - Python chapters (Chapter 9+) — assume pip, virtual environments, file operations, process management
 
 **Cross-Chapter Scaffolding**:
+
 - Chapters 1-4: Established AI mindset; this enables practical execution
 - Chapters 5-6: Installed tools; this teaches using them from terminal
 - Chapter 8: Uses terminal skills for version control workflows
@@ -182,11 +197,13 @@ Lesson 8: Integration (35-40 min) [brings together 1-7]
 ## Platform Support
 
 **Supported Platforms**:
+
 - macOS (native bash/zsh)
 - Linux (Ubuntu, Debian, etc.)
 - Windows (Git Bash or WSL2 recommended)
 
 **Platform-Specific Guidance**:
+
 - Lesson 1 addresses platform differences upfront
 - Each lesson includes specific notes for package managers (Homebrew/apt/pip)
 - Terminal emulator behavior differences addressed where relevant
@@ -197,6 +214,7 @@ Lesson 8: Integration (35-40 min) [brings together 1-7]
 ## Validation Strategy
 
 **Per-Lesson Validation**:
+
 - Lesson 1: Navigate terminal, explain file paths, describe command structure
 - Lesson 2: Create project structure in <2 minutes without errors
 - Lesson 3: Search files, combine commands with pipes
@@ -207,6 +225,7 @@ Lesson 8: Integration (35-40 min) [brings together 1-7]
 - Lesson 8: Execute realistic workflows with proper verification
 
 **Chapter-Level Acceptance**:
+
 - All 8 lessons follow lesson output style (opening hook, content, examples, exercises, reflection, closing)
 - All 15 functional requirements (FR-001 to FR-015) explicitly addressed
 - All 3 user stories (P1, P2, P3) supported with measurable outcomes
@@ -229,25 +248,27 @@ Lesson 8: Integration (35-40 min) [brings together 1-7]
 
 ## Risk Mitigation
 
-| Risk | Mitigation |
-|------|-----------|
-| Overwhelming beginners with command volume | Focus on ~15 essential in Part I; show AI extends capability; frame as "90% of what you'll use" |
-| Students copy-paste without understanding | Lesson 6 emphasizes validation; exercises require explanation; workflows in Lesson 8 show verification |
-| Platform confusion (Windows/Mac/Linux) | Lesson 1 addresses directly; specific notes in each lesson; tested on all platforms |
-| Students skip Part I, jump to Part II | Part II explicitly references Part I; acceptance criteria require foundation; prerequisite chain clear |
-| Over-reliance on AI without human judgment | Part I builds foundation first; Part II shows healthy collaboration; Lesson 8 emphasizes verification |
+| Risk                                       | Mitigation                                                                                             |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| Overwhelming beginners with command volume | Focus on ~15 essential in Part I; show AI extends capability; frame as "90% of what you'll use"        |
+| Students copy-paste without understanding  | Lesson 6 emphasizes validation; exercises require explanation; workflows in Lesson 8 show verification |
+| Platform confusion (Windows/Mac/Linux)     | Lesson 1 addresses directly; specific notes in each lesson; tested on all platforms                    |
+| Students skip Part I, jump to Part II      | Part II explicitly references Part I; acceptance criteria require foundation; prerequisite chain clear |
+| Over-reliance on AI without human judgment | Part I builds foundation first; Part II shows healthy collaboration; Lesson 8 emphasizes verification  |
 
 ---
 
 ## Acceptance Criteria (Definition of Done)
 
 **Content Quality**:
+
 - [ ] All 8 lessons written following lesson output style template
 - [ ] All code examples tested and working across platforms
 - [ ] All exercises have clear acceptance criteria and solutions
 - [ ] Real-world scenarios are realistic and relevant to readers
 
 **Pedagogical Rigor**:
+
 - [ ] Learning objectives use Bloom's taxonomy appropriately
 - [ ] Lessons scaffold progressively from simple to complex
 - [ ] Part I and Part II follow specified structure
@@ -255,11 +276,13 @@ Lesson 8: Integration (35-40 min) [brings together 1-7]
 - [ ] Show-then-explain pedagogy applied consistently
 
 **Specification Coverage**:
+
 - [ ] All 15 functional requirements (FR-001 to FR-015) explicitly addressed
 - [ ] All 3 user stories (P1, P2, P3) supported with validation points
 - [ ] All 10 success criteria (SC-001 to SC-010) have corresponding exercises/assessments
 
 **Constitutional Alignment**:
+
 - [ ] Principles 1-11 applied (AI-first, Spec-Kit, Python standards, test-first, scaffolding, consistency, technical accuracy, accessibility, show-then-explain, real-world projects, tool diversity)
 - [ ] All 9 domain skills applied contextually (learning objectives, scaffolding, code examples, exercises, assessments, clarity, book flow, AI teaching, evaluation)
 - [ ] Book Gaps Checklist items addressed:
@@ -273,6 +296,7 @@ Lesson 8: Integration (35-40 min) [brings together 1-7]
   - [ ] Engagement elements (hooks, pacing, visuals, real-world context)
 
 **Integration Quality**:
+
 - [ ] Chapter connects to Chapter 5/6 (tools already installed)
 - [ ] Chapter prepares for Chapter 8 (Git & GitHub workflows)
 - [ ] Lessons reference each other appropriately
@@ -285,7 +309,7 @@ Lesson 8: Integration (35-40 min) [brings together 1-7]
 1. **Implementation Phase**: Lesson-writer subagent implements each lesson applying 9 domain skills
 2. **Testing Phase**: All commands verified on macOS 14+, Ubuntu 22+, Windows 10/11 with Git Bash
 3. **Review Phase**: Technical-reviewer subagent validates pedagogy, accuracy, and constitutional alignment
-4. **Publication Phase**: Chapter published to `book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/` with lesson files (01-08) and README.md
+4. **Publication Phase**: Chapter published to `apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/` with lesson files (01-08) and README.md
 
 ---
 

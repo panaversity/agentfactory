@@ -19,6 +19,7 @@ Lesson 02 has been comprehensively enhanced from a brief procedural guide (118 l
 ## What Was Enhanced
 
 ### 1. Metadata & Context (ADDED)
+
 ```yaml
 proficiency_level: "B1"
 estimated_time: "90 minutes"
@@ -32,16 +33,19 @@ cognitive_load: 9
 ### 2. Timing Framework (COMPLETELY REWRITTEN)
 
 **BEFORE**:
+
 ```markdown
 **Start your timer now.** Record the exact start time.
 [... no further timing guidance ...]
 **Stop your timer now.** Record:
-- Start time: _____
-- End time: _____
-- Total duration: _____ minutes
+
+- Start time: **\_**
+- End time: **\_**
+- Total duration: **\_** minutes
 ```
 
 **AFTER**:
+
 - **Timing section** (Step 6) with clear instructions to record start/end times
 - **Integration with TIME_TRACKER.md** from Lesson 01
 - **Baseline measurement purpose**: Feature 1 sets baseline; F2, F3, F4 measure acceleration
@@ -56,6 +60,7 @@ cognitive_load: 9
 **BEFORE**: Schema mentioned in passing (5 lines)
 
 **AFTER**: Complete, documented schema with:
+
 - Full JSON structure (48 lines)
 - Field-by-field explanation (7 lines)
 - Concrete example output for Stripe (15 lines)
@@ -63,6 +68,7 @@ cognitive_load: 9
 - Field constraints (e.g., "minimum 3 pain points required")
 
 **Example provided**:
+
 ```json
 {
   "company_name": "Stripe",
@@ -91,6 +97,7 @@ cognitive_load: 9
 ### 4. Specification Step (ENHANCED)
 
 **BEFORE**:
+
 ```
 Run: /sp.specify
 Provide this description: [vague description]
@@ -98,6 +105,7 @@ Verify: cat .specify/specs/lead-profiler/spec.md
 ```
 
 **AFTER**:
+
 - **Step 1: Specification** with detailed prompt template including:
   - Clear INPUT/OUTPUT definition
   - QUALITY GATES (company name matching, industry categories, tech indicators minimum 2, pain points minimum 3)
@@ -112,6 +120,7 @@ Verify: cat .specify/specs/lead-profiler/spec.md
 ### 5. Plan & Tasks Steps (ENHANCED WITH DECISION POINTS)
 
 **BEFORE**:
+
 ```
 Generate implementation plan: /sp.plan
 Review the plan: cat .specify/specs/lead-profiler/plan.md
@@ -120,6 +129,7 @@ Review the plan: cat .specify/specs/lead-profiler/plan.md
 **AFTER**:
 
 **Plan section now includes**:
+
 - Purpose clarification: "creates high-level architecture"
 - **Key decisions the plan should address** (5 critical decisions):
   1. Website content fetching strategy
@@ -131,6 +141,7 @@ Review the plan: cat .specify/specs/lead-profiler/plan.md
 This forces students to verify plan completeness before proceeding.
 
 **Tasks section now includes**:
+
 - Expected task breakdown (8 example tasks)
 - Reminder that tasks are the execution checklist
 
@@ -175,6 +186,7 @@ def generate_lead_profile(url: str) -> dict:
 ### 7. Test & Verify Section (COMPLETELY RESTRUCTURED)
 
 **BEFORE**:
+
 ```bash
 python lead_profiler.py https://stripe.com
 [7 unchecked checkboxes]
@@ -183,6 +195,7 @@ python lead_profiler.py https://stripe.com
 **AFTER**: Three-level verification framework:
 
 **Level 1: Three Real Test URLs**
+
 ```bash
 python lead_profiler.py https://stripe.com    # tech/payments, easy
 python lead_profiler.py https://nike.com      # retail, harder
@@ -190,11 +203,13 @@ python lead_profiler.py https://jpmorganchase.com  # finance, complex
 ```
 
 **Level 2: Schema Compliance Checklist** (6 checks)
+
 - JSON validity
 - All required fields present
 - Data types correct
 
 **Level 3: Content Quality Checklist** (6 checks)
+
 - Company name matches legal name
 - Industry in valid categories
 - Size in valid range
@@ -203,9 +218,11 @@ python lead_profiler.py https://jpmorganchase.com  # finance, complex
 - Confidence score: integer 0-100
 
 **Level 4: Success Criteria Checklist** (5 checks)
+
 - Aligns with specification requirements
 
 **Level 5: Failure Recovery** (4 steps)
+
 - Note which check failed
 - Debug with output
 - Fix logic
@@ -229,11 +246,14 @@ python lead_profiler.py https://jpmorganchase.com  # finance, complex
 ### 9. Try With AI Section (ENHANCED WITH SPECIFIC OUTCOMES)
 
 **BEFORE**:
+
 - 2 generic prompts
 - No expected outcome guidance
 
 **AFTER**:
+
 - **Prompt 1: Validation & Edge Cases** - Students paste actual test outputs and get feedback on gaps
+
   - Expected outcome: "AI identifies gaps (missing tech indicators, inaccurate pain points, confidence scores that don't match data quality) and suggests test cases"
   - Forces students to think about edge cases
 
@@ -248,6 +268,7 @@ python lead_profiler.py https://jpmorganchase.com  # finance, complex
 ### 10. Closing Navigation (ADDED)
 
 **NEW**: Final line guides to Feature 2 with clear acceleration context:
+
 ```
 **Next**: Proceed to Lesson 03 (Feature 2: ICP Scorer). Start your timer again. Your goal: build faster than Feature 1.
 ```
@@ -257,6 +278,7 @@ python lead_profiler.py https://jpmorganchase.com  # finance, complex
 ## Hands-On Ratio Assessment
 
 ### Executable Commands: 10+
+
 1. `cat > LEAD_PROFILER_SCHEMA.json` (schema reference file)
 2. `/sp.specify` (specification generation)
 3. `cat .specify/specs/lead-profiler/spec.md` (verify spec)
@@ -270,12 +292,14 @@ python lead_profiler.py https://jpmorganchase.com  # finance, complex
 11. `python lead_profiler.py https://jpmorganchase.com` (Test 3)
 
 ### Verification Checklists: 4
+
 - Schema Compliance (3 checks)
 - Content Quality (6 checks)
 - Success Criteria (5 checks)
 - Failure Recovery (4 steps)
 
 ### Interactive Elements: 3
+
 - Timer recording (start/end/duration)
 - Test output validation (checkbox verification)
 - TIME_TRACKER.md integration
@@ -287,12 +311,14 @@ python lead_profiler.py https://jpmorganchase.com  # finance, complex
 ## Constitutional Alignment
 
 ### References to Lesson 01 Constitution
+
 - **Pain points minimum 3**: "Minimum 3 pain points identified" aligns with constitution requirement
 - **Structured JSON only**: Constitution mandates "All feature outputs are JSON-structured"
 - **Quality gates**: Specification includes constitution-defined quality standards
 - **Test coverage**: Verification checklist ensures 70%+ validation coverage
 
 ### Layer 4 (Spec-Driven Integration) Fidelity
+
 - Specification written BEFORE implementation
 - Success criteria defined upfront
 - Input/output contract explicit
@@ -307,6 +333,7 @@ python lead_profiler.py https://jpmorganchase.com  # finance, complex
 **B1 Proficiency Level (7-10 concepts target)**
 
 Concepts in Lesson 02:
+
 1. SDD-RI workflow (specification, planning, task breakdown, implementation)
 2. JSON schema design
 3. Field validation (company_name, industry, size, tech_indicators, pain_points, confidence_score)
@@ -325,38 +352,42 @@ Concepts in Lesson 02:
 
 ## File Statistics
 
-| Metric | Before | After | Change |
-|--------|--------|-------|--------|
-| Lines | 118 | 369 | +251 (213% growth) |
-| Sections | 8 | 10 | +2 (added Timing, Schema) |
-| Code Blocks | 4 | 18 | +14 (+350%) |
-| Bash Commands | 2 | 11 | +9 (+450%) |
-| Verification Checks | 7 | 20 | +13 (+186%) |
-| Example Outputs | 1 | 3 | +2 (+200%) |
+| Metric              | Before | After | Change                    |
+| ------------------- | ------ | ----- | ------------------------- |
+| Lines               | 118    | 369   | +251 (213% growth)        |
+| Sections            | 8      | 10    | +2 (added Timing, Schema) |
+| Code Blocks         | 4      | 18    | +14 (+350%)               |
+| Bash Commands       | 2      | 11    | +9 (+450%)                |
+| Verification Checks | 7      | 20    | +13 (+186%)               |
+| Example Outputs     | 1      | 3     | +2 (+200%)                |
 
 ---
 
 ## Quality Checks Performed
 
 ### Constitutional Compliance
+
 - [x] No meta-commentary exposing pedagogical frameworks
 - [x] No explicit "Layer 4" labels in student-facing content
 - [x] Framework invisibility maintained
 - [x] Three Roles pattern emerges in "Try With AI" prompts naturally
 
 ### Hands-On Verification
+
 - [x] 90%+ hands-on ratio achieved
 - [x] 10+ executable commands provided
 - [x] Verification framework is repeatable
 - [x] Test coverage comprehensive (3 URLs, 20 checks)
 
 ### Specification Alignment
+
 - [x] Aligns with Chapter 15 README (intelligence acceleration challenge)
 - [x] Aligns with Lesson 01 constitution and TIME_TRACKER
 - [x] Aligns with Feature 2-4 reusability patterns
 - [x] JSON schema matches Feature 2's expected input
 
 ### CEFR B1 Alignment
+
 - [x] 9 concepts within B1 limit (7-10)
 - [x] Moderate scaffolding (guided execution)
 - [x] Bloom's Apply/Analyze level (students execute + evaluate)
@@ -369,12 +400,14 @@ Concepts in Lesson 02:
 **Lesson 01** (Project Setup + Constitution) → **Lesson 02** (Feature 1: Lead Profiler)
 
 **What Lesson 02 Reuses from Lesson 01**:
+
 - Constitution quality standards (minimum 3 pain points)
 - TIME_TRACKER.md for duration recording
 - Spec-Kit Plus framework setup
 - Project directory structure
 
 **What Lesson 03+ Will Reuse from Lesson 02**:
+
 - JSON schema design pattern (LEAD_PROFILER_SCHEMA.json model)
 - Specification→Plan→Tasks→Implement workflow
 - Three-URL testing approach
@@ -397,7 +430,7 @@ Concepts in Lesson 02:
 ## File Path
 
 **Enhanced Lesson File**:
-`/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/02-feature-1-lead-profiler.md`
+`/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/04-SDD-RI-Fundamentals/15-ai-product-business-intelligence-capstone/02-feature-1-lead-profiler.md`
 
 **File Size**: 369 lines (10.8 KB)
 
@@ -407,16 +440,16 @@ Concepts in Lesson 02:
 
 ## Summary of Changes
 
-| Category | Change | Impact |
-|----------|--------|--------|
-| **Schema Documentation** | Added complete JSON schema with examples | Students have zero ambiguity on output format |
-| **Specification Guidance** | Added 6-part spec template (INPUT/OUTPUT/GATES/CONSTRAINTS/NON-GOALS) | Specification quality increases |
-| **Plan/Tasks Steps** | Added 5 key decision points to verify | Students validate planning completeness |
-| **Architecture Guidance** | Added 8 function signatures showing expected code structure | Implementation becomes modular |
-| **Testing Framework** | 3 URLs + 20 verification checks (4 levels) | Testing becomes systematic and repeatable |
-| **Timing Integration** | Formalized start/stop/recording with TIME_TRACKER linkage | Baseline measurement becomes enforceable |
-| **AI Prompts** | 2 prompts now have expected outcome guidance | AI collaboration becomes strategic |
-| **Hands-On Ratio** | 118 lines → 369 lines; 2 commands → 11 commands | 90%+ hands-on execution |
+| Category                   | Change                                                                | Impact                                        |
+| -------------------------- | --------------------------------------------------------------------- | --------------------------------------------- |
+| **Schema Documentation**   | Added complete JSON schema with examples                              | Students have zero ambiguity on output format |
+| **Specification Guidance** | Added 6-part spec template (INPUT/OUTPUT/GATES/CONSTRAINTS/NON-GOALS) | Specification quality increases               |
+| **Plan/Tasks Steps**       | Added 5 key decision points to verify                                 | Students validate planning completeness       |
+| **Architecture Guidance**  | Added 8 function signatures showing expected code structure           | Implementation becomes modular                |
+| **Testing Framework**      | 3 URLs + 20 verification checks (4 levels)                            | Testing becomes systematic and repeatable     |
+| **Timing Integration**     | Formalized start/stop/recording with TIME_TRACKER linkage             | Baseline measurement becomes enforceable      |
+| **AI Prompts**             | 2 prompts now have expected outcome guidance                          | AI collaboration becomes strategic            |
+| **Hands-On Ratio**         | 118 lines → 369 lines; 2 commands → 11 commands                       | 90%+ hands-on execution                       |
 
 ---
 
@@ -425,6 +458,7 @@ Concepts in Lesson 02:
 **Ready for Deployment**: YES
 
 **Recommended Next Steps**:
+
 1. Review with chapter author for any domain-specific adjustments
 2. Test with beta student to verify 90-minute time estimate
 3. Consider adding Lessons 03-05 enhancements (ICP Scorer, Outreach Generator, Campaign Dashboard) using same framework

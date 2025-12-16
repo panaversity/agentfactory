@@ -32,21 +32,25 @@ visual-assets/
 ## Naming Conventions
 
 ### Audit Reports
+
 - **Part-level**: `part-{NN}-visual-strategy.md` (e.g., `part-03-visual-strategy.md`)
 - **Chapter-level**: `chapter-{NN}-visual-audit.md` (e.g., `chapter-07-visual-audit.md`)
 - **Lesson-level**: `chapter-{NN}-lesson-{NN}-audit.md` (e.g., `chapter-07-lesson-01-audit.md`)
 
 ### Generation Logs
+
 - **Format**: `visual-{NN}-{slug}.log.md`
 - **Example**: `visual-01-docker-container-lifecycle.log.md`
 - **Location**: `generation-logs/chapter-{NN}/`
 
 ### Prompts
+
 - **Format**: `visual-{NN}-{slug}.prompt.md`
 - **Example**: `visual-01-docker-container-lifecycle.prompt.md`
 - **Location**: `prompts/chapter-{NN}/`
 
 ### Visual Assets (actual images)
+
 - **Format**: `{concept}-{type}.png` (kebab-case)
 - **Examples**:
   - `docker-container-lifecycle-states.png`
@@ -63,12 +67,14 @@ visual-assets/
 **Input**: Chapter/lesson markdown content
 **Process**: Analyze for visual opportunities, apply decision frameworks
 **Outputs**:
+
 1. **Audit report** → `audits/chapters/chapter-{NN}-visual-audit.md`
 2. **Embedded prompts** → HTML comments in lesson markdown
 3. **Extracted prompts** → `prompts/chapter-{NN}/visual-{NN}.prompt.md`
 4. **Registry entries** → Updates `metadata/asset-registry.json` (status: pending)
 
 **Invocation**:
+
 ```
 Analyze Chapter 7 for visual opportunities using visual-asset-workflow
 ```
@@ -80,12 +86,14 @@ Analyze Chapter 7 for visual opportunities using visual-asset-workflow
 **Input**: Reasoning-activated prompts from Phase 1
 **Process**: Generate with Gemini 3 Pro Image, multi-turn refinement
 **Outputs**:
+
 1. **Generation log** → `generation-logs/chapter-{NN}/visual-{NN}.log.md`
 2. **Final images** → `book-source/static/img/visuals/{filename}.png`
 3. **Updated markdown** → Image references embedded
 4. **Registry update** → Status changed to "production", metadata added
 
 **Invocation**:
+
 ```
 Generate approved visuals for Chapter 7 using image-generator
 ```
@@ -95,6 +103,7 @@ Generate approved visuals for Chapter 7 using image-generator
 ### Single-Phase Workflow (Combined)
 
 **Invocation**:
+
 ```
 Plan and generate all visual assets for Chapter 7
 ```
@@ -110,6 +119,7 @@ Both skills run sequentially: analysis → generation → all artifacts created
 **Purpose**: Master index tracking all visual assets across the book
 
 **Schema**:
+
 ```json
 {
   "id": "visual-07-01",
@@ -130,7 +140,7 @@ Both skills run sequentially: analysis → generation → all artifacts created
   "generation_log": "history/visual-assets/generation-logs/chapter-07/visual-01.log.md",
   "audit_report": "history/visual-assets/audits/chapters/chapter-07-visual-audit.md",
   "markdown_references": [
-    "book-source/docs/part-02/chapter-07/lesson-01-docker-basics.md"
+    "apps/learn-app/docs/part-02/chapter-07/lesson-01-docker-basics.md"
   ],
   "reused_in": [],
   "status": "production",
@@ -145,6 +155,7 @@ Both skills run sequentially: analysis → generation → all artifacts created
 ### Archive Directory
 
 Contains legacy reports from pre-v4.0 structure:
+
 - `AUTONOMOUS-CHAPTER-PROMPT.md`
 - `FINAL-CHAPTER-1-VISUAL-AUDIT.md`
 - `IMAGE-GENERATION-LESSONS-LEARNED.md`
@@ -159,6 +170,7 @@ These files are preserved for reference but superseded by the new standardized s
 **Migrated on**: 2025-11-21
 
 **From** (flat structure):
+
 ```
 history/visual-assets/
 ├── chapter-1-lesson-1-visual-assets-report.md
@@ -168,6 +180,7 @@ history/visual-assets/
 ```
 
 **To** (organized structure):
+
 ```
 history/visual-assets/
 ├── audits/
@@ -183,26 +196,31 @@ history/visual-assets/
 ## Benefits of This Structure
 
 ### 1. Traceability
+
 - Every visual has complete audit trail (why approved/rejected)
 - Multi-turn refinement logged (principle-based feedback)
 - Prompts archived for reuse/adaptation
 
 ### 2. Reusability
+
 - Asset registry shows usage across chapters
 - Prompts can be adapted for similar visuals
 - Generation logs document successful patterns
 
 ### 3. Quality Control
+
 - Audit reports enforce pedagogical rigor (no decorative filler)
 - Generation logs validate reasoning activation (5/5 scores)
 - Metadata tracks grounding, accessibility, proficiency alignment
 
 ### 4. Maintenance
+
 - Easy to find artifacts by chapter/type
 - Asset registry enables bulk updates (e.g., Gemini 4 migration)
 - Clear delineation between production and archived
 
 ### 5. Learning & Improvement
+
 - Generation logs show successful multi-turn patterns
 - Audit reports reveal common rejection reasons
 - Metadata enables analysis (which visual types most effective per proficiency?)
@@ -212,12 +230,14 @@ history/visual-assets/
 ## Future Enhancements
 
 ### Asset Registry Dashboard
+
 - Visual coverage per chapter (X/Y complete)
 - Type distribution charts (static vs interactive)
 - Proficiency alignment analysis
 - Reuse patterns identification
 
 ### Automated Prompts Optimization
+
 - ML analysis of generation logs
 - Pattern extraction (fewest iterations)
 - Feedback effectiveness scoring
@@ -237,6 +257,7 @@ history/visual-assets/
 ## Quick Start
 
 **For new chapters**:
+
 ```bash
 # Two-phase workflow (recommended)
 1. "Analyze Chapter X for visual opportunities"
@@ -248,11 +269,13 @@ history/visual-assets/
 ```
 
 **For existing chapters**:
+
 ```bash
 "Audit and regenerate visuals for Chapter X with Gemini 3 quality"
 ```
 
 **For part-level planning**:
+
 ```bash
 "Plan visual strategy for Part 3 (Chapters 7-12)"
 ```

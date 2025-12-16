@@ -4,7 +4,7 @@
 **Status**: Ready for Development (Updated 2025-10-30)
 **Feature Branch**: `004-chapter-3-redesign`
 **Implementation Approach**: 8 separate lesson files (modular structure, 300-500 words each)
-**Output Directory**: `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/`
+**Output Directory**: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/`
 
 ---
 
@@ -13,6 +13,7 @@
 This task breakdown organizes Chapter 3 implementation into **8 lesson files** mapped to **6 user stories** (P1, P2, P3). Each lesson is independently testable and contributes to the cohesive chapter narrative.
 
 **Task Count**: 25 total tasks
+
 - Phase 0: Setup & Planning (3 tasks)
 - Phase 1: Foundational (2 tasks)
 - Phase 2: User Story 1 (4 tasks)
@@ -29,31 +30,33 @@ This task breakdown organizes Chapter 3 implementation into **8 lesson files** m
 
 ## Lesson-to-User-Story Mapping
 
-| User Story | Priority | Primary Lesson(s) | Supporting Lessons |
-|------------|----------|-------------------|-------------------|
-| US1: Snakes & Ladders | P1 | Lesson 2 (02-snakes-and-ladders.md) | Lesson 1 (intro context) |
-| US2: Super Orchestrators | P1 | Lesson 3 (03-super-orchestrators.md) | Lesson 1 (opportunity thesis) |
-| US3: Vertical Intelligence | P2 | Lesson 4 (04-vertical-intelligence.md) | Lesson 2 (competitive layers) |
-| US4: PPP Strategy | P2 | Lesson 5 (05-ppp-strategy.md) | Lesson 4 (subagents), Lesson 6 (requirements) |
-| US5: Three Requirements | P3 | Lesson 6 (06-three-requirements.md) | Lesson 4 (vertical intelligence), Lesson 5 (PPP) |
-| US6: Part 1 Integration | P3 | Lesson 8 (08-closing.md) | All lessons (Ch2 callback, Ch4 bridge) |
+| User Story                 | Priority | Primary Lesson(s)                      | Supporting Lessons                               |
+| -------------------------- | -------- | -------------------------------------- | ------------------------------------------------ |
+| US1: Snakes & Ladders      | P1       | Lesson 2 (02-snakes-and-ladders.md)    | Lesson 1 (intro context)                         |
+| US2: Super Orchestrators   | P1       | Lesson 3 (03-super-orchestrators.md)   | Lesson 1 (opportunity thesis)                    |
+| US3: Vertical Intelligence | P2       | Lesson 4 (04-vertical-intelligence.md) | Lesson 2 (competitive layers)                    |
+| US4: PPP Strategy          | P2       | Lesson 5 (05-ppp-strategy.md)          | Lesson 4 (subagents), Lesson 6 (requirements)    |
+| US5: Three Requirements    | P3       | Lesson 6 (06-three-requirements.md)    | Lesson 4 (vertical intelligence), Lesson 5 (PPP) |
+| US6: Part 1 Integration    | P3       | Lesson 8 (08-closing.md)               | All lessons (Ch2 callback, Ch4 bridge)           |
 
 ---
 
 ## Phase 0: Setup & Planning (Preparation)
 
-- [ ] T001 Review existing 5 lesson files and extract salvageable content from `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/`
+- [ ] T001 Review existing 5 lesson files and extract salvageable content from `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/`
+
   - Files to review: 01-the-game-begins.md, 02-real-money-architecture.md, 03-building-the-stack.md, 04-ppp-strategy.md, 05-real-world-examples.md
   - Extract: Best stories, examples, evidence, transitions
   - Output: Content inventory document (internal reference)
 
 - [ ] T002 Gather context materials and verify evidence sources
+
   - Collect from `context/04_chap3_spec/`: README.md, PPP Strategy.pdf, Agentic AI Startups.pdf, snakes_ladders.jpg
   - Verify evidence: Claude Code $500M ARR, Instagram/WhatsApp numbers, mobile OS precedent, PPP metrics
   - Create source bibliography
   - Copy snakes_ladders.jpg to `book-source/static/img/snakes_ladders.jpg`
 
-- [ ] T003 Create Docosaurus category metadata file at `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/_category_.json`
+- [ ] T003 Create Docosaurus category metadata file at `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/_category_.json`
   - Include: label (Chapter 3), sidebar position, collapsed state
   - Reference structure: adjacent chapter categories
 
@@ -62,10 +65,11 @@ This task breakdown organizes Chapter 3 implementation into **8 lesson files** m
 ## Phase 1: Foundational (Blocking Prerequisites)
 
 - [ ] T004 Review Part 1 README.md for tone, style, and conceptual focus
+
   - Acceptance: Understand Part 1 strategic-only approach (no hands-on content)
   - Identify Chapters 1-2 tone/voice consistency markers
   - Confirm Chapter 3's role in Part 1 arc
-  - File context: `book-source/docs/01-Introducing-AI-Driven-Development/README.md`
+  - File context: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/README.md`
 
 - [ ] T005 Establish consistent voice and style guide for all 8 lessons
   - Grade 7-9 reading level (avg 15-20 word sentences, short paragraphs)
@@ -85,11 +89,13 @@ This task breakdown organizes Chapter 3 implementation into **8 lesson files** m
 **Key Engagement Elements**: Diagram (snakes_ladders.jpg), mobile OS analogy, 3+ examples, mobile OS precedent story
 
 - [ ] T006 [P] [US1] Create opening for Lesson 2: 02-snakes-and-ladders.md with YAML frontmatter
+
   - Frontmatter: sidebar_position: 2, title "The Snakes and Ladders Framework", description, reading_time: "3 minutes"
   - Opening: Hook explaining competitive layers concept (2-3 sentences)
-  - File path: `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/02-snakes-and-ladders.md`
+  - File path: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/02-snakes-and-ladders.md`
 
 - [ ] T007 [P] [US1] Write Snakes & Ladders framework section in Lesson 2
+
   - Content: Four competitive layers (consumer AI, developer tools, vertical markets, orchestration)
   - Include specific examples: OpenAI/Google (consumer), Claude Code ($500M ARR), finance/healthcare/education verticals
   - Explain why "climbing" beats competing head-on
@@ -97,6 +103,7 @@ This task breakdown organizes Chapter 3 implementation into **8 lesson files** m
   - Acceptance: All four layers clearly explained with 3+ concrete examples
 
 - [ ] T008 [P] [US1] Write mobile OS analogy and precedent in Lesson 2
+
   - Content: iOS (consumer + developer + ecosystem), Android (manufacturer + developer + ecosystem), Windows Mobile (failed direct competition)
   - Explanation: Why Microsoft failed, lessons for AI market
   - Connection to lesson: Why third players must "climb"
@@ -118,17 +125,20 @@ This task breakdown organizes Chapter 3 implementation into **8 lesson files** m
 **Key Engagement Elements**: Comparison table (Instagram/WhatsApp/Claude Code), unit economics table, 3+ concrete stories
 
 - [ ] T010 [P] [US2] Create opening for Lesson 3: 03-super-orchestrators.md with YAML frontmatter
+
   - Frontmatter: sidebar_position: 3, title "The Economics of Super Orchestrators", description, reading_time: "3 minutes"
   - Opening: Hook about small teams building massive value (1-2 sentences)
-  - File path: `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/03-super-orchestrators.md`
+  - File path: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/03-super-orchestrators.md`
 
 - [ ] T011 [P] [US2] Write historical precedent stories in Lesson 3
+
   - Stories: Instagram (13 employees, $1B, 2012, Facebook), WhatsApp (55 employees, $19B, 2014, Facebook)
   - Add: Claude Code ($500M ARR in 2 months, 2025, Anthropic)
   - Acceptance: All three with specific numbers, years, buyer/context
   - Create comparison table showing employees vs. valuation vs. value per employee
 
 - [ ] T012 [P] [US2] Write 90-10 economic model explanation in Lesson 3
+
   - Content: 90% mechanical work (code, workflows, infrastructure) handled by AI/automation
   - Content: 10% human judgment (strategy, understanding, architecture, relationships) becomes infinitely valuable
   - Example: Why solo developer can generate $500M ARR
@@ -151,17 +161,20 @@ This task breakdown organizes Chapter 3 implementation into **8 lesson files** m
 **Key Engagement Elements**: Traditional vs. AI-driven comparison table, accounting library vs. accounting subagent example, five components clearly explained
 
 - [ ] T014 [P] [US3] Create opening for Lesson 4: 04-vertical-intelligence.md with YAML frontmatter
+
   - Frontmatter: sidebar_position: 4, title "From Code Reuse to Vertical Intelligence", description, reading_time: "2.5 minutes"
   - Opening: Hook about DRY principle breaking down in AI era (2 sentences)
-  - File path: `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/04-vertical-intelligence.md`
+  - File path: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/04-vertical-intelligence.md`
 
 - [ ] T015 [P] [US3] Write paradigm shift explanation in Lesson 4
+
   - Content: Traditional approach (reusable code libraries, DRY, centralized maintenance)
   - Content: AI-driven approach (disposable code, reusable intelligence, distributed/on-demand)
   - Why shift: Code is cheap/fast to generate, intelligence is expensive/slow to build
   - Comparison table: Traditional code reuse vs. vertical intelligence (5 dimensions: unit of reuse, lifetime, maintenance, scalability, value source)
 
 - [ ] T016 [P] [US3] Write five subagent components in Lesson 4
+
   - Component 1: System prompt (persona, scope, constraints, domain expertise)
   - Component 2: Horizontal skills (Docker, Kubernetes, infrastructure)
   - Component 3: Vertical skills (domain expertise specific to industry)
@@ -186,11 +199,13 @@ This task breakdown organizes Chapter 3 implementation into **8 lesson files** m
 **Key Engagement Elements**: Three-phase breakdown, LMS real-world example, PPP vs. alternatives comparison table
 
 - [ ] T018 [P] [US4] Create opening for Lesson 5: 05-ppp-strategy.md with YAML frontmatter
+
   - Frontmatter: sidebar_position: 5, title "The Piggyback Protocol Pivot Strategy", description, reading_time: "3 minutes"
   - Opening: Hook about market entry strategy and risk reduction (2 sentences)
-  - File path: `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/05-ppp-strategy.md`
+  - File path: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/05-ppp-strategy.md`
 
 - [ ] T019 [P] [US4] Write three-phase PPP framework in Lesson 5
+
   - Phase 1 (Months 0-6): Infrastructure Layering - standardized protocol bridging fragmented systems
     - Example: LMS bridge (Canvas, Blackboard, Moodle, Google Classroom)
     - Why: Not replacing incumbents, becoming indispensable bridge
@@ -205,6 +220,7 @@ This task breakdown organizes Chapter 3 implementation into **8 lesson files** m
     - Why incumbents can't respond: legacy architecture, inertia, misaligned incentives
 
 - [ ] T020 [P] [US4] Write LMS real-world example and comparison in Lesson 5
+
   - Full LMS example: Problem (Canvas vs. Blackboard fragmentation) → Phase 1 solution (unified protocol) → Phase 2 growth → Phase 3 pivot (subagents)
   - Comparison table: PPP vs. direct competition vs. niche market
     - Columns: Strategy, CAC, Speed, Defensibility, Risk, Timeline
@@ -227,11 +243,13 @@ This task breakdown organizes Chapter 3 implementation into **8 lesson files** m
 **Key Engagement Elements**: Three requirements explained, OpenAI Study Mode analysis, consequence analysis, PPP integration
 
 - [ ] T022 [P] [US5] Create opening for Lesson 6: 06-three-requirements.md with YAML frontmatter
+
   - Frontmatter: sidebar_position: 6, title "Three Requirements for Vertical Success", description, reading_time: "2 minutes"
   - Opening: Hook about why partial solutions fail (2 sentences)
-  - File path: `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/06-three-requirements.md`
+  - File path: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/06-three-requirements.md`
 
 - [ ] T023 [P] [US5] Write three requirements section in Lesson 6
+
   - Requirement 1: Fine-tuned models with domain expertise (why: general AI is 70% quality, domain needs 99%)
   - Requirement 2: Deep integrations with existing systems (why: must write back to workflows, security, approvals)
   - Requirement 3: Complete agentic solutions (why: end-to-end workflow automation, not slices)
@@ -256,19 +274,21 @@ This task breakdown organizes Chapter 3 implementation into **8 lesson files** m
 **Story Goal**: Reader connects Chapter 3 to Chapter 2 evidence, previews Chapter 4 technical foundations, understands Part 1 arc
 
 - [ ] T025 [P] [US6] Create Lesson 1: 01-opening-hook.md with YAML frontmatter
+
   - Frontmatter: sidebar_position: 1, title "Opening Hook & Introduction", description, reading_time: "2 minutes"
   - Content: Billion-dollar question hook, establish credibility, setup three forces converging (opportunity window is NOW)
   - Include: Video links context (English + Urdu/Hindi)
-  - File path: `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/01-opening-hook.md`
+  - File path: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/01-opening-hook.md`
 
 - [ ] T026 [P] [US6] Create Lesson 7: 07-pause-and-reflect.md with YAML frontmatter
+
   - Frontmatter: sidebar_position: 7, title "Pause and Reflect", description, reading_time: "1 minute"
   - Content: Thought experiment with three reflection prompts
   - Prompt 1: What vertical market interests you? (Why? Personal frustration?)
   - Prompt 2: Which competitive layer could you dominate? (Unfair advantage in which layer?)
   - Prompt 3: PPP strategy sketch (Which three incumbents would you integrate?)
   - Acceptance: No "right answers"; encourages personal application and written reflection
-  - File path: `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/07-pause-and-reflect.md`
+  - File path: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/07-pause-and-reflect.md`
 
 - [ ] T027 [US6] Create Lesson 8: 08-closing.md with YAML frontmatter and full integration
   - Frontmatter: sidebar_position: 8, title "Closing—Your Move on the Board", description, reading_time: "2.5 minutes"
@@ -283,13 +303,14 @@ This task breakdown organizes Chapter 3 implementation into **8 lesson files** m
     - AI CLI tools, cloud deployment infrastructure for scaling
   - Reader reflection: "What's YOUR billion-dollar idea?"
   - Closing: Strong narrative closure, explicit "Chapter 4 teaches technical foundations"
-  - File path: `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/08-closing.md`
+  - File path: `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/08-closing.md`
 
 ---
 
 ## Phase 8: Cross-Lesson Integration & Validation
 
 - [ ] T028 [P] Validate lesson-to-lesson transitions
+
   - Check: Each lesson ends with natural bridge to next lesson
   - Check: No formulaic transitions ("Now that we've covered X, let's move to Y")
   - Check: Consistent voice and grade 7-9 reading level across all 8 lessons
@@ -313,6 +334,7 @@ This task breakdown organizes Chapter 3 implementation into **8 lesson files** m
 ## User Story Dependencies & Parallel Opportunities
 
 ### Sequential Dependencies
+
 ```
 US1 (Snakes & Ladders) → Foundation for understanding competitive landscape
 ↓
@@ -328,13 +350,16 @@ US6 (Integration) → Synthesis and forward bridge
 ```
 
 ### Parallel Opportunities
+
 - **T006-T013 can run in parallel** (Lessons 1-3: Setup, Snakes & Ladders, Super Orchestrators are independent)
 - **T014-T017 can run in parallel with T018-T020** (Lessons 4-5: Vertical Intelligence and PPP can be written simultaneously)
 - **T022-T024 can run after Lesson 5** (Lesson 6 depends on understanding PPP but is independent of Lessons 1-4)
 - **T025-T027 can run in parallel with other lessons** (Lessons 1, 7, 8 have clear content scope)
 
 ### Recommended MVP Scope
+
 **Minimum Viable Chapter**: Complete US1 + US2 + Phase 8 validation
+
 - Delivers: Readers understand opportunity (Snakes & Ladders framework) + economics (Super Orchestrators)
 - Minimum engagement, maximum impact
 - Estimated effort: 4-5 hours
@@ -346,7 +371,7 @@ US6 (Integration) → Synthesis and forward bridge
 
 **ALL of the following must be true for Chapter 3 to be complete**:
 
-1. ✅ All 8 lesson files exist at `book-source/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/` with proper YAML frontmatter
+1. ✅ All 8 lesson files exist at `apps/learn-app/docs/01-Introducing-AI-Driven-Development/03-billion-dollar-ai/` with proper YAML frontmatter
 2. ✅ Each lesson meets word count targets (300-500 words depending on lesson)
 3. ✅ Each lesson maintains Grade 7-9 reading level (Flesch-Kincaid)
 4. ✅ All jargon defined inline on first use
@@ -366,18 +391,23 @@ US6 (Integration) → Synthesis and forward bridge
 ## Follow-Ups & Risks
 
 **Risk 1: Lesson boundaries unclear or overlap**
+
 - Mitigation: Clear scoping in task descriptions; content inventory from existing files; review for overlap before writing
 
 **Risk 2: Transitions between lessons feel forced**
+
 - Mitigation: Each closing task explicitly addresses bridge to next lesson; validation step T028 checks this
 
 **Risk 3: Reading level inconsistent across lessons**
+
 - Mitigation: Establish style guide in T005; reference during all writing tasks; validation step T029 spot-checks
 
 **Risk 4: Engagement elements unevenly distributed**
+
 - Mitigation: Table mapping lessons to engagement elements; ensure each lesson has appropriate element
 
 **Risk 5: User story acceptance criteria not fully met**
+
 - Mitigation: Each user story phase (T006-T027) explicitly references acceptance scenarios from spec.md
 
 ---
@@ -394,4 +424,3 @@ US6 (Integration) → Synthesis and forward bridge
 **Status**: Ready for Implementation
 **Estimated Total Effort**: 12-16 hours (can be parallelized to 6-8 calendar days with 2 concurrent writers)
 **Next Command**: Invoke content-implementer subagent to create 8 lesson files per this task breakdown
-

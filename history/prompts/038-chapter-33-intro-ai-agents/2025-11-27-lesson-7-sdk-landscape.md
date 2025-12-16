@@ -7,7 +7,7 @@ title: "Lesson 7: The Agent SDK Landscape"
 status: "completed"
 artifacts:
   - type: "lesson_content"
-    path: "book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/07-agent-sdk-landscape.md"
+    path: "apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/07-agent-sdk-landscape.md"
     status: "approved"
   - type: "verification_report"
     path: "specs/038-chapter-33-intro-ai-agents/LESSON-7-VERIFICATION-REPORT.md"
@@ -22,13 +22,14 @@ constitutional_status: "compliant"
 
 Write Lesson 7 for Chapter 33: "The Agent SDK Landscape"
 
-**FILE PATH**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/07-agent-sdk-landscape.md`
+**FILE PATH**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/07-agent-sdk-landscape.md`
 
 **CRITICAL: Align with Google's "Introduction to Agents" whitepaper (November 2025)**
 
 **Paper Source**: Framework guidance throughout, ADK emphasis
 
 **Frontmatter**:
+
 ```yaml
 ---
 title: "The Agent SDK Landscape"
@@ -39,6 +40,7 @@ proficiency_level: B1
 ```
 
 **Learning Objectives**:
+
 - LO7.1: Name 4+ agent frameworks/SDKs
 - LO7.2: Describe 2-3 distinguishing characteristics of each
 - LO7.3: Articulate framework selection factors
@@ -67,6 +69,7 @@ proficiency_level: B1
    - Action prompts only
 
 **CONSTRAINTS**:
+
 - Layer 2
 - Emphasize transferability per paper
 - End with "Try With AI" section
@@ -78,6 +81,7 @@ proficiency_level: B1
 ### What Was Delivered
 
 **Lesson Structure**:
+
 1. The Framework Question: Why It Matters (hook with startup scenario)
 2. Framework 1: OpenAI Agents SDK (3 characteristics + use cases)
 3. Framework 2: Google ADK (4 characteristics + paper alignment)
@@ -93,26 +97,31 @@ proficiency_level: B1
 ### Key Features
 
 **Transferability Emphasis** (per paper guidance):
+
 - Dedicated section: "A Critical Insight: Concepts Transfer, Implementations Differ"
 - Each framework notes how it demonstrates architectural patterns (3+1 architecture, 5-step loop, orchestration)
 - Reduces cognitive overwhelm by showing patterns are universal
 
 **Decision Framework** (not just survey):
+
 - 4-question decision tree (Model Constraints → Deployment Context → Feature Priority → Team Expertise)
 - Real decision example (startup scenario with concrete reasoning)
 - Comparison matrix as reference tool
 
 **Production Relevance**:
+
 - 5+ real scenarios (startup customer support, medical research, financial services, data analysis, air-gapped environment)
 - Production concerns highlighted (scaling, monitoring, security, evaluation)
 - Tradeoffs explicitly acknowledged
 
 **B1 Proficiency Alignment**:
+
 - 9 concepts (within B1 limit of 7-10)
 - Moderate scaffolding (comparison matrix, decision framework, narrative)
 - Bloom's level: Analyze/Compare (appropriate for B1)
 
 **Constitutional Compliance**:
+
 - 0 meta-commentary violations
 - 0 framework exposure (no role labels, no "What you learned")
 - Framework invisible to students (absorbed through content)
@@ -121,6 +130,7 @@ proficiency_level: B1
 ### Verification Status
 
 **Specification Compliance**: 100%
+
 - FR-007 (4+ frameworks): 4 delivered (OpenAI, Google ADK, Anthropic, LangChain)
 - FR-010 (Layer progression): L1→L2 appropriate for lesson 7
 - FR-011 ("Try With AI"): 3 prompts + optional stretch + safety note
@@ -129,6 +139,7 @@ proficiency_level: B1
 - FR-014 (Whitepaper primary): ADK emphasized, Agent Ops integrated, MCP highlighted
 
 **Constitutional Compliance**: 100%
+
 - Framework Invisibility: 0 violations (grep verified)
 - Evidence Requirement: All frameworks with 3-4 concrete characteristics + scenarios
 - Structural Compliance: Ends with "Try With AI" only
@@ -137,11 +148,13 @@ proficiency_level: B1
 - Anti-Convergence: Decision-focused, not generic survey
 
 **Learning Objectives**: 100%
+
 - LO7.1: Name 4+ frameworks → 4 delivered
 - LO7.2: Describe 2-3 characteristics → 3-4 per framework
 - LO7.3: Articulate selection factors → 4-question framework + matrix
 
 **Quality Metrics**:
+
 - Word count: 3,344 / 3,500 (94.7%)
 - Sections: 15 main sections + "Try With AI"
 - Meta-commentary violations: 0
@@ -164,7 +177,8 @@ proficiency_level: B1
 
 ### Files Created
 
-1. **Lesson Content**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/book-source/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/07-agent-sdk-landscape.md`
+1. **Lesson Content**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/learn-app/docs/06-AI-Native-Software-Development/33-introduction-to-ai-agents/07-agent-sdk-landscape.md`
+
    - 3,344 words
    - Complete frontmatter
    - Constitutional compliance verified
@@ -177,13 +191,13 @@ proficiency_level: B1
 
 ### Why This Approach
 
-**Framework Organization**: Organized by philosophy (Simplicity, Production-Grade, Safety, Flexibility) rather than chronological order or alphabet. This helps students understand *why* frameworks differ, not just *that* they differ.
+**Framework Organization**: Organized by philosophy (Simplicity, Production-Grade, Safety, Flexibility) rather than chronological order or alphabet. This helps students understand _why_ frameworks differ, not just _that_ they differ.
 
-**Decision Framework**: Instead of just surveying frameworks, the lesson teaches a decision process. Students learn *how to choose*, not just *what exists*. This is more valuable long-term as new frameworks emerge.
+**Decision Framework**: Instead of just surveying frameworks, the lesson teaches a decision process. Students learn _how to choose_, not just _what exists_. This is more valuable long-term as new frameworks emerge.
 
 **Transferability Principle**: Directly supports the paper's core insight that architectural patterns are universal. Reduces cognitive load by showing students they're not learning 4 completely different systems—they're learning variations on the same patterns.
 
-**Production Realism**: Real scenarios with actual constraints (timeline pressure, security requirements, deployment environment) make the decision framework meaningful. Students understand *when* each framework becomes the right choice.
+**Production Realism**: Real scenarios with actual constraints (timeline pressure, security requirements, deployment environment) make the decision framework meaningful. Students understand _when_ each framework becomes the right choice.
 
 **Layer 1→2 Positioning**: Students have foundational understanding (Lessons 1-6). This lesson applies that understanding to practical decision-making. Prepares for Chapter 34 implementation without jumping into code.
 
@@ -203,4 +217,3 @@ proficiency_level: B1
 ## Status: APPROVED FOR DELIVERY
 
 Lesson 7 is ready for integration into Chapter 33. All specification requirements met, constitutional compliance verified, learning objectives achieved.
-

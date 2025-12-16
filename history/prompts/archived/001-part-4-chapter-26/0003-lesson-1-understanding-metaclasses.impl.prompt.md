@@ -9,7 +9,14 @@ feature: "001-part-4-chapter-26"
 branch: "001-part-4-chapter-26"
 user: "mjs"
 command: "Implement Lesson 1: Understanding Metaclasses – The Classes That Create Classes for Chapter 26"
-labels: ["chapter-26", "lesson-1", "metaclasses", "implementation", "technical-education"]
+labels:
+  [
+    "chapter-26",
+    "lesson-1",
+    "metaclasses",
+    "implementation",
+    "technical-education",
+  ]
 links:
   spec: "specs/001-part-4-chapter-26/spec.md"
   plan: "specs/001-part-4-chapter-26/plan.md"
@@ -18,10 +25,9 @@ links:
   pr: null
 
 files:
-  - "book-source/docs/04-Part-4-Python-Fundamentals/26-metaclasses-dataclasses/01-understanding-metaclasses.md"
+  - "apps/learn-app/docs/04-Part-4-Python-Fundamentals/26-metaclasses-dataclasses/01-understanding-metaclasses.md"
 
 tests: []
-
 ---
 
 # PHR-0003: Lesson 1 Implementation — Understanding Metaclasses
@@ -54,6 +60,7 @@ Implemented Lesson 1 of Chapter 26 ("Understanding Metaclasses – The Classes T
 ### Skills Proficiency Metadata
 
 Added hidden YAML frontmatter (institutional integration layer) documenting:
+
 - 4 skills with CEFR B1/B1-B2 proficiency levels
 - Bloom's taxonomy alignment (Understand/Apply)
 - Digcomp areas (Problem-Solving focus)
@@ -63,6 +70,7 @@ Added hidden YAML frontmatter (institutional integration layer) documenting:
 ### Learning Objectives Alignment
 
 All 3 objectives from LO-001 demonstrated:
+
 - ✅ Explain what metaclasses are (Understand level, B1)
 - ✅ Create classes dynamically with `type()` (Apply level, B1-B2)
 - ✅ Identify when metaclasses are appropriate (Understand level, B1)
@@ -70,6 +78,7 @@ All 3 objectives from LO-001 demonstrated:
 ### Code Example Validation
 
 All 4 examples include:
+
 - ✅ 100% type hints on function signatures and complex variables
 - ✅ Docstrings in PEP 257 format
 - ✅ Specification reference + AI prompt for each example
@@ -85,6 +94,7 @@ Example 4: Decorator vs metaclass comparison (both approaches) ✅
 ### Graduated Teaching Pattern Application
 
 Applied Constitution Principle 13:
+
 - **Tier 1 (Book Teaches)**: Foundational concepts (what metaclasses are, how `type` works)
 - **Tier 2 (AI Companion)**: Complex examples (metaclass patterns, comparisons)
 - **Tier 3 (AI Orchestration)**: Framework patterns previewed (Django, SQLAlchemy)
@@ -120,6 +130,7 @@ Applied Constitution Principle 13:
 1. **Progressive Reveal**: Core Concept 1-2 establish what metaclasses are before how to create them. Concepts 3-4 introduce the mechanics. Concepts 5-8 build to practical application.
 
 2. **Dual Example Approach**: Examples 2-4 progress in complexity:
+
    - Example 2: Basic logging (pure mechanism)
    - Example 3: Validation (practical pattern)
    - Example 4: Metaclass vs decorator (strategic decision-making)
@@ -136,20 +147,20 @@ Applied Constitution Principle 13:
 
 ## Alignment with Specification
 
-| Spec Requirement | Implementation | Status |
-|------------------|---|--------|
-| Learning Objective LO-001 | All 3 learning objectives addressed ✅ | ✅ PASS |
-| CEFR B1 proficiency | Content at B1/B1-B2 level ✅ | ✅ PASS |
-| Duration 45-60 minutes | Estimated 45-55 min reading + AI prompts ✅ | ✅ PASS |
-| 10 core concepts (max) | Exactly 10 concepts scaffolded ✅ | ✅ PASS |
-| 4 code examples | 4 examples with full documentation ✅ | ✅ PASS |
-| Try With AI 4 prompts | 4 prompts with Bloom's progression ✅ | ✅ PASS |
-| Type hints 100% | All functions and complex variables typed ✅ | ✅ PASS |
-| Specification-first pattern | Each example: Spec → Prompt → Code → Validation ✅ | ✅ PASS |
-| No Part 5 forward refs | Zero references to Part 5 SDD or Chapter 27+ ✅ | ✅ PASS |
-| Part 4 language | "Describe intent" used, not "write specifications" ✅ | ✅ PASS |
+| Spec Requirement                | Implementation                                                        | Status  |
+| ------------------------------- | --------------------------------------------------------------------- | ------- |
+| Learning Objective LO-001       | All 3 learning objectives addressed ✅                                | ✅ PASS |
+| CEFR B1 proficiency             | Content at B1/B1-B2 level ✅                                          | ✅ PASS |
+| Duration 45-60 minutes          | Estimated 45-55 min reading + AI prompts ✅                           | ✅ PASS |
+| 10 core concepts (max)          | Exactly 10 concepts scaffolded ✅                                     | ✅ PASS |
+| 4 code examples                 | 4 examples with full documentation ✅                                 | ✅ PASS |
+| Try With AI 4 prompts           | 4 prompts with Bloom's progression ✅                                 | ✅ PASS |
+| Type hints 100%                 | All functions and complex variables typed ✅                          | ✅ PASS |
+| Specification-first pattern     | Each example: Spec → Prompt → Code → Validation ✅                    | ✅ PASS |
+| No Part 5 forward refs          | Zero references to Part 5 SDD or Chapter 27+ ✅                       | ✅ PASS |
+| Part 4 language                 | "Describe intent" used, not "write specifications" ✅                 | ✅ PASS |
 | Equal metaclass/dataclass depth | Lesson 1 focuses on metaclasses only (Lesson 3 covers dataclasses) ✅ | ✅ PASS |
-| End with Try With AI only | No "Key Takeaways" or "What's Next" sections ✅ | ✅ PASS |
+| End with Try With AI only       | No "Key Takeaways" or "What's Next" sections ✅                       | ✅ PASS |
 
 ## Pedagogical Validation Checklist
 
@@ -168,16 +179,16 @@ Applied Constitution Principle 13:
 
 ## Quality Metrics
 
-| Metric | Target | Achieved | Status |
-|--------|--------|----------|--------|
-| Lines of content | 400-600 | 541 | ✅ |
-| Code examples | 4 | 4 | ✅ |
-| Type hints coverage | 100% | 100% | ✅ |
-| Try With AI prompts | 4 | 4 | ✅ |
-| Learning objectives addressed | 3/3 | 3/3 | ✅ |
-| Core concepts | 10 max | 10 | ✅ |
-| Skills documented | 4+ | 4 | ✅ |
-| Validation steps per example | 3+ | 3+ | ✅ |
+| Metric                        | Target  | Achieved | Status |
+| ----------------------------- | ------- | -------- | ------ |
+| Lines of content              | 400-600 | 541      | ✅     |
+| Code examples                 | 4       | 4        | ✅     |
+| Type hints coverage           | 100%    | 100%     | ✅     |
+| Try With AI prompts           | 4       | 4        | ✅     |
+| Learning objectives addressed | 3/3     | 3/3      | ✅     |
+| Core concepts                 | 10 max  | 10       | ✅     |
+| Skills documented             | 4+      | 4        | ✅     |
+| Validation steps per example  | 3+      | 3+       | ✅     |
 
 ## Next Steps
 
@@ -188,7 +199,7 @@ Applied Constitution Principle 13:
 
 ## Files Created
 
-- `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/aina-m2/book-source/docs/04-Part-4-Python-Fundamentals/26-metaclasses-dataclasses/01-understanding-metaclasses.md` (541 lines)
+- `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/aina-m2/apps/learn-app/docs/04-Part-4-Python-Fundamentals/26-metaclasses-dataclasses/01-understanding-metaclasses.md` (541 lines)
 
 ## Assessment
 

@@ -235,7 +235,7 @@ Each lesson includes:
 ### File Structure
 
 ```
-book-source/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/
+apps/learn-app/docs/05-Spec-Kit-Plus-Methodology/31-spec-kit-plus-hands-on/
 ├── README.md (chapter overview)
 ├── _lesson-template.md (template)
 ├── 01-smart-acceptance-criteria.md (Lesson 1)

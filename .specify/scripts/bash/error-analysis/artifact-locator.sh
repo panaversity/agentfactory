@@ -38,7 +38,7 @@ else
     echo "    \"tasks\": null,"
 fi
 
-# Find lesson files (pattern: book-source/docs/XX-Part-X-Name/N-*/*.md)
+# Find lesson files (pattern: apps/learn-app/docs/XX-Part-X-Name/N-*/*.md)
 LESSONS=$(find book-source/docs -type f -path "*/${CHAPTER_NUM}-*/*.md" 2>/dev/null | grep -v "/readme.md" | sort || echo "")
 if [[ -n "$LESSONS" ]]; then
     echo "    \"lessons\": ["

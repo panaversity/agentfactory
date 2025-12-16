@@ -9,7 +9,15 @@ feature: 015-part-4-chapter-21
 branch: 015-part-4-chapter-21
 user: mjs
 command: /sp.implement 015-part-4-chapter-21
-labels: ["python-chapter", "exception-handling", "implementation", "content-implementer", "validation", "intermediate"]
+labels:
+  [
+    "python-chapter",
+    "exception-handling",
+    "implementation",
+    "content-implementer",
+    "validation",
+    "intermediate",
+  ]
 links:
   spec: /specs/015-part-4-chapter-21/spec.md
   plan: /specs/015-part-4-chapter-21/plan.md
@@ -18,12 +26,12 @@ links:
   adr: null
   pr: null
 files:
-  - /book-source/docs/04-Part-4-Python-Fundamentals/21-exception-handling/readme.md (136 lines)
-  - /book-source/docs/04-Part-4-Python-Fundamentals/21-exception-handling/01-exception-fundamentals.md (373 lines)
-  - /book-source/docs/04-Part-4-Python-Fundamentals/21-exception-handling/02-except-else-finally.md (~2000 words)
-  - /book-source/docs/04-Part-4-Python-Fundamentals/21-exception-handling/03-raising-custom-exceptions.md (542 lines)
-  - /book-source/docs/04-Part-4-Python-Fundamentals/21-exception-handling/04-error-handling-strategies.md (655 lines)
-  - /book-source/docs/04-Part-4-Python-Fundamentals/21-exception-handling/05-capstone-csv-parser.md (509 lines)
+  - /apps/learn-app/docs/04-Part-4-Python-Fundamentals/21-exception-handling/readme.md (136 lines)
+  - /apps/learn-app/docs/04-Part-4-Python-Fundamentals/21-exception-handling/01-exception-fundamentals.md (373 lines)
+  - /apps/learn-app/docs/04-Part-4-Python-Fundamentals/21-exception-handling/02-except-else-finally.md (~2000 words)
+  - /apps/learn-app/docs/04-Part-4-Python-Fundamentals/21-exception-handling/03-raising-custom-exceptions.md (542 lines)
+  - /apps/learn-app/docs/04-Part-4-Python-Fundamentals/21-exception-handling/04-error-handling-strategies.md (655 lines)
+  - /apps/learn-app/docs/04-Part-4-Python-Fundamentals/21-exception-handling/05-capstone-csv-parser.md (509 lines)
   - /specs/book/chapter-index.md (updated status to "✅ Implemented & Validated")
 tests:
   - All Python code syntax validation (Python 3.14+ ast.parse): PASS
@@ -42,13 +50,15 @@ Execute Phase 4 (Implementation) for Chapter 21: Exception Handling after approv
 **Workflow**: Invoke content-implementer subagent for all 5 lessons (Lessons 1-4 in parallel, Lesson 5 sequential capstone).
 
 **Input artifacts**:
+
 - Spec: `/specs/015-part-4-chapter-21/spec.md` (3 user stories, 7 core concepts, CEFR A2-B1)
 - Plan: `/specs/015-part-4-chapter-21/plan.md` (5-lesson structure, CEFR mapping, cognitive load validated)
 - Tasks: `/specs/015-part-4-chapter-21/tasks.md` (119 tasks across 7 phases)
 
-**Output location**: `/book-source/docs/04-Part-4-Python-Fundamentals/21-exception-handling/`
+**Output location**: `/apps/learn-app/docs/04-Part-4-Python-Fundamentals/21-exception-handling/`
 
 **Requirements**:
+
 - 5 lessons + chapter readme
 - Python 3.14+ standards (type hints, f-strings, modern syntax)
 - CoLearning elements (💬🎓🚀✨) throughout all lessons
@@ -69,30 +79,35 @@ Execute Phase 4 (Implementation) for Chapter 21: Exception Handling after approv
 ### Files Created (6 total)
 
 1. **readme.md** (136 lines)
+
    - Chapter overview, learning objectives, prerequisites
    - Estimated time (3-4 hours total)
    - Key themes (Anticipate Don't React, Helpful Error Messages, Fail Fast Validate Early)
    - Connection to learning journey (Chapters 12-20 → 21 → 22+)
 
 2. **Lesson 1: Exception Fundamentals** (373 lines, A2 level)
+
    - 6 code examples (ValueError, TypeError, ZeroDivisionError, multiple except blocks)
    - 3 exercises (repeat input, safe divide, trace error)
    - 4 CoLearning elements (💬🎓🚀✨)
    - "Try With AI" with 4 Bloom's-aligned prompts
 
 3. **Lesson 2: Except, Else, Finally** (~2000 words, A2-B1 level)
+
    - 5 code examples (multiple except, else execution, finally cleanup, complete four-block)
    - 3 exercises (add numbers with errors, email validation, file operations)
    - 4 CoLearning elements
    - "Try With AI" closure
 
 4. **Lesson 3: Raising and Custom Exceptions** (542 lines, B1 level)
+
    - 4 code examples (basic validation with raise, custom exception class, complete validation, file I/O integration)
    - 3 exercises (age validator, email validator, multiple validations)
    - 4 CoLearning elements
    - "Try With AI" closure
 
 5. **Lesson 4: Error Handling Strategies** (655 lines, B1 level)
+
    - 4 code examples (retry with exponential backoff, fallback values, graceful degradation, logging)
    - 3 exercises (implement retry, configuration fallback, graceful degradation)
    - 4 CoLearning elements
@@ -109,6 +124,7 @@ Execute Phase 4 (Implementation) for Chapter 21: Exception Handling after approv
 ### Implementation Approach
 
 **Parallel Team Strategy**:
+
 - Invoked 4 content-implementer subagents in parallel for Lessons 1-4
 - Invoked 1 content-implementer subagent sequentially for Lesson 5 (capstone depends on Lessons 1-4)
 - All subagents received explicit CoLearning instructions
@@ -117,12 +133,14 @@ Execute Phase 4 (Implementation) for Chapter 21: Exception Handling after approv
 ### Quality Validation (Phase 7: Polish)
 
 **Quick Validations** (manual):
+
 - ✓ All code blocks syntactically valid (Python 3.14+ ast.parse)
 - ✓ All 5 lessons have "Try With AI" section
 - ✓ Forward reference check (only acceptable: forward connection notes to Chapter 22)
 - ✓ Lesson closure pattern verified (no summaries/checklists after "Try With AI")
 
 **Technical Review** (validation-auditor subagent):
+
 - **Score**: 99/100
 - **Verdict**: APPROVED
 - **Critical Issues**: 0
@@ -138,6 +156,7 @@ Execute Phase 4 (Implementation) for Chapter 21: Exception Handling after approv
   - Constitution Compliance: PASS
 
 **Validation Summary**:
+
 - All Python code tested and working ✓
 - Type hints complete (100% coverage) ✓
 - PEP 8 compliant ✓
@@ -152,19 +171,19 @@ Execute Phase 4 (Implementation) for Chapter 21: Exception Handling after approv
 
 ### Chapter Statistics
 
-| Metric | Value |
-|--------|-------|
-| Total Files | 6 (readme + 5 lessons) |
-| Total Lines | ~2,600+ lines |
-| Total Words | ~11,000+ words |
-| Estimated Duration | 3-4 hours (45 min × 4, 60 min capstone) |
-| Code Examples | 19+ complete functions |
-| Exercises | 15 total (3 per lesson) |
-| CoLearning Elements | 20 (4 per lesson) |
-| Try With AI Prompts | 20 (4 per lesson) |
-| CEFR Levels | A2 → A2-B1 → B1 |
-| Concepts Introduced | 12 (within intermediate tier limits) |
-| Python Version | 3.14+ (modern type hints, f-strings) |
+| Metric              | Value                                   |
+| ------------------- | --------------------------------------- |
+| Total Files         | 6 (readme + 5 lessons)                  |
+| Total Lines         | ~2,600+ lines                           |
+| Total Words         | ~11,000+ words                          |
+| Estimated Duration  | 3-4 hours (45 min × 4, 60 min capstone) |
+| Code Examples       | 19+ complete functions                  |
+| Exercises           | 15 total (3 per lesson)                 |
+| CoLearning Elements | 20 (4 per lesson)                       |
+| Try With AI Prompts | 20 (4 per lesson)                       |
+| CEFR Levels         | A2 → A2-B1 → B1                         |
+| Concepts Introduced | 12 (within intermediate tier limits)    |
+| Python Version      | 3.14+ (modern type hints, f-strings)    |
 
 ## Outcome
 

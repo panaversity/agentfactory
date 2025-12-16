@@ -17,7 +17,7 @@
 
 ## Path Conventions
 
-- **Lessons**: `book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/`
+- **Lessons**: `apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/`
 - **Summaries**: Same directory, `*.summary.md` files
 - **Backup**: `specs/037-chapter-14-research-paper-pivot/backup/` (in feature branch)
 
@@ -29,7 +29,7 @@
 
 - [x] T001 Create backup directory at specs/037-chapter-14-research-paper-pivot/backup/
 - [x] T002 Backup all existing lesson files to specs/037-chapter-14-research-paper-pivot/backup/
-  - Copy all *.md files from book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+  - Copy all \*.md files from apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
   - Include README.md, all lessons, all summaries, quiz
   - Preserves original content for reference/rollback
 - [x] T003 [P] Document Spec-Kit Plus command syntax for reference during writing
@@ -42,7 +42,7 @@
 
 **Purpose**: Update chapter introduction to reflect Spec-Kit Plus focus
 
-- [x] T004 Rewrite README.md in book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/README.md
+- [x] T004 Rewrite README.md in apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/README.md
   - Remove all video generation references
   - Remove MCP/Playwright mentions
   - Focus on Spec-Kit Plus workflow mastery
@@ -61,7 +61,8 @@
 
 ### Lesson 01: Spec-Kit Plus Foundation
 
-- [x] T005 [US1] Rewrite 01-spec-kit-plus-foundation.md in book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+- [x] T005 [US1] Rewrite 01-spec-kit-plus-foundation.md in apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+
   - Focus: What is Spec-Kit Plus, why use it
   - Teach: Horizontal Intelligence (ADRs, PHRs), Vertical Intelligence (Skills, Subagents)
   - Remove: All video generation context
@@ -76,7 +77,8 @@
 
 ### Lesson 02: Installation and Setup
 
-- [x] T007 [US1] Rewrite 02-installation-and-setup.md in book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+- [x] T007 [US1] Rewrite 02-installation-and-setup.md in apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+
   - Focus: Configure Claude Code/Gemini for Spec-Kit Plus
   - Teach: Directory structure (`.specify/`, `.claude/`, `specs/`, `skills/`)
   - Remove: Python installation, Node.js, Playwright, video codec setup
@@ -88,7 +90,8 @@
 
 ### Lesson 03: Constitution Phase
 
-- [x] T009 [US1] Rewrite 03-constitution-phase.md in book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+- [x] T009 [US1] Rewrite 03-constitution-phase.md in apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+
   - Focus: `/sp.constitution` command - WHAT it does, HOW to use it
   - Teach: Constitution sections (principles, constraints), how constitution guides phases
   - Practice Vehicle: Create constitution for research paper (quality standards, audience)
@@ -100,7 +103,8 @@
 
 ### Lesson 04: Specify Phase
 
-- [x] T011 [US1] Rewrite 04-specify-phase.md in book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+- [x] T011 [US1] Rewrite 04-specify-phase.md in apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+
   - Focus: `/sp.specify` command - WHAT it does, HOW to use it
   - Teach: Spec sections (Intent, Constraints, Success Evals, Non-Goals), SMART criteria
   - Practice Vehicle: Write specification for research paper
@@ -112,7 +116,8 @@
 
 ### Lesson 05: Clarify Phase
 
-- [x] T013 [US1] Rewrite 05-clarify-phase.md in book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+- [x] T013 [US1] Rewrite 05-clarify-phase.md in apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+
   - Focus: `/sp.clarify` command - WHAT it does, HOW to use it
   - Teach: Why clarification matters, identifying edge cases, iteration
   - Practice Vehicle: Refine paper specification
@@ -124,7 +129,8 @@
 
 ### Lesson 06: Plan Phase
 
-- [x] T015 [US1] Rewrite 06-plan-phase.md in book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+- [x] T015 [US1] Rewrite 06-plan-phase.md in apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+
   - Focus: `/sp.plan` command - WHAT it does, HOW to use it
   - Teach: Plan sections (approach, components, dependencies), HOW vs WHAT distinction
   - Practice Vehicle: Create plan for research paper sections
@@ -136,7 +142,8 @@
 
 ### Lesson 07: Tasks Phase
 
-- [x] T017 [US1] Rewrite 07-tasks-phase.md in book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+- [x] T017 [US1] Rewrite 07-tasks-phase.md in apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+
   - Focus: `/sp.tasks` command - WHAT it does, HOW to use it
   - Teach: Atomic tasks, acceptance criteria, checkpoint-driven execution
   - Practice Vehicle: Break paper into atomic section tasks
@@ -148,7 +155,8 @@
 
 ### Lesson 08: Implement Phase
 
-- [x] T019 [US1] Rewrite 08-implement-phase.md in book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+- [x] T019 [US1] Rewrite 08-implement-phase.md in apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+
   - Focus: `/sp.implement` command - WHAT it does, HOW to use it
   - Teach: Iterative execution, validation against spec, checkpoints
   - Practice Vehicle: Implement first paper section
@@ -170,7 +178,8 @@
 
 ### Lesson 09: Designing Reusable Intelligence
 
-- [x] T021 [US2] Rewrite 09-designing-reusable-intelligence.md in book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+- [x] T021 [US2] Rewrite 09-designing-reusable-intelligence.md in apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+
   - Focus: P+Q+P framework - Persona + Questions + Principles
   - Teach: What makes patterns reusable, skill file structure (`.claude/skills/`), skill vs subagent
   - Practice Vehicle: Create `section-writer` skill from paper writing experience
@@ -183,7 +192,8 @@
 
 ### Lesson 10: Brownfield Adoption
 
-- [x] T023 [US2] Rewrite 10-brownfield-adoption.md in book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+- [x] T023 [US2] Rewrite 10-brownfield-adoption.md in apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+
   - Focus: Adding Spec-Kit Plus to existing projects
   - Teach: Greenfield vs brownfield, starting with constitution, incremental adoption
   - Remove: Video project brownfield examples
@@ -205,7 +215,8 @@
 
 ### Lesson 11: Capstone
 
-- [x] T025 [US3] Rewrite 11-youtube-capstone.md → 11-capstone.md in book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+- [x] T025 [US3] Rewrite 11-youtube-capstone.md → 11-capstone.md in apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+
   - Rename file: Remove "youtube" from filename
   - Focus: Intelligence acceleration through skill reuse
   - Teach: Skill invocation in `/sp.implement`, measuring acceleration, compounding
@@ -216,6 +227,7 @@
   - Constraint: Acceleration proof is the lesson
 
 - [x] T026 [P] [US3] Generate 11-capstone.summary.md using /summary-generator skill
+
   - New filename (not youtube-capstone.summary.md)
 
 - [x] T027 [US3] Delete old 11-youtube-capstone.summary.md file
@@ -228,7 +240,7 @@
 
 **Goal**: Validate learning with quiz
 
-- [x] T028 Rewrite 12_chapter_14_quiz.md in book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+- [x] T028 Rewrite 12_chapter_14_quiz.md in apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
   - Focus: Spec-Kit Plus command mastery
   - Questions on: Command purpose, artifact types, P+Q+P components
   - Remove: Video generation questions, YouTube questions
@@ -262,6 +274,7 @@ Phase 1 (Setup/Backup) → Phase 2 (README) → Phase 3 (US1) → Phase 4 (US2) 
 ### Lesson + Summary Pattern
 
 For each lesson:
+
 1. Rewrite lesson file (T00X)
 2. Generate new .summary.md immediately after (T00X+1)
 
@@ -270,21 +283,23 @@ This ensures summaries reflect current lesson content.
 ### Parallel Opportunities
 
 **Within each lesson pair**:
+
 - Summary generation can run in parallel with NEXT lesson rewrite
 - Example: T006 (L01 summary) can run parallel with T007 (L02 lesson)
 
 **Phase 7 (Validation)**:
+
 - T029-T035 can mostly run in parallel
 
 ### Task Dependencies
 
-| Task | Depends On | Reason |
-|------|------------|--------|
-| T004+ | T001-T002 | Backup must complete first |
-| T006 | T005 | Summary depends on lesson rewrite |
-| T008 | T007 | Summary depends on lesson rewrite |
-| ... | ... | Same pattern for all lessons |
-| T029-T035 | T028 | Validation after all content complete |
+| Task      | Depends On | Reason                                |
+| --------- | ---------- | ------------------------------------- |
+| T004+     | T001-T002  | Backup must complete first            |
+| T006      | T005       | Summary depends on lesson rewrite     |
+| T008      | T007       | Summary depends on lesson rewrite     |
+| ...       | ...        | Same pattern for all lessons          |
+| T029-T035 | T028       | Validation after all content complete |
 
 ---
 
@@ -310,19 +325,20 @@ This ensures summaries reflect current lesson content.
 
 ## Summary
 
-| Metric | Count |
-|--------|-------|
-| **Total Tasks** | 35 |
-| **Lesson Rewrites** | 12 |
-| **Summary Generations** | 11 |
-| **Setup/Backup Tasks** | 3 |
-| **Validation Tasks** | 7 |
-| **Quiz Task** | 1 |
-| **Cleanup Task** | 1 |
+| Metric                  | Count |
+| ----------------------- | ----- |
+| **Total Tasks**         | 35    |
+| **Lesson Rewrites**     | 12    |
+| **Summary Generations** | 11    |
+| **Setup/Backup Tasks**  | 3     |
+| **Validation Tasks**    | 7     |
+| **Quiz Task**           | 1     |
+| **Cleanup Task**        | 1     |
 
 ### Backup Location
 
 All original files preserved at:
+
 ```
 specs/037-chapter-14-research-paper-pivot/backup/
 ├── README.md
@@ -343,12 +359,12 @@ Within this chapter, each lesson must end with a single final section titled **"
 
 ```bash
 # Check for forbidden video/MCP references:
-grep -ri "video\|youtube\|playwright\|mcp\|gemini.google.com" book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
+grep -ri "video\|youtube\|playwright\|mcp\|gemini.google.com" apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/
 
 # Expected: Zero matches after rewrite
 
 # Check lesson endings:
-grep -l "Try With AI" book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/*.md
+grep -l "Try With AI" apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/*.md
 
 # Expected: All lesson files (except README and quiz)
 

@@ -19,9 +19,10 @@
 
 ## Path Conventions
 
-**Content Location**: `book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/`
+**Content Location**: `apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/`
 
 **Naming Convention**:
+
 - `README.md` - Chapter introduction
 - `01-origin-story.md` - Lesson 1 (US1)
 - `02-installation-and-authentication.md` - Lesson 2 (US2)
@@ -39,7 +40,7 @@
 
 **Purpose**: Establish content structure and gather intelligence
 
-- [ ] T001 Create chapter directory structure at book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/
+- [ ] T001 Create chapter directory structure at apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/
 - [ ] T002 [P] Review existing Chapter 5 content (README.md, 01-origin-story.md, 02-installation-and-authentication.md) for salvageable sections
 - [ ] T003 [P] Verify Context7 /anthropics/claude-code library access and fact-check all feature claims
 - [ ] T004 [P] Review constitution v3.1.3 for Principle 13 (Graduated Teaching), Principle 18 (Three Roles), cognitive load limits (A2: max 7 concepts)
@@ -55,6 +56,7 @@
 **⚠️ CRITICAL**: README must be complete before individual lessons to ensure consistent framing
 
 - [ ] T005 Write chapter README.md with:
+
   - "What You'll Learn" (9-10 bullet points covering all user stories)
   - Chapter Structure overview (9 lessons with durations)
   - Prerequisites (Chapters 1-4, Node.js 18+, terminal access)
@@ -80,6 +82,7 @@
 ### Implementation for User Story 1
 
 - [ ] T007 [US1] Write Lesson 1 (01-origin-story.md) with sections:
+
   - Hook: YC data (25% startups with 95% AI-generated code)
   - What Is Claude Code: CLI tool with direct file/shell access
   - Paradigm Shift: Passive vs Agentic AI definitions
@@ -89,6 +92,7 @@
   - Reflection prompts
 
 - [ ] T008 [US1] Add "Try With AI" section to 01-origin-story.md:
+
   - Prompt 1: Analyze Your Workflow (explain 3 ways Claude Code differs)
   - Prompt 2: Tool Selection Reasoning (3 scenarios with reasoning)
   - Prompt 3: Personal Relevance (would Claude Code help YOU?)
@@ -112,6 +116,7 @@
 ### Implementation for User Story 2
 
 - [ ] T010 [US2] Write Lesson 2 (02-installation-and-authentication.md) with sections:
+
   - Prerequisites Check (Node.js 18+ verification command)
   - Installation Options: curl script (macOS/Linux), PowerShell (Windows), NPM (fallback)
   - Step-by-Step Installation: Direct commands for all platforms
@@ -121,6 +126,7 @@
   - Realistic timing: 2-5 min install, 1-2 min auth
 
 - [ ] T011 [US2] Add Troubleshooting section to 02-installation-and-authentication.md:
+
   - "command not found: claude" (PATH not updated, restart terminal solution)
   - "npm ERR! code EACCES" (permissions, sudo or npm config solution)
   - "Authentication failed / rate limit" (wait 1 hour or Console API credits)
@@ -128,12 +134,14 @@
   - Platform-specific issues (macOS/Linux/Windows variations)
 
 - [ ] T012 [US2] Add "Try With AI" section to 02-installation-and-authentication.md:
+
   - Prompt 1: Verify Installation (`claude "You're my first conversation. Confirm file access."`)
   - Prompt 2: Ask About Next Steps (`claude "What can you do that ChatGPT web can't?"`)
   - Prompt 3: Handle Troubleshooting (if needed: `claude "Help me debug this error: [error]"`)
   - Format: 3 focused prompts, now using Claude Code (just installed!)
 
 - [ ] T013 [US2] Add Security and Best Practices section:
+
   - File system access (start in project dirs, not system dirs)
   - Command execution (review sudo commands before approval)
   - Cost management for Console API users (set limits, monitor usage)
@@ -155,6 +163,7 @@
 ### Implementation for User Story 3
 
 - [ ] T015 [P] [US3] Write Lesson 3 (03-subagents-and-orchestration.md) with sections:
+
   - Problem Context: Why context drift happens in long conversations
   - Subagent Explanation: Each agent specializes; coordination prevents confusion
   - Explore Agent Deep Dive: Efficient codebase search, pattern matching, rapid orientation
@@ -163,11 +172,13 @@
   - Real-world examples: Exploration (fast search), Plan Mode (multi-phase refactor)
 
 - [ ] T016 [US3] Add "Try With AI" section to 03-subagents-and-orchestration.md:
+
   - Prompt 1: Recognize Explore Agent (`cd project; claude "Search for all network error handlers"`)
   - Prompt 2: Understand Plan Mode (`claude "Plan user authentication addition in phases"`)
   - Prompt 3: Evaluate Usefulness (`claude "Would you use Plan mode for [my task]? What phases?"`)
 
 - [ ] T017 [US3] Add Tier 3 (AI Orchestration) note:
+
   - Competitive subagents introduced conceptually (NOT implemented)
   - Orchestration at scale mentioned (Part 5/6 advanced content)
   - Building custom subagents deferred to Chapter 32
@@ -190,6 +201,7 @@
 ### Implementation for User Story 4
 
 - [ ] T019 [P] [US4] Write Lesson 4 Agent Skills Deep Dive section (04-skills-plugins-mcp.md):
+
   - Progressive disclosure pattern explained (3 levels: metadata in system prompt → full SKILL.md when relevant → referenced files only when needed)
   - SKILL.md structure demonstrated (YAML frontmatter with name/description + markdown instructional content + optional bundled files like Python scripts)
   - Filesystem discovery and dynamic loading explanation
@@ -197,6 +209,7 @@
   - When Claude invokes skills autonomously (based on task context, not user command)
 
 - [ ] T020 [P] [US4] Write Lesson 4 Plugins System section (04-skills-plugins-mcp.md):
+
   - Plugin architecture explained (.claude-plugin/plugin.json manifest structure with metadata fields)
   - What plugins bundle (commands/, agents/, skills/, hooks/, .mcp.json directories and files)
   - Installation workflow demonstrated (`/plugin` command → browse marketplace → `/plugin marketplace add <url>` → `/plugin install <name>` → restart Claude Code → verify in `/help`)
@@ -205,6 +218,7 @@
   - Use cases: team standards enforcement, framework-specific shortcuts, internal tool connections, debugging setups, deployment workflows
 
 - [ ] T021 [P] [US4] Write Lesson 4 MCP Integration section (04-skills-plugins-mcp.md):
+
   - MCP (Model Context Protocol) definition (standard for external tool integration)
   - JSON configuration structure (mcpServers object → server name → command/args/oauth fields)
   - GitHub MCP server example (npx @anthropic-ai/mcp-server-github with OAuth clientId/clientSecret/scopes for repo and issues access)
@@ -213,6 +227,7 @@
   - How MCP configs fit inside plugins (plugins can contain .mcp.json files bundling external integrations)
 
 - [ ] T022 [P] [US4] Write Lesson 4 Relationship Hierarchy section (04-skills-plugins-mcp.md):
+
   - Visual ASCII diagram showing: Plugins (containers) → contain → [Skills + Commands + Agents + Hooks + MCP]
   - Skills distinction: autonomous capabilities (Claude decides when to invoke based on task context)
   - Commands distinction: user-invoked slash commands (like `/plugin`, `/code-review`, `/feature-dev`)
@@ -222,12 +237,14 @@
   - Clear hierarchy explanation: Plugins are broadest container; Skills are one autonomous component among many
 
 - [ ] T023 [US4] Add "Try With AI" section to 04-skills-plugins-mcp.md (4 prompts, includes hands-on plugin installation):
+
   - Prompt 1: Explore Plugins (`claude "/plugin"` → browse marketplace, see available plugins, understand installation options)
   - Prompt 2: Understand Skills Architecture (`claude "Explain agent skills in Claude Code. What is progressive disclosure? Give me the PDF skill example showing the 3 levels: metadata, core content, and referenced files."`)
   - Prompt 3: Install Example Plugin - HANDS-ON (`claude "/plugin marketplace add anthropics/claude-code"` → wait for confirmation → `claude "/plugin install feature-dev"` → wait for download → restart Claude Code → verify with `claude "/help"` showing new `/feature-dev` command)
   - Prompt 4: Plan Custom Plugin (`claude "If I wanted to create a [React/FastAPI/Django] plugin with shortcuts for [common workflow tasks], what would I include? Commands? Agents? Skills? Hooks? Give me the plugin.json structure."`)
 
 - [ ] T024 [US4] Add SKILL.md Example to 04-skills-plugins-mcp.md:
+
   - Complete SKILL.md structure for PDF skill showing YAML frontmatter
   - Example with name: "pdf", description: "Manipulate PDF files - fill forms, extract fields, read content"
   - Markdown instructional content explaining capabilities
@@ -235,12 +252,14 @@
   - 3-level progressive disclosure annotation (Level 1: YAML loaded to system prompt, Level 2: full SKILL.md when PDF task detected, Level 3: pdf_parser.py loaded only when form extraction needed)
 
 - [ ] T025 [US4] Add Plugin Architecture Diagram to 04-skills-plugins-mcp.md:
+
   - Directory structure visualization (.claude-plugin/, commands/, agents/, skills/, hooks/, .mcp.json)
   - plugin.json manifest example with metadata fields (name, version, author, description, components)
   - Component relationships clearly labeled with arrows
   - feature-dev plugin example showing all bundled components
 
 - [ ] T026 [US4] Update frontmatter in 04-skills-plugins-mcp.md:
+
   - `sidebar_position: 4`
   - `title: "Skills, Plugins, and MCP Integration"` (updated title from "Skills and MCP Integration")
   - `duration: "10-12 min"` (updated duration from "6-8 min" to reflect hands-on plugin installation)
@@ -265,12 +284,14 @@
 ### Implementation for User Story 5
 
 - [ ] T023 [US5] Write Lesson 5 (05-hello-world-practice.md) with sections:
+
   - Workflow Explanation: Template - specify intent, Claude acts, verify
   - Workflow in Action: 6-step example (human specifies → Claude creates → human verifies → Claude runs → human evaluates → Claude iterates)
   - Role Clarity: Human as decider/verifier, Claude Code as executor
   - When to Intervene: If output wrong, specify correction
 
 - [ ] T024 [US5] Add "Try With AI" section to 05-hello-world-practice.md (EXPANDED - 4 prompts for this lesson):
+
   - Prompt 1: Create File (`Create hello.py that prints "Hello World!" and current date`)
   - Prompt 2: Run and Test (`Now run hello.py and show output`)
   - Prompt 3: Modify and Improve (`Update date format to be more readable`)
@@ -278,6 +299,7 @@
   - Duration: ~8-10 minutes total for 4 prompts (this lesson more extensive)
 
 - [ ] T025 [US5] Add Edge Cases section:
+
   - File Already Exists (specify uniqueness or ask to overwrite)
   - Python Not Installed (error message, defer to later chapter, suggest alternative)
   - Module Import Error (collaborate with Claude: "I got this error—what's wrong?")
@@ -301,6 +323,7 @@
 ### Implementation for User Story 6
 
 - [ ] T027 [P] [US6] Write Lesson 6 (06-claude-md-context-files.md) with sections:
+
   - Problem Statement: Repeating context every session is friction
   - CLAUDE.md Concept: Markdown file in project root; auto-loads on session start
   - Content Structure: Typical sections (overview, tech stack, directory structure, coding conventions, key commands, important notes)
@@ -309,6 +332,7 @@
   - Verification: Restart session; confirm auto-loading
 
 - [ ] T028 [US6] Add Example CLAUDE.md Structure in lesson:
+
   - Project Overview section
   - Technology Stack section
   - Directory Structure (with tree diagram)
@@ -318,12 +342,14 @@
   - Complete 20-30 line example showing all sections
 
 - [ ] T029 [US6] Add "Try With AI" section to 06-claude-md-context-files.md:
+
   - Prompt 1: Generate CLAUDE.md (`Create CLAUDE.md for my [project type] with sections: Overview, Stack, Structure, Conventions, Commands`)
   - Prompt 2: Refine Content (`Review CLAUDE.md. Adjust for: [corrections]`)
   - Prompt 3: Create File (`Create CLAUDE.md in project root`)
   - Prompt 4: Test Auto-Loading (Optional) (`Exit session. Next session: ask what you know about project without re-explaining`)
 
 - [ ] T030 [US6] Add Edge Cases section:
+
   - CLAUDE.md Not Loading: Check file location (root), filename case (exact CLAUDE.md), restart session
   - Unclear What Goes In: Guidance - "What does Claude need to know to help effectively?"
   - Concern about File Size: Reassurance - "1-3 KB normal. Context cheap; clarity expensive."
@@ -346,6 +372,7 @@
 ### Implementation for User Story 7
 
 - [ ] T032 [P] [US7] Write Lesson 7 (07-permission-management.md) with sections:
+
   - Safety Rationale: Why permission prompts exist; accidents prevented
   - Permission Modes: Default (asks every time), acceptEdits (auto-approve file changes), plan (multi-step tasks)
   - Checking Permissions: `/permissions` command demo
@@ -353,16 +380,19 @@
   - Best Practices: Start permissive only after understanding implications
 
 - [ ] T033 [US7] Add Permission Modes Comparison Table:
+
   - Columns: Mode, Behavior, Use Case, Risk
   - Rows: default, acceptEdits, plan
   - Concrete examples for each mode
 
 - [ ] T034 [US7] Add "Try With AI" section to 07-permission-management.md:
+
   - Prompt 1: Check Current Permissions (`claude "/permissions"`)
   - Prompt 2: Understand Your Settings (`claude "Explain my current permission settings. What mode?"`)
   - Prompt 3: Discuss Trade-offs (`If I changed to 'acceptEdits', what changes? What would you still ask about?`)
 
 - [ ] T035 [US7] Add Edge Cases section:
+
   - "Permission Denied" Blocking Workflow: Clarify intentional; approve or specify different action
   - Confusion between Denial and Error: Distinction - prompt = "May I?", error = "Something broke"
   - Concern about Memory: Reassurance - single denials not remembered; mode settings persistent
@@ -385,6 +415,7 @@
 ### Implementation for User Story 8
 
 - [ ] T037 [P] [US8] Write Lesson 8 (08-hooks-and-extensibility.md) with sections:
+
   - Hooks Concept: Automated actions triggered by events
   - Event Types: PreToolUse (before command), PostToolUse (after command), SessionStart (open), SessionEnd (close)
   - Real-World Examples: Format code after edit, run tests after save, load env at start
@@ -392,17 +423,20 @@
   - Building Custom: Mentioned briefly (Part 5/6 content)
 
 - [ ] T038 [US8] Add Hook Examples with YAML-style descriptions:
+
   - Example 1: PostToolUse → Format code (prettier/black)
   - Example 2: PostToolUse → Run tests on saved file
   - Example 3: SessionStart → Load .env variables
   - Each with: Hook, Event, Action, Benefit
 
 - [ ] T039 [US8] Add "Try With AI" section to 08-hooks-and-extensibility.md:
+
   - Prompt 1: Understand Hooks (`claude "Explain hooks. Give 2-3 useful examples."`)
   - Prompt 2: Identify Opportunities (`Think of repetitive task. claude "Tell me how a hook could help."`)
   - Prompt 3: Future Learning Path (`Can I build custom hooks? Hard? When learn? Prerequisites?`)
 
 - [ ] T040 [US8] Add Edge Cases section:
+
   - Confusion between Hooks and Skills/MCP: Hooks = automate Claude behavior; Skills = extend capabilities
   - Expectation of Building Now: Redirect - "Part 5 content (Chapter 31-33). Know they exist now."
   - Hook Errors: Clarify - usually non-blocking; debugging advanced content
@@ -425,6 +459,7 @@
 ### Implementation for User Story 9
 
 - [ ] T042 [P] [US9] Write Lesson 9 (09-settings-hierarchy.md) with sections:
+
   - Settings Concept: Configuration files customize Claude Code behavior
   - Hierarchy Levels: User (~/.claude/settings.json), Project (.claude/settings.json), Local (.claude/settings.local.json)
   - Precedence Order: Local > Project > User (more specific overrides general)
@@ -432,22 +467,26 @@
   - Not Configuring Now: Detailed configuration Part 5
 
 - [ ] T043 [US9] Add Hierarchy Visualization:
+
   - Tree diagram showing USER LEVEL → PROJECT LEVEL → LOCAL LEVEL
   - For each: file path, applies to (scope), examples
   - Precedence arrows showing override direction
 
 - [ ] T044 [US9] Add Example Scenario showing precedence:
+
   - User level: permission_mode = "default"
   - Project level: permission_mode = "acceptEdits"
   - Local level: (not set)
   - Result explanation: Project overrides user; local would override both
 
 - [ ] T045 [US9] Add "Try With AI" section to 09-settings-hierarchy.md:
+
   - Prompt 1: Explain Hierarchy (`claude "Explain settings hierarchy. Where stored? Precedence? Not configuring yet."`)
   - Prompt 2: Show Your Settings (`claude "Show settings files that apply to my projects. Which exist? Where?"`)
   - Prompt 3: Plan for Later (`When I configure for team (Part 5), what settings would I modify? Project or user?`)
 
 - [ ] T046 [US9] Add Edge Cases section:
+
   - Confusion about .claude/ Directory: Clarify - holds config; don't delete
   - Broke Configuration: Recovery - rename settings.json to reset; validate JSON; backups
   - Settings Not Applying: Restart Claude Code; check precedence; verify which level edited
@@ -514,6 +553,7 @@
 **Purpose**: Invoke validation-auditor and factual-verifier agents for comprehensive quality check
 
 - [ ] T069 Invoke validation-auditor agent for Chapter 5:
+
   - Check technical correctness (all Claude Code features accurate)
   - Verify code examples run (installation commands, workflows)
   - Validate pedagogical effectiveness (learning objectives met)
@@ -525,6 +565,7 @@
 - [ ] T072 Review MINOR issues from validation-auditor (nice-to-have improvements)
 
 - [ ] T073 Invoke factual-verifier agent for Chapter 5:
+
   - Verify factual accuracy (all claims against official docs)
   - Check against source materials (constitution, chapter-index, Context7 docs)
   - Cross-reference citations
@@ -535,6 +576,7 @@
 - [ ] T076 Review LOW priority factual-verifier findings
 
 - [ ] T077 Final constitutional alignment check:
+
   - Principle 13 (Graduated Teaching): ✓ across all 9 lessons
   - Principle 18 (Three Roles): ✓ across all 9 lessons
   - Core Philosophy #1 (AI Spectrum): ✓ Lesson 1 + Lesson 5
@@ -578,6 +620,7 @@
 ### Within Each Lesson
 
 Standard lesson structure:
+
 1. Introduction/Hook (why this matters)
 2. Core concepts (Tier 1: book teaches)
 3. AI collaboration (Tier 2: AI companion helps)
@@ -649,21 +692,21 @@ All proceed after Phase 2 (README) complete.
 
 Each task maps to specification success criteria:
 
-| Task(s) | Success Criteria | Eval | Validation Method |
-|---------|------------------|------|-------------------|
-| T007-T009 | SC-002, SC-004, SC-013 | Eval 2, Eval 4 | Lesson 1 complete with paradigm comparison table |
-| T010-T014 | SC-001, SC-006, SC-007 | Eval 1 | Lesson 2 complete; sandbox tested all platforms |
-| T015-T018 | SC-002 (extended) | Eval 2 | Lesson 3 explains subagents clearly |
-| T019-T027 | SC-005, SC-006, SC-007, SC-008 | Eval 8 | Lesson 4 comprehensive Skills/Plugins/MCP with hands-on plugin installation |
-| T023-T026 | SC-003, SC-004, SC-009 | Eval 3, Eval 4 | Lesson 5 all prompts work in sandbox |
-| T027-T031 | SC-017 | Eval 6 | Lesson 6 CLAUDE.md creation tested |
-| T032-T036 | SC-018 | Eval 7 | Lesson 7 permissions command tested |
-| T037-T041 | SC-019 | Eval 8 (partial) | Lesson 8 hooks concept explained |
-| T042-T047 | SC-020 | Eval 8 (complete) | Lesson 9 hierarchy explained |
-| T048-T058 | SC-008, SC-010, SC-011, SC-012 | All evals | Constitutional compliance validated |
-| T059-T068 | SC-014, SC-015, SC-016 | Eval 5 | Technical accuracy verified |
-| T068A | SC-006, SC-016 | Eval 8 | Plugin installation workflow validated in sandbox |
-| T069-T079 | All SC, All Evals | All | Agent-based comprehensive review |
+| Task(s)   | Success Criteria               | Eval              | Validation Method                                                           |
+| --------- | ------------------------------ | ----------------- | --------------------------------------------------------------------------- |
+| T007-T009 | SC-002, SC-004, SC-013         | Eval 2, Eval 4    | Lesson 1 complete with paradigm comparison table                            |
+| T010-T014 | SC-001, SC-006, SC-007         | Eval 1            | Lesson 2 complete; sandbox tested all platforms                             |
+| T015-T018 | SC-002 (extended)              | Eval 2            | Lesson 3 explains subagents clearly                                         |
+| T019-T027 | SC-005, SC-006, SC-007, SC-008 | Eval 8            | Lesson 4 comprehensive Skills/Plugins/MCP with hands-on plugin installation |
+| T023-T026 | SC-003, SC-004, SC-009         | Eval 3, Eval 4    | Lesson 5 all prompts work in sandbox                                        |
+| T027-T031 | SC-017                         | Eval 6            | Lesson 6 CLAUDE.md creation tested                                          |
+| T032-T036 | SC-018                         | Eval 7            | Lesson 7 permissions command tested                                         |
+| T037-T041 | SC-019                         | Eval 8 (partial)  | Lesson 8 hooks concept explained                                            |
+| T042-T047 | SC-020                         | Eval 8 (complete) | Lesson 9 hierarchy explained                                                |
+| T048-T058 | SC-008, SC-010, SC-011, SC-012 | All evals         | Constitutional compliance validated                                         |
+| T059-T068 | SC-014, SC-015, SC-016         | Eval 5            | Technical accuracy verified                                                 |
+| T068A     | SC-006, SC-016                 | Eval 8            | Plugin installation workflow validated in sandbox                           |
+| T069-T079 | All SC, All Evals              | All               | Agent-based comprehensive review                                            |
 
 ---
 

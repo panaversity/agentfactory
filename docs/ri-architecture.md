@@ -146,7 +146,7 @@ ai-native-software-development/
 │   ├── From-Reusable-Code-to-Reusable Intelligence.md
 │   └── Reasoning_Activation_in_LLMs_arXiv_Complete.md
 │
-└── book-source/docs/                 # Generated outputs (regenerable)
+└── apps/learn-app/docs/                 # Generated outputs (regenerable)
     ├── 01-Introducing-AI-Driven-Development/
     ├── 02-AI-Tool-Landscape/
     └── [13 parts, 70+ chapters]
@@ -232,7 +232,7 @@ Each agent is a **specialized reasoning orchestrator** with:
 - Relevant skills from `.claude/skills/`
 
 **Outputs**:
-- Lesson markdown files (book-source/docs/[part]/[chapter]/[lesson]/README.md)
+- Lesson markdown files (apps/learn-app/docs/[part]/[chapter]/[lesson]/README.md)
 - Code examples (tested via code-validation-sandbox skill)
 - "Try With AI" sections (Layer 2 collaboration, framework INVISIBLE)
 
@@ -1113,14 +1113,14 @@ awk '/^## Try With AI/,0' [lesson-file.md] | grep -E "^## (What's Next|Key Takea
 ## Step 1: Read the Learning Context (MANDATORY)
 
 For Chapter Work:
-1. Read `book-source/docs/chapter-index.md`:
+1. Read `apps/learn-app/docs/chapter-index.md`:
    - Locate chapter number
    - Extract Part number (determines prerequisite knowledge)
    - Extract proficiency level (A1/A2/B1/B2/C1/C2)
    - Extract chapter theme and learning objectives
    - Extract prerequisites (what students know BEFORE this chapter)
 
-2. Read Chapter README (`book-source/docs/[part]/[chapter]/README.md`):
+2. Read Chapter README (`apps/learn-app/docs/[part]/[chapter]/README.md`):
    - Extract lesson structure (how many lessons, what each teaches)
    - Extract pedagogical approach currently used
    - Extract any existing constraints or design decisions
@@ -1245,7 +1245,7 @@ If user corrects → Update understanding, restate, get confirmation
 3. **ADR** → `history/adr/ADR-003-meta-commentary-prohibition.md` (Chapter 9 failure mode)
 4. **Audit** → `history/audits/chapter-9-redesign-audit.md` (Validation before/after)
 5. **Intelligence Object** → `history/intelligence/chapter-9-scaffolding-exposure-learnings.md` (Pattern extraction)
-6. **Implementation** → `book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/README.md` (Final content)
+6. **Implementation** → `apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/README.md` (Final content)
 
 **Result**: Complete provenance from research → policy → implementation → validation
 
@@ -1326,7 +1326,7 @@ If user corrects → Update understanding, restate, get confirmation
 - ✅ Skills (`.claude/skills/`)
 - ✅ Templates (`.specify/templates/`)
 - ✅ Output styles (`.claude/output-styles/`)
-- ❌ Generated content (`book-source/docs/`) — regenerable from specs
+- ❌ Generated content (`apps/learn-app/docs/`) — regenerable from specs
 
 **Why Generated Content Is Not Primary RI**:
 - Code is regenerable from specifications
@@ -1433,7 +1433,7 @@ PHRs                        → history/prompts/[stage]/PHR-YYYY-MM-DD-[slug].md
 Audits                      → history/audits/[chapter-name]-[date]-audit.md
 Templates                   → .specify/templates/[template-name]-template.md
 Output Styles               → .claude/output-styles/[category]/[style-name].md
-Generated Content (Book)    → book-source/docs/[part]/[chapter]/[lesson]/README.md
+Generated Content (Book)    → apps/learn-app/docs/[part]/[chapter]/[lesson]/README.md
 ```
 
 ---

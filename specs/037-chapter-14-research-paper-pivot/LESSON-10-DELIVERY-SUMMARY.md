@@ -9,7 +9,8 @@
 ## What Was Delivered
 
 ### Complete Rewrite of Lesson File
-**File**: `/book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/10-brownfield-adoption.md`
+
+**File**: `/apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/10-brownfield-adoption.md`
 
 - **Original**: 2054 lines (heavily video project-focused)
 - **Rewritten**: 332 lines (generic, applicable to any project)
@@ -18,17 +19,20 @@
 ### All Requirements Met
 
 ✅ **Removed all video project examples**
+
 - 0 references to video projects
 - 0 references to Playwright MCP
 - 0 references to Gemini.google.com
 - 0 references to YouTube workflows
 
 ✅ **Uses generic project examples**
+
 - Blog/Website project (CLAUDE.md, deploy command)
 - API project (source code, test commands)
 - Documentation project (docs, publish command)
 
 ✅ **Teaches 4 core concepts** (within B1 cognitive limit)
+
 1. Greenfield vs Brownfield definition
 2. What gets overwritten/preserved in `init --here`
 3. Safe brownfield testing workflow (git branch + backup + commit)
@@ -39,6 +43,7 @@
 ✅ **B1 proficiency level** (Intermediate - moderate scaffolding, clear examples)
 
 ✅ **Proper lesson structure**
+
 - Foundation section (understand concepts)
 - Collaboration section (Layer 2 AI partnership)
 - Practice section (apply to real projects)
@@ -50,9 +55,11 @@
 ## Content Structure
 
 ### Section 1: Foundation — Greenfield vs Brownfield
+
 **Purpose**: Establish mental model of the problem
 
 **Content**:
+
 - Definition of greenfield (empty start) vs brownfield (inherited project)
 - Exact behavior of `specifyplus init --here`
 - What gets OVERWRITTEN (CLAUDE.md only)
@@ -62,9 +69,11 @@
 **Learning**: Students understand the risk and why backups matter
 
 ### Section 2: Collaboration — Safe Brownfield Testing Workflow
+
 **Purpose**: Demonstrate AI partnership in solving adoption problem
 
 **Content**:
+
 - Student describes situation (valuable CLAUDE.md at risk)
 - AI suggests safe workflow (branch + backup + commit)
 - AI explains redundant recovery paths
@@ -74,15 +83,18 @@
 **Learning**: Students see how to collaborate with AI on safety decisions
 
 **Layer 2 Elements**:
+
 - AI as Teacher (suggests workflow pattern)
 - Student as Learner (provides context, asks questions)
 - AI as Adaptor (tailors recommendations to student's project type)
 - Framework INVISIBLE (students experience, not study the pedagogy)
 
 ### Section 3: Practice — Identifying Your Project's Content
+
 **Purpose**: Prepare for actual adoption on student's real project
 
 **Content**:
+
 - Self-check framework for content categorization
 - Coding standards → constitution.md
 - Architecture principles → constitution.md
@@ -92,9 +104,11 @@
 **Learning**: Students can categorize their team's knowledge before running init
 
 ### Section 4: Try With AI
+
 **Purpose**: Actionable prompts students can use immediately
 
 **Content**:
+
 - Prompt 1: Understanding current state and adoption strategy
 - Prompt 2: Planning the workflow for specific project
 - Prompt 3: Merging strategy after init completes
@@ -102,9 +116,11 @@
 - Safety reminder about redundant backups
 
 ### Section 5: Checkpoint — Reflect on Adoption Path
+
 **Purpose**: Consolidate learning and plan next steps
 
 **Content**:
+
 - Which applies to your next project (greenfield vs brownfield)?
 - What team knowledge would you preserve?
 - Could you recover from accidental data loss?
@@ -115,6 +131,7 @@
 ## Pedagogical Alignment
 
 ### Constitutional Requirements
+
 - ✅ **Specification Primacy**: Lesson shows safe workflow BEFORE running init
 - ✅ **Progressive Complexity**: 4 concepts within B1 limit of 10
 - ✅ **Factual Accuracy**: All claims based on actual Spec-Kit Plus behavior
@@ -124,14 +141,16 @@
 - ✅ **Minimal Content**: Every section maps to a learning objective
 
 ### Learning Objectives Mapped
-| Objective | Section | Bloom's |
-|-----------|---------|---------|
-| Understand greenfield vs brownfield contexts | Foundation 1.1 | Understand |
-| Apply constitution-first approach | Collaboration 2.3 | Apply |
-| Execute safe brownfield workflow | Collaboration 2.1 + Practice 3.2 | Apply |
-| Identify integration points | Practice 3.1 | Analyze |
+
+| Objective                                    | Section                          | Bloom's    |
+| -------------------------------------------- | -------------------------------- | ---------- |
+| Understand greenfield vs brownfield contexts | Foundation 1.1                   | Understand |
+| Apply constitution-first approach            | Collaboration 2.3                | Apply      |
+| Execute safe brownfield workflow             | Collaboration 2.1 + Practice 3.2 | Apply      |
+| Identify integration points                  | Practice 3.1                     | Analyze    |
 
 ### Three Roles Framework (Invisible)
+
 - **AI as Teacher**: Suggests multi-layer safety approach
 - **Student as Learner**: Describes project context and concerns
 - **AI as Adaptor**: Tailors merge strategy to project type
@@ -142,18 +161,21 @@
 ## Why This Approach Works
 
 ### Generic Examples Over Domain-Specific
+
 - **Video project** was too narrow (only for video generation workflows)
 - **Blog, API, docs** are applicable to 80%+ of real projects
 - Students see pattern repeats: CLAUDE.md vulnerable, code safe, custom commands preserved
 - Learning transfers to OTHER domains (mobile, data science, ML, etc.)
 
 ### Safety First
+
 - Teaches redundant recovery (branch + backup + commit = 3 methods)
 - Explains EXACTLY what gets overwritten (not vague warnings)
 - Gives decision framework for merging content
 - Prepares students for experimental features in general (not just Spec-Kit Plus)
 
 ### Practical Utility
+
 - Students can run this workflow today on their real projects
 - Actionable prompts ready to copy/paste
 - Worksheet format for planning
@@ -164,17 +186,20 @@
 ## Quality Metrics
 
 ### Size Optimization
+
 - **Original lesson**: 2054 lines (bloated with video-specific details)
 - **Rewritten lesson**: 332 lines (focused on core pattern)
 - **Efficiency gain**: 84% reduction while improving clarity and generalizability
 
 ### Content Validation
+
 - **Video/Playwright/Gemini references**: 0 (completely removed)
 - **Concept count**: 4 (optimal for B1 proficiency)
 - **Example diversity**: 3 project types (blog, API, docs)
 - **Duration**: 30 minutes (on target for chapter pacing)
 
 ### Pedagogical Quality
+
 - **Layer**: Layer 2 (AI Collaboration) demonstrated naturally
 - **Three Roles**: AI teacher/student/adaptor INVISIBLE to reader
 - **Engagement**: Dialogue-based, not lecture-style
@@ -185,14 +210,17 @@
 ## Files Created/Modified
 
 ### Modified
-1. **`/book-source/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/10-brownfield-adoption.md`**
+
+1. **`/apps/learn-app/docs/04-SDD-RI-Fundamentals/14-spec-kit-plus-hands-on/10-brownfield-adoption.md`**
    - Completely rewritten from 2054 lines to 332 lines
    - Video examples removed
    - Generic examples added
    - Layer 2 collaboration pattern introduced
 
 ### Created (for documentation)
+
 1. **`/specs/036-chapter-14-sdd-ri-hands-on/LESSON-10-REWRITE-REPORT.md`**
+
    - Detailed change documentation
    - Constitutional compliance verification
    - Learning objective mapping
@@ -217,17 +245,19 @@
 ## Key Differentiators of This Rewrite
 
 ### What Makes This Different from Original
-| Aspect | Original (2054 lines) | Rewritten (332 lines) |
-|--------|----------------------|----------------------|
-| Focus | Video project specifics | Generic adoption pattern |
-| Examples | Gemini.google.com, Playwright | Blog, API, documentation |
-| Generalizability | 15% (video projects only) | 80%+ (most project types) |
-| Safety Teaching | Warnings without details | Concrete workflow with recovery paths |
-| Collaboration | Not emphasized | Layer 2 dialogue pattern central |
-| Cognitive Load | High (many video-specific details) | Optimal (4 core concepts) |
-| Practicality | Requires specific tools/setup | Works with any project |
+
+| Aspect           | Original (2054 lines)              | Rewritten (332 lines)                 |
+| ---------------- | ---------------------------------- | ------------------------------------- |
+| Focus            | Video project specifics            | Generic adoption pattern              |
+| Examples         | Gemini.google.com, Playwright      | Blog, API, documentation              |
+| Generalizability | 15% (video projects only)          | 80%+ (most project types)             |
+| Safety Teaching  | Warnings without details           | Concrete workflow with recovery paths |
+| Collaboration    | Not emphasized                     | Layer 2 dialogue pattern central      |
+| Cognitive Load   | High (many video-specific details) | Optimal (4 core concepts)             |
+| Practicality     | Requires specific tools/setup      | Works with any project                |
 
 ### What Stayed the Same
+
 - Core concept: Brownfield adoption is risky without backups
 - Solution approach: Git branch + backup + commit = redundant safety
 - Content strategy: Standards to constitution, patterns to CLAUDE.md
@@ -266,4 +296,3 @@ Lesson 10 has been completely rewritten to remove video project specificity whil
 - **Safely Designed**: Teaches redundant recovery with clear decision framework
 
 The lesson bridges Spec-Kit Plus greenfield learning (Lessons 1-9) to professional brownfield adoption on existing projects, preparing students for real-world Spec-Kit Plus use.
-

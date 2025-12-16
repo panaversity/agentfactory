@@ -17,17 +17,20 @@ This task checklist breaks Chapter 32 implementation into specific, testable dev
 **EVERY task now includes comprehensive technical references** so ANY implementation worker (human or AI agent) can execute it efficiently without conversation context:
 
 1. **What to Read/Study**:
+
    - Style guides, lesson plans, external documentation
    - Example lessons to study (2-3 per task)
    - Conceptual resources (articles, tutorials)
 
 2. **How to Actually Do It**:
+
    - Code example templates (copy-paste ready)
    - Try With AI prompts (3 specific prompts with expected outcomes)
    - Reflection worksheet templates
    - Real-world examples (specific companies/scenarios)
 
 3. **How to Validate It's Done Right**:
+
    - Code execution tests (all scripts must run without errors)
    - Cognitive load verification (count concepts, verify ≤ limit)
    - Scale connection validation (search for "7-9 agents", verify frequency)
@@ -45,12 +48,14 @@ This task checklist breaks Chapter 32 implementation into specific, testable dev
 **THE TRANSFORMATIVE PROMISE**: After completing this chapter, students become **"creative orchestrators"** who can coordinate 10-15 autonomous agents (AI or human) through decomposition thinking, progressing from manual team leadership (FIRST CLIMAX) to programmatic automation enabling creative independence (SECOND CLIMAX).
 
 **Two Climaxes Design**:
+
 1. **FIRST CLIMAX (Lesson 4)**: MANUAL parallel SpecKit Plus - student acts as "team lead" coordinating 5+ agent teams (SpecKit Plus workflows across 5 worktrees), running `/sp.specify`, `/sp.plan`, `/sp.tasks`, `/sp.implement` simultaneously - experiencing decomposition thinking firsthand (2.5-3x speedup proven)
 2. **SECOND CLIMAX (Lesson 8)**: PROGRAMMATIC parallel SpecKit Plus - student builds Super Orchestrator script that spawns 10-15 independent Claude sessions automatically via headless mode - achieving **creative independence** (10x+ productivity, freeing human for strategy/innovation)
 
 **Graduate Identity**: Students become **"creative orchestrators"**—practical for PMs/founders who decompose once, automate execution, iterate creatively. They can manage agent teams like human teams, with specs eliminating coordination chaos.
 
 **Reality Check for Implementation (Honest Expectation Setting)**:
+
 - ⚠️ First decomposition takes **2-3x longer** than "just start coding" (set expectation in Lesson 1)
 - ✅ Payoff is **10x overall gains** (speedup + quality + scalability)
 - Students who skip decomposition: Fast start, slow finish (merge conflicts, rework)
@@ -83,6 +88,7 @@ Super Orchestrator (bash script / meta-agent)
 ```
 
 **Key Architecture Principles**:
+
 1. **Super Orchestrator** = Script that establishes contract with human, decomposes work, spawns sessions
 2. **Each Claude session is independent**: Own worktree (isolation) + own MCP (capabilities) + own internal agents
 3. **Headless mode** (`claude -p`) = Programmatic interface for spawning sessions
@@ -90,6 +96,7 @@ Super Orchestrator (bash script / meta-agent)
 5. **No inter-session coordination protocol needed**: Each session works independently via specifications
 
 **Why This Is More Practical**:
+
 - ✅ Natural isolation via git worktrees
 - ✅ Each session can fail without affecting others
 - ✅ MCP provides capabilities (not coordination complexity)
@@ -149,6 +156,7 @@ END: Creative Orchestrator who coordinates 10-15 autonomous agents (AI or human)
 ```
 
 **EVERY LESSON MUST**:
+
 1. **Frame role progression**: Lessons 1-4 as "team lead" (manual coordination), Lessons 5-8 as "creative orchestrator" (automation enabling creative independence)
 2. **Connect to agent teams analogy**: "Managing agent teams like human teams, specs eliminate coordination chaos"
 3. **Show progression**: What you learn enables X sessions now, Y sessions later (via Super Orchestrator script)
@@ -159,6 +167,7 @@ END: Creative Orchestrator who coordinates 10-15 autonomous agents (AI or human)
    - Lesson 9: "I am a creative orchestrator"
 
 **CRITICAL SUCCESS CRITERIA**:
+
 - ✅ Student completes chapter believing: **"I am a creative orchestrator"** (not just "I learned parallel workflows")
 - ✅ Every lesson answers: "Why does this matter for becoming a creative orchestrator?"
 - ✅ Lesson 4 (FIRST CLIMAX): Student coordinates 5 agent teams manually, experiences decomposition thinking at scale
@@ -166,6 +175,7 @@ END: Creative Orchestrator who coordinates 10-15 autonomous agents (AI or human)
 - ✅ Capstone reflection: "Upfront thinking doubled, total delivery halved—now I focus on strategy"
 
 **Key Constraints for Implementation**:
+
 - **60% emphasis on decomposition thinking** (the bottleneck - poor decomposition → chaos at 3 agents; excellent decomposition → scalable to 15 agents)
 - **40% emphasis on tool proficiency** (tools amplify decomposition quality, don't fix it)
 - **Creative independence framing in Lessons 5-8** (automation frees humans for strategic/creative work, not just "faster execution")
@@ -185,6 +195,7 @@ Every lesson task MUST include comprehensive technical references so ANY worker 
 ### Required Technical References Sections
 
 **1. Technical References** (What to read/study):
+
 - Lesson style guide: `.claude/output-styles/lesson.md`
 - Lesson plan: `specs/002-chapter-32-redesign/plan.md` (specific lesson section)
 - External documentation: Tool/technology docs (git, Claude Code, SpecKit Plus, etc.)
@@ -192,12 +203,14 @@ Every lesson task MUST include comprehensive technical references so ANY worker 
 - Conceptual resources: Articles, tutorials explaining key concepts
 
 **2. Implementation Guidance** (How to actually do it):
+
 - **Code example templates**: Specific format/structure for each code block
 - **Try With AI prompts**: 3 concrete prompts with expected outcomes
 - **Reflection worksheet templates**: Tables, questions, measurement tools
 - **Real-world examples**: Which companies/scenarios to reference
 
 **3. Quality Standards** (How to validate it's done right):
+
 - **Code examples**: Must be copy-paste ready, tested on macOS/Linux
 - **Cognitive load**: Max N concepts (list them explicitly)
 - **Skills proficiency**: CEFR level (A2/B1/B2) with validation criteria
@@ -205,6 +218,7 @@ Every lesson task MUST include comprehensive technical references so ANY worker 
 - **Reading level**: Grade 10-12 (Hemingway Editor check)
 
 **4. Validation Checklist** (Testable acceptance):
+
 - [ ] Run all code examples - must work without errors
 - [ ] Count new concepts - verify ≤ cognitive load limit
 - [ ] Search for "7-9 agents" - must appear 3+ times
@@ -218,6 +232,7 @@ Every lesson task MUST include comprehensive technical references so ANY worker 
 Every lesson task MUST include this validation checklist in acceptance criteria:
 
 **Super Orchestrator Scale Connection** (CRITICAL):
+
 - ✅ Introduction explicitly connects lesson to Super Orchestrator vision (spawning 10-15 independent Claude sessions)
 - ✅ At least one section shows: "This enables Super Orchestrator to manage N sessions now, M sessions later"
 - ✅ Reflection exercise asks: "How does this enable Super Orchestrator to scale to 10-15 sessions?"
@@ -225,6 +240,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - ✅ Student completes lesson understanding its role in building Super Orchestrator capability
 
 **Lesson-Specific Super Orchestrator Messaging**:
+
 - **Lessons 1-2**: "You're learning to spawn 2-3 sessions manually to understand decomposition (foundation for Super Orchestrator)"
 - **Lessons 3-4**: "You're proving decomposition works at 2-3 session scale (preparing to automate with Super Orchestrator)"
 - **Lessons 5-7**: "You're adding automation capabilities that Super Orchestrator will use (CI/CD, MCP config, background execution)"
@@ -232,6 +248,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - **Lesson 9**: "You're using Super Orchestrator for real project, proving you can spawn 10-15 sessions programmatically"
 
 **Architecture Clarity** (MUST be explicit in every lesson):
+
 - Each Claude session is INDEPENDENT: own worktree + own MCP + own internal agents
 - Super Orchestrator spawns sessions via headless mode (`claude -p`)
 - MCP provides capabilities/tools to each session (NOT cross-session coordination)
@@ -251,7 +268,8 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 **Description**: Create chapter overview document that LEADS with the transformative vision: 1 human managing 7-9 AI Agents
 
 **Acceptance Criteria**:
-- [ ] File exists at `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/05-Spec-Driven-Development/32-real-world-spec-kit-workflows/README.md`
+
+- [ ] File exists at `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/05-Spec-Driven-Development/32-real-world-spec-kit-workflows/README.md`
 - [ ] Matches directory structure from `specs/book/directory-structure.md`
 - [ ] **Opening hook** (first 2 paragraphs):
   - LEADS with the vision: "Imagine orchestrating 7-9 AI Agents simultaneously..."
@@ -285,23 +303,26 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - [ ] Matches existing chapter READMEs in style and structure
 
 **Technical References**:
+
 1. **Chapter README Style Guide**: `.claude/output-styles/chapters.md`
 2. **Example Chapter READMEs to Study**:
-   - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/05-Spec-Driven-Development/README.md` (Part 5 intro - study structure)
-   - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/05-Spec-Driven-Development/30-specification-driven-development-fundamentals/README.md` (Chapter 30)
-   - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/README.md` (Chapter 31 - direct prerequisite)
+   - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/05-Spec-Driven-Development/README.md` (Part 5 intro - study structure)
+   - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/05-Spec-Driven-Development/30-specification-driven-development-fundamentals/README.md` (Chapter 30)
+   - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/README.md` (Chapter 31 - direct prerequisite)
 3. **Directory Structure**: `specs/book/directory-structure.md` (naming conventions)
 4. **Chapter Index**: `specs/book/chapter-index.md` (chapter titles, numbers)
 5. **Vision Reference**: `specs/002-chapter-32-redesign/spec.md` (read Executive Summary for 7-9 agent vision framing)
 6. **Docusaurus YAML frontmatter docs**: https://docusaurus.io/docs/markdown-features/front-matter
 
 **Implementation Guidance**:
+
 - **Hook pattern**: Study Chapter 5 README opening ("Picture this...") for engaging hook style
 - **Learning objectives format**: Use action verbs (Master, Understand, Build, Orchestrate)
 - **Time commitment**: Be specific with progression (6-8h fast-track, 10-12h complete, +4h optional)
 - **Journey visualization**: Use simple text diagram (see North Star section in tasks.md for format)
 
 **Quality Standards**:
+
 - Reading level: Grade 10-12 (use Hemingway Editor to verify)
 - Engagement: First 2 paragraphs must hook reader with vision
 - Clarity: Non-technical stakeholder should understand chapter value after reading README
@@ -318,7 +339,8 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 **Description**: Develop complete Lesson 1 teaching git worktrees, parallel spec generation, and decomposition thinking fundamentals
 
 **Acceptance Criteria**:
-- [ ] Content file created: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/05-Spec-Driven-Development/32-real-world-spec-kit-workflows/01-git-worktrees-parallel-specifications.md`
+
+- [ ] Content file created: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/05-Spec-Driven-Development/32-real-world-spec-kit-workflows/01-git-worktrees-parallel-specifications.md`
 - [ ] YAML frontmatter includes:
   - title, chapter, lesson, duration_minutes (90)
   - skills metadata (3 skills with CEFR levels A2/B1, categories, Bloom's levels, measurable outcomes)
@@ -368,6 +390,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   - ✅ Student understands: "I'm building the foundation for 7-9 agent orchestration"
 
 **Technical References**:
+
 1. **Lesson Style Guide**: `.claude/output-styles/lesson.md` (YAML frontmatter structure, section format)
 2. **Lesson Plan**: `specs/002-chapter-32-redesign/plan.md` (Lesson 1 section - learning objectives, skills metadata, content outline)
 3. **Git Worktree Documentation**:
@@ -378,7 +401,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
    - Workflow: `.specify/` directory (study structure)
    - Commands: Look at existing PHRs in `history/prompts/` for `/sp.specify` usage patterns
 5. **Example Lessons to Study**:
-   - Chapter 31, Lesson 1: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/01-your-first-specification.md` (study structure)
+   - Chapter 31, Lesson 1: `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/apps/learn-app/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/01-your-first-specification.md` (study structure)
    - Chapter 8, Lesson 2: Git branching fundamentals (reference for git concepts explanation)
 6. **Integration Contracts Concept**:
    - RESTful API design principles (integration contract examples)
@@ -388,6 +411,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
    - https://docs.claude.com/en/docs/claude-code/features
 
 **Implementation Guidance**:
+
 - **Git worktree script**: Provide bash script with OS-specific handling (macOS: `git worktree add ../feature-001-auth feature-001-auth`, Linux/Windows variations)
 - **Integration contract template**: Create markdown table showing: Feature | Depends On | Provides | Data Format
 - **Code example comments**: Explain WHY each step matters for 7-9 agent scale (not just WHAT it does)
@@ -398,12 +422,14 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   3. "Design integration contracts for a 5-feature e-commerce system"
 
 **Quality Standards**:
+
 - **Code examples**: All scripts must be copy-paste ready and tested on macOS/Linux
 - **Cognitive load**: Max 7 new concepts (list them: worktree, feature branch, parallel spec, integration contract, PHR routing, feature numbering, time tracking)
 - **Skills proficiency**: CEFR A2 level (recognition + simple application with scaffolding)
 - **Engagement**: Each section answers "Why does this matter for 7-9 agents?" within first 2 paragraphs
 
 **Validation**:
+
 - [ ] Run git worktree script on fresh repo - must create 3 worktrees without errors
 - [ ] Verify cognitive load: Count new concepts, confirm ≤7
 - [ ] Check scale connection: Search lesson for "7-9 agents" - must appear 3+ times
@@ -419,6 +445,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 **Description**: Develop complete Lesson 2 on running `/sp.plan` and `/sp.tasks` simultaneously
 
 **Acceptance Criteria**:
+
 - [ ] Content file created: `02-parallel-planning-and-tasks.md`
 - [ ] YAML frontmatter with skills metadata (3 skills, A2/B1/B1 levels)
 - [ ] Content structure (5 sections from plan.md):
@@ -448,6 +475,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   - ✅ Student understands: "Parallel planning proves decomposition quality before implementation"
 
 **Technical References**:
+
 1. **Lesson Style Guide**: `.claude/output-styles/lesson.md`
 2. **Lesson Plan**: `specs/002-chapter-32-redesign/plan.md` (Lesson 2 section)
 3. **SpecKit Plus Commands Documentation**:
@@ -466,7 +494,9 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
    - Process monitoring: `ps`, `jobs`, `fg`, `bg`
 
 **Implementation Guidance**:
+
 - **tmux Configuration Script Template**:
+
   ```bash
   #!/bin/bash
   # setup-3-session-layout.sh
@@ -499,6 +529,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   3. "This plan has 15 dependencies on other features - is this good or bad decomposition? Why?"
 
 **Quality Standards**:
+
 - **Code examples**: tmux script must work on macOS/Linux (tested)
 - **Cognitive load**: 7 concepts (parallel planning, plan quality indicators, terminal multiplexing, dependency analysis, integration risks, time tracking, reflection)
 - **Skills proficiency**: A2/B1 (simple application with scaffolding + independent application to familiar problems)
@@ -506,6 +537,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - **Reading level**: Grade 10-12
 
 **Validation Checklist**:
+
 - [ ] Run tmux script - must create 3-pane layout successfully
 - [ ] Test plan quality rubric - can differentiate good/bad decomposition
 - [ ] Count concepts - verify = 7
@@ -522,6 +554,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 **Description**: Develop complete Lesson 3 on running `/sp.implement` in parallel and managing integration
 
 **Acceptance Criteria**:
+
 - [ ] Content file created: `03-parallel-implementation-and-integration.md`
 - [ ] YAML frontmatter with skills metadata (3 skills, all B1 level)
 - [ ] Content structure (7 sections from plan.md):
@@ -557,6 +590,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   - ✅ Student understands: "Clean merges prove good decomposition; conflicts teach better decomposition"
 
 **Technical References**:
+
 1. **Lesson Style Guide**: `.claude/output-styles/lesson.md`
 2. **Lesson Plan**: `specs/002-chapter-32-redesign/plan.md` (Lesson 3 section)
 3. **Git Integration Documentation**:
@@ -576,7 +610,9 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
    - End-to-end validation strategies
 
 **Implementation Guidance**:
+
 - **3-Feature Starter Repository Structure**:
+
   ```
   starter-repo/
   ├── feature-001-auth/         # JWT authentication
@@ -591,6 +627,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   ```
 
 - **Merge Conflict Resolution Guide** (step-by-step):
+
   1. **Identify conflict type**: Code overlap vs architectural conflict
   2. **Analyze root cause**: Same file modification (OK) vs integration contract violation (BAD)
   3. **Resolution strategy**:
@@ -599,6 +636,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   4. **Validation**: Run tests after resolution
 
 - **Integration Testing Script Template**:
+
   ```bash
   #!/bin/bash
   # integration-tests.sh
@@ -622,6 +660,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   3. "If 2 out of 3 features had merge conflicts, what does that tell me about my decomposition?"
 
 **Quality Standards**:
+
 - **Starter repository**: Must have clear specs with integration contracts defined
 - **Merge conflict examples**: Real conflicts from actual parallel development, not synthetic
 - **Integration tests**: Must verify cross-feature functionality, not just individual features
@@ -630,6 +669,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - **Troubleshooting guide**: Must address real pain points (not theoretical)
 
 **Validation Checklist**:
+
 - [ ] Create 3 worktrees from starter repo, implement in parallel, verify integration
 - [ ] Introduce intentional conflict, test resolution guide clarity
 - [ ] Run integration tests - must verify cross-feature functionality
@@ -648,6 +688,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 **Description**: Develop complete Lesson 4 as FIRST CLIMAX - students scale from 3 to 5+ MANUAL parallel SpecKit Plus workflows, experiencing full decomposition thinking cycle at meaningful scale
 
 **Acceptance Criteria**:
+
 - [ ] Content file created: `04-scaling-decomposition-thinking.md`
 - [ ] YAML frontmatter with skills metadata (3 skills, B1/B2 levels)
 - [ ] Content structure (7 sections):
@@ -673,6 +714,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   - ✅ Student understands: "Decomposition thinking scales; manual coordination doesn't"
 
 **Technical References**:
+
 1. **Lesson Style Guide**: `.claude/output-styles/lesson.md`
 2. **Lesson Plan**: `specs/002-chapter-32-redesign/plan.md` (Lesson 4 section)
 3. **System Scaling Patterns**:
@@ -688,7 +730,9 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
    - Architecture patterns resources in constitution
 
 **Implementation Guidance**:
+
 - **Integration Complexity Graph** (ASCII visualization):
+
   ```
   3 features: 3 integration points  (manageable)
      A─B
@@ -716,6 +760,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   | Coupling | How many shared components? |
 
 - **Red Flag Identification Exercise**:
+
   - "Every feature depends on Feature A" → Feature A is a bottleneck
   - "Circular dependencies" → System design problem
   - "Shared database tables modified by 3+ features" → Coupling problem
@@ -726,6 +771,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   3. "I have 10 features with circular dependencies. How would you redesign for better decomposition?"
 
 **Quality Standards**:
+
 - **Visualizations**: Must clearly show complexity growth (3→5→10 features)
 - **Real-world examples**: Must be specific (not "companies do this") - cite actual systems
 - **Cognitive load**: 9-10 concepts (B1/B2 level allows higher complexity for analysis)
@@ -733,6 +779,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - **Transferability**: Must explicitly connect to human team coordination
 
 **Validation Checklist**:
+
 - [ ] Visualizations render correctly (ASCII or diagrams)
 - [ ] Decomposition rubric can assess real systems
 - [ ] Count concepts - verify ≤ 10 (B1/B2 limit)
@@ -753,6 +800,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 **Description**: Develop complete Lesson 5 on GitHub Actions and spec validation automation
 
 **Acceptance Criteria**:
+
 - [ ] Content file created: `05-automation-ci-cd-validation-hooks.md`
 - [ ] YAML frontmatter with skills metadata (3 skills: CI/CD pipeline config, spec validation automation, automation as amplifier)
 - [ ] Content structure (6 sections, 90 minutes total):
@@ -781,6 +829,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   - ✅ Student understands: "Automation amplifies good decomposition"
 
 **Technical References**:
+
 1. **Lesson Style Guide**: `.claude/output-styles/lesson.md`
 2. **Lesson Plan**: `specs/002-chapter-32-redesign/plan.md` (Lesson 5 section)
 3. **GitHub Actions Documentation**:
@@ -796,7 +845,9 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
    - Spec template structure: `.specify/templates/spec-template.md`
 
 **Implementation Guidance**:
+
 - **GitHub Actions Workflow Template**:
+
   ```yaml
   name: Spec Validation
   on: [push, pull_request]
@@ -824,12 +875,14 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   3. "This spec has 50 requirements - is that a validation failure? Why or why not?"
 
 **Quality Standards**:
+
 - **GitHub Actions workflow**: Must run successfully on test repo
 - **Validation script**: Must catch real spec quality issues
 - **Cognitive load**: 8 concepts (B1 level)
 - **Scale connection**: "7-9 agents" mentioned 5+ times
 
 **Validation Checklist**:
+
 - [ ] Run GitHub Actions workflow - must validate spec successfully
 - [ ] Test with bad spec - must fail validation correctly
 - [ ] Count concepts - verify ≤ 8
@@ -847,6 +900,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 **Description**: Develop complete Lesson 6 teaching headless mode as the programmatic interface for running SpecKit Plus workflows. Students learn `claude -p`, output formats, session management, and multi-turn conversations - the building blocks for Super Orchestrator.
 
 **Acceptance Criteria**:
+
 - [ ] Content file created: `06-headless-mode-programmatic-speckit-plus.md`
 - [ ] YAML frontmatter with skills metadata (4 skills: headless execution, JSON parsing, session management, programmatic SpecKit Plus)
 - [ ] Content structure (7 sections, 90 minutes):
@@ -877,6 +931,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   - ✅ Try With AI prompt: "Design a bash script that runs headless `/sp.specify` for 5 features in parallel"
 
 **Technical References**:
+
 1. **Lesson Style Guide**: `.claude/output-styles/lesson.md`
 2. **Lesson Plan**: `specs/002-chapter-32-redesign/plan.md` (Lesson 6/8 meta-orchestration section)
 3. **Claude Code Headless Mode Documentation**: https://docs.claude.com/en/docs/claude-code/headless
@@ -893,7 +948,9 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 6. **Example workflows from plan.md**: Lesson 8 orchestration examples
 
 **Implementation Guidance**:
+
 - **Basic Headless Command Template**:
+
   ```bash
   # Run /sp.specify in headless mode
   claude -p "/sp.specify \"Add user authentication with JWT\"" \
@@ -906,6 +963,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   ```
 
 - **Multi-Turn Workflow Template**:
+
   ```bash
   # Phase 1: Specify
   claude -p "/sp.specify \"Add payment processing\"" \
@@ -929,6 +987,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   3. "Design a bash script that runs `/sp.specify` for 5 features in parallel and captures all session IDs"
 
 **Quality Standards**:
+
 - **All commands must run successfully**: Students test each command and verify output
 - **JSON parsing works**: jq commands extract session_id correctly
 - **Multi-turn works**: --resume flag maintains context across Specify → Plan
@@ -936,6 +995,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - **Scale connection**: "Super Orchestrator" + "programmatic SpecKit Plus" mentioned 5+ times
 
 **Validation Checklist**:
+
 - [ ] Run basic headless `/sp.specify` - verify JSON output received
 - [ ] Parse session_id with jq - verify extraction works
 - [ ] Run multi-turn (Specify → Plan) with --resume - verify context maintained
@@ -955,6 +1015,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 **Description**: Develop complete Lesson 7 teaching sandboxing as the security mechanism that enables safely spawning 10-15 independent SpecKit Plus workflows. Students learn filesystem isolation, network isolation, and why sandboxing matters when running multiple autonomous sessions.
 
 **Acceptance Criteria**:
+
 - [ ] Content file created: `07-sandboxing-safe-session-isolation.md`
 - [ ] YAML frontmatter with skills metadata (4 skills: sandbox configuration, filesystem isolation, network security, multi-session safety)
 - [ ] Content structure (7 sections, 90 minutes):
@@ -984,6 +1045,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   - ✅ Try With AI prompt: "What security risks exist when spawning 10-15 unsandboxed sessions? How does sandboxing mitigate them?"
 
 **Technical References**:
+
 1. **Lesson Style Guide**: `.claude/output-styles/lesson.md`
 2. **Lesson Plan**: `specs/002-chapter-32-redesign/plan.md` (Lesson 6/7 automation section)
 3. **Claude Code Sandboxing Documentation**: https://docs.claude.com/en/docs/claude-code/sandboxing
@@ -1002,7 +1064,9 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 6. **Example workflows**: Multi-worktree sandbox configurations
 
 **Implementation Guidance**:
+
 - **Enable Sandboxing**:
+
   ```bash
   # In Claude Code session
   > /sandbox
@@ -1012,6 +1076,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   ```
 
 - **Filesystem Isolation Test**:
+
   ```bash
   # Inside sandboxed session in worktree-001/
 
@@ -1024,6 +1089,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   ```
 
 - **Network Isolation Test**:
+
   ```bash
   # Inside sandboxed session
 
@@ -1033,6 +1099,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   ```
 
 - **Sandbox Configuration for Multi-Worktree**:
+
   ```json
   // settings.json
   {
@@ -1045,10 +1112,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
         ]
       },
       "network": {
-        "allowedDomains": [
-          "github.com",
-          "api.anthropic.com"
-        ]
+        "allowedDomains": ["github.com", "api.anthropic.com"]
       }
     }
   }
@@ -1060,6 +1124,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   3. "Design a sandbox configuration for 5 worktrees, each with different network access needs"
 
 **Quality Standards**:
+
 - **Sandboxing works**: Students successfully enable and verify isolation
 - **Security understanding**: Students explain WHY sandboxing matters (not just HOW)
 - **Multi-session context**: All examples show 3+ sessions/worktrees
@@ -1067,6 +1132,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - **Scale connection**: "Super Orchestrator" + "10-15 sessions" mentioned 5+ times
 
 **Validation Checklist**:
+
 - [ ] Enable sandboxing - verify `/sandbox` command works
 - [ ] Test filesystem isolation - verify parent directory access blocked
 - [ ] Test network isolation - verify unapproved domain blocked
@@ -1088,6 +1154,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 **Description**: Develop Lesson 8 as THE CLIMAX of Chapter 32 - students write and run a Super Orchestrator script that spawns 5 independent Claude Code sessions via headless mode, each building features in isolation with own worktree + MCP + agents
 
 **Acceptance Criteria**:
+
 - [ ] Content file created: `08-building-the-super-orchestrator.md`
 - [ ] **OPENING HOOK**: "This is it. Everything you've learned builds to this moment. You're about to build a Super Orchestrator script that spawns 10-15 independent Claude Code sessions, each building features in parallel with zero coordination complexity."
 - [ ] YAML frontmatter with skills metadata (4 skills: headless execution, orchestration scripts, session management, decomposition at scale — all B2 level)
@@ -1124,6 +1191,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   - ✅ Reflection: "You just built a Super Orchestrator. You can spawn 10-15 Claude sessions programmatically."
 
 **Technical References**:
+
 1. **Lesson Style Guide**: `.claude/output-styles/lesson.md`
 2. **Lesson Plan**: `specs/002-chapter-32-redesign/plan.md` (Lesson 8 - meta-orchestration section)
 3. **Claude Code Headless Mode Documentation**:
@@ -1146,7 +1214,9 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
    - Feature numbering system: `001-`, `002-`, `003-` (auto-increment pattern)
 
 **Implementation Guidance**:
+
 - **Super Orchestrator Script Template** (MUST PROVIDE - shows complete architecture):
+
   ```bash
   #!/bin/bash
   # super-orchestrator.sh
@@ -1202,6 +1272,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   ```
 
 - **Try With AI Prompts** (MUST INCLUDE):
+
   1. "Help me write a Super Orchestrator script that spawns 12 independent Claude sessions to build a complete e-commerce SaaS product (auth, payments, inventory, shipping, analytics, admin)"
   2. "What error handling should I add to Super Orchestrator to handle session failures gracefully?"
   3. "How would I monitor progress of 10-15 Claude sessions running in parallel? What metrics matter?"
@@ -1212,6 +1283,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   - **Solo Founder Case Study**: Developer ships 10-feature MVP in 1 week using Super Orchestrator pattern
 
 **Quality Standards**:
+
 - **Super Orchestrator script**: Must run on macOS/Linux, spawn 5 sessions successfully in < 20 minutes
 - **Architecture clarity**: Script comments must explain: own worktree + own MCP + own agents for each session
 - **Error handling**: Script must handle session failures gracefully (other sessions continue, failures reported)
@@ -1221,6 +1293,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - **Emotional impact**: Student must feel "I just built a Super Orchestrator" after running script
 
 **Validation Checklist**:
+
 - [ ] Run Super Orchestrator script on test repo - must spawn 5 sessions and create 5 worktrees successfully
 - [ ] Verify each session has own worktree (check `git worktree list`)
 - [ ] Test error handling - kill one session mid-run, verify others continue independently
@@ -1229,6 +1302,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - [ ] Student survey: "After Lesson 8, can you build a Super Orchestrator that spawns 10-15 sessions?" - must be 80%+ yes
 
 **CRITICAL SUCCESS CRITERIA**:
+
 - Student RUNS Super Orchestrator script and SEES 5 independent Claude sessions spawn
 - Student understands each session is independent (own worktree + own MCP + own agents)
 - Student understands path from 5 to 10-15 sessions (just add more features to array)
@@ -1246,6 +1320,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 **Description**: Develop complete Lesson 9 including capstone project guidance and measurement framework
 
 **Acceptance Criteria**:
+
 - [ ] Content file created: `09-capstone-project-and-measurement.md`
 - [ ] YAML frontmatter with skills metadata (4 skills: end-to-end delivery, metrics & reflection, portfolio narrative, decomposition mastery — all B1-B2)
 - [ ] Content structure (8 sections, ~180 minutes):
@@ -1292,6 +1367,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   - ✅ Student completes chapter believing: "I AM a Super AI Orchestrator"
 
 **Technical References**:
+
 1. **Lesson Style Guide**: `.claude/output-styles/lesson.md`
 2. **Lesson Plan**: `specs/002-chapter-32-redesign/plan.md` (Lesson 9 section)
 3. **Capstone Project Examples**:
@@ -1308,7 +1384,9 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
    - How to explain complex projects simply
 
 **Implementation Guidance**:
+
 - **Capstone Project Starter 1: Task Management App**:
+
   ```
   Features:
   001-task-crud: Create, Read, Update, Delete tasks
@@ -1335,6 +1413,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   | **Total** | **150 min** | **60-70 min** | **~2.5x** |
 
 - **Portfolio Narrative Script**:
+
   ```
   BAD: "I used git worktrees to run 3 Claude Code sessions in parallel"
 
@@ -1353,6 +1432,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   3. "Analyze my time tracking data - what does it reveal about my decomposition quality?"
 
 **Quality Standards**:
+
 - **Capstone starters**: Must have clear integration contracts and be parallelizable
 - **Time tracking worksheet**: Must show actual gains (not theoretical)
 - **Portfolio narrative**: Must emphasize thinking over tools
@@ -1361,6 +1441,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - **Celebration**: Must feel like accomplishment, not just "chapter done"
 
 **Validation Checklist**:
+
 - [ ] Test capstone starter - can 3 features be built in parallel?
 - [ ] Verify time tracking worksheet captures parallel vs sequential accurately
 - [ ] Check portfolio narrative examples - emphasize strategic capability
@@ -1379,10 +1460,11 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 
 **Acceptance Criteria**:
 For each starter (task app, blog, API wrapper):
+
 - [ ] Repository created in organization with clear structure:
   - `.specify/` directory with constitution
   - `specs/` directory with 3 example feature specs (to decompose and build from)
-  - `book-source/docs/` skeleton (students add content)
+  - `apps/learn-app/docs/` skeleton (students add content)
   - `.github/workflows/` with basic CI/CD setup
   - `README.md` explaining the starter
 - [ ] 3 Feature specs provided for each starter (students can use as-is or redesign):
@@ -1397,13 +1479,16 @@ For each starter (task app, blog, API wrapper):
   - Notes on what to look for (integration quality, merge conflicts)
 
 **Starters**:
+
 1. **Task Management App**:
+
    - Feature 1: Task CRUD (create, read, update, delete tasks)
    - Feature 2: Priority levels and sorting
    - Feature 3: Team sharing and collaboration
    - Specs provided; students can redesign for better parallelization
 
 2. **Blog Platform**:
+
    - Feature 1: Post creation and editing
    - Feature 2: Comments and discussion
    - Feature 3: Recommendations/likes
@@ -1431,6 +1516,7 @@ For each starter (task app, blog, API wrapper):
 **Acceptance Criteria**:
 
 **Lesson 1 Examples**:
+
 - [ ] `git-worktree-setup.sh` (bash script)
   - Creates 3 worktrees: feature-001-auth, feature-002-payment, feature-003-dashboard
   - Works on macOS, Linux, Windows (Git Bash)
@@ -1442,6 +1528,7 @@ For each starter (task app, blog, API wrapper):
 - [ ] Integration mapping diagram (ASCII or visual description)
 
 **Lesson 2 Examples**:
+
 - [ ] `tmux-session-setup.sh` (tmux configuration)
   - Creates 3-pane layout for simultaneous session monitoring
   - Falls back to instructions for non-tmux users (iTerm2, split terminals)
@@ -1453,6 +1540,7 @@ For each starter (task app, blog, API wrapper):
   - Shows completion status, time elapsed
 
 **Lesson 3 Examples**:
+
 - [ ] `3-feature-starter-repo` (example repository)
   - 3 feature branches with complete specs
   - Ready for students to implement
@@ -1466,6 +1554,7 @@ For each starter (task app, blog, API wrapper):
   - Validates integration contracts
 
 **Lesson 5 Example**:
+
 - [ ] `.github/workflows/spec-validation.yml` (GitHub Actions)
   - Validates spec structure
   - Checks for required sections
@@ -1473,11 +1562,13 @@ For each starter (task app, blog, API wrapper):
   - Free-tier GitHub compatible
 
 **Lesson 6 Examples**:
+
 - [ ] MCP server setup scripts (3 examples: product, analytics, code-review)
 - [ ] Example MCP query patterns (showing how to use MCP from Claude Code)
 - [ ] Multi-session consistency test (verifies all sessions see same data)
 
 **Lesson 7 Examples**:
+
 - [ ] Claude Code prompt with `background_bash` flag example
 - [ ] `monitor-background-tasks.sh` (bash script)
   - Shows progress of 3 simultaneous background tasks
@@ -1487,6 +1578,7 @@ For each starter (task app, blog, API wrapper):
   - Alerts on critical failures
 
 **Lesson 8 Examples** (all templates provided, not exercises):
+
 - [ ] `headless-single-command.sh` (example of running Claude Code headless)
   - Shows `--output-format json` usage
   - Demonstrates session ID capture
@@ -1502,12 +1594,14 @@ For each starter (task app, blog, API wrapper):
   - Detects failures, alerts
 
 **Test Coverage**:
+
 - All scripts have been tested on macOS, Linux, Windows
 - Copy-paste examples are verified runnable
 - Code examples compile/run without modification
 - Exercises have provided answers (in instructor guide or hidden)
 
 **Reference Documentation**:
+
 - Code examples include clear comments explaining each section
 - README for each example explaining purpose and usage
 - Troubleshooting sections for common errors
@@ -1522,7 +1616,9 @@ For each starter (task app, blog, API wrapper):
 **Description**: Develop all exercises with answer keys and success criteria
 
 **Acceptance Criteria**:
+
 - [ ] **Lesson 1** (4 exercises):
+
   - [ ] Exercise 1: Create 3 worktrees
     - Success criteria: Output of `git worktree list` shows 3 worktrees
     - Answer key: 3-5 sentences showing expected output
@@ -1537,6 +1633,7 @@ For each starter (task app, blog, API wrapper):
     - Answer key: Example showing 3x speedup calculation
 
 - [ ] **Lesson 2** (5 exercises):
+
   - [ ] Exercise 1: Set up tmux
     - Success criteria: 3 panes visible showing different sessions
     - Answer key: tmux commands or screenshot
@@ -1553,6 +1650,7 @@ For each starter (task app, blog, API wrapper):
     - Template and answer key provided
 
 - [ ] **Lesson 3** (6 exercises):
+
   - [ ] Exercise 1: Map dependencies
     - Success criteria: Student creates dependency graph
     - Answer key: Example graph for 3 features
@@ -1572,30 +1670,35 @@ For each starter (task app, blog, API wrapper):
     - Template and answer key provided
 
 - [ ] **Lesson 4** (4 exercises):
+
   - [ ] Exercise 1: Self-assess decomposition (rubric provided, answer key shows example scoring)
   - [ ] Exercise 2: Identify red flags (checklist provided, answer key shows what to look for)
   - [ ] Exercise 3: Redesign for scalability (template provided, answer key shows example redesign)
   - [ ] Exercise 4: Map 5-feature decomposition (template provided, answer key shows example)
 
 - [ ] **Lesson 5** (4 exercises):
+
   - [ ] Exercise 1: Create validation workflow (template provided, success = workflow runs)
   - [ ] Exercise 2: Test with bad spec (template provided, success = validation fails as expected)
   - [ ] Exercise 3: Fix spec (template provided, success = validation passes)
   - [ ] Exercise 4: Run locally and in CI/CD (template provided, success = same validation result)
 
 - [ ] **Lesson 6** (4 exercises):
+
   - [ ] Exercise 1: Set up MCP servers (template provided, success = servers running)
   - [ ] Exercise 2: Query MCP (template provided, success = data returned)
   - [ ] Exercise 3: Write data-informed specs (template provided, answer key shows example)
   - [ ] Exercise 4: Verify consistency (template provided, success = same data across sessions)
 
 - [ ] **Lesson 7** (4 exercises):
+
   - [ ] Exercise 1: Spawn background tasks (template provided, success = tasks running)
   - [ ] Exercise 2: Monitor progress (template provided, answer key shows monitoring)
   - [ ] Exercise 3: Handle failure (template provided, success = student debugs and restarts)
   - [ ] Exercise 4: Time comparison (template provided, answer key shows time savings)
 
 - [ ] **Lesson 8** (4 exercises, guided):
+
   - [ ] Exercise 1 (guided): Run headless command (template provided, success = JSON output)
   - [ ] Exercise 2 (guided): Run orchestration script (template provided, success = all 5 features complete)
   - [ ] Exercise 3 (optional): Modify script (template provided, success = modifications work)
@@ -1616,49 +1719,58 @@ For each starter (task app, blog, API wrapper):
 **Description**: Develop Claude Code CLI prompts for the "Try With AI" section in each lesson
 
 **Acceptance Criteria**:
+
 - [ ] **Lesson 1** (3 prompts):
+
   - Prompt 1: "Review my 3 feature specs. Do the integration contracts look clear?"
   - Prompt 2: "I'm decomposing [complex-feature]. Are these 3 sub-features truly independent?"
   - Prompt 3: "Explain to a non-technical founder why specs enable parallel development"
   - Expected outcomes documented for each
 
 - [ ] **Lesson 2** (3 prompts):
+
   - Prompt 1: "Compare my 3 plans. Do feature decompositions look balanced?"
   - Prompt 2: "Looking at my task lists, can these 3 features really be built independently?"
   - Prompt 3: "What would good decomposition look like for 5 features instead of 3?"
   - Expected outcomes documented
 
 - [ ] **Lesson 3** (3 prompts):
+
   - Prompt 1: "I'm seeing merge conflicts in [file]. What does this reveal about my decomposition?"
   - Prompt 2: "Review my integration test suite. Are these good tests?"
   - Prompt 3: "Retrospective: What would I do differently to decompose more cleanly?"
   - Expected outcomes documented
 
 - [ ] **Lesson 4** (3 prompts):
+
   - Prompt 1: "If I need to scale to 5 features, what would break? How would I redesign?"
   - Prompt 2: "Analyze my feature specifications. Which are tightly integrated? How could I decouple?"
   - Prompt 3: "I want to hire 3 developers. How would I decompose for independence?"
   - Expected outcomes documented
 
 - [ ] **Lesson 5** (3 prompts):
+
   - Prompt 1: "Review my spec validation workflow. Are there checks I'm missing?"
   - Prompt 2: "My spec validation keeps failing. What does that tell me about my decomposition?"
   - Prompt 3: "How would I extend validation to catch decomposition problems earlier?"
   - Expected outcomes documented
 
 - [ ] **Lesson 6** (3 prompts):
+
   - Prompt 1: "Design an MCP setup for my team. What data sources should I expose?"
   - Prompt 2: "Review my spec. Is it data-informed or making assumptions?"
   - Prompt 3: "How would I scale MCP to coordinate 10 simultaneous feature teams?"
   - Expected outcomes documented
 
 - [ ] **Lesson 7** (3 prompts):
+
   - Prompt 1: "Design a monitoring dashboard for 7 simultaneous implementations."
   - Prompt 2: "I have 3 background tasks. One failed. How do I debug while others continue?"
   - Prompt 3: "How would I scale background execution to coordinate 15 simultaneous tasks?"
   - Expected outcomes documented
 
 - [ ] **Lesson 8** (3 prompts):
+
   - Prompt 1: "Review my orchestration script. What improvements would help it scale to 10-15 features?"
   - Prompt 2: "Explain my orchestration script step-by-step. Where are potential failure points?"
   - Prompt 3: "How would I modify this to ensure all 7-9 agents work in true parallel?"
@@ -1671,6 +1783,7 @@ For each starter (task app, blog, API wrapper):
   - Expected outcomes documented
 
 **Format**:
+
 - Each prompt is 1-2 sentences (clear, specific)
 - Expected outcome is 3-5 sentences describing what good response looks like
 - Safety/ethics note included for each set (AI suggests improvements, student responsible for decisions)
@@ -1687,6 +1800,7 @@ For each starter (task app, blog, API wrapper):
 **Description**: Peer review all lesson content for pedagogy, clarity, and alignment
 
 **Acceptance Criteria**:
+
 - [ ] All 9 lessons reviewed by peer (ideally different author or technical reviewer)
 - [ ] Review checklist covers:
   - [ ] Learning objectives are clear and measurable
@@ -1714,6 +1828,7 @@ For each starter (task app, blog, API wrapper):
 **Description**: Verify accessibility and inclusive language across all lessons
 
 **Acceptance Criteria**:
+
 - [ ] Reading level check:
   - [ ] Grade 8-10 reading level (appropriate for technical audience, not condescending)
   - [ ] Flesch Reading Ease 50-65 (technical but not impenetrable)
@@ -1741,6 +1856,7 @@ For each starter (task app, blog, API wrapper):
 **Description**: Test all code examples on macOS, Linux, and Windows
 
 **Acceptance Criteria**:
+
 - [ ] All bash scripts tested:
   - [ ] Tested on macOS (Zsh, Bash)
   - [ ] Tested on Linux (Ubuntu 20.04+)
@@ -1760,6 +1876,7 @@ For each starter (task app, blog, API wrapper):
   - [ ] Examples compile/run without modification
 
 **Testing Log**:
+
 - [ ] macOS: [Date], [Tester], [Results]
 - [ ] Linux: [Date], [Tester], [Results]
 - [ ] Windows: [Date], [Tester], [Results]
@@ -1774,6 +1891,7 @@ For each starter (task app, blog, API wrapper):
 **Description**: Verify flow and coherence across all 9 lessons
 
 **Acceptance Criteria**:
+
 - [ ] Lesson sequence is logical (1 builds on 2, 2 builds on 3, etc.)
 - [ ] Prerequisites clearly stated for each lesson
 - [ ] Concept progression respects cognitive load (A2 → B1 → B2)
@@ -1785,6 +1903,7 @@ For each starter (task app, blog, API wrapper):
 - [ ] No unexplained gaps or jumps in content
 
 **Coherence Map**:
+
 - Lesson 1: Foundation (worktrees, 3 parallel specs)
 - Lesson 2: Scaling (plans + tasks in parallel)
 - Lesson 3: Integration (proof of decomposition quality via merge quality)
@@ -1807,6 +1926,7 @@ For each starter (task app, blog, API wrapper):
 **Description**: Create fillable worksheet for measuring parallel vs sequential productivity
 
 **Acceptance Criteria**:
+
 - [ ] Document created: `capstone-time-tracking-worksheet.md`
 - [ ] Sections:
   - [ ] Baseline: Sequential estimate (how long would 3 features take sequentially?)
@@ -1839,6 +1959,7 @@ For each starter (task app, blog, API wrapper):
 **Description**: Create template for documenting capstone project in GitHub repository
 
 **Acceptance Criteria**:
+
 - [ ] README.md template created
 - [ ] Sections:
   - [ ] Project title and overview
@@ -1865,6 +1986,7 @@ For each starter (task app, blog, API wrapper):
 **Description**: Create guided prompts for capstone reflection essay
 
 **Acceptance Criteria**:
+
 - [ ] Essay template (1-2 pages, ~500-800 words)
 - [ ] Guided prompts:
   - What is decomposition thinking? (define in your own words)
@@ -1888,6 +2010,7 @@ For each starter (task app, blog, API wrapper):
 **Description**: Develop 5-point rubric for evaluating capstone projects
 
 **Acceptance Criteria**:
+
 - [ ] Rubric created with 5 dimensions:
   - **Decomposition Quality** (1-5):
     - 1 = Features not independent, heavy dependencies, poor contracts
@@ -1925,6 +2048,7 @@ For each starter (task app, blog, API wrapper):
 **Description**: Verify references to other chapters are accurate
 
 **Acceptance Criteria**:
+
 - [ ] All prerequisites accurately listed:
   - [ ] Chapter 30, 31 (SpecKit Plus)
   - [ ] Chapter 5 (Claude Code CLI)
@@ -1949,6 +2073,7 @@ For each starter (task app, blog, API wrapper):
 **Description**: Verify chapter aligns with project constitution
 
 **Acceptance Criteria**:
+
 - [ ] Chapter teaches Principle 14: Planning-First Development
   - [ ] Decomposition requires planning before execution
   - [ ] Specs are written before implementation
@@ -1982,6 +2107,7 @@ For each starter (task app, blog, API wrapper):
 **Description**: Final proofreading, formatting, and polish
 
 **Acceptance Criteria**:
+
 - [ ] Spelling and grammar check:
   - [ ] No typos or grammatical errors
   - [ ] Consistent voice and tone
@@ -2019,6 +2145,7 @@ For each starter (task app, blog, API wrapper):
 **Description**: Create optional instructor guide with teaching tips and answer keys
 
 **Acceptance Criteria**:
+
 - [ ] Document created: `instructor-guide.md`
 - [ ] Sections:
   - [ ] Chapter overview and learning objectives
@@ -2044,6 +2171,7 @@ For each starter (task app, blog, API wrapper):
 **Description**: Create getting-started guide for students starting Chapter 32
 
 **Acceptance Criteria**:
+
 - [ ] Document created: `setup-guide.md`
 - [ ] Sections:
   - [ ] Prerequisites check (did you complete Chapters 30-31? Chapters 5, 7, 8?)
@@ -2077,6 +2205,7 @@ For each starter (task app, blog, API wrapper):
 **Description**: Create clear checklist for capstone submission requirements
 
 **Acceptance Criteria**:
+
 - [ ] Checklist document created: `capstone-submission-checklist.md`
 - [ ] Submission items:
   - [ ] GitHub repository with multi-worktree history visible
@@ -2103,13 +2232,16 @@ For each starter (task app, blog, API wrapper):
 **Description**: Verify all content meets constitutional and pedagogical standards
 
 **Acceptance Criteria**:
+
 - [ ] **Specification Compliance**:
+
   - [ ] All 27 functional requirements addressed (see spec.md)
   - [ ] All 6 success criteria (SC-001 through SC-013) measurable in content
   - [ ] Chapter scope matches constraints (10-12 hour time commitment, Part 5 complexity)
   - [ ] All 5 user stories can be completed using chapter content
 
 - [ ] **Pedagogical Standards**:
+
   - [ ] Lessons follow Bloom's taxonomy progression
   - [ ] CEFR proficiency levels are appropriate and progressive
   - [ ] Cognitive load limits respected (5-7 concepts per A2/B1 section, 10 for B2)
@@ -2120,6 +2252,7 @@ For each starter (task app, blog, API wrapper):
   - [ ] Real-world examples are relevant and current
 
 - [ ] **Content Quality**:
+
   - [ ] All code examples tested and working
   - [ ] All exercises have clear success criteria and answer keys
   - [ ] All Try With AI prompts are focused and actionable
@@ -2128,6 +2261,7 @@ For each starter (task app, blog, API wrapper):
   - [ ] Accessibility requirements met (alt text, color contrast, clear language)
 
 - [ ] **Integration**:
+
   - [ ] Prerequisites clearly stated and verified to exist
   - [ ] Forward references are accurate
   - [ ] Chapter fits within Part 5 structure
@@ -2141,6 +2275,7 @@ For each starter (task app, blog, API wrapper):
   - [ ] Naming conventions followed (lowercase-with-hyphens for lesson files)
 
 **Checklist Sign-Off**:
+
 - [ ] Content author: [Name], [Date]
 - [ ] Technical reviewer: [Name], [Date]
 - [ ] Pedagogical reviewer: [Name], [Date]
@@ -2149,22 +2284,23 @@ For each starter (task app, blog, API wrapper):
 
 ## Effort Summary
 
-| Phase | Tasks | Effort |
-|-------|-------|--------|
-| 1. Chapter Structure | README.md | 2 hours |
-| 2. Lessons 1-4 | 4 lessons, code examples, exercises | 28 hours |
-| 3. Lessons 5-7 | 3 lessons, code examples, exercises | 21 hours |
-| 4. Lesson 8 | 1 lesson (optional), templates | 8 hours |
-| 5. Lesson 9 | 1 lesson, capstone materials | 10 hours |
-| 6. Code & Exercises | All scripts, templates, answers | 20 hours |
-| 7. Try With AI | Prompt sets for all lessons | 4 hours |
-| 8. Review & QA | Peer review, testing, accessibility | 22 hours |
-| 9. Capstone Materials | Worksheet, templates, rubric | 10 hours |
-| 10. Finalization | Guides, checklists, sign-off | 10 hours |
+| Phase                 | Tasks                               | Effort   |
+| --------------------- | ----------------------------------- | -------- |
+| 1. Chapter Structure  | README.md                           | 2 hours  |
+| 2. Lessons 1-4        | 4 lessons, code examples, exercises | 28 hours |
+| 3. Lessons 5-7        | 3 lessons, code examples, exercises | 21 hours |
+| 4. Lesson 8           | 1 lesson (optional), templates      | 8 hours  |
+| 5. Lesson 9           | 1 lesson, capstone materials        | 10 hours |
+| 6. Code & Exercises   | All scripts, templates, answers     | 20 hours |
+| 7. Try With AI        | Prompt sets for all lessons         | 4 hours  |
+| 8. Review & QA        | Peer review, testing, accessibility | 22 hours |
+| 9. Capstone Materials | Worksheet, templates, rubric        | 10 hours |
+| 10. Finalization      | Guides, checklists, sign-off        | 10 hours |
 
 **Total Estimated Effort**: 135 hours ≈ 60-80 story points (assuming 2-3 hour story point)
 
 **Timeline** (One person, full-time):
+
 - Lessons 1-4 (core): 28 hours = ~4 days
 - Lessons 5-7 (automation): 21 hours = ~3 days
 - Lesson 8 (advanced): 8 hours = ~1 day
@@ -2187,14 +2323,14 @@ For each starter (task app, blog, API wrapper):
 
 ### Key Risks & Mitigations
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|-----------|
-| Code examples don't run on all platforms | Medium | High | Test on macOS, Linux, Windows during Task 6.2 |
-| Time estimates are too optimistic | Medium | Medium | Include 20% time buffer in estimates; pilot test with beta reader |
-| Lesson content exceeds Part 5 complexity limits | Low | High | Strict peer review for cognitive load; remove options, simplify if needed |
-| Students skip Lessons 5-8, feel lost in capstone | Medium | Low | Lesson 9 recap and remediation; clear "fast-track" messaging |
-| Capstone starters are too prescriptive | Low | Low | Provide examples, but allow students to bring their own projects |
-| Decomposition thinking not resonating with students | Medium | High | Include multiple metaphors (music orchestra, sports teams, org scaling); real-world examples |
+| Risk                                                | Likelihood | Impact | Mitigation                                                                                   |
+| --------------------------------------------------- | ---------- | ------ | -------------------------------------------------------------------------------------------- |
+| Code examples don't run on all platforms            | Medium     | High   | Test on macOS, Linux, Windows during Task 6.2                                                |
+| Time estimates are too optimistic                   | Medium     | Medium | Include 20% time buffer in estimates; pilot test with beta reader                            |
+| Lesson content exceeds Part 5 complexity limits     | Low        | High   | Strict peer review for cognitive load; remove options, simplify if needed                    |
+| Students skip Lessons 5-8, feel lost in capstone    | Medium     | Low    | Lesson 9 recap and remediation; clear "fast-track" messaging                                 |
+| Capstone starters are too prescriptive              | Low        | Low    | Provide examples, but allow students to bring their own projects                             |
+| Decomposition thinking not resonating with students | Medium     | High   | Include multiple metaphors (music orchestra, sports teams, org scaling); real-world examples |
 
 ---
 
@@ -2225,16 +2361,19 @@ For each starter (task app, blog, API wrapper):
 Upon task completion:
 
 1. **Implementation Phase** — Execute tasks in dependency order
+
    - Start with Lesson 1, verify before moving to Lesson 2
    - Code examples and exercises in parallel
    - Review and QA during development (not just at end)
 
 2. **Validation Phase** — Technical and pedagogical review
+
    - Run all code examples
    - Complete all exercises as a student would
    - Verify against specification and constitution
 
 3. **Publication Phase** — Docusaurus build and deployment
+
    - Build locally
    - Verify links and references
    - Deploy to production
@@ -2256,4 +2395,3 @@ Upon task completion:
 - **Chapter Index**: `specs/book/chapter-index.md`
 
 ---
-

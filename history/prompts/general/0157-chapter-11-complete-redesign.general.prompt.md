@@ -9,7 +9,14 @@ feature: 002-011-chapter-11-redesign-fix
 branch: main
 user: mjs
 command: Full workflow execution (spec → plan → tasks → implementation → validation)
-labels: [chapter-redesign, part3-compliance, zero-code-fix, loopflow-v2, multi-phase-workflow]
+labels:
+  [
+    chapter-redesign,
+    part3-compliance,
+    zero-code-fix,
+    loopflow-v2,
+    multi-phase-workflow,
+  ]
 links:
   spec: specs/002-011-chapter-11-redesign-fix/spec.md
   ticket: N/A
@@ -25,34 +32,34 @@ files:
   - path: specs/002-011-chapter-11-redesign-fix/tasks.md
     operation: write
     lines_changed: 625
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/01-context-windows-token-counting.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/01-context-windows-token-counting.md
     operation: write
     lines_changed: 312
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/02-degradation-symptoms-manual-tracking.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/02-degradation-symptoms-manual-tracking.md
     operation: write
     lines_changed: 587
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/03-progressive-loading-strategy.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/03-progressive-loading-strategy.md
     operation: write
     lines_changed: 445
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/04-context-compression-session-restart.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/04-context-compression-session-restart.md
     operation: write
     lines_changed: 512
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/05-context-isolation-parallel-tasks.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/05-context-isolation-parallel-tasks.md
     operation: write
     lines_changed: 468
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/06-memory-files-persistent-intelligence.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/06-memory-files-persistent-intelligence.md
     operation: write
     lines_changed: 487
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/07-tool-selection-framework.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/07-tool-selection-framework.md
     operation: write
     lines_changed: 492
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/08-hands-on-debugging-optimization.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/08-hands-on-debugging-optimization.md
     operation: write (rewritten)
     lines_changed: 587
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/09-capstone-spec-driven-orchestration.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/09-capstone-spec-driven-orchestration.md
     operation: validated (no changes)
     lines_changed: 0
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/README.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/README.md
     operation: edit
     lines_changed: 76 (added lesson navigation, research foundation, success criteria)
   - path: .claude/skills/memory-file-architecture/SKILL.md
@@ -97,9 +104,11 @@ tests:
 ## Prompt
 
 **User Initial Request**:
-> "Okay so We will redesign chapter 11 Yes and we can look at these real links: https://github.com/ziaukhan/colearning-agentic-ai-specs/blob/main/11_chap10_specs/readme.md https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents and if something helps from this local guide @"P3-Context Engineering_ Sessions & Memory.pdf" Remember student have only covered the first 10 chapters and the goal of this chapter and book philosophy"
+
+> "Okay so We will redesign chapter 11 Yes and we can look at these real links: https://github.com/ziaukhan/colearning-agentic-ai-specs/blob/main/11_chap10_specs/readme.md https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents and if something helps from this local guide @"P3-Context Engineering\_ Sessions & Memory.pdf" Remember student have only covered the first 10 chapters and the goal of this chapter and book philosophy"
 
 **Follow-up Request**:
+
 > "Yes get me the final chapter"
 
 **Context**:
@@ -112,17 +121,20 @@ User identified Chapter 11 Lesson 1 was broken, containing Python/FastAPI/SQLAlc
 **COMPLETE CHAPTER 11 REDESIGN EXECUTED**
 
 ### Phase 0: Specification (spec.md - 625 lines)
+
 ✅ Identified critical constraint: Part 3 = NO programming code allowed
 ✅ Analyzed root cause: Layer 4 (spec-driven with code) applied to Layer 1 (manual foundation)
 ✅ Integrated 3 research sources:
+
 - Anthropic Engineering: Context engineering principles (extraction, consolidation, progressive loading)
 - GitHub Spec: Pedagogical patterns (compare-and-contrast, multi-session workflows, decision guardrails)
 - Google PDF: 72-page guide (sessions architecture, memory generation pipeline, production considerations)
-✅ Defined 9-lesson structure with layer progression (L1 manual → L2 collaboration → L3 intelligence → L4 spec)
-✅ Created 7 success criteria (SC-001 through SC-007)
-✅ Established 8 acceptance tests
+  ✅ Defined 9-lesson structure with layer progression (L1 manual → L2 collaboration → L3 intelligence → L4 spec)
+  ✅ Created 7 success criteria (SC-001 through SC-007)
+  ✅ Established 8 acceptance tests
 
 ### Phase 1: Planning (plan.md - 2,503 lines)
+
 ✅ Invoked chapter-planner agent for detailed lesson-by-lesson breakdown
 ✅ Mapped skills proficiency (CEFR B1, Bloom's taxonomy, DigComp frameworks)
 ✅ Validated cognitive load (all lessons 7-10 concepts, average 8.3)
@@ -131,6 +143,7 @@ User identified Chapter 11 Lesson 1 was broken, containing Python/FastAPI/SQLAlc
 ✅ Verified constitutional compliance (all 7 principles)
 
 ### Phase 2: Task Breakdown (tasks.md - 625 lines)
+
 ✅ Generated 210 implementation tasks across 12 phases
 ✅ Organized by lesson clusters (L1-2 manual, L3-5 collaboration, L6-7 intelligence, L8-9 validation)
 ✅ Defined dependency ordering (manual foundation before AI collaboration)
@@ -139,6 +152,7 @@ User identified Chapter 11 Lesson 1 was broken, containing Python/FastAPI/SQLAlc
 ### Phase 3: Implementation (10 files, ~6,500 lines of educational content)
 
 **Lessons 1-2 (Manual Foundation)** — content-implementer agent
+
 - Lesson 1: Context Windows and Token Counting (312 lines, 8 concepts, Layer 1)
 - Lesson 2: Degradation Symptoms and Manual Tracking (587 lines, 9 concepts, Layer 1)
 - All exercises manual (NO AI assistance)
@@ -146,6 +160,7 @@ User identified Chapter 11 Lesson 1 was broken, containing Python/FastAPI/SQLAlc
 - ZERO programming code (Part 3 compliant)
 
 **Lessons 3-5 (AI Collaboration, Three Roles Framework)** — content-implementer agent
+
 - Lesson 3: Progressive Loading Strategy (445 lines, 8 concepts, Layer 2)
   - Three Roles: AI suggests Foundation→Current→On-Demand → Student teaches style-guide.md volatility → 3 rounds converge
 - Lesson 4: Context Compression and Session Restart (512 lines, 8 concepts, Layer 2)
@@ -155,6 +170,7 @@ User identified Chapter 11 Lesson 1 was broken, containing Python/FastAPI/SQLAlc
 - Research integration: Anthropic (smallest high-signal tokens, extraction/consolidation), GitHub (multi-session patterns)
 
 **Lessons 6-7 (Intelligence Design, Skill Creation)** — content-implementer agent
+
 - Lesson 6: Memory Files and Persistent Intelligence (487 lines, 8 concepts, Layer 3)
   - Created memory-file-architecture skill (687 lines, Persona + Questions + Principles)
   - CLAUDE.md, architecture.md, decisions.md architecture
@@ -164,6 +180,7 @@ User identified Chapter 11 Lesson 1 was broken, containing Python/FastAPI/SQLAlc
 - Research integration: Google PDF (memory generation pipeline), GitHub (decision guardrails)
 
 **Lesson 8 (Validation)** — content-implementer agent
+
 - Lesson 8: Hands-On Debugging and Optimization (587 lines, 8 concepts, Layer 2 validation)
 - 4 integrated scenarios applying all Lessons 1-7 techniques
 - Scenario 1: High utilization → compression (L4)
@@ -173,19 +190,23 @@ User identified Chapter 11 Lesson 1 was broken, containing Python/FastAPI/SQLAlc
 - Research integration: Google PDF (production considerations)
 
 **Lesson 9 (Capstone)** — validated existing lesson
+
 - Lesson 9: Capstone — Spec-Driven Orchestration (existing 542 lines, 8 concepts, Layer 4)
 - ZERO implementation code (specification-only, algorithms in plain English)
 - Orchestrates ALL Lessons 1-8 in complete specification
 - Validation: Already compliant, no changes needed
 
 **README** — edited to add lesson navigation, research foundation, success criteria
+
 - Added 9-lesson table with layer/concept breakdown
 - Added research source citations (Anthropic, GitHub, Google)
 - Added 7 success criteria for mastery verification
 - Added prerequisites and teaching modality differentiation
 
 ### Phase 4: Validation (validation-auditor agent)
+
 ✅ Comprehensive 4-dimensional validation:
+
 1. **Technical Correctness**: PASS (zero code violations, context specs accurate)
 2. **Pedagogical Effectiveness**: PASS (layer progression correct, Three Roles complete, cognitive load within limits)
 3. **Factual Accuracy**: PASS (all research citations verified, zero hallucinations)
@@ -197,6 +218,7 @@ User identified Chapter 11 Lesson 1 was broken, containing Python/FastAPI/SQLAlc
 ✅ Final Verdict: **APPROVE - Market-defining quality, ready for publication**
 
 ### Phase 5: Meta-Learning Capture (This PHR)
+
 ✅ Created PHR documenting complete workflow
 ✅ Captured failure mode analysis (Layer 4 thinking applied to Layer 1 content)
 ✅ Documented prevention strategy (context-first protocol: read chapter-index.md before designing)
@@ -218,6 +240,7 @@ User identified Chapter 11 Lesson 1 was broken, containing Python/FastAPI/SQLAlc
 - **Failure modes observed**: Initial Chapter 11 implementation violated Part 3 prerequisites by using Python/FastAPI/SQLAlchemy code examples. Root cause: Did NOT read chapter-index.md to verify Part number and prerequisite knowledge. Assumed "context engineering" meant advanced technical examples without checking student's current knowledge level (Part 3 = no programming yet). Applied Layer 4 thinking (spec-driven orchestration with code) to what should be Layer 1 content (manual foundation with simple markdown examples). **Same mistake as Chapter 9**, indicating pattern: skipping context-gathering protocol leads to pedagogical layer mismatches.
 
 - **Graders run and results (PASS/FAIL)**: **PASS - All graders successful**
+
   - Acceptance Tests: SC-001 through SC-007 all PASS (zero code, markdown-only, B1 cognitive load, manual foundation, Three Roles, specification-only capstone, research integration)
   - Constitutional Compliance: 7/7 principles satisfied (Specification Primacy, Progressive Complexity, Factual Accuracy, Coherent Structure, Intelligence Accumulation, Anti-Convergence, Minimal Content)
   - Validation-Auditor: APPROVE with market-defining quality rating (Technical Correctness 100%, Pedagogical Effectiveness 100%, Factual Accuracy 100%, Accessibility 100%)

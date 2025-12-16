@@ -11,7 +11,7 @@ description: "Implementation tasks for Chapter 27: Pydantic and Generics"
 
 **Content Type**: Educational book chapter (not software feature)
 **Target**: Part 4, Chapter 27 - Advanced tier (B1-B2 CEFR proficiency)
-**Output Location**: `book-source/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/`
+**Output Location**: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/`
 
 ## Format: `[ID] [P?] [Lesson] Description`
 
@@ -21,7 +21,7 @@ description: "Implementation tasks for Chapter 27: Pydantic and Generics"
 
 ## Path Conventions
 
-- **Chapter directory**: `book-source/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/`
+- **Chapter directory**: `apps/learn-app/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/`
 - **Lesson files**: `01-lesson-name.md`, `02-lesson-name.md`, etc.
 - **Code examples**: Embedded in lesson markdown with proper syntax highlighting
 - **Validation**: Each lesson validated independently before moving to next
@@ -32,7 +32,7 @@ description: "Implementation tasks for Chapter 27: Pydantic and Generics"
 
 **Purpose**: Create chapter directory structure and foundational artifacts
 
-- [ ] T001 Create chapter directory `book-source/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/`
+- [ ] T001 Create chapter directory `apps/learn-app/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/`
 - [ ] T002 [P] Verify Python 3.14+ environment with Pydantic V2 installed (`uv add pydantic`)
 - [ ] T003 [P] Create chapter README.md with overview, prerequisites, and lesson index
 - [ ] T004 [P] Prepare code examples workspace for testing all 9 examples (EX-001 through EX-009)
@@ -71,7 +71,7 @@ description: "Implementation tasks for Chapter 27: Pydantic and Generics"
 
 ### Implementation for Lesson 1
 
-- [ ] T014 [L1] Create lesson file `book-source/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/01-introduction-to-pydantic.md`
+- [ ] T014 [L1] Create lesson file `apps/learn-app/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/01-introduction-to-pydantic.md`
 - [ ] T015 [L1] Add YAML frontmatter (title, sidebar_position: 1, description, proficiency: B1)
 - [ ] T016 [L1] Write Introduction section (5 min): validation problem, AI-generated JSON scenario, type hints vs Pydantic
 - [ ] T017 [L1] Write Section 1: Your First Pydantic Model (10 min) - install Pydantic with uv, create Book model, run validation
@@ -107,7 +107,7 @@ description: "Implementation tasks for Chapter 27: Pydantic and Generics"
 
 ### Implementation for Lesson 2
 
-- [ ] T035 [L2] Create lesson file `book-source/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/02-advanced-pydantic-patterns.md`
+- [ ] T035 [L2] Create lesson file `apps/learn-app/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/02-advanced-pydantic-patterns.md`
 - [ ] T036 [L2] Add YAML frontmatter (title, sidebar_position: 2, description, proficiency: B1-B2)
 - [ ] T037 [L2] Write Introduction section (5 min): business rules, real-world constraints, production config patterns
 - [ ] T038 [L2] Write Section 1: Custom Field Validators (12 min) - @field_validator for email, validation logic
@@ -145,7 +145,7 @@ description: "Implementation tasks for Chapter 27: Pydantic and Generics"
 
 ### Implementation for Lesson 3
 
-- [ ] T058 [L3] Create lesson file `book-source/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/03-introduction-to-generics.md`
+- [ ] T058 [L3] Create lesson file `apps/learn-app/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/03-introduction-to-generics.md`
 - [ ] T059 [L3] Add YAML frontmatter (title, sidebar_position: 3, description, proficiency: B1)
 - [ ] T060 [L3] Write Introduction section (5 min): duplication problem, type-safe code for ANY type, why Python needs Generics
 - [ ] T061 [L3] Write Section 1: Your First Generic Function (12 min) - get_first_item[T], testing with different types
@@ -182,7 +182,7 @@ description: "Implementation tasks for Chapter 27: Pydantic and Generics"
 
 ### Implementation for Lesson 4
 
-- [ ] T080 [L4] Create lesson file `book-source/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/04-generic-classes-and-protocols.md`
+- [ ] T080 [L4] Create lesson file `apps/learn-app/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/04-generic-classes-and-protocols.md`
 - [ ] T081 [L4] Add YAML frontmatter (title, sidebar_position: 4, description, proficiency: B1-B2)
 - [ ] T082 [L4] Write Introduction section (5 min): from functions to classes, type-safe containers
 - [ ] T083 [L4] Write Section 1: Creating a Generic Stack Class (12 min) - class Stack[T], push/pop/peek
@@ -221,7 +221,7 @@ description: "Implementation tasks for Chapter 27: Pydantic and Generics"
 
 ### Implementation for Lesson 5
 
-- [ ] T104 [L5] Create lesson file `book-source/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/05-pydantic-for-ai-native-development.md`
+- [ ] T104 [L5] Create lesson file `apps/learn-app/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/05-pydantic-for-ai-native-development.md`
 - [ ] T105 [L5] Add YAML frontmatter (title, sidebar_position: 5, description, proficiency: B2)
 - [ ] T106 [L5] Write Introduction section (5 min): AI trust problem, validation CRITICAL in AI systems, AI-native loop
 - [ ] T107 [L5] Position 🎓 Instructor Commentary #1: "AI is powerful but unpredictable. Pydantic is your safety net"
@@ -260,7 +260,7 @@ description: "Implementation tasks for Chapter 27: Pydantic and Generics"
 
 ### Implementation for Lesson 6
 
-- [ ] T128 [L6] Create lesson file `book-source/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/06-capstone-type-safe-config-manager.md`
+- [ ] T128 [L6] Create lesson file `apps/learn-app/docs/04-Part-4-Python-Fundamentals/27-pydantic-generics/06-capstone-type-safe-config-manager.md`
 - [ ] T129 [L6] Add YAML frontmatter (title, sidebar_position: 6, description, proficiency: B2, capstone: true)
 - [ ] T130 [L6] Write Introduction section (7 min): configuration problem, requirements, what you'll build
 - [ ] T131 [L6] Position 🎓 Instructor Commentary #1: "Config management is unglamorous but essential"
@@ -457,6 +457,7 @@ Each lesson follows this micro-workflow:
 Within this chapter, each lesson MUST end with a single final section titled **"Try With AI"** containing exactly 4 prompts following Bloom's taxonomy progression (Understand/Remember → Apply → Analyze/Evaluate → Create/Synthesize).
 
 **FORBIDDEN after "Try With AI"**:
+
 - ❌ Key Takeaways sections
 - ❌ Summary sections
 - ❌ What's Next sections
@@ -464,12 +465,14 @@ Within this chapter, each lesson MUST end with a single final section titled **"
 - ❌ Any additional content
 
 **AI Tool References**:
+
 - Part 4 students have completed Part 2 (AI Tool Landscape)
 - Use phrasing: "Tell your AI..." or "Ask your AI..."
 - Students may use Claude Code, Gemini CLI, ChatGPT web, or their preferred AI tool
 - No need to specify which tool in prompts (student choice)
 
 **Expected Outcomes**:
+
 - Each "Try With AI" prompt MUST include explicit **Expected Outcome** describing what students should receive from their AI
 
 This ensures consistent pedagogical structure across all Part 4 chapters and aligns with AI-Native Learning pedagogy.

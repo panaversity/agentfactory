@@ -9,21 +9,27 @@ feature: 030-chapter-7-bash-refinement
 branch: 030-chapter-7-bash-refinement
 user: User
 command: /sp.loopflow.v2 Refine Chapter 7 Bash
-labels: [loopflow-v2, constitutional-compliance, educational-content, reasoning-activated]
+labels:
+  [
+    loopflow-v2,
+    constitutional-compliance,
+    educational-content,
+    reasoning-activated,
+  ]
 links:
   spec: specs/030-chapter-7-bash-refinement/spec.md
   ticket: N/A
   adr: N/A
   pr: N/A
 files:
-  - book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/01-introducing-ai-workspace.md
-  - book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/02-safety-first-pattern.md
-  - book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/03-understanding-navigation.md
-  - book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/04-understanding-file-operations.md
-  - book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/05-configuration-secrets.md
-  - book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/06-packages-dependencies.md
-  - book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/07-pipes-complex-commands.md
-  - book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-project-troubleshooting.md
+  - apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/01-introducing-ai-workspace.md
+  - apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/02-safety-first-pattern.md
+  - apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/03-understanding-navigation.md
+  - apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/04-understanding-file-operations.md
+  - apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/05-configuration-secrets.md
+  - apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/06-packages-dependencies.md
+  - apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/07-pipes-complex-commands.md
+  - apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/08-real-project-troubleshooting.md
   - specs/030-chapter-7-bash-refinement/spec.md
   - specs/030-chapter-7-bash-refinement/plan.md
   - specs/030-chapter-7-bash-refinement/tasks.md
@@ -34,6 +40,7 @@ tests: N/A (educational content refinement, no software tests)
 ## Prompt
 
 **Original User Request**:
+
 ```
 /sp.loopflow.v2 Refine Chapter 7 Bash
 ```
@@ -41,6 +48,7 @@ tests: N/A (educational content refinement, no software tests)
 **Context**: Slash command invocation requesting complete SDD-RI workflow (Spec → Plan → Tasks → Implement → Validate) for Chapter 7 (Bash Essentials) constitutional compliance refinement.
 
 **LoopFlow v2.0 Execution**:
+
 - Phase 0: Constitutional Reasoning Engine (analyzed task, read constitution, audited current state, asked 3 clarifying questions)
 - Phase 1: Generated reasoning-activated prompt FOR /sp.specify, invoked with complete intelligence context
 - Phase 2: Generated reasoning-activated prompt FOR /sp.plan, invoked with accumulated context
@@ -49,6 +57,7 @@ tests: N/A (educational content refinement, no software tests)
 - Phase 5: Created PHR capturing meta-learning
 
 **User Decisions Captured** (3 clarifications):
+
 1. Scope: Constitutional Compliance First (surgical corrections, not rewrite)
 2. Three Roles: Clear But Natural (light narration for A2 learners)
 3. Preservation: Preserve Structure, Fix Content (keep 8 lessons)
@@ -58,6 +67,7 @@ tests: N/A (educational content refinement, no software tests)
 **Complete SDD-RI Workflow Executed**: Spec → Plan → Tasks → Implement → Validate
 
 **Phase 0 Output**: Constitutional Reasoning Engine
+
 - Task characterization: Educational content refinement (surgical)
 - Audit findings: 87.5% compliance, 7 violations (2 critical, 5 minor)
 - Constitutional frameworks: Principle 7, Section IIa, Principle 2, 3, 5, 6
@@ -65,6 +75,7 @@ tests: N/A (educational content refinement, no software tests)
 - Intelligence object generated for complete context propagation
 
 **Phase 1 Output**: Specification (approved)
+
 - Location: specs/030-chapter-7-bash-refinement/spec.md
 - Evals: 5 success criteria with measurable acceptance tests
 - Intent: Surgical refinement (87.5% → 100% compliance), preserve strengths
@@ -72,6 +83,7 @@ tests: N/A (educational content refinement, no software tests)
 - Non-goals: Complete rewrite, bash expansion, new examples
 
 **Phase 2 Output**: Plan (approved)
+
 - Location: specs/030-chapter-7-bash-refinement/plan.md (603 lines)
 - Strategy: Critical-first validation gating with 4 phases
 - Lesson-by-lesson breakdown: 8 detailed correction strategies
@@ -79,6 +91,7 @@ tests: N/A (educational content refinement, no software tests)
 - Three Roles integration pattern: Observational markers for A2 learners
 
 **Phase 3 Output**: Tasks (approved)
+
 - Location: specs/030-chapter-7-bash-refinement/tasks.md (75 tasks)
 - Phase 1: Critical fixes (T001-T018)
 - Phase 2: Minor fixes (T019-T038)
@@ -87,6 +100,7 @@ tests: N/A (educational content refinement, no software tests)
 - Each task: Atomic, verifiable, with embedded acceptance criteria
 
 **Phase 4 Output**: Implementation (validated)
+
 - All 75 tasks executed
 - 4 git commits (phase-based)
 - 8 lesson files refined
@@ -94,6 +108,7 @@ tests: N/A (educational content refinement, no software tests)
 - Compliance: 87.5% → 100% (7 violations → 0)
 
 **Phase 5 Output**: Meta-Learning
+
 - PHR created capturing complete orchestration
 - Organizational learning documented
 - Reusable patterns identified
@@ -105,7 +120,7 @@ tests: N/A (educational content refinement, no software tests)
 
 - 🧪 Tests: **24/24 constitutional validation checks PASSING**. Check 1 (Final Section): 8/8 lessons. Check 2 (No Forbidden Sections): 8/8 lessons. Check 3 (No Internal Scaffolding): 8/8 lessons. All bash commands verified executable or pedagogically failing as intended.
 
-- 📁 Files: **8 lesson files refined** (book-source/docs/02-AI-Tool-Landscape/07-bash-essentials/01-08), **VALIDATION-REPORT.md** created documenting full compliance, **4 git commits** (cd1368b, 28100bd, 95c97e6) with phase-based organization enabling rollback capability.
+- 📁 Files: **8 lesson files refined** (apps/learn-app/docs/02-AI-Tool-Landscape/07-bash-essentials/01-08), **VALIDATION-REPORT.md** created documenting full compliance, **4 git commits** (cd1368b, 28100bd, 95c97e6) with phase-based organization enabling rollback capability.
 
 - 🔁 Next prompts: **(1) Create pull request for review**, **(2) Update chapter-index.md status** (mark Chapter 7 as "Refined & Validated"), **(3) Deploy to Docusaurus** for student access, **(4) Apply surgical refinement pattern** to other chapters needing compliance fixes.
 

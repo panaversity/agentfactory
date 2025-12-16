@@ -16,16 +16,16 @@ links:
   adr: none
   pr: none
 files:
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/README.md
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/README.md
     status: audited
     lines: 31
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/09-markdown-language-of-ai/
     status: audited
     lessons: 5
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/10-prompt-engineering-for-aidd/
     status: audited
     lessons: 8
-  - path: book-source/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/
+  - path: apps/learn-app/docs/03-Markdown-Prompt-Context-Engineering/11-context-engineering-for-ai-driven-development/
     status: audited
     lessons: 9
 tests:
@@ -54,11 +54,13 @@ Audit all 3 chapters (9-11) containing 22 lessons across 6 validation dimensions
 6. **Reasoning Activation** (5% weight) - Question quality, skills design using P+Q+P pattern
 
 **Context**:
+
 - Part 3 is for students with ZERO programming knowledge (programming starts Part 4)
 - Proficiency range: A1-B1 (Aspiring to Intermediate)
 - Part structure: Chapter 9 (Markdown syntax) → Chapter 10 (Prompting) → Chapter 11 (Context engineering + capstone)
 
 **Requirements**:
+
 - Provide specific evidence with file paths and line numbers
 - Prioritize findings: P0 (publication blockers), P1 (should fix), P2 (nice to have)
 - Calculate weighted scores using 48-point scale
@@ -73,6 +75,7 @@ Audit all 3 chapters (9-11) containing 22 lessons across 6 validation dimensions
 **Critical Findings**:
 
 **P0 PUBLICATION BLOCKER**:
+
 - Chapter 10, Lesson 3 (`03-iterative-prompt-refinement.md`) extensively exposes Three Roles pedagogical framework through meta-commentary
 - 20+ violations: "AI as Teacher", "AI as Student", "AI as Co-Worker" section headers
 - Constitutional violation: v6.0.1 §IIa Student-Facing Language Protocol (lines 605-708)
@@ -80,10 +83,12 @@ Audit all 3 chapters (9-11) containing 22 lessons across 6 validation dimensions
 - **Estimated effort**: 4-6 hours
 
 **P1 MAJOR ISSUES**:
+
 - Chapter 10, Lesson 2: Forbidden ending section "## Summary: The Anatomy Checklist" (violates Principle 7 Minimal Content)
 - Chapter 10: Missing Layer 3 reusable intelligence creation (lessons teach template usage, not skill encoding)
 
 **Dimensional Scores**:
+
 1. Constitutional Compliance: 15.6/21 (74.3%) — Meta-commentary penalty
 2. 4-Layer Framework: 8.25/12.5 (66.0%) — Layer 2 violation, Layer 3 missing
 3. Pedagogical Coherence: 6.4/8 (80.0%) — Strong prerequisites, clear arc
@@ -92,11 +97,13 @@ Audit all 3 chapters (9-11) containing 22 lessons across 6 validation dimensions
 6. Reasoning Activation: 0.8/1 (80.0%) — Good question quality, P0 undermines
 
 **Strengths**:
+
 1. Excellent prerequisite management (Chapter 9 correctly avoids programming code)
 2. Strong Layer 1 Manual Foundation (Chapter 9 direct markdown teaching)
 3. Coherent pedagogical arc (Foundation → Application → Integration → Mastery)
 
 **Evidence**:
+
 - Meta-commentary grep found 20+ violations in single lesson
 - 22/23 lessons (95.7%) correctly end with "Try With AI"
 - All context window specifications verified accurate (Claude 200K, Gemini 2M)
@@ -107,6 +114,7 @@ Audit all 3 chapters (9-11) containing 22 lessons across 6 validation dimensions
 - ✅ **Impact**: Comprehensive quality assessment across 6 dimensions with specific, actionable findings. Publication decision framework enabled (REVISE recommendation with clear fix roadmap).
 
 - 🧪 **Tests**:
+
   - Meta-commentary validation: FAIL (20+ violations Chapter 10, Lesson 3)
   - Forbidden endings validation: FAIL (1 violation Chapter 10, Lesson 2)
   - Proficiency tier validation: PASS (all lessons within A1-B1 limits)
@@ -115,6 +123,7 @@ Audit all 3 chapters (9-11) containing 22 lessons across 6 validation dimensions
 - 📁 **Files**: Audited 22 markdown lessons + 4 README files across Part 3 (26 total files). Generated comprehensive 11,000+ word audit report with evidence appendix.
 
 - 🔁 **Next prompts**:
+
   1. "Rewrite Chapter 10, Lesson 3 using Constitution v6.0.1 action prompts pattern"
   2. "Remove forbidden Summary section from Chapter 10, Lesson 2"
   3. "Create `.claude/skills/prompt-template-designer.md` using P+Q+P pattern"
@@ -127,11 +136,13 @@ Audit all 3 chapters (9-11) containing 22 lessons across 6 validation dimensions
 ## Evaluation notes (flywheel)
 
 - **Failure modes observed**:
+
   - Agent initially tried to grep code blocks with complex regex causing shell errors (switched to simpler patterns)
   - Path confusion for chapter-index.md (assumed book-source/docs before checking specs/book)
   - Needed to balance depth (comprehensive 6-dimension audit) vs time (3-4 hour target)
 
 - **Graders run and results**:
+
   - Constitutional compliance grader: FAIL (P0 meta-commentary + P1 forbidden endings)
   - 4-Layer framework grader: PARTIAL PASS (Layer 1 excellent, Layer 2 violated, Layer 3 missing, Layer 4 present)
   - Pedagogical coherence grader: PASS (clear prerequisites, incremental scaffolding, coherent arc)

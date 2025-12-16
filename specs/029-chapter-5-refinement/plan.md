@@ -11,6 +11,7 @@
 Transform Chapter 5 from a **feature documentation** approach (explaining what Claude Code does) into a **methodology-driven learning experience** (teaching AI-native development paradigm through Claude Code).
 
 Refinement is **surgical** (preserve working content, exercises, structure) focusing on:
+
 - **Metadata enhancement**: Add 3 missing fields to enable pedagogical tracking
 - **Content conciseness**: Reduce 2 verbose lessons (Lessons 6 & 9) while preserving substance
 - **Methodology framing**: Make implicit "Why This Matters" sections explicit in 5 lessons
@@ -27,8 +28,9 @@ Refinement is **surgical** (preserve working content, exercises, structure) focu
 **Current Project Type**: Educational content (9 interconnected lessons)
 
 **Current Structure**:
+
 ```
-book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/
+apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/
 ├── README.md
 ├── 01-origin-story.md (169 lines, L1)
 ├── 02-installation-and-authentication.md (289 lines, L1)
@@ -45,11 +47,13 @@ Total: 3,332 lines | 9 lessons | Target audience: A2-B1
 **Target Proficiency**: A2-B1 (beginner to intermediate)
 
 **Performance Goals**:
+
 - All lessons 250-350 lines (avg 300)
 - Theory-to-practice ratio ≥60% hands-on
 - Cognitive load ≤7 concepts (A2), ≤10 (B1)
 
 **Constraints**:
+
 - Preserve existing exercises (high-quality)
 - Preserve Lesson 3 Three Roles example (excellence reference)
 - Preserve Lesson 9 skill reference material (user-approved)
@@ -81,6 +85,7 @@ Total: 3,332 lines | 9 lessons | Target audience: A2-B1
 ## Project Structure
 
 ### Documentation (Specifications)
+
 ```
 specs/029-chapter-5-refinement/
 ├── spec.md                 # Feature specification (complete)
@@ -93,8 +98,9 @@ specs/029-chapter-5-refinement/
 ```
 
 ### Source Code (Chapter Content)
+
 ```
-book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/
+apps/learn-app/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/
 ├── README.md               # MODIFY: Add Stage Progression section
 ├── 01-origin-story.md      # MODIFY: Add metadata fields
 ├── 02-installation-and-authentication.md  # MODIFY: Add metadata + "Why This Matters"
@@ -114,6 +120,7 @@ book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/
 ### LESSON 1: Origin Story (L1: Manual Foundation)
 
 **Current State**:
+
 - 169 lines, conceptual foundation
 - ✅ Clear paradigm shift explanation (passive vs agentic AI)
 - ✅ Terminal integration importance explained
@@ -121,20 +128,23 @@ book-source/docs/02-AI-Tool-Landscape/05-claude-code-features-and-workflows/
 - ⚠️ No metadata fields (stage, prerequisites, concept_count)
 
 **Metadata Enhancement**:
+
 ```yaml
-stage: "L1"  # NEW
-prerequisites:  # NEW
+stage: "L1" # NEW
+prerequisites: # NEW
   - "Understanding of what AI is and basic terminal usage"
-concept_count: 5  # NEW
+concept_count: 5 # NEW
 ```
 
 **Content Refinement Strategy**: MINIMAL
+
 - Content is concise, conceptually sound
 - Preserve entire lesson as-is
 - Line count (169) well under limit
 - No content transformation needed
 
 **Validation Criteria**:
+
 - ✅ Metadata fields present and correctly typed
 - ✅ Stage: "L1" consistent with README
 - ✅ Concept count verified (5 distinct concepts)
@@ -146,6 +156,7 @@ concept_count: 5  # NEW
 ### LESSON 2: Installation & Authentication (L1: Manual Foundation)
 
 **Current State**:
+
 - 289 lines, practical walkthrough
 - ✅ 4 installation methods clearly presented
 - ✅ 2 authentication paths with decision tree
@@ -154,16 +165,19 @@ concept_count: 5  # NEW
 - ⚠️ No metadata fields
 
 **Metadata Enhancement**:
+
 ```yaml
-stage: "L1"  # NEW
-prerequisites:  # NEW
+stage: "L1" # NEW
+prerequisites: # NEW
   - "Terminal access (Windows/macOS/Linux)"
   - "Claude account (Claude.ai or Console API)"
-concept_count: 8  # NEW — Slightly elevated but acceptable with ±1 margin
+concept_count: 8 # NEW — Slightly elevated but acceptable with ±1 margin
 ```
 
 **Content Refinement Strategy**: ADD METHODOLOGY FRAMING
+
 - **Add new section** after intro: "Why This Matters: Terminal Integration for AI Workflows"
+
   - **Content** (80-120 words):
     - Explains why terminal-based AI is different from web-based (integrated, context-aware, file-system native)
     - Connects to AI-driven development paradigm (removes friction between intent and execution)
@@ -174,11 +188,13 @@ concept_count: 8  # NEW — Slightly elevated but acceptable with ±1 margin
 - Lean toward conciseness in examples (keep CLI commands intact, trim explanatory prose)
 
 **Code Example Validation**:
+
 - ✅ Installation commands present (4 methods)
 - ❌ Not verified in sandbox
 - Action: Execute all 4 installation methods in clean environment, verify `claude --version` output
 
 **Validation Criteria**:
+
 - ✅ Metadata fields correct
 - ✅ "Why This Matters" section added (80-120 words, methodology-focused)
 - ✅ All CLI commands verified working
@@ -191,6 +207,7 @@ concept_count: 8  # NEW — Slightly elevated but acceptable with ±1 margin
 ### LESSON 3: CLAUDE.md Context Files (L2: AI Collaboration)
 
 **Current State**:
+
 - 376 lines, strong pedagogical design
 - ✅ EXCELLENT Three Roles demonstration (preserve verbatim):
   - AI as Teacher (suggests missing sections)
@@ -202,26 +219,30 @@ concept_count: 8  # NEW — Slightly elevated but acceptable with ±1 margin
 - ⚠️ No metadata fields
 
 **Metadata Enhancement**:
+
 ```yaml
-stage: "L2"  # NEW
-prerequisites:  # NEW
+stage: "L2" # NEW
+prerequisites: # NEW
   - "Lesson 2: Claude Code installed and authenticated"
   - "Understanding of project directory structure basics"
-concept_count: 6  # NEW
+concept_count: 6 # NEW
 ```
 
 **Content Refinement Strategy**: PRESERVE + MINIMAL ENHANCEMENT
+
 - ✅ **DO NOT MODIFY** existing Three Roles section (it's reference-quality)
 - ✅ **DO NOT MODIFY** existing CLAUDE.md structure explanation
 - ⚠️ **OPTIONAL**: Consider adding 1 sentence to "Why This Matters" connecting to Lesson 5+ (subagents/skills inherit context from CLAUDE.md)
 - Trim any redundant explanations if line count exceeds 350 after metadata addition
 
 **Code Example Validation**:
+
 - ✅ Generation prompts present
 - ❌ Not verified in sandbox
 - Action: Test Claude Code prompt in clean project, verify CLAUDE.md generation accuracy
 
 **Validation Criteria**:
+
 - ✅ Metadata fields correct
 - ✅ Three Roles demonstration preserved exactly
 - ✅ Line count ≤350 (currently 376, may need light trim if +metadata adds)
@@ -234,6 +255,7 @@ concept_count: 6  # NEW
 ### LESSON 4: MCP Integration (L2: AI Collaboration)
 
 **Current State**:
+
 - 225 lines, hands-on workflows
 - ✅ Two practical MCP workflows (Playwright web browsing, Context7 doc fetching)
 - ✅ Security context included
@@ -242,16 +264,19 @@ concept_count: 6  # NEW
 - ⚠️ No metadata fields
 
 **Metadata Enhancement**:
+
 ```yaml
-stage: "L2"  # NEW
-prerequisites:  # NEW
+stage: "L2" # NEW
+prerequisites: # NEW
   - "Lessons 2-3: Claude Code working, CLAUDE.md understanding"
   - "Understanding of external APIs and web services"
-concept_count: 6  # NEW
+concept_count: 6 # NEW
 ```
 
 **Content Refinement Strategy**: ENHANCE METHODOLOGY + THREE ROLES
+
 - **Add new section** after MCP definition: "Why This Matters: Safe External Integration"
+
   - **Content** (80-120 words):
     - Explains MCP as safe, standardized way to give AI external access
     - Connects to AI-driven development (AI can now reach beyond local files)
@@ -259,7 +284,9 @@ concept_count: 6  # NEW
   - **Placement**: After "Think of MCP Like This", before "What Is MCP?"
 
 - **Enhance Three Roles demonstration**: Add 1 explicit co-learning cycle
+
   - **Location**: In "Try With AI" section, add new prompt:
+
     ```
     Prompt: "You've successfully added Playwright MCP. Now, ask Claude Code to:
     1. Browse a website related to YOUR project (if web-based)
@@ -268,16 +295,19 @@ concept_count: 6  # NEW
 
     Notice the collaboration: You describe intent, Claude explores, you refine based on results."
     ```
+
   - **Purpose**: Makes implicit co-learning explicit (AI explores, student refines, convergence on answer)
 
 - **Line count**: Currently 225 (well under 400), new section adds ~100 lines → ~325 total (acceptable)
 
 **Code Example Validation**:
+
 - ✅ MCP add commands present
 - ❌ Not verified in sandbox
 - Action: Execute MCP add commands, verify `claude mcp list` shows registered servers
 
 **Validation Criteria**:
+
 - ✅ Metadata fields correct
 - ✅ "Why This Matters" section added (80-120 words)
 - ✅ One Three Roles demonstration added (explicit co-learning cycle)
@@ -291,6 +321,7 @@ concept_count: 6  # NEW
 ### LESSON 5: Subagents & Orchestration (L2: AI Collaboration)
 
 **Current State**:
+
 - 355 lines, clear subagent explanation
 - ✅ Plan subagent well-explained
 - ✅ Execution model clear (one task, one completion)
@@ -300,16 +331,19 @@ concept_count: 6  # NEW
 - ⚠️ No metadata fields
 
 **Metadata Enhancement**:
+
 ```yaml
-stage: "L2"  # NEW
-prerequisites:  # NEW
+stage: "L2" # NEW
+prerequisites: # NEW
   - "Lessons 2-4: Claude Code, CLAUDE.md, MCP understanding"
   - "Understanding of problem decomposition"
-concept_count: 6  # NEW
+concept_count: 6 # NEW
 ```
 
 **Content Refinement Strategy**: ENHANCE METHODOLOGY + THREE ROLES
+
 - **Add new section** after subagent definition: "Why This Matters: Specialized Expertise"
+
   - **Content** (80-120 words):
     - Explains subagents as team of specialists, cleaner context management
     - Connects to AI-driven development (orchestration pattern)
@@ -317,32 +351,39 @@ concept_count: 6  # NEW
   - **Placement**: After "What Are Subagents?", before "The Plan Subagent"
 
 - **Enhance Three Roles**: Add 1 explicit co-learning cycle in hands-on section
+
   - **Location**: After Step 2 (Choose location), add new step:
+
     ```
     ### Step 2.5: Co-learn Subagent Design (Optional but Recommended)
 
     Before finalizing your subagent, ask Claude Code:
     ```
+
     "I'm about to create a [purpose] subagent. Before I finalize it,
     help me think through: What are 3 core decisions this subagent needs
     to make autonomously? What questions should it ask users?"
+
     ```
 
     Claude suggests patterns you might not have considered.
     You refine based on your needs.
     Together, you converge on a better subagent design.
     ```
+
   - **Purpose**: Demonstrates AI teaches, student refines, convergence
 
 - **Line count**: Currently 355, new sections add ~120 lines → ~475 total (exceeds 400 slightly)
 - **Mitigation**: Streamline "More Subagent Ideas" section from examples-heavy to concept-focused (saves ~30-40 lines)
 
 **Code Example Validation**:
+
 - ✅ `/agents` workflow shown
 - ❌ Not verified in sandbox
 - Action: Execute `/agents` workflow, verify interface and agent creation
 
 **Validation Criteria**:
+
 - ✅ Metadata fields correct
 - ✅ "Why This Matters" section added (80-120 words)
 - ✅ One Three Roles cycle added (design co-learning)
@@ -357,6 +398,7 @@ concept_count: 6  # NEW
 ### LESSON 6: Agent Skills (L2: AI Collaboration) — CRITICAL REDUCTION
 
 **Current State**:
+
 - 547 lines, technically comprehensive but VERBOSE
 - **EXCEEDS 400-line limit by 37% (critical issue)**
 - ✅ Skill architecture explained (Level 1/2/3 system)
@@ -368,12 +410,13 @@ concept_count: 6  # NEW
 - ⚠️ No metadata fields
 
 **Metadata Enhancement**:
+
 ```yaml
-stage: "L2"  # NEW
-prerequisites:  # NEW
+stage: "L2" # NEW
+prerequisites: # NEW
   - "Lessons 2-5: Claude Code, CLAUDE.md, MCP, Subagents"
   - "Understanding of reusable components"
-concept_count: 7  # NEW — At A2 ceiling
+concept_count: 7 # NEW — At A2 ceiling
 ```
 
 **Content Refinement Strategy**: SIGNIFICANT REDUCTION (39% cut target)
@@ -383,27 +426,32 @@ concept_count: 7  # NEW — At A2 ceiling
 **How to Cut 217 Lines**:
 
 1. **Compress "How Skills Differ from Subagents"** (~100 lines to ~40 lines)
+
    - Current: Detailed explanation + full comparison table + 3 paragraphs of context isolation details
    - Target: Keep comparison table, remove redundant paragraphs, trust table to show differences
    - Lines saved: ~60
 
 2. **Simplify "Three-Level Architecture"** (~150 lines to ~80 lines)
+
    - Current: Full explanation of each level + real example (PDF skill) + flow diagram
    - Target: Brief summary per level, replace detailed example with single sentence ("See `.claude/skills/` directory")
    - Move detailed architecture to appendix note (not in lesson)
    - Lines saved: ~70
 
 3. **Streamline "When Claude Code Invokes Skills"** (~80 lines to ~50 lines)
+
    - Current: Three patterns with detailed explanations
    - Target: Keep patterns, remove verbose explanations, use bullet points
    - Lines saved: ~30
 
 4. **Consolidate "Try With AI" Prompts** (~60 lines to ~40 lines)
+
    - Current: 3-4 detailed prompts with full context
    - Target: Keep 2 most essential prompts, condense explanations
    - Lines saved: ~20
 
 5. **Trim "Hands-On: Create Your First Skill"** (~60 lines to ~45 lines)
+
    - Current: Step-by-step with verbose file structure explanations
    - Target: Keep step names, reduce descriptive prose
    - Lines saved: ~15
@@ -416,6 +464,7 @@ concept_count: 7  # NEW — At A2 ceiling
 **Additional Content Changes**:
 
 - **Add "Why This Matters: Reusable Organizational Capability"** (NEW, ~100 words)
+
   - Explains skills as accumulated organizational intelligence
   - Connects to capstone (plugins = composed skills)
   - Placement: After skill definition, before "How Skills Differ"
@@ -429,11 +478,13 @@ concept_count: 7  # NEW — At A2 ceiling
 **Target Line Count**: 330-340 lines (well under 400 limit, acceptable)
 
 **Code Example Validation**:
+
 - ⚠️ SKILL.md structure shown but overly detailed
 - ❌ Not verified in sandbox
 - Action: Create test SKILL.md in `.claude/skills/`, verify Claude discovery and invocation
 
 **Validation Criteria**:
+
 - ✅ Metadata fields correct
 - ✅ Line count reduced to 330-340 (vs 547)
 - ✅ "Why This Matters" section added
@@ -449,6 +500,7 @@ concept_count: 7  # NEW — At A2 ceiling
 ### LESSON 7: Hooks & Extensibility (L2: AI Collaboration)
 
 **Current State**:
+
 - 260 lines, practical and concise
 - ✅ Hook events clearly defined (PreToolUse, PostToolUse, SessionStart, SessionEnd)
 - ✅ Real-world scenarios provided
@@ -458,43 +510,52 @@ concept_count: 7  # NEW — At A2 ceiling
 - ⚠️ No metadata fields
 
 **Metadata Enhancement**:
+
 ```yaml
-stage: "L2"  # NEW
-prerequisites:  # NEW
+stage: "L2" # NEW
+prerequisites: # NEW
   - "Lessons 2-6: Claude Code, CLAUDE.md, MCP, Subagents, Skills"
   - "Understanding of event-driven automation"
-concept_count: 5  # NEW
+concept_count: 5 # NEW
 ```
 
 **Content Refinement Strategy**: ENHANCE THREE ROLES
+
 - **Strengthen Three Roles demonstration**: Add explicit co-learning prompt
+
   - **Location**: After Step 4 (Make It More Useful)
   - **New Step 5: Co-Design Your Hook**
+
     ```
     ### Step 5: Co-Design a Hook for Your Workflow (Optional)
 
     Now ask Claude Code:
     ```
+
     "I want to create a hook that automates [YOUR SPECIFIC TASK].
     What event should trigger it? What command should run?
     What should I watch out for?"
+
     ```
 
     Claude suggests appropriate hook design.
     You refine based on your needs.
     Together you create a useful automation.
     ```
+
   - **Purpose**: Makes three-roles explicit (AI teaches patterns, student provides context, convergence on solution)
 
 - No content deletion needed (260 lines is lean, acceptable)
 - Enhance "Why This Matters" slightly if possible without expanding
 
 **Code Example Validation**:
+
 - ✅ Hook JSON configurations shown
 - ❌ Not verified in sandbox
 - Action: Create test `.claude/settings.json` with hook, restart Claude Code, verify hook execution
 
 **Validation Criteria**:
+
 - ✅ Metadata fields correct
 - ✅ Three Roles co-design step added (makes AI collaboration explicit)
 - ✅ Hook configurations verified working
@@ -507,6 +568,7 @@ concept_count: 5  # NEW
 ### LESSON 8: Settings Hierarchy (L3: Intelligence Design)
 
 **Current State**:
+
 - 331 lines, clear hierarchy explanation
 - ✅ Three settings levels clearly defined
 - ✅ Precedence rules explicit
@@ -516,16 +578,19 @@ concept_count: 5  # NEW
 - ⚠️ No metadata fields
 
 **Metadata Enhancement**:
+
 ```yaml
-stage: "L3"  # NEW (unique: L3 without creating new skill, understanding configuration as organizational pattern)
-prerequisites:  # NEW
+stage: "L3" # NEW (unique: L3 without creating new skill, understanding configuration as organizational pattern)
+prerequisites: # NEW
   - "Lessons 2-7: All prior Claude Code features understood"
   - "Understanding of configuration management and team coordination"
-concept_count: 5  # NEW
+concept_count: 5 # NEW
 ```
 
 **Content Refinement Strategy**: ENHANCE METHODOLOGY FRAMING
+
 - **Strengthen "Why This Matters" section**: Replace weak Expert Insight with explicit section
+
   - **New Section**: "Why Settings Hierarchy Matters for Team Intelligence"
   - **Location**: After "The Three Settings Levels", before "Precedence"
   - **Content** (120-150 words):
@@ -540,12 +605,14 @@ concept_count: 5  # NEW
 - Consider moving detailed precedence table to separate section if it expands line count
 
 **Code Example Validation**:
+
 - ✅ Settings file paths shown
 - ✅ Example JSON configurations present
 - ❌ Not verified in sandbox
 - Action: Create `~/.claude/settings.json`, `.claude/settings.json`, `.claude/settings.local.json`, verify precedence behavior
 
 **Validation Criteria**:
+
 - ✅ Metadata fields correct
 - ✅ "Why This Matters" section strengthened (explicit organizational framing)
 - ✅ Settings files and precedence verified working
@@ -558,6 +625,7 @@ concept_count: 5  # NEW
 ### LESSON 9: Plugins (L4: Spec-Driven Composition) — CRITICAL REDUCTION
 
 **Current State**:
+
 - 744 lines, comprehensive reference material
 - **EXCEEDS 400-line limit by 86% (CRITICAL ISSUE)**
 - ✅ Plugin definition clear (bundled capabilities)
@@ -571,12 +639,13 @@ concept_count: 5  # NEW
 - ⚠️ No metadata fields
 
 **Metadata Enhancement**:
+
 ```yaml
-stage: "L4"  # NEW
-prerequisites:  # NEW
+stage: "L4" # NEW
+prerequisites: # NEW
   - "Lessons 1-8: Complete understanding of all Claude Code features"
   - "Understanding of composition and orchestration"
-concept_count: 8  # NEW
+concept_count: 8 # NEW
 ```
 
 **Content Refinement Strategy**: MAJOR REDUCTION (47% cut target)
@@ -586,36 +655,43 @@ concept_count: 8  # NEW
 **How to Cut 344 Lines**:
 
 1. **Eliminate Exhaustive Marketplace Catalog** (~150 lines to ~40 lines)
+
    - Current: Lists all skills in example-skills and document-skills bundles (50+ items described)
    - Target: Mention 2-3 representative examples (canvas design, web testing, document processing), note "many more available"
    - Lines saved: ~110
 
 2. **Simplify Plugin Discovery Section** (~80 lines to ~40 lines)
+
    - Current: Detailed workflow for browsing marketplace with step-by-step UI navigation
    - Target: One simple command `/plugin`, note that UI guides you; let users explore
    - Lines saved: ~40
 
 3. **Consolidate Installation Methods** (~60 lines to ~35 lines)
+
    - Current: Two methods (UI + CLI) with full explanations
    - Target: UI method as primary, CLI as alternative (single sentence)
    - Lines saved: ~25
 
 4. **Replace Exhaustive "Test Your Installed Skills"** (~100 lines to ~50 lines)
+
    - Current: Multiple detailed workflow examples
    - Target: One concrete example (canvas design for diagram), encourage exploration
    - Lines saved: ~50
 
 5. **Streamline "Recognizing When Plugins Solve Your Needs"** (~80 lines to ~40 lines)
+
    - Current: Many decision scenarios
    - Target: Single clear decision framework (when plugin worth installing vs building)
    - Lines saved: ~40
 
 6. **Trim "Understanding Plugin Architecture"** (~60 lines to ~30 lines)
+
    - Current: Detailed explanation of how plugins bundle components
    - Target: Single diagram + brief text; assume students understand from prior lessons
    - Lines saved: ~30
 
 7. **Remove Redundancy** (~40 lines)
+
    - Identify repeated explanations (plugin definition appears multiple times)
    - Consolidate into single explanation
    - Lines saved: ~40
@@ -628,12 +704,14 @@ concept_count: 8  # NEW
 **Additional Content Changes**:
 
 - **Add "Why This Matters: Composition as Organizational Practice"** (NEW, ~120 words)
+
   - Explicitly connects plugins to chapter arc (everything from L1-L3 composes into plugins)
   - Explains plugins as embodiment of methodology (spec-driven, reusable intelligence, extensible workflows)
   - Frames capstone as integration point
   - Placement: Early, after plugin definition
 
 - **Preserve**: Lesson 9 skill reference material (user-approved keep)
+
   - Advanced skill creation guide, MCP building guide stay intact
 
 - **Refocus entire lesson**: From "comprehensive marketplace reference" to "how to discover and use existing plugins"
@@ -644,12 +722,14 @@ concept_count: 8  # NEW
 **Target Line Count**: 520 → 350-400 lines (well under 400 limit, appropriate for capstone)
 
 **Code Example Validation**:
+
 - ❌ `/plugin marketplace add` command not verified
 - ❌ `/plugin` workflow not tested
 - ❌ Plugin installation not executed
 - Action: Execute plugin marketplace commands, install example-skills, test skill discovery
 
 **Validation Criteria**:
+
 - ✅ Metadata fields correct
 - ✅ Line count reduced to 350-400 (from 744)
 - ✅ "Why This Matters" composition section added
@@ -666,6 +746,7 @@ concept_count: 8  # NEW
 ### README: Stage Progression Documentation
 
 **Current State**:
+
 - ✅ Clear chapter title and overview
 - ✅ "What You'll Learn" describes all 9 lessons
 - ❌ No explicit "Stage Progression" section
@@ -682,16 +763,20 @@ concept_count: 8  # NEW
 This chapter follows the **4-Layer Teaching Method**, where each lesson builds your capabilities progressively:
 
 ### Stage 1: Manual Foundation (Lessons 1-2)
+
 **What**: Understand agentic AI and get Claude Code working on your machine
 **Why**: You need to see how Claude Code differs from passive AI before we add complexity
 **Lessons**:
+
 - Lesson 1: Origin story and paradigm shift (mental model)
 - Lesson 2: Installation and authentication (working tool)
 
 ### Stage 2: AI Collaboration (Lessons 3-7)
+
 **What**: Learn each major feature while collaborating with Claude Code
 **Why**: Each feature is more powerful with hands-on practice and Three Roles co-learning (AI teaches, you teach, convergence)
 **Lessons**:
+
 - Lesson 3: CLAUDE.md (persistent context — foundation for everything else)
 - Lesson 4: MCP (external integrations via safe protocols)
 - Lesson 5: Subagents (specialized assistants for complex tasks)
@@ -699,15 +784,19 @@ This chapter follows the **4-Layer Teaching Method**, where each lesson builds y
 - Lesson 7: Hooks (event-driven automation)
 
 ### Stage 3: Intelligence Design (Lesson 8)
+
 **What**: Understand how to organize Claude Code for teams
 **Why**: Configuration hierarchy enables shared standards (team settings) + personal customization (local settings)
 **Lesson**:
+
 - Lesson 8: Settings hierarchy (user/project/local precedence)
 
 ### Stage 4: Spec-Driven Integration (Lesson 9)
+
 **What**: Discover and use plugins that compose everything from Lessons 1-8
 **Why**: Capstone demonstrates that plugins = bundled skills + subagents + hooks + MCP = reusable organizational intelligence
 **Lesson**:
+
 - Lesson 9: Plugins from marketplace (composition pattern)
 
 ## How to Use This Chapter
@@ -720,39 +809,41 @@ This chapter follows the **4-Layer Teaching Method**, where each lesson builds y
 ```
 
 **Visual Diagram** (optional, but recommended):
+
 ```markdown
 ## Visual Stage Progression
-
 ```
+
 ┌─────────────────────────────────────────────────┐
-│ Stage 1: Manual Foundation (Lessons 1-2)       │
-│ ═════════════════════════════════════════════  │
-│ Paradigm Shift → Installation & Setup          │
-│ (Mental model + working tool)                   │
+│ Stage 1: Manual Foundation (Lessons 1-2) │
+│ ═════════════════════════════════════════════ │
+│ Paradigm Shift → Installation & Setup │
+│ (Mental model + working tool) │
 └──────────────┬──────────────────────────────────┘
-               ↓
+↓
 ┌─────────────────────────────────────────────────┐
-│ Stage 2: AI Collaboration (Lessons 3-7)        │
-│ ═════════════════════════════════════════════  │
-│ Context → External APIs → Subagents →          │
-│ Skills → Event Automation                       │
-│ (Each lesson: AI teaches, you teach,           │
-│  together convergence)                         │
+│ Stage 2: AI Collaboration (Lessons 3-7) │
+│ ═════════════════════════════════════════════ │
+│ Context → External APIs → Subagents → │
+│ Skills → Event Automation │
+│ (Each lesson: AI teaches, you teach, │
+│ together convergence) │
 └──────────────┬──────────────────────────────────┘
-               ↓
+↓
 ┌─────────────────────────────────────────────────┐
-│ Stage 3: Intelligence Design (Lesson 8)        │
-│ ═════════════════════════════════════════════  │
-│ Settings Hierarchy: Personal + Team + Local    │
-│ (Organizational capability configuration)      │
+│ Stage 3: Intelligence Design (Lesson 8) │
+│ ═════════════════════════════════════════════ │
+│ Settings Hierarchy: Personal + Team + Local │
+│ (Organizational capability configuration) │
 └──────────────┬──────────────────────────────────┘
-               ↓
+↓
 ┌─────────────────────────────────────────────────┐
-│ Stage 4: Spec-Driven Composition (Lesson 9)    │
-│ ═════════════════════════════════════════════  │
-│ Plugins = Skills + Subagents + Hooks + MCP     │
-│ (Reusable organizational intelligence)         │
+│ Stage 4: Spec-Driven Composition (Lesson 9) │
+│ ═════════════════════════════════════════════ │
+│ Plugins = Skills + Subagents + Hooks + MCP │
+│ (Reusable organizational intelligence) │
 └─────────────────────────────────────────────────┘
+
 ```
 
 **Validation Criteria**:
@@ -903,3 +994,4 @@ This chapter follows the **4-Layer Teaching Method**, where each lesson builds y
 ---
 
 **This plan enables surgical, high-confidence refinement without rewriting. Each lesson has specific, measurable actions with clear validation criteria. Total effort: 14-19 hours distributed across 5 phases.**
+```
