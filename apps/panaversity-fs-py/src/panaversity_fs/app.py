@@ -22,6 +22,7 @@ Database Connections:
 """
 
 from mcp.server.fastmcp import FastMCP
+from mcp.server.transport_security import TransportSecuritySettings
 from panaversity_fs.config import get_config
 
 
@@ -33,10 +34,17 @@ def _create_mcp() -> FastMCP:
     """
     config = get_config()
 
+    # Disable DNS rebinding protection - Cloud Run handles security
+    # This prevents 421 errors from Host header validation
+    transport_security = TransportSecuritySettings(
+        enable_dns_rebinding_protection=False
+    )
+
     # Base configuration
-    kwargs = {
+    kwargs: dict = {
         "stateless_http": True,  # Enable Stateless Streamable HTTP (FR-004)
         "json_response": True,   # Disable SSE, use pure JSON responses
+        "transport_security": transport_security,
     }
 
     # Add authentication if configured
