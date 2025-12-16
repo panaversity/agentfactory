@@ -41,7 +41,7 @@ differentiation:
 
 # Anatomy of Effective Prompts
 
-In Lesson 1, you learned that prompts are specifications. Now you'll learn the **anatomy**—the structural components that transform vague requests into precise, executable specifications.
+In Lesson 1, you learned that prompts are specifications. Now you'll learn about the structural components that transform vague requests into precise, executable specifications.
 
 Think of this like learning the parts of a blueprint. A blueprint isn't just "draw a building"—it has specific components: foundation plan, electrical layout, plumbing schematic, elevation views. Each component serves a purpose. Miss one, and the contractor can't build correctly.
 

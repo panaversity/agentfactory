@@ -60,7 +60,7 @@ workflow: "/sp.implement"
 version: "1.0.0"
 ---
 
-# Why Markdown Matters for AI Communication
+# Why Markdown Matters for AI Communication?
 
 Imagine you want to build a mobile app. You write a long email to an AI agent:
 
