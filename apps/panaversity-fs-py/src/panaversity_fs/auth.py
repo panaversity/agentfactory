@@ -27,11 +27,14 @@ API Key Response:
 """
 
 import asyncio
+import hashlib
 import time
 import jwt
 import httpx
 from jwt import PyJWKClient, PyJWKClientError
 from dataclasses import dataclass
+from functools import lru_cache
+from typing import Optional
 
 from mcp.server.auth.provider import AccessToken, TokenVerifier
 from mcp.server.auth.settings import AuthSettings
@@ -234,7 +237,15 @@ class APIKeyVerifier:
     - userId: User ID for audit logging
     - permissions: Resource-based access control (fs:read, fs:write, fs:admin)
     - metadata: Service metadata
+
+    Caching:
+    - Successful verifications are cached for 5 minutes to reduce auth server load
+    - Cache key is a hash of the API key (not the key itself for security)
+    - Failed verifications are NOT cached (allow immediate retry)
     """
+
+    # Cache TTL in seconds (5 minutes)
+    CACHE_TTL = 300
 
     def __init__(self, verify_url: str):
         """Initialize API key verifier.
@@ -244,6 +255,29 @@ class APIKeyVerifier:
         """
         self.verify_url = verify_url
         self._client: httpx.AsyncClient | None = None
+        # Cache: key_hash -> (AuthContext, expiry_time)
+        self._cache: dict[str, tuple[AuthContext, float]] = {}
+
+    def _get_key_hash(self, api_key: str) -> str:
+        """Get a hash of the API key for cache lookup (security: don't store raw key)."""
+        return hashlib.sha256(api_key.encode()).hexdigest()[:16]
+
+    def _get_cached(self, api_key: str) -> Optional[AuthContext]:
+        """Get cached auth context if valid and not expired."""
+        key_hash = self._get_key_hash(api_key)
+        if key_hash in self._cache:
+            auth_context, expiry = self._cache[key_hash]
+            if time.time() < expiry:
+                return auth_context
+            # Expired, remove from cache
+            del self._cache[key_hash]
+        return None
+
+    def _set_cached(self, api_key: str, auth_context: AuthContext) -> None:
+        """Cache a successful auth context."""
+        key_hash = self._get_key_hash(api_key)
+        expiry = time.time() + self.CACHE_TTL
+        self._cache[key_hash] = (auth_context, expiry)
 
     async def _get_client(self) -> httpx.AsyncClient:
         """Get or create HTTP client."""
@@ -254,12 +288,20 @@ class APIKeyVerifier:
     async def verify_api_key(self, api_key: str) -> AuthContext | None:
         """Verify API key against SSO.
 
+        Uses a short-lived cache (5 min) to reduce auth server load during
+        bulk operations like syncing hundreds of files.
+
         Args:
             api_key: API key string
 
         Returns:
             AuthContext if valid, None if invalid
         """
+        # Check cache first
+        cached = self._get_cached(api_key)
+        if cached is not None:
+            return cached
+
         try:
             client = await self._get_client()
             response = await client.post(
@@ -275,12 +317,17 @@ class APIKeyVerifier:
                 return None
 
             key_data = result.get("key", {})
-            return AuthContext(
+            auth_context = AuthContext(
                 user_id=key_data.get("userId", "unknown"),
                 auth_type="api_key",
                 permissions=key_data.get("permissions"),
                 metadata=key_data.get("metadata")
             )
+
+            # Cache successful verification
+            self._set_cached(api_key, auth_context)
+
+            return auth_context
 
         except Exception:
             return None

@@ -305,6 +305,86 @@ class TestAPIKeyVerifier:
 
             assert result is None
 
+    @pytest.mark.asyncio
+    async def test_caching_reduces_auth_calls(self):
+        """Test that successful verifications are cached to reduce auth server calls."""
+        from panaversity_fs.auth import APIKeyVerifier, AuthContext
+
+        verifier = APIKeyVerifier(
+            verify_url="https://auth.example.com/api/auth/api-key/verify"
+        )
+
+        # Mock the HTTP client to return valid response
+        with patch.object(verifier, '_get_client') as mock_get_client:
+            mock_client = AsyncMock()
+            mock_response = MagicMock()
+            mock_response.status_code = 200
+            mock_response.json.return_value = {
+                "valid": True,
+                "key": {
+                    "userId": "user-123",
+                    "permissions": {"fs:read": True},
+                    "metadata": {}
+                }
+            }
+            mock_client.post = AsyncMock(return_value=mock_response)
+            mock_get_client.return_value = mock_client
+
+            # First call should hit the auth server
+            result1 = await verifier.verify_api_key("sk_live_test_key")
+            assert result1 is not None
+            assert result1.user_id == "user-123"
+            assert mock_client.post.call_count == 1
+
+            # Second call should use cache (no additional HTTP call)
+            result2 = await verifier.verify_api_key("sk_live_test_key")
+            assert result2 is not None
+            assert result2.user_id == "user-123"
+            assert mock_client.post.call_count == 1  # Still 1, not 2
+
+            # Third call with DIFFERENT key should hit auth server
+            result3 = await verifier.verify_api_key("sk_live_different_key")
+            assert result3 is not None
+            assert mock_client.post.call_count == 2  # Now 2
+
+    @pytest.mark.asyncio
+    async def test_cache_does_not_store_failed_verifications(self):
+        """Test that failed verifications are NOT cached (allow immediate retry)."""
+        from panaversity_fs.auth import APIKeyVerifier
+
+        verifier = APIKeyVerifier(
+            verify_url="https://auth.example.com/api/auth/api-key/verify"
+        )
+
+        with patch.object(verifier, '_get_client') as mock_get_client:
+            mock_client = AsyncMock()
+
+            # First call returns 401
+            mock_response_fail = MagicMock()
+            mock_response_fail.status_code = 401
+
+            # Second call returns 200 (key was fixed/reissued)
+            mock_response_success = MagicMock()
+            mock_response_success.status_code = 200
+            mock_response_success.json.return_value = {
+                "valid": True,
+                "key": {"userId": "user-123", "permissions": {}, "metadata": {}}
+            }
+
+            mock_client.post = AsyncMock(side_effect=[mock_response_fail, mock_response_success])
+            mock_get_client.return_value = mock_client
+
+            # First call fails
+            result1 = await verifier.verify_api_key("sk_live_key")
+            assert result1 is None
+            assert mock_client.post.call_count == 1
+
+            # Second call should retry (failure was NOT cached)
+            result2 = await verifier.verify_api_key("sk_live_key")
+            assert result2 is not None
+            assert result2.user_id == "user-123"
+            assert mock_client.post.call_count == 2  # Was called again
+
 
 # =============================================================================
 # DualAuthValidator Tests
