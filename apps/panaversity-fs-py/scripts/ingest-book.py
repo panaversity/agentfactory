@@ -13,10 +13,11 @@ Usage:
 import sys
 from pathlib import Path
 
-# Add scripts directory to path for imports
-scripts_dir = Path(__file__).parent
-if str(scripts_dir) not in sys.path:
-    sys.path.insert(0, str(scripts_dir.parent))
+# Add the app root directory to path for imports
+# This handles both local runs and CI environments
+app_root = Path(__file__).parent.parent.resolve()
+if str(app_root) not in sys.path:
+    sys.path.insert(0, str(app_root))
 
 from scripts.ingest.cli import main
 

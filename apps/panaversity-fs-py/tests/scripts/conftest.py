@@ -18,23 +18,25 @@ def temp_dir() -> Generator[Path, None, None]:
 def sample_book_structure(temp_dir: Path) -> Path:
     """Create a sample book source structure for testing.
 
+    Uses the new path format: NN-PartName/NN-ChapterName/NN-lesson.md
+
     Creates:
-        Part-01/
-            Chapter-01/
+        01-Introduction/
+            01-getting-started/
                 01-introduction.md
                 02-getting-started.md
                 02-getting-started.summary.md
                 img/
                     diagram.png
-            Chapter-02/
+            02-basics/
                 01-basics.md
                 README.md  (should be skipped)
-        Part-02/
-            Chapter-01/
+        02-Advanced/
+            01-deep-dive/
                 01-advanced.md
     """
-    # Part-01/Chapter-01
-    ch1 = temp_dir / "Part-01" / "Chapter-01"
+    # 01-Introduction/01-getting-started
+    ch1 = temp_dir / "01-Introduction" / "01-getting-started"
     ch1.mkdir(parents=True)
 
     (ch1 / "01-introduction.md").write_text("# Introduction\n\nWelcome to the course.")
@@ -58,14 +60,14 @@ def sample_book_structure(temp_dir: Path) -> Path:
     ])
     (img_dir / "diagram.png").write_bytes(png_data)
 
-    # Part-01/Chapter-02
-    ch2 = temp_dir / "Part-01" / "Chapter-02"
+    # 01-Introduction/02-basics
+    ch2 = temp_dir / "01-Introduction" / "02-basics"
     ch2.mkdir(parents=True)
     (ch2 / "01-basics.md").write_text("# Basics\n\nFoundational concepts.")
     (ch2 / "README.md").write_text("# Chapter 2 README\n\nThis should be skipped.")
 
-    # Part-02/Chapter-01
-    p2ch1 = temp_dir / "Part-02" / "Chapter-01"
+    # 02-Advanced/01-deep-dive
+    p2ch1 = temp_dir / "02-Advanced" / "01-deep-dive"
     p2ch1.mkdir(parents=True)
     (p2ch1 / "01-advanced.md").write_text("# Advanced Topics\n\nDeep dive.")
 
@@ -74,36 +76,39 @@ def sample_book_structure(temp_dir: Path) -> Path:
 
 @pytest.fixture
 def sample_paths() -> list[dict]:
-    """Sample source paths for testing path mapping."""
+    """Sample source paths for testing path mapping.
+
+    Uses new format: NN-PartName/NN-ChapterName/NN-lesson.md
+    """
     return [
-        # Valid paths
+        # Valid paths (new format)
         {
-            "source": "Part-01/Chapter-01/01-introduction.md",
+            "source": "01-Introduction/01-getting-started/01-introduction.md",
             "expected": "content/01-Part/01-Chapter/01-introduction.md",
             "valid": True,
             "content_type": "markdown"
         },
         {
-            "source": "Part-01/Chapter-02/02-getting-started.summary.md",
+            "source": "01-Introduction/02-basics/02-getting-started.summary.md",
             "expected": "content/01-Part/02-Chapter/02-getting-started.summary.md",
             "valid": True,
             "content_type": "summary"
         },
         {
-            "source": "Part-02/Chapter-01/01-advanced.md",
+            "source": "02-Advanced/01-deep-dive/01-advanced.md",
             "expected": "content/02-Part/01-Chapter/01-advanced.md",
             "valid": True,
             "content_type": "markdown"
         },
         {
-            "source": "Part-01/Chapter-01/img/diagram.png",
+            "source": "01-Introduction/01-getting-started/img/diagram.png",
             "expected": "static/images/diagram.png",  # img normalizes to images
             "valid": True,
             "content_type": "asset"
         },
         # Invalid paths
         {
-            "source": "Part-01/Chapter-01/README.md",
+            "source": "01-Introduction/01-getting-started/README.md",
             "expected": None,
             "valid": False,
             "content_type": "readme"
@@ -115,7 +120,7 @@ def sample_paths() -> list[dict]:
             "content_type": "markdown"
         },
         {
-            "source": "Part-01/01-orphan.md",
+            "source": "01-Introduction/01-orphan.md",
             "expected": None,
             "valid": False,
             "content_type": "markdown"
