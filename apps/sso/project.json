@@ -4,6 +4,9 @@
   "sourceRoot": "apps/sso/src",
   "projectType": "application",
   "tags": ["type:app", "scope:platform"],
+  "namedInputs": {
+    "noCI": []
+  },
   "targets": {
     "serve": {
       "executor": "@nx/next:server",
@@ -11,19 +14,6 @@
         "buildTarget": "sso:build",
         "dev": true,
         "port": 3001
-      }
-    },
-    "build": {
-      "executor": "@nx/next:build",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/apps/sso"
-      }
-    },
-    "lint": {
-      "command": "next lint",
-      "options": {
-        "cwd": "apps/sso"
       }
     }
   }
