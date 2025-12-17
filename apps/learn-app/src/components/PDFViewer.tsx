@@ -33,8 +33,10 @@ export default function PDFViewer({
   height = 600,
   showDownload = true,
 }: PDFViewerProps): React.ReactElement {
-  // Construct full URL - PDFs should be in /static directory
-  const pdfUrl = src.startsWith('/') ? src : `/${src}`;
+  // Construct full URL - handle both absolute URLs and local paths
+  // URLs are used as-is, local paths are made absolute from /static directory
+  const isAbsoluteUrl = src.startsWith('http://') || src.startsWith('https://');
+  const pdfUrl = isAbsoluteUrl ? src : (src.startsWith('/') ? src : `/${src}`);
 
   return (
     <div className="pdf-viewer-container" style={{
