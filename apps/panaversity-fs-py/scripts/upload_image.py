@@ -118,7 +118,7 @@ async def upload_image(
     content_hash = hashlib.sha256(file_bytes).hexdigest()
 
     if dry_run:
-        print(f"\n[DRY RUN] Would upload:")
+        print("\n[DRY RUN] Would upload:")
         print(f"  Source: {image_path}")
         print(f"  Size: {size_str}")
         print(f"  Path: {storage_path}")
@@ -225,7 +225,7 @@ def main():
     if cdn_url:
         print(f"\n✓ {'Would upload to' if args.dry_run else 'Uploaded'}:")
         print(f"  {cdn_url}")
-        print(f"\nReady to paste in markdown:")
+        print("\nReady to paste in markdown:")
         # Extract name for alt text
         filename = cdn_url.split('/')[-1]
         alt_text = Path(filename).stem
