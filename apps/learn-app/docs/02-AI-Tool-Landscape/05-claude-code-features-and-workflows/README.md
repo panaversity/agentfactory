@@ -1,11 +1,11 @@
 ---
 slides:
   source: "https://pub-80f166e40b854371ac7b05053b435162.r2.dev/books/ai-native-dev/static/slides/chapter-05-slides.pdf"
-  title: "Chapter 5: How It All Started — The Claude Code Phenomenon"
+  title: "Chapter 5: Claude Code: The AI Partner Phenomenon"
   height: 700
 ---
 
-# Chapter 5: How It All Started — The Claude Code Phenomenon
+# Chapter 5: Claude Code: The AI Partner Phenomenon
 
 You know *why* AI-driven development matters—and that it's happening right now, in 2025. But understanding transformation and experiencing it are two different things.
 

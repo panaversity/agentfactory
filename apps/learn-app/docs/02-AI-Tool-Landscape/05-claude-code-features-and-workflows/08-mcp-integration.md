@@ -1,8 +1,8 @@
 ---
 title: "MCP Integration"
-sidebar_position: 5
+sidebar_position: 8
 chapter: 5
-lesson: 5
+lesson: 8
 duration_minutes: 14
 
 # PEDAGOGICAL LAYER METADATA
@@ -65,7 +65,7 @@ version: "2.0.0"
 
 # Legacy compatibility (Docusaurus)
 prerequisites:
-  - "Lessons 2-3: Claude Code working, CLAUDE.md understanding"
+  - "Lessons 01-07: Claude Code working, skills, CLAUDE.md understanding"
   - "Understanding of external APIs and web services"
 ---
 
@@ -101,7 +101,7 @@ Imagine Claude Code is a brilliant assistant who works in your office (your comp
 
 **Workflow Impact**: MCP gives Claude Code safe, standardized access beyond your local files. Without it, AI is limited to your codebase. With it, AI can browse documentation, fetch real-time data, interact with external services—all through secure, permission-controlled protocols.
 
-**Paradigm Connection**: This is where AI-driven development becomes truly powerful. CLAUDE.md (Lesson 3) gives AI your project context. MCP gives AI access to the *entire world* of external knowledge and tools—documentation, APIs, databases, web content—while maintaining security boundaries.
+**Paradigm Connection**: This is where AI-driven development becomes truly powerful. CLAUDE.md (Lesson 07) gives AI your project context. MCP gives AI access to the *entire world* of external knowledge and tools—documentation, APIs, databases, web content—while maintaining security boundaries.
 
 **Real-World Context**: When building production applications, you'll use MCP to:
 - Fetch latest library documentation (Context7 MCP)
@@ -210,29 +210,11 @@ What happens:
 
 ---
 
-## What You Just Learned
+## What's Ahead
 
-**MCP unlocks external access**: You've given Claude Code the ability to reach beyond your local files to browse websites, fetch documentation, and access external systems.
+MCP extends Claude Code's reach from your local filesystem to the entire world of external systems. But Claude Code can do more than just access external tools—it can delegate complex tasks to specialized assistants.
 
-**Two MCP servers installed**:
-- **Playwright MCP**: Browse and extract information from websites
-- **Context7 MCP**: Fetch up-to-date library and API documentation
-
-**When to use MCP**: Anytime you need information or capabilities that live outside your computer.
-
-### Reflection Questions
-
-**Understanding**:
-- In your own words, what problem does MCP solve?
-- Why is security important when using MCP servers?
-
-**Application**:
-- What websites or information sources would be most useful for YOUR projects?
-- How could Context7 help you stay current with fast-changing tools and libraries?
-
-**Next Steps**:
-- What other MCP servers might you explore? (Database access? GitHub integration? Slack notifications?)
-- When would you reach for MCP vs. asking Claude Code about local files?
+Lesson 09 introduces **subagents**: focused AI specialists that handle specific types of work with isolated context. Where MCP gives Claude Code new *capabilities*, subagents give Claude Code a *team*.
 
 ---
 

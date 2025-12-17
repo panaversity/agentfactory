@@ -1,9 +1,9 @@
 ---
 title: "Settings Hierarchy"
-sidebar_position: 9
+sidebar_position: 10
 chapter: 5
-lesson: 9
-duration_minutes: 5
+lesson: 10
+duration_minutes: 8
 
 # PEDAGOGICAL LAYER METADATA
 primary_layer: "Layer 3"
@@ -61,7 +61,7 @@ version: "2.0.0"
 
 # Legacy compatibility
 prerequisites:
-  - "Lessons 2-7: All prior Claude Code features understood"
+  - "Lessons 01-09: All prior Claude Code features understood"
   - "Understanding of configuration management and team coordination"
 ---
 
@@ -176,8 +176,8 @@ Claude Code settings exist at three levels, from general to specific:
 - **Local settings**: Your private testing and experiments (gitignored, never committed)
 
 This connects to earlier lessons:
-- **CLAUDE.md (Lesson 7)** provides content context at the project level
-- **Skills (Lesson 6)** can be enabled at any hierarchy level
+- **CLAUDE.md (Lesson 07)** provides content context at the project level
+- **Skills (Lesson 06)** can be enabled at any hierarchy level
 - **Plugins (Lesson 12)** will use this same hierarchy to configure bundled capabilities
 
 **Real-World Impact**: Without this hierarchy, teams either enforce rigid standards (no personal customization) or descend into chaos (everyone's setup is different). The three-level system gives you both consistency AND flexibility.

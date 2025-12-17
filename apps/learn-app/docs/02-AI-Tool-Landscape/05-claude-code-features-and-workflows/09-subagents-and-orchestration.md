@@ -1,9 +1,9 @@
 ---
 title: "Subagents and Orchestration"
-sidebar_position: 6
+sidebar_position: 9
 chapter: 5
-lesson: 6
-duration_minutes: 7
+lesson: 9
+duration_minutes: 12
 
 # PEDAGOGICAL LAYER METADATA
 primary_layer: "Layer 2"
@@ -65,7 +65,7 @@ version: "2.0.0"
 
 # Legacy compatibility
 prerequisites:
-  - "Lessons 2-4: Claude Code, CLAUDE.md, MCP understanding"
+  - "Lessons 01-08: Claude Code installation, skills, architecture, CLAUDE.md, MCP"
   - "Understanding of problem decomposition"
 ---
 
@@ -360,20 +360,11 @@ When analyzing a business idea:
 
 ---
 
-## What You Can Do Now
+## What's Ahead
 
-**YOU JUST LEARNED**:
-- ✅ What subagents are (specialized AI assistants)
-- ✅ How the execution model works (one task, one completion)
-- ✅ How to use the built-in Plan subagent (automatic)
-- ✅ How to create your first custom subagent (via `/agents`)
-- ✅ How to invoke subagents explicitly
-- ✅ Where subagents are stored (`.claude/agents/`)
+Subagents delegate to specialists. But who controls the rules of engagement? What happens when team members need different configurations, or when you want to experiment locally without affecting project settings?
 
-**PRACTICE NOW**:
-- Create 2-3 custom subagents for your workflow
-- Try the Test Generator, Documentation Writer, or Bug Hunter examples
-- Invoke them explicitly: "Use the [name] subagent to..."
+Lesson 10 introduces **settings hierarchy**—three levels of configuration that enable personal customization, team standards, and local experimentation to coexist without conflict.
 
 ---
 

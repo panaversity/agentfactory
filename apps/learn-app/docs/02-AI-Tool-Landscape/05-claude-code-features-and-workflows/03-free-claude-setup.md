@@ -73,7 +73,11 @@ prerequisites:
 
 **This lesson provides a free alternative to use Claude Code** using Google's free Gemini API as the backend. You'll learn the same Claude Code CLI interface and features covered in Lesson 2.
 
-**All features work identically**: Subagents, skills, MCP servers, hooks, and all other capabilities covered in Lessons 3-9 function the same way with this free setup. The only difference is the backend AI model (Gemini instead of Claude) and the setup process (router configuration instead of direct authentication).
+**All features work identically**: Subagents, skills, MCP servers, hooks, and all other capabilities covered in Lessons 04-12 function the same way with this free setup. The only difference is the backend AI model (Gemini instead of Claude) and the setup process (router configuration instead of direct authentication).
+
+:::tip Free Ongoing Usage
+By using **Gemini's free tier** or **OpenRouter's free models**, you get ongoing free consumption—no subscription required. This setup isn't just for learning; many developers use it as their daily driver. The free tiers are generous enough for real development work.
+:::
 
 ---
 
@@ -131,7 +135,7 @@ cat > ~/.claude-code-router/config.json << 'EOF'
       "api_base_url": "https://generativelanguage.googleapis.com/v1beta/models/",
       "api_key": "$GOOGLE_API_KEY",
       "models": [
-        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
         "gemini-2.0-flash"
       ],
       "transformer": {
@@ -140,10 +144,10 @@ cat > ~/.claude-code-router/config.json << 'EOF'
     }
   ],
   "Router": {
-    "default": "gemini,gemini-2.5-flash",
-    "background": "gemini,gemini-2.5-flash",
-    "think": "gemini,gemini-2.5-flash",
-    "longContext": "gemini,gemini-2.5-flash",
+    "default": "gemini,gemini-2.5-flash-lite",
+    "background": "gemini,gemini-2.5-flash-lite",
+    "think": "gemini,gemini-2.5-flash-lite",
+    "longContext": "gemini,gemini-2.5-flash-lite",
     "longContextThreshold": 60000
   }
 }
@@ -351,4 +355,71 @@ echo $DEEPSEEK_API_KEY  # Should show your key (not empty!)
 
 ---
 
-That's it. Proceed to **Lesson 3** to learn persistent project context.
+## Troubleshooting
+
+**"command not found: claude" or "command not found: ccr"**
+
+The npm global bin directory isn't in your PATH. Fix:
+
+```bash
+# Find where npm installs global packages
+npm config get prefix
+
+# Add to PATH (replace /usr/local with your prefix)
+echo 'export PATH="$PATH:/usr/local/bin"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+**"API key not found" or empty GOOGLE_API_KEY**
+
+Your environment variable didn't persist. Fix:
+
+```bash
+# Check current value
+echo $GOOGLE_API_KEY
+
+# If empty, re-add to shell config
+echo 'export GOOGLE_API_KEY="YOUR_KEY_HERE"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+**Router starts but Claude hangs**
+
+The router may not be ready when Claude connects. Fix:
+
+1. Wait 2-3 seconds after `ccr start` shows "Service started"
+2. Then run `ccr code` in separate terminal
+
+**"Connection refused" errors**
+
+Router isn't running. Make sure Terminal 1 shows `ccr start` is active before using Claude.
+
+**Windows-specific: PowerShell doesn't recognize commands**
+
+Close and reopen PowerShell completely after setting environment variables. The `source` command doesn't work in PowerShell—you need a fresh session.
+
+---
+
+## Try With AI
+
+Once your free setup is working, try these prompts to verify everything works:
+
+**Verify Basic Functionality:**
+
+> "Hello! Confirm you're working by telling me: (1) what model you're using, (2) can you see files in this directory? List them if so."
+
+**Test File Operations:**
+
+> "Create a simple test file called `hello.txt` with the text 'Free Claude Code setup works!' Then read it back to confirm."
+
+**Understand the Architecture:**
+
+> "Explain the architecture of my current setup: I'm using Claude Code CLI with a router pointing to Gemini. What's happening when I send you a message? Walk me through the request flow."
+
+**Compare to Official Setup:**
+
+> "What's the difference between using Claude Code with the official Anthropic authentication vs. this router-based setup with Gemini? What features work the same? What might be different?"
+
+---
+
+That's it. Proceed to **Lesson 04** to learn about teaching Claude your way of working.

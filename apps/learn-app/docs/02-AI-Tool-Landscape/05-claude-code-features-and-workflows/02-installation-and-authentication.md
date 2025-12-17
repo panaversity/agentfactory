@@ -81,7 +81,7 @@ This isn't just about following installation commands. It's about crossing the b
 
 This lesson covers the **official Claude subscription setup** (Pro $20/month or Max $200/month). If you prefer a **free/minimal cost alternative**, see **Lesson 3: Free Claude Code Setup with Google Gemini**.
 
-**Both paths teach identical Claude Code skills** (subagents, skills, MCP, hooks covered in Lessons 4-10).
+**Both paths teach identical Claude Code skills** (subagents, skills, MCP, hooks covered in Lessons 04-12).
 
 | Path | Cost | What You Get |
 |------|------|--------------|
@@ -89,8 +89,6 @@ This lesson covers the **official Claude subscription setup** (Pro $20/month or 
 | **Lesson 3 (Free/Minimal)** | $0 (free tier)<br/>Pay-as-you-go option | Use Claude Code agent with **any LLM** (Gemini, GPT, local models), backend abstraction architecture |
 
 **Key difference**: Official path uses Anthropic's Claude models. Free path lets you use Claude Code's agentic architecture with any LLM backend through production-grade API routing.
-
----
 
 ---
 
@@ -135,8 +133,6 @@ Before we begin, verify you have the following:
 ## Installation
 
 Claude Code installation has been simplified with official installers for each platform. Choose your operating system below to see platform-specific installation methods.
-
-![Installation flowchart showing Node.js check, npx/npm install options, authentication with API key or web login, and verification steps with decision points and success/error paths](https://pub-80f166e40b854371ac7b05053b435162.r2.dev/books/ai-native-dev/static/images/part-2/chapter-05/claude-code-installation-authentication-flow.png)
 
 ---
 

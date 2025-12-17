@@ -1,9 +1,9 @@
 ---
 title: "CLAUDE.md Context Files"
-sidebar_position: 4
+sidebar_position: 7
 chapter: 5
-lesson: 4
-duration_minutes: 9
+lesson: 7
+duration_minutes: 12
 
 # PEDAGOGICAL LAYER METADATA
 primary_layer: "Layer 2"
@@ -65,7 +65,7 @@ version: "2.1.0"
 
 # Legacy compatibility (Docusaurus)
 prerequisites:
-  - "Lesson 2: Claude Code installed and authenticated"
+  - "Lessons 01-06: Claude Code installed, skills understood"
   - "Understanding of project directory structure basics"
 ---
 
@@ -202,7 +202,7 @@ Here's what you've accomplished:
 
 This is the principle of **"specify once, benefit always"**—define your project context one time, and every future session starts with full understanding.
 
-In later lessons, you'll see how subagents (Lesson 9) and skills (Lesson 6) inherit and extend this CLAUDE.md context—making it the foundation for all Claude Code intelligence.
+In later lessons, you'll see how subagents (Lesson 09) and skills (Lesson 06) inherit and extend this CLAUDE.md context—making it the foundation for all Claude Code intelligence.
 
 #### 💬 AI Colearning Prompt
 
