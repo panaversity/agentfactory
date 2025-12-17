@@ -27,6 +27,22 @@ mjs@Muhammads-MacBook-Pro-3 panaversity-fs-py %   PANAVERSITY_LOG_LEVEL=WARNING 
     --write-local
 ```
 
+
+  cd apps/panaversity-fs-py
+
+  # Upload your image
+  uv run python scripts/upload_image.py \
+      --image /path/to/your-image.png \
+      --part 2 \
+      --chapter 05 \
+      --name your-image-name
+
+uv run python scripts/upload_image.py \
+--image /Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/skills-in-stack.png \
+--part 2 \
+--chapter 05 \
+--name lesson-4-skills-in-stack
+
 ### Usage
 
 ```bash

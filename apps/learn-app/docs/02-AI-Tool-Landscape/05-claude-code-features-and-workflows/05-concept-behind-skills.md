@@ -71,6 +71,8 @@ prerequisites:
 
 That's not advice from a random blog post. It's the conclusion Anthropic reached after building Claude Code and watching how people actually extended it. The talk that introduced Agent Skills challenged a fundamental assumption about AI customization.
 
+![lesson-4-skills-growth](https://pub-80f166e40b854371ac7b05053b435162.r2.dev/books/ai-native-dev/static/images/part-2/chapter-05/lesson-4-skills-growth.png)
+
 **The assumption**: Making AI useful for YOUR domain requires building a specialized agent. Finance needs a finance agent. Legal needs a legal agent. Each domain demands its own infrastructure.
 
 **The discovery**: The agent underneath is far more universal than anyone expected. Code isn't just a use case—it's the universal interface to the digital world. A coding agent can pull data from APIs, organize files, analyze with Python, synthesize reports. The scaffolding can be as thin as Bash and a file system.
@@ -261,6 +263,8 @@ Where does this all fit in the bigger picture?
 ## The Stack Analogy
 
 The Anthropic team draws a parallel to what we've already seen in computing.
+
+![lesson-4-skills-in-stack](https://pub-80f166e40b854371ac7b05053b435162.r2.dev/books/ai-native-dev/static/images/part-2/chapter-05/lesson-4-skills-in-stack.png)
 
 **Models are like processors.** Both require massive investment and contain immense potential. But a processor by itself isn't that useful. You need systems built around it.
 
