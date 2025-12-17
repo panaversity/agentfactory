@@ -1,9 +1,9 @@
 ---
 title: "Discovering and Using Claude Code Plugins"
-sidebar_position: 10
+sidebar_position: 12
 chapter: 5
-lesson: 10
-duration_minutes: 11
+lesson: 12
+duration_minutes: 15
 
 # PEDAGOGICAL LAYER METADATA
 primary_layer: "Layer 4"
@@ -61,7 +61,7 @@ version: "2.0.0"
 
 # Legacy compatibility
 prerequisites:
-  - "Lessons 1-8: Complete understanding of all Claude Code features"
+  - "Lessons 01-11: Complete understanding of all Claude Code features"
   - "Understanding of composition and orchestration"
 ---
 
@@ -219,17 +219,6 @@ claude
 Ask Claude: "What skills do you have available?" You should see the installed skills listed.
 
 **What you just did**: Added Anthropic's marketplace and installed production-quality skills that are now available across all Claude Code sessions.
-
----
-
-## What You Just Learned
-
-- ✅ Plugins bundle multiple capabilities (skills + agents + hooks + commands + MCP)
-- ✅ Marketplaces provide pre-built plugins you can install
-- ✅ Anthropic's skills repository has curated, production-quality skills
-- ✅ `/plugin marketplace add` connects to plugin sources
-- ✅ `/plugin install` adds capabilities to your Claude Code
-- ✅ Check marketplaces FIRST before building custom capabilities
 
 ---
 

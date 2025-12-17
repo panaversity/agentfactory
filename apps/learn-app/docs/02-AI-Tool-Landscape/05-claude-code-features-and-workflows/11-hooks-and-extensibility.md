@@ -1,9 +1,9 @@
 ---
 title: "Hooks and Extensibility"
-sidebar_position: 8
+sidebar_position: 11
 chapter: 5
-lesson: 8
-duration_minutes: 6
+lesson: 11
+duration_minutes: 10
 
 # PEDAGOGICAL LAYER METADATA
 primary_layer: "Layer 2"
@@ -61,7 +61,7 @@ version: "2.0.0"
 
 # Legacy compatibility
 prerequisites:
-  - "Lessons 2-6: Claude Code, CLAUDE.md, MCP, Subagents, Skills"
+  - "Lessons 01-10: Claude Code features, skills, subagents, settings"
   - "Understanding of event-driven automation"
 ---
 

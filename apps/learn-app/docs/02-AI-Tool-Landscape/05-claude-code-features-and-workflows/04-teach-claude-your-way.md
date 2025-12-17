@@ -89,7 +89,7 @@ Every time you re-explain your preferences, you pay a tax. Not just in typing—
 
 Claude Code starts each session fresh. It doesn't remember that you prefer TypeScript over JavaScript, or that your meeting notes always have action items at the top. The conversation history helps within a session, but across sessions? You're starting over.
 
-You may have heard about CLAUDE.md files (covered later in this chapter). They help—persistent context that loads automatically. But CLAUDE.md is about *project context*: what this codebase does, what architecture it follows, what conventions matter here.
+You'll learn about CLAUDE.md files later in this chapter (Lesson 07). They provide persistent context that loads automatically. But CLAUDE.md is about *project context*: what this codebase does, what architecture it follows, what conventions matter here.
 
 Your *procedures* are different. They're not project-specific. They're YOU-specific.
 

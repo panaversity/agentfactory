@@ -64,6 +64,7 @@ prerequisites:
   - "Lesson 04: Teach Claude Your Way of Working"
   - "Lesson 05: The Architecture of Agent Expertise"
   - "A procedure mapped and ready for encoding"
+  - "Chapter 10: Markdown basics (headings, lists, code blocks, YAML frontmatter)"
 ---
 
 # Building Your Own Skills
@@ -71,6 +72,10 @@ prerequisites:
 You've experienced skills in action. You've mapped a procedure worth encoding. Now you build.
 
 This lesson takes you from understanding skills to creating them. By the end, you'll have a working skill in your `.claude/skills/` folder—and know how to use Claude itself to create more.
+
+:::tip Markdown Refresher
+Skills are written in Markdown with YAML frontmatter. If you're not comfortable with headings, bullet points, code blocks, or YAML syntax, take 15 minutes to review **Chapter 10: Markdown for AI-Native Development** before continuing. You'll write better skills with that foundation.
+:::
 
 ---
 
