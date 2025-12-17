@@ -175,6 +175,11 @@ You don't command "use the Plan subagent." Claude Code decides when to delegate 
 - Your request type (code review request might trigger a review subagent if you have one)
 - Subagent descriptions (Claude matches task to specialist)
 
+**Built-in automatic triggers**:
+- **Explore subagent**: Automatically triggers for open-ended searches and codebase exploration
+- **Plan subagent**: Activates for complex, multi-step tasks that need research and strategy
+- **Specialized subagents**: Match based on how their description aligns with your request
+
 **Example**:
 ```
 You: "Help me create a content marketing strategy for my startup"

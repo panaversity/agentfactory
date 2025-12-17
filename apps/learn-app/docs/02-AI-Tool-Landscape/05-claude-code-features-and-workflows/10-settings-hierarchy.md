@@ -166,21 +166,78 @@ Claude Code settings exist at three levels, from general to specific:
 
 ---
 
-## Why Settings Hierarchy Matters for Team Intelligence
+## Why Settings Hierarchy Matters
 
-**Team Collaboration Without Conflicts**: Settings hierarchy enables teams to share standards (user-level defaults) while allowing personal customization (project-level overrides) and local experimentation (local-level testing)—all without stepping on each other's toes.
+### The Organizational Intelligence Framework
 
-**Organizational Intelligence**: Think of this hierarchy as three layers of context:
-- **User settings**: Your personal AI preferences that follow you across all projects
-- **Project settings**: Team-agreed standards that everyone on the project shares (shared via git)
-- **Local settings**: Your private testing and experiments (gitignored, never committed)
+**Team Collaboration Without Conflicts**: Settings hierarchy enables teams to share standards while allowing personal customization and local experimentation—all without stepping on each other's toes.
+
+**Three Layers of Context** (from general to specific):
+- **User settings** (`~/.claude/settings.json`): Your personal AI preferences that follow you across ALL projects
+- **Project settings** (`.claude/settings.json`): Team-agreed standards that everyone on the project shares (shared via git)
+- **Local settings** (`.claude/settings.local.json`): Your private testing and experiments (gitignored, never committed)
 
 This connects to earlier lessons:
 - **CLAUDE.md (Lesson 07)** provides content context at the project level
 - **Skills (Lesson 06)** can be enabled at any hierarchy level
 - **Plugins (Lesson 12)** will use this same hierarchy to configure bundled capabilities
 
-**Real-World Impact**: Without this hierarchy, teams either enforce rigid standards (no personal customization) or descend into chaos (everyone's setup is different). The three-level system gives you both consistency AND flexibility.
+### Practical Applications
+
+#### 1. Cross-Project Preferences (User Level)
+You always prefer verbose output and specific model settings.
+→ Set these in `~/.claude/settings.json`
+→ These preferences follow you across ALL projects
+→ Project or local settings can override for specific needs
+
+**Example**:
+```json
+{
+  "model": "opus",
+  "outputStyle": "Verbose",
+  "includeCoAuthoredBy": true
+}
+```
+
+#### 2. Team Standards (Project Level)
+Your team decides: "All projects should deny access to .env files for security."
+→ Set `permissions.deny: ["Read(./.env)"]` at **project level** (`.claude/settings.json`)
+→ Everyone on the team gets this standard automatically
+→ Overrides user-level settings for this project
+
+**Example**:
+```json
+{
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "deny": ["Read(./.env)"]
+  },
+  "env": {
+    "PROJECT_ENV": "development"
+  }
+}
+```
+
+#### 3. Personal Workflow Experiments (Local Level)
+You want to test a new workflow without affecting the team.
+→ Create `.claude/settings.local.json` with your experimental settings
+→ Your changes stay private, invisible to the team
+→ Local overrides take precedence over both project and user settings
+→ Delete the file to revert to project/user standards
+
+**Example**:
+```json
+{
+  "outputStyle": "Concise",
+  "sandbox": {
+    "enabled": true
+  }
+}
+```
+
+### Real-World Impact
+
+Without this hierarchy, teams either enforce rigid standards (no personal customization) or descend into chaos (everyone's setup is different). The three-level system gives you both consistency AND flexibility.
 
 #### 🎓 Expert Insight
 > In AI-native development, configuration hierarchy mirrors organizational intelligence. User settings = your personal defaults. Project settings = team agreements. Local settings = safe experimentation space. Understanding WHEN to configure at each level is more valuable than memorizing settings syntax.
@@ -274,23 +331,6 @@ Now you add a temporary local override:
 
 ---
 
-## Why Settings Hierarchy Matters
-
-### For Team Collaboration
-
-Your team might decide: "All projects should deny access to .env files for security." They set `permissions.deny: ["Read(./.env)"]` at the **project level** (`.claude/settings.json`). Everyone on the team gets this standard automatically.
-
-But you, personally, have different permission settings at your **user level**. Project settings win, so when working on this project, everyone (including you) uses the team's security standards. When you work on personal projects, your user-level preferences kick in again.
-
-### For Personal Customization
-
-You want special settings just for this project—maybe more verbose output or a specific framework preference. You set `.claude/settings.json` (project level) without touching user settings. Your other projects still use your personal defaults (user level).
-
-### For Temporary Experiments
-
-You want to test a new workflow today without affecting the team. You create `.claude/settings.local.json` (local level). Your changes stay on your machine, invisible to the team. Delete the file tomorrow, and everything reverts to project/user standards.
-
----
 
 ## The .claude/ Directory: Don't Delete It
 

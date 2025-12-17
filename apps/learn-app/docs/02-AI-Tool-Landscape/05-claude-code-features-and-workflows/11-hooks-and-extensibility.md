@@ -184,24 +184,28 @@ Edit `.claude/settings.json` and add:
 
 ```json
 {
-  "SessionStart": [
-    {
-      "matcher": {},
-      "hooks": [
-        {
-          "type": "command",
-          "command": "echo 'Welcome to your project! Claude Code session started.'"
-        }
-      ]
-    }
-  ]
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Welcome to your project! Claude Code session started.'"
+          }
+        ]
+      }
+    ]
+  }
 }
 ```
 
 **What this does**:
-- **event**: Triggers when session starts
-- **type**: "command" means run a bash command
-- **command**: The actual command to run (echo a welcome message)
+- **"hooks"**: Top-level wrapper for all hook configurations
+- **"SessionStart"**: Event that triggers when session starts
+- **"matcher"**: "startup" filters when this hook should run
+- **"type"**: "command" means run a bash command
+- **"command"**: The actual command to run (echo a welcome message)
 
 ### Step 3: Test Your Hook
 
@@ -225,17 +229,19 @@ Update `.claude/settings.json` to show project info:
 
 ```json
 {
-  "SessionStart": [
-    {
-      "matcher": {},
-      "hooks": [
-        {
-          "type": "command",
-          "command": "echo \"Project: $(basename $(pwd)) | Files: $(ls -1 | wc -l) | Last modified: $(ls -lt | head -2 | tail -1 | awk '{print \\$6, \\$7, \\$8}')\""
-        }
-      ]
-    }
-  ]
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"Project: $(basename $(pwd)) | Files: $(ls -1 | wc -l) | Last modified: $(ls -lt | head -2 | tail -1 | awk '{print \\$6, \\$7, \\$8}')\""
+          }
+        ]
+      }
+    ]
+  }
 }
 
 ```
