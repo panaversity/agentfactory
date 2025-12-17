@@ -111,7 +111,23 @@ If missing, install from [nodejs.org](https://nodejs.org/)
 
 ## Step 2: Copy-Paste Setup
 
-**Just copy commands from this block and paste into terminal:**
+**Before you start**: The final step (setting your API key) differs by platform. Check which applies to you:
+
+| Your Setup | API Key Instructions |
+|------------|---------------------|
+| **macOS (zsh)** | Use the bash commands below as-is |
+| **Linux (bash)** | Replace `~/.zshrc` with `~/.bashrc` in the last 2 lines |
+| **Windows** | Skip the last 2 bash lines; use PowerShell commands below instead |
+
+:::tip Check Your Shell (macOS/Linux)
+Run `echo $SHELL` to see your shell. If it shows `/bin/bash`, use `~/.bashrc`. If `/bin/zsh`, use `~/.zshrc`.
+:::
+
+---
+
+### macOS/Linux Setup
+
+**Copy and paste into terminal:**
 
 ```bash
 # Install tools
@@ -121,7 +137,6 @@ npm install -g @anthropic-ai/claude-code @musistudio/claude-code-router
 mkdir -p ~/.claude-code-router ~/.claude
 
 # Create router config
-# Create new config with native Gemini endpoint
 cat > ~/.claude-code-router/config.json << 'EOF'
 {
   "LOG": true,
@@ -157,29 +172,76 @@ EOF
 cat ~/.claude-code-router/config.json
 
 # Set your API key (REPLACE "YOUR_KEY_HERE" with actual key!)
+# For zsh (default on macOS):
 echo 'export GOOGLE_API_KEY="YOUR_KEY_HERE"' >> ~/.zshrc
 source ~/.zshrc
+
+# For bash (older macOS/Linux), use these instead:
+# echo 'export GOOGLE_API_KEY="YOUR_KEY_HERE"' >> ~/.bashrc
+# source ~/.bashrc
 ```
 
-**Windows users**: Replace last 2 lines with:
+---
+
+### Windows Setup
+
+**Step 1**: Open PowerShell and run:
+
 ```powershell
-# Windows PowerShell (Run as Administrator)
+# Install tools
+npm install -g @anthropic-ai/claude-code @musistudio/claude-code-router
+```
+
+**Step 2**: Create the config directory and file. In PowerShell:
+
+```powershell
+# Create config directory
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude-code-router"
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude"
+```
+
+**Step 3**: Create the config file. Open Notepad and paste:
+
+```json
+{
+  "LOG": true,
+  "LOG_LEVEL": "info",
+  "HOST": "127.0.0.1",
+  "PORT": 3456,
+  "API_TIMEOUT_MS": 600000,
+  "Providers": [
+    {
+      "name": "gemini",
+      "api_base_url": "https://generativelanguage.googleapis.com/v1beta/models/",
+      "api_key": "$GOOGLE_API_KEY",
+      "models": [
+        "gemini-2.5-flash-lite",
+        "gemini-2.0-flash"
+      ],
+      "transformer": {
+        "use": ["gemini"]
+      }
+    }
+  ],
+  "Router": {
+    "default": "gemini,gemini-2.5-flash-lite",
+    "background": "gemini,gemini-2.5-flash-lite",
+    "think": "gemini,gemini-2.5-flash-lite",
+    "longContext": "gemini,gemini-2.5-flash-lite",
+    "longContextThreshold": 60000
+  }
+}
+```
+
+Save as: `%USERPROFILE%\.claude-code-router\config.json`
+
+**Step 4**: Set your API key (Run as Administrator):
+
+```powershell
 [System.Environment]::SetEnvironmentVariable('GOOGLE_API_KEY', 'YOUR_KEY_HERE', 'User')
 
-# Then CLOSE and REOPEN PowerShell completely
-# Verify it worked:
+# CLOSE and REOPEN PowerShell completely, then verify:
 echo $env:GOOGLE_API_KEY
-```
-
-**Bash users** (older macOS/Linux):
-```bash
-# Check your shell first:
-echo $SHELL
-
-# If shows /bin/zsh → use ~/.zshrc (already done above)
-# If shows /bin/bash → Change last 2 lines to:
-echo 'export GOOGLE_API_KEY="YOUR_KEY_HERE"' >> ~/.bashrc
-source ~/.bashrc
 ```
 
 ---
@@ -265,7 +327,19 @@ That's it. If Claude responds, your free setup is working perfectly.
 
 ### Step 2: DeepSeek Copy-Paste Setup
 
-**Just copy commands from this block and paste into terminal:**
+**Before you start**: The final step (setting your API key) differs by platform:
+
+| Your Setup | API Key Instructions |
+|------------|---------------------|
+| **macOS (zsh)** | Use the bash commands below as-is |
+| **Linux (bash)** | Replace `~/.zshrc` with `~/.bashrc` in the last 2 lines |
+| **Windows** | Skip the last 2 bash lines; use PowerShell commands below instead |
+
+---
+
+#### macOS/Linux DeepSeek Setup
+
+**Copy and paste into terminal:**
 
 ```bash
 # Install tools (if not already installed)
@@ -310,29 +384,75 @@ EOF
 cat ~/.claude-code-router/config.json
 
 # Set your API key (REPLACE "YOUR_KEY_HERE" with actual key!)
+# For zsh (default on macOS):
 echo 'export DEEPSEEK_API_KEY="YOUR_KEY_HERE"' >> ~/.zshrc
 source ~/.zshrc
+
+# For bash (older macOS/Linux), use these instead:
+# echo 'export DEEPSEEK_API_KEY="YOUR_KEY_HERE"' >> ~/.bashrc
+# source ~/.bashrc
 ```
 
-**Windows users**: Replace last 2 lines with:
+---
+
+#### Windows DeepSeek Setup
+
+**Step 1**: Open PowerShell and run:
+
 ```powershell
-# Windows PowerShell (Run as Administrator)
+# Install tools (if not already installed)
+npm install -g @anthropic-ai/claude-code @musistudio/claude-code-router
+```
+
+**Step 2**: Create the config directory (if not already created):
+
+```powershell
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude-code-router"
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude"
+```
+
+**Step 3**: Create the config file. Open Notepad and paste:
+
+```json
+{
+  "LOG": true,
+  "LOG_LEVEL": "info",
+  "HOST": "127.0.0.1",
+  "PORT": 3456,
+  "API_TIMEOUT_MS": 600000,
+  "Providers": [
+    {
+      "name": "deepseek",
+      "api_base_url": "https://api.deepseek.com/v1",
+      "api_key": "$DEEPSEEK_API_KEY",
+      "models": [
+        "deepseek-chat",
+        "deepseek-reasoner"
+      ],
+      "transformer": {
+        "use": ["openai"]
+      }
+    }
+  ],
+  "Router": {
+    "default": "deepseek,deepseek-chat",
+    "background": "deepseek,deepseek-chat",
+    "think": "deepseek,deepseek-reasoner",
+    "longContext": "deepseek,deepseek-chat",
+    "longContextThreshold": 60000
+  }
+}
+```
+
+Save as: `%USERPROFILE%\.claude-code-router\config.json`
+
+**Step 4**: Set your API key (Run as Administrator):
+
+```powershell
 [System.Environment]::SetEnvironmentVariable('DEEPSEEK_API_KEY', 'YOUR_KEY_HERE', 'User')
 
-# Then CLOSE and REOPEN PowerShell completely
-# Verify it worked:
+# CLOSE and REOPEN PowerShell completely, then verify:
 echo $env:DEEPSEEK_API_KEY
-```
-
-**Bash users** (older macOS/Linux):
-```bash
-# Check your shell first:
-echo $SHELL
-
-# If shows /bin/zsh → use ~/.zshrc (already done above)
-# If shows /bin/bash → Change last 2 lines to:
-echo 'export DEEPSEEK_API_KEY="YOUR_KEY_HERE"' >> ~/.bashrc
-source ~/.bashrc
 ```
 
 ---
