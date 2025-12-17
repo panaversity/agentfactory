@@ -3,7 +3,7 @@ title: "Teach Claude Your Way of Working"
 sidebar_position: 4
 chapter: 5
 lesson: 4
-duration_minutes: 15
+duration_minutes: 25
 
 # PEDAGOGICAL LAYER METADATA
 primary_layer: "Layer 1"
