@@ -99,6 +99,36 @@ That's the gap skills fill. Not more intelligence. Not more execution capability
 
 ---
 
+## Skills Are Universal, Not Just for Coding
+
+Here's a critical insight: **skills work for ANY domain, not just software development.**
+
+Claude Code runs in a terminal, yes. But "code" is the universal interface to the digital world. Through code, Claude can:
+- Write and format documents (Word, PowerPoint, Excel, PDF)
+- Analyze data and create visualizations
+- Process and organize information
+- Generate reports in any format
+- Automate repetitive digital tasks
+
+**Skills encode expertise in ANY field:**
+
+| Domain | Example Skills |
+|--------|---------------|
+| **Finance** | Quarterly report formatting, audit procedures, compliance checklists |
+| **Legal** | Contract review workflow, clause analysis, due diligence procedures |
+| **Marketing** | Brand voice guidelines, campaign brief templates, social media style |
+| **Education** | Lesson plan structure, assessment rubrics, student feedback formats |
+| **Healthcare** | Clinical documentation standards, patient communication templates |
+| **Recruiting** | Candidate evaluation criteria, interview question frameworks |
+
+The accountant who knows exactly how audits should be structured? That's a skill.
+The recruiter who knows what makes candidate evaluations useful? That's a skill.
+The legal team's contract review workflow? That's a skill.
+
+**You don't need to be a programmer to create or use skills.** You need domain expertise and the willingness to document your procedures clearly.
+
+---
+
 ## The Real Bottleneck Isn't Intelligence
 
 Who do you want doing your taxes? The 300-IQ mathematical genius who figures out tax code from first principles? Or the experienced tax professional who knows the patterns, the edge cases, the specific procedures that work?
@@ -238,6 +268,29 @@ You don't need to be a programmer to write a great email template. You don't nee
 The format—markdown files with YAML metadata—is accessible to anyone who can write structured text. The barrier isn't technical skill. It's willingness to articulate your procedures.
 
 If skills can be created by anyone, what happens when many people create them?
+
+---
+
+## Skills as Strategic Assets
+
+Here's what most people miss: **skills aren't just convenient—they're valuable intellectual property.**
+
+Compare manual prompting (explaining your preferences every time) to encoded skills:
+
+| Aspect | Manual Prompting | Agent Skills |
+|--------|-----------------|--------------|
+| **Reliability** | Ad-hoc, best effort | Deterministic, script-backed |
+| **Token Cost** | Pay for "rules" in every conversation | Load rules only when triggered |
+| **Asset Type** | Disposable conversation | **Reusable, scalable IP** |
+| **Integration** | Requires human copy-paste | **API-ready via Agent SDKs** |
+
+That last row is critical. Skills you create in Claude Code can be:
+- **Shared** with your team (everyone benefits from your expertise)
+- **Versioned** in Git (track improvements over time)
+- **Integrated** into Custom Agents (Part 6 teaches this)
+- **Monetized** as part of vertical AI solutions
+
+When you create a skill, you're not just saving keystrokes. You're encoding expertise that compounds in value—for yourself, your team, and potentially your business.
 
 ---
 

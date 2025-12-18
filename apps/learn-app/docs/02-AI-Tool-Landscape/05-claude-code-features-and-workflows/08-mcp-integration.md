@@ -97,6 +97,25 @@ Imagine Claude Code is a brilliant assistant who works in your office (your comp
 
 ---
 
+## Skills + MCP: Expertise Packs Meet Data Pipes
+
+Here's a powerful mental model from Anthropic:
+
+| Component | Role | Analogy |
+|-----------|------|---------|
+| **Skills** | The "How-To" — expertise packs | Teaching Claude a specific workflow |
+| **MCP** | The "With-What" — data pipes | Connecting skills to live data |
+
+**Skills are Expertise Packs**: They encode your procedures, your quality criteria, your domain knowledge. "How to analyze financial statements according to our Q4 risk framework."
+
+**MCP provides Data Pipes**: They connect those expertise packs to live data sources. Your SQL database. Your Jira board. The web.
+
+**Together**: Claude knows HOW to do something (skill) and has access to WHAT it needs (MCP).
+
+**Example**: A skill encodes your company's financial reporting procedures. An MCP server connects Claude to your accounting database. Result: automated reports that follow your exact standards using real-time data.
+
+---
+
 ## Why This Matters: Safe External Integration
 
 **Workflow Impact**: MCP gives Claude Code safe, standardized access beyond your local files. Without it, AI is limited to your codebase. With it, AI can browse documentation, fetch real-time data, interact with external services—all through secure, permission-controlled protocols.

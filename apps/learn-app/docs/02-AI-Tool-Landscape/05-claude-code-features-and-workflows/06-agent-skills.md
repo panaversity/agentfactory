@@ -556,10 +556,48 @@ Here's the process to follow for each new skill:
 
 ---
 
+## Skills Beyond Software: Universal Applicability
+
+Remember: skills aren't just for coding. They work for ANY domain where you have expertise worth encoding.
+
+**Examples from non-technical fields:**
+
+| Role | Skill Example | What It Encodes |
+|------|--------------|-----------------|
+| **Financial Analyst** | `quarterly-report` | Company's specific KPI formatting, variance analysis approach |
+| **HR Manager** | `candidate-evaluation` | Interview rubric, scoring criteria, red flag checklist |
+| **Marketing Lead** | `campaign-brief` | Brand voice, audience targeting framework, channel strategy |
+| **Legal Counsel** | `contract-review` | Clause analysis workflow, risk flagging criteria |
+| **Educator** | `lesson-plan` | Learning objectives structure, assessment alignment |
+
+The pattern is universal: **if you repeat a procedure and it has your expertise embedded in it, it's a skill candidate.**
+
+---
+
+## The Bigger Picture: Skills as Building Blocks
+
+Here's what makes skills strategically valuable:
+
+**Today**: Skills make Claude more useful for your personal work.
+
+**Tomorrow**: Skills you create become building blocks for larger systems.
+
+In Part 6 of this book, you'll learn to build **Custom Agents** using SDKs (OpenAI, Claude, Google). Here's the insight: **skills you create now can be integrated into those Custom Agents.**
+
+```
+Your Expertise → Skills → Custom Agent → Deployed Product
+```
+
+A skill for "quarterly financial analysis" doesn't just help you today. It becomes a component in a financial analysis agent you could deploy for clients. A skill for "candidate evaluation" becomes part of a recruiting automation system.
+
+**Skills are reusable intellectual property.** They compound in value—first for your personal productivity, then for your team, and potentially for products you build or sell.
+
+---
+
 ## Reflection
 
 You've gone from understanding skills (Lesson 04) to understanding their architecture (Lesson 05) to building them yourself.
 
-The skills you create now will compound. Each one makes Claude more useful for YOUR specific work. Share them with teammates, and the whole team benefits from encoded expertise.
+The skills you create now will compound. Each one makes Claude more useful for YOUR specific work. Share them with teammates, and the whole team benefits from encoded expertise. And as you'll see in Part 6, these same skills become building blocks for Custom Agents you can deploy.
 
 The next lessons explore features that complement skills: project context files, external connectivity, and complex task handling. Skills are just the beginning.

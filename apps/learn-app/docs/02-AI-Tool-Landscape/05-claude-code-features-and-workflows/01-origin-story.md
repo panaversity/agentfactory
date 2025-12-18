@@ -156,6 +156,26 @@ Terminal integration isn't a stylistic choice. It's what makes the agentic model
 
 The terminal isn't a limitation. It's the foundation that makes context-aware, action-capable AI possible.
 
+---
+
+## Code Is the Universal Interface
+
+Here's an insight that surprises many people: **Claude Code isn't just for software development.**
+
+"Code" sounds like programming. But code is actually the universal interface to the digital world. Through code, Claude can:
+
+- **Call APIs** to pull data from any service
+- **Organize files** in any format (Word, Excel, PowerPoint, PDF)
+- **Analyze data** with Python scripts
+- **Generate reports** in any structure you need
+- **Automate workflows** across any digital tool
+
+A financial analyst can use Claude Code to pull data from accounting systems, analyze it, and generate formatted reports—without writing traditional "code." A recruiter can use it to process candidate information and generate evaluation summaries. A marketer can use it to research competitors and create strategy documents.
+
+**The scaffolding is thin**: Bash commands, file system access, and Python execution. That's all Claude Code needs to become useful for virtually any digital knowledge work.
+
+This is why the lessons ahead teach "skills" that work across domains—not just programming skills, but expertise in finance, marketing, legal, education, and more. Claude Code is the platform. Your domain expertise is what makes it specifically valuable.
+
 So what does this new paradigm actually produce?
 
 ---
