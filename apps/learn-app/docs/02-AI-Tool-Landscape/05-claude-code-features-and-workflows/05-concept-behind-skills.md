@@ -182,7 +182,10 @@ Claude has limited working memory (context window). If it loaded every skill's f
 
 Think of your smartphone. You have 100 apps installed. Your phone doesn't run all 100 at once—it would crash. Apps stay closed until you tap them. Skills work the same way: available when needed, dormant otherwise.
 
+![skills-standardization](https://pub-80f166e40b854371ac7b05053b435162.r2.dev/books/ai-native-dev/static/images/part-2/chapter-05/skills-standardization.png)
+
 This architecture enables scale. You can have hundreds of skills without overwhelming context. Claude activates the relevant ones and ignores the rest.
+
 
 But if skills are just folders, where do they come from?
 

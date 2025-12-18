@@ -83,7 +83,6 @@ That knowledge lives in your head. Every time you ask Claude for help, you expla
 
 What if you could teach Claude your style once and have it apply automatically, forever?
 
-![matrix-skill-loading](https://pub-80f166e40b854371ac7b05053b435162.r2.dev/books/ai-native-dev/static/images/part-2/chapter-05/matrix-skill-loading.png)
 
 That's what skills do. Not saving keystrokes—**preserving your personal touch**. You invest once in documenting how you work, and Claude applies your style consistently across every future task.
 
@@ -106,6 +105,8 @@ That personalized touch is the difference between generic output and YOUR output
 
 :::tip The Matrix Analogy
 Remember the scene in *The Matrix* where Trinity needs to fly a helicopter? She doesn't know how—until Tank uploads the B-212 helicopter pilot program directly into her mind. Seconds later, she's an expert pilot.
+
+![matrix-skill-loading](https://pub-80f166e40b854371ac7b05053b435162.r2.dev/books/ai-native-dev/static/images/part-2/chapter-05/matrix-skill-loading.png)
 
 Skills work the same way. When you ask Claude to help with LinkedIn posts and you have a LinkedIn skill, Claude instantly "loads" your expertise—your tone, your structure, your preferences. The knowledge transfers in milliseconds, ready to use.
 
