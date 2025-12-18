@@ -83,6 +83,8 @@ All of that lives **outside your computer**. Claude Code can't reach it... yet.
 
 **Model Context Protocol (MCP)** solves this problem. It's like giving Claude Code safe, approved access to the outside world.
 
+![skills-mcp-complementarity](https://pub-80f166e40b854371ac7b05053b435162.r2.dev/books/ai-native-dev/static/images/part-2/chapter-05/skills-mcp-complementarity.png)
+
 ---
 
 ## Think of MCP Like This

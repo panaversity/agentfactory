@@ -160,6 +160,8 @@ The terminal isn't a limitation. It's the foundation that makes context-aware, a
 
 ## Code Is the Universal Interface
 
+![code-universal-image](https://pub-80f166e40b854371ac7b05053b435162.r2.dev/books/ai-native-dev/static/images/part-2/chapter-05/code-universal-image.png)
+
 Here's an insight that surprises many people: **Claude Code isn't just for software development.**
 
 "Code" sounds like programming. But code is actually the universal interface to the digital world. Through code, Claude can:

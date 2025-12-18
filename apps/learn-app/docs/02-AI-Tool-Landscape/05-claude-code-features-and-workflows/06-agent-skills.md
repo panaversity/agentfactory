@@ -71,6 +71,8 @@ prerequisites:
 
 You've experienced skills in action. You've mapped a procedure worth encoding. Now you build.
 
+![skills-strategic-value](https://pub-80f166e40b854371ac7b05053b435162.r2.dev/books/ai-native-dev/static/images/part-2/chapter-05/skills-strategic-value.png)
+
 This lesson takes you from understanding skills to creating them. By the end, you'll have a working skill in your `.claude/skills/` folder—and know how to use Claude itself to create more.
 
 :::tip Markdown Refresher

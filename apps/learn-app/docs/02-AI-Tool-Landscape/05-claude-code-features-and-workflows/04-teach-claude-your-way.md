@@ -83,6 +83,8 @@ That knowledge lives in your head. Every time you ask Claude for help, you expla
 
 What if you could teach Claude your style once and have it apply automatically, forever?
 
+![matrix-skill-loading](https://pub-80f166e40b854371ac7b05053b435162.r2.dev/books/ai-native-dev/static/images/part-2/chapter-05/matrix-skill-loading.png)
+
 That's what skills do. Not saving keystrokes—**preserving your personal touch**. You invest once in documenting how you work, and Claude applies your style consistently across every future task.
 
 ---

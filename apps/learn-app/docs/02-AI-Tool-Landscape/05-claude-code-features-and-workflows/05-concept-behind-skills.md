@@ -103,6 +103,8 @@ That's the gap skills fill. Not more intelligence. Not more execution capability
 
 Here's a critical insight: **skills work for ANY domain, not just software development.**
 
+![skills-universal-domains](https://pub-80f166e40b854371ac7b05053b435162.r2.dev/books/ai-native-dev/static/images/part-2/chapter-05/skills-universal-domains.png)
+
 Claude Code runs in a terminal, yes. But "code" is the universal interface to the digital world. Through code, Claude can:
 - Write and format documents (Word, PowerPoint, Excel, PDF)
 - Analyze data and create visualizations

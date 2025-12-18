@@ -31,11 +31,12 @@ mjs@Muhammads-MacBook-Pro-3 panaversity-fs-py %   PANAVERSITY_LOG_LEVEL=WARNING 
   cd apps/panaversity-fs-py
 
   # Upload your image
-  uv run python scripts/upload_image.py \
-      --image /path/to/your-image.png \
-      --part 2 \
-      --chapter 05 \
-      --name your-image-name
+
+uv run python scripts/upload_image.py \
+    --image /Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/panaversity-fs-py/skills-mcp-complementarity.png \
+    --part 2 \
+    --chapter 05 \
+    --name skills-mcp-complementarity
 
 uv run python scripts/upload_image.py \
 --image /Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/skills-in-stack.png \
