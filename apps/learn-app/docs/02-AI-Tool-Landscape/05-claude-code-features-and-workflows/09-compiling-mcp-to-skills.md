@@ -51,8 +51,8 @@ differentiation:
   remedial_for_struggling: "Focus on single MCP server; use provided templates"
 
 # Generation metadata
-generated_by: "content-implementer v1.0.0"
-source_spec: "Chapter 5 Lesson 09 Plan - Compiling MCP to Skills"
+generated_by: "content-implementer v1.0.0 (045-lesson-09-compiling-mcp-skills)"
+source_spec: "specs/045-lesson-09-compiling-mcp-skills/spec.md"
 created: "2025-12-19"
 last_modified: "2025-12-19"
 git_author: "Claude Code"
@@ -70,7 +70,14 @@ prerequisites:
 
 You've learned MCP servers connect Claude Code to external systems. You've mastered skills as encoded expertise. Now: what happens when you want both, but MCP's token consumption makes it expensive?
 
+![skills-mcp](https://pub-80f166e40b854371ac7b05053b435162.r2.dev/books/ai-native-dev/static/images/part-2/chapter-05/skills-mcp.png)
+
 This lesson shows you a powerful pattern: **compile high-token MCP servers into lean skills**, reducing context consumption by up to 98.7% while maintaining full functionality.
+
+:::tip Industry Standard
+Skills format is now supported by Claude Code, OpenAI Codex (beta), and Goose. 
+Skills you compile here work across all three agents.
+:::
 
 ---
 
@@ -91,6 +98,9 @@ In a 2-hour meeting transcript processing workflow, you might consume **50,000+ 
 > — Armin Ronacher, [Skills vs Dynamic MCP Loadouts](https://lucumr.pocoo.org/2025/12/13/skills-vs-mcp/)
 
 Across 100 MCP-heavy projects, **80-98% of token consumption could be eliminated** through compilation (Anthropic, 2025).
+
+#### 💬 AI Colearning Prompt
+> "I have 3 MCP servers installed. Help me estimate my token overhead: For each server, how many tokens does it load at startup? What's my total context cost before I've even asked a question?"
 
 ---
 
@@ -156,6 +166,15 @@ Playwright MCP Tools:
 
 [... more tools ...]
 ```
+
+**Troubleshooting Introspection:**
+
+| Problem | Solution |
+|---------|----------|
+| "MCP not found" | Run `claude mcp list` to verify installation |
+| Output truncated | Ask Claude to "Continue with remaining tools" |
+| Token estimates seem high | Normal—this justifies compilation |
+| No tools returned | Check MCP server is running and accessible |
 
 ### Step 2: Compile to Skill Format
 
@@ -235,6 +254,18 @@ and extracting the main heading text. Confirm that the skill activated and worke
 Claude will load the skill (not the raw Playwright MCP), execute the necessary browser commands, and return results.
 
 **What happened**: You replaced 8,000 tokens of MCP definitions with 150 tokens of lean skill instructions. Same functionality, drastically less context consumption.
+
+**Troubleshooting Compilation:**
+
+| Problem | Solution |
+|---------|----------|
+| Skill not discovered | Check path: `.claude/skills/[name]/SKILL.md` (not flat file) |
+| Missing YAML frontmatter | Must have `name`, `description`, `version` fields |
+| Description too vague | Use formula: Action + Input + Output + Triggers |
+| Skill never activates | Make description more specific to your use case |
+
+#### 💬 AI Colearning Prompt
+> "Review the SKILL.md I just created. Is the description specific enough to trigger reliably? What edge cases might cause it to activate incorrectly or fail to activate when needed?"
 
 ---
 
@@ -333,6 +364,14 @@ Total per query: ~200-350 tokens
 
 **Savings**: 11,000 → 350 tokens (96.8% reduction).
 
+### Reflection: Was It Worth It?
+
+Before moving on, consider:
+
+- **Was the compilation effort worth the token savings?** For a one-off query, probably not. For a workflow you run daily, absolutely.
+- **What would make compilation NOT worth it?** Rapidly changing APIs, one-time lookups, very low-token MCP servers.
+- **How did your understanding change?** You now see MCP tools as raw material to be refined, not final products.
+
 ---
 
 ## Using Skill-Creator to Automate Compilation
@@ -396,6 +435,16 @@ Not every MCP server needs compilation. Use this matrix to decide:
 - Calling MCP 3+ times in same session? → Compile to skill
 - Working with high-token server? → Compile to skill
 - Building production workflow? → Compile to skill
+
+---
+
+## What's Ahead
+
+You've learned to compile MCP servers into lean skills—reducing token consumption by 80-98% while preserving functionality. But what happens when you need multiple skills working together on complex tasks?
+
+**Lesson 10: Subagents and Orchestration** introduces the next level: specialized AI assistants that handle specific types of work with isolated context. Where compilation gives you *efficiency*, subagents give you *coordination*—a team of focused specialists instead of one overloaded generalist.
+
+Skills you compile now become building blocks for subagent workflows later.
 
 ---
 

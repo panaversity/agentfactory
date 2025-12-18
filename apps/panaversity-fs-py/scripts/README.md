@@ -33,10 +33,10 @@ mjs@Muhammads-MacBook-Pro-3 panaversity-fs-py %   PANAVERSITY_LOG_LEVEL=WARNING 
   # Upload your image
 
 uv run python scripts/upload_image.py \
-    --image /Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/panaversity-fs-py/scripts/skills-standardization.png \
+    --image /Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/apps/panaversity-fs-py/skills-mcp.png \
     --part 2 \
     --chapter 05 \
-    --name skills-standardization
+    --name skills-mcp
 
 uv run python scripts/upload_image.py \
 --image /Users/mjs/Documents/code/panaversity-official/tutorsgpt/storage/skills-standardization.png \
