@@ -116,6 +116,10 @@ Claude Code operates in an **agentic model**. You describe your goal. Claude rea
 
 Think of it this way: passive AI is a consultant giving advice over the phone. Agentic AI is a pair programmer sitting next to you, looking at your screen.
 
+:::info General Agents vs Custom Agents
+Claude Code is what the industry calls a **General Agent**—an AI that can reason, plan, and execute across many domains. In Part 6, you'll learn to build **Custom Agents** for specific business workflows using SDKs like OpenAI Agents SDK and Google ADK. Here's the powerful insight: you'll use Claude Code (a General Agent) to *build* those Custom Agents. General Agents are builders; Custom Agents are the products they build.
+:::
+
 ![Split-screen workflow comparison showing traditional chat AI requiring manual copy-paste steps (left, red bottlenecks) versus Claude Code's autonomous workflow with file context and command execution (right, green flow)](https://pub-80f166e40b854371ac7b05053b435162.r2.dev/books/ai-native-dev/static/images/part-2/chapter-05/traditional-chat-vs-claude-code-workflow.png)
 
 ### Comparison: Passive vs. Agentic AI Assistance

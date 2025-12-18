@@ -11,6 +11,7 @@ learning_objectives:
   - "Distinguish agents from chatbots using the loop-based definition"
   - "Classify systems using the 5-Level Taxonomy (Level 0-4)"
   - "Explain the director vs bricklayer paradigm shift"
+  - "Apply the General Agent vs Custom Agent decision framework"
 skills:
   agent_classification:
     proficiency: B1
@@ -112,6 +113,64 @@ Agent development skills are scarce. Most developers can *use* ChatGPT. Few can 
 
 The gap: Companies need people who can specify agent behavior precisely, debug agent reasoning, and decide when to use agents vs traditional code. That's what Chapters 34-36 teach.
 
+## The Strategic Choice: General Agents vs Custom Agents
+
+Beyond taxonomy, there's a strategic decision every AI builder faces: **General Agents** vs **Custom Agents**.
+
+### General Agents
+
+Ready-to-use AI partners that reason across many domains. Claude Code, Gemini CLI, and Goose are General Agents.
+
+**Characteristics:**
+- Flexible reasoning across diverse problems
+- Zero-shot planning (figure out novel situations)
+- Human-in-the-loop collaboration
+- Instant deployment (install and run)
+
+**Best for:** Novel problems, complex debugging, ad-hoc analysis, creative work, exploration
+
+**Analogy:** Hiring a senior consultant who figures things out
+
+### Custom Agents
+
+Purpose-built AI systems you design using SDKs (OpenAI Agents SDK, Claude SDK, Google ADK).
+
+**Characteristics:**
+- Optimized for specific workflows
+- Guardrails and process control
+- Deterministic, repeatable behavior
+- Customer-facing reliability
+
+**Best for:** Standardized procedures, high-volume automation, customer-facing products, SOPs
+
+**Analogy:** Building a factory machine for a specific task
+
+### The Decision Matrix
+
+| Factor | Choose General Agent | Choose Custom Agent |
+|--------|---------------------|---------------------|
+| Task type | Novel, varied | Repetitive, standardized |
+| End user | Technical (developers) | Non-technical (customers) |
+| Error tolerance | High (human reviews) | Low (must be reliable) |
+| Cost model | High value per task | Volume optimization |
+| Time to deploy | Minutes | Weeks |
+
+### The Agent Factory Insight
+
+Here's the paradigm shift: **General Agents build Custom Agents**.
+
+Claude Code (a General Agent) can:
+1. Read your specification
+2. Understand the SDK documentation
+3. Generate Custom Agent code
+4. Test and iterate until it works
+
+You don't choose between General and Custom—you use General Agents to *create* Custom Agents. This is the "Agent Factory" model.
+
+**Your expertise + General Agent + SDK = Deployable Custom Agent**
+
+Skills you create in Claude Code (Chapter 5) become the building blocks. In Chapters 34-36, you'll use Claude Code to build Custom Agents with OpenAI, Claude, and Google SDKs.
+
 ## Try With AI
 
 Use Claude, ChatGPT, or Gemini to practice classification.
@@ -129,3 +188,11 @@ Use Claude, ChatGPT, or Gemini to practice classification.
 **Expected**: First is director. Harder because you must specify intent precisely. More powerful because the agent adapts.
 
 **Key insight**: The level isn't about sophistication of tools—it's about who controls the reasoning loop.
+
+> "A startup wants to automate customer onboarding emails. Should they use Claude Code (General Agent) or build a Custom Agent with OpenAI SDK? What factors drive that decision?"
+
+**Expected**: Custom Agent—standardized workflow, customer-facing, needs reliability. But they'd use Claude Code to *build* the Custom Agent.
+
+> "Explain the 'Agent Factory' concept. Why don't you choose between General and Custom Agents?"
+
+**Expected**: General Agents build Custom Agents. You use Claude Code to create purpose-built agents with SDKs. They're complementary, not competing.

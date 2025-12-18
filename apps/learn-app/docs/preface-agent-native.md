@@ -34,6 +34,28 @@ For the first time in human history, you can ship production AI-native software 
   </iframe>
 </div>
 
+### From Presentation to Practice
+
+The presentation above introduces **The 2026 AI Commercial Playbook**—the strategic framework for turning AI expertise into revenue. It reveals a critical insight: there are two paths to monetization.
+
+**Path A: General Agents** (Claude Code, Gemini CLI)
+- Ready-to-use AI partners that reason, plan, and execute
+- Best for: Novel problems, complex debugging, ad-hoc analysis
+- Speed to value: Instant (install and start working)
+
+**Path B: Custom Agents** (OpenAI SDK, Claude SDK, Google ADK)
+- Purpose-built AI systems you design and deploy
+- Best for: Standardized workflows, customer-facing products, high-volume automation
+- Speed to value: Weeks to design and build
+
+**The paradigm shift:** General Agents can *build* Custom Agents. Claude Code isn't just a coding tool—it's an **Agent Factory** that transforms your domain expertise into deployable products.
+
+This book teaches both paths:
+- **Parts 2-4**: Master General Agents (Claude Code, Gemini CLI) and specification-driven development
+- **Part 6**: Build Custom Agents using SDKs, with General Agents as your implementation partner
+
+By the end, you'll know when to use each path—and how they work together.
+
 ---
 
 ## What This Book Is About
