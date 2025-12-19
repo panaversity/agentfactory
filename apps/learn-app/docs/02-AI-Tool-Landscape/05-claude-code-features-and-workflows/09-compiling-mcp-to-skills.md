@@ -365,7 +365,7 @@ Not every MCP server benefits from compilation. Use this decision framework:
 
 ### Use Direct MCP When:
 
-❌ **Low token overhead** (<1,500 tokens per query)
+❌ **Low token overhead** (&lt;1,500 tokens per query)
 - MCP already efficient, compilation overhead not worth it
 
 ❌ **Infrequent use** (once per month or less)
