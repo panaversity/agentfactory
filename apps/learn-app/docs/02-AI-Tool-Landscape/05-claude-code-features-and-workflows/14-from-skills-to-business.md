@@ -249,7 +249,7 @@ A startup built a Digital SDR (Sales Development Rep) using this model:
 **After**:
 - 1 Digital SDR agent + 2 humans for complex deals
 - Cost: $8,000/month total
-- Response time: <2 minutes
+- Response time: less than 2 minutes
 - Volume: 1,000+ prospects/day
 
 **How they built it**:
