@@ -84,13 +84,85 @@ FastAPI stands out for three reasons:
 
 Let's build a Task API step by step. This same structure will later wrap your agents.
 
-Create a new project:
+### Step 1: Create a Project with UV
 
 ```bash
-mkdir task-api && cd task-api
-uv init
-uv add fastapi "uvicorn[standard]"
+uv init task-api
+cd task-api
 ```
+
+This creates a proper Python project with `pyproject.toml` for dependency management.
+
+### Step 2: Create and Activate the Virtual Environment
+
+On macOS/Linux:
+
+```bash
+uv venv
+source .venv/bin/activate
+```
+
+On Windows:
+
+```bash
+uv venv
+.venv\Scripts\activate
+```
+
+**Note**: With recent Python versions, `uv` commands work without manual activation, but activating ensures your shell recognizes project dependencies.
+
+### Step 3: Add Dependencies
+
+```bash
+uv add "fastapi[standard]"
+```
+
+**What does `[standard]` include?** The `fastapi[standard]` package bundles essential dependencies:
+
+- **fastapi**: The web framework itself
+- **uvicorn**: The ASGI server that runs your app (more on this below)
+- **httpx**: An HTTP client useful for testing endpoints
+
+For testing (which we'll cover later), add development dependencies:
+
+```bash
+uv add --dev pytest pytest-asyncio
+```
+
+This updates your `pyproject.toml`:
+
+```toml
+[project]
+name = "task-api"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard]>=0.115.0"
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+]
+```
+
+### What is Uvicorn and Why Do We Need It?
+
+FastAPI doesn't run by itself—it needs a **server** to handle incoming HTTP requests.
+
+**Uvicorn** is an ASGI (Asynchronous Server Gateway Interface) server. Think of it as the bridge:
+
+```
+Browser Request → Uvicorn → FastAPI → Your Code → FastAPI → Uvicorn → Browser Response
+```
+
+- **Uvicorn** handles the networking: listening on ports, accepting connections, parsing HTTP
+- **FastAPI** handles the application logic: routing, validation, your code
+
+You never interact with uvicorn directly in code—it just runs your FastAPI app. But understanding this separation matters: in production, you might swap uvicorn for another ASGI server (like hypercorn) without changing your FastAPI code.
+
+### Step 4: Create Your First Endpoint
 
 Create `main.py`:
 
@@ -113,14 +185,35 @@ That's a complete FastAPI application. Let's break it down:
 - `@app.get("/")` is a **decorator** that tells FastAPI "when someone makes a GET request to `/`, call this function."
 - The function returns a dictionary, which FastAPI automatically converts to JSON.
 
-Run your application:
+### Step 5: Run Your Application
+
+You have two options for running the server in development:
+
+**Option A: FastAPI CLI (Recommended for development)**
+
+```bash
+fastapi dev main.py
+```
+
+This command (introduced in FastAPI 0.100.0+) runs your app in development mode with automatic reloading. It's the simplest approach.
+
+**Option B: Uvicorn directly**
 
 ```bash
 uv run uvicorn main:app --reload
 ```
 
 - `main:app` means "the `app` object in `main.py`"
-- `--reload` restarts the server when you change code (development only)
+- `--reload` restarts the server when you change code
+
+**When to use which?**
+- Use `fastapi dev` for quick development—it handles defaults for you
+- Use `uvicorn` directly when you need control over host/port:
+  ```bash
+  uv run uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+  ```
+
+**Troubleshooting**: If `fastapi dev` fails, ensure FastAPI isn't installed globally (conflicting with your virtual environment). The explicit `uv run uvicorn` command always works.
 
 Open http://localhost:8000 in your browser. You'll see:
 
@@ -132,15 +225,16 @@ Your API is live.
 
 ## What Just Happened?
 
-You typed 7 lines of Python. FastAPI gave you:
+You typed ~10 lines of Python. The FastAPI + Uvicorn combination gave you:
 
-- **A running web server** (via uvicorn)
-- **JSON serialization** (your dict → JSON automatically)
-- **Interactive documentation** (Swagger UI at /docs)
-- **Request validation** (try /tasks/abc later → automatic 422 error)
-- **OpenAPI spec generation** (view at /openapi.json)
+- **A running web server** — Uvicorn listens on port 8000, handles connections, and routes requests to FastAPI
+- **JSON serialization** — Your Python dict → JSON automatically
+- **Interactive documentation** — Swagger UI at /docs
+- **Request validation** — Try /tasks/abc later → automatic 422 error
+- **OpenAPI spec generation** — View at /openapi.json
+- **Auto-reload** — Change code, server restarts automatically
 
-You didn't write ANY of that infrastructure. This is why FastAPI is called "batteries included."
+You didn't write networking code, serialization, or documentation. This is why FastAPI is called "batteries included."
 
 This matters for agents: when you expose agent capabilities (Lesson 7), you'll get all this infrastructure automatically. Clients will see your agent's endpoints in Swagger UI, send validated requests, and receive JSON responses—without you writing serialization code.
 
@@ -266,10 +360,16 @@ def read_task(task_id: int, details: bool = False):
     return task
 ```
 
-Run it and test in Swagger UI:
+Run it:
+
+```bash
+fastapi dev main.py
+```
+
+Then test in Swagger UI:
 1. Open http://localhost:8000/docs
-2. Try each endpoint
-3. Toggle the `details` parameter
+2. Try each endpoint using "Try it out"
+3. Toggle the `details` parameter and observe the response change
 4. Try an invalid task_id (like "abc") and observe the 422 error
 
 ## Challenge: Design Your Own Endpoint
@@ -370,13 +470,15 @@ This is collaborative design. You're not asking "write code for me"—you're hav
 
 You've created your first FastAPI application:
 
+- **Project setup**: `uv init` + `uv add "fastapi[standard]"` for proper dependency management
+- **Uvicorn**: The ASGI server that runs your FastAPI app (included in `fastapi[standard]`)
 - **FastAPI instance**: `app = FastAPI(title="...")` creates your app with auto-documentation
 - **Route decorators**: `@app.get("/path")` connects URLs to functions
 - **Path parameters**: `{task_id}` in the path, type-validated automatically
 - **Query parameters**: Optional parameters with defaults
+- **Running**: `fastapi dev main.py` or `uv run uvicorn main:app --reload`
 - **Swagger UI**: Interactive documentation at `/docs`
-- **Why async matters**: Agent calls in Lesson 7 will be async
 
-**The bigger picture**: You're building the HTTP layer that will eventually expose AI agents. Every endpoint pattern you learn here transfers directly to agent integration.
+**The bigger picture**: You're building the HTTP layer that will eventually expose AI agents. Every endpoint pattern you learn here transfers directly to agent integration. Uvicorn handles the networking; FastAPI handles your logic.
 
 Next lesson, you'll add POST endpoints with Pydantic models—the same validation layer that ensures agents receive well-formed requests.
