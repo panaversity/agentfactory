@@ -4,252 +4,212 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import Heading from "@theme/Heading";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { IDEShowcaseSection } from "@/components/HeroIDESimulation";
 
 import styles from "./index.module.css";
+
+
+import { ThreeDBook } from "@/components/ThreeDBook";
+import { Code, Container, Cpu, Terminal, ArrowRight, BookOpen, Layers, GitBranch, Bot, Server, GraduationCap } from "lucide-react";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={styles.heroBanner}>
-      <div className={styles.heroGradient} />
-      <div className="container">
-        <div className={styles.heroContent}>
-          {/* Left side - Book Cover */}
-          <div className={styles.heroImageContainer}>
-            <img
-              src="/img/book-cover-page.png"
-              alt="CoLearning Programming: The AI-Driven Way Book Cover"
-              className={styles.heroBookCover}
-            />
+    <header className={clsx(styles.heroBanner, "relative overflow-hidden border-b border-border/40")}>
+      <div className="max-w-[1800px] mx-auto relative z-10 h-full">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] min-h-[85vh]">
+
+          {/* LEFT COLUMN: Technical Content */}
+          <div className="flex flex-col justify-center px-6 md:px-12 lg:px-16 py-12 lg:py-0 border-r border-border/40">
+
+            {/* Semantic Badge */}
+            <div className="flex items-center gap-3 mb-8">
+              <span className="font-mono text-xs font-bold tracking-widest uppercase text-muted-foreground/80 px-2 py-1 border border-border bg-muted/20">
+                v1.0.0 Release
+              </span>
+              <span className="w-12 h-[1px] bg-border"></span>
+              <span className="font-mono text-xs text-muted-foreground/60 tracking-wider">
+                ENGINEERING BOOK
+              </span>
+            </div>
+
+            {/* Heading */}
+            <div className="space-y-6 mb-10">
+              <h1 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tighter text-foreground leading-[1.0] uppercase">
+                AI NATIVE <br />
+                <span className="text-primary block text-2xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tight mt-1">
+                  SOFTWARE DEVELOPMENT
+                </span>
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground font-normal leading-[1.6] max-w-xl">
+                The comprehensive engineering book for the <span className="text-foreground font-medium">Agentic Era</span>.
+                Move beyond autocomplete to orchestrating intelligent systems.
+              </p>
+            </div>
+
+            {/* CTA Area */}
+            <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center mb-16">
+              <Button asChild size="lg" className="h-14 px-8 text-lg font-bold rounded-none bg-primary hover:bg-primary/90 text-primary-foreground transition-all">
+                <Link to="/docs/preface-agent-native" className="flex items-center gap-3">
+                  START READING <ArrowRight className="w-5 h-5" />
+                </Link>
+              </Button>
+              <div className="text-sm text-muted-foreground font-mono">
+                // Free & Open Source
+              </div>
+            </div>
+
           </div>
 
-          {/* Right side - Content */}
-          <div className={styles.heroTextContent}>
-            <div className={styles.heroLabel}>
-              Panaversity AI-Native Book Series
-            </div>
-            <Heading as="h1" className={styles.heroTitle}>
-              AI Native Software Development
-              <br />
-              <span className={styles.heroTitleAccent}>
-                Colearning Agentic AI with Python and TypeScript –{" "}
-                <strong>Spec Driven Reusable Intelligence</strong>
-              </span>
-            </Heading>
-
-            <div className={styles.heroBadges}>
-              <span className={styles.badge}>
-                <span className={styles.badgeIcon}>✨</span>
-                Open Source
-              </span>
-              <span className={styles.badge}>
-                <span className={styles.badgeIcon}>🤝</span>
-                Co-Learning with AI
-              </span>
-              <span className={styles.badge}>
-                <span className={styles.badgeIcon}>🎯</span>
-                Spec-Driven Development
-              </span>
+          {/* RIGHT COLUMN: The Artifact (Book) */}
+          <div className="relative w-full h-full min-h-[500px] flex items-center justify-center">
+            {/* Technical Grid Background */}
+            <div className="absolute inset-0 opacity-[0.03]"
+              style={{ backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
             </div>
 
-            <div className={styles.heroButtons}>
-              <Link
-                className={clsx(
-                  "button button--outline button--md",
-                  styles.secondaryButton
-                )}
-                href="https://panaversity.org/flagship-program/courses"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className={styles.buttonContent}>
-                  <span className={styles.buttonText}>Explore Panaversity</span>
-                  <span className={styles.buttonIcon}>🎓</span>
-                </span>
-              </Link>
-              <Link
-                className={clsx(
-                  "button button--primary button--md",
-                  styles.ctaButton
-                )}
-                to="/docs/preface-agent-native"
-              >
-                <span className={styles.buttonContent}>
-                  <span className={styles.buttonText}>Start Reading</span>
-                  <span className={styles.buttonIcon}>→</span>
-                </span>
-              </Link>
+            <div className="relative z-10 transform transition-transform duration-700 hover:scale-[1.28] scale-[1.25]">
+              <ThreeDBook
+                src="/img/book-cover-page.png"
+                alt="AI Native Software Development Book Cover"
+              />
             </div>
           </div>
+
         </div>
       </div>
     </header>
   );
 }
 
+
+import { Card, CardContent } from "@/components/ui/card";
+
 function Feature({
   title,
   description,
-  icon,
-  featured,
+  icon: Icon,
 }: {
   title: string;
   description: string;
-  icon: string;
-  featured?: boolean;
+  icon: React.ElementType;
 }) {
   return (
-    <div className={clsx(styles.feature, featured && styles.featureFeatured)}>
-      {featured && <div className={styles.featureBadge}>Most Popular</div>}
-      <div className={styles.featureIconWrapper}>
-        <div className={styles.featureIcon}>{icon}</div>
+    <div className="group border border-border bg-card hover:bg-muted/30 transition-colors p-6 flex flex-col items-start gap-4">
+      <div className="p-3 bg-primary/10 rounded-none border border-primary/20 group-hover:bg-primary/20 transition-colors">
+        <Icon className="w-6 h-6 text-primary stroke-[1.5]" />
       </div>
-      <h3 className={styles.featureTitle}>{title}</h3>
-      <p className={styles.featureDescription}>{description}</p>
-      <div className={styles.featureAccent} />
+      <div>
+        <h3 className="text-base font-bold text-foreground mb-2 uppercase tracking-wide">{title}</h3>
+        <p className="text-muted-foreground leading-relaxed text-sm">{description}</p>
+      </div>
     </div>
   );
 }
 
 function AISpectrumSection() {
   return (
-    <section className={styles.spectrumSection}>
-      <div className="container">
-        <div className={styles.spectrumHeader}>
-          <div className={styles.spectrumLabel}>
+    <section className="py-24 border-b border-border/40">
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <p className="text-sm font-medium text-primary uppercase tracking-widest mb-3">
             Understanding AI Development
-          </div>
-          <Heading as="h2" className={styles.spectrumTitle}>
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             The AI Development Spectrum
-          </Heading>
-          <p className={styles.spectrumSubtitle}>
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Three distinct approaches to AI in software development. This book
             teaches you both AI-Driven and AI-Native development.
           </p>
         </div>
 
-        <div className={styles.spectrumCards}>
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {/* AI Assisted */}
-          <div className={styles.spectrumCard}>
-            <div className={styles.spectrumCardHeader}>
-              <div className={styles.spectrumIcon}>🛠️</div>
-              <h3 className={styles.spectrumCardTitle}>AI Assisted</h3>
-              <div className={styles.spectrumCardSubtitle}>AI as Helper</div>
-            </div>
-            <p className={styles.spectrumCardDescription}>
-              AI enhances your productivity with code completion, debugging
-              assistance, and documentation generation.
-            </p>
-            <ul className={styles.spectrumCardList}>
-              <li>Code completion & suggestions</li>
-              <li>Bug detection & debugging</li>
-              <li>Documentation generation</li>
-            </ul>
-            <div className={styles.spectrumCardExample}>
-              <strong>Example:</strong> Using Copilot to build a React website
-              faster
-            </div>
-          </div>
+          <Card className="flex flex-col border bg-card hover:border-border transition-all duration-300">
+            <CardContent className="flex flex-col h-full p-6">
+              <div className="mb-4">
+                <h3 className="text-xl font-bold text-foreground">AI Assisted</h3>
+                <p className="text-sm font-medium text-muted-foreground uppercase tracking-wide">AI as Helper</p>
+              </div>
+              <p className="text-muted-foreground mb-6 flex-grow">
+                AI enhances your productivity with code completion, debugging assistance, and documentation generation.
+              </p>
+              <ul className="space-y-2 mb-6 text-sm text-muted-foreground">
+                <li className="flex items-start"><span className="mr-2 text-primary">•</span>Code completion & suggestions</li>
+                <li className="flex items-start"><span className="mr-2 text-primary">•</span>Bug detection & debugging</li>
+                <li className="flex items-start"><span className="mr-2 text-primary">•</span>Documentation generation</li>
+              </ul>
+              <div className="mt-auto pt-4 border-t text-xs text-muted-foreground">
+                <strong className="text-foreground">Example:</strong> Using Copilot to build a React website faster
+              </div>
+            </CardContent>
+          </Card>
 
           {/* AI Driven */}
-          <div
-            className={clsx(styles.spectrumCard, styles.spectrumCardHighlight)}
-          >
-            <div className={styles.spectrumBadge}>Focus of This Book</div>
-            <div className={styles.spectrumCardHeader}>
-              <div className={styles.spectrumIcon}>🚀</div>
-              <h3 className={styles.spectrumCardTitle}>AI Driven</h3>
-              <div className={styles.spectrumCardSubtitle}>
-                AI as Co-Creator
+          <Card className="flex flex-col border-2 border-primary bg-card relative transition-all duration-300 hover:shadow-lg">
+            <CardContent className="flex flex-col h-full p-6">
+              <Badge variant="outline" className="absolute top-4 right-4 border-primary text-primary">Covered</Badge>
+              <div className="mb-4">
+                <h3 className="text-xl font-bold text-foreground">AI Driven</h3>
+                <p className="text-sm font-medium text-primary uppercase tracking-wide">AI as Co-Creator</p>
               </div>
-            </div>
-            <p className={styles.spectrumCardDescription}>
-              AI generates significant code from specifications. You act as
-              architect, director, and reviewer.
-            </p>
-            <ul className={styles.spectrumCardList}>
-              <li>Code generation from specs</li>
-              <li>Automated testing & optimization</li>
-              <li>Architecture from requirements</li>
-            </ul>
-            <div className={styles.spectrumCardExample}>
-              <strong>Example:</strong> Writing a spec for a REST API, AI
-              generates complete FastAPI backend
-            </div>
-          </div>
+              <p className="text-muted-foreground mb-6 flex-grow">
+                AI generates significant code from specifications. You act as architect, director, and reviewer.
+              </p>
+              <ul className="space-y-2 mb-6 text-sm text-muted-foreground">
+                <li className="flex items-start"><span className="mr-2 text-primary">•</span>Code generation from specs</li>
+                <li className="flex items-start"><span className="mr-2 text-primary">•</span>Automated testing & optimization</li>
+                <li className="flex items-start"><span className="mr-2 text-primary">•</span>Architecture from requirements</li>
+              </ul>
+              <div className="mt-auto pt-4 border-t text-xs text-muted-foreground">
+                <strong className="text-foreground">Example:</strong> Writing a spec for a REST API, AI generates complete FastAPI backend
+              </div>
+            </CardContent>
+          </Card>
 
           {/* AI Native */}
-          <div
-            className={clsx(styles.spectrumCard, styles.spectrumCardHighlight)}
-          >
-            <div className={styles.spectrumBadge}>Focus of This Book</div>
-            <div className={styles.spectrumCardHeader}>
-              <div className={styles.spectrumIcon}>🧠</div>
-              <h3 className={styles.spectrumCardTitle}>AI Native</h3>
-              <div className={styles.spectrumCardSubtitle}>
-                AI IS the Software
+          <Card className="flex flex-col border-2 border-primary bg-card relative transition-all duration-300 hover:shadow-lg">
+            <CardContent className="flex flex-col h-full p-6">
+              <Badge className="absolute top-4 right-4">Ultimate Goal</Badge>
+              <div className="mb-4">
+                <h3 className="text-xl font-bold text-foreground">AI Native</h3>
+                <p className="text-sm font-medium text-primary uppercase tracking-wide">AI IS the Software</p>
               </div>
-            </div>
-            <p className={styles.spectrumCardDescription}>
-              Applications architected around AI capabilities. LLMs and agents
-              are core functional components.
-            </p>
-            <ul className={styles.spectrumCardList}>
-              <li>Natural language interfaces</li>
-              <li>Intelligent automation & reasoning</li>
-              <li>Agent orchestration systems</li>
-            </ul>
-            <div className={styles.spectrumCardExample}>
-              <strong>Example:</strong> Building a customer support agent that
-              autonomously resolves tickets
-            </div>
-          </div>
+              <p className="text-muted-foreground mb-6 flex-grow">
+                Applications architected around AI capabilities. LLMs and agents are core functional components.
+              </p>
+              <ul className="space-y-2 mb-6 text-sm text-muted-foreground">
+                <li className="flex items-start"><span className="mr-2 text-primary">•</span>Natural language interfaces</li>
+                <li className="flex items-start"><span className="mr-2 text-primary">•</span>Intelligent automation & reasoning</li>
+                <li className="flex items-start"><span className="mr-2 text-primary">•</span>Agent orchestration systems</li>
+              </ul>
+              <div className="mt-auto pt-4 border-t text-xs text-muted-foreground">
+                <strong className="text-foreground">Example:</strong> Building a customer support agent that autonomously resolves tickets
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
-        {/* Redesigned progression visualization */}
-        <div className={styles.spectrumFlow}>
-          <div className={styles.spectrumFlowTrack}>
-            <div className={styles.spectrumFlowStep}>
-              <div className={styles.flowStepCircle}>
-                <span className={styles.flowStepNumber}>1</span>
-              </div>
-              <div className={styles.flowStepContent}>
-                <div className={styles.flowStepTitle}>AI Assisted</div>
-                <div className={styles.flowStepSubtitle}>Helper</div>
-              </div>
-            </div>
-
-            <div className={styles.spectrumFlowLine}>
-              <div className={styles.flowLineProgress}></div>
-            </div>
-
-            <div
-              className={clsx(styles.spectrumFlowStep, styles.flowStepActive)}
-            >
-              <div className={styles.flowStepCircle}>
-                <span className={styles.flowStepNumber}>2</span>
-              </div>
-              <div className={styles.flowStepContent}>
-                <div className={styles.flowStepTitle}>AI Driven</div>
-                <div className={styles.flowStepSubtitle}>Co-Creator</div>
-              </div>
-            </div>
-
-            <div className={styles.spectrumFlowLine}>
-              <div className={styles.flowLineProgress}></div>
-            </div>
-
-            <div
-              className={clsx(styles.spectrumFlowStep, styles.flowStepActive)}
-            >
-              <div className={styles.flowStepCircle}>
-                <span className={styles.flowStepNumber}>3</span>
-              </div>
-              <div className={styles.flowStepContent}>
-                <div className={styles.flowStepTitle}>AI Native</div>
-                <div className={styles.flowStepSubtitle}>Core System</div>
-              </div>
-            </div>
+        {/* Simplified Flow Track */}
+        <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-muted-foreground/30" />
+            <span className="text-sm text-muted-foreground">Helper</span>
+          </div>
+          <div className="w-12 h-px bg-border" />
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-primary" />
+            <span className="text-sm font-medium text-foreground">Co-Creator</span>
+          </div>
+          <div className="w-12 h-px bg-border" />
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-primary" />
+            <span className="text-sm font-medium text-foreground">Core System</span>
           </div>
         </div>
       </div>
@@ -259,53 +219,58 @@ function AISpectrumSection() {
 
 function FeaturesSection() {
   return (
-    <section className={styles.features}>
-      <div className="container">
-        {/* Section Header */}
-        <div className={styles.featuresHeader}>
-          <div className={styles.featuresLabel}>Core Pillars</div>
-          <Heading as="h2" className={styles.featuresHeading}>
-            What Makes This Book Different
-          </Heading>
-          <p className={styles.featuresSubheading}>
-            A comprehensive, production-focused approach to co-learning with AI
-            in the spec-driven way
+    <section className="py-24 border-b border-border/40">
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16">
+        {/* Section Header - Technical Style */}
+        <div className="flex flex-col md:flex-row justify-between items-end border-b border-border/40 pb-8 mb-12 gap-6">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-2 h-2 bg-primary"></div>
+              <span className="font-mono text-xs font-bold text-primary uppercase tracking-widest">
+                Core Pillars
+              </span>
+            </div>
+            <h2 className="text-4xl font-black tracking-tight text-foreground uppercase">
+              What Makes This Book Different
+
+            </h2>
+          </div>
+          <p className="text-muted-foreground max-w-lg text-sm font-mono text-right md:text-right hidden md:block">
+              // A comprehensive, production-focused approach  <br /> to co-learn with AI in spec-driven way
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className={styles.featuresGrid}>
+        {/* Technical Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border/40 border border-border/40">
           <Feature
-            icon="�"
+            icon={Bot}
             title="Co-Learning Philosophy"
             description="Learn alongside AI agents. Not just using AI as a tool, but co-creating where both human and AI learn together."
-            featured={true}
           />
           <Feature
-            icon="🐍"
+            icon={Code}
             title="Dual Language Mastery"
             description="Python for reasoning & intelligence, TypeScript for interaction & UI. Master the bilingual AI-native stack."
           />
           <Feature
-            icon="📋"
+            icon={GitBranch}
             title="Spec-Driven Development"
             description="Write specifications that both humans and AI understand. Specs become executable blueprints for intelligent systems."
           />
           <Feature
-            icon="🤖"
+            icon={Layers}
             title="Agentic AI Systems"
             description="Build with OpenAI Agents SDK and Google ADK. Create agents that reason, act, and collaborate autonomously."
           />
           <Feature
-            icon="🏗️"
+            icon={Server}
             title="Production-Ready Architecture"
             description="Cloud-native deployment with Docker, Kubernetes, Dapr, and Ray. Scalable, secure, fault-tolerant systems."
           />
           <Feature
-            icon="🚀"
+            icon={GraduationCap}
             title="Complete Learning Journey"
             description="46 comprehensive chapters from programming basics to deploying enterprise agentic AI systems in production."
-            featured={true}
           />
         </div>
       </div>
@@ -314,154 +279,109 @@ function FeaturesSection() {
 }
 
 function MaturityLevelsSection() {
+  const levels = [
+    {
+      number: 1,
+      title: "AI Awareness",
+      subtitle: "Experimenting",
+      impact: "10-20% productivity gains",
+      description: "Individual developers experimenting with AI coding tools. Early AI Assisted Development.",
+      approach: "AI Assisted (Individual)",
+    },
+    {
+      number: 2,
+      title: "AI Adoption",
+      subtitle: "Standardizing",
+      impact: "30-40% productivity boost",
+      description: "Organization-wide adoption with governance. Established guidelines and security policies.",
+      approach: "AI Assisted (Team)",
+    },
+    {
+      number: 3,
+      title: "AI Integration",
+      subtitle: "Transforming Workflows",
+      impact: "2-3x faster development",
+      description: "AI-Driven Development practices. Specs become living documentation. Workflows redesigned around AI collaboration.",
+      approach: "AI Driven (Workflow)",
+    },
+    {
+      number: 4,
+      title: "AI-Native Products",
+      subtitle: "Building Intelligence",
+      impact: "New capabilities unlocked",
+      description: "Products where AI/LLMs are core components. Agent orchestration, natural language interfaces, intelligent systems.",
+      approach: "AI Native (Product)",
+      focus: true,
+    },
+    {
+      number: 5,
+      title: "AI-First Enterprise",
+      subtitle: "Living in the Future",
+      impact: "10x productivity",
+      description: "Entire organization AI-native. Custom models, self-improving systems, AI embedded in every aspect.",
+      approach: "AI Native (Enterprise)",
+    },
+  ];
+
   return (
-    <section className={styles.maturitySection}>
-      <div className="container">
-        <div className={styles.maturityHeader}>
-          <div className={styles.maturityLabel}>Your AI Journey</div>
-          <Heading as="h2" className={styles.maturityTitle}>
+    <section className="py-24 border-b border-border/40">
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <p className="text-sm font-medium text-primary uppercase tracking-widest mb-3">
+            Your AI Journey
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Organizational AI Maturity Levels
-          </Heading>
-          <p className={styles.maturitySubtitle}>
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Where does your organization stand? Understanding these levels helps
             you chart your path forward.
           </p>
         </div>
 
-        <div className={styles.maturityLevels}>
-          {/* Level 1 */}
-          <div className={styles.maturityLevel}>
-            <div className={styles.maturityLevelNumber}>1</div>
-            <div className={styles.maturityLevelHeader}>
-              <div>
-                <h3 className={styles.maturityLevelTitle}>AI Awareness</h3>
-                <div className={styles.maturityLevelSubtitle}>
-                  Experimenting
-                </div>
-              </div>
-              <div className={styles.maturityLevelImpact}>
-                10-20% productivity gains
-              </div>
-            </div>
-            <p className={styles.maturityLevelDescription}>
-              Individual developers experimenting with AI coding tools. Early AI
-              Assisted Development.
-            </p>
-            <div className={styles.maturityLevelApproach}>
-              <strong>Approach:</strong> AI Assisted (Individual)
-            </div>
-          </div>
+        {/* Levels List with vertical connector */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Vertical connector line */}
+          <div className="absolute left-4 md:left-6 top-0 bottom-0 w-px bg-border" />
 
-          {/* Level 2 */}
-          <div className={styles.maturityLevel}>
-            <div className={styles.maturityLevelNumber}>2</div>
-            <div className={styles.maturityLevelHeader}>
-              <div>
-                <h3 className={styles.maturityLevelTitle}>AI Adoption</h3>
-                <div className={styles.maturityLevelSubtitle}>
-                  Standardizing
+          <div className="space-y-6">
+            {levels.map((level) => (
+              <div
+                key={level.number}
+                className={`relative pl-12 md:pl-16 ${level.focus ? 'py-6 bg-card border-l-2 border-primary -ml-px' : ''}`}
+              >
+                {/* Number circle */}
+                <div className={`absolute left-0 md:left-2 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${level.focus ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
+                  {level.number}
                 </div>
-              </div>
-              <div className={styles.maturityLevelImpact}>
-                30-40% productivity boost
-              </div>
-            </div>
-            <p className={styles.maturityLevelDescription}>
-              Organization-wide adoption with governance. Established guidelines
-              and security policies.
-            </p>
-            <div className={styles.maturityLevelApproach}>
-              <strong>Approach:</strong> AI Assisted (Team)
-            </div>
-          </div>
 
-          {/* Level 3 */}
-          <div
-            className={clsx(
-              styles.maturityLevel,
-              styles.maturityLevelHighlight
-            )}
-          >
-            <div className={styles.maturityBadge}>BOOK FOCUS</div>
-            <div className={styles.maturityLevelNumber}>3</div>
-            <div className={styles.maturityLevelHeader}>
-              <div>
-                <h3 className={styles.maturityLevelTitle}>AI Integration</h3>
-                <div className={styles.maturityLevelSubtitle}>
-                  Transforming Workflows
+                {/* Content */}
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-1">
+                      <h3 className="text-lg font-semibold text-foreground">{level.title}</h3>
+                      {level.focus && <Badge>Focus</Badge>}
+                    </div>
+                    <p className="text-sm text-primary font-medium mb-2">{level.subtitle}</p>
+                    <p className="text-muted-foreground text-sm mb-2">{level.description}</p>
+                    <p className="text-xs text-muted-foreground">
+                      <strong className="text-foreground">Approach:</strong> {level.approach}
+                    </p>
+                  </div>
+                  <div className="text-sm font-medium text-primary whitespace-nowrap">
+                    {level.impact}
+                  </div>
                 </div>
               </div>
-              <div className={styles.maturityLevelImpact}>
-                2-3x faster development
-              </div>
-            </div>
-            <p className={styles.maturityLevelDescription}>
-              AI-Driven Development practices. Specs become living
-              documentation. Workflows redesigned around AI collaboration.
-            </p>
-            <div className={styles.maturityLevelApproach}>
-              <strong>Approach:</strong> AI Driven (Workflow)
-            </div>
-          </div>
-
-          {/* Level 4 */}
-          <div
-            className={clsx(
-              styles.maturityLevel,
-              styles.maturityLevelHighlight
-            )}
-          >
-            <div className={styles.maturityBadge}>BOOK FOCUS</div>
-            <div className={styles.maturityLevelNumber}>4</div>
-            <div className={styles.maturityLevelHeader}>
-              <div>
-                <h3 className={styles.maturityLevelTitle}>
-                  AI-Native Products
-                </h3>
-                <div className={styles.maturityLevelSubtitle}>
-                  Building Intelligence
-                </div>
-              </div>
-              <div className={styles.maturityLevelImpact}>
-                New capabilities unlocked
-              </div>
-            </div>
-            <p className={styles.maturityLevelDescription}>
-              Products where AI/LLMs are core components. Agent orchestration,
-              natural language interfaces, intelligent systems.
-            </p>
-            <div className={styles.maturityLevelApproach}>
-              <strong>Approach:</strong> AI Native (Product)
-            </div>
-          </div>
-
-          {/* Level 5 */}
-          <div className={styles.maturityLevel}>
-            <div className={styles.maturityLevelNumber}>5</div>
-            <div className={styles.maturityLevelHeader}>
-              <div>
-                <h3 className={styles.maturityLevelTitle}>
-                  AI-First Enterprise
-                </h3>
-                <div className={styles.maturityLevelSubtitle}>
-                  Living in the Future
-                </div>
-              </div>
-              <div className={styles.maturityLevelImpact}>10x productivity</div>
-            </div>
-            <p className={styles.maturityLevelDescription}>
-              Entire organization AI-native. Custom models, self-improving
-              systems, AI embedded in every aspect.
-            </p>
-            <div className={styles.maturityLevelApproach}>
-              <strong>Approach:</strong> AI Native (Enterprise)
-            </div>
+            ))}
           </div>
         </div>
 
-        <div className={styles.maturityCTA}>
-          <p className={styles.maturityCTAText}>
-            <strong>This book prepares you for Levels 3-4:</strong> Master
+        {/* Bottom CTA */}
+        <div className="mt-12 text-center">
+          <p className="text-muted-foreground">
+            <strong className="text-foreground">This book prepares you for Levels 3-4:</strong> Master
             AI-Driven workflows and build AI-Native products
           </p>
         </div>
@@ -471,151 +391,105 @@ function MaturityLevelsSection() {
 }
 
 function ParadigmShift() {
+  const traditionalItems = [
+    { title: "Instruction-Based", desc: "Tell computers exactly what to do with precise syntax" },
+    { title: "Solo Coding", desc: "Developer writes every line manually" },
+    { title: "Documentation as Afterthought", desc: "Specs are static contracts written post-facto" },
+    { title: "Linear Learning", desc: "Learn syntax → Build simple projects → Slowly scale" },
+    { title: "Code-First", desc: "Focus on implementation details from day one" },
+  ];
+
+  const aiNativeItems = [
+    { title: "Intent-Based", desc: "Describe what you want; AI reasons how to build it" },
+    { title: "Co-Learning Partnership", desc: "You and AI teach each other through iteration" },
+    { title: "Specs as Living Blueprints", desc: "Specifications drive code, tests, and documentation" },
+    { title: "Production-First Learning", desc: "Build real agentic systems from day one" },
+    { title: "Architecture-First", desc: "Design intelligent collaborations, not just code" },
+  ];
+
   return (
-    <section className={styles.paradigmSection}>
-      <div className="container">
-        <div className={styles.paradigmContent}>
-          {/* Section Header */}
-          <div className={styles.paradigmHeader}>
-            <div className={styles.paradigmLabel}>The Great Shift</div>
-            <Heading as="h2" className={styles.paradigmTitle}>
-              From Automation to Intelligence
-              <br />
-              <span className={styles.paradigmTitleAccent}>
-                From Coding to Co-Creating
-              </span>
-            </Heading>
-            <p className={styles.paradigmSubtitle}>
-              AI-native development is not about replacing developers—it's about
-              amplifying intelligence. Learn to collaborate with reasoning
-              entities that learn with you.
-            </p>
-          </div>
+    <section className="py-24 border-b border-border/40">
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <p className="text-sm font-medium text-primary uppercase tracking-widest mb-3">
+            The Great Shift
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            From Automation to Intelligence
+            <br />
+            <span className="text-primary">From Coding to Co-Creating</span>
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            AI-native development is not about replacing developers—it's about
+            amplifying intelligence. Learn to collaborate with reasoning
+            entities that learn with you.
+          </p>
+        </div>
 
-          {/* Comparison Grid */}
-          <div className={styles.comparisonGrid}>
-            {/* Traditional Card */}
-            <div className={styles.comparisonCard}>
-              <div className={styles.comparisonIconWrapper}>
-                <div className={styles.comparisonIcon}>📚</div>
+        {/* Comparison Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-4 items-stretch mb-16">
+          {/* Traditional Card */}
+          <Card className="border bg-card">
+            <CardContent className="p-8">
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-bold text-foreground">Traditional Development</h3>
+                <p className="text-muted-foreground uppercase text-xs font-medium tracking-wider mt-1">The automation era</p>
               </div>
-              <div className={styles.comparisonLabel}>
-                Traditional Development
-              </div>
-              <div className={styles.comparisonDescription}>
-                The automation era
-              </div>
-              <ul className={styles.comparisonList}>
-                <li>
-                  <span className={styles.comparisonItemTitle}>
-                    Instruction-Based
-                  </span>
-                  Tell computers exactly what to do with precise syntax
-                </li>
-                <li>
-                  <span className={styles.comparisonItemTitle}>
-                    Solo Coding
-                  </span>
-                  Developer writes every line manually
-                </li>
-                <li>
-                  <span className={styles.comparisonItemTitle}>
-                    Documentation as Afterthought
-                  </span>
-                  Specs are static contracts written post-facto
-                </li>
-                <li>
-                  <span className={styles.comparisonItemTitle}>
-                    Linear Learning
-                  </span>
-                  Learn syntax → Build simple projects → Slowly scale
-                </li>
-                <li>
-                  <span className={styles.comparisonItemTitle}>Code-First</span>
-                  Focus on implementation details from day one
-                </li>
+              <ul className="space-y-4">
+                {traditionalItems.map((item, i) => (
+                  <li key={i} className="text-sm text-muted-foreground">
+                    <strong className="block text-foreground mb-1">{item.title}</strong>
+                    {item.desc}
+                  </li>
+                ))}
               </ul>
-            </div>
+            </CardContent>
+          </Card>
 
-            {/* VS Divider */}
-            <div className={styles.comparisonDivider}>
-              <div className={styles.comparisonVS}>VS</div>
-              <div className={styles.comparisonArrow}>→</div>
+          {/* VS Divider */}
+          <div className="hidden md:flex items-center justify-center">
+            <div className="flex flex-col items-center gap-2">
+              <div className="w-px h-16 bg-border" />
+              <span className="text-sm font-bold text-muted-foreground">VS</span>
+              <div className="w-px h-16 bg-border" />
             </div>
+          </div>
 
-            {/* AI-Native Card */}
-            <div
-              className={clsx(
-                styles.comparisonCard,
-                styles.comparisonCardHighlight
-              )}
-            >
-              <div className={styles.comparisonIconWrapper}>
-                <div className={styles.comparisonIcon}>🤖</div>
+          {/* AI-Native Card */}
+          <Card className="border-2 border-primary bg-card relative">
+            <CardContent className="p-8">
+              <Badge className="absolute top-4 right-4">The Future</Badge>
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-bold text-foreground">AI-Native Way</h3>
+                <p className="text-primary uppercase text-xs font-medium tracking-wider mt-1">The intelligence era</p>
               </div>
-              <div className={styles.comparisonLabel}>AI-Native Way</div>
-              <div className={styles.comparisonDescription}>
-                The intelligence era
-              </div>
-              <ul className={styles.comparisonList}>
-                <li>
-                  <span className={styles.comparisonItemTitle}>
-                    Intent-Based
-                  </span>
-                  Describe what you want; AI reasons how to build it
-                </li>
-                <li>
-                  <span className={styles.comparisonItemTitle}>
-                    Co-Learning Partnership
-                  </span>
-                  You and AI teach each other through iteration
-                </li>
-                <li>
-                  <span className={styles.comparisonItemTitle}>
-                    Specs as Living Blueprints
-                  </span>
-                  Specifications drive code, tests, and documentation
-                </li>
-                <li>
-                  <span className={styles.comparisonItemTitle}>
-                    Production-First Learning
-                  </span>
-                  Build real agentic systems from day one
-                </li>
-                <li>
-                  <span className={styles.comparisonItemTitle}>
-                    Architecture-First
-                  </span>
-                  Design intelligent collaborations, not just code
-                </li>
+              <ul className="space-y-4">
+                {aiNativeItems.map((item, i) => (
+                  <li key={i} className="text-sm text-muted-foreground">
+                    <strong className="block text-primary mb-1">{item.title}</strong>
+                    {item.desc}
+                  </li>
+                ))}
               </ul>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
+        </div>
 
-          {/* Bottom CTA */}
-          <div className={styles.paradigmCTA}>
-            <div className={styles.paradigmCTAContent}>
-              <div className={styles.paradigmCTAIcon}>🌱</div>
-              <div className={styles.paradigmCTAText}>
-                <h3 className={styles.paradigmCTATitle}>
-                  Ready to Co-Learn with AI?
-                </h3>
-                <p className={styles.paradigmCTADescription}>
-                  Join the revolution where coding becomes conversation and
-                  software becomes alive
-                </p>
-              </div>
-              <Link
-                className={clsx(
-                  "button button--primary button--lg",
-                  styles.paradigmCTAButton
-                )}
-                to="/docs/preface-agent-native"
-              >
-                Start Reading
-              </Link>
-            </div>
-          </div>
+        {/* Bottom CTA */}
+        <div className="text-center pt-24 pb-12 min-h-[400px] flex flex-col items-center justify-center">
+          <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Ready to Co-Learn with AI?
+          </h3>
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Join the revolution where coding becomes conversation and
+            software becomes alive
+          </p>
+          <Button variant="outline" size="lg" className="h-14 px-8 text-lg font-semibold" asChild>
+            <Link to="/docs/preface-agent-native">
+              Start Reading
+            </Link>
+          </Button>
         </div>
       </div>
     </section>
@@ -630,6 +504,7 @@ export default function Home(): ReactNode {
       description="Colearning Agentic AI with Python and TypeScript – Spec Driven Reusable Intelligence. Build production-ready intelligent systems."
     >
       <HomepageHeader />
+      <IDEShowcaseSection />
       <AISpectrumSection />
       <FeaturesSection />
       <MaturityLevelsSection />

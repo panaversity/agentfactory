@@ -57,37 +57,280 @@ article {
   }
 }
 
-/* Hide "On this page" sidebar button on mobile - prevents overlap with content */
+/* ============================================================================
+   DOC LAYOUT — Constrained to 1800px to match navbar
+   ============================================================================ */
+
+/* Override Docusaurus sidebar width calculation at root level */
+:root {
+  --doc-sidebar-width: 300px !important;
+  --ifm-container-width-xl: 1800px !important;
+  --ifm-container-width: 1800px !important;
+}
+
+/* Main wrapper - centered with max-width matching navbar */
+.main-wrapper {
+  max-width: 1800px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+/* Doc main container */
+[class*='docMainContainer'] {
+  max-width: 100% !important;
+  width: 100% !important;
+  flex: 1 !important;
+}
+
+/* Container inside main */
+[class*='docMainContainer']>.container,
+[class*='docMainContainer'] .container {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-right: 0 !important;
+}
+
+/* Row should fill container */
+[class*='docMainContainer'] .row {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin-right: 0 !important;
+}
+
+/* Doc item column - main content area with horizontal padding */
+[class*='docItemCol'] {
+  max-width: 100% !important;
+  flex: 1 !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}
+
+/* Doc item container inside column */
+[class*='docItemContainer'] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Article content max-width for optimal text readability (65-75 chars per line) */
+[class*='docItemContainer'] article,
+[class*='docItemContainer'] .theme-doc-markdown {
+  max-width: 800px !important;
+}
+
+/* Doc page row */
+[class*='docRoot'],
+[class*='docPage'] {
+  max-width: 100% !important;
+}
+
+/* ============================================================================
+   BREADCRUMBS — Clean, minimalist design using design system
+   ============================================================================ */
+
+/* Breadcrumbs container */
+.theme-doc-breadcrumbs {
+  margin-bottom: 1.5rem !important;
+  padding: 0 !important;
+}
+
+/* Breadcrumbs list */
+.breadcrumbs {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+  font-size: 0.8125rem !important;
+}
+
+/* Breadcrumb item */
+.breadcrumbs__item {
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Breadcrumb link - muted color, uses design system */
+.breadcrumbs__link {
+  color: oklch(0.556 0 0) !important;
+  text-decoration: none !important;
+  transition: color 150ms ease-out !important;
+  padding: 0.25rem 0 !important;
+}
+
+/* Home icon styling */
+.breadcrumbs__link svg,
+[class*='breadcrumbHomeIcon'] {
+  width: 14px !important;
+  height: 14px !important;
+  color: oklch(0.556 0 0) !important;
+}
+
+/* Hover state - primary green */
+.breadcrumbs__link:hover {
+  color: var(--primary) !important;
+}
+
+.breadcrumbs__link:hover svg {
+  color: var(--primary) !important;
+}
+
+/* Active/current breadcrumb - primary green, no background */
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--primary) !important;
+  font-weight: 500 !important;
+  background: transparent !important;
+}
+
+/* Separator - use "/" instead of ">" */
+.breadcrumbs__item:not(:last-child)::after {
+  content: '/' !important;
+  margin: 0 0.5rem !important;
+  color: oklch(0.7 0 0) !important;
+  font-weight: 300 !important;
+}
+
+/* Dark mode breadcrumbs */
+[data-theme='dark'] .breadcrumbs__link {
+  color: oklch(0.65 0 0) !important;
+}
+
+[data-theme='dark'] .breadcrumbs__link svg,
+[data-theme='dark'] [class*='breadcrumbHomeIcon'] {
+  color: oklch(0.65 0 0) !important;
+}
+
+[data-theme='dark'] .breadcrumbs__link:hover,
+[data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--primary) !important;
+}
+
+[data-theme='dark'] .breadcrumbs__item:not(:last-child)::after {
+  color: oklch(0.45 0 0) !important;
+}
+
+/* Hide mobile TOC button that overlaps with content */
 @media screen and (max-width: 996px) {
   .theme-doc-toc-desktop {
     display: none !important;
   }
 
-  /* Hide mobile TOC button that overlaps with content */
   .tocMobile_ITEo,
   .tocCollapsible_ETCw.tocMobile_ITEo {
     display: none !important;
   }
+
+  /* Less padding on mobile */
+  [class*='docItemCol'] {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
 }
 
-/* TOC Active Item Marker */
-.table-of-contents__link--active {
-  border-left: 3px solid var(--ifm-color-primary) !important;
-  padding-left: 0.75rem !important;
-  color: var(--ifm-color-primary) !important;
-  font-weight: 600 !important;
-  background: linear-gradient(90deg, rgba(0, 31, 63, 0.05) 0%, transparent 100%);
+/* } */
+
+/* ============================================================================
+   FLOATING ACTION BUTTONS — Bottom-right corner positioning
+   ============================================================================ */
+
+/* Floating actions container - fixed to bottom-right */
+.floating-actions {
+  position: fixed !important;
+  bottom: 2rem !important;
+  right: 2rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+  z-index: 100 !important;
 }
 
-.table-of-contents__link {
-  padding-left: 1rem !important;
-  border-left: 3px solid transparent;
-  transition: all 0.2s ease;
+/* Shared button styles */
+.floating-actions button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 44px !important;
+  height: 44px !important;
+  border: 1px solid oklch(0.9 0 0) !important;
+  background: oklch(0.98 0 0) !important;
+  color: oklch(0.5 0 0) !important;
+  cursor: pointer !important;
+  transition: all 150ms ease-out !important;
+  box-shadow: 0 2px 8px oklch(0 0 0 / 0.1) !important;
 }
 
-.table-of-contents__link:hover {
-  color: var(--ifm-color-primary) !important;
-  padding-left: 0.85rem !important;
+.floating-actions button:hover {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: white !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px oklch(0 0 0 / 0.15) !important;
+}
+
+/* Dark mode floating buttons */
+[data-theme='dark'] .floating-actions button {
+  background: oklch(0.25 0 0) !important;
+  border-color: oklch(0.35 0 0) !important;
+  color: oklch(0.7 0 0) !important;
+}
+
+[data-theme='dark'] .floating-actions button:hover {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: white !important;
+}
+
+/* Back to top button - slightly smaller */
+.back-to-top-button {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+/* Hide Docusaurus's built-in back-to-top button (we use custom implementation) */
+.theme-back-to-top-button,
+[class*='backToTopButton'] {
+  display: none !important;
+}
+
+/* ============================================================================
+   ZEN MODE / FOCUS MODE — Hide distractions
+   ============================================================================ */
+
+/* When zen-mode is active on body */
+body.zen-mode .theme-doc-sidebar-container,
+body.zen-mode .theme-doc-toc-desktop,
+body.zen-mode .navbar,
+body.zen-mode .footer {
+  display: none !important;
+}
+
+body.zen-mode [class*='docMainContainer'] {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 2rem 4rem !important;
+}
+
+body.zen-mode .floating-actions {
+  /* Keep floating buttons visible in zen mode */
+  display: flex !important;
+}
+
+/* ============================================================================
+   RESPONSIVE FLOATING BUTTONS
+   ============================================================================ */
+
+@media screen and (max-width: 996px) {
+  .floating-actions {
+    bottom: 1rem !important;
+    right: 1rem !important;
+  }
+
+  .floating-actions button {
+    width: 40px !important;
+    height: 40px !important;
+  }
 }
 
 /* Ensure article stays on top of sidebar when it opens */
@@ -97,17 +340,17 @@ article {
 }
 
 
-/* Enhanced body text - Merriweather for optimal reading */
+/* Enhanced body text - Inter for all text (no serif) */
 .markdown {
   line-height: 1.75;
-  font-size: 1.0625rem;
-  font-family: var(--font-family-serif);
-  color: #2c3e50;
-  letter-spacing: -0.01em;
+  font-size: 1rem;
+  font-family: var(--ifm-font-family-base);
+  color: var(--foreground);
+  letter-spacing: 0;
 }
 
 [data-theme='dark'] .markdown {
-  color: #d4d4d4;
+  color: var(--foreground);
 }
 
 /* Optimal reading width for paragraphs */
@@ -139,63 +382,42 @@ article {
 }
 
 /* ============================================================================
-   2. PREMIUM HEADING STYLES (Matching Homepage Design)
+   2. SHARP HEADING STYLES (Content-First Design)
    ============================================================================ */
 
-/* H1 - Gradient effect like homepage */
+/* H1 - Solid foreground color */
 .markdown h1 {
-  font-size: 2.75rem;
+  font-size: 2.25rem;
   font-weight: 700;
   line-height: 1.2;
-  margin-top: 0;
-  margin-bottom: 2rem;
-  background: linear-gradient(135deg, #001f3f 0%, #003366 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--foreground);
   position: relative;
   letter-spacing: -0.02em;
 }
 
 [data-theme='dark'] .markdown h1 {
-  background: linear-gradient(135deg, #DDDDDD 0%, #AAAAAA 50%, #FFFFFF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--foreground);
 }
 
-/* H1 decorative underline */
-.markdown h1::after {
-  content: '';
-  display: block;
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, #001f3f 0%, #003366 100%);
-  margin-top: 1rem;
-  border-radius: 2px;
-}
-
-[data-theme='dark'] .markdown h1::after {
-  background: linear-gradient(90deg, #AAAAAA 0%, #888888 100%);
-}
-
-/* H2 - Accent underline */
+/* H2 - Bottom border (sharp) */
 .markdown h2 {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.875rem;
+  font-weight: 600;
   line-height: 1.3;
   margin-top: 3rem;
-  margin-bottom: 1.5rem;
-  color: #001f3f;
+  margin-bottom: 1rem;
+  color: var(--foreground);
   position: relative;
-  padding-bottom: 0.75rem;
-  border-bottom: 3px solid rgba(0, 31, 63, 0.15);
-  letter-spacing: -0.01em;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  letter-spacing: -0.02em;
 }
 
 [data-theme='dark'] .markdown h2 {
-  color: #DDDDDD;
-  border-bottom-color: rgba(170, 170, 170, 0.2);
+  color: var(--foreground);
+  border-bottom-color: var(--border);
 }
 
 /* H2 decorative element */
@@ -206,83 +428,68 @@ article {
   left: 0;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #001f3f 0%, #003366 100%);
-  border-radius: 2px;
+  background: linear-gradient(90deg, var(--primary) 0%, #003366 100%);
+
 }
 
 [data-theme='dark'] .markdown h2::before {
   background: linear-gradient(90deg, #AAAAAA 0%, #DDDDDD 100%);
 }
 
-/* H3 - Subtle styling */
+/* H3 - Simple left border */
 .markdown h3 {
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.4;
-  margin-top: 2.5rem;
-  margin-bottom: 1.25rem;
-  color: #002952;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--foreground);
   position: relative;
   padding-left: 1rem;
+  border-left: 4px solid var(--primary);
 }
 
 [data-theme='dark'] .markdown h3 {
-  color: #CCCCCC;
-}
-
-/* H3 left border accent */
-.markdown h3::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: linear-gradient(180deg, #001f3f 0%, #003366 100%);
-  border-radius: 2px;
-}
-
-[data-theme='dark'] .markdown h3::before {
-  background: linear-gradient(180deg, #AAAAAA 0%, #888888 100%);
+  color: var(--foreground);
 }
 
 /* H4, H5, H6 - Consistent styling */
 .markdown h4 {
   font-size: 1.25rem;
   font-weight: 600;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  color: #003366;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--foreground);
 }
 
 [data-theme='dark'] .markdown h4 {
-  color: #BBBBBB;
+  color: var(--foreground);
 }
 
 .markdown h5 {
   font-size: 1.125rem;
   font-weight: 600;
-  margin-top: 1.75rem;
-  margin-bottom: 0.875rem;
-  color: #004080;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--foreground);
 }
 
 [data-theme='dark'] .markdown h5 {
-  color: #AAAAAA;
+  color: var(--foreground);
 }
 
 .markdown h6 {
   font-size: 1rem;
   font-weight: 600;
   margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  color: #002952;
+  margin-bottom: 0.5rem;
+  color: var(--muted-foreground);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 [data-theme='dark'] .markdown h6 {
-  color: #999999;
+  color: var(--muted-foreground);
 }
 
 /* Anchor links hover effect */
@@ -293,8 +500,8 @@ article {
 .markdown h5 .header-anchor,
 .markdown h6 .header-anchor {
   opacity: 0;
-  transition: opacity 0.2s ease;
-  color: #001f3f;
+  transition: opacity 150ms ease-out;
+  color: var(--primary);
 }
 
 [data-theme='dark'] .markdown h1 .header-anchor,
@@ -303,7 +510,7 @@ article {
 [data-theme='dark'] .markdown h4 .header-anchor,
 [data-theme='dark'] .markdown h5 .header-anchor,
 [data-theme='dark'] .markdown h6 .header-anchor {
-  color: #AAAAAA;
+  color: var(--primary);
 }
 
 .markdown h1:hover .header-anchor,
@@ -320,9 +527,9 @@ article {
    ============================================================================ */
 
 .markdown a {
-  color: #001f3f;
+  color: var(--primary);
   text-decoration: none;
-  border-bottom: 1px solid rgba(0, 31, 63, 0.3);
+  border-bottom: 1px solid rgba(3, 24, 17, 0.3);
   transition: all 0.2s ease;
   font-weight: 500;
 }
@@ -334,8 +541,8 @@ article {
 
 .markdown a:hover {
   color: #003366;
-  border-bottom-color: #001f3f;
-  background: rgba(0, 31, 63, 0.05);
+  border-bottom-color: var(--primary);
+  background: rgba(3, 24, 17, 0.05);
 }
 
 [data-theme='dark'] .markdown a:hover {
@@ -374,7 +581,7 @@ article {
   content: '▸';
   position: absolute;
   left: -1.5rem;
-  color: #001f3f;
+  color: var(--primary);
   font-weight: 700;
   font-size: 1.1em;
 }
@@ -397,7 +604,7 @@ article {
   content: counter(item) ".";
   position: absolute;
   left: -2rem;
-  color: #001f3f;
+  color: var(--primary);
   font-weight: 700;
   font-size: 0.95em;
   width: 1.5rem;
@@ -416,27 +623,24 @@ article {
 }
 
 /* ============================================================================
-   5. BLOCKQUOTES - PREMIUM STYLING
+   5. BLOCKQUOTES - CLEAN STYLING
    ============================================================================ */
 
 .markdown blockquote {
-  margin: 2rem 0;
-  padding: 1.5rem 2rem;
-  background: linear-gradient(135deg, rgba(0, 31, 63, 0.03) 0%, rgba(0, 31, 63, 0.06) 100%);
-  border-left: 4px solid #001f3f;
-  border-radius: 0 8px 8px 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border-left: 2px solid var(--primary);
   position: relative;
-  font-size: 1.0625rem;
-  line-height: 1.8;
-  color: #2c3e50;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+  font-style: italic;
 }
 
 [data-theme='dark'] .markdown blockquote {
-  background: linear-gradient(135deg, rgba(170, 170, 170, 0.05) 0%, rgba(170, 170, 170, 0.08) 100%);
-  border-left-color: #AAAAAA;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-  color: #d0d0d0;
+  border-left-color: var(--primary);
+  color: var(--muted-foreground);
 }
 
 .markdown blockquote p {
@@ -447,48 +651,30 @@ article {
   margin-bottom: 0;
 }
 
-/* Blockquote decorative element */
-.markdown blockquote::before {
-  content: '"';
-  position: absolute;
-  top: -0.25rem;
-  left: 0.75rem;
-  font-size: 4rem;
-  color: rgba(0, 31, 63, 0.15);
-  font-family: Georgia, serif;
-  line-height: 1;
-}
-
-[data-theme='dark'] .markdown blockquote::before {
-  color: rgba(170, 170, 170, 0.2);
-}
-
 /* ============================================================================
-   6. CODE BLOCKS - ENHANCED STYLING
+   6. CODE BLOCKS - SHARP STYLING
    ============================================================================ */
 
 /* Inline code */
 .markdown code {
-  background: rgba(0, 31, 63, 0.08);
-  color: #001f3f;
-  padding: 0.2em 0.5em;
-  border-radius: 4px;
-  font-size: 0.9em;
-  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
-  border: 1px solid rgba(0, 31, 63, 0.12);
-  font-weight: 500;
+  background: var(--muted);
+  color: var(--foreground);
+  padding: 2px 6px;
+  font-size: 0.875rem;
+  font-family: var(--ifm-font-family-monospace);
+  border: 1px solid var(--border);
 }
 
 [data-theme='dark'] .markdown code {
-  background: rgba(170, 170, 170, 0.12);
-  color: #DDDDDD;
-  border-color: rgba(170, 170, 170, 0.2);
+  background: var(--muted);
+  color: var(--foreground);
+  border-color: var(--border);
 }
 
 /* Code blocks */
 .markdown pre {
   margin: 2rem 0;
-  border-radius: 8px;
+
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
 }
@@ -518,7 +704,7 @@ article {
   width: 100%;
   margin: 2rem 0;
   border-collapse: collapse;
-  border-radius: 8px;
+
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   font-size: 0.95rem;
@@ -529,7 +715,7 @@ article {
 }
 
 .markdown thead {
-  background: linear-gradient(135deg, #001f3f 0%, #002952 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, #002952 100%);
   color: white;
 }
 
@@ -548,7 +734,7 @@ article {
 
 .markdown td {
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid rgba(0, 31, 63, 0.1);
+  border-bottom: 1px solid rgba(3, 24, 17, 0.1);
 }
 
 [data-theme='dark'] .markdown td {
@@ -557,7 +743,7 @@ article {
 
 /* Zebra striping */
 .markdown tbody tr:nth-child(even) {
-  background: rgba(0, 31, 63, 0.03);
+  background: rgba(3, 24, 17, 0.03);
 }
 
 [data-theme='dark'] .markdown tbody tr:nth-child(even) {
@@ -570,7 +756,7 @@ article {
 }
 
 .markdown tbody tr:hover {
-  background: rgba(0, 31, 63, 0.06);
+  background: rgba(3, 24, 17, 0.06);
 }
 
 [data-theme='dark'] .markdown tbody tr:hover {
@@ -586,9 +772,9 @@ article {
   height: 1px;
   background: linear-gradient(90deg,
       transparent 0%,
-      rgba(0, 31, 63, 0.3) 10%,
-      rgba(0, 31, 63, 0.5) 50%,
-      rgba(0, 31, 63, 0.3) 90%,
+      rgba(3, 24, 17, 0.3) 10%,
+      rgba(3, 24, 17, 0.5) 50%,
+      rgba(3, 24, 17, 0.3) 90%,
       transparent 100%);
   margin: 3rem 0;
 }
@@ -603,83 +789,60 @@ article {
 }
 
 /* ============================================================================
-   9. ADMONITIONS / CALLOUT BOXES - GLASSMORPHISM
+   9. ADMONITIONS / CALLOUTS - SHARP DESIGN
    ============================================================================ */
 
 .admonition {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  border-radius: 12px;
+  margin: 1.5rem 0;
+  padding: 1rem;
   border-left: 4px solid;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-left-width: 4px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.admonition:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
-
-[data-theme='dark'] .admonition {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  background: rgba(26, 26, 26, 0.6);
-  border-color: rgba(255, 255, 255, 0.05);
+  background: transparent;
+  border: 1px solid var(--border);
   border-left-width: 4px;
 }
 
-/* Note - Blue */
-.admonition-note {
-  border-left-color: #2196F3;
-  background: linear-gradient(135deg, rgba(33, 150, 243, 0.05) 0%, rgba(33, 150, 243, 0.1) 100%);
+/* Note / Info - Sky */
+.admonition-note,
+.admonition-info {
+  border-left-color: var(--info);
+  background: rgba(14, 165, 233, 0.05);
 }
 
-[data-theme='dark'] .admonition-note {
-  background: linear-gradient(135deg, rgba(33, 150, 243, 0.1) 0%, rgba(33, 150, 243, 0.05) 100%);
+[data-theme='dark'] .admonition-note,
+[data-theme='dark'] .admonition-info {
+  background: rgba(56, 189, 248, 0.1);
 }
 
 /* Tip - Green */
 .admonition-tip {
-  border-left-color: #4CAF50;
-  background: linear-gradient(135deg, rgba(76, 175, 80, 0.05) 0%, rgba(76, 175, 80, 0.1) 100%);
+  border-left-color: var(--success);
+  background: rgba(34, 197, 94, 0.05);
 }
 
 [data-theme='dark'] .admonition-tip {
-  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.05) 100%);
+  background: rgba(74, 222, 128, 0.1);
 }
 
-/* Warning - Orange */
-.admonition-warning {
-  border-left-color: #FF9800;
-  background: linear-gradient(135deg, rgba(255, 152, 0, 0.05) 0%, rgba(255, 152, 0, 0.1) 100%);
+/* Warning - Amber */
+.admonition-warning,
+.admonition-caution {
+  border-left-color: var(--warning);
+  background: rgba(245, 158, 11, 0.05);
 }
 
-[data-theme='dark'] .admonition-warning {
-  background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(255, 152, 0, 0.05) 100%);
+[data-theme='dark'] .admonition-warning,
+[data-theme='dark'] .admonition-caution {
+  background: rgba(251, 191, 36, 0.1);
 }
 
 /* Danger - Red */
 .admonition-danger {
-  border-left-color: #F44336;
-  background: linear-gradient(135deg, rgba(244, 67, 54, 0.05) 0%, rgba(244, 67, 54, 0.1) 100%);
+  border-left-color: var(--danger);
+  background: rgba(239, 68, 68, 0.05);
 }
 
 [data-theme='dark'] .admonition-danger {
-  background: linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, rgba(244, 67, 54, 0.05) 100%);
-}
-
-/* Info - Cyan */
-.admonition-info {
-  border-left-color: #00BCD4;
-  background: linear-gradient(135deg, rgba(0, 188, 212, 0.05) 0%, rgba(0, 188, 212, 0.1) 100%);
-}
-
-[data-theme='dark'] .admonition-info {
-  background: linear-gradient(135deg, rgba(0, 188, 212, 0.1) 0%, rgba(0, 188, 212, 0.05) 100%);
+  background: rgba(248, 113, 113, 0.1);
 }
 
 /* ============================================================================
@@ -689,22 +852,12 @@ article {
 .markdown img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
   margin: 2rem 0;
-  transition: box-shadow 0.3s ease;
 }
 
 [data-theme='dark'] .markdown img {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-}
-
-.markdown img:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-[data-theme='dark'] .markdown img:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  border-color: var(--border);
 }
 
 /* ============================================================================
@@ -713,7 +866,7 @@ article {
 
 .markdown strong {
   font-weight: 700;
-  color: #001f3f;
+  color: var(--primary);
 }
 
 [data-theme='dark'] .markdown strong {
@@ -736,7 +889,7 @@ article {
 .pagination-nav {
   margin-top: 4rem;
   padding-top: 2rem;
-  border-top: 2px solid rgba(0, 31, 63, 0.1);
+  border-top: 2px solid rgba(3, 24, 17, 0.1);
 }
 
 [data-theme='dark'] .pagination-nav {
@@ -744,8 +897,8 @@ article {
 }
 
 .pagination-nav__link {
-  border: 2px solid rgba(0, 31, 63, 0.15);
-  border-radius: 8px;
+  border: 2px solid rgba(3, 24, 17, 0.15);
+
   padding: 1.5rem;
   transition: all 0.3s ease;
   background: white;
@@ -757,10 +910,10 @@ article {
 }
 
 .pagination-nav__link:hover {
-  border-color: #001f3f;
-  background: rgba(0, 31, 63, 0.03);
+  border-color: var(--primary);
+  background: rgba(3, 24, 17, 0.03);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
 }
 
 [data-theme='dark'] .pagination-nav__link:hover {
@@ -771,7 +924,7 @@ article {
 
 .pagination-nav__label {
   font-weight: 600;
-  color: #001f3f;
+  color: var(--primary);
 }
 
 [data-theme='dark'] .pagination-nav__label {
@@ -779,44 +932,88 @@ article {
 }
 
 /* ============================================================================
-   13. TABLE OF CONTENTS (TOC)
+   13. TABLE OF CONTENTS (TOC) — Right Sidebar
    ============================================================================ */
 
-/* Narrower TOC for more content space */
+/* TOC Container - Left border that extends with content */
 .theme-doc-toc-desktop {
-  --doc-toc-width: 200px !important;
-  width: var(--doc-toc-width) !important;
-  min-width: var(--doc-toc-width) !important;
+  width: auto !important;
+  max-width: 250px !important;
+  overflow: hidden !important;
+  border-left: 1px solid var(--sidebar-border, oklch(0.9 0 0)) !important;
+  padding-left: 0.75rem !important;
 }
 
+[data-theme='dark'] .theme-doc-toc-desktop {
+  border-left-color: var(--sidebar-border, oklch(0.25 0 0)) !important;
+}
+
+/* TOC list */
 .table-of-contents {
-  font-size: 0.8125rem;
-  padding-right: 0.5rem;
+  font-size: 0.75rem !important;
+  line-height: 1.6 !important;
+  padding-left: 0 !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
 }
 
+/* TOC links - using our design system green, not Infima blue */
 .table-of-contents__link {
-  color: #003366;
-  transition: all 0.2s ease;
-  border-left: 2px solid transparent;
-  padding-left: 0.75rem;
+  display: block !important;
+  padding: 0.375rem 0 !important;
+  padding-left: 0 !important;
+  color: oklch(0.55 0 0) !important;
+  transition: color 150ms ease-out !important;
+  text-decoration: none !important;
+  border-left: none !important;
+  border: none !important;
 }
 
 [data-theme='dark'] .table-of-contents__link {
-  color: #AAAAAA;
+  color: oklch(0.6 0 0) !important;
 }
 
-.table-of-contents__link:hover,
+/* Hover - primary color, no movement */
+.table-of-contents__link:hover {
+  color: var(--primary) !important;
+  background: transparent !important;
+  border: none !important;
+  transform: none !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* Active state - OUR PRIMARY GREEN */
 .table-of-contents__link--active {
-  color: #001f3f;
-  border-left-color: #001f3f;
-  background: rgba(0, 31, 63, 0.05);
+  color: var(--primary) !important;
+  font-weight: 500 !important;
+  background: transparent !important;
+  border: none !important;
 }
 
-[data-theme='dark'] .table-of-contents__link:hover,
+[data-theme='dark'] .table-of-contents__link:hover {
+  color: var(--primary) !important;
+}
+
 [data-theme='dark'] .table-of-contents__link--active {
-  color: #DDDDDD;
-  border-left-color: #AAAAAA;
-  background: rgba(170, 170, 170, 0.08);
+  color: var(--primary) !important;
+}
+
+/* ============================================================================
+   TOC HEADING HIERARCHY — Consistent spacing, indent only for sub-items
+   ============================================================================ */
+
+/* All TOC items - consistent spacing */
+.table-of-contents li {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Nested list (H3 headings) - just indented */
+.table-of-contents>li>ul {
+  margin-left: 0.75rem !important;
+  margin-top: 0 !important;
+  padding-left: 0 !important;
 }
 
 /* ============================================================================

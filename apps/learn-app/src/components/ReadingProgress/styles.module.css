@@ -11,10 +11,10 @@
 
 .progressBar {
     height: 100%;
-    background: linear-gradient(90deg, #001f3f 0%, #003366 100%);
+    background: #001f3f;
     transition: width 0.1s ease-out;
 }
 
 [data-theme='dark'] .progressBar {
-    background: linear-gradient(90deg, #aaaaaa 0%, #ffffff 100%);
+    background: #aaaaaa;
 }

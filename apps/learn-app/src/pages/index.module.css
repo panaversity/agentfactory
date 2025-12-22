@@ -21,28 +21,19 @@
 
 .heroBanner {
     position: relative;
-    padding: 4rem 2rem 6rem;
+    padding: 2rem 2rem 6rem;
     overflow: hidden;
-    /* Polar Night Light: Bold charcoal to deep navy - maximum impact */
-    background: linear-gradient(135deg,
-            #111111 0%,
-            #1a1a1a 20%,
-            #001f3f 60%,
-            #002952 100%);
-    color: white;
+    /* Use design system background color */
+    background: var(--background);
+    color: var(--foreground);
     min-height: 100vh;
     display: flex;
     align-items: center;
 }
 
 [data-theme="dark"] .heroBanner {
-    /* Polar Night dark mode: Charcoal gradient with depth */
-    background: linear-gradient(135deg,
-            #111111 0%,
-            #1a1a1a 20%,
-            #222222 50%,
-            #2a2a2a 80%,
-            #333333 100%);
+    /* Dark mode uses the same background variable */
+    background: var(--background);
 }
 
 .heroGradient {
