@@ -5,9 +5,11 @@ title: "Part 7: AI Cloud Native Development"
 
 # Part 7: AI Cloud Native Development
 
-You've built AI agents locally in Parts 1-6—designing agent architectures, implementing integrations, and mastering spec-driven development. Part 7 bridges local development to production deployment at scale. You'll learn containerization strategies, orchestration patterns, and operational excellence practices that transform agents from learning projects into production systems serving real users.
+You've built a complete local AI product in Part 6—agents with SDKs, MCP integrations, FastAPI services, ChatKit conversations, tests, and data persistence. Part 7 takes that product to the cloud. You'll learn containerization, orchestration, and operational excellence practices that transform local projects into production systems serving real users 24/7.
 
-**Prerequisites**: Parts 4-5 (SDD-RI fundamentals and Python fundamentals) are required. Part 6 (AI Native Software Development) is strongly recommended for agent building experience before tackling deployment.
+**This is where your agent becomes a Digital FTE**—a sellable product that works around the clock.
+
+**Prerequisites**: Parts 4-6 are required. You need a working agent service (Part 6) before you can deploy it.
 
 ---
 
@@ -15,47 +17,70 @@ You've built AI agents locally in Parts 1-6—designing agent architectures, imp
 
 By completing Part 7, you will:
 
-- **Understand agent deployment architectures**: Learn how containerized agents, orchestration platforms (Kubernetes, Dapr), and infrastructure patterns enable production-scale systems
-- **Implement containerization strategies**: Package agents with Docker, manage multi-stage builds, and optimize images for deployment efficiency
-- **Apply orchestration patterns**: Deploy agents to Kubernetes clusters, manage state with Dapr Actors, and orchestrate workflows with Dapr's distributed application runtime
-- **Design operational excellence**: Build observability into agent systems (metrics, logs, traces), engineer for cost optimization, and implement security governance for production deployments
+- **Containerize agent services**: Package your FastAPI/ChatKit agents with Docker, optimize images, and ship portable containers
+- **Orchestrate at scale**: Deploy to Kubernetes clusters, manage replicas, and handle traffic routing
+- **Build event-driven systems**: Use Apache Kafka for asynchronous agent communication and decoupled architectures
+- **Apply Dapr patterns**: Leverage Dapr's distributed runtime for microservices, actors, and durable workflows
+- **Operate with excellence**: Implement observability (metrics, logs, traces), optimize costs, and secure production deployments
 
 ---
 
 ## Chapter Progression
 
-Part 7's chapters build deployment capability through four stages:
+Part 7's 12 chapters build deployment capability through four stages:
 
-### Foundational Infrastructure
+### Foundational Infrastructure (Chapters 49-51)
 
-Start with production API patterns and containerization fundamentals.
+Start with containerization and event-driven patterns.
 
-- **FastAPI for AI Cloud-Native Services (Deep Dive)** — Advanced API patterns, async processing, dependency injection, and deployment configurations
-- **Docker for AI Services** — Building container images, multi-stage builds, optimization strategies, and shipping agents as containers
-- **Apache Kafka for Event-Driven AI Systems** — Event streaming for agent communication, message patterns, and asynchronous architectures
-
-### Orchestration
-
-Scale from single containers to orchestrated clusters with deployment automation.
-
+- **Docker for AI Services** — Building container images, multi-stage builds, optimization strategies, and shipping agents as portable containers
+- **Apache Kafka for Event-Driven AI** — Event streaming for agent communication, message patterns, and asynchronous architectures
 - **Kubernetes for AI Services** — Container orchestration, deployments, services, config management, and running agents in K8s clusters
-- **CI/CD & Infrastructure-as-Code for AI Services** — Automated pipelines, infrastructure provisioning, GitOps patterns, and deployment workflows
 
-### Dapr Framework
+### Deployment Automation (Chapters 52-53)
 
-Apply Dapr's distributed application runtime for microservices, state, workflows, and agent-specific patterns.
+Automate the path from code to production.
+
+- **CI/CD for AI Services** — Automated pipelines, testing in CI, and deployment workflows
+- **Infrastructure-as-Code** — Terraform/Pulumi for provisioning, GitOps patterns, and reproducible environments
+
+### Dapr Framework (Chapters 54-57)
+
+Apply Dapr's distributed application runtime for production agent architectures.
 
 - **Dapr for AI Microservices** — Sidecar building blocks, service invocation, pub/sub messaging, and state management
-- **Dapr Actors for Agentic State and Concurrency** — Virtual actor pattern for agent state, concurrency control, and distributed coordination
-- **Dapr Workflows for Long-Running Orchestration** — Durable workflows, saga patterns, and long-running agent processes
-- **Dapr Agents** — Designing agentic services on Dapr, combining actors + workflows + AI for production agent architectures
+- **Dapr Actors for Agentic State** — Virtual actor pattern for agent state, concurrency control, and distributed coordination
+- **Dapr Workflows for Orchestration** — Durable workflows, saga patterns, and long-running agent processes
+- **Dapr Agents** — Combining actors + workflows + AI for production agent architectures
 
-### Operations Excellence
+### Operations Excellence (Chapters 58-60)
 
-Operate agent systems with observability, security, and cost engineering.
+Operate agent systems reliably and securely at scale.
 
-- **Observability, Cost & Performance Engineering** — Metrics, logs, traces, cost optimization strategies, and performance tuning for agent workloads
-- **API Edge & Gateway for AI Services** — Ingress patterns, Kong gateway configuration, rate limiting, and API management
-- **Security, Safety & Governance for Agentic Systems** — Authentication, authorization, secrets management, safety guardrails, and compliance
+- **Observability & Performance** — Metrics, logs, traces (OpenTelemetry), cost optimization, and performance tuning
+- **API Gateway & Edge** — Ingress patterns, Kong/API gateway configuration, rate limiting, and traffic management
+- **Security & Governance** — Authentication, authorization, secrets management, safety guardrails, and compliance
 
-**Why this sequence?** You can't orchestrate what you can't containerize. You can't operate what you haven't deployed. Each stage builds deployment capability: Foundation (can containerize agents) → Orchestration (can deploy to clusters) → Dapr Framework (can build distributed agent systems) → Operations (can run production systems reliably and securely).
+**Why this sequence?** You can't orchestrate what you can't containerize. You can't automate what you haven't deployed manually. Each stage builds capability: Containers (portable agents) → Orchestration (scaled agents) → Dapr (distributed agents) → Operations (reliable agents).
+
+---
+
+## The Digital FTE Outcome
+
+By the end of Part 7, you can:
+
+1. **Package** your agent as a Docker container
+2. **Deploy** it to Kubernetes (or any cloud)
+3. **Scale** it to handle thousands of concurrent users
+4. **Monitor** its health, performance, and costs
+5. **Secure** it for production use
+
+**This is a sellable product.** A Digital FTE that customers pay $1,000/month for—running 24/7, handling their workflows, accessible via API or chat interface.
+
+---
+
+## Methodology Note
+
+Part 7 applies the same spec-driven approach: write specifications for your infrastructure, let AI help implement, validate the results. Infrastructure-as-Code (IaC) is just specification-driven development for cloud resources.
+
+You'll use Claude Code to generate Dockerfiles, Kubernetes manifests, Terraform configs, and CI/CD pipelines—validating each against your requirements before deploying.
