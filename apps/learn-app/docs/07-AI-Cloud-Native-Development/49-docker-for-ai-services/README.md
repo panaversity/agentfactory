@@ -22,25 +22,39 @@ By the end of this chapter, you'll be able to:
 - **Use Docker Compose**: Multi-container setups for local development (agent + database + redis)
 - **Apply security best practices**: Non-root users, minimal base images, and secret handling
 - **Leverage Gordon (Docker AI)**: AI-assisted Docker operations for common workflows
+- **Create reusable skills**: Transform Docker expertise into organizational intelligence
 - **Push to registries**: Docker Hub, GitHub Container Registry, and cloud registries
 
 ## Chapter Structure
 
-1. **Container Fundamentals** — Images vs containers, layers, and the build process
-2. **Writing Your First Dockerfile** — Base images, COPY, RUN, and CMD for Python services
-3. **Multi-Stage Builds** — Separate build and runtime stages for smaller images
-4. **Dependency Management** — Python requirements, UV, and handling large packages
-5. **Docker Compose for Development** — Multi-container local environments
-6. **Security & Best Practices** — Non-root users, secrets, and vulnerability scanning
-7. **AI-Assisted Docker with Gordon** — Using Docker's AI assistant for common tasks
-8. **Capstone: Containerized Agent** — Package your Part 6 agent as a production-ready container
+| Lesson | Title | Layer | Focus |
+|--------|-------|-------|-------|
+| 1 | Docker Installation & Setup | L1 (Manual) | Platform setup, Docker Desktop, resource configuration |
+| 2 | Container Fundamentals | L1 (Manual) | Images vs containers, Docker Hub, layers, lifecycle |
+| 3 | Writing Your First Dockerfile | L1 (Manual) | FROM, WORKDIR, COPY, RUN, CMD, layer caching |
+| 4 | Container Lifecycle & Debugging | L1 (Manual) | Logs, exec, inspect, port conflicts, restart policies |
+| 5 | Multi-Stage Builds & Optimization | L1 (Manual) | Build vs runtime stages, UV, slim/alpine/distroless |
+| 6 | Docker Compose for Development | L1 (Manual) | Multi-service orchestration, networks, volumes |
+| 7 | Security & Best Practices | L1 (Manual) | Non-root users, Docker Scout, DHI, secrets |
+| 8 | AI-Assisted Docker with Gordon | L2 (Collaboration) | Gordon workflows for generation, debugging, optimization |
+| 9 | Capstone: Production-Ready Agent | L4 (Spec-Driven) | Specification-first containerization of FastAPI agent |
+| 10 | Building the Production Dockerfile Skill | L3 (Intelligence) | Persona + Questions + Principles skill design |
+
+## 4-Layer Teaching Progression
+
+This chapter follows the **4-Layer Teaching Method**:
+
+- **Lessons 1-7 (Layer 1)**: Build mental models manually before AI assistance
+- **Lesson 8 (Layer 2)**: Collaborate with Gordon using Three Roles (invisible framework)
+- **Lesson 9 (Layer 4)**: Apply all lessons in spec-driven capstone project
+- **Lesson 10 (Layer 3)**: Create reusable intelligence that compounds across projects
 
 ## Prerequisites
 
 - Part 6: A working FastAPI agent service to containerize
 - Basic command-line familiarity
-- Docker Desktop installed
+- Docker Desktop installed (Lesson 1 covers installation)
 
 ## Looking Ahead
 
-This chapter produces a container image. Chapter 50 (Kubernetes) deploys that container to an orchestrated cluster, and Chapter 51 (Helm) packages it for repeatable deployments.
+This chapter produces a container image and a reusable Dockerfile skill. Chapter 50 (Kubernetes) deploys that container to an orchestrated cluster, and Chapter 51 (Helm) packages it for repeatable deployments.
