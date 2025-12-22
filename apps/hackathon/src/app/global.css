@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Panaversity Brand Colors */
+    --background: 240 20% 99.2%; /* #fbfbfe */
+    --foreground: 240 100% 10%; /* #000033 */
+    --card: 0 0% 100%;
+    --card-foreground: 240 100% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 100% 10%;
+    /* Primary: Panaversity Green #1cd98e */
+    --primary: 157 77% 48%;
+    --primary-foreground: 240 100% 10%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 240 100% 10%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent: Same as primary for brand consistency */
+    --accent: 157 77% 48%;
+    --accent-foreground: 240 100% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 157 77% 48%;
+    --radius: 0.5rem;
+
+    /* Additional semantic colors */
+    --success: 157 77% 48%;
+    --success-foreground: 240 100% 10%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 240 100% 10%;
+  }
+
+  .dark {
+    --background: 240 100% 10%;
+    --foreground: 210 40% 98%;
+    --card: 240 50% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 240 50% 12%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 157 77% 48%;
+    --primary-foreground: 240 100% 10%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 157 77% 48%;
+    --accent-foreground: 240 100% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 157 77% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Scrollbar - Panaversity Style */
+::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #d3d3d3;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1cd98e;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #17c07a;
+}
+
+/* Gradient utilities */
+.gradient-border {
+  border-radius: 7px;
+  border-bottom: 4px solid transparent;
+  border-image: linear-gradient(to right, #1cd98e, rgba(255, 255, 255, 0)) 1;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(28, 217, 142, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(28, 217, 142, 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-in-out forwards;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.5s ease-in-out forwards;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(28, 217, 142, 0.1),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Staggered animation delays */
+.animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-200 { animation-delay: 200ms; }
+.animate-delay-300 { animation-delay: 300ms; }
+.animate-delay-400 { animation-delay: 400ms; }
+.animate-delay-500 { animation-delay: 500ms; }
+
+/* Gradient backgrounds */
+.bg-gradient-brand {
+  background: linear-gradient(135deg, #1cd98e 0%, #17c07a 50%, #14a86a 100%);
+}
+
+.bg-gradient-hero {
+  background: linear-gradient(135deg, #fbfbfe 0%, #e8faf3 100%);
+}
+
+.dark .bg-gradient-hero {
+  background: linear-gradient(135deg, #000033 0%, #0a1628 100%);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+/* Text gradient */
+.text-gradient-brand {
+  background: linear-gradient(135deg, #1cd98e, #17c07a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Status glow effects */
+.status-glow-open {
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.4);
+}
+
+.status-glow-active {
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+}
+
+.status-glow-judging {
+  box-shadow: 0 0 12px rgba(234, 179, 8, 0.4);
+}

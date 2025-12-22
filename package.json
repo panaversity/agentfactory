@@ -9,12 +9,23 @@
     "affected": "nx affected"
   },
   "dependencies": {
-    "nx": "^22.2.3"
+    "next": "~16.0.1",
+    "nx": "^22.2.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@nx/js": "^22.2.3",
+    "@nx/js": "22.2.5",
     "@nx/next": "^22.2.5",
-    "@nx/workspace": "^22.2.3"
+    "@nx/workspace": "^22.2.3",
+    "@swc-node/register": "~1.9.1",
+    "@swc/cli": "~0.6.0",
+    "@swc/core": "~1.5.7",
+    "@swc/helpers": "~0.5.11",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tslib": "^2.3.0",
+    "typescript": "~5.9.2"
   },
   "engines": {
     "node": ">=20.0"

@@ -118,6 +118,18 @@ export const TRUSTED_CLIENTS = [
     skipConsent: true,
     metadata: {},
   },
+  {
+    clientId: "hackathon-public-client",
+    name: "Panaversity Hackathon Platform",
+    type: "public" as const,
+    redirectUrls: getRedirectUrls([
+      "http://localhost:3002/api/auth/callback",
+      "https://hackathon.panaversity.org/api/auth/callback",
+    ]),
+    disabled: false,
+    skipConsent: true,
+    metadata: {},
+  },
 ];
 
 /**
@@ -148,6 +160,11 @@ export const CLIENT_DESCRIPTIONS = {
   "assessment-public-client": {
     purpose: "Panaversity Assessment Platform",
     audience: "Students taking assessments and quizzes",
+    security: "Public client with PKCE, no client secret",
+  },
+  "hackathon-public-client": {
+    purpose: "Panaversity Hackathon Platform",
+    audience: "Hackathon organizers, judges, mentors, and participants",
     security: "Public client with PKCE, no client secret",
   },
 } as const;

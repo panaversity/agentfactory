@@ -51,3 +51,11 @@ feedback/
 AI Agents for Business Automation.pptx
 
 workspace/
+
+.claude/
+
+# Next.js
+.next
+out
+
+playbook/
