@@ -88,17 +88,17 @@ Build a Task Management API with these capabilities:
 |--------|------|-------------|--------------|-------------|
 | POST | /tasks | Create a new task | 201 | 400 (invalid input) |
 | GET | /tasks | List all tasks (optional status filter) | 200 | 400 (invalid filter) |
-| GET | /tasks/{task_id} | Get a single task | 200 | 404 (not found) |
-| PUT | /tasks/{task_id} | Update a task | 200 | 400, 404 |
-| DELETE | /tasks/{task_id} | Delete a task | 200 | 404 |
+| GET | `/tasks/{task_id}` | Get a single task | 200 | 404 (not found) |
+| PUT | `/tasks/{task_id}` | Update a task | 200 | 400, 404 |
+| DELETE | `/tasks/{task_id}` | Delete a task | 200 | 404 |
 
 ### Agent Endpoints
 
 | Method | Path | Description | Streaming |
 |--------|------|-------------|-----------|
-| POST | /tasks/{task_id}/help | Triage → Specialist routing | Yes |
-| POST | /tasks/{task_id}/schedule | Direct to scheduler agent | Yes |
-| POST | /tasks/{task_id}/collaborate | Direct to collaboration agent | Yes |
+| POST | `/tasks/{task_id}/help` | Triage → Specialist routing | Yes |
+| POST | `/tasks/{task_id}/schedule` | Direct to scheduler agent | Yes |
+| POST | `/tasks/{task_id}/collaborate` | Direct to collaboration agent | Yes |
 
 ### System Endpoints
 
