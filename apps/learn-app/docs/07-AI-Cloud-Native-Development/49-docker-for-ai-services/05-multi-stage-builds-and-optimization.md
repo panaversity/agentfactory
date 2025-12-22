@@ -554,7 +554,7 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 **When to deviate from this pattern**:
 
 - **Alpine not available for your stack**: Use python:3.12-slim
-- **Static files needed at build time**: COPY them in builder stage, but only if <100MB
+- **Static files needed at build time**: COPY them in builder stage, but only if under 100MB
 - **Model files required**: Use volume mounts, never COPY large files
 - **Security-critical**: Consider distroless base image (but lose debugging capability)
 - **Need specific system libraries**: Add RUN apk add ... in builder, copy results to runtime stage
