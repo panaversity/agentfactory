@@ -58,7 +58,25 @@ created: "2025-12-22"
 
 # Capstone: Agent-Powered Task Service
 
-You've learned all the building blocks. Now you'll combine them into a complete, production-style Task Management API with multi-agent intelligence. This capstone tests your ability to work from a specification and deliver a working system.
+This chapter taught you seven interconnected skills. Now you'll synthesize them into something real.
+
+This capstone isn't about following instructions—it's about demonstrating that you can work from a specification and deliver a functioning system. The specification below defines what to build. How you build it is up to you.
+
+## What This Capstone Tests
+
+Before diving in, understand what you're demonstrating:
+
+| Lesson | Skill Being Applied |
+|--------|-------------------|
+| Lesson 1 | Creating FastAPI app, async endpoints, Swagger documentation |
+| Lesson 2 | Pydantic models for request/response validation |
+| Lesson 3 | CRUD operations with proper HTTP methods |
+| Lesson 4 | Error handling with correct status codes |
+| Lesson 5 | Dependency injection with repository pattern |
+| Lesson 6 | SSE streaming with async generators |
+| Lesson 7 | Multi-agent routing with handoff visibility |
+
+If you struggle with any part, that's diagnostic. It tells you which lesson to revisit.
 
 ## The Specification
 
@@ -66,13 +84,13 @@ Build a Task Management API with these capabilities:
 
 ### CRUD Endpoints
 
-| Method | Path | Description | Status Code |
-|--------|------|-------------|-------------|
-| POST | /tasks | Create a new task | 201 |
-| GET | /tasks | List all tasks (with optional status filter) | 200 |
-| GET | /tasks/{task_id} | Get a single task | 200 or 404 |
-| PUT | /tasks/{task_id} | Update a task | 200 or 404 |
-| DELETE | /tasks/{task_id} | Delete a task | 200 or 404 |
+| Method | Path | Description | Success Code | Error Codes |
+|--------|------|-------------|--------------|-------------|
+| POST | /tasks | Create a new task | 201 | 400 (invalid input) |
+| GET | /tasks | List all tasks (optional status filter) | 200 | 400 (invalid filter) |
+| GET | /tasks/{task_id} | Get a single task | 200 | 404 (not found) |
+| PUT | /tasks/{task_id} | Update a task | 200 | 400, 404 |
+| DELETE | /tasks/{task_id} | Delete a task | 200 | 404 |
 
 ### Agent Endpoints
 
@@ -86,8 +104,16 @@ Build a Task Management API with these capabilities:
 
 | Method | Path | Description |
 |--------|------|-------------|
-| GET | /agents/status | Which agents are available |
-| GET | / | Health check |
+| GET | /agents/status | List available agents and capabilities |
+| GET | / | Health check with service info |
+
+### Business Rules
+
+1. Task titles cannot be empty or whitespace-only
+2. Valid status values: `pending`, `in_progress`, `completed`
+3. New tasks start with status `pending`
+4. Agent endpoints must validate task exists before running agent
+5. All agent responses stream with handoff and tool visibility
 
 ## Project Structure
 
@@ -96,7 +122,7 @@ task-service/
 ├── pyproject.toml
 ├── main.py              # FastAPI app and routes
 ├── models.py            # Pydantic models
-├── repository.py        # TaskRepository
+├── repository.py        # TaskRepository with DI
 └── agents/
     ├── __init__.py
     ├── triage.py        # Triage agent with handoffs
@@ -104,22 +130,42 @@ task-service/
     └── collaboration.py # Collaboration specialist
 ```
 
-## Implementation
+## Your Approach
 
-### Step 1: Project Setup
+**Don't just copy code.** Work through this systematically:
 
-```bash
-mkdir task-service && cd task-service
-uv init
-uv add fastapi "uvicorn[standard]" pydantic sse-starlette openai-agents
-```
+### Phase 1: Data Layer (30 min)
+Build `models.py` and `repository.py` first. These are the foundation. Test them independently before adding FastAPI.
 
-### Step 2: Models (models.py)
+Questions to answer:
+- What fields does TaskCreate need vs TaskResponse?
+- How do you make status filtering optional?
+- How do you handle the ID counter across requests?
+
+### Phase 2: CRUD Endpoints (30 min)
+Implement all CRUD endpoints. Test each one in Swagger UI before moving on.
+
+Questions to answer:
+- Why use `status_code=status.HTTP_201_CREATED` for POST?
+- Where does business validation (empty title) go?
+- How do you make the status filter query parameter optional?
+
+### Phase 3: Agent Integration (30 min)
+Create the three agents and wire them into endpoints with streaming.
+
+Questions to answer:
+- What context does the agent need about the task?
+- How do you structure SSE events for routing visibility?
+- When does the endpoint return an error vs when does the stream?
+
+## Reference Implementation
+
+Use this as a reference after attempting each phase yourself. Don't read ahead—try first, then compare.
+
+### models.py
 
 ```python
 from pydantic import BaseModel
-
-# --- Task Models ---
 
 class TaskCreate(BaseModel):
     title: str
@@ -135,9 +181,6 @@ class TaskResponse(BaseModel):
     title: str
     description: str | None
     status: str
-    created_at: str
-
-# --- Agent Models ---
 
 class HelpRequest(BaseModel):
     question: str
@@ -156,10 +199,9 @@ class AgentResponse(BaseModel):
     tool_calls: list[ToolCallInfo]
 ```
 
-### Step 3: Repository (repository.py)
+### repository.py
 
 ```python
-from datetime import datetime
 from models import TaskCreate, TaskUpdate
 
 VALID_STATUSES = {"pending", "in_progress", "completed"}
@@ -175,8 +217,7 @@ class TaskRepository:
             "id": self.counter,
             "title": task.title,
             "description": task.description,
-            "status": "pending",
-            "created_at": datetime.utcnow().isoformat()
+            "status": "pending"
         }
         self.tasks.append(new_task)
         return new_task
@@ -217,9 +258,8 @@ def get_task_repo() -> TaskRepository:
     return task_repo
 ```
 
-### Step 4: Agents (agents/)
+### agents/scheduler.py
 
-**agents/scheduler.py**:
 ```python
 from agents import Agent, function_tool
 
@@ -259,7 +299,8 @@ When helping:
 )
 ```
 
-**agents/collaboration.py**:
+### agents/collaboration.py
+
 ```python
 from agents import Agent, function_tool
 
@@ -293,7 +334,8 @@ When helping:
 )
 ```
 
-**agents/triage.py**:
+### agents/triage.py
+
 ```python
 from agents import Agent, handoff
 from .scheduler import scheduler_agent
@@ -323,17 +365,14 @@ When routing, briefly explain why.""",
 )
 ```
 
-### Step 5: Main Application (main.py)
+### main.py
 
 ```python
 from fastapi import FastAPI, Depends, HTTPException, status
 from sse_starlette.sse import EventSourceResponse
 import json
 
-from models import (
-    TaskCreate, TaskUpdate, TaskResponse,
-    HelpRequest, AgentResponse, ToolCallInfo
-)
+from models import TaskCreate, TaskUpdate, TaskResponse, HelpRequest
 from repository import TaskRepository, get_task_repo, VALID_STATUSES
 from agents import Runner
 from agents.triage import triage_agent
@@ -402,7 +441,6 @@ def build_task_context(task: dict) -> str:
 
 async def run_agent_streaming(agent, task: dict, question: str):
     """Generator for streaming agent responses."""
-
     context = build_task_context(task)
 
     yield {"event": "start", "data": json.dumps({
@@ -420,17 +458,14 @@ async def run_agent_streaming(agent, task: dict, question: str):
         if event.type == "agent_start":
             current_agent = event.agent_name
             yield {"event": "handoff", "data": json.dumps({"to": current_agent})}
-
         elif event.type == "text_delta":
             yield {"event": "token", "data": event.delta}
-
         elif event.type == "tool_call_start":
             yield {"event": "tool_call", "data": json.dumps({
                 "agent": current_agent,
                 "tool": event.tool_name,
                 "args": event.arguments
             })}
-
         elif event.type == "tool_call_result":
             yield {"event": "tool_result", "data": json.dumps(event.result)}
 
@@ -446,9 +481,7 @@ async def triage_help(
     task = repo.get_by_id(task_id)
     if not task:
         raise HTTPException(status_code=404, detail=f"Task {task_id} not found")
-    return EventSourceResponse(
-        run_agent_streaming(triage_agent, task, request.question)
-    )
+    return EventSourceResponse(run_agent_streaming(triage_agent, task, request.question))
 
 @app.post("/tasks/{task_id}/schedule")
 async def schedule_help(
@@ -460,9 +493,7 @@ async def schedule_help(
     task = repo.get_by_id(task_id)
     if not task:
         raise HTTPException(status_code=404, detail=f"Task {task_id} not found")
-    return EventSourceResponse(
-        run_agent_streaming(scheduler_agent, task, request.question)
-    )
+    return EventSourceResponse(run_agent_streaming(scheduler_agent, task, request.question))
 
 @app.post("/tasks/{task_id}/collaborate")
 async def collaborate_help(
@@ -474,9 +505,7 @@ async def collaborate_help(
     task = repo.get_by_id(task_id)
     if not task:
         raise HTTPException(status_code=404, detail=f"Task {task_id} not found")
-    return EventSourceResponse(
-        run_agent_streaming(collaboration_agent, task, request.question)
-    )
+    return EventSourceResponse(run_agent_streaming(collaboration_agent, task, request.question))
 
 # --- System Endpoints ---
 
@@ -502,63 +531,99 @@ def health():
 
 ## Testing Checklist
 
-Run your service and verify each feature:
+Run your service and verify each feature. Don't mark items complete until you've actually tested them:
 
 ### CRUD Operations
 - [ ] POST /tasks creates task with 201
 - [ ] POST /tasks with empty title returns 400
 - [ ] GET /tasks returns all tasks
 - [ ] GET /tasks?status_filter=pending filters correctly
+- [ ] GET /tasks?status_filter=invalid returns 400
 - [ ] GET /tasks/1 returns task
 - [ ] GET /tasks/999 returns 404
 - [ ] PUT /tasks/1 updates task
+- [ ] PUT /tasks/1 with empty title returns 400
 - [ ] PUT /tasks/1 with invalid status returns 400
 - [ ] DELETE /tasks/1 removes task
 - [ ] DELETE /tasks/999 returns 404
 
 ### Agent Endpoints
 - [ ] POST /tasks/1/help streams responses
-- [ ] Scheduling questions route to scheduler
+- [ ] Scheduling questions route to scheduler (check handoff event)
 - [ ] Collaboration questions route to collaboration
-- [ ] handoff events appear in stream
 - [ ] Tool calls appear in stream
-- [ ] POST /tasks/1/schedule goes directly to scheduler
+- [ ] POST /tasks/1/schedule goes directly to scheduler (no handoff event)
 - [ ] POST /tasks/1/collaborate goes directly to collaboration
+- [ ] POST /tasks/999/help returns 404 (before streaming starts)
 
 ### System Endpoints
-- [ ] GET /agents/status lists all agents
-- [ ] GET / returns health check
+- [ ] GET /agents/status lists all three agents
+- [ ] GET / returns health check with version
 
-## Submission Criteria
+## Reflection Questions
 
-Your capstone is complete when:
+After completing the capstone, reflect on what you've learned:
 
-1. **All endpoints work** — Every endpoint in the spec functions correctly
-2. **Agents route correctly** — Triage sends questions to appropriate specialists
-3. **Streaming works** — All agent endpoints stream with proper events
-4. **Error handling is proper** — 400, 404 returned appropriately
-5. **Code is organized** — Separate modules for agents, models, repository
+1. **What was hardest?** Which lesson's concepts took most work to integrate?
 
-## What You've Built
+2. **What would you change?** If you were designing this API from scratch, what would you do differently?
 
-Congratulations! You've built a production-style multi-agent API that includes:
+3. **What's missing for production?** This is a learning project. What would a real production system need that this doesn't have? (Think: persistence, auth, rate limiting, observability...)
 
-- **RESTful CRUD operations** for task management
-- **Triage → Specialist routing** for intelligent request handling
-- **Streaming responses** with handoff and tool visibility
-- **OpenAPI documentation** for API consumers
+4. **How would you test this?** If you had to write automated tests, where would you start? What would be hardest to test?
 
-This is the foundation for Part 7, where you'll containerize this service with Docker, deploy it to Kubernetes, and scale it to production.
+## Extend With AI
+
+After completing the base capstone, explore these extensions:
+
+**Add Authentication:**
+
+> "I need to add API key authentication to my endpoints. Show me how to use FastAPI's security dependencies to protect the agent endpoints while leaving CRUD endpoints open."
+
+**Implement Rate Limiting:**
+
+> "My agent endpoints are expensive—they call OpenAI. How do I rate limit them to 10 requests per minute per API key? Show me using slowapi or a custom dependency."
+
+**Add Persistence:**
+
+> "The in-memory repository loses data on restart. How do I swap it for SQLite without changing any endpoint code? Show me the repository pattern in action."
+
+**Add Observability:**
+
+> "I want to log every agent request with timing, routing path, and tool calls. Show me how to add structured logging with request correlation IDs."
+
+These are real production concerns. Tackling them with AI guidance is exactly how you'd work in a professional setting.
 
 ---
 
-## Summary
+## What You've Built
 
-You've completed Chapter 40 by building a complete agent-powered service:
+You've built a production-style multi-agent API:
 
-- 5 CRUD endpoints for task management
-- 3 agent endpoints with streaming and routing
-- Multi-agent architecture with triage and specialists
-- Production patterns: DI, error handling, documentation
+- **5 CRUD endpoints** with proper validation and error handling
+- **3 agent endpoints** with streaming and routing visibility
+- **Multi-agent architecture** with triage and specialists
+- **Production patterns** throughout: dependency injection, Pydantic validation, SSE streaming
 
-Your agents are now accessible via REST API—ready to power any application.
+**The bigger picture**: This is the foundation for real AI-powered applications. The same patterns—CRUD for data, streaming for responses, routing for intelligence—appear in ChatGPT, Claude, and every enterprise AI product.
+
+In Part 7, you'll take this further: containerization with Docker, deployment to Kubernetes, and scaling for production traffic.
+
+---
+
+## Chapter Summary
+
+Chapter 40 taught you to expose AI agents via FastAPI:
+
+| Lesson | Core Skill |
+|--------|-----------|
+| 1 | FastAPI basics, async endpoints, Swagger UI |
+| 2 | Pydantic models for request/response validation |
+| 3 | CRUD operations with HTTP methods |
+| 4 | Error handling with status codes |
+| 5 | Dependency injection for testability |
+| 6 | SSE streaming with async generators |
+| 7 | Multi-agent routing with handoffs |
+| 8 | Integration of all patterns |
+
+You can now build HTTP APIs that wrap AI agents—making them accessible to any client through standard REST endpoints. This is how AI gets into production.

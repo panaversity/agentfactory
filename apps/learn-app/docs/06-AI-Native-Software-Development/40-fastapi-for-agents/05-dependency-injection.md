@@ -58,7 +58,18 @@ created: "2025-12-22"
 
 # Dependency Injection
 
-Our current code uses a global list for storage. This works, but it's messy—storage logic is scattered across endpoints, and testing is hard. Dependency injection solves this by making dependencies explicit and replaceable.
+Our current code uses a global list for storage. This works, but it's messy—storage logic is scattered across endpoints, testing is hard, and swapping implementations requires changing every endpoint. Dependency injection solves this by making dependencies explicit and replaceable.
+
+## Why This Matters for Agents
+
+Agent endpoints have dependencies: database connections, LLM clients, configuration, session stores. When you build agent endpoints in Lesson 7, you'll inject:
+
+- The `Agent` instance
+- Configuration (model name, temperature)
+- Session storage for conversation history
+- Rate limiters
+
+Getting dependency injection right now means your agent endpoints will be testable, configurable, and maintainable.
 
 ## The Problem with Global State
 
@@ -78,15 +89,19 @@ def create_task(task: TaskCreate):
     return new_task
 ```
 
-Problems with this approach:
+**Problems with this approach**:
+
 1. **Hard to test** — Can't easily swap the storage for tests
 2. **Hard to maintain** — Logic for finding/updating tasks is in every endpoint
 3. **Hidden dependencies** — You have to read the code to know what it needs
 4. **Concurrency issues** — Global state can cause race conditions
+5. **Can't run multiple instances** — Every worker shares the same data
+
+For agents, problem #5 is critical. When you deploy with multiple workers (which you will for production), global state doesn't share across workers. Each worker has its own `tasks` list.
 
 ## What is Dependency Injection?
 
-Instead of reaching for global state, we declare what we need:
+Instead of reaching for global state, we **declare what we need**:
 
 ```python
 @app.get("/tasks")
@@ -100,9 +115,13 @@ Now:
 - We can swap it for testing
 - The endpoint is focused on its job
 
+**The mental model**: Think of `Depends()` as saying "I need this thing to do my job—please provide it." FastAPI becomes the provider.
+
 ## The Repository Pattern
 
-A repository encapsulates all data access logic. Create `repository.py`:
+A repository encapsulates all data access logic. Instead of scattering task-finding code across endpoints, we put it in one place.
+
+Create `repository.py`:
 
 ```python
 from pydantic import BaseModel
@@ -167,7 +186,12 @@ class TaskRepository:
         return False
 ```
 
-All data operations are now in one place. The endpoints just call repository methods.
+**What changed?**
+
+- All data operations are now methods on `TaskRepository`
+- The counter is an instance variable, not global
+- Finding a task by ID is a method, not duplicated logic
+- Each method is focused and testable
 
 ## Using Depends()
 
@@ -189,11 +213,26 @@ def list_tasks(repo: TaskRepository = Depends(get_task_repo)):
     return repo.get_all()
 ```
 
-Here's what happens:
-1. FastAPI sees `Depends(get_task_repo)`
-2. It calls `get_task_repo()` to get the repository
-3. It passes the repository to your function
+**Here's what happens step by step**:
+1. FastAPI sees `Depends(get_task_repo)` in the parameter
+2. FastAPI calls `get_task_repo()` to get the repository
+3. FastAPI passes the repository to your function as `repo`
 4. Your function uses it
+
+**The key insight**: Your endpoint doesn't know or care HOW it gets the repository. It just declares that it NEEDS one.
+
+## Why a Dependency Function?
+
+Why not just write `repo: TaskRepository = task_repo`?
+
+Because the function gives you a seam for:
+
+1. **Testing** — Override the function to return a mock
+2. **Lifecycle management** — Create per-request resources (database connections)
+3. **Configuration** — Read from environment variables
+4. **Cleanup** — Use `yield` for cleanup after request completes
+
+The indirection is the point. It's where you hook in different behaviors.
 
 ## Complete Refactored Example
 
@@ -337,11 +376,13 @@ def delete_task(
     return {"message": "Task deleted", "id": task_id}
 ```
 
-Notice how clean the endpoints are now. Each one:
+**Notice how clean the endpoints are now.** Each one:
 1. Receives the repository as a parameter
 2. Validates business rules
 3. Calls repository methods
 4. Handles errors
+
+The endpoint doesn't know if the repository is in-memory, a database, or a mock for testing.
 
 ## Hands-On Exercise
 
@@ -361,19 +402,27 @@ Refactor your code to use dependency injection:
 - [ ] Every endpoint receives `repo` via `Depends()`
 - [ ] All CRUD operations work
 
-## Why This Matters
+## Challenge: Design for Testing
 
-**For Testing**: You can override dependencies to use a fake repository:
+**Before looking at any solution**, think through this problem:
 
-```python
-# In tests
-def get_test_repo():
-    return TestTaskRepository()
+**The Problem**: You want to test your endpoints without using the real repository. Tests should:
+- Not affect each other (isolated)
+- Not persist data between test runs
+- Be fast (no database)
 
-app.dependency_overrides[get_task_repo] = get_test_repo
-```
+Think about:
+- How do you provide a different repository to tests?
+- How do you reset state between tests?
+- What's FastAPI's mechanism for swapping dependencies?
 
-**For Flexibility**: Swap implementations without changing endpoints:
+Implement a test that creates a task and verifies it exists. Then compare with AI:
+
+> "I wrote a test like this: [paste your code]. I'm using [approach] to swap the repository. Is there a cleaner pattern using FastAPI's dependency_overrides?"
+
+## Why This Matters Beyond Testing
+
+**For flexibility**: Swap implementations without changing endpoints:
 
 ```python
 # Today: in-memory
@@ -385,7 +434,9 @@ def get_task_repo():
     return PostgresTaskRepository(connection)
 ```
 
-**For Clarity**: Dependencies are visible in the function signature:
+Your endpoints don't change. The interface stays the same.
+
+**For clarity**: Dependencies are visible in the function signature:
 
 ```python
 # Before: What does this need? Check the function body
@@ -397,21 +448,28 @@ def create_task(task: TaskCreate, repo: TaskRepository = Depends(get_task_repo))
     ...
 ```
 
+**For agents**: When you inject an `Agent` instance in Lesson 7, you can:
+- Use different models in different environments
+- Swap to a mock agent for testing
+- Configure temperature and other parameters via the dependency
+
 ## Common Mistakes
 
 **Mistake 1**: Calling the dependency function instead of using Depends
 
 ```python
-# Wrong - creates new repo each time, not shared
+# Wrong - creates new repo each time, bypasses DI
 @app.get("/tasks")
 def list_tasks(repo: TaskRepository = get_task_repo()):
     return repo.get_all()
 
-# Correct - FastAPI calls it once and caches per request
+# Correct - FastAPI manages the call
 @app.get("/tasks")
 def list_tasks(repo: TaskRepository = Depends(get_task_repo)):
     return repo.get_all()
 ```
+
+**Why does this matter?** When you call the function directly, FastAPI can't override it for testing. You also lose any lifecycle management.
 
 **Mistake 2**: Creating the instance inside the dependency function
 
@@ -427,6 +485,8 @@ def get_task_repo():
     return task_repo  # Same instance each time
 ```
 
+Each request getting a fresh repository means data doesn't persist between requests.
+
 **Mistake 3**: Accessing repository directly instead of through dependency
 
 ```python
@@ -441,23 +501,33 @@ def list_tasks(repo: TaskRepository = Depends(get_task_repo)):
     return repo.get_all()
 ```
 
-## Try With AI
+Direct access can't be overridden for testing and couples your code tightly to the specific implementation.
 
-**Understand the Pattern:**
+## Refine Your Understanding
 
-> "Explain dependency injection like I'm new to programming. Use a restaurant analogy where chefs don't go shopping for ingredients."
+After completing the exercise, work through these scenarios with AI:
 
-**Explore Testing Benefits:**
+**Scenario 1: Dependencies with Cleanup**
 
-> "Show me how to write a test for the create_task endpoint using dependency overrides. Use pytest and a fake repository."
+> "I need a database connection that's created at the start of a request and closed at the end. Show me how to use `yield` in a dependency function for cleanup."
 
-**Advanced Patterns:**
+When AI shows you the pattern, push back:
 
-> "I want my repository to be async. How do I create an async dependency in FastAPI? Show me with the TaskRepository."
+> "What happens if an exception occurs in my endpoint? Does the cleanup still run? Show me how to handle exceptions in a yield-based dependency."
 
-**Extend the Design:**
+**Scenario 2: Nested Dependencies**
 
-> "Add a 'priority' field to tasks. Show me how to modify the TaskRepository to support filtering by both status and priority."
+> "My repository needs a database connection, and both should be injected. Can I have dependencies that depend on other dependencies? Show me the pattern."
+
+Review AI's solution. Challenge it:
+
+> "If I have three endpoints that all use the repository, does the database connection get created three times or once per request?"
+
+**Scenario 3: Async Dependencies**
+
+> "My agent endpoint will call an async LLM API. The dependency function that creates the Agent needs to be async. How do I create an async dependency in FastAPI?"
+
+This previews what you'll do in Lesson 7 when injecting agent instances.
 
 ---
 
@@ -466,8 +536,11 @@ def list_tasks(repo: TaskRepository = Depends(get_task_repo)):
 You've learned to organize code with dependency injection:
 
 - **Depends()**: Declares what your endpoint needs
-- **Repository pattern**: Encapsulates data access
+- **Repository pattern**: Encapsulates data access in one place
 - **Singleton pattern**: Shared instance across requests
+- **Dependency functions**: The seam where you hook in different behaviors
 - **Clean endpoints**: Focused on business logic, not data access
 
-Next lesson, you'll add streaming responses with Server-Sent Events for real-time updates.
+**The bigger picture**: Dependency injection is how you make code testable and flexible. When you add LLM clients, database connections, and configuration to your agent endpoints, DI keeps everything manageable.
+
+Next lesson, you'll add streaming responses with Server-Sent Events—essential for real-time agent responses.

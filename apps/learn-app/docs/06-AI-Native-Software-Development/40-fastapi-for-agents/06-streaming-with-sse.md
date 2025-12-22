@@ -60,41 +60,34 @@ created: "2025-12-22"
 
 Some operations take time. When an AI agent generates a response, you don't want users staring at a loading spinner for 30 seconds. Streaming sends data as it becomes available—token by token for LLMs, update by update for long-running tasks.
 
-Server-Sent Events (SSE) is a simple protocol for server-to-client streaming. The server pushes events, and the client receives them in real-time. You've seen this in ChatGPT—words appearing as the model generates them.
+This is the lesson that connects everything to agents. In Lesson 7, you'll stream actual agent responses. Here, you build the foundation with simulated data.
 
-## Why Streaming?
+## Why Streaming Changes Everything
 
-Traditional request-response:
+**Traditional request-response** (what you've built so far):
 1. Client sends request
-2. Server processes (30 seconds)
-3. Client waits...
+2. Server processes (30 seconds for agent response)
+3. Client waits with no feedback...
 4. Server sends complete response
 
-Streaming:
+**Streaming**:
 1. Client sends request
 2. Server starts processing
-3. Server sends first chunk immediately
-4. Server sends more chunks as available
-5. Client sees progress in real-time
+3. Server sends first token immediately
+4. Server sends more tokens as available
+5. Client sees response forming in real-time
 
-For AI agents, this means:
+You've experienced this in ChatGPT—words appearing as the model generates them. That's streaming.
+
+**For agents, streaming means**:
 - Users see responses forming, not waiting
-- Long-running tasks show progress
-- Failed operations fail fast, not after a timeout
+- Long tool calls show progress
+- Failed operations fail fast, not after timeout
+- Better perceived performance (first byte matters)
 
-## Installing sse-starlette
+## How SSE Works (Under the Hood)
 
-FastAPI doesn't include SSE by default. Add the package:
-
-```bash
-uv add sse-starlette
-```
-
-This provides `EventSourceResponse`, which handles SSE formatting.
-
-## SSE Event Format
-
-SSE events are simple text:
+Server-Sent Events is a simple protocol. The server sends text in a specific format:
 
 ```
 event: task_update
@@ -105,11 +98,29 @@ data: {"task_id": 1, "status": "completed"}
 ```
 
 Each event has:
-- `event`: Event type (optional, default is "message")
+- `event`: Event type (optional, defaults to "message")
 - `data`: The payload (must be a string, usually JSON)
 - Blank line: Separates events
 
-## Creating a Streaming Endpoint
+**Why SSE over WebSockets?**
+- SSE is simpler—just HTTP with a special content type
+- Works through proxies and load balancers without configuration
+- Browser handles reconnection automatically
+- One-directional (server → client) which is exactly what streaming needs
+
+WebSockets are bidirectional, which adds complexity you don't need for agent responses.
+
+## Installing sse-starlette
+
+FastAPI doesn't include SSE by default. Add the package:
+
+```bash
+uv add sse-starlette
+```
+
+This provides `EventSourceResponse`, which handles SSE formatting automatically.
+
+## Your First Streaming Endpoint
 
 ```python
 from fastapi import FastAPI
@@ -142,15 +153,40 @@ async def stream_task_updates():
     return EventSourceResponse(task_updates_generator())
 ```
 
-Key elements:
-- `async def` with `yield` creates an **async generator**
-- Each `yield` sends one SSE event
-- `await asyncio.sleep(1)` simulates processing time
-- `EventSourceResponse` wraps the generator
+**Breaking this down**:
+
+1. **`async def` with `yield`** creates an **async generator**—a function that produces values over time
+2. **Each `yield`** sends one SSE event to the client
+3. **`await asyncio.sleep(1)`** simulates work (in Lesson 7, this is where the agent generates tokens)
+4. **`EventSourceResponse`** wraps the generator and handles SSE formatting
+
+**The key insight**: `yield` doesn't end the function. It pauses, sends data, then continues. This is fundamentally different from `return`.
+
+## Why Async Generators Matter for Agents
+
+In Lesson 7, you'll stream agent responses like this:
+
+```python
+async def agent_response_generator(message: str):
+    result = runner.run_streamed(agent, messages=[{"role": "user", "content": message}])
+    async for event in result.stream_events():
+        if event.type == "raw_response_event":
+            yield {
+                "event": "token",
+                "data": json.dumps({"content": event.data})
+            }
+```
+
+The pattern is identical:
+- Async generator yields data
+- `EventSourceResponse` sends it
+- Client receives tokens as they generate
+
+Master the pattern here with simulated data. Lesson 7 plugs in the real agent.
 
 ## Testing in Browser
 
-You can't use Swagger UI for SSE—it expects regular responses. Open your browser's console and run:
+Swagger UI doesn't work for SSE—it expects regular responses. Open your browser's console:
 
 ```javascript
 const source = new EventSource('http://localhost:8000/tasks/stream');
@@ -176,6 +212,8 @@ source.onerror = (error) => {
 
 You'll see events arriving one second apart.
 
+**Important**: The browser automatically reconnects if the connection drops. That's a feature of `EventSource`. For agent responses, you might want to disable this (handled in the client code).
+
 ## Streaming with Context
 
 Let's add streaming that relates to a specific task:
@@ -184,19 +222,29 @@ Let's add streaming that relates to a specific task:
 from fastapi import Depends, HTTPException, status
 from repository import TaskRepository, get_task_repo
 
-async def task_progress_generator(task_id: int, total_steps: int = 5):
+async def task_progress_generator(task_id: int, task_title: str):
     """Streams progress updates for a specific task."""
-    for step in range(1, total_steps + 1):
+    steps = [
+        "Analyzing task...",
+        "Processing requirements...",
+        "Generating output...",
+        "Validating results...",
+        "Finalizing...",
+    ]
+
+    for i, step in enumerate(steps, 1):
         yield {
             "event": "progress",
             "data": json.dumps({
                 "task_id": task_id,
-                "step": step,
-                "total_steps": total_steps,
-                "percentage": int((step / total_steps) * 100)
+                "task_title": task_title,
+                "step": i,
+                "total_steps": len(steps),
+                "message": step,
+                "percentage": int((i / len(steps)) * 100)
             })
         }
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(0.8)
 
     yield {
         "event": "complete",
@@ -206,8 +254,8 @@ async def task_progress_generator(task_id: int, total_steps: int = 5):
         })
     }
 
-@app.get("/tasks/{task_id}/progress")
-async def stream_task_progress(
+@app.post("/tasks/{task_id}/execute")
+async def execute_task(
     task_id: int,
     repo: TaskRepository = Depends(get_task_repo)
 ):
@@ -219,14 +267,50 @@ async def stream_task_progress(
             detail=f"Task with id {task_id} not found"
         )
 
-    return EventSourceResponse(task_progress_generator(task_id))
+    return EventSourceResponse(
+        task_progress_generator(task_id, task["title"])
+    )
 ```
 
-This validates the task exists before starting the stream.
+**Notice the pattern**:
+1. Validate input BEFORE returning the stream
+2. Pass context (task_id, task_title) to the generator
+3. Generator doesn't need to access the repository—it just yields data
 
-## Complete Streaming Example
+This matters for agents: you'll validate the conversation exists, then stream the response.
 
-Here's a full example with multiple stream types:
+## Error Handling in Streams
+
+What happens when an error occurs mid-stream? The client has already received some data.
+
+```python
+async def risky_generator():
+    try:
+        for i in range(10):
+            if i == 5:
+                raise ValueError("Something went wrong at step 5!")
+            yield {
+                "event": "step",
+                "data": json.dumps({"step": i})
+            }
+            await asyncio.sleep(0.5)
+    except Exception as e:
+        # Send error as an event, don't raise
+        yield {
+            "event": "error",
+            "data": json.dumps({"error": str(e)})
+        }
+```
+
+**The key insight**: Once streaming starts, you can't change the HTTP status code. It's already been sent as 200. So you send an error EVENT, and the client handles it.
+
+For agents, this means:
+- Agent starts generating
+- Tool call fails mid-response
+- Stream an error event
+- Client shows error in the UI
+
+## The Complete Streaming Example
 
 ```python
 from fastapi import FastAPI, Depends, HTTPException, status
@@ -242,17 +326,17 @@ app = FastAPI(title="Task API")
 async def system_updates_generator():
     """Simulates system-wide events."""
     events = [
-        ("info", "System started"),
+        ("info", {"message": "System started"}),
         ("task_created", {"task_id": 1}),
         ("task_updated", {"task_id": 1, "status": "in_progress"}),
         ("task_completed", {"task_id": 1}),
-        ("info", "Batch complete"),
+        ("info", {"message": "Batch complete"}),
     ]
 
     for event_type, data in events:
         yield {
             "event": event_type,
-            "data": json.dumps(data) if isinstance(data, dict) else data
+            "data": json.dumps(data)
         }
         await asyncio.sleep(1)
 
@@ -308,7 +392,7 @@ async def execute_task(
         task_work_generator(task_id, task["title"])
     )
 
-# Stream 3: Countdown timer
+# Stream 3: Countdown (simple demo)
 async def countdown_generator(seconds: int):
     """Simple countdown stream."""
     for i in range(seconds, 0, -1):
@@ -343,62 +427,58 @@ Build a streaming endpoint for task processing:
 uv add sse-starlette
 ```
 
-**Step 2**: Create a streaming endpoint
-
-```python
-@app.get("/tasks/{task_id}/process")
-async def process_task(
-    task_id: int,
-    repo: TaskRepository = Depends(get_task_repo)
-):
-    task = repo.get_by_id(task_id)
-    if not task:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Task {task_id} not found"
-        )
-
-    async def process():
-        # Your streaming logic here
-        yield {"event": "start", "data": json.dumps({"task_id": task_id})}
-        await asyncio.sleep(1)
-        yield {"event": "progress", "data": json.dumps({"percent": 50})}
-        await asyncio.sleep(1)
-        yield {"event": "done", "data": json.dumps({"result": "success"})}
-
-    return EventSourceResponse(process())
-```
+**Step 2**: Create a streaming endpoint that validates the task exists first
 
 **Step 3**: Test in browser console
 
 ```javascript
-const source = new EventSource('http://localhost:8000/tasks/1/process');
-source.onmessage = e => console.log(e.data);
-source.onerror = () => source.close();
+const source = new EventSource('http://localhost:8000/tasks/1/execute', {
+    method: 'POST'  // Note: EventSource is GET-only by default
+});
+```
+
+Wait—`EventSource` only supports GET! For POST, you need a different approach:
+
+```javascript
+// For POST endpoints, use fetch with streaming
+async function streamTask(taskId) {
+    const response = await fetch(`http://localhost:8000/tasks/${taskId}/execute`, {
+        method: 'POST'
+    });
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+
+    while (true) {
+        const {done, value} = await reader.read();
+        if (done) break;
+        console.log(decoder.decode(value));
+    }
+}
+
+streamTask(1);
 ```
 
 **Step 4**: Observe events arriving in real-time
 
-## Error Handling in Streams
+## Challenge: Build a Progress Tracker
 
-What happens when an error occurs mid-stream?
+**Before looking at any solution**, design a streaming endpoint:
 
-```python
-async def risky_generator():
-    try:
-        for i in range(10):
-            if i == 5:
-                raise ValueError("Something went wrong!")
-            yield {"data": json.dumps({"step": i})}
-            await asyncio.sleep(0.5)
-    except Exception as e:
-        yield {
-            "event": "error",
-            "data": json.dumps({"error": str(e)})
-        }
-```
+**The Problem**: Build an endpoint that simulates an AI agent "thinking":
+- Starts with "Analyzing request..."
+- Shows 3-5 intermediate "thoughts"
+- Ends with a "conclusion"
+- Takes about 5 seconds total
 
-The client receives an error event and can handle it gracefully.
+Think about:
+- What events do you need? (thinking, thought, conclusion?)
+- How do you structure the data for each event?
+- How would a frontend render this progressively?
+
+Implement it. Then compare with AI:
+
+> "I built a thinking stream like this: [paste your code]. The frontend will need to render each thought in sequence. Is there a better event structure for progressive rendering?"
 
 ## Common Mistakes
 
@@ -412,6 +492,8 @@ yield {"data": {"task_id": 1}}
 yield {"data": json.dumps({"task_id": 1})}
 ```
 
+SSE data must be a string. If you pass a dict, you'll get errors.
+
 **Mistake 2**: Not closing the connection on the client
 
 ```javascript
@@ -422,16 +504,20 @@ const source = new EventSource('/stream');
 source.addEventListener('complete', () => source.close());
 ```
 
+Open connections consume server resources. Always close when done.
+
 **Mistake 3**: Blocking the event loop
 
 ```python
 # Wrong - blocks other requests
 import time
-await time.sleep(1)  # This is synchronous!
+time.sleep(1)  # This is synchronous!
 
 # Correct - use async sleep
 await asyncio.sleep(1)
 ```
+
+Synchronous `time.sleep()` blocks the entire event loop. Other requests can't be processed. Always use `await asyncio.sleep()`.
 
 **Mistake 4**: Returning instead of yielding
 
@@ -445,23 +531,33 @@ async def generator():
     yield {"data": "hello"}
 ```
 
-## Try With AI
+`return` ends the function. `yield` makes it a generator that produces values.
 
-**Understand SSE Protocol:**
+## Refine Your Understanding
 
-> "Explain the SSE protocol format in detail. What are the optional fields besides 'event' and 'data'? How does the browser handle reconnection?"
+After completing the exercise, work through these scenarios with AI:
 
-**Handle Edge Cases:**
+**Scenario 1: Understand the Protocol**
 
-> "What happens if the client disconnects mid-stream? How do I detect this in my async generator and clean up resources?"
+> "Explain the SSE protocol format in detail. What are the optional fields besides 'event' and 'data'? How does the 'id' field enable reconnection?"
 
-**Build Real Features:**
+When AI explains, push back:
 
-> "I want to stream the status of multiple tasks at once. Show me how to implement a generator that monitors several tasks and yields updates as any of them changes."
+> "If my server crashes mid-stream and the client reconnects, how do I resume from where I left off? Show me the pattern for resumable streams."
 
-**Compare Alternatives:**
+**Scenario 2: Handle Real-World Issues**
 
-> "When should I use SSE vs WebSockets? What are the trade-offs for AI agent responses?"
+> "What happens if the client disconnects mid-stream? My generator might keep running, wasting resources. How do I detect disconnection and clean up?"
+
+Review AI's solution. Challenge it:
+
+> "Your solution uses try/finally. But what if I have resources like database cursors that need cleanup? Show me the pattern for resource cleanup in async generators."
+
+**Scenario 3: Compare Alternatives**
+
+> "When should I use SSE vs WebSockets vs HTTP/2 server push? My agent needs to stream responses, but also handle user interrupts. Does SSE still work?"
+
+This explores the trade-offs between streaming technologies—important for production agent systems.
 
 ---
 
@@ -473,6 +569,8 @@ You've learned to implement streaming with SSE:
 - **Async generators**: `async def` with `yield` for data production
 - **Event format**: `event` and `data` fields
 - **Browser testing**: Use `EventSource` API in JavaScript
-- **Error handling**: Yield error events gracefully
+- **Error handling**: Yield error events, don't raise exceptions mid-stream
 
-Next lesson, you'll integrate an AI agent—sending user questions and streaming the agent's response.
+**The bigger picture**: Streaming transforms user experience. Instead of waiting 30 seconds for a complete response, users see progress immediately. This is how modern AI interfaces feel responsive even when processing takes time.
+
+Next lesson, you'll integrate an AI agent—sending user questions and streaming the agent's response token by token.
