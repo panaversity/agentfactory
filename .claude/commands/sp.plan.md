@@ -1,5 +1,13 @@
 ---
-description: Execute the implementation planning workflow with context-aware agent routing. Routes to chapter-planner for content work, general-purpose for engineering/platform work.
+description: Execute the implementation planning workflow using the plan template to generate design artifacts.
+handoffs: 
+  - label: Create Tasks
+    agent: sp.tasks
+    prompt: Break the plan into tasks
+    send: true
+  - label: Create Checklist
+    agent: sp.checklist
+    prompt: Create a checklist for the following domain...
 ---
 
 ## User Input
@@ -96,78 +104,87 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Fill Constitution Check section from constitution
    - Evaluate gates (ERROR if violations unjustified)
    - Phase 0: Generate research.md (resolve all NEEDS CLARIFICATION)
-   - Phase 1: Generate appropriate artifacts based on work type
+   - Phase 1: Generate data-model.md, contracts/, quickstart.md
+   - Phase 1: Update agent context by running the agent script
    - Re-evaluate Constitution Check post-design
 
-6. **Stop and report**: Command ends after planning. Report branch, IMPL_PLAN path, and generated artifacts.
+4. **Stop and report**: Command ends after Phase 2 planning. Report branch, IMPL_PLAN path, and generated artifacts.
 
-## Work-Type-Specific Artifacts
+## Phases
 
-### CONTENT Work Artifacts
+### Phase 0: Outline & Research
 
-| Artifact | Purpose |
-|----------|---------|
-| `plan.md` | Lesson structure, pedagogical progression |
-| `research.md` | Technical accuracy verification |
-| Optional: `data-model.md` | If content includes data structures |
+1. **Extract unknowns from Technical Context** above:
+   - For each NEEDS CLARIFICATION → research task
+   - For each dependency → best practices task
+   - For each integration → patterns task
 
-**Content Plan Requirements**:
-- Lesson count justified by concept density
-- Pedagogical arc: Foundation → Application → Integration → Validation → Mastery
-- Hardware tiers marked per lesson (Tier 1 always supported)
-- Teaching modality varied from previous content
-- Stage progression explicit (L1/L2/L3/L4)
-- Intelligence creation identified (skills/subagents)
+2. **Generate and dispatch research agents**:
 
-### ENGINEERING/PLATFORM Work Artifacts
+   ```text
+   For each unknown in Technical Context:
+     Task: "Research {unknown} for {feature context}"
+   For each technology choice:
+     Task: "Find best practices for {tech} in {domain}"
+   ```
 
-| Artifact | Purpose |
-|----------|---------|
-| `plan.md` | Architecture, components, sequence |
-| `research.md` | Technology decisions |
-| `data-model.md` | Entities and relationships |
-| `contracts/` | API specifications |
-| `quickstart.md` | Integration scenarios |
+3. **Consolidate findings** in `research.md` using format:
+   - Decision: [what was chosen]
+   - Rationale: [why chosen]
+   - Alternatives considered: [what else evaluated]
 
-**Engineering Plan Requirements**:
-- Component decomposition with clear boundaries
-- Dependency graph for build order
-- Test strategy (unit, integration, e2e)
-- Integration points identified
-- Error handling approach
+**Output**: research.md with all NEEDS CLARIFICATION resolved
 
-## Cross-Book Intelligence Check
+### Phase 1: Design & Contracts
 
-Before finalizing plan, assess:
+**Prerequisites:** `research.md` complete
 
-```
-INTELLIGENCE ACCUMULATION:
-- Patterns that apply to future books: [list]
-- Patterns specific to THIS book only: [list]
-- Skills to create (platform-level): [list]
-- Skills to create (domain-level): [list]
-- Knowledge files needed: [list]
-```
+1. **Extract entities from feature spec** → `data-model.md`:
+   - Entity name, fields, relationships
+   - Validation rules from requirements
+   - State transitions if applicable
 
-## Key Rules
+2. **Generate API contracts** from functional requirements:
+   - For each user action → endpoint
+   - Use standard REST/GraphQL patterns
+   - Output OpenAPI/GraphQL schema to `/contracts/`
+
+3. **Agent context update**:
+   - Run `.specify/scripts/bash/update-agent-context.sh claude`
+   - These scripts detect which AI agent is in use
+   - Update the appropriate agent-specific context file
+   - Add only new technology from current plan
+   - Preserve manual additions between markers
+
+**Output**: data-model.md, /contracts/*, quickstart.md, agent-specific file
+
+## Key rules
 
 - Use absolute paths
 - ERROR on gate failures or unresolved clarifications
-- Route to chapter-planner for ANY educational content
-- Route to general-purpose for engineering/platform work
-- Always check hardware tier requirements for content
 
 ---
 
-As the main request completes, you MUST create and complete a PHR (Prompt History Record).
+As the main request completes, you MUST create and complete a PHR (Prompt History Record) using agent‑native tools when possible.
 
-1) Determine Stage: `plan`
+1) Determine Stage
+   - Stage: constitution | spec | plan | tasks | red | green | refactor | explainer | misc | general
 
 2) Generate Title and Determine Routing:
-   - Route: `history/prompts/<feature-name>/`
+   - Generate Title: 3–7 words (slug for filename)
+   - Route is automatically determined by stage:
+     - `constitution` → `history/prompts/constitution/`
+     - Feature stages → `history/prompts/<feature-name>/` (spec, plan, tasks, red, green, refactor, explainer, misc)
+     - `general` → `history/prompts/general/`
 
-3) Create and Fill PHR:
-   - Run: `.specify/scripts/bash/create-phr.sh --title "<title>" --stage plan --feature <name> --json`
-   - Fill placeholders with plan summary
+3) Create and Fill PHR (Shell first; fallback agent‑native)
+   - Run: `.specify/scripts/bash/create-phr.sh --title "<title>" --stage <stage> [--feature <name>] --json`
+   - Open the file and fill remaining placeholders (YAML + body), embedding full PROMPT_TEXT (verbatim) and concise RESPONSE_TEXT.
+   - If the script fails:
+     - Read `.specify/templates/phr-template.prompt.md` (or `templates/…`)
+     - Allocate an ID; compute the output path based on stage from step 2; write the file
+     - Fill placeholders and embed full PROMPT_TEXT and concise RESPONSE_TEXT
 
 4) Validate + report
+   - No unresolved placeholders; path under `history/prompts/` and matches stage; stage/title/date coherent; print ID + path + stage + title.
+   - On failure: warn, don't block. Skip only for `/sp.phr`.
