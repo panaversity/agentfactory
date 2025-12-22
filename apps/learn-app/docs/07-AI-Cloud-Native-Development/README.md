@@ -20,48 +20,53 @@ By completing Part 7, you will:
 - **Containerize agent services**: Package your FastAPI/ChatKit agents with Docker, optimize images, and ship portable containers
 - **Orchestrate at scale**: Deploy to Kubernetes clusters, manage replicas, and handle traffic routing
 - **Build event-driven systems**: Use Apache Kafka for asynchronous agent communication and decoupled architectures
-- **Apply Dapr patterns**: Leverage Dapr's distributed runtime for microservices, actors, and durable workflows
-- **Operate with excellence**: Implement observability (metrics, logs, traces), optimize costs, and secure production deployments
+- **Apply Dapr patterns**: Leverage Dapr's distributed runtime for microservices, state management, and durable workflows
+- **Automate deployments**: Implement CI/CD pipelines with GitHub Actions and GitOps with ArgoCD
+- **Operate with excellence**: Build observability, optimize costs, secure endpoints, and govern production systems
 
 ---
 
 ## Chapter Progression
 
-Part 7's 12 chapters build deployment capability through four stages:
+Part 7's 11 chapters build deployment capability through five stages:
 
-### Foundational Infrastructure (Chapters 49-51)
+### Containerization & Orchestration (Chapters 49-51)
 
-Start with containerization and event-driven patterns.
+Package and orchestrate your agent services.
 
-- **Docker for AI Services** — Building container images, multi-stage builds, optimization strategies, and shipping agents as portable containers
-- **Apache Kafka for Event-Driven AI** — Event streaming for agent communication, message patterns, and asynchronous architectures
-- **Kubernetes for AI Services** — Container orchestration, deployments, services, config management, and running agents in K8s clusters
+- **Docker for AI Services** — Container images, multi-stage builds, optimization, and AI-assisted workflows with Gordon
+- **Kubernetes with Minikube** — Local K8s clusters, deployments, services, config management, and AI-assisted operations with kubectl-ai
+- **Helm Charts for AI Services** — Package management, templating, releases, and reusable chart patterns
 
-### Deployment Automation (Chapters 52-53)
+### Event-Driven Architecture (Chapter 52)
+
+Decouple services with asynchronous messaging.
+
+- **Event-Driven Architecture with Kafka** — Core concepts (topics, partitions, consumers), event streaming patterns, and agent communication
+
+### Dapr Framework (Chapters 53-54)
+
+Apply Dapr's distributed runtime for production agent patterns.
+
+- **Dapr Fundamentals** — Sidecar architecture, pub/sub, state management, service invocation, and secrets
+- **Dapr Actors & Workflows** — Virtual actors for agent state, durable workflows, and long-running orchestration
+
+### Automation (Chapter 55)
 
 Automate the path from code to production.
 
-- **CI/CD for AI Services** — Automated pipelines, testing in CI, and deployment workflows
-- **Infrastructure-as-Code** — Terraform/Pulumi for provisioning, GitOps patterns, and reproducible environments
+- **CI/CD Pipelines & GitOps with ArgoCD** — GitHub Actions for build/test, ArgoCD for declarative K8s deployments, and GitOps workflows
 
-### Dapr Framework (Chapters 54-57)
-
-Apply Dapr's distributed application runtime for production agent architectures.
-
-- **Dapr for AI Microservices** — Sidecar building blocks, service invocation, pub/sub messaging, and state management
-- **Dapr Actors for Agentic State** — Virtual actor pattern for agent state, concurrency control, and distributed coordination
-- **Dapr Workflows for Orchestration** — Durable workflows, saga patterns, and long-running agent processes
-- **Dapr Agents** — Combining actors + workflows + AI for production agent architectures
-
-### Operations Excellence (Chapters 58-60)
+### Operations Excellence (Chapters 56-59)
 
 Operate agent systems reliably and securely at scale.
 
-- **Observability & Performance** — Metrics, logs, traces (OpenTelemetry), cost optimization, and performance tuning
-- **API Gateway & Edge** — Ingress patterns, Kong/API gateway configuration, rate limiting, and traffic management
+- **Observability & Cost Engineering** — Metrics, logs, traces (OpenTelemetry), cost optimization, and performance tuning
+- **API Gateway & Traffic Management** — Ingress patterns, Kong/gateway configuration, rate limiting, and traffic routing
 - **Security & Governance** — Authentication, authorization, secrets management, safety guardrails, and compliance
+- **Infrastructure-as-Code** — Terraform/Pulumi for provisioning, cloud K8s deployment (DOKS/GKE/AKS), and reproducible environments
 
-**Why this sequence?** You can't orchestrate what you can't containerize. You can't automate what you haven't deployed manually. Each stage builds capability: Containers (portable agents) → Orchestration (scaled agents) → Dapr (distributed agents) → Operations (reliable agents).
+**Why this sequence?** You can't orchestrate what you can't containerize. You can't automate what you haven't deployed manually. Each stage builds capability: Containers (portable agents) → Orchestration (scaled agents) → Events (decoupled agents) → Dapr (distributed agents) → Automation (repeatable deployments) → Operations (reliable, secure, cost-effective systems).
 
 ---
 
@@ -70,10 +75,11 @@ Operate agent systems reliably and securely at scale.
 By the end of Part 7, you can:
 
 1. **Package** your agent as a Docker container
-2. **Deploy** it to Kubernetes (or any cloud)
+2. **Deploy** it to Kubernetes (local or cloud)
 3. **Scale** it to handle thousands of concurrent users
-4. **Monitor** its health, performance, and costs
-5. **Secure** it for production use
+4. **Automate** builds, tests, and deployments
+5. **Monitor** health, performance, and costs
+6. **Secure** it for production use
 
 **This is a sellable product.** A Digital FTE that customers pay $1,000/month for—running 24/7, handling their workflows, accessible via API or chat interface.
 
@@ -83,4 +89,4 @@ By the end of Part 7, you can:
 
 Part 7 applies the same spec-driven approach: write specifications for your infrastructure, let AI help implement, validate the results. Infrastructure-as-Code (IaC) is just specification-driven development for cloud resources.
 
-You'll use Claude Code to generate Dockerfiles, Kubernetes manifests, Terraform configs, and CI/CD pipelines—validating each against your requirements before deploying.
+You'll use Claude Code to generate Dockerfiles, Kubernetes manifests, Helm charts, Terraform configs, and CI/CD pipelines—validating each against your requirements before deploying.
