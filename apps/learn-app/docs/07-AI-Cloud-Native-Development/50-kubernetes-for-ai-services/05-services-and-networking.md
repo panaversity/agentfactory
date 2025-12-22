@@ -5,6 +5,9 @@ lesson: 5
 duration_minutes: 40
 title: "Services and Networking: Stable Access to Dynamic Pods"
 proficiency_level: B1
+teaching_stage: 1
+stage_name: "Manual Foundation"
+stage_description: "Manual Service creation builds understanding of stable networking abstractions"
 cognitive_load:
   concepts_count: 8
   scaffolding_level: "Moderate"
@@ -33,6 +36,31 @@ learning_objectives:
   - id: LO8
     description: "Design Service strategy based on access pattern requirements (internal vs external)"
     bloom_level: "Apply"
+digcomp_mapping:
+  - objective_id: LO1
+    competency_area: "5. Problem Solving"
+    competency: "5.2 Identifying needs and technological responses"
+  - objective_id: LO2
+    competency_area: "1. Information and Data Literacy"
+    competency: "1.2 Understanding digital concepts and terminology"
+  - objective_id: LO3
+    competency_area: "1. Information and Data Literacy"
+    competency: "1.2 Understanding digital concepts and terminology"
+  - objective_id: LO4
+    competency_area: "3. Digital Content Creation"
+    competency: "3.4 Programming"
+  - objective_id: LO5
+    competency_area: "3. Digital Content Creation"
+    competency: "3.4 Programming"
+  - objective_id: LO6
+    competency_area: "1. Information and Data Literacy"
+    competency: "1.2 Understanding digital concepts and terminology"
+  - objective_id: LO7
+    competency_area: "5. Problem Solving"
+    competency: "5.1 Solving technical problems"
+  - objective_id: LO8
+    competency_area: "5. Problem Solving"
+    competency: "5.3 Using digital tools to solve problems"
 ---
 
 # Services and Networking: Stable Access to Dynamic Pods
