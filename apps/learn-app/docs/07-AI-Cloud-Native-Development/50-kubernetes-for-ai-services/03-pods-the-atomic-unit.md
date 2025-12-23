@@ -215,7 +215,7 @@ Pending → Running → (Succeeded or Failed)
 - Kubernetes is scheduling (finding a node)
 - Container image is being pulled
 - Pod waiting for volumes to attach
-- Duration: Usually <30 seconds, but can be longer if image is large or cluster is full
+- Duration: Usually under 30 seconds, but can be longer if image is large or cluster is full
 
 **Running**: At least one container is running
 - Pod is on a node

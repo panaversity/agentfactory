@@ -869,7 +869,7 @@ Now you've learned to configure probes manually. In the next lesson, you'll use 
 
 **Challenge**: Configure probes for an agent with these characteristics:
 - Model loads in 20 seconds
-- Health endpoint responds in <500ms when healthy
+- Health endpoint responds in under 500ms when healthy
 - You want aggressive failure detection for readiness (pod removed quickly if unhealthy)
 - You want conservative failure detection for liveness (don't restart on transient errors)
 
