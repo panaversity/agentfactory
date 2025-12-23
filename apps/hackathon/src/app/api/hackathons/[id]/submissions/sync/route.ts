@@ -6,17 +6,40 @@ import { getHackathonById } from "@/db/queries/hackathons";
 import {
   getTeamMembersByHackathon,
   getSubmissionsByEmails,
-  createSubmissionFromSync,
-  updateSubmissionFromSync,
+  batchCreateSubmissionsFromSync,
+  batchUpdateSubmissionsFromSync,
 } from "@/db/queries/submissions";
 import { createSubmissionSync } from "@/db/queries/submission-fields";
 import { syncRequestSchema } from "@/lib/validation/submission-fields";
 import { parseCSV, mapRowToSubmission } from "@/lib/csv-parser";
 import { invalidateCache } from "@/lib/cache";
 
+// Simple in-memory rate limiter (use Upstash in production)
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_WINDOW_MS = 60000; // 1 minute
+const RATE_LIMIT_MAX_REQUESTS = 5; // 5 syncs per minute
+
+function checkRateLimit(userId: string): boolean {
+  const now = Date.now();
+  const record = rateLimitMap.get(userId);
+
+  if (!record || now > record.resetAt) {
+    rateLimitMap.set(userId, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return true;
+  }
+
+  if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return false;
+  }
+
+  record.count++;
+  return true;
+}
+
 /**
  * POST /api/hackathons/[id]/submissions/sync
  * Sync submissions from external form CSV
+ * Uses batch operations for performance at scale
  */
 export async function POST(
   request: Request,
@@ -33,6 +56,14 @@ export async function POST(
 
     if (!session.user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    // Rate limiting
+    if (!checkRateLimit(session.user.id)) {
+      return NextResponse.json(
+        { error: "Rate limit exceeded. Max 5 syncs per minute." },
+        { status: 429 }
+      );
     }
 
     // Check hackathon exists and user has access
@@ -60,12 +91,28 @@ export async function POST(
 
     const { csvContent, columnMapping, updateExisting } = parseResult.data;
 
+    // Limit CSV size (prevent memory issues)
+    if (csvContent.length > 5 * 1024 * 1024) {
+      return NextResponse.json(
+        { error: "CSV too large. Maximum 5MB." },
+        { status: 400 }
+      );
+    }
+
     // Parse CSV
     const { headers, rows, errors: parseErrors } = parseCSV(csvContent);
 
     if (parseErrors.length > 0) {
       return NextResponse.json(
         { error: "CSV parse errors", details: parseErrors },
+        { status: 400 }
+      );
+    }
+
+    // Limit row count
+    if (rows.length > 5000) {
+      return NextResponse.json(
+        { error: "Too many rows. Maximum 5000 per sync." },
         { status: 400 }
       );
     }
@@ -78,7 +125,7 @@ export async function POST(
       );
     }
 
-    // Get all team members for matching
+    // Get all team members for matching (single query)
     const teamMembers = await getTeamMembersByHackathon(id);
     const membersByEmail = new Map(
       teamMembers
@@ -86,7 +133,7 @@ export async function POST(
         .map((m) => [m.email!.toLowerCase(), m])
     );
 
-    // Get existing submissions
+    // Get existing submissions (single query)
     const emails = rows
       .map((r) => r[columnMapping.email]?.toLowerCase())
       .filter(Boolean);
@@ -97,7 +144,30 @@ export async function POST(
         .map((s) => [s.submitterEmail!.toLowerCase(), s])
     );
 
-    // Process rows
+    // Prepare batch operations
+    const toCreate: Array<{
+      teamId: string;
+      hackathonId: string;
+      organizationId: string;
+      projectName: string;
+      description: string;
+      repositoryUrl: string;
+      demoUrl?: string;
+      submittedBy: string;
+      submitterUsername: string;
+      submitterName?: string;
+      submitterEmail: string;
+      formData?: string;
+    }> = [];
+
+    const toUpdate: Array<{
+      id: string;
+      projectName?: string;
+      repositoryUrl?: string;
+      demoUrl?: string;
+      formData?: string;
+    }> = [];
+
     const results = {
       totalRows: rows.length,
       matched: 0,
@@ -108,6 +178,7 @@ export async function POST(
       errors: [] as string[],
     };
 
+    // Process rows and collect batch operations
     for (let i = 0; i < rows.length; i++) {
       const row = rows[i];
       const rowNum = i + 2; // 1-indexed + header row
@@ -127,9 +198,12 @@ export async function POST(
 
         if (!member) {
           results.unmatched++;
-          results.errors.push(
-            `Row ${rowNum}: Email "${mapped.email}" not found in registered teams`
-          );
+          // Only add first 50 unmatched errors to avoid huge response
+          if (results.errors.length < 50) {
+            results.errors.push(
+              `Row ${rowNum}: Email "${mapped.email}" not found in registered teams`
+            );
+          }
           continue;
         }
 
@@ -140,28 +214,30 @@ export async function POST(
 
         if (existingSubmission) {
           if (updateExisting) {
-            await updateSubmissionFromSync(existingSubmission.id, {
+            toUpdate.push({
+              id: existingSubmission.id,
               projectName: mapped.projectName || existingSubmission.projectName,
               repositoryUrl:
                 mapped.repositoryUrl || existingSubmission.repositoryUrl,
               demoUrl: mapped.demoUrl || existingSubmission.demoUrl || undefined,
               formData: JSON.stringify(mapped.formData),
             });
-            results.updated++;
           } else {
             results.skipped++;
           }
         } else {
           // Create new submission
           if (!mapped.repositoryUrl) {
-            results.errors.push(
-              `Row ${rowNum}: Missing repository URL for new submission`
-            );
+            if (results.errors.length < 50) {
+              results.errors.push(
+                `Row ${rowNum}: Missing repository URL for new submission`
+              );
+            }
             results.skipped++;
             continue;
           }
 
-          await createSubmissionFromSync({
+          toCreate.push({
             teamId: member.teamId,
             hackathonId: id,
             organizationId: session.user.organizationId,
@@ -175,14 +251,26 @@ export async function POST(
             submitterEmail: email,
             formData: JSON.stringify(mapped.formData),
           });
-          results.created++;
         }
       } catch (error) {
-        results.errors.push(
-          `Row ${rowNum}: ${error instanceof Error ? error.message : "Unknown error"}`
-        );
+        if (results.errors.length < 50) {
+          results.errors.push(
+            `Row ${rowNum}: ${error instanceof Error ? error.message : "Unknown error"}`
+          );
+        }
         results.skipped++;
       }
+    }
+
+    // Execute batch operations
+    if (toCreate.length > 0) {
+      await batchCreateSubmissionsFromSync(toCreate);
+      results.created = toCreate.length;
+    }
+
+    if (toUpdate.length > 0) {
+      await batchUpdateSubmissionsFromSync(toUpdate);
+      results.updated = toUpdate.length;
     }
 
     // Record sync history
@@ -203,6 +291,11 @@ export async function POST(
     // Invalidate caches
     invalidateCache(`hackathon:${id}:submissions`);
     invalidateCache(`hackathon:${id}`);
+
+    // Truncate errors if too many
+    if (results.errors.length === 50) {
+      results.errors.push("... (additional errors truncated)");
+    }
 
     return NextResponse.json({
       success: true,

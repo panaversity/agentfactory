@@ -56,12 +56,27 @@ export async function verifyAccessToken(token: string): Promise<JWTPayload> {
 
 /**
  * Extract user info from verified ID token
+ * Throws if required fields are missing
  */
 export function extractUserFromToken(payload: SSOJWTPayload) {
+  // Validate required fields
+  if (!payload.sub) {
+    throw new Error("Missing user ID (sub) in token");
+  }
+  if (!payload.username) {
+    throw new Error("Missing username in token - user must complete SSO profile");
+  }
+  if (!payload.email) {
+    throw new Error("Missing email in token");
+  }
+  if (!payload.tenant_id) {
+    throw new Error("Missing organization (tenant_id) in token");
+  }
+
   return {
     id: payload.sub,
     email: payload.email,
-    name: payload.name,
+    name: payload.name || payload.username, // Fallback to username if name missing
     username: payload.username,
     image: payload.image,
     organizationId: payload.tenant_id,
