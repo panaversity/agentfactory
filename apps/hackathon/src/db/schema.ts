@@ -63,6 +63,10 @@ export const hackathons = pgTable(
     status: text("status").notNull().default("draft"), // draft, open, active, judging, completed
     published: boolean("published").notNull().default(false),
 
+    // Submission Configuration
+    submissionMode: text("submission_mode").notNull().default("platform"), // platform, external, hybrid
+    externalFormUrl: text("external_form_url"), // Google Form, Typeform, etc.
+
     // Metadata
     createdAt: timestamp("created_at").defaultNow().notNull(),
     updatedAt: timestamp("updated_at")
@@ -84,6 +88,8 @@ export const hackathonsRelations = relations(hackathons, ({ many }) => ({
   roles: many(hackathonRoles),
   teams: many(teams),
   submissions: many(submissions),
+  submissionFields: many(submissionFields),
+  submissionSyncs: many(submissionSyncs),
 }));
 
 // =============================================================================
@@ -329,6 +335,14 @@ export const submissions = pgTable(
     submittedBy: text("submitted_by").notNull(),
     submitterUsername: text("submitter_username").notNull(),
     submitterName: text("submitter_name"),
+    submitterEmail: text("submitter_email"), // For external form matching
+
+    // Custom form data (JSON - responses to custom fields)
+    formData: text("form_data"), // JSON object with custom field responses
+
+    // External sync tracking
+    syncedFromExternal: boolean("synced_from_external").notNull().default(false),
+    syncedAt: timestamp("synced_at"),
 
     // Metadata
     submittedAt: timestamp("submitted_at").defaultNow().notNull(),
@@ -341,6 +355,7 @@ export const submissions = pgTable(
     index("submissions_org_idx").on(table.organizationId),
     index("submissions_team_idx").on(table.teamId),
     index("submissions_hackathon_idx").on(table.hackathonId, table.status),
+    index("submissions_email_idx").on(table.submitterEmail), // For sync matching
     unique("submissions_team_hackathon_unique").on(
       table.teamId,
       table.hackathonId
@@ -529,6 +544,113 @@ export const winnersRelations = relations(winners, ({ one }) => ({
 }));
 
 // =============================================================================
+// SUBMISSION FIELDS (Custom Form Builder)
+// =============================================================================
+
+export const submissionFields = pgTable(
+  "submission_fields",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+
+    hackathonId: text("hackathon_id")
+      .notNull()
+      .references(() => hackathons.id, { onDelete: "cascade" }),
+
+    // Tenant ID from SSO (no FK)
+    organizationId: text("organization_id").notNull(),
+
+    // Field definition
+    name: text("name").notNull(), // Machine name: "youtube_demo", "tech_stack"
+    label: text("label").notNull(), // Display label: "YouTube Demo Link"
+    type: text("type").notNull(), // text, url, textarea, select, number
+    placeholder: text("placeholder"), // Placeholder text
+    description: text("description"), // Help text below field
+
+    // For select type
+    options: text("options"), // JSON array: ["Option 1", "Option 2"]
+
+    // Validation
+    required: boolean("required").notNull().default(false),
+    order: integer("order").notNull().default(0),
+
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at")
+      .defaultNow()
+      .$onUpdate(() => new Date())
+      .notNull(),
+  },
+  (table) => [
+    index("submission_fields_hackathon_idx").on(table.hackathonId, table.order),
+    index("submission_fields_org_idx").on(table.organizationId),
+    unique("submission_fields_name_hackathon_unique").on(
+      table.hackathonId,
+      table.name
+    ),
+  ]
+);
+
+export const submissionFieldsRelations = relations(
+  submissionFields,
+  ({ one }) => ({
+    hackathon: one(hackathons, {
+      fields: [submissionFields.hackathonId],
+      references: [hackathons.id],
+    }),
+  })
+);
+
+// =============================================================================
+// SUBMISSION SYNCS (External Form Sync History)
+// =============================================================================
+
+export const submissionSyncs = pgTable(
+  "submission_syncs",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+
+    hackathonId: text("hackathon_id")
+      .notNull()
+      .references(() => hackathons.id, { onDelete: "cascade" }),
+
+    // Tenant ID from SSO (no FK)
+    organizationId: text("organization_id").notNull(),
+
+    // Sync details
+    fileName: text("file_name"), // "responses.csv"
+    totalRows: integer("total_rows").notNull().default(0),
+    matched: integer("matched").notNull().default(0), // Found in our registrations
+    unmatched: integer("unmatched").notNull().default(0), // In CSV but not registered
+    created: integer("created").notNull().default(0), // New submissions created
+    updated: integer("updated").notNull().default(0), // Existing submissions updated
+
+    // Sync metadata
+    syncedBy: text("synced_by").notNull(),
+    syncedByUsername: text("synced_by_username").notNull(),
+    syncedByName: text("synced_by_name"),
+
+    syncedAt: timestamp("synced_at").defaultNow().notNull(),
+  },
+  (table) => [
+    index("submission_syncs_hackathon_idx").on(table.hackathonId),
+    index("submission_syncs_org_idx").on(table.organizationId),
+  ]
+);
+
+export const submissionSyncsRelations = relations(
+  submissionSyncs,
+  ({ one }) => ({
+    hackathon: one(hackathons, {
+      fields: [submissionSyncs.hackathonId],
+      references: [hackathons.id],
+    }),
+  })
+);
+
+// =============================================================================
 // TYPE EXPORTS
 // =============================================================================
 
@@ -558,3 +680,9 @@ export type NewTeamMessage = typeof teamMessages.$inferInsert;
 
 export type Winner = typeof winners.$inferSelect;
 export type NewWinner = typeof winners.$inferInsert;
+
+export type SubmissionField = typeof submissionFields.$inferSelect;
+export type NewSubmissionField = typeof submissionFields.$inferInsert;
+
+export type SubmissionSync = typeof submissionSyncs.$inferSelect;
+export type NewSubmissionSync = typeof submissionSyncs.$inferInsert;

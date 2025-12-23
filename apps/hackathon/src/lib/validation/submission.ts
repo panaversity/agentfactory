@@ -25,6 +25,9 @@ export const createSubmissionSchema = z.object({
   ),
   demoUrl: urlSchema.optional().nullable(),
   presentationUrl: urlSchema.optional().nullable(),
+  categoryId: z.string().optional().nullable(),
+  // Dynamic form data (custom fields defined by hackathon)
+  formData: z.record(z.string(), z.unknown()).optional(),
 });
 
 export type CreateSubmissionInput = z.infer<typeof createSubmissionSchema>;

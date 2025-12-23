@@ -1,4 +1,4 @@
-import { and, eq, desc, sql } from "drizzle-orm";
+import { and, eq, desc, sql, inArray } from "drizzle-orm";
 import { db } from "@/db";
 import {
   submissions,
@@ -6,6 +6,7 @@ import {
   hackathons,
   scores,
   judgingCriteria,
+  teamMembers,
 } from "@/db/schema";
 import type {
   CreateSubmissionInput,
@@ -101,6 +102,7 @@ interface UserData {
   id: string;
   username: string;
   name?: string | null;
+  email?: string | null;
 }
 
 /**
@@ -142,16 +144,21 @@ export async function createSubmission(
     throw new Error("Team already has a submission. Please update instead.");
   }
 
+  // Extract formData and serialize it
+  const { formData, ...restData } = data;
+
   const result = await db
     .insert(submissions)
     .values({
-      ...data,
+      ...restData,
       teamId,
       hackathonId,
       organizationId,
       submittedBy: user.id,
       submitterUsername: user.username,
       submitterName: user.name,
+      submitterEmail: user.email,
+      formData: formData ? JSON.stringify(formData) : null,
       status: "submitted",
     })
     .returning();
@@ -440,4 +447,148 @@ export async function getSubmissionsForJudge(
   }
 
   return results;
+}
+
+// =============================================================================
+// EXTERNAL FORM SYNC
+// =============================================================================
+
+/**
+ * Get all team members with their emails for matching
+ */
+export async function getTeamMembersByHackathon(hackathonId: string) {
+  return db
+    .select({
+      teamId: teamMembers.teamId,
+      userId: teamMembers.userId,
+      email: teamMembers.email,
+      username: teamMembers.username,
+      name: teamMembers.name,
+      teamName: teams.name,
+    })
+    .from(teamMembers)
+    .innerJoin(teams, eq(teamMembers.teamId, teams.id))
+    .where(eq(teams.hackathonId, hackathonId));
+}
+
+/**
+ * Get existing submissions by email for sync matching
+ */
+export async function getSubmissionsByEmails(
+  hackathonId: string,
+  emails: string[]
+) {
+  if (emails.length === 0) return [];
+
+  return db
+    .select()
+    .from(submissions)
+    .where(
+      and(
+        eq(submissions.hackathonId, hackathonId),
+        inArray(submissions.submitterEmail, emails)
+      )
+    );
+}
+
+/**
+ * Create submission from external sync (no deadline check)
+ */
+export async function createSubmissionFromSync(data: {
+  teamId: string;
+  hackathonId: string;
+  organizationId: string;
+  projectName: string;
+  description: string;
+  repositoryUrl: string;
+  demoUrl?: string;
+  presentationUrl?: string;
+  categoryId?: string;
+  submittedBy: string;
+  submitterUsername: string;
+  submitterName?: string;
+  submitterEmail?: string;
+  formData?: string;
+}) {
+  const result = await db
+    .insert(submissions)
+    .values({
+      ...data,
+      status: "submitted",
+      syncedFromExternal: true,
+      syncedAt: new Date(),
+    })
+    .returning();
+
+  // Update team status
+  await db
+    .update(teams)
+    .set({ status: "submitted", updatedAt: new Date() })
+    .where(eq(teams.id, data.teamId));
+
+  return result[0];
+}
+
+/**
+ * Update submission from external sync
+ */
+export async function updateSubmissionFromSync(
+  id: string,
+  data: {
+    projectName?: string;
+    description?: string;
+    repositoryUrl?: string;
+    demoUrl?: string;
+    presentationUrl?: string;
+    formData?: string;
+  }
+) {
+  const result = await db
+    .update(submissions)
+    .set({
+      ...data,
+      syncedFromExternal: true,
+      syncedAt: new Date(),
+      updatedAt: new Date(),
+    })
+    .where(eq(submissions.id, id))
+    .returning();
+
+  return result[0] ?? null;
+}
+
+/**
+ * Get submission count stats for a hackathon
+ */
+export async function getSubmissionStats(hackathonId: string) {
+  const total = await db
+    .select({ count: sql<number>`count(*)::int` })
+    .from(submissions)
+    .where(eq(submissions.hackathonId, hackathonId));
+
+  const synced = await db
+    .select({ count: sql<number>`count(*)::int` })
+    .from(submissions)
+    .where(
+      and(
+        eq(submissions.hackathonId, hackathonId),
+        eq(submissions.syncedFromExternal, true)
+      )
+    );
+
+  const byStatus = await db
+    .select({
+      status: submissions.status,
+      count: sql<number>`count(*)::int`,
+    })
+    .from(submissions)
+    .where(eq(submissions.hackathonId, hackathonId))
+    .groupBy(submissions.status);
+
+  return {
+    total: total[0]?.count ?? 0,
+    synced: synced[0]?.count ?? 0,
+    platform: (total[0]?.count ?? 0) - (synced[0]?.count ?? 0),
+    byStatus: Object.fromEntries(byStatus.map((s) => [s.status, s.count])),
+  };
 }

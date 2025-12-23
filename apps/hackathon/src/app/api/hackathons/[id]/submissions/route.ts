@@ -121,6 +121,7 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
         id: session.user.id,
         username: session.user.username,
         name: session.user.name,
+        email: session.user.email,
       }
     );
 
