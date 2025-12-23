@@ -123,7 +123,7 @@ const config: Config = {
           },
         ]
       : []),
-    // Google Fonts: Inter (UI), Merriweather (Text), JetBrains Mono (Code)
+    // Google Fonts: Inter (UI/Body), JetBrains Mono (Code)
     {
       tagName: "link",
       attributes: {
@@ -143,7 +143,7 @@ const config: Config = {
       tagName: "link",
       attributes: {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
       },
     },
   ],

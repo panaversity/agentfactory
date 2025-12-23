@@ -48,6 +48,14 @@
    1. SIDEBAR CONTAINER
    ============================================================================ */
 
+/* FIX: Override default Docusaurus sidebar padding that uses navbar height */
+/* This targets CSS module classes like sidebar_kgCq that get padding-top: 60px in production */
+.theme-doc-sidebar-container,
+aside[class*='sidebar'],
+div[class*='sidebar_'] {
+  padding-top: 0 !important;
+}
+
 .theme-doc-sidebar-container {
   background: transparent !important;
   border-right: 1px solid var(--sidebar-border) !important;
