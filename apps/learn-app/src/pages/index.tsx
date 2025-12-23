@@ -70,6 +70,9 @@ function HomepageHeader() {
               style={{ backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
             </div>
 
+            {/* Spotlight Effect */}
+            <div className={styles.heroSpotlight} />
+
             <div className="relative z-10 transform transition-transform duration-700 hover:scale-[1.28] scale-[1.25]">
               <ThreeDBook
                 src="/img/book-cover-page.png"
@@ -111,7 +114,7 @@ function Feature({
 
 function AISpectrumSection() {
   return (
-    <section className="py-24 border-b border-border/40">
+    <section className="py-24 border-b border-border/40 bg-background">
       <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16">
         {/* Header */}
         <div className="text-center mb-16">
@@ -219,7 +222,7 @@ function AISpectrumSection() {
 
 function FeaturesSection() {
   return (
-    <section className="py-24 border-b border-border/40">
+    <section className="py-24 border-b border-border/40 bg-background">
       <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16">
         {/* Section Header - Technical Style */}
         <div className="flex flex-col md:flex-row justify-between items-end border-b border-border/40 pb-8 mb-12 gap-6">
@@ -324,7 +327,7 @@ function MaturityLevelsSection() {
   ];
 
   return (
-    <section className="py-24 border-b border-border/40">
+    <section className="py-24 border-b border-border/40 bg-background">
       <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16">
         {/* Header */}
         <div className="text-center mb-16">
@@ -408,7 +411,7 @@ function ParadigmShift() {
   ];
 
   return (
-    <section className="py-24 border-b border-border/40">
+    <section className="py-24 border-b border-border/40 bg-background">
       <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16">
         {/* Section Header */}
         <div className="text-center mb-16">

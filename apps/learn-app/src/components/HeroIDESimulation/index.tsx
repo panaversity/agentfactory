@@ -248,7 +248,7 @@ export function IDEShowcaseSection() {
         <>
             <style>{macOSStyles}</style>
 
-            <section className="min-h-[90vh] flex items-center justify-center py-6 pb-12 md:pb-20 rounded-xl allow-rounded bg-background">
+            <section className="hidden md:flex min-h-[90vh] items-center justify-center py-6 pb-12 md:pb-20 rounded-xl allow-rounded bg-background">
                 <div className="w-[95%] max-w-[1800px] mx-auto px-6 h-full">
                     {/* macOS Window */}
                     <div className="allow-rounded macos-window w-full overflow-hidden bg-[#1e1e1e] h-[calc(90vh-48px)] flex flex-col rounded-xl">

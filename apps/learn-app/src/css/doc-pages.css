@@ -674,17 +674,21 @@ article {
 /* Code blocks */
 .markdown pre {
   margin: 2rem 0;
-
+  background-color: var(--muted) !important;
+  /* Override Prism theme */
+  border: 1px solid var(--border);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
 }
 
 [data-theme='dark'] .markdown pre {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  border-color: var(--border);
 }
 
 .markdown pre code {
-  background: transparent;
+  background: transparent !important;
+  /* Ensure inner code doesn't have bg */
   border: none;
   padding: 0;
   font-size: 0.9rem;

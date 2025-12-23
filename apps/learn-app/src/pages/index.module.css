@@ -3036,3 +3036,36 @@
         transform: rotate(90deg);
     }
 }
+
+/* ============================================
+   SPOTLIGHT EFFECT
+   ============================================ */
+.heroSpotlight {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+    filter: blur(80px);
+}
+
+[data-theme='dark'] .heroSpotlight {
+    opacity: 0.2;
+}
+
+@media screen and (max-width: 768px) {
+    .heroSpotlight {
+        width: 80%;
+        height: 300px;
+    }
+
+    [data-theme='dark'] .heroSpotlight {
+        opacity: 0.15;
+    }
+}

@@ -3,8 +3,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Ensure hover space exists */
     padding: 60px 0;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .book {
@@ -45,6 +46,11 @@
     transform: translateZ(25px);
     /* Half thickness */
     z-index: 10;
+}
+
+/* Dark Mode Rim Light (Edge Highlight) */
+:global([data-theme='dark']) .cover {
+    box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.15);
 }
 
 /* BACK COVER */
@@ -161,13 +167,14 @@
 
 
 /* 
- * TEXTURES & LIGHTING 
- */
-
+/* TEXTURES & LIGHTING */
 .coverImg {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    pointer-events: none;
+    /* Prevent dragging the image */
+    -webkit-user-drag: none;
 }
 
 /* Dynamic Sheen */

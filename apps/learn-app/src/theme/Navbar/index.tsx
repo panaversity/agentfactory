@@ -27,10 +27,10 @@ export default function Navbar() {
     return (
         // Outer wrapper with Docusaurus-required classes (for TOC height calculations)
         // We reset inherited styles so they don't affect our layout
-        <nav className="navbar navbar--fixed-top !p-0 !m-0 !bg-transparent !border-none !shadow-none !min-h-0 !block">
+        <nav className="navbar navbar--fixed-top !p-0 !m-0 !bg-transparent !border-none !shadow-none !min-h-0 !block !z-40">
             <header
                 className={cn(
-                    "sticky top-0 z-50 w-full border-b transition-all duration-300",
+                    "sticky top-0 z-40 w-full border-b transition-all duration-300",
                     isScrolled
                         ? "bg-background/80 backdrop-blur-xl border-border shadow-sm"
                         : "bg-background/0 border-transparent"
@@ -50,7 +50,7 @@ export default function Navbar() {
 
                     {/* CENTER: Search Bar - Wider and centered on docs pages */}
                     {!isHomepage && (
-                        <div className="hidden md:flex flex-1 justify-center max-w-3xl mx-8">
+                        <div className="hidden md:flex flex-1 justify-center max-w-lg mx-8">
                             <div className="w-full">
                                 <SearchBar />
                             </div>
