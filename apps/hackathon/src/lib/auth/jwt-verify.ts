@@ -12,15 +12,17 @@ function getJWKS() {
 
 /**
  * Expected JWT claims from SSO
+ * Note: SSO uses OIDC standard claim names (preferred_username, picture)
  */
 export interface SSOJWTPayload extends JWTPayload {
   sub: string;
   email: string;
   name: string;
-  username: string; // Required for user lookup
-  image?: string; // Profile image URL
+  preferred_username: string; // OIDC standard - Required for user lookup
+  picture?: string; // OIDC standard - Profile image URL
   tenant_id: string; // Organization ID
   tenant_name?: string;
+  org_role?: string; // Organization role (member/admin/owner)
 }
 
 /**
@@ -63,7 +65,7 @@ export function extractUserFromToken(payload: SSOJWTPayload) {
   if (!payload.sub) {
     throw new Error("Missing user ID (sub) in token");
   }
-  if (!payload.username) {
+  if (!payload.preferred_username) {
     throw new Error("Missing username in token - user must complete SSO profile");
   }
   if (!payload.email) {
@@ -76,9 +78,9 @@ export function extractUserFromToken(payload: SSOJWTPayload) {
   return {
     id: payload.sub,
     email: payload.email,
-    name: payload.name || payload.username, // Fallback to username if name missing
-    username: payload.username,
-    image: payload.image,
+    name: payload.name || payload.preferred_username, // Fallback to username if name missing
+    username: payload.preferred_username, // Map OIDC preferred_username to internal username
+    image: payload.picture, // Map OIDC picture to internal image
     organizationId: payload.tenant_id,
     organizationName: payload.tenant_name,
   };
