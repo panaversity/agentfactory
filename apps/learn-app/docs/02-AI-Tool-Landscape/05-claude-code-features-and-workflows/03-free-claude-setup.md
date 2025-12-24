@@ -69,9 +69,6 @@ prerequisites:
   - "Terminal access"
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Free Claude Code Setup with Google Gemini
 
 **This lesson provides a free alternative to use Claude Code** using Google's free Gemini API as the backend. You'll learn the same Claude Code CLI interface and features covered in Lesson 2.
@@ -98,8 +95,9 @@ By using **Gemini's free tier** or **OpenRouter's free models**, you get ongoing
 
 **Select your operating system:**
 
-<Tabs groupId="operating-systems">
-<TabItem value="windows" label="Windows" default>
+::::os-tabs
+
+::windows
 
 ### Step 0: Install Node.js (Skip if Already Installed)
 
@@ -228,8 +226,7 @@ echo $env:GOOGLE_API_KEY  # Should show your key
 
 ✅ **Done!** Proceed to Step 3: Daily Workflow below.
 
-</TabItem>
-<TabItem value="macos" label="macOS">
+::macos
 
 ### Verify Node.js
 
@@ -312,8 +309,7 @@ echo $GOOGLE_API_KEY # Should show your key
 
 ✅ **Done!** Proceed to Step 3: Daily Workflow below.
 
-</TabItem>
-<TabItem value="linux" label="Linux">
+::linux
 
 ### Verify Node.js
 
@@ -400,8 +396,7 @@ echo $GOOGLE_API_KEY # Should show your key
 
 ✅ **Done!** Proceed to Step 3: Daily Workflow below.
 
-</TabItem>
-</Tabs>
+::::
 
 ---
 
@@ -409,8 +404,9 @@ echo $GOOGLE_API_KEY # Should show your key
 
 **Every time you want to code:**
 
-<Tabs groupId="operating-systems">
-<TabItem value="windows" label="Windows" default>
+::::os-tabs
+
+::windows
 
 **PowerShell 1** - Start router FIRST:
 ```powershell
@@ -431,8 +427,7 @@ ccr code
 
 **When done:** Press `Ctrl+C` in both windows.
 
-</TabItem>
-<TabItem value="macos" label="macOS">
+::macos
 
 **Terminal 1** - Start router FIRST:
 ```bash
@@ -448,8 +443,7 @@ ccr code
 
 **When done:** Press `Ctrl+C` in both terminals.
 
-</TabItem>
-<TabItem value="linux" label="Linux">
+::linux
 
 **Terminal 1** - Start router FIRST:
 ```bash
@@ -465,8 +459,7 @@ ccr code
 
 **When done:** Press `Ctrl+C` in both terminals.
 
-</TabItem>
-</Tabs>
+::::
 
 ---
 
@@ -496,8 +489,9 @@ hi
 
 ### DeepSeek Configuration
 
-<Tabs groupId="operating-systems">
-<TabItem value="windows" label="Windows" default>
+::::os-tabs
+
+::windows
 
 :::info Already Completed Gemini Setup?
 If you completed the Windows Gemini setup above, you already have Node.js and the tools installed. Just create the new config and set the API key.
@@ -554,8 +548,7 @@ Close and reopen PowerShell, then verify:
 echo $env:DEEPSEEK_API_KEY
 ```
 
-</TabItem>
-<TabItem value="macos" label="macOS">
+::macos
 
 **Create config and set API key:**
 
@@ -596,8 +589,7 @@ echo 'export DEEPSEEK_API_KEY="YOUR_KEY_HERE"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
-</TabItem>
-<TabItem value="linux" label="Linux">
+::linux
 
 **Create config and set API key:**
 
@@ -638,8 +630,7 @@ echo 'export DEEPSEEK_API_KEY="YOUR_KEY_HERE"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-</TabItem>
-</Tabs>
+::::
 
 The daily workflow is identical—use `ccr start` and `ccr code` as shown above.
 
@@ -647,8 +638,9 @@ The daily workflow is identical—use `ccr start` and `ccr code` as shown above.
 
 ## Troubleshooting
 
-<Tabs groupId="operating-systems">
-<TabItem value="windows" label="Windows" default>
+::::os-tabs
+
+::windows
 
 **"command not found" or "not recognized"**
 
@@ -668,8 +660,7 @@ Wait 20-30 seconds on first run. This is normal.
 
 Make sure `ccr start` is running in PowerShell 1 before running `ccr code` in PowerShell 2.
 
-</TabItem>
-<TabItem value="macos" label="macOS">
+::macos
 
 **"command not found: claude" or "command not found: ccr"**
 
@@ -694,8 +685,7 @@ source ~/.zshrc
 
 Wait 2-3 seconds after `ccr start` shows "Service started" before running `ccr code`.
 
-</TabItem>
-<TabItem value="linux" label="Linux">
+::linux
 
 **"command not found: claude" or "command not found: ccr"**
 
@@ -720,8 +710,7 @@ source ~/.bashrc
 
 Wait 2-3 seconds after `ccr start` shows "Service started" before running `ccr code`.
 
-</TabItem>
-</Tabs>
+::::
 
 ---
 

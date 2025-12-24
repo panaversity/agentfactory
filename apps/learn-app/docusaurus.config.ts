@@ -174,6 +174,10 @@ const config: Config = {
             // Summary injection handled by docusaurus-summaries-plugin (global data approach)
           ],
           remarkPlugins: [
+            // Required for :::directive syntax (os-tabs, admonitions, etc.)
+            require('remark-directive'),
+            // OS-specific tabs: :::os-tabs with ::windows ::macos ::linux
+            require('../../libs/docusaurus/remark-os-tabs'),
             // Auto-transform Python code blocks into interactive components
             [require('../../libs/docusaurus/remark-interactive-python'), {
               includePaths: ['/05-Python-Fundamentals/'],

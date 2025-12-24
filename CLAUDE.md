@@ -791,3 +791,54 @@ Skills can be used in ANY phase of the SDD-RI workflow:
 | Vector DB | Qdrant Cloud | RAG embeddings |
 | Auth | Better-Auth | Modern auth with MCP server |
 | AI | OpenAI Agents SDK | Chat, personalization |
+
+---
+
+## Content Authoring Patterns
+
+### OS-Specific Tabs (remark-os-tabs)
+
+For content that differs by operating system (installation guides, CLI commands, paths), use the `os-tabs` directive syntax:
+
+**Simple case (no nested containers):**
+```markdown
+:::os-tabs
+
+::windows
+Windows-specific content here...
+
+::macos
+macOS-specific content here...
+
+::linux
+Linux-specific content here...
+
+:::
+```
+
+**With nested containers (:::tip, :::warning, etc.):**
+```markdown
+::::os-tabs
+
+::windows
+Windows content...
+
+:::warning
+This warning is INSIDE the Windows tab
+:::
+
+::macos
+macOS content...
+
+::::
+```
+
+**⚠️ CRITICAL: Use 4 colons (`::::os-tabs`) when nesting other containers inside tabs.** The `remark-directive` parser matches closing markers by colon count. A `:::` close will prematurely close a `:::os-tabs` container if there's a nested `:::warning` inside.
+
+**How it works:**
+- `remark-directive` parses the `::::os-tabs` container directive
+- `remark-os-tabs` plugin transforms it into Docusaurus `<Tabs>` components
+- All OS tabs share `groupId="operating-systems"` for synchronized selection
+- Windows is the default tab
+
+**Location:** `libs/docusaurus/remark-os-tabs/index.js`

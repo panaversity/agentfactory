@@ -40,6 +40,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^10.1.0",
+    "remark-directive": "^4.0.0",
     "simple-icons": "^16.2.0",
     "tailwind-merge": "^3.4.0",
     "unist-util-visit": "^5.0.0"

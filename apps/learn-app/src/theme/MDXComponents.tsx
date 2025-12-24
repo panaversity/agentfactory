@@ -1,5 +1,7 @@
 import React from "react";
 import MDXComponents from "@theme-original/MDXComponents";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 import Quiz from "@/components/quiz/Quiz";
 import GatedQuiz from "@/components/GatedQuiz";
 import GatedSummary from "@/components/GatedSummary";
@@ -16,6 +18,9 @@ import {
 
 export default {
   ...MDXComponents,
+  // Docusaurus Tabs components (used by remark-os-tabs plugin)
+  Tabs,
+  TabItem,
   // Original Quiz (ungated) - use when quiz should be freely accessible
   UnlockedQuiz: Quiz,
   // Default Quiz is now gated - requires sign-in
