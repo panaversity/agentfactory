@@ -44,8 +44,7 @@ function HomepageHeader() {
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground font-normal leading-[1.6] max-w-xl">
-                The <span className="text-foreground font-medium">Spec-Driven Blueprint</span> for building and monetizing Digital FTEs.
-                Learn how General AI Agents build Custom AI Agents. Create <span className="text-foreground font-medium">Reliable Digital FTEs</span>—intelligent systems you can trust, deploy, and monetize.
+                The <span className="text-foreground font-medium">Spec-Driven Blueprint</span> for Building and Monetizing Digital FTEs. Full-Time Equivalent <span className="text-foreground font-medium">Reliable AI Agents</span> you can trust, deploy, and scale.
               </p>
             </div>
 
