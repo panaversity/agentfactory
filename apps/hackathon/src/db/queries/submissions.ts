@@ -200,6 +200,7 @@ export async function updateSubmission(
     .update(submissions)
     .set({
       ...data,
+      formData: data.formData ? JSON.stringify(data.formData) : undefined,
       updatedAt: new Date(),
     })
     .where(eq(submissions.id, id))
@@ -438,18 +439,18 @@ export async function getSubmissionsForJudge(
   const judgeScoresAll =
     submissionIds.length > 0
       ? await db
-          .select({
-            submissionId: scores.submissionId,
-            count: sql<number>`count(*)::int`,
-          })
-          .from(scores)
-          .where(
-            and(
-              inArray(scores.submissionId, submissionIds),
-              eq(scores.judgeId, judgeId)
-            )
+        .select({
+          submissionId: scores.submissionId,
+          count: sql<number>`count(*)::int`,
+        })
+        .from(scores)
+        .where(
+          and(
+            inArray(scores.submissionId, submissionIds),
+            eq(scores.judgeId, judgeId)
           )
-          .groupBy(scores.submissionId)
+        )
+        .groupBy(scores.submissionId)
       : [];
 
   // Build lookup map

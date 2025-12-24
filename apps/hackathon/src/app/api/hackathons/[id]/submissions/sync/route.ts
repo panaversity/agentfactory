@@ -289,8 +289,8 @@ export async function POST(
     });
 
     // Invalidate caches
-    invalidateCache(`hackathon:${id}:submissions`);
-    invalidateCache(`hackathon:${id}`);
+    invalidateCache.onSubmissionChange(id);
+    invalidateCache.onHackathonUpdate(id, session.user.organizationId);
 
     // Truncate errors if too many
     if (results.errors.length === 50) {

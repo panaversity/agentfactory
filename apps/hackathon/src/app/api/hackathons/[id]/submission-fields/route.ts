@@ -106,7 +106,7 @@ export async function PUT(
     );
 
     // Invalidate hackathon cache
-    invalidateCache(`hackathon:${id}`);
+    invalidateCache.onHackathonUpdate(id, session.user.organizationId);
 
     return NextResponse.json(fields);
   } catch (error) {

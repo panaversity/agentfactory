@@ -4,57 +4,72 @@
 
 @layer base {
   :root {
-    /* Panaversity Brand Colors */
-    --background: 240 20% 99.2%; /* #fbfbfe */
-    --foreground: 240 100% 10%; /* #000033 */
+    /* Base HSL Values */
+    --background: 210 40% 98%; /* Light Grey */
+    --foreground: 222 47% 11%; /* Navy Dark */
+
+    /* Card / Popover */
     --card: 0 0% 100%;
-    --card-foreground: 240 100% 10%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 100% 10%;
-    /* Primary: Panaversity Green #1cd98e */
-    --primary: 157 77% 48%;
-    --primary-foreground: 240 100% 10%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primary: Navy Blue #00214d */
+    --primary: 214 100% 15%; 
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary: Technical Grey */
     --secondary: 210 40% 96.1%;
-    --secondary-foreground: 240 100% 10%;
+    --secondary-foreground: 222 47% 11%;
+
+    /* Muted */
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    /* Accent: Same as primary for brand consistency */
-    --accent: 157 77% 48%;
-    --accent-foreground: 240 100% 10%;
+
+    /* Accent: Emerald Green (Growth/Success) */
+    --accent: 157 77% 48%; /* #1cd98e (Legacy Brand) adjusted? No, keeping consistent */
+    --accent-foreground: 144.9 80.4% 10%;
+
+    /* Destructive */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
+
+    /* Borders & Inputs */
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 157 77% 48%;
-    --radius: 0.5rem;
+    --ring: 221.2 83.2% 53.3%; /* Blue Ring */
 
-    /* Additional semantic colors */
-    --success: 157 77% 48%;
-    --success-foreground: 240 100% 10%;
-    --warning: 38 92% 50%;
-    --warning-foreground: 240 100% 10%;
+    --radius: 0.15rem; /* 2px - Sharp edges */
   }
 
   .dark {
-    --background: 240 100% 10%;
+    --background: 222 47% 6%; /* #020617 - Deepest Navy */
     --foreground: 210 40% 98%;
-    --card: 240 50% 12%;
+
+    --card: 222 47% 10%;
     --card-foreground: 210 40% 98%;
-    --popover: 240 50% 12%;
+    --popover: 222 47% 8%;
     --popover-foreground: 210 40% 98%;
-    --primary: 157 77% 48%;
-    --primary-foreground: 240 100% 10%;
+
+    /* Primary: Electric Cyan for Dark Mode */
+    --primary: 195 100% 50%; /* #00f0ff */
+    --primary-foreground: 222 47% 11%;
+
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
+
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
+
     --accent: 157 77% 48%;
-    --accent-foreground: 240 100% 10%;
+    --accent-foreground: 210 40% 98%;
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
+
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 157 77% 48%;
+    --ring: 195 100% 50%;
   }
 }
 
@@ -64,6 +79,9 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight uppercase;
   }
 }
 

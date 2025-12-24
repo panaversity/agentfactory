@@ -1,6 +1,6 @@
 import { db } from "@/db";
 import { submissionFields, submissionSyncs } from "@/db/schema";
-import { eq, and, asc } from "drizzle-orm";
+import { eq, asc } from "drizzle-orm";
 import type { NewSubmissionField, NewSubmissionSync } from "@/db/schema";
 
 // =============================================================================
