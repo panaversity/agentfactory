@@ -6,6 +6,13 @@ import GatedSummary from "@/components/GatedSummary";
 import InteractivePython from "@/components/InteractivePython";
 import PDFViewer from "@/components/PDFViewer";
 import ContentGate from "@/components/ContentGate";
+import {
+  OSTabs,
+  OSTabsProvider,
+  WindowsContent,
+  MacOSContent,
+  LinuxContent,
+} from "@/components/OSTabs";
 
 export default {
   ...MDXComponents,
@@ -19,4 +26,10 @@ export default {
   ContentGate,
   InteractivePython,
   PDFViewer,
+  // OS-specific tabs with shadcn styling
+  OSTabs,
+  OSTabsProvider,
+  WindowsContent,
+  MacOSContent,
+  LinuxContent,
 };

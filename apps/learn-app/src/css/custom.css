@@ -222,3 +222,71 @@ html[data-theme='dark'] {
         border-top-right-radius: 0.375rem !important;
     }
 }
+
+/* ============================================
+   Docusaurus Tabs - Shadcn-Inspired Styling
+   ============================================ */
+
+/* Tab list container - shadcn muted background */
+ul.tabs[role="tablist"] {
+    display: inline-flex !important;
+    height: 2.5rem !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: var(--muted) !important;
+    padding: 0.25rem !important;
+    gap: 0.125rem !important;
+    margin-bottom: 1rem !important;
+    list-style: none !important;
+    border: none !important;
+}
+
+/* Individual tab items */
+.tabs__item {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    line-height: 1 !important;
+    color: var(--muted-foreground) !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: all 150ms ease !important;
+    margin: 0 !important;
+}
+
+/* Tab hover state */
+.tabs__item:hover {
+    color: var(--foreground) !important;
+    background-color: transparent !important;
+}
+
+/* Active tab - shadcn active state */
+.tabs__item--active,
+.tabs__item--active:hover {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+}
+
+/* Remove default Docusaurus underline */
+.tabs__item--active {
+    border-bottom: none !important;
+}
+
+/* Focus visible state for accessibility */
+.tabs__item:focus-visible {
+    outline: 2px solid var(--ring) !important;
+    outline-offset: 2px !important;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .tabs__item--active,
+[data-theme='dark'] .tabs__item--active:hover {
+    background-color: var(--card) !important;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3) !important;
+}
