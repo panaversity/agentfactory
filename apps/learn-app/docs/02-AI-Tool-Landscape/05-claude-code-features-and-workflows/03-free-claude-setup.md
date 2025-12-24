@@ -185,14 +185,44 @@ source ~/.zshrc
 
 ### Windows Setup
 
-**Step 1**: Open PowerShell and run:
+#### Step 0: Install Node.js (Skip if Already Installed)
+
+**Check if you have Node.js:**
+
+Open **PowerShell** (search "PowerShell" in Windows Start menu) and type:
+
+```powershell
+node --version
+```
+
+- **If you see `v18.x.x` or higher** → Skip to Step 1 ✅
+- **If you see an error or version lower than v18** → Follow these steps:
+
+1. Go to: [nodejs.org](https://nodejs.org/)
+2. Click the big green button that says **"Download Node.js (LTS)"**
+3. Run the downloaded file (it's called something like `node-v20.x.x-x64.msi`)
+4. Click **Next** → **Next** → **Next** → **Install**
+5. Wait for it to finish
+6. **Close ALL PowerShell windows completely**
+7. Open a **new PowerShell** window
+8. Type `node --version` again to confirm it works
+
+You should now see a version number like `v20.11.0` ✅
+
+---
+
+#### Step 1: Install Tools
+
+Open PowerShell and run:
 
 ```powershell
 # Install tools
 npm install -g @anthropic-ai/claude-code @musistudio/claude-code-router
 ```
 
-**Step 2**: Create the config directory and file. In PowerShell:
+#### Step 2: Create Config Directories
+
+In PowerShell:
 
 ```powershell
 # Create config directory
@@ -200,7 +230,10 @@ New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude-code-router"
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude"
 ```
 
-**Step 3**: Create the config file. Open Notepad and paste:
+#### Step 3: Create the Config File
+
+1. Open **Notepad** (search "Notepad" in Windows Start menu)
+2. Copy and paste this text exactly as-is:
 
 ```json
 {
@@ -233,16 +266,37 @@ New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude"
 }
 ```
 
-Save as: `%USERPROFILE%\.claude-code-router\config.json`
+:::warning Do NOT Change $GOOGLE_API_KEY
+Leave `"api_key": "$GOOGLE_API_KEY"` exactly as written. Do NOT replace it with your actual key here—the router will automatically read your key from the environment variable you set in Step 4.
+:::
 
-**Step 4**: Set your API key (Run as Administrator):
+3. Click **File → Save As**
+4. In the "File name" field, type exactly: `%USERPROFILE%\.claude-code-router\config.json`
+5. Click **Save**
+
+#### Step 4: Set Your API Key
+
+**Run PowerShell as Administrator:**
+1. Search "PowerShell" in Windows Start menu
+2. **Right-click** on "Windows PowerShell"
+3. Click **"Run as administrator"**
+4. Click "Yes" if prompted
+
+Run this command (replace `YOUR_KEY_HERE` with your actual API key from Step 1):
 
 ```powershell
 [System.Environment]::SetEnvironmentVariable('GOOGLE_API_KEY', 'YOUR_KEY_HERE', 'User')
+```
 
-# CLOSE and REOPEN PowerShell completely, then verify:
+5. **Close PowerShell completely** (not just the tab—close the whole window)
+6. Open a **new regular PowerShell** (not as admin this time)
+7. Verify it worked:
+
+```powershell
 echo $env:GOOGLE_API_KEY
 ```
+
+You should see your API key displayed ✅
 
 ---
 
@@ -266,26 +320,51 @@ echo $GOOGLE_API_KEY # Should show your key (not empty!)
 
 **Every time you want to code:**
 
-### Terminal 1 - Start router FIRST
+### macOS/Linux Daily Workflow
+
+**Terminal 1** - Start router FIRST:
 ```bash
 ccr start
 # Wait for: ✅ Service started successfully
 ```
 
-### Terminal 2 - THEN use Claude (after router is ready)
-
-```
+**Terminal 2** - THEN use Claude (after router is ready):
+```bash
 cd ~/your-project
-
-# Use
 ccr code
-
-# OR
-eval "$(ccr activate)"
-claude
 ```
 
-That's it. One command in Terminal 1, three lines in Terminal 2. Just copy-paste!
+---
+
+### Windows Daily Workflow
+
+**PowerShell 1** - Start router FIRST:
+```powershell
+ccr start
+```
+
+Leave this window running. You'll see a warning message—that's normal!
+
+**PowerShell 2** - Open a NEW PowerShell window and run:
+```powershell
+cd C:\your\project\folder
+ccr code
+```
+
+:::tip First Startup Takes Time
+**Wait 10-20 seconds** after running `ccr code` on first startup. The router needs time to initialize. If it seems stuck, just wait—it's working!
+:::
+
+---
+
+### Quick Reference (Copy This!)
+
+| Step | macOS/Linux | Windows |
+|------|-------------|---------|
+| **1. Start router** | `ccr start` | `ccr start` |
+| **2. Navigate** | `cd ~/your-project` | `cd C:\your\project` |
+| **3. Start Claude** | `ccr code` | `ccr code` |
+| **4. When done** | `Ctrl+C` both terminals | `Ctrl+C` both windows |
 
 ---
 
@@ -397,21 +476,27 @@ source ~/.zshrc
 
 #### Windows DeepSeek Setup
 
-**Step 1**: Open PowerShell and run:
+:::info Already Completed Gemini Setup?
+If you completed the Windows Gemini setup above, you already have Node.js and the tools installed. Skip to Step 2 to create the DeepSeek config.
+:::
+
+**Step 1**: Install tools (if not already installed). Open PowerShell and run:
 
 ```powershell
-# Install tools (if not already installed)
 npm install -g @anthropic-ai/claude-code @musistudio/claude-code-router
 ```
 
-**Step 2**: Create the config directory (if not already created):
+**Step 2**: Create config directories (if not already created):
 
 ```powershell
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude-code-router"
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude"
 ```
 
-**Step 3**: Create the config file. Open Notepad and paste:
+**Step 3**: Create the config file.
+
+1. Open **Notepad** (search "Notepad" in Windows Start menu)
+2. Copy and paste this text exactly as-is:
 
 ```json
 {
@@ -444,16 +529,37 @@ New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude"
 }
 ```
 
-Save as: `%USERPROFILE%\.claude-code-router\config.json`
+:::warning Do NOT Change $DEEPSEEK_API_KEY
+Leave `"api_key": "$DEEPSEEK_API_KEY"` exactly as written. Do NOT replace it with your actual key here—the router will automatically read your key from the environment variable you set in Step 4.
+:::
 
-**Step 4**: Set your API key (Run as Administrator):
+3. Click **File → Save As**
+4. In the "File name" field, type exactly: `%USERPROFILE%\.claude-code-router\config.json`
+5. Click **Save**
+
+**Step 4**: Set your API key.
+
+**Run PowerShell as Administrator:**
+1. Search "PowerShell" in Windows Start menu
+2. **Right-click** on "Windows PowerShell"
+3. Click **"Run as administrator"**
+4. Click "Yes" if prompted
+
+Run this command (replace `YOUR_KEY_HERE` with your actual API key):
 
 ```powershell
 [System.Environment]::SetEnvironmentVariable('DEEPSEEK_API_KEY', 'YOUR_KEY_HERE', 'User')
+```
 
-# CLOSE and REOPEN PowerShell completely, then verify:
+5. **Close PowerShell completely** (not just the tab—close the whole window)
+6. Open a **new regular PowerShell** (not as admin this time)
+7. Verify it worked:
+
+```powershell
 echo $env:DEEPSEEK_API_KEY
 ```
+
+You should see your API key displayed ✅
 
 ---
 
