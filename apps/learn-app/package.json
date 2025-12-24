@@ -27,6 +27,7 @@
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-slot": "^1.2.4",
+    "@radix-ui/react-tabs": "^1.1.13",
     "better-auth": "^1.4.3",
     "cheerio": "^1.1.2",
     "class-variance-authority": "^0.7.1",
@@ -39,6 +40,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^10.1.0",
+    "remark-directive": "^4.0.0",
     "simple-icons": "^16.2.0",
     "tailwind-merge": "^3.4.0",
     "unist-util-visit": "^5.0.0"

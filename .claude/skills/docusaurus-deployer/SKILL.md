@@ -106,6 +106,7 @@ For common issues and solutions, see `references/troubleshooting.md`, which cove
 - `references/github-actions-guide.md` - CI/CD setup and configuration
 - `references/troubleshooting.md` - Common issues and solutions
 - `references/performance-standards.md` - Performance targets and best practices
+- `references/remark-plugin-patterns.md` - Remark plugin development (AST transforms, directive syntax, nested containers)
 
 ## Performance Targets
 
