@@ -27,11 +27,11 @@ function HomepageHeader() {
             {/* Semantic Badge */}
             <div className="flex items-center gap-3 mb-8">
               <span className="font-mono text-xs font-bold tracking-widest uppercase text-muted-foreground/80 px-2 py-1 border border-border bg-muted/20">
-                v1.0.0 Release
+                Spec-Driven Development
               </span>
               <span className="w-12 h-[1px] bg-border"></span>
               <span className="font-mono text-xs text-muted-foreground/60 tracking-wider">
-                ENGINEERING BOOK
+                REUSABLE INTELLIGENCE
               </span>
             </div>
 
@@ -44,8 +44,8 @@ function HomepageHeader() {
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground font-normal leading-[1.6] max-w-xl">
-                The comprehensive engineering book for the <span className="text-foreground font-medium">Agentic Era</span>.
-                Move beyond autocomplete to orchestrating intelligent systems.
+                Building <span className="text-foreground font-medium">Digital Full-Time Equivalents</span>.
+                From manual coding to spec-driven automation—monetizing knowledge through agents that build agents.
               </p>
             </div>
 
@@ -518,7 +518,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title="AI Native Software Development"
-      description="Colearning Agentic AI with Python and TypeScript – Spec Driven Reusable Intelligence. Build production-ready intelligent systems."
+      description="Building Digital Full-Time Equivalents (Digital FTEs). From manual coding to spec-driven automation—monetizing knowledge through agents that build agents."
     >
       <HomepageHeader />
       <AISpectrumSection />
