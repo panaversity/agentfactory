@@ -123,7 +123,7 @@
     /* Amber 500 equivalent */
 }
 
-[data-theme='dark'] {
+html[data-theme='dark'] {
     /* Darker background (Near Black) to match footer/overlay and prevent visual glitches */
     --background: oklch(0.01 0 0);
     --foreground: oklch(0.985 0 0);

@@ -34,7 +34,7 @@
   --sidebar-active-text: var(--sidebar-primary-foreground);
 }
 
-[data-theme="dark"] {
+html[data-theme="dark"] {
   --sidebar-bg: oklch(0.15 0 0);
   --sidebar-text: oklch(0.85 0 0);
   --sidebar-text-muted: oklch(0.6 0 0);
