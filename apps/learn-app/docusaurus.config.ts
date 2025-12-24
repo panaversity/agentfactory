@@ -12,7 +12,7 @@ const AUTH_URL = process.env.AUTH_URL || "http://localhost:3001";
 
 // OAuth client ID - use the pre-configured trusted client (PKCE + JWKS)
 // This matches the trustedClients configuration in auth-server
-const OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || "ai-native-public-client";
+const OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || "agent-factory-public-client";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -41,7 +41,7 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: "https://ai-native.panaversity.org",
+  url: "https://agentfactory.panaversity.org",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -290,11 +290,11 @@ const config: Config = {
       { property: "og:type", content: "website" },
       {
         property: "og:image",
-        content: "https://ai-native.panaversity.org/img/book-cover-page.png",
+        content: "https://agentfactory.panaversity.org/img/book-cover-page.png",
       },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:url", content: "https://ai-native.panaversity.org" },
+      { property: "og:url", content: "https://agentfactory.panaversity.org" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "The AI Agent Factory" },
       {
@@ -304,7 +304,7 @@ const config: Config = {
       },
       {
         name: "twitter:image",
-        content: "https://ai-native.panaversity.org/img/book-cover-page.png",
+        content: "https://agentfactory.panaversity.org/img/book-cover-page.png",
       },
     ],
 

@@ -19,7 +19,7 @@ import { AnalyticsTracker } from '@/components/AnalyticsTracker';
 export default function Root({ children }: { children: React.ReactNode }) {
   const { siteConfig } = useDocusaurusContext();
   const authUrl = (siteConfig.customFields?.authUrl as string) || 'http://localhost:3001';
-  const oauthClientId = (siteConfig.customFields?.oauthClientId as string) || 'ai-native-public-client';
+  const oauthClientId = (siteConfig.customFields?.oauthClientId as string) || 'agent-factory-public-client';
 
   return (
     <AuthProvider authUrl={authUrl} oauthClientId={oauthClientId}>

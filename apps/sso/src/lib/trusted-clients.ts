@@ -96,11 +96,23 @@ export const TRUSTED_CLIENTS = [
   },
   {
     clientId: "ai-native-public-client",
-    name: "AI Native Platform",
+    name: "AI Native Platform (Legacy)",
     type: "public" as const,
     redirectUrls: getRedirectUrls([
       "http://localhost:3000/auth/callback",
       "https://ai-native.panaversity.org/auth/callback",
+    ]),
+    disabled: false,
+    skipConsent: true,
+    metadata: {},
+  },
+  {
+    clientId: "agent-factory-public-client",
+    name: "The AI Agent Factory",
+    type: "public" as const,
+    redirectUrls: getRedirectUrls([
+      "http://localhost:3000/auth/callback",
+      "https://agentfactory.panaversity.org/auth/callback",
     ]),
     disabled: false,
     skipConsent: true,
@@ -141,8 +153,13 @@ export const CLIENT_DESCRIPTIONS = {
     security: "Public client with PKCE, no client secret",
   },
   "ai-native-public-client": {
-    purpose: "AI Native development platform",
+    purpose: "AI Native development platform (Legacy - use agent-factory-public-client)",
     audience: "Developers building AI applications",
+    security: "Public client with PKCE, no client secret",
+  },
+  "agent-factory-public-client": {
+    purpose: "The AI Agent Factory - Spec-Driven Blueprint for Digital FTEs",
+    audience: "Developers building and monetizing AI agents",
     security: "Public client with PKCE, no client secret",
   },
   "assessment-public-client": {
