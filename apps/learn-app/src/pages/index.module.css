@@ -3047,7 +3047,11 @@
     transform: translate(-50%, -50%);
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+    /* Mix of bright white-blue core fading to primary blue */
+    background: radial-gradient(circle,
+            oklch(0.9 0.05 240) 0%,
+            var(--primary) 40%,
+            transparent 70%);
     opacity: 0;
     transition: opacity 0.5s ease;
     z-index: 1;
@@ -3056,7 +3060,7 @@
 }
 
 [data-theme='dark'] .heroSpotlight {
-    opacity: 0.2;
+    opacity: 0.6;
 }
 
 @media screen and (max-width: 768px) {

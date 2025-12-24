@@ -72,7 +72,7 @@ export default function Footer() {
                             dominantBaseline="middle"
                             textAnchor="middle"
                             fill="currentColor"
-                            className="font-black uppercase tracking-[-0.08em]"
+                            className="font-light uppercase tracking-[-0.08em]"
                             style={{ fontSize: '15x', fontFamily: 'var(--font-sans)', transform: 'scaleY(0.95)' }}
                         >
                             PANAVERSITY

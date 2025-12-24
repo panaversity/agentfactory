@@ -974,7 +974,7 @@ article {
 }
 
 [data-theme='dark'] .table-of-contents__link {
-  color: oklch(0.6 0 0) !important;
+  color: var(--muted-foreground) !important;
 }
 
 /* Hover - primary color, no movement */

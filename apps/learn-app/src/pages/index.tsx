@@ -57,7 +57,7 @@ function HomepageHeader() {
                 </Link>
               </Button>
               <div className="text-sm text-muted-foreground font-mono">
-                // Free & Open Source
+                // Open Source
               </div>
             </div>
 
@@ -479,21 +479,27 @@ function ParadigmShift() {
           </Card>
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center pt-24 pb-12 min-h-[400px] flex flex-col items-center justify-center">
-          <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Ready to Co-Learn with AI?
-          </h3>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join the revolution where coding becomes conversation and
-            software becomes alive
-          </p>
-          <Button variant="outline" size="lg" className="h-14 px-8 text-lg font-semibold" asChild>
-            <Link to="/docs/preface-agent-native">
-              Start Reading
-            </Link>
-          </Button>
-        </div>
+      </div>
+    </section>
+  );
+}
+
+function FinalCTA() {
+  return (
+    <section className="py-24 border-b border-border/40 bg-background">
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16 text-center pt-12 pb-12 min-h-[400px] flex flex-col items-center justify-center">
+        <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Ready to Co-Learn with AI?
+        </h3>
+        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          Join the revolution where coding becomes conversation and
+          software becomes alive
+        </p>
+        <Button variant="outline" size="lg" className="h-14 px-8 text-lg font-semibold" asChild>
+          <Link to="/docs/preface-agent-native">
+            Start Reading
+          </Link>
+        </Button>
       </div>
     </section>
   );
@@ -507,11 +513,12 @@ export default function Home(): ReactNode {
       description="Colearning Agentic AI with Python and TypeScript – Spec Driven Reusable Intelligence. Build production-ready intelligent systems."
     >
       <HomepageHeader />
-      <IDEShowcaseSection />
       <AISpectrumSection />
       <FeaturesSection />
       <MaturityLevelsSection />
       <ParadigmShift />
+      <IDEShowcaseSection />
+      <FinalCTA />
     </Layout>
   );
 }

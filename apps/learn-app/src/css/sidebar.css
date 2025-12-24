@@ -141,6 +141,8 @@ div[class*='sidebar_'] {
 .menu__caret {
   transform: scale(0.75) !important;
   opacity: 0.6 !important;
+  margin-right: 1rem !important;
+  /* Spacing from scrollbar */
 }
 
 /* Active/expanded category */
