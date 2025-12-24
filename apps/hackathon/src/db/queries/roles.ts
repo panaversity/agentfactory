@@ -267,3 +267,28 @@ export async function getHackathonRoleStats(hackathonId: string) {
 
   return stats;
 }
+
+/**
+ * Get public profiles for judges and mentors (for display on public hackathon page)
+ * Returns only necessary fields for public display
+ */
+export async function getPublicJudgesAndMentors(hackathonId: string) {
+  const roles = await db
+    .select({
+      id: hackathonRoles.id,
+      userId: hackathonRoles.userId,
+      username: hackathonRoles.username,
+      name: hackathonRoles.name,
+      image: hackathonRoles.image,
+      role: hackathonRoles.role,
+    })
+    .from(hackathonRoles)
+    .where(eq(hackathonRoles.hackathonId, hackathonId))
+    .orderBy(desc(hackathonRoles.createdAt));
+
+  // Group by role for easy frontend consumption
+  const judges = roles.filter((r) => r.role === "judge");
+  const mentors = roles.filter((r) => r.role === "mentor");
+
+  return { judges, mentors };
+}

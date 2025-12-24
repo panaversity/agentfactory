@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getHackathonById } from "@/db/queries/hackathons";
 import { getTeamsWithMemberCount } from "@/db/queries/teams";
-import { getHackathonRoleStats } from "@/db/queries/roles";
+import { getHackathonRoleStats, getPublicJudgesAndMentors } from "@/db/queries/roles";
+import { getPublishedEvents } from "@/db/queries/events";
 import { Button } from "@/components/ui/button";
 import {
   Calendar,
@@ -19,6 +20,11 @@ import {
   ExternalLink,
   Heart,
   Layers,
+  Gavel,
+  Lightbulb,
+  Video,
+  Play,
+  MapPin,
 } from "lucide-react";
 import { CountdownTimer } from "./countdown-timer";
 
@@ -79,10 +85,12 @@ export default async function PublicHackathonPage({
 }) {
   const { id } = await params;
 
-  const [hackathon, teams, roleStats] = await Promise.all([
+  const [hackathon, teams, roleStats, judgesAndMentors, events] = await Promise.all([
     getHackathonById(id),
     getTeamsWithMemberCount(id),
     getHackathonRoleStats(id),
+    getPublicJudgesAndMentors(id),
+    getPublishedEvents(id),
   ]);
 
   if (!hackathon || !hackathon.published) {
@@ -126,10 +134,42 @@ export default async function PublicHackathonPage({
     });
   };
 
+  const now = new Date();
+  const registrationDeadline = new Date(hackathon.registrationDeadline);
+  const startDate = new Date(hackathon.startDate);
+  const endDate = new Date(hackathon.endDate);
+
+  // Compute the effective status based on dates (overrides DB status)
+  const computeEffectiveStatus = () => {
+    // If DB says completed, trust it
+    if (hackathon.status === "completed") return "completed";
+
+    // If DB says judging, trust it
+    if (hackathon.status === "judging") return "judging";
+
+    // Check if hackathon has ended
+    if (now > endDate) return "completed";
+
+    // Check if hackathon is active (started but not ended)
+    if (now >= startDate && now <= endDate) return "active";
+
+    // Check if registration is still open
+    if (hackathon.status === "open" && now < registrationDeadline) return "open";
+
+    // Registration closed but hackathon not started yet
+    if (now >= registrationDeadline && now < startDate) return "registration_closed";
+
+    return "draft";
+  };
+
+  const effectiveStatus = computeEffectiveStatus();
+
   const getStatusLabel = (status: string) => {
     switch (status) {
       case "open":
         return { label: "Registration Open", color: "text-[#1cd98e]", bg: "bg-[#1cd98e]/10" };
+      case "registration_closed":
+        return { label: "Registration Closed", color: "text-amber-400", bg: "bg-amber-400/10" };
       case "active":
         return { label: "In Progress", color: "text-blue-400", bg: "bg-blue-400/10" };
       case "judging":
@@ -141,10 +181,8 @@ export default async function PublicHackathonPage({
     }
   };
 
-  const status = getStatusLabel(hackathon.status);
-  const isRegistrationOpen =
-    hackathon.status === "open" &&
-    new Date() < new Date(hackathon.registrationDeadline);
+  const status = getStatusLabel(effectiveStatus);
+  const isRegistrationOpen = effectiveStatus === "open";
 
   const timelineEvents = [
     {
@@ -196,7 +234,7 @@ export default async function PublicHackathonPage({
             <span
               className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium ${status.bg} ${status.color}`}
             >
-              {hackathon.status === "open" && (
+              {isRegistrationOpen && (
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1cd98e] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1cd98e]"></span>
@@ -354,6 +392,83 @@ export default async function PublicHackathonPage({
           </div>
         </div>
       </section>
+
+      {/* Judges & Mentors Section */}
+      {(judgesAndMentors.judges.length > 0 || judgesAndMentors.mentors.length > 0) && (
+        <section className="relative py-20 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 text-[#1cd98e] mb-3">
+                <Gavel className="h-5 w-5" />
+                <span className="text-sm font-medium uppercase tracking-widest">Meet Our Panel</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Judges & Mentors</h2>
+              <p className="text-white/50 max-w-2xl mx-auto">
+                Industry experts who will evaluate your projects and guide you to success
+              </p>
+            </div>
+
+            {/* Judges */}
+            {judgesAndMentors.judges.length > 0 && (
+              <div className="mb-12">
+                <h3 className="text-center text-sm font-medium uppercase tracking-widest text-amber-400 mb-8">
+                  Judges
+                </h3>
+                <div className="flex flex-wrap justify-center gap-6">
+                  {judgesAndMentors.judges.map((judge) => (
+                    <PersonCard key={judge.id} person={judge} role="Judge" />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Mentors */}
+            {judgesAndMentors.mentors.length > 0 && (
+              <div>
+                <h3 className="text-center text-sm font-medium uppercase tracking-widest text-blue-400 mb-8">
+                  Mentors
+                </h3>
+                <div className="flex flex-wrap justify-center gap-6">
+                  {judgesAndMentors.mentors.map((mentor) => (
+                    <PersonCard key={mentor.id} person={mentor} role="Mentor" />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* Event Schedule Section (Livestreams, Workshops, etc.) */}
+      {events.length > 0 && (
+        <section className="relative py-20 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 text-[#1cd98e] mb-3">
+                <Video className="h-5 w-5" />
+                <span className="text-sm font-medium uppercase tracking-widest">Schedule</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Event Schedule</h2>
+              <p className="text-white/50 max-w-2xl mx-auto">
+                Livestreams, workshops, Q&A sessions, and key milestones
+              </p>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <div className="relative">
+                {/* Timeline Line */}
+                <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[#1cd98e]/50 via-white/20 to-transparent" />
+
+                <div className="space-y-6">
+                  {events.map((event) => (
+                    <EventScheduleItem key={event.id} event={event} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Timeline Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 border-t border-white/5">
@@ -740,4 +855,236 @@ function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
   }
 
   return content;
+}
+
+function PersonCard({
+  person,
+  role,
+}: {
+  person: {
+    id: string;
+    username: string;
+    name: string | null;
+    image: string | null;
+  };
+  role: "Judge" | "Mentor";
+}) {
+  const roleColors = {
+    Judge: "from-amber-400/20 to-amber-500/10 border-amber-400/30",
+    Mentor: "from-blue-400/20 to-blue-500/10 border-blue-400/30",
+  };
+
+  const roleIcons = {
+    Judge: <Gavel className="h-4 w-4" />,
+    Mentor: <Lightbulb className="h-4 w-4" />,
+  };
+
+  return (
+    <div
+      className={`group relative p-6 rounded-2xl bg-gradient-to-br ${roleColors[role]} border hover:scale-105 transition-all min-w-[180px] text-center`}
+    >
+      {/* Profile Image */}
+      {person.image ? (
+        <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden ring-2 ring-white/20">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={person.image}
+            alt={person.name || person.username}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      ) : (
+        <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center ring-2 ring-white/20">
+          <span className="text-2xl font-bold text-white/60">
+            {(person.name || person.username).charAt(0).toUpperCase()}
+          </span>
+        </div>
+      )}
+
+      {/* Name */}
+      <h3 className="font-semibold text-white text-lg mb-1">
+        {person.name || person.username}
+      </h3>
+
+      {/* Role Badge */}
+      <div className="inline-flex items-center gap-1 text-xs text-white/60 px-2 py-1 rounded-full bg-white/5">
+        {roleIcons[role]}
+        <span>{role}</span>
+      </div>
+
+      {/* Username */}
+      <p className="text-xs text-white/40 mt-2">@{person.username}</p>
+    </div>
+  );
+}
+
+function EventScheduleItem({
+  event,
+}: {
+  event: {
+    id: string;
+    title: string;
+    description: string | null;
+    eventType: string;
+    startTime: Date;
+    endTime: Date | null;
+    locationType: string;
+    locationDetails: string | null;
+    livestreamUrl: string | null;
+    recordingUrl: string | null;
+    speakerName: string | null;
+    speakerTitle: string | null;
+  };
+}) {
+  const now = new Date();
+  const eventStart = new Date(event.startTime);
+  const eventEnd = event.endTime ? new Date(event.endTime) : null;
+  const isPast = eventEnd ? now > eventEnd : now > eventStart;
+  const isLive = eventEnd ? now >= eventStart && now <= eventEnd : false;
+
+  const eventTypeIcons: Record<string, React.ReactNode> = {
+    kickoff: <Zap className="h-4 w-4" />,
+    workshop: <Lightbulb className="h-4 w-4" />,
+    qa_session: <Users className="h-4 w-4" />,
+    submission_deadline: <Timer className="h-4 w-4" />,
+    judging: <Gavel className="h-4 w-4" />,
+    awards: <Award className="h-4 w-4" />,
+    livestream: <Video className="h-4 w-4" />,
+    networking: <Users className="h-4 w-4" />,
+    other: <Calendar className="h-4 w-4" />,
+  };
+
+  const eventTypeLabels: Record<string, string> = {
+    kickoff: "Kickoff",
+    workshop: "Workshop",
+    qa_session: "Q&A Session",
+    submission_deadline: "Deadline",
+    judging: "Judging",
+    awards: "Awards",
+    livestream: "Livestream",
+    networking: "Networking",
+    other: "Event",
+  };
+
+  const formatEventDate = (date: Date) => {
+    return new Date(date).toLocaleDateString("en-US", {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+    });
+  };
+
+  const formatEventTime = (date: Date) => {
+    return new Date(date).toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZoneName: "short",
+    });
+  };
+
+  return (
+    <div className="relative flex gap-6 pl-4">
+      {/* Timeline Dot */}
+      <div
+        className={`relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${
+          isLive
+            ? "bg-[#1cd98e] text-black animate-pulse"
+            : isPast
+            ? "bg-white/10 text-white/40"
+            : "bg-[#1cd98e]/20 text-[#1cd98e]"
+        }`}
+      >
+        {eventTypeIcons[event.eventType] || eventTypeIcons.other}
+      </div>
+
+      {/* Event Content */}
+      <div
+        className={`flex-1 pb-6 ${isPast ? "opacity-60" : ""}`}
+      >
+        <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all">
+          {/* Header Row */}
+          <div className="flex items-start justify-between gap-4 mb-2">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className={`text-xs px-2 py-0.5 rounded-full ${
+                  isLive
+                    ? "bg-[#1cd98e]/20 text-[#1cd98e]"
+                    : isPast
+                    ? "bg-white/5 text-white/40"
+                    : "bg-white/10 text-white/60"
+                }`}>
+                  {eventTypeLabels[event.eventType] || "Event"}
+                </span>
+                {isLive && (
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                    LIVE
+                  </span>
+                )}
+              </div>
+              <h3 className="font-semibold text-white">{event.title}</h3>
+            </div>
+
+            {/* Action Button */}
+            {event.livestreamUrl && !isPast && (
+              <a
+                href={event.livestreamUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-lg bg-[#1cd98e] text-black hover:bg-[#19c580] transition-colors"
+              >
+                <Play className="h-3.5 w-3.5" />
+                {isLive ? "Join Now" : "Join"}
+              </a>
+            )}
+            {event.recordingUrl && isPast && (
+              <a
+                href={event.recordingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors"
+              >
+                <Play className="h-3.5 w-3.5" />
+                Watch Recording
+              </a>
+            )}
+          </div>
+
+          {/* Description */}
+          {event.description && (
+            <p className="text-sm text-white/50 mb-3">{event.description}</p>
+          )}
+
+          {/* Meta Info */}
+          <div className="flex flex-wrap items-center gap-4 text-xs text-white/40">
+            <span className="flex items-center gap-1">
+              <Calendar className="h-3.5 w-3.5" />
+              {formatEventDate(eventStart)}
+            </span>
+            <span className="flex items-center gap-1">
+              <Clock className="h-3.5 w-3.5" />
+              {formatEventTime(eventStart)}
+              {eventEnd && ` - ${formatEventTime(eventEnd)}`}
+            </span>
+            {event.locationDetails && (
+              <span className="flex items-center gap-1">
+                <MapPin className="h-3.5 w-3.5" />
+                {event.locationDetails}
+              </span>
+            )}
+          </div>
+
+          {/* Speaker Info */}
+          {event.speakerName && (
+            <div className="mt-3 pt-3 border-t border-white/5">
+              <p className="text-xs text-white/40">
+                <span className="text-white/60">{event.speakerName}</span>
+                {event.speakerTitle && ` • ${event.speakerTitle}`}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }

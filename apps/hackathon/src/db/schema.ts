@@ -90,6 +90,7 @@ export const hackathonsRelations = relations(hackathons, ({ many }) => ({
   submissions: many(submissions),
   submissionFields: many(submissionFields),
   submissionSyncs: many(submissionSyncs),
+  events: many(hackathonEvents),
 }));
 
 // =============================================================================
@@ -651,6 +652,78 @@ export const submissionSyncsRelations = relations(
 );
 
 // =============================================================================
+// HACKATHON EVENTS (Livestreams, Workshops, Schedule)
+// =============================================================================
+
+export const hackathonEvents = pgTable(
+  "hackathon_events",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+
+    hackathonId: text("hackathon_id")
+      .notNull()
+      .references(() => hackathons.id, { onDelete: "cascade" }),
+
+    // Tenant ID from SSO (no FK)
+    organizationId: text("organization_id").notNull(),
+
+    // Event Details
+    title: text("title").notNull(),
+    description: text("description"),
+
+    // Event Type: kickoff, workshop, qa_session, submission_deadline, judging, awards, livestream, networking, other
+    eventType: text("event_type").notNull().default("other"),
+
+    // Timing (stored in UTC, frontend displays in user timezone)
+    startTime: timestamp("start_time").notNull(),
+    endTime: timestamp("end_time"),
+
+    // Location
+    locationType: text("location_type").notNull().default("online"), // online, in_person, hybrid
+    locationDetails: text("location_details"), // "San Francisco, CA" or "Discord #general"
+
+    // Streaming & Recording
+    livestreamUrl: text("livestream_url"), // Zoom, Meet, YouTube, Twitch link
+    recordingUrl: text("recording_url"), // After event, the recording link
+
+    // Optional speaker (links to hackathon_roles - judge/mentor/organizer)
+    speakerId: text("speaker_id"),
+    speakerName: text("speaker_name"), // Denormalized for display
+    speakerTitle: text("speaker_title"), // "CEO at NativelyAI"
+
+    // Display order for same-time events
+    order: integer("order").notNull().default(0),
+
+    // Published status
+    published: boolean("published").notNull().default(true),
+
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at")
+      .defaultNow()
+      .$onUpdate(() => new Date())
+      .notNull(),
+    createdBy: text("created_by").notNull(),
+  },
+  (table) => [
+    index("events_hackathon_idx").on(table.hackathonId, table.startTime),
+    index("events_org_idx").on(table.organizationId),
+    index("events_type_idx").on(table.hackathonId, table.eventType),
+  ]
+);
+
+export const hackathonEventsRelations = relations(
+  hackathonEvents,
+  ({ one }) => ({
+    hackathon: one(hackathons, {
+      fields: [hackathonEvents.hackathonId],
+      references: [hackathons.id],
+    }),
+  })
+);
+
+// =============================================================================
 // TYPE EXPORTS
 // =============================================================================
 
@@ -686,3 +759,6 @@ export type NewSubmissionField = typeof submissionFields.$inferInsert;
 
 export type SubmissionSync = typeof submissionSyncs.$inferSelect;
 export type NewSubmissionSync = typeof submissionSyncs.$inferInsert;
+
+export type HackathonEvent = typeof hackathonEvents.$inferSelect;
+export type NewHackathonEvent = typeof hackathonEvents.$inferInsert;
