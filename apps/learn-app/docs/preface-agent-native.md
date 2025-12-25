@@ -13,18 +13,28 @@ sidebar_position: 0
 
 What if your expertise could work while you sleep?
 
-A **Digital FTE** (Full-Time Equivalent) is an AI agent that does the work of a human employee—but works 168 hours per week instead of 40, costs a fraction of a salary, and can be cloned instantly when demand grows.
+---
 
-This book teaches you to build them.
+## The $650 Million Proof Point
 
-Your domain expertise—whether in sales, legal, finance, or healthcare—becomes an autonomous AI agent that never sleeps, delivering consistent results at a fraction of human cost. **This is the blueprint for transforming your knowledge into scalable digital products that generate recurring revenue.**
+In 2023, a startup called Casetext was [acquired by Thomson Reuters for $650 million in cash](https://techcrunch.com/2023/06/26/thomson-reuters-buys-casetext-an-ai-legal-tech-startup-for-650m-in-cash/).
+
+Their product? **CoCounsel**—an AI legal assistant that could review documents, research case law, and draft memos. It achieved a 97% pass rate on complex legal evaluations.
+
+Thomson Reuters didn't pay $650 million for the technology. They paid for **encoded legal expertise**—the ability to do substantive legal work that previously required expensive human professionals.
+
+This is what encoded domain expertise is worth.
+
+**This book teaches you to build AI agents that capture YOUR expertise—and monetize them as Digital FTEs.**
 
 ---
 
 ## The Agent Factory Vision
 
+*This is a living book. The embedded presentation below is updated as the field evolves—ensuring you always have access to the latest frameworks and case studies.*
+
 :::tip Open Full Slideshow
-**[View Full Presentation](https://docs.google.com/presentation/d/1UGvCUk1-O8m5i-aTWQNxzg8EXoKzPa8fgcwfNh8vRjQ/edit?usp=sharing)** — Experience the paradigm shift from traditional coding to building Digital FTEs.
+**[View Full Presentation](https://docs.google.com/presentation/d/1UGvCUk1-O8m5i-aTWQNxzg8EXoKzPa8fgcwfNh8vRjQ/edit?usp=sharing)** — The complete Agent Factory framework.
 :::
 
 <div style={{position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%', marginBottom: '2rem', border: '1px solid var(--ifm-color-emphasis-300)', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)'}}>
@@ -34,17 +44,16 @@ Your domain expertise—whether in sales, legal, finance, or healthcare—become
     style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', borderRadius: '8px'}}
     allowfullscreen="true"
     mozallowfullscreen="true"
-    webkitallowfullscreen="true">
+    webkitallowfullscreen="true"
+    title="Agent Factory Presentation by Zia Khan">
   </iframe>
 </div>
 
-### The Agent Factory Thesis
+### The Reality Check
 
-Every domain expert can become an **Agent Factory**. Your unique knowledge—whether in sales, legal, finance, healthcare, or any other field—can be codified into AI agents that work 24/7, delivering consistent results at a fraction of human cost.
+This is a **blueprint**, not a get-rich-quick scheme. Building sellable Digital FTEs requires mastering real skills—specification writing, AI collaboration, testing, and deployment. This book teaches you those skills systematically.
 
-**The opportunity:** Transform your expertise into scalable digital products that generate recurring revenue while you sleep.
-
-**The reality:** This is a **blueprint**, not a get-rich-quick scheme. Building sellable Digital FTEs requires mastering real skills—specification writing, AI collaboration, testing, and deployment. This book teaches you those skills systematically.
+The CoCounsel team didn't build a $650M product overnight. They combined deep legal expertise with rigorous AI development practices. You'll need to do the same in your domain.
 
 ---
 
@@ -93,7 +102,7 @@ A traditional employee works 40 hours per week. A Digital FTE works 168 hours—
 | **Availability** | 40 hours/week | 168 hours/week (24/7) |
 | **Monthly Cost** | $4,000 – $8,000+ | $500 – $2,000 |
 | **Ramp-up Time** | 3 – 6 months | Instant deployment |
-| **Consistency** | Variable (85–95%) | Predictable (99%+) |
+| **Consistency** | Variable (85–95%) | High (when properly evaluated) |
 | **Scaling** | Linear (hire 10 for 10x) | Exponential (instant clone) |
 | **Cost per Task** | $30 – $60 | $3 – $6 |
 
@@ -153,12 +162,28 @@ Digital FTEs don't appear from thin air. They're built on a foundation of real s
 | Skill | Why It's Required |
 |-------|-------------------|
 | **Specification Writing** | AI agents execute specs, not vague ideas. Unclear requirements = endless iterations. |
-| **AI Collaboration** | You must teach AI your domain expertise through the Teacher/Student/Co-Worker dynamic. |
+| **AI Collaboration** | You must teach AI your domain expertise through the Teacher/Student/Co-Worker dynamic—encoding it into `SKILL.md` files that become portable, monetizable assets. |
 | **MCP Integration** | Model Context Protocol—the universal standard for connecting agents to real business data (CRM, databases, APIs). |
-| **Testing & Evaluation** | Enterprises need accuracy guarantees (97%+ on test scenarios) before paying. |
+| **Testing & Evaluation** | Enterprises need accuracy guarantees—a "Golden Dataset" of 50+ real-world scenarios your agent must pass with 97%+ accuracy before deployment. |
 | **Cloud Deployment** | Scale to thousands of customers without hiring operations teams. |
 
 **Without these foundations, you can't build sellable Digital FTEs.**
+
+### The Nine Pillars of AI-Native Development
+
+These skills rest on a broader foundation—the **Nine Pillars** that define modern AI development:
+
+1. **AI CLI & Coding Agents** — Claude Code, Gemini CLI, GPT Codex
+2. **Markdown as Programming Language** — Specifications become executable
+3. **MCP Standard** — Universal protocol for tool integration
+4. **AI-First IDEs** — Editors built for AI collaboration
+5. **Linux Universal Dev Environment** — Standardized development
+6. **Test-Driven Development** — Quality confidence at scale
+7. **Spec-Driven Development** — Intent before implementation
+8. **Composable Vertical Skills** — Reusable domain expertise
+9. **Universal Cloud-Native Deployment** — Kubernetes, Docker, Dapr
+
+This book teaches you to master each pillar systematically.
 
 ### The Journey This Book Takes You On
 
@@ -362,7 +387,7 @@ Each part builds on previous ones. Don't skip ahead to "the monetization part." 
 
 ### "Is this realistic, or is it hype?"
 
-We provide validated productivity multipliers (5-10x for specification-driven development), enterprise case studies, and honest timelines. CoCounsel—an AI legal assistant that performs substantive legal work like document review and research—was acquired by Thomson Reuters for $650 million in 2024, demonstrating the market value of domain-specific AI agents.
+We provide validated productivity multipliers (5-10x for specification-driven development), enterprise case studies, and honest timelines. The CoCounsel acquisition we opened with—$650 million for encoded legal expertise—demonstrates the market value of domain-specific AI agents.
 
 This isn't hype. It's the documented reality of what's possible when you combine domain expertise with AI execution.
 
