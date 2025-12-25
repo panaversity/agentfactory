@@ -1,22 +1,22 @@
 ### Core Concept
-The paradigm has shifted from "Don't Repeat Yourself" (code reuse) to "Reuse Intelligence, Not Code." When AI generates specialized code in seconds, maintaining reusable libraries becomes more expensive than regenerating fresh code per application. Value now lives in system prompts, skills, and integrations—not code logic.
+In the AI era, code is disposable (regenerated per application) while intelligence is permanent (reused across applications). The new architecture reuses system prompts, skills, and MCP connections—not code libraries.
 
 ### Key Mental Models
-- **Disposable Code, Permanent Intelligence**: Code is cheap to generate but expensive to maintain across applications. Intelligence (prompts, skills, integrations) is expensive to create once but infinitely reusable.
-- **Five Components Framework**: Reusable subagents have five layers—system prompt (persona + constraints), horizontal skills (generic infrastructure), vertical skills (domain expertise), horizontal MCPs (dev tools), and vertical MCPs (industry APIs).
-- **Defensibility Through Vertical Integration**: Generic code and horizontal skills are easily replicated. Vertical MCP connections (industry-specific integrations like Epic for healthcare or Bloomberg for finance) create competitive moats.
+- **Five Components**: System prompt (persona), horizontal skills (infrastructure), vertical skills (domain expertise), horizontal MCPs (dev tools), vertical MCPs (industry APIs). Each layer adds defensibility.
+- **Defensibility Hierarchy**: System prompts are easy to copy; vertical MCPs (Epic, Bloomberg integrations) are expensive to replicate because they require credentials, relationships, and maintenance.
+- **Progressive Disclosure**: SKILL.md files load ~100 tokens at startup; detailed references load on-demand. This achieves 100:1 token efficiency versus embedding everything in prompts.
 
 ### Critical Patterns
-- Design system prompts with WHO (persona), WHAT (knowledge scope), and CONSTRAINTS (boundaries)
-- Distinguish horizontal components (reusable across all domains) from vertical components (reusable only within a domain)
-- Vertical MCPs are the defensibility layer—competitors must rebuild these integrations from scratch
-- Use the "mass production vs. 3D printing" mental model: when customization is free, standardization loses its advantage
+- Organize skills by domain: `.claude/skills/healthcare/billing/SKILL.md`
+- Vertical MCP connections are your moat—competitors must rebuild from scratch (6 months, $200K)
+- Write skills once, license to many customers (5-10 hours per skill → 50x return across 50 clients)
+- Use scripts for complex lookups (0 tokens—executed locally, not loaded into context)
 
 ### Common Mistakes
-- Applying traditional DRY thinking when code generation is nearly free—this overinvests in maintenance
-- Treating all five components as equally defensible (they're not—vertical MCPs create the moat, system prompts are easiest to copy)
-- Confusing "disposable" with "worthless"—the code is disposable, but the intelligence that generates it is the permanent asset
+- Treating code reuse as the goal when AI can regenerate code in seconds
+- Embedding all knowledge in system prompts (expensive, inflexible) instead of using SKILL.md progressive disclosure
+- Focusing on system prompts (easy to copy) instead of vertical integrations (hard to replicate)
 
 ### Connections
-- **Builds on**: Market opportunity concepts from earlier lessons in this chapter
-- **Leads to**: Piggyback Protocol Pivot—how to actually enter vertical markets with this architecture
+- **Builds on**: Competitive layer positioning (Lesson 2) and FTE economics (Lesson 3)
+- **Leads to**: Monetization models (Lessons 5-6) and PPP market entry (Lesson 7)
