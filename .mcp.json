@@ -4,14 +4,6 @@
       "type": "stdio",
       "command": "npx",
       "args": ["nx-mcp@latest"]
-    },
-    "deepwiki": {
-      "type": "http",
-      "url": "https://mcp.deepwiki.com/mcp"
-    },
-    "better-auth": {
-      "type": "http",
-      "url": "https://mcp.chonkie.ai/better-auth/better-auth-builder/mcp"
     }
   }
 }

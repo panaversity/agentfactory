@@ -5,7 +5,7 @@ description: |
   Use when creating chapter illustrations, diagrams, or teaching visuals.
   NOT for stock photos or decorative images.
 dependencies:
-  - browser-use
+  - browsing-with-playwright
 ---
 
 # Image Generator
@@ -15,8 +15,8 @@ Generate professional teaching visuals using Gemini 3 with multi-turn reasoning 
 ## Quick Start
 
 ```bash
-# 1. Start browser (via browser-use skill)
-bash .claude/skills/browser-use/scripts/start-server.sh
+# 1. Start browser (via browsing-with-playwright skill)
+bash .claude/skills/browsing-with-playwright/scripts/start-server.sh
 
 # 2. Navigate to Gemini
 # Use browser_navigate to https://gemini.google.com/
@@ -38,21 +38,27 @@ Receive from visual-asset-workflow:
 
 ```markdown
 ## The Story
+
 [Narrative about what's visualized]
 
 ## Emotional Intent
+
 [What it should FEEL like]
 
 ## Visual Metaphor
+
 [Universal concept for instant comprehension]
 
 ## Subject / Composition / Action / Location / Style
+
 [Gemini 3 prompt structure]
 
 ## Color Semantics
+
 Blue (#2563eb) = Authority | Green (#10b981) = Execution
 
 ## Typography Hierarchy
+
 Largest: Key insight | Medium: Supporting | Smallest: Context
 ```
 
@@ -60,29 +66,29 @@ Largest: Key insight | Medium: Supporting | Smallest: Context
 
 ## Workflow (Per Visual)
 
-| Step | Action | Tool |
-|------|--------|------|
-| 1 | Navigate to gemini.google.com | browser_navigate |
-| 2 | Select "🍌 Create Image" | browser_click |
-| 3 | Paste creative brief | browser_type |
-| 4 | Wait 30-35 seconds | browser_wait_for |
-| 5 | Verify 6 gates (below) | Visual inspection |
-| 6 | If fail: Iterate with feedback (max 3) | browser_type |
-| 7 | If pass: Download full size | browser_click |
-| 8 | Copy to `apps/learn-app/static/img/part-{N}/chapter-{NN}/` | Bash |
-| 9 | Embed in lesson immediately | Edit |
-| 10 | NEW CHAT for next visual | browser_navigate |
+| Step | Action                                                     | Tool              |
+| ---- | ---------------------------------------------------------- | ----------------- |
+| 1    | Navigate to gemini.google.com                              | browser_navigate  |
+| 2    | Select "🍌 Create Image"                                   | browser_click     |
+| 3    | Paste creative brief                                       | browser_type      |
+| 4    | Wait 30-35 seconds                                         | browser_wait_for  |
+| 5    | Verify 6 gates (below)                                     | Visual inspection |
+| 6    | If fail: Iterate with feedback (max 3)                     | browser_type      |
+| 7    | If pass: Download full size                                | browser_click     |
+| 8    | Copy to `apps/learn-app/static/img/part-{N}/chapter-{NN}/` | Bash              |
+| 9    | Embed in lesson immediately                                | Edit              |
+| 10   | NEW CHAT for next visual                                   | browser_navigate  |
 
 ## Quality Gates (ALL Must Pass)
 
-| Gate | Criterion | Fail Action |
-|------|-----------|-------------|
-| 1. Spelling | 99% accuracy (Y-Combinator, Kubernetes) | Iterate |
-| 2. Layout | Proportions match prompt (2×2 not 3×1) | Iterate |
-| 3. Color | Brand colors match (#2563eb not #002050) | Iterate |
-| 4. Typography | Largest = key concept (not decoration) | Iterate |
-| 5. Teaching | <5 sec concept grasp at target proficiency | Iterate |
-| 6. Uniqueness | Not duplicate of existing chapter image | New chat |
+| Gate          | Criterion                                  | Fail Action |
+| ------------- | ------------------------------------------ | ----------- |
+| 1. Spelling   | 99% accuracy (Y-Combinator, Kubernetes)    | Iterate     |
+| 2. Layout     | Proportions match prompt (2×2 not 3×1)     | Iterate     |
+| 3. Color      | Brand colors match (#2563eb not #002050)   | Iterate     |
+| 4. Typography | Largest = key concept (not decoration)     | Iterate     |
+| 5. Teaching   | <5 sec concept grasp at target proficiency | Iterate     |
+| 6. Uniqueness | Not duplicate of existing chapter image    | New chat    |
 
 **Decision**: ALL pass → Download | ANY fail → Iterate (max 3 tries)
 
@@ -119,6 +125,7 @@ For EACH visual in list:
 **Never ask**: "Continue?" "Pause here?" "Review?"
 
 **Report at END only**:
+
 ```
 BATCH COMPLETE
 ✅ Generated: 16/18
@@ -129,22 +136,24 @@ Location: apps/learn-app/static/img/part-{N}/
 ## Proficiency Limits
 
 | Level | Max Elements | Grasp Time |
-|-------|--------------|------------|
-| A2 | 5-7 | <5 sec |
-| B1 | 7-10 | <10 sec |
-| C2 | No limit | N/A |
+| ----- | ------------ | ---------- |
+| A2    | 5-7          | <5 sec     |
+| B1    | 7-10         | <10 sec    |
+| C2    | No limit     | N/A        |
 
 ## Token Conservation (Batch Mode)
 
 For >8 visuals, condense briefs:
 
 **Original** (250 tokens):
+
 ```
 "Top Layer shows Coordinator at center top with label 'Orchestrator'
 featuring conductor icon, with role 'Strategic oversight'..."
 ```
 
 **Condensed** (80 tokens):
+
 ```
 "Top Layer - Coordinator: Center top, 'Orchestrator' (conductor),
 Role: 'Strategic oversight', Gold (#fbbf24), Large hexagon."
@@ -155,13 +164,13 @@ Condense: Long examples → Short labels
 
 ## Anti-Patterns
 
-| Don't | Why |
-|-------|-----|
-| Accept first output without 6 gates | Quality standard violation |
-| Ask permission between batch items | Breaks autonomous agency |
-| Convert briefs to pixel specs | Defeats reasoning activation |
-| Skip embedding step | Creates orphan images |
-| Reuse same chat for next visual | Context contamination |
+| Don't                               | Why                          |
+| ----------------------------------- | ---------------------------- |
+| Accept first output without 6 gates | Quality standard violation   |
+| Ask permission between batch items  | Breaks autonomous agency     |
+| Convert briefs to pixel specs       | Defeats reasoning activation |
+| Skip embedding step                 | Creates orphan images        |
+| Reuse same chat for next visual     | Context contamination        |
 
 ## Session Interruption
 
@@ -169,13 +178,16 @@ If session ends mid-batch, create checkpoint:
 
 ```markdown
 # Checkpoint: Part {N}
+
 Status: INTERRUPTED at 8/18
 
 ## Completed:
+
 - ✅ Image 1: filename (embedded lesson-01.md)
 - ✅ Image 2: filename (embedded lesson-02.md)
 
 ## Remaining:
+
 - ⏳ Image 8: filename
 ```
 

@@ -5,7 +5,7 @@ description: |
   Use when creating chapter slide presentations with proficiency-calibrated prompts.
   NOT for static slides or non-educational presentations.
 dependencies:
-  - browser-use
+  - browsing-with-playwright
 ---
 
 # NotebookLM Slides Generation
@@ -13,8 +13,8 @@ dependencies:
 ## Quick Start
 
 ```bash
-# 1. Start browser (via browser-use skill)
-bash .claude/skills/browser-use/scripts/start-server.sh
+# 1. Start browser (via browsing-with-playwright skill)
+bash .claude/skills/browsing-with-playwright/scripts/start-server.sh
 
 # 2. Navigate to NotebookLM
 # browser_navigate to notebooklm.google.com
@@ -33,18 +33,18 @@ bash .claude/skills/browser-use/scripts/start-server.sh
 
 ## Workflow (Per Chapter)
 
-| Step | Action | Tool |
-|------|--------|------|
-| 1 | Navigate to notebooklm.google.com | browser_navigate |
-| 2 | Create notebook: "Chapter X: Title" | browser_click |
-| 3 | Upload ALL sources (lessons + README + quiz) | browser_click |
-| 4 | Click "Slide Deck" in Studio panel | browser_click |
-| 5 | Select "Presenter Slides" format | browser_click |
-| 6 | Paste proficiency-calibrated prompt | browser_type |
-| 7 | Click "Generate" (wait 5-30 min) | browser_click |
-| 8 | Review with success criteria | Visual inspection |
-| 9 | Download PDF | browser_click |
-| 10 | Move to `static/slides/chapter-{NN}-slides.pdf` | Bash |
+| Step | Action                                          | Tool              |
+| ---- | ----------------------------------------------- | ----------------- |
+| 1    | Navigate to notebooklm.google.com               | browser_navigate  |
+| 2    | Create notebook: "Chapter X: Title"             | browser_click     |
+| 3    | Upload ALL sources (lessons + README + quiz)    | browser_click     |
+| 4    | Click "Slide Deck" in Studio panel              | browser_click     |
+| 5    | Select "Presenter Slides" format                | browser_click     |
+| 6    | Paste proficiency-calibrated prompt             | browser_type      |
+| 7    | Click "Generate" (wait 5-30 min)                | browser_click     |
+| 8    | Review with success criteria                    | Visual inspection |
+| 9    | Download PDF                                    | browser_click     |
+| 10   | Move to `static/slides/chapter-{NN}-slides.pdf` | Bash              |
 
 ## Proficiency-Calibrated Prompts
 
@@ -139,15 +139,15 @@ END WITH: Production deployment strategies
 
 ## Success Criteria (7 Gates)
 
-| Gate | Check | Pass | Fail |
-|------|-------|------|------|
-| 1. Title | Reflects framework? | "AI Coding Revolution" | "Introduction to AI" |
-| 2. Language | Matches proficiency? | A2: simple, no jargon | A2 with technical terms |
-| 3. Themes | All 5-7 covered? | Each theme with data | Themes missing |
-| 4. Tone | Matches spec? | Encouraging (not academic) | Wrong emotional framing |
-| 5. Count | Within range? | A2: 12-15, B1: 15-20 | Outside range |
-| 6. Arc | Progression clear? | problem → action | Random sequence |
-| 7. Ending | Actionable? | Specific tasks | "Keep learning!" |
+| Gate        | Check                | Pass                       | Fail                    |
+| ----------- | -------------------- | -------------------------- | ----------------------- |
+| 1. Title    | Reflects framework?  | "AI Coding Revolution"     | "Introduction to AI"    |
+| 2. Language | Matches proficiency? | A2: simple, no jargon      | A2 with technical terms |
+| 3. Themes   | All 5-7 covered?     | Each theme with data       | Themes missing          |
+| 4. Tone     | Matches spec?        | Encouraging (not academic) | Wrong emotional framing |
+| 5. Count    | Within range?        | A2: 12-15, B1: 15-20       | Outside range           |
+| 6. Arc      | Progression clear?   | problem → action           | Random sequence         |
+| 7. Ending   | Actionable?          | Specific tasks             | "Keep learning!"        |
 
 **Score**: 7/7 → Deploy | <7/7 → Iterate with refined prompt
 
@@ -180,6 +180,7 @@ Build-time plugin auto-injects PDFViewer before "What You'll Learn".
 ## Batch Processing
 
 For 3+ chapters:
+
 1. Create ALL notebooks first (before generating)
 2. Upload sources for all chapters
 3. Prepare all prompts in text editor
@@ -190,20 +191,20 @@ For 3+ chapters:
 
 ## Troubleshooting
 
-| Issue | Solution |
-|-------|----------|
+| Issue                    | Solution                                             |
+| ------------------------ | ---------------------------------------------------- |
 | Generation stuck >30 min | Check browser console, verify no daily limit message |
-| Text-heavy slides | Add explicit "3-5 bullets, NOT paragraphs" |
-| Generic title | Include example engaging title in prompt |
-| Missing themes | List all themes numbered with specific data |
-| Daily limit hit | Wait 24h (midnight PT reset), notebooks persist |
+| Text-heavy slides        | Add explicit "3-5 bullets, NOT paragraphs"           |
+| Generic title            | Include example engaging title in prompt             |
+| Missing themes           | List all themes numbered with specific data          |
+| Daily limit hit          | Wait 24h (midnight PT reset), notebooks persist      |
 
 ## Anti-Patterns
 
-| Don't | Why | Do Instead |
-|-------|-----|------------|
-| Vague audience | NotebookLM can't calibrate | "A2 beginners with no programming" |
-| Skip framework | Generic output | Explicit 3-5 principles |
-| Single-word tone | Ambiguous | "Encouraging (not intimidating)" |
-| Leave format default | Text-heavy slides | Explicit bullet count |
-| Vague endings | No student action | Specific next steps |
+| Don't                | Why                        | Do Instead                         |
+| -------------------- | -------------------------- | ---------------------------------- |
+| Vague audience       | NotebookLM can't calibrate | "A2 beginners with no programming" |
+| Skip framework       | Generic output             | Explicit 3-5 principles            |
+| Single-word tone     | Ambiguous                  | "Encouraging (not intimidating)"   |
+| Leave format default | Text-heavy slides          | Explicit bullet count              |
+| Vague endings        | No student action          | Specific next steps                |

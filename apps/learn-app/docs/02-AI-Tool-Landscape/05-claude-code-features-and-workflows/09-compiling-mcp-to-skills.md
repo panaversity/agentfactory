@@ -7,7 +7,7 @@ duration_minutes: 20
 
 # PEDAGOGICAL LAYER METADATA
 primary_layer: "Layer 2"
-layer_progression: "L2 (AI Collaboration) - using pre-compiled browser-use skill to understand code execution pattern"
+layer_progression: "L2 (AI Collaboration) - using pre-compiled browsing-with-playwright skill to understand code execution pattern"
 layer_1_foundation: "Completed in Lessons 04-06 (Skills) and 08 (MCP)"
 layer_2_collaboration: "Experiencing token reduction through using compiled skill vs direct MCP"
 layer_3_intelligence: "N/A - Advanced lessons will cover skill creation"
@@ -27,7 +27,7 @@ learning_objectives:
     proficiency_level: "B1"
     bloom_level: "Understand"
     assessment_method: "Explain token overhead using Anthropic blog examples"
-  - objective: "Use browser-use skill from Skills Lab"
+  - objective: "Use browsing-with-playwright skill from Skills Lab"
     proficiency_level: "B1"
     bloom_level: "Apply"
     assessment_method: "Successfully execute browser automation with compiled skill"
@@ -75,7 +75,7 @@ You've learned MCP servers connect Claude Code to external systems. You've maste
 This lesson shows you a powerful pattern: **compile high-token MCP servers into lean skills**, reducing context consumption by up to 98.7% while maintaining full functionality.
 
 :::tip Industry Standard
-Skills format is now supported by Claude Code, OpenAI Codex (beta), and Goose. 
+Skills format is now supported by Claude Code, OpenAI Codex (beta), and Goose.
 Skills you compile here work across all three agents.
 :::
 
@@ -97,6 +97,7 @@ When Claude Code loads an MCP server, it eagerly loads ALL tool definitions upfr
 **The math for a single MCP server**: Playwright MCP loads approximately 5,000-8,000 tokens of tool definitions. Use it 3 times in a session? That's 15,000-24,000 tokens of overhead—before you've accomplished anything.
 
 #### 💬 AI Colearning Prompt
+
 > "I have 3 MCP servers installed. Help me estimate my token overhead: For each server, how many tokens does it load at startup? What's my total context cost before I've even asked a question?"
 
 ---
@@ -108,8 +109,9 @@ Instead of calling MCP tools directly through Claude's context, compile them int
 ### The Architecture
 
 **SKILL.md + Scripts Model:**
+
 ```
-.claude/skills/browser-use/
+.claude/skills/browsing-with-playwright/
 ├── SKILL.md                    # High-level procedures (~150 tokens)
 ├── references/                 # Cached tool documentation
 └── scripts/
@@ -119,6 +121,7 @@ Instead of calling MCP tools directly through Claude's context, compile them int
 ```
 
 **How It Works:**
+
 1. **SKILL.md** provides high-level procedures (loaded once at startup, ~150 tokens)
 2. **Claude executes bash commands** calling `mcp-client.py` (runs locally, outside context)
 3. **mcp-client.py** connects to Playwright MCP server via HTTP transport
@@ -126,6 +129,7 @@ Instead of calling MCP tools directly through Claude's context, compile them int
 5. **Only filtered results** returned to Claude's conversation
 
 **Token Comparison:**
+
 - Direct MCP: ~5,000-8,000 tokens × 3 calls = ~15,000-24,000 tokens
 - Compiled skill: ~150 tokens (SKILL.md) + 0 tokens (local scripts) = ~150 tokens
 - **Savings: ~98-99%**
@@ -143,6 +147,7 @@ Skills use **three-level loading** (covered in Lesson 6) to minimize token consu
 **Key for compiled skills:** Stage 3 executes MCP tools outside Claude's context, so heavy operations consume zero tokens.
 
 **Example:**
+
 ```
 User: "Extract product prices from Amazon"
 
@@ -157,6 +162,7 @@ User: "Extract product prices from Amazon"
 ### Why Scripts Save Tokens
 
 **Without scripts (direct MCP):**
+
 ```
 User request → Claude calls browser_navigate (2,000 tokens loaded)
             → Claude calls browser_evaluate (3,000 tokens loaded)
@@ -166,6 +172,7 @@ Total: 15,000 tokens
 ```
 
 **With scripts (code execution):**
+
 ```
 User request → Claude runs bash command (0 tokens - executes locally)
             → bash: python mcp-client.py call -t browser_navigate ...
@@ -179,9 +186,9 @@ Total: ~200 tokens
 
 ---
 
-## Hands-On: Use browser-use Skill from Skills Lab
+## Hands-On: Use browsing-with-playwright Skill from Skills Lab
 
-You'll experience the power of compiled skills by using the pre-built **browser-use skill** from Skills Lab, then comparing its token efficiency against direct MCP usage.
+You'll experience the power of compiled skills by using the pre-built **browsing-with-playwright skill** from Skills Lab, then comparing its token efficiency against direct MCP usage.
 
 ### Step 1: Download Skills Lab
 
@@ -211,6 +218,7 @@ and extract the main heading text.
 ```
 
 **What happens:**
+
 - Claude loads ALL Playwright MCP tool definitions (~5,000-8,000 tokens)
 - Calls `browser_navigate` tool through context
 - Calls `browser_evaluate` or `browser_snapshot` through context
@@ -219,7 +227,7 @@ and extract the main heading text.
 
 **Observe**: This works, but notice the initial loading overhead when Claude loads tool definitions.
 
-### Step 3: Now Use browser-use Skill
+### Step 3: Now Use browsing-with-playwright Skill
 
 Exit Claude (Ctrl+C) and restart for a fresh session in the Skills Lab folder:
 
@@ -230,17 +238,18 @@ claude
 Now ask using the compiled skill:
 
 ```
-Use browser-use skill to navigate to https://example.com
+Use browsing-with-playwright skill to navigate to https://example.com
 and extract the main heading text.
 ```
 
 **What happens:**
+
 ```
-⏺ Skill(browser-use)
+⏺ Skill(browsing-with-playwright)
   ⎿  Loading…
 
 ────────────────────────────────────────────────────────────────────
- Use skill "browser-use"?
+ Use skill "browsing-with-playwright"?
  Claude may use instructions, code, or files from this Skill.
 
    Browser automation using Playwright MCP. Navigate websites, fill forms,
@@ -248,14 +257,15 @@ and extract the main heading text.
 
  Do you want to proceed?
  ❯ 1. Yes
-  2. Yes, and don't ask again for browser-use in this directory
+  2. Yes, and don't ask again for browsing-with-playwright in this directory
   3. No
 ```
 
 Select **1. Yes**.
 
 **What happens now:**
-1. Claude loads browser-use SKILL.md (~150 tokens only)
+
+1. Claude loads browsing-with-playwright SKILL.md (~150 tokens only)
 2. Skill tells Claude to run: `bash scripts/start-server.sh` (starts Playwright MCP on localhost:8808)
 3. Claude executes bash commands:
    ```bash
@@ -281,13 +291,14 @@ Ask Claude:
 ```
 Compare the token usage between:
 1. Using Playwright MCP directly (what we did in Step 2)
-2. Using browser-use skill (what we just did in Step 3)
+2. Using browsing-with-playwright skill (what we just did in Step 3)
 
 Estimate the tokens consumed in each approach and
 show me the percentage reduction.
 ```
 
 **Expected explanation:**
+
 ```
 Direct Playwright MCP:
 - Tool definitions loaded at startup: ~5,000-8,000 tokens
@@ -296,7 +307,7 @@ Direct Playwright MCP:
 - Result processing: ~500 tokens
 - Total: ~9,500-12,500 tokens
 
-browser-use skill:
+browsing-with-playwright skill:
 - SKILL.md loaded: ~150 tokens
 - Bash commands executed: 0 tokens (runs locally)
 - Only final results returned: ~100 tokens
@@ -310,28 +321,30 @@ Reduction: ~97-98% token savings
 Try various automation tasks to see the skill in action:
 
 ```
-1. Use browser-use to take a screenshot of https://github.com and save it
-2. Use browser-use to extract the page title from https://news.ycombinator.com
-3. Use browser-use to check if example.com contains the text "documentation"
+1. Use browsing-with-playwright to take a screenshot of https://github.com and save it
+2. Use browsing-with-playwright to extract the page title from https://news.ycombinator.com
+3. Use browsing-with-playwright to check if example.com contains the text "documentation"
 ```
 
 **Observe:**
+
 - Each operation runs bash commands locally
 - You see: `python mcp-client.py call -t <tool_name> ...`
 - Server starts once, handles multiple operations
 - Only filtered results come back to conversation
 - Claude doesn't reload tool definitions
 
-### Step 6: Explore How browser-use Works Internally
+### Step 6: Explore How browsing-with-playwright Works Internally
 
 After trying the skill, explore its structure:
 
 ```bash
 # Look at the skill structure
-ls -la .claude/skills/browser-use/
+ls -la .claude/skills/browsing-with-playwright/
 ```
 
 You'll see:
+
 ```
 SKILL.md           # Procedures Claude follows (~150 tokens)
 references/        # Cached tool documentation
@@ -341,7 +354,8 @@ scripts/           # Scripts Claude executes locally
 **This is the code execution pattern**: Heavy operations happen in local HTTP server, outside Claude's token-counted context.
 
 #### 💬 AI Colearning Prompt
-> "I've used browser-use skill. Explain: (1) How does running mcp-client.py via bash save tokens vs calling MCP tools through Claude's context? (2) What happens when Claude executes 'python mcp-client.py call -t browser_navigate'? (3) If I performed 10 browser operations, what would be the token difference between direct MCP vs browser-use skill?"
+
+> "I've used browsing-with-playwright skill. Explain: (1) How does running mcp-client.py via bash save tokens vs calling MCP tools through Claude's context? (2) What happens when Claude executes 'python mcp-client.py call -t browser_navigate'? (3) If I performed 10 browser operations, what would be the token difference between direct MCP vs browsing-with-playwright skill?"
 
 ---
 
@@ -352,29 +366,37 @@ Not every MCP server benefits from compilation. Use this decision framework:
 ### Compile to Skill When:
 
 ✅ **High token overhead** (>5,000 tokens per query)
+
 - Example: Playwright, Google Drive, Database MCP
 
 ✅ **Frequent use** (3+ times per session or across projects)
+
 - Repeated calls multiply token waste
 
 ✅ **Large datasets returned** (need filtering/transformation)
+
 - Processing 1,000 items → returning 20 relevant ones
 
 ✅ **Multi-step workflows** (chaining operations)
+
 - Navigate → extract → transform → filter
 
 ### Use Direct MCP When:
 
 ❌ **Low token overhead** (&lt;1,500 tokens per query)
+
 - MCP already efficient, compilation overhead not worth it
 
 ❌ **Infrequent use** (once per month or less)
+
 - Setup cost > token savings
 
 ❌ **Small, well-formatted results** (no transformation needed)
+
 - Results already optimal for Claude
 
 ❌ **Rapidly changing API** (MCP tools frequently updated)
+
 - Skill scripts would need constant maintenance
 
 ---
@@ -383,19 +405,20 @@ Not every MCP server benefits from compilation. Use this decision framework:
 
 Not every MCP server needs compilation. Use this matrix to decide:
 
-| Scenario | Recommendation | Reasoning |
-|----------|----------------|-----------|
-| **One-off query** | Use MCP directly | Compilation overhead not worth it for single use |
-| **Repeated workflow** (3+ times) | Compile to skill | Amortizes compilation cost across multiple uses |
-| **High token definitions** (5,000+ tokens) | Compile to skill | Token savings justify upfront work |
-| **Low token definitions** (&lt;500 tokens) | Use MCP directly | Compilation provides minimal benefit |
-| **Rapidly changing API** | Use MCP directly | Compiled skill becomes stale quickly |
-| **Stable tool set** | Compile to skill | Skill remains accurate over time |
-| **Privacy-sensitive data** | Compile to skill | Local script execution avoids context logging |
-| **Integration with other skills** | Compile to skill | Composability improves with skill format |
-| **Team workflow** | Compile to skill | Shareable SKILL.md vs proprietary MCP setup |
+| Scenario                                   | Recommendation   | Reasoning                                        |
+| ------------------------------------------ | ---------------- | ------------------------------------------------ |
+| **One-off query**                          | Use MCP directly | Compilation overhead not worth it for single use |
+| **Repeated workflow** (3+ times)           | Compile to skill | Amortizes compilation cost across multiple uses  |
+| **High token definitions** (5,000+ tokens) | Compile to skill | Token savings justify upfront work               |
+| **Low token definitions** (&lt;500 tokens) | Use MCP directly | Compilation provides minimal benefit             |
+| **Rapidly changing API**                   | Use MCP directly | Compiled skill becomes stale quickly             |
+| **Stable tool set**                        | Compile to skill | Skill remains accurate over time                 |
+| **Privacy-sensitive data**                 | Compile to skill | Local script execution avoids context logging    |
+| **Integration with other skills**          | Compile to skill | Composability improves with skill format         |
+| **Team workflow**                          | Compile to skill | Shareable SKILL.md vs proprietary MCP setup      |
 
 **Decision shortcut**:
+
 - Calling MCP 1-2 times? → Use direct MCP
 - Calling MCP 3+ times in same session? → Compile to skill
 - Working with high-token server? → Compile to skill
@@ -407,7 +430,7 @@ Not every MCP server needs compilation. Use this matrix to decide:
 
 You've experienced compiled skills and their massive token reduction—up to 98% savings while preserving full functionality. You understand the code execution pattern and why it works. But what happens when you need multiple skills working together on complex tasks?
 
-**Lesson 10: Subagents and Orchestration** introduces the next level: specialized AI assistants that handle specific types of work with isolated context. Where compiled skills give you *efficiency*, subagents give you *coordination*—a team of focused specialists instead of one overloaded generalist.
+**Lesson 10: Subagents and Orchestration** introduces the next level: specialized AI assistants that handle specific types of work with isolated context. Where compiled skills give you _efficiency_, subagents give you _coordination_—a team of focused specialists instead of one overloaded generalist.
 
 **In advanced lessons**, you'll learn to create your own compiled skills using skill-creator, compiling other MCP servers (Google Drive, Database, etc.) and designing custom workflows. The skills you use from Skills Lab now become templates for creating your own later.
 
@@ -426,17 +449,17 @@ Research and tools supporting this lesson:
 
 ## Try With AI
 
-**Use browser-use Skill:**
+**Use browsing-with-playwright Skill:**
 
-> "I've downloaded the Skills Lab. Guide me through using the browser-use skill to extract product names from an e-commerce site. Show me the token savings compared to direct MCP."
+> "I've downloaded the Skills Lab. Guide me through using the browsing-with-playwright skill to extract product names from an e-commerce site. Show me the token savings compared to direct MCP."
 
 **Measure Token Reduction:**
 
-> "I used browser-use skill for 3 browser operations. Calculate the token savings: (1) Estimate tokens if I used Playwright MCP directly, (2) Estimate tokens with browser-use skill, (3) Show percentage reduction with explanation."
+> "I used browsing-with-playwright skill for 3 browser operations. Calculate the token savings: (1) Estimate tokens if I used Playwright MCP directly, (2) Estimate tokens with browsing-with-playwright skill, (3) Show percentage reduction with explanation."
 
 **Understand Internals:**
 
-> "Open the browser-use skill files and explain: (1) What does SKILL.md contain? (2) What do the scripts in scripts/ folder do? (3) How does this achieve token reduction?"
+> "Open the browsing-with-playwright skill files and explain: (1) What does SKILL.md contain? (2) What do the scripts in scripts/ folder do? (3) How does this achieve token reduction?"
 
 **Decide When to Use:**
 
@@ -444,7 +467,7 @@ Research and tools supporting this lesson:
 
 **Compare Direct MCP vs Compiled Skill:**
 
-> "I want to understand the difference: (1) Run a browser automation task using Playwright MCP directly, (2) Run the same task using browser-use skill, (3) Show me the exact token difference and explain where savings come from."
+> "I want to understand the difference: (1) Run a browser automation task using Playwright MCP directly, (2) Run the same task using browsing-with-playwright skill, (3) Show me the exact token difference and explain where savings come from."
 
 **Explore Skills Lab:**
 

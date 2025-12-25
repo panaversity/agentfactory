@@ -1,0 +1,40 @@
+{
+  "disabledMcpjsonServers": [
+  ],
+  "enableAllProjectMcpServers": true,
+  "alwaysThinkingEnabled": false,
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/track-prompt.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/track-skill-start.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/track-skill-end.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
