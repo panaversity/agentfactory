@@ -491,16 +491,272 @@ function ParadigmShift() {
   );
 }
 
+function DigitalFTEComparison() {
+  const comparisonData = [
+    { feature: "Availability", human: "40 hours/week", digital: "168 hours/week (24/7)", highlight: true },
+    { feature: "Monthly Cost", human: "$4,000 – $8,000+", digital: "$500 – $2,000", highlight: true },
+    { feature: "Ramp-up Time", human: "3 – 6 months", digital: "Instant (via SKILL.md)", highlight: false },
+    { feature: "Consistency", human: "Variable (85–95%)", digital: "Predictable (99%+)", highlight: false },
+    { feature: "Scaling", human: "Linear (hire 10 for 10x)", digital: "Exponential (instant clone)", highlight: true },
+    { feature: "Cost per Task", human: "$3.00 – $6.00", digital: "$0.25 – $0.50", highlight: true },
+  ];
+
+  return (
+    <section className="py-24 border-b border-border/40 bg-background">
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <p className="text-sm font-medium text-primary uppercase tracking-widest mb-3">
+            The ROI of Autonomy
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Human FTE vs Digital FTE
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            A Digital FTE works 168 hours a week with zero fatigue.
+            That's <span className="text-foreground font-semibold">4x the output</span> at a fraction of the cost.
+          </p>
+        </div>
+
+        {/* Comparison Table */}
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-3 gap-px bg-border/40 border border-border/40 overflow-hidden">
+            {/* Header Row */}
+            <div className="bg-muted/50 p-4 font-bold text-foreground text-sm uppercase tracking-wide">
+              Feature
+            </div>
+            <div className="bg-muted/50 p-4 font-bold text-foreground text-sm uppercase tracking-wide text-center">
+              Human FTE
+            </div>
+            <div className="bg-primary/10 p-4 font-bold text-primary text-sm uppercase tracking-wide text-center border-l-2 border-primary">
+              Digital FTE
+            </div>
+
+            {/* Data Rows */}
+            {comparisonData.map((row, i) => (
+              <>
+                <div key={`feature-${i}`} className="bg-card p-4 text-foreground font-medium text-sm border-t border-border/40">
+                  {row.feature}
+                </div>
+                <div key={`human-${i}`} className="bg-card p-4 text-muted-foreground text-sm text-center border-t border-border/40">
+                  {row.human}
+                </div>
+                <div key={`digital-${i}`} className={`p-4 text-sm text-center border-t border-border/40 border-l-2 border-primary ${row.highlight ? 'bg-primary/5 text-primary font-semibold' : 'bg-card text-foreground'}`}>
+                  {row.digital}
+                </div>
+              </>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Stats */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="text-center p-6 border border-border/40 bg-card">
+            <div className="text-3xl font-black text-primary mb-2">85-90%</div>
+            <div className="text-sm text-muted-foreground">Cost Savings per Task</div>
+          </div>
+          <div className="text-center p-6 border border-border/40 bg-card">
+            <div className="text-3xl font-black text-primary mb-2">4.2x</div>
+            <div className="text-sm text-muted-foreground">More Hours per Week</div>
+          </div>
+          <div className="text-center p-6 border border-border/40 bg-card">
+            <div className="text-3xl font-black text-primary mb-2">9,000</div>
+            <div className="text-sm text-muted-foreground">Hours/Year (vs 2,000 human)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MonetizationModels() {
+  const models = [
+    {
+      icon: "💼",
+      title: "Digital FTE Subscription",
+      price: "$1k+/month",
+      description: "Fully managed, hosted agent. Hands-off automation for clients.",
+      bestFor: "Agencies, Consultants",
+    },
+    {
+      icon: "🎯",
+      title: "Success Fee",
+      price: "Pay-per-result",
+      description: "Commission on outcomes. $5 per lead, 2% of savings identified.",
+      bestFor: "High-trust partnerships",
+    },
+    {
+      icon: "📜",
+      title: "License the Recipe",
+      price: "Annual/Perpetual",
+      description: "Sell your SKILL.md logic to enterprises who run it in-house.",
+      bestFor: "Defense, FinTech, Healthcare",
+    },
+    {
+      icon: "🏪",
+      title: "Skill Marketplace",
+      price: "Volume-based",
+      description: "Sell modular expertise packs via OpenAI Apps or SkillPort.",
+      bestFor: "Niche expertise at scale",
+    },
+  ];
+
+  return (
+    <section className="py-24 border-b border-border/40 bg-background">
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <p className="text-sm font-medium text-primary uppercase tracking-widest mb-3">
+            Monetize Your Expertise
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Four Ways to Profit from AI Agents
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Your domain knowledge—whether in sales, legal, finance, or any field—can become
+            a <span className="text-foreground font-semibold">recurring revenue stream</span>.
+          </p>
+        </div>
+
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {models.map((model, i) => (
+            <Card key={i} className="border bg-card hover:border-primary/50 transition-all duration-300">
+              <CardContent className="p-6 flex flex-col h-full">
+                <div className="text-4xl mb-4">{model.icon}</div>
+                <h3 className="text-lg font-bold text-foreground mb-1">{model.title}</h3>
+                <p className="text-primary font-semibold text-sm mb-3">{model.price}</p>
+                <p className="text-muted-foreground text-sm flex-grow mb-4">{model.description}</p>
+                <div className="pt-3 border-t border-border/40">
+                  <span className="text-xs text-muted-foreground">Best for: </span>
+                  <span className="text-xs text-foreground font-medium">{model.bestFor}</span>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AgentFactoryThesis() {
+  return (
+    <section className="py-24 border-b border-border/40 bg-primary/5">
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Quote Mark */}
+          <div className="text-6xl text-primary/30 mb-6">"</div>
+
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight mb-8">
+            Every domain expert can become an <span className="text-primary">Agent Factory</span>.
+            Your unique knowledge—whether in sales, legal, finance, or healthcare—can be
+            codified into AI agents that work <span className="text-primary">24/7</span>.
+          </h2>
+
+          <p className="text-lg text-muted-foreground mb-8">
+            Transform your expertise into scalable digital products that generate
+            <span className="text-foreground font-semibold"> recurring revenue</span> while you sleep.
+          </p>
+
+          {/* Three Pillars */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            <div className="p-6 border border-border/40 bg-background">
+              <div className="text-2xl mb-3">🏭</div>
+              <h3 className="font-bold text-foreground mb-2">Manufacture</h3>
+              <p className="text-sm text-muted-foreground">Use General Agents (Claude Code) to build your expertise into SKILL.md</p>
+            </div>
+            <div className="p-6 border border-border/40 bg-background">
+              <div className="text-2xl mb-3">📦</div>
+              <h3 className="font-bold text-foreground mb-2">Package</h3>
+              <p className="text-sm text-muted-foreground">Bundle into deployable Custom Agents with OpenAI or Claude SDK</p>
+            </div>
+            <div className="p-6 border border-border/40 bg-background">
+              <div className="text-2xl mb-3">💰</div>
+              <h3 className="font-bold text-foreground mb-2">Monetize</h3>
+              <p className="text-sm text-muted-foreground">Sell as Digital FTEs, licenses, or via the Skill Marketplace</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CaseStudySnippet() {
+  return (
+    <section className="py-24 border-b border-border/40 bg-background">
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left: Story */}
+          <div>
+            <p className="text-sm font-medium text-primary uppercase tracking-widest mb-3">
+              Real-World Results
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              The "Digital SDR" Agent
+            </h2>
+            <p className="text-muted-foreground mb-6">
+              A B2B SaaS startup with 5,000 monthly leads was only reaching 15% due to human bandwidth.
+              High SDR churn and inconsistent follow-up were killing the pipeline.
+            </p>
+            <p className="text-muted-foreground mb-6">
+              <span className="text-foreground font-semibold">The Solution:</span> A spec-driven Digital SDR
+              built with Claude Code, packaged as a SKILL.md with lead scoring and brand voice guidelines.
+            </p>
+            <div className="flex items-center gap-4">
+              <div className="text-4xl font-black text-primary">300%</div>
+              <div className="text-sm text-muted-foreground">ROI in 90 days<br />with instant deployment</div>
+            </div>
+          </div>
+
+          {/* Right: Stats */}
+          <div className="grid grid-cols-2 gap-4">
+            <Card className="border bg-card">
+              <CardContent className="p-6 text-center">
+                <div className="text-sm text-muted-foreground mb-2">Daily Outreach</div>
+                <div className="text-lg text-muted-foreground line-through mb-1">50 (Human)</div>
+                <div className="text-2xl font-bold text-primary">1,000+</div>
+              </CardContent>
+            </Card>
+            <Card className="border bg-card">
+              <CardContent className="p-6 text-center">
+                <div className="text-sm text-muted-foreground mb-2">Response Time</div>
+                <div className="text-lg text-muted-foreground line-through mb-1">4-6 hours</div>
+                <div className="text-2xl font-bold text-primary">&lt; 2 min</div>
+              </CardContent>
+            </Card>
+            <Card className="border bg-card">
+              <CardContent className="p-6 text-center">
+                <div className="text-sm text-muted-foreground mb-2">Monthly Cost</div>
+                <div className="text-lg text-muted-foreground line-through mb-1">$8,200</div>
+                <div className="text-2xl font-bold text-primary">$500</div>
+              </CardContent>
+            </Card>
+            <Card className="border bg-card">
+              <CardContent className="p-6 text-center">
+                <div className="text-sm text-muted-foreground mb-2">Lead Coverage</div>
+                <div className="text-lg text-muted-foreground line-through mb-1">15%</div>
+                <div className="text-2xl font-bold text-primary">100%</div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FinalCTA() {
   return (
     <section className="py-24 border-b border-border/40 bg-background">
       <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16 text-center pt-12 pb-12 min-h-[400px] flex flex-col items-center justify-center">
         <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-          Ready to Co-Learn with AI?
+          Ready to Build Your Agent Factory?
         </h3>
         <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Join the revolution where coding becomes conversation and
-          software becomes alive
+          Transform your domain expertise into Digital FTEs that work 24/7
+          and generate recurring revenue
         </p>
         <Button variant="outline" size="lg" className="h-14 px-8 text-lg font-semibold" asChild>
           <Link to="/docs/preface-agent-native">
@@ -517,9 +773,13 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title="The AI Agent Factory"
-      description="The Spec-Driven Blueprint for Building and Monetizing Digital FTEs. Learn how General AI Agents build Custom AI Agents. Create Reliable Digital FTEs—intelligent systems you can trust, deploy, and monetize."
+      description="The Spec-Driven Blueprint for Building and Monetizing Digital FTEs. Full-Time Equivalent Reliable AI Agents you can trust, deploy, and scale."
     >
       <HomepageHeader />
+      <AgentFactoryThesis />
+      <DigitalFTEComparison />
+      <MonetizationModels />
+      <CaseStudySnippet />
       <AISpectrumSection />
       <FeaturesSection />
       <MaturityLevelsSection />
