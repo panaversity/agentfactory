@@ -1,1 +1,5 @@
 {"timestamp":"2025-12-25T12:54:11Z","session_id":"1c59e0e3-83a0-4342-89d5-cf0649e3eb80","skill":"notebooklm-slides","event":"start"}
+{"timestamp":"2025-12-25T13:28:09Z","session_id":"16160c9b-d5ff-43a9-9224-c8bcb58d534f","skill":"pdf","event":"start"}
+{"timestamp":"2025-12-25T13:29:56Z","session_id":"112aeb13-36f5-42e8-8585-708fe44695ca","skill":"pdf","event":"start"}
+{"timestamp":"2025-12-25T13:33:39Z","session_id":"manual-test","skill":"test-skill","args":"","event":"invoke","source":"Skill_tool"}
+{"timestamp":"2025-12-25T13:33:52Z","session_id":"manual-test","skill":"test-skill","args":"","event":"invoke","source":"Skill_tool"}

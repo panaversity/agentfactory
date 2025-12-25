@@ -1,6 +1,5 @@
 {
-  "disabledMcpjsonServers": [
-  ],
+  "disabledMcpjsonServers": [],
   "enableAllProjectMcpServers": true,
   "alwaysThinkingEnabled": false,
   "hooks": {
@@ -23,6 +22,24 @@
             "command": ".claude/hooks/track-skill-start.sh"
           }
         ]
+      },
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/track-skill-invoke.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/track-subagent.sh"
+          }
+        ]
       }
     ],
     "PostToolUse": [
@@ -32,6 +49,15 @@
           {
             "type": "command",
             "command": ".claude/hooks/track-skill-end.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/track-subagent-result.sh"
           }
         ]
       }

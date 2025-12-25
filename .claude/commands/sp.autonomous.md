@@ -481,24 +481,103 @@ Args: [feature-name]
 - Pushes to remote
 - Creates PR with proper description
 
-### Step 6.2: Final Report
+### Step 6.2: Gather Usage Metrics
+
+Before generating the final report, collect skill and subagent usage from activity logs:
+
+```bash
+# Get session ID for this orchestration
+SESSION_ID=$(cat .claude/activity-logs/prompts.jsonl | tail -1 | jq -r '.session_id')
+
+# Extract skill usage for this session
+SKILLS_USED=$(cat .claude/activity-logs/skill-usage.jsonl | jq -r "select(.session_id == \"$SESSION_ID\") | .skill" | sort | uniq -c | sort -rn)
+
+# Extract subagent usage for this session
+SUBAGENTS_SPAWNED=$(cat .claude/activity-logs/subagent-usage.jsonl | jq -r "select(.session_id == \"$SESSION_ID\" and .event == \"spawn\") | .subagent" | sort | uniq -c | sort -rn)
+
+# Extract skill usage BY subagents (nested)
+# This requires correlating subagent session IDs with their skill usage
+```
+
+### Step 6.3: Final Report
 
 ```
-✅ AUTONOMOUS WORKFLOW COMPLETE
-
-Feature: [feature-name]
-Duration: [time elapsed]
-
-Artifacts Created:
-- specs/[feature]/spec.md
-- specs/[feature]/plan.md
-- specs/[feature]/tasks.md
-- [N] lesson files
-
-Validation: [X]/[Y] passed
-PR: #[number] - [title]
-
-PHRs Created: [list]
+╔══════════════════════════════════════════════════════════════════════╗
+║                   ✅ AUTONOMOUS WORKFLOW COMPLETE                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║                                                                      ║
+║  Feature: [feature-name]                                             ║
+║  Duration: [time elapsed]                                            ║
+║  Session ID: [session-id]                                            ║
+║                                                                      ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  ARTIFACTS CREATED                                                   ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  📄 specs/[feature]/spec.md                                          ║
+║  📄 specs/[feature]/plan.md                                          ║
+║  📄 specs/[feature]/tasks.md                                         ║
+║  📄 [N] lesson/implementation files                                  ║
+║  📄 [N] PHRs documented                                              ║
+║                                                                      ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  VALIDATION RESULTS                                                  ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  ✅ Passed: [X]/[Y]                                                   ║
+║  ⚠️ Warnings: [N]                                                     ║
+║  ❌ Failed: [N] (if any, list issues)                                 ║
+║                                                                      ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  SKILLS INVOKED (Main Agent)                                         ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [Count] × sp.specify                                                ║
+║  [Count] × sp.clarify                                                ║
+║  [Count] × sp.plan                                                   ║
+║  [Count] × sp.tasks                                                  ║
+║  [Count] × sp.analyze                                                ║
+║  [Count] × sp.implement                                              ║
+║  [Count] × sp.git.commit_pr                                          ║
+║  [Count] × [other skills...]                                         ║
+║                                                                      ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  SUBAGENTS SPAWNED                                                   ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Type                    │ Count │ Async │ Completed │ Errors        ║
+║  ────────────────────────┼───────┼───────┼───────────┼──────────     ║
+║  content-implementer     │  [N]  │  [N]  │    [N]    │   [N]         ║
+║  validation-auditor      │  [N]  │  [N]  │    [N]    │   [N]         ║
+║  factual-verifier        │  [N]  │  [N]  │    [N]    │   [N]         ║
+║  educational-validator   │  [N]  │  [N]  │    [N]    │   [N]         ║
+║  [other types...]        │  [N]  │  [N]  │    [N]    │   [N]         ║
+║                                                                      ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  SKILLS INVOKED BY SUBAGENTS (Nested Usage)                          ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Subagent                │ Skills Used                               ║
+║  ────────────────────────┼───────────────────────────────────────    ║
+║  content-implementer     │ frontend-design (2), code-validation (1)  ║
+║  validation-auditor      │ fact-check-lesson (5)                     ║
+║  [other subagents...]    │ [their skill usage]                       ║
+║                                                                      ║
+║  Note: Subagent skill usage tracked via session correlation.         ║
+║  If subagent spawned with run_in_background=true, it gets a          ║
+║  separate session_id that links back to parent via agent_id.         ║
+║                                                                      ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  MODEL USAGE                                                         ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Subagent Type           │ Model Distribution                        ║
+║  ────────────────────────┼───────────────────────────────────────    ║
+║  content-implementer     │ sonnet: [N], haiku: [N]                   ║
+║  validation-auditor      │ sonnet: [N]                               ║
+║  [other types...]        │ [model distribution]                      ║
+║                                                                      ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  OUTPUT                                                              ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  🔗 PR: #[number] - [title]                                          ║
+║  📊 View full metrics: python3 .claude/hooks/analyze-skills.py       ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
 ```
 
 ---
@@ -651,6 +730,24 @@ Approve plan to continue?
 
 ---
 
-**Version**: 1.0 (December 2025)
+**Version**: 1.1 (December 2025)
 **Requires**: Claude Code with async subagent support
 **Best For**: Content authoring, chapter creation, feature implementation
+
+---
+
+## Usage Metrics Commands
+
+```bash
+# Full session analysis
+python3 .claude/hooks/analyze-skills.py
+
+# Current session only (for final report)
+python3 .claude/hooks/analyze-skills.py --last
+
+# With nested skill tracking
+python3 .claude/hooks/analyze-skills.py --last --nested
+
+# JSON output for automation
+python3 .claude/hooks/analyze-skills.py --last --json
+```

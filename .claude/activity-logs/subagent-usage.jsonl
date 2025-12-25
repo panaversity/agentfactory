@@ -1,0 +1,2 @@
+{"timestamp":"2025-12-25T13:33:59Z","session_id":"manual-test","subagent":"general-purpose","description":"test spawn","background":false,"model":"haiku","event":"spawn"}
+{"timestamp":"2025-12-25T13:34:08Z","session_id":"manual-test","subagent":"general-purpose","agent_id":"abc123","status":"completed","event":"complete"}
