@@ -495,10 +495,10 @@ function DigitalFTEComparison() {
   const comparisonData = [
     { feature: "Availability", human: "40 hours/week", digital: "168 hours/week (24/7)", highlight: true },
     { feature: "Monthly Cost", human: "$4,000 – $8,000+", digital: "$500 – $2,000", highlight: true },
-    { feature: "Ramp-up Time", human: "3 – 6 months", digital: "Instant (via SKILL.md)", highlight: false },
+    { feature: "Ramp-up Time", human: "3 – 6 months", digital: "Instant deployment", highlight: false },
     { feature: "Consistency", human: "Variable (85–95%)", digital: "Predictable (99%+)", highlight: false },
     { feature: "Scaling", human: "Linear (hire 10 for 10x)", digital: "Exponential (instant clone)", highlight: true },
-    { feature: "Cost per Task", human: "$3.00 – $6.00", digital: "$0.25 – $0.50", highlight: true },
+    { feature: "Cost per Task", human: "$30 – $60", digital: "$3 – $6", highlight: true },
   ];
 
   return (
@@ -649,13 +649,13 @@ function AgentFactoryThesis() {
           <div className="text-6xl text-primary/30 mb-6">"</div>
 
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight mb-8">
-            Every domain expert can become an <span className="text-primary">Agent Factory</span>.
-            Your unique knowledge—whether in sales, legal, finance, or healthcare—can be
-            codified into AI agents that work <span className="text-primary">24/7</span>.
+            Build <span className="text-primary">Digital FTEs</span> that work <span className="text-primary">24/7</span>.
+            Your domain expertise—whether in sales, legal, finance, or healthcare—becomes
+            an autonomous AI agent that never sleeps.
           </h2>
 
           <p className="text-lg text-muted-foreground mb-8">
-            Transform your expertise into scalable digital products that generate
+            Transform your knowledge into scalable digital products that generate
             <span className="text-foreground font-semibold"> recurring revenue</span> while you sleep.
           </p>
 
@@ -664,17 +664,17 @@ function AgentFactoryThesis() {
             <div className="p-6 border border-border/40 bg-background">
               <div className="text-2xl mb-3">🏭</div>
               <h3 className="font-bold text-foreground mb-2">Manufacture</h3>
-              <p className="text-sm text-muted-foreground">Use General Agents (Claude Code) to build your expertise into SKILL.md</p>
+              <p className="text-sm text-muted-foreground">Use AI Coding Agents (Claude Code) to build your expertise into deployable agents</p>
             </div>
             <div className="p-6 border border-border/40 bg-background">
               <div className="text-2xl mb-3">📦</div>
               <h3 className="font-bold text-foreground mb-2">Package</h3>
-              <p className="text-sm text-muted-foreground">Bundle into deployable Custom Agents with OpenAI or Claude SDK</p>
+              <p className="text-sm text-muted-foreground">Bundle into production-ready Digital FTEs with OpenAI or Anthropic Agent SDKs</p>
             </div>
             <div className="p-6 border border-border/40 bg-background">
               <div className="text-2xl mb-3">💰</div>
               <h3 className="font-bold text-foreground mb-2">Monetize</h3>
-              <p className="text-sm text-muted-foreground">Sell as Digital FTEs, licenses, or via the Skill Marketplace</p>
+              <p className="text-sm text-muted-foreground">Sell as managed subscriptions, success fees, or enterprise licenses</p>
             </div>
           </div>
         </div>
@@ -683,69 +683,6 @@ function AgentFactoryThesis() {
   );
 }
 
-function CaseStudySnippet() {
-  return (
-    <section className="py-24 border-b border-border/40 bg-background">
-      <div className="max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left: Story */}
-          <div>
-            <p className="text-sm font-medium text-primary uppercase tracking-widest mb-3">
-              Real-World Results
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              The "Digital SDR" Agent
-            </h2>
-            <p className="text-muted-foreground mb-6">
-              A B2B SaaS startup with 5,000 monthly leads was only reaching 15% due to human bandwidth.
-              High SDR churn and inconsistent follow-up were killing the pipeline.
-            </p>
-            <p className="text-muted-foreground mb-6">
-              <span className="text-foreground font-semibold">The Solution:</span> A spec-driven Digital SDR
-              built with Claude Code, packaged as a SKILL.md with lead scoring and brand voice guidelines.
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="text-4xl font-black text-primary">300%</div>
-              <div className="text-sm text-muted-foreground">ROI in 90 days<br />with instant deployment</div>
-            </div>
-          </div>
-
-          {/* Right: Stats */}
-          <div className="grid grid-cols-2 gap-4">
-            <Card className="border bg-card">
-              <CardContent className="p-6 text-center">
-                <div className="text-sm text-muted-foreground mb-2">Daily Outreach</div>
-                <div className="text-lg text-muted-foreground line-through mb-1">50 (Human)</div>
-                <div className="text-2xl font-bold text-primary">1,000+</div>
-              </CardContent>
-            </Card>
-            <Card className="border bg-card">
-              <CardContent className="p-6 text-center">
-                <div className="text-sm text-muted-foreground mb-2">Response Time</div>
-                <div className="text-lg text-muted-foreground line-through mb-1">4-6 hours</div>
-                <div className="text-2xl font-bold text-primary">&lt; 2 min</div>
-              </CardContent>
-            </Card>
-            <Card className="border bg-card">
-              <CardContent className="p-6 text-center">
-                <div className="text-sm text-muted-foreground mb-2">Monthly Cost</div>
-                <div className="text-lg text-muted-foreground line-through mb-1">$8,200</div>
-                <div className="text-2xl font-bold text-primary">$500</div>
-              </CardContent>
-            </Card>
-            <Card className="border bg-card">
-              <CardContent className="p-6 text-center">
-                <div className="text-sm text-muted-foreground mb-2">Lead Coverage</div>
-                <div className="text-lg text-muted-foreground line-through mb-1">15%</div>
-                <div className="text-2xl font-bold text-primary">100%</div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function FinalCTA() {
   return (
@@ -778,13 +715,12 @@ export default function Home(): ReactNode {
       <HomepageHeader />
       <AgentFactoryThesis />
       <DigitalFTEComparison />
-      <MonetizationModels />
-      <CaseStudySnippet />
       <AISpectrumSection />
       <FeaturesSection />
       <MaturityLevelsSection />
       <ParadigmShift />
       <IDEShowcaseSection />
+      <MonetizationModels />
       <FinalCTA />
     </Layout>
   );
