@@ -11,7 +11,7 @@ export default function OAuthCallback(): React.JSX.Element {
 
   // Get OAuth config from Docusaurus context
   const authUrl = (siteConfig.customFields?.authUrl as string) || 'http://localhost:3001';
-  const oauthClientId = (siteConfig.customFields?.oauthClientId as string) || 'ai-native-public-client';
+  const oauthClientId = (siteConfig.customFields?.oauthClientId as string) || 'agent-factory-public-client';
   // Generate redirect URI - auto-detects base path from current URL
   const redirectUri = getRedirectUri();
 
@@ -152,7 +152,7 @@ export default function OAuthCallback(): React.JSX.Element {
               Successfully signed in!
             </h2>
             <p style={{ color: 'var(--ifm-font-color-secondary)' }}>
-              Redirecting you back to AI Native Development...
+              Redirecting you back to The AI Agent Factory...
             </p>
           </>
         )}

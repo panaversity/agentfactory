@@ -40,7 +40,7 @@ export function AuthProvider({ children, authUrl, oauthClientId }: AuthProviderP
     console.error('AuthProvider: authUrl is required. Configure it in docusaurus.config.ts customFields.');
   }
   const effectiveAuthUrl = authUrl || '';
-  const effectiveClientId = oauthClientId || 'ai-native-public-client';
+  const effectiveClientId = oauthClientId || 'agent-factory-public-client';
   const [session, setSession] = useState<Session | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 

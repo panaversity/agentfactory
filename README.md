@@ -1,10 +1,10 @@
-# 🧠 AI Native Software Development
+# 🏭 The AI Agent Factory
 
-> **Colearning Agentic AI with Python and TypeScript – Spec Driven Reusable Intelligence**
+> **The Spec-Driven Blueprint for Building and Monetizing Digital FTEs**
 >
-> **Empowering developers, entrepreneurs, and organizations to learn, build, and collaborate with intelligent AI agents — building systems where AI is the core.**
+> **Empowering developers, entrepreneurs, and organizations to learn, build, and monetize intelligent AI agents — creating reliable Digital FTEs you can trust, deploy, and scale.**
 
-📚 **Live Book**: [https://ai-native.panaversity.org](https://ai-native.panaversity.org) | [Panaversity Books](https://panaversity.com/books/ai-native-software-development)
+📚 **Live Book**: [https://agentfactory.panaversity.org](https://agentfactory.panaversity.org) | [Panaversity Books](https://panaversity.com/books/ai-native-software-development)
 
 ---
 
@@ -133,7 +133,7 @@ The future of software development is collaborative, conversational, and powered
 3. **Build alongside AI** — Start with Python basics, gradually master AI-native architectures
 4. **Deploy to production** — By the end, you'll be running scalable, intelligent systems
 
-📘 **Read the book**: [https://ai-native.panaversity.org](https://ai-native.panaversity.org)
+📘 **Read the book**: [https://agentfactory.panaversity.org](https://agentfactory.panaversity.org)
 
 🎓 **Panaversity Programs**: [https://panaversity.com/books/ai-native-software-development](https://panaversity.com/books/ai-native-software-development)
 

@@ -48,10 +48,16 @@ test("Get Trusted Origins - Contains RoboLearn", () => {
   return origins.includes("https://mjunaidca.github.io");
 });
 
-// Test 3: Get trusted origins includes AI Native
-test("Get Trusted Origins - Contains AI Native", () => {
+// Test 3: Get trusted origins includes AI Native (Legacy)
+test("Get Trusted Origins - Contains AI Native (Legacy)", () => {
   const origins = getTrustedOrigins();
   return origins.includes("https://ai-native.panaversity.org");
+});
+
+// Test 3b: Get trusted origins includes Agent Factory
+test("Get Trusted Origins - Contains Agent Factory", () => {
+  const origins = getTrustedOrigins();
+  return origins.includes("https://agentfactory.panaversity.org");
 });
 
 // Test 4: Relative URLs are valid
@@ -82,6 +88,27 @@ test("Valid Redirect - AI Native Origin", () => {
 // Test 9: AI Native with path is valid
 test("Valid Redirect - AI Native with Path", () => {
   return isValidRedirectUrl("https://ai-native.panaversity.org/dashboard");
+});
+
+// Test 9b: Agent Factory origin is valid
+test("Valid Redirect - Agent Factory Origin", () => {
+  return isValidRedirectUrl("https://agentfactory.panaversity.org");
+});
+
+// Test 9c: Agent Factory with path is valid
+test("Valid Redirect - Agent Factory with Path", () => {
+  return isValidRedirectUrl("https://agentfactory.panaversity.org/dashboard");
+});
+
+// Test 9d: Agent Factory Vercel preview is valid
+test("Valid Redirect - Agent Factory Vercel Preview", () => {
+  return isValidRedirectUrl("https://agent-factory.vercel.app/dashboard");
+});
+
+// Test 9e: Get trusted origins includes Vercel preview
+test("Get Trusted Origins - Contains Vercel Preview", () => {
+  const origins = getTrustedOrigins();
+  return origins.includes("https://agent-factory.vercel.app");
 });
 
 // Test 10: Untrusted origin is invalid
@@ -130,6 +157,11 @@ test("Invalid Redirect - RoboLearn OAuth Callback", () => {
 // Test 17: Block AI Native OAuth callback URL
 test("Invalid Redirect - AI Native OAuth Callback", () => {
   return !isValidRedirectUrl("https://ai-native.panaversity.org/auth/callback");
+});
+
+// Test 17b: Block Agent Factory OAuth callback URL
+test("Invalid Redirect - Agent Factory OAuth Callback", () => {
+  return !isValidRedirectUrl("https://agentfactory.panaversity.org/auth/callback");
 });
 
 // Test 18: Block localhost OAuth callback URL

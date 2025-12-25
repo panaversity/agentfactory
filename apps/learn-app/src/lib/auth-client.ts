@@ -3,7 +3,7 @@ import { getRedirectUri } from "./url-utils";
 
 // Default fallbacks for development
 const DEFAULT_AUTH_URL = "http://localhost:3001";
-const DEFAULT_CLIENT_ID = "ai-native-public-client";
+const DEFAULT_CLIENT_ID = "agent-factory-public-client";
 
 // Create auth client with default URL (will be overridden in components using useDocusaurusContext)
 export const authClient = createAuthClient({

@@ -131,7 +131,7 @@ export function ContentGate({
   const { session, isLoading } = useAuth();
   const { siteConfig } = useDocusaurusContext();
   const authUrl = (siteConfig.customFields?.authUrl as string) || 'http://localhost:3001';
-  const oauthClientId = (siteConfig.customFields?.oauthClientId as string) || 'ai-native-public-client';
+  const oauthClientId = (siteConfig.customFields?.oauthClientId as string) || 'agent-factory-public-client';
 
   const [isUnlocking, setIsUnlocking] = useState(false);
   const [isSigningIn, setIsSigningIn] = useState(false);
