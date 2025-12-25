@@ -34,17 +34,19 @@ That's what this part teaches you.
 
 This part consists of four interconnected chapters that build the foundation for everything that follows:
 
-### Chapter 1: The AI Development Revolution
+### Chapter 1: The Agent Factory Paradigm
 
-You'll understand the scale and significance of this transformation. We examine the $3 trillion developer economy, explore how software is disrupting itself, and trace the evolution from simple autocomplete to autonomous coding agents. You'll learn why this isn't just faster coding—it's a fundamental restructuring of how software gets built.
+You'll understand the scale and significance of this transformation through nine lessons covering evidence, economics, and architecture. We examine the 2025 inflection point with concrete data (ICPC breakthroughs, 84% adoption, YC W25 batch), explore the $3 trillion developer economy, and introduce the **Two Paths Framework**: General Agents (Claude Code, Gemini CLI) that BUILD Custom Agents (OpenAI SDK, Claude SDK).
 
-**Key insights**: The economic forces driving change, the lifecycle transformation across planning/implementation/testing/deployment, and why developer jobs are actually increasing rather than decreasing.
+You'll trace the evolution from simple autocomplete to autonomous agents (Gen 1-4), understand the **Five Powers** (See, Hear, Reason, Act, Remember) that enable AI autonomy, and learn the three-layer AI stack architecture with MCP as "USB for AI tools."
 
-### Chapter 2: AI Turning Point
+**Key insights**: The economic forces driving change, the role shift from coder to orchestrator, the lifecycle transformation across all phases, and a preview of Spec-Driven Development methodology.
 
-This chapter provides evidence that summer 2025 marked a genuine inflection point. We analyze mainstream adoption data, capability milestones like the ICPC results and GDPval benchmarks, and enterprise reorganization patterns. The second half introduces the new wave of AI coding agents—Claude Code, Gemini CLI, OpenAI Codex, and Qwen Code—showing how they differ and what they enable.
+### Chapter 2: AIFF Foundation & Agent Standards
 
-**Key insights**: Quantitative proof of adoption, the shift from vibe coding to Spec-Driven Development, and why organizations that add discipline to AI adoption see dramatic productivity gains while those that don't accumulate technical debt.
+This chapter bridges from "what is the paradigm" (Chapter 1) to "how to build" (later chapters) by teaching the infrastructure layer that enables building Digital FTEs. You'll learn about the **Model Context Protocol (MCP)**—the universal standard for connecting agents to real business data, **Agent Skills**—reusable capabilities that compound across projects, and **Agent UI Patterns**—how agent interfaces are evolving.
+
+**Key insights**: How MCP enables tool interoperability, skill composition patterns, and the future of agent user experience.
 
 ### Chapter 3: How to Make a Billion Dollars in the AI Era
 
