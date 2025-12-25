@@ -1,5 +1,5 @@
 ---
-title: "Lesson 3: Two Paths to Building AI Products"
+title: "Two Paths to Building AI Products"
 chapter: 1
 lesson: 3
 duration_minutes: 18

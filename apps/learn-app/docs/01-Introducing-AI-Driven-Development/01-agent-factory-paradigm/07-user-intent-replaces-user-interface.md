@@ -1,5 +1,5 @@
 ---
-title: "Lesson 7: User Intent Replaces User Interface"
+title: "User Intent Replaces User Interface"
 chapter: 1
 lesson: 7
 duration_minutes: 20
