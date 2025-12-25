@@ -1,6 +1,6 @@
 ---
 title: "Chapter 1 Quiz"
-sidebar_position: 10
+sidebar_position: 11
 ---
 
 # Chapter 1 Quiz: The Agent Factory Paradigm

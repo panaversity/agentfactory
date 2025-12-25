@@ -5,7 +5,7 @@ title: "Chapter 1: The Agent Factory Paradigm"
 
 # Chapter 1: The Agent Factory Paradigm
 
-Welcome to the foundational chapter that establishes the mental models you need for AI-native development. By the end of these nine lessons, you'll understand not just *that* AI is changing software development, but *how* to think about this transformation strategically.
+Welcome to the foundational chapter that establishes the mental models you need for AI-native development. By the end of these ten lessons, you'll understand not just *that* AI is changing software development, but *how* to think about this transformation strategically.
 
 ## What You'll Learn
 
@@ -22,10 +22,11 @@ This chapter builds your conceptual framework through three progressions:
 - Your evolving role from coder to orchestrator
 - The four generations of AI development tools
 
-**Technical Foundations (Lessons 7-9)**
+**Technical Foundations (Lessons 7-10)**
 - The UX→Intent paradigm shift and the Five Powers
 - The three-layer AI development stack
 - How Spec-Driven Development enables AI collaboration
+- The Digital FTE vision and why discipline matters more with AI
 
 ## Chapter Overview
 
@@ -40,8 +41,9 @@ This chapter builds your conceptual framework through three progressions:
 | 7 | User Intent Replaces User Interface | 20 min | Five Powers |
 | 8 | The Modern AI Stack | 18 min | Architecture |
 | 9 | Spec-Driven Development Preview | 15 min | Methodology intro |
+| 10 | The Digital FTE Vision | 15 min | Synthesis & path forward |
 
-**Total Time**: ~165 minutes
+**Total Time**: ~180 minutes
 
 ## Prerequisites
 
@@ -68,5 +70,6 @@ By completing this chapter, you'll be able to:
 5. **Name** the Five Powers that enable autonomous agents
 6. **Describe** the three-layer AI stack architecture
 7. **Outline** the Spec-Driven Development workflow
+8. **Articulate** the Digital FTE vision and why AI amplifies your habits
 
 Let's begin with the evidence that makes this transformation undeniable.
