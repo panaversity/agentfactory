@@ -69,9 +69,11 @@ At the bottom sit OpenAI (with ChatGPT) and Google (with Gemini). These are your
 
 **Lesson**: Do not compete here as a solo entrepreneur. You will lose. Avoid this snake entirely.
 
-## Layer 2: Agentic Developer Tools (The First Ladder)
+## Layer 2: General Agents as Developer Tools (The First Ladder)
 
 The first ladder is where AI agents orchestrate workflows for developers. This is where Claude Code lives. Instead of competing with ChatGPT for consumer attention, Claude Code dominates by being *specialized*. It's not trying to be a general-purpose chatbot. It's trying to be the best coding agent on the planet.
+
+**What we call this**: General Agents—powerful reasoning systems (like Claude Code) that work across any domain by understanding your context, making decisions, and executing code or commands. They're general-purpose tools you direct toward specific problems.
 
 This focus produces remarkable economics:
 
@@ -85,9 +87,11 @@ This focus produces remarkable economics:
 
 > **Explore with your AI**: "Claude Code reached $500M ARR in two months by being specialized, not general-purpose. Let's test this pattern—ask your AI: 'Give me 3 examples of OTHER software tools that succeeded by being specialized rather than competing on general features.' Then evaluate: Do these examples actually prove the specialization strategy, or are there counterexamples we're missing?"
 
-## Layer 3: Vertical Market Subagents (The Middle Rungs)
+## Layer 3: Custom Agents for Vertical Markets (The Middle Rungs)
 
-Once you climb to Layer 2, you reach where real money accumulates. This is where specialized agents solve industry-specific problems.
+Once you climb to Layer 2, you reach where real money accumulates. This is where Custom Agents—purpose-built AI systems designed for specific workflows—solve industry-specific problems.
+
+**What we call this**: Custom Agents—AI systems engineered for one task extremely well, with guardrails and customer-ready reliability. You BUILD Custom Agents using General Agents like Claude Code.
 
 **Finance**: A subagent that reads regulatory documents, integrates with Bloomberg terminals, and executes trades within risk parameters. A solo developer building this could capture $100M+ in annual revenue by reaching 100-200 major financial firms.
 
@@ -126,6 +130,8 @@ This is why the Snakes and Ladders framework works: you find the ladders that ot
 ---
 
 Now that you understand the competitive layers, let's look at who wins economically. The economics are the second key insight that makes this opportunity real.
+
+**But here's the critical link**: Your layer choice determines your monetization strategy. A Layer 3 Custom Agent built on enterprise integrations commands premium subscription pricing. A Layer 2 general-purpose tool might use marketplace monetization. In Lesson 5, you'll see how each layer aligns with specific revenue models. Your competitive position isn't just about market opportunity—it's about what customers will pay for.
 
 #### 🤝 Practice Exercise
 
