@@ -54,7 +54,7 @@ const AI_NATIVE_CLIENT = {
   id: "ai-native-public-client-id",
   clientId: "ai-native-public-client",
   clientSecret: null,
-  name: "AI Native Platform",
+  name: "AI Native Platform (Legacy)",
   redirectUrls: [
     "http://localhost:3000/auth/callback",
     "https://ai-native.panaversity.org/auth/callback",
@@ -64,7 +64,26 @@ const AI_NATIVE_CLIENT = {
   metadata: JSON.stringify({
     token_endpoint_auth_method: "none",
     grant_types: ["authorization_code", "refresh_token"],
-    description: "AI Native platform public client",
+    description: "AI Native platform public client (Legacy - use agent-factory-public-client)",
+  }),
+};
+
+const AGENT_FACTORY_CLIENT = {
+  id: "agent-factory-public-client-id",
+  clientId: "agent-factory-public-client",
+  clientSecret: null,
+  name: "The AI Agent Factory",
+  redirectUrls: [
+    "http://localhost:3000/auth/callback",
+    "https://agent-factory-interface.vercel.app/auth/callback",
+    "https://agentfactory.panaversity.org/auth/callback",
+  ].join(","),
+  type: "public",
+  disabled: false,
+  metadata: JSON.stringify({
+    token_endpoint_auth_method: "none",
+    grant_types: ["authorization_code", "refresh_token"],
+    description: "The AI Agent Factory - Spec-Driven Blueprint for Digital FTEs",
   }),
 };
 
@@ -116,12 +135,14 @@ async function seed() {
 
   await upsertClient(PANAVERSITY_SSO_CLIENT);
   await upsertClient(AI_NATIVE_CLIENT);
+  await upsertClient(AGENT_FACTORY_CLIENT);
 
   // Verify and display all production clients
   const allClients = await db.select().from(oauthApplication);
   const prodClients = allClients.filter(c =>
     c.clientId === PANAVERSITY_SSO_CLIENT.clientId ||
-    c.clientId === AI_NATIVE_CLIENT.clientId
+    c.clientId === AI_NATIVE_CLIENT.clientId ||
+    c.clientId === AGENT_FACTORY_CLIENT.clientId
   );
 
   console.log("\n✅ Successfully configured!\n");

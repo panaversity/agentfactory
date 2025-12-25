@@ -112,7 +112,7 @@ export const TRUSTED_CLIENTS = [
     type: "public" as const,
     redirectUrls: getRedirectUrls([
       "http://localhost:3000/auth/callback",
-      "https://agent-factory.vercel.app/auth/callback",
+      "https://agent-factory-interface.vercel.app/auth/callback",
       "https://agentfactory.panaversity.org/auth/callback",
     ]),
     disabled: false,

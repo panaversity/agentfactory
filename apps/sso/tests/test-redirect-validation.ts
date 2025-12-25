@@ -102,13 +102,13 @@ test("Valid Redirect - Agent Factory with Path", () => {
 
 // Test 9d: Agent Factory Vercel preview is valid
 test("Valid Redirect - Agent Factory Vercel Preview", () => {
-  return isValidRedirectUrl("https://agent-factory.vercel.app/dashboard");
+  return isValidRedirectUrl("https://agent-factory-interface.vercel.app/dashboard");
 });
 
 // Test 9e: Get trusted origins includes Vercel preview
 test("Get Trusted Origins - Contains Vercel Preview", () => {
   const origins = getTrustedOrigins();
-  return origins.includes("https://agent-factory.vercel.app");
+  return origins.includes("https://agent-factory-interface.vercel.app");
 });
 
 // Test 10: Untrusted origin is invalid
