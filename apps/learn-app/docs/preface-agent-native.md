@@ -11,7 +11,7 @@ sidebar_position: 0
 
 # PREFACE: The AI Agent Factory
 
-*Based on the Agent Factory framework by Zia Khan*
+What if your expertise could work while you sleep?
 
 ---
 
