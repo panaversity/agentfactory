@@ -23,9 +23,9 @@ Their product? **CoCounsel**—an AI legal assistant that could review documents
 
 Thomson Reuters didn't pay $650 million for the technology. They paid for **encoded legal expertise**—the ability to do substantive legal work that previously required expensive human professionals.
 
-This is what a Digital FTE is worth when done right.
+This is what encoded domain expertise is worth.
 
-**This book teaches you to build the next one—in YOUR domain.**
+**This book teaches you to build AI agents that capture YOUR expertise—and monetize them as Digital FTEs.**
 
 ---
 
@@ -34,7 +34,7 @@ This is what a Digital FTE is worth when done right.
 *This is a living book. The embedded presentation below is updated as the field evolves—ensuring you always have access to the latest frameworks and case studies.*
 
 :::tip Open Full Slideshow
-**[View Full Presentation](https://docs.google.com/presentation/d/1UGvCUk1-O8m5i-aTWQNxzg8EXoKzPa8fgcwfNh8vRjQ/edit?usp=sharing)** — 109 slides on the transformation from traditional coding to building Digital FTEs.
+**[View Full Presentation](https://docs.google.com/presentation/d/1UGvCUk1-O8m5i-aTWQNxzg8EXoKzPa8fgcwfNh8vRjQ/edit?usp=sharing)** — The complete Agent Factory framework.
 :::
 
 <div style={{position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%', marginBottom: '2rem', border: '1px solid var(--ifm-color-emphasis-300)', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)'}}>
