@@ -24,7 +24,7 @@
 ---
 
 <p align="center">
-  <img src="cover.png" alt="AI Native CoLearning Programming & Agentic AI - The AI-Driven Way" width="600" />
+  <img src="apps/learn-app/static/img/book-cover-page.png" alt="AI Native CoLearning Programming & Agentic AI - The AI-Driven Way" width="600" />
 </p>
 
 ## 💡 Mission
