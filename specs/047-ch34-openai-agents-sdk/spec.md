@@ -39,7 +39,7 @@ This chapter teaches production mastery of the OpenAI Agents SDK—the same infr
 
 ---
 
-## Chapter Structure (8 Lessons)
+## Chapter Structure (10 Lessons)
 
 ### Lesson 1: SDK Setup & First Agent
 **Pattern Source**: `examples/basic/hello_world.py`, `examples/model_providers/litellm_provider.py`
@@ -62,8 +62,19 @@ This chapter teaches production mastery of the OpenAI Agents SDK—the same infr
 ### Lesson 7: Tracing, Hooks & Observability
 **Pattern Source**: `examples/basic/lifecycle_example.py`, `examples/agent_patterns/deterministic.py`
 
-### Lesson 8: Capstone - Customer Support FTE
+### Lesson 8: MCP Integration (NEW)
+**Pattern Source**: `examples/mcp/` + Context7 MCP server
+**Key Concept**: `MCPServerStreamableHttp` for connecting agents to external MCP tool ecosystems
+**Example**: Connect TaskManager agent to Context7 for documentation lookup
+
+### Lesson 9: RAG with FileSearchTool (NEW)
+**Pattern Source**: OpenAI hosted vector stores, `FileSearchTool`
+**Key Concept**: Agentic RAG - agent decides when to retrieve from vector store
+**Example**: TaskManager agent with knowledge base for project documentation
+
+### Lesson 10: Capstone - Customer Support FTE (MOVED from L8)
 **Pattern Source**: `examples/customer_service/main.py` (full implementation)
+**Enhancement**: Now includes MCP integration (Context7 for docs) and RAG (FileSearchTool for FAQ knowledge base)
 
 ---
 
@@ -279,26 +290,64 @@ with trace("Financial research trace", trace_id=trace_id):
 
 ---
 
-### User Story 12 - MCP Integration (Priority: P3)
+### User Story 12 - MCP Integration with StreamableHTTP (Priority: P1)
 
-**Concrete Pattern**: `mcp/filesystem_example/main.py`
+**Concrete Pattern**: `MCPServerStreamableHttp` with Context7 MCP server
 
 ```python
-async with MCPServerStdio(
-    name="Filesystem Server",
-    params={"command": "npx", "args": ["-y", "@modelcontextprotocol/server-filesystem", path]},
+from agents.mcp import MCPServerStreamableHttp
+
+# Connect to Context7 MCP server via StreamableHTTP
+async with MCPServerStreamableHttp(
+    name="Context7 Docs",
+    url="https://mcp.context7.com/mcp",
+    headers={"Authorization": f"Bearer {os.getenv('CONTEXT7_API_KEY')}"}
 ) as server:
-    agent = Agent(name="Assistant", mcp_servers=[server])
+    agent = Agent(
+        name="Documentation Assistant",
+        instructions="Use Context7 to look up library documentation.",
+        mcp_servers=[server]
+    )
+    result = await Runner.run(agent, "What's new in OpenAI Agents SDK?")
 ```
 
 **Acceptance Scenarios**:
-1. **Given** `MCPServerStdio` context manager, **When** agent runs, **Then** MCP tools available
-2. **Given** `mcp_servers=[server]` on agent, **When** user asks to "list files", **Then** MCP tool called
+1. **Given** `MCPServerStreamableHttp` with URL, **When** agent runs, **Then** MCP tools from remote server available
+2. **Given** Context7 server configured, **When** user asks documentation question, **Then** agent calls resolve-library-id and get-library-docs
 3. **Given** multiple MCP servers, **When** configured, **Then** all tools available to agent
+4. **Given** server returns documentation, **When** agent processes, **Then** response grounded in retrieved docs
+
+### User Story 13 - RAG with FileSearchTool (Priority: P1)
+
+**Concrete Pattern**: OpenAI hosted vector stores with `FileSearchTool`
+
+```python
+from agents import Agent, Runner, FileSearchTool
+
+# Create agent with FileSearchTool pointing to vector store
+agent = Agent(
+    name="Knowledge Assistant",
+    instructions="Answer questions using the project documentation in your knowledge base.",
+    tools=[
+        FileSearchTool(
+            vector_store_ids=["vs_abc123"],  # OpenAI vector store ID
+            max_num_results=5,
+        )
+    ]
+)
+
+result = await Runner.run(agent, "What are the coding standards for this project?")
+```
+
+**Acceptance Scenarios**:
+1. **Given** `FileSearchTool` with vector_store_ids, **When** agent needs facts, **Then** retrieves from vector store
+2. **Given** max_num_results=5, **When** retrieval runs, **Then** returns top 5 chunks
+3. **Given** agentic RAG pattern, **When** user asks factual question, **Then** agent decides to call FileSearchTool
+4. **Given** retrieved chunks, **When** agent responds, **Then** answer grounded in retrieved content
 
 ---
 
-### User Story 13 - Full Customer Support FTE (Priority: P1)
+### User Story 14 - Full Customer Support FTE (Priority: P1)
 
 **Concrete Pattern**: `customer_service/main.py` - complete implementation
 
@@ -372,13 +421,31 @@ async with MCPServerStdio(
 - **FR-034**: MUST show `group_id` for linking conversation turns
 - **FR-035**: MUST track `context.usage` for token monitoring
 
-#### Lesson 8: Capstone - Customer Support FTE
-- **FR-036**: MUST implement full customer_service pattern from repo
-- **FR-037**: MUST include: context object, tools with context, handoff callbacks
-- **FR-038**: MUST implement bidirectional handoffs between 3+ agents
-- **FR-039**: MUST add input guardrail for abuse detection
-- **FR-040**: MUST trace entire conversation with group_id
-- **FR-041**: MUST implement full conversation loop with `to_input_list()`
+#### Lesson 8: MCP Integration
+- **FR-036**: MUST demonstrate `MCPServerStreamableHttp` with remote server URL
+- **FR-037**: MUST connect to Context7 MCP server for documentation lookup
+- **FR-038**: MUST show `mcp_servers=[server]` parameter on Agent
+- **FR-039**: MUST implement agent that uses MCP tools (resolve-library-id, get-library-docs)
+- **FR-040**: MUST handle async context manager pattern for MCP server lifecycle
+- **FR-041**: MUST show practical example: TaskManager getting library documentation
+
+#### Lesson 9: RAG with FileSearchTool
+- **FR-042**: MUST demonstrate `FileSearchTool` with vector_store_ids
+- **FR-043**: MUST explain OpenAI hosted vector store creation (dashboard or API)
+- **FR-044**: MUST show `max_num_results` parameter for controlling retrieval
+- **FR-045**: MUST implement agentic RAG pattern (agent decides when to retrieve)
+- **FR-046**: MUST demonstrate grounded responses from retrieved content
+- **FR-047**: MUST show practical example: TaskManager with project knowledge base
+
+#### Lesson 10: Capstone - Customer Support FTE
+- **FR-048**: MUST implement full customer_service pattern from repo
+- **FR-049**: MUST include: context object, tools with context, handoff callbacks
+- **FR-050**: MUST implement bidirectional handoffs between 3+ agents
+- **FR-051**: MUST add input guardrail for abuse detection
+- **FR-052**: MUST trace entire conversation with group_id
+- **FR-053**: MUST implement full conversation loop with `to_input_list()`
+- **FR-054**: MUST integrate MCP (Context7 for documentation lookup)
+- **FR-055**: MUST integrate RAG (FileSearchTool for FAQ knowledge base)
 
 ---
 
@@ -396,7 +463,8 @@ async with MCPServerStdio(
 | Session Branching | `memory/advanced_sqlite_session_example.py` | Conversation editing |
 | Lifecycle Hooks | `basic/lifecycle_example.py` | Monitor every event |
 | Tracing Spans | `financial_research_agent/manager.py` | Sub-operation visibility |
-| MCP Integration | `mcp/filesystem_example/main.py` | External tool ecosystems |
+| MCP StreamableHTTP | `MCPServerStreamableHttp` + Context7 | Remote MCP tool ecosystems |
+| Agentic RAG | `FileSearchTool` + vector stores | Agent-driven retrieval |
 | Conversation Loop | `customer_service/main.py` | Production chat pattern |
 
 ---
@@ -410,7 +478,9 @@ async with MCPServerStdio(
 - **SC-005**: Students can use AdvancedSQLiteSession with branching
 - **SC-006**: Students can implement full RunHooks with usage tracking
 - **SC-007**: Students can trace multi-agent workflow with custom spans
-- **SC-008**: Capstone matches production quality of customer_service example
+- **SC-008**: Students can connect agents to MCP servers using StreamableHTTP
+- **SC-009**: Students can implement agentic RAG with FileSearchTool
+- **SC-010**: Capstone integrates all 9 lessons into production-ready Digital FTE
 
 ---
 

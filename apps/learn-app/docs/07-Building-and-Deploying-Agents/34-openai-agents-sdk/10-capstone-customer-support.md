@@ -1,10 +1,10 @@
 ---
-sidebar_position: 8
+sidebar_position: 10
 title: "Capstone: Customer Support Digital FTE"
-description: "Build a complete, production-ready customer support system that routes inquiries to specialist agents, persists conversations, validates inputs with guardrails, and provides full observability."
-keywords: ["customer support", "Digital FTE", "multi-agent system", "orchestration", "guardrails", "session persistence", "tracing", "production"]
+description: "Build a complete, production-ready customer support system that routes inquiries to specialist agents, persists conversations, validates inputs with guardrails, integrates MCP and RAG, and provides full observability."
+keywords: ["customer support", "Digital FTE", "multi-agent system", "orchestration", "guardrails", "session persistence", "tracing", "MCP", "RAG", "FileSearchTool", "production"]
 chapter: 34
-lesson: 8
+lesson: 10
 duration_minutes: 120
 
 # HIDDEN SKILLS METADATA
@@ -50,10 +50,10 @@ learning_objectives:
     bloom_level: "Evaluate"
     assessment_method: "Capstone project runs end-to-end with triage, FAQ, booking, and escalation paths"
 
-  - objective: "Compose reusable components (agents, tools, guardrails, sessions) from previous lessons"
+  - objective: "Compose reusable components (agents, tools, guardrails, sessions, MCP, RAG) from previous lessons"
     proficiency_level: "C1"
     bloom_level: "Evaluate"
-    assessment_method: "Student explains how each component from L1-7 contributes to system"
+    assessment_method: "Student explains how each component from L1-9 contributes to system"
 
   - objective: "Implement production safety patterns (abuse detection, PII filtering, rate limiting)"
     proficiency_level: "C1"
@@ -71,8 +71,8 @@ learning_objectives:
     assessment_method: "Student articulates subscription vs. success fee model choices"
 
 cognitive_load:
-  new_concepts: 12
-  assessment: "12 concepts (context design, multi-agent routing, guardrails composition, session management, tracing orchestration, customer flows, escalation patterns, monetization) synthesizing L1-7 patterns - APPROPRIATE for C1 capstone"
+  new_concepts: 14
+  assessment: "14 concepts (context design, multi-agent routing, guardrails composition, session management, tracing orchestration, MCP integration, RAG retrieval, customer flows, escalation patterns, monetization) synthesizing L1-9 patterns - APPROPRIATE for C1 capstone"
 
 differentiation:
   extension_for_advanced: "Add webhook integration for real customer data, implement rate limiting per API key, deploy to cloud function (AWS Lambda/Google Cloud Function), A/B test different routing strategies"
