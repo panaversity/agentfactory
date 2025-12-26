@@ -220,6 +220,7 @@ Now expose this through FastAPI. This is where everything connects:
 ```python
 from fastapi import FastAPI, Depends, HTTPException, status
 from pydantic import BaseModel
+from agents import Runner
 
 from repository import TaskRepository, get_task_repo
 
@@ -267,30 +268,35 @@ async def triage_task_help(
 User Question: {request.question}"""
 
     # Run the triage agent
-    runner = Runner()
-    result = await runner.run(
-        triage_agent,
-        messages=[{"role": "user", "content": context}]
-    )
+    result = await Runner.run(triage_agent, context)
 
     # Extract handoff information for transparency
-    agents_used = [agent.name for agent in result.agents_used]
-    final_agent = result.agent_name  # The agent that produced the final response
+    # new_items contains all execution items including handoffs and tool calls
+    handoff_chain = [triage_agent.name]
+    tool_calls = []
+
+    for item in result.new_items:
+        if hasattr(item, 'type'):
+            if item.type == "handoff_output":
+                handoff_chain.append(item.target_agent.name)
+            elif item.type == "tool_call":
+                tool_calls.append(ToolCallInfo(
+                    name=item.name,
+                    arguments=item.arguments,
+                    result=None
+                ))
+            elif item.type == "tool_call_output":
+                # Match with the last tool call
+                if tool_calls and tool_calls[-1].result is None:
+                    tool_calls[-1].result = item.output
 
     return HandoffResponse(
         task_id=task_id,
         question=request.question,
         response=result.final_output,
-        handled_by=final_agent,
-        handoff_chain=agents_used,
-        tool_calls=[
-            ToolCallInfo(
-                name=tc.name,
-                arguments=tc.arguments,
-                result=tc.result
-            )
-            for tc in result.tool_calls
-        ]
+        handled_by=result.last_agent.name,
+        handoff_chain=handoff_chain,
+        tool_calls=tool_calls
     )
 ```
 
@@ -362,6 +368,7 @@ For real-time visibility into agent thinking and routing:
 
 ```python
 from sse_starlette.sse import EventSourceResponse
+from agents import Runner
 import json
 
 @app.post("/tasks/{task_id}/help/stream")
@@ -387,42 +394,47 @@ async def stream_triage_help(
             "data": json.dumps({"task_id": task_id, "routing": "analyzing"})
         }
 
-        runner = Runner()
-        current_agent = None
+        current_agent = triage_agent.name
 
-        async for event in runner.stream(
+        result = Runner.run_streamed(
             triage_agent,
-            messages=[{"role": "user", "content": context}]
-        ):
+            input=context
+        )
+
+        async for event in result.stream_events():
             # Detect agent switches — this is the handoff happening
-            if event.type == "agent_start":
-                current_agent = event.agent_name
+            if event.type == "agent_updated_stream_event":
+                current_agent = event.new_agent.name
                 yield {
                     "event": "handoff",
                     "data": json.dumps({"to_agent": current_agent})
                 }
 
-            elif event.type == "text_delta":
-                yield {
-                    "event": "token",
-                    "data": event.delta
-                }
+            elif event.type == "raw_response_event":
+                # Token-by-token streaming from the LLM
+                if hasattr(event.data, 'delta') and hasattr(event.data.delta, 'text'):
+                    yield {
+                        "event": "token",
+                        "data": event.data.delta.text
+                    }
 
-            elif event.type == "tool_call":
-                yield {
-                    "event": "tool_call",
-                    "data": json.dumps({
-                        "agent": current_agent,
-                        "tool": event.tool_name,
-                        "arguments": event.arguments
-                    })
-                }
-
-            elif event.type == "tool_result":
-                yield {
-                    "event": "tool_result",
-                    "data": json.dumps(event.result)
-                }
+            elif event.type == "run_item_stream_event":
+                # Completed items like tool calls
+                item = event.item
+                if hasattr(item, 'type') and item.type == "tool_call":
+                    yield {
+                        "event": "tool_call",
+                        "data": json.dumps({
+                            "agent": current_agent,
+                            "tool": item.name,
+                            "arguments": item.arguments
+                        })
+                    }
+                elif hasattr(item, 'type') and item.type == "tool_call_output":
+                    yield {
+                        "event": "tool_result",
+                        "data": json.dumps(item.output)
+                    }
 
         yield {
             "event": "complete",
@@ -486,20 +498,23 @@ async def direct_schedule_help(
             detail=f"Task with id {task_id} not found"
         )
 
-    runner = Runner()
-    result = await runner.run(
-        scheduler_agent,  # Direct to specialist, bypassing triage
-        messages=[{
-            "role": "user",
-            "content": f"Task: {task['title']}\n\nQuestion: {request.question}"
-        }]
-    )
+    context = f"Task: {task['title']}\n\nQuestion: {request.question}"
+    result = await Runner.run(scheduler_agent, context)
+
+    # Extract tool calls from new_items
+    tool_calls = []
+    for item in result.new_items:
+        if hasattr(item, 'type') and item.type == "tool_call":
+            tool_calls.append({
+                "name": item.name,
+                "arguments": item.arguments
+            })
 
     return {
         "task_id": task_id,
         "response": result.final_output,
         "handled_by": "scheduler",
-        "tool_calls": [tc.to_dict() for tc in result.tool_calls]
+        "tool_calls": tool_calls
     }
 ```
 
