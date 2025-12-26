@@ -1,7 +1,7 @@
 {
   "disabledMcpjsonServers": [],
   "enableAllProjectMcpServers": true,
-  "alwaysThinkingEnabled": false,
+  "alwaysThinkingEnabled": true,
   "hooks": {
     "UserPromptSubmit": [
       {
