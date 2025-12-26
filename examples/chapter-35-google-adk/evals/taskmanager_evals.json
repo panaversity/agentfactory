@@ -1,0 +1,89 @@
+{
+  "evals": [
+    {
+      "name": "add_task",
+      "data": [
+        {
+          "query": "Add a task called 'Buy groceries'",
+          "expected_tool_use": ["add_task"],
+          "reference": "Task 'Buy groceries' added successfully"
+        },
+        {
+          "query": "Create a new task: Review code changes",
+          "expected_tool_use": ["add_task"],
+          "reference": "Task 'Review code changes' added successfully"
+        }
+      ]
+    },
+    {
+      "name": "list_tasks",
+      "data": [
+        {
+          "query": "Show me all my tasks",
+          "expected_tool_use": ["list_tasks"],
+          "reference": "Here are your tasks"
+        },
+        {
+          "query": "What tasks do I have?",
+          "expected_tool_use": ["list_tasks"],
+          "reference": "Here are your current tasks"
+        }
+      ]
+    },
+    {
+      "name": "complete_task",
+      "data": [
+        {
+          "query": "Mark 'Buy groceries' as done",
+          "expected_tool_use": ["complete_task"],
+          "reference": "Task 'Buy groceries' marked as complete"
+        },
+        {
+          "query": "I finished the 'Review code changes' task",
+          "expected_tool_use": ["complete_task"],
+          "reference": "Task 'Review code changes' marked as complete"
+        }
+      ]
+    },
+    {
+      "name": "delete_task",
+      "data": [
+        {
+          "query": "Delete the 'Buy groceries' task",
+          "expected_tool_use": ["delete_task"],
+          "reference": "Task 'Buy groceries' deleted"
+        },
+        {
+          "query": "Remove 'Review code changes' from my list",
+          "expected_tool_use": ["delete_task"],
+          "reference": "Task 'Review code changes' deleted"
+        }
+      ]
+    },
+    {
+      "name": "edge_cases",
+      "data": [
+        {
+          "query": "Show my tasks",
+          "expected_tool_use": ["list_tasks"],
+          "reference": "You have no tasks",
+          "initial_session": {
+            "state": {
+              "tasks": []
+            }
+          }
+        },
+        {
+          "query": "Complete the 'Nonexistent task'",
+          "expected_tool_use": ["complete_task"],
+          "reference": "Task not found",
+          "initial_session": {
+            "state": {
+              "tasks": []
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

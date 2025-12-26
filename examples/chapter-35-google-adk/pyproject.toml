@@ -1,0 +1,35 @@
+[project]
+name = "chapter-35-google-adk"
+version = "0.1.0"
+description = "Example code for Chapter 35: Building Reliable Agents with Google ADK"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "google-adk>=1.0.0",
+    "google-genai>=1.0.0",
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.5.0",
+    "mypy>=1.10.0",
+]
+vertex = [
+    "google-cloud-aiplatform[adk,agent_engines]>=1.60.0",
+    "google-cloud-firestore>=2.16.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
