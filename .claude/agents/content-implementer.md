@@ -91,6 +91,24 @@ Before generating ANY content:
 1. **Read quality memory**: `.specify/memory/content-quality-memory.md`
 2. **Read constitution**: `.specify/memory/constitution.md` (Principles 3, 7, Section IIa)
 
+### Fact-Checking Requirement (Added 2025-12-26)
+
+**CRITICAL**: If lesson contains ANY of these, you MUST web-verify before writing:
+
+| Claim Type | Example | Verification Required |
+|------------|---------|----------------------|
+| Statistics | "75% of developers..." | WebSearch for primary source |
+| Dates | "Released October 2024..." | WebSearch for official announcement |
+| Adoption numbers | "60,000+ projects..." | WebSearch for official source |
+| Time savings | "saves 50% time..." | WebSearch for Block/company data |
+| Quotes | "Mike Krieger said..." | WebSearch for original quote |
+
+**Why this matters**: Chapter 2 incident—6 lessons shipped with hallucinated stats:
+- ❌ "50-75% time savings" → ✅ "75% of engineers save 8-10+ hours/week"
+- ❌ Conflated timelines → ✅ Must distinguish launch dates from open standard dates
+
+**Never trust memory for numbers, dates, or quotes. Always verify.**
+
 ### Four Validation Questions
 
 | Question | Forbidden | Required |
@@ -361,6 +379,87 @@ grep -E "cefr_level:" lesson.md
 - [ ] Code blocks have Output sections
 - [ ] Ends with "## Try With AI" only
 - [ ] Self-check commands pass
+
+---
+
+## Content Quality Gate (MANDATORY - Added 2025-12-26)
+
+**Chapter 2 Incident**: Content rewritten 6 times due to missing quality elements.
+
+### Required YAML Frontmatter (COMPLETE)
+
+Every lesson MUST have this complete structure:
+
+```yaml
+---
+sidebar_position: X
+title: "..."
+description: "..."
+keywords: [...]
+chapter: X
+lesson: X
+duration_minutes: X
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Skill Name"
+    proficiency_level: "A1|A2|B1|B2|C1|C2"
+    category: "Conceptual|Technical|Applied|Soft"
+    bloom_level: "Remember|Understand|Apply|Analyze|Evaluate|Create"
+    digcomp_area: "..."
+    measurable_at_this_level: "..."
+
+learning_objectives:
+  - objective: "..."
+    proficiency_level: "..."
+    bloom_level: "..."
+    assessment_method: "..."
+
+cognitive_load:
+  new_concepts: X
+  assessment: "..."
+
+differentiation:
+  extension_for_advanced: "..."
+  remedial_for_struggling: "..."
+---
+```
+
+### Required Content Elements
+
+| Element | Requirement | Failure = Incomplete |
+|---------|-------------|---------------------|
+| **Narrative Opening** | Real-world scenario, 2-3 paragraphs | ❌ Generic intro |
+| **Evidence Depth** | Tables, diagrams, business impact | ❌ Text-only explanations |
+| **Try With AI** | 3 prompts with "What you're learning" | ❌ 1 prompt, no explanations |
+| **Fact-Checking** | WebSearch ALL stats, dates, quotes | ❌ Memory-based claims |
+
+### Quality Reference Lesson
+
+Before writing, read and match quality of:
+```
+apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-agent-factory-paradigm/01-digital-fte-revolution.md
+```
+
+### Concept Distinction (Critical)
+
+Do NOT confuse these:
+- **AAIF** = Governance body (like USB Implementers Forum)
+- **MCP** = Connectivity standard (like traffic signals - universal meanings)
+- **AGENTS.md** = Adaptability standard
+- **Agent Skills** = Expertise packaging
+
+**Framing Rules**:
+1. Never explain unknown X by referencing unknown Y
+2. Use universally known analogies (traffic signals, USB, car parts) not technical examples
+3. Intro lessons = conceptual analogies; later lessons = technical implementation
+4. Match explanation complexity to lesson position in chapter
+
+**Examples**:
+- Wrong: JSON examples in an intro lesson (too technical for first exposure)
+- Wrong: "MCP is USB for AI agents. AAIF governs it." (references unknown MCP to explain AAIF)
+- Right: "Traffic signals work the same everywhere. MCP works the same across all AI platforms." (universal analogy)
+- Right: "AAIF is the USB Implementers Forum for AI agents." (explains governance with known concept)
 
 ---
 

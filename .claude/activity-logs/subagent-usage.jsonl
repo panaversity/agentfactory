@@ -1,5 +1,21 @@
 {"timestamp":"2025-12-25T13:33:59Z","session_id":"manual-test","subagent":"general-purpose","description":"test spawn","background":false,"model":"haiku","event":"spawn"}
 {"timestamp":"2025-12-25T13:34:08Z","session_id":"manual-test","subagent":"general-purpose","agent_id":"abc123","status":"completed","event":"complete"}
+{"timestamp":"2025-12-25T18:24:18Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"validation-auditor","description":"Validate Chapter 2 content","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-25T18:26:58Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"validation-auditor","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-25T18:36:35Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"factual-verifier","description":"Fact-check chapter claims","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-25T18:42:41Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"factual-verifier","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-26T01:47:14Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"educational-validator","description":"Validate lesson 6 MCP UI/SDK","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-26T01:47:14Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"educational-validator","description":"Validate lesson 1 AIFF","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-26T01:47:14Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"educational-validator","description":"Validate lesson 3 AGENTS.md","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-26T01:47:14Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"educational-validator","description":"Validate lesson 2 MCP","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-26T01:47:14Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"educational-validator","description":"Validate lesson 4 goose","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-26T01:47:14Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"educational-validator","description":"Validate lesson 5 Skills","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-26T01:47:58Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-26T01:48:02Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-26T01:48:07Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-26T01:48:11Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-26T01:48:17Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-26T01:48:32Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
 {"timestamp":"2025-12-25T17:35:13Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"Explore","description":"Fetch GitHub issue #386","background":false,"model":"inherit","event":"spawn"}
 {"timestamp":"2025-12-25T17:35:41Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"Explore","agent_id":"","status":"completed","event":"complete"}
 {"timestamp":"2025-12-25T17:56:10Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"chapter-planner","description":"Chapter planning for Ch3 restructure","background":false,"model":"inherit","event":"spawn"}

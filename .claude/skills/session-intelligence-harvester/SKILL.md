@@ -302,6 +302,39 @@ CLASSIFICATION:
 **Updates Applied**:
 1. CLAUDE.md: Added Step 1 to read chapter-index.md with specific extraction requirements
 
+### Example 3: Hallucinated Facts (Chapter 2 Incident)
+
+**Session**: Wrote 6 lessons with unverified statistics, dates, and adoption numbers
+
+**Analysis**:
+```
+CORRECTIONS MADE:
+- Wrong: "50-75% time savings" for goose
+- Correct: "75% of engineers save 8-10+ hours/week" (verified via Block announcement)
+
+- Wrong: Conflated Agent Skills timeline (said single date)
+- Correct: Oct 16, 2025 = Claude Code launch; Dec 18, 2025 = open standard release
+
+- Wrong: Generic agent support lists
+- Correct: Verified lists from official AAIF announcement
+
+- Root cause: Trusted plausible-sounding data from memory instead of web verification
+
+PATTERNS IDENTIFIED:
+- Statistics, dates, and quotes MUST be web-verified before publication
+- Existing factual-verifier agent was available but not used
+- 50% of session time was spent fixing hallucinated facts
+
+CLASSIFICATION:
+- Critical failure mode → CLAUDE.md Failure Prevention + new section
+- Process gap → Missing mandatory fact-check step
+```
+
+**Updates Applied**:
+1. CLAUDE.md: Added "Content Fact-Checking (MANDATORY)" section
+2. CLAUDE.md: Added failure mode example to Failure Prevention list
+3. Documented factual-verifier agent invocation pattern
+
 ## Self-Monitoring
 
 Before marking harvest complete, verify you have:

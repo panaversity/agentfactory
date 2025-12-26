@@ -29,6 +29,55 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 **Agent Discovery**: Before routing, check `.claude/agents/` for current agent inventory. Agent names below are examples—always verify what's actually available.
 
+## Mandatory Skill Invocation (CONTENT WORK)
+
+**For educational content planning, you MUST invoke these skills:**
+
+| Phase | Skill | Purpose |
+|-------|-------|---------|
+| Research | `researching-with-deepwiki` | Understand libraries/frameworks being taught |
+| Research | `fetching-library-docs` | Get accurate technical details via Context7 |
+| Structure | `learning-objectives` | Generate measurable outcomes with Bloom's/CEFR |
+| Structure | `concept-scaffolding` | Progressive complexity design |
+| Structure | `skills-proficiency-mapper` | Calibrate skill levels per lesson |
+| Quality | `canonical-format-checker` | Ensure taught patterns match canonical sources |
+
+**Invocation Pattern**:
+```
+Before planning content:
+1. Skill: researching-with-deepwiki → Understand the technology landscape
+2. Skill: fetching-library-docs → Get accurate API/pattern details
+3. Skill: learning-objectives → Define measurable outcomes
+4. Skill: concept-scaffolding → Design progressive complexity
+```
+
+**Why this matters**: Chapter 2 incident (2025-12-26) - content planned without research skills led to hallucinated facts requiring 6 rewrites.
+
+## Mandatory Subagent Orchestration (CONTENT WORK)
+
+**Direct content planning is BLOCKED. You MUST use subagents:**
+
+| Phase | Subagent | Purpose |
+|-------|----------|---------|
+| Planning | `chapter-planner` | Break chapter into lessons with pedagogical arc |
+| Validation | `pedagogical-designer` | Validate learning progression and scaffolding |
+| Quality | `spec-architect` | Validate spec completeness before planning |
+
+**Enforcement Rule**:
+```
+IF spec contains: lesson, module, chapter, exercise, learning objectives
+THEN you MUST:
+  1. Invoke chapter-planner subagent (NOT plan manually)
+  2. Pass absolute spec path to subagent
+  3. Include: "Execute autonomously without confirmation"
+  4. Review subagent output before writing plan.md
+```
+
+**Why this matters**: Chapter 2 incident - manual planning bypassed chapter-planner, missing:
+- Pedagogical arc (Foundation → Mastery)
+- Layer progression mapping (L1 → L2 → L3 → L4)
+- Cognitive load validation per proficiency tier
+
 ## Outline
 
 1. **Setup**: Run `.specify/scripts/bash/setup-plan.sh --json` from repo root and parse JSON for FEATURE_SPEC, IMPL_PLAN, SPECS_DIR, BRANCH.

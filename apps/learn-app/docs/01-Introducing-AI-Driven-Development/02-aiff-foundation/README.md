@@ -5,36 +5,52 @@ title: "Chapter 2: AIFF Foundation & Agent Standards"
 
 # Chapter 2: AIFF Foundation & Agent Standards
 
-:::info Coming Soon
-This chapter is under development. See [GitHub Issue #385](https://github.com/panaversity/ai-native-software-development/issues/385) for details.
-:::
+Chapter 1 gave you the vision: building Digital FTEs that work 24/7 and generate recurring revenue. But how do these agents actually connect to tools, find project context, and package expertise? That's what you'll learn here.
 
-## Overview
+In December 2025, something remarkable happened: OpenAI, Anthropic, and Block—competitors in the AI space—came together under the Linux Foundation to create the **Agentic AI Foundation (AAIF)**. They donated their core standards to neutral governance, ensuring the future of AI agents is open, not locked into proprietary platforms.
 
-This chapter bridges from "what is the paradigm" (Chapter 1) to "how to build" (later chapters) by teaching the infrastructure layer that enables building Digital FTEs.
+This chapter teaches you the **infrastructure layer** that makes Digital FTEs possible.
 
-## Proposed Content
+## What You'll Learn
 
-### MCP (Model Context Protocol)
-- What MCP is and why it matters
-- Current state of MCP ecosystem
-- Future outlook
+| Lesson | Standard | Why It Matters |
+|--------|----------|----------------|
+| 1 | AAIF | Who governs agentic AI standards |
+| 2 | MCP | How agents connect to tools and data |
+| 3 | AGENTS.md | How agents find project-specific context |
+| 4 | goose | What a real agent looks like in practice |
+| 5 | Agent Skills | How to package domain expertise |
+| 6 | MCP-UI & Apps SDK | How agent interfaces are evolving |
 
-### Agent Skills
-- What skills are
-- How to create and use them
-- Skill composition patterns
+## The Standards Ecosystem
 
-### Agent UI Patterns
-- Current agent interfaces
-- Future outlook for agent UX
+Think of these standards as layers in your Digital FTE's foundation:
 
-## Dependencies
+```
+┌─────────────────────────────────────────┐
+│           Your Digital FTE              │
+├─────────────────────────────────────────┤
+│  Agent Skills    │  Expertise encoding  │
+├──────────────────┼──────────────────────┤
+│  MCP             │  Tool connectivity   │
+├──────────────────┼──────────────────────┤
+│  AGENTS.md       │  Project context     │
+├─────────────────────────────────────────┤
+│           AAIF Governance               │
+└─────────────────────────────────────────┘
+```
 
-- Builds on Chapter 1: The Agent Factory Paradigm
-- Prepares readers for practical chapters in later parts
+- **AAIF** provides neutral governance so these standards remain open
+- **MCP** connects your agent to tools (CRM, databases, APIs)
+- **AGENTS.md** gives your agent project-specific knowledge
+- **Agent Skills** package your domain expertise into reusable modules
 
-## Status
+## Outcome
 
-**Status**: Planned
-**Issue**: [#385](https://github.com/panaversity/ai-native-software-development/issues/385)
+After this chapter, you'll understand the standards ecosystem well enough to:
+
+- Recognize MCP commands when you see them in later chapters
+- Understand skill folder structures
+- Articulate how these standards enable the Digital FTEs you'll build
+- Explain why open standards matter for your AI products
+

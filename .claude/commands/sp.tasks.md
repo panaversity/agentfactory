@@ -25,6 +25,65 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 **WHY**: Task generation is mechanical extraction from spec/plan. The artifacts contain all necessary information. Generate the task list and let implementation surface any gaps—don't over-analyze before producing output.
 
+## Mandatory Skill Invocation (CONTENT WORK)
+
+**For educational content tasks, you MUST invoke these skills:**
+
+| Skill | Purpose | When |
+|-------|---------|------|
+| `learning-objectives` | Ensure each lesson has measurable outcomes | Before task generation |
+| `exercise-designer` | Design deliberate practice per lesson | Task creation |
+| `assessment-builder` | Plan chapter quiz/assessment | Final phase tasks |
+| `ai-collaborate-teaching` | Design Three Roles sections | L2+ lesson tasks |
+
+**Task Template for Content Lessons**:
+```
+- [ ] T0XX [USY] Lesson Z: [Title]
+  - Invoke skill: learning-objectives (generate measurable outcomes)
+  - Invoke skill: exercise-designer (3 exercises per lesson)
+  - Invoke skill: ai-collaborate-teaching (if L2+)
+  - Use content-implementer subagent with quality reference
+  - Invoke skill: content-evaluation-framework (before marking complete)
+```
+
+**Why this matters**: Chapter 2 incident - tasks didn't include skill invocations, resulting in lessons missing learning objectives, weak exercises, and no quality evaluation.
+
+## Mandatory Subagent Orchestration (CONTENT WORK)
+
+**Direct task generation for content is BLOCKED. You MUST embed subagent requirements in tasks:**
+
+| Phase | Subagent | Embedded In Task |
+|-------|----------|------------------|
+| Per Lesson | `content-implementer` | Each lesson task MUST specify subagent invocation |
+| Per Lesson | `educational-validator` | Each lesson task MUST include validation step |
+| Per Chapter | `assessment-architect` | Final phase MUST include assessment task |
+
+**Task Template with Subagent Embedding**:
+```markdown
+- [ ] T0XX [USY] Lesson Z: [Title]
+  - **SUBAGENT**: content-implementer
+    - Output path: /absolute/path/to/lesson.md
+    - Execute autonomously without confirmation
+    - Include quality reference lesson path
+  - **VALIDATION**: educational-validator (MUST PASS before marking complete)
+  - **SKILLS**: learning-objectives, exercise-designer, fact-check-lesson
+```
+
+**Enforcement Rule**:
+```
+IF task creates lesson/chapter content
+THEN task MUST include:
+  1. SUBAGENT block with content-implementer
+  2. VALIDATION block with educational-validator
+  3. SKILLS block with required skill invocations
+  4. Absolute output path (NOT relative)
+```
+
+**Why subagents matter**: Chapter 2 incident - lessons written directly (no subagent) had:
+- No quality reference calibration
+- Missing autonomous execution rules
+- No validation gate before filesystem write
+
 ## Outline
 
 1. **Setup**: Run `.specify/scripts/bash/check-prerequisites.sh --json` from repo root and parse FEATURE_DIR and AVAILABLE_DOCS list. All paths must be absolute. For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
