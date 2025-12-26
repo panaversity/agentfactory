@@ -640,6 +640,52 @@ NEVER commit without running validators:
 
 Fix issues before committing.
 
+### Rule 7: Content Quality Gate (MANDATORY)
+
+**Chapter 2 Incident (2025-12-26)**: Content rewritten 6 times due to quality degradation.
+
+Before ANY lesson is considered complete, verify:
+
+| Check | Requirement | Failure Mode |
+|-------|-------------|--------------|
+| **YAML Frontmatter** | Full skills, learning_objectives, cognitive_load, differentiation | Missing metadata = incomplete |
+| **Narrative Opening** | Real-world scenario, 2-3 paragraphs | Generic intro = weak hook |
+| **Evidence Depth** | Tables, diagrams, business impact | Text-only = unconvincing |
+| **Try With AI** | 3 prompts with "What you're learning" explanations | 1 prompt = insufficient practice |
+| **Safety Note** | Topic-specific practitioner concerns | Missing = incomplete |
+| **Fact-Checking** | WebSearch for stats, dates, quotes | Memory-based = hallucination risk |
+
+**Subagent prompt must include**:
+```
+Match quality of reference lesson at:
+apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-agent-factory-paradigm/01-digital-fte-revolution.md
+
+Required elements:
+- Full YAML frontmatter (skills, learning_objectives, cognitive_load, differentiation)
+- 3 "Try With AI" prompts with "What you're learning" explanations
+- Safety note at end
+- All facts WebSearch-verified before writing
+```
+
+### Rule 8: Fact-Checking is Non-Negotiable
+
+**Never trust memory for**:
+- Statistics ("75% of engineers...")
+- Dates ("Released October 16, 2025...")
+- Adoption numbers ("60,000+ projects...")
+- Quotes from executives
+
+**Always WebSearch before writing** claims about:
+- Time savings
+- User/adoption counts
+- Launch/release dates
+- Company statements
+
+**Distinguish similar concepts**:
+- AAIF = governance body (like USB Implementers Forum)
+- MCP = connectivity standard (like USB itself)
+- These are NOT interchangeable
+
 ---
 
 ## Quick Reference

@@ -1,49 +1,98 @@
 ---
 sidebar_position: 5
-title: "Lesson 5: Agent Skills - Packaging Expertise"
-description: "Understanding Agent Skills - how to encode domain expertise for AI agents"
-keywords: [Agent Skills, SKILL.md, progressive disclosure, domain expertise, token efficiency]
+title: "Agent Skills - Packaging Expertise"
+description: "Understanding Agent Skills - how to encode domain expertise as portable, monetizable assets"
+keywords: [Agent Skills, SKILL.md, progressive disclosure, domain expertise, token efficiency, agentskills.io]
+chapter: 2
+lesson: 5
+duration_minutes: 15
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding Progressive Disclosure"
+    proficiency_level: "A2"
+    category: "Technical"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can explain the three-level loading hierarchy and its token efficiency benefits"
+
+  - name: "Distinguishing MCP from Skills"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Analyze"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can correctly classify capabilities as MCP (connectivity) vs Skills (expertise)"
+
+  - name: "Designing SKILL.md Content"
+    proficiency_level: "A2"
+    category: "Applied"
+    bloom_level: "Apply"
+    digcomp_area: "Content Creation"
+    measurable_at_this_level: "Student can create a valid SKILL.md with proper frontmatter, activation conditions, and execution steps"
+
+learning_objectives:
+  - objective: "Explain how progressive disclosure achieves 80-98% token reduction"
+    proficiency_level: "A2"
+    bloom_level: "Understand"
+    assessment_method: "Articulation of three-level loading hierarchy with token estimates"
+
+  - objective: "Create a valid SKILL.md with proper structure for your domain expertise"
+    proficiency_level: "A2"
+    bloom_level: "Apply"
+    assessment_method: "Production of SKILL.md with frontmatter, when-to-use, execution steps"
+
+  - objective: "Map skill monetization paths to your Agent Factory business model"
+    proficiency_level: "A2"
+    bloom_level: "Apply"
+    assessment_method: "Connection of four revenue streams to specific domain expertise"
+
+cognitive_load:
+  new_concepts: 5
+  assessment: "5 concepts (progressive disclosure, SKILL.md structure, MCP vs Skills, adoption ecosystem, monetization paths) within A1-A2 limit (5-7 concepts) ✓"
+
+differentiation:
+  extension_for_advanced: "Clone the anthropics/skills repository; study progressive disclosure implementation in existing skills; analyze partner skills from Canva, Stripe, Notion"
+  remedial_for_struggling: "Focus on SKILL.md structure only; understand frontmatter and activation conditions before progressive disclosure"
 ---
 
-# Lesson 5: Agent Skills - Packaging Expertise
+# Agent Skills - Packaging Expertise
 
-## Learning Objectives
+You've spent years mastering financial analysis, or legal document review, or sales qualification. That expertise lives in your head—tacit knowledge that makes you valuable but can't scale.
 
-By the end of this lesson, you will be able to:
+Every time a client asks you to do what you're expert at, you trade time for money. You're the bottleneck.
 
-- Explain what Agent Skills are and their purpose
-- Describe the SKILL.md format
-- Understand the progressive disclosure mechanism
-- Articulate how MCP and Skills work together
+**Agent Skills let you package that expertise.**
 
----
+Remember the Matrix? Trinity needs to fly a helicopter. She doesn't know how. Tank loads the skill. Seconds later: "Let's go."
 
-## The Matrix Moment
+That's what you're building. Your domain expertise—years of pattern recognition, decision frameworks, workflow optimization—encoded into portable skills that any AI agent can load when needed.
 
-Remember the scene in The Matrix where Trinity needs to fly a helicopter? She doesn't know how. Tank loads the skill: "Pilot program, B-212 helicopter." Seconds later, she can fly.
-
-**Agent Skills work the same way.**
-
-Your domain expertise—the knowledge that makes you valuable—can be encoded into skills that any AI agent can load when needed. Years of experience, packaged and portable.
+The difference between you and Trinity: **you can sell the skill.**
 
 ---
 
-## What Are Agent Skills?
+## Skills Are Your Core Asset
 
-Agent Skills are organized collections of files that package procedural knowledge for agents. In simpler terms:
+Return to the Agent Factory vision from Chapter 1:
 
-- **Folders** containing instructions, scripts, and resources
-- **Teach agents** how to perform specific tasks
-- **Reusable** across projects and agents
-- **Open standard** from Anthropic (December 2025)
+**YOUR domain expertise → Skills → Digital FTE → Recurring Revenue**
 
-Think of skills as "how-to guides" written for AI agents. Instead of explaining to a human colleague, you're explaining to an agent—in a format designed for them to parse and execute.
+| Your Knowledge | Becomes | Sells As |
+|----------------|---------|----------|
+| Financial analysis expertise | Financial analysis skill | Financial Digital FTE |
+| Legal document review | Contract review skill | Legal assistant FTE |
+| Sales qualification methods | Lead scoring skill | Digital SDR |
+| Customer service workflows | Support handling skill | Customer service FTE |
+
+Skills transform what's in your head (tacit knowledge) into what's in a file (explicit knowledge). That file becomes an asset—portable, licensable, monetizable.
+
+When Thomson Reuters paid $650 million for CoCounsel, they weren't buying software. They were buying encoded legal expertise. Skills are how you create similar value in any domain.
 
 ---
 
 ## The SKILL.md Format
 
-Every skill needs a `SKILL.md` file at its root. The format is simple:
+Every skill needs a `SKILL.md` file at its root. The format is deliberately simple—just Markdown with YAML frontmatter:
 
 ```markdown
 ---
@@ -76,179 +125,212 @@ Reports should include:
 - Recommendation
 ```
 
-The key elements:
+**The key elements:**
 
-1. **YAML frontmatter** (`---` block at top)
-   - `name`: Identifier for the skill
-   - `description`: When the agent should use this skill
+| Element | Purpose | Example |
+|---------|---------|---------|
+| **name** | Unique identifier | `financial-analysis` |
+| **description** | When to activate (agent reads this) | "Use when reviewing quarterly earnings..." |
+| **When to Use** | Activation conditions | User asks, data type present |
+| **How to Execute** | Step-by-step workflow | Gather → Extract → Compare → Generate |
+| **Output Format** | Expected deliverable structure | Summary + Table + Analysis |
 
-2. **Markdown instructions**
-   - When to use (trigger conditions)
-   - How to execute (step-by-step guidance)
-   - Output format (expected results)
+That's it. No special syntax. No compilation. Just structured Markdown that agents parse.
 
-That's it. No special syntax. No complex schemas. Just structured Markdown an agent can parse.
+The specification itself lives at agentskills.io/specification—you can read the entire thing in a few minutes.
 
 ---
 
-## Progressive Disclosure: The Key Innovation
+## Progressive Disclosure: The Token Efficiency Secret
 
 Here's the problem skills solve:
 
 **Loading everything upfront wastes tokens.**
 
-If an agent loaded all its skills and all their supporting files at startup, you'd burn through your context window before doing any actual work.
+If an agent loaded all 50 available skills at startup—full instructions, templates, examples—you'd burn through your context window before doing any actual work.
 
-The solution is **progressive disclosure**—loading only what's needed, when it's needed.
-
-### Three Levels
+The solution is **progressive disclosure**: loading only what's needed, when it's needed.
 
 ```
-Level 1: Startup (~100 tokens per skill)
+Level 1: Agent Startup (~100 tokens per skill)
 ├── Name: "financial-analysis"
 └── Description: "Analyze financial statements..."
 
-Level 2: When Skill Activated
-└── Full SKILL.md content
+Level 2: When Skill Activated (< 5K tokens)
+└── Full SKILL.md content (when-to-use, execution steps, output format)
 
-Level 3: When Needed
-└── Supporting files (templates, examples, scripts)
+Level 3: When Actually Needed
+└── Supporting resources (templates, examples, scripts)
 ```
 
-**Level 1: Startup**
+**How it works:**
 
-When the agent launches, it sees only names and descriptions. For 50 skills, that's roughly 5,000 tokens—manageable.
+**Level 1 (Always loaded):** Agent sees only names and descriptions. For 50 skills, that's roughly 5,000 tokens—manageable.
 
-**Level 2: Skill Activated**
+**Level 2 (On activation):** When the agent decides to use a skill (based on description matching the current task), it loads the full SKILL.md. Still under 5K tokens.
 
-When the agent decides to use a skill (based on the description matching the task), it loads the full SKILL.md. Now it has the how-to instructions.
+**Level 3 (On demand):** Supporting files—templates, examples, reference data—load only when the skill explicitly requests them during execution.
 
-**Level 3: On Demand**
+**The efficiency gains are dramatic:**
 
-If the skill references supporting files (templates, example outputs, helper scripts), those load only when actually needed.
+| Approach | Token Cost at Startup |
+|----------|----------------------|
+| Load everything upfront | 14,000 - 80,000+ tokens |
+| Progressive disclosure | ~100 tokens per skill |
 
-This creates a powerful result: **the amount of knowledge you can bundle into a skill is effectively unbounded**, because only the relevant pieces load at any given time.
-
----
-
-## Token Efficiency: The Numbers
-
-The efficiency gains are dramatic:
-
-| Approach | Token Cost |
-|----------|------------|
-| MCP servers alone | 14,000 - 80,000+ tokens |
-| Skills + Scripts | ~100 tokens (at startup) |
-
-That's a **80-98% token reduction** compared to loading raw MCP server context.
-
-This efficiency gain is transformative. You can have dozens of skills available without bloating your context.
+**80-98% token reduction.** This means your Digital FTE can have dozens of capabilities available without bloating its context window. More capabilities, same cost.
 
 ---
 
 ## MCP + Skills: Complementary Standards
 
-MCP and Skills solve different problems:
+MCP and Skills solve different problems. Understanding the distinction is critical for Digital FTE design:
 
-| Standard | Purpose |
-|----------|---------|
-| **MCP** | **Connectivity** — how agents talk to tools |
-| **Skills** | **Expertise** — what agents know how to do |
+| Standard | Purpose | Physical Metaphor |
+|----------|---------|-------------------|
+| **MCP** | **Connectivity** — how agents talk to tools | The agent's **hands** |
+| **Skills** | **Expertise** — what agents know how to do | The agent's **training** |
 
-They're not competing. They're complementary.
+**Example: Your Digital SDR Processing Stripe Payments**
 
-**Example: Stripe Payment Processing**
+| Layer | Technology | What It Does |
+|-------|------------|--------------|
+| **MCP Server** | Stripe MCP connector | Connects to Stripe API (create charges, refund, list transactions) |
+| **Skill** | Payment processing skill | Knows *how* to handle payment scenarios (retry logic, error recovery, customer communication) |
 
-- **MCP Server**: Connects to Stripe API (create charges, refund, list transactions)
-- **Skill**: Knows *how* to handle payment scenarios (retry logic, error recovery, customer communication)
+The MCP server gives the agent *access* to Stripe. The skill gives the agent *expertise* in using Stripe properly.
 
-The MCP server gives the agent *access* to Stripe. The skill gives the agent *expertise* in using it properly.
+**Without MCP:** Agent can't reach Stripe at all.
+**Without Skill:** Agent can reach Stripe but doesn't know payment best practices.
+**With both:** Agent handles payments like an experienced professional.
 
-Your most powerful Digital FTEs will combine both: connected via MCP, smart via Skills.
+Your most powerful Digital FTEs combine both: connected via MCP, smart via Skills.
 
 ---
 
-## Adoption
+## Adoption: From Claude to Industry Standard
 
-The Agent Skills standard launched December 18, 2025, with immediate adoption:
+Agent Skills evolved from internal tool to open standard remarkably fast:
 
-**Agent Support:**
-- Claude Code
-- VS Code AI
-- GitHub Copilot
-- Cursor
-- goose
-- Amp
-- OpenCode
+| Date | Milestone |
+|------|-----------|
+| **October 16, 2025** | Anthropic launches Agent Skills for Claude Code |
+| **December 18, 2025** | Anthropic releases Agent Skills as **open standard** at agentskills.io |
+| **December 2025** | OpenAI adopts the same SKILL.md format for Codex CLI and ChatGPT |
 
-**Partner Skills:**
+**Agent support (December 2025):**
+- Claude Code, Claude apps (Pro, Max, Team, Enterprise)
+- Codex CLI, ChatGPT (OpenAI adoption)
+- VS Code, GitHub Copilot (Microsoft adoption)
+- Cursor, Amp, goose, OpenCode, Letta
+
+**Partner skills available at launch:**
 - Canva (design automation)
 - Stripe (payment processing)
-- Notion (workspace management)
-- Zapier (workflow automation)
+- Notion, Figma, Atlassian
+- Cloudflare, Ramp, Sentry, Zapier
 
-The ecosystem is growing. Skills you write today work across this entire landscape.
+The Anthropic skills repository contains community and official skills ranging from creative applications (art, music, design) to technical tasks (testing web apps, MCP server generation) to enterprise workflows.
 
----
-
-## Connection to Digital FTEs
-
-This is where your expertise becomes your product.
-
-The Agent Factory vision from Chapter 1: **YOUR domain expertise → Skills → Digital FTE → Recurring Revenue**
-
-| Your Knowledge | Becomes | Sells As |
-|---------------|---------|----------|
-| Financial analysis expertise | Financial analysis skill | Financial Digital FTE |
-| Legal document review | Contract review skill | Legal assistant FTE |
-| Marketing copy patterns | Content creation skill | Marketing FTE |
-| Customer service workflows | Support handling skill | Customer service FTE |
-
-Skills are **how you encode what makes you valuable**. They transform tacit knowledge (in your head) into explicit knowledge (in a SKILL.md) that any agent can use.
-
-**Monetization paths:**
-- License individual skills
-- Sell skill bundles
-- Deploy skill-enhanced Digital FTEs
-- Consult on skill development
+**Skills you write today work across this entire ecosystem.**
 
 ---
 
-## Quick Knowledge Check
+## Monetization Paths
 
-Before moving on, make sure you can answer:
+Skills open four revenue streams for your Agent Factory:
 
-1. What is an Agent Skill and what does it contain?
-2. What are the key elements of a SKILL.md file?
-3. How does progressive disclosure save tokens?
-4. What's the difference between what MCP provides and what Skills provide?
+### 1. License Individual Skills
+Sell your financial-analysis skill to other agent builders. They pay per-seat or per-use.
+
+**Example:** Your lead qualification skill, licensed to 50 marketing agencies at $200/month each = $10,000/month recurring.
+
+### 2. Skill Bundles
+Package related skills for specific verticals.
+
+**Example:** "Complete SDR Skill Set" includes lead qualification, email personalization, objection handling, and meeting scheduling. Premium pricing for the bundle.
+
+### 3. Skill-Enhanced Digital FTEs
+Deploy agents with your skills as subscription products—the core Agent Factory model.
+
+**Example:** Your Digital SDR subscription at $1,500/month, powered by skills you've encoded. 100 clients = $150,000/month.
+
+### 4. Skill Development Consulting
+Help domain experts encode their expertise into skills.
+
+**Example:** Law firms, financial advisors, healthcare organizations want custom skills but lack encoding expertise. You build skills for them.
+
+---
+
+## Your Agent Factory Blueprint
+
+As you progress through this book, skills connect to everything:
+
+**Part 3 (Claude Code Mastery):** Use existing skills. Experience progressive disclosure in action. Understand what makes skills effective.
+
+**Part 5 (Custom MCP Servers):** Build MCP servers that your skills orchestrate. Skills become the brain; MCP servers become the hands.
+
+**Part 6 (Custom Agents):** Architect Digital FTEs that combine your skills with MCP connectivity. The complete Agent Factory product.
+
+The skills you design in Part 3 become components of the Digital FTEs you sell in Part 6.
 
 ---
 
 ## Try With AI
 
-Ask your AI assistant:
+Use your AI companion (Claude, ChatGPT, Gemini, or similar) to practice skill design:
 
-> "What would a SKILL.md look like for a code review skill?"
+### Prompt 1: Create Your First Skill
 
-Evaluate the response:
-- Does it include YAML frontmatter with name and description?
-- Does it have clear "When to Use" and "How to Execute" sections?
-- Is the description specific enough that an agent would know when to activate it?
+```
+I'm a [your profession/domain] expert. Help me design a SKILL.md for my core expertise.
 
----
+I need:
+1. A clear name and description (the agent reads this to decide when to activate)
+2. Specific "When to Use" conditions
+3. Step-by-step "How to Execute" instructions
+4. A structured "Output Format"
 
-## Summary
+Make it specific enough that an AI agent could follow it without asking clarifying questions.
+```
 
-- **Agent Skills** are folders containing instructions that teach agents how to perform specific tasks
-- **SKILL.md** format uses YAML frontmatter + Markdown instructions
-- **Progressive disclosure** loads only what's needed: name/description at startup, full instructions when activated, supporting files on demand
-- **Token efficiency**: ~100 tokens per skill at startup vs 14,000-80,000+ for raw MCP context
-- **MCP + Skills** are complementary: MCP provides connectivity, Skills provide expertise
-- **Digital FTE connection**: Your domain expertise → Skills → Sellable agents
+**What you're learning:** Skill specification. The ability to extract tacit knowledge from your head and structure it for AI consumption. This is the core Agent Factory skill.
 
----
+### Prompt 2: Test the MCP vs Skills Distinction
 
-## Next Steps
+```
+I'm building a Digital [your role] that needs both MCP servers and Skills.
 
-You've learned how agents connect (MCP), find project context (AGENTS.md), and load expertise (Skills). But how do users interact with agents beyond text chat? Agent interfaces are evolving. [Continue to Lesson 6: MCP-UI & Apps SDK - Agent Interfaces](./06-mcp-ui-and-apps-sdk.md).
+For each capability below, tell me:
+- Is this MCP (connectivity) or Skill (expertise)?
+- Why?
+
+Capabilities:
+1. Connect to my company's CRM to read lead data
+2. Know the best practices for qualifying B2B leads
+3. Send emails through our email platform
+4. Write personalized follow-up emails that convert
+5. Schedule calendar meetings
+6. Decide the optimal time to follow up with each lead
+```
+
+**What you're learning:** Architectural classification. Understanding which layer handles which concern prevents over-engineering and under-delivering.
+
+### Prompt 3: Explore Monetization
+
+```
+I have expertise in [your domain]. Based on the four skill monetization paths:
+1. License individual skills
+2. Skill bundles
+3. Skill-enhanced Digital FTEs
+4. Skill development consulting
+
+Help me think through:
+- Which path has the highest leverage for my expertise?
+- What would I need to build for each path?
+- What's the realistic monthly revenue potential for each?
+
+Push back if my expectations seem unrealistic.
+```
+
+**What you're learning:** Business model thinking. Connecting technical capability to revenue requires understanding both the skill and the market.

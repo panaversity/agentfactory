@@ -1,271 +1,328 @@
 ---
 sidebar_position: 6
-title: "Lesson 6: MCP-UI & Apps SDK - Agent Interfaces"
-description: "Understanding how agent interfaces are evolving beyond chat"
-keywords: [MCP-UI, OpenAI Apps SDK, agent interfaces, ChatGPT apps, interactive UI]
+title: "MCP Apps Extension - Agent Interfaces"
+description: "Understanding how agent interfaces are evolving beyond chat with MCP Apps Extension (SEP-1865)"
+keywords: [MCP Apps, MCP Apps Extension, SEP-1865, OpenAI Apps SDK, agent interfaces, ChatGPT apps, interactive UI]
+chapter: 2
+lesson: 6
+duration_minutes: 12
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding Interface Evolution"
+    proficiency_level: "A1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can explain the progression from text-only to structured output to interactive components"
+
+  - name: "Evaluating Distribution Channels"
+    proficiency_level: "A2"
+    category: "Conceptual"
+    bloom_level: "Analyze"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can compare Apps SDK (immediate distribution) vs MCP Apps Extension (cross-platform portability)"
+
+  - name: "Connecting Interfaces to Monetization"
+    proficiency_level: "A2"
+    category: "Applied"
+    bloom_level: "Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can map interface capabilities to the Marketplace revenue model from Chapter 1"
+
+learning_objectives:
+  - objective: "Explain why agent interfaces are evolving beyond chat"
+    proficiency_level: "A1"
+    bloom_level: "Understand"
+    assessment_method: "Articulation of chat limitations (visualizations, forms, complex tables)"
+
+  - objective: "Compare Apps SDK distribution with MCP Apps Extension portability"
+    proficiency_level: "A2"
+    bloom_level: "Analyze"
+    assessment_method: "Trade-off analysis: immediate reach vs cross-platform future"
+
+  - objective: "Apply the Marketplace monetization model to Digital FTE distribution"
+    proficiency_level: "A2"
+    bloom_level: "Apply"
+    assessment_method: "Connection of 800M+ ChatGPT users to agent economics"
+
+cognitive_load:
+  new_concepts: 4
+  assessment: "4 concepts (interface evolution, MCP Apps Extension, Apps SDK distribution, security design) within A1-A2 limit (5-7 concepts) ✓"
+
+differentiation:
+  extension_for_advanced: "Read SEP-1865 proposal; study MCP-UI reference implementation; explore iframe sandboxing security model"
+  remedial_for_struggling: "Focus on the evolution diagram (text → structured → interactive); understand why chat has limits before learning solutions"
 ---
 
-# Lesson 6: MCP-UI & Apps SDK - Agent Interfaces
+# MCP Apps Extension - Agent Interfaces
 
-## Learning Objectives
+Your Digital SDR can qualify leads, update CRM, and schedule meetings. But users interact with it through... chat?
 
-By the end of this lesson, you will be able to:
+Chat is powerful. But it has limits:
 
-- Understand that agent interfaces are evolving beyond text chat
-- Explain what the OpenAI Apps SDK enables
-- Recognize MCP-UI as an emerging interface standard
+- Data visualizations become text descriptions
+- Forms become one-question-at-a-time conversations
+- Complex tables become formatting puzzles
+- Interactive dashboards become static reports
+
+Your competitor's SDR shows buttons, charts, and real-time pipeline views. Yours describes them in paragraphs.
+
+**Which one wins the client?**
+
+The MCP Apps Extension makes rich agent interfaces a standard—not a competitive advantage, but an expectation.
 
 ---
 
-## Beyond Chat
+## The Evolution
 
-Chat interfaces are powerful. You type, the AI responds. Simple, flexible, natural.
-
-But chat has limits.
-
-- Want to show a data visualization? You describe it in text.
-- Need a form with validation? The AI asks questions one at a time.
-- Displaying a complex table? Hope your formatting is readable.
-
-**What if agents could show you buttons, forms, charts, and interactive elements?**
-
-This is where agent interfaces are heading: from pure text to rich, interactive experiences.
+Agent interfaces are progressing through three stages:
 
 ```
-Evolution of Agent Interfaces
-
 Text Only → Structured Output → Interactive Components
     ↓              ↓                    ↓
   Chat         Markdown/Code      Buttons, Forms,
               Formatting          Visualizations
 ```
 
----
+| Stage | Capability | Example |
+|-------|------------|---------|
+| **Text Only** | Plain conversation | "Your pipeline has 12 qualified leads" |
+| **Structured Output** | Formatted responses | Markdown tables, code blocks |
+| **Interactive Components** | Rich UI elements | Pipeline dashboard with filters, drill-down |
 
-## OpenAI Apps SDK: Use Today
+Most agents today operate at stage 1 or 2. The MCP Apps Extension enables stage 3.
 
-The OpenAI Apps SDK lets you build applications that run inside ChatGPT.
-
-Launched October 2025, Apps SDK combines:
-
-- **MCP tools**: The agent's capabilities (what it can do)
-- **Custom UI components**: Rich visual interfaces (what users see)
-- **ChatGPT integration**: Distribution to millions of users
-
-### What Apps Can Do
-
-| Use Case | How It Works |
-|----------|--------------|
-| Order groceries | Browse products visually, add to cart, checkout |
-| Create presentations | Interactive slide builder, not just text suggestions |
-| Search apartments | Map views, filters, photo galleries |
-| Manage projects | Kanban boards, timelines, team views |
-
-Apps aren't just answering questions. They're providing full application experiences *inside the chat interface*.
-
-### The Key Point
-
-**Apps SDK is built on MCP.**
-
-The tools your app exposes use the same Model Context Protocol you learned in Lesson 2. Same standard, different presentation layer.
+**Your competitors are stuck at chat.** Building for interactive components is a competitive advantage—today. Tomorrow, it's table stakes.
 
 ---
 
-## How Apps SDK Works
+## MCP Apps Extension: The Standard for Agent UI
 
-The architecture connects four pieces:
+On November 21, 2025, the MCP community announced the **MCP Apps Extension (SEP-1865)**—one of the most requested features from the community. This extension allows MCP servers to deliver interactive user interfaces directly to host applications.
+
+### What It Enables
+
+| Capability | Business Impact |
+|------------|-----------------|
+| **Interactive UI in any MCP host** | Your Digital FTE shows forms, charts, dashboards—not just chat |
+| **Bidirectional communication** | UI components trigger MCP tools and receive responses |
+| **Cross-platform by design** | Same UI works in Claude, ChatGPT, custom apps—any MCP host |
+
+### Architecture Overview
+
+The extension uses a `ui://` URI scheme for pre-declared UI templates:
 
 ```
 ┌─────────────────────────────────────────────┐
-│               ChatGPT                        │
-│  ┌─────────────┐    ┌──────────────────┐   │
-│  │  AI Model   │◄──►│   Your App UI    │   │
-│  │             │    │   (in iframe)     │   │
-│  └──────┬──────┘    └────────┬─────────┘   │
-└─────────┼────────────────────┼─────────────┘
-          │                    │
-          ▼                    ▼
-    ┌──────────┐        ┌──────────┐
-    │ MCP      │        │ UI       │
-    │ Server   │        │ Assets   │
-    │ (Tools)  │        │ (React)  │
-    └──────────┘        └──────────┘
+│           MCP Host Application              │
+│  ┌─────────────────┐  ┌──────────────────┐  │
+│  │    AI Model     │◄─►│  Sandboxed UI   │  │
+│  │                 │   │   (iframe)       │  │
+│  └────────┬────────┘  └────────┬─────────┘  │
+└───────────┼────────────────────┼────────────┘
+            │                    │
+            │   JSON-RPC over    │
+            │   postMessage      │
+            ▼                    ▼
+      ┌──────────────────────────────┐
+      │         MCP Server           │
+      │  ┌────────┐  ┌────────────┐  │
+      │  │ Tools  │  │ UI Templates│  │
+      │  └────────┘  └────────────┘  │
+      └──────────────────────────────┘
 ```
 
-1. **Define tools** via an MCP server (what the AI can do)
-2. **Build UI components** (what users see and interact with)
-3. **Connect to ChatGPT** (distribution)
-4. **User interacts** with rich interface, AI handles the logic
+**Key design decisions:**
 
-You build once. ChatGPT handles the AI, hosting, and distribution.
-
----
-
-## Who Can Use Apps SDK
-
-Currently available to:
-
-- ChatGPT Business subscribers
-- ChatGPT Enterprise organizations
-- ChatGPT Edu institutions
-
-Developers can submit apps for distribution. The reach is significant: **800+ million ChatGPT users**.
-
-If your Digital FTE needs massive distribution, Apps SDK provides a path.
+| Decision | Rationale |
+|----------|-----------|
+| **Pre-declared resources** | UI templates register separately from tools—hosts can review and prefetch content |
+| **Standard MCP messaging** | Uses existing JSON-RPC over `postMessage`—same SDK, same patterns |
+| **HTML in sandboxed iframes** | Universal browser support with well-understood security model |
 
 ---
 
-## MCP-UI: The Emerging Standard
+## The Collaboration Behind It
 
-While Apps SDK is production-ready today, a broader standard is emerging: **MCP-UI**.
+The MCP Apps Extension builds on proven implementations from the ecosystem:
 
-MCP-UI extends the Model Context Protocol to include user interface capabilities. Instead of MCP servers returning just data, they can return interactive UI components.
+| Project | Contribution | Adopters |
+|---------|-------------|----------|
+| **MCP-UI** (open source) | Demonstrated UI-as-MCP-resources pattern | Postman, Shopify, Hugging Face, ElevenLabs |
+| **OpenAI Apps SDK** | Validated demand for rich UI in ChatGPT | 800M+ ChatGPT users |
 
-### The Problem MCP-UI Solves
+Anthropic, OpenAI, and the MCP-UI creators collaborated to standardize these patterns—following the AAIF pattern of competitors working together on open infrastructure.
 
-Right now, every AI platform handles UI differently:
+This is the third time you've seen this pattern in Chapter 2:
+- MCP: Anthropic donates to neutral governance
+- AGENTS.md: OpenAI opens to community
+- MCP Apps: Multiple parties collaborate on extension
 
-- ChatGPT has Apps SDK
-- Claude has Artifacts
-- Other agents have their own approaches
-
-This is the same fragmentation problem MCP solved for tools—now appearing in interfaces.
-
-### The MCP-UI Solution
-
-A standard where:
-
-- Any MCP server can return UI components
-- Any MCP client can render them
-- One skill/server works across all platforms
-
-The same "write once, run everywhere" promise that MCP brought to tools, applied to interfaces.
+**The infrastructure layer is becoming shared.** Compete on what you build atop it.
 
 ---
 
-## The Collaboration
+## OpenAI Apps SDK: Distribution Today
 
-Something notable is happening: competitors are collaborating again.
+While MCP Apps Extension standardizes the protocol, OpenAI's Apps SDK provides **immediate distribution** to 800+ million ChatGPT users.
 
-The MCP-UI effort includes:
+| Aspect | Details |
+|--------|---------|
+| **What It Is** | MCP tools + Custom UI + ChatGPT integration |
+| **Who Gets Access** | Business, Enterprise, Edu tiers |
+| **What Platform Handles** | Billing, discovery, user acquisition |
 
-- **Anthropic** (Claude, MCP creators)
-- **OpenAI** (ChatGPT, Apps SDK)
-- **Community contributors** from across the AI development ecosystem
+### What Apps Can Do
 
-The goal: prevent interface fragmentation before it becomes entrenched.
+| Use Case | Experience |
+|----------|-----------|
+| **Order groceries** | Browse products visually, add to cart, checkout |
+| **Create presentations** | Interactive slide builder, not just text suggestions |
+| **Search apartments** | Map views, filters, photo galleries |
+| **Manage projects** | Kanban boards, timelines, team views |
 
-This follows the AAIF pattern—competitors recognizing that open standards benefit everyone.
+Apps aren't just answering questions. They're full application experiences *inside the chat interface*.
+
+**Your Digital SDR as a ChatGPT app:** Lead dashboard, one-click qualification, visual pipeline, integrated calendar booking—all without leaving ChatGPT.
 
 ---
 
-## Current State: What to Do Now
+## Marketplace Monetization
+
+Remember the four revenue models from Chapter 1? Apps SDK unlocks the **Marketplace** path:
+
+| Revenue Model | Description | Apps SDK Advantage |
+|---------------|-------------|-------------------|
+| Subscription | Monthly fee per Digital FTE | Standard model |
+| Success Fee | Percentage of revenue generated | Requires tracking |
+| License | Per-seat or per-feature pricing | Standard model |
+| **Marketplace** | Platform distribution | **800M+ users, low CAC** |
+
+**The Marketplace economics:**
+
+| Factor | Impact |
+|--------|--------|
+| **800M+ ChatGPT users** | Massive distribution potential |
+| **Low customer acquisition cost** | Users discover you in the app directory |
+| **Platform billing** | OpenAI handles payments |
+| **Volume play** | Many small customers vs few large contracts |
+
+When you package your Digital SDR as a ChatGPT app, you reach customers you couldn't acquire otherwise. This is platform distribution—the same model that made mobile app stores lucrative.
+
+---
+
+## Build Now vs Build Later
 
 | Standard | Status | Recommendation |
 |----------|--------|----------------|
 | **Apps SDK** | Production-ready | Use today for ChatGPT distribution |
-| **MCP-UI** | Emerging | Watch this space, prepare for future |
+| **MCP Apps Extension** | Proposed (SEP-1865) | Watch for cross-platform future |
 
-If you need to build agent interfaces now:
-- **Apps SDK** is your path for ChatGPT
-- Other platforms have their own current solutions
+**For immediate distribution:**
+- Apps SDK reaches ChatGPT's 800M+ users today
+- Build your Digital FTE as a ChatGPT app now
 
-If you're planning long-term:
-- **MCP-UI** will likely become the unified standard
-- Skills and MCP servers you build today will work with future MCP-UI
+**For cross-platform future:**
+- MCP Apps Extension will enable write-once UI across all MCP hosts
+- Backward compatible—existing MCP servers continue working
+- Servers should provide text-only fallbacks for hosts without UI support
 
-The foundation is stable (MCP). The interface layer is evolving (MCP-UI). Build on the foundation.
+**The strategy:** Build on Apps SDK for distribution today. Follow MCP Apps Extension for portability tomorrow. The foundation (MCP) is stable. The interface layer is standardizing.
 
 ---
 
-## Connection to Digital FTEs
+## Security By Design
 
-Your Digital FTEs need interfaces. Users interact with them somehow.
+The MCP Apps Extension implements layered protections:
 
-| Distribution Path | Interface Technology |
-|-------------------|---------------------|
-| Inside ChatGPT | Apps SDK |
-| Custom applications | MCP-UI (emerging) |
-| CLI/Terminal | Text-based (current) |
-| Web apps | Your own UI + MCP backend |
+| Layer | Protection |
+|-------|------------|
+| **Iframe sandboxing** | Restricted permissions prevent malicious code execution |
+| **Pre-review** | HTML templates reviewed before rendering |
+| **Auditable logging** | All UI-tool interactions logged via JSON-RPC |
+| **User consent** | Tool calls initiated by UI require explicit approval |
 
-The same Digital FTE can have different "faces":
+When you build Digital FTEs for enterprise clients, security isn't optional. MCP Apps Extension bakes it in.
 
-- A chat interface for quick queries
-- A rich dashboard for complex tasks
-- An API for integration with other systems
+**Why this matters for your Agent Factory:** Enterprise clients will ask "How is this secured?" You can answer with specifics: sandboxed iframes, pre-reviewed templates, auditable interactions, explicit consent.
+
+---
+
+## Connection to Your Digital FTEs
+
+Your Digital FTEs need interfaces. The same agent can have different "faces":
+
+| Distribution Path | Interface Technology | Status |
+|-------------------|---------------------|--------|
+| Inside ChatGPT | Apps SDK | Production today |
+| Any MCP host | MCP Apps Extension | Standardizing |
+| CLI/Terminal | Text-based | Always available |
+| Web apps | Your own UI + MCP backend | Custom build |
 
 **MCP provides the brain. The interface is the face.**
 
-### Monetization through Apps SDK
-
-Remember the monetization models from Chapter 1? Apps SDK unlocks the **Marketplace** path:
-
-| Advantage | Impact |
-|-----------|--------|
-| **800M+ ChatGPT users** | Massive distribution potential |
-| **Low customer acquisition cost** | Users discover you in the app directory |
-| **Platform billing** | OpenAI handles payments |
-| **Volume play** | Hundreds of small customers vs few large contracts |
-
-When you package your Digital FTE as a ChatGPT app, you reach customers you couldn't acquire otherwise. This is platform distribution—the same model that made mobile app stores lucrative.
-
-Your Custom Agent (built in Part 6) becomes a product sold to millions through ChatGPT's marketplace. Apps SDK is your distribution channel.
-
-**MCP-UI will extend this to all platforms.** When the standard matures, your Digital FTE's interface works across ChatGPT, Claude, Gemini, and custom applications—write once, distribute everywhere.
-
----
-
-## Quick Knowledge Check
-
-Before moving on, make sure you can answer:
-
-1. Why are agent interfaces evolving beyond text chat?
-2. What does the OpenAI Apps SDK enable?
-3. What is MCP-UI and what problem does it solve?
-4. What's the current recommendation: Apps SDK or MCP-UI?
+Your Custom Agent (built in Part 6) becomes:
+- A product sold to millions through ChatGPT's marketplace today
+- A cross-platform product across all MCP hosts as the standard matures
+- A white-label solution with your custom interface for enterprise clients
 
 ---
 
 ## Try With AI
 
-Ask your AI assistant:
+Use your AI companion (Claude, ChatGPT, Gemini, or similar) to explore interface strategy:
 
-> "What's the difference between a ChatGPT GPT and an OpenAI App?"
+### Prompt 1: Compare Distribution Options
 
-Evaluate the response:
-- Does it explain that GPTs are conversation-focused while Apps include custom UI?
-- Does it mention that Apps use MCP for tools?
-- Does it note the richer interaction possibilities with Apps?
+```
+I'm building a Digital [your role] and trying to decide on distribution strategy.
 
----
+Compare these options:
+1. Build as a ChatGPT app using Apps SDK (800M+ users, today)
+2. Wait for MCP Apps Extension (cross-platform, standardizing)
+3. Build my own web interface with MCP backend (custom, controlled)
 
-## Summary
+For each:
+- What's the reach?
+- What's the development effort?
+- What do I control vs what does the platform control?
+- What are the revenue implications?
 
-- **Beyond chat**: Agent interfaces are evolving from text to interactive components
-- **Apps SDK**: OpenAI's production-ready platform for building apps inside ChatGPT, built on MCP
-- **MCP-UI**: Emerging standard for universal agent interfaces, prevents fragmentation
-- **The collaboration**: Anthropic, OpenAI, and community working toward unified standard
-- **Current state**: Use Apps SDK today, prepare for MCP-UI future
-- **Digital FTE connection**: Your FTEs can have different interfaces for different contexts, all powered by the same MCP foundation
+Help me think through which fits my use case.
+```
 
----
+**What you're learning:** Distribution strategy. The interface choice affects reach, control, and revenue. Understanding trade-offs prevents wrong architectural bets.
 
-## Chapter Complete
+### Prompt 2: Design Your Agent's Interface
 
-You've finished Chapter 2: AIFF Foundation & Agent Standards.
+```
+My Digital [role] needs to show:
+- [Data type 1, e.g., "lead pipeline"]
+- [Data type 2, e.g., "qualification scores"]
+- [Action type, e.g., "one-click meeting scheduling"]
 
-You now understand:
+If I were building this with rich UI (buttons, charts, forms) instead of just chat:
+1. What interactive components would make the biggest difference?
+2. What's currently painful in chat that becomes smooth with UI?
+3. What's the minimal viable interface—where do I start?
 
-| Standard | What It Does |
-|----------|--------------|
-| **AAIF** | Governs agentic AI standards under Linux Foundation |
-| **MCP** | Connects agents to tools (universal connectivity) |
-| **AGENTS.md** | Provides project-specific context to agents |
-| **goose** | Reference agent showing standards in action |
-| **Agent Skills** | Packages domain expertise for agents |
-| **MCP-UI/Apps SDK** | Evolving interfaces beyond text chat |
+Think about user experience, not just technical capability.
+```
 
-These standards form the infrastructure layer of your Digital FTEs. Every agent you build will use them.
+**What you're learning:** Interface design thinking. Moving from "what can I build" to "what should I build" requires understanding user pain points.
 
-**Next**: Part 2 (AI Tool Landscape) will put these standards into practice as you explore the actual tools—Claude Code, Gemini CLI, and more.
+### Prompt 3: Explore the Security Model
+
+```
+I need to explain MCP Apps Extension security to an enterprise client.
+
+Based on the security model (iframe sandboxing, pre-review, auditable logging, user consent):
+1. What specific threats does each layer protect against?
+2. How does this compare to traditional web application security?
+3. What additional security measures might an enterprise require beyond the standard?
+
+Make it concrete—give examples of what could go wrong without each protection.
+```
+
+**What you're learning:** Security communication. Enterprise clients buy trust before they buy capability. Explaining security clearly is a sales skill.

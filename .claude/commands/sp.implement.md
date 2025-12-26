@@ -16,6 +16,91 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 **WHY**: Implementation speed depends on autonomous execution. Each pause for "should I proceed?" costs momentum. Trust the tasks.md plan and execute.
 
+## Mandatory Skill Invocation (CONTENT WORK)
+
+**For educational content implementation, you MUST invoke these skills:**
+
+| Phase | Skill | Purpose |
+|-------|-------|---------|
+| **Before Writing** | `researching-with-deepwiki` | Verify facts about technologies being taught |
+| **Before Writing** | `fetching-library-docs` | Get accurate technical details via Context7 |
+| **During Writing** | `ai-collaborate-teaching` | Design Three Roles sections (L2+ only) |
+| **After Draft** | `content-evaluation-framework` | 6-category quality rubric |
+| **After Draft** | `fact-check-lesson` | Verify all statistics, dates, quotes |
+| **Final Check** | `summary-generator` | Create companion summary file |
+
+**Content Implementation Workflow**:
+```
+For each lesson:
+1. Invoke: researching-with-deepwiki → Get technology context
+2. Invoke: fetching-library-docs → Get accurate API details
+3. Generate content with content-implementer subagent
+4. Invoke: content-evaluation-framework → Quality check (must pass)
+5. Invoke: fact-check-lesson → Verify all claims
+6. If PASS: Write to filesystem
+7. If FAIL: Fix issues, re-validate
+8. Invoke: summary-generator → Create .summary.md
+```
+
+**Subagent Prompt Must Include**:
+```
+Match quality of reference lesson at:
+apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-agent-factory-paradigm/01-digital-fte-revolution.md
+
+Required elements:
+- Full YAML frontmatter (skills, learning_objectives, cognitive_load, differentiation)
+- 3 "Try With AI" prompts with "What you're learning" explanations
+- Safety note at end
+- All facts WebSearch-verified before writing
+```
+
+**Why this matters**: Chapter 2 incident (2025-12-26) - lessons implemented without skill invocations had:
+- Missing YAML frontmatter (no skills, learning objectives)
+- Weak "Try With AI" sections (1 prompt vs 3)
+- Hallucinated facts (wrong dates, percentages)
+- Required 6 rewrites = 50%+ session time wasted
+
+## Mandatory Subagent Orchestration (CONTENT WORK)
+
+**⛔ DIRECT CONTENT WRITING IS BLOCKED ⛔**
+
+You MUST use subagents for ALL educational content. Direct file writes bypass quality gates.
+
+| Phase | Subagent | Requirement |
+|-------|----------|-------------|
+| **Per Lesson** | `content-implementer` | MUST generate lesson (not you directly) |
+| **Per Lesson** | `educational-validator` | MUST validate before filesystem write |
+| **Per Chapter** | `assessment-architect` | MUST design chapter assessment |
+| **Final** | `factual-verifier` | MUST verify all claims before publish |
+
+**Enforcement Workflow**:
+```
+1. YOU read context (chapter-index, existing lessons, spec)
+2. YOU invoke content-implementer subagent with:
+   - Absolute output path
+   - Quality reference lesson path
+   - "Execute autonomously without confirmation"
+   - Full frontmatter requirements
+3. SUBAGENT generates lesson and reports back
+4. YOU invoke educational-validator on generated content
+5. IF PASS → Write to filesystem
+6. IF FAIL → Fix or regenerate (DO NOT write failing content)
+```
+
+**Why This Matters**:
+- **Chapter 2 incident**: Manual writing → 6 rewrites, 50%+ time wasted
+- **Subagent benefits**: Quality reference calibration, autonomous execution, validation gates
+- **Zero tolerance**: Content written directly (bypassing subagents) will be rejected
+
+**Detection of Bypass Attempt**:
+```
+IF you are about to:
+  - Write lesson markdown directly (not via subagent)
+  - Skip educational-validator invocation
+  - Write content without quality reference
+THEN STOP and invoke proper subagent workflow
+```
+
 ## Outline
 
 1. Run `.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks` from repo root and parse FEATURE_DIR and AVAILABLE_DOCS list. All paths must be absolute. For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
