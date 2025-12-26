@@ -1,8 +1,8 @@
 ---
 title: "CLAUDE.md Context Files"
-sidebar_position: 7
+sidebar_position: 8
 chapter: 5
-lesson: 7
+lesson: 8
 duration_minutes: 12
 
 # PEDAGOGICAL LAYER METADATA

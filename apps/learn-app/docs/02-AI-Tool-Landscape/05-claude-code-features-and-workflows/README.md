@@ -26,6 +26,7 @@ By the end of this chapter, you'll have:
 - **Token Optimization** — Compiling MCP servers to Skills for 80-98% token reduction through code execution patterns and progressive disclosure
 - **Subagent Orchestration** — Recognizing when Claude automatically delegates to Explore agent (codebase search) or Plan mode (complex tasks) with hands-on exercises
 - **Autonomous Expertise** — Agent Skills with progressive disclosure pattern (metadata → full definition → supporting files) and autonomous discovery
+- **Skill Factory Pattern** — Using skill-creator to generate skills efficiently, building integrated skill systems, and understanding meta-skill concepts
 - **Event-Driven Automation** — Hooks for custom behaviors triggered by events (PreToolUse, PostToolUse, SessionStart) with hands-on SessionStart hook creation
 - **Configuration Mastery** — Settings hierarchy (User, Project, Local) and precedence rules for team collaboration and personal customization
 - **Complete Extensibility** — Discovering and using plugins from marketplaces, hands-on installation of Anthropic's official skills repository
