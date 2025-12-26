@@ -102,3 +102,8 @@
 {"timestamp":"2025-12-26T03:39:09Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","prompt":"what is the diff between sp/autonomous and sp.chapter"}
 {"timestamp":"2025-12-26T03:40:57Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","prompt":"How do i use it just say /sp.chapter and chapter  and 1 line idea? "}
 {"timestamp":"2025-12-26T03:42:04Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","prompt":"For testing then shall I provide api keys as well especially for chapter 34, 35, 36? "}
+{"timestamp":"2025-12-26T04:05:18Z","session_id":"4239b8df-7c19-480c-9642-dd2535d267f2","prompt":"/sp.chapter Chapter 36: Anthropic Claude Agent SDK this must be carefully implemented and everything offical verified as I am not providing api key https://platform.claude.com/docs/en/agent-sdk/overview"}
+{"timestamp":"2025-12-26T04:20:40Z","session_id":"4239b8df-7c19-480c-9642-dd2535d267f2","prompt":"Are we really mastering everything including the native Agent Skills usage with Clauge Agent SDK and all features highly specifiic to this 1 framework only make it a top contender for general agents"}
+{"timestamp":"2025-12-26T04:42:15Z","session_id":"4239b8df-7c19-480c-9642-dd2535d267f2","prompt":"yes"}
+{"timestamp":"2025-12-26T05:09:09Z","session_id":"4239b8df-7c19-480c-9642-dd2535d267f2","prompt":"remove category.json and review all lessons and run agains skills and subagents where needed and check if anything essential was left"}
+{"timestamp":"2025-12-26T05:37:57Z","session_id":"4239b8df-7c19-480c-9642-dd2535d267f2","prompt":"yes complete all tasks"}
