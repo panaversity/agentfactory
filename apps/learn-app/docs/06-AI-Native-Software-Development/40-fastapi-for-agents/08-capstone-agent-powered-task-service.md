@@ -1,5 +1,5 @@
 ---
-title: "Capstone: Agent-Powered Task Service"
+title: "Capstone: TaskManager Agent Service"
 sidebar_position: 8
 chapter: 40
 lesson: 8
@@ -56,9 +56,9 @@ source_spec: "specs/040-chapter-40-fastapi-for-agents/spec.md"
 created: "2025-12-22"
 ---
 
-# Capstone: Agent-Powered Task Service
+# Capstone: TaskManager Agent Service
 
-This chapter taught you seven interconnected skills. Now you'll synthesize them into something real.
+This chapter taught you seven interconnected skills. Now you'll synthesize them into something real: the **TaskManager Agent Service**—the same TaskManager you built in Chapter 34, now accessible as a production REST API.
 
 This capstone isn't about following instructions—it's about demonstrating that you can work from a specification and deliver a functioning system. The specification below defines what to build. How you build it is up to you.
 
@@ -284,9 +284,9 @@ def suggest_time_blocks(task_id: int, hours: int = 2) -> dict:
         ]
     }
 
-scheduler_agent = Agent(
-    name="scheduler",
-    instructions="""You are a scheduling specialist for task management.
+taskmanager_scheduler = Agent(
+    name="taskmanager-scheduler",
+    instructions="""You are the scheduling specialist for TaskManager.
 
 Expertise: Deadlines, reminders, time blocking, scheduling strategy.
 
@@ -319,9 +319,9 @@ def create_meeting(task_id: int, attendees: list[str], duration: int = 30) -> di
     """Schedule a meeting about a task."""
     return {"task_id": task_id, "attendees": attendees, "duration": duration}
 
-collaboration_agent = Agent(
-    name="collaboration",
-    instructions="""You are a collaboration specialist for task management.
+taskmanager_collaboration = Agent(
+    name="taskmanager-collaboration",
+    instructions="""You are the collaboration specialist for TaskManager.
 
 Expertise: Delegation, sharing, team coordination, meetings.
 
@@ -338,12 +338,12 @@ When helping:
 
 ```python
 from agents import Agent, handoff
-from .scheduler import scheduler_agent
-from .collaboration import collaboration_agent
+from .scheduler import taskmanager_scheduler
+from .collaboration import taskmanager_collaboration
 
-triage_agent = Agent(
-    name="triage",
-    instructions="""You route task questions to the right specialist.
+taskmanager_triage = Agent(
+    name="taskmanager-triage",
+    instructions="""You are the TaskManager router. Route questions to the right specialist.
 
 Route to SCHEDULER for:
 - Deadlines, due dates, timing
@@ -358,8 +358,8 @@ Route to COLLABORATION for:
 For simple questions, answer directly.
 When routing, briefly explain why.""",
     tools=[
-        handoff(scheduler_agent),
-        handoff(collaboration_agent)
+        handoff(taskmanager_scheduler),
+        handoff(taskmanager_collaboration)
     ],
     model="gpt-4o-mini"
 )
@@ -375,13 +375,13 @@ import json
 from models import TaskCreate, TaskUpdate, TaskResponse, HelpRequest
 from repository import TaskRepository, get_task_repo, VALID_STATUSES
 from agents import Runner
-from agents.triage import triage_agent
-from agents.scheduler import scheduler_agent
-from agents.collaboration import collaboration_agent
+from agents.triage import taskmanager_triage
+from agents.scheduler import taskmanager_scheduler
+from agents.collaboration import taskmanager_collaboration
 
 app = FastAPI(
-    title="Agent-Powered Task Service",
-    description="Multi-agent task management with scheduling and collaboration",
+    title="TaskManager Agent Service",
+    description="TaskManager Agent Service with scheduling and collaboration specialists",
     version="1.0.0"
 )
 
@@ -481,7 +481,7 @@ async def triage_help(
     task = repo.get_by_id(task_id)
     if not task:
         raise HTTPException(status_code=404, detail=f"Task {task_id} not found")
-    return EventSourceResponse(run_agent_streaming(triage_agent, task, request.question))
+    return EventSourceResponse(run_agent_streaming(taskmanager_triage, task, request.question))
 
 @app.post("/tasks/{task_id}/schedule")
 async def schedule_help(
@@ -493,7 +493,7 @@ async def schedule_help(
     task = repo.get_by_id(task_id)
     if not task:
         raise HTTPException(status_code=404, detail=f"Task {task_id} not found")
-    return EventSourceResponse(run_agent_streaming(scheduler_agent, task, request.question))
+    return EventSourceResponse(run_agent_streaming(taskmanager_scheduler, task, request.question))
 
 @app.post("/tasks/{task_id}/collaborate")
 async def collaborate_help(
@@ -505,25 +505,25 @@ async def collaborate_help(
     task = repo.get_by_id(task_id)
     if not task:
         raise HTTPException(status_code=404, detail=f"Task {task_id} not found")
-    return EventSourceResponse(run_agent_streaming(collaboration_agent, task, request.question))
+    return EventSourceResponse(run_agent_streaming(taskmanager_collaboration, task, request.question))
 
 # --- System Endpoints ---
 
 @app.get("/agents/status")
 def get_agent_status():
-    """List available agents and their capabilities."""
+    """List available TaskManager agents and their capabilities."""
     return {
         "agents": [
-            {"name": "triage", "description": "Routes requests to specialists", "type": "router"},
-            {"name": "scheduler", "description": "Deadlines, reminders, time blocking", "type": "specialist"},
-            {"name": "collaboration", "description": "Delegation, sharing, meetings", "type": "specialist"}
+            {"name": "taskmanager-triage", "description": "Routes requests to specialists", "type": "router"},
+            {"name": "taskmanager-scheduler", "description": "Deadlines, reminders, time blocking", "type": "specialist"},
+            {"name": "taskmanager-collaboration", "description": "Delegation, sharing, meetings", "type": "specialist"}
         ]
     }
 
 @app.get("/")
 def health():
     return {
-        "service": "Agent-Powered Task Service",
+        "service": "TaskManager Agent Service",
         "version": "1.0.0",
         "status": "healthy"
     }
@@ -598,14 +598,14 @@ These are real production concerns. Tackling them with AI guidance is exactly ho
 
 ## What You've Built
 
-You've built a production-style multi-agent API:
+You've built the **TaskManager Agent Service**—a production-style multi-agent API:
 
 - **5 CRUD endpoints** with proper validation and error handling
 - **3 agent endpoints** with streaming and routing visibility
-- **Multi-agent architecture** with triage and specialists
+- **TaskManager architecture** with triage and specialists from Chapter 34
 - **Production patterns** throughout: dependency injection, Pydantic validation, SSE streaming
 
-**The bigger picture**: This is the foundation for real AI-powered applications. The same patterns—CRUD for data, streaming for responses, routing for intelligence—appear in ChatGPT, Claude, and every enterprise AI product.
+**The bigger picture**: This is the foundation for real AI-powered applications. The same patterns—CRUD for data, streaming for responses, routing for intelligence—appear in ChatGPT, Claude, and every enterprise AI product. You've taken the TaskManager Agent from Chapter 34 and made it accessible to any HTTP client.
 
 In Part 7, you'll take this further: containerization with Docker, deployment to Kubernetes, and scaling for production traffic.
 
@@ -613,7 +613,7 @@ In Part 7, you'll take this further: containerization with Docker, deployment to
 
 ## Chapter Summary
 
-Chapter 40 taught you to expose AI agents via FastAPI:
+Chapter 40 taught you to expose the TaskManager Agent via FastAPI:
 
 | Lesson | Core Skill |
 |--------|-----------|
@@ -623,7 +623,7 @@ Chapter 40 taught you to expose AI agents via FastAPI:
 | 4 | Error handling with status codes |
 | 5 | Dependency injection for testability |
 | 6 | SSE streaming with async generators |
-| 7 | Multi-agent routing with handoffs |
-| 8 | Integration of all patterns |
+| 7 | TaskManager Agent integration with handoffs |
+| 8 | TaskManager Agent Service (all patterns combined) |
 
-You can now build HTTP APIs that wrap AI agents—making them accessible to any client through standard REST endpoints. This is how AI gets into production.
+You can now build HTTP APIs that wrap AI agents—making TaskManager (and any agent) accessible to any client through standard REST endpoints. This is how AI gets into production.
