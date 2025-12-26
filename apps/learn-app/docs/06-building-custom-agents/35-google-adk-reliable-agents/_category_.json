@@ -1,8 +1,0 @@
-{
-  "label": "Building Reliable Agents with Google ADK",
-  "position": 35,
-  "link": {
-    "type": "generated-index",
-    "description": "Learn to build production-grade AI agents with Google's Agent Development Kit (ADK), focusing on the Three Pillars of Reliable Agents: Testable, Predictable, and Safe."
-  }
-}
