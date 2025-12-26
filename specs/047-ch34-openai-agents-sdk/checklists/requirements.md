@@ -37,12 +37,15 @@
 - [x] Chapter teaches AI-native thinking, not just tool mechanics
 - [x] L1 lessons build vocabulary/mental models
 - [x] Chapter connects to Part 6 running example (TaskManager)
-- [x] LiteLLM requirement addressed (Lesson 1 + cross-cutting FR-034)
+- [x] LiteLLM requirement addressed (Lesson 1: FR-004, FR-005)
 
 ## Notes
 
-- Specification is complete and ready for `/sp.clarify` or `/sp.plan`
-- All 9 user stories cover the 7 lesson structure plus cross-cutting concerns
-- TaskManager running example integrated throughout
-- LiteLLM alternative models covered in Lesson 1 and FR-034
-- Clear mapping to Chapter 33 concepts established
+- Specification complete and ready for `/sp.clarify` or `/sp.plan`
+- 13 user stories with concrete code examples from GitHub repo
+- 8 lessons covering full production mastery
+- 41 functional requirements (FR-001 to FR-041)
+- Pattern source table maps each concept to actual GitHub example
+- Key patterns: Context Objects, Agents as Tools, Cloning, Handoff Callbacks, Message Filters, Agent-Based Guardrails, Session Branching, Lifecycle Hooks, Tracing Spans, MCP Integration
+- LiteLLM covered in Lesson 1 (FR-004, FR-005)
+- Capstone based on `customer_service/main.py` production example
