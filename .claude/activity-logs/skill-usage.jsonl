@@ -88,3 +88,5 @@
 {"timestamp":"2025-12-26T04:42:31Z","session_id":"4239b8df-7c19-480c-9642-dd2535d267f2","skill":"sp.implement","args":"001-claude-agent-sdk","event":"invoke","source":"Skill_tool"}
 {"timestamp":"2025-12-26T04:32:22Z","session_id":"e4d4b120-7fd1-4a38-bf70-7d9ed1fe179b","skill":"mcp-builder","event":"start"}
 {"timestamp":"2025-12-26T08:08:57Z","session_id":"2b3a766c-cf88-4cfc-8390-c3de51b7cefc","skill":"skill-creator","event":"start"}
+{"timestamp":"2025-12-26T10:49:03Z","session_id":"fe5dcb7c-0a46-4d58-af93-e3991eaba3b7","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T10:50:09Z","session_id":"fe5dcb7c-0a46-4d58-af93-e3991eaba3b7","skill":"researching-with-deepwiki","args":"Analyze the architecture and implementation patterns of github.com/google/adk-python - I need to understand: 1) Core agent types (Agent, LlmAgent, SequentialAgent, ParallelAgent, LoopAgent), 2) Tool system (FunctionTool, AgentTool, McpToolset), 3) Callback/guardrail architecture (before_model_callback, before_tool_callback), 4) Session and state management, 5) Evaluation system (adk eval), 6) Deployment patterns","event":"invoke","source":"Skill_tool"}
