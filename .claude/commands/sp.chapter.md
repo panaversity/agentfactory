@@ -56,8 +56,19 @@ $ARGUMENTS
 │  With deep expertise encoded in skill:                              │
 │  /sp.specify → /sp.clarify → /sp.plan → /sp.tasks →                │
 │  /sp.analyze → /sp.taskstoissues → /sp.implement →                 │
-│  validators → update tasks.md (close issues) →                      │
-│  /sp.git.commit_pr                                                  │
+│                                                                     │
+│  ⛔ MANDATORY VALIDATION GATE (Step B.8) ⛔                          │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │ Run in PARALLEL:                                             │   │
+│  │ • educational-validator (per lesson, 8x parallel)            │   │
+│  │ • validation-auditor (chapter-wide)                          │   │
+│  │ • factual-verifier (chapter-wide)                            │   │
+│  │ • pedagogical-designer (chapter-wide)                        │   │
+│  │                                                               │   │
+│  │ ALL MUST PASS before proceeding                               │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+│  → update tasks.md (close issues) → /sp.git.commit_pr              │
 │                                                                     │
 │  The skill IS the research - no hallucination risk                  │
 │                                                                     │
@@ -377,12 +388,54 @@ Each lesson subagent has access to:
 - Validation skills (content-evaluation-framework)
 ```
 
-### Step B.8: Validation
+### Step B.8: Validation (MANDATORY GATE)
 
-Run in parallel:
-- `validation-auditor` - Comprehensive quality
-- `educational-validator` - Pedagogical compliance
-- `factual-verifier` - Accuracy (easier because skill is verified)
+**⛔ BLOCKING REQUIREMENT**: Content MUST pass all validators before commit.
+
+**Launch ALL validators in parallel:**
+
+```
+# Educational compliance (per lesson - run 8 in parallel for 8 lessons)
+Task subagent_type=educational-validator (per lesson file)
+  - Framework invisibility check
+  - Evidence presence check
+  - Structural compliance check
+  - Proficiency alignment check
+  - Three Roles demonstration check
+
+# Comprehensive quality (chapter-wide)
+Task subagent_type=validation-auditor
+  - Technical accuracy
+  - Pedagogical effectiveness
+  - Writing quality
+  - Structure & organization
+
+# Fact verification (chapter-wide)
+Task subagent_type=factual-verifier
+  - API patterns against official docs
+  - Statistics and dates
+  - Code examples accuracy
+
+# Learning progression (chapter-wide)
+Task subagent_type=pedagogical-designer
+  - Concept scaffolding validation
+  - Cognitive load assessment
+  - Layer progression check (L1→L2→L3→L4)
+```
+
+**GATE CRITERIA - ALL MUST PASS:**
+| Validator | Pass Criteria |
+|-----------|---------------|
+| `educational-validator` | All 5 checks pass per lesson |
+| `validation-auditor` | Score ≥ 80% weighted average |
+| `factual-verifier` | Zero unverified claims |
+| `pedagogical-designer` | Progression validated |
+
+**IF ANY VALIDATOR FAILS:**
+1. DO NOT proceed to Step B.9
+2. Fix identified issues
+3. Re-run failed validators
+4. Only proceed when all pass
 
 ### Step B.9: Close Issues
 
@@ -489,8 +542,27 @@ apps/learn-app/docs/06-AI-Native-Software-Development/34-openai-agents-sdk/
 
 **If any check fails**: Fix skill before proceeding to content.
 
+### Phase B: Content → Commit Gate (MANDATORY)
+
+| Validator | Scope | Pass Criteria |
+|-----------|-------|---------------|
+| `educational-validator` | Per lesson (parallel) | All 5 checks pass |
+| `validation-auditor` | Chapter-wide | ≥80% weighted score |
+| `factual-verifier` | Chapter-wide | Zero unverified claims |
+| `pedagogical-designer` | Chapter-wide | Progression validated |
+
+**⛔ BLOCKING**: Cannot commit chapter content without ALL validators passing.
+
+**If any validator fails**:
+1. Identify specific issues from validator output
+2. Fix content in affected lessons
+3. Re-run ONLY the failed validators
+4. Repeat until all pass
+5. Only then proceed to commit
+
 ---
 
-**Version**: 1.0 (December 2025)
+**Version**: 1.1 (December 2025)
 **Required Skills**: researching-with-deepwiki, fetching-library-docs, creating-skills
+**Required Validators**: educational-validator, validation-auditor, factual-verifier, pedagogical-designer
 **Best For**: Technical chapters teaching frameworks/SDKs (Part 6-7)
