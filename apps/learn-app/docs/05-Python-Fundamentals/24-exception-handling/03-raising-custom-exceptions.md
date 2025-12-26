@@ -72,8 +72,6 @@ This lesson teaches you to think defensively from the function designer's perspe
 
 ## Part 1: Design Domain Exceptions
 
-**Your Role**: Domain modeler designing exception types for business logic
-
 Before learning syntax, think about error categories in real systems. Professional developers design exception hierarchies that communicate business domain knowledge.
 
 ### Domain Design Exercise: User Authentication System
@@ -180,8 +178,6 @@ Users familiar with ValueError will understand this pattern.
 ---
 
 ## Part 2: Learn When to Create Custom vs Use Built-In
-
-**Your Role**: Student learning exception design principles from AI Teacher
 
 Now that you've designed exceptions, understand when custom exceptions add value vs when built-ins suffice.
 
@@ -312,8 +308,6 @@ def set_password(password: str) -> None:
 ---
 
 ## Part 3: Challenge AI with Exception Inheritance and `__init__` Customization
-
-**Your Role**: Student teaching AI by exploring advanced exception patterns
 
 Now reverse the roles. You'll design challenges that test AI's understanding of exception customization, particularly `__init__` methods and instance attributes.
 
@@ -481,8 +475,6 @@ except OrderError:
 
 ## Part 4: Build Custom Exception Library for Domain Modeling
 
-**Your Role**: Library designer creating reusable exception types
-
 Now integrate everything into a production-ready exception library that models domain concepts clearly.
 
 ### Your Custom Exception Library
@@ -629,6 +621,47 @@ class CorruptedDataError(FileProcessingError):
 
 
 # =============================================================================
+# Task Management Domain (PRIMARY EXAMPLE)
+# =============================================================================
+
+class TaskError(Exception):
+    """Base exception for task management operations."""
+    pass
+
+
+class TaskNotFoundError(TaskError):
+    """Task with specified ID doesn't exist in system."""
+
+    def __init__(self, task_id: int):
+        self.task_id = task_id
+        super().__init__(f"Task #{task_id} not found")
+
+
+class InvalidPriorityError(TaskError):
+    """Task priority is outside valid range."""
+
+    def __init__(self, priority: int, min_val: int = 1, max_val: int = 10):
+        self.priority = priority
+        self.min_val = min_val
+        self.max_val = max_val
+        super().__init__(
+            f"Priority {priority} not in valid range {min_val}-{max_val}"
+        )
+
+
+class InvalidTaskError(TaskError):
+    """Task data violates business rules."""
+
+    def __init__(self, reason: str, field: str = None):
+        self.reason = reason
+        self.field = field
+        msg = f"Invalid task: {reason}"
+        if field:
+            msg += f" (field: {field})"
+        super().__init__(msg)
+
+
+# =============================================================================
 # Business Logic Domain (E-Commerce)
 # =============================================================================
 
@@ -683,6 +716,41 @@ class PaymentDeclinedError(PaymentError):
 # =============================================================================
 # Example Usage and Testing
 # =============================================================================
+
+def example_task_management():
+    """Example: Task management error handling (PRIMARY)."""
+    print("=== Task Management Example (PRIMARY) ===")
+
+    # Example 1: Invalid priority
+    try:
+        priority = 15
+        if not 1 <= priority <= 10:
+            raise InvalidPriorityError(priority, min_val=1, max_val=10)
+    except InvalidPriorityError as e:
+        print(f"Priority validation failed: {e}")
+        print(f"  Priority: {e.priority}")
+        print(f"  Valid range: {e.min_val}-{e.max_val}")
+
+    # Example 2: Task not found
+    try:
+        task_id = 999
+        raise TaskNotFoundError(task_id)
+    except TaskNotFoundError as e:
+        print(f"Lookup failed: {e}")
+        print(f"  Task ID: {e.task_id}")
+
+    # Example 3: Invalid task data
+    try:
+        raise InvalidTaskError(
+            reason="Title cannot be empty",
+            field="title"
+        )
+    except InvalidTaskError as e:
+        print(f"Validation failed: {e}")
+        print(f"  Reason: {e.reason}")
+        print(f"  Field: {e.field}")
+    print()
+
 
 def example_authentication():
     """Example: Authentication error handling."""
@@ -755,6 +823,7 @@ def example_payment():
 if __name__ == "__main__":
     print("=== Custom Exception Library Examples ===")
 
+    example_task_management()
     example_authentication()
     example_validation()
     example_inventory()
@@ -780,27 +849,33 @@ if __name__ == "__main__":
 
 Your exception library must include:
 
-1. **Authentication domain** (4 exception types)
+1. **Task management domain** (3 exception types) — PRIMARY EXAMPLE
+   - Base `TaskError`
+   - `TaskNotFoundError` with task ID context
+   - `InvalidPriorityError` with range validation
+   - `InvalidTaskError` for business rule violations
+
+2. **Authentication domain** (4 exception types)
    - Base `AuthenticationError`
    - User-specific errors with context
    - Custom `__init__` methods storing username, timestamps, attempt counts
 
-2. **Validation domain** (1 exception type)
+3. **Validation domain** (1 exception type)
    - `ValidationError` accepting dict of field errors
    - Helper methods (`has_error`, `get_error`)
    - Useful for form validation
 
-3. **File processing domain** (3 exception types)
+4. **File processing domain** (3 exception types)
    - Base `FileProcessingError`
    - Format and corruption errors
    - Line numbers and file context
 
-4. **Business logic domain** (5 exception types)
+5. **Business logic domain** (5 exception types)
    - E-commerce order errors
    - Inventory and payment errors
    - Retry logic and context for recovery
 
-5. **Example usage** for each domain
+6. **Example usage** for each domain
    - Demonstrates exception raising
    - Shows attribute access
    - Illustrates recovery strategies
