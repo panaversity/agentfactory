@@ -17,6 +17,12 @@ But sets aren't magic—they require understanding **hashing** (how Python conve
 
 By the end of this chapter, you'll build a **Memory Profiler tool** that tracks object creation and deletion in your programs—integrating sets, frozensets, and garbage collection into a practical debugging aid.
 
+## Chapter Contribution to Todo App
+
+This chapter contributes: **Task categories**
+
+By the end of this chapter, your todo application will organize tasks into categories using sets for deduplication and fast lookups, preventing duplicate category assignments and enabling efficient filtering.
+
 ## 🎯 Before You Begin
 
 ## What You'll Learn

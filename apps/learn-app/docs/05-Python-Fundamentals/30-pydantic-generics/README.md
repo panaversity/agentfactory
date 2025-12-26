@@ -15,6 +15,12 @@ This chapter teaches advanced type safety and data validation for AI-native Pyth
 
 By the end, you'll build a **Type-Safe Config Manager** capstone—a production-quality configuration system that's a portfolio-worthy project you can use in your own Python applications.
 
+## Chapter Contribution to Todo App
+
+This chapter contributes: **Validated Task models**
+
+By the end of this chapter, your todo application will use Pydantic models to validate task data—ensuring type safety, catching invalid inputs, and providing clear error messages with full validation integration.
+
 ## 🎯 Before You Begin
 
 ---

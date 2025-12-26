@@ -65,17 +65,25 @@ version: "1.0.0"
 
 # Date/Time Formatting and Manipulation
 
-You've built datetime objects from user input and understand the basics of timezone awareness. Now you'll learn how to **format** those objects for display and **manipulate** them to solve real-world scheduling problems. By the end of this lesson, you'll format dates for different audiences, calculate durations, and convert times across timezones—the exact skills you need for building global applications.
+You've built datetime objects from user input and understand the basics of timezone awareness. Now you'll learn how to **format** those objects for display and **manipulate** them to solve real-world scheduling problems. A core use case we'll focus on: **task and deadline management**. By the end of this lesson, you'll format dates for different audiences, calculate durations between task deadlines, check if tasks are overdue, and convert times across timezones—the exact skills you need for building task management and scheduling applications.
 
-## Why Formatting Matters
+## Why Formatting Matters: Task Scheduling Example
 
-Think about your favorite app. When it shows you an event time, it doesn't say "2025-11-09T14:30:00+00:00" (that's for computers). It says something like "Sunday, November 9 at 2:30 PM" or "2025-11-09" depending on context. The raw datetime object is useless to humans without **formatting**.
+Imagine you're building a task management app. Behind the scenes, you store task deadlines as UTC datetimes: `datetime(2025, 1, 15, 17, 0, tzinfo=timezone.utc)`. But when you display that task to a user in Tokyo, you can't just show raw UTC—you need to show "January 16 at 2:00 AM JST" (what it is in their timezone) and format it beautifully for display.
 
-Similarly, when you're building a scheduling feature or calculating project deadlines, you need to manipulate dates—add days, subtract hours, find the difference between two moments. That's where **timedelta** comes in.
+Here's the challenge:
 
-And when your app serves users around the world, you need to **convert** between timezones correctly. A meeting at 9 AM UTC is 4 AM EST—not handling that properly creates chaos.
+1. **Formatting**: Task stored as raw datetime → Human-readable "Wednesday, January 15 at 5:00 PM UTC" or adjusted to local time
+2. **Manipulation**: Check if task is overdue, calculate days until due date, handle recurring tasks at regular intervals
+3. **Timezone conversion**: Show deadline in user's local timezone (UTC to EST, UTC to JST, etc.)
 
-This lesson teaches you all three skills, emphasizing that you don't memorize all 30+ format codes. You understand the pattern and ask AI when needed.
+Without these three skills, your task app breaks:
+- You show tasks in the wrong timezone
+- Users can't tell if a task is overdue
+- Recurring task scheduling becomes error-prone
+- Global teams see conflicting deadline information
+
+This lesson teaches you all three skills using a task scheduling system as the primary example, emphasizing that you don't memorize all 30+ format codes—you understand the pattern and ask AI when needed.
 
 ## Formatting Dates and Times with strftime()
 
@@ -103,72 +111,84 @@ The key insight: **You don't memorize all 30+ codes.** You learn the common ones
 
 > "Explain the difference between `%Y` and `%y`, and between `%H` and `%I`. When would you use each?"
 
-### Common Format Patterns
+### Common Format Patterns for Task Display
 
-Here are the patterns you'll use most often:
+Here are the patterns you'll use most often in a task management system:
 
 ```python
 from datetime import datetime, timezone
 
-moment: datetime = datetime(2025, 11, 9, 14, 30, 45, tzinfo=timezone.utc)
+# Task deadline in UTC
+task_due: datetime = datetime(2025, 1, 15, 17, 0, tzinfo=timezone.utc)
 
 # ISO 8601 (standard for data storage and APIs)
-iso_format: str = moment.strftime("%Y-%m-%dT%H:%M:%S%z")
-print(iso_format)  # 2025-11-09T14:30:45+0000
+# Store tasks in databases as ISO format
+iso_format: str = task_due.strftime("%Y-%m-%dT%H:%M:%S%z")
+print(iso_format)  # 2025-01-15T17:00:00+0000
 
-# US Format (casual, for display)
-us_format: str = moment.strftime("%m/%d/%Y %I:%M %p")
-print(us_format)  # 11/09/2025 02:30 PM
+# Dashboard Format (compact, for task lists)
+# Show on the app's task list
+dashboard: str = task_due.strftime("%m/%d %I:%M %p")
+print(dashboard)  # 01/15 05:00 PM
 
-# European Format
-eu_format: str = moment.strftime("%d/%m/%Y %H:%M")
-print(eu_format)  # 09/11/2025 14:30
+# Email/Notification Format (user-friendly)
+# Send in notifications to users
+user_friendly: str = task_due.strftime("%A, %B %d at %I:%M %p")
+print(user_friendly)  # Wednesday, January 15 at 05:00 PM
 
-# Friendly Format (for humans)
-friendly: str = moment.strftime("%A, %B %d, %Y at %I:%M %p")
-print(friendly)  # Sunday, November 09, 2025 at 02:30 PM
+# Log Format (for debugging)
+# Store in system logs
+log_format: str = task_due.strftime("%Y-%m-%d %H:%M:%S UTC")
+print(log_format)  # 2025-01-15 17:00:00 UTC
 ```
 
-Notice how the same `moment` looks different depending on the format. Your job isn't to remember these strings—it's to choose the right format for your audience.
+Notice how the same task deadline looks different depending on the audience. Your job isn't to remember these strings—it's to choose the right format for your purpose (storage, display, notification, logging).
 
 #### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize all 30+ format codes. You understand the pattern (`%Y` = year, `%m` = month, `%d` = day) and ask AI when you need a specific format. **Syntax is cheap; knowing WHEN to use ISO 8601 vs localized format is gold.** ISO for data storage and APIs. Friendly format for user interfaces.
 
-### Practical Formatting Exercise
+### Practical Formatting Exercise: Task Display Function
 
-Let's build a function that formats a datetime in multiple ways:
+Let's build a function that formats a task deadline in multiple ways for different parts of your application:
 
 ```python
 from datetime import datetime, timezone
 
-def format_datetime_multiple_ways(dt: datetime) -> dict[str, str]:
+def format_task_deadline(due_date: datetime) -> dict[str, str]:
     """
-    Format a datetime object in multiple contexts.
+    Format a task deadline for different contexts (storage, display, notification).
 
     Args:
-        dt: A datetime object (timezone-aware preferred)
+        due_date: Task deadline as datetime object (timezone-aware preferred)
 
     Returns:
         Dictionary with formatted strings for different contexts
     """
     return {
-        "iso": dt.strftime("%Y-%m-%dT%H:%M:%S"),
-        "us": dt.strftime("%m/%d/%Y"),
-        "friendly": dt.strftime("%A, %B %d, %Y"),
-        "time_only": dt.strftime("%I:%M %p"),
-        "timestamp": dt.strftime("%s"),  # Unix timestamp as string
+        "database": due_date.strftime("%Y-%m-%dT%H:%M:%S%z"),  # Store in DB
+        "dashboard": due_date.strftime("%m/%d %I:%M %p"),       # Show in app
+        "email": due_date.strftime("%A, %B %d at %I:%M %p"),    # Send in emails
+        "log": due_date.strftime("%Y-%m-%d %H:%M:%S UTC"),      # Debug logs
     }
 
-# Test it
-now: datetime = datetime.now(timezone.utc)
-formats = format_datetime_multiple_ways(now)
+# Test with a task due date
+task_deadline: datetime = datetime(2025, 1, 15, 17, 0, tzinfo=timezone.utc)
+formats = format_task_deadline(task_deadline)
 
 for context, formatted in formats.items():
-    print(f"{context}: {formatted}")
+    print(f"{context:12} : {formatted}")
 ```
 
-This function shows the real-world pattern: capture different formats once, use them throughout your application.
+**Output:**
+```
+database     : 2025-01-15T17:00:00+0000
+dashboard    : 01/15 05:00 PM
+email        : Wednesday, January 15 at 05:00 PM
+log          : 2025-01-15 17:00:00 UTC
+```
+
+This function shows the real-world pattern: capture different formats once, reuse throughout your task management system. Each context gets the format it needs—the database gets ISO 8601 for consistency, the dashboard gets compact format for space, emails get friendly format for users.
 
 #### 🚀 CoLearning Challenge
 
@@ -205,113 +225,148 @@ print(complex_duration.total_seconds())  # 460245.0
 
 Timedelta objects know how to convert between units automatically.
 
-### Date Arithmetic: Adding and Subtracting
+### Date Arithmetic for Task Scheduling: Adding and Subtracting
 
-Now here's where timedelta shines. Add it to a datetime to get a future date:
+Now here's where timedelta shines. Use it to create task deadlines and calculate important dates:
 
 ```python
 from datetime import datetime, timedelta, timezone
 
-# Start with today
-today: datetime = datetime.now(timezone.utc)
+# Task created today
+created_date: datetime = datetime.now(timezone.utc)
 
-# Calculate important dates
-tomorrow: datetime = today + timedelta(days=1)
-next_week: datetime = today + timedelta(weeks=1)
-next_month: datetime = today + timedelta(days=30)
-next_year: datetime = today + timedelta(days=365)
+# Create different deadline options for the task
+due_tomorrow: datetime = created_date + timedelta(days=1)
+due_next_week: datetime = created_date + timedelta(weeks=1)
+due_end_of_month: datetime = created_date + timedelta(days=30)
+due_next_quarter: datetime = created_date + timedelta(days=90)
 
-# Go backwards
-yesterday: datetime = today - timedelta(days=1)
-last_month: datetime = today - timedelta(days=30)
+# For recurring tasks, calculate previous deadline
+previous_weekly: datetime = created_date - timedelta(weeks=1)
 
-print(f"Today: {today.strftime('%Y-%m-%d')}")
-print(f"Tomorrow: {tomorrow.strftime('%Y-%m-%d')}")
-print(f"In 30 days: {next_month.strftime('%Y-%m-%d')}")
+# Build a task with deadline
+task = {
+    "title": "Complete project proposal",
+    "created": created_date,
+    "due": due_end_of_month,
+    "reminder": due_end_of_month - timedelta(days=7)  # One week before
+}
+
+print(f"Task created: {task['created'].strftime('%Y-%m-%d')}")
+print(f"Due date: {task['due'].strftime('%Y-%m-%d')}")
+print(f"Reminder: {task['reminder'].strftime('%Y-%m-%d')}")
 ```
 
-Timedelta handles all the complexity for you—leap years, different month lengths, everything.
+Timedelta handles all the complexity for you—leap years, different month lengths, everything. You just say "add 30 days" and it handles February having fewer days than March.
 
 #### ✨ Teaching Tip
 
 > Use Claude Code to explore edge cases: "Add 30 days to January 15. Then check: does it land on Feb 14? Why not 45 days?" This teaches you timedelta respects calendar reality.
 
-### Calculating Duration Between Two Moments
+### Calculating Duration for Task Management
 
-One of the most practical uses: find how much time has passed or remains:
+One of the most practical uses: find how much time has passed or remains until a task deadline:
 
 ```python
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
-# Two specific moments
-launch_time: datetime = datetime(2025, 11, 9, 14, 30, tzinfo=timezone.utc)
-current_time: datetime = datetime.now(timezone.utc)
+# Task with deadline
+task = {
+    "title": "Complete project proposal",
+    "due_date": datetime(2025, 1, 15, 17, 0, tzinfo=timezone.utc),
+    "created_at": datetime(2024, 12, 15, 9, 0, tzinfo=timezone.utc)
+}
 
-# Calculate the difference
-elapsed: timedelta = current_time - launch_time
+# How much time from task creation to deadline?
+created = task["created_at"]
+due = task["due_date"]
+time_to_complete: timedelta = due - created
 
-print(f"Days elapsed: {elapsed.days}")
-print(f"Total seconds: {elapsed.total_seconds()}")
-print(f"Hours: {elapsed.total_seconds() / 3600:.1f}")
+print(f"Days to complete: {time_to_complete.days}")
+print(f"Total hours available: {time_to_complete.total_seconds() / 3600:.1f}")
 
-# Practical use: countdown
-deadline: datetime = datetime(2025, 12, 31, 23, 59, tzinfo=timezone.utc)
-remaining: timedelta = deadline - current_time
+# Check if task is overdue NOW
+now: datetime = datetime.now(timezone.utc)
+remaining: timedelta = due - now
 
 if remaining.total_seconds() > 0:
     print(f"Time until deadline: {remaining.days} days, {remaining.seconds // 3600} hours")
 else:
-    print("Deadline passed!")
+    overdue_by: timedelta = now - due
+    print(f"Task is overdue by: {overdue_by.days} days")
 ```
 
-Notice we calculate remaining and check if it's positive. This is the pattern for deadlines, event scheduling, and countdowns.
+Notice we calculate `remaining` and check if it's positive. This is the pattern for task deadlines: if remaining is positive, the task is on time; if negative, it's overdue.
 
 #### 🎓 Expert Insight
 
 > You're not calculating duration by hand (that's error-prone and wasteful). You subtract two datetime objects and timedelta does the work. **Syntax is cheap; knowing to subtract datetime objects and handle the result is gold.** This is why we use timedelta.
 
-### Code Example: Duration Calculation with Validation
+### Code Example: Task Status Checker with Overdue Detection
+
+Here's the key task scheduling pattern: check if a task is overdue and show how much time remains:
 
 ```python
 from datetime import datetime, timedelta, timezone
 
-def time_until_event(event_time: datetime) -> str:
+def check_task_status(task: dict) -> str:
     """
-    Calculate human-readable time remaining until an event.
+    Calculate task status and time remaining/overdue.
 
     Args:
-        event_time: A future datetime object
+        task: Dict with keys 'title' and 'due_date' (timezone-aware datetime)
 
     Returns:
-        Formatted string like "2 days, 3 hours"
+        Status string like "2 days remaining" or "3 hours overdue"
     """
+    due_date: datetime = task["due_date"]
     now: datetime = datetime.now(timezone.utc)
-    remaining: timedelta = event_time - now
+    remaining: timedelta = due_date - now
 
-    if remaining.total_seconds() <= 0:
-        return "Event already happened!"
-
+    # Calculate days, hours, minutes
+    total_seconds = remaining.total_seconds()
     days = remaining.days
     hours = remaining.seconds // 3600
     minutes = (remaining.seconds % 3600) // 60
 
-    # Build friendly string
-    parts: list[str] = []
-    if days > 0:
-        parts.append(f"{days} day{'s' if days != 1 else ''}")
-    if hours > 0:
-        parts.append(f"{hours} hour{'s' if hours != 1 else ''}")
-    if minutes > 0:
-        parts.append(f"{minutes} minute{'s' if minutes != 1 else ''}")
+    if total_seconds > 0:
+        # Task is not yet due
+        parts: list[str] = []
+        if days > 0:
+            parts.append(f"{days} day{'s' if days != 1 else ''}")
+        if hours > 0:
+            parts.append(f"{hours} hour{'s' if hours != 1 else ''}")
+        if minutes > 0:
+            parts.append(f"{minutes} minute{'s' if minutes != 1 else ''}")
 
-    return ", ".join(parts) if parts else "Less than a minute"
+        status = ", ".join(parts) if parts else "Less than a minute"
+        return f"DUE IN: {status}"
+    else:
+        # Task is overdue
+        overdue = abs(remaining)
+        overdue_days = overdue.days
+        overdue_hours = overdue.seconds // 3600
 
-# Test it
-conference: datetime = datetime(2025, 12, 15, 9, 0, tzinfo=timezone.utc)
-print(time_until_event(conference))  # Might print "36 days, 5 hours"
+        return f"OVERDUE: {overdue_days} days, {overdue_hours} hours"
+
+# Test with multiple tasks
+tasks = [
+    {"title": "Project proposal", "due_date": datetime(2025, 1, 15, 17, 0, tzinfo=timezone.utc)},
+    {"title": "Code review", "due_date": datetime(2024, 12, 20, 12, 0, tzinfo=timezone.utc)},
+]
+
+for task in tasks:
+    status = check_task_status(task)
+    print(f"{task['title']:20} : {status}")
 ```
 
-This function shows a real pattern: calculate timedelta, extract components, format for humans.
+**Output** (assuming today is 2024-12-26):
+```
+Project proposal     : DUE IN: 20 days
+Code review          : OVERDUE: 6 days, 12 hours
+```
+
+This function shows the real task scheduling pattern: calculate timedelta, check if positive (on time) or negative (overdue), extract components, format for display in a task management dashboard.
 
 ## Converting Between Timezones
 
@@ -379,58 +434,66 @@ Ask your AI Co-Teacher:
 
 **Expected Outcome**: You'll understand how to display times for a global audience.
 
-### Real-World Timezone Conversion: Meeting Scheduler
+### Real-World Task Scheduling: Global Task Manager with Timezones
+
+Here's a practical example: your task management system needs to show deadlines in the user's local timezone:
 
 ```python
 from datetime import datetime, timezone, timedelta
 
-class MeetingScheduler:
-    """Helper for scheduling meetings across timezones."""
+class TaskManager:
+    """Handle tasks across global timezones."""
 
-    def __init__(self, meeting_utc: datetime):
+    def __init__(self, task: dict):
         """
         Args:
-            meeting_utc: Meeting time in UTC (timezone-aware)
+            task: Dict with 'title' and 'due_date' (UTC datetime)
         """
-        if meeting_utc.tzinfo is None:
-            raise ValueError("Must provide timezone-aware datetime")
-        self.meeting_utc = meeting_utc.astimezone(timezone.utc)
+        if task["due_date"].tzinfo is None:
+            raise ValueError("due_date must be timezone-aware")
+        self.task = task
 
-    def time_in(self, timezone_obj: timezone) -> str:
-        """Show meeting time in a specific timezone."""
-        local = self.meeting_utc.astimezone(timezone_obj)
-        return local.strftime("%H:%M (%Z)")
+    def due_in_timezone(self, tz_name: str, offset_hours: int) -> str:
+        """Show task deadline in a specific timezone."""
+        tz_obj = timezone(timedelta(hours=offset_hours))
+        local_time = self.task["due_date"].astimezone(tz_obj)
+        return local_time.strftime("%A, %I:%M %p")
 
-    def create_agenda(self) -> str:
-        """Generate meeting agenda with multiple timezones."""
+    def global_deadline_display(self) -> str:
+        """Generate deadline display for global users."""
         timezones = {
-            "NYC": timezone(timedelta(hours=-5)),
-            "London": timezone(timedelta(hours=0)),
-            "Tokyo": timezone(timedelta(hours=9)),
+            "New York": -5,
+            "London": 0,
+            "Tokyo": 9,
         }
 
-        lines = ["MEETING AGENDA"]
-        for city, tz in timezones.items():
-            local = self.meeting_utc.astimezone(tz)
-            lines.append(f"{city}: {local.strftime('%A %I:%M %p')}")
+        lines = [f"Task: {self.task['title']}", "Deadline in your timezone:"]
+        for city, offset in timezones.items():
+            deadline_local = self.due_in_timezone(city, offset)
+            lines.append(f"  {city:15} : {deadline_local}")
 
-        return "\\n".join(lines)
+        return "\n".join(lines)
 
 # Use it
-meeting = MeetingScheduler(datetime(2025, 11, 9, 14, 30, tzinfo=timezone.utc))
-print(meeting.create_agenda())
+task = {
+    "title": "Complete project proposal",
+    "due_date": datetime(2025, 1, 15, 17, 0, tzinfo=timezone.utc)
+}
+
+manager = TaskManager(task)
+print(manager.global_deadline_display())
 ```
 
-Output:
+**Output:**
 ```
-MEETING AGENDA
-
-NYC: Sunday 09:30 AM
-London: Sunday 02:30 PM
-Tokyo: Monday 11:30 PM
+Task: Complete project proposal
+Deadline in your timezone:
+  New York        : Wednesday, 12:00 PM
+  London          : Wednesday, 05:00 PM
+  Tokyo           : Thursday, 02:00 AM
 ```
 
-This is real production code. You're solving an actual problem: helping people understand when a meeting happens in their timezone.
+This is real production code. You're solving an actual problem: helping users in different timezones understand when a task is due in THEIR local time (not UTC). Store everything in UTC in your database, convert to local time for display.
 
 #### 🎓 Expert Insight
 
@@ -444,30 +507,117 @@ Timezones aren't simple. During daylight saving time transitions, an hour doesn'
 
 > When building a production scheduling system, ask your AI: "How do I handle times during DST transitions? When a time is ambiguous, which version should I pick?" This is where you lean on AI expertise—it's complex enough that asking beats guessing.
 
-## Summary of Formatting and Manipulation
+## Complete Task Scheduling Example
 
-**Formatting** with `strftime()`: Convert datetime objects to human-readable strings using format codes. You know the common ones (`%Y`, `%m`, `%d`, `%H`, `%M`, `%S`, `%A`, `%B`) and ask AI for others.
+Let's bring all three concepts together in a complete task scheduling system:
 
-**Manipulation** with `timedelta`: Represent durations, add/subtract from datetimes, calculate differences. Always subtract datetime objects rather than calculating durations manually.
+```python
+from datetime import datetime, timedelta, timezone
+import calendar
 
-**Conversion** with `timezone` and `astimezone()`: Keep your system in UTC internally, convert to local timezones for display. Never hardcode timezone offsets—use timezone objects.
+# Task with due date
+task = {
+    "title": "Complete project proposal",
+    "due_date": datetime(2025, 1, 15, 17, 0, tzinfo=timezone.utc),  # Jan 15, 5 PM UTC
+    "created_at": datetime.now(timezone.utc)
+}
+
+# Check if task is overdue
+def is_overdue(task: dict) -> bool:
+    """Check if task is past its due date."""
+    return datetime.now(timezone.utc) > task["due_date"]
+
+# Calculate days until due
+def days_until_due(task: dict) -> int:
+    """Return days until task is due (negative if overdue)."""
+    delta = task["due_date"] - datetime.now(timezone.utc)
+    return delta.days
+
+# Schedule recurring task
+def create_recurring_task(title: str, start_date: datetime, interval_days: int, count: int) -> list:
+    """Create multiple tasks at regular intervals."""
+    tasks = []
+    for i in range(count):
+        due_date = start_date + timedelta(days=interval_days * i)
+        tasks.append({
+            "title": f"{title} (#{i+1})",
+            "due_date": due_date,
+            "done": False
+        })
+    return tasks
+
+# Format task for display
+def format_task_for_display(task: dict, user_timezone_offset: int = 0) -> str:
+    """Format task deadline for user display in their timezone."""
+    tz = timezone(timedelta(hours=user_timezone_offset))
+    local_due = task["due_date"].astimezone(tz)
+
+    days_left = days_until_due(task)
+    if days_left < 0:
+        return f"{task['title']}: OVERDUE {abs(days_left)} days - {local_due.strftime('%m/%d %I:%M %p')}"
+    else:
+        return f"{task['title']}: Due in {days_left} days - {local_due.strftime('%m/%d %I:%M %p')}"
+
+# Example: Weekly review tasks for a month
+weekly_reviews = create_recurring_task("Weekly review", datetime(2025, 1, 6, 9, 0, tzinfo=timezone.utc), 7, 4)
+
+print("=== Recurring Weekly Tasks ===")
+for task in weekly_reviews:
+    print(f"{task['title']}: due {task['due_date'].strftime('%Y-%m-%d %H:%M UTC')}")
+
+print("\n=== Task Status Check ===")
+print(f"Main task overdue? {is_overdue(task)}")
+print(f"Days until main task due: {days_until_due(task)}")
+
+print("\n=== Display for User (EST: UTC-5) ===")
+print(format_task_for_display(task, user_timezone_offset=-5))
+```
+
+**Output** (assuming today is 2024-12-26):
+```
+=== Recurring Weekly Tasks ===
+Weekly review (#1): due 2025-01-06 09:00 UTC
+Weekly review (#2): due 2025-01-13 09:00 UTC
+Weekly review (#3): due 2025-01-20 09:00 UTC
+Weekly review (#4): due 2025-01-27 09:00 UTC
+
+=== Task Status Check ===
+Main task overdue? False
+Days until main task due: 20
+
+=== Display for User (EST: UTC-5) ===
+Complete project proposal: Due in 20 days - 01/15 12:00 PM
+```
+
+This example combines:
+1. **Formatting**: `strftime()` to display deadlines in user-friendly format
+2. **Manipulation**: `timedelta` to check overdue status and create recurring tasks
+3. **Timezone conversion**: `astimezone()` to show deadlines in user's local timezone
+
+This is the complete pattern you'll use in real task management applications.
 
 ---
 
 ## Try With AI
 
-Apply datetime formatting and timezone conversion through AI collaboration that builds production skills.
+Apply task scheduling through AI collaboration. Build the exact patterns you'll use in real task management systems.
 
-**🔍 Explore Format Codes:**
-> "Format datetime(2025, 11, 9, 14, 30, 0, tzinfo=timezone.utc) in ISO 8601, US friendly ('Saturday, November 9 at 2:30 PM'), and log format. Explain when to use each in applications."
+**🔍 Task Deadline Formatting:**
+> "Format a task deadline datetime(2025, 1, 15, 17, 0, tzinfo=timezone.utc) for three contexts: database (ISO 8601), user notification (friendly format like 'Wednesday, January 15 at 5:00 PM'), and dashboard display (compact like '01/15 05:00 PM'). Explain when to use each context in a task app."
 
-**🎯 Practice Timedelta Operations:**
-> "Add timedelta(days=5, hours=3, minutes=30) to current datetime. Subtract two datetimes to get duration. Extract and display components as 'X days, Y hours, Z minutes'."
+---
 
-**🧪 Test Timezone Conversion:**
-> "Create UTC datetime, convert to US/Eastern (UTC-5), Europe/London (UTC+0), and Asia/Tokyo (UTC+9) using astimezone(). Show how the same moment appears in each timezone."
+**🎯 Task Overdue Detection:**
+> "Create a task dict with 'title' and 'due_date'. Write code that calculates if it's overdue NOW by subtracting datetimes. If overdue, show how many days/hours past deadline. If not overdue, show how many days/hours remain. Extract and display as 'DUE IN: 5 days, 3 hours' or 'OVERDUE: 2 days'."
 
-**🚀 Apply Multi-Format Display:**
-> "Build a meeting scheduler that takes UTC time, converts to 3 timezones, formats each as 'City: Day HH:MM AM/PM', and explains why storing in UTC matters."
+---
+
+**🧪 Recurring Task Scheduling:**
+> "Build recurring weekly tasks for 'Team standup' starting January 6, 2025 at 9 AM UTC. Create 4 weekly instances using timedelta(weeks=1). For each, calculate days until that instance is due (as of today). Show which ones are past due and which are coming up."
+
+---
+
+**🚀 Global Task Management:**
+> "Build a task scheduler that takes a UTC deadline and converts it to display in 3 timezones (EST, GMT, JST). For each timezone, show the deadline as 'City: Day HH:MM AM/PM'. Explain why storing all task deadlines in UTC matters when your users are globally distributed."
 
 ---

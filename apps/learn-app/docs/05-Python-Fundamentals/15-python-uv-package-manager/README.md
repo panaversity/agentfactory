@@ -13,6 +13,12 @@ Before you write Python programs, you need professional tools for managing depen
 
 You'll set up production-quality Python environments before writing your first `print()` statement—because modern Python development requires professional-grade project management from day one. This chapter focuses on **tool installation and basic usage**, not Python programming itself. You'll learn through simple AI-driven workflows where you specify what you want and AI helps with commands.
 
+## Chapter Contribution to Todo App
+
+This chapter contributes: **Sets up the environment for building your Todo app**
+
+By the end of this chapter, your todo application will have a professional project structure with UV managing dependencies, Ruff formatting code consistently, and Pyright catching type errors before they cause bugs.
+
 ## 🎯 Before You Begin
 
 ---

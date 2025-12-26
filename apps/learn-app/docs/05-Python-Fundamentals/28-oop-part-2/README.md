@@ -15,6 +15,12 @@ This chapter builds on Chapter 29 foundations to teach advanced OOP patterns: in
 
 This chapter is foundational for AI-native software development—real multi-agent systems rely on these concepts. Understanding these patterns prepares you for professional AI engineering in Parts 5-13.
 
+## Chapter Contribution to Todo App
+
+This chapter contributes: **Advanced Task class features**
+
+By the end of this chapter, your todo application will have inheritance hierarchies for different task types, polymorphic behavior through special methods, and design patterns like Factory for creating specialized tasks.
+
 ## 🎯 Before You Begin
 
 ---

@@ -15,6 +15,12 @@ You'll learn how programs interact with users through the console, persist data 
 
 This is the same pattern you'll use throughout your professional career. Your AI tool isn't a crutch—it's a partner in learning.
 
+## Chapter Contribution to Todo App
+
+This chapter contributes: **Task persistence (JSON)**
+
+By the end of this chapter, your todo application will save tasks to JSON files and load them when the app starts—enabling persistent task storage that survives program restarts.
+
 ## 🎯 Before You Begin
 
 ---
@@ -28,3 +34,11 @@ By the end of this chapter, you will be able to:
 - **Work with file paths** across Windows, Mac, and Linux using pathlib
 - **Load and save structured data** in CSV and JSON formats with correct encoding
 - **Build a complete CLI application** integrating all I/O concepts (Capstone)
+
+---
+
+## What's Next: Organizing Everything with Classes
+
+Your TaskManager now saves and loads tasks from files. It works. But as the application grows—handling multiple projects, sharing tasks with others, filtering by due dates—the procedural approach of passing tasks around starts to become unwieldy. In **Chapter 27**, you'll wrap your task management logic inside a TaskManager class where data (task list, file path) and behavior (add, complete, save, load) live together in one cohesive object.
+
+Instead of juggling lists and functions, you'll create a TaskManager instance that knows how to manage itself. This is Object-Oriented Programming: organizing your program around the objects that matter (in this case, a TaskManager that maintains its own state).

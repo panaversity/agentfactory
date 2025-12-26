@@ -15,6 +15,12 @@ You'll also learn **type casting**—how to safely convert between different dat
 
 By the end of this chapter, you'll be able to process text confidently and convert between types safely—two essential skills for building interactive programs.
 
+## Chapter Contribution to Todo App
+
+This chapter contributes: **Task title handling**
+
+By the end of this chapter, your todo application will safely process task titles entered by users—formatting them consistently, validating input, and converting user data to the right types for storage.
+
 ## 🎯 Before You Begin
 
 ---

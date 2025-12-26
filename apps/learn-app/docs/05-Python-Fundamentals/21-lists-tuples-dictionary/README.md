@@ -13,6 +13,12 @@ Real programs work with collections of data, not individual values. User lists, 
 
 You'll learn when to use each structure, how to manipulate them effectively, and how to combine them in real-world applications. By the end of this chapter, you'll build a complete **Data Processing Pipeline** that ingests CSV data, filters it with comprehensions, aggregates statistics with dictionaries, and outputs formatted reports—demonstrating how all three structures work together in production code.
 
+## Chapter Contribution to Todo App
+
+This chapter contributes: **Task storage (list/dict)**
+
+By the end of this chapter, your todo application will store tasks professionally—using lists to maintain ordered task collections and dictionaries to organize task properties—with all the mutation and comprehension patterns needed for real applications.
+
 ## 🎯 Before You Begin
 
 ## What You'll Learn
@@ -47,3 +53,11 @@ You'll learn when to use each structure, how to manipulate them effectively, and
 - Performance implications (O(1) vs O(n))
 - Mutability vs immutability trade-offs
 - Integration patterns in real applications
+
+---
+
+## What's Next: From Data to Reusable Functions
+
+You've learned to structure tasks as data: lists for ordered tasks, dictionaries for task properties (id, title, status, due_date), and tuples for immutable combinations. Your task storage is now organized. In **Chapter 23**, you'll wrap these data structure operations in reusable functions with clear inputs and outputs—creating a TaskManager module where `add_task()`, `complete_task()`, and `list_tasks()` encapsulate all the list and dictionary operations you've mastered.
+
+Functions let you describe intent: instead of repeating list manipulation code everywhere, you call `add_task(tasks, "Buy groceries")`. This is the professional way Python developers work with data structures.

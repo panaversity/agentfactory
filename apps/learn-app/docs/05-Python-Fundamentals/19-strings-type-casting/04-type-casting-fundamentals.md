@@ -118,49 +118,67 @@ Think of these as Python's toolbox. You don't need to understand how they work i
 
 ## String to Numbers: int() and float()
 
-The most common conversion is transforming user input (always strings) into numbers for calculations.
+The most common conversion is transforming user input (always strings) into numbers for calculations. Let's use a realistic task management scenario: Getting priority levels from users.
 
-#### Example 4.1: Converting Strings to Numbers
+#### Example 4.1: Task Priority - Converting User Input to Integer (PRIMARY)
 
 ```python
-# Converting string "42" to integer 42
-num_str: str = "42"
-num_int: int = int(num_str)  # "42" becomes 42
-print(f"String: {num_str}, Integer: {num_int}, Type: {type(num_int)}")
-# String: 42, Integer: 42, Type: <class 'int'>
+# Task priority - converting user input to integer
+user_input: str = input("Enter priority (1-10): ")  # Returns string "5"
+priority: int = int(user_input)  # Convert to int: 5
+print(f"Priority set to: {priority}, Type: {type(priority)}")
+# Priority set to: 5, Type: <class 'int'>
 
-# Converting string "3.14" to float 3.14
-price_str: str = "19.99"
-price_float: float = float(price_str)  # "19.99" becomes 19.99
-print(f"String: {price_str}, Float: {price_float}, Type: {type(price_float)}")
-# String: 19.99, Float: 19.99, Type: <class 'float'>
+# Safe conversion with validation
+def get_priority_from_input(prompt: str) -> int:
+    """Get and validate priority from user input."""
+    while True:
+        try:
+            value: int = int(input(prompt))
+            if 1 <= value <= 10:
+                return value
+            print("Priority must be 1-10")
+        except ValueError:
+            print("Please enter a number")
 
-# Real-world pattern: Convert user input for calculations
-user_age_str: str = input("Enter your age: ")  # User types "25"
-user_age: int = int(user_age_str)  # Convert to integer
-next_year: int = user_age + 1  # Now we can do math
-print(f"You are {user_age} now, {next_year} next year")
+# Type conversion in task creation
+task: dict = {
+    "title": str(input("Task title: ")),  # Explicitly string
+    "priority": int(input("Priority: ")),  # Convert to int
+    "done": bool(0)  # False - bool conversion
+}
+print(f"Task: {task['title']}, Priority: {task['priority']}, Done: {task['done']}")
+
+# Common conversions in task management
+task_id: int = int("42")        # String to int for ID lookup
+is_done: bool = bool(1)         # Int to bool for completion status
+priority_str: str = str(5)      # Int to string for display
+print(f"Task ID: {task_id}, Done: {is_done}, Priority display: {priority_str}")
 
 # Validate conversion succeeded using isinstance()
 input_value: str = "100"
 converted: int = int(input_value)
 if isinstance(converted, int):
     print(f"Successfully converted '{input_value}' to integer {converted}")
-
-# Practical: Math with converted values
-length_str: str = "5.5"
-width_str: str = "3.2"
-length: float = float(length_str)
-width: float = float(width_str)
-area: float = length * width
-print(f"Area: {area:.2f}")  # Formatted with f-string
 ```
 
-**Key Insight**: The `int()` and `float()` functions transform strings to numbers. Notice how we use `isinstance()` to verify the conversion succeeded.
+**Output:**
+```
+Enter priority (1-10): 5
+Priority set to: 5, Type: <class 'int'>
+Task title: Finish module
+Priority: 7
+Done: False
+Task: Finish module, Priority: 7, Done: False
+Task ID: 42, Done: True, Priority display: 5
+Successfully converted '100' to integer 100
+```
+
+**Key Insight**: Task priority management is a real-world pattern where user input (strings) must convert to integers for comparisons and calculations. Notice how we validate conversions and use `isinstance()` to verify success.
 
 #### 💬 AI Colearning Prompt
 
-> "Explain why `int('3.14')` fails but `float('3.14')` works. What's the difference between how Python parses integer strings vs float strings?"
+> "I'm building a task management system where users input priority levels (1-10), due dates, and completion status. Show me how to safely convert each input type with validation. What happens if user enters 'high' instead of 5? How do I provide helpful error messages?"
 
 ---
 

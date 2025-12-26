@@ -13,6 +13,12 @@ Programs need to make decisions and repeat actions. Should we process this user'
 
 Control flow structures are the foundation of programming logic—they let your code respond to different conditions and automate repetitive tasks. You'll master conditional statements, pattern matching, loops, and control mechanisms that transform simple scripts into intelligent programs.
 
+## Chapter Contribution to Todo App
+
+This chapter contributes: **Task menu logic and iteration**
+
+By the end of this chapter, your todo application will have a working menu system (if/elif/else), display all tasks in a loop, and respond to user choices—the core interaction pattern for any command-line application.
+
 ## 🎯 Before You Begin
 
 ---

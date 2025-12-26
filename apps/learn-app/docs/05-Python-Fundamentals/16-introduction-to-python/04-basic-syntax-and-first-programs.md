@@ -200,13 +200,19 @@ The `.py` extension tells Python "this is a Python file."
 
 ### Step 2: Write Code
 
+Throughout this chapter and beyond, we'll be building toward a Todo application—a practical project that brings together everything you learn. Let's start with your first program that previews this goal:
+
 ```python
-# My first Python program
-greeting: str = "Hello, Python!"
-print(greeting)
+# Your first Python program with a purpose
+print("Hello, Todo App!")
+print("Let's build something useful together.")
+
+# Preview: This is what we're building toward
+task = "Learn Python basics"
+print(f"First task: {task}")
 ```
 
-Save the file as `hello.py` in a folder you can find (like your Desktop or Documents).
+This program introduces the Todo context you'll develop throughout the chapter. Save the file as `hello.py` in a folder you can find (like your Desktop or Documents).
 
 ### Step 3: Run the Program
 
@@ -287,6 +293,26 @@ Price per item: $19.99
 Quantity: 3
 Total: $59.97
 ```
+
+### Example 4: Your First Task (Todo Preview)
+
+As we build toward a Todo application, here's how you create and display your first task using simple variables:
+
+```python
+# Your first task - just a simple variable for now
+task_title = "Complete Python basics lesson"
+task_done = False
+print(f"Task: {task_title}")
+print(f"Completed: {task_done}")
+```
+
+Output:
+```
+Task: Complete Python basics lesson
+Completed: False
+```
+
+This simple structure is the foundation for the Todo application you'll build as you progress through this chapter. Notice how `task_title` stores text and `task_done` stores whether the task is complete. As you learn more Python concepts—lists, dictionaries, classes, and file I/O—you'll enhance this basic structure into a fully functional Todo manager.
 
 #### Tips
 

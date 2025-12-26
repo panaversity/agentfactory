@@ -105,6 +105,92 @@ Consider these real-world scenarios where basic loops aren't enough:
 
 These scenarios require more than simple `for` and `while` loops—they need **loop control statements**.
 
+## Primary Example: Task Filtering with Break and Continue
+
+Before diving into individual statements, let's see `break` and `continue` working together in a realistic scenario: **managing a task list**.
+
+This example shows why loop control matters and how `break` and `continue` solve real problems:
+
+```python
+# Task data structure (like a todo app)
+tasks: list[dict] = [
+    {"id": 1, "title": "Email", "priority": 3, "done": True},
+    {"id": 2, "title": "Meeting", "priority": 1, "done": False},
+    {"id": 3, "title": "Report", "priority": 2, "done": False},
+    {"id": 4, "title": "Lunch", "priority": 2, "done": True},
+    {"id": 5, "title": "Code Review", "priority": 1, "done": False},
+]
+
+# SCENARIO 1: Find first incomplete task with priority <= 2 (HIGH PRIORITY)
+# Use continue to skip done tasks, return to stop searching
+def find_urgent_incomplete(tasks: list) -> dict | None:
+    """Find first incomplete task with priority <= 2."""
+    for task in tasks:
+        if task["done"]:
+            continue  # Skip completed tasks—move to next
+        if task["priority"] <= 2:
+            return task  # Found it! (return acts as implicit break)
+    return None  # No urgent incomplete task found
+
+urgent = find_urgent_incomplete(tasks)
+print(f"Work on: {urgent['title']}")  # Output: Work on: Meeting
+
+# SCENARIO 2: Process tasks until reaching batch limit
+# Use continue to skip done tasks, break to stop at limit
+def process_batch(tasks: list, max_count: int = 2) -> int:
+    """Process up to max_count incomplete tasks."""
+    processed = 0
+    for task in tasks:
+        if task["done"]:
+            continue  # Skip already done—move to next
+
+        # Process the task
+        print(f"Processing: {task['title']}")
+        task["done"] = True
+        processed += 1
+
+        if processed >= max_count:
+            break  # Reached limit—exit loop
+
+    return processed
+
+count = process_batch(tasks, max_count=2)
+print(f"Processed {count} tasks")
+# Output:
+# Processing: Meeting
+# Processing: Report
+# Processed 2 tasks
+
+# SCENARIO 3: List work tasks, skip personal
+# Use continue to filter
+def list_work_tasks(tasks: list) -> None:
+    """List only work-related tasks, skip personal."""
+    for task in tasks:
+        # Skip personal tasks
+        if "work" not in task.get("category", "work").lower():
+            continue
+        print(f"- {task['title']}")
+
+# Modified task list with categories
+work_tasks: list[dict] = [
+    {"id": 1, "title": "Email", "category": "work", "done": True},
+    {"id": 2, "title": "Gym", "category": "personal", "done": False},
+    {"id": 3, "title": "Report", "category": "work", "done": False},
+]
+
+list_work_tasks(work_tasks)
+# Output:
+# - Email
+# - Report
+```
+
+**What you're seeing**:
+- **Scenario 1**: `continue` skips completed tasks → `return` finds and exits when urgent task is found
+- **Scenario 2**: `continue` skips done tasks → `break` stops when reaching the batch limit
+- **Scenario 3**: `continue` filters to show only work-related tasks
+
+This is how `break` and `continue` solve real problems: **searching efficiently, processing in batches, and filtering data**.
+
 ## Breaking Out Early: The `break` Statement
 
 The `break` statement **immediately exits the loop**, skipping any remaining iterations. It's like saying "I found what I was looking for—stop searching."

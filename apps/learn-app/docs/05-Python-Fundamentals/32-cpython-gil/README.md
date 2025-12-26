@@ -17,6 +17,12 @@ This chapter teaches three critical dimensions: CPython's architecture and how i
 
 **Why this matters for AI-native development**: Multi-agent systems can now reason in parallel on separate CPU cores, not just pseudo-concurrently. A 4-agent system on a 4-core machine achieves genuine parallelism—the exact pattern modern AI applications need.
 
+## Chapter Contribution to Todo App
+
+This chapter contributes: **Performance understanding for task batching**
+
+By the end of this chapter, your todo application will leverage free-threading for parallel task operations, batch-process multiple tasks efficiently, and understand when parallelism matters—preparing for scalable deployment in production.
+
 ## 🎯 Before You Begin
 
 ---

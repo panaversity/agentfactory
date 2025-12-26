@@ -15,6 +15,12 @@ This chapter explores **metaclasses** (the machinery that creates classes) and *
 
 By the end of this chapter, you'll confidently choose the right tool for each scenario and understand both the "magic behind the curtain" (metaclasses) and the "practical daily tool" (dataclasses). These features prepare you for professional Python development where metaclasses help you understand framework internals and design plugin systems, and dataclasses eliminate boilerplate in data-heavy applications.
 
+## Chapter Contribution to Todo App
+
+This chapter contributes: **TodoList dataclass (gold standard)**
+
+By the end of this chapter, your todo application will use a dataclass for the TodoList—defining tasks with clean type hints, default values, and frozen immutability where appropriate, demonstrating the modern Python approach to data containers.
+
 ## 🎯 Before You Begin
 
 ---

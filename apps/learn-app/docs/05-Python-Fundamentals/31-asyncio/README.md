@@ -15,6 +15,12 @@ This chapter teaches you to build production-ready asynchronous systems using Py
 
 By the end of this chapter, you'll design hybrid systems that fetch data concurrently from multiple sources and process it in parallel—the exact pattern used in modern AI agents. You'll build a complete multi-service AI agent that demonstrates 2.5x+ speedup vs sequential approaches.
 
+## Chapter Contribution to Todo App
+
+This chapter contributes: **Async task operations (preview Part 6)**
+
+By the end of this chapter, your todo application will support async operations for loading tasks from remote APIs, syncing changes to cloud storage, and handling background updates—a preview of the high-performance async patterns used in Part 6.
+
 ## 🎯 Before You Begin
 
 ---

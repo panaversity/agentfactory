@@ -15,6 +15,12 @@ This chapter teaches you how to anticipate errors, handle them elegantly, and pr
 
 This chapter applies the AI-Native Learning methodology: you describe what error handling you want, explore exception patterns with your AI companion (Claude Code or Gemini CLI), validate your understanding through working code, and learn from errors by asking "why did this fail?"
 
+## Chapter Contribution to Todo App
+
+This chapter contributes: **Task error handling**
+
+By the end of this chapter, your todo application will handle errors gracefully—validating task input, catching invalid operations, and providing helpful feedback to users when something goes wrong.
+
 ## 🎯 Before You Begin
 
 ---

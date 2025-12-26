@@ -13,6 +13,12 @@ In Chapter 19, you learned about Python's core data types and how to store data 
 
 Operators are the verbs of programming. In Chapter 19, you learned the nouns (data types). Now you learn the verbs (operators). In Chapter 22, you'll combine them into sentences (control flow).
 
+## Chapter Contribution to Todo App
+
+This chapter contributes: **Task calculations and comparisons**
+
+By the end of this chapter, your todo application will be able to compare task priorities, calculate time until due dates, and update task counts—using all the operator types you've learned.
+
 ## 🎯 Before You Begin
 
 ---
