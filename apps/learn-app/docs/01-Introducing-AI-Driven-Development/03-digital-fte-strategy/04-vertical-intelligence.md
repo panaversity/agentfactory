@@ -264,7 +264,7 @@ This structure has immediate benefits:
 - Load healthcare/billing/SKILL.md (~100 tokens)
 - Execute scripts/lookup_cpt.py (0 tokens—executed locally)
 - Reference healthcare/billing/REFERENCE.md only if code lookup fails
-- Result: Deep healthcare expertise in <200 tokens
+- Result: Deep healthcare expertise in fewer than 200 tokens
 
 ### Naming Conventions and Discovery
 

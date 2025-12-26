@@ -185,7 +185,7 @@ Self-assess each dimension (1-10 scale):
 **Scoring guide:**
 - 8-10 on all three: You're ready to start Phase 1
 - 5-7 on any dimension: Build that requirement before scaling
-- <5 on any dimension: Requires fundamental strategic shift
+- Below 5 on any dimension: Requires fundamental strategic shift
 
 **Example thinking:**
 - "Domain access: 9/10 (worked there 8 years, know 40 people). Capital efficiency: 7/10 (bootstrapped, but need $50K for first hire). Timing: 10/10 (vertical is adopting AI right now). → Ready for Phase 1."

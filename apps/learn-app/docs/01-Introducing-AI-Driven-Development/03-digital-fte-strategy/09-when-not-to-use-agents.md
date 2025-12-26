@@ -415,7 +415,7 @@ The safest way to deploy a Digital FTE in high-risk domains is **shadow mode**: 
 - Humans start using agent recommendations as input (not sole source)
 - Humans still make final decisions, but faster (agent does research, human judges)
 - Log: Agent recommendation vs human decision
-- Measure: Do humans override agent <20% of time? If >20%, more training needed
+- Measure: Do humans override agent less than 20% of time? If more than 20%, more training needed
 
 **Validation Questions:**
 - Are overrides because agent is wrong, or because human adds context agent lacks?
@@ -425,7 +425,7 @@ The safest way to deploy a Digital FTE in high-risk domains is **shadow mode**: 
 **Phase 3: Selective Automation (Weeks 9+)**
 - Agent makes decisions for low-risk scenarios (high confidence, well-tested)
 - Humans still review high-risk scenarios
-- Thresholds documented: "Agent decides if confidence >95%, human if <90%, escalate if 90-95%"
+- Thresholds documented: "Agent decides if confidence above 95%, human if below 90%, escalate if 90-95%"
 - Log: All decisions and confidence levels
 - Regular audits: Monthly review of decisions for accuracy, bias, compliance
 
@@ -452,7 +452,7 @@ PHASE 1 CHECKPOINT (Shadow Mode Complete)
 PHASE 2 CHECKPOINT (Augmented Decision-Making Complete)
 □ Humans using agent input for 2-4 weeks
 □ 50+ decisions logged, comparing recommendation vs human decision
-□ Human override rate <20%?
+□ Human override rate under 20%?
 □ Where humans override, is it because:
   □ Agent is wrong: [estimated %]
   □ Agent lacks context human has: [estimated %]

@@ -10,7 +10,7 @@ Knowing when NOT to automate separates responsible practitioners from reckless o
 - Human reviews ALL agent outputs before external contact (legal opinions, medical recommendations, financial transactions)
 - Log all decisions with reasoning, not just outcomes—"Why was this decision made?" must be answerable
 - Industry-specific guardrails: HIPAA (healthcare), SOC 2 (enterprise), PCI DSS (payments), GDPR (EU data)
-- Shadow mode checkpoints: 80%+ agreement with humans (Phase 1), <20% override rate (Phase 2), bias audits across demographic groups (Phase 3)
+- Shadow mode checkpoints: 80%+ agreement with humans (Phase 1), under 20% override rate (Phase 2), bias audits across demographic groups (Phase 3)
 
 ### Common Mistakes
 - Automating fully without human oversight because "it's faster"—creates liability you cannot defend
