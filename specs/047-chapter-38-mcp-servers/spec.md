@@ -1,329 +1,377 @@
-# Feature Specification: Chapter 38 - Building Custom MCP Servers
+# Feature Specification: Chapter 38 - Advanced MCP Server Development
 
 **Feature Branch**: `047-chapter-38-mcp-servers`
 **Created**: 2025-12-26
-**Status**: Draft (Revised)
-**Input**: User description: "Chapter 38: Building Custom MCP Servers - Teaching students to BUILD MCP servers using Python's FastMCP SDK. Assumes Chapter 37 already taught MCP concepts."
+**Status**: Draft (Revised v2 - Advanced Focus)
+**Input**: User description: "Chapter 38: Advanced MCP Server Development - Teaching students ADVANCED server patterns beyond the basics covered in Chapter 37."
 
 **Chapter Position**: Part 6, Chapter 38 (follows Chapter 37: MCP Fundamentals)
-**Proficiency Level**: B1-B2 (students have Python fundamentals from Part 5)
+**Proficiency Level**: B2 (students have completed Chapter 37 with full FastMCP basics)
 
 ## Scope Clarification: Chapter 37 vs Chapter 38
 
-| Topic | Chapter 37 (Fundamentals) | Chapter 38 (Building) |
+| Topic | Chapter 37 (Fundamentals) | Chapter 38 (Advanced) |
 |-------|--------------------------|----------------------|
-| MCP Architecture | ✓ Conceptual overview | ✗ Skip (already covered) |
-| Transport Layers | ✓ Theory of stdio/HTTP | ✗ Skip (already covered) |
-| What Tools ARE | ✓ Model-controlled primitive | ✗ Skip (already covered) |
-| What Resources ARE | ✓ App-controlled primitive | ✗ Skip (already covered) |
-| What Prompts ARE | ✓ User-controlled primitive | ✗ Skip (already covered) |
-| Client Configuration | ✓ Claude Code, Cursor setup | ✗ Skip (already covered) |
-| Using Community Servers | ✓ Finding and using servers | ✗ Skip (already covered) |
-| Debugging Basics | ✓ Troubleshooting connections | ✗ Skip (already covered) |
-| **Server Project Setup** | ✗ | ✓ FastMCP, uv, dependencies |
-| **@mcp.tool Code Patterns** | ✗ | ✓ Decorators, Pydantic, schemas |
-| **@mcp.resource Code Patterns** | ✗ | ✓ URI handling, MIME types |
-| **@mcp.prompt Code Patterns** | ✗ | ✓ Message structures |
-| **Server Authentication** | ✗ | ✓ Env vars, API keys |
-| **Testing YOUR Server** | ✗ | ✓ Inspector for server authors |
-| **Packaging & Publishing** | ✗ | ✓ Distribution, PyPI |
-| **Capstone Project** | ✗ | ✓ Domain-specific server |
+| MCP Architecture | ✓ Host → Client → Server | ✗ Skip |
+| Transport Theory | ✓ stdio vs HTTP basics | ✗ Skip |
+| @mcp.tool Basics | ✓ Decorator, Field, schemas | ✗ Skip |
+| @mcp.resource Basics | ✓ URIs, templates, MIME | ✗ Skip |
+| @mcp.prompt Basics | ✓ Arguments, messages | ✗ Skip |
+| Client Configuration | ✓ Claude Desktop/Code | ✗ Skip |
+| MCP Inspector Basics | ✓ Debugging connections | ✗ Skip |
+| **Context Object** | ✗ | ✓ Injection, lifespan |
+| **Sampling** | ✗ | ✓ Server → Client LLM calls |
+| **Progress Notifications** | ✗ | ✓ Real-time feedback |
+| **Logging Notifications** | ✗ | ✓ context.info(), stderr |
+| **Roots** | ✗ | ✓ File system permissions |
+| **StreamableHTTP** | ✗ | ✓ SSE, sessions, production |
+| **Stateful vs Stateless** | ✗ | ✓ Horizontal scaling |
+| **Error Handling** | ✗ | ✓ Structured errors, recovery |
+| **Packaging** | ✗ | ✓ pyproject.toml, distribution |
 
-**Key Distinction**: Chapter 37 = CONSUMER perspective (use servers). Chapter 38 = PRODUCER perspective (build servers).
+**Key Distinction**: Chapter 37 = Basic primitives (decorators, schemas). Chapter 38 = Production patterns (context, sampling, streaming, scaling).
 
 ## Assumed Knowledge
 
 **What students know BEFORE this chapter (from Chapter 37)**:
 - MCP architecture: Host → Client → Server flow
-- Three primitives conceptually: Tools (model-controlled), Resources (app-controlled), Prompts (user-controlled)
+- Three primitives: Tools, Resources, Prompts with decorators
+- @mcp.tool with Pydantic Field and type hints
+- @mcp.resource with URI patterns and MIME types
+- @mcp.prompt with arguments and message structures
 - Transport options: stdio for local, HTTP for remote
-- How to configure clients (Claude Desktop, Claude Code)
-- How to use existing community MCP servers
-- Basic debugging of MCP connections
+- MCP Inspector for basic debugging
+- Client configuration (Claude Desktop, Claude Code)
 
 **What students know from Part 5**:
 - Python async/await, decorators, type hints
 - Pydantic for data validation
 - uv package manager
 
-**What this chapter teaches (SERVER IMPLEMENTATION ONLY)**:
-- FastMCP SDK project structure and initialization
-- @mcp.tool decorator patterns with Pydantic Field
-- @mcp.resource decorator patterns with URI templates
-- @mcp.prompt decorator patterns with message structures
-- Server-side authentication (environment variables, startup validation)
-- Testing from the server author's perspective
-- Packaging servers for distribution
-- Building a complete domain-specific server (capstone)
+**What this chapter teaches (ADVANCED PATTERNS ONLY)**:
+- Context object injection and server lifespan management
+- Sampling: Servers requesting LLM calls through clients
+- Progress and logging notifications for long-running operations
+- Roots for file system permission control
+- StreamableHTTP transport for production deployments
+- Stateful vs stateless server configurations for scaling
+- Structured error handling and recovery patterns
+- Packaging and distribution for production
 
 ## User Scenarios & Testing
 
-### User Story 1 - Create First MCP Server Project (Priority: P1)
+### User Story 1 - Use Context Object in Tools (Priority: P1)
 
-A student who understands MCP concepts from Chapter 37 wants to create their first server project. They need the correct project structure, dependencies, and minimal code to get a working server.
+A student building a production server needs to access the Context object within tool functions for logging, progress reporting, and sampling.
 
-**Why this priority**: This is the entry point—students need a working project before implementing primitives.
+**Why this priority**: Context is the gateway to all advanced features.
 
-**Independent Test**: Student can create a new project with `uv init`, add correct dependencies, write minimal FastMCP code, and verify it runs.
+**Independent Test**: Student can inject Context into tool functions and access its methods.
 
 **Acceptance Scenarios**:
 
-1. **Given** uv and Python installed, **When** student runs `uv init my-mcp-server && cd my-mcp-server && uv add mcp uvicorn`, **Then** dependencies install successfully
-2. **Given** the project setup, **When** student writes FastMCP initialization code, **Then** the server starts without errors
-3. **Given** a running server, **When** student accesses it via MCP Inspector, **Then** the connection succeeds (even with no primitives yet)
+1. **Given** a tool function, **When** student adds `ctx: Context` parameter, **Then** FastMCP injects the context automatically
+2. **Given** context access, **When** student calls `await ctx.info("message")`, **Then** log appears in client
+3. **Given** context access, **When** student accesses `ctx.session`, **Then** they can make sampling requests
 
 ---
 
-### User Story 2 - Implement Tools with @mcp.tool (Priority: P1)
+### User Story 2 - Implement Sampling (Priority: P1)
 
-A student wants to implement tools that Claude can call. They need to understand the decorator pattern, how type hints become JSON schemas, and how to use Pydantic Field for descriptions.
+A student wants their MCP server to call Claude (or another LLM) through the connected client, shifting cost and complexity to the client.
 
-**Why this priority**: Tools are the most common primitive—most servers exist primarily to provide tools.
+**Why this priority**: Sampling is the key differentiator for intelligent servers that need AI capabilities.
 
-**Independent Test**: Student can implement a tool with parameters, descriptions, and return values that Claude can successfully call.
+**Independent Test**: Student can implement a tool that uses sampling to generate text via the client.
 
 **Acceptance Scenarios**:
 
-1. **Given** FastMCP server code, **When** student adds @mcp.tool decorator to a function, **Then** the tool appears in Inspector's tool list
-2. **Given** a tool with typed parameters, **When** student views the tool schema, **Then** types are correctly converted to JSON schema
-3. **Given** Pydantic Field with description, **When** student views tool in Inspector, **Then** parameter descriptions appear
-4. **Given** a tool implementation, **When** Claude calls it, **Then** the function executes and returns results
+1. **Given** a tool with Context, **When** student calls `ctx.session.create_message()`, **Then** client receives sampling request
+2. **Given** sampling request, **When** client has sampling callback configured, **Then** Claude generates response
+3. **Given** sampling result, **When** tool receives response, **Then** it can use the generated text in its return value
 
 ---
 
-### User Story 3 - Implement Resources with @mcp.resource (Priority: P2)
+### User Story 3 - Send Progress Notifications (Priority: P1)
 
-A student wants to expose read-only data as resources. They need to understand URI patterns (direct vs templated) and MIME type handling.
+A student building a long-running tool (research, data processing) wants to show progress to users instead of appearing frozen.
 
-**Why this priority**: Resources are the second most common primitive, essential for data-centric servers.
+**Why this priority**: UX critical for tools that take more than a few seconds.
 
-**Independent Test**: Student can implement both direct and templated resources with correct URI patterns and MIME types.
+**Independent Test**: Student can send progress updates that appear in the client during tool execution.
 
 **Acceptance Scenarios**:
 
-1. **Given** @mcp.resource with static URI, **When** client reads the resource, **Then** data is returned correctly
-2. **Given** @mcp.resource with `{parameter}` in URI, **When** client reads with parameter value, **Then** the function receives the parameter
-3. **Given** mime_type specification, **When** client reads resource, **Then** response includes correct content type
+1. **Given** a long-running tool, **When** student calls `await ctx.report_progress(50, 100)`, **Then** client displays 50% progress
+2. **Given** multiple progress calls, **When** tool progresses, **Then** client shows updated progress bar
+3. **Given** tool completion, **When** tool returns, **Then** progress shows 100%
 
 ---
 
-### User Story 4 - Implement Prompts with @mcp.prompt (Priority: P2)
+### User Story 4 - Send Logging Notifications (Priority: P2)
 
-A student wants to create prompt templates that encode domain expertise. They need to understand message structures and parameter handling.
+A student wants to send status messages to the client during tool execution for debugging and user feedback.
 
-**Why this priority**: Prompts package expertise—essential for specialized servers.
+**Why this priority**: Essential for transparency in complex operations.
 
-**Independent Test**: Student can implement a parameterized prompt that returns structured messages.
+**Independent Test**: Student can send log messages that appear in the client.
 
 **Acceptance Scenarios**:
 
-1. **Given** @mcp.prompt decorator, **When** student lists prompts in Inspector, **Then** the prompt appears with description
-2. **Given** prompt with parameters, **When** user requests it with arguments, **Then** function receives parameters correctly
-3. **Given** prompt returning messages, **When** applied to conversation, **Then** AI receives structured instructions
+1. **Given** a tool with Context, **When** student calls `await ctx.info("Starting research...")`, **Then** message appears in client
+2. **Given** different log levels, **When** student uses info/warning/error, **Then** client displays appropriately
+3. **Given** logging during execution, **When** tool runs, **Then** user sees real-time status updates
 
 ---
 
-### User Story 5 - Handle Server Authentication (Priority: P2)
+### User Story 5 - Implement Roots for File Access (Priority: P2)
 
-A student needs their server to connect to external APIs securely. They need to handle API keys via environment variables and validate at startup.
+A student building a file-processing server needs to define which directories the server can access, enabling path discovery without full filesystem exposure.
 
-**Why this priority**: Production servers typically connect to authenticated APIs.
+**Why this priority**: Security and UX for file-based servers.
 
-**Independent Test**: Student can implement environment variable validation at startup and use credentials in tool implementations.
+**Independent Test**: Student can implement roots that limit and expose file access paths.
 
 **Acceptance Scenarios**:
 
-1. **Given** required environment variable, **When** variable is missing, **Then** server refuses to start with clear error
-2. **Given** variable is set, **When** tool makes API call, **Then** key is used without appearing in logs
-3. **Given** httpx/requests call, **When** API returns error, **Then** error message doesn't expose credentials
+1. **Given** roots configuration, **When** client calls list_roots, **Then** approved directories are returned
+2. **Given** a file path request, **When** path is within roots, **Then** access is granted
+3. **Given** a file path request, **When** path is outside roots, **Then** access is denied with clear error
 
 ---
 
-### User Story 6 - Test Server During Development (Priority: P2)
+### User Story 6 - Configure StreamableHTTP Transport (Priority: P2)
 
-A student needs to test their server as they build it. They need to use MCP Inspector effectively from the server author's perspective.
+A student wants to deploy their server remotely (not just local stdio) for production use cases.
 
-**Why this priority**: Rapid iteration requires effective testing.
+**Why this priority**: Production servers need HTTP transport.
 
-**Independent Test**: Student can use Inspector to test all primitives and diagnose issues.
+**Independent Test**: Student can run their server with StreamableHTTP and connect from remote clients.
 
 **Acceptance Scenarios**:
 
-1. **Given** a server with tools, **When** student uses Inspector, **Then** they can list, call, and verify tools
-2. **Given** a failing tool, **When** student checks stderr output, **Then** they can identify the error
-3. **Given** a change to server code, **When** student restarts server, **Then** changes are reflected in Inspector
+1. **Given** FastMCP server, **When** configured for HTTP, **Then** server listens on specified port
+2. **Given** HTTP transport, **When** client connects, **Then** SSE connection is established
+3. **Given** session ID, **When** client makes requests, **Then** server tracks session state
 
 ---
 
-### User Story 7 - Package Server for Distribution (Priority: P3)
+### User Story 7 - Choose Stateful vs Stateless Configuration (Priority: P2)
 
-A student wants to share their server with others. They need to package it correctly for distribution.
+A student needs to scale their server horizontally behind a load balancer, understanding the tradeoffs of stateless mode.
 
-**Why this priority**: The goal is sellable/shareable agents—packaging is essential.
+**Why this priority**: Production scaling requires understanding these flags.
 
-**Independent Test**: Student can package their server so others can install and run it.
+**Independent Test**: Student can configure stateless_http and json_response flags appropriately.
 
 **Acceptance Scenarios**:
 
-1. **Given** a working server, **When** student adds pyproject.toml metadata, **Then** package is installable via pip/uv
-2. **Given** packaged server, **When** another user installs it, **Then** they can configure it in Claude Desktop
-3. **Given** server with dependencies, **When** packaged, **Then** all dependencies are correctly specified
+1. **Given** `stateless_http=True`, **When** server runs, **Then** no session IDs are issued
+2. **Given** stateless mode, **When** sampling is attempted, **Then** error indicates feature unavailable
+3. **Given** `json_response=True`, **When** tool is called, **Then** response is plain JSON (no streaming)
 
 ---
 
-### User Story 8 - Build Domain-Specific Server (Capstone) (Priority: P3)
+### User Story 8 - Handle Errors Gracefully (Priority: P2)
 
-A student applies all skills to build a complete, useful MCP server for a specific domain (e.g., project management, CRM, analytics).
+A student needs their server to handle errors without crashing, returning structured error responses to clients.
 
-**Why this priority**: Capstone integrates all learning into practical deliverable.
+**Why this priority**: Production servers must be resilient.
 
-**Independent Test**: Student can build a server with multiple tools, resources, and prompts for a real use case.
+**Independent Test**: Student can implement error handling that returns proper JSON-RPC errors.
 
 **Acceptance Scenarios**:
 
-1. **Given** capstone requirements, **When** student designs server, **Then** they choose appropriate primitives for each capability
-2. **Given** implementation, **When** server is tested, **Then** all primitives work together cohesively
-3. **Given** completed server, **When** connected to Claude Desktop, **Then** it provides meaningful domain functionality
+1. **Given** a tool that raises exception, **When** error occurs, **Then** server returns JSON-RPC error (not crash)
+2. **Given** structured error, **When** client receives it, **Then** error code and message are clear
+3. **Given** recoverable error, **When** client retries, **Then** server handles retry correctly
+
+---
+
+### User Story 9 - Package Server for Distribution (Priority: P3)
+
+A student wants to share their production-ready server with others via pip/uv install.
+
+**Why this priority**: Distribution is the end goal for sellable agents.
+
+**Independent Test**: Student can package and distribute their server.
+
+**Acceptance Scenarios**:
+
+1. **Given** pyproject.toml configured, **When** user runs `uv pip install`, **Then** server installs
+2. **Given** entry points defined, **When** user runs command, **Then** server starts
+3. **Given** dependencies specified, **When** installed in fresh environment, **Then** all dependencies resolve
+
+---
+
+### User Story 10 - Build Production Server (Capstone) (Priority: P3)
+
+A student applies all advanced patterns to build a production-ready server with sampling, progress, roots, and proper error handling.
+
+**Why this priority**: Capstone integrates all advanced learning.
+
+**Independent Test**: Student can build a complete server demonstrating all advanced features.
+
+**Acceptance Scenarios**:
+
+1. **Given** capstone requirements, **When** student designs server, **Then** they use Context, sampling, progress appropriately
+2. **Given** implementation, **When** server runs with StreamableHTTP, **Then** all features work
+3. **Given** completed server, **When** deployed, **Then** it handles real workloads reliably
 
 ---
 
 ### Edge Cases
 
-- What happens when a tool is called with missing required parameters? (Pydantic validation error)
-- What happens when @mcp.resource URI doesn't match template? (Resource not found)
-- What happens when server uses print() with stdio transport? (Corrupts JSON-RPC—use logging to stderr)
-- What happens when API key has special characters? (Should work with proper env var handling)
-- What happens when tool raises exception? (Server returns error to client, doesn't crash)
+- What happens when sampling callback is not configured? (Error returned to server)
+- What happens when progress is reported after tool returns? (Ignored, no error)
+- What happens when roots list is empty? (No file access allowed)
+- What happens when StreamableHTTP client disconnects? (Session cleanup)
+- What happens when stateless server receives session-dependent request? (Clear error)
 
 ## Requirements
 
 ### Functional Requirements
 
-- **FR-001**: Chapter MUST teach FastMCP project setup with uv (uv init, uv add mcp uvicorn)
-- **FR-002**: Chapter MUST teach @mcp.tool decorator including name, description parameters
-- **FR-003**: Chapter MUST teach how Python type hints generate JSON schemas automatically
-- **FR-004**: Chapter MUST teach Pydantic Field for parameter descriptions and validation
-- **FR-005**: Chapter MUST teach @mcp.resource for both direct (static URI) and templated resources
-- **FR-006**: Chapter MUST teach MIME type specification in @mcp.resource
-- **FR-007**: Chapter MUST teach @mcp.prompt for creating prompt templates with parameters
-- **FR-008**: Chapter MUST teach message structure returned by prompts (user/assistant messages)
-- **FR-009**: Chapter MUST teach environment variable handling with os.environ
-- **FR-010**: Chapter MUST teach startup validation pattern (check env vars before server starts)
-- **FR-011**: Chapter MUST teach logging to stderr (not stdout) for stdio transport
-- **FR-012**: Chapter MUST teach using MCP Inspector for server development testing
-- **FR-013**: Chapter MUST teach pyproject.toml configuration for distribution
-- **FR-014**: Chapter MUST include capstone project: building a complete domain-specific server
-- **FR-015**: Chapter MUST NOT re-explain what primitives ARE (covered in Chapter 37)
-- **FR-016**: Chapter MUST NOT re-explain transport theory (covered in Chapter 37)
-- **FR-017**: Chapter MUST NOT re-explain client configuration (covered in Chapter 37)
+- **FR-001**: Chapter MUST teach Context object injection in tool functions
+- **FR-002**: Chapter MUST teach server lifespan management
+- **FR-003**: Chapter MUST teach sampling via `ctx.session.create_message()`
+- **FR-004**: Chapter MUST teach client-side sampling callback implementation
+- **FR-005**: Chapter MUST teach progress notifications via `ctx.report_progress()`
+- **FR-006**: Chapter MUST teach logging notifications via `ctx.info()`, `ctx.warning()`, `ctx.error()`
+- **FR-007**: Chapter MUST teach roots for file system permission control
+- **FR-008**: Chapter MUST teach `is_path_allowed()` pattern for path validation
+- **FR-009**: Chapter MUST teach StreamableHTTP transport configuration
+- **FR-010**: Chapter MUST teach SSE connection model (primary + tool-specific)
+- **FR-011**: Chapter MUST teach `stateless_http` flag and its implications
+- **FR-012**: Chapter MUST teach `json_response` flag and its implications
+- **FR-013**: Chapter MUST teach structured error handling patterns
+- **FR-014**: Chapter MUST teach pyproject.toml configuration for distribution
+- **FR-015**: Chapter MUST include capstone with all advanced features
+- **FR-016**: Chapter MUST NOT re-teach @mcp.tool/@mcp.resource/@mcp.prompt basics (Chapter 37)
+- **FR-017**: Chapter MUST NOT re-teach MCP architecture concepts (Chapter 37)
 
 ### Key Entities
 
-- **FastMCP Instance**: The server object created with `FastMCP("server-name")`. Entry point for all decorators.
-- **Tool Function**: Python function decorated with @mcp.tool. Parameters become JSON schema, return value goes to client.
-- **Resource Function**: Python function decorated with @mcp.resource. Returns data at URI pattern.
-- **Prompt Function**: Python function decorated with @mcp.prompt. Returns list of messages for AI.
-- **Server Package**: Distributable package with pyproject.toml, installable via pip/uv.
+- **Context Object**: Injected parameter providing access to logging, progress, and session
+- **Sampling**: Server-to-client LLM request mechanism via `create_message()`
+- **Progress Notification**: Real-time progress updates via `report_progress()`
+- **Logging Notification**: Real-time log messages via `info()`, `warning()`, `error()`
+- **Roots**: File system permission boundaries for secure path access
+- **StreamableHTTP**: HTTP transport with SSE for bidirectional communication
+- **Session State**: Stateful vs stateless server configuration for scaling
 
 ## Success Criteria
 
 ### Measurable Outcomes
 
-- **SC-001**: Students can create a working MCP server project in under 10 minutes
-- **SC-002**: Students can implement a tool with proper type hints and descriptions
-- **SC-003**: Students can implement both direct and templated resources
-- **SC-004**: Students can implement a parameterized prompt template
-- **SC-005**: Students can configure environment variable validation
-- **SC-006**: Students can package their server for distribution
-- **SC-007**: Students complete capstone with multiple working primitives
-- **SC-008**: NO overlap with Chapter 37 content (no re-explanation of concepts)
+- **SC-001**: Students can inject and use Context object in tools
+- **SC-002**: Students can implement sampling to call LLMs through clients
+- **SC-003**: Students can send progress notifications for long-running operations
+- **SC-004**: Students can send logging notifications for status updates
+- **SC-005**: Students can implement roots for file access control
+- **SC-006**: Students can configure StreamableHTTP for production deployment
+- **SC-007**: Students can choose appropriate stateful/stateless configuration
+- **SC-008**: Students can handle errors gracefully with structured responses
+- **SC-009**: Students can package servers for distribution
+- **SC-010**: NO overlap with Chapter 37 content (no re-teaching of basics)
 
 ### Educational Outcomes
 
-- **EO-001**: Students can translate domain requirements into MCP primitives
-- **EO-002**: Students understand decorator-based development pattern
-- **EO-003**: Students can debug their own server independently
-- **EO-004**: Students can distribute servers to others
+- **EO-001**: Students understand Context as the gateway to advanced features
+- **EO-002**: Students can design servers that leverage client LLM capabilities
+- **EO-003**: Students can build production-ready servers with proper UX
+- **EO-004**: Students can scale servers horizontally with appropriate tradeoffs
 
 ## Lesson Structure
 
-### Lesson 1: Project Setup with FastMCP (L2 - AI Collaboration)
-- Creating project with uv
-- Adding dependencies (mcp, uvicorn, httpx)
-- FastMCP initialization code
-- Running with `mcp dev` or uvicorn
-- First connection via Inspector
+### Lesson 1: Context Object & Server Lifespan (L2 - AI Collaboration)
+- Context injection in tool/resource/prompt functions
+- Accessing session, logging, and progress methods
+- Server lifespan management
+- Async context managers for resources
 
-### Lesson 2: Implementing Tools (@mcp.tool) (L2 - AI Collaboration)
-- The @mcp.tool decorator
-- Type hints → JSON schema conversion
-- Pydantic Field for descriptions
-- Return values and error handling
-- Multi-tool servers
+### Lesson 2: Sampling - Servers Calling LLMs (L2 - AI Collaboration)
+- The problem sampling solves (cost, complexity)
+- `ctx.session.create_message()` API
+- SamplingMessage and TextContent structures
+- Client-side sampling callback implementation
+- When to use sampling vs direct API calls
 
-### Lesson 3: Implementing Resources (@mcp.resource) (L2 - AI Collaboration)
-- Direct resources (static URIs)
-- Templated resources ({parameter} in URI)
-- MIME type specification
-- When to use resources vs tools
+### Lesson 3: Progress & Logging Notifications (L2 - AI Collaboration)
+- `ctx.report_progress(current, total)` for progress bars
+- `ctx.info()`, `ctx.warning()`, `ctx.error()` for logging
+- Client-side notification handling
+- UX patterns for long-running operations
 
-### Lesson 4: Implementing Prompts (@mcp.prompt) (L2 - AI Collaboration)
-- The @mcp.prompt decorator
-- Parameter handling
-- Message structures (user/assistant)
-- Use cases for prompt templates
+### Lesson 4: Roots - File System Permissions (L2 - AI Collaboration)
+- What roots solve (security + path discovery)
+- Implementing `list_roots` tool
+- `is_path_allowed()` validation pattern
+- Integration with file-processing tools
 
-### Lesson 5: Server Authentication & Security (L2 - AI Collaboration)
-- Environment variables with os.environ
-- Startup validation pattern
-- Secure API call patterns
-- Logging to stderr (not stdout)
+### Lesson 5: StreamableHTTP Transport (L2 - AI Collaboration)
+- stdio vs StreamableHTTP tradeoffs
+- Configuring HTTP transport
+- SSE connection model (primary + tool-specific)
+- Session ID management
+- Production deployment patterns
 
-### Lesson 6: Testing & Debugging Your Server (L2 - AI Collaboration)
-- MCP Inspector for development
-- Reading server logs (stderr)
-- Common errors and fixes
-- Iterative development workflow
+### Lesson 6: Stateful vs Stateless Servers (L2 - AI Collaboration)
+- Horizontal scaling challenges
+- `stateless_http=True` configuration
+- `json_response=True` configuration
+- Feature limitations in stateless mode
+- When to use each configuration
 
-### Lesson 7: Packaging & Publishing (L2 - AI Collaboration)
+### Lesson 7: Error Handling & Recovery (L2 - AI Collaboration)
+- Structured JSON-RPC error responses
+- Exception handling in tools
+- Graceful degradation patterns
+- Retry-safe tool design
+- Logging for debugging
+
+### Lesson 8: Packaging & Distribution (L2 - AI Collaboration)
 - pyproject.toml configuration
-- Entry points for CLI
+- Entry points for CLI commands
 - Dependencies specification
 - Installation testing
+- Documentation requirements
 
-### Lesson 8: Capstone - Domain-Specific Server (L4 - Spec-Driven)
+### Lesson 9: Capstone - Production MCP Server (L4 - Spec-Driven)
 - Requirements analysis
-- Primitive selection (tools vs resources vs prompts)
-- Implementation with AI collaboration
-- Testing and validation
+- Feature selection (sampling, progress, roots)
+- StreamableHTTP deployment
+- Error handling implementation
+- Integration testing
 - Documentation
 
-### Lesson 9: Chapter Quiz (Assessment)
-- Implementation patterns (decorators, type hints)
-- Debugging scenarios
-- Security best practices
-- Distribution requirements
+### Lesson 10: Chapter Quiz (Assessment)
+- Context object usage
+- Sampling patterns
+- Notification types
+- Transport configuration
+- Scaling tradeoffs
+- Error handling
 
 ## Dependencies
 
-- **Chapter 37**: MCP Fundamentals (PREREQUISITE - concepts already taught)
+- **Chapter 37**: MCP Fundamentals (PREREQUISITE - basics already taught)
 - **Part 5**: Python Fundamentals (async/await, decorators, type hints, Pydantic)
 - **Tools**: uv, Python 3.11+, Node.js (for Inspector)
 
 ## Assumptions
 
-- Students have completed Chapter 37 (understand MCP concepts)
+- Students have completed Chapter 37 (understand basic decorators)
 - Students have completed Part 5 (Python skills)
-- Students have MCP Inspector available (npx @modelcontextprotocol/inspector)
+- Students have MCP Inspector available
 - MCP SDK version 1.6+ (December 2025)
 
 ## Out of Scope
 
+- Basic @mcp.tool/@mcp.resource/@mcp.prompt patterns (Chapter 37)
 - MCP architecture explanation (Chapter 37)
 - Transport layer theory (Chapter 37)
-- What primitives ARE conceptually (Chapter 37)
 - Client configuration (Chapter 37)
-- Using community servers (Chapter 37)
-- OAuth 2.1 (advanced, mentioned only)
+- OAuth 2.1 implementation (mentioned only)
 - Database integration (Chapters 46-48)
-- Cloud deployment (Part 7)
+- Cloud deployment specifics (Part 7)
