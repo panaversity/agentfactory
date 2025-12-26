@@ -270,7 +270,7 @@ Ask your AI companion:
 >
 > Explain:
 > - Why is the property approach better than method approach?
-> - What does @property decorator do? What does @priority.setter do?
+> - What does `@property` decorator do? What does `@priority.setter` do?
 > - Why is `task.priority = 5` more Pythonic than `task.set_priority(5)`?
 > - Show me how the priority property stops invalid values"
 
@@ -300,10 +300,10 @@ After AI explains, ask this follow-up question:
 ### Challenge 2: Computed Properties (Read-Only)
 
 > "In a Task class with _priority attribute, create a read-only property `urgency_label` that returns:
-> - 'Critical' if priority <= 2
-> - 'High' if priority <= 4
-> - 'Medium' if priority <= 7
-> - 'Low' if priority > 7
+> - 'Critical' if priority is 2 or less
+> - 'High' if priority is 4 or less
+> - 'Medium' if priority is 7 or less
+> - 'Low' if priority is greater than 7
 >
 > Why is this a property instead of a method? When do you use @property without @setter (read-only computed properties)?"
 

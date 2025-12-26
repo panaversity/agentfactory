@@ -236,7 +236,7 @@ Instead of typing 200+ lines manually, you'll have AI generate the system, then 
 > - Attributes: title (str), description (str, default ""), priority (int, default 5), status (str, default "pending"), done (bool, default False), due_date (optional)
 > - Constructor: __init__(self, title: str, description: str = "", priority: int = 5)
 > - Methods:
->   - mark_complete() → sets done=True, status="completed"
+>   - mark_complete() → sets done to True, status to "completed"
 >   - update_priority(new_priority: int) → validates 1-10, raises ValueError if invalid
 >   - __repr__() → returns readable string like "[✓] Buy milk (P2)" or "[○] Buy milk (P2)"
 >   - __eq__(other) → compares tasks by title
@@ -272,7 +272,7 @@ Instead of typing 200+ lines manually, you'll have AI generate the system, then 
    - Is TaskManager's tasks list initialized as empty list? ✓
 
 2. **Encapsulation (Lesson 4 concept)**:
-   - Does update_priority validate that 1 <= priority <= 10? ✓
+   - Does update_priority validate that 1 is less than or equal to priority and priority is less than or equal to 10? ✓
    - Does update_priority raise ValueError with clear message? ✓
    - Does mark_complete set both done and status correctly? ✓
 

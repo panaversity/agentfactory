@@ -571,8 +571,8 @@ recreated = eval(repr_str)  # Works!
 
 ### Prompt 2: Making Tasks Sortable
 
-> "Implement __eq__() and __lt__() for Task based on priority. Show me:
-> 1. How tasks = [Task('Fix bug', 3), Task('Update docs', 5)]; sorted(tasks) works
+> "Implement `__eq__()` and `__lt__()` for Task based on priority. Show me:
+> 1. How `tasks = [Task('Fix bug', 3), Task('Update docs', 5)]; sorted(tasks)` works
 > 2. What Python does internally when it calls sorted() - trace through __lt__
 > 3. How __eq__() determines if two tasks are the same
 > 4. Design choice: should __eq__ compare by title or priority? Why?"
@@ -581,18 +581,18 @@ recreated = eval(repr_str)  # Works!
 
 ### Prompt 3: Using Tasks in Collections
 
-> "Implement __hash__() for Task and show:
-> 1. How task_set = {Task('Fix bug'), Task('Fix bug')} removes duplicates
-> 2. Why __hash__ must match __eq__ (use the same field)
-> 3. How tasks work as dictionary keys: task_deadlines = {task: '2025-01-15'}
+> "Implement `__hash__()` for Task and show:
+> 1. How `task_set = {Task('Fix bug'), Task('Fix bug')}` removes duplicates
+> 2. Why `__hash__` must match `__eq__` (use the same field)
+> 3. How tasks work as dictionary keys: `task_deadlines = {task: '2025-01-15'}`
 > 4. What breaks if you implement __eq__ but forget __hash__?"
 
 **What you're learning**: The contract between `__hash__` and `__eq__`, and why breaking it causes mysterious bugs.
 
 ### Prompt 4: Polymorphism Across Domains
 
-> "Create three unrelated classes (Task, Case, Appointment) - NO inheritance. Each has different attributes but all implement __lt__() using different priority fields:
-> 1. Task sorts by priority (1=high, 10=low)
+> "Create three unrelated classes (Task, Case, Appointment) - NO inheritance. Each has different attributes but all implement `__lt__()` using different priority fields:
+> 1. Task sorts by priority (1 is high, 10 is low)
 > 2. Case sorts by urgency (same scale)
 > 3. Appointment sorts by importance (same scale)
 >
