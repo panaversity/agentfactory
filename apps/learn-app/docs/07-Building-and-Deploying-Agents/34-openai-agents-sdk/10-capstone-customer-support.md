@@ -766,6 +766,94 @@ class SupportHooks(RunHooks):
     Usage: 423 tokens
 ```
 
+### 8. MCP Integration: External Documentation
+
+Connect agents to external documentation via MCP for up-to-date policy information:
+
+```python
+from agents.mcp import MCPServerStreamableHttp
+import os
+
+async def create_docs_enhanced_system():
+    """Add Context7 documentation lookup to agents."""
+
+    # Connect to Context7 for airline policy documentation
+    async with MCPServerStreamableHttp(
+        name="Policy Docs",
+        url="https://mcp.context7.com/mcp",
+        headers={"Authorization": f"Bearer {os.getenv('CONTEXT7_API_KEY')}"}
+    ) as docs_server:
+
+        # FAQ agent now has access to live documentation
+        faq_agent_with_docs = Agent(
+            name="FAQ Agent",
+            instructions="""Answer policy questions using:
+            1. First check the faq_lookup_tool for common questions
+            2. For detailed policy questions, use get-library-docs to search airline documentation
+            3. Always cite your source (FAQ database or documentation)""",
+            tools=[faq_lookup_tool],
+            mcp_servers=[docs_server],  # MCP tools automatically available
+        )
+
+        return faq_agent_with_docs
+```
+
+**Output:**
+```
+Agent created with tools:
+  - faq_lookup_tool (custom)
+  - resolve-library-id (MCP)
+  - get-library-docs (MCP)
+# Agent can now search live documentation for complex policy questions
+```
+
+### 9. RAG Integration: Knowledge Base
+
+Add FileSearchTool for FAQ knowledge base with automatic retrieval:
+
+```python
+from agents import FileSearchTool
+
+# Create agent with knowledge base retrieval
+faq_agent_with_rag = Agent(
+    name="FAQ Agent",
+    instructions="""Answer customer questions about airline policies.
+
+    For factual questions about baggage, seating, cancellations, or refunds:
+    - Search the knowledge base using FileSearchTool
+    - Cite the source document in your response
+    - If not found, acknowledge and offer to escalate
+
+    Always ground answers in retrieved documents.""",
+    tools=[
+        faq_lookup_tool,  # Quick keyword lookup
+        FileSearchTool(
+            vector_store_ids=["vs_airline_policies"],  # Pre-populated with policy docs
+            max_num_results=3,
+        ),
+    ],
+)
+```
+
+**Output:**
+```
+Agent configured with:
+  - faq_lookup_tool: Fast keyword matching for common questions
+  - FileSearchTool: Semantic search over policy documents
+# Agent decides when to use each based on question complexity
+```
+
+**Why both MCP and RAG?**
+
+| Capability | MCP (Context7) | RAG (FileSearchTool) |
+|------------|----------------|----------------------|
+| **Data source** | External libraries/docs | Your curated knowledge base |
+| **Updates** | Real-time from source | On vector store refresh |
+| **Best for** | Technical documentation | Company-specific policies |
+| **Cost** | Per-request to MCP server | OpenAI embedding + retrieval |
+
+In production, use both: RAG for your internal policies, MCP for external documentation the agent might need.
+
 ## Implementation Walkthrough
 
 ### Step 1: Set Up Environment
@@ -788,6 +876,8 @@ Create `airline_support_fete.py` with:
 5. Handoffs (with on_handoff callbacks)
 6. Conversation loop (run_support_conversation)
 7. Hooks (SupportHooks)
+8. MCP Integration (Context7 for documentation)
+9. RAG Integration (FileSearchTool for knowledge base)
 
 ### Step 3: Test Individual Components
 
