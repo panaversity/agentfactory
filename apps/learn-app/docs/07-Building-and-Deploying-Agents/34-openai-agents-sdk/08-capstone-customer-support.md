@@ -268,9 +268,11 @@ def faq_lookup_tool(
             return f"According to our FAQ: {answer}"
 
     return "I don't have information on that in my FAQ database. This requires specialist review."
+```
 
-# Output:
-# "According to our FAQ: You can bring 1 carry-on and 1 checked bag..."
+**Output:**
+```
+"According to our FAQ: You can bring 1 carry-on and 1 checked bag. Checked bags over 50 lbs incur $50 fee."
 ```
 
 #### Tool 2: Update Seat Assignment
@@ -318,14 +320,16 @@ def update_seat_tool(
         "seat": assigned_seat,
         "message": f"Seat {assigned_seat} assigned ({seat_preference})."
     }
+```
 
-# Output:
-# {
-#     "status": "success",
-#     "confirmation": "ABC123",
-#     "seat": "1A",
-#     "message": "Seat 1A assigned (window)."
-# }
+**Output:**
+```json
+{
+    "status": "success",
+    "confirmation": "ABC123",
+    "seat": "1A",
+    "message": "Seat 1A assigned (window)."
+}
 ```
 
 #### Tool 3: Escalate to Human
@@ -356,14 +360,16 @@ def escalate_to_human(
         "reason": reason,
         "message": f"This case has been escalated to our human support team. Your ticket ID is {ticket_id}. Someone will contact you within 1 hour."
     }
+```
 
-# Output:
-# {
-#     "status": "escalated",
-#     "ticket_id": "TICKET-42156",
-#     "reason": "Aggressive language detected",
-#     "message": "...Your ticket ID is TICKET-42156..."
-# }
+**Output:**
+```json
+{
+    "status": "escalated",
+    "ticket_id": "TICKET-42156",
+    "reason": "Aggressive language detected",
+    "message": "This case has been escalated to our human support team. Your ticket ID is TICKET-42156. Someone will contact you within 1 hour."
+}
 ```
 
 ### 3. Guardrails: Safety Validation
@@ -413,6 +419,15 @@ async def abuse_guardrail(
         output_info=output,
         tripwire_triggered=(output.is_abusive and output.confidence > 0.7)
     )
+```
+
+**Output (when triggered):**
+```
+GuardrailFunctionOutput(
+    output_info=AbuseDetectionOutput(is_abusive=True, confidence=0.92, reason="Threat detected"),
+    tripwire_triggered=True
+)
+# → Agent stops processing, escalates to human
 ```
 
 #### Input Guardrail 2: PII Detection
@@ -467,6 +482,16 @@ async def pii_guardrail(
     )
 ```
 
+**Output (when PII detected):**
+```
+PIIDetectionOutput(
+    has_pii=True,
+    types_found=["credit_card", "phone"],
+    masked_input="My card is ****-****-****-**** and call me at ***-***-****"
+)
+# → Input masked before logging/processing, context.contains_pii=True
+```
+
 ### 4. Multi-Agent System: The Agents
 
 #### Agent 1: Triage Agent (Router)
@@ -490,6 +515,12 @@ triage_agent = Agent(
 )
 ```
 
+**Output (agent initialized):**
+```
+Agent(name="Triage Agent", tools=2, handoffs=3)
+# Ready to route: FAQ | Booking | Escalation
+```
+
 #### Agent 2: FAQ Agent (Specialist)
 
 ```python
@@ -508,6 +539,12 @@ faq_agent = Agent(
 )
 ```
 
+**Output (agent initialized):**
+```
+Agent(name="FAQ Agent", tools=1, handoffs=1)
+# Specialist for policy questions
+```
+
 #### Agent 3: Booking Agent (Specialist)
 
 ```python
@@ -524,6 +561,12 @@ booking_agent = Agent(
     tools=[update_seat_tool],
     handoffs=[handoff(triage_agent, "Customer needs different help")],
 )
+```
+
+**Output (agent initialized):**
+```
+Agent(name="Booking Agent", tools=1, handoffs=1)
+# Specialist for seat/flight modifications
 ```
 
 #### Agent 4: Escalation Agent (Specialist)
@@ -547,6 +590,12 @@ escalation_agent = Agent(
     tools=[escalate_to_human],
     handoffs=[],  # No handoffs from escalation (end point)
 )
+```
+
+**Output (agent initialized):**
+```
+Agent(name="Escalation Agent", tools=1, handoffs=0)
+# Terminal agent - creates ticket for human queue
 ```
 
 ### 5. Handoffs with Context Injection
@@ -583,6 +632,15 @@ escalation_handoff = handoff(
     escalation_agent,
     on_handoff=on_escalation_handoff
 )
+```
+
+**Output (when handoff triggers):**
+```
+# Triage → Booking handoff
+on_booking_handoff called:
+  context.issue_type = "booking"
+  context.flight_number = "FLT-847"  # Looked up from confirmation
+# → Booking Agent now has flight context
 ```
 
 ### 6. Complete Conversation Loop
@@ -696,6 +754,16 @@ class SupportHooks(RunHooks):
     async def on_agent_end(self, context, agent, output):
         print(f"  ✓ Agent complete: {agent.name}")
         print(f"    Usage: {context.usage.total_tokens} tokens")
+```
+
+**Output (during conversation):**
+```
+  → Agent starting: Triage Agent
+    → Tool call: faq_lookup_tool
+    ✓ Tool result: faq_lookup_tool
+  → Handoff: Triage Agent → Booking Agent
+  ✓ Agent complete: Triage Agent
+    Usage: 423 tokens
 ```
 
 ## Implementation Walkthrough
@@ -895,29 +963,3 @@ You've now seen the complete production system. Let's deepen your understanding 
 **Prompt 3**: "If I deployed this [YOUR DOMAIN] support FTE and achieved 85% automation rate with 10,000 conversations/month, and my average value per conversation is $[AMOUNT], which pricing model (subscription/success fee/hybrid) maximizes profit while remaining competitive?"
 
 **What you're learning**: How Digital FTE economics change with domain, automation rate, and customer willingness to pay.
-
----
-
-## What You've Built
-
-Over 8 lessons and this capstone, you've implemented the complete production stack for building Digital FTEs:
-
-| Component | Layer | Purpose |
-|-----------|-------|---------|
-| **Agent** | L1 | Define behavior with instructions |
-| **Runner** | L1 | Execute agents synchronously/asynchronously |
-| **Tools** | L2 | Connect agents to external systems |
-| **Context** | L2 | Share state across agents |
-| **Handoffs** | L3 | Route between agents with callbacks |
-| **Guardrails** | L3 | Validate and filter inputs/outputs |
-| **Sessions** | L3 | Persist conversations |
-| **Tracing** | L4 | Full observability for debugging |
-| **Multi-Agent** | L4 | Orchestrate specialists with triage |
-
-This is what powers production AI systems at scale. The companies paying millions for this capability aren't buying the code—they're buying the knowledge of how to compose these patterns into working businesses.
-
-You now have that knowledge.
-
-The question is: **What domain expertise will you encode into your first Digital FTE?**
-
-</content>

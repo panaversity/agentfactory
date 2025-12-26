@@ -102,7 +102,7 @@ pip show openai-agents
 **Output:**
 ```
 Name: openai-agents
-Version: 0.1.0
+Version: X.Y.Z  # Version varies; check PyPI for latest
 Location: /path/to/your/python/site-packages
 ```
 
