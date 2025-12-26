@@ -36,34 +36,33 @@ function HomepageHeader() {
             </div>
 
             {/* Heading */}
-            <div className="space-y-6 mb-10">
-              <h1 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tighter text-foreground leading-[1.0] uppercase">
+            <div className="space-y-4 sm:space-y-6 mb-8 sm:mb-10">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter text-foreground leading-[1.0] uppercase">
                 THE AI AGENT <br />
-                <span className="text-primary block text-2xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tight mt-1">
+                <span className="text-primary block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight mt-1">
                   FACTORY
                 </span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground font-normal leading-[1.6] max-w-xl">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground font-normal leading-[1.6] max-w-xl">
                 The <span className="text-foreground font-medium">Spec-Driven Blueprint</span> for Building and Monetizing Digital FTEs. Full-Time Equivalent <span className="text-foreground font-medium">Reliable AI Agents</span> you can trust, deploy, and scale.
               </p>
             </div>
 
             {/* CTA Area */}
-            {/* CTA Area */}
-            <div className="flex flex-col items-start gap-6 mb-16">
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="h-14 px-8 text-lg font-bold rounded-none bg-primary hover:bg-primary/90 text-primary-foreground transition-all">
-                  <Link to="/docs/preface-agent-native" className="flex items-center gap-3">
-                    START READING <ArrowRight className="w-5 h-5" />
+            <div className="flex flex-col items-start gap-4 sm:gap-6 mb-12 sm:mb-16">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
+                <Button asChild size="lg" className="h-11 sm:h-14 px-5 sm:px-8 text-sm sm:text-lg font-bold rounded-none bg-primary hover:bg-primary/90 text-primary-foreground transition-all">
+                  <Link to="/docs/preface-agent-native" className="flex items-center gap-2 sm:gap-3">
+                    START READING <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="h-14 px-8 text-lg font-bold rounded-none transition-all">
+                <Button asChild variant="outline" size="lg" className="h-11 sm:h-14 px-5 sm:px-8 text-sm sm:text-lg font-bold rounded-none transition-all">
                   <Link to="https://panaversity.org/">
                     Explore Panaversity
                   </Link>
                 </Button>
               </div>
-              <div className="text-sm text-muted-foreground font-mono">
+              <div className="text-xs sm:text-sm text-muted-foreground font-mono">
                 // Open Source
               </div>
             </div>

@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useNavbarSecondaryMenu } from '@docusaurus/theme-common/internal';
 import NavbarAuth from '@/components/NavbarAuth';
 import { ModeToggle } from '@/components/ModeToggle';
 import { SearchBar } from '@/components/SearchBar';
 import { useLocation } from '@docusaurus/router';
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, BookOpen, Layers, Lightbulb, Github } from "lucide-react";
+import { Menu, BookOpen, Layers, Lightbulb, Github, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
     const { siteConfig } = useDocusaurusContext();
     const location = useLocation();
+    const secondaryMenu = useNavbarSecondaryMenu();
     const isDocPage = location.pathname.startsWith('/docs');
     const isHomepage = location.pathname === '/';
     const [isScrolled, setIsScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     // Handle scroll state for glass effect intensity
     useEffect(() => {
@@ -39,9 +42,9 @@ export default function Navbar() {
                 <div className="max-w-[1800px] flex h-16 items-center justify-between mx-auto px-4">
 
                     {/* LEFT: Logo */}
-                    <div className="flex items-center gap-2">
-                        <Link to="/" className="flex items-center gap-2 font-bold text-xl tracking-tight text-foreground hover:no-underline hover:text-primary transition-colors">
-                            <div className="h-8 w-8 bg-primary rounded-none flex items-center justify-center text-primary-foreground text-sm font-bold">
+                    <div className="flex items-center gap-2 shrink-0">
+                        <Link to="/" className="flex items-center gap-2 font-bold text-base sm:text-lg md:text-xl tracking-tight text-foreground hover:no-underline hover:text-primary transition-colors whitespace-nowrap">
+                            <div className="h-7 w-7 sm:h-8 sm:w-8 bg-primary rounded-none flex items-center justify-center text-primary-foreground text-xs sm:text-sm font-bold shrink-0">
                                 AI
                             </div>
                             <span>Agent Factory</span>
@@ -101,50 +104,66 @@ export default function Navbar() {
                         {/* Auth - Already uses Button variants */}
                         <NavbarAuth />
 
-                        {/* Mobile Menu Trigger - Button variant="ghost" size="icon" */}
-                        <Sheet>
+                        {/* Mobile Menu Trigger */}
+                        <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                             <SheetTrigger asChild>
                                 <Button variant="ghost" size="icon" className="md:hidden">
                                     <Menu className="w-6 h-6" />
                                     <span className="sr-only">Toggle menu</span>
                                 </Button>
                             </SheetTrigger>
-                            <SheetContent side="right" className="w-[300px] sm:w-[400px] flex flex-col gap-6 pt-10">
+                            <SheetContent side="right" className="w-[300px] sm:w-[350px] flex flex-col p-0 overflow-hidden">
+                                <SheetHeader className="px-4 py-3 border-b border-border shrink-0">
+                                    <SheetTitle className="text-left text-base font-semibold">
+                                        {isDocPage ? 'Book Navigation' : 'Menu'}
+                                    </SheetTitle>
+                                </SheetHeader>
+
                                 {/* Mobile Search */}
-                                <div className="w-full">
+                                <div className="px-4 py-3 border-b border-border shrink-0">
                                     <SearchBar enableShortcut={false} />
                                 </div>
 
-                                {/* Mobile Nav - Using Button variant="ghost" with full width */}
-                                <nav className="flex flex-col gap-1">
-                                    <Button variant="ghost" asChild className="justify-start h-12">
-                                        <Link to="/docs/preface-agent-native">
-                                            <BookOpen className="w-5 h-5" />
-                                            Read Book
-                                        </Link>
-                                    </Button>
-                                    <Button variant="ghost" asChild className="justify-start h-12">
-                                        <Link to="/docs/preface-agent-native">
-                                            <Layers className="w-5 h-5" />
-                                            Chapters
-                                        </Link>
-                                    </Button>
-                                    <Button variant="ghost" asChild className="justify-start h-12">
-                                        <Link to="/docs/preface-agent-native">
-                                            <Lightbulb className="w-5 h-5" />
-                                            Resources
-                                        </Link>
-                                    </Button>
+                                {/* Content - either doc sidebar or generic nav */}
+                                <div className="flex-1 overflow-y-auto">
+                                    {isDocPage && secondaryMenu.content ? (
+                                        // On doc pages, show the doc sidebar content
+                                        <div className="doc-sidebar-mobile p-2">
+                                            {secondaryMenu.content}
+                                        </div>
+                                    ) : (
+                                        // On non-doc pages, show generic navigation
+                                        <nav className="flex flex-col gap-1 p-4">
+                                            <Button variant="ghost" asChild className="justify-start h-12" onClick={() => setMobileMenuOpen(false)}>
+                                                <Link to="/docs/preface-agent-native">
+                                                    <BookOpen className="w-5 h-5" />
+                                                    Read Book
+                                                </Link>
+                                            </Button>
+                                            <Button variant="ghost" asChild className="justify-start h-12" onClick={() => setMobileMenuOpen(false)}>
+                                                <Link to="/docs/preface-agent-native">
+                                                    <Layers className="w-5 h-5" />
+                                                    Chapters
+                                                </Link>
+                                            </Button>
+                                            <Button variant="ghost" asChild className="justify-start h-12" onClick={() => setMobileMenuOpen(false)}>
+                                                <Link to="/docs/preface-agent-native">
+                                                    <Lightbulb className="w-5 h-5" />
+                                                    Resources
+                                                </Link>
+                                            </Button>
 
-                                    <div className="h-px bg-border my-2" />
+                                            <div className="h-px bg-border my-2" />
 
-                                    <Button variant="ghost" asChild className="justify-start h-12 text-muted-foreground">
-                                        <Link to="https://github.com/panaversity/ai-native-software-development">
-                                            <Github className="w-5 h-5" />
-                                            Source Code
-                                        </Link>
-                                    </Button>
-                                </nav>
+                                            <Button variant="ghost" asChild className="justify-start h-12 text-muted-foreground">
+                                                <Link to="https://github.com/panaversity/ai-native-software-development">
+                                                    <Github className="w-5 h-5" />
+                                                    Source Code
+                                                </Link>
+                                            </Button>
+                                        </nav>
+                                    )}
+                                </div>
                             </SheetContent>
                         </Sheet>
                     </div>
