@@ -382,6 +382,528 @@ You've just completed one iteration of evaluation-driven development:
 
 **This is the workflow.** No hand-waving. No assumptions. Tests drive the work.
 
+## Debugging Failed Evals
+
+When `adk eval` shows failures, the error message alone rarely tells you why. Here's a systematic debugging workflow that transforms cryptic failures into actionable insights.
+
+### The Systematic Debugging Workflow
+
+When an eval case fails, follow these steps in order:
+
+**Step 1: Read the failure diff**
+Compare what the agent actually said vs what was expected. Look for:
+- Did agent refuse to call a tool? (Why?)
+- Did agent call wrong tool? (Misunderstood the request?)
+- Did agent call right tool with wrong arguments? (Missing context?)
+- Did agent respond without calling any tool? (Ignored instruction?)
+
+**Step 2: Check the query clarity**
+Is the test case ambiguous? Does the user request contain implicit assumptions the agent doesn't share?
+
+Example: "Delete the second task" assumes:
+- There is a second task
+- The agent knows which task is "second" (by ID? by creation order?)
+- Deletion is permitted (no permission model in spec?)
+
+**Step 3: Trace the tool calls**
+If the agent called a tool, did it call the right sequence? Did it:
+- Call tools in logical order?
+- Wait for responses before calling next tool?
+- Use tool outputs correctly?
+
+**Step 4: Inspect the session state**
+Was session state correct when the tool ran? Did previous operations set up state properly?
+
+Example: If test adds a task then deletes it, did the add actually create a task? Check the session state between operations.
+
+**Step 5: Review the agent instruction**
+Does the instruction need refinement? Common issues:
+- Ambiguous language ("handle gracefully" vs specific behavior)
+- Missing examples (agent doesn't know what to do)
+- Conflicting instructions (do X, but also do Y)
+
+### Common Failure Patterns and Root Causes
+
+These patterns appear repeatedly. Recognize them and diagnose faster:
+
+| Symptom | Likely Root Cause | Diagnostic Question | Fix |
+|---------|------------------|---------------------|-----|
+| **Tool not called** | Agent didn't recognize request as requiring action | Does instruction mention this phrasing? Is example included? | Add synonyms, add example to instruction |
+| **Wrong tool called** | Ambiguous request; agent chose differently | Does request have multiple valid interpretations? | Clarify test case query or refine instruction |
+| **Right tool, wrong args** | Tool docstring unclear or missing examples | Does tool docstring show example usage? | Add detailed docstring with examples |
+| **Partial match only** | Response format mismatch; agent said something close | Does eval case check response text or only tool calls? | Check expected_tool_use vs expected response |
+| **Timeout/hanging** | Infinite loop in tool, LoopAgent, or callback | Does tool have max iterations? Any circular logic? | Add max_iterations, trace loops in callbacks |
+| **Empty response** | No matching tool found for intent | Does agent have tools needed? Are tools visible in instruction? | Add missing tool or clarify tool availability |
+| **Refusal ("I can't...")** | Guardrail/instruction conflict; agent refusing from caution | Does instruction say "never" something? Is guardrail too strict? | Review safety constraints vs requirements |
+
+### Real Debugging Example: The "Mark done" Failure
+
+Let's walk through a real failure and trace it:
+
+**Eval case**:
+```json
+{
+  "eval_id": "complete_task_first",
+  "conversation": [{
+    "user_content": {"text": "Mark the first task as done"},
+    "expected_tool_use": [{"name": "complete_task", "args": {"task_id": 1}}]
+  }]
+}
+```
+
+**Agent response**:
+```
+"Which task would you like to mark complete? Please give me the task ID."
+```
+
+**Initial diagnosis**: Agent asked for clarification instead of calling tool. But WHY?
+
+**Step 1 - Read diff**: Agent didn't call complete_task. This is clear.
+
+**Step 2 - Check query**: "Mark the first task as done"
+- Assumes "first task" = task ID 1
+- Assumes agent can infer this without session context
+- TEST PROBLEM or INSTRUCTION PROBLEM?
+
+**Step 3 - Trace calls**: No tool calls made. Agent went straight to asking for clarification.
+
+**Step 4 - Check state**: Before this request, was a task actually created? Does session state show a task with id=1?
+
+**Step 5 - Review instruction**:
+```
+"When users say 'complete', call complete_task with task ID"
+```
+
+The instruction doesn't say how to interpret "first task" as ID. The agent doesn't have a rule like "first = 1, second = 2."
+
+**Diagnosis**: Instruction is incomplete. Missing interpretation rule.
+
+**Fix**: Add to instruction:
+```
+Task ID interpretation:
+- "first task" or "task 1" → ID is 1
+- "second task" or "task 2" → ID is 2
+- "the task" (if only one exists) → ID is 1
+```
+
+Re-run: Agent now calls `complete_task(task_id=1)` and test passes.
+
+### Debugging Checklist
+
+When eval fails:
+
+- [ ] **Failure type identified** (tool not called, wrong tool, wrong args, format mismatch)
+- [ ] **Query clarity verified** (is test case ambiguous?)
+- [ ] **Tool call sequence checked** (correct order and arguments?)
+- [ ] **Session state confirmed** (state correct before tool runs?)
+- [ ] **Instruction reviewed** (does instruction cover this case?)
+- [ ] **Fix implemented** (which element changed?)
+- [ ] **Test re-run** (does it pass now?)
+
+## Exercise: Debug This Broken Agent
+
+You're going to experience a real debugging workflow. Here's a TaskManager agent that's failing 3 out of 5 eval cases. Your job: diagnose and fix each failure.
+
+### The Broken Agent Code
+
+```python
+from google.adk.agents import Agent
+from typing import List, Optional
+
+tasks: List[dict] = []
+
+def add_task(title: str) -> dict:
+    """Add a new task."""
+    task = {
+        "id": len(tasks) + 1,
+        "title": title,
+        "completed": False
+    }
+    tasks.append(task)
+    return {"status": "created", "id": task["id"]}
+
+def list_tasks() -> dict:
+    """List all tasks."""
+    return {"tasks": tasks, "count": len(tasks)}
+
+def complete_task(task_id: int) -> dict:
+    """Mark task as complete."""
+    for task in tasks:
+        if task["id"] == task_id:
+            task["completed"] = True
+            return {"status": "completed", "id": task_id}
+    return {"status": "error", "message": f"Task {task_id} not found"}
+
+def delete_task(task_id: int) -> dict:
+    """Delete a task."""
+    global tasks
+    task_to_delete = None
+    for task in tasks:
+        if task["id"] == task_id:
+            task_to_delete = task
+            break
+    if task_to_delete:
+        tasks.remove(task_to_delete)
+        return {"status": "deleted", "id": task_id}
+    return {"status": "error", "message": f"Task {task_id} not found"}
+
+# BUGGY AGENT - Notice the instruction problems
+root_agent = Agent(
+    name="task_manager",
+    model="gemini-2.5-flash",
+    instruction="""You are a task manager. Help users with their tasks.
+
+Use the right tool when asked. Always be helpful.""",
+    tools=[add_task, list_tasks, complete_task, delete_task]
+)
+```
+
+**Output:**
+```
+This agent has vague instructions. Notice:
+- No mapping between user requests and tools
+- No examples of what "helpful" means
+- No rules for interpreting natural language (like "first task")
+```
+
+### The Failing Eval Cases
+
+```json
+{
+  "eval_cases": [
+    {
+      "eval_id": "add_task",
+      "query": "Add a task called 'Buy milk'",
+      "expected_tool_use": [{"name": "add_task", "args": {"title": "Buy milk"}}]
+    },
+    {
+      "eval_id": "list_empty",
+      "query": "Show me my tasks",
+      "expected_tool_use": [{"name": "list_tasks", "args": {}}]
+    },
+    {
+      "eval_id": "complete_first",
+      "query": "Mark the first task as done",
+      "expected_tool_use": [{"name": "complete_task", "args": {"task_id": 1}}]
+    },
+    {
+      "eval_id": "delete_by_id",
+      "query": "Delete task 2",
+      "expected_tool_use": [{"name": "delete_task", "args": {"task_id": 2}}]
+    },
+    {
+      "eval_id": "error_handling",
+      "query": "Complete task 99",
+      "expected_tool_use": [{"name": "complete_task", "args": {"task_id": 99}}]
+    }
+  ]
+}
+```
+
+### Your Task
+
+1. **Run adk eval** and identify which cases fail
+2. **Use the debugging workflow** to diagnose each failure
+3. **Fix the agent instruction** to address root causes
+4. **Re-run adk eval** until all cases pass
+
+Here's what you'll discover:
+
+**Failure 1: List not recognized**
+- Symptom: "Show me my tasks" doesn't call list_tasks
+- Root cause: Instruction doesn't mention "show" as list synonym
+- Fix: Add "show, view, list" to instruction
+
+**Failure 2: Complete needs context**
+- Symptom: "Mark the first task as done" gets "Which task?"
+- Root cause: Instruction doesn't interpret "first" as task_id=1
+- Fix: Add task ID interpretation rules
+
+**Failure 3: Error case ignored**
+- Symptom: Complete task 99 called, but agent doesn't handle error gracefully
+- Root cause: Instruction doesn't say what to do with errors
+- Fix: Add error handling rule
+
+### The Fixed Agent Instruction
+
+```python
+root_agent = Agent(
+    name="task_manager",
+    model="gemini-2.5-flash",
+    instruction="""You are a TaskManager assistant. Help users manage their tasks.
+
+REQUEST MAPPING:
+- "add", "create", "new task" → Call add_task with title
+- "list", "show", "view", "what are my" → Call list_tasks
+- "complete", "finish", "mark done", "check off" → Call complete_task with task_id
+- "delete", "remove" → Call delete_task with task_id
+
+TASK ID INTERPRETATION:
+- "first task" or "task 1" → task_id=1
+- "second task" or "task 2" → task_id=2
+- If user mentions task title, find matching task ID
+- Never ask for clarification—interpret decisive""
+
+RESPONSE RULES:
+- ALWAYS call a tool—never respond with text only
+- For success: "Task '[title]' successfully [action]"
+- For error: "Task [id] not found. Current tasks: [list]"
+- Never say "I don't know which task"—ask list_tasks to see all tasks first""",
+    tools=[add_task, list_tasks, complete_task, delete_task]
+)
+```
+
+**Output:**
+```
+Fixed instruction:
+- Maps user language to specific tools
+- Interprets natural language (first, second, task title)
+- Defines error handling behavior
+- Enforces tool-calling rule (never text-only)
+```
+
+### Run the Fixed Version
+
+```bash
+adk eval ./task_manager.py ./evals/taskmanager_basics.test.json --print_detailed_results
+```
+
+**Output:**
+```
+Running evaluation: taskmanager_basics
+Total cases: 5
+Passed: 5
+Failed: 0
+
+All eval cases passed.
+```
+
+You've now experienced the complete debugging cycle: identify failure → diagnose root cause → fix instruction → re-run → pass.
+
+## Eval-Driven Iteration in Practice
+
+The debugging workflow above is powerful for single failures. But real development means iterating through multiple features, each with failing evals. Here's what the full iteration loop looks like in practice.
+
+### Feature Addition: Task Priority
+
+You want to add task priorities. Here's the workflow:
+
+**Phase 1: Write Eval Cases** (Monday morning)
+
+```json
+{
+  "eval_cases": [
+    {
+      "eval_id": "add_with_priority",
+      "query": "Add a high priority task: Review proposal",
+      "expected_tool_use": [
+        {
+          "name": "add_task",
+          "args": {
+            "title": "Review proposal",
+            "priority": "high"
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "list_by_priority",
+      "query": "Show me my high priority tasks",
+      "expected_tool_use": [
+        {
+          "name": "list_tasks",
+          "args": {"priority": "high"}
+        }
+      ]
+    },
+    {
+      "eval_id": "priority_default",
+      "query": "Add a task: Read email",
+      "expected_tool_use": [
+        {
+          "name": "add_task",
+          "args": {
+            "title": "Read email",
+            "priority": "medium"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+**Critical principle**: Write evals BEFORE changing agent code. This is your spec.
+
+**Phase 2: Run Eval (Monday 10am)**
+
+```bash
+adk eval ./task_manager.py ./evals/taskmanager_priority.test.json --print_detailed_results
+```
+
+**Output:**
+```
+Total cases: 3
+Passed: 0
+Failed: 3
+
+FAIL: add_with_priority
+Agent did not call add_task with priority parameter
+```
+
+All fail. Expected. Agent doesn't have priority feature yet.
+
+**Phase 3: Analyze Failures** (Monday 10:15am)
+
+Question: What needs to change?
+- Tool signature? (add_task needs priority parameter)
+- Agent instruction? (agent needs to recognize "high priority")
+- Tool implementation? (add_task needs to store priority)
+
+Answer: All three.
+
+**Phase 4: Implement Changes** (Monday 10:30am - 11:30am)
+
+Change 1: Update add_task signature
+```python
+def add_task(title: str, priority: str = "medium") -> dict:
+    """Add a new task.
+
+    Args:
+        title: Task name
+        priority: one of "low", "medium", "high" (default: "medium")
+    """
+    task = {
+        "id": len(tasks) + 1,
+        "title": title,
+        "priority": priority,
+        "completed": False
+    }
+    tasks.append(task)
+    return {"status": "created", "id": task["id"], "priority": task["priority"]}
+```
+
+Change 2: Update list_tasks signature
+```python
+def list_tasks(priority: Optional[str] = None) -> dict:
+    """List tasks, optionally filtered by priority.
+
+    Args:
+        priority: Filter by priority level (optional)
+    """
+    if priority:
+        filtered = [t for t in tasks if t["priority"] == priority]
+        return {"tasks": filtered, "count": len(filtered)}
+    return {"tasks": tasks, "count": len(tasks)}
+```
+
+Change 3: Update agent instruction
+```python
+instruction="""...
+REQUEST MAPPING:
+- "add", "create" with priority word → Call add_task with title and priority
+  - "high priority" or "urgent" → priority="high"
+  - "low priority" or "whenever" → priority="low"
+  - No priority mentioned → priority="medium" (default)
+- "show [priority] tasks" → Call list_tasks with that priority
+...
+"""
+```
+
+**Key principle**: Never change multiple things at once. You won't know what fixed it.
+
+**Phase 5: Re-run Eval** (Monday 11:30am)
+
+```bash
+adk eval ./task_manager.py ./evals/taskmanager_priority.test.json --print_detailed_results
+```
+
+**Output:**
+```
+Total cases: 3
+Passed: 2
+Failed: 1
+
+FAIL: list_by_priority
+Expected: list_tasks(priority="high")
+Actual: Agent responded "I'll show high priority tasks" but didn't call list_tasks
+```
+
+Progress! 2 of 3 passing. One more failure.
+
+**Phase 6: Debug the Remaining Failure** (Monday 11:45am)
+
+The agent didn't call list_tasks. Why?
+
+Check instruction: Does it mention "show [priority] tasks"?
+
+Discovered issue: Instruction says "show", but query says "Show me my high priority tasks". Agent might not recognize this pattern.
+
+Add more examples to instruction:
+```
+- "show my high priority tasks"
+- "list high priority tasks"
+- "what's important?"
+```
+
+**Phase 7: Re-run Again** (Monday 12:00pm)
+
+```bash
+adk eval ./task_manager.py ./evals/taskmanager_priority.test.json --print_detailed_results
+```
+
+**Output:**
+```
+Total cases: 3
+Passed: 3
+Failed: 0
+
+✓ All eval cases passed
+```
+
+Done. Feature complete. 1.5 hours from spec to passing eval.
+
+### The Iteration Loop Visualized
+
+```
+Write Evals (0 fail)
+    ↓
+Run adk eval (3 fail)
+    ↓
+Analyze failures (identify 3 changes needed)
+    ↓
+Implement ONE change (tools + instruction)
+    ↓
+Re-run adk eval (2 pass, 1 fail)
+    ↓
+Debug remaining failure (missing example)
+    ↓
+Implement fix
+    ↓
+Re-run adk eval (3 pass, 0 fail)
+    ↓
+Feature complete
+```
+
+### Key Insights from This Workflow
+
+**1. Evals are the spec**
+You never wondered "is this done?" because passing evals IS done. No ambiguity.
+
+**2. Iteration is tight**
+Each cycle takes 15-30 minutes. You get rapid feedback.
+
+**3. One change at a time**
+If you changed both tools AND instruction in one step and test failed, you wouldn't know which change broke it. Always change one thing, test, then change the next.
+
+**4. Debugging is systematic**
+You didn't guess. You read the failure, traced the cause, made targeted fix.
+
+**5. Progress is visible**
+0 → 2 → 3 passing. You see improvement. This maintains momentum.
+
+This is the reality of evaluation-driven development. Not a one-shot test phase at the end. It's the primary development loop.
+
 ## Integrating with pytest for CI/CD
 
 Eval cases are great for development. But in production, you need automated testing that integrates with your CI/CD pipeline. That's where `pytest` comes in.

@@ -369,6 +369,192 @@ pipeline = SequentialAgent(
 
 Always set `max_iterations`. Infinite loops waste API credits, block system resources, and frustrate users. Start conservative (3-5 iterations). Increase only after observing actual agent behavior and confirming convergence patterns. Monitor loop runtime—if iterations are taking 10+ seconds each, reconsider your approach or increase iterations further to allow more refinement time.
 
+## Exercise: Build a Code Review Loop
+
+Your first hands-on exercise: Create a LoopAgent that reviews code until quality criteria are met.
+
+**Specification:**
+Build a code review loop with these requirements:
+1. A quality checker that evaluates code on three dimensions: docstrings present, no TODO comments, cyclomatic complexity under 5
+2. Uses `exit_loop` when all criteria pass
+3. Sets `max_iterations=5` as safety limit
+4. An improver agent that addresses feedback
+
+**Starter Code:**
+```python
+from google.adk.agents import LlmAgent, LoopAgent
+from google.adk.tools import exit_loop
+
+def check_code_quality(code: str, checks_passed: dict) -> dict:
+    """Evaluate code against quality criteria."""
+    # Returns: {
+    #   "has_docstrings": bool,
+    #   "has_todos": bool,
+    #   "complexity_ok": bool,
+    #   "quality_score": 0-10,
+    #   "issues": [list of problems]
+    # }
+    pass
+
+def improve_code(code: str, issues: list, improved_code: str) -> dict:
+    """Apply improvements to code."""
+    return {
+        "original": code,
+        "improvements": issues,
+        "improved": improved_code
+    }
+
+code_reviewer = LlmAgent(
+    name="code_reviewer",
+    model="gemini-2.5-flash",
+    instruction="""You are a code quality reviewer.
+
+Review code and improve until:
+1. All functions have docstrings
+2. No TODO comments remain
+3. Cyclomatic complexity is manageable
+
+Steps:
+1. Call check_code_quality with the code
+2. If all checks pass: Call exit_loop
+3. If checks fail: Call improve_code with specific fixes
+4. Continue until quality criteria met""",
+    tools=[check_code_quality, improve_code, exit_loop]
+)
+
+code_quality_loop = LoopAgent(
+    name="code_review",
+    description="Review code until quality criteria met",
+    sub_agents=[code_reviewer],
+    max_iterations=5
+)
+```
+
+**Test Case:**
+```python
+messy_code = '''
+def process_data(x):
+    # TODO: add validation
+    if x > 0:
+        y = x * 2
+        if y > 100:
+            z = y / 10
+            if z > 5:
+                return z
+    return 0
+'''
+```
+
+**Expected Outcome:**
+- Iteration 1: Checker finds no docstring, TODO comment, high complexity → Improver adds docstring, removes TODO, refactors
+- Iteration 2: Checker re-evaluates improved code → All criteria pass → Calls exit_loop
+- Final code: Has docstring, no TODOs, cleaner structure
+
+**Your Task:**
+1. Implement `check_code_quality` to evaluate the three criteria
+2. Run the loop on the test case
+3. Verify it calls `exit_loop` before hitting iteration 5
+
+**Solution Reference:**
+
+See the quality loop example at `examples/chapter-35-google-adk/workflows/quality_loop.py` for a similar pattern applied to content. The key insight: the agent must understand when to call `exit_loop`. If your loop hits max_iterations without exiting, your quality criteria are either too strict or the agent instruction doesn't clearly specify the exit condition.
+
+---
+
+## Exercise: Debug an Infinite Loop
+
+This exercise teaches you to recognize and fix a loop that won't terminate.
+
+**The Buggy Code:**
+```python
+from google.adk.agents import LlmAgent, LoopAgent
+from google.adk.tools import exit_loop
+
+def evaluate_code(code: str) -> str:
+    """Check if code is good."""
+    score = calculate_quality_score(code)
+    if score >= 8:
+        return f"Quality score: {score}. Code is excellent."  # BUG: What's missing?
+    return f"Quality score: {score}. Needs improvement."
+
+code_improver = LlmAgent(
+    name="improver",
+    model="gemini-2.5-flash",
+    instruction="""Improve the code if needed.
+If the code is already good (quality >= 8), you're done.
+Otherwise, fix it.""",
+    tools=[evaluate_code, exit_loop]
+)
+
+refinement_loop = LoopAgent(
+    name="refiner",
+    sub_agents=[code_improver],
+    max_iterations=10
+)
+```
+
+**The Problem:**
+Run this loop and it never calls `exit_loop`, even when quality is good. The loop hits max_iterations (10) and stops, but it should have exited earlier.
+
+**Your Task:**
+1. **Identify the bug**: Why doesn't the loop exit when quality >= 8?
+2. **Write the fix**: What's missing from the code?
+3. **Test your understanding**: Explain why the agent needs explicit tool use, not just a text response.
+
+**Key Insight:**
+The agent reads `evaluate_code`'s response: "Quality score: 8.2. Code is excellent."
+
+The agent understands the message. It knows the code is good. But **the agent doesn't have a way to signal completion to the loop**. It needs to call the `exit_loop` tool.
+
+Returning a string like "Code is excellent" tells the user the result. But it doesn't tell the LoopAgent to stop looping.
+
+**Solution:**
+
+The `evaluate_code` function should not return a message. Instead, the agent should call `exit_loop` as a tool when quality is good:
+
+```python
+# BETTER: Use exit_loop tool when quality passes
+def check_quality(code: str) -> dict:
+    """Return evaluation result, not a message."""
+    score = calculate_quality_score(code)
+    return {
+        "score": score,
+        "passes": score >= 8,
+        "issues": identify_issues(code) if score < 8 else []
+    }
+
+code_improver = LlmAgent(
+    name="improver",
+    model="gemini-2.5-flash",
+    instruction="""You are a code quality agent.
+
+1. Call check_quality on the code
+2. Read the result:
+   - If passes=true: Call exit_loop (this signals the loop to stop)
+   - If passes=false: Fix the issues, then iterate
+
+IMPORTANT: You MUST call exit_loop when quality passes.
+Just saying "code is good" is not enough—the loop needs the exit_loop tool call.""",
+    tools=[check_quality, exit_loop]
+)
+```
+
+**Why this matters:**
+This is a critical distinction in agentic systems:
+- **Natural language output** (responses to the user) doesn't control loop flow
+- **Tool use** (calling exit_loop) does control loop flow
+
+The agent can understand when to exit. But it must express that understanding through a tool call, not through natural language.
+
+**Verification:**
+After making this fix, run the loop again. It should:
+1. Call `check_quality`
+2. See `passes=true`
+3. Call `exit_loop`
+4. Loop stops (within 2-3 iterations, not at max_iterations)
+
+---
+
 ## Try With AI
 
 ### Prompt 1: Define Quality Criteria

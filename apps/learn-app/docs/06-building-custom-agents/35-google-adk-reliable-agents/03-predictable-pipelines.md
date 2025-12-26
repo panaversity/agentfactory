@@ -453,6 +453,173 @@ pipeline = SequentialAgent(
 )
 ```
 
+## Practice: Design a Pipeline
+
+Before exploring with AI, practice designing workflows with concrete scenarios. These exercises build your dependency-analysis skills—the core ability for choosing between SequentialAgent, ParallelAgent, and nested workflows.
+
+### Exercise 1: Design a Content Moderation Pipeline
+
+You need a content moderation system that processes user-submitted comments. The system must:
+
+1. **Check for prohibited content** (words, patterns matching your policy)
+2. **Detect spam patterns** (repetitive text, too many links, known spam campaigns)
+3. **Verify user reputation** (is this user flagged for abuse history?)
+4. **Make final decision** (approve, flag, or block)
+
+**Design Questions:**
+
+1. Should these stages run in sequence or in parallel?
+2. If sequential, what's the optimal order? Why?
+3. What happens if step 2 (spam detection) flags content but step 1 (prohibited content check) passed? Should the pipeline continue?
+4. Could you run steps 1 and 2 in parallel? Why or why not?
+
+**Your Task:**
+
+1. Draw the pipeline structure using ASCII art (show stages and dependencies)
+2. Choose `SequentialAgent` or `ParallelAgent` (or both nested)
+3. Justify each choice in 1-2 sentences
+
+**Starter Code:**
+
+```python
+from google.adk.agents import LlmAgent, SequentialAgent, ParallelAgent
+
+# Sub-agents for moderation pipeline
+content_checker = LlmAgent(
+    name="content_checker",
+    model="gemini-2.5-flash",
+    instruction="Check for prohibited content using policy rules..."
+)
+
+spam_detector = LlmAgent(
+    name="spam_detector",
+    model="gemini-2.5-flash",
+    instruction="Detect spam patterns, repetitive content, link abuse..."
+)
+
+reputation_verifier = LlmAgent(
+    name="reputation_verifier",
+    model="gemini-2.5-flash",
+    instruction="Check user's reputation history and flag status..."
+)
+
+decision_maker = LlmAgent(
+    name="decision_maker",
+    model="gemini-2.5-flash",
+    instruction="Make final decision: approve, flag, or block based on all signals..."
+)
+
+# Fill in the blanks: Which agent type? Which agents in which order?
+moderation_pipeline = ???(
+    name="moderation",
+    description="???",
+    sub_agents=[
+        # Which agents go here? In what order?
+    ]
+)
+```
+
+**Solution:**
+
+<details>
+<summary>Click to reveal solution</summary>
+
+**Pipeline Structure:**
+
+```
+[content_checker]
+       ↓
+[spam_detector]
+       ↓
+[reputation_verifier]
+       ↓
+[decision_maker]
+```
+
+**Implementation:**
+
+```python
+moderation_pipeline = SequentialAgent(
+    name="moderation",
+    description="Content moderation: check prohibited content, detect spam, verify reputation, then decide.",
+    sub_agents=[
+        content_checker,
+        spam_detector,
+        reputation_verifier,
+        decision_maker
+    ]
+)
+```
+
+**Justification:**
+
+Each stage depends on previous results:
+- **content_checker runs first**: Fast early rejection for obvious violations
+- **spam_detector runs second**: Catches spam patterns after content passes (saves detection compute for clean content)
+- **reputation_verifier runs third**: Checks user history to contextualize findings from steps 1-2
+- **decision_maker runs last**: Receives all signals (content check result, spam score, reputation) to make final decision
+
+**Why not parallel?** Steps 1-3 output signals that decision_maker needs. Running them in parallel would mean decision_maker makes decisions blind (or decision_maker must wait for all anyway, negating parallelism benefit).
+
+**Alternative (more nuanced):** You could run content_checker and spam_detector in parallel (both read-only operations on the comment), then run reputation_verifier, then decision_maker:
+
+```python
+parallel_checks = ParallelAgent(
+    name="parallel_checks",
+    sub_agents=[content_checker, spam_detector]
+)
+
+moderation_pipeline = SequentialAgent(
+    name="moderation",
+    sub_agents=[
+        parallel_checks,
+        reputation_verifier,
+        decision_maker
+    ]
+)
+```
+
+This hybrid approach (Sequential with Parallel branches inside) is valid when the first two stages truly don't depend on each other but all downstream stages depend on both results.
+
+</details>
+
+---
+
+### Exercise 2: Pipeline vs LLM Routing Decision Table
+
+For each scenario, decide which approach is best: `SequentialAgent`, `ParallelAgent`, or **LLM routing** (where the model decides which agent to call). Then explain your reasoning.
+
+| Scenario | Your Choice | Why Sequential/Parallel/LLM? | Key Constraint |
+|----------|---|---|---|
+| **Email processing**: Spam filter → categorize (work/personal/promo) → route to folder | | | |
+| **Multi-language translation**: Translate English text to French, German, and Spanish simultaneously | | | |
+| **Customer service intent**: Request could be placing an order, returning a product, or asking a question | | | |
+| **Code review workflow**: Syntax check → security analysis → performance analysis → consolidate findings | | | |
+| **Document analysis**: Extract text, identify language, translate, summarize | | | |
+
+**Solution:**
+
+<details>
+<summary>Click to reveal</summary>
+
+| Scenario | Choice | Reasoning | Key Constraint |
+|----------|---|---|---|
+| **Email processing**: Spam filter → categorize → route | `SequentialAgent` | Each stage depends on previous: categorization needs non-spam mail; routing needs category. Order is fixed. | Stages must run in guaranteed order |
+| **Multi-language translation**: EN→FR, EN→DE, EN→ES | `ParallelAgent` | All three translations work independently from the same source. No dependencies between them. Run all simultaneously. | Independent tasks that don't depend on each other |
+| **Customer service intent**: Order vs return vs question | **LLM routing** | Request type determines which agent handles it. Model's decision about intent varies by request. You need flexibility, not fixed order. | Different requests take different paths |
+| **Code review workflow**: Syntax → security → performance → consolidate | `SequentialAgent` | Syntax must run first (catches obvious errors early, saves later analysis). Security and performance could be parallel, but consolidation must come last. Hybrid: `SequentialAgent([syntax_check, parallel_security_performance, consolidator])` | Dependencies: later stages need earlier outputs |
+| **Document analysis**: Extract → identify language → translate → summarize | `SequentialAgent` | Clear dependencies: must extract text first; can't identify language on nothing; can't translate without knowing language; can't summarize untranslated text. | Strict dependency chain: each stage needs previous output |
+
+**Key insight for choosing:**
+
+- **Use `SequentialAgent`** when: "Stage Y cannot run until Stage X is complete"
+- **Use `ParallelAgent`** when: "All stages work on the same input independently" (redundant checks, analysis tasks, gathering multiple opinions)
+- **Use LLM routing** when: "Different requests should take different paths" (intent-based branching, optional stages)
+
+</details>
+
+---
+
 ## Try With AI
 
 Use your AI companion to deepen your understanding of workflow design.

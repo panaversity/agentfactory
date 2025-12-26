@@ -371,6 +371,410 @@ This is the difference between fragile and reliable agents.
 
 **The lesson**: Before you write a single line of agent code, write the eval cases. Define the contract. Measure success. Build with confidence.
 
+## Hands-On Exercises
+
+Now it's your turn. Write eval cases by hand. No agent code. No AI help yet. Just clarity about what "correct" means.
+
+### Exercise 1: Write Eval Cases for a Customer Support Agent
+
+**Scenario**: You're building a customer support agent that handles product questions, returns, and escalations.
+
+**Agent Requirements**:
+- Answer product questions (use `search_product_db` tool)
+- Process returns within 30 days (use `initiate_return` tool)
+- Decline returns after 30 days without escalating
+- Escalate billing questions to a human (use `escalate_to_human` tool)
+- Never promise refunds without manager approval
+
+**Your Task**:
+Write 5 eval cases in JSON format covering these scenarios:
+1. Simple product question ("What's the warranty on the laptop?")
+2. Return request within 30 days ("I want to return my purchase from last week")
+3. Return request after 30 days ("Can I return this item from 2 months ago?")
+4. Billing question ("Why was I charged twice?")
+5. Refund demand ("Give me a refund or I'm calling my credit card company")
+
+**Starter Template**:
+```json
+{
+  "eval_set_id": "customer_support_basics",
+  "eval_cases": [
+    {
+      "eval_id": "product_question",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "FILL IN USER QUESTION"}],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [{"text": "FILL IN EXPECTED RESPONSE"}],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {"name": "FILL IN TOOL NAME", "args": {"FILL IN ARGS"}}
+            ]
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "customer_support",
+        "user_id": "test_user"
+      }
+    }
+  ]
+}
+```
+
+**What to Focus On**:
+- What tool should the agent call for each scenario?
+- What arguments should that tool receive?
+- What should the agent's response message be?
+- For the refund demand: What tool (if any) should be called?
+
+**Worked Solution**:
+
+<details>
+<summary>Click to reveal solution</summary>
+
+```json
+{
+  "eval_set_id": "customer_support_basics",
+  "eval_cases": [
+    {
+      "eval_id": "product_question",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "What's the warranty on the laptop?"}],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [{"text": "The laptop comes with a 1-year manufacturer's warranty covering defects in materials and workmanship."}],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {"name": "search_product_db", "args": {"product": "laptop", "query": "warranty"}}
+            ]
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "customer_support",
+        "user_id": "test_user"
+      }
+    },
+    {
+      "eval_id": "return_within_30_days",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "I want to return my purchase from last week"}],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [{"text": "I can help with that. I'm initiating a return for your recent purchase. You'll receive a prepaid shipping label via email."}],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {"name": "initiate_return", "args": {"user_id": "test_user", "reason": "customer_requested"}}
+            ]
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "customer_support",
+        "user_id": "test_user"
+      }
+    },
+    {
+      "eval_id": "return_after_30_days",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "Can I return this item from 2 months ago?"}],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [{"text": "Unfortunately, our return window is 30 days. Your purchase is outside that period. However, I can escalate this to a manager for review if you believe there's an exception."}],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "customer_support",
+        "user_id": "test_user"
+      }
+    },
+    {
+      "eval_id": "billing_escalation",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "Why was I charged twice?"}],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [{"text": "I'm escalating your billing concern to our support team. A specialist will contact you within 24 hours to investigate the duplicate charge."}],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {"name": "escalate_to_human", "args": {"issue_type": "billing", "priority": "high"}}
+            ]
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "customer_support",
+        "user_id": "test_user"
+      }
+    },
+    {
+      "eval_id": "refund_demand",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "Give me a refund or I'm calling my credit card company"}],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [{"text": "I understand your frustration. I can't authorize a refund, but I can escalate this to a manager who can review your case and discuss options with you."}],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {"name": "escalate_to_human", "args": {"issue_type": "refund_request", "priority": "high"}}
+            ]
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "customer_support",
+        "user_id": "test_user"
+      }
+    }
+  ]
+}
+```
+
+**Key Observations**:
+
+1. **Product Question**: Uses `search_product_db` to retrieve factual information. Agent doesn't guess—it queries the source.
+
+2. **Within 30 Days**: Calls `initiate_return` immediately. The agent trusts the user's statement about timing (in a real system, this would verify purchase date).
+
+3. **After 30 Days**: This is the critical test. The agent does NOT call `initiate_return`. Instead, it explains the policy and offers escalation. This prevents the agent from accidentally processing invalid returns.
+
+4. **Billing Issue**: Immediately escalates. The agent doesn't try to debug payment systems—that's not its domain.
+
+5. **Refund Demand**: The agent resists making a promise it can't keep. It escalates instead of calling `initiate_return` or promising a refund. This protects the company.
+
+**Why Each Case Matters**:
+- Case 1 validates normal operation (happy path)
+- Case 2 validates happy path with constraints
+- Case 3 validates boundary condition (30-day rule)
+- Case 4 validates domain limitation (billing = escalate)
+- Case 5 validates safety guardrail (no unauthorized promises)
+
+If your agent passes all 5 eval cases, it handles basic support correctly AND respects business rules.
+
+</details>
+
+---
+
+### Exercise 2: Spot the Missing Eval Case
+
+**Scenario**: Here's a set of eval cases for a scheduling agent. The agent helps users book meetings.
+
+```json
+{
+  "eval_set_id": "scheduling_basics",
+  "eval_cases": [
+    {
+      "eval_id": "book_morning_meeting",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "Schedule a meeting tomorrow at 10 AM"}],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [{"text": "Meeting scheduled for tomorrow at 10:00 AM"}],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {"name": "schedule_meeting", "args": {"time": "10:00", "date": "tomorrow"}}
+            ]
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "scheduling",
+        "user_id": "test_user"
+      }
+    },
+    {
+      "eval_id": "book_afternoon_meeting",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "I need a meeting at 2 PM"}],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [{"text": "Meeting scheduled for 2:00 PM"}],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {"name": "schedule_meeting", "args": {"time": "14:00", "date": "today"}}
+            ]
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "scheduling",
+        "user_id": "test_user"
+      }
+    },
+    {
+      "eval_id": "book_evening_meeting",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "Schedule a meeting at 6 PM next week"}],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [{"text": "Meeting scheduled for 6:00 PM next week"}],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {"name": "schedule_meeting", "args": {"time": "18:00", "date": "next_week"}}
+            ]
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "scheduling",
+        "user_id": "test_user"
+      }
+    }
+  ]
+}
+```
+
+**Your Task**:
+List 3-5 scenarios that could break this agent but aren't tested. Think about:
+- Edge cases (unusual times, dates)
+- Business rules (working hours, holidays)
+- Conflicts (double-booking)
+- Ambiguity (vague requests)
+- Boundaries (past dates, too far in future)
+
+**Worked Solution**:
+
+<details>
+<summary>Click to reveal solution</summary>
+
+**Missing Eval Cases**:
+
+1. **Scheduling in the Past**
+   ```
+   Query: "Schedule a meeting tomorrow at 2 AM"
+   Expected: Agent should reject or clarify (2 AM is unusual; may indicate user error)
+   Why it matters: Without this test, the agent might accept any time, even 3 AM
+   ```
+
+2. **Double-Booking (Conflict Detection)**
+   ```
+   Query: "Schedule another meeting at 10 AM tomorrow" (assuming first meeting already scheduled)
+   Expected: Agent should either:
+     a) Reject if user already has 10 AM meeting
+     b) Ask for confirmation before overwriting
+   Why it matters: Without this test, the agent might silently schedule over existing meetings
+   ```
+
+3. **Timezone Ambiguity**
+   ```
+   Query: "Schedule a meeting at 3 PM" (without date)
+   Expected: Agent should ask for clarification (which day?) rather than assume "today"
+   Why it matters: Without this test, the agent might guess the wrong date
+   ```
+
+4. **Outside Business Hours**
+   ```
+   Query: "Schedule a meeting at 11 PM"
+   Expected: Agent should warn (outside normal hours) or ask for confirmation
+   Why it matters: Without this test, the agent might schedule meetings at unreasonable times
+   ```
+
+5. **Vague Date References**
+   ```
+   Query: "Schedule a meeting soon"
+   Expected: Agent should ask for clarification ("this week?" "next month?")
+   Why it matters: Without this test, the agent might pick an arbitrary date
+   ```
+
+**Why These Matter**:
+
+The original 3 eval cases only test the "happy path"—clean requests with clear dates and times. But production agents need to handle ambiguity, constraints, and edge cases.
+
+The scheduling agent with just these 3 tests might:
+- Schedule meetings at 2 AM without warning
+- Silently overwrite existing meetings
+- Assume "today" when user says "at 3 PM" (different day than intended)
+- Schedule at 11 PM without questioning
+- Guess dates when user is vague
+
+**Lesson**: Comprehensive eval cases catch not just whether the agent "works" but whether it works *correctly in production*.
+
+</details>
+
+---
+
+### Exercise 3: Design Eval Cases for Your Own Agent
+
+**Your Task**:
+Pick a real (or hypothetical) agent you'd like to build. Write 5 eval cases in JSON format.
+
+**Domains to Choose From** (or use your own):
+- **Email Assistant**: Draft, send, search emails with safety checks
+- **Data Analysis**: Query datasets, generate charts, handle ambiguous requests
+- **Code Review**: Analyze code, suggest improvements, flag security issues
+- **Inventory Management**: Check stock, place orders, manage suppliers
+- **Onboarding Bot**: Answer new employee questions, provide resources, escalate to HR
+
+**Starter Questions**:
+1. What are 3 core operations this agent must perform?
+2. What are 2-3 edge cases or safety concerns?
+3. What information does the agent need to ask for vs. what can it infer?
+
+**What to Deliver**:
+A valid JSON file with:
+- 5 `eval_cases` (minimum)
+- Clear `eval_id` names describing the scenario
+- Specific user queries
+- Expected tool calls with realistic arguments
+- Expected response text
+
+**Reflection Questions** (answer in text):
+- Which eval case tests a "happy path" scenario?
+- Which eval case tests a boundary or constraint?
+- Which eval case tests a safety rule?
+- What's one edge case you didn't write a test for?
+
+---
+
 ## Try With AI
 
 Use your AI companion to deepen your understanding of evaluation-first thinking.

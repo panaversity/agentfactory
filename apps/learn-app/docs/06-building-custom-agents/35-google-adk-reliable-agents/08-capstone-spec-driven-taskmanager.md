@@ -982,6 +982,634 @@ Your TaskManager isn't just an agent. It's a **Digital FTE**—a production-read
 - Deploys to managed infrastructure
 - Can be monitored, scaled, and monetized
 
+## Hands-On Exercises: Extend and Validate Your TaskManager
+
+Now that you have a working TaskManager Digital FTE, deepen your mastery through hands-on extensions and validation.
+
+### Exercise 1: Add Task Priorities and Due Date Management (Guided - 200 lines)
+
+Your TaskManager has basic priority support, but it lacks deadline-aware features. Extend it with intelligent priority management and due date handling.
+
+**Requirements:**
+- New tools: `set_priority`, `set_due_date`, `get_overdue_tasks`, `suggest_priority_by_deadline`
+- New callback: `validate_due_date` (must be future date)
+- Block: Cannot set critical task due date in the past
+- Eval cases: Each feature validated with 2+ cases
+
+**Implementation Steps:**
+
+**Step 1: Write Eval Cases BEFORE Implementation**
+
+Create `evals/taskmanager_priorities.json`:
+
+```json
+{
+  "eval_set_id": "taskmanager_priorities",
+  "eval_cases": [
+    {
+      "eval_id": "set_task_priority_to_critical",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "Set task 1 to critical priority"}],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [{"text": "Task 1 updated to critical priority"}],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "set_priority",
+                "args": {
+                  "task_id": 1,
+                  "priority": "critical"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "session_input": {"app_name": "taskmanager", "user_id": "user_test_001"}
+    },
+    {
+      "eval_id": "set_valid_future_due_date",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "Set task 1 due date to 2025-12-31"}],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [{"text": "Due date updated to 2025-12-31"}],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "set_due_date",
+                "args": {
+                  "task_id": 1,
+                  "due_date": "2025-12-31"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "session_input": {"app_name": "taskmanager", "user_id": "user_test_001"}
+    },
+    {
+      "eval_id": "get_overdue_tasks",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "Show me overdue tasks"}],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [{"text": "You have 0 overdue tasks"}],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "get_overdue_tasks"
+              }
+            ]
+          }
+        }
+      ],
+      "session_input": {"app_name": "taskmanager", "user_id": "user_test_001"}
+    },
+    {
+      "eval_id": "reject_past_due_date",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "Set task 1 due date to 2020-01-01"}],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [{"text": "Cannot set due date in the past"}],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": []
+          }
+        }
+      ],
+      "session_input": {"app_name": "taskmanager", "user_id": "user_test_001"}
+    },
+    {
+      "eval_id": "suggest_priority_by_deadline",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "What priority should task 1 be with due date 2025-12-26?"}],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [{"text": "Today is 2025-12-26. This task is due TODAY - recommend critical priority"}],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "suggest_priority_by_deadline",
+                "args": {
+                  "task_id": 1
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "session_input": {"app_name": "taskmanager", "user_id": "user_test_001"}
+    }
+  ]
+}
+```
+
+Run eval to verify spec clarity:
+
+```bash
+adk eval ./taskmanager ./evals/taskmanager_priorities.json
+```
+
+Expected: 0/5 passed (agent not yet extended—this is correct).
+
+**Step 2: Add New Tools to `tools.py`**
+
+Add these functions to your tools.py:
+
+```python
+def set_priority(
+    task_id: int,
+    priority: str,
+    tool_context: ToolContext = None
+) -> Dict[str, Any]:
+    """Set or update a task's priority level.
+
+    Args:
+        task_id: ID of task to update
+        priority: 'low', 'normal', 'high', 'critical'
+        tool_context: Session context
+
+    Returns:
+        Updated task or error
+    """
+    valid_priorities = ["low", "normal", "high", "critical"]
+    if priority not in valid_priorities:
+        return {
+            "status": "error",
+            "message": f"Invalid priority. Use: {', '.join(valid_priorities)}"
+        }
+
+    tasks = tool_context.state.get("tasks", [])
+    for task in tasks:
+        if task["id"] == task_id:
+            old_priority = task.get("priority", "normal")
+            task["priority"] = priority
+            task["updated_at"] = datetime.now().isoformat()
+            tool_context.state["tasks"] = tasks
+            return {
+                "status": "updated",
+                "task_id": task_id,
+                "old_priority": old_priority,
+                "new_priority": priority,
+                "task": task
+            }
+
+    return {"status": "error", "message": f"Task {task_id} not found"}
+
+
+def set_due_date(
+    task_id: int,
+    due_date: str,
+    tool_context: ToolContext = None
+) -> Dict[str, Any]:
+    """Set or update a task's due date.
+
+    Args:
+        task_id: ID of task to update
+        due_date: ISO format date (YYYY-MM-DD)
+        tool_context: Session context
+
+    Returns:
+        Updated task or error
+    """
+    try:
+        from datetime import datetime
+        due_datetime = datetime.fromisoformat(due_date)
+    except ValueError:
+        return {
+            "status": "error",
+            "message": f"Invalid due date format: '{due_date}'. Use YYYY-MM-DD."
+        }
+
+    # Check if date is in the past
+    if due_datetime.date() < datetime.now().date():
+        return {
+            "status": "error",
+            "message": f"Cannot set due date in the past: '{due_date}'"
+        }
+
+    tasks = tool_context.state.get("tasks", [])
+    for task in tasks:
+        if task["id"] == task_id:
+            task["due_date"] = due_date
+            task["updated_at"] = datetime.now().isoformat()
+            tool_context.state["tasks"] = tasks
+            return {
+                "status": "updated",
+                "task_id": task_id,
+                "due_date": due_date,
+                "task": task
+            }
+
+    return {"status": "error", "message": f"Task {task_id} not found"}
+
+
+def get_overdue_tasks(tool_context: ToolContext = None) -> Dict[str, Any]:
+    """Get all tasks with due dates in the past.
+
+    Args:
+        tool_context: Session context
+
+    Returns:
+        List of overdue tasks
+    """
+    from datetime import datetime
+    today = datetime.now().date()
+    tasks = tool_context.state.get("tasks", [])
+
+    overdue = []
+    for task in tasks:
+        if task.get("due_date") and not task.get("completed"):
+            try:
+                due_date = datetime.fromisoformat(task["due_date"]).date()
+                if due_date < today:
+                    overdue.append({**task, "days_overdue": (today - due_date).days})
+            except ValueError:
+                pass
+
+    return {
+        "status": "success",
+        "overdue_tasks": overdue,
+        "count": len(overdue)
+    }
+
+
+def suggest_priority_by_deadline(
+    task_id: int,
+    tool_context: ToolContext = None
+) -> Dict[str, Any]:
+    """Suggest priority level based on task's due date urgency.
+
+    Args:
+        task_id: ID of task
+        tool_context: Session context
+
+    Returns:
+        Suggested priority and reasoning
+    """
+    from datetime import datetime, timedelta
+
+    tasks = tool_context.state.get("tasks", [])
+    today = datetime.now().date()
+
+    for task in tasks:
+        if task["id"] == task_id:
+            due_date_str = task.get("due_date")
+            if not due_date_str:
+                return {
+                    "status": "success",
+                    "task_id": task_id,
+                    "suggested_priority": "normal",
+                    "reason": "No due date set. Recommend 'normal' priority."
+                }
+
+            try:
+                due_date = datetime.fromisoformat(due_date_str).date()
+                days_until_due = (due_date - today).days
+
+                if days_until_due < 0:
+                    suggested = "critical"
+                    reason = f"Task is {abs(days_until_due)} days overdue. Recommend CRITICAL priority."
+                elif days_until_due == 0:
+                    suggested = "critical"
+                    reason = "Due TODAY. Recommend CRITICAL priority."
+                elif days_until_due <= 3:
+                    suggested = "high"
+                    reason = f"Due in {days_until_due} days. Recommend HIGH priority."
+                elif days_until_due <= 7:
+                    suggested = "normal"
+                    reason = f"Due in {days_until_due} days. NORMAL priority sufficient."
+                else:
+                    suggested = "low"
+                    reason = f"Due in {days_until_due} days. LOW priority acceptable."
+
+                return {
+                    "status": "success",
+                    "task_id": task_id,
+                    "due_date": due_date_str,
+                    "days_until_due": days_until_due,
+                    "suggested_priority": suggested,
+                    "reason": reason
+                }
+
+            except ValueError:
+                return {
+                    "status": "error",
+                    "message": f"Invalid due date format in task {task_id}"
+                }
+
+    return {"status": "error", "message": f"Task {task_id} not found"}
+```
+
+**Step 3: Add Validation Callback to `callbacks.py`**
+
+Add this validation to the `protect_critical_tasks` callback:
+
+```python
+    # Validate due_date if provided (additional check for critical tasks)
+    if tool.name == "set_due_date":
+        task_id = args.get("task_id")
+        due_date = args.get("due_date")
+        tasks = tool_context.state.get("tasks", [])
+
+        # Find the task
+        for task in tasks:
+            if task["id"] == task_id:
+                # If task is critical, don't allow past dates (extra safety)
+                if task.get("priority") == "critical":
+                    try:
+                        from datetime import datetime
+                        due_datetime = datetime.fromisoformat(due_date).date()
+                        if due_datetime < datetime.now().date():
+                            return {
+                                "status": "error",
+                                "message": f"Cannot set CRITICAL task due date in past. Use future date."
+                            }
+                    except ValueError:
+                        return {
+                            "status": "error",
+                            "message": f"Invalid due date format: '{due_date}'. Use YYYY-MM-DD."
+                        }
+                break
+```
+
+**Step 4: Register New Tools in `agent.py`**
+
+Update the `executor_agent` to include new tools:
+
+```python
+from tools import (
+    add_task, list_tasks, complete_task, delete_task, edit_task, search_tasks,
+    set_priority, set_due_date, get_overdue_tasks, suggest_priority_by_deadline
+)
+
+executor_agent = LlmAgent(
+    name="executor",
+    model="gemini-2.5-flash",
+    instruction="""You are the TaskManager executor. Given a classified operation and parameters:
+
+1. Call the appropriate tool with extracted parameters
+2. Confirm the operation to the user
+3. Show updated task state if relevant
+
+Tools available:
+- Core: add_task, list_tasks, complete_task, delete_task, edit_task, search_tasks
+- Priorities: set_priority, set_due_date, get_overdue_tasks, suggest_priority_by_deadline
+
+Always confirm the action and show results clearly.
+""",
+    tools=[
+        add_task, list_tasks, complete_task, delete_task, edit_task, search_tasks,
+        set_priority, set_due_date, get_overdue_tasks, suggest_priority_by_deadline
+    ],
+    before_tool_callback=protect_critical_tasks,
+    description="Execute classified TaskManager operations"
+)
+```
+
+**Step 5: Run Eval Cases Until 100% Pass**
+
+```bash
+adk eval ./taskmanager ./evals/taskmanager_priorities.json
+```
+
+Expected output:
+
+```
+Running 5 eval cases...
+✓ set_task_priority_to_critical — PASSED
+✓ set_valid_future_due_date — PASSED
+✓ get_overdue_tasks — PASSED
+✓ reject_past_due_date — PASSED
+✓ suggest_priority_by_deadline — PASSED
+
+5/5 passed (100%)
+```
+
+**Step 6: Add Integration Tests**
+
+Add to `tests/test_integration.py`:
+
+```python
+class TestPriorityFeatures:
+    """Test priority and due date management."""
+
+    @pytest.mark.asyncio
+    async def test_set_task_priority(self, runner, initial_state):
+        """User can set task priority."""
+        response = await runner.run_debug(
+            "Set task 1 to critical priority",
+            initial_state=initial_state
+        )
+        assert "critical" in response.lower() or "updated" in response.lower()
+
+    @pytest.mark.asyncio
+    async def test_set_future_due_date(self, runner, initial_state):
+        """User can set valid future due dates."""
+        response = await runner.run_debug(
+            "Set task 1 due date to 2025-12-31",
+            initial_state=initial_state
+        )
+        assert "updated" in response.lower() or "2025-12-31" in response
+
+    @pytest.mark.asyncio
+    async def test_reject_past_due_date(self, runner, initial_state):
+        """Past due dates are rejected."""
+        response = await runner.run_debug(
+            "Set task 1 due date to 2020-01-01",
+            initial_state=initial_state
+        )
+        assert "past" in response.lower() or "invalid" in response.lower()
+
+    @pytest.mark.asyncio
+    async def test_get_overdue_tasks(self, runner, initial_state):
+        """User can retrieve overdue tasks."""
+        response = await runner.run_debug(
+            "Show overdue tasks",
+            initial_state=initial_state
+        )
+        assert "overdue" in response.lower() or "tasks" in response.lower()
+```
+
+**Validation checklist:**
+- [ ] All 5 eval cases pass
+- [ ] Callback prevents past due dates
+- [ ] Critical tasks cannot have past due dates (extra safety layer)
+- [ ] Integration tests pass (4 new tests)
+- [ ] New tools respect SessionService state
+
+---
+
+### Exercise 2: Design Your Own Agent Extension (Open-Ended - 150 lines)
+
+Pick a domain you work in and design a domain-specific agent extension for TaskManager. This is your capstone project.
+
+**Template:**
+
+**1. Domain Selection**
+
+Choose one:
+- [ ] **Legal/Compliance**: Track regulatory deadlines, flag conflicts of interest
+- [ ] **Finance/Accounting**: Categorize expenses, flag suspicious patterns, automate reconciliation
+- [ ] **Healthcare**: Track patient care tasks, flag medication scheduling conflicts
+- [ ] **SaaS Operations**: Track customer onboarding steps, flag blocked deployments
+- [ ] **Education**: Manage student submissions, flag academic integrity issues
+- [ ] Your own domain
+
+**2. Core Tools (Design 4-6)**
+
+For your domain, what tools must the agent have? List them:
+
+| Tool Name | Purpose | Inputs | Outputs |
+|-----------|---------|--------|---------|
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+
+Example (Legal domain):
+| Tool Name | Purpose | Inputs | Outputs |
+|-----------|---------|--------|---------|
+| `check_statute_of_limitations` | Verify deadline hasn't passed | case_id, deadline_date | days_remaining, is_expired |
+| `flag_conflict_of_interest` | Detect client conflicts | task_id, client_name | conflict_risk (low/high), reasoning |
+
+**3. Safety Requirements (Design 2-3 Callbacks)**
+
+What could go wrong in your domain? Design callbacks to prevent it:
+
+| Risk | Callback Type | Logic |
+|------|---------------|-------|
+| Accidental deletion of critical data | `before_tool` | Block delete on protected items |
+| Entering invalid/missing required data | `before_model` | Validate inputs before LLM sees them |
+| [Your domain-specific risk] | | |
+
+**4. Eval Cases (Write 5-7)**
+
+Write eval cases covering:
+- Happy path (normal operation)
+- Edge cases (boundary conditions)
+- Safety behavior (risk prevention)
+
+Template eval case:
+
+```json
+{
+  "eval_id": "describe_your_test_case",
+  "conversation": [
+    {
+      "user_content": {
+        "parts": [{"text": "User asks the agent to do something"}],
+        "role": "user"
+      },
+      "final_response": {
+        "parts": [{"text": "Agent responds with result"}],
+        "role": "model"
+      },
+      "intermediate_data": {
+        "tool_uses": [
+          {
+            "name": "tool_name",
+            "args": {"param": "value"}
+          }
+        ]
+      }
+    }
+  ],
+  "session_input": {"app_name": "taskmanager", "user_id": "user_test_001"}
+}
+```
+
+**5. Deployment Target**
+
+Where will this agent run?
+- [ ] Vertex AI Agent Engine (managed service)
+- [ ] Cloud Run (containerized)
+- [ ] Local development (in-process)
+
+Why did you choose this?
+
+**6. Integration Points**
+
+How does your domain-specific agent integrate with TaskManager's core?
+- Does it create new tasks? Modify existing tasks?
+- Does it require new session state? (e.g., domain-specific user preferences)
+- Does it hook into existing callbacks or create new ones?
+
+**Rubric (Self-Assessment)**
+
+- [ ] **Tools use ToolContext for state** — Domain data persists across operations
+- [ ] **At least one LoopAgent or SequentialAgent** — Workflow is multi-step, not single-shot
+- [ ] **Callbacks prevent at least 2 attack vectors** — Safety is architectural
+- [ ] **Eval cases cover edge cases, not just happy path** — Comprehensive specification
+- [ ] **Deployment config included** — Ready to move to production
+- [ ] **No hallucinated facts** — All domain knowledge is researched
+
+**Submission:**
+
+Document your design in a single file `my-domain-taskmanager.md`:
+
+```markdown
+# [Your Domain] TaskManager Extension
+
+## Domain: [Selected Domain]
+
+### Core Tools
+
+[Your 4-6 tools with specifications]
+
+### Safety Requirements
+
+[Your 2-3 callbacks with logic]
+
+### Eval Cases
+
+[Your 5-7 eval cases in JSON or pseudo-JSON]
+
+### Deployment Architecture
+
+[Your choice of infrastructure and reasoning]
+
+### Integration with TaskManager Core
+
+[How domain-specific agent composes with existing system]
+
+### Testing Strategy
+
+[How you'll verify your agent before deployment]
+```
+
+This is YOUR capstone. No solution provided—this is where you apply everything you've learned to your world.
+
+---
+
 ## Try With AI: Extend Your TaskManager
 
 You have a working TaskManager Digital FTE. Now extend it based on your domain.
