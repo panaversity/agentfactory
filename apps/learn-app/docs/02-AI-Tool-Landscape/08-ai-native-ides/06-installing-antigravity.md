@@ -176,8 +176,9 @@ Before installing, verify:
 
 ## Part 4: Platform-Specific Installation
 
-### macOS Installation
+::::os-tabs
 
+::macos
 **Step 1: Download Antigravity**
 
 1. Visit [antigravity.google.com/download](https://antigravity.google.com/download) (or equivalent beta link)
@@ -211,8 +212,7 @@ antigravity
 
 **Verification**: Antigravity launches, showing welcome screen with Agent Manager, Editor, and Browser panels.
 
-### Linux Installation
-
+::linux
 Antigravity provides multiple installation methods for Linux:
 
 **Option 1: Using AppImage (Recommended)**
@@ -273,8 +273,7 @@ antigravity
 
 **Verification**: Run `antigravity --version` to confirm installation.
 
-### Windows Installation
-
+::windows
 **Step 1: Check WSL2 (if needed)**
 
 Some Antigravity features work better with WSL2 (Windows Subsystem for Linux 2). If you plan heavy terminal work with agents:
@@ -312,6 +311,8 @@ antigravity
 ```
 
 **Verification**: Antigravity launches with welcome screen. If it does not launch, check Event Viewer for errors or re-run installer as Administrator.
+
+::::
 
 ---
 

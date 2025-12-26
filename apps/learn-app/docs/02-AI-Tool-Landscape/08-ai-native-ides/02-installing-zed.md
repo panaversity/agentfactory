@@ -36,8 +36,9 @@ Install Zed on your platform, connect to an AI provider, verify AI assistance, a
 
 ## Part 1: Platform-Specific Installation
 
-### macOS Installation
+::::os-tabs
 
+::macos
 Using Homebrew:
 ```bash
 brew install zed
@@ -46,8 +47,7 @@ zed
 
 Or download from zed.dev/download and drag to Applications.
 
-### Linux Installation
-
+::linux
 Run the install script:
 ```bash
 curl https://zed.dev/install.sh | sh
@@ -56,12 +56,13 @@ zed
 
 Or use your package manager (apt, dnf, pacman) or AppImage.
 
-### Windows Installation
-
+::windows
 Download .msi from zed.dev/download and run, or:
 ```powershell
 winget install zed
 ```
+
+::::
 
 ---
 

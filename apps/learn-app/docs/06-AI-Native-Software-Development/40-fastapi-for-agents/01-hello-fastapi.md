@@ -95,19 +95,30 @@ This creates a proper Python project with `pyproject.toml` for dependency manage
 
 ### Step 2: Create and Activate the Virtual Environment
 
-On macOS/Linux:
-
 ```bash
 uv venv
+```
+
+Activate the virtual environment:
+
+::::os-tabs
+
+::macos
+```bash
 source .venv/bin/activate
 ```
 
-On Windows:
-
+::linux
 ```bash
-uv venv
+source .venv/bin/activate
+```
+
+::windows
+```powershell
 .venv\Scripts\activate
 ```
+
+::::
 
 **Note**: With recent Python versions, `uv` commands work without manual activation, but activating ensures your shell recognizes project dependencies.
 

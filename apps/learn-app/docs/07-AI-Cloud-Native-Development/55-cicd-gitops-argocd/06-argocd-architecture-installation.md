@@ -253,8 +253,9 @@ The CLI lets you manage ArgoCD from the command line. You can sync applications,
 
 ### Step 1: Install the CLI
 
-On macOS:
+::::os-tabs
 
+::macos
 ```bash
 brew install argocd
 ```
@@ -266,8 +267,7 @@ brew install argocd
 🍺  /opt/homebrew/Cellar/argocd/3.2.2: 8 files, 125.5MB
 ```
 
-On Linux:
-
+::linux
 ```bash
 curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v3.5.0/argocd-linux-amd64
 chmod +x /usr/local/bin/argocd
@@ -277,6 +277,20 @@ chmod +x /usr/local/bin/argocd
 ```
 (no output on success)
 ```
+
+::windows
+```powershell
+# Download from GitHub releases
+Invoke-WebRequest -Uri "https://github.com/argoproj/argo-cd/releases/download/v3.5.0/argocd-windows-amd64.exe" -OutFile argocd.exe
+Move-Item argocd.exe C:\Windows\System32\argocd.exe
+```
+
+Or using Chocolatey:
+```powershell
+choco install argocd-cli
+```
+
+::::
 
 Verify the installation:
 
