@@ -314,8 +314,54 @@ aside[class*='sidebar'] .menu__link--active {
 }
 
 /* ============================================================================
-   10. MOBILE SIDEBAR
+   10. MOBILE SIDEBAR (Hamburger Menu Overlay)
    ============================================================================ */
+
+/* Docusaurus mobile sidebar (navbar-sidebar) - the overlay that appears when hamburger is clicked */
+.navbar-sidebar {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 80vw !important;
+  max-width: 350px !important;
+  background: var(--sidebar-bg) !important;
+  z-index: 100 !important;
+  transform: translateX(100%) !important;
+  transition: transform 0.3s ease !important;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15) !important;
+  overflow-y: auto !important;
+}
+
+.navbar-sidebar--show {
+  transform: translateX(0) !important;
+}
+
+/* Backdrop overlay when sidebar is open */
+.navbar-sidebar__backdrop {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  z-index: 99 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.3s ease, visibility 0.3s ease !important;
+}
+
+.navbar-sidebar--show + .navbar-sidebar__backdrop,
+.navbar-sidebar__backdrop--show {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .navbar-sidebar {
+  background: var(--sidebar-bg) !important;
+  box-shadow: -4px 0 30px rgba(0, 0, 0, 0.4) !important;
+}
 
 @media (max-width: 996px) {
   .theme-doc-sidebar-container {
