@@ -448,26 +448,28 @@ async def run_agent_streaming(agent, task: dict, question: str):
         "agent": agent.name
     })}
 
-    runner = Runner()
     current_agent = agent.name
 
-    async for event in runner.stream(
-        agent,
-        messages=[{"role": "user", "content": f"{context}\n\nQuestion: {question}"}]
-    ):
-        if event.type == "agent_start":
-            current_agent = event.agent_name
+    result = Runner.run_streamed(agent, f"{context}\n\nQuestion: {question}")
+
+    async for event in result.stream_events():
+        if event.type == "agent_updated_stream_event":
+            current_agent = event.new_agent.name
             yield {"event": "handoff", "data": json.dumps({"to": current_agent})}
-        elif event.type == "text_delta":
-            yield {"event": "token", "data": event.delta}
-        elif event.type == "tool_call_start":
-            yield {"event": "tool_call", "data": json.dumps({
-                "agent": current_agent,
-                "tool": event.tool_name,
-                "args": event.arguments
-            })}
-        elif event.type == "tool_call_result":
-            yield {"event": "tool_result", "data": json.dumps(event.result)}
+        elif event.type == "raw_response_event":
+            # Token-by-token streaming from the LLM
+            if hasattr(event.data, 'delta') and hasattr(event.data.delta, 'text'):
+                yield {"event": "token", "data": event.data.delta.text}
+        elif event.type == "run_item_stream_event":
+            item = event.item
+            if hasattr(item, 'type') and item.type == "tool_call":
+                yield {"event": "tool_call", "data": json.dumps({
+                    "agent": current_agent,
+                    "tool": item.name,
+                    "args": item.arguments
+                })}
+            elif hasattr(item, 'type') and item.type == "tool_call_output":
+                yield {"event": "tool_result", "data": json.dumps(item.output)}
 
     yield {"event": "complete", "data": json.dumps({"final_agent": current_agent})}
 
