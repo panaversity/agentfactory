@@ -662,6 +662,160 @@ ENVIRONMENT=production GCP_PROJECT=my-project python agent.py
 
 Same code. Different backends based on configuration.
 
+---
+
+## Generate Your Session Configuration
+
+Now implement environment-based session service selection using AI prompts.
+
+### Generate This: Environment Detection
+
+```
+I need to detect the environment (development, production, or staging) from environment variables
+and automatically select the correct SessionService.
+
+Requirements:
+1. Read from os.getenv("ADK_ENVIRONMENT", "development")
+2. Create InMemorySessionService for "development"
+3. Create FirestoreSessionService for "production" with project_id from os.getenv("GCP_PROJECT")
+4. Create VertexAiSessionService for "staging"
+5. Raise ValueError if environment is unknown
+
+Create a function: def get_session_service(environment: str) -> SessionService
+
+Include imports and error handling.
+```
+
+**Verify this works:**
+```bash
+# Test development environment
+export ADK_ENVIRONMENT=development
+python -c "
+import os
+# Mock test
+env = os.getenv('ADK_ENVIRONMENT', 'development')
+if env == 'development':
+    print('✓ Development environment detected')
+"
+
+# Test production environment
+export ADK_ENVIRONMENT=production
+export GCP_PROJECT=my-project
+python -c "
+import os
+env = os.getenv('ADK_ENVIRONMENT')
+project = os.getenv('GCP_PROJECT')
+if env == 'production' and project:
+    print('✓ Production environment configured')
+"
+```
+
+**What you're learning**: Configuration-driven backend selection—the pattern that lets you deploy the same code to different environments without code changes.
+
+### Generate This: SessionService Factory
+
+```
+Create a factory function that uses environment detection to instantiate the right SessionService.
+
+```python
+from google.adk.sessions import (
+    InMemorySessionService,
+    FirestoreSessionService,
+    VertexAiSessionService
+)
+
+def get_session_service() -> SessionService:
+    '''Auto-detect environment and return appropriate SessionService.'''
+    # TODO: implement
+```
+
+Requirements:
+1. Call get_environment() to detect environment
+2. For development: return InMemorySessionService()
+3. For production: return FirestoreSessionService(project_id=GCP_PROJECT)
+4. For staging: return VertexAiSessionService(project=GCP_PROJECT, location="us-central1")
+5. Add try/except for missing credentials
+
+Show me the complete implementation.
+```
+
+**Verify this works:**
+```bash
+# Test the factory pattern
+python -c "
+# Mock test
+def get_session_service():
+    import os
+    env = os.getenv('ADK_ENVIRONMENT', 'development')
+    if env == 'development':
+        return 'InMemorySessionService()'
+    elif env == 'production':
+        return 'FirestoreSessionService()'
+    else:
+        return 'VertexAiSessionService()'
+
+print(f'✓ Session service: {get_session_service()}')
+"
+```
+
+**What you're learning**: Factory patterns in infrastructure code—how to make backend selection automatic based on deployment context.
+
+### Generate This: Integration with Agent
+
+```
+Now show me how to integrate the session service factory with a TaskManager agent.
+
+```python
+from google.adk.runners import Runner
+from google.adk.agents import Agent
+
+# Agent definition
+root_agent = Agent(
+    name="task_manager",
+    model="gemini-2.5-flash",
+    instruction="Help manage tasks.",
+    tools=[add_task, list_tasks, complete_task]
+)
+
+# TODO: Create runner with correct session service
+runner = Runner(
+    app_name="task_manager",
+    agent=root_agent,
+    session_service=???  # How do I get the right one?
+)
+```
+
+Show me:
+1. How to call get_session_service()
+2. How to pass it to Runner
+3. An explanation of how the same code works in dev (in-memory) and production (Firestore)
+4. How to test that the right service is being used
+
+Also explain: Why would the agent's code NOT know or care which SessionService backend is running?
+```
+
+**Test the integration:**
+```bash
+# Simulate local development
+export ADK_ENVIRONMENT=development
+python -c "
+print('✓ Agent will use InMemorySessionService')
+print('✓ Local development with no database setup needed')
+"
+
+# Simulate production deployment
+export ADK_ENVIRONMENT=production
+export GCP_PROJECT=my-ai-agents
+python -c "
+print('✓ Agent will use FirestoreSessionService')
+print('✓ Production with persistent cloud storage')
+"
+```
+
+**What you're learning**: Dependency injection in agent systems—the pattern that lets you swap infrastructure without changing business logic.
+
+---
+
 ## State Migration Patterns
 
 Moving from development to production isn't just changing a config file. Your agent works perfectly with `InMemorySessionService` during local testing. But move to `FirestoreSessionService` in production, and suddenly you discover your state structure doesn't match what Firestore expects. Data gets lost. Sessions become unreliable. Users complain.

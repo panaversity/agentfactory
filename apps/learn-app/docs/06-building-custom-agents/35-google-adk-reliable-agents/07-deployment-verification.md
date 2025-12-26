@@ -1084,6 +1084,67 @@ Failed: 0/6
 
 ---
 
+## Generate Your Deployment Script
+
+You've verified your agent locally and now need to automate the deployment process. Generate a complete deployment script that handles all pre-deployment checks, deployment to Vertex AI, and verification.
+
+### Generate Deployment Automation
+
+**Prompt for AI:**
+
+```
+Create a production-ready deployment script for a Vertex AI Agent Engine:
+
+1. Pre-deployment validation:
+   - Check all eval cases pass locally
+   - Verify SessionService configured for production
+   - Validate callbacks are registered and functional
+   - Confirm GCP project setup (APIs enabled, permissions set)
+
+2. Deploy command wrapper:
+   - adk deploy agent_engine with proper config
+   - Wait for deployment completion
+   - Extract and save resource endpoint
+
+3. Remote verification:
+   - Run eval cases against live endpoint
+   - Compare pass rates with local baseline
+   - Confirm behavior matches (95%+ match required)
+
+4. Rollback if remote evals fail:
+   - Log failure details
+   - Save backup of previous version
+   - Provide rollback instructions
+
+5. Safety gates:
+   - Rate limiting check
+   - Callback function verification
+   - Error handling validation
+
+Include comprehensive error handling, logging to Cloud Logging, and exit codes for CI/CD integration.
+```
+
+**Deploy and verify:**
+
+```bash
+# Run full deployment process
+./deploy_to_vertex_ai.py --project=$GCP_PROJECT --staging-bucket=gs://your-bucket
+
+# Expected output:
+# ✓ All local eval cases pass (10/10)
+# ✓ Deployment successful - Endpoint: projects/YOUR_PROJECT/locations/us-central1/reasoningEngines/engine-abc123
+# ✓ Remote eval cases pass (10/10)
+# ✓ Behavior matches local testing
+# ✓ Ready for production traffic
+
+# Manual verification (if needed)
+adk eval ./taskmanager evals/taskmanager_evals.json --endpoint=projects/YOUR_PROJECT/locations/us-central1/reasoningEngines/engine-abc123
+```
+
+**What you're learning**: Deployment automation reduces human error and creates a repeatable, CI/CD-ready process. The script becomes your deployment safety net—it verifies nothing unexpected happened before production.
+
+---
+
 ## Try With AI
 
 Use your AI companion to deepen deployment expertise and address production concerns.

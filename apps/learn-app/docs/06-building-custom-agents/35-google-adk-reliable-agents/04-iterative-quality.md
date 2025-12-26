@@ -288,6 +288,30 @@ Reviewer evaluates:
 Final output: Quality-validated content
 ```
 
+### Generate Your Quality Loop
+
+**Prompt for AI:**
+
+```
+Create a LoopAgent for content quality checking:
+- quality_checker agent with evaluate_quality tool
+- exit_loop tool that triggers when score >= 8
+- max_iterations=5 for safety
+- Improves content each iteration until quality threshold met
+
+Pattern:
+from google.adk import LoopAgent
+quality_loop = LoopAgent(name="quality", max_iterations=5, sub_agents=[...])
+```
+
+**Verify:**
+
+```bash
+adk run quality_loop.py --content "Draft text to improve"
+```
+
+---
+
 ## Debugging Loop Convergence Issues
 
 What if your agent keeps hitting max_iterations without calling exit_loop?

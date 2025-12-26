@@ -223,6 +223,45 @@ This agent:
 - Returns structured responses so the agent can describe what happened
 ```
 
+### Generate Your TaskManager Agent
+
+You've seen the pattern. Now generate the complete implementation:
+
+**Prompt for AI:**
+```
+Create a complete TaskManager agent using Google ADK with:
+- 4 tools: add_task, list_tasks, complete_task, delete_task
+- Each tool uses clear docstrings (LLM reads these)
+- State structure: {"tasks": [{"id": int, "title": str, "completed": bool}]}
+- Agent instruction maps user phrases to tool calls
+- Clear confirmation messages
+
+Use this pattern:
+from google.adk.agents import Agent
+from typing import List, Optional
+
+# Tool functions with detailed docstrings
+def add_task(title: str, description: Optional[str] = None) -> dict:
+    """..."""
+
+# Agent definition
+root_agent = Agent(
+    name="task_manager",
+    model="gemini-2.5-flash",
+    instruction="...",
+    tools=[...]
+)
+```
+
+**Verify it works:**
+```bash
+# Test that agent can be imported
+python -c "from task_manager import root_agent; print(f'Agent ready: {root_agent.name}')"
+
+# Or run interactively
+python task_manager.py
+```
+
 ## Running adk eval: The First Test
 
 Now the moment of truth. Does your agent pass the eval cases you defined?
@@ -607,6 +646,51 @@ This agent has vague instructions. Notice:
 3. **Fix the agent instruction** to address root causes
 4. **Re-run adk eval** until all cases pass
 
+### Generate Your Own Eval Cases
+
+Before diving into debugging, generate eval cases for the TaskManager agent:
+
+**Prompt for AI:**
+```
+I need to create comprehensive eval cases for a TaskManager agent with these tools:
+- add_task(title: str, description: Optional[str] = None) -> dict
+- list_tasks() -> dict
+- complete_task(task_id: int) -> dict
+- delete_task(task_id: int) -> dict
+
+Create a JSON eval set with 5-7 cases covering:
+1. Basic add_task with title only
+2. List tasks (empty and non-empty)
+3. Complete task by ID (first task, specific ID)
+4. Delete task
+5. Error handling (complete/delete non-existent task)
+6. Ambiguous input (interpret "first task" as task_id=1)
+
+Format as JSON matching Google ADK:
+{
+  "eval_set_id": "taskmanager_basics",
+  "eval_cases": [
+    {
+      "eval_id": "...",
+      "conversation": [{
+        "user_content": {"text": "..."},
+        "final_response": {"text": "..."},
+        "intermediate_data": {"tool_uses": [...]}
+      }]
+    }
+  ]
+}
+```
+
+**Verify it works:**
+```bash
+# Validate JSON syntax
+python -m json.tool evals/taskmanager_basics.test.json > /dev/null && echo "Valid"
+
+# Test a single case
+adk eval ./task_manager.py ./evals/taskmanager_basics.test.json --print_detailed_results
+```
+
 Here's what you'll discover:
 
 **Failure 1: List not recognized**
@@ -660,6 +744,40 @@ Fixed instruction:
 - Interprets natural language (first, second, task title)
 - Defines error handling behavior
 - Enforces tool-calling rule (never text-only)
+```
+
+### Generate the Fixed Agent Instruction
+
+You've studied the broken agent and the fixes. Now generate the complete corrected version:
+
+**Prompt for AI:**
+```
+Here's a TaskManager agent with intentionally vague instructions that's failing tests:
+
+from google.adk.agents import Agent
+tools = [add_task, list_tasks, complete_task, delete_task]
+instruction = """You are a task manager. Help users with their tasks. Use the right tool when asked. Always be helpful."""
+
+This instruction is too vague and causes test failures:
+- "Show my tasks" doesn't trigger list_tasks
+- "Mark the first task as done" asks for clarification instead of calling complete_task
+- Errors aren't handled gracefully
+
+Rewrite the instruction to be explicit about:
+1. REQUEST MAPPING (user phrases → tools)
+2. TASK ID INTERPRETATION (how to interpret "first", "second", numeric IDs, task titles)
+3. RESPONSE RULES (always call tools, confirmation format, error handling)
+
+Make the instruction specific and example-filled.
+```
+
+**Verify it works:**
+```bash
+# Test the improved agent
+adk eval ./task_manager.py ./evals/taskmanager_basics.test.json --print_detailed_results
+
+# All cases should now pass
+# Passed: 5, Failed: 0
 ```
 
 ### Run the Fixed Version
@@ -957,6 +1075,55 @@ tests/test_taskmanager.py::test_taskmanager_basic_operations PASSED
 tests/test_taskmanager.py::test_taskmanager_edge_cases PASSED
 
 ========================= 2 passed in 3.24s =========================
+```
+
+### Generate Your pytest Test File
+
+You've seen the pytest pattern. Now generate your own test file:
+
+**Prompt for AI:**
+```
+Create a pytest test file for my TaskManager agent that:
+1. Imports AgentEvaluator from google.adk.evaluation.agent_evaluator
+2. Has 2 test functions:
+   - test_taskmanager_basic_operations() - tests basic CRUD operations
+   - test_taskmanager_edge_cases() - tests error handling and edge cases
+3. Each test loads eval JSON from an evals/ directory
+4. Tests use @pytest.mark.asyncio decorator
+5. Each test asserts results.passed with detailed failure messages
+6. Includes a __main__ block for running tests locally
+
+Structure:
+- Imports at top
+- Test functions with docstrings
+- Assertion with detailed error reporting
+- __main__ block for pytest.main()
+
+Use this pattern:
+from google.adk.evaluation.agent_evaluator import AgentEvaluator
+import asyncio
+import pytest
+
+@pytest.mark.asyncio
+async def test_NAME():
+    evaluator = AgentEvaluator(
+        agent_module="task_manager",
+        eval_dataset_file_path_or_dir="evals/..."
+    )
+    results = await evaluator.evaluate()
+    assert results.passed, f"Tests failed: {results.failure_details}"
+```
+
+**Verify it works:**
+```bash
+# Run locally first
+pytest tests/test_taskmanager.py -v
+
+# Check a specific test
+pytest tests/test_taskmanager.py::test_taskmanager_basic_operations -v
+
+# See detailed output
+pytest tests/test_taskmanager.py -vv --tb=short
 ```
 
 ### Running Pytest in CI/CD

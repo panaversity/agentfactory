@@ -231,6 +231,29 @@ Total execution time ≈ time of slowest agent (instead of sum of all times)
 
 **Why this matters**: When analyses are independent, run them in parallel. Faster results, same quality.
 
+### Generate Your Content Pipeline
+
+**Prompt for AI:**
+
+```
+Create a SequentialAgent content pipeline with:
+- researcher_agent: Uses google_search tool, outputs research notes
+- writer_agent: Takes research, creates draft content
+- editor_agent: Refines draft, outputs final content
+
+Pattern:
+from google.adk import SequentialAgent, LlmAgent
+pipeline = SequentialAgent(name="content_pipeline", sub_agents=[...])
+```
+
+**Verify:**
+
+```bash
+adk run pipeline.py --query "Write about AI agents"
+```
+
+---
+
 ## When to Use Each Pattern
 
 Use this decision framework:

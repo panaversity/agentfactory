@@ -65,6 +65,72 @@ What went wrong? You built a demo agent, not a production agent. The difference 
 
 **This is where evaluation-first development changes everything.**
 
+## Setting Up Your ADK Project
+
+Before diving into concepts, set up a working environment. You'll build on this throughout the chapter.
+
+### Create the Project
+
+```bash
+# Create project directory
+mkdir taskmanager-agent && cd taskmanager-agent
+
+# Initialize with uv
+uv init
+uv add google-adk google-genai pytest pytest-asyncio
+
+# Create structure
+mkdir -p evals tests
+touch agent.py tools.py callbacks.py
+```
+
+**Output:**
+```
+Created project directory: taskmanager-agent
+Initialized Python project with uv
+Installed dependencies:
+- google-adk>=1.0.0
+- google-genai>=1.0.0
+- pytest, pytest-asyncio
+
+Project structure:
+taskmanager-agent/
+├── agent.py
+├── tools.py
+├── callbacks.py
+├── evals/
+├── tests/
+└── pyproject.toml
+```
+
+### Configure Environment
+
+```bash
+# Set your API key (get from console.cloud.google.com)
+export GOOGLE_API_KEY="your-key-here"
+
+# Or create .env file for convenience
+echo "GOOGLE_API_KEY=your-key-here" > .env
+```
+
+### Verify Setup
+
+```bash
+# Test ADK is installed
+python -c "from google import adk; print('ADK ready')"
+
+# Test genai is installed
+python -c "from google import genai; print('GenAI ready')"
+```
+
+**Output:**
+```
+ADK ready
+GenAI ready
+```
+
+You're ready to write your first eval cases. Keep your project open—you'll add eval case files to the `evals/` directory as you work through this chapter.
+
 ## The Demo vs. Production Gap
 
 Think about the last software system you used that felt truly reliable. It wasn't reliable because the developers were brilliant. It was reliable because the developers had systematic ways to catch failures **before users encountered them**.

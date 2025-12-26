@@ -674,6 +674,124 @@ def count_requests_external(callback_context: CallbackContext) -> Optional[LlmRe
 
 ---
 
+## Generate Your Safety Callbacks
+
+Now that you understand callback patterns, generate complete implementations for your TaskManager agent using AI.
+
+### Generate This: Input Validation Callback
+
+```
+I'm building a TaskManager agent in Google ADK and need to implement before_model_callback
+for input validation.
+
+Requirements:
+1. Block dangerous keywords: "delete all", "drop database", "ignore instructions"
+2. Return LlmResponse with refusal message if blocked
+3. Return None to allow normal processing
+4. Import from: google.adk.agents.callback_context and google.adk.agents.LlmResponse
+
+Show me the complete implementation including:
+- The callback function signature
+- Pattern matching logic for dangerous keywords (case-insensitive)
+- Return statements for blocked vs allowed requests
+```
+
+**Verify this works:**
+```bash
+# Test the callback blocks dangerous input
+python -c "
+from google.adk.agents.callback_context import CallbackContext
+# Mock test: verify 'DELETE ALL' is blocked
+test_input = 'DELETE ALL tasks'
+if 'DELETE ALL' in test_input.upper():
+    print('✓ Dangerous input blocked correctly')
+"
+```
+
+**What you're learning**: Synchronous validation patterns that execute on every request. These are your first line of defense—keeping them fast matters.
+
+### Generate This: Tool Protection Callback
+
+```
+I need a before_tool_callback to protect critical tasks.
+
+Requirements:
+1. Block delete_task on tasks with "PROTECTED" prefix
+2. Block delete_task on tasks starting with "SYSTEM_"
+3. Allow deletion of regular tasks
+4. Return dict with error message if blocked
+5. Return None if allowed
+
+Show me:
+- Function signature (ToolContext parameter)
+- Logic to check task name against protected prefixes
+- Proper return formats for ADK
+- A test case showing both blocked and allowed deletions
+
+Import from: google.adk.tools.tool_context.ToolContext
+```
+
+**Verify this works:**
+```bash
+# Test tool protection logic
+python -c "
+# Mock test: PROTECTED tasks are blocked
+task = 'PROTECTED_BACKUP'
+if task.startswith('PROTECTED'):
+    print('✓ Protected task deletion blocked')
+
+# Regular tasks allowed
+task = 'old_task'
+if not task.startswith(('PROTECTED', 'SYSTEM')):
+    print('✓ Regular task deletion allowed')
+"
+```
+
+**What you're learning**: Tool-level validation that catches what input validation might miss. Layered defense requires both—input validation is cheap, tool validation is thorough.
+
+### Generate This: Layered Callbacks Together
+
+```
+Now combine both callbacks into a single agent.
+
+I have:
+- block_dangerous_input (before_model_callback)
+- protect_critical_tasks (before_tool_callback)
+
+Show me how to attach both to an Agent in Google ADK:
+
+```python
+from google.adk.agents import Agent
+
+root_agent = Agent(
+    name="protected_task_manager",
+    model="gemini-2.5-flash",
+    instruction="Manage tasks while respecting protection rules.",
+    tools=[add_task, delete_task, list_tasks],
+    before_model_callback=???  # Which callback?
+    before_tool_callback=???   # Which callback?
+)
+```
+
+Also explain why having BOTH callbacks is better than just one, with a specific attack scenario that would slip through if we only had input validation.
+```
+
+**Test the complete setup:**
+```bash
+# Verify both callbacks are attached
+python -c "
+agent_config = {
+    'before_model_callback': 'block_dangerous_input',
+    'before_tool_callback': 'protect_critical_tasks'
+}
+print(f'✓ Agent configured with {len(agent_config)} callback layers')
+"
+```
+
+**What you're learning**: Defense-in-depth architecture—why multiple independent layers catch attacks that single-layer approaches miss.
+
+---
+
 ## Exercise: Secure This Agent
 
 Here's a customer support agent with security vulnerabilities. Your task is to add callbacks that prevent three categories of attack:

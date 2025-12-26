@@ -982,6 +982,104 @@ Your TaskManager isn't just an agent. It's a **Digital FTE**—a production-read
 - Deploys to managed infrastructure
 - Can be monitored, scaled, and monetized
 
+## Generate Your Complete TaskManager Digital FTE
+
+Ready to accelerate? Generate a complete, production-ready TaskManager system that synthesizes all lessons into a working product.
+
+### Generate the Full Implementation
+
+**Prompt for AI:**
+
+```
+Create a production-ready TaskManager Digital FTE using Google ADK.
+
+Full Structure:
+- agent.py: SequentialAgent(router → executor → quality_loop) with LoopAgent for refinement
+- tools.py: 6 core tools (add_task, list_tasks, complete_task, delete_task, edit_task, search_tasks)
+  - Each tool must use ToolContext for state management
+  - All tools must have docstrings explaining inputs/outputs
+- callbacks.py: Two-layer safety
+  - before_model_callback: block_dangerous_keywords (block "DELETE ALL", "WIPE DATABASE", etc.)
+  - before_tool_callback: protect_critical_tasks (prevent deletion of protected items, validate due dates, check priority values)
+- session.py: SessionService factory
+  - InMemorySessionService for development
+  - FirestoreSessionService for production
+  - Environment-based selection
+- evals/taskmanager_core.json: 10+ eval cases covering:
+  - Add task with description
+  - List with filtering by status
+  - Complete task by ID
+  - Delete task with protection
+  - Edit task fields
+  - Search by keyword
+  - Error conditions (missing task, invalid input)
+  - Multi-step workflows
+
+Test Coverage:
+- tests/test_integration.py: pytest with 15+ integration tests
+  - TestCoreOperations: Basic tool functionality
+  - TestSafety: Guardrails enforcement
+  - TestStateManagement: Persistence across operations
+  - TestEvalIntegration: Eval cases pass
+- Each test should be async and use fixtures for setup
+- Include both happy path and edge cases
+
+Requirements:
+- All tools use ToolContext for state
+- LoopAgent max 3 iterations (quality_loop)
+- Callbacks enforce safety BEFORE tool execution
+- SessionService provides user isolation
+- Deployment ready with `adk deploy agent_engine`
+- All eval cases pass (100%)
+- Code is production-quality with error handling
+
+Output structure:
+```
+taskmanager/
+├── agent.py           # Root + sub-agents
+├── tools.py          # 6 tools with ToolContext
+├── callbacks.py      # Input + tool safety
+├── session.py        # SessionService config
+├── evals/
+│   └── taskmanager_core.json  # 10+ cases
+├── tests/
+│   ├── conftest.py   # Pytest fixtures
+│   └── test_integration.py
+└── requirements.txt
+```
+
+Generate complete, working code for each file. No placeholders—implement fully.
+```
+
+**Build and verify:**
+
+```bash
+# Run all integration tests
+pytest tests/test_integration.py -v
+
+# Run all eval cases
+adk eval ./taskmanager evals/taskmanager_core.json
+
+# Expected:
+# ✓ All tests pass (15+/15)
+# ✓ All evals pass (10+/10)
+# ✓ Ready for deployment
+
+# Interactive testing
+adk run ./taskmanager
+
+# Deploy to production
+adk deploy agent_engine \
+  --project=$GCP_PROJECT \
+  --region=us-central1 \
+  --staging_bucket="gs://your-staging-bucket" \
+  ./taskmanager
+```
+
+**What you're learning**: Generation is powerful when coupled with specification. Your prompt gives AI the full blueprint (architecture, safety requirements, test expectations). The generated code should be immediately deployable.
+
+---
+
 ## Hands-On Exercises: Extend and Validate Your TaskManager
 
 Now that you have a working TaskManager Digital FTE, deepen your mastery through hands-on extensions and validation.
