@@ -60,13 +60,15 @@ created: "2025-12-22"
 
 This is the lesson everything has been building toward.
 
-You've built FastAPI CRUD endpoints, handled errors, organized code with dependency injection, and implemented streaming. Now you'll expose AI agents via REST—the moment where all these patterns come together.
+You've built a Task API with CRUD endpoints, error handling, dependency injection, and streaming. Now you'll expose the **TaskManager Agent** from Chapter 34 through these same FastAPI patterns—the moment where your API skills meet your agent-building skills.
 
-Real applications don't use one agent for everything. They use **specialists**: one agent for scheduling, another for collaboration, a third for analysis. This lesson teaches the **triage pattern**: a routing agent that hands off requests to the right specialist. You've seen this pattern in Chapter 34 (OpenAI Agents SDK). Now you'll expose it via FastAPI.
+In Chapter 34, you built TaskManager with the OpenAI Agents SDK: agents with instructions, tools, and handoffs. That agent ran locally via CLI. Now you'll make it accessible to any HTTP client—web apps, mobile apps, other services. Same agent patterns, new delivery mechanism.
+
+Real applications don't use one agent for everything. They use **specialists**: one agent for scheduling, another for collaboration, a third for analysis. This lesson teaches the **triage pattern**: a routing agent that hands off requests to the right specialist. You built this in Chapter 34. Now you'll expose it via FastAPI.
 
 ## Why Multiple Agents?
 
-Consider a task management AI. Users ask:
+Consider TaskManager. Users ask:
 - "When should I finish this task?" → **Scheduling domain**
 - "Who should work on this?" → **Collaboration domain**
 - "What's blocking progress?" → **Analysis domain**
@@ -76,18 +78,18 @@ One agent doing all three would need massive instructions, conflicting tools, an
 ```
 User Request
      ↓
-[Triage Agent] ← Understands intent, routes appropriately
+[TaskManager Triage] ← Understands intent, routes appropriately
      ↓
   ┌──┴──┬──────┐
   ↓     ↓      ↓
 [Scheduler] [Collab] [Analysis]
 ```
 
-The client sees one endpoint. The routing happens inside. This is the architecture of production AI systems.
+The client sees one endpoint. The routing happens inside. This is the architecture of production AI systems—and the same architecture you built in Chapter 34.
 
-## Creating Specialist Agents
+## Creating TaskManager Specialists
 
-Each specialist has focused instructions and domain-specific tools.
+Each specialist has focused instructions and domain-specific tools. These are the same patterns from Chapter 34, now organized for API exposure.
 
 **Scheduler Specialist** — Handles time and deadlines:
 
@@ -115,9 +117,9 @@ def suggest_time_blocks(task_id: int, duration_hours: int) -> dict:
         ]
     }
 
-scheduler_agent = Agent(
-    name="scheduler",
-    instructions="""You are a scheduling specialist for task management.
+taskmanager_scheduler = Agent(
+    name="taskmanager-scheduler",
+    instructions="""You are the scheduling specialist for TaskManager.
 
 Your expertise:
 - Setting and adjusting deadlines
@@ -155,9 +157,9 @@ def create_meeting(task_id: int, attendees: list[str], duration_minutes: int = 3
         "status": "meeting_scheduled"
     }
 
-collaboration_agent = Agent(
-    name="collaboration",
-    instructions="""You are a collaboration specialist for task management.
+taskmanager_collaboration = Agent(
+    name="taskmanager-collaboration",
+    instructions="""You are the collaboration specialist for TaskManager.
 
 Your expertise:
 - Delegating tasks to team members
@@ -177,25 +179,25 @@ When delegating, use assign_to_user with a clear note about expectations.""",
 - **Domain-specific tools** — Only what it needs, nothing more
 - **Distinct name** — For routing visibility in responses
 
-## The Triage Agent with Handoffs
+## The TaskManager Triage Agent
 
 The triage agent uses `handoff()` to transfer control to specialists:
 
 ```python
 from agents import Agent, handoff
 
-triage_agent = Agent(
-    name="triage",
-    instructions="""You are a task management router. Your job is to understand
+taskmanager_triage = Agent(
+    name="taskmanager-triage",
+    instructions="""You are the TaskManager router. Your job is to understand
 what the user needs and hand off to the right specialist.
 
-Route to scheduler for:
+Route to taskmanager-scheduler for:
 - Deadlines, due dates, timing
 - Reminders and notifications
 - Time blocking and scheduling
 - "When should I..." questions
 
-Route to collaboration for:
+Route to taskmanager-collaboration for:
 - Delegation, assigning work
 - Sharing with team members
 - Meeting scheduling
@@ -204,8 +206,8 @@ Route to collaboration for:
 For simple questions that don't need a specialist, answer directly.
 When handing off, briefly explain why you're routing to that specialist.""",
     tools=[
-        handoff(scheduler_agent),
-        handoff(collaboration_agent)
+        handoff(taskmanager_scheduler),
+        handoff(taskmanager_collaboration)
     ],
     model="gpt-4o-mini"
 )
@@ -220,10 +222,11 @@ Now expose this through FastAPI. This is where everything connects:
 ```python
 from fastapi import FastAPI, Depends, HTTPException, status
 from pydantic import BaseModel
+from agents import Runner
 
 from repository import TaskRepository, get_task_repo
 
-app = FastAPI(title="Multi-Agent Task API")
+app = FastAPI(title="TaskManager Agent API")
 
 class HelpRequest(BaseModel):
     question: str
@@ -269,28 +272,37 @@ User Question: {request.question}"""
     # Run the triage agent
     runner = Runner()
     result = await runner.run(
-        triage_agent,
+        taskmanager_triage,
         messages=[{"role": "user", "content": context}]
     )
 
     # Extract handoff information for transparency
-    agents_used = [agent.name for agent in result.agents_used]
-    final_agent = result.agent_name  # The agent that produced the final response
+    # new_items contains all execution items including handoffs and tool calls
+    handoff_chain = [triage_agent.name]
+    tool_calls = []
+
+    for item in result.new_items:
+        if hasattr(item, 'type'):
+            if item.type == "handoff_output":
+                handoff_chain.append(item.target_agent.name)
+            elif item.type == "tool_call":
+                tool_calls.append(ToolCallInfo(
+                    name=item.name,
+                    arguments=item.arguments,
+                    result=None
+                ))
+            elif item.type == "tool_call_output":
+                # Match with the last tool call
+                if tool_calls and tool_calls[-1].result is None:
+                    tool_calls[-1].result = item.output
 
     return HandoffResponse(
         task_id=task_id,
         question=request.question,
         response=result.final_output,
-        handled_by=final_agent,
-        handoff_chain=agents_used,
-        tool_calls=[
-            ToolCallInfo(
-                name=tc.name,
-                arguments=tc.arguments,
-                result=tc.result
-            )
-            for tc in result.tool_calls
-        ]
+        handled_by=result.last_agent.name,
+        handoff_chain=handoff_chain,
+        tool_calls=tool_calls
     )
 ```
 
@@ -326,8 +338,8 @@ Response shows the routing:
   "task_id": 1,
   "question": "When should I set the deadline for this?",
   "response": "Based on the task complexity, I recommend setting the deadline for next Friday. I've set it using the deadline tool.",
-  "handled_by": "scheduler",
-  "handoff_chain": ["triage", "scheduler"],
+  "handled_by": "taskmanager-scheduler",
+  "handoff_chain": ["taskmanager-triage", "taskmanager-scheduler"],
   "tool_calls": [
     {
       "name": "set_deadline",
@@ -354,7 +366,7 @@ curl -X POST "http://localhost:8000/tasks/1/help" \
   -d '{"question": "What is this task about?"}'
 ```
 
-The `handoff_chain` field tells the story: `["triage"]` means triage answered directly, `["triage", "scheduler"]` means it routed to the scheduler.
+The `handoff_chain` field tells the story: `["taskmanager-triage"]` means triage answered directly, `["taskmanager-triage", "taskmanager-scheduler"]` means it routed to the scheduler.
 
 ## Streaming Handoffs
 
@@ -362,6 +374,7 @@ For real-time visibility into agent thinking and routing:
 
 ```python
 from sse_starlette.sse import EventSourceResponse
+from agents import Runner
 import json
 
 @app.post("/tasks/{task_id}/help/stream")
@@ -387,42 +400,45 @@ async def stream_triage_help(
             "data": json.dumps({"task_id": task_id, "routing": "analyzing"})
         }
 
-        runner = Runner()
-        current_agent = None
+        current_agent = triage_agent.name
 
         async for event in runner.stream(
-            triage_agent,
+            taskmanager_triage,
             messages=[{"role": "user", "content": context}]
         ):
             # Detect agent switches — this is the handoff happening
-            if event.type == "agent_start":
-                current_agent = event.agent_name
+            if event.type == "agent_updated_stream_event":
+                current_agent = event.new_agent.name
                 yield {
                     "event": "handoff",
                     "data": json.dumps({"to_agent": current_agent})
                 }
 
-            elif event.type == "text_delta":
-                yield {
-                    "event": "token",
-                    "data": event.delta
-                }
+            elif event.type == "raw_response_event":
+                # Token-by-token streaming from the LLM
+                if hasattr(event.data, 'delta') and hasattr(event.data.delta, 'text'):
+                    yield {
+                        "event": "token",
+                        "data": event.data.delta.text
+                    }
 
-            elif event.type == "tool_call":
-                yield {
-                    "event": "tool_call",
-                    "data": json.dumps({
-                        "agent": current_agent,
-                        "tool": event.tool_name,
-                        "arguments": event.arguments
-                    })
-                }
-
-            elif event.type == "tool_result":
-                yield {
-                    "event": "tool_result",
-                    "data": json.dumps(event.result)
-                }
+            elif event.type == "run_item_stream_event":
+                # Completed items like tool calls
+                item = event.item
+                if hasattr(item, 'type') and item.type == "tool_call":
+                    yield {
+                        "event": "tool_call",
+                        "data": json.dumps({
+                            "agent": current_agent,
+                            "tool": item.name,
+                            "arguments": item.arguments
+                        })
+                    }
+                elif hasattr(item, 'type') and item.type == "tool_call_output":
+                    yield {
+                        "event": "tool_result",
+                        "data": json.dumps(item.output)
+                    }
 
         yield {
             "event": "complete",
@@ -439,10 +455,10 @@ event: start
 data: {"task_id": 1, "routing": "analyzing"}
 
 event: handoff
-data: {"to_agent": "scheduler"}
+data: {"to_agent": "taskmanager-scheduler"}
 
 event: tool_call
-data: {"agent": "scheduler", "tool": "set_deadline", "arguments": {...}}
+data: {"agent": "taskmanager-scheduler", "tool": "set_deadline", "arguments": {...}}
 
 event: tool_result
 data: {"task_id": 1, "deadline": "2025-01-03", "status": "deadline_set"}
@@ -457,7 +473,7 @@ event: token
 data:  the...
 
 event: complete
-data: {"final_agent": "scheduler"}
+data: {"final_agent": "taskmanager-scheduler"}
 ```
 
 A frontend can use these events to show:
@@ -488,7 +504,7 @@ async def direct_schedule_help(
 
     runner = Runner()
     result = await runner.run(
-        scheduler_agent,  # Direct to specialist, bypassing triage
+        taskmanager_scheduler,  # Direct to specialist, bypassing triage
         messages=[{
             "role": "user",
             "content": f"Task: {task['title']}\n\nQuestion: {request.question}"
@@ -498,7 +514,7 @@ async def direct_schedule_help(
     return {
         "task_id": task_id,
         "response": result.final_output,
-        "handled_by": "scheduler",
+        "handled_by": "taskmanager-scheduler",
         "tool_calls": [tc.to_dict() for tc in result.tool_calls]
     }
 ```
@@ -550,13 +566,13 @@ Implement it. Test with questions like "How long will this take?" and "What migh
 ```python
 # Wrong - specialist doesn't know about the task
 result = await runner.run(
-    triage_agent,
+    taskmanager_triage,
     messages=[{"role": "user", "content": request.question}]  # No task context!
 )
 
 # Correct - include full context
 result = await runner.run(
-    triage_agent,
+    taskmanager_triage,
     messages=[{"role": "user", "content": f"Task: {task['title']}\n\n{request.question}"}]
 )
 ```
@@ -567,12 +583,12 @@ The specialist receives the same context triage did. Without context, it can't g
 
 ```python
 # Wrong - both handle "meetings"
-scheduler_agent = Agent(tools=[schedule_meeting, ...])  # Overlap!
-collaboration_agent = Agent(tools=[create_meeting, ...])  # Overlap!
+taskmanager_scheduler = Agent(tools=[schedule_meeting, ...])  # Overlap!
+taskmanager_collaboration = Agent(tools=[create_meeting, ...])  # Overlap!
 
 # Correct - clear domain boundaries
-scheduler_agent = Agent(tools=[set_deadline, create_reminder, ...])  # Time-focused
-collaboration_agent = Agent(tools=[assign_task, share_task, create_meeting, ...])  # People-focused
+taskmanager_scheduler = Agent(tools=[set_deadline, create_reminder, ...])  # Time-focused
+taskmanager_collaboration = Agent(tools=[assign_task, share_task, create_meeting, ...])  # People-focused
 ```
 
 Overlapping tools confuse triage and lead to inconsistent routing.
@@ -624,14 +640,14 @@ This explores production architecture—systems with dozens of specialists need 
 
 ## Summary
 
-You've built a multi-agent system exposed via FastAPI:
+You've exposed the **TaskManager Agent** from Chapter 34 via FastAPI:
 
-- **Specialist agents** with domain-specific tools and focused instructions
-- **Triage agent** using `handoff()` to route requests intelligently
+- **TaskManager specialists** with domain-specific tools and focused instructions
+- **TaskManager triage** using `handoff()` to route requests intelligently
 - **API response** includes `handled_by` and `handoff_chain` for transparency
 - **Streaming** shows routing decisions and tool calls in real-time
 - **Direct endpoints** bypass triage when you know which specialist to use
 
-**The bigger picture**: This is how production AI systems work. ChatGPT, Claude, and enterprise AI applications all use routing and specialists. You've built the same pattern—accessible via standard REST endpoints that any client can consume.
+**The bigger picture**: This is how production AI systems work. ChatGPT, Claude, and enterprise AI applications all use routing and specialists. You've taken the TaskManager you built locally in Chapter 34 and made it accessible via standard REST endpoints that any client can consume.
 
-Next lesson, you'll combine everything into a production-ready capstone project.
+Next lesson, you'll combine everything into a production-ready TaskManager Agent Service.

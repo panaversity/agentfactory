@@ -18,13 +18,8 @@ This chapter teaches three critical dimensions: CPython's architecture and how i
 **Why this matters for AI-native development**: Multi-agent systems can now reason in parallel on separate CPU cores, not just pseudo-concurrently. A 4-agent system on a 4-core machine achieves genuine parallelism—the exact pattern modern AI applications need.
 
 ## 🎯 Before You Begin
-
 ---
-
 ## What You'll Learn
-
-By the end of this chapter, you will be able to:
-
 - **Understand CPython architecture** — Explain what CPython is and how it differs from alternative implementations (PyPy, Jython), describe the execution pipeline from source code to bytecode to interpreter, and identify when CPython's design choices matter for performance
 - **Master GIL evolution and free-threading** — Explain traditional GIL behavior and why it exists, describe Python 3.14's free-threaded mode (installation, detection, runtime control), and compare performance characteristics (5–10% overhead vs 2–10x gains)
 - **Make informed concurrency decisions** — Distinguish CPU-bound from I/O-bound workloads, choose the correct approach (threading, multiprocessing, free-threaded Python, or asyncio), and design benchmarks to validate concurrency choices

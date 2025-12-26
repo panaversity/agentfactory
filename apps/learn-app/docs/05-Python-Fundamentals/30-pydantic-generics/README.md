@@ -16,13 +16,8 @@ This chapter teaches advanced type safety and data validation for AI-native Pyth
 By the end, you'll build a **Type-Safe Config Manager** capstone—a production-quality configuration system that's a portfolio-worthy project you can use in your own Python applications.
 
 ## 🎯 Before You Begin
-
 ---
-
 ## What You'll Learn
-
-By the end of this chapter, you will be able to:
-
 - **Pydantic Data Validation** — CREATE Pydantic models with nested validation and custom validators, APPLY Pydantic to validate LLM-generated JSON outputs, HANDLE validation errors gracefully in production code
 - **Generic Type Safety Patterns** — WRITE generic functions and classes using TypeVar and PEP 695 syntax, ANALYZE when Generics improve type safety vs simpler approaches
 - **Integration Patterns** — INTEGRATE Pydantic validation with Generic containers, EVALUATE tradeoffs between Pydantic, TypedDict, and dataclasses

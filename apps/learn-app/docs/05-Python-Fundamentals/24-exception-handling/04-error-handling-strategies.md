@@ -223,7 +223,104 @@ def divide_with_logging(a: float, b: float) -> float | None:
 
 ---
 
-## Code Example 1: Retry Logic with Exponential Backoff
+## Code Example 1: Task Validation with Error Handling (PRIMARY EXAMPLE)
+
+Task management systems must validate priority and task existence. Here's how to handle these errors strategically:
+
+```python
+class TaskError(Exception):
+    """Base exception for task management."""
+    pass
+
+class TaskNotFoundError(TaskError):
+    """Raised when a task cannot be found by ID."""
+    def __init__(self, task_id: int):
+        self.task_id = task_id
+        super().__init__(f"Task #{task_id} not found")
+
+class InvalidPriorityError(TaskError):
+    """Raised when priority is outside valid range."""
+    def __init__(self, priority: int, min_val: int = 1, max_val: int = 10):
+        self.priority = priority
+        super().__init__(f"Priority must be {min_val}-{max_val}, got {priority}")
+
+def validate_task_priority(priority: int) -> None:
+    """Validate task priority is in valid range."""
+    if not 1 <= priority <= 10:
+        raise InvalidPriorityError(priority, min_val=1, max_val=10)
+
+def add_task(tasks: list, title: str, priority: int) -> dict:
+    """Add a task with validation."""
+    if not title.strip():
+        raise ValueError("Task title cannot be empty")
+    validate_task_priority(priority)
+
+    task = {
+        "id": len(tasks) + 1,
+        "title": title,
+        "priority": priority,
+        "done": False
+    }
+    tasks.append(task)
+    return task
+
+def get_task(tasks: list, task_id: int) -> dict:
+    """Retrieve a task by ID, raise error if not found."""
+    for task in tasks:
+        if task["id"] == task_id:
+            return task
+    raise TaskNotFoundError(task_id)
+
+# Usage with comprehensive error handling
+tasks = []
+
+# Strategy 1: Retry validation for user input
+max_attempts = 3
+for attempt in range(1, max_attempts + 1):
+    try:
+        priority = int(input(f"Enter priority (1-10, attempt {attempt}): "))
+        validate_task_priority(priority)
+        break
+    except InvalidPriorityError as e:
+        print(f"  Error: {e}")
+        if attempt == max_attempts:
+            print(f"  Failed after {max_attempts} attempts")
+            raise
+    except ValueError as e:
+        print(f"  Invalid input: {e}")
+
+# Strategy 2: Add task with fallback title
+try:
+    new_task = add_task(tasks, "", 5)
+except ValueError as e:
+    print(f"  Error: {e}")
+    # Fallback: use default title
+    new_task = add_task(tasks, "Untitled Task", 5)
+    print(f"  Added with fallback title")
+
+# Strategy 3: Lookup with graceful handling
+task_id = 999
+try:
+    task = get_task(tasks, task_id)
+except TaskNotFoundError as e:
+    print(f"  Lookup failed: {e} (task ID: {e.task_id})")
+    print(f"  Available tasks: {len(tasks)}")
+```
+
+**Output**:
+```
+Error: Priority must be 1-10, got 15
+Error: Title cannot be empty
+  Added with fallback title
+Lookup failed: Task #999 not found (task ID: 999)
+Available tasks: 1
+```
+
+**Key insight**: This example demonstrates how custom exceptions with context attributes enable smart error recovery—retry for transient issues, fallback for invalid input, graceful degradation for missing data.
+
+---
+
+## Code Example 2: Retry Logic with Exponential Backoff
 
 Many production systems use **exponential backoff**—wait longer between retries. First retry after 1 second, second after 2 seconds, third after 4 seconds. This prevents overwhelming a service.
 
@@ -268,7 +365,7 @@ Success: Data retrieved
 
 ---
 
-## Code Example 2: Combining Fallback with Logging
+## Code Example 3: Combining Fallback with Logging
 
 Real code often combines multiple strategies. Here's fallback + logging:
 
@@ -312,7 +409,7 @@ def load_user_preferences(user_id: int) -> dict:
 
 ---
 
-## Code Example 3: Graceful Degradation in Data Processing
+## Code Example 4: Graceful Degradation in Data Processing
 
 This example processes data, skipping invalid entries:
 
@@ -391,7 +488,7 @@ Valid users: 2, Errors: 2
 
 ---
 
-## Code Example 4: Logging with Structured Context
+## Code Example 5: Logging with Structured Context
 
 Professional systems log with enough detail to diagnose issues:
 

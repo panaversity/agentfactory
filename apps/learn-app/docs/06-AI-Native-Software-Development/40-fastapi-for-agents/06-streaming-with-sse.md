@@ -168,13 +168,15 @@ In Lesson 7, you'll stream agent responses like this:
 
 ```python
 async def agent_response_generator(message: str):
-    result = runner.run_streamed(agent, messages=[{"role": "user", "content": message}])
+    result = Runner.run_streamed(agent, message)
     async for event in result.stream_events():
         if event.type == "raw_response_event":
-            yield {
-                "event": "token",
-                "data": json.dumps({"content": event.data})
-            }
+            # Extract token text from the response delta
+            if hasattr(event.data, 'delta') and hasattr(event.data.delta, 'text'):
+                yield {
+                    "event": "token",
+                    "data": event.data.delta.text
+                }
 ```
 
 The pattern is identical:
