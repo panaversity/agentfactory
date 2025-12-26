@@ -44,11 +44,11 @@ Decouple services with asynchronous messaging.
 
 - **Event-Driven Architecture with Kafka** — Core concepts (topics, partitions, consumers), event streaming patterns, and agent communication
 
-### Dapr Fundamentals (Chapter 53)
+### Dapr Core (Chapter 53)
 
 Apply Dapr's distributed runtime for production agent patterns.
 
-- **Dapr Fundamentals** — Sidecar architecture, pub/sub, state management, service invocation, and secrets
+- **Dapr Core** — Sidecar architecture, pub/sub, state management, service invocation, and secrets
 
 ### Automation (Chapter 54)
 
@@ -71,7 +71,7 @@ Build complex stateful agent systems with durable workflows.
 
 - **Dapr Actors & Workflows** — Virtual actors for agent state, durable workflows, and long-running orchestration
 
-**Why this sequence?** You can't orchestrate what you can't containerize. You can't automate what you haven't deployed manually. Each stage builds capability: Containers (portable agents) → Orchestration (scaled agents) → Events (decoupled agents) → Dapr basics (distributed agents) → Automation (repeatable deployments) → Operations (reliable, secure, cost-effective systems) → Advanced Dapr patterns (stateful workflows).
+**Why this sequence?** You can't orchestrate what you can't containerize. You can't automate what you haven't deployed manually. Each stage builds capability: Containers (portable agents) → Orchestration (scaled agents) → Events (decoupled agents) → Dapr Core (distributed agents) → Automation (repeatable deployments) → Operations (reliable, secure, cost-effective systems) → Dapr Actors & Workflows (stateful workflows).
 
 ---
 
