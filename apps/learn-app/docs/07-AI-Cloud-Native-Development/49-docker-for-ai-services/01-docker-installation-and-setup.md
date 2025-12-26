@@ -248,8 +248,9 @@ Containers
 
 ## Installation by Operating System
 
-### macOS Installation
+::::os-tabs
 
+::macos
 **Supported versions**: macOS 11.0 (Big Sur) and later
 
 **Step 1: Download Docker Desktop**
@@ -278,8 +279,7 @@ Check which you have: Apple menu → About This Mac → Look for "Chip: Apple M2
 
 Docker Desktop is now running. You'll see the Docker icon in your menu bar at the top right.
 
-### Windows Installation
-
+::windows
 **Supported versions**: Windows 10 (21H2 and later) or Windows 11
 
 **Prerequisites check**: Docker Desktop on Windows requires Hyper-V. Check if it's enabled:
@@ -326,8 +326,7 @@ Installation takes 2-5 minutes.
 
 You'll see Docker icon in your system tray (bottom right).
 
-### Linux Installation
-
+::linux
 **Supported distributions**: Ubuntu 18.04+, Fedora, Debian, CentOS, etc.
 
 Docker Engine runs natively on Linux, so installation is simpler (no VM needed).
@@ -377,6 +376,8 @@ sudo systemctl start docker
 sudo usermod -aG docker $USER
 newgrp docker
 ```
+
+::::
 
 ---
 
@@ -470,8 +471,9 @@ What just happened:
 
 By default, Docker Desktop allocates limited resources. For AI services (which are memory-hungry), you need to configure resources.
 
-### macOS Configuration
+::::os-tabs
 
+::macos
 1. Click Docker icon in menu bar → Preferences (or Settings)
 2. Select **Resources** tab
 3. Adjust these settings:
@@ -483,8 +485,7 @@ By default, Docker Desktop allocates limited resources. For AI services (which a
 4. Click **Apply & Restart**
 5. Docker restarts with new limits
 
-### Windows Configuration
-
+::windows
 1. Right-click Docker icon in system tray → Settings
 2. Select **Resources** tab
 3. Adjust these settings:
@@ -495,8 +496,7 @@ By default, Docker Desktop allocates limited resources. For AI services (which a
 
 4. Click **Apply & Restart**
 
-### Linux Configuration
-
+::linux
 On Linux, Docker uses system resources directly (no VM overhead). Configure at container level instead:
 
 When you run your agent container, specify resource limits:
@@ -509,6 +509,8 @@ docker run \
 ```
 
 This reserves 4GB RAM and 2 CPUs for the container.
+
+::::
 
 ---
 

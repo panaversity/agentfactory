@@ -291,8 +291,9 @@ This optimization keeps the 5–10% overhead small. If every lock access require
 
 ## Section 4: Installation and Setup
 
-### macOS and Windows: Official Installers
+::::os-tabs
 
+::macos
 The easiest path: use the official python.org installers, which now include a free-threaded option.
 
 1. Visit [python.org](https://www.python.org/downloads/)
@@ -302,8 +303,17 @@ The easiest path: use the official python.org installers, which now include a fr
 
 That's it. The traditional GIL-only Python becomes the opt-in choice.
 
-### Linux: Build from Source
+::windows
+The easiest path: use the official python.org installers, which now include a free-threaded option.
 
+1. Visit [python.org](https://www.python.org/downloads/)
+2. Download Python 3.14+ installer
+3. During installation, check the "Free-threaded" option
+4. Verify: `python --version` should show something like `Python 3.14.0 (free-threaded)`
+
+That's it. The traditional GIL-only Python becomes the opt-in choice.
+
+::linux
 On Linux, you typically build from source. Free-threading is a compile-time option:
 
 ```bash
@@ -319,6 +329,8 @@ python -c "import sys; print(sys._is_gil_enabled())"
 ```
 
 If it prints `False`, free-threading is active.
+
+::::
 
 ### Docker: The Convenient Option
 

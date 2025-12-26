@@ -27,7 +27,7 @@ version: 2.0.0
 
 You've learned what agents are and how they work. Now comes a practical question: which framework should you use to build one?
 
-This lesson surveys the four major agent development frameworks you'll master in Chapters 35-38. Each has a distinct philosophy—understanding these differences helps you match frameworks to problems.
+This lesson surveys the four major agent development frameworks you'll master in Chapters 34-37. Each has a distinct philosophy—understanding these differences helps you match frameworks to problems.
 
 ## The Framework Question
 
@@ -44,7 +44,7 @@ In an **AIDD/SDD workflow**, you don't manually write boilerplate. You write a *
 | **Anthropic Agents Kit** | Capability-Centric | MCP tool definitions, system prompts | Task execution (coding, research) |
 | **Microsoft Agent Framework** | Conversation-Centric | Group interaction patterns, plugins | Multi-agent collaboration |
 
-### OpenAI Agents SDK (Chapter 35)
+### OpenAI Agents SDK (Chapter 34)
 
 **Philosophy**: Handoff-Centric—simple agents transferring control like a relay race.
 
@@ -64,7 +64,7 @@ agent = Agent(
 
 **When to use**: Customer support, simple workflows where control transfers between specialists. Best for developers who want a "keep it simple" approach without complex graph orchestration.
 
-### Google ADK (Chapter 36)
+### Google ADK (Chapter 35)
 
 **Philosophy**: Service-Centric—agents as microservices with strict state management.
 
@@ -80,7 +80,7 @@ ai.defineFlow(...) with strict input/output Zod schemas
 
 **When to use**: Enterprise applications needing strict state management, business processes with data requirements (loan processing, order management), Google Cloud integration. Best for "engineering-first" teams building robust, stateful systems.
 
-### Anthropic Agents Kit (Chapter 37)
+### Anthropic Agents Kit (Chapter 36)
 
 **Philosophy**: Capability-Centric—single powerful agents with deep tool and computer use.
 
@@ -96,7 +96,7 @@ Client connects to mcp-server; Claude acts, observes tool output, acts again
 
 **When to use**: Complex execution tasks—agents that actually *do work* (coding, file editing, research, data analysis) rather than just routing conversations. Best for "super-worker" agents that operate computers and tools.
 
-### Microsoft Agent Framework (Chapter 38)
+### Microsoft Agent Framework (Chapter 37)
 
 **Philosophy**: Conversation-Centric—multi-agent collaboration and group chats.
 
@@ -167,7 +167,7 @@ manager = GroupChatManager(groupchat=group_chat)
 
 When you learn OpenAI's handoff pattern and later need Google's artifact-based approach, you're not starting over. You're learning how ADK implements patterns you already understand.
 
-**This is why Chapter 33 before Chapters 35-38 matters.** The conceptual foundation is framework-agnostic. Implementation details change; architectural thinking persists.
+**This is why Chapter 33 before Chapters 34-37 matters.** The conceptual foundation is framework-agnostic. Implementation details change; architectural thinking persists.
 
 ## Try With AI
 

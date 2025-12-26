@@ -131,8 +131,9 @@ If Docker isn't running, start Docker Desktop before continuing.
 
 Minikube works on macOS, Windows, and Linux. Choose your platform:
 
-### macOS
+::::os-tabs
 
+::macos
 Using Homebrew (simplest):
 
 ```bash
@@ -158,9 +159,8 @@ minikube version: v1.32.0
 commit: 8220a6eb95f0a4d5f864e64e6ea061899a56c6a3
 ```
 
-### Windows (PowerShell as Administrator)
-
-Using winget (recommended):
+::windows
+Using winget (recommended, run PowerShell as Administrator):
 
 ```powershell
 winget install minikube
@@ -187,8 +187,7 @@ commit: 8220a6eb95f0a4d5f864e64e6ea061899a56c6a3
 
 Alternatively, download from https://github.com/kubernetes/minikube/releases and add to your PATH.
 
-### Linux
-
+::linux
 Download and install:
 
 ```bash
@@ -215,12 +214,15 @@ minikube version: v1.32.0
 commit: 8220a6eb95f0a4d5f864e64e6ea061899a56c6a3
 ```
 
+::::
+
 ### Installing kubectl
 
 kubectl is the Kubernetes command-line tool. Minikube includes it, but you can also install it separately.
 
-**macOS** (using Homebrew):
+::::os-tabs
 
+::macos
 ```bash
 brew install kubectl
 ```
@@ -232,18 +234,20 @@ brew install kubectl
 🍺  /usr/local/Cellar/kubectl/1.28.3: 8 files, 224MB
 ```
 
-**Windows** (PowerShell as Administrator):
+::windows
+Run PowerShell as Administrator:
 
 ```powershell
 winget install kubectl
 ```
 
-**Linux**:
-
+::linux
 ```bash
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ```
+
+::::
 
 Verify kubectl is installed:
 

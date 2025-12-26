@@ -58,10 +58,11 @@ Installation is the bridge between "understanding Python" and "running Python co
 
 ## Choose Your Operating System
 
-Pick the section below that matches your computer:
+Pick the tab below that matches your computer:
 
-## Windows Installation
+::::os-tabs
 
+::windows
 ### Step 1: Download Python
 
 Go to **[python.org/downloads](https://www.python.org/downloads/)** in your web browser.
@@ -114,10 +115,7 @@ Hello, Python!
 
 Congratulations—Python is installed and working on Windows.
 
----
-
-## Mac Installation
-
+::macos
 ### Step 1: Download Python
 
 Go to **[python.org/downloads](https://www.python.org/downloads/)** in your web browser.
@@ -164,10 +162,7 @@ Hello, Python!
 
 Python is now installed and working on Mac.
 
----
-
-## Linux Installation
-
+::linux
 ### Step 1: Use Your Package Manager
 
 Linux doesn't require downloading from python.org. Your package manager can install Python.
@@ -183,7 +178,7 @@ sudo apt install python3.14
 sudo dnf install python3.14
 ```
 
-**macOS (using Homebrew, if you prefer):**
+**Homebrew (if you prefer):**
 ```
 brew install python@3.14
 ```
@@ -215,6 +210,8 @@ Hello, Python!
 ```
 
 Python is installed on Linux.
+
+::::
 
 ---
 

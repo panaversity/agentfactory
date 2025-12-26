@@ -20,4 +20,4 @@ Four frameworks dominate agent development, each with a distinct philosophy: Ope
 
 ### Connections
 - **Builds on**: All prior lessons—frameworks implement the architecture, loop, patterns, ops, and security you've learned
-- **Leads to**: Chapters 35-38—hands-on implementation with each framework using AIDD and SDD
+- **Leads to**: Chapters 34-37—hands-on implementation with each framework using AIDD and SDD

@@ -39,8 +39,9 @@ Install Cursor on your platform, optionally migrate VS Code settings, authentica
 
 ## Part 1: Platform-Specific Installation
 
-### macOS Installation
+::::os-tabs
 
+::macos
 **Option 1: Download from Website**
 
 1. Visit [cursor.com/download](https://cursor.com/download)
@@ -58,8 +59,7 @@ cursor
 
 Whichever you choose, Cursor will launch and show a welcome screen.
 
-### Linux Installation
-
+::linux
 **Option 1: Using AppImage (works on most Linux distributions)**
 
 ```bash
@@ -89,8 +89,7 @@ cursor
 
 Some Linux distributions may have Cursor in their package managers. Check your distribution's repository, but downloading directly from cursor.com is most reliable.
 
-### Windows Installation
-
+::windows
 **Option 1: Download Installer**
 
 1. Visit [cursor.com/download](https://cursor.com/download)
@@ -104,6 +103,8 @@ Some Linux distributions may have Cursor in their package managers. Check your d
 winget install cursor
 cursor
 ```
+
+::::
 
 **Verification**: On all platforms, Cursor should launch, showing a welcome screen with options for theme selection and keyboard shortcuts.
 

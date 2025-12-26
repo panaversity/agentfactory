@@ -143,8 +143,9 @@ A single `helm install my-agent ./my-agent-chart -f values-prod.yaml` command de
 
 Helm is a CLI tool you install on your machine. It then communicates with your Kubernetes cluster to deploy charts.
 
-### On macOS with Homebrew
+::::os-tabs
 
+::macos
 ```bash
 brew install helm
 ```
@@ -164,8 +165,7 @@ Zsh completion has been installed to:
 🍺  /opt/homebrew/bin/helm (3.14.0)
 ```
 
-### On Linux (Ubuntu/Debian)
-
+::linux
 ```bash
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 ```
@@ -177,6 +177,18 @@ Verifying checksum... Done.
 Preparing to install helm into /usr/local/bin
 helm installed into /usr/local/bin/helm
 ```
+
+::windows
+```powershell
+choco install kubernetes-helm
+```
+
+Or using Scoop:
+```powershell
+scoop install helm
+```
+
+::::
 
 ### Verify Installation
 

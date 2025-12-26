@@ -16,3 +16,21 @@
 {"timestamp":"2025-12-26T01:48:11Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
 {"timestamp":"2025-12-26T01:48:17Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
 {"timestamp":"2025-12-26T01:48:32Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-25T17:35:13Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"Explore","description":"Fetch GitHub issue #386","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-25T17:35:41Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"Explore","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-25T17:56:10Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"chapter-planner","description":"Chapter planning for Ch3 restructure","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-25T18:00:14Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"chapter-planner","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-25T18:26:37Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"content-implementer","description":"US3: Agent Skills lesson 4","background":true,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-25T18:26:37Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"content-implementer","description":"US4: Guardrails lesson 9","background":true,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-25T18:26:37Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"content-implementer","description":"US2: Competitive Strategy 2,7,8","background":true,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-25T18:26:37Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"content-implementer","description":"Synthesis: Lessons 10,11","background":true,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-25T18:26:37Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"content-implementer","description":"US1: Monetization lessons 3,5,6","background":true,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-25T18:26:37Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"content-implementer","description":"Foundation: Lesson 1","background":true,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-25T18:26:37Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"content-implementer","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-25T18:26:37Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"content-implementer","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-25T18:26:37Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"content-implementer","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-25T18:26:37Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"content-implementer","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-25T18:26:37Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"content-implementer","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-25T18:26:37Z","session_id":"87174d62-dd90-48e7-999f-622fe2c10594","subagent":"content-implementer","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-25T19:17:26Z","session_id":"da8e6a1c-08c4-47e3-9b79-85cea79cfd93","subagent":"general-purpose","description":"Generate 8 summary files","background":true,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-25T19:17:26Z","session_id":"da8e6a1c-08c4-47e3-9b79-85cea79cfd93","subagent":"general-purpose","agent_id":"","status":"completed","event":"complete"}

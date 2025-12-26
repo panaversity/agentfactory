@@ -137,22 +137,26 @@ git version 2.39.0
 
 ### Installing Git
 
-**macOS:**
-```bash
-# Option 1: Using Homebrew (recommended)
-brew install git
+::::os-tabs
 
-# Option 2: Install Xcode Command Line Tools (includes Git)
+::macos
+**Option 1: Using Homebrew (recommended)**
+```bash
+brew install git
+```
+
+**Option 2: Install Xcode Command Line Tools (includes Git)**
+```bash
 xcode-select --install
 ```
 
-**Windows:**
+::windows
 1. Download Git from [git-scm.com/download/win](https://git-scm.com/download/win)
 2. Run the installer
 3. Use default settings (just keep clicking "Next")
 4. Restart your terminal after installation
 
-**Linux:**
+::linux
 ```bash
 # Ubuntu/Debian
 sudo apt update
@@ -164,6 +168,8 @@ sudo dnf install git
 # Arch Linux
 sudo pacman -S git
 ```
+
+::::
 
 **Verify Installation:**
 

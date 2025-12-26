@@ -120,12 +120,11 @@ Before we begin, verify you have the following:
 
 ## Installation
 
-Claude Code installation has been simplified with official installers for each platform. Choose your operating system below to see platform-specific installation methods.
+Claude Code installation has been simplified with official installers for each platform. Choose your operating system tab below to see platform-specific installation methods.
 
----
+::::os-tabs
 
-### Windows Installation
-
+::windows
 **⚠️ Important**: Claude Code requires a bash-compatible shell to run. On Windows, you need **either WSL or Git for Windows** installed—the installer downloads Claude Code, but it runs inside a bash shell.
 
 **Decision Tree**:
@@ -227,10 +226,7 @@ X.X.XX (Claude Code)
 #### 💬 AI Colearning Prompt
 > "Explain the difference between WSL and Git Bash for Windows developers. When would you choose one over the other for AI-native development workflows?"
 
----
-
-### macOS Installation
-
+::macos
 **Decision Tree**:
 ```
 Which installation method do you prefer?
@@ -296,10 +292,7 @@ X.X.XX (Claude Code)
 #### 🎓 Expert Insight
 > Claude Code auto-updates itself, so you get the latest features without manual intervention. If you use Homebrew for other tools, `brew install --cask claude-code` integrates Claude Code into your existing workflow—but the native installer works equally well.
 
----
-
-### Linux/WSL Installation
-
+::linux
 **Decision Tree**:
 ```
 Are you on Ubuntu/Debian/WSL?
@@ -324,7 +317,7 @@ curl -fsSL https://claude.ai/install.sh | bash
 
 **What this does**: Downloads and executes the official installer script, automatically detecting your distribution.
 
-**Requirements**: 
+**Requirements**:
 - Ubuntu 20.04+ or Debian 10+
 - curl and bash (pre-installed on most distributions)
 
@@ -342,7 +335,7 @@ apk add libgcc libstdc++ ripgrep
 export USE_BUILTIN_RIPGREP=0
 ```
 
-**What this does**: 
+**What this does**:
 1. Installs required libraries (libgcc, libstdc++) and ripgrep
 2. Configures Claude Code to use system ripgrep instead of built-in version
 
@@ -362,6 +355,8 @@ X.X.XX (Claude Code)
 ```
 
 (Your version number will differ—Claude Code auto-updates frequently.)
+
+::::
 
 ---
 

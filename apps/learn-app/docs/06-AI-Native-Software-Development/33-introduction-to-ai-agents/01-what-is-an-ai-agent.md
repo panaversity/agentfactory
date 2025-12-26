@@ -169,7 +169,7 @@ You don't choose between General and Custom—you use General Agents to *create*
 
 **Your expertise + General Agent + SDK = Deployable Custom Agent**
 
-Skills you create in Claude Code (Chapter 5) become the building blocks. In Chapters 34-36, you'll use Claude Code to build Custom Agents with OpenAI, Claude, and Google SDKs.
+Skills you create in Claude Code (Chapter 5) become the building blocks—reusable intelligence packaged in SKILL.md files that teach agents specialized workflows. These skills are monetizable IP: the "recipe" for your agent's expertise. In Chapters 34-36, you'll use Claude Code to build Custom Agents with OpenAI, Claude, and Google SDKs.
 
 ### The Business Angle
 

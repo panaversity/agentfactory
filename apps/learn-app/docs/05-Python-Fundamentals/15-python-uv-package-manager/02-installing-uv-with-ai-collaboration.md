@@ -84,8 +84,9 @@ Let's get started. You'll be done in under 5 minutes.
 
 Pick your platform and run the command. That's it.
 
-### macOS or Linux
+::::os-tabs
 
+::macos
 Open your terminal and run:
 
 ```bash
@@ -94,13 +95,26 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 **What this does:**
 - Downloads the official UV installation script from Astral
-- Executes it to install UV to `~/.local/bin/` (both macOS and Linux)
+- Executes it to install UV to `~/.local/bin/`
 - Automatically adds UV to your PATH so you can use the `uv` command
 
 **Time:** ~30 seconds
 
-### Windows (PowerShell)
+::linux
+Open your terminal and run:
 
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+**What this does:**
+- Downloads the official UV installation script from Astral
+- Executes it to install UV to `~/.local/bin/`
+- Automatically adds UV to your PATH so you can use the `uv` command
+
+**Time:** ~30 seconds
+
+::windows
 Open PowerShell and run:
 
 ```powershell
@@ -114,6 +128,8 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 - **Important:** Restart PowerShell after installation
 
 **Time:** ~30 seconds + PowerShell restart
+
+::::
 
 ## Step 2: Verify Installation
 
