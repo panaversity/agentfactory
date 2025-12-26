@@ -19,3 +19,28 @@
 {"timestamp":"2025-12-26T03:32:17Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","skill":"skill-creator","event":"start"}
 {"timestamp":"2025-12-26T03:32:17Z","session_id":"ce5a20a0-c207-400b-a878-1af90ccc1d25","skill":"creating-skills","event":"start"}
 {"timestamp":"2025-12-26T03:42:26Z","session_id":"51928362-41b3-47db-84e4-b4f9a81c041f","skill":"sp.clarify","args":"046-part5-todo-integration","event":"invoke","source":"Skill_tool"}
+{"timestamp":"2025-12-26T03:58:09Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"creating-skills","event":"start"}
+{"timestamp":"2025-12-26T03:58:17Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-chat-interfaces","event":"start"}
+{"timestamp":"2025-12-26T04:00:27Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T04:04:24Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"creating-skills","event":"verify","status":"failure"}
+{"timestamp":"2025-12-26T04:07:59Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"sp.specify","args":"Chapter 35: Google Agent Development Kit (ADK) - This chapter teaches building custom AI agents that are reliable, safe, and evaluated on real tasks using Google's ADK framework. The chapter builds on Chapter 34 (OpenAI SDK) to show how the same agent patterns manifest in Google's ecosystem. Key topics: ADK setup with Gemini/Vertex AI, Agent types (LlmAgent, SequentialAgent, ParallelAgent, LoopAgent), Tools (FunctionTool, AgentTool, McpToolset), Session management, Guardrails and callbacks, Evaluation with adk eval, Deployment to Vertex AI Agent Engine and Cloud Run. The running example is TaskManager Agent.","event":"invoke","source":"Skill_tool"}
+{"timestamp":"2025-12-26T04:09:22Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T04:10:01Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"sp.specify","args":"Chapter 35: Google Agent Development Kit (ADK) - This chapter teaches building custom AI agents that are reliable, safe, and evaluated on real tasks using Google's ADK framework. The chapter builds on Chapter 34 (OpenAI SDK) to show how the same agent patterns manifest in Google's ecosystem. Key topics: ADK setup with Gemini/Vertex AI, Agent types (LlmAgent, SequentialAgent, ParallelAgent, LoopAgent), Tools (FunctionTool, AgentTool, McpToolset), Session management, Guardrails and callbacks, Evaluation with adk eval, Deployment to Vertex AI Agent Engine and Cloud Run.","event":"invoke","source":"Skill_tool"}
+{"timestamp":"2025-12-26T04:34:28Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"sp.plan","args":"","event":"invoke","source":"Skill_tool"}
+{"timestamp":"2025-12-26T04:35:48Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T04:42:40Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"sp.tasks","args":"","event":"invoke","source":"Skill_tool"}
+{"timestamp":"2025-12-26T04:48:09Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"sp.implement","args":"","event":"invoke","source":"Skill_tool"}
+{"timestamp":"2025-12-26T04:49:02Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T04:50:49Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T04:55:05Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T04:55:05Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T04:55:06Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T04:57:04Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T04:57:05Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T04:57:05Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T05:01:38Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T05:39:17Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T05:39:17Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T05:39:18Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T05:39:18Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
+{"timestamp":"2025-12-26T05:39:19Z","session_id":"43f9e03b-38ac-40ff-8d75-0c96b7276fee","skill":"building-with-google-adk","event":"start"}
