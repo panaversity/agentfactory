@@ -110,6 +110,122 @@ ClaudeAgentOptions(
     mcp_servers={"db": db_server},            # MCP integrations
     hooks={"PreToolUse": [...]},              # Lifecycle hooks
     agents={"reviewer": agent_def},           # Define subagents
+    # UNIQUE FEATURES (not in other SDKs):
+    setting_sources=["user", "project"],      # Load Skills from .claude/skills/
+    enable_file_checkpointing=True,           # Track file changes for undo
+    can_use_tool=permission_callback,         # Runtime permission decisions
+    output_format={"type": "json_schema", "schema": schema},  # Structured output
+)
+```
+
+## Unique Features (Not in OpenAI/Google SDKs)
+
+### Agent Skills via settingSources
+
+Load filesystem-based Skills (SKILL.md files) to give your agent domain expertise:
+
+```python
+options = ClaudeAgentOptions(
+    setting_sources=["project"],  # Load from .claude/skills/
+    allowed_tools=["Skill"]       # Enable Skill tool
+)
+```
+
+### Custom Slash Commands
+
+Create `.claude/commands/review.md`:
+```markdown
+---
+allowed-tools: Read, Grep
+description: Code review
+---
+Review the code for security and quality issues.
+```
+
+Use in SDK:
+```python
+async for msg in query(prompt="/review src/auth.py", options=opts):
+    print(msg)
+```
+
+### File Checkpointing
+
+Track file changes and undo them:
+
+```python
+options = ClaudeAgentOptions(
+    enable_file_checkpointing=True,
+    extra_args={"replay-user-messages": None}  # Get checkpoint UUIDs
+)
+
+async with ClaudeSDKClient(options) as client:
+    await client.query("Refactor auth.py")
+    async for msg in client.receive_response():
+        if isinstance(msg, UserMessage) and msg.uuid:
+            checkpoint_id = msg.uuid  # Save for later
+
+# Later: rewind files
+async with ClaudeSDKClient(ClaudeAgentOptions(
+    enable_file_checkpointing=True,
+    resume=session_id
+)) as client:
+    await client.query("")
+    async for msg in client.receive_response():
+        await client.rewind_files(checkpoint_id)
+        break
+```
+
+### Runtime Permissions with canUseTool
+
+Dynamic permission decisions per tool call:
+
+```python
+async def can_use_tool(tool: str, input: dict, context: dict):
+    if tool == "Write" and "/config/" in input.get("file_path", ""):
+        return {"behavior": "deny", "message": "Config files protected"}
+    return {"behavior": "allow", "updatedInput": input}
+
+options = ClaudeAgentOptions(can_use_tool=can_use_tool)
+```
+
+### Cost Tracking
+
+Track per-message token usage and costs:
+
+```python
+async for message in query(prompt="Task", options=opts):
+    if message.type == "assistant" and hasattr(message, "usage"):
+        print(f"Tokens: {message.usage}")
+    if message.type == "result":
+        print(f"Total cost: ${message.total_cost_usd:.4f}")
+```
+
+### System Prompt Presets
+
+Inherit Claude Code's system prompt:
+
+```python
+options = ClaudeAgentOptions(
+    system_prompt={
+        "type": "preset",
+        "preset": "claude_code",
+        "append": "Always follow PEP 8."
+    },
+    setting_sources=["project"]  # Required to load CLAUDE.md
+)
+```
+
+### Sandbox Configuration
+
+Control Bash execution security:
+
+```python
+options = ClaudeAgentOptions(
+    sandbox={
+        "enabled": True,
+        "autoAllowBashIfSandboxed": True,
+        "network": {"allowLocalBinding": True}
+    }
 )
 ```
 
