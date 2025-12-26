@@ -16,13 +16,8 @@ This chapter teaches you to build production-ready asynchronous systems using Py
 By the end of this chapter, you'll design hybrid systems that fetch data concurrently from multiple sources and process it in parallel—the exact pattern used in modern AI agents. You'll build a complete multi-service AI agent that demonstrates 2.5x+ speedup vs sequential approaches.
 
 ## 🎯 Before You Begin
-
 ---
-
 ## What You'll Learn
-
-By the end of this chapter, you will be able to:
-
 - **Master core asyncio concepts** — Understand event loop abstraction, write coroutines with `async def` and `await`, distinguish I/O-bound from CPU-bound tasks, differentiate concurrency (task switching) from parallelism (multi-core execution)
 - **Apply modern Python 3.14+ patterns** — Use `asyncio.TaskGroup()` for structured concurrency with fail-fast and automatic cleanup, apply `asyncio.timeout()` context manager for timeout controls, collect results with `asyncio.gather()`, leverage `InterpreterPoolExecutor` for true CPU parallelism
 - **Implement production techniques** — Handle errors gracefully (TimeoutError, CancelledError, partial failures), build resilience patterns (retries, exponential backoff, circuit breakers), limit resources with Semaphores, benchmark and identify bottlenecks

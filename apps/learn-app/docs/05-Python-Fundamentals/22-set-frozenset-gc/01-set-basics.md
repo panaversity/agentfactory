@@ -153,38 +153,49 @@ Ask your AI Co-Teacher:
 
 ## The Uniqueness Property
 
-Sets automatically eliminate duplicates. This is their superpower. Let's see this in action:
+Sets automatically eliminate duplicates. This is their superpower. Let's see this in action with a real-world example—managing task categories:
 
-### Code Example 1: Creating Sets with Type Hints
+### Code Example 1: Task Categories (PRIMARY USE CASE)
+
+A perfect use case for sets is managing task categories. Users might accidentally add the same category multiple times, but you want only unique categories:
 
 ```python
-# Set literal syntax with type hints
-numbers: set[int] = {1, 2, 3, 4, 5}
-colors: set[str] = {"red", "green", "blue"}
+# Task categories - perfect use case for sets (no duplicates!)
+task_categories: set[str] = {"work", "personal", "urgent"}
 
-# Set constructor syntax
-from_list: set[int] = set([1, 2, 3, 3, 2, 1])
-empty_set: set[int] = set()
+# Try to add a duplicate category
+task_categories.add("work")  # No duplicate added
+print(f"Categories: {task_categories}")  # {'work', 'personal', 'urgent'}
+print(f"Count: {len(task_categories)}")  # 3, not 4
 
-# Display results
-print(f"numbers: {numbers}")              # {1, 2, 3, 4, 5}
-print(f"colors: {colors}")                # {'red', 'green', 'blue'}
-print(f"from_list: {from_list}")          # {1, 2, 3} - duplicates removed!
-print(f"type(empty_set): {type(empty_set)}")  # <class 'set'>
+# Check if a category exists (fast O(1) lookup!)
+if "urgent" in task_categories:
+    print("Has urgent tasks!")
+
+# Add new categories
+task_categories.add("health")
+task_categories.add("learning")
+print(f"Updated categories: {task_categories}")  # {'work', 'personal', 'urgent', 'health', 'learning'}
+
+# Remove a category when no longer needed
+task_categories.discard("urgent")
+print(f"After removing urgent: {task_categories}")  # {'work', 'personal', 'health', 'learning'}
 ```
 
-**Key observation:** Notice that `from_list` shows `{1, 2, 3}`, not `{1, 2, 3, 3, 2, 1}`. The duplicates are gone automatically.
+**Key observation:** Notice that when we add "work" twice, the set ignores the duplicate. The count stays at 3, not 4. This is exactly what makes sets perfect for managing categories, tags, or any collection where duplicates don't make sense.
 
-### Code Example 2: Understanding Uniqueness
+### Code Example 2: Deduplicating Collections
+
+Sets are also excellent for cleaning up data collections that have accumulated duplicates:
 
 ```python
-# Real-world scenario: Deduplicating email addresses
+# Real-world scenario: Deduplicating email addresses from form submissions
 email_list: list[str] = [
     "alice@example.com",
     "bob@example.com",
-    "alice@example.com",  # Duplicate
+    "alice@example.com",  # Duplicate (user submitted twice)
     "charlie@example.com",
-    "bob@example.com"     # Duplicate
+    "bob@example.com"     # Duplicate (submitted again by mistake)
 ]
 
 unique_emails: set[str] = set(email_list)
@@ -196,6 +207,7 @@ print(f"Unique emails: {unique_emails}")               # {'alice@...', 'bob@...'
 # Practical use: Track unique user IDs from a log
 user_ids: set[int] = {100, 101, 102, 101, 100}  # Some users visit multiple times
 print(f"Unique users: {user_ids}")                     # {100, 101, 102}
+print(f"Total visits: 5, Unique users: {len(user_ids)}")
 ```
 
 This pattern is incredibly common: you have a collection with potential duplicates, and you need to know the unique values. Sets solve this instantly.

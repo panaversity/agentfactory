@@ -1,16 +1,18 @@
 ---
 sidebar_position: 40
 title: "Chapter 40: FastAPI for Agents"
-description: "Expose agent capabilities as production-ready REST APIs with FastAPI"
+description: "Expose the TaskManager Agent as a production-ready REST API with FastAPI"
 ---
 
 # Chapter 40: FastAPI for Agents
 
-You've built agents with SDKs (Chapter 34), connected them via MCP (Chapters 37-38), and added reusable skills (Chapter 39). Now you'll expose them as HTTP services. FastAPI is the natural choice: Python-native, async-first, automatic OpenAPI documentation, and battle-tested in production.
+You've built the **TaskManager Agent** with the OpenAI Agents SDK (Chapter 34), connected it via MCP (Chapters 37-38), and added reusable skills (Chapter 39). Now you'll expose it as an HTTP service. FastAPI is the natural choice: Python-native, async-first, automatic OpenAPI documentation, and battle-tested in production.
 
-This chapter consolidates what you learned building MCP servers—HTTP transports, request/response patterns, streaming—into a formal API layer. MCP taught you the concepts; FastAPI gives you the industry-standard framework for production services.
+This chapter has two phases:
+- **Lessons 1-5**: Learn FastAPI fundamentals using a simple Task API
+- **Lessons 6-8**: Expose the TaskManager Agent from Chapter 34 via REST endpoints
 
-By the end, your multi-agent systems are callable via REST endpoints—triage routing, tool execution, streaming responses—all accessible through a production API.
+By the end, the TaskManager Agent you built locally is callable via REST—triage routing, specialist handoffs, tool execution, streaming responses—all accessible to any HTTP client.
 
 ## What You'll Learn
 
@@ -21,7 +23,7 @@ By the end of this chapter, you'll be able to:
 - **Handle errors properly**: Return appropriate HTTP status codes (200, 201, 400, 404, 422)
 - **Use dependency injection**: Organize code with FastAPI's Depends() pattern
 - **Stream responses**: Implement Server-Sent Events (SSE) for real-time updates
-- **Expose multi-agent systems**: Wrap OpenAI Agents SDK agents in endpoints with handoffs
+- **Expose TaskManager Agent**: Wrap the multi-agent system from Chapter 34 in REST endpoints
 - **Stream agent responses**: SSE with tool calls, handoffs, and completion events
 
 ## Chapter Structure
@@ -34,8 +36,8 @@ By the end of this chapter, you'll be able to:
 | 4 | Error Handling | HTTPException, status codes |
 | 5 | Dependency Injection | Depends(), repository pattern |
 | 6 | Streaming with SSE | Server-Sent Events foundation |
-| 7 | Agent Integration | Multi-agent handoffs, triage routing |
-| 8 | Capstone: Agent-Powered Task Service | Complete multi-agent API |
+| 7 | Agent Integration | TaskManager Agent with handoffs |
+| 8 | Capstone: TaskManager Agent Service | Complete multi-agent API |
 
 ## Prerequisites
 
@@ -43,6 +45,12 @@ By the end of this chapter, you'll be able to:
 - **Chapters 37-38**: MCP experience (HTTP/SSE patterns familiar)
 - **Part 5**: Python Fundamentals (async/await, type hints, Pydantic)
 
+## The Running Example
+
+Lessons 1-5 build a **Task API**—a simple CRUD service for task management. This teaches FastAPI patterns without agent complexity.
+
+Lessons 6-8 transition to the **TaskManager Agent**—the same multi-agent system you built in Chapter 34. You'll recognize the triage pattern, specialist agents, and handoffs. The difference: now they're accessible via HTTP endpoints instead of CLI.
+
 ## Looking Ahead
 
-This chapter gives you a REST API exposing full agent capabilities. Chapter 41 (ChatKit Server) builds on this foundation to add conversational infrastructure—the session management, turn-taking, and chat-specific patterns that conversational interfaces require.
+This chapter gives you a REST API exposing full TaskManager capabilities. Chapter 41 (ChatKit Server) builds on this foundation to add conversational infrastructure—the session management, turn-taking, and chat-specific patterns that conversational interfaces require.
