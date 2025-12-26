@@ -159,6 +159,37 @@ Because frozensets are immutable, they are **hashable**. This means you can use 
 
 Regular sets cannot do either of these. Let's see why:
 
+### PRIMARY USE CASE: Task Statuses and Priority Levels
+
+A real-world use case for frozensets is representing **fixed, immutable lists of valid values**. For example, task status categories that never change:
+
+```python
+# Immutable priority levels - can't be changed after creation
+PRIORITY_LEVELS: frozenset[str] = frozenset({"low", "medium", "high", "urgent"})
+
+# Can use as dictionary key (hashable)
+# Map each priority level set to a color for UI display
+priority_colors: dict[frozenset[str], str] = {
+    PRIORITY_LEVELS: "rainbow"  # Works because frozenset is hashable
+}
+
+# Task with fixed valid statuses - never changes after app startup
+VALID_STATUSES: frozenset[str] = frozenset({"pending", "in_progress", "completed", "cancelled"})
+
+# Validate user input against immutable set
+def validate_task_status(status: str) -> bool:
+    return status in VALID_STATUSES
+
+# This will work
+print(validate_task_status("pending"))     # True
+print(validate_task_status("done"))        # False
+
+# The immutability guarantee is crucial here - we know these valid statuses
+# will never change unexpectedly within our application
+```
+
+**Why frozenset matters here**: If these were regular mutable sets, someone could accidentally modify them with `.add()` or `.remove()`, breaking validation logic throughout your app. Frozensets guarantee that `VALID_STATUSES` remains exactly as defined when the app starts.
+
 ### Frozensets as Dictionary Keys
 
 Regular sets cannot be dictionary keys because they're mutable and unhashable:

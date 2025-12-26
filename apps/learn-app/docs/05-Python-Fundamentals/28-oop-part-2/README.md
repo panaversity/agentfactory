@@ -16,13 +16,9 @@ This chapter builds on Chapter 29 foundations to teach advanced OOP patterns: in
 This chapter is foundational for AI-native software development—real multi-agent systems rely on these concepts. Understanding these patterns prepares you for professional AI engineering in Parts 5-13.
 
 ## 🎯 Before You Begin
-
 ---
-
 ## What You'll Learn
-
 By completing this chapter, you will be able to:
-
 - **Create inheritance hierarchies** using `super()` and explain Method Resolution Order (MRO) through C3 linearization
 - **Implement polymorphic systems** using abstract base classes, @abstractmethod, and duck typing principles
 - **Choose composition over inheritance** for flexible designs and organize code into modules and packages

@@ -14,13 +14,8 @@ Programs need to make decisions and repeat actions. Should we process this user'
 Control flow structures are the foundation of programming logic—they let your code respond to different conditions and automate repetitive tasks. You'll master conditional statements, pattern matching, loops, and control mechanisms that transform simple scripts into intelligent programs.
 
 ## 🎯 Before You Begin
-
 ---
-
 ## What You'll Learn
-
-By the end of this chapter, you will be able to:
-
 - **Make decisions in code** using `if`, `elif`, and `else` statements
 - **Use pattern matching** with Python's modern `match-case` syntax
 - **Automate repetition** using `for` and `while` loops
