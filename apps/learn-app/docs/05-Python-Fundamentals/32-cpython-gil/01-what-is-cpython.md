@@ -113,6 +113,35 @@ Let's break this down carefully. **"Reference implementation" means:**
 
 3. **Written in C**: Here's a crucial detail that will matter for everything we discuss about performance and threading—CPython isn't written in Python. It's written in C, a lower-level programming language. This design choice has profound implications for how memory is managed and how Python handles concurrent execution.
 
+### Why This Matters for Your Todo Application
+
+Remember the Todo app you built in Part 5? When you run it, **CPython is the engine executing every line of code**. Understanding CPython helps you optimize task processing—especially when you're batch-processing 1000 tasks:
+
+```python
+# Your Task class runs on CPython
+class Task:
+    def __init__(self, title: str):
+        self.title = title
+        self.done = False
+
+    def process(self):
+        """CPU-bound processing that CPython executes."""
+        # CPython compiles this to bytecode, then interprets it
+        result = sum(range(1000000))  # Simulated processing
+        return result
+
+# When processing 1000 tasks, CPython's behavior matters!
+tasks = [Task(f"Task-{i}") for i in range(1000)]
+for task in tasks:
+    task.process()  # CPython executes this 1000 times
+```
+
+Understanding CPython's execution model explains:
+- Why processing 1000 tasks sequentially works differently than parallel task processing
+- How bytecode compilation affects repeated task execution
+- Why reference counting impacts memory usage in large task batches
+- How the GIL (discussed in Lesson 2) affects concurrent task processing
+
 #### 💬 AI Colearning Prompt
 
 Before we continue, let's explore why this architecture matters:

@@ -16,13 +16,8 @@ This chapter teaches you how to anticipate errors, handle them elegantly, and pr
 This chapter applies the AI-Native Learning methodology: you describe what error handling you want, explore exception patterns with your AI companion (Claude Code or Gemini CLI), validate your understanding through working code, and learn from errors by asking "why did this fail?"
 
 ## 🎯 Before You Begin
-
 ---
-
 ## What You'll Learn
-
-By the end of this chapter, you will be able to:
-
 - **Catch exceptions** using try/except blocks and handle common error types
 - **Control exception flow** with try/except/else/finally for complete error handling
 - **Raise exceptions intentionally** and create custom exception classes for validation

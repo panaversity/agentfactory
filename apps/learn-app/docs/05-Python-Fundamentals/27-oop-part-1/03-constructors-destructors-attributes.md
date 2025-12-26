@@ -95,41 +95,72 @@ In this lesson, you'll discover why these patterns matter through hands-on exper
 
 ### Discovery Exercise 1: Why Default Parameters Matter
 
-Create `attribute_experiments.py` and run this:
+Create `task_initialization.py` and run this:
 
 ```python
-class Dog:
-    def __init__(self, name: str, breed: str, age: int):
-        self.name = name
-        self.breed = breed
-        self.age = age
+from datetime import datetime
+
+class Task:
+    def __init__(self, title: str, description: str, priority: int, due_date):
+        self.title = title
+        self.description = description
+        self.priority = priority
+        self.due_date = due_date
 
 # Works fine, but requires ALL parameters
-dog1 = Dog("Max", "Labrador", 5)
+task1 = Task("Buy groceries", "Fresh vegetables", 3, datetime(2025, 1, 15))
 
-# What if you don't know the age? Forced to use placeholder
-dog2 = Dog("Unknown", "Mixed", 0)  # Awkward!
+# What if you don't know the due date? Forced to use placeholder
+task2 = Task("Review PR", "Code review", 1, None)  # Awkward!
 ```
 
-Now add a default parameter:
+**Output:**
+```
+Task created: Buy groceries
+Task created: Review PR (no deadline)
+```
+
+Now add default parameters:
 
 ```python
-class Dog:
-    def __init__(self, name: str, breed: str, age: int = 0):
-        self.name = name
-        self.breed = breed
-        self.age = age
+from datetime import datetime
+
+class Task:
+    def __init__(
+        self,
+        title: str,
+        description: str = "",
+        priority: int = 5,
+        due_date = None
+    ):
+        self.title = title
+        self.description = description
+        self.priority = priority
+        self.due_date = due_date
+        self.status = "pending"
+        self.done = False
+        self.created_at = datetime.now()
 
 # Now flexible!
-dog1 = Dog("Max", "Labrador", 5)
-dog2 = Dog("Buddy", "Golden")  # Uses default age=0
+task1 = Task("Buy groceries", "Fresh vegetables", 3, datetime(2025, 1, 15))
+task2 = Task("Review PR")  # Uses defaults: description="", priority=5, due_date=None
+task3 = Task("Write docs", "API documentation")  # description provided, others default
+```
+
+**Output:**
+```
+task1.title = "Buy groceries"
+task1.priority = 3
+task2.title = "Review PR"
+task2.priority = 5 (default)
+task2.description = "" (default)
 ```
 
 #### 💬 AI CoLearning Prompt
 
-> "I added a default parameter age=0 to my Dog class. Now I can create dogs with or without age. But when should parameters be required vs have defaults? Show me 3 examples: 1) user registration (which fields must be required?), 2) database connection (which have sensible defaults?), 3) API client config. Explain the design principle."
+> "I added default parameters to my Task class. Required: title. Optional: description (default empty string), priority (default 5), due_date (default None). Now I can create tasks flexibly. But when should parameters be required vs have defaults? Show me 3 examples: 1) user registration (which fields MUST be provided?), 2) database connection (which have sensible defaults?), 3) API client config. Explain the design principle."
 
-**Expected Understanding**: AI will explain that **critical data should be required** (no default), **convenience data can have defaults**. You'll see the tradeoff between flexibility and enforced completeness.
+**Expected Understanding**: AI will explain that **critical data should be required** (no default), **convenience data can have defaults**. You'll see the tradeoff between flexibility and enforced completeness. Task.title is always required because every task must have a name; due_date is optional because you can create urgent immediate tasks.
 
 ---
 
@@ -138,34 +169,48 @@ dog2 = Dog("Buddy", "Golden")  # Uses default age=0
 Run this experiment:
 
 ```python
-class Dog:
-    species: str = "Canis familiaris"  # Class attribute - ALL dogs share this
+class Task:
+    status_options = ["pending", "in_progress", "completed"]  # Class attribute - ALL tasks share this
+    default_priority = 5  # Class attribute - shared default
 
-    def __init__(self, name: str, breed: str):
-        self.name = name      # Instance attribute - each dog's own
-        self.breed = breed    # Instance attribute - each dog's own
+    def __init__(self, title: str):
+        self.title = title           # Instance attribute - each task's own
+        self.priority = self.default_priority  # Instance attribute - each task's own
+        self.done = False            # Instance attribute - each task's own
 
-dog1 = Dog("Max", "Labrador")
-dog2 = Dog("Buddy", "Golden")
+task1 = Task("Buy groceries")
+task2 = Task("Review PR")
 
-# Change class attribute
-Dog.species = "Canis lupus familiaris"
-print(dog1.species)  # Changed!
-print(dog2.species)  # Changed! (both see the update)
+# Change class attribute (affects all Task instances)
+Task.default_priority = 3
+print(task1.priority)  # Still 5 (already assigned during __init__)
+print(task2.priority)  # Still 5 (already assigned during __init__)
 
-# Change instance attribute
-dog1.name = "Max Jr."
-print(dog2.name)  # Still "Buddy" (independent)
+# But for new tasks:
+task3 = Task("Write docs")
+print(task3.priority)  # Still 5 (because default_priority is 5, not updated retroactively)
+
+# Change instance attribute (affects only one task)
+task1.priority = 1
+print(task2.priority)  # Still 5 (independent)
+```
+
+**Output:**
+```
+task1.priority = 5
+task2.priority = 5
+task1.priority = 1 (changed only for this task)
+task2.priority = 5 (unaffected)
 ```
 
 #### 💬 AI CoLearning Prompt
 
-> "I have Dog class with species (class attribute) and name (instance attribute). When Dog.species changes, ALL dogs see it. When dog1.name changes, only dog1 is affected. Explain:
+> "I have a Task class with default_priority as a class attribute and priority as an instance attribute. When I change task1.priority = 1, only task1 is affected. But status_options is a class attribute shared by all tasks. Explain:
 > 1. What's stored in memory differently for class vs instance attributes?
-> 2. Give me 3 real-world examples where class attributes make sense (like API base_url, database connection pool, configuration)
-> 3. When should I avoid class attributes?"
+> 2. Give me 3 real-world examples where class attributes make sense (like API base_url, database config, valid status values)
+> 3. When should I avoid class attributes? (Hint: think about mutable defaults like lists)"
 
-**Expected Understanding**: AI will explain that class attributes are shared memory (one copy), instance attributes are per-object memory (N copies). Use class attributes for configuration, constants, shared state. Avoid for mutable data that should be independent.
+**Expected Understanding**: AI will explain that class attributes are shared memory (one copy for all instances), instance attributes are per-object memory (each object gets its own copy). Use class attributes for configuration, constants, and shared validation rules. Avoid mutable class attributes like lists or dicts that should be independent.
 
 ---
 
@@ -174,34 +219,46 @@ print(dog2.name)  # Still "Buddy" (independent)
 Run this and observe strange behavior:
 
 ```python
-class Counter:
-    count: int = 0  # Class attribute
+class Task:
+    priority_default = 5  # Class attribute
 
-    def __init__(self, name: str):
-        self.name = name
+    def __init__(self, title: str):
+        self.title = title
 
-c1 = Counter("First")
-c2 = Counter("Second")
+t1 = Task("Task 1")
+t2 = Task("Task 2")
 
-print(c1.count)  # 0 (reading class attribute)
-print(c2.count)  # 0 (reading class attribute)
+print(t1.priority_default)  # 5 (reading class attribute)
+print(t2.priority_default)  # 5 (reading class attribute)
 
 # Now the trap:
-c1.count = 5  # Creates INSTANCE attribute (shadowing the class attribute!)
+t1.priority_default = 1  # Creates INSTANCE attribute (shadowing the class attribute!)
 
-print(c1.count)       # 5 (instance attribute)
-print(c2.count)       # 0 (still class attribute)
-print(Counter.count)  # 0 (class attribute unchanged)
+print(t1.priority_default)       # 1 (instance attribute)
+print(t2.priority_default)       # 5 (still class attribute)
+print(Task.priority_default)     # 5 (class attribute unchanged)
+
+# Check where the attribute lives:
+print("priority_default" in t1.__dict__)    # True (it's in t1's instance dict)
+print("priority_default" in t2.__dict__)    # False (t2 doesn't have it, reads from class)
+print("priority_default" in Task.__dict__)  # True (it's in the class)
+```
+
+**Output:**
+```
+t1.priority_default = 1 (instance attribute shadows class attribute)
+t2.priority_default = 5 (still reading from class)
+Task.priority_default = 5 (class attribute unchanged)
 ```
 
 #### 💬 AI CoLearning Prompt
 
-> "I tried to update a class attribute through an instance (c1.count = 5) but it created an INSTANCE attribute instead, shadowing the class attribute. Now c1.count and c2.count are different!
-> 1. Why does Python allow this? Is it a bug or feature?
-> 2. How do I update class attributes correctly? (Hint: use ClassName.attribute)
-> 3. Show me how to detect if an attribute is instance or class using __dict__"
+> "I tried to update a class attribute through an instance (t1.priority_default = 1) but it created an INSTANCE attribute instead, shadowing the class attribute! Now t1 and t2 have different values!
+> 1. Why does Python allow this? Is it a bug or a feature?
+> 2. How do I update class attributes correctly? (Hint: use ClassName.attribute, not instance.attribute)
+> 3. How can I detect if an attribute lives in an instance or the class using __dict__?"
 
-**Expected Understanding**: AI will explain that `obj.attr = value` ALWAYS creates instance attribute. To modify class attributes, use `ClassName.attr = value`. Shadowing is intentional but often confusing. Use `hasattr()` and `__dict__` for inspection.
+**Expected Understanding**: AI will explain that `obj.attr = value` ALWAYS creates an instance attribute. To modify class attributes, use `ClassName.attr = value`. Shadowing is intentional but often confusing. Use `__dict__` to inspect which attributes belong to which object.
 
 ---
 
@@ -230,33 +287,33 @@ Instead of manual files, **use AI to synthesize**:
 
 Ask your AI companion:
 
-> "I'm designing classes with optional parameters and I've discovered two types of attributes:
-> - Instance attributes like `self.name` (each object has its own)
-> - Class attributes like `tricks_known = 0` (shared across all objects)
+> "I'm building a Task management system and I've discovered two types of attributes:
+> - Instance attributes like `self.title` and `self.priority` (each task has its own)
+> - Class attributes like `status_options = ["pending", "in_progress", "completed"]` (shared across all tasks)
 >
 > Explain:
-> 1. When should I use default parameters in `__init__`?
+> 1. When should I use default parameters in Task.__init__?
 > 2. What's the memory layout difference between instance and class attributes?
-> 3. If dog1.tricks_known = 5 creates a new instance attribute, what happens to the class attribute?
-> 4. Show me a real example where class attributes are useful (not artificial)."
+> 3. If task1.priority = 1 creates a new instance attribute, what happens to the class default?
+> 4. Show me a Task example where class attributes are useful (configuration, validation rules, etc)."
 
 ### What You'll Learn from AI
 
 **Expected AI Response** (summary):
 
-- **Default parameters**: Make constructors flexible for optional data
-- **Instance attributes**: Each object has independent copies
-- **Class attributes**: All objects share one copy
+- **Default parameters**: Make constructors flexible for optional task data (description, due_date)
+- **Instance attributes**: Each task has independent values (title, priority, done)
+- **Class attributes**: All tasks share configuration (status_options, default_priority)
 - **Shadowing**: Creating instance attribute hides class attribute temporarily
-- **Real use case**: Configuration values (class) vs instance data (instance)
+- **Real use case**: Task.status_options (shared validation) vs task.priority (unique per task)
 
 ### Convergence Activity
 
 After AI explains, ask:
 
-> "Walk me through what happens in memory when I create `dog = Dog('Max')` in a class that has both `species = 'Dog'` (class attribute) and `self.name = name` (instance attribute)."
+> "Walk me through what happens in memory when I create `task = Task('Review PR')` in a class that has both `default_priority = 5` (class attribute) and `self.priority = default_priority` (instance attribute in __init__)."
 
-**Deliverable**: Write a summary explaining when to use default parameters, class vs instance attributes, and why shadowing is important.
+**Deliverable**: Write a summary explaining when to use default parameters, class vs instance attributes in your Task class, and why shadowing is important.
 
 ---
 
@@ -268,44 +325,45 @@ After AI explains, ask:
 
 **Your prompt to AI**:
 
-> "I see a lot of code that uses `def __init__(self, items: list = []):`. But online I see warnings that this is dangerous. Why is using a mutable default parameter (list, dict) problematic? Show me an example where this goes wrong and explain what's happening."
+> "I'm designing a Task class and I want to add an optional tags parameter: `def __init__(self, title: str, tags: list = []):`. But I see warnings online that this is dangerous. Why is using a mutable default parameter (list, dict) problematic? Show me an example where this goes wrong with my Task class and explain what's happening."
 
-**Expected learning**: AI will explain that mutable defaults are shared across all instances, causing hidden bugs.
+**Expected learning**: AI will explain that mutable defaults are shared across all Task instances, causing hidden bugs where all tasks unexpectedly share the same tags list.
 
-#### Challenge 2: Class Attributes in AI Agents
-
-**Your prompt to AI**:
-
-> "I'm designing a ChatAgent class. Configuration like `model_name = 'gpt-4'` could be:
-> - A class attribute (all agents use same model)
-> - An instance attribute in __init__ (each agent can use different model)
->
-> For these scenarios, which should it be:
-> 1. All agents in production use gpt-4, test agents use gpt-3.5
-> 2. Each conversation with a user uses a potentially different model
-> 3. The API key for authentication
->
-> Explain your reasoning."
-
-**Expected learning**: AI will explain design decisions about when to share data.
-
-#### Challenge 3: Attribute Inheritance Behavior
+#### Challenge 2: Class Attributes in Task Configuration
 
 **Your prompt to AI**:
 
-> "If I create a subclass of Dog:
+> "I'm designing a Task class. Configuration like `status_options = ["pending", "in_progress", "completed"]` could be:
+> - A class attribute (all tasks use same valid statuses)
+> - An instance attribute in __init__ (each task could have different statuses)
+>
+> For these scenarios, which should it be and why:
+> 1. All tasks in the system must use the same status values
+> 2. Each task might have its own custom status workflow
+> 3. The priority levels (1-10 scale) for all tasks
+> 4. Timestamps when each task was created
+>
+> Explain your reasoning for each."
+
+**Expected learning**: AI will explain design decisions about when to share data across tasks vs. keeping data independent per task.
+
+#### Challenge 3: Attribute Shadowing with Tasks
+
+**Your prompt to AI**:
+
+> "If I create a TaskCategory subclass:
 > ```python
-> class Dog:
->     species = 'Canis familiaris'
+> class Task:
+>     status = 'pending'  # Class attribute
 >
-> class Husky(Dog):
+> class UrgentTask(Task):
 >     pass
 >
-> h = Husky()
-> h.species = 'Husky Mix'
+> ut = UrgentTask()
+> ut.status = 'in_progress'
 > ```
 >
-> Does this create an instance attribute on h that shadows Dog.species? Or does it modify the class attribute? Show me how to verify which happened."
+> Does this create an instance attribute on ut that shadows Task.status? Or does it modify the class attribute? Show me how to verify which happened using __dict__."
 
 ### Deliverable
 
@@ -317,180 +375,203 @@ Document your three challenges and AI's responses with your analysis of correctn
 
 **Your Role**: Knowledge synthesizer creating design patterns
 
-Create `constructor_and_attributes_guide.md`:
+Create `task_constructors_guide.md` with patterns across multiple domains:
 
 ```markdown
 # Constructors with Defaults and Attributes Guide
 
-## Pattern 1: Basic Constructor with Defaults
+## Pattern 1: Task Constructor with Defaults (Primary Domain)
 
-**When to use**: Optional parameters that don't need validation
+**When to use**: Optional parameters for flexible object creation
 
 ```python
-class Person:
-    def __init__(self, name: str, age: int = 0, city: str = "Unknown"):
-        self.name = name
-        self.age = age
-        self.city = city
+from datetime import datetime
+
+class Task:
+    def __init__(
+        self,
+        title: str,
+        description: str = "",
+        priority: int = 5,
+        due_date = None
+    ):
+        self.title = title
+        self.description = description
+        self.priority = priority
+        self.due_date = due_date
+        self.status = "pending"
+        self.done = False
+        self.created_at = datetime.now()
 
 # All these work
-Person("Alice", 30, "NYC")      # All parameters
-Person("Bob", 25)                # Uses default city
-Person("Charlie")                # Uses default age and city
+Task("Buy groceries", "Fresh vegetables", 3, datetime(2025, 1, 15))
+Task("Review PR")  # Uses defaults
+Task("Write docs", "API documentation")  # Partial defaults
 ```
 
-**Key principle**: Required parameters first, optional last
+**Key principle**: Required parameters first (title), optional last (due_date)
 
 ---
 
-## Pattern 2: Default Parameters with Validation
+## Pattern 2: Class Attributes for Task Configuration
 
+**Class attributes** (shared across all tasks):
 ```python
-class BankAccount:
-    def __init__(self, holder: str, initial_balance: float = 0.0):
-        if initial_balance < 0:
-            raise ValueError("Balance cannot be negative")
-        self.holder = holder
-        self.balance = initial_balance
+class Task:
+    status_options = ["pending", "in_progress", "completed"]
+    default_priority = 5
+    priority_range = (1, 10)  # Min, max valid values
+
+    def __init__(self, title: str):
+        self.title = title
+        self.priority = self.default_priority
 ```
 
-**Key principle**: Validate before storing
+**Rule**: If data is configuration, validation rules, or constants → class attribute. If data is per-task → instance attribute.
 
 ---
 
-## Pattern 3: Distinguishing Instance vs Class Attributes
-
-**Instance attributes** (use in `__init__`):
-```python
-class Dog:
-    def __init__(self, name: str, breed: str):
-        self.name = name        # Each dog has its own name
-        self.breed = breed      # Each dog has its own breed
-```
-
-**Class attributes** (define in class body):
-```python
-class Dog:
-    species = "Canis familiaris"  # All dogs are this species
-    total_dogs = 0                # Track total dogs created
-
-    def __init__(self, name: str):
-        self.name = name
-```
-
-**Rule**: If data is specific to one object → instance attribute. If data is shared → class attribute.
-
----
-
-## Pattern 4: Updating Class Attributes
-
-```python
-class Game:
-    high_score = 0  # Class attribute
-
-    def __init__(self, player_name: str):
-        self.player_name = player_name  # Instance
-        self.score = 0                  # Instance
-
-g1 = Game("Alice")
-g1.score = 100
-
-# To update class attribute, use ClassName.attribute
-Game.high_score = 100  # All Game objects see this
-
-# NOT through instance (creates shadowing):
-# g1.high_score = 100  # This creates instance attribute, doesn't modify class attribute
-```
-
----
-
-## Pattern 5: Detecting Attribute Type
-
-```python
-obj = Dog("Max")
-obj.name = "Max Jr."
-
-# Is name instance or class attribute?
-print("name" in obj.__dict__)  # True = instance, False = class
-
-print(Dog.__dict__["species"])  # Access class attribute via class
-```
-
----
-
-## Pattern 6: Avoiding Mutable Default Parameters
+## Pattern 3: Avoiding Mutable Default Parameters
 
 ```python
 # ❌ WRONG - Mutable default shared between instances!
-class Classroom:
-    def __init__(self, name: str, students: list = []):
-        self.name = name
-        self.students = students
+class Task:
+    def __init__(self, title: str, tags: list = []):
+        self.title = title
+        self.tags = tags  # All tasks share same list!
 
-class1 = Classroom("A")
-class2 = Classroom("B")
-class1.students.append("Alice")
-print(class2.students)  # ["Alice"] - SHARED!
+task1 = Task("Task 1")
+task2 = Task("Task 2")
+task1.tags.append("urgent")
+print(task2.tags)  # ["urgent"] - SHARED! ❌
 
 # ✅ CORRECT - Use None, create new list inside
-class Classroom:
-    def __init__(self, name: str, students: list = None):
-        self.name = name
-        self.students = students if students is not None else []
+class Task:
+    def __init__(self, title: str, tags: list = None):
+        self.title = title
+        self.tags = tags if tags is not None else []  # Each task gets own list
 ```
 
 ---
 
-## Pattern 7: Class Attributes for Configuration
+## Pattern 4: Updating Class Attributes Correctly
 
 ```python
-class APIClient:
-    # Configuration shared by all clients
-    base_url = "https://api.example.com"
-    timeout = 30
+class Task:
+    default_priority = 5
 
-    def __init__(self, api_key: str):
-        # Each client has unique credentials
-        self.api_key = api_key
+    def __init__(self, title: str):
+        self.title = title
+        self.priority = self.default_priority
 
-# All clients use same base URL and timeout
-# But each has different API key
+task1 = Task("Task 1")
+task2 = Task("Task 2")
+
+# ✅ CORRECT - Update class attribute through class name
+Task.default_priority = 3  # New tasks will use priority 3
+
+# ❌ WRONG - This creates instance attribute, doesn't modify class!
+# task1.default_priority = 3  # This shadows the class attribute
 ```
+
+---
+
+## Pattern 5: Detecting Attribute Type with __dict__
+
+```python
+task = Task("Review PR")
+task.priority = 1  # Instance attribute
+
+# Check where attribute lives
+print("priority" in task.__dict__)      # True = instance attribute
+print("priority" in Task.__dict__)      # False = not a class attribute
+print("status_options" in Task.__dict__)  # True = class attribute
+```
+
+---
+
+## Pattern 6: Transfer to Auxiliary Domains
+
+The same patterns work everywhere:
+
+```python
+# Legal: Case with defaults
+class Case:
+    case_statuses = ["open", "pending", "discovery", "trial", "closed"]
+
+    def __init__(self, case_number: str, title: str, client_name: str, case_type: str = "civil"):
+        self.case_number = case_number
+        self.title = title
+        self.client_name = client_name
+        self.case_type = case_type
+        self.status = "open"
+
+# Finance: Invoice with defaults
+class Invoice:
+    status_options = ["draft", "pending", "paid", "overdue"]
+
+    def __init__(self, invoice_id: str, client_name: str, amount: float, description: str = ""):
+        self.invoice_id = invoice_id
+        self.client_name = client_name
+        self.amount = amount
+        self.description = description
+        self.status = "pending"
+        self.is_paid = False
+
+# Healthcare: Appointment with defaults
+class Appointment:
+    types = ["checkup", "followup", "specialist", "emergency"]
+
+    def __init__(self, appointment_id: str, patient_name: str, doctor_name: str, appointment_type: str = "checkup"):
+        self.appointment_id = appointment_id
+        self.patient_name = patient_name
+        self.doctor_name = doctor_name
+        self.appointment_type = appointment_type
+        self.status = "scheduled"
+        self.is_confirmed = False
+```
+
+**Key insight**: Every domain follows the same constructor patterns. Task, Case, Invoice, Appointment all use:
+- Required parameters (task title = case number = invoice id)
+- Optional parameters with defaults (due_date, case_type, description)
+- Class attributes for shared configuration (status_options)
+- Instance attributes for per-object data (priority, status, done)
 
 ---
 
 ## Constructor Pattern Checklist
 
-When designing a constructor, ask:
+When designing ANY constructor, ask:
 
 1. **What parameters are required?** (must provide)
 2. **What parameters are optional?** (have sensible defaults)
-3. **Should this be a class attribute?** (shared across instances)
+3. **Should this be a class attribute?** (shared configuration/validation)
 4. **Should this be an instance attribute?** (specific to each object)
-5. **Do I need validation?** (check constraints)
+5. **Am I using mutable defaults?** (use None instead)
 
 ### Validation with AI
 
-> "Review my constructor and attribute design patterns. Are my recommendations about when to use defaults vs required parameters sound? What patterns am I missing?"
+> "Review my Task constructor and compare it to the Case and Invoice patterns. Are my decisions about required vs optional parameters consistent across domains? What patterns am I missing?"
 
-**Deliverable**: Complete guide with all patterns and checklist.
+**Deliverable**: Complete guide with Task pattern and at least 2 auxiliary domain patterns.
+```
 
 ---
 
 ## Try With AI
 
-Ready to master constructors with defaults, understand attribute scoping, and avoid mutable default traps?
+Ready to master Task constructors with defaults, understand attribute scoping, and avoid mutable default traps?
 
-**🔍 Explore Default Parameters:**
-> "Show me a User class with required name parameter and optional email, role (default='user'), created_at (default=now). Create users with: all params, only name, name+email. Explain when defaults help vs when they hide required data. What's the tradeoff?"
+**🔍 Explore Task Default Parameters:**
+> "Show me a Task class with required title parameter and optional description (default=''), priority (default=5), due_date (default=None). Create tasks with: all params, only title, title+priority. Explain when defaults help vs when they hide required data. For a task management system, should all attributes be optional except title?"
 
-**🎯 Practice Instance vs Class Attributes:**
-> "Build a BankAccount class where: interest_rate is shared by all accounts (class attribute), but balance is per-account (instance attribute). Create accounts, change interest_rate on the class, show how all accounts see the new rate. When should attributes be shared vs independent?"
+**🎯 Practice Instance vs Class Attributes in Tasks:**
+> "Build a Task class where: status_options is shared by all tasks (class attribute), but priority is per-task (instance attribute). Create multiple tasks, change Task.status_options on the class, show what happens. When should attributes be shared (like valid statuses) vs independent (like each task's priority)?"
 
-**🧪 Test Mutable Default Danger:**
-> "Create a Team class with members parameter defaulting to []. Add members to team1. Create team2 without members. What's in team2.members? Why? Show me the fix (members=None, then self.members = members or []). Explain the Python default parameter gotcha."
+**🧪 Test Mutable Default Danger with Tasks:**
+> "Create a Task class with tags parameter defaulting to []. Add tags to task1. Create task2 without tags. What's in task2.tags? Why? Show me the fix (tags=None, then self.tags = tags or []). Explain why this Python gotcha matters for task management."
 
-**🚀 Apply to Configuration:**
-> "I'm building a database connection class. It needs: required host/database, optional port (default 5432), user (default 'admin'), connection_pool settings (dict). Design the __init__ with appropriate defaults. Which params must be provided vs can have sensible defaults?"
+**🚀 Apply to Other Domains:**
+> "Compare Task, Case, and Invoice constructors. They all need required ID-like fields and optional descriptive fields. Design Case.__init__(case_number, title, client_name, case_type='civil') and Invoice.__init__(invoice_id, client_name, amount, description=''). What patterns are the same? When does a field MUST be required vs can have defaults?"
 
 ---
