@@ -2,7 +2,7 @@
 sidebar_position: 11
 title: "Custom MCP Tools"
 description: "Build domain-specific tools using the @tool decorator and create_sdk_mcp_server. Understand when to create custom tools vs using built-ins, how to design tool interfaces, and why proper tool design determines agent capability boundaries."
-keywords: [MCP tools, @tool decorator, create_sdk_mcp_server, tool design, input validation, error handling, tool naming, agent extensibility]
+keywords: [MCP tools, "@tool decorator", create_sdk_mcp_server, tool design, input validation, error handling, tool naming, agent extensibility]
 chapter: 36
 lesson: 11
 duration_minutes: 35

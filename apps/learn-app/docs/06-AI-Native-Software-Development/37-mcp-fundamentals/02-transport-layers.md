@@ -286,7 +286,7 @@ Here's how the transports compare across practical dimensions:
 | **Deployment** | Local only | Local or remote | Local or remote |
 | **Client count** | Single | Multiple simultaneous | Multiple (with session mgmt) |
 | **Launch mechanism** | Subprocess (automatic) | External service | External service |
-| **Latency** | <1ms (local IPC) | 10-100ms (network) | 10-100ms + stream overhead |
+| **Latency** | under 1ms (local IPC) | 10-100ms (network) | 10-100ms + stream overhead |
 | **Setup complexity** | Simple JSON config | Service + networking | Service + sessions + SSE |
 | **Suitable for** | Development, desktop | Production, serverless | Long-running operations |
 | **Authentication** | None (trusted localhost) | Required (HTTP auth) | Required (HTTP auth) |

@@ -147,7 +147,7 @@ Before implementation, let's specify what we're building.
 
 **Quality**:
 - Accuracy: 85%+ of triage decisions correct (rest escalated)
-- Latency: <2 seconds for FAQ, <5 seconds for booking
+- Latency: under 2 seconds for FAQ, under 5 seconds for booking
 - Availability: 99.9% uptime (SLA requirement)
 
 ### Architecture Diagram

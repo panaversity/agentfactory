@@ -334,7 +334,7 @@ If remote tests fail → Do NOT proceed to production traffic. Instead:
 | Scenario | Pass Rate | Action |
 |----------|-----------|--------|
 | **All local tests pass, all remote tests pass** | 100% | Safe to route traffic |
-| **All local tests pass, some remote tests fail** | <100% | Diagnose: Environment issue, guardrail blocking, or latency timeout |
+| **All local tests pass, some remote tests fail** | Partial | Diagnose: Environment issue, guardrail blocking, or latency timeout |
 | **Local tests already failing** | N/A | Fix locally first before deploying |
 
 ## Step 4: Pre-Production Safety Checks
@@ -499,7 +499,7 @@ Here's the structure to follow:
 - Environment variables set (Firebase credentials, API keys)
 - State management working (session persistence, user isolation)
 - Error handling graceful (test with empty input, malformed data)
-- Performance acceptable (response time <5s for normal queries)
+- Performance acceptable (response time under 5s for normal queries)
 - Guardrails active (rate limiting configured, max iterations set)
 - Documentation complete (agent purpose, tool descriptions, error messages)
 
@@ -520,7 +520,7 @@ Here's the structure to follow:
 | 8 | SessionService persists state | Run agent twice with same user_id and verify state carries over | Second session retrieves previous tasks without re-adding | ✓ |
 | 9 | Agent handles empty input gracefully | Send `message=""` to running agent | Response includes helpful error message, no crash | ✓ |
 | 10 | Agent handles malformed input gracefully | Send `message="!@#$%^&*()"` | Response is sensible (error or clarification), not hallucinated | ✓ |
-| 11 | Response time acceptable | Time 10 normal queries with `time adk run task_manager` | Average response time <5 seconds per query | ✓ |
+| 11 | Response time acceptable | Time 10 normal queries with `time adk run task_manager` | Average response time under 5 seconds per query | ✓ |
 | 12 | Rate limiting configured | Check `agent.py` or deployment config for rate limits | Max iterations set (e.g., 10 per query), per-user limits configured | ✓ |
 
 **Why each check matters:**
@@ -680,7 +680,7 @@ You want to automate the checks from Exercise 1 so they run before every deploym
 2. Validate agent structure (all 6 tools registered)
 3. Test Firestore connectivity
 4. Verify error handling (empty input, malformed input)
-5. Check response times (all <5 seconds)
+5. Check response times (all under 5 seconds)
 6. Confirm callbacks are registered
 7. Exit with status 0 (success) or 1 (failure) for CI/CD integration
 
@@ -1042,7 +1042,7 @@ if __name__ == "__main__":
 - **Check 2**: Verifies all 6 tools are registered
 - **Check 3**: Tests Firestore with real read/write operations
 - **Check 4**: Tests error conditions (empty input, malformed input, long input)
-- **Check 5**: Measures response times, confirms <5s threshold
+- **Check 5**: Measures response times, confirms under 5s threshold
 - **Check 6**: Confirms callbacks exist and are not None
 
 **How to use:**

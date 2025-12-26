@@ -40,7 +40,7 @@ The quiz has 20 questions spanning the Bloom's taxonomy progression from **Remem
 | **15-17** (75-89%) | Proficient | Ready for production with senior review; revisit 1-2 concepts for deepening |
 | **12-14** (60-74%) | Developing | Return to lessons covering missed concepts; practice with simple agents first |
 | **9-11** (45-59%) | Emerging | Work through lessons sequentially; focus on Layer 2 collaboration patterns before Layer 4 production |
-| **Below 9** (<45%) | Foundation Building | Start with Lesson 1 and build systematically; ensure each feature is understood before moving forward |
+| **Below 9** (under 45%) | Foundation Building | Start with Lesson 1 and build systematically; ensure each feature is understood before moving forward |
 
 ---
 

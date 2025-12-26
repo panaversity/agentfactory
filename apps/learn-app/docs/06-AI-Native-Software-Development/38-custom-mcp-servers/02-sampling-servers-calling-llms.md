@@ -378,7 +378,7 @@ The server never needed an API key. The client never needed to manage fetching. 
 
 **Don't use sampling when**:
 - Operation is purely deterministic (pure computation, data lookup)
-- Operation must complete in <500ms (sampling has latency)
+- Operation must complete in under 500ms (sampling has latency)
 - Server can't format data properly (client shouldn't guess intent)
 - Cost must be server-controlled (sampling routes to client)
 
