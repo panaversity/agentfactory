@@ -13,25 +13,13 @@ In Chapter 19, you learned about Python's core data types and how to store data 
 
 Operators are the verbs of programming. In Chapter 19, you learned the nouns (data types). Now you learn the verbs (operators). In Chapter 22, you'll combine them into sentences (control flow).
 
-## Chapter Contribution to Todo App
-
-This chapter contributes: **Task calculations and comparisons**
-
-By the end of this chapter, your todo application will be able to compare task priorities, calculate time until due dates, and update task counts—using all the operator types you've learned.
-
 ## 🎯 Before You Begin
-
 ---
-
 ## What You'll Learn
-
-By the end of this chapter, you will:
-
 - Perform calculations with arithmetic operators (`+`, `-`, `*`, `/`, `//`, `%`, `**`)
 - Ask True/False questions with comparison operators (`==`, `!=`, `>`, `<`, `>=`, `<=`)
 - Combine conditions with logical operators (`and`, `or`, `not`)
 - Update variables with assignment operators (`=`, `+=`, `-=`, `*=`, `/=`)
 - Recognize Python's 35 reserved keywords and avoid using them as variable names
 - Build a complete calculator integrating all operator types with type validation
-
 Operators are the verbs of programming. In Chapter 19, you learned the nouns (data types). Now you learn the verbs (operators). In Chapter 22, you'll combine them into sentences (control flow).

@@ -15,20 +15,9 @@ This chapter answers these questions by teaching you Python's type system—the 
 
 By the end of this chapter, you'll understand Python's complete type system: from basic types like integers and strings to collections like lists and dictionaries, from boolean logic to advanced concepts like type casting and binary data. Most importantly, you'll develop a decision framework for choosing the right type for any data you encounter.
 
-## Chapter Contribution to Todo App
-
-This chapter contributes: **Task data structure (dict, list)**
-
-By the end of this chapter, your todo application will have proper data structures to represent tasks—using dictionaries to store task properties and lists to organize multiple tasks.
-
 ## 🎯 Before You Begin
-
 ---
-
 ## What You'll Learn
-
-By the end of this chapter, you will be able to:
-
 - **The Type System Concept** — Understand data types as Python's classification system for organizing different kinds of data
 - **Numeric Types** — Distinguish between integers (whole numbers), floats (decimals), and complex numbers with clear reasoning
 - **Text and Boolean Types** — Work with strings for text data and booleans for True/False decisions

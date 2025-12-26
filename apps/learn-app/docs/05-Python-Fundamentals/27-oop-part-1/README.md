@@ -17,30 +17,15 @@ Starting from the limitations of procedural programming, you'll discover how OOP
 
 The chapter culminates in a **Game Character Capstone Project** where you'll design and implement a multi-class system, integrating all the concepts learned into a cohesive, working application.
 
-## Chapter Contribution to Todo App
-
-This chapter contributes: **Task and TaskManager classes**
-
-By the end of this chapter, your todo application will use proper OOP design with Task and TaskManager classes—bundling task data with behavior, implementing constructors, and establishing clear object responsibilities.
-
 ## 🎯 Before You Begin
-
 ---
-
 ## What You'll Learn
-
-By the end of this chapter, you will be able to:
-
 - **Understand OOP Fundamentals** — Explain what Object-Oriented Programming is and how it differs from procedural programming, identify the four pillars of OOP (Encapsulation, Abstraction, Inheritance, Polymorphism) in code examples, analyze when to use OOP vs procedural approaches, evaluate why OOP matters for modularity, reusability, maintainability, and scalability
 - **Create Classes and Objects** — Write Python class definitions with proper naming conventions and docstrings, implement constructors (`__init__`) that initialize attributes with type hints, create multiple objects from a single class with independent state, explain the role of `self` in instance methods
 - **Work with Attributes and Methods** — Define instance attributes and methods with appropriate access modifiers, use type hints for constructor parameters, attributes, and method returns, implement different method types (instance, class, static), apply encapsulation principles to protect data
 - **Design Multi-Class Systems** — Design interactions between multiple classes with clear responsibilities, model object relationships (composition, association) in class architecture, organize multi-class projects with proper module structure, integrate OOP patterns into cohesive systems
 - **Apply OOP to AI-Native Development** — Connect OOP principles to AI agent-based systems (agents as objects with state and behavior), describe how modern AI frameworks use classes to represent models, agents, and tools, collaborate with AI to design class structures and validate generated code, plan projects by describing architecture to AI
-
 ---
-
 ## What's Next: Async Operations for Real-Time Agents
-
 Your TaskManager class now organizes everything perfectly: data and methods bundled into a cohesive object. It works synchronously—when you call `add_task()`, the function runs to completion before returning. But for AI-native applications, this becomes a limitation. In **Part 6**, you'll learn asynchronous programming with `async` and `await`, allowing your TaskManager to handle multiple operations concurrently—fetching task data while listening for agent requests, updating multiple tasks simultaneously without blocking.
-
 This is the bridge from traditional object-oriented programming to agent-based systems: your TaskManager class evolves from a simple synchronous manager to an async-aware component that can participate in multi-agent workflows where timing and concurrency matter.
