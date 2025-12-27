@@ -151,7 +151,7 @@ Each run is different. You can't test it deterministically. You can't guarantee 
 | **Predictability** | Low (execution varies per run) | High (guaranteed order) |
 | **Testability** | Hard (many paths to test) | Easy (one path per agent) |
 | **Performance** | Slower (LLM reasons at each step) | Faster (no intermediate decisions) |
-| **Debugging** | Hard (why did agent skip?") | Easy (follows prescribed order) |
+| **Debugging** | Hard ("why did agent skip?") | Easy (follows prescribed order) |
 | **Use case** | Novel, adaptive problems | Standardized, repeatable workflows |
 
 **The insight**: You don't choose routing OR workflow agents. You use routing for novel decisions and workflow agents for standardized processes.
