@@ -15,7 +15,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { siClaude } from "simple-icons"
+import { siClaude } from "simple-icons/icons";
 
 // Icons
 const ChatGPTIcon = () => (
