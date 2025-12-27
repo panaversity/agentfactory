@@ -1,11 +1,6 @@
 ---
 name: building-with-google-adk
-description: |
-  Use when building AI agents with Google's Agent Development Kit (ADK).
-  Triggers: creating ADK agents, Gemini-powered agents, multi-agent workflows,
-  MCP integration with ADK, agent evaluation, workflow agents (Sequential/Parallel/Loop),
-  Vertex AI deployment, or comparing OpenAI SDK with ADK.
-  NOT when using other frameworks (OpenAI SDK, LangChain, CrewAI) or general LLM API calls.
+description: Use when building AI agents with Google's Agent Development Kit (ADK). Triggers include creating ADK agents, Gemini-powered agents, multi-agent workflows, MCP integration with ADK, agent evaluation, workflow agents (Sequential/Parallel/Loop), Vertex AI deployment, or comparing OpenAI SDK with ADK. NOT when using other frameworks (OpenAI SDK, LangChain, CrewAI) or general LLM API calls.
 ---
 
 # Building with Google ADK

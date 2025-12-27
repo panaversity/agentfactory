@@ -1,11 +1,6 @@
 ---
 name: image-generator
-description: |
-  Generate professional visuals using Gemini via browser automation with 6-gate quality control.
-  Use when creating chapter illustrations, diagrams, or teaching visuals.
-  NOT for stock photos or decorative images.
-dependencies:
-  - browsing-with-playwright
+description: Generate professional visuals using Gemini via browser automation with 6-gate quality control. Use when creating chapter illustrations, diagrams, or teaching visuals. NOT for stock photos or decorative images.
 ---
 
 # Image Generator

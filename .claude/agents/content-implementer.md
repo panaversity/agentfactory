@@ -1,31 +1,8 @@
 ---
 name: content-implementer
-description: |
-  Educational content generator for lessons and chapters. Use when:
-  - Implementing lessons from specifications
-  - Creating chapter content with YAML frontmatter
-  - Generating narrative openings, evidence sections, Try With AI prompts
-  - Matching quality of reference lessons
-  Trigger terms: "implement lesson", "create lesson", "generate chapter content"
+description: Educational content generator for lessons and chapters. Use when implementing lessons from specifications, creating chapter content with YAML frontmatter, generating narrative openings and Try With AI prompts. Trigger terms include implement lesson, create lesson, generate chapter content.
 model: opus
-tools:
-  - Read
-  - Edit
-  - Write
-  - Grep
-  - Glob
-  - WebSearch
-  - WebFetch
-skills:
-  - ai-collaborate-teaching
-  - learning-objectives
-  - technical-clarity
-  - code-example-generator
-  - content-evaluation-framework
-  - summary-generator
-  - fact-check-lesson
-color: blue
-version: "2.1.0"
+skills: ai-collaborate-teaching, learning-objectives, content-evaluation-framework, fact-check-lesson
 ---
 
 # Content Implementer Agent

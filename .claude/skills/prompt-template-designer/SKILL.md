@@ -1,12 +1,6 @@
 ---
 name: prompt-template-designer
-description: |
-  Design reusable prompt templates that encode domain-specific patterns for recurring AI tasks.
-  Use when you've executed similar prompts 2+ times and need to capture the pattern as reusable
-  intelligence. NOT for one-off prompts or generic "ask AI a question" patterns.
-category: intelligence-design
-version: "2.0.0"
-dependencies: ["constitution:v6.0.1", "4-layer-teaching-method"]
+description: Design reusable prompt templates that encode domain-specific patterns for recurring AI tasks. Use when you've executed similar prompts 2+ times and need to capture the pattern as reusable intelligence. NOT for one-off prompts or generic "ask AI a question" patterns.
 ---
 
 # Prompt Template Designer

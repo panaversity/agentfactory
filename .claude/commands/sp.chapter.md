@@ -139,7 +139,7 @@ The goal is: User gives input → Agent delivers complete result
 Not: User gives input → Agent asks 50 questions → User does half the work
 ```
 
-### GATE 3: Subagent File Writing Enforcement (MANDATORY)
+### GATE 3: Subagent File Writing Verification (MANDATORY)
 
 ```
 FOR content-implementer subagents:
@@ -147,19 +147,24 @@ FOR content-implementer subagents:
 ✅ REQUIRED behavior:
    - Subagent writes file directly via Write tool
    - Subagent returns: "✅ Wrote [path] ([N] lines)"
-   - Orchestrator does NOT receive full content
-
-❌ FORBIDDEN behavior:
-   - Subagent returns full lesson content to orchestrator
-   - Orchestrator writes file from subagent output
-   - Multiple layers of content passing
+   - Orchestrator VERIFIES file exists: ls -la [path]
 
 SUBAGENT PROMPT MUST INCLUDE:
   "Execute autonomously. Write file directly. Return confirmation only (~50 lines)."
 
-IF subagent returns full content instead of writing:
-  ⛔ STOP - Subagent protocol violation
-  → Re-invoke subagent with explicit Write instruction
+AFTER SUBAGENT RETURNS:
+  1. Check file exists: ls -la [path]
+  2. IF file missing:
+     - Agent definition may have parsing issues
+     - Run /agents in Claude Code, verify "All tools" selected
+     - Ensure single-line description in agent .md file
+     - Restart session if config was recently changed
+  3. IF file exists: proceed to validation
+
+AGENT DEFINITION REQUIREMENTS:
+  ✅ Single-line description (no description: |)
+  ✅ No tools: field in YAML (use /agents UI instead)
+  ✅ All tools selected in Claude Code /agents UI
 ```
 
 ### GATE 4: Validation Before Commit (BLOCKING)
@@ -831,33 +836,41 @@ Args: |
   1. For EACH lesson task, spawn content-implementer subagent
   2. Each subagent writes directly to output path
   3. Subagent returns confirmation only (~50 lines), NOT full content
-  4. After each lesson written, invoke educational-validator on the file
-  5. Fix any validation failures before moving to next lesson
+  4. After each lesson, VERIFY file exists: ls -la [path]
+  5. If file missing, check GATE 3 troubleshooting
+  6. Fix any validation failures before moving to next lesson
 
-  SUBAGENT PROMPT MUST INCLUDE:
+  SUBAGENT PROMPT TEMPLATE:
   ```
-  Execute autonomously without confirmation.
+  Task subagent_type=content-implementer
+  Prompt: |
+    Execute autonomously without confirmation.
 
-  Create lesson: [Title]
-  Output path: [ABSOLUTE PATH]
-  DO NOT create new directories.
+    Create lesson: [Title]
+    Output path: [ABSOLUTE PATH]
+    DO NOT create new directories.
 
-  EXPERTISE SOURCE:
-  Read: .claude/skills/building-with-[framework]/SKILL.md
-  Use accurate API patterns from this skill.
+    EXPERTISE SOURCE:
+    Read: .claude/skills/building-with-[framework]/SKILL.md
+    Use accurate API patterns from this skill.
 
-  QUALITY REFERENCE:
-  Match: apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-agent-factory-paradigm/01-digital-fte-revolution.md
+    QUALITY REFERENCE:
+    Match: apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-agent-factory-paradigm/01-digital-fte-revolution.md
 
-  REQUIRED:
-  - Full YAML frontmatter (skills, learning_objectives, cognitive_load, differentiation)
-  - 3 "Try With AI" prompts with "What you're learning" explanations
-  - Evidence blocks (Output:) for all executable code
-  - Safety note at end
-  - NO sections after "Try With AI" (no Summary, no What's Next)
+    REQUIRED:
+    - Full YAML frontmatter (skills, learning_objectives, cognitive_load, differentiation)
+    - 3 "Try With AI" prompts with "What you're learning" explanations
+    - Evidence blocks (Output:) for all executable code
+    - Safety note at end
+    - NO sections after "Try With AI" (no Summary, no What's Next)
+
+    Write the file directly using the Write tool.
+    Return ONLY: "✅ Wrote [path] ([N] lines)"
   ```
 
-  PROGRESS: After each lesson, update tasks.md to mark [X] complete.
+  VERIFICATION: After subagent returns, run: ls -la [path]
+
+  PROGRESS: After each lesson verified, update tasks.md to mark [X] complete.
 ```
 
 **After completion, verify**:

@@ -1,10 +1,6 @@
 ---
 name: building-with-claude-agent-sdk
-description: |
-  Use when building AI agents with Anthropic's Claude Agent SDK (formerly Claude Code SDK).
-  Triggers: Creating autonomous agents, building agentic applications, SDK-based automation,
-  implementing hooks/subagents/MCP servers, session management, or agent tool usage.
-  NOT when using Claude API directly (use anthropic-sdk) or building MCP servers from scratch (use mcp-builder).
+description: Use when building AI agents with Anthropic's Claude Agent SDK (formerly Claude Code SDK). Triggers include creating autonomous agents, building agentic applications, SDK-based automation, implementing hooks/subagents/MCP servers, session management, or agent tool usage. NOT when using Claude API directly (use anthropic-sdk) or building MCP servers from scratch (use mcp-builder).
 ---
 
 # Claude Agent SDK Development Guide

@@ -1,10 +1,6 @@
 ---
 name: researching-with-deepwiki
-description: |
-  Research GitHub, GitLab, and Bitbucket repositories using DeepWiki MCP server. Use when exploring
-  unfamiliar codebases, understanding project architecture, or asking questions about how a specific
-  open-source project works. Provides AI-powered repo analysis and RAG-based Q&A about source code.
-  NOT for fetching library API docs (use fetching-library-docs instead) or local files.
+description: Research GitHub, GitLab, and Bitbucket repositories using DeepWiki MCP server. Use when exploring unfamiliar codebases, understanding project architecture, or asking questions about how a specific open-source project works. Provides AI-powered repo analysis and RAG-based Q&A about source code. NOT for fetching library API docs (use fetching-library-docs instead) or local files.
 ---
 
 # Researching with DeepWiki

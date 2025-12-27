@@ -1,10 +1,6 @@
 ---
 name: building-with-openai-agents
-description: |
-  Use when building AI agents with OpenAI's Agents SDK. Triggers: creating agents,
-  implementing tools, multi-agent handoffs, guardrails, MCP integration, tracing.
-  Also for using LiteLLM to run agents on free/alternative models (Anthropic, Gemini).
-  NOT for general OpenAI API usage (use openai-python SDK docs instead).
+description: Use when building AI agents with OpenAI's Agents SDK. Triggers include creating agents, implementing tools, multi-agent handoffs, guardrails, MCP integration, tracing. Also for using LiteLLM to run agents on free/alternative models (Anthropic, Gemini). NOT for general OpenAI API usage (use openai-python SDK docs instead).
 ---
 
 # Building with OpenAI Agents SDK

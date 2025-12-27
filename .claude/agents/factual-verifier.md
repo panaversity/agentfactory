@@ -2,15 +2,8 @@
 name: factual-verifier
 description: Use this agent when you need to verify factual claims, validate source citations, and flag volatile topics requiring maintenance. This agent ensures all statistics, dates, technical specifications, and examples are accurate and properly cited. Can be invoked standalone or as sub-validator within validation-auditor.
 model: opus
-tools:
-  - Read
-  - Grep
-  - Glob
-  - WebSearch
-  - WebFetch
-skills:
-  - fetching-library-docs
-  - researching-with-deepwiki
+tools: Read, Grep, Glob, WebSearch, WebFetch
+skills: fetching-library-docs, researching-with-deepwiki
 ---
 
 ## MANDATORY: Skill Invocation Before Verification

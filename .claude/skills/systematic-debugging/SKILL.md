@@ -1,11 +1,6 @@
 ---
 name: systematic-debugging
-description: |
-  Systematic methodology for debugging bugs, test failures, and unexpected behavior.
-  Use when encountering any technical issue before proposing fixes. Covers root cause
-  investigation, pattern analysis, hypothesis testing, and fix implementation.
-  Use ESPECIALLY when under time pressure, "just one quick fix" seems obvious, or
-  you've already tried multiple fixes. NOT for exploratory code reading.
+description: Systematic methodology for debugging bugs, test failures, and unexpected behavior. Use when encountering any technical issue before proposing fixes. Covers root cause investigation, pattern analysis, hypothesis testing, and fix implementation. Use ESPECIALLY when under time pressure, just one quick fix seems obvious, or you've already tried multiple fixes. NOT for exploratory code reading.
 ---
 
 # Systematic Debugging

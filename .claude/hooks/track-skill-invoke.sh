@@ -29,4 +29,5 @@ mkdir -p .claude/activity-logs 2>/dev/null || exit 0
 jq -nc --arg ts "$TIMESTAMP" --arg sid "$SESSION_ID" --arg skill "$SKILL_NAME" --arg args "$ARGS" \
   '{timestamp: $ts, session_id: $sid, skill: $skill, args: $args, event: "invoke", source: "Skill_tool"}' >> .claude/activity-logs/skill-usage.jsonl 2>/dev/null
 
+# Silent - no stdout to avoid hook errors
 exit 0

@@ -1,8 +1,6 @@
 ---
 name: nx-monorepo
-description: |
-  Nx monorepo management skill for AI-native development. This skill should be used when working with Nx workspaces, project graphs, affected detection, code generation, and caching. Use when: analyzing dependencies, running affected commands, generating code, configuring Nx Cloud, or optimizing build performance. Invoke nx-mcp tools for documentation queries.
-version: "1.0.0"
+description: Nx monorepo management skill for AI-native development. This skill should be used when working with Nx workspaces, project graphs, affected detection, code generation, and caching. Use when analyzing dependencies, running affected commands, generating code, configuring Nx Cloud, or optimizing build performance. Invoke nx-mcp tools for documentation queries.
 ---
 
 # Nx Monorepo

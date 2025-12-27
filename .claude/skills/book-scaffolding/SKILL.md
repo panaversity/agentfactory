@@ -1,15 +1,6 @@
 ---
 name: book-scaffolding
-description: |
-  Plan, structure, and scaffold large educational books using cognitive load management,
-  just-in-time specification, and pedagogical best practices. Use this skill when planning
-  multi-part, multi-chapter educational works that require narrative continuity, progressive
-  complexity, and hands-on exercises. This skill helps create cohesive learning journeys
-  that balance foundational scaffolding with advanced independence. Activate when tasks
-  involve structuring books, managing cognitive load across chapters, defining part-level
-  narratives, or coordinating multi-phase content development workflows.
-version: "2.1.0"
-constitution_alignment: "v4.0.1"
+description: Plan, structure, and scaffold large educational books using cognitive load management and pedagogical best practices. Use when planning multi-part educational works requiring narrative continuity, progressive complexity, and hands-on exercises.
 ---
 
 # Skill: Book Scaffolding and Structure Planning

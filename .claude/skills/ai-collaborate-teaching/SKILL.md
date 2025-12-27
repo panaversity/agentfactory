@@ -1,12 +1,6 @@
 ---
 name: ai-collaborate-teaching
-description: |
-  Design co-learning experiences using the Three Roles Framework (AI as Teacher/Student/Co-Worker).
-  Use when teaching AI-driven development workflows, spec-first collaboration, or balancing AI assistance
-  with foundational learning. NOT for curriculum without AI integration.
-category: pedagogical
-version: "3.0.0"
-dependencies: ["constitution:v6.0.1", "4-layer-teaching-method"]
+description: Design co-learning experiences using the Three Roles Framework (AI as Teacher/Student/Co-Worker). Use when teaching AI-driven development workflows, spec-first collaboration, or balancing AI assistance with foundational learning. NOT for curriculum without AI integration.
 ---
 
 # AI Collaborate Teaching

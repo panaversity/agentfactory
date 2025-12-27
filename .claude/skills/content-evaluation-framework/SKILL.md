@@ -1,8 +1,6 @@
 ---
 name: content-evaluation-framework
 description: This skill should be used when evaluating the quality of book chapters, lessons, or educational content. It provides a systematic 6-category rubric with weighted scoring (Technical Accuracy 30%, Pedagogical Effectiveness 25%, Writing Quality 20%, Structure & Organization 15%, AI-First Teaching 10%, Constitution Compliance Pass/Fail) and multi-tier assessment (Excellent/Good/Needs Work/Insufficient). Use this during iterative drafting, after content completion, on-demand review requests, or before validation phases.
-version: "2.2.0"
-constitution_alignment: "v4.0.1"
 ---
 
 # Content Evaluation Framework

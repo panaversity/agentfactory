@@ -40,4 +40,5 @@ jq -nc \
   '{timestamp: $ts, session_id: $sid, subagent: $agent, agent_id: $aid, status: $status, event: "complete"}' \
   >> .claude/activity-logs/subagent-usage.jsonl 2>/dev/null
 
+# Silent - no stdout to avoid hook errors
 exit 0

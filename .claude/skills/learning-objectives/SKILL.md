@@ -1,13 +1,6 @@
 ---
 name: learning-objectives
-description: |
-  Generate measurable learning outcomes aligned with Bloom's taxonomy and CEFR proficiency levels for educational content.
-  Use this skill when educators need to define what students will achieve, create learning objectives
-  for curriculum planning, or ensure objectives are specific and testable rather than vague.
-  This skill helps break down complex topics into progressively building learning goals with clear
-  assessment methods and success criteria.
-version: "2.1.0"
-constitution_alignment: v4.0.1
+description: Generate measurable learning outcomes aligned with Bloom's taxonomy and CEFR proficiency levels for educational content. Use when educators need to define what students will achieve, create learning objectives for curriculum planning, or ensure objectives are specific and testable rather than vague.
 ---
 
 # Learning Objectives Skill

@@ -1,11 +1,6 @@
 ---
 name: building-chatgpt-apps
-description: |
-  Guides creation of ChatGPT Apps with interactive widgets using OpenAI Apps SDK and MCP servers.
-  Use when building ChatGPT custom apps with visual UI components, embedded widgets, or rich
-  interactive experiences. Covers widget architecture, MCP server setup with FastMCP, response
-  metadata, and Developer Mode configuration. NOT when building standard MCP servers without
-  widgets (use building-mcp-servers skill instead).
+description: Guides creation of ChatGPT Apps with interactive widgets using OpenAI Apps SDK and MCP servers. Use when building ChatGPT custom apps with visual UI components, embedded widgets, or rich interactive experiences. Covers widget architecture, MCP server setup with FastMCP, response metadata, and Developer Mode configuration. NOT when building standard MCP servers without widgets (use building-mcp-servers skill instead).
 ---
 
 # ChatGPT Apps SDK Development Guide

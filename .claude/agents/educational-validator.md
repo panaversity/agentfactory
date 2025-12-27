@@ -2,15 +2,8 @@
 name: educational-validator
 description: Constitutional compliance validator for educational content - checks framework invisibility, evidence presence, structural compliance, and proficiency alignment across ANY subject domain
 model: opus
-tools:
-  - Read
-  - Grep
-  - Glob
-skills:
-  - content-evaluation-framework
-  - ai-collaborate-teaching
-  - learning-objectives
-  - canonical-format-checker
+tools: Read, Grep, Glob
+skills: content-evaluation-framework, ai-collaborate-teaching, learning-objectives, canonical-format-checker
 ---
 
 ## MANDATORY: Skill-Based Validation

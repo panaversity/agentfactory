@@ -1,11 +1,6 @@
 ---
 name: notebooklm-slides
-description: |
-  Generate pedagogically-aligned slide decks from educational content using NotebookLM.
-  Use when creating chapter slide presentations with proficiency-calibrated prompts.
-  NOT for static slides or non-educational presentations.
-dependencies:
-  - browsing-with-playwright
+description: Generate pedagogically-aligned slide decks from educational content using NotebookLM. Use when creating chapter slide presentations with proficiency-calibrated prompts. NOT for static slides or non-educational presentations.
 ---
 
 # NotebookLM Slides Generation

@@ -43,8 +43,9 @@ You are an Agent Factory architect building an educational platform that teaches
 - ❌ **Writing statistics/dates without web verification** → Hallucinated facts (Chapter 2 incident)
 - ❌ **Skipping full YAML frontmatter** → Missing skills, learning objectives, cognitive load assessment
 - ❌ **Minimal "Try With AI" sections** → Quality degradation (Chapter 2 incident: lessons missing depth)
+- ❌ **Multi-line description in agent YAML** → Tool parsing breaks (Chapter 40 incident: use single-line descriptions)
 
-**Prevention**: Always read context first. Always use absolute paths. Always use commands for workflows.
+**Prevention**: Always read context first. Always use absolute paths. Always use commands for workflows. **Verify file exists after subagent writes.**
 
 ---
 
@@ -53,6 +54,58 @@ You are an Agent Factory architect building an educational platform that teaches
 **⛔ DIRECT CONTENT WRITING IS BLOCKED ⛔**
 
 For educational content (lessons, chapters, modules), you MUST use subagents. Direct writing bypasses quality gates.
+
+### Agent & Skill YAML Format Requirements
+
+**⚠️ Claude Code has STRICT YAML format requirements. Violations break parsing.**
+
+#### Agent Format (`.claude/agents/*.md`)
+
+Valid fields ONLY: `name`, `description`, `tools`, `model`, `permissionMode`, `skills`
+
+```yaml
+---
+name: my-agent
+description: Single line description here (max 1024 chars)
+model: opus
+tools: Read, Grep, Glob, Edit    # Comma-separated, NOT array!
+skills: skill1, skill2            # Comma-separated, NOT array!
+permissionMode: default
+---
+```
+
+**❌ WRONG formats that break parsing:**
+```yaml
+description: |          # Multi-line breaks tool parsing!
+  Long description
+tools:                  # YAML array breaks tool access!
+  - Read
+  - Grep
+color: red              # Invalid field, ignored
+```
+
+#### Skill Format (`.claude/skills/*/SKILL.md`)
+
+Valid fields ONLY: `name`, `description`, `allowed-tools`, `model`
+
+```yaml
+---
+name: my-skill
+description: Single line description (max 1024 chars)
+allowed-tools: Read, Bash(python:*), Write   # Comma-separated
+model: claude-sonnet-4-20250514
+---
+```
+
+**❌ WRONG formats that may break:**
+```yaml
+version: "2.0"              # Invalid field
+constitution_alignment: v4  # Invalid field
+category: pedagogical       # Invalid field
+dependencies: [...]         # Invalid field
+```
+
+### Agent Tool Access
 
 | Phase | Subagent | Purpose |
 |-------|----------|---------|
@@ -66,13 +119,15 @@ For educational content (lessons, chapters, modules), you MUST use subagents. Di
 ```
 IF creating lesson/chapter content:
   1. MUST invoke content-implementer subagent (not write directly)
-  2. MUST invoke educational-validator before filesystem write
+  2. MUST invoke educational-validator before marking complete
   3. MUST include absolute output path in subagent prompt
   4. MUST include quality reference lesson path
+  5. MUST verify file exists after subagent returns: ls -la [path]
 
-IF validation FAILS:
-  - DO NOT write to filesystem
-  - Fix issues and re-validate
+IF file doesn't exist after subagent returns:
+  - Check agent definition (single-line description?)
+  - Check Claude Code UI (/agents → All tools selected?)
+  - Restart session if config was recently changed
 ```
 
 **Why this matters**: Chapter 2 incident - bypassed subagent orchestration → 6 rewrites, 50%+ session wasted.

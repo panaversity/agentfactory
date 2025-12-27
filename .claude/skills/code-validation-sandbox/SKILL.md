@@ -1,11 +1,7 @@
 ---
 name: code-validation-sandbox
-description: |
-  Validate code examples across the 4-Layer Teaching Method with intelligent strategy selection.
-  Use when validating Python/Node/Rust code in book chapters. NOT for production deployment testing.
-category: validation
-version: "3.0.0"
-allowed_tools: ["Bash", "Read", "Write", "Grep"]
+description: Validate code examples across the 4-Layer Teaching Method with intelligent strategy selection. Use when validating Python/Node/Rust code in book chapters. NOT for production deployment testing.
+allowed-tools: Bash, Read, Write, Grep
 ---
 
 # Code Validation Sandbox

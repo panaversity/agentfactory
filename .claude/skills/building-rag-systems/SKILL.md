@@ -1,10 +1,6 @@
 ---
 name: building-rag-systems
-description: |
-  Build production RAG systems with semantic chunking, incremental indexing, and filtered retrieval.
-  Use when implementing document ingestion pipelines, vector search with Qdrant, or context-aware
-  retrieval. Covers chunking strategies, change detection, payload indexing, and context expansion.
-  NOT when doing simple similarity search without production requirements.
+description: Build production RAG systems with semantic chunking, incremental indexing, and filtered retrieval. Use when implementing document ingestion pipelines, vector search with Qdrant, or context-aware retrieval. Covers chunking strategies, change detection, payload indexing, and context expansion. NOT when doing simple similarity search without production requirements.
 ---
 
 # Building RAG Systems

@@ -95,7 +95,7 @@ You MUST use subagents for ALL educational content. Direct file writes bypass qu
 | Phase | Subagent | Requirement |
 |-------|----------|-------------|
 | **Per Lesson** | `content-implementer` | MUST generate lesson (not you directly) |
-| **Per Lesson** | `educational-validator` | MUST validate before filesystem write |
+| **Per Lesson** | `educational-validator` | MUST validate before marking complete |
 | **Per Chapter** | `assessment-architect` | MUST design chapter assessment |
 | **Final** | `factual-verifier` | MUST verify all claims before publish |
 
@@ -108,11 +108,17 @@ You MUST use subagents for ALL educational content. Direct file writes bypass qu
    - "Execute autonomously without confirmation"
    - Full frontmatter requirements
 3. SUBAGENT writes file directly and returns confirmation only (~50 lines max)
-   ✅ Returns: "Created path.md - 847 lines - Validation: PASS"
+   ✅ Returns: "✅ Wrote path.md - 847 lines"
    ❌ Does NOT return: full lesson content (wastes context)
-4. YOU invoke educational-validator on the WRITTEN FILE (read from disk)
-5. IF PASS → Task complete
-6. IF FAIL → Fix file directly or regenerate
+4. YOU verify file exists: ls -la [path]
+5. YOU invoke educational-validator on the WRITTEN FILE (read from disk)
+6. IF PASS → Task complete
+7. IF FAIL → Fix file directly or regenerate
+
+IF file doesn't exist after subagent returns:
+  - Check agent definition (single-line description, no tools: field)
+  - Run /agents in Claude Code, verify "All tools" selected
+  - Restart session if config was recently changed
 ```
 
 **Why This Matters**:
@@ -248,26 +254,35 @@ THEN STOP and invoke proper subagent workflow
    **REQUIRED structure for content-implementer invocations**:
 
    ```
-   Write Lesson [N]: [Title]
+   Task subagent_type=content-implementer
 
-   **CRITICAL EXECUTION RULES**:
-   - Output file: [ABSOLUTE PATH] (write to THIS EXACT path)
-   - Execute autonomously - DO NOT ask "Should I proceed?"
-   - DO NOT create new directories - use the path exactly as specified
-   - Write the file directly after gathering context
+   Prompt: |
+     Write Lesson [N]: [Title]
 
-   **Content Requirements**:
-   [Frontmatter, learning objectives, structure requirements...]
+     **CRITICAL EXECUTION RULES**:
+     - Output file: [ABSOLUTE PATH] (write to THIS EXACT path)
+     - Execute autonomously - DO NOT ask "Should I proceed?"
+     - DO NOT create new directories - use the path exactly as specified
+     - Write the file directly after gathering context
 
-   **Constitutional Requirements**:
-   - Every code block MUST have **Output:** section
-   - End with "## Try With AI" (no summary after)
-   - NO framework labels ("AI as Teacher", "Part 2:", etc.)
+     **Content Requirements**:
+     [Frontmatter, learning objectives, structure requirements...]
+
+     **Constitutional Requirements**:
+     - Every code block MUST have **Output:** section
+     - End with "## Try With AI" (no summary after)
+     - NO framework labels ("AI as Teacher", "Part 2:", etc.)
+
+     Return ONLY: "✅ Wrote [path] ([N] lines)"
    ```
+
+   **AFTER subagent returns**: Verify file exists with `ls -la [path]`
 
    ### Why This Matters
 
    **Failure Mode (2025-12-23)**: Launched 12 parallel content-implementer agents. 2 agents stopped mid-execution asking "Should I proceed?" (confirmation deadlock - no human available). 1 agent wrote to wrong directory (inferred `/51-helm-charts/` instead of specified `/50-kubernetes/`). Result: 3 agents required manual intervention.
+
+   **Failure Mode (2025-12-27)**: Launched content-implementer agents for Chapter 40. Agents claimed "✅ Created [path]" but files didn't exist. Root cause: **Agent definition had multi-line `description: |` which broke tool parsing**. Solution: Use single-line descriptions in agent YAML, verify tools via `/agents` UI, and restart session after config changes.
 
    **For Educational Content (Chapters/Lessons)**:
 
@@ -284,13 +299,15 @@ THEN STOP and invoke proper subagent workflow
 
 6a. **Constitutional Validation Gate** (for educational content):
    - **MANDATORY** for lesson/chapter creation tasks
-   - **Two-Pass Workflow**: content-implementer → educational-validator → filesystem
+   - **Two-Pass Workflow**: content-implementer → educational-validator → complete
 
    **Process**:
    ```
    1. content-implementer writes lesson directly to specified path
-      ↓ (returns confirmation only: "✅ Created path.md - 847 lines")
-   2. educational-validator reads file from disk and validates
+      ↓ (returns confirmation only: "✅ Wrote path.md - 847 lines")
+   2. YOU verify file exists: ls -la [path]
+      ↓
+   3. educational-validator reads file from disk and validates
       ↓
       ├─→ PASS: Mark task complete
       └─→ FAIL: Show violations

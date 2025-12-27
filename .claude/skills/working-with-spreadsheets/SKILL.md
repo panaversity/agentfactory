@@ -1,9 +1,6 @@
 ---
 name: working-with-spreadsheets
-description: |
-  Creates and edits Excel spreadsheets with formulas, formatting, and financial modeling standards.
-  Use when working with .xlsx files, financial models, data analysis, or formula-heavy spreadsheets.
-  Covers formula recalculation, color coding standards, and common pitfalls.
+description: Creates and edits Excel spreadsheets with formulas, formatting, and financial modeling standards. Use when working with .xlsx files, financial models, data analysis, or formula-heavy spreadsheets. Covers formula recalculation, color coding standards, and common pitfalls.
 ---
 
 # Working with Spreadsheets

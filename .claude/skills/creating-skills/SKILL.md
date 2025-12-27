@@ -1,10 +1,6 @@
 ---
 name: creating-skills
-description: |
-  Guides creation of effective Agent Skills with proper structure and validation.
-  Use when users want to create a new skill, update an existing skill, or need
-  guidance on skill design patterns, SKILL.md format, or verify.py implementation.
-  NOT when just using existing skills (use those skills directly).
+description: Guides creation of effective Agent Skills with proper structure and validation. Use when users want to create a new skill, update an existing skill, or need guidance on skill design patterns, SKILL.md format, or verify.py implementation. NOT when just using existing skills (use those skills directly).
 ---
 
 # Skill Creator

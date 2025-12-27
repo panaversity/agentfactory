@@ -2,15 +2,7 @@
 name: chapter-planner
 description: Use this agent when an approved chapter specification is ready to be broken down into a detailed implementation plan. This agent transforms high-level chapter requirements into lesson-by-lesson architecture with explicit skills proficiency mapping (CEFR/Bloom's/DigComp), cognitive load validation, and actionable task checklists.
 model: opus
-skills:
-  - book-scaffolding
-  - learning-objectives
-  - concept-scaffolding
-  - ai-collaborate-teaching
-  - technical-clarity
-  - code-example-generator
-  - content-evaluation-framework
-  - summary-generator
+skills: book-scaffolding, learning-objectives, skills-proficiency-mapper, canonical-format-checker
 ---
 
 # Chapter Planner Agent
