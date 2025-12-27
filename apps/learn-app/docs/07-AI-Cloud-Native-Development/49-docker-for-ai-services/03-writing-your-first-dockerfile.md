@@ -1,123 +1,209 @@
 ---
 sidebar_position: 3
+title: "Writing Your First Dockerfile"
 chapter: 49
 lesson: 3
-duration_minutes: 50
-title: "Writing Your First Dockerfile"
-proficiency_level: B1
-teaching_stage: 1
-stage_name: "Manual Foundation"
-stage_description: "Manual Dockerfile writing builds understanding of container build process"
-cognitive_load:
-  concepts_count: 9
-  scaffolding_level: "Moderate"
-learning_objectives:
-  - id: LO1
-    description: "Write a Dockerfile from scratch using FROM, WORKDIR, COPY, RUN, CMD"
+duration_minutes: 45
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Dockerfile Authoring"
+    proficiency_level: "B1"
+    category: "Technical"
     bloom_level: "Create"
-  - id: LO2
-    description: "Build an image with docker build -t and tag it appropriately"
+    digcomp_area: "3. Digital Content Creation"
+    measurable_at_this_level: "Student can write a complete Dockerfile from scratch using FROM, WORKDIR, COPY, RUN, CMD, and EXPOSE instructions"
+
+  - name: "Container Image Building"
+    proficiency_level: "B1"
+    category: "Technical"
     bloom_level: "Apply"
-  - id: LO3
-    description: "Run a container from your custom image and verify it works"
+    digcomp_area: "3. Digital Content Creation"
+    measurable_at_this_level: "Student can build and tag images using docker build -t and verify successful builds"
+
+  - name: "Container Runtime Configuration"
+    proficiency_level: "B1"
+    category: "Technical"
     bloom_level: "Apply"
-  - id: LO4
-    description: "Create a .dockerignore file to exclude unnecessary files"
-    bloom_level: "Apply"
-  - id: LO5
-    description: "Order Dockerfile instructions to maximize layer cache hits"
+    digcomp_area: "3. Digital Content Creation"
+    measurable_at_this_level: "Student can run containers with port mapping (-p) and environment variables (-e)"
+
+  - name: "Layer Cache Optimization"
+    proficiency_level: "B1"
+    category: "Technical"
     bloom_level: "Analyze"
-  - id: LO6
-    description: "Explain what happens during each build step"
-    bloom_level: "Understand"
-  - id: LO7
-    description: "Pass environment variables to containers with -e flag"
+    digcomp_area: "2. Problem Solving"
+    measurable_at_this_level: "Student can order Dockerfile instructions to maximize cache hits and explain why order matters"
+
+  - name: "Build Context Management"
+    proficiency_level: "B1"
+    category: "Technical"
     bloom_level: "Apply"
-  - id: LO8
-    description: "Map ports from container to host with -p flag"
+    digcomp_area: "3. Digital Content Creation"
+    measurable_at_this_level: "Student can create effective .dockerignore files to exclude unnecessary files from builds"
+
+learning_objectives:
+  - objective: "Write a Dockerfile from scratch using FROM, WORKDIR, COPY, RUN, CMD, EXPOSE"
+    proficiency_level: "B1"
+    bloom_level: "Create"
+    assessment_method: "Create a working Dockerfile that containerizes the Task API"
+
+  - objective: "Build an image with docker build -t and tag appropriately"
+    proficiency_level: "B1"
     bloom_level: "Apply"
-  - id: LO9
-    description: "Debug build failures by reading build output"
+    assessment_method: "Execute build command and verify image appears in docker images output"
+
+  - objective: "Run a container from custom image and verify functionality"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Run container and test API endpoints with curl"
+
+  - objective: "Create a .dockerignore file to exclude unnecessary files"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Create .dockerignore that excludes common Python artifacts"
+
+  - objective: "Order Dockerfile instructions to maximize layer cache hits"
+    proficiency_level: "B1"
     bloom_level: "Analyze"
-digcomp_mapping:
-  - objective_id: LO1
-    competency_area: "3. Digital Content Creation"
-    competency: "3.4 Programming"
-  - objective_id: LO2
-    competency_area: "3. Digital Content Creation"
-    competency: "3.4 Programming"
-  - objective_id: LO5
-    competency_area: "2. Digital Communication and Collaboration"
-    competency: "2.1 Problem Solving"
+    assessment_method: "Explain why dependencies are copied before application code"
+
+  - objective: "Pass environment variables with -e flag"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Run container with custom environment variable and verify it's accessible"
+
+  - objective: "Map ports from container to host with -p flag"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Run container with port mapping and access service from host"
+
+cognitive_load:
+  new_concepts: 9
+  assessment: "9 concepts (FROM, WORKDIR, COPY, RUN, CMD, EXPOSE, -t flag, -p flag, -e flag, .dockerignore, layer caching) at upper limit for B1 tier (7-10 concepts). Scaffolding through step-by-step instruction building manages load."
+
+differentiation:
+  extension_for_advanced: "Experiment with multi-stage builds to reduce image size; compare python:slim vs python:alpine base images"
+  remedial_for_struggling: "Focus on the first 4 instructions (FROM, WORKDIR, COPY, RUN) before adding EXPOSE and CMD"
 ---
 
 # Writing Your First Dockerfile
 
-A Dockerfile is a recipe for creating container images. Like a cooking recipe that lists ingredients and steps, a Dockerfile lists the base environment, files to include, and commands to run—building up layers until you have a complete, runnable image.
+A Dockerfile is a blueprint for creating container images. Like a recipe that lists ingredients and cooking steps, a Dockerfile specifies the base environment, files to include, and commands to execute—building layer upon layer until you have a complete, runnable application image.
 
-In this lesson, you'll write a complete Dockerfile for a Python FastAPI service from scratch. You won't use generators or templates. You'll write each instruction by hand, understanding what it does and why it matters. By the end, you'll have built, run, and tested your first containerized application.
-
----
-
-## Connecting to Your Part 6 Agent
-
-In Part 6, you built a FastAPI agent service—an AI-powered application that handles requests, processes them with language models, and returns intelligent responses. That agent is exactly what we want to containerize.
-
-However, your Part 6 agent has complexity that would distract from learning Dockerfiles:
-- Multiple files (routes, models, services)
-- External API dependencies (OpenAI, Anthropic)
-- Environment variables for API keys
-- Potentially a database connection
-
-For this lesson, we'll use a **simplified FastAPI service** that has the same structure as your agent but without the AI dependencies. This lets you focus on Dockerfile mechanics.
-
-**In Lesson 9 (Capstone)**, you'll containerize your actual Part 6 agent—with all its complexity, environment variables, and production requirements. The skills you learn here directly apply there.
+In Part 6, you built a Task API with FastAPI—a REST service for managing tasks with full CRUD operations. That API is exactly what we'll containerize in this lesson. You'll write every Dockerfile instruction by hand, understanding what each one does and why it matters. By the end, you'll have built, run, and tested your first containerized Python application using the modern UV package manager.
 
 ---
 
-## Setting Up Your Application Files
+## The Task API: Your Application to Containerize
 
-Before writing a Dockerfile, you need a Python application to containerize. We'll create a simplified FastAPI service that mirrors your Part 6 agent's structure.
+We'll containerize the In-Memory Task API you built in Chapter 40. This simple but complete FastAPI application demonstrates all the patterns you'll use when containerizing more complex services.
 
-Create a new directory for your project:
+Create a new directory for your Docker project:
 
 ```bash
-mkdir my-fastapi-app
-cd my-fastapi-app
+mkdir task-api-docker
+cd task-api-docker
 ```
 
 **Output:**
 ```
-$ mkdir my-fastapi-app
-$ cd my-fastapi-app
+$ mkdir task-api-docker
+$ cd task-api-docker
 $ pwd
-/Users/you/my-fastapi-app
+/Users/you/task-api-docker
 ```
 
 Now create the application file:
 
 **File: main.py**
 ```python
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 
-app = FastAPI()
+app = FastAPI(title="Task API")
 
-@app.get("/")
-def read_root():
-    return {"message": "Hello from Docker!"}
+
+class Task(BaseModel):
+    id: int | None = None
+    title: str
+    completed: bool = False
+
+
+tasks: list[Task] = []
+next_id = 1
+
+
+@app.post("/tasks", response_model=Task)
+def create_task(task: Task) -> Task:
+    global next_id
+    task.id = next_id
+    next_id += 1
+    tasks.append(task)
+    return task
+
+
+@app.get("/tasks", response_model=list[Task])
+def list_tasks() -> list[Task]:
+    return tasks
+
+
+@app.get("/tasks/{task_id}", response_model=Task)
+def get_task(task_id: int) -> Task:
+    for task in tasks:
+        if task.id == task_id:
+            return task
+    raise HTTPException(status_code=404, detail="Task not found")
+
+
+@app.put("/tasks/{task_id}", response_model=Task)
+def update_task(task_id: int, updated: Task) -> Task:
+    for i, task in enumerate(tasks):
+        if task.id == task_id:
+            updated.id = task_id
+            tasks[i] = updated
+            return updated
+    raise HTTPException(status_code=404, detail="Task not found")
+
+
+@app.delete("/tasks/{task_id}")
+def delete_task(task_id: int) -> dict:
+    for i, task in enumerate(tasks):
+        if task.id == task_id:
+            tasks.pop(i)
+            return {"message": "Task deleted"}
+    raise HTTPException(status_code=404, detail="Task not found")
+
 
 @app.get("/health")
-def health_check():
+def health_check() -> dict:
     return {"status": "healthy"}
 ```
 
-**File: requirements.txt**
-```
-fastapi==0.115.0
-uvicorn[standard]==0.32.0
+This Task API provides:
+- **POST /tasks**: Create a new task
+- **GET /tasks**: List all tasks
+- **GET /tasks/{id}**: Get a specific task
+- **PUT /tasks/{id}**: Update a task
+- **DELETE /tasks/{id}**: Delete a task
+- **GET /health**: Health check endpoint (essential for container orchestration)
+
+Next, create the `pyproject.toml` for UV package management:
+
+**File: pyproject.toml**
+```toml
+[project]
+name = "task-api"
+version = "0.1.0"
+description = "In-Memory Task API for Docker containerization"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+]
 ```
 
-Verify both files exist in your directory:
+Verify both files exist:
 
 ```bash
 ls -la
@@ -127,13 +213,13 @@ ls -la
 ```
 $ ls -la
 total 16
--rw-r--r--  1 you  staff  237 Dec 22 10:30 main.py
--rw-r--r--  1 you  staff   42 Dec 22 10:30 requirements.txt
-drwxr-xr-x  3 you  staff   96 Dec 22 10:30 .
-drwxr-xr-x  5 you  staff  160 Dec 22 10:30 ..
+drwxr-xr-x  4 you  staff  128 Dec 27 10:30 .
+drwxr-xr-x  5 you  staff  160 Dec 27 10:30 ..
+-rw-r--r--  1 you  staff 1247 Dec 27 10:30 main.py
+-rw-r--r--  1 you  staff  198 Dec 27 10:30 pyproject.toml
 ```
 
-Now you have the application. Let's write the Dockerfile to package it.
+Now you have a complete FastAPI application. Let's write the Dockerfile to package it.
 
 ---
 
@@ -150,11 +236,11 @@ touch Dockerfile
 $ touch Dockerfile
 ```
 
-Now open it in your editor and write each instruction. We'll build this step-by-step, understanding each line.
+Open the file in your editor. We'll build it step-by-step, understanding each instruction.
 
 ### Instruction 1: FROM (Base Image)
 
-Every Dockerfile starts with `FROM`. It specifies the base image—the starting environment that already has the operating system and runtime.
+Every Dockerfile starts with `FROM`. It specifies the base image—the starting environment with an operating system and runtime already configured.
 
 ```dockerfile
 FROM python:3.12-slim
@@ -162,13 +248,29 @@ FROM python:3.12-slim
 
 **What this does:**
 - `FROM` tells Docker: "Start with this pre-built image"
-- `python:3.12-slim` is a minimal Python 3.12 image (only 130 MB)
-- The image comes from Docker Hub, the public image repository
-- Alternative: `python:3.12` (larger, ~900 MB, includes build tools you don't need)
+- `python:3.12-slim` is a minimal Python 3.12 image (~130 MB)
+- The image comes from Docker Hub, the public image registry
+- Alternative: `python:3.12` (larger at ~900 MB, includes build tools)
 
-**Why slim**: For production, smaller base images mean faster downloads, faster deploys, and smaller security surface. We use slim instead of full.
+**Why slim?** For production, smaller base images mean faster downloads, faster deploys, and smaller attack surface. We use slim because our application doesn't need compilation tools.
 
-### Instruction 2: WORKDIR (Working Directory)
+### Instruction 2: Install UV Package Manager
+
+UV is a modern, fast Python package manager written in Rust. It's significantly faster than pip and provides better dependency resolution.
+
+```dockerfile
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+```
+
+**What this does:**
+- Uses a multi-stage copy to get UV binaries from the official UV image
+- `/uv` is the main package manager binary
+- `/uvx` is for running tools without installing them
+- Places both in `/bin/` so they're in PATH
+
+**Why UV instead of pip?** UV installs packages 10-100x faster than pip and handles dependency conflicts better. For containerized applications, faster builds mean faster deployments.
+
+### Instruction 3: WORKDIR (Working Directory)
 
 ```dockerfile
 WORKDIR /app
@@ -176,31 +278,30 @@ WORKDIR /app
 
 **What this does:**
 - `WORKDIR` sets the container's working directory to `/app`
-- All subsequent RUN, COPY, and CMD commands run relative to this directory
+- All subsequent RUN, COPY, and CMD commands execute relative to this directory
 - If `/app` doesn't exist, Docker creates it automatically
 
-**Why this matters**: Without setting a workdir, files scatter in the root filesystem. Setting a dedicated directory keeps things organized.
+**Why this matters:** Without a WORKDIR, files scatter across the root filesystem. Setting a dedicated directory keeps your application organized.
 
-### Instruction 3 & 4: COPY + RUN (Install Dependencies)
+### Instruction 4 & 5: COPY + RUN (Install Dependencies)
 
-This is where we install Python dependencies. Notice the order—we copy `requirements.txt` BEFORE copying `main.py`. This is intentional (we'll explain why in the layer caching section).
+This is where we install Python dependencies. Notice the order—we copy `pyproject.toml` BEFORE copying `main.py`. This is intentional for layer caching (explained later).
 
 ```dockerfile
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY pyproject.toml .
+RUN uv sync --no-dev
 ```
 
 **What these do:**
-- `COPY requirements.txt .` copies the requirements file FROM your machine TO the container's `/app` directory
-  - First `.` = file on your machine
-  - Second `.` = destination in container (which is `/app` because of WORKDIR)
-- `RUN pip install --no-cache-dir -r requirements.txt` executes this command INSIDE the container
-  - `--no-cache-dir` tells pip not to store downloaded packages in cache (saves space)
-  - This layer creates a Docker layer with all installed packages
+- `COPY pyproject.toml .` copies the dependency file FROM your machine TO the container's `/app` directory
+- `RUN uv sync --no-dev` executes inside the container:
+  - `uv sync` installs all dependencies from pyproject.toml
+  - `--no-dev` skips development dependencies (like pytest, mypy)
+  - This creates a Docker layer with all installed packages
 
-**Why two instructions**: COPY brings files in. RUN executes commands. They're separate operations.
+**Why two instructions?** COPY brings files in. RUN executes commands. They're separate operations that create separate layers.
 
-### Instruction 5: COPY (Application Code)
+### Instruction 6: COPY (Application Code)
 
 ```dockerfile
 COPY main.py .
@@ -209,9 +310,9 @@ COPY main.py .
 **What this does:**
 - Copies your application code into the container's `/app` directory
 
-**Important**: We copy dependencies FIRST (previous step), then code SECOND. This matters for layer caching (explained later).
+**Important:** We copy dependencies FIRST (previous step), then code SECOND. This matters critically for layer caching—when you edit `main.py`, Docker reuses the cached dependency layer instead of reinstalling everything.
 
-### Instruction 6: EXPOSE (Declare Port)
+### Instruction 7: EXPOSE (Declare Port)
 
 ```dockerfile
 EXPOSE 8000
@@ -219,44 +320,52 @@ EXPOSE 8000
 
 **What this does:**
 - `EXPOSE` documents that the container listens on port 8000
-- This doesn't actually open the port—it's documentation + metadata
+- This doesn't actually open the port—it's documentation and metadata
 - When running the container, you'll use `-p` flag to actually map ports
 
-**Why it exists**: It tells other developers (and orchestrators like Kubernetes) what port your service uses.
+**Why it exists:** It tells other developers (and orchestrators like Kubernetes) which port your service uses.
 
-### Instruction 7: CMD (Default Command)
+### Instruction 8: CMD (Default Command)
 
 ```dockerfile
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
 **What this does:**
 - `CMD` specifies the default command when the container starts
-- This tells uvicorn to run your FastAPI app on all network interfaces (0.0.0.0) at port 8000
+- `uv run` executes a command in the UV-managed environment
+- `uvicorn main:app` starts the ASGI server running your FastAPI application
+- `--host 0.0.0.0` binds to all network interfaces (required for container networking)
+- `--port 8000` specifies the port
 
-**Difference from RUN**:
+**Difference from RUN:**
 - `RUN` executes DURING image build (creates a layer)
 - `CMD` executes when the container STARTS (doesn't create a layer)
 
-**Why "0.0.0.0"**: Inside a container, localhost (127.0.0.1) is isolated from outside. Using 0.0.0.0 makes the service accessible from your machine.
+**Why "0.0.0.0"?** Inside a container, localhost (127.0.0.1) is isolated from the host. Using 0.0.0.0 makes the service accessible from your machine when you map ports.
 
 ### Complete Dockerfile
 
-Here's your finished Dockerfile with all instructions together:
+Here's your finished Dockerfile with all instructions:
 
 ```dockerfile
 FROM python:3.12-slim
 
+# Install UV package manager
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Install dependencies first (for layer caching)
+COPY pyproject.toml .
+RUN uv sync --no-dev
 
+# Copy application code
 COPY main.py .
 
 EXPOSE 8000
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
 Copy this into your editor and save the file.
@@ -268,47 +377,62 @@ Copy this into your editor and save the file.
 Now that you have a Dockerfile, build an image from it:
 
 ```bash
-docker build -t my-fastapi-app:v1 .
+docker build -t task-api:v1 .
 ```
 
 **Output:**
 ```
-$ docker build -t my-fastapi-app:v1 .
-[1/6] FROM docker.io/library/python:3.12-slim
-[2/6] WORKDIR /app
-[3/6] RUN pip install --no-cache-dir -r requirements.txt
-Collecting fastapi==0.115.0
-Collecting uvicorn[standard]==0.32.0
-...
-Successfully installed fastapi-0.115.0 uvicorn-0.32.0
-[4/6] COPY main.py .
-[5/6] EXPOSE 8000
-[6/6] CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-Successfully built 1a2b3c4d
-Successfully tagged my-fastapi-app:v1
+$ docker build -t task-api:v1 .
+[+] Building 45.2s (10/10) FINISHED
+ => [internal] load build definition from Dockerfile
+ => [internal] load .dockerignore
+ => [internal] load metadata for docker.io/library/python:3.12-slim
+ => [internal] load metadata for ghcr.io/astral-sh/uv:latest
+ => [1/5] FROM docker.io/library/python:3.12-slim
+ => [2/5] COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+ => [3/5] WORKDIR /app
+ => [4/5] COPY pyproject.toml .
+ => [5/5] RUN uv sync --no-dev
+Resolved 11 packages in 156ms
+Prepared 11 packages in 892ms
+Installed 11 packages in 45ms
+ + annotated-types==0.7.0
+ + anyio==4.7.0
+ + click==8.1.8
+ + fastapi==0.115.6
+ + h11==0.14.0
+ + pydantic==2.10.4
+ + pydantic-core==2.27.2
+ + sniffio==1.3.1
+ + starlette==0.41.3
+ + typing-extensions==4.12.2
+ + uvicorn==0.34.0
+ => [6/5] COPY main.py .
+ => exporting to image
+ => => naming to docker.io/library/task-api:v1
 ```
 
 **What happened:**
 - `docker build` creates an image from your Dockerfile
-- `-t my-fastapi-app:v1` names and tags it (`-t` = tag)
+- `-t task-api:v1` names and tags it (`-t` = tag)
 - `.` says "use the Dockerfile in the current directory"
-- Docker executed each instruction as a "step" [1/6], [2/6], etc.
-- Each step creates a layer (we'll discuss this soon)
-- Finally: `Successfully tagged my-fastapi-app:v1` means your image is ready
+- Docker executed each instruction as a step
+- UV installed all dependencies in under 1 second (much faster than pip)
+- Finally: `naming to docker.io/library/task-api:v1` means your image is ready
 
-**Image size check:**
+**Check image size:**
 
 ```bash
-docker images | grep my-fastapi-app
+docker images | grep task-api
 ```
 
 **Output:**
 ```
-$ docker images | grep my-fastapi-app
-my-fastapi-app    v1        1a2b3c4d        17 minutes ago   182MB
+$ docker images | grep task-api
+task-api    v1    a1b2c3d4e5f6    2 minutes ago    195MB
 ```
 
-Your image is 182 MB. This is reasonable for a Python application with dependencies.
+Your image is ~195 MB. This includes Python 3.12, UV, FastAPI, Uvicorn, and all dependencies—a complete runtime environment.
 
 ---
 
@@ -317,36 +441,27 @@ Your image is 182 MB. This is reasonable for a Python application with dependenc
 Now run a container from your image:
 
 ```bash
-docker run -p 8000:8000 my-fastapi-app:v1
+docker run -p 8000:8000 task-api:v1
 ```
 
 **Output:**
 ```
-$ docker run -p 8000:8000 my-fastapi-app:v1
-INFO:     Uvicorn running on http://0.0.0.0:8000
-INFO:     Application startup complete
+$ docker run -p 8000:8000 task-api:v1
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 ```
 
 **What `-p 8000:8000` does:**
 - Maps port 8000 on your machine TO port 8000 in the container
-- Left 8000 = your machine's port
+- Left 8000 = your machine's port (host)
 - Right 8000 = container's port
 - Now you can reach the app at `http://localhost:8000`
 
-The container is running. In another terminal, test the API:
+The container is running. Open a **new terminal** and test the API:
 
-```bash
-curl http://localhost:8000/
-```
-
-**Output:**
-```
-$ curl http://localhost:8000/
-{"message":"Hello from Docker!"}
-```
-
-Test the health endpoint:
-
+**Test health endpoint:**
 ```bash
 curl http://localhost:8000/health
 ```
@@ -357,14 +472,55 @@ $ curl http://localhost:8000/health
 {"status":"healthy"}
 ```
 
-Success! Your containerized application is running and responding to requests.
+**Create a task:**
+```bash
+curl -X POST http://localhost:8000/tasks \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Learn Docker", "completed": false}'
+```
+
+**Output:**
+```
+$ curl -X POST http://localhost:8000/tasks \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Learn Docker", "completed": false}'
+{"id":1,"title":"Learn Docker","completed":false}
+```
+
+**List all tasks:**
+```bash
+curl http://localhost:8000/tasks
+```
+
+**Output:**
+```
+$ curl http://localhost:8000/tasks
+[{"id":1,"title":"Learn Docker","completed":false}]
+```
+
+**Update a task:**
+```bash
+curl -X PUT http://localhost:8000/tasks/1 \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Learn Docker", "completed": true}'
+```
+
+**Output:**
+```
+$ curl -X PUT http://localhost:8000/tasks/1 \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Learn Docker", "completed": true}'
+{"id":1,"title":"Learn Docker","completed":true}
+```
+
+Your containerized Task API is fully functional! All CRUD operations work exactly as they did locally.
 
 Stop the container by pressing Ctrl+C in the terminal where it's running:
 
 ```
 ^C
 INFO:     Shutting down
-INFO:     Application shutdown complete
+INFO:     Finished server process [1]
 ```
 
 ---
@@ -372,12 +528,12 @@ INFO:     Application shutdown complete
 ## Understanding Build Context and .dockerignore
 
 When you run `docker build .`, Docker sends everything in your directory to the build context. For a small project this is fine, but imagine if you had:
-- `node_modules/` (100,000 files)
-- `.git/` (git history)
-- `.venv/` (virtual environment)
-- `__pycache__/` (Python cache)
+- `__pycache__/` directories (Python bytecode)
+- `.venv/` (virtual environment—could be 500 MB+)
+- `.git/` (repository history)
+- `.env` (secrets that shouldn't be in images)
 
-Docker would waste time processing files it doesn't need.
+Docker would waste time and bandwidth processing files it doesn't need—and worse, you might accidentally include secrets in your image.
 
 ### Creating .dockerignore
 
@@ -385,21 +541,56 @@ Create a `.dockerignore` file to exclude unnecessary files:
 
 **File: .dockerignore**
 ```
-__pycache__
-*.pyc
-.venv
-.git
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# UV cache
+.uv/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Git
+.git/
 .gitignore
-.DS_Store
-*.log
+
+# Environment and secrets
 .env
-.pytest_cache
+.env.*
+*.pem
+*.key
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test and development
+tests/
+*.log
+htmlcov/
+.coverage
 ```
 
 **What this does:**
-- Works like `.gitignore` for Docker
+- Works like `.gitignore` but for Docker builds
 - Excludes these patterns from the build context
-- Speeds up builds and keeps image clean
+- Speeds up builds and keeps images clean
+- **Critically**: Prevents secrets from ending up in images
 
 Verify the file exists:
 
@@ -410,22 +601,22 @@ ls -la | grep dockerignore
 **Output:**
 ```
 $ ls -la | grep dockerignore
--rw-r--r--  1 you  staff  112 Dec 22 10:45 .dockerignore
+-rw-r--r--  1 you  staff  425 Dec 27 10:45 .dockerignore
 ```
 
-Now when you rebuild, Docker ignores these patterns:
+Now rebuild your image:
 
 ```bash
-docker build -t my-fastapi-app:v2 .
+docker build -t task-api:v2 .
 ```
 
-The build should be slightly faster since Docker isn't processing unnecessary files.
+The build should be faster since Docker isn't processing unnecessary files in the context.
 
 ---
 
 ## Layer Caching: Why Instruction Order Matters
 
-Docker builds images in layers. Each instruction creates a layer. If you change one layer, Docker can reuse unchanged layers from previous builds—this is layer caching.
+Docker builds images in layers. Each instruction creates a layer. When you rebuild, Docker checks if anything changed—if a layer is identical to a cached version, Docker reuses it instead of rebuilding.
 
 Here's the key insight: **If you change `main.py`, do you need to reinstall dependencies?**
 
@@ -433,128 +624,228 @@ Look at our Dockerfile again:
 
 ```dockerfile
 FROM python:3.12-slim
-
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 WORKDIR /app
 
-COPY requirements.txt .            # Layer: Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+COPY pyproject.toml .              # Layer: Dependencies definition
+RUN uv sync --no-dev               # Layer: Installed packages
 
-COPY main.py .                     # Layer: Copy application code
+COPY main.py .                     # Layer: Application code
 
 EXPOSE 8000
-
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
-**Why we copy requirements.txt BEFORE main.py:**
+**Why we copy pyproject.toml BEFORE main.py:**
 
 When you edit `main.py` and rebuild:
-- Docker checks each layer against cached layers
-- Layers 1-3 haven't changed (FROM, WORKDIR, COPY requirements.txt, RUN pip install)
-- Docker REUSES those cached layers ✓
-- Only the COPY main.py layer rebuilds (fast—just file copy)
-- Total build time: ~5 seconds
+1. Layers 1-5 haven't changed (FROM, UV, WORKDIR, COPY pyproject.toml, RUN uv sync)
+2. Docker REUSES those cached layers
+3. Only the `COPY main.py` layer rebuilds (instant—just a file copy)
+4. **Total rebuild time: ~1 second**
 
-**If we had reversed the order** (COPY main.py first, then requirements.txt):
+**If we had reversed the order** (COPY main.py first, then pyproject.toml):
 
 When you edit `main.py` and rebuild:
-- COPY main.py changes → Layer invalidated ✗
-- RUN pip install invalidated too (everything after changes must rebuild) ✗
-- Docker reinstalls dependencies from scratch
-- Total build time: ~60 seconds (downloading and installing packages)
+1. `COPY main.py` changed → Layer invalidated
+2. `COPY pyproject.toml` must rebuild (everything after a change rebuilds)
+3. `RUN uv sync` must reinstall all packages
+4. **Total rebuild time: 30-60 seconds** (re-downloading and installing packages)
 
 **General rule**: Put instructions that change frequently (your code) AFTER instructions that change rarely (dependencies).
 
 ### Demonstrating Cache Hit
 
-Build again without any changes:
+Let's prove this works. Edit `main.py` to add a new endpoint:
+
+```python
+@app.get("/version")
+def get_version() -> dict:
+    return {"version": "1.0.0", "service": "Task API"}
+```
+
+Rebuild:
 
 ```bash
-docker build -t my-fastapi-app:v3 .
+docker build -t task-api:v3 .
 ```
 
 **Output:**
 ```
-$ docker build -t my-fastapi-app:v3 .
-[1/6] FROM docker.io/library/python:3.12-slim
-[2/6] WORKDIR /app
-[3/6] RUN pip install --no-cache-dir -r requirements.txt
-...
-Using cache
-Using cache
-...
-Successfully tagged my-fastapi-app:v3
+$ docker build -t task-api:v3 .
+[+] Building 1.2s (10/10) FINISHED
+ => [internal] load build definition from Dockerfile
+ => [internal] load .dockerignore
+ => CACHED [1/5] FROM docker.io/library/python:3.12-slim
+ => CACHED [2/5] COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+ => CACHED [3/5] WORKDIR /app
+ => CACHED [4/5] COPY pyproject.toml .
+ => CACHED [5/5] RUN uv sync --no-dev
+ => [6/5] COPY main.py .
+ => exporting to image
+Successfully tagged task-api:v3
 ```
 
-Notice "Using cache" appears multiple times. Docker didn't re-execute those steps—it used cached layers. That's why the build was instant.
+Notice `CACHED` appears for steps 1-5. Docker reused the dependency layer because `pyproject.toml` didn't change. Only the `COPY main.py` step ran, completing in about 1 second.
+
+**This is why instruction order matters.** A poorly ordered Dockerfile rebuilds everything on every code change. A well-ordered Dockerfile only rebuilds what actually changed.
 
 ---
 
 ## Environment Variables and Port Flexibility
 
-Sometimes you want to run the same image with different configurations (different port, different log level, etc.). Use environment variables.
+Sometimes you want to run the same image with different configurations. Environment variables provide this flexibility.
 
-Run your container with custom port:
+### Running on a Different Host Port
 
 ```bash
-docker run -p 9000:8000 -e PORT=8000 my-fastapi-app:v1
+docker run -p 9000:8000 task-api:v3
 ```
 
 **Output:**
 ```
-$ docker run -p 9000:8000 -e PORT=8000 my-fastapi-app:v1
-INFO:     Uvicorn running on http://0.0.0.0:8000
+$ docker run -p 9000:8000 task-api:v3
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 ```
 
-The `-e PORT=8000` sets an environment variable. The application still runs on 8000 (the CMD hard-codes it), but you map it to 9000 on your machine.
+Now test it on port 9000:
 
-This is simple here, but in more complex applications, you'd modify the CMD to read environment variables:
-
-```dockerfile
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${PORT:-8000}"]
+```bash
+curl http://localhost:9000/health
 ```
 
-(This uses bash substitution: PORT environment variable, default to 8000 if not set.)
+**Output:**
+```
+$ curl http://localhost:9000/health
+{"status":"healthy"}
+```
+
+The container still runs on port 8000 internally, but you mapped it to 9000 on your machine.
+
+### Passing Environment Variables
+
+Use `-e` to pass environment variables:
+
+```bash
+docker run -p 8000:8000 -e LOG_LEVEL=debug task-api:v3
+```
+
+Your application can read these via `os.environ["LOG_LEVEL"]`. This is how you configure database connections, API keys, and feature flags in containerized applications—without changing the image.
+
+### Running in Detached Mode
+
+For development, you might want the container to run in the background:
+
+```bash
+docker run -d -p 8000:8000 --name my-task-api task-api:v3
+```
+
+**Output:**
+```
+$ docker run -d -p 8000:8000 --name my-task-api task-api:v3
+a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z
+```
+
+**What the flags do:**
+- `-d` = detached mode (runs in background)
+- `--name my-task-api` = gives the container a memorable name
+
+Check it's running:
+
+```bash
+docker ps
+```
+
+**Output:**
+```
+$ docker ps
+CONTAINER ID   IMAGE         STATUS          PORTS                    NAMES
+a1b2c3d4e5f6   task-api:v3   Up 5 seconds    0.0.0.0:8000->8000/tcp   my-task-api
+```
+
+Stop and remove it when done:
+
+```bash
+docker stop my-task-api
+docker rm my-task-api
+```
+
+**Output:**
+```
+$ docker stop my-task-api
+my-task-api
+$ docker rm my-task-api
+my-task-api
+```
 
 ---
 
-## Common Build Failures and How to Read Them
+## Common Build Failures and How to Debug Them
 
 ### Failure 1: Missing File
 
-If you run `docker build` without a `requirements.txt` file:
+If you run `docker build` without a required file:
 
 ```
-COPY requirements.txt .
+COPY pyproject.toml .
 COPY: source file does not exist
 ```
 
-**What this means**: Docker can't find the file in the build context.
-**Fix**: Verify the file exists: `ls requirements.txt`
+**What this means:** Docker can't find the file in the build context.
+**Fix:** Verify the file exists: `ls pyproject.toml`
 
 ### Failure 2: Failed Dependency Installation
 
-If `pip install` fails during build:
+If `uv sync` fails:
 
 ```
-RUN pip install --no-cache-dir -r requirements.txt
-ERROR: Could not find a version that satisfies the requirement ...
+RUN uv sync --no-dev
+error: Failed to resolve dependencies
+  Caused by: No solution found when resolving dependencies
 ```
 
-**What this means**: The package doesn't exist or the version specified is invalid.
-**Fix**: Check `requirements.txt` for typos or invalid version numbers.
+**What this means:** The package versions in `pyproject.toml` are incompatible.
+**Fix:** Check for typos in package names or invalid version constraints.
 
 ### Failure 3: Port Already in Use
 
-If you try to run a container with a port already in use:
-
 ```
 Error response from daemon: driver failed programming external connectivity
-... Bind for 0.0.0.0:8000 failed
+... Bind for 0.0.0.0:8000 failed: port is already allocated
 ```
 
-**What this means**: Another container (or service) is using port 8000.
-**Fix**: Use a different port: `docker run -p 9000:8000 my-fastapi-app:v1`
+**What this means:** Another container (or process) is using port 8000.
+**Fix:** Use a different port: `docker run -p 9000:8000 task-api:v1`
+
+Or find and stop the conflicting container:
+
+```bash
+docker ps | grep 8000
+docker stop <container_id>
+```
+
+### Failure 4: Application Crashes on Start
+
+If the container starts but immediately exits:
+
+```bash
+docker run task-api:v1
+# (exits immediately with no output)
+```
+
+Check the logs:
+
+```bash
+docker logs $(docker ps -lq)
+```
+
+**Output might show:**
+```
+ModuleNotFoundError: No module named 'fastapi'
+```
+
+**What this means:** Dependencies weren't installed correctly.
+**Fix:** Verify `RUN uv sync --no-dev` succeeded in the build output.
 
 ---
 
@@ -562,70 +853,74 @@ Error response from daemon: driver failed programming external connectivity
 
 You now understand:
 
-1. **Dockerfile structure**: FROM (base) → WORKDIR (directory) → COPY (files) → RUN (install) → EXPOSE (document port) → CMD (run command)
+1. **Dockerfile structure**: FROM (base) → COPY UV → WORKDIR (directory) → COPY deps → RUN install → COPY code → EXPOSE (port) → CMD (run command)
 
 2. **Build process**: Docker executes each instruction as a step, creating layers, and tags the final image
 
-3. **Running containers**: `docker run` starts a container from an image, with `-p` mapping ports and `-e` setting environment variables
+3. **Running containers**: `docker run` starts a container from an image, with `-p` mapping ports, `-e` setting environment variables, and `-d` for background mode
 
 4. **Layer caching**: Order matters—put dependencies before code so changes only rebuild what changed
 
-5. **Build context**: `.dockerignore` excludes unnecessary files from builds
+5. **Build context**: `.dockerignore` excludes unnecessary files and secrets from builds
 
-This foundation prepares you for advanced patterns: multi-stage builds to shrink images, Docker Compose for multi-container setups, and security best practices. But first, let's practice.
+This foundation prepares you for multi-stage builds to optimize image size, Docker Compose for multi-container applications, and production security best practices.
 
 ---
 
 ## Try With AI
 
-### Part 1: Modify Your Application
+### Prompt 1: Diagnose a Dockerfile Problem
 
-Edit `main.py` to add a new endpoint:
+```
+I have this Dockerfile for a Python FastAPI app, but my builds are slow—about
+60 seconds every time I change my code. Here's my Dockerfile:
 
-```python
-@app.get("/version")
-def get_version():
-    return {"version": "1.0.0", "service": "FastAPI in Docker"}
+FROM python:3.12-slim
+WORKDIR /app
+COPY . .
+RUN pip install -r requirements.txt
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0"]
+
+What's wrong with my layer ordering, and how would you fix it for faster
+rebuilds?
 ```
 
-Save the file.
+**What you're learning:** Analyzing layer cache invalidation patterns—understanding how instruction order affects build performance.
 
-### Part 2: Rebuild Without Changing Dependencies
+### Prompt 2: Explain a Build Failure
 
-Rebuild your image:
+```
+I'm getting this error when building my Docker image:
 
-```bash
-docker build -t my-fastapi-app:v4 .
+[5/5] RUN uv sync --no-dev
+error: Failed to build `pydantic-core==2.27.2`
+  Caused by: Failed to build wheel
+
+The package needs a Rust compiler. I'm using python:3.12-slim as my base image.
+What are my options? Explain the tradeoffs between using a larger base image
+versus multi-stage builds.
 ```
 
-Pay attention to the output. Does it show "Using cache" for the pip install layer? Why? (Hint: You only changed application code, not dependencies.)
+**What you're learning:** Troubleshooting build failures that require native compilation—a common challenge when containerizing Python applications with binary dependencies.
 
-### Part 3: Build a New Image and Test the Endpoint
+### Prompt 3: Design a Dockerfile for Your Own API
 
-Run your container from the new image:
+```
+I'm building a [describe your API - e.g., "recipe management API with SQLite
+database" or "weather data API that calls external services"]. Based on the
+Task API Dockerfile I learned, help me design the Dockerfile for my service.
 
-```bash
-docker run -p 8000:8000 my-fastapi-app:v4
+Ask me about:
+1. What external services does it call?
+2. Does it need any system-level dependencies?
+3. What environment variables does it require?
+4. Does it need to persist any data?
+
+Then write a Dockerfile with comments explaining each choice.
 ```
 
-In another terminal, test the new endpoint:
+**What you're learning:** Translating Dockerfile patterns to your own applications—moving from following instructions to making design decisions based on your specific requirements.
 
-```bash
-curl http://localhost:8000/version
-```
+### Safety Note
 
-You should get:
-
-```json
-{"version":"1.0.0","service":"FastAPI in Docker"}
-```
-
-### Part 4: Challenge — Optimize Image Size (Optional)
-
-Your current Dockerfile is 182 MB. Try these optimizations:
-
-1. Use `python:3.12-alpine` instead of `python:3.12-slim` (Alpine is even smaller)
-2. Check image size: `docker images my-fastapi-app`
-3. Does the application still work?
-
-When you're confident with Dockerfiles, you're ready to use AI to optimize builds for production. But this manual practice builds the intuition you need to evaluate AI-generated Dockerfiles critically.
+When containerizing applications, never include secrets (API keys, passwords, database credentials) in your Dockerfile or image. Use environment variables passed at runtime (`-e` flag) or Docker secrets for sensitive configuration. Images may be shared or pushed to registries where secrets would be exposed.

@@ -1,48 +1,84 @@
 ---
 sidebar_position: 2
+title: "Container Fundamentals: Images, Containers, and Layers"
+description: "Master Docker's core concepts through hands-on exploration—pulling images, running containers, and understanding how layers enable efficient image sharing."
+keywords: [docker, containers, images, layers, docker pull, docker run, docker ps, docker exec]
 chapter: 49
 lesson: 2
-duration_minutes: 45
-title: "Container Fundamentals: Images, Containers, and Layers"
+duration_minutes: 40
 proficiency_level: B1
 teaching_stage: 1
 stage_name: "Manual Foundation"
 stage_description: "Hands-on exploration builds intuition for image/container relationship"
-cognitive_load:
-  concepts_count: 9
-  scaffolding_level: "Moderate"
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Container Architecture Understanding"
+    proficiency_level: "B1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "5. Problem Solving"
+    measurable_at_this_level: "Student can explain the distinction between images (immutable templates) and containers (running instances with writable layers)"
+
+  - name: "Docker Image Management"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "3. Digital Content Creation"
+    measurable_at_this_level: "Student can pull images from Docker Hub, list local images, and remove unused images using docker commands"
+
+  - name: "Container Lifecycle Operations"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "3. Digital Content Creation"
+    measurable_at_this_level: "Student can run, stop, start, and remove containers using interactive and detached modes"
+
+  - name: "Container Debugging"
+    proficiency_level: "B1"
+    category: "Applied"
+    bloom_level: "Apply"
+    digcomp_area: "5. Problem Solving"
+    measurable_at_this_level: "Student can execute commands inside running containers and access shell for inspection"
+
 learning_objectives:
-  - id: LO1
-    description: "Distinguish between images (templates) and containers (running instances)"
+  - objective: "Explain the difference between images (templates) and containers (running instances)"
+    proficiency_level: "B1"
     bloom_level: "Understand"
-  - id: LO2
-    description: "Explain why images are immutable and how the writable container layer works"
+    assessment_method: "Student can articulate that images are immutable blueprints while containers are live processes with writable layers"
+
+  - objective: "Pull images from Docker Hub with docker pull"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Student successfully pulls python:3.12-slim and nginx:alpine images and verifies with docker images"
+
+  - objective: "Explain how layers create efficient, reusable images"
+    proficiency_level: "B1"
     bloom_level: "Understand"
-  - id: LO3
-    description: "Pull images from Docker Hub and inspect their layers"
+    assessment_method: "Student can describe copy-on-write mechanism and how shared layers reduce disk usage"
+
+  - objective: "List and manage images with docker images and docker rmi"
+    proficiency_level: "B1"
     bloom_level: "Apply"
-  - id: LO4
-    description: "Run containers in interactive and detached modes"
+    assessment_method: "Student can list images and remove unused ones from local storage"
+
+  - objective: "List running containers with docker ps"
+    proficiency_level: "B1"
     bloom_level: "Apply"
-  - id: LO5
-    description: "Manage container lifecycle: start, stop, remove"
+    assessment_method: "Student uses docker ps and docker ps -a to distinguish running vs stopped containers"
+
+  - objective: "Start, stop, and remove containers with docker start/stop/rm"
+    proficiency_level: "B1"
     bloom_level: "Apply"
-  - id: LO6
-    description: "Execute commands inside running containers with docker exec"
-    bloom_level: "Apply"
-  - id: LO7
-    description: "View container logs and resource usage"
-    bloom_level: "Understand"
-  - id: LO8
-    description: "Explain how layers enable image sharing and caching"
-    bloom_level: "Understand"
-  - id: LO9
-    description: "Use docker images and docker ps to inspect local state"
-    bloom_level: "Apply"
-digcomp_mapping:
-  - objective_id: LO1
-    competency_area: "5. Problem Solving"
-    competency: "5.3 Creatively using digital technologies"
+    assessment_method: "Student demonstrates full container lifecycle from run through removal"
+
+cognitive_load:
+  new_concepts: 6
+  assessment: "6 core concepts (images, containers, layers, pull, run, exec) within B1 limit (7-10 concepts). Moderate scaffolding with step-by-step commands."
+
+differentiation:
+  extension_for_advanced: "Explore docker inspect output in detail; compare layer digests across images sharing the same base; experiment with volume mounts for data persistence"
+  remedial_for_struggling: "Focus on the coffee analogy (recipe vs cup); run only the Python interactive example before moving to Nginx; use docker run --rm to auto-cleanup containers"
 ---
 
 # Container Fundamentals: Images, Containers, and Layers
@@ -550,37 +586,35 @@ You have Docker running. Open a terminal with:
 - Docker Desktop running
 - Python and Nginx images already pulled (from earlier)
 
-### Part 1: Explore Layer Differences
+### Prompt 1: Explore Layer Differences
 
-Ask AI: "I have two images: python:3.12-slim and nginx:alpine. How can I compare their layers using docker inspect? What do the layers tell me about what software is installed in each?"
+```
+I have two images: python:3.12-slim and nginx:alpine. How can I compare
+their layers using docker inspect? What do the layers tell me about what
+software is installed in each?
+```
 
-Take note of:
-- How many layers each image has
-- The size of each image
-- What layers might be shared (both based on Alpine Linux)
+**What you're learning**: Docker's layer architecture reveals how images are constructed. By comparing layer counts and sizes, you can understand why Python images are larger (more dependencies) and how base images (Alpine) get reused across different applications.
 
-### Part 2: Simulate a Real Scenario
+### Prompt 2: Verify Container Independence
 
-Ask AI: "I'm running three web servers (Nginx containers) from the same image on the same machine. Can you show me how to verify they're independent? If I change a file in one container's file system, does it affect the others?"
+```
+I'm running two Nginx containers from the same image on the same machine.
+Show me how to verify they're independent. If I create a file in one
+container's file system, does it affect the other?
+```
 
-Then test this by:
-1. Running two Nginx containers with different names
-2. Using `docker exec` to create a file in one container
-3. Checking if the file exists in the other container
+**What you're learning**: Container isolation in practice. You'll see that each container has its own writable layer, so changes in one never affect another—even when they share the same image. This is the foundation of reproducible deployments.
 
-### Part 3: Understand Container State
+### Prompt 3: Investigate Container State
 
-Ask AI: "I have a container that's exited. Can I see what command it ran before exiting? Can I see its logs? How would I know why it stopped?"
+```
+I have a container that exited. Can I see what command it ran before
+exiting? Can I see its logs? How would I know why it stopped?
+```
 
-Experiment by:
-1. Running a Python container that exits immediately: `docker run python:3.12-slim python -c "print('hello')"`
-2. Using `docker logs` to see what the container output
-3. Comparing a container that exited with one that's still running
+**What you're learning**: Container forensics. You'll use `docker logs`, `docker inspect`, and exit codes to understand container behavior. This is essential for debugging containers that fail in production.
 
-### Part 4: Reflection
+### Safety Note
 
-Compare your initial understanding of images and containers (from the beginning of this lesson) with what you discovered through hands-on exploration:
-
-- What surprised you about how images and containers relate?
-- Why do you think Docker separates images (templates) from containers (instances)?
-- How would Docker behave differently if it didn't use layers?
+Remember that container commands (`docker rm`, `docker rmi`) are destructive. Always double-check container names before removing. In production, use `docker rm` with caution—stopped containers may contain logs or state you need to investigate.

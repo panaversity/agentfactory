@@ -1,41 +1,65 @@
 ---
 sidebar_position: 4
+title: "Container Lifecycle and Debugging"
+description: "Master container lifecycle management and debugging techniques using docker logs, docker exec, and docker inspect to troubleshoot containerized FastAPI services"
+keywords: [docker logs, docker exec, docker inspect, container debugging, port conflicts, restart policies, OOM kills, container lifecycle]
 chapter: 49
 lesson: 4
-duration_minutes: 45
-title: "Container Lifecycle & Debugging"
+duration_minutes: 40
 proficiency_level: B1
 teaching_stage: 1
 stage_name: "Manual Foundation"
-stage_description: "Debugging broken containers teaches troubleshooting skills"
-cognitive_load:
-  concepts_count: 8
-  scaffolding_level: "Moderate"
+stage_description: "Debugging broken containers teaches troubleshooting skills before AI assistance"
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Container Debugging"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Analyze"
+    digcomp_area: "5. Problem Solving"
+    measurable_at_this_level: "Diagnose container failures using logs and inspection tools"
+  - name: "Container Lifecycle Management"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "3. Digital Content Creation"
+    measurable_at_this_level: "Configure restart policies and resource limits"
+
 learning_objectives:
-  - id: LO1
-    description: "Diagnose container failures using docker logs"
-    bloom_level: "Analyze"
-  - id: LO2
-    description: "Execute commands in running containers with docker exec"
+  - objective: "View container logs with docker logs to diagnose startup failures"
+    proficiency_level: "B1"
     bloom_level: "Apply"
-  - id: LO3
-    description: "Inspect container configuration and state with docker inspect"
-    bloom_level: "Analyze"
-  - id: LO4
-    description: "Identify and resolve port conflicts"
-    bloom_level: "Analyze"
-  - id: LO5
-    description: "Diagnose file permission errors in containers"
-    bloom_level: "Analyze"
-  - id: LO6
-    description: "Configure restart policies for resilient containers"
+    assessment_method: "Practical exercise: extract error message from failed container"
+  - objective: "Execute commands inside running containers with docker exec for live inspection"
+    proficiency_level: "B1"
     bloom_level: "Apply"
-  - id: LO7
-    description: "Set memory and CPU limits for AI workloads"
+    assessment_method: "Exercise: verify file permissions inside container"
+  - objective: "Inspect container configuration with docker inspect to verify settings"
+    proficiency_level: "B1"
     bloom_level: "Apply"
-  - id: LO8
-    description: "Interpret OOM (Out of Memory) kills and resolve them"
+    assessment_method: "Extract environment variables and port mappings from running container"
+  - objective: "Debug port conflicts and resolve them using alternative port mappings"
+    proficiency_level: "B1"
     bloom_level: "Analyze"
+    assessment_method: "Diagnose port conflict error and implement solution"
+  - objective: "Configure restart policies for container resilience"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Configure unless-stopped policy and verify behavior"
+  - objective: "Identify and fix common container startup failures including missing dependencies"
+    proficiency_level: "B1"
+    bloom_level: "Analyze"
+    assessment_method: "Debug container that fails due to missing environment variable"
+
+cognitive_load:
+  new_concepts: 6
+  assessment: "Moderate scaffolding - builds on L03 Dockerfile knowledge with focused debugging scenarios"
+
+differentiation:
+  extension_for_advanced: "Debug multi-container networking issues, implement health checks with restart policies"
+  remedial_for_struggling: "Focus on docker logs and docker ps before moving to docker exec and inspect"
+
 digcomp_mapping:
   - objective_id: LO1
     competency_area: "5. Problem Solving"
@@ -50,917 +74,783 @@ digcomp_mapping:
     competency_area: "5. Problem Solving"
     competency: "5.2 Identifying needs and responses"
   - objective_id: LO5
-    competency_area: "5. Problem Solving"
-    competency: "5.1 Solving technical problems"
+    competency_area: "3. Digital Content Creation"
+    competency: "3.4 Programming"
   - objective_id: LO6
-    competency_area: "3. Digital Content Creation"
-    competency: "3.4 Programming"
-  - objective_id: LO7
-    competency_area: "3. Digital Content Creation"
-    competency: "3.4 Programming"
-  - objective_id: LO8
     competency_area: "5. Problem Solving"
     competency: "5.1 Solving technical problems"
 ---
 
-# Container Lifecycle & Debugging
+# Container Lifecycle and Debugging
 
-Containers fail. Your image builds successfully, you run it locally, and it crashes in production. Your agent service starts, but nothing responds on the expected port. A memory-intensive model loads fine on your 64GB workstation but kills your container on a cloud instance with memory limits.
+Your FastAPI service from Lesson 3 is running in a container. It responds to requests, returns JSON, and everything works. Then you deploy it to a server. It crashes. No error on your screen, no stack trace, nothing. The container simply stops.
 
-Debugging containers requires different skills than debugging local applications. You can't attach a debugger to a container running in a Kubernetes cluster. You can't inspect files on a machine you don't have SSH access to. Container debugging relies on logs, introspection tools, and understanding the container lifecycle.
+This is where container debugging skills become essential. Unlike local development where errors appear in your terminal, containerized applications fail silently unless you know where to look. The container's logs, its internal state, its configuration, and its resource usage are all hidden behind Docker's abstraction layer.
 
-In this lesson, you'll diagnose intentionally broken containers to develop debugging competence. By working through real failure patterns, you'll build intuition for what goes wrong and how to fix it.
+In this lesson, you'll learn the debugging toolkit that every container developer needs: reading logs to understand what happened, executing commands inside containers to inspect their state, and using inspection tools to verify configuration. You'll practice these skills using the FastAPI application you built in Lesson 3, intentionally breaking it to develop debugging intuition.
+
+---
+
+## Running Your FastAPI App in Detached Mode
+
+Before debugging, let's run your Lesson 3 FastAPI container in the background. Navigate to your `my-fastapi-app` directory where you created the Dockerfile:
+
+```bash
+cd my-fastapi-app
+docker build -t task-api:v1 .
+```
+
+**Output:**
+```
+$ docker build -t task-api:v1 .
+[+] Building 2.1s (8/8) FINISHED
+ => [1/5] FROM docker.io/library/python:3.12-slim
+ => CACHED [2/5] WORKDIR /app
+ => CACHED [3/5] COPY requirements.txt .
+ => CACHED [4/5] RUN pip install --no-cache-dir -r requirements.txt
+ => CACHED [5/5] COPY main.py .
+ => exporting to image
+Successfully tagged task-api:v1
+```
+
+Now run it in detached mode (`-d`) so it runs in the background:
+
+```bash
+docker run -d -p 8000:8000 --name task-api task-api:v1
+```
+
+**Output:**
+```
+$ docker run -d -p 8000:8000 --name task-api task-api:v1
+a7b8c9d0e1f2g3h4i5j6k7l8m9n0o1p2q3r4s5t6
+```
+
+The long string is the container ID. The `-d` flag means "detached"—the container runs in the background and you get your terminal back.
+
+Verify the container is running:
+
+```bash
+docker ps
+```
+
+**Output:**
+```
+$ docker ps
+CONTAINER ID   IMAGE         COMMAND                  STATUS         PORTS                    NAMES
+a7b8c9d0e1f2   task-api:v1   "uvicorn main:app ..."   Up 5 seconds   0.0.0.0:8000->8000/tcp   task-api
+```
+
+Test that it's responding:
+
+```bash
+curl http://localhost:8000/health
+```
+
+**Output:**
+```
+$ curl http://localhost:8000/health
+{"status":"healthy"}
+```
+
+Now you have a running container to debug. Let's explore the debugging tools.
 
 ---
 
 ## Reading Container Logs
 
-When a container crashes or behaves unexpectedly, logs are your first source of truth. The `docker logs` command shows you everything the main process writes to stdout and stderr.
+The most important debugging command is `docker logs`. It shows everything your application writes to stdout and stderr—print statements, uvicorn startup messages, errors, and stack traces.
 
-Create a broken application to see how logs reveal problems. Start with a Python script that fails immediately:
+View logs from your running container:
 
-**File: broken_app.py**
-```python
-import sys
-
-print("Application starting...")
-print("Attempting to open configuration file...")
-sys.exit("ERROR: Configuration file not found at /etc/app/config.json")
+```bash
+docker logs task-api
 ```
 
-Now create a Dockerfile for this broken app:
+**Output:**
+```
+$ docker logs task-api
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+```
+
+These logs show uvicorn started successfully. Now make a request and check logs again:
+
+```bash
+curl http://localhost:8000/
+docker logs task-api
+```
+
+**Output:**
+```
+$ curl http://localhost:8000/
+{"message":"Hello from Docker!"}
+
+$ docker logs task-api
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     172.17.0.1:54321 - "GET / HTTP/1.1" 200 OK
+```
+
+The new log line shows the request: the client IP, the endpoint accessed, and the HTTP response code (200 OK).
+
+### Following Logs in Real-Time
+
+For live debugging, use the `-f` (follow) flag to stream logs continuously:
+
+```bash
+docker logs -f task-api
+```
+
+**Output:**
+```
+$ docker logs -f task-api
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     172.17.0.1:54321 - "GET / HTTP/1.1" 200 OK
+[cursor waiting for new logs...]
+```
+
+Now in another terminal, make requests and watch them appear in real-time. Press Ctrl+C to stop following.
+
+### Viewing Recent Logs
+
+For large log files, use `--tail` to see only the last N lines:
+
+```bash
+docker logs --tail 5 task-api
+```
+
+**Output:**
+```
+$ docker logs --tail 5 task-api
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     172.17.0.1:54321 - "GET / HTTP/1.1" 200 OK
+INFO:     172.17.0.1:54322 - "GET /health HTTP/1.1" 200 OK
+```
+
+---
+
+## Debugging a Failed Container
+
+Now let's create a container that fails on startup. Stop and remove the current container:
+
+```bash
+docker stop task-api
+docker rm task-api
+```
+
+**Output:**
+```
+$ docker stop task-api
+task-api
+
+$ docker rm task-api
+task-api
+```
+
+Create a Python script that simulates a startup failure:
+
+**File: broken_main.py**
+```python
+import os
+import sys
+
+print("Task API starting...")
+print("Checking for required configuration...")
+
+# Simulate missing required environment variable
+api_key = os.environ.get("API_KEY")
+if not api_key:
+    print("ERROR: API_KEY environment variable is required but not set")
+    sys.exit(1)
+
+print(f"API_KEY configured: {api_key[:4]}****")
+print("Starting server...")
+```
+
+Create a Dockerfile for this broken app:
 
 **File: Dockerfile.broken**
 ```dockerfile
 FROM python:3.12-slim
-
 WORKDIR /app
-
-COPY broken_app.py .
-
-CMD ["python", "broken_app.py"]
+COPY broken_main.py .
+CMD ["python", "broken_main.py"]
 ```
 
-Build the image:
+Build and run it:
 
 ```bash
-docker build -f Dockerfile.broken -t broken-app:v1 .
+docker build -f Dockerfile.broken -t task-api-broken:v1 .
+docker run -d --name broken-api task-api-broken:v1
 ```
 
 **Output:**
 ```
-$ docker build -f Dockerfile.broken -t broken-app:v1 .
-[+] Building 2.3s (7/7) FINISHED
- => [internal] load build context
- => => transferring context: 51B
- => [1/4] FROM python:3.12-slim:latest
- => => pull from library/python
- => => STATUS Downloaded newer image for python:3.12-slim:latest
- => [2/4] WORKDIR /app
- => [3/4] COPY broken_app.py .
- => [4/4] RUN echo "Image built successfully"
- => => RUN echo "Image built successfully"
- => => # Image built successfully
- [+] FINISHED Successfully built successfully
+$ docker build -f Dockerfile.broken -t task-api-broken:v1 .
+[+] Building 1.2s (7/7) FINISHED
+Successfully tagged task-api-broken:v1
+
+$ docker run -d --name broken-api task-api-broken:v1
+b1c2d3e4f5g6h7i8j9k0l1m2n3o4p5q6r7s8t9u0
 ```
 
-Now run the container:
+Check if it's running:
 
 ```bash
-docker run broken-app:v1
+docker ps
 ```
 
 **Output:**
 ```
-Application starting...
-Attempting to open configuration file...
-ERROR: Configuration file not found at /etc/app/config.json
+$ docker ps
+CONTAINER ID   IMAGE   COMMAND   STATUS   PORTS   NAMES
 ```
 
-The container exited immediately. To see what happened after it died, use `docker logs` with the container ID. First, run the container again and keep it running so you can query it:
+Empty! The container isn't running. Check all containers, including stopped ones:
 
 ```bash
-docker run -d --name broken-instance broken-app:v1
-sleep 2
-docker logs broken-instance
+docker ps -a
 ```
 
 **Output:**
 ```
-$ docker run -d --name broken-instance broken-app:v1
-a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
-
-$ sleep 2
-
-$ docker logs broken-instance
-Application starting...
-Attempting to open configuration file...
-ERROR: Configuration file not found at /etc/app/config.json
+$ docker ps -a
+CONTAINER ID   IMAGE                 COMMAND                  STATUS                     NAMES
+b1c2d3e4f5g6   task-api-broken:v1    "python broken_main..."  Exited (1) 5 seconds ago   broken-api
 ```
 
-**Key insight:** The logs show exactly what the application printed. This is why print statements or structured logging matters in containerized applications. If your application fails silently (no output), the logs will be empty and you'll have no clues about what went wrong.
+Status shows "Exited (1)" - the container crashed with exit code 1. Now use `docker logs` to find out why:
 
-Always ensure your applications log errors to stdout or stderr, not to files that don't persist after container death.
+```bash
+docker logs broken-api
+```
+
+**Output:**
+```
+$ docker logs broken-api
+Task API starting...
+Checking for required configuration...
+ERROR: API_KEY environment variable is required but not set
+```
+
+The logs tell you exactly what went wrong: the API_KEY environment variable is missing.
+
+### Fixing the Broken Container
+
+Now that you know the problem, run it correctly with the environment variable:
+
+```bash
+docker rm broken-api
+docker run -d --name broken-api -e API_KEY=sk-test-12345 task-api-broken:v1
+docker logs broken-api
+```
+
+**Output:**
+```
+$ docker rm broken-api
+broken-api
+
+$ docker run -d --name broken-api -e API_KEY=sk-test-12345 task-api-broken:v1
+c2d3e4f5g6h7i8j9k0l1m2n3o4p5q6r7s8t9u0v1
+
+$ docker logs broken-api
+Task API starting...
+Checking for required configuration...
+API_KEY configured: sk-t****
+Starting server...
+```
+
+The container now starts successfully because the required environment variable is set.
 
 ---
 
-## Executing Commands in Running Containers
+## Executing Commands Inside Containers
 
-Logs reveal what happened, but sometimes you need to inspect the running system state. The `docker exec` command lets you run commands inside a running container, like SSH-ing into a machine.
+Logs show what happened, but sometimes you need to inspect the container's current state. `docker exec` lets you run commands inside a running container.
 
-Create a working application first:
-
-**File: app_with_debug.py**
-```python
-import os
-import time
-
-print("Application starting...")
-print(f"Home directory: {os.path.expanduser('~')}")
-print(f"Current working directory: {os.getcwd()}")
-print(f"Python version: {os.sys.version}")
-print("Server ready. Listening indefinitely...")
-
-while True:
-    time.sleep(1)
-```
-
-Create a Dockerfile:
-
-**File: Dockerfile.debug**
-```dockerfile
-FROM python:3.12-slim
-
-WORKDIR /app
-
-COPY app_with_debug.py .
-
-CMD ["python", "app_with_debug.py"]
-```
-
-Build and run:
+First, restart your working FastAPI container:
 
 ```bash
-docker build -f Dockerfile.debug -t debug-app:v1 .
-docker run -d --name debug-instance debug-app:v1
-docker logs debug-instance
+docker rm -f broken-api
+docker run -d -p 8000:8000 --name task-api task-api:v1
 ```
 
 **Output:**
 ```
-$ docker run -d --name debug-instance debug-app:v1
-c7d8e9f0g1h2i3j4k5l6m7n8o9p0q1r2
+$ docker rm -f broken-api
+broken-api
 
-$ docker logs debug-instance
-Application starting...
-Home directory: /root
-Current working directory: /app
-Python version: 3.12.7 (main, Oct 1 2024, 00:00:00)
-[GCC 12.2.0]
-Server ready. Listening indefinitely...
+$ docker run -d -p 8000:8000 --name task-api task-api:v1
+d3e4f5g6h7i8j9k0l1m2n3o4p5q6r7s8t9u0v1w2
 ```
 
-Now use `docker exec` to run commands inside the running container:
+Now execute commands inside the running container:
 
 ```bash
-docker exec debug-instance pwd
+docker exec task-api pwd
 ```
 
 **Output:**
 ```
+$ docker exec task-api pwd
 /app
 ```
+
+The container's working directory is `/app`, as set by WORKDIR in the Dockerfile.
 
 List files in the container:
 
 ```bash
-docker exec debug-instance ls -la
+docker exec task-api ls -la
 ```
 
 **Output:**
 ```
-total 12
-drwxr-xr-x 1 root root 4096 Dec 22 10:15 .
-drwxr-xr-x 1 root root 4096 Dec 22 10:15 ..
--rw-r--r-- 1 root root  285 Dec 22 10:15 app_with_debug.py
+$ docker exec task-api ls -la
+total 16
+drwxr-xr-x 1 root root 4096 Dec 22 10:30 .
+drwxr-xr-x 1 root root 4096 Dec 22 10:30 ..
+-rw-r--r-- 1 root root  237 Dec 22 10:30 main.py
+-rw-r--r-- 1 root root   42 Dec 22 10:30 requirements.txt
 ```
 
-Check what user is running the application:
+Check what user is running the process:
 
 ```bash
-docker exec debug-instance whoami
+docker exec task-api whoami
 ```
 
 **Output:**
 ```
+$ docker exec task-api whoami
 root
 ```
 
-Launch an interactive shell to explore the container:
+### Interactive Shell Access
+
+For deeper debugging, launch an interactive shell inside the container:
 
 ```bash
-docker exec -it debug-instance /bin/bash
+docker exec -it task-api sh
 ```
 
 **Output:**
 ```
-root@c7d8e9f0g1h2:/app#
+$ docker exec -it task-api sh
+#
 ```
 
-From here you can navigate, inspect files, and run commands. Type `exit` to return to your host:
+The `-it` flags mean "interactive" and "allocate a TTY" (terminal). You're now inside the container. Try some commands:
 
 ```bash
-root@c7d8e9f0g1h2:/app# exit
-exit
+# pwd
+/app
+# cat main.py
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "Hello from Docker!"}
+
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
+# exit
 ```
 
-**Key insight:** `docker exec` is powerful but expensive. It's a sign something is wrong if you need to debug interactively inside production containers. The fact that you CAN inspect a running container is valuable for learning, but production debugging should rely on logs, metrics, and distributed tracing, not interactive container inspection.
+**Output:**
+```
+# pwd
+/app
+# cat main.py
+from fastapi import FastAPI
+...
+# exit
+$
+```
+
+The `exit` command returns you to your host machine.
+
+### Testing API Endpoints from Inside the Container
+
+You can even test your API from inside the container:
+
+```bash
+docker exec task-api curl -s http://localhost:8000/health
+```
+
+**Output:**
+```
+$ docker exec task-api curl -s http://localhost:8000/health
+{"status":"healthy"}
+```
+
+This confirms the API is responding on port 8000 inside the container. If this works but external requests fail, you have a port mapping problem, not an application problem.
 
 ---
 
 ## Inspecting Container Configuration
 
-The `docker inspect` command gives you the complete configuration and state of a container in JSON format. It shows environment variables, volume mounts, network settings, restart policies, and the exact command that started the container.
+The `docker inspect` command shows complete configuration and runtime state in JSON format. This is essential for verifying that a container was started with the correct settings.
 
-Inspect the container you just created:
+Inspect your running container:
 
 ```bash
-docker inspect debug-instance | head -50
+docker inspect task-api
+```
+
+This outputs hundreds of lines. Let's extract specific information.
+
+### Check Container Status
+
+```bash
+docker inspect --format='{{.State.Status}}' task-api
 ```
 
 **Output:**
-```json
-[
-  {
-    "Id": "c7d8e9f0g1h2i3j4k5l6m7n8o9p0q1r2...",
-    "Created": "2024-12-22T10:15:00.000000000Z",
-    "Path": "/usr/local/bin/python",
-    "Args": ["app_with_debug.py"],
-    "State": {
-      "Status": "running",
-      "Pid": 12345,
-      "ExitCode": 0,
-      "StartedAt": "2024-12-22T10:15:00.000000000Z",
-      "FinishedAt": "0001-01-01T00:00:00Z"
-    },
-    "Image": "sha256:abc123def456...",
-    "Name": "/debug-instance",
-    "RestartCount": 0,
-    "Driver": "overlay2",
-    "Config": {
-      "Hostname": "c7d8e9f0g1h2",
-      "Image": "debug-app:v1",
-      "Cmd": ["python", "app_with_debug.py"],
-      "WorkingDir": "/app",
-      "Env": ["PATH=/usr/local/bin:/usr/bin:/bin", "PYTHONUNBUFFERED=1"]
-    }
-  }
-]
+```
+$ docker inspect --format='{{.State.Status}}' task-api
+running
 ```
 
-The most useful fields are:
-
-- **State.Status**: Is the container running, exited, or stopped?
-- **State.ExitCode**: If exited, what exit code did the process return? (0 = success, non-zero = failure)
-- **Args**: What arguments were passed to the entrypoint?
-- **Config.Cmd**: What command does the container run?
-- **Config.Env**: What environment variables are set?
-- **Config.ExposedPorts**: What ports does the container listen on?
-
-To extract just the command that's running:
+### Check the Running Command
 
 ```bash
-docker inspect debug-instance --format='{{json .Config.Cmd}}'
+docker inspect --format='{{json .Config.Cmd}}' task-api
 ```
 
 **Output:**
-```json
-["python","app_with_debug.py"]
+```
+$ docker inspect --format='{{json .Config.Cmd}}' task-api
+["uvicorn","main:app","--host","0.0.0.0","--port","8000"]
 ```
 
-Extract environment variables:
+This confirms exactly what command the container is running.
+
+### Check Environment Variables
 
 ```bash
-docker inspect debug-instance --format='{{json .Config.Env}}'
+docker inspect --format='{{json .Config.Env}}' task-api
 ```
 
 **Output:**
-```json
-["PATH=/usr/local/bin:/usr/bin:/bin","PYTHONUNBUFFERED=1"]
+```
+$ docker inspect --format='{{json .Config.Env}}' task-api
+["PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin","LANG=C.UTF-8","GPG_KEY=...","PYTHON_VERSION=3.12.7","PYTHON_PIP_VERSION=24.0"]
 ```
 
-**Key insight:** Use `docker inspect` when you need to verify that a container was started with the configuration you expected. Common questions: "Is PORT 8000 really exposed?" "What environment variables are set?" "What user is running this?" All answered by inspect.
+### Check Port Mappings
+
+```bash
+docker inspect --format='{{json .NetworkSettings.Ports}}' task-api
+```
+
+**Output:**
+```
+$ docker inspect --format='{{json .NetworkSettings.Ports}}' task-api
+{"8000/tcp":[{"HostIp":"0.0.0.0","HostPort":"8000"}]}
+```
+
+This shows port 8000 in the container is mapped to port 8000 on the host.
+
+### Practical Use: Verify Exit Codes
+
+For crashed containers, inspect shows why they stopped:
+
+```bash
+docker inspect --format='{{.State.ExitCode}}' broken-api
+```
+
+**Output:**
+```
+$ docker inspect --format='{{.State.ExitCode}}' broken-api
+1
+```
+
+Exit code 1 means the application exited with an error. Exit code 0 means success. Exit code 137 means the kernel killed the process (usually out of memory).
 
 ---
 
-## Port Conflicts and Binding Errors
+## Resolving Port Conflicts
 
-A common container failure pattern: You run a service that should listen on port 8000, but something else is already using that port. The container might start, but it can't bind to the expected port and crashes or silently fails to listen.
+A common debugging scenario: you try to start a container and it fails because the port is already in use.
 
-Create an application that listens on a specific port:
-
-**File: server.py**
-```python
-import socket
-import sys
-
-PORT = 8000
-
-try:
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    sock.bind(('0.0.0.0', PORT))
-    sock.listen(1)
-    print(f"Server listening on port {PORT}")
-    sock.accept()
-except OSError as e:
-    print(f"ERROR: Could not bind to port {PORT}: {e}")
-    sys.exit(1)
-```
-
-Dockerfile:
-
-```dockerfile
-FROM python:3.12-slim
-WORKDIR /app
-COPY server.py .
-CMD ["python", "server.py"]
-```
-
-Build it:
+Try to start another container on port 8000 while `task-api` is running:
 
 ```bash
-docker build -f Dockerfile -t port-server:v1 .
+docker run -d -p 8000:8000 --name task-api-2 task-api:v1
 ```
 
 **Output:**
 ```
-$ docker build -f Dockerfile -t port-server:v1 .
-[+] Building 1.2s (6/6) FINISHED
-[+] FINISHED
+$ docker run -d -p 8000:8000 --name task-api-2 task-api:v1
+docker: Error response from daemon: driver failed programming external connectivity
+on endpoint task-api-2: Bind for 0.0.0.0:8000 failed: port is already allocated.
 ```
 
-Run it with port mapping:
+The error is clear: port 8000 is already allocated (by your first container).
+
+### Solution 1: Use a Different Host Port
 
 ```bash
-docker run -d -p 8000:8000 --name server1 port-server:v1
-docker logs server1
+docker run -d -p 8001:8000 --name task-api-2 task-api:v1
 ```
 
 **Output:**
 ```
-$ docker run -d -p 8000:8000 --name server1 port-server:v1
-a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
-
-$ docker logs server1
-Server listening on port 8000
+$ docker run -d -p 8001:8000 --name task-api-2 task-api:v1
+e4f5g6h7i8j9k0l1m2n3o4p5q6r7s8t9u0v1w2x3
 ```
 
-Now try to run a second container on the same host port:
+Now you have two containers:
+- `task-api` on port 8000
+- `task-api-2` on port 8001
+
+Verify both work:
 
 ```bash
-docker run -d -p 8000:8000 --name server2 port-server:v1
+curl http://localhost:8000/health
+curl http://localhost:8001/health
 ```
 
 **Output:**
 ```
-docker: Error response from daemon: driver failed programming endpoint
-server2 on bridge network: Bind for 0.0.0.0:8000 failed: port is already allocated
+$ curl http://localhost:8000/health
+{"status":"healthy"}
+
+$ curl http://localhost:8001/health
+{"status":"healthy"}
 ```
 
-The host port 8000 can only be used by one container. You have options:
+### Solution 2: Find and Stop the Conflicting Container
 
-**Option 1: Use a different host port**
+If you need port 8000 specifically, find what's using it:
 
 ```bash
-docker run -d -p 8001:8000 --name server2 port-server:v1
-docker logs server2
+docker ps --format "table {{.Names}}\t{{.Ports}}"
 ```
 
 **Output:**
 ```
-$ docker run -d -p 8001:8000 --name server2 port-server:v1
-b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7
-
-$ docker logs server2
-Server listening on port 8000
+$ docker ps --format "table {{.Names}}\t{{.Ports}}"
+NAMES        PORTS
+task-api-2   0.0.0.0:8001->8000/tcp
+task-api     0.0.0.0:8000->8000/tcp
 ```
 
-Notice the container still listens on 8000 (the container port), but the host maps port 8001 to the container's 8000. If a client connects to your machine on port 8001, traffic routes to the container's 8000.
-
-**Option 2: Use a random host port**
+Stop the container using your desired port:
 
 ```bash
-docker run -d -p 8000 --name server3 port-server:v1
-docker port server3
+docker stop task-api
+docker rm task-api
 ```
 
-**Output:**
-```
-$ docker port server3
-8000/tcp -> 0.0.0.0:32768
-```
+Now you can start a new container on port 8000.
 
-Docker assigns a random port (32768 in this case). Check which port was assigned:
+Clean up for the next section:
 
 ```bash
-docker run -d -p 8000 --name server4 port-server:v1
-docker port server4
+docker stop task-api-2
+docker rm task-api-2
 ```
-
-**Output:**
-```
-$ docker port server4
-8000/tcp -> 0.0.0.0:32769
-```
-
-**Key insight:** In local development, port conflicts are easy to debug. In production (especially Kubernetes), port binding is internal to the cluster, so this specific error is rare. But understanding port mapping helps you reason about how containers expose services.
-
-Clean up:
-
-```bash
-docker rm -f server1 server2 server3 server4
-```
-
----
-
-## Permission Errors in Containers
-
-By default, Docker runs containers as the root user. This is convenient for development but dangerous in production. When you switch to a non-root user (a security best practice), you encounter permission errors if that user can't write to necessary directories.
-
-Create an application that writes to a log file:
-
-**File: logging_app.py**
-```python
-import os
-import sys
-
-LOG_DIR = "/var/log/app"
-LOG_FILE = f"{LOG_DIR}/application.log"
-
-try:
-    with open(LOG_FILE, "a") as f:
-        f.write("Application started\n")
-    print(f"Logged successfully to {LOG_FILE}")
-except PermissionError as e:
-    print(f"ERROR: Permission denied writing to {LOG_FILE}")
-    print(f"Current user: {os.getuid()}")
-    print(f"Current directory: {os.getcwd()}")
-    sys.exit(1)
-```
-
-Create a Dockerfile that runs as a non-root user:
-
-**File: Dockerfile.nonroot**
-```dockerfile
-FROM python:3.12-slim
-
-# Create the log directory and a non-root user
-RUN mkdir -p /var/log/app && \
-    useradd -m -s /bin/bash appuser
-
-# Copy the application
-WORKDIR /app
-COPY logging_app.py .
-
-# Switch to non-root user
-USER appuser
-
-CMD ["python", "logging_app.py"]
-```
-
-Build and run:
-
-```bash
-docker build -f Dockerfile.nonroot -t logging-app:v1 .
-docker run --name logger logging-app:v1
-```
-
-**Output:**
-```
-$ docker run --name logger logging-app:v1
-ERROR: Permission denied writing to /var/log/app/application.log
-Current user: 1000
-Current directory: /app
-```
-
-The user ID 1000 (the `appuser`) doesn't have write permissions to `/var/log/app`, which is owned by root. To fix this, the directory needs to be writable by the user:
-
-**File: Dockerfile.fixed**
-```dockerfile
-FROM python:3.12-slim
-
-# Create the log directory and a non-root user
-RUN mkdir -p /var/log/app && \
-    useradd -m -s /bin/bash appuser && \
-    chown -R appuser:appuser /var/log/app
-
-# Copy the application
-WORKDIR /app
-COPY logging_app.py .
-
-# Switch to non-root user
-USER appuser
-
-CMD ["python", "logging_app.py"]
-```
-
-Rebuild and run:
-
-```bash
-docker build -f Dockerfile.fixed -t logging-app:v2 .
-docker run --name logger2 logging-app:v2
-```
-
-**Output:**
-```
-$ docker run --name logger2 logging-app:v2
-Logged successfully to /var/log/app/application.log
-```
-
-**Key insight:** When you see "Permission denied" errors in containers, check:
-
-1. What user is the container running as? (`docker exec CONTAINER whoami`)
-2. What are the directory permissions? (`docker exec CONTAINER ls -la /path/to/dir`)
-3. Do you need to `chown` directories to the non-root user in the Dockerfile?
-
-This is a security + correctness tradeoff: Running as non-root is safer, but requires careful permission planning.
-
----
-
-## Memory Limits and Out-of-Memory Kills
-
-AI workloads are memory-intensive. Loading a large language model might require 8GB. Your development machine has 64GB, so it runs fine. But when deployed to a cloud instance with 4GB total, the container gets killed.
-
-Docker enforces memory limits with the `--memory` flag. When a container exceeds its limit, the kernel terminates the process with an "Out of Memory" (OOM) kill.
-
-Create an application that allocates memory:
-
-**File: memory_hog.py**
-```python
-import sys
-
-print("Starting memory allocation...")
-
-try:
-    # Allocate 100MB chunks until we hit the limit
-    chunks = []
-    for i in range(100):
-        chunk = bytearray(1024 * 1024)  # 1MB
-        chunks.append(chunk)
-        print(f"Allocated {i+1}MB")
-        sys.stdout.flush()
-except MemoryError:
-    print("MemoryError: Out of memory!")
-    sys.exit(1)
-```
-
-Dockerfile:
-
-```dockerfile
-FROM python:3.12-slim
-WORKDIR /app
-COPY memory_hog.py .
-CMD ["python", "memory_hog.py"]
-```
-
-Build it:
-
-```bash
-docker build -f Dockerfile -t memory-app:v1 .
-```
-
-**Output:**
-```
-$ docker build -f Dockerfile -t memory-app:v1 .
-[+] Building 0.9s (6/6) FINISHED
-[+] FINISHED
-```
-
-Run with a 10MB memory limit:
-
-```bash
-docker run --memory=10m --name memory-test memory-app:v1
-echo "Exit code: $?"
-```
-
-**Output:**
-```
-Starting memory allocation...
-Allocated 1MB
-Allocated 2MB
-Allocated 3MB
-Allocated 4MB
-Allocated 5MB
-Allocated 6MB
-Allocated 7MB
-Allocated 8MB
-Allocated 9MB
-Exit code: 137
-```
-
-Exit code 137 means the kernel killed the process (SIGKILL, signal 9). The container was OOM-killed.
-
-To verify this is an OOM kill, inspect the container:
-
-```bash
-docker inspect memory-test --format='{{json .State}}'
-```
-
-**Output:**
-```json
-{
-  "Status": "exited",
-  "Pid": 0,
-  "ExitCode": 137,
-  "OOMKilled": true,
-  "FinishedAt": "2024-12-22T10:20:15.000000000Z"
-}
-```
-
-The `OOMKilled: true` field confirms the kernel terminated the process due to memory pressure.
-
-**How to fix OOM kills:**
-
-1. **Increase the memory limit** if you know the process needs more:
-
-```bash
-docker run --memory=256m --name memory-test2 memory-app:v1
-echo "Exit code: $?"
-```
-
-**Output:**
-```
-Starting memory allocation...
-Allocated 1MB
-...
-Allocated 100MB
-[Container keeps running, has more memory available]
-```
-
-2. **Set memory reservations** to request guaranteed memory:
-
-```bash
-docker run --memory=512m --memory-reservation=256m --name memory-reserved memory-app:v1
-```
-
-The reservation tells Docker to ensure this container has at least 256MB available.
-
-3. **Monitor memory usage** before deploying:
-
-```bash
-docker run --memory=512m --name memory-monitor memory-app:v1 &
-docker stats memory-monitor
-```
-
-**Output:**
-```
-CONTAINER ID   NAME              CPU %   MEM USAGE / LIMIT
-a1b2c3d4e5f6   memory-monitor    0.50%   150MiB / 512MiB
-```
-
-**Key insight:** OOM kills are silent failures in production. The container just dies with exit code 137. Always set appropriate memory limits during testing to catch OOM issues before production. For AI workloads, this means testing on resource-constrained environments that match your production deployment targets.
 
 ---
 
 ## Restart Policies for Resilience
 
-Containers fail. Networks are unreliable. Services crash. A resilient system automatically restarts failed containers rather than leaving them dead.
+Containers can crash due to bugs, resource exhaustion, or temporary failures. Instead of manually restarting them, configure Docker to restart them automatically.
 
-Docker restart policies handle this. The most common production policy is `--restart unless-stopped`, which automatically restarts a container every time it exits, unless you explicitly stop it.
+### The `--restart` Flag
 
-Create a flaky application that fails sometimes:
+Docker supports several restart policies:
 
-**File: flaky_app.py**
+| Policy | Behavior |
+|--------|----------|
+| `no` | Never restart (default) |
+| `always` | Always restart, even after successful exit |
+| `unless-stopped` | Restart unless manually stopped |
+| `on-failure:N` | Restart only on non-zero exit, up to N times |
+
+### Testing Restart Policies
+
+Create a container that crashes sometimes:
+
+**File: flaky_main.py**
 ```python
 import random
 import sys
+import time
 
-attempt = 0
+print("Task API starting...")
+time.sleep(1)
 
+if random.random() < 0.3:
+    print("ERROR: Random failure occurred!")
+    sys.exit(1)
+
+print("Task API started successfully!")
 while True:
-    attempt += 1
-    print(f"Attempt {attempt}: Running...")
-
-    # 70% chance to succeed, 30% chance to crash
-    if random.random() > 0.7:
-        print("CRASH! Exiting with error")
-        sys.exit(1)
-    else:
-        print("Success!")
-        sys.exit(0)
-```
-
-Dockerfile:
-
-```dockerfile
-FROM python:3.12-slim
-WORKDIR /app
-COPY flaky_app.py .
-CMD ["python", "flaky_app.py"]
+    time.sleep(10)
 ```
 
 Build it:
 
 ```bash
-docker build -f Dockerfile -t flaky-app:v1 .
+docker build -f Dockerfile.broken -t flaky-api:v1 .
 ```
 
-Run with no restart policy:
+Wait, that Dockerfile won't work for this script. Create a new one:
+
+**File: Dockerfile.flaky**
+```dockerfile
+FROM python:3.12-slim
+WORKDIR /app
+COPY flaky_main.py .
+CMD ["python", "-u", "flaky_main.py"]
+```
+
+The `-u` flag means unbuffered output so logs appear immediately.
 
 ```bash
-docker run --name flaky-no-restart flaky-app:v1
-echo "Exit code: $?"
+docker build -f Dockerfile.flaky -t flaky-api:v1 .
 ```
 
 **Output:**
 ```
-Attempt 1: Running...
-CRASH! Exiting with error
-Exit code: 1
+$ docker build -f Dockerfile.flaky -t flaky-api:v1 .
+[+] Building 0.8s (7/7) FINISHED
+Successfully tagged flaky-api:v1
 ```
 
-The container exits and stays dead. If this were a critical service, users would experience downtime.
+Run without restart policy:
+
+```bash
+docker run -d --name flaky-no-restart flaky-api:v1
+sleep 3
+docker ps -a --filter name=flaky
+```
+
+**Output:**
+```
+$ docker ps -a --filter name=flaky
+CONTAINER ID   IMAGE          STATUS                     NAMES
+f5g6h7i8j9k0   flaky-api:v1   Exited (1) 2 seconds ago   flaky-no-restart
+```
+
+If the container crashed (30% chance), it stays dead. Remove it:
+
+```bash
+docker rm flaky-no-restart
+```
 
 Now run with automatic restart:
 
 ```bash
-docker run -d --restart=always --name flaky-always flaky-app:v1
-sleep 1
-docker logs flaky-always
+docker run -d --restart=unless-stopped --name flaky-restart flaky-api:v1
+```
+
+Watch it recover from failures:
+
+```bash
+docker logs -f flaky-restart
+```
+
+**Output (if it fails and restarts):**
+```
+$ docker logs -f flaky-restart
+Task API starting...
+ERROR: Random failure occurred!
+Task API starting...
+Task API started successfully!
+```
+
+The container automatically restarted after the failure. Check restart count:
+
+```bash
+docker inspect --format='{{.RestartCount}}' flaky-restart
 ```
 
 **Output:**
 ```
-$ docker logs flaky-always
-Attempt 1: Running...
-CRASH! Exiting with error
-Attempt 2: Running...
-Success!
+$ docker inspect --format='{{.RestartCount}}' flaky-restart
+1
 ```
 
-With `--restart=always`, Docker automatically restarts the container after it exits. Eventually it succeeds.
+### Production Recommendation
 
-The most common restart policies are:
+For production services, use `--restart=unless-stopped`. This ensures:
+- Containers restart after crashes
+- Containers restart after host reboots
+- You can still manually stop them with `docker stop`
 
-- **no**: Don't automatically restart (default)
-- **always**: Always restart, even if the exit code is 0 (not recommended—wastes resources on successful exits)
-- **unless-stopped**: Restart unless you explicitly run `docker stop` (production standard)
-- **on-failure:max-retries**: Restart only if exit code is non-zero, up to a max number of times
-
-For production, use `unless-stopped`:
+Clean up:
 
 ```bash
-docker run -d --restart=unless-stopped --name flaky-unless-stopped flaky-app:v1
-docker logs flaky-unless-stopped
+docker stop flaky-restart
+docker rm flaky-restart
 ```
-
-**Output:**
-```
-$ docker logs flaky-unless-stopped
-Attempt 1: Running...
-Success!
-```
-
-To stop a container with `unless-stopped` policy, explicitly stop it:
-
-```bash
-docker stop flaky-unless-stopped
-docker logs flaky-unless-stopped
-```
-
-**Output:**
-```
-Attempt 1: Running...
-Success!
-```
-
-The logs don't change because the container doesn't restart (you explicitly stopped it).
-
-**Key insight:** Use `--restart=unless-stopped` for production services. It ensures containers come back to life if they crash, while respecting explicit stop commands during maintenance.
-
----
-
-## CPU Limits for Shared Environments
-
-Memory limits prevent processes from consuming infinite RAM. CPU limits prevent runaway compute from monopolizing the host system.
-
-The `--cpus` flag limits how much of the CPU a container can use:
-
-```bash
-docker run --cpus 1 --name cpu-limited ...
-```
-
-This allows the container to use up to 1 full CPU core (100%). On a machine with 4 cores, the container can use up to 25% of total CPU.
-
-Create a CPU-intensive application:
-
-**File: cpu_intensive.py**
-```python
-import os
-import multiprocessing
-
-def cpu_work():
-    count = 0
-    while True:
-        count += 1
-
-if __name__ == "__main__":
-    cores = os.cpu_count()
-    print(f"System reports {cores} CPU cores")
-    print(f"Starting {cores} worker processes...")
-
-    processes = []
-    for i in range(cores):
-        p = multiprocessing.Process(target=cpu_work)
-        p.start()
-        processes.append(p)
-
-    for p in processes:
-        p.join()
-```
-
-Dockerfile:
-
-```dockerfile
-FROM python:3.12-slim
-WORKDIR /app
-COPY cpu_intensive.py .
-CMD ["python", "cpu_intensive.py"]
-```
-
-Build:
-
-```bash
-docker build -f Dockerfile -t cpu-app:v1 .
-```
-
-Run with a 1-core CPU limit:
-
-```bash
-docker run --cpus=1 -d --name cpu-limited cpu-app:v1
-docker stats cpu-limited
-```
-
-**Output:**
-```
-CONTAINER ID   NAME           CPU %   MEM USAGE / LIMIT
-a1b2c3d4e5f6   cpu-limited    25.0%   8MiB / 512MiB
-```
-
-The CPU usage is capped at around 25% (1 core on a 4-core system). Without the limit, the process would consume all 4 cores.
-
-**Key insight:** For shared environments (especially Kubernetes clusters), set both `--memory` and `--cpus` limits. This prevents one workload from starving others. For AI workloads, be generous with CPU allocation for inference (models often need multiple cores), but strict with memory to prevent OOM kills.
 
 ---
 
 ## Try With AI
 
-In real deployments, debugging containers involves combining these tools—logs, inspect, exec, and understanding restart policies. You'll encounter containers that fail for multiple reasons simultaneously: permission issues causing crashes that trigger restarts, which then cause OOM kills because memory wasn't configured, which generates logs you need to interpret.
+Now that you understand container debugging fundamentals, practice these skills with increasingly complex scenarios.
 
-**Part 1: Create a Realistic Broken Service**
+**Prompt 1: Diagnose a Startup Failure**
 
-Ask AI to help you build a more complex application that demonstrates multiple failure modes:
+Create a FastAPI application that requires a DATABASE_URL environment variable. Run it without the variable and use the debugging tools you learned to identify the problem:
 
 ```
-Create a FastAPI service that:
-1. Listens on port 8000
-2. Loads a large model from a file at /models/model.bin
-3. Uses an environment variable LOG_LEVEL to control logging
-4. Tries to write logs to /var/log/app/service.log
+Create a FastAPI app that:
+1. Checks for DATABASE_URL environment variable on startup
+2. Prints an error and exits with code 1 if missing
+3. Prints "Connected to: [masked URL]" if present
 
-Include intentional bugs:
-- The model file doesn't exist initially
-- The log directory isn't writable by the non-root user
-- The model uses ~200MB of memory
-
-Show me the complete main.py, requirements.txt, and Dockerfile
-for the broken service, plus a fixed version.
+Help me create the Dockerfile and show me how to:
+- See the error when DATABASE_URL is missing
+- Verify the container exit code
+- Run it successfully with the environment variable
 ```
 
-**Part 2: Debug the Broken Service**
+**What you're learning:** This reinforces the pattern of using `docker logs` and `docker inspect --format='{{.State.ExitCode}}'` to diagnose startup failures, and `-e` to provide environment variables.
 
-Once AI generates the broken service, run it:
+**Prompt 2: Debug a Port Mapping Issue**
 
-```bash
-docker build -f Dockerfile.broken -t broken-service:v1 .
-docker run -d --memory=512m -p 8000:8000 --name broken broken-service:v1
+Sometimes your application seems to start but doesn't respond to requests. Practice debugging this:
+
+```
+My FastAPI container starts successfully (docker logs shows "Uvicorn running")
+but curl http://localhost:8000/ returns "Connection refused".
+
+Help me debug this using:
+1. docker inspect to check port mappings
+2. docker exec to test the app from inside the container
+3. Common causes of this problem
 ```
 
-Then work through these debugging steps:
+**What you're learning:** This teaches you to systematically isolate whether the problem is the application, the port mapping, or network configuration using `docker exec` to test from inside the container.
 
-- Check `docker logs broken` - What failed?
-- Use `docker inspect broken` to see what configuration was applied
-- Ask yourself: Is it a port issue? A missing file? A permission error?
-- Compare against `docker logs` of the fixed version
+**Prompt 3: Configure a Resilient Service**
 
-**Part 3: Refine Your Mental Model**
+Production services need to handle crashes gracefully:
 
-As you debug, ask yourself:
+```
+I have a FastAPI service that occasionally crashes due to memory pressure.
+Help me configure it with:
+1. --restart=unless-stopped for automatic recovery
+2. Memory limits to prevent runaway usage
+3. How to monitor restart count
 
-- What would happen if I increase the memory limit?
-- What would the logs show if the permission was correct but the model file was missing?
-- If I add `--restart=unless-stopped`, would the container eventually succeed?
-- How would I know if this was an OOM kill vs a permission error?
+Show me the docker run command and how to verify the configuration.
+```
 
-Your goal: Build intuition for translating container errors into specific causes and solutions. The tools (logs, inspect, exec) are easy. The skill is diagnosing correctly.
+**What you're learning:** This reinforces restart policies and introduces memory limits (`--memory`), which become critical when deploying AI services that can consume large amounts of RAM.
+
+**Safety note:** When debugging containers in production, use read-only commands (`docker logs`, `docker inspect`) before interactive commands (`docker exec`). Avoid running shells in production containers unless absolutely necessary, as it can affect running services.

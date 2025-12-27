@@ -1,57 +1,73 @@
 ---
 sidebar_position: 1
+title: "Docker Installation & Setup"
 chapter: 49
 lesson: 1
 duration_minutes: 30
-title: "Docker Installation & Setup"
-proficiency_level: B1
-teaching_stage: 1
-stage_name: "Manual Foundation"
-stage_description: "Manual installation builds mental model of Docker components"
-cognitive_load:
-  concepts_count: 7
-  scaffolding_level: "Heavy"
+
+# HIDDEN SKILLS METADATA
+skills:
+  - name: "Understanding Container Architecture"
+    proficiency_level: "B1"
+    category: "Conceptual"
+    bloom_level: "Understand"
+    digcomp_area: "3. Digital Content Creation"
+    measurable_at_this_level: "Student can explain why containers exist, how they differ from VMs, and describe the Docker architecture stack (Docker Desktop, Engine, containerd)"
+
+  - name: "Installing Development Tools"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "3.4 Programming"
+    measurable_at_this_level: "Student can install Docker Desktop on their operating system following official installation procedures"
+
+  - name: "Verifying Development Environment"
+    proficiency_level: "B1"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "5.3 Using digital tools to solve problems"
+    measurable_at_this_level: "Student can verify Docker installation using docker version command and run hello-world container to validate complete workflow"
+
+  - name: "Configuring Resources for AI Workloads"
+    proficiency_level: "B1"
+    category: "Applied"
+    bloom_level: "Apply"
+    digcomp_area: "1.2 Understanding digital concepts and terminology"
+    measurable_at_this_level: "Student can configure Docker Desktop resources (CPU, memory, disk) appropriately for AI/ML workloads"
+
 learning_objectives:
-  - id: LO1
-    description: "Explain why containers exist and how they differ from virtual machines"
+  - objective: "Explain why containers exist and how they differ from virtual machines"
+    proficiency_level: "B1"
     bloom_level: "Understand"
-  - id: LO2
-    description: "Install Docker Desktop on your operating system (macOS, Windows, or Linux)"
+    assessment_method: "Verbal explanation of container vs VM architecture with correct identification of kernel sharing as key differentiator"
+
+  - objective: "Install Docker Desktop on your operating system (macOS, Windows, or Linux)"
+    proficiency_level: "B1"
     bloom_level: "Apply"
-  - id: LO3
-    description: "Verify Docker Engine is running and accessible via the docker version command"
-    bloom_level: "Understand"
-  - id: LO4
-    description: "Run your first container with docker run hello-world to validate the complete workflow"
+    assessment_method: "Successful installation verified by docker version showing both Client and Server sections"
+
+  - objective: "Verify Docker Engine is running with docker version command"
+    proficiency_level: "B1"
     bloom_level: "Apply"
-  - id: LO5
-    description: "Configure Docker Desktop resources for AI workloads (memory, CPU, disk)"
+    assessment_method: "Command execution showing Client and Server components with version numbers"
+
+  - objective: "Run your first container with docker run hello-world to validate the complete workflow"
+    proficiency_level: "B1"
     bloom_level: "Apply"
-  - id: LO6
-    description: "Explain the relationship between Docker Desktop, Docker Engine, and containerd"
-    bloom_level: "Understand"
-  - id: LO7
-    description: "Navigate Docker Desktop GUI to view running containers and images"
-    bloom_level: "Remember"
-digcomp_mapping:
-  - objective_id: LO1
-    competency_area: "5. Problem Solving"
-    competency: "5.2 Identifying needs and technological responses"
-  - objective_id: LO2
-    competency_area: "3. Digital Content Creation"
-    competency: "3.4 Programming"
-  - objective_id: LO3
-    competency_area: "3. Digital Content Creation"
-    competency: "3.4 Programming"
-  - objective_id: LO4
-    competency_area: "5. Problem Solving"
-    competency: "5.3 Using digital tools to solve problems"
-  - objective_id: LO5
-    competency_area: "1. Information and Data Literacy"
-    competency: "1.2 Understanding digital concepts and terminology"
-  - objective_id: LO6
-    competency_area: "3. Digital Content Creation"
-    competency: "3.3 Managing digital content"
+    assessment_method: "Successful execution of hello-world container with expected output message"
+
+  - objective: "Configure Docker Desktop resources for AI workloads (memory, CPU, disk)"
+    proficiency_level: "B1"
+    bloom_level: "Apply"
+    assessment_method: "Docker Desktop Resources tab showing 4+ CPUs and 8+ GB RAM allocated"
+
+cognitive_load:
+  new_concepts: 7
+  assessment: "7 concepts (containers vs VMs, Docker Desktop, Docker Engine, containerd, images, containers, resource configuration) at upper limit for B1 tier (7-10 concepts) - appropriate given heavy scaffolding with step-by-step installation guides"
+
+differentiation:
+  extension_for_advanced: "Research Docker's OCI (Open Container Initiative) compatibility; explore how containerd works independently of Docker for Kubernetes deployments"
+  remedial_for_struggling: "Focus solely on Docker Desktop GUI; skip CLI verification until GUI concepts are solid; use the hello-world container as the primary success validation"
 ---
 
 # Docker Installation & Setup
@@ -508,6 +524,11 @@ docker run \
   your-agent-image
 ```
 
+**Expected output** (after container starts):
+```
+Container started with 4GB memory limit and 2 CPU cores
+```
+
 This reserves 4GB RAM and 2 CPUs for the container.
 
 ::::
@@ -575,6 +596,12 @@ newgrp docker
 docker run hello-world  # Try again
 ```
 
+**Expected output** (after fix):
+```
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+```
+
 ### Issue: "Cannot connect to Docker daemon" (All platforms)
 
 **Cause**: Docker Engine isn't running
@@ -630,43 +657,59 @@ For your FastAPI agent in future lessons, this same flow applies:
 
 ## Try With AI
 
-Now that Docker is installed and configured, you're ready to explore containers further. Before proceeding to the next lesson, verify your installation is stable:
+Now that Docker is installed and configured, explore container concepts further with your AI companion.
 
-**Verification 1: Check Docker is running**
+### Prompt 1: Understand the Architecture Deeply
 
-```bash
-docker version
+```
+I just installed Docker and learned about Docker Desktop, Docker Engine, and
+containerd. I understand they form a stack, but I'm not clear on when I'd
+interact with each layer. Can you explain:
+
+1. When would a developer interact directly with containerd vs Docker Engine?
+2. Why does Docker Desktop need a Linux VM on macOS/Windows?
+3. If containers share the host kernel, how are they actually isolated?
+
+Use concrete examples from deploying a Python FastAPI application.
 ```
 
-You should see both Client and Server sections.
+**What you're learning**: Understanding architectural layers helps you debug issues at the right level. When something breaks, you'll know whether it's a Docker Desktop issue, Engine configuration, or container runtime problem.
 
-**Verification 2: Confirm resource configuration**
+### Prompt 2: Compare with Your Mental Model
 
-- **macOS/Windows**: Open Docker Desktop, check Resources tab shows 4+ CPUs and 8+ GB RAM
-- **Linux**: You configured this at container runtime level
+```
+I've been thinking of Docker containers as "lightweight VMs." But I learned
+containers share the kernel while VMs don't. Help me refine my mental model:
 
-**Verification 3: Test container creation one more time**
+1. What can go wrong if two containers share the same kernel?
+2. Why are containers faster to start than VMs?
+3. For my AI agent that needs specific Python packages and environment
+   variables, what exactly gets "frozen" in a container vs what's dynamic?
 
-```bash
-docker run --rm alpine echo "Docker works!"
+Challenge my understanding if I have misconceptions.
 ```
 
-**Expected output**:
+**What you're learning**: Refining mental models through dialogue. Your AI partner identifies gaps in understanding and helps you build accurate intuitions about container technology.
+
+### Prompt 3: Plan for AI Workload Requirements
+
 ```
-Unable to find image 'alpine:latest' locally
-latest: Pulling from library/alpine
-c6a83fedfae6: Pull complete
-Digest: sha256:e1c082e3d3c45cccac829840a25941e679c25d438cc8412c2fa221cf1a824e6a
-Status: Downloaded newer image for alpine:latest
-Docker works!
+I configured Docker Desktop with 8GB RAM and 4 CPUs for AI workloads. But
+I'm not sure if that's enough or overkill. My AI agent uses:
+- FastAPI for the API layer
+- A small language model (maybe 2-3GB)
+- Some numpy/pandas processing
+
+Help me think through:
+1. How do I estimate memory needs for this workload?
+2. What happens if my container exceeds the memory limit?
+3. Should I set resource limits per container, or rely on Docker Desktop limits?
+
+Ask me clarifying questions about my specific use case if needed.
 ```
 
-If all three checks pass, you have a solid foundation. Your manual installation has built the mental model of images, containers, and the Docker architecture.
+**What you're learning**: Resource planning for production workloads. Understanding memory and CPU allocation prevents out-of-memory crashes and helps you size cloud infrastructure correctly.
 
-**Exploration prompts for your AI assistant:**
+### Safety Note
 
-> "Explain the difference between Docker Engine and containerd. When would I interact with each?"
-
-> "My Docker Desktop is using 8GB of memory. How do I check which containers are consuming the most resources?"
-
-> "I ran docker run hello-world but the container exited immediately. Is that expected? How do I keep a container running?"
+Docker provides process isolation, not security isolation. Containers share the host kernel, so a kernel vulnerability could affect all containers. For production deployments with sensitive data, use additional security layers (network policies, secrets management) covered in later lessons.
