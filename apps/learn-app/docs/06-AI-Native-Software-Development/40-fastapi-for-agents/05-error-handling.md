@@ -1,8 +1,8 @@
 ---
 title: "Error Handling"
-sidebar_position: 4
+sidebar_position: 5
 chapter: 40
-lesson: 4
+lesson: 5
 duration_minutes: 45
 
 skills:

@@ -54,6 +54,29 @@ Skills and subagents start fresh - they don't inherit your context.
 Apply these principles dynamically to ANY skill/subagent invocation:
 
 ═══════════════════════════════════════════════════════════════════
+PRINCIPLE 0: USE THE COMMANDS - "Don't bypass, invoke"
+═══════════════════════════════════════════════════════════════════
+
+The spec loop commands (/sp.specify, /sp.clarify, /sp.plan, etc.)
+ARE the way to do the work. You don't bypass them by doing it yourself.
+
+❌ WRONG: "Spec is missing, let me write spec.md directly"
+   Write(specs/chapter-40/spec.md)  ← Bypasses templates, quality gates
+
+✅ RIGHT: "Spec is missing, let me invoke /sp.specify with context"
+   Skill: sp.specify
+   Args: |
+     [full context gathered]
+
+The commands exist because they:
+  - Apply correct templates
+  - Enforce quality standards
+  - Create consistent artifacts
+  - Can be validated by other commands
+
+If you write artifacts directly, you bypass all of that.
+
+═══════════════════════════════════════════════════════════════════
 PRINCIPLE 1: BEFORE INVOKING - "What does it need to succeed?"
 ═══════════════════════════════════════════════════════════════════
 

@@ -1,30 +1,62 @@
-# Chapter 40: FastAPI for Agents — Specification (Revised)
+# Chapter 40: FastAPI for Agents — Specification
 
-**Version**: 2.0.0
+**Version**: 3.0.0
 **Status**: Draft
 **Created**: 2025-12-22
-**Revised**: 2025-12-22
+**Revised**: 2025-12-27
 **Author**: Claude Code (sp.orchestrator)
+**Related Issues**: #541, #542, #543, #544, #545, #546
 
 ---
 
 ## 1. Executive Summary
 
 ### 1.1 Purpose
+
 Chapter 40 teaches how to **expose agent patterns as production REST APIs**. Students have built agents with OpenAI SDK (Chapter 34), connected them via MCP (Chapters 37-38), and created reusable skills with code execution (Chapter 39). Now they'll make these agents accessible as HTTP services.
 
-**This is NOT a generic FastAPI tutorial.** Students learn FastAPI fundamentals (Lessons 1-5) as necessary scaffolding, then immediately apply them to expose real agent patterns (Lessons 6-11).
+**This chapter is the bare base for all aspects and learning pathways.** Students who complete this chapter can:
+- Move directly to Part 7 (Cloud Native) for deployment
+- Apply these patterns to any agent SDK
+- Build production-ready API services
 
-### 1.2 Key Distinction
-- **Chapters 34-39**: Build agents locally (CLI, SDK)
-- **Chapter 40**: Expose agents as HTTP APIs (REST, streaming)
+### 1.2 Key Insight
+
+> **APIs are just functions. Functions become tools. Agents use tools.**
+
+The CRUD APIs students build in Lessons 1-9 become the tools that agents call in Lessons 12-13.
 
 ### 1.3 What Makes This Chapter Valuable
-1. **Structured Agents in Endpoints** — Not chat completions, real agents with tools
-2. **Multi-Agent Handoffs via API** — Triage → Specialist routing
-3. **Skills-Guided Behavior** — SKILL.md files as agent system prompts
-4. **Code Execution Integration** — Agents that run code via MCP
-5. **Production Patterns** — Streaming, context persistence, error handling
+
+1. **Testing First (L1 Manual)** — Students write tests by hand before AI generates them
+2. **Production Essentials** — Real database (Neon), real auth (JWT), real security (Argon2)
+3. **One Concept Per Lesson** — JWT separate from password hashing, env vars separate from SQLModel
+4. **Simple SQLModel Setup** — Basics of relations and postgres with no complexity
+5. **APIs → Agent Tools** — Same endpoints become callable by agents
+
+---
+
+## Assumed Knowledge
+
+### What students know BEFORE this chapter
+
+- **Python fundamentals** (Part 5): async/await, type hints, Pydantic models, decorators
+- **OpenAI Agents SDK** (Chapter 34): Agent, Runner, function_tool, handoffs
+- **MCP patterns** (Chapters 37-38): HTTP/SSE familiar, tool schemas
+- **Skills structure** (Chapter 39): SKILL.md format, loading skills
+
+### What this chapter must explain from scratch
+
+- FastAPI application structure (app, routes, uvicorn)
+- HTTP methods and REST conventions (GET, POST, PUT, DELETE)
+- pytest and TestClient for API testing
+- Environment variables and pydantic-settings
+- SQLModel and PostgreSQL basics (via Neon)
+- JWT authentication flow
+- Password hashing with Argon2
+- Rate limiting patterns
+- FastAPI's Depends() for dependency injection
+- Server-Sent Events (SSE) for streaming
 
 ---
 
@@ -32,484 +64,535 @@ Chapter 40 teaches how to **expose agent patterns as production REST APIs**. Stu
 
 ### 2.1 Chapter-Level Objectives
 
-| # | Objective | Bloom's Level | Assessment |
-|---|-----------|---------------|------------|
-| LO1 | Create FastAPI endpoints with Pydantic validation | Apply | Working CRUD API |
-| LO2 | Expose OpenAI Agents SDK agents via REST | Apply | Agent endpoint with tools |
-| LO3 | Implement multi-agent handoffs in API layer | Apply | Triage → Specialist routing |
-| LO4 | Integrate SKILL.md files to guide agent behavior | Apply | Skill-loaded agent endpoint |
-| LO5 | Connect code execution MCP servers to endpoints | Apply | Agent executes code via API |
-| LO6 | Stream agent responses including tool calls | Apply | SSE stream with tool events |
+| #   | Objective                                          | Bloom's Level | Assessment                    |
+| --- | -------------------------------------------------- | ------------- | ----------------------------- |
+| LO1 | Create FastAPI applications with Pydantic models   | Apply         | Working CRUD API              |
+| LO2 | Write pytest tests for API endpoints               | Apply         | Test suite with assertions    |
+| LO3 | Configure applications with environment variables  | Apply         | Settings class pattern        |
+| LO4 | Connect to PostgreSQL via SQLModel and Neon        | Apply         | Persistent task storage       |
+| LO5 | Implement JWT authentication with protected routes | Apply         | Token-based auth flow         |
+| LO6 | Hash passwords securely with Argon2                | Apply         | User signup/login             |
+| LO7 | Apply rate limiting to protect endpoints           | Apply         | Rate-limited login            |
+| LO8 | Use FastAPI's dependency injection pattern         | Apply         | Repository injection          |
+| LO9 | Stream responses using Server-Sent Events          | Apply         | SSE endpoint                  |
+| LO10| Expose agents as REST endpoints with tools         | Apply         | Agent-powered API             |
 
 ---
 
-## 3. Chapter Structure (11 Lessons)
+## 3. Chapter Structure (13 Lessons)
 
-### Tier A: FastAPI Fundamentals (Lessons 1-5)
-Foundation for exposing agents. Uses Task Management domain.
+### Tier A: FastAPI Fundamentals with Testing (Lessons 1-5)
 
-| # | Title | Duration | Focus |
-|---|-------|----------|-------|
-| 01 | Hello FastAPI | 45 min | First app, uvicorn, Swagger UI |
-| 02 | POST and Pydantic Models | 50 min | Request validation, models |
-| 03 | Full CRUD Operations | 55 min | GET, PUT, DELETE patterns |
-| 04 | Error Handling | 45 min | HTTPException, status codes |
-| 05 | Dependency Injection | 50 min | Depends(), repository pattern |
+Foundation for API development. Uses in-memory Task storage. **Pytest introduced early (L1 Manual First).**
 
-### Tier B: Agent API Patterns (Lessons 6-10)
-Core value: Exposing agent capabilities learned in Chapters 34-39.
+| #  | Title                    | Duration | Focus                                      | Layer |
+|----|--------------------------|----------|--------------------------------------------|-------|
+| 01 | Hello FastAPI            | 45 min   | First app, uvicorn, Swagger UI             | -     |
+| 02 | Pytest Fundamentals      | 45 min   | TestClient, assertions, red-green cycle    | L1    |
+| 03 | POST and Pydantic Models | 50 min   | Request validation, models, manual tests   | -     |
+| 04 | Full CRUD Operations     | 55 min   | GET, PUT, DELETE patterns, manual tests    | -     |
+| 05 | Error Handling           | 45 min   | HTTPException, status codes, error tests   | -     |
 
-| # | Title | Duration | Focus |
-|---|-------|----------|-------|
-| 06 | Streaming Responses | 45 min | SSE foundation for agent streaming |
-| 07 | Agents with Tools in Endpoints | 60 min | OpenAI SDK agents, function tools |
-| 08 | Multi-Agent Handoffs | 55 min | Triage → Specialist routing |
-| 09 | Skills-Guided Agents | 50 min | SKILL.md as system prompts |
-| 10 | Code Execution Agents | 55 min | MCP sandbox integration |
+**Pedagogical Note (Lesson 2)**: Students write tests **by hand** first. This builds mental models of assertions, fixtures, and test structure. Later lessons (12-13) show AI generating tests as L2 collaboration.
 
-### Tier C: Capstone (Lesson 11)
-| # | Title | Duration | Focus |
-|---|-------|----------|-------|
-| 11 | Capstone: Agent-Powered Task Service | 90 min | Multi-agent system with all patterns |
+### Tier B: Production Essentials (Lessons 6-9)
 
-**Total Duration**: ~10 hours
+Real database, real auth, real security. **One concept per lesson.**
+
+| #  | Title                               | Duration | Focus                                      | Depends On |
+|----|-------------------------------------|----------|--------------------------------------------|------------|
+| 06 | Environment Variables               | 40 min   | python-dotenv, pydantic-settings, secrets  | L05        |
+| 07 | SQLModel + Neon Setup               | 55 min   | Real database, ORM basics, migrations      | L06        |
+| 08 | JWT Authentication                  | 50 min   | Tokens, verification, protected routes     | L06        |
+| 09 | Password Hashing + Rate Limiting    | 50 min   | Argon2, signup, in-memory rate limiter     | L08        |
+
+**One Concept Per Lesson Principle**:
+- Lesson 6: Environment variables (no database yet)
+- Lesson 7: Database setup (uses env vars from L06)
+- Lesson 8: JWT tokens only (temporary plain-text password)
+- Lesson 9: Password hashing + rate limiting (fixes L08's insecurity)
+
+### Tier C: Dependency Injection & Streaming (Lessons 10-11)
+
+Architectural patterns for production code.
+
+| #  | Title                  | Duration | Focus                                      | Layer |
+|----|------------------------|----------|--------------------------------------------|-------|
+| 10 | Dependency Injection   | 50 min   | Depends(), repository pattern, testability | L2    |
+| 11 | Streaming with SSE     | 45 min   | Server-Sent Events, async generators       | -     |
+
+### Tier D: Agent Integration & Capstone (Lessons 12-13)
+
+**The key insight**: APIs become tools.
+
+| #  | Title                                 | Duration | Focus                                      | Layer |
+|----|---------------------------------------|----------|--------------------------------------------|-------|
+| 12 | Agent Integration                     | 50 min   | APIs → Tools → Streaming agent             | L2    |
+| 13 | Capstone: TaskManager Agent Service   | 90 min   | Multi-agent with all patterns              | L4    |
+
+**Total Duration**: ~11 hours
 
 ---
 
 ## 4. Critical Lesson Specifications
 
-### 4.1 Lesson 7: Agents with Tools in Endpoints
+### 4.1 Lesson 2: Pytest Fundamentals (L1 Manual First)
 
-**Why This Matters**: This is where Chapter 40 diverges from generic FastAPI tutorials. Students learn to expose **structured agents** (not chat completions) via REST.
+**Why Manual First**: Students understand WHAT tests do before AI generates them. Builds mental model of assertions, fixtures, test structure.
 
-**Concepts from Chapter 34 to Apply**:
-- `Agent` class with `instructions` and `tools`
-- Function tool definitions with schemas
-- Tool execution lifecycle
-- Response streaming from agents
+**Layer**: L1 (Manual) — Students write tests by hand, no AI assistance.
 
-**Key Code Pattern**:
+**Scope**:
 ```python
-from openai import OpenAI
-from agents import Agent, Runner, function_tool
-from fastapi import FastAPI, Depends
-from sse_starlette.sse import EventSourceResponse
+# test_main.py
+from fastapi.testclient import TestClient
+from main import app
 
-app = FastAPI()
-client = OpenAI()
+client = TestClient(app)
 
-# Define a tool the agent can use
+def test_read_root():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Hello World"}
+
+def test_read_root_has_message_key():
+    response = client.get("/")
+    assert "message" in response.json()
+```
+
+**What to Cover**:
+1. Why test? (Confidence, refactoring, documentation)
+2. pytest basics: test functions, assertions
+3. TestClient for FastAPI
+4. Running tests: `pytest`, `pytest -v`, `pytest test_main.py::test_name`
+5. Test the Hello FastAPI endpoint from Lesson 1
+6. Red-Green cycle (write failing test → make it pass)
+
+**What NOT to Cover** (save for later):
+- Fixtures (Lesson 3+)
+- Mocking (when we have dependencies)
+- Async tests (when we use async endpoints)
+- AI-generated tests (Lessons 12-13 as L2)
+
+**Dependencies**: `pytest httpx`
+
+---
+
+### 4.2 Lesson 6: Environment Variables
+
+**Why Separate Lesson**: Students need to understand configuration BEFORE:
+- Connecting to external databases (Neon)
+- Configuring API keys
+- Managing secrets safely
+
+**Scope**:
+```python
+from pydantic_settings import BaseSettings
+
+class Settings(BaseSettings):
+    app_name: str = "Task API"
+    debug: bool = False
+    database_url: str  # Required - will error if missing
+    secret_key: str    # For JWT in later lesson
+
+    class Config:
+        env_file = ".env"
+
+settings = Settings()
+```
+
+**What to Cover**:
+1. Why environment variables (secrets, environments, 12-factor apps)
+2. Using `python-dotenv` for local development
+3. Creating `.env` file with sample values
+4. Using `pydantic-settings` for typed configuration
+5. Accessing config in FastAPI (Settings class pattern)
+6. `.env.example` for team collaboration
+7. **Never commit secrets** (`.gitignore` `.env`)
+
+**Dependencies**: `python-dotenv pydantic-settings`
+
+---
+
+### 4.3 Lesson 7: SQLModel + Neon Setup (Fast Track)
+
+**Why Simple**: Get basics of relations and postgres in simple way with no complexity.
+
+**Scope**:
+```python
+from sqlmodel import SQLModel, Field, create_engine, Session
+
+class Task(SQLModel, table=True):
+    id: int | None = Field(default=None, primary_key=True)
+    title: str
+    description: str | None = None
+    completed: bool = False
+
+# Create engine from environment variable
+engine = create_engine(settings.database_url)
+
+# Create tables
+SQLModel.metadata.create_all(engine)
+```
+
+**What to Cover**:
+1. Install SQLModel + asyncpg + psycopg2
+2. Set up Neon account (free tier) - https://console.neon.tech/
+3. Configure connection string via environment variable (NEON_DATABASE_URL)
+4. Define Task SQLModel model
+5. Convert existing CRUD endpoints to use SQLModel
+6. Run migrations with `SQLModel.metadata.create_all()`
+
+**What NOT to Cover** (save for later):
+- Repository pattern abstraction (Lesson 10: DI)
+- Session dependency injection (Lesson 10: DI)
+- Complex migration tools (Alembic)
+- Advanced relations (one lesson = one concept)
+
+**Dependencies**: `sqlmodel asyncpg psycopg2-binary`
+
+**Future Integration Note**: Neon MCP server could enable Claude as Digital FTE to manage databases directly. See https://neon.com/guides/neon-mcp-server
+
+---
+
+### 4.4 Lesson 8: JWT Authentication (Tokens Only)
+
+**Why Tokens Only**: Separate concept from password hashing. One lesson = one concept.
+
+**Scope**:
+```python
+import jwt
+from datetime import datetime, timedelta
+from fastapi.security import OAuth2PasswordBearer
+
+SECRET_KEY = settings.secret_key
+ALGORITHM = "HS256"
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+def create_access_token(data: dict, expires_delta: timedelta = timedelta(minutes=30)):
+    to_encode = data.copy()
+    expire = datetime.utcnow() + expires_delta
+    to_encode.update({"exp": expire})
+    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+
+async def get_current_user(token: str = Depends(oauth2_scheme)):
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username = payload.get("sub")
+        if username is None:
+            raise HTTPException(status_code=401)
+    except jwt.InvalidTokenError:
+        raise HTTPException(status_code=401)
+    return username
+
+@app.get("/tasks")
+async def get_my_tasks(current_user: str = Depends(get_current_user)):
+    # Only authenticated users reach here
+    return await get_tasks_for_user(current_user)
+```
+
+**Temporary Login** (fixed in Lesson 9):
+```python
+# Temporary: plain text check (Lesson 9 adds proper hashing)
+@app.post("/token")
+async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+    user = get_user(form_data.username)
+    if not user or form_data.password != "temp_password":  # INSECURE - fixed next lesson
+        raise HTTPException(status_code=401)
+
+    token = create_access_token(data={"sub": user.username})
+    return {"access_token": token, "token_type": "bearer"}
+```
+
+**What to Cover**:
+1. Why JWT for APIs (stateless, token structure)
+2. Token creation with expiration
+3. Token verification dependency
+4. OAuth2PasswordBearer pattern
+5. Protected endpoints with Depends(get_current_user)
+6. Temporary plain-text password (explicitly noted as insecure)
+
+**Dependencies**: `pyjwt`
+
+---
+
+### 4.5 Lesson 9: Password Hashing + Rate Limiting
+
+**Why Combined**: Both are security hardening of the auth system from Lesson 8.
+
+**Password Hashing** (using pwdlib/Argon2, NOT bcrypt):
+```python
+from pwdlib import PasswordHash
+
+password_hash = PasswordHash.recommended()
+
+def hash_password(password: str) -> str:
+    return password_hash.hash(password)
+
+def verify_password(plain: str, hashed: str) -> bool:
+    return password_hash.verify(plain, hashed)
+
+@app.post("/users/signup", status_code=201)
+async def signup(username: str, password: str, session: SessionDep):
+    hashed = hash_password(password)
+    user = User(username=username, hashed_password=hashed)
+    session.add(user)
+    await session.commit()
+    return {"username": user.username}
+```
+
+**In-Memory Rate Limiting**:
+```python
+from collections import defaultdict
+from time import time
+
+request_counts: dict[str, list[float]] = defaultdict(list)
+RATE_LIMIT = 5  # requests
+RATE_WINDOW = 60  # seconds
+
+def check_rate_limit(client_ip: str) -> bool:
+    now = time()
+    request_counts[client_ip] = [
+        t for t in request_counts[client_ip]
+        if now - t < RATE_WINDOW
+    ]
+
+    if len(request_counts[client_ip]) >= RATE_LIMIT:
+        return False
+
+    request_counts[client_ip].append(now)
+    return True
+
+async def rate_limit(request: Request):
+    client_ip = request.client.host
+    if not check_rate_limit(client_ip):
+        raise HTTPException(status_code=429, detail="Too many requests")
+
+@app.post("/token", dependencies=[Depends(rate_limit)])
+async def login(...):
+    # Now with proper password verification
+    if not user or not verify_password(form_data.password, user.hashed_password):
+        raise HTTPException(status_code=401)
+    ...
+```
+
+**Why In-Memory (Not Redis)?**
+| Approach   | Pros            | Cons                      | Use When         |
+|------------|-----------------|---------------------------|------------------|
+| In-memory  | Simple, no deps | Resets on restart, single | Learning, dev    |
+| Redis      | Persistent      | Extra service             | Production       |
+
+**Dependencies**: `"pwdlib[argon2]"`
+
+---
+
+### 4.6 Lesson 12: Agent Integration (Simplified)
+
+**Core Insight**: APIs → Tools → Streaming
+
+**Simplified Scope** (per Issue #545):
+```python
+from agents import function_tool
+
+# These endpoints we built...
+@app.post("/tasks")
+async def create_task(task: TaskCreate): ...
+
+@app.get("/tasks/{task_id}")
+async def get_task(task_id: int): ...
+
+# Functions become tools
 @function_tool
-def create_subtask(parent_task_id: int, title: str, description: str) -> dict:
-    """Create a subtask under a parent task."""
-    # In real app, this writes to database
-    return {"id": 101, "parent_id": parent_task_id, "title": title}
+def create_task_tool(title: str, description: str) -> dict:
+    """Create a new task for the user."""
+    response = client.post("/tasks", json={...})
+    return response.json()
 
 @function_tool
-def set_reminder(task_id: int, remind_at: str) -> dict:
-    """Set a reminder for a task."""
-    return {"task_id": task_id, "reminder": remind_at}
+def get_task_tool(task_id: int) -> dict:
+    """Get a task by ID."""
+    response = client.get(f"/tasks/{task_id}")
+    return response.json()
 
-# Agent with tools - this is what Chapter 34 taught
-task_agent = Agent(
-    name="task-assistant",
-    instructions="""You help users manage their tasks effectively.
-    You can create subtasks to break down complex work.
-    You can set reminders for deadlines.
-    Be concise and action-oriented.""",
-    tools=[create_subtask, set_reminder],
-    model="gpt-4o-mini"
-)
-
-@app.post("/tasks/{task_id}/agent")
-async def agent_assist(task_id: int, question: str):
-    """Invoke structured agent with tools for task help."""
-
-    # Get task context
-    task = get_task(task_id)
-
-    # Run agent with context
-    runner = Runner()
-    result = await runner.run(
-        task_agent,
-        messages=[{
-            "role": "user",
-            "content": f"Task: {task['title']}\n\nQuestion: {question}"
-        }]
-    )
-
-    return {
-        "response": result.final_output,
-        "tool_calls": [
-            {"name": tc.name, "args": tc.arguments, "result": tc.result}
-            for tc in result.tool_calls
-        ]
-    }
-
-@app.post("/tasks/{task_id}/agent/stream")
-async def stream_agent_assist(task_id: int, question: str):
-    """Stream agent response including tool call events."""
-
-    task = get_task(task_id)
-
+# Agent streams via SSE
+@app.get("/agent/chat")
+async def agent_chat(message: str):
     async def generate():
-        runner = Runner()
-        async for event in runner.stream(
-            task_agent,
-            messages=[{"role": "user", "content": f"Task: {task['title']}\n\n{question}"}]
-        ):
-            if event.type == "text_delta":
-                yield {"event": "token", "data": event.delta}
-            elif event.type == "tool_call":
-                yield {"event": "tool_call", "data": json.dumps({
-                    "name": event.tool_name,
-                    "arguments": event.arguments
-                })}
-            elif event.type == "tool_result":
-                yield {"event": "tool_result", "data": json.dumps(event.result)}
+        async for event in Runner.run_streamed(agent, message):
+            yield f"data: {event.model_dump_json()}\n\n"
 
-        yield {"event": "done", "data": ""}
-
-    return EventSourceResponse(generate())
+    return StreamingResponse(generate(), media_type="text/event-stream")
 ```
 
-**What Students Learn**:
-1. Agents are NOT just chat completions
-2. Tools give agents capabilities (create subtasks, set reminders)
-3. API returns tool calls so clients know what happened
-4. Streaming includes tool events, not just text
+**What to Keep**:
+- Single agent with 2-3 tools (CRUD operations)
+- SSE streaming endpoint
+- Basic tool call → response flow
+
+**What to Remove** (moved to Capstone):
+- Complex handoff patterns
+- Multiple specialist agents
+- Elaborate orchestration
+
+**Learning Outcome**:
+> "The REST APIs I built are just functions. Functions become tools. An agent uses tools and streams results."
 
 ---
 
-### 4.2 Lesson 8: Multi-Agent Handoffs
+### 4.7 Lesson 13: Capstone — Agent-Powered Task Service
 
-**Why This Matters**: Enterprise agents use specialist handoffs. Students learn the API pattern for routing between agents.
-
-**Concepts from Chapter 34 to Apply**:
-- Triage agent that routes requests
-- Specialist agents for specific domains
-- Context preservation across handoffs
-- Handoff as tool call
-
-**Key Code Pattern**:
-```python
-from agents import Agent, handoff
-
-# Specialist agents
-scheduler_agent = Agent(
-    name="scheduler",
-    instructions="You help with scheduling, deadlines, and time management.",
-    tools=[set_deadline, create_reminder, suggest_time_blocks],
-    model="gpt-4o-mini"
-)
-
-collaboration_agent = Agent(
-    name="collaboration",
-    instructions="You help with delegation, team coordination, and sharing.",
-    tools=[assign_to_user, share_task, create_meeting],
-    model="gpt-4o-mini"
-)
-
-# Triage agent with handoffs
-triage_agent = Agent(
-    name="triage",
-    instructions="""You route task questions to the right specialist:
-    - Scheduling/deadlines/time → scheduler
-    - Delegation/teams/sharing → collaboration
-    - General questions → answer directly""",
-    tools=[
-        handoff(scheduler_agent),
-        handoff(collaboration_agent)
-    ],
-    model="gpt-4o-mini"
-)
-
-@app.post("/tasks/{task_id}/help")
-async def triage_task_help(task_id: int, question: str):
-    """Triage endpoint - routes to specialist agents."""
-
-    task = get_task(task_id)
-    runner = Runner()
-
-    result = await runner.run(
-        triage_agent,
-        messages=[{"role": "user", "content": f"Task: {task['title']}\n\n{question}"}]
-    )
-
-    return {
-        "response": result.final_output,
-        "handled_by": result.agent_name,  # Which agent answered
-        "handoff_chain": [a.name for a in result.agents_used],
-        "tool_calls": [tc.to_dict() for tc in result.tool_calls]
-    }
-```
-
-**What Students Learn**:
-1. Triage pattern from Chapter 34 in API context
-2. Response includes which agent handled the request
-3. Handoff chain shows routing path
-4. Client can understand agent decisions
-
----
-
-### 4.3 Lesson 9: Skills-Guided Agents
-
-**Why This Matters**: Chapter 39 taught SKILL.md files. Now students use them as agent system prompts for consistent behavior.
-
-**Concepts from Chapter 39 to Apply**:
-- SKILL.md structure (persona, questions, principles)
-- Loading skills at runtime
-- Skill composition for complex agents
-
-**Key Code Pattern**:
-```python
-import yaml
-from pathlib import Path
-
-def load_skill(skill_name: str) -> str:
-    """Load a SKILL.md file as agent instructions."""
-    skill_path = Path(f".claude/skills/{skill_name}/SKILL.md")
-    content = skill_path.read_text()
-
-    # Parse YAML frontmatter
-    if content.startswith("---"):
-        parts = content.split("---", 2)
-        metadata = yaml.safe_load(parts[1])
-        body = parts[2].strip()
-        return body
-    return content
-
-def compose_skills(*skill_names: str) -> str:
-    """Compose multiple skills into one instruction set."""
-    instructions = []
-    for name in skill_names:
-        skill_content = load_skill(name)
-        instructions.append(f"## {name.title()} Expertise\n{skill_content}")
-    return "\n\n".join(instructions)
-
-# Skill-guided agent
-@app.post("/tasks/{task_id}/skilled-assist")
-async def skilled_assist(
-    task_id: int,
-    question: str,
-    skills: list[str] = ["task-completion", "productivity"]
-):
-    """Agent guided by loaded skills for consistent behavior."""
-
-    task = get_task(task_id)
-
-    # Compose skills into instructions
-    skill_instructions = compose_skills(*skills)
-
-    # Create agent with skill-based instructions
-    skilled_agent = Agent(
-        name="skilled-task-assistant",
-        instructions=f"""{skill_instructions}
-
-Current Task Context:
-- Title: {task['title']}
-- Description: {task.get('description', 'None')}
-- Status: {task['status']}
-
-Apply your expertise to help with this task.""",
-        tools=[create_subtask, set_reminder, mark_complete],
-        model="gpt-4o-mini"
-    )
-
-    runner = Runner()
-    result = await runner.run(
-        skilled_agent,
-        messages=[{"role": "user", "content": question}]
-    )
-
-    return {
-        "response": result.final_output,
-        "skills_applied": skills,
-        "tool_calls": [tc.to_dict() for tc in result.tool_calls]
-    }
-```
-
-**Example SKILL.md** (`.claude/skills/task-completion/SKILL.md`):
-```markdown
----
-name: task-completion
-description: Expert guidance for completing tasks effectively
-version: 1.0.0
----
-
-You are a task completion expert who helps users finish their work efficiently.
-
-## Questions to Consider
-- What's the smallest next action?
-- What's blocking progress?
-- Can this be broken into subtasks?
-- Is there a deadline that affects priority?
-
-## Principles
-1. Always identify the very next physical action
-2. Break complex tasks into 15-30 minute chunks
-3. Address blockers before pushing forward
-4. Celebrate small completions to maintain momentum
-```
-
-**What Students Learn**:
-1. Skills from Chapter 39 become agent instructions
-2. Skills make behavior consistent across requests
-3. Multiple skills can compose for complex agents
-4. API response shows which skills were applied
-
----
-
-### 4.4 Lesson 10: Code Execution Agents
-
-**Why This Matters**: Chapter 39 taught MCP code execution. Now students create agents that write and execute code via API.
-
-**Concepts from Chapter 39 to Apply**:
-- MCP code execution servers (E2B, Code Interpreter)
-- Write-execute-analyze loop
-- Sandbox security boundaries
-
-**Key Code Pattern**:
-```python
-from mcp import ClientSession
-from agents import Agent, function_tool
-
-# Connect to code execution MCP server
-code_mcp = ClientSession("e2b-code-execution")
-
-@function_tool
-async def execute_python(code: str) -> dict:
-    """Execute Python code in a sandboxed environment."""
-    result = await code_mcp.call_tool(
-        "execute",
-        {"language": "python", "code": code}
-    )
-    return {
-        "stdout": result.stdout,
-        "stderr": result.stderr,
-        "return_value": result.return_value
-    }
-
-@function_tool
-async def analyze_data(data_description: str) -> dict:
-    """Write and execute Python to analyze described data."""
-    # Agent will write analysis code using this tool
-    pass
-
-# Code execution agent
-analysis_agent = Agent(
-    name="data-analyst",
-    instructions="""You analyze task data by writing and executing Python code.
-
-When asked to analyze something:
-1. Write Python code to perform the analysis
-2. Execute it using the execute_python tool
-3. Interpret the results for the user
-
-You have access to pandas, numpy, and matplotlib.""",
-    tools=[execute_python],
-    model="gpt-4o-mini"
-)
-
-@app.post("/tasks/analyze")
-async def analyze_tasks(question: str, repo: TaskRepository = Depends(get_task_repo)):
-    """Agent that writes and executes code to analyze tasks."""
-
-    # Get all tasks as data context
-    all_tasks = repo.get_all()
-    task_data = json.dumps(all_tasks, indent=2)
-
-    runner = Runner()
-    result = await runner.run(
-        analysis_agent,
-        messages=[{
-            "role": "user",
-            "content": f"""Here is the task data:
-```json
-{task_data}
-```
-
-Question: {question}
-
-Write Python code to analyze this data and answer the question."""
-        }]
-    )
-
-    return {
-        "analysis": result.final_output,
-        "code_executed": [
-            {"code": tc.arguments.get("code"), "result": tc.result}
-            for tc in result.tool_calls
-            if tc.name == "execute_python"
-        ]
-    }
-```
-
-**What Students Learn**:
-1. MCP code execution from Chapter 39 in API context
-2. Agent writes code, executes it, returns results
-3. API response includes executed code for transparency
-4. Sandbox keeps execution safe
-
----
-
-### 4.5 Lesson 11: Capstone — Agent-Powered Task Service
-
-**The Full System**:
-Students build a complete multi-agent task service that combines ALL patterns:
+**Full System** combining ALL patterns:
 
 1. **Triage Agent** — Routes requests to specialists
 2. **Scheduler Specialist** — Handles deadlines, reminders (with tools)
 3. **Collaboration Specialist** — Handles delegation, sharing (with tools)
-4. **Analysis Specialist** — Writes and executes code for insights
-5. **Skill Integration** — All agents use SKILL.md for consistent behavior
-6. **Streaming** — All responses stream with tool call events
+4. **Skill Integration** — All agents use SKILL.md for consistent behavior
+5. **Streaming** — All responses stream with tool call events
+6. **Full Auth** — JWT + hashed passwords + rate limiting
+7. **Real Database** — Neon PostgreSQL via SQLModel
 
 **API Endpoints**:
 ```
+# CRUD (Lessons 1-9)
 POST /tasks              - Create task
 GET  /tasks              - List tasks
 GET  /tasks/{id}         - Get task
 PUT  /tasks/{id}         - Update task
 DELETE /tasks/{id}       - Delete task
 
-POST /tasks/{id}/help              - Triage → Specialist (streaming)
-POST /tasks/{id}/schedule          - Direct to scheduler agent
-POST /tasks/{id}/collaborate       - Direct to collaboration agent
-POST /tasks/analyze                - Analysis agent with code execution
+# Auth (Lessons 8-9)
+POST /users/signup       - Create account
+POST /token              - Get JWT token
 
-GET  /agents/status                - Which agents are available
-GET  /skills                       - List loaded skills
+# Agent (Lessons 12-13)
+POST /tasks/{id}/help    - Triage → Specialist (streaming)
+POST /tasks/{id}/schedule - Direct to scheduler agent
+GET  /agents/status      - Which agents are available
 ```
 
 ---
 
-## 5. Non-Goals
+## 5. Dependencies (Full Chapter)
 
-- **No authentication** — Security covered in Chapter 58
-- **No databases** — In-memory storage, databases in Chapter 47
-- **No Docker** — Containerization in Part 7
-- **No testing framework** — TDD covered in Chapter 42
+```bash
+# Core FastAPI
+fastapi uvicorn
+
+# Testing (L1 Manual)
+pytest httpx
+
+# Configuration
+python-dotenv pydantic-settings
+
+# Database
+sqlmodel asyncpg psycopg2-binary
+
+# Auth
+pyjwt "pwdlib[argon2]"
+
+# Streaming
+sse-starlette
+
+# Agent (for Lessons 12-13)
+openai-agents
+```
 
 ---
 
-## 6. Success Criteria
+## 6. Non-Goals (Clarified)
+
+| Topic              | Chapter Coverage                          |
+|--------------------|-------------------------------------------|
+| Authentication     | **Covered here** (JWT, Argon2, rate limit)|
+| Databases          | **Covered here** (SQLModel + Neon basics) |
+| Testing            | **Covered here** (pytest L1 Manual)       |
+| Docker             | Part 7 (Chapter 50)                       |
+| Complex migrations | Chapter 47 (Relational DBs deep dive)     |
+| OAuth2/SSO         | Chapter 88 (BetterAuth)                   |
+
+---
+
+## 7. Success Criteria
 
 ### Content Success
-- [ ] Lessons 1-5 provide FastAPI foundation
-- [ ] Lesson 7 exposes structured agents with tools
-- [ ] Lesson 8 demonstrates multi-agent handoffs
-- [ ] Lesson 9 integrates SKILL.md files
-- [ ] Lesson 10 connects code execution MCP
-- [ ] Lesson 11 combines all patterns
+
+- [ ] Lesson 2 introduces pytest as L1 Manual (students write tests by hand)
+- [ ] Lessons 3-5 include manual test examples for each CRUD operation
+- [ ] Lesson 6 creates Settings class pattern used by all later lessons
+- [ ] Lesson 7 connects to real Neon PostgreSQL, replaces in-memory storage
+- [ ] Lesson 8 implements JWT without password hashing (separated concern)
+- [ ] Lesson 9 adds Argon2 hashing and in-memory rate limiting
+- [ ] Lesson 10 refactors with Depends() and repository pattern
+- [ ] Lesson 12 demonstrates APIs → Tools → Streaming (simplified)
+- [ ] Lesson 13 combines all patterns in multi-agent capstone
 
 ### Student Outcomes
-- [ ] Can create agents with tools in endpoints
-- [ ] Can implement triage → specialist routing
-- [ ] Can load and compose skills for agents
-- [ ] Can connect code execution to agents
-- [ ] Can stream agent responses with tool events
+
+- [ ] Can write pytest tests for FastAPI endpoints (L1 Manual)
+- [ ] Can configure apps with pydantic-settings
+- [ ] Can connect to Neon PostgreSQL via SQLModel
+- [ ] Can implement JWT authentication with protected routes
+- [ ] Can hash passwords with Argon2 and apply rate limiting
+- [ ] Can use FastAPI's Depends() for clean architecture
+- [ ] Can stream responses via SSE
+- [ ] Can expose agents as REST endpoints with tools
+
+### Thesis Alignment
+
+- [ ] Chapter serves as "bare base for all aspects and learning pathways"
+- [ ] Students who complete this can move directly to Part 7
+- [ ] APIs built here become agent tools (key insight demonstrated)
+- [ ] Pattern is applicable to any agent SDK
 
 ---
 
-*Specification v2.0.0 - Revised to include agent patterns from Chapters 34 and 39*
+## 8. File Renumbering Required
+
+### Current Files (8 lessons)
+
+```
+01-hello-fastapi.md
+02-post-and-pydantic-models.md
+03-full-crud-operations.md
+04-error-handling.md
+05-dependency-injection.md
+06-streaming-with-sse.md
+07-agent-integration.md
+08-capstone-agent-powered-task-service.md
+```
+
+### Target Files (13 lessons)
+
+```
+01-hello-fastapi.md                      (existing)
+02-pytest-fundamentals.md                (NEW - Issue #544)
+03-post-and-pydantic-models.md           (renumbered from 02)
+04-full-crud-operations.md               (renumbered from 03)
+05-error-handling.md                     (renumbered from 04)
+06-environment-variables.md              (NEW - Issue #542)
+07-sqlmodel-neon-setup.md                (NEW - Issue #541)
+08-jwt-authentication.md                 (NEW - Issue #543)
+09-password-hashing-rate-limiting.md     (NEW - Issue #546)
+10-dependency-injection.md               (renumbered from 05)
+11-streaming-with-sse.md                 (renumbered from 06)
+12-agent-integration.md                  (simplified per Issue #545)
+13-capstone-agent-powered-task-service.md (renumbered from 08)
+```
+
+---
+
+## 9. Issue Traceability
+
+| Issue | Title                                      | Lesson | Status  |
+|-------|-------------------------------------------|--------|---------|
+| #544  | Add Pytest Fundamentals (L1 Manual First) | 02     | Pending |
+| #542  | Add Environment Variables lesson          | 06     | Pending |
+| #541  | Add Fast Track SQLModel Setup             | 07     | Pending |
+| #543  | Add JWT Authentication (tokens only)      | 08     | Pending |
+| #546  | Add Password Hashing + Rate Limiting      | 09     | Pending |
+| #545  | Simplify Agent Integration                | 12     | Pending |
+
+---
+
+*Specification v3.0.0 - Revised per Issues #541-#546. Added 5 new lessons, established one-concept-per-lesson principle, introduced pytest early as L1 Manual First.*

@@ -1,8 +1,8 @@
 ---
 title: "Full CRUD Operations"
-sidebar_position: 3
+sidebar_position: 4
 chapter: 40
-lesson: 3
+lesson: 4
 duration_minutes: 55
 
 skills:

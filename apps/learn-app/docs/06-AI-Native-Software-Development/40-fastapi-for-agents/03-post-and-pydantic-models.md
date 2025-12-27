@@ -1,8 +1,8 @@
 ---
 title: "POST and Pydantic Models"
-sidebar_position: 2
+sidebar_position: 3
 chapter: 40
-lesson: 2
+lesson: 3
 duration_minutes: 50
 
 skills:
