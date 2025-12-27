@@ -17,6 +17,7 @@ import { usePluginData } from '@docusaurus/useGlobalData';
 import LessonContent from '../../../components/LessonContent';
 import ReactMarkdown from 'react-markdown';
 import ReadingProgress from '@/components/ReadingProgress';
+import DocPageActions from '@/components/DocPageActions';
 
 type Props = WrapperProps<typeof ContentType>;
 
@@ -172,7 +173,10 @@ export default function ContentWrapper(props: Props): React.ReactElement {
     return (
       <>
         <ReadingProgress />
-        <ReadingTime />
+        <div className="doc-content-header">
+          <ReadingTime />
+          <DocPageActions />
+        </div>
         {/* Floating action buttons */}
         <div className="floating-actions">
           <BackToTopButton />
@@ -221,7 +225,10 @@ export default function ContentWrapper(props: Props): React.ReactElement {
   return (
     <>
       <ReadingProgress />
-      <ReadingTime />
+      <div className="doc-content-header">
+        <ReadingTime />
+        <DocPageActions />
+      </div>
       {/* Floating action buttons */}
       <div className="floating-actions">
         <BackToTopButton />
