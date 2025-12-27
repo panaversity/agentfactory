@@ -539,7 +539,7 @@ managed-by: {{ .Release.Service }}
 Verify it's not rendered:
 
 ```bash
-helm template my-agent ./chart
+helm template task-api ./chart
 ```
 
 **Output:**
@@ -606,7 +606,7 @@ data:
 Render:
 
 ```bash
-helm template my-agent ./chart
+helm template task-api ./chart
 ```
 
 **Output:**
@@ -656,7 +656,7 @@ spec:
 Render:
 
 ```bash
-helm template my-agent ./chart
+helm template task-api ./chart
 ```
 
 **Output:**
@@ -703,7 +703,7 @@ metadata:
 Render:
 
 ```bash
-helm template my-agent ./chart
+helm template task-api ./chart
 ```
 
 **Output (BROKEN):**
@@ -868,7 +868,7 @@ Are there any places where I should add nindent, or any indentation issues?
 Verify your work:
 
 ```bash
-helm template my-agent ./chart > rendered.yaml
+helm template task-api ./chart > rendered.yaml
 cat rendered.yaml
 ```
 

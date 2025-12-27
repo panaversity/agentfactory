@@ -78,10 +78,10 @@ Here's what happens in order, with later sources overriding earlier ones:
 This is the baseline. Every configuration option your chart supports should have a sensible default here:
 
 ```yaml
-# my-agent-chart/values.yaml
+# task-api-chart/values.yaml
 replicaCount: 3
 image:
-  repository: myregistry/my-agent
+  repository: myregistry/task-api
   tag: v1.0.0
   pullPolicy: IfNotPresent
 service:
@@ -99,7 +99,7 @@ agent:
   logLevel: INFO
 ```
 
-**Output:** This values.yaml is used when you run `helm install my-agent ./my-agent-chart` with no overrides.
+**Output:** This values.yaml is used when you run `helm install task-api ./task-api-chart` with no overrides.
 
 When Helm renders templates, it replaces `{{ .Values.replicaCount }}` with `3`, `{{ .Values.image.tag }}` with `v1.0.0`, etc.
 
@@ -110,7 +110,7 @@ When Helm renders templates, it replaces `{{ .Values.replicaCount }}` with `3`, 
 When deploying to production, you don't modify values.yaml (it's version-controlled and shared). Instead, you create environment-specific files that override only the values that differ:
 
 ```yaml
-# my-agent-chart/values-prod.yaml
+# task-api-chart/values-prod.yaml
 replicaCount: 5
 image:
   tag: v1.0.0
@@ -127,7 +127,7 @@ agent:
 **Output:** When you run:
 
 ```bash
-helm install my-agent ./my-agent-chart -f values-prod.yaml
+helm install task-api ./task-api-chart -f values-prod.yaml
 ```
 
 Helm merges these two YAML files. The result:
@@ -136,7 +136,7 @@ Helm merges these two YAML files. The result:
 # Effective values after merge
 replicaCount: 5              # From values-prod.yaml
 image:
-  repository: myregistry/my-agent  # From values.yaml (kept)
+  repository: myregistry/task-api  # From values.yaml (kept)
   tag: v1.0.0               # From values-prod.yaml
   pullPolicy: IfNotPresent  # From values.yaml (kept)
 service:
@@ -163,7 +163,7 @@ Key principle: Only specify values you're changing in environment files. Keep de
 For one-off changes (emergency fixes, testing), you can override values directly via CLI:
 
 ```bash
-helm install my-agent ./my-agent-chart \
+helm install task-api ./task-api-chart \
   -f values-prod.yaml \
   --set image.tag=v1.0.1 \
   --set agent.logLevel=DEBUG
@@ -190,7 +190,7 @@ mkdir -p helm-precedence && cd helm-precedence
 # values.yaml (defaults)
 cat > values.yaml << 'EOF'
 replicas: 1
-image: my-agent:v1.0.0
+image: task-api:v1.0.0
 environment: development
 EOF
 
@@ -242,7 +242,7 @@ metadata:
   name: agent-config
 data:
   replicas: "1"
-  image: "my-agent:v1.0.0"
+  image: "task-api:v1.0.0"
   environment: "development"
 ```
 
@@ -255,7 +255,7 @@ metadata:
   name: agent-config
 data:
   replicas: "5"
-  image: "my-agent:v1.0.0"         # Unchanged from values.yaml
+  image: "task-api:v1.0.0"         # Unchanged from values.yaml
   environment: "production"        # Overridden in values-prod.yaml
 ```
 
@@ -268,7 +268,7 @@ metadata:
   name: agent-config
 data:
   replicas: "10"                    # Overridden by --set
-  image: "my-agent:v1.0.0"         # Unchanged
+  image: "task-api:v1.0.0"         # Unchanged
   environment: "production"        # From values-prod.yaml
 ```
 
@@ -312,9 +312,9 @@ As your chart grows, values.yaml can become unwieldy. Should you organize values
 
 ```yaml
 # values.yaml - flat structure
-agentName: my-agent
+agentName: task-api
 agentReplicas: 3
-agentImage: myregistry/my-agent
+agentImage: myregistry/task-api
 agentImageTag: v1.0.0
 agentLogLevel: INFO
 databaseHost: postgres.default.svc.cluster.local
@@ -341,10 +341,10 @@ redisPassword: ""
 ```yaml
 # values.yaml - nested structure
 agent:
-  name: my-agent
+  name: task-api
   replicas: 3
   image:
-    repository: myregistry/my-agent
+    repository: myregistry/task-api
     tag: v1.0.0
     pullPolicy: IfNotPresent
   config:
@@ -398,7 +398,7 @@ Use nesting to group values by **what they configure**, not by **where they're u
 ```yaml
 # Good: Organized by concept
 agent:
-  name: my-agent
+  name: task-api
   image: ...
   config:
     model: ...
@@ -471,9 +471,9 @@ Production deployments typically use three environments: development (for testin
 This is the baseline—what most developers use locally. Minimal resources, one replica, verbose logging:
 
 ```yaml
-# my-agent-chart/values.yaml
+# task-api-chart/values.yaml
 agent:
-  name: my-agent
+  name: task-api
   replicas: 1
   image:
     tag: v1.0.0-dev
@@ -498,7 +498,7 @@ redis:
   enabled: false
 ```
 
-**Output:** When you run `helm install my-agent ./my-agent-chart`, you get:
+**Output:** When you run `helm install task-api ./task-api-chart`, you get:
 - 1 replica
 - Light resource requests
 - Verbose logging (DEBUG)
@@ -511,7 +511,7 @@ redis:
 Staging mirrors production more closely—multiple replicas, tighter resources, and real external services:
 
 ```yaml
-# my-agent-chart/values-staging.yaml
+# task-api-chart/values-staging.yaml
 agent:
   replicas: 2
   image:
@@ -538,7 +538,7 @@ redis:
   password: ""  # Set via Secret
 ```
 
-**Output:** When you run `helm install my-agent ./my-agent-chart -f values-staging.yaml`, you get:
+**Output:** When you run `helm install task-api ./task-api-chart -f values-staging.yaml`, you get:
 - 2 replicas
 - Realistic resource limits
 - Production-like logging (INFO)
@@ -551,7 +551,7 @@ redis:
 Production maximizes availability and performance:
 
 ```yaml
-# my-agent-chart/values-prod.yaml
+# task-api-chart/values-prod.yaml
 agent:
   replicas: 5
   image:
@@ -583,7 +583,7 @@ service:
   type: LoadBalancer
 ```
 
-**Output:** When you run `helm install my-agent ./my-agent-chart -f values-prod.yaml`, you get:
+**Output:** When you run `helm install task-api ./task-api-chart -f values-prod.yaml`, you get:
 - 5 replicas for high availability
 - Production-grade resource limits
 - Minimal logging (WARN)
@@ -596,16 +596,16 @@ service:
 
 ```bash
 # Deploy to dev (uses values.yaml defaults)
-helm install my-agent ./my-agent-chart
+helm install task-api ./task-api-chart
 
 # Deploy to staging
-helm install my-agent ./my-agent-chart -f values-staging.yaml
+helm install task-api ./task-api-chart -f values-staging.yaml
 
 # Deploy to production
-helm install my-agent ./my-agent-chart -f values-prod.yaml
+helm install task-api ./task-api-chart -f values-prod.yaml
 
 # Upgrade staging to new version
-helm upgrade my-agent ./my-agent-chart \
+helm upgrade task-api ./task-api-chart \
   -f values-staging.yaml \
   --set agent.image.tag=v1.0.1
 ```
@@ -649,7 +649,7 @@ While environment files are preferred (they're version-controlled and documented
 ### Basic --set Syntax
 
 ```bash
-helm install my-agent ./my-agent-chart \
+helm install task-api ./task-api-chart \
   --set agent.name=custom-agent \
   --set agent.replicas=10 \
   --set agent.config.logLevel=DEBUG
@@ -696,7 +696,7 @@ cat > agent-config.json << 'EOF'
 EOF
 
 # Use --set-file to load it
-helm install my-agent ./my-agent-chart \
+helm install task-api ./task-api-chart \
   --set-file agent.customConfig=agent-config.json
 ```
 
@@ -850,7 +850,7 @@ As your chart grows, it's easy to make mistakes: typos in value names, wrong typ
 }
 ```
 
-Place this in `my-agent-chart/values.schema.json`.
+Place this in `task-api-chart/values.schema.json`.
 
 ---
 
@@ -860,7 +860,7 @@ Now when you run helm with invalid values, it catches the error:
 
 ```bash
 # Test 1: Missing required field
-helm template test ./my-agent-chart \
+helm template test ./task-api-chart \
   --set agent.replicas=abc
 
 # Output (validation error):
@@ -869,7 +869,7 @@ helm template test ./my-agent-chart \
 
 ```bash
 # Test 2: Invalid enum value
-helm template test ./my-agent-chart \
+helm template test ./task-api-chart \
   --set agent.config.logLevel=VERBOSE
 
 # Output (validation error):
@@ -878,7 +878,7 @@ helm template test ./my-agent-chart \
 
 ```bash
 # Test 3: Valid values pass
-helm template test ./my-agent-chart \
+helm template test ./task-api-chart \
   --set agent.replicas=5 \
   --set agent.config.logLevel=WARN
 
@@ -1017,7 +1017,7 @@ Every value should have a default that allows the chart to deploy and function, 
 agent:
   replicas: 1  # At least 1 replica
   image:
-    repository: myregistry/my-agent
+    repository: myregistry/task-api
     tag: latest  # Latest image available
   config:
     logLevel: INFO  # Standard logging
@@ -1048,7 +1048,7 @@ agent:
 
   image:
     # Container image repository
-    repository: myregistry/my-agent
+    repository: myregistry/task-api
     # Image tag (version)
     # Use vX.Y.Z for releases, v1.0.0-dev for testing
     tag: v1.0.0-dev
@@ -1123,7 +1123,7 @@ database:
 Or use `--set` with Secret values at deploy time:
 
 ```bash
-helm install my-agent ./my-agent-chart \
+helm install task-api ./task-api-chart \
   --set-string database.password=$(kubectl get secret db-credentials -o jsonpath='{.data.password}' | base64 -d)
 ```
 
@@ -1180,7 +1180,7 @@ Create a values.yaml for an AI agent chart with:
 **Solution:**
 
 ```yaml
-# my-agent-chart/values.yaml
+# task-api-chart/values.yaml
 agent:
   name: my-ai-agent
   replicas: 1
@@ -1237,7 +1237,7 @@ Create values-staging.yaml and values-prod.yaml that override the development de
 **Solution:**
 
 ```yaml
-# my-agent-chart/values-staging.yaml
+# task-api-chart/values-staging.yaml
 agent:
   replicas: 2
   config:
@@ -1257,7 +1257,7 @@ database:
 ```
 
 ```yaml
-# my-agent-chart/values-prod.yaml
+# task-api-chart/values-prod.yaml
 agent:
   replicas: 5
   config:
@@ -1289,12 +1289,12 @@ Create a Helm chart and verify that values override in the correct order.
 
 ```bash
 # 1. Create chart directory
-mkdir my-agent-chart && cd my-agent-chart
+mkdir task-api-chart && cd task-api-chart
 
 # 2. Create Chart.yaml
 cat > Chart.yaml << 'EOF'
 apiVersion: v2
-name: my-agent
+name: task-api
 version: 1.0.0
 EOF
 
@@ -1328,17 +1328,17 @@ EOF
 
 # 6. Test: Default values only
 echo "=== Default values ==="
-helm template my-agent .
+helm template task-api .
 
 # 7. Test: With -f values-prod.yaml
 echo ""
 echo "=== With -f values-prod.yaml ==="
-helm template my-agent . -f values-prod.yaml
+helm template task-api . -f values-prod.yaml
 
 # 8. Test: With --set override
 echo ""
 echo "=== With --set agent.replicas=10 ==="
-helm template my-agent . -f values-prod.yaml --set agent.replicas=10
+helm template task-api . -f values-prod.yaml --set agent.replicas=10
 ```
 
 **Output:**
@@ -1411,7 +1411,7 @@ Create a JSON Schema that validates:
 }
 ```
 
-Save as `my-agent-chart/values.schema.json`.
+Save as `task-api-chart/values.schema.json`.
 
 ---
 
@@ -1421,19 +1421,19 @@ Test that Helm rejects invalid values according to schema:
 
 ```bash
 # Test 1: Invalid replicas (string instead of number)
-helm template my-agent . --set agent.replicas=abc
+helm template task-api . --set agent.replicas=abc
 # Expected: Error about type mismatch
 
 # Test 2: Invalid logLevel (not in enum)
-helm template my-agent . --set agent.config.logLevel=VERBOSE
+helm template task-api . --set agent.config.logLevel=VERBOSE
 # Expected: Error about unsupported value
 
 # Test 3: Missing required modelName
-helm template my-agent . --set agent.config.modelName=null
+helm template task-api . --set agent.config.modelName=null
 # Expected: Error about missing required field
 
 # Test 4: Valid values pass
-helm template my-agent . \
+helm template task-api . \
   --set agent.replicas=5 \
   --set agent.config.logLevel=WARN \
   --set agent.config.modelName=gpt-4
@@ -1471,7 +1471,7 @@ Tell AI: "I missed something in my requirements. The agent needs to support cust
 
 ### Part 4: Validate Your Understanding
 
-Ask AI: "Walk me through the precedence hierarchy. If I run: `helm install my-agent ./my-agent-chart -f values-prod.yaml --set agent.replicas=3`, what will the final replica count be? Why?"
+Ask AI: "Walk me through the precedence hierarchy. If I run: `helm install task-api ./task-api-chart -f values-prod.yaml --set agent.replicas=3`, what will the final replica count be? Why?"
 
 AI's answer should explain that `--set` has highest priority, so replicas will be 3 (not 5 from values-prod.yaml).
 

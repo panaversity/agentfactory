@@ -951,12 +951,12 @@ Create a simple chart and package it:
 
 ```bash
 # Create a minimal chart
-mkdir -p my-agent-chart/templates
-cd my-agent-chart
+mkdir -p task-api-chart/templates
+cd task-api-chart
 
 cat > Chart.yaml <<'EOF'
 apiVersion: v2
-name: my-agent-chart
+name: task-api-chart
 version: 1.0.0
 description: "Simple AI agent Helm chart"
 EOF
@@ -989,10 +989,10 @@ helm package .
 **Output:**
 ```bash
 $ helm package .
-Successfully packaged chart and saved it to: /Users/username/my-agent-chart-1.0.0.tgz
+Successfully packaged chart and saved it to: /Users/username/task-api-chart-1.0.0.tgz
 
-$ ls -lh my-agent-chart-1.0.0.tgz
--rw-r--r--  1 username  staff   1.2K Nov 27 11:00 my-agent-chart-1.0.0.tgz
+$ ls -lh task-api-chart-1.0.0.tgz
+-rw-r--r--  1 username  staff   1.2K Nov 27 11:00 task-api-chart-1.0.0.tgz
 ```
 
 ---
@@ -1027,16 +1027,16 @@ Using the packaged chart and Docker Hub credentials:
 
 ```bash
 # Push to Docker Hub
-helm push my-agent-chart-1.0.0.tgz oci://docker.io/your-docker-username/
+helm push task-api-chart-1.0.0.tgz oci://docker.io/your-docker-username/
 
 # The chart is now in the registry
-# Reference: oci://docker.io/your-docker-username/my-agent-chart:1.0.0
+# Reference: oci://docker.io/your-docker-username/task-api-chart:1.0.0
 ```
 
 **Output:**
 ```bash
-$ helm push my-agent-chart-1.0.0.tgz oci://docker.io/your-docker-username/
-Pushed: docker.io/your-docker-username/my-agent-chart:1.0.0
+$ helm push task-api-chart-1.0.0.tgz oci://docker.io/your-docker-username/
+Pushed: docker.io/your-docker-username/task-api-chart:1.0.0
 ```
 
 ---
@@ -1051,23 +1051,23 @@ mkdir pull-test
 cd pull-test
 
 # Pull the chart
-helm pull oci://docker.io/your-docker-username/my-agent-chart:1.0.0
+helm pull oci://docker.io/your-docker-username/task-api-chart:1.0.0
 
 # Extract and inspect
-tar -xzf my-agent-chart-1.0.0.tgz
-cat my-agent-chart/Chart.yaml
+tar -xzf task-api-chart-1.0.0.tgz
+cat task-api-chart/Chart.yaml
 ```
 
 **Output:**
 ```bash
-$ helm pull oci://docker.io/your-docker-username/my-agent-chart:1.0.0
-Downloaded to my-agent-chart-1.0.0.tgz
+$ helm pull oci://docker.io/your-docker-username/task-api-chart:1.0.0
+Downloaded to task-api-chart-1.0.0.tgz
 
-$ tar -xzf my-agent-chart-1.0.0.tgz
+$ tar -xzf task-api-chart-1.0.0.tgz
 
-$ cat my-agent-chart/Chart.yaml
+$ cat task-api-chart/Chart.yaml
 apiVersion: v2
-name: my-agent-chart
+name: task-api-chart
 version: 1.0.0
 description: "Simple AI agent Helm chart"
 ```
@@ -1080,7 +1080,7 @@ Deploy using the OCI chart reference without downloading first:
 
 ```bash
 # Install from OCI URL (requires Minikube/cluster running)
-helm install my-agent oci://docker.io/your-docker-username/my-agent-chart:1.0.0 \
+helm install task-api oci://docker.io/your-docker-username/task-api-chart:1.0.0 \
   --namespace default
 
 # Check deployment
@@ -1090,21 +1090,21 @@ kubectl get pods
 
 **Output:**
 ```bash
-$ helm install my-agent oci://docker.io/your-docker-username/my-agent-chart:1.0.0
+$ helm install task-api oci://docker.io/your-docker-username/task-api-chart:1.0.0
 
-NAME: my-agent
+NAME: task-api
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
 
 $ kubectl get deployments
 NAME       READY   UP-TO-DATE   AVAILABLE   AGE
-my-agent   2/2     2            2           5s
+task-api   2/2     2            2           5s
 
 $ kubectl get pods
 NAME                        READY   STATUS    RESTARTS   AGE
-my-agent-5c7d8f9b2-x4k9p   1/1     Running   0          5s
-my-agent-5c7d8f9b2-y8m2q   1/1     Running   0          5s
+task-api-5c7d8f9b2-x4k9p   1/1     Running   0          5s
+task-api-5c7d8f9b2-y8m2q   1/1     Running   0          5s
 ```
 
 ---
@@ -1114,7 +1114,7 @@ my-agent-5c7d8f9b2-y8m2q   1/1     Running   0          5s
 Modify your chart and publish version 1.1.0:
 
 ```bash
-# In my-agent-chart directory, update Chart.yaml
+# In task-api-chart directory, update Chart.yaml
 sed -i '' 's/version: 1.0.0/version: 1.1.0/' Chart.yaml
 
 # Update values.yaml to use image tag 1.1.0
@@ -1124,20 +1124,20 @@ sed -i '' 's/tag: "1.0.0"/tag: "1.1.0"/' values.yaml
 helm package .
 
 # Push to registry
-helm push my-agent-chart-1.1.0.tgz oci://docker.io/your-docker-username/
+helm push task-api-chart-1.1.0.tgz oci://docker.io/your-docker-username/
 
 # Both versions now exist in the registry
-# oci://docker.io/your-docker-username/my-agent-chart:1.0.0
-# oci://docker.io/your-docker-username/my-agent-chart:1.1.0
+# oci://docker.io/your-docker-username/task-api-chart:1.0.0
+# oci://docker.io/your-docker-username/task-api-chart:1.1.0
 ```
 
 **Output:**
 ```bash
 $ helm package .
-Successfully packaged chart and saved it to: my-agent-chart-1.1.0.tgz
+Successfully packaged chart and saved it to: task-api-chart-1.1.0.tgz
 
-$ helm push my-agent-chart-1.1.0.tgz oci://docker.io/your-docker-username/
-Pushed: docker.io/your-docker-username/my-agent-chart:1.1.0
+$ helm push task-api-chart-1.1.0.tgz oci://docker.io/your-docker-username/
+Pushed: docker.io/your-docker-username/task-api-chart:1.1.0
 ```
 
 ---
@@ -1151,13 +1151,13 @@ If you don't have access to Docker Hub or prefer to keep charts private during d
 docker run -d -p 5000:5000 --name local-registry registry:2
 
 # Push to local registry
-helm push my-agent-chart-1.0.0.tgz oci://localhost:5000/
+helm push task-api-chart-1.0.0.tgz oci://localhost:5000/
 
 # Pull from local registry
-helm pull oci://localhost:5000/my-agent-chart:1.0.0
+helm pull oci://localhost:5000/task-api-chart:1.0.0
 
 # Install from local registry
-helm install my-agent oci://localhost:5000/my-agent-chart:1.0.0
+helm install task-api oci://localhost:5000/task-api-chart:1.0.0
 
 # Stop when done
 docker stop local-registry
@@ -1175,11 +1175,11 @@ Digest: sha256:...
 Status: Downloaded newer image for registry:2
 ef7b2e7b8c8f5d9a
 
-$ helm push my-agent-chart-1.0.0.tgz oci://localhost:5000/
-Pushed: localhost:5000/my-agent-chart:1.0.0
+$ helm push task-api-chart-1.0.0.tgz oci://localhost:5000/
+Pushed: localhost:5000/task-api-chart:1.0.0
 
-$ helm pull oci://localhost:5000/my-agent-chart:1.0.0
-Downloaded to my-agent-chart-1.0.0.tgz
+$ helm pull oci://localhost:5000/task-api-chart:1.0.0
+Downloaded to task-api-chart-1.0.0.tgz
 ```
 
 ---

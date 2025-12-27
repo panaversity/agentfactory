@@ -16,7 +16,7 @@ learning_objectives:
     description: "Install Helm and use it to deploy public charts"
     bloom_level: "Apply"
   - id: LO2
-    description: "Create custom Helm charts for AI agent deployments"
+    description: "Create custom Helm charts for Task API deployments"
     bloom_level: "Create"
   - id: LO3
     description: "Use values.yaml to parameterize deployments across environments"
@@ -28,13 +28,13 @@ learning_objectives:
 
 # Introduction to Helm
 
-When you deploy your agent to Kubernetes using kubectl, you apply individual YAML files—one for the Deployment, one for the Service, one for the ConfigMap, maybe one for the Secret. That's 5-10 files for a single agent.
+When you deploy your Task API to Kubernetes using kubectl, you apply individual YAML files—one for the Deployment, one for the Service, one for the ConfigMap, maybe one for the Secret. That's 5-10 files for a single service.
 
 Now imagine managing this across three environments: dev, staging, production. Each environment needs different resource limits, different image tags, different replicas. You copy and modify the same files ten times, creating drift and bugs.
 
-**Helm solves this problem.** Helm is the package manager for Kubernetes. Instead of managing individual YAML files, you create a **Helm chart**—a templated package that parameterizes your deployment. Change one value file, and your entire agent deployment adapts automatically.
+**Helm solves this problem.** Helm is the package manager for Kubernetes. Instead of managing individual YAML files, you create a **Helm chart**—a templated package that parameterizes your deployment. Change one value file, and your entire Task API deployment adapts automatically.
 
-This lesson teaches you to understand why Helm exists, install it, deploy a public chart, create your own custom chart, and manage releases across environments.
+This lesson teaches you to understand why Helm exists, install it, deploy a public chart, create your own custom chart for your Task API, and manage releases across environments.
 
 ---
 
@@ -47,26 +47,26 @@ Before Helm, deploying an application to Kubernetes meant writing YAML files by 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-agent
+  name: task-api
   namespace: default
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: my-agent
+      app: task-api
   template:
     metadata:
       labels:
-        app: my-agent
+        app: task-api
     spec:
       containers:
-      - name: agent
-        image: myregistry/my-agent:v1.0.0
+      - name: task-api
+        image: your-registry/task-api:v1.0.0
         ports:
         - containerPort: 8000
         env:
-        - name: MODEL_NAME
-          value: "gpt-4"
+        - name: DATABASE_URL
+          value: "postgresql://..."
         - name: LOG_LEVEL
           value: "INFO"
         resources:
@@ -83,14 +83,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-agent-service
+  name: task-api-service
 spec:
   type: ClusterIP
   ports:
   - port: 80
     targetPort: 8000
   selector:
-    app: my-agent
+    app: task-api
 ```
 
 ```yaml
@@ -98,17 +98,17 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: my-agent-config
+  name: task-api-config
 data:
-  model_name: "gpt-4"
   log_level: "INFO"
+  api_timeout: "30"
 ```
 
 This works for one environment. But in production, you need:
 
-- **Development**: 1 replica, 256Mi memory, gpt-3.5-turbo
-- **Staging**: 2 replicas, 512Mi memory, gpt-4
-- **Production**: 5 replicas, 1Gi memory, gpt-4-turbo
+- **Development**: 1 replica, 256Mi memory, DEBUG logging
+- **Staging**: 2 replicas, 512Mi memory, INFO logging
+- **Production**: 5 replicas, 1Gi memory, WARN logging
 
 Now you maintain three copies of the same files, edited manually. When you update the base deployment, you must remember to update all three copies. This is error-prone and doesn't scale.
 
@@ -116,7 +116,7 @@ Now you maintain three copies of the same files, edited manually. When you updat
 
 ```yaml
 replicas: {{ .Values.replicaCount }}
-image: myregistry/my-agent:{{ .Values.image.tag }}
+image: your-registry/task-api:{{ .Values.image.tag }}
 ```
 
 Then provide three values files—one for each environment:
@@ -135,7 +135,7 @@ image:
   tag: v1.0.0
 ```
 
-A single `helm install my-agent ./my-agent-chart -f values-prod.yaml` command deploys the entire stack to production with the correct configuration.
+A single `helm install task-api ./task-api-chart -f values-prod.yaml` command deploys the entire stack to production with the correct configuration.
 
 ---
 
@@ -210,7 +210,7 @@ Helm is now installed and ready to deploy charts.
 A Helm chart is a directory with a specific structure:
 
 ```
-my-agent-chart/
+task-api-chart/
 ├── Chart.yaml              # Chart metadata (name, version, description)
 ├── values.yaml             # Default configuration values
 ├── values-dev.yaml         # Development-specific overrides
@@ -345,28 +345,28 @@ You deployed a production-grade Redis instance with a single `helm install` comm
 
 ## Creating Your Own Helm Chart
 
-Now you'll create a custom chart for your AI agent. Instead of managing raw YAML files, you'll use Helm's templating to create a reusable package.
+Now you'll create a custom chart for your Task API from Chapter 49. Instead of managing raw YAML files, you'll use Helm's templating to create a reusable package.
 
 ### Step 1: Generate Chart Scaffold
 
 Helm provides a generator to create the basic chart structure:
 
 ```bash
-helm create my-agent-chart
+helm create task-api-chart
 ```
 
 **Output:**
 ```
-Creating my-agent-chart
+Creating task-api-chart
 ```
 
 ```bash
-tree my-agent-chart
+tree task-api-chart
 ```
 
 **Output:**
 ```
-my-agent-chart/
+task-api-chart/
 ├── Chart.yaml
 ├── charts
 ├── templates
@@ -385,31 +385,31 @@ my-agent-chart/
 ### Step 2: Examine Chart.yaml
 
 ```bash
-cat my-agent-chart/Chart.yaml
+cat task-api-chart/Chart.yaml
 ```
 
 **Output:**
 ```yaml
 apiVersion: v2
-name: my-agent-chart
+name: task-api-chart
 description: A Helm chart for Kubernetes
 type: application
 version: 0.1.0
 appVersion: "1.16"
 ```
 
-This declares the chart metadata. Update it for your agent:
+This declares the chart metadata. Update it for your Task API:
 
 ```yaml
 apiVersion: v2
-name: my-agent
-description: "Helm chart for deploying AI agents on Kubernetes"
+name: task-api
+description: "Helm chart for deploying Task API on Kubernetes"
 type: application
 version: 0.1.0
 appVersion: "1.0.0"
 keywords:
-  - ai
-  - agent
+  - task-api
+  - fastapi
   - kubernetes
 maintainers:
   - name: "Your Name"
@@ -419,7 +419,7 @@ maintainers:
 ### Step 3: Examine values.yaml
 
 ```bash
-cat my-agent-chart/values.yaml
+cat task-api-chart/values.yaml
 ```
 
 **Output:**
@@ -482,18 +482,18 @@ tolerations: []
 affinity: {}
 ```
 
-This is the template of all values. Each value is referenced by name in templates (e.g., `{{ .Values.replicaCount }}`). Update values.yaml for your AI agent:
+This is the template of all values. Each value is referenced by name in templates (e.g., `{{ .Values.replicaCount }}`). Update values.yaml for your Task API:
 
 ```yaml
 replicaCount: 3
 
 image:
-  repository: myregistry.azurecr.io/my-agent
+  repository: your-registry/task-api
   pullPolicy: Always
   tag: "v1.0.0"
 
 imagePullSecrets:
-  - name: acr-secret
+  - name: registry-secret
 
 service:
   type: ClusterIP
@@ -509,8 +509,8 @@ resources:
     memory: 512Mi
 
 env:
-  - name: MODEL_NAME
-    value: "gpt-4"
+  - name: DATABASE_URL
+    value: "postgresql://localhost:5432/tasks"
   - name: LOG_LEVEL
     value: "INFO"
   - name: API_TIMEOUT
@@ -520,7 +520,7 @@ env:
 ### Step 4: Examine the Deployment Template
 
 ```bash
-cat my-agent-chart/templates/deployment.yaml
+cat task-api-chart/templates/deployment.yaml
 ```
 
 **Output:**
@@ -528,16 +528,16 @@ cat my-agent-chart/templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "my-agent-chart.fullname" . }}
+  name: {{ include "task-api-chart.fullname" . }}
   labels:
-    {{- include "my-agent-chart.labels" . | nindent 4 }}
+    {{- include "task-api-chart.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "my-agent-chart.selectorLabels" . | nindent 6 }}
+      {{- include "task-api-chart.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -545,13 +545,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "my-agent-chart.selectorLabels" . | nindent 8 }}
+        {{- include "task-api-chart.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "my-agent-chart.serviceAccountName" . }}
+      serviceAccountName: {{ include "task-api-chart.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -599,7 +599,7 @@ spec:
 This template uses Go template syntax:
 
 - `{{ .Values.replicaCount }}` — Substitutes the value of `replicaCount` from values.yaml
-- `{{ include "my-agent-chart.fullname" . }}` — Calls a helper function (defined in _helpers.tpl)
+- `{{ include "task-api-chart.fullname" . }}` — Calls a helper function (defined in _helpers.tpl)
 - `{{- if .Values.autoscaling.enabled }}` — Conditional: include this section only if autoscaling is enabled
 - `{{ toYaml . | nindent 8 }}` — Converts a value to YAML and indents it 8 spaces
 
@@ -608,32 +608,32 @@ This template uses Go template syntax:
 Before deploying, preview what Helm will generate:
 
 ```bash
-helm template my-release my-agent-chart
+helm template my-release task-api-chart
 ```
 
 **Output:**
 ```yaml
 ---
-# Source: my-agent-chart/templates/serviceaccount.yaml
+# Source: task-api-chart/templates/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: my-release-my-agent-chart
+  name: my-release-task-api-chart
   labels:
-    helm.sh/chart: my-agent-chart-0.1.0
-    app.kubernetes.io/name: my-agent-chart
+    helm.sh/chart: task-api-chart-0.1.0
+    app.kubernetes.io/name: task-api-chart
     app.kubernetes.io/instance: my-release
     app.kubernetes.io/version: "1.0.0"
     app.kubernetes.io/managed-by: Helm
 ---
-# Source: my-agent-chart/templates/service.yaml
+# Source: task-api-chart/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-release-my-agent-chart
+  name: my-release-task-api-chart
   labels:
-    helm.sh/chart: my-agent-chart-0.1.0
-    app.kubernetes.io/name: my-agent-chart
+    helm.sh/chart: task-api-chart-0.1.0
+    app.kubernetes.io/name: task-api-chart
     app.kubernetes.io/instance: my-release
     app.kubernetes.io/version: "1.0.0"
     app.kubernetes.io/managed-by: Helm
@@ -645,17 +645,17 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: my-agent-chart
+    app.kubernetes.io/name: task-api-chart
     app.kubernetes.io/instance: my-release
 ---
-# Source: my-agent-chart/templates/deployment.yaml
+# Source: task-api-chart/templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-release-my-agent-chart
+  name: my-release-task-api-chart
   labels:
-    helm.sh/chart: my-agent-chart-0.1.0
-    app.kubernetes.io/name: my-agent-chart
+    helm.sh/chart: task-api-chart-0.1.0
+    app.kubernetes.io/name: task-api-chart
     app.kubernetes.io/instance: my-release
     app.kubernetes.io/version: "1.0.0"
     app.kubernetes.io/managed-by: Helm
@@ -663,21 +663,21 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app.kubernetes.io/name: my-agent-chart
+      app.kubernetes.io/name: task-api-chart
       app.kubernetes.io/instance: my-release
   template:
     metadata:
       labels:
-        helm.sh/chart: my-agent-chart-0.1.0
-        app.kubernetes.io/name: my-agent-chart
+        helm.sh/chart: task-api-chart-0.1.0
+        app.kubernetes.io/name: task-api-chart
         app.kubernetes.io/instance: my-release
         app.kubernetes.io/version: "1.0.0"
         app.kubernetes.io/managed-by: Helm
     spec:
-      serviceAccountName: my-release-my-agent-chart
+      serviceAccountName: my-release-task-api-chart
       containers:
-      - name: my-agent-chart
-        image: "myregistry.azurecr.io/my-agent:v1.0.0"
+      - name: task-api-chart
+        image: "your-registry/task-api:v1.0.0"
         imagePullPolicy: Always
         ports:
         - name: http
@@ -736,8 +736,8 @@ resources:
     memory: 256Mi
 
 env:
-  - name: MODEL_NAME
-    value: "gpt-3.5-turbo"
+  - name: DATABASE_URL
+    value: "postgresql://localhost:5432/tasks_dev"
   - name: LOG_LEVEL
     value: "DEBUG"
   - name: API_TIMEOUT
@@ -761,8 +761,8 @@ resources:
     memory: 1Gi
 
 env:
-  - name: MODEL_NAME
-    value: "gpt-4-turbo"
+  - name: DATABASE_URL
+    value: "postgresql://prod-db:5432/tasks"
   - name: LOG_LEVEL
     value: "WARN"
   - name: API_TIMEOUT
@@ -778,12 +778,12 @@ autoscaling:
 ### Deploy to Development
 
 ```bash
-helm install my-agent my-agent-chart -f my-agent-chart/values-dev.yaml
+helm install task-api task-api-chart -f task-api-chart/values-dev.yaml
 ```
 
 **Output:**
 ```
-NAME: my-agent
+NAME: task-api
 LAST DEPLOYED: Mon Dec 23 11:05:22 2024
 NAMESPACE: default
 STATUS: deployed
@@ -793,13 +793,13 @@ REVISION: 1
 Verify the deployment:
 
 ```bash
-kubectl get deployment my-agent-my-agent-chart
+kubectl get deployment task-api
 ```
 
 **Output:**
 ```
 NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
-my-agent-my-agent-chart   1/1     1            1           15s
+task-api   1/1     1            1           15s
 ```
 
 Notice: 1 replica in dev (from values-dev.yaml).
@@ -807,12 +807,12 @@ Notice: 1 replica in dev (from values-dev.yaml).
 ### Deploy to Production
 
 ```bash
-helm install my-agent-prod my-agent-chart -f my-agent-chart/values-prod.yaml
+helm install task-api-prod task-api-chart -f task-api-chart/values-prod.yaml
 ```
 
 **Output:**
 ```
-NAME: my-agent-prod
+NAME: task-api-prod
 LAST DEPLOYED: Mon Dec 23 11:06:45 2024
 NAMESPACE: default
 STATUS: deployed
@@ -822,13 +822,13 @@ REVISION: 1
 Verify:
 
 ```bash
-kubectl get deployment my-agent-prod-my-agent-chart
+kubectl get deployment task-api-prod
 ```
 
 **Output:**
 ```
 NAME                          READY   UP-TO-DATE   AVAILABLE   AGE
-my-agent-prod-my-agent-chart  5/5     5            5           18s
+task-api-prod  5/5     5            5           18s
 ```
 
 Notice: 5 replicas in production (from values-prod.yaml).
@@ -842,12 +842,12 @@ A **release** is an instance of a chart deployed to your cluster. You manage rel
 ### Install (Create a Release)
 
 ```bash
-helm install my-agent my-agent-chart -f my-agent-chart/values-prod.yaml
+helm install task-api task-api-chart -f task-api-chart/values-prod.yaml
 ```
 
 **Output:**
 ```
-NAME: my-agent
+NAME: task-api
 LAST DEPLOYED: Mon Dec 23 11:15:22 2024
 NAMESPACE: default
 STATUS: deployed
@@ -859,15 +859,15 @@ REVISION: 1
 You've pushed a new version of your agent image. Update the release to use it:
 
 ```bash
-helm upgrade my-agent my-agent-chart \
-  -f my-agent-chart/values-prod.yaml \
+helm upgrade task-api task-api-chart \
+  -f task-api-chart/values-prod.yaml \
   --set image.tag="v1.1.0"
 ```
 
 **Output:**
 ```
-Release "my-agent" has been upgraded successfully
-NAME: my-agent
+Release "task-api" has been upgraded successfully
+NAME: task-api
 LAST DEPLOYED: Mon Dec 23 11:16:33 2024
 NAMESPACE: default
 STATUS: deployed
@@ -879,25 +879,25 @@ Notice the revision changed from 1 to 2. Helm tracks every release change.
 Verify the rollout:
 
 ```bash
-kubectl rollout status deployment/my-agent-my-agent-chart
+kubectl rollout status deployment/task-api
 ```
 
 **Output:**
 ```
-deployment "my-agent-my-agent-chart" successfully rolled out
+deployment "task-api" successfully rolled out
 ```
 
 ### Check Release History
 
 ```bash
-helm history my-agent
+helm history task-api
 ```
 
 **Output:**
 ```
 REVISION	UPDATED                 	STATUS    	CHART                  	APP VERSION	DESCRIPTION
-1        	Mon Dec 23 11:15:22 2024	superseded	my-agent-chart-0.1.0	1.0.0      	Install complete
-2        	Mon Dec 23 11:16:33 2024	deployed  	my-agent-chart-0.1.0	1.0.0      	Upgrade complete
+1        	Mon Dec 23 11:15:22 2024	superseded	task-api-chart-0.1.0	1.0.0      	Install complete
+2        	Mon Dec 23 11:16:33 2024	deployed  	task-api-chart-0.1.0	1.0.0      	Upgrade complete
 ```
 
 ### Rollback (Revert to a Previous Release)
@@ -905,27 +905,27 @@ REVISION	UPDATED                 	STATUS    	CHART                  	APP VERSION
 The new version has a bug. Rollback to revision 1:
 
 ```bash
-helm rollback my-agent 1
+helm rollback task-api 1
 ```
 
 **Output:**
 ```
 Rollback was a success
-Release "my-agent" has been rolled back to revision 1
+Release "task-api" has been rolled back to revision 1
 ```
 
 Verify:
 
 ```bash
-helm history my-agent
+helm history task-api
 ```
 
 **Output:**
 ```
 REVISION	UPDATED                 	STATUS    	CHART                  	APP VERSION	DESCRIPTION
-1        	Mon Dec 23 11:15:22 2024	superseded	my-agent-chart-0.1.0	1.0.0      	Install complete
-2        	Mon Dec 23 11:16:33 2024	superseded	my-agent-chart-0.1.0	1.0.0      	Upgrade complete
-3        	Mon Dec 23 11:17:45 2024	deployed  	my-agent-chart-0.1.0	1.0.0      	Rollback to 1
+1        	Mon Dec 23 11:15:22 2024	superseded	task-api-chart-0.1.0	1.0.0      	Install complete
+2        	Mon Dec 23 11:16:33 2024	superseded	task-api-chart-0.1.0	1.0.0      	Upgrade complete
+3        	Mon Dec 23 11:17:45 2024	deployed  	task-api-chart-0.1.0	1.0.0      	Rollback to 1
 ```
 
 A new revision (3) was created that rolls back to revision 1's configuration. The agent is now running the old image again.
@@ -933,12 +933,12 @@ A new revision (3) was created that rolls back to revision 1's configuration. Th
 ### Uninstall (Delete a Release)
 
 ```bash
-helm uninstall my-agent
+helm uninstall task-api
 ```
 
 **Output:**
 ```
-release "my-agent" uninstalled
+release "task-api" uninstalled
 ```
 
 All Kubernetes resources created by this release are deleted:
@@ -966,25 +966,25 @@ You now understand:
 - **Environment-specific values**: Creating separate values files for dev/prod deployments
 - **Release management**: Install, upgrade, rollback, and uninstall operations
 
-With these skills, you can package any Kubernetes application—including your AI agent—into a reusable, versioned Helm chart that deploys consistently across environments.
+With these skills, you can package any Kubernetes application—including your Task API—into a reusable, versioned Helm chart that deploys consistently across environments.
 
 ---
 
 ## Try With AI
 
-Now you'll work with AI to create a multi-environment Helm configuration for your agent.
+Now you'll work with AI to create a multi-environment Helm configuration for your Task API.
 
-**Setup**: You have your AI agent container image pushed to a registry. You'll parameterize a Helm chart to support three environments (dev, staging, production) with different replicas, resources, and model configurations.
+**Setup**: You have your Task API container image from Chapter 49 pushed to a registry. You'll parameterize a Helm chart to support three environments (dev, staging, production) with different replicas, resources, and database configurations.
 
 **Prompts**:
 
 1. **Chart Creation with AI**:
    ```
-   I have an AI agent image at myregistry.azurecr.io/my-agent:latest.
-   Create a Helm chart called 'ai-agent' with:
-   - Deployment for the agent (port 8000)
-   - Service exposing the agent (ClusterIP)
-   - ConfigMap for model configuration (MODEL_NAME, LOG_LEVEL)
+   I have my Task API image at your-registry/task-api:latest from Chapter 49.
+   Create a Helm chart called 'task-api' with:
+   - Deployment for the Task API (port 8000)
+   - Service exposing the API (ClusterIP)
+   - ConfigMap for configuration (DATABASE_URL, LOG_LEVEL)
    - Default values: 3 replicas, 500m CPU limit, 1Gi memory limit
 
    What does the Chart.yaml and values.yaml look like?
@@ -992,19 +992,19 @@ Now you'll work with AI to create a multi-environment Helm configuration for you
 
 2. **Environment Values with AI**:
    ```
-   Now create three values files for this chart:
+   Now create three values files for the Task API chart:
 
-   values-dev.yaml: 1 replica, 250m CPU, 512Mi memory, gpt-3.5-turbo
-   values-staging.yaml: 2 replicas, 500m CPU, 1Gi memory, gpt-4
-   values-prod.yaml: 5 replicas, 1Gi CPU, 2Gi memory, gpt-4-turbo
+   values-dev.yaml: 1 replica, 250m CPU, 512Mi memory, DEBUG logging
+   values-staging.yaml: 2 replicas, 500m CPU, 1Gi memory, INFO logging
+   values-prod.yaml: 5 replicas, 1Gi CPU, 2Gi memory, WARN logging
 
    Should I use separate files or one values file with conditionals?
    ```
 
 3. **Refinement Based on Response**:
    Ask the AI to clarify:
-   - How would you handle secret injection for API keys without storing them in values files?
-   - Can I use Helm hooks to run database migrations before the agent starts?
+   - How would you handle the DATABASE_URL secret without storing it in values files?
+   - Can I use Helm hooks to run database migrations before the Task API starts?
 
-**Expected**: You'll discover that environment-specific values files are cleaner than conditionals, and learn about Helm's secret management and hooks—features that deepen your chart's capabilities.
+**Expected**: You'll discover that environment-specific values files are cleaner than conditionals, and learn about Helm's secret management and hooks—features you'll explore in later lessons.
 

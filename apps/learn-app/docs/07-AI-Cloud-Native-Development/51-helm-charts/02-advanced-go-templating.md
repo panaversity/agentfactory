@@ -166,7 +166,7 @@ name: {{ .Values.serviceName | upper }}
 ```yaml
 name: MY-AGENT
 ```
-(when `serviceName: my-agent`)
+(when `serviceName: task-api`)
 
 The `upper` function transforms text to uppercase.
 
@@ -190,7 +190,7 @@ name: {{ .Values.serviceName | lower | quote }}
 
 **Output:**
 ```yaml
-name: "my-agent"
+name: "task-api"
 ```
 
 Step by step:
@@ -638,7 +638,7 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 ```
 
-`{{ .Chart.Name }}` is from `Chart.yaml` (e.g., "my-agent")
+`{{ .Chart.Name }}` is from `Chart.yaml` (e.g., "task-api")
 `{{ .Chart.Version }}` is from `Chart.yaml` (e.g., "1.0.0")
 `{{ .Release.Service }}` is always "Helm" for Helm-deployed resources
 
@@ -646,7 +646,7 @@ metadata:
 ```yaml
 metadata:
   labels:
-    chart: my-agent-1.0.0
+    chart: task-api-1.0.0
     app.kubernetes.io/managed-by: Helm
 ```
 
@@ -703,7 +703,7 @@ Without `{{-`, you'd get extra blank lines that break YAML indentation.
 Named templates (also called "partials") let you define reusable template code. You'll explore this deeply in Lesson 2, but the basic syntax is:
 
 ```yaml
-{{- define "my-agent.labels" }}
+{{- define "task-api.labels" }}
 labels:
   app: {{ .Chart.Name }}
   release: {{ .Release.Name }}
@@ -714,14 +714,14 @@ Then include it elsewhere:
 
 ```yaml
 metadata:
-  {{- include "my-agent.labels" . }}
+  {{- include "task-api.labels" . }}
 ```
 
 **Output:**
 ```yaml
 metadata:
   labels:
-    app: my-agent
+    app: task-api
     release: my-release
 ```
 
@@ -787,7 +787,7 @@ Given environment variable values, transform and render them:
 
 ```yaml
 # values.yaml
-serviceName: my-agent
+serviceName: task-api
 environment: development
 timeout: 30
 ```

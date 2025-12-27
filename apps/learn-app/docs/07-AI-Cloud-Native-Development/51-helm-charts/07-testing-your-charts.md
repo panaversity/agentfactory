@@ -398,32 +398,32 @@ Test suite for my-release FAILED
 
 ```bash
 # Step 1: Deploy the chart
-helm install my-agent ./agent-chart --values agent-values.yaml
+helm install task-api ./agent-chart --values agent-values.yaml
 ```
 
 **Output:**
 ```
-Release "my-agent" has been deployed.
-NAME: my-agent
+Release "task-api" has been deployed.
+NAME: task-api
 STATUS: deployed
 REVISION: 1
 ```
 
 ```bash
 # Step 2: Run tests against deployed release
-helm test my-agent
+helm test task-api
 ```
 
 **Output:**
 ```
-Pod: my-agent-test-1
-Pod: my-agent-test-1 succeeded
-Pod: my-agent-test-2
-Pod: my-agent-test-2 succeeded
-Pod: my-agent-test-3
-Pod: my-agent-test-3 succeeded
-Pod: my-agent-connectivity-test
-Pod: my-agent-connectivity-test succeeded
+Pod: task-api-test-1
+Pod: task-api-test-1 succeeded
+Pod: task-api-test-2
+Pod: task-api-test-2 succeeded
+Pod: task-api-test-3
+Pod: task-api-test-3 succeeded
+Pod: task-api-connectivity-test
+Pod: task-api-connectivity-test succeeded
 
 TEST SUITE: PASSED
 ```
@@ -433,7 +433,7 @@ TEST SUITE: PASSED
 If tests take longer than the default 300 seconds:
 
 ```bash
-helm test my-agent --timeout 10m
+helm test task-api --timeout 10m
 ```
 
 **Output:**

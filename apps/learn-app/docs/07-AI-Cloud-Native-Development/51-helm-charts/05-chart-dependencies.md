@@ -68,9 +68,9 @@ A Helm chart declares its dependencies in Chart.yaml using a `dependencies:` lis
 ### Basic Dependency Declaration
 
 ```yaml
-# my-agent-chart/Chart.yaml
+# task-api-chart/Chart.yaml
 apiVersion: v2
-name: my-agent
+name: task-api
 version: 0.1.0
 description: AI agent with PostgreSQL and Redis
 
@@ -85,7 +85,7 @@ dependencies:
 
 **Output:**
 
-When you run `helm dependency list my-agent-chart`, Helm displays:
+When you run `helm dependency list task-api-chart`, Helm displays:
 ```
 NAME            VERSION         REPOSITORY
 postgresql      13.2.0          https://charts.bitnami.com/bitnami
@@ -103,7 +103,7 @@ Declaring a dependency is not enough—Helm must fetch the actual chart files. T
 ### Running Dependency Update
 
 ```bash
-helm dependency update my-agent-chart
+helm dependency update task-api-chart
 ```
 
 **Output:**
@@ -119,7 +119,7 @@ Update Complete. ⎈Happy Helming!⎈
 After running `helm dependency update`, your chart structure becomes:
 
 ```
-my-agent-chart/
+task-api-chart/
 ├── Chart.yaml
 ├── values.yaml
 ├── charts/
@@ -197,7 +197,7 @@ Not every deployment needs every dependency. A developer environment might skip 
 ### Conditional Dependency Declaration
 
 ```yaml
-# my-agent-chart/Chart.yaml
+# task-api-chart/Chart.yaml
 dependencies:
   - name: postgresql
     version: "^13.0.0"
@@ -213,7 +213,7 @@ dependencies:
 ### Controlling with Values
 
 ```yaml
-# my-agent-chart/values.yaml
+# task-api-chart/values.yaml
 postgresql:
   enabled: true
   auth:
@@ -232,7 +232,7 @@ redis:
 
 To enable Redis:
 ```bash
-helm install my-agent ./my-agent-chart --set redis.enabled=true
+helm install task-api ./task-api-chart --set redis.enabled=true
 ```
 
 ---
@@ -244,7 +244,7 @@ When you have many optional dependencies, managing them individually is tedious.
 ### Tagging Dependencies
 
 ```yaml
-# my-agent-chart/Chart.yaml
+# task-api-chart/Chart.yaml
 dependencies:
   # Database tier
   - name: postgresql
@@ -274,7 +274,7 @@ dependencies:
 ### Controlling with Tag Values
 
 ```yaml
-# my-agent-chart/values.yaml
+# task-api-chart/values.yaml
 tags:
   database: true    # Enable all dependencies tagged with "database"
   cache: false      # Disable all dependencies tagged with "cache"
@@ -295,7 +295,7 @@ rabbitmq:
 
 To enable all data services:
 ```bash
-helm install my-agent ./my-agent-chart --set tags.cache=true --set tags.messaging=true
+helm install task-api ./task-api-chart --set tags.cache=true --set tags.messaging=true
 ```
 
 ---
@@ -334,7 +334,7 @@ Subcharts have their own `values.yaml` files with configurations. You configure 
 Without import-values, subchart configuration is deeply nested:
 
 ```yaml
-# my-agent-chart/values.yaml
+# task-api-chart/values.yaml
 postgresql:
   auth:
     username: agent
@@ -352,7 +352,7 @@ In your templates, you reference the full path: `{{ .Values.postgresql.auth.user
 ### Simplifying with import-values
 
 ```yaml
-# my-agent-chart/Chart.yaml
+# task-api-chart/Chart.yaml
 dependencies:
   - name: postgresql
     version: "^13.0.0"
@@ -368,7 +368,7 @@ dependencies:
 With this mapping, your values become:
 
 ```yaml
-# my-agent-chart/values.yaml
+# task-api-chart/values.yaml
 postgresqlAuth:
   username: agent
   password: secretpassword
@@ -393,7 +393,7 @@ Subcharts inherit parent values using a specific naming convention. The subchart
 ### Configuration Hierarchy
 
 ```yaml
-# my-agent-chart/values.yaml
+# task-api-chart/values.yaml
 # Direct subchart configuration
 postgresql:
   auth:
@@ -427,7 +427,7 @@ Sometimes you need the same chart multiple times with different configurations (
 ### Multiple Instance Declaration
 
 ```yaml
-# my-agent-chart/Chart.yaml
+# task-api-chart/Chart.yaml
 dependencies:
   # Primary database
   - name: postgresql
@@ -445,7 +445,7 @@ dependencies:
 ### Configuring Each Instance
 
 ```yaml
-# my-agent-chart/values.yaml
+# task-api-chart/values.yaml
 postgresql-primary:
   auth:
     database: agent_primary
@@ -474,9 +474,9 @@ Here's how all these pieces work together:
 ### Step 1: Declare Dependencies in Chart.yaml
 
 ```yaml
-# my-agent-chart/Chart.yaml
+# task-api-chart/Chart.yaml
 apiVersion: v2
-name: my-agent-chart
+name: task-api-chart
 version: 1.0.0
 
 dependencies:
@@ -491,7 +491,7 @@ dependencies:
 ### Step 2: Configure in values.yaml
 
 ```yaml
-# my-agent-chart/values.yaml
+# task-api-chart/values.yaml
 tags:
   database: true
 
@@ -509,7 +509,7 @@ postgresql:
 ### Step 3: Update Dependencies
 
 ```bash
-cd my-agent-chart
+cd task-api-chart
 helm dependency update
 ```
 
@@ -526,7 +526,7 @@ The `charts/postgresql/` directory now exists.
 ### Step 4: Reference Subchart Values in Templates
 
 ```yaml
-# my-agent-chart/templates/deployment.yaml
+# task-api-chart/templates/deployment.yaml
 spec:
   containers:
   - name: agent
@@ -542,23 +542,23 @@ spec:
 ### Step 5: Install Combined Chart
 
 ```bash
-helm install my-agent ./my-agent-chart
+helm install task-api ./task-api-chart
 ```
 
 **Output:**
 
 ```
-NAME: my-agent
+NAME: task-api
 STATUS: deployed
 REVISION: 1
 
 Resources created:
-  - Deployment (my-agent)
-  - Service (my-agent)
-  - StatefulSet (my-agent-postgresql)
-  - Service (my-agent-postgresql)
-  - ConfigMap (my-agent-postgresql-config)
-  - Secret (my-agent-postgresql-password)
+  - Deployment (task-api)
+  - Service (task-api)
+  - StatefulSet (task-api-postgresql)
+  - Service (task-api-postgresql)
+  - ConfigMap (task-api-postgresql-config)
+  - Secret (task-api-postgresql-password)
   ...
 ```
 
@@ -580,7 +580,7 @@ dependencies:
 
 ```bash
 # Immediately run helm install without updating
-helm install my-agent ./my-agent-chart
+helm install task-api ./task-api-chart
 # ERROR: dependency "redis" not found
 ```
 
@@ -660,11 +660,11 @@ Add Bitnami PostgreSQL to your chart with version constraint `^13.0.0`.
 
 **Instructions:**
 
-1. Open your `my-agent-chart/Chart.yaml`
+1. Open your `task-api-chart/Chart.yaml`
 2. Add a `dependencies:` section after `description:`
 3. Add PostgreSQL with repository `https://charts.bitnami.com/bitnami`
 
-**Expected outcome:** You should be able to run `helm dependency list my-agent-chart` and see PostgreSQL listed.
+**Expected outcome:** You should be able to run `helm dependency list task-api-chart` and see PostgreSQL listed.
 
 ---
 
@@ -707,7 +707,7 @@ Set PostgreSQL username, password, and database through parent values.
 
 2. Verify the structure matches PostgreSQL subchart expectations
 
-**Expected outcome:** When you run `helm template my-agent-chart`, the PostgreSQL StatefulSet should have these auth values rendered.
+**Expected outcome:** When you run `helm template task-api-chart`, the PostgreSQL StatefulSet should have these auth values rendered.
 
 ---
 
@@ -754,9 +754,9 @@ Download subcharts and verify they're stored in `charts/`.
 
 **Instructions:**
 
-1. Run: `helm dependency update my-agent-chart`
-2. List the contents: `ls -la my-agent-chart/charts/`
-3. Check PostgreSQL was downloaded: `ls my-agent-chart/charts/postgresql/`
+1. Run: `helm dependency update task-api-chart`
+2. List the contents: `ls -la task-api-chart/charts/`
+3. Check PostgreSQL was downloaded: `ls task-api-chart/charts/postgresql/`
 
 **Expected outcome:** The `charts/postgresql/` directory exists with a complete subchart.
 
@@ -768,7 +768,7 @@ Create a `values-nodedb.yaml` that disables PostgreSQL but enables a Redis cache
 
 **Instructions:**
 
-1. Create `my-agent-chart/values-nodedb.yaml`:
+1. Create `task-api-chart/values-nodedb.yaml`:
    ```yaml
    postgresql:
      enabled: false
@@ -779,7 +779,7 @@ Create a `values-nodedb.yaml` that disables PostgreSQL but enables a Redis cache
        enabled: false  # No password in dev
    ```
 
-2. Test rendering: `helm template my-agent-chart -f my-agent-chart/values-nodedb.yaml`
+2. Test rendering: `helm template task-api-chart -f task-api-chart/values-nodedb.yaml`
 
 **Expected outcome:** PostgreSQL StatefulSet should NOT appear, but Redis Deployment should.
 

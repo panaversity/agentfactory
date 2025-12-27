@@ -8,7 +8,7 @@ description: "Master Helm chart architecture for production AI deployments"
 
 Helm is the package manager for Kubernetes. Instead of managing individual YAML files, you create **Helm charts**—templated packages that parameterize deployments across environments. This chapter takes you from Helm basics to production architecture.
 
-This chapter starts with Helm fundamentals (installation, chart structure, releases) then advances to Go templating, multi-chart dependencies, lifecycle hooks, OCI distribution, and library charts. By the end, you'll build production-grade charts that deploy your AI agent with a single command across any environment.
+This chapter starts with Helm fundamentals (installation, chart structure, releases) then advances to Go templating, multi-chart dependencies, lifecycle hooks, OCI distribution, and library charts. By the end, you'll build production-grade charts that deploy your Task API (from Chapter 49) with a single command across any environment.
 
 ## Prerequisites
 

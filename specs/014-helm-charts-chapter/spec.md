@@ -9,7 +9,7 @@
 
 ## Overview
 
-Chapter 51 is a **comprehensive deep-dive** into Helm, the package manager for Kubernetes. Building on Chapter 50's 45-minute introduction (Lesson 20), this chapter transforms students from Helm users into Helm chart architects who can design, template, test, and distribute production-grade charts for AI services.
+Chapter 51 is a **comprehensive deep-dive** into Helm, the package manager for Kubernetes. Starting from fundamentals in Lesson 1 (moved from Chapter 50), this chapter transforms students from Helm beginners into Helm chart architects who can design, template, test, and distribute production-grade charts for AI services.
 
 **Why This Chapter Matters**: In production, AI services require multi-environment deployments (dev/staging/prod), complex dependencies, lifecycle hooks for migrations, and organizational chart sharing. Single-lesson Helm coverage is insufficient. This chapter produces students who can architect Helm-based deployment strategies for enterprise AI systems.
 
@@ -23,11 +23,11 @@ Chapter 51 is a **comprehensive deep-dive** into Helm, the package manager for K
 - Advanced patterns: Init containers, sidecars, StatefulSets
 - Security: RBAC, SecurityContext, NetworkPolicy
 - Resource management: Requests/limits, HPA
-- Basic Helm: Chart structure, values.yaml, `helm install/upgrade/rollback`
-- Minikube cluster setup and kubectl operations
+- Docker Desktop Kubernetes cluster and kubectl operations
 
 **What this chapter must explain from scratch**:
-- Advanced Go templating (flow control, variables, pipelines, named templates)
+- Helm fundamentals (installation, chart structure, releases) - Lesson 1
+- Go templating (flow control, variables, pipelines, named templates)
 - Chart dependencies and subchart composition
 - Helm hooks (pre-install, post-upgrade, test hooks)
 - Chart testing with helm test and unit testing frameworks
@@ -171,7 +171,7 @@ A student creates a production-ready Helm chart for their Part 6 AI agent with a
 
 **Why this priority**: Capstone synthesizes all learning. Students demonstrate mastery by producing deployable, maintainable artifacts.
 
-**Independent Test**: Student can deploy their complete AI agent to Minikube with one command, including database, cache, migrations, and health verification.
+**Independent Test**: Student can deploy their complete AI agent to Docker Desktop Kubernetes with one command, including database, cache, migrations, and health verification.
 
 **Acceptance Scenarios**:
 
@@ -197,11 +197,11 @@ A student creates a production-ready Helm chart for their Part 6 AI agent with a
 
 #### Content Structure Requirements
 
-- **FR-001**: Chapter MUST contain 8-10 lessons following 4-Layer Teaching Method progression
-- **FR-002**: Lessons 1-6 MUST be Layer 1 (Manual Foundation) establishing templating mastery before AI collaboration
-- **FR-003**: At least one lesson MUST be Layer 2 (AI Collaboration) demonstrating AI-assisted chart creation
-- **FR-004**: Chapter MUST include Layer 4 capstone project producing deployable AI agent chart
-- **FR-005**: Chapter MUST include Layer 3 lesson creating reusable Helm intelligence (skill or subagent)
+- **FR-001**: Chapter MUST contain 12 lessons following 4-Layer Teaching Method progression
+- **FR-002**: Lessons 1-9 MUST be Layer 1 (Manual Foundation) establishing Helm fundamentals and templating mastery before AI collaboration
+- **FR-003**: Lesson 10 MUST be Layer 2 (AI Collaboration) demonstrating AI-assisted chart creation
+- **FR-004**: Lesson 11 MUST be Layer 4 capstone project producing deployable AI agent chart
+- **FR-005**: Lesson 12 MUST be Layer 3 lesson creating reusable Helm intelligence (skill)
 
 #### Knowledge Requirements
 
@@ -218,11 +218,11 @@ A student creates a production-ready Helm chart for their Part 6 AI agent with a
 - **FR-013**: Every lesson MUST include hands-on exercises using the student's Part 6 AI agent
 - **FR-014**: Chapter MUST produce values files for at least 3 environments (dev, staging, prod)
 - **FR-015**: Capstone MUST integrate chart with PostgreSQL and/or Redis dependencies
-- **FR-016**: All code examples MUST be executable on Minikube without cloud dependencies
+- **FR-016**: All code examples MUST be executable on Docker Desktop Kubernetes without cloud dependencies
 
 #### Quality Requirements
 
-- **FR-017**: Chapter MUST NOT duplicate content from Chapter 50 Lesson 20 (basic Helm intro)
+- **FR-017**: Chapter MUST include Lesson 1 (Introduction to Helm) as foundation before advanced topics
 - **FR-018**: Chapter MUST reference Chapter 50 prerequisites explicitly in README
 - **FR-019**: Each lesson MUST end with "Try With AI" section (no "Key Takeaways" or "What's Next")
 - **FR-020**: Chapter MUST follow constitution v6.0.1 meta-commentary prohibition
@@ -245,7 +245,7 @@ A student creates a production-ready Helm chart for their Part 6 AI agent with a
 
 - **SC-001**: Students can create a Helm chart from scratch in under 30 minutes (measured by capstone completion time)
 - **SC-002**: Students can deploy their AI agent to 3 environments with a single chart (dev/staging/prod via values files)
-- **SC-003**: 100% of code examples in chapter execute successfully on Minikube 1.32+
+- **SC-003**: 100% of code examples in chapter execute successfully on Docker Desktop Kubernetes
 - **SC-004**: Students can explain the difference between `template` and `include` functions (conceptual understanding test)
 - **SC-005**: Students can add a community chart as dependency and configure it via parent values (dependency integration test)
 - **SC-006**: Students can write a pre-upgrade hook that runs before deployment updates (lifecycle management test)
@@ -280,8 +280,8 @@ A student creates a production-ready Helm chart for their Part 6 AI agent with a
 
 ### Assumptions
 
-- Students have completed Chapter 50 including Lesson 20 (basic Helm)
-- Students have Minikube running with metrics-server enabled
+- Students have completed Chapter 50 (Kubernetes fundamentals)
+- Students have Docker Desktop Kubernetes running with metrics-server enabled
 - Students have their Part 6 AI agent containerized and pushed to a registry
 - Students have access to Docker Hub or similar public registry for OCI exercises
 - Helm 3.14+ is installed (OCI support is stable)
@@ -294,41 +294,46 @@ A student creates a production-ready Helm chart for their Part 6 AI agent with a
 
 ---
 
-## Lesson Outline (Preliminary)
+## Lesson Outline (Final - 12 Lessons)
 
 | #  | Title                               | Layer | Focus                                        |
 |----|-------------------------------------|-------|----------------------------------------------|
-| 1  | Advanced Go Templating              | L1    | Variables, pipelines, flow control           |
-| 2  | Named Templates and Helpers         | L1    | _helpers.tpl, include vs template            |
-| 3  | Values Deep Dive                    | L1    | Hierarchy, schema validation, globals        |
-| 4  | Chart Dependencies                  | L1    | Subcharts, conditions, import-values         |
-| 5  | Helm Hooks                          | L1    | Lifecycle events, weights, delete policies   |
-| 6  | Testing Your Charts                 | L1    | helm test, lint, template debugging          |
-| 7  | OCI Registries and Distribution     | L1    | Push, pull, install from OCI                 |
-| 8  | Library Charts                      | L1    | Organizational standardization               |
-| 9  | AI-Assisted Chart Development       | L2    | Three Roles collaboration for chart creation |
-| 10 | Capstone: Production AI Agent Chart | L4    | Spec-driven complete chart                   |
-| 11 | Building a Helm Chart Skill         | L3    | Reusable intelligence for future projects    |
+| 1  | Introduction to Helm                | L1    | Installation, chart structure, public charts, releases (moved from Ch50) |
+| 2  | Advanced Go Templating              | L1    | Variables, pipelines, flow control           |
+| 3  | Named Templates and Helpers         | L1    | _helpers.tpl, include vs template            |
+| 4  | Values Deep Dive                    | L1    | Hierarchy, schema validation, globals        |
+| 5  | Chart Dependencies                  | L1    | Subcharts, conditions, import-values         |
+| 6  | Helm Hooks and Lifecycle            | L1    | Lifecycle events, weights, delete policies   |
+| 7  | Testing Your Charts                 | L1    | helm test, lint, template debugging          |
+| 8  | OCI Registries and Distribution     | L1    | Push, pull, install from OCI                 |
+| 9  | Library Charts and Standardization  | L1    | Organizational standardization               |
+| 10 | AI-Assisted Chart Development       | L2    | Three Roles collaboration for chart creation |
+| 11 | Capstone: Production AI Agent Chart | L4    | Spec-driven complete chart                   |
+| 12 | Building a Helm Chart Skill         | L3    | Reusable intelligence for future projects    |
+
+**Note**: Lesson 1 (Introduction to Helm) was moved from Chapter 50 to provide proper foundation before advanced topics.
 
 ---
 
-## Differentiation from Chapter 50 Lesson 20
+## Running Example Requirement
 
-Chapter 50 Lesson 20 covers:
-- Why Helm exists (repetitive YAML problem)
-- Basic chart structure (Chart.yaml, values.yaml, templates/)
-- Installing public charts (Bitnami Redis example)
-- Creating simple custom charts (helm create scaffold)
-- Basic release management (install, upgrade, rollback, uninstall)
-- Environment-specific values files (dev vs prod)
+**IMPORTANT**: All lessons MUST use the **Task API** from Chapters 40/49/50 as the running example:
+- The containerized Task API image from Chapter 49
+- The Kubernetes deployment patterns from Chapter 50
+- Chart examples should reference `task-api` not generic `my-agent`
 
-Chapter 51 adds (not covered in Lesson 20):
-- Advanced Go templating (variables, with, range, named templates)
-- Chart dependencies and subchart composition
-- Helm hooks and lifecycle management
-- Chart testing strategies
-- OCI registry distribution
-- Library charts for organizational standards
-- Production patterns (umbrella charts, GitOps integration points)
-- AI-assisted chart development (Layer 2)
-- Reusable Helm skill creation (Layer 3)
+This maintains continuity across the cloud-native track (Docker → Kubernetes → Helm).
+
+---
+
+## Differentiation from Chapter 50
+
+Chapter 50 no longer includes Helm content (moved to Chapter 51). Students come to Chapter 51 with:
+- Kubernetes architecture understanding
+- kubectl operations experience
+- Deployed Task API on Kubernetes
+
+Chapter 51 teaches Helm from scratch:
+- Lesson 1: Helm fundamentals (installation, chart structure, public charts, releases)
+- Lessons 2-9: Advanced patterns (templating, dependencies, hooks, testing, OCI, library charts)
+- Lessons 10-12: AI collaboration, capstone, and skill creation

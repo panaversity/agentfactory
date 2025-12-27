@@ -59,13 +59,13 @@ Your chart succeeds when ALL of these are true:
 
 **Criterion 1: Single `helm install` Deploys Complete Stack**
 ```
-$ helm install my-agent ./ai-agent-chart -f values-prod.yaml
-Release my-agent installed.
-$ kubectl get all --selector=app=my-agent
+$ helm install task-api ./ai-agent-chart -f values-prod.yaml
+Release task-api installed.
+$ kubectl get all --selector=app=task-api
 NAME                                  READY   STATUS    RESTARTS   AGE
-pod/my-agent-deployment-abc123        1/1     Running   0          5s
-pod/my-agent-postgres-0               1/1     Running   0          5s
-pod/my-agent-redis-0                  1/1     Running   0          5s
+pod/task-api-deployment-abc123        1/1     Running   0          5s
+pod/task-api-postgres-0               1/1     Running   0          5s
+pod/task-api-redis-0                  1/1     Running   0          5s
 pod/db-migrate-pre-upgrade-abc123     0/1     Completed 0          4s
 ```
 - Agent Pod running
@@ -75,13 +75,13 @@ pod/db-migrate-pre-upgrade-abc123     0/1     Completed 0          4s
 
 **Criterion 2: `helm test` Verifies Connectivity**
 ```
-$ helm test my-agent
-NAME: my-agent
+$ helm test task-api
+NAME: task-api
 LAST DEPLOYED: Thu Jan 23 14:30:00 2025
 NAMESPACE: default
 STATUS: deployed
 
-TEST SUITE:     my-agent-connection-test
+TEST SUITE:     task-api-connection-test
 Last Started:   Thu Jan 23 14:30:05 2025
 Last Completed: Thu Jan 23 14:30:10 2025
 Status:         PASSED
@@ -822,7 +822,7 @@ spec:
   restartPolicy: Never
 ```
 
-**Output:** When you run `helm test my-agent`, this Pod verifies both database and cache are accessible.
+**Output:** When you run `helm test task-api`, this Pod verifies both database and cache are accessible.
 
 ### Step 12: Chart README
 
@@ -861,13 +861,13 @@ helm repo update
 ### Deploy to Dev
 
 ```bash
-helm install my-agent ./ai-agent-chart -f values-dev.yaml --namespace dev --create-namespace
+helm install task-api ./ai-agent-chart -f values-dev.yaml --namespace dev --create-namespace
 ```
 
 ### Deploy to Production
 
 ```bash
-helm install my-agent ./ai-agent-chart -f values-prod.yaml --namespace prod --create-namespace
+helm install task-api ./ai-agent-chart -f values-prod.yaml --namespace prod --create-namespace
 ```
 
 ## Configuration
@@ -889,7 +889,7 @@ helm install my-agent ./ai-agent-chart -f values-prod.yaml --namespace prod --cr
 ### Update Release
 
 ```bash
-helm upgrade my-agent ./ai-agent-chart -f values-prod.yaml
+helm upgrade task-api ./ai-agent-chart -f values-prod.yaml
 ```
 
 The pre-upgrade migration hook runs automatically before the upgrade proceeds.
@@ -897,7 +897,7 @@ The pre-upgrade migration hook runs automatically before the upgrade proceeds.
 ### Test Connectivity
 
 ```bash
-helm test my-agent
+helm test task-api
 ```
 
 This verifies Agent ↔ PostgreSQL and Agent ↔ Redis connectivity.
@@ -905,13 +905,13 @@ This verifies Agent ↔ PostgreSQL and Agent ↔ Redis connectivity.
 ### Rollback Release
 
 ```bash
-helm rollback my-agent 1
+helm rollback task-api 1
 ```
 
 ### Delete Release
 
 ```bash
-helm uninstall my-agent
+helm uninstall task-api
 ```
 
 ## Troubleshooting
@@ -920,22 +920,22 @@ helm uninstall my-agent
 
 Check migration job logs:
 ```bash
-kubectl logs -l app=my-agent,job=migration --tail=100
+kubectl logs -l app=task-api,job=migration --tail=100
 ```
 
 ### Agent Pod Not Running
 
 Check deployment:
 ```bash
-kubectl describe deployment my-agent
-kubectl logs -l app=my-agent
+kubectl describe deployment task-api
+kubectl logs -l app=task-api
 ```
 
 ### Database Connection Errors
 
 Verify secret:
 ```bash
-kubectl get secret my-agent-secret -o yaml
+kubectl get secret task-api-secret -o yaml
 ```
 
 Verify PostgreSQL is running:
@@ -971,17 +971,17 @@ $ helm lint ./ai-agent-chart
 Render templates without installing:
 
 ```bash
-$ helm template my-agent ./ai-agent-chart -f values-prod.yaml | head -50
+$ helm template task-api ./ai-agent-chart -f values-prod.yaml | head -50
 ---
 # Source: ai-agent/templates/configmap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: my-agent-config
+  name: task-api-config
   labels:
     helm.sh/chart: ai-agent-1.0.0
     app.kubernetes.io/name: ai-agent
-    app.kubernetes.io/instance: my-agent
+    app.kubernetes.io/instance: task-api
     app.kubernetes.io/managed-by: Helm
 data:
   LOG_LEVEL: "warn"
@@ -991,7 +991,7 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: my-agent-secret
+  name: task-api-secret
   labels:
     helm.sh/chart: ai-agent-1.0.0
 ```
@@ -1003,7 +1003,7 @@ metadata:
 Validate values against schema:
 
 ```bash
-$ helm template my-agent ./ai-agent-chart -f values-invalid.yaml 2>&1 | grep -i error
+$ helm template task-api ./ai-agent-chart -f values-invalid.yaml 2>&1 | grep -i error
 error: values don't meet the schema requirements
 ```
 
@@ -1014,24 +1014,24 @@ error: values don't meet the schema requirements
 #### Criterion 1: Single `helm install` Deploys Complete Stack
 
 ```bash
-$ helm install my-agent ./ai-agent-chart -f values-prod.yaml --namespace test --create-namespace
-NAME: my-agent
+$ helm install task-api ./ai-agent-chart -f values-prod.yaml --namespace test --create-namespace
+NAME: task-api
 LAST DEPLOYED: Thu Jan 23 14:35:00 2025
 NAMESPACE: test
 STATUS: deployed
 
-$ kubectl get all -n test -l app.kubernetes.io/instance=my-agent
+$ kubectl get all -n test -l app.kubernetes.io/instance=task-api
 NAME                           READY   STATUS    RESTARTS   AGE
-pod/my-agent-deployment-abc    1/1     Running   0          3s
-pod/my-agent-postgresql-0      1/1     Running   0          3s
-pod/my-agent-redis-0           1/1     Running   0          3s
-pod/my-agent-pre-upgrade-xyz   0/1     Completed 0          2s
+pod/task-api-deployment-abc    1/1     Running   0          3s
+pod/task-api-postgresql-0      1/1     Running   0          3s
+pod/task-api-redis-0           1/1     Running   0          3s
+pod/task-api-pre-upgrade-xyz   0/1     Completed 0          2s
 
 NAME                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)
-service/my-agent      ClusterIP   10.96.10.10    <none>        8000/TCP
+service/task-api      ClusterIP   10.96.10.10    <none>        8000/TCP
 
 NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/my-agent       1/1     1            1           3s
+deployment.apps/task-api       1/1     1            1           3s
 
 NAME                         READY   AGE
 statefulset.apps/postgresql  1/1     3s
@@ -1047,19 +1047,19 @@ statefulset.apps/redis       1/1     3s
 #### Criterion 2: `helm test` Verifies Connectivity
 
 ```bash
-$ helm test my-agent -n test
-NAME: my-agent
+$ helm test task-api -n test
+NAME: task-api
 LAST DEPLOYED: Thu Jan 23 14:35:00 2025
 NAMESPACE: test
 STATUS: deployed
 
-TEST SUITE:     my-agent-connection-test
+TEST SUITE:     task-api-connection-test
 Last Started:   Thu Jan 23 14:35:15 2025
 Last Completed: Thu Jan 23 14:35:20 2025
 Status:         PASSED
 
 Details:
-Test my-agent-connection-test: PASSED
+Test task-api-connection-test: PASSED
 ```
 
 **Output:** ✓ Connectivity test passed:
@@ -1070,7 +1070,7 @@ Test my-agent-connection-test: PASSED
 Check test pod logs:
 
 ```bash
-$ kubectl logs -n test my-agent-connection-test
+$ kubectl logs -n test task-api-connection-test
 Testing PostgreSQL connection...
 PostgreSQL connection successful!
 Testing Redis connection...

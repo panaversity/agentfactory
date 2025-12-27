@@ -186,7 +186,7 @@ spec:
           sleep 10  # Wait for service to stabilize
           curl -X POST http://service-registry:8080/register \
             -H "Content-Type: application/json" \
-            -d '{"name":"my-agent","port":8000}'
+            -d '{"name":"task-api","port":8000}'
       restartPolicy: Never
   backoffLimit: 1
 ```
@@ -871,14 +871,14 @@ By using idempotent migrations (IF NOT EXISTS, CREATE INDEX IF NOT EXISTS, etc.)
 
 Create a pre-install hook that initializes a PostgreSQL database schema:
 
-**File: `my-agent-chart/templates/hooks/db-init.yaml`**
+**File: `task-api-chart/templates/hooks/db-init.yaml`**
 
 ```yaml
 {{ if .Values.postgres.enabled }}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "my-agent-chart.fullname" . }}-db-init
+  name: {{ include "task-api-chart.fullname" . }}-db-init
   annotations:
     "helm.sh/hook": "pre-install"
     "helm.sh/hook-weight": "-10"
@@ -922,7 +922,7 @@ spec:
 {{ end }}
 ```
 
-**Output:** Running `helm install my-app ./my-agent-chart` executes this Job first. The database schema is initialized idempotently (IF NOT EXISTS prevents errors if run multiple times). Only after successful schema creation do other resources deploy.
+**Output:** Running `helm install my-app ./task-api-chart` executes this Job first. The database schema is initialized idempotently (IF NOT EXISTS prevents errors if run multiple times). Only after successful schema creation do other resources deploy.
 
 ---
 
@@ -930,13 +930,13 @@ spec:
 
 Create two pre-upgrade hooks where the migration runs before validation:
 
-**File: `my-agent-chart/templates/hooks/pre-upgrade.yaml`**
+**File: `task-api-chart/templates/hooks/pre-upgrade.yaml`**
 
 ```yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "my-agent-chart.fullname" . }}-migrate
+  name: {{ include "task-api-chart.fullname" . }}-migrate
   annotations:
     "helm.sh/hook": "pre-upgrade"
     "helm.sh/hook-weight": "-5"
@@ -973,7 +973,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "my-agent-chart.fullname" . }}-validate-migration
+  name: {{ include "task-api-chart.fullname" . }}-validate-migration
   annotations:
     "helm.sh/hook": "pre-upgrade"
     "helm.sh/hook-weight": "0"
@@ -1019,13 +1019,13 @@ If validation fails, the upgrade is blocked and rolled back. The deployment does
 
 Create a hook that clears Redis cache after a successful upgrade:
 
-**File: `my-agent-chart/templates/hooks/post-upgrade.yaml`**
+**File: `task-api-chart/templates/hooks/post-upgrade.yaml`**
 
 ```yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "my-agent-chart.fullname" . }}-cache-bust
+  name: {{ include "task-api-chart.fullname" . }}-cache-bust
   annotations:
     "helm.sh/hook": "post-upgrade"
     "helm.sh/hook-weight": "0"
@@ -1054,13 +1054,13 @@ spec:
 
 Create a pre-upgrade hook that intentionally fails to see how Helm handles it:
 
-**File: `my-agent-chart/templates/hooks/debug-failure.yaml`**
+**File: `task-api-chart/templates/hooks/debug-failure.yaml`**
 
 ```yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "my-agent-chart.fullname" . }}-debug-fail
+  name: {{ include "task-api-chart.fullname" . }}-debug-fail
   annotations:
     "helm.sh/hook": "pre-upgrade"
     "helm.sh/hook-weight": "-20"
@@ -1096,13 +1096,13 @@ spec:
 
 Deploy a hook, let it succeed, and verify it's cleaned up:
 
-**File: `my-agent-chart/templates/hooks/cleanup-test.yaml`**
+**File: `task-api-chart/templates/hooks/cleanup-test.yaml`**
 
 ```yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "my-agent-chart.fullname" . }}-cleanup-test
+  name: {{ include "task-api-chart.fullname" . }}-cleanup-test
   annotations:
     "helm.sh/hook": "post-install"
     "helm.sh/hook-delete-policy": "hook-succeeded"
@@ -1137,13 +1137,13 @@ spec:
 
 Create three hooks that run in specific order using different weights:
 
-**File: `my-agent-chart/templates/hooks/sequence.yaml`**
+**File: `task-api-chart/templates/hooks/sequence.yaml`**
 
 ```yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "my-agent-chart.fullname" . }}-step-1-backup
+  name: {{ include "task-api-chart.fullname" . }}-step-1-backup
   annotations:
     "helm.sh/hook": "pre-upgrade"
     "helm.sh/hook-weight": "-10"
@@ -1164,7 +1164,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "my-agent-chart.fullname" . }}-step-2-migrate
+  name: {{ include "task-api-chart.fullname" . }}-step-2-migrate
   annotations:
     "helm.sh/hook": "pre-upgrade"
     "helm.sh/hook-weight": "0"
@@ -1185,7 +1185,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "my-agent-chart.fullname" . }}-step-3-verify
+  name: {{ include "task-api-chart.fullname" . }}-step-3-verify
   annotations:
     "helm.sh/hook": "pre-upgrade"
     "helm.sh/hook-weight": "10"
@@ -1220,7 +1220,7 @@ Use `kubectl get jobs` to see all three Jobs created in sequence.
 Examine the hooks deployed in your chart:
 
 **Steps:**
-1. Deploy the chart: `helm install my-app ./my-agent-chart`
+1. Deploy the chart: `helm install my-app ./task-api-chart`
 2. List all Jobs: `kubectl get jobs`
 3. Get detailed Job info: `kubectl get jobs -o wide`
 4. View a Job's completion: `kubectl describe job my-app-db-init`
