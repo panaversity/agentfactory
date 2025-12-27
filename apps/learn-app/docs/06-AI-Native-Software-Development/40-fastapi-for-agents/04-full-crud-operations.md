@@ -118,6 +118,14 @@ Now clients can:
 - `GET /tasks?status=pending` — Only pending tasks
 - `GET /tasks?status=completed` — Only completed tasks
 
+Output (GET /tasks?status=pending):
+```json
+[
+  {"id": 1, "title": "Learn FastAPI", "status": "pending"},
+  {"id": 3, "title": "Deploy app", "status": "pending"}
+]
+```
+
 For agents, this filtering is essential. A task agent doesn't want to process completed items—it filters for pending work.
 
 ## Get Single Task
@@ -140,6 +148,14 @@ def get_task(task_id: int):
 Test it:
 - `GET /tasks/1` → Returns task 1 (if it exists)
 - `GET /tasks/999` → Returns 404 error
+
+Output (GET /tasks/999):
+```
+HTTP/1.1 404 Not Found
+content-type: application/json
+
+{"detail": "Task not found"}
+```
 
 ## Update Task: The Subtle Complexity
 
@@ -433,44 +449,54 @@ def get_task(task_id: int):
     raise HTTPException(status_code=404, detail="Task not found")
 ```
 
-## Refine Your Understanding
+## Try With AI
 
-After completing the exercise, work through these scenarios with AI:
+Now that you've implemented full CRUD, deepen your understanding with these explorations.
 
-**Scenario 1: Understand PUT vs PATCH**
+**Prompt 1: Understand PUT vs PATCH**
 
-> "Explain the difference between PUT and PATCH for updates. My current PUT implementation acts like PATCH—it only updates fields that are provided. Is this wrong? Show me what strict PUT semantics would look like."
+```text
+My FastAPI PUT endpoint acts like PATCH—it only updates fields that are provided:
 
-When AI explains, push back:
+@app.put("/tasks/{task_id}")
+def update_task(task_id: int, task_update: TaskUpdate):
+    task["title"] = task_update.title
+    if task_update.status is not None:
+        task["status"] = task_update.status
 
-> "You said strict PUT requires all fields. But then a client that only wants to change status has to resend the entire object. What if they have stale data for other fields? Isn't PATCH safer?"
+Is this technically wrong according to HTTP semantics? Show me what strict PUT would look like, then explain why most APIs choose partial updates anyway.
+```
 
-**Scenario 2: Optimize Lookup Performance**
+**What you're learning:** This prompt clarifies the PUT vs PATCH debate. You'll discover that strict PUT requires the full resource representation, but practical APIs use PUT for partial updates because PATCH had browser support issues historically. Understanding this helps you make informed API design decisions.
 
-> "My current implementation loops through the list to find tasks. What's the time complexity? Show me how to use a dictionary for O(1) lookups. What trade-offs does this introduce?"
+**Prompt 2: Optimize Lookup Performance**
 
-Review AI's suggestion. Challenge it:
+```text
+My current task lookup is O(n):
 
-> "With a dictionary, I lose ordering. If I need to list tasks in creation order, how do I maintain that while getting O(1) lookups?"
+for task in tasks:
+    if task["id"] == task_id:
+        return task
 
-**Scenario 3: Design for Agent Use**
+Show me how to restructure this using a dictionary for O(1) lookups. But I also need to list tasks in creation order—how do I maintain ordering while getting O(1) lookups? Compare the trade-offs.
+```
 
-> "I'm building an endpoint for an agent to claim tasks—mark them as 'in_progress' and assign to a worker ID. Two agents might try to claim the same task. Show me how to handle this race condition."
+**What you're learning:** This prompt develops your data structure intuition. You'll learn that `dict` gives O(1) access but loses ordering, while `collections.OrderedDict` or separate list+dict structures maintain both. This matters when agent systems need fast lookups AND chronological listings.
 
-This explores concurrent access—a real production problem you'll face with agents.
+**Prompt 3: Handle Race Conditions**
 
----
+```text
+I'm building an endpoint for agents to claim tasks:
 
-## Summary
+@app.post("/tasks/{task_id}/claim")
+def claim_task(task_id: int, worker_id: str):
+    task = find_task(task_id)
+    if task["status"] != "pending":
+        raise HTTPException(400, "Task already claimed")
+    task["status"] = "in_progress"
+    task["worker_id"] = worker_id
 
-You've implemented complete CRUD operations:
+Two agents call this simultaneously for the same task. What happens? Show me how to prevent both from claiming the same task.
+```
 
-- **Create**: `POST /tasks` with request body
-- **Read all**: `GET /tasks` with optional filtering
-- **Read one**: `GET /tasks/{id}` with 404 for missing
-- **Update**: `PUT /tasks/{id}` returns updated resource
-- **Delete**: `DELETE /tasks/{id}` removes resource
-
-**The bigger picture**: CRUD is the data layer for any agent. Memory agents, task agents, session agents—all need these operations. The in-memory implementation has concurrency issues that databases solve, but the patterns transfer directly.
-
-Next lesson, you'll learn proper error handling—returning the right status codes and creating helpful error messages.
+**What you're learning:** This prompt introduces concurrency challenges. You'll discover that in-memory operations aren't atomic—two requests can both read "pending" before either writes. This is why production agent systems use databases with proper locking or optimistic concurrency control.

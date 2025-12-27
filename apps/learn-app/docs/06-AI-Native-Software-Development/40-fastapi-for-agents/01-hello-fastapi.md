@@ -91,6 +91,11 @@ uv init task-api
 cd task-api
 ```
 
+Output:
+```
+Initialized project `task-api`
+```
+
 This creates a proper Python project with `pyproject.toml` for dependency management.
 
 ### Step 2: Create and Activate the Virtual Environment
@@ -126,6 +131,15 @@ source .venv/bin/activate
 
 ```bash
 uv add "fastapi[standard]"
+```
+
+Output:
+```
+Resolved 14 packages in 1.2s
+Installed 14 packages in 50ms
+ + fastapi==0.115.6
+ + uvicorn==0.34.0
+ ...
 ```
 
 **What does `[standard]` include?** The `fastapi[standard]` package bundles essential dependencies:
@@ -204,6 +218,23 @@ You have two options for running the server in development:
 
 ```bash
 fastapi dev main.py
+```
+
+Output:
+```
+INFO     Using path main.py
+INFO     Resolved absolute path /path/to/task-api/main.py
+INFO     Searching for package file structure from directories with __init__.py files
+INFO     Importing from /path/to/task-api
+
+ ╭─ Python module file ─╮
+ │  main.py             │
+ ╰──────────────────────╯
+
+INFO     Importing module main
+INFO     Found importable FastAPI app
+INFO     Using import string main:app
+INFO     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 ```
 
 This command (introduced in FastAPI 0.100.0+) runs your app in development mode with automatic reloading. It's the simplest approach.
@@ -445,51 +476,42 @@ def list_tasks(status: str | None = None):  # /tasks?status=pending
 - Path: "Give me task 123" → `/tasks/123`
 - Query: "Give me tasks filtered by pending status" → `/tasks?status=pending`
 
-## Refine Your Understanding
+## Try With AI
 
-After completing the exercise, work through these scenarios with AI:
+Now that you've built your first FastAPI application, deepen your understanding through these AI-assisted explorations.
 
-**Scenario 1: Debug a Real Problem**
+**Prompt 1: Debug a Real Problem**
 
-> "My FastAPI endpoint returns `null` instead of my data. Here's my code: [paste code]. I expected it to return a task object. What's wrong?"
+```text
+My FastAPI endpoint returns `null` instead of my data. Here's my code:
 
-When AI identifies the issue, don't just accept the fix. Ask:
+@app.get("/tasks/{task_id}")
+def read_task(task_id: int):
+    task = {"id": task_id, "title": f"Task {task_id}"}
+    # Something's wrong here...
 
-> "Why does Python behave that way? I want to understand the root cause, not just fix the symptom."
+I expected it to return a task object. What's wrong and why does Python behave that way?
+```
 
-**Scenario 2: Evaluate a Design Trade-off**
+**What you're learning:** This prompt teaches you to recognize a common mistake—forgetting to return values. Understanding *why* Python returns `None` implicitly builds debugging intuition you'll use throughout API development.
 
-> "I'm deciding between `/tasks/{status}` and `/tasks?status={status}` for filtering. My endpoint needs to support filtering by status AND by priority. Which design scales better?"
+**Prompt 2: Evaluate a Design Trade-off**
 
-AI will explain. Then push back:
+```text
+I'm deciding between `/tasks/{status}` and `/tasks?status={status}` for filtering. My endpoint needs to support filtering by status AND by priority. Which design scales better for multiple filters? Show me how real production APIs like GitHub or Stripe handle this pattern.
+```
 
-> "But REST conventions say path parameters should identify resources. Is filtering really 'identification'? Show me how real APIs handle this."
+**What you're learning:** This prompt develops your API design judgment. You'll discover that query parameters compose better for filtering, while path parameters identify specific resources—a distinction that matters when agents need to construct URLs programmatically.
 
-**Scenario 3: Extend to Your Domain**
+**Prompt 3: Design for Your Domain**
 
-> "I'm building an API for [your domain - recipes, books, whatever]. Design a resource endpoint with one path parameter and two optional query parameters. Explain your choices."
+```text
+I'm building an API for [your domain - recipes, inventory, bookings]. Design a resource endpoint that:
+1. Retrieves a single item by ID (path parameter)
+2. Supports optional filtering by two attributes (query parameters)
+3. Returns a sensible JSON structure
 
-Review AI's design. Find something you'd do differently:
+Then show me what the Swagger UI documentation would look like for this endpoint.
+```
 
-> "Your design uses [X], but I'd prefer [Y] because [your reasoning]. Which approach is more maintainable long-term?"
-
-This is collaborative design. You're not asking "write code for me"—you're having an engineering discussion.
-
----
-
-## Summary
-
-You've created your first FastAPI application:
-
-- **Project setup**: `uv init` + `uv add "fastapi[standard]"` for proper dependency management
-- **Uvicorn**: The ASGI server that runs your FastAPI app (included in `fastapi[standard]`)
-- **FastAPI instance**: `app = FastAPI(title="...")` creates your app with auto-documentation
-- **Route decorators**: `@app.get("/path")` connects URLs to functions
-- **Path parameters**: `{task_id}` in the path, type-validated automatically
-- **Query parameters**: Optional parameters with defaults
-- **Running**: `fastapi dev main.py` or `uv run uvicorn main:app --reload`
-- **Swagger UI**: Interactive documentation at `/docs`
-
-**The bigger picture**: You're building the HTTP layer that will eventually expose AI agents. Every endpoint pattern you learn here transfers directly to agent integration. Uvicorn handles the networking; FastAPI handles your logic.
-
-Next lesson, you'll add POST endpoints with Pydantic models—the same validation layer that ensures agents receive well-formed requests.
+**What you're learning:** This prompt bridges theory to your real work. By designing for your own domain, you internalize when to use path vs query parameters—knowledge that transfers directly when you expose agent capabilities as API endpoints.

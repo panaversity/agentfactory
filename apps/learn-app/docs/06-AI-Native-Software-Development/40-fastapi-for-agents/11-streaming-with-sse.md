@@ -89,6 +89,7 @@ You've experienced this in ChatGPT—words appearing as the model generates them
 
 Server-Sent Events is a simple protocol. The server sends text in a specific format:
 
+Output (raw SSE stream):
 ```
 event: task_update
 data: {"task_id": 1, "status": "in_progress"}
@@ -535,44 +536,47 @@ async def generator():
 
 `return` ends the function. `yield` makes it a generator that produces values.
 
-## Refine Your Understanding
+## Try With AI
 
-After completing the exercise, work through these scenarios with AI:
+Now that you understand SSE streaming, explore advanced patterns for production agent systems.
 
-**Scenario 1: Understand the Protocol**
+**Prompt 1: Understand the Protocol**
 
-> "Explain the SSE protocol format in detail. What are the optional fields besides 'event' and 'data'? How does the 'id' field enable reconnection?"
+```text
+Explain the SSE protocol format in detail:
+1. What are all the optional fields besides 'event' and 'data'?
+2. How does the 'id' field enable automatic reconnection?
+3. What is the 'retry' field for?
 
-When AI explains, push back:
+Then show me how to implement resumable streams—if my server crashes mid-stream and the client reconnects, how do I resume from where I left off?
+```
 
-> "If my server crashes mid-stream and the client reconnects, how do I resume from where I left off? Show me the pattern for resumable streams."
+**What you're learning:** This prompt reveals SSE's built-in resilience features. You'll discover that `id` enables `Last-Event-ID` headers on reconnect, letting your server resume from the right position. The `retry` field controls reconnection timing. These features are crucial for reliable agent streaming over unreliable networks.
 
-**Scenario 2: Handle Real-World Issues**
+**Prompt 2: Handle Client Disconnection**
 
-> "What happens if the client disconnects mid-stream? My generator might keep running, wasting resources. How do I detect disconnection and clean up?"
+```text
+When a client disconnects mid-stream, my async generator might keep running, wasting resources:
 
-Review AI's solution. Challenge it:
+async def agent_stream():
+    async for token in expensive_agent_call():
+        yield {"data": token}
+        # What if client disconnected here?
 
-> "Your solution uses try/finally. But what if I have resources like database cursors that need cleanup? Show me the pattern for resource cleanup in async generators."
+How do I detect disconnection and clean up? What if I have database cursors or API connections that need proper cleanup?
+```
 
-**Scenario 3: Compare Alternatives**
+**What you're learning:** This prompt teaches resource management in async contexts. You'll learn about `asyncio.CancelledError`, context managers for cleanup, and how to structure generators that release resources properly. Essential for agent systems where each stream might hold LLM API connections.
 
-> "When should I use SSE vs WebSockets vs HTTP/2 server push? My agent needs to stream responses, but also handle user interrupts. Does SSE still work?"
+**Prompt 3: Choose the Right Technology**
 
-This explores the trade-offs between streaming technologies—important for production agent systems.
+```text
+Compare SSE vs WebSockets vs HTTP/2 Server Push for my use case:
+- Agent streams token-by-token responses (server → client)
+- Users can click "Stop" to interrupt generation (client → server)
+- Need to work through corporate proxies
 
----
+Which technology best fits? Can I handle user interrupts with SSE, or do I need WebSockets?
+```
 
-## Summary
-
-You've learned to implement streaming with SSE:
-
-- **sse-starlette**: Provides `EventSourceResponse`
-- **Async generators**: `async def` with `yield` for data production
-- **Event format**: `event` and `data` fields
-- **Browser testing**: Use `EventSource` API in JavaScript
-- **Error handling**: Yield error events, don't raise exceptions mid-stream
-
-**The bigger picture**: Streaming transforms user experience. Instead of waiting 30 seconds for a complete response, users see progress immediately. This is how modern AI interfaces feel responsive even when processing takes time.
-
-Next lesson, you'll integrate an AI agent—sending user questions and streaming the agent's response token by token.
+**What you're learning:** This prompt develops your architecture judgment. You'll discover that SSE handles most agent streaming needs elegantly—the "stop" button can be a separate HTTP request that cancels the stream server-side. WebSockets add complexity you rarely need for unidirectional agent output.

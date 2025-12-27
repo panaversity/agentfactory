@@ -193,9 +193,11 @@ Open http://localhost:8000/docs and find the POST endpoint.
    ```
 3. Click "Execute"
 
-You'll see a 201 response with the created task:
+Output:
+```
+HTTP/1.1 201 Created
+content-type: application/json
 
-```json
 {
   "id": 1,
   "title": "Learn FastAPI",
@@ -203,6 +205,8 @@ You'll see a 201 response with the created task:
   "status": "pending"
 }
 ```
+
+The 201 status code confirms the resource was created successfully.
 
 ## Validation Errors: What Students Find Confusing
 
@@ -216,9 +220,11 @@ This is where many students get stuck. Let's work through it carefully.
 }
 ```
 
-FastAPI returns a 422 Unprocessable Entity:
+Output:
+```
+HTTP/1.1 422 Unprocessable Entity
+content-type: application/json
 
-```json
 {
   "detail": [
     {
@@ -254,9 +260,11 @@ FastAPI automatically returns 422 for schema violations. You'll add 400 errors i
 }
 ```
 
-Response:
+Output:
+```
+HTTP/1.1 422 Unprocessable Entity
+content-type: application/json
 
-```json
 {
   "detail": [
     {
@@ -418,49 +426,46 @@ description: str | None = None
 
 The `= None` is crucial. Without it, the field is required (just nullable).
 
-## Refine Your Understanding
+## Try With AI
 
-After completing the exercise, work through these scenarios with AI:
+Now that you understand Pydantic validation, explore these advanced patterns with AI assistance.
 
-**Scenario 1: Understand the Validation Pipeline**
+**Prompt 1: Trace the Validation Pipeline**
 
-> "Trace what happens when I POST this JSON to /tasks: `{'title': 123, 'extra_field': 'ignored'}`. Show me each step from raw request to my function parameter."
+```text
+Trace what happens when I POST this JSON to my FastAPI endpoint:
+{"title": 123, "extra_field": "ignored"}
 
-When AI explains, test your understanding:
+My model is:
+class TaskCreate(BaseModel):
+    title: str
+    description: str | None = None
 
-> "So if I wanted to REJECT extra fields instead of ignoring them, how would I configure that in Pydantic?"
+Show me each step from raw HTTP request bytes to my function receiving a validated TaskCreate object. What happens to the extra_field? What happens to the integer 123?
+```
 
-**Scenario 2: Design a Complex Model**
+**What you're learning:** This prompt reveals Pydantic's internals—how it coerces types (123 becomes "123"), ignores extra fields by default, and validates required fields. Understanding this pipeline helps you predict validation behavior and debug unexpected 422 errors.
 
-> "I need a model for creating a Meeting with: title (required), attendees (list of emails), duration_minutes (must be 15, 30, 60, or 90), is_recurring (boolean, defaults to false). Design it."
+**Prompt 2: Design a Complex Model**
 
-Review AI's design. Find something to improve:
+```text
+I need a Pydantic model for creating a Meeting with:
+- title: required string, 3-100 characters
+- attendees: list of email addresses (must validate email format)
+- duration_minutes: must be exactly 15, 30, 60, or 90
+- is_recurring: boolean, defaults to false
 
-> "Your attendees field doesn't validate email format. What's the best way to add email validation—regex, Pydantic's EmailStr, or custom validator?"
+Show me two implementations: one using Literal and one using Enum for duration_minutes. Which produces better OpenAPI documentation for JavaScript clients?
+```
 
-**Scenario 3: Evaluate Trade-offs**
+**What you're learning:** This prompt teaches you to evaluate trade-offs in model design. You'll discover that Literal types produce cleaner OpenAPI specs for frontend consumers, while Enums provide better IDE support in Python—a real decision you'll face when designing agent API contracts.
 
-> "Should I use Python Enum or Literal for the priority field that only allows 'low', 'medium', 'high'? What are the trade-offs of each approach?"
+**Prompt 3: Handle Edge Cases**
 
-AI will explain both. Push back:
+```text
+I want my TaskCreate model to REJECT requests with extra fields instead of ignoring them. I also want custom error messages when validation fails.
 
-> "You said Enum is more explicit, but my API consumers are JavaScript clients. Which approach produces cleaner OpenAPI documentation?"
+Show me how to configure these behaviors in Pydantic v2, and explain when rejecting extra fields is a good idea vs when it causes problems for API evolution.
+```
 
-This is engineering judgment—you're learning to think through trade-offs, not just accept first answers.
-
----
-
-## Summary
-
-You've learned to create resources with POST endpoints:
-
-- **Pydantic models**: Define data structure with `BaseModel`
-- **How validation works**: Existence check → type check → coercion → pass to function
-- **Request bodies**: `task: TaskCreate` parses JSON automatically
-- **Validation errors**: 422 with structured error details
-- **Response models**: Control output with `response_model`
-- **Status codes**: Return 201 for resource creation
-
-**The bigger picture**: Pydantic is the validation layer between the outside world and your code. When agents receive requests, Pydantic ensures the data is valid before expensive LLM calls happen.
-
-Next lesson, you'll implement the full CRUD operations—reading, updating, and deleting tasks.
+**What you're learning:** This prompt develops your API versioning intuition. Strict validation catches bugs early but makes backward-compatible changes harder. You'll learn to choose the right strictness level for your agent's API lifecycle.

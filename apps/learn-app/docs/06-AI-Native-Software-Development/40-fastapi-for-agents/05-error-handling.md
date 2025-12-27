@@ -129,9 +129,11 @@ def get_task(task_id: int):
 2. Returns the specified status code
 3. Sends the detail as JSON
 
-The response looks like:
+Output:
+```
+HTTP/1.1 404 Not Found
+content-type: application/json
 
-```json
 {
   "detail": "Task not found"
 }
@@ -497,44 +499,54 @@ raise HTTPException(status_code=404, detail="Not found")
 
 Python exceptions that escape your function become 500 errors. Users see "Internal Server Error," which is unhelpful and suggests your server is broken (even though the logic is correct).
 
-## Refine Your Understanding
+## Try With AI
 
-After completing the exercise, work through these scenarios with AI:
+Now that you understand error handling, explore advanced patterns for building agent-friendly APIs.
 
-**Scenario 1: Design Error Hierarchies**
+**Prompt 1: Design Error Hierarchies**
 
-> "I want to create custom exception classes for different error types: TaskNotFoundError, InvalidStatusError, etc. Show me how to create exception classes that FastAPI can catch and convert to the right HTTP responses."
+```text
+I want custom exception classes for my Task API:
+- TaskNotFoundError
+- InvalidStatusError
+- DuplicateTaskError
 
-When AI shows you exception handlers, push back:
+Show me how to:
+1. Create these exception classes
+2. Register exception handlers that convert them to proper HTTP responses
+3. Handle unknown exceptions gracefully so my API never exposes stack traces
 
-> "Your approach requires registering each exception type. What if I forget to register one? Is there a pattern that handles unknown exceptions gracefully while still using my custom format?"
+What's the pattern for ensuring I don't forget to register a new exception type?
+```
 
-**Scenario 2: Structured Logging**
+**What you're learning:** This prompt teaches you to design exception hierarchies. You'll discover that a base class like `TaskAPIError` with common fields lets you handle all custom exceptions with one handler, preventing the "forgot to register" problem. This pattern scales as your API grows.
 
-> "I want to log all 4xx and 5xx errors with request details. Show me how to add structured logging that includes the request path, method, and error details."
+**Prompt 2: Add Structured Logging**
 
-Review AI's solution. Challenge it:
+```text
+I want to log all 4xx and 5xx errors with request context:
+- Request path and method
+- Error details and status code
+- A correlation ID that links related logs
 
-> "Your logging happens after the exception. What if I want to log additional context from inside the endpoint function—like which task ID caused the error? How do I correlate logs with specific requests?"
+Show me how to add this to FastAPI middleware. Also, how do I include additional context from inside endpoint functions—like which specific task_id caused the error?
+```
 
-**Scenario 3: Agent-Friendly Error Recovery**
+**What you're learning:** This prompt develops your observability skills. You'll learn about middleware for cross-cutting concerns, context variables for request-scoped data, and correlation IDs for tracing requests across logs. Essential for debugging agent systems in production.
 
-> "An agent calls my API and gets a 404. I want to include a 'retry_after' field for rate limits and a 'suggestion' field with valid actions. Design an error response that helps agents recover automatically."
+**Prompt 3: Design Agent-Friendly Errors**
 
-This explores how error responses can guide agent behavior—a key concern when your API serves AI systems.
+```text
+When an agent calls my API, I want error responses that help it recover automatically:
 
----
+{
+  "error_code": "TASK_NOT_FOUND",
+  "message": "Task 42 not found",
+  "retry_after": null,
+  "suggestions": ["create the task first", "check the task ID"]
+}
 
-## Summary
+Design this error format and show me how to implement it for 404, 400, and 429 (rate limit) errors. How can an agent use the retry_after field?
+```
 
-You've learned to handle errors properly:
-
-- **Status codes**: 200, 201, 400, 404, 422 for different scenarios
-- **HTTPException**: Raise with status_code and detail
-- **status module**: Named constants for readability
-- **400 vs 422**: Business rules (your code) vs validation (Pydantic)
-- **Good messages**: Specific, contextual, agent-parseable
-
-**The bigger picture**: Error handling is communication. With human users, you're helping them fix mistakes. With agents, you're enabling programmatic recovery. Clear status codes and structured messages make your API predictable—which is essential for agent reliability.
-
-Next lesson, you'll learn dependency injection to organize your code better and prepare for testing.
+**What you're learning:** This prompt teaches you to design for machine consumers. Agents can programmatically check `error_code` for decision logic, use `retry_after` for backoff, and potentially surface `suggestions` to users. This structured approach makes your API a better citizen in agent workflows.

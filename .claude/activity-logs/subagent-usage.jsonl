@@ -297,3 +297,45 @@
 {"timestamp":"2025-12-27T10:51:49Z","session_id":"1e9dbda8-00d1-44a0-82f7-7d07169aa6d6","subagent":"content-implementer","description":"Test content-implementer write","background":false,"model":"inherit","event":"spawn"}
 {"timestamp":"2025-12-27T10:52:09Z","session_id":"1e9dbda8-00d1-44a0-82f7-7d07169aa6d6","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
 {"timestamp":"2025-12-27T10:52:12Z","session_id":"1e9dbda8-00d1-44a0-82f7-7d07169aa6d6","subagent":"content-implementer","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:07:45Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 04 structural fixes","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:07:45Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 01 structural fixes","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:07:45Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 05 structural fixes","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:07:45Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 11 structural fixes","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:07:45Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 03 structural fixes","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:08:30Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:08:53Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:09:00Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:09:08Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:09:08Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:15:01Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 12 agent","background":true,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:15:01Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 10 DI","background":true,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:15:01Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 07 sqlmodel","background":true,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:15:01Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 13 capstone","background":true,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:15:01Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 09 password","background":true,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:15:01Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 02 pytest","background":true,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:15:01Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 06 env vars","background":true,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:15:01Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 08 jwt","background":true,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:15:01Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:15:01Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:15:01Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:15:01Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:15:01Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:15:01Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:15:01Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:15:01Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:19:13Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 06 env vars","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:19:13Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 07 sqlmodel","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:19:13Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 08 jwt","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:19:13Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 02 pytest","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:20:04Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:20:24Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:20:28Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:20:39Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:21:00Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 12 agent","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:21:00Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 13 capstone","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:21:00Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 10 DI","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:21:00Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","description":"Validate lesson 09 password","background":false,"model":"inherit","event":"spawn"}
+{"timestamp":"2025-12-27T11:22:04Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:22:11Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:22:15Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
+{"timestamp":"2025-12-27T11:22:30Z","session_id":"a71b0b21-d96d-44b9-86fb-3c5acdf2510c","subagent":"educational-validator","agent_id":"","status":"completed","event":"complete"}
