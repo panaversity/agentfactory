@@ -124,6 +124,117 @@ article {
 }
 
 /* ============================================================================
+   DOC PAGE ACTIONS — Split button design (ChatGPT + dropdown)
+   ============================================================================ */
+
+/* Header row: Reading time (left) + Actions (right) */
+.doc-content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Outer container */
+.doc-page-actions {
+  display: flex;
+  align-items: center;
+}
+
+/* Split button container - shared border */
+.doc-page-actions-split {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--border);
+  background: var(--background);
+  overflow: hidden;
+  transition: border-color 150ms ease-out;
+}
+
+.doc-page-actions-split:hover {
+  border-color: var(--primary);
+}
+
+/* Main button (Ask ChatGPT) */
+.doc-page-actions-main {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  background: transparent;
+  border: none;
+  color: var(--foreground);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms ease-out;
+}
+
+.doc-page-actions-main:hover {
+  background: var(--muted);
+  color: var(--primary);
+}
+
+/* Chevron dropdown trigger */
+.doc-page-actions-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.5rem;
+  background: transparent;
+  border: none;
+  border-left: 1px solid var(--border);
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: all 150ms ease-out;
+}
+
+.doc-page-actions-chevron:hover {
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+/* Dropdown content styling */
+.doc-page-actions-content {
+  min-width: 180px !important;
+}
+
+.doc-page-actions-content a,
+.doc-page-actions-content [role="menuitem"] {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  cursor: pointer !important;
+}
+
+.doc-page-actions-content a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .doc-page-actions-trigger {
+  background: var(--card) !important;
+}
+
+[data-theme='dark'] .doc-page-actions-trigger:hover {
+  background: var(--accent) !important;
+}
+
+/* Make doc item container relative for absolute positioning */
+[class*='docItemContainer'] {
+  position: relative !important;
+}
+
+/* Responsive - hide on very small screens */
+@media screen and (max-width: 480px) {
+  .doc-page-actions {
+    position: static;
+    margin-bottom: 1rem;
+  }
+}
+
+/* ============================================================================
    BREADCRUMBS — Clean, minimalist design using design system
    ============================================================================ */
 
