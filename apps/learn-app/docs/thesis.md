@@ -4,16 +4,7 @@ sidebar_position: -2
 pagination_prev: null
 ---
 
-> *"The measure of intelligence is the ability to change."*
-> — Albert Einstein
-
----
-
-**Every domain expert can build an Agent Factory.**
-
-Your unique knowledge—whether in sales, legal, finance, healthcare, or any field—can be codified into AI agents that work 24/7, delivering consistent results at a fraction of human cost.
-
-**The Opportunity:** Transform your expertise into Digital FTEs that generate recurring revenue while you sleep.
+In the AI era, the most valuable companies won’t sell software—they’ll manufacture digital employees, powered by agents, specs, skills, autonomy and cloud-native technologies.
 
 ---
 
